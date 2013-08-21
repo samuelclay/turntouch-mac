@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF3A9F6517C42B5E00C5C2D5 /* menulet_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3A9F6317C42B5E00C5C2D5 /* menulet_icon.png */; };
+		FF3A9F6617C42B5E00C5C2D5 /* menulet_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3A9F6417C42B5E00C5C2D5 /* menulet_icon_active.png */; };
+		FF3A9F6C17C4351B00C5C2D5 /* TTPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A9F6B17C4351B00C5C2D5 /* TTPanelController.m */; };
+		FF3A9F6F17C4353300C5C2D5 /* TTPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A9F6E17C4353300C5C2D5 /* TTPanel.m */; };
+		FF3A9F7217C4354A00C5C2D5 /* TTStatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A9F7117C4354A00C5C2D5 /* TTStatusItemView.m */; };
+		FF3A9F7517C4355B00C5C2D5 /* TTBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A9F7417C4355B00C5C2D5 /* TTBackgroundView.m */; };
+		FF3A9F7717C4358000C5C2D5 /* TTPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3A9F7617C4358000C5C2D5 /* TTPanel.xib */; };
+		FF3A9F7A17C436DC00C5C2D5 /* TTMenubarController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A9F7917C436DC00C5C2D5 /* TTMenubarController.m */; };
+		FF3A9F7C17C442BB00C5C2D5 /* menulet_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3A9F7B17C442BB00C5C2D5 /* menulet_icon@2x.png */; };
+		FF3A9F7E17C4434F00C5C2D5 /* menulet_icon_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3A9F7D17C4434F00C5C2D5 /* menulet_icon_active@2x.png */; };
 		FF8C833717AB14B5000166FC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8C833617AB14B5000166FC /* Cocoa.framework */; };
 		FF8C834117AB14B5000166FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF8C833F17AB14B5000166FC /* InfoPlist.strings */; };
 		FF8C834317AB14B5000166FC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8C834217AB14B5000166FC /* main.m */; };
@@ -16,6 +26,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FF3A9F6317C42B5E00C5C2D5 /* menulet_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menulet_icon.png; sourceTree = "<group>"; };
+		FF3A9F6417C42B5E00C5C2D5 /* menulet_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menulet_icon_active.png; sourceTree = "<group>"; };
+		FF3A9F6A17C4351B00C5C2D5 /* TTPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTPanelController.h; path = Classes/TTPanelController.h; sourceTree = "<group>"; };
+		FF3A9F6B17C4351B00C5C2D5 /* TTPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTPanelController.m; path = Classes/TTPanelController.m; sourceTree = "<group>"; };
+		FF3A9F6D17C4353300C5C2D5 /* TTPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTPanel.h; path = Views/TTPanel.h; sourceTree = "<group>"; };
+		FF3A9F6E17C4353300C5C2D5 /* TTPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTPanel.m; path = Views/TTPanel.m; sourceTree = "<group>"; };
+		FF3A9F7017C4354A00C5C2D5 /* TTStatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTStatusItemView.h; path = Views/TTStatusItemView.h; sourceTree = "<group>"; };
+		FF3A9F7117C4354A00C5C2D5 /* TTStatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTStatusItemView.m; path = Views/TTStatusItemView.m; sourceTree = "<group>"; };
+		FF3A9F7317C4355B00C5C2D5 /* TTBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTBackgroundView.h; path = Views/TTBackgroundView.h; sourceTree = "<group>"; };
+		FF3A9F7417C4355B00C5C2D5 /* TTBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTBackgroundView.m; path = Views/TTBackgroundView.m; sourceTree = "<group>"; };
+		FF3A9F7617C4358000C5C2D5 /* TTPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTPanel.xib; path = Views/TTPanel.xib; sourceTree = "<group>"; };
+		FF3A9F7817C436DC00C5C2D5 /* TTMenubarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTMenubarController.h; path = Classes/TTMenubarController.h; sourceTree = "<group>"; };
+		FF3A9F7917C436DC00C5C2D5 /* TTMenubarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTMenubarController.m; path = Classes/TTMenubarController.m; sourceTree = "<group>"; };
+		FF3A9F7B17C442BB00C5C2D5 /* menulet_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menulet_icon@2x.png"; sourceTree = "<group>"; };
+		FF3A9F7D17C4434F00C5C2D5 /* menulet_icon_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menulet_icon_active@2x.png"; sourceTree = "<group>"; };
 		FF8C833317AB14B5000166FC /* Turn Touch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Turn Touch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF8C833617AB14B5000166FC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FF8C833917AB14B5000166FC /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -44,10 +69,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF3A9F6217C42B5E00C5C2D5 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				FF3A9F6317C42B5E00C5C2D5 /* menulet_icon.png */,
+				FF3A9F7B17C442BB00C5C2D5 /* menulet_icon@2x.png */,
+				FF3A9F6417C42B5E00C5C2D5 /* menulet_icon_active.png */,
+				FF3A9F7D17C4434F00C5C2D5 /* menulet_icon_active@2x.png */,
+			);
+			name = Images;
+			path = "Turn Touch App/Images";
+			sourceTree = "<group>";
+		};
+		FF5F70B217C428F200511AB6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FF3A9F6D17C4353300C5C2D5 /* TTPanel.h */,
+				FF3A9F6E17C4353300C5C2D5 /* TTPanel.m */,
+				FF3A9F7617C4358000C5C2D5 /* TTPanel.xib */,
+				FF3A9F7017C4354A00C5C2D5 /* TTStatusItemView.h */,
+				FF3A9F7117C4354A00C5C2D5 /* TTStatusItemView.m */,
+				FF3A9F7317C4355B00C5C2D5 /* TTBackgroundView.h */,
+				FF3A9F7417C4355B00C5C2D5 /* TTBackgroundView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		FF5F70B317C428FB00511AB6 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				FF8C834817AB14B5000166FC /* TTAppDelegate.h */,
+				FF8C834917AB14B5000166FC /* TTAppDelegate.m */,
+				FF3A9F7817C436DC00C5C2D5 /* TTMenubarController.h */,
+				FF3A9F7917C436DC00C5C2D5 /* TTMenubarController.m */,
+				FF3A9F6A17C4351B00C5C2D5 /* TTPanelController.h */,
+				FF3A9F6B17C4351B00C5C2D5 /* TTPanelController.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
 		FF8C832A17AB14B5000166FC = {
 			isa = PBXGroup;
 			children = (
 				FF8C833C17AB14B5000166FC /* Turn Touch App */,
+				FF3A9F6217C42B5E00C5C2D5 /* Images */,
 				FF8C833517AB14B5000166FC /* Frameworks */,
 				FF8C833417AB14B5000166FC /* Products */,
 			);
@@ -83,10 +148,8 @@
 		FF8C833C17AB14B5000166FC /* Turn Touch App */ = {
 			isa = PBXGroup;
 			children = (
-				FF8C835317AB14F4000166FC /* Turn Touch App.entitlements */,
-				FF8C834817AB14B5000166FC /* TTAppDelegate.h */,
-				FF8C834917AB14B5000166FC /* TTAppDelegate.m */,
-				FF8C834B17AB14B5000166FC /* MainMenu.xib */,
+				FF5F70B317C428FB00511AB6 /* Classes */,
+				FF5F70B217C428F200511AB6 /* Views */,
 				FF8C833D17AB14B5000166FC /* Supporting Files */,
 			);
 			path = "Turn Touch App";
@@ -95,6 +158,8 @@
 		FF8C833D17AB14B5000166FC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FF8C834B17AB14B5000166FC /* MainMenu.xib */,
+				FF8C835317AB14F4000166FC /* Turn Touch App.entitlements */,
 				FF8C833E17AB14B5000166FC /* Turn Touch App-Info.plist */,
 				FF8C833F17AB14B5000166FC /* InfoPlist.strings */,
 				FF8C834217AB14B5000166FC /* main.m */,
@@ -159,6 +224,11 @@
 				FF8C834117AB14B5000166FC /* InfoPlist.strings in Resources */,
 				FF8C834717AB14B5000166FC /* Credits.rtf in Resources */,
 				FF8C834D17AB14B5000166FC /* MainMenu.xib in Resources */,
+				FF3A9F6517C42B5E00C5C2D5 /* menulet_icon.png in Resources */,
+				FF3A9F6617C42B5E00C5C2D5 /* menulet_icon_active.png in Resources */,
+				FF3A9F7717C4358000C5C2D5 /* TTPanel.xib in Resources */,
+				FF3A9F7C17C442BB00C5C2D5 /* menulet_icon@2x.png in Resources */,
+				FF3A9F7E17C4434F00C5C2D5 /* menulet_icon_active@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +241,11 @@
 			files = (
 				FF8C834317AB14B5000166FC /* main.m in Sources */,
 				FF8C834A17AB14B5000166FC /* TTAppDelegate.m in Sources */,
+				FF3A9F6C17C4351B00C5C2D5 /* TTPanelController.m in Sources */,
+				FF3A9F6F17C4353300C5C2D5 /* TTPanel.m in Sources */,
+				FF3A9F7217C4354A00C5C2D5 /* TTStatusItemView.m in Sources */,
+				FF3A9F7517C4355B00C5C2D5 /* TTBackgroundView.m in Sources */,
+				FF3A9F7A17C436DC00C5C2D5 /* TTMenubarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,12 +341,12 @@
 		FF8C835117AB14B5000166FC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "Turn Touch App/Turn Touch App.entitlements";
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Turn Touch App/Turn Touch App-Prefix.pch";
 				INFOPLIST_FILE = "Turn Touch App/Turn Touch App-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -280,12 +355,12 @@
 		FF8C835217AB14B5000166FC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "Turn Touch App/Turn Touch App.entitlements";
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Turn Touch App/Turn Touch App-Prefix.pch";
 				INFOPLIST_FILE = "Turn Touch App/Turn Touch App-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -310,6 +385,7 @@
 				FF8C835217AB14B5000166FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
