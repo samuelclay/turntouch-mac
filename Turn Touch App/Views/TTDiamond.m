@@ -22,7 +22,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.size = CGRectGetWidth(frame);
-        self.activeMode = NORTH;
+        self.activeMode = WEST;
         self.isHighlighted = NO;
     }
     
@@ -43,6 +43,20 @@
     [north lineToPoint:NSMakePoint(width * 3/4 - SPACING,
                                    height * 3/4 + SPACING)];
     [north closePath];
+    
+    if (!self.isHighlighted) {
+        [NSGraphicsContext saveGraphicsState];
+        NSAffineTransform *transform = [NSAffineTransform transform];
+        [transform translateXBy:0 yBy:-0.5f];
+        NSBezierPath *shadowPath = [north copy];
+        [shadowPath transformUsingAffineTransform:transform];
+        [[NSColor colorWithDeviceWhite:1.0f alpha:0.4f] setStroke];
+        [[NSBezierPath bezierPathWithRect:NSMakeRect(width*1/4+SPACING*2, height*3/4, width*2/4-SPACING*4, -1 * height*1/4)] setClip];
+        [shadowPath setLineWidth:0.5f];
+        [shadowPath stroke];
+        [NSGraphicsContext restoreGraphicsState];
+    }
+    
     if (self.isHighlighted) {
         [[NSColor colorWithDeviceWhite:1.0f
                                  alpha:self.activeMode == NORTH ? 1.0f : INACTIVE_OPACITY]
@@ -54,6 +68,9 @@
     }
     [north fill];
     
+    
+    // West
+    
     NSBezierPath *west = [NSBezierPath bezierPath];
     [west moveToPoint:NSMakePoint(width * 1/4 - SPACING,
                                    height * 3/4 - SPACING)];
@@ -64,6 +81,20 @@
     [west lineToPoint:NSMakePoint(width * 1/2 - SPACING*2,
                                    height * 1/2)];
     [west closePath];
+    
+    if (!self.isHighlighted) {
+        [NSGraphicsContext saveGraphicsState];
+        NSAffineTransform *transform = [NSAffineTransform transform];
+        [transform translateXBy:0 yBy:-0.5f];
+        NSBezierPath *shadowPath = [west copy];
+        [shadowPath transformUsingAffineTransform:transform];
+        [[NSColor colorWithDeviceWhite:1.0f alpha:0.4f] setStroke];
+        [[NSBezierPath bezierPathWithRect:NSMakeRect(0, height*1/2, width*2/4-SPACING*4, -1 * height*1/4)] setClip];
+        [shadowPath setLineWidth:0.5f];
+        [shadowPath stroke];
+        [NSGraphicsContext restoreGraphicsState];
+    }
+    
     if (self.isHighlighted) {
         [[NSColor colorWithDeviceWhite:1.0f
                                  alpha:self.activeMode == WEST ? 1.0f : INACTIVE_OPACITY]
@@ -75,6 +106,9 @@
     }
     [west fill];
     
+    
+    // South
+    
     NSBezierPath *south = [NSBezierPath bezierPath];
     [south moveToPoint:NSMakePoint(width * 1/2,
                                    height * 1/2 - SPACING*2)];
@@ -85,6 +119,20 @@
     [south lineToPoint:NSMakePoint(width * 3/4 - SPACING,
                                    height * 1/4 - SPACING)];
     [south closePath];
+    
+    if (!self.isHighlighted) {
+        [NSGraphicsContext saveGraphicsState];
+        NSAffineTransform *transform = [NSAffineTransform transform];
+        [transform translateXBy:0 yBy:-0.5f];
+        NSBezierPath *shadowPath = [south copy];
+        [shadowPath transformUsingAffineTransform:transform];
+        [[NSColor colorWithDeviceWhite:1.0f alpha:.4f] setStroke];
+        [[NSBezierPath bezierPathWithRect:NSMakeRect(width*1/4+SPACING*2, 0, width*2/4-SPACING*4, height*1/4)] setClip];
+        [shadowPath setLineWidth:0.5f];
+        [shadowPath stroke];
+        [NSGraphicsContext restoreGraphicsState];
+    }
+    
     if (self.isHighlighted) {
         [[NSColor colorWithDeviceWhite:1.0f
                                  alpha:self.activeMode == SOUTH ? 1.0f : INACTIVE_OPACITY]
@@ -96,6 +144,9 @@
     }
     [south fill];
     
+    
+    // East
+    
     NSBezierPath *east = [NSBezierPath bezierPath];
     [east moveToPoint:NSMakePoint(width * 3/4 + SPACING,
                                   height * 3/4 - SPACING)];
@@ -106,6 +157,20 @@
     [east lineToPoint:NSMakePoint(width,
                                   height * 1/2)];
     [east closePath];
+    
+    if (!self.isHighlighted) {
+        [NSGraphicsContext saveGraphicsState];
+        NSAffineTransform *transform = [NSAffineTransform transform];
+        [transform translateXBy:0 yBy:-0.5f];
+        NSBezierPath *shadowPath = [east copy];
+        [shadowPath transformUsingAffineTransform:transform];
+        [[NSColor colorWithDeviceWhite:1.0f alpha:0.4f] setStroke];
+        [[NSBezierPath bezierPathWithRect:NSMakeRect(width*1/2+SPACING*2, height*1/2, width*2/4-SPACING*4, -1 * height*1/4)] setClip];
+        [shadowPath setLineWidth:0.5f];
+        [shadowPath stroke];
+        [NSGraphicsContext restoreGraphicsState];
+    }
+    
     if (self.isHighlighted) {
         [[NSColor colorWithDeviceWhite:1.0f
                                  alpha:self.activeMode == EAST ? 1.0f : INACTIVE_OPACITY]
