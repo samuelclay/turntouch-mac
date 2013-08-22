@@ -8,6 +8,7 @@
 
 #import "TTMenubarController.h"
 #import "TTStatusItemView.h"
+#import "TTDiamond.h"
 
 @implementation TTMenubarController
 

@@ -17,6 +17,7 @@
 		FF3A9F7A17C436DC00C5C2D5 /* TTMenubarController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A9F7917C436DC00C5C2D5 /* TTMenubarController.m */; };
 		FF3A9F7C17C442BB00C5C2D5 /* menulet_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3A9F7B17C442BB00C5C2D5 /* menulet_icon@2x.png */; };
 		FF3A9F7E17C4434F00C5C2D5 /* menulet_icon_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3A9F7D17C4434F00C5C2D5 /* menulet_icon_active@2x.png */; };
+		FF3A9F8117C5801300C5C2D5 /* TTDiamond.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A9F8017C5801300C5C2D5 /* TTDiamond.m */; };
 		FF8C833717AB14B5000166FC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8C833617AB14B5000166FC /* Cocoa.framework */; };
 		FF8C834117AB14B5000166FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF8C833F17AB14B5000166FC /* InfoPlist.strings */; };
 		FF8C834317AB14B5000166FC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8C834217AB14B5000166FC /* main.m */; };
@@ -41,6 +42,8 @@
 		FF3A9F7917C436DC00C5C2D5 /* TTMenubarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTMenubarController.m; path = Classes/TTMenubarController.m; sourceTree = "<group>"; };
 		FF3A9F7B17C442BB00C5C2D5 /* menulet_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menulet_icon@2x.png"; sourceTree = "<group>"; };
 		FF3A9F7D17C4434F00C5C2D5 /* menulet_icon_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menulet_icon_active@2x.png"; sourceTree = "<group>"; };
+		FF3A9F7F17C5801300C5C2D5 /* TTDiamond.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTDiamond.h; path = Views/TTDiamond.h; sourceTree = "<group>"; };
+		FF3A9F8017C5801300C5C2D5 /* TTDiamond.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTDiamond.m; path = Views/TTDiamond.m; sourceTree = "<group>"; };
 		FF8C833317AB14B5000166FC /* Turn Touch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Turn Touch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF8C833617AB14B5000166FC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FF8C833917AB14B5000166FC /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -91,6 +94,8 @@
 				FF3A9F7117C4354A00C5C2D5 /* TTStatusItemView.m */,
 				FF3A9F7317C4355B00C5C2D5 /* TTBackgroundView.h */,
 				FF3A9F7417C4355B00C5C2D5 /* TTBackgroundView.m */,
+				FF3A9F7F17C5801300C5C2D5 /* TTDiamond.h */,
+				FF3A9F8017C5801300C5C2D5 /* TTDiamond.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -246,6 +251,7 @@
 				FF3A9F7217C4354A00C5C2D5 /* TTStatusItemView.m in Sources */,
 				FF3A9F7517C4355B00C5C2D5 /* TTBackgroundView.m in Sources */,
 				FF3A9F7A17C436DC00C5C2D5 /* TTMenubarController.m in Sources */,
+				FF3A9F8117C5801300C5C2D5 /* TTDiamond.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

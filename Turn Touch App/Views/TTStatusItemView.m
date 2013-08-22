@@ -7,12 +7,14 @@
 //
 
 #import "TTStatusItemView.h"
+#import "TTDiamond.h"
 
 @implementation TTStatusItemView
 
 @synthesize statusItem = _statusItem;
 @synthesize image = _image;
 @synthesize alternateImage = _alternateImage;
+@synthesize diamond = _diamond;
 @synthesize isHighlighted = _isHighlighted;
 @synthesize action = _action;
 @synthesize target = _target;
@@ -28,6 +30,10 @@
     if (self != nil) {
         _statusItem = statusItem;
         _statusItem.view = self;
+
+        CGRect diamondRect = NSInsetRect(itemRect, 2.0f, 4.0f);
+        self.diamond = [[TTDiamond alloc] initWithFrame:diamondRect];
+        [self addSubview:self.diamond];
     }
     return self;
 }
@@ -36,15 +42,14 @@
 
 - (void)drawRect:(NSRect)dirtyRect {
 	[self.statusItem drawStatusBarBackgroundInRect:dirtyRect withHighlight:self.isHighlighted];
-    
-    NSImage *icon = self.isHighlighted ? self.alternateImage : self.image;
-    NSSize iconSize = [icon size];
-    NSRect bounds = self.bounds;
-    CGFloat iconX = roundf((NSWidth(bounds) - iconSize.width) / 2);
-    CGFloat iconY = roundf((NSHeight(bounds) - iconSize.height) / 2);
-    NSPoint iconPoint = NSMakePoint(iconX, iconY);
-    
-	[icon drawAtPoint:iconPoint fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+//    NSImage *icon = self.isHighlighted ? self.alternateImage : self.image;
+//    NSSize iconSize = [icon size];
+//    NSRect bounds = self.bounds;
+//    CGFloat iconX = roundf((NSWidth(bounds) - iconSize.width) / 2);
+//    CGFloat iconY = roundf((NSHeight(bounds) - iconSize.height) / 2);
+//    NSPoint iconPoint = NSMakePoint(iconX, iconY);
+//    
+//	[icon drawAtPoint:iconPoint fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
 }
 
 #pragma mark -
@@ -60,6 +65,7 @@
 - (void)setHighlighted:(BOOL)newFlag {
     if (_isHighlighted == newFlag) return;
     _isHighlighted = newFlag;
+    [self.diamond setHighlighted:newFlag];
     [self setNeedsDisplay:YES];
 }
 

@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-#define ARROW_WIDTH 12
+#define ARROW_WIDTH 18
 #define ARROW_HEIGHT 8
 
 @interface TTBackgroundView : NSView {
