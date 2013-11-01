@@ -18,6 +18,9 @@
 		FF3A9F7C17C442BB00C5C2D5 /* menulet_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3A9F7B17C442BB00C5C2D5 /* menulet_icon@2x.png */; };
 		FF3A9F7E17C4434F00C5C2D5 /* menulet_icon_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3A9F7D17C4434F00C5C2D5 /* menulet_icon_active@2x.png */; };
 		FF3A9F8117C5801300C5C2D5 /* TTDiamond.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A9F8017C5801300C5C2D5 /* TTDiamond.m */; };
+		FF4E262D1823166F00D477F6 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FF4E262C1823166F00D477F6 /* Logo.png */; };
+		FF4E2630182317D000D477F6 /* TTSerialMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4E262F182317D000D477F6 /* TTSerialMonitor.m */; };
+		FF4E26321823197D00D477F6 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4E26311823197D00D477F6 /* IOKit.framework */; };
 		FF8C833717AB14B5000166FC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8C833617AB14B5000166FC /* Cocoa.framework */; };
 		FF8C834117AB14B5000166FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF8C833F17AB14B5000166FC /* InfoPlist.strings */; };
 		FF8C834317AB14B5000166FC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8C834217AB14B5000166FC /* main.m */; };
@@ -44,6 +47,10 @@
 		FF3A9F7D17C4434F00C5C2D5 /* menulet_icon_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menulet_icon_active@2x.png"; sourceTree = "<group>"; };
 		FF3A9F7F17C5801300C5C2D5 /* TTDiamond.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTDiamond.h; path = Views/TTDiamond.h; sourceTree = "<group>"; };
 		FF3A9F8017C5801300C5C2D5 /* TTDiamond.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTDiamond.m; path = Views/TTDiamond.m; sourceTree = "<group>"; };
+		FF4E262C1823166F00D477F6 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Logo.png; path = ../../Logo.png; sourceTree = "<group>"; };
+		FF4E262E182317D000D477F6 /* TTSerialMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSerialMonitor.h; path = SerialMonitor/TTSerialMonitor.h; sourceTree = "<group>"; };
+		FF4E262F182317D000D477F6 /* TTSerialMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSerialMonitor.m; path = SerialMonitor/TTSerialMonitor.m; sourceTree = "<group>"; };
+		FF4E26311823197D00D477F6 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		FF8C833317AB14B5000166FC /* Turn Touch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Turn Touch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF8C833617AB14B5000166FC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FF8C833917AB14B5000166FC /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -65,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF4E26321823197D00D477F6 /* IOKit.framework in Frameworks */,
 				FF8C833717AB14B5000166FC /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -75,6 +83,7 @@
 		FF3A9F6217C42B5E00C5C2D5 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FF4E262C1823166F00D477F6 /* Logo.png */,
 				FF3A9F6317C42B5E00C5C2D5 /* menulet_icon.png */,
 				FF3A9F7B17C442BB00C5C2D5 /* menulet_icon@2x.png */,
 				FF3A9F6417C42B5E00C5C2D5 /* menulet_icon_active.png */,
@@ -82,6 +91,15 @@
 			);
 			name = Images;
 			path = "Turn Touch App/Images";
+			sourceTree = "<group>";
+		};
+		FF4E26291823154500D477F6 /* Serial Monitor */ = {
+			isa = PBXGroup;
+			children = (
+				FF4E262E182317D000D477F6 /* TTSerialMonitor.h */,
+				FF4E262F182317D000D477F6 /* TTSerialMonitor.m */,
+			);
+			name = "Serial Monitor";
 			sourceTree = "<group>";
 		};
 		FF5F70B217C428F200511AB6 /* Views */ = {
@@ -134,6 +152,7 @@
 		FF8C833517AB14B5000166FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FF4E26311823197D00D477F6 /* IOKit.framework */,
 				FF8C833617AB14B5000166FC /* Cocoa.framework */,
 				FF8C833817AB14B5000166FC /* Other Frameworks */,
 			);
@@ -155,6 +174,7 @@
 			children = (
 				FF5F70B317C428FB00511AB6 /* Classes */,
 				FF5F70B217C428F200511AB6 /* Views */,
+				FF4E26291823154500D477F6 /* Serial Monitor */,
 				FF8C833D17AB14B5000166FC /* Supporting Files */,
 			);
 			path = "Turn Touch App";
@@ -203,6 +223,11 @@
 				CLASSPREFIX = TT;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Turn Touch";
+				TargetAttributes = {
+					FF8C833217AB14B5000166FC = {
+						DevelopmentTeam = HR7P97SD72;
+					};
+				};
 			};
 			buildConfigurationList = FF8C832E17AB14B5000166FC /* Build configuration list for PBXProject "Turn Touch App" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -227,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF8C834117AB14B5000166FC /* InfoPlist.strings in Resources */,
+				FF4E262D1823166F00D477F6 /* Logo.png in Resources */,
 				FF8C834717AB14B5000166FC /* Credits.rtf in Resources */,
 				FF8C834D17AB14B5000166FC /* MainMenu.xib in Resources */,
 				FF3A9F6517C42B5E00C5C2D5 /* menulet_icon.png in Resources */,
@@ -244,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF4E2630182317D000D477F6 /* TTSerialMonitor.m in Sources */,
 				FF8C834317AB14B5000166FC /* main.m in Sources */,
 				FF8C834A17AB14B5000166FC /* TTAppDelegate.m in Sources */,
 				FF3A9F6C17C4351B00C5C2D5 /* TTPanelController.m in Sources */,
@@ -347,13 +374,15 @@
 		FF8C835117AB14B5000166FC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Turn Touch App/Turn Touch App-Prefix.pch";
 				INFOPLIST_FILE = "Turn Touch App/Turn Touch App-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -361,13 +390,15 @@
 		FF8C835217AB14B5000166FC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Turn Touch App/Turn Touch App-Prefix.pch";
 				INFOPLIST_FILE = "Turn Touch App/Turn Touch App-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

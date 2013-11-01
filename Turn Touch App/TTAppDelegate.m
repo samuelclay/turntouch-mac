@@ -12,6 +12,7 @@
 
 @synthesize panelController = _panelController;
 @synthesize menubarController = _menubarController;
+@synthesize serialMonitor = _serialMonitor;
 
 #pragma mark - Dealloc
 
@@ -36,6 +37,7 @@ void *kContextActivePanel = &kContextActivePanel;
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
     // Install icon into the menu bar
     self.menubarController = [[TTMenubarController alloc] init];
+    self.serialMonitor = [[TTSerialMonitor alloc] init];
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender {
