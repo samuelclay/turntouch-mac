@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		FF0E12B81824285100D49EC7 /* TTDiamondView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12B71824285100D49EC7 /* TTDiamondView.m */; };
 		FF0E12BB1824286600D49EC7 /* TTDiamond.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12BA1824286600D49EC7 /* TTDiamond.m */; };
+		FF0E12C218242DF000D49EC7 /* TTButtonTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12C118242DF000D49EC7 /* TTButtonTimer.m */; };
 		FF3A9F6517C42B5E00C5C2D5 /* menulet_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3A9F6317C42B5E00C5C2D5 /* menulet_icon.png */; };
 		FF3A9F6617C42B5E00C5C2D5 /* menulet_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3A9F6417C42B5E00C5C2D5 /* menulet_icon_active.png */; };
 		FF3A9F6C17C4351B00C5C2D5 /* TTPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A9F6B17C4351B00C5C2D5 /* TTPanelController.m */; };
@@ -35,6 +36,8 @@
 		FF0E12B91824286600D49EC7 /* TTDiamond.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTDiamond.h; path = Models/TTDiamond.h; sourceTree = "<group>"; };
 		FF0E12BA1824286600D49EC7 /* TTDiamond.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTDiamond.m; path = Models/TTDiamond.m; sourceTree = "<group>"; };
 		FF0E12BC18242B5600D49EC7 /* TTPanelDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTPanelDelegate.h; path = Classes/TTPanelDelegate.h; sourceTree = "<group>"; };
+		FF0E12C018242DF000D49EC7 /* TTButtonTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTButtonTimer.h; path = SerialMonitor/TTButtonTimer.h; sourceTree = "<group>"; };
+		FF0E12C118242DF000D49EC7 /* TTButtonTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTButtonTimer.m; path = SerialMonitor/TTButtonTimer.m; sourceTree = "<group>"; };
 		FF3A9F6317C42B5E00C5C2D5 /* menulet_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menulet_icon.png; sourceTree = "<group>"; };
 		FF3A9F6417C42B5E00C5C2D5 /* menulet_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menulet_icon_active.png; sourceTree = "<group>"; };
 		FF3A9F6A17C4351B00C5C2D5 /* TTPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTPanelController.h; path = Classes/TTPanelController.h; sourceTree = "<group>"; };
@@ -91,6 +94,15 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		FF0E12BF18242D2F00D49EC7 /* XIBs */ = {
+			isa = PBXGroup;
+			children = (
+				FF8C834B17AB14B5000166FC /* MainMenu.xib */,
+				FF3A9F7617C4358000C5C2D5 /* TTPanel.xib */,
+			);
+			name = XIBs;
+			sourceTree = "<group>";
+		};
 		FF3A9F6217C42B5E00C5C2D5 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +120,8 @@
 			children = (
 				FF4E262E182317D000D477F6 /* TTSerialMonitor.h */,
 				FF4E262F182317D000D477F6 /* TTSerialMonitor.m */,
+				FF0E12C018242DF000D49EC7 /* TTButtonTimer.h */,
+				FF0E12C118242DF000D49EC7 /* TTButtonTimer.m */,
 			);
 			name = "Serial Monitor";
 			sourceTree = "<group>";
@@ -117,7 +131,6 @@
 			children = (
 				FF3A9F6D17C4353300C5C2D5 /* TTPanel.h */,
 				FF3A9F6E17C4353300C5C2D5 /* TTPanel.m */,
-				FF3A9F7617C4358000C5C2D5 /* TTPanel.xib */,
 				FF3A9F7017C4354A00C5C2D5 /* TTStatusItemView.h */,
 				FF3A9F7117C4354A00C5C2D5 /* TTStatusItemView.m */,
 				FF3A9F7317C4355B00C5C2D5 /* TTBackgroundView.h */,
@@ -187,6 +200,7 @@
 				FF5F70B317C428FB00511AB6 /* Classes */,
 				FF5F70B217C428F200511AB6 /* Views */,
 				FF4E26291823154500D477F6 /* Serial Monitor */,
+				FF0E12BF18242D2F00D49EC7 /* XIBs */,
 				FF8C833D17AB14B5000166FC /* Supporting Files */,
 			);
 			path = "Turn Touch App";
@@ -195,7 +209,6 @@
 		FF8C833D17AB14B5000166FC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				FF8C834B17AB14B5000166FC /* MainMenu.xib */,
 				FF8C835317AB14F4000166FC /* Turn Touch App.entitlements */,
 				FF8C833E17AB14B5000166FC /* Turn Touch App-Info.plist */,
 				FF8C833F17AB14B5000166FC /* InfoPlist.strings */,
@@ -284,6 +297,7 @@
 				FF8C834317AB14B5000166FC /* main.m in Sources */,
 				FF8C834A17AB14B5000166FC /* TTAppDelegate.m in Sources */,
 				FF4E2630182317D000D477F6 /* TTSerialMonitor.m in Sources */,
+				FF0E12C218242DF000D49EC7 /* TTButtonTimer.m in Sources */,
 				FF3A9F6C17C4351B00C5C2D5 /* TTPanelController.m in Sources */,
 				FF3A9F6F17C4353300C5C2D5 /* TTPanel.m in Sources */,
 				FF0E12BB1824286600D49EC7 /* TTDiamond.m in Sources */,

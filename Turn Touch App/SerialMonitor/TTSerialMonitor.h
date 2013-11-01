@@ -9,8 +9,8 @@
 
 #import <Foundation/Foundation.h>
 #import "TTAppDelegate.h"
+#import "TTButtonTimer.h"
 
-// import IOKit headers
 #include <IOKit/IOKitLib.h>
 #include <IOKit/serial/IOSerialKeys.h>
 #include <IOKit/IOBSD.h>
@@ -18,9 +18,11 @@
 #include <sys/ioctl.h>
 
 @class TTAppDelegate;
+@class TTButtonTimer;
 
 @interface TTSerialMonitor : NSObject {
     TTAppDelegate *appDelegate;
+    TTButtonTimer *buttonTimer;
 	NSMutableArray *serialDeviceNames;
     NSString *selectedSerialDevice;
 	IBOutlet NSTextView *serialOutputArea;
@@ -31,6 +33,7 @@
 	bool readThreadRunning;
 	NSTextStorage *storage;
 }
+
 - (NSString *) openSerialPort: (NSString *)serialPortFile baud: (speed_t)baudRate;
 - (void)appendToIncomingText: (id) text;
 - (void)incomingTextUpdateThread: (NSThread *) parentThread;

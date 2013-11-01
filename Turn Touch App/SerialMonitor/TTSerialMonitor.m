@@ -24,6 +24,7 @@ const int kBaudRate = 57600;
         readThreadRunning = FALSE;
         serialDeviceNames = [NSMutableArray array];
         appDelegate = [NSApp delegate];
+        buttonTimer = [[TTButtonTimer alloc] init];
         
         // first thing is to refresh the serial port list
         [self refreshSerialList];
@@ -165,7 +166,7 @@ const int kBaudRate = 57600;
 	[serialOutputArea scrollRangeToVisible:myRange];
     
     NSArray *buttons = [self buttonsByParsingText:text];
-//    appDelegate
+    [buttonTimer readButtons:buttons];
 }
 
 - (NSArray *)buttonsByParsingText:(NSString *)text {
@@ -178,12 +179,13 @@ const int kBaudRate = 57600;
         [scanner scanString:@":" intoString:nil];
         if ([scanner scanUpToString:@":" intoString:&substring]) {
             if ([substring isEqualToString:@"END"]) break;
-            [substrings addObject:substring];
+            [substrings addObject:[NSNumber numberWithBool:[substring boolValue]]];
         } else {
             break;
         }
     }
     NSLog(@"Substrings: %@", substrings);
+    
     
     return substrings;
 }

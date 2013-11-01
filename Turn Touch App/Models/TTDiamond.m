@@ -10,4 +10,6 @@
 
 @implementation TTDiamond
 
+@synthesize activeMode;
+
 @end

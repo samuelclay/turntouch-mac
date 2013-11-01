@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Turn Touch. All rights reserved.
 //
 
+#import "TTDiamond.h"
 #import "TTDiamondView.h"
 
 @implementation TTDiamondView
@@ -24,11 +25,29 @@
         self.isHighlighted = NO;
         
         appDelegate = [NSApp delegate];
+        
+        [self registerAsObserver];
     }
     
     return self;
 }
 
+- (void)registerAsObserver {
+    [appDelegate.diamond addObserver:self
+                          forKeyPath:@"activeMode"
+                             options:0
+                             context:nil];
+}
+
+- (void) observeValueForKeyPath:(NSString*)keyPath
+                       ofObject:(id)object
+                         change:(NSDictionary*)change
+                        context:(void*)context {
+    if ([keyPath isEqual:NSStringFromSelector(@selector(activeMode))]) {
+        [self setNeedsDisplay:YES];
+    }
+}
+     
 - (void)drawRect:(NSRect)dirtyRect {
     CGFloat width = NSMaxX(dirtyRect);
     CGFloat height = NSMaxY(dirtyRect);

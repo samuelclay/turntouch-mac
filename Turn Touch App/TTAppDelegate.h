@@ -19,7 +19,7 @@
 
 @property (nonatomic, strong) TTMenubarController *menubarController;
 @property (nonatomic, strong, readonly) TTPanelController *panelController;
-@property (nonatomic, strong) TTSerialMonitor *serialMonitor;
+@property (nonatomic) TTSerialMonitor *serialMonitor;
 @property (nonatomic) TTDiamond *diamond;
 
 - (IBAction)togglePanel:(id)sender;
