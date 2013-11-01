@@ -31,23 +31,10 @@ const double MODE_CHANGE_DURATION = 0.5f;
         }
     }
     
-    if (!anyActive) {
+    if (anyActive) {
         if (activeMode) {
-            [self deactivateButton];
-            if (activeModeTimer) {
-                NSLog(@"Invalidating timer.");
-                [activeModeTimer invalidate];
-                activeModeTimer = nil;
-            }
-            activeMode = 0;
+            // Ignore other button presses while waiting on another button
         } else {
-            
-        }
-    } else {
-        if (activeMode) {
-            
-        } else {
-            startTimer = [NSDate date];
             if ([[buttons objectAtIndex:0] boolValue]) {
                 activeMode = NORTH;
             } else if ([[buttons objectAtIndex:1] boolValue]) {
@@ -68,6 +55,18 @@ const double MODE_CHANGE_DURATION = 0.5f;
             NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
             [runLoop addTimer:activeModeTimer forMode:NSDefaultRunLoopMode];
             [self activateButton];
+        }
+    } else {
+        if (activeMode) {
+            [self deactivateButton];
+            if (activeModeTimer) {
+                NSLog(@"Invalidating timer.");
+                [activeModeTimer invalidate];
+                activeModeTimer = nil;
+            }
+            activeMode = 0;
+        } else {
+            
         }
     }
 }
