@@ -15,12 +15,13 @@
 @interface TTButtonTimer : NSObject {
     TTAppDelegate *appDelegate;
     NSDate *startTimer;
-    TTMode tempMode;
+    TTMode activeMode;
+    NSTimer *activeModeTimer;
 }
 
 - (void)readButtons:(NSArray *)buttons;
 - (void)releaseButton;
-- (void)activateMode;
+- (void)selectActiveMode;
 - (void)activateButton;
 
 @end

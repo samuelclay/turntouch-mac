@@ -37,6 +37,10 @@
                           forKeyPath:@"activeMode"
                              options:0
                              context:nil];
+    [appDelegate.diamond addObserver:self
+                          forKeyPath:@"selectedMode"
+                             options:0
+                             context:nil];
 }
 
 - (void) observeValueForKeyPath:(NSString*)keyPath
@@ -44,6 +48,8 @@
                          change:(NSDictionary*)change
                         context:(void*)context {
     if ([keyPath isEqual:NSStringFromSelector(@selector(activeMode))]) {
+        [self setNeedsDisplay:YES];
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedMode))]) {
         [self setNeedsDisplay:YES];
     }
 }
@@ -78,11 +84,13 @@
     
     if (self.isHighlighted) {
         [[NSColor colorWithDeviceWhite:1.0f
-                                 alpha:appDelegate.diamond.activeMode == NORTH ? 1.0f : INACTIVE_OPACITY]
+                                 alpha:appDelegate.diamond.activeMode == NORTH ? 0.5f :
+                                       appDelegate.diamond.selectedMode == NORTH ? 1.0f : INACTIVE_OPACITY]
          setFill];
     } else {
         [[NSColor colorWithCalibratedHue:0.55f saturation:0.5f brightness:0.2f
-                                   alpha:appDelegate.diamond.activeMode == NORTH ? 1.0f : INACTIVE_OPACITY]
+                                   alpha:appDelegate.diamond.activeMode == NORTH ? 0.5f :
+                                         appDelegate.diamond.selectedMode == NORTH ? 1.0f : INACTIVE_OPACITY]
          setFill];
     }
     [north fill];
@@ -116,11 +124,13 @@
     
     if (self.isHighlighted) {
         [[NSColor colorWithDeviceWhite:1.0f
-                                 alpha:appDelegate.diamond.activeMode == WEST ? 1.0f : INACTIVE_OPACITY]
+                                 alpha:appDelegate.diamond.activeMode == WEST ? 0.5f :
+                                       appDelegate.diamond.selectedMode == WEST ? 1.0f : INACTIVE_OPACITY]
          setFill];
     } else {
         [[NSColor colorWithCalibratedHue:0.3f saturation:0.5f brightness:0.2f
-                                   alpha:appDelegate.diamond.activeMode == WEST ? 1.0f : INACTIVE_OPACITY]
+                                   alpha:appDelegate.diamond.activeMode == WEST ? 0.5f :
+                                         appDelegate.diamond.selectedMode == WEST ? 1.0f : INACTIVE_OPACITY]
          setFill];
     }
     [west fill];
@@ -154,11 +164,13 @@
     
     if (self.isHighlighted) {
         [[NSColor colorWithDeviceWhite:1.0f
-                                 alpha:appDelegate.diamond.activeMode == SOUTH ? 1.0f : INACTIVE_OPACITY]
+                                 alpha:appDelegate.diamond.activeMode == SOUTH ? 0.5f :
+                                       appDelegate.diamond.selectedMode == SOUTH ? 1.0f : INACTIVE_OPACITY]
          setFill];
     } else {
         [[NSColor colorWithCalibratedHue:0.9f saturation:0.5f brightness:0.2f
-                                   alpha:appDelegate.diamond.activeMode == SOUTH ? 1.0f : INACTIVE_OPACITY]
+                                   alpha:appDelegate.diamond.activeMode == SOUTH ? 0.5f :
+                                         appDelegate.diamond.selectedMode == SOUTH ? 1.0f : INACTIVE_OPACITY]
          setFill];
     }
     [south fill];
@@ -192,11 +204,13 @@
     
     if (self.isHighlighted) {
         [[NSColor colorWithDeviceWhite:1.0f
-                                 alpha:appDelegate.diamond.activeMode == EAST ? 1.0f : INACTIVE_OPACITY]
+                                 alpha:appDelegate.diamond.activeMode == EAST ? 0.5f :
+                                       appDelegate.diamond.selectedMode == EAST ? 1.0f : INACTIVE_OPACITY]
          setFill];
     } else {
         [[NSColor colorWithCalibratedHue:0.3f saturation:0.5f brightness:0.2f
-                                   alpha:appDelegate.diamond.activeMode == EAST ? 1.0f : INACTIVE_OPACITY]
+                                   alpha:appDelegate.diamond.activeMode == EAST ? 0.5f :
+                                         appDelegate.diamond.selectedMode == EAST ? 1.0f : INACTIVE_OPACITY]
          setFill];
     }
     [east fill];

@@ -18,5 +18,6 @@ typedef enum {
 @interface TTDiamond : NSObject
 
 @property (nonatomic, assign) TTMode activeMode;
+@property (nonatomic, assign) TTMode selectedMode;
 
 @end

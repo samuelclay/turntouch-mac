@@ -30,27 +30,52 @@
     }
     
     if (!anyActive) {
-        if (tempMode) {
+        if (activeMode) {
             [self releaseButton];
-            tempMode = 0;
+            if (activeModeTimer) {
+                NSLog(@"Invalidating timer.");
+                [activeModeTimer invalidate];
+                activeModeTimer = nil;
+            }
+            activeMode = 0;
         } else {
             
         }
     } else {
-        if (tempMode) {
+        if (activeMode) {
             
         } else {
             startTimer = [NSDate date];
             if ([[buttons objectAtIndex:0] boolValue]) {
-                tempMode = NORTH;
+                activeMode = NORTH;
             } else if ([[buttons objectAtIndex:1] boolValue]) {
-                tempMode = EAST;
+                activeMode = EAST;
             } else if ([[buttons objectAtIndex:2] boolValue]) {
-                tempMode = SOUTH;
+                activeMode = SOUTH;
             } else if ([[buttons objectAtIndex:3] boolValue]) {
-                tempMode = WEST;
+                activeMode = WEST;
             }
+            NSDate *fireDate = [NSDate dateWithTimeIntervalSinceNow:0.5];
+            activeModeTimer = [[NSTimer alloc]
+                               initWithFireDate:fireDate
+                               interval:0
+                               target:self
+                               selector:@selector(activeModeTimerFire:)
+                               userInfo:@{@"activeMode": [NSNumber numberWithInt:activeMode]}
+                               repeats:NO];
+            NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
+            [runLoop addTimer:activeModeTimer forMode:NSDefaultRunLoopMode];
+            [self activateButton];
         }
+    }
+}
+
+- (void)activeModeTimerFire:(NSTimer *)timer {
+    NSLog(@"Firing active mode timer: %d", activeMode);
+    activeModeTimer = nil;
+    
+    if (activeMode == [[timer.userInfo objectForKey:@"activeMode"] integerValue]) {
+        [self releaseButton];
     }
 }
 
@@ -59,20 +84,27 @@
 
     if (dateDiff > 0.5f) {
         // Long press
-        [self activateMode];
+        [self selectActiveMode];
     } else {
         // Momentary press
-        [self activateButton];
+        [self deactivateButton];
     }
 }
 
-- (void)activateMode {
-    NSLog(@"Activating mode: %d", tempMode);
-    [appDelegate.diamond setActiveMode:tempMode];
+- (void)selectActiveMode {
+    NSLog(@"Selecting mode: %d", activeMode);
+    [appDelegate.diamond setActiveMode:0];
+    [appDelegate.diamond setSelectedMode:activeMode];
 }
 
 - (void)activateButton {
-    NSLog(@"Activating button: %d", tempMode);
+    NSLog(@"Activating button: %d", activeMode);
+    [appDelegate.diamond setActiveMode:activeMode];
+}
+
+- (void)deactivateButton {
+    NSLog(@"Deactivating button: %d", activeMode);
+    [appDelegate.diamond setActiveMode:0];
 }
 
 @end
