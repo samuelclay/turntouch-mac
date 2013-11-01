@@ -9,6 +9,8 @@
 #import "TTButtonTimer.h"
 #import "TTDiamond.h"
 
+const double MODE_CHANGE_DURATION = 0.5f;
+
 @implementation TTButtonTimer
 
 - (id)init {
@@ -31,7 +33,7 @@
     
     if (!anyActive) {
         if (activeMode) {
-            [self releaseButton];
+            [self deactivateButton];
             if (activeModeTimer) {
                 NSLog(@"Invalidating timer.");
                 [activeModeTimer invalidate];
@@ -55,7 +57,7 @@
             } else if ([[buttons objectAtIndex:3] boolValue]) {
                 activeMode = WEST;
             }
-            NSDate *fireDate = [NSDate dateWithTimeIntervalSinceNow:0.5];
+            NSDate *fireDate = [NSDate dateWithTimeIntervalSinceNow:MODE_CHANGE_DURATION];
             activeModeTimer = [[NSTimer alloc]
                                initWithFireDate:fireDate
                                interval:0
@@ -75,19 +77,7 @@
     activeModeTimer = nil;
     
     if (activeMode == [[timer.userInfo objectForKey:@"activeMode"] integerValue]) {
-        [self releaseButton];
-    }
-}
-
-- (void)releaseButton {
-    NSTimeInterval dateDiff = [[NSDate date] timeIntervalSinceDate:startTimer];
-
-    if (dateDiff > 0.5f) {
-        // Long press
         [self selectActiveMode];
-    } else {
-        // Momentary press
-        [self deactivateButton];
     }
 }
 

@@ -20,8 +20,9 @@
 }
 
 - (void)readButtons:(NSArray *)buttons;
-- (void)releaseButton;
+- (void)activeModeTimerFire:(NSTimer *)timer;
 - (void)selectActiveMode;
 - (void)activateButton;
+- (void)deactivateButton;
 
 @end
