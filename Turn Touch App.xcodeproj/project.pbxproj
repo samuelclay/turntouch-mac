@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF0E12B81824285100D49EC7 /* TTDiamondView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12B71824285100D49EC7 /* TTDiamondView.m */; };
+		FF0E12BB1824286600D49EC7 /* TTDiamond.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12BA1824286600D49EC7 /* TTDiamond.m */; };
 		FF3A9F6517C42B5E00C5C2D5 /* menulet_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3A9F6317C42B5E00C5C2D5 /* menulet_icon.png */; };
 		FF3A9F6617C42B5E00C5C2D5 /* menulet_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3A9F6417C42B5E00C5C2D5 /* menulet_icon_active.png */; };
 		FF3A9F6C17C4351B00C5C2D5 /* TTPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A9F6B17C4351B00C5C2D5 /* TTPanelController.m */; };
@@ -17,8 +19,6 @@
 		FF3A9F7A17C436DC00C5C2D5 /* TTMenubarController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A9F7917C436DC00C5C2D5 /* TTMenubarController.m */; };
 		FF3A9F7C17C442BB00C5C2D5 /* menulet_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3A9F7B17C442BB00C5C2D5 /* menulet_icon@2x.png */; };
 		FF3A9F7E17C4434F00C5C2D5 /* menulet_icon_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3A9F7D17C4434F00C5C2D5 /* menulet_icon_active@2x.png */; };
-		FF3A9F8117C5801300C5C2D5 /* TTDiamond.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A9F8017C5801300C5C2D5 /* TTDiamond.m */; };
-		FF4E262D1823166F00D477F6 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FF4E262C1823166F00D477F6 /* Logo.png */; };
 		FF4E2630182317D000D477F6 /* TTSerialMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4E262F182317D000D477F6 /* TTSerialMonitor.m */; };
 		FF4E26321823197D00D477F6 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4E26311823197D00D477F6 /* IOKit.framework */; };
 		FF8C833717AB14B5000166FC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8C833617AB14B5000166FC /* Cocoa.framework */; };
@@ -30,6 +30,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FF0E12B61824285100D49EC7 /* TTDiamondView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTDiamondView.h; path = Views/TTDiamondView.h; sourceTree = "<group>"; };
+		FF0E12B71824285100D49EC7 /* TTDiamondView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTDiamondView.m; path = Views/TTDiamondView.m; sourceTree = "<group>"; };
+		FF0E12B91824286600D49EC7 /* TTDiamond.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTDiamond.h; path = Models/TTDiamond.h; sourceTree = "<group>"; };
+		FF0E12BA1824286600D49EC7 /* TTDiamond.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTDiamond.m; path = Models/TTDiamond.m; sourceTree = "<group>"; };
+		FF0E12BC18242B5600D49EC7 /* TTPanelDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTPanelDelegate.h; path = Classes/TTPanelDelegate.h; sourceTree = "<group>"; };
 		FF3A9F6317C42B5E00C5C2D5 /* menulet_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menulet_icon.png; sourceTree = "<group>"; };
 		FF3A9F6417C42B5E00C5C2D5 /* menulet_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menulet_icon_active.png; sourceTree = "<group>"; };
 		FF3A9F6A17C4351B00C5C2D5 /* TTPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTPanelController.h; path = Classes/TTPanelController.h; sourceTree = "<group>"; };
@@ -45,9 +50,6 @@
 		FF3A9F7917C436DC00C5C2D5 /* TTMenubarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTMenubarController.m; path = Classes/TTMenubarController.m; sourceTree = "<group>"; };
 		FF3A9F7B17C442BB00C5C2D5 /* menulet_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menulet_icon@2x.png"; sourceTree = "<group>"; };
 		FF3A9F7D17C4434F00C5C2D5 /* menulet_icon_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menulet_icon_active@2x.png"; sourceTree = "<group>"; };
-		FF3A9F7F17C5801300C5C2D5 /* TTDiamond.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTDiamond.h; path = Views/TTDiamond.h; sourceTree = "<group>"; };
-		FF3A9F8017C5801300C5C2D5 /* TTDiamond.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTDiamond.m; path = Views/TTDiamond.m; sourceTree = "<group>"; };
-		FF4E262C1823166F00D477F6 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Logo.png; path = ../../Logo.png; sourceTree = "<group>"; };
 		FF4E262E182317D000D477F6 /* TTSerialMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSerialMonitor.h; path = SerialMonitor/TTSerialMonitor.h; sourceTree = "<group>"; };
 		FF4E262F182317D000D477F6 /* TTSerialMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSerialMonitor.m; path = SerialMonitor/TTSerialMonitor.m; sourceTree = "<group>"; };
 		FF4E26311823197D00D477F6 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -80,10 +82,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF0E12B51824283B00D49EC7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FF0E12B91824286600D49EC7 /* TTDiamond.h */,
+				FF0E12BA1824286600D49EC7 /* TTDiamond.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		FF3A9F6217C42B5E00C5C2D5 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				FF4E262C1823166F00D477F6 /* Logo.png */,
 				FF3A9F6317C42B5E00C5C2D5 /* menulet_icon.png */,
 				FF3A9F7B17C442BB00C5C2D5 /* menulet_icon@2x.png */,
 				FF3A9F6417C42B5E00C5C2D5 /* menulet_icon_active.png */,
@@ -112,8 +122,8 @@
 				FF3A9F7117C4354A00C5C2D5 /* TTStatusItemView.m */,
 				FF3A9F7317C4355B00C5C2D5 /* TTBackgroundView.h */,
 				FF3A9F7417C4355B00C5C2D5 /* TTBackgroundView.m */,
-				FF3A9F7F17C5801300C5C2D5 /* TTDiamond.h */,
-				FF3A9F8017C5801300C5C2D5 /* TTDiamond.m */,
+				FF0E12B61824285100D49EC7 /* TTDiamondView.h */,
+				FF0E12B71824285100D49EC7 /* TTDiamondView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -127,6 +137,7 @@
 				FF3A9F7917C436DC00C5C2D5 /* TTMenubarController.m */,
 				FF3A9F6A17C4351B00C5C2D5 /* TTPanelController.h */,
 				FF3A9F6B17C4351B00C5C2D5 /* TTPanelController.m */,
+				FF0E12BC18242B5600D49EC7 /* TTPanelDelegate.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -172,6 +183,7 @@
 		FF8C833C17AB14B5000166FC /* Turn Touch App */ = {
 			isa = PBXGroup;
 			children = (
+				FF0E12B51824283B00D49EC7 /* Models */,
 				FF5F70B317C428FB00511AB6 /* Classes */,
 				FF5F70B217C428F200511AB6 /* Views */,
 				FF4E26291823154500D477F6 /* Serial Monitor */,
@@ -252,7 +264,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF8C834117AB14B5000166FC /* InfoPlist.strings in Resources */,
-				FF4E262D1823166F00D477F6 /* Logo.png in Resources */,
 				FF8C834717AB14B5000166FC /* Credits.rtf in Resources */,
 				FF8C834D17AB14B5000166FC /* MainMenu.xib in Resources */,
 				FF3A9F6517C42B5E00C5C2D5 /* menulet_icon.png in Resources */,
@@ -270,15 +281,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF4E2630182317D000D477F6 /* TTSerialMonitor.m in Sources */,
 				FF8C834317AB14B5000166FC /* main.m in Sources */,
 				FF8C834A17AB14B5000166FC /* TTAppDelegate.m in Sources */,
+				FF4E2630182317D000D477F6 /* TTSerialMonitor.m in Sources */,
 				FF3A9F6C17C4351B00C5C2D5 /* TTPanelController.m in Sources */,
 				FF3A9F6F17C4353300C5C2D5 /* TTPanel.m in Sources */,
+				FF0E12BB1824286600D49EC7 /* TTDiamond.m in Sources */,
 				FF3A9F7217C4354A00C5C2D5 /* TTStatusItemView.m in Sources */,
 				FF3A9F7517C4355B00C5C2D5 /* TTBackgroundView.m in Sources */,
 				FF3A9F7A17C436DC00C5C2D5 /* TTMenubarController.m in Sources */,
-				FF3A9F8117C5801300C5C2D5 /* TTDiamond.m in Sources */,
+				FF0E12B81824285100D49EC7 /* TTDiamondView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

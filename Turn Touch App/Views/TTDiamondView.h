@@ -1,27 +1,23 @@
 //
-//  TTDiamond.h
+//  TTDiamondView.h
 //  Turn Touch App
 //
-//  Created by Samuel Clay on 8/21/13.
+//  Created by Samuel Clay on 11/1/13.
 //  Copyright (c) 2013 Turn Touch. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
+#import "TTAppDelegate.h"
 
-typedef enum {
-    NORTH,
-    EAST,
-    SOUTH,
-    WEST
-} TTMode;
+@class TTAppDelegate;
 
-@interface TTDiamond : NSView {
+@interface TTDiamondView : NSView {
+    TTAppDelegate *appDelegate;
     CGFloat _size;
     BOOL _isHighlighted;
 }
 
 @property (nonatomic, assign) CGFloat size;
 @property (nonatomic, setter = setHighlighted:) BOOL isHighlighted;
-@property (nonatomic, assign) TTMode activeMode;
 
 @end

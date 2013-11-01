@@ -1,29 +1,29 @@
 //
-//  TTDiamond.m
+//  TTDiamondView.m
 //  Turn Touch App
 //
-//  Created by Samuel Clay on 8/21/13.
+//  Created by Samuel Clay on 11/1/13.
 //  Copyright (c) 2013 Turn Touch. All rights reserved.
 //
 
-#import "TTDiamond.h"
+#import "TTDiamondView.h"
 
-@implementation TTDiamond
+@implementation TTDiamondView
 
 #define SPACING 0.25f
 #define INACTIVE_OPACITY 0.2f
 
 @synthesize size = _size;
 @synthesize isHighlighted = _isHighlighted;
-@synthesize activeMode = _activeMode;
 
 - (id)initWithFrame:(NSRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         self.size = CGRectGetWidth(frame);
-        self.activeMode = WEST;
         self.isHighlighted = NO;
+        
+        appDelegate = [NSApp delegate];
     }
     
     return self;
@@ -59,11 +59,11 @@
     
     if (self.isHighlighted) {
         [[NSColor colorWithDeviceWhite:1.0f
-                                 alpha:self.activeMode == NORTH ? 1.0f : INACTIVE_OPACITY]
+                                 alpha:appDelegate.diamond.activeMode == NORTH ? 1.0f : INACTIVE_OPACITY]
          setFill];
     } else {
         [[NSColor colorWithCalibratedHue:0.55f saturation:0.5f brightness:0.2f
-                                   alpha:self.activeMode == NORTH ? 1.0f : INACTIVE_OPACITY]
+                                   alpha:appDelegate.diamond.activeMode == NORTH ? 1.0f : INACTIVE_OPACITY]
          setFill];
     }
     [north fill];
@@ -73,13 +73,13 @@
     
     NSBezierPath *west = [NSBezierPath bezierPath];
     [west moveToPoint:NSMakePoint(width * 1/4 - SPACING,
-                                   height * 3/4 - SPACING)];
+                                  height * 3/4 - SPACING)];
     [west lineToPoint:NSMakePoint(0,
-                                   height * 1/2)];
+                                  height * 1/2)];
     [west lineToPoint:NSMakePoint(width * 1/4 - SPACING,
-                                   height * 1/4 + SPACING)];
+                                  height * 1/4 + SPACING)];
     [west lineToPoint:NSMakePoint(width * 1/2 - SPACING*2,
-                                   height * 1/2)];
+                                  height * 1/2)];
     [west closePath];
     
     if (!self.isHighlighted) {
@@ -97,11 +97,11 @@
     
     if (self.isHighlighted) {
         [[NSColor colorWithDeviceWhite:1.0f
-                                 alpha:self.activeMode == WEST ? 1.0f : INACTIVE_OPACITY]
+                                 alpha:appDelegate.diamond.activeMode == WEST ? 1.0f : INACTIVE_OPACITY]
          setFill];
     } else {
         [[NSColor colorWithCalibratedHue:0.3f saturation:0.5f brightness:0.2f
-                                   alpha:self.activeMode == WEST ? 1.0f : INACTIVE_OPACITY]
+                                   alpha:appDelegate.diamond.activeMode == WEST ? 1.0f : INACTIVE_OPACITY]
          setFill];
     }
     [west fill];
@@ -135,11 +135,11 @@
     
     if (self.isHighlighted) {
         [[NSColor colorWithDeviceWhite:1.0f
-                                 alpha:self.activeMode == SOUTH ? 1.0f : INACTIVE_OPACITY]
+                                 alpha:appDelegate.diamond.activeMode == SOUTH ? 1.0f : INACTIVE_OPACITY]
          setFill];
     } else {
         [[NSColor colorWithCalibratedHue:0.9f saturation:0.5f brightness:0.2f
-                                   alpha:self.activeMode == SOUTH ? 1.0f : INACTIVE_OPACITY]
+                                   alpha:appDelegate.diamond.activeMode == SOUTH ? 1.0f : INACTIVE_OPACITY]
          setFill];
     }
     [south fill];
@@ -173,11 +173,11 @@
     
     if (self.isHighlighted) {
         [[NSColor colorWithDeviceWhite:1.0f
-                                 alpha:self.activeMode == EAST ? 1.0f : INACTIVE_OPACITY]
+                                 alpha:appDelegate.diamond.activeMode == EAST ? 1.0f : INACTIVE_OPACITY]
          setFill];
     } else {
         [[NSColor colorWithCalibratedHue:0.3f saturation:0.5f brightness:0.2f
-                                   alpha:self.activeMode == EAST ? 1.0f : INACTIVE_OPACITY]
+                                   alpha:appDelegate.diamond.activeMode == EAST ? 1.0f : INACTIVE_OPACITY]
          setFill];
     }
     [east fill];

@@ -7,14 +7,14 @@
 //
 
 #import "TTStatusItemView.h"
-#import "TTDiamond.h"
+#import "TTDiamondView.h"
 
 @implementation TTStatusItemView
 
 @synthesize statusItem = _statusItem;
 @synthesize image = _image;
 @synthesize alternateImage = _alternateImage;
-@synthesize diamond = _diamond;
+@synthesize diamondView = _diamondView;
 @synthesize isHighlighted = _isHighlighted;
 @synthesize action = _action;
 @synthesize target = _target;
@@ -32,8 +32,8 @@
         _statusItem.view = self;
 
         CGRect diamondRect = NSInsetRect(itemRect, 2.0f, 4.0f);
-        self.diamond = [[TTDiamond alloc] initWithFrame:diamondRect];
-        [self addSubview:self.diamond];
+        self.diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect];
+        [self addSubview:self.diamondView];
     }
     return self;
 }
@@ -65,7 +65,7 @@
 - (void)setHighlighted:(BOOL)newFlag {
     if (_isHighlighted == newFlag) return;
     _isHighlighted = newFlag;
-    [self.diamond setHighlighted:newFlag];
+    [self.diamondView setHighlighted:newFlag];
     [self setNeedsDisplay:YES];
 }
 

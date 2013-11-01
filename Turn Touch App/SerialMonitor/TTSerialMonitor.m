@@ -23,6 +23,7 @@ const int kBaudRate = 57600;
         serialFileDescriptor = -1;
         readThreadRunning = FALSE;
         serialDeviceNames = [NSMutableArray array];
+        appDelegate = [NSApp delegate];
         
         // first thing is to refresh the serial port list
         [self refreshSerialList];
@@ -164,8 +165,7 @@ const int kBaudRate = 57600;
 	[serialOutputArea scrollRangeToVisible:myRange];
     
     NSArray *buttons = [self buttonsByParsingText:text];
-    TTAppDelegate *appDelegate = [NSApp delegate];
-    appDelegate
+//    appDelegate
 }
 
 - (NSArray *)buttonsByParsingText:(NSString *)text {

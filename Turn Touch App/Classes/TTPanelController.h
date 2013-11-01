@@ -9,16 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "TTBackgroundView.h"
 #import "TTStatusItemView.h"
-
-@class TTPanelController;
-
-@protocol TTPanelControllerDelegate <NSObject>
-
-@optional
-
-- (TTStatusItemView *)statusItemViewForPanelController:(TTPanelController *)controller;
-
-@end
+#import "TTPanelDelegate.h"
 
 #pragma mark -
 

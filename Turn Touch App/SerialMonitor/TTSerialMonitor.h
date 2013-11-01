@@ -17,8 +17,10 @@
 #include <IOKit/serial/ioss.h>
 #include <sys/ioctl.h>
 
+@class TTAppDelegate;
 
 @interface TTSerialMonitor : NSObject {
+    TTAppDelegate *appDelegate;
 	NSMutableArray *serialDeviceNames;
     NSString *selectedSerialDevice;
 	IBOutlet NSTextView *serialOutputArea;
