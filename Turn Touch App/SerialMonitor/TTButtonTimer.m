@@ -32,17 +32,17 @@ const double MODE_CHANGE_DURATION = 0.5f;
     }
     
     if (anyActive) {
-        if (activeMode) {
+        if (activeModeDirection) {
             // Ignore other button presses while waiting on another button
         } else {
             if ([[buttons objectAtIndex:0] boolValue]) {
-                activeMode = NORTH;
+                activeModeDirection = NORTH;
             } else if ([[buttons objectAtIndex:1] boolValue]) {
-                activeMode = EAST;
+                activeModeDirection = EAST;
             } else if ([[buttons objectAtIndex:2] boolValue]) {
-                activeMode = SOUTH;
+                activeModeDirection = SOUTH;
             } else if ([[buttons objectAtIndex:3] boolValue]) {
-                activeMode = WEST;
+                activeModeDirection = WEST;
             }
             NSDate *fireDate = [NSDate dateWithTimeIntervalSinceNow:MODE_CHANGE_DURATION];
             activeModeTimer = [[NSTimer alloc]
@@ -50,21 +50,22 @@ const double MODE_CHANGE_DURATION = 0.5f;
                                interval:0
                                target:self
                                selector:@selector(activeModeTimerFire:)
-                               userInfo:@{@"activeMode": [NSNumber numberWithInt:activeMode]}
+                               userInfo:@{@"activeModeDirection":
+                                              [NSNumber numberWithInt:activeModeDirection]}
                                repeats:NO];
             NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
             [runLoop addTimer:activeModeTimer forMode:NSDefaultRunLoopMode];
             [self activateButton];
         }
     } else {
-        if (activeMode) {
-            [self deactivateButton];
+        if (activeModeDirection) {
+            [self fireButton];
             if (activeModeTimer) {
                 NSLog(@"Invalidating timer.");
                 [activeModeTimer invalidate];
                 activeModeTimer = nil;
             }
-            activeMode = 0;
+            activeModeDirection = 0;
         } else {
             
         }
@@ -72,28 +73,29 @@ const double MODE_CHANGE_DURATION = 0.5f;
 }
 
 - (void)activeModeTimerFire:(NSTimer *)timer {
-    NSLog(@"Firing active mode timer: %d", activeMode);
+    NSLog(@"Firing active mode timer: %d", activeModeDirection);
     activeModeTimer = nil;
     
-    if (activeMode == [[timer.userInfo objectForKey:@"activeMode"] integerValue]) {
+    if (activeModeDirection == [[timer.userInfo objectForKey:@"activeModeDirection"] integerValue]) {
         [self selectActiveMode];
     }
 }
 
 - (void)selectActiveMode {
-    NSLog(@"Selecting mode: %d", activeMode);
-    [appDelegate.diamond setActiveMode:0];
-    [appDelegate.diamond setSelectedMode:activeMode];
+    NSLog(@"Selecting mode: %d", activeModeDirection);
+    [appDelegate.diamond setActiveModeDirection:0];
+    [appDelegate.diamond setSelectedModeDirection:activeModeDirection];
 }
 
 - (void)activateButton {
-    NSLog(@"Activating button: %d", activeMode);
-    [appDelegate.diamond setActiveMode:activeMode];
+    NSLog(@"Activating button: %d", activeModeDirection);
+    [appDelegate.diamond setActiveModeDirection:activeModeDirection];
 }
 
-- (void)deactivateButton {
-    NSLog(@"Deactivating button: %d", activeMode);
-    [appDelegate.diamond setActiveMode:0];
+- (void)fireButton {
+    NSLog(@"Firing button: %d", activeModeDirection);
+    [appDelegate.diamond runActiveButton];
+    [appDelegate.diamond setActiveModeDirection:0];
 }
 
 @end

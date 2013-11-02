@@ -14,7 +14,7 @@
 
 @interface TTButtonTimer : NSObject {
     TTAppDelegate *appDelegate;
-    TTMode activeMode;
+    TTModeDirection activeModeDirection;
     NSTimer *activeModeTimer;
 }
 

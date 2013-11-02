@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Turn Touch. All rights reserved.
 //
 
+#import "TTMode.h"
 #import <Cocoa/Cocoa.h>
 
 typedef enum {
@@ -13,11 +14,14 @@ typedef enum {
     EAST = 2,
     SOUTH = 3,
     WEST = 4
-} TTMode;
+} TTModeDirection;
 
 @interface TTDiamond : NSObject
 
-@property (nonatomic, assign) TTMode activeMode;
-@property (nonatomic, assign) TTMode selectedMode;
+@property (nonatomic, assign) TTModeDirection activeModeDirection;
+@property (nonatomic, assign) TTModeDirection selectedModeDirection;
+@property (nonatomic) TTMode *selectedMode;
+
+- (void)runActiveButton;
 
 @end

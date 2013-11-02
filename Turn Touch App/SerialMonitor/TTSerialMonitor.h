@@ -25,13 +25,12 @@
     TTButtonTimer *buttonTimer;
 	NSMutableArray *serialDeviceNames;
     NSString *selectedSerialDevice;
-	IBOutlet NSTextView *serialOutputArea;
 	IBOutlet NSTextField *serialInputField;
 	IBOutlet NSTextField *baudInputField;
 	int serialFileDescriptor; // file handle to the serial port
 	struct termios gOriginalTTYAttrs; // Hold the original termios attributes so we can reset them on quit ( best practice )
 	bool readThreadRunning;
-	NSTextStorage *storage;
+	NSMutableString *textBuffer;
 }
 
 - (NSString *) openSerialPort: (NSString *)serialPortFile baud: (speed_t)baudRate;

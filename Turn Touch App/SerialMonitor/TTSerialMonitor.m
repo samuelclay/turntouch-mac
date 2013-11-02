@@ -25,6 +25,7 @@ const int kBaudRate = 57600;
         serialDeviceNames = [NSMutableArray array];
         appDelegate = [NSApp delegate];
         buttonTimer = [[TTButtonTimer alloc] init];
+        textBuffer = [[NSMutableString alloc] init];
         
         // first thing is to refresh the serial port list
         [self refreshSerialList];
@@ -152,26 +153,16 @@ const int kBaudRate = 57600;
 // updates the textarea for incoming text by appending text
 - (void)appendToIncomingText: (id) text {
 	// add the text to the textarea
-    if (!text) return;
-	NSAttributedString* attrString = [[NSMutableAttributedString alloc] initWithString: text];
-	NSTextStorage *textStorage = [serialOutputArea textStorage];
-	[textStorage beginEditing];
-	[textStorage appendAttributedString:attrString];
-	[textStorage endEditing];
 	NSLog(@"text: %@", text);
-	// scroll to the bottom
-	NSRange myRange;
-	myRange.length = 1;
-	myRange.location = [textStorage length];
-	[serialOutputArea scrollRangeToVisible:myRange];
-    
-    NSArray *buttons = [self buttonsByParsingText:text];
-    [buttonTimer readButtons:buttons];
+    if (!text) return;
+    text = [text stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    [textBuffer appendString:text];
+    [self parseTextBuffer];
 }
 
-- (NSArray *)buttonsByParsingText:(NSString *)text {
+- (void)parseTextBuffer {
     NSMutableArray *substrings = [NSMutableArray new];
-    NSScanner *scanner = [NSScanner scannerWithString:text];
+    NSScanner *scanner = [NSScanner scannerWithString:textBuffer];
     [scanner scanUpToString:@"START:" intoString:nil];
     [scanner scanString:@"START:" intoString:nil];
     while (![scanner isAtEnd]) {
@@ -185,9 +176,13 @@ const int kBaudRate = 57600;
         }
     }
     NSLog(@"Substrings: %@", substrings);
-    
-    
-    return substrings;
+    if ([substrings count] == 4) {
+        NSLog(@"Clearing text buffer");
+        [buttonTimer readButtons:substrings];
+        [textBuffer setString:@""];
+    } else {
+        NSLog(@"Not yet clearing text buffer: %@", textBuffer);
+    }
 }
 
 // This selector/function will be called as another thread...
@@ -201,7 +196,7 @@ const int kBaudRate = 57600;
 	// mark that the thread is running
 	readThreadRunning = TRUE;
 	
-	const ssize_t BUFFER_SIZE = 1000;
+	const ssize_t BUFFER_SIZE = 10;
 	char byte_buffer[BUFFER_SIZE]; // buffer for holding incoming data
 	ssize_t numBytes=0; // number of bytes read during read
 	NSString *text; // incoming text from the serial port

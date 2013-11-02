@@ -10,6 +10,9 @@
 		FF0E12B81824285100D49EC7 /* TTDiamondView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12B71824285100D49EC7 /* TTDiamondView.m */; };
 		FF0E12BB1824286600D49EC7 /* TTDiamond.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12BA1824286600D49EC7 /* TTDiamond.m */; };
 		FF0E12C218242DF000D49EC7 /* TTButtonTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12C118242DF000D49EC7 /* TTButtonTimer.m */; };
+		FF0E12CA18247BAE00D49EC7 /* TTMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12C918247BAE00D49EC7 /* TTMode.m */; };
+		FF0E12CF18247D6100D49EC7 /* TTModeMusic.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12CE18247D6100D49EC7 /* TTModeMusic.m */; };
+		FF0E12D11824811200D49EC7 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0E12D01824811200D49EC7 /* ScriptingBridge.framework */; };
 		FF3A9F6517C42B5E00C5C2D5 /* menulet_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3A9F6317C42B5E00C5C2D5 /* menulet_icon.png */; };
 		FF3A9F6617C42B5E00C5C2D5 /* menulet_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3A9F6417C42B5E00C5C2D5 /* menulet_icon_active.png */; };
 		FF3A9F6C17C4351B00C5C2D5 /* TTPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A9F6B17C4351B00C5C2D5 /* TTPanelController.m */; };
@@ -38,6 +41,13 @@
 		FF0E12BC18242B5600D49EC7 /* TTPanelDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTPanelDelegate.h; path = Classes/TTPanelDelegate.h; sourceTree = "<group>"; };
 		FF0E12C018242DF000D49EC7 /* TTButtonTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTButtonTimer.h; path = SerialMonitor/TTButtonTimer.h; sourceTree = "<group>"; };
 		FF0E12C118242DF000D49EC7 /* TTButtonTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTButtonTimer.m; path = SerialMonitor/TTButtonTimer.m; sourceTree = "<group>"; };
+		FF0E12C3182477CB00D49EC7 /* TTModeProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TTModeProtocol.h; path = Models/TTModeProtocol.h; sourceTree = "<group>"; };
+		FF0E12C818247BAE00D49EC7 /* TTMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTMode.h; path = Models/TTMode.h; sourceTree = "<group>"; };
+		FF0E12C918247BAE00D49EC7 /* TTMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTMode.m; path = Models/TTMode.m; sourceTree = "<group>"; };
+		FF0E12CC18247D4600D49EC7 /* iTunes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = iTunes.h; path = Modes/Music/iTunes.h; sourceTree = "<group>"; };
+		FF0E12CD18247D6100D49EC7 /* TTModeMusic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMusic.h; path = Modes/Music/TTModeMusic.h; sourceTree = "<group>"; };
+		FF0E12CE18247D6100D49EC7 /* TTModeMusic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeMusic.m; path = Modes/Music/TTModeMusic.m; sourceTree = "<group>"; };
+		FF0E12D01824811200D49EC7 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		FF3A9F6317C42B5E00C5C2D5 /* menulet_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menulet_icon.png; sourceTree = "<group>"; };
 		FF3A9F6417C42B5E00C5C2D5 /* menulet_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menulet_icon_active.png; sourceTree = "<group>"; };
 		FF3A9F6A17C4351B00C5C2D5 /* TTPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTPanelController.h; path = Classes/TTPanelController.h; sourceTree = "<group>"; };
@@ -77,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF0E12D11824811200D49EC7 /* ScriptingBridge.framework in Frameworks */,
 				FF4E26321823197D00D477F6 /* IOKit.framework in Frameworks */,
 				FF8C833717AB14B5000166FC /* Cocoa.framework in Frameworks */,
 			);
@@ -90,6 +101,9 @@
 			children = (
 				FF0E12B91824286600D49EC7 /* TTDiamond.h */,
 				FF0E12BA1824286600D49EC7 /* TTDiamond.m */,
+				FF0E12C3182477CB00D49EC7 /* TTModeProtocol.h */,
+				FF0E12C818247BAE00D49EC7 /* TTMode.h */,
+				FF0E12C918247BAE00D49EC7 /* TTMode.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -101,6 +115,24 @@
 				FF3A9F7617C4358000C5C2D5 /* TTPanel.xib */,
 			);
 			name = XIBs;
+			sourceTree = "<group>";
+		};
+		FF0E12C418247B7A00D49EC7 /* Modes */ = {
+			isa = PBXGroup;
+			children = (
+				FF0E12CB18247D3000D49EC7 /* Music */,
+			);
+			name = Modes;
+			sourceTree = "<group>";
+		};
+		FF0E12CB18247D3000D49EC7 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				FF0E12CD18247D6100D49EC7 /* TTModeMusic.h */,
+				FF0E12CE18247D6100D49EC7 /* TTModeMusic.m */,
+				FF0E12CC18247D4600D49EC7 /* iTunes.h */,
+			);
+			name = Music;
 			sourceTree = "<group>";
 		};
 		FF3A9F6217C42B5E00C5C2D5 /* Images */ = {
@@ -176,6 +208,7 @@
 		FF8C833517AB14B5000166FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FF0E12D01824811200D49EC7 /* ScriptingBridge.framework */,
 				FF4E26311823197D00D477F6 /* IOKit.framework */,
 				FF8C833617AB14B5000166FC /* Cocoa.framework */,
 				FF8C833817AB14B5000166FC /* Other Frameworks */,
@@ -196,6 +229,7 @@
 		FF8C833C17AB14B5000166FC /* Turn Touch App */ = {
 			isa = PBXGroup;
 			children = (
+				FF0E12C418247B7A00D49EC7 /* Modes */,
 				FF0E12B51824283B00D49EC7 /* Models */,
 				FF5F70B317C428FB00511AB6 /* Classes */,
 				FF5F70B217C428F200511AB6 /* Views */,
@@ -301,9 +335,11 @@
 				FF3A9F6C17C4351B00C5C2D5 /* TTPanelController.m in Sources */,
 				FF3A9F6F17C4353300C5C2D5 /* TTPanel.m in Sources */,
 				FF0E12BB1824286600D49EC7 /* TTDiamond.m in Sources */,
+				FF0E12CA18247BAE00D49EC7 /* TTMode.m in Sources */,
 				FF3A9F7217C4354A00C5C2D5 /* TTStatusItemView.m in Sources */,
 				FF3A9F7517C4355B00C5C2D5 /* TTBackgroundView.m in Sources */,
 				FF3A9F7A17C436DC00C5C2D5 /* TTMenubarController.m in Sources */,
+				FF0E12CF18247D6100D49EC7 /* TTModeMusic.m in Sources */,
 				FF0E12B81824285100D49EC7 /* TTDiamondView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
