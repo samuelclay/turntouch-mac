@@ -52,6 +52,12 @@
         if ([selectedMode respondsToSelector:@selector(activate)]) {
             [selectedMode activate];
         }
+    } else if (selectedModeDirection == EAST) {
+        selectedMode = nil;
+    } else if (selectedModeDirection == SOUTH) {
+        selectedMode = nil;
+    } else if (selectedModeDirection == WEST) {
+        selectedMode = nil;
     }
 }
 

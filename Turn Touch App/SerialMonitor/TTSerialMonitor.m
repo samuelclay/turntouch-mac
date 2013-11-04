@@ -153,9 +153,10 @@ const int kBaudRate = 57600;
 // updates the textarea for incoming text by appending text
 - (void)appendToIncomingText: (id) text {
 	// add the text to the textarea
-	NSLog(@"text: %@", text);
     if (!text) return;
-    text = [text stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+	NSLog(@"Incoming text: %@", text);
+    NSLog(@"TextBuffer: %@", textBuffer);
+//    text = [text stringByReplacingOccurrencesOfString:@"\n" withString:@""];
     [textBuffer appendString:text];
     [self parseTextBuffer];
 }
@@ -175,9 +176,9 @@ const int kBaudRate = 57600;
             break;
         }
     }
-    NSLog(@"Substrings: %@", substrings);
+//    NSLog(@"Substrings: %@", substrings);
     if ([substrings count] == 4) {
-        NSLog(@"Clearing text buffer");
+//        NSLog(@"Clearing text buffer");
         [buttonTimer readButtons:substrings];
         [textBuffer setString:@""];
     } else {
@@ -196,7 +197,7 @@ const int kBaudRate = 57600;
 	// mark that the thread is running
 	readThreadRunning = TRUE;
 	
-	const ssize_t BUFFER_SIZE = 10;
+	const ssize_t BUFFER_SIZE = 100;
 	char byte_buffer[BUFFER_SIZE]; // buffer for holding incoming data
 	ssize_t numBytes=0; // number of bytes read during read
 	NSString *text; // incoming text from the serial port
@@ -210,7 +211,7 @@ const int kBaudRate = 57600;
 		numBytes = read(serialFileDescriptor, byte_buffer, BUFFER_SIZE); // read up to the size of the buffer
 		if(numBytes>0) {
 			// create an NSString from the incoming bytes (the bytes aren't null terminated)
-			text = [NSString stringWithUTF8String:byte_buffer];
+			text = [NSString stringWithCString:byte_buffer length:numBytes];
 			
 			// this text can't be directly sent to the text area from this thread
 			//  BUT, we can call a selctor on the main thread.

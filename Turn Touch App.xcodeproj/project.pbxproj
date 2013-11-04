@@ -13,6 +13,7 @@
 		FF0E12CA18247BAE00D49EC7 /* TTMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12C918247BAE00D49EC7 /* TTMode.m */; };
 		FF0E12CF18247D6100D49EC7 /* TTModeMusic.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12CE18247D6100D49EC7 /* TTModeMusic.m */; };
 		FF0E12D11824811200D49EC7 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0E12D01824811200D49EC7 /* ScriptingBridge.framework */; };
+		FF0E12D41828560000D49EC7 /* TTModeVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12D31828560000D49EC7 /* TTModeVideo.m */; };
 		FF3A9F6517C42B5E00C5C2D5 /* menulet_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3A9F6317C42B5E00C5C2D5 /* menulet_icon.png */; };
 		FF3A9F6617C42B5E00C5C2D5 /* menulet_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3A9F6417C42B5E00C5C2D5 /* menulet_icon_active.png */; };
 		FF3A9F6C17C4351B00C5C2D5 /* TTPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A9F6B17C4351B00C5C2D5 /* TTPanelController.m */; };
@@ -48,6 +49,10 @@
 		FF0E12CD18247D6100D49EC7 /* TTModeMusic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMusic.h; path = Modes/Music/TTModeMusic.h; sourceTree = "<group>"; };
 		FF0E12CE18247D6100D49EC7 /* TTModeMusic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeMusic.m; path = Modes/Music/TTModeMusic.m; sourceTree = "<group>"; };
 		FF0E12D01824811200D49EC7 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
+		FF0E12D21828560000D49EC7 /* TTModeVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeVideo.h; path = Modes/Video/TTModeVideo.h; sourceTree = "<group>"; };
+		FF0E12D31828560000D49EC7 /* TTModeVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeVideo.m; path = Modes/Video/TTModeVideo.m; sourceTree = "<group>"; };
+		FF0E12D61828569300D49EC7 /* Quicktime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Quicktime.h; path = Modes/Video/Quicktime.h; sourceTree = "<group>"; };
+		FF0E12D71828569300D49EC7 /* VLC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VLC.h; path = Modes/Video/VLC.h; sourceTree = "<group>"; };
 		FF3A9F6317C42B5E00C5C2D5 /* menulet_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menulet_icon.png; sourceTree = "<group>"; };
 		FF3A9F6417C42B5E00C5C2D5 /* menulet_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menulet_icon_active.png; sourceTree = "<group>"; };
 		FF3A9F6A17C4351B00C5C2D5 /* TTPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTPanelController.h; path = Classes/TTPanelController.h; sourceTree = "<group>"; };
@@ -120,6 +125,7 @@
 		FF0E12C418247B7A00D49EC7 /* Modes */ = {
 			isa = PBXGroup;
 			children = (
+				FF0E12D51828560400D49EC7 /* Video */,
 				FF0E12CB18247D3000D49EC7 /* Music */,
 			);
 			name = Modes;
@@ -133,6 +139,17 @@
 				FF0E12CC18247D4600D49EC7 /* iTunes.h */,
 			);
 			name = Music;
+			sourceTree = "<group>";
+		};
+		FF0E12D51828560400D49EC7 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				FF0E12D21828560000D49EC7 /* TTModeVideo.h */,
+				FF0E12D31828560000D49EC7 /* TTModeVideo.m */,
+				FF0E12D61828569300D49EC7 /* Quicktime.h */,
+				FF0E12D71828569300D49EC7 /* VLC.h */,
+			);
+			name = Video;
 			sourceTree = "<group>";
 		};
 		FF3A9F6217C42B5E00C5C2D5 /* Images */ = {
@@ -340,6 +357,7 @@
 				FF3A9F7517C4355B00C5C2D5 /* TTBackgroundView.m in Sources */,
 				FF3A9F7A17C436DC00C5C2D5 /* TTMenubarController.m in Sources */,
 				FF0E12CF18247D6100D49EC7 /* TTModeMusic.m in Sources */,
+				FF0E12D41828560000D49EC7 /* TTModeVideo.m in Sources */,
 				FF0E12B81824285100D49EC7 /* TTDiamondView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

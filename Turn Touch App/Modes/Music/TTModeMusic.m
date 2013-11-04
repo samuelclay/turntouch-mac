@@ -13,8 +13,8 @@
 
 - (void)runNorth {
     iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
-    
     NSInteger volume = iTunes.soundVolume;
+    NSLog(@"Music mode North: %ld", (long)volume);
     [iTunes setSoundVolume:MIN(100, volume+10)];
 }
 
@@ -28,6 +28,7 @@
     iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
     
     NSInteger volume = iTunes.soundVolume;
+    NSLog(@"Music mode South: %ld", (long)volume);
     [iTunes setSoundVolume:MAX(0, volume-10)];
 }
 
