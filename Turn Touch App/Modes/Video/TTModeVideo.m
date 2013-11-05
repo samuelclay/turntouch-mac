@@ -63,19 +63,10 @@
     }
     
     if ([vlc isRunning]) {
-        SBElementArray *vlcItems = [vlc documents];
-        NSEnumerator *vlcEnumerator = [vlcItems objectEnumerator];
-        VLCDocument *vlcItem;
-        NSLog(@"VLC Windows: %lu", (unsigned long)[vlcItems count]);
-        while (vlcItem = [vlcEnumerator nextObject]) {
-            NSLog(@"Video mode North (VLC), volume %@",
-                  direction == UP ? @"up" : @"down");
-            if (direction == UP) {
-                [vlcItem volumeUp];
-            } else if (direction == DOWN) {
-                [vlcItem volumeDown];
-            }
-        }
+        NSString *vlcSource = [NSString stringWithFormat:@"tell application \"VLC\" to volume%@",
+                               direction == UP ? @"Up" : @"Down"];
+        NSAppleScript *vlcScript = [[NSAppleScript alloc] initWithSource:vlcSource];
+        [vlcScript executeAndReturnError:nil];
     }
 }
 

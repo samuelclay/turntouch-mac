@@ -71,6 +71,7 @@
 		FF4E262E182317D000D477F6 /* TTSerialMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSerialMonitor.h; path = SerialMonitor/TTSerialMonitor.h; sourceTree = "<group>"; };
 		FF4E262F182317D000D477F6 /* TTSerialMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSerialMonitor.m; path = SerialMonitor/TTSerialMonitor.m; sourceTree = "<group>"; };
 		FF4E26311823197D00D477F6 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		FF4F9AF6182881FF00D2F975 /* AppleScriptObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptObjC.framework; path = System/Library/Frameworks/AppleScriptObjC.framework; sourceTree = SDKROOT; };
 		FF8C833317AB14B5000166FC /* Turn Touch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Turn Touch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF8C833617AB14B5000166FC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FF8C833917AB14B5000166FC /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -225,6 +226,7 @@
 		FF8C833517AB14B5000166FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FF4F9AF6182881FF00D2F975 /* AppleScriptObjC.framework */,
 				FF0E12D01824811200D49EC7 /* ScriptingBridge.framework */,
 				FF4E26311823197D00D477F6 /* IOKit.framework */,
 				FF8C833617AB14B5000166FC /* Cocoa.framework */,
@@ -297,7 +299,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = TT;
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Turn Touch";
 				TargetAttributes = {
 					FF8C833217AB14B5000166FC = {
@@ -396,7 +398,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -429,7 +430,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
