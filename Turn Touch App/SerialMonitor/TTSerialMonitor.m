@@ -154,9 +154,8 @@ const int kBaudRate = 57600;
 - (void)appendToIncomingText: (id) text {
 	// add the text to the textarea
     if (!text) return;
-	NSLog(@"Incoming text: %@", text);
-    NSLog(@"TextBuffer: %@", textBuffer);
-//    text = [text stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+//    NSLog(@"Incoming text: %@", text);
+//    NSLog(@"TextBuffer: %@", textBuffer);
     [textBuffer appendString:text];
     [self parseTextBuffer];
 }
@@ -182,7 +181,7 @@ const int kBaudRate = 57600;
         [buttonTimer readButtons:substrings];
         [textBuffer setString:@""];
     } else {
-        NSLog(@"Not yet clearing text buffer: %@", textBuffer);
+//        NSLog(@"Not yet clearing text buffer: %@", textBuffer);
     }
 }
 

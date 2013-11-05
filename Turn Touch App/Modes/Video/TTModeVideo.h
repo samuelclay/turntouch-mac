@@ -10,9 +10,16 @@
 #import "Quicktime.h"
 #import "VLC.h"
 
+typedef enum {
+    UP = 1,
+    DOWN = 2
+} VideoVolumeDirection;
+
 @interface TTModeVideo : TTMode {
     QuicktimeApplication *quicktime;
     VLCApplication *vlc;
 }
+
+- (void)moveVolume:(VideoVolumeDirection)direction;
 
 @end

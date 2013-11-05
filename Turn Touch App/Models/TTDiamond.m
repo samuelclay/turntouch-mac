@@ -8,6 +8,7 @@
 
 #import "TTDiamond.h"
 #import "TTModeMusic.h"
+#import "TTModeVideo.h"
 
 @implementation TTDiamond
 
@@ -26,6 +27,7 @@
             selectedModeDirection = (TTModeDirection)[[defaults
                                                        objectForKey:@"TT:selectedModeDirection"]
                                                       integerValue];
+            [self switchMode];
         }
     }
     
@@ -41,23 +43,37 @@
                  forKey:@"TT:selectedModeDirection"];
     [defaults synchronize];
     
+    [self switchMode];
+}
+
+- (void)switchMode {
     if (selectedMode) {
         if ([selectedMode respondsToSelector:@selector(deactivate)]) {
             [selectedMode deactivate];
         }
+        selectedMode = nil;
     }
     
-    if (selectedModeDirection == NORTH) {
-        selectedMode = [[TTModeMusic alloc] init];
-        if ([selectedMode respondsToSelector:@selector(activate)]) {
-            [selectedMode activate];
-        }
-    } else if (selectedModeDirection == EAST) {
-        selectedMode = nil;
-    } else if (selectedModeDirection == SOUTH) {
-        selectedMode = nil;
-    } else if (selectedModeDirection == WEST) {
-        selectedMode = nil;
+    switch (selectedModeDirection) {
+        case NORTH:
+            selectedMode = [[TTModeMusic alloc] init];
+            break;
+            
+        case EAST:
+            selectedMode = nil;
+            break;
+            
+        case SOUTH:
+            selectedMode = [[TTModeVideo alloc] init];
+            break;
+            
+        case WEST:
+            selectedMode = nil;
+            break;
+    }
+    
+    if (selectedMode && [selectedMode respondsToSelector:@selector(activate)]) {
+        [selectedMode activate];
     }
 }
 
