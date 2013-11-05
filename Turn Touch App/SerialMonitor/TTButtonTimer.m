@@ -34,6 +34,15 @@ const double MODE_CHANGE_DURATION = 0.5f;
     if (anyActive) {
         if (activeModeDirection) {
             // Ignore other button presses while waiting on another button
+            if ([[buttons objectAtIndex:0] boolValue] && activeModeDirection != NORTH) {
+                anyActive = NO;
+            } else if ([[buttons objectAtIndex:1] boolValue] && activeModeDirection != EAST) {
+                anyActive = NO;
+            } else if ([[buttons objectAtIndex:2] boolValue] && activeModeDirection != SOUTH) {
+                anyActive = NO;
+            } else if ([[buttons objectAtIndex:3] boolValue] && activeModeDirection != WEST) {
+                anyActive = NO;
+            }
         } else {
             if ([[buttons objectAtIndex:0] boolValue]) {
                 activeModeDirection = NORTH;
@@ -57,7 +66,9 @@ const double MODE_CHANGE_DURATION = 0.5f;
             [runLoop addTimer:activeModeTimer forMode:NSDefaultRunLoopMode];
             [self activateButton];
         }
-    } else {
+    }
+    
+    if (!anyActive) {
         if (activeModeDirection) {
             [self fireButton];
             if (activeModeTimer) {
