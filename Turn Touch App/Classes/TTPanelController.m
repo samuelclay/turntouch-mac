@@ -11,14 +11,14 @@
 #import "TTStatusItemView.h"
 #import "TTMenubarController.h"
 
-#define OPEN_DURATION .15
-#define CLOSE_DURATION .1
+#define OPEN_DURATION .29
+#define CLOSE_DURATION .12
 
 #define SEARCH_INSET 17
 
-#define POPUP_HEIGHT 122
-#define PANEL_WIDTH 280
-#define MENU_ANIMATION_DURATION .1
+#define PANEL_HEIGHT 262
+#define PANEL_WIDTH 320
+#define MENU_ANIMATION_DURATION .12
 
 #pragma mark -
 
@@ -57,7 +57,7 @@
     
     // Resize panel
     NSRect panelRect = [[self window] frame];
-    panelRect.size.height = POPUP_HEIGHT;
+    panelRect.size.height = PANEL_HEIGHT;
     [[self window] setFrame:panelRect display:NO];
     
     // Follow search string
@@ -159,7 +159,7 @@
     
     if (statusItemView) {
         statusRect = statusItemView.globalRect;
-        statusRect.origin.y = NSMinY(statusRect) - NSHeight(statusRect);
+        statusRect.origin.y = NSMinY(statusRect) - NSHeight(statusRect) - 2;
     } else {
         statusRect.size = NSMakeSize(STATUS_ITEM_VIEW_WIDTH, [[NSStatusBar systemStatusBar] thickness]);
         statusRect.origin.x = roundf((NSWidth(screenRect) - NSWidth(statusRect)) / 2);
@@ -177,6 +177,7 @@
     
     NSRect panelRect = [panel frame];
     panelRect.size.width = PANEL_WIDTH;
+    panelRect.size.height = PANEL_HEIGHT;
     panelRect.origin.x = roundf(NSMidX(statusRect) - NSWidth(panelRect) / 2);
     panelRect.origin.y = NSMaxY(statusRect) - NSHeight(panelRect);
     
@@ -204,11 +205,17 @@
         }
     }
     
-    [NSAnimationContext beginGrouping];
-    [[NSAnimationContext currentContext] setDuration:openDuration];
-    [[panel animator] setFrame:panelRect display:YES];
-    [[panel animator] setAlphaValue:1];
-    [NSAnimationContext endGrouping];
+    NSDictionary *panelResize = @{NSViewAnimationTargetKey: panel,
+                                  NSViewAnimationStartFrameKey: [NSValue valueWithRect:statusRect],
+                                  NSViewAnimationEndFrameKey: [NSValue valueWithRect:panelRect]};
+    NSDictionary *newFadeIn = [NSDictionary dictionaryWithObjectsAndKeys: panel, NSViewAnimationTargetKey,
+                               NSViewAnimationFadeInEffect, NSViewAnimationEffectKey, nil];
+    
+    NSViewAnimation *animation = [[NSViewAnimation alloc] initWithViewAnimations:@[panelResize]];
+    [animation setAnimationBlockingMode: NSAnimationNonblocking];
+    [animation setAnimationCurve: NSAnimationEaseIn];
+    [animation setDuration: openDuration];
+    [animation startAnimation];
     
     [panel performSelector:@selector(makeFirstResponder:) withObject:self.searchField afterDelay:openDuration];
 }

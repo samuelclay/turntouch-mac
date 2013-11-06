@@ -10,8 +10,11 @@
 #import "TTBackgroundView.h"
 #import "TTStatusItemView.h"
 #import "TTPanelDelegate.h"
+#import "TTModeMenuViewport.h"
 
 #pragma mark -
+
+@class TTBackgroundView;
 
 @interface TTPanelController : NSWindowController <NSWindowDelegate> {
     BOOL _hasActivePanel;
