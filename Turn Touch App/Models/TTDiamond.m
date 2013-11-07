@@ -17,8 +17,8 @@
 @synthesize selectedMode;
 @synthesize northMode;
 @synthesize eastMode;
-@synthesize southMode;
 @synthesize westMode;
+@synthesize southMode;
 
 - (id)init {
     if (self = [super init]) {
@@ -44,8 +44,8 @@
 - (void)setupModes {
     northMode = [[TTModeMusic alloc] init];
     eastMode = nil;
-    southMode = [[TTModeVideo alloc] init];
     westMode = nil;
+    southMode = [[TTModeVideo alloc] init];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
@@ -77,12 +77,12 @@
             selectedMode = eastMode;
             break;
             
-        case SOUTH:
-            selectedMode = southMode;
-            break;
-            
         case WEST:
             selectedMode = westMode;
+            break;
+
+        case SOUTH:
+            selectedMode = southMode;
             break;
     }
     
@@ -101,10 +101,10 @@
         [selectedMode runNorth];
     } else if (direction == EAST) {
         [selectedMode runEast];
-    } else if (direction == SOUTH) {
-        [selectedMode runSouth];
     } else if (direction == WEST) {
         [selectedMode runWest];
+    } else if (direction == SOUTH) {
+        [selectedMode runSouth];
     }
     activeModeDirection = 0;
 }

@@ -26,12 +26,12 @@
         [self addSubview:eastItem];
         
         itemFrame.origin.y = frame.size.height * 2;
-        southItem = [[TTModeMenuItem alloc] initWithFrame:itemFrame direction:SOUTH];
-        [self addSubview:southItem];
-        
-        itemFrame.origin.y = frame.size.height * 3;;
         westItem = [[TTModeMenuItem alloc] initWithFrame:itemFrame direction:WEST];
         [self addSubview:westItem];
+
+        itemFrame.origin.y = frame.size.height * 3;
+        southItem = [[TTModeMenuItem alloc] initWithFrame:itemFrame direction:SOUTH];
+        [self addSubview:southItem];
     }
     return self;
 }

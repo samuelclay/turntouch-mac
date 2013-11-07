@@ -29,11 +29,11 @@
             case EAST:
                 itemMode = appDelegate.diamond.eastMode;
                 break;
-            case SOUTH:
-                itemMode = appDelegate.diamond.southMode;
-                break;
             case WEST:
                 itemMode = appDelegate.diamond.westMode;
+                break;
+            case SOUTH:
+                itemMode = appDelegate.diamond.southMode;
                 break;
         }
         

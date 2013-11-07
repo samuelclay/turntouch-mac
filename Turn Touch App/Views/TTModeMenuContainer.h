@@ -14,8 +14,8 @@
 @interface TTModeMenuContainer : NSView {
     TTModeMenuItem *northItem;
     TTModeMenuItem *eastItem;
-    TTModeMenuItem *southItem;
     TTModeMenuItem *westItem;
+    TTModeMenuItem *southItem;
 }
 
 @end

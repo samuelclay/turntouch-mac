@@ -78,6 +78,8 @@
     CGFloat width = NSMaxX(dirtyRect);
     CGFloat height = NSMaxY(dirtyRect);
     
+    // North
+    
     NSBezierPath *north = [NSBezierPath bezierPath];
     [north moveToPoint:NSMakePoint(width / 2,
                                    height)];
@@ -115,6 +117,44 @@
     }
     [north fill];
     
+    // East
+    
+    NSBezierPath *east = [NSBezierPath bezierPath];
+    [east moveToPoint:NSMakePoint(width * 3/4 + SPACING,
+                                  height * 3/4 - SPACING)];
+    [east lineToPoint:NSMakePoint(width * 1/2 + SPACING*2,
+                                  height * 1/2)];
+    [east lineToPoint:NSMakePoint(width * 3/4 + SPACING,
+                                  height * 1/4 + SPACING)];
+    [east lineToPoint:NSMakePoint(width,
+                                  height * 1/2)];
+    [east closePath];
+    
+    if (!self.isHighlighted) {
+        [NSGraphicsContext saveGraphicsState];
+        NSAffineTransform *transform = [NSAffineTransform transform];
+        [transform translateXBy:0 yBy:-0.5f];
+        NSBezierPath *shadowPath = [east copy];
+        [shadowPath transformUsingAffineTransform:transform];
+        [[NSColor colorWithDeviceWhite:1.0f alpha:0.4f] setStroke];
+        [[NSBezierPath bezierPathWithRect:NSMakeRect(width*1/2+SPACING*2, height*1/2, width*2/4-SPACING*2, -1 * height*1/4)] setClip];
+        [shadowPath setLineWidth:0.5f];
+        [shadowPath stroke];
+        [NSGraphicsContext restoreGraphicsState];
+    }
+    
+    if (self.isHighlighted) {
+        [[NSColor colorWithDeviceWhite:1.0f
+                                 alpha:activeModeDirection == EAST ? 0.5f :
+          selectedModeDirection == EAST ? 1.0f : INACTIVE_OPACITY]
+         setFill];
+    } else {
+        [[NSColor colorWithCalibratedHue:0.3f saturation:0.5f brightness:0.2f
+                                   alpha:activeModeDirection == EAST ? 0.5f :
+          selectedModeDirection == EAST ? 1.0f : INACTIVE_OPACITY]
+         setFill];
+    }
+    [east fill];
     
     // West
     
@@ -155,7 +195,6 @@
     }
     [west fill];
     
-    
     // South
     
     NSBezierPath *south = [NSBezierPath bezierPath];
@@ -194,46 +233,6 @@
          setFill];
     }
     [south fill];
-    
-    
-    // East
-    
-    NSBezierPath *east = [NSBezierPath bezierPath];
-    [east moveToPoint:NSMakePoint(width * 3/4 + SPACING,
-                                  height * 3/4 - SPACING)];
-    [east lineToPoint:NSMakePoint(width * 1/2 + SPACING*2,
-                                  height * 1/2)];
-    [east lineToPoint:NSMakePoint(width * 3/4 + SPACING,
-                                  height * 1/4 + SPACING)];
-    [east lineToPoint:NSMakePoint(width,
-                                  height * 1/2)];
-    [east closePath];
-    
-    if (!self.isHighlighted) {
-        [NSGraphicsContext saveGraphicsState];
-        NSAffineTransform *transform = [NSAffineTransform transform];
-        [transform translateXBy:0 yBy:-0.5f];
-        NSBezierPath *shadowPath = [east copy];
-        [shadowPath transformUsingAffineTransform:transform];
-        [[NSColor colorWithDeviceWhite:1.0f alpha:0.4f] setStroke];
-        [[NSBezierPath bezierPathWithRect:NSMakeRect(width*1/2+SPACING*2, height*1/2, width*2/4-SPACING*2, -1 * height*1/4)] setClip];
-        [shadowPath setLineWidth:0.5f];
-        [shadowPath stroke];
-        [NSGraphicsContext restoreGraphicsState];
-    }
-    
-    if (self.isHighlighted) {
-        [[NSColor colorWithDeviceWhite:1.0f
-                                 alpha:activeModeDirection == EAST ? 0.5f :
-                                       selectedModeDirection == EAST ? 1.0f : INACTIVE_OPACITY]
-         setFill];
-    } else {
-        [[NSColor colorWithCalibratedHue:0.3f saturation:0.5f brightness:0.2f
-                                   alpha:activeModeDirection == EAST ? 0.5f :
-                                         selectedModeDirection == EAST ? 1.0f : INACTIVE_OPACITY]
-         setFill];
-    }
-    [east fill];
 }
 
 - (void)setHighlighted:(BOOL)newFlag {

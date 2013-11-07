@@ -19,12 +19,12 @@
     NSLog(@"East");
 }
 
-- (void)runSouth {
-    NSLog(@"South");
-}
-
 - (void)runWest {
     NSLog(@"West");
+}
+
+- (void)runSouth {
+    NSLog(@"South");
 }
 
 @end

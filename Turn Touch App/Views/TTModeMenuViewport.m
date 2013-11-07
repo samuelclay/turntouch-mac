@@ -136,13 +136,11 @@
         case EAST:
             offset = NSHeight(self.frame);
             break;
-        case SOUTH:
-            offset = NSHeight(self.frame) * 2;
-            break;
         case WEST:
             offset = NSHeight(self.frame) * 3;
             break;
-        default:
+        case SOUTH:
+            offset = NSHeight(self.frame) * 2;
             break;
     }
     

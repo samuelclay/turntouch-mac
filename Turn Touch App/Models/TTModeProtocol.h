@@ -13,8 +13,8 @@
 @required
 - (void)runNorth;
 - (void)runEast;
-- (void)runSouth;
 - (void)runWest;
+- (void)runSouth;
 
 - (NSString *)title;
 

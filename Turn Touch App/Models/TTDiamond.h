@@ -12,8 +12,8 @@
 typedef enum {
     NORTH = 1,
     EAST = 2,
-    SOUTH = 3,
-    WEST = 4
+    WEST = 3,
+    SOUTH = 4
 } TTModeDirection;
 
 @interface TTDiamond : NSObject
@@ -23,8 +23,8 @@ typedef enum {
 @property (nonatomic) TTMode *selectedMode;
 @property (nonatomic) TTMode *northMode;
 @property (nonatomic) TTMode *eastMode;
-@property (nonatomic) TTMode *southMode;
 @property (nonatomic) TTMode *westMode;
+@property (nonatomic) TTMode *southMode;
 
 - (void)runActiveButton;
 
