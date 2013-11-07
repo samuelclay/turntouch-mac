@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "TTAppDelegate.h"
+#import "TTDiamond.h"
 
 @class TTAppDelegate;
 
@@ -15,9 +16,14 @@
     TTAppDelegate *appDelegate;
     CGFloat _size;
     BOOL _isHighlighted;
+    TTModeDirection overrideDirection;
+    TTModeDirection activeModeDirection;
+    TTModeDirection selectedModeDirection;
 }
 
 @property (nonatomic, assign) CGFloat size;
 @property (nonatomic, setter = setHighlighted:) BOOL isHighlighted;
+
+- (id)initWithFrame:(NSRect)frame direction:(TTModeDirection)direction;
 
 @end

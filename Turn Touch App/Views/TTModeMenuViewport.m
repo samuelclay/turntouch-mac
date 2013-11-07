@@ -17,7 +17,11 @@
     self = [super initWithFrame:frame];
     if (self) {
         appDelegate = [NSApp delegate];
+        container = [[TTModeMenuContainer alloc] initWithFrame:frame];
+        isExpanded = NO;
+        originalHeight = frame.size.height;
         
+        [self addSubview:container];
         [self registerAsObserver];
     }
     
@@ -46,12 +50,38 @@
     }
 }
 
+- (void)mouseUp:(NSEvent *)theEvent {
+    CGRect frame = self.frame;
+    
+    CGFloat newHeight = originalHeight;
+    if (!isExpanded) {
+        newHeight = originalHeight * 4;
+    }
+    frame.size.height = newHeight;
+
+    NSDictionary *growBackground = [NSDictionary dictionaryWithObjectsAndKeys: self, NSViewAnimationTargetKey,
+                                    [NSValue valueWithRect:self.frame], NSViewAnimationStartFrameKey,
+                                    [NSValue valueWithRect:frame], NSViewAnimationEndFrameKey, nil];
+    CGRect originalMenuRect = [self positionContainer:isExpanded];
+    CGRect newMenuRect = [self positionContainer:!isExpanded];
+    NSDictionary *moveMenu = [NSDictionary dictionaryWithObjectsAndKeys: container, NSViewAnimationTargetKey,
+                              [NSValue valueWithRect:originalMenuRect], NSViewAnimationStartFrameKey,
+                              [NSValue valueWithRect:newMenuRect], NSViewAnimationEndFrameKey, nil];
+    NSViewAnimation *animation = [[NSViewAnimation alloc] initWithViewAnimations:@[growBackground, moveMenu]];
+    [animation setAnimationBlockingMode: NSAnimationNonblocking];
+    [animation setAnimationCurve: NSAnimationEaseInOut];
+    [animation setDuration: .35f];
+    [animation startAnimation];
+    
+    isExpanded = !isExpanded;
+}
 
 - (void)drawRect:(NSRect)dirtyRect {
 	[super drawRect:dirtyRect];
     
     [self drawBackground];
-    [self drawSelectedMode];
+    
+    container.frame = [self positionContainer:isExpanded];
 }
 
 - (void)drawBackground {
@@ -97,20 +127,34 @@
     [line stroke];
 }
 
-- (void)drawSelectedMode {
-    NSString *modeTitle = [[NSString stringWithFormat:@"%@ mode",
-                            [appDelegate.diamond.selectedMode title]] uppercaseString];
-    NSShadow *stringShadow = [[NSShadow alloc] init];
-	stringShadow.shadowColor = [NSColor whiteColor];
-	stringShadow.shadowOffset = NSMakeSize(0, -1);
-    stringShadow.shadowBlurRadius = 0;
-    NSDictionary *textAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Futura" size:12],
-                                     NSForegroundColorAttributeName: NSColorFromRGB(0x505050),
-                                     NSShadowAttributeName: stringShadow
-                                     };
-    CGSize textSize = [modeTitle sizeWithAttributes:textAttributes];
-    NSPoint point = NSMakePoint(12, NSHeight(self.bounds) / 2 - (textSize.height / 2));
-    [modeTitle drawAtPoint:point withAttributes:textAttributes];
+- (CGRect)positionContainer:(BOOL)expanded {
+    int offset = 0;
+    switch (appDelegate.diamond.selectedModeDirection) {
+        case NORTH:
+            offset = 0;
+            break;
+        case EAST:
+            offset = NSHeight(self.frame);
+            break;
+        case SOUTH:
+            offset = NSHeight(self.frame) * 2;
+            break;
+        case WEST:
+            offset = NSHeight(self.frame) * 3;
+            break;
+        default:
+            break;
+    }
+    
+    NSRect containerFrame = self.frame;
+    if (expanded) {
+        containerFrame.origin.y = 0;
+    } else {
+        containerFrame.origin.y = -1 * offset;
+    }
+    containerFrame.size.height = originalHeight * 4;
+    
+    return containerFrame;
 }
 
 - (BOOL)isFlipped {

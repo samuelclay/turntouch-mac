@@ -11,8 +11,8 @@
 #import "TTStatusItemView.h"
 #import "TTMenubarController.h"
 
-#define OPEN_DURATION .29
-#define CLOSE_DURATION .12
+#define OPEN_DURATION .19
+#define CLOSE_DURATION .14
 
 #define SEARCH_INSET 17
 
@@ -186,7 +186,7 @@
     
     [NSApp activateIgnoringOtherApps:NO];
     [panel setAlphaValue:0];
-    [panel setFrame:statusRect display:YES];
+    [panel setFrame:panelRect display:YES];
     [panel makeKeyAndOrderFront:nil];
     
     NSTimeInterval openDuration = OPEN_DURATION;
@@ -205,13 +205,9 @@
         }
     }
     
-    NSDictionary *panelResize = @{NSViewAnimationTargetKey: panel,
-                                  NSViewAnimationStartFrameKey: [NSValue valueWithRect:statusRect],
-                                  NSViewAnimationEndFrameKey: [NSValue valueWithRect:panelRect]};
-    NSDictionary *newFadeIn = [NSDictionary dictionaryWithObjectsAndKeys: panel, NSViewAnimationTargetKey,
-                               NSViewAnimationFadeInEffect, NSViewAnimationEffectKey, nil];
-    
-    NSViewAnimation *animation = [[NSViewAnimation alloc] initWithViewAnimations:@[panelResize]];
+    NSDictionary *fadeIn = [NSDictionary dictionaryWithObjectsAndKeys: panel, NSViewAnimationTargetKey,
+                            NSViewAnimationFadeInEffect, NSViewAnimationEffectKey, nil];
+    NSViewAnimation *animation = [[NSViewAnimation alloc] initWithViewAnimations:@[fadeIn]];
     [animation setAnimationBlockingMode: NSAnimationNonblocking];
     [animation setAnimationCurve: NSAnimationEaseIn];
     [animation setDuration: openDuration];

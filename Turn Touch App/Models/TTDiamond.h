@@ -21,6 +21,10 @@ typedef enum {
 @property (nonatomic, assign) TTModeDirection activeModeDirection;
 @property (nonatomic, assign) TTModeDirection selectedModeDirection;
 @property (nonatomic) TTMode *selectedMode;
+@property (nonatomic) TTMode *northMode;
+@property (nonatomic) TTMode *eastMode;
+@property (nonatomic) TTMode *southMode;
+@property (nonatomic) TTMode *westMode;
 
 - (void)runActiveButton;
 

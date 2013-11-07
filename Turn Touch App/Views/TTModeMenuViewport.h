@@ -8,11 +8,16 @@
 
 #import <Cocoa/Cocoa.h>
 #import "TTAppDelegate.h"
+#import "TTModeMenuContainer.h"
 
 @class TTAppDelegate;
+@class TTModeMenuContainer;
 
 @interface TTModeMenuViewport : NSView {
     TTAppDelegate *appDelegate;
+    TTModeMenuContainer *container;
+    BOOL isExpanded;
+    CGFloat originalHeight;
 }
 
 @end

@@ -7,7 +7,20 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "TTAppDelegate.h"
+#import "TTDiamond.h"
+#import "TTDiamondView.h"
 
-@interface TTModeMenuItem : NSView
+@class TTAppDelegate;
+@class TTDiamondView;
+
+@interface TTModeMenuItem : NSView {
+    TTAppDelegate *appDelegate;
+    TTModeDirection modeDirection;
+    TTDiamondView *diamondView;
+    TTMode *itemMode;
+}
+
+- (id)initWithFrame:(NSRect)frame direction:(TTModeDirection)direction;
 
 @end

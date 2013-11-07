@@ -7,7 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "TTModeMenuItem.h"
 
-@interface TTModeMenuContainer : NSView
+@class TTModeMenuItem;
+
+@interface TTModeMenuContainer : NSView {
+    TTModeMenuItem *northItem;
+    TTModeMenuItem *eastItem;
+    TTModeMenuItem *southItem;
+    TTModeMenuItem *westItem;
+}
 
 @end

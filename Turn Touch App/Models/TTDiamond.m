@@ -15,6 +15,10 @@
 @synthesize selectedModeDirection;
 @synthesize activeModeDirection;
 @synthesize selectedMode;
+@synthesize northMode;
+@synthesize eastMode;
+@synthesize southMode;
+@synthesize westMode;
 
 - (id)init {
     if (self = [super init]) {
@@ -23,6 +27,9 @@
                   options:0 context:nil];
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        
+        [self setupModes];
+        
         if ([[defaults objectForKey:@"TT:selectedModeDirection"] integerValue]) {
             selectedModeDirection = (TTModeDirection)[[defaults
                                                        objectForKey:@"TT:selectedModeDirection"]
@@ -32,6 +39,13 @@
     }
     
     return self;
+}
+
+- (void)setupModes {
+    northMode = [[TTModeMusic alloc] init];
+    eastMode = nil;
+    southMode = [[TTModeVideo alloc] init];
+    westMode = nil;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
@@ -56,19 +70,19 @@
     
     switch (selectedModeDirection) {
         case NORTH:
-            selectedMode = [[TTModeMusic alloc] init];
+            selectedMode = northMode;
             break;
             
         case EAST:
-            selectedMode = nil;
+            selectedMode = eastMode;
             break;
             
         case SOUTH:
-            selectedMode = [[TTModeVideo alloc] init];
+            selectedMode = southMode;
             break;
             
         case WEST:
-            selectedMode = nil;
+            selectedMode = westMode;
             break;
     }
     

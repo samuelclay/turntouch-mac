@@ -7,6 +7,7 @@
 //
 
 #import "TTModeMenuContainer.h"
+#import "TTModeMenuItem.h"
 
 @implementation TTModeMenuContainer
 
@@ -14,7 +15,23 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code here.
+        CGRect itemFrame = frame;
+        
+        itemFrame.origin.y = 0;
+        northItem = [[TTModeMenuItem alloc] initWithFrame:itemFrame direction:NORTH];
+        [self addSubview:northItem];
+        
+        itemFrame.origin.y = frame.size.height;
+        eastItem = [[TTModeMenuItem alloc] initWithFrame:itemFrame direction:EAST];
+        [self addSubview:eastItem];
+        
+        itemFrame.origin.y = frame.size.height * 2;
+        southItem = [[TTModeMenuItem alloc] initWithFrame:itemFrame direction:SOUTH];
+        [self addSubview:southItem];
+        
+        itemFrame.origin.y = frame.size.height * 3;;
+        westItem = [[TTModeMenuItem alloc] initWithFrame:itemFrame direction:WEST];
+        [self addSubview:westItem];
     }
     return self;
 }
@@ -22,9 +39,10 @@
 - (void)drawRect:(NSRect)dirtyRect
 {
 	[super drawRect:dirtyRect];
-	
-    [[NSColor redColor] setFill];
-    NSRectFill(dirtyRect);
+}
+
+- (BOOL)isFlipped {
+    return YES;
 }
 
 @end

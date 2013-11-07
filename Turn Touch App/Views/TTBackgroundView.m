@@ -15,6 +15,8 @@
 #define CORNER_RADIUS 8.0f
 
 #define SEARCH_INSET 10.0f
+#define MODE_MENU_HEIGHT 36.0f
+#define DIAMOND_SIZE 120.0f
 
 #pragma mark -
 
@@ -28,15 +30,17 @@
 
 - (void)awakeFromNib {
     CGRect modeMenuFrame = self.frame;
-    modeMenuFrame.size.height = 36;
+    modeMenuFrame.size.height = MODE_MENU_HEIGHT;
     modeMenuFrame.origin.y += ARROW_HEIGHT;
     _modeMenu = [[TTModeMenuViewport alloc] initWithFrame:modeMenuFrame];
     _modeMenu.autoresizingMask = NSViewWidthSizable | NSViewMinXMargin | NSViewMaxXMargin;
     [self addSubview:_modeMenu];
     
-    CGRect diamondRect = NSInsetRect(self.frame, 2.0f, 4.0f);
+    CGRect diamondRect = NSMakeRect(NSWidth(self.frame) / 2 - (DIAMOND_SIZE / 2),
+                                    NSHeight(self.frame) / 2 - (DIAMOND_SIZE * 1.3 / 2),
+                                    DIAMOND_SIZE * 1.3, DIAMOND_SIZE);
     _diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect];
-//    [self addSubview:_diamondView];
+    [self addSubview:_diamondView];
 }
 
 - (BOOL)isFlipped {
