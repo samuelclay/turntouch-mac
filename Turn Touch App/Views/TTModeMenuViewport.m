@@ -137,21 +137,22 @@
             offset = NSHeight(self.frame);
             break;
         case WEST:
-            offset = NSHeight(self.frame) * 3;
+            offset = NSHeight(self.frame) * 2;
             break;
         case SOUTH:
-            offset = NSHeight(self.frame) * 2;
+            offset = NSHeight(self.frame) * 3;
             break;
     }
     
     NSRect containerFrame = self.frame;
     if (expanded) {
-        containerFrame.origin.y = 0;
+        containerFrame.origin.y = g-1 * (self.frame.size.height - offset);
     } else {
         containerFrame.origin.y = -1 * offset;
     }
     containerFrame.size.height = originalHeight * 4;
     
+    NSLog(@"positionContainer (%d): %@ (height: %f)", expanded, NSStringFromRect(containerFrame), self.frame.size.height);
     return containerFrame;
 }
 
