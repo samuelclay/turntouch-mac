@@ -128,31 +128,36 @@
 }
 
 - (CGRect)positionContainer:(BOOL)expanded {
-    int offset = 0;
+    int itemPosition = 0;
+    
     switch (appDelegate.diamond.selectedModeDirection) {
         case NORTH:
-            offset = 0;
+            itemPosition = 0;
             break;
         case EAST:
-            offset = NSHeight(self.frame);
+            itemPosition = originalHeight;
             break;
         case WEST:
-            offset = NSHeight(self.frame) * 2;
+            itemPosition = originalHeight * 2;
             break;
         case SOUTH:
-            offset = NSHeight(self.frame) * 3;
+            itemPosition = originalHeight * 3;
             break;
     }
     
     NSRect containerFrame = self.frame;
+    CGFloat percentComplete;
+    CGFloat y;
     if (expanded) {
-        containerFrame.origin.y = g-1 * (self.frame.size.height - offset);
+        percentComplete = (NSHeight(self.frame) - originalHeight) / (originalHeight*3);
+        y = -1 * itemPosition * (1 - percentComplete);
     } else {
-        containerFrame.origin.y = -1 * offset;
+        percentComplete = (originalHeight*4 - NSHeight(self.frame)) / (originalHeight*3);
+        y = -1 * itemPosition * (percentComplete);
     }
+
+    containerFrame.origin.y = y;
     containerFrame.size.height = originalHeight * 4;
-    
-    NSLog(@"positionContainer (%d): %@ (height: %f)", expanded, NSStringFromRect(containerFrame), self.frame.size.height);
     return containerFrame;
 }
 
