@@ -17,7 +17,7 @@
 #define SEARCH_INSET 17
 
 #define PANEL_HEIGHT 262
-#define PANEL_WIDTH 320
+#define PANEL_WIDTH 322
 #define MENU_ANIMATION_DURATION .12
 
 #pragma mark -

@@ -17,7 +17,7 @@
     if (self) {
         appDelegate = [NSApp delegate];
         modeDirection = direction;
-        CGRect diamondRect = NSMakeRect(NSWidth(frame) - 12 - DIAMOND_SIZE,
+        CGRect diamondRect = NSMakeRect(NSWidth(frame) - 24 - DIAMOND_SIZE,
                                         NSHeight(frame) / 2 - (DIAMOND_SIZE / 2),
                                         DIAMOND_SIZE * 1.3, DIAMOND_SIZE);
         diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect direction:modeDirection];

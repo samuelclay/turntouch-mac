@@ -36,10 +36,11 @@
     _modeMenu.autoresizingMask = NSViewWidthSizable | NSViewMinXMargin | NSViewMaxXMargin;
     [self addSubview:_modeMenu];
     
-    CGRect diamondRect = NSMakeRect(NSWidth(self.frame) / 2 - (DIAMOND_SIZE / 2),
-                                    NSHeight(self.frame) / 2 - (DIAMOND_SIZE * 1.3 / 2),
+    // +1 X offset for panel width fudge
+    CGRect diamondRect = NSMakeRect(NSWidth(self.frame) / 2 - (DIAMOND_SIZE * 1.3 / 2) + 1,
+                                    NSHeight(self.frame) / 2 - (DIAMOND_SIZE / 2) - MODE_MENU_HEIGHT,
                                     DIAMOND_SIZE * 1.3, DIAMOND_SIZE);
-    _diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect];
+    _diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect direction:0 ignoreSelectedDirection:YES];
     [self addSubview:_diamondView];
 }
 

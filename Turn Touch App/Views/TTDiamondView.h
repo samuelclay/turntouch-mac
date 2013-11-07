@@ -23,7 +23,10 @@
 
 @property (nonatomic, assign) CGFloat size;
 @property (nonatomic, setter = setHighlighted:) BOOL isHighlighted;
+@property (nonatomic, assign) BOOL ignoreSelectedMode;
 
 - (id)initWithFrame:(NSRect)frame direction:(TTModeDirection)direction;
+- (id)initWithFrame:(NSRect)frame direction:(TTModeDirection)direction
+ignoreSelectedDirection:(BOOL)ignoreSelectedDirection;
 
 @end
