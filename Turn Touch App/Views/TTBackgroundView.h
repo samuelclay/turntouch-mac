@@ -14,6 +14,7 @@
 #define ARROW_HEIGHT 8
 
 @class TTDiamondView;
+@class TTModeMenuViewport;
 
 @interface TTBackgroundView : NSView {
     NSInteger _arrowX;

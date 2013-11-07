@@ -11,6 +11,10 @@
 
 @implementation TTModeMusic
 
+- (NSString *)title {
+    return @"Music";
+}
+
 - (void)runNorth {
     iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
     NSInteger volume = iTunes.soundVolume;

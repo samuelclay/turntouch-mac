@@ -16,6 +16,8 @@
 - (void)runSouth;
 - (void)runWest;
 
+- (NSString *)title;
+
 @optional
 - (void)activate;
 - (void)deactivate;

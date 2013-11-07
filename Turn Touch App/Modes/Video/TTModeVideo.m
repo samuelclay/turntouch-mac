@@ -13,6 +13,10 @@
 
 @implementation TTModeVideo
 
+- (NSString *)title {
+    return @"Video";
+}
+
 - (void)activate {
     quicktime = [SBApplication applicationWithBundleIdentifier:@"com.apple.QuickTimePlayerX"];
 //    vlc = [SBApplication applicationWithBundleIdentifier:@"org.videolan.vlc"];
