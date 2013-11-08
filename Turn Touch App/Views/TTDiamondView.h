@@ -19,6 +19,11 @@
     TTModeDirection overrideDirection;
     TTModeDirection activeModeDirection;
     TTModeDirection selectedModeDirection;
+    
+    NSBezierPath *northPath;
+    NSBezierPath *eastPath;
+    NSBezierPath *westPath;
+    NSBezierPath *southPath;
 }
 
 @property (nonatomic, assign) CGFloat size;

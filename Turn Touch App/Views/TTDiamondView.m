@@ -35,6 +35,11 @@ ignoreSelectedDirection:(BOOL)ignoreSelectedDirection {
         self.isHighlighted = NO;
         self.ignoreSelectedMode = ignoreSelectedDirection;
         
+        northPath = [NSBezierPath bezierPath];
+        eastPath = [NSBezierPath bezierPath];
+        westPath = [NSBezierPath bezierPath];
+        southPath = [NSBezierPath bezierPath];
+
         appDelegate = [NSApp delegate];
         
         if (direction) {
@@ -89,192 +94,106 @@ ignoreSelectedDirection:(BOOL)ignoreSelectedDirection {
     CGFloat width = NSMaxX(dirtyRect);
     CGFloat height = NSMaxY(dirtyRect);
     CGFloat spacing = SPACING_PCT * width;
-    // North
+
+    [northPath moveToPoint:NSMakePoint(width / 2,
+                                       height)];
+    [northPath lineToPoint:NSMakePoint(width * 1/4 + spacing,
+                                       height * 3/4 + spacing)];
+    [northPath lineToPoint:NSMakePoint(width / 2,
+                                       height/2 + spacing*2)];
+    [northPath lineToPoint:NSMakePoint(width * 3/4 - spacing,
+                                       height * 3/4 + spacing)];
+    [northPath closePath];
     
-    NSBezierPath *north = [NSBezierPath bezierPath];
-    [north moveToPoint:NSMakePoint(width / 2,
-                                   height)];
-    [north lineToPoint:NSMakePoint(width * 1/4 + spacing,
-                                   height * 3/4 + spacing)];
-    [north lineToPoint:NSMakePoint(width / 2,
-                                   height/2 + spacing*2)];
-    [north lineToPoint:NSMakePoint(width * 3/4 - spacing,
-                                   height * 3/4 + spacing)];
-    [north closePath];
+    [eastPath moveToPoint:NSMakePoint(width * 3/4 + spacing,
+                                      height * 3/4 - spacing)];
+    [eastPath lineToPoint:NSMakePoint(width * 1/2 + spacing*2,
+                                      height * 1/2)];
+    [eastPath lineToPoint:NSMakePoint(width * 3/4 + spacing,
+                                      height * 1/4 + spacing)];
+    [eastPath lineToPoint:NSMakePoint(width,
+                                      height * 1/2)];
+    [eastPath closePath];
+
+    [westPath moveToPoint:NSMakePoint(width * 1/4 - spacing,
+                                      height * 3/4 - spacing)];
+    [westPath lineToPoint:NSMakePoint(0,
+                                      height * 1/2)];
+    [westPath lineToPoint:NSMakePoint(width * 1/4 - spacing,
+                                      height * 1/4 + spacing)];
+    [westPath lineToPoint:NSMakePoint(width * 1/2 - spacing*2,
+                                      height * 1/2)];
+    [westPath closePath];
     
-    if (!self.isHighlighted && !_ignoreSelectedMode) {
-        [NSGraphicsContext saveGraphicsState];
-        NSAffineTransform *transform = [NSAffineTransform transform];
-        [transform translateXBy:0 yBy:-0.5f];
-        NSBezierPath *shadowPath = [north copy];
-        [shadowPath transformUsingAffineTransform:transform];
-        [[NSColor colorWithDeviceWhite:1.0f alpha:0.4f] setStroke];
-        [[NSBezierPath bezierPathWithRect:NSMakeRect(width*1/4+spacing*2, height*3/4,
-                                                     width*2/4-spacing*4, -1 * height*1/4)]
-         setClip];
-        [shadowPath setLineWidth:0.5f];
-        [shadowPath stroke];
-        [NSGraphicsContext restoreGraphicsState];
-    }
+    [southPath moveToPoint:NSMakePoint(width * 1/2,
+                                       height * 1/2 - spacing*2)];
+    [southPath lineToPoint:NSMakePoint(width * 1/4 + spacing,
+                                       height * 1/4 - spacing)];
+    [southPath lineToPoint:NSMakePoint(width * 1/2,
+                                       0)];
+    [southPath lineToPoint:NSMakePoint(width * 3/4 - spacing,
+                                       height * 1/4 - spacing)];
+    [southPath closePath];
     
-    NSColor *northModeColor = [NSColor colorWithCalibratedHue:0.55f saturation:0.5f brightness:0.2f
-                                                        alpha:activeModeDirection == NORTH ? 0.5f :
-                               selectedModeDirection == NORTH ? 1.0f : INACTIVE_OPACITY];
-    if (!_ignoreSelectedMode) {
-        if (self.isHighlighted) {
-            [[NSColor colorWithDeviceWhite:1.0f
-                                     alpha:activeModeDirection == NORTH ? 0.5f :
-                                           selectedModeDirection == NORTH ? 1.0f : INACTIVE_OPACITY]
-             setFill];
-        } else {
-            [northModeColor setFill];
+    for (NSBezierPath *path in @[northPath, eastPath, westPath, southPath]) {
+        TTModeDirection direction;
+        if (path == northPath) {
+            direction = NORTH;
+        } else if (path == eastPath) {
+            direction = EAST;
+        } else if (path == westPath) {
+            direction = WEST;
+        } else if (path == southPath) {
+            direction = SOUTH;
         }
-        [north fill];
-    } else {
-        north.lineWidth = 1.0f;
-        [northModeColor setStroke];
-        [north stroke];
-    }
-    
-    // East
-    
-    NSBezierPath *east = [NSBezierPath bezierPath];
-    [east moveToPoint:NSMakePoint(width * 3/4 + spacing,
-                                  height * 3/4 - spacing)];
-    [east lineToPoint:NSMakePoint(width * 1/2 + spacing*2,
-                                  height * 1/2)];
-    [east lineToPoint:NSMakePoint(width * 3/4 + spacing,
-                                  height * 1/4 + spacing)];
-    [east lineToPoint:NSMakePoint(width,
-                                  height * 1/2)];
-    [east closePath];
-    
-    if (!self.isHighlighted && !_ignoreSelectedMode) {
-        [NSGraphicsContext saveGraphicsState];
-        NSAffineTransform *transform = [NSAffineTransform transform];
-        [transform translateXBy:0 yBy:-0.5f];
-        NSBezierPath *shadowPath = [east copy];
-        [shadowPath transformUsingAffineTransform:transform];
-        [[NSColor colorWithDeviceWhite:1.0f alpha:0.4f] setStroke];
-        [[NSBezierPath bezierPathWithRect:NSMakeRect(width*1/2+spacing*2, height*1/2,
-                                                     width*2/4-spacing*2, -1 * height*1/4)]
-         setClip];
-        [shadowPath setLineWidth:0.5f];
-        [shadowPath stroke];
-        [NSGraphicsContext restoreGraphicsState];
-    }
-    
-    NSColor *eastModeColor = [NSColor colorWithCalibratedHue:0.55f saturation:0.5f brightness:0.2f
-                                                        alpha:activeModeDirection == EAST ? 0.5f :
-                               selectedModeDirection == EAST ? 1.0f : INACTIVE_OPACITY];
-    if (!_ignoreSelectedMode) {
-        if (self.isHighlighted) {
-            [[NSColor colorWithDeviceWhite:1.0f
-                                     alpha:activeModeDirection == EAST ? 0.5f :
-              selectedModeDirection == EAST ? 1.0f : INACTIVE_OPACITY]
-             setFill];
-        } else {
-            [eastModeColor setFill];
+        
+        if (!self.isHighlighted && !_ignoreSelectedMode) {
+            [NSGraphicsContext saveGraphicsState];
+            NSAffineTransform *transform = [NSAffineTransform transform];
+            [transform translateXBy:0 yBy:-0.5f];
+            NSBezierPath *shadowPath = [path copy];
+            [shadowPath transformUsingAffineTransform:transform];
+            [[NSColor colorWithDeviceWhite:1.0f alpha:0.4f] setStroke];
+            if (path == northPath) {
+                [[NSBezierPath bezierPathWithRect:NSMakeRect(width*1/4+spacing*2, height*3/4,
+                                                             width*2/4-spacing*4, -1 * height*1/4)]
+                 setClip];
+            } else if (path == eastPath) {
+                [[NSBezierPath bezierPathWithRect:NSMakeRect(width*1/2+spacing*2, height*1/2,
+                                                             width*2/4-spacing*2, -1 * height*1/4)]
+                 setClip];
+            } else if (path == westPath) {
+                [[NSBezierPath bezierPathWithRect:NSMakeRect(0, height*1/2,
+                                                             width*2/4-spacing*2, -1 * height*1/4)]
+                 setClip];
+            } else if (path == southPath) {
+                [[NSBezierPath bezierPathWithRect:NSMakeRect(width*1/4+spacing*2, 0,
+                                                             width*2/4-spacing*4, height*1/4)]
+                 setClip];
+            }
+            [shadowPath setLineWidth:0.5f];
+            [shadowPath stroke];
+            [NSGraphicsContext restoreGraphicsState];
         }
-        [east fill];
-    } else {
-        east.lineWidth = 1.0f;
-        [eastModeColor setStroke];
-        [east stroke];
-    }
-    
-    // West
-    
-    NSBezierPath *west = [NSBezierPath bezierPath];
-    [west moveToPoint:NSMakePoint(width * 1/4 - spacing,
-                                  height * 3/4 - spacing)];
-    [west lineToPoint:NSMakePoint(0,
-                                  height * 1/2)];
-    [west lineToPoint:NSMakePoint(width * 1/4 - spacing,
-                                  height * 1/4 + spacing)];
-    [west lineToPoint:NSMakePoint(width * 1/2 - spacing*2,
-                                  height * 1/2)];
-    [west closePath];
-    
-    if (!self.isHighlighted && !_ignoreSelectedMode) {
-        [NSGraphicsContext saveGraphicsState];
-        NSAffineTransform *transform = [NSAffineTransform transform];
-        [transform translateXBy:0 yBy:-0.5f];
-        NSBezierPath *shadowPath = [west copy];
-        [shadowPath transformUsingAffineTransform:transform];
-        [[NSColor colorWithDeviceWhite:1.0f alpha:0.4f] setStroke];
-        [[NSBezierPath bezierPathWithRect:NSMakeRect(0, height*1/2,
-                                                     width*2/4-spacing*2, -1 * height*1/4)]
-         setClip];
-        [shadowPath setLineWidth:0.5f];
-        [shadowPath stroke];
-        [NSGraphicsContext restoreGraphicsState];
-    }
-    
-    NSColor *westModeColor = [NSColor colorWithCalibratedHue:0.55f saturation:0.5f brightness:0.2f
-                                                        alpha:activeModeDirection == WEST ? 0.5f :
-                               selectedModeDirection == WEST ? 1.0f : INACTIVE_OPACITY];
-    if (!_ignoreSelectedMode) {
-        if (self.isHighlighted) {
-            [[NSColor colorWithDeviceWhite:1.0f
-                                     alpha:activeModeDirection == WEST ? 0.5f :
-              selectedModeDirection == WEST ? 1.0f : INACTIVE_OPACITY]
-             setFill];
+        
+        NSColor *modeColor = [NSColor colorWithCalibratedHue:0.55f saturation:0.5f brightness:0.2f
+                                                        alpha:activeModeDirection == direction ? 0.5f :
+                                   selectedModeDirection == direction ? 1.0f : INACTIVE_OPACITY];
+        if (!_ignoreSelectedMode) {
+            if (self.isHighlighted) {
+                [[NSColor colorWithDeviceWhite:1.0f
+                                         alpha:activeModeDirection == direction ? 0.5f :
+                                               selectedModeDirection == direction ? 1.0f : INACTIVE_OPACITY]
+                 setFill];
+            } else {
+                [modeColor setFill];
+            }
+            [path fill];
         } else {
-            [westModeColor setFill];
+            path.lineWidth = 1.0f;
+            [modeColor setStroke];
+            [path stroke];
         }
-        [west fill];
-    } else {
-        west.lineWidth = 1.0f;
-        [westModeColor setStroke];
-        [west stroke];
-    }
-    
-    // South
-    
-    NSBezierPath *south = [NSBezierPath bezierPath];
-    [south moveToPoint:NSMakePoint(width * 1/2,
-                                   height * 1/2 - spacing*2)];
-    [south lineToPoint:NSMakePoint(width * 1/4 + spacing,
-                                   height * 1/4 - spacing)];
-    [south lineToPoint:NSMakePoint(width * 1/2,
-                                   0)];
-    [south lineToPoint:NSMakePoint(width * 3/4 - spacing,
-                                   height * 1/4 - spacing)];
-    [south closePath];
-    
-    if (!self.isHighlighted && !_ignoreSelectedMode) {
-        [NSGraphicsContext saveGraphicsState];
-        NSAffineTransform *transform = [NSAffineTransform transform];
-        [transform translateXBy:0 yBy:-0.5f];
-        NSBezierPath *shadowPath = [south copy];
-        [shadowPath transformUsingAffineTransform:transform];
-        [[NSColor colorWithDeviceWhite:1.0f alpha:.4f] setStroke];
-        [[NSBezierPath bezierPathWithRect:NSMakeRect(width*1/4+spacing*2, 0,
-                                                     width*2/4-spacing*4, height*1/4)]
-         setClip];
-        [shadowPath setLineWidth:0.5f];
-        [shadowPath stroke];
-        [NSGraphicsContext restoreGraphicsState];
-    }
-    
-    NSColor *southModeColor = [NSColor colorWithCalibratedHue:0.55f saturation:0.5f brightness:0.2f
-                                                        alpha:activeModeDirection == SOUTH ? 0.5f :
-                               selectedModeDirection == SOUTH ? 1.0f : INACTIVE_OPACITY];
-    if (!_ignoreSelectedMode) {
-        if (self.isHighlighted) {
-            [[NSColor colorWithDeviceWhite:1.0f
-                                     alpha:activeModeDirection == SOUTH ? 0.5f :
-              selectedModeDirection == SOUTH ? 1.0f : INACTIVE_OPACITY]
-             setFill];
-        } else {
-            [southModeColor setFill];
-        }
-        [south fill];
-    } else {
-        south.lineWidth = 1.0f;
-        [southModeColor setStroke];
-        [south stroke];
     }
 }
 
