@@ -16,6 +16,10 @@
 - (void)runWest;
 - (void)runSouth;
 
+- (NSString *)titleNorth;
+- (NSString *)titleEast;
+- (NSString *)titleWest;
+- (NSString *)titleSouth;
 - (NSString *)title;
 
 @optional

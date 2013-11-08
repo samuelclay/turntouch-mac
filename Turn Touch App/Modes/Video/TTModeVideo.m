@@ -17,6 +17,22 @@
     return @"Video";
 }
 
+- (NSString *)titleNorth {
+    return @"Volume Up";
+}
+
+- (NSString *)titleEast {
+    return @"Play/Pause";
+}
+
+- (NSString *)titleWest {
+    return @"Rewind 30s";
+}
+
+- (NSString *)titleSouth {
+    return @"Volume Down";
+}
+
 - (void)activate {
     quicktime = [SBApplication applicationWithBundleIdentifier:@"com.apple.QuickTimePlayerX"];
 //    vlc = [SBApplication applicationWithBundleIdentifier:@"org.videolan.vlc"];

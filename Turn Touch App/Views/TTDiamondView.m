@@ -109,7 +109,9 @@ ignoreSelectedDirection:(BOOL)ignoreSelectedDirection {
         NSBezierPath *shadowPath = [north copy];
         [shadowPath transformUsingAffineTransform:transform];
         [[NSColor colorWithDeviceWhite:1.0f alpha:0.4f] setStroke];
-        [[NSBezierPath bezierPathWithRect:NSMakeRect(width*1/4+spacing*2, height*3/4, width*2/4-spacing*4, -1 * height*1/4)] setClip];
+        [[NSBezierPath bezierPathWithRect:NSMakeRect(width*1/4+spacing*2, height*3/4,
+                                                     width*2/4-spacing*4, -1 * height*1/4)]
+         setClip];
         [shadowPath setLineWidth:0.5f];
         [shadowPath stroke];
         [NSGraphicsContext restoreGraphicsState];
@@ -154,7 +156,9 @@ ignoreSelectedDirection:(BOOL)ignoreSelectedDirection {
         NSBezierPath *shadowPath = [east copy];
         [shadowPath transformUsingAffineTransform:transform];
         [[NSColor colorWithDeviceWhite:1.0f alpha:0.4f] setStroke];
-        [[NSBezierPath bezierPathWithRect:NSMakeRect(width*1/2+spacing*2, height*1/2, width*2/4-spacing*2, -1 * height*1/4)] setClip];
+        [[NSBezierPath bezierPathWithRect:NSMakeRect(width*1/2+spacing*2, height*1/2,
+                                                     width*2/4-spacing*2, -1 * height*1/4)]
+         setClip];
         [shadowPath setLineWidth:0.5f];
         [shadowPath stroke];
         [NSGraphicsContext restoreGraphicsState];
@@ -199,7 +203,9 @@ ignoreSelectedDirection:(BOOL)ignoreSelectedDirection {
         NSBezierPath *shadowPath = [west copy];
         [shadowPath transformUsingAffineTransform:transform];
         [[NSColor colorWithDeviceWhite:1.0f alpha:0.4f] setStroke];
-        [[NSBezierPath bezierPathWithRect:NSMakeRect(0, height*1/2, width*2/4-spacing*2, -1 * height*1/4)] setClip];
+        [[NSBezierPath bezierPathWithRect:NSMakeRect(0, height*1/2,
+                                                     width*2/4-spacing*2, -1 * height*1/4)]
+         setClip];
         [shadowPath setLineWidth:0.5f];
         [shadowPath stroke];
         [NSGraphicsContext restoreGraphicsState];
@@ -244,7 +250,9 @@ ignoreSelectedDirection:(BOOL)ignoreSelectedDirection {
         NSBezierPath *shadowPath = [south copy];
         [shadowPath transformUsingAffineTransform:transform];
         [[NSColor colorWithDeviceWhite:1.0f alpha:.4f] setStroke];
-        [[NSBezierPath bezierPathWithRect:NSMakeRect(width*1/4+spacing*2, 0, width*2/4-spacing*4, height*1/4)] setClip];
+        [[NSBezierPath bezierPathWithRect:NSMakeRect(width*1/4+spacing*2, 0,
+                                                     width*2/4-spacing*4, height*1/4)]
+         setClip];
         [shadowPath setLineWidth:0.5f];
         [shadowPath stroke];
         [NSGraphicsContext restoreGraphicsState];

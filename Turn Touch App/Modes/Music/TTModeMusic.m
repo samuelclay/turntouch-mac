@@ -15,6 +15,22 @@
     return @"Music";
 }
 
+- (NSString *)titleNorth {
+    return @"Volume Up";
+}
+
+- (NSString *)titleEast {
+    return @"Next Track";
+}
+
+- (NSString *)titleWest {
+    return @"Play/Pause";
+}
+
+- (NSString *)titleSouth {
+    return @"Volume Down";
+}
+
 - (void)runNorth {
     iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
     NSInteger volume = iTunes.soundVolume;

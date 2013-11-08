@@ -79,8 +79,10 @@
     stringShadow.shadowColor = [NSColor whiteColor];
     stringShadow.shadowOffset = NSMakeSize(0, -1);
     stringShadow.shadowBlurRadius = 0;
+    NSColor *textColor = appDelegate.diamond.selectedModeDirection == modeDirection ?
+                         NSColorFromRGB(0x404A60) : NSColorFromRGB(0x808388);
     NSDictionary *textAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Futura" size:13],
-                                     NSForegroundColorAttributeName: NSColorFromRGB(0x505050),
+                                     NSForegroundColorAttributeName: textColor,
                                      NSShadowAttributeName: stringShadow
                                      };
     CGSize textSize = [modeTitle sizeWithAttributes:textAttributes];
