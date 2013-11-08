@@ -9,6 +9,8 @@
 #import "TTDiamond.h"
 #import "TTModeMusic.h"
 #import "TTModeVideo.h"
+#import "TTModeAlarmClock.h"
+#import "TTModeNews.h"
 
 @implementation TTDiamond
 
@@ -43,8 +45,8 @@
 
 - (void)setupModes {
     northMode = [[TTModeMusic alloc] init];
-    eastMode = nil;
-    westMode = nil;
+    eastMode = [[TTModeAlarmClock alloc] init];
+    westMode = [[TTModeNews alloc] init];
     southMode = [[TTModeVideo alloc] init];
 }
 

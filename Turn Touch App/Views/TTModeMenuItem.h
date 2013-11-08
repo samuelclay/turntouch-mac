@@ -19,6 +19,11 @@
     TTModeDirection modeDirection;
     TTDiamondView *diamondView;
     TTMode *itemMode;
+    
+    NSImage *modeImage;
+    NSString *modeTitle;
+    NSDictionary *modeAttributes;
+    CGSize textSize;
 }
 
 - (id)initWithFrame:(NSRect)frame direction:(TTModeDirection)direction;

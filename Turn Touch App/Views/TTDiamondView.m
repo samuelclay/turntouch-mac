@@ -90,7 +90,6 @@ ignoreSelectedDirection:(BOOL)ignoreSelectedDirection {
 }
 
 - (void)drawPaths:(NSRect)rect {
-    NSLog(@"diamond rect: %@", NSStringFromRect(rect));
     CGFloat width = NSMaxX(rect);
     CGFloat height = NSMaxY(rect);
     CGFloat spacing = SPACING_PCT * width;

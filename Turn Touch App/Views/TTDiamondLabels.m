@@ -44,9 +44,8 @@
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
-    NSLog(@"diamond labels rect: %@ / %@", NSStringFromRect(self.frame), NSStringFromRect(diamondRect));
 	[super drawRect:dirtyRect];
-	
+	return;
     CGFloat lineSize = 8.0f;
     CGFloat offsetX = NSMinX(diamondRect);
     CGFloat offsetY = NSMaxY(self.frame) - NSMaxY(diamondRect);
@@ -60,10 +59,10 @@
             [line moveToPoint:NSMakePoint(offsetX + width / 2, offsetY + height - lineSize)];
             [line lineToPoint:NSMakePoint(offsetX + width / 2, offsetY + height + lineSize)];
         } else if (direction == EAST) {
-            [line moveToPoint:NSMakePoint(offsetX + width - lineSize, offsetY + height * 1/2)];
+            [line moveToPoint:NSMakePoint(offsetX + width - lineSize*2, offsetY + height * 1/2)];
             [line lineToPoint:NSMakePoint(offsetX + width + lineSize, offsetY + height * 1/2)];
         } else if (direction == WEST) {
-            [line moveToPoint:NSMakePoint(offsetX + lineSize, offsetY + height * 1/2)];
+            [line moveToPoint:NSMakePoint(offsetX + lineSize*2, offsetY + height * 1/2)];
             [line lineToPoint:NSMakePoint(offsetX - lineSize, offsetY + height * 1/2)];
         } else if (direction == SOUTH) {
             [line moveToPoint:NSMakePoint(offsetX + width / 2, offsetY + lineSize)];
@@ -72,7 +71,7 @@
         
         [line setLineWidth:12.0];
         [[NSColor whiteColor] set];
-        [line stroke];
+//        [line stroke];
     }
 
     for (TTModeDirection direction=1; direction <= 4; direction++) {

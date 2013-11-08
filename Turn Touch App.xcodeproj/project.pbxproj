@@ -14,16 +14,12 @@
 		FF0E12CF18247D6100D49EC7 /* TTModeMusic.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12CE18247D6100D49EC7 /* TTModeMusic.m */; };
 		FF0E12D11824811200D49EC7 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0E12D01824811200D49EC7 /* ScriptingBridge.framework */; };
 		FF0E12D41828560000D49EC7 /* TTModeVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12D31828560000D49EC7 /* TTModeVideo.m */; };
-		FF3A9F6517C42B5E00C5C2D5 /* menulet_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3A9F6317C42B5E00C5C2D5 /* menulet_icon.png */; };
-		FF3A9F6617C42B5E00C5C2D5 /* menulet_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3A9F6417C42B5E00C5C2D5 /* menulet_icon_active.png */; };
 		FF3A9F6C17C4351B00C5C2D5 /* TTPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A9F6B17C4351B00C5C2D5 /* TTPanelController.m */; };
 		FF3A9F6F17C4353300C5C2D5 /* TTPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A9F6E17C4353300C5C2D5 /* TTPanel.m */; };
 		FF3A9F7217C4354A00C5C2D5 /* TTStatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A9F7117C4354A00C5C2D5 /* TTStatusItemView.m */; };
 		FF3A9F7517C4355B00C5C2D5 /* TTBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A9F7417C4355B00C5C2D5 /* TTBackgroundView.m */; };
 		FF3A9F7717C4358000C5C2D5 /* TTPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3A9F7617C4358000C5C2D5 /* TTPanel.xib */; };
 		FF3A9F7A17C436DC00C5C2D5 /* TTMenubarController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A9F7917C436DC00C5C2D5 /* TTMenubarController.m */; };
-		FF3A9F7C17C442BB00C5C2D5 /* menulet_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3A9F7B17C442BB00C5C2D5 /* menulet_icon@2x.png */; };
-		FF3A9F7E17C4434F00C5C2D5 /* menulet_icon_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3A9F7D17C4434F00C5C2D5 /* menulet_icon_active@2x.png */; };
 		FF4E2630182317D000D477F6 /* TTSerialMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4E262F182317D000D477F6 /* TTSerialMonitor.m */; };
 		FF4E26321823197D00D477F6 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4E26311823197D00D477F6 /* IOKit.framework */; };
 		FF4F9AFA1829B1A900D2F975 /* TTModeMenuViewport.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4F9AF91829B1A900D2F975 /* TTModeMenuViewport.m */; };
@@ -36,6 +32,20 @@
 		FF8C834A17AB14B5000166FC /* TTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8C834917AB14B5000166FC /* TTAppDelegate.m */; };
 		FF8C834D17AB14B5000166FC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF8C834B17AB14B5000166FC /* MainMenu.xib */; };
 		FFAA4F4E182C99F30049FFC7 /* TTDiamondLabels.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4F4D182C99F30049FFC7 /* TTDiamondLabels.m */; };
+		FFAA4F5E182D96D60049FFC7 /* cog.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAA4F52182D96D60049FFC7 /* cog.png */; };
+		FFAA4F5F182D96D60049FFC7 /* equalizer-1.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAA4F53182D96D60049FFC7 /* equalizer-1.png */; };
+		FFAA4F60182D96D60049FFC7 /* filmstrip-3.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAA4F54182D96D60049FFC7 /* filmstrip-3.png */; };
+		FFAA4F61182D96D60049FFC7 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAA4F55182D96D60049FFC7 /* heart.png */; };
+		FFAA4F62182D96D60049FFC7 /* icon_movie.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAA4F56182D96D60049FFC7 /* icon_movie.png */; };
+		FFAA4F63182D96D60049FFC7 /* icon_music.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAA4F57182D96D60049FFC7 /* icon_music.png */; };
+		FFAA4F64182D96D60049FFC7 /* newspaper-3.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAA4F58182D96D60049FFC7 /* newspaper-3.png */; };
+		FFAA4F65182D96D60049FFC7 /* presentation-chart.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAA4F59182D96D60049FFC7 /* presentation-chart.png */; };
+		FFAA4F66182D96D60049FFC7 /* speaker.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAA4F5A182D96D60049FFC7 /* speaker.png */; };
+		FFAA4F67182D96D60049FFC7 /* sun.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAA4F5B182D96D60049FFC7 /* sun.png */; };
+		FFAA4F68182D96D60049FFC7 /* television.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAA4F5C182D96D60049FFC7 /* television.png */; };
+		FFAA4F69182D96D60049FFC7 /* vynil.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAA4F5D182D96D60049FFC7 /* vynil.png */; };
+		FFAA4F6F182D99640049FFC7 /* TTModeAlarmClock.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4F6E182D99640049FFC7 /* TTModeAlarmClock.m */; };
+		FFAA4F72182D9A5F0049FFC7 /* TTModeNews.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4F71182D9A5F0049FFC7 /* TTModeNews.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,8 +67,6 @@
 		FF0E12D31828560000D49EC7 /* TTModeVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeVideo.m; path = Modes/Video/TTModeVideo.m; sourceTree = "<group>"; };
 		FF0E12D61828569300D49EC7 /* Quicktime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Quicktime.h; path = Modes/Video/Quicktime.h; sourceTree = "<group>"; };
 		FF0E12D71828569300D49EC7 /* VLC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VLC.h; path = Modes/Video/VLC.h; sourceTree = "<group>"; };
-		FF3A9F6317C42B5E00C5C2D5 /* menulet_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menulet_icon.png; sourceTree = "<group>"; };
-		FF3A9F6417C42B5E00C5C2D5 /* menulet_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menulet_icon_active.png; sourceTree = "<group>"; };
 		FF3A9F6A17C4351B00C5C2D5 /* TTPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTPanelController.h; path = Classes/TTPanelController.h; sourceTree = "<group>"; };
 		FF3A9F6B17C4351B00C5C2D5 /* TTPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTPanelController.m; path = Classes/TTPanelController.m; sourceTree = "<group>"; };
 		FF3A9F6D17C4353300C5C2D5 /* TTPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTPanel.h; path = Views/TTPanel.h; sourceTree = "<group>"; };
@@ -70,8 +78,6 @@
 		FF3A9F7617C4358000C5C2D5 /* TTPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTPanel.xib; path = Views/TTPanel.xib; sourceTree = "<group>"; };
 		FF3A9F7817C436DC00C5C2D5 /* TTMenubarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTMenubarController.h; path = Classes/TTMenubarController.h; sourceTree = "<group>"; };
 		FF3A9F7917C436DC00C5C2D5 /* TTMenubarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTMenubarController.m; path = Classes/TTMenubarController.m; sourceTree = "<group>"; };
-		FF3A9F7B17C442BB00C5C2D5 /* menulet_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menulet_icon@2x.png"; sourceTree = "<group>"; };
-		FF3A9F7D17C4434F00C5C2D5 /* menulet_icon_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menulet_icon_active@2x.png"; sourceTree = "<group>"; };
 		FF4E262E182317D000D477F6 /* TTSerialMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSerialMonitor.h; path = SerialMonitor/TTSerialMonitor.h; sourceTree = "<group>"; };
 		FF4E262F182317D000D477F6 /* TTSerialMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSerialMonitor.m; path = SerialMonitor/TTSerialMonitor.m; sourceTree = "<group>"; };
 		FF4E26311823197D00D477F6 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -98,6 +104,22 @@
 		FF8C835317AB14F4000166FC /* Turn Touch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Turn Touch App.entitlements"; sourceTree = "<group>"; };
 		FFAA4F4C182C99F30049FFC7 /* TTDiamondLabels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTDiamondLabels.h; path = Views/TTDiamondLabels.h; sourceTree = "<group>"; };
 		FFAA4F4D182C99F30049FFC7 /* TTDiamondLabels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTDiamondLabels.m; path = Views/TTDiamondLabels.m; sourceTree = "<group>"; };
+		FFAA4F52182D96D60049FFC7 /* cog.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = cog.png; path = icons/cog.png; sourceTree = "<group>"; };
+		FFAA4F53182D96D60049FFC7 /* equalizer-1.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = "equalizer-1.png"; path = "icons/equalizer-1.png"; sourceTree = "<group>"; };
+		FFAA4F54182D96D60049FFC7 /* filmstrip-3.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = "filmstrip-3.png"; path = "icons/filmstrip-3.png"; sourceTree = "<group>"; };
+		FFAA4F55182D96D60049FFC7 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = heart.png; path = icons/heart.png; sourceTree = "<group>"; };
+		FFAA4F56182D96D60049FFC7 /* icon_movie.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = icon_movie.png; path = icons/icon_movie.png; sourceTree = "<group>"; };
+		FFAA4F57182D96D60049FFC7 /* icon_music.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = icon_music.png; path = icons/icon_music.png; sourceTree = "<group>"; };
+		FFAA4F58182D96D60049FFC7 /* newspaper-3.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = "newspaper-3.png"; path = "icons/newspaper-3.png"; sourceTree = "<group>"; };
+		FFAA4F59182D96D60049FFC7 /* presentation-chart.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = "presentation-chart.png"; path = "icons/presentation-chart.png"; sourceTree = "<group>"; };
+		FFAA4F5A182D96D60049FFC7 /* speaker.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = speaker.png; path = icons/speaker.png; sourceTree = "<group>"; };
+		FFAA4F5B182D96D60049FFC7 /* sun.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = sun.png; path = icons/sun.png; sourceTree = "<group>"; };
+		FFAA4F5C182D96D60049FFC7 /* television.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = television.png; path = icons/television.png; sourceTree = "<group>"; };
+		FFAA4F5D182D96D60049FFC7 /* vynil.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = vynil.png; path = icons/vynil.png; sourceTree = "<group>"; };
+		FFAA4F6D182D99640049FFC7 /* TTModeAlarmClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeAlarmClock.h; path = "Modes/Alarm Clock/TTModeAlarmClock.h"; sourceTree = "<group>"; };
+		FFAA4F6E182D99640049FFC7 /* TTModeAlarmClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeAlarmClock.m; path = "Modes/Alarm Clock/TTModeAlarmClock.m"; sourceTree = "<group>"; };
+		FFAA4F70182D9A5F0049FFC7 /* TTModeNews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeNews.h; path = Modes/News/TTModeNews.h; sourceTree = "<group>"; };
+		FFAA4F71182D9A5F0049FFC7 /* TTModeNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeNews.m; path = Modes/News/TTModeNews.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +160,8 @@
 		FF0E12C418247B7A00D49EC7 /* Modes */ = {
 			isa = PBXGroup;
 			children = (
+				FFAA4F6C182D99440049FFC7 /* Alarm Clock */,
+				FFAA4F6B182D993F0049FFC7 /* News */,
 				FF0E12D51828560400D49EC7 /* Video */,
 				FF0E12CB18247D3000D49EC7 /* Music */,
 			);
@@ -168,10 +192,7 @@
 		FF3A9F6217C42B5E00C5C2D5 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				FF3A9F6317C42B5E00C5C2D5 /* menulet_icon.png */,
-				FF3A9F7B17C442BB00C5C2D5 /* menulet_icon@2x.png */,
-				FF3A9F6417C42B5E00C5C2D5 /* menulet_icon_active.png */,
-				FF3A9F7D17C4434F00C5C2D5 /* menulet_icon_active@2x.png */,
+				FFAA4F6A182D96E50049FFC7 /* icons */,
 			);
 			name = Images;
 			path = "Turn Touch App/Images";
@@ -292,6 +313,43 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		FFAA4F6A182D96E50049FFC7 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				FFAA4F52182D96D60049FFC7 /* cog.png */,
+				FFAA4F53182D96D60049FFC7 /* equalizer-1.png */,
+				FFAA4F54182D96D60049FFC7 /* filmstrip-3.png */,
+				FFAA4F55182D96D60049FFC7 /* heart.png */,
+				FFAA4F56182D96D60049FFC7 /* icon_movie.png */,
+				FFAA4F57182D96D60049FFC7 /* icon_music.png */,
+				FFAA4F58182D96D60049FFC7 /* newspaper-3.png */,
+				FFAA4F59182D96D60049FFC7 /* presentation-chart.png */,
+				FFAA4F5A182D96D60049FFC7 /* speaker.png */,
+				FFAA4F5B182D96D60049FFC7 /* sun.png */,
+				FFAA4F5C182D96D60049FFC7 /* television.png */,
+				FFAA4F5D182D96D60049FFC7 /* vynil.png */,
+			);
+			name = icons;
+			sourceTree = "<group>";
+		};
+		FFAA4F6B182D993F0049FFC7 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				FFAA4F70182D9A5F0049FFC7 /* TTModeNews.h */,
+				FFAA4F71182D9A5F0049FFC7 /* TTModeNews.m */,
+			);
+			name = News;
+			sourceTree = "<group>";
+		};
+		FFAA4F6C182D99440049FFC7 /* Alarm Clock */ = {
+			isa = PBXGroup;
+			children = (
+				FFAA4F6D182D99640049FFC7 /* TTModeAlarmClock.h */,
+				FFAA4F6E182D99640049FFC7 /* TTModeAlarmClock.m */,
+			);
+			name = "Alarm Clock";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -350,13 +408,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF8C834117AB14B5000166FC /* InfoPlist.strings in Resources */,
+				FFAA4F61182D96D60049FFC7 /* heart.png in Resources */,
 				FF8C834717AB14B5000166FC /* Credits.rtf in Resources */,
+				FFAA4F68182D96D60049FFC7 /* television.png in Resources */,
+				FFAA4F66182D96D60049FFC7 /* speaker.png in Resources */,
+				FFAA4F65182D96D60049FFC7 /* presentation-chart.png in Resources */,
 				FF8C834D17AB14B5000166FC /* MainMenu.xib in Resources */,
-				FF3A9F6517C42B5E00C5C2D5 /* menulet_icon.png in Resources */,
-				FF3A9F6617C42B5E00C5C2D5 /* menulet_icon_active.png in Resources */,
+				FFAA4F5E182D96D60049FFC7 /* cog.png in Resources */,
+				FFAA4F60182D96D60049FFC7 /* filmstrip-3.png in Resources */,
+				FFAA4F63182D96D60049FFC7 /* icon_music.png in Resources */,
+				FFAA4F5F182D96D60049FFC7 /* equalizer-1.png in Resources */,
 				FF3A9F7717C4358000C5C2D5 /* TTPanel.xib in Resources */,
-				FF3A9F7C17C442BB00C5C2D5 /* menulet_icon@2x.png in Resources */,
-				FF3A9F7E17C4434F00C5C2D5 /* menulet_icon_active@2x.png in Resources */,
+				FFAA4F67182D96D60049FFC7 /* sun.png in Resources */,
+				FFAA4F62182D96D60049FFC7 /* icon_movie.png in Resources */,
+				FFAA4F64182D96D60049FFC7 /* newspaper-3.png in Resources */,
+				FFAA4F69182D96D60049FFC7 /* vynil.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,11 +446,13 @@
 				FF0E12CA18247BAE00D49EC7 /* TTMode.m in Sources */,
 				FF3A9F7217C4354A00C5C2D5 /* TTStatusItemView.m in Sources */,
 				FF3A9F7517C4355B00C5C2D5 /* TTBackgroundView.m in Sources */,
+				FFAA4F72182D9A5F0049FFC7 /* TTModeNews.m in Sources */,
 				FF3A9F7A17C436DC00C5C2D5 /* TTMenubarController.m in Sources */,
 				FF0E12CF18247D6100D49EC7 /* TTModeMusic.m in Sources */,
 				FF0E12D41828560000D49EC7 /* TTModeVideo.m in Sources */,
 				FF0E12B81824285100D49EC7 /* TTDiamondView.m in Sources */,
 				FFAA4F4E182C99F30049FFC7 /* TTDiamondLabels.m in Sources */,
+				FFAA4F6F182D99640049FFC7 /* TTModeAlarmClock.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

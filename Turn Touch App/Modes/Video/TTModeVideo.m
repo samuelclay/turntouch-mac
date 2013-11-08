@@ -17,6 +17,10 @@
     return @"Video";
 }
 
+- (NSString *)imageName {
+    return @"icon_movie.png";
+}
+
 - (NSString *)titleNorth {
     return @"Volume Up";
 }

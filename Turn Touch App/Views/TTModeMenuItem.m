@@ -37,6 +37,7 @@
                 break;
         }
         
+        [self setupMode];
         [self registerAsObserver];
     }
     
@@ -69,25 +70,37 @@
     }
 }
 
-- (void)drawRect:(NSRect)dirtyRect
-{
-	[super drawRect:dirtyRect];
+- (void)setupMode {
+    modeImage = [NSImage imageNamed:[itemMode imageName]];
     
-    NSString *modeTitle = [[NSString stringWithFormat:@"%@ mode",
-                            [itemMode title]] uppercaseString];
+    modeTitle = [[NSString stringWithFormat:@"%@ mode",
+                  [itemMode title]] uppercaseString];
     NSShadow *stringShadow = [[NSShadow alloc] init];
     stringShadow.shadowColor = [NSColor whiteColor];
     stringShadow.shadowOffset = NSMakeSize(0, -1);
     stringShadow.shadowBlurRadius = 0;
     NSColor *textColor = appDelegate.diamond.selectedModeDirection == modeDirection ?
-                         NSColorFromRGB(0x404A60) : NSColorFromRGB(0x808388);
-    NSDictionary *textAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Futura" size:13],
-                                     NSForegroundColorAttributeName: textColor,
-                                     NSShadowAttributeName: stringShadow
-                                     };
-    CGSize textSize = [modeTitle sizeWithAttributes:textAttributes];
-    NSPoint point = NSMakePoint(12, NSHeight(self.frame) / 2 - ceil(textSize.height / 2) - 1);
-    [modeTitle drawAtPoint:point withAttributes:textAttributes];
+    NSColorFromRGB(0x404A60) : NSColorFromRGB(0x808388);
+    modeAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Futura" size:13],
+                       NSForegroundColorAttributeName: textColor,
+                       NSShadowAttributeName: stringShadow
+                       };
+    textSize = [modeTitle sizeWithAttributes:modeAttributes];
+}
+
+- (void)drawRect:(NSRect)dirtyRect
+{
+	[super drawRect:dirtyRect];
+    
+    [modeImage drawInRect:NSMakeRect(12, 6, 24, 24)
+                 fromRect:NSZeroRect
+                operation:NSCompositeSourceOver
+                 fraction:1.0];
+
+    [modeTitle drawAtPoint:NSMakePoint(44, NSHeight(self.frame) / 2 - floor(textSize.height/2) + 1)
+            withAttributes:modeAttributes];
+    
+    
 }
 
 @end

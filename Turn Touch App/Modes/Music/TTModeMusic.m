@@ -15,6 +15,10 @@
     return @"Music";
 }
 
+- (NSString *)imageName {
+    return @"vynil.png";
+}
+
 - (NSString *)titleNorth {
     return @"Volume Up";
 }

@@ -16,6 +16,7 @@
 - (void)runWest;
 - (void)runSouth;
 
+- (NSString *)imageName;
 - (NSString *)titleNorth;
 - (NSString *)titleEast;
 - (NSString *)titleWest;
