@@ -25,6 +25,7 @@
 @synthesize arrowX = _arrowX;
 @synthesize modeMenu = _modeMenu;
 @synthesize diamondView = _diamondView;
+@synthesize diamondLabels = _diamondLabels;
 
 #pragma mark -
 
@@ -40,8 +41,13 @@
     NSRect diamondRect = NSMakeRect(NSWidth(self.frame) / 2 - (DIAMOND_SIZE * 1.3 / 2) + 1,
                                     NSHeight(self.frame) / 2 - (DIAMOND_SIZE / 2) - MODE_MENU_HEIGHT,
                                     DIAMOND_SIZE * 1.3, DIAMOND_SIZE);
-    _diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect direction:0 ignoreSelectedDirection:YES];
+    _diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect
+                                              direction:0
+                                ignoreSelectedDirection:YES];
     [self addSubview:_diamondView];
+    
+    _diamondLabels = [[TTDiamondLabels alloc] initWithFrame:self.frame diamondRect:diamondRect];
+    [self addSubview:_diamondLabels];
 }
 
 - (BOOL)isFlipped {
@@ -49,7 +55,7 @@
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
-    NSRect contentRect = NSInsetRect([self bounds], LINE_THICKNESS, LINE_THICKNESS);
+    NSRect contentRect = NSInsetRect(dirtyRect, LINE_THICKNESS, LINE_THICKNESS);
     
     [_modeMenu invalidateIntrinsicContentSize];
     NSBezierPath *path = [NSBezierPath bezierPath];

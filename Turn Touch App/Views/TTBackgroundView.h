@@ -9,11 +9,13 @@
 #import <Cocoa/Cocoa.h>
 #import "TTModeMenuViewport.h"
 #import "TTDiamondView.h"
+#import "TTDiamondLabels.h"
 
 #define ARROW_WIDTH 18
 #define ARROW_HEIGHT 8
 
 @class TTDiamondView;
+@class TTDiamondLabels;
 @class TTModeMenuViewport;
 
 @interface TTBackgroundView : NSView {
@@ -23,5 +25,6 @@
 @property (nonatomic, assign) NSInteger arrowX;
 @property (nonatomic) IBOutlet TTModeMenuViewport *modeMenu;
 @property (nonatomic) IBOutlet TTDiamondView *diamondView;
+@property (nonatomic) IBOutlet TTDiamondLabels *diamondLabels;
 
 @end

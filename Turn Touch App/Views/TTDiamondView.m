@@ -16,7 +16,6 @@
 
 @synthesize size = _size;
 @synthesize isHighlighted = _isHighlighted;
-@synthesize ignoreSelectedMode = _ignoreSelectedMode;
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -33,7 +32,7 @@ ignoreSelectedDirection:(BOOL)ignoreSelectedDirection {
     if (self) {
         self.size = NSWidth(frame);
         self.isHighlighted = NO;
-        self.ignoreSelectedMode = ignoreSelectedDirection;
+        ignoreSelectedMode = ignoreSelectedDirection;
 
         appDelegate = [NSApp delegate];
         
@@ -74,12 +73,12 @@ ignoreSelectedDirection:(BOOL)ignoreSelectedDirection {
 - (void)setDirections {
     if (!overrideDirection || overrideDirection == appDelegate.diamond.selectedModeDirection) {
         activeModeDirection = appDelegate.diamond.activeModeDirection;
-        if (!_ignoreSelectedMode) {
+        if (!ignoreSelectedMode) {
             selectedModeDirection = appDelegate.diamond.selectedModeDirection;
         }
     } else {
         activeModeDirection = 0;
-        if (!_ignoreSelectedMode) {
+        if (!ignoreSelectedMode) {
             selectedModeDirection = overrideDirection;
         }
     }
@@ -91,6 +90,7 @@ ignoreSelectedDirection:(BOOL)ignoreSelectedDirection {
 }
 
 - (void)drawPaths:(NSRect)rect {
+    NSLog(@"diamond rect: %@", NSStringFromRect(rect));
     CGFloat width = NSMaxX(rect);
     CGFloat height = NSMaxY(rect);
     CGFloat spacing = SPACING_PCT * width;
@@ -157,7 +157,7 @@ ignoreSelectedDirection:(BOOL)ignoreSelectedDirection {
             direction = SOUTH;
         }
         
-        if (!self.isHighlighted && !_ignoreSelectedMode) {
+        if (!self.isHighlighted && !ignoreSelectedMode) {
             [NSGraphicsContext saveGraphicsState];
             NSAffineTransform *transform = [NSAffineTransform transform];
             [transform translateXBy:0 yBy:-0.25f];
@@ -189,7 +189,7 @@ ignoreSelectedDirection:(BOOL)ignoreSelectedDirection {
         NSColor *modeColor = [NSColor colorWithCalibratedHue:0.55f saturation:0.5f brightness:0.2f
                                                        alpha:activeModeDirection == direction ? 0.5f :
                               selectedModeDirection == direction ? 1.0f : INACTIVE_OPACITY];
-        if (!_ignoreSelectedMode) {
+        if (!ignoreSelectedMode) {
             if (self.isHighlighted) {
                 [[NSColor colorWithDeviceWhite:1.0f
                                          alpha:activeModeDirection == direction ? 0.5f :
