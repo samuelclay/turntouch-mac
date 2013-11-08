@@ -31,7 +31,7 @@
         _statusItem = statusItem;
         _statusItem.view = self;
 
-        CGRect diamondRect = NSInsetRect(itemRect, 2.0f, 4.0f);
+        NSRect diamondRect = NSInsetRect(itemRect, 2.0f, 4.0f);
         self.diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect];
         [self addSubview:self.diamondView];
     }

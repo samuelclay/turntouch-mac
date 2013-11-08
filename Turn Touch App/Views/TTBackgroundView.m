@@ -29,7 +29,7 @@
 #pragma mark -
 
 - (void)awakeFromNib {
-    CGRect modeMenuFrame = self.frame;
+    NSRect modeMenuFrame = self.frame;
     modeMenuFrame.size.height = MODE_MENU_HEIGHT;
     modeMenuFrame.origin.y += ARROW_HEIGHT;
     _modeMenu = [[TTModeMenuViewport alloc] initWithFrame:modeMenuFrame];
@@ -37,7 +37,7 @@
     [self addSubview:_modeMenu];
     
     // +1 X offset for panel width fudge
-    CGRect diamondRect = NSMakeRect(NSWidth(self.frame) / 2 - (DIAMOND_SIZE * 1.3 / 2) + 1,
+    NSRect diamondRect = NSMakeRect(NSWidth(self.frame) / 2 - (DIAMOND_SIZE * 1.3 / 2) + 1,
                                     NSHeight(self.frame) / 2 - (DIAMOND_SIZE / 2) - MODE_MENU_HEIGHT,
                                     DIAMOND_SIZE * 1.3, DIAMOND_SIZE);
     _diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect direction:0 ignoreSelectedDirection:YES];

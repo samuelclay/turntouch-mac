@@ -15,7 +15,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        CGRect itemFrame = frame;
+        NSRect itemFrame = frame;
         
         itemFrame.origin.y = 0;
         northItem = [[TTModeMenuItem alloc] initWithFrame:itemFrame direction:NORTH];

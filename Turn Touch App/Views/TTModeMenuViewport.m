@@ -51,7 +51,7 @@
 }
 
 - (void)mouseUp:(NSEvent *)theEvent {
-    CGRect frame = self.frame;
+    NSRect frame = self.frame;
     
     CGFloat newHeight = originalHeight;
     if (!isExpanded) {
@@ -62,8 +62,8 @@
     NSDictionary *growBackground = [NSDictionary dictionaryWithObjectsAndKeys: self, NSViewAnimationTargetKey,
                                     [NSValue valueWithRect:self.frame], NSViewAnimationStartFrameKey,
                                     [NSValue valueWithRect:frame], NSViewAnimationEndFrameKey, nil];
-    CGRect originalMenuRect = [self positionContainer:isExpanded];
-    CGRect newMenuRect = [self positionContainer:!isExpanded];
+    NSRect originalMenuRect = [self positionContainer:isExpanded];
+    NSRect newMenuRect = [self positionContainer:!isExpanded];
     NSDictionary *moveMenu = [NSDictionary dictionaryWithObjectsAndKeys: container, NSViewAnimationTargetKey,
                               [NSValue valueWithRect:originalMenuRect], NSViewAnimationStartFrameKey,
                               [NSValue valueWithRect:newMenuRect], NSViewAnimationEndFrameKey, nil];
@@ -127,7 +127,7 @@
     [line stroke];
 }
 
-- (CGRect)positionContainer:(BOOL)expanded {
+- (NSRect)positionContainer:(BOOL)expanded {
     int itemPosition = 0;
     
     switch (appDelegate.diamond.selectedModeDirection) {
