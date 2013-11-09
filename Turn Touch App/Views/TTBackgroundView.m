@@ -16,7 +16,7 @@
 
 #define SEARCH_INSET 10.0f
 #define MODE_MENU_HEIGHT 36.0f
-#define DIAMOND_SIZE 120.0f
+#define DIAMOND_SIZE 100.0f
 
 #pragma mark -
 

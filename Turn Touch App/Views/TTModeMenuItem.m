@@ -61,12 +61,12 @@
                         context:(void*)context {
     if ([keyPath isEqual:NSStringFromSelector(@selector(activeModeDirection))]) {
         if (appDelegate.diamond.selectedModeDirection == modeDirection) {
+            [self setupMode];
             [self setNeedsDisplay:YES];
         }
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
-        if (appDelegate.diamond.selectedModeDirection == modeDirection) {
-            [self setNeedsDisplay:YES];
-        }
+        [self setupMode];
+        [self setNeedsDisplay:YES];
     }
 }
 

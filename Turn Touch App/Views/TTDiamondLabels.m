@@ -9,6 +9,8 @@
 #import "TTDiamondLabels.h"
 #import "TTDiamondView.h"
 
+#define LINE_SIZE 6.0f
+
 @implementation TTDiamondLabels
 
 - (id)initWithFrame:(NSRect)frame diamondRect:(NSRect)theDiamondRect {
@@ -65,7 +67,6 @@
 - (void)drawRect:(NSRect)dirtyRect {
 	[super drawRect:dirtyRect];
 
-    CGFloat lineSize = 8.0f;
     CGFloat offsetX = NSMinX(diamondRect);
     CGFloat offsetY = NSMaxY(self.frame) - NSMaxY(diamondRect);
     CGFloat width = NSWidth(diamondRect);
@@ -75,17 +76,17 @@
         NSBezierPath *line = [NSBezierPath bezierPath];
         
         if (direction == NORTH) {
-            [line moveToPoint:NSMakePoint(offsetX + width / 2, offsetY + height - lineSize)];
-            [line lineToPoint:NSMakePoint(offsetX + width / 2, offsetY + height + lineSize)];
+            [line moveToPoint:NSMakePoint(offsetX + width / 2, offsetY + height - LINE_SIZE)];
+            [line lineToPoint:NSMakePoint(offsetX + width / 2, offsetY + height + LINE_SIZE)];
         } else if (direction == EAST) {
-            [line moveToPoint:NSMakePoint(offsetX + width - lineSize*2, offsetY + height * 1/2)];
-            [line lineToPoint:NSMakePoint(offsetX + width + lineSize, offsetY + height * 1/2)];
+            [line moveToPoint:NSMakePoint(offsetX + width - LINE_SIZE*2, offsetY + height * 1/2)];
+            [line lineToPoint:NSMakePoint(offsetX + width + LINE_SIZE, offsetY + height * 1/2)];
         } else if (direction == WEST) {
-            [line moveToPoint:NSMakePoint(offsetX + lineSize*2, offsetY + height * 1/2)];
-            [line lineToPoint:NSMakePoint(offsetX - lineSize, offsetY + height * 1/2)];
+            [line moveToPoint:NSMakePoint(offsetX + LINE_SIZE*2, offsetY + height * 1/2)];
+            [line lineToPoint:NSMakePoint(offsetX - LINE_SIZE, offsetY + height * 1/2)];
         } else if (direction == SOUTH) {
-            [line moveToPoint:NSMakePoint(offsetX + width / 2, offsetY + lineSize)];
-            [line lineToPoint:NSMakePoint(offsetX + width / 2, offsetY - lineSize)];
+            [line moveToPoint:NSMakePoint(offsetX + width / 2, offsetY + LINE_SIZE)];
+            [line lineToPoint:NSMakePoint(offsetX + width / 2, offsetY - LINE_SIZE)];
         }
         
         [line setLineWidth:12.0];
@@ -97,17 +98,17 @@
         NSBezierPath *line = [NSBezierPath bezierPath];
         
         if (direction == NORTH) {
-            [line moveToPoint:NSMakePoint(offsetX + width / 2, offsetY + height - lineSize/2)];
-            [line lineToPoint:NSMakePoint(offsetX + width / 2, offsetY + height + lineSize*2)];
+            [line moveToPoint:NSMakePoint(offsetX + width / 2, offsetY + height - LINE_SIZE/2)];
+            [line lineToPoint:NSMakePoint(offsetX + width / 2, offsetY + height + LINE_SIZE*2)];
         } else if (direction == EAST) {
-            [line moveToPoint:NSMakePoint(offsetX + width - lineSize, offsetY + height * 1/2)];
-            [line lineToPoint:NSMakePoint(offsetX + width + lineSize*1.5, offsetY + height * 1/2)];
+            [line moveToPoint:NSMakePoint(offsetX + width - LINE_SIZE, offsetY + height * 1/2)];
+            [line lineToPoint:NSMakePoint(offsetX + width + LINE_SIZE*1.5, offsetY + height * 1/2)];
         } else if (direction == WEST) {
-            [line moveToPoint:NSMakePoint(offsetX - lineSize*1.5, offsetY + height * 1/2)];
-            [line lineToPoint:NSMakePoint(offsetX + lineSize, offsetY + height * 1/2)];
+            [line moveToPoint:NSMakePoint(offsetX - LINE_SIZE*1.5, offsetY + height * 1/2)];
+            [line lineToPoint:NSMakePoint(offsetX + LINE_SIZE, offsetY + height * 1/2)];
         } else if (direction == SOUTH) {
-            [line moveToPoint:NSMakePoint(offsetX + width / 2, offsetY + lineSize/2)];
-            [line lineToPoint:NSMakePoint(offsetX + width / 2, offsetY - lineSize * 2)];
+            [line moveToPoint:NSMakePoint(offsetX + width / 2, offsetY + LINE_SIZE/2)];
+            [line lineToPoint:NSMakePoint(offsetX + width / 2, offsetY - LINE_SIZE * 2)];
         }
         
         [line setLineWidth:1.0];
@@ -119,34 +120,33 @@
     CGFloat frameWidth = NSWidth(self.frame);
     CGFloat frameHeight = NSHeight(self.frame);
     CGFloat topWidth = 100;
-    CGFloat sideWidth = 60;
-    CGFloat labelHeight = 48;
-    NSLog(@"Label container: %@", NSStringFromRect(self.frame));
+    CGFloat sideWidth = 80;
+    CGFloat labelHeight = 24;
     for (TTModeDirection direction=1; direction <= 4; direction++) {
         NSString *label;
         NSRect textRect;
         
         if (direction == NORTH) {
             textRect = NSMakeRect(frameWidth/2 - topWidth/2,
-                                  frameHeight - labelHeight,
+                                  frameHeight - labelHeight*2,
                                   topWidth, labelHeight);
             label = [appDelegate.diamond.selectedMode titleNorth];
         } else if (direction == EAST) {
-            textRect = NSMakeRect(frameWidth - sideWidth, frameHeight/2,
+            textRect = NSMakeRect(frameWidth - sideWidth, frameHeight/2 - labelHeight/2,
                                   sideWidth, labelHeight);
             label = [appDelegate.diamond.selectedMode titleEast];
         } else if (direction == WEST) {
-            textRect = NSMakeRect(0, frameHeight/2,
+            textRect = NSMakeRect(0, frameHeight/2 - labelHeight/2,
                                   sideWidth, labelHeight);
             label = [appDelegate.diamond.selectedMode titleWest];
         } else if (direction == SOUTH) {
             textRect = NSMakeRect(frameWidth/2 - topWidth/2,
-                                  labelHeight*0.5,
+                                  labelHeight,
                                   topWidth, labelHeight);
             label = [appDelegate.diamond.selectedMode titleSouth];
         }
         
-        NSLog(@"Label: %@ - %@", label, NSStringFromRect(textRect));
+        NSSize textSize = [label sizeWithAttributes:labelAttributes];
         [label drawInRect:textRect withAttributes:labelAttributes];
     }
 }
