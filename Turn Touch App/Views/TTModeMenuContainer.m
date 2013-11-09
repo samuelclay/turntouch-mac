@@ -17,19 +17,19 @@
     if (self) {
         NSRect itemFrame = frame;
         
-        itemFrame.origin.y = 0;
+        itemFrame.origin.y = frame.size.height * 3;
         northItem = [[TTModeMenuItem alloc] initWithFrame:itemFrame direction:NORTH];
         [self addSubview:northItem];
         
-        itemFrame.origin.y = frame.size.height;
+        itemFrame.origin.y = frame.size.height * 2;
         eastItem = [[TTModeMenuItem alloc] initWithFrame:itemFrame direction:EAST];
         [self addSubview:eastItem];
         
-        itemFrame.origin.y = frame.size.height * 2;
+        itemFrame.origin.y = frame.size.height;
         westItem = [[TTModeMenuItem alloc] initWithFrame:itemFrame direction:WEST];
         [self addSubview:westItem];
 
-        itemFrame.origin.y = frame.size.height * 3;
+        itemFrame.origin.y = 0;
         southItem = [[TTModeMenuItem alloc] initWithFrame:itemFrame direction:SOUTH];
         [self addSubview:southItem];
     }
@@ -39,10 +39,6 @@
 - (void)drawRect:(NSRect)dirtyRect
 {
 	[super drawRect:dirtyRect];
-}
-
-- (BOOL)isFlipped {
-    return YES;
 }
 
 @end

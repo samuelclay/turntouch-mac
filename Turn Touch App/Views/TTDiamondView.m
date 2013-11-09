@@ -11,9 +11,6 @@
 
 @implementation TTDiamondView
 
-#define SPACING_PCT 0.01f
-#define INACTIVE_OPACITY 0.2f
-
 @synthesize size = _size;
 @synthesize isHighlighted = _isHighlighted;
 

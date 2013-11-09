@@ -18,6 +18,7 @@
     TTModeMenuContainer *container;
     BOOL isExpanded;
     CGFloat originalHeight;
+    CGFloat originalY;
 }
 
 @end

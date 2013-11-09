@@ -7,6 +7,7 @@
 //
 
 #import "TTDiamondLabels.h"
+#import "TTDiamondView.h"
 
 @implementation TTDiamondLabels
 
@@ -15,6 +16,9 @@
     if (self) {
         // Initialization code here.
         diamondRect = theDiamondRect;
+        appDelegate = [NSApp delegate];
+        
+        [self setupMode];
         [self registerAsObserver];
     }
     
@@ -43,9 +47,24 @@
     }
 }
 
+- (void)setupMode {
+    NSShadow *stringShadow = [[NSShadow alloc] init];
+    stringShadow.shadowColor = [NSColor whiteColor];
+    stringShadow.shadowOffset = NSMakeSize(0, -1);
+    stringShadow.shadowBlurRadius = 0;
+    NSColor *textColor = NSColorFromRGB(0x404A60);
+    NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    [style setAlignment:NSCenterTextAlignment];
+    labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Futura" size:13],
+                        NSForegroundColorAttributeName: textColor,
+                        NSShadowAttributeName: stringShadow,
+                        NSParagraphStyleAttributeName: style
+                        };
+}
+
 - (void)drawRect:(NSRect)dirtyRect {
 	[super drawRect:dirtyRect];
-	return;
+
     CGFloat lineSize = 8.0f;
     CGFloat offsetX = NSMinX(diamondRect);
     CGFloat offsetY = NSMaxY(self.frame) - NSMaxY(diamondRect);
@@ -71,7 +90,7 @@
         
         [line setLineWidth:12.0];
         [[NSColor whiteColor] set];
-//        [line stroke];
+        [line stroke];
     }
 
     for (TTModeDirection direction=1; direction <= 4; direction++) {
@@ -92,8 +111,43 @@
         }
         
         [line setLineWidth:1.0];
-        [[NSColor colorWithCalibratedRed:(22.0/255.0f) green:(39.0/255.0f) blue:(32.0/255.0f) alpha:0.15] set];
+        [[NSColor colorWithCalibratedHue:0.55f saturation:0.5f brightness:0.2f
+                                   alpha:appDelegate.diamond.activeModeDirection == direction ? 0.5f :INACTIVE_OPACITY] set];
         [line stroke];
+    }
+    
+    CGFloat frameWidth = NSWidth(self.frame);
+    CGFloat frameHeight = NSHeight(self.frame);
+    CGFloat topWidth = 100;
+    CGFloat sideWidth = 60;
+    CGFloat labelHeight = 48;
+    NSLog(@"Label container: %@", NSStringFromRect(self.frame));
+    for (TTModeDirection direction=1; direction <= 4; direction++) {
+        NSString *label;
+        NSRect textRect;
+        
+        if (direction == NORTH) {
+            textRect = NSMakeRect(frameWidth/2 - topWidth/2,
+                                  frameHeight - labelHeight,
+                                  topWidth, labelHeight);
+            label = [appDelegate.diamond.selectedMode titleNorth];
+        } else if (direction == EAST) {
+            textRect = NSMakeRect(frameWidth - sideWidth, frameHeight/2,
+                                  sideWidth, labelHeight);
+            label = [appDelegate.diamond.selectedMode titleEast];
+        } else if (direction == WEST) {
+            textRect = NSMakeRect(0, frameHeight/2,
+                                  sideWidth, labelHeight);
+            label = [appDelegate.diamond.selectedMode titleWest];
+        } else if (direction == SOUTH) {
+            textRect = NSMakeRect(frameWidth/2 - topWidth/2,
+                                  labelHeight*0.5,
+                                  topWidth, labelHeight);
+            label = [appDelegate.diamond.selectedMode titleSouth];
+        }
+        
+        NSLog(@"Label: %@ - %@", label, NSStringFromRect(textRect));
+        [label drawInRect:textRect withAttributes:labelAttributes];
     }
 }
 

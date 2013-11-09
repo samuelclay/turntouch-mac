@@ -14,6 +14,8 @@
 @interface TTDiamondLabels : NSView {
     TTAppDelegate *appDelegate;
     NSRect diamondRect;
+    NSDictionary *labelAttributes;
+    CGSize textSize;
 }
 
 - (id)initWithFrame:(NSRect)frame diamondRect:(NSRect)theDiamondRect;

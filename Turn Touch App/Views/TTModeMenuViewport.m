@@ -17,9 +17,12 @@
     self = [super initWithFrame:frame];
     if (self) {
         appDelegate = [NSApp delegate];
-        container = [[TTModeMenuContainer alloc] initWithFrame:frame];
+        NSRect containerFrame = frame;
+        containerFrame.origin.y = 0;
+        container = [[TTModeMenuContainer alloc] initWithFrame:containerFrame];
         isExpanded = NO;
         originalHeight = frame.size.height;
+        originalY = frame.origin.y;
         
         [self addSubview:container];
         [self registerAsObserver];
@@ -54,17 +57,22 @@
     NSRect frame = self.frame;
     
     CGFloat newHeight = originalHeight;
+    CGFloat newY = originalY;
     if (!isExpanded) {
         newHeight = originalHeight * 4;
+        newY = originalY - originalHeight * 3;
     }
     frame.size.height = newHeight;
+    frame.origin.y = newY;
 
-    NSDictionary *growBackground = [NSDictionary dictionaryWithObjectsAndKeys: self, NSViewAnimationTargetKey,
+    NSDictionary *growBackground = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    self, NSViewAnimationTargetKey,
                                     [NSValue valueWithRect:self.frame], NSViewAnimationStartFrameKey,
                                     [NSValue valueWithRect:frame], NSViewAnimationEndFrameKey, nil];
     NSRect originalMenuRect = [self positionContainer:isExpanded];
     NSRect newMenuRect = [self positionContainer:!isExpanded];
-    NSDictionary *moveMenu = [NSDictionary dictionaryWithObjectsAndKeys: container, NSViewAnimationTargetKey,
+    NSDictionary *moveMenu = [NSDictionary dictionaryWithObjectsAndKeys:
+                              container, NSViewAnimationTargetKey,
                               [NSValue valueWithRect:originalMenuRect], NSViewAnimationStartFrameKey,
                               [NSValue valueWithRect:newMenuRect], NSViewAnimationEndFrameKey, nil];
     NSViewAnimation *animation = [[NSViewAnimation alloc] initWithViewAnimations:@[growBackground, moveMenu]];
@@ -89,27 +97,27 @@
     
     NSBezierPath *path = [NSBezierPath bezierPath];
     
-    [path moveToPoint:NSMakePoint(NSMinX(contentRect), NSMinY(contentRect) + CORNER_RADIUS)];
+    [path moveToPoint:NSMakePoint(NSMinX(contentRect), NSMaxY(contentRect) - CORNER_RADIUS)];
     
-    NSPoint topLeftCorner = NSMakePoint(NSMinX(contentRect), NSMinY(contentRect));
-    [path curveToPoint:NSMakePoint(NSMinX(contentRect) + CORNER_RADIUS, NSMinY(contentRect))
+    NSPoint topLeftCorner = NSMakePoint(NSMinX(contentRect), NSMaxY(contentRect));
+    [path curveToPoint:NSMakePoint(NSMinX(contentRect) + CORNER_RADIUS, NSMaxY(contentRect))
          controlPoint1:topLeftCorner controlPoint2:topLeftCorner];
     
-    [path lineToPoint:NSMakePoint(NSMaxX(contentRect) - CORNER_RADIUS, NSMinY(contentRect))];
+    [path lineToPoint:NSMakePoint(NSMaxX(contentRect) - CORNER_RADIUS, NSMaxY(contentRect))];
     
-    NSPoint topRightCorner = NSMakePoint(NSMaxX(contentRect), NSMinY(contentRect));
-    [path curveToPoint:NSMakePoint(NSMaxX(contentRect), NSMinY(contentRect) + CORNER_RADIUS)
+    NSPoint topRightCorner = NSMakePoint(NSMaxX(contentRect), NSMaxY(contentRect));
+    [path curveToPoint:NSMakePoint(NSMaxX(contentRect), NSMaxY(contentRect) - CORNER_RADIUS)
          controlPoint1:topRightCorner controlPoint2:topRightCorner];
     
-    [path lineToPoint:NSMakePoint(NSMaxX(contentRect), NSMaxY(contentRect))];
-    [path lineToPoint:NSMakePoint(NSMinX(contentRect), NSMaxY(contentRect))];
+    [path lineToPoint:NSMakePoint(NSMaxX(contentRect), NSMinY(contentRect))];
+    [path lineToPoint:NSMakePoint(NSMinX(contentRect), NSMinY(contentRect))];
     
     [path closePath];
     
     NSGradient* aGradient = [[NSGradient alloc]
                              initWithStartingColor:[NSColor whiteColor]
                              endingColor:NSColorFromRGB(0xE7E7E7)];
-    [aGradient drawInBezierPath:path angle:90];
+    [aGradient drawInBezierPath:path angle:-90];
     
     [NSGraphicsContext saveGraphicsState];
     
@@ -120,8 +128,8 @@
     [NSGraphicsContext restoreGraphicsState];
     
     NSBezierPath *line = [NSBezierPath bezierPath];
-    [line moveToPoint:NSMakePoint(NSMinX([path bounds]), NSMaxY([path bounds]))];
-    [line lineToPoint:NSMakePoint(NSMaxX([path bounds]), NSMaxY([path bounds]))];
+    [line moveToPoint:NSMakePoint(NSMinX([path bounds]), NSMinY([path bounds]))];
+    [line lineToPoint:NSMakePoint(NSMaxX([path bounds]), NSMinY([path bounds]))];
     [line setLineWidth:1.0];
     [NSColorFromRGB(0xD0D0D0) set];
     [line stroke];
@@ -132,16 +140,16 @@
     
     switch (appDelegate.diamond.selectedModeDirection) {
         case NORTH:
-            itemPosition = 0;
+            itemPosition = originalHeight * 3;
             break;
         case EAST:
-            itemPosition = originalHeight;
-            break;
-        case WEST:
             itemPosition = originalHeight * 2;
             break;
+        case WEST:
+            itemPosition = originalHeight;
+            break;
         case SOUTH:
-            itemPosition = originalHeight * 3;
+            itemPosition = 0;
             break;
     }
     
@@ -150,19 +158,15 @@
     CGFloat y;
     if (expanded) {
         percentComplete = (NSHeight(self.frame) - originalHeight) / (originalHeight*3);
-        y = -1 * itemPosition * (1 - percentComplete);
+        y = itemPosition * (1 - percentComplete);
     } else {
         percentComplete = (originalHeight*4 - NSHeight(self.frame)) / (originalHeight*3);
-        y = -1 * itemPosition * (percentComplete);
+        y = itemPosition * (percentComplete);
     }
 
-    containerFrame.origin.y = y;
+    containerFrame.origin.y = -1 * y;
     containerFrame.size.height = originalHeight * 4;
     return containerFrame;
-}
-
-- (BOOL)isFlipped {
-    return YES;
 }
 
 @end

@@ -10,6 +10,9 @@
 #import "TTAppDelegate.h"
 #import "TTDiamond.h"
 
+#define SPACING_PCT 0.01f
+#define INACTIVE_OPACITY 0.2f
+
 @class TTAppDelegate;
 
 @interface TTDiamondView : NSView {
