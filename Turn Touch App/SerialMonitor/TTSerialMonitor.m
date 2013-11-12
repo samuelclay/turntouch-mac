@@ -44,7 +44,8 @@ const int kBaudRate = 57600;
 
 - (void)autoSelectSerialDevice {
     for (NSString *serialDevice in serialDeviceNames) {
-        if ([serialDevice rangeOfString:@"usbserial"].location != NSNotFound) {
+        if ([serialDevice rangeOfString:@"usbserial"].location != NSNotFound ||
+            [serialDevice rangeOfString:@"usbmodem"].location != NSNotFound) {
             selectedSerialDevice = serialDevice;
             [self serialPortSelected:nil];
             break;
