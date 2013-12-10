@@ -12,6 +12,12 @@
 
 @class TTAppDelegate;
 
+typedef enum {
+    PRESS_ACTIVE = 1,
+    PRESS_TOGGLE = 2,
+    PRESS_MODE = 3
+} TTPressState;
+
 @interface TTButtonTimer : NSObject {
     TTAppDelegate *appDelegate;
     TTModeDirection activeModeDirection;
@@ -19,9 +25,9 @@
 }
 
 - (void)readButtons:(NSArray *)buttons;
-- (void)activeModeTimerFire:(NSTimer *)timer;
-- (void)selectActiveMode;
-- (void)activateButton;
+- (void)selectActiveMode:(TTModeDirection)direction;
+- (void)activateButton:(TTModeDirection)direction;
 - (void)deactivateButton;
+- (void)fireButton:(TTModeDirection)direction;
 
 @end

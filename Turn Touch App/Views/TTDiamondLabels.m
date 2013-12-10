@@ -67,6 +67,7 @@
 - (void)drawRect:(NSRect)dirtyRect {
 	[super drawRect:dirtyRect];
 
+    CGFloat backingScaleFactor = [self.window backingScaleFactor];
     CGFloat offsetX = NSMinX(diamondRect);
     CGFloat offsetY = NSMaxY(self.frame) - NSMaxY(diamondRect);
     CGFloat width = NSWidth(diamondRect);
@@ -90,24 +91,24 @@
         }
         
         [line setLineWidth:12.0];
-        [[NSColor whiteColor] set];
-        [line stroke];
+//        [[NSColor whiteColor] set];
+//        [line stroke];
     }
 
     for (TTModeDirection direction=1; direction <= 4; direction++) {
         NSBezierPath *line = [NSBezierPath bezierPath];
         
         if (direction == NORTH) {
-            [line moveToPoint:NSMakePoint(offsetX + width / 2, offsetY + height - LINE_SIZE/2)];
+            [line moveToPoint:NSMakePoint(offsetX + width / 2, offsetY + height - 0*LINE_SIZE/2)];
             [line lineToPoint:NSMakePoint(offsetX + width / 2, offsetY + height + LINE_SIZE*2)];
         } else if (direction == EAST) {
-            [line moveToPoint:NSMakePoint(offsetX + width - LINE_SIZE, offsetY + height * 1/2)];
-            [line lineToPoint:NSMakePoint(offsetX + width + LINE_SIZE*1.5, offsetY + height * 1/2)];
+            [line moveToPoint:NSMakePoint(offsetX + width - 0*LINE_SIZE, offsetY + height * 1/2)];
+            [line lineToPoint:NSMakePoint(offsetX + width + LINE_SIZE*2, offsetY + height * 1/2)];
         } else if (direction == WEST) {
-            [line moveToPoint:NSMakePoint(offsetX - LINE_SIZE*1.5, offsetY + height * 1/2)];
-            [line lineToPoint:NSMakePoint(offsetX + LINE_SIZE, offsetY + height * 1/2)];
+            [line moveToPoint:NSMakePoint(offsetX - LINE_SIZE*2, offsetY + height * 1/2)];
+            [line lineToPoint:NSMakePoint(offsetX + 0*LINE_SIZE, offsetY + height * 1/2)];
         } else if (direction == SOUTH) {
-            [line moveToPoint:NSMakePoint(offsetX + width / 2, offsetY + LINE_SIZE/2)];
+            [line moveToPoint:NSMakePoint(offsetX + width / 2, offsetY + 0*LINE_SIZE/2)];
             [line lineToPoint:NSMakePoint(offsetX + width / 2, offsetY - LINE_SIZE * 2)];
         }
         

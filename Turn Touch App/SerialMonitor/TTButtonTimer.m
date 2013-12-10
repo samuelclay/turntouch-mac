@@ -9,7 +9,7 @@
 #import "TTButtonTimer.h"
 #import "TTDiamond.h"
 
-const double MODE_CHANGE_DURATION = 0.5f;
+//const double MODE_CHANGE_DURATION = 0.5f;
 
 @implementation TTButtonTimer
 
@@ -22,92 +22,51 @@ const double MODE_CHANGE_DURATION = 0.5f;
 }
 
 - (void)readButtons:(NSArray *)buttons {
-    bool anyActive;
+    NSLog(@"Serial buttons: %@", buttons);
     
-    for (NSNumber *button in buttons) {
-        if ([button boolValue]) {
-            anyActive = YES;
-            break;
-        }
-    }
-    
-    if (anyActive) {
-        if (activeModeDirection) {
-            // Ignore other button presses while waiting on another button
-            if ([[buttons objectAtIndex:0] boolValue] && activeModeDirection != NORTH) {
-                anyActive = NO;
-            } else if ([[buttons objectAtIndex:1] boolValue] && activeModeDirection != EAST) {
-                anyActive = NO;
-            } else if ([[buttons objectAtIndex:2] boolValue] && activeModeDirection != SOUTH) {
-                anyActive = NO;
-            } else if ([[buttons objectAtIndex:3] boolValue] && activeModeDirection != WEST) {
-                anyActive = NO;
-            }
-        } else {
-            if ([[buttons objectAtIndex:0] boolValue]) {
-                activeModeDirection = NORTH;
-            } else if ([[buttons objectAtIndex:1] boolValue]) {
-                activeModeDirection = EAST;
-            } else if ([[buttons objectAtIndex:2] boolValue]) {
-                activeModeDirection = SOUTH;
-            } else if ([[buttons objectAtIndex:3] boolValue]) {
-                activeModeDirection = WEST;
-            }
-            NSDate *fireDate = [NSDate dateWithTimeIntervalSinceNow:MODE_CHANGE_DURATION];
-            activeModeTimer = [[NSTimer alloc]
-                               initWithFireDate:fireDate
-                               interval:0
-                               target:self
-                               selector:@selector(activeModeTimerFire:)
-                               userInfo:@{@"activeModeDirection":
-                                              [NSNumber numberWithInt:activeModeDirection]}
-                               repeats:NO];
-            NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
-            [runLoop addTimer:activeModeTimer forMode:NSDefaultRunLoopMode];
-            [self activateButton];
-        }
-    }
-    
-    if (!anyActive) {
-        if (activeModeDirection) {
-            [self fireButton];
-            if (activeModeTimer) {
-//                NSLog(@"Invalidating timer.");
-                [activeModeTimer invalidate];
-                activeModeTimer = nil;
-            }
-            activeModeDirection = 0;
-        } else {
-            
-        }
+    if ([[buttons objectAtIndex:0] integerValue] == PRESS_ACTIVE) {
+        [self activateButton:NORTH];
+    } else if ([[buttons objectAtIndex:1] integerValue] == PRESS_ACTIVE) {
+        [self activateButton:EAST];
+    } else if ([[buttons objectAtIndex:2] integerValue] == PRESS_ACTIVE) {
+        [self activateButton:WEST];
+    } else if ([[buttons objectAtIndex:3] integerValue] == PRESS_ACTIVE) {
+        [self activateButton:SOUTH];
+    } else if ([[buttons objectAtIndex:0] integerValue] == PRESS_TOGGLE) {
+        [self fireButton:NORTH];
+    } else if ([[buttons objectAtIndex:1] integerValue] == PRESS_TOGGLE) {
+        [self fireButton:EAST];
+    } else if ([[buttons objectAtIndex:2] integerValue] == PRESS_TOGGLE) {
+        [self fireButton:WEST];
+    } else if ([[buttons objectAtIndex:3] integerValue] == PRESS_TOGGLE) {
+        [self fireButton:SOUTH];
+    } else if ([[buttons objectAtIndex:0] integerValue] == PRESS_MODE) {
+        [self selectActiveMode:NORTH];
+    } else if ([[buttons objectAtIndex:1] integerValue] == PRESS_MODE) {
+        [self selectActiveMode:EAST];
+    } else if ([[buttons objectAtIndex:2] integerValue] == PRESS_MODE) {
+        [self selectActiveMode:WEST];
+    } else if ([[buttons objectAtIndex:3] integerValue] == PRESS_MODE) {
+        [self selectActiveMode:SOUTH];
     }
 }
 
-- (void)activeModeTimerFire:(NSTimer *)timer {
-//    NSLog(@"Firing active mode timer: %d", activeModeDirection);
-    activeModeTimer = nil;
-    
-    if (activeModeDirection == [[timer.userInfo objectForKey:@"activeModeDirection"] integerValue]) {
-        [self selectActiveMode];
-    }
-}
-
-- (void)selectActiveMode {
+- (void)selectActiveMode:(TTModeDirection)direction {
 //    NSLog(@"Selecting mode: %d", activeModeDirection);
     [appDelegate.diamond setActiveModeDirection:0];
-    [appDelegate.diamond setSelectedModeDirection:activeModeDirection];
+    [appDelegate.diamond setSelectedModeDirection:direction];
 }
 
-- (void)activateButton {
+- (void)activateButton:(TTModeDirection)direction {
 //    NSLog(@"Activating button: %d", activeModeDirection);
-    [appDelegate.diamond setActiveModeDirection:activeModeDirection];
+    [appDelegate.diamond setActiveModeDirection:direction];
 }
 
 - (void)deactivateButton {
     NSLog(@"Deactivate button: %d", activeModeDirection);
 }
-- (void)fireButton {
-//    NSLog(@"Firing button: %d", activeModeDirection);
+- (void)fireButton:(TTModeDirection)direction {
+    [appDelegate.diamond setActiveModeDirection:direction];
     [appDelegate.diamond runActiveButton];
     [appDelegate.diamond setActiveModeDirection:0];
 }

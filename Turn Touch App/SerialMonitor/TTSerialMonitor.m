@@ -10,7 +10,7 @@
 #import "TTAppDelegate.h"
 #import "TTSerialMonitor.h"
 
-const int kBaudRate = 57600;
+const int kBaudRate = 9600;
 
 @implementation TTSerialMonitor
 
@@ -46,10 +46,15 @@ const int kBaudRate = 57600;
     for (NSString *serialDevice in serialDeviceNames) {
         if ([serialDevice rangeOfString:@"usbserial"].location != NSNotFound ||
             [serialDevice rangeOfString:@"usbmodem"].location != NSNotFound) {
+            NSLog(@"Found serial device: %@", serialDevice);
             selectedSerialDevice = serialDevice;
             [self serialPortSelected:nil];
             break;
         }
+    }
+    
+    if (!selectedSerialDevice) {
+        NSLog(@"Didn't find serial device.");
     }
 }
 
@@ -171,7 +176,7 @@ const int kBaudRate = 57600;
         [scanner scanString:@":" intoString:nil];
         if ([scanner scanUpToString:@":" intoString:&substring]) {
             if ([substring isEqualToString:@"END"]) break;
-            [substrings addObject:[NSNumber numberWithBool:[substring boolValue]]];
+            [substrings addObject:[NSNumber numberWithInteger:[substring integerValue]]];
         } else {
             break;
         }
