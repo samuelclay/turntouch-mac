@@ -7,6 +7,7 @@
 //
 
 #import "TTAppDelegate.h"
+#import "TTUSBWatcher.h"
 
 @implementation TTAppDelegate
 
@@ -39,6 +40,10 @@ void *kContextActivePanel = &kContextActivePanel;
     self.diamond = [[TTDiamond alloc] init];
     self.menubarController = [[TTMenubarController alloc] init];
     self.serialMonitor = [[TTSerialMonitor alloc] init];
+    
+    WatchUSB(^{
+        NSLog(@"Callback");
+    });
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender {
