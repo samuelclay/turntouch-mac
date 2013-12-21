@@ -274,27 +274,31 @@ const int kBaudRate = 9600;
 }
 
 // send a string to the serial port
-- (void) writeString: (NSString *) str {
+- (BOOL) writeString: (NSString *) str {
 	if(serialFileDescriptor!=-1) {
 		write(serialFileDescriptor, [str cStringUsingEncoding:NSUTF8StringEncoding], [str length]);
+        return YES;
 	} else {
 		// make sure the user knows they should select a serial port
 		[self appendToIncomingText:@"\n ERROR:  Select a Serial Port from the pull-down menu\n"];
+        return NO;
 	}
 }
 
 // send a byte to the serial port
-- (void) writeByte: (uint8_t *) val {
+- (BOOL) writeByte: (uint8_t *) val {
 	if(serialFileDescriptor!=-1) {
 		write(serialFileDescriptor, val, 1);
+        return YES;
 	} else {
 		// make sure the user knows they should select a serial port
 		[self appendToIncomingText:@"\n ERROR:  Select a Serial Port from the pull-down menu\n"];
+        return NO;
 	}
 }
 
 // action sent when serial port selected
-- (IBAction) serialPortSelected: (id) cntrl {
+- (void) serialPortSelected: (id) cntrl {
 	// open the serial port
 	NSString *error = [self openSerialPort: selectedSerialDevice baud:kBaudRate];
 	
@@ -303,76 +307,19 @@ const int kBaudRate = 9600;
 		[self appendToIncomingText:error];
 	} else {
 		[self refreshSerialList];
-        [self resetButton:nil];
+        [self resetSerialPort];
 		[self performSelectorInBackground:@selector(incomingTextUpdateThread:) withObject:[NSThread currentThread]];
 	}
 }
 
-// action from baud rate change
-- (IBAction) baudAction: (id) cntrl {
-	if (serialFileDescriptor != -1) {
-		speed_t baudRate = kBaudRate;
-		
-		// if the new baud rate isn't possible, refresh the serial list
-		//   this will also deselect the current serial port
-		if(ioctl(serialFileDescriptor, IOSSIOSPEED, &baudRate)==-1) {
-			[self refreshSerialList];
-			[self appendToIncomingText:@"Error: Baud Rate out of bounds"];
-		}
-	}
-}
-
-// action from refresh button
-- (IBAction) refreshAction: (id) cntrl {
-	[self refreshSerialList];
-	
-	// close serial port if open
-	if (serialFileDescriptor != -1) {
-		close(serialFileDescriptor);
-		serialFileDescriptor = -1;
-	}
-}
-
-// action from send button and on return in the text field
-- (IBAction) sendText: (id) cntrl {
-	// send the text to the Arduino
-	[self writeString:[serialInputField stringValue]];
-	
-	// blank the field
-	[serialInputField setTitleWithMnemonic:@""];
-}
-
-// action from send button and on return in the text field
-- (IBAction) sliderChange: (NSSlider *) sldr {
-	uint8_t val = [sldr intValue];
-	[self writeByte:&val];
-}
-
-
-// action from the A button
-- (IBAction) hitAButton: (NSButton *) btn {
-	[self writeString:@"A"];
-}
-
-// action from the B button
-- (IBAction) hitBButton: (NSButton *) btn {
-	[self writeString:@"B"];
-}
-
-// action from the C button
-- (IBAction) hitCButton: (NSButton *) btn {
-	[self writeString:@"C"];
-}
-
-// action from the reset button
-- (IBAction) resetButton: (NSButton *) btn {
-	// set and clear DTR to reset an arduino
-	struct timespec interval = {0,100000000}, remainder;
-	if(serialFileDescriptor!=-1) {
-		ioctl(serialFileDescriptor, TIOCSDTR);
-		nanosleep(&interval, &remainder); // wait 0.1 seconds
-		ioctl(serialFileDescriptor, TIOCCDTR);
-	}
+- (void)resetSerialPort {
+    // set and clear DTR to reset an arduino
+    struct timespec interval = {0,100000000}, remainder;
+    if(serialFileDescriptor!=-1) {
+        ioctl(serialFileDescriptor, TIOCSDTR);
+        nanosleep(&interval, &remainder); // wait 0.1 seconds
+        ioctl(serialFileDescriptor, TIOCCDTR);
+    }
 }
 
 @end

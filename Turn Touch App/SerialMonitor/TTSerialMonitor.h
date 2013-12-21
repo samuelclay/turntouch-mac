@@ -39,17 +39,10 @@
 - (void)appendToIncomingText: (id) text;
 - (void)incomingTextUpdateThread: (NSThread *) parentThread;
 - (void) refreshSerialList;
-- (void) writeString: (NSString *) str;
-- (void) writeByte: (uint8_t *) val;
+- (BOOL) writeString: (NSString *) str;
+- (BOOL) writeByte: (uint8_t *) val;
 - (void)autoSelectSerialDevice;
-- (IBAction) serialPortSelected: (id) cntrl;
-- (IBAction) baudAction: (id) cntrl;
-- (IBAction) refreshAction: (id) cntrl;
-- (IBAction) sendText: (id) cntrl;
-- (IBAction) sliderChange: (NSSlider *) sldr;
-- (IBAction) hitAButton: (NSButton *) btn;
-- (IBAction) hitBButton: (NSButton *) btn;
-- (IBAction) hitCButton: (NSButton *) btn;
-- (IBAction) resetButton: (NSButton *) btn;
+- (void) serialPortSelected: (id) cntrl;
+- (void)resetSerialPort;
 
 @end

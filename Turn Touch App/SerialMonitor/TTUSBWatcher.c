@@ -210,7 +210,7 @@ void DeviceAdded(void *refCon, io_iterator_t iterator)
             continue;
         }
         else {
-            fprintf(stderr, "Location ID: 0x%lx\n\n", locationID);
+            fprintf(stderr, "Location ID: 0x%x\n\n", (unsigned int)locationID);
         }
         
         privateDataRef->locationID = locationID;
