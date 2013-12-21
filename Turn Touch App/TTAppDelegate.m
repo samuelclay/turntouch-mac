@@ -8,6 +8,7 @@
 
 #import "TTAppDelegate.h"
 #import "TTUSBWatcher.h"
+#import <dispatch/dispatch.h>
 
 @implementation TTAppDelegate
 
@@ -40,10 +41,16 @@ void *kContextActivePanel = &kContextActivePanel;
     self.diamond = [[TTDiamond alloc] init];
     self.menubarController = [[TTMenubarController alloc] init];
     self.serialMonitor = [[TTSerialMonitor alloc] init];
-    
-    WatchUSB(^{
-        NSLog(@"Callback");
-    });
+
+    __block TTSerialMonitor *blockMonitor = self.serialMonitor;
+    dispatch_block_t usbBlock = ^{
+        if (!blockMonitor) return;
+        
+//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [blockMonitor reload];
+//        });
+    };
+    WatchUSB([usbBlock copy]);
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender {

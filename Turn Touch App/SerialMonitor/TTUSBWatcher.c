@@ -260,7 +260,7 @@ void WatchUSB(dispatch_block_t block)
     long					usbVendor = kMyVendorID;
     long					usbProduct = kMyProductID;
     sig_t					oldHandler;
-    gBlock                  = block;
+    gBlock                  = Block_copy(block);
 
     // Set up a signal handler so we can clean up when we're interrupted from the command line
     // Otherwise we stay in our run loop forever.

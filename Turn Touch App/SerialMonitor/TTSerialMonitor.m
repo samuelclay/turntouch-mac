@@ -28,8 +28,10 @@ const int kBaudRate = 9600;
         textBuffer = [[NSMutableString alloc] init];
         
         // first thing is to refresh the serial port list
-        [self refreshSerialList];
-        [self autoSelectSerialDevice];
+//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//            [self refreshSerialList];
+//            [self autoSelectSerialDevice];
+//        });
     }
     
     return self;
@@ -40,6 +42,17 @@ const int kBaudRate = 9600;
         close(serialFileDescriptor);
         serialFileDescriptor = -1;
     }
+}
+
+- (void)reload {
+    [self reload:NO];
+}
+
+- (void)reload:(BOOL)force {
+    if (!force && selectedSerialDevice) return;
+    
+    [self refreshSerialList];
+    [self autoSelectSerialDevice];
 }
 
 - (void)autoSelectSerialDevice {

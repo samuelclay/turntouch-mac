@@ -33,12 +33,15 @@
 	NSMutableString *textBuffer;
 }
 
+- (void)reload;
+- (void)reload:(BOOL)force;
 - (NSString *) openSerialPort: (NSString *)serialPortFile baud: (speed_t)baudRate;
 - (void)appendToIncomingText: (id) text;
 - (void)incomingTextUpdateThread: (NSThread *) parentThread;
 - (void) refreshSerialList;
 - (void) writeString: (NSString *) str;
 - (void) writeByte: (uint8_t *) val;
+- (void)autoSelectSerialDevice;
 - (IBAction) serialPortSelected: (id) cntrl;
 - (IBAction) baudAction: (id) cntrl;
 - (IBAction) refreshAction: (id) cntrl;
