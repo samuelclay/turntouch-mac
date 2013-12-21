@@ -12,6 +12,6 @@
 void DeviceNotification(void *refCon, io_service_t service, natural_t messageType, void *messageArgument);
 void DeviceAdded(void *refCon, io_iterator_t iterator);
 void SignalHandler(int sigraised);
-void WatchUSB(dispatch_block_t block);
+void WatchUSB(dispatch_block_t addBlock, dispatch_block_t removeBlock);
 
 #endif

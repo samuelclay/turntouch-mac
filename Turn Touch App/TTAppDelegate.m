@@ -43,14 +43,17 @@ void *kContextActivePanel = &kContextActivePanel;
     self.serialMonitor = [[TTSerialMonitor alloc] init];
 
     __block TTSerialMonitor *blockMonitor = self.serialMonitor;
-    dispatch_block_t usbBlock = ^{
+    dispatch_block_t usbAddBlock = ^{
         if (!blockMonitor) return;
         
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [blockMonitor reload];
-//        });
+        [blockMonitor reload];
     };
-    WatchUSB([usbBlock copy]);
+    dispatch_block_t usbRemoveBlock = ^{
+        if (!blockMonitor) return;
+        
+        [blockMonitor reload:YES];
+    };
+    WatchUSB([usbAddBlock copy], [usbRemoveBlock copy]);
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender {

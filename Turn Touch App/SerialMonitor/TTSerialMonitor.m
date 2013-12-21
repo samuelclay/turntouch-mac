@@ -49,13 +49,15 @@ const int kBaudRate = 9600;
 }
 
 - (void)reload:(BOOL)force {
-    if (!force && selectedSerialDevice) return;
+    if (!(force || !selectedSerialDevice)) return;
     
     [self refreshSerialList];
     [self autoSelectSerialDevice];
 }
 
 - (void)autoSelectSerialDevice {
+    selectedSerialDevice = nil;
+    
     for (NSString *serialDevice in serialDeviceNames) {
         if ([serialDevice rangeOfString:@"usbserial"].location != NSNotFound ||
             [serialDevice rangeOfString:@"usbmodem"].location != NSNotFound) {

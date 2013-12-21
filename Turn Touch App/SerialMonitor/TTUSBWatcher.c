@@ -85,7 +85,8 @@ typedef struct MyPrivateData {
 static IONotificationPortRef	gNotifyPort;
 static io_iterator_t			gAddedIter;
 static CFRunLoopRef				gRunLoop;
-static dispatch_block_t         gBlock;
+static dispatch_block_t         gAddBlock;
+static dispatch_block_t         gRemoveBlock;
 
 //================================================================================================
 //
@@ -104,7 +105,7 @@ void DeviceNotification(void *refCon, io_service_t service, natural_t messageTyp
     if (messageType == kIOMessageServiceIsTerminated) {
         fprintf(stderr, "Device removed.\n");
         
-        gBlock();
+        gRemoveBlock();
         
         // Dump our private data to stderr just to see what it looks like.
         fprintf(stderr, "privateDataRef->deviceName: ");
@@ -153,7 +154,7 @@ void DeviceAdded(void *refCon, io_iterator_t iterator)
         UInt32			locationID;
         
         printf("Device added.\n");
-        gBlock();
+        gAddBlock();
         
         // Add some app-specific information about this device.
         // Create a buffer to hold the data.
@@ -251,7 +252,7 @@ void SignalHandler(int sigraised)
 //================================================================================================
 //	main
 //================================================================================================
-void WatchUSB(dispatch_block_t block)
+void WatchUSB(dispatch_block_t addBlock, dispatch_block_t removeBlock)
 {
     CFMutableDictionaryRef 	matchingDict;
     CFRunLoopSourceRef		runLoopSource;
@@ -260,7 +261,8 @@ void WatchUSB(dispatch_block_t block)
     long					usbVendor = kMyVendorID;
     long					usbProduct = kMyProductID;
     sig_t					oldHandler;
-    gBlock                  = Block_copy(block);
+    gAddBlock               = Block_copy(addBlock);
+    gRemoveBlock            = Block_copy(removeBlock);
 
     // Set up a signal handler so we can clean up when we're interrupted from the command line
     // Otherwise we stay in our run loop forever.
