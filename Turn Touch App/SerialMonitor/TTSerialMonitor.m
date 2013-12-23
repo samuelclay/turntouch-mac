@@ -22,16 +22,11 @@ const int kBaudRate = 9600;
         // we don't have a serial port open yet
         serialFileDescriptor = -1;
         readThreadRunning = FALSE;
+        vertifiedSerialDevice = NO;
         serialDeviceNames = [NSMutableArray array];
         appDelegate = [NSApp delegate];
         buttonTimer = [[TTButtonTimer alloc] init];
         textBuffer = [[NSMutableString alloc] init];
-        
-        // first thing is to refresh the serial port list
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//            [self refreshSerialList];
-//            [self autoSelectSerialDevice];
-//        });
     }
     
     return self;
@@ -50,7 +45,9 @@ const int kBaudRate = 9600;
 
 - (void)reload:(BOOL)force {
     if (!(force || !selectedSerialDevice)) return;
-    
+
+    [self resetSerialPort];
+    [textBuffer setString:@""];
     [self refreshSerialList];
     [self autoSelectSerialDevice];
 }
@@ -64,6 +61,8 @@ const int kBaudRate = 9600;
             NSLog(@"Found serial device: %@", serialDevice);
             selectedSerialDevice = serialDevice;
             [self serialPortSelected:nil];
+            [self writeString:@"Hellllooo"];
+            NSLog(@"Verified? %d", vertifiedSerialDevice);
             break;
         }
     }
@@ -175,13 +174,17 @@ const int kBaudRate = 9600;
 - (void)appendToIncomingText: (id) text {
 	// add the text to the textarea
     if (!text) return;
-//    NSLog(@"Incoming text: %@", text);
-//    NSLog(@"TextBuffer: %@", textBuffer);
+    NSLog(@"Incoming text: %@", text);
+    NSLog(@"TextBuffer: %@", textBuffer);
     [textBuffer appendString:text];
     [self parseTextBuffer];
 }
 
 - (void)parseTextBuffer {
+    if ([textBuffer rangeOfString:@"received"].location != NSNotFound) {
+        vertifiedSerialDevice = YES;
+        [textBuffer setString:@""];
+    }
     NSMutableArray *substrings = [NSMutableArray new];
     NSScanner *scanner = [NSScanner scannerWithString:textBuffer];
     [scanner scanUpToString:@"START:" intoString:nil];
@@ -217,7 +220,7 @@ const int kBaudRate = 9600;
 	// mark that the thread is running
 	readThreadRunning = TRUE;
 	
-	const ssize_t BUFFER_SIZE = 100;
+	const ssize_t BUFFER_SIZE = 1000;
 	char byte_buffer[BUFFER_SIZE]; // buffer for holding incoming data
 	ssize_t numBytes=0; // number of bytes read during read
 	NSString *text; // incoming text from the serial port
@@ -231,6 +234,7 @@ const int kBaudRate = 9600;
 		numBytes = read(serialFileDescriptor, byte_buffer, BUFFER_SIZE); // read up to the size of the buffer
 		if(numBytes>0) {
 			// create an NSString from the incoming bytes (the bytes aren't null terminated)
+            NSLog(@"bytes: %s", byte_buffer);
 			text = [NSString stringWithCString:byte_buffer length:numBytes];
 			
 			// this text can't be directly sent to the text area from this thread

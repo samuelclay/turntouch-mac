@@ -25,6 +25,7 @@
     TTButtonTimer *buttonTimer;
 	NSMutableArray *serialDeviceNames;
     NSString *selectedSerialDevice;
+    bool vertifiedSerialDevice;
 	IBOutlet NSTextField *serialInputField;
 	IBOutlet NSTextField *baudInputField;
 	int serialFileDescriptor; // file handle to the serial port

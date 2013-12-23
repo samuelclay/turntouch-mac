@@ -27,4 +27,30 @@
     NSLog(@"South");
 }
 
+
+- (NSString *)imageName {
+    return nil;
+}
+
+- (NSString *)titleNorth {
+    return nil;
+}
+
+- (NSString *)titleEast {
+    return nil;
+}
+
+- (NSString *)titleWest {
+    return nil;
+}
+
+- (NSString *)titleSouth {
+    return nil;
+}
+
+- (NSString *)title {
+    return nil;
+}
+
+
 @end

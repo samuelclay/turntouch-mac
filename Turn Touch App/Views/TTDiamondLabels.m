@@ -67,7 +67,7 @@
 - (void)drawRect:(NSRect)dirtyRect {
 	[super drawRect:dirtyRect];
 
-    CGFloat backingScaleFactor = [self.window backingScaleFactor];
+//    CGFloat backingScaleFactor = [self.window backingScaleFactor];
     CGFloat offsetX = NSMinX(diamondRect);
     CGFloat offsetY = NSMaxY(self.frame) - NSMaxY(diamondRect);
     CGFloat width = NSWidth(diamondRect);
@@ -147,7 +147,7 @@
             label = [appDelegate.diamond.selectedMode titleSouth];
         }
         
-        NSSize textSize = [label sizeWithAttributes:labelAttributes];
+//        NSSize textSize = [label sizeWithAttributes:labelAttributes];
         [label drawInRect:textRect withAttributes:labelAttributes];
     }
 }

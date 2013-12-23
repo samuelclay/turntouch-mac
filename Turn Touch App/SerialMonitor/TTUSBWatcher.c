@@ -329,12 +329,6 @@ void WatchUSB(dispatch_block_t addBlock, dispatch_block_t removeBlock)
     
     // Iterate once to get already-present devices and arm the notification
     DeviceAdded(NULL, gAddedIter);
-    
-    // Start the run loop. Now we'll receive notifications.
-    fprintf(stderr, "Starting run loop.\n\n");
-//    CFRunLoopRun();
-    
-    // We should never get here
-    fprintf(stderr, "Unexpectedly back from CFRunLoopRun()!\n");
+
     return;
 }
