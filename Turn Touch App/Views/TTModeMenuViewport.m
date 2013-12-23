@@ -54,34 +54,44 @@
 }
 
 - (void)mouseUp:(NSEvent *)theEvent {
-    NSRect frame = self.frame;
-    
-    CGFloat newHeight = originalHeight;
-    CGFloat newY = originalY;
-    if (!isExpanded) {
-        newHeight = originalHeight * 4;
-        newY = originalY - originalHeight * 3;
-    }
-    frame.size.height = newHeight;
-    frame.origin.y = newY;
+    isExpanded = !isExpanded;
 
+    [self resize:YES];
+}
+
+- (void)resize:(BOOL)animate {
+    NSRect viewportRect = self.frame;
+
+    CGFloat newHeight = originalHeight;
+    if (isExpanded) {
+        newHeight = originalHeight * 4;
+    }
+    viewportRect.size.height = newHeight;
+    
+//    NSLog(@"Resizing viewport: %f height", newHeight);
     NSDictionary *growBackground = [NSDictionary dictionaryWithObjectsAndKeys:
                                     self, NSViewAnimationTargetKey,
                                     [NSValue valueWithRect:self.frame], NSViewAnimationStartFrameKey,
-                                    [NSValue valueWithRect:frame], NSViewAnimationEndFrameKey, nil];
-    NSRect originalMenuRect = [self positionContainer:isExpanded];
-    NSRect newMenuRect = [self positionContainer:!isExpanded];
+                                    [NSValue valueWithRect:viewportRect], NSViewAnimationEndFrameKey, nil];
+    
+    NSRect originalMenuRect = [self positionContainer:!isExpanded];
+    NSRect newMenuRect = [self positionContainer:isExpanded];
     NSDictionary *moveMenu = [NSDictionary dictionaryWithObjectsAndKeys:
                               container, NSViewAnimationTargetKey,
                               [NSValue valueWithRect:originalMenuRect], NSViewAnimationStartFrameKey,
                               [NSValue valueWithRect:newMenuRect], NSViewAnimationEndFrameKey, nil];
-    NSViewAnimation *animation = [[NSViewAnimation alloc] initWithViewAnimations:@[growBackground, moveMenu]];
-    [animation setAnimationBlockingMode: NSAnimationNonblocking];
-    [animation setAnimationCurve: NSAnimationEaseInOut];
-    [animation setDuration: .35f];
-    [animation startAnimation];
     
-    isExpanded = !isExpanded;
+    if (animate) {
+        NSViewAnimation *animation = [[NSViewAnimation alloc]
+                                      initWithViewAnimations:@[growBackground, moveMenu]];
+        [animation setAnimationBlockingMode: NSAnimationNonblocking];
+        [animation setAnimationCurve: NSAnimationEaseInOut];
+        [animation setDuration:.35f];
+        [animation startAnimation];
+    } else {
+        self.frame = viewportRect;
+        container.frame = newMenuRect;
+    }
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
@@ -90,6 +100,11 @@
     [self drawBackground];
     
     container.frame = [self positionContainer:isExpanded];
+}
+
+- (void)resetPosition {
+    isExpanded = NO;
+    [self resize:NO];
 }
 
 - (void)drawBackground {

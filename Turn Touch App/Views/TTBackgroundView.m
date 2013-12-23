@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Turn Touch. All rights reserved.
 //
 
+#import "TTPanelController.h"
 #import "TTBackgroundView.h"
 
 #define FILL_OPACITY 1.0f
@@ -30,7 +31,8 @@
 #pragma mark -
 
 - (void)awakeFromNib {
-   
+    appDelegate = [NSApp delegate];
+
     // +1 X offset for panel width fudge
     NSRect diamondRect = NSMakeRect(NSWidth(self.frame) / 2 - (DIAMOND_SIZE * 1.3 / 2) + 1,
                                     (NSHeight(self.frame) - MODE_MENU_HEIGHT) / 2 - DIAMOND_SIZE / 2,
@@ -38,12 +40,12 @@
     _diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect
                                               direction:0
                                 ignoreSelectedDirection:YES];
-    NSLog(@"diamondRect: %@ - %@", NSStringFromRect(self.frame), NSStringFromRect(diamondRect));
+//    NSLog(@"diamondRect: %@ - %@", NSStringFromRect(self.frame), NSStringFromRect(diamondRect));
     [self addSubview:_diamondView];
     
     NSRect labelRect = NSMakeRect(0, 0,
                                   NSWidth(self.frame), NSHeight(self.frame) - MODE_MENU_HEIGHT);
-    NSLog(@"labelRect: %@ - %@", NSStringFromRect(self.frame), NSStringFromRect(labelRect));
+//    NSLog(@"labelRect: %@ - %@", NSStringFromRect(self.frame), NSStringFromRect(labelRect));
     _diamondLabels = [[TTDiamondLabels alloc] initWithFrame:labelRect diamondRect:diamondRect];
     [self addSubview:_diamondLabels];
 
@@ -106,6 +108,10 @@
     
     [NSGraphicsContext restoreGraphicsState];
     
+}
+
+- (void)resetPosition {
+    [_modeMenu resetPosition];
 }
 
 #pragma mark -

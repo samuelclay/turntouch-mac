@@ -26,8 +26,6 @@
 
 @synthesize backgroundView = _backgroundView;
 @synthesize delegate = _delegate;
-@synthesize searchField = _searchField;
-@synthesize textField = _textField;
 
 #pragma mark -
 
@@ -40,7 +38,7 @@
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSControlTextDidChangeNotification object:self.searchField];
+
 }
 
 #pragma mark -
@@ -55,13 +53,34 @@
     [panel setOpaque:NO];
     [panel setBackgroundColor:[NSColor clearColor]];
     
-    // Resize panel
-    NSRect panelRect = [[self window] frame];
-    panelRect.size.height = PANEL_HEIGHT;
-    [[self window] setFrame:panelRect display:NO];
+    [self resize];
     
-    // Follow search string
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(runSearch) name:NSControlTextDidChangeNotification object:self.searchField];
+    [self.backgroundView.modeMenu addObserver:self forKeyPath:@"frame" options:0 context:nil];
+}
+
+- (void) observeValueForKeyPath:(NSString*)keyPath
+                       ofObject:(id)object
+                         change:(NSDictionary*)change
+                        context:(void*)context {
+    if ([keyPath isEqual:NSStringFromSelector(@selector(frame))]) {
+        [self resize];
+    }
+}
+
+- (void)resize {
+    NSPanel *panel = (id)[self window];
+    
+    NSInteger menuHeight = CGRectGetHeight(self.backgroundView.modeMenu.frame);
+    NSInteger diamondHeight = CGRectGetHeight(self.backgroundView.diamondLabels.frame);
+    
+    NSRect statusRect = [self statusRectForWindow:panel];
+    
+    NSRect panelRect = [panel frame];
+    panelRect.size.height = menuHeight + diamondHeight;
+    panelRect.origin.x = roundf(NSMidX(statusRect) - NSWidth(panelRect) / 2);
+    panelRect.origin.y = NSMaxY(statusRect) - NSHeight(panelRect);
+    
+    [panel setFrame:panelRect display:YES];
 }
 
 #pragma mark - Public accessors
@@ -95,55 +114,13 @@
 }
 
 - (void)windowDidResize:(NSNotification *)notification {
-    NSWindow *panel = [self window];
-    NSRect statusRect = [self statusRectForWindow:panel];
-    NSRect panelRect = [panel frame];
-    
-    CGFloat statusX = roundf(NSMidX(statusRect));
-    CGFloat panelX = statusX - NSMinX(panelRect);
-    
-    self.backgroundView.arrowX = panelX;
-    
-    NSRect searchRect = [self.searchField frame];
-    searchRect.size.width = NSWidth([self.backgroundView bounds]) - SEARCH_INSET * 2;
-    searchRect.origin.x = SEARCH_INSET;
-    searchRect.origin.y = NSHeight([self.backgroundView bounds]) - ARROW_HEIGHT - SEARCH_INSET - NSHeight(searchRect);
-    
-    if (NSIsEmptyRect(searchRect)) {
-        [self.searchField setHidden:YES];
-    } else {
-        [self.searchField setFrame:searchRect];
-        [self.searchField setHidden:NO];
-    }
-    
-    NSRect textRect = [self.textField frame];
-    textRect.size.width = NSWidth([self.backgroundView bounds]) - SEARCH_INSET * 2;
-    textRect.origin.x = SEARCH_INSET;
-    textRect.size.height = NSHeight([self.backgroundView bounds]) - ARROW_HEIGHT - SEARCH_INSET * 3 - NSHeight(searchRect);
-    textRect.origin.y = SEARCH_INSET;
-    
-    if (NSIsEmptyRect(textRect)) {
-        [self.textField setHidden:YES];
-    } else {
-        [self.textField setFrame:textRect];
-        [self.textField setHidden:NO];
-    }
+//    NSLog(@"windowDidResize");
 }
 
 #pragma mark - Keyboard
 
 - (void)cancelOperation:(id)sender {
     self.hasActivePanel = NO;
-}
-
-- (void)runSearch {
-    NSString *searchFormat = @"";
-    NSString *searchString = [self.searchField stringValue];
-    if ([searchString length] > 0) {
-        searchFormat = NSLocalizedString(@"Search for ‘%@’…", @"Format for search request");
-    }
-    NSString *searchRequest = [NSString stringWithFormat:searchFormat, searchString];
-    [self.textField setStringValue:searchRequest];
 }
 
 #pragma mark - Public methods
@@ -189,6 +166,13 @@
     [panel setFrame:panelRect display:YES];
     [panel makeKeyAndOrderFront:nil];
     
+    CGFloat statusX = roundf(NSMidX(statusRect));
+    CGFloat panelX = statusX - NSMinX(panelRect);
+    
+    self.backgroundView.arrowX = panelX;
+    [self.backgroundView resetPosition];
+    [self resize];
+    
     NSTimeInterval openDuration = OPEN_DURATION;
     
     NSEvent *currentEvent = [NSApp currentEvent];
@@ -205,15 +189,14 @@
         }
     }
     
-    NSDictionary *fadeIn = [NSDictionary dictionaryWithObjectsAndKeys: panel, NSViewAnimationTargetKey,
+    NSDictionary *fadeIn = [NSDictionary dictionaryWithObjectsAndKeys:
+                            panel, NSViewAnimationTargetKey,
                             NSViewAnimationFadeInEffect, NSViewAnimationEffectKey, nil];
     NSViewAnimation *animation = [[NSViewAnimation alloc] initWithViewAnimations:@[fadeIn]];
     [animation setAnimationBlockingMode: NSAnimationNonblocking];
     [animation setAnimationCurve: NSAnimationEaseIn];
     [animation setDuration: openDuration];
     [animation startAnimation];
-    
-    [panel performSelector:@selector(makeFirstResponder:) withObject:self.searchField afterDelay:openDuration];
 }
 
 - (void)closePanel {

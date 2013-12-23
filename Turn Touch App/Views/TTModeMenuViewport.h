@@ -21,4 +21,6 @@
     CGFloat originalY;
 }
 
+- (void)resetPosition;
+
 @end
