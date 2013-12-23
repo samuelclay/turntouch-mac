@@ -7,7 +7,8 @@
 //
 
 #import "TTAppDelegate.h"
-#import "TTUSBWatcher.h"
+#import "ORSSerialPort.h"
+#import "ORSSerialPortManager.h"
 #import <dispatch/dispatch.h>
 
 @implementation TTAppDelegate
@@ -41,19 +42,6 @@ void *kContextActivePanel = &kContextActivePanel;
     self.diamond = [[TTDiamond alloc] init];
     self.menubarController = [[TTMenubarController alloc] init];
     self.serialMonitor = [[TTSerialMonitor alloc] init];
-
-    __block TTSerialMonitor *blockMonitor = self.serialMonitor;
-    dispatch_block_t usbAddBlock = ^{
-        if (!blockMonitor) return;
-        
-        [blockMonitor reload];
-    };
-    dispatch_block_t usbRemoveBlock = ^{
-        if (!blockMonitor) return;
-        
-        [blockMonitor reload:YES];
-    };
-    WatchUSB([usbAddBlock copy], [usbRemoveBlock copy]);
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender {
@@ -61,6 +49,12 @@ void *kContextActivePanel = &kContextActivePanel;
     self.menubarController = nil;
     return NSTerminateNow;
 }
+
+- (void)applicationWillTerminate:(NSNotification *)notification {
+	NSArray *ports = [[ORSSerialPortManager sharedSerialPortManager] availablePorts];
+	for (ORSSerialPort *port in ports) { [port close]; }
+}
+
 
 #pragma mark - Actions
 

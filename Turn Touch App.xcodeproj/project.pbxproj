@@ -19,7 +19,6 @@
 		FF3A9F7217C4354A00C5C2D5 /* TTStatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A9F7117C4354A00C5C2D5 /* TTStatusItemView.m */; };
 		FF3A9F7517C4355B00C5C2D5 /* TTBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A9F7417C4355B00C5C2D5 /* TTBackgroundView.m */; };
 		FF3A9F7717C4358000C5C2D5 /* TTPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3A9F7617C4358000C5C2D5 /* TTPanel.xib */; };
-		FF3B8D911864FDB9009EDA43 /* TTUSBWatcher.c in Sources */ = {isa = PBXBuildFile; fileRef = FF3B8D901864FDB9009EDA43 /* TTUSBWatcher.c */; };
 		FF4E2630182317D000D477F6 /* TTSerialMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4E262F182317D000D477F6 /* TTSerialMonitor.m */; };
 		FF4E26321823197D00D477F6 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4E26311823197D00D477F6 /* IOKit.framework */; };
 		FF4F9AFA1829B1A900D2F975 /* TTModeMenuViewport.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4F9AF91829B1A900D2F975 /* TTModeMenuViewport.m */; };
@@ -35,6 +34,8 @@
 		FF98A2E81867DBE70032CC7A /* TTPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98A2E51867DBE70032CC7A /* TTPanelController.m */; };
 		FF98A2ED1867DC320032CC7A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98A2E91867DC320032CC7A /* main.m */; };
 		FF98A2EF1867DC320032CC7A /* Turn Touch App.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = FF98A2EC1867DC320032CC7A /* Turn Touch App.entitlements */; };
+		FF98A2FB1867E8EC0032CC7A /* ORSSerialPort.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98A2F81867E8EC0032CC7A /* ORSSerialPort.m */; };
+		FF98A2FC1867E8EC0032CC7A /* ORSSerialPortManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98A2FA1867E8EC0032CC7A /* ORSSerialPortManager.m */; };
 		FFAA4F4E182C99F30049FFC7 /* TTDiamondLabels.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4F4D182C99F30049FFC7 /* TTDiamondLabels.m */; };
 		FFAA4F5E182D96D60049FFC7 /* cog.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAA4F52182D96D60049FFC7 /* cog.png */; };
 		FFAA4F5F182D96D60049FFC7 /* equalizer-1.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAA4F53182D96D60049FFC7 /* equalizer-1.png */; };
@@ -79,8 +80,6 @@
 		FF3A9F7317C4355B00C5C2D5 /* TTBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTBackgroundView.h; path = Views/TTBackgroundView.h; sourceTree = "<group>"; };
 		FF3A9F7417C4355B00C5C2D5 /* TTBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTBackgroundView.m; path = Views/TTBackgroundView.m; sourceTree = "<group>"; };
 		FF3A9F7617C4358000C5C2D5 /* TTPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTPanel.xib; path = Views/TTPanel.xib; sourceTree = "<group>"; };
-		FF3B8D901864FDB9009EDA43 /* TTUSBWatcher.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = TTUSBWatcher.c; path = SerialMonitor/TTUSBWatcher.c; sourceTree = "<group>"; };
-		FF3B8D921865096B009EDA43 /* TTUSBWatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TTUSBWatcher.h; path = SerialMonitor/TTUSBWatcher.h; sourceTree = "<group>"; };
 		FF4E262E182317D000D477F6 /* TTSerialMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSerialMonitor.h; path = SerialMonitor/TTSerialMonitor.h; sourceTree = "<group>"; };
 		FF4E262F182317D000D477F6 /* TTSerialMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSerialMonitor.m; path = SerialMonitor/TTSerialMonitor.m; sourceTree = "<group>"; };
 		FF4E26311823197D00D477F6 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -112,6 +111,10 @@
 		FF98A2EA1867DC320032CC7A /* Turn Touch App-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Turn Touch App-Info.plist"; path = "Supporting Files/Turn Touch App-Info.plist"; sourceTree = "<group>"; };
 		FF98A2EB1867DC320032CC7A /* Turn Touch App-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Turn Touch App-Prefix.pch"; path = "Supporting Files/Turn Touch App-Prefix.pch"; sourceTree = "<group>"; };
 		FF98A2EC1867DC320032CC7A /* Turn Touch App.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "Turn Touch App.entitlements"; path = "Supporting Files/Turn Touch App.entitlements"; sourceTree = "<group>"; };
+		FF98A2F71867E8EC0032CC7A /* ORSSerialPort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ORSSerialPort.h; path = SerialMonitor/ORSSerialPort.h; sourceTree = "<group>"; };
+		FF98A2F81867E8EC0032CC7A /* ORSSerialPort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ORSSerialPort.m; path = SerialMonitor/ORSSerialPort.m; sourceTree = "<group>"; };
+		FF98A2F91867E8EC0032CC7A /* ORSSerialPortManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ORSSerialPortManager.h; path = SerialMonitor/ORSSerialPortManager.h; sourceTree = "<group>"; };
+		FF98A2FA1867E8EC0032CC7A /* ORSSerialPortManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ORSSerialPortManager.m; path = SerialMonitor/ORSSerialPortManager.m; sourceTree = "<group>"; };
 		FFAA4F4C182C99F30049FFC7 /* TTDiamondLabels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTDiamondLabels.h; path = Views/TTDiamondLabels.h; sourceTree = "<group>"; };
 		FFAA4F4D182C99F30049FFC7 /* TTDiamondLabels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTDiamondLabels.m; path = Views/TTDiamondLabels.m; sourceTree = "<group>"; };
 		FFAA4F52182D96D60049FFC7 /* cog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cog.png; path = icons/cog.png; sourceTree = "<group>"; };
@@ -217,8 +220,10 @@
 				FF4E262F182317D000D477F6 /* TTSerialMonitor.m */,
 				FF0E12C018242DF000D49EC7 /* TTButtonTimer.h */,
 				FF0E12C118242DF000D49EC7 /* TTButtonTimer.m */,
-				FF3B8D901864FDB9009EDA43 /* TTUSBWatcher.c */,
-				FF3B8D921865096B009EDA43 /* TTUSBWatcher.h */,
+				FF98A2F71867E8EC0032CC7A /* ORSSerialPort.h */,
+				FF98A2F81867E8EC0032CC7A /* ORSSerialPort.m */,
+				FF98A2F91867E8EC0032CC7A /* ORSSerialPortManager.h */,
+				FF98A2FA1867E8EC0032CC7A /* ORSSerialPortManager.m */,
 			);
 			name = "Serial Monitor";
 			sourceTree = "<group>";
@@ -305,10 +310,10 @@
 		FF8C833C17AB14B5000166FC /* Turn Touch App */ = {
 			isa = PBXGroup;
 			children = (
-				FF0E12C418247B7A00D49EC7 /* Modes */,
-				FF0E12B51824283B00D49EC7 /* Models */,
 				FF5F70B317C428FB00511AB6 /* Controllers */,
+				FF0E12B51824283B00D49EC7 /* Models */,
 				FF5F70B217C428F200511AB6 /* Views */,
+				FF0E12C418247B7A00D49EC7 /* Modes */,
 				FF4E26291823154500D477F6 /* Serial Monitor */,
 				FF0E12BF18242D2F00D49EC7 /* XIBs */,
 				FF8C833D17AB14B5000166FC /* Supporting Files */,
@@ -453,9 +458,9 @@
 				FF8C834A17AB14B5000166FC /* TTAppDelegate.m in Sources */,
 				FF4E2630182317D000D477F6 /* TTSerialMonitor.m in Sources */,
 				FF0E12C218242DF000D49EC7 /* TTButtonTimer.m in Sources */,
+				FF98A2FB1867E8EC0032CC7A /* ORSSerialPort.m in Sources */,
 				FF4F9AFD1829B1B800D2F975 /* TTModeMenuContainer.m in Sources */,
 				FF4F9B001829B1D300D2F975 /* TTModeMenuItem.m in Sources */,
-				FF3B8D911864FDB9009EDA43 /* TTUSBWatcher.c in Sources */,
 				FF98A2E11867DBA40032CC7A /* TTActionMap.m in Sources */,
 				FF3A9F6F17C4353300C5C2D5 /* TTPanel.m in Sources */,
 				FF0E12BB1824286600D49EC7 /* TTDiamond.m in Sources */,
@@ -466,6 +471,7 @@
 				FF3A9F7517C4355B00C5C2D5 /* TTBackgroundView.m in Sources */,
 				FFAA4F72182D9A5F0049FFC7 /* TTModeNews.m in Sources */,
 				FF0E12CF18247D6100D49EC7 /* TTModeMusic.m in Sources */,
+				FF98A2FC1867E8EC0032CC7A /* ORSSerialPortManager.m in Sources */,
 				FF32222E1857B549004078AA /* TTModePreferencePane.m in Sources */,
 				FF0E12D41828560000D49EC7 /* TTModeVideo.m in Sources */,
 				FF0E12B81824285100D49EC7 /* TTDiamondView.m in Sources */,

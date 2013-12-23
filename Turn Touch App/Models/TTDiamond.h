@@ -7,7 +7,6 @@
 //
 
 #import "TTMode.h"
-#import "NSObject+BlockObservation.h"
 #import <Cocoa/Cocoa.h>
 
 typedef enum {
