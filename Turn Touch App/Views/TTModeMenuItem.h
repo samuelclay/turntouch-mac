@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "TTAppDelegate.h"
-#import "TTDiamond.h"
+#import "TTModeMap.h"
 #import "TTDiamondView.h"
 
 @class TTAppDelegate;

@@ -7,7 +7,7 @@
 //
 
 #import "TTButtonTimer.h"
-#import "TTDiamond.h"
+#import "TTModeMap.h"
 
 //const double MODE_CHANGE_DURATION = 0.5f;
 
@@ -53,22 +53,22 @@
 
 - (void)selectActiveMode:(TTModeDirection)direction {
 //    NSLog(@"Selecting mode: %d", activeModeDirection);
-    [appDelegate.diamond setActiveModeDirection:0];
-    [appDelegate.diamond setSelectedModeDirection:direction];
+    [appDelegate.modeMap setActiveModeDirection:0];
+    [appDelegate.modeMap setSelectedModeDirection:direction];
 }
 
 - (void)activateButton:(TTModeDirection)direction {
 //    NSLog(@"Activating button: %d", activeModeDirection);
-    [appDelegate.diamond setActiveModeDirection:direction];
+    [appDelegate.modeMap setActiveModeDirection:direction];
 }
 
 - (void)deactivateButton {
     NSLog(@"Deactivate button: %d", activeModeDirection);
 }
 - (void)fireButton:(TTModeDirection)direction {
-    [appDelegate.diamond setActiveModeDirection:direction];
-    [appDelegate.diamond runActiveButton];
-    [appDelegate.diamond setActiveModeDirection:0];
+    [appDelegate.modeMap setActiveModeDirection:direction];
+    [appDelegate.modeMap runActiveButton];
+    [appDelegate.modeMap setActiveModeDirection:0];
 }
 
 @end

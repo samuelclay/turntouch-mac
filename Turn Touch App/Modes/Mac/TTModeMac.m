@@ -10,4 +10,28 @@
 
 @implementation TTModeMac
 
+- (NSString *)title {
+    return @"Mac OS";
+}
+
+- (NSString *)imageName {
+    return @"imac.png";
+}
+
+- (NSString *)titleNorth {
+    return @"Volume Up";
+}
+
+- (NSString *)titleEast {
+    return @"Turn off screen";
+}
+
+- (NSString *)titleWest {
+    return @"Mute";
+}
+
+- (NSString *)titleSouth {
+    return @"Volume Down";
+}
+
 @end

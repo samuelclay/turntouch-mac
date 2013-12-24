@@ -44,16 +44,16 @@
         
         switch (modeDirection) {
             case NORTH:
-                itemMode = appDelegate.diamond.northMode;
+                itemMode = appDelegate.modeMap.northMode;
                 break;
             case EAST:
-                itemMode = appDelegate.diamond.eastMode;
+                itemMode = appDelegate.modeMap.eastMode;
                 break;
             case WEST:
-                itemMode = appDelegate.diamond.westMode;
+                itemMode = appDelegate.modeMap.westMode;
                 break;
             case SOUTH:
-                itemMode = appDelegate.diamond.southMode;
+                itemMode = appDelegate.modeMap.southMode;
                 break;
         }
         
@@ -82,11 +82,11 @@
 }
 
 - (void)registerAsObserver {
-    [appDelegate.diamond addObserver:self
+    [appDelegate.modeMap addObserver:self
                           forKeyPath:@"activeModeDirection"
                              options:0
                              context:nil];
-    [appDelegate.diamond addObserver:self
+    [appDelegate.modeMap addObserver:self
                           forKeyPath:@"selectedModeDirection"
                              options:0
                              context:nil];
@@ -97,7 +97,7 @@
                          change:(NSDictionary*)change
                         context:(void*)context {
     if ([keyPath isEqual:NSStringFromSelector(@selector(activeModeDirection))]) {
-        if (appDelegate.diamond.selectedModeDirection == modeDirection) {
+        if (appDelegate.modeMap.selectedModeDirection == modeDirection) {
             [self setupMode];
             [self setNeedsDisplay:YES];
         }
@@ -125,8 +125,8 @@
     stringShadow.shadowColor = [NSColor whiteColor];
     stringShadow.shadowOffset = NSMakeSize(0, -1);
     stringShadow.shadowBlurRadius = 0;
-    NSColor *textColor = (hoverActive && [appDelegate isMenuViewportExpanded] && appDelegate.diamond.selectedModeDirection != modeDirection) ? NSColorFromRGB(0x404A60) :
-    appDelegate.diamond.selectedModeDirection == modeDirection ?
+    NSColor *textColor = (hoverActive && [appDelegate isMenuViewportExpanded] && appDelegate.modeMap.selectedModeDirection != modeDirection) ? NSColorFromRGB(0x404A60) :
+    appDelegate.modeMap.selectedModeDirection == modeDirection ?
     NSColorFromRGB(0x404A60) : NSColorFromRGB(0x808388);
     modeAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Futura" size:13],
                        NSForegroundColorAttributeName: textColor,
@@ -185,8 +185,8 @@
 }
 
 - (void)mouseUp:(NSEvent *)theEvent {
-    if (appDelegate.diamond.selectedModeDirection != modeDirection) {
-        [appDelegate.diamond setSelectedModeDirection:modeDirection];
+    if (appDelegate.modeMap.selectedModeDirection != modeDirection) {
+        [appDelegate.modeMap setSelectedModeDirection:modeDirection];
     }
     [appDelegate.modeMenuViewport toggleExpanded];
 }

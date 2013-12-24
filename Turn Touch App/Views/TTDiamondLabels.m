@@ -28,11 +28,11 @@
 }
 
 - (void)registerAsObserver {
-    [appDelegate.diamond addObserver:self
+    [appDelegate.modeMap addObserver:self
                           forKeyPath:@"activeModeDirection"
                              options:0
                              context:nil];
-    [appDelegate.diamond addObserver:self
+    [appDelegate.modeMap addObserver:self
                           forKeyPath:@"selectedModeDirection"
                              options:0
                              context:nil];
@@ -114,7 +114,7 @@
         
         [line setLineWidth:1.0];
         [[NSColor colorWithCalibratedHue:0.55f saturation:0.5f brightness:0.2f
-                                   alpha:appDelegate.diamond.activeModeDirection == direction ? 0.5f :INACTIVE_OPACITY] set];
+                                   alpha:appDelegate.modeMap.activeModeDirection == direction ? 0.5f :INACTIVE_OPACITY] set];
         [line stroke];
     }
     
@@ -131,20 +131,20 @@
             textRect = NSMakeRect(frameWidth/2 - topWidth/2,
                                   frameHeight - labelHeight*2,
                                   topWidth, labelHeight);
-            label = [appDelegate.diamond.selectedMode titleNorth];
+            label = [appDelegate.modeMap.selectedMode titleNorth];
         } else if (direction == EAST) {
             textRect = NSMakeRect(frameWidth - sideWidth, frameHeight/2 - labelHeight/2,
                                   sideWidth, labelHeight);
-            label = [appDelegate.diamond.selectedMode titleEast];
+            label = [appDelegate.modeMap.selectedMode titleEast];
         } else if (direction == WEST) {
             textRect = NSMakeRect(0, frameHeight/2 - labelHeight/2,
                                   sideWidth, labelHeight);
-            label = [appDelegate.diamond.selectedMode titleWest];
+            label = [appDelegate.modeMap.selectedMode titleWest];
         } else if (direction == SOUTH) {
             textRect = NSMakeRect(frameWidth/2 - topWidth/2,
                                   labelHeight,
                                   topWidth, labelHeight);
-            label = [appDelegate.diamond.selectedMode titleSouth];
+            label = [appDelegate.modeMap.selectedMode titleSouth];
         }
         
 //        NSSize textSize = [label sizeWithAttributes:labelAttributes];

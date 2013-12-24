@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "TTAppDelegate.h"
-#import "TTDiamond.h"
+#import "TTModeMap.h"
 
 #define SPACING_PCT 0.01f
 #define INACTIVE_OPACITY 0.2f

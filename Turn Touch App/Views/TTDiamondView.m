@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Turn Touch. All rights reserved.
 //
 
-#import "TTDiamond.h"
+#import "TTModeMap.h"
 #import "TTDiamondView.h"
 
 @implementation TTDiamondView
@@ -44,11 +44,11 @@ ignoreSelectedDirection:(BOOL)ignoreSelectedDirection {
 }
 
 - (void)registerAsObserver {
-    [appDelegate.diamond addObserver:self
+    [appDelegate.modeMap addObserver:self
                           forKeyPath:@"activeModeDirection"
                              options:0
                              context:nil];
-    [appDelegate.diamond addObserver:self
+    [appDelegate.modeMap addObserver:self
                           forKeyPath:@"selectedModeDirection"
                              options:0
                              context:nil];
@@ -68,10 +68,10 @@ ignoreSelectedDirection:(BOOL)ignoreSelectedDirection {
 }
 
 - (void)setDirections {
-    if (!overrideDirection || overrideDirection == appDelegate.diamond.selectedModeDirection) {
-        activeModeDirection = appDelegate.diamond.activeModeDirection;
+    if (!overrideDirection || overrideDirection == appDelegate.modeMap.selectedModeDirection) {
+        activeModeDirection = appDelegate.modeMap.activeModeDirection;
         if (!ignoreSelectedMode) {
-            selectedModeDirection = appDelegate.diamond.selectedModeDirection;
+            selectedModeDirection = appDelegate.modeMap.selectedModeDirection;
         }
     } else {
         activeModeDirection = 0;

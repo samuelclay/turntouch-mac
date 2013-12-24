@@ -39,8 +39,12 @@ void *kContextActivePanel = &kContextActivePanel;
 #pragma mark - NSApplicationDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
+    NSString *defaultPrefsFile = [[NSBundle mainBundle] pathForResource:@"defaults" ofType:@"plist"];
+    NSDictionary *defaultPreferences = [NSDictionary dictionaryWithContentsOfFile:defaultPrefsFile];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultPreferences];
+    
     // Install icon into the menu bar
-    self.diamond = [[TTDiamond alloc] init];
+    self.modeMap = [[TTModeMap alloc] init];
     self.menubarController = [[TTMenubarController alloc] init];
     self.serialMonitor = [[TTSerialMonitor alloc] init];
 }

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TTAppDelegate.h"
-#import "TTDiamond.h"
+#import "TTModeMap.h"
 
 @class TTAppDelegate;
 

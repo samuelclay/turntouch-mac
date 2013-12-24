@@ -37,11 +37,11 @@
 }
 
 - (void)registerAsObserver {
-    [appDelegate.diamond addObserver:self
+    [appDelegate.modeMap addObserver:self
                           forKeyPath:@"activeModeDirection"
                              options:0
                              context:nil];
-    [appDelegate.diamond addObserver:self
+    [appDelegate.modeMap addObserver:self
                           forKeyPath:@"selectedModeDirection"
                              options:0
                              context:nil];
@@ -214,7 +214,7 @@
 - (NSRect)positionContainer:(BOOL)expanded {
     int itemPosition = 0;
     
-    switch (appDelegate.diamond.selectedModeDirection) {
+    switch (appDelegate.modeMap.selectedModeDirection) {
         case NORTH:
             itemPosition = originalHeight * 3;
             break;

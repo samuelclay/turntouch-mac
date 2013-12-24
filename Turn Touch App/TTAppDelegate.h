@@ -10,7 +10,7 @@
 #import "TTPanelDelegate.h"
 #import "TTPanelController.h"
 #import "TTSerialMonitor.h"
-#import "TTDiamond.h"
+#import "TTModeMap.h"
 
 @class TTPanelController;
 @class TTModeMenuViewport;
@@ -22,7 +22,7 @@
 @property (nonatomic, strong, readonly) TTPanelController *panelController;
 @property (nonatomic, retain) TTModeMenuViewport *modeMenuViewport;
 @property (nonatomic) TTSerialMonitor *serialMonitor;
-@property (nonatomic) TTDiamond *diamond;
+@property (nonatomic) TTModeMap *modeMap;
 
 - (IBAction)togglePanel:(id)sender;
 - (BOOL)isMenuViewportExpanded;
