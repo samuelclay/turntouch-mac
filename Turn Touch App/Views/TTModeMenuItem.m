@@ -160,11 +160,6 @@
         [self setChangeButtonTitle:@"change"];
         changeButton.frame = buttonFrame;
     }
-
-    if (![appDelegate isMenuViewportExpanded]) {
-        [changeButton setHidden:YES];
-    }
-
 }
 
 - (void)mouseEntered:(NSEvent *)theEvent {

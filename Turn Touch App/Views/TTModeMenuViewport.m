@@ -159,6 +159,13 @@
 - (void)resetPosition {
     isExpanded = NO;
     [self resize:NO];
+    if (![appDelegate isMenuViewportExpanded]) {
+        [container.northItem.changeButton setHidden:YES];
+        [container.eastItem.changeButton setHidden:YES];
+        [container.westItem.changeButton setHidden:YES];
+        [container.southItem.changeButton setHidden:YES];
+    }
+
 }
 
 - (void)drawBackground {
