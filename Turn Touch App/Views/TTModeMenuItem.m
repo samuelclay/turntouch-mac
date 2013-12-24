@@ -28,24 +28,20 @@
         [self addSubview:diamondView];
 
         changeButton = [[NSButton alloc] init];
-        NSMutableParagraphStyle *centredStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-        [centredStyle setLineHeightMultiple:0.6f];
-        [centredStyle setAlignment:NSCenterTextAlignment];
-        NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:centredStyle,
-                               NSParagraphStyleAttributeName,
-                               [NSFont fontWithName:@"Helvetica-Bold" size:8.f],
-                               NSFontAttributeName,
-                               [NSColor whiteColor],
-                               NSForegroundColorAttributeName,
-                               nil];
-        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]
-                                                       initWithString:[@"change" uppercaseString] attributes:attrs];
-        [changeButton setAttributedTitle:attributedString];
+        [self setChangeButtonTitle:@"change"];
         [changeButton setBezelStyle:NSInlineBezelStyle];
         [changeButton setAlphaValue:0];
         [changeButton setHidden:YES];
+        [changeButton setAction:@selector(showChangeModeMenu:)];
+        [changeButton setTarget:self];
         [self addSubview:changeButton];
-
+        
+        modeDropdown = [[NSPopUpButton alloc] init];
+        [modeDropdown setHidden:YES];
+        [modeDropdown setAction:@selector(changeModeDropdown:)];
+        [modeDropdown setTarget:self];
+        [self addSubview:modeDropdown];
+        
         switch (modeDirection) {
             case NORTH:
                 itemMode = appDelegate.diamond.northMode;
@@ -67,6 +63,22 @@
     }
     
     return self;
+}
+
+- (void)setChangeButtonTitle:(NSString *)title {
+    NSMutableParagraphStyle *centredStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    [centredStyle setLineHeightMultiple:0.6f];
+    [centredStyle setAlignment:NSCenterTextAlignment];
+    NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:centredStyle,
+                           NSParagraphStyleAttributeName,
+                           [NSFont fontWithName:@"Helvetica-Bold" size:8.f],
+                           NSFontAttributeName,
+                           [NSColor whiteColor],
+                           NSForegroundColorAttributeName,
+                           nil];
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]
+                                                   initWithString:[title uppercaseString] attributes:attrs];
+    [changeButton setAttributedTitle:attributedString];
 }
 
 - (void)registerAsObserver {
@@ -131,13 +143,28 @@
                  fromRect:NSZeroRect
                 operation:NSCompositeSourceOver
                  fraction:1.0];
-
+    
     NSSize titleSize = [modeTitle sizeWithAttributes:modeAttributes];
     NSPoint titlePoint = NSMakePoint(44, NSHeight(self.frame) / 2 - floor(textSize.height/2) + 1);
-    [modeTitle drawAtPoint:titlePoint withAttributes:modeAttributes];
-    
-    NSRect buttonFrame = NSMakeRect(titlePoint.x + titleSize.width + 12, titlePoint.y + 3, 50, 12);
-    changeButton.frame = buttonFrame;
+
+    if (isModeChangeActive) {
+        [modeDropdown setHidden:NO];
+        [modeDropdown setFrame:NSMakeRect(44, titlePoint.y, 160, 24)];
+        NSRect buttonFrame = NSMakeRect(titlePoint.x + 160 + 12, titlePoint.y + 3, 50, 12);
+        [self setChangeButtonTitle:@"cancel"];
+        changeButton.frame = buttonFrame;
+    } else {
+        [modeDropdown setHidden:YES];
+        [modeTitle drawAtPoint:titlePoint withAttributes:modeAttributes];
+        NSRect buttonFrame = NSMakeRect(titlePoint.x + titleSize.width + 12, titlePoint.y + 3, 50, 12);
+        [self setChangeButtonTitle:@"change"];
+        changeButton.frame = buttonFrame;
+    }
+
+    if (![appDelegate isMenuViewportExpanded]) {
+        [changeButton setHidden:YES];
+    }
+
 }
 
 - (void)mouseEntered:(NSEvent *)theEvent {
@@ -167,6 +194,25 @@
         [appDelegate.diamond setSelectedModeDirection:modeDirection];
     }
     [appDelegate.modeMenuViewport toggleExpanded];
+}
+
+- (void)showChangeModeMenu:(id)sender {
+    if (isModeChangeActive) {
+        isModeChangeActive = NO;
+        [self setNeedsDisplay:YES];
+    } else {
+        isModeChangeActive = YES;
+        [modeDropdown removeAllItems];
+        [modeDropdown addItemsWithTitles:@[@"First", @"seconds", @"third"]];
+        [self setNeedsDisplay:YES];
+        [modeDropdown selectItemAtIndex:1];
+    }
+}
+
+- (void)changeModeDropdown:(id)sender {
+    NSLog(@"change");
+    isModeChangeActive = NO;
+    [self setNeedsDisplay:YES];
 }
 
 @end

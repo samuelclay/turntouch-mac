@@ -14,7 +14,7 @@
 @class TTAppDelegate;
 @class TTDiamondView;
 
-@interface TTModeMenuItem : NSView {
+@interface TTModeMenuItem : NSView <NSMenuDelegate> {
     TTAppDelegate *appDelegate;
     TTModeDirection modeDirection;
     TTDiamondView *diamondView;
@@ -25,6 +25,8 @@
     NSDictionary *modeAttributes;
     CGSize textSize;
     NSButton *changeButton;
+    NSPopUpButton *modeDropdown;
+    BOOL isModeChangeActive;
     BOOL hoverActive;
 }
 

@@ -97,7 +97,7 @@
             [self openPanel];
         } else {
             // Comment closePanel to debug.
-//            [self closePanel];
+            [self closePanel];
         }
     }
 }

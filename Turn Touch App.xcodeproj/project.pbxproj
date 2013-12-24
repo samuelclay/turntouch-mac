@@ -15,6 +15,7 @@
 		FF0E12D11824811200D49EC7 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0E12D01824811200D49EC7 /* ScriptingBridge.framework */; };
 		FF0E12D41828560000D49EC7 /* TTModeVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12D31828560000D49EC7 /* TTModeVideo.m */; };
 		FF32222E1857B549004078AA /* TTModePreferencePane.m in Sources */ = {isa = PBXBuildFile; fileRef = FF32222D1857B549004078AA /* TTModePreferencePane.m */; };
+		FF3600B418691CBC006A3118 /* TTModeMap.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3600B318691CBC006A3118 /* TTModeMap.m */; };
 		FF3A9F6F17C4353300C5C2D5 /* TTPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A9F6E17C4353300C5C2D5 /* TTPanel.m */; };
 		FF3A9F7217C4354A00C5C2D5 /* TTStatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A9F7117C4354A00C5C2D5 /* TTStatusItemView.m */; };
 		FF3A9F7517C4355B00C5C2D5 /* TTBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A9F7417C4355B00C5C2D5 /* TTBackgroundView.m */; };
@@ -78,6 +79,8 @@
 		FF0E12D71828569300D49EC7 /* VLC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VLC.h; path = Modes/Video/VLC.h; sourceTree = "<group>"; };
 		FF32222C1857B549004078AA /* TTModePreferencePane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModePreferencePane.h; path = Views/TTModePreferencePane.h; sourceTree = "<group>"; };
 		FF32222D1857B549004078AA /* TTModePreferencePane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModePreferencePane.m; path = Views/TTModePreferencePane.m; sourceTree = "<group>"; };
+		FF3600B218691CBC006A3118 /* TTModeMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMap.h; path = Models/TTModeMap.h; sourceTree = "<group>"; };
+		FF3600B318691CBC006A3118 /* TTModeMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeMap.m; path = Models/TTModeMap.m; sourceTree = "<group>"; };
 		FF3A9F6D17C4353300C5C2D5 /* TTPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTPanel.h; path = Views/TTPanel.h; sourceTree = "<group>"; };
 		FF3A9F6E17C4353300C5C2D5 /* TTPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTPanel.m; path = Views/TTPanel.m; sourceTree = "<group>"; };
 		FF3A9F7017C4354A00C5C2D5 /* TTStatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTStatusItemView.h; path = Views/TTStatusItemView.h; sourceTree = "<group>"; };
@@ -171,6 +174,8 @@
 				FF0E12C3182477CB00D49EC7 /* TTModeProtocol.h */,
 				FF0E12C818247BAE00D49EC7 /* TTMode.h */,
 				FF0E12C918247BAE00D49EC7 /* TTMode.m */,
+				FF3600B218691CBC006A3118 /* TTModeMap.h */,
+				FF3600B318691CBC006A3118 /* TTModeMap.m */,
 				FF98A2DF1867DBA40032CC7A /* TTActionMap.h */,
 				FF98A2E01867DBA40032CC7A /* TTActionMap.m */,
 			);
@@ -504,6 +509,7 @@
 				FFAA4F72182D9A5F0049FFC7 /* TTModeNews.m in Sources */,
 				FF98A3001868D3920032CC7A /* TTMacMode.m in Sources */,
 				FF0E12CF18247D6100D49EC7 /* TTModeMusic.m in Sources */,
+				FF3600B418691CBC006A3118 /* TTModeMap.m in Sources */,
 				FF98A2FC1867E8EC0032CC7A /* ORSSerialPortManager.m in Sources */,
 				FF98A3071868DAE10032CC7A /* TTModeChangeButton.m in Sources */,
 				FF32222E1857B549004078AA /* TTModePreferencePane.m in Sources */,

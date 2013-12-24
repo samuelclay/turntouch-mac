@@ -88,9 +88,6 @@
 //    viewportRect.origin.y = 0;
     viewportRect.size.height = newHeight;
 
-    NSRect originalMenuRect = [self positionContainer:!isExpanded];
-    NSRect newMenuRect = [self positionContainer:isExpanded];
-    
     if (animation) {
         [animation stopAnimation];
         animation = nil;
@@ -127,7 +124,6 @@
             [[container.eastItem.changeButton animator] setAlphaValue:isExpanded ? 0 : 1];
             [[container.westItem.changeButton animator] setAlphaValue:isExpanded ? 0 : 1];
             [[container.southItem.changeButton animator] setAlphaValue:isExpanded ? 0 : 1];
-//            [[container animator] setFrame:originalMenuRect];
         } completionHandler:^{
             [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
                 [context setDuration:duration];
@@ -136,10 +132,7 @@
                 [[container.eastItem.changeButton animator] setAlphaValue:isExpanded ? 1 : 0];
                 [[container.westItem.changeButton animator] setAlphaValue:isExpanded ? 1 : 0];
                 [[container.southItem.changeButton animator] setAlphaValue:isExpanded ? 1 : 0];
-//                [[_self animator] setFrame:viewportRect];
-//                [[container animator] setFrame:newMenuRect];
             } completionHandler:^{
-                NSLog(@"End frame: %@ - %@", NSStringFromRect(self.frame), NSStringFromRect(viewportRect));
                 [container.northItem.changeButton setHidden:!isExpanded];
                 [container.eastItem.changeButton setHidden:!isExpanded];
                 [container.westItem.changeButton setHidden:!isExpanded];
@@ -148,6 +141,8 @@
         }];
 
     } else {
+        NSRect newMenuRect = [self positionContainer:isExpanded];
+        
         self.frame = viewportRect;
         container.frame = newMenuRect;
     }
