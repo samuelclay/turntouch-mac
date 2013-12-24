@@ -11,6 +11,11 @@
 
 @implementation TTModeMenuContainer
 
+@synthesize northItem;
+@synthesize eastItem;
+@synthesize westItem;
+@synthesize southItem;
+
 - (id)initWithFrame:(NSRect)frame
 {
     self = [super initWithFrame:frame];

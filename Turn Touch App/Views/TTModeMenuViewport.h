@@ -19,8 +19,14 @@
     BOOL isExpanded;
     CGFloat originalHeight;
     CGFloat originalY;
+    NSViewAnimation *animation;
 }
 
+@property (nonatomic, readwrite) BOOL isExpanded;
+
 - (void)resetPosition;
+- (void)toggleExpanded;
+- (void)collapse;
+- (void)expand;
 
 @end

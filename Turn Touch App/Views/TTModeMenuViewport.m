@@ -7,11 +7,14 @@
 //
 
 #import "TTModeMenuViewport.h"
+#import <QuartzCore/CoreAnimation.h>
 
 #define MARGIN 0.0f
 #define CORNER_RADIUS 8.0f
 
 @implementation TTModeMenuViewport
+
+@synthesize isExpanded;
 
 - (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
@@ -26,6 +29,8 @@
         
         [self addSubview:container];
         [self registerAsObserver];
+        
+        appDelegate.modeMenuViewport = self;
     }
     
     return self;
@@ -53,9 +58,23 @@
     }
 }
 
-- (void)mouseUp:(NSEvent *)theEvent {
+- (void)toggleExpanded {
     isExpanded = !isExpanded;
+    
+    [self resize:YES];
+}
 
+- (void)collapse {
+    if (!isExpanded) return;
+    isExpanded = NO;
+    
+    [self resize:YES];
+}
+
+- (void)expand {
+    if (isExpanded) return;
+    isExpanded = YES;
+    
     [self resize:YES];
 }
 
@@ -66,28 +85,68 @@
     if (isExpanded) {
         newHeight = originalHeight * 4;
     }
+//    viewportRect.origin.y = 0;
     viewportRect.size.height = newHeight;
-    
-//    NSLog(@"Resizing viewport: %f height", newHeight);
-    NSDictionary *growBackground = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    self, NSViewAnimationTargetKey,
-                                    [NSValue valueWithRect:self.frame], NSViewAnimationStartFrameKey,
-                                    [NSValue valueWithRect:viewportRect], NSViewAnimationEndFrameKey, nil];
-    
+
     NSRect originalMenuRect = [self positionContainer:!isExpanded];
     NSRect newMenuRect = [self positionContainer:isExpanded];
-    NSDictionary *moveMenu = [NSDictionary dictionaryWithObjectsAndKeys:
-                              container, NSViewAnimationTargetKey,
-                              [NSValue valueWithRect:originalMenuRect], NSViewAnimationStartFrameKey,
-                              [NSValue valueWithRect:newMenuRect], NSViewAnimationEndFrameKey, nil];
+    
+    if (animation) {
+        [animation stopAnimation];
+        animation = nil;
+    }
     
     if (animate) {
-        NSViewAnimation *animation = [[NSViewAnimation alloc]
-                                      initWithViewAnimations:@[growBackground, moveMenu]];
+        NSTimeInterval duration = 0.44f;
+        NSEvent *currentEvent = [NSApp currentEvent];
+        NSUInteger clearFlags = ([currentEvent modifierFlags] &
+                                 NSDeviceIndependentModifierFlagsMask);
+        BOOL shiftPressed = (clearFlags == NSShiftKeyMask);
+        if (shiftPressed) {
+            duration *= 10;
+        }
+
+        NSDictionary *growBackground = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        self, NSViewAnimationTargetKey,
+                                        [NSValue valueWithRect:self.frame], NSViewAnimationStartFrameKey,
+                                        [NSValue valueWithRect:viewportRect], NSViewAnimationEndFrameKey, nil];
+        animation = [[NSViewAnimation alloc]
+                     initWithViewAnimations:@[growBackground]];
         [animation setAnimationBlockingMode: NSAnimationNonblocking];
         [animation setAnimationCurve: NSAnimationEaseInOut];
-        [animation setDuration:.35f];
+        [animation setDuration:duration];
         [animation startAnimation];
+
+        [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+            [context setDuration:0];
+            [container.northItem.changeButton setHidden:NO];
+            [container.eastItem.changeButton setHidden:NO];
+            [container.westItem.changeButton setHidden:NO];
+            [container.southItem.changeButton setHidden:NO];
+            [[container.northItem.changeButton animator] setAlphaValue:isExpanded ? 0 : 1];
+            [[container.eastItem.changeButton animator] setAlphaValue:isExpanded ? 0 : 1];
+            [[container.westItem.changeButton animator] setAlphaValue:isExpanded ? 0 : 1];
+            [[container.southItem.changeButton animator] setAlphaValue:isExpanded ? 0 : 1];
+//            [[container animator] setFrame:originalMenuRect];
+        } completionHandler:^{
+            [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+                [context setDuration:duration];
+                [context setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+                [[container.northItem.changeButton animator] setAlphaValue:isExpanded ? 1 : 0];
+                [[container.eastItem.changeButton animator] setAlphaValue:isExpanded ? 1 : 0];
+                [[container.westItem.changeButton animator] setAlphaValue:isExpanded ? 1 : 0];
+                [[container.southItem.changeButton animator] setAlphaValue:isExpanded ? 1 : 0];
+//                [[_self animator] setFrame:viewportRect];
+//                [[container animator] setFrame:newMenuRect];
+            } completionHandler:^{
+                NSLog(@"End frame: %@ - %@", NSStringFromRect(self.frame), NSStringFromRect(viewportRect));
+                [container.northItem.changeButton setHidden:!isExpanded];
+                [container.eastItem.changeButton setHidden:!isExpanded];
+                [container.westItem.changeButton setHidden:!isExpanded];
+                [container.southItem.changeButton setHidden:!isExpanded];
+            }];
+        }];
+
     } else {
         self.frame = viewportRect;
         container.frame = newMenuRect;

@@ -12,16 +12,40 @@
 
 @implementation TTModeMenuItem
 
+@synthesize changeButton;
+
 - (id)initWithFrame:(NSRect)frame direction:(TTModeDirection)direction {
     self = [super initWithFrame:frame];
     if (self) {
         appDelegate = [NSApp delegate];
         modeDirection = direction;
+        hoverActive = NO;
+        
         NSRect diamondRect = NSMakeRect(NSWidth(frame) - 24 - DIAMOND_SIZE,
                                         NSHeight(frame) / 2 - (DIAMOND_SIZE / 2),
                                         DIAMOND_SIZE * 1.3, DIAMOND_SIZE);
         diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect direction:modeDirection];
         [self addSubview:diamondView];
+
+        changeButton = [[NSButton alloc] init];
+        NSMutableParagraphStyle *centredStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+        [centredStyle setLineHeightMultiple:0.6f];
+        [centredStyle setAlignment:NSCenterTextAlignment];
+        NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:centredStyle,
+                               NSParagraphStyleAttributeName,
+                               [NSFont fontWithName:@"Helvetica-Bold" size:8.f],
+                               NSFontAttributeName,
+                               [NSColor whiteColor],
+                               NSForegroundColorAttributeName,
+                               nil];
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]
+                                                       initWithString:[@"change" uppercaseString] attributes:attrs];
+        [changeButton setAttributedTitle:attributedString];
+        [changeButton setBezelStyle:NSInlineBezelStyle];
+        [changeButton setAlphaValue:0];
+        [changeButton setHidden:YES];
+        [self addSubview:changeButton];
+
         switch (modeDirection) {
             case NORTH:
                 itemMode = appDelegate.diamond.northMode;
@@ -39,6 +63,7 @@
         
         [self setupMode];
         [self registerAsObserver];
+        [self createTrackingArea];
     }
     
     return self;
@@ -70,6 +95,15 @@
     }
 }
 
+- (void)createTrackingArea {
+    int opts = (NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways);
+    NSTrackingArea *trackingArea = [ [NSTrackingArea alloc] initWithRect:[self bounds]
+                                                 options:opts
+                                                   owner:self
+                                                userInfo:nil];
+    [self addTrackingArea:trackingArea];
+}
+
 - (void)setupMode {
     modeImage = [NSImage imageNamed:[itemMode imageName]];
     
@@ -79,7 +113,8 @@
     stringShadow.shadowColor = [NSColor whiteColor];
     stringShadow.shadowOffset = NSMakeSize(0, -1);
     stringShadow.shadowBlurRadius = 0;
-    NSColor *textColor = appDelegate.diamond.selectedModeDirection == modeDirection ?
+    NSColor *textColor = (hoverActive && [appDelegate isMenuViewportExpanded] && appDelegate.diamond.selectedModeDirection != modeDirection) ? NSColorFromRGB(0x404A60) :
+    appDelegate.diamond.selectedModeDirection == modeDirection ?
     NSColorFromRGB(0x404A60) : NSColorFromRGB(0x808388);
     modeAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Futura" size:13],
                        NSForegroundColorAttributeName: textColor,
@@ -97,10 +132,41 @@
                 operation:NSCompositeSourceOver
                  fraction:1.0];
 
-    [modeTitle drawAtPoint:NSMakePoint(44, NSHeight(self.frame) / 2 - floor(textSize.height/2) + 1)
-            withAttributes:modeAttributes];
+    NSSize titleSize = [modeTitle sizeWithAttributes:modeAttributes];
+    NSPoint titlePoint = NSMakePoint(44, NSHeight(self.frame) / 2 - floor(textSize.height/2) + 1);
+    [modeTitle drawAtPoint:titlePoint withAttributes:modeAttributes];
     
+    NSRect buttonFrame = NSMakeRect(titlePoint.x + titleSize.width + 12, titlePoint.y + 3, 50, 12);
+    changeButton.frame = buttonFrame;
+}
+
+- (void)mouseEntered:(NSEvent *)theEvent {
+    [[NSCursor pointingHandCursor] set];
+
+    if (![appDelegate isMenuViewportExpanded]) return;
     
+//    NSLog(@"Mouse entered");
+    hoverActive = YES;
+    [self setupMode];
+    [self setNeedsDisplay:YES];
+}
+
+- (void)mouseExited:(NSEvent *)theEvent {
+    [[NSCursor arrowCursor] set];
+
+    if (![appDelegate isMenuViewportExpanded]) return;
+    
+//    NSLog(@"Mouse exited");
+    hoverActive = NO;
+    [self setupMode];
+    [self setNeedsDisplay:YES];
+}
+
+- (void)mouseUp:(NSEvent *)theEvent {
+    if (appDelegate.diamond.selectedModeDirection != modeDirection) {
+        [appDelegate.diamond setSelectedModeDirection:modeDirection];
+    }
+    [appDelegate.modeMenuViewport toggleExpanded];
 }
 
 @end

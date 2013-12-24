@@ -82,11 +82,14 @@ ignoreSelectedDirection:(BOOL)ignoreSelectedDirection {
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
-    [self drawPaths:dirtyRect];
-    [self colorPaths:dirtyRect];
+    NSRect rect = self.bounds;
+
+    [self drawPaths:rect];
+    [self colorPaths:rect];
 }
 
 - (void)drawPaths:(NSRect)rect {
+//    NSLog(@"DrawPaths: %@ - %@", NSStringFromRect(rect), NSStringFromRect(self.bounds));
     CGFloat width = NSMaxX(rect);
     CGFloat height = NSMaxY(rect);
     CGFloat spacing = SPACING_PCT * width;

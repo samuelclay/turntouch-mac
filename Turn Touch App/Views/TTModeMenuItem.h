@@ -24,8 +24,13 @@
     NSString *modeTitle;
     NSDictionary *modeAttributes;
     CGSize textSize;
+    NSButton *changeButton;
+    BOOL hoverActive;
 }
 
+@property (nonatomic) IBOutlet NSButton *changeButton;
+
 - (id)initWithFrame:(NSRect)frame direction:(TTModeDirection)direction;
+
 
 @end

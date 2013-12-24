@@ -18,4 +18,9 @@
     TTModeMenuItem *southItem;
 }
 
+@property (nonatomic) TTModeMenuItem *northItem;
+@property (nonatomic) TTModeMenuItem *eastItem;
+@property (nonatomic) TTModeMenuItem *westItem;
+@property (nonatomic) TTModeMenuItem *southItem;
+
 @end

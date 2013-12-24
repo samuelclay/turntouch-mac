@@ -17,7 +17,7 @@
 #define SEARCH_INSET 17
 
 #define PANEL_HEIGHT 262
-#define PANEL_WIDTH 322
+#define PANEL_WIDTH 362
 #define MENU_ANIMATION_DURATION .12
 
 #pragma mark -
@@ -96,7 +96,8 @@
         if (_hasActivePanel) {
             [self openPanel];
         } else {
-            [self closePanel];
+            // Comment closePanel to debug.
+//            [self closePanel];
         }
     }
 }
