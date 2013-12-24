@@ -13,7 +13,7 @@
 
 @implementation TTModeVideo
 
-- (NSString *)title {
++ (NSString *)title {
     return @"Video";
 }
 

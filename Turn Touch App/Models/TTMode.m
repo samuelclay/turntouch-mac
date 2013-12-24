@@ -48,7 +48,7 @@
     return nil;
 }
 
-- (NSString *)title {
++ (NSString *)title {
     return nil;
 }
 

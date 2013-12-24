@@ -44,14 +44,12 @@ ignoreSelectedDirection:(BOOL)ignoreSelectedDirection {
 }
 
 - (void)registerAsObserver {
-    [appDelegate.modeMap addObserver:self
-                          forKeyPath:@"activeModeDirection"
-                             options:0
-                             context:nil];
-    [appDelegate.modeMap addObserver:self
-                          forKeyPath:@"selectedModeDirection"
-                             options:0
-                             context:nil];
+    [appDelegate.modeMap addObserver:self forKeyPath:@"activeModeDirection"
+                             options:0 context:nil];
+    [appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
+                             options:0 context:nil];
+    [appDelegate.modeMap addObserver:self forKeyPath:@"selectedMode"
+                             options:0 context:nil];
 }
 
 - (void) observeValueForKeyPath:(NSString*)keyPath
@@ -63,6 +61,8 @@ ignoreSelectedDirection:(BOOL)ignoreSelectedDirection {
     if ([keyPath isEqual:NSStringFromSelector(@selector(activeModeDirection))]) {
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
+        [self setNeedsDisplay:YES];
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedMode))]) {
         [self setNeedsDisplay:YES];
     }
 }

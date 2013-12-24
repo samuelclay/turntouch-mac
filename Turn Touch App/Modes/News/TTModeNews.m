@@ -10,7 +10,7 @@
 
 @implementation TTModeNews
 
-- (NSString *)title {
++ (NSString *)title {
     return @"News";
 }
 

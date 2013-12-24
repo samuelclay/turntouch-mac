@@ -25,7 +25,11 @@ typedef enum {
 @property (nonatomic) TTMode *eastMode;
 @property (nonatomic) TTMode *westMode;
 @property (nonatomic) TTMode *southMode;
+@property (nonatomic) NSArray *availableModes;
 
 - (void)runActiveButton;
+- (NSArray *)availableModeTitles;
+- (NSArray *)availableModeClassNames;
+- (void)changeDirection:(TTModeDirection)direction toMode:(NSString *)modeClassName;
 
 @end

@@ -10,7 +10,7 @@
 
 @implementation TTModeMac
 
-- (NSString *)title {
++ (NSString *)title {
     return @"Mac OS";
 }
 

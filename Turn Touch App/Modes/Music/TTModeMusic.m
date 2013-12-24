@@ -11,7 +11,7 @@
 
 @implementation TTModeMusic
 
-- (NSString *)title {
++ (NSString *)title {
     return @"Music";
 }
 

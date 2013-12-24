@@ -22,6 +22,7 @@
 @synthesize eastMode;
 @synthesize westMode;
 @synthesize southMode;
+@synthesize availableModes;
 
 - (id)init {
     if (self = [super init]) {
@@ -30,7 +31,12 @@
                   options:0 context:nil];
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        
+        availableModes = @[@"TTModeMac",
+                           @"TTModeAlarmClock",
+                           @"TTModeMusic",
+                           @"TTModeVideo",
+                           @"TTModeNews"];
+
         [self setupModes];
         
         if ([[defaults objectForKey:@"TT:selectedModeDirection"] integerValue]) {
@@ -48,7 +54,7 @@
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     
     for (NSString *direction in @[@"north", @"east", @"west", @"south"]) {
-        NSString *directionModeName = [prefs stringForKey:[NSString stringWithFormat:@"mode:%@", direction]];
+        NSString *directionModeName = [prefs stringForKey:[NSString stringWithFormat:@"TT:mode:%@", direction]];
         Class modeClass = NSClassFromString(directionModeName);
         [self setValue:[[modeClass alloc] init] forKey:[NSString stringWithFormat:@"%@Mode", direction]];
     }
@@ -76,19 +82,19 @@
     
     switch (selectedModeDirection) {
         case NORTH:
-            selectedMode = northMode;
+            [self setSelectedMode:northMode];
             break;
             
         case EAST:
-            selectedMode = eastMode;
+            [self setSelectedMode:eastMode];
             break;
             
         case WEST:
-            selectedMode = westMode;
+            [self setSelectedMode:westMode];
             break;
 
         case SOUTH:
-            selectedMode = southMode;
+            [self setSelectedMode:southMode];
             break;
     }
     
@@ -115,4 +121,59 @@
     activeModeDirection = 0;
 }
 
+- (NSString *)directionName:(TTModeDirection)direction {
+    switch (direction) {
+        case NORTH:
+            return @"north";
+            break;
+        
+        case EAST:
+            return @"east";
+            break;
+            
+        case WEST:
+            return @"west";
+            break;
+            
+        case SOUTH:
+            return @"south";
+            break;
+    }
+    
+    return nil;
+}
+
+- (NSArray *)availableModeClassNames {
+    NSMutableArray *classes = [NSMutableArray new];
+    
+    for (NSString *modeClass in availableModes) {
+        [classes addObject:modeClass];
+    }
+    
+    return classes;
+}
+
+- (NSArray *)availableModeTitles {
+    NSMutableArray *titles = [NSMutableArray new];
+    
+    for (NSString *modeName in availableModes) {
+        Class modeClass = NSClassFromString(modeName);
+        NSString *title = [modeClass title];
+        [titles addObject:[NSString stringWithFormat:@"%@ mode", title]];
+    }
+    
+    return titles;
+}
+
+- (void)changeDirection:(TTModeDirection)direction toMode:(NSString *)modeClassName {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *directionName = [self directionName:direction];
+    NSString *prefKey = [NSString stringWithFormat:@"TT:mode:%@", directionName];
+    
+    [prefs setObject:modeClassName forKey:prefKey];
+    [prefs synchronize];
+    
+    [self setupModes];
+    [self switchMode];
+}
 @end

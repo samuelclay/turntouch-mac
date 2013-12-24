@@ -42,21 +42,6 @@
         [modeDropdown setTarget:self];
         [self addSubview:modeDropdown];
         
-        switch (modeDirection) {
-            case NORTH:
-                itemMode = appDelegate.modeMap.northMode;
-                break;
-            case EAST:
-                itemMode = appDelegate.modeMap.eastMode;
-                break;
-            case WEST:
-                itemMode = appDelegate.modeMap.westMode;
-                break;
-            case SOUTH:
-                itemMode = appDelegate.modeMap.southMode;
-                break;
-        }
-        
         [self setupMode];
         [self registerAsObserver];
         [self createTrackingArea];
@@ -82,21 +67,20 @@
 }
 
 - (void)registerAsObserver {
-    [appDelegate.modeMap addObserver:self
-                          forKeyPath:@"activeModeDirection"
-                             options:0
-                             context:nil];
-    [appDelegate.modeMap addObserver:self
-                          forKeyPath:@"selectedModeDirection"
-                             options:0
-                             context:nil];
+    [appDelegate.modeMap addObserver:self forKeyPath:@"activeModeDirection"
+                             options:0 context:nil];
+    [appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
+                             options:0 context:nil];
+    [appDelegate.modeMap addObserver:self forKeyPath:@"selectedMode"
+                             options:0 context:nil];
 }
 
 - (void) observeValueForKeyPath:(NSString*)keyPath
                        ofObject:(id)object
                          change:(NSDictionary*)change
                         context:(void*)context {
-    if ([keyPath isEqual:NSStringFromSelector(@selector(activeModeDirection))]) {
+    if ([keyPath isEqual:NSStringFromSelector(@selector(activeModeDirection))] ||
+        [keyPath isEqual:NSStringFromSelector(@selector(selectedMode))]) {
         if (appDelegate.modeMap.selectedModeDirection == modeDirection) {
             [self setupMode];
             [self setNeedsDisplay:YES];
@@ -117,10 +101,25 @@
 }
 
 - (void)setupMode {
+    switch (modeDirection) {
+        case NORTH:
+            itemMode = appDelegate.modeMap.northMode;
+            break;
+        case EAST:
+            itemMode = appDelegate.modeMap.eastMode;
+            break;
+        case WEST:
+            itemMode = appDelegate.modeMap.westMode;
+            break;
+        case SOUTH:
+            itemMode = appDelegate.modeMap.southMode;
+            break;
+    }
+    
     modeImage = [NSImage imageNamed:[itemMode imageName]];
     
     modeTitle = [[NSString stringWithFormat:@"%@ mode",
-                  [itemMode title]] uppercaseString];
+                  [[itemMode class] title]] uppercaseString];
     NSShadow *stringShadow = [[NSShadow alloc] init];
     stringShadow.shadowColor = [NSColor whiteColor];
     stringShadow.shadowOffset = NSMakeSize(0, -1);
@@ -149,7 +148,7 @@
 
     if (isModeChangeActive) {
         [modeDropdown setHidden:NO];
-        [modeDropdown setFrame:NSMakeRect(44, titlePoint.y, 160, 24)];
+        [modeDropdown setFrame:NSMakeRect(44, titlePoint.y - 3, 160, 24)];
         NSRect buttonFrame = NSMakeRect(titlePoint.x + 160 + 12, titlePoint.y + 3, 50, 12);
         [self setChangeButtonTitle:@"cancel"];
         changeButton.frame = buttonFrame;
@@ -169,8 +168,8 @@
     
 //    NSLog(@"Mouse entered");
     hoverActive = YES;
-    [self setupMode];
-    [self setNeedsDisplay:YES];
+//    [self setupMode];
+//    [self setNeedsDisplay:YES];
 }
 
 - (void)mouseExited:(NSEvent *)theEvent {
@@ -180,8 +179,8 @@
     
 //    NSLog(@"Mouse exited");
     hoverActive = NO;
-    [self setupMode];
-    [self setNeedsDisplay:YES];
+//    [self setupMode];
+//    [self setNeedsDisplay:YES];
 }
 
 - (void)mouseUp:(NSEvent *)theEvent {
@@ -198,15 +197,25 @@
     } else {
         isModeChangeActive = YES;
         [modeDropdown removeAllItems];
-        [modeDropdown addItemsWithTitles:@[@"First", @"seconds", @"third"]];
+        [modeDropdown addItemsWithTitles:appDelegate.modeMap.availableModeTitles];
         [self setNeedsDisplay:YES];
-        [modeDropdown selectItemAtIndex:1];
+        NSInteger selectedIndex = 0;
+        for (NSString *modeClass in appDelegate.modeMap.availableModeClassNames) {
+            if ([modeClass isEqualToString:NSStringFromClass([itemMode class])]) {
+                break;
+            }
+            selectedIndex++;
+        }
+        [modeDropdown selectItemAtIndex:selectedIndex];
     }
 }
 
 - (void)changeModeDropdown:(id)sender {
-    NSLog(@"change");
+    NSString *newModeClassName = [appDelegate.modeMap.availableModeClassNames
+                                  objectAtIndex:[sender indexOfSelectedItem]];
+    [appDelegate.modeMap changeDirection:modeDirection toMode:newModeClassName];
     isModeChangeActive = NO;
+    [self setupMode];
     [self setNeedsDisplay:YES];
 }
 

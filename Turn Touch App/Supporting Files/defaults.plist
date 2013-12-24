@@ -2,13 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>mode:north</key>
+	<key>TT:mode:north</key>
 	<string>TTModeMusic</string>
-	<key>mode:east</key>
+	<key>TT:mode:east</key>
 	<string>TTModeMac</string>
-	<key>mode:west</key>
+	<key>TT:mode:west</key>
 	<string>TTModeNews</string>
-	<key>mode:south</key>
+	<key>TT:mode:south</key>
 	<string>TTModeAlarmClock</string>
 </dict>
 </plist>

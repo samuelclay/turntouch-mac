@@ -10,7 +10,7 @@
 
 @implementation TTModeAlarmClock
 
-- (NSString *)title {
++ (NSString *)title {
     return @"Alarm Clock";
 }
 
