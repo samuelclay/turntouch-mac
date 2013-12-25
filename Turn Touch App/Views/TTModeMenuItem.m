@@ -50,56 +50,6 @@
     return self;
 }
 
-- (void)setChangeButtonTitle:(NSString *)title {
-    NSMutableParagraphStyle *centredStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-    [centredStyle setLineHeightMultiple:0.6f];
-    [centredStyle setAlignment:NSCenterTextAlignment];
-    NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:centredStyle,
-                           NSParagraphStyleAttributeName,
-                           [NSFont fontWithName:@"Helvetica-Bold" size:8.f],
-                           NSFontAttributeName,
-                           [NSColor whiteColor],
-                           NSForegroundColorAttributeName,
-                           nil];
-    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]
-                                                   initWithString:[title uppercaseString] attributes:attrs];
-    [changeButton setAttributedTitle:attributedString];
-}
-
-- (void)registerAsObserver {
-    [appDelegate.modeMap addObserver:self forKeyPath:@"activeModeDirection"
-                             options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
-                             options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"selectedMode"
-                             options:0 context:nil];
-}
-
-- (void) observeValueForKeyPath:(NSString*)keyPath
-                       ofObject:(id)object
-                         change:(NSDictionary*)change
-                        context:(void*)context {
-    if ([keyPath isEqual:NSStringFromSelector(@selector(activeModeDirection))] ||
-        [keyPath isEqual:NSStringFromSelector(@selector(selectedMode))]) {
-        if (appDelegate.modeMap.selectedModeDirection == modeDirection) {
-            [self setupMode];
-            [self setNeedsDisplay:YES];
-        }
-    } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
-        [self setupMode];
-        [self setNeedsDisplay:YES];
-    }
-}
-
-- (void)createTrackingArea {
-    int opts = (NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways);
-    NSTrackingArea *trackingArea = [ [NSTrackingArea alloc] initWithRect:[self bounds]
-                                                 options:opts
-                                                   owner:self
-                                                userInfo:nil];
-    [self addTrackingArea:trackingArea];
-}
-
 - (void)setupMode {
     switch (modeDirection) {
         case NORTH:
@@ -134,6 +84,35 @@
     textSize = [modeTitle sizeWithAttributes:modeAttributes];
 }
 
+#pragma mark - KVO
+
+- (void)registerAsObserver {
+    [appDelegate.modeMap addObserver:self forKeyPath:@"activeModeDirection"
+                             options:0 context:nil];
+    [appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
+                             options:0 context:nil];
+    [appDelegate.modeMap addObserver:self forKeyPath:@"selectedMode"
+                             options:0 context:nil];
+}
+
+- (void) observeValueForKeyPath:(NSString*)keyPath
+                       ofObject:(id)object
+                         change:(NSDictionary*)change
+                        context:(void*)context {
+    if ([keyPath isEqual:NSStringFromSelector(@selector(activeModeDirection))] ||
+        [keyPath isEqual:NSStringFromSelector(@selector(selectedMode))]) {
+        if (appDelegate.modeMap.selectedModeDirection == modeDirection) {
+            [self setupMode];
+            [self setNeedsDisplay:YES];
+        }
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
+        [self setupMode];
+        [self setNeedsDisplay:YES];
+    }
+}
+
+#pragma mark - Drawing
+
 - (void)drawRect:(NSRect)dirtyRect
 {
 	[super drawRect:dirtyRect];
@@ -160,6 +139,33 @@
         changeButton.frame = buttonFrame;
     }
 }
+
+- (void)createTrackingArea {
+    int opts = (NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways);
+    NSTrackingArea *trackingArea = [ [NSTrackingArea alloc] initWithRect:[self bounds]
+                                                                 options:opts
+                                                                   owner:self
+                                                                userInfo:nil];
+    [self addTrackingArea:trackingArea];
+}
+
+- (void)setChangeButtonTitle:(NSString *)title {
+    NSMutableParagraphStyle *centredStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    [centredStyle setLineHeightMultiple:0.6f];
+    [centredStyle setAlignment:NSCenterTextAlignment];
+    NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:centredStyle,
+                           NSParagraphStyleAttributeName,
+                           [NSFont fontWithName:@"Helvetica-Bold" size:8.f],
+                           NSFontAttributeName,
+                           [NSColor whiteColor],
+                           NSForegroundColorAttributeName,
+                           nil];
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]
+                                                   initWithString:[title uppercaseString] attributes:attrs];
+    [changeButton setAttributedTitle:attributedString];
+}
+
+#pragma mark - Actions
 
 - (void)mouseEntered:(NSEvent *)theEvent {
     [[NSCursor pointingHandCursor] set];
