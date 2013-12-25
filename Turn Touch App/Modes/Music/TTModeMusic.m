@@ -16,7 +16,7 @@
 }
 
 - (NSString *)imageName {
-    return @"icon_music.png";
+    return @"vinyl.png";
 }
 
 - (NSString *)titleNorth {

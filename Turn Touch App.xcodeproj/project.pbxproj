@@ -29,6 +29,7 @@
 		FF8012F5186A1AD100955218 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF8012F4186A1AD100955218 /* defaults.plist */; };
 		FF8012F7186A599600955218 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8012F6186A599600955218 /* AudioToolbox.framework */; };
 		FF8012F9186A79A600955218 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8012F8186A79A600955218 /* clock.png */; };
+		FF8012FB186A7B9000955218 /* vinyl.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8012FA186A7B9000955218 /* vinyl.png */; };
 		FF8C833717AB14B5000166FC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8C833617AB14B5000166FC /* Cocoa.framework */; };
 		FF8C834117AB14B5000166FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF8C833F17AB14B5000166FC /* InfoPlist.strings */; };
 		FF8C834717AB14B5000166FC /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FF8C834517AB14B5000166FC /* Credits.rtf */; };
@@ -56,7 +57,6 @@
 		FFAA4F66182D96D60049FFC7 /* speaker.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAA4F5A182D96D60049FFC7 /* speaker.png */; };
 		FFAA4F67182D96D60049FFC7 /* sun.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAA4F5B182D96D60049FFC7 /* sun.png */; };
 		FFAA4F68182D96D60049FFC7 /* television.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAA4F5C182D96D60049FFC7 /* television.png */; };
-		FFAA4F69182D96D60049FFC7 /* vynil.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAA4F5D182D96D60049FFC7 /* vynil.png */; };
 		FFAA4F6F182D99640049FFC7 /* TTModeAlarmClock.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4F6E182D99640049FFC7 /* TTModeAlarmClock.m */; };
 		FFAA4F72182D9A5F0049FFC7 /* TTModeNews.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4F71182D9A5F0049FFC7 /* TTModeNews.m */; };
 /* End PBXBuildFile section */
@@ -103,6 +103,7 @@
 		FF8012F4186A1AD100955218 /* defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = defaults.plist; path = "Supporting Files/defaults.plist"; sourceTree = "<group>"; };
 		FF8012F6186A599600955218 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		FF8012F8186A79A600955218 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = clock.png; path = icons/clock.png; sourceTree = "<group>"; };
+		FF8012FA186A7B9000955218 /* vinyl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = vinyl.png; path = icons/vinyl.png; sourceTree = "<group>"; };
 		FF8C833317AB14B5000166FC /* Turn Touch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Turn Touch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF8C833617AB14B5000166FC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FF8C833917AB14B5000166FC /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -147,7 +148,6 @@
 		FFAA4F5A182D96D60049FFC7 /* speaker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = speaker.png; path = icons/speaker.png; sourceTree = "<group>"; };
 		FFAA4F5B182D96D60049FFC7 /* sun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sun.png; path = icons/sun.png; sourceTree = "<group>"; };
 		FFAA4F5C182D96D60049FFC7 /* television.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = television.png; path = icons/television.png; sourceTree = "<group>"; };
-		FFAA4F5D182D96D60049FFC7 /* vynil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = vynil.png; path = icons/vynil.png; sourceTree = "<group>"; };
 		FFAA4F6D182D99640049FFC7 /* TTModeAlarmClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeAlarmClock.h; path = "Modes/Alarm Clock/TTModeAlarmClock.h"; sourceTree = "<group>"; };
 		FFAA4F6E182D99640049FFC7 /* TTModeAlarmClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeAlarmClock.m; path = "Modes/Alarm Clock/TTModeAlarmClock.m"; sourceTree = "<group>"; };
 		FFAA4F70182D9A5F0049FFC7 /* TTModeNews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeNews.h; path = Modes/News/TTModeNews.h; sourceTree = "<group>"; };
@@ -374,6 +374,7 @@
 		FFAA4F6A182D96E50049FFC7 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				FF8012FA186A7B9000955218 /* vinyl.png */,
 				FF8012F8186A79A600955218 /* clock.png */,
 				FFAA4F52182D96D60049FFC7 /* cog.png */,
 				FFAA4F53182D96D60049FFC7 /* equalizer-1.png */,
@@ -388,7 +389,6 @@
 				FFAA4F5A182D96D60049FFC7 /* speaker.png */,
 				FFAA4F5B182D96D60049FFC7 /* sun.png */,
 				FFAA4F5C182D96D60049FFC7 /* television.png */,
-				FFAA4F5D182D96D60049FFC7 /* vynil.png */,
 			);
 			name = icons;
 			sourceTree = "<group>";
@@ -470,6 +470,7 @@
 			files = (
 				FF8C834117AB14B5000166FC /* InfoPlist.strings in Resources */,
 				FFAA4F61182D96D60049FFC7 /* heart.png in Resources */,
+				FF8012FB186A7B9000955218 /* vinyl.png in Resources */,
 				FF8C834717AB14B5000166FC /* Credits.rtf in Resources */,
 				FFAA4F68182D96D60049FFC7 /* television.png in Resources */,
 				FFAA4F66182D96D60049FFC7 /* speaker.png in Resources */,
@@ -487,7 +488,6 @@
 				FF98A2EF1867DC320032CC7A /* Turn Touch App.entitlements in Resources */,
 				FFAA4F62182D96D60049FFC7 /* icon_movie.png in Resources */,
 				FFAA4F64182D96D60049FFC7 /* newspaper-3.png in Resources */,
-				FFAA4F69182D96D60049FFC7 /* vynil.png in Resources */,
 				FF98A3041868D3F90032CC7A /* macbookpro.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
