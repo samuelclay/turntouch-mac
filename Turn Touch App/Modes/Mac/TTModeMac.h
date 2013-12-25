@@ -7,7 +7,12 @@
 //
 
 #import "TTMode.h"
+#import <AudioToolbox/AudioServices.h>
 
 @interface TTModeMac : TTMode
+
+- (AudioDeviceID)defaultOutputDeviceID;
+
+@property float volume;
 
 @end

@@ -168,8 +168,8 @@
     
 //    NSLog(@"Mouse entered");
     hoverActive = YES;
-//    [self setupMode];
-//    [self setNeedsDisplay:YES];
+    [self setupMode];
+    [self setNeedsDisplay:YES];
 }
 
 - (void)mouseExited:(NSEvent *)theEvent {
@@ -179,8 +179,8 @@
     
 //    NSLog(@"Mouse exited");
     hoverActive = NO;
-//    [self setupMode];
-//    [self setNeedsDisplay:YES];
+    [self setupMode];
+    [self setNeedsDisplay:YES];
 }
 
 - (void)mouseUp:(NSEvent *)theEvent {
