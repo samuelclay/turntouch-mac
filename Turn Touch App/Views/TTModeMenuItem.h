@@ -33,6 +33,6 @@
 @property (nonatomic) IBOutlet NSButton *changeButton;
 
 - (id)initWithFrame:(NSRect)frame direction:(TTModeDirection)direction;
-
+- (void)hidePopupMenu;
 
 @end

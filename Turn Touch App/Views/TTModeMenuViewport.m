@@ -146,6 +146,11 @@
         self.frame = viewportRect;
         container.frame = newMenuRect;
     }
+    
+    [container.northItem hidePopupMenu];
+    [container.eastItem hidePopupMenu];
+    [container.westItem hidePopupMenu];
+    [container.southItem hidePopupMenu];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {

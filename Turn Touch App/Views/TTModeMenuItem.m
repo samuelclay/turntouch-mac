@@ -225,4 +225,11 @@
     [self setNeedsDisplay:YES];
 }
 
+- (void)hidePopupMenu {
+    if (isModeChangeActive) {
+        isModeChangeActive = NO;
+        [self setNeedsDisplay:YES];
+    }
+}
+
 @end
