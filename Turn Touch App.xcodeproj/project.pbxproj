@@ -28,6 +28,7 @@
 		FF8012F318692D0A00955218 /* TTModeMac.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8012F218692D0A00955218 /* TTModeMac.m */; };
 		FF8012F5186A1AD100955218 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF8012F4186A1AD100955218 /* defaults.plist */; };
 		FF8012F7186A599600955218 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8012F6186A599600955218 /* AudioToolbox.framework */; };
+		FF8012F9186A79A600955218 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8012F8186A79A600955218 /* clock.png */; };
 		FF8C833717AB14B5000166FC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8C833617AB14B5000166FC /* Cocoa.framework */; };
 		FF8C834117AB14B5000166FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF8C833F17AB14B5000166FC /* InfoPlist.strings */; };
 		FF8C834717AB14B5000166FC /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FF8C834517AB14B5000166FC /* Credits.rtf */; };
@@ -101,6 +102,7 @@
 		FF8012F218692D0A00955218 /* TTModeMac.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeMac.m; path = Modes/Mac/TTModeMac.m; sourceTree = "<group>"; };
 		FF8012F4186A1AD100955218 /* defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = defaults.plist; path = "Supporting Files/defaults.plist"; sourceTree = "<group>"; };
 		FF8012F6186A599600955218 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		FF8012F8186A79A600955218 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = clock.png; path = icons/clock.png; sourceTree = "<group>"; };
 		FF8C833317AB14B5000166FC /* Turn Touch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Turn Touch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF8C833617AB14B5000166FC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FF8C833917AB14B5000166FC /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -372,6 +374,7 @@
 		FFAA4F6A182D96E50049FFC7 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				FF8012F8186A79A600955218 /* clock.png */,
 				FFAA4F52182D96D60049FFC7 /* cog.png */,
 				FFAA4F53182D96D60049FFC7 /* equalizer-1.png */,
 				FFAA4F54182D96D60049FFC7 /* filmstrip-3.png */,
@@ -477,6 +480,7 @@
 				FFAA4F63182D96D60049FFC7 /* icon_music.png in Resources */,
 				FFAA4F5F182D96D60049FFC7 /* equalizer-1.png in Resources */,
 				FF98A3031868D3F90032CC7A /* imac.png in Resources */,
+				FF8012F9186A79A600955218 /* clock.png in Resources */,
 				FF8012F5186A1AD100955218 /* defaults.plist in Resources */,
 				FF3A9F7717C4358000C5C2D5 /* TTPanel.xib in Resources */,
 				FFAA4F67182D96D60049FFC7 /* sun.png in Resources */,

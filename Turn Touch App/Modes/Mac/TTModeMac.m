@@ -7,6 +7,7 @@
 //
 #import <AudioToolbox/AudioServices.h>
 #import "TTModeMac.h"
+#include <sys/sysctl.h>
 
 @implementation TTModeMac
 
@@ -17,6 +18,12 @@
 }
 
 - (NSString *)imageName {
+    NSString *machineModel = [[self class] machineModel];
+    
+    if ([machineModel rangeOfString:@"MacBook"].location != NSNotFound) {
+        return @"macbookpro.png";
+    }
+
     return @"imac.png";
 }
 
@@ -49,6 +56,23 @@
     } else {
         [self setVolume:0];
     }
+}
+
++(NSString *) machineModel
+{
+    size_t len = 0;
+    sysctlbyname("hw.model", NULL, &len, NULL, 0);
+    
+    if (len)
+    {
+        char *model = malloc(len*sizeof(char));
+        sysctlbyname("hw.model", model, &len, NULL, 0);
+        NSString *model_ns = [NSString stringWithUTF8String:model];
+        free(model);
+        return model_ns;
+    }
+    
+    return @"Just an Apple Computer"; //incase model name can't be read
 }
 
 - (float)volume {

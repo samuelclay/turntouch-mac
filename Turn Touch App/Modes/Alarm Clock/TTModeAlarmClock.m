@@ -15,7 +15,7 @@
 }
 
 - (NSString *)imageName {
-    return @"sun.png";
+    return @"clock.png";
 }
 
 - (NSString *)titleNorth {
