@@ -31,5 +31,6 @@
 
 - (void)openPanel;
 - (void)closePanel;
+- (void)resize;
 
 @end

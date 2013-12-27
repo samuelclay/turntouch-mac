@@ -27,31 +27,40 @@
 @synthesize modeMenu = _modeMenu;
 @synthesize diamondView = _diamondView;
 @synthesize diamondLabels = _diamondLabels;
+@synthesize modeOptionsView = _modeOptionsView;
 
 #pragma mark -
 
 - (void)awakeFromNib {
     appDelegate = [NSApp delegate];
 
+    NSRect modeOptionsFrame = self.frame;
+    modeOptionsFrame.size.height = 100;
+    modeOptionsFrame.origin.y = NSMinY(self.frame);
+    _modeOptionsView = [[TTModeOptionsView alloc] initWithFrame:modeOptionsFrame];
+    _modeOptionsView.autoresizingMask = NSViewWidthSizable | NSViewMinXMargin | NSViewMaxXMargin;
+    [self addSubview:_modeOptionsView];
+    
+    CGFloat centerHeight = DIAMOND_SIZE*2.5;
     // +1 X offset for panel width fudge
     NSRect diamondRect = NSMakeRect(NSWidth(self.frame) / 2 - (DIAMOND_SIZE * 1.3 / 2) + 1,
-                                    (NSHeight(self.frame) - MODE_MENU_HEIGHT) / 2 - DIAMOND_SIZE / 2,
+                                    centerHeight / 2 - DIAMOND_SIZE / 2 + NSHeight(modeOptionsFrame),
                                     DIAMOND_SIZE * 1.3, DIAMOND_SIZE);
+//    NSLog(@"Diamond Rect (%fpx): %@ / %@", centerHeight, NSStringFromRect(diamondRect), NSStringFromRect(self.frame));
     _diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect
                                               direction:0
                                 ignoreSelectedDirection:YES];
 //    NSLog(@"diamondRect: %@ - %@", NSStringFromRect(self.frame), NSStringFromRect(diamondRect));
     [self addSubview:_diamondView];
     
-    NSRect labelRect = NSMakeRect(0, 0,
-                                  NSWidth(self.frame), NSHeight(self.frame) - MODE_MENU_HEIGHT);
+    NSRect labelRect = NSMakeRect(0, NSHeight(modeOptionsFrame), NSWidth(self.frame), centerHeight);
 //    NSLog(@"labelRect: %@ - %@", NSStringFromRect(self.frame), NSStringFromRect(labelRect));
     _diamondLabels = [[TTDiamondLabels alloc] initWithFrame:labelRect diamondRect:diamondRect];
     [self addSubview:_diamondLabels];
-
+    
     NSRect modeMenuFrame = self.frame;
     modeMenuFrame.size.height = MODE_MENU_HEIGHT;
-    modeMenuFrame.origin.y = NSMaxY(self.frame) - MODE_MENU_HEIGHT - ARROW_HEIGHT;
+    modeMenuFrame.origin.y = NSMaxY(labelRect);
     _modeMenu = [[TTModeMenuViewport alloc] initWithFrame:modeMenuFrame];
     _modeMenu.autoresizingMask = NSViewWidthSizable | NSViewMinXMargin | NSViewMaxXMargin;
     [self addSubview:_modeMenu];

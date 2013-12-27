@@ -52,7 +52,7 @@
     [panel setLevel:NSPopUpMenuWindowLevel];
     [panel setOpaque:NO];
     [panel setBackgroundColor:[NSColor clearColor]];
-    
+
     [self resize];
     
     [self.backgroundView.modeMenu addObserver:self forKeyPath:@"frame" options:0 context:nil];
@@ -70,13 +70,14 @@
 - (void)resize {
     NSPanel *panel = (id)[self window];
     
-    NSInteger menuHeight = CGRectGetHeight(self.backgroundView.modeMenu.frame);
-    NSInteger diamondHeight = CGRectGetHeight(self.backgroundView.diamondLabels.frame);
+    NSInteger menuHeight = NSHeight(self.backgroundView.modeMenu.frame);
+    NSInteger diamondHeight = NSHeight(self.backgroundView.diamondLabels.frame);
+    NSInteger optionsHeight = NSHeight(self.backgroundView.modeOptionsView.frame);
     
     NSRect statusRect = [self statusRectForWindow:panel];
     
     NSRect panelRect = [panel frame];
-    panelRect.size.height = menuHeight + diamondHeight;
+    panelRect.size.height = menuHeight + diamondHeight + optionsHeight;
     panelRect.origin.x = roundf(NSMidX(statusRect) - NSWidth(panelRect) / 2);
     panelRect.origin.y = NSMaxY(statusRect) - NSHeight(panelRect);
     

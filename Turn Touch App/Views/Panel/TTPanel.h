@@ -7,7 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "TTBackgroundView.h"
 
 @interface TTPanel : NSPanel
+
+@property (nonatomic) IBOutlet TTBackgroundView *backgroundView;
 
 @end

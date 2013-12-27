@@ -7,11 +7,22 @@
 //
 
 #import "TTPanel.h"
+#import "TTAppDelegate.h"
+#import "TTPanelController.h"
 
 @implementation TTPanel
 
+@synthesize backgroundView;
+
 - (BOOL)canBecomeKeyWindow {
     return YES;
+}
+
+- (void)awakeFromNib {
+//    backgroundView = [[TTBackgroundView alloc] initWithFrame:self.frame];
+//    [self setContentView:backgroundView];
+    TTAppDelegate *appDelegate = [NSApp delegate];
+    [appDelegate.panelController resize];
 }
 
 @end

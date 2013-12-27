@@ -14,6 +14,10 @@
     return @"News";
 }
 
++ (NSString *)description {
+    return @"Today's headlines";
+}
+
 - (NSString *)imageName {
     return @"newspaper-3.png";
 }

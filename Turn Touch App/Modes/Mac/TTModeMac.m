@@ -17,6 +17,10 @@
     return @"Mac OS";
 }
 
++ (NSString *)description {
+    return @"System-level controls";
+}
+
 - (NSString *)imageName {
     NSString *machineModel = [[self class] machineModel];
     

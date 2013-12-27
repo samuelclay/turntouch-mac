@@ -14,6 +14,10 @@
     return @"Alarm Clock";
 }
 
++ (NSString *)description {
+    return @"Wake up on time with music";
+}
+
 - (NSString *)imageName {
     return @"clock.png";
 }

@@ -17,6 +17,10 @@
     return @"Video";
 }
 
++ (NSString *)description {
+    return @"Control movies and tv";
+}
+
 - (NSString *)imageName {
     return @"icon_movie.png";
 }

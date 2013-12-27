@@ -22,6 +22,7 @@
 - (NSString *)titleWest;
 - (NSString *)titleSouth;
 + (NSString *)title;
++ (NSString *)description;
 
 @optional
 - (void)activate;

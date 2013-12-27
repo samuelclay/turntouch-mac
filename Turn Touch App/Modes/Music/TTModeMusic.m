@@ -15,6 +15,10 @@
     return @"Music";
 }
 
++ (NSString *)description {
+    return @"Control iTunes";
+}
+
 - (NSString *)imageName {
     return @"vinyl.png";
 }
