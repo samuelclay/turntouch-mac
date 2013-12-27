@@ -73,11 +73,12 @@
     NSInteger menuHeight = NSHeight(self.backgroundView.modeMenu.frame);
     NSInteger diamondHeight = NSHeight(self.backgroundView.diamondLabels.frame);
     NSInteger optionsHeight = NSHeight(self.backgroundView.modeOptionsView.frame);
+    NSInteger arrowHeight = ARROW_HEIGHT;
     
     NSRect statusRect = [self statusRectForWindow:panel];
     
     NSRect panelRect = [panel frame];
-    panelRect.size.height = menuHeight + diamondHeight + optionsHeight;
+    panelRect.size.height = menuHeight + diamondHeight + optionsHeight + arrowHeight;
     panelRect.origin.x = roundf(NSMidX(statusRect) - NSWidth(panelRect) / 2);
     panelRect.origin.y = NSMaxY(statusRect) - NSHeight(panelRect);
     

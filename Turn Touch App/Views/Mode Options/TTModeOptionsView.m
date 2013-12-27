@@ -92,8 +92,8 @@
     [path closePath];
     
     NSGradient* aGradient = [[NSGradient alloc]
-                             initWithStartingColor:[NSColor whiteColor]
-                             endingColor:NSColorFromRGB(0xE7E7E7)];
+                             initWithStartingColor:NSColorFromRGB(0xF7F7F7)
+                             endingColor:NSColorFromRGB(0xE7E5E1)];
     [aGradient drawInBezierPath:path angle:-90];
     
     [NSGraphicsContext saveGraphicsState];
