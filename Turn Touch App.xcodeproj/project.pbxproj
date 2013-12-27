@@ -7,29 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FF0E12B81824285100D49EC7 /* TTDiamondView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12B71824285100D49EC7 /* TTDiamondView.m */; };
 		FF0E12BB1824286600D49EC7 /* TTModeMap.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12BA1824286600D49EC7 /* TTModeMap.m */; };
 		FF0E12C218242DF000D49EC7 /* TTButtonTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12C118242DF000D49EC7 /* TTButtonTimer.m */; };
 		FF0E12CA18247BAE00D49EC7 /* TTMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12C918247BAE00D49EC7 /* TTMode.m */; };
 		FF0E12CF18247D6100D49EC7 /* TTModeMusic.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12CE18247D6100D49EC7 /* TTModeMusic.m */; };
 		FF0E12D11824811200D49EC7 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0E12D01824811200D49EC7 /* ScriptingBridge.framework */; };
 		FF0E12D41828560000D49EC7 /* TTModeVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12D31828560000D49EC7 /* TTModeVideo.m */; };
-		FF32222E1857B549004078AA /* TTModePreferencePane.m in Sources */ = {isa = PBXBuildFile; fileRef = FF32222D1857B549004078AA /* TTModePreferencePane.m */; };
-		FF3A9F6F17C4353300C5C2D5 /* TTPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A9F6E17C4353300C5C2D5 /* TTPanel.m */; };
-		FF3A9F7217C4354A00C5C2D5 /* TTStatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A9F7117C4354A00C5C2D5 /* TTStatusItemView.m */; };
-		FF3A9F7517C4355B00C5C2D5 /* TTBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A9F7417C4355B00C5C2D5 /* TTBackgroundView.m */; };
-		FF3A9F7717C4358000C5C2D5 /* TTPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3A9F7617C4358000C5C2D5 /* TTPanel.xib */; };
 		FF4E2630182317D000D477F6 /* TTSerialMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4E262F182317D000D477F6 /* TTSerialMonitor.m */; };
 		FF4E26321823197D00D477F6 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4E26311823197D00D477F6 /* IOKit.framework */; };
-		FF4F9AFA1829B1A900D2F975 /* TTModeMenuViewport.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4F9AF91829B1A900D2F975 /* TTModeMenuViewport.m */; };
-		FF4F9AFD1829B1B800D2F975 /* TTModeMenuContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4F9AFC1829B1B800D2F975 /* TTModeMenuContainer.m */; };
-		FF4F9B001829B1D300D2F975 /* TTModeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4F9AFF1829B1D300D2F975 /* TTModeMenuItem.m */; };
 		FF7A1C6F1868FD72005FA756 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF98A30C1868F1120032CC7A /* QuartzCore.framework */; };
 		FF8012F318692D0A00955218 /* TTModeMac.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8012F218692D0A00955218 /* TTModeMac.m */; };
 		FF8012F5186A1AD100955218 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF8012F4186A1AD100955218 /* defaults.plist */; };
 		FF8012F7186A599600955218 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8012F6186A599600955218 /* AudioToolbox.framework */; };
 		FF8012F9186A79A600955218 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8012F8186A79A600955218 /* clock.png */; };
 		FF8012FB186A7B9000955218 /* vinyl.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8012FA186A7B9000955218 /* vinyl.png */; };
+		FF801302186CF8BE00955218 /* TTActionDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801301186CF8BE00955218 /* TTActionDetailView.m */; };
+		FF801319186CF8FF00955218 /* TTDiamondLabels.m in Sources */ = {isa = PBXBuildFile; fileRef = FF80130E186CF8FF00955218 /* TTDiamondLabels.m */; };
+		FF80131A186CF8FF00955218 /* TTDiamondView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801310186CF8FF00955218 /* TTDiamondView.m */; };
+		FF80131B186CF8FF00955218 /* TTModeMenuContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801313186CF8FF00955218 /* TTModeMenuContainer.m */; };
+		FF80131C186CF8FF00955218 /* TTModeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801315186CF8FF00955218 /* TTModeMenuItem.m */; };
+		FF80131D186CF8FF00955218 /* TTModeMenuViewport.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801317186CF8FF00955218 /* TTModeMenuViewport.m */; };
+		FF801326186CF90700955218 /* TTBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801320186CF90700955218 /* TTBackgroundView.m */; };
+		FF801327186CF90700955218 /* TTPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801322186CF90700955218 /* TTPanel.m */; };
+		FF801328186CF90700955218 /* TTPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF801323186CF90700955218 /* TTPanel.xib */; };
+		FF801329186CF90700955218 /* TTStatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801325186CF90700955218 /* TTStatusItemView.m */; };
+		FF80132B186CF92000955218 /* TTPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF80132A186CF92000955218 /* TTPanel.xib */; };
 		FF8C833717AB14B5000166FC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8C833617AB14B5000166FC /* Cocoa.framework */; };
 		FF8C834117AB14B5000166FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF8C833F17AB14B5000166FC /* InfoPlist.strings */; };
 		FF8C834717AB14B5000166FC /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FF8C834517AB14B5000166FC /* Credits.rtf */; };
@@ -44,7 +46,6 @@
 		FF98A2FC1867E8EC0032CC7A /* ORSSerialPortManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98A2FA1867E8EC0032CC7A /* ORSSerialPortManager.m */; };
 		FF98A3031868D3F90032CC7A /* imac.png in Resources */ = {isa = PBXBuildFile; fileRef = FF98A3011868D3F90032CC7A /* imac.png */; };
 		FF98A3041868D3F90032CC7A /* macbookpro.png in Resources */ = {isa = PBXBuildFile; fileRef = FF98A3021868D3F90032CC7A /* macbookpro.png */; };
-		FFAA4F4E182C99F30049FFC7 /* TTDiamondLabels.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4F4D182C99F30049FFC7 /* TTDiamondLabels.m */; };
 		FFAA4F5E182D96D60049FFC7 /* cog.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAA4F52182D96D60049FFC7 /* cog.png */; };
 		FFAA4F5F182D96D60049FFC7 /* equalizer-1.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAA4F53182D96D60049FFC7 /* equalizer-1.png */; };
 		FFAA4F60182D96D60049FFC7 /* filmstrip-3.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAA4F54182D96D60049FFC7 /* filmstrip-3.png */; };
@@ -61,8 +62,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FF0E12B61824285100D49EC7 /* TTDiamondView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTDiamondView.h; path = Views/TTDiamondView.h; sourceTree = "<group>"; };
-		FF0E12B71824285100D49EC7 /* TTDiamondView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTDiamondView.m; path = Views/TTDiamondView.m; sourceTree = "<group>"; };
 		FF0E12B91824286600D49EC7 /* TTModeMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMap.h; path = Models/TTModeMap.h; sourceTree = "<group>"; };
 		FF0E12BA1824286600D49EC7 /* TTModeMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeMap.m; path = Models/TTModeMap.m; sourceTree = "<group>"; };
 		FF0E12C018242DF000D49EC7 /* TTButtonTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTButtonTimer.h; path = SerialMonitor/TTButtonTimer.h; sourceTree = "<group>"; };
@@ -78,31 +77,36 @@
 		FF0E12D31828560000D49EC7 /* TTModeVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeVideo.m; path = Modes/Video/TTModeVideo.m; sourceTree = "<group>"; };
 		FF0E12D61828569300D49EC7 /* Quicktime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Quicktime.h; path = Modes/Video/Quicktime.h; sourceTree = "<group>"; };
 		FF0E12D71828569300D49EC7 /* VLC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VLC.h; path = Modes/Video/VLC.h; sourceTree = "<group>"; };
-		FF32222C1857B549004078AA /* TTModePreferencePane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModePreferencePane.h; path = Views/TTModePreferencePane.h; sourceTree = "<group>"; };
-		FF32222D1857B549004078AA /* TTModePreferencePane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModePreferencePane.m; path = Views/TTModePreferencePane.m; sourceTree = "<group>"; };
-		FF3A9F6D17C4353300C5C2D5 /* TTPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTPanel.h; path = Views/TTPanel.h; sourceTree = "<group>"; };
-		FF3A9F6E17C4353300C5C2D5 /* TTPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTPanel.m; path = Views/TTPanel.m; sourceTree = "<group>"; };
-		FF3A9F7017C4354A00C5C2D5 /* TTStatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTStatusItemView.h; path = Views/TTStatusItemView.h; sourceTree = "<group>"; };
-		FF3A9F7117C4354A00C5C2D5 /* TTStatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTStatusItemView.m; path = Views/TTStatusItemView.m; sourceTree = "<group>"; };
-		FF3A9F7317C4355B00C5C2D5 /* TTBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTBackgroundView.h; path = Views/TTBackgroundView.h; sourceTree = "<group>"; };
-		FF3A9F7417C4355B00C5C2D5 /* TTBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTBackgroundView.m; path = Views/TTBackgroundView.m; sourceTree = "<group>"; };
-		FF3A9F7617C4358000C5C2D5 /* TTPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTPanel.xib; path = Views/TTPanel.xib; sourceTree = "<group>"; };
 		FF4E262E182317D000D477F6 /* TTSerialMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSerialMonitor.h; path = SerialMonitor/TTSerialMonitor.h; sourceTree = "<group>"; };
 		FF4E262F182317D000D477F6 /* TTSerialMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSerialMonitor.m; path = SerialMonitor/TTSerialMonitor.m; sourceTree = "<group>"; };
 		FF4E26311823197D00D477F6 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		FF4F9AF6182881FF00D2F975 /* AppleScriptObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptObjC.framework; path = System/Library/Frameworks/AppleScriptObjC.framework; sourceTree = SDKROOT; };
-		FF4F9AF81829B1A900D2F975 /* TTModeMenuViewport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMenuViewport.h; path = Views/TTModeMenuViewport.h; sourceTree = "<group>"; };
-		FF4F9AF91829B1A900D2F975 /* TTModeMenuViewport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeMenuViewport.m; path = Views/TTModeMenuViewport.m; sourceTree = "<group>"; };
-		FF4F9AFB1829B1B800D2F975 /* TTModeMenuContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMenuContainer.h; path = Views/TTModeMenuContainer.h; sourceTree = "<group>"; };
-		FF4F9AFC1829B1B800D2F975 /* TTModeMenuContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeMenuContainer.m; path = Views/TTModeMenuContainer.m; sourceTree = "<group>"; };
-		FF4F9AFE1829B1D300D2F975 /* TTModeMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMenuItem.h; path = Views/TTModeMenuItem.h; sourceTree = "<group>"; };
-		FF4F9AFF1829B1D300D2F975 /* TTModeMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeMenuItem.m; path = Views/TTModeMenuItem.m; sourceTree = "<group>"; };
 		FF8012F118692D0A00955218 /* TTModeMac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMac.h; path = Modes/Mac/TTModeMac.h; sourceTree = "<group>"; };
 		FF8012F218692D0A00955218 /* TTModeMac.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeMac.m; path = Modes/Mac/TTModeMac.m; sourceTree = "<group>"; };
 		FF8012F4186A1AD100955218 /* defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = defaults.plist; path = "Supporting Files/defaults.plist"; sourceTree = "<group>"; };
 		FF8012F6186A599600955218 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		FF8012F8186A79A600955218 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = clock.png; path = icons/clock.png; sourceTree = "<group>"; };
 		FF8012FA186A7B9000955218 /* vinyl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = vinyl.png; path = icons/vinyl.png; sourceTree = "<group>"; };
+		FF801300186CF8BE00955218 /* TTActionDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTActionDetailView.h; path = Views/Actions/TTActionDetailView.h; sourceTree = "<group>"; };
+		FF801301186CF8BE00955218 /* TTActionDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTActionDetailView.m; path = Views/Actions/TTActionDetailView.m; sourceTree = "<group>"; };
+		FF80130D186CF8FF00955218 /* TTDiamondLabels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTDiamondLabels.h; sourceTree = "<group>"; };
+		FF80130E186CF8FF00955218 /* TTDiamondLabels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTDiamondLabels.m; sourceTree = "<group>"; };
+		FF80130F186CF8FF00955218 /* TTDiamondView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTDiamondView.h; sourceTree = "<group>"; };
+		FF801310186CF8FF00955218 /* TTDiamondView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTDiamondView.m; sourceTree = "<group>"; };
+		FF801312186CF8FF00955218 /* TTModeMenuContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeMenuContainer.h; sourceTree = "<group>"; };
+		FF801313186CF8FF00955218 /* TTModeMenuContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeMenuContainer.m; sourceTree = "<group>"; };
+		FF801314186CF8FF00955218 /* TTModeMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeMenuItem.h; sourceTree = "<group>"; };
+		FF801315186CF8FF00955218 /* TTModeMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeMenuItem.m; sourceTree = "<group>"; };
+		FF801316186CF8FF00955218 /* TTModeMenuViewport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeMenuViewport.h; sourceTree = "<group>"; };
+		FF801317186CF8FF00955218 /* TTModeMenuViewport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeMenuViewport.m; sourceTree = "<group>"; };
+		FF80131F186CF90700955218 /* TTBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTBackgroundView.h; sourceTree = "<group>"; };
+		FF801320186CF90700955218 /* TTBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTBackgroundView.m; sourceTree = "<group>"; };
+		FF801321186CF90700955218 /* TTPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTPanel.h; sourceTree = "<group>"; };
+		FF801322186CF90700955218 /* TTPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTPanel.m; sourceTree = "<group>"; };
+		FF801323186CF90700955218 /* TTPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTPanel.xib; sourceTree = "<group>"; };
+		FF801324186CF90700955218 /* TTStatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTStatusItemView.h; sourceTree = "<group>"; };
+		FF801325186CF90700955218 /* TTStatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTStatusItemView.m; sourceTree = "<group>"; };
+		FF80132A186CF92000955218 /* TTPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTPanel.xib; path = Views/Panel/TTPanel.xib; sourceTree = "<group>"; };
 		FF8C833317AB14B5000166FC /* Turn Touch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Turn Touch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF8C833617AB14B5000166FC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FF8C833917AB14B5000166FC /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -132,8 +136,6 @@
 		FF98A3021868D3F90032CC7A /* macbookpro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = macbookpro.png; path = icons/macbookpro.png; sourceTree = "<group>"; };
 		FF98A30C1868F1120032CC7A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FF98A30E1868F1190032CC7A /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
-		FFAA4F4C182C99F30049FFC7 /* TTDiamondLabels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTDiamondLabels.h; path = Views/TTDiamondLabels.h; sourceTree = "<group>"; };
-		FFAA4F4D182C99F30049FFC7 /* TTDiamondLabels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTDiamondLabels.m; path = Views/TTDiamondLabels.m; sourceTree = "<group>"; };
 		FFAA4F52182D96D60049FFC7 /* cog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cog.png; path = icons/cog.png; sourceTree = "<group>"; };
 		FFAA4F53182D96D60049FFC7 /* equalizer-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "equalizer-1.png"; path = "icons/equalizer-1.png"; sourceTree = "<group>"; };
 		FFAA4F54182D96D60049FFC7 /* filmstrip-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "filmstrip-3.png"; path = "icons/filmstrip-3.png"; sourceTree = "<group>"; };
@@ -184,8 +186,8 @@
 		FF0E12BF18242D2F00D49EC7 /* XIBs */ = {
 			isa = PBXGroup;
 			children = (
+				FF80132A186CF92000955218 /* TTPanel.xib */,
 				FF8C834B17AB14B5000166FC /* MainMenu.xib */,
-				FF3A9F7617C4358000C5C2D5 /* TTPanel.xib */,
 			);
 			name = XIBs;
 			sourceTree = "<group>";
@@ -250,24 +252,10 @@
 		FF5F70B217C428F200511AB6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				FF3A9F6D17C4353300C5C2D5 /* TTPanel.h */,
-				FF3A9F6E17C4353300C5C2D5 /* TTPanel.m */,
-				FF3A9F7017C4354A00C5C2D5 /* TTStatusItemView.h */,
-				FF3A9F7117C4354A00C5C2D5 /* TTStatusItemView.m */,
-				FF3A9F7317C4355B00C5C2D5 /* TTBackgroundView.h */,
-				FF3A9F7417C4355B00C5C2D5 /* TTBackgroundView.m */,
-				FF0E12B61824285100D49EC7 /* TTDiamondView.h */,
-				FF0E12B71824285100D49EC7 /* TTDiamondView.m */,
-				FFAA4F4C182C99F30049FFC7 /* TTDiamondLabels.h */,
-				FFAA4F4D182C99F30049FFC7 /* TTDiamondLabels.m */,
-				FF4F9AF81829B1A900D2F975 /* TTModeMenuViewport.h */,
-				FF4F9AF91829B1A900D2F975 /* TTModeMenuViewport.m */,
-				FF4F9AFB1829B1B800D2F975 /* TTModeMenuContainer.h */,
-				FF4F9AFC1829B1B800D2F975 /* TTModeMenuContainer.m */,
-				FF4F9AFE1829B1D300D2F975 /* TTModeMenuItem.h */,
-				FF4F9AFF1829B1D300D2F975 /* TTModeMenuItem.m */,
-				FF32222C1857B549004078AA /* TTModePreferencePane.h */,
-				FF32222D1857B549004078AA /* TTModePreferencePane.m */,
+				FF80131E186CF90700955218 /* Panel */,
+				FF80130C186CF8FF00955218 /* Mode Map */,
+				FF801311186CF8FF00955218 /* Mode Menu */,
+				FF8012FF186CF87100955218 /* Actions */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -284,6 +272,56 @@
 				FF98A2E61867DBE70032CC7A /* TTPanelDelegate.h */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		FF8012FF186CF87100955218 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				FF801300186CF8BE00955218 /* TTActionDetailView.h */,
+				FF801301186CF8BE00955218 /* TTActionDetailView.m */,
+			);
+			name = Actions;
+			sourceTree = "<group>";
+		};
+		FF80130C186CF8FF00955218 /* Mode Map */ = {
+			isa = PBXGroup;
+			children = (
+				FF80130D186CF8FF00955218 /* TTDiamondLabels.h */,
+				FF80130E186CF8FF00955218 /* TTDiamondLabels.m */,
+				FF80130F186CF8FF00955218 /* TTDiamondView.h */,
+				FF801310186CF8FF00955218 /* TTDiamondView.m */,
+			);
+			name = "Mode Map";
+			path = "Views/Mode Map";
+			sourceTree = "<group>";
+		};
+		FF801311186CF8FF00955218 /* Mode Menu */ = {
+			isa = PBXGroup;
+			children = (
+				FF801312186CF8FF00955218 /* TTModeMenuContainer.h */,
+				FF801313186CF8FF00955218 /* TTModeMenuContainer.m */,
+				FF801314186CF8FF00955218 /* TTModeMenuItem.h */,
+				FF801315186CF8FF00955218 /* TTModeMenuItem.m */,
+				FF801316186CF8FF00955218 /* TTModeMenuViewport.h */,
+				FF801317186CF8FF00955218 /* TTModeMenuViewport.m */,
+			);
+			name = "Mode Menu";
+			path = "Views/Mode Menu";
+			sourceTree = "<group>";
+		};
+		FF80131E186CF90700955218 /* Panel */ = {
+			isa = PBXGroup;
+			children = (
+				FF80131F186CF90700955218 /* TTBackgroundView.h */,
+				FF801320186CF90700955218 /* TTBackgroundView.m */,
+				FF801321186CF90700955218 /* TTPanel.h */,
+				FF801322186CF90700955218 /* TTPanel.m */,
+				FF801323186CF90700955218 /* TTPanel.xib */,
+				FF801324186CF90700955218 /* TTStatusItemView.h */,
+				FF801325186CF90700955218 /* TTStatusItemView.m */,
+			);
+			name = Panel;
+			path = Views/Panel;
 			sourceTree = "<group>";
 		};
 		FF8C832A17AB14B5000166FC = {
@@ -465,6 +503,8 @@
 			files = (
 				FF8C834117AB14B5000166FC /* InfoPlist.strings in Resources */,
 				FFAA4F61182D96D60049FFC7 /* heart.png in Resources */,
+				FF80132B186CF92000955218 /* TTPanel.xib in Resources */,
+				FF801328186CF90700955218 /* TTPanel.xib in Resources */,
 				FF8012FB186A7B9000955218 /* vinyl.png in Resources */,
 				FF8C834717AB14B5000166FC /* Credits.rtf in Resources */,
 				FFAA4F68182D96D60049FFC7 /* television.png in Resources */,
@@ -478,7 +518,6 @@
 				FF98A3031868D3F90032CC7A /* imac.png in Resources */,
 				FF8012F9186A79A600955218 /* clock.png in Resources */,
 				FF8012F5186A1AD100955218 /* defaults.plist in Resources */,
-				FF3A9F7717C4358000C5C2D5 /* TTPanel.xib in Resources */,
 				FFAA4F67182D96D60049FFC7 /* sun.png in Resources */,
 				FF98A2EF1867DC320032CC7A /* Turn Touch App.entitlements in Resources */,
 				FFAA4F62182D96D60049FFC7 /* icon_movie.png in Resources */,
@@ -497,28 +536,28 @@
 				FF8C834A17AB14B5000166FC /* TTAppDelegate.m in Sources */,
 				FF4E2630182317D000D477F6 /* TTSerialMonitor.m in Sources */,
 				FF0E12C218242DF000D49EC7 /* TTButtonTimer.m in Sources */,
+				FF80131B186CF8FF00955218 /* TTModeMenuContainer.m in Sources */,
 				FF98A2FB1867E8EC0032CC7A /* ORSSerialPort.m in Sources */,
-				FF4F9AFD1829B1B800D2F975 /* TTModeMenuContainer.m in Sources */,
-				FF4F9B001829B1D300D2F975 /* TTModeMenuItem.m in Sources */,
 				FF98A2E11867DBA40032CC7A /* TTActionMap.m in Sources */,
-				FF3A9F6F17C4353300C5C2D5 /* TTPanel.m in Sources */,
 				FF0E12BB1824286600D49EC7 /* TTModeMap.m in Sources */,
-				FF4F9AFA1829B1A900D2F975 /* TTModeMenuViewport.m in Sources */,
+				FF801326186CF90700955218 /* TTBackgroundView.m in Sources */,
 				FF0E12CA18247BAE00D49EC7 /* TTMode.m in Sources */,
-				FF3A9F7217C4354A00C5C2D5 /* TTStatusItemView.m in Sources */,
+				FF801327186CF90700955218 /* TTPanel.m in Sources */,
 				FF98A2E71867DBE70032CC7A /* TTMenubarController.m in Sources */,
-				FF3A9F7517C4355B00C5C2D5 /* TTBackgroundView.m in Sources */,
+				FF80131A186CF8FF00955218 /* TTDiamondView.m in Sources */,
 				FFAA4F72182D9A5F0049FFC7 /* TTModeNews.m in Sources */,
+				FF80131C186CF8FF00955218 /* TTModeMenuItem.m in Sources */,
 				FF0E12CF18247D6100D49EC7 /* TTModeMusic.m in Sources */,
 				FF98A2FC1867E8EC0032CC7A /* ORSSerialPortManager.m in Sources */,
-				FF32222E1857B549004078AA /* TTModePreferencePane.m in Sources */,
 				FF8012F318692D0A00955218 /* TTModeMac.m in Sources */,
+				FF801319186CF8FF00955218 /* TTDiamondLabels.m in Sources */,
+				FF80131D186CF8FF00955218 /* TTModeMenuViewport.m in Sources */,
 				FF0E12D41828560000D49EC7 /* TTModeVideo.m in Sources */,
-				FF0E12B81824285100D49EC7 /* TTDiamondView.m in Sources */,
-				FFAA4F4E182C99F30049FFC7 /* TTDiamondLabels.m in Sources */,
 				FF98A2E81867DBE70032CC7A /* TTPanelController.m in Sources */,
 				FF98A2ED1867DC320032CC7A /* main.m in Sources */,
 				FFAA4F6F182D99640049FFC7 /* TTModeAlarmClock.m in Sources */,
+				FF801302186CF8BE00955218 /* TTActionDetailView.m in Sources */,
+				FF801329186CF90700955218 /* TTStatusItemView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
