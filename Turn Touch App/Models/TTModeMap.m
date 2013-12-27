@@ -17,6 +17,7 @@
 
 @synthesize selectedModeDirection;
 @synthesize activeModeDirection;
+@synthesize inspectingModeDirection;
 @synthesize selectedMode;
 @synthesize northMode;
 @synthesize eastMode;
@@ -105,7 +106,7 @@
 
 - (void)runActiveButton {
     TTModeDirection direction = activeModeDirection;
-    activeModeDirection = 0;
+    activeModeDirection = NO_DIRECTION;
     
     if (!selectedMode) return;
     
@@ -118,7 +119,7 @@
     } else if (direction == SOUTH) {
         [selectedMode runSouth];
     }
-    activeModeDirection = 0;
+    activeModeDirection = NO_DIRECTION;
 }
 
 - (NSString *)directionName:(TTModeDirection)direction {

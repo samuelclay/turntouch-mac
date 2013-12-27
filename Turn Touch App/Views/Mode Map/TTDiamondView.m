@@ -74,7 +74,7 @@ ignoreSelectedDirection:(BOOL)ignoreSelectedDirection {
             selectedModeDirection = appDelegate.modeMap.selectedModeDirection;
         }
     } else {
-        activeModeDirection = 0;
+        activeModeDirection = NO_DIRECTION;
         if (!ignoreSelectedMode) {
             selectedModeDirection = overrideDirection;
         }

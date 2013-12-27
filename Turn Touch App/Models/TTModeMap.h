@@ -10,6 +10,7 @@
 #import <Cocoa/Cocoa.h>
 
 typedef enum {
+    NO_DIRECTION = 0,
     NORTH = 1,
     EAST = 2,
     WEST = 3,
@@ -20,6 +21,7 @@ typedef enum {
 
 @property (nonatomic, assign) TTModeDirection activeModeDirection;
 @property (nonatomic, assign) TTModeDirection selectedModeDirection;
+@property (nonatomic, assign) TTModeDirection inspectingModeDirection;
 @property (nonatomic) TTMode *selectedMode;
 @property (nonatomic) TTMode *northMode;
 @property (nonatomic) TTMode *eastMode;

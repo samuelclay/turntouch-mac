@@ -53,7 +53,7 @@
 
 - (void)selectActiveMode:(TTModeDirection)direction {
 //    NSLog(@"Selecting mode: %d", activeModeDirection);
-    [appDelegate.modeMap setActiveModeDirection:0];
+    [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];
     [appDelegate.modeMap setSelectedModeDirection:direction];
 }
 
@@ -68,7 +68,7 @@
 - (void)fireButton:(TTModeDirection)direction {
     [appDelegate.modeMap setActiveModeDirection:direction];
     [appDelegate.modeMap runActiveButton];
-    [appDelegate.modeMap setActiveModeDirection:0];
+    [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];
 }
 
 @end
