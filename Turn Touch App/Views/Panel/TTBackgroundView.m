@@ -27,7 +27,7 @@
 @synthesize modeMenu = _modeMenu;
 @synthesize diamondView = _diamondView;
 @synthesize diamondLabels = _diamondLabels;
-@synthesize modeOptionsView = _modeOptionsView;
+@synthesize optionsView = _optionsView;
 
 #pragma mark -
 
@@ -37,9 +37,9 @@
     NSRect modeOptionsFrame = self.frame;
     modeOptionsFrame.size.height = 100;
     modeOptionsFrame.origin.y = NSMinY(self.frame);
-    _modeOptionsView = [[TTModeOptionsView alloc] initWithFrame:modeOptionsFrame];
+    _optionsView = [[TTOptionsView alloc] initWithFrame:modeOptionsFrame];
 //    _modeOptionsView.autoresizingMask = NSViewWidthSizable | NSViewMinXMargin | NSViewMaxXMargin;
-    [self addSubview:_modeOptionsView];
+    [self addSubview:_optionsView];
     
     CGFloat centerHeight = DIAMOND_SIZE*2.5;
     // +1 X offset for panel width fudge

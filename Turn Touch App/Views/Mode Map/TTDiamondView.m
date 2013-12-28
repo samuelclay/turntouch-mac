@@ -44,6 +44,8 @@ ignoreSelectedDirection:(BOOL)ignoreSelectedDirection {
 }
 
 - (void)registerAsObserver {
+    [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
+                             options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"activeModeDirection"
                              options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
@@ -58,7 +60,9 @@ ignoreSelectedDirection:(BOOL)ignoreSelectedDirection {
                         context:(void*)context {
     [self setDirections];
     
-    if ([keyPath isEqual:NSStringFromSelector(@selector(activeModeDirection))]) {
+    if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))]) {
+        [self setNeedsDisplay:YES];
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
         [self setNeedsDisplay:YES];
@@ -199,7 +203,8 @@ ignoreSelectedDirection:(BOOL)ignoreSelectedDirection {
             }
             [path fill];
         } else {
-            path.lineWidth = 1.0f;
+            TTModeDirection inspectingDirection = appDelegate.modeMap.inspectingModeDirection;
+            path.lineWidth = inspectingDirection == direction ? 3.0f : 1.0f;
             [modeColor setStroke];
             [path stroke];
         }

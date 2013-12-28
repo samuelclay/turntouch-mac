@@ -31,9 +31,10 @@
 		FF801327186CF90700955218 /* TTPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801322186CF90700955218 /* TTPanel.m */; };
 		FF801329186CF90700955218 /* TTStatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801325186CF90700955218 /* TTStatusItemView.m */; };
 		FF80132B186CF92000955218 /* TTPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF80132A186CF92000955218 /* TTPanel.xib */; };
-		FF80132F186D210200955218 /* TTModeOptionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF80132E186D210200955218 /* TTModeOptionsView.m */; };
-		FF801332186E156900955218 /* TTModeOptionsTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801331186E156900955218 /* TTModeOptionsTitle.m */; };
+		FF80132F186D210200955218 /* TTOptionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF80132E186D210200955218 /* TTOptionsView.m */; };
+		FF801332186E156900955218 /* TTOptionsModeTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801331186E156900955218 /* TTOptionsModeTitle.m */; };
 		FF801335186E207B00955218 /* TTDiamondLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801334186E207B00955218 /* TTDiamondLabel.m */; };
+		FF801338186E5D9700955218 /* TTOptionsActionTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801337186E5D9700955218 /* TTOptionsActionTitle.m */; };
 		FF8C833717AB14B5000166FC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8C833617AB14B5000166FC /* Cocoa.framework */; };
 		FF8C834117AB14B5000166FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF8C833F17AB14B5000166FC /* InfoPlist.strings */; };
 		FF8C834717AB14B5000166FC /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FF8C834517AB14B5000166FC /* Credits.rtf */; };
@@ -108,12 +109,14 @@
 		FF801324186CF90700955218 /* TTStatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTStatusItemView.h; sourceTree = "<group>"; };
 		FF801325186CF90700955218 /* TTStatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTStatusItemView.m; sourceTree = "<group>"; };
 		FF80132A186CF92000955218 /* TTPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTPanel.xib; path = Views/Panel/TTPanel.xib; sourceTree = "<group>"; };
-		FF80132D186D210200955218 /* TTModeOptionsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeOptionsView.h; path = "Views/Mode Options/TTModeOptionsView.h"; sourceTree = "<group>"; };
-		FF80132E186D210200955218 /* TTModeOptionsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeOptionsView.m; path = "Views/Mode Options/TTModeOptionsView.m"; sourceTree = "<group>"; };
-		FF801330186E156900955218 /* TTModeOptionsTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeOptionsTitle.h; path = "Views/Mode Options/TTModeOptionsTitle.h"; sourceTree = "<group>"; };
-		FF801331186E156900955218 /* TTModeOptionsTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeOptionsTitle.m; path = "Views/Mode Options/TTModeOptionsTitle.m"; sourceTree = "<group>"; };
+		FF80132D186D210200955218 /* TTOptionsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTOptionsView.h; path = "Views/Mode Options/TTOptionsView.h"; sourceTree = "<group>"; };
+		FF80132E186D210200955218 /* TTOptionsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTOptionsView.m; path = "Views/Mode Options/TTOptionsView.m"; sourceTree = "<group>"; };
+		FF801330186E156900955218 /* TTOptionsModeTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTOptionsModeTitle.h; path = "Views/Mode Options/TTOptionsModeTitle.h"; sourceTree = "<group>"; };
+		FF801331186E156900955218 /* TTOptionsModeTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTOptionsModeTitle.m; path = "Views/Mode Options/TTOptionsModeTitle.m"; sourceTree = "<group>"; };
 		FF801333186E207B00955218 /* TTDiamondLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTDiamondLabel.h; sourceTree = "<group>"; };
 		FF801334186E207B00955218 /* TTDiamondLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTDiamondLabel.m; sourceTree = "<group>"; };
+		FF801336186E5D9700955218 /* TTOptionsActionTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTOptionsActionTitle.h; path = "Views/Mode Options/TTOptionsActionTitle.h"; sourceTree = "<group>"; };
+		FF801337186E5D9700955218 /* TTOptionsActionTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTOptionsActionTitle.m; path = "Views/Mode Options/TTOptionsActionTitle.m"; sourceTree = "<group>"; };
 		FF8C833317AB14B5000166FC /* Turn Touch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Turn Touch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF8C833617AB14B5000166FC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FF8C833917AB14B5000166FC /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -336,10 +339,12 @@
 		FF80132C186D20E500955218 /* Mode Options */ = {
 			isa = PBXGroup;
 			children = (
-				FF80132D186D210200955218 /* TTModeOptionsView.h */,
-				FF80132E186D210200955218 /* TTModeOptionsView.m */,
-				FF801330186E156900955218 /* TTModeOptionsTitle.h */,
-				FF801331186E156900955218 /* TTModeOptionsTitle.m */,
+				FF80132D186D210200955218 /* TTOptionsView.h */,
+				FF80132E186D210200955218 /* TTOptionsView.m */,
+				FF801330186E156900955218 /* TTOptionsModeTitle.h */,
+				FF801331186E156900955218 /* TTOptionsModeTitle.m */,
+				FF801336186E5D9700955218 /* TTOptionsActionTitle.h */,
+				FF801337186E5D9700955218 /* TTOptionsActionTitle.m */,
 			);
 			name = "Mode Options";
 			sourceTree = "<group>";
@@ -570,15 +575,16 @@
 				FF98A2FC1867E8EC0032CC7A /* ORSSerialPortManager.m in Sources */,
 				FF8012F318692D0A00955218 /* TTModeMac.m in Sources */,
 				FF801319186CF8FF00955218 /* TTDiamondLabels.m in Sources */,
-				FF801332186E156900955218 /* TTModeOptionsTitle.m in Sources */,
+				FF801332186E156900955218 /* TTOptionsModeTitle.m in Sources */,
 				FF801335186E207B00955218 /* TTDiamondLabel.m in Sources */,
 				FF80131D186CF8FF00955218 /* TTModeMenuViewport.m in Sources */,
 				FF0E12D41828560000D49EC7 /* TTModeVideo.m in Sources */,
 				FF98A2E81867DBE70032CC7A /* TTPanelController.m in Sources */,
+				FF801338186E5D9700955218 /* TTOptionsActionTitle.m in Sources */,
 				FF98A2ED1867DC320032CC7A /* main.m in Sources */,
 				FFAA4F6F182D99640049FFC7 /* TTModeAlarmClock.m in Sources */,
 				FF801302186CF8BE00955218 /* TTActionDetailView.m in Sources */,
-				FF80132F186D210200955218 /* TTModeOptionsView.m in Sources */,
+				FF80132F186D210200955218 /* TTOptionsView.m in Sources */,
 				FF801329186CF90700955218 /* TTStatusItemView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

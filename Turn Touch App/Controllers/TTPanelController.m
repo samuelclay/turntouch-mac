@@ -72,7 +72,7 @@
     
     NSInteger menuHeight = NSHeight(self.backgroundView.modeMenu.frame);
     NSInteger diamondHeight = NSHeight(self.backgroundView.diamondLabels.frame);
-    NSInteger optionsHeight = NSHeight(self.backgroundView.modeOptionsView.frame);
+    NSInteger optionsHeight = NSHeight(self.backgroundView.optionsView.frame);
     NSInteger arrowHeight = ARROW_HEIGHT;
     
     NSRect statusRect = [self statusRectForWindow:panel];
@@ -209,7 +209,6 @@
     [NSAnimationContext endGrouping];
     
     dispatch_after(dispatch_walltime(NULL, NSEC_PER_SEC * CLOSE_DURATION * 2), dispatch_get_main_queue(), ^{
-        
         [self.window orderOut:nil];
     });
 }

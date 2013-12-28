@@ -8,11 +8,17 @@
 
 #import <Cocoa/Cocoa.h>
 #import "TTAppDelegate.h"
+#import "TTOptionsModeTitle.h"
+#import "TTOptionsActionTitle.h"
 
 @class TTAppDelegate;
+@class TTOptionsModeTitle;
+@class TTOptionsActionTitle;
 
-@interface TTModeOptionsView : NSView {
+@interface TTOptionsView : NSView {
     TTAppDelegate *appDelegate;
+    TTOptionsModeTitle *modeTitleView;
+    TTOptionsActionTitle *actionTitleView;
 }
 
 @end

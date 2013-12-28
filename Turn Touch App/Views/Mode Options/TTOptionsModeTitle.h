@@ -11,7 +11,7 @@
 
 @class TTAppDelegate;
 
-@interface TTModeOptionsTitle : NSView {
+@interface TTOptionsModeTitle : NSView {
     TTAppDelegate *appDelegate;
     NSDictionary *titleAttributes;
     NSDictionary *descriptionAttributes;

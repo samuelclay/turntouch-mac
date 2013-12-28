@@ -6,12 +6,12 @@
 //  Copyright (c) 2013 Turn Touch. All rights reserved.
 //
 
-#import "TTModeOptionsTitle.h"
+#import "TTOptionsModeTitle.h"
 
 #define X_MARGIN 12.0f
 #define Y_MARGIN 18.0f
 
-@implementation TTModeOptionsTitle
+@implementation TTOptionsModeTitle
 
 - (id)initWithFrame:(NSRect)frame
 {

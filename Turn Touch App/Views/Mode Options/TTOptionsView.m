@@ -6,19 +6,28 @@
 //  Copyright (c) 2013 Turn Touch. All rights reserved.
 //
 
-#import "TTModeOptionsView.h"
-#import "TTModeOptionsTitle.h"
+#import "TTOptionsView.h"
+#import "TTOptionsModeTitle.h"
+#import "TTOptionsActionTitle.h"
 
 #define MARGIN 0.0f
 #define CORNER_RADIUS 8.0f
 
-@implementation TTModeOptionsView
+@implementation TTOptionsView
 
 - (id)initWithFrame:(NSRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         appDelegate = [NSApp delegate];
+
+        modeTitleView = [[TTOptionsModeTitle alloc] initWithFrame:self.frame];
+        [actionTitleView setHidden:NO];
+        [self addSubview:modeTitleView];
+
+        actionTitleView = [[TTOptionsActionTitle alloc] initWithFrame:self.frame];
+        [actionTitleView setHidden:YES];
+        [self addSubview:actionTitleView];
 
         [self registerAsObserver];
     }
@@ -56,10 +65,11 @@
     [self drawBackground];
     
     if (appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION) {
-        TTModeOptionsTitle *titleView = [[TTModeOptionsTitle alloc] initWithFrame:dirtyRect];
-        [self addSubview:titleView];
+        [modeTitleView setHidden:NO];
+        [actionTitleView setHidden:YES];
     } else {
-        
+        [modeTitleView setHidden:YES];
+        [actionTitleView setHidden:NO];
     }
 }
 

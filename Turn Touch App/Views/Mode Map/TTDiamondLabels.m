@@ -31,22 +31,18 @@
         for (TTModeDirection direction=1; direction <= 4; direction++) {
             if (direction == NORTH) {
                 northLine = [NSBezierPath bezierPath];
-                [northLine setLineWidth:1.0];
                 [northLine moveToPoint:NSMakePoint(offsetX + width / 2, offsetY + height - 0*LINE_SIZE/2)];
                 [northLine lineToPoint:NSMakePoint(offsetX + width / 2, offsetY + height + LINE_SIZE*2)];
             } else if (direction == EAST) {
                 eastLine = [NSBezierPath bezierPath];
-                [eastLine setLineWidth:1.0];
                 [eastLine moveToPoint:NSMakePoint(offsetX + width - 0*LINE_SIZE, offsetY + height * 1/2)];
                 [eastLine lineToPoint:NSMakePoint(offsetX + width + LINE_SIZE*2, offsetY + height * 1/2)];
             } else if (direction == WEST) {
                 westLine = [NSBezierPath bezierPath];
-                [westLine setLineWidth:1.0];
                 [westLine moveToPoint:NSMakePoint(offsetX - LINE_SIZE*2, offsetY + height * 1/2)];
                 [westLine lineToPoint:NSMakePoint(offsetX + 0*LINE_SIZE, offsetY + height * 1/2)];
             } else if (direction == SOUTH) {
                 southLine = [NSBezierPath bezierPath];
-                [southLine setLineWidth:1.0];
                 [southLine moveToPoint:NSMakePoint(offsetX + width / 2, offsetY + 0*LINE_SIZE/2)];
                 [southLine lineToPoint:NSMakePoint(offsetX + width / 2, offsetY - LINE_SIZE * 2)];
             }
@@ -91,6 +87,8 @@
 }
 
 - (void)registerAsObserver {
+    [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
+                             options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"activeModeDirection"
                              options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
@@ -103,7 +101,9 @@
                        ofObject:(id)object
                          change:(NSDictionary*)change
                         context:(void*)context {    
-    if ([keyPath isEqual:NSStringFromSelector(@selector(activeModeDirection))]) {
+    if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))]) {
+        [self setNeedsDisplay:YES];
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(activeModeDirection))]) {
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
         [self setNeedsDisplay:YES];
@@ -117,12 +117,20 @@
     [self drawBackground];
 
     for (TTModeDirection direction=1; direction <= 4; direction++) {
+        NSBezierPath *path = direction == NORTH ? northLine :
+                             direction == EAST  ? eastLine  :
+                             direction == WEST  ? westLine  :
+                             direction == SOUTH ? southLine : nil;
+        
         [[NSColor colorWithCalibratedHue:0.55f saturation:0.5f brightness:0.2f
-                                   alpha:appDelegate.modeMap.activeModeDirection == direction ? 0.5f :INACTIVE_OPACITY] set];
-        if (direction == NORTH) [northLine stroke];
-        else if (direction == EAST) [eastLine stroke];
-        else if (direction == WEST) [westLine stroke];
-        else if (direction == SOUTH) [southLine stroke];
+                                   alpha:appDelegate.modeMap.activeModeDirection == direction ?
+                                         0.5f :INACTIVE_OPACITY] set];
+        if (appDelegate.modeMap.inspectingModeDirection == direction) {
+            path.lineWidth = 3.0f;
+        } else {
+            path.lineWidth = 1.0f;
+        }
+        [path stroke];
     }
 }
 
