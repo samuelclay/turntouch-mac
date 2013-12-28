@@ -51,9 +51,9 @@
 //    _diamondLabels.autoresizingMask = NSViewWidthSizable | NSViewMinXMargin | NSViewMaxXMargin;
     [self addSubview:_diamondLabels];
 
-    _diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect
-                                              direction:NO_DIRECTION
-                                ignoreSelectedDirection:YES];
+    _diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect];
+    [_diamondView setIgnoreSelectedMode:YES];
+    [_diamondView setShowOutline:YES];
     [self addSubview:_diamondView];
     
     NSRect modeMenuFrame = self.frame;

@@ -7,7 +7,16 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "TTAppDelegate.h"
+#import "TTDiamondView.h"
 
-@interface TTOptionsActionTitle : NSView
+@class TTAppDelegate;
+
+@interface TTOptionsActionTitle : NSView {
+    TTAppDelegate *appDelegate;
+    NSDictionary *titleAttributes;
+    TTDiamondView *diamondView;
+}
+
 
 @end

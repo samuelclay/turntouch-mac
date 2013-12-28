@@ -76,7 +76,7 @@
     stringShadow.shadowOffset = NSMakeSize(0, -1);
     stringShadow.shadowBlurRadius = 0;
     NSColor *textColor = appDelegate.modeMap.inspectingModeDirection == labelDirection ?
-    NSColorFromRGB(0x202A40) : isHover ? NSColorFromRGB(0x707A90) : NSColorFromRGB(0x404A60);
+    NSColorFromRGB(0x202A40) : isHover ? NSColorFromRGB(0x303AA0) : NSColorFromRGB(0x404A60);
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [style setAlignment:NSCenterTextAlignment];
     labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Futura" size:13],

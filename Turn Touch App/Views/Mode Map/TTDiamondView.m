@@ -13,32 +13,27 @@
 
 @synthesize size = _size;
 @synthesize isHighlighted = _isHighlighted;
+@synthesize overrideSelectedDirection;
+@synthesize overrideActiveDirection;
+@synthesize ignoreSelectedMode;
+@synthesize ignoreActiveMode;
+@synthesize showOutline;
 
 #pragma mark - Initialization
 
-- (id)initWithFrame:(NSRect)frame
-{
-    return [self initWithFrame:frame direction:NO_DIRECTION];
-}
-
-- (id)initWithFrame:(NSRect)frame direction:(TTModeDirection)direction {
-    return [self initWithFrame:frame direction:direction ignoreSelectedDirection:NO];
-}
-
-- (id)initWithFrame:(NSRect)frame direction:(TTModeDirection)direction
-ignoreSelectedDirection:(BOOL)ignoreSelectedDirection {
+- (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         self.size = NSWidth(frame);
         self.isHighlighted = NO;
-        ignoreSelectedMode = ignoreSelectedDirection;
-
+        self.showOutline = NO;
+        self.overrideSelectedDirection = NO_DIRECTION;
+        self.overrideActiveDirection = NO_DIRECTION;
+        self.ignoreSelectedMode = NO;
+        self.ignoreActiveMode = NO;
+        
         appDelegate = [NSApp delegate];
         
-        if (direction) {
-            overrideDirection = direction;
-        }
-        [self setDirections];
         [self registerAsObserver];
     }
     
@@ -60,8 +55,6 @@ ignoreSelectedDirection:(BOOL)ignoreSelectedDirection {
                        ofObject:(id)object
                          change:(NSDictionary*)change
                         context:(void*)context {
-    [self setDirections];
-    
     if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))]) {
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(activeModeDirection))]) {
@@ -70,20 +63,6 @@ ignoreSelectedDirection:(BOOL)ignoreSelectedDirection {
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedMode))]) {
         [self setNeedsDisplay:YES];
-    }
-}
-
-- (void)setDirections {
-    if (!overrideDirection || overrideDirection == appDelegate.modeMap.selectedModeDirection) {
-        activeModeDirection = appDelegate.modeMap.activeModeDirection;
-        if (!ignoreSelectedMode) {
-            selectedModeDirection = appDelegate.modeMap.selectedModeDirection;
-        }
-    } else {
-        activeModeDirection = NO_DIRECTION;
-        if (!ignoreSelectedMode) {
-            selectedModeDirection = overrideDirection;
-        }
     }
 }
 
@@ -151,9 +130,11 @@ ignoreSelectedDirection:(BOOL)ignoreSelectedDirection {
     CGFloat width = NSMaxX(rect);
     CGFloat height = NSMaxY(rect);
     CGFloat spacing = SPACING_PCT * width;
+    TTModeDirection activeModeDirection = ignoreActiveMode ? overrideActiveDirection : appDelegate.modeMap.activeModeDirection;
+    TTModeDirection selectedModeDirection = ignoreSelectedMode ? overrideSelectedDirection : appDelegate.modeMap.selectedModeDirection;
     
     for (NSBezierPath *path in @[northPath, eastPath, westPath, southPath]) {
-        TTModeDirection direction = 0;
+        TTModeDirection direction = NO_DIRECTION;
         if ([path isEqual:northPath]) {
             direction = NORTH;
         } else if ([path isEqual:eastPath]) {
@@ -164,7 +145,7 @@ ignoreSelectedDirection:(BOOL)ignoreSelectedDirection {
             direction = SOUTH;
         }
         
-        if (!self.isHighlighted && !ignoreSelectedMode) {
+        if (!showOutline) {
             [NSGraphicsContext saveGraphicsState];
             NSAffineTransform *transform = [NSAffineTransform transform];
             [transform translateXBy:0 yBy:-0.25f];
@@ -196,7 +177,7 @@ ignoreSelectedDirection:(BOOL)ignoreSelectedDirection {
         NSColor *modeColor = [NSColor colorWithCalibratedHue:0.55f saturation:0.5f brightness:0.2f
                                                        alpha:activeModeDirection == direction ? 0.5f :
                               selectedModeDirection == direction ? 1.0f : INACTIVE_OPACITY];
-        if (!ignoreSelectedMode) {
+        if (!showOutline) {
             if (self.isHighlighted) {
                 [[NSColor colorWithDeviceWhite:1.0f
                                          alpha:activeModeDirection == direction ? 0.5f :
@@ -224,7 +205,7 @@ ignoreSelectedDirection:(BOOL)ignoreSelectedDirection {
 #pragma mark - Events
 
 - (void)mouseUp:(NSEvent *)theEvent {
-    if (!ignoreSelectedMode) return;
+    if (!showOutline) return;
     
     NSPoint location = [theEvent locationInWindow];
     NSPoint center = [self convertPoint:location fromView:nil];

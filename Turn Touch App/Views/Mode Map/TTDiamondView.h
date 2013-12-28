@@ -19,23 +19,19 @@
     TTAppDelegate *appDelegate;
     CGFloat _size;
     BOOL _isHighlighted;
-    TTModeDirection overrideDirection;
-    TTModeDirection activeModeDirection;
-    TTModeDirection selectedModeDirection;
     
     NSBezierPath *northPath;
     NSBezierPath *eastPath;
     NSBezierPath *westPath;
     NSBezierPath *southPath;
-    
-    BOOL ignoreSelectedMode;
 }
 
 @property (nonatomic, assign) CGFloat size;
+@property (nonatomic, assign) TTModeDirection overrideSelectedDirection;
+@property (nonatomic, assign) TTModeDirection overrideActiveDirection;
+@property (nonatomic, assign) BOOL ignoreSelectedMode;
+@property (nonatomic, assign) BOOL ignoreActiveMode;
+@property (nonatomic, assign) BOOL showOutline;
 @property (nonatomic, setter = setHighlighted:) BOOL isHighlighted;
-
-- (id)initWithFrame:(NSRect)frame direction:(TTModeDirection)direction;
-- (id)initWithFrame:(NSRect)frame direction:(TTModeDirection)direction
-ignoreSelectedDirection:(BOOL)ignoreSelectedDirection;
 
 @end

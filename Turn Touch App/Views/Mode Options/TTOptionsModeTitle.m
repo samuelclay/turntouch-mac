@@ -24,8 +24,7 @@
     return self;
 }
 
-- (void)drawRect:(NSRect)dirtyRect
-{
+- (void)drawRect:(NSRect)dirtyRect {
 	[super drawRect:dirtyRect];
 	
     NSString *modeTitle = [NSString stringWithFormat:@"%@ mode",

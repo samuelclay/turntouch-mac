@@ -24,7 +24,9 @@
         NSRect diamondRect = NSMakeRect(NSWidth(frame) - 24 - DIAMOND_SIZE,
                                         NSHeight(frame) / 2 - (DIAMOND_SIZE / 2),
                                         DIAMOND_SIZE * 1.3, DIAMOND_SIZE);
-        diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect direction:modeDirection];
+        diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect];
+        [diamondView setOverrideSelectedDirection:modeDirection];
+        [diamondView setIgnoreSelectedMode:YES];
         [self addSubview:diamondView];
 
         changeButton = [[NSButton alloc] init];
@@ -104,8 +106,13 @@
     if ([keyPath isEqual:NSStringFromSelector(@selector(activeModeDirection))] ||
         [keyPath isEqual:NSStringFromSelector(@selector(selectedMode))]) {
         if (appDelegate.modeMap.selectedModeDirection == modeDirection) {
+            [diamondView setIgnoreSelectedMode:NO];
+            [diamondView setIgnoreActiveMode:NO];
             [self setupMode];
             [self setNeedsDisplay:YES];
+        } else {
+            [diamondView setIgnoreSelectedMode:YES];
+            [diamondView setIgnoreActiveMode:YES];
         }
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
         [self setupMode];
