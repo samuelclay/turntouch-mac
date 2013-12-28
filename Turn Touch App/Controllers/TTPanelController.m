@@ -11,7 +11,7 @@
 #import "TTStatusItemView.h"
 #import "TTMenubarController.h"
 
-#define OPEN_DURATION .19
+#define OPEN_DURATION .12
 #define CLOSE_DURATION .14
 
 #define SEARCH_INSET 17

@@ -8,14 +8,25 @@
 
 #import <Cocoa/Cocoa.h>
 #import "TTAppDelegate.h"
+#import "TTDiamondLabel.h"
 
 @class TTAppDelegate;
+@class TTDiamondLabel;
 
 @interface TTDiamondLabels : NSView {
     TTAppDelegate *appDelegate;
     NSRect diamondRect;
-    NSDictionary *labelAttributes;
     CGSize textSize;
+    
+    NSBezierPath *northLine;
+    NSBezierPath *eastLine;
+    NSBezierPath *westLine;
+    NSBezierPath *southLine;
+    
+    TTDiamondLabel *northLabel;
+    TTDiamondLabel *eastLabel;
+    TTDiamondLabel *westLabel;
+    TTDiamondLabel *southLabel;
 }
 
 - (id)initWithFrame:(NSRect)frame diamondRect:(NSRect)theDiamondRect;

@@ -64,6 +64,8 @@
         case SOUTH:
             itemMode = appDelegate.modeMap.southMode;
             break;
+        case NO_DIRECTION:
+            break;
     }
     
     modeImage = [NSImage imageNamed:[itemMode imageName]];

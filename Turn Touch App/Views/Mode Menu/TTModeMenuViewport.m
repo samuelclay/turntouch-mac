@@ -37,6 +37,8 @@
 }
 
 - (void)registerAsObserver {
+    [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
+                             options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"activeModeDirection"
                              options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
@@ -49,7 +51,9 @@
                        ofObject:(id)object
                          change:(NSDictionary*)change
                         context:(void*)context {
-    if ([keyPath isEqual:NSStringFromSelector(@selector(activeModeDirection))]) {
+    if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))]) {
+        [self setNeedsDisplay:YES];
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
         [self setNeedsDisplay:YES];
@@ -154,7 +158,7 @@
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
-	[super drawRect:dirtyRect];
+//	[super drawRect:dirtyRect];
     
     [self drawBackground];
     
@@ -231,6 +235,8 @@
             break;
         case SOUTH:
             itemPosition = 0;
+            break;
+        case NO_DIRECTION:
             break;
     }
     

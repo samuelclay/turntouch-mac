@@ -37,7 +37,10 @@
                            @"TTModeMusic",
                            @"TTModeVideo",
                            @"TTModeNews"];
-
+        
+        activeModeDirection = NO_DIRECTION;
+        inspectingModeDirection = NO_DIRECTION;
+        
         [self setupModes];
         
         if ([[defaults objectForKey:@"TT:selectedModeDirection"] integerValue]) {
@@ -97,6 +100,9 @@
         case SOUTH:
             [self setSelectedMode:southMode];
             break;
+            
+        case NO_DIRECTION:
+            break;
     }
     
     if (selectedMode && [selectedMode respondsToSelector:@selector(activate)]) {
@@ -138,6 +144,9 @@
             
         case SOUTH:
             return @"south";
+            break;
+
+        case NO_DIRECTION:
             break;
     }
     

@@ -7,6 +7,7 @@
 //
 
 #import "TTModeOptionsView.h"
+#import "TTModeOptionsTitle.h"
 
 #define MARGIN 0.0f
 #define CORNER_RADIUS 8.0f
@@ -19,7 +20,6 @@
     if (self) {
         appDelegate = [NSApp delegate];
 
-        [self setupMode];
         [self registerAsObserver];
     }
     
@@ -27,6 +27,8 @@
 }
 
 - (void)registerAsObserver {
+    [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
+                             options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"activeModeDirection"
                              options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
@@ -39,7 +41,9 @@
                        ofObject:(id)object
                          change:(NSDictionary*)change
                         context:(void*)context {
-    if ([keyPath isEqual:NSStringFromSelector(@selector(activeModeDirection))]) {
+    if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))]) {
+        [self setNeedsDisplay:YES];
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
         [self setNeedsDisplay:YES];
@@ -48,25 +52,15 @@
     }
 }
 
-- (void)setupMode {
-    NSShadow *stringShadow = [[NSShadow alloc] init];
-    stringShadow.shadowColor = [NSColor whiteColor];
-    stringShadow.shadowOffset = NSMakeSize(0, -1);
-    stringShadow.shadowBlurRadius = 0;
-    NSColor *textColor = NSColorFromRGB(0x404A60);
-    NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-    [style setAlignment:NSCenterTextAlignment];
-    labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Futura" size:12],
-                        NSForegroundColorAttributeName: textColor,
-                        NSShadowAttributeName: stringShadow,
-                        NSParagraphStyleAttributeName: style
-                        };
-}
-
 - (void)drawRect:(NSRect)dirtyRect {
-	[super drawRect:dirtyRect];
-    
     [self drawBackground];
+    
+    if (appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION) {
+        TTModeOptionsTitle *titleView = [[TTModeOptionsTitle alloc] initWithFrame:dirtyRect];
+        [self addSubview:titleView];
+    } else {
+        
+    }
 }
 
 - (void)drawBackground {

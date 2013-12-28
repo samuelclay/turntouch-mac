@@ -38,7 +38,7 @@
     modeOptionsFrame.size.height = 100;
     modeOptionsFrame.origin.y = NSMinY(self.frame);
     _modeOptionsView = [[TTModeOptionsView alloc] initWithFrame:modeOptionsFrame];
-    _modeOptionsView.autoresizingMask = NSViewWidthSizable | NSViewMinXMargin | NSViewMaxXMargin;
+//    _modeOptionsView.autoresizingMask = NSViewWidthSizable | NSViewMinXMargin | NSViewMaxXMargin;
     [self addSubview:_modeOptionsView];
     
     CGFloat centerHeight = DIAMOND_SIZE*2.5;
@@ -46,77 +46,80 @@
     NSRect diamondRect = NSMakeRect(NSWidth(self.frame) / 2 - (DIAMOND_SIZE * 1.3 / 2) + 1,
                                     centerHeight / 2 - DIAMOND_SIZE / 2 + NSHeight(modeOptionsFrame),
                                     DIAMOND_SIZE * 1.3, DIAMOND_SIZE);
-//    NSLog(@"Diamond Rect (%fpx): %@ / %@", centerHeight, NSStringFromRect(diamondRect), NSStringFromRect(self.frame));
-    _diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect
-                                              direction:0
-                                ignoreSelectedDirection:YES];
-//    NSLog(@"diamondRect: %@ - %@", NSStringFromRect(self.frame), NSStringFromRect(diamondRect));
-    [self addSubview:_diamondView];
-    
-    NSRect labelRect = NSMakeRect(0, NSHeight(modeOptionsFrame), NSWidth(self.frame), centerHeight);
-//    NSLog(@"labelRect: %@ - %@", NSStringFromRect(self.frame), NSStringFromRect(labelRect));
+    NSRect labelRect = NSMakeRect(0, NSHeight(modeOptionsFrame), NSWidth(self.bounds), centerHeight);
     _diamondLabels = [[TTDiamondLabels alloc] initWithFrame:labelRect diamondRect:diamondRect];
+//    _diamondLabels.autoresizingMask = NSViewWidthSizable | NSViewMinXMargin | NSViewMaxXMargin;
     [self addSubview:_diamondLabels];
+
+    _diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect
+                                              direction:NO_DIRECTION
+                                ignoreSelectedDirection:YES];
+    [self addSubview:_diamondView];
     
     NSRect modeMenuFrame = self.frame;
     modeMenuFrame.size.height = MODE_MENU_HEIGHT;
     modeMenuFrame.origin.y = NSMaxY(labelRect);
     _modeMenu = [[TTModeMenuViewport alloc] initWithFrame:modeMenuFrame];
-    _modeMenu.autoresizingMask = NSViewWidthSizable | NSViewMinXMargin | NSViewMaxXMargin;
+//    _modeMenu.autoresizingMask = NSViewWidthSizable | NSViewMinXMargin | NSViewMaxXMargin;
     [self addSubview:_modeMenu];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
-    NSRect contentRect = NSInsetRect(dirtyRect, LINE_THICKNESS, LINE_THICKNESS);
-    
-    [_modeMenu invalidateIntrinsicContentSize];
+    NSRect contentRect = NSInsetRect(self.frame, LINE_THICKNESS, LINE_THICKNESS);
+//    NSLog(@"Drawing background: %@", NSStringFromRect(dirtyRect));
+//    [_modeMenu invalidateIntrinsicContentSize];
     NSBezierPath *path = [NSBezierPath bezierPath];
-    
-    [path moveToPoint:NSMakePoint(_arrowX, NSMaxY(contentRect))];
+
+    [path moveToPoint:NSMakePoint(_arrowX - ARROW_WIDTH / 2, NSMaxY(contentRect) - ARROW_HEIGHT)];
+    [path lineToPoint:NSMakePoint(_arrowX, NSMaxY(contentRect))];
     [path lineToPoint:NSMakePoint(_arrowX + ARROW_WIDTH / 2, NSMaxY(contentRect) - ARROW_HEIGHT)];
     [path lineToPoint:NSMakePoint(NSMaxX(contentRect) - CORNER_RADIUS, NSMaxY(contentRect) - ARROW_HEIGHT)];
-    
-    NSPoint topRightCorner = NSMakePoint(NSMaxX(contentRect), NSMaxY(contentRect) - ARROW_HEIGHT);
-    [path curveToPoint:NSMakePoint(NSMaxX(contentRect), NSMaxY(contentRect) - ARROW_HEIGHT - CORNER_RADIUS)
-         controlPoint1:topRightCorner controlPoint2:topRightCorner];
-    
-    [path lineToPoint:NSMakePoint(NSMaxX(contentRect), NSMinY(contentRect) + CORNER_RADIUS)];
-    
-    NSPoint bottomRightCorner = NSMakePoint(NSMaxX(contentRect), NSMinY(contentRect));
-    [path curveToPoint:NSMakePoint(NSMaxX(contentRect) - CORNER_RADIUS, NSMinY(contentRect))
-         controlPoint1:bottomRightCorner controlPoint2:bottomRightCorner];
-    
-    [path lineToPoint:NSMakePoint(NSMinX(contentRect) + CORNER_RADIUS, NSMinY(contentRect))];
-    
-    NSPoint bottomLeftCorner = NSMakePoint(NSMinX(contentRect), NSMinY(contentRect));
-    [path curveToPoint:NSMakePoint(NSMinX(contentRect), NSMinY(contentRect) + CORNER_RADIUS)
-         controlPoint1:bottomLeftCorner controlPoint2:bottomLeftCorner];
-    
-    [path lineToPoint:NSMakePoint(NSMinX(contentRect), NSMaxY(contentRect) - ARROW_HEIGHT - CORNER_RADIUS)];
-    
-    NSPoint topLeftCorner = NSMakePoint(NSMinX(contentRect), NSMaxY(contentRect) - ARROW_HEIGHT);
-    [path curveToPoint:NSMakePoint(NSMinX(contentRect) + CORNER_RADIUS, NSMaxY(contentRect) - ARROW_HEIGHT)
-         controlPoint1:topLeftCorner controlPoint2:topLeftCorner];
-    
-    [path lineToPoint:NSMakePoint(_arrowX - ARROW_WIDTH / 2, NSMaxY(contentRect) - ARROW_HEIGHT)];
-
     [path closePath];
     
     [[NSColor colorWithDeviceWhite:1 alpha:FILL_OPACITY] setFill];
     [path fill];
-    
-    [NSGraphicsContext saveGraphicsState];
-    
-    NSBezierPath *clip = [NSBezierPath bezierPathWithRect:[self bounds]];
-    [clip appendBezierPath:path];
-    [clip addClip];
+
+    //
+//    NSPoint topRightCorner = NSMakePoint(NSMaxX(contentRect), NSMaxY(contentRect) - ARROW_HEIGHT);
+//    [path curveToPoint:NSMakePoint(NSMaxX(contentRect), NSMaxY(contentRect) - ARROW_HEIGHT - CORNER_RADIUS)
+//         controlPoint1:topRightCorner controlPoint2:topRightCorner];
+//    
+//    [path lineToPoint:NSMakePoint(NSMaxX(contentRect), NSMinY(contentRect) + CORNER_RADIUS)];
+//    
+//    NSPoint bottomRightCorner = NSMakePoint(NSMaxX(contentRect), NSMinY(contentRect));
+//    [path curveToPoint:NSMakePoint(NSMaxX(contentRect) - CORNER_RADIUS, NSMinY(contentRect))
+//         controlPoint1:bottomRightCorner controlPoint2:bottomRightCorner];
+//    
+//    [path lineToPoint:NSMakePoint(NSMinX(contentRect) + CORNER_RADIUS, NSMinY(contentRect))];
+//    
+//    NSPoint bottomLeftCorner = NSMakePoint(NSMinX(contentRect), NSMinY(contentRect));
+//    [path curveToPoint:NSMakePoint(NSMinX(contentRect), NSMinY(contentRect) + CORNER_RADIUS)
+//         controlPoint1:bottomLeftCorner controlPoint2:bottomLeftCorner];
+//    
+//    [path lineToPoint:NSMakePoint(NSMinX(contentRect), NSMaxY(contentRect) - ARROW_HEIGHT - CORNER_RADIUS)];
+//    
+//    NSPoint topLeftCorner = NSMakePoint(NSMinX(contentRect), NSMaxY(contentRect) - ARROW_HEIGHT);
+//    [path curveToPoint:NSMakePoint(NSMinX(contentRect) + CORNER_RADIUS, NSMaxY(contentRect) - ARROW_HEIGHT)
+//         controlPoint1:topLeftCorner controlPoint2:topLeftCorner];
+//    
+//    [path lineToPoint:NSMakePoint(_arrowX - ARROW_WIDTH / 2, NSMaxY(contentRect) - ARROW_HEIGHT)];
+//
+//    [path closePath];
+//    
+//    [[NSColor colorWithDeviceWhite:1 alpha:FILL_OPACITY] setFill];
+//    [path fill];
+//    
+//    [NSGraphicsContext saveGraphicsState];
+//
+//    NSBezierPath *clip = [NSBezierPath bezierPathWithRect:[self bounds]];
+//    [clip appendBezierPath:path];
+//    [clip addClip];
     
     [path setLineWidth:LINE_THICKNESS * 2];
     [[NSColor whiteColor] setStroke];
     [path stroke];
     
-    [NSGraphicsContext restoreGraphicsState];
-    
+//    [NSGraphicsContext restoreGraphicsState];    
 }
 
 - (void)resetPosition {
