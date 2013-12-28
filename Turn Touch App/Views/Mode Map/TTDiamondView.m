@@ -62,7 +62,7 @@ ignoreSelectedDirection:(BOOL)ignoreSelectedDirection {
     
     if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))]) {
         [self setNeedsDisplay:YES];
-    } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(activeModeDirection))]) {
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
         [self setNeedsDisplay:YES];
@@ -215,6 +215,25 @@ ignoreSelectedDirection:(BOOL)ignoreSelectedDirection {
     if (_isHighlighted == newFlag) return;
     _isHighlighted = newFlag;
     [self setNeedsDisplay:YES];
+}
+
+#pragma mark - Events
+
+- (void)mouseUp:(NSEvent *)theEvent {
+    if (!ignoreSelectedMode) return;
+    
+    NSPoint location = [theEvent locationInWindow];
+    NSPoint center = [self convertPoint:location fromView:nil];
+    
+    if ([northPath containsPoint:center]) {
+        [appDelegate.modeMap toggleInspectingModeDirection:NORTH];
+    } else if ([eastPath containsPoint:center]) {
+        [appDelegate.modeMap toggleInspectingModeDirection:EAST];
+    } else if ([westPath containsPoint:center]) {
+        [appDelegate.modeMap toggleInspectingModeDirection:WEST];
+    } else if ([southPath containsPoint:center]) {
+        [appDelegate.modeMap toggleInspectingModeDirection:SOUTH];
+    }
 }
 
 @end

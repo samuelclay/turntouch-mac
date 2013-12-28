@@ -33,5 +33,6 @@ typedef enum {
 - (NSArray *)availableModeTitles;
 - (NSArray *)availableModeClassNames;
 - (void)changeDirection:(TTModeDirection)direction toMode:(NSString *)modeClassName;
+- (void)toggleInspectingModeDirection:(TTModeDirection)direction;
 
 @end

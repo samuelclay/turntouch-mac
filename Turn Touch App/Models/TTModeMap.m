@@ -186,4 +186,13 @@
     [self setupModes];
     [self switchMode];
 }
+
+- (void)toggleInspectingModeDirection:(TTModeDirection)direction {
+    if (inspectingModeDirection == direction) {
+        [self setInspectingModeDirection:NO_DIRECTION];
+    } else {
+        [self setInspectingModeDirection:direction];
+    }
+}
+
 @end

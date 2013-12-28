@@ -112,11 +112,7 @@
 }
 
 - (void)mouseUp:(NSEvent *)theEvent {
-    if (appDelegate.modeMap.inspectingModeDirection == labelDirection) {
-        [appDelegate.modeMap setInspectingModeDirection:NO_DIRECTION];
-    } else {
-        [appDelegate.modeMap setInspectingModeDirection:labelDirection];
-    }
+    [appDelegate.modeMap toggleInspectingModeDirection:labelDirection];
 }
 
 @end
