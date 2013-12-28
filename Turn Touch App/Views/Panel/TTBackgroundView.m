@@ -124,6 +124,7 @@
 
 - (void)resetPosition {
     [_modeMenu resetPosition];
+    [appDelegate.modeMap reset];
 }
 
 #pragma mark -

@@ -54,6 +54,10 @@
     return self;
 }
 
+- (void)reset {
+    [self setInspectingModeDirection:NO_DIRECTION];
+}
+
 - (void)setupModes {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     

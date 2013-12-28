@@ -14,9 +14,11 @@
 @synthesize size = _size;
 @synthesize isHighlighted = _isHighlighted;
 
+#pragma mark - Initialization
+
 - (id)initWithFrame:(NSRect)frame
 {
-    return [self initWithFrame:frame direction:0];
+    return [self initWithFrame:frame direction:NO_DIRECTION];
 }
 
 - (id)initWithFrame:(NSRect)frame direction:(TTModeDirection)direction {
@@ -84,6 +86,8 @@ ignoreSelectedDirection:(BOOL)ignoreSelectedDirection {
         }
     }
 }
+
+#pragma mark - Drawing
 
 - (void)drawRect:(NSRect)dirtyRect {
     NSRect rect = self.bounds;
