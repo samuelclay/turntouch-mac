@@ -95,6 +95,7 @@ const int kBaudRate = 9600;
 {
 	NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	if ([string length] == 0) return;
+//    NSLog(@"Received data: %@", string);
     [textBuffer appendString:string];
     [self parseTextBuffer];
 }
