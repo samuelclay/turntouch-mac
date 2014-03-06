@@ -197,6 +197,9 @@ static ORSSerialPortManager *sharedInstance = nil;
 
 - (void)serialPortsWereTerminated:(io_iterator_t)iterator;
 {
+	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC);
+	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+
 	NSMutableArray *newlyDisconnectedPorts = [[NSMutableArray alloc] init];
 	io_object_t device;
 	while ((device = IOIteratorNext(iterator)))
@@ -212,6 +215,8 @@ static ORSSerialPortManager *sharedInstance = nil;
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	NSDictionary *userInfo = @{ORSDisconnectedSerialPortsKey : newlyDisconnectedPorts};
 	[nc postNotificationName:ORSSerialPortsWereDisconnectedNotification object:self userInfo:userInfo];
+        
+    });
 }
 
 - (void)getAvailablePortsAndRegisterForChangeNotifications;

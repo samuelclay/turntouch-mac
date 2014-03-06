@@ -31,7 +31,7 @@ const int kBaudRate = 9600;
                    name:ORSSerialPortsWereConnectedNotification object:nil];
 		[nc addObserver:self selector:@selector(serialPortsWereDisconnected:)
                    name:ORSSerialPortsWereDisconnectedNotification object:nil];
-        
+    
 		[[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
 
         [self reload];
@@ -184,8 +184,11 @@ const int kBaudRate = 9600;
 	NSArray *disconnectedPorts = [[notification userInfo] objectForKey:ORSDisconnectedSerialPortsKey];
 	NSLog(@"Ports were disconnected: %@", disconnectedPorts);
 	[self postUserNotificationForDisconnectedPorts:disconnectedPorts];
-    [self reload];
-	
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC),
+                   dispatch_get_main_queue(), ^
+    {
+        [self reload];
+    });
 }
 
 - (void)postUserNotificationForConnectedPorts:(NSArray *)connectedPorts
