@@ -24,6 +24,7 @@ const int kBaudRate = 9600;
         appDelegate = [NSApp delegate];
         buttonTimer = [[TTButtonTimer alloc] init];
         textBuffer = [NSMutableString new];
+        rejectedSerialPorts = [NSMutableArray new];
         self.serialPortManager = [ORSSerialPortManager sharedSerialPortManager];
         
         NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
@@ -62,9 +63,11 @@ const int kBaudRate = 9600;
     isVerifiedSerialDevice = NO;
     
     for (ORSSerialPort *serialDevice in [self.serialPortManager availablePorts]) {
+        if ([rejectedSerialPorts containsObject:serialDevice.name]) continue;
         if ([serialDevice.name rangeOfString:@"usbserial"].location != NSNotFound ||
             [serialDevice.name rangeOfString:@"usbmodem"].location != NSNotFound) {
             NSLog(@"Found serial device %@: %@", serialDevice, serialDevice.name);
+            
             self.serialPort = serialDevice;
             [self.serialPort setBaudRate:[NSNumber numberWithInt:kBaudRate]];
             [self.serialPort open];
@@ -84,6 +87,14 @@ const int kBaudRate = 9600;
 {
     NSLog(@"Opened serial port: %@", serialPort);
     [textBuffer setString:@""];
+    __weak __block TTSerialMonitor *_self = self;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (!isVerifiedSerialDevice) {
+            NSLog(@"Rejecting: %@", serialPort.name);
+            [rejectedSerialPorts addObject:serialPort.name];
+            [self autodetectSerialPort];
+        }
+    });
 }
 
 - (void)serialPortWasClosed:(ORSSerialPort *)serialPort
@@ -123,6 +134,7 @@ const int kBaudRate = 9600;
 //    NSLog(@"Parsing buffer: %@", textBuffer);
 
     if ([textBuffer rangeOfString:@"received"].location != NSNotFound) {
+        NSLog(@"Verified serial device!");
         isVerifiedSerialDevice = YES;
         [textBuffer setString:@""];
     }

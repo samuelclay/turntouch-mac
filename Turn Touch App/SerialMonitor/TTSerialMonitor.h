@@ -27,8 +27,9 @@
 <ORSSerialPortDelegate, NSUserNotificationCenterDelegate> {
     TTAppDelegate *appDelegate;
     TTButtonTimer *buttonTimer;
-    bool isVerifiedSerialDevice;
+    BOOL isVerifiedSerialDevice;
 	NSMutableString *textBuffer;
+    NSMutableArray *rejectedSerialPorts;
 }
 
 @property (nonatomic, strong) ORSSerialPortManager *serialPortManager;
