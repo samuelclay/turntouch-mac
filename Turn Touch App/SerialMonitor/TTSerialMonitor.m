@@ -9,8 +9,10 @@
 
 #import "TTAppDelegate.h"
 #import "TTSerialMonitor.h"
+#import "hidapi.h"
 
 const int kBaudRate = 9600;
+const int MAX_STR = 255;
 
 @implementation TTSerialMonitor
 
@@ -79,6 +81,70 @@ const int kBaudRate = 9600;
     if (!self.serialPort) {
         NSLog(@"Didn't find serial device.");
     }
+    
+    int res;
+	unsigned char buf[65];
+	wchar_t wstr[MAX_STR];
+	hid_device *handle;
+	int i;
+    
+	// Initialize the hidapi library
+	res = hid_init();
+    
+	// Open the device using the VID, PID,
+	// and optionally the Serial number.
+	handle = hid_open(0x16c0, 0x05df, NULL);
+    
+    if (!handle) return;
+    
+	// Read the Manufacturer String
+	res = hid_get_manufacturer_string(handle, wstr, MAX_STR);
+	printf("Manufacturer String: %S\n", wstr);
+    
+	// Read the Product String
+	res = hid_get_product_string(handle, wstr, MAX_STR);
+	wprintf(L"Product String: %S\n", wstr);
+    
+	// Send a Feature Report to the device
+//	buf[0] = 0x2; // First byte is report number
+//	buf[1] = 0xa0;
+//	buf[2] = 0x0a;
+//	res = hid_send_feature_report(handle, buf, 17);
+//    
+//	// Read a Feature Report from the device
+//	buf[0] = 0x2;
+//	res = hid_get_feature_report(handle, buf, sizeof(buf));
+//    
+//	// Print out the returned buffer.
+//	printf("Feature Report\n   ");
+//	for (i = 0; i < res; i++)
+//		printf("%02hhx ", buf[i]);
+//	printf("\n");
+//    
+	// Set the hid_read() function to be non-blocking.
+//	hid_set_nonblocking(handle, 1);
+    
+//	// Send an Output report to toggle the LED (cmd 0x80)
+//	buf[0] = 1; // First byte is report number
+//	buf[1] = 0x80;
+//	res = hid_write(handle, buf, 65);
+//    
+//	// Send an Output report to request the state (cmd 0x81)
+//	buf[1] = 0x81;
+//	hid_write(handle, buf, 65);
+    
+    do {
+        // Read requested state
+        res = hid_read(handle, buf, 128);
+        if (res < 0) {
+            printf("Unable to read()\n");
+            hid_close(handle);
+        }
+        
+        // Print out the returned buffer.
+        for (i = 0; i < res; i++)
+            printf("buf[%d]: %d (%d) \n", i, buf[i], res);
+    } while (res > 0);
 }
 
 #pragma mark - ORSSerialPortDelegate Methods
@@ -87,7 +153,6 @@ const int kBaudRate = 9600;
 {
     NSLog(@"Opened serial port: %@", serialPort);
     [textBuffer setString:@""];
-    __weak __block TTSerialMonitor *_self = self;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if (!isVerifiedSerialDevice) {
             NSLog(@"Rejecting: %@", serialPort.name);
@@ -124,7 +189,7 @@ const int kBaudRate = 9600;
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-	NSLog(@"%s %@ %@", __PRETTY_FUNCTION__, object, keyPath);
+//	NSLog(@"%s -- %@ (%@)", __PRETTY_FUNCTION__, object, keyPath);
 	NSLog(@"Change dictionary: %@", change);
 }
 

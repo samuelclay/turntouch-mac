@@ -62,6 +62,8 @@
 		FFAA4F68182D96D60049FFC7 /* television.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAA4F5C182D96D60049FFC7 /* television.png */; };
 		FFAA4F6F182D99640049FFC7 /* TTModeAlarmClock.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4F6E182D99640049FFC7 /* TTModeAlarmClock.m */; };
 		FFAA4F72182D9A5F0049FFC7 /* TTModeNews.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4F71182D9A5F0049FFC7 /* TTModeNews.m */; };
+		FFB653DD18DB9DEA00830B42 /* hid.c in Sources */ = {isa = PBXBuildFile; fileRef = FFB653DC18DB9DEA00830B42 /* hid.c */; };
+		FFB653E018DBA14E00830B42 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB653DF18DBA14E00830B42 /* CoreFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -161,6 +163,9 @@
 		FFAA4F6E182D99640049FFC7 /* TTModeAlarmClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeAlarmClock.m; path = "Modes/Alarm Clock/TTModeAlarmClock.m"; sourceTree = "<group>"; };
 		FFAA4F70182D9A5F0049FFC7 /* TTModeNews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeNews.h; path = Modes/News/TTModeNews.h; sourceTree = "<group>"; };
 		FFAA4F71182D9A5F0049FFC7 /* TTModeNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeNews.m; path = Modes/News/TTModeNews.m; sourceTree = "<group>"; };
+		FFB653DC18DB9DEA00830B42 /* hid.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hid.c; path = SerialMonitor/hid.c; sourceTree = "<group>"; };
+		FFB653DE18DB9DFD00830B42 /* hidapi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = hidapi.h; path = SerialMonitor/hidapi.h; sourceTree = "<group>"; };
+		FFB653DF18DBA14E00830B42 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +173,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFB653E018DBA14E00830B42 /* CoreFoundation.framework in Frameworks */,
 				FF8012F7186A599600955218 /* AudioToolbox.framework in Frameworks */,
 				FF7A1C6F1868FD72005FA756 /* QuartzCore.framework in Frameworks */,
 				FF0E12D11824811200D49EC7 /* ScriptingBridge.framework in Frameworks */,
@@ -255,6 +261,8 @@
 				FF98A2F81867E8EC0032CC7A /* ORSSerialPort.m */,
 				FF98A2F91867E8EC0032CC7A /* ORSSerialPortManager.h */,
 				FF98A2FA1867E8EC0032CC7A /* ORSSerialPortManager.m */,
+				FFB653DC18DB9DEA00830B42 /* hid.c */,
+				FFB653DE18DB9DFD00830B42 /* hidapi.h */,
 			);
 			name = "Serial Monitor";
 			sourceTree = "<group>";
@@ -370,6 +378,7 @@
 		FF8C833517AB14B5000166FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FFB653DF18DBA14E00830B42 /* CoreFoundation.framework */,
 				FF8012F6186A599600955218 /* AudioToolbox.framework */,
 				FF98A30E1868F1190032CC7A /* Quartz.framework */,
 				FF98A30C1868F1120032CC7A /* QuartzCore.framework */,
@@ -572,6 +581,7 @@
 				FFAA4F72182D9A5F0049FFC7 /* TTModeNews.m in Sources */,
 				FF80131C186CF8FF00955218 /* TTModeMenuItem.m in Sources */,
 				FF0E12CF18247D6100D49EC7 /* TTModeMusic.m in Sources */,
+				FFB653DD18DB9DEA00830B42 /* hid.c in Sources */,
 				FF98A2FC1867E8EC0032CC7A /* ORSSerialPortManager.m in Sources */,
 				FF8012F318692D0A00955218 /* TTModeMac.m in Sources */,
 				FF801319186CF8FF00955218 /* TTDiamondLabels.m in Sources */,
