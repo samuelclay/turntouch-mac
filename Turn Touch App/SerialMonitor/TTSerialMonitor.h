@@ -10,8 +10,7 @@
 #import <Foundation/Foundation.h>
 #import "TTAppDelegate.h"
 #import "TTButtonTimer.h"
-#import "ORSSerialPortManager.h"
-#import "ORSSerialPort.h"
+#import "hidapi.h"
 
 #include <IOKit/IOKitLib.h>
 #include <IOKit/serial/IOSerialKeys.h>
@@ -24,16 +23,16 @@
 
 
 @interface TTSerialMonitor : NSObject
-<ORSSerialPortDelegate, NSUserNotificationCenterDelegate> {
+<NSUserNotificationCenterDelegate> {
     TTAppDelegate *appDelegate;
     TTButtonTimer *buttonTimer;
     BOOL isVerifiedSerialDevice;
 	NSMutableString *textBuffer;
     NSMutableArray *rejectedSerialPorts;
+    hid_device *hidDevice;
 }
 
-@property (nonatomic, strong) ORSSerialPortManager *serialPortManager;
-@property (nonatomic, strong) ORSSerialPort *serialPort;
+@property (readonly, getter = isOpen) BOOL open;
 
 - (void)reload;
 - (void)reload:(BOOL)force;
