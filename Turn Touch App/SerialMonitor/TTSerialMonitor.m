@@ -115,7 +115,7 @@ const int MAX_STR   = 255;
 #pragma mark - Parse Data
 
 - (void)parseTextBuffer {
-//    NSLog(@"Parsing buffer: %@", textBuffer);
+    NSLog(@"Parsing buffer: %@", textBuffer);
 
     if ([textBuffer rangeOfString:@"received"].location != NSNotFound) {
         NSLog(@"Verified serial device!");
@@ -162,18 +162,7 @@ const int MAX_STR   = 255;
 	return YES;
 }
 
-
-#pragma mark - C Callback functions
-
-void usbDeviceAppeared(void *refCon, io_iterator_t iterator){
-    NSLog(@"Matching USB device appeared");
-    TTSerialMonitor *monitor = (__bridge TTSerialMonitor *)refCon;
-    [monitor reload];
-
-}
-void usbDeviceDisappeared(void *refCon, io_iterator_t iterator){
-    NSLog(@"Matching USB device disappeared");
-}
+#pragma mark - USB Watcher
 
 - (void)watchForNewUsbDevices {
     io_iterator_t newDevicesIterator;
@@ -233,7 +222,21 @@ void usbDeviceDisappeared(void *refCon, io_iterator_t iterator){
     [self matchingDevicesRemoved: lostDevicesIterator];
 }
 
-#pragma mark - Notifications
+#pragma mark - USB Device Notifications
+
+void usbDeviceAppeared(void *refCon, io_iterator_t iterator){
+    NSLog(@"Matching USB device appeared");
+    TTSerialMonitor *monitor = (__bridge TTSerialMonitor *)refCon;
+    [monitor matchingDevicesAdded:iterator];
+    [monitor reload];
+    
+}
+void usbDeviceDisappeared(void *refCon, io_iterator_t iterator){
+    NSLog(@"Matching USB device disappeared");
+    TTSerialMonitor *monitor = (__bridge TTSerialMonitor *)refCon;
+    [monitor matchingDevicesRemoved:iterator];
+    [monitor reload];
+}
 
 - (void)matchingDevicesAdded:(io_iterator_t)devices {
     NSLog(@"matchingDevicesAdded");
