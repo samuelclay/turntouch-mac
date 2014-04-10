@@ -18,6 +18,7 @@
 @synthesize ignoreSelectedMode;
 @synthesize ignoreActiveMode;
 @synthesize showOutline;
+@synthesize interactive;
 
 #pragma mark - Initialization
 
@@ -27,6 +28,7 @@
         self.size = NSWidth(frame);
         self.isHighlighted = NO;
         self.showOutline = NO;
+        self.interactive = NO;
         self.overrideSelectedDirection = NO_DIRECTION;
         self.overrideActiveDirection = NO_DIRECTION;
         self.ignoreSelectedMode = NO;
@@ -187,7 +189,7 @@
                                                   alpha:activeModeDirection == direction ? 0.5f :
                          selectedModeDirection == direction ? 0.7f : INACTIVE_OPACITY];
         }
-        if (!showOutline) {
+        if (!interactive) {
             if (self.isHighlighted) {
                 [[NSColor colorWithDeviceWhite:1.0f
                                          alpha:activeModeDirection == direction ? 0.5f :
@@ -215,7 +217,10 @@
 #pragma mark - Events
 
 - (void)mouseUp:(NSEvent *)theEvent {
-    if (!showOutline) return;
+    if (!interactive) {
+        [super mouseUp:theEvent];
+        return;
+    }
     
     NSPoint location = [theEvent locationInWindow];
     NSPoint center = [self convertPoint:location fromView:nil];

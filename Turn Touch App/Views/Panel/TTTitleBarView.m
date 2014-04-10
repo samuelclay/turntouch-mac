@@ -31,7 +31,6 @@
 
 - (void)drawLabel {
     NSPoint center = NSMakePoint(NSMidX(self.bounds)-(title.size.width/2), NSMidY(self.bounds)-(title.size.height/2));
-    NSLog(@"Center: %@", NSStringFromPoint(center));
     [title drawAtPoint:center fromRect:NSMakeRect(0,0,200, 50) operation:NSCompositeSourceAtop fraction:1.0];
 }
 

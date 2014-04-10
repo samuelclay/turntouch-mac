@@ -21,7 +21,7 @@
         modeDirection = direction;
         hoverActive = NO;
         
-        NSRect diamondRect = NSMakeRect((NSWidth(frame) / 2) - (DIAMOND_SIZE / 2),
+        NSRect diamondRect = NSMakeRect((NSWidth(frame) / 2) - (DIAMOND_SIZE * 1.3 / 2),
                                         NSHeight(frame) - 18 - DIAMOND_SIZE,
                                         DIAMOND_SIZE * 1.3, DIAMOND_SIZE);
         diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect];
@@ -71,9 +71,12 @@
     }
     
     [self drawBackground];
+    [self setupTitleAttributes];
 
     modeImage = [NSImage imageNamed:[itemMode imageName]];
-    
+}
+
+- (void)setupTitleAttributes {
     modeTitle = [[[itemMode class] title] uppercaseString];
     NSShadow *stringShadow = [[NSShadow alloc] init];
     stringShadow.shadowColor = [NSColor whiteColor];
@@ -127,10 +130,9 @@
 {
 	[super drawRect:dirtyRect];
     
-//    [modeImage drawInRect:NSMakeRect(12, 6, 24, 24)
-//                 fromRect:NSZeroRect
-//                operation:NSCompositeSourceOver
-//                 fraction:1.0];
+    [self setupTitleAttributes];
+    
+    [self drawBorders];
     
     NSSize titleSize = [modeTitle sizeWithAttributes:modeAttributes];
     NSPoint titlePoint = NSMakePoint((NSWidth(self.frame)/2) - (titleSize.width/2),
@@ -186,10 +188,60 @@
 }
 
 - (void)drawBorders {
-    BOOL leftActive = (appDelegate.modeMap.selectedModeDirection == modeDirection &&
-                       modeDirection != NORTH);
-    BOOL rightActive = (appDelegate.modeMap.selectedModeDirection == modeDirection &&
-                        modeDirection != SOUTH);
+    BOOL active = appDelegate.modeMap.selectedModeDirection == modeDirection;
+    NSLog(@"Drawing border for %d: %d", modeDirection, active);
+    if (active) {
+        [self drawActiveBorder];
+    } else {
+        [self drawInactiveBorder];
+    }
+}
+
+- (void)drawActiveBorder {
+    NSBezierPath *line = [NSBezierPath bezierPath];
+    
+    // Left border
+    if (modeDirection != NORTH) {
+        [line moveToPoint:NSMakePoint(NSMinX(self.bounds), NSMinY(self.bounds))];
+        [line lineToPoint:NSMakePoint(NSMinX(self.bounds), NSMaxY(self.bounds))];
+        [line setLineWidth:1.0];
+        [NSColorFromRGB(0xD0D0D0) set];
+        [line stroke];
+    }
+    
+    // Right border
+    if (modeDirection != SOUTH) {
+        [line moveToPoint:NSMakePoint(NSMaxX(self.bounds), NSMinY(self.bounds))];
+        [line lineToPoint:NSMakePoint(NSMaxX(self.bounds), NSMaxY(self.bounds))];
+        [line setLineWidth:1.0];
+        [NSColorFromRGB(0xD0D0D0) set];
+        [line stroke];
+    }
+}
+
+- (void)drawInactiveBorder {
+    NSBezierPath *line = [NSBezierPath bezierPath];
+    TTModeDirection activeDirection = appDelegate.modeMap.selectedModeDirection;
+
+    // Right border
+    if ((modeDirection == NORTH && activeDirection == EAST) ||
+        (modeDirection == EAST && activeDirection == WEST) ||
+        (modeDirection == WEST && activeDirection == SOUTH)) {
+        
+    } else {
+        [line moveToPoint:NSMakePoint(NSMaxX(self.bounds), NSMinY(self.bounds) + 24)];
+        [line lineToPoint:NSMakePoint(NSMaxX(self.bounds), NSMaxY(self.bounds) - 24)];
+        [line setLineWidth:1.0];
+        [NSColorFromRGB(0xD0D0D0) set];
+        [line stroke];
+    }
+    
+    // Bottom border
+    [line moveToPoint:NSMakePoint(NSMinX(self.bounds), NSMinY(self.bounds))];
+    [line lineToPoint:NSMakePoint(NSMaxX(self.bounds), NSMinY(self.bounds))];
+    [line setLineWidth:1.0];
+    [NSColorFromRGB(0xD0D0D0) set];
+    [line stroke];
 }
 
 #pragma mark - Actions
@@ -199,7 +251,6 @@
     
 //    NSLog(@"Mouse entered");
     hoverActive = YES;
-    [self setupMode];
     [self setNeedsDisplay:YES];
 }
 
@@ -208,7 +259,7 @@
 
 //    NSLog(@"Mouse exited");
     hoverActive = NO;
-    [self setupMode];
+//    [self setupMode];
     [self setNeedsDisplay:YES];
 }
 

@@ -56,6 +56,7 @@
     _diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect];
     [_diamondView setIgnoreSelectedMode:YES];
     [_diamondView setShowOutline:YES];
+    [_diamondView setInteractive:YES];
     [self addSubview:_diamondView];
     
     NSRect modeMenuFrame = self.frame;

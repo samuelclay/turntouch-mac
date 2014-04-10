@@ -32,6 +32,7 @@
 @property (nonatomic, assign) BOOL ignoreSelectedMode;
 @property (nonatomic, assign) BOOL ignoreActiveMode;
 @property (nonatomic, assign) BOOL showOutline;
+@property (nonatomic, assign) BOOL interactive;
 @property (nonatomic, setter = setHighlighted:) BOOL isHighlighted;
 
 @end
