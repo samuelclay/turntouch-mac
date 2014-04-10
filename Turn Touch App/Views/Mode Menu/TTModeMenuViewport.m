@@ -10,7 +10,6 @@
 #import <QuartzCore/CoreAnimation.h>
 
 #define MARGIN 0.0f
-#define CORNER_RADIUS 8.0f
 
 @implementation TTModeMenuViewport
 
@@ -180,44 +179,18 @@
 - (void)drawBackground {
     NSRect contentRect = NSInsetRect([self bounds], MARGIN, MARGIN);
     
-    NSBezierPath *path = [NSBezierPath bezierPath];
-    
-    [path moveToPoint:NSMakePoint(NSMinX(contentRect), NSMaxY(contentRect) - CORNER_RADIUS)];
-    
-    NSPoint topLeftCorner = NSMakePoint(NSMinX(contentRect), NSMaxY(contentRect));
-    [path curveToPoint:NSMakePoint(NSMinX(contentRect) + CORNER_RADIUS, NSMaxY(contentRect))
-         controlPoint1:topLeftCorner controlPoint2:topLeftCorner];
-    
-    [path lineToPoint:NSMakePoint(NSMaxX(contentRect) - CORNER_RADIUS, NSMaxY(contentRect))];
-    
-    NSPoint topRightCorner = NSMakePoint(NSMaxX(contentRect), NSMaxY(contentRect));
-    [path curveToPoint:NSMakePoint(NSMaxX(contentRect), NSMaxY(contentRect) - CORNER_RADIUS)
-         controlPoint1:topRightCorner controlPoint2:topRightCorner];
-    
-    [path lineToPoint:NSMakePoint(NSMaxX(contentRect), NSMinY(contentRect))];
-    [path lineToPoint:NSMakePoint(NSMinX(contentRect), NSMinY(contentRect))];
-    
-    [path closePath];
-    
     NSGradient* aGradient = [[NSGradient alloc]
                              initWithStartingColor:[NSColor whiteColor]
                              endingColor:NSColorFromRGB(0xE7E7E7)];
-    [aGradient drawInBezierPath:path angle:-90];
+    [aGradient drawInRect:contentRect angle:-90];
     
     [NSGraphicsContext saveGraphicsState];
     
     NSBezierPath *clip = [NSBezierPath bezierPathWithRect:[self bounds]];
-    [clip appendBezierPath:path];
+    [clip appendBezierPathWithRect:contentRect];
     [clip addClip];
     
     [NSGraphicsContext restoreGraphicsState];
-    
-    NSBezierPath *line = [NSBezierPath bezierPath];
-    [line moveToPoint:NSMakePoint(NSMinX([path bounds]), NSMinY([path bounds]))];
-    [line lineToPoint:NSMakePoint(NSMaxX([path bounds]), NSMinY([path bounds]))];
-    [line setLineWidth:1.0];
-    [NSColorFromRGB(0xD0D0D0) set];
-    [line stroke];
 }
 
 - (NSRect)positionContainer:(BOOL)expanded {

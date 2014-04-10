@@ -12,6 +12,7 @@
 #import "TTDiamondView.h"
 #import "TTDiamondLabels.h"
 #import "TTOptionsView.h"
+#import "TTTitleBarView.h"
 
 #define ARROW_WIDTH 18
 #define ARROW_HEIGHT 8
@@ -21,6 +22,7 @@
 @class TTDiamondLabels;
 @class TTModeMenuViewport;
 @class TTOptionsView;
+@class TTTitleBarView;
 
 @interface TTBackgroundView : NSView {
     TTAppDelegate *appDelegate;
@@ -28,6 +30,7 @@
 }
 
 @property (nonatomic, assign) NSInteger arrowX;
+@property (nonatomic) IBOutlet TTTitleBarView *titleBarView;
 @property (nonatomic) IBOutlet TTModeMenuViewport *modeMenu;
 @property (nonatomic) IBOutlet TTDiamondView *diamondView;
 @property (nonatomic) IBOutlet TTDiamondLabels *diamondLabels;

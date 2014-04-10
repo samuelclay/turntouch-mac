@@ -13,9 +13,9 @@
 @class TTAppDelegate;
 
 typedef enum {
-    PRESS_ACTIVE = 1,
-    PRESS_TOGGLE = 2,
-    PRESS_MODE = 3
+    PRESS_ACTIVE = 0x01,
+    PRESS_TOGGLE = 0x02,
+    PRESS_MODE   = 0x03
 } TTPressState;
 
 @interface TTButtonTimer : NSObject {

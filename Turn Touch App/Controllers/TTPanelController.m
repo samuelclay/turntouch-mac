@@ -70,17 +70,18 @@
 - (void)resize {
     NSPanel *panel = (id)[self window];
     
+    NSInteger titleHeight = NSHeight(self.backgroundView.titleBarView.frame);
     NSInteger menuHeight = NSHeight(self.backgroundView.modeMenu.frame);
     NSInteger diamondHeight = NSHeight(self.backgroundView.diamondLabels.frame);
     NSInteger optionsHeight = NSHeight(self.backgroundView.optionsView.frame);
     NSInteger arrowHeight = ARROW_HEIGHT;
-    
     NSRect statusRect = [self statusRectForWindow:panel];
     
     NSRect panelRect = [panel frame];
-    panelRect.size.height = menuHeight + diamondHeight + optionsHeight + arrowHeight;
+    panelRect.size.height = titleHeight + menuHeight + diamondHeight + optionsHeight + arrowHeight;
     panelRect.origin.x = roundf(NSMidX(statusRect) - NSWidth(panelRect) / 2);
     panelRect.origin.y = NSMaxY(statusRect) - NSHeight(panelRect);
+    NSLog(@"Heights: %f", panelRect.size.height);
     
     [panel setFrame:panelRect display:YES];
 }

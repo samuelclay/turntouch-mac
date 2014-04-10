@@ -91,7 +91,8 @@ const int MAX_STR   = 255;
             if (!self.isOpen) break;
 			if (lengthRead > 0) {
 				NSData *readData = [NSData dataWithBytes:buf length:lengthRead];
-                NSLog(@"Read: %@", readData);
+//                NSLog(@"Read: %@", readData);
+                
 				if (readData != nil) dispatch_async(dispatch_get_main_queue(), ^{
 					[self serialPortReceivedData:readData];
 				});
@@ -106,7 +107,7 @@ const int MAX_STR   = 255;
 - (void)serialPortReceivedData:(NSData *)data {
 	NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	if ([string length] == 0) return;
-//    NSLog(@"Received data: %@", string);
+    NSLog(@"Received data: %@", string);
     [textBuffer appendString:string];
     [self parseTextBuffer];
 }
@@ -115,7 +116,7 @@ const int MAX_STR   = 255;
 #pragma mark - Parse Data
 
 - (void)parseTextBuffer {
-    NSLog(@"Parsing buffer: %@", textBuffer);
+//    NSLog(@"Parsing buffer: %@", textBuffer);
 
     if ([textBuffer rangeOfString:@"received"].location != NSNotFound) {
         NSLog(@"Verified serial device!");

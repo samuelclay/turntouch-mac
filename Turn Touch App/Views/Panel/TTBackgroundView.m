@@ -16,7 +16,8 @@
 #define CORNER_RADIUS 8.0f
 
 #define SEARCH_INSET 10.0f
-#define MODE_MENU_HEIGHT 36.0f
+#define TITLE_BAR_HEIGHT 48.0f
+#define MODE_MENU_HEIGHT 92.0f
 #define DIAMOND_SIZE 100.0f
 
 #pragma mark -
@@ -24,6 +25,7 @@
 @implementation TTBackgroundView
 
 @synthesize arrowX = _arrowX;
+@synthesize titleBarView = _titleBarView;
 @synthesize modeMenu = _modeMenu;
 @synthesize diamondView = _diamondView;
 @synthesize diamondLabels = _diamondLabels;
@@ -60,8 +62,13 @@
     modeMenuFrame.size.height = MODE_MENU_HEIGHT;
     modeMenuFrame.origin.y = NSMaxY(labelRect);
     _modeMenu = [[TTModeMenuViewport alloc] initWithFrame:modeMenuFrame];
-//    _modeMenu.autoresizingMask = NSViewWidthSizable | NSViewMinXMargin | NSViewMaxXMargin;
     [self addSubview:_modeMenu];
+    
+    NSRect titleBarFrame = self.frame;
+    titleBarFrame.size.height = TITLE_BAR_HEIGHT;
+    titleBarFrame.origin.y = NSMaxY(modeMenuFrame);
+    _titleBarView = [[TTTitleBarView alloc] initWithFrame:titleBarFrame];
+    [self addSubview:_titleBarView];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
