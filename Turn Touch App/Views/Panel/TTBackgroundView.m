@@ -61,7 +61,7 @@
     NSRect modeMenuFrame = self.frame;
     modeMenuFrame.size.height = MODE_MENU_HEIGHT;
     modeMenuFrame.origin.y = NSMaxY(labelRect);
-    _modeMenu = [[TTModeMenuViewport alloc] initWithFrame:modeMenuFrame];
+    _modeMenu = [[TTModeMenuContainer alloc] initWithFrame:modeMenuFrame];
     [self addSubview:_modeMenu];
     
     NSRect titleBarFrame = self.frame;
@@ -130,7 +130,6 @@
 }
 
 - (void)resetPosition {
-    [_modeMenu resetPosition];
     [appDelegate.modeMap reset];
 }
 

@@ -8,7 +8,7 @@
 
 #import "TTModeMenuItem.h"
 
-#define DIAMOND_SIZE 18.0f
+#define DIAMOND_SIZE 22.0f
 
 @implementation TTModeMenuItem
 
@@ -21,8 +21,8 @@
         modeDirection = direction;
         hoverActive = NO;
         
-        NSRect diamondRect = NSMakeRect(NSWidth(frame) - 24 - DIAMOND_SIZE,
-                                        NSHeight(frame) / 2 - (DIAMOND_SIZE / 2),
+        NSRect diamondRect = NSMakeRect((NSWidth(frame) / 2) - (DIAMOND_SIZE / 2),
+                                        NSHeight(frame) - 18 - DIAMOND_SIZE,
                                         DIAMOND_SIZE * 1.3, DIAMOND_SIZE);
         diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect];
         [diamondView setOverrideSelectedDirection:modeDirection];
@@ -70,15 +70,16 @@
             break;
     }
     
+    [self drawBackground];
+
     modeImage = [NSImage imageNamed:[itemMode imageName]];
     
-    modeTitle = [[NSString stringWithFormat:@"%@ mode",
-                  [[itemMode class] title]] uppercaseString];
+    modeTitle = [[[itemMode class] title] uppercaseString];
     NSShadow *stringShadow = [[NSShadow alloc] init];
     stringShadow.shadowColor = [NSColor whiteColor];
     stringShadow.shadowOffset = NSMakeSize(0, -1);
     stringShadow.shadowBlurRadius = 0;
-    NSColor *textColor = (hoverActive && [appDelegate isMenuViewportExpanded] && appDelegate.modeMap.selectedModeDirection != modeDirection) ? NSColorFromRGB(0x404A60) :
+    NSColor *textColor = (hoverActive && appDelegate.modeMap.selectedModeDirection != modeDirection) ? NSColorFromRGB(0x404A60) :
     appDelegate.modeMap.selectedModeDirection == modeDirection ?
     NSColorFromRGB(0x404A60) : NSColorFromRGB(0x808388);
     modeAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Futura" size:13],
@@ -126,13 +127,14 @@
 {
 	[super drawRect:dirtyRect];
     
-    [modeImage drawInRect:NSMakeRect(12, 6, 24, 24)
-                 fromRect:NSZeroRect
-                operation:NSCompositeSourceOver
-                 fraction:1.0];
+//    [modeImage drawInRect:NSMakeRect(12, 6, 24, 24)
+//                 fromRect:NSZeroRect
+//                operation:NSCompositeSourceOver
+//                 fraction:1.0];
     
     NSSize titleSize = [modeTitle sizeWithAttributes:modeAttributes];
-    NSPoint titlePoint = NSMakePoint(44, NSHeight(self.frame) / 2 - floor(textSize.height/2) + 1);
+    NSPoint titlePoint = NSMakePoint((NSWidth(self.frame)/2) - (titleSize.width/2),
+                                     18);
 
     if (isModeChangeActive) {
         [modeDropdown setHidden:NO];
@@ -174,12 +176,26 @@
     [changeButton setAttributedTitle:attributedString];
 }
 
+- (void)drawBackground {
+    if (appDelegate.modeMap.selectedModeDirection == modeDirection) {
+        [self setWantsLayer:YES]; // view's backing store is using a Core Animation Layer
+        [self.layer setBackgroundColor:CGColorCreateGenericRGB(1, 1, 1, 1)];
+    } else {
+        [self.layer setBackgroundColor:nil];
+    }
+}
+
+- (void)drawBorders {
+    BOOL leftActive = (appDelegate.modeMap.selectedModeDirection == modeDirection &&
+                       modeDirection != NORTH);
+    BOOL rightActive = (appDelegate.modeMap.selectedModeDirection == modeDirection &&
+                        modeDirection != SOUTH);
+}
+
 #pragma mark - Actions
 
 - (void)mouseEntered:(NSEvent *)theEvent {
     [[NSCursor pointingHandCursor] set];
-
-    if (![appDelegate isMenuViewportExpanded]) return;
     
 //    NSLog(@"Mouse entered");
     hoverActive = YES;
@@ -190,8 +206,6 @@
 - (void)mouseExited:(NSEvent *)theEvent {
     [[NSCursor arrowCursor] set];
 
-    if (![appDelegate isMenuViewportExpanded]) return;
-    
 //    NSLog(@"Mouse exited");
     hoverActive = NO;
     [self setupMode];
@@ -202,7 +216,6 @@
     if (appDelegate.modeMap.selectedModeDirection != modeDirection) {
         [appDelegate.modeMap setSelectedModeDirection:modeDirection];
     }
-    [appDelegate.modeMenuViewport toggleExpanded];
 }
 
 - (void)showChangeModeMenu:(id)sender {

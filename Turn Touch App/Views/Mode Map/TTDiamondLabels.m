@@ -115,23 +115,6 @@
 - (void)drawRect:(NSRect)dirtyRect {
     //    NSLog(@"Drawing labels: %@", NSStringFromRect(dirtyRect));
     [self drawBackground];
-
-    for (TTModeDirection direction=1; direction <= 4; direction++) {
-        NSBezierPath *path = direction == NORTH ? northLine :
-                             direction == EAST  ? eastLine  :
-                             direction == WEST  ? westLine  :
-                             direction == SOUTH ? southLine : nil;
-        
-        [[NSColor colorWithCalibratedHue:0.55f saturation:0.5f brightness:0.2f
-                                   alpha:appDelegate.modeMap.activeModeDirection == direction ?
-                                         0.5f :INACTIVE_OPACITY] set];
-        if (appDelegate.modeMap.inspectingModeDirection == direction) {
-            path.lineWidth = 3.0f;
-        } else {
-            path.lineWidth = 1.0f;
-        }
-        [path stroke];
-    }
 }
 
 

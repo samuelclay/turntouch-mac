@@ -68,6 +68,10 @@
 
 #pragma mark - Drawing
 
+- (BOOL)wantsDefaultClipping {
+    return NO;
+}
+
 - (void)drawRect:(NSRect)dirtyRect {
     NSRect rect = self.bounds;
 
@@ -174,9 +178,15 @@
             [NSGraphicsContext restoreGraphicsState];
         }
         
-        NSColor *modeColor = [NSColor colorWithCalibratedHue:0.55f saturation:0.5f brightness:0.2f
-                                                       alpha:activeModeDirection == direction ? 0.5f :
-                              selectedModeDirection == direction ? 1.0f : INACTIVE_OPACITY];
+        NSColor *modeColor;
+        if (selectedModeDirection == direction &&
+            appDelegate.modeMap.selectedModeDirection == direction) {
+            modeColor = NSColorFromRGB(0x4585BE);
+        } else {
+            modeColor = [NSColor colorWithCalibratedHue:0.55f saturation:0.5f brightness:0.2f
+                                                  alpha:activeModeDirection == direction ? 0.5f :
+                         selectedModeDirection == direction ? 0.7f : INACTIVE_OPACITY];
+        }
         if (!showOutline) {
             if (self.isHighlighted) {
                 [[NSColor colorWithDeviceWhite:1.0f

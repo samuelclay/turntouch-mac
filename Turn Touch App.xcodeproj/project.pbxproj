@@ -26,7 +26,6 @@
 		FF80131A186CF8FF00955218 /* TTDiamondView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801310186CF8FF00955218 /* TTDiamondView.m */; };
 		FF80131B186CF8FF00955218 /* TTModeMenuContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801313186CF8FF00955218 /* TTModeMenuContainer.m */; };
 		FF80131C186CF8FF00955218 /* TTModeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801315186CF8FF00955218 /* TTModeMenuItem.m */; };
-		FF80131D186CF8FF00955218 /* TTModeMenuViewport.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801317186CF8FF00955218 /* TTModeMenuViewport.m */; };
 		FF801326186CF90700955218 /* TTBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801320186CF90700955218 /* TTBackgroundView.m */; };
 		FF801327186CF90700955218 /* TTPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801322186CF90700955218 /* TTPanel.m */; };
 		FF801329186CF90700955218 /* TTStatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801325186CF90700955218 /* TTStatusItemView.m */; };
@@ -104,8 +103,6 @@
 		FF801313186CF8FF00955218 /* TTModeMenuContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeMenuContainer.m; sourceTree = "<group>"; };
 		FF801314186CF8FF00955218 /* TTModeMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeMenuItem.h; sourceTree = "<group>"; };
 		FF801315186CF8FF00955218 /* TTModeMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeMenuItem.m; sourceTree = "<group>"; };
-		FF801316186CF8FF00955218 /* TTModeMenuViewport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeMenuViewport.h; sourceTree = "<group>"; };
-		FF801317186CF8FF00955218 /* TTModeMenuViewport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeMenuViewport.m; sourceTree = "<group>"; };
 		FF80131F186CF90700955218 /* TTBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTBackgroundView.h; sourceTree = "<group>"; };
 		FF801320186CF90700955218 /* TTBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTBackgroundView.m; sourceTree = "<group>"; };
 		FF801321186CF90700955218 /* TTPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTPanel.h; sourceTree = "<group>"; };
@@ -325,8 +322,6 @@
 		FF801311186CF8FF00955218 /* Mode Menu */ = {
 			isa = PBXGroup;
 			children = (
-				FF801316186CF8FF00955218 /* TTModeMenuViewport.h */,
-				FF801317186CF8FF00955218 /* TTModeMenuViewport.m */,
 				FF801312186CF8FF00955218 /* TTModeMenuContainer.h */,
 				FF801313186CF8FF00955218 /* TTModeMenuContainer.m */,
 				FF801314186CF8FF00955218 /* TTModeMenuItem.h */,
@@ -605,7 +600,6 @@
 				FF801332186E156900955218 /* TTOptionsModeTitle.m in Sources */,
 				FF801335186E207B00955218 /* TTDiamondLabel.m in Sources */,
 				FFF05F3018F60FF100AC6230 /* TTTitleBarView.m in Sources */,
-				FF80131D186CF8FF00955218 /* TTModeMenuViewport.m in Sources */,
 				FF0E12D41828560000D49EC7 /* TTModeVideo.m in Sources */,
 				FF98A2E81867DBE70032CC7A /* TTPanelController.m in Sources */,
 				FF801338186E5D9700955218 /* TTOptionsActionTitle.m in Sources */,

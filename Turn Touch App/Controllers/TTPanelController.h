@@ -10,7 +10,6 @@
 #import "TTBackgroundView.h"
 #import "TTStatusItemView.h"
 #import "TTPanelDelegate.h"
-#import "TTModeMenuViewport.h"
 
 #pragma mark -
 

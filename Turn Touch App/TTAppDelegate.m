@@ -16,7 +16,6 @@
 @synthesize panelController = _panelController;
 @synthesize menubarController = _menubarController;
 @synthesize serialMonitor = _serialMonitor;
-@synthesize modeMenuViewport = _modeMenuViewport;
 
 #pragma mark - Dealloc
 
@@ -76,10 +75,6 @@ void *kContextActivePanel = &kContextActivePanel;
         [_panelController addObserver:self forKeyPath:@"hasActivePanel" options:0 context:kContextActivePanel];
     }
     return _panelController;
-}
-
-- (BOOL)isMenuViewportExpanded {
-    return self.modeMenuViewport.isExpanded;
 }
 
 #pragma mark - TTPanelControllerDelegate

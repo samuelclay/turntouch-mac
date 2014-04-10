@@ -10,7 +10,7 @@
 #import "TTAppDelegate.h"
 #import "TTModeMap.h"
 
-#define SPACING_PCT 0.01f
+#define SPACING_PCT 0.02f
 #define INACTIVE_OPACITY 0.2f
 
 @class TTAppDelegate;
