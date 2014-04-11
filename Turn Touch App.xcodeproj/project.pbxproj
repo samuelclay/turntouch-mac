@@ -66,6 +66,8 @@
 		FFF05F3018F60FF100AC6230 /* TTTitleBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF05F2F18F60FF100AC6230 /* TTTitleBarView.m */; };
 		FFF05F3318F6120200AC6230 /* Turn Touch title.png in Resources */ = {isa = PBXBuildFile; fileRef = FFF05F3218F6120200AC6230 /* Turn Touch title.png */; };
 		FFF05F3B18F77BE000AC6230 /* TTModeTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF05F3A18F77BE000AC6230 /* TTModeTitleView.m */; };
+		FFF05F3E18F77CF500AC6230 /* TTChangeButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF05F3D18F77CF500AC6230 /* TTChangeButtonView.m */; };
+		FFF05F4218F77D5D00AC6230 /* TTChangeButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF05F4118F77D5D00AC6230 /* TTChangeButtonCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -171,6 +173,10 @@
 		FFF05F3218F6120200AC6230 /* Turn Touch title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Turn Touch title.png"; sourceTree = "<group>"; };
 		FFF05F3918F77BE000AC6230 /* TTModeTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeTitleView.h; path = "Views/Mode Title/TTModeTitleView.h"; sourceTree = "<group>"; };
 		FFF05F3A18F77BE000AC6230 /* TTModeTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeTitleView.m; path = "Views/Mode Title/TTModeTitleView.m"; sourceTree = "<group>"; };
+		FFF05F3C18F77CF500AC6230 /* TTChangeButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTChangeButtonView.h; path = Views/Buttons/TTChangeButtonView.h; sourceTree = "<group>"; };
+		FFF05F3D18F77CF500AC6230 /* TTChangeButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTChangeButtonView.m; path = Views/Buttons/TTChangeButtonView.m; sourceTree = "<group>"; };
+		FFF05F4018F77D5D00AC6230 /* TTChangeButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTChangeButtonCell.h; path = Views/Buttons/TTChangeButtonCell.h; sourceTree = "<group>"; };
+		FFF05F4118F77D5D00AC6230 /* TTChangeButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTChangeButtonCell.m; path = Views/Buttons/TTChangeButtonCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				FF80131E186CF90700955218 /* Panel */,
+				FFF05F3F18F77CFF00AC6230 /* Buttons */,
 				FF801311186CF8FF00955218 /* Mode Menu */,
 				FFF05F3818F77BB100AC6230 /* Mode Title */,
 				FF80130C186CF8FF00955218 /* Mode Map */,
@@ -502,6 +509,17 @@
 			name = "Mode Title";
 			sourceTree = "<group>";
 		};
+		FFF05F3F18F77CFF00AC6230 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				FFF05F3C18F77CF500AC6230 /* TTChangeButtonView.h */,
+				FFF05F3D18F77CF500AC6230 /* TTChangeButtonView.m */,
+				FFF05F4018F77D5D00AC6230 /* TTChangeButtonCell.h */,
+				FFF05F4118F77D5D00AC6230 /* TTChangeButtonCell.m */,
+			);
+			name = Buttons;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -594,6 +612,7 @@
 				FF8C834A17AB14B5000166FC /* TTAppDelegate.m in Sources */,
 				FF4E2630182317D000D477F6 /* TTSerialMonitor.m in Sources */,
 				FF0E12C218242DF000D49EC7 /* TTButtonTimer.m in Sources */,
+				FFF05F4218F77D5D00AC6230 /* TTChangeButtonCell.m in Sources */,
 				FF80131B186CF8FF00955218 /* TTModeMenuContainer.m in Sources */,
 				FF98A2FB1867E8EC0032CC7A /* ORSSerialPort.m in Sources */,
 				FFF05F3B18F77BE000AC6230 /* TTModeTitleView.m in Sources */,
@@ -611,6 +630,7 @@
 				FF98A2FC1867E8EC0032CC7A /* ORSSerialPortManager.m in Sources */,
 				FF8012F318692D0A00955218 /* TTModeMac.m in Sources */,
 				FF801319186CF8FF00955218 /* TTDiamondLabels.m in Sources */,
+				FFF05F3E18F77CF500AC6230 /* TTChangeButtonView.m in Sources */,
 				FF801332186E156900955218 /* TTOptionsModeTitle.m in Sources */,
 				FF801335186E207B00955218 /* TTDiamondLabel.m in Sources */,
 				FFF05F3018F60FF100AC6230 /* TTTitleBarView.m in Sources */,

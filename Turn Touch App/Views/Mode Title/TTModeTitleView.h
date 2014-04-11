@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "TTAppDelegate.h"
+#import "TTChangeButtonView.h"
 
 @class TTAppDelegate;
 
@@ -17,7 +18,7 @@
     NSString *modeTitle;
     NSDictionary *modeAttributes;
     CGSize textSize;
-    NSButton *changeButton;
+    TTChangeButtonView *changeButton;
     BOOL isModeChangeActive;
 }
 

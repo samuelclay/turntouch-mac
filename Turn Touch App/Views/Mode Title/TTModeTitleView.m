@@ -9,6 +9,7 @@
 #import "TTModeTitleView.h"
 
 #define IMAGE_SIZE 32.0f
+#define BUTTON_WIDTH 82.0f
 
 @implementation TTModeTitleView
 
@@ -19,7 +20,7 @@
     if (self) {
         appDelegate = [NSApp delegate];
 
-        changeButton = [[NSButton alloc] init];
+        changeButton = [[TTChangeButtonView alloc] init];
         [self setChangeButtonTitle:@"change"];
         [changeButton setBezelStyle:NSRoundRectBezelStyle];
         [changeButton setAction:@selector(showChangeModeMenu:)];
@@ -49,16 +50,14 @@
                                      (NSHeight(self.frame)/2) - (titleSize.height/2));
     [modeTitle drawAtPoint:titlePoint withAttributes:modeAttributes];
 
+    NSRect buttonFrame = NSMakeRect(NSWidth(self.frame) - BUTTON_WIDTH - 12,
+                                    (NSHeight(self.frame)/2) - (32.0f/2),
+                                    BUTTON_WIDTH, NSHeight(self.frame) - 32.0f);
+    changeButton.frame = buttonFrame;
     if (isModeChangeActive) {
-        NSRect buttonFrame = NSMakeRect(titlePoint.x + 160 + 12,
-                                        titlePoint.y + 3, 50, 24);
         [self setChangeButtonTitle:@"cancel"];
-        changeButton.frame = buttonFrame;
     } else {
-        NSRect buttonFrame = NSMakeRect(titlePoint.x + titleSize.width + 12,
-                                        titlePoint.y + 3, 50, 24);
         [self setChangeButtonTitle:@"change"];
-        changeButton.frame = buttonFrame;
     }
 }
 
@@ -84,9 +83,9 @@
     [centredStyle setAlignment:NSCenterTextAlignment];
     NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:centredStyle,
                            NSParagraphStyleAttributeName,
-                           [NSFont fontWithName:@"Helvetica-Bold" size:8.f],
+                           [NSFont fontWithName:@"Helvetica-Bold" size:10.f],
                            NSFontAttributeName,
-                           [NSColor whiteColor],
+                           NSColorFromRGB(0xA0A3A8),
                            NSForegroundColorAttributeName,
                            nil];
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]
