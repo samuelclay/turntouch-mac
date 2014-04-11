@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "TTAppDelegate.h"
 #import "TTModeMenuContainer.h"
+#import "TTModeTitleView.h"
 #import "TTDiamondView.h"
 #import "TTDiamondLabels.h"
 #import "TTOptionsView.h"
@@ -21,6 +22,7 @@
 @class TTDiamondView;
 @class TTDiamondLabels;
 @class TTModeMenuContainer;
+@class TTModeTitleView;
 @class TTOptionsView;
 @class TTTitleBarView;
 
@@ -32,6 +34,7 @@
 @property (nonatomic, assign) NSInteger arrowX;
 @property (nonatomic) IBOutlet TTTitleBarView *titleBarView;
 @property (nonatomic) IBOutlet TTModeMenuContainer *modeMenu;
+@property (nonatomic) IBOutlet TTModeTitleView *modeTitle;
 @property (nonatomic) IBOutlet TTDiamondView *diamondView;
 @property (nonatomic) IBOutlet TTDiamondLabels *diamondLabels;
 @property (nonatomic) IBOutlet TTOptionsView *optionsView;

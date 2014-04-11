@@ -111,6 +111,7 @@
     
     if (selectedMode && [selectedMode respondsToSelector:@selector(activate)]) {
         [selectedMode activate];
+        [self reset];
     }
 }
 

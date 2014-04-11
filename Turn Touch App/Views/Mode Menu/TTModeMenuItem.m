@@ -12,14 +12,13 @@
 
 @implementation TTModeMenuItem
 
-@synthesize changeButton;
-
 - (id)initWithFrame:(NSRect)frame direction:(TTModeDirection)direction {
     self = [super initWithFrame:frame];
     if (self) {
         appDelegate = [NSApp delegate];
         modeDirection = direction;
         hoverActive = NO;
+        mouseDownActive = NO;
         
         NSRect diamondRect = NSMakeRect((NSWidth(frame) / 2) - (DIAMOND_SIZE * 1.3 / 2),
                                         NSHeight(frame) - 18 - DIAMOND_SIZE,
@@ -29,21 +28,6 @@
         [diamondView setIgnoreSelectedMode:YES];
         [self addSubview:diamondView];
 
-        changeButton = [[NSButton alloc] init];
-        [self setChangeButtonTitle:@"change"];
-        [changeButton setBezelStyle:NSInlineBezelStyle];
-        [changeButton setAlphaValue:0];
-        [changeButton setHidden:YES];
-        [changeButton setAction:@selector(showChangeModeMenu:)];
-        [changeButton setTarget:self];
-        [self addSubview:changeButton];
-        
-        modeDropdown = [[NSPopUpButton alloc] init];
-        [modeDropdown setHidden:YES];
-        [modeDropdown setAction:@selector(changeModeDropdown:)];
-        [modeDropdown setTarget:self];
-        [self addSubview:modeDropdown];
-        
         [self setupMode];
         [self registerAsObserver];
         [self createTrackingArea];
@@ -72,8 +56,6 @@
     
     [self drawBackground];
     [self setupTitleAttributes];
-
-    modeImage = [NSImage imageNamed:[itemMode imageName]];
 }
 
 - (void)setupTitleAttributes {
@@ -138,19 +120,7 @@
     NSPoint titlePoint = NSMakePoint((NSWidth(self.frame)/2) - (titleSize.width/2),
                                      18);
 
-    if (isModeChangeActive) {
-        [modeDropdown setHidden:NO];
-        [modeDropdown setFrame:NSMakeRect(44, titlePoint.y - 3, 160, 24)];
-        NSRect buttonFrame = NSMakeRect(titlePoint.x + 160 + 12, titlePoint.y + 3, 50, 12);
-        [self setChangeButtonTitle:@"cancel"];
-        changeButton.frame = buttonFrame;
-    } else {
-        [modeDropdown setHidden:YES];
-        [modeTitle drawAtPoint:titlePoint withAttributes:modeAttributes];
-        NSRect buttonFrame = NSMakeRect(titlePoint.x + titleSize.width + 12, titlePoint.y + 3, 50, 12);
-        [self setChangeButtonTitle:@"change"];
-        changeButton.frame = buttonFrame;
-    }
+    [modeTitle drawAtPoint:titlePoint withAttributes:modeAttributes];
 }
 
 - (void)createTrackingArea {
@@ -162,26 +132,13 @@
     [self addTrackingArea:trackingArea];
 }
 
-- (void)setChangeButtonTitle:(NSString *)title {
-    NSMutableParagraphStyle *centredStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-    [centredStyle setLineHeightMultiple:0.6f];
-    [centredStyle setAlignment:NSCenterTextAlignment];
-    NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:centredStyle,
-                           NSParagraphStyleAttributeName,
-                           [NSFont fontWithName:@"Helvetica-Bold" size:8.f],
-                           NSFontAttributeName,
-                           [NSColor whiteColor],
-                           NSForegroundColorAttributeName,
-                           nil];
-    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]
-                                                   initWithString:[title uppercaseString] attributes:attrs];
-    [changeButton setAttributedTitle:attributedString];
-}
-
 - (void)drawBackground {
     if (appDelegate.modeMap.selectedModeDirection == modeDirection) {
         [self setWantsLayer:YES]; // view's backing store is using a Core Animation Layer
         [self.layer setBackgroundColor:CGColorCreateGenericRGB(1, 1, 1, 1)];
+    } else if (mouseDownActive) {
+        [self setWantsLayer:YES]; // view's backing store is using a Core Animation Layer
+        [self.layer setBackgroundColor:CGColorCreateGenericRGB(0, 0, 0, .025)];
     } else {
         [self.layer setBackgroundColor:nil];
     }
@@ -189,7 +146,7 @@
 
 - (void)drawBorders {
     BOOL active = appDelegate.modeMap.selectedModeDirection == modeDirection;
-    NSLog(@"Drawing border for %d: %d", modeDirection, active);
+
     if (active) {
         [self drawActiveBorder];
     } else {
@@ -263,45 +220,25 @@
     [self setNeedsDisplay:YES];
 }
 
+- (void)mouseDown:(NSEvent *)theEvent {
+    mouseDownActive = YES;
+    [self drawBackground];
+}
+
 - (void)mouseUp:(NSEvent *)theEvent {
+    mouseDownActive = NO;
+
+    NSPoint clickPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+    BOOL inside = NSPointInRect(clickPoint, self.bounds);
+    if (!inside) {
+        [self drawBackground];
+        return;
+    }
+    
+    [appDelegate.modeMap reset];
+
     if (appDelegate.modeMap.selectedModeDirection != modeDirection) {
         [appDelegate.modeMap setSelectedModeDirection:modeDirection];
-    }
-}
-
-- (void)showChangeModeMenu:(id)sender {
-    if (isModeChangeActive) {
-        isModeChangeActive = NO;
-        [self setNeedsDisplay:YES];
-    } else {
-        isModeChangeActive = YES;
-        [modeDropdown removeAllItems];
-        [modeDropdown addItemsWithTitles:appDelegate.modeMap.availableModeTitles];
-        [self setNeedsDisplay:YES];
-        NSInteger selectedIndex = 0;
-        for (NSString *modeClass in appDelegate.modeMap.availableModeClassNames) {
-            if ([modeClass isEqualToString:NSStringFromClass([itemMode class])]) {
-                break;
-            }
-            selectedIndex++;
-        }
-        [modeDropdown selectItemAtIndex:selectedIndex];
-    }
-}
-
-- (void)changeModeDropdown:(id)sender {
-    NSString *newModeClassName = [appDelegate.modeMap.availableModeClassNames
-                                  objectAtIndex:[sender indexOfSelectedItem]];
-    [appDelegate.modeMap changeDirection:modeDirection toMode:newModeClassName];
-    isModeChangeActive = NO;
-    [self setupMode];
-    [self setNeedsDisplay:YES];
-}
-
-- (void)hidePopupMenu {
-    if (isModeChangeActive) {
-        isModeChangeActive = NO;
-        [self setNeedsDisplay:YES];
     }
 }
 

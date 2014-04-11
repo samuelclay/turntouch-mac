@@ -20,19 +20,13 @@
     TTDiamondView *diamondView;
     TTMode *itemMode;
     
-    NSImage *modeImage;
     NSString *modeTitle;
     NSDictionary *modeAttributes;
     CGSize textSize;
-    NSButton *changeButton;
-    NSPopUpButton *modeDropdown;
-    BOOL isModeChangeActive;
     BOOL hoverActive;
+    BOOL mouseDownActive;
 }
 
-@property (nonatomic) IBOutlet NSButton *changeButton;
-
 - (id)initWithFrame:(NSRect)frame direction:(TTModeDirection)direction;
-- (void)hidePopupMenu;
 
 @end

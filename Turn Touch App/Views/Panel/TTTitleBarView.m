@@ -30,8 +30,10 @@
 }
 
 - (void)drawLabel {
-    NSPoint center = NSMakePoint(NSMidX(self.bounds)-(title.size.width/2), NSMidY(self.bounds)-(title.size.height/2));
-    [title drawAtPoint:center fromRect:NSMakeRect(0,0,200, 50) operation:NSCompositeSourceAtop fraction:1.0];
+    NSPoint titlePoint = NSMakePoint(NSMidX(self.bounds)-(title.size.width/2),
+                                     NSMidY(self.bounds)-(title.size.height/2));
+    [title drawInRect:NSMakeRect(titlePoint.x, titlePoint.y,
+                                 title.size.width, title.size.height)];
 }
 
 

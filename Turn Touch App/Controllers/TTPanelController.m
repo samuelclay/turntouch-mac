@@ -72,16 +72,17 @@
     
     NSInteger titleHeight = NSHeight(self.backgroundView.titleBarView.frame);
     NSInteger menuHeight = NSHeight(self.backgroundView.modeMenu.frame);
+    NSInteger modeTitleHeight = NSHeight(self.backgroundView.modeTitle.frame);
     NSInteger diamondHeight = NSHeight(self.backgroundView.diamondLabels.frame);
     NSInteger optionsHeight = NSHeight(self.backgroundView.optionsView.frame);
     NSInteger arrowHeight = ARROW_HEIGHT;
     NSRect statusRect = [self statusRectForWindow:panel];
     
     NSRect panelRect = [panel frame];
-    panelRect.size.height = titleHeight + menuHeight + diamondHeight + optionsHeight + arrowHeight;
+    panelRect.size.height = titleHeight + menuHeight + modeTitleHeight +
+                            diamondHeight + optionsHeight + arrowHeight;
     panelRect.origin.x = roundf(NSMidX(statusRect) - NSWidth(panelRect) / 2);
     panelRect.origin.y = NSMaxY(statusRect) - NSHeight(panelRect);
-    NSLog(@"Heights: %f", panelRect.size.height);
     
     [panel setFrame:panelRect display:YES];
 }
@@ -204,13 +205,15 @@
 }
 
 - (void)closePanel {
-//    [NSAnimationContext beginGrouping];
-//    [[NSAnimationContext currentContext] setDuration:CLOSE_DURATION];
-//    [[[self window] animator] setAlphaValue:0];
-//    [NSAnimationContext endGrouping];
+//    return; // Enable this line to never close app. Useful for debugging
+    
+    [NSAnimationContext beginGrouping];
+    [[NSAnimationContext currentContext] setDuration:CLOSE_DURATION];
+    [[[self window] animator] setAlphaValue:0];
+    [NSAnimationContext endGrouping];
     
     dispatch_after(dispatch_walltime(NULL, NSEC_PER_SEC * CLOSE_DURATION * 2), dispatch_get_main_queue(), ^{
-//        [self.window orderOut:nil];
+        [self.window orderOut:nil];
     });
 }
 
