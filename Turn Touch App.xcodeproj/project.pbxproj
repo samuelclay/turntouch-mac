@@ -65,7 +65,7 @@
 		FFB653E018DBA14E00830B42 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB653DF18DBA14E00830B42 /* CoreFoundation.framework */; };
 		FFF05F3018F60FF100AC6230 /* TTTitleBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF05F2F18F60FF100AC6230 /* TTTitleBarView.m */; };
 		FFF05F3318F6120200AC6230 /* Turn Touch title.png in Resources */ = {isa = PBXBuildFile; fileRef = FFF05F3218F6120200AC6230 /* Turn Touch title.png */; };
-		FFF05F3618F7607700AC6230 /* TTModeTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF05F3518F7607700AC6230 /* TTModeTitleView.m */; };
+		FFF05F3B18F77BE000AC6230 /* TTModeTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF05F3A18F77BE000AC6230 /* TTModeTitleView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -169,8 +169,8 @@
 		FFF05F2E18F60FF100AC6230 /* TTTitleBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTitleBarView.h; sourceTree = "<group>"; };
 		FFF05F2F18F60FF100AC6230 /* TTTitleBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTitleBarView.m; sourceTree = "<group>"; };
 		FFF05F3218F6120200AC6230 /* Turn Touch title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Turn Touch title.png"; sourceTree = "<group>"; };
-		FFF05F3418F7607700AC6230 /* TTModeTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeTitleView.h; sourceTree = "<group>"; };
-		FFF05F3518F7607700AC6230 /* TTModeTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeTitleView.m; sourceTree = "<group>"; };
+		FFF05F3918F77BE000AC6230 /* TTModeTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeTitleView.h; path = "Views/Mode Title/TTModeTitleView.h"; sourceTree = "<group>"; };
+		FFF05F3A18F77BE000AC6230 /* TTModeTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeTitleView.m; path = "Views/Mode Title/TTModeTitleView.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,6 +278,7 @@
 			children = (
 				FF80131E186CF90700955218 /* Panel */,
 				FF801311186CF8FF00955218 /* Mode Menu */,
+				FFF05F3818F77BB100AC6230 /* Mode Title */,
 				FF80130C186CF8FF00955218 /* Mode Map */,
 				FF80132C186D20E500955218 /* Mode Options */,
 				FF8012FF186CF87100955218 /* Actions */,
@@ -311,8 +312,6 @@
 		FF80130C186CF8FF00955218 /* Mode Map */ = {
 			isa = PBXGroup;
 			children = (
-				FFF05F3418F7607700AC6230 /* TTModeTitleView.h */,
-				FFF05F3518F7607700AC6230 /* TTModeTitleView.m */,
 				FF80130D186CF8FF00955218 /* TTDiamondLabels.h */,
 				FF80130E186CF8FF00955218 /* TTDiamondLabels.m */,
 				FF801333186E207B00955218 /* TTDiamondLabel.h */,
@@ -494,6 +493,15 @@
 			path = logo;
 			sourceTree = "<group>";
 		};
+		FFF05F3818F77BB100AC6230 /* Mode Title */ = {
+			isa = PBXGroup;
+			children = (
+				FFF05F3918F77BE000AC6230 /* TTModeTitleView.h */,
+				FFF05F3A18F77BE000AC6230 /* TTModeTitleView.m */,
+			);
+			name = "Mode Title";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -588,7 +596,7 @@
 				FF0E12C218242DF000D49EC7 /* TTButtonTimer.m in Sources */,
 				FF80131B186CF8FF00955218 /* TTModeMenuContainer.m in Sources */,
 				FF98A2FB1867E8EC0032CC7A /* ORSSerialPort.m in Sources */,
-				FFF05F3618F7607700AC6230 /* TTModeTitleView.m in Sources */,
+				FFF05F3B18F77BE000AC6230 /* TTModeTitleView.m in Sources */,
 				FF98A2E11867DBA40032CC7A /* TTActionMap.m in Sources */,
 				FF0E12BB1824286600D49EC7 /* TTModeMap.m in Sources */,
 				FF801326186CF90700955218 /* TTBackgroundView.m in Sources */,
