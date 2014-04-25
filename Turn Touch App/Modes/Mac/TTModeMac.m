@@ -293,48 +293,61 @@
     IORegistryEntryFromPath(kIOMasterPortDefault, "IOService:/IOResources/IODisplayWrangler");
     if (!r || r == MACH_PORT_NULL) return;
 
+    CGDirectDisplayID display = CGMainDisplayID();
+    const double kMyFadeTime = 1.0; /* fade time in seconds */
+    const int kMyFadeSteps = 100;
+    const double kMyFadeInterval = (kMyFadeTime / (double) kMyFadeSteps);
+    const useconds_t kMySleepTime = (1000000 * kMyFadeInterval); /* delay in microseconds */
+    int step;
+    double fade;
+    CGGammaValue redMin, redMax, redGamma,
+    greenMin, greenMax, greenGamma,
+    blueMin, blueMax, blueGamma;
+    CGError err;
+    err = CGGetDisplayTransferByFormula (display,
+                                         &redMin, &redMax, &redGamma,
+                                         &greenMin, &greenMax, &greenGamma,
+                                         &blueMin, &blueMax, &blueGamma);
+
     if (turnOn) {
         NSLog(@"Turning on.");
         IORegistryEntrySetCFProperty(r, CFSTR("IORequestIdle"), kCFBooleanFalse);
         UpdateSystemActivity(OverallAct);
         
-        // Fade in
-        CGDisplayFadeReservationToken token;
-        CGError err;
+        // Turn to black before fade in
+        err = CGSetDisplayTransferByFormula (display,
+                                             redMin, 0, redGamma,
+                                             greenMin, 0, greenGamma,
+                                             blueMin, 0, blueGamma);
         
-        err = CGAcquireDisplayFadeReservation (kCGMaxDisplayReservationInterval, &token); // 1
-        if (err == kCGErrorSuccess)
-        {
-            // Quickly set to black before fading in
-            err = CGDisplayFade (token, 0, kCGDisplayBlendNormal,
-                                 kCGDisplayBlendSolidColor, 0, 0, 0, true); // 2
-            err = CGDisplayFade (token, 2.5, kCGDisplayBlendSolidColor,
-                                 kCGDisplayBlendNormal, 0, 0, 0, true); // 4
-            err = CGReleaseDisplayFadeReservation (token); // 5
+        // Fade in
+        for (step = 0; step < kMyFadeSteps*2; ++step) {
+            fade = (step / ((double)kMyFadeSteps*2));
+            err = CGSetDisplayTransferByFormula (display,
+                                                 redMin, fade*redMax, redGamma,
+                                                 greenMin, fade*greenMax, greenGamma,
+                                                 blueMin, fade*blueMax, blueGamma);
+            usleep (kMySleepTime);
         }
         self->turnedOffMonitor = NO;
     } else {
         NSLog(@"Turning off.");
         
         // Fade out before turning off screen
-        CGDisplayFadeReservationToken token;
-        CGError err;
-        
-        err = CGAcquireDisplayFadeReservation (kCGMaxDisplayReservationInterval, &token); // 1
-        if (err == kCGErrorSuccess) {
-            err = CGDisplayFade (token, 0.7, kCGDisplayBlendNormal,
-                                 kCGDisplayBlendSolidColor, 0, 0, 0, true); // 2
-            IORegistryEntrySetCFProperty(r, CFSTR("IORequestIdle"), kCFBooleanTrue);
-            err = CGDisplayFade (token, 0, kCGDisplayBlendSolidColor,
-                                 kCGDisplayBlendNormal, 0, 0, 0, true); // 4
-            err = CGReleaseDisplayFadeReservation (token); // 5
-        } else {
-            // Couldn't fade, just turn off screen
-            IORegistryEntrySetCFProperty(r, CFSTR("IORequestIdle"), kCFBooleanTrue);
+        for (step = 0; step < kMyFadeSteps; ++step) {
+            fade = 1.0 - (step / (double)kMyFadeSteps);
+            err = CGSetDisplayTransferByFormula (display,
+                                                 redMin, fade*redMax, redGamma,
+                                                 greenMin, fade*greenMax, greenGamma,
+                                                 blueMin, fade*blueMax, blueGamma);
+            usleep (kMySleepTime);
         }
+        
+        IORegistryEntrySetCFProperty(r, CFSTR("IORequestIdle"), kCFBooleanTrue);
+
         self->turnedOffMonitor = YES;
     }
-    
+    CGDisplayRestoreColorSyncSettings(); 
     IOObjectRelease(r);
 }
 
