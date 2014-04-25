@@ -308,7 +308,7 @@
                                          &redMin, &redMax, &redGamma,
                                          &greenMin, &greenMax, &greenGamma,
                                          &blueMin, &blueMax, &blueGamma);
-
+    
     if (turnOn) {
         NSLog(@"Turning on.");
         IORegistryEntrySetCFProperty(r, CFSTR("IORequestIdle"), kCFBooleanFalse);
@@ -347,8 +347,12 @@
 
         self->turnedOffMonitor = YES;
     }
-    CGDisplayRestoreColorSyncSettings(); 
+    
     IOObjectRelease(r);
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC);
+	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        CGDisplayRestoreColorSyncSettings();
+    });
 }
 
 @end
