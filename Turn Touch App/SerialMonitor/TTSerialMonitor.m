@@ -97,13 +97,11 @@ const int MAX_STR   = 255;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC);
 	dispatch_after(popTime, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
 		while (self.isOpen) {
-			unsigned char *buf = malloc(4);
-			long lengthRead = hid_read_timeout(hidDevice, buf, 64, 10 * 1000);
+			unsigned char *buf = malloc(8);
+			long lengthRead = hid_read_timeout(hidDevice, buf, 32, 10 * 1000);
             if (!self.isOpen) break;
 			if (lengthRead > 0) {
 				NSData *readData = [NSData dataWithBytes:buf length:lengthRead];
-//                NSLog(@"Read: %@", readData);
-                
 				if (readData != nil) {
 					[self serialPortReceivedData:readData];
 				}
@@ -117,7 +115,7 @@ const int MAX_STR   = 255;
 - (void)serialPortReceivedData:(NSData *)data {
 	NSString *string = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
 	if ([string length] == 0) return;
-    NSLog(@"Received data: %@", string);
+    NSLog(@"Received: (%d) %@", (int)[string length], string);
     [self parse:string];
 }
 
@@ -128,7 +126,8 @@ const int MAX_STR   = 255;
     
     NSMutableArray *substrings = [NSMutableArray new];
     for (int i=0; i < [buffer length]; i++) {
-        [substrings addObject:[NSNumber numberWithChar:[buffer characterAtIndex:i]]];
+        int pos = [[buffer substringWithRange:NSMakeRange(i, 1)] intValue];
+        [substrings addObject:[NSNumber numberWithInt:pos]];
     }
     dispatch_async(dispatch_get_main_queue(), ^{
         [buttonTimer readButtons:substrings];
