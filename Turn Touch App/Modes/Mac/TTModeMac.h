@@ -9,7 +9,9 @@
 #import "TTMode.h"
 #import <AudioToolbox/AudioServices.h>
 
-@interface TTModeMac : TTMode
+@interface TTModeMac : TTMode {
+    BOOL turnedOffMonitor;
+}
 
 - (AudioDeviceID)defaultOutputDeviceID;
 

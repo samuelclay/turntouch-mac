@@ -6,12 +6,21 @@
 //  Copyright (c) 2013 Turn Touch. All rights reserved.
 //
 #import <AudioToolbox/AudioServices.h>
+#include <ApplicationServices/ApplicationServices.h>
+#import <IOKit/pwr_mgt/IOPMLib.h>
 #import "TTModeMac.h"
 #include <sys/sysctl.h>
 
 @implementation TTModeMac
 
 @dynamic volume;
+
+- (id)init {
+    if (self = [super init]) {
+        self->turnedOffMonitor = NO;
+    }
+    return self;
+}
 
 + (NSString *)title {
     return @"Mac OS";
@@ -59,6 +68,14 @@
         [self setVolume:self.volume];
     } else {
         [self setVolume:0];
+    }
+}
+
+- (void)runEast {
+    if ([self isDisplayOff]) {
+        [self switchDisplay:YES];
+    } else {
+        [self switchDisplay:NO];
     }
 }
 
@@ -264,5 +281,61 @@
     return outputDeviceID;
 }
 
+- (BOOL)isDisplayOff {
+    boolean_t displayOff = CGDisplayIsAsleep(CGMainDisplayID());
+    boolean_t displayActive = CGDisplayIsOnline(CGMainDisplayID());
+    NSLog(@"display: %d/%d", displayOff, displayActive);
+    return (BOOL)displayOff || self->turnedOffMonitor;
+}
+
+- (void)switchDisplay:(BOOL)turnOn {
+    io_registry_entry_t r =
+    IORegistryEntryFromPath(kIOMasterPortDefault, "IOService:/IOResources/IODisplayWrangler");
+    if (!r || r == MACH_PORT_NULL) return;
+
+    if (turnOn) {
+        NSLog(@"Turning on.");
+        IORegistryEntrySetCFProperty(r, CFSTR("IORequestIdle"), kCFBooleanFalse);
+        UpdateSystemActivity(OverallAct);
+        
+        // Fade in
+        CGDisplayFadeReservationToken token;
+        CGError err;
+        
+        err = CGAcquireDisplayFadeReservation (kCGMaxDisplayReservationInterval, &token); // 1
+        if (err == kCGErrorSuccess)
+        {
+            // Quickly set to black before fading in
+            err = CGDisplayFade (token, 0, kCGDisplayBlendNormal,
+                                 kCGDisplayBlendSolidColor, 0, 0, 0, true); // 2
+            err = CGDisplayFade (token, 2.5, kCGDisplayBlendSolidColor,
+                                 kCGDisplayBlendNormal, 0, 0, 0, true); // 4
+            err = CGReleaseDisplayFadeReservation (token); // 5
+        }
+        self->turnedOffMonitor = NO;
+    } else {
+        NSLog(@"Turning off.");
+        
+        // Fade out before turning off screen
+        CGDisplayFadeReservationToken token;
+        CGError err;
+        
+        err = CGAcquireDisplayFadeReservation (kCGMaxDisplayReservationInterval, &token); // 1
+        if (err == kCGErrorSuccess) {
+            err = CGDisplayFade (token, 0.7, kCGDisplayBlendNormal,
+                                 kCGDisplayBlendSolidColor, 0, 0, 0, true); // 2
+            IORegistryEntrySetCFProperty(r, CFSTR("IORequestIdle"), kCFBooleanTrue);
+            err = CGDisplayFade (token, 0, kCGDisplayBlendSolidColor,
+                                 kCGDisplayBlendNormal, 0, 0, 0, true); // 4
+            err = CGReleaseDisplayFadeReservation (token); // 5
+        } else {
+            // Couldn't fade, just turn off screen
+            IORegistryEntrySetCFProperty(r, CFSTR("IORequestIdle"), kCFBooleanTrue);
+        }
+        self->turnedOffMonitor = YES;
+    }
+    
+    IOObjectRelease(r);
+}
 
 @end
