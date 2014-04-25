@@ -56,12 +56,14 @@
 - (void)drawRect:(NSRect)dirtyRect {
     NSRect rect = NSInsetRect(dirtyRect, PADDING, PADDING);
 	NSString *directionLabel;
+    NSSize size = [directionLabel sizeWithAttributes:labelAttributes];
     
     if (labelDirection == NORTH) {
         directionLabel = [appDelegate.modeMap.selectedMode titleNorth];
     } else if (labelDirection == EAST) {
         directionLabel = [appDelegate.modeMap.selectedMode titleEast];
     } else if (labelDirection == WEST) {
+        rect.origin.x += rect.size.width - size.width;
         directionLabel = [appDelegate.modeMap.selectedMode titleWest];
     } else if (labelDirection == SOUTH) {
         directionLabel = [appDelegate.modeMap.selectedMode titleSouth];

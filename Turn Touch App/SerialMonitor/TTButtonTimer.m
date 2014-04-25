@@ -22,7 +22,7 @@
 }
 
 - (void)readButtons:(NSArray *)buttons {
-    NSLog(@"Serial buttons: %@", buttons);
+//    NSLog(@"Serial buttons: %@", buttons);
     
     if ([[buttons objectAtIndex:0] integerValue] == PRESS_ACTIVE) {
         [self activateButton:NORTH];

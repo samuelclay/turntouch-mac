@@ -69,8 +69,8 @@
 - (void)drawBorder {
     // Bottom border
     NSBezierPath *line = [NSBezierPath bezierPath];
-    [line moveToPoint:NSMakePoint(NSMinX(self.bounds), NSMinY(self.bounds))];
-    [line lineToPoint:NSMakePoint(NSMaxX(self.bounds), NSMinY(self.bounds))];
+    [line moveToPoint:NSMakePoint(NSMinX(self.bounds) + 12, NSMinY(self.bounds))];
+    [line lineToPoint:NSMakePoint(NSMaxX(self.bounds) - 12, NSMinY(self.bounds))];
     [line setLineWidth:1.0];
     [NSColorFromRGB(0xD0D0D0) set];
     [line stroke];

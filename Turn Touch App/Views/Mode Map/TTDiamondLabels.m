@@ -51,30 +51,29 @@
         CGFloat frameWidth = NSWidth(self.frame);
         CGFloat frameHeight = NSHeight(self.frame);
         CGFloat topWidth = 100;
-        CGFloat sideWidth = 80;
         CGFloat labelHeight = 24;
         for (TTModeDirection direction=1; direction <= 4; direction++) {
             NSRect textRect;
             
             if (direction == NORTH) {
                 textRect = NSMakeRect(frameWidth/2 - topWidth/2,
-                                      frameHeight - labelHeight*2,
+                                      frameHeight - labelHeight*2.5,
                                       topWidth, labelHeight);
                 northLabel = [[TTDiamondLabel alloc] initWithFrame:textRect inDirection:NORTH];
                 [self addSubview:northLabel];
             } else if (direction == EAST) {
-                textRect = NSMakeRect(frameWidth - sideWidth, frameHeight/2 - labelHeight/2,
-                                      sideWidth, labelHeight);
+                textRect = NSMakeRect(offsetX + width, frameHeight/2 - labelHeight/2,
+                                      frameWidth - width - offsetX, labelHeight);
                 eastLabel = [[TTDiamondLabel alloc] initWithFrame:textRect inDirection:EAST];
                 [self addSubview:eastLabel];
             } else if (direction == WEST) {
                 textRect = NSMakeRect(0, frameHeight/2 - labelHeight/2,
-                                      sideWidth, labelHeight);
+                                      offsetX, labelHeight);
                 westLabel = [[TTDiamondLabel alloc] initWithFrame:textRect inDirection:WEST];
                 [self addSubview:westLabel];
             } else if (direction == SOUTH) {
                 textRect = NSMakeRect(frameWidth/2 - topWidth/2,
-                                      labelHeight,
+                                      labelHeight * 1.5,
                                       topWidth, labelHeight);
                 southLabel = [[TTDiamondLabel alloc] initWithFrame:textRect inDirection:SOUTH];
                 [self addSubview:southLabel];

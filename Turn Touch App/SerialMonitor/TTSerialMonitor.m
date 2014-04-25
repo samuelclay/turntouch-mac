@@ -43,16 +43,24 @@ const int MAX_STR   = 255;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (BOOL)isOpen {
+- (BOOL)confirmDevice {
     if (hidDevice) {
         unsigned char buf[65];
         int res = 0;
-        buf[0] = 0;
+        buf[0] = 0x0;
         res = hid_get_feature_report(hidDevice, buf, sizeof(buf));
-        if (res <= 0) NSLog(@"Checking if isOpen: %d", res);
+        if (res <= 0) {
+            NSLog(@"Checking if isOpen: %d", res);
+        } else {
+            NSLog(@"Confirmed: %d %s", res, buf);
+        }
         return res > 0;
     }
     return NO;
+}
+
+- (BOOL)isOpen {
+    return !!hidDevice;
 }
 
 - (void)reload {
@@ -77,75 +85,54 @@ const int MAX_STR   = 255;
     if (!hidDevice) {
         return;
     }
-    
+
+    [self confirmDevice];
+
 	res = hid_get_manufacturer_string(hidDevice, wstr, MAX_STR);
 	res = hid_get_product_string(hidDevice, wstr, MAX_STR);
 	printf("Manufacturer String: %S\n", wstr);
 	wprintf(L"Product String: %S\n", wstr);
     
     // Start a read poller in the background
-	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC);
+	dispatch_after(popTime, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
 		while (self.isOpen) {
-			unsigned char *buf = malloc(32);
-			long lengthRead = hid_read(hidDevice, buf, 32);
+			unsigned char *buf = malloc(4);
+			long lengthRead = hid_read_timeout(hidDevice, buf, 64, 10 * 1000);
             if (!self.isOpen) break;
 			if (lengthRead > 0) {
 				NSData *readData = [NSData dataWithBytes:buf length:lengthRead];
 //                NSLog(@"Read: %@", readData);
                 
-				if (readData != nil) dispatch_async(dispatch_get_main_queue(), ^{
+				if (readData != nil) {
 					[self serialPortReceivedData:readData];
-				});
+				}
 			} else if (lengthRead < 0) {
                 printf("Unable to read()\n");
-                hid_close(hidDevice);
             }
 		}
 	});
 }
 
 - (void)serialPortReceivedData:(NSData *)data {
-	NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+	NSString *string = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
 	if ([string length] == 0) return;
     NSLog(@"Received data: %@", string);
-    [textBuffer appendString:string];
-    [self parseTextBuffer];
+    [self parse:string];
 }
 
 
 #pragma mark - Parse Data
 
-- (void)parseTextBuffer {
-//    NSLog(@"Parsing buffer: %@", textBuffer);
-
-    if ([textBuffer rangeOfString:@"received"].location != NSNotFound) {
-        NSLog(@"Verified serial device!");
-        isVerifiedSerialDevice = YES;
-        [textBuffer setString:@""];
-    }
-
+- (void)parse:(NSString *)buffer {
+    
     NSMutableArray *substrings = [NSMutableArray new];
-    NSScanner *scanner = [NSScanner scannerWithString:textBuffer];
-    [scanner scanUpToString:@"START:" intoString:nil];
-    [scanner scanString:@"START:" intoString:nil];
-    while (![scanner isAtEnd]) {
-        NSString *substring = nil;
-        [scanner scanString:@":" intoString:nil];
-        if ([scanner scanUpToString:@":" intoString:&substring]) {
-            if ([substring isEqualToString:@"END"]) break;
-            [substrings addObject:[NSNumber numberWithInteger:[substring integerValue]]];
-        } else {
-            break;
-        }
+    for (int i=0; i < [buffer length]; i++) {
+        [substrings addObject:[NSNumber numberWithChar:[buffer characterAtIndex:i]]];
     }
-//    NSLog(@"Substrings: %@", substrings);
-    if ([substrings count] == 4) {
-//        NSLog(@"Clearing text buffer");
+    dispatch_async(dispatch_get_main_queue(), ^{
         [buttonTimer readButtons:substrings];
-        [textBuffer setString:@""];
-    } else {
-//        NSLog(@"Not yet clearing text buffer: %@", textBuffer);
-    }
+    });
 }
 
 #pragma mark - NSUserNotificationCenterDelegate
@@ -221,6 +208,8 @@ const int MAX_STR   = 255;
         NSLog(@"error adding removed notification");
     }
     [self matchingDevicesRemoved: lostDevicesIterator];
+    
+    
 }
 
 #pragma mark - USB Device Notifications
@@ -250,6 +239,12 @@ void usbDeviceDisappeared(void *refCon, io_iterator_t iterator){
 
 - (void)matchingDevicesRemoved:(io_iterator_t)devices {
     NSLog(@"matchingDevicesRemoved");
+
+    if (hidDevice) {
+        hid_close(hidDevice);
+    }
+    hidDevice = nil;
+
     io_object_t thisObject;
     while ( (thisObject = IOIteratorNext(devices))) {
         NSLog(@"new Matching device removed ");
