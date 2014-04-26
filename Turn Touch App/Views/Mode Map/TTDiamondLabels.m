@@ -17,7 +17,6 @@
 - (id)initWithFrame:(NSRect)frame diamondRect:(NSRect)theDiamondRect {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code here.
         diamondRect = theDiamondRect;
         appDelegate = [NSApp delegate];
         
@@ -112,7 +111,7 @@
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
-    //    NSLog(@"Drawing labels: %@", NSStringFromRect(dirtyRect));
+    NSLog(@"Drawing labels: %@", NSStringFromRect(dirtyRect));
     [self drawBackground];
 }
 

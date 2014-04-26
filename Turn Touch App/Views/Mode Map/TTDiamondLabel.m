@@ -30,6 +30,8 @@
 - (void)registerAsObserver {
     [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
                              options:0 context:nil];
+    [appDelegate.modeMap addObserver:self forKeyPath:@"hoverModeDirection"
+                             options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"activeModeDirection"
                              options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
@@ -43,6 +45,7 @@
                          change:(NSDictionary*)change
                         context:(void*)context {
     if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))] ||
+        [keyPath isEqual:NSStringFromSelector(@selector(hoverModeDirection))]      ||
         [keyPath isEqual:NSStringFromSelector(@selector(activeModeDirection))]     ||
         [keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]   ||
         [keyPath isEqual:NSStringFromSelector(@selector(selectedMode))]) {
@@ -54,7 +57,9 @@
 #pragma mark - Drawing
 
 - (void)drawRect:(NSRect)dirtyRect {
-    NSRect rect = NSInsetRect(dirtyRect, PADDING, PADDING);
+    [super drawRect:dirtyRect];
+    
+    NSRect rect = NSInsetRect(self.bounds, PADDING, PADDING);
 	NSString *directionLabel;
     NSSize size = [directionLabel sizeWithAttributes:labelAttributes];
     
@@ -73,12 +78,13 @@
 }
 
 - (void)setupLabels {
+    BOOL hovering = appDelegate.modeMap.hoverModeDirection == labelDirection;
     NSShadow *stringShadow = [[NSShadow alloc] init];
     stringShadow.shadowColor = [NSColor whiteColor];
     stringShadow.shadowOffset = NSMakeSize(0, -1);
     stringShadow.shadowBlurRadius = 0;
     NSColor *textColor = appDelegate.modeMap.inspectingModeDirection == labelDirection ?
-    NSColorFromRGB(0x202A40) : isHover ? NSColorFromRGB(0x303AA0) : NSColorFromRGB(0x404A60);
+    NSColorFromRGB(0x202A40) : hovering ? NSColorFromRGB(0x303AA0) : NSColorFromRGB(0x404A60);
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [style setAlignment:NSCenterTextAlignment];
     labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Futura" size:13],
@@ -100,17 +106,21 @@
 }
 
 - (void)mouseEntered:(NSEvent *)theEvent {
-    isHover = YES;
+    [appDelegate.modeMap toggleHoverModeDirection:labelDirection hovering:YES];
     [self setupLabels];
-    [self addCursorRect:self.frame cursor:[NSCursor pointingHandCursor]];
-    [self setNeedsDisplay:YES];
+    NSCursor *cursor = [NSCursor pointingHandCursor];
+    [self addCursorRect:self.bounds cursor:cursor];
+    [cursor set];
+    [self.superview setNeedsDisplay:YES];
 }
 
 - (void)mouseExited:(NSEvent *)theEvent {
-    isHover = NO;
+    [appDelegate.modeMap toggleHoverModeDirection:labelDirection hovering:NO];
     [self setupLabels];
-    [self addCursorRect:self.frame cursor:[NSCursor arrowCursor]];
-    [self setNeedsDisplay:YES];
+    NSCursor *cursor = [NSCursor arrowCursor];
+    [self addCursorRect:self.bounds cursor:cursor];
+    [cursor set];
+    [self.superview setNeedsDisplay:YES];
 }
 
 - (void)mouseUp:(NSEvent *)theEvent {

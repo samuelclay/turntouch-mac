@@ -22,6 +22,7 @@ typedef enum {
 @property (nonatomic, assign) TTModeDirection activeModeDirection;
 @property (nonatomic, assign) TTModeDirection selectedModeDirection;
 @property (nonatomic, assign) TTModeDirection inspectingModeDirection;
+@property (nonatomic, assign) TTModeDirection hoverModeDirection;
 @property (nonatomic) TTMode *selectedMode;
 @property (nonatomic) TTMode *northMode;
 @property (nonatomic) TTMode *eastMode;
@@ -35,5 +36,6 @@ typedef enum {
 - (NSArray *)availableModeClassNames;
 - (void)changeDirection:(TTModeDirection)direction toMode:(NSString *)modeClassName;
 - (void)toggleInspectingModeDirection:(TTModeDirection)direction;
+- (void)toggleHoverModeDirection:(TTModeDirection)direction hovering:(BOOL)hovering;
 
 @end

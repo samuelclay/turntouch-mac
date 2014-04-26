@@ -37,6 +37,7 @@
         appDelegate = [NSApp delegate];
         
         [self registerAsObserver];
+        [self createTrackingArea];
     }
     
     return self;
@@ -44,6 +45,8 @@
 
 - (void)registerAsObserver {
     [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
+                             options:0 context:nil];
+    [appDelegate.modeMap addObserver:self forKeyPath:@"hoverModeDirection"
                              options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"activeModeDirection"
                              options:0 context:nil];
@@ -58,6 +61,8 @@
                          change:(NSDictionary*)change
                         context:(void*)context {
     if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))]) {
+        [self setNeedsDisplay:YES];
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(hoverModeDirection))]) {
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(activeModeDirection))]) {
         [self setNeedsDisplay:YES];
@@ -75,6 +80,8 @@
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
+    [super drawRect:dirtyRect];
+
     NSRect rect = self.bounds;
 
     [self drawPaths:rect];
@@ -82,7 +89,7 @@
 }
 
 - (void)drawPaths:(NSRect)rect {
-//    NSLog(@"DrawPaths: %@ - %@", NSStringFromRect(rect), NSStringFromRect(self.bounds));
+    NSLog(@"DrawPaths: %@ - %@", NSStringFromRect(rect), NSStringFromRect(self.bounds));
     CGFloat width = NSMaxX(rect);
     CGFloat height = NSMaxY(rect);
     CGFloat spacing = SPACING_PCT * width;
@@ -184,6 +191,9 @@
         if (selectedModeDirection == direction &&
             appDelegate.modeMap.selectedModeDirection == direction) {
             modeColor = NSColorFromRGB(0x4585BE);
+        } else if (interactive && appDelegate.modeMap.hoverModeDirection == direction &&
+                   appDelegate.modeMap.inspectingModeDirection != direction) {
+                modeColor = NSColorFromRGB(0x303AA0);
         } else {
             modeColor = [NSColor colorWithCalibratedHue:0.55f saturation:0.5f brightness:0.2f
                                                   alpha:activeModeDirection == direction ? 0.5f :
@@ -216,6 +226,15 @@
 
 #pragma mark - Events
 
+- (void)createTrackingArea {
+    int opts = (NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways | NSTrackingActiveInKeyWindow);
+    NSTrackingArea *trackingArea = [ [NSTrackingArea alloc] initWithRect:[self bounds]
+                                                                 options:opts
+                                                                   owner:self
+                                                                userInfo:nil];
+    [self addTrackingArea:trackingArea];
+}
+
 - (void)mouseUp:(NSEvent *)theEvent {
     if (!interactive) {
         [super mouseUp:theEvent];
@@ -233,6 +252,40 @@
         [appDelegate.modeMap toggleInspectingModeDirection:WEST];
     } else if ([southPath containsPoint:center]) {
         [appDelegate.modeMap toggleInspectingModeDirection:SOUTH];
+    }
+}
+
+
+- (void)mouseEntered:(NSEvent *)theEvent {
+    if (!interactive) {
+        [super mouseEntered:theEvent];
+        return;
+    }
+    
+    [self mouseMovement:theEvent hovering:YES];
+}
+
+- (void)mouseExited:(NSEvent *)theEvent {
+    if (!interactive) {
+        [super mouseExited:theEvent];
+        return;
+    }
+
+    [self mouseMovement:theEvent hovering:NO];
+}
+
+- (void)mouseMovement:(NSEvent *)theEvent hovering:(BOOL)hovering {
+    NSPoint location = [theEvent locationInWindow];
+    NSPoint center = [self convertPoint:location fromView:nil];
+    
+    if ([northPath containsPoint:center]) {
+        [appDelegate.modeMap toggleHoverModeDirection:NORTH hovering:hovering];
+    } else if ([eastPath containsPoint:center]) {
+        [appDelegate.modeMap toggleHoverModeDirection:EAST hovering:hovering];
+    } else if ([westPath containsPoint:center]) {
+        [appDelegate.modeMap toggleHoverModeDirection:WEST hovering:hovering];
+    } else if ([southPath containsPoint:center]) {
+        [appDelegate.modeMap toggleHoverModeDirection:SOUTH hovering:hovering];
     }
 }
 

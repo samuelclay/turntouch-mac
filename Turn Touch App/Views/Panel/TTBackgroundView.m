@@ -52,7 +52,6 @@
                                     DIAMOND_SIZE * 1.3, DIAMOND_SIZE);
     NSRect labelRect = NSMakeRect(0, NSHeight(modeOptionsFrame), NSWidth(self.bounds), centerHeight);
     _diamondLabels = [[TTDiamondLabels alloc] initWithFrame:labelRect diamondRect:diamondRect];
-//    _diamondLabels.autoresizingMask = NSViewWidthSizable | NSViewMinXMargin | NSViewMaxXMargin;
     [self addSubview:_diamondLabels];
 
     _diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect];
@@ -140,6 +139,10 @@
 
 - (void)resetPosition {
     [appDelegate.modeMap reset];
+}
+
+- (void)viewDidMoveToWindow {
+    [[self window] setAcceptsMouseMovedEvents:YES];
 }
 
 #pragma mark -

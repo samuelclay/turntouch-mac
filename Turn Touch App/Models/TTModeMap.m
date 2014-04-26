@@ -18,6 +18,7 @@
 @synthesize selectedModeDirection;
 @synthesize activeModeDirection;
 @synthesize inspectingModeDirection;
+@synthesize hoverModeDirection;
 @synthesize selectedMode;
 @synthesize northMode;
 @synthesize eastMode;
@@ -40,6 +41,7 @@
         
         activeModeDirection = NO_DIRECTION;
         inspectingModeDirection = NO_DIRECTION;
+        hoverModeDirection = NO_DIRECTION;
         
         [self setupModes];
         
@@ -56,6 +58,7 @@
 
 - (void)reset {
     [self setInspectingModeDirection:NO_DIRECTION];
+    [self setHoverModeDirection:NO_DIRECTION];
 }
 
 - (void)setupModes {
@@ -197,6 +200,14 @@
         [self setInspectingModeDirection:NO_DIRECTION];
     } else {
         [self setInspectingModeDirection:direction];
+    }
+}
+
+- (void)toggleHoverModeDirection:(TTModeDirection)direction hovering:(BOOL)hovering {
+    if (!hovering) {
+        [self setHoverModeDirection:NO_DIRECTION];
+    } else {
+        [self setHoverModeDirection:direction];
     }
 }
 

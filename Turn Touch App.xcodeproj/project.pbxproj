@@ -319,12 +319,12 @@
 		FF80130C186CF8FF00955218 /* Mode Map */ = {
 			isa = PBXGroup;
 			children = (
+				FF80130F186CF8FF00955218 /* TTDiamondView.h */,
+				FF801310186CF8FF00955218 /* TTDiamondView.m */,
 				FF80130D186CF8FF00955218 /* TTDiamondLabels.h */,
 				FF80130E186CF8FF00955218 /* TTDiamondLabels.m */,
 				FF801333186E207B00955218 /* TTDiamondLabel.h */,
 				FF801334186E207B00955218 /* TTDiamondLabel.m */,
-				FF80130F186CF8FF00955218 /* TTDiamondView.h */,
-				FF801310186CF8FF00955218 /* TTDiamondView.m */,
 			);
 			name = "Mode Map";
 			path = "Views/Mode Map";
