@@ -35,4 +35,6 @@
 @property (nonatomic, assign) BOOL interactive;
 @property (nonatomic, setter = setHighlighted:) BOOL isHighlighted;
 
+- (id)initWithFrame:(NSRect)frame interactive:(BOOL)interactive;
+
 @end

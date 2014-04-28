@@ -22,13 +22,18 @@
 
 #pragma mark - Initialization
 
+
 - (id)initWithFrame:(NSRect)frame {
+    return [self initWithFrame:frame interactive:NO];
+}
+
+- (id)initWithFrame:(NSRect)frame interactive:(BOOL)_interactive {
     self = [super initWithFrame:frame];
     if (self) {
         self.size = NSWidth(frame);
         self.isHighlighted = NO;
         self.showOutline = NO;
-        self.interactive = NO;
+        self.interactive = _interactive;
         self.overrideSelectedDirection = NO_DIRECTION;
         self.overrideActiveDirection = NO_DIRECTION;
         self.ignoreSelectedMode = NO;
@@ -44,10 +49,12 @@
 }
 
 - (void)registerAsObserver {
-    [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
-                             options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"hoverModeDirection"
-                             options:0 context:nil];
+    if (interactive) {
+        [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
+                                 options:0 context:nil];
+        [appDelegate.modeMap addObserver:self forKeyPath:@"hoverModeDirection"
+                                 options:0 context:nil];
+    }
     [appDelegate.modeMap addObserver:self forKeyPath:@"activeModeDirection"
                              options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
@@ -89,7 +96,7 @@
 }
 
 - (void)drawPaths:(NSRect)rect {
-    NSLog(@"DrawPaths: %@ - %@", NSStringFromRect(rect), NSStringFromRect(self.bounds));
+//    NSLog(@"Draw diamond: %@ - %@", NSStringFromRect(rect), NSStringFromRect(self.bounds));
     CGFloat width = NSMaxX(rect);
     CGFloat height = NSMaxY(rect);
     CGFloat spacing = SPACING_PCT * width;
@@ -103,6 +110,7 @@
                                        height/2 + spacing*2)];
     [northPath lineToPoint:NSMakePoint(width * 3/4 - spacing,
                                        height * 3/4 + spacing)];
+    [northPath setLineJoinStyle:NSBevelLineJoinStyle];
     [northPath closePath];
     
     eastPath = [NSBezierPath bezierPath];
@@ -114,6 +122,7 @@
                                       height * 1/4 + spacing)];
     [eastPath lineToPoint:NSMakePoint(width,
                                       height * 1/2)];
+    [eastPath setLineJoinStyle:NSBevelLineJoinStyle];
     [eastPath closePath];
 
     westPath = [NSBezierPath bezierPath];
@@ -125,6 +134,7 @@
                                       height * 1/4 + spacing)];
     [westPath lineToPoint:NSMakePoint(width * 1/2 - spacing*2,
                                       height * 1/2)];
+    [westPath setLineJoinStyle:NSBevelLineJoinStyle];
     [westPath closePath];
     
     southPath = [NSBezierPath bezierPath];
@@ -136,6 +146,7 @@
                                        0)];
     [southPath lineToPoint:NSMakePoint(width * 3/4 - spacing,
                                        height * 1/4 - spacing)];
+    [southPath setLineJoinStyle:NSBevelLineJoinStyle];
     [southPath closePath];
 }
 
@@ -158,7 +169,8 @@
             direction = SOUTH;
         }
         
-        if (!showOutline) {
+        // Draw the shadow
+        if (!showOutline && !self.isHighlighted) {
             [NSGraphicsContext saveGraphicsState];
             NSAffineTransform *transform = [NSAffineTransform transform];
             [transform translateXBy:0 yBy:-0.25f];
@@ -187,19 +199,22 @@
             [NSGraphicsContext restoreGraphicsState];
         }
         
+        // Fill in the color as a stroke or fill
         NSColor *modeColor;
-        if (selectedModeDirection == direction &&
+        if (!interactive && selectedModeDirection == direction &&
             appDelegate.modeMap.selectedModeDirection == direction) {
-            modeColor = NSColorFromRGB(0x4585BE);
+            modeColor = NSColorFromRGB(0x45859E);
         } else if (interactive && appDelegate.modeMap.hoverModeDirection == direction &&
                    appDelegate.modeMap.inspectingModeDirection != direction) {
-                modeColor = NSColorFromRGB(0x303AA0);
+            modeColor = NSColorFromRGB(0x505AC0);
+        } else if (interactive && appDelegate.modeMap.inspectingModeDirection == direction) {
+            modeColor = NSColorFromRGB(0x303AA0);
         } else {
             modeColor = [NSColor colorWithCalibratedHue:0.55f saturation:0.5f brightness:0.2f
                                                   alpha:activeModeDirection == direction ? 0.5f :
                          selectedModeDirection == direction ? 0.7f : INACTIVE_OPACITY];
         }
-        if (!interactive) {
+        if (!showOutline) {
             if (self.isHighlighted) {
                 [[NSColor colorWithDeviceWhite:1.0f
                                          alpha:activeModeDirection == direction ? 0.5f :
@@ -227,7 +242,10 @@
 #pragma mark - Events
 
 - (void)createTrackingArea {
-    int opts = (NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways | NSTrackingActiveInKeyWindow);
+    if (!interactive) return;
+    
+    int opts = (NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways |
+                NSTrackingMouseMoved | NSTrackingActiveInKeyWindow);
     NSTrackingArea *trackingArea = [ [NSTrackingArea alloc] initWithRect:[self bounds]
                                                                  options:opts
                                                                    owner:self
@@ -255,29 +273,19 @@
     }
 }
 
-
-- (void)mouseEntered:(NSEvent *)theEvent {
+- (void)mouseMoved:(NSEvent *)theEvent {
     if (!interactive) {
-        [super mouseEntered:theEvent];
+        [super mouseMoved:theEvent];
         return;
     }
     
     [self mouseMovement:theEvent hovering:YES];
 }
 
-- (void)mouseExited:(NSEvent *)theEvent {
-    if (!interactive) {
-        [super mouseExited:theEvent];
-        return;
-    }
-
-    [self mouseMovement:theEvent hovering:NO];
-}
-
 - (void)mouseMovement:(NSEvent *)theEvent hovering:(BOOL)hovering {
     NSPoint location = [theEvent locationInWindow];
     NSPoint center = [self convertPoint:location fromView:nil];
-    
+//    NSLog(@"Movement: %@ in %@", NSStringFromPoint(center), NSStringFromRect(self.bounds));
     if ([northPath containsPoint:center]) {
         [appDelegate.modeMap toggleHoverModeDirection:NORTH hovering:hovering];
     } else if ([eastPath containsPoint:center]) {
@@ -286,6 +294,8 @@
         [appDelegate.modeMap toggleHoverModeDirection:WEST hovering:hovering];
     } else if ([southPath containsPoint:center]) {
         [appDelegate.modeMap toggleHoverModeDirection:SOUTH hovering:hovering];
+    } else if (appDelegate.modeMap.hoverModeDirection != NO_DIRECTION) {
+        [appDelegate.modeMap toggleHoverModeDirection:NO_DIRECTION hovering:NO];
     }
 }
 

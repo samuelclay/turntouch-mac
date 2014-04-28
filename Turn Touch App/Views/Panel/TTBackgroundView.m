@@ -54,7 +54,7 @@
     _diamondLabels = [[TTDiamondLabels alloc] initWithFrame:labelRect diamondRect:diamondRect];
     [self addSubview:_diamondLabels];
 
-    _diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect];
+    _diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect interactive:YES];
     [_diamondView setIgnoreSelectedMode:YES];
     [_diamondView setShowOutline:YES];
     [_diamondView setInteractive:YES];

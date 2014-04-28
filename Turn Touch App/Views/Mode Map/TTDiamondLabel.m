@@ -13,7 +13,7 @@
 @implementation TTDiamondLabel
 
 - (id)initWithFrame:(NSRect)frame inDirection:(TTModeDirection)direction {
-    frame = NSInsetRect(frame, -1 * PADDING, -1 * PADDING);
+    frame = NSInsetRect(frame, 0, -1 * PADDING);
 
     self = [super initWithFrame:frame];
     if (self) {
@@ -50,7 +50,8 @@
         [keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]   ||
         [keyPath isEqual:NSStringFromSelector(@selector(selectedMode))]) {
         [self setupLabels];
-        [self setNeedsDisplay:YES];
+//        [self setNeedsDisplay:YES];
+        [self.superview setNeedsDisplay:YES];
     }
 }
 
@@ -61,20 +62,25 @@
     
     NSRect rect = NSInsetRect(self.bounds, PADDING, PADDING);
 	NSString *directionLabel;
-    NSSize size = [directionLabel sizeWithAttributes:labelAttributes];
     
     if (labelDirection == NORTH) {
         directionLabel = [appDelegate.modeMap.selectedMode titleNorth];
     } else if (labelDirection == EAST) {
         directionLabel = [appDelegate.modeMap.selectedMode titleEast];
     } else if (labelDirection == WEST) {
-        rect.origin.x += rect.size.width - size.width;
         directionLabel = [appDelegate.modeMap.selectedMode titleWest];
     } else if (labelDirection == SOUTH) {
         directionLabel = [appDelegate.modeMap.selectedMode titleSouth];
     }
     
     [directionLabel drawInRect:rect withAttributes:labelAttributes];
+    
+    
+    // Draw border
+//    NSBezierPath *textViewSurround = [NSBezierPath bezierPathWithRect:self.bounds];
+//    [textViewSurround setLineWidth:1];
+//    [[NSColor redColor] set];
+//    [textViewSurround stroke];
 }
 
 - (void)setupLabels {
@@ -107,20 +113,10 @@
 
 - (void)mouseEntered:(NSEvent *)theEvent {
     [appDelegate.modeMap toggleHoverModeDirection:labelDirection hovering:YES];
-    [self setupLabels];
-    NSCursor *cursor = [NSCursor pointingHandCursor];
-    [self addCursorRect:self.bounds cursor:cursor];
-    [cursor set];
-    [self.superview setNeedsDisplay:YES];
 }
 
 - (void)mouseExited:(NSEvent *)theEvent {
     [appDelegate.modeMap toggleHoverModeDirection:labelDirection hovering:NO];
-    [self setupLabels];
-    NSCursor *cursor = [NSCursor arrowCursor];
-    [self addCursorRect:self.bounds cursor:cursor];
-    [cursor set];
-    [self.superview setNeedsDisplay:YES];
 }
 
 - (void)mouseUp:(NSEvent *)theEvent {
