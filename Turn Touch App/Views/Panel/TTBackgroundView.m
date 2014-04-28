@@ -27,7 +27,7 @@
 
 @synthesize arrowX = _arrowX;
 @synthesize titleBarView = _titleBarView;
-@synthesize modeMenu = _modeMenu;
+@synthesize modeTabs = _modeTabs;
 @synthesize modeTitle = _modeTitle;
 @synthesize diamondView = _diamondView;
 @synthesize diamondLabels = _diamondLabels;
@@ -69,8 +69,8 @@
     NSRect modeMenuFrame = self.frame;
     modeMenuFrame.size.height = MODE_MENU_HEIGHT;
     modeMenuFrame.origin.y = NSMaxY(modeTitleFrame);
-    _modeMenu = [[TTModeMenuContainer alloc] initWithFrame:modeMenuFrame];
-    [self addSubview:_modeMenu];
+    _modeTabs = [[TTModeTabsContainer alloc] initWithFrame:modeMenuFrame];
+    [self addSubview:_modeTabs];
     
     NSRect titleBarFrame = self.frame;
     titleBarFrame.size.height = TITLE_BAR_HEIGHT;
@@ -82,7 +82,7 @@
 - (void)drawRect:(NSRect)dirtyRect {
     NSRect contentRect = NSInsetRect(self.frame, LINE_THICKNESS, LINE_THICKNESS);
 //    NSLog(@"Drawing background: %@", NSStringFromRect(dirtyRect));
-//    [_modeMenu invalidateIntrinsicContentSize];
+//    [_modeTabs invalidateIntrinsicContentSize];
     NSBezierPath *path = [NSBezierPath bezierPath];
 
     [path moveToPoint:NSMakePoint(_arrowX - ARROW_WIDTH / 2, NSMaxY(contentRect) - ARROW_HEIGHT)];

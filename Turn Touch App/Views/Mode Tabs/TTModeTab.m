@@ -1,16 +1,16 @@
 //
-//  TTModeMenuItem.m
+//  TTModeTab.m
 //  Turn Touch App
 //
 //  Created by Samuel Clay on 11/5/13.
 //  Copyright (c) 2013 Turn Touch. All rights reserved.
 //
 
-#import "TTModeMenuItem.h"
+#import "TTModeTab.h"
 
 #define DIAMOND_SIZE 22.0f
 
-@implementation TTModeMenuItem
+@implementation TTModeTab
 
 - (id)initWithFrame:(NSRect)frame direction:(TTModeDirection)direction {
     self = [super initWithFrame:frame];

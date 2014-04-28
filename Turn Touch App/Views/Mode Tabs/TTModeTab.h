@@ -1,5 +1,5 @@
 //
-//  TTModeMenuItem.h
+//  TTModeTab.h
 //  Turn Touch App
 //
 //  Created by Samuel Clay on 11/5/13.
@@ -14,7 +14,7 @@
 @class TTAppDelegate;
 @class TTDiamondView;
 
-@interface TTModeMenuItem : NSView <NSMenuDelegate> {
+@interface TTModeTab : NSView <NSMenuDelegate> {
     TTAppDelegate *appDelegate;
     TTModeDirection modeDirection;
     TTDiamondView *diamondView;

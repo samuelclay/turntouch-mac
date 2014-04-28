@@ -1,15 +1,15 @@
 //
-//  TTModeMenuContainer.m
+//  TTModeTabsContainer.m
 //  Turn Touch App
 //
 //  Created by Samuel Clay on 11/5/13.
 //  Copyright (c) 2013 Turn Touch. All rights reserved.
 //
 
-#import "TTModeMenuContainer.h"
-#import "TTModeMenuItem.h"
+#import "TTModeTabsContainer.h"
+#import "TTModeTab.h"
 
-@implementation TTModeMenuContainer
+@implementation TTModeTabsContainer
 
 @synthesize northItem;
 @synthesize eastItem;
@@ -26,19 +26,19 @@
         itemFrame.size.width = itemWidth;
         
         itemFrame.origin.x = itemWidth * 0;
-        northItem = [[TTModeMenuItem alloc] initWithFrame:itemFrame direction:NORTH];
+        northItem = [[TTModeTab alloc] initWithFrame:itemFrame direction:NORTH];
         [self addSubview:northItem];
         
         itemFrame.origin.x = itemWidth * 1;
-        eastItem = [[TTModeMenuItem alloc] initWithFrame:itemFrame direction:EAST];
+        eastItem = [[TTModeTab alloc] initWithFrame:itemFrame direction:EAST];
         [self addSubview:eastItem];
         
         itemFrame.origin.x = itemWidth * 2;
-        westItem = [[TTModeMenuItem alloc] initWithFrame:itemFrame direction:WEST];
+        westItem = [[TTModeTab alloc] initWithFrame:itemFrame direction:WEST];
         [self addSubview:westItem];
 
         itemFrame.origin.x = itemWidth * 3;
-        southItem = [[TTModeMenuItem alloc] initWithFrame:itemFrame direction:SOUTH];
+        southItem = [[TTModeTab alloc] initWithFrame:itemFrame direction:SOUTH];
         [self addSubview:southItem];
     }
     return self;
