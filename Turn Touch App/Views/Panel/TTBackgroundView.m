@@ -17,8 +17,9 @@
 
 #define SEARCH_INSET 10.0f
 #define TITLE_BAR_HEIGHT 48.0f
-#define MODE_MENU_HEIGHT 92.0f
+#define MODE_TABS_HEIGHT 92.0f
 #define MODE_TITLE_HEIGHT 64.0f
+#define MODE_MENU_HEIGHT 128.0f
 #define DIAMOND_SIZE 100.0f
 
 #pragma mark -
@@ -29,6 +30,7 @@
 @synthesize titleBarView = _titleBarView;
 @synthesize modeTabs = _modeTabs;
 @synthesize modeTitle = _modeTitle;
+@synthesize modeMenu = _modeMenu;
 @synthesize diamondView = _diamondView;
 @synthesize diamondLabels = _diamondLabels;
 @synthesize optionsView = _optionsView;
@@ -60,21 +62,29 @@
     [_diamondView setInteractive:YES];
     [self addSubview:_diamondView];
     
+    NSRect modeMenuFrame = self.frame;
+    modeMenuFrame.size.height = MODE_MENU_HEIGHT;
+    modeMenuFrame.origin.y = NSMaxY(labelRect);
+    _modeMenu = [[TTModeMenuContainer alloc] initWithFrame:modeMenuFrame];
+    [_modeMenu setItemPrototype:[TTModeMenuItem new]];
+    [_modeMenu setContent:appDelegate.modeMap.availableModes];
+    [self addSubview:_modeMenu];
+    
     NSRect modeTitleFrame = self.frame;
     modeTitleFrame.size.height = MODE_TITLE_HEIGHT;
-    modeTitleFrame.origin.y = NSMaxY(labelRect);
+    modeTitleFrame.origin.y = NSMaxY(modeMenuFrame);
     _modeTitle = [[TTModeTitleView alloc] initWithFrame:modeTitleFrame];
     [self addSubview:_modeTitle];
     
-    NSRect modeMenuFrame = self.frame;
-    modeMenuFrame.size.height = MODE_MENU_HEIGHT;
-    modeMenuFrame.origin.y = NSMaxY(modeTitleFrame);
-    _modeTabs = [[TTModeTabsContainer alloc] initWithFrame:modeMenuFrame];
+    NSRect modeTabsFrame = self.frame;
+    modeTabsFrame.size.height = MODE_TABS_HEIGHT;
+    modeTabsFrame.origin.y = NSMaxY(modeTitleFrame);
+    _modeTabs = [[TTModeTabsContainer alloc] initWithFrame:modeTabsFrame];
     [self addSubview:_modeTabs];
     
     NSRect titleBarFrame = self.frame;
     titleBarFrame.size.height = TITLE_BAR_HEIGHT;
-    titleBarFrame.origin.y = NSMaxY(modeMenuFrame);
+    titleBarFrame.origin.y = NSMaxY(modeTabsFrame);
     _titleBarView = [[TTTitleBarView alloc] initWithFrame:titleBarFrame];
     [self addSubview:_titleBarView];
 }

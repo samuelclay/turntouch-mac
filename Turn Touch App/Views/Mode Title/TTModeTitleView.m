@@ -126,38 +126,8 @@
 #pragma mark - Events
 
 - (void)showChangeModeMenu:(id)sender {
-    if (isModeChangeActive) {
-        isModeChangeActive = NO;
-        [self setNeedsDisplay:YES];
-    } else {
-        isModeChangeActive = YES;
-        [self setNeedsDisplay:YES];
-//        [modeDropdown addItemsWithTitles:appDelegate.modeMap.availableModeTitles];
-//        NSInteger selectedIndex = 0;
-//        for (NSString *modeClass in appDelegate.modeMap.availableModeClassNames) {
-//            if ([modeClass isEqualToString:NSStringFromClass([itemMode class])]) {
-//                break;
-//            }
-//            selectedIndex++;
-//        }
-//        [modeDropdown selectItemAtIndex:selectedIndex];
-    }
+    isModeChangeActive = !isModeChangeActive;
+    [self setNeedsDisplay:YES];
 }
-
-//- (void)changeModeDropdown:(id)sender {
-//    NSString *newModeClassName = [appDelegate.modeMap.availableModeClassNames
-//                                  objectAtIndex:[sender indexOfSelectedItem]];
-//    [appDelegate.modeMap changeDirection:modeDirection toMode:newModeClassName];
-//    isModeChangeActive = NO;
-//    [self setupMode];
-//    [self setNeedsDisplay:YES];
-//}
-//
-//- (void)hidePopupMenu {
-//    if (isModeChangeActive) {
-//        isModeChangeActive = NO;
-//        [self setNeedsDisplay:YES];
-//    }
-//}
 
 @end

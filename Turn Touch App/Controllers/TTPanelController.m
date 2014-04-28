@@ -55,7 +55,7 @@
 
     [self resize];
     
-    [self.backgroundView.modeTabs addObserver:self forKeyPath:@"frame" options:0 context:nil];
+    [self.backgroundView.modeMenu addObserver:self forKeyPath:@"frame" options:0 context:nil];
 }
 
 - (void) observeValueForKeyPath:(NSString*)keyPath
@@ -71,16 +71,22 @@
     NSPanel *panel = (id)[self window];
     
     NSInteger titleHeight = NSHeight(self.backgroundView.titleBarView.frame);
-    NSInteger menuHeight = NSHeight(self.backgroundView.modeTabs.frame);
+    NSInteger tabsHeight = NSHeight(self.backgroundView.modeTabs.frame);
     NSInteger modeTitleHeight = NSHeight(self.backgroundView.modeTitle.frame);
+    NSInteger modeMenuHeight = NSHeight(self.backgroundView.modeMenu.frame);
     NSInteger diamondHeight = NSHeight(self.backgroundView.diamondLabels.frame);
     NSInteger optionsHeight = NSHeight(self.backgroundView.optionsView.frame);
     NSInteger arrowHeight = ARROW_HEIGHT;
     NSRect statusRect = [self statusRectForWindow:panel];
     
     NSRect panelRect = [panel frame];
-    panelRect.size.height = titleHeight + menuHeight + modeTitleHeight +
-                            diamondHeight + optionsHeight + arrowHeight;
+    panelRect.size.height = titleHeight +
+                            tabsHeight +
+                            modeTitleHeight +
+                            modeMenuHeight +
+                            diamondHeight +
+                            optionsHeight +
+                            arrowHeight;
     panelRect.origin.x = roundf(NSMidX(statusRect) - NSWidth(panelRect) / 2);
     panelRect.origin.y = NSMaxY(statusRect) - NSHeight(panelRect);
     

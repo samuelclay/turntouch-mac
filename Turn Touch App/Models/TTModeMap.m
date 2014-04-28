@@ -1,5 +1,5 @@
 //
-//  TTDiamond.m
+//  TTModeMap.m
 //  Turn Touch App
 //
 //  Created by Samuel Clay on 8/21/13.
