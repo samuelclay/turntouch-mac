@@ -18,7 +18,7 @@
     return @"Today's headlines";
 }
 
-- (NSString *)imageName {
++ (NSString *)imageName {
     return @"newspaper-3.png";
 }
 

@@ -21,7 +21,7 @@
     return @"Control movies and tv";
 }
 
-- (NSString *)imageName {
++ (NSString *)imageName {
     return @"icon_movie.png";
 }
 

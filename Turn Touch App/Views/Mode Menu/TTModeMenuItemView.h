@@ -7,8 +7,20 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "TTAppDelegate.h"
 
-@interface TTModeMenuItemView : NSView
+@class TTAppDelegate;
+
+@interface TTModeMenuItemView : NSView {
+    TTAppDelegate *appDelegate;
+    Class modeClass;
+    NSString *modeTitle;
+    NSImage *modeImage;
+    NSDictionary *modeAttributes;
+    CGSize textSize;
+    BOOL hoverActive;
+    BOOL mouseDownActive;
+}
 
 @property (nonatomic) NSString *modeName;
 

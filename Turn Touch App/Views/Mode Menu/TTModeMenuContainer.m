@@ -22,7 +22,7 @@
 - (void)drawRect:(NSRect)dirtyRect
 {
     [super drawRect:dirtyRect];
-    
+    NSLog(@"Drawing menu container");
     // Drawing code here.
 }
 

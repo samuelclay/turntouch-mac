@@ -18,7 +18,7 @@
     return @"Wake up on time with music";
 }
 
-- (NSString *)imageName {
++ (NSString *)imageName {
     return @"clock.png";
 }
 

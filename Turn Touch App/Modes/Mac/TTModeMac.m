@@ -30,7 +30,7 @@
     return @"System-level controls";
 }
 
-- (NSString *)imageName {
++ (NSString *)imageName {
     NSString *machineModel = [[self class] machineModel];
     
     if ([machineModel rangeOfString:@"MacBook"].location != NSNotFound) {

@@ -38,7 +38,7 @@
     [self drawBackground];
     [self drawBorder];
 
-    modeImage = [NSImage imageNamed:[appDelegate.modeMap.selectedMode imageName]];
+    modeImage = [NSImage imageNamed:[[appDelegate.modeMap.selectedMode class] imageName]];
     [modeImage setSize:NSMakeSize(IMAGE_SIZE, IMAGE_SIZE)];
     CGFloat offset = (NSHeight(self.frame)/2) - (modeImage.size.height/2);
     NSPoint imagePoint = NSMakePoint(offset, offset);

@@ -19,24 +19,9 @@
 }
 
 - (void)setRepresentedObject:(id)representedObject {
+    NSLog(@"Setting obj: %@", representedObject);
     [super setRepresentedObject:representedObject];
-    [(TTModeMenuContainer *)[self view] setModeName:(NSString *)representedObject];
+    [(TTModeMenuItemView *)[self view] setModeName:(NSString *)representedObject];
 }
-
-//- (void)changeModeDropdown:(id)sender {
-//    NSString *newModeClassName = [appDelegate.modeMap.availableModeClassNames
-//                                  objectAtIndex:[sender indexOfSelectedItem]];
-//    [appDelegate.modeMap changeDirection:modeDirection toMode:newModeClassName];
-//    isModeChangeActive = NO;
-//    [self setupMode];
-//    [self setNeedsDisplay:YES];
-//}
-//
-//- (void)hidePopupMenu {
-//    if (isModeChangeActive) {
-//        isModeChangeActive = NO;
-//        [self setNeedsDisplay:YES];
-//    }
-//}
 
 @end

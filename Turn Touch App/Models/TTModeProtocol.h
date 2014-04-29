@@ -16,13 +16,13 @@
 - (void)runWest;
 - (void)runSouth;
 
-- (NSString *)imageName;
 - (NSString *)titleNorth;
 - (NSString *)titleEast;
 - (NSString *)titleWest;
 - (NSString *)titleSouth;
 + (NSString *)title;
 + (NSString *)description;
++ (NSString *)imageName;
 
 @optional
 - (void)activate;

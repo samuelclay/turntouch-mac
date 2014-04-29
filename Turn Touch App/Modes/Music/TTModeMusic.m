@@ -19,7 +19,7 @@
     return @"Control iTunes";
 }
 
-- (NSString *)imageName {
++ (NSString *)imageName {
     return @"vinyl.png";
 }
 

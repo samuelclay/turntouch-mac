@@ -28,10 +28,6 @@
 }
 
 
-- (NSString *)imageName {
-    return nil;
-}
-
 - (NSString *)titleNorth {
     return nil;
 }
@@ -53,6 +49,10 @@
 }
 
 + (NSString *)description {
+    return nil;
+}
+
++ (NSString *)imageName {
     return nil;
 }
 
