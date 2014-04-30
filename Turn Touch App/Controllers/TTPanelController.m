@@ -54,17 +54,6 @@
     [panel setBackgroundColor:[NSColor clearColor]];
 
     [self resize];
-    
-    [self.backgroundView.modeMenu addObserver:self forKeyPath:@"frame" options:0 context:nil];
-}
-
-- (void) observeValueForKeyPath:(NSString*)keyPath
-                       ofObject:(id)object
-                         change:(NSDictionary*)change
-                        context:(void*)context {
-    if ([keyPath isEqual:NSStringFromSelector(@selector(frame))]) {
-        [self resize];
-    }
 }
 
 - (void)resize {

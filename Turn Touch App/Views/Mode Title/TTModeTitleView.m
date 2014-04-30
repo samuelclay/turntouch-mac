@@ -36,7 +36,6 @@
     [super drawRect:dirtyRect];
     [self setupTitleAttributes];
     [self drawBackground];
-    [self drawBorder];
 
     modeImage = [NSImage imageNamed:[[appDelegate.modeMap.selectedMode class] imageName]];
     [modeImage setSize:NSMakeSize(IMAGE_SIZE, IMAGE_SIZE)];
@@ -54,7 +53,7 @@
                                     (NSHeight(self.frame)/2) - (32.0f/2),
                                     BUTTON_WIDTH, NSHeight(self.frame) - 32.0f);
     changeButton.frame = buttonFrame;
-    if (isModeChangeActive) {
+    if (appDelegate.modeMap.openedModeChangeMenu) {
         [self setChangeButtonTitle:@"cancel"];
     } else {
         [self setChangeButtonTitle:@"change"];
@@ -66,15 +65,6 @@
     NSRectFill(self.bounds);
 }
 
-- (void)drawBorder {
-    // Bottom border
-    NSBezierPath *line = [NSBezierPath bezierPath];
-    [line moveToPoint:NSMakePoint(NSMinX(self.bounds) + 12, NSMinY(self.bounds))];
-    [line lineToPoint:NSMakePoint(NSMaxX(self.bounds) - 12, NSMinY(self.bounds))];
-    [line setLineWidth:1.0];
-    [NSColorFromRGB(0xD0D0D0) set];
-    [line stroke];
-}
 #pragma mark - Attributes
 
 - (void)setChangeButtonTitle:(NSString *)title {
@@ -126,7 +116,7 @@
 #pragma mark - Events
 
 - (void)showChangeModeMenu:(id)sender {
-    isModeChangeActive = !isModeChangeActive;
+    appDelegate.modeMap.openedModeChangeMenu = !appDelegate.modeMap.openedModeChangeMenu;
     [self setNeedsDisplay:YES];
 }
 

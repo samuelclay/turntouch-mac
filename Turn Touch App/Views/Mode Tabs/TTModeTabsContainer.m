@@ -20,34 +20,40 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        NSRect itemFrame = frame;
-        CGFloat itemWidth = frame.size.width / 4;
-        itemFrame.origin.y = 0;
-        itemFrame.size.width = itemWidth;
-        
-        itemFrame.origin.x = itemWidth * 0;
-        northItem = [[TTModeTab alloc] initWithFrame:itemFrame direction:NORTH];
+        northItem = [[TTModeTab alloc] initWithFrame:CGRectZero direction:NORTH];
         [self addSubview:northItem];
         
-        itemFrame.origin.x = itemWidth * 1;
-        eastItem = [[TTModeTab alloc] initWithFrame:itemFrame direction:EAST];
+        eastItem = [[TTModeTab alloc] initWithFrame:CGRectZero direction:EAST];
         [self addSubview:eastItem];
         
-        itemFrame.origin.x = itemWidth * 2;
-        westItem = [[TTModeTab alloc] initWithFrame:itemFrame direction:WEST];
+        westItem = [[TTModeTab alloc] initWithFrame:CGRectZero direction:WEST];
         [self addSubview:westItem];
 
-        itemFrame.origin.x = itemWidth * 3;
-        southItem = [[TTModeTab alloc] initWithFrame:itemFrame direction:SOUTH];
+        southItem = [[TTModeTab alloc] initWithFrame:CGRectZero direction:SOUTH];
         [self addSubview:southItem];
     }
     return self;
 }
 
-- (void)drawRect:(NSRect)dirtyRect
-{
+- (void)drawRect:(NSRect)dirtyRect {
 	[super drawRect:dirtyRect];
     [self drawBackground];
+    NSRect itemFrame = self.frame;
+    CGFloat itemWidth = NSWidth(self.frame) / 4;
+    itemFrame.origin.y = 0;
+    itemFrame.size.width = itemWidth;
+    
+    itemFrame.origin.x = itemWidth * 0;
+    [northItem setFrame:itemFrame];
+    
+    itemFrame.origin.x = itemWidth * 1;
+    [eastItem setFrame:itemFrame];
+    
+    itemFrame.origin.x = itemWidth * 2;
+    [westItem setFrame:itemFrame];
+    
+    itemFrame.origin.x = itemWidth * 3;
+    [southItem setFrame:itemFrame];
 }
 
 - (void)drawBackground {

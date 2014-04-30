@@ -19,6 +19,7 @@
 @synthesize activeModeDirection;
 @synthesize inspectingModeDirection;
 @synthesize hoverModeDirection;
+@synthesize openedModeChangeMenu;
 @synthesize selectedMode;
 @synthesize northMode;
 @synthesize eastMode;
@@ -42,6 +43,7 @@
         activeModeDirection = NO_DIRECTION;
         inspectingModeDirection = NO_DIRECTION;
         hoverModeDirection = NO_DIRECTION;
+        openedModeChangeMenu = NO;
         
         [self setupModes];
         

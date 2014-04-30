@@ -23,6 +23,7 @@ typedef enum {
 @property (nonatomic, assign) TTModeDirection selectedModeDirection;
 @property (nonatomic, assign) TTModeDirection inspectingModeDirection;
 @property (nonatomic, assign) TTModeDirection hoverModeDirection;
+@property (nonatomic, assign) BOOL openedModeChangeMenu;
 @property (nonatomic) TTMode *selectedMode;
 @property (nonatomic) TTMode *northMode;
 @property (nonatomic) TTMode *eastMode;

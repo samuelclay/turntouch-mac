@@ -16,7 +16,7 @@
 #define CORNER_RADIUS 8.0f
 
 #define SEARCH_INSET 10.0f
-#define TITLE_BAR_HEIGHT 48.0f
+#define TITLE_BAR_HEIGHT 38.0f
 #define MODE_TABS_HEIGHT 92.0f
 #define MODE_TITLE_HEIGHT 64.0f
 #define MODE_MENU_HEIGHT 128.0f
@@ -40,59 +40,58 @@
 - (void)awakeFromNib {
     appDelegate = [NSApp delegate];
 
-    NSRect modeOptionsFrame = self.frame;
-    modeOptionsFrame.size.height = 100;
-    modeOptionsFrame.origin.y = NSMinY(self.frame);
-    _optionsView = [[TTOptionsView alloc] initWithFrame:modeOptionsFrame];
-//    _modeOptionsView.autoresizingMask = NSViewWidthSizable | NSViewMinXMargin | NSViewMaxXMargin;
+    _optionsView = [[TTOptionsView alloc] initWithFrame:CGRectZero];
     [self addSubview:_optionsView];
     
-    CGFloat centerHeight = DIAMOND_SIZE*2.5;
-    // +1 X offset for panel width fudge
-    NSRect diamondRect = NSMakeRect(NSWidth(self.frame) / 2 - (DIAMOND_SIZE * 1.3 / 2) + 1,
-                                    centerHeight / 2 - DIAMOND_SIZE / 2 + NSHeight(modeOptionsFrame),
-                                    DIAMOND_SIZE * 1.3, DIAMOND_SIZE);
-    NSRect labelRect = NSMakeRect(0, NSHeight(modeOptionsFrame), NSWidth(self.bounds), centerHeight);
-    _diamondLabels = [[TTDiamondLabels alloc] initWithFrame:labelRect diamondRect:diamondRect];
+    _diamondLabels = [[TTDiamondLabels alloc] initWithFrame:CGRectZero];
     [self addSubview:_diamondLabels];
 
-    _diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect interactive:YES];
+    _diamondView = [[TTDiamondView alloc] initWithFrame:CGRectZero interactive:YES];
     [_diamondView setIgnoreSelectedMode:YES];
     [_diamondView setShowOutline:YES];
     [_diamondView setInteractive:YES];
     [self addSubview:_diamondView];
     
-    NSRect modeMenuFrame = self.frame;
-    modeMenuFrame.size.height = MODE_MENU_HEIGHT;
-    modeMenuFrame.origin.y = NSMaxY(labelRect);
-    _modeMenu = [[TTModeMenuContainer alloc] initWithFrame:modeMenuFrame];
+    _modeMenu = [[TTModeMenuContainer alloc] initWithFrame:CGRectZero];
     [_modeMenu setItemPrototype:[TTModeMenuItem new]];
     [_modeMenu setContent:appDelegate.modeMap.availableModes];
     [self addSubview:_modeMenu];
     
-    NSRect modeTitleFrame = self.frame;
-    modeTitleFrame.size.height = MODE_TITLE_HEIGHT;
-    modeTitleFrame.origin.y = NSMaxY(modeMenuFrame);
-    _modeTitle = [[TTModeTitleView alloc] initWithFrame:modeTitleFrame];
+    _modeTitle = [[TTModeTitleView alloc] initWithFrame:CGRectZero];
     [self addSubview:_modeTitle];
     
-    NSRect modeTabsFrame = self.frame;
-    modeTabsFrame.size.height = MODE_TABS_HEIGHT;
-    modeTabsFrame.origin.y = NSMaxY(modeTitleFrame);
-    _modeTabs = [[TTModeTabsContainer alloc] initWithFrame:modeTabsFrame];
+    _modeTabs = [[TTModeTabsContainer alloc] initWithFrame:CGRectZero];
     [self addSubview:_modeTabs];
     
-    NSRect titleBarFrame = self.frame;
-    titleBarFrame.size.height = TITLE_BAR_HEIGHT;
-    titleBarFrame.origin.y = NSMaxY(modeTabsFrame);
-    _titleBarView = [[TTTitleBarView alloc] initWithFrame:titleBarFrame];
+    _titleBarView = [[TTTitleBarView alloc] initWithFrame:CGRectZero];
     [self addSubview:_titleBarView];
+    
+    [self layout];
+    
+    [self registerAsObserver];
 }
 
+#pragma mark - KVO
+
+- (void)registerAsObserver {
+    [appDelegate.modeMap addObserver:self forKeyPath:@"openedModeChangeMenu"
+                             options:0 context:nil];
+}
+
+- (void) observeValueForKeyPath:(NSString*)keyPath
+                       ofObject:(id)object
+                         change:(NSDictionary*)change
+                        context:(void*)context {
+    if ([keyPath isEqual:NSStringFromSelector(@selector(openedModeChangeMenu))]) {
+        [self toggleModeMenuFrame];
+    }
+}
+
+#pragma mark - Drawing
+
 - (void)drawRect:(NSRect)dirtyRect {
+    //    NSLog(@"Drawing background: %@", NSStringFromRect(dirtyRect));
     NSRect contentRect = NSInsetRect(self.frame, LINE_THICKNESS, LINE_THICKNESS);
-//    NSLog(@"Drawing background: %@", NSStringFromRect(dirtyRect));
-//    [_modeTabs invalidateIntrinsicContentSize];
     NSBezierPath *path = [NSBezierPath bezierPath];
 
     [path moveToPoint:NSMakePoint(_arrowX - ARROW_WIDTH / 2, NSMaxY(contentRect) - ARROW_HEIGHT)];
@@ -103,48 +102,79 @@
     
     [[NSColor colorWithDeviceWhite:1 alpha:FILL_OPACITY] setFill];
     [path fill];
-
-    //
-//    NSPoint topRightCorner = NSMakePoint(NSMaxX(contentRect), NSMaxY(contentRect) - ARROW_HEIGHT);
-//    [path curveToPoint:NSMakePoint(NSMaxX(contentRect), NSMaxY(contentRect) - ARROW_HEIGHT - CORNER_RADIUS)
-//         controlPoint1:topRightCorner controlPoint2:topRightCorner];
-//    
-//    [path lineToPoint:NSMakePoint(NSMaxX(contentRect), NSMinY(contentRect) + CORNER_RADIUS)];
-//    
-//    NSPoint bottomRightCorner = NSMakePoint(NSMaxX(contentRect), NSMinY(contentRect));
-//    [path curveToPoint:NSMakePoint(NSMaxX(contentRect) - CORNER_RADIUS, NSMinY(contentRect))
-//         controlPoint1:bottomRightCorner controlPoint2:bottomRightCorner];
-//    
-//    [path lineToPoint:NSMakePoint(NSMinX(contentRect) + CORNER_RADIUS, NSMinY(contentRect))];
-//    
-//    NSPoint bottomLeftCorner = NSMakePoint(NSMinX(contentRect), NSMinY(contentRect));
-//    [path curveToPoint:NSMakePoint(NSMinX(contentRect), NSMinY(contentRect) + CORNER_RADIUS)
-//         controlPoint1:bottomLeftCorner controlPoint2:bottomLeftCorner];
-//    
-//    [path lineToPoint:NSMakePoint(NSMinX(contentRect), NSMaxY(contentRect) - ARROW_HEIGHT - CORNER_RADIUS)];
-//    
-//    NSPoint topLeftCorner = NSMakePoint(NSMinX(contentRect), NSMaxY(contentRect) - ARROW_HEIGHT);
-//    [path curveToPoint:NSMakePoint(NSMinX(contentRect) + CORNER_RADIUS, NSMaxY(contentRect) - ARROW_HEIGHT)
-//         controlPoint1:topLeftCorner controlPoint2:topLeftCorner];
-//    
-//    [path lineToPoint:NSMakePoint(_arrowX - ARROW_WIDTH / 2, NSMaxY(contentRect) - ARROW_HEIGHT)];
-//
-//    [path closePath];
-//    
-//    [[NSColor colorWithDeviceWhite:1 alpha:FILL_OPACITY] setFill];
-//    [path fill];
-//    
-//    [NSGraphicsContext saveGraphicsState];
-//
-//    NSBezierPath *clip = [NSBezierPath bezierPathWithRect:[self bounds]];
-//    [clip appendBezierPath:path];
-//    [clip addClip];
     
     [path setLineWidth:LINE_THICKNESS * 2];
     [[NSColor whiteColor] setStroke];
     [path stroke];
     
-//    [NSGraphicsContext restoreGraphicsState];    
+}
+
+- (void)layout {
+    [super layout];
+    
+    NSRect modeOptionsFrame = self.frame;
+    modeOptionsFrame.size.height = 40;
+    modeOptionsFrame.origin.y = NSMinY(self.frame);
+    [_optionsView setFrame:modeOptionsFrame];
+    
+    CGFloat centerHeight = DIAMOND_SIZE*2.5;
+    // +1 X offset for panel width fudge
+    NSRect diamondRect = NSMakeRect(NSWidth(self.frame) / 2 - (DIAMOND_SIZE * 1.3 / 2) + 1,
+                                    centerHeight / 2 - DIAMOND_SIZE / 2 + NSHeight(modeOptionsFrame),
+                                    DIAMOND_SIZE * 1.3, DIAMOND_SIZE);
+    NSRect labelRect = NSMakeRect(0, NSHeight(modeOptionsFrame), NSWidth(self.bounds), centerHeight);
+    [_diamondLabels setFrame:labelRect];
+    [_diamondLabels setDiamondRect:diamondRect];
+    [_diamondLabels drawLabels];
+    
+    [_diamondView setFrame:diamondRect];
+    
+    NSRect modeMenuFrame = self.frame;
+    modeMenuFrame.size.height = 1;
+    modeMenuFrame.origin.y = NSMaxY(labelRect);
+    [_modeMenu setFrame:modeMenuFrame];
+    
+    NSRect modeTitleFrame = self.frame;
+    modeTitleFrame.size.height = MODE_TITLE_HEIGHT;
+    modeTitleFrame.origin.y = NSMaxY(modeMenuFrame);
+    [_modeTitle setFrame:modeTitleFrame];
+    
+    NSRect modeTabsFrame = self.frame;
+    modeTabsFrame.size.height = MODE_TABS_HEIGHT;
+    modeTabsFrame.origin.y = NSMaxY(modeTitleFrame);
+    [_modeTabs setFrame:modeTabsFrame];
+    
+    NSRect titleBarFrame = self.frame;
+    titleBarFrame.size.height = TITLE_BAR_HEIGHT;
+    titleBarFrame.origin.y = NSMaxY(modeTabsFrame);
+    [_titleBarView setFrame:titleBarFrame];
+}
+
+- (void)toggleModeMenuFrame {
+    NSRect menuFrame = _modeMenu.frame;
+    if (appDelegate.modeMap.openedModeChangeMenu) {
+        menuFrame.size.height = 100;
+    } else {
+        menuFrame.size.height = 1;
+    }
+    NSDictionary *modeMenuAnimation = @{NSViewAnimationTargetKey: _modeMenu,
+                                        NSViewAnimationStartFrameKey: [NSValue valueWithRect:_modeMenu.frame],
+                                        NSViewAnimationEndFrameKey: [NSValue valueWithRect:menuFrame]};
+    
+    NSRect frame = self.frame;
+    if (appDelegate.modeMap.openedModeChangeMenu) {
+        frame.size.height += 100;
+    } else {
+        frame.size.height -= 99;
+    }
+    NSDictionary *backgroundAnimation = @{NSViewAnimationTargetKey: self,
+                                          NSViewAnimationStartFrameKey: [NSValue valueWithRect:self.frame],
+                                          NSViewAnimationEndFrameKey: [NSValue valueWithRect:frame]};
+    NSViewAnimation *animation = [[NSViewAnimation alloc]
+                                  initWithViewAnimations:
+                                  @[modeMenuAnimation, backgroundAnimation]];
+    [animation setDuration:.75f];
+    [animation startAnimation];
 }
 
 - (void)resetPosition {

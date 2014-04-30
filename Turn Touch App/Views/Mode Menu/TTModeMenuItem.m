@@ -19,7 +19,6 @@
 }
 
 - (void)setRepresentedObject:(id)representedObject {
-    NSLog(@"Setting obj: %@", representedObject);
     [super setRepresentedObject:representedObject];
     [(TTModeMenuItemView *)[self view] setModeName:(NSString *)representedObject];
 }

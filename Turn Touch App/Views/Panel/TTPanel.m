@@ -19,8 +19,6 @@
 }
 
 - (void)awakeFromNib {
-//    backgroundView = [[TTBackgroundView alloc] initWithFrame:self.frame];
-//    [self setContentView:backgroundView];
     TTAppDelegate *appDelegate = [NSApp delegate];
     [appDelegate.panelController resize];
 }

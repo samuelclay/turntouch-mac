@@ -20,10 +20,7 @@
         hoverActive = NO;
         mouseDownActive = NO;
         
-        NSRect diamondRect = NSMakeRect((NSWidth(frame) / 2) - (DIAMOND_SIZE * 1.3 / 2),
-                                        NSHeight(frame) - 18 - DIAMOND_SIZE,
-                                        DIAMOND_SIZE * 1.3, DIAMOND_SIZE);
-        diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect];
+        diamondView = [[TTDiamondView alloc] initWithFrame:CGRectZero];
         [diamondView setOverrideSelectedDirection:modeDirection];
         [diamondView setIgnoreSelectedMode:YES];
         [self addSubview:diamondView];
@@ -121,9 +118,22 @@
                                      18);
 
     [modeTitle drawAtPoint:titlePoint withAttributes:modeAttributes];
+    
+    NSRect diamondRect = NSMakeRect((NSWidth(self.frame) / 2) - (DIAMOND_SIZE * 1.3 / 2),
+                                    NSHeight(self.frame) - 18 - DIAMOND_SIZE,
+                                    DIAMOND_SIZE * 1.3, DIAMOND_SIZE);
+    [diamondView setFrame:diamondRect];
+}
+
+- (void)updateTrackingAreas {
+    [self createTrackingArea];
 }
 
 - (void)createTrackingArea {
+    for (NSTrackingArea *area in self.trackingAreas) {
+        [self removeTrackingArea:area];
+    }
+    
     int opts = (NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways);
     NSTrackingArea *trackingArea = [ [NSTrackingArea alloc] initWithRect:[self bounds]
                                                                  options:opts

@@ -64,6 +64,9 @@
 - (void)drawRect:(NSRect)dirtyRect {
     [self drawBackground];
     
+    [modeTitleView setFrame:self.frame];
+    [actionTitleView setFrame:self.frame];
+    
     if (appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION) {
         [modeTitleView setHidden:NO];
         [actionTitleView setHidden:YES];

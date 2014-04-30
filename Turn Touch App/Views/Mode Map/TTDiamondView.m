@@ -241,8 +241,15 @@
 
 #pragma mark - Events
 
+- (void)updateTrackingAreas {
+    [self createTrackingArea];
+}
+
 - (void)createTrackingArea {
     if (!interactive) return;
+    for (NSTrackingArea *area in self.trackingAreas) {
+        [self removeTrackingArea:area];
+    }
     
     int opts = (NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways |
                 NSTrackingMouseMoved | NSTrackingActiveInKeyWindow);

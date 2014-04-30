@@ -7,6 +7,8 @@
 //
 
 #import "TTModeMenuContainer.h"
+#import "TTBackgroundView.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation TTModeMenuContainer
 
@@ -15,15 +17,39 @@
     self = [super initWithFrame:frame];
     if (self) {
         appDelegate = [NSApp delegate];
+        self.autoresizingMask = NSViewMaxXMargin | NSViewMaxYMargin | NSViewHeightSizable;
     }
     return self;
 }
 
+#pragma mark - Drawing
+
 - (void)drawRect:(NSRect)dirtyRect
 {
     [super drawRect:dirtyRect];
-    NSLog(@"Drawing menu container");
-    // Drawing code here.
+    [self drawBorder];
+    
+}
+
+- (void)drawBorder {
+    // Top border
+    BOOL open = appDelegate.modeMap.openedModeChangeMenu;
+    NSBezierPath *line = [NSBezierPath bezierPath];
+    [line moveToPoint:NSMakePoint(NSMinX(self.bounds) + (open ? 0 : 12), NSMaxY(self.bounds))];
+    [line lineToPoint:NSMakePoint(NSMaxX(self.bounds) - (open ? 0 : 12), NSMaxY(self.bounds))];
+    [line setLineWidth:1.0];
+    [NSColorFromRGB(0xD0D0D0) set];
+    [line stroke];
+    
+    // Bottom border
+    if (open) {
+        NSBezierPath *line = [NSBezierPath bezierPath];
+        [line moveToPoint:NSMakePoint(NSMinX(self.bounds) + 12, NSMinY(self.bounds))];
+        [line lineToPoint:NSMakePoint(NSMaxX(self.bounds) - 12, NSMinY(self.bounds))];
+        [line setLineWidth:1.0];
+        [NSColorFromRGB(0xD0D0D0) set];
+        [line stroke];
+    }
 }
 
 @end

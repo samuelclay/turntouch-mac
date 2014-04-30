@@ -27,8 +27,13 @@
     TTDiamondLabel *eastLabel;
     TTDiamondLabel *westLabel;
     TTDiamondLabel *southLabel;
+    
+    TTDiamondView *diamondView;
 }
 
+@property (nonatomic) NSRect diamondRect;
+
 - (id)initWithFrame:(NSRect)frame diamondRect:(NSRect)theDiamondRect;
+- (void)drawLabels;
 
 @end

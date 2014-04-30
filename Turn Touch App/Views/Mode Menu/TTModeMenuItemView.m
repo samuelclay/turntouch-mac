@@ -28,6 +28,10 @@
     return self;
 }
 
+- (void)setModeName:(NSString *)_modeName {
+    modeName = _modeName;
+    modeClass = NSClassFromString(modeName);
+}
 
 #pragma mark - KVO
 
@@ -55,9 +59,7 @@
 #pragma mark - Drawing
 
 - (void)drawRect:(NSRect)dirtyRect {
-    NSLog(@"Draw menu item: %@", modeName);
     [super drawRect:dirtyRect];
-    modeClass = NSClassFromString(modeName);
     [self setupTitleAttributes];
     [self drawBackground];
     
@@ -107,7 +109,15 @@
     }
 }
 
+- (void)updateTrackingAreas {
+    [self createTrackingArea];
+}
+
 - (void)createTrackingArea {
+    for (NSTrackingArea *area in self.trackingAreas) {
+        [self removeTrackingArea:area];
+    }
+
     int opts = (NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways);
     NSTrackingArea *trackingArea = [ [NSTrackingArea alloc] initWithRect:[self bounds]
                                                                  options:opts
