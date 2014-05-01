@@ -39,34 +39,61 @@
 
 - (void)awakeFromNib {
     appDelegate = [NSApp delegate];
-
-    _optionsView = [[TTOptionsView alloc] initWithFrame:CGRectZero];
+    
+    NSRect modeOptionsFrame = self.frame;
+    modeOptionsFrame.size.height = 40;
+    modeOptionsFrame.origin.y = NSMinY(self.frame);
+    _optionsView = [[TTOptionsView alloc] initWithFrame:modeOptionsFrame];
+//    [_optionsView setAutoresizingMask:NSViewMinYMargin];
     [self addSubview:_optionsView];
     
-    _diamondLabels = [[TTDiamondLabels alloc] initWithFrame:CGRectZero];
+    
+    CGFloat centerHeight = DIAMOND_SIZE*2.5;
+    // +1 X offset for panel width fudge
+    NSRect diamondRect = NSMakeRect(NSWidth(self.frame) / 2 - (DIAMOND_SIZE * 1.3 / 2) + 1,
+                                    centerHeight / 2 - DIAMOND_SIZE / 2 + NSHeight(modeOptionsFrame),
+                                    DIAMOND_SIZE * 1.3, DIAMOND_SIZE);
+    NSRect labelRect = NSMakeRect(0, NSHeight(modeOptionsFrame), NSWidth(self.bounds), centerHeight);
+    _diamondLabels = [[TTDiamondLabels alloc] initWithFrame:labelRect diamondRect:diamondRect];
+    [_diamondLabels drawLabels];
+//    [_diamondLabels setAutoresizingMask:NSViewMinYMargin];
     [self addSubview:_diamondLabels];
 
-    _diamondView = [[TTDiamondView alloc] initWithFrame:CGRectZero interactive:YES];
+    _diamondView = [[TTDiamondView alloc] initWithFrame:labelRect interactive:YES];
     [_diamondView setIgnoreSelectedMode:YES];
     [_diamondView setShowOutline:YES];
     [_diamondView setInteractive:YES];
+//    [_diamondView setAutoresizingMask:NSViewMinYMargin];
     [self addSubview:_diamondView];
     
     _modeMenu = [[TTModeMenuContainer alloc] initWithFrame:CGRectZero];
     [_modeMenu setItemPrototype:[TTModeMenuItem new]];
     [_modeMenu setContent:appDelegate.modeMap.availableModes];
+    NSRect modeMenuFrame = self.frame;
+    modeMenuFrame.origin.y = NSMaxY(labelRect);
+    modeMenuFrame.size.height = _modeMenu.frame.size.height;
+    [_modeTitle setFrame:modeMenuFrame];
+//    [_modeMenu setAutoresizingMask:NSViewMinYMargin];
     [self addSubview:_modeMenu];
     
-    _modeTitle = [[TTModeTitleView alloc] initWithFrame:CGRectZero];
+    NSRect modeTitleFrame = self.frame;
+    modeTitleFrame.size.height = MODE_TITLE_HEIGHT;
+    modeTitleFrame.origin.y = NSMaxY(modeMenuFrame);
+    _modeTitle = [[TTModeTitleView alloc] initWithFrame:modeTitleFrame];
     [self addSubview:_modeTitle];
-    
-    _modeTabs = [[TTModeTabsContainer alloc] initWithFrame:CGRectZero];
+    NSLog(@"Title frame: %@", NSStringFromRect(_modeTitle.frame));
+
+    NSRect modeTabsFrame = self.frame;
+    modeTabsFrame.size.height = MODE_TABS_HEIGHT;
+    modeTabsFrame.origin.y = NSMaxY(modeTitleFrame);
+    _modeTabs = [[TTModeTabsContainer alloc] initWithFrame:modeTabsFrame];
     [self addSubview:_modeTabs];
     
-    _titleBarView = [[TTTitleBarView alloc] initWithFrame:CGRectZero];
+    NSRect titleBarFrame = self.frame;
+    titleBarFrame.size.height = TITLE_BAR_HEIGHT;
+    titleBarFrame.origin.y = NSMaxY(modeTabsFrame);
+    _titleBarView = [[TTTitleBarView alloc] initWithFrame:titleBarFrame];
     [self addSubview:_titleBarView];
-    
-    [self layout];
     
     [self registerAsObserver];
 }
@@ -109,72 +136,21 @@
     
 }
 
-- (void)layout {
-    [super layout];
-    
-    NSRect modeOptionsFrame = self.frame;
-    modeOptionsFrame.size.height = 40;
-    modeOptionsFrame.origin.y = NSMinY(self.frame);
-    [_optionsView setFrame:modeOptionsFrame];
-    
-    CGFloat centerHeight = DIAMOND_SIZE*2.5;
-    // +1 X offset for panel width fudge
-    NSRect diamondRect = NSMakeRect(NSWidth(self.frame) / 2 - (DIAMOND_SIZE * 1.3 / 2) + 1,
-                                    centerHeight / 2 - DIAMOND_SIZE / 2 + NSHeight(modeOptionsFrame),
-                                    DIAMOND_SIZE * 1.3, DIAMOND_SIZE);
-    NSRect labelRect = NSMakeRect(0, NSHeight(modeOptionsFrame), NSWidth(self.bounds), centerHeight);
-    [_diamondLabels setFrame:labelRect];
-    [_diamondLabels setDiamondRect:diamondRect];
-    [_diamondLabels drawLabels];
-    
-    [_diamondView setFrame:diamondRect];
-    
-    NSRect modeMenuFrame = self.frame;
-    modeMenuFrame.size.height = 1;
-    modeMenuFrame.origin.y = NSMaxY(labelRect);
-    [_modeMenu setFrame:modeMenuFrame];
-    
-    NSRect modeTitleFrame = self.frame;
-    modeTitleFrame.size.height = MODE_TITLE_HEIGHT;
-    modeTitleFrame.origin.y = NSMaxY(modeMenuFrame);
-    [_modeTitle setFrame:modeTitleFrame];
-    
-    NSRect modeTabsFrame = self.frame;
-    modeTabsFrame.size.height = MODE_TABS_HEIGHT;
-    modeTabsFrame.origin.y = NSMaxY(modeTitleFrame);
-    [_modeTabs setFrame:modeTabsFrame];
-    
-    NSRect titleBarFrame = self.frame;
-    titleBarFrame.size.height = TITLE_BAR_HEIGHT;
-    titleBarFrame.origin.y = NSMaxY(modeTabsFrame);
-    [_titleBarView setFrame:titleBarFrame];
-}
-
 - (void)toggleModeMenuFrame {
+    NSRect windowFrame = appDelegate.panelController.window.frame;
     NSRect menuFrame = _modeMenu.frame;
     if (appDelegate.modeMap.openedModeChangeMenu) {
-        menuFrame.size.height = 100;
+//        menuFrame.size.height = MODE_MENU_HEIGHT;
+        windowFrame.size.height += MODE_MENU_HEIGHT;
+        windowFrame.origin.y -= MODE_MENU_HEIGHT;
     } else {
-        menuFrame.size.height = 1;
+//        menuFrame.size.height = 1;
+        windowFrame.size.height -= MODE_MENU_HEIGHT;
+        windowFrame.origin.y += MODE_MENU_HEIGHT;
     }
-    NSDictionary *modeMenuAnimation = @{NSViewAnimationTargetKey: _modeMenu,
-                                        NSViewAnimationStartFrameKey: [NSValue valueWithRect:_modeMenu.frame],
-                                        NSViewAnimationEndFrameKey: [NSValue valueWithRect:menuFrame]};
+//    [[_modeMenu animator] setFrame:menuFrame];
     
-    NSRect frame = self.frame;
-    if (appDelegate.modeMap.openedModeChangeMenu) {
-        frame.size.height += 100;
-    } else {
-        frame.size.height -= 99;
-    }
-    NSDictionary *backgroundAnimation = @{NSViewAnimationTargetKey: self,
-                                          NSViewAnimationStartFrameKey: [NSValue valueWithRect:self.frame],
-                                          NSViewAnimationEndFrameKey: [NSValue valueWithRect:frame]};
-    NSViewAnimation *animation = [[NSViewAnimation alloc]
-                                  initWithViewAnimations:
-                                  @[modeMenuAnimation, backgroundAnimation]];
-    [animation setDuration:.75f];
-    [animation startAnimation];
+    [[appDelegate.panelController.window animator] setFrame:windowFrame display:YES animate:YES];
 }
 
 - (void)resetPosition {

@@ -15,7 +15,7 @@
     NSRect collectionRect = appDelegate.panelController.backgroundView.modeMenu.frame;
     [self setView:[[TTModeMenuItemView alloc]
                    initWithFrame:NSMakeRect(0, 0,
-                                            NSWidth(collectionRect) / 2, 48)]];
+                                            NSWidth(collectionRect) / 2, MENU_ITEM_HEIGHT)]];
 }
 
 - (void)setRepresentedObject:(id)representedObject {

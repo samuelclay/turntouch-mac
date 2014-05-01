@@ -19,7 +19,7 @@
 - (id)initWithFrame:(NSRect)frame diamondRect:(NSRect)theDiamondRect {
     self = [super initWithFrame:frame];
     if (self) {
-        diamondRect = theDiamondRect;
+        diamondRect = NSInsetRect(frame, 24, 24);
         appDelegate = [NSApp delegate];
         
         [self registerAsObserver];

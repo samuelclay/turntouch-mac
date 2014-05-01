@@ -8,6 +8,7 @@
 
 #import "TTModeMenuContainer.h"
 #import "TTBackgroundView.h"
+#import "TTModeMenuItem.h"
 #import <QuartzCore/QuartzCore.h>
 
 @implementation TTModeMenuContainer
@@ -17,7 +18,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         appDelegate = [NSApp delegate];
-        self.autoresizingMask = NSViewMaxXMargin | NSViewMaxYMargin | NSViewHeightSizable;
+//        self.autoresizingMask = NSViewMaxXMargin | NSViewMaxYMargin | NSViewHeightSizable;
     }
     return self;
 }
@@ -50,6 +51,12 @@
         [NSColorFromRGB(0xD0D0D0) set];
         [line stroke];
     }
+}
+
+- (void)setContent:(NSArray *)content {
+    NSRect frame = self.frame;
+    frame.size.height = ceil([content count] / 2) * MENU_ITEM_HEIGHT;
+    self.frame = frame;
 }
 
 @end

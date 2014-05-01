@@ -54,6 +54,16 @@
     [panel setBackgroundColor:[NSColor clearColor]];
 
     [self resize];
+    [self.backgroundView.modeMenu addObserver:self forKeyPath:@"frame" options:0 context:nil];
+}
+
+- (void) observeValueForKeyPath:(NSString*)keyPath
+                       ofObject:(id)object
+                         change:(NSDictionary*)change
+                        context:(void*)context {
+    if ([keyPath isEqual:NSStringFromSelector(@selector(frame))]) {
+        [self resize];
+    }
 }
 
 - (void)resize {
@@ -67,7 +77,7 @@
     NSInteger optionsHeight = NSHeight(self.backgroundView.optionsView.frame);
     NSInteger arrowHeight = ARROW_HEIGHT;
     NSRect statusRect = [self statusRectForWindow:panel];
-    
+    NSLog(@"modeMenuHeight: %d", (int)modeMenuHeight);
     NSRect panelRect = [panel frame];
     panelRect.size.height = titleHeight +
                             tabsHeight +

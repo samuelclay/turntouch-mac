@@ -10,6 +10,8 @@
 #import "TTModeMenuItemView.h"
 #import "TTAppDelegate.h"
 
+#define MENU_ITEM_HEIGHT 48.0f
+
 @class TTAppDelegate;
 
 @interface TTModeMenuItem : NSCollectionViewItem {
