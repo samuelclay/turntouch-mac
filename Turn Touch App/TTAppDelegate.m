@@ -7,8 +7,6 @@
 //
 
 #import "TTAppDelegate.h"
-#import "ORSSerialPort.h"
-#import "ORSSerialPortManager.h"
 #import <dispatch/dispatch.h>
 
 @implementation TTAppDelegate
@@ -55,8 +53,6 @@ void *kContextActivePanel = &kContextActivePanel;
 }
 
 - (void)applicationWillTerminate:(NSNotification *)notification {
-	NSArray *ports = [[ORSSerialPortManager sharedSerialPortManager] availablePorts];
-	for (ORSSerialPort *port in ports) { [port close]; }
 }
 
 

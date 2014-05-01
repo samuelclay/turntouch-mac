@@ -10,6 +10,7 @@
 #import "TTBackgroundView.h"
 #import "TTStatusItemView.h"
 #import "TTPanelDelegate.h"
+#import "TTPanelArrowView.h"
 
 #pragma mark -
 
@@ -27,6 +28,7 @@
 @property (nonatomic, unsafe_unretained, readonly) id<TTPanelControllerDelegate> delegate;
 
 - (id)initWithDelegate:(id<TTPanelControllerDelegate>)delegate;
+- (NSRect)statusRectForWindow:(NSWindow *)window;
 
 - (void)openPanel;
 - (void)closePanel;

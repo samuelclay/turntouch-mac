@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "TTAppDelegate.h"
 #import "TTDiamondLabel.h"
+#import "TTDiamondView.h"
 
 @class TTAppDelegate;
 @class TTDiamondLabel;
@@ -33,7 +34,6 @@
 
 @property (nonatomic) NSRect diamondRect;
 
-- (id)initWithFrame:(NSRect)frame diamondRect:(NSRect)theDiamondRect;
 - (void)drawLabels;
 
 @end

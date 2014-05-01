@@ -31,6 +31,8 @@
 
         southItem = [[TTModeTab alloc] initWithFrame:CGRectZero direction:SOUTH];
         [self addSubview:southItem];
+        
+        self.translatesAutoresizingMaskIntoConstraints = NO;
     }
     return self;
 }

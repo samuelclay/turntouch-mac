@@ -20,6 +20,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         appDelegate = [NSApp delegate];
+        self.translatesAutoresizingMaskIntoConstraints = NO;
 
         modeTitleView = [[TTOptionsModeTitle alloc] initWithFrame:self.frame];
         [actionTitleView setHidden:NO];

@@ -18,7 +18,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         appDelegate = [NSApp delegate];
-//        self.autoresizingMask = NSViewMaxXMargin | NSViewMaxYMargin | NSViewHeightSizable;
+        self.translatesAutoresizingMaskIntoConstraints = NO;
     }
     return self;
 }
@@ -57,6 +57,7 @@
     NSRect frame = self.frame;
     frame.size.height = ceil([content count] / 2) * MENU_ITEM_HEIGHT;
     self.frame = frame;
+    NSLog(@"Mode menu: %@", NSStringFromRect(self.frame));
 }
 
 @end

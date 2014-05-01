@@ -16,16 +16,41 @@
 
 @synthesize diamondRect;
 
-- (id)initWithFrame:(NSRect)frame diamondRect:(NSRect)theDiamondRect {
+- (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        diamondRect = NSInsetRect(frame, 24, 24);
         appDelegate = [NSApp delegate];
+        self.translatesAutoresizingMaskIntoConstraints = NO;
         
+        diamondRect = frame;
+        
+        diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect interactive:YES];
+        [diamondView setIgnoreSelectedMode:YES];
+        [diamondView setShowOutline:YES];
+        [diamondView setInteractive:YES];
+        [self addSubview:diamondView];
+        
+        northLabel = [[TTDiamondLabel alloc] initWithFrame:CGRectZero inDirection:NORTH];
+        [self addSubview:northLabel];
+        eastLabel = [[TTDiamondLabel alloc] initWithFrame:CGRectZero inDirection:EAST];
+        [self addSubview:eastLabel];
+        westLabel = [[TTDiamondLabel alloc] initWithFrame:CGRectZero inDirection:WEST];
+        [self addSubview:westLabel];
+        southLabel = [[TTDiamondLabel alloc] initWithFrame:CGRectZero inDirection:SOUTH];
+        [self addSubview:southLabel];
+
         [self registerAsObserver];
     }
     
     return self;
+}
+
+- (void)setFrame:(NSRect)frameRect {
+    [super setFrame:frameRect];
+    [[NSColor whiteColor] set];
+    NSRectFill(self.bounds);
+    diamondRect = NSInsetRect(frameRect, 24, 24);
+    [diamondView setFrame:diamondRect];
 }
 
 - (void)registerAsObserver {
@@ -58,11 +83,15 @@
 
 - (void)drawRect:(NSRect)dirtyRect {
 //    NSLog(@"Drawing labels: %@", NSStringFromRect(dirtyRect));
+	[super drawRect:dirtyRect];
+
+    [self drawLabels];
     [self drawBackground];
 }
 
 
 - (void)drawBackground {
+    
     [[NSColor whiteColor] setFill];
     NSRectFill(self.bounds);
 }
@@ -106,34 +135,22 @@
             textRect = NSMakeRect(frameWidth/2 - topWidth/2,
                                   frameHeight - labelHeight*3,
                                   topWidth, labelHeight);
-            northLabel = [[TTDiamondLabel alloc] initWithFrame:textRect inDirection:NORTH];
-            [self addSubview:northLabel];
+            [northLabel setFrame:textRect];
         } else if (direction == EAST) {
             textRect = NSMakeRect(NSMaxX(diamondRect), frameHeight/2 - labelHeight/2,
                                   sideWidth, labelHeight);
-            eastLabel = [[TTDiamondLabel alloc] initWithFrame:textRect inDirection:EAST];
-            [self addSubview:eastLabel];
+            [eastLabel setFrame:textRect];
         } else if (direction == WEST) {
             textRect = NSMakeRect(4, frameHeight/2 - labelHeight/2,
                                   sideWidth, labelHeight);
-            westLabel = [[TTDiamondLabel alloc] initWithFrame:textRect inDirection:WEST];
-            [self addSubview:westLabel];
+            [westLabel setFrame:textRect];
         } else if (direction == SOUTH) {
             textRect = NSMakeRect(frameWidth/2 - topWidth/2,
                                   labelHeight * 2,
                                   topWidth, labelHeight);
-            southLabel = [[TTDiamondLabel alloc] initWithFrame:textRect inDirection:SOUTH];
-            [self addSubview:southLabel];
+            [southLabel setFrame:textRect];
         }
     }
-}
-
-- (void)drawDiamond {
-    diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect interactive:YES];
-    [diamondView setIgnoreSelectedMode:YES];
-    [diamondView setShowOutline:YES];
-    [diamondView setInteractive:YES];
-    [self addSubview:diamondView];
 }
 
 #pragma mark - Events

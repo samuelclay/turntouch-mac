@@ -7,7 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTPanelController">
             <connections>
-                <outlet property="backgroundView" destination="3" id="5"/>
+                <outlet property="backgroundView" destination="3" id="cKg-La-WYo"/>
                 <outlet property="window" destination="2" id="4"/>
             </connections>
         </customObject>
@@ -17,10 +17,10 @@
             <windowStyleMask key="styleMask" utility="YES" nonactivatingPanel="YES"/>
             <windowCollectionBehavior key="collectionBehavior" moveToActiveSpace="YES" ignoresCycle="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="139" y="81" width="360" height="525"/>
+            <rect key="contentRect" x="139" y="81" width="360" height="286"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
             <view key="contentView" id="3" customClass="TTBackgroundView">
-                <rect key="frame" x="0.0" y="0.0" width="360" height="525"/>
+                <rect key="frame" x="0.0" y="0.0" width="360" height="286"/>
                 <autoresizingMask key="autoresizingMask"/>
             </view>
             <connections>

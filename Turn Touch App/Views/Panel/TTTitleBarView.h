@@ -11,7 +11,7 @@
 
 @class TTAppDelegate;
 
-@interface TTTitleBarView : NSView {
+@interface TTTitleBarView : NSView <NSStackViewDelegate> {
     TTAppDelegate *appDelegate;
     NSImage *title;
 }

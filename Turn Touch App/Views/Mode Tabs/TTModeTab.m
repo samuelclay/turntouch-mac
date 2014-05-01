@@ -51,7 +51,6 @@
             break;
     }
     
-    [self drawBackground];
     [self setupTitleAttributes];
 }
 
@@ -110,6 +109,7 @@
 	[super drawRect:dirtyRect];
     
     [self setupTitleAttributes];
+    [self drawBackground];
     
     [self drawBorders];
     
@@ -143,15 +143,15 @@
 }
 
 - (void)drawBackground {
+    CGContextRef context = (CGContextRef) [[NSGraphicsContext currentContext] graphicsPort];
     if (appDelegate.modeMap.selectedModeDirection == modeDirection) {
-        [self setWantsLayer:YES]; // view's backing store is using a Core Animation Layer
-        [self.layer setBackgroundColor:CGColorCreateGenericRGB(1, 1, 1, 1)];
+        CGContextSetRGBFillColor(context, 1, 1, 1, 1);
     } else if (mouseDownActive) {
-        [self setWantsLayer:YES]; // view's backing store is using a Core Animation Layer
-        [self.layer setBackgroundColor:CGColorCreateGenericRGB(0, 0, 0, .025)];
+        CGContextSetRGBFillColor(context, 0, 0, 0, 0.025);
     } else {
-        [self.layer setBackgroundColor:nil];
+        [[NSColor clearColor] set];
     }
+    CGContextFillRect(context, NSRectToCGRect(self.bounds));
 }
 
 - (void)drawBorders {
@@ -232,7 +232,7 @@
 
 - (void)mouseDown:(NSEvent *)theEvent {
     mouseDownActive = YES;
-    [self drawBackground];
+    [self setNeedsDisplay:YES];
 }
 
 - (void)mouseUp:(NSEvent *)theEvent {
@@ -241,7 +241,7 @@
     NSPoint clickPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
     BOOL inside = NSPointInRect(clickPoint, self.bounds);
     if (!inside) {
-        [self drawBackground];
+        [self setNeedsDisplay:YES];
         return;
     }
     

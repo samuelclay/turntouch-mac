@@ -16,7 +16,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         appDelegate = [NSApp delegate];
-        
+        self.translatesAutoresizingMaskIntoConstraints = NO;
         title = [NSImage imageNamed:@"Turn Touch title.png"];
         [title setSize:NSMakeSize(100, 11)];
     }
@@ -24,7 +24,14 @@
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
+    NSLog(@"Title rect: %@", NSStringFromRect(dirtyRect));
     [super drawRect:dirtyRect];
+    [self drawBackground];
+    [self drawLabel];
+}
+
+- (void)setFrame:(NSRect)frameRect {
+    [super setFrame:frameRect];
     [self drawBackground];
     [self drawLabel];
 }

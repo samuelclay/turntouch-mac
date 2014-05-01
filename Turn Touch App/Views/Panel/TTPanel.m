@@ -19,8 +19,6 @@
 }
 
 - (void)awakeFromNib {
-    TTAppDelegate *appDelegate = [NSApp delegate];
-    [appDelegate.panelController resize];
 }
 
 @end

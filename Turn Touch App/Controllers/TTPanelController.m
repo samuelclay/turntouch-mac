@@ -52,44 +52,6 @@
     [panel setLevel:NSPopUpMenuWindowLevel];
     [panel setOpaque:NO];
     [panel setBackgroundColor:[NSColor clearColor]];
-
-    [self resize];
-    [self.backgroundView.modeMenu addObserver:self forKeyPath:@"frame" options:0 context:nil];
-}
-
-- (void) observeValueForKeyPath:(NSString*)keyPath
-                       ofObject:(id)object
-                         change:(NSDictionary*)change
-                        context:(void*)context {
-    if ([keyPath isEqual:NSStringFromSelector(@selector(frame))]) {
-        [self resize];
-    }
-}
-
-- (void)resize {
-    NSPanel *panel = (id)[self window];
-    
-    NSInteger titleHeight = NSHeight(self.backgroundView.titleBarView.frame);
-    NSInteger tabsHeight = NSHeight(self.backgroundView.modeTabs.frame);
-    NSInteger modeTitleHeight = NSHeight(self.backgroundView.modeTitle.frame);
-    NSInteger modeMenuHeight = NSHeight(self.backgroundView.modeMenu.frame);
-    NSInteger diamondHeight = NSHeight(self.backgroundView.diamondLabels.frame);
-    NSInteger optionsHeight = NSHeight(self.backgroundView.optionsView.frame);
-    NSInteger arrowHeight = ARROW_HEIGHT;
-    NSRect statusRect = [self statusRectForWindow:panel];
-    NSLog(@"modeMenuHeight: %d", (int)modeMenuHeight);
-    NSRect panelRect = [panel frame];
-    panelRect.size.height = titleHeight +
-                            tabsHeight +
-                            modeTitleHeight +
-                            modeMenuHeight +
-                            diamondHeight +
-                            optionsHeight +
-                            arrowHeight;
-    panelRect.origin.x = roundf(NSMidX(statusRect) - NSWidth(panelRect) / 2);
-    panelRect.origin.y = NSMaxY(statusRect) - NSHeight(panelRect);
-    
-    [panel setFrame:panelRect display:YES];
 }
 
 #pragma mark - Public accessors
@@ -163,8 +125,6 @@
     NSRect statusRect = [self statusRectForWindow:panel];
     
     NSRect panelRect = [panel frame];
-    panelRect.size.width = PANEL_WIDTH;
-    panelRect.size.height = PANEL_HEIGHT;
     panelRect.origin.x = roundf(NSMidX(statusRect) - NSWidth(panelRect) / 2);
     panelRect.origin.y = NSMaxY(statusRect) - NSHeight(panelRect);
     
@@ -176,12 +136,7 @@
     [panel setFrame:panelRect display:YES];
     [panel makeKeyAndOrderFront:nil];
     
-    CGFloat statusX = roundf(NSMidX(statusRect));
-    CGFloat panelX = statusX - NSMinX(panelRect);
-    
-    self.backgroundView.arrowX = panelX;
     [self.backgroundView resetPosition];
-    [self resize];
     
     NSTimeInterval openDuration = OPEN_DURATION;
     

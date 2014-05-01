@@ -8,18 +8,16 @@
 
 #import <Cocoa/Cocoa.h>
 #import "TTAppDelegate.h"
+#import "TTPanelArrowView.h"
 #import "TTModeTabsContainer.h"
 #import "TTModeTitleView.h"
 #import "TTModeMenuContainer.h"
-#import "TTDiamondView.h"
 #import "TTDiamondLabels.h"
 #import "TTOptionsView.h"
 #import "TTTitleBarView.h"
 
-#define ARROW_WIDTH 18
-#define ARROW_HEIGHT 8
-
 @class TTAppDelegate;
+@class TTPanelArrowView;
 @class TTDiamondView;
 @class TTDiamondLabels;
 @class TTModeTabsContainer;
@@ -28,17 +26,17 @@
 @class TTOptionsView;
 @class TTTitleBarView;
 
-@interface TTBackgroundView : NSView {
+@interface TTBackgroundView : NSView <NSStackViewDelegate> {
     TTAppDelegate *appDelegate;
-    NSInteger _arrowX;
+    NSLayoutConstraint *modeMenuConstraint;
 }
 
-@property (nonatomic, assign) NSInteger arrowX;
+@property (nonatomic) NSStackView *stackView;
+@property (nonatomic) IBOutlet TTPanelArrowView *arrowView;
 @property (nonatomic) IBOutlet TTTitleBarView *titleBarView;
 @property (nonatomic) IBOutlet TTModeTabsContainer *modeTabs;
 @property (nonatomic) IBOutlet TTModeMenuContainer *modeMenu;
 @property (nonatomic) IBOutlet TTModeTitleView *modeTitle;
-@property (nonatomic) IBOutlet TTDiamondView *diamondView;
 @property (nonatomic) IBOutlet TTDiamondLabels *diamondLabels;
 @property (nonatomic) IBOutlet TTOptionsView *optionsView;
 

@@ -9,91 +9,156 @@
 #import "TTPanelController.h"
 #import "TTBackgroundView.h"
 
-#define FILL_OPACITY 1.0f
 #define STROKE_OPACITY .5f
-
-#define LINE_THICKNESS 1.0f
-#define CORNER_RADIUS 8.0f
 
 #define SEARCH_INSET 10.0f
 #define TITLE_BAR_HEIGHT 38.0f
 #define MODE_TABS_HEIGHT 92.0f
 #define MODE_TITLE_HEIGHT 64.0f
 #define MODE_MENU_HEIGHT 128.0f
-#define DIAMOND_SIZE 100.0f
+#define MODE_OPTIONS_HEIGHT 128.0f
+#define DIAMOND_LABELS_SIZE 250.0f
 
 #pragma mark -
 
 @implementation TTBackgroundView
 
-@synthesize arrowX = _arrowX;
-@synthesize titleBarView = _titleBarView;
-@synthesize modeTabs = _modeTabs;
-@synthesize modeTitle = _modeTitle;
-@synthesize modeMenu = _modeMenu;
-@synthesize diamondView = _diamondView;
-@synthesize diamondLabels = _diamondLabels;
-@synthesize optionsView = _optionsView;
+@synthesize stackView;
+@synthesize arrowView;
+@synthesize titleBarView;
+@synthesize modeTabs;
+@synthesize modeTitle;
+@synthesize modeMenu;
+@synthesize diamondLabels;
+@synthesize optionsView;
 
 #pragma mark -
 
 - (void)awakeFromNib {
     appDelegate = [NSApp delegate];
     
-    NSRect modeOptionsFrame = self.frame;
-    modeOptionsFrame.size.height = 40;
-    modeOptionsFrame.origin.y = NSMinY(self.frame);
-    _optionsView = [[TTOptionsView alloc] initWithFrame:modeOptionsFrame];
-//    [_optionsView setAutoresizingMask:NSViewMinYMargin];
-    [self addSubview:_optionsView];
+//    self.translatesAutoresizingMaskIntoConstraints = NO;
     
+    arrowView = [[TTPanelArrowView alloc] init];
+    titleBarView = [[TTTitleBarView alloc] init];
+    modeTabs = [[TTModeTabsContainer alloc] init];
+    modeTitle = [[TTModeTitleView alloc] init];
+    modeMenu = [[TTModeMenuContainer alloc] init];
+    diamondLabels = [[TTDiamondLabels alloc] init];
+    optionsView = [[TTOptionsView alloc] init];
     
-    CGFloat centerHeight = DIAMOND_SIZE*2.5;
-    // +1 X offset for panel width fudge
-    NSRect diamondRect = NSMakeRect(NSWidth(self.frame) / 2 - (DIAMOND_SIZE * 1.3 / 2) + 1,
-                                    centerHeight / 2 - DIAMOND_SIZE / 2 + NSHeight(modeOptionsFrame),
-                                    DIAMOND_SIZE * 1.3, DIAMOND_SIZE);
-    NSRect labelRect = NSMakeRect(0, NSHeight(modeOptionsFrame), NSWidth(self.bounds), centerHeight);
-    _diamondLabels = [[TTDiamondLabels alloc] initWithFrame:labelRect diamondRect:diamondRect];
-    [_diamondLabels drawLabels];
-//    [_diamondLabels setAutoresizingMask:NSViewMinYMargin];
-    [self addSubview:_diamondLabels];
-
-    _diamondView = [[TTDiamondView alloc] initWithFrame:labelRect interactive:YES];
-    [_diamondView setIgnoreSelectedMode:YES];
-    [_diamondView setShowOutline:YES];
-    [_diamondView setInteractive:YES];
-//    [_diamondView setAutoresizingMask:NSViewMinYMargin];
-    [self addSubview:_diamondView];
+    stackView = [[NSStackView alloc] init];
+    [stackView setTranslatesAutoresizingMaskIntoConstraints:NO];
     
-    _modeMenu = [[TTModeMenuContainer alloc] initWithFrame:CGRectZero];
-    [_modeMenu setItemPrototype:[TTModeMenuItem new]];
-    [_modeMenu setContent:appDelegate.modeMap.availableModes];
-    NSRect modeMenuFrame = self.frame;
-    modeMenuFrame.origin.y = NSMaxY(labelRect);
-    modeMenuFrame.size.height = _modeMenu.frame.size.height;
-    [_modeTitle setFrame:modeMenuFrame];
-//    [_modeMenu setAutoresizingMask:NSViewMinYMargin];
-    [self addSubview:_modeMenu];
+    [stackView setViews:@[arrowView,
+                          titleBarView,
+                          modeTabs,
+                          modeTitle,
+                          modeMenu,
+                          diamondLabels,
+                          optionsView] inGravity:NSStackViewGravityTop];
     
-    NSRect modeTitleFrame = self.frame;
-    modeTitleFrame.size.height = MODE_TITLE_HEIGHT;
-    modeTitleFrame.origin.y = NSMaxY(modeMenuFrame);
-    _modeTitle = [[TTModeTitleView alloc] initWithFrame:modeTitleFrame];
-    [self addSubview:_modeTitle];
-    NSLog(@"Title frame: %@", NSStringFromRect(_modeTitle.frame));
-
-    NSRect modeTabsFrame = self.frame;
-    modeTabsFrame.size.height = MODE_TABS_HEIGHT;
-    modeTabsFrame.origin.y = NSMaxY(modeTitleFrame);
-    _modeTabs = [[TTModeTabsContainer alloc] initWithFrame:modeTabsFrame];
-    [self addSubview:_modeTabs];
+    [stackView addConstraint:[NSLayoutConstraint constraintWithItem:arrowView
+                                                          attribute:NSLayoutAttributeTop
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:stackView
+                                                          attribute:NSLayoutAttributeTop
+                                                         multiplier:0
+                                                           constant:0]];
+    [stackView addConstraint:[NSLayoutConstraint constraintWithItem:arrowView
+                                                          attribute:NSLayoutAttributeHeight
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:nil
+                                                          attribute:0
+                                                         multiplier:0
+                                                           constant:ARROW_HEIGHT]];
+    [stackView addConstraint:[NSLayoutConstraint constraintWithItem:titleBarView
+                                                          attribute:NSLayoutAttributeHeight
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:nil
+                                                          attribute:0
+                                                         multiplier:0
+                                                           constant:TITLE_BAR_HEIGHT]];
+    [stackView addConstraint:[NSLayoutConstraint constraintWithItem:modeTabs
+                                                          attribute:NSLayoutAttributeHeight
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:nil
+                                                          attribute:0
+                                                         multiplier:0
+                                                           constant:MODE_TABS_HEIGHT]];
+    [stackView addConstraint:[NSLayoutConstraint constraintWithItem:modeTitle
+                                                          attribute:NSLayoutAttributeHeight
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:nil
+                                                          attribute:0
+                                                         multiplier:0
+                                                           constant:MODE_TITLE_HEIGHT]];
+    modeMenuConstraint = [NSLayoutConstraint constraintWithItem:modeMenu
+                                                      attribute:NSLayoutAttributeHeight
+                                                      relatedBy:NSLayoutRelationEqual
+                                                         toItem:nil
+                                                      attribute:0
+                                                     multiplier:0
+                                                       constant:1];
+    [stackView addConstraint:modeMenuConstraint];
+    [stackView addConstraint:[NSLayoutConstraint constraintWithItem:diamondLabels
+                                                          attribute:NSLayoutAttributeHeight
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:nil
+                                                          attribute:0
+                                                         multiplier:0
+                                                           constant:DIAMOND_LABELS_SIZE]];
+    [stackView addConstraint:[NSLayoutConstraint constraintWithItem:optionsView
+                                                          attribute:NSLayoutAttributeHeight
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:nil
+                                                          attribute:0
+                                                         multiplier:0
+                                                           constant:MODE_OPTIONS_HEIGHT]];
+    // add a minimum width constraint
+    [stackView addConstraint:[NSLayoutConstraint constraintWithItem:stackView
+                                                          attribute:NSLayoutAttributeWidth
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:nil
+                                                          attribute:0
+                                                         multiplier:0
+                                                           constant:360]];
     
-    NSRect titleBarFrame = self.frame;
-    titleBarFrame.size.height = TITLE_BAR_HEIGHT;
-    titleBarFrame.origin.y = NSMaxY(modeTabsFrame);
-    _titleBarView = [[TTTitleBarView alloc] initWithFrame:titleBarFrame];
-    [self addSubview:_titleBarView];
+    // add a constraint not allowing the stackview to expand beyond the last view
+    [stackView addConstraint:[NSLayoutConstraint constraintWithItem:stackView
+                                                          attribute:NSLayoutAttributeTrailing
+                                                          relatedBy:NSLayoutRelationLessThanOrEqual
+                                                             toItem:[stackView.views lastObject]
+                                                          attribute:NSLayoutAttributeTrailing
+                                                         multiplier:1.0
+                                                           constant:stackView.edgeInsets.right]];
+    stackView.orientation = NSUserInterfaceLayoutOrientationVertical;
+    stackView.alignment = NSLayoutAttributeCenterX;
+    stackView.spacing = 0;
+    // have the stackView strongly hug the sides of the views it contains
+    [stackView setHuggingPriority:NSLayoutPriorityDefaultHigh forOrientation:NSLayoutConstraintOrientationHorizontal];
+    // have the stackView grow and shrink as its internal views grow, are added, or are removed
+    [stackView setHuggingPriority:NSLayoutPriorityDefaultHigh forOrientation:NSLayoutConstraintOrientationVertical];
+    [self addSubview:stackView];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:stackView
+                                                     attribute:NSLayoutAttributeTop
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeTop
+                                                    multiplier:1.0 constant:0.0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:stackView
+                                                     attribute:NSLayoutAttributeBottom
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeBottom
+                                                    multiplier:1.0 constant:0.0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:stackView
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeHeight
+                                                    multiplier:1.0 constant:0.0]];
     
     [self registerAsObserver];
 }
@@ -116,41 +181,24 @@
 
 #pragma mark - Drawing
 
-- (void)drawRect:(NSRect)dirtyRect {
-    //    NSLog(@"Drawing background: %@", NSStringFromRect(dirtyRect));
-    NSRect contentRect = NSInsetRect(self.frame, LINE_THICKNESS, LINE_THICKNESS);
-    NSBezierPath *path = [NSBezierPath bezierPath];
-
-    [path moveToPoint:NSMakePoint(_arrowX - ARROW_WIDTH / 2, NSMaxY(contentRect) - ARROW_HEIGHT)];
-    [path lineToPoint:NSMakePoint(_arrowX, NSMaxY(contentRect))];
-    [path lineToPoint:NSMakePoint(_arrowX + ARROW_WIDTH / 2, NSMaxY(contentRect) - ARROW_HEIGHT)];
-    [path lineToPoint:NSMakePoint(NSMaxX(contentRect) - CORNER_RADIUS, NSMaxY(contentRect) - ARROW_HEIGHT)];
-    [path closePath];
-    
-    [[NSColor colorWithDeviceWhite:1 alpha:FILL_OPACITY] setFill];
-    [path fill];
-    
-    [path setLineWidth:LINE_THICKNESS * 2];
-    [[NSColor whiteColor] setStroke];
-    [path stroke];
-    
-}
-
 - (void)toggleModeMenuFrame {
-    NSRect windowFrame = appDelegate.panelController.window.frame;
-    NSRect menuFrame = _modeMenu.frame;
+//    NSRect windowFrame = appDelegate.panelController.window.frame;
+//    NSRect menuFrame = modeMenu.frame;
     if (appDelegate.modeMap.openedModeChangeMenu) {
-//        menuFrame.size.height = MODE_MENU_HEIGHT;
-        windowFrame.size.height += MODE_MENU_HEIGHT;
-        windowFrame.origin.y -= MODE_MENU_HEIGHT;
+        [[modeMenuConstraint animator] setConstant:MODE_MENU_HEIGHT];
+//        windowFrame.size.height += MODE_MENU_HEIGHT;
+//        windowFrame.origin.y -= MODE_MENU_HEIGHT;
     } else {
-//        menuFrame.size.height = 1;
-        windowFrame.size.height -= MODE_MENU_HEIGHT;
-        windowFrame.origin.y += MODE_MENU_HEIGHT;
+        [[modeMenuConstraint animator] setConstant:1];
+//        windowFrame.size.height -= MODE_MENU_HEIGHT;
+//        windowFrame.origin.y += MODE_MENU_HEIGHT;
     }
-//    [[_modeMenu animator] setFrame:menuFrame];
+    [modeMenu setItemPrototype:[TTModeMenuItem new]];
+    [modeMenu setContent:appDelegate.modeMap.availableModes];
     
-    [[appDelegate.panelController.window animator] setFrame:windowFrame display:YES animate:YES];
+//    [[modeMenu animator] setFrame:menuFrame];
+    
+//    [[appDelegate.panelController.window animator] setFrame:windowFrame display:YES animate:YES];
 }
 
 - (void)resetPosition {
@@ -164,9 +212,16 @@
 #pragma mark -
 #pragma mark Public accessors
 
-- (void)setArrowX:(NSInteger)value {
-    _arrowX = value;
-    [self setNeedsDisplay:YES];
+- (void)stackView:(NSStackView *)_stackView didReattachViews:(NSArray *)views {
+    if (stackView.detachedViews.count == 0) {
+        //    NSStackView *stackView = appDelegate.panelController.backgroundView.stackView;
+        [stackView addConstraint:[NSLayoutConstraint constraintWithItem:stackView
+                                                              attribute:NSLayoutAttributeTrailing
+                                                              relatedBy:NSLayoutRelationLessThanOrEqual
+                                                                 toItem:[stackView.views lastObject]
+                                                              attribute:NSLayoutAttributeTrailing
+                                                             multiplier:1.0
+                                                               constant:stackView.edgeInsets.right]];
+    }
 }
-
 @end

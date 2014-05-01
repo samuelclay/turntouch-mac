@@ -48,6 +48,12 @@
     return self;
 }
 
+- (void)setFrame:(NSRect)frameRect {
+    [super setFrame:frameRect];
+    self.size = NSWidth(self.frame);
+//    NSLog(@"Diamond size: %f", self.size);
+}
+
 - (void)registerAsObserver {
     if (interactive) {
         [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
