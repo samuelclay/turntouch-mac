@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Turn Touch. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "TTPanelController.h"
 #import "TTBackgroundView.h"
 
@@ -186,11 +187,17 @@
 #pragma mark - Drawing
 
 - (void)toggleModeMenuFrame {
+    [NSAnimationContext beginGrouping];
+    [[NSAnimationContext currentContext] setDuration:0.42f];
+    [[NSAnimationContext currentContext] setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+
     if (appDelegate.modeMap.openedModeChangeMenu) {
         [[modeMenuConstraint animator] setConstant:MODE_MENU_HEIGHT];
     } else {
         [[modeMenuConstraint animator] setConstant:1];
     }
+    
+    [NSAnimationContext endGrouping];
 }
 
 - (void)resetPosition {
