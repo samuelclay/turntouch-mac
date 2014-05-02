@@ -22,9 +22,7 @@
         appDelegate = [NSApp delegate];
         self.translatesAutoresizingMaskIntoConstraints = NO;
         
-        diamondRect = frame;
-        
-        diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect interactive:YES];
+        diamondView = [[TTDiamondView alloc] initWithFrame:CGRectZero interactive:YES];
         [diamondView setIgnoreSelectedMode:YES];
         [diamondView setShowOutline:YES];
         [diamondView setInteractive:YES];
@@ -47,9 +45,11 @@
 
 - (void)setFrame:(NSRect)frameRect {
     [super setFrame:frameRect];
+    
     [[NSColor whiteColor] set];
     NSRectFill(self.bounds);
-    diamondRect = NSInsetRect(frameRect, 24, 24);
+    
+    diamondRect = NSInsetRect(self.bounds, 24, 24);
     [diamondView setFrame:diamondRect];
 }
 
@@ -101,7 +101,7 @@
     CGFloat offsetY = NSMaxY(self.frame) - NSMaxY(diamondRect);
     CGFloat width = NSWidth(diamondRect);
     CGFloat height = NSHeight(diamondRect);
-    
+//    NSLog(@"Labels rect: %@", NSStringFromRect(diamondRect));
     for (TTModeDirection direction=1; direction <= 4; direction++) {
         if (direction == NORTH) {
             northLine = [NSBezierPath bezierPath];
@@ -125,7 +125,6 @@
     CGFloat frameWidth = NSWidth(self.frame);
     CGFloat frameHeight = NSHeight(self.frame);
     CGFloat topWidth = 120;
-    CGFloat sideWidth = frameWidth - NSMaxX(diamondRect);
     CGFloat labelHeight = 20;
     
     for (TTModeDirection direction=1; direction <= 4; direction++) {
@@ -133,23 +132,24 @@
         
         if (direction == NORTH) {
             textRect = NSMakeRect(frameWidth/2 - topWidth/2,
-                                  frameHeight - labelHeight*3,
+                                  frameHeight - labelHeight*3.75,
                                   topWidth, labelHeight);
             [northLabel setFrame:textRect];
         } else if (direction == EAST) {
-            textRect = NSMakeRect(NSMaxX(diamondRect), frameHeight/2 - labelHeight/2,
-                                  sideWidth, labelHeight);
+            textRect = NSMakeRect(frameWidth/2, frameHeight/2 - labelHeight/2,
+                                  frameWidth/2, labelHeight);
             [eastLabel setFrame:textRect];
         } else if (direction == WEST) {
-            textRect = NSMakeRect(4, frameHeight/2 - labelHeight/2,
-                                  sideWidth, labelHeight);
+            textRect = NSMakeRect(0, frameHeight/2 - labelHeight/2,
+                                  frameWidth/2, labelHeight);
             [westLabel setFrame:textRect];
         } else if (direction == SOUTH) {
             textRect = NSMakeRect(frameWidth/2 - topWidth/2,
-                                  labelHeight * 2,
+                                  labelHeight * 3,
                                   topWidth, labelHeight);
             [southLabel setFrame:textRect];
         }
+//        NSLog(@"Label rect: %@", NSStringFromRect(textRect));
     }
 }
 

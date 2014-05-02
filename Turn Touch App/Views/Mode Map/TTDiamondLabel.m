@@ -8,7 +8,7 @@
 
 #import "TTDiamondLabel.h"
 
-#define PADDING 24
+#define PADDING 0
 
 @implementation TTDiamondLabel
 
@@ -22,7 +22,6 @@
         
         [self setupLabels];
         [self registerAsObserver];
-        [self createTrackingArea];
     }
     return self;
 }
@@ -50,7 +49,6 @@
         [keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]   ||
         [keyPath isEqual:NSStringFromSelector(@selector(selectedMode))]) {
         [self setupLabels];
-//        [self setNeedsDisplay:YES];
         [self.superview setNeedsDisplay:YES];
     }
 }
@@ -62,7 +60,7 @@
     
     NSRect rect = NSInsetRect(self.bounds, PADDING, PADDING);
 	NSString *directionLabel;
-    
+
     if (labelDirection == NORTH) {
         directionLabel = [appDelegate.modeMap.selectedMode titleNorth];
     } else if (labelDirection == EAST) {
@@ -85,12 +83,12 @@
 
 - (void)setupLabels {
     BOOL hovering = appDelegate.modeMap.hoverModeDirection == labelDirection;
+    BOOL selected = appDelegate.modeMap.inspectingModeDirection == labelDirection;
     NSShadow *stringShadow = [[NSShadow alloc] init];
     stringShadow.shadowColor = [NSColor whiteColor];
     stringShadow.shadowOffset = NSMakeSize(0, -1);
     stringShadow.shadowBlurRadius = 0;
-    NSColor *textColor = appDelegate.modeMap.inspectingModeDirection == labelDirection ?
-    NSColorFromRGB(0x202A40) : hovering ? NSColorFromRGB(0x303AA0) : NSColorFromRGB(0x404A60);
+    NSColor *textColor = (hovering || selected) ? NSColorFromRGB(0x303AA0) : NSColorFromRGB(0x404A60);
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [style setAlignment:NSCenterTextAlignment];
     labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Futura" size:13],
@@ -98,37 +96,6 @@
                         NSShadowAttributeName: stringShadow,
                         NSParagraphStyleAttributeName: style
                         };
-}
-
-#pragma mark - Events
-
-- (void)updateTrackingAreas {
-    [self createTrackingArea];
-}
-
-- (void)createTrackingArea {
-    for (NSTrackingArea *area in self.trackingAreas) {
-        [self removeTrackingArea:area];
-    }
-
-    int opts = (NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways | NSTrackingActiveInKeyWindow);
-    NSTrackingArea *trackingArea = [ [NSTrackingArea alloc] initWithRect:[self bounds]
-                                                                 options:opts
-                                                                   owner:self
-                                                                userInfo:nil];
-    [self addTrackingArea:trackingArea];
-}
-
-- (void)mouseEntered:(NSEvent *)theEvent {
-    [appDelegate.modeMap toggleHoverModeDirection:labelDirection hovering:YES];
-}
-
-- (void)mouseExited:(NSEvent *)theEvent {
-    [appDelegate.modeMap toggleHoverModeDirection:labelDirection hovering:NO];
-}
-
-- (void)mouseUp:(NSEvent *)theEvent {
-    [appDelegate.modeMap toggleInspectingModeDirection:labelDirection];
 }
 
 @end

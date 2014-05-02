@@ -24,7 +24,6 @@
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
-    NSLog(@"Title rect: %@", NSStringFromRect(dirtyRect));
     [super drawRect:dirtyRect];
     [self drawBackground];
     [self drawLabel];

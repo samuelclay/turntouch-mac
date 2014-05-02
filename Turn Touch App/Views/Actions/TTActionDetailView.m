@@ -14,7 +14,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.autoresizingMask = NSViewMinXMargin | NSViewMinYMargin | NSViewWidthSizable;
+        self.translatesAutoresizingMaskIntoConstraints = NO;
     }
     return self;
 }

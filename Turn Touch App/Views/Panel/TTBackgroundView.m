@@ -15,9 +15,9 @@
 #define TITLE_BAR_HEIGHT 38.0f
 #define MODE_TABS_HEIGHT 92.0f
 #define MODE_TITLE_HEIGHT 64.0f
-#define MODE_MENU_HEIGHT 128.0f
+#define MODE_MENU_HEIGHT 142.0f
 #define MODE_OPTIONS_HEIGHT 128.0f
-#define DIAMOND_LABELS_SIZE 250.0f
+#define DIAMOND_LABELS_SIZE 270.0f
 
 #pragma mark -
 
@@ -135,10 +135,7 @@
     stackView.orientation = NSUserInterfaceLayoutOrientationVertical;
     stackView.alignment = NSLayoutAttributeCenterX;
     stackView.spacing = 0;
-    // have the stackView strongly hug the sides of the views it contains
-    [stackView setHuggingPriority:NSLayoutPriorityDefaultHigh forOrientation:NSLayoutConstraintOrientationHorizontal];
-    // have the stackView grow and shrink as its internal views grow, are added, or are removed
-    [stackView setHuggingPriority:NSLayoutPriorityDefaultHigh forOrientation:NSLayoutConstraintOrientationVertical];
+    
     [self addSubview:stackView];
     
     [self addConstraint:[NSLayoutConstraint constraintWithItem:stackView
@@ -160,6 +157,9 @@
                                                      attribute:NSLayoutAttributeHeight
                                                     multiplier:1.0 constant:0.0]];
     
+    [modeMenu setItemPrototype:[TTModeMenuItem new]];
+    [modeMenu setContent:appDelegate.modeMap.availableModes];
+
     [self registerAsObserver];
 }
 
@@ -167,6 +167,8 @@
 
 - (void)registerAsObserver {
     [appDelegate.modeMap addObserver:self forKeyPath:@"openedModeChangeMenu"
+                             options:0 context:nil];
+    [appDelegate.modeMap addObserver:self forKeyPath:@"selectedMode"
                              options:0 context:nil];
 }
 
@@ -176,52 +178,28 @@
                         context:(void*)context {
     if ([keyPath isEqual:NSStringFromSelector(@selector(openedModeChangeMenu))]) {
         [self toggleModeMenuFrame];
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedMode))]) {
+        [self resetPosition];
     }
 }
 
 #pragma mark - Drawing
 
 - (void)toggleModeMenuFrame {
-//    NSRect windowFrame = appDelegate.panelController.window.frame;
-//    NSRect menuFrame = modeMenu.frame;
     if (appDelegate.modeMap.openedModeChangeMenu) {
         [[modeMenuConstraint animator] setConstant:MODE_MENU_HEIGHT];
-//        windowFrame.size.height += MODE_MENU_HEIGHT;
-//        windowFrame.origin.y -= MODE_MENU_HEIGHT;
     } else {
         [[modeMenuConstraint animator] setConstant:1];
-//        windowFrame.size.height -= MODE_MENU_HEIGHT;
-//        windowFrame.origin.y += MODE_MENU_HEIGHT;
     }
-    [modeMenu setItemPrototype:[TTModeMenuItem new]];
-    [modeMenu setContent:appDelegate.modeMap.availableModes];
-    
-//    [[modeMenu animator] setFrame:menuFrame];
-    
-//    [[appDelegate.panelController.window animator] setFrame:windowFrame display:YES animate:YES];
 }
 
 - (void)resetPosition {
     [appDelegate.modeMap reset];
+    appDelegate.modeMap.openedModeChangeMenu = NO;
 }
 
 - (void)viewDidMoveToWindow {
     [[self window] setAcceptsMouseMovedEvents:YES];
 }
 
-#pragma mark -
-#pragma mark Public accessors
-
-- (void)stackView:(NSStackView *)_stackView didReattachViews:(NSArray *)views {
-    if (stackView.detachedViews.count == 0) {
-        //    NSStackView *stackView = appDelegate.panelController.backgroundView.stackView;
-        [stackView addConstraint:[NSLayoutConstraint constraintWithItem:stackView
-                                                              attribute:NSLayoutAttributeTrailing
-                                                              relatedBy:NSLayoutRelationLessThanOrEqual
-                                                                 toItem:[stackView.views lastObject]
-                                                              attribute:NSLayoutAttributeTrailing
-                                                             multiplier:1.0
-                                                               constant:stackView.edgeInsets.right]];
-    }
-}
 @end

@@ -19,17 +19,16 @@
     if (self) {
         appDelegate = [NSApp delegate];
         self.translatesAutoresizingMaskIntoConstraints = NO;
+        [self setMaxNumberOfColumns:2];
     }
     return self;
 }
 
 #pragma mark - Drawing
 
-- (void)drawRect:(NSRect)dirtyRect
-{
+- (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     [self drawBorder];
-    
 }
 
 - (void)drawBorder {
@@ -54,10 +53,11 @@
 }
 
 - (void)setContent:(NSArray *)content {
-    NSRect frame = self.frame;
-    frame.size.height = ceil([content count] / 2) * MENU_ITEM_HEIGHT;
+    [super setContent:content];
+
+    NSRect frame = NSInsetRect(self.frame, 0, 1.0);
+    frame.size.height = ceil((float)[content count] / 2.0f) * MENU_ITEM_HEIGHT;
     self.frame = frame;
-    NSLog(@"Mode menu: %@", NSStringFromRect(self.frame));
 }
 
 @end
