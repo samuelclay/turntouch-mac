@@ -52,6 +52,35 @@
     [panel setLevel:NSMainMenuWindowLevel];
     [panel setOpaque:NO];
     [panel setBackgroundColor:[NSColor clearColor]];
+
+    [self registerAsObserver];
+}
+
+
+#pragma mark - KVO
+
+- (void)registerAsObserver {
+    [self.window addObserver:self forKeyPath:@"frame" options:0 context:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(resize:)
+                                                 name:NSWindowDidResizeNotification
+                                               object:self.window];
+}
+- (void) observeValueForKeyPath:(NSString*)keyPath
+                       ofObject:(id)object
+                         change:(NSDictionary*)change
+                        context:(void*)context {
+    if ([keyPath isEqual:NSStringFromSelector(@selector(frame))]) {
+        [self resize:nil];
+    }
+}
+
+- (void)resize:(NSNotification *)notification {
+    NSLog(@"resize");
+//    [self.window display];
+//    [self.window setHasShadow:NO];
+//    [self.window setHasShadow:YES];
+//    [self.window invalidateShadow];
 }
 
 #pragma mark - Public accessors
@@ -86,7 +115,10 @@
 }
 
 - (void)windowDidResize:(NSNotification *)notification {
-//    NSLog(@"windowDidResize");
+    NSLog(@"Invalidate shadow");
+    [self.window display];
+    [self.window setHasShadow:NO];
+    [self.window setHasShadow:YES];
 }
 
 #pragma mark - Keyboard
@@ -135,6 +167,7 @@
     [panel setAlphaValue:0];
     [panel setFrame:panelRect display:YES];
     [panel makeKeyAndOrderFront:nil];
+    [panel setDelegate:self];
     
     [self.backgroundView resetPosition];
     

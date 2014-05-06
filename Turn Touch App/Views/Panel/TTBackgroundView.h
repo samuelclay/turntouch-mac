@@ -26,7 +26,7 @@
 @class TTOptionsView;
 @class TTTitleBarView;
 
-@interface TTBackgroundView : NSView <NSStackViewDelegate> {
+@interface TTBackgroundView : NSView <NSStackViewDelegate, NSWindowDelegate> {
     TTAppDelegate *appDelegate;
     NSLayoutConstraint *modeMenuConstraint;
 }

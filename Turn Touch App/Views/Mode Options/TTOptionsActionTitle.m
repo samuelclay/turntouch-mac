@@ -22,9 +22,7 @@
         [self registerAsObserver];
         [self setupLabels];
         
-        NSRect diamondRect = NSMakeRect(X_MARGIN, NSMaxY(frame) - DIAMOND_SIZE/2 - Y_MARGIN,
-                                        DIAMOND_SIZE * 1.3, DIAMOND_SIZE);
-        diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect];
+        diamondView = [[TTDiamondView alloc] initWithFrame:CGRectZero];
         [diamondView setIgnoreSelectedMode:YES];
         [diamondView setIgnoreActiveMode:YES];
         [self addSubview:diamondView];
@@ -47,6 +45,14 @@
     }
 }
 
+- (void)setFrame:(NSRect)frameRect {
+    [super setFrame:frameRect];
+    
+    NSRect diamondRect = NSMakeRect(X_MARGIN, NSMaxY(self.bounds) - DIAMOND_SIZE/2 - Y_MARGIN,
+                                    DIAMOND_SIZE * 1.3, DIAMOND_SIZE);
+    [diamondView setFrame:diamondRect];
+
+}
 - (void)drawRect:(NSRect)dirtyRect {
     TTModeDirection labelDirection = appDelegate.modeMap.inspectingModeDirection;
     

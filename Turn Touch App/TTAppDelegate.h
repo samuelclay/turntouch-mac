@@ -15,7 +15,7 @@
 @class TTPanelController;
 
 @interface TTAppDelegate : NSObject
-<NSApplicationDelegate, TTPanelControllerDelegate>
+<NSApplicationDelegate, TTPanelControllerDelegate, NSWindowDelegate>
 
 @property (nonatomic, strong) TTMenubarController *menubarController;
 @property (nonatomic, strong, readonly) TTPanelController *panelController;

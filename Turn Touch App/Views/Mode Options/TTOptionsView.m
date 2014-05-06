@@ -22,11 +22,11 @@
         appDelegate = [NSApp delegate];
         self.translatesAutoresizingMaskIntoConstraints = NO;
 
-        modeTitleView = [[TTOptionsModeTitle alloc] initWithFrame:self.frame];
+        modeTitleView = [[TTOptionsModeTitle alloc] initWithFrame:CGRectZero];
         [actionTitleView setHidden:NO];
         [self addSubview:modeTitleView];
 
-        actionTitleView = [[TTOptionsActionTitle alloc] initWithFrame:self.frame];
+        actionTitleView = [[TTOptionsActionTitle alloc] initWithFrame:CGRectZero];
         [actionTitleView setHidden:YES];
         [self addSubview:actionTitleView];
 
@@ -62,11 +62,14 @@
     }
 }
 
-- (void)drawRect:(NSRect)dirtyRect {
-    [self drawBackground];
-    
+- (void)setFrame:(NSRect)frameRect {
+    [super setFrame:frameRect];
+
     [modeTitleView setFrame:self.frame];
     [actionTitleView setFrame:self.frame];
+}
+- (void)drawRect:(NSRect)dirtyRect {
+    [self drawBackground];
     
     if (appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION) {
         [modeTitleView setHidden:NO];
@@ -100,8 +103,8 @@
     [path closePath];
     
     NSGradient* aGradient = [[NSGradient alloc]
-                             initWithStartingColor:NSColorFromRGB(0xF7F7F7)
-                             endingColor:NSColorFromRGB(0xE7E5E1)];
+                             initWithStartingColor:NSColorFromRGB(0xFFFFFF)
+                             endingColor:NSColorFromRGB(0xFFFFFF)];
     [aGradient drawInBezierPath:path angle:-90];
     
     [NSGraphicsContext saveGraphicsState];

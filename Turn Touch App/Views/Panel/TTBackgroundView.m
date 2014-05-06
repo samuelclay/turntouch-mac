@@ -184,12 +184,20 @@
     }
 }
 
+- (void)windowDidResize:(NSNotification *)notification {
+    NSLog(@"Background resize");
+}
+
 #pragma mark - Drawing
 
 - (void)toggleModeMenuFrame {
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:0.42f];
     [[NSAnimationContext currentContext] setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+    [[NSAnimationContext currentContext] setCompletionHandler:^{
+        [self.window invalidateShadow];
+        [self.window update];
+    }];
 
     if (appDelegate.modeMap.openedModeChangeMenu) {
         [[modeMenuConstraint animator] setConstant:MODE_MENU_HEIGHT];
