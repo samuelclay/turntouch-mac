@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Turn Touch. All rights reserved.
 //
 
+#import "TTModeMenuContainer.h"
 #import "TTModeMenuItemView.h"
 
 #define IMAGE_SIZE 16.0f
@@ -97,16 +98,14 @@
 
 - (void)drawBackground {
     if ([appDelegate.modeMap.selectedMode class] == modeClass) {
-        [self setWantsLayer:YES]; // view's backing store is using a Core Animation Layer
         // #E3EDF6
-        [self.layer setBackgroundColor:CGColorCreateGenericRGB(0.8901, 0.9294, 0.9647, 1)];
+        [NSColorFromRGB(0xE3EDF6) set];
     } else if (mouseDownActive) {
-        [self setWantsLayer:YES]; // view's backing store is using a Core Animation Layer
-        [self.layer setBackgroundColor:CGColorCreateGenericRGB(0, 0, 0, .025)];
+        [NSColorFromRGB(0xF6F6F9) set];
     } else {
-        [self setWantsLayer:YES]; // view's backing store is using a Core Animation Layer
-        [self.layer setBackgroundColor:CGColorCreateGenericRGB(0, 0, 0, .015)];
+        [NSColorFromRGB(0xFBFBFD) set];
     }
+    NSRectFill(self.bounds);
 }
 
 - (void)updateTrackingAreas {
@@ -133,6 +132,7 @@
     
     hoverActive = YES;
     [self setNeedsDisplay:YES];
+    [appDelegate.panelController.backgroundView.modeMenu setNeedsDisplay:YES];
 }
 
 - (void)mouseExited:(NSEvent *)theEvent {
@@ -140,20 +140,28 @@
     
     hoverActive = NO;
     [self setNeedsDisplay:YES];
+    [appDelegate.panelController.backgroundView.modeMenu setNeedsDisplay:YES];
 }
 
 - (void)mouseDown:(NSEvent *)theEvent {
     mouseDownActive = YES;
     [self drawBackground];
+    [self setNeedsDisplay:YES];
 }
 
 - (void)mouseUp:(NSEvent *)theEvent {
+    if (!mouseDownActive) {
+        [self drawBackground];
+        [self setNeedsDisplay:YES];
+        return;
+    }
     mouseDownActive = NO;
     
     NSPoint clickPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
     BOOL inside = NSPointInRect(clickPoint, self.bounds);
     if (!inside) {
         [self drawBackground];
+        [self setNeedsDisplay:YES];
         return;
     }
     

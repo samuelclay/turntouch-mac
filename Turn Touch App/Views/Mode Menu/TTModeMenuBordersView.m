@@ -106,7 +106,6 @@
     CGContextRef context = CGBitmapContextCreate(NULL, size.width, size.height, 8, 0, colorSpace, (CGBitmapInfo)kCGImageAlphaPremultipliedLast);
     
     CGContextClipToRect(context, *(CGRect*)&dirtyRect);
-    NSLog(@"Clipping: %@", NSStringFromRect(dirtyRect));
     CGRect rect = CGRectMake(0.0, 0.0, size.width, size.height);
     
     size_t num_locations = 3;
@@ -138,11 +137,9 @@
     
     NSRect nsRect = [self bounds];
     CGRect rect = *(CGRect*)&nsRect;
-    CGFloat height = fminf(NSHeight(self.bounds), 8);
     rect.origin.y = rect.size.height - 8;
     rect.size.height = 8;
     CGRect lineRect = CGRectMake(rect.origin.x, NSHeight(self.bounds) - 1, rect.size.width, (CGFloat)1.0);
-    NSLog(@"Shadow (%f/%f): %@ / %@", height, rect.size.height, NSStringFromRect(rect), NSStringFromRect(lineRect));
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     
     CGContextRef context = (CGContextRef) [[NSGraphicsContext currentContext] graphicsPort];

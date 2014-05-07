@@ -67,7 +67,7 @@
                                                             toItem:self
                                                          attribute:NSLayoutAttributeWidth
                                                         multiplier:1.0 constant:0]];
-        [self addSubview:bordersView];
+        [self addSubview:bordersView positioned:NSWindowAbove relativeTo:collectionView];
         
         [self registerAsObserver];
     }
