@@ -224,20 +224,17 @@
 
 - (void)setInspectingModeDirection:(TTModeDirection)_inspectingModeDirection {
     if (inspectingModeDirection != _inspectingModeDirection) {
-        NSLog(@"Inspecting %d - %d", inspectingModeDirection, _inspectingModeDirection);
         inspectingModeDirection = _inspectingModeDirection;
     }
 }
 
 - (void)setHoverModeDirection:(TTModeDirection)_hoverModeDirection {
     if (hoverModeDirection != _hoverModeDirection) {
-        NSLog(@"Hovering %d - %d", hoverModeDirection, _hoverModeDirection);
         hoverModeDirection = _hoverModeDirection;
     }
 }
 
 - (void)setOpenedModeChangeMenu:(BOOL)_openedModeChangeMenu {
-    NSLog(@"Opened %d - %d", openedModeChangeMenu, _openedModeChangeMenu);
     if (openedModeChangeMenu != _openedModeChangeMenu) {
         openedModeChangeMenu = _openedModeChangeMenu;
     }

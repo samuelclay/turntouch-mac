@@ -117,7 +117,6 @@
 #pragma mark - Events
 
 - (void)showChangeModeMenu:(id)sender {
-    NSLog(@"Setting opened");
     [appDelegate.modeMap setOpenedModeChangeMenu:!appDelegate.modeMap.openedModeChangeMenu];
     [appDelegate.modeMap setInspectingModeDirection:NO_DIRECTION];
     [self setNeedsDisplay:YES];

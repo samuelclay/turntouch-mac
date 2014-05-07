@@ -27,9 +27,8 @@
 - (void)drawRect:(NSRect)dirtyRect {
 	[super drawRect:dirtyRect];
 	
-    NSString *modeTitle = [NSString stringWithFormat:@"%@ mode",
-                           [[appDelegate.modeMap.selectedMode class] title]];
-    NSString *modeDescription = [[appDelegate.modeMap.selectedMode class] description];
+    NSString *modeTitle = [[appDelegate.modeMap.selectedMode class] title];
+    NSString *modeDescription = @"Options";
     
     NSSize titleSize = [modeTitle sizeWithAttributes:titleAttributes];
     NSSize descriptonSize = [modeDescription sizeWithAttributes:descriptionAttributes];

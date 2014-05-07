@@ -72,7 +72,6 @@
     
     [directionLabel drawInRect:self.bounds withAttributes:labelAttributes];
     
-    
     // Draw border, used for debugging
 //    NSBezierPath *textViewSurround = [NSBezierPath bezierPathWithRect:self.bounds];
 //    [textViewSurround setLineWidth:1];

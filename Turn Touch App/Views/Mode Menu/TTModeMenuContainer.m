@@ -10,8 +10,12 @@
 #import "TTBackgroundView.h"
 #import "TTModeMenuItem.h"
 #import <QuartzCore/QuartzCore.h>
+#import <ApplicationServices/ApplicationServices.h>
 
 @implementation TTModeMenuContainer
+
+@synthesize collectionView;
+@synthesize bordersView;
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -19,7 +23,52 @@
     if (self) {
         appDelegate = [NSApp delegate];
         self.translatesAutoresizingMaskIntoConstraints = NO;
-        [self setMaxNumberOfColumns:2];
+
+        collectionView = [[TTModeMenuCollectionView alloc] init];
+        [collectionView setItemPrototype:[TTModeMenuItem new]];
+        [collectionView setContent:appDelegate.modeMap.availableModes];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:collectionView
+                                                         attribute:NSLayoutAttributeTop
+                                                         relatedBy:NSLayoutRelationGreaterThanOrEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeTop
+                                                        multiplier:1.0 constant:1.0]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:collectionView
+                                                         attribute:NSLayoutAttributeBottom
+                                                         relatedBy:NSLayoutRelationGreaterThanOrEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeBottom
+                                                        multiplier:1.0 constant:-1.0]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:collectionView
+                                                         attribute:NSLayoutAttributeHeight
+                                                         relatedBy:NSLayoutRelationGreaterThanOrEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeHeight
+                                                        multiplier:1.0 constant:28]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:collectionView
+                                                         attribute:NSLayoutAttributeWidth
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeWidth
+                                                        multiplier:1.0 constant:0]];
+        [self addSubview:collectionView];
+        
+        bordersView = [[TTModeMenuBordersView alloc] init];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:bordersView
+                                                         attribute:NSLayoutAttributeHeight
+                                                         relatedBy:NSLayoutRelationGreaterThanOrEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeHeight
+                                                        multiplier:1.0 constant:0]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:bordersView
+                                                         attribute:NSLayoutAttributeWidth
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeWidth
+                                                        multiplier:1.0 constant:0.0]];
+        [self addSubview:bordersView];
         
         [self registerAsObserver];
     }
@@ -49,8 +98,11 @@
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
-    [self drawBorder];
+    
+    [bordersView drawRect:dirtyRect];
+    [collectionView drawRect:dirtyRect];
 }
+
 
 - (void)drawBorder {
     // Top border
@@ -71,14 +123,6 @@
         [NSColorFromRGB(0xD0D0D0) set];
         [line stroke];
     }
-}
-
-- (void)setContent:(NSArray *)content {
-    [super setContent:content];
-
-//    NSRect frame = self.frame;
-//    frame.size.height = ceil((float)[content count] / 2.0f) * MENU_ITEM_HEIGHT;
-//    self.frame = frame;
 }
 
 @end

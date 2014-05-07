@@ -13,6 +13,7 @@
 		FF0E12CF18247D6100D49EC7 /* TTModeMusic.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12CE18247D6100D49EC7 /* TTModeMusic.m */; };
 		FF0E12D11824811200D49EC7 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0E12D01824811200D49EC7 /* ScriptingBridge.framework */; };
 		FF0E12D41828560000D49EC7 /* TTModeVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12D31828560000D49EC7 /* TTModeVideo.m */; };
+		FF429AD21919C630007C485E /* TTModeMenuCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF429AD11919C630007C485E /* TTModeMenuCollectionView.m */; };
 		FF4E2630182317D000D477F6 /* TTSerialMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4E262F182317D000D477F6 /* TTSerialMonitor.m */; };
 		FF4E26321823197D00D477F6 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4E26311823197D00D477F6 /* IOKit.framework */; };
 		FF7A1C6F1868FD72005FA756 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF98A30C1868F1120032CC7A /* QuartzCore.framework */; };
@@ -37,6 +38,7 @@
 		FF8C834717AB14B5000166FC /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FF8C834517AB14B5000166FC /* Credits.rtf */; };
 		FF8C834A17AB14B5000166FC /* TTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8C834917AB14B5000166FC /* TTAppDelegate.m */; };
 		FF8C834D17AB14B5000166FC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF8C834B17AB14B5000166FC /* MainMenu.xib */; };
+		FF981FCB191AB46600A4A94B /* TTModeMenuBordersView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF981FCA191AB46600A4A94B /* TTModeMenuBordersView.m */; };
 		FF98A2E11867DBA40032CC7A /* TTActionMap.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98A2E01867DBA40032CC7A /* TTActionMap.m */; };
 		FF98A2E71867DBE70032CC7A /* TTMenubarController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98A2E31867DBE70032CC7A /* TTMenubarController.m */; };
 		FF98A2E81867DBE70032CC7A /* TTPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98A2E51867DBE70032CC7A /* TTPanelController.m */; };
@@ -88,6 +90,8 @@
 		FF0E12D31828560000D49EC7 /* TTModeVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeVideo.m; path = Modes/Video/TTModeVideo.m; sourceTree = "<group>"; };
 		FF0E12D61828569300D49EC7 /* Quicktime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Quicktime.h; path = Modes/Video/Quicktime.h; sourceTree = "<group>"; };
 		FF0E12D71828569300D49EC7 /* VLC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VLC.h; path = Modes/Video/VLC.h; sourceTree = "<group>"; };
+		FF429AD01919C630007C485E /* TTModeMenuCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeMenuCollectionView.h; sourceTree = "<group>"; };
+		FF429AD11919C630007C485E /* TTModeMenuCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeMenuCollectionView.m; sourceTree = "<group>"; };
 		FF4E262E182317D000D477F6 /* TTSerialMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSerialMonitor.h; path = SerialMonitor/TTSerialMonitor.h; sourceTree = "<group>"; };
 		FF4E262F182317D000D477F6 /* TTSerialMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSerialMonitor.m; path = SerialMonitor/TTSerialMonitor.m; sourceTree = "<group>"; };
 		FF4E26311823197D00D477F6 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -129,6 +133,8 @@
 		FF8C834817AB14B5000166FC /* TTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTAppDelegate.h; sourceTree = "<group>"; };
 		FF8C834917AB14B5000166FC /* TTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTAppDelegate.m; sourceTree = "<group>"; };
 		FF8C834C17AB14B5000166FC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		FF981FC9191AB46600A4A94B /* TTModeMenuBordersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeMenuBordersView.h; sourceTree = "<group>"; };
+		FF981FCA191AB46600A4A94B /* TTModeMenuBordersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeMenuBordersView.m; sourceTree = "<group>"; };
 		FF98A2DF1867DBA40032CC7A /* TTActionMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTActionMap.h; path = Models/TTActionMap.h; sourceTree = "<group>"; };
 		FF98A2E01867DBA40032CC7A /* TTActionMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTActionMap.m; path = Models/TTActionMap.m; sourceTree = "<group>"; };
 		FF98A2E21867DBE70032CC7A /* TTMenubarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTMenubarController.h; path = Controllers/TTMenubarController.h; sourceTree = "<group>"; };
@@ -338,6 +344,10 @@
 			children = (
 				FFA8EA9E190F090300679A4D /* TTModeMenuContainer.h */,
 				FFA8EA9F190F090300679A4D /* TTModeMenuContainer.m */,
+				FF981FC9191AB46600A4A94B /* TTModeMenuBordersView.h */,
+				FF981FCA191AB46600A4A94B /* TTModeMenuBordersView.m */,
+				FF429AD01919C630007C485E /* TTModeMenuCollectionView.h */,
+				FF429AD11919C630007C485E /* TTModeMenuCollectionView.m */,
 				FFA8EAA1190F091000679A4D /* TTModeMenuItem.h */,
 				FFA8EAA2190F091000679A4D /* TTModeMenuItem.m */,
 				FFA8EAA4190F11B200679A4D /* TTModeMenuItemView.h */,
@@ -633,6 +643,7 @@
 				FF0E12C218242DF000D49EC7 /* TTButtonTimer.m in Sources */,
 				FFF05F4218F77D5D00AC6230 /* TTChangeButtonCell.m in Sources */,
 				FFF05F3B18F77BE000AC6230 /* TTModeTitleView.m in Sources */,
+				FF429AD21919C630007C485E /* TTModeMenuCollectionView.m in Sources */,
 				FF98A2E11867DBA40032CC7A /* TTActionMap.m in Sources */,
 				FF0E12BB1824286600D49EC7 /* TTModeMap.m in Sources */,
 				FF801326186CF90700955218 /* TTBackgroundView.m in Sources */,
@@ -662,6 +673,7 @@
 				FF80132F186D210200955218 /* TTOptionsView.m in Sources */,
 				FF801329186CF90700955218 /* TTStatusItemView.m in Sources */,
 				FFA8EAA6190F11B200679A4D /* TTModeMenuItemView.m in Sources */,
+				FF981FCB191AB46600A4A94B /* TTModeMenuBordersView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

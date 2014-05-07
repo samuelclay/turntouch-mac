@@ -7,14 +7,19 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "TTModeMenuItem.h"
+#import "TTModeMenuCollectionView.h"
+#import "TTModeMenuBordersView.h"
 #import "TTAppDelegate.h"
 
 @class TTAppDelegate;
+@class TTModeMenuCollectionView;
 
-@interface TTModeMenuContainer : NSCollectionView {
+@interface TTModeMenuContainer : NSView {
     TTAppDelegate *appDelegate;
 
 }
+
+@property (nonatomic) TTModeMenuCollectionView *collectionView;
+@property (nonatomic) TTModeMenuBordersView *bordersView;
 
 @end

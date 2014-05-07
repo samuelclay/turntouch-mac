@@ -64,9 +64,6 @@
 //                                             selector:@selector(resize:)
 //                                                 name:NSWindowDidResizeNotification
 //                                               object:self.window];
-    [[NSNotificationCenter defaultCenter] addObserverForName:NSWindowDidResizeNotification object:self.window queue:nil usingBlock:^(NSNotification *notifcation){
-        NSLog(@"test");
-    }];
 }
 
 - (void) observeValueForKeyPath:(NSString*)keyPath
@@ -79,7 +76,7 @@
 }
 
 - (void)resize:(NSNotification *)notification {
-    NSLog(@"resize");
+//    NSLog(@"resize");
 //    [self.window display];
 //    [self.window setHasShadow:NO];
 //    [self.window setHasShadow:YES];
@@ -118,7 +115,6 @@
 }
 
 - (void)windowDidResize:(NSNotification *)notification {
-    NSLog(@"Invalidate shadow");
     [self.window display];
     [self.window invalidateShadow];
 }

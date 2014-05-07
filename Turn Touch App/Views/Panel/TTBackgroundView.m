@@ -11,7 +11,7 @@
 #import "TTBackgroundView.h"
 
 #define STROKE_OPACITY .5f
-
+#define OPEN_DURATION 0.42f
 #define SEARCH_INSET 10.0f
 #define TITLE_BAR_HEIGHT 38.0f
 #define MODE_TABS_HEIGHT 92.0f
@@ -163,9 +163,6 @@
                                                         toItem:self
                                                      attribute:NSLayoutAttributeWidth
                                                     multiplier:1.0 constant:0.0]];
-    NSLog(@"Background super: %@", [self superview]);
-    [modeMenu setItemPrototype:[TTModeMenuItem new]];
-    [modeMenu setContent:appDelegate.modeMap.availableModes];
 
     [self registerAsObserver];
 }
@@ -193,8 +190,15 @@
 #pragma mark - Drawing
 
 - (void)toggleModeMenuFrame {
+    NSTimeInterval openDuration = OPEN_DURATION;
+    
+    NSEvent *currentEvent = [NSApp currentEvent];
+    NSUInteger clearFlags = ([currentEvent modifierFlags] & NSDeviceIndependentModifierFlagsMask);
+    BOOL shiftPressed = (clearFlags == NSShiftKeyMask);
+    if (shiftPressed) openDuration *= 100;
+
     [NSAnimationContext beginGrouping];
-    [[NSAnimationContext currentContext] setDuration:0.42f];
+    [[NSAnimationContext currentContext] setDuration:openDuration];
     [[NSAnimationContext currentContext] setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
     [[NSAnimationContext currentContext] setCompletionHandler:^{
         [self.window invalidateShadow];
