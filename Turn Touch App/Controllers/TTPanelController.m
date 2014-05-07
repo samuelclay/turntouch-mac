@@ -60,12 +60,15 @@
 #pragma mark - KVO
 
 - (void)registerAsObserver {
-    [self.window addObserver:self forKeyPath:@"frame" options:0 context:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(resize:)
-                                                 name:NSWindowDidResizeNotification
-                                               object:self.window];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(resize:)
+//                                                 name:NSWindowDidResizeNotification
+//                                               object:self.window];
+    [[NSNotificationCenter defaultCenter] addObserverForName:NSWindowDidResizeNotification object:self.window queue:nil usingBlock:^(NSNotification *notifcation){
+        NSLog(@"test");
+    }];
 }
+
 - (void) observeValueForKeyPath:(NSString*)keyPath
                        ofObject:(id)object
                          change:(NSDictionary*)change
@@ -117,8 +120,7 @@
 - (void)windowDidResize:(NSNotification *)notification {
     NSLog(@"Invalidate shadow");
     [self.window display];
-    [self.window setHasShadow:NO];
-    [self.window setHasShadow:YES];
+    [self.window invalidateShadow];
 }
 
 #pragma mark - Keyboard

@@ -157,7 +157,13 @@
                                                         toItem:self
                                                      attribute:NSLayoutAttributeHeight
                                                     multiplier:1.0 constant:0.0]];
-    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:stackView
+                                                     attribute:NSLayoutAttributeWidth
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeWidth
+                                                    multiplier:1.0 constant:0.0]];
+    NSLog(@"Background super: %@", [self superview]);
     [modeMenu setItemPrototype:[TTModeMenuItem new]];
     [modeMenu setContent:appDelegate.modeMap.availableModes];
 
@@ -184,10 +190,6 @@
     }
 }
 
-- (void)windowDidResize:(NSNotification *)notification {
-    NSLog(@"Background resize");
-}
-
 #pragma mark - Drawing
 
 - (void)toggleModeMenuFrame {
@@ -210,7 +212,9 @@
 
 - (void)resetPosition {
     [appDelegate.modeMap reset];
-    appDelegate.modeMap.openedModeChangeMenu = NO;
+    if (appDelegate.modeMap.openedModeChangeMenu) {
+        [appDelegate.modeMap setOpenedModeChangeMenu:NO];
+    }
 }
 
 - (void)viewDidMoveToWindow {

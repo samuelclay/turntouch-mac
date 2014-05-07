@@ -8,7 +8,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="TTPanelController">
             <connections>
                 <outlet property="backgroundView" destination="3" id="cKg-La-WYo"/>
-                <outlet property="window" destination="2" id="4"/>
+                <outlet property="window" destination="2" id="0xT-wK-XGo"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -22,9 +22,10 @@
             <view key="contentView" id="3" customClass="TTBackgroundView">
                 <rect key="frame" x="0.0" y="0.0" width="360" height="286"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <animations/>
             </view>
             <connections>
-                <outlet property="delegate" destination="-2" id="6"/>
+                <outlet property="delegate" destination="-2" id="W9G-5c-YeU"/>
             </connections>
         </window>
     </objects>

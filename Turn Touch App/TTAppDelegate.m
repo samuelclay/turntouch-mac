@@ -63,10 +63,6 @@ void *kContextActivePanel = &kContextActivePanel;
     self.panelController.hasActivePanel = self.menubarController.hasActiveIcon;
 }
 
-- (void)windowDidResize:(NSNotification *)notification {
-    NSLog(@"App delegate resize");
-    
-}
 #pragma mark - Public accessors
 
 - (TTPanelController *)panelController {

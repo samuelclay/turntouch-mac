@@ -20,8 +20,29 @@
         appDelegate = [NSApp delegate];
         self.translatesAutoresizingMaskIntoConstraints = NO;
         [self setMaxNumberOfColumns:2];
+        
+        [self registerAsObserver];
     }
     return self;
+}
+
+#pragma mark - KVO
+
+- (void)registerAsObserver {
+    [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
+                             options:0 context:nil];
+}
+
+- (void) observeValueForKeyPath:(NSString*)keyPath
+                       ofObject:(id)object
+                         change:(NSDictionary*)change
+                        context:(void*)context {
+    if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))]) {
+        if (appDelegate.modeMap.inspectingModeDirection != NO_DIRECTION &&
+            appDelegate.modeMap.openedModeChangeMenu) {
+            [appDelegate.modeMap setOpenedModeChangeMenu:NO];
+        }
+    }
 }
 
 #pragma mark - Drawing

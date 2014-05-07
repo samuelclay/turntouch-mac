@@ -29,10 +29,6 @@
 
 - (id)init {
     if (self = [super init]) {
-        [self addObserver:self
-               forKeyPath:@"selectedModeDirection"
-                  options:0 context:nil];
-        
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         availableModes = @[@"TTModeMac",
                            @"TTModeAlarmClock",
@@ -53,10 +49,35 @@
                                                       integerValue];
             [self switchMode];
         }
+
+        [self registerAsObserver];
     }
     
     return self;
 }
+
+#pragma mark - KVO
+
+- (void)registerAsObserver {
+    [self addObserver:self forKeyPath:@"selectedModeDirection"
+                             options:0 context:nil];
+}
+
+- (void) observeValueForKeyPath:(NSString*)keyPath
+                       ofObject:(id)object
+                         change:(NSDictionary*)change
+                        context:(void*)context {
+    if ([keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:[NSNumber numberWithInt:selectedModeDirection]
+                     forKey:@"TT:selectedModeDirection"];
+        [defaults synchronize];
+        
+        [self switchMode];
+    }
+}
+
+#pragma mark - Actions
 
 - (void)reset {
     [self setInspectingModeDirection:NO_DIRECTION];
@@ -71,18 +92,6 @@
         Class modeClass = NSClassFromString(directionModeName);
         [self setValue:[[modeClass alloc] init] forKey:[NSString stringWithFormat:@"%@Mode", direction]];
     }
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath
-                      ofObject:(id)object
-                        change:(NSDictionary *)change
-                       context:(void *)context {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[NSNumber numberWithInt:selectedModeDirection]
-                 forKey:@"TT:selectedModeDirection"];
-    [defaults synchronize];
-    
-    [self switchMode];
 }
 
 - (void)switchMode {
@@ -210,6 +219,27 @@
         [self setHoverModeDirection:NO_DIRECTION];
     } else {
         [self setHoverModeDirection:direction];
+    }
+}
+
+- (void)setInspectingModeDirection:(TTModeDirection)_inspectingModeDirection {
+    if (inspectingModeDirection != _inspectingModeDirection) {
+        NSLog(@"Inspecting %d - %d", inspectingModeDirection, _inspectingModeDirection);
+        inspectingModeDirection = _inspectingModeDirection;
+    }
+}
+
+- (void)setHoverModeDirection:(TTModeDirection)_hoverModeDirection {
+    if (hoverModeDirection != _hoverModeDirection) {
+        NSLog(@"Hovering %d - %d", hoverModeDirection, _hoverModeDirection);
+        hoverModeDirection = _hoverModeDirection;
+    }
+}
+
+- (void)setOpenedModeChangeMenu:(BOOL)_openedModeChangeMenu {
+    NSLog(@"Opened %d - %d", openedModeChangeMenu, _openedModeChangeMenu);
+    if (openedModeChangeMenu != _openedModeChangeMenu) {
+        openedModeChangeMenu = _openedModeChangeMenu;
     }
 }
 

@@ -17,7 +17,9 @@ typedef enum {
     SOUTH = 4
 } TTModeDirection;
 
-@interface TTModeMap : NSObject
+@interface TTModeMap : NSObject {
+
+}
 
 @property (nonatomic, assign) TTModeDirection activeModeDirection;
 @property (nonatomic, assign) TTModeDirection selectedModeDirection;

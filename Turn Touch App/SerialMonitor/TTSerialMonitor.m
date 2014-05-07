@@ -39,10 +39,6 @@ const int MAX_STR   = 255;
     return self;
 }
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 - (BOOL)confirmDevice {
     if (hidDevice) {
         unsigned char buf[65];
