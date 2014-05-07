@@ -139,6 +139,7 @@
     [[NSCursor arrowCursor] set];
     
     hoverActive = NO;
+    mouseDownActive = NO;
     [self setNeedsDisplay:YES];
     [appDelegate.panelController.backgroundView.modeMenu setNeedsDisplay:YES];
 }

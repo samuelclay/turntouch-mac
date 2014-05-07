@@ -295,6 +295,10 @@
     [self mouseMovement:theEvent hovering:YES];
 }
 
+- (void)mouseExited:(NSEvent *)theEvent {
+    [appDelegate.modeMap toggleHoverModeDirection:NO_DIRECTION hovering:NO];
+}
+
 - (void)mouseMovement:(NSEvent *)theEvent hovering:(BOOL)hovering {
     NSPoint location = [theEvent locationInWindow];
     NSPoint center = [self convertPoint:location fromView:nil];

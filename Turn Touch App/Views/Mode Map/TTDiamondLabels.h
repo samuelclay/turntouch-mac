@@ -19,11 +19,6 @@
     NSRect diamondRect;
     CGSize textSize;
     
-    NSBezierPath *northLine;
-    NSBezierPath *eastLine;
-    NSBezierPath *westLine;
-    NSBezierPath *southLine;
-    
     TTDiamondLabel *northLabel;
     TTDiamondLabel *eastLabel;
     TTDiamondLabel *westLabel;

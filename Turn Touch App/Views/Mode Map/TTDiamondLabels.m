@@ -46,8 +46,7 @@
 - (void)setFrame:(NSRect)frameRect {
     [super setFrame:frameRect];
     
-    [[NSColor whiteColor] set];
-    NSRectFill(self.bounds);
+    [self drawBackground];
     
     diamondRect = NSInsetRect(self.bounds, 24, 24);
     [diamondView setFrame:diamondRect];
@@ -91,37 +90,14 @@
 
 
 - (void)drawBackground {
-    
     [[NSColor whiteColor] setFill];
     NSRectFill(self.bounds);
 }
 
 - (void)drawLabels {
     CGFloat offsetX = NSMinX(diamondRect);
-    CGFloat offsetY = NSMaxY(self.bounds) - NSMaxY(diamondRect);
     CGFloat width = NSWidth(diamondRect);
     CGFloat height = NSHeight(diamondRect);
-//    NSLog(@"Labels rect: %@", NSStringFromRect(diamondRect));
-    for (TTModeDirection direction=1; direction <= 4; direction++) {
-        if (direction == NORTH) {
-            northLine = [NSBezierPath bezierPath];
-            [northLine moveToPoint:NSMakePoint(offsetX + width / 2, offsetY + height - 0*LINE_SIZE/2)];
-            [northLine lineToPoint:NSMakePoint(offsetX + width / 2, offsetY + height + LINE_SIZE*2)];
-        } else if (direction == EAST) {
-            eastLine = [NSBezierPath bezierPath];
-            [eastLine moveToPoint:NSMakePoint(offsetX + width - 0*LINE_SIZE, offsetY + height * 1/2)];
-            [eastLine lineToPoint:NSMakePoint(offsetX + width + LINE_SIZE*2, offsetY + height * 1/2)];
-        } else if (direction == WEST) {
-            westLine = [NSBezierPath bezierPath];
-            [westLine moveToPoint:NSMakePoint(offsetX - LINE_SIZE*2, offsetY + height * 1/2)];
-            [westLine lineToPoint:NSMakePoint(offsetX + 0*LINE_SIZE, offsetY + height * 1/2)];
-        } else if (direction == SOUTH) {
-            southLine = [NSBezierPath bezierPath];
-            [southLine moveToPoint:NSMakePoint(offsetX + width / 2, offsetY + 0*LINE_SIZE/2)];
-            [southLine lineToPoint:NSMakePoint(offsetX + width / 2, offsetY - LINE_SIZE * 2)];
-        }
-    }
-    
     CGFloat spacing = SPACING_PCT * width;
     CGFloat textHeight = 24;
     
@@ -153,6 +129,10 @@
 
 - (void)mouseUp:(NSEvent *)theEvent {
     
+}
+
+- (void)mouseExited:(NSEvent *)theEvent {
+    [self setNeedsDisplay:YES];
 }
 
 @end
