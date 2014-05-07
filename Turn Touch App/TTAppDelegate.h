@@ -6,12 +6,14 @@
 //  Copyright (c) 2013 Turn Touch. All rights reserved.
 //
 
+#import "TTModeDirection.h"
 #import "TTMenubarController.h"
 #import "TTPanelDelegate.h"
 #import "TTPanelController.h"
 #import "TTSerialMonitor.h"
 #import "TTModeMap.h"
 
+@class TTModeMap;
 @class TTPanelController;
 
 @interface TTAppDelegate : NSObject

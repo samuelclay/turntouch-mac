@@ -85,7 +85,7 @@
     
     NSString *actionTitle;
     
-    actionTitle = [appDelegate.modeMap.selectedMode titleInDirection:labelDirection];    
+    actionTitle = [appDelegate.modeMap.selectedMode titleInDirection:labelDirection];
     NSSize titleSize = [actionTitle sizeWithAttributes:titleAttributes];
     
     NSPoint titlePoint = NSMakePoint(NSMaxX(diamondView.frame) + X_MARGIN,

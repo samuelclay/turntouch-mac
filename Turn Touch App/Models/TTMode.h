@@ -7,18 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TTAppDelegate.h"
 #import "TTModeProtocol.h"
 
-typedef enum {
-    NO_DIRECTION = 0,
-    NORTH = 1,
-    EAST = 2,
-    WEST = 3,
-    SOUTH = 4
-} TTModeDirection;
+@class TTAppDelegate;
 
-@interface TTMode : NSObject
-<TTModeProtocol>
+@interface TTMode : NSObject <TTModeProtocol> {
+    TTAppDelegate *appDelegate;
+}
 
 - (void)runDirection:(TTModeDirection)direction;
 - (NSString *)titleInDirection:(TTModeDirection)direction;

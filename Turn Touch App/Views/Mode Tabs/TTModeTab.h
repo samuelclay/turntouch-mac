@@ -10,9 +10,11 @@
 #import "TTAppDelegate.h"
 #import "TTModeMap.h"
 #import "TTDiamondView.h"
+#import "TTMode.h"
 
 @class TTAppDelegate;
 @class TTDiamondView;
+@class TTMode;
 
 @interface TTModeTab : NSView <NSMenuDelegate> {
     TTAppDelegate *appDelegate;

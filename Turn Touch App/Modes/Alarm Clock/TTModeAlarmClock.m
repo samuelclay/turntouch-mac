@@ -10,6 +10,8 @@
 
 @implementation TTModeAlarmClock
 
+#pragma mark - Mode
+
 + (NSString *)title {
     return @"Alarm";
 }
@@ -22,21 +24,59 @@
     return @"clock.png";
 }
 
-- (NSString *)titleNorth {
+#pragma mark - Actions
+
+- (NSArray *)actions {
+    return @[@"TTAlarmSnooze",
+             @"TTAlarmNextSong",
+             @"TTAlarmStop",
+             @"TTAlarmQuiet"
+             ];
+}
+
+#pragma mark - Action Titles
+
+- (NSString *)titleTTAlarmSnooze {
     return @"Snooze";
 }
-
-- (NSString *)titleEast {
+- (NSString *)titleTTAlarmNextSong {
     return @"Next Song";
 }
-
-- (NSString *)titleWest {
-    return @"Unread Emails";
+- (NSString *)titleTTAlarmStop {
+    return @"Stop alarm";
+}
+- (NSString *)titleTTAlarmQuiet {
+    return @"Quiet down";
 }
 
-- (NSString *)titleSouth {
-    return @"Stop Alarm";
+#pragma mark - Action methods
+
+- (void)runTTAlarmSnooze {
+    NSLog(@"Running runTTAlarmSnooze");
+}
+- (void)runTTAlarmNextSong {
+    NSLog(@"Running runTTAlarmNextSong");
+}
+- (void)runTTAlarmStop {
+    NSLog(@"Running runTTAlarmStop");
+}
+- (void)runTTAlarmQuiet {
+    NSLog(@"Running runTTAlarmQuiet");
 }
 
+#pragma mark - Defaults
+
+- (NSString *)defaultNorth {
+    return @"TTAlarmSnooze";
+}
+- (NSString *)defaultEast {
+    return @"TTAlarmNextSong";
+}
+- (NSString *)defaultWest {
+    return @"TTAlarmStop";
+}
+- (NSString *)defaultSouth {
+    return @"TTAlarmQuiet";
+}
 
 @end

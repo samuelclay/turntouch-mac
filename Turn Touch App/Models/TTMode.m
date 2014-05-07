@@ -11,6 +11,13 @@
 
 @implementation TTMode
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        appDelegate = [NSApp delegate];
+    }
+    return self;
+}
 #pragma mark - Actions
 
 - (NSArray *)actions {
@@ -89,8 +96,9 @@
     // TODO: Assert selector exists
     SEL selector = NSSelectorFromString([NSString stringWithFormat:@"title%@",
                                          actionName]);
-    [self performSelector:selector];
-    
+    IMP imp = [self methodForSelector:selector];
+    void (*func)(id, SEL) = (void *)imp;
+    func(self, selector);
 }
 
 - (NSString *)titleInDirection:(TTModeDirection)direction {
@@ -98,7 +106,11 @@
     
     SEL selector = NSSelectorFromString([NSString stringWithFormat:@"title%@",
                                          actionName]);
-    return (NSString *)[self performSelector:selector];
+    IMP imp = [self methodForSelector:selector];
+    NSString *(*func)(id, SEL) = (void *)imp;
+    NSString *actionTitle = func(self, selector);
+
+    return actionTitle;
 }
 
 - (NSImage *)imageInDirection:(TTModeDirection)direction {
@@ -106,14 +118,20 @@
     
     SEL selector = NSSelectorFromString([NSString stringWithFormat:@"image%@",
                                          actionName]);
-    return (NSImage *)[self performSelector:selector];
+    IMP imp = [self methodForSelector:selector];
+    NSImage *(*func)(id, SEL) = (void *)imp;
+    NSImage *actionImage = func(self, selector);
+    
+    return actionImage;
 }
 
 - (NSString *)actionNameInDirection:(TTModeDirection)direction {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    NSString *directionAction = [defaults stringForKey:[NSString stringWithFormat:@"%@:action:%d",
-                                                        [self class], direction]];
+    NSString *directionAction = [defaults stringForKey:[NSString stringWithFormat:@"%@-%d:action:%d",
+                                                        [self class],
+                                                        appDelegate.modeMap.selectedModeDirection,
+                                                        direction]];
     if (directionAction && ![self.actions containsObject:directionAction]) {
         directionAction = nil;
     }

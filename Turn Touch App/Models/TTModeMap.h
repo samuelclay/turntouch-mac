@@ -6,8 +6,11 @@
 //  Copyright (c) 2013 Turn Touch. All rights reserved.
 //
 
-#import "TTMode.h"
 #import <Cocoa/Cocoa.h>
+#import "TTModeDirection.h"
+#import "TTMode.h"
+
+@class TTMode;
 
 @interface TTModeMap : NSObject {
 
