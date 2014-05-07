@@ -19,9 +19,8 @@
     NSDictionary *modeAttributes;
     CGSize textSize;
     TTChangeButtonView *changeButton;
-    BOOL isModeChangeActive;
 }
 
-@property (nonatomic) IBOutlet NSButton *changeButton;
+@property (nonatomic) IBOutlet TTChangeButtonView *changeButton;
 
 @end

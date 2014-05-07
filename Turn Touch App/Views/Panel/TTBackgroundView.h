@@ -29,6 +29,7 @@
 @interface TTBackgroundView : NSView <NSStackViewDelegate> {
     TTAppDelegate *appDelegate;
     NSLayoutConstraint *modeMenuConstraint;
+    NSLayoutConstraint *actionMenuConstraint;
 }
 
 @property (nonatomic) NSStackView *stackView;
@@ -36,6 +37,7 @@
 @property (nonatomic) IBOutlet TTTitleBarView *titleBarView;
 @property (nonatomic) IBOutlet TTModeTabsContainer *modeTabs;
 @property (nonatomic) IBOutlet TTModeMenuContainer *modeMenu;
+@property (nonatomic) IBOutlet TTModeMenuContainer *actionMenu;
 @property (nonatomic) IBOutlet TTModeTitleView *modeTitle;
 @property (nonatomic) IBOutlet TTDiamondLabels *diamondLabels;
 @property (nonatomic) IBOutlet TTOptionsView *optionsView;

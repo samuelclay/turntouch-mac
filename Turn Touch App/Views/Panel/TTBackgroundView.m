@@ -17,7 +17,7 @@
 #define MODE_TABS_HEIGHT 92.0f
 #define MODE_TITLE_HEIGHT 64.0f
 #define MODE_MENU_HEIGHT 146.0f
-#define MODE_OPTIONS_HEIGHT 128.0f
+#define MODE_OPTIONS_HEIGHT 48.0f
 #define DIAMOND_LABELS_SIZE 270.0f
 
 #pragma mark -
@@ -30,6 +30,7 @@
 @synthesize modeTabs;
 @synthesize modeTitle;
 @synthesize modeMenu;
+@synthesize actionMenu;
 @synthesize diamondLabels;
 @synthesize optionsView;
 
@@ -44,9 +45,10 @@
     titleBarView = [[TTTitleBarView alloc] init];
     modeTabs = [[TTModeTabsContainer alloc] init];
     modeTitle = [[TTModeTitleView alloc] init];
-    modeMenu = [[TTModeMenuContainer alloc] init];
+    modeMenu = [[TTModeMenuContainer alloc] initWithType:MODE_MENU_TYPE];
     diamondLabels = [[TTDiamondLabels alloc] init];
     optionsView = [[TTOptionsView alloc] init];
+    actionMenu = [[TTModeMenuContainer alloc] initWithType:MODE_MENU_TYPE];
     
     stackView = [[NSStackView alloc] init];
     [stackView setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -57,6 +59,7 @@
                           modeTitle,
                           modeMenu,
                           diamondLabels,
+                          actionMenu,
                           optionsView] inGravity:NSStackViewGravityTop];
     
     [stackView addConstraint:[NSLayoutConstraint constraintWithItem:arrowView
@@ -116,6 +119,15 @@
                                                           attribute:0
                                                          multiplier:0
                                                            constant:MODE_OPTIONS_HEIGHT]];
+    actionMenuConstraint = [NSLayoutConstraint constraintWithItem:actionMenu
+                                                      attribute:NSLayoutAttributeHeight
+                                                      relatedBy:NSLayoutRelationEqual
+                                                         toItem:nil
+                                                      attribute:0
+                                                     multiplier:0
+                                                       constant:1];
+    [stackView addConstraint:actionMenuConstraint];
+
     // add a minimum width constraint
     [stackView addConstraint:[NSLayoutConstraint constraintWithItem:stackView
                                                           attribute:NSLayoutAttributeWidth
@@ -172,6 +184,8 @@
 - (void)registerAsObserver {
     [appDelegate.modeMap addObserver:self forKeyPath:@"openedModeChangeMenu"
                              options:0 context:nil];
+    [appDelegate.modeMap addObserver:self forKeyPath:@"openedActionChangeMenu"
+                             options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"selectedMode"
                              options:0 context:nil];
 }
@@ -182,6 +196,8 @@
                         context:(void*)context {
     if ([keyPath isEqual:NSStringFromSelector(@selector(openedModeChangeMenu))]) {
         [self toggleModeMenuFrame];
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(openedActionChangeMenu))]) {
+            [self toggleActionMenuFrame];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedMode))]) {
         [self resetPosition];
     }
@@ -196,7 +212,7 @@
     NSUInteger clearFlags = ([currentEvent modifierFlags] & NSDeviceIndependentModifierFlagsMask);
     BOOL shiftPressed = (clearFlags == NSShiftKeyMask);
     if (shiftPressed) openDuration *= 50;
-
+    
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:openDuration];
     [[NSAnimationContext currentContext] setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
@@ -204,11 +220,36 @@
         [self.window invalidateShadow];
         [self.window update];
     }];
-
+    
     if (appDelegate.modeMap.openedModeChangeMenu) {
         [[modeMenuConstraint animator] setConstant:MODE_MENU_HEIGHT];
     } else {
         [[modeMenuConstraint animator] setConstant:1];
+    }
+    
+    [NSAnimationContext endGrouping];
+}
+
+- (void)toggleActionMenuFrame {
+    NSTimeInterval openDuration = OPEN_DURATION;
+    
+    NSEvent *currentEvent = [NSApp currentEvent];
+    NSUInteger clearFlags = ([currentEvent modifierFlags] & NSDeviceIndependentModifierFlagsMask);
+    BOOL shiftPressed = (clearFlags == NSShiftKeyMask);
+    if (shiftPressed) openDuration *= 50;
+    
+    [NSAnimationContext beginGrouping];
+    [[NSAnimationContext currentContext] setDuration:openDuration];
+    [[NSAnimationContext currentContext] setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+    [[NSAnimationContext currentContext] setCompletionHandler:^{
+        [self.window invalidateShadow];
+        [self.window update];
+    }];
+    
+    if (appDelegate.modeMap.openedActionChangeMenu) {
+        [[actionMenuConstraint animator] setConstant:MODE_MENU_HEIGHT];
+    } else {
+        [[actionMenuConstraint animator] setConstant:1];
     }
     
     [NSAnimationContext endGrouping];

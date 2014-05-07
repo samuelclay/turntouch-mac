@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "TTAppDelegate.h"
 #import "TTDiamondView.h"
+#import "TTChangeButtonView.h"
 
 @class TTAppDelegate;
 
@@ -16,7 +17,9 @@
     TTAppDelegate *appDelegate;
     NSDictionary *titleAttributes;
     TTDiamondView *diamondView;
+    TTChangeButtonView *changeButton;
 }
 
+@property (nonatomic) IBOutlet TTChangeButtonView *changeButton;
 
 @end

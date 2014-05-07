@@ -20,12 +20,14 @@
 @synthesize inspectingModeDirection;
 @synthesize hoverModeDirection;
 @synthesize openedModeChangeMenu;
+@synthesize openedActionChangeMenu;
 @synthesize selectedMode;
 @synthesize northMode;
 @synthesize eastMode;
 @synthesize westMode;
 @synthesize southMode;
 @synthesize availableModes;
+@synthesize availableActions;
 
 - (id)init {
     if (self = [super init]) {
@@ -40,6 +42,7 @@
         inspectingModeDirection = NO_DIRECTION;
         hoverModeDirection = NO_DIRECTION;
         openedModeChangeMenu = NO;
+        openedActionChangeMenu = NO;
         
         [self setupModes];
         
@@ -237,6 +240,12 @@
 - (void)setOpenedModeChangeMenu:(BOOL)_openedModeChangeMenu {
     if (openedModeChangeMenu != _openedModeChangeMenu) {
         openedModeChangeMenu = _openedModeChangeMenu;
+    }
+}
+
+- (void)setOpenedActionChangeMenu:(BOOL)_openedActionChangeMenu {
+    if (openedActionChangeMenu != _openedActionChangeMenu) {
+        openedActionChangeMenu = _openedActionChangeMenu;
     }
 }
 

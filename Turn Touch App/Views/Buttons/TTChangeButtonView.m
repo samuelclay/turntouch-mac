@@ -30,7 +30,6 @@
     cell.mouseDown = YES;
     [self setNeedsDisplay];
     
-    
     // this blocks until the button is released
     [super mouseDown:theEvent];
     // we know the button was released, so we can send this

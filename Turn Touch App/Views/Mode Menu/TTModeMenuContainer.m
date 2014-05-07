@@ -17,8 +17,16 @@
 @synthesize collectionView;
 @synthesize bordersView;
 
-- (id)initWithFrame:(NSRect)frame
-{
+- (id)initWithType:(TTMenuType)_menuType {
+    self = [super init];
+    if (self) {
+        menuType = _menuType;
+    }
+    
+    return self;
+}
+
+- (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         appDelegate = [NSApp delegate];
@@ -26,7 +34,11 @@
 
         collectionView = [[TTModeMenuCollectionView alloc] init];
         [collectionView setItemPrototype:[TTModeMenuItem new]];
-        [collectionView setContent:appDelegate.modeMap.availableModes];
+        if (menuType == MODE_MENU_TYPE) {
+            [collectionView setContent:appDelegate.modeMap.availableModes];
+        } else if (menuType == ACTION_MENU_TYPE) {
+            [collectionView setContent:appDelegate.modeMap.availableActions];
+        }
         
         [self addConstraint:[NSLayoutConstraint constraintWithItem:collectionView
                                                          attribute:NSLayoutAttributeTop

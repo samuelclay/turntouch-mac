@@ -58,4 +58,11 @@
     [line stroke];
 }
 
+- (NSRect)drawTitle:(NSAttributedString *)title withFrame:(NSRect)frame inView:(NSView *)controlView {
+    NSSize textSize = [title size];
+    [title drawAtPoint:NSMakePoint(frame.origin.x + frame.size.width/2 - textSize.width/2,
+                                   frame.origin.y + frame.size.height/2 - textSize.height/2 + 1)];
+    return frame;
+}
+
 @end

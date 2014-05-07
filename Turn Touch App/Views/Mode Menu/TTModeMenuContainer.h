@@ -11,15 +11,22 @@
 #import "TTModeMenuBordersView.h"
 #import "TTAppDelegate.h"
 
+typedef enum {
+    MODE_MENU_TYPE = 0,
+    ACTION_MENU_TYPE = 1
+} TTMenuType;
+
 @class TTAppDelegate;
 @class TTModeMenuCollectionView;
 
 @interface TTModeMenuContainer : NSView {
     TTAppDelegate *appDelegate;
-
+    TTMenuType menuType;
 }
 
 @property (nonatomic) TTModeMenuCollectionView *collectionView;
 @property (nonatomic) TTModeMenuBordersView *bordersView;
+
+- (id)initWithType:(TTMenuType)_menuType;
 
 @end

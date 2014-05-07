@@ -9,15 +9,20 @@
 #import "TTOptionsActionTitle.h"
 
 #define X_MARGIN 12.0f
-#define Y_MARGIN 18.0f
+#define Y_MARGIN 24.0f
 #define DIAMOND_SIZE 18.0f
+#define BUTTON_WIDTH 82.0f
+#define BUTTON_HEIGHT 24.0f
 
 @implementation TTOptionsActionTitle
+
+@synthesize changeButton;
 
 - (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         appDelegate = [NSApp delegate];
+//        self.translatesAutoresizingMaskIntoConstraints = NO;
         
         [self registerAsObserver];
         [self setupLabels];
@@ -26,9 +31,18 @@
         [diamondView setIgnoreSelectedMode:YES];
         [diamondView setIgnoreActiveMode:YES];
         [self addSubview:diamondView];
+
+        changeButton = [[TTChangeButtonView alloc] init];
+        [self setChangeButtonTitle:@"change"];
+        [changeButton setBezelStyle:NSRoundRectBezelStyle];
+        [changeButton setAction:@selector(showChangeActionMenu:)];
+        [changeButton setTarget:self];
+        [self addSubview:changeButton];
     }
     return self;
 }
+
+#pragma mark - KVO
 
 - (void)registerAsObserver {
     [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
@@ -45,6 +59,8 @@
     }
 }
 
+#pragma mark - Drawing
+
 - (void)setFrame:(NSRect)frameRect {
     [super setFrame:frameRect];
     
@@ -52,7 +68,18 @@
                                     DIAMOND_SIZE * 1.3, DIAMOND_SIZE);
     [diamondView setFrame:diamondRect];
 
+    NSRect buttonFrame = NSMakeRect(NSWidth(self.bounds) - BUTTON_WIDTH - 12,
+                                    NSMaxY(self.bounds) - BUTTON_HEIGHT/2 - Y_MARGIN,
+                                    BUTTON_WIDTH,
+                                    BUTTON_HEIGHT);
+    changeButton.frame = buttonFrame;
+    if (appDelegate.modeMap.openedActionChangeMenu) {
+        [self setChangeButtonTitle:@"cancel"];
+    } else {
+        [self setChangeButtonTitle:@"change"];
+    }
 }
+
 - (void)drawRect:(NSRect)dirtyRect {
     TTModeDirection labelDirection = appDelegate.modeMap.inspectingModeDirection;
     
@@ -76,6 +103,24 @@
     [actionTitle drawAtPoint:titlePoint withAttributes:titleAttributes];
 }
 
+#pragma mark - Attributes
+
+- (void)setChangeButtonTitle:(NSString *)title {
+    NSMutableParagraphStyle *centredStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    [centredStyle setLineHeightMultiple:0.6f];
+    [centredStyle setAlignment:NSCenterTextAlignment];
+    NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:centredStyle,
+                           NSParagraphStyleAttributeName,
+                           [NSFont fontWithName:@"Helvetica-Bold" size:10.f],
+                           NSFontAttributeName,
+                           NSColorFromRGB(0xA0A3A8),
+                           NSForegroundColorAttributeName,
+                           nil];
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]
+                                                   initWithString:[title uppercaseString] attributes:attrs];
+    [changeButton setAttributedTitle:attributedString];
+}
+
 - (void)setupLabels {
     NSShadow *stringShadow = [[NSShadow alloc] init];
     stringShadow.shadowColor = [NSColor whiteColor];
@@ -89,6 +134,13 @@
                         NSShadowAttributeName: stringShadow,
                         NSParagraphStyleAttributeName: style
                         };
+}
+
+#pragma mark - Events
+
+- (void)showChangeActionMenu:(id)sender {
+    [appDelegate.modeMap setOpenedActionChangeMenu:!appDelegate.modeMap.openedActionChangeMenu];
+    [self setNeedsDisplay:YES];
 }
 
 @end
