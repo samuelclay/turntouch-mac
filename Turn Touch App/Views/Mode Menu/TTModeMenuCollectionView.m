@@ -24,8 +24,7 @@
 - (void)drawRect:(NSRect)dirtyRect
 {
     [super drawRect:dirtyRect];
-    NSLog(@"Drawing collection view: %@", NSStringFromRect(self.frame));
-    // Drawing code here.
+//    NSLog(@"Drawing collection view: %@", NSStringFromRect(self.frame));
 }
 
 

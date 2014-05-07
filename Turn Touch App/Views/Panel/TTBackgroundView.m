@@ -16,7 +16,7 @@
 #define TITLE_BAR_HEIGHT 38.0f
 #define MODE_TABS_HEIGHT 92.0f
 #define MODE_TITLE_HEIGHT 64.0f
-#define MODE_MENU_HEIGHT 142.0f
+#define MODE_MENU_HEIGHT 146.0f
 #define MODE_OPTIONS_HEIGHT 128.0f
 #define DIAMOND_LABELS_SIZE 270.0f
 
@@ -195,7 +195,7 @@
     NSEvent *currentEvent = [NSApp currentEvent];
     NSUInteger clearFlags = ([currentEvent modifierFlags] & NSDeviceIndependentModifierFlagsMask);
     BOOL shiftPressed = (clearFlags == NSShiftKeyMask);
-    if (shiftPressed) openDuration *= 100;
+    if (shiftPressed) openDuration *= 50;
 
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:openDuration];

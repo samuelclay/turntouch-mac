@@ -30,23 +30,16 @@
         
         [self addConstraint:[NSLayoutConstraint constraintWithItem:collectionView
                                                          attribute:NSLayoutAttributeTop
-                                                         relatedBy:NSLayoutRelationGreaterThanOrEqual
+                                                         relatedBy:NSLayoutRelationEqual
                                                             toItem:self
                                                          attribute:NSLayoutAttributeTop
-                                                        multiplier:1.0 constant:1.0]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:collectionView
-                                                         attribute:NSLayoutAttributeBottom
-                                                         relatedBy:NSLayoutRelationGreaterThanOrEqual
-                                                            toItem:self
-                                                         attribute:NSLayoutAttributeBottom
-                                                        multiplier:1.0 constant:-1.0]];
-        
+                                                        multiplier:1.0 constant:1]];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:collectionView
                                                          attribute:NSLayoutAttributeHeight
-                                                         relatedBy:NSLayoutRelationGreaterThanOrEqual
+                                                         relatedBy:NSLayoutRelationEqual
                                                             toItem:self
                                                          attribute:NSLayoutAttributeHeight
-                                                        multiplier:1.0 constant:28]];
+                                                        multiplier:1.0 constant:0]];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:collectionView
                                                          attribute:NSLayoutAttributeWidth
                                                          relatedBy:NSLayoutRelationEqual
@@ -57,8 +50,14 @@
         
         bordersView = [[TTModeMenuBordersView alloc] init];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:bordersView
+                                                         attribute:NSLayoutAttributeTop
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeTop
+                                                        multiplier:1.0 constant:0]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:bordersView
                                                          attribute:NSLayoutAttributeHeight
-                                                         relatedBy:NSLayoutRelationGreaterThanOrEqual
+                                                         relatedBy:NSLayoutRelationEqual
                                                             toItem:self
                                                          attribute:NSLayoutAttributeHeight
                                                         multiplier:1.0 constant:0]];
@@ -67,7 +66,7 @@
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:self
                                                          attribute:NSLayoutAttributeWidth
-                                                        multiplier:1.0 constant:0.0]];
+                                                        multiplier:1.0 constant:0]];
         [self addSubview:bordersView];
         
         [self registerAsObserver];
