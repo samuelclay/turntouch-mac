@@ -9,14 +9,6 @@
 #import "TTMode.h"
 #import <Cocoa/Cocoa.h>
 
-typedef enum {
-    NO_DIRECTION = 0,
-    NORTH = 1,
-    EAST = 2,
-    WEST = 3,
-    SOUTH = 4
-} TTModeDirection;
-
 @interface TTModeMap : NSObject {
 
 }
@@ -33,11 +25,10 @@ typedef enum {
 @property (nonatomic) TTMode *westMode;
 @property (nonatomic) TTMode *southMode;
 @property (nonatomic) NSArray *availableModes;
+@property (nonatomic) NSArray *availableActions;
 
 - (void)reset;
 - (void)runActiveButton;
-- (NSArray *)availableModeTitles;
-- (NSArray *)availableModeClassNames;
 - (void)changeDirection:(TTModeDirection)direction toMode:(NSString *)modeClassName;
 - (void)toggleInspectingModeDirection:(TTModeDirection)direction;
 - (void)toggleHoverModeDirection:(TTModeDirection)direction hovering:(BOOL)hovering;

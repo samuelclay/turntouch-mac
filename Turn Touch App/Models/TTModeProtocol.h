@@ -11,15 +11,13 @@
 @protocol TTModeProtocol <NSObject>
 
 @required
-- (void)runNorth;
-- (void)runEast;
-- (void)runWest;
-- (void)runSouth;
+- (NSArray *)actions;
 
-- (NSString *)titleNorth;
-- (NSString *)titleEast;
-- (NSString *)titleWest;
-- (NSString *)titleSouth;
+- (NSString *)defaultNorth;
+- (NSString *)defaultEast;
+- (NSString *)defaultWest;
+- (NSString *)defaultSouth;
+
 + (NSString *)title;
 + (NSString *)description;
 + (NSString *)imageName;

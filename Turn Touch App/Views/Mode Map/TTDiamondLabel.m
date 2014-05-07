@@ -60,16 +60,7 @@
     
 	NSString *directionLabel;
 
-    if (labelDirection == NORTH) {
-        directionLabel = [appDelegate.modeMap.selectedMode titleNorth];
-    } else if (labelDirection == EAST) {
-        directionLabel = [appDelegate.modeMap.selectedMode titleEast];
-    } else if (labelDirection == WEST) {
-        directionLabel = [appDelegate.modeMap.selectedMode titleWest];
-    } else if (labelDirection == SOUTH) {
-        directionLabel = [appDelegate.modeMap.selectedMode titleSouth];
-    }
-    
+    directionLabel = [appDelegate.modeMap.selectedMode titleInDirection:labelDirection];    
     [directionLabel drawInRect:self.bounds withAttributes:labelAttributes];
     
     // Draw border, used for debugging

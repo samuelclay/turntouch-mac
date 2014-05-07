@@ -22,6 +22,18 @@
     return self;
 }
 
+#pragma mark - Actions
+
+- (NSArray *)actions {
+    return @[@"TTModeMacVolumeUp",
+             @"TTModeMacVolumeDown",
+             @"TTModeMacTurnOffScreen",
+             @"TTModeMacVoumeMute"
+             ];
+}
+
+#pragma mark - Mode
+
 + (NSString *)title {
     return @"Mac OS";
 }
@@ -36,33 +48,36 @@
     if ([machineModel rangeOfString:@"MacBook"].location != NSNotFound) {
         return @"macbookpro.png";
     }
-
+    
     return @"imac.png";
 }
 
-- (NSString *)titleNorth {
+#pragma mark - Action Titles
+
+- (NSString *)titleTTModeMacVolumeUp {
     return @"Volume Up";
 }
-
-- (NSString *)titleEast {
+- (NSString *)titleTTModeMacVolumeDown {
+    return @"Volume Down";
+}
+- (NSString *)titleTTModeMacVolumeMute {
+    return @"Mute";
+}
+- (NSString *)titleTTModeMacTurnOffScreen {
     return @"Turn off screen";
 }
 
-- (NSString *)titleWest {
-    return @"Mute";
-}
+#pragma mark - Action methods
 
-- (NSString *)titleSouth {
-    return @"Volume Down";
-}
-
-- (void)runNorth {
+- (void)runTTModeMacVolumeUp {
     [self setVolume:[self volume] + 0.1];
 }
-- (void)runSouth {
+
+- (void)runTTModeMacVolumeDown {
     [self setVolume:[self volume] - 0.1];
 }
-- (void)runWest {
+
+- (void)runTTModeMacVolumeMute {
     BOOL v = [self isMuted];
     if (v) {
         [self setVolume:self.volume];
@@ -71,7 +86,7 @@
     }
 }
 
-- (void)runEast {
+- (void)runTTModeMacTurnOffScreen {
     if ([self isDisplayOff]) {
         [self switchDisplay:YES];
     } else {
@@ -79,13 +94,28 @@
     }
 }
 
-+(NSString *) machineModel
-{
+#pragma mark - Defaults
+
+- (NSString *)defaultNorth {
+    return @"TTModeMacVolumeUp";
+}
+- (NSString *)defaultEast {
+    return @"TTModeMacTurnOffScreen";
+}
+- (NSString *)defaultWest {
+    return @"TTModeMacVolumeMute";
+}
+- (NSString *)defaultSouth {
+    return @"TTModeMacVolumeDown";
+}
+
+#pragma mark - Private methods
+
++ (NSString *) machineModel {
     size_t len = 0;
     sysctlbyname("hw.model", NULL, &len, NULL, 0);
     
-    if (len)
-    {
+    if (len) {
         char *model = malloc(len*sizeof(char));
         sysctlbyname("hw.model", model, &len, NULL, 0);
         NSString *model_ns = [NSString stringWithUTF8String:model];

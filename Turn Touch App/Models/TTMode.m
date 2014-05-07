@@ -11,50 +11,124 @@
 
 @implementation TTMode
 
-- (void)runNorth {
-    NSLog(@"North");
+#pragma mark - Actions
+
+- (NSArray *)actions {
+    return @[@"TTAction1",
+             @"TTAction2",
+             @"TTAction3",
+             @"TTAction4"
+             ];
 }
 
-- (void)runEast {
-    NSLog(@"East");
-}
-
-- (void)runWest {
-    NSLog(@"West");
-}
-
-- (void)runSouth {
-    NSLog(@"South");
-}
-
-
-- (NSString *)titleNorth {
-    return nil;
-}
-
-- (NSString *)titleEast {
-    return nil;
-}
-
-- (NSString *)titleWest {
-    return nil;
-}
-
-- (NSString *)titleSouth {
-    return nil;
-}
+#pragma mark - Mode
 
 + (NSString *)title {
-    return nil;
+    return @"TT Mode";
 }
 
 + (NSString *)description {
-    return nil;
+    return @"Stub mode to be filled in";
 }
 
 + (NSString *)imageName {
-    return nil;
+    return @"equalizer-1";
 }
 
+#pragma mark - Action Titles
 
+- (NSString *)titleTTAction1 {
+    return @"Action 1st";
+}
+- (NSString *)titleTTAction2 {
+    return @"Action 2nd";
+}
+- (NSString *)titleTTAction3 {
+    return @"Action 3rd";
+}
+- (NSString *)titleTTAction4 {
+    return @"Action 4th";
+}
+
+#pragma mark - Action methods
+
+- (void)runTTAction1 {
+    NSLog(@"Running TTAction1");
+}
+- (void)runTTAction2 {
+    NSLog(@"Running TTAction2");
+}
+- (void)runTTAction3 {
+    NSLog(@"Running TTAction3");
+}
+- (void)runTTAction4 {
+    NSLog(@"Running TTAction4");
+}
+
+#pragma mark - Defaults
+
+- (NSString *)defaultNorth {
+    return @"TTAction1";
+}
+- (NSString *)defaultEast {
+    return @"TTAction2";
+}
+- (NSString *)defaultWest {
+    return @"TTAction3";
+}
+- (NSString *)defaultSouth {
+    return @"TTAction4";
+}
+
+#pragma mark - Map directions to actions
+
+- (void)runDirection:(TTModeDirection)direction {
+    NSString *actionName = [self actionNameInDirection:direction];
+    NSLog(@"Running: %d - %@", direction, actionName);
+
+    // TODO: Assert selector exists
+    SEL selector = NSSelectorFromString([NSString stringWithFormat:@"title%@",
+                                         actionName]);
+    [self performSelector:selector];
+    
+}
+
+- (NSString *)titleInDirection:(TTModeDirection)direction {
+    NSString *actionName = [self actionNameInDirection:direction];
+    
+    SEL selector = NSSelectorFromString([NSString stringWithFormat:@"title%@",
+                                         actionName]);
+    return (NSString *)[self performSelector:selector];
+}
+
+- (NSImage *)imageInDirection:(TTModeDirection)direction {
+    NSString *actionName = [self actionNameInDirection:direction];
+    
+    SEL selector = NSSelectorFromString([NSString stringWithFormat:@"image%@",
+                                         actionName]);
+    return (NSImage *)[self performSelector:selector];
+}
+
+- (NSString *)actionNameInDirection:(TTModeDirection)direction {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSString *directionAction = [defaults stringForKey:[NSString stringWithFormat:@"%@:action:%d",
+                                                        [self class], direction]];
+    if (directionAction && ![self.actions containsObject:directionAction]) {
+        directionAction = nil;
+    }
+    if (!directionAction) {
+        if (direction == NORTH) {
+            directionAction = [self defaultNorth];
+        } else if (direction == EAST) {
+            directionAction = [self defaultEast];
+        } else if (direction == WEST) {
+            directionAction = [self defaultWest];
+        } else if (direction == SOUTH) {
+            directionAction = [self defaultSouth];
+        }
+    }
+    
+    return directionAction;
+}
 @end

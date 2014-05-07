@@ -126,6 +126,7 @@
             break;
     }
     
+    [self setAvailableActions:selectedMode.actions];
     if (selectedMode && [selectedMode respondsToSelector:@selector(activate)]) {
         [selectedMode activate];
         [self reset];
@@ -137,16 +138,9 @@
     activeModeDirection = NO_DIRECTION;
     
     if (!selectedMode) return;
-    
-    if (direction == NORTH) {
-        [selectedMode runNorth];
-    } else if (direction == EAST) {
-        [selectedMode runEast];
-    } else if (direction == WEST) {
-        [selectedMode runWest];
-    } else if (direction == SOUTH) {
-        [selectedMode runSouth];
-    }
+
+    [selectedMode runDirection:direction];
+
     activeModeDirection = NO_DIRECTION;
 }
 
@@ -173,28 +167,6 @@
     }
     
     return nil;
-}
-
-- (NSArray *)availableModeClassNames {
-    NSMutableArray *classes = [NSMutableArray new];
-    
-    for (NSString *modeClass in availableModes) {
-        [classes addObject:modeClass];
-    }
-    
-    return classes;
-}
-
-- (NSArray *)availableModeTitles {
-    NSMutableArray *titles = [NSMutableArray new];
-    
-    for (NSString *modeName in availableModes) {
-        Class modeClass = NSClassFromString(modeName);
-        NSString *title = [modeClass title];
-        [titles addObject:[NSString stringWithFormat:@"%@ mode", title]];
-    }
-    
-    return titles;
 }
 
 - (void)changeDirection:(TTModeDirection)direction toMode:(NSString *)modeClassName {

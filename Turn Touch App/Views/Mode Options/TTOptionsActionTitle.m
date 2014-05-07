@@ -85,16 +85,7 @@
     
     NSString *actionTitle;
     
-    if (labelDirection == NORTH) {
-        actionTitle = [appDelegate.modeMap.selectedMode titleNorth];
-    } else if (labelDirection == EAST) {
-        actionTitle = [appDelegate.modeMap.selectedMode titleEast];
-    } else if (labelDirection == WEST) {
-        actionTitle = [appDelegate.modeMap.selectedMode titleWest];
-    } else if (labelDirection == SOUTH) {
-        actionTitle = [appDelegate.modeMap.selectedMode titleSouth];
-    }
-    
+    actionTitle = [appDelegate.modeMap.selectedMode titleInDirection:labelDirection];    
     NSSize titleSize = [actionTitle sizeWithAttributes:titleAttributes];
     
     NSPoint titlePoint = NSMakePoint(NSMaxX(diamondView.frame) + X_MARGIN,
