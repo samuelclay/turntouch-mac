@@ -58,7 +58,6 @@
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     
-    NSRect rect = NSInsetRect(self.bounds, PADDING, PADDING);
 	NSString *directionLabel;
 
     if (labelDirection == NORTH) {
@@ -71,10 +70,10 @@
         directionLabel = [appDelegate.modeMap.selectedMode titleSouth];
     }
     
-    [directionLabel drawInRect:rect withAttributes:labelAttributes];
+    [directionLabel drawInRect:self.bounds withAttributes:labelAttributes];
     
     
-    // Draw border
+    // Draw border, used for debugging
 //    NSBezierPath *textViewSurround = [NSBezierPath bezierPathWithRect:self.bounds];
 //    [textViewSurround setLineWidth:1];
 //    [[NSColor redColor] set];
