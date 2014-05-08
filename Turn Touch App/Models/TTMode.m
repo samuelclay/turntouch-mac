@@ -105,25 +105,33 @@
 - (NSString *)titleInDirection:(TTModeDirection)direction {
     NSString *actionName = [self actionNameInDirection:direction];
     
+    return [self titleForAction:actionName];
+}
+
+- (NSString *)titleForAction:(NSString *)actionName {
     SEL selector = NSSelectorFromString([NSString stringWithFormat:@"title%@",
                                          actionName]);
     IMP imp = [self methodForSelector:selector];
     NSString *(*func)(id, SEL) = (void *)imp;
     NSString *actionTitle = func(self, selector);
-
+    
     return actionTitle;
 }
 
-- (NSImage *)imageInDirection:(TTModeDirection)direction {
+- (NSString *)imageNameInDirection:(TTModeDirection)direction {
     NSString *actionName = [self actionNameInDirection:direction];
     
+    return [self imageNameForAction:actionName];
+}
+
+- (NSString *)imageNameForAction:(NSString *)actionName {
     SEL selector = NSSelectorFromString([NSString stringWithFormat:@"image%@",
                                          actionName]);
     IMP imp = [self methodForSelector:selector];
-    NSImage *(*func)(id, SEL) = (void *)imp;
-    NSImage *actionImage = func(self, selector);
+    NSString *(*func)(id, SEL) = (void *)imp;
+    NSString *actionImageName = func(self, selector);
     
-    return actionImage;
+    return actionImageName;
 }
 
 - (NSString *)actionNameInDirection:(TTModeDirection)direction {

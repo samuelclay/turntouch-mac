@@ -7,12 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "TTModeMenuItemView.h"
 #import "TTAppDelegate.h"
+#import "TTModeMenuCollectionView.h"
+#import "TTModeMenuItemView.h"
 
 #define MENU_ITEM_HEIGHT 48.0f
 
 @class TTAppDelegate;
+@class TTModeMenuCollectionView;
 
 @interface TTModeMenuItem : NSCollectionViewItem {
     TTAppDelegate *appDelegate;

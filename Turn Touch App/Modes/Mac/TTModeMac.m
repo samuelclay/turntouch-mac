@@ -22,16 +22,6 @@
     return self;
 }
 
-#pragma mark - Actions
-
-- (NSArray *)actions {
-    return @[@"TTModeMacVolumeUp",
-             @"TTModeMacVolumeDown",
-             @"TTModeMacTurnOffScreen",
-             @"TTModeMacVoumeMute"
-             ];
-}
-
 #pragma mark - Mode
 
 + (NSString *)title {
@@ -52,6 +42,16 @@
     return @"imac.png";
 }
 
+#pragma mark - Actions
+
+- (NSArray *)actions {
+    return @[@"TTModeMacVolumeUp",
+             @"TTModeMacVolumeDown",
+             @"TTModeMacTurnOffScreen",
+             @"TTModeMacVolumeMute"
+             ];
+}
+
 #pragma mark - Action Titles
 
 - (NSString *)titleTTModeMacVolumeUp {
@@ -65,6 +65,21 @@
 }
 - (NSString *)titleTTModeMacTurnOffScreen {
     return @"Turn off screen";
+}
+
+#pragma mark - Action Images
+
+- (NSString *)imageTTModeMacVolumeUp {
+    return @"volume_up.png";
+}
+- (NSString *)imageTTModeMacVolumeDown {
+    return @"volume_down.png";
+}
+- (NSString *)imageTTModeMacVolumeMute {
+    return @"mute.png";
+}
+- (NSString *)imageTTModeMacTurnOffScreen {
+    return @"imac.png";
 }
 
 #pragma mark - Action methods

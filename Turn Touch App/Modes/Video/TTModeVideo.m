@@ -33,13 +33,14 @@
     return @[@"TTModeVideoVolumeUp",
              @"TTModeVideoVolumeDown",
              @"TTModeVideoFF",
+             @"TTModeVideoRewind",
              @"TTModeVideoPause"
              ];
 }
 
 #pragma mark - Action Titles
 
-- (NSString *)TTModeVideoVolumeUp {
+- (NSString *)titleTTModeVideoVolumeUp {
     return @"Volume up";
 }
 - (NSString *)titleTTModeVideoVolumeDown {
@@ -48,8 +49,29 @@
 - (NSString *)titleTTModeVideoFF {
     return @"Fast Forward";
 }
+- (NSString *)titleTTModeVideoRewind {
+    return @"Rewind";
+}
 - (NSString *)titleTTModeVideoPause {
     return @"Play/pause";
+}
+
+#pragma mark - Action Images
+
+- (NSString *)imageTTModeVideoVolumeUp {
+    return @"volume_up.png";
+}
+- (NSString *)imageTTModeVideoVolumeDown {
+    return @"volume_down.png";
+}
+- (NSString *)imageTTModeVideoFF {
+    return @"fast_forward.png";
+}
+- (NSString *)imageTTModeVideoRewind {
+    return @"rewind.png";
+}
+- (NSString *)imageTTModeVideoPause {
+    return @"play.png";
 }
 
 #pragma mark - Action methods
@@ -68,11 +90,24 @@
         NSEnumerator *quicktimeEnumerator = [quicktimeItems objectEnumerator];
         QuicktimeDocument *quicktimeItem;
         while (quicktimeItem = [quicktimeEnumerator nextObject]) {
-            if ([quicktimeItem playing]) {
-                [quicktimeItem pause];
-            } else {
-                [quicktimeItem play];
-            }
+            double currentTime = [quicktimeItem currentTime];
+            [quicktimeItem setCurrentTime:currentTime+10];
+        }
+    }
+    
+    //    if ([vlc isRunning]) {
+    //
+    //    }
+}
+
+- (void)runTTModeVideoRewind {
+    if ([quicktime isRunning]) {
+        SBElementArray *quicktimeItems = [quicktime documents];
+        NSEnumerator *quicktimeEnumerator = [quicktimeItems objectEnumerator];
+        QuicktimeDocument *quicktimeItem;
+        while (quicktimeItem = [quicktimeEnumerator nextObject]) {
+            double currentTime = [quicktimeItem currentTime];
+            [quicktimeItem setCurrentTime:currentTime-10];
         }
     }
     
@@ -103,10 +138,10 @@
     return @"TTModeVideoVolumeUp";
 }
 - (NSString *)defaultEast {
-    return @"TTModeVideoFF";
+    return @"TTModeVideoPause";
 }
 - (NSString *)defaultWest {
-    return @"TTModeVideoPause";
+    return @"TTModeVideoRewind";
 }
 - (NSString *)defaultSouth {
     return @"TTModeVideoVolumeDown";

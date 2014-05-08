@@ -17,6 +17,7 @@
 #define MODE_TABS_HEIGHT 92.0f
 #define MODE_TITLE_HEIGHT 64.0f
 #define MODE_MENU_HEIGHT 146.0f
+#define ACTION_MENU_HEIGHT 98.0f
 #define MODE_OPTIONS_HEIGHT 48.0f
 #define DIAMOND_LABELS_SIZE 270.0f
 
@@ -48,7 +49,7 @@
     modeMenu = [[TTModeMenuContainer alloc] initWithType:MODE_MENU_TYPE];
     diamondLabels = [[TTDiamondLabels alloc] init];
     optionsView = [[TTOptionsView alloc] init];
-    actionMenu = [[TTModeMenuContainer alloc] initWithType:MODE_MENU_TYPE];
+    actionMenu = [[TTModeMenuContainer alloc] initWithType:ACTION_MENU_TYPE];
     
     stackView = [[NSStackView alloc] init];
     [stackView setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -247,7 +248,7 @@
     }];
     
     if (appDelegate.modeMap.openedActionChangeMenu) {
-        [[actionMenuConstraint animator] setConstant:MODE_MENU_HEIGHT];
+        [[actionMenuConstraint animator] setConstant:ACTION_MENU_HEIGHT];
     } else {
         [[actionMenuConstraint animator] setConstant:1];
     }

@@ -115,12 +115,12 @@
     
     [NSGraphicsContext restoreGraphicsState];
     
-    NSBezierPath *line = [NSBezierPath bezierPath];
-    [line moveToPoint:NSMakePoint(NSMinX([path bounds]), NSMaxY([path bounds]))];
-    [line lineToPoint:NSMakePoint(NSMaxX([path bounds]), NSMaxY([path bounds]))];
-    [line setLineWidth:1.0];
-    [NSColorFromRGB(0xD0D0D0) set];
-    [line stroke];
+//    NSBezierPath *line = [NSBezierPath bezierPath];
+//    [line moveToPoint:NSMakePoint(NSMinX([path bounds]), NSMaxY([path bounds]))];
+//    [line lineToPoint:NSMakePoint(NSMaxX([path bounds]), NSMaxY([path bounds]))];
+//    [line setLineWidth:1.0];
+//    [NSColorFromRGB(0xD0D0D0) set];
+//    [line stroke];
 }
 
 

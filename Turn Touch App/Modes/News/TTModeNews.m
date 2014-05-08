@@ -49,6 +49,21 @@
     return @"Previous site";
 }
 
+#pragma mark - Action Images
+
+- (NSString *)imageTTModeNewsNextStory {
+    return @"next_story.png";
+}
+- (NSString *)imageTTModeNewsNextSite {
+    return @"next_site.png";
+}
+- (NSString *)imageTTModeNewsPreviousStory {
+    return @"previous_story.png";
+}
+- (NSString *)imageTTModeNewsPreviousSite {
+    return @"previous_site.png";
+}
+
 #pragma mark - Action methods
 
 - (void)runTTModeNewsNextStory {

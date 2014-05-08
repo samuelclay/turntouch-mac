@@ -10,30 +10,28 @@
 
 @implementation TTModeMenuCollectionView
 
-- (id)initWithFrame:(NSRect)frame
-{
+@synthesize menuType;
+
+- (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         appDelegate = [NSApp delegate];
         self.translatesAutoresizingMaskIntoConstraints = NO;
         [self setMaxNumberOfColumns:2];
     }
+    
     return self;
 }
 
-- (void)drawRect:(NSRect)dirtyRect
-{
+- (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
-//    NSLog(@"Drawing collection view: %@", NSStringFromRect(self.frame));
 }
 
 
-- (void)setContent:(NSArray *)content {
+- (void)setContent:(NSArray *)content withMenuType:(TTMenuType)_menuType {
+    NSLog(@"Collection view: %d / %@", _menuType, content);
+    menuType = _menuType;
     [super setContent:content];
-    
-    //    NSRect frame = self.frame;
-    //    frame.size.height = ceil((float)[content count] / 2.0f) * MENU_ITEM_HEIGHT;
-    //    self.frame = frame;
 }
 
 @end

@@ -47,6 +47,8 @@
 - (void)registerAsObserver {
     [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
                              options:0 context:nil];
+    [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
+                             options:0 context:nil];
 }
 
 - (void) observeValueForKeyPath:(NSString*)keyPath
@@ -73,11 +75,6 @@
                                     BUTTON_WIDTH,
                                     BUTTON_HEIGHT);
     changeButton.frame = buttonFrame;
-    if (appDelegate.modeMap.openedActionChangeMenu) {
-        [self setChangeButtonTitle:@"cancel"];
-    } else {
-        [self setChangeButtonTitle:@"change"];
-    }
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
@@ -92,6 +89,12 @@
                                      NSHeight(self.frame) - Y_MARGIN - floor(titleSize.height/2) + 1);
     
     [actionTitle drawAtPoint:titlePoint withAttributes:titleAttributes];
+    
+    if (appDelegate.modeMap.openedActionChangeMenu) {
+        [self setChangeButtonTitle:@"cancel"];
+    } else {
+        [self setChangeButtonTitle:@"change"];
+    }
 }
 
 #pragma mark - Attributes

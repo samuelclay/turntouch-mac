@@ -21,24 +21,23 @@
     self = [super init];
     if (self) {
         menuType = _menuType;
-    }
-    
-    return self;
-}
-
-- (id)initWithFrame:(NSRect)frame {
-    self = [super initWithFrame:frame];
-    if (self) {
         appDelegate = [NSApp delegate];
         self.translatesAutoresizingMaskIntoConstraints = NO;
 
+        NSArray *content;
+        NSMutableArray *representedObjects = [NSMutableArray array];
         collectionView = [[TTModeMenuCollectionView alloc] init];
         [collectionView setItemPrototype:[TTModeMenuItem new]];
         if (menuType == MODE_MENU_TYPE) {
-            [collectionView setContent:appDelegate.modeMap.availableModes];
+            content = appDelegate.modeMap.availableModes;
         } else if (menuType == ACTION_MENU_TYPE) {
-            [collectionView setContent:appDelegate.modeMap.availableActions];
+            content = appDelegate.modeMap.availableActions;
         }
+        for (NSString *item in content) {
+            [representedObjects addObject:@{@"content": item,
+                                            @"menuType": [NSNumber numberWithInt:menuType]}];
+        }
+        [collectionView setContent:representedObjects withMenuType:menuType];
         
         [self addConstraint:[NSLayoutConstraint constraintWithItem:collectionView
                                                          attribute:NSLayoutAttributeTop

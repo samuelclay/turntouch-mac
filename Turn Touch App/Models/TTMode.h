@@ -18,6 +18,8 @@
 
 - (void)runDirection:(TTModeDirection)direction;
 - (NSString *)titleInDirection:(TTModeDirection)direction;
-- (NSImage *)imageInDirection:(TTModeDirection)direction;
+- (NSString *)titleForAction:(NSString *)actionName;
+- (NSString *)imageNameInDirection:(TTModeDirection)direction;
+- (NSString *)imageNameForAction:(NSString *)actionName;
 
 @end

@@ -32,6 +32,13 @@
 - (void)setModeName:(NSString *)_modeName {
     modeName = _modeName;
     modeClass = NSClassFromString(modeName);
+    menuType = MODE_MENU_TYPE;
+}
+
+- (void)setActionName:(NSString *)_actionName {
+    modeName = _actionName;
+    activeMode = appDelegate.modeMap.selectedMode;
+    menuType = ACTION_MENU_TYPE;
 }
 
 #pragma mark - KVO
@@ -64,6 +71,14 @@
     [self setupTitleAttributes];
     [self drawBackground];
     
+    if (menuType == MODE_MENU_TYPE) {
+        [self drawMode];
+    } else if (menuType == ACTION_MENU_TYPE) {
+        [self drawAction];
+    }
+}
+
+- (void)drawMode {
     modeImage = [NSImage imageNamed:[modeClass imageName]];
     [modeImage setSize:NSMakeSize(IMAGE_SIZE, IMAGE_SIZE)];
     CGFloat offset = (NSHeight(self.frame)/2) - (modeImage.size.height/2);
@@ -79,9 +94,30 @@
     [modeTitle drawAtPoint:titlePoint withAttributes:modeAttributes];
 }
 
+- (void)drawAction {
+    modeImage = [NSImage imageNamed:[activeMode imageNameForAction:modeName]];
+
+    [modeImage setSize:NSMakeSize(IMAGE_SIZE, IMAGE_SIZE)];
+    CGFloat offset = (NSHeight(self.frame)/2) - (modeImage.size.height/2);
+    NSPoint imagePoint = NSMakePoint(offset, offset + 1);
+    NSRect imageRect = NSMakeRect(imagePoint.x, imagePoint.y,
+                                  modeImage.size.width, modeImage.size.height);
+    [modeImage drawInRect:imageRect];
+    
+    NSSize titleSize = [modeTitle sizeWithAttributes:modeAttributes];
+    NSPoint titlePoint = NSMakePoint(NSMaxX(imageRect) + 12,
+                                     NSHeight(self.frame)/2 - titleSize.height/2 + 2);
+    
+    [modeTitle drawAtPoint:titlePoint withAttributes:modeAttributes];
+}
 
 - (void)setupTitleAttributes {
-    modeTitle = [[modeClass title] uppercaseString];
+    if (menuType == MODE_MENU_TYPE) {
+        modeTitle = [[modeClass title] uppercaseString];
+    } else if (menuType == ACTION_MENU_TYPE) {
+        modeTitle = [[activeMode titleForAction:modeName] uppercaseString];
+    }
+
     NSShadow *stringShadow = [[NSShadow alloc] init];
     stringShadow.shadowColor = [NSColor whiteColor];
     stringShadow.shadowOffset = NSMakeSize(0, -1);

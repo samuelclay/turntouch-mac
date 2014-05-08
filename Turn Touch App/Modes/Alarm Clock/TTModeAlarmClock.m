@@ -49,6 +49,21 @@
     return @"Quiet down";
 }
 
+#pragma mark - Action Images
+
+- (NSString *)imageTTModeAlarmSnooze {
+    return @"snooze.png";
+}
+- (NSString *)imageTTModeAlarmNextSong {
+    return @"next_song.png";
+}
+- (NSString *)imageTTModeAlarmStop {
+    return @"stop_alarm.png";
+}
+- (NSString *)imageTTModeAlarmQuiet {
+    return @"quiet_down.png";
+}
+
 #pragma mark - Action methods
 
 - (void)runTTModeAlarmSnooze {

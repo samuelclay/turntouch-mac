@@ -136,6 +136,7 @@
 		FF981FC9191AB46600A4A94B /* TTModeMenuBordersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeMenuBordersView.h; sourceTree = "<group>"; };
 		FF981FCA191AB46600A4A94B /* TTModeMenuBordersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeMenuBordersView.m; sourceTree = "<group>"; };
 		FF981FDC191AFBEF00A4A94B /* TTModeDirection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TTModeDirection.h; path = Models/TTModeDirection.h; sourceTree = "<group>"; };
+		FF981FDD191B0F9D00A4A94B /* TTMenuType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTMenuType.h; sourceTree = "<group>"; };
 		FF98A2DF1867DBA40032CC7A /* TTActionMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTActionMap.h; path = Models/TTActionMap.h; sourceTree = "<group>"; };
 		FF98A2E01867DBA40032CC7A /* TTActionMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTActionMap.m; path = Models/TTActionMap.m; sourceTree = "<group>"; };
 		FF98A2E21867DBE70032CC7A /* TTMenubarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTMenubarController.h; path = Controllers/TTMenubarController.h; sourceTree = "<group>"; };
@@ -344,6 +345,7 @@
 		FF801311186CF8FF00955218 /* Mode Menu */ = {
 			isa = PBXGroup;
 			children = (
+				FF981FDD191B0F9D00A4A94B /* TTMenuType.h */,
 				FFA8EA9E190F090300679A4D /* TTModeMenuContainer.h */,
 				FFA8EA9F190F090300679A4D /* TTModeMenuContainer.m */,
 				FF981FC9191AB46600A4A94B /* TTModeMenuBordersView.h */,

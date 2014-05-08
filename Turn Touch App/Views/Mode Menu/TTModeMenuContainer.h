@@ -7,14 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "TTMenuType.h"
 #import "TTModeMenuCollectionView.h"
 #import "TTModeMenuBordersView.h"
 #import "TTAppDelegate.h"
-
-typedef enum {
-    MODE_MENU_TYPE = 0,
-    ACTION_MENU_TYPE = 1
-} TTMenuType;
 
 @class TTAppDelegate;
 @class TTModeMenuCollectionView;

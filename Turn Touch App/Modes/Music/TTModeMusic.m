@@ -50,6 +50,21 @@
     return @"Next track";
 }
 
+#pragma mark - Action Images
+
+- (NSString *)imageTTModeMusicVolumeUp {
+    return @"volume_up.png";
+}
+- (NSString *)imageTTModeMusicVolumeDown {
+    return @"volume_down.png";
+}
+- (NSString *)imageTTModeMusicPause {
+    return @"play.png";
+}
+- (NSString *)imageTTModeMusicNextTrack {
+    return @"next_track.png";
+}
+
 #pragma mark - Action methods
 
 - (void)runTTModeMusicVolumeUp {
