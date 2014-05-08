@@ -13,6 +13,8 @@
 
 @implementation TTModeVideo
 
+#pragma mark - Mode
+
 + (NSString *)title {
     return @"Video";
 }
@@ -25,32 +27,42 @@
     return @"icon_movie.png";
 }
 
-- (NSString *)titleNorth {
-    return @"Volume Up";
+#pragma mark - Actions
+
+- (NSArray *)actions {
+    return @[@"TTModeVideoVolumeUp",
+             @"TTModeVideoVolumeDown",
+             @"TTModeVideoFF",
+             @"TTModeVideoPause"
+             ];
 }
 
-- (NSString *)titleEast {
-    return @"Play/Pause";
+#pragma mark - Action Titles
+
+- (NSString *)TTModeVideoVolumeUp {
+    return @"Volume up";
+}
+- (NSString *)titleTTModeVideoVolumeDown {
+    return @"Volume down";
+}
+- (NSString *)titleTTModeVideoFF {
+    return @"Fast Forward";
+}
+- (NSString *)titleTTModeVideoPause {
+    return @"Play/pause";
 }
 
-- (NSString *)titleWest {
-    return @"Rewind 30s";
-}
+#pragma mark - Action methods
 
-- (NSString *)titleSouth {
-    return @"Volume Down";
-}
-
-- (void)activate {
-    quicktime = [SBApplication applicationWithBundleIdentifier:@"com.apple.QuickTimePlayerX"];
-//    vlc = [SBApplication applicationWithBundleIdentifier:@"org.videolan.vlc"];
-}
-
-- (void)runNorth {
+- (void)runTTModeVideoVolumeUp {
     [self moveVolume:UP];
 }
 
-- (void)runEast {
+- (void)runTTModeVideoVolumeDown {
+    [self moveVolume:DOWN];
+}
+
+- (void)runTTModeVideoFF {
     if ([quicktime isRunning]) {
         SBElementArray *quicktimeItems = [quicktime documents];
         NSEnumerator *quicktimeEnumerator = [quicktimeItems objectEnumerator];
@@ -64,16 +76,12 @@
         }
     }
     
-//    if ([vlc isRunning]) {
-//    
-//    }
+    //    if ([vlc isRunning]) {
+    //
+    //    }
 }
 
-- (void)runSouth {
-    [self moveVolume:DOWN];
-}
-
-- (void)runWest {
+- (void)runTTModeVideoPause {
     if ([quicktime isRunning]) {
         SBElementArray *quicktimeItems = [quicktime documents];
         NSEnumerator *quicktimeEnumerator = [quicktimeItems objectEnumerator];
@@ -84,9 +92,31 @@
         }
     }
     
-//    if ([vlc isRunning]) {
-//        
-//    }
+    //    if ([vlc isRunning]) {
+    //
+    //    }
+}
+
+#pragma mark - Defaults
+
+- (NSString *)defaultNorth {
+    return @"TTModeVideoVolumeUp";
+}
+- (NSString *)defaultEast {
+    return @"TTModeVideoFF";
+}
+- (NSString *)defaultWest {
+    return @"TTModeVideoPause";
+}
+- (NSString *)defaultSouth {
+    return @"TTModeVideoVolumeDown";
+}
+
+#pragma mark - Mode specific
+
+- (void)activate {
+    quicktime = [SBApplication applicationWithBundleIdentifier:@"com.apple.QuickTimePlayerX"];
+//    vlc = [SBApplication applicationWithBundleIdentifier:@"org.videolan.vlc"];
 }
 
 - (void)moveVolume:(VideoVolumeDirection)direction {

@@ -11,6 +11,8 @@
 
 @implementation TTModeMusic
 
+#pragma mark - Mode
+
 + (NSString *)title {
     return @"Music";
 }
@@ -23,36 +25,41 @@
     return @"vinyl.png";
 }
 
-- (NSString *)titleNorth {
-    return @"Volume Up";
+#pragma mark - Actions
+
+- (NSArray *)actions {
+    return @[@"TTModeMusicVolumeUp",
+             @"TTModeMusicVolumeDown",
+             @"TTModeMusicPause",
+             @"TTModeMusicNextTrack"
+             ];
 }
 
-- (NSString *)titleEast {
-    return @"Next Track";
+#pragma mark - Action Titles
+
+- (NSString *)titleTTModeMusicVolumeUp {
+    return @"Volume up";
+}
+- (NSString *)titleTTModeMusicVolumeDown {
+    return @"Volume down";
+}
+- (NSString *)titleTTModeMusicPause {
+    return @"Play/pause";
+}
+- (NSString *)titleTTModeMusicNextTrack {
+    return @"Next track";
 }
 
-- (NSString *)titleWest {
-    return @"Play/Pause";
-}
+#pragma mark - Action methods
 
-- (NSString *)titleSouth {
-    return @"Volume Down";
-}
-
-- (void)runNorth {
+- (void)runTTModeMusicVolumeUp {
     iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
     NSInteger volume = iTunes.soundVolume;
     NSLog(@"Music mode North: %ld", (long)volume);
     [iTunes setSoundVolume:MIN(100, volume+10)];
 }
 
-- (void)runEast {
-    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
-    
-    [iTunes nextTrack];
-}
-
-- (void)runSouth {
+- (void)runTTModeMusicVolumeDown {
     iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
     
     NSInteger volume = iTunes.soundVolume;
@@ -60,10 +67,31 @@
     [iTunes setSoundVolume:MAX(0, volume-10)];
 }
 
-- (void)runWest {
+- (void)runTTModeMusicPause {
     iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
     
     [iTunes playpause];
+}
+
+- (void)runTTModeMusicNextTrack {
+    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    
+    [iTunes nextTrack];
+}
+
+#pragma mark - Defaults
+
+- (NSString *)defaultNorth {
+    return @"TTModeMusicVolumeUp";
+}
+- (NSString *)defaultEast {
+    return @"TTModeMusicNextTrack";
+}
+- (NSString *)defaultWest {
+    return @"TTModeMusicPause";
+}
+- (NSString *)defaultSouth {
+    return @"TTModeMusicVolumeDown";
 }
 
 @end

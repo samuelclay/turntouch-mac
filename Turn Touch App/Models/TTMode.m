@@ -18,15 +18,6 @@
     }
     return self;
 }
-#pragma mark - Actions
-
-- (NSArray *)actions {
-    return @[@"TTAction1",
-             @"TTAction2",
-             @"TTAction3",
-             @"TTAction4"
-             ];
-}
 
 #pragma mark - Mode
 
@@ -40,6 +31,16 @@
 
 + (NSString *)imageName {
     return @"equalizer-1";
+}
+
+#pragma mark - Actions
+
+- (NSArray *)actions {
+    return @[@"TTAction1",
+             @"TTAction2",
+             @"TTAction3",
+             @"TTAction4"
+             ];
 }
 
 #pragma mark - Action Titles

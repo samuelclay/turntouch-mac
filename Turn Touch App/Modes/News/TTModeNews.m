@@ -10,6 +10,8 @@
 
 @implementation TTModeNews
 
+#pragma mark - Mode
+
 + (NSString *)title {
     return @"News";
 }
@@ -22,20 +24,59 @@
     return @"newspaper-3.png";
 }
 
-- (NSString *)titleNorth {
-    return @"Previous Site";
+#pragma mark - Actions
+
+- (NSArray *)actions {
+    return @[@"TTModeNewsNextStory",
+             @"TTModeNewsNextSite",
+             @"TTModeNewsPreviousStory",
+             @"TTModeNewsPreviousSite"
+             ];
 }
 
-- (NSString *)titleEast {
-    return @"Next Story";
+#pragma mark - Action Titles
+
+- (NSString *)titleTTModeNewsNextStory {
+    return @"Next story";
+}
+- (NSString *)titleTTModeNewsNextSite {
+    return @"Next site";
+}
+- (NSString *)titleTTModeNewsPreviousStory {
+    return @"Previous story";
+}
+- (NSString *)titleTTModeNewsPreviousSite {
+    return @"Previous site";
 }
 
-- (NSString *)titleWest {
-    return @"Previous Story";
+#pragma mark - Action methods
+
+- (void)runTTModeNewsNextStory {
+    NSLog(@"Running TTModeNewsNextStory");
+}
+- (void)runTTModeNewsNextSite {
+    NSLog(@"Running TTModeNewsNextSite");
+}
+- (void)runTTModeNewsPreviousStory {
+    NSLog(@"Running TTModeNewsPreviousStory");
+}
+- (void)runTTModeNewsPreviousSite {
+    NSLog(@"Running TTModeNewsPreviousSite");
 }
 
-- (NSString *)titleSouth {
-    return @"Next Site";
+#pragma mark - Defaults
+
+- (NSString *)defaultNorth {
+    return @"TTModeNewsNextStory";
+}
+- (NSString *)defaultEast {
+    return @"TTModeNewsNextSite";
+}
+- (NSString *)defaultWest {
+    return @"TTModeNewsPreviousStory";
+}
+- (NSString *)defaultSouth {
+    return @"TTModeNewsPreviousSite";
 }
 
 @end

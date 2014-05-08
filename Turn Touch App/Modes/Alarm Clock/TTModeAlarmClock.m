@@ -27,56 +27,56 @@
 #pragma mark - Actions
 
 - (NSArray *)actions {
-    return @[@"TTAlarmSnooze",
-             @"TTAlarmNextSong",
-             @"TTAlarmStop",
-             @"TTAlarmQuiet"
+    return @[@"TTModeAlarmSnooze",
+             @"TTModeAlarmNextSong",
+             @"TTModeAlarmStop",
+             @"TTModeAlarmQuiet"
              ];
 }
 
 #pragma mark - Action Titles
 
-- (NSString *)titleTTAlarmSnooze {
+- (NSString *)titleTTModeAlarmSnooze {
     return @"Snooze";
 }
-- (NSString *)titleTTAlarmNextSong {
+- (NSString *)titleTTModeAlarmNextSong {
     return @"Next Song";
 }
-- (NSString *)titleTTAlarmStop {
+- (NSString *)titleTTModeAlarmStop {
     return @"Stop alarm";
 }
-- (NSString *)titleTTAlarmQuiet {
+- (NSString *)titleTTModeAlarmQuiet {
     return @"Quiet down";
 }
 
 #pragma mark - Action methods
 
-- (void)runTTAlarmSnooze {
-    NSLog(@"Running runTTAlarmSnooze");
+- (void)runTTModeAlarmSnooze {
+    NSLog(@"Running runTTModeAlarmSnooze");
 }
-- (void)runTTAlarmNextSong {
-    NSLog(@"Running runTTAlarmNextSong");
+- (void)runTTModeAlarmNextSong {
+    NSLog(@"Running runTTModeAlarmNextSong");
 }
-- (void)runTTAlarmStop {
-    NSLog(@"Running runTTAlarmStop");
+- (void)runTTModeAlarmStop {
+    NSLog(@"Running runTTModeAlarmStop");
 }
-- (void)runTTAlarmQuiet {
-    NSLog(@"Running runTTAlarmQuiet");
+- (void)runTTModeAlarmQuiet {
+    NSLog(@"Running runTTModeAlarmQuiet");
 }
 
 #pragma mark - Defaults
 
 - (NSString *)defaultNorth {
-    return @"TTAlarmSnooze";
+    return @"TTModeAlarmSnooze";
 }
 - (NSString *)defaultEast {
-    return @"TTAlarmNextSong";
+    return @"TTModeAlarmNextSong";
 }
 - (NSString *)defaultWest {
-    return @"TTAlarmStop";
+    return @"TTModeAlarmStop";
 }
 - (NSString *)defaultSouth {
-    return @"TTAlarmQuiet";
+    return @"TTModeAlarmQuiet";
 }
 
 @end
