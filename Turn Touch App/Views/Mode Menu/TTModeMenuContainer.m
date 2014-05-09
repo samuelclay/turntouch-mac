@@ -143,7 +143,6 @@
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     
-    NSLog(@"Drawing mode menu: %@", NSStringFromRect(self.bounds));
     [bordersView drawRect:dirtyRect];
     [collectionView drawRect:dirtyRect];
 }
