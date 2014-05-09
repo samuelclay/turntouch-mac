@@ -29,11 +29,11 @@
 
 - (void)setRepresentedObject:(id)representedObject {
     [super setRepresentedObject:representedObject];
-    NSLog(@"Menu item: %@", representedObject);
-    if ([[representedObject objectForKey:@"menuType"] intValue] == MODE_MENU_TYPE) {
-        [(TTModeMenuItemView *)[self view] setModeName:[representedObject objectForKey:@"content"]];
-    } else if ([[representedObject objectForKey:@"menuType"] intValue] == ACTION_MENU_TYPE) {
-        [(TTModeMenuItemView *)[self view] setActionName:[representedObject objectForKey:@"content"]];
+
+    if ([appDelegate.modeMap.availableModes containsObject:representedObject]) {
+        [(TTModeMenuItemView *)[self view] setModeName:representedObject];
+    } else if ([appDelegate.modeMap.availableActions containsObject:representedObject]) {
+        [(TTModeMenuItemView *)[self view] setActionName:representedObject];
     }
 }
 

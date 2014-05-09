@@ -21,5 +21,6 @@
 - (NSString *)titleForAction:(NSString *)actionName;
 - (NSString *)imageNameInDirection:(TTModeDirection)direction;
 - (NSString *)imageNameForAction:(NSString *)actionName;
+- (NSString *)actionNameInDirection:(TTModeDirection)direction;
 
 @end

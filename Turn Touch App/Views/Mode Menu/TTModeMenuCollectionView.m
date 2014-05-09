@@ -31,6 +31,7 @@
 - (void)setContent:(NSArray *)content withMenuType:(TTMenuType)_menuType {
     NSLog(@"Collection view: %d / %@", _menuType, content);
     menuType = _menuType;
+    
     [super setContent:content];
 }
 

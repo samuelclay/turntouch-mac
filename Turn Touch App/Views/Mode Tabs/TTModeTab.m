@@ -52,6 +52,7 @@
     }
     
     [self setupTitleAttributes];
+    [appDelegate.menubarController.statusItemView setNeedsDisplay:YES];
 }
 
 - (void)setupTitleAttributes {
@@ -246,7 +247,6 @@
     }
     
     [appDelegate.modeMap reset];
-
     if (appDelegate.modeMap.selectedModeDirection != modeDirection) {
         [appDelegate.modeMap setSelectedModeDirection:modeDirection];
     }

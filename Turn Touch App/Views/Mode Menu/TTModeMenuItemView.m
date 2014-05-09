@@ -122,8 +122,8 @@
     stringShadow.shadowColor = [NSColor whiteColor];
     stringShadow.shadowOffset = NSMakeSize(0, -1);
     stringShadow.shadowBlurRadius = 0;
-    NSColor *textColor = (hoverActive && [appDelegate.modeMap.selectedMode class] != modeClass) ? NSColorFromRGB(0x404A60) :
-    [appDelegate.modeMap.selectedMode class] == modeClass ?
+    NSColor *textColor = (hoverActive && ![self isHighlighted]) ? NSColorFromRGB(0x404A60) :
+    [self isHighlighted] ?
     NSColorFromRGB(0x404A60) : NSColorFromRGB(0x808388);
     modeAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Futura" size:13],
                        NSForegroundColorAttributeName: textColor,
@@ -132,8 +132,18 @@
     textSize = [modeTitle sizeWithAttributes:modeAttributes];
 }
 
+- (BOOL)isHighlighted {
+    BOOL highlighted = NO;
+    if (menuType == ACTION_MENU_TYPE) {
+        highlighted = [activeMode actionNameInDirection:appDelegate.modeMap.inspectingModeDirection] == modeName;
+    } else if (menuType == MODE_MENU_TYPE) {
+        highlighted = [appDelegate.modeMap.selectedMode class] == modeClass;
+    }
+    return highlighted;
+}
+
 - (void)drawBackground {
-    if ([appDelegate.modeMap.selectedMode class] == modeClass) {
+    if ([self isHighlighted]) {
         // #E3EDF6
         [NSColorFromRGB(0xE3EDF6) set];
     } else if (mouseDownActive) {
@@ -204,9 +214,12 @@
     
     [appDelegate.modeMap reset];
     
-    if ([appDelegate.modeMap.selectedMode class] != modeClass) {
+    if (menuType == MODE_MENU_TYPE &&
+        [appDelegate.modeMap.selectedMode class] != modeClass) {
         [appDelegate.modeMap changeDirection:appDelegate.modeMap.selectedModeDirection
                                       toMode:modeName];
+    } else if (menuType == ACTION_MENU_TYPE) {
+//        appDelegate.modeMap chan
     }
 }
 

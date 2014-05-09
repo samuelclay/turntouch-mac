@@ -19,6 +19,7 @@
 @synthesize ignoreActiveMode;
 @synthesize showOutline;
 @synthesize interactive;
+@synthesize statusBar;
 
 #pragma mark - Initialization
 
@@ -162,9 +163,12 @@
     CGFloat spacing = SPACING_PCT * width;
     TTModeDirection activeModeDirection = ignoreActiveMode ? overrideActiveDirection : appDelegate.modeMap.activeModeDirection;
     TTModeDirection selectedModeDirection = ignoreSelectedMode ? overrideSelectedDirection : appDelegate.modeMap.selectedModeDirection;
-    
+    TTModeDirection inspectingModeDirection = appDelegate.modeMap.inspectingModeDirection;
+    TTModeDirection hoverModeDirection = appDelegate.modeMap.hoverModeDirection;
+
     for (NSBezierPath *path in @[northPath, eastPath, westPath, southPath]) {
         TTModeDirection direction = NO_DIRECTION;
+        
         if ([path isEqual:northPath]) {
             direction = NORTH;
         } else if ([path isEqual:eastPath]) {
@@ -174,6 +178,11 @@
         } else if ([path isEqual:southPath]) {
             direction = SOUTH;
         }
+
+        BOOL isHoveringDirection = hoverModeDirection == direction;
+        BOOL isInspectingDirection = inspectingModeDirection == direction;
+        BOOL isSelectedDirection = selectedModeDirection == direction;
+        BOOL isActiveDirection = activeModeDirection == direction;
         
         // Draw the shadow
         if (!showOutline && !self.isHighlighted) {
@@ -207,32 +216,48 @@
         
         // Fill in the color as a stroke or fill
         NSColor *modeColor;
-        if (!interactive && selectedModeDirection == direction &&
-            appDelegate.modeMap.selectedModeDirection == direction) {
-            modeColor = NSColorFromRGB(0x45859E);
-        } else if (interactive && appDelegate.modeMap.hoverModeDirection == direction &&
-                   appDelegate.modeMap.inspectingModeDirection != direction) {
-            modeColor = NSColorFromRGB(0x505AC0);
-        } else if (interactive && appDelegate.modeMap.inspectingModeDirection == direction) {
-            modeColor = NSColorFromRGB(0x303AA0);
-        } else {
-            modeColor = [NSColor colorWithCalibratedHue:0.55f saturation:0.5f brightness:0.2f
-                                                  alpha:activeModeDirection == direction ? 0.5f :
-                         selectedModeDirection == direction ? 0.7f : INACTIVE_OPACITY];
-        }
-        if (!showOutline) {
-            if (self.isHighlighted) {
-                [[NSColor colorWithDeviceWhite:1.0f
-                                         alpha:activeModeDirection == direction ? 0.5f :
-                  selectedModeDirection == direction ? 1.0f : INACTIVE_OPACITY]
-                 setFill];
+        if (interactive) {
+            if (isHoveringDirection && !isInspectingDirection) {
+                modeColor = NSColorFromRGB(0x505AC0);
+            } else if (isInspectingDirection) {
+                modeColor = NSColorFromRGB(0x303AA0);
             } else {
-                [modeColor setFill];
+                modeColor = NSColorFromRGB(0xD3D7D9);
             }
+        } else if (statusBar) {
+            if (isSelectedDirection) {
+                modeColor = self.isHighlighted ? NSColorFromRGB(0xFFFFFF) :
+                                                 NSColorFromRGB(0x1555D8);
+            } else if (self.isHighlighted) {
+                CGFloat alpha = isActiveDirection ? 0.8 : isSelectedDirection ? 1.0 : 0.4;
+                modeColor = NSColorFromRGBAlpha(0xFFFFFF, alpha);
+            } else {
+                CGFloat alpha = 0.5f;
+                modeColor = NSColorFromRGBAlpha(0x303033, alpha);
+            }
+        } else {
+            if (isSelectedDirection) {
+                if (appDelegate.modeMap.selectedModeDirection == direction) {
+                    CGFloat alpha = 0.8f;
+                    modeColor = NSColorFromRGBAlpha(0x1555D8, alpha);
+                } else {
+                    CGFloat alpha = 0.7f;
+                    modeColor = NSColorFromRGBAlpha(0x303033, alpha);
+                }
+            } else if (isActiveDirection) {
+                CGFloat alpha = 0.5f;
+                modeColor = NSColorFromRGBAlpha(0x303033, alpha);
+            } else {
+                CGFloat alpha = 0.2f;
+                modeColor = NSColorFromRGBAlpha(0x606063, alpha);
+            }
+        }
+        
+        if (!showOutline) {
+            [modeColor setFill];
             [path fill];
         } else {
-            TTModeDirection inspectingDirection = appDelegate.modeMap.inspectingModeDirection;
-            path.lineWidth = inspectingDirection == direction ? 3.0f : 1.0f;
+            path.lineWidth = isInspectingDirection ? 3.0f : 1.0f;
             [modeColor setStroke];
             [path stroke];
         }

@@ -198,7 +198,7 @@
     if ([keyPath isEqual:NSStringFromSelector(@selector(openedModeChangeMenu))]) {
         [self toggleModeMenuFrame];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(openedActionChangeMenu))]) {
-            [self toggleActionMenuFrame];
+        [self toggleActionMenuFrame];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedMode))]) {
         [self resetPosition];
     }
@@ -260,6 +260,9 @@
     [appDelegate.modeMap reset];
     if (appDelegate.modeMap.openedModeChangeMenu) {
         [appDelegate.modeMap setOpenedModeChangeMenu:NO];
+    }
+    if (appDelegate.modeMap.openedActionChangeMenu) {
+        [appDelegate.modeMap setOpenedActionChangeMenu:NO];
     }
 }
 

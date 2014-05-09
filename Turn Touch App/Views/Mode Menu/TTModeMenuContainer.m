@@ -23,22 +23,16 @@
         menuType = _menuType;
         appDelegate = [NSApp delegate];
         self.translatesAutoresizingMaskIntoConstraints = NO;
-
-        NSArray *content;
-        NSMutableArray *representedObjects = [NSMutableArray array];
         collectionView = [[TTModeMenuCollectionView alloc] init];
         [collectionView setItemPrototype:[TTModeMenuItem new]];
+        NSArray *content;
         if (menuType == MODE_MENU_TYPE) {
             content = appDelegate.modeMap.availableModes;
         } else if (menuType == ACTION_MENU_TYPE) {
             content = appDelegate.modeMap.availableActions;
         }
-        for (NSString *item in content) {
-            [representedObjects addObject:@{@"content": item,
-                                            @"menuType": [NSNumber numberWithInt:menuType]}];
-        }
-        [collectionView setContent:representedObjects withMenuType:menuType];
-        
+        [collectionView setContent:content];
+
         [self addConstraint:[NSLayoutConstraint constraintWithItem:collectionView
                                                          attribute:NSLayoutAttributeTop
                                                          relatedBy:NSLayoutRelationEqual
@@ -90,6 +84,10 @@
 - (void)registerAsObserver {
     [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
                              options:0 context:nil];
+    [appDelegate.modeMap addObserver:self forKeyPath:@"openedModeChangeMenu"
+                             options:0 context:nil];
+    [appDelegate.modeMap addObserver:self forKeyPath:@"openedActionChangeMenu"
+                             options:0 context:nil];
 }
 
 - (void) observeValueForKeyPath:(NSString*)keyPath
@@ -101,6 +99,13 @@
             appDelegate.modeMap.openedModeChangeMenu) {
             [appDelegate.modeMap setOpenedModeChangeMenu:NO];
         }
+        [collectionView setNeedsDisplay:YES];
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(openedModeChangeMenu))]) {
+        if (appDelegate.modeMap.openedActionChangeMenu) {
+            [appDelegate.modeMap setOpenedActionChangeMenu:NO];
+        }
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(openedActionChangeMenu))]) {
+//        [self setCollectionContent];
     }
 }
 

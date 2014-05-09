@@ -31,8 +31,9 @@
         _statusItem = statusItem;
         _statusItem.view = self;
 
-        NSRect diamondRect = NSInsetRect(itemRect, 2.0f, 4.0f);
+        NSRect diamondRect = NSInsetRect(itemRect, 4.0f, 3.0f);
         self.diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect];
+        self.diamondView.statusBar = YES;
         [self addSubview:self.diamondView];
     }
     return self;
@@ -41,7 +42,8 @@
 #pragma mark -
 
 - (void)drawRect:(NSRect)dirtyRect {
-	[self.statusItem drawStatusBarBackgroundInRect:dirtyRect withHighlight:self.isHighlighted];
+	[_statusItem drawStatusBarBackgroundInRect:self.bounds
+                                     withHighlight:self.isHighlighted];
 }
 
 #pragma mark -

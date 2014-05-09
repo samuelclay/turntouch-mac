@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-#define STATUS_ITEM_VIEW_WIDTH 24.0
+#define STATUS_ITEM_VIEW_WIDTH 30.0
 
 #pragma mark -
 

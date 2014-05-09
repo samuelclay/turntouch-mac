@@ -11,7 +11,7 @@
 #import "TTModeMap.h"
 
 #define SPACING_PCT 0.02f
-#define INACTIVE_OPACITY 0.2f
+#define INACTIVE_OPACITY 0.7f
 
 @class TTAppDelegate;
 
@@ -33,6 +33,7 @@
 @property (nonatomic, assign) BOOL ignoreActiveMode;
 @property (nonatomic, assign) BOOL showOutline;
 @property (nonatomic, assign) BOOL interactive;
+@property (nonatomic, assign) BOOL statusBar;
 @property (nonatomic, setter = setHighlighted:) BOOL isHighlighted;
 
 - (id)initWithFrame:(NSRect)frame interactive:(BOOL)interactive;
