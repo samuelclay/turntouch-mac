@@ -18,6 +18,7 @@
 @interface TTModeMenuContainer : NSView {
     TTAppDelegate *appDelegate;
     TTMenuType menuType;
+    NSScrollView *scrollView;
 }
 
 @property (nonatomic) TTModeMenuCollectionView *collectionView;

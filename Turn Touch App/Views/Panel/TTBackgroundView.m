@@ -50,7 +50,7 @@
     diamondLabels = [[TTDiamondLabels alloc] init];
     optionsView = [[TTOptionsView alloc] init];
     actionMenu = [[TTModeMenuContainer alloc] initWithType:ACTION_MENU_TYPE];
-    
+
     stackView = [[NSStackView alloc] init];
     [stackView setTranslatesAutoresizingMaskIntoConstraints:NO];
     

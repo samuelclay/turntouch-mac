@@ -41,6 +41,11 @@
     menuType = ACTION_MENU_TYPE;
 }
 
+- (void)dealloc {
+    [appDelegate.modeMap removeObserver:self forKeyPath:@"activeModeDirection"];
+    [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedModeDirection"];
+    [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedMode"];
+}
 #pragma mark - KVO
 
 - (void)registerAsObserver {

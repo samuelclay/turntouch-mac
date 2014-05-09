@@ -59,6 +59,10 @@
     return self;
 }
 
+- (void)dealloc {
+    [self removeObserver:self forKeyPath:@"selectedModeDirection"];
+}
+
 #pragma mark - KVO
 
 - (void)registerAsObserver {
