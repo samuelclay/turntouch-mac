@@ -184,6 +184,7 @@
 - (void)toggleInspectingModeDirection:(TTModeDirection)direction {
     if (inspectingModeDirection == direction) {
         [self setInspectingModeDirection:NO_DIRECTION];
+        [self setOpenedActionChangeMenu:NO];
     } else {
         [self setInspectingModeDirection:direction];
     }

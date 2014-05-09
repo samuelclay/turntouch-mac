@@ -8,6 +8,8 @@
 	<string>TTModeMac</string>
 	<key>TT:mode:west</key>
 	<string>TTModeNews</string>
+	<key>TT:selectedModeDirection</key>
+	<string>1</string>
 	<key>TT:mode:south</key>
 	<string>TTModeAlarmClock</string>
 </dict>
