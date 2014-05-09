@@ -191,8 +191,8 @@
 
 - (void)toggleInspectingModeDirection:(TTModeDirection)direction {
     if (inspectingModeDirection == direction) {
-        [self setInspectingModeDirection:NO_DIRECTION];
         [self setOpenedActionChangeMenu:NO];
+        [self setInspectingModeDirection:NO_DIRECTION];
     } else {
         [self setInspectingModeDirection:direction];
     }
@@ -227,6 +227,9 @@
 - (void)setOpenedActionChangeMenu:(BOOL)_openedActionChangeMenu {
     if (openedActionChangeMenu != _openedActionChangeMenu) {
         openedActionChangeMenu = _openedActionChangeMenu;
+        if (!openedActionChangeMenu) {
+            [self setInspectingModeDirection:NO_DIRECTION];
+        }
     }
 }
 

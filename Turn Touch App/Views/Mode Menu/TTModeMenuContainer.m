@@ -128,6 +128,7 @@
             appDelegate.modeMap.openedModeChangeMenu) {
             [appDelegate.modeMap setOpenedModeChangeMenu:NO];
         }
+        
         [collectionView setNeedsDisplay:YES];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(openedModeChangeMenu))]) {
         if (appDelegate.modeMap.openedActionChangeMenu) {

@@ -237,7 +237,7 @@
     NSEvent *currentEvent = [NSApp currentEvent];
     NSUInteger clearFlags = ([currentEvent modifierFlags] & NSDeviceIndependentModifierFlagsMask);
     BOOL shiftPressed = (clearFlags == NSShiftKeyMask);
-    if (shiftPressed) openDuration *= 50;
+    if (shiftPressed) openDuration *= 10;
     
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:openDuration];

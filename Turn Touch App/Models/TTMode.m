@@ -139,8 +139,12 @@
     
     NSString *modeDirectionName = [appDelegate.modeMap directionName:appDelegate.modeMap.selectedModeDirection];
     NSString *actionDirectionName = [appDelegate.modeMap directionName:direction];
-    NSString *directionAction = [defaults stringForKey:[NSString stringWithFormat:@"TT:%@-%@:action:%@",
+    NSString *directionAction;
+    if (direction != NO_DIRECTION) {
+        // Use default action in direction
+        directionAction = [defaults stringForKey:[NSString stringWithFormat:@"TT:%@-%@:action:%@",
                                                         [self class], modeDirectionName, actionDirectionName]];
+    }
     if (directionAction && ![self.actions containsObject:directionAction]) {
         directionAction = nil;
     }
