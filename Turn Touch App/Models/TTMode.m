@@ -137,10 +137,10 @@
 - (NSString *)actionNameInDirection:(TTModeDirection)direction {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    NSString *directionAction = [defaults stringForKey:[NSString stringWithFormat:@"%@-%d:action:%d",
-                                                        [self class],
-                                                        appDelegate.modeMap.selectedModeDirection,
-                                                        direction]];
+    NSString *modeDirectionName = [appDelegate.modeMap directionName:appDelegate.modeMap.selectedModeDirection];
+    NSString *actionDirectionName = [appDelegate.modeMap directionName:direction];
+    NSString *directionAction = [defaults stringForKey:[NSString stringWithFormat:@"TT:%@-%@:action:%@",
+                                                        [self class], modeDirectionName, actionDirectionName]];
     if (directionAction && ![self.actions containsObject:directionAction]) {
         directionAction = nil;
     }
@@ -158,4 +158,16 @@
     
     return directionAction;
 }
+
+- (void)changeDirection:(TTModeDirection)direction toAction:(NSString *)actionClassName {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *modeDirectionName = [appDelegate.modeMap directionName:appDelegate.modeMap.selectedModeDirection];
+    NSString *actionDirectionName = [appDelegate.modeMap directionName:direction];
+    NSString *prefKey = [NSString stringWithFormat:@"TT:%@-%@:action:%@",
+                         [self class], modeDirectionName, actionDirectionName];
+    
+    [prefs setObject:actionClassName forKey:prefKey];
+    [prefs synchronize];
+}
+                                 
 @end

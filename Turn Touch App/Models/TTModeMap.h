@@ -32,7 +32,9 @@
 
 - (void)reset;
 - (void)runActiveButton;
+- (NSString *)directionName:(TTModeDirection)direction;
 - (void)changeDirection:(TTModeDirection)direction toMode:(NSString *)modeClassName;
+- (void)changeDirection:(TTModeDirection)direction toAction:(NSString *)actionClassName;
 - (void)toggleInspectingModeDirection:(TTModeDirection)direction;
 - (void)toggleHoverModeDirection:(TTModeDirection)direction hovering:(BOOL)hovering;
 

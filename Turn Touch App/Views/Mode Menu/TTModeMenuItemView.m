@@ -140,7 +140,8 @@
 - (BOOL)isHighlighted {
     BOOL highlighted = NO;
     if (menuType == ACTION_MENU_TYPE) {
-        highlighted = [activeMode actionNameInDirection:appDelegate.modeMap.inspectingModeDirection] == modeName;
+        highlighted = [[activeMode actionNameInDirection:appDelegate.modeMap.inspectingModeDirection]
+                       isEqualToString:modeName];
     } else if (menuType == MODE_MENU_TYPE) {
         highlighted = [appDelegate.modeMap.selectedMode class] == modeClass;
     }
@@ -217,14 +218,14 @@
         return;
     }
     
-    [appDelegate.modeMap reset];
-    
-    if (menuType == MODE_MENU_TYPE &&
-        [appDelegate.modeMap.selectedMode class] != modeClass) {
+    if (menuType == MODE_MENU_TYPE) {
         [appDelegate.modeMap changeDirection:appDelegate.modeMap.selectedModeDirection
                                       toMode:modeName];
+        [appDelegate.modeMap reset];
     } else if (menuType == ACTION_MENU_TYPE) {
-//        appDelegate.modeMap chan
+        [appDelegate.modeMap changeDirection:appDelegate.modeMap.inspectingModeDirection
+                                    toAction:modeName];
+        [appDelegate.panelController.backgroundView setNeedsDisplay:YES];
     }
 }
 

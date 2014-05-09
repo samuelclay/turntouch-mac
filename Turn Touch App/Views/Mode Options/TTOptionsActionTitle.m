@@ -91,7 +91,7 @@
     [actionTitle drawAtPoint:titlePoint withAttributes:titleAttributes];
     
     if (appDelegate.modeMap.openedActionChangeMenu) {
-        [self setChangeButtonTitle:@"cancel"];
+        [self setChangeButtonTitle:@"done"];
     } else {
         [self setChangeButtonTitle:@"change"];
     }

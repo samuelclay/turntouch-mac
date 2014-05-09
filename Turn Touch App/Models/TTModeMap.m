@@ -185,6 +185,10 @@
     [self switchMode];
 }
 
+- (void)changeDirection:(TTModeDirection)direction toAction:(NSString *)actionClassName {
+    [selectedMode changeDirection:direction toAction:actionClassName];
+}
+
 - (void)toggleInspectingModeDirection:(TTModeDirection)direction {
     if (inspectingModeDirection == direction) {
         [self setInspectingModeDirection:NO_DIRECTION];
