@@ -212,7 +212,7 @@
     [[NSAnimationContext currentContext] setTimingFunction:
      [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
     NSPoint newOrigin = [clipView bounds].origin;
-    newOrigin.y = yCoord;
+    newOrigin.y = yCoord - 2;
     [[clipView animator] setBoundsOrigin:newOrigin];
     [scrollView reflectScrolledClipView:[scrollView contentView]];
     [NSAnimationContext endGrouping];
