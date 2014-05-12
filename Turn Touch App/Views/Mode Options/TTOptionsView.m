@@ -22,13 +22,15 @@
         appDelegate = [NSApp delegate];
         self.translatesAutoresizingMaskIntoConstraints = NO;
 
-        modeTitleView = [[TTOptionsModeTitle alloc] initWithFrame:CGRectZero];
-        [actionTitleView setHidden:NO];
-        [self addSubview:modeTitleView];
+//        modeTitleView = [[TTOptionsModeTitle alloc] initWithFrame:CGRectZero];
+//        [actionTitleView setHidden:NO];
+//        [self addSubview:modeTitleView];
 
         actionTitleView = [[TTOptionsActionTitle alloc] initWithFrame:CGRectZero];
         [actionTitleView setHidden:YES];
         [self addSubview:actionTitleView];
+
+        [self drawModeOptions];
 
         [self registerAsObserver];
     }
@@ -36,12 +38,12 @@
     return self;
 }
 
+#pragma mark - KVO
+
 - (void)registerAsObserver {
     [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
                              options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"activeModeDirection"
-                             options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
                              options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"selectedMode"
                              options:0 context:nil];
@@ -53,29 +55,33 @@
                         context:(void*)context {
     if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))]) {
         [self setNeedsDisplay:YES];
-    } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
-        [self setNeedsDisplay:YES];
-    } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
-        [self setNeedsDisplay:YES];
+        [self drawActionOptions];
+        [self drawModeOptions];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedMode))]) {
         [self setNeedsDisplay:YES];
+        [self drawModeOptions];
     }
 }
+
+#pragma mark - Drawing
 
 - (void)setFrame:(NSRect)frameRect {
     [super setFrame:frameRect];
 
-    [modeTitleView setFrame:self.frame];
+//    [modeTitleView setFrame:self.frame];
     [actionTitleView setFrame:self.frame];
 }
+
 - (void)drawRect:(NSRect)dirtyRect {
     [self drawBackground];
     
     if (appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION) {
-        [modeTitleView setHidden:NO];
+//        [modeTitleView setHidden:NO];
+        [modeOptionsView setHidden:NO];
         [actionTitleView setHidden:YES];
     } else {
-        [modeTitleView setHidden:YES];
+//        [modeTitleView setHidden:YES];
+        [modeOptionsView setHidden:YES];
         [actionTitleView setHidden:NO];
     }
 }
@@ -123,6 +129,63 @@
 //    [line stroke];
 }
 
+#pragma mark - Options views
 
+- (void)drawModeOptions {
+    if (appDelegate.modeMap.inspectingModeDirection != NO_DIRECTION) return;
+    
+    NSArray *nibArray = [NSArray array];
+    NSString *modeName = NSStringFromClass([appDelegate.modeMap.selectedMode class]);
+    [[NSBundle mainBundle] loadNibNamed:modeName owner:self topLevelObjects:&nibArray];
+    
+    for (id view in self.subviews) {
+        if ([view class] == [TTModeOptionsView class]) {
+            [view removeFromSuperview];
+        }
+    }
+    
+    modeOptionsView = nil;
+    for (id view in nibArray) {
+        if ([view class] == [TTModeOptionsView class]) {
+            modeOptionsView = view;
+            break;
+        }
+    }
+
+    if (!modeOptionsView) {
+        NSLog(@" --- Missing mode options view for %@", modeName);
+        [appDelegate.panelController.backgroundView adjustOptionsHeight:12];
+        return;
+    }
+
+    [self addSubview:modeOptionsView];
+    modeOptionsView.translatesAutoresizingMaskIntoConstraints = NO;
+
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsView
+                                                     attribute:NSLayoutAttributeWidth
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeWidth
+                                                    multiplier:1.0 constant:0.0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsView
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeHeight
+                                                    multiplier:1.0 constant:0.0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsView
+                                                     attribute:NSLayoutAttributeTop
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeTop
+                                                    multiplier:1.0 constant:0.0]];
+    
+    NSLog(@"Mode options height: %f", modeOptionsView.bounds.size.height);
+    [appDelegate.panelController.backgroundView adjustOptionsHeight:modeOptionsView.bounds.size.height];
+}
+
+- (void)drawActionOptions {
+    [appDelegate.panelController.backgroundView adjustOptionsHeight:48];
+}
 
 @end

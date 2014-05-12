@@ -113,13 +113,14 @@
                                                           attribute:0
                                                          multiplier:0
                                                            constant:DIAMOND_LABELS_SIZE]];
-    [stackView addConstraint:[NSLayoutConstraint constraintWithItem:optionsView
-                                                          attribute:NSLayoutAttributeHeight
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:nil
-                                                          attribute:0
-                                                         multiplier:0
-                                                           constant:MODE_OPTIONS_HEIGHT]];
+    optionsConstraint = [NSLayoutConstraint constraintWithItem:optionsView
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:0
+                                                    multiplier:0
+                                                      constant:MODE_OPTIONS_HEIGHT];
+    [stackView addConstraint:optionsConstraint];
     actionMenuConstraint = [NSLayoutConstraint constraintWithItem:actionMenu
                                                       attribute:NSLayoutAttributeHeight
                                                       relatedBy:NSLayoutRelationEqual
@@ -252,6 +253,27 @@
     } else {
         [[actionMenuConstraint animator] setConstant:1];
     }
+    
+    [NSAnimationContext endGrouping];
+}
+
+- (void)adjustOptionsHeight:(CGFloat)height {
+    NSTimeInterval openDuration = OPEN_DURATION;
+    
+    NSEvent *currentEvent = [NSApp currentEvent];
+    NSUInteger clearFlags = ([currentEvent modifierFlags] & NSDeviceIndependentModifierFlagsMask);
+    BOOL shiftPressed = (clearFlags == NSShiftKeyMask);
+    if (shiftPressed) openDuration *= 10;
+    
+    [NSAnimationContext beginGrouping];
+    [[NSAnimationContext currentContext] setDuration:openDuration];
+    [[NSAnimationContext currentContext] setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+    [[NSAnimationContext currentContext] setCompletionHandler:^{
+        [self.window invalidateShadow];
+        [self.window update];
+    }];
+    
+    [[optionsConstraint animator] setConstant:height];
     
     [NSAnimationContext endGrouping];
 }

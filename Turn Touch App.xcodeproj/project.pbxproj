@@ -67,6 +67,8 @@
 		FFAFCBC519130F520058B9CB /* TTPanelArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAFCBC419130F520058B9CB /* TTPanelArrowView.m */; };
 		FFB653DD18DB9DEA00830B42 /* hid.c in Sources */ = {isa = PBXBuildFile; fileRef = FFB653DC18DB9DEA00830B42 /* hid.c */; };
 		FFB653E018DBA14E00830B42 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB653DF18DBA14E00830B42 /* CoreFoundation.framework */; };
+		FFEA6CB319216CDF0010874B /* TTModeMac.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFEA6CB219216CDF0010874B /* TTModeMac.xib */; };
+		FFEA6CB619217BFB0010874B /* TTModeOptionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFEA6CB519217BFB0010874B /* TTModeOptionsView.m */; };
 		FFF05F3018F60FF100AC6230 /* TTTitleBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF05F2F18F60FF100AC6230 /* TTTitleBarView.m */; };
 		FFF05F3318F6120200AC6230 /* Turn Touch title.png in Resources */ = {isa = PBXBuildFile; fileRef = FFF05F3218F6120200AC6230 /* Turn Touch title.png */; };
 		FFF05F3B18F77BE000AC6230 /* TTModeTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF05F3A18F77BE000AC6230 /* TTModeTitleView.m */; };
@@ -182,6 +184,9 @@
 		FFB653DC18DB9DEA00830B42 /* hid.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hid.c; path = SerialMonitor/hid.c; sourceTree = "<group>"; };
 		FFB653DE18DB9DFD00830B42 /* hidapi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = hidapi.h; path = SerialMonitor/hidapi.h; sourceTree = "<group>"; };
 		FFB653DF18DBA14E00830B42 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		FFEA6CB219216CDF0010874B /* TTModeMac.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeMac.xib; path = Modes/Mac/TTModeMac.xib; sourceTree = "<group>"; };
+		FFEA6CB419217BFB0010874B /* TTModeOptionsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeOptionsView.h; path = Models/TTModeOptionsView.h; sourceTree = "<group>"; };
+		FFEA6CB519217BFB0010874B /* TTModeOptionsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeOptionsView.m; path = Models/TTModeOptionsView.m; sourceTree = "<group>"; };
 		FFF05F2E18F60FF100AC6230 /* TTTitleBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTitleBarView.h; sourceTree = "<group>"; };
 		FFF05F2F18F60FF100AC6230 /* TTTitleBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTitleBarView.m; sourceTree = "<group>"; };
 		FFF05F3218F6120200AC6230 /* Turn Touch title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Turn Touch title.png"; sourceTree = "<group>"; };
@@ -221,6 +226,8 @@
 				FF98A2DF1867DBA40032CC7A /* TTActionMap.h */,
 				FF98A2E01867DBA40032CC7A /* TTActionMap.m */,
 				FF981FDC191AFBEF00A4A94B /* TTModeDirection.h */,
+				FFEA6CB419217BFB0010874B /* TTModeOptionsView.h */,
+				FFEA6CB519217BFB0010874B /* TTModeOptionsView.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -469,6 +476,7 @@
 			children = (
 				FF8012F118692D0A00955218 /* TTModeMac.h */,
 				FF8012F218692D0A00955218 /* TTModeMac.m */,
+				FFEA6CB219216CDF0010874B /* TTModeMac.xib */,
 			);
 			name = Mac;
 			sourceTree = "<group>";
@@ -630,6 +638,7 @@
 				FFAA4F62182D96D60049FFC7 /* icon_movie.png in Resources */,
 				FFAA4F64182D96D60049FFC7 /* newspaper-3.png in Resources */,
 				FF98A3041868D3F90032CC7A /* macbookpro.png in Resources */,
+				FFEA6CB319216CDF0010874B /* TTModeMac.xib in Resources */,
 				FFF05F3318F6120200AC6230 /* Turn Touch title.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -655,6 +664,7 @@
 				FF801327186CF90700955218 /* TTPanel.m in Sources */,
 				FF98A2E71867DBE70032CC7A /* TTMenubarController.m in Sources */,
 				FF80131A186CF8FF00955218 /* TTDiamondView.m in Sources */,
+				FFEA6CB619217BFB0010874B /* TTModeOptionsView.m in Sources */,
 				FFAA4F72182D9A5F0049FFC7 /* TTModeNews.m in Sources */,
 				FF0E12CF18247D6100D49EC7 /* TTModeMusic.m in Sources */,
 				FFB653DD18DB9DEA00830B42 /* hid.c in Sources */,

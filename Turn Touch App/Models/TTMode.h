@@ -16,6 +16,8 @@
     TTAppDelegate *appDelegate;
 }
 
+@property (nonatomic) IBOutlet NSView *modeOptionsView;
+
 - (void)runDirection:(TTModeDirection)direction;
 - (NSString *)titleInDirection:(TTModeDirection)direction;
 - (NSString *)titleForAction:(NSString *)actionName;

@@ -30,6 +30,7 @@
     TTAppDelegate *appDelegate;
     NSLayoutConstraint *modeMenuConstraint;
     NSLayoutConstraint *actionMenuConstraint;
+    NSLayoutConstraint *optionsConstraint;
 }
 
 @property (nonatomic) NSStackView *stackView;
@@ -43,5 +44,6 @@
 @property (nonatomic) IBOutlet TTOptionsView *optionsView;
 
 - (void)resetPosition;
+- (void)adjustOptionsHeight:(CGFloat)height;
 
 @end

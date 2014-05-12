@@ -10,6 +10,7 @@
 #import "TTAppDelegate.h"
 #import "TTOptionsModeTitle.h"
 #import "TTOptionsActionTitle.h"
+#import "TTModeOptionsView.h"
 
 @class TTAppDelegate;
 @class TTOptionsModeTitle;
@@ -19,6 +20,8 @@
     TTAppDelegate *appDelegate;
     TTOptionsModeTitle *modeTitleView;
     TTOptionsActionTitle *actionTitleView;
+    
+    TTModeOptionsView *modeOptionsView;
 }
 
 @end
