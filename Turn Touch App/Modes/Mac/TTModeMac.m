@@ -55,10 +55,10 @@
 #pragma mark - Action Titles
 
 - (NSString *)titleTTModeMacVolumeUp {
-    return @"Volume Up";
+    return @"Volume up";
 }
 - (NSString *)titleTTModeMacVolumeDown {
-    return @"Volume Down";
+    return @"Volume down";
 }
 - (NSString *)titleTTModeMacVolumeMute {
     return @"Mute";

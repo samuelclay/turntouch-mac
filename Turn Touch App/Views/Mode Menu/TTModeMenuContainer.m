@@ -130,6 +130,7 @@
         }
         
         [collectionView setNeedsDisplay:YES];
+        [self scrollToInspectingDirection];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(openedModeChangeMenu))]) {
         if (appDelegate.modeMap.openedActionChangeMenu) {
             [appDelegate.modeMap setOpenedActionChangeMenu:NO];
@@ -178,6 +179,43 @@
         content = appDelegate.modeMap.availableActions;
     }
     [collectionView setContent:content];
+}
+
+- (void)scrollToInspectingDirection {
+    if (appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION) return;
+    
+    NSInteger index = 0;
+    if (menuType == MODE_MENU_TYPE) {
+        NSString *modeName = NSStringFromClass([appDelegate.modeMap.selectedMode class]);
+        index = [collectionView.content indexOfObject:modeName];
+    } else if (menuType == ACTION_MENU_TYPE) {
+        NSString *actionName = [appDelegate.modeMap.selectedMode
+                                actionNameInDirection:appDelegate.modeMap.inspectingModeDirection];
+        index = [collectionView.content indexOfObject:actionName];
+    }
+
+    if (index >= 0) {
+        CGRect rect = [collectionView frameForItemAtIndex:index];
+        [self scrollToXPosition:rect.origin.y];
+    }
+    
+}
+
+- (void)scrollToXPosition:(float)yCoord {
+    NSClipView* clipView = [scrollView contentView];
+    
+    if (yCoord < clipView.bounds.origin.y + (clipView.bounds.size.height - 2) &&
+        yCoord > clipView.bounds.origin.y) return;
+    
+    [NSAnimationContext beginGrouping];
+    [[NSAnimationContext currentContext] setDuration:0.35];
+    [[NSAnimationContext currentContext] setTimingFunction:
+     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+    NSPoint newOrigin = [clipView bounds].origin;
+    newOrigin.y = yCoord;
+    [[clipView animator] setBoundsOrigin:newOrigin];
+    [scrollView reflectScrolledClipView:[scrollView contentView]];
+    [NSAnimationContext endGrouping];
 }
 
 @end
