@@ -357,7 +357,7 @@
     if (turnOn) {
         NSLog(@"Turning on.");
         IORegistryEntrySetCFProperty(r, CFSTR("IORequestIdle"), kCFBooleanFalse);
-        UpdateSystemActivity(OverallAct);
+//        UpdateSystemActivity(OverallAct);
         
         // Turn to black before fade in
         err = CGSetDisplayTransferByFormula (display,

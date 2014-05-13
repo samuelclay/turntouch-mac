@@ -791,7 +791,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Turn Touch App/Supporting Files/Turn Touch App-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch App/Supporting Files/Turn Touch App-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -807,7 +807,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Turn Touch App/Supporting Files/Turn Touch App-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch App/Supporting Files/Turn Touch App-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

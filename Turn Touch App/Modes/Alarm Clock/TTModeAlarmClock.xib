@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment version="1090" defaultVersion="1070" identifier="macosx"/>
+        <deployment version="1090" defaultVersion="1090" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
@@ -12,15 +12,15 @@
             <rect key="frame" x="0.0" y="0.0" width="370" height="343"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <box autoresizesSubviews="NO" title="Box" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Ynp-bh-WI4">
+                <box autoresizesSubviews="NO" title="Box" borderType="bezel" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Ynp-bh-WI4">
                     <rect key="frame" x="-3" y="89" width="376" height="113"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <view key="contentView">
-                        <rect key="frame" x="1" y="1" width="374" height="111"/>
+                        <rect key="frame" x="3" y="3" width="370" height="107"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dtp-52-lrw">
-                                <rect key="frame" x="244" y="79" width="105" height="20"/>
+                                <rect key="frame" x="242" y="77" width="105" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <segmentedCell key="cell" alignment="left" style="roundRect" trackingMode="selectOne" id="ROX-fq-TeD">
                                     <font key="font" metaFont="cellTitle"/>
@@ -31,7 +31,7 @@
                                 </segmentedCell>
                             </segmentedControl>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HQ6-0n-2R8">
-                                <rect key="frame" x="24" y="80" width="105" height="17"/>
+                                <rect key="frame" x="22" y="78" width="105" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="One-time alarm" id="QfF-5n-otp">
                                     <font key="font" metaFont="system"/>
@@ -40,7 +40,7 @@
                                 </textFieldCell>
                             </textField>
                             <box transparent="YES" borderWidth="0.0" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="oIq-Tz-CYQ">
-                                <rect key="frame" x="24" y="10" width="324" height="63"/>
+                                <rect key="frame" x="22" y="8" width="324" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView">
                                     <rect key="frame" x="0.0" y="0.0" width="324" height="63"/>
@@ -54,9 +54,6 @@
                                         <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Fxl-au-p7H">
                                             <rect key="frame" x="248" y="37" width="76" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="76" id="45l-U6-yD0"/>
-                                            </constraints>
                                             <segmentedCell key="cell" alignment="left" style="texturedSquare" trackingMode="selectOne" id="oKp-fs-WhE">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <segments>
@@ -77,12 +74,12 @@
                                         <datePicker verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ASz-hE-Fct">
                                             <rect key="frame" x="0.0" y="37" width="104" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <datePickerCell key="cell" alignment="left" drawsBackground="NO" id="1ct-Tn-Ozu">
+                                            <datePickerCell key="cell" scrollable="YES" lineBreakMode="clipping" alignment="left" drawsBackground="NO" id="1ct-Tn-Ozu">
                                                 <font key="font" metaFont="system"/>
                                                 <calendarDate key="date" timeIntervalSinceReferenceDate="-595929600" calendarFormat="%Y-%m-%d %H:%M:%S %z">
                                                     <!--1982-02-12 08:00:00 -0800-->
                                                     <timeZone key="timeZone" name="US/Pacific">
-                                                        <mutableData key="data">
+                                                        <data key="data">
 VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
 y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
 5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
@@ -100,7 +97,7 @@ f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
-</mutableData>
+</data>
                                                     </timeZone>
                                                 </calendarDate>
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -114,13 +111,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <constraint firstItem="TpU-io-mXB" firstAttribute="top" secondItem="8Yx-qA-qzL" secondAttribute="bottom" constant="14" id="7eh-iJ-XKO"/>
                                     <constraint firstItem="8Yx-qA-qzL" firstAttribute="leading" secondItem="ASz-hE-Fct" secondAttribute="trailing" constant="12" id="8wN-79-4Lr"/>
                                     <constraint firstItem="8Yx-qA-qzL" firstAttribute="bottom" secondItem="ASz-hE-Fct" secondAttribute="bottom" id="EiX-lx-inh"/>
-                                    <constraint firstAttribute="trailing" secondItem="Fxl-au-p7H" secondAttribute="trailing" id="FCA-8T-iab"/>
                                     <constraint firstItem="8Yx-qA-qzL" firstAttribute="top" secondItem="oIq-Tz-CYQ" secondAttribute="top" constant="3" id="Fsv-c6-JwT"/>
                                     <constraint firstItem="ASz-hE-Fct" firstAttribute="top" secondItem="oIq-Tz-CYQ" secondAttribute="top" constant="6" id="PJP-5g-w5s"/>
                                     <constraint firstItem="TpU-io-mXB" firstAttribute="leading" secondItem="oIq-Tz-CYQ" secondAttribute="leading" id="PZC-Av-LQh"/>
-                                    <constraint firstItem="Fxl-au-p7H" firstAttribute="leading" secondItem="8Yx-qA-qzL" secondAttribute="trailing" constant="9" id="Pj1-Sb-S1z"/>
-                                    <constraint firstItem="ASz-hE-Fct" firstAttribute="leading" secondItem="oIq-Tz-CYQ" secondAttribute="leading" id="Wjd-G3-pyZ"/>
-                                    <constraint firstItem="Fxl-au-p7H" firstAttribute="top" secondItem="oIq-Tz-CYQ" secondAttribute="top" constant="2" id="p2Q-Uc-yNE"/>
+                                    <constraint firstItem="ASz-hE-Fct" firstAttribute="leading" secondItem="TpU-io-mXB" secondAttribute="leading" id="Qzf-Bw-f3F"/>
+                                    <constraint firstItem="Fxl-au-p7H" firstAttribute="trailing" secondItem="TpU-io-mXB" secondAttribute="trailing" id="a25-Qz-hMe"/>
+                                    <constraint firstItem="TpU-io-mXB" firstAttribute="top" secondItem="Fxl-au-p7H" secondAttribute="bottom" constant="16" id="hZV-0O-1mZ"/>
+                                    <constraint firstItem="Fxl-au-p7H" firstAttribute="leading" secondItem="8Yx-qA-qzL" secondAttribute="trailing" constant="9" id="ibG-AR-J27"/>
                                     <constraint firstAttribute="trailing" secondItem="TpU-io-mXB" secondAttribute="trailing" id="pxM-d1-TUb"/>
                                 </constraints>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
@@ -138,8 +135,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <constraint firstItem="dtp-52-lrw" firstAttribute="top" secondItem="Ynp-bh-WI4" secondAttribute="top" constant="12" id="ss4-rM-nek"/>
                         <constraint firstAttribute="bottom" secondItem="oIq-Tz-CYQ" secondAttribute="bottom" constant="7" id="wBV-I7-QgI"/>
                     </constraints>
-                    <color key="borderColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    <color key="fillColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </box>
                 <box autoresizesSubviews="NO" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="4X6-Q1-Mt2">
                     <rect key="frame" x="-3" y="-4" width="376" height="94"/>
@@ -228,15 +225,15 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </box>
-                <box autoresizesSubviews="NO" title="Box" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="C4a-9h-8KN">
+                <box autoresizesSubviews="NO" title="Box" borderType="bezel" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="C4a-9h-8KN">
                     <rect key="frame" x="-3" y="201" width="376" height="144"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <view key="contentView">
-                        <rect key="frame" x="1" y="1" width="374" height="142"/>
+                        <rect key="frame" x="3" y="3" width="370" height="138"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qxq-st-gXj">
-                                <rect key="frame" x="24" y="108" width="203.5" height="17"/>
+                                <rect key="frame" x="22" y="106" width="203" height="17"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Repeating alarm" id="DaN-Su-ACl">
                                     <font key="font" metaFont="system"/>
@@ -245,7 +242,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </textFieldCell>
                             </textField>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eCO-fg-RdJ">
-                                <rect key="frame" x="247" y="105" width="102" height="20"/>
+                                <rect key="frame" x="245" y="103" width="102" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="ud1-dI-ksW"/>
@@ -259,7 +256,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </segmentedCell>
                             </segmentedControl>
                             <box autoresizesSubviews="NO" transparent="YES" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="5ti-VC-9rp">
-                                <rect key="frame" x="26" y="17" width="322" height="79"/>
+                                <rect key="frame" x="24" y="15" width="322" height="79"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView">
                                     <rect key="frame" x="0.0" y="0.0" width="322" height="79"/>
@@ -341,8 +338,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <constraint firstItem="5ti-VC-9rp" firstAttribute="top" secondItem="eCO-fg-RdJ" secondAttribute="bottom" constant="10" id="e7J-lP-Bj8"/>
                         <constraint firstItem="eCO-fg-RdJ" firstAttribute="top" secondItem="C4a-9h-8KN" secondAttribute="top" constant="17" id="zx6-hi-xPm"/>
                     </constraints>
-                    <color key="borderColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                    <color key="fillColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </box>
             </subviews>
             <constraints>
