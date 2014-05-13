@@ -160,32 +160,42 @@
 
     [self addSubview:modeOptionsView];
     modeOptionsView.translatesAutoresizingMaskIntoConstraints = NO;
-
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsView
-                                                     attribute:NSLayoutAttributeWidth
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeWidth
-                                                    multiplier:1.0 constant:0.0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsView
-                                                     attribute:NSLayoutAttributeHeight
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeHeight
-                                                    multiplier:1.0 constant:0.0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsView
-                                                     attribute:NSLayoutAttributeTop
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeTop
-                                                    multiplier:1.0 constant:0.0]];
+    NSRect frame = modeOptionsView.frame;
+    frame.size.width = NSWidth(self.frame);
+    [modeOptionsView setFrame:frame];
     
-    NSLog(@"Mode options height: %f", modeOptionsView.bounds.size.height);
-    [appDelegate.panelController.backgroundView adjustOptionsHeight:modeOptionsView.bounds.size.height];
+//    [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsView
+//                                                     attribute:NSLayoutAttributeHeight
+//                                                     relatedBy:NSLayoutRelationEqual
+//                                                        toItem:self
+//                                                     attribute:NSLayoutAttributeHeight
+//                                                    multiplier:1.0 constant:0.0]];
+//    [self addConstraint:[NSLayoutConstraint constraintWithItem:self
+//                                                     attribute:NSLayoutAttributeWidth
+//                                                     relatedBy:NSLayoutRelationEqual
+//                                                        toItem:modeOptionsView
+//                                                     attribute:NSLayoutAttributeWidth
+//                                                    multiplier:1.0 constant:24]];
+//    [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsView
+//                                                     attribute:NSLayoutAttributeTop
+//                                                     relatedBy:NSLayoutRelationEqual
+//                                                        toItem:self
+//                                                     attribute:NSLayoutAttributeTop
+//                                                    multiplier:1.0 constant:0.0]];
+//    [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsView
+//                                                     attribute:NSLayoutAttributeLeading
+//                                                     relatedBy:NSLayoutRelationEqual
+//                                                        toItem:self
+//                                                     attribute:NSLayoutAttributeLeading
+//                                                    multiplier:1.0 constant:0]];
+
+    [appDelegate.panelController.backgroundView
+     adjustOptionsHeight:modeOptionsView.bounds.size.height];
 }
 
 - (void)drawActionOptions {
-    [appDelegate.panelController.backgroundView adjustOptionsHeight:48];
+    [appDelegate.panelController.backgroundView
+     adjustOptionsHeight:48];
 }
 
 @end

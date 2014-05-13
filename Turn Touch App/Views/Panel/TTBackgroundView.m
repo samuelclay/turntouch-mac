@@ -122,12 +122,12 @@
                                                       constant:MODE_OPTIONS_HEIGHT];
     [stackView addConstraint:optionsConstraint];
     actionMenuConstraint = [NSLayoutConstraint constraintWithItem:actionMenu
-                                                      attribute:NSLayoutAttributeHeight
-                                                      relatedBy:NSLayoutRelationEqual
-                                                         toItem:nil
-                                                      attribute:0
-                                                     multiplier:0
-                                                       constant:1];
+                                                        attribute:NSLayoutAttributeHeight
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:nil
+                                                        attribute:0
+                                                       multiplier:0
+                                                         constant:0];
     [stackView addConstraint:actionMenuConstraint];
 
     // add a minimum width constraint
@@ -251,7 +251,7 @@
     if (appDelegate.modeMap.openedActionChangeMenu) {
         [[actionMenuConstraint animator] setConstant:ACTION_MENU_HEIGHT];
     } else {
-        [[actionMenuConstraint animator] setConstant:1];
+        [[actionMenuConstraint animator] setConstant:0];
     }
     
     [NSAnimationContext endGrouping];
