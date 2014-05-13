@@ -11,8 +11,8 @@
 #import "TTStatusItemView.h"
 #import "TTMenubarController.h"
 
-#define OPEN_DURATION .12
-#define CLOSE_DURATION .14
+#define PANEL_OPEN_DURATION .12
+#define PANEL_CLOSE_DURATION .14
 
 #define SEARCH_INSET 17
 
@@ -169,7 +169,7 @@
     
     [self.backgroundView resetPosition];
     
-    NSTimeInterval openDuration = OPEN_DURATION;
+    NSTimeInterval openDuration = PANEL_OPEN_DURATION;
     
     NSEvent *currentEvent = [NSApp currentEvent];
     if ([currentEvent type] == NSLeftMouseDown) {
@@ -199,11 +199,11 @@
 //    return; // Enable this line to never close app. Useful for debugging
     
     [NSAnimationContext beginGrouping];
-    [[NSAnimationContext currentContext] setDuration:CLOSE_DURATION];
+    [[NSAnimationContext currentContext] setDuration:PANEL_CLOSE_DURATION];
     [[[self window] animator] setAlphaValue:0];
     [NSAnimationContext endGrouping];
     
-    dispatch_after(dispatch_walltime(NULL, NSEC_PER_SEC * CLOSE_DURATION * 2), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_walltime(NULL, NSEC_PER_SEC * PANEL_CLOSE_DURATION * 2), dispatch_get_main_queue(), ^{
         [self.window orderOut:nil];
     });
 }

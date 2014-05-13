@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Turn Touch. All rights reserved.
 //
 
+#import <ApplicationServices/ApplicationServices.h>
+#import <QuartzCore/QuartzCore.h>
 #import "TTModeMenuContainer.h"
 #import "TTBackgroundView.h"
 #import "TTModeMenuItem.h"
-#import <QuartzCore/QuartzCore.h>
-#import <ApplicationServices/ApplicationServices.h>
 
 @implementation TTModeMenuContainer
 
@@ -196,12 +196,12 @@
 
     if (index >= 0) {
         CGRect rect = [collectionView frameForItemAtIndex:index];
-        [self scrollToXPosition:rect.origin.y];
+        [self scrollToPosition:rect.origin.y];
     }
     
 }
 
-- (void)scrollToXPosition:(float)yCoord {
+- (void)scrollToPosition:(float)yCoord {
     NSClipView* clipView = [scrollView contentView];
     
     if (yCoord < clipView.bounds.origin.y + (clipView.bounds.size.height - 2) &&

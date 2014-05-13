@@ -15,13 +15,19 @@
 @class TTAppDelegate;
 @class TTOptionsModeTitle;
 @class TTOptionsActionTitle;
+@class TTModeOptionsView;
 
 @interface TTOptionsView : NSView {
     TTAppDelegate *appDelegate;
     TTOptionsModeTitle *modeTitleView;
     TTOptionsActionTitle *actionTitleView;
-    
     TTModeOptionsView *modeOptionsView;
+
+    NSScrollView *scrollView;
+    NSLayoutConstraint *scrollViewConstraint;
 }
+
+@property (nonatomic) NSScrollView *scrollView;
+@property (nonatomic) TTModeOptionsView *modeOptionsView;
 
 @end

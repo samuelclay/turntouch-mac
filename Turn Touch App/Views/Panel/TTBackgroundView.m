@@ -11,14 +11,13 @@
 #import "TTBackgroundView.h"
 
 #define STROKE_OPACITY .5f
-#define OPEN_DURATION 0.42f
 #define SEARCH_INSET 10.0f
 #define TITLE_BAR_HEIGHT 38.0f
 #define MODE_TABS_HEIGHT 92.0f
 #define MODE_TITLE_HEIGHT 64.0f
 #define MODE_MENU_HEIGHT 146.0f
 #define ACTION_MENU_HEIGHT 98.0f
-#define MODE_OPTIONS_HEIGHT 48.0f
+#define MODE_OPTIONS_HEIGHT 148.0f
 #define DIAMOND_LABELS_SIZE 270.0f
 
 #pragma mark -
@@ -68,69 +67,63 @@
                                                           relatedBy:NSLayoutRelationEqual
                                                              toItem:stackView
                                                           attribute:NSLayoutAttributeTop
-                                                         multiplier:0
-                                                           constant:0]];
+                                                         multiplier:1.0 constant:0]];
     [stackView addConstraint:[NSLayoutConstraint constraintWithItem:arrowView
                                                           attribute:NSLayoutAttributeHeight
                                                           relatedBy:NSLayoutRelationEqual
                                                              toItem:nil
                                                           attribute:0
-                                                         multiplier:0
-                                                           constant:ARROW_HEIGHT]];
+                                                         multiplier:1.0 constant:ARROW_HEIGHT]];
     [stackView addConstraint:[NSLayoutConstraint constraintWithItem:titleBarView
                                                           attribute:NSLayoutAttributeHeight
                                                           relatedBy:NSLayoutRelationEqual
                                                              toItem:nil
                                                           attribute:0
-                                                         multiplier:0
-                                                           constant:TITLE_BAR_HEIGHT]];
+                                                         multiplier:1.0 constant:TITLE_BAR_HEIGHT]];
     [stackView addConstraint:[NSLayoutConstraint constraintWithItem:modeTabs
                                                           attribute:NSLayoutAttributeHeight
                                                           relatedBy:NSLayoutRelationEqual
                                                              toItem:nil
                                                           attribute:0
-                                                         multiplier:0
-                                                           constant:MODE_TABS_HEIGHT]];
+                                                         multiplier:1.0 constant:MODE_TABS_HEIGHT]];
     [stackView addConstraint:[NSLayoutConstraint constraintWithItem:modeTitle
                                                           attribute:NSLayoutAttributeHeight
                                                           relatedBy:NSLayoutRelationEqual
                                                              toItem:nil
                                                           attribute:0
-                                                         multiplier:0
-                                                           constant:MODE_TITLE_HEIGHT]];
+                                                         multiplier:1.0 constant:MODE_TITLE_HEIGHT]];
     modeMenuConstraint = [NSLayoutConstraint constraintWithItem:modeMenu
                                                       attribute:NSLayoutAttributeHeight
                                                       relatedBy:NSLayoutRelationEqual
                                                          toItem:nil
                                                       attribute:0
-                                                     multiplier:0
-                                                       constant:1];
+                                                     multiplier:1.0 constant:1];
     [stackView addConstraint:modeMenuConstraint];
     [stackView addConstraint:[NSLayoutConstraint constraintWithItem:diamondLabels
                                                           attribute:NSLayoutAttributeHeight
                                                           relatedBy:NSLayoutRelationEqual
                                                              toItem:nil
                                                           attribute:0
-                                                         multiplier:0
-                                                           constant:DIAMOND_LABELS_SIZE]];
-    optionsConstraint = [NSLayoutConstraint constraintWithItem:optionsView
-                                                     attribute:NSLayoutAttributeHeight
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:nil
-                                                     attribute:0
-                                                    multiplier:0
-                                                      constant:MODE_OPTIONS_HEIGHT];
-    [stackView addConstraint:optionsConstraint];
+                                                         multiplier:0 constant:DIAMOND_LABELS_SIZE]];
     actionMenuConstraint = [NSLayoutConstraint constraintWithItem:actionMenu
                                                         attribute:NSLayoutAttributeHeight
                                                         relatedBy:NSLayoutRelationEqual
                                                            toItem:nil
                                                         attribute:0
-                                                       multiplier:0
-                                                         constant:0];
+                                                       multiplier:1.0 constant:0];
     [stackView addConstraint:actionMenuConstraint];
+    optionsConstraint = [NSLayoutConstraint constraintWithItem:optionsView
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:optionsView.scrollView
+                                                     attribute:NSLayoutAttributeHeight
+                                                    multiplier:1.0 constant:0];
+//    optionsConstraint.priority = 700;
+    [stackView addConstraint:optionsConstraint];
+    
+    NSLog(@"Init Scroll View height: %.f", NSHeight(optionsView.scrollView.bounds));
+    NSLog(@"Init options View height: %.f", NSHeight(optionsView.bounds));
 
-    // add a minimum width constraint
     [stackView addConstraint:[NSLayoutConstraint constraintWithItem:stackView
                                                           attribute:NSLayoutAttributeWidth
                                                           relatedBy:NSLayoutRelationEqual
@@ -139,14 +132,6 @@
                                                          multiplier:0
                                                            constant:360]];
     
-    // add a constraint not allowing the stackview to expand beyond the last view
-    [stackView addConstraint:[NSLayoutConstraint constraintWithItem:stackView
-                                                          attribute:NSLayoutAttributeTrailing
-                                                          relatedBy:NSLayoutRelationLessThanOrEqual
-                                                             toItem:[stackView.views lastObject]
-                                                          attribute:NSLayoutAttributeTrailing
-                                                         multiplier:1.0
-                                                           constant:stackView.edgeInsets.right]];
     stackView.orientation = NSUserInterfaceLayoutOrientationVertical;
     stackView.alignment = NSLayoutAttributeCenterX;
     stackView.spacing = 0;
@@ -258,6 +243,10 @@
 }
 
 - (void)adjustOptionsHeight:(CGFloat)height {
+    NSLog(@"Options frame to %.f: %@ / %@", height, NSStringFromRect([optionsView bounds]), NSStringFromRect([optionsView.scrollView bounds]));
+    
+    return;
+    
     NSTimeInterval openDuration = OPEN_DURATION;
     
     NSEvent *currentEvent = [NSApp currentEvent];

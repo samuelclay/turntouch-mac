@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Turn Touch. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "TTOptionsView.h"
 #import "TTOptionsModeTitle.h"
 #import "TTOptionsActionTitle.h"
@@ -15,6 +16,9 @@
 
 @implementation TTOptionsView
 
+@synthesize scrollView;
+@synthesize modeOptionsView;
+
 - (id)initWithFrame:(NSRect)frame
 {
     self = [super initWithFrame:frame];
@@ -22,16 +26,64 @@
         appDelegate = [NSApp delegate];
         self.translatesAutoresizingMaskIntoConstraints = NO;
 
-//        modeTitleView = [[TTOptionsModeTitle alloc] initWithFrame:CGRectZero];
-//        [actionTitleView setHidden:NO];
-//        [self addSubview:modeTitleView];
-
         actionTitleView = [[TTOptionsActionTitle alloc] initWithFrame:CGRectZero];
         [actionTitleView setHidden:YES];
         [self addSubview:actionTitleView];
+        
+        scrollView = [[NSScrollView alloc] init];
+        scrollView.borderType = NSNoBorder;
+        scrollView.hasVerticalScroller = YES;
+        scrollView.translatesAutoresizingMaskIntoConstraints = NO;
 
         [self drawModeOptions];
-
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:scrollView
+                                                         attribute:NSLayoutAttributeTop
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeTop
+                                                        multiplier:1.0 constant:0]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:scrollView
+                                                         attribute:NSLayoutAttributeLeading
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeLeading
+                                                        multiplier:1.0 constant:0]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:scrollView
+                                                         attribute:NSLayoutAttributeWidth
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeWidth
+                                                        multiplier:1.0 constant:0]];
+        NSLayoutConstraint *maxScrollConstraint = [NSLayoutConstraint constraintWithItem:scrollView
+                                                                               attribute:NSLayoutAttributeHeight
+                                                                               relatedBy:NSLayoutRelationLessThanOrEqual
+                                                                                  toItem:nil
+                                                                               attribute:0
+                                                                              multiplier:1.0 constant:280];
+        NSLayoutConstraint *minScrollConstraint = [NSLayoutConstraint constraintWithItem:scrollView
+                                                                               attribute:NSLayoutAttributeHeight
+                                                                               relatedBy:NSLayoutRelationGreaterThanOrEqual
+                                                                                  toItem:nil
+                                                                               attribute:0
+                                                                              multiplier:1.0 constant:20];
+        maxScrollConstraint.priority = 900;
+        minScrollConstraint.priority = 800;
+        [self addConstraint:maxScrollConstraint];
+        [self addConstraint:minScrollConstraint];
+        scrollViewConstraint = [NSLayoutConstraint constraintWithItem:scrollView
+                                                            attribute:NSLayoutAttributeHeight
+                                                            relatedBy:NSLayoutRelationEqual
+                                                               toItem:modeOptionsView
+                                                            attribute:NSLayoutAttributeHeight
+                                                           multiplier:1.0 constant:0];
+        NSLog(@"Adding scrollView->modeOptionsView constraint. (%.f)", NSHeight(modeOptionsView.bounds));
+        scrollViewConstraint.priority = 700;
+        [self addConstraint:scrollViewConstraint];
+        [self addSubview:scrollView];
+        
+        [self layoutSubtreeIfNeeded];
+        
         [self registerAsObserver];
     }
     
@@ -77,10 +129,12 @@
     
     if (appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION) {
 //        [modeTitleView setHidden:NO];
+        [scrollView setHidden:NO];
         [modeOptionsView setHidden:NO];
         [actionTitleView setHidden:YES];
     } else {
 //        [modeTitleView setHidden:YES];
+        [scrollView setHidden:YES];
         [modeOptionsView setHidden:YES];
         [actionTitleView setHidden:NO];
     }
@@ -137,16 +191,10 @@
     NSArray *nibArray = [NSArray array];
     NSString *modeName = NSStringFromClass([appDelegate.modeMap.selectedMode class]);
     [[NSBundle mainBundle] loadNibNamed:modeName owner:self topLevelObjects:&nibArray];
-    
-    for (id view in self.subviews) {
-        if ([view class] == [TTModeOptionsView class]) {
-            [view removeFromSuperview];
-        }
-    }
-    
+
     modeOptionsView = nil;
     for (id view in nibArray) {
-        if ([view class] == [TTModeOptionsView class]) {
+        if ([[view class] isSubclassOfClass:[TTModeOptionsView class]]) {
             modeOptionsView = view;
             break;
         }
@@ -157,45 +205,31 @@
         [appDelegate.panelController.backgroundView adjustOptionsHeight:12];
         return;
     }
-
-    [self addSubview:modeOptionsView];
-    modeOptionsView.translatesAutoresizingMaskIntoConstraints = NO;
-    NSRect frame = modeOptionsView.frame;
-    frame.size.width = NSWidth(self.frame);
-    [modeOptionsView setFrame:frame];
     
-//    [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsView
-//                                                     attribute:NSLayoutAttributeHeight
-//                                                     relatedBy:NSLayoutRelationEqual
-//                                                        toItem:self
-//                                                     attribute:NSLayoutAttributeHeight
-//                                                    multiplier:1.0 constant:0.0]];
-//    [self addConstraint:[NSLayoutConstraint constraintWithItem:self
-//                                                     attribute:NSLayoutAttributeWidth
-//                                                     relatedBy:NSLayoutRelationEqual
-//                                                        toItem:modeOptionsView
-//                                                     attribute:NSLayoutAttributeWidth
-//                                                    multiplier:1.0 constant:24]];
-//    [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsView
-//                                                     attribute:NSLayoutAttributeTop
-//                                                     relatedBy:NSLayoutRelationEqual
-//                                                        toItem:self
-//                                                     attribute:NSLayoutAttributeTop
-//                                                    multiplier:1.0 constant:0.0]];
-//    [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsView
-//                                                     attribute:NSLayoutAttributeLeading
-//                                                     relatedBy:NSLayoutRelationEqual
-//                                                        toItem:self
-//                                                     attribute:NSLayoutAttributeLeading
-//                                                    multiplier:1.0 constant:0]];
+    modeOptionsView.translatesAutoresizingMaskIntoConstraints = NO;
+    [scrollView setDocumentView:modeOptionsView];
+    
+    NSLog(@"Resize: %.f/%.f vs. %.f", NSHeight(scrollView.frame), NSHeight(scrollView.bounds), NSHeight(modeOptionsView.bounds));
+    [self scrollToPosition:100];
+}
 
-    [appDelegate.panelController.backgroundView
-     adjustOptionsHeight:modeOptionsView.bounds.size.height];
+- (void)scrollToPosition:(float)yCoord {
+    NSClipView* clipView = [scrollView contentView];
+    
+    if (yCoord < clipView.bounds.origin.y + (clipView.bounds.size.height - 2) &&
+        yCoord > clipView.bounds.origin.y) return;
+    
+    NSPoint newOrigin = [clipView bounds].origin;
+    newOrigin.y = yCoord;
+    [[clipView animator] setBoundsOrigin:newOrigin];
+    [scrollView reflectScrolledClipView:[scrollView contentView]];
 }
 
 - (void)drawActionOptions {
+    if (appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION) return;
+
     [appDelegate.panelController.backgroundView
-     adjustOptionsHeight:48];
+     adjustOptionsHeight:148];
 }
 
 @end

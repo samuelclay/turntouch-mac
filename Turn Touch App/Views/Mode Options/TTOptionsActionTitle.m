@@ -78,6 +78,10 @@
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
+    if (appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION) return;
+    
+    [super drawRect:dirtyRect];
+    
     TTModeDirection labelDirection = appDelegate.modeMap.inspectingModeDirection;
     
     NSString *actionTitle;

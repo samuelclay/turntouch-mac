@@ -7,7 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "TTAppDelegate.h"
 
-@interface TTModeOptionsView : NSView
+@class TTAppDelegate;
+
+@interface TTModeOptionsView : NSView {
+    TTAppDelegate *appDelegate;
+}
+
+- (void)animateBlock:(void (^)())block;
 
 @end

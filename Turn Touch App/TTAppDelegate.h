@@ -16,6 +16,8 @@
 @class TTModeMap;
 @class TTPanelController;
 
+#define OPEN_DURATION 0.42f
+
 @interface TTAppDelegate : NSObject
 <NSApplicationDelegate, TTPanelControllerDelegate>
 
