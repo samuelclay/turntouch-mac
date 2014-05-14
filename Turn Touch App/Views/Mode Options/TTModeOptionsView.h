@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "TTAppDelegate.h"
+#import "TTTabView.h"
 
 @class TTAppDelegate;
 
@@ -15,10 +16,10 @@
 <NSTabViewDelegate> {
     TTAppDelegate *appDelegate;
     
-    NSTabView *tabView;
+    TTTabView *tabView;
 }
 
-@property (nonatomic) IBOutlet NSTabView *tabView;
+@property (nonatomic) IBOutlet TTTabView *tabView;
 
 - (void)animateBlock:(void (^)())block;
 

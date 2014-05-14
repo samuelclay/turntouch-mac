@@ -9,28 +9,28 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application"/>
         <customView id="2fL-Hy-hGn" customClass="TTModeAlarmClockOptionsView">
-            <rect key="frame" x="0.0" y="0.0" width="426" height="285"/>
+            <rect key="frame" x="0.0" y="0.0" width="436" height="281"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <tabView misplaced="YES" initialItem="CX8-qh-iYR" translatesAutoresizingMaskIntoConstraints="NO" id="X6n-ol-Ve2">
-                    <rect key="frame" x="-7" y="-10" width="440" height="301"/>
+                <tabView horizontalCompressionResistancePriority="1000" initialItem="CX8-qh-iYR" translatesAutoresizingMaskIntoConstraints="NO" id="X6n-ol-Ve2" customClass="TTTabView">
+                    <rect key="frame" x="-7" y="-10" width="450" height="297"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <font key="font" metaFont="system"/>
                     <tabViewItems>
                         <tabViewItem label="Alarm times" identifier="1" id="CX8-qh-iYR">
                             <view key="view" id="yKC-Lf-rk6">
-                                <rect key="frame" x="10" y="33" width="420" height="255"/>
+                                <rect key="frame" x="10" y="33" width="430" height="251"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <box autoresizesSubviews="NO" title="Repeating alarm" borderType="bezel" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="C4a-9h-8KN">
-                                        <rect key="frame" x="-3" y="117" width="426" height="140"/>
+                                    <box autoresizesSubviews="NO" horizontalCompressionResistancePriority="1000" title="Repeating alarm" borderType="bezel" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="C4a-9h-8KN" customClass="TTBoxView">
+                                        <rect key="frame" x="-3" y="113" width="436" height="140"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <view key="contentView">
-                                            <rect key="frame" x="3" y="3" width="420" height="134"/>
+                                            <rect key="frame" x="3" y="3" width="430" height="134"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qxq-st-gXj">
-                                                    <rect key="frame" x="22" y="104" width="253" height="17"/>
+                                                    <rect key="frame" x="22" y="104" width="263" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Repeating alarm" id="DaN-Su-ACl">
                                                         <font key="font" metaFont="system"/>
@@ -38,8 +38,8 @@
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <segmentedControl verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eCO-fg-RdJ">
-                                                    <rect key="frame" x="294" y="102" width="102" height="20"/>
+                                                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eCO-fg-RdJ">
+                                                    <rect key="frame" x="304.00000052018595" y="102" width="102" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="ud1-dI-ksW"/>
@@ -56,33 +56,30 @@
                                                     </connections>
                                                 </segmentedControl>
                                                 <box autoresizesSubviews="NO" transparent="YES" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="5ti-VC-9rp">
-                                                    <rect key="frame" x="24" y="1" width="372" height="88"/>
+                                                    <rect key="frame" x="24" y="1" width="382" height="88"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <view key="contentView">
-                                                        <rect key="frame" x="0.0" y="0.0" width="372" height="88"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="88"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7pB-6Y-ebj">
-                                                                <rect key="frame" x="0.0" y="64" width="372" height="25"/>
+                                                                <rect key="frame" x="0.0" y="69" width="382" height="19"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="22" id="ZyQ-us-qcK"/>
-                                                                </constraints>
-                                                                <segmentedCell key="cell" continuous="YES" alignment="left" style="texturedSquare" trackingMode="selectAny" id="j1V-BO-kf2">
-                                                                    <font key="font" metaFont="system"/>
+                                                                <segmentedCell key="cell" controlSize="small" alignment="left" style="texturedSquare" trackingMode="selectAny" id="j1V-BO-kf2">
+                                                                    <font key="font" metaFont="smallSystem"/>
                                                                     <segments>
-                                                                        <segment label="Sun" imageScaling="none"/>
-                                                                        <segment label="Mon" selected="YES" tag="1"/>
-                                                                        <segment label="Tue" selected="YES"/>
-                                                                        <segment label="Wed" selected="YES"/>
-                                                                        <segment label="Thu" selected="YES"/>
-                                                                        <segment label="Fri" selected="YES"/>
-                                                                        <segment label="Sat"/>
+                                                                        <segment label="Sun" imageScaling="none" width="42"/>
+                                                                        <segment label="Mon" width="48" selected="YES" tag="1"/>
+                                                                        <segment label="Tue" width="43" selected="YES"/>
+                                                                        <segment label="Wed" width="47" selected="YES"/>
+                                                                        <segment label="Thu" width="44" selected="YES"/>
+                                                                        <segment label="Fri" width="36" selected="YES"/>
+                                                                        <segment label="Sat" width="37"/>
                                                                     </segments>
                                                                 </segmentedCell>
                                                             </segmentedControl>
-                                                            <slider verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C08-4a-kSZ">
-                                                                <rect key="frame" x="-2" y="33" width="285" height="25"/>
+                                                            <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="C08-4a-kSZ">
+                                                                <rect key="frame" x="-2" y="37" width="298" height="25"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="23" id="nMF-6k-Uif"/>
@@ -90,7 +87,7 @@
                                                                 <sliderCell key="cell" state="on" alignment="left" maxValue="24" doubleValue="10" tickMarkPosition="above" numberOfTickMarks="12" sliderType="linear" id="pV4-CP-edK"/>
                                                             </slider>
                                                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VFd-ov-uPI">
-                                                                <rect key="frame" x="296" y="34" width="76" height="25"/>
+                                                                <rect key="frame" x="306" y="38" width="76" height="25"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="76" id="zMa-CX-1xK"/>
@@ -103,8 +100,8 @@
                                                                     </segments>
                                                                 </segmentedCell>
                                                             </segmentedControl>
-                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="08z-qa-ZtQ">
-                                                                <rect key="frame" x="-2" y="9" width="376" height="17"/>
+                                                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="08z-qa-ZtQ">
+                                                                <rect key="frame" x="-2" y="13" width="386" height="17"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="17" id="3M3-xG-DY4"/>
@@ -118,14 +115,14 @@
                                                         </subviews>
                                                     </view>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="7pB-6Y-ebj" secondAttribute="trailing" id="76P-O6-pTs"/>
+                                                        <constraint firstItem="C08-4a-kSZ" firstAttribute="leading" secondItem="5ti-VC-9rp" secondAttribute="leading" id="3V5-j2-0Bv"/>
                                                         <constraint firstItem="VFd-ov-uPI" firstAttribute="leading" secondItem="C08-4a-kSZ" secondAttribute="trailing" constant="12" id="8Mj-uS-gXV"/>
-                                                        <constraint firstAttribute="trailing" secondItem="08z-qa-ZtQ" secondAttribute="trailing" id="F9d-Aa-gqY"/>
-                                                        <constraint firstItem="C08-4a-kSZ" firstAttribute="top" secondItem="7pB-6Y-ebj" secondAttribute="bottom" constant="8" symbolic="YES" id="I9p-R2-m9K"/>
+                                                        <constraint firstItem="C08-4a-kSZ" firstAttribute="top" secondItem="7pB-6Y-ebj" secondAttribute="bottom" constant="8" id="ItJ-gT-uqq"/>
+                                                        <constraint firstAttribute="trailing" secondItem="7pB-6Y-ebj" secondAttribute="trailing" id="Jbj-YM-2SH"/>
                                                         <constraint firstItem="7pB-6Y-ebj" firstAttribute="top" secondItem="5ti-VC-9rp" secondAttribute="top" id="RlX-7D-xlI"/>
+                                                        <constraint firstItem="VFd-ov-uPI" firstAttribute="top" secondItem="7pB-6Y-ebj" secondAttribute="bottom" constant="8" id="XJ2-lC-2TR"/>
                                                         <constraint firstItem="08z-qa-ZtQ" firstAttribute="top" secondItem="C08-4a-kSZ" secondAttribute="bottom" constant="9" id="XrC-5b-LnW"/>
                                                         <constraint firstItem="7pB-6Y-ebj" firstAttribute="leading" secondItem="5ti-VC-9rp" secondAttribute="leading" id="hHc-Or-VPr"/>
-                                                        <constraint firstItem="VFd-ov-uPI" firstAttribute="top" secondItem="7pB-6Y-ebj" secondAttribute="bottom" constant="8" symbolic="YES" id="hhX-n8-Oc9"/>
                                                         <constraint firstAttribute="trailing" secondItem="08z-qa-ZtQ" secondAttribute="trailing" id="oix-Td-Zba"/>
                                                         <constraint firstItem="08z-qa-ZtQ" firstAttribute="leading" secondItem="5ti-VC-9rp" secondAttribute="leading" id="v4G-St-aLb"/>
                                                         <constraint firstAttribute="trailing" secondItem="VFd-ov-uPI" secondAttribute="trailing" id="vO1-6Q-rA5"/>
@@ -150,20 +147,23 @@
                                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </box>
-                                    <box autoresizesSubviews="NO" title="One-time alarm" borderType="bezel" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Ynp-bh-WI4">
-                                        <rect key="frame" x="-3" y="-4" width="426" height="119"/>
+                                    <box autoresizesSubviews="NO" title="One-time alarm" borderType="bezel" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Ynp-bh-WI4" customClass="TTBoxView">
+                                        <rect key="frame" x="-3" y="-4" width="436" height="119"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <view key="contentView">
-                                            <rect key="frame" x="3" y="3" width="420" height="113"/>
+                                            <rect key="frame" x="3" y="3" width="430" height="113"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dtp-52-lrw">
-                                                    <rect key="frame" x="292" y="81" width="105" height="20"/>
+                                                <segmentedControl verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dtp-52-lrw">
+                                                    <rect key="frame" x="265" y="81" width="103" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="l09-jC-y9C"/>
+                                                    </constraints>
                                                     <segmentedCell key="cell" alignment="left" style="roundRect" trackingMode="selectOne" id="ROX-fq-TeD">
                                                         <font key="font" metaFont="cellTitle"/>
                                                         <segments>
-                                                            <segment label="ON" width="50" selected="YES"/>
+                                                            <segment label="ON" width="48" selected="YES"/>
                                                             <segment label="OFF" width="48" tag="1"/>
                                                         </segments>
                                                     </segmentedCell>
@@ -171,8 +171,8 @@
                                                         <action selector="changeSegOnetimeControl:" target="2fL-Hy-hGn" id="L6K-cU-XEM"/>
                                                     </connections>
                                                 </segmentedControl>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HQ6-0n-2R8">
-                                                    <rect key="frame" x="22" y="83" width="105" height="17"/>
+                                                <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HQ6-0n-2R8">
+                                                    <rect key="frame" x="22" y="83" width="236" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="One-time alarm" id="QfF-5n-otp">
                                                         <font key="font" metaFont="system"/>
@@ -181,14 +181,14 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <box transparent="YES" borderWidth="0.0" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="oIq-Tz-CYQ">
-                                                    <rect key="frame" x="22" y="1" width="374" height="68"/>
+                                                    <rect key="frame" x="22" y="1" width="384" height="68"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <view key="contentView">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="68"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="384" height="68"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8Yx-qA-qzL">
-                                                                <rect key="frame" x="114" y="40" width="177" height="25"/>
+                                                                <rect key="frame" x="114" y="40" width="187" height="25"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="23" id="bk1-lf-nHF"/>
@@ -196,7 +196,7 @@
                                                                 <sliderCell key="cell" state="on" alignment="left" maxValue="24" doubleValue="10" tickMarkPosition="above" numberOfTickMarks="12" sliderType="linear" id="cXa-Bf-Dxu"/>
                                                             </slider>
                                                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Fxl-au-p7H">
-                                                                <rect key="frame" x="298" y="42" width="76" height="25"/>
+                                                                <rect key="frame" x="308" y="42" width="76" height="25"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                 <segmentedCell key="cell" alignment="left" style="texturedSquare" trackingMode="selectOne" id="oKp-fs-WhE">
                                                                     <font key="font" metaFont="smallSystem"/>
@@ -207,7 +207,7 @@
                                                                 </segmentedCell>
                                                             </segmentedControl>
                                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TpU-io-mXB">
-                                                                <rect key="frame" x="-2" y="13" width="378" height="17"/>
+                                                                <rect key="frame" x="-2" y="13" width="388" height="17"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="7:00 AM (in 8 hours 21 minutes)" id="Rzq-bq-C5C">
                                                                     <font key="font" metaFont="system"/>
@@ -274,10 +274,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         </view>
                                         <constraints>
                                             <constraint firstItem="oIq-Tz-CYQ" firstAttribute="leading" secondItem="Ynp-bh-WI4" secondAttribute="leading" constant="22" id="2G4-Ou-9Xf"/>
-                                            <constraint firstAttribute="trailing" secondItem="dtp-52-lrw" secondAttribute="trailing" constant="24" id="JNu-ct-kLN"/>
-                                            <constraint firstItem="oIq-Tz-CYQ" firstAttribute="trailing" secondItem="dtp-52-lrw" secondAttribute="trailing" id="TRx-HE-EeB"/>
+                                            <constraint firstItem="oIq-Tz-CYQ" firstAttribute="top" secondItem="dtp-52-lrw" secondAttribute="bottom" constant="13" id="3Z1-aL-9x2"/>
+                                            <constraint firstAttribute="trailing" secondItem="dtp-52-lrw" secondAttribute="trailing" constant="24" id="HHV-hM-xl0"/>
+                                            <constraint firstItem="dtp-52-lrw" firstAttribute="leading" secondItem="HQ6-0n-2R8" secondAttribute="trailing" constant="10" id="OFf-J0-7mq"/>
                                             <constraint firstItem="HQ6-0n-2R8" firstAttribute="top" secondItem="Ynp-bh-WI4" secondAttribute="top" constant="14" id="cWg-il-vKr"/>
-                                            <constraint firstItem="oIq-Tz-CYQ" firstAttribute="top" secondItem="HQ6-0n-2R8" secondAttribute="bottom" constant="14" id="g2h-zA-0SV"/>
+                                            <constraint firstAttribute="trailing" secondItem="oIq-Tz-CYQ" secondAttribute="trailing" constant="24" id="cXd-Lw-tha"/>
                                             <constraint firstItem="HQ6-0n-2R8" firstAttribute="leading" secondItem="Ynp-bh-WI4" secondAttribute="leading" constant="24" id="rZY-1B-PIr"/>
                                             <constraint firstItem="dtp-52-lrw" firstAttribute="top" secondItem="Ynp-bh-WI4" secondAttribute="top" constant="14" id="ss4-rM-nek"/>
                                             <constraint firstAttribute="bottom" secondItem="oIq-Tz-CYQ" secondAttribute="bottom" id="wBV-I7-QgI"/>
@@ -293,7 +294,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <constraint firstAttribute="trailing" secondItem="Ynp-bh-WI4" secondAttribute="trailing" id="d8X-ML-dGP"/>
                                     <constraint firstItem="Ynp-bh-WI4" firstAttribute="leading" secondItem="yKC-Lf-rk6" secondAttribute="leading" id="gWm-zp-eWr"/>
                                     <constraint firstItem="C4a-9h-8KN" firstAttribute="leading" secondItem="yKC-Lf-rk6" secondAttribute="leading" id="imr-3G-X2B"/>
-                                    <constraint firstItem="Ynp-bh-WI4" firstAttribute="top" secondItem="C4a-9h-8KN" secondAttribute="bottom" constant="8" id="mUi-bo-z5l"/>
+                                    <constraint firstItem="Ynp-bh-WI4" firstAttribute="top" secondItem="C4a-9h-8KN" secondAttribute="bottom" constant="4" id="mUi-bo-z5l"/>
                                 </constraints>
                             </view>
                         </tabViewItem>
@@ -302,7 +303,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <rect key="frame" x="10" y="33" width="420" height="255"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <box autoresizesSubviews="NO" misplaced="YES" title="General" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="4X6-Q1-Mt2">
+                                    <box autoresizesSubviews="NO" misplaced="YES" title="General" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="4X6-Q1-Mt2" customClass="TTBoxView">
                                         <rect key="frame" x="-3" y="163" width="426" height="94"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <view key="contentView">
