@@ -16,7 +16,6 @@
 
 @implementation TTOptionsView
 
-@synthesize scrollView;
 @synthesize modeOptionsView;
 
 - (id)initWithFrame:(NSRect)frame
@@ -27,63 +26,11 @@
         self.translatesAutoresizingMaskIntoConstraints = NO;
 
         actionTitleView = [[TTOptionsActionTitle alloc] initWithFrame:CGRectZero];
+        actionTitleView.translatesAutoresizingMaskIntoConstraints = NO;
         [actionTitleView setHidden:YES];
-        [self addSubview:actionTitleView];
+//        [self addSubview:actionTitleView];
         
-        scrollView = [[NSScrollView alloc] init];
-        scrollView.borderType = NSNoBorder;
-        scrollView.hasVerticalScroller = YES;
-        scrollView.translatesAutoresizingMaskIntoConstraints = NO;
-
         [self drawModeOptions];
-        
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:scrollView
-                                                         attribute:NSLayoutAttributeTop
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:self
-                                                         attribute:NSLayoutAttributeTop
-                                                        multiplier:1.0 constant:0]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:scrollView
-                                                         attribute:NSLayoutAttributeLeading
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:self
-                                                         attribute:NSLayoutAttributeLeading
-                                                        multiplier:1.0 constant:0]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:scrollView
-                                                         attribute:NSLayoutAttributeWidth
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:self
-                                                         attribute:NSLayoutAttributeWidth
-                                                        multiplier:1.0 constant:0]];
-        NSLayoutConstraint *maxScrollConstraint = [NSLayoutConstraint constraintWithItem:scrollView
-                                                                               attribute:NSLayoutAttributeHeight
-                                                                               relatedBy:NSLayoutRelationLessThanOrEqual
-                                                                                  toItem:nil
-                                                                               attribute:0
-                                                                              multiplier:1.0 constant:280];
-        NSLayoutConstraint *minScrollConstraint = [NSLayoutConstraint constraintWithItem:scrollView
-                                                                               attribute:NSLayoutAttributeHeight
-                                                                               relatedBy:NSLayoutRelationGreaterThanOrEqual
-                                                                                  toItem:nil
-                                                                               attribute:0
-                                                                              multiplier:1.0 constant:20];
-        maxScrollConstraint.priority = 900;
-        minScrollConstraint.priority = 800;
-        [self addConstraint:maxScrollConstraint];
-        [self addConstraint:minScrollConstraint];
-        scrollViewConstraint = [NSLayoutConstraint constraintWithItem:scrollView
-                                                            attribute:NSLayoutAttributeHeight
-                                                            relatedBy:NSLayoutRelationEqual
-                                                               toItem:modeOptionsView
-                                                            attribute:NSLayoutAttributeHeight
-                                                           multiplier:1.0 constant:0];
-        NSLog(@"Adding scrollView->modeOptionsView constraint. (%.f)", NSHeight(modeOptionsView.bounds));
-        scrollViewConstraint.priority = 700;
-        [self addConstraint:scrollViewConstraint];
-        [self addSubview:scrollView];
-        
-        [self layoutSubtreeIfNeeded];
-        
         [self registerAsObserver];
     }
     
@@ -129,12 +76,10 @@
     
     if (appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION) {
 //        [modeTitleView setHidden:NO];
-        [scrollView setHidden:NO];
         [modeOptionsView setHidden:NO];
         [actionTitleView setHidden:YES];
     } else {
 //        [modeTitleView setHidden:YES];
-        [scrollView setHidden:YES];
         [modeOptionsView setHidden:YES];
         [actionTitleView setHidden:NO];
     }
@@ -188,11 +133,20 @@
 - (void)drawModeOptions {
     if (appDelegate.modeMap.inspectingModeDirection != NO_DIRECTION) return;
     
+    if (modeOptionsView) {
+        [modeOptionsView removeFromSuperview];
+        for (NSLayoutConstraint *constraint in self.constraints) {
+            if ([[constraint.firstItem class] isSubclassOfClass:[TTModeOptionsView class]]) {
+                [self removeConstraint:constraint];
+            }
+        }
+        modeOptionsView = nil;
+    }
+    
     NSArray *nibArray = [NSArray array];
     NSString *modeName = NSStringFromClass([appDelegate.modeMap.selectedMode class]);
     [[NSBundle mainBundle] loadNibNamed:modeName owner:self topLevelObjects:&nibArray];
-
-    modeOptionsView = nil;
+    
     for (id view in nibArray) {
         if ([[view class] isSubclassOfClass:[TTModeOptionsView class]]) {
             modeOptionsView = view;
@@ -207,22 +161,31 @@
     }
     
     modeOptionsView.translatesAutoresizingMaskIntoConstraints = NO;
-    [scrollView setDocumentView:modeOptionsView];
     
-    NSLog(@"Resize: %.f/%.f vs. %.f", NSHeight(scrollView.frame), NSHeight(scrollView.bounds), NSHeight(modeOptionsView.bounds));
-    [self scrollToPosition:100];
-}
+    [self addSubview:modeOptionsView];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsView
+                                                     attribute:NSLayoutAttributeTop
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeTop
+                                                    multiplier:1.0 constant:0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsView
+                                                     attribute:NSLayoutAttributeLeading
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeLeading
+                                                    multiplier:1.0 constant:0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsView
+                                                     attribute:NSLayoutAttributeWidth
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeWidth
+                                                    multiplier:1.0 constant:0]];
+    [appDelegate.panelController.backgroundView adjustOptionsHeight:NSHeight(modeOptionsView.bounds)];
+    NSLog(@"mode options: %@ / %@", NSStringFromRect(self.bounds), NSStringFromRect(modeOptionsView.frame));
+    
 
-- (void)scrollToPosition:(float)yCoord {
-    NSClipView* clipView = [scrollView contentView];
-    
-    if (yCoord < clipView.bounds.origin.y + (clipView.bounds.size.height - 2) &&
-        yCoord > clipView.bounds.origin.y) return;
-    
-    NSPoint newOrigin = [clipView bounds].origin;
-    newOrigin.y = yCoord;
-    [[clipView animator] setBoundsOrigin:newOrigin];
-    [scrollView reflectScrolledClipView:[scrollView contentView]];
 }
 
 - (void)drawActionOptions {

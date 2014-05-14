@@ -22,9 +22,6 @@
     TTOptionsModeTitle *modeTitleView;
     TTOptionsActionTitle *actionTitleView;
     TTModeOptionsView *modeOptionsView;
-
-    NSScrollView *scrollView;
-    NSLayoutConstraint *scrollViewConstraint;
 }
 
 @property (nonatomic) NSScrollView *scrollView;

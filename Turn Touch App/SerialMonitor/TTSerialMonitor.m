@@ -224,7 +224,7 @@ void usbDeviceDisappeared(void *refCon, io_iterator_t iterator){
 }
 
 - (void)matchingDevicesAdded:(io_iterator_t)devices {
-    NSLog(@"matchingDevicesAdded");
+//    NSLog(@"matchingDevicesAdded");
     io_object_t thisObject;
     while ( (thisObject = IOIteratorNext(devices))) {
         NSLog(@"new Matching device added ");
@@ -233,7 +233,7 @@ void usbDeviceDisappeared(void *refCon, io_iterator_t iterator){
 }
 
 - (void)matchingDevicesRemoved:(io_iterator_t)devices {
-    NSLog(@"matchingDevicesRemoved");
+//    NSLog(@"matchingDevicesRemoved");
 
     if (hidDevice) {
         hid_close(hidDevice);

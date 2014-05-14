@@ -11,15 +11,10 @@
 
 @implementation TTModeOptionsView
 
+@synthesize tabView;
+
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
-    NSView *_superv = [self superview];
-    [self removeFromSuperview];
-    self.translatesAutoresizingMaskIntoConstraints = NO;
-    [_superv addSubview:self];
-    
-    NSLog(@"Doing the mode options view dance");
 }
 
 - (id)initWithFrame:(NSRect)frame
@@ -28,7 +23,6 @@
     if (self) {
         appDelegate = [NSApp delegate];
         self.translatesAutoresizingMaskIntoConstraints = NO;
-
     }
     return self;
 }
@@ -62,6 +56,10 @@
     
     [[NSAnimationContext currentContext] setCompletionHandler:^{
 //        [appDelegate.panelController.backgroundView.optionsView resize];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [appDelegate.panelController.window invalidateShadow];
+        });
     }];
     
     block();
@@ -72,4 +70,14 @@
     [NSAnimationContext endGrouping];
     
 }
+
+#pragma mark - Tab View
+
+- (void)tabView:(NSTabView *)tabView didSelectTabViewItem:(NSTabViewItem *)tabViewItem {
+    NSLog(@"Tab view: %@", NSStringFromRect(self.bounds));
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [appDelegate.panelController.window invalidateShadow];
+    });
+}
+
 @end

@@ -42,6 +42,7 @@
 @property (nonatomic) IBOutlet TTModeTitleView *modeTitle;
 @property (nonatomic) IBOutlet TTDiamondLabels *diamondLabels;
 @property (nonatomic) IBOutlet TTOptionsView *optionsView;
+@property (nonatomic) NSLayoutConstraint *optionsConstraint;
 
 - (void)resetPosition;
 - (void)adjustOptionsHeight:(CGFloat)height;

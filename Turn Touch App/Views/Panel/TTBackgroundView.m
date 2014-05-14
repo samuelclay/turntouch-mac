@@ -33,6 +33,7 @@
 @synthesize actionMenu;
 @synthesize diamondLabels;
 @synthesize optionsView;
+@synthesize optionsConstraint;
 
 #pragma mark -
 
@@ -115,13 +116,12 @@
     optionsConstraint = [NSLayoutConstraint constraintWithItem:optionsView
                                                      attribute:NSLayoutAttributeHeight
                                                      relatedBy:NSLayoutRelationEqual
-                                                        toItem:optionsView.scrollView
+                                                        toItem:optionsView.modeOptionsView
                                                      attribute:NSLayoutAttributeHeight
                                                     multiplier:1.0 constant:0];
-//    optionsConstraint.priority = 700;
     [stackView addConstraint:optionsConstraint];
     
-    NSLog(@"Init Scroll View height: %.f", NSHeight(optionsView.scrollView.bounds));
+    NSLog(@"Init modeOptionsView View height: %.f", NSHeight(optionsView.modeOptionsView.bounds));
     NSLog(@"Init options View height: %.f", NSHeight(optionsView.bounds));
 
     [stackView addConstraint:[NSLayoutConstraint constraintWithItem:stackView
@@ -243,28 +243,24 @@
 }
 
 - (void)adjustOptionsHeight:(CGFloat)height {
-    NSLog(@"Options frame to %.f: %@ / %@", height, NSStringFromRect([optionsView bounds]), NSStringFromRect([optionsView.scrollView bounds]));
+    if (!stackView) return;
     
-    return;
+    NSLog(@"Options frame to %.f: %@ / %@", height, NSStringFromRect([optionsView bounds]), NSStringFromRect([optionsView.modeOptionsView bounds]));
+    [self removeConstraint:optionsConstraint];
     
-    NSTimeInterval openDuration = OPEN_DURATION;
+    if (!optionsView.modeOptionsView) return;
     
-    NSEvent *currentEvent = [NSApp currentEvent];
-    NSUInteger clearFlags = ([currentEvent modifierFlags] & NSDeviceIndependentModifierFlagsMask);
-    BOOL shiftPressed = (clearFlags == NSShiftKeyMask);
-    if (shiftPressed) openDuration *= 10;
+    optionsConstraint = [NSLayoutConstraint constraintWithItem:optionsView
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:optionsView.modeOptionsView
+                                                     attribute:NSLayoutAttributeHeight
+                                                    multiplier:1.0 constant:0];
+    [stackView addConstraint:optionsConstraint];
     
-    [NSAnimationContext beginGrouping];
-    [[NSAnimationContext currentContext] setDuration:openDuration];
-    [[NSAnimationContext currentContext] setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
-    [[NSAnimationContext currentContext] setCompletionHandler:^{
-        [self.window invalidateShadow];
-        [self.window update];
-    }];
-    
-    [[optionsConstraint animator] setConstant:height];
-    
-    [NSAnimationContext endGrouping];
+//    NSLog(@"stackView constraints: %@", stackView.constraints);
+//    NSLog(@"optionsView constraints: %@", optionsView.constraints);
+//    NSLog(@"modeOptionsView constraints: %@", optionsView.modeOptionsView.constraints);
 }
 
 - (void)resetPosition {

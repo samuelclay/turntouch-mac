@@ -11,9 +11,14 @@
 
 @class TTAppDelegate;
 
-@interface TTModeOptionsView : NSView {
+@interface TTModeOptionsView : NSView
+<NSTabViewDelegate> {
     TTAppDelegate *appDelegate;
+    
+    NSTabView *tabView;
 }
+
+@property (nonatomic) IBOutlet NSTabView *tabView;
 
 - (void)animateBlock:(void (^)())block;
 

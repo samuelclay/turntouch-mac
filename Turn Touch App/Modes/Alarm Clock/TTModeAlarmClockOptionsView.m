@@ -19,8 +19,6 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    appDelegate = [NSApp delegate];
-    
 }
 
 #pragma mark - Drawing controls
