@@ -59,11 +59,11 @@
     return self;
 }
 
+#pragma mark - KVO
+
 - (void)dealloc {
     [self removeObserver:self forKeyPath:@"selectedModeDirection"];
 }
-
-#pragma mark - KVO
 
 - (void)registerAsObserver {
     [self addObserver:self forKeyPath:@"selectedModeDirection"
@@ -173,6 +173,8 @@
     return nil;
 }
 
+#pragma mark - Changing modes, actions, and options
+
 - (void)changeDirection:(TTModeDirection)direction toMode:(NSString *)modeClassName {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *directionName = [self directionName:direction];
@@ -188,6 +190,16 @@
 - (void)changeDirection:(TTModeDirection)direction toAction:(NSString *)actionClassName {
     [selectedMode changeDirection:direction toAction:actionClassName];
 }
+
+- (void)changeModeOption:(NSString *)optionName to:(NSString *)optionValue {
+    
+}
+
+- (void)changeActionOption:(NSString *)optionName to:(NSString *)optionValue {
+    
+}
+
+#pragma mark - Direction helpers
 
 - (void)toggleInspectingModeDirection:(TTModeDirection)direction {
     if (inspectingModeDirection == direction) {

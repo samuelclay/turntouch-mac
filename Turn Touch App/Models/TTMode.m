@@ -143,7 +143,7 @@
     if (direction != NO_DIRECTION) {
         // Use default action in direction
         directionAction = [defaults stringForKey:[NSString stringWithFormat:@"TT:%@-%@:action:%@",
-                                                        [self class], modeDirectionName, actionDirectionName]];
+                                                        NSStringFromClass([self class]), modeDirectionName, actionDirectionName]];
     }
     if (directionAction && ![self.actions containsObject:directionAction]) {
         directionAction = nil;
@@ -168,7 +168,7 @@
     NSString *modeDirectionName = [appDelegate.modeMap directionName:appDelegate.modeMap.selectedModeDirection];
     NSString *actionDirectionName = [appDelegate.modeMap directionName:direction];
     NSString *prefKey = [NSString stringWithFormat:@"TT:%@-%@:action:%@",
-                         [self class], modeDirectionName, actionDirectionName];
+                         NSStringFromClass([self class]), modeDirectionName, actionDirectionName];
     
     [prefs setObject:actionClassName forKey:prefKey];
     [prefs synchronize];

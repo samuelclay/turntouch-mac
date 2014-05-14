@@ -1,5 +1,5 @@
 //
-//  TTModeOptionsView.h
+//  TTOptionsView.h
 //  Turn Touch App
 //
 //  Created by Samuel Clay on 12/26/13.
@@ -10,21 +10,21 @@
 #import "TTAppDelegate.h"
 #import "TTOptionsModeTitle.h"
 #import "TTOptionsActionTitle.h"
-#import "TTModeOptionsView.h"
+#import "TTOptionsDetailView.h"
 
 @class TTAppDelegate;
 @class TTOptionsModeTitle;
 @class TTOptionsActionTitle;
-@class TTModeOptionsView;
+@class TTOptionsDetailView;
 
 @interface TTOptionsView : NSView {
     TTAppDelegate *appDelegate;
     TTOptionsModeTitle *modeTitleView;
     TTOptionsActionTitle *actionTitleView;
-    TTModeOptionsView *modeOptionsView;
 }
 
 @property (nonatomic) NSScrollView *scrollView;
-@property (nonatomic) TTModeOptionsView *modeOptionsView;
+@property (nonatomic) TTOptionsDetailView *modeOptionsView;
+@property (nonatomic) TTOptionsDetailView *actionOptionsView;
 
 @end

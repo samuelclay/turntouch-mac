@@ -55,6 +55,18 @@
 //    NSLog(@"Diamond size: %f", self.size);
 }
 
+#pragma mark - KVO
+
+- (void)dealloc {
+    if (interactive) {
+        [appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
+        [appDelegate.modeMap removeObserver:self forKeyPath:@"hoverModeDirection"];
+    }
+    [appDelegate.modeMap removeObserver:self forKeyPath:@"activeModeDirection"];
+    [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedModeDirection"];
+    [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedMode"];
+}
+
 - (void)registerAsObserver {
     if (interactive) {
         [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"

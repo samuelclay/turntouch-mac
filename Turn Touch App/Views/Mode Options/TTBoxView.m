@@ -27,8 +27,8 @@
     NSLog(@"Layout box view: %@ / %@", NSStringFromRect(self.frame), NSStringFromRect(self.bounds));
 
     // Extend frame out
-    frameRect.size.width += 16;
-//    frameRect.origin.x += 8;
+//    frameRect.size.width += 18;
+//    frameRect.origin.x += 3;
     
     // Extend content out
 //    NSRect bounds = self.bounds;

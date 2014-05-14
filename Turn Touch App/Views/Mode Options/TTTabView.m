@@ -14,7 +14,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code here.
+        self.translatesAutoresizingMaskIntoConstraints = NO;
     }
     return self;
 }
@@ -26,11 +26,8 @@
     // Drawing code here.
 }
 
-- (void)setFrame:(NSRect)frameRect {
-    NSLog(@"Layout tab view: %@", NSStringFromRect(self.frame));
-    frameRect.origin.x -= 8;
-    frameRect.size.width += 16;
-    [super setFrame:frameRect];
+- (void)updateConstraints {
+    [super updateConstraints];
 }
 
 @end

@@ -52,6 +52,15 @@
     [diamondView setFrame:diamondRect];
 }
 
+#pragma mark - KVO
+
+- (void)dealloc {
+    [appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
+    [appDelegate.modeMap removeObserver:self forKeyPath:@"activeModeDirection"];
+    [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedModeDirection"];
+    [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedMode"];
+}
+
 - (void)registerAsObserver {
     [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
                              options:0 context:nil];

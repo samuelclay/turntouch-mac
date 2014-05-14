@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Turn Touch. All rights reserved.
 //
 
-#import "TTModeOptionsView.h"
+#import "TTOptionsDetailView.h"
 
-@interface TTModeAlarmClockOptionsView : TTModeOptionsView
+@interface TTModeAlarmClockOptionsView : TTOptionsDetailView
 
 @property (nonatomic) IBOutlet NSBox *boxRepeatOptions;
 @property (nonatomic) IBOutlet NSBox *boxOnetimeOptions;

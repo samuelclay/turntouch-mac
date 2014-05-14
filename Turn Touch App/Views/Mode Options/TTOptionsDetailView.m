@@ -1,5 +1,5 @@
 //
-//  TTModeOptionsView.m
+//  TTOptionsDetailView.m
 //  Turn Touch App
 //
 //  Created by Samuel Clay on 5/12/14.
@@ -7,11 +7,12 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
-#import "TTModeOptionsView.h"
+#import "TTOptionsDetailView.h"
 
-@implementation TTModeOptionsView
+@implementation TTOptionsDetailView
 
 @synthesize tabView;
+@synthesize menuType;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -77,7 +78,11 @@
     NSLog(@"Tab view: %@", NSStringFromRect(self.bounds));
     dispatch_async(dispatch_get_main_queue(), ^{
         [appDelegate.panelController.window invalidateShadow];
+        [appDelegate.panelController.window update];
     });
 }
+
+#pragma mark - Storing Preferences
+
 
 @end

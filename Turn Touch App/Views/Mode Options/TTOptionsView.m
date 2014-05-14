@@ -1,5 +1,5 @@
 //
-//  TTModeOptionsView.m
+//  TTOptionsView.m
 //  Turn Touch App
 //
 //  Created by Samuel Clay on 12/26/13.
@@ -17,6 +17,7 @@
 @implementation TTOptionsView
 
 @synthesize modeOptionsView;
+@synthesize actionOptionsView;
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -24,11 +25,6 @@
     if (self) {
         appDelegate = [NSApp delegate];
         self.translatesAutoresizingMaskIntoConstraints = NO;
-
-        actionTitleView = [[TTOptionsActionTitle alloc] initWithFrame:CGRectZero];
-        actionTitleView.translatesAutoresizingMaskIntoConstraints = NO;
-        [actionTitleView setHidden:YES];
-//        [self addSubview:actionTitleView];
         
         [self drawModeOptions];
         [self registerAsObserver];
@@ -64,13 +60,6 @@
 
 #pragma mark - Drawing
 
-- (void)setFrame:(NSRect)frameRect {
-    [super setFrame:frameRect];
-
-//    [modeTitleView setFrame:self.frame];
-    [actionTitleView setFrame:self.frame];
-}
-
 - (void)drawRect:(NSRect)dirtyRect {
     [self drawBackground];
     
@@ -78,10 +67,12 @@
 //        [modeTitleView setHidden:NO];
         [modeOptionsView setHidden:NO];
         [actionTitleView setHidden:YES];
+        [actionOptionsView setHidden:YES];
     } else {
 //        [modeTitleView setHidden:YES];
         [modeOptionsView setHidden:YES];
         [actionTitleView setHidden:NO];
+        [actionOptionsView setHidden:NO];
     }
 }
 
@@ -136,7 +127,7 @@
     if (modeOptionsView) {
         [modeOptionsView removeFromSuperview];
         for (NSLayoutConstraint *constraint in self.constraints) {
-            if ([[constraint.firstItem class] isSubclassOfClass:[TTModeOptionsView class]]) {
+            if ([[constraint.firstItem class] isSubclassOfClass:[TTOptionsDetailView class]]) {
                 [self removeConstraint:constraint];
             }
         }
@@ -148,7 +139,7 @@
     [[NSBundle mainBundle] loadNibNamed:modeName owner:self topLevelObjects:&nibArray];
     
     for (id view in nibArray) {
-        if ([[view class] isSubclassOfClass:[TTModeOptionsView class]]) {
+        if ([[view class] isSubclassOfClass:[TTOptionsDetailView class]]) {
             modeOptionsView = view;
             break;
         }
@@ -156,10 +147,11 @@
 
     if (!modeOptionsView) {
         NSLog(@" --- Missing mode options view for %@", modeName);
-        [appDelegate.panelController.backgroundView adjustOptionsHeight:12];
+        [appDelegate.panelController.backgroundView adjustOptionsHeight:nil];
         return;
     }
     
+    modeOptionsView.menuType = MODE_MENU_TYPE;
     modeOptionsView.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self addSubview:modeOptionsView];
@@ -177,22 +169,116 @@
                                                      attribute:NSLayoutAttributeLeading
                                                     multiplier:1.0 constant:0]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsView
-                                                     attribute:NSLayoutAttributeWidth
+                                                     attribute:NSLayoutAttributeTrailing
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:self
-                                                     attribute:NSLayoutAttributeWidth
+                                                     attribute:NSLayoutAttributeTrailing
                                                     multiplier:1.0 constant:0]];
-    [appDelegate.panelController.backgroundView adjustOptionsHeight:NSHeight(modeOptionsView.bounds)];
-    NSLog(@"mode options: %@ / %@", NSStringFromRect(self.bounds), NSStringFromRect(modeOptionsView.frame));
-    
+//    [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsView
+//                                                     attribute:NSLayoutAttributeWidth
+//                                                     relatedBy:NSLayoutRelationEqual
+//                                                        toItem:self
+//                                                     attribute:NSLayoutAttributeWidth
+//                                                    multiplier:1.0 constant:0]];
+    [appDelegate.panelController.backgroundView adjustOptionsHeight:modeOptionsView];
 
 }
 
 - (void)drawActionOptions {
     if (appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION) return;
 
-    [appDelegate.panelController.backgroundView
-     adjustOptionsHeight:148];
+    // Draw action title
+    if (actionTitleView) {
+        [actionTitleView removeFromSuperview];
+        actionTitleView = nil;
+    }
+    actionTitleView = [[TTOptionsActionTitle alloc] initWithFrame:CGRectZero];
+    actionTitleView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:actionTitleView];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:actionTitleView
+                                                     attribute:NSLayoutAttributeTop
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeTop
+                                                    multiplier:1.0 constant:0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:actionTitleView
+                                                     attribute:NSLayoutAttributeLeading
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeLeading
+                                                    multiplier:1.0 constant:0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:actionTitleView
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:0
+                                                    multiplier:1.0 constant:48]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:actionTitleView
+                                                     attribute:NSLayoutAttributeWidth
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeWidth
+                                                    multiplier:1.0 constant:0]];
+
+    // Draw action options
+    if (actionOptionsView) {
+        [actionOptionsView removeFromSuperview];
+        for (NSLayoutConstraint *constraint in self.constraints) {
+            if ([[constraint.firstItem class] isSubclassOfClass:[TTOptionsDetailView class]]) {
+                [self removeConstraint:constraint];
+            }
+        }
+        actionOptionsView = nil;
+    }
+    
+    NSArray *nibArray = [NSArray array];
+    NSString *modeName = NSStringFromClass([appDelegate.modeMap.selectedMode class]);
+    [[NSBundle mainBundle] loadNibNamed:modeName owner:self topLevelObjects:&nibArray];
+    
+    for (id view in nibArray) {
+        if ([[view class] isSubclassOfClass:[TTOptionsDetailView class]]) {
+            actionOptionsView = view;
+            break;
+        }
+    }
+    
+    if (!actionOptionsView) {
+        NSLog(@" --- Missing mode options view for %@", modeName);
+        [appDelegate.panelController.backgroundView adjustOptionsHeight:nil];
+        return;
+    }
+    
+    actionOptionsView.menuType = ACTION_MENU_TYPE;
+    actionOptionsView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self addSubview:actionOptionsView];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:actionOptionsView
+                                                     attribute:NSLayoutAttributeTop
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:actionTitleView
+                                                     attribute:NSLayoutAttributeBottom
+                                                    multiplier:1.0 constant:0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:actionOptionsView
+                                                     attribute:NSLayoutAttributeLeading
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeLeading
+                                                    multiplier:1.0 constant:0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:actionOptionsView
+                                                     attribute:NSLayoutAttributeTrailing
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeTrailing
+                                                    multiplier:1.0 constant:0]];
+    //    [self addConstraint:[NSLayoutConstraint constraintWithItem:actionOptionsView
+    //                                                     attribute:NSLayoutAttributeWidth
+    //                                                     relatedBy:NSLayoutRelationEqual
+    //                                                        toItem:self
+    //                                                     attribute:NSLayoutAttributeWidth
+    //                                                    multiplier:1.0 constant:0]];
+    [appDelegate.panelController.backgroundView adjustOptionsHeight:actionOptionsView];
 }
 
 @end

@@ -22,7 +22,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         appDelegate = [NSApp delegate];
-//        self.translatesAutoresizingMaskIntoConstraints = NO;
+        self.translatesAutoresizingMaskIntoConstraints = NO;
         
         [self registerAsObserver];
         [self setupLabels];
@@ -44,9 +44,11 @@
 
 #pragma mark - KVO
 
+- (void)dealloc {
+    [appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
+}
+
 - (void)registerAsObserver {
-    [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
-                             options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
                              options:0 context:nil];
 }

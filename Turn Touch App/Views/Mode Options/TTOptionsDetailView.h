@@ -1,5 +1,5 @@
 //
-//  TTModeOptionsView.h
+//  TTOptionsDetailView.h
 //  Turn Touch App
 //
 //  Created by Samuel Clay on 5/12/14.
@@ -12,7 +12,7 @@
 
 @class TTAppDelegate;
 
-@interface TTModeOptionsView : NSView
+@interface TTOptionsDetailView : NSView
 <NSTabViewDelegate> {
     TTAppDelegate *appDelegate;
     
@@ -20,6 +20,7 @@
 }
 
 @property (nonatomic) IBOutlet TTTabView *tabView;
+@property (nonatomic) TTMenuType menuType;
 
 - (void)animateBlock:(void (^)())block;
 

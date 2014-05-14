@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Turn Touch. All rights reserved.
 //
 
-#import "TTModeOptionsView.h"
+#import "TTOptionsDetailView.h"
 
-@interface TTModeMacOptionsView : TTModeOptionsView
+@interface TTModeMacOptionsView : TTOptionsDetailView
 
 @end

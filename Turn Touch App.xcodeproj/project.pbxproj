@@ -17,7 +17,7 @@
 		FF4E2630182317D000D477F6 /* TTSerialMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4E262F182317D000D477F6 /* TTSerialMonitor.m */; };
 		FF4E26321823197D00D477F6 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4E26311823197D00D477F6 /* IOKit.framework */; };
 		FF66F2A619228DE100031478 /* TTModeAlarmClockOptionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66F2A519228DE100031478 /* TTModeAlarmClockOptionsView.m */; };
-		FF66F2A91922D1C100031478 /* TTModeOptionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66F2A81922D1C100031478 /* TTModeOptionsView.m */; };
+		FF66F2A91922D1C100031478 /* TTOptionsDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66F2A81922D1C100031478 /* TTOptionsDetailView.m */; };
 		FF7A1C6F1868FD72005FA756 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF98A30C1868F1120032CC7A /* QuartzCore.framework */; };
 		FF8012F318692D0A00955218 /* TTModeMac.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8012F218692D0A00955218 /* TTModeMac.m */; };
 		FF8012F5186A1AD100955218 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF8012F4186A1AD100955218 /* defaults.plist */; };
@@ -105,8 +105,8 @@
 		FF4F9AF6182881FF00D2F975 /* AppleScriptObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptObjC.framework; path = System/Library/Frameworks/AppleScriptObjC.framework; sourceTree = SDKROOT; };
 		FF66F2A419228DE100031478 /* TTModeAlarmClockOptionsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeAlarmClockOptionsView.h; path = "Modes/Alarm Clock/TTModeAlarmClockOptionsView.h"; sourceTree = "<group>"; };
 		FF66F2A519228DE100031478 /* TTModeAlarmClockOptionsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeAlarmClockOptionsView.m; path = "Modes/Alarm Clock/TTModeAlarmClockOptionsView.m"; sourceTree = "<group>"; };
-		FF66F2A71922D1C100031478 /* TTModeOptionsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeOptionsView.h; path = "Views/Mode Options/TTModeOptionsView.h"; sourceTree = "<group>"; };
-		FF66F2A81922D1C100031478 /* TTModeOptionsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeOptionsView.m; path = "Views/Mode Options/TTModeOptionsView.m"; sourceTree = "<group>"; };
+		FF66F2A71922D1C100031478 /* TTOptionsDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTOptionsDetailView.h; path = "Views/Mode Options/TTOptionsDetailView.h"; sourceTree = "<group>"; };
+		FF66F2A81922D1C100031478 /* TTOptionsDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTOptionsDetailView.m; path = "Views/Mode Options/TTOptionsDetailView.m"; sourceTree = "<group>"; };
 		FF8012F118692D0A00955218 /* TTModeMac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMac.h; path = Modes/Mac/TTModeMac.h; sourceTree = "<group>"; };
 		FF8012F218692D0A00955218 /* TTModeMac.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeMac.m; path = Modes/Mac/TTModeMac.m; sourceTree = "<group>"; };
 		FF8012F4186A1AD100955218 /* defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = defaults.plist; path = "Supporting Files/defaults.plist"; sourceTree = "<group>"; };
@@ -407,8 +407,8 @@
 				FF801331186E156900955218 /* TTOptionsModeTitle.m */,
 				FF801336186E5D9700955218 /* TTOptionsActionTitle.h */,
 				FF801337186E5D9700955218 /* TTOptionsActionTitle.m */,
-				FF66F2A71922D1C100031478 /* TTModeOptionsView.h */,
-				FF66F2A81922D1C100031478 /* TTModeOptionsView.m */,
+				FF66F2A71922D1C100031478 /* TTOptionsDetailView.h */,
+				FF66F2A81922D1C100031478 /* TTOptionsDetailView.m */,
 				FFB1670C1923E61F008FA1AF /* TTTabView.h */,
 				FFB1670D1923E61F008FA1AF /* TTTabView.m */,
 				FFB1670F1923E6BF008FA1AF /* TTBoxView.h */,
@@ -700,7 +700,7 @@
 				FFB1670B1922FE53008FA1AF /* TTModeMacOptionsView.m in Sources */,
 				FF801332186E156900955218 /* TTOptionsModeTitle.m in Sources */,
 				FFA8EA9C190F07A500679A4D /* TTModeTabsContainer.m in Sources */,
-				FF66F2A91922D1C100031478 /* TTModeOptionsView.m in Sources */,
+				FF66F2A91922D1C100031478 /* TTOptionsDetailView.m in Sources */,
 				FF801335186E207B00955218 /* TTDiamondLabel.m in Sources */,
 				FFB167111923E6BF008FA1AF /* TTBoxView.m in Sources */,
 				FFAFCBC519130F520058B9CB /* TTPanelArrowView.m in Sources */,

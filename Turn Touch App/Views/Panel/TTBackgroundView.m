@@ -242,21 +242,29 @@
     [NSAnimationContext endGrouping];
 }
 
-- (void)adjustOptionsHeight:(CGFloat)height {
+- (void)adjustOptionsHeight:(TTOptionsDetailView *)optionsDetailView {
     if (!stackView) return;
     
-    NSLog(@"Options frame to %.f: %@ / %@", height, NSStringFromRect([optionsView bounds]), NSStringFromRect([optionsView.modeOptionsView bounds]));
+    NSLog(@"Options frame: %@ / %@", NSStringFromRect([optionsView bounds]), NSStringFromRect([optionsDetailView bounds]));
     [self removeConstraint:optionsConstraint];
     
-    if (!optionsView.modeOptionsView) return;
-    
-    optionsConstraint = [NSLayoutConstraint constraintWithItem:optionsView
-                                                     attribute:NSLayoutAttributeHeight
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:optionsView.modeOptionsView
-                                                     attribute:NSLayoutAttributeHeight
-                                                    multiplier:1.0 constant:0];
-    [stackView addConstraint:optionsConstraint];
+    if (!optionsDetailView) {
+        optionsConstraint = [NSLayoutConstraint constraintWithItem:optionsView
+                                                         attribute:NSLayoutAttributeHeight
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:0
+                                                        multiplier:1.0 constant:0];
+        [stackView addConstraint:optionsConstraint];
+    } else {
+        optionsConstraint = [NSLayoutConstraint constraintWithItem:optionsView
+                                                         attribute:NSLayoutAttributeBottom
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:optionsDetailView
+                                                         attribute:NSLayoutAttributeBottom
+                                                        multiplier:1.0 constant:0];
+        [stackView addConstraint:optionsConstraint];
+    }
     
 //    NSLog(@"stackView constraints: %@", stackView.constraints);
 //    NSLog(@"optionsView constraints: %@", optionsView.constraints);

@@ -15,6 +15,7 @@
 #import "TTDiamondLabels.h"
 #import "TTOptionsView.h"
 #import "TTTitleBarView.h"
+#import "TTOptionsDetailView.h"
 
 @class TTAppDelegate;
 @class TTPanelArrowView;
@@ -25,6 +26,7 @@
 @class TTModeTitleView;
 @class TTOptionsView;
 @class TTTitleBarView;
+@class TTOptionsDetailView;
 
 @interface TTBackgroundView : NSView <NSStackViewDelegate> {
     TTAppDelegate *appDelegate;
@@ -45,6 +47,6 @@
 @property (nonatomic) NSLayoutConstraint *optionsConstraint;
 
 - (void)resetPosition;
-- (void)adjustOptionsHeight:(CGFloat)height;
+- (void)adjustOptionsHeight:(TTOptionsDetailView *)optionsDetailView;
 
 @end

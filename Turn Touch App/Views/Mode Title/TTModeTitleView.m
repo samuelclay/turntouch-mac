@@ -100,6 +100,10 @@
 
 #pragma mark - KVO
 
+- (void)dealloc {
+    [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedMode"];
+}
+
 - (void)registerAsObserver {
     [appDelegate.modeMap addObserver:self forKeyPath:@"selectedMode"
                              options:0 context:nil];
