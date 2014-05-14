@@ -40,6 +40,7 @@
 		FF8C834717AB14B5000166FC /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FF8C834517AB14B5000166FC /* Credits.rtf */; };
 		FF8C834A17AB14B5000166FC /* TTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8C834917AB14B5000166FC /* TTAppDelegate.m */; };
 		FF8C834D17AB14B5000166FC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF8C834B17AB14B5000166FC /* MainMenu.xib */; };
+		FF913D271924366C005C336F /* TTModeMac.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF913D261924366C005C336F /* TTModeMac.plist */; };
 		FF981FCB191AB46600A4A94B /* TTModeMenuBordersView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF981FCA191AB46600A4A94B /* TTModeMenuBordersView.m */; };
 		FF98A2E11867DBA40032CC7A /* TTActionMap.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98A2E01867DBA40032CC7A /* TTActionMap.m */; };
 		FF98A2E71867DBE70032CC7A /* TTMenubarController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98A2E31867DBE70032CC7A /* TTMenubarController.m */; };
@@ -144,6 +145,7 @@
 		FF8C834817AB14B5000166FC /* TTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTAppDelegate.h; sourceTree = "<group>"; };
 		FF8C834917AB14B5000166FC /* TTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTAppDelegate.m; sourceTree = "<group>"; };
 		FF8C834C17AB14B5000166FC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		FF913D261924366C005C336F /* TTModeMac.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = TTModeMac.plist; path = Modes/Mac/TTModeMac.plist; sourceTree = "<group>"; };
 		FF981FC9191AB46600A4A94B /* TTModeMenuBordersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeMenuBordersView.h; sourceTree = "<group>"; };
 		FF981FCA191AB46600A4A94B /* TTModeMenuBordersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeMenuBordersView.m; sourceTree = "<group>"; };
 		FF981FDC191AFBEF00A4A94B /* TTModeDirection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TTModeDirection.h; path = Models/TTModeDirection.h; sourceTree = "<group>"; };
@@ -551,6 +553,7 @@
 				FFEA6CB719218A5C0010874B /* TTModeAlarmClock.xib */,
 				FF66F2A419228DE100031478 /* TTModeAlarmClockOptionsView.h */,
 				FF66F2A519228DE100031478 /* TTModeAlarmClockOptionsView.m */,
+				FF913D261924366C005C336F /* TTModeMac.plist */,
 			);
 			name = "Alarm Clock";
 			sourceTree = "<group>";
@@ -650,6 +653,7 @@
 				FFAA4F65182D96D60049FFC7 /* presentation-chart.png in Resources */,
 				FF8C834D17AB14B5000166FC /* MainMenu.xib in Resources */,
 				FFAA4F5E182D96D60049FFC7 /* cog.png in Resources */,
+				FF913D271924366C005C336F /* TTModeMac.plist in Resources */,
 				FFAA4F60182D96D60049FFC7 /* filmstrip-3.png in Resources */,
 				FFAA4F63182D96D60049FFC7 /* icon_music.png in Resources */,
 				FFAA4F5F182D96D60049FFC7 /* equalizer-1.png in Resources */,

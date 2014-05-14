@@ -239,7 +239,7 @@
     return [modeDefaults objectForKey:optionName];
 }
 
-- (void)changeModeOption:(NSString *)optionName to:(NSString *)optionValue {
+- (void)changeModeOption:(NSString *)optionName to:(id)optionValue {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *directionName = [self directionName:selectedModeDirection];
     NSString *optionKey = [NSString stringWithFormat:@"TT:mode:%@-%@:option:%@",
@@ -251,7 +251,7 @@
     [prefs synchronize];
 }
 
-- (void)changeActionOption:(NSString *)optionName to:(NSString *)optionValue {
+- (void)changeActionOption:(NSString *)optionName to:(id)optionValue {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *directionName = [self directionName:selectedModeDirection];
     NSString *actionName = [selectedMode actionNameInDirection:inspectingModeDirection];
