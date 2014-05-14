@@ -191,12 +191,78 @@
     [selectedMode changeDirection:direction toAction:actionClassName];
 }
 
-- (void)changeModeOption:(NSString *)optionName to:(NSString *)optionValue {
+- (NSString *)modeOptionValue:(NSString *)optionName {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *directionName = [self directionName:selectedModeDirection];
+    NSString *optionKey = [NSString stringWithFormat:@"TT:mode:%@-%@:option:%@",
+                           NSStringFromClass([selectedMode class]),
+                           directionName,
+                           optionName];
+
+    NSString *pref = [prefs objectForKey:optionKey];
     
+    if (!pref) {
+        pref = [self selectedModeDefaultPreference:optionName];
+
+    }
+    
+    return pref;
+}
+
+- (NSString *)actionOptionValue:(NSString *)optionName {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *directionName = [self directionName:selectedModeDirection];
+    NSString *actionName = [selectedMode actionNameInDirection:inspectingModeDirection];
+    NSString *optionKey = [NSString stringWithFormat:@"TT:mode:%@-%@:action:%@:option:%@",
+                           NSStringFromClass([selectedMode class]),
+                           directionName,
+                           actionName,
+                           optionName];
+    
+    NSString *pref = [prefs objectForKey:optionKey];
+    
+    if (!pref) {
+        pref = [self selectedModeDefaultPreference:optionName];
+    }
+    
+    return pref;
+}
+
+- (NSString *)selectedModeDefaultPreference:(NSString *)optionName {
+    NSString *modeOptionsDefaults = NSStringFromClass([selectedMode class]);
+    NSString *defaultPrefsFile = [[NSBundle mainBundle]
+                                  pathForResource:modeOptionsDefaults
+                                  ofType:@"plist"];
+    NSDictionary *modeDefaults = [NSDictionary
+                                  dictionaryWithContentsOfFile:defaultPrefsFile];
+    
+    return [modeDefaults objectForKey:optionName];
+}
+
+- (void)changeModeOption:(NSString *)optionName to:(NSString *)optionValue {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *directionName = [self directionName:selectedModeDirection];
+    NSString *optionKey = [NSString stringWithFormat:@"TT:mode:%@-%@:option:%@",
+                           NSStringFromClass([selectedMode class]),
+                           directionName,
+                           optionName];
+
+    [prefs setObject:optionValue forKey:optionKey];
+    [prefs synchronize];
 }
 
 - (void)changeActionOption:(NSString *)optionName to:(NSString *)optionValue {
-    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *directionName = [self directionName:selectedModeDirection];
+    NSString *actionName = [selectedMode actionNameInDirection:inspectingModeDirection];
+    NSString *optionKey = [NSString stringWithFormat:@"TT:mode:%@-%@:action:%@:option:%@",
+                           NSStringFromClass([selectedMode class]),
+                           directionName,
+                           actionName,
+                           optionName];
+
+    [prefs setObject:optionValue forKey:optionKey];
+    [prefs synchronize];
 }
 
 #pragma mark - Direction helpers

@@ -254,7 +254,7 @@
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:nil
                                                          attribute:0
-                                                        multiplier:1.0 constant:0];
+                                                        multiplier:1.0 constant:1];
         [stackView addConstraint:optionsConstraint];
     } else {
         optionsConstraint = [NSLayoutConstraint constraintWithItem:optionsView
