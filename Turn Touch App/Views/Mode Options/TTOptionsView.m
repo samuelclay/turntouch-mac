@@ -112,7 +112,6 @@
 #pragma mark - Options views
 
 - (void)clearOptionDetailViews {
-    NSLog(@"clearOptionDetailViews");
     for (NSLayoutConstraint *constraint in self.constraints) {
         if ([[constraint.firstItem class] isSubclassOfClass:[TTOptionsDetailView class]]) {
             [self removeConstraint:constraint];
@@ -134,7 +133,6 @@
 }
 
 - (void)drawModeOptions {
-    NSLog(@"drawModeOptions");
     if (appDelegate.modeMap.inspectingModeDirection != NO_DIRECTION) return;
 
     [self clearOptionDetailViews];
@@ -152,14 +150,21 @@
 
     if (!modeOptionsView) {
         NSLog(@" --- Missing mode options view for %@", modeName);
-        [appDelegate.panelController.backgroundView adjustOptionsHeight:nil];
-        return;
+        modeOptionsView = (TTOptionsDetailView *)[[NSView alloc] init];
+        modeOptionsView.translatesAutoresizingMaskIntoConstraints = NO;
+        [self addSubview:modeOptionsView];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsView
+                                                         attribute:NSLayoutAttributeHeight
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:0
+                                                        multiplier:1.0 constant:CORNER_RADIUS]];
+    } else {
+        modeOptionsView.menuType = MODE_MENU_TYPE;
+        modeOptionsView.translatesAutoresizingMaskIntoConstraints = NO;
+        [self addSubview:modeOptionsView];
     }
     
-    modeOptionsView.menuType = MODE_MENU_TYPE;
-    modeOptionsView.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    [self addSubview:modeOptionsView];
     
     [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsView
                                                      attribute:NSLayoutAttributeTop
@@ -190,7 +195,6 @@
 }
 
 - (void)drawActionOptions {
-    NSLog(@"drawActionOptions");
     if (appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION) return;
 
     [self clearOptionDetailViews];

@@ -246,7 +246,7 @@
         return;
     }
     
-    [appDelegate.modeMap reset];
+    [appDelegate.panelController.backgroundView resetPosition];
     if (appDelegate.modeMap.selectedModeDirection != modeDirection) {
         [appDelegate.modeMap setSelectedModeDirection:modeDirection];
     }

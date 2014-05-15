@@ -30,7 +30,8 @@
     return @[@"TTModeAlarmSnooze",
              @"TTModeAlarmNextSong",
              @"TTModeAlarmStop",
-             @"TTModeAlarmQuiet"
+             @"TTModeAlarmVolumeUp",
+             @"TTModeAlarmVolumeDown"
              ];
 }
 
@@ -45,8 +46,11 @@
 - (NSString *)titleTTModeAlarmStop {
     return @"Stop alarm";
 }
-- (NSString *)titleTTModeAlarmQuiet {
-    return @"Quiet down";
+- (NSString *)titleTTModeAlarmVolumeUp {
+    return @"Volume up";
+}
+- (NSString *)titleTTModeAlarmVolumeDown {
+    return @"Volume down";
 }
 
 #pragma mark - Action Images
@@ -60,8 +64,11 @@
 - (NSString *)imageTTModeAlarmStop {
     return @"stop_alarm.png";
 }
-- (NSString *)imageTTModeAlarmQuiet {
-    return @"quiet_down.png";
+- (NSString *)imageTTModeAlarmVolumeUp {
+    return @"volume_up.png";
+}
+- (NSString *)imageTTModeAlarmVolumeDown {
+    return @"volume_down.png";
 }
 
 #pragma mark - Action methods
@@ -75,8 +82,11 @@
 - (void)runTTModeAlarmStop {
     NSLog(@"Running runTTModeAlarmStop");
 }
-- (void)runTTModeAlarmQuiet {
-    NSLog(@"Running runTTModeAlarmQuiet");
+- (void)runTTModeAlarmVolumeUp {
+    NSLog(@"Running runTTModeAlarmVolumeUp");
+}
+- (void)runTTModeAlarmVolumeDown {
+    NSLog(@"Running runTTModeAlarmVolumeDown");
 }
 
 #pragma mark - Defaults
@@ -91,7 +101,7 @@
     return @"TTModeAlarmStop";
 }
 - (NSString *)defaultSouth {
-    return @"TTModeAlarmQuiet";
+    return @"TTModeAlarmVolumeDown";
 }
 
 @end
