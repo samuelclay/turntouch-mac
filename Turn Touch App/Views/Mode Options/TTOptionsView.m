@@ -250,7 +250,7 @@
     
     if (!actionOptionsView) {
         NSLog(@" --- Missing action options view for %@", actionName);
-        [appDelegate.panelController.backgroundView adjustOptionsHeight:nil];
+        [appDelegate.panelController.backgroundView adjustOptionsHeight:actionTitleView];
         return;
     }
     

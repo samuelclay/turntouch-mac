@@ -47,6 +47,6 @@
 @property (nonatomic) NSLayoutConstraint *optionsConstraint;
 
 - (void)resetPosition;
-- (void)adjustOptionsHeight:(TTOptionsDetailView *)optionsDetailView;
+- (void)adjustOptionsHeight:(NSView *)optionsDetailView;
 
 @end

@@ -242,19 +242,18 @@
     [NSAnimationContext endGrouping];
 }
 
-- (void)adjustOptionsHeight:(TTOptionsDetailView *)optionsDetailView {
+- (void)adjustOptionsHeight:(NSView *)optionsDetailView {
     if (!stackView) return;
     
-    NSLog(@"Options frame: %@ / %@", NSStringFromRect([optionsView bounds]), NSStringFromRect([optionsDetailView bounds]));
-    [self removeConstraint:optionsConstraint];
-    
+    [stackView removeConstraint:optionsConstraint];
+
     if (!optionsDetailView) {
         optionsConstraint = [NSLayoutConstraint constraintWithItem:optionsView
                                                          attribute:NSLayoutAttributeHeight
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:nil
                                                          attribute:0
-                                                        multiplier:1.0 constant:1];
+                                                        multiplier:1.0 constant:0];
         [stackView addConstraint:optionsConstraint];
     } else {
         optionsConstraint = [NSLayoutConstraint constraintWithItem:optionsView
