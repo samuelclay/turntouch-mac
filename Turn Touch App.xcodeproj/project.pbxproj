@@ -41,6 +41,8 @@
 		FF8C834A17AB14B5000166FC /* TTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8C834917AB14B5000166FC /* TTAppDelegate.m */; };
 		FF8C834D17AB14B5000166FC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF8C834B17AB14B5000166FC /* MainMenu.xib */; };
 		FF913D271924366C005C336F /* TTModeMac.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF913D261924366C005C336F /* TTModeMac.plist */; };
+		FF913D2919243B89005C336F /* TTModeAlarmSnooze.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF913D2819243B89005C336F /* TTModeAlarmSnooze.xib */; };
+		FF913D2C19243BFD005C336F /* TTModeAlarmSnooze.m in Sources */ = {isa = PBXBuildFile; fileRef = FF913D2B19243BFD005C336F /* TTModeAlarmSnooze.m */; };
 		FF981FCB191AB46600A4A94B /* TTModeMenuBordersView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF981FCA191AB46600A4A94B /* TTModeMenuBordersView.m */; };
 		FF98A2E11867DBA40032CC7A /* TTActionMap.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98A2E01867DBA40032CC7A /* TTActionMap.m */; };
 		FF98A2E71867DBE70032CC7A /* TTMenubarController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98A2E31867DBE70032CC7A /* TTMenubarController.m */; };
@@ -146,6 +148,9 @@
 		FF8C834917AB14B5000166FC /* TTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTAppDelegate.m; sourceTree = "<group>"; };
 		FF8C834C17AB14B5000166FC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		FF913D261924366C005C336F /* TTModeMac.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = TTModeMac.plist; path = Modes/Mac/TTModeMac.plist; sourceTree = "<group>"; };
+		FF913D2819243B89005C336F /* TTModeAlarmSnooze.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeAlarmSnooze.xib; path = "Modes/Alarm Clock/TTModeAlarmSnooze.xib"; sourceTree = "<group>"; };
+		FF913D2A19243BFD005C336F /* TTModeAlarmSnooze.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeAlarmSnooze.h; path = "Modes/Alarm Clock/TTModeAlarmSnooze.h"; sourceTree = "<group>"; };
+		FF913D2B19243BFD005C336F /* TTModeAlarmSnooze.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeAlarmSnooze.m; path = "Modes/Alarm Clock/TTModeAlarmSnooze.m"; sourceTree = "<group>"; };
 		FF981FC9191AB46600A4A94B /* TTModeMenuBordersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeMenuBordersView.h; sourceTree = "<group>"; };
 		FF981FCA191AB46600A4A94B /* TTModeMenuBordersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeMenuBordersView.m; sourceTree = "<group>"; };
 		FF981FDC191AFBEF00A4A94B /* TTModeDirection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TTModeDirection.h; path = Models/TTModeDirection.h; sourceTree = "<group>"; };
@@ -548,12 +553,15 @@
 		FFAA4F6C182D99440049FFC7 /* Alarm Clock */ = {
 			isa = PBXGroup;
 			children = (
+				FF913D261924366C005C336F /* TTModeMac.plist */,
 				FFAA4F6D182D99640049FFC7 /* TTModeAlarmClock.h */,
 				FFAA4F6E182D99640049FFC7 /* TTModeAlarmClock.m */,
 				FFEA6CB719218A5C0010874B /* TTModeAlarmClock.xib */,
 				FF66F2A419228DE100031478 /* TTModeAlarmClockOptionsView.h */,
 				FF66F2A519228DE100031478 /* TTModeAlarmClockOptionsView.m */,
-				FF913D261924366C005C336F /* TTModeMac.plist */,
+				FF913D2A19243BFD005C336F /* TTModeAlarmSnooze.h */,
+				FF913D2B19243BFD005C336F /* TTModeAlarmSnooze.m */,
+				FF913D2819243B89005C336F /* TTModeAlarmSnooze.xib */,
 			);
 			name = "Alarm Clock";
 			sourceTree = "<group>";
@@ -664,6 +672,7 @@
 				FF98A2EF1867DC320032CC7A /* Turn Touch App.entitlements in Resources */,
 				FFAA4F62182D96D60049FFC7 /* icon_movie.png in Resources */,
 				FFEA6CB819218A5C0010874B /* TTModeAlarmClock.xib in Resources */,
+				FF913D2919243B89005C336F /* TTModeAlarmSnooze.xib in Resources */,
 				FFAA4F64182D96D60049FFC7 /* newspaper-3.png in Resources */,
 				FF98A3041868D3F90032CC7A /* macbookpro.png in Resources */,
 				FFEA6CB319216CDF0010874B /* TTModeMac.xib in Resources */,
@@ -711,6 +720,7 @@
 				FFA8EA9D190F07A500679A4D /* TTModeTab.m in Sources */,
 				FFF05F3018F60FF100AC6230 /* TTTitleBarView.m in Sources */,
 				FF0E12D41828560000D49EC7 /* TTModeVideo.m in Sources */,
+				FF913D2C19243BFD005C336F /* TTModeAlarmSnooze.m in Sources */,
 				FF98A2E81867DBE70032CC7A /* TTPanelController.m in Sources */,
 				FF801338186E5D9700955218 /* TTOptionsActionTitle.m in Sources */,
 				FF98A2ED1867DC320032CC7A /* main.m in Sources */,

@@ -30,6 +30,7 @@
         diamondView = [[TTDiamondView alloc] initWithFrame:CGRectZero];
         [diamondView setIgnoreSelectedMode:YES];
         [diamondView setIgnoreActiveMode:YES];
+        [diamondView setOverrideActiveDirection:appDelegate.modeMap.inspectingModeDirection];
         [self addSubview:diamondView];
 
         changeButton = [[TTChangeButtonView alloc] init];

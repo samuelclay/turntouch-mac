@@ -305,9 +305,6 @@
 - (void)setOpenedActionChangeMenu:(BOOL)_openedActionChangeMenu {
     if (openedActionChangeMenu != _openedActionChangeMenu) {
         openedActionChangeMenu = _openedActionChangeMenu;
-        if (!openedActionChangeMenu) {
-            [self setInspectingModeDirection:NO_DIRECTION];
-        }
     }
 }
 

@@ -26,6 +26,7 @@
         appDelegate = [NSApp delegate];
         self.translatesAutoresizingMaskIntoConstraints = NO;
         
+        [self clearOptionDetailViews];
         [self drawModeOptions];
         [self registerAsObserver];
     }
@@ -49,11 +50,12 @@
                          change:(NSDictionary*)change
                         context:(void*)context {
     if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))]) {
-        [self setNeedsDisplay:YES];
-        [self drawActionOptions];
-        [self drawModeOptions];
+        if (appDelegate.modeMap.inspectingModeDirection != NO_DIRECTION) {
+            [self drawActionOptions];
+        } else {
+            [self drawModeOptions];
+        }
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedMode))]) {
-        [self setNeedsDisplay:YES];
         [self drawModeOptions];
     }
 }
@@ -62,18 +64,6 @@
 
 - (void)drawRect:(NSRect)dirtyRect {
     [self drawBackground];
-    
-    if (appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION) {
-//        [modeTitleView setHidden:NO];
-        [modeOptionsView setHidden:NO];
-        [actionTitleView setHidden:YES];
-        [actionOptionsView setHidden:YES];
-    } else {
-//        [modeTitleView setHidden:YES];
-        [modeOptionsView setHidden:YES];
-        [actionTitleView setHidden:NO];
-        [actionOptionsView setHidden:NO];
-    }
 }
 
 - (void)drawBackground {
@@ -121,19 +111,34 @@
 
 #pragma mark - Options views
 
-- (void)drawModeOptions {
-    if (appDelegate.modeMap.inspectingModeDirection != NO_DIRECTION) return;
-    
+- (void)clearOptionDetailViews {
+    NSLog(@"clearOptionDetailViews");
+    for (NSLayoutConstraint *constraint in self.constraints) {
+        if ([[constraint.firstItem class] isSubclassOfClass:[TTOptionsDetailView class]]) {
+            [self removeConstraint:constraint];
+        }
+    }
+
     if (modeOptionsView) {
         [modeOptionsView removeFromSuperview];
-        for (NSLayoutConstraint *constraint in self.constraints) {
-            if ([[constraint.firstItem class] isSubclassOfClass:[TTOptionsDetailView class]]) {
-                [self removeConstraint:constraint];
-            }
-        }
         modeOptionsView = nil;
     }
-    
+    if (actionOptionsView) {
+        [actionOptionsView removeFromSuperview];
+        actionOptionsView = nil;
+    }
+    if (actionTitleView) {
+        [actionTitleView removeFromSuperview];
+        actionTitleView = nil;
+    }
+}
+
+- (void)drawModeOptions {
+    NSLog(@"drawModeOptions");
+    if (appDelegate.modeMap.inspectingModeDirection != NO_DIRECTION) return;
+
+    [self clearOptionDetailViews];
+
     NSArray *nibArray = [NSArray array];
     NSString *modeName = NSStringFromClass([appDelegate.modeMap.selectedMode class]);
     [[NSBundle mainBundle] loadNibNamed:modeName owner:self topLevelObjects:&nibArray];
@@ -185,13 +190,12 @@
 }
 
 - (void)drawActionOptions {
+    NSLog(@"drawActionOptions");
     if (appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION) return;
 
+    [self clearOptionDetailViews];
+
     // Draw action title
-    if (actionTitleView) {
-        [actionTitleView removeFromSuperview];
-        actionTitleView = nil;
-    }
     actionTitleView = [[TTOptionsActionTitle alloc] initWithFrame:CGRectZero];
     actionTitleView.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:actionTitleView];
@@ -233,8 +237,9 @@
     }
     
     NSArray *nibArray = [NSArray array];
-    NSString *modeName = NSStringFromClass([appDelegate.modeMap.selectedMode class]);
-    [[NSBundle mainBundle] loadNibNamed:modeName owner:self topLevelObjects:&nibArray];
+    NSString *actionName = [appDelegate.modeMap.selectedMode
+                            actionNameInDirection:appDelegate.modeMap.inspectingModeDirection];
+    [[NSBundle mainBundle] loadNibNamed:actionName owner:self topLevelObjects:&nibArray];
     
     for (id view in nibArray) {
         if ([[view class] isSubclassOfClass:[TTOptionsDetailView class]]) {
@@ -244,7 +249,7 @@
     }
     
     if (!actionOptionsView) {
-        NSLog(@" --- Missing mode options view for %@", modeName);
+        NSLog(@" --- Missing action options view for %@", actionName);
         [appDelegate.panelController.backgroundView adjustOptionsHeight:nil];
         return;
     }
