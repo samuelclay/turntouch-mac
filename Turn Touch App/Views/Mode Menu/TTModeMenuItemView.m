@@ -226,6 +226,7 @@
         [appDelegate.modeMap changeDirection:appDelegate.modeMap.inspectingModeDirection
                                     toAction:modeName];
         [appDelegate.panelController.backgroundView setNeedsDisplay:YES];
+        [appDelegate.modeMap setInspectingModeDirection:appDelegate.modeMap.inspectingModeDirection];
     }
 }
 

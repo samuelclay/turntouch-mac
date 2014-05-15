@@ -50,17 +50,21 @@
                          change:(NSDictionary*)change
                         context:(void*)context {
     if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))]) {
-        if (appDelegate.modeMap.inspectingModeDirection != NO_DIRECTION) {
-            [self drawActionOptions];
-        } else {
-            [self drawModeOptions];
-        }
+        [self redrawOptions];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedMode))]) {
         [self drawModeOptions];
     }
 }
 
 #pragma mark - Drawing
+
+- (void)redrawOptions {
+    if (appDelegate.modeMap.inspectingModeDirection != NO_DIRECTION) {
+        [self drawActionOptions];
+    } else {
+        [self drawModeOptions];
+    }
+}
 
 - (void)drawRect:(NSRect)dirtyRect {
     [self drawBackground];
