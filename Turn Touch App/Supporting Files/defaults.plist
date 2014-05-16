@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>TT:mode:north</key>
-	<string>TTModeMusic</string>
+	<string>TTModeAlarmClock</string>
 	<key>TT:mode:east</key>
 	<string>TTModeMac</string>
 	<key>TT:mode:west</key>
@@ -11,6 +11,6 @@
 	<key>TT:selectedModeDirection</key>
 	<string>1</string>
 	<key>TT:mode:south</key>
-	<string>TTModeAlarmClock</string>
+	<string>TTModeMusic</string>
 </dict>
 </plist>

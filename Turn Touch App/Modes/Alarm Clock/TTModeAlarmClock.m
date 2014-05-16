@@ -35,6 +35,10 @@
              ];
 }
 
+- (NSArray *)optionlessActions {
+    return @[@"TTModeAlarmStop"];
+}
+
 #pragma mark - Action Titles
 
 - (NSString *)titleTTModeAlarmSnooze {

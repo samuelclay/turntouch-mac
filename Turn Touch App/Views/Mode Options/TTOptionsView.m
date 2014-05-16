@@ -257,7 +257,9 @@
     }
     
     if (!actionOptionsView) {
-        NSLog(@" --- Missing action options view for %@", actionName);
+        if (![appDelegate.modeMap.selectedMode.optionlessActions containsObject:actionName]) {
+            NSLog(@" --- Missing action options view for %@", actionName);
+        }
         [appDelegate.panelController.backgroundView adjustOptionsHeight:actionTitleView];
         return;
     }

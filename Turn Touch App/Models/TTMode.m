@@ -43,6 +43,10 @@
              ];
 }
 
+- (NSArray *)optionlessActions {
+    return @[];
+}
+
 #pragma mark - Action Titles
 
 - (NSString *)titleTTAction1 {

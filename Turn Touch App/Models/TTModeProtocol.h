@@ -25,5 +25,6 @@
 @optional
 - (void)activate;
 - (void)deactivate;
+- (NSArray *)optionlessActions;
 
 @end

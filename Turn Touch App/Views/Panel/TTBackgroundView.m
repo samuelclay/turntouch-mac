@@ -175,6 +175,8 @@
                              options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"selectedMode"
                              options:0 context:nil];
+    [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
+                             options:0 context:nil];
 }
 
 - (void) observeValueForKeyPath:(NSString*)keyPath
@@ -187,10 +189,19 @@
         [self toggleActionMenuFrame];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedMode))]) {
         [self resetPosition];
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))]) {
+        [self redrawShadow];
     }
 }
 
 #pragma mark - Drawing
+
+- (void)redrawShadow {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.window invalidateShadow];
+        [self.window update];
+    });
+}
 
 - (void)toggleModeMenuFrame {
     NSTimeInterval openDuration = OPEN_DURATION;
@@ -204,8 +215,7 @@
     [[NSAnimationContext currentContext] setDuration:openDuration];
     [[NSAnimationContext currentContext] setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
     [[NSAnimationContext currentContext] setCompletionHandler:^{
-        [self.window invalidateShadow];
-        [self.window update];
+        [self redrawShadow];
     }];
     
     if (appDelegate.modeMap.openedModeChangeMenu) {
