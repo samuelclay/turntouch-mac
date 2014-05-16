@@ -245,7 +245,7 @@
                 modeColor = NSColorFromRGBAlpha(0xFFFFFF, alpha);
             } else {
                 CGFloat alpha = 0.5f;
-                modeColor = NSColorFromRGBAlpha(0x404046, alpha);
+                modeColor = NSColorFromRGBAlpha(0x515559, alpha);
             }
         } else {
             if (isSelectedDirection) {

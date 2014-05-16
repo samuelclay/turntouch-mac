@@ -48,10 +48,12 @@
     
     // Make a fully skinned panel
     NSPanel *panel = (id)[self window];
+    [panel setDelegate:self];
     [panel setAcceptsMouseMovedEvents:YES];
     [panel setLevel:NSMainMenuWindowLevel];
     [panel setOpaque:NO];
     [panel setBackgroundColor:[NSColor clearColor]];
+//    panel.styleMask |= NSResizableWindowMask;
 
     [self registerAsObserver];
 }
@@ -60,10 +62,10 @@
 #pragma mark - KVO
 
 - (void)registerAsObserver {
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(resize:)
-//                                                 name:NSWindowDidResizeNotification
-//                                               object:self.window];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(resize:)
+                                                 name:NSWindowDidResizeNotification
+                                               object:self.window];
 }
 
 - (void) observeValueForKeyPath:(NSString*)keyPath
@@ -76,11 +78,18 @@
 }
 
 - (void)resize:(NSNotification *)notification {
-//    NSLog(@"resize");
+    NSLog(@"resize");
 //    [self.window display];
 //    [self.window setHasShadow:NO];
 //    [self.window setHasShadow:YES];
 //    [self.window invalidateShadow];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidResizeNotification object:self.window];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(resize:)
+                                                 name:NSWindowDidResizeNotification
+                                               object:self.window];
+
 }
 
 #pragma mark - Public accessors
@@ -115,8 +124,16 @@
 }
 
 - (void)windowDidResize:(NSNotification *)notification {
+    NSLog(@"windowDidResize: %@", notification);
+
     [self.window display];
     [self.window invalidateShadow];
+}
+
+- (NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize {
+    NSLog(@"windowWillResize:%@ toSize:%@", sender, NSStringFromSize(frameSize));
+
+    return frameSize;
 }
 
 #pragma mark - Keyboard
