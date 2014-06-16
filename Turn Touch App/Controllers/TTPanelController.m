@@ -10,6 +10,7 @@
 #import "TTBackgroundView.h"
 #import "TTStatusItemView.h"
 #import "TTMenubarController.h"
+#import "TTPanel.h"
 
 #define PANEL_OPEN_DURATION .12
 #define PANEL_CLOSE_DURATION .14
@@ -53,7 +54,9 @@
     [panel setLevel:NSMainMenuWindowLevel];
     [panel setOpaque:NO];
     [panel setBackgroundColor:[NSColor clearColor]];
-//    panel.styleMask |= NSResizableWindowMask;
+
+    self.backgroundView = [[TTBackgroundView alloc] init];
+    [panel setContentView:self.backgroundView];
 
     [self registerAsObserver];
 }
@@ -177,12 +180,13 @@
     
     if (NSMaxX(panelRect) > (NSMaxX(screenRect) - ARROW_HEIGHT))
         panelRect.origin.x -= NSMaxX(panelRect) - (NSMaxX(screenRect) - ARROW_HEIGHT);
-    
+
     [NSApp activateIgnoringOtherApps:NO];
+//    [panel setContentView:self.backgroundView];
     [panel setAlphaValue:0];
     [panel setFrame:panelRect display:YES];
-    [panel makeKeyAndOrderFront:nil];
     [panel setDelegate:self];
+    [panel makeKeyAndOrderFront:nil];
     
     [self.backgroundView resetPosition];
     

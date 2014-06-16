@@ -37,135 +37,114 @@
 
 #pragma mark -
 
-- (void)awakeFromNib {
-    appDelegate = [NSApp delegate];
-    
-//    self.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    arrowView = [[TTPanelArrowView alloc] init];
-    titleBarView = [[TTTitleBarView alloc] init];
-    modeTabs = [[TTModeTabsContainer alloc] init];
-    modeTitle = [[TTModeTitleView alloc] init];
-    modeMenu = [[TTModeMenuContainer alloc] initWithType:MODE_MENU_TYPE];
-    diamondLabels = [[TTDiamondLabels alloc] init];
-    optionsView = [[TTOptionsView alloc] init];
-    actionMenu = [[TTModeMenuContainer alloc] initWithType:ACTION_MENU_TYPE];
+- (id)initWithFrame:(NSRect)frameRect {
+    if (self = [super initWithFrame:frameRect]) {
+        appDelegate = [NSApp delegate];
+                
+        arrowView = [[TTPanelArrowView alloc] init];
+        titleBarView = [[TTTitleBarView alloc] init];
+        modeTabs = [[TTModeTabsContainer alloc] init];
+        modeTitle = [[TTModeTitleView alloc] init];
+        modeMenu = [[TTModeMenuContainer alloc] initWithType:MODE_MENU_TYPE];
+        diamondLabels = [[TTDiamondLabels alloc] init];
+        optionsView = [[TTOptionsView alloc] init];
+        actionMenu = [[TTModeMenuContainer alloc] initWithType:ACTION_MENU_TYPE];
+        
+        [self setTranslatesAutoresizingMaskIntoConstraints:NO];
 
-    stackView = [[NSStackView alloc] init];
-    [stackView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    
-    [stackView setViews:@[arrowView,
-                          titleBarView,
-                          modeTabs,
-                          modeTitle,
-                          modeMenu,
-                          diamondLabels,
-                          actionMenu,
-                          optionsView] inGravity:NSStackViewGravityTop];
-    
-    [stackView addConstraint:[NSLayoutConstraint constraintWithItem:arrowView
-                                                          attribute:NSLayoutAttributeTop
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:stackView
-                                                          attribute:NSLayoutAttributeTop
-                                                         multiplier:1.0 constant:0]];
-    [stackView addConstraint:[NSLayoutConstraint constraintWithItem:arrowView
+        [self setViews:@[arrowView,
+                              titleBarView,
+                              modeTabs,
+                              modeTitle,
+                              modeMenu,
+                              diamondLabels,
+                              actionMenu,
+                              optionsView] inGravity:NSStackViewGravityTop];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:arrowView
+                                                              attribute:NSLayoutAttributeTop
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:self
+                                                              attribute:NSLayoutAttributeTop
+                                                             multiplier:1.0 constant:0]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:arrowView
+                                                              attribute:NSLayoutAttributeHeight
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:nil
+                                                              attribute:0
+                                                             multiplier:1.0 constant:ARROW_HEIGHT]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:titleBarView
+                                                              attribute:NSLayoutAttributeHeight
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:nil
+                                                              attribute:0
+                                                             multiplier:1.0 constant:TITLE_BAR_HEIGHT]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:modeTabs
+                                                              attribute:NSLayoutAttributeHeight
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:nil
+                                                              attribute:0
+                                                             multiplier:1.0 constant:MODE_TABS_HEIGHT]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:modeTitle
+                                                              attribute:NSLayoutAttributeHeight
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:nil
+                                                              attribute:0
+                                                             multiplier:1.0 constant:MODE_TITLE_HEIGHT]];
+        modeMenuConstraint = [NSLayoutConstraint constraintWithItem:modeMenu
                                                           attribute:NSLayoutAttributeHeight
                                                           relatedBy:NSLayoutRelationEqual
                                                              toItem:nil
                                                           attribute:0
-                                                         multiplier:1.0 constant:ARROW_HEIGHT]];
-    [stackView addConstraint:[NSLayoutConstraint constraintWithItem:titleBarView
-                                                          attribute:NSLayoutAttributeHeight
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:nil
-                                                          attribute:0
-                                                         multiplier:1.0 constant:TITLE_BAR_HEIGHT]];
-    [stackView addConstraint:[NSLayoutConstraint constraintWithItem:modeTabs
-                                                          attribute:NSLayoutAttributeHeight
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:nil
-                                                          attribute:0
-                                                         multiplier:1.0 constant:MODE_TABS_HEIGHT]];
-    [stackView addConstraint:[NSLayoutConstraint constraintWithItem:modeTitle
-                                                          attribute:NSLayoutAttributeHeight
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:nil
-                                                          attribute:0
-                                                         multiplier:1.0 constant:MODE_TITLE_HEIGHT]];
-    modeMenuConstraint = [NSLayoutConstraint constraintWithItem:modeMenu
-                                                      attribute:NSLayoutAttributeHeight
-                                                      relatedBy:NSLayoutRelationEqual
-                                                         toItem:nil
-                                                      attribute:0
-                                                     multiplier:1.0 constant:1];
-    [stackView addConstraint:modeMenuConstraint];
-    [stackView addConstraint:[NSLayoutConstraint constraintWithItem:diamondLabels
-                                                          attribute:NSLayoutAttributeHeight
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:nil
-                                                          attribute:0
-                                                         multiplier:0 constant:DIAMOND_LABELS_SIZE]];
-    actionMenuConstraint = [NSLayoutConstraint constraintWithItem:actionMenu
-                                                        attribute:NSLayoutAttributeHeight
-                                                        relatedBy:NSLayoutRelationEqual
-                                                           toItem:nil
-                                                        attribute:0
-                                                       multiplier:1.0 constant:0];
-    [stackView addConstraint:actionMenuConstraint];
-    optionsConstraint = [NSLayoutConstraint constraintWithItem:optionsView
-                                                     attribute:NSLayoutAttributeHeight
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:optionsView.modeOptionsView
-                                                     attribute:NSLayoutAttributeHeight
-                                                    multiplier:1.0 constant:0];
-    [stackView addConstraint:optionsConstraint];
-    
-    NSLog(@"Init modeOptionsView View height: %.f", NSHeight(optionsView.modeOptionsView.bounds));
-    NSLog(@"Init options View height: %.f", NSHeight(optionsView.bounds));
+                                                         multiplier:1.0 constant:1];
+        [modeMenuConstraint setPriority:NSLayoutPriorityDefaultHigh];
+        [self addConstraint:modeMenuConstraint];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:diamondLabels
+                                                              attribute:NSLayoutAttributeHeight
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:nil
+                                                              attribute:0
+                                                             multiplier:0 constant:DIAMOND_LABELS_SIZE]];
+        actionMenuConstraint = [NSLayoutConstraint constraintWithItem:actionMenu
+                                                            attribute:NSLayoutAttributeHeight
+                                                            relatedBy:NSLayoutRelationEqual
+                                                               toItem:nil
+                                                            attribute:0
+                                                           multiplier:1.0 constant:0];
+        [self addConstraint:actionMenuConstraint];
+        optionsConstraint = [NSLayoutConstraint constraintWithItem:optionsView
+                                                         attribute:NSLayoutAttributeHeight
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:optionsView.modeOptionsView
+                                                         attribute:NSLayoutAttributeHeight
+                                                        multiplier:1.0 constant:0];
+        [self addConstraint:optionsConstraint];
+        
+        NSLog(@"Init modeOptionsView View height: %.f", NSHeight(optionsView.modeOptionsView.bounds));
+        NSLog(@"Init options View height: %.f", NSHeight(optionsView.bounds));
 
-    [stackView addConstraint:[NSLayoutConstraint constraintWithItem:stackView
-                                                          attribute:NSLayoutAttributeWidth
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:nil
-                                                          attribute:0
-                                                         multiplier:0
-                                                           constant:360]];
-    
-    stackView.orientation = NSUserInterfaceLayoutOrientationVertical;
-    stackView.alignment = NSLayoutAttributeCenterX;
-    stackView.spacing = 0;
-    
-    [self addSubview:stackView];
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:stackView
-                                                     attribute:NSLayoutAttributeTop
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeTop
-                                                    multiplier:1.0 constant:0.0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:stackView
-                                                     attribute:NSLayoutAttributeBottom
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeBottom
-                                                    multiplier:1.0 constant:0.0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:stackView
-                                                     attribute:NSLayoutAttributeHeight
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeHeight
-                                                    multiplier:1.0 constant:0.0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:stackView
-                                                     attribute:NSLayoutAttributeWidth
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeWidth
-                                                    multiplier:1.0 constant:0.0]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self
+                                                              attribute:NSLayoutAttributeWidth
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:nil
+                                                              attribute:0
+                                                             multiplier:0
+                                                               constant:360]];
+        
+        self.orientation = NSUserInterfaceLayoutOrientationVertical;
+        self.alignment = NSLayoutAttributeCenterX;
+        self.spacing = 0;
 
-    [self registerAsObserver];
+        [self registerAsObserver];
+    }
+    
+    return self;
 }
 
+- (void)updateConstraints {
+    NSLog(@"updateConstraints");
+    [super updateConstraints];
+}
 #pragma mark - KVO
 
 - (void)registerAsObserver {
@@ -253,9 +232,10 @@
 }
 
 - (void)adjustOptionsHeight:(NSView *)optionsDetailView {
-    if (!stackView) return;
+//    if (!stackView) return;
+    if (!optionsView) return;
     
-    [stackView removeConstraint:optionsConstraint];
+    [self removeConstraint:optionsConstraint];
 
     if (!optionsDetailView) {
         optionsConstraint = [NSLayoutConstraint constraintWithItem:optionsView
@@ -264,7 +244,7 @@
                                                             toItem:nil
                                                          attribute:0
                                                         multiplier:1.0 constant:0];
-        [stackView addConstraint:optionsConstraint];
+        [self addConstraint:optionsConstraint];
     } else {
         optionsConstraint = [NSLayoutConstraint constraintWithItem:optionsView
                                                          attribute:NSLayoutAttributeBottom
@@ -272,7 +252,7 @@
                                                             toItem:optionsDetailView
                                                          attribute:NSLayoutAttributeBottom
                                                         multiplier:1.0 constant:0];
-        [stackView addConstraint:optionsConstraint];
+        [self addConstraint:optionsConstraint];
     }
     
 //    NSLog(@"stackView constraints: %@", stackView.constraints);

@@ -18,11 +18,11 @@
 
 @interface TTPanelController : NSWindowController <NSWindowDelegate> {
     BOOL _hasActivePanel;
-    __unsafe_unretained TTBackgroundView *_backgroundView;
+    TTBackgroundView *_backgroundView;
     __unsafe_unretained id<TTPanelControllerDelegate> _delegate;
 }
 
-@property (nonatomic, unsafe_unretained) IBOutlet TTBackgroundView *backgroundView;
+@property (nonatomic) IBOutlet TTBackgroundView *backgroundView;
 
 @property (nonatomic) BOOL hasActivePanel;
 @property (nonatomic, unsafe_unretained, readonly) id<TTPanelControllerDelegate> delegate;
