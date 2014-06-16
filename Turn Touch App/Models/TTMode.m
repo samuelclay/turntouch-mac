@@ -99,7 +99,7 @@
     NSLog(@"Running: %d - %@", direction, actionName);
 
     // TODO: Assert selector exists
-    SEL selector = NSSelectorFromString([NSString stringWithFormat:@"title%@",
+    SEL selector = NSSelectorFromString([NSString stringWithFormat:@"run%@",
                                          actionName]);
     IMP imp = [self methodForSelector:selector];
     void (*func)(id, SEL) = (void *)imp;
