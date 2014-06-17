@@ -10,30 +10,13 @@
 
 @implementation TTBoxView
 
-- (id)initWithFrame:(NSRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code here.
-    }
-    return self;
+- (void)awakeFromNib {
+    [self setBoxType:NSBoxCustom];
+    [self setBorderType:NSNoBorder];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
-}
-
-- (void)setFrame:(NSRect)frameRect {
-    // Extend frame out
-//    frameRect.size.width += 18;
-//    frameRect.origin.x += 3;
-    
-    // Extend content out
-//    NSRect bounds = self.bounds;
-//    bounds.size.width -= 8;
-//    self.bounds = bounds;
-    
-    [super setFrame:frameRect];
 }
 
 @end

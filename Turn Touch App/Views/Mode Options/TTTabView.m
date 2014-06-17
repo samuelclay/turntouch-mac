@@ -7,9 +7,9 @@
 //
 
 #import "TTTabView.h"
-#import "TTSegmentedCell.h"
+#import "TTSegmentedControl.h"
 
-const NSUInteger SEGMENTED_CONTROL_HEIGHT = 24;
+const NSUInteger SEGMENTED_CONTROL_HEIGHT = 26;
 
 @implementation TTTabView
 
@@ -17,11 +17,11 @@ const NSUInteger SEGMENTED_CONTROL_HEIGHT = 24;
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
-        self.translatesAutoresizingMaskIntoConstraints = NO;
+        [self setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [self setTabViewType:NSNoTabsNoBorder];
+        [self setDrawsBackground:NO];
         
-        segmentedControl = [[NSSegmentedControl alloc] init];
-        [segmentedControl setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [segmentedControl setCell:[[TTSegmentedCell alloc] init]];
+        segmentedControl = [[TTSegmentedControl alloc] init];
         [segmentedControl setSegmentCount:self.numberOfTabViewItems];
         [segmentedControl setSelectedSegment:[self indexOfTabViewItem:[self selectedTabViewItem]]];
         [segmentedControl setTarget:self];
@@ -34,7 +34,7 @@ const NSUInteger SEGMENTED_CONTROL_HEIGHT = 24;
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:self
                                                          attribute:NSLayoutAttributeTop
-                                                        multiplier:1.0 constant:1.0]];
+                                                        multiplier:1.0 constant:0.0]];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:segmentedControl
                                                          attribute:NSLayoutAttributeWidth
                                                          relatedBy:NSLayoutRelationEqual
@@ -47,19 +47,20 @@ const NSUInteger SEGMENTED_CONTROL_HEIGHT = 24;
                                                             toItem:self
                                                          attribute:NSLayoutAttributeLeft
                                                         multiplier:1.0 constant:0.0]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:segmentedControl
+                                                         attribute:NSLayoutAttributeHeight
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:0
+                                                        multiplier:1.0 constant:SEGMENTED_CONTROL_HEIGHT]];
         [self addSubview:segmentedControl];
-        
-        [self setTabViewType:NSNoTabsNoBorder];
-        [self setDrawsBackground:NO];
-        
-        [segmentedControl setFrame:NSMakeRect(20, 0, NSWidth(self.bounds), SEGMENTED_CONTROL_HEIGHT)];
     }
     
     return self;
 }
 
 - (NSSize)minimumSize {
-    return NSMakeSize(1000, SEGMENTED_CONTROL_HEIGHT);
+    return NSMakeSize(1000, 0);
 }
 
 - (NSRect)contentRect {
@@ -85,6 +86,8 @@ const NSUInteger SEGMENTED_CONTROL_HEIGHT = 24;
     [line setLineWidth:1.0];
     [NSColorFromRGB(0xD0D0D0) set];
     [line stroke];
+    
+    [super drawRect:dirtyRect];
 }
 
 #pragma mark - Events

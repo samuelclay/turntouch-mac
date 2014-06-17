@@ -22,9 +22,8 @@
 #pragma mark - Drawing
 
 - (void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {
-    [self setupLabels];
-    
     for (int i =0 ;i < [self segmentCount]; i++) {
+        [self setupLabels:i];
         [self drawSegment:i inFrame:cellFrame withView:controlView];
     }
 }
@@ -40,31 +39,31 @@
     
     CGFloat offset = [self totalWidthInFrame:frame withRadius:radius upToSegment:segment];
     frame.origin.x = (NSWidth(frame)/2 - totalWidth/2) + (offset);
-    frame.origin.y = 0;
+    frame.origin.y = NSMinY(controlView.frame) + 3;
     frame.size.width = labelSize.width + 2*radius;
-    frame.size.height = controlView.frame.size.height;
+    frame.size.height = NSHeight(controlView.frame) - 3;
     
     // Stroke
-    [border moveToPoint:NSMakePoint(NSMinX(frame) + radius, NSMinY(frame) + 1)];
+    [border moveToPoint:NSMakePoint(NSMinX(frame) + radius, NSMinY(frame))];
     // Right-mode segment has rounded rect on right
     if (segment < self.segmentCount-1) {
-        [border lineToPoint:NSMakePoint(NSMaxX(frame) - radius/2, NSMinY(frame) + 1)];
-        [border lineToPoint:NSMakePoint(NSMaxX(frame) - radius/2, NSMaxY(frame) - 1)];
+        [border lineToPoint:NSMakePoint(NSMaxX(frame) - radius/2, NSMinY(frame))];
+        [border lineToPoint:NSMakePoint(NSMaxX(frame) - radius/2, NSMaxY(frame))];
     } else {
-        [border lineToPoint:NSMakePoint(NSMaxX(frame) - radius, NSMinY(frame) + 1)];
-        [border curveToPoint:NSMakePoint(NSMaxX(frame) - radius, NSMaxY(frame) - 1)
-               controlPoint1:NSMakePoint(NSMaxX(frame), NSMinY(frame) + 1)
-               controlPoint2:NSMakePoint(NSMaxX(frame), NSMaxY(frame) - 1)];
+        [border lineToPoint:NSMakePoint(NSMaxX(frame) - radius, NSMinY(frame))];
+        [border curveToPoint:NSMakePoint(NSMaxX(frame) - radius, NSMaxY(frame))
+               controlPoint1:NSMakePoint(NSMaxX(frame), NSMinY(frame))
+               controlPoint2:NSMakePoint(NSMaxX(frame), NSMaxY(frame))];
     }
     // Left-mode segment has rounded rect on left
     if (segment > 0) {
-        [border lineToPoint:NSMakePoint(NSMinX(frame) + radius/2, NSMaxY(frame) - 1)];
-        [border lineToPoint:NSMakePoint(NSMinX(frame) + radius/2, NSMinY(frame) + 1)];
+        [border lineToPoint:NSMakePoint(NSMinX(frame) + radius/2, NSMaxY(frame))];
+        [border lineToPoint:NSMakePoint(NSMinX(frame) + radius/2, NSMinY(frame))];
     } else {
-        [border lineToPoint:NSMakePoint(NSMinX(frame) + radius, NSMaxY(frame) - 1)];
-        [border curveToPoint:NSMakePoint(NSMinX(frame) + radius, NSMinY(frame) + 1)
-               controlPoint1:NSMakePoint(NSMinX(frame), NSMaxY(frame) - 1)
-               controlPoint2:NSMakePoint(NSMinX(frame), NSMinY(frame) + 1)];
+        [border lineToPoint:NSMakePoint(NSMinX(frame) + radius, NSMaxY(frame))];
+        [border curveToPoint:NSMakePoint(NSMinX(frame) + radius, NSMinY(frame))
+               controlPoint1:NSMakePoint(NSMinX(frame), NSMaxY(frame))
+               controlPoint2:NSMakePoint(NSMinX(frame), NSMinY(frame))];
     }
     [border closePath];
     [border setLineWidth:1];
@@ -80,10 +79,53 @@
         [NSColorFromRGB(0xF5F6F8) set];
     }
     [border fill];
-
-    [label drawInRect:frame withAttributes:labelAttributes];
+    
+    NSRect textFrame = frame;
+    textFrame.origin.y = NSHeight(frame)/2 - labelSize.height/2;
+    [label drawInRect:textFrame withAttributes:labelAttributes];
 
     [super setWidth:(labelSize.width + 2*radius) forSegment:segment];
+    
+    if (self.selectedSegment == segment + 1) {
+        NSRect rightFrame = NSMakeRect(NSMaxX(frame) - radius/2 - 4, NSMinY(frame), 4.0, NSHeight(frame));
+        [self drawShadowInFrame:rightFrame inDirection:1];
+    } else if (self.selectedSegment == segment - 1) {
+        NSRect leftFrame = NSMakeRect(NSMinX(frame) + radius/2, NSMinY(frame), 4.0, NSHeight(frame));
+        [self drawShadowInFrame:leftFrame inDirection:-1];
+    }
+}
+
+- (void)drawShadowInFrame:(NSRect)frame inDirection:(NSInteger)direction {
+    [NSGraphicsContext saveGraphicsState];
+    
+    NSRect nsRect = frame;
+    CGRect rect = *(CGRect*)&nsRect;
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    
+    CGContextRef context = (CGContextRef) [[NSGraphicsContext currentContext] graphicsPort];
+    CGContextClipToRect(context, *(CGRect*)&nsRect);
+//    CGContextClipToMask(context, rect, [self maskForRectBottom:nsRect]);
+    
+    size_t num_locations = 2;
+    CGFloat locations[2] = { 0.0, 1.0 };
+    CGFloat components[8] = {
+        0.315, 0.371, 0.450, direction > 0 ? 0.0 : 0.1,  // Right color
+        0.315, 0.371, 0.450, direction > 0 ? 0.1 : 0.0  // Left color
+    };
+    
+    CGGradientRef myGradient = CGGradientCreateWithColorComponents(colorSpace, components, locations, num_locations);
+    
+    CGPoint myStartPoint = CGPointMake(CGRectGetMinX(rect), CGRectGetMinY(rect));
+    CGPoint myEndPoint = CGPointMake(CGRectGetMaxX(rect), CGRectGetMinY(rect));
+    
+    CGContextDrawLinearGradient(context, myGradient, myStartPoint, myEndPoint, 0);
+    
+//    CGContextSetRGBFillColor(context, 0.315, 0.371, 0.450, 0.2);
+//    CGContextFillRect(context, nsRect);
+    
+    CGColorSpaceRelease(colorSpace);
+    
+    [NSGraphicsContext restoreGraphicsState];
 }
 
 - (CGFloat)totalWidthInFrame:(NSRect)frame withRadius:(CGFloat)radius upToSegment:(NSInteger)maxSegment {
@@ -91,7 +133,7 @@
 
     for (int s=0; s < maxSegment; s++) {
         totalWidth += [[self labelForSegment:s] sizeWithAttributes:labelAttributes].width;
-        totalWidth += radius;
+        totalWidth += radius * (5/3);
     }
     
     // Add back one of the cut-off sides
@@ -102,12 +144,15 @@
     return totalWidth;
 }
 
-- (void)setupLabels {
+- (void)setupLabels:(NSInteger)segment {
     NSShadow *stringShadow = [[NSShadow alloc] init];
     stringShadow.shadowColor = [NSColor whiteColor];
     stringShadow.shadowOffset = NSMakeSize(0, -1);
     stringShadow.shadowBlurRadius = 0;
-    NSColor *textColor = NSColorFromRGB(0x303AA0);
+    NSColor *textColor = NSColorFromRGB(0x404A60);
+    if (self.selectedSegment == segment) {
+        textColor = NSColorFromRGB(0x303AA0);
+    }
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [style setAlignment:NSCenterTextAlignment];
 
@@ -128,8 +173,8 @@
     loc.x += frame.origin.x;
     loc.y += frame.origin.y;
     frame.origin.x += (NSWidth(frame)/2 - totalWidth/2);
-    NSUInteger i = 0, count = [self segmentCount];
-    while (i < count) {
+    NSUInteger i = 0;
+    while (i < self.segmentCount) {
         frame.size.width = [self widthForSegment:i];
         if (NSMouseInRect(loc, frame, NO)) {
             [self setHighlightedSegment:i];
