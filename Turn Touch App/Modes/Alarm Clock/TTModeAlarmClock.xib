@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment version="1090" defaultVersion="1090" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
@@ -9,28 +9,28 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application"/>
         <customView id="2fL-Hy-hGn" customClass="TTModeAlarmClockOptionsView">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="118"/>
+            <rect key="frame" x="0.0" y="0.0" width="470" height="281"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <tabView misplaced="YES" initialItem="CX8-qh-iYR" translatesAutoresizingMaskIntoConstraints="NO" id="X6n-ol-Ve2" customClass="TTTabView">
-                    <rect key="frame" x="-7" y="-173" width="494" height="297"/>
+                <tabView initialItem="CX8-qh-iYR" translatesAutoresizingMaskIntoConstraints="NO" id="X6n-ol-Ve2" customClass="TTTabView">
+                    <rect key="frame" x="-7" y="-10" width="484" height="297"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <font key="font" metaFont="system"/>
                     <tabViewItems>
                         <tabViewItem label="Alarm times" identifier="1" id="CX8-qh-iYR">
                             <view key="view" id="yKC-Lf-rk6">
-                                <rect key="frame" x="10" y="33" width="354" height="251"/>
+                                <rect key="frame" x="10" y="33" width="464" height="251"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <box autoresizesSubviews="NO" title="Repeating alarm" borderType="bezel" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="C4a-9h-8KN" customClass="TTBoxView">
-                                        <rect key="frame" x="-3" y="113" width="360" height="140"/>
+                                        <rect key="frame" x="-3" y="113" width="470" height="140"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <view key="contentView">
-                                            <rect key="frame" x="3" y="3" width="354" height="134"/>
+                                            <rect key="frame" x="3" y="3" width="464" height="134"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qxq-st-gXj">
-                                                    <rect key="frame" x="22" y="104" width="187" height="17"/>
+                                                    <rect key="frame" x="22" y="104" width="297" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Repeating alarm" id="DaN-Su-ACl">
                                                         <font key="font" metaFont="system"/>
@@ -39,7 +39,7 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eCO-fg-RdJ">
-                                                    <rect key="frame" x="229.00000032831412" y="102" width="102" height="20"/>
+                                                    <rect key="frame" x="339.00000074210834" y="102" width="102" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="ud1-dI-ksW"/>
@@ -56,14 +56,14 @@
                                                     </connections>
                                                 </segmentedControl>
                                                 <box autoresizesSubviews="NO" transparent="YES" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="5ti-VC-9rp">
-                                                    <rect key="frame" x="24" y="1" width="306" height="88"/>
+                                                    <rect key="frame" x="24" y="1" width="416" height="88"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <view key="contentView">
-                                                        <rect key="frame" x="0.0" y="0.0" width="306" height="88"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="416" height="88"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7pB-6Y-ebj">
-                                                                <rect key="frame" x="0.0" y="69" width="306" height="19"/>
+                                                                <rect key="frame" x="0.0" y="69" width="416" height="19"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                 <segmentedCell key="cell" controlSize="small" alignment="left" style="texturedSquare" trackingMode="selectAny" id="j1V-BO-kf2">
                                                                     <font key="font" metaFont="smallSystem"/>
@@ -79,7 +79,7 @@
                                                                 </segmentedCell>
                                                             </segmentedControl>
                                                             <slider verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C08-4a-kSZ">
-                                                                <rect key="frame" x="-2" y="37" width="235" height="25"/>
+                                                                <rect key="frame" x="-2" y="37" width="318" height="25"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="23" id="nMF-6k-Uif"/>
@@ -87,7 +87,7 @@
                                                                 <sliderCell key="cell" state="on" alignment="left" maxValue="24" doubleValue="10" tickMarkPosition="above" numberOfTickMarks="12" sliderType="linear" id="pV4-CP-edK"/>
                                                             </slider>
                                                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VFd-ov-uPI">
-                                                                <rect key="frame" x="230" y="38" width="76" height="25"/>
+                                                                <rect key="frame" x="340" y="38" width="76" height="25"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="76" id="zMa-CX-1xK"/>
@@ -101,7 +101,7 @@
                                                                 </segmentedCell>
                                                             </segmentedControl>
                                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="08z-qa-ZtQ">
-                                                                <rect key="frame" x="-2" y="13" width="310" height="17"/>
+                                                                <rect key="frame" x="-2" y="13" width="420" height="17"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="17" id="3M3-xG-DY4"/>
@@ -149,14 +149,14 @@
                                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </box>
                                     <box autoresizesSubviews="NO" title="One-time alarm" borderType="bezel" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Ynp-bh-WI4" customClass="TTBoxView">
-                                        <rect key="frame" x="-3" y="-4" width="360" height="119"/>
+                                        <rect key="frame" x="-3" y="-4" width="470" height="119"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <view key="contentView">
-                                            <rect key="frame" x="3" y="3" width="354" height="113"/>
+                                            <rect key="frame" x="3" y="3" width="464" height="113"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dtp-52-lrw">
-                                                    <rect key="frame" x="229" y="81" width="102" height="20"/>
+                                                <segmentedControl verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dtp-52-lrw">
+                                                    <rect key="frame" x="288" y="81" width="102" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="l09-jC-y9C"/>
@@ -172,8 +172,8 @@
                                                         <action selector="changeSegOnetimeControl:" target="2fL-Hy-hGn" id="L6K-cU-XEM"/>
                                                     </connections>
                                                 </segmentedControl>
-                                                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HQ6-0n-2R8">
-                                                    <rect key="frame" x="22" y="83" width="200" height="17"/>
+                                                <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HQ6-0n-2R8">
+                                                    <rect key="frame" x="22" y="83" width="259" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="One-time alarm" id="QfF-5n-otp">
                                                         <font key="font" metaFont="system"/>
@@ -182,22 +182,22 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <box transparent="YES" borderWidth="0.0" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="oIq-Tz-CYQ">
-                                                    <rect key="frame" x="22" y="1" width="308" height="68"/>
+                                                    <rect key="frame" x="22" y="1" width="418" height="68"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <view key="contentView">
-                                                        <rect key="frame" x="0.0" y="0.0" width="308" height="68"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="418" height="68"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
-                                                            <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8Yx-qA-qzL">
-                                                                <rect key="frame" x="114" y="40" width="111" height="25"/>
+                                                            <slider verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Yx-qA-qzL">
+                                                                <rect key="frame" x="114" y="40" width="170" height="25"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="23" id="bk1-lf-nHF"/>
                                                                 </constraints>
                                                                 <sliderCell key="cell" state="on" alignment="left" maxValue="24" doubleValue="10" tickMarkPosition="above" numberOfTickMarks="12" sliderType="linear" id="cXa-Bf-Dxu"/>
                                                             </slider>
-                                                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Fxl-au-p7H">
-                                                                <rect key="frame" x="232" y="42" width="76" height="25"/>
+                                                            <segmentedControl verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fxl-au-p7H">
+                                                                <rect key="frame" x="291" y="42" width="76" height="25"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                 <segmentedCell key="cell" alignment="left" style="texturedSquare" trackingMode="selectOne" id="oKp-fs-WhE">
                                                                     <font key="font" metaFont="smallSystem"/>
@@ -207,8 +207,8 @@
                                                                     </segments>
                                                                 </segmentedCell>
                                                             </segmentedControl>
-                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TpU-io-mXB">
-                                                                <rect key="frame" x="-2" y="13" width="312" height="17"/>
+                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TpU-io-mXB">
+                                                                <rect key="frame" x="-2" y="13" width="371" height="17"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="7:00 AM (in 8 hours 21 minutes)" id="Rzq-bq-C5C">
                                                                     <font key="font" metaFont="system"/>
@@ -301,18 +301,18 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </tabViewItem>
                         <tabViewItem label="Music and sounds" identifier="2" id="C5r-VN-Fk5">
                             <view key="view" id="dme-kN-wNJ">
-                                <rect key="frame" x="10" y="33" width="474" height="88"/>
+                                <rect key="frame" x="10" y="33" width="464" height="88"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <box autoresizesSubviews="NO" title="General" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="4X6-Q1-Mt2" customClass="TTBoxView">
-                                        <rect key="frame" x="-3" y="-4" width="480" height="94"/>
+                                    <box autoresizesSubviews="NO" misplaced="YES" title="General" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="4X6-Q1-Mt2" customClass="TTBoxView">
+                                        <rect key="frame" x="-3" y="-4" width="470" height="257"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <view key="contentView">
-                                            <rect key="frame" x="1" y="1" width="478" height="92"/>
+                                            <rect key="frame" x="1" y="1" width="468" height="255"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rWd-kr-Tbb">
-                                                    <rect key="frame" x="24" y="64" width="92" height="17"/>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rWd-kr-Tbb">
+                                                    <rect key="frame" x="24" y="227" width="92" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Alarm volume" id="0jR-Ze-BSt">
                                                         <font key="font" metaFont="system"/>
@@ -321,7 +321,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                     </textFieldCell>
                                                 </textField>
                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dCy-Vi-FVf">
-                                                    <rect key="frame" x="123" y="43" width="299" height="14"/>
+                                                    <rect key="frame" x="123" y="206" width="299" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Overrides system volume" id="l51-Nx-Fj5">
                                                         <font key="font" metaFont="smallSystem"/>
@@ -330,12 +330,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                     </textFieldCell>
                                                 </textField>
                                                 <slider verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ue1-lp-26l">
-                                                    <rect key="frame" x="123" y="58" width="274" height="25"/>
+                                                    <rect key="frame" x="123" y="221" width="274" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <sliderCell key="cell" state="on" alignment="left" maxValue="20" doubleValue="10" tickMarkPosition="below" numberOfTickMarks="9" allowsTickMarkValuesOnly="YES" sliderType="linear" id="eCk-zB-B6m"/>
                                                 </slider>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3eh-T6-07a">
-                                                    <rect key="frame" x="401" y="65" width="21" height="17"/>
+                                                    <rect key="frame" x="401" y="228" width="21" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="5%" id="obk-e5-FEk">
                                                         <font key="font" metaFont="system"/>
@@ -343,8 +343,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lin-HM-nlJ">
-                                                    <rect key="frame" x="24" y="17" width="59" height="17"/>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lin-HM-nlJ">
+                                                    <rect key="frame" x="24" y="180" width="59" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Duration" id="hSM-hS-V9Y">
                                                         <font key="font" metaFont="system"/>
@@ -358,7 +358,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                     <sliderCell key="cell" state="on" alignment="left" maxValue="20" doubleValue="10" tickMarkPosition="below" numberOfTickMarks="9" allowsTickMarkValuesOnly="YES" sliderType="linear" id="UBI-1C-1LB"/>
                                                 </slider>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dc3-5g-yAR">
-                                                    <rect key="frame" x="373" y="18" width="49" height="17"/>
+                                                    <rect key="frame" x="373" y="181" width="49" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="90 min" id="bxJ-z4-oXd">
                                                         <font key="font" metaFont="system"/>

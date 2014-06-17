@@ -109,7 +109,6 @@
     [super drawRect:dirtyRect];
 
     NSRect rect = self.bounds;
-
     [self drawPaths:rect];
     [self colorPaths:rect];
 }

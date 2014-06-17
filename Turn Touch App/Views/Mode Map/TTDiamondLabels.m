@@ -98,8 +98,9 @@
 }
 
 
+
 - (void)drawBackground {
-    [[NSColor whiteColor] setFill];
+    [NSColorFromRGB(0xF5F6F8) set];
     NSRectFill(self.bounds);
 }
 
