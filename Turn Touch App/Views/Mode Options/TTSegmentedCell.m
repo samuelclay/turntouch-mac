@@ -30,37 +30,76 @@
 }
 
 - (void)drawSegment:(NSInteger)segment inFrame:(NSRect)frame withView:(NSView *)controlView {
+    NSBezierPath *border = [NSBezierPath bezierPath];
     NSString *label = [self labelForSegment:segment];
     NSSize labelSize = [label sizeWithAttributes:labelAttributes];
+    CGFloat radius = NSHeight(frame) * 2/3;
+    CGFloat totalWidth = [self totalWidthInFrame:frame withRadius:radius upToSegment:self.segmentCount];
     BOOL highlighted = segment == highlightedSegment;
+    BOOL selected = segment == self.selectedSegment;
     
-    frame.origin.x = (segment * labelSize.width);
+    CGFloat offset = [self totalWidthInFrame:frame withRadius:radius upToSegment:segment];
+    frame.origin.x = (NSWidth(frame)/2 - totalWidth/2) + (offset);
     frame.origin.y = 0;
-    frame.size.width = labelSize.width;
+    frame.size.width = labelSize.width + 2*radius;
     frame.size.height = controlView.frame.size.height;
     
-    [super setWidth:labelSize.width forSegment:segment];
-    
-    NSBezierPath *border = [NSBezierPath bezierPath];
-    
-    [border moveToPoint:NSMakePoint(NSMinX(frame), NSMinY(frame) + 1)];
-    [border lineToPoint:NSMakePoint(NSMaxX(frame), NSMinY(frame) + 1)];
-    [border curveToPoint:NSMakePoint(NSMaxX(frame), NSMaxY(frame))
-           controlPoint1:NSMakePoint(NSMaxX(frame) + NSHeight(frame)*2/3, NSMinY(frame) + 1)
-           controlPoint2:NSMakePoint(NSMaxX(frame) + NSHeight(frame)*2/3, NSMaxY(frame))];
-    [border lineToPoint:NSMakePoint(NSMinX(frame), NSMaxY(frame))];
+    // Stroke
+    [border moveToPoint:NSMakePoint(NSMinX(frame) + radius, NSMinY(frame) + 1)];
+    // Right-mode segment has rounded rect on right
+    if (segment < self.segmentCount-1) {
+        [border lineToPoint:NSMakePoint(NSMaxX(frame) - radius/2, NSMinY(frame) + 1)];
+        [border lineToPoint:NSMakePoint(NSMaxX(frame) - radius/2, NSMaxY(frame) - 1)];
+    } else {
+        [border lineToPoint:NSMakePoint(NSMaxX(frame) - radius, NSMinY(frame) + 1)];
+        [border curveToPoint:NSMakePoint(NSMaxX(frame) - radius, NSMaxY(frame) - 1)
+               controlPoint1:NSMakePoint(NSMaxX(frame), NSMinY(frame) + 1)
+               controlPoint2:NSMakePoint(NSMaxX(frame), NSMaxY(frame) - 1)];
+    }
+    // Left-mode segment has rounded rect on left
+    if (segment > 0) {
+        [border lineToPoint:NSMakePoint(NSMinX(frame) + radius/2, NSMaxY(frame) - 1)];
+        [border lineToPoint:NSMakePoint(NSMinX(frame) + radius/2, NSMinY(frame) + 1)];
+    } else {
+        [border lineToPoint:NSMakePoint(NSMinX(frame) + radius, NSMaxY(frame) - 1)];
+        [border curveToPoint:NSMakePoint(NSMinX(frame) + radius, NSMinY(frame) + 1)
+               controlPoint1:NSMakePoint(NSMinX(frame), NSMaxY(frame) - 1)
+               controlPoint2:NSMakePoint(NSMinX(frame), NSMinY(frame) + 1)];
+    }
     [border closePath];
-    [border setLineWidth:0.5];
-    if (highlighted) {
+    [border setLineWidth:1];
+    [NSColorFromRGB(0xD0D0D0) set];
+    [border stroke];
+    
+    // Fill
+    if (selected) {
         [NSColorFromRGB(0xFFFFFF) set];
+    } else if (highlighted) {
+        [NSColorFromRGB(0xE5E6E8) set];
     } else {
         [NSColorFromRGB(0xF5F6F8) set];
     }
     [border fill];
-    [NSColorFromRGB(0xD0D0D0) set];
-    [border stroke];
 
     [label drawInRect:frame withAttributes:labelAttributes];
+
+    [super setWidth:(labelSize.width + 2*radius) forSegment:segment];
+}
+
+- (CGFloat)totalWidthInFrame:(NSRect)frame withRadius:(CGFloat)radius upToSegment:(NSInteger)maxSegment {
+    CGFloat totalWidth = 0;
+
+    for (int s=0; s < maxSegment; s++) {
+        totalWidth += [[self labelForSegment:s] sizeWithAttributes:labelAttributes].width;
+        totalWidth += radius;
+    }
+    
+    // Add back one of the cut-off sides
+    if (maxSegment == self.segmentCount) {
+        totalWidth += radius;
+    }
+
+    return totalWidth;
 }
 
 - (void)setupLabels {
@@ -71,6 +110,7 @@
     NSColor *textColor = NSColorFromRGB(0x303AA0);
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [style setAlignment:NSCenterTextAlignment];
+
     labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Futura" size:13],
                         NSForegroundColorAttributeName: textColor,
                         NSShadowAttributeName: stringShadow,
@@ -83,10 +123,13 @@
     [self setHighlightedSegment:-1];
     NSPoint loc = currentPoint;
     NSRect frame = controlView.frame;
+    CGFloat radius = NSHeight(frame) * 2/3;
+    CGFloat totalWidth = [self totalWidthInFrame:frame withRadius:radius upToSegment:self.segmentCount];
     loc.x += frame.origin.x;
     loc.y += frame.origin.y;
+    frame.origin.x += (NSWidth(frame)/2 - totalWidth/2);
     NSUInteger i = 0, count = [self segmentCount];
-    while (i < count && frame.origin.x < controlView.frame.size.width) {
+    while (i < count) {
         frame.size.width = [self widthForSegment:i];
         if (NSMouseInRect(loc, frame, NO)) {
             [self setHighlightedSegment:i];
@@ -112,7 +155,6 @@
     return [super continueTracking:lastPoint at:currentPoint inView:controlView];
 }
 
-// TODO: fix this warning.
 - (void)stopTracking:(NSPoint)lastPoint
                   at:(NSPoint)stopPoint
               inView:(NSView *)controlView
@@ -122,10 +164,11 @@
     if (highlightedSegment >= 0) {
         [self setSelectedSegment:highlightedSegment];
         if ([self.target respondsToSelector:self.action]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-            [self.target performSelector:self.action withObject:controlView];
-#pragma clang diagnostic pop
+            IMP imp = [self.target methodForSelector:self.action];
+            void (*func)(id, SEL) = (void *)imp;
+            func(self.target, self.action);
+            // Verbose above, but without warnings from line below
+//            [self.target performSelector:self.action withObject:controlView];
         }
     }
     

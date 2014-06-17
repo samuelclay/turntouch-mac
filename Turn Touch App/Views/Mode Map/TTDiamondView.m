@@ -128,7 +128,7 @@
                                        height/2 + spacing*2)];
     [northPath lineToPoint:NSMakePoint(width * 3/4 - spacing,
                                        height * 3/4 + spacing)];
-    [northPath setLineJoinStyle:NSBevelLineJoinStyle];
+    [northPath setLineJoinStyle:NSMiterLineJoinStyle];
     [northPath closePath];
     
     eastPath = [NSBezierPath bezierPath];
@@ -140,7 +140,7 @@
                                       height * 1/4 + spacing)];
     [eastPath lineToPoint:NSMakePoint(width,
                                       height * 1/2)];
-    [eastPath setLineJoinStyle:NSBevelLineJoinStyle];
+    [eastPath setLineJoinStyle:NSMiterLineJoinStyle];
     [eastPath closePath];
 
     westPath = [NSBezierPath bezierPath];
@@ -152,7 +152,7 @@
                                       height * 1/4 + spacing)];
     [westPath lineToPoint:NSMakePoint(width * 1/2 - spacing*2,
                                       height * 1/2)];
-    [westPath setLineJoinStyle:NSBevelLineJoinStyle];
+    [westPath setLineJoinStyle:NSMiterLineJoinStyle];
     [westPath closePath];
     
     southPath = [NSBezierPath bezierPath];
@@ -164,7 +164,7 @@
                                        0)];
     [southPath lineToPoint:NSMakePoint(width * 3/4 - spacing,
                                        height * 1/4 - spacing)];
-    [southPath setLineJoinStyle:NSBevelLineJoinStyle];
+    [southPath setLineJoinStyle:NSMiterLineJoinStyle];
     [southPath closePath];
 }
 
@@ -271,6 +271,15 @@
             path.lineWidth = isInspectingDirection ? 3.0f : 1.0f;
             [modeColor setStroke];
             [path stroke];
+        }
+        
+        if (interactive) {
+            if (isInspectingDirection || isHoveringDirection) {
+                [NSColorFromRGB(0xFFFFFF) set];
+            } else {
+                [NSColorFromRGB(0xFAFBFD) set];
+            }
+            [path fill];
         }
     }
 }

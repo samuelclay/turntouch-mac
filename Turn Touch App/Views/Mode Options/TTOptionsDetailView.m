@@ -75,7 +75,6 @@
 #pragma mark - Tab View
 
 - (void)tabView:(NSTabView *)tabView didSelectTabViewItem:(NSTabViewItem *)tabViewItem {
-    NSLog(@"Tab view: %@", NSStringFromRect(self.bounds));
     dispatch_async(dispatch_get_main_queue(), ^{
         [appDelegate.panelController.window invalidateShadow];
         [appDelegate.panelController.window update];
