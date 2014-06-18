@@ -32,7 +32,7 @@
     NSBezierPath *border = [NSBezierPath bezierPath];
     NSString *label = [self labelForSegment:segment];
     NSSize labelSize = [label sizeWithAttributes:labelAttributes];
-    CGFloat radius = NSHeight(frame) * 2/3;
+    CGFloat radius = NSHeight(frame) * 2.f/3.f;
     CGFloat totalWidth = [self totalWidthInFrame:frame withRadius:radius upToSegment:self.segmentCount];
     BOOL highlighted = segment == highlightedSegment;
     BOOL selected = segment == self.selectedSegment;
@@ -41,14 +41,14 @@
     frame.origin.x = (NSWidth(frame)/2 - totalWidth/2) + (offset);
     frame.origin.y = NSMinY(controlView.frame) + 3;
     frame.size.width = labelSize.width + 2*radius;
-    frame.size.height = NSHeight(controlView.frame) - 3;
+    frame.size.height = NSHeight(controlView.frame) - 4;
     
     // Stroke
     [border moveToPoint:NSMakePoint(NSMinX(frame) + radius, NSMinY(frame))];
     // Right-mode segment has rounded rect on right
     if (segment < self.segmentCount-1) {
-        [border lineToPoint:NSMakePoint(NSMaxX(frame) - radius/2, NSMinY(frame))];
-        [border lineToPoint:NSMakePoint(NSMaxX(frame) - radius/2, NSMaxY(frame))];
+        [border lineToPoint:NSMakePoint(NSMaxX(frame), NSMinY(frame))];
+        [border lineToPoint:NSMakePoint(NSMaxX(frame), NSMaxY(frame))];
     } else {
         [border lineToPoint:NSMakePoint(NSMaxX(frame) - radius, NSMinY(frame))];
         [border curveToPoint:NSMakePoint(NSMaxX(frame) - radius, NSMaxY(frame))
@@ -57,8 +57,8 @@
     }
     // Left-mode segment has rounded rect on left
     if (segment > 0) {
-        [border lineToPoint:NSMakePoint(NSMinX(frame) + radius/2, NSMaxY(frame))];
-        [border lineToPoint:NSMakePoint(NSMinX(frame) + radius/2, NSMinY(frame))];
+        [border lineToPoint:NSMakePoint(NSMinX(frame), NSMaxY(frame))];
+        [border lineToPoint:NSMakePoint(NSMinX(frame), NSMinY(frame))];
     } else {
         [border lineToPoint:NSMakePoint(NSMinX(frame) + radius, NSMaxY(frame))];
         [border curveToPoint:NSMakePoint(NSMinX(frame) + radius, NSMinY(frame))
@@ -80,17 +80,19 @@
     }
     [border fill];
     
-    NSRect textFrame = frame;
-    textFrame.origin.y = NSHeight(frame)/2 - labelSize.height/2;
-    [label drawInRect:textFrame withAttributes:labelAttributes];
+    NSPoint textPoint = NSMakePoint(NSMinX(frame) + radius + (radius * 1.f/6.f), NSMidY(frame) - labelSize.height/2 - 1);
+    if (segment > 0) {
+        textPoint.x -= (2.f/6.f)*radius;
+    }
+    [label drawAtPoint:textPoint withAttributes:labelAttributes];
 
-    [super setWidth:(labelSize.width + 2*radius) forSegment:segment];
+    [super setWidth:(NSMaxX(frame) - NSMinX(frame)) forSegment:segment];
     
     if (self.selectedSegment == segment + 1) {
-        NSRect rightFrame = NSMakeRect(NSMaxX(frame) - radius/2 - 4, NSMinY(frame), 4.0, NSHeight(frame));
+        NSRect rightFrame = NSMakeRect(NSMaxX(frame) - 4, NSMinY(frame), 4.0, NSHeight(frame));
         [self drawShadowInFrame:rightFrame inDirection:1];
     } else if (self.selectedSegment == segment - 1) {
-        NSRect leftFrame = NSMakeRect(NSMinX(frame) + radius/2, NSMinY(frame), 4.0, NSHeight(frame));
+        NSRect leftFrame = NSMakeRect(NSMinX(frame), NSMinY(frame), 4.0, NSHeight(frame));
         [self drawShadowInFrame:leftFrame inDirection:-1];
     }
 }
@@ -133,14 +135,9 @@
 
     for (int s=0; s < maxSegment; s++) {
         totalWidth += [[self labelForSegment:s] sizeWithAttributes:labelAttributes].width;
-        totalWidth += radius * (5/3);
+        totalWidth += 2 * radius;
     }
     
-    // Add back one of the cut-off sides
-    if (maxSegment == self.segmentCount) {
-        totalWidth += radius;
-    }
-
     return totalWidth;
 }
 
@@ -154,7 +151,7 @@
         textColor = NSColorFromRGB(0x303AA0);
     }
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-    [style setAlignment:NSCenterTextAlignment];
+    [style setAlignment:NSLeftTextAlignment];
 
     labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Futura" size:13],
                         NSForegroundColorAttributeName: textColor,

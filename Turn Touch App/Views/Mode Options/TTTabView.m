@@ -81,9 +81,9 @@ const NSUInteger SEGMENTED_CONTROL_HEIGHT = 26;
 
     // Center line
     NSBezierPath *line = [NSBezierPath bezierPath];
-    [line moveToPoint:NSMakePoint(NSMinX(self.bounds), NSMinY(self.bounds) + SEGMENTED_CONTROL_HEIGHT/2)];
-    [line lineToPoint:NSMakePoint(NSMaxX(self.bounds), NSMinY(self.bounds) + SEGMENTED_CONTROL_HEIGHT/2)];
-    [line setLineWidth:1.0];
+    [line moveToPoint:NSMakePoint(NSMinX(self.bounds), NSMinY(self.bounds) + SEGMENTED_CONTROL_HEIGHT/2 + 0.5f)];
+    [line lineToPoint:NSMakePoint(NSMaxX(self.bounds), NSMinY(self.bounds) + SEGMENTED_CONTROL_HEIGHT/2 + 0.5f)];
+    [line setLineWidth:0.5f];
     [NSColorFromRGB(0xD0D0D0) set];
     [line stroke];
     
