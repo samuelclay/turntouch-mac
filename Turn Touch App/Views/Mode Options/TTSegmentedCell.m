@@ -19,6 +19,11 @@
     return self;
 }
 
+- (void)awakeFromNib {
+    NSLog(@"awakeFromNib");
+    [self setHighlightedSegment:-1];
+}
+
 #pragma mark - Drawing
 
 - (void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {
@@ -39,7 +44,7 @@
     
     CGFloat offset = [self totalWidthInFrame:frame withRadius:radius upToSegment:segment];
     frame.origin.x = (NSWidth(frame)/2 - totalWidth/2) + (offset);
-    frame.origin.y = NSMinY(controlView.frame) + 3;
+    frame.origin.y = NSMinY(frame) + 3;
     frame.size.width = labelSize.width + 2*radius;
     frame.size.height = NSHeight(controlView.frame) - 4;
     
@@ -146,7 +151,7 @@
     stringShadow.shadowColor = [NSColor whiteColor];
     stringShadow.shadowOffset = NSMakeSize(0, -1);
     stringShadow.shadowBlurRadius = 0;
-    NSColor *textColor = NSColorFromRGB(0x404A60);
+    NSColor *textColor = NSColorFromRGB(0x606A80);
     if (self.selectedSegment == segment) {
         textColor = NSColorFromRGB(0x303AA0);
     }
