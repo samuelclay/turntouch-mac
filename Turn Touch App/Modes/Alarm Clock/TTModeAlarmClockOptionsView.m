@@ -41,7 +41,7 @@ NSString *const kOnetimeAlarmEnabled = @"onetimeAlarmEnabled";
 
 - (void)changeSegOnetimeControl:(id)sender {
     [self animateBlock:^{
-        if ([[appDelegate.modeMap modeOptionValue:kOnetimeAlarmEnabled] boolValue]) {
+        if (segOnetimeControl.selectedSegment == 1) {
             [boxOnetimeConstraint animator].constant = 0;
             [boxOnetimeOptions animator].alphaValue = 0;
             [appDelegate.modeMap changeModeOption:kOnetimeAlarmEnabled to:[NSNumber numberWithBool:NO]];
@@ -56,7 +56,7 @@ NSString *const kOnetimeAlarmEnabled = @"onetimeAlarmEnabled";
 
 - (void)changeSegRepeatControl:(id)sender {
     [self animateBlock:^{
-        if ([[appDelegate.modeMap modeOptionValue:kRepeatAlarmEnabled] boolValue]) {
+        if (segRepeatControl.selectedSegment == 1) {
             [boxRepeatConstraint animator].constant = 0;
             [boxRepeatOptions animator].alphaValue = 0;
             [appDelegate.modeMap changeModeOption:kRepeatAlarmEnabled to:[NSNumber numberWithBool:NO]];

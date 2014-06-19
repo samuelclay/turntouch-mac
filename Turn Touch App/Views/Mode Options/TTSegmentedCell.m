@@ -40,7 +40,7 @@
     CGFloat radius = NSHeight(frame) * 2.f/3.f;
     CGFloat totalWidth = [self totalWidthInFrame:frame withRadius:radius upToSegment:self.segmentCount];
     BOOL highlighted = segment == highlightedSegment;
-    BOOL selected = segment == self.selectedSegment;
+    BOOL selected = [self isSelectedForSegment:segment];
     
     CGFloat offset = [self totalWidthInFrame:frame withRadius:radius upToSegment:segment];
     frame.origin.x = (NSWidth(frame)/2 - totalWidth/2) + (offset);
@@ -76,27 +76,40 @@
     [border stroke];
     
     // Fill
-    if (selected) {
-        [NSColorFromRGB(0xFFFFFF) set];
-    } else if (highlighted) {
+    BOOL selectMultiple = self.trackingMode == NSSegmentSwitchTrackingSelectAny;
+    if ((highlighted && !selectMultiple && !selected) ||
+        (highlighted && selectMultiple)) {
         [NSColorFromRGB(0xE5E6E8) set];
+    } else if (selected) {
+        [NSColorFromRGB(0xFFFFFF) set];
     } else {
         [NSColorFromRGB(0xF5F6F8) set];
     }
     [border fill];
     
-    NSPoint textPoint = NSMakePoint(NSMinX(frame) + radius + (radius * 1.f/6.f), NSMidY(frame) - labelSize.height/2 - 1);
-    if (segment > 0) {
-        textPoint.x -= (2.f/6.f)*radius;
+    CGFloat textOffset;
+    if (segment == self.segmentCount - 1) {
+        textOffset = -1 * radius * 1.f/6.f;
+    } else if (segment > 0) {
+        textOffset = 0;
+    } else {
+        textOffset = radius * 1.f/6.f;
     }
+    NSPoint textPoint = NSMakePoint(NSMinX(frame) + radius + textOffset,
+                                    NSMidY(frame) - labelSize.height/2 - 1);
     [label drawAtPoint:textPoint withAttributes:labelAttributes];
 
     [super setWidth:(NSMaxX(frame) - NSMinX(frame)) forSegment:segment];
     
-    if (self.selectedSegment == segment + 1) {
+    if (segment < (self.segmentCount-1) &&
+        [self isSelectedForSegment:(segment + 1)] &&
+        ![self isSelectedForSegment:segment]) {
         NSRect rightFrame = NSMakeRect(NSMaxX(frame) - 4, NSMinY(frame), 4.0, NSHeight(frame));
         [self drawShadowInFrame:rightFrame inDirection:1];
-    } else if (self.selectedSegment == segment - 1) {
+    }
+    if (segment > 0 &&
+        [self isSelectedForSegment:(segment - 1)] &&
+        ![self isSelectedForSegment:segment]) {
         NSRect leftFrame = NSMakeRect(NSMinX(frame), NSMinY(frame), 4.0, NSHeight(frame));
         [self drawShadowInFrame:leftFrame inDirection:-1];
     }
@@ -152,7 +165,7 @@
     stringShadow.shadowOffset = NSMakeSize(0, -1);
     stringShadow.shadowBlurRadius = 0;
     NSColor *textColor = NSColorFromRGB(0x606A80);
-    if (self.selectedSegment == segment) {
+    if ([self isSelectedForSegment:segment]) {
         textColor = NSColorFromRGB(0x303AA0);
     }
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
@@ -209,7 +222,7 @@
     [super stopTracking:lastPoint at:stopPoint inView:controlView mouseIsUp:flag];
 
     if (highlightedSegment >= 0) {
-        [self setSelectedSegment:highlightedSegment];
+        [self setSelected:[self isSelectedForSegment:highlightedSegment] forSegment:highlightedSegment];
         if ([self.target respondsToSelector:self.action]) {
             IMP imp = [self.target methodForSelector:self.action];
             void (*func)(id, SEL) = (void *)imp;
