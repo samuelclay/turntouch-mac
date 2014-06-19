@@ -219,10 +219,16 @@
                   at:(NSPoint)stopPoint
               inView:(NSView *)controlView
            mouseIsUp:(BOOL)flag {
-    [super stopTracking:lastPoint at:stopPoint inView:controlView mouseIsUp:flag];
+    // Don't call super since we need to manually set selected based on highlight
+//    [super stopTracking:lastPoint at:stopPoint inView:controlView mouseIsUp:flag];
 
     if (highlightedSegment >= 0) {
-        [self setSelected:[self isSelectedForSegment:highlightedSegment] forSegment:highlightedSegment];
+        BOOL selectMultiple = self.trackingMode == NSSegmentSwitchTrackingSelectAny;
+        if (selectMultiple) {
+            [self setSelected:![self isSelectedForSegment:highlightedSegment] forSegment:highlightedSegment];
+        } else {
+            [self setSelected:YES forSegment:highlightedSegment];
+        }
         if ([self.target respondsToSelector:self.action]) {
             IMP imp = [self.target methodForSelector:self.action];
             void (*func)(id, SEL) = (void *)imp;
@@ -234,6 +240,5 @@
     
     [self setHighlightedSegment:-1];
 }
-
 
 @end
