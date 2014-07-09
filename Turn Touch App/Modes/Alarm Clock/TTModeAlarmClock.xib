@@ -9,28 +9,28 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application"/>
         <customView id="2fL-Hy-hGn" customClass="TTModeAlarmClockOptionsView">
-            <rect key="frame" x="0.0" y="0.0" width="471" height="285"/>
+            <rect key="frame" x="0.0" y="0.0" width="471" height="288"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <tabView misplaced="YES" initialItem="CX8-qh-iYR" translatesAutoresizingMaskIntoConstraints="NO" id="X6n-ol-Ve2" customClass="TTTabView">
-                    <rect key="frame" x="-7" y="-13" width="485" height="297"/>
+                    <rect key="frame" x="-7" y="-10" width="485" height="297"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <font key="font" metaFont="system"/>
                     <tabViewItems>
                         <tabViewItem label="Alarm times" identifier="1" id="CX8-qh-iYR">
                             <view key="view" id="yKC-Lf-rk6">
-                                <rect key="frame" x="10" y="33" width="465" height="248"/>
+                                <rect key="frame" x="10" y="33" width="465" height="241"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <box autoresizesSubviews="NO" title="Repeating alarm" borderType="bezel" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="C4a-9h-8KN" customClass="TTBoxView">
-                                        <rect key="frame" x="-3" y="98" width="471" height="152"/>
+                                        <rect key="frame" x="-3" y="98" width="471" height="145"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <view key="contentView">
-                                            <rect key="frame" x="3" y="3" width="465" height="146"/>
+                                            <rect key="frame" x="3" y="3" width="465" height="139"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qxq-st-gXj">
-                                                    <rect key="frame" x="22" y="110" width="296" height="17"/>
+                                                    <rect key="frame" x="22" y="103" width="297" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Repeating alarm" id="DaN-Su-ACl">
                                                         <font key="font" size="13" name="Effra-Regular"/>
@@ -39,7 +39,7 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eCO-fg-RdJ" customClass="TTSegmentedControl">
-                                                    <rect key="frame" x="338.00000103859043" y="107" width="103" height="23"/>
+                                                    <rect key="frame" x="342" y="100" width="103" height="23"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="103" id="ud1-dI-ksW"/>
@@ -56,17 +56,17 @@
                                                     </connections>
                                                 </segmentedControl>
                                                 <box autoresizesSubviews="NO" transparent="YES" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="5ti-VC-9rp">
-                                                    <rect key="frame" x="24" y="5" width="417" height="88"/>
+                                                    <rect key="frame" x="24" y="1" width="421" height="88"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <view key="contentView">
-                                                        <rect key="frame" x="0.0" y="0.0" width="417" height="88"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="421" height="88"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7pB-6Y-ebj">
-                                                                <rect key="frame" x="0.0" y="68" width="417" height="21"/>
+                                                                <rect key="frame" x="2" y="71" width="417" height="18"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                <segmentedCell key="cell" controlSize="small" alignment="left" style="capsule" trackingMode="selectAny" id="j1V-BO-kf2" customClass="TTSegmentedCell">
-                                                                    <font key="font" metaFont="system"/>
+                                                                <segmentedCell key="cell" controlSize="small" alignment="left" style="roundRect" trackingMode="selectAny" id="j1V-BO-kf2" customClass="TTSegmentedCell">
+                                                                    <font key="font" metaFont="smallSystem"/>
                                                                     <segments>
                                                                         <segment label="Sun" imageScaling="none" width="59"/>
                                                                         <segment label="Mon" imageScaling="none" width="64" selected="YES" tag="1"/>
@@ -78,30 +78,13 @@
                                                                     </segments>
                                                                 </segmentedCell>
                                                             </segmentedControl>
-                                                            <slider verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C08-4a-kSZ">
-                                                                <rect key="frame" x="-2" y="37" width="320" height="25"/>
+                                                            <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="C08-4a-kSZ">
+                                                                <rect key="frame" x="8" y="37" width="404" height="25"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="23" id="nMF-6k-Uif"/>
-                                                                </constraints>
                                                                 <sliderCell key="cell" state="on" alignment="left" maxValue="24" doubleValue="10" tickMarkPosition="above" numberOfTickMarks="12" sliderType="linear" id="pV4-CP-edK"/>
                                                             </slider>
-                                                            <segmentedControl verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VFd-ov-uPI" customClass="TTSegmentedControl">
-                                                                <rect key="frame" x="330" y="38" width="87" height="23"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="100" id="K54-e5-GhU"/>
-                                                                </constraints>
-                                                                <segmentedCell key="cell" alignment="left" style="capsule" trackingMode="selectOne" id="4rW-0B-DSB" customClass="TTSegmentedCell">
-                                                                    <font key="font" metaFont="system"/>
-                                                                    <segments>
-                                                                        <segment label="AM" selected="YES"/>
-                                                                        <segment label="PM" tag="1"/>
-                                                                    </segments>
-                                                                </segmentedCell>
-                                                            </segmentedControl>
-                                                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="08z-qa-ZtQ">
-                                                                <rect key="frame" x="-2" y="13" width="421" height="17"/>
+                                                            <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="08z-qa-ZtQ">
+                                                                <rect key="frame" x="6" y="13" width="409" height="17"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="17" id="3M3-xG-DY4"/>
@@ -115,19 +98,15 @@
                                                         </subviews>
                                                     </view>
                                                     <constraints>
-                                                        <constraint firstItem="7pB-6Y-ebj" firstAttribute="leading" secondItem="5ti-VC-9rp" secondAttribute="leading" id="395-uD-mO4"/>
-                                                        <constraint firstItem="08z-qa-ZtQ" firstAttribute="leading" secondItem="C08-4a-kSZ" secondAttribute="leading" id="4ze-iO-qdt"/>
-                                                        <constraint firstItem="7pB-6Y-ebj" firstAttribute="top" secondItem="5ti-VC-9rp" secondAttribute="top" id="IL0-rG-w1c"/>
-                                                        <constraint firstItem="08z-qa-ZtQ" firstAttribute="top" secondItem="C08-4a-kSZ" secondAttribute="bottom" constant="9" id="IjU-nk-WLn"/>
-                                                        <constraint firstAttribute="trailing" secondItem="VFd-ov-uPI" secondAttribute="trailing" id="N8z-CT-2af"/>
-                                                        <constraint firstItem="VFd-ov-uPI" firstAttribute="trailing" secondItem="08z-qa-ZtQ" secondAttribute="trailing" id="PZj-IZ-VIk"/>
-                                                        <constraint firstItem="08z-qa-ZtQ" firstAttribute="centerX" secondItem="5ti-VC-9rp" secondAttribute="centerX" id="UlX-sr-PDA"/>
-                                                        <constraint firstItem="VFd-ov-uPI" firstAttribute="top" secondItem="7pB-6Y-ebj" secondAttribute="bottom" constant="8" id="bOK-cB-v1B"/>
-                                                        <constraint firstAttribute="trailing" secondItem="7pB-6Y-ebj" secondAttribute="trailing" id="gfs-qT-qal"/>
-                                                        <constraint firstItem="C08-4a-kSZ" firstAttribute="top" secondItem="7pB-6Y-ebj" secondAttribute="bottom" constant="8" id="ids-se-7oN"/>
-                                                        <constraint firstItem="C08-4a-kSZ" firstAttribute="leading" secondItem="5ti-VC-9rp" secondAttribute="leading" id="oeJ-rc-gia"/>
-                                                        <constraint firstAttribute="height" constant="88" id="qNr-vo-GSo"/>
-                                                        <constraint firstItem="VFd-ov-uPI" firstAttribute="leading" secondItem="C08-4a-kSZ" secondAttribute="trailing" constant="25" id="vyh-HE-6c3"/>
+                                                        <constraint firstItem="08z-qa-ZtQ" firstAttribute="top" secondItem="C08-4a-kSZ" secondAttribute="bottom" constant="9" id="0NI-NO-Z4O"/>
+                                                        <constraint firstItem="C08-4a-kSZ" firstAttribute="leading" secondItem="7pB-6Y-ebj" secondAttribute="leading" constant="8" id="5n0-gx-MrV"/>
+                                                        <constraint firstItem="C08-4a-kSZ" firstAttribute="centerX" secondItem="7pB-6Y-ebj" secondAttribute="centerX" id="RhD-A2-6fk"/>
+                                                        <constraint firstItem="7pB-6Y-ebj" firstAttribute="centerX" secondItem="08z-qa-ZtQ" secondAttribute="centerX" id="Sgh-L9-fgx"/>
+                                                        <constraint firstItem="7pB-6Y-ebj" firstAttribute="centerX" secondItem="5ti-VC-9rp" secondAttribute="centerX" id="d8I-h5-1VH"/>
+                                                        <constraint firstItem="C08-4a-kSZ" firstAttribute="top" secondItem="7pB-6Y-ebj" secondAttribute="bottom" constant="10" id="dlC-eA-jca"/>
+                                                        <constraint firstItem="7pB-6Y-ebj" firstAttribute="top" secondItem="5ti-VC-9rp" secondAttribute="top" id="drj-ps-TDg"/>
+                                                        <constraint firstAttribute="height" constant="88" id="ult-8c-kM5"/>
+                                                        <constraint firstItem="C08-4a-kSZ" firstAttribute="trailing" secondItem="7pB-6Y-ebj" secondAttribute="trailing" constant="-8" id="z7e-Cj-3hy"/>
                                                     </constraints>
                                                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -135,14 +114,14 @@
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="eCO-fg-RdJ" secondAttribute="trailing" constant="24" id="9Lf-Jl-yca"/>
-                                            <constraint firstAttribute="bottom" secondItem="5ti-VC-9rp" secondAttribute="bottom" constant="4" id="Lhn-aA-ZIF"/>
-                                            <constraint firstItem="5ti-VC-9rp" firstAttribute="leading" secondItem="C4a-9h-8KN" secondAttribute="leading" constant="24" id="PVx-NS-afV"/>
+                                            <constraint firstAttribute="trailing" secondItem="eCO-fg-RdJ" secondAttribute="trailing" constant="20" id="9Lf-Jl-yca"/>
+                                            <constraint firstItem="5ti-VC-9rp" firstAttribute="leading" secondItem="qxq-st-gXj" secondAttribute="leading" id="9sI-h7-vPZ"/>
+                                            <constraint firstItem="5ti-VC-9rp" firstAttribute="trailing" secondItem="eCO-fg-RdJ" secondAttribute="trailing" id="GCY-pH-dOD"/>
+                                            <constraint firstAttribute="bottom" secondItem="5ti-VC-9rp" secondAttribute="bottom" id="Mcy-sU-NN1"/>
                                             <constraint firstItem="qxq-st-gXj" firstAttribute="top" secondItem="C4a-9h-8KN" secondAttribute="top" constant="20" id="TBx-hy-BXA"/>
-                                            <constraint firstItem="eCO-fg-RdJ" firstAttribute="leading" secondItem="qxq-st-gXj" secondAttribute="trailing" constant="22" id="aAk-Sm-pnk"/>
-                                            <constraint firstAttribute="trailing" secondItem="5ti-VC-9rp" secondAttribute="trailing" constant="24" id="aLm-tr-057"/>
+                                            <constraint firstItem="5ti-VC-9rp" firstAttribute="top" secondItem="eCO-fg-RdJ" secondAttribute="bottom" constant="12" id="WGS-Qq-Tvg"/>
+                                            <constraint firstItem="eCO-fg-RdJ" firstAttribute="leading" secondItem="qxq-st-gXj" secondAttribute="trailing" constant="25" id="aAk-Sm-pnk"/>
                                             <constraint firstItem="qxq-st-gXj" firstAttribute="leading" secondItem="C4a-9h-8KN" secondAttribute="leading" constant="24" id="d7l-tM-aY1"/>
-                                            <constraint firstItem="5ti-VC-9rp" firstAttribute="top" secondItem="eCO-fg-RdJ" secondAttribute="bottom" constant="15" id="e7J-lP-Bj8"/>
                                             <constraint firstItem="eCO-fg-RdJ" firstAttribute="top" secondItem="C4a-9h-8KN" secondAttribute="top" constant="17" id="zx6-hi-xPm"/>
                                         </constraints>
                                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
@@ -195,33 +174,19 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <box transparent="YES" borderWidth="0.0" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="oIq-Tz-CYQ">
-                                                    <rect key="frame" x="22" y="1" width="419" height="71"/>
+                                                    <rect key="frame" x="22" y="12" width="419" height="60"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <view key="contentView">
-                                                        <rect key="frame" x="0.0" y="0.0" width="419" height="71"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="419" height="60"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
-                                                            <slider verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Yx-qA-qzL">
-                                                                <rect key="frame" x="114" y="43" width="211" height="25"/>
+                                                            <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8Yx-qA-qzL">
+                                                                <rect key="frame" x="141" y="32" width="278" height="25"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="23" id="bk1-lf-nHF"/>
-                                                                </constraints>
                                                                 <sliderCell key="cell" state="on" alignment="left" maxValue="24" doubleValue="10" tickMarkPosition="above" numberOfTickMarks="12" sliderType="linear" id="cXa-Bf-Dxu"/>
                                                             </slider>
-                                                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Fxl-au-p7H" customClass="TTSegmentedControl">
-                                                                <rect key="frame" x="332" y="45" width="87" height="23"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                <segmentedCell key="cell" alignment="left" style="capsule" trackingMode="selectOne" id="oKp-fs-WhE" customClass="TTSegmentedCell">
-                                                                    <font key="font" metaFont="system"/>
-                                                                    <segments>
-                                                                        <segment label="AM" selected="YES"/>
-                                                                        <segment label="PM" tag="1"/>
-                                                                    </segments>
-                                                                </segmentedCell>
-                                                            </segmentedControl>
                                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TpU-io-mXB">
-                                                                <rect key="frame" x="-2" y="16" width="423" height="17"/>
+                                                                <rect key="frame" x="-2" y="5" width="423" height="17"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="7:00 AM (in 8 hours 21 minutes)" id="Rzq-bq-C5C">
                                                                     <font key="font" size="13" name="Effra-Regular"/>
@@ -229,11 +194,11 @@
                                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                 </textFieldCell>
                                                             </textField>
-                                                            <datePicker verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ASz-hE-Fct">
-                                                                <rect key="frame" x="1" y="45" width="104" height="25"/>
+                                                            <datePicker verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ASz-hE-Fct" customClass="TFDatePicker">
+                                                                <rect key="frame" x="1" y="34" width="101" height="27"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="20" id="gof-xj-RsS"/>
+                                                                    <constraint firstAttribute="width" constant="98" id="Ko2-Pd-8zU"/>
                                                                 </constraints>
                                                                 <datePickerCell key="cell" scrollable="YES" lineBreakMode="clipping" alignment="left" drawsBackground="NO" id="1ct-Tn-Ozu">
                                                                     <font key="font" size="13" name="Effra-Regular"/>
@@ -265,21 +230,30 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 </datePickerCell>
                                                             </datePicker>
+                                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oyu-je-rN4">
+                                                                <rect key="frame" x="113" y="34" width="22" height="22"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="22" id="PUu-90-A0N"/>
+                                                                </constraints>
+                                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="clock b&amp;w" id="Xfo-qw-15P"/>
+                                                            </imageView>
                                                         </subviews>
                                                     </view>
                                                     <constraints>
-                                                        <constraint firstItem="Fxl-au-p7H" firstAttribute="top" secondItem="oIq-Tz-CYQ" secondAttribute="top" constant="3" id="1My-UY-GjP"/>
-                                                        <constraint firstItem="8Yx-qA-qzL" firstAttribute="bottom" secondItem="ASz-hE-Fct" secondAttribute="bottom" id="EiX-lx-inh"/>
-                                                        <constraint firstItem="8Yx-qA-qzL" firstAttribute="top" secondItem="oIq-Tz-CYQ" secondAttribute="top" constant="3" id="Fsv-c6-JwT"/>
-                                                        <constraint firstItem="8Yx-qA-qzL" firstAttribute="leading" secondItem="ASz-hE-Fct" secondAttribute="trailing" constant="14" id="NVg-WT-kgh"/>
-                                                        <constraint firstItem="ASz-hE-Fct" firstAttribute="top" secondItem="oIq-Tz-CYQ" secondAttribute="top" constant="6" id="PJP-5g-w5s"/>
+                                                        <constraint firstItem="Oyu-je-rN4" firstAttribute="centerY" secondItem="8Yx-qA-qzL" secondAttribute="centerY" id="8Bd-7M-8w5"/>
+                                                        <constraint firstItem="8Yx-qA-qzL" firstAttribute="leading" secondItem="Oyu-je-rN4" secondAttribute="trailing" constant="8" symbolic="YES" id="FOf-oD-tC9"/>
+                                                        <constraint firstItem="TpU-io-mXB" firstAttribute="top" secondItem="ASz-hE-Fct" secondAttribute="bottom" constant="12" id="HAi-8P-2cw"/>
+                                                        <constraint firstItem="Oyu-je-rN4" firstAttribute="leading" secondItem="ASz-hE-Fct" secondAttribute="trailing" constant="14" id="JDE-5R-iJh"/>
+                                                        <constraint firstItem="Oyu-je-rN4" firstAttribute="bottom" secondItem="8Yx-qA-qzL" secondAttribute="bottom" id="JSg-HT-fZi"/>
                                                         <constraint firstItem="TpU-io-mXB" firstAttribute="leading" secondItem="oIq-Tz-CYQ" secondAttribute="leading" id="PZC-Av-LQh"/>
-                                                        <constraint firstItem="TpU-io-mXB" firstAttribute="top" secondItem="ASz-hE-Fct" secondAttribute="bottom" constant="12" id="QdE-bX-XQT"/>
-                                                        <constraint firstItem="ASz-hE-Fct" firstAttribute="leading" secondItem="TpU-io-mXB" secondAttribute="leading" constant="1" id="Qzf-Bw-f3F"/>
-                                                        <constraint firstItem="Fxl-au-p7H" firstAttribute="trailing" secondItem="TpU-io-mXB" secondAttribute="trailing" id="a25-Qz-hMe"/>
-                                                        <constraint firstItem="Fxl-au-p7H" firstAttribute="leading" secondItem="8Yx-qA-qzL" secondAttribute="trailing" constant="9" id="ibG-AR-J27"/>
-                                                        <constraint firstAttribute="height" constant="71" id="pNf-HS-ux8"/>
+                                                        <constraint firstItem="Oyu-je-rN4" firstAttribute="top" secondItem="ASz-hE-Fct" secondAttribute="top" id="SKx-bP-I01"/>
+                                                        <constraint firstItem="ASz-hE-Fct" firstAttribute="leading" secondItem="oIq-Tz-CYQ" secondAttribute="leading" constant="1" id="gOJ-Oe-ODV"/>
+                                                        <constraint firstAttribute="height" constant="60" id="pNf-HS-ux8"/>
                                                         <constraint firstAttribute="trailing" secondItem="TpU-io-mXB" secondAttribute="trailing" id="pxM-d1-TUb"/>
+                                                        <constraint firstItem="Oyu-je-rN4" firstAttribute="bottom" secondItem="ASz-hE-Fct" secondAttribute="bottom" id="t7S-gD-xgJ"/>
+                                                        <constraint firstItem="8Yx-qA-qzL" firstAttribute="trailing" secondItem="TpU-io-mXB" secondAttribute="trailing" constant="-2" id="vSE-KB-erf"/>
+                                                        <constraint firstItem="8Yx-qA-qzL" firstAttribute="top" secondItem="oIq-Tz-CYQ" secondAttribute="top" constant="3" id="zeD-ws-TTU"/>
                                                     </constraints>
                                                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -298,7 +272,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <constraint firstItem="HQ6-0n-2R8" firstAttribute="leading" secondItem="Ynp-bh-WI4" secondAttribute="leading" constant="24" id="rZY-1B-PIr"/>
                                             <constraint firstItem="dtp-52-lrw" firstAttribute="top" secondItem="Ynp-bh-WI4" secondAttribute="top" constant="13" id="ss4-rM-nek"/>
                                             <constraint firstAttribute="trailing" secondItem="dtp-52-lrw" secondAttribute="trailing" constant="24" id="uZ2-VJ-zFQ"/>
-                                            <constraint firstAttribute="bottom" secondItem="oIq-Tz-CYQ" secondAttribute="bottom" id="wBV-I7-QgI"/>
+                                            <constraint firstAttribute="bottom" secondItem="oIq-Tz-CYQ" secondAttribute="bottom" constant="11" id="wBV-I7-QgI"/>
                                         </constraints>
                                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -320,7 +294,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <rect key="frame" x="10" y="33" width="465" height="248"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <box autoresizesSubviews="NO" title="General" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="4X6-Q1-Mt2" customClass="TTBoxView">
+                                    <box autoresizesSubviews="NO" misplaced="YES" title="General" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="4X6-Q1-Mt2" customClass="TTBoxView">
                                         <rect key="frame" x="-3" y="143" width="471" height="106"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <view key="contentView">
@@ -429,7 +403,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <connections>
                 <outlet property="boxOnetimeConstraint" destination="pNf-HS-ux8" id="BMj-D3-iuN"/>
                 <outlet property="boxOnetimeOptions" destination="oIq-Tz-CYQ" id="FFh-eY-ikS"/>
-                <outlet property="boxRepeatConstraint" destination="qNr-vo-GSo" id="VtC-W5-50V"/>
+                <outlet property="boxRepeatConstraint" destination="ult-8c-kM5" id="YTv-ey-A3C"/>
                 <outlet property="boxRepeatOptions" destination="5ti-VC-9rp" id="kfH-HD-XeQ"/>
                 <outlet property="segOnetimeControl" destination="dtp-52-lrw" id="MZC-wL-AdX"/>
                 <outlet property="segRepeatControl" destination="eCO-fg-RdJ" id="h2N-hq-kyY"/>
@@ -437,4 +411,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </connections>
         </customView>
     </objects>
+    <resources>
+        <image name="clock b&amp;w" width="36" height="36"/>
+    </resources>
 </document>

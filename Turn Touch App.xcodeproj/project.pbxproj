@@ -45,6 +45,13 @@
 		FF913D2C19243BFD005C336F /* TTModeAlarmSnooze.m in Sources */ = {isa = PBXBuildFile; fileRef = FF913D2B19243BFD005C336F /* TTModeAlarmSnooze.m */; };
 		FF93604C196DF0B600675B7B /* Effra_Rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF936042196DF0B600675B7B /* Effra_Rg.ttf */; };
 		FF936057196DF1A500675B7B /* Effra_Rg.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = FF936042196DF0B600675B7B /* Effra_Rg.ttf */; };
+		FF936064196DF67500675B7B /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = FF93605A196DF67500675B7B /* calendar.png */; };
+		FF936065196DF67500675B7B /* calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF93605B196DF67500675B7B /* calendar@2x.png */; };
+		FF936066196DF67500675B7B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF93605C196DF67500675B7B /* InfoPlist.strings */; };
+		FF936067196DF67500675B7B /* TFDatePicker-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF93605E196DF67500675B7B /* TFDatePicker-Info.plist */; };
+		FF936068196DF67500675B7B /* TFDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = FF936061196DF67500675B7B /* TFDatePicker.m */; };
+		FF936069196DF67500675B7B /* TFDatePickerPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF936063196DF67500675B7B /* TFDatePickerPopoverController.m */; };
+		FF93606B196DF8A200675B7B /* clock b&w.png in Resources */ = {isa = PBXBuildFile; fileRef = FF93606A196DF8A200675B7B /* clock b&w.png */; };
 		FF981FCB191AB46600A4A94B /* TTModeMenuBordersView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF981FCA191AB46600A4A94B /* TTModeMenuBordersView.m */; };
 		FF98A2E11867DBA40032CC7A /* TTActionMap.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98A2E01867DBA40032CC7A /* TTActionMap.m */; };
 		FF98A2E71867DBE70032CC7A /* TTMenubarController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98A2E31867DBE70032CC7A /* TTMenubarController.m */; };
@@ -169,6 +176,16 @@
 		FF913D2A19243BFD005C336F /* TTModeAlarmSnooze.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeAlarmSnooze.h; path = "Modes/Alarm Clock/TTModeAlarmSnooze.h"; sourceTree = "<group>"; };
 		FF913D2B19243BFD005C336F /* TTModeAlarmSnooze.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeAlarmSnooze.m; path = "Modes/Alarm Clock/TTModeAlarmSnooze.m"; sourceTree = "<group>"; };
 		FF936042196DF0B600675B7B /* Effra_Rg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Effra_Rg.ttf; sourceTree = "<group>"; };
+		FF93605A196DF67500675B7B /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
+		FF93605B196DF67500675B7B /* calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar@2x.png"; sourceTree = "<group>"; };
+		FF93605D196DF67500675B7B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FF93605E196DF67500675B7B /* TFDatePicker-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TFDatePicker-Info.plist"; sourceTree = "<group>"; };
+		FF93605F196DF67500675B7B /* TFDatePicker-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TFDatePicker-Prefix.pch"; sourceTree = "<group>"; };
+		FF936060196DF67500675B7B /* TFDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFDatePicker.h; sourceTree = "<group>"; };
+		FF936061196DF67500675B7B /* TFDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFDatePicker.m; sourceTree = "<group>"; };
+		FF936062196DF67500675B7B /* TFDatePickerPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFDatePickerPopoverController.h; sourceTree = "<group>"; };
+		FF936063196DF67500675B7B /* TFDatePickerPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFDatePickerPopoverController.m; sourceTree = "<group>"; };
+		FF93606A196DF8A200675B7B /* clock b&w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "clock b&w.png"; path = "icons/clock b&w.png"; sourceTree = "<group>"; };
 		FF981FC9191AB46600A4A94B /* TTModeMenuBordersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeMenuBordersView.h; sourceTree = "<group>"; };
 		FF981FCA191AB46600A4A94B /* TTModeMenuBordersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeMenuBordersView.m; sourceTree = "<group>"; };
 		FF981FDC191AFBEF00A4A94B /* TTModeDirection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TTModeDirection.h; path = Models/TTModeDirection.h; sourceTree = "<group>"; };
@@ -454,6 +471,7 @@
 			isa = PBXGroup;
 			children = (
 				FF8C833C17AB14B5000166FC /* Turn Touch App */,
+				FF936058196DF67500675B7B /* Vendor */,
 				FF3A9F6217C42B5E00C5C2D5 /* Images */,
 				FF8C833517AB14B5000166FC /* Frameworks */,
 				FF8C833417AB14B5000166FC /* Products */,
@@ -532,6 +550,31 @@
 			path = Resources/fonts;
 			sourceTree = "<group>";
 		};
+		FF936058196DF67500675B7B /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				FF936059196DF67500675B7B /* TFDatePicker */,
+			);
+			name = Vendor;
+			path = "Turn Touch App/Vendor";
+			sourceTree = "<group>";
+		};
+		FF936059196DF67500675B7B /* TFDatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				FF93605A196DF67500675B7B /* calendar.png */,
+				FF93605B196DF67500675B7B /* calendar@2x.png */,
+				FF93605C196DF67500675B7B /* InfoPlist.strings */,
+				FF93605E196DF67500675B7B /* TFDatePicker-Info.plist */,
+				FF93605F196DF67500675B7B /* TFDatePicker-Prefix.pch */,
+				FF936060196DF67500675B7B /* TFDatePicker.h */,
+				FF936061196DF67500675B7B /* TFDatePicker.m */,
+				FF936062196DF67500675B7B /* TFDatePickerPopoverController.h */,
+				FF936063196DF67500675B7B /* TFDatePickerPopoverController.m */,
+			);
+			path = TFDatePicker;
+			sourceTree = "<group>";
+		};
 		FF98A2FD1868D37C0032CC7A /* Mac */ = {
 			isa = PBXGroup;
 			children = (
@@ -559,6 +602,7 @@
 			isa = PBXGroup;
 			children = (
 				FF8012FA186A7B9000955218 /* vinyl.png */,
+				FF93606A196DF8A200675B7B /* clock b&w.png */,
 				FF8012F8186A79A600955218 /* clock.png */,
 				FFAA4F52182D96D60049FFC7 /* cog.png */,
 				FFAA4F53182D96D60049FFC7 /* equalizer-1.png */,
@@ -698,17 +742,22 @@
 				FFAA4F66182D96D60049FFC7 /* speaker.png in Resources */,
 				FFAA4F65182D96D60049FFC7 /* presentation-chart.png in Resources */,
 				FF8C834D17AB14B5000166FC /* MainMenu.xib in Resources */,
+				FF936067196DF67500675B7B /* TFDatePicker-Info.plist in Resources */,
+				FF93606B196DF8A200675B7B /* clock b&w.png in Resources */,
 				FFAA4F5E182D96D60049FFC7 /* cog.png in Resources */,
 				FF913D271924366C005C336F /* TTModeMac.plist in Resources */,
 				FFAA4F60182D96D60049FFC7 /* filmstrip-3.png in Resources */,
+				FF936065196DF67500675B7B /* calendar@2x.png in Resources */,
 				FFAA4F63182D96D60049FFC7 /* icon_music.png in Resources */,
 				FFAA4F5F182D96D60049FFC7 /* equalizer-1.png in Resources */,
 				FF98A3031868D3F90032CC7A /* imac.png in Resources */,
 				FF8012F9186A79A600955218 /* clock.png in Resources */,
 				FF8012F5186A1AD100955218 /* defaults.plist in Resources */,
+				FF936066196DF67500675B7B /* InfoPlist.strings in Resources */,
 				FFAA4F67182D96D60049FFC7 /* sun.png in Resources */,
 				FF98A2EF1867DC320032CC7A /* Turn Touch App.entitlements in Resources */,
 				FFAA4F62182D96D60049FFC7 /* icon_movie.png in Resources */,
+				FF936064196DF67500675B7B /* calendar.png in Resources */,
 				FFEA6CB819218A5C0010874B /* TTModeAlarmClock.xib in Resources */,
 				FF913D2919243B89005C336F /* TTModeAlarmSnooze.xib in Resources */,
 				FFAA4F64182D96D60049FFC7 /* newspaper-3.png in Resources */,
@@ -736,6 +785,7 @@
 				FF429AD21919C630007C485E /* TTModeMenuCollectionView.m in Sources */,
 				FF66F2A619228DE100031478 /* TTModeAlarmClockOptionsView.m in Sources */,
 				FF98A2E11867DBA40032CC7A /* TTActionMap.m in Sources */,
+				FF936068196DF67500675B7B /* TFDatePicker.m in Sources */,
 				FF0E12BB1824286600D49EC7 /* TTModeMap.m in Sources */,
 				FF801326186CF90700955218 /* TTBackgroundView.m in Sources */,
 				FF0E12CA18247BAE00D49EC7 /* TTMode.m in Sources */,
@@ -770,6 +820,7 @@
 				FF801329186CF90700955218 /* TTStatusItemView.m in Sources */,
 				FFA8EAA6190F11B200679A4D /* TTModeMenuItemView.m in Sources */,
 				FF981FCB191AB46600A4A94B /* TTModeMenuBordersView.m in Sources */,
+				FF936069196DF67500675B7B /* TFDatePickerPopoverController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -798,6 +849,14 @@
 				FF8C834C17AB14B5000166FC /* en */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		FF93605C196DF67500675B7B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF93605D196DF67500675B7B /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
