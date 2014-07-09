@@ -78,7 +78,7 @@
 	_popover.delegate = self;
 	_popover.contentViewController = self;
 	_popover.behavior = NSPopoverBehaviorTransient;
-	[_popover showRelativeToRect:rect ofView:view preferredEdge:NSMaxXEdge];
+	[_popover showRelativeToRect:rect ofView:view preferredEdge:NSMaxYEdge];
 }
 
 - (void)popoverWillClose:(NSNotification *)notification {

@@ -74,7 +74,7 @@
     [centredStyle setAlignment:NSCenterTextAlignment];
     NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:centredStyle,
                            NSParagraphStyleAttributeName,
-                           [NSFont fontWithName:@"Effra-Bold" size:10.f],
+                           [NSFont fontWithName:@"Effra-Medium" size:10.f],
                            NSFontAttributeName,
                            NSColorFromRGB(0xA0A3A8),
                            NSForegroundColorAttributeName,

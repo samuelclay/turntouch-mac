@@ -16,7 +16,7 @@ NSInteger buttonSize = 16;
 @property (strong) NSLayoutConstraint *widthConstraint;
 @property (strong) TFDatePickerPopoverController *datePickerViewController;
 
-- (void)performClick:(id)sender;
+//- (void)performClick:(id)sender;
 @end
 
 @implementation TFDatePicker
@@ -32,29 +32,28 @@ NSInteger buttonSize = 16;
 	}
 
 	[self sizeToFit];
-	NSDictionary *views = NSDictionaryOfVariableBindings(self);
+//	NSDictionary *views = NSDictionaryOfVariableBindings(self);
 	_widthConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0f constant:self.frame.size.width];
 	[self addConstraint:_widthConstraint];
+    
+//	NSButton *showPopoverButton = [[NSButton alloc] initWithFrame:NSZeroRect];
+//	showPopoverButton.buttonType = NSMomentaryChangeButton;
+//	showPopoverButton.bezelStyle = NSInlineBezelStyle;
+//	showPopoverButton.bordered = NO;
+//	showPopoverButton.imagePosition = NSImageOnly;
+//
+//	showPopoverButton.image = [NSImage imageNamed:@"calendar"];
+//	[showPopoverButton.cell setHighlightsBy:NSContentsCellMask];
+//
+//	[showPopoverButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+//	showPopoverButton.target = self;
+//	showPopoverButton.action = @selector(performClick:);
+//	[self addSubview:showPopoverButton];
 
-	NSButton *showPopoverButton = [[NSButton alloc] initWithFrame:NSZeroRect];
-	showPopoverButton.buttonType = NSMomentaryChangeButton;
-	showPopoverButton.bezelStyle = NSInlineBezelStyle;
-	showPopoverButton.bordered = NO;
-	showPopoverButton.imagePosition = NSImageOnly;
-
-	NSBundle *frameworkBundle = [NSBundle bundleWithIdentifier:@"com.wannabegeek.TFDatePicker"];
-	showPopoverButton.image = [frameworkBundle imageForResource:@"calendar"];
-	[showPopoverButton.cell setHighlightsBy:NSContentsCellMask];
-
-	[showPopoverButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-	showPopoverButton.target = self;
-	showPopoverButton.action = @selector(performClick:);
-	[self addSubview:showPopoverButton];
-
-	views = NSDictionaryOfVariableBindings(showPopoverButton);
-	[self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=10)-[showPopoverButton(16)]-(3)-|" options:0 metrics:nil views:views]];
-	[self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(3)-[showPopoverButton(16)]-(3)-|" options:0 metrics:nil views:views]];
-	[self addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:showPopoverButton attribute:NSLayoutAttributeCenterY multiplier:1.0f constant:0.0f]];
+//	views = NSDictionaryOfVariableBindings(showPopoverButton);
+//	[self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=10)-[showPopoverButton(16)]-(18)-|" options:0 metrics:nil views:views]];
+//	[self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(3)-[showPopoverButton(16)]-(3)-|" options:0 metrics:nil views:views]];
+//	[self addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:showPopoverButton attribute:NSLayoutAttributeCenterY multiplier:1.0f constant:0.0f]];
 
 //	[[self window] visualizeConstraints:self.constraints];
 }
@@ -74,12 +73,12 @@ NSInteger buttonSize = 16;
 - (void)sizeToFit {
 	[super sizeToFit];
 	CGRect frame = self.frame;
-	frame.size.width += 22.0f;
+//	frame.size.width += 22.0f;
 	self.frame = frame;
 }
 
-- (void)performClick:(id)sender {
-	if (!_datePickerViewController) {
+- (void)mouseDown:(NSEvent *)theEvent {
+    if (!_datePickerViewController) {
 		_datePickerViewController = [[TFDatePickerPopoverController alloc] init];
 	}
 
@@ -88,7 +87,7 @@ NSInteger buttonSize = 16;
 		[_datePickerViewController.datePicker setDatePickerElements:self.datePickerElements];
 		_datePickerViewController.datePicker.delegate = self;
 		
-		[_datePickerViewController showDatePickerRelativeToRect:[sender bounds] inView:sender completionHander:^(NSDate *selectedDate) {
+		[_datePickerViewController showDatePickerRelativeToRect:self.bounds inView:self completionHander:^(NSDate *selectedDate) {
 			// if we have bindings, update the bound "value", otherwise just update the value in the datePicker
 			NSDictionary *bindingInfo = [self infoForBinding:@"value"];
 			if (bindingInfo) {
@@ -99,6 +98,8 @@ NSInteger buttonSize = 16;
 			}
 		}];
 	}
+    
+    [super mouseDown:theEvent];
 }
 
 - (void)datePickerCell:(NSDatePickerCell *)aDatePickerCell validateProposedDateValue:(NSDate **)proposedDateValue timeInterval:(NSTimeInterval *)proposedTimeInterval {
