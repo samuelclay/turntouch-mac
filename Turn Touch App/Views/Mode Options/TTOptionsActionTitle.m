@@ -112,7 +112,7 @@
     [centredStyle setAlignment:NSCenterTextAlignment];
     NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:centredStyle,
                            NSParagraphStyleAttributeName,
-                           [NSFont fontWithName:@"Helvetica-Bold" size:10.f],
+                           [NSFont fontWithName:@"Effra-Bold" size:10.f],
                            NSFontAttributeName,
                            NSColorFromRGB(0xA0A3A8),
                            NSForegroundColorAttributeName,
@@ -130,7 +130,7 @@
     NSColor *textColor = NSColorFromRGB(0x404A60);
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [style setAlignment:NSCenterTextAlignment];
-    titleAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Futura" size:13],
+    titleAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:13],
                         NSForegroundColorAttributeName: textColor,
                         NSShadowAttributeName: stringShadow,
                         NSParagraphStyleAttributeName: style

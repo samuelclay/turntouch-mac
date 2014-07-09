@@ -60,14 +60,14 @@
     NSColor *textColor = NSColorFromRGB(0x404A60);
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [style setAlignment:NSCenterTextAlignment];
-    titleAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Futura" size:13],
+    titleAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:13],
                         NSForegroundColorAttributeName: textColor,
                         NSShadowAttributeName: stringShadow,
                         NSParagraphStyleAttributeName: style
                         };
 
     NSColor *descriptionColor = NSColorFromRGB(0x606A80);
-    descriptionAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Futura" size:13],
+    descriptionAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:13],
                               NSForegroundColorAttributeName: descriptionColor,
                               NSShadowAttributeName: stringShadow,
                               NSParagraphStyleAttributeName: style

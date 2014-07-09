@@ -43,6 +43,8 @@
 		FF913D271924366C005C336F /* TTModeMac.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF913D261924366C005C336F /* TTModeMac.plist */; };
 		FF913D2919243B89005C336F /* TTModeAlarmSnooze.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF913D2819243B89005C336F /* TTModeAlarmSnooze.xib */; };
 		FF913D2C19243BFD005C336F /* TTModeAlarmSnooze.m in Sources */ = {isa = PBXBuildFile; fileRef = FF913D2B19243BFD005C336F /* TTModeAlarmSnooze.m */; };
+		FF93604C196DF0B600675B7B /* Effra_Rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF936042196DF0B600675B7B /* Effra_Rg.ttf */; };
+		FF936057196DF1A500675B7B /* Effra_Rg.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = FF936042196DF0B600675B7B /* Effra_Rg.ttf */; };
 		FF981FCB191AB46600A4A94B /* TTModeMenuBordersView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF981FCA191AB46600A4A94B /* TTModeMenuBordersView.m */; };
 		FF98A2E11867DBA40032CC7A /* TTActionMap.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98A2E01867DBA40032CC7A /* TTActionMap.m */; };
 		FF98A2E71867DBE70032CC7A /* TTMenubarController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98A2E31867DBE70032CC7A /* TTMenubarController.m */; };
@@ -85,6 +87,19 @@
 		FFF05F3E18F77CF500AC6230 /* TTChangeButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF05F3D18F77CF500AC6230 /* TTChangeButtonView.m */; };
 		FFF05F4218F77D5D00AC6230 /* TTChangeButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF05F4118F77D5D00AC6230 /* TTChangeButtonCell.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FF93604D196DF18F00675B7B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = fonts;
+			dstSubfolderSpec = 7;
+			files = (
+				FF936057196DF1A500675B7B /* Effra_Rg.ttf in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		FF0E12B91824286600D49EC7 /* TTModeMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMap.h; path = Models/TTModeMap.h; sourceTree = "<group>"; };
@@ -153,6 +168,7 @@
 		FF913D2819243B89005C336F /* TTModeAlarmSnooze.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeAlarmSnooze.xib; path = "Modes/Alarm Clock/TTModeAlarmSnooze.xib"; sourceTree = "<group>"; };
 		FF913D2A19243BFD005C336F /* TTModeAlarmSnooze.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeAlarmSnooze.h; path = "Modes/Alarm Clock/TTModeAlarmSnooze.h"; sourceTree = "<group>"; };
 		FF913D2B19243BFD005C336F /* TTModeAlarmSnooze.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeAlarmSnooze.m; path = "Modes/Alarm Clock/TTModeAlarmSnooze.m"; sourceTree = "<group>"; };
+		FF936042196DF0B600675B7B /* Effra_Rg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Effra_Rg.ttf; sourceTree = "<group>"; };
 		FF981FC9191AB46600A4A94B /* TTModeMenuBordersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeMenuBordersView.h; sourceTree = "<group>"; };
 		FF981FCA191AB46600A4A94B /* TTModeMenuBordersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeMenuBordersView.m; sourceTree = "<group>"; };
 		FF981FDC191AFBEF00A4A94B /* TTModeDirection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TTModeDirection.h; path = Models/TTModeDirection.h; sourceTree = "<group>"; };
@@ -495,6 +511,7 @@
 		FF8C833D17AB14B5000166FC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FF936038196DF0B600675B7B /* fonts */,
 				FF98A2E91867DC320032CC7A /* main.m */,
 				FF98A2EA1867DC320032CC7A /* Turn Touch App-Info.plist */,
 				FF98A2EB1867DC320032CC7A /* Turn Touch App-Prefix.pch */,
@@ -504,6 +521,15 @@
 				FF8012F4186A1AD100955218 /* defaults.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FF936038196DF0B600675B7B /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				FF936042196DF0B600675B7B /* Effra_Rg.ttf */,
+			);
+			name = fonts;
+			path = Resources/fonts;
 			sourceTree = "<group>";
 		};
 		FF98A2FD1868D37C0032CC7A /* Mac */ = {
@@ -614,6 +640,7 @@
 				FF8C832F17AB14B5000166FC /* Sources */,
 				FF8C833017AB14B5000166FC /* Frameworks */,
 				FF8C833117AB14B5000166FC /* Resources */,
+				FF93604D196DF18F00675B7B /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -661,6 +688,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF93604C196DF0B600675B7B /* Effra_Rg.ttf in Resources */,
 				FF8C834117AB14B5000166FC /* InfoPlist.strings in Resources */,
 				FFAA4F61182D96D60049FFC7 /* heart.png in Resources */,
 				FF80132B186CF92000955218 /* TTPanel.xib in Resources */,

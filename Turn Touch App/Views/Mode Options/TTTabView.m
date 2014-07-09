@@ -36,16 +36,10 @@ const NSUInteger SEGMENTED_CONTROL_HEIGHT = 26;
                                                          attribute:NSLayoutAttributeTop
                                                         multiplier:1.0 constant:0.0]];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:segmentedControl
-                                                         attribute:NSLayoutAttributeWidth
+                                                         attribute:NSLayoutAttributeCenterX
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:self
-                                                         attribute:NSLayoutAttributeWidth
-                                                        multiplier:1.0 constant:0.0]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:segmentedControl
-                                                         attribute:NSLayoutAttributeLeft
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:self
-                                                         attribute:NSLayoutAttributeLeft
+                                                         attribute:NSLayoutAttributeCenterX
                                                         multiplier:1.0 constant:0.0]];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:segmentedControl
                                                          attribute:NSLayoutAttributeHeight

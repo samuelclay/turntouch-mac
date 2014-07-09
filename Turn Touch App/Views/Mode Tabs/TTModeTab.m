@@ -64,7 +64,7 @@
     NSColor *textColor = (hoverActive && appDelegate.modeMap.selectedModeDirection != modeDirection) ? NSColorFromRGB(0x404A60) :
     appDelegate.modeMap.selectedModeDirection == modeDirection ?
     NSColorFromRGB(0x404A60) : NSColorFromRGB(0x808388);
-    modeAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Futura" size:13],
+    modeAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:13],
                        NSForegroundColorAttributeName: textColor,
                        NSShadowAttributeName: stringShadow
                        };

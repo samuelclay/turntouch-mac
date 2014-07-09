@@ -20,7 +20,6 @@
 }
 
 - (void)awakeFromNib {
-    NSLog(@"awakeFromNib");
     [self setHighlightedSegment:-1];
 }
 
@@ -31,6 +30,8 @@
         [self setupLabels:i];
         [self drawSegment:i inFrame:cellFrame withView:controlView];
     }
+    CGFloat radius = NSHeight(cellFrame) * 2.f/3.f;
+    NSLog(@"%ld segments: total=%4.f, frame width=%4.f", (long)self.segmentCount, [self totalWidthInFrame:cellFrame withRadius:radius upToSegment:self.segmentCount], NSWidth(cellFrame));
 }
 
 - (void)drawSegment:(NSInteger)segment inFrame:(NSRect)frame withView:(NSView *)controlView {
@@ -39,36 +40,39 @@
     NSSize labelSize = [label sizeWithAttributes:labelAttributes];
     CGFloat radius = NSHeight(frame) * 2.f/3.f;
     CGFloat totalWidth = [self totalWidthInFrame:frame withRadius:radius upToSegment:self.segmentCount];
+    CGFloat overageWidth = (totalWidth - NSWidth(frame)) / self.segmentCount;
+    if (overageWidth < 0) overageWidth = 0;
     BOOL highlighted = segment == highlightedSegment;
     BOOL selected = [self isSelectedForSegment:segment];
     
     CGFloat offset = [self totalWidthInFrame:frame withRadius:radius upToSegment:segment];
-    frame.origin.x = (NSWidth(frame)/2 - totalWidth/2) + (offset);
-    frame.origin.y = NSMinY(frame) + 3;
-    frame.size.width = labelSize.width + 2*radius;
-    frame.size.height = NSHeight(controlView.frame) - 4;
+    NSRect segmentFrame = frame;
+    segmentFrame.origin.x = (NSWidth(frame)/2 - totalWidth/2) + (offset) - overageWidth*segment;
+    segmentFrame.origin.y = NSMinY(frame) + 3;
+    segmentFrame.size.width = labelSize.width + 2*radius - overageWidth;
+    segmentFrame.size.height = NSHeight(frame) - 4;
     
     // Stroke
-    [border moveToPoint:NSMakePoint(NSMinX(frame) + radius, NSMinY(frame))];
+    [border moveToPoint:NSMakePoint(NSMinX(segmentFrame) + radius, NSMinY(segmentFrame))];
     // Right-mode segment has rounded rect on right
     if (segment < self.segmentCount-1) {
-        [border lineToPoint:NSMakePoint(NSMaxX(frame), NSMinY(frame))];
-        [border lineToPoint:NSMakePoint(NSMaxX(frame), NSMaxY(frame))];
+        [border lineToPoint:NSMakePoint(NSMaxX(segmentFrame), NSMinY(segmentFrame))];
+        [border lineToPoint:NSMakePoint(NSMaxX(segmentFrame), NSMaxY(segmentFrame))];
     } else {
-        [border lineToPoint:NSMakePoint(NSMaxX(frame) - radius, NSMinY(frame))];
-        [border curveToPoint:NSMakePoint(NSMaxX(frame) - radius, NSMaxY(frame))
-               controlPoint1:NSMakePoint(NSMaxX(frame), NSMinY(frame))
-               controlPoint2:NSMakePoint(NSMaxX(frame), NSMaxY(frame))];
+        [border lineToPoint:NSMakePoint(NSMaxX(segmentFrame) - radius, NSMinY(segmentFrame))];
+        [border curveToPoint:NSMakePoint(NSMaxX(segmentFrame) - radius, NSMaxY(segmentFrame))
+               controlPoint1:NSMakePoint(NSMaxX(segmentFrame), NSMinY(segmentFrame))
+               controlPoint2:NSMakePoint(NSMaxX(segmentFrame), NSMaxY(segmentFrame))];
     }
     // Left-mode segment has rounded rect on left
     if (segment > 0) {
-        [border lineToPoint:NSMakePoint(NSMinX(frame), NSMaxY(frame))];
-        [border lineToPoint:NSMakePoint(NSMinX(frame), NSMinY(frame))];
+        [border lineToPoint:NSMakePoint(NSMinX(segmentFrame), NSMaxY(segmentFrame))];
+        [border lineToPoint:NSMakePoint(NSMinX(segmentFrame), NSMinY(segmentFrame))];
     } else {
-        [border lineToPoint:NSMakePoint(NSMinX(frame) + radius, NSMaxY(frame))];
-        [border curveToPoint:NSMakePoint(NSMinX(frame) + radius, NSMinY(frame))
-               controlPoint1:NSMakePoint(NSMinX(frame), NSMaxY(frame))
-               controlPoint2:NSMakePoint(NSMinX(frame), NSMinY(frame))];
+        [border lineToPoint:NSMakePoint(NSMinX(segmentFrame) + radius, NSMaxY(segmentFrame))];
+        [border curveToPoint:NSMakePoint(NSMinX(segmentFrame) + radius, NSMinY(segmentFrame))
+               controlPoint1:NSMakePoint(NSMinX(segmentFrame), NSMaxY(segmentFrame))
+               controlPoint2:NSMakePoint(NSMinX(segmentFrame), NSMinY(segmentFrame))];
     }
     [border closePath];
     [border setLineWidth:1];
@@ -95,22 +99,22 @@
     } else {
         textOffset = radius * 1.f/6.f;
     }
-    NSPoint textPoint = NSMakePoint(NSMinX(frame) + radius + textOffset,
-                                    NSMidY(frame) - labelSize.height/2 - 1);
+    NSPoint textPoint = NSMakePoint(NSMinX(segmentFrame) + radius + textOffset - overageWidth/2,
+                                    NSMidY(segmentFrame) - labelSize.height/2 - 1);
     [label drawAtPoint:textPoint withAttributes:labelAttributes];
 
-    [super setWidth:(NSMaxX(frame) - NSMinX(frame)) forSegment:segment];
+    [super setWidth:(NSMaxX(segmentFrame) - NSMinX(segmentFrame)) forSegment:segment];
     
     if (segment < (self.segmentCount-1) &&
         [self isSelectedForSegment:(segment + 1)] &&
         ![self isSelectedForSegment:segment]) {
-        NSRect rightFrame = NSMakeRect(NSMaxX(frame) - 4, NSMinY(frame), 4.0, NSHeight(frame));
+        NSRect rightFrame = NSMakeRect(NSMaxX(segmentFrame) - 4, NSMinY(segmentFrame), 4.0, NSHeight(segmentFrame));
         [self drawShadowInFrame:rightFrame inDirection:1];
     }
     if (segment > 0 &&
         [self isSelectedForSegment:(segment - 1)] &&
         ![self isSelectedForSegment:segment]) {
-        NSRect leftFrame = NSMakeRect(NSMinX(frame), NSMinY(frame), 4.0, NSHeight(frame));
+        NSRect leftFrame = NSMakeRect(NSMinX(segmentFrame), NSMinY(segmentFrame), 4.0, NSHeight(segmentFrame));
         [self drawShadowInFrame:leftFrame inDirection:-1];
     }
 }
@@ -171,7 +175,7 @@
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [style setAlignment:NSLeftTextAlignment];
 
-    labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Futura" size:13],
+    labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:13],
                         NSForegroundColorAttributeName: textColor,
                         NSShadowAttributeName: stringShadow,
                         NSParagraphStyleAttributeName: style

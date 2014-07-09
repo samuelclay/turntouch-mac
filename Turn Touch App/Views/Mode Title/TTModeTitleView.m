@@ -74,7 +74,7 @@
     [centredStyle setAlignment:NSCenterTextAlignment];
     NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:centredStyle,
                            NSParagraphStyleAttributeName,
-                           [NSFont fontWithName:@"Helvetica-Bold" size:10.f],
+                           [NSFont fontWithName:@"Effra-Bold" size:10.f],
                            NSFontAttributeName,
                            NSColorFromRGB(0xA0A3A8),
                            NSForegroundColorAttributeName,
@@ -91,7 +91,7 @@
     stringShadow.shadowOffset = NSMakeSize(0, -1);
     stringShadow.shadowBlurRadius = 0;
     NSColor *textColor = NSColorFromRGB(0x404A60);
-    modeAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Futura" size:13],
+    modeAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:13],
                        NSForegroundColorAttributeName: textColor,
                        NSShadowAttributeName: stringShadow
                        };
