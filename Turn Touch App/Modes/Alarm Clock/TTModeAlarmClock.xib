@@ -19,11 +19,11 @@
                     <tabViewItems>
                         <tabViewItem label="Alarm times" identifier="1" id="CX8-qh-iYR">
                             <view key="view" id="yKC-Lf-rk6">
-                                <rect key="frame" x="10" y="33" width="465" height="241"/>
+                                <rect key="frame" x="10" y="33" width="465" height="251"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <box autoresizesSubviews="NO" title="Repeating alarm" borderType="bezel" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="C4a-9h-8KN" customClass="TTBoxView">
-                                        <rect key="frame" x="-3" y="98" width="471" height="145"/>
+                                    <box autoresizesSubviews="NO" misplaced="YES" title="Repeating alarm" borderType="bezel" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="C4a-9h-8KN" customClass="TTBoxView">
+                                        <rect key="frame" x="-3" y="108" width="471" height="145"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <view key="contentView">
                                             <rect key="frame" x="3" y="3" width="465" height="139"/>
@@ -78,7 +78,7 @@
                                                                     </segments>
                                                                 </segmentedCell>
                                                             </segmentedControl>
-                                                            <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="C08-4a-kSZ">
+                                                            <slider verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C08-4a-kSZ">
                                                                 <rect key="frame" x="8" y="37" width="404" height="25"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                 <sliderCell key="cell" state="on" alignment="left" maxValue="24" doubleValue="10" tickMarkPosition="above" numberOfTickMarks="12" sliderType="linear" id="pV4-CP-edK"/>
@@ -100,7 +100,6 @@
                                                     <constraints>
                                                         <constraint firstItem="08z-qa-ZtQ" firstAttribute="top" secondItem="C08-4a-kSZ" secondAttribute="bottom" constant="9" id="0NI-NO-Z4O"/>
                                                         <constraint firstItem="C08-4a-kSZ" firstAttribute="leading" secondItem="7pB-6Y-ebj" secondAttribute="leading" constant="8" id="5n0-gx-MrV"/>
-                                                        <constraint firstItem="C08-4a-kSZ" firstAttribute="centerX" secondItem="7pB-6Y-ebj" secondAttribute="centerX" id="RhD-A2-6fk"/>
                                                         <constraint firstItem="7pB-6Y-ebj" firstAttribute="centerX" secondItem="08z-qa-ZtQ" secondAttribute="centerX" id="Sgh-L9-fgx"/>
                                                         <constraint firstItem="7pB-6Y-ebj" firstAttribute="centerX" secondItem="5ti-VC-9rp" secondAttribute="centerX" id="d8I-h5-1VH"/>
                                                         <constraint firstItem="C08-4a-kSZ" firstAttribute="top" secondItem="7pB-6Y-ebj" secondAttribute="bottom" constant="10" id="dlC-eA-jca"/>
@@ -127,8 +126,8 @@
                                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </box>
-                                    <box autoresizesSubviews="NO" title="One-time alarm" borderType="bezel" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Ynp-bh-WI4" customClass="TTBoxView">
-                                        <rect key="frame" x="-3" y="-18" width="471" height="122"/>
+                                    <box autoresizesSubviews="NO" misplaced="YES" title="One-time alarm" borderType="bezel" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Ynp-bh-WI4" customClass="TTBoxView">
+                                        <rect key="frame" x="-3" y="-8" width="471" height="122"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <view key="contentView">
                                             <rect key="frame" x="3" y="3" width="465" height="116"/>
@@ -291,11 +290,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </tabViewItem>
                         <tabViewItem label="Music and sounds" identifier="2" id="C5r-VN-Fk5">
                             <view key="view" id="dme-kN-wNJ">
-                                <rect key="frame" x="10" y="33" width="465" height="248"/>
+                                <rect key="frame" x="10" y="33" width="465" height="251"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <box autoresizesSubviews="NO" misplaced="YES" title="General" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="4X6-Q1-Mt2" customClass="TTBoxView">
-                                        <rect key="frame" x="-3" y="143" width="471" height="106"/>
+                                        <rect key="frame" x="-3" y="146" width="471" height="106"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <view key="contentView">
                                             <rect key="frame" x="1" y="1" width="469" height="104"/>
@@ -384,6 +383,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <constraints>
                                     <constraint firstItem="4X6-Q1-Mt2" firstAttribute="leading" secondItem="dme-kN-wNJ" secondAttribute="leading" id="bmb-I9-iwn"/>
                                     <constraint firstItem="4X6-Q1-Mt2" firstAttribute="top" secondItem="dme-kN-wNJ" secondAttribute="top" constant="1" id="msb-ga-5Ma"/>
+                                    <constraint firstAttribute="bottom" secondItem="4X6-Q1-Mt2" secondAttribute="bottom" id="mv5-kQ-bjq"/>
                                     <constraint firstItem="4X6-Q1-Mt2" firstAttribute="centerX" secondItem="dme-kN-wNJ" secondAttribute="centerX" id="nla-ot-jnY"/>
                                 </constraints>
                             </view>
