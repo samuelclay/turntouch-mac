@@ -21,7 +21,7 @@
 }
 
 + (NSString *)imageName {
-    return @"clock.png";
+    return @"mode_alarm.png";
 }
 
 #pragma mark - Actions

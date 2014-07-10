@@ -36,10 +36,10 @@
     NSString *machineModel = [[self class] machineModel];
     
     if ([machineModel rangeOfString:@"MacBook"].location != NSNotFound) {
-        return @"macbookpro.png";
+        return @"mode_mac.png";
     }
     
-    return @"imac.png";
+    return @"mode_mac.png";
 }
 
 #pragma mark - Actions

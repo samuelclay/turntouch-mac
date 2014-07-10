@@ -21,7 +21,7 @@
 }
 
 + (NSString *)imageName {
-    return @"newspaper-3.png";
+    return @"mode_news.png";
 }
 
 #pragma mark - Actions

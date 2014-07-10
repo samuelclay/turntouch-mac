@@ -30,8 +30,8 @@
         [self setupLabels:i];
         [self drawSegment:i inFrame:cellFrame withView:controlView];
     }
-    CGFloat radius = NSHeight(cellFrame) * 2.f/3.f;
-    NSLog(@"%ld segments: total=%4.f, frame width=%4.f", (long)self.segmentCount, [self totalWidthInFrame:cellFrame withRadius:radius upToSegment:self.segmentCount], NSWidth(cellFrame));
+//    CGFloat radius = NSHeight(cellFrame) * 2.f/3.f;
+    // NSLog(@"%ld segments: total=%4.f, frame width=%4.f", (long)self.segmentCount, [self totalWidthInFrame:cellFrame withRadius:radius upToSegment:self.segmentCount], NSWidth(cellFrame));
 }
 
 - (void)drawSegment:(NSInteger)segment inFrame:(NSRect)frame withView:(NSView *)controlView {

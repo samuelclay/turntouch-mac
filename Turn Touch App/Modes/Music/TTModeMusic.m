@@ -22,7 +22,7 @@
 }
 
 + (NSString *)imageName {
-    return @"vinyl.png";
+    return @"mode_music.png";
 }
 
 #pragma mark - Actions

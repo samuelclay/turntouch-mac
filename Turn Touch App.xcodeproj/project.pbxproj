@@ -13,6 +13,16 @@
 		FF0E12CF18247D6100D49EC7 /* TTModeMusic.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12CE18247D6100D49EC7 /* TTModeMusic.m */; };
 		FF0E12D11824811200D49EC7 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0E12D01824811200D49EC7 /* ScriptingBridge.framework */; };
 		FF0E12D41828560000D49EC7 /* TTModeVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12D31828560000D49EC7 /* TTModeVideo.m */; };
+		FF2365CC196F0DFA00A4ADBC /* mode_alarm.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2365C2196F0DFA00A4ADBC /* mode_alarm.png */; };
+		FF2365CD196F0DFA00A4ADBC /* mode_fitness.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2365C3196F0DFA00A4ADBC /* mode_fitness.png */; };
+		FF2365CE196F0DFA00A4ADBC /* mode_mac.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2365C4196F0DFA00A4ADBC /* mode_mac.png */; };
+		FF2365CF196F0DFA00A4ADBC /* mode_meditation.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2365C5196F0DFA00A4ADBC /* mode_meditation.png */; };
+		FF2365D0196F0DFA00A4ADBC /* mode_morning.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2365C6196F0DFA00A4ADBC /* mode_morning.png */; };
+		FF2365D1196F0DFA00A4ADBC /* mode_music.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2365C7196F0DFA00A4ADBC /* mode_music.png */; };
+		FF2365D2196F0DFA00A4ADBC /* mode_news.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2365C8196F0DFA00A4ADBC /* mode_news.png */; };
+		FF2365D3196F0DFA00A4ADBC /* mode_timer.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2365C9196F0DFA00A4ADBC /* mode_timer.png */; };
+		FF2365D4196F0DFA00A4ADBC /* mode_video.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2365CA196F0DFA00A4ADBC /* mode_video.png */; };
+		FF2365D5196F0DFA00A4ADBC /* mode_web.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2365CB196F0DFA00A4ADBC /* mode_web.png */; };
 		FF429AD21919C630007C485E /* TTModeMenuCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF429AD11919C630007C485E /* TTModeMenuCollectionView.m */; };
 		FF4E2630182317D000D477F6 /* TTSerialMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4E262F182317D000D477F6 /* TTSerialMonitor.m */; };
 		FF4E26321823197D00D477F6 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4E26311823197D00D477F6 /* IOKit.framework */; };
@@ -124,6 +134,16 @@
 		FF0E12D31828560000D49EC7 /* TTModeVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeVideo.m; path = Modes/Video/TTModeVideo.m; sourceTree = "<group>"; };
 		FF0E12D61828569300D49EC7 /* Quicktime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Quicktime.h; path = Modes/Video/Quicktime.h; sourceTree = "<group>"; };
 		FF0E12D71828569300D49EC7 /* VLC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VLC.h; path = Modes/Video/VLC.h; sourceTree = "<group>"; };
+		FF2365C2196F0DFA00A4ADBC /* mode_alarm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mode_alarm.png; path = icons/mode_alarm.png; sourceTree = "<group>"; };
+		FF2365C3196F0DFA00A4ADBC /* mode_fitness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mode_fitness.png; path = icons/mode_fitness.png; sourceTree = "<group>"; };
+		FF2365C4196F0DFA00A4ADBC /* mode_mac.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mode_mac.png; path = icons/mode_mac.png; sourceTree = "<group>"; };
+		FF2365C5196F0DFA00A4ADBC /* mode_meditation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mode_meditation.png; path = icons/mode_meditation.png; sourceTree = "<group>"; };
+		FF2365C6196F0DFA00A4ADBC /* mode_morning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mode_morning.png; path = icons/mode_morning.png; sourceTree = "<group>"; };
+		FF2365C7196F0DFA00A4ADBC /* mode_music.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mode_music.png; path = icons/mode_music.png; sourceTree = "<group>"; };
+		FF2365C8196F0DFA00A4ADBC /* mode_news.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mode_news.png; path = icons/mode_news.png; sourceTree = "<group>"; };
+		FF2365C9196F0DFA00A4ADBC /* mode_timer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mode_timer.png; path = icons/mode_timer.png; sourceTree = "<group>"; };
+		FF2365CA196F0DFA00A4ADBC /* mode_video.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mode_video.png; path = icons/mode_video.png; sourceTree = "<group>"; };
+		FF2365CB196F0DFA00A4ADBC /* mode_web.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mode_web.png; path = icons/mode_web.png; sourceTree = "<group>"; };
 		FF429AD01919C630007C485E /* TTModeMenuCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeMenuCollectionView.h; sourceTree = "<group>"; };
 		FF429AD11919C630007C485E /* TTModeMenuCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeMenuCollectionView.m; sourceTree = "<group>"; };
 		FF4E262E182317D000D477F6 /* TTSerialMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSerialMonitor.h; path = SerialMonitor/TTSerialMonitor.h; sourceTree = "<group>"; };
@@ -601,6 +621,16 @@
 		FFAA4F6A182D96E50049FFC7 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				FF2365C2196F0DFA00A4ADBC /* mode_alarm.png */,
+				FF2365C3196F0DFA00A4ADBC /* mode_fitness.png */,
+				FF2365C4196F0DFA00A4ADBC /* mode_mac.png */,
+				FF2365C5196F0DFA00A4ADBC /* mode_meditation.png */,
+				FF2365C6196F0DFA00A4ADBC /* mode_morning.png */,
+				FF2365C7196F0DFA00A4ADBC /* mode_music.png */,
+				FF2365C8196F0DFA00A4ADBC /* mode_news.png */,
+				FF2365C9196F0DFA00A4ADBC /* mode_timer.png */,
+				FF2365CA196F0DFA00A4ADBC /* mode_video.png */,
+				FF2365CB196F0DFA00A4ADBC /* mode_web.png */,
 				FF8012FA186A7B9000955218 /* vinyl.png */,
 				FF93606A196DF8A200675B7B /* clock b&w.png */,
 				FF8012F8186A79A600955218 /* clock.png */,
@@ -734,7 +764,9 @@
 			files = (
 				FF93604C196DF0B600675B7B /* Effra_Rg.ttf in Resources */,
 				FF8C834117AB14B5000166FC /* InfoPlist.strings in Resources */,
+				FF2365D1196F0DFA00A4ADBC /* mode_music.png in Resources */,
 				FFAA4F61182D96D60049FFC7 /* heart.png in Resources */,
+				FF2365CD196F0DFA00A4ADBC /* mode_fitness.png in Resources */,
 				FF80132B186CF92000955218 /* TTPanel.xib in Resources */,
 				FF8012FB186A7B9000955218 /* vinyl.png in Resources */,
 				FF8C834717AB14B5000166FC /* Credits.rtf in Resources */,
@@ -742,8 +774,12 @@
 				FFAA4F66182D96D60049FFC7 /* speaker.png in Resources */,
 				FFAA4F65182D96D60049FFC7 /* presentation-chart.png in Resources */,
 				FF8C834D17AB14B5000166FC /* MainMenu.xib in Resources */,
+				FF2365D2196F0DFA00A4ADBC /* mode_news.png in Resources */,
 				FF936067196DF67500675B7B /* TFDatePicker-Info.plist in Resources */,
+				FF2365D3196F0DFA00A4ADBC /* mode_timer.png in Resources */,
+				FF2365CF196F0DFA00A4ADBC /* mode_meditation.png in Resources */,
 				FF93606B196DF8A200675B7B /* clock b&w.png in Resources */,
+				FF2365D5196F0DFA00A4ADBC /* mode_web.png in Resources */,
 				FFAA4F5E182D96D60049FFC7 /* cog.png in Resources */,
 				FF913D271924366C005C336F /* TTModeMac.plist in Resources */,
 				FFAA4F60182D96D60049FFC7 /* filmstrip-3.png in Resources */,
@@ -751,7 +787,11 @@
 				FFAA4F63182D96D60049FFC7 /* icon_music.png in Resources */,
 				FFAA4F5F182D96D60049FFC7 /* equalizer-1.png in Resources */,
 				FF98A3031868D3F90032CC7A /* imac.png in Resources */,
+				FF2365CC196F0DFA00A4ADBC /* mode_alarm.png in Resources */,
+				FF2365D4196F0DFA00A4ADBC /* mode_video.png in Resources */,
+				FF2365D0196F0DFA00A4ADBC /* mode_morning.png in Resources */,
 				FF8012F9186A79A600955218 /* clock.png in Resources */,
+				FF2365CE196F0DFA00A4ADBC /* mode_mac.png in Resources */,
 				FF8012F5186A1AD100955218 /* defaults.plist in Resources */,
 				FF936066196DF67500675B7B /* InfoPlist.strings in Resources */,
 				FFAA4F67182D96D60049FFC7 /* sun.png in Resources */,

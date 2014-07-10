@@ -24,7 +24,7 @@
 }
 
 + (NSString *)imageName {
-    return @"icon_movie.png";
+    return @"mode_video.png";
 }
 
 #pragma mark - Actions
