@@ -228,7 +228,9 @@
         // Fill in the color as a stroke or fill
         NSColor *modeColor;
         if (interactive) {
-            if (isHoveringDirection && !isInspectingDirection) {
+            if (isActiveDirection) {
+                modeColor = NSColorFromRGB(0x505AC0);
+            } else if (isHoveringDirection && !isInspectingDirection) {
                 modeColor = NSColorFromRGB(0x505AC0);
             } else if (isInspectingDirection) {
                 modeColor = NSColorFromRGB(0x303AA0);
@@ -236,18 +238,33 @@
                 modeColor = NSColorFromRGB(0xD3D7D9);
             }
         } else if (statusBar) {
-            if (isSelectedDirection) {
-                modeColor = self.isHighlighted ? NSColorFromRGB(0xFFFFFF) :
-                                                 NSColorFromRGB(0x1555D8);
-            } else if (self.isHighlighted) {
-                CGFloat alpha = isActiveDirection ? 0.8 : isSelectedDirection ? 1.0 : 0.4;
-                modeColor = NSColorFromRGBAlpha(0xFFFFFF, alpha);
+            if (self.isHighlighted) {
+                if (isActiveDirection) {
+                    CGFloat alpha = isSelectedDirection ? 0.8 : 1.0;
+                    modeColor = NSColorFromRGBAlpha(0xFFFFFF, alpha);
+                } else if (isSelectedDirection) {
+                    CGFloat alpha = isActiveDirection ? 0.8 : isSelectedDirection ? 1.0 : 0.4;
+                    modeColor = NSColorFromRGBAlpha(0xFFFFFF, alpha);
+                } else {
+                    CGFloat alpha = 0.5f;
+                    modeColor = NSColorFromRGBAlpha(0xFFFFFF, alpha);
+                }
             } else {
-                CGFloat alpha = 0.5f;
-                modeColor = NSColorFromRGBAlpha(0x515559, alpha);
+                if (isActiveDirection) {
+                    CGFloat alpha = 0.8f;
+                    modeColor = NSColorFromRGBAlpha(0x303033, alpha);
+                } else if (isSelectedDirection) {
+                    modeColor = NSColorFromRGB(0x1555D8);
+                } else {
+                    CGFloat alpha = 0.5f;
+                    modeColor = NSColorFromRGBAlpha(0x515559, alpha);
+                }
             }
         } else {
-            if (isSelectedDirection) {
+            if (isActiveDirection) {
+                CGFloat alpha = 0.5f;
+                modeColor = NSColorFromRGBAlpha(0x303033, alpha);
+            } else if (isSelectedDirection) {
                 if (appDelegate.modeMap.selectedModeDirection == direction) {
                     CGFloat alpha = 0.8f;
                     modeColor = NSColorFromRGBAlpha(0x1555D8, alpha);
@@ -255,9 +272,6 @@
                     CGFloat alpha = 0.7f;
                     modeColor = NSColorFromRGBAlpha(0x303033, alpha);
                 }
-            } else if (isActiveDirection) {
-                CGFloat alpha = 0.5f;
-                modeColor = NSColorFromRGBAlpha(0x303033, alpha);
             } else {
                 CGFloat alpha = 0.2f;
                 modeColor = NSColorFromRGBAlpha(0x606063, alpha);
