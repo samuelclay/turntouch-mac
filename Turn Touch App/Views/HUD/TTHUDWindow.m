@@ -15,15 +15,12 @@
                             backing:(NSBackingStoreType)bufferingType
                               defer:(BOOL)flag {
     if (self = [super initWithContentRect:NSZeroRect styleMask:aStyle backing:bufferingType defer:flag]) {
-        NSScreen *mainScreen = [[NSScreen screens] objectAtIndex:0];
         [self makeKeyAndOrderFront:NSApp];
         [self setLevel:CGShieldingWindowLevel()];
         [self setCollectionBehavior:(NSWindowCollectionBehaviorIgnoresCycle |
                                      NSWindowCollectionBehaviorCanJoinAllSpaces)];
         [self setBackgroundColor:[NSColor clearColor]];
         [self setOpaque:NO];
-        [self setFrame:NSMakeRect(0, 0, CGRectGetWidth(mainScreen.frame), 200)
-                    display:YES];
         [self setAlphaValue:0.0];
     }
     
