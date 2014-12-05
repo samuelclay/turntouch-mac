@@ -48,6 +48,7 @@ const int MAX_STR   = 255;
             NSLog(@"Checking if isOpen: %d", res);
         } else {
             NSLog(@"Confirmed: %d %s", res, buf);
+            [appDelegate.hudController toastActiveMode];
         }
         return res > 0;
     }

@@ -100,6 +100,7 @@
 		FFD62CD11950EE770093004D /* TTSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD62CD01950EE770093004D /* TTSegmentedControl.m */; };
 		FFE30A841A323BEE001BB52A /* TTHUDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF83EF361A314FB900FEE197 /* TTHUDViewController.m */; };
 		FFE30A861A32406E001BB52A /* TTHUDView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFE30A851A32406E001BB52A /* TTHUDView.xib */; };
+		FFE30A891A32658B001BB52A /* TTHUDWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE30A881A32658B001BB52A /* TTHUDWindow.m */; };
 		FFEA6CB319216CDF0010874B /* TTModeMac.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFEA6CB219216CDF0010874B /* TTModeMac.xib */; };
 		FFEA6CB819218A5C0010874B /* TTModeAlarmClock.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFEA6CB719218A5C0010874B /* TTModeAlarmClock.xib */; };
 		FFF05F3018F60FF100AC6230 /* TTTitleBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF05F2F18F60FF100AC6230 /* TTTitleBarView.m */; };
@@ -277,6 +278,8 @@
 		FFD62CCF1950EE770093004D /* TTSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSegmentedControl.h; path = "Views/Mode Options/TTSegmentedControl.h"; sourceTree = "<group>"; };
 		FFD62CD01950EE770093004D /* TTSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSegmentedControl.m; path = "Views/Mode Options/TTSegmentedControl.m"; sourceTree = "<group>"; };
 		FFE30A851A32406E001BB52A /* TTHUDView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTHUDView.xib; path = Views/HUD/TTHUDView.xib; sourceTree = "<group>"; };
+		FFE30A871A32658B001BB52A /* TTHUDWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTHUDWindow.h; path = Views/HUD/TTHUDWindow.h; sourceTree = "<group>"; };
+		FFE30A881A32658B001BB52A /* TTHUDWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTHUDWindow.m; path = Views/HUD/TTHUDWindow.m; sourceTree = "<group>"; };
 		FFEA6CB219216CDF0010874B /* TTModeMac.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeMac.xib; path = Modes/Mac/TTModeMac.xib; sourceTree = "<group>"; };
 		FFEA6CB719218A5C0010874B /* TTModeAlarmClock.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeAlarmClock.xib; path = "Modes/Alarm Clock/TTModeAlarmClock.xib"; sourceTree = "<group>"; };
 		FFF05F2E18F60FF100AC6230 /* TTTitleBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTitleBarView.h; sourceTree = "<group>"; };
@@ -512,6 +515,8 @@
 				FF83EF361A314FB900FEE197 /* TTHUDViewController.m */,
 				FF83EF271A31312700FEE197 /* TTHUDView.h */,
 				FF83EF281A31312700FEE197 /* TTHUDView.m */,
+				FFE30A871A32658B001BB52A /* TTHUDWindow.h */,
+				FFE30A881A32658B001BB52A /* TTHUDWindow.m */,
 			);
 			name = HUD;
 			sourceTree = "<group>";
@@ -865,6 +870,7 @@
 				FFF05F3B18F77BE000AC6230 /* TTModeTitleView.m in Sources */,
 				FF429AD21919C630007C485E /* TTModeMenuCollectionView.m in Sources */,
 				FF66F2A619228DE100031478 /* TTModeAlarmClockOptionsView.m in Sources */,
+				FFE30A891A32658B001BB52A /* TTHUDWindow.m in Sources */,
 				FF98A2E11867DBA40032CC7A /* TTActionMap.m in Sources */,
 				FF936068196DF67500675B7B /* TFDatePicker.m in Sources */,
 				FF0E12BB1824286600D49EC7 /* TTModeMap.m in Sources */,
