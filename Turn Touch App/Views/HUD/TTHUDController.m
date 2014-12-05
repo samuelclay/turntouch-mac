@@ -29,13 +29,7 @@
     
 }
 
-- (void)toastActiveMode {
-    [self fadeIn:nil];
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 2.0 * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [self fadeOut:nil];
-    });
-}
+#pragma mark - Window management
 
 - (IBAction)fadeIn:(id)sender
 {
@@ -59,6 +53,16 @@
     }];
     [[hudWindow animator] setAlphaValue:0.f];
     [NSAnimationContext endGrouping];
+}
+
+#pragma mark - Toasts
+
+- (void)toastActiveMode {
+    [self fadeIn:nil];
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 2.0 * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self fadeOut:nil];
+    });
 }
 
 @end
