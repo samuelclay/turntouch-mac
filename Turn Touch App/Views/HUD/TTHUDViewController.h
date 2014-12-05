@@ -13,4 +13,6 @@
     TTHUDView *hudView;
 }
 
+@property (nonatomic) IBOutlet TTHUDView *hudView;
+
 @end

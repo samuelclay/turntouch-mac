@@ -13,6 +13,6 @@
 @interface TTHUDController : NSWindowController <NSWindowDelegate> {
 }
 
-@property (nonatomic) NSWindow *hudWindow;
+@property (nonatomic) IBOutlet NSWindow *hudWindow;
 @property (nonatomic) TTHUDViewController *hudViewController;
 @end

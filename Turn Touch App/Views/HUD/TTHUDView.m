@@ -21,6 +21,7 @@
       initWithStartingColor:[NSColor colorWithCalibratedWhite:1.0 alpha:1.0]
       endingColor:[NSColor colorWithCalibratedWhite:0.82 alpha:1.0]];
     [borderGradient drawInBezierPath:ellipse angle:-90];
+    
 }
 
 @end

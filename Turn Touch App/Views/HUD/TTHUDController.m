@@ -17,19 +17,16 @@
 @synthesize hudWindow;
 @synthesize hudViewController;
 
-- (instancetype)init {
-    if (self = [super init]) {
-        hudWindow = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 200, 200, 500)
-                                                        styleMask:NSBorderlessWindowMask
-                                                          backing:NSBackingStoreBuffered
-                                                            defer:NO
-                                                           screen:[[NSScreen screens] objectAtIndex:0]];
-        hudViewController = [[TTHUDViewController alloc] initWithNibName:@"TTHUDView"
-                                                                  bundle:nil];
-        [self setWindow:hudWindow];
-        [self setContentViewController:hudViewController];
-    }
-    return self;
+- (void)awakeFromNib {
+    NSScreen *mainScreen = [[NSScreen screens] objectAtIndex:0];
+    [hudWindow setFrame:NSMakeRect(0, 0, CGRectGetWidth(mainScreen.frame), 200)
+                  display:YES
+                  animate:YES];
+    [hudWindow makeKeyAndOrderFront:NSApp];
+    [hudWindow setLevel:CGShieldingWindowLevel()];
+    hudWindow.collectionBehavior = (NSWindowCollectionBehaviorIgnoresCycle |
+                                    NSWindowCollectionBehaviorCanJoinAllSpaces);
+    [self setWindow:hudWindow];
 }
 
 @end

@@ -11,6 +11,8 @@
 
 @implementation TTHUDViewController
 
+@synthesize hudView;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 }

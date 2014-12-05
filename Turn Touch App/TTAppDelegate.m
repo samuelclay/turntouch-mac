@@ -45,7 +45,9 @@ void *kContextActivePanel = &kContextActivePanel;
     self.modeMap = [[TTModeMap alloc] init];
     self.menubarController = [[TTMenubarController alloc] init];
     self.serialMonitor = [[TTSerialMonitor alloc] init];
-    self.hudController = [[TTHUDController alloc] init];
+    self.hudController = [[TTHUDController alloc] initWithWindowNibName:@"TTHUDView"];
+    
+    [self.hudController showWindow:self];
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender {
