@@ -40,7 +40,7 @@
         self.ignoreSelectedMode = NO;
         self.ignoreActiveMode = NO;
         
-        appDelegate = [NSApp delegate];
+        appDelegate = (TTAppDelegate *)[NSApp delegate];
         
         [self registerAsObserver];
         [self createTrackingArea];

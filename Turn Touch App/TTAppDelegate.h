@@ -12,9 +12,11 @@
 #import "TTPanelController.h"
 #import "TTSerialMonitor.h"
 #import "TTModeMap.h"
+#import "TTHUDController.h"
 
 @class TTModeMap;
 @class TTPanelController;
+@class TTHUDController;
 
 #define OPEN_DURATION 0.42f
 
@@ -25,6 +27,7 @@
 @property (nonatomic, strong, readonly) TTPanelController *panelController;
 @property (nonatomic) TTSerialMonitor *serialMonitor;
 @property (nonatomic) TTModeMap *modeMap;
+@property (nonatomic) TTHUDController *hudController;
 
 - (IBAction)togglePanel:(id)sender;
 

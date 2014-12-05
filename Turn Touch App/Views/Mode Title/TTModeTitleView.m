@@ -18,7 +18,7 @@
 - (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        appDelegate = [NSApp delegate];
+        appDelegate = (TTAppDelegate *)[NSApp delegate];
         self.translatesAutoresizingMaskIntoConstraints = NO;
 
         changeButton = [[TTChangeButtonView alloc] init];

@@ -14,8 +14,7 @@
 #import "hidapi.h"
 
 #define vendorID    0x16c0
-#define productID   0x05df
-const int kBaudRate = 9600;
+#define productID   0x0480
 const int MAX_STR   = 255;
 
 @implementation TTSerialMonitor
@@ -27,7 +26,7 @@ const int MAX_STR   = 255;
     if (self) {
         // we don't have a serial port open yet
         isVerifiedSerialDevice = NO;
-        appDelegate = [NSApp delegate];
+        appDelegate = (TTAppDelegate *)[NSApp delegate];
         buttonTimer = [[TTButtonTimer alloc] init];
         textBuffer = [NSMutableString new];
         rejectedSerialPorts = [NSMutableArray new];
@@ -41,7 +40,7 @@ const int MAX_STR   = 255;
 
 - (BOOL)confirmDevice {
     if (hidDevice) {
-        unsigned char buf[65];
+        unsigned char buf[4];
         int res = 0;
         buf[0] = 0x0;
         res = hid_get_feature_report(hidDevice, buf, sizeof(buf));
@@ -83,23 +82,27 @@ const int MAX_STR   = 255;
     }
 
     [self confirmDevice];
-
 	res = hid_get_manufacturer_string(hidDevice, wstr, MAX_STR);
 	res = hid_get_product_string(hidDevice, wstr, MAX_STR);
 	printf("Manufacturer String: %S\n", wstr);
 	wprintf(L"Product String: %S\n", wstr);
-    
+
+//    unsigned char buf[2];
+//    buf[0] = 0x0;
+//    buf[1] = '$';
+//    hid_write(hidDevice, buf, sizeof(buf));
+
     // Start a read poller in the background
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC);
 	dispatch_after(popTime, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
 		while (self.isOpen) {
 			unsigned char *buf = malloc(8);
-			long lengthRead = hid_read_timeout(hidDevice, buf, 32, 10 * 1000);
+			long lengthRead = hid_read_timeout(hidDevice, buf, 8, 10 * 1000);
             if (!self.isOpen) break;
 			if (lengthRead > 0) {
 				NSData *readData = [NSData dataWithBytes:buf length:lengthRead];
 				if (readData != nil) {
-					[self serialPortReceivedData:readData];
+					[self parse:readData];
 				}
 			} else if (lengthRead < 0) {
                 printf("Unable to read()\n");
@@ -108,23 +111,16 @@ const int MAX_STR   = 255;
 	});
 }
 
-- (void)serialPortReceivedData:(NSData *)data {
-	NSString *string = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-	if ([string length] == 0) return;
-    NSLog(@"Received: (%d) %@", (int)[string length], string);
-    [self parse:string];
-}
-
-
 #pragma mark - Parse Data
 
-- (void)parse:(NSString *)buffer {
+- (void)parse:(NSData *)data {
     
     NSMutableArray *substrings = [NSMutableArray new];
-    for (int i=0; i < [buffer length]; i++) {
-        int pos = [[buffer substringWithRange:NSMakeRange(i, 1)] intValue];
+    for (int i=0; i < [data length]; i++) {
+        int pos = *(int *)[[data subdataWithRange:NSMakeRange(i, 1)] bytes];
         [substrings addObject:[NSNumber numberWithInt:pos]];
     }
+    NSLog(@"Received: %@", [substrings componentsJoinedByString:@""]);
     dispatch_async(dispatch_get_main_queue(), ^{
         [buttonTimer readButtons:substrings];
     });

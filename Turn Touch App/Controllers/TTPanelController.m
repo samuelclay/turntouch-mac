@@ -34,6 +34,7 @@
     self = [super initWithWindowNibName:@"TTPanel"];
     if (self != nil) {
         _delegate = delegate;
+        appDelegate = (TTAppDelegate *)[NSApp delegate];
     }
     return self;
 }
@@ -51,13 +52,13 @@
     NSPanel *panel = (id)[self window];
     [panel setDelegate:self];
     [panel setAcceptsMouseMovedEvents:YES];
-    [panel setLevel:NSMainMenuWindowLevel];
+    [panel setLevel:NSPopUpMenuWindowLevel];
     [panel setOpaque:NO];
     [panel setBackgroundColor:[NSColor clearColor]];
 
     self.backgroundView = [[TTBackgroundView alloc] init];
     [panel setContentView:self.backgroundView];
-
+    
     [self registerAsObserver];
 }
 
@@ -175,6 +176,8 @@
     NSRect statusRect = [self statusRectForWindow:panel];
     
     NSRect panelRect = [panel frame];
+    panelRect.size.height = PANEL_HEIGHT;
+    panelRect.size.width = PANEL_WIDTH;
     panelRect.origin.x = roundf(NSMidX(statusRect) - NSWidth(panelRect) / 2);
     panelRect.origin.y = NSMaxY(statusRect) - NSHeight(panelRect);
     
@@ -182,7 +185,6 @@
         panelRect.origin.x -= NSMaxX(panelRect) - (NSMaxX(screenRect) - ARROW_HEIGHT);
 
     [NSApp activateIgnoringOtherApps:NO];
-//    [panel setContentView:self.backgroundView];
     [panel setAlphaValue:0];
     [panel setFrame:panelRect display:YES];
     [panel setDelegate:self];

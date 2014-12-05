@@ -15,7 +15,7 @@
 - (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        appDelegate = [NSApp delegate];
+        appDelegate = (TTAppDelegate *)[NSApp delegate];
         self.translatesAutoresizingMaskIntoConstraints = NO;
         [self setMaxNumberOfColumns:2];
     }

@@ -19,7 +19,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        appDelegate = [NSApp delegate];
+        appDelegate = (TTAppDelegate *)[NSApp delegate];
         hoverActive = NO;
         mouseDownActive = NO;
         

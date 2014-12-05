@@ -18,10 +18,4 @@
     return YES;
 }
 
-- (void)awakeFromNib {
-    TTAppDelegate *appDelegate = [NSApp delegate];
-    
-    [self setContentView:appDelegate.panelController.backgroundView];
-}
-
 @end

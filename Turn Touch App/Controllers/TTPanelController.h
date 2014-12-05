@@ -17,6 +17,7 @@
 @class TTBackgroundView;
 
 @interface TTPanelController : NSWindowController <NSWindowDelegate> {
+    TTAppDelegate *appDelegate;
     BOOL _hasActivePanel;
     TTBackgroundView *_backgroundView;
     __unsafe_unretained id<TTPanelControllerDelegate> _delegate;

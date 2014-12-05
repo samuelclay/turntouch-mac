@@ -39,8 +39,8 @@
 
 - (id)initWithFrame:(NSRect)frameRect {
     if (self = [super initWithFrame:frameRect]) {
-        appDelegate = [NSApp delegate];
-                
+        appDelegate = (TTAppDelegate *)[NSApp delegate];
+        
         arrowView = [[TTPanelArrowView alloc] init];
         titleBarView = [[TTTitleBarView alloc] init];
         modeTabs = [[TTModeTabsContainer alloc] init];

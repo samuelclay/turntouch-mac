@@ -22,7 +22,7 @@
     return self;
 }
 
-- (NSInteger)highlightsBy {
+- (NSCellStyleMask)highlightsBy {
     return NSContentsCellMask;
 }
 

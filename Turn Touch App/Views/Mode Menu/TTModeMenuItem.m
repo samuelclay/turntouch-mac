@@ -12,7 +12,7 @@
 @implementation TTModeMenuItem
 
 - (void)loadView {
-    appDelegate = [NSApp delegate];
+    appDelegate = (TTAppDelegate *)[NSApp delegate];
     NSRect collectionRect;
     TTModeMenuCollectionView *cv = (TTModeMenuCollectionView *)self.collectionView;
 

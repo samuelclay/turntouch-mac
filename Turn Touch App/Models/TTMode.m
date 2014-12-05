@@ -14,7 +14,7 @@
 - (id)init {
     self = [super init];
     if (self) {
-        appDelegate = [NSApp delegate];
+        appDelegate = (TTAppDelegate *)[NSApp delegate];
     }
     return self;
 }

@@ -14,6 +14,7 @@
 @synthesize panelController = _panelController;
 @synthesize menubarController = _menubarController;
 @synthesize serialMonitor = _serialMonitor;
+@synthesize hudController = _hudController;
 
 #pragma mark - Dealloc
 
@@ -44,6 +45,7 @@ void *kContextActivePanel = &kContextActivePanel;
     self.modeMap = [[TTModeMap alloc] init];
     self.menubarController = [[TTMenubarController alloc] init];
     self.serialMonitor = [[TTSerialMonitor alloc] init];
+    self.hudController = [[TTHUDController alloc] init];
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender {
@@ -71,6 +73,14 @@ void *kContextActivePanel = &kContextActivePanel;
         [_panelController addObserver:self forKeyPath:@"hasActivePanel" options:0 context:kContextActivePanel];
     }
     return _panelController;
+}
+
+- (TTHUDController *)hudController {
+    if (_hudController == nil) {
+        _hudController = [[TTHUDController alloc] init];
+        [_hudController addObserver:self forKeyPath:@"hasActivePanel" options:0 context:kContextActivePanel];
+    }
+    return _hudController;
 }
 
 #pragma mark - TTPanelControllerDelegate

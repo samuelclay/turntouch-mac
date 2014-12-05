@@ -15,7 +15,7 @@
 - (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        appDelegate = [NSApp delegate];
+        appDelegate = (TTAppDelegate *)[NSApp delegate];
         self.translatesAutoresizingMaskIntoConstraints = NO;
         title = [NSImage imageNamed:@"Turn Touch title.png"];
         [title setSize:NSMakeSize(100, 11)];

@@ -21,7 +21,7 @@
     self = [super init];
     if (self) {
         menuType = _menuType;
-        appDelegate = [NSApp delegate];
+        appDelegate = (TTAppDelegate *)[NSApp delegate];
         
         self.translatesAutoresizingMaskIntoConstraints = NO;
         

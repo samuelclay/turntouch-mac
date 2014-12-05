@@ -15,7 +15,7 @@
 - (id)initWithFrame:(NSRect)frame direction:(TTModeDirection)direction {
     self = [super initWithFrame:frame];
     if (self) {
-        appDelegate = [NSApp delegate];
+        appDelegate = (TTAppDelegate *)[NSApp delegate];
         modeDirection = direction;
         hoverActive = NO;
         mouseDownActive = NO;
