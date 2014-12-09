@@ -7,12 +7,18 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "TTAppDelegate.h"
 #import "TTHUDView.h"
+#import "TTHUDWindow.h"
 
-@interface TTHUDViewController : NSViewController {
-    TTHUDView *hudView;
+@interface TTHUDViewController : NSViewController <NSWindowDelegate> {
+    TTAppDelegate *appDelegate;
+    TTHUDWindow *hudWindow;
 }
 
 @property (nonatomic) IBOutlet TTHUDView *hudView;
+
+- (IBAction)fadeIn:(id)sender;
+- (IBAction)fadeOut:(id)sender;
 
 @end

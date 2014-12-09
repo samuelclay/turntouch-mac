@@ -7,7 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTHUDController">
             <connections>
-                <outlet property="hudWindow" destination="g1J-6N-lTV" id="Xv4-K7-RWL"/>
+                <outlet property="hudViewController" destination="Spi-30-pX9" id="plH-Wl-cjE"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -22,7 +22,7 @@
                 <autoresizingMask key="autoresizingMask"/>
             </view>
             <connections>
-                <outlet property="delegate" destination="-2" id="2wF-Ox-aBg"/>
+                <outlet property="delegate" destination="-2" id="Z07-gG-wWy"/>
             </connections>
         </window>
         <viewController id="Spi-30-pX9" customClass="TTHUDViewController">

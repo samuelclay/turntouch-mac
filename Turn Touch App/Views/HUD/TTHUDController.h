@@ -15,9 +15,10 @@
     TTAppDelegate *appDelegate;
 }
 
+@property (nonatomic) IBOutlet TTHUDViewController *hudViewController;
 @property (nonatomic) IBOutlet TTHUDWindow *hudWindow;
-@property (nonatomic) TTHUDViewController *hudViewController;
 
 - (void)toastActiveMode;
+- (void)toastActiveAction;
 
 @end

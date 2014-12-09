@@ -73,7 +73,7 @@
     [appDelegate.modeMap runActiveButton];
     [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];
     
-    [appDelegate.hudController toastActiveMode];
+    [appDelegate.hudController toastActiveAction];
 }
 
 @end
