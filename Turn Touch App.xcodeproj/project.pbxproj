@@ -13,6 +13,7 @@
 		FF0E12CF18247D6100D49EC7 /* TTModeMusic.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12CE18247D6100D49EC7 /* TTModeMusic.m */; };
 		FF0E12D11824811200D49EC7 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0E12D01824811200D49EC7 /* ScriptingBridge.framework */; };
 		FF0E12D41828560000D49EC7 /* TTModeVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12D31828560000D49EC7 /* TTModeVideo.m */; };
+		FF1B022B1A36898700BE764E /* NSObject+CancelableBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1B022A1A36898700BE764E /* NSObject+CancelableBlocks.m */; };
 		FF2365CC196F0DFA00A4ADBC /* mode_alarm.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2365C2196F0DFA00A4ADBC /* mode_alarm.png */; };
 		FF2365CD196F0DFA00A4ADBC /* mode_fitness.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2365C3196F0DFA00A4ADBC /* mode_fitness.png */; };
 		FF2365CE196F0DFA00A4ADBC /* mode_mac.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2365C4196F0DFA00A4ADBC /* mode_mac.png */; };
@@ -140,6 +141,8 @@
 		FF0E12D31828560000D49EC7 /* TTModeVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeVideo.m; path = Modes/Video/TTModeVideo.m; sourceTree = "<group>"; };
 		FF0E12D61828569300D49EC7 /* Quicktime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Quicktime.h; path = Modes/Video/Quicktime.h; sourceTree = "<group>"; };
 		FF0E12D71828569300D49EC7 /* VLC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VLC.h; path = Modes/Video/VLC.h; sourceTree = "<group>"; };
+		FF1B02291A36898700BE764E /* NSObject+CancelableBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CancelableBlocks.h"; sourceTree = "<group>"; };
+		FF1B022A1A36898700BE764E /* NSObject+CancelableBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CancelableBlocks.m"; sourceTree = "<group>"; };
 		FF2365C2196F0DFA00A4ADBC /* mode_alarm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mode_alarm.png; path = icons/mode_alarm.png; sourceTree = "<group>"; };
 		FF2365C3196F0DFA00A4ADBC /* mode_fitness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mode_fitness.png; path = icons/mode_fitness.png; sourceTree = "<group>"; };
 		FF2365C4196F0DFA00A4ADBC /* mode_mac.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mode_mac.png; path = icons/mode_mac.png; sourceTree = "<group>"; };
@@ -608,6 +611,8 @@
 			isa = PBXGroup;
 			children = (
 				FF936059196DF67500675B7B /* TFDatePicker */,
+				FF1B02291A36898700BE764E /* NSObject+CancelableBlocks.h */,
+				FF1B022A1A36898700BE764E /* NSObject+CancelableBlocks.m */,
 			);
 			name = Vendor;
 			path = "Turn Touch App/Vendor";
@@ -863,6 +868,7 @@
 				FF4E2630182317D000D477F6 /* TTSerialMonitor.m in Sources */,
 				FF83EF301A31476000FEE197 /* TTHUDController.m in Sources */,
 				FFA8EAA3190F091000679A4D /* TTModeMenuItem.m in Sources */,
+				FF1B022B1A36898700BE764E /* NSObject+CancelableBlocks.m in Sources */,
 				FFD62CD11950EE770093004D /* TTSegmentedControl.m in Sources */,
 				FF0E12C218242DF000D49EC7 /* TTButtonTimer.m in Sources */,
 				FFB1670E1923E61F008FA1AF /* TTTabView.m in Sources */,

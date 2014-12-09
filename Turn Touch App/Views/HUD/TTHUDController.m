@@ -8,6 +8,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "TTHUDController.h"
+#import "NSObject+CancelableBlocks.h"
 
 @interface TTHUDController ()
 
@@ -48,9 +49,14 @@
 {
     [hudWindow makeKeyAndOrderFront:nil];
     [self showWindow:appDelegate];
+    
+    if (hudWindow.frame.origin.y == [self hiddenFrame].origin.y) {
+        [hudWindow setFrame:[self visibleFrame] display:YES];
+        [[hudWindow animator] setAlphaValue:0.f];
+    }
 
     [NSAnimationContext beginGrouping];
-    [[NSAnimationContext currentContext] setDuration:.55f];
+    [[NSAnimationContext currentContext] setDuration:.2f];
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
 
@@ -67,12 +73,11 @@
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:.55f];
     [[NSAnimationContext currentContext] setCompletionHandler:^{
-        [window orderOut:nil];
-        [window setAlphaValue:1.f];
+//        [window orderOut:nil];
     }];
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
-
+    
     [[hudWindow animator] setAlphaValue:0.15f];
     [[hudWindow animator] setFrame:[self hiddenFrame] display:YES];
 
@@ -83,10 +88,10 @@
 
 - (void)toastActiveMode {
     [self fadeIn:nil];
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 2.0 * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+    
+    [self performBlock:^{
         [self fadeOut:nil];
-    });
+    } afterDelay:0.5 cancelPreviousRequest:YES];
 }
 
 @end

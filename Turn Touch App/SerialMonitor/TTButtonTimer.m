@@ -49,12 +49,15 @@
     } else if ([[buttons objectAtIndex:3] integerValue] == PRESS_MODE) {
         [self selectActiveMode:SOUTH];
     }
+    
 }
 
 - (void)selectActiveMode:(TTModeDirection)direction {
 //    NSLog(@"Selecting mode: %d", activeModeDirection);
     [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];
     [appDelegate.modeMap setSelectedModeDirection:direction];
+    
+    [appDelegate.hudController toastActiveMode];
 }
 
 - (void)activateButton:(TTModeDirection)direction {
@@ -69,6 +72,8 @@
     [appDelegate.modeMap setActiveModeDirection:direction];
     [appDelegate.modeMap runActiveButton];
     [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];
+    
+    [appDelegate.hudController toastActiveMode];
 }
 
 @end
