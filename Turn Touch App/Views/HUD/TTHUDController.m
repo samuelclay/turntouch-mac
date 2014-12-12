@@ -15,12 +15,13 @@
 
 @implementation TTHUDController
 
-@synthesize hudViewController;
+@synthesize actionHUDController;
 
 - (instancetype)init {
     if (self = [super init]) {
         appDelegate = (TTAppDelegate *)[NSApp delegate];
-        hudViewController = [[TTHUDWindowController alloc] initWithWindowNibName:@"TTHUDView"];
+        actionHUDController = [[TTActionHUDWindowController alloc]
+                             initWithWindowNibName:@"TTActionHUDView"];
     }
     return self;
 }
@@ -28,18 +29,18 @@
 #pragma mark - Toasts
 
 - (void)toastActiveMode {
-    [hudViewController fadeIn:nil];
+    [actionHUDController fadeIn:nil];
     
     [self performBlock:^{
-        [hudViewController fadeOut:nil];
+        [actionHUDController fadeOut:nil];
     } afterDelay:0.5 cancelPreviousRequest:YES];
 }
 
 - (void)toastActiveAction {
-    [hudViewController fadeIn:nil];
+    [actionHUDController fadeIn:nil];
     
     [self performBlock:^{
-        [hudViewController fadeOut:nil];
+        [actionHUDController fadeOut:nil];
     } afterDelay:0.5 cancelPreviousRequest:YES];
 }
 

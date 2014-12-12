@@ -7,16 +7,16 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "TTHUDWindowController.h"
+#import "TTActionHUDWindowController.h"
 #import "TTAppDelegate.h"
 
-@class TTHUDWindowController;
+@class TTActionHUDWindowController;
 
 @interface TTHUDController : NSObject {
     TTAppDelegate *appDelegate;
 }
 
-@property (nonatomic) IBOutlet TTHUDWindowController *hudViewController;
+@property (nonatomic) IBOutlet TTActionHUDWindowController *actionHUDController;
 
 - (void)toastActiveMode;
 - (void)toastActiveAction;

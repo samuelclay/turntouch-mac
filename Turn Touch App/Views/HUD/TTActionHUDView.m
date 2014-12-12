@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Turn Touch. All rights reserved.
 //
 
-#import "TTHUDView.h"
+#import "TTActionHUDView.h"
 
-@implementation TTHUDView
+@implementation TTActionHUDView
 
 const CGFloat kMarginPct = .6f;
 

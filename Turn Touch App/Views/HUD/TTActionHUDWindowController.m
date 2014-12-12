@@ -7,9 +7,9 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
-#import "TTHUDWindowController.h"
+#import "TTActionHUDWindowController.h"
 
-@implementation TTHUDWindowController
+@implementation TTActionHUDWindowController
 
 @synthesize hudView;
 @synthesize hudWindow;

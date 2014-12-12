@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Turn Touch. All rights reserved.
 //
 
-#import "TTHUDWindow.h"
+#import "TTActionHUDWindow.h"
 
-@implementation TTHUDWindow
+@implementation TTActionHUDWindow
 
 - (instancetype)initWithContentRect:(NSRect)contentRect
                           styleMask:(NSUInteger)aStyle
