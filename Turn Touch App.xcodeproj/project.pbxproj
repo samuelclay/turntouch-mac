@@ -99,7 +99,7 @@
 		FFB653E018DBA14E00830B42 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB653DF18DBA14E00830B42 /* CoreFoundation.framework */; };
 		FFD62CCE194F935D0093004D /* TTSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD62CCD194F935D0093004D /* TTSegmentedCell.m */; };
 		FFD62CD11950EE770093004D /* TTSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD62CD01950EE770093004D /* TTSegmentedControl.m */; };
-		FFE30A841A323BEE001BB52A /* TTHUDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF83EF361A314FB900FEE197 /* TTHUDViewController.m */; };
+		FFE30A841A323BEE001BB52A /* TTHUDWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF83EF361A314FB900FEE197 /* TTHUDWindowController.m */; };
 		FFE30A861A32406E001BB52A /* TTHUDView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFE30A851A32406E001BB52A /* TTHUDView.xib */; };
 		FFE30A891A32658B001BB52A /* TTHUDWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE30A881A32658B001BB52A /* TTHUDWindow.m */; };
 		FFEA6CB319216CDF0010874B /* TTModeMac.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFEA6CB219216CDF0010874B /* TTModeMac.xib */; };
@@ -194,8 +194,8 @@
 		FF83EF281A31312700FEE197 /* TTHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTHUDView.m; path = Views/HUD/TTHUDView.m; sourceTree = "<group>"; };
 		FF83EF2D1A31476000FEE197 /* TTHUDController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTHUDController.h; path = Views/HUD/TTHUDController.h; sourceTree = "<group>"; };
 		FF83EF2E1A31476000FEE197 /* TTHUDController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTHUDController.m; path = Views/HUD/TTHUDController.m; sourceTree = "<group>"; };
-		FF83EF351A314FB900FEE197 /* TTHUDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTHUDViewController.h; path = Views/HUD/TTHUDViewController.h; sourceTree = "<group>"; };
-		FF83EF361A314FB900FEE197 /* TTHUDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTHUDViewController.m; path = Views/HUD/TTHUDViewController.m; sourceTree = "<group>"; };
+		FF83EF351A314FB900FEE197 /* TTHUDWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTHUDWindowController.h; path = Views/HUD/TTHUDWindowController.h; sourceTree = "<group>"; };
+		FF83EF361A314FB900FEE197 /* TTHUDWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTHUDWindowController.m; path = Views/HUD/TTHUDWindowController.m; sourceTree = "<group>"; };
 		FF8C833317AB14B5000166FC /* Turn Touch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Turn Touch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF8C833617AB14B5000166FC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FF8C833917AB14B5000166FC /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -514,8 +514,8 @@
 		FF83EF261A31310700FEE197 /* HUD */ = {
 			isa = PBXGroup;
 			children = (
-				FF83EF351A314FB900FEE197 /* TTHUDViewController.h */,
-				FF83EF361A314FB900FEE197 /* TTHUDViewController.m */,
+				FF83EF351A314FB900FEE197 /* TTHUDWindowController.h */,
+				FF83EF361A314FB900FEE197 /* TTHUDWindowController.m */,
 				FF83EF271A31312700FEE197 /* TTHUDView.h */,
 				FF83EF281A31312700FEE197 /* TTHUDView.m */,
 				FFE30A871A32658B001BB52A /* TTHUDWindow.h */,
@@ -863,7 +863,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFE30A841A323BEE001BB52A /* TTHUDViewController.m in Sources */,
+				FFE30A841A323BEE001BB52A /* TTHUDWindowController.m in Sources */,
 				FF8C834A17AB14B5000166FC /* TTAppDelegate.m in Sources */,
 				FF4E2630182317D000D477F6 /* TTSerialMonitor.m in Sources */,
 				FF83EF301A31476000FEE197 /* TTHUDController.m in Sources */,

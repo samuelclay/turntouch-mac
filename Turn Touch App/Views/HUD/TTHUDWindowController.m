@@ -7,20 +7,16 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
-#import "TTHUDViewController.h"
+#import "TTHUDWindowController.h"
 
-@implementation TTHUDViewController
+@implementation TTHUDWindowController
 
 @synthesize hudView;
+@synthesize hudWindow;
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
-
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+- (instancetype)initWithWindowNibName:(NSString *)windowNibName {
+    if (self = [super initWithWindowNibName:windowNibName]) {
         appDelegate = (TTAppDelegate *)[NSApp delegate];
-        hudWindow = appDelegate.hudController.hudWindow;
         [hudWindow setFrame:[self hiddenFrame] display:YES];
     }
     
@@ -44,7 +40,7 @@
 - (IBAction)fadeIn:(id)sender
 {
     [hudWindow makeKeyAndOrderFront:nil];
-    [appDelegate.hudController showWindow:appDelegate];
+    [self showWindow:appDelegate];
     
     if (hudWindow.frame.origin.y == [self hiddenFrame].origin.y) {
         [hudWindow setFrame:[self visibleFrame] display:YES];

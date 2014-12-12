@@ -11,12 +11,14 @@
 #import "TTHUDView.h"
 #import "TTHUDWindow.h"
 
-@interface TTHUDViewController : NSViewController <NSWindowDelegate> {
+@interface TTHUDWindowController : NSWindowController <NSWindowDelegate> {
     TTAppDelegate *appDelegate;
+    TTHUDView *hudView;
     TTHUDWindow *hudWindow;
 }
 
 @property (nonatomic) IBOutlet TTHUDView *hudView;
+@property (nonatomic) IBOutlet TTHUDWindow *hudWindow;
 
 - (IBAction)fadeIn:(id)sender;
 - (IBAction)fadeOut:(id)sender;

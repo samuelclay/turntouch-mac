@@ -15,36 +15,31 @@
 
 @implementation TTHUDController
 
-@synthesize hudWindow;
 @synthesize hudViewController;
 
 - (instancetype)init {
     if (self = [super init]) {
-        hudViewController = [[TTHUDViewController alloc] initWithNibName:@"TTHUDView"
-                                                                  bundle:nil];
+        appDelegate = (TTAppDelegate *)[NSApp delegate];
+        hudViewController = [[TTHUDWindowController alloc] initWithWindowNibName:@"TTHUDView"];
     }
     return self;
-}
-
-- (void)awakeFromNib {
-    appDelegate = (TTAppDelegate *)[NSApp delegate];
 }
 
 #pragma mark - Toasts
 
 - (void)toastActiveMode {
-    [self.hudViewController fadeIn:nil];
+    [hudViewController fadeIn:nil];
     
     [self performBlock:^{
-        [self.hudViewController fadeOut:nil];
+        [hudViewController fadeOut:nil];
     } afterDelay:0.5 cancelPreviousRequest:YES];
 }
 
 - (void)toastActiveAction {
-    [self.hudViewController fadeIn:nil];
+    [hudViewController fadeIn:nil];
     
     [self performBlock:^{
-        [self.hudViewController fadeOut:nil];
+        [hudViewController fadeOut:nil];
     } afterDelay:0.5 cancelPreviousRequest:YES];
 }
 
