@@ -79,6 +79,8 @@ const int MAX_STR   = 255;
 	hidDevice = hid_open(vendorID, productID, NULL);
     
     if (!hidDevice) {
+        [appDelegate.hudController toastActiveMode];
+
         return;
     }
 
