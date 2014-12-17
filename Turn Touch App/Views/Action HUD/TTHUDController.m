@@ -36,7 +36,7 @@
     
     [self performBlock:^{
         [modeHUDController fadeOut:nil];
-    } afterDelay:0.5 cancelPreviousRequest:YES];
+    } afterDelay:3.5 cancelPreviousRequest:YES];
 }
 
 - (void)toastActiveAction {

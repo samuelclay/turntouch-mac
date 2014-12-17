@@ -7,7 +7,16 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "TTAppDelegate.h"
 
-@interface TTModeHUDView : NSView
+@interface TTModeHUDView : NSView {
+    TTAppDelegate *appDelegate;
+    NSImage *modeImage;
+    NSString *modeTitle;
+    NSDictionary *modeAttributes;
+    CGSize textSize;
+}
+
+- (void)setupTitleAttributes;
 
 @end

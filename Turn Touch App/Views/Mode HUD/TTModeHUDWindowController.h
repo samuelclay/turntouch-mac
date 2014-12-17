@@ -11,6 +11,9 @@
 #import "TTModeHUDView.h"
 #import "TTModeHUDWindow.h"
 
+@class TTModeHUDView;
+@class TTModeHUDWindow;
+
 @interface TTModeHUDWindowController : NSWindowController <NSWindowDelegate> {
     TTAppDelegate *appDelegate;
     TTModeHUDView *hudView;
