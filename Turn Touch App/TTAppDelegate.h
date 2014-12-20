@@ -10,7 +10,7 @@
 #import "TTMenubarController.h"
 #import "TTPanelDelegate.h"
 #import "TTPanelController.h"
-#import "TTSerialMonitor.h"
+#import "TTBluetoothMonitor.h"
 #import "TTModeMap.h"
 #import "TTHUDController.h"
 
@@ -25,7 +25,7 @@
 
 @property (nonatomic, strong) TTMenubarController *menubarController;
 @property (nonatomic, strong, readonly) TTPanelController *panelController;
-@property (nonatomic) TTSerialMonitor *serialMonitor;
+@property (nonatomic) TTBluetoothMonitor *bluetoothMonitor;
 @property (nonatomic) TTModeMap *modeMap;
 @property (nonatomic) TTHUDController *hudController;
 

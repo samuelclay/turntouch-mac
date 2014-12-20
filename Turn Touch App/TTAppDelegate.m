@@ -13,7 +13,7 @@
 
 @synthesize panelController = _panelController;
 @synthesize menubarController = _menubarController;
-@synthesize serialMonitor = _serialMonitor;
+@synthesize bluetoothMonitor = _bluetoothMonitor;
 @synthesize hudController = _hudController;
 
 #pragma mark - Dealloc
@@ -44,7 +44,7 @@ void *kContextActivePanel = &kContextActivePanel;
     // Install icon into the menu bar
     self.modeMap = [[TTModeMap alloc] init];
     self.menubarController = [[TTMenubarController alloc] init];
-    self.serialMonitor = [[TTSerialMonitor alloc] init];
+    self.bluetoothMonitor = [[TTBluetoothMonitor alloc] init];
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender {
@@ -54,6 +54,7 @@ void *kContextActivePanel = &kContextActivePanel;
 }
 
 - (void)applicationWillTerminate:(NSNotification *)notification {
+    [self.bluetoothMonitor terminate];
 }
 
 
