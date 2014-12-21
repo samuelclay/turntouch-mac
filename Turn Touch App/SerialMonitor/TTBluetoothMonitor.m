@@ -7,6 +7,7 @@
 //
 
 #import "TTBluetoothMonitor.h"
+#import "NSData+Conversion.h"
 
 #define DEVICE_SERVICE_UUID @"ddea706a-9d53-4bbb-ac0b-74ba819e7d9c"
 #define DEVICE_CHARACTERISTIC_BUTTON_STATUS_UUID @"f1c7c102-27bc-4074-aee6-35c58a3b31f6"
@@ -79,7 +80,7 @@
     NSLog(@"Found bluetooth peripheral: %@", localName);
     NSArray *peripherals = [manager retrievePeripheralsWithIdentifiers:@[(id)aPeripheral.identifier]];
     
-//    [self stopScan];
+    [self stopScan];
     for (CBPeripheral *aPeripheral in peripherals) {
         peripheral = aPeripheral;
         [manager connectPeripheral:aPeripheral options:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:CBConnectPeripheralOptionNotifyOnDisconnectionKey]];
@@ -90,8 +91,7 @@
  Invoked whenever a connection is succesfully created with the peripheral.
  Discover available services on the peripheral
  */
-- (void) centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)aPeripheral
-{
+- (void) centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)aPeripheral {
     [aPeripheral setDelegate:self];
     [aPeripheral discoverServices:nil];
     
@@ -102,26 +102,26 @@
  Invoked whenever an existing connection with the peripheral is torn down.
  Reset local variables
  */
-- (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)aPeripheral error:(NSError *)error
-{
-    if( peripheral )
-    {
+- (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)aPeripheral error:(NSError *)error {
+    NSLog(@"Disconnected peripheral: %@", aPeripheral);
+    if( peripheral ) {
         [peripheral setDelegate:nil];
         peripheral = nil;
     }
+    
+    [self startScan];
 }
 
 /*
  Invoked whenever the central manager fails to create a connection with the peripheral.
  */
-- (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)aPeripheral error:(NSError *)error
-{
+- (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)aPeripheral error:(NSError *)error {
     NSLog(@"Fail to connect to peripheral: %@ with error = %@", aPeripheral, [error localizedDescription]);
-    if( peripheral )
-    {
+    if( peripheral ) {
         [peripheral setDelegate:nil];
         peripheral = nil;
     }
+    [self startScan];
 }
 
 #pragma mark - CBPeripheral delegate methods
@@ -195,60 +195,14 @@
  */
 - (void) peripheral:(CBPeripheral *)aPeripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
     /* Updated value for heart rate measurement received */
-    if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_BUTTON_STATUS_UUID]])
-    {
+    if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_BUTTON_STATUS_UUID]]) {
         if( (characteristic.value)  || !error ) {
-            NSLog(@"Characteristic value: %@", characteristic.value);
+            NSLog(@"Characteristic value: %@", [characteristic.value hexadecimalString]);
         }
-    }
-    /* Value for body sensor location received */
-    else  if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A38"]])
-    {
-        NSData * updatedValue = characteristic.value;
-        uint8_t* dataPointer = (uint8_t*)[updatedValue bytes];
-        if(dataPointer)
-        {
-            uint8_t location = dataPointer[0];
-            NSString*  locationString;
-            switch (location)
-            {
-                case 0:
-                    locationString = @"Other";
-                    break;
-                case 1:
-                    locationString = @"Chest";
-                    break;
-                case 2:
-                    locationString = @"Wrist";
-                    break;
-                case 3:
-                    locationString = @"Finger";
-                    break;
-                case 4:
-                    locationString = @"Hand";
-                    break;
-                case 5:
-                    locationString = @"Ear Lobe";
-                    break;
-                case 6:
-                    locationString = @"Foot";
-                    break;
-                default:
-                    locationString = @"Reserved";
-                    break;
-            }
-            NSLog(@"Body Sensor Location = %@ (%d)", locationString, location);
-        }
-    }
-    /* Value for device Name received */
-    else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:CBUUIDDeviceNameString]])
-    {
+    } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:CBUUIDDeviceNameString]]) {
         NSString * deviceName = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
         NSLog(@"Device Name = %@", deviceName);
-    }
-    /* Value for manufacturer name received */
-    else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A29"]])
-    {
+    } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A29"]]) {
         manufacturer = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
         NSLog(@"Manufacturer Name = %@", manufacturer);
     }
