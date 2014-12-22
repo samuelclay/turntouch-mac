@@ -17,6 +17,7 @@
 @class TTModeMap;
 @class TTPanelController;
 @class TTHUDController;
+@class TTBluetoothMonitor;
 
 #define OPEN_DURATION 0.42f
 

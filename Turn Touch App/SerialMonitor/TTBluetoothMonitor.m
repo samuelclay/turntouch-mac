@@ -17,6 +17,8 @@
 - (instancetype)init {
     if (self = [super init]) {
         manager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
+        appDelegate = (TTAppDelegate *)[NSApp delegate];
+        buttonTimer = [[TTButtonTimer alloc] init];
 
         [self startScan];
     }
@@ -198,6 +200,7 @@
     if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_BUTTON_STATUS_UUID]]) {
         if( (characteristic.value)  || !error ) {
             NSLog(@"Characteristic value: %@", [characteristic.value hexadecimalString]);
+            [buttonTimer readBTData:characteristic.value];
         }
     } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:CBUUIDDeviceNameString]]) {
         NSString * deviceName = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];

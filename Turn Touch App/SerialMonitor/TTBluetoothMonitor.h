@@ -8,9 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import <IOBluetooth/IOBluetooth.h>
+#import "TTAppDelegate.h"
+#import "TTButtonTimer.h"
+
+@class TTButtonTimer;
 
 @interface TTBluetoothMonitor : NSObject
 <CBCentralManagerDelegate, CBPeripheralDelegate> {
+    TTAppDelegate *appDelegate;
+    TTButtonTimer *buttonTimer;
+
     NSString *manufacturer;
     CBCentralManager *manager;
     CBPeripheral *peripheral;
