@@ -10,7 +10,7 @@
 
 @interface NSObject (CancelableBlocks)
 
-- (void)performBlock:(void (^)(void))block afterDelay:(NSTimeInterval)delay;
-- (void)performBlock:(void (^)(void))block afterDelay:(NSTimeInterval)delay cancelPreviousRequest:(BOOL)cancel;
+- (NSBlockOperation *)performBlock:(void (^)(void))block afterDelay:(NSTimeInterval)delay;
+- (NSBlockOperation *)performBlock:(void (^)(void))block afterDelay:(NSTimeInterval)delay cancelPreviousRequest:(BOOL)cancel;
 
 @end

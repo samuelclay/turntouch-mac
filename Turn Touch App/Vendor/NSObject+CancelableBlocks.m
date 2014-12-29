@@ -22,17 +22,25 @@
     [[NSOperationQueue currentQueue] addOperation:operation];
 }
 
-- (void)performBlock:(void (^)(void))block afterDelay:(NSTimeInterval)delay {
+- (NSBlockOperation *)performBlock:(void (^)(void))block afterDelay:(NSTimeInterval)delay {
+    NSBlockOperation *operation = [[NSBlockOperation alloc] init];
+    __weak NSBlockOperation *weakOperation = operation;
+    [operation addExecutionBlock:^{
+        if ([weakOperation isCancelled]) return;
+        block();
+    }];
     [self performSelector:@selector(delayedAddOperation:)
-               withObject:[NSBlockOperation blockOperationWithBlock:block]
+               withObject:operation
                afterDelay:delay];
+
+    return operation;
 }
 
-- (void)performBlock:(void (^)(void))block afterDelay:(NSTimeInterval)delay cancelPreviousRequest:(BOOL)cancel {
+- (NSBlockOperation *)performBlock:(void (^)(void))block afterDelay:(NSTimeInterval)delay cancelPreviousRequest:(BOOL)cancel {
     if (cancel) {
-        [NSObject cancelPreviousPerformRequestsWithTarget:self];
+//        [NSObject cancelPreviousPerformRequestsWithTarget:self];
     }
-    [self performBlock:block afterDelay:delay];
+    return [self performBlock:block afterDelay:delay];
 }
 
 @end

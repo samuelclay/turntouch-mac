@@ -34,17 +34,19 @@
 - (void)toastActiveMode {
     [modeHUDController fadeIn:nil];
     
-    [self performBlock:^{
+    if (modeOperation) [modeOperation cancel];
+    
+    modeOperation = [self performBlock:^{
         [modeHUDController fadeOut:nil];
-        [actionHUDController fadeOut:nil];
     } afterDelay:1.5 cancelPreviousRequest:YES];
 }
 
 - (void)toastActiveAction {
     [actionHUDController fadeIn:nil];
     
-    [self performBlock:^{
-        [modeHUDController fadeOut:nil];
+    if (actionOperation) [actionOperation cancel];
+    
+    actionOperation = [self performBlock:^{
         [actionHUDController fadeOut:nil];
     } afterDelay:0.5 cancelPreviousRequest:YES];
 }

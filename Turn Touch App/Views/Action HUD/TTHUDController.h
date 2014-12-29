@@ -16,6 +16,9 @@
 
 @interface TTHUDController : NSObject {
     TTAppDelegate *appDelegate;
+    NSBlockOperation *modeOperation;
+    NSBlockOperation *actionOperation;
+    
 }
 
 @property (nonatomic) IBOutlet TTModeHUDWindowController *modeHUDController;
