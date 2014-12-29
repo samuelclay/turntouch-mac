@@ -1,112 +1,86 @@
 //
-//  TTModeMusic.m
+//  TTModeHue.m
 //  Turn Touch App
 //
-//  Created by Samuel Clay on 11/1/13.
-//  Copyright (c) 2013 Turn Touch. All rights reserved.
+//  Created by Samuel Clay on 12/25/14.
+//  Copyright (c) 2014 Turn Touch. All rights reserved.
 //
 
-#import "TTModeMusic.h"
+#import "TTModeHue.h"
 #import "iTunes.h"
 
-@implementation TTModeMusic
+@implementation TTModeHue
 
 #pragma mark - Mode
 
 + (NSString *)title {
-    return @"Music";
+    return @"Hue";
 }
 
 + (NSString *)description {
-    return @"Control iTunes";
+    return @"Lights and scenes";
 }
 
 + (NSString *)imageName {
-    return @"mode_music.png";
+    return @"mode_meditation.png";
 }
 
 #pragma mark - Actions
 
 - (NSArray *)actions {
-    return @[@"TTModeMusicVolumeUp",
-             @"TTModeMusicVolumeDown",
-             @"TTModeMusicPause",
-             @"TTModeMusicNextTrack"
+    return @[@"TTModeHueSceneEarlyEvening",
+             @"TTModeHueSceneLateEvening",
+             @"TTModeHueSleep",
+             @"TTModeHueOff"
              ];
 }
 
 #pragma mark - Action Titles
 
-- (NSString *)titleTTModeMusicVolumeUp {
-    return @"Volume up";
+- (NSString *)titleTTModeHueSceneEarlyEvening {
+    return @"Early evening";
 }
-- (NSString *)titleTTModeMusicVolumeDown {
-    return @"Volume down";
+- (NSString *)titleTTModeHueSceneLateEvening {
+    return @"Late evening";
 }
-- (NSString *)titleTTModeMusicPause {
-    return @"Play/pause";
+- (NSString *)titleTTModeHueSleep {
+    return @"Sleep";
 }
-- (NSString *)titleTTModeMusicNextTrack {
-    return @"Next track";
+- (NSString *)titleTTModeHueOff {
+    return @"Lights off";
 }
 
 #pragma mark - Action Images
 
-- (NSString *)imageTTModeMusicVolumeUp {
+- (NSString *)imageTTModeHueSceneEarlyEvening {
     return @"volume_up.png";
 }
-- (NSString *)imageTTModeMusicVolumeDown {
+- (NSString *)imageTTModeHueSceneLateEvening {
     return @"volume_down.png";
 }
-- (NSString *)imageTTModeMusicPause {
+- (NSString *)imageTTModeHueSleep {
     return @"play.png";
 }
-- (NSString *)imageTTModeMusicNextTrack {
+- (NSString *)imageTTModeHueOff {
     return @"next_track.png";
 }
 
 #pragma mark - Action methods
 
-- (void)runTTModeMusicVolumeUp {
-    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
-    NSInteger volume = iTunes.soundVolume;
-    NSLog(@"Music mode North: %ld", (long)volume);
-    [iTunes setSoundVolume:MIN(100, volume+10)];
-}
-
-- (void)runTTModeMusicVolumeDown {
-    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
-    
-    NSInteger volume = iTunes.soundVolume;
-    NSLog(@"Music mode South: %ld", (long)volume);
-    [iTunes setSoundVolume:MAX(0, volume-10)];
-}
-
-- (void)runTTModeMusicPause {
-    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
-    
-    [iTunes playpause];
-}
-
-- (void)runTTModeMusicNextTrack {
-    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
-    
-    [iTunes nextTrack];
-}
 
 #pragma mark - Defaults
 
 - (NSString *)defaultNorth {
-    return @"TTModeMusicVolumeUp";
+    return @"TTModeHueSceneEarlyEvening";
 }
 - (NSString *)defaultEast {
-    return @"TTModeMusicNextTrack";
+    return @"TTModeHueSceneLateEvening";
 }
 - (NSString *)defaultWest {
-    return @"TTModeMusicPause";
+    return @"TTModeHueOff";
 }
 - (NSString *)defaultSouth {
-    return @"TTModeMusicVolumeDown";
+    return @"TTModeHueSleep";
 }
 
 @end
