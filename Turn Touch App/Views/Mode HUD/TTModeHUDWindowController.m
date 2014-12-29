@@ -41,16 +41,17 @@
 {
     [hudWindow makeKeyAndOrderFront:nil];
     [self showWindow:appDelegate];
-    
+
     if (hudWindow.frame.origin.y == [self hiddenFrame].origin.y) {
         [hudWindow setFrame:[self visibleFrame] display:YES];
         [[hudWindow animator] setAlphaValue:0.f];
     }
     
     [hudView setupTitleAttributes];
+    [hudView setNeedsDisplay:YES];
     
     [NSAnimationContext beginGrouping];
-    [[NSAnimationContext currentContext] setDuration:.2f];
+    [[NSAnimationContext currentContext] setDuration:.5f];
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
     

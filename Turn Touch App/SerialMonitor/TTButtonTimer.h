@@ -22,12 +22,12 @@ typedef enum {
     TTAppDelegate *appDelegate;
     TTModeDirection activeModeDirection;
     NSTimer *activeModeTimer;
-    NSArray *buttonState;
+    NSMutableArray *buttonState;
     BOOL inMultitouch;
 }
 
 - (void)readButtons:(NSArray *)buttons;
-- (void)readBTData:(NSData *)data;
+- (void)readBluetoothData:(NSData *)data;
 - (void)selectActiveMode:(TTModeDirection)direction;
 - (void)activateButton:(TTModeDirection)direction;
 - (void)deactivateButton;

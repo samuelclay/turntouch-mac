@@ -103,7 +103,9 @@
                                          actionName]);
     IMP imp = [self methodForSelector:selector];
     void (*func)(id, SEL) = (void *)imp;
-    func(self, selector);
+    if ([self respondsToSelector:selector]) {
+        func(self, selector);
+    }
 }
 
 - (NSString *)titleInDirection:(TTModeDirection)direction {

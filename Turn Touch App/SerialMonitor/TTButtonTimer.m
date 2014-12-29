@@ -16,10 +16,10 @@
 - (id)init {
     if (self = [super init]) {
         appDelegate = (TTAppDelegate *)[NSApp delegate];
-        buttonState = @[[NSNumber numberWithBool:NO],
-                        [NSNumber numberWithBool:NO],
-                        [NSNumber numberWithBool:NO],
-                        [NSNumber numberWithBool:NO]];
+        buttonState = [@[[NSNumber numberWithBool:NO],
+                         [NSNumber numberWithBool:NO],
+                         [NSNumber numberWithBool:NO],
+                         [NSNumber numberWithBool:NO]] mutableCopy];
         inMultitouch = NO;
     }
     
@@ -57,46 +57,69 @@
     
 }
 
-- (void)readBTData:(NSData *)data {
+- (void)readBluetoothData:(NSData *)data {
     int state = *(int *)[[data subdataWithRange:NSMakeRange(0, 1)] bytes];
 //    int press = *(int *)[[data subdataWithRange:NSMakeRange(1, 1)] bytes]; // Unreliable
     int pos = *(int *)[[data subdataWithRange:NSMakeRange(2, 1)] bytes];
-    BOOL press;
-    NSLog(@"Buttons: %d=%d, %d", state, pos == 0xFF, pos);
+    BOOL anyButtonPressed = NO;
+    BOOL anyButtonHeld = NO;
+    NSInteger buttonLifted = -1;
+//    NSLog(@"Buttons: %d, %d: %@", state, pos, buttonState);
     
-    NSArray *newButtonState = @[[NSNumber numberWithBool:(state & 0x01) == 0x01],
-                                [NSNumber numberWithBool:(state & 0x02) == 0x02],
-                                [NSNumber numberWithBool:(state & 0x04) == 0x04],
-                                [NSNumber numberWithBool:(state & 0x08) == 0x08]];
-    NSInteger i = newButtonState.count;
+    NSMutableArray *newButtonState = [@[[NSNumber numberWithBool:(state & 0x01) == 0x01],
+                                        [NSNumber numberWithBool:(state & 0x02) == 0x02],
+                                        [NSNumber numberWithBool:(state & 0x04) == 0x04],
+                                        [NSNumber numberWithBool:(state & 0x08) == 0x08]] mutableCopy];
+    NSInteger i = buttonState.count;
     while (i--) {
-        if ([newButtonState objectAtIndex:i] != [buttonState objectAtIndex:i]) {
-            if (![[buttonState objectAtIndex:i] boolValue]) {
-                // Pressed
-                if (press) inMultitouch = YES;
-                press = YES;
+        BOOL buttonDown = ((state & (1 << i)) == (1 << i));
+        NSLog(@"Checking button #%ld: %d / %d", (long)i, buttonDown, anyButtonPressed);
+        if (buttonDown && anyButtonPressed) {
+            inMultitouch = YES;
+        }
+        // Press button down
+        if (![[buttonState objectAtIndex:i] boolValue] && buttonDown) {
+            anyButtonPressed = YES;
+            [newButtonState replaceObjectAtIndex:i withObject:[NSNumber numberWithBool:buttonDown]];
+        }
+        // Lift button
+        else if ([[buttonState objectAtIndex:i] boolValue] && !buttonDown) {
+            [newButtonState replaceObjectAtIndex:i withObject:[NSNumber numberWithBool:NO]];
+            if (!inMultitouch) {
+                buttonLifted = i;
             }
         }
+        // Button remains pressed down
+        else {
+            if (buttonDown) anyButtonPressed = YES;
+            [newButtonState replaceObjectAtIndex:i withObject:[NSNumber numberWithBool:buttonDown]];
+        }
     }
+    buttonState = newButtonState;
+    anyButtonHeld = !inMultitouch && pos == 0xFF;
     
-    // Everything released means cleanup the stack
-    if (!press) {
-        
-    }
-
-    if (!inMultitouch && pos == 0xFF) {
+    // Hold button
+    if (anyButtonHeld) {
+        NSLog(@" ---> Button held: %d", state);
         if (state == 0x01) {
+            // Don't fire action on button release
+            [buttonState replaceObjectAtIndex:0 withObject:[NSNumber numberWithBool:NO]];
             [self selectActiveMode:NORTH];
         } else if (state == 0x02) {
+            [buttonState replaceObjectAtIndex:1 withObject:[NSNumber numberWithBool:NO]];
             [self selectActiveMode:EAST];
         } else if (state == 0x04) {
+            [buttonState replaceObjectAtIndex:2 withObject:[NSNumber numberWithBool:NO]];
             [self selectActiveMode:WEST];
         } else if (state == 0x08) {
+            [buttonState replaceObjectAtIndex:3 withObject:[NSNumber numberWithBool:NO]];
             [self selectActiveMode:SOUTH];
         }
+        [self activateButton:NO_DIRECTION];
     } else
     // Press button
-    if (press == 1) {
+    if (anyButtonPressed) {
+        NSLog(@" ---> Button down%@: %d", inMultitouch ? @" (multi-touch)" : @"", state);
         if (inMultitouch) {
             [appDelegate.hudController toastActiveMode];
             [self activateButton:NO_DIRECTION];
@@ -113,19 +136,21 @@
         }
     }
     // Lift button
-    else if (!press && !inMultitouch) {
-        if (state == 0x01) {
+    else if (buttonLifted >= 0) {
+        NSLog(@" ---> Button lifted%@: %ld", inMultitouch ? @" (multi-touch)" : @"", (long)buttonLifted);
+        if (buttonLifted == 0) {
             [self fireButton:NORTH];
-        } else if (state == 0x02) {
+        } else if (buttonLifted == 1) {
             [self fireButton:EAST];
-        } else if (state == 0x04) {
+        } else if (buttonLifted == 2) {
             [self fireButton:WEST];
-        } else if (state == 0x08) {
+        } else if (buttonLifted == 3) {
             [self fireButton:SOUTH];
-        } else if (state == 0x00) {
+        } else {
             [self activateButton:NO_DIRECTION];
         }
-    } else if (!press && inMultitouch) {
+    } else if (!anyButtonPressed && inMultitouch) {
+        NSLog(@" ---> Nothing pressed%@: %d", inMultitouch ? @" (multi-touch)" : @"", state);
         if (state == 0x00) {
             [self activateButton:NO_DIRECTION];
             inMultitouch = NO;

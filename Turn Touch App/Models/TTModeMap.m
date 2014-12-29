@@ -12,6 +12,7 @@
 #import "TTModeAlarmClock.h"
 #import "TTModeNews.h"
 #import "TTModeMac.h"
+#import "TTModeHue.h"
 
 @implementation TTModeMap
 
@@ -36,7 +37,8 @@
                            @"TTModeAlarmClock",
                            @"TTModeMusic",
                            @"TTModeVideo",
-                           @"TTModeNews"];
+                           @"TTModeNews",
+                           @"TTModeHue"];
         
         activeModeDirection = NO_DIRECTION;
         inspectingModeDirection = NO_DIRECTION;

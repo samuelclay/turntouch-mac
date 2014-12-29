@@ -154,6 +154,7 @@
             if ([aChar.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_BUTTON_STATUS_UUID]]) {
                 [peripheral setNotifyValue:YES forCharacteristic:aChar];
                 NSLog(@"Found button status characteristic");
+                [appDelegate.hudController toastActiveMode];
             }
 //            /* Read body sensor location */
 //            if ([aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A38"]])
@@ -199,8 +200,8 @@
     /* Updated value for heart rate measurement received */
     if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_BUTTON_STATUS_UUID]]) {
         if( (characteristic.value)  || !error ) {
-            NSLog(@"Characteristic value: %@", [characteristic.value hexadecimalString]);
-            [buttonTimer readBTData:characteristic.value];
+//            NSLog(@"Characteristic value: %@", [characteristic.value hexadecimalString]);
+            [buttonTimer readBluetoothData:characteristic.value];
         }
     } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:CBUUIDDeviceNameString]]) {
         NSString * deviceName = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
