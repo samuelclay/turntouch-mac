@@ -151,7 +151,7 @@
                                   width, offsetY);
             [southLabel setFrame:textRect];
         }
-        NSLog(@"Label rect: %@", NSStringFromRect(textRect));
+//        NSLog(@"Label rect: %@", NSStringFromRect(textRect));
     }
 }
 

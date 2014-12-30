@@ -38,7 +38,7 @@
     
     modeOperation = [self performBlock:^{
         [modeHUDController fadeOut:nil];
-    } afterDelay:1.5 cancelPreviousRequest:YES];
+    } afterDelay:2.5 cancelPreviousRequest:YES];
 }
 
 - (void)toastActiveAction {
