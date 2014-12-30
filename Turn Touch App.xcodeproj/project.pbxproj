@@ -666,12 +666,12 @@
 		FFA1D4C11A3B8916003EA0BC /* Action HUD */ = {
 			isa = PBXGroup;
 			children = (
-				FFA1D4C21A3B8916003EA0BC /* TTActionHUDView.h */,
-				FFA1D4C31A3B8916003EA0BC /* TTActionHUDView.m */,
 				FFA1D4C51A3B8916003EA0BC /* TTActionHUDWindow.h */,
 				FFA1D4C61A3B8916003EA0BC /* TTActionHUDWindow.m */,
 				FFA1D4C71A3B8916003EA0BC /* TTActionHUDWindowController.h */,
 				FFA1D4C81A3B8916003EA0BC /* TTActionHUDWindowController.m */,
+				FFA1D4C21A3B8916003EA0BC /* TTActionHUDView.h */,
+				FFA1D4C31A3B8916003EA0BC /* TTActionHUDView.m */,
 			);
 			name = "Action HUD";
 			path = "Views/Action HUD";

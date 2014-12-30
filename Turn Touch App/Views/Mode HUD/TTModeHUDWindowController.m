@@ -37,8 +37,7 @@
     return NSMakeRect(0, 0, CGRectGetWidth(mainScreen.frame), CGRectGetHeight(mainScreen.frame));
 }
 
-- (IBAction)fadeIn:(id)sender
-{
+- (IBAction)fadeIn:(id)sender {
     [hudWindow makeKeyAndOrderFront:nil];
     [self showWindow:appDelegate];
     [hudView setupTitleAttributes];
@@ -61,14 +60,13 @@
     [NSAnimationContext endGrouping];
 }
 
-- (IBAction)fadeOut:(id)sender
-{
+- (IBAction)fadeOut:(id)sender {
     //    __block __unsafe_unretained NSWindow *window = hudWindow;
     
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:.55f];
     [[NSAnimationContext currentContext] setCompletionHandler:^{
-        [hudWindow orderOut:nil];
+//        [hudWindow orderOut:nil];
     }];
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];

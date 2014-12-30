@@ -179,9 +179,9 @@
 - (void)fireButton:(TTModeDirection)direction {
     [appDelegate.modeMap setActiveModeDirection:direction];
     [appDelegate.modeMap runActiveButton];
-    [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];
-    
-    [appDelegate.hudController toastActiveAction];
+    [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];    
+
+    [appDelegate.hudController toastActiveAction:direction];
 }
 
 @end

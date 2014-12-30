@@ -11,6 +11,8 @@
 #import "TTActionHUDView.h"
 #import "TTActionHUDWindow.h"
 
+@class TTActionHUDView;
+
 @interface TTActionHUDWindowController : NSWindowController <NSWindowDelegate> {
     TTAppDelegate *appDelegate;
     TTActionHUDView *hudView;
@@ -20,7 +22,7 @@
 @property (nonatomic) IBOutlet TTActionHUDView *hudView;
 @property (nonatomic) IBOutlet TTActionHUDWindow *hudWindow;
 
-- (IBAction)fadeIn:(id)sender;
+- (IBAction)fadeIn:(TTModeDirection)direction;
 - (IBAction)fadeOut:(id)sender;
 
 @end

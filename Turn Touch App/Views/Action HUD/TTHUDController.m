@@ -41,8 +41,8 @@
     } afterDelay:2.5 cancelPreviousRequest:YES];
 }
 
-- (void)toastActiveAction {
-    [actionHUDController fadeIn:nil];
+- (void)toastActiveAction:(TTModeDirection)direction {
+    [actionHUDController fadeIn:direction];
     
     if (actionOperation) [actionOperation cancel];
     

@@ -7,7 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "TTAppDelegate.h"
 
-@interface TTActionHUDView : NSView
+@class TTAppDelegate;
+
+@interface TTActionHUDView : NSView {
+    TTAppDelegate *appDelegate;
+    TTModeDirection direction;
+}
+
+@property (nonatomic) TTModeDirection direction;
 
 @end
