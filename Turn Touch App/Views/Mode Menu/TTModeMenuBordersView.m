@@ -49,8 +49,8 @@
     
     CGGradientRef myGradient = CGGradientCreateWithColorComponents(colorSpace, components, locations, num_locations);
     
-    CGPoint myStartPoint = CGPointMake(CGRectGetMinX(rect), CGRectGetMinY(rect));
-    CGPoint myEndPoint = CGPointMake(CGRectGetMaxX(rect), CGRectGetMinY(rect));
+    CGPoint myStartPoint = CGPointMake(NSMinX(rect), NSMinY(rect));
+    CGPoint myEndPoint = CGPointMake(NSMaxX(rect), NSMinY(rect));
     
     CGContextDrawLinearGradient(context, myGradient, myStartPoint, myEndPoint, 0);
     
@@ -85,8 +85,8 @@
     
     CGGradientRef myGradient = CGGradientCreateWithColorComponents(colorSpace, components, locations, num_locations);
     
-    CGPoint myStartPoint = CGPointMake(CGRectGetMinX(rect), CGRectGetMinY(rect));
-    CGPoint myEndPoint = CGPointMake(CGRectGetMinX(rect), CGRectGetMaxY(rect));
+    CGPoint myStartPoint = CGPointMake(NSMinX(rect), NSMinY(rect));
+    CGPoint myEndPoint = CGPointMake(NSMinX(rect), NSMaxY(rect));
     
     CGContextDrawLinearGradient(context, myGradient, myStartPoint, myEndPoint, 0);
     
@@ -118,8 +118,8 @@
     
     CGGradientRef myGradient = CGGradientCreateWithColorComponents(colorSpace, components, locations, num_locations);
     
-    CGPoint myStartPoint = CGPointMake(CGRectGetMinX(rect), CGRectGetMinY(rect));
-    CGPoint myEndPoint = CGPointMake(CGRectGetMaxX(rect), CGRectGetMinY(rect));
+    CGPoint myStartPoint = CGPointMake(NSMinX(rect), NSMinY(rect));
+    CGPoint myEndPoint = CGPointMake(NSMaxX(rect), NSMinY(rect));
     
     CGContextDrawLinearGradient(context, myGradient, myStartPoint, myEndPoint, 0);
     
@@ -155,8 +155,8 @@
     
     CGGradientRef myGradient = CGGradientCreateWithColorComponents(colorSpace, components, locations, num_locations);
     
-    CGPoint myStartPoint = CGPointMake(CGRectGetMinX(rect), CGRectGetMinY(rect));
-    CGPoint myEndPoint = CGPointMake(CGRectGetMinX(rect), CGRectGetMaxY(rect));
+    CGPoint myStartPoint = CGPointMake(NSMinX(rect), NSMinY(rect));
+    CGPoint myEndPoint = CGPointMake(NSMinX(rect), NSMaxY(rect));
     
 //    if (height >= 8) {
         CGContextDrawLinearGradient(context, myGradient, myStartPoint, myEndPoint, 0);

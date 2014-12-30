@@ -28,13 +28,13 @@
 - (NSRect)visibleFrame {
     NSScreen *mainScreen = [[NSScreen screens] objectAtIndex:0];
     
-    return NSMakeRect(0, 0, CGRectGetWidth(mainScreen.frame), CGRectGetHeight(mainScreen.frame));
+    return NSMakeRect(0, 0, NSWidth(mainScreen.frame), NSHeight(mainScreen.frame));
 }
 
 - (NSRect)hiddenFrame {
     NSScreen *mainScreen = [[NSScreen screens] objectAtIndex:0];
     
-    return NSMakeRect(0, 0, CGRectGetWidth(mainScreen.frame), CGRectGetHeight(mainScreen.frame));
+    return NSMakeRect(0, 0, NSWidth(mainScreen.frame), NSHeight(mainScreen.frame));
 }
 
 - (IBAction)fadeIn:(id)sender {

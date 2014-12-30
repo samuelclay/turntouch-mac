@@ -14,24 +14,25 @@
 
 - (id)initWithCoder:(NSCoder *)decoder {
     if (self = [super initWithCoder:decoder]) {
-        [self setHighlightedSegment:-1];
+//        [self setHighlightedSegment:-1];
     }
     return self;
 }
 
 - (void)awakeFromNib {
-    [self setHighlightedSegment:-1];
+//    [self setHighlightedSegment:-1];
 }
 
 #pragma mark - Drawing
 
 - (void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {
+    CGFloat radius = NSHeight(cellFrame) * 2.f/3.f;
+//    cellFrame.size.width = [self totalWidthInFrame:cellFrame withRadius:radius upToSegment:self.segmentCount];
     for (int i =0 ;i < [self segmentCount]; i++) {
         [self setupLabels:i];
         [self drawSegment:i inFrame:cellFrame withView:controlView];
     }
-//    CGFloat radius = NSHeight(cellFrame) * 2.f/3.f;
-    // NSLog(@"%ld segments: total=%4.f, frame width=%4.f", (long)self.segmentCount, [self totalWidthInFrame:cellFrame withRadius:radius upToSegment:self.segmentCount], NSWidth(cellFrame));
+     NSLog(@"%ld segments: total=%4.f, frame width=%@", (long)self.segmentCount, [self totalWidthInFrame:cellFrame withRadius:radius upToSegment:self.segmentCount], NSStringFromRect(cellFrame));
 }
 
 - (void)drawSegment:(NSInteger)segment inFrame:(NSRect)frame withView:(NSView *)controlView {
@@ -103,7 +104,7 @@
                                     NSMidY(segmentFrame) - labelSize.height/2 - 1);
     [label drawAtPoint:textPoint withAttributes:labelAttributes];
 
-    [super setWidth:(NSMaxX(segmentFrame) - NSMinX(segmentFrame)) forSegment:segment];
+    [super setWidth:[self widthForSegment:segment] forSegment:segment];
     
     if (segment < (self.segmentCount-1) &&
         [self isSelectedForSegment:(segment + 1)] &&
@@ -117,6 +118,14 @@
         NSRect leftFrame = NSMakeRect(NSMinX(segmentFrame), NSMinY(segmentFrame), 4.0, NSHeight(segmentFrame));
         [self drawShadowInFrame:leftFrame inDirection:-1];
     }
+}
+
+- (CGFloat)widthForSegment:(NSInteger)segment {
+    NSString *label = [self labelForSegment:segment];
+    NSSize labelSize = [label sizeWithAttributes:labelAttributes];
+    CGFloat radius = 29 * 2.f/3.f;
+    
+    return labelSize.width + 2*radius;
 }
 
 - (void)drawShadowInFrame:(NSRect)frame inDirection:(NSInteger)direction {
@@ -139,8 +148,8 @@
     
     CGGradientRef myGradient = CGGradientCreateWithColorComponents(colorSpace, components, locations, num_locations);
     
-    CGPoint myStartPoint = CGPointMake(CGRectGetMinX(rect), CGRectGetMinY(rect));
-    CGPoint myEndPoint = CGPointMake(CGRectGetMaxX(rect), CGRectGetMinY(rect));
+    CGPoint myStartPoint = CGPointMake(NSMinX(rect), NSMinY(rect));
+    CGPoint myEndPoint = CGPointMake(NSMaxX(rect), NSMinY(rect));
     
     CGContextDrawLinearGradient(context, myGradient, myStartPoint, myEndPoint, 0);
     
