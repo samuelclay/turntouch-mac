@@ -17,6 +17,8 @@ const NSInteger kImageTextMargin = 24;
 
 - (void)awakeFromNib {
     appDelegate = (TTAppDelegate *)[NSApp delegate];
+    diamondLabels = [[TTDiamondLabels alloc] initWithInteractive:NO];
+    [self addSubview:diamondLabels];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
@@ -24,19 +26,19 @@ const NSInteger kImageTextMargin = 24;
     [self drawMapBackground];
     [self drawLabelBackground];
     [self drawLabel];
+    [self drawMap];
 }
 
 - (void)drawMapBackground {
-    NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
-    CGFloat widthPadding = (screen.frame.size.width * kPaddingPct) / 2;
-    CGFloat heightPadding = (screen.frame.size.height * kPaddingPct) / 2;
-    CGFloat width = screen.frame.size.width - widthPadding*2;
-    CGFloat height = screen.frame.size.height - heightPadding*2;
+    NSRect mapFrame = [self mapFrame];
     NSBezierPath *ellipse = [NSBezierPath bezierPath];
-    [ellipse moveToPoint:NSMakePoint(widthPadding, height/2 + heightPadding)];
-    [ellipse lineToPoint:NSMakePoint(width/2 + widthPadding, height + heightPadding)];
-    [ellipse lineToPoint:NSMakePoint(width + widthPadding, height/2 + heightPadding)];
-    [ellipse lineToPoint:NSMakePoint(width/2 + widthPadding, heightPadding)];
+    [ellipse moveToPoint:NSMakePoint(mapFrame.origin.x,
+                                     mapFrame.size.height/2 + mapFrame.origin.y)];
+    [ellipse lineToPoint:NSMakePoint(mapFrame.size.width/2 + mapFrame.origin.x,
+                                     mapFrame.size.height + mapFrame.origin.y)];
+    [ellipse lineToPoint:NSMakePoint(mapFrame.size.width + mapFrame.origin.x,
+                                     mapFrame.size.height/2 + mapFrame.origin.y)];
+    [ellipse lineToPoint:NSMakePoint(mapFrame.size.width/2 + mapFrame.origin.x, mapFrame.origin.y)];
     [ellipse closePath];
     CGFloat alpha = 0.9f;
     [NSColorFromRGBAlpha(0xC0BCCF, alpha) setStroke];
@@ -60,15 +62,27 @@ const NSInteger kImageTextMargin = 24;
     [borderGradient drawInBezierPath:ellipse angle:-90];
 }
 
+- (NSRect)mapFrame {
+    NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
+    CGFloat widthPadding = (screen.frame.size.width * kPaddingPct) / 2;
+    CGFloat width = screen.frame.size.width - widthPadding*2;
+    CGFloat height = width / 1.3;
+    CGFloat heightPadding = (screen.frame.size.height - height) / 2 - 100;
+
+    return NSMakeRect(widthPadding, heightPadding, width, height);
+}
+
 - (NSRect)labelFrame {
     NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
-    CGFloat heightPadding = (screen.frame.size.height * kPaddingPct) / 2;
+    NSRect mapFrame = [self mapFrame];
     NSSize titleSize = [modeTitle sizeWithAttributes:modeAttributes];
     CGFloat width = titleSize.width + kImageSize + kImageMargin*2 + kImageTextMargin;
-    CGFloat height = screen.frame.size.height - heightPadding*2;
+    CGFloat height = titleSize.height * 2;
 
-    return NSMakeRect((CGRectGetWidth(screen.frame) - width)/2, height + heightPadding + heightPadding/8,
-                      width, titleSize.height + kImageMargin/2);
+    return NSMakeRect((CGRectGetWidth(screen.frame) - width)/2,
+                      mapFrame.origin.y + mapFrame.size.height + 60,
+                      width,
+                      titleSize.height + kImageMargin/2);
 }
 
 - (void)drawLabel {
@@ -84,6 +98,10 @@ const NSInteger kImageTextMargin = 24;
     NSPoint titlePoint = NSMakePoint(imagePoint.x + modeImage.size.width + kImageTextMargin,
                                      frame.origin.y + titleSize.height/2 - kImageMargin/2 - 8);
     [modeTitle drawAtPoint:titlePoint withAttributes:modeAttributes];
+}
+
+- (void)drawMap {
+    [diamondLabels setFrame:[self mapFrame]];
 }
 
 - (void)setupTitleAttributes {

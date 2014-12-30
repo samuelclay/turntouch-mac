@@ -73,7 +73,7 @@
     NSInteger i = buttonState.count;
     while (i--) {
         BOOL buttonDown = ((state & (1 << i)) == (1 << i));
-        NSLog(@"Checking button #%ld: %d / %d", (long)i, buttonDown, anyButtonPressed);
+//        NSLog(@"Checking button #%ld: %d / %d", (long)i, buttonDown, anyButtonPressed);
         if (buttonDown && anyButtonPressed) {
             inMultitouch = YES;
         }

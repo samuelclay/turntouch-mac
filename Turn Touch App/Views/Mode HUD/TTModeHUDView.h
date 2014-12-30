@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "TTAppDelegate.h"
+#import "TTDiamondLabels.h"
 
 @interface TTModeHUDView : NSView {
     TTAppDelegate *appDelegate;
@@ -15,6 +16,7 @@
     NSString *modeTitle;
     NSDictionary *modeAttributes;
     CGSize textSize;
+    TTDiamondLabels *diamondLabels;
 }
 
 - (void)setupTitleAttributes;

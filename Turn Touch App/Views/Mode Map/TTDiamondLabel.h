@@ -17,7 +17,10 @@
     NSDictionary *labelAttributes;
     
     BOOL isHover;
+    BOOL interactive;
 }
+
+@property (nonatomic, readwrite) BOOL interactive;
 
 - (id)initWithFrame:(NSRect)frame inDirection:(TTModeDirection)direction;
 

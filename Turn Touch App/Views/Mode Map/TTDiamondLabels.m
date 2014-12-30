@@ -15,29 +15,36 @@
 @implementation TTDiamondLabels
 
 @synthesize diamondRect;
+@synthesize interactive;
 
-- (id)initWithFrame:(NSRect)frame {
-    self = [super initWithFrame:frame];
+- (id)initWithInteractive:(BOOL)_interactive {
+    self = [super initWithFrame:CGRectZero];
     if (self) {
         appDelegate = (TTAppDelegate *)[NSApp delegate];
+        interactive = _interactive;
         self.translatesAutoresizingMaskIntoConstraints = NO;
         
         diamondView = [[TTDiamondView alloc] initWithFrame:CGRectZero interactive:YES];
         [diamondView setIgnoreSelectedMode:YES];
         [diamondView setShowOutline:YES];
-        [diamondView setInteractive:YES];
         [self addSubview:diamondView];
         
         northLabel = [[TTDiamondLabel alloc] initWithFrame:CGRectZero inDirection:NORTH];
+        [northLabel setInteractive:interactive];
         [self addSubview:northLabel];
         eastLabel = [[TTDiamondLabel alloc] initWithFrame:CGRectZero inDirection:EAST];
+        [eastLabel setInteractive:interactive];
         [self addSubview:eastLabel];
         westLabel = [[TTDiamondLabel alloc] initWithFrame:CGRectZero inDirection:WEST];
+        [westLabel setInteractive:interactive];
         [self addSubview:westLabel];
         southLabel = [[TTDiamondLabel alloc] initWithFrame:CGRectZero inDirection:SOUTH];
+        [southLabel setInteractive:interactive];
         [self addSubview:southLabel];
-
-        [self registerAsObserver];
+        
+        if (interactive) {
+            [self registerAsObserver];
+        }
     }
     
     return self;
@@ -46,36 +53,47 @@
 - (void)setFrame:(NSRect)frameRect {
     [super setFrame:frameRect];
     
-    [self drawBackground];
+    if (interactive) {
+        [self drawBackground];
+    }
     
-    diamondRect = NSInsetRect(self.bounds, 24, 24);
+    if (interactive) {
+        diamondRect = NSInsetRect(self.bounds, 24, 24);
+    } else {
+        diamondRect = NSInsetRect(self.bounds, 48, 48);
+    }
     [diamondView setFrame:diamondRect];
 }
 
 #pragma mark - KVO
 
 - (void)dealloc {
-    [appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
-    [appDelegate.modeMap removeObserver:self forKeyPath:@"activeModeDirection"];
-    [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedModeDirection"];
-    [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedMode"];
+    if (interactive) {
+        [appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
+        [appDelegate.modeMap removeObserver:self forKeyPath:@"activeModeDirection"];
+        [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedModeDirection"];
+        [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedMode"];
+    }
 }
 
 - (void)registerAsObserver {
-    [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
-                             options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"activeModeDirection"
-                             options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
-                             options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"selectedMode"
-                             options:0 context:nil];
+    if (interactive) {
+        [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
+                                 options:0 context:nil];
+        [appDelegate.modeMap addObserver:self forKeyPath:@"activeModeDirection"
+                                 options:0 context:nil];
+        [appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
+                                 options:0 context:nil];
+        [appDelegate.modeMap addObserver:self forKeyPath:@"selectedMode"
+                                 options:0 context:nil];
+    }
 }
 
 - (void) observeValueForKeyPath:(NSString*)keyPath
                        ofObject:(id)object
                          change:(NSDictionary*)change
-                        context:(void*)context {    
+                        context:(void*)context {
+    if (!interactive) return;
     if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))]) {
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(activeModeDirection))]) {
@@ -94,7 +112,9 @@
 	[super drawRect:dirtyRect];
 
     [self drawLabels];
-    [self drawBackground];
+    if (interactive) {
+        [self drawBackground];
+    }
 }
 
 
@@ -106,32 +126,32 @@
 
 - (void)drawLabels {
     CGFloat offsetX = NSMinX(diamondRect);
+    CGFloat offsetY = NSMinY(diamondRect);
     CGFloat width = NSWidth(diamondRect);
     CGFloat height = NSHeight(diamondRect);
     CGFloat spacing = SPACING_PCT * width;
-    CGFloat textHeight = 24;
     
     for (TTModeDirection direction=1; direction <= 4; direction++) {
         NSRect textRect = diamondRect;
         
         if (direction == NORTH) {
-            textRect = NSMakeRect(offsetX, height * 3/4 + spacing + textHeight/2,
-                                  width, textHeight);
+            textRect = NSMakeRect(offsetX, height * 3/4 + spacing + offsetY/2,
+                                  width, offsetY);
             [northLabel setFrame:textRect];
         } else if (direction == EAST) {
-            textRect = NSMakeRect(offsetX + width/2 + spacing*2, height/2 + textHeight/2,
-                                  width/2 - spacing*2, textHeight);
+            textRect = NSMakeRect(offsetX + width/2 + spacing*2, height/2 + offsetY/2,
+                                  width/2 - spacing*2, offsetY);
             [eastLabel setFrame:textRect];
         } else if (direction == WEST) {
-            textRect = NSMakeRect(offsetX, height/2 + textHeight/2,
-                                  width/2 - spacing*2, textHeight);
+            textRect = NSMakeRect(offsetX, height/2 + offsetY/2,
+                                  width/2 - spacing*2, offsetY);
             [westLabel setFrame:textRect];
         } else if (direction == SOUTH) {
-            textRect = NSMakeRect(offsetX, height * 1/4 - spacing + textHeight/2,
-                                  width, textHeight);
+            textRect = NSMakeRect(offsetX, height * 1/4 - spacing + offsetY/2,
+                                  width, offsetY);
             [southLabel setFrame:textRect];
         }
-//        NSLog(@"Label rect: %@", NSStringFromRect(textRect));
+        NSLog(@"Label rect: %@", NSStringFromRect(textRect));
     }
 }
 

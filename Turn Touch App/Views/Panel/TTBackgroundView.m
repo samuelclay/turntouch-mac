@@ -46,7 +46,7 @@
         modeTabs = [[TTModeTabsContainer alloc] init];
         modeTitle = [[TTModeTitleView alloc] init];
         modeMenu = [[TTModeMenuContainer alloc] initWithType:MODE_MENU_TYPE];
-        diamondLabels = [[TTDiamondLabels alloc] init];
+        diamondLabels = [[TTDiamondLabels alloc] initWithInteractive:YES];
         optionsView = [[TTOptionsView alloc] init];
         actionMenu = [[TTModeMenuContainer alloc] initWithType:ACTION_MENU_TYPE];
         
