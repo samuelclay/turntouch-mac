@@ -11,6 +11,9 @@
 @implementation TTModeHUDView
 
 const CGFloat kPaddingPct = .6f;
+const NSInteger kImageMargin = 32;
+const NSInteger kImageSize = 36;
+const NSInteger kImageTextMargin = 24;
 
 - (void)awakeFromNib {
     appDelegate = (TTAppDelegate *)[NSApp delegate];
@@ -59,27 +62,27 @@ const CGFloat kPaddingPct = .6f;
 
 - (NSRect)labelFrame {
     NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
-    CGFloat widthPadding = (screen.frame.size.width * kPaddingPct) / 2;
     CGFloat heightPadding = (screen.frame.size.height * kPaddingPct) / 2;
-    CGFloat width = screen.frame.size.width - widthPadding*2;
+    NSSize titleSize = [modeTitle sizeWithAttributes:modeAttributes];
+    CGFloat width = titleSize.width + kImageSize + kImageMargin*2 + kImageTextMargin;
     CGFloat height = screen.frame.size.height - heightPadding*2;
 
-    return NSMakeRect(widthPadding, height + heightPadding + heightPadding/4,
-                      width, 75.0);
+    return NSMakeRect((CGRectGetWidth(screen.frame) - width)/2, height + heightPadding + heightPadding/8,
+                      width, titleSize.height + kImageMargin/2);
 }
 
 - (void)drawLabel {
     NSRect frame = [self labelFrame];
     modeImage = [NSImage imageNamed:[[appDelegate.modeMap.selectedMode class] imageName]];
-    [modeImage setSize:NSMakeSize(36, 36)];
+    [modeImage setSize:NSMakeSize(kImageSize, kImageSize)];
     CGFloat offset = (NSHeight(frame)/2) - (modeImage.size.height/2);
-    NSPoint imagePoint = NSMakePoint(frame.origin.x + offset, frame.origin.y + offset);
+    NSPoint imagePoint = NSMakePoint(frame.origin.x + kImageMargin, frame.origin.y + offset);
     [modeImage drawInRect:NSMakeRect(imagePoint.x, imagePoint.y,
                                      modeImage.size.width, modeImage.size.height)];
     
     NSSize titleSize = [modeTitle sizeWithAttributes:modeAttributes];
-    NSPoint titlePoint = NSMakePoint(imagePoint.x + modeImage.size.width + 12,
-                                     frame.origin.y);
+    NSPoint titlePoint = NSMakePoint(imagePoint.x + modeImage.size.width + kImageTextMargin,
+                                     frame.origin.y + titleSize.height/2 - kImageMargin/2 - 8);
     [modeTitle drawAtPoint:titlePoint withAttributes:modeAttributes];
 }
 
@@ -90,7 +93,7 @@ const CGFloat kPaddingPct = .6f;
     stringShadow.shadowOffset = NSMakeSize(0, -1);
     stringShadow.shadowBlurRadius = 0;
     NSColor *textColor = NSColorFromRGB(0x404A60);
-    modeAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:36],
+    modeAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:52],
                        NSForegroundColorAttributeName: textColor,
                        NSShadowAttributeName: stringShadow
                        };
