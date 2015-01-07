@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14C81f" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment version="1090" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTOptionsView"/>
@@ -18,11 +18,11 @@
                     <tabViewItems>
                         <tabViewItem label="Alarm times" identifier="1" id="CX8-qh-iYR">
                             <view key="view" id="yKC-Lf-rk6">
-                                <rect key="frame" x="10" y="33" width="465" height="241"/>
+                                <rect key="frame" x="10" y="33" width="465" height="251"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <box autoresizesSubviews="NO" title="Repeating alarm" borderType="bezel" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="C4a-9h-8KN" customClass="TTBoxView">
-                                        <rect key="frame" x="-3" y="98" width="471" height="145"/>
+                                        <rect key="frame" x="-3" y="108" width="471" height="145"/>
                                         <view key="contentView">
                                             <rect key="frame" x="3" y="3" width="465" height="139"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -119,7 +119,7 @@
                                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </box>
                                     <box autoresizesSubviews="NO" title="One-time alarm" borderType="bezel" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Ynp-bh-WI4" customClass="TTBoxView">
-                                        <rect key="frame" x="-3" y="-18" width="471" height="122"/>
+                                        <rect key="frame" x="-3" y="-8" width="471" height="122"/>
                                         <view key="contentView">
                                             <rect key="frame" x="3" y="3" width="465" height="116"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -166,10 +166,10 @@
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <slider verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Yx-qA-qzL">
-                                                                <rect key="frame" x="141" y="32" width="278" height="26"/>
+                                                                <rect key="frame" x="141" y="32" width="278" height="25"/>
                                                                 <sliderCell key="cell" state="on" alignment="left" maxValue="24" doubleValue="10" tickMarkPosition="above" numberOfTickMarks="12" sliderType="linear" id="cXa-Bf-Dxu"/>
                                                             </slider>
-                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TpU-io-mXB">
+                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TpU-io-mXB">
                                                                 <rect key="frame" x="-2" y="3" width="423" height="19"/>
                                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="7:00 AM (in 8 hours 21 minutes)" id="Rzq-bq-C5C">
                                                                     <font key="font" size="13" name="Effra-Regular"/>
@@ -177,7 +177,7 @@
                                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                 </textFieldCell>
                                                             </textField>
-                                                            <datePicker verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ASz-hE-Fct" customClass="TFDatePicker">
+                                                            <datePicker verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ASz-hE-Fct" customClass="TFDatePicker">
                                                                 <rect key="frame" x="1" y="34" width="101" height="27"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="98" id="Ko2-Pd-8zU"/>
@@ -252,11 +252,11 @@
                         </tabViewItem>
                         <tabViewItem label="Music and sounds" identifier="2" id="C5r-VN-Fk5">
                             <view key="view" id="dme-kN-wNJ">
-                                <rect key="frame" x="10" y="33" width="465" height="105"/>
+                                <rect key="frame" x="10" y="33" width="465" height="251"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <box autoresizesSubviews="NO" misplaced="YES" title="General" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="4X6-Q1-Mt2" customClass="TTBoxView">
-                                        <rect key="frame" x="-3" y="0.0" width="471" height="106"/>
+                                        <rect key="frame" x="-3" y="146" width="471" height="106"/>
                                         <view key="contentView">
                                             <rect key="frame" x="1" y="1" width="469" height="104"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

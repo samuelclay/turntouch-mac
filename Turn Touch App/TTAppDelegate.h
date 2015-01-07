@@ -14,6 +14,8 @@
 #import "TTModeMap.h"
 #import "TTHUDController.h"
 
+#define NSAppDelegate  ((TTAppDelegate *)[[NSApplication sharedApplication] delegate])
+
 @class TTModeMap;
 @class TTPanelController;
 @class TTHUDController;

@@ -77,7 +77,7 @@ const NSInteger kImageTextMargin = 24;
     NSRect mapFrame = [self mapFrame];
     NSSize titleSize = [modeTitle sizeWithAttributes:modeAttributes];
     CGFloat width = titleSize.width + kImageSize + kImageMargin*2 + kImageTextMargin;
-    CGFloat height = titleSize.height * 2;
+//    CGFloat height = titleSize.height * 2;
 
     return NSMakeRect((NSWidth(screen.frame) - width)/2,
                       mapFrame.origin.y + mapFrame.size.height + 60,
