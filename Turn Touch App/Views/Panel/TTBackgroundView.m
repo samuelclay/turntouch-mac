@@ -142,7 +142,7 @@
 }
 
 - (void)updateConstraints {
-    NSLog(@"updateConstraints");
+//    NSLog(@"updateConstraints");
     [super updateConstraints];
 }
 #pragma mark - KVO

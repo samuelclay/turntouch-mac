@@ -82,7 +82,7 @@
 }
 
 - (void)resize:(NSNotification *)notification {
-    NSLog(@"resize");
+//    NSLog(@"Resize notification: %@", NSStringFromRect(self.window.frame));
 //    [self.window display];
 //    [self.window setHasShadow:NO];
 //    [self.window setHasShadow:YES];
@@ -128,14 +128,14 @@
 }
 
 - (void)windowDidResize:(NSNotification *)notification {
-    NSLog(@"windowDidResize: %@", notification);
+//    NSLog(@"windowDidResize: %@", notification);
 
     [self.window display];
     [self.window invalidateShadow];
 }
 
 - (NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize {
-    NSLog(@"windowWillResize:%@ toSize:%@", sender, NSStringFromSize(frameSize));
+//    NSLog(@"windowWillResize:%@ toSize:%@", sender, NSStringFromSize(frameSize));
 
     return frameSize;
 }
@@ -176,13 +176,14 @@
     NSRect statusRect = [self statusRectForWindow:panel];
     
     NSRect panelRect = [panel frame];
-    panelRect.size.height = PANEL_HEIGHT;
-    panelRect.size.width = PANEL_WIDTH;
+//    panelRect.size.height = PANEL_HEIGHT;
+//    panelRect.size.width = PANEL_WIDTH;
     panelRect.origin.x = roundf(NSMidX(statusRect) - NSWidth(panelRect) / 2);
     panelRect.origin.y = NSMaxY(statusRect) - NSHeight(panelRect);
     
     if (NSMaxX(panelRect) > (NSMaxX(screenRect) - ARROW_HEIGHT))
         panelRect.origin.x -= NSMaxX(panelRect) - (NSMaxX(screenRect) - ARROW_HEIGHT);
+//    NSLog(@"Panel rect: %@ (%@)", NSStringFromRect(statusRect), NSStringFromRect(panelRect));
 
     [NSApp activateIgnoringOtherApps:NO];
     [panel setAlphaValue:0];

@@ -78,8 +78,8 @@
  */
 - (void) centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)aPeripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
 {
-    NSString *localName = [advertisementData objectForKey:CBAdvertisementDataLocalNameKey];
-    NSLog(@"Found bluetooth peripheral: %@", localName);
+//    NSString *localName = [advertisementData objectForKey:CBAdvertisementDataLocalNameKey];
+//    NSLog(@"Found bluetooth peripheral: %@", localName);
     NSArray *peripherals = [manager retrievePeripheralsWithIdentifiers:@[(id)aPeripheral.identifier]];
     
     [self stopScan];
@@ -130,7 +130,7 @@
 
 - (void) peripheral:(CBPeripheral *)aPeripheral didDiscoverServices:(NSError *)error {
     for (CBService *aService in aPeripheral.services) {
-        NSLog(@"Service found with UUID: %@", aService.UUID);
+//        NSLog(@"Service found with UUID: %@", aService.UUID);
         
         if ([aService.UUID isEqual:[CBUUID UUIDWithString:DEVICE_SERVICE_UUID]]) {
             [aPeripheral discoverCharacteristics:nil forService:aService];
@@ -153,7 +153,7 @@
         for (CBCharacteristic *aChar in service.characteristics) {
             if ([aChar.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_BUTTON_STATUS_UUID]]) {
                 [peripheral setNotifyValue:YES forCharacteristic:aChar];
-                NSLog(@"Found button status characteristic");
+//                NSLog(@"Found button status characteristic");
                 [appDelegate.hudController toastActiveMode];
             }
 //            /* Read body sensor location */
@@ -177,7 +177,7 @@
             /* Read device name */
             if ([aChar.UUID isEqual:[CBUUID UUIDWithString:CBUUIDDeviceNameString]]) {
                 [aPeripheral readValueForCharacteristic:aChar];
-                NSLog(@"Found a Device Name Characteristic");
+//                NSLog(@"Found a Device Name Characteristic");
             }
         }
     }
@@ -187,7 +187,7 @@
             /* Read manufacturer name */
             if ([aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A29"]]) {
                 [aPeripheral readValueForCharacteristic:aChar];
-                NSLog(@"Found a Device Manufacturer Name Characteristic");
+//                NSLog(@"Found a Device Manufacturer Name Characteristic");
             }
         }
     }
@@ -205,10 +205,10 @@
         }
     } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:CBUUIDDeviceNameString]]) {
         NSString * deviceName = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
-        NSLog(@"Device Name = %@", deviceName);
+//        NSLog(@"Device Name = %@", deviceName);
     } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A29"]]) {
         manufacturer = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
-        NSLog(@"Manufacturer Name = %@", manufacturer);
+//        NSLog(@"Manufacturer Name = %@", manufacturer);
     }
 }
 
