@@ -144,7 +144,8 @@
     NSArray *nibArray = [NSArray array];
     NSString *modeName = NSStringFromClass([appDelegate.modeMap.selectedMode class]);
     [[NSBundle mainBundle] loadNibNamed:modeName owner:self topLevelObjects:&nibArray];
-    
+    NSLog(@"Options frame: %@", NSStringFromRect(self.frame));
+
     for (id view in nibArray) {
         if ([[view class] isSubclassOfClass:[TTOptionsDetailView class]]) {
             modeOptionsView = view;
@@ -167,6 +168,7 @@
         modeOptionsView.menuType = MODE_MENU_TYPE;
         modeOptionsView.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:modeOptionsView];
+        NSLog(@"Options frame: %@", NSStringFromRect(self.frame));
     }
     
     
