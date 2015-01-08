@@ -24,12 +24,12 @@
 		FF2365D3196F0DFA00A4ADBC /* mode_timer.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2365C9196F0DFA00A4ADBC /* mode_timer.png */; };
 		FF2365D4196F0DFA00A4ADBC /* mode_video.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2365CA196F0DFA00A4ADBC /* mode_video.png */; };
 		FF2365D5196F0DFA00A4ADBC /* mode_web.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2365CB196F0DFA00A4ADBC /* mode_web.png */; };
+		FF3641D81A5E241C003CC03C /* HueSDK_OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */; };
 		FF429AD21919C630007C485E /* TTModeMenuCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF429AD11919C630007C485E /* TTModeMenuCollectionView.m */; };
 		FF4E2630182317D000D477F6 /* TTSerialMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4E262F182317D000D477F6 /* TTSerialMonitor.m */; };
 		FF4E26321823197D00D477F6 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4E26311823197D00D477F6 /* IOKit.framework */; };
 		FF66F2A619228DE100031478 /* TTModeAlarmClockOptionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66F2A519228DE100031478 /* TTModeAlarmClockOptionsView.m */; };
 		FF66F2A91922D1C100031478 /* TTOptionsDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66F2A81922D1C100031478 /* TTOptionsDetailView.m */; };
-		FF7305AD1A5C9C76009A852D /* HueSDK_OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF73058F1A5C9C76009A852D /* HueSDK_OSX.framework */; };
 		FF7305AE1A5C9C76009A852D /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7305921A5C9C76009A852D /* DDAbstractDatabaseLogger.m */; };
 		FF7305AF1A5C9C76009A852D /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7305941A5C9C76009A852D /* DDASLLogger.m */; };
 		FF7305B01A5C9C76009A852D /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7305961A5C9C76009A852D /* DDFileLogger.m */; };
@@ -179,6 +179,7 @@
 		FF2365C9196F0DFA00A4ADBC /* mode_timer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mode_timer.png; path = icons/mode_timer.png; sourceTree = "<group>"; };
 		FF2365CA196F0DFA00A4ADBC /* mode_video.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mode_video.png; path = icons/mode_video.png; sourceTree = "<group>"; };
 		FF2365CB196F0DFA00A4ADBC /* mode_web.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mode_web.png; path = icons/mode_web.png; sourceTree = "<group>"; };
+		FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HueSDK_OSX.framework; sourceTree = "<group>"; };
 		FF429AD01919C630007C485E /* TTModeMenuCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeMenuCollectionView.h; sourceTree = "<group>"; };
 		FF429AD11919C630007C485E /* TTModeMenuCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeMenuCollectionView.m; sourceTree = "<group>"; };
 		FF4E262E182317D000D477F6 /* TTSerialMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSerialMonitor.h; path = SerialMonitor/TTSerialMonitor.h; sourceTree = "<group>"; };
@@ -189,7 +190,6 @@
 		FF66F2A519228DE100031478 /* TTModeAlarmClockOptionsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeAlarmClockOptionsView.m; path = "Modes/Alarm Clock/TTModeAlarmClockOptionsView.m"; sourceTree = "<group>"; };
 		FF66F2A71922D1C100031478 /* TTOptionsDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTOptionsDetailView.h; path = "Views/Mode Options/TTOptionsDetailView.h"; sourceTree = "<group>"; };
 		FF66F2A81922D1C100031478 /* TTOptionsDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTOptionsDetailView.m; path = "Views/Mode Options/TTOptionsDetailView.m"; sourceTree = "<group>"; };
-		FF73058F1A5C9C76009A852D /* HueSDK_OSX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HueSDK_OSX.framework; sourceTree = "<group>"; };
 		FF7305911A5C9C76009A852D /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
 		FF7305921A5C9C76009A852D /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
 		FF7305931A5C9C76009A852D /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
@@ -373,13 +373,13 @@
 			files = (
 				FF7305C21A5CB2E3009A852D /* SystemConfiguration.framework in Frameworks */,
 				FFE2D4761A451FA200DDD413 /* CoreBluetooth.framework in Frameworks */,
+				FF3641D81A5E241C003CC03C /* HueSDK_OSX.framework in Frameworks */,
 				FFB653E018DBA14E00830B42 /* CoreFoundation.framework in Frameworks */,
 				FF8012F7186A599600955218 /* AudioToolbox.framework in Frameworks */,
 				FF7A1C6F1868FD72005FA756 /* QuartzCore.framework in Frameworks */,
 				FF0E12D11824811200D49EC7 /* ScriptingBridge.framework in Frameworks */,
 				FF4E26321823197D00D477F6 /* IOKit.framework in Frameworks */,
 				FF8C833717AB14B5000166FC /* Cocoa.framework in Frameworks */,
-				FF7305AD1A5C9C76009A852D /* HueSDK_OSX.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,7 +508,7 @@
 		FF73058E1A5C9C76009A852D /* Hue */ = {
 			isa = PBXGroup;
 			children = (
-				FF73058F1A5C9C76009A852D /* HueSDK_OSX.framework */,
+				FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */,
 				FF7305901A5C9C76009A852D /* Lumberjack */,
 				FF7305A01A5C9C76009A852D /* SDKWizard */,
 			);
@@ -1234,9 +1234,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Turn",
-					Touch,
-					App/Vendor/Hue,
+					"$(PROJECT_DIR)/Turn\\ Touch\\ App/Vendor/Hue",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Turn Touch App/Supporting Files/Turn Touch App-Prefix.pch";
@@ -1257,9 +1255,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Turn",
-					Touch,
-					App/Vendor/Hue,
+					"$(PROJECT_DIR)/Turn\\ Touch\\ App/Vendor/Hue",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Turn Touch App/Supporting Files/Turn Touch App-Prefix.pch";
