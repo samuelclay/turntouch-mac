@@ -10,4 +10,6 @@
 
 @interface TTModeHueOptions : TTOptionsDetailViewController
 
+- (void)showLoadingViewWithText:(NSString*)message;
+
 @end

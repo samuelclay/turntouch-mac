@@ -7,11 +7,10 @@
 //
 
 #import "TTModeHue.h"
-#include "TTModeHueConnect.h"
+#import "TTModeHueOptions.h"
 
 @interface TTModeHue()
 
-@property (nonatomic, strong) TTModeHueConnect *connectViewController;
 @property (nonatomic, strong) PHBridgePushLinkViewController *pushLinkViewController;
 @property (nonatomic, strong) PHBridgeSearching *bridgeSearch;
 
@@ -116,9 +115,6 @@
     [notificationManager registerObject:self withSelector:@selector(localConnection) forNotification:LOCAL_CONNECTION_NOTIFICATION];
     [notificationManager registerObject:self withSelector:@selector(noLocalConnection) forNotification:NO_LOCAL_CONNECTION_NOTIFICATION];
     [notificationManager registerObject:self withSelector:@selector(notAuthenticated) forNotification:NO_LOCAL_AUTHENTICATION_NOTIFICATION];
-    
-    // No Hue found, show connection button
-    [self showLoadingViewWithText:NSLocalizedString(@"Connect to your Hue...", @"Searching for bridges text")];
 }
 
 
@@ -214,7 +210,7 @@
     // Start search
     NSArray *nibObjects;
     [[NSBundle mainBundle] loadNibNamed:@"TTModeHueConnecting" owner:self topLevelObjects:&nibObjects];
-    [appDelegate.modeMap.selectedMode.modeOptionsView addSubview:nibObjects[1]];
+    [appDelegate.panelController.backgroundView.optionsView.modeOptionsViewController.view addSubview:nibObjects[1]];
     
     self.bridgeSearch = [[PHBridgeSearching alloc] initWithUpnpSearch:YES andPortalSearch:YES andIpAdressSearch:YES];
     [self.bridgeSearch startSearchWithCompletionHandler:^(NSDictionary *bridgesFound) {
@@ -253,7 +249,7 @@
 //    [self hideCurrentSheetWindow];
     
     // Show a connecting loading sheet while we try to connect to the bridge
-    [self showLoadingViewWithText:NSLocalizedString(@"Connecting...", @"Connecting text")];
+    [((TTModeHueOptions *)appDelegate.panelController.backgroundView.optionsView.modeOptionsViewController) showLoadingViewWithText:NSLocalizedString(@"Connecting...", @"Connecting text")];
     
     // Set SDK to use bridge and our default username (which should be the same across all apps, so pushlinking is only required once)
     
@@ -291,7 +287,7 @@
 //        [self hideCurrentSheetWindow];
         
         // Show a connecting sheet while we try to connect to the bridge
-        [self showLoadingViewWithText:NSLocalizedString(@"Connecting...", @"Connecting text")];
+        [((TTModeHueOptions *)appDelegate.panelController.backgroundView.optionsView.modeOptionsViewController) showLoadingViewWithText:NSLocalizedString(@"Connecting...", @"Connecting text")];
         
         // Enable heartbeat with interval of 10 seconds
         [self.phHueSDK enableLocalConnection];
@@ -328,7 +324,7 @@
     // Create an interface for the pushlinking
     self.pushLinkViewController = [[PHBridgePushLinkViewController alloc] initWithNibName:@"PHBridgePushLinkViewController" bundle:[NSBundle mainBundle] delegate:self];
     
-    [appDelegate.modeMap.selectedMode.modeOptionsView addSubview:self.pushLinkViewController.view];
+    [appDelegate.panelController.backgroundView.optionsView.modeOptionsViewController.view addSubview:self.pushLinkViewController.view];
     
     /***************************************************
      Start the push linking process.
@@ -374,21 +370,6 @@
         [self showNotAuthenticatedDialog];
     }
 }
-
-#pragma mark - View management
-
-- (void)showLoadingViewWithText:(NSString*)message{
-    if (self.connectViewController == nil) {
-        self.connectViewController = [[TTModeHueConnect alloc] initWithNibName:@"TTModeHueConnect" bundle:[NSBundle mainBundle]];
-    }
-    if (self.connectViewController.view) {
-        [self.connectViewController.view removeFromSuperview];
-    }
-    [appDelegate.modeMap.selectedMode.modeOptionsView addSubview:self.connectViewController.view];
-    NSLog(@"Connect frame: %@", NSStringFromRect(self.connectViewController.view.frame));
-    [self.connectViewController setLoadingWithMessage:message];
-}
-
 
 
 @end

@@ -7,8 +7,11 @@
 //
 
 #import "TTModeHueOptions.h"
+#import "TTModeHueConnect.h"
 
 @interface TTModeHueOptions ()
+
+@property (nonatomic, strong) TTModeHueConnect *connectViewController;
 
 @end
 
@@ -17,6 +20,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
+    
+    // No Hue found, show connection button
+    [self showLoadingViewWithText:NSLocalizedString(@"Connect to your Hue...", @"Searching for bridges text")];
+}
+
+
+- (void)showLoadingViewWithText:(NSString*)message{
+    if (self.connectViewController == nil) {
+        self.connectViewController = [[TTModeHueConnect alloc] initWithNibName:@"TTModeHueConnect" bundle:[NSBundle mainBundle]];
+    }
+    if (self.connectViewController.view) {
+        [self.connectViewController.view removeFromSuperview];
+    }
+    [appDelegate.panelController.backgroundView.optionsView.modeOptionsViewController.view addSubview:self.connectViewController.view];
+    NSLog(@"Connect frame: %@", NSStringFromRect(self.connectViewController.view.frame));
+    [self.connectViewController setLoadingWithMessage:message];
 }
 
 @end
