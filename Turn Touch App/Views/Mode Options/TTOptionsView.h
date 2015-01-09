@@ -16,6 +16,7 @@
 @class TTOptionsModeTitle;
 @class TTOptionsActionTitle;
 @class TTOptionsDetailView;
+@class TTOptionsDetailViewController;
 
 @interface TTOptionsView : NSView {
     TTAppDelegate *appDelegate;
@@ -24,7 +25,7 @@
 }
 
 @property (nonatomic) NSScrollView *scrollView;
-@property (nonatomic) TTOptionsDetailView *modeOptionsView;
+@property (nonatomic) TTOptionsDetailViewController *modeOptionsViewController;
 @property (nonatomic) TTOptionsDetailView *actionOptionsView;
 
 - (void)redrawOptions;

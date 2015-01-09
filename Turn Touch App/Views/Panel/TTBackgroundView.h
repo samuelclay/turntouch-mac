@@ -15,7 +15,7 @@
 #import "TTDiamondLabels.h"
 #import "TTOptionsView.h"
 #import "TTTitleBarView.h"
-#import "TTOptionsDetailView.h"
+#import "TTOptionsDetailViewController.h"
 
 @class TTAppDelegate;
 @class TTPanelArrowView;
@@ -26,7 +26,7 @@
 @class TTModeTitleView;
 @class TTOptionsView;
 @class TTTitleBarView;
-@class TTOptionsDetailView;
+@class TTOptionsDetailViewController;
 
 @interface TTBackgroundView : NSStackView <NSStackViewDelegate> {
     TTAppDelegate *appDelegate;

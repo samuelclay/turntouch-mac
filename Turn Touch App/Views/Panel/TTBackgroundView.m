@@ -115,12 +115,12 @@
         optionsConstraint = [NSLayoutConstraint constraintWithItem:optionsView
                                                          attribute:NSLayoutAttributeHeight
                                                          relatedBy:NSLayoutRelationEqual
-                                                            toItem:optionsView.modeOptionsView
+                                                            toItem:optionsView.modeOptionsViewController.view
                                                          attribute:NSLayoutAttributeHeight
                                                         multiplier:1.0 constant:0];
         [self addConstraint:optionsConstraint];
         
-        NSLog(@"Init modeOptionsView View height: %.f", NSHeight(optionsView.modeOptionsView.bounds));
+        NSLog(@"Init modeOptionsView View height: %.f", NSHeight(optionsView.modeOptionsViewController.view.bounds));
         NSLog(@"Init options View height: %.f", NSHeight(optionsView.bounds));
 
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self

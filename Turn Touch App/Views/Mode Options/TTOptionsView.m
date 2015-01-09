@@ -7,7 +7,7 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
-#import "TTOptionsView.h"
+#import "TTOptionsDetailViewController.h"
 #import "TTOptionsModeTitle.h"
 #import "TTOptionsActionTitle.h"
 
@@ -16,7 +16,7 @@
 
 @implementation TTOptionsView
 
-@synthesize modeOptionsView;
+@synthesize modeOptionsViewController;
 @synthesize actionOptionsView;
 
 - (id)initWithFrame:(NSRect)frame
@@ -122,9 +122,9 @@
         }
     }
 
-    if (modeOptionsView) {
-        [modeOptionsView removeFromSuperview];
-        modeOptionsView = nil;
+    if (modeOptionsViewController) {
+        [modeOptionsViewController.view removeFromSuperview];
+        modeOptionsViewController = nil;
     }
     if (actionOptionsView) {
         [actionOptionsView removeFromSuperview];
@@ -141,62 +141,56 @@
 
     [self clearOptionDetailViews];
 
-    NSArray *nibArray = [NSArray array];
     NSString *modeName = NSStringFromClass([appDelegate.modeMap.selectedMode class]);
-    [[NSBundle mainBundle] loadNibNamed:modeName owner:self topLevelObjects:&nibArray];
-    NSLog(@"Options frame: %@", NSStringFromRect(self.frame));
+    NSString *modeOptionsViewControllerName = [NSString stringWithFormat:@"%@Options", modeName];
+    modeOptionsViewController = [[NSClassFromString(modeOptionsViewControllerName) alloc]
+                                 initWithNibName:modeOptionsViewControllerName bundle:nil];
+    NSLog(@"Options frame %@: %@", modeOptionsViewControllerName, NSStringFromRect(self.frame));
 
-    for (id view in nibArray) {
-        if ([[view class] isSubclassOfClass:[TTOptionsDetailView class]]) {
-            modeOptionsView = view;
-            break;
-        }
-    }
-
-    if (!modeOptionsView) {
+    if (!modeOptionsViewController) {
         NSLog(@" --- Missing mode options view for %@", modeName);
-        modeOptionsView = (TTOptionsDetailView *)[[NSView alloc] init];
-        modeOptionsView.translatesAutoresizingMaskIntoConstraints = NO;
-        [self addSubview:modeOptionsView];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsView
+        modeOptionsViewController = (TTOptionsDetailViewController *)[[NSViewController alloc] init];
+        [modeOptionsViewController setView:[[TTOptionsDetailView alloc] init]];
+        [self addSubview:modeOptionsViewController.view];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsViewController.view
                                                          attribute:NSLayoutAttributeHeight
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:nil
                                                          attribute:0
                                                         multiplier:1.0 constant:CORNER_RADIUS]];
     } else {
-        modeOptionsView.menuType = MODE_MENU_TYPE;
-        modeOptionsView.translatesAutoresizingMaskIntoConstraints = NO;
-        [self addSubview:modeOptionsView];
-        NSLog(@"Options frame: %@", NSStringFromRect(self.frame));
+        modeOptionsViewController.menuType = MODE_MENU_TYPE;
+//        modeOptionsViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
+        [self addSubview:modeOptionsViewController.view];
+        NSLog(@"Options frame: %@ (%@)", NSStringFromRect(self.frame), NSStringFromRect(modeOptionsViewController.view.frame));
     }
     
     
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsView
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsViewController.view
                                                      attribute:NSLayoutAttributeTop
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:self
                                                      attribute:NSLayoutAttributeTop
                                                     multiplier:1.0 constant:0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsView
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsViewController.view
                                                      attribute:NSLayoutAttributeLeading
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:self
                                                      attribute:NSLayoutAttributeLeading
                                                     multiplier:1.0 constant:0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsView
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsViewController.view
                                                      attribute:NSLayoutAttributeTrailing
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:self
                                                      attribute:NSLayoutAttributeTrailing
                                                     multiplier:1.0 constant:0]];
-//    [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsView
+//    [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsViewController.view
 //                                                     attribute:NSLayoutAttributeWidth
 //                                                     relatedBy:NSLayoutRelationEqual
 //                                                        toItem:self
 //                                                     attribute:NSLayoutAttributeWidth
 //                                                    multiplier:1.0 constant:0]];
-    [appDelegate.panelController.backgroundView adjustOptionsHeight:modeOptionsView];
+    [appDelegate.panelController.backgroundView adjustOptionsHeight:modeOptionsViewController.view];
 
 }
 

@@ -10,11 +10,10 @@
 #import "TTMode.h"
 #import "TTModeProtocol.h"
 #include "PHBridgePushLinkViewController.h"
-#include "PHBridgeSelectionViewController.h"
 #import <HueSDK_OSX/HueSDK.h>
 
 @interface TTModeHue : TTMode
-<PHBridgePushLinkViewControllerDelegate, PHBridgeSelectionViewControllerDelegate>
+<PHBridgePushLinkViewControllerDelegate>
 
 @property (strong, nonatomic) PHHueSDK *phHueSDK;
 

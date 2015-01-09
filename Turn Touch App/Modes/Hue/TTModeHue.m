@@ -7,12 +7,11 @@
 //
 
 #import "TTModeHue.h"
-#import "PHLoadingViewController.h"
+#include "TTModeHueConnect.h"
 
 @interface TTModeHue()
 
-@property (nonatomic, strong) PHBridgeSelectionViewController *bridgeSelectionViewController;
-@property (nonatomic, strong) PHLoadingViewController *loadingViewController;
+@property (nonatomic, strong) TTModeHueConnect *connectViewController;
 @property (nonatomic, strong) PHBridgePushLinkViewController *pushLinkViewController;
 @property (nonatomic, strong) PHBridgeSearching *bridgeSearch;
 
@@ -117,6 +116,9 @@
     [notificationManager registerObject:self withSelector:@selector(localConnection) forNotification:LOCAL_CONNECTION_NOTIFICATION];
     [notificationManager registerObject:self withSelector:@selector(noLocalConnection) forNotification:NO_LOCAL_CONNECTION_NOTIFICATION];
     [notificationManager registerObject:self withSelector:@selector(notAuthenticated) forNotification:NO_LOCAL_AUTHENTICATION_NOTIFICATION];
+    
+    // No Hue found, show connection button
+    [self showLoadingViewWithText:NSLocalizedString(@"Connect to your Hue...", @"Searching for bridges text")];
 }
 
 
@@ -204,12 +206,16 @@
 //    [self hideCurrentSheetWindow];
     
     // Show search screen
-    [self showLoadingViewWithText:NSLocalizedString(@"Searching for bridges...", @"Searching for bridges text")];
+//    [self showLoadingViewWithText:NSLocalizedString(@"Searching for bridges...", @"Searching for bridges text")];
     /***************************************************
      A bridge search is started using UPnP to find local bridges
      *****************************************************/
     
     // Start search
+    NSArray *nibObjects;
+    [[NSBundle mainBundle] loadNibNamed:@"TTModeHueConnecting" owner:self topLevelObjects:&nibObjects];
+    [appDelegate.modeMap.selectedMode.modeOptionsView addSubview:nibObjects[1]];
+    
     self.bridgeSearch = [[PHBridgeSearching alloc] initWithUpnpSearch:YES andPortalSearch:YES andIpAdressSearch:YES];
     [self.bridgeSearch startSearchWithCompletionHandler:^(NSDictionary *bridgesFound) {
         
@@ -222,15 +228,6 @@
         
         // Check for results
         if (bridgesFound.count > 0) {
-            // Results were found, show options to user (from a user point of view, you should select automatically when there is only one bridge found)
-            
-            /***************************************************
-             Use the list of bridges, present them to the user, so one can be selected.
-             *****************************************************/
-            self.bridgeSelectionViewController = [[PHBridgeSelectionViewController alloc] initWithNibName:@"PHBridgeSelectionViewController" bundle:[NSBundle mainBundle] bridges:bridgesFound delegate:self];
-            
-            
-            [appDelegate.modeMap.selectedMode.modeOptionsView addSubview:self.bridgeSelectionViewController.view];
             
         }
         else {
@@ -381,10 +378,15 @@
 #pragma mark - View management
 
 - (void)showLoadingViewWithText:(NSString*)message{
-    if (self.loadingViewController == nil) {
-        self.loadingViewController = [[PHLoadingViewController alloc] initWithNibName:@"PHLoadingViewController" bundle:[NSBundle mainBundle]];
+    if (self.connectViewController == nil) {
+        self.connectViewController = [[TTModeHueConnect alloc] initWithNibName:@"TTModeHueConnect" bundle:[NSBundle mainBundle]];
     }
-    [self.loadingViewController setLoadingWithMessage:message];
+    if (self.connectViewController.view) {
+        [self.connectViewController.view removeFromSuperview];
+    }
+    [appDelegate.modeMap.selectedMode.modeOptionsView addSubview:self.connectViewController.view];
+    NSLog(@"Connect frame: %@", NSStringFromRect(self.connectViewController.view.frame));
+    [self.connectViewController setLoadingWithMessage:message];
 }
 
 

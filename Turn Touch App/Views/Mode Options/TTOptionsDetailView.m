@@ -35,10 +35,6 @@
     // Drawing code here.
 }
 
-- (BOOL)isFlipped {
-    return YES;
-}
-
 #pragma mark - Animation
 
 - (void)animateBlock:(void (^)())block {
