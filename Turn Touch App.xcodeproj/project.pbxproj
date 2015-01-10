@@ -30,6 +30,10 @@
 		FF3641DF1A5F5734003CC03C /* TTModeHueConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3641DE1A5F5734003CC03C /* TTModeHueConnect.m */; };
 		FF3641E21A5F6478003CC03C /* TTOptionsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3641E11A5F6478003CC03C /* TTOptionsDetailViewController.m */; };
 		FF3641E61A5F674A003CC03C /* TTModeHueOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3641E51A5F674A003CC03C /* TTModeHueOptions.m */; };
+		FF3641E91A60BB8B003CC03C /* TTModeHueConnecting.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3641E81A60BB8B003CC03C /* TTModeHueConnecting.m */; };
+		FF3641EB1A60BBEE003CC03C /* TTModeHueConnected.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3641EA1A60BBEE003CC03C /* TTModeHueConnected.xib */; };
+		FF3641EF1A60C422003CC03C /* TTModeHuePushlink.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3641ED1A60C422003CC03C /* TTModeHuePushlink.m */; };
+		FF3641F01A60C422003CC03C /* TTModeHuePushlink.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3641EE1A60C422003CC03C /* TTModeHuePushlink.xib */; };
 		FF429AD21919C630007C485E /* TTModeMenuCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF429AD11919C630007C485E /* TTModeMenuCollectionView.m */; };
 		FF4E2630182317D000D477F6 /* TTSerialMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4E262F182317D000D477F6 /* TTSerialMonitor.m */; };
 		FF4E26321823197D00D477F6 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4E26311823197D00D477F6 /* IOKit.framework */; };
@@ -49,7 +53,7 @@
 		FF7305B91A5C9C76009A852D /* PHBridgeSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7305A91A5C9C76009A852D /* PHBridgeSelectionViewController.m */; };
 		FF7305BA1A5C9C76009A852D /* PHBridgeSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF7305AA1A5C9C76009A852D /* PHBridgeSelectionViewController.xib */; };
 		FF7305BB1A5C9C76009A852D /* press_smartbridge.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7305AC1A5C9C76009A852D /* press_smartbridge.png */; };
-		FF7305C01A5CA8F5009A852D /* TTModeHueOptionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7305BF1A5CA8F5009A852D /* TTModeHueOptionsView.m */; };
+		FF7305C01A5CA8F5009A852D /* TTModeHueConnected.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7305BF1A5CA8F5009A852D /* TTModeHueConnected.m */; };
 		FF7305C21A5CB2E3009A852D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7305C11A5CB2E3009A852D /* SystemConfiguration.framework */; };
 		FF7305C41A5CB3EF009A852D /* TTModeHueConnect.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF7305C31A5CB3EF009A852D /* TTModeHueConnect.xib */; };
 		FF7A1C6F1868FD72005FA756 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF98A30C1868F1120032CC7A /* QuartzCore.framework */; };
@@ -193,6 +197,12 @@
 		FF3641E11A5F6478003CC03C /* TTOptionsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTOptionsDetailViewController.m; path = "Views/Mode Options/TTOptionsDetailViewController.m"; sourceTree = "<group>"; };
 		FF3641E41A5F674A003CC03C /* TTModeHueOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeHueOptions.h; sourceTree = "<group>"; };
 		FF3641E51A5F674A003CC03C /* TTModeHueOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeHueOptions.m; sourceTree = "<group>"; };
+		FF3641E71A60BB8B003CC03C /* TTModeHueConnecting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeHueConnecting.h; sourceTree = "<group>"; };
+		FF3641E81A60BB8B003CC03C /* TTModeHueConnecting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeHueConnecting.m; sourceTree = "<group>"; };
+		FF3641EA1A60BBEE003CC03C /* TTModeHueConnected.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTModeHueConnected.xib; sourceTree = "<group>"; };
+		FF3641EC1A60C422003CC03C /* TTModeHuePushlink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeHuePushlink.h; sourceTree = "<group>"; };
+		FF3641ED1A60C422003CC03C /* TTModeHuePushlink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeHuePushlink.m; sourceTree = "<group>"; };
+		FF3641EE1A60C422003CC03C /* TTModeHuePushlink.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTModeHuePushlink.xib; sourceTree = "<group>"; };
 		FF429AD01919C630007C485E /* TTModeMenuCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeMenuCollectionView.h; sourceTree = "<group>"; };
 		FF429AD11919C630007C485E /* TTModeMenuCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeMenuCollectionView.m; sourceTree = "<group>"; };
 		FF4E262E182317D000D477F6 /* TTSerialMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSerialMonitor.h; path = SerialMonitor/TTSerialMonitor.h; sourceTree = "<group>"; };
@@ -226,9 +236,9 @@
 		FF7305A81A5C9C76009A852D /* PHBridgeSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHBridgeSelectionViewController.h; sourceTree = "<group>"; };
 		FF7305A91A5C9C76009A852D /* PHBridgeSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHBridgeSelectionViewController.m; sourceTree = "<group>"; };
 		FF7305AA1A5C9C76009A852D /* PHBridgeSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PHBridgeSelectionViewController.xib; sourceTree = "<group>"; };
-		FF7305AC1A5C9C76009A852D /* press_smartbridge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = press_smartbridge.png; sourceTree = "<group>"; };
-		FF7305BE1A5CA8F5009A852D /* TTModeHueOptionsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeHueOptionsView.h; sourceTree = "<group>"; };
-		FF7305BF1A5CA8F5009A852D /* TTModeHueOptionsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeHueOptionsView.m; sourceTree = "<group>"; };
+		FF7305AC1A5C9C76009A852D /* press_smartbridge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = press_smartbridge.png; path = ../../Vendor/Hue/SDKWizard/Resources/press_smartbridge.png; sourceTree = "<group>"; };
+		FF7305BE1A5CA8F5009A852D /* TTModeHueConnected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeHueConnected.h; sourceTree = "<group>"; };
+		FF7305BF1A5CA8F5009A852D /* TTModeHueConnected.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeHueConnected.m; sourceTree = "<group>"; };
 		FF7305C11A5CB2E3009A852D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		FF7305C31A5CB3EF009A852D /* TTModeHueConnect.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTModeHueConnect.xib; sourceTree = "<group>"; };
 		FF8012F118692D0A00955218 /* TTModeMac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMac.h; path = Modes/Mac/TTModeMac.h; sourceTree = "<group>"; };
@@ -604,7 +614,6 @@
 		FF7305AB1A5C9C76009A852D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				FF7305AC1A5C9C76009A852D /* press_smartbridge.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -929,9 +938,16 @@
 				FF3641DD1A5F5734003CC03C /* TTModeHueConnect.h */,
 				FF3641DE1A5F5734003CC03C /* TTModeHueConnect.m */,
 				FF7305C31A5CB3EF009A852D /* TTModeHueConnect.xib */,
-				FF7305BE1A5CA8F5009A852D /* TTModeHueOptionsView.h */,
-				FF7305BF1A5CA8F5009A852D /* TTModeHueOptionsView.m */,
+				FF3641E71A60BB8B003CC03C /* TTModeHueConnecting.h */,
+				FF3641E81A60BB8B003CC03C /* TTModeHueConnecting.m */,
 				FF3641D91A5F53DC003CC03C /* TTModeHueConnecting.xib */,
+				FF3641EC1A60C422003CC03C /* TTModeHuePushlink.h */,
+				FF3641ED1A60C422003CC03C /* TTModeHuePushlink.m */,
+				FF3641EE1A60C422003CC03C /* TTModeHuePushlink.xib */,
+				FF7305BE1A5CA8F5009A852D /* TTModeHueConnected.h */,
+				FF7305BF1A5CA8F5009A852D /* TTModeHueConnected.m */,
+				FF3641EA1A60BBEE003CC03C /* TTModeHueConnected.xib */,
+				FF7305AC1A5C9C76009A852D /* press_smartbridge.png */,
 			);
 			name = Hue;
 			path = Modes/Hue;
@@ -1021,6 +1037,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF93604C196DF0B600675B7B /* Effra_Rg.ttf in Resources */,
+				FF3641F01A60C422003CC03C /* TTModeHuePushlink.xib in Resources */,
 				FF8C834117AB14B5000166FC /* InfoPlist.strings in Resources */,
 				FF2365D1196F0DFA00A4ADBC /* mode_music.png in Resources */,
 				FFAA4F61182D96D60049FFC7 /* heart.png in Resources */,
@@ -1053,6 +1070,7 @@
 				FF2365CC196F0DFA00A4ADBC /* mode_alarm.png in Resources */,
 				FF3641DA1A5F53DC003CC03C /* TTModeHueConnecting.xib in Resources */,
 				FF7305BA1A5C9C76009A852D /* PHBridgeSelectionViewController.xib in Resources */,
+				FF3641EB1A60BBEE003CC03C /* TTModeHueConnected.xib in Resources */,
 				FF2365D4196F0DFA00A4ADBC /* mode_video.png in Resources */,
 				FF2365D0196F0DFA00A4ADBC /* mode_morning.png in Resources */,
 				FF8012F9186A79A600955218 /* clock.png in Resources */,
@@ -1119,7 +1137,7 @@
 				FFD62CCE194F935D0093004D /* TTSegmentedCell.m in Sources */,
 				FF8012F318692D0A00955218 /* TTModeMac.m in Sources */,
 				FF801319186CF8FF00955218 /* TTDiamondLabels.m in Sources */,
-				FF7305C01A5CA8F5009A852D /* TTModeHueOptionsView.m in Sources */,
+				FF7305C01A5CA8F5009A852D /* TTModeHueConnected.m in Sources */,
 				FFF05F3E18F77CF500AC6230 /* TTChangeButtonView.m in Sources */,
 				FFB1670B1922FE53008FA1AF /* TTModeMacOptionsView.m in Sources */,
 				FF801332186E156900955218 /* TTOptionsModeTitle.m in Sources */,
@@ -1140,8 +1158,10 @@
 				FF7305B71A5C9C76009A852D /* PHBridgePushLinkViewController.m in Sources */,
 				FF3641E61A5F674A003CC03C /* TTModeHueOptions.m in Sources */,
 				FF0E12D41828560000D49EC7 /* TTModeVideo.m in Sources */,
+				FF3641E91A60BB8B003CC03C /* TTModeHueConnecting.m in Sources */,
 				FF913D2C19243BFD005C336F /* TTModeAlarmSnooze.m in Sources */,
 				FF98A2E81867DBE70032CC7A /* TTPanelController.m in Sources */,
+				FF3641EF1A60C422003CC03C /* TTModeHuePushlink.m in Sources */,
 				FF7305AE1A5C9C76009A852D /* DDAbstractDatabaseLogger.m in Sources */,
 				FFA1D4CD1A3B8916003EA0BC /* TTActionHUDWindow.m in Sources */,
 				FF801338186E5D9700955218 /* TTOptionsActionTitle.m in Sources */,

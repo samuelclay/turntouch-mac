@@ -4,9 +4,9 @@
  ********************************************************************************/
 
 #import <Cocoa/Cocoa.h>
-#import "TTOptionsDetailView.h"
+#import "TTOptionsDetailViewController.h"
 #import "TTAppDelegate.h"
 
-@interface TTModeHueOptionsView : TTOptionsDetailView
+@interface TTModeHueConnected : TTOptionsDetailViewController
 
 @end

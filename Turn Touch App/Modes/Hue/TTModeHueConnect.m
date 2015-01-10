@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Turn Touch. All rights reserved.
 //
 
+#import "TTModeHue.h"
+#import "TTModeHueOptions.h"
 #import "TTModeHueConnect.h"
 
 @interface TTModeHueConnect ()
@@ -17,10 +19,21 @@
 
 @implementation TTModeHueConnect
 
+- (void)setStoppedWithMessage:(NSString*)message{
+    self.progressMessage.stringValue = message;
+    [self.progressIndicator stopAnimation:self];
+}
+
 - (void)setLoadingWithMessage:(NSString*)message{
     self.progressMessage.stringValue = message;
     [self.progressIndicator startAnimation:self];
 }
 
+#pragma mark - Actions
+
+- (IBAction)searchForBridge:(id)sender {
+    [self setLoadingWithMessage:@"Searching for Hue..."];
+    [((TTModeHueOptions *)appDelegate.panelController.backgroundView.optionsView.modeOptionsViewController) searchForBridgeLocal];
+}
 
 @end

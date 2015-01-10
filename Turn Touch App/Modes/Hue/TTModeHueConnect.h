@@ -11,6 +11,9 @@
 
 @interface TTModeHueConnect : TTOptionsDetailViewController
 
+- (void)setStoppedWithMessage:(NSString*)message;
 - (void)setLoadingWithMessage:(NSString*)message;
+
+- (IBAction)searchForBridge:(id)sender;
 
 @end

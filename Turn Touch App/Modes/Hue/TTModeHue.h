@@ -9,14 +9,8 @@
 #import <Cocoa/Cocoa.h>
 #import "TTMode.h"
 #import "TTModeProtocol.h"
-#include "PHBridgePushLinkViewController.h"
-#import <HueSDK_OSX/HueSDK.h>
 
 @interface TTModeHue : TTMode
-<PHBridgePushLinkViewControllerDelegate>
 
-@property (strong, nonatomic) PHHueSDK *phHueSDK;
-
-- (void)searchForBridgeLocal;
 
 @end

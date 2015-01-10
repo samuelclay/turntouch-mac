@@ -161,11 +161,6 @@
         modeOptionsViewController.menuType = MODE_MENU_TYPE;
     }
 
-    [self drawModeOptions:modeOptionsViewController];
-}
-
-- (void)drawModeOptions:(TTOptionsDetailViewController *)_modeOptionsViewController {
-    modeOptionsViewController = _modeOptionsViewController;
     [self addSubview:modeOptionsViewController.view];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsViewController.view
                                                      attribute:NSLayoutAttributeTop

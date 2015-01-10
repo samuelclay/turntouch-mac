@@ -3,21 +3,22 @@
  All Rights Reserved.
  ********************************************************************************/
 
-#import "TTModeHueOptionsView.h"
+#import "TTModeHueOptions.h"
+#import "TTModeHueConnected.h"
 #import <HueSDK_OSX/HueSDK.h>
 #import "TTAppDelegate.h"
 #import "TTModeHue.h"
 
 #define MAX_HUE 65535
 
-@interface TTModeHueOptionsView ()
+@interface TTModeHueConnected ()
     @property (nonatomic,weak) IBOutlet NSTextField *bridgeMacLabel;
     @property (nonatomic,weak) IBOutlet NSTextField *bridgeIpLabel;
     @property (nonatomic,weak) IBOutlet NSTextField *bridgeLastHeartbeatLabel;
     @property (nonatomic,weak) IBOutlet NSButton *randomLightsButton;
 @end
 
-@implementation TTModeHueOptionsView
+@implementation TTModeHueConnected
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -58,7 +59,7 @@
         self.bridgeMacLabel.stringValue = cache.bridgeConfiguration.mac;
         
         // Check if we are connected to the bridge right now
-        if (((TTModeHue *)NSAppDelegate.modeMap.selectedMode).phHueSDK.localConnected) {
+        if (((TTModeHueOptions *)NSAppDelegate.panelController.backgroundView.optionsView.modeOptionsViewController).phHueSDK.localConnected) {
             
             // Show current time as last successful heartbeat time when we are connected to a bridge
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -76,7 +77,7 @@
 }
 
 - (IBAction)selectOtherBridge:(id)sender{
-    [((TTModeHue *)NSAppDelegate.modeMap.selectedMode) searchForBridgeLocal];
+    [((TTModeHueOptions *)NSAppDelegate.panelController.backgroundView.optionsView.modeOptionsViewController) searchForBridgeLocal];
 }
 
 - (IBAction)randomizeColoursOfConnectLights:(id)sender{

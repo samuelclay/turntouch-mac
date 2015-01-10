@@ -26,7 +26,7 @@
 #pragma mark - Drawing
 
 - (void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {
-    CGFloat radius = NSHeight(cellFrame) * 2.f/3.f;
+//    CGFloat radius = NSHeight(cellFrame) * 2.f/3.f;
 //    cellFrame.size.width = [self totalWidthInFrame:cellFrame withRadius:radius upToSegment:self.segmentCount];
     for (int i =0 ;i < [self segmentCount]; i++) {
         [self setupLabels:i];
