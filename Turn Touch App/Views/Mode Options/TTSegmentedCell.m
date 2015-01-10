@@ -32,7 +32,7 @@
         [self setupLabels:i];
         [self drawSegment:i inFrame:cellFrame withView:controlView];
     }
-     NSLog(@"%ld segments: total=%4.f, frame width=%@", (long)self.segmentCount, [self totalWidthInFrame:cellFrame withRadius:radius upToSegment:self.segmentCount], NSStringFromRect(cellFrame));
+//     NSLog(@"%ld segments: total=%4.f, frame width=%@", (long)self.segmentCount, [self totalWidthInFrame:cellFrame withRadius:radius upToSegment:self.segmentCount], NSStringFromRect(cellFrame));
 }
 
 - (void)drawSegment:(NSInteger)segment inFrame:(NSRect)frame withView:(NSView *)controlView {

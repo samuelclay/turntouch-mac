@@ -33,7 +33,8 @@
     if (self.connectViewController.view) {
         [self.connectViewController.view removeFromSuperview];
     }
-    [appDelegate.panelController.backgroundView.optionsView.modeOptionsViewController.view addSubview:self.connectViewController.view];
+    [appDelegate.panelController.backgroundView.optionsView drawModeOptions:self.connectViewController];
+    
     NSLog(@"Connect frame: %@", NSStringFromRect(self.connectViewController.view.frame));
     [self.connectViewController setLoadingWithMessage:message];
 }

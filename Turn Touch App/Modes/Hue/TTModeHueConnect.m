@@ -17,12 +17,6 @@
 
 @implementation TTModeHueConnect
 
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-}
-
-
 - (void)setLoadingWithMessage:(NSString*)message{
     self.progressMessage.stringValue = message;
     [self.progressIndicator startAnimation:self];

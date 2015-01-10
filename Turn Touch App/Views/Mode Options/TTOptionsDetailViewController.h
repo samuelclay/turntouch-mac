@@ -12,11 +12,13 @@
 
 @class TTAppDelegate;
 
-@interface TTOptionsDetailViewController : NSViewController {
+@interface TTOptionsDetailViewController : NSViewController <NSTabViewDelegate> {
     TTAppDelegate *appDelegate;
 }
 
 @property (nonatomic) IBOutlet TTTabView *tabView;
 @property (nonatomic) TTMenuType menuType;
+
+- (void)animateBlock:(void (^)())block;
 
 @end

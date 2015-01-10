@@ -1,34 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14C81f" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14C94b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment version="1090" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="TTOptionsView"/>
+        <customObject id="-2" userLabel="File's Owner" customClass="TTModeAlarmClockOptions">
+            <connections>
+                <outlet property="boxOnetimeConstraint" destination="pNf-HS-ux8" id="AIe-du-h4o"/>
+                <outlet property="boxOnetimeOptions" destination="oIq-Tz-CYQ" id="JG9-li-XVa"/>
+                <outlet property="boxRepeatConstraint" destination="ult-8c-kM5" id="QNF-sq-XLr"/>
+                <outlet property="boxRepeatOptions" destination="5ti-VC-9rp" id="4cD-uG-6Zd"/>
+                <outlet property="segOnetimeControl" destination="dtp-52-lrw" id="CHE-cn-f2R"/>
+                <outlet property="segRepeatControl" destination="eCO-fg-RdJ" id="a57-Cb-EC0"/>
+                <outlet property="tabView" destination="X6n-ol-Ve2" id="mF0-F9-d0H"/>
+                <outlet property="view" destination="2fL-Hy-hGn" id="3h4-dH-xR0"/>
+            </connections>
+        </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="2fL-Hy-hGn" customClass="TTModeAlarmClockOptionsView">
-            <rect key="frame" x="0.0" y="0.0" width="471" height="278"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+        <customView translatesAutoresizingMaskIntoConstraints="NO" id="2fL-Hy-hGn">
+            <rect key="frame" x="0.0" y="0.0" width="487" height="278"/>
             <subviews>
                 <tabView misplaced="YES" initialItem="CX8-qh-iYR" translatesAutoresizingMaskIntoConstraints="NO" id="X6n-ol-Ve2" customClass="TTTabView">
-                    <rect key="frame" x="-7" y="-20" width="485" height="297"/>
+                    <rect key="frame" x="-7" y="-20" width="501" height="287"/>
                     <font key="font" metaFont="system"/>
                     <tabViewItems>
                         <tabViewItem label="Alarm times" identifier="1" id="CX8-qh-iYR">
                             <view key="view" id="yKC-Lf-rk6">
-                                <rect key="frame" x="10" y="33" width="465" height="251"/>
+                                <rect key="frame" x="10" y="33" width="481" height="241"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <box autoresizesSubviews="NO" title="Repeating alarm" borderType="bezel" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="C4a-9h-8KN" customClass="TTBoxView">
-                                        <rect key="frame" x="-3" y="108" width="471" height="145"/>
+                                        <rect key="frame" x="-3" y="98" width="487" height="145"/>
                                         <view key="contentView">
-                                            <rect key="frame" x="3" y="3" width="465" height="139"/>
+                                            <rect key="frame" x="3" y="3" width="481" height="139"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qxq-st-gXj">
-                                                    <rect key="frame" x="22" y="101" width="297" height="19"/>
+                                                    <rect key="frame" x="22" y="101" width="313" height="19"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Repeating alarm" id="DaN-Su-ACl">
                                                         <font key="font" size="13" name="Effra-Regular"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -36,7 +46,7 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eCO-fg-RdJ" customClass="TTSegmentedControl">
-                                                    <rect key="frame" x="342" y="100" width="103" height="23"/>
+                                                    <rect key="frame" x="358" y="100" width="103" height="23"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="103" id="ud1-dI-ksW"/>
                                                     </constraints>
@@ -46,19 +56,19 @@
                                                             <segment label="ON" width="48" selected="YES"/>
                                                             <segment label="OFF" width="48" tag="1"/>
                                                         </segments>
+                                                        <connections>
+                                                            <action selector="changeSegRepeatControl:" target="-2" id="HbN-6P-KmA"/>
+                                                        </connections>
                                                     </segmentedCell>
-                                                    <connections>
-                                                        <action selector="changeSegRepeatControl:" target="2fL-Hy-hGn" id="N3q-kf-fiz"/>
-                                                    </connections>
                                                 </segmentedControl>
                                                 <box autoresizesSubviews="NO" transparent="YES" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="5ti-VC-9rp">
-                                                    <rect key="frame" x="24" y="1" width="421" height="88"/>
+                                                    <rect key="frame" x="24" y="1" width="437" height="88"/>
                                                     <view key="contentView">
-                                                        <rect key="frame" x="0.0" y="0.0" width="421" height="88"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="437" height="88"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7pB-6Y-ebj">
-                                                                <rect key="frame" x="2" y="71" width="417" height="18"/>
+                                                                <rect key="frame" x="10" y="71" width="417" height="18"/>
                                                                 <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectAny" id="j1V-BO-kf2" customClass="TTSegmentedCell">
                                                                     <font key="font" metaFont="smallSystem"/>
                                                                     <segments>
@@ -73,11 +83,11 @@
                                                                 </segmentedCell>
                                                             </segmentedControl>
                                                             <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="C08-4a-kSZ">
-                                                                <rect key="frame" x="9" y="37" width="403" height="25"/>
+                                                                <rect key="frame" x="17" y="37" width="403" height="25"/>
                                                                 <sliderCell key="cell" state="on" alignment="left" maxValue="24" doubleValue="10" tickMarkPosition="above" numberOfTickMarks="12" sliderType="linear" id="pV4-CP-edK"/>
                                                             </slider>
                                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="08z-qa-ZtQ">
-                                                                <rect key="frame" x="143" y="13" width="136" height="17"/>
+                                                                <rect key="frame" x="151" y="13" width="136" height="17"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="17" id="3M3-xG-DY4"/>
                                                                 </constraints>
@@ -119,13 +129,13 @@
                                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </box>
                                     <box autoresizesSubviews="NO" title="One-time alarm" borderType="bezel" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Ynp-bh-WI4" customClass="TTBoxView">
-                                        <rect key="frame" x="-3" y="-8" width="471" height="122"/>
+                                        <rect key="frame" x="-3" y="-18" width="487" height="122"/>
                                         <view key="contentView">
-                                            <rect key="frame" x="3" y="3" width="465" height="116"/>
+                                            <rect key="frame" x="3" y="3" width="481" height="116"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="zoN-wq-qzO">
-                                                    <rect key="frame" x="24" y="114" width="416" height="1"/>
+                                                    <rect key="frame" x="24" y="114" width="432" height="1"/>
                                                     <view key="contentView">
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     </view>
@@ -136,7 +146,7 @@
                                                     <color key="fillColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 </box>
                                                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dtp-52-lrw" customClass="TTSegmentedControl">
-                                                    <rect key="frame" x="342" y="81" width="103" height="23"/>
+                                                    <rect key="frame" x="358" y="81" width="103" height="23"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="103" id="l09-jC-y9C"/>
                                                     </constraints>
@@ -146,13 +156,13 @@
                                                             <segment label="ON" width="48" selected="YES"/>
                                                             <segment label="OFF" width="48" tag="1"/>
                                                         </segments>
+                                                        <connections>
+                                                            <action selector="changeSegOnetimeControl:" target="-2" id="fEc-ff-EHk"/>
+                                                        </connections>
                                                     </segmentedCell>
-                                                    <connections>
-                                                        <action selector="changeSegOnetimeControl:" target="2fL-Hy-hGn" id="NbW-Ze-Zwx"/>
-                                                    </connections>
                                                 </segmentedControl>
                                                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HQ6-0n-2R8">
-                                                    <rect key="frame" x="22" y="81" width="316" height="19"/>
+                                                    <rect key="frame" x="22" y="81" width="332" height="19"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="One-time alarm" id="QfF-5n-otp">
                                                         <font key="font" size="13" name="Effra-Regular"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -160,17 +170,17 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <box transparent="YES" borderWidth="0.0" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="oIq-Tz-CYQ">
-                                                    <rect key="frame" x="22" y="12" width="419" height="60"/>
+                                                    <rect key="frame" x="22" y="12" width="435" height="60"/>
                                                     <view key="contentView">
-                                                        <rect key="frame" x="0.0" y="0.0" width="419" height="60"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="435" height="60"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <slider verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Yx-qA-qzL">
-                                                                <rect key="frame" x="141" y="32" width="278" height="25"/>
+                                                                <rect key="frame" x="141" y="32" width="294" height="25"/>
                                                                 <sliderCell key="cell" state="on" alignment="left" maxValue="24" doubleValue="10" tickMarkPosition="above" numberOfTickMarks="12" sliderType="linear" id="cXa-Bf-Dxu"/>
                                                             </slider>
                                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TpU-io-mXB">
-                                                                <rect key="frame" x="-2" y="3" width="423" height="19"/>
+                                                                <rect key="frame" x="-2" y="3" width="439" height="19"/>
                                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="7:00 AM (in 8 hours 21 minutes)" id="Rzq-bq-C5C">
                                                                     <font key="font" size="13" name="Effra-Regular"/>
                                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -344,7 +354,7 @@
                         </tabViewItem>
                     </tabViewItems>
                     <connections>
-                        <outlet property="delegate" destination="2fL-Hy-hGn" id="NRG-Y7-rrO"/>
+                        <outlet property="delegate" destination="-2" id="74k-Ym-YIo"/>
                     </connections>
                 </tabView>
             </subviews>
@@ -354,15 +364,7 @@
                 <constraint firstItem="X6n-ol-Ve2" firstAttribute="leading" secondItem="2fL-Hy-hGn" secondAttribute="leading" id="WVf-0f-p7v"/>
                 <constraint firstItem="X6n-ol-Ve2" firstAttribute="top" secondItem="2fL-Hy-hGn" secondAttribute="top" id="q2K-ha-eKj"/>
             </constraints>
-            <connections>
-                <outlet property="boxOnetimeConstraint" destination="pNf-HS-ux8" id="BMj-D3-iuN"/>
-                <outlet property="boxOnetimeOptions" destination="oIq-Tz-CYQ" id="FFh-eY-ikS"/>
-                <outlet property="boxRepeatConstraint" destination="ult-8c-kM5" id="YTv-ey-A3C"/>
-                <outlet property="boxRepeatOptions" destination="5ti-VC-9rp" id="kfH-HD-XeQ"/>
-                <outlet property="segOnetimeControl" destination="dtp-52-lrw" id="MZC-wL-AdX"/>
-                <outlet property="segRepeatControl" destination="eCO-fg-RdJ" id="h2N-hq-kyY"/>
-                <outlet property="tabView" destination="X6n-ol-Ve2" id="DSp-3b-qK5"/>
-            </connections>
+            <point key="canvasLocation" x="240.5" y="491"/>
         </customView>
     </objects>
     <resources>

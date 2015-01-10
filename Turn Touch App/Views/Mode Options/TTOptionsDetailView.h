@@ -22,6 +22,4 @@
 @property (nonatomic) IBOutlet TTTabView *tabView;
 @property (nonatomic) TTMenuType menuType;
 
-- (void)animateBlock:(void (^)())block;
-
 @end

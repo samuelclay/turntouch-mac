@@ -8,7 +8,7 @@
 
 #import "TTOptionsDetailView.h"
 
-@interface TTModeAlarmClockOptionsView : TTOptionsDetailView
+@interface TTModeAlarmClockOptions : TTOptionsDetailViewController
 
 @property (nonatomic) IBOutlet NSBox *boxRepeatOptions;
 @property (nonatomic) IBOutlet NSBox *boxOnetimeOptions;

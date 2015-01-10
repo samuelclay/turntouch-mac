@@ -244,7 +244,7 @@
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:nil
                                                          attribute:0
-                                                        multiplier:1.0 constant:0];
+                                                        multiplier:1.0 constant:CORNER_RADIUS];
         [self addConstraint:optionsConstraint];
     } else {
         optionsConstraint = [NSLayoutConstraint constraintWithItem:optionsView

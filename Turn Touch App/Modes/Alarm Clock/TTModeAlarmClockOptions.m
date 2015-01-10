@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Turn Touch. All rights reserved.
 //
 
-#import "TTModeAlarmClockOptionsView.h"
+#import "TTModeAlarmClockOptions.h"
 
-@implementation TTModeAlarmClockOptionsView
+@implementation TTModeAlarmClockOptions
 
 @synthesize boxOnetimeOptions;
 @synthesize boxRepeatOptions;

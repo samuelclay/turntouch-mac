@@ -7,8 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "TTOptionsDetailViewController.h"
 
-@interface TTModeHueConnect : NSViewController
+@interface TTModeHueConnect : TTOptionsDetailViewController
 
 - (void)setLoadingWithMessage:(NSString*)message;
 
