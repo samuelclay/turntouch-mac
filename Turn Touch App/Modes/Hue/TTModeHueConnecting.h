@@ -10,4 +10,8 @@
 
 @interface TTModeHueConnecting : TTOptionsDetailViewController
 
+@property (nonatomic) IBOutlet NSTextField *progressMessage;
+
+- (void)setConnectingWithMessage:(NSString*)message;
+
 @end

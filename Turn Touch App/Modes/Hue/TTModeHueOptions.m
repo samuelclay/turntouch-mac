@@ -239,7 +239,8 @@
      *****************************************************/
     
     // Start search
-    [self drawConnectingViewController];    
+    [self drawConnectingViewController];
+    [self.connectingViewController setConnectingWithMessage:@"Searching for a Hue bridge..."];
     
     self.bridgeSearch = [[PHBridgeSearching alloc] initWithUpnpSearch:YES andPortalSearch:YES andIpAdressSearch:NO];
     [self.bridgeSearch startSearchWithCompletionHandler:^(NSDictionary *bridgesFound) {
@@ -253,10 +254,11 @@
         
         // Check for results
         if (bridgesFound.count > 0) {
-            [self drawPushlinkViewController];
+            [self.connectingViewController setConnectingWithMessage:@"Found Hue bridge..."];
             NSString *macAddress = [[bridgesFound allKeys] objectAtIndex:0];
             NSString *ipAddress = [bridgesFound objectForKey:macAddress];
             [self.phHueSDK setBridgeToUseWithIpAddress:ipAddress macAddress:macAddress];
+            [self enableLocalHeartbeat];
         }
         else {
             /***************************************************
@@ -268,38 +270,6 @@
         }
     }];
     
-}
-
-/**
- Delegate method for PHbridgeSelectionViewController which is invoked when a bridge is selected
- */
-- (void)bridgeSelectedWithIpAddress:(NSString *)ipAddress andMacAddress:(NSString *)macAddress {
-    /***************************************************
-     Removing the selection view controller takes us to
-     the 'normal' UI view
-     *****************************************************/
-    //    [self hideCurrentSheetWindow];
-    
-    // Show a connecting loading sheet while we try to connect to the bridge
-    [self drawConnectingViewController];
-    
-    // Set SDK to use bridge and our default username (which should be the same across all apps, so pushlinking is only required once)
-    
-    /***************************************************
-     Set the username, ipaddress and mac address,
-     as the bridge properties that the SDK framework will use
-     *****************************************************/
-    
-    [self.phHueSDK setBridgeToUseWithIpAddress:ipAddress macAddress:macAddress];
-    
-    /***************************************************
-     Setting the hearbeat running will cause the SDK
-     to regularly update the cache with the status of the
-     bridge resources
-     *****************************************************/
-    
-    // Start local heartbeat again
-    [self performSelector:@selector(enableLocalHeartbeat) withObject:nil afterDelay:1];
 }
 
 #pragma mark - Heartbeat control
@@ -315,12 +285,6 @@
     
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
     if (cache != nil && cache.bridgeConfiguration != nil && cache.bridgeConfiguration.ipaddress != nil) {
-        // Hide sheet if there is any
-        //        [self hideCurrentSheetWindow];
-        
-        // Show a connecting sheet while we try to connect to the bridge
-        [((TTModeHueOptions *)appDelegate.panelController.backgroundView.optionsView.modeOptionsViewController) showLoadingViewWithText:NSLocalizedString(@"Connecting...", @"Connecting text")];
-        
         // Enable heartbeat with interval of 10 seconds
         [self.phHueSDK enableLocalConnection];
     } else {
@@ -353,10 +317,7 @@
      push link it. Here we display the view to do this.
      *****************************************************/
     
-    // Create an interface for the pushlinking
-    self.pushLinkViewController = [[PHBridgePushLinkViewController alloc] initWithNibName:@"PHBridgePushLinkViewController" bundle:[NSBundle mainBundle] delegate:self];
-    
-    [self.view addSubview:self.pushLinkViewController.view];
+    [self drawPushlinkViewController];
     
     /***************************************************
      Start the push linking process.

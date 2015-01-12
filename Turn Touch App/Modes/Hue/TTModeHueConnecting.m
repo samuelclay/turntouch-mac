@@ -19,4 +19,9 @@
     // Do view setup here.
 }
 
+
+- (void)setConnectingWithMessage:(NSString*)message{
+    self.progressMessage.stringValue = message;
+}
+
 @end

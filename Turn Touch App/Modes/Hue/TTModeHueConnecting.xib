@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTModeHueConnecting">
             <connections>
+                <outlet property="progressMessage" destination="mWr-Bc-64o" id="0K8-hx-abs"/>
                 <outlet property="view" destination="c22-O7-iKe" id="FXc-Hl-dDD"/>
             </connections>
         </customObject>
@@ -17,10 +18,13 @@
             <subviews>
                 <progressIndicator maxValue="100" indeterminate="YES" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="NDT-OJ-HUs">
                     <rect key="frame" x="75" y="19" width="229" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="19" id="DNs-nU-0P2"/>
+                    </constraints>
                 </progressIndicator>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mWr-Bc-64o">
                     <rect key="frame" x="98" y="47" width="182" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Searching for a Hue bridge..." id="8qH-VG-7Dl">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Searching for a Hue bridge..." id="8qH-VG-7Dl">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

@@ -30,11 +30,11 @@
                     </connections>
                 </button>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="D2T-nu-n5t">
-                    <rect key="frame" x="68" y="49" width="187" height="22"/>
+                    <rect key="frame" x="68" y="56" width="187" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="IZd-fH-r83"/>
                     </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" title="Find your Philips Hue" id="s9F-ZN-mqc">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="center" title="Find your Philips Hue" id="s9F-ZN-mqc">
                         <font key="font" size="14" name="Effra-Regular"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" white="1" alpha="0.71999999999999997" colorSpace="deviceWhite"/>
@@ -44,9 +44,9 @@
             <constraints>
                 <constraint firstItem="hBK-gB-IXz" firstAttribute="centerX" secondItem="D2T-nu-n5t" secondAttribute="centerX" id="4SC-S4-jZa"/>
                 <constraint firstItem="D2T-nu-n5t" firstAttribute="centerX" secondItem="uvb-gk-jW1" secondAttribute="centerX" id="5Qg-7P-LxS"/>
-                <constraint firstItem="D2T-nu-n5t" firstAttribute="top" secondItem="uvb-gk-jW1" secondAttribute="top" constant="20" id="BPT-Sk-UPh"/>
+                <constraint firstItem="D2T-nu-n5t" firstAttribute="top" secondItem="uvb-gk-jW1" secondAttribute="top" constant="13" id="BPT-Sk-UPh"/>
                 <constraint firstAttribute="bottom" secondItem="hBK-gB-IXz" secondAttribute="bottom" constant="20" id="CsV-sJ-F3Q"/>
-                <constraint firstItem="hBK-gB-IXz" firstAttribute="top" secondItem="D2T-nu-n5t" secondAttribute="bottom" constant="8" symbolic="YES" id="pv8-3w-c6j"/>
+                <constraint firstItem="hBK-gB-IXz" firstAttribute="top" secondItem="D2T-nu-n5t" secondAttribute="bottom" constant="15" id="pv8-3w-c6j"/>
                 <constraint firstItem="D2T-nu-n5t" firstAttribute="leading" secondItem="uvb-gk-jW1" secondAttribute="leading" constant="70" id="rCK-S6-4BU"/>
             </constraints>
             <point key="canvasLocation" x="394.5" y="412.5"/>
