@@ -39,14 +39,14 @@
     
     // Add gradient background
     NSGradient *gradient;
-    if (!mouseDown) {
-        gradient = [[NSGradient alloc]
-                    initWithStartingColor:[NSColor whiteColor]
-                    endingColor:NSColorFromRGB(0xE7E7E7)];
-    } else {
+    if (mouseDown) {
         gradient = [[NSGradient alloc]
                     initWithStartingColor:NSColorFromRGB(0xF7F7F7)
                     endingColor:NSColorFromRGB(0xE0E0E0)];
+    } else {
+        gradient = [[NSGradient alloc]
+                    initWithStartingColor:[NSColor whiteColor]
+                    endingColor:NSColorFromRGB(0xE7E7E7)];
     }
     [gradient drawInRect:frame angle:90];
     
@@ -62,7 +62,6 @@
 - (NSRect)drawTitle:(NSAttributedString *)_title withFrame:(NSRect)frame inView:(NSView *)controlView {
     NSMutableAttributedString *title = [[_title upperCaseAttributedStringFromAttributedString:_title]
                                         mutableCopy];
-    NSLog(@"mouse down: %d - %@", mouseDown, title);
     [title beginEditing];
     [title enumerateAttribute:NSFontAttributeName inRange:NSMakeRange(0, title.length) options:0 usingBlock:^(id value, NSRange range, BOOL *stop) {
         NSFont *font = [NSFont fontWithName:@"Effra" size:11.f];
@@ -76,7 +75,7 @@
     NSSize textSize = [title size];
     
     [title drawAtPoint:NSMakePoint(frame.origin.x + frame.size.width/2 - textSize.width/2,
-                                   frame.origin.y + frame.size.height/2 - textSize.height/2)];
+                                   frame.origin.y + frame.size.height/2 - textSize.height/2 - 1)];
 
     
     return frame;

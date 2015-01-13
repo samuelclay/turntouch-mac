@@ -58,7 +58,9 @@
 
     self.backgroundView = [[TTBackgroundView alloc] init];
     [panel setContentView:self.backgroundView];
-    
+
+    [appDelegate.modeMap reset];
+
     [self registerAsObserver];
 }
 
@@ -183,14 +185,14 @@
     
     if (NSMaxX(panelRect) > (NSMaxX(screenRect) - ARROW_HEIGHT))
         panelRect.origin.x -= NSMaxX(panelRect) - (NSMaxX(screenRect) - ARROW_HEIGHT);
-//    NSLog(@"Panel rect: %@ (%@)", NSStringFromRect(statusRect), NSStringFromRect(panelRect));
+    NSLog(@"Panel rect: %@ (%@)", NSStringFromRect(statusRect), NSStringFromRect(panelRect));
 
     [NSApp activateIgnoringOtherApps:NO];
     [panel setAlphaValue:0];
     [panel setFrame:panelRect display:YES];
     [panel setDelegate:self];
     [panel makeKeyAndOrderFront:nil];
-    
+
     [self.backgroundView resetPosition];
     
     NSTimeInterval openDuration = PANEL_OPEN_DURATION;
