@@ -26,11 +26,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
+    NSLog(@"PHHueSDK: %@", self.phHueSDK);
     self.phHueSDK = [[PHHueSDK alloc] init];
     [self.phHueSDK startUpSDK];
     [self.phHueSDK enableLogging:YES];
     
     PHNotificationManager *notificationManager = [PHNotificationManager defaultManager];
+    [notificationManager deregisterObjectForAllNotifications:self];
     
     /***************************************************
      The SDK will send the following notifications in response to events:
@@ -44,15 +46,24 @@
      - NO_LOCAL_AUTHENTICATION_NOTIFICATION
      This notification will notify that there is no authentication against the bridge
      *****************************************************/
-    
-    [notificationManager registerObject:self withSelector:@selector(localConnection) forNotification:LOCAL_CONNECTION_NOTIFICATION];
-    [notificationManager registerObject:self withSelector:@selector(noLocalConnection) forNotification:NO_LOCAL_CONNECTION_NOTIFICATION];
-    [notificationManager registerObject:self withSelector:@selector(notAuthenticated) forNotification:NO_LOCAL_AUTHENTICATION_NOTIFICATION];
+
+    [notificationManager registerObject:self withSelector:@selector(localConnection)
+                        forNotification:LOCAL_CONNECTION_NOTIFICATION];
+    [notificationManager registerObject:self withSelector:@selector(noLocalConnection)
+                        forNotification:NO_LOCAL_CONNECTION_NOTIFICATION];
+    [notificationManager registerObject:self withSelector:@selector(notAuthenticated)
+                        forNotification:NO_LOCAL_AUTHENTICATION_NOTIFICATION];
 
     // No Hue found, show connection button
     [self showStoppedViewWithText:NSLocalizedString(@"Connect to your Hue...", @"Searching for bridges text")];
 }
 
+- (void)dealloc {
+    NSLog(@"Dealloc hue.");
+    [[PHNotificationManager defaultManager] deregisterObjectForAllNotifications:self];
+    [self.phHueSDK stopSDK];
+    self.phHueSDK = nil;
+}
 
 - (void)showStoppedViewWithText:(NSString*)message {
     [self drawConnectViewController];
@@ -186,14 +197,11 @@
  */
 - (void)checkConnectionState {
     if (!self.phHueSDK.localConnected) {
-        //        if (self.noConnectionAlert == nil) {
-        // Show popup
         [self showNoConnectionDialog];
-        //        }
     }
     else {
         // One of the connections is made, remove popups and loading views
-        //        [self hideCurrentSheetWindow];
+        [self drawConnectedViewController];
     }
 }
 
@@ -202,6 +210,8 @@
  */
 - (void)showNoConnectionDialog {
     NSLog(@"Connection to bridge lost!");
+    [self drawConnectViewController];
+    [self.connectViewController setStoppedWithMessage:@"Connection to Hue bridge lost"];
 }
 
 /**

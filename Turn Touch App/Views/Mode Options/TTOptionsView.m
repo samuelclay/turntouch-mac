@@ -145,7 +145,7 @@
     NSString *modeOptionsViewControllerName = [NSString stringWithFormat:@"%@Options", modeName];
     modeOptionsViewController = [[NSClassFromString(modeOptionsViewControllerName) alloc]
                                  initWithNibName:modeOptionsViewControllerName bundle:nil];
-    NSLog(@"Options frame %@: %@", modeOptionsViewControllerName, NSStringFromRect(self.frame));
+    NSLog(@"Options frame %@ pre: %@", modeOptionsViewControllerName, NSStringFromRect(self.frame));
     
     if (!modeOptionsViewController) {
         NSLog(@" --- Missing mode options view for %@", modeName);
@@ -182,7 +182,7 @@
                                                     multiplier:1.0 constant:0]];
 
     [appDelegate.panelController.backgroundView adjustOptionsHeight:modeOptionsViewController.view];
-    NSLog(@"Options frame: %@ (%@)", NSStringFromRect(self.frame), NSStringFromRect(modeOptionsViewController.view.frame));
+    NSLog(@"Options frame %@ post: %@ (%@)", modeOptionsViewControllerName, NSStringFromRect(self.frame), NSStringFromRect(modeOptionsViewController.view.frame));
 }
 
 - (void)drawActionOptions {

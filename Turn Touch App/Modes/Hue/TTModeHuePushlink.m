@@ -33,6 +33,7 @@
     
     // Register for notifications about pushlinking
     PHNotificationManager *phNotificationMgr = [PHNotificationManager defaultManager];
+    [phNotificationMgr deregisterObjectForAllNotifications:self];
     
     [phNotificationMgr registerObject:self withSelector:@selector(authenticationSuccess)
                       forNotification:PUSHLINK_LOCAL_AUTHENTICATION_SUCCESS_NOTIFICATION];

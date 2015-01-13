@@ -220,7 +220,7 @@
 }
 
 - (void)closePanel {
-//    return; // Enable this line to never close app. Useful for debugging
+    return; // Enable this line to never close app. Useful for debugging
     
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:PANEL_CLOSE_DURATION];

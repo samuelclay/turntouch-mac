@@ -34,6 +34,7 @@
 		FF3641EB1A60BBEE003CC03C /* TTModeHueConnected.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3641EA1A60BBEE003CC03C /* TTModeHueConnected.xib */; };
 		FF3641EF1A60C422003CC03C /* TTModeHuePushlink.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3641ED1A60C422003CC03C /* TTModeHuePushlink.m */; };
 		FF3641F01A60C422003CC03C /* TTModeHuePushlink.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3641EE1A60C422003CC03C /* TTModeHuePushlink.xib */; };
+		FF3641F31A64AE39003CC03C /* NSAttributedString+Extra.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3641F21A64AE39003CC03C /* NSAttributedString+Extra.m */; };
 		FF429AD21919C630007C485E /* TTModeMenuCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF429AD11919C630007C485E /* TTModeMenuCollectionView.m */; };
 		FF4E2630182317D000D477F6 /* TTSerialMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4E262F182317D000D477F6 /* TTSerialMonitor.m */; };
 		FF4E26321823197D00D477F6 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4E26311823197D00D477F6 /* IOKit.framework */; };
@@ -197,6 +198,8 @@
 		FF3641EC1A60C422003CC03C /* TTModeHuePushlink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeHuePushlink.h; sourceTree = "<group>"; };
 		FF3641ED1A60C422003CC03C /* TTModeHuePushlink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeHuePushlink.m; sourceTree = "<group>"; };
 		FF3641EE1A60C422003CC03C /* TTModeHuePushlink.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTModeHuePushlink.xib; sourceTree = "<group>"; };
+		FF3641F11A64AE39003CC03C /* NSAttributedString+Extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSAttributedString+Extra.h"; path = "Categories/NSAttributedString+Extra.h"; sourceTree = "<group>"; };
+		FF3641F21A64AE39003CC03C /* NSAttributedString+Extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSAttributedString+Extra.m"; path = "Categories/NSAttributedString+Extra.m"; sourceTree = "<group>"; };
 		FF429AD01919C630007C485E /* TTModeMenuCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeMenuCollectionView.h; sourceTree = "<group>"; };
 		FF429AD11919C630007C485E /* TTModeMenuCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeMenuCollectionView.m; sourceTree = "<group>"; };
 		FF4E262E182317D000D477F6 /* TTSerialMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSerialMonitor.h; path = SerialMonitor/TTSerialMonitor.h; sourceTree = "<group>"; };
@@ -875,6 +878,8 @@
 			children = (
 				FFE2D4771A46404500DDD413 /* NSData+Conversion.h */,
 				FFE2D4781A46404500DDD413 /* NSData+Conversion.m */,
+				FF3641F11A64AE39003CC03C /* NSAttributedString+Extra.h */,
+				FF3641F21A64AE39003CC03C /* NSAttributedString+Extra.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -1084,6 +1089,7 @@
 				FFA8EAA0190F090300679A4D /* TTModeMenuContainer.m in Sources */,
 				FFD62CCE194F935D0093004D /* TTSegmentedCell.m in Sources */,
 				FF8012F318692D0A00955218 /* TTModeMac.m in Sources */,
+				FF3641F31A64AE39003CC03C /* NSAttributedString+Extra.m in Sources */,
 				FF801319186CF8FF00955218 /* TTDiamondLabels.m in Sources */,
 				FF7305C01A5CA8F5009A852D /* TTModeHueConnected.m in Sources */,
 				FFF05F3E18F77CF500AC6230 /* TTChangeButtonView.m in Sources */,

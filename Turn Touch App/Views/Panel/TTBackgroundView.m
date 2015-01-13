@@ -235,7 +235,7 @@
 - (void)adjustOptionsHeight:(NSView *)optionsDetailView {
 //    if (!stackView) return;
     if (!optionsView) return;
-    
+
     [self removeConstraint:optionsConstraint];
 
     if (!optionsDetailView) {
@@ -253,7 +253,7 @@
                                                             toItem:optionsDetailView
                                                          attribute:NSLayoutAttributeBottom
                                                         multiplier:1.0 constant:0];
-        [self addConstraint:optionsConstraint];
+        [optionsView addConstraint:optionsConstraint];
     }
     
 //    NSLog(@"stackView constraints: %@", stackView.constraints);

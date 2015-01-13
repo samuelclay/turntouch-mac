@@ -10,6 +10,6 @@
 
 @interface TTChangeButtonCell : NSButtonCell
 
-@property (nonatomic) BOOL mouseDown;
+@property (nonatomic, readwrite) BOOL mouseDown;
 
 @end

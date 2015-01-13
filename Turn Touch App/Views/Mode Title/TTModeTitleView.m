@@ -23,7 +23,6 @@
 
         changeButton = [[TTChangeButtonView alloc] init];
         [self setChangeButtonTitle:@"change"];
-        [changeButton setBezelStyle:NSRoundRectBezelStyle];
         [changeButton setAction:@selector(showChangeModeMenu:)];
         [changeButton setTarget:self];
         [self addSubview:changeButton];
@@ -69,18 +68,8 @@
 #pragma mark - Attributes
 
 - (void)setChangeButtonTitle:(NSString *)title {
-    NSMutableParagraphStyle *centredStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-    [centredStyle setLineHeightMultiple:0.6f];
-    [centredStyle setAlignment:NSCenterTextAlignment];
-    NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:centredStyle,
-                           NSParagraphStyleAttributeName,
-                           [NSFont fontWithName:@"Effra" size:10.f],
-                           NSFontAttributeName,
-                           NSColorFromRGB(0xA0A3A8),
-                           NSForegroundColorAttributeName,
-                           nil];
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]
-                                                   initWithString:[title uppercaseString] attributes:attrs];
+                                                   initWithString:title attributes:nil];
     [changeButton setAttributedTitle:attributedString];
 }
 

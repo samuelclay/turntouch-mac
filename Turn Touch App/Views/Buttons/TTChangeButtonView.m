@@ -11,6 +11,14 @@
 
 @implementation TTChangeButtonView
 
+- (void)awakeFromNib {
+    cell = [[TTChangeButtonCell alloc] init];
+    cell.attributedTitle = self.attributedTitle;
+    cell.action = self.action;
+    cell.target = self.target;
+    [self setCell:cell];
+}
+
 - (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
@@ -21,6 +29,9 @@
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
+    [self setBezelStyle:NSRoundRectBezelStyle];
+    [self setButtonType:NSMomentaryChangeButton];
+    cell.attributedTitle = self.attributedTitle;
     [super drawRect:dirtyRect];
 }
 
@@ -28,6 +39,7 @@
 
 - (void)mouseDown:(NSEvent *)theEvent {
     cell.mouseDown = YES;
+    NSLog(@"Cell mousedown: %@ - %d", cell, cell.mouseDown);
     [self setNeedsDisplay];
     
     // this blocks until the button is released

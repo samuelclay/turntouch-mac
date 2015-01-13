@@ -7,6 +7,7 @@
 //
 
 #import "TTChangeButtonCell.h"
+#import "NSAttributedString+Extra.h"
 
 #define BORDER_RADIUS 5.0f
 
@@ -58,10 +59,26 @@
     [line stroke];
 }
 
-- (NSRect)drawTitle:(NSAttributedString *)title withFrame:(NSRect)frame inView:(NSView *)controlView {
+- (NSRect)drawTitle:(NSAttributedString *)_title withFrame:(NSRect)frame inView:(NSView *)controlView {
+    NSMutableAttributedString *title = [[_title upperCaseAttributedStringFromAttributedString:_title]
+                                        mutableCopy];
+    NSLog(@"mouse down: %d - %@", mouseDown, title);
+    [title beginEditing];
+    [title enumerateAttribute:NSFontAttributeName inRange:NSMakeRange(0, title.length) options:0 usingBlock:^(id value, NSRange range, BOOL *stop) {
+        NSFont *font = [NSFont fontWithName:@"Effra" size:11.f];
+        NSColor *color = NSColorFromRGB(0xA0A3A8);
+        [title removeAttribute:NSFontAttributeName range:range];
+        [title addAttribute:NSFontAttributeName value:font range:range];
+        [title addAttribute:NSForegroundColorAttributeName value:color range:range];
+    }];
+    [title endEditing];
+
     NSSize textSize = [title size];
+    
     [title drawAtPoint:NSMakePoint(frame.origin.x + frame.size.width/2 - textSize.width/2,
-                                   frame.origin.y + frame.size.height/2 - textSize.height/2 - 1)];
+                                   frame.origin.y + frame.size.height/2 - textSize.height/2)];
+
+    
     return frame;
 }
 

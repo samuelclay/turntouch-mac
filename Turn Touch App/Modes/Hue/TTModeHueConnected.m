@@ -25,6 +25,8 @@
 
     PHNotificationManager *notificationManager = [PHNotificationManager defaultManager];
     // Register for the local heartbeat notifications
+    [notificationManager deregisterObjectForAllNotifications:self];
+    
     [notificationManager registerObject:self withSelector:@selector(localConnection) forNotification:LOCAL_CONNECTION_NOTIFICATION];
     [notificationManager registerObject:self withSelector:@selector(noLocalConnection) forNotification:NO_LOCAL_CONNECTION_NOTIFICATION];
     
