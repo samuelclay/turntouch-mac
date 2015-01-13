@@ -11,6 +11,7 @@
 @interface TTModeHueConnecting : TTOptionsDetailViewController
 
 @property (nonatomic) IBOutlet NSTextField *progressMessage;
+@property (nonatomic,weak) IBOutlet NSProgressIndicator *progressIndicator;
 
 - (void)setConnectingWithMessage:(NSString*)message;
 

@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Turn Touch. All rights reserved.
 //
 
-#include "PHBridgePushLinkViewController.h"
 #import <HueSDK_OSX/HueSDK.h>
 #import "TTOptionsDetailViewController.h"
 #import "TTModeHueConnecting.h"

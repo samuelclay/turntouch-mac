@@ -14,10 +14,10 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="uvb-gk-jW1">
-            <rect key="frame" x="0.0" y="0.0" width="323" height="91"/>
+            <rect key="frame" x="0.0" y="0.0" width="344" height="91"/>
             <subviews>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hBK-gB-IXz" customClass="TTChangeButtonView">
-                    <rect key="frame" x="87" y="13" width="149" height="32"/>
+                    <rect key="frame" x="97" y="13" width="149" height="32"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="137" id="Qiy-4A-LWR"/>
                     </constraints>
@@ -29,8 +29,8 @@
                         <action selector="searchForBridge:" target="-2" id="Csl-Ay-CkY"/>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="D2T-nu-n5t">
-                    <rect key="frame" x="68" y="56" width="187" height="22"/>
+                <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D2T-nu-n5t">
+                    <rect key="frame" x="-2" y="56" width="348" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="IZd-fH-r83"/>
                     </constraints>
@@ -49,7 +49,7 @@
                 <constraint firstItem="hBK-gB-IXz" firstAttribute="top" secondItem="D2T-nu-n5t" secondAttribute="bottom" constant="15" id="pv8-3w-c6j"/>
                 <constraint firstItem="D2T-nu-n5t" firstAttribute="leading" secondItem="uvb-gk-jW1" secondAttribute="leading" constant="70" id="rCK-S6-4BU"/>
             </constraints>
-            <point key="canvasLocation" x="394.5" y="412.5"/>
+            <point key="canvasLocation" x="384" y="412.5"/>
         </customView>
     </objects>
 </document>

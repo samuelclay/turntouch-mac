@@ -13,7 +13,6 @@
 
 @interface TTModeHueOptions ()
 
-@property (nonatomic, strong) PHBridgePushLinkViewController *pushLinkViewController;
 @property (nonatomic, strong) PHBridgeSearching *bridgeSearch;
 @property (nonatomic, strong) TTModeHueConnect *connectViewController;
 @property (nonatomic, strong) TTModeHueConnecting *connectingViewController;
@@ -81,9 +80,9 @@
         [self.connectedViewController.view removeFromSuperview];
         self.connectedViewController = nil;
     }
-    if (self.pushLinkViewController) {
-        [self.pushLinkViewController.view removeFromSuperview];
-        self.pushLinkViewController = nil;
+    if (self.pushlinkViewController) {
+        [self.pushlinkViewController.view removeFromSuperview];
+        self.pushlinkViewController = nil;
     }
 }
 
@@ -143,7 +142,8 @@
     [self clearViewConnectrollers];
     self.pushlinkViewController = [[TTModeHuePushlink alloc]
                                     initWithNibName:@"TTModeHuePushlink"
-                                    bundle:[NSBundle mainBundle]];
+                                    bundle:[NSBundle mainBundle]
+                                   delegate:self];
     [self drawViewController:self.pushlinkViewController];
 }
 
@@ -217,6 +217,8 @@
  Shows the not authenticated alert
  */
 - (void)showNotAuthenticatedDialog{
+    [self drawConnectViewController];
+    [self.connectViewController setStoppedWithMessage:@"Pushlink button not pressed within 30 seconds"];
     NSLog(@"Pushlink button not pressed within 30 sec!");
 }
 
@@ -324,7 +326,7 @@
      *****************************************************/
     
     // Start pushlinking when the interface is shown
-    [self.pushLinkViewController startPushLinking];
+    [self.pushlinkViewController startPushLinking];
 }
 
 /**
@@ -336,8 +338,7 @@
      the chosen bridge.
      *****************************************************/
     
-    // Remove pushlink view controller
-    //    [self hideCurrentSheetWindow];
+    [self drawConnectedViewController];
     
     // Start local heartbeat
     [self performSelector:@selector(enableLocalHeartbeat) withObject:nil afterDelay:1];

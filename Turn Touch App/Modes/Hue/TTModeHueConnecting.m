@@ -22,6 +22,7 @@
 
 - (void)setConnectingWithMessage:(NSString*)message{
     self.progressMessage.stringValue = message;
+    [self.progressIndicator startAnimation:self];
 }
 
 @end

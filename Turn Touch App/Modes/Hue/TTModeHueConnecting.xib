@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTModeHueConnecting">
             <connections>
+                <outlet property="progressIndicator" destination="NDT-OJ-HUs" id="TBC-TR-JNK"/>
                 <outlet property="progressMessage" destination="mWr-Bc-64o" id="0K8-hx-abs"/>
                 <outlet property="view" destination="c22-O7-iKe" id="FXc-Hl-dDD"/>
             </connections>
