@@ -185,7 +185,7 @@
     
     if (NSMaxX(panelRect) > (NSMaxX(screenRect) - ARROW_HEIGHT))
         panelRect.origin.x -= NSMaxX(panelRect) - (NSMaxX(screenRect) - ARROW_HEIGHT);
-    NSLog(@"Panel rect: %@ (%@)", NSStringFromRect(statusRect), NSStringFromRect(panelRect));
+//    NSLog(@"Panel rect: %@ (%@)", NSStringFromRect(statusRect), NSStringFromRect(panelRect));
 
     [NSApp activateIgnoringOtherApps:NO];
     [panel setAlphaValue:0];

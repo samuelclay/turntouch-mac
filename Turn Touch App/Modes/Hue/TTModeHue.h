@@ -7,10 +7,34 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <HueSDK_OSX/HueSDK.h>
 #import "TTMode.h"
 #import "TTModeProtocol.h"
 
+@class TTModeHue;
+
+typedef enum TTHueState : NSUInteger {
+    STATE_NOT_CONNECTED,
+    STATE_CONNECTING,
+    STATE_PUSHLINK,
+    STATE_CONNECTED
+} TTHueState;
+
+@protocol TTModeHueDelegate <NSObject>
+
+@required
+
+- (void)changeState:(TTHueState)hueState withMode:(TTModeHue *)modeHue showMessage:(id)message;
+
+@end
+
+
 @interface TTModeHue : TTMode
 
+@property (strong, nonatomic) PHHueSDK *phHueSDK;
+@property (nonatomic, weak) id <TTModeHueDelegate> delegate;
+@property (nonatomic) TTHueState hueState;
+
+- (void)searchForBridgeLocal;
 
 @end

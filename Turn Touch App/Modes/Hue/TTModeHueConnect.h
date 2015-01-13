@@ -8,8 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 #import "TTOptionsDetailViewController.h"
+#import "TTModeHue.h"
 
 @interface TTModeHueConnect : TTOptionsDetailViewController
+
+@property (nonatomic, strong) TTModeHue *modeHue;
 
 - (void)setStoppedWithMessage:(NSString*)message;
 - (void)setLoadingWithMessage:(NSString*)message;

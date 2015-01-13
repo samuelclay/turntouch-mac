@@ -9,4 +9,6 @@
 
 @interface TTModeHueConnected : TTOptionsDetailViewController
 
+@property (nonatomic, strong) TTModeHue *modeHue;
+
 @end

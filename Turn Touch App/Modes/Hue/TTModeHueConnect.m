@@ -19,7 +19,8 @@
 
 @implementation TTModeHueConnect
 
-- (void)setStoppedWithMessage:(NSString*)message{
+- (void)setStoppedWithMessage:(NSString*)message {
+    if (!message) message = @"Connect to Hue...";
     self.progressMessage.stringValue = message;
     [self.progressIndicator stopAnimation:self];
 }
@@ -33,7 +34,7 @@
 
 - (IBAction)searchForBridge:(id)sender {
     [self setLoadingWithMessage:@"Searching for Hue..."];
-    [((TTModeHueOptions *)appDelegate.panelController.backgroundView.optionsView.modeOptionsViewController) searchForBridgeLocal];
+    [self.modeHue searchForBridgeLocal];
 }
 
 @end

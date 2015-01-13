@@ -6,20 +6,15 @@
 //  Copyright (c) 2015 Turn Touch. All rights reserved.
 //
 
-#import <HueSDK_OSX/HueSDK.h>
+#import "TTModeHue.h"
 #import "TTOptionsDetailViewController.h"
 #import "TTModeHueConnecting.h"
 #import "TTModeHueConnected.h"
 #import "TTModeHuePushlink.h"
 
 @interface TTModeHueOptions : TTOptionsDetailViewController
-<PHBridgePushLinkViewControllerDelegate>
+<TTModeHueDelegate>
 
-@property (strong, nonatomic) PHHueSDK *phHueSDK;
-
-- (void)searchForBridgeLocal;
-
-- (void)showStoppedViewWithText:(NSString*)message;
-- (void)showLoadingViewWithText:(NSString*)message;
+@property (nonatomic, strong) TTModeHue *modeHue;
 
 @end

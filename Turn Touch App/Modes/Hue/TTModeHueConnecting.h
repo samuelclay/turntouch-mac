@@ -7,9 +7,11 @@
 //
 
 #import "TTOptionsDetailViewController.h"
+#import "TTModeHue.h"
 
 @interface TTModeHueConnecting : TTOptionsDetailViewController
 
+@property (nonatomic, strong) TTModeHue *modeHue;
 @property (nonatomic) IBOutlet NSTextField *progressMessage;
 @property (nonatomic,weak) IBOutlet NSProgressIndicator *progressIndicator;
 

@@ -123,7 +123,6 @@
     }
 
     if (modeOptionsViewController) {
-        NSLog(@"Removing mode options: %@", modeOptionsViewController);
         [modeOptionsViewController.view removeFromSuperview];
         modeOptionsViewController = nil;
     }
@@ -145,23 +144,24 @@
     NSString *modeOptionsViewControllerName = [NSString stringWithFormat:@"%@Options", modeName];
     modeOptionsViewController = [[NSClassFromString(modeOptionsViewControllerName) alloc]
                                  initWithNibName:modeOptionsViewControllerName bundle:nil];
-    NSLog(@"Options frame %@ pre: %@", modeOptionsViewControllerName, NSStringFromRect(self.frame));
+//    NSLog(@"Options frame %@ pre: %@", modeOptionsViewControllerName, NSStringFromRect(self.frame));
     
     if (!modeOptionsViewController) {
         NSLog(@" --- Missing mode options view for %@", modeName);
         modeOptionsViewController = (TTOptionsDetailViewController *)[[NSViewController alloc] init];
         [modeOptionsViewController setView:[[TTOptionsDetailView alloc] init]];
-//        [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsViewController.view
-//                                                         attribute:NSLayoutAttributeHeight
-//                                                         relatedBy:NSLayoutRelationEqual
-//                                                            toItem:nil
-//                                                         attribute:0
-//                                                        multiplier:1.0 constant:CORNER_RADIUS]];
+        [self addSubview:modeOptionsViewController.view];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsViewController.view
+                                                         attribute:NSLayoutAttributeHeight
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:0
+                                                        multiplier:1.0 constant:CORNER_RADIUS]];
     } else {
         modeOptionsViewController.menuType = MODE_MENU_TYPE;
+        [self addSubview:modeOptionsViewController.view];
     }
 
-    [self addSubview:modeOptionsViewController.view];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsViewController.view
                                                      attribute:NSLayoutAttributeTop
                                                      relatedBy:NSLayoutRelationEqual
@@ -182,7 +182,7 @@
                                                     multiplier:1.0 constant:0]];
 
     [appDelegate.panelController.backgroundView adjustOptionsHeight:modeOptionsViewController.view];
-    NSLog(@"Options frame %@ post: %@ (%@)", modeOptionsViewControllerName, NSStringFromRect(self.frame), NSStringFromRect(modeOptionsViewController.view.frame));
+//    NSLog(@"Options frame %@ post: %@ (%@)", modeOptionsViewControllerName, NSStringFromRect(self.frame), NSStringFromRect(modeOptionsViewController.view.frame));
 }
 
 - (void)drawActionOptions {
