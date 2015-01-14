@@ -1,18 +1,18 @@
 //
-//  TTModeHueSceneEarlyEveningOptions.m
+//  TTModeHueSceneOffOptions.m
 //  Turn Touch App
 //
 //  Created by Samuel Clay on 1/14/15.
 //  Copyright (c) 2015 Turn Touch. All rights reserved.
 //
 
-#import "TTModeHueSceneEarlyEveningOptions.h"
+#import "TTModeHueSceneOffOptions.h"
 
-@interface TTModeHueSceneEarlyEveningOptions ()
+@interface TTModeHueSceneOffOptions ()
 
 @end
 
-@implementation TTModeHueSceneEarlyEveningOptions
+@implementation TTModeHueSceneOffOptions
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:@"TTModeHueSceneOptions" bundle:nibBundleOrNil]) {

@@ -39,8 +39,8 @@
 - (NSArray *)actions {
     return @[@"TTModeHueSceneEarlyEvening",
              @"TTModeHueSceneLateEvening",
-             @"TTModeHueSleep",
-             @"TTModeHueOff"
+             @"TTModeHueSceneSleep",
+             @"TTModeHueSceneOff"
              ];
 }
 
@@ -52,10 +52,10 @@
 - (NSString *)titleTTModeHueSceneLateEvening {
     return @"Late evening";
 }
-- (NSString *)titleTTModeHueSleep {
+- (NSString *)titleTTModeHueSceneSleep {
     return @"Sleep";
 }
-- (NSString *)titleTTModeHueOff {
+- (NSString *)titleTTModeHueSceneOff {
     return @"Lights off";
 }
 
@@ -67,10 +67,10 @@
 - (NSString *)imageTTModeHueSceneLateEvening {
     return @"volume_down.png";
 }
-- (NSString *)imageTTModeHueSleep {
+- (NSString *)imageTTModeHueSceneSleep {
     return @"play.png";
 }
-- (NSString *)imageTTModeHueOff {
+- (NSString *)imageTTModeHueSceneOff {
     return @"next_track.png";
 }
 
@@ -83,16 +83,20 @@
     return @"TTModeHueSceneLateEvening";
 }
 - (NSString *)defaultWest {
-    return @"TTModeHueOff";
+    return @"TTModeHueSceneOff";
 }
 - (NSString *)defaultSouth {
-    return @"TTModeHueSleep";
+    return @"TTModeHueSceneSleep";
 }
 
 #pragma mark - Action methods
 
-- (void)runTTModeHueSceneEarlyEvening {
-    NSLog(@"Running early evening...");
+- (void)runTTModeHueSceneEarlyEvening:(TTModeDirection)direction {
+    NSLog(@"Running early evening... %d", direction);
+}
+
+- (void)runTTModeHueSceneLateEvening:(TTModeDirection)direction {
+    NSLog(@"Running late evening... %d", direction);
 }
 
 #pragma mark - Hue Init

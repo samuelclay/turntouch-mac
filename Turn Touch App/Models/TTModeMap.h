@@ -39,6 +39,7 @@
 - (void)changeActionOption:(NSString *)optionName to:(id)optionValue;
 - (NSString *)modeOptionValue:(NSString *)optionName;
 - (NSString *)actionOptionValue:(NSString *)optionName;
+- (NSString *)actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction;
 - (void)toggleInspectingModeDirection:(TTModeDirection)direction;
 - (void)toggleHoverModeDirection:(TTModeDirection)direction hovering:(BOOL)hovering;
 

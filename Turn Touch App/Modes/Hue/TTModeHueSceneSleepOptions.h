@@ -1,5 +1,5 @@
 //
-//  TTModeHueSceneEarlyEveningOptions.h
+//  TTModeHueSceneSleepOptions.h
 //  Turn Touch App
 //
 //  Created by Samuel Clay on 1/14/15.
@@ -8,6 +8,6 @@
 
 #import "TTModeHueSceneOptions.h"
 
-@interface TTModeHueSceneEarlyEveningOptions : TTModeHueSceneOptions
+@interface TTModeHueSceneSleepOptions : TTModeHueSceneOptions
 
 @end

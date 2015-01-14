@@ -98,13 +98,20 @@
     NSString *actionName = [self actionNameInDirection:direction];
     NSLog(@"Running: %d - %@", direction, actionName);
 
-    // TODO: Assert selector exists
-    SEL selector = NSSelectorFromString([NSString stringWithFormat:@"run%@",
+    SEL selector = NSSelectorFromString([NSString stringWithFormat:@"run%@:",
                                          actionName]);
     IMP imp = [self methodForSelector:selector];
-    void (*func)(id, SEL) = (void *)imp;
+    void (*func)(id, SEL, TTModeDirection) = (void *)imp;
     if ([self respondsToSelector:selector]) {
-        func(self, selector);
+        func(self, selector, direction);
+    } else {
+        SEL selector = NSSelectorFromString([NSString stringWithFormat:@"run%@",
+                                             actionName]);
+        IMP imp = [self methodForSelector:selector];
+        void (*func)(id, SEL) = (void *)imp;
+        if ([self respondsToSelector:selector]) {
+            func(self, selector);
+        }
     }
 }
 
