@@ -19,7 +19,9 @@
     // Do view setup here.
 }
 
-- (void)setConnectingWithMessage:(NSString*)message{
+- (void)setConnectingWithMessage:(NSString*)message {
+    if (!message) message = @"Connecting to Hue...";
+
     self.progressMessage.stringValue = message;
     [self.progressIndicator startAnimation:self];
 }

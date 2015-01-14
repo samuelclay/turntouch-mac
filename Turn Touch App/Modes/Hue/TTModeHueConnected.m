@@ -33,7 +33,7 @@
     
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
     PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
-    
+
     for (PHLight *light in cache.lights.allValues) {
         
         PHLightState *lightState = [[PHLightState alloc] init];

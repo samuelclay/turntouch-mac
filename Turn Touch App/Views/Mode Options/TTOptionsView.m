@@ -17,7 +17,7 @@
 @implementation TTOptionsView
 
 @synthesize modeOptionsViewController;
-@synthesize actionOptionsView;
+@synthesize actionOptionsViewController;
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -126,9 +126,9 @@
         [modeOptionsViewController.view removeFromSuperview];
         modeOptionsViewController = nil;
     }
-    if (actionOptionsView) {
-        [actionOptionsView removeFromSuperview];
-        actionOptionsView = nil;
+    if (actionOptionsViewController) {
+        [actionOptionsViewController.view removeFromSuperview];
+        actionOptionsViewController = nil;
     }
     if (actionTitleView) {
         [actionTitleView removeFromSuperview];
@@ -220,67 +220,49 @@
                                                      attribute:NSLayoutAttributeWidth
                                                     multiplier:1.0 constant:0]];
 
-    // Draw action options
-    if (actionOptionsView) {
-        [actionOptionsView removeFromSuperview];
-        for (NSLayoutConstraint *constraint in self.constraints) {
-            if ([[constraint.firstItem class] isSubclassOfClass:[TTOptionsDetailView class]]) {
-                [self removeConstraint:constraint];
-            }
-        }
-        actionOptionsView = nil;
-    }
-    
-    NSArray *nibArray = [NSArray array];
+    // Draw action options    
     NSString *actionName = [appDelegate.modeMap.selectedMode
                             actionNameInDirection:appDelegate.modeMap.inspectingModeDirection];
-    [[NSBundle mainBundle] loadNibNamed:actionName owner:self topLevelObjects:&nibArray];
+    NSString *actionOptionsViewControllerName = [NSString stringWithFormat:@"%@Options", actionName];
+    actionOptionsViewController = [[NSClassFromString(actionOptionsViewControllerName) alloc]
+                                   initWithNibName:actionOptionsViewControllerName bundle:nil];
     
-    for (id view in nibArray) {
-        if ([[view class] isSubclassOfClass:[TTOptionsDetailView class]]) {
-            actionOptionsView = view;
-            break;
-        }
+    
+    if (!actionOptionsViewController) {
+        NSLog(@" --- Missing action options view for %@", actionName);
+        actionOptionsViewController = (TTOptionsDetailViewController *)[[NSViewController alloc] init];
+        [actionOptionsViewController setView:[[TTOptionsDetailView alloc] init]];
+        [self addSubview:actionOptionsViewController.view];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:actionOptionsViewController.view
+                                                         attribute:NSLayoutAttributeHeight
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:0
+                                                        multiplier:1.0 constant:CORNER_RADIUS]];
+    } else {
+        actionOptionsViewController.menuType = ACTION_MENU_TYPE;
+        [self addSubview:actionOptionsViewController.view];
     }
     
-    if (!actionOptionsView) {
-        if (![appDelegate.modeMap.selectedMode.optionlessActions containsObject:actionName]) {
-            NSLog(@" --- Missing action options view for %@", actionName);
-        }
-        [appDelegate.panelController.backgroundView adjustOptionsHeight:actionTitleView];
-        return;
-    }
-    
-    actionOptionsView.menuType = ACTION_MENU_TYPE;
-    actionOptionsView.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    [self addSubview:actionOptionsView];
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:actionOptionsView
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:actionOptionsViewController.view
                                                      attribute:NSLayoutAttributeTop
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:actionTitleView
                                                      attribute:NSLayoutAttributeBottom
                                                     multiplier:1.0 constant:0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:actionOptionsView
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:actionOptionsViewController.view
                                                      attribute:NSLayoutAttributeLeading
                                                      relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
+                                                        toItem:actionTitleView
                                                      attribute:NSLayoutAttributeLeading
                                                     multiplier:1.0 constant:0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:actionOptionsView
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:actionOptionsViewController.view
                                                      attribute:NSLayoutAttributeTrailing
                                                      relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
+                                                        toItem:actionTitleView
                                                      attribute:NSLayoutAttributeTrailing
                                                     multiplier:1.0 constant:0]];
-    //    [self addConstraint:[NSLayoutConstraint constraintWithItem:actionOptionsView
-    //                                                     attribute:NSLayoutAttributeWidth
-    //                                                     relatedBy:NSLayoutRelationEqual
-    //                                                        toItem:self
-    //                                                     attribute:NSLayoutAttributeWidth
-    //                                                    multiplier:1.0 constant:0]];
-    [appDelegate.panelController.backgroundView adjustOptionsHeight:actionOptionsView];
+    [appDelegate.panelController.backgroundView adjustOptionsHeight:actionOptionsViewController.view];
 }
 
 @end

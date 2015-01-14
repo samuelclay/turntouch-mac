@@ -35,6 +35,8 @@
 		FF3641EF1A60C422003CC03C /* TTModeHuePushlink.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3641ED1A60C422003CC03C /* TTModeHuePushlink.m */; };
 		FF3641F01A60C422003CC03C /* TTModeHuePushlink.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3641EE1A60C422003CC03C /* TTModeHuePushlink.xib */; };
 		FF3641F31A64AE39003CC03C /* NSAttributedString+Extra.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3641F21A64AE39003CC03C /* NSAttributedString+Extra.m */; };
+		FF3641F71A660204003CC03C /* TTModeHueSceneEarlyEveningOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3641F51A660204003CC03C /* TTModeHueSceneEarlyEveningOptions.m */; };
+		FF3641F81A660204003CC03C /* TTModeHueSceneEarlyEveningOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3641F61A660204003CC03C /* TTModeHueSceneEarlyEveningOptions.xib */; };
 		FF429AD21919C630007C485E /* TTModeMenuCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF429AD11919C630007C485E /* TTModeMenuCollectionView.m */; };
 		FF4E2630182317D000D477F6 /* TTSerialMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4E262F182317D000D477F6 /* TTSerialMonitor.m */; };
 		FF4E26321823197D00D477F6 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4E26311823197D00D477F6 /* IOKit.framework */; };
@@ -200,6 +202,9 @@
 		FF3641EE1A60C422003CC03C /* TTModeHuePushlink.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTModeHuePushlink.xib; sourceTree = "<group>"; };
 		FF3641F11A64AE39003CC03C /* NSAttributedString+Extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSAttributedString+Extra.h"; path = "Categories/NSAttributedString+Extra.h"; sourceTree = "<group>"; };
 		FF3641F21A64AE39003CC03C /* NSAttributedString+Extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSAttributedString+Extra.m"; path = "Categories/NSAttributedString+Extra.m"; sourceTree = "<group>"; };
+		FF3641F41A660204003CC03C /* TTModeHueSceneEarlyEveningOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeHueSceneEarlyEveningOptions.h; sourceTree = "<group>"; };
+		FF3641F51A660204003CC03C /* TTModeHueSceneEarlyEveningOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeHueSceneEarlyEveningOptions.m; sourceTree = "<group>"; };
+		FF3641F61A660204003CC03C /* TTModeHueSceneEarlyEveningOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTModeHueSceneEarlyEveningOptions.xib; sourceTree = "<group>"; };
 		FF429AD01919C630007C485E /* TTModeMenuCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeMenuCollectionView.h; sourceTree = "<group>"; };
 		FF429AD11919C630007C485E /* TTModeMenuCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeMenuCollectionView.m; sourceTree = "<group>"; };
 		FF4E262E182317D000D477F6 /* TTSerialMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSerialMonitor.h; path = SerialMonitor/TTSerialMonitor.h; sourceTree = "<group>"; };
@@ -904,6 +909,9 @@
 				FF7305BE1A5CA8F5009A852D /* TTModeHueConnected.h */,
 				FF7305BF1A5CA8F5009A852D /* TTModeHueConnected.m */,
 				FF3641EA1A60BBEE003CC03C /* TTModeHueConnected.xib */,
+				FF3641F41A660204003CC03C /* TTModeHueSceneEarlyEveningOptions.h */,
+				FF3641F51A660204003CC03C /* TTModeHueSceneEarlyEveningOptions.m */,
+				FF3641F61A660204003CC03C /* TTModeHueSceneEarlyEveningOptions.xib */,
 				FF7305AC1A5C9C76009A852D /* press_smartbridge.png */,
 			);
 			name = Hue;
@@ -1002,6 +1010,7 @@
 				FF80132B186CF92000955218 /* TTPanel.xib in Resources */,
 				FF8012FB186A7B9000955218 /* vinyl.png in Resources */,
 				FF8C834717AB14B5000166FC /* Credits.rtf in Resources */,
+				FF3641F81A660204003CC03C /* TTModeHueSceneEarlyEveningOptions.xib in Resources */,
 				FFA1D4CC1A3B8916003EA0BC /* TTActionHUDView.xib in Resources */,
 				FFAA4F68182D96D60049FFC7 /* television.png in Resources */,
 				FFAA4F66182D96D60049FFC7 /* speaker.png in Resources */,
@@ -1070,6 +1079,7 @@
 				FFF05F3B18F77BE000AC6230 /* TTModeTitleView.m in Sources */,
 				FF429AD21919C630007C485E /* TTModeMenuCollectionView.m in Sources */,
 				FFA1D4DA1A3B89A4003EA0BC /* TTModeHUDView.m in Sources */,
+				FF3641F71A660204003CC03C /* TTModeHueSceneEarlyEveningOptions.m in Sources */,
 				FF66F2A619228DE100031478 /* TTModeAlarmClockOptions.m in Sources */,
 				FF98A2E11867DBA40032CC7A /* TTActionMap.m in Sources */,
 				FF936068196DF67500675B7B /* TFDatePicker.m in Sources */,

@@ -26,7 +26,7 @@
 
 @property (nonatomic) NSScrollView *scrollView;
 @property (nonatomic) TTOptionsDetailViewController *modeOptionsViewController;
-@property (nonatomic) TTOptionsDetailView *actionOptionsView;
+@property (nonatomic) TTOptionsDetailViewController *actionOptionsViewController;
 
 - (void)redrawOptions;
 

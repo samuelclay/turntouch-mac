@@ -74,9 +74,6 @@
     return @"next_track.png";
 }
 
-#pragma mark - Action methods
-
-
 #pragma mark - Defaults
 
 - (NSString *)defaultNorth {
@@ -92,11 +89,23 @@
     return @"TTModeHueSleep";
 }
 
+#pragma mark - Action methods
+
+- (void)runTTModeHueSceneEarlyEvening {
+    NSLog(@"Running early evening...");
+}
+
 #pragma mark - Hue Init
 
 - (void)activate {
-    NSLog(@" ---> Activating Hue mode.");
-
+    NSLog(@" ---> Activating Hue mode: %@", self.phHueSDK);
+    
+    if (self.phHueSDK) {
+        [[PHNotificationManager defaultManager] deregisterObjectForAllNotifications:self];
+        [self disableLocalHeartbeat];
+        [self.phHueSDK stopSDK];
+        self.phHueSDK = nil;
+    }
     self.phHueSDK = [[PHHueSDK alloc] init];
     [self.phHueSDK startUpSDK];
     [self.phHueSDK enableLogging:YES];
@@ -125,14 +134,17 @@
                         forNotification:NO_LOCAL_AUTHENTICATION_NOTIFICATION];
 
     // No Hue found, show connection button
-    hueState = STATE_NOT_CONNECTED;
-    [self.delegate changeState:hueState withMode:self showMessage:@"Connect to your Hue..."];
+    hueState = STATE_CONNECTING;
+    [self.delegate changeState:hueState withMode:self showMessage:@"Connecting..."];
     
     [self enableLocalHeartbeat];
 }
 
 - (void)deactivate {
+    NSLog(@" ---> DE-Activating Hue mode: %@", self.phHueSDK);
+
     [[PHNotificationManager defaultManager] deregisterObjectForAllNotifications:self];
+    [self disableLocalHeartbeat];
     [self.phHueSDK stopSDK];
     self.phHueSDK = nil;
 }
@@ -182,6 +194,7 @@
         // One of the connections is made, remove popups and loading views
         hueState = STATE_CONNECTED;
         [self.delegate changeState:hueState withMode:self showMessage:nil];
+        [self disableLocalHeartbeat];
     }
 }
 
@@ -368,9 +381,10 @@
     
     hueState = STATE_CONNECTED;
     [self.delegate changeState:hueState withMode:self showMessage:nil];
+    [self disableLocalHeartbeat];
     
     // Start local heartbeat
-    [self performSelector:@selector(enableLocalHeartbeat) withObject:nil afterDelay:1];
+//    [self performSelector:@selector(enableLocalHeartbeat) withObject:nil afterDelay:1];
 }
 
 /**
