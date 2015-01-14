@@ -20,19 +20,19 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="2fL-Hy-hGn">
-            <rect key="frame" x="0.0" y="0.0" width="487" height="278"/>
+            <rect key="frame" x="0.0" y="0.0" width="487" height="285"/>
             <subviews>
-                <tabView misplaced="YES" initialItem="CX8-qh-iYR" translatesAutoresizingMaskIntoConstraints="NO" id="X6n-ol-Ve2" customClass="TTTabView">
-                    <rect key="frame" x="-7" y="-20" width="501" height="287"/>
+                <tabView initialItem="CX8-qh-iYR" translatesAutoresizingMaskIntoConstraints="NO" id="X6n-ol-Ve2" customClass="TTTabView">
+                    <rect key="frame" x="-7" y="-10" width="501" height="301"/>
                     <font key="font" metaFont="system"/>
                     <tabViewItems>
                         <tabViewItem label="Alarm times" identifier="1" id="CX8-qh-iYR">
                             <view key="view" id="yKC-Lf-rk6">
-                                <rect key="frame" x="10" y="33" width="481" height="241"/>
+                                <rect key="frame" x="10" y="33" width="481" height="255"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <box autoresizesSubviews="NO" title="Repeating alarm" borderType="bezel" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="C4a-9h-8KN" customClass="TTBoxView">
-                                        <rect key="frame" x="-3" y="98" width="487" height="145"/>
+                                        <rect key="frame" x="-3" y="112" width="487" height="145"/>
                                         <view key="contentView">
                                             <rect key="frame" x="3" y="3" width="481" height="139"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -87,7 +87,7 @@
                                                                 <sliderCell key="cell" state="on" alignment="left" maxValue="24" doubleValue="10" tickMarkPosition="above" numberOfTickMarks="12" sliderType="linear" id="pV4-CP-edK"/>
                                                             </slider>
                                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="08z-qa-ZtQ">
-                                                                <rect key="frame" x="151" y="13" width="136" height="17"/>
+                                                                <rect key="frame" x="150.5" y="13" width="136" height="17"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="17" id="3M3-xG-DY4"/>
                                                                 </constraints>
@@ -129,7 +129,7 @@
                                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </box>
                                     <box autoresizesSubviews="NO" title="One-time alarm" borderType="bezel" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Ynp-bh-WI4" customClass="TTBoxView">
-                                        <rect key="frame" x="-3" y="-18" width="487" height="122"/>
+                                        <rect key="frame" x="-3" y="-4" width="487" height="122"/>
                                         <view key="contentView">
                                             <rect key="frame" x="3" y="3" width="481" height="116"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -175,11 +175,11 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="435" height="60"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
-                                                            <slider verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Yx-qA-qzL">
+                                                            <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8Yx-qA-qzL">
                                                                 <rect key="frame" x="141" y="32" width="294" height="25"/>
                                                                 <sliderCell key="cell" state="on" alignment="left" maxValue="24" doubleValue="10" tickMarkPosition="above" numberOfTickMarks="12" sliderType="linear" id="cXa-Bf-Dxu"/>
                                                             </slider>
-                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TpU-io-mXB">
+                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TpU-io-mXB">
                                                                 <rect key="frame" x="-2" y="3" width="439" height="19"/>
                                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="7:00 AM (in 8 hours 21 minutes)" id="Rzq-bq-C5C">
                                                                     <font key="font" size="13" name="Effra-Regular"/>
@@ -187,8 +187,8 @@
                                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                 </textFieldCell>
                                                             </textField>
-                                                            <datePicker verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ASz-hE-Fct" customClass="TFDatePicker">
-                                                                <rect key="frame" x="1" y="34" width="101" height="27"/>
+                                                            <datePicker verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ASz-hE-Fct" customClass="TFDatePicker">
+                                                                <rect key="frame" x="1" y="34" width="101" height="28"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="98" id="Ko2-Pd-8zU"/>
                                                                 </constraints>
@@ -202,8 +202,8 @@
                                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 </datePickerCell>
                                                             </datePicker>
-                                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oyu-je-rN4">
-                                                                <rect key="frame" x="113" y="34" width="22" height="22"/>
+                                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oyu-je-rN4">
+                                                                <rect key="frame" x="113" y="34" width="22" height="23"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="22" id="PUu-90-A0N"/>
                                                                 </constraints>
@@ -218,7 +218,7 @@
                                                         <constraint firstItem="Oyu-je-rN4" firstAttribute="leading" secondItem="ASz-hE-Fct" secondAttribute="trailing" constant="14" id="JDE-5R-iJh"/>
                                                         <constraint firstItem="Oyu-je-rN4" firstAttribute="bottom" secondItem="8Yx-qA-qzL" secondAttribute="bottom" id="JSg-HT-fZi"/>
                                                         <constraint firstItem="TpU-io-mXB" firstAttribute="leading" secondItem="oIq-Tz-CYQ" secondAttribute="leading" id="PZC-Av-LQh"/>
-                                                        <constraint firstItem="Oyu-je-rN4" firstAttribute="top" secondItem="ASz-hE-Fct" secondAttribute="top" id="SKx-bP-I01"/>
+                                                        <constraint firstItem="Oyu-je-rN4" firstAttribute="top" secondItem="ASz-hE-Fct" secondAttribute="top" constant="1" id="SKx-bP-I01"/>
                                                         <constraint firstItem="ASz-hE-Fct" firstAttribute="leading" secondItem="oIq-Tz-CYQ" secondAttribute="leading" constant="1" id="gOJ-Oe-ODV"/>
                                                         <constraint firstAttribute="height" constant="60" id="pNf-HS-ux8"/>
                                                         <constraint firstAttribute="trailing" secondItem="TpU-io-mXB" secondAttribute="trailing" id="pxM-d1-TUb"/>
@@ -250,69 +250,69 @@
                                     </box>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Ynp-bh-WI4" secondAttribute="bottom" constant="-14" id="5X0-yF-PhZ"/>
                                     <constraint firstItem="C4a-9h-8KN" firstAttribute="top" secondItem="yKC-Lf-rk6" secondAttribute="top" id="Avv-HX-y5I"/>
                                     <constraint firstAttribute="trailing" secondItem="C4a-9h-8KN" secondAttribute="trailing" id="Y0w-PD-rom"/>
                                     <constraint firstAttribute="trailing" secondItem="Ynp-bh-WI4" secondAttribute="trailing" id="d8X-ML-dGP"/>
                                     <constraint firstItem="Ynp-bh-WI4" firstAttribute="leading" secondItem="yKC-Lf-rk6" secondAttribute="leading" id="gWm-zp-eWr"/>
                                     <constraint firstItem="C4a-9h-8KN" firstAttribute="leading" secondItem="yKC-Lf-rk6" secondAttribute="leading" id="imr-3G-X2B"/>
                                     <constraint firstItem="Ynp-bh-WI4" firstAttribute="top" secondItem="C4a-9h-8KN" secondAttribute="bottom" id="mUi-bo-z5l"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ynp-bh-WI4" secondAttribute="bottom" id="pBM-hF-Lq8"/>
                                 </constraints>
                             </view>
                         </tabViewItem>
                         <tabViewItem label="Music and sounds" identifier="2" id="C5r-VN-Fk5">
                             <view key="view" id="dme-kN-wNJ">
-                                <rect key="frame" x="10" y="33" width="465" height="251"/>
+                                <rect key="frame" x="10" y="33" width="481" height="105"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <box autoresizesSubviews="NO" misplaced="YES" title="General" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="4X6-Q1-Mt2" customClass="TTBoxView">
-                                        <rect key="frame" x="-3" y="146" width="471" height="106"/>
+                                    <box autoresizesSubviews="NO" title="General" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="4X6-Q1-Mt2" customClass="TTBoxView">
+                                        <rect key="frame" x="-3" y="-4" width="471" height="110"/>
                                         <view key="contentView">
-                                            <rect key="frame" x="1" y="1" width="469" height="104"/>
+                                            <rect key="frame" x="1" y="1" width="469" height="108"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rWd-kr-Tbb">
-                                                    <rect key="frame" x="24" y="66" width="92" height="17"/>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rWd-kr-Tbb">
+                                                    <rect key="frame" x="24" y="68" width="82" height="19"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Alarm volume" id="0jR-Ze-BSt">
                                                         <font key="font" size="13" name="Effra-Regular"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dCy-Vi-FVf">
-                                                    <rect key="frame" x="123" y="45" width="299" height="14"/>
+                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dCy-Vi-FVf">
+                                                    <rect key="frame" x="113" y="45" width="126" height="18"/>
                                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Overrides system volume" id="l51-Nx-Fj5">
                                                         <font key="font" size="11" name="Effra-Regular"/>
                                                         <color key="textColor" name="secondarySelectedControlColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <slider verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ue1-lp-26l">
-                                                    <rect key="frame" x="123" y="60" width="293" height="25"/>
+                                                <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ue1-lp-26l">
+                                                    <rect key="frame" x="113" y="64" width="301" height="25"/>
                                                     <sliderCell key="cell" state="on" alignment="left" maxValue="20" doubleValue="10" tickMarkPosition="below" numberOfTickMarks="9" allowsTickMarkValuesOnly="YES" sliderType="linear" id="eCk-zB-B6m"/>
                                                 </slider>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3eh-T6-07a">
-                                                    <rect key="frame" x="420" y="67" width="21" height="17"/>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3eh-T6-07a">
+                                                    <rect key="frame" x="418" y="71" width="23" height="19"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="5%" id="obk-e5-FEk">
                                                         <font key="font" size="13" name="Effra-Regular"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lin-HM-nlJ">
-                                                    <rect key="frame" x="24" y="19" width="59" height="17"/>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lin-HM-nlJ">
+                                                    <rect key="frame" x="24" y="19" width="54" height="19"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Duration" id="hSM-hS-V9Y">
                                                         <font key="font" size="13" name="Effra-Regular"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <slider verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7kX-jo-jpj">
-                                                    <rect key="frame" x="123" y="14" width="265" height="25"/>
+                                                <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7kX-jo-jpj">
+                                                    <rect key="frame" x="113" y="14" width="282" height="25"/>
                                                     <sliderCell key="cell" state="on" alignment="left" maxValue="20" doubleValue="10" tickMarkPosition="below" numberOfTickMarks="9" allowsTickMarkValuesOnly="YES" sliderType="linear" id="UBI-1C-1LB"/>
                                                 </slider>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dc3-5g-yAR">
-                                                    <rect key="frame" x="392" y="20" width="49" height="17"/>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dc3-5g-yAR">
+                                                    <rect key="frame" x="399" y="18" width="42" height="19"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="90 min" id="bxJ-z4-oXd">
                                                         <font key="font" size="13" name="Effra-Regular"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -332,12 +332,12 @@
                                             <constraint firstAttribute="bottom" secondItem="7kX-jo-jpj" secondAttribute="bottom" constant="12" id="Ra6-3d-xZj"/>
                                             <constraint firstItem="lin-HM-nlJ" firstAttribute="top" secondItem="rWd-kr-Tbb" secondAttribute="bottom" constant="30" id="XAe-aD-loB"/>
                                             <constraint firstItem="dCy-Vi-FVf" firstAttribute="top" secondItem="3eh-T6-07a" secondAttribute="bottom" constant="8" symbolic="YES" id="aNb-93-JPI"/>
-                                            <constraint firstAttribute="trailing" secondItem="dc3-5g-yAR" secondAttribute="trailing" constant="24" id="cPn-wS-IhZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="dc3-5g-yAR" secondAttribute="trailing" constant="28" id="cPn-wS-IhZ"/>
                                             <constraint firstItem="dc3-5g-yAR" firstAttribute="leading" secondItem="7kX-jo-jpj" secondAttribute="trailing" constant="8" symbolic="YES" id="epk-GH-3Yk"/>
                                             <constraint firstItem="Ue1-lp-26l" firstAttribute="leading" secondItem="rWd-kr-Tbb" secondAttribute="trailing" constant="11" id="hsA-Zj-GtF"/>
                                             <constraint firstItem="dCy-Vi-FVf" firstAttribute="top" secondItem="Ue1-lp-26l" secondAttribute="bottom" constant="2" id="jvQ-tL-eUH"/>
                                             <constraint firstItem="3eh-T6-07a" firstAttribute="leading" secondItem="Ue1-lp-26l" secondAttribute="trailing" constant="8" symbolic="YES" id="qcO-Op-X2W"/>
-                                            <constraint firstAttribute="trailing" secondItem="3eh-T6-07a" secondAttribute="trailing" constant="24" id="rL8-r8-2Xm"/>
+                                            <constraint firstAttribute="trailing" secondItem="3eh-T6-07a" secondAttribute="trailing" constant="28" id="rL8-r8-2Xm"/>
                                             <constraint firstItem="dc3-5g-yAR" firstAttribute="top" secondItem="dCy-Vi-FVf" secondAttribute="bottom" constant="8" symbolic="YES" id="xge-6R-sZv"/>
                                         </constraints>
                                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
@@ -348,7 +348,7 @@
                                     <constraint firstItem="4X6-Q1-Mt2" firstAttribute="leading" secondItem="dme-kN-wNJ" secondAttribute="leading" id="bmb-I9-iwn"/>
                                     <constraint firstItem="4X6-Q1-Mt2" firstAttribute="top" secondItem="dme-kN-wNJ" secondAttribute="top" constant="1" id="msb-ga-5Ma"/>
                                     <constraint firstAttribute="bottom" secondItem="4X6-Q1-Mt2" secondAttribute="bottom" id="mv5-kQ-bjq"/>
-                                    <constraint firstItem="4X6-Q1-Mt2" firstAttribute="centerX" secondItem="dme-kN-wNJ" secondAttribute="centerX" id="nla-ot-jnY"/>
+                                    <constraint firstItem="4X6-Q1-Mt2" firstAttribute="centerX" secondItem="dme-kN-wNJ" secondAttribute="centerX" constant="-8" id="nla-ot-jnY"/>
                                 </constraints>
                             </view>
                         </tabViewItem>
@@ -359,12 +359,12 @@
                 </tabView>
             </subviews>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="X6n-ol-Ve2" secondAttribute="bottom" constant="7" id="1cW-ZC-USA"/>
+                <constraint firstAttribute="bottom" secondItem="X6n-ol-Ve2" secondAttribute="bottom" id="GZP-pT-xPD"/>
                 <constraint firstAttribute="trailing" secondItem="X6n-ol-Ve2" secondAttribute="trailing" id="Rev-v2-89m"/>
                 <constraint firstItem="X6n-ol-Ve2" firstAttribute="leading" secondItem="2fL-Hy-hGn" secondAttribute="leading" id="WVf-0f-p7v"/>
                 <constraint firstItem="X6n-ol-Ve2" firstAttribute="top" secondItem="2fL-Hy-hGn" secondAttribute="top" id="q2K-ha-eKj"/>
             </constraints>
-            <point key="canvasLocation" x="240.5" y="491"/>
+            <point key="canvasLocation" x="240.5" y="598"/>
         </customView>
     </objects>
     <resources>

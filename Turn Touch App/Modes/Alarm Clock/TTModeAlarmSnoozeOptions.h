@@ -8,6 +8,6 @@
 
 #import "TTOptionsDetailView.h"
 
-@interface TTModeAlarmSnooze : TTOptionsDetailView
+@interface TTModeAlarmSnoozeOptions : TTOptionsDetailViewController
 
 @end

@@ -76,8 +76,8 @@
 		FF8C834A17AB14B5000166FC /* TTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8C834917AB14B5000166FC /* TTAppDelegate.m */; };
 		FF8C834D17AB14B5000166FC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF8C834B17AB14B5000166FC /* MainMenu.xib */; };
 		FF913D271924366C005C336F /* TTModeMac.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF913D261924366C005C336F /* TTModeMac.plist */; };
-		FF913D2919243B89005C336F /* TTModeAlarmSnooze.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF913D2819243B89005C336F /* TTModeAlarmSnooze.xib */; };
-		FF913D2C19243BFD005C336F /* TTModeAlarmSnooze.m in Sources */ = {isa = PBXBuildFile; fileRef = FF913D2B19243BFD005C336F /* TTModeAlarmSnooze.m */; };
+		FF913D2919243B89005C336F /* TTModeAlarmSnoozeOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF913D2819243B89005C336F /* TTModeAlarmSnoozeOptions.xib */; };
+		FF913D2C19243BFD005C336F /* TTModeAlarmSnoozeOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF913D2B19243BFD005C336F /* TTModeAlarmSnoozeOptions.m */; };
 		FF93604C196DF0B600675B7B /* Effra_Rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF936042196DF0B600675B7B /* Effra_Rg.ttf */; };
 		FF936057196DF1A500675B7B /* Effra_Rg.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = FF936042196DF0B600675B7B /* Effra_Rg.ttf */; };
 		FF936064196DF67500675B7B /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = FF93605A196DF67500675B7B /* calendar.png */; };
@@ -272,9 +272,9 @@
 		FF8C834917AB14B5000166FC /* TTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTAppDelegate.m; sourceTree = "<group>"; };
 		FF8C834C17AB14B5000166FC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		FF913D261924366C005C336F /* TTModeMac.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = TTModeMac.plist; path = Modes/Mac/TTModeMac.plist; sourceTree = "<group>"; };
-		FF913D2819243B89005C336F /* TTModeAlarmSnooze.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeAlarmSnooze.xib; path = "Modes/Alarm Clock/TTModeAlarmSnooze.xib"; sourceTree = "<group>"; };
-		FF913D2A19243BFD005C336F /* TTModeAlarmSnooze.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeAlarmSnooze.h; path = "Modes/Alarm Clock/TTModeAlarmSnooze.h"; sourceTree = "<group>"; };
-		FF913D2B19243BFD005C336F /* TTModeAlarmSnooze.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeAlarmSnooze.m; path = "Modes/Alarm Clock/TTModeAlarmSnooze.m"; sourceTree = "<group>"; };
+		FF913D2819243B89005C336F /* TTModeAlarmSnoozeOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeAlarmSnoozeOptions.xib; path = "Modes/Alarm Clock/TTModeAlarmSnoozeOptions.xib"; sourceTree = "<group>"; };
+		FF913D2A19243BFD005C336F /* TTModeAlarmSnoozeOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeAlarmSnoozeOptions.h; path = "Modes/Alarm Clock/TTModeAlarmSnoozeOptions.h"; sourceTree = "<group>"; };
+		FF913D2B19243BFD005C336F /* TTModeAlarmSnoozeOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeAlarmSnoozeOptions.m; path = "Modes/Alarm Clock/TTModeAlarmSnoozeOptions.m"; sourceTree = "<group>"; };
 		FF936042196DF0B600675B7B /* Effra_Rg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Effra_Rg.ttf; sourceTree = "<group>"; };
 		FF93605A196DF67500675B7B /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
 		FF93605B196DF67500675B7B /* calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar@2x.png"; sourceTree = "<group>"; };
@@ -871,9 +871,9 @@
 				FF66F2A419228DE100031478 /* TTModeAlarmClockOptions.h */,
 				FF66F2A519228DE100031478 /* TTModeAlarmClockOptions.m */,
 				FFEA6CB719218A5C0010874B /* TTModeAlarmClockOptions.xib */,
-				FF913D2A19243BFD005C336F /* TTModeAlarmSnooze.h */,
-				FF913D2B19243BFD005C336F /* TTModeAlarmSnooze.m */,
-				FF913D2819243B89005C336F /* TTModeAlarmSnooze.xib */,
+				FF913D2A19243BFD005C336F /* TTModeAlarmSnoozeOptions.h */,
+				FF913D2B19243BFD005C336F /* TTModeAlarmSnoozeOptions.m */,
+				FF913D2819243B89005C336F /* TTModeAlarmSnoozeOptions.xib */,
 			);
 			name = "Alarm Clock";
 			sourceTree = "<group>";
@@ -1047,7 +1047,7 @@
 				FFFF683819D4E2C30081904A /* ideas.txt in Resources */,
 				FFEA6CB819218A5C0010874B /* TTModeAlarmClockOptions.xib in Resources */,
 				FF7305BB1A5C9C76009A852D /* press_smartbridge.png in Resources */,
-				FF913D2919243B89005C336F /* TTModeAlarmSnooze.xib in Resources */,
+				FF913D2919243B89005C336F /* TTModeAlarmSnoozeOptions.xib in Resources */,
 				FFAA4F64182D96D60049FFC7 /* newspaper-3.png in Resources */,
 				FF98A3041868D3F90032CC7A /* macbookpro.png in Resources */,
 				FFEA6CB319216CDF0010874B /* TTModeMac.xib in Resources */,
@@ -1121,7 +1121,7 @@
 				FF3641E61A5F674A003CC03C /* TTModeHueOptions.m in Sources */,
 				FF0E12D41828560000D49EC7 /* TTModeVideo.m in Sources */,
 				FF3641E91A60BB8B003CC03C /* TTModeHueConnecting.m in Sources */,
-				FF913D2C19243BFD005C336F /* TTModeAlarmSnooze.m in Sources */,
+				FF913D2C19243BFD005C336F /* TTModeAlarmSnoozeOptions.m in Sources */,
 				FF98A2E81867DBE70032CC7A /* TTPanelController.m in Sources */,
 				FF3641EF1A60C422003CC03C /* TTModeHuePushlink.m in Sources */,
 				FF7305AE1A5C9C76009A852D /* DDAbstractDatabaseLogger.m in Sources */,
