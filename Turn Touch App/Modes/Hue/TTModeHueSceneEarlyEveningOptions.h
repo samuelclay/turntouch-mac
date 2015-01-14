@@ -14,6 +14,7 @@
 @property (nonatomic) IBOutlet NSTextField *durationLabel;
 @property (nonatomic) IBOutlet NSSlider *durationSlider;
 
+
 - (IBAction)didChangeScene:(id)sender;
 - (IBAction)didChangeDuration:(id)sender;
 

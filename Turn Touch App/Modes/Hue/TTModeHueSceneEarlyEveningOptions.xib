@@ -36,11 +36,11 @@
                     </connections>
                 </popUpButton>
                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zef-OG-hmY">
-                    <rect key="frame" x="92" y="18" width="295.5" height="25"/>
+                    <rect key="frame" x="92" y="18" width="296" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="Ld1-Yn-pO2"/>
                     </constraints>
-                    <sliderCell key="cell" state="on" alignment="left" maxValue="60" tickMarkPosition="above" numberOfTickMarks="7" sliderType="linear" id="P3W-Zd-UWg"/>
+                    <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="30" tickMarkPosition="above" numberOfTickMarks="4" sliderType="linear" id="P3W-Zd-UWg"/>
                     <connections>
                         <action selector="didChangeDuration:" target="-2" id="3X2-V0-I3u"/>
                     </connections>
@@ -57,7 +57,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bKW-dI-BQw">
-                    <rect key="frame" x="393.5" y="22" width="70.5" height="19"/>
+                    <rect key="frame" x="394" y="22" width="70" height="19"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Immediate" id="hbV-xV-TGd">
                         <font key="font" size="13" name="Effra-Regular"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -84,5 +84,6 @@
             </constraints>
             <point key="canvasLocation" x="362" y="323"/>
         </customView>
+        <userDefaultsController representsSharedInstance="YES" id="edl-6I-vcB"/>
     </objects>
 </document>
