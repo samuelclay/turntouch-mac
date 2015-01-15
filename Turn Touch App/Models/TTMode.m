@@ -98,6 +98,7 @@
     NSString *actionName = [self actionNameInDirection:direction];
     NSLog(@"Running: %d - %@", direction, actionName);
 
+    // First check for runAction:direction...
     SEL selector = NSSelectorFromString([NSString stringWithFormat:@"run%@:",
                                          actionName]);
     IMP imp = [self methodForSelector:selector];
@@ -105,6 +106,7 @@
     if ([self respondsToSelector:selector]) {
         func(self, selector, direction);
     } else {
+        // Then check for runAction... without direction
         SEL selector = NSSelectorFromString([NSString stringWithFormat:@"run%@",
                                              actionName]);
         IMP imp = [self methodForSelector:selector];

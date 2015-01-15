@@ -8,12 +8,16 @@
 
 #import "TTOptionsDetailViewController.h"
 
+extern NSString *const kHueScene;
+extern NSString *const kHueDuration;
+
+@class TTModeHue;
+
 @interface TTModeHueSceneOptions : TTOptionsDetailViewController
 
 @property (nonatomic) IBOutlet NSPopUpButton *scenePopup;
 @property (nonatomic) IBOutlet NSTextField *durationLabel;
 @property (nonatomic) IBOutlet NSSlider *durationSlider;
-
 
 - (IBAction)didChangeScene:(id)sender;
 - (IBAction)didChangeDuration:(id)sender;

@@ -6,8 +6,12 @@
 //  Copyright (c) 2015 Turn Touch. All rights reserved.
 //
 
+#import "TTModeHue.h"
 #import "TTModeHueSceneOptions.h"
 #import <HueSDK_OSX/HueSDK.h>
+
+NSString *const kHueScene = @"hueScene";
+NSString *const kHueDuration = @"hueDuration";
 
 @interface TTModeHueSceneOptions ()
 
@@ -19,20 +23,18 @@
 @synthesize durationLabel;
 @synthesize durationSlider;
 
-NSString *const kHueScene = @"hueScene";
-NSString *const kHueDuration = @"hueDuration";
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSString *sceneSelected = [appDelegate.modeMap actionOptionValue:kHueScene];
+    NSString *sceneSelectedIdentifier = [appDelegate.modeMap actionOptionValue:kHueScene];
     NSInteger sceneDuration = [[appDelegate.modeMap actionOptionValue:kHueDuration] integerValue];
+    NSString *sceneSelected;
     
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
     NSMutableArray *scenes = [[NSMutableArray alloc] init];
     [scenePopup removeAllItems];
     for (PHScene *scene in cache.scenes.allValues) {
-//        NSLog(@"Scene: %@ %@", scene, scene.name);
+        NSLog(@"Scene: %@ %@", scene.identifier, scene.name);
         [scenes addObject:@{@"name": scene.name, @"identifier": scene.identifier}];
     }
 
@@ -41,9 +43,13 @@ NSString *const kHueDuration = @"hueDuration";
     
     for (NSDictionary *scene in scenes) {
         [scenePopup addItemWithTitle:scene[@"name"]];
-        if ([scene[@"identifier"] isEqualToString:sceneSelected]) {
-            [scenePopup selectItemWithTitle:scene[@"name"]];
+        if ([scene[@"identifier"] isEqualToString:sceneSelectedIdentifier]) {
+            sceneSelected = scene[@"name"];
         }
+        
+    }
+    if (sceneSelected) {
+        [scenePopup selectItemWithTitle:sceneSelected];
     }
     
     [durationSlider setIntegerValue:sceneDuration];

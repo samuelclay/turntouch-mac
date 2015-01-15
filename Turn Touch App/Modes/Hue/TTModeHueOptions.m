@@ -33,7 +33,7 @@
 }
 
 - (void)changeState:(TTHueState)hueState withMode:(TTModeHue *)modeHue showMessage:(id)message {
-    NSLog(@" Changing Hue state: %d - %@", hueState, message);
+    NSLog(@" Changing Hue state: %lu - %@", hueState, message);
     switch (hueState) {
         case STATE_NOT_CONNECTED:
             [self drawConnectViewController];

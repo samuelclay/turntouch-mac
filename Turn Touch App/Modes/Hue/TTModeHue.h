@@ -10,8 +10,10 @@
 #import <HueSDK_OSX/HueSDK.h>
 #import "TTMode.h"
 #import "TTModeProtocol.h"
+#import "TTModeHueSceneOptions.h"
 
 @class TTModeHue;
+@class TTModeHueSceneOptions;
 
 typedef enum TTHueState : NSUInteger {
     STATE_NOT_CONNECTED,
@@ -27,7 +29,6 @@ typedef enum TTHueState : NSUInteger {
 - (void)changeState:(TTHueState)hueState withMode:(TTModeHue *)modeHue showMessage:(id)message;
 
 @end
-
 
 @interface TTModeHue : TTMode
 

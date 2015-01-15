@@ -7,7 +7,7 @@
 //
 
 #import "TTModeHue.h"
-#import "TTModeHueOptions.h"
+#import "TTModeHueSceneOptions.h"
 
 @interface TTModeHue()
 
@@ -91,12 +91,64 @@
 
 #pragma mark - Action methods
 
+- (void)runScene:(TTModeDirection)direction {
+    PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
+    NSString *sceneIdentifier = [appDelegate.modeMap actionOptionValue:kHueScene inDirection:direction];
+    NSNumber *sceneDuration = (NSNumber *)[appDelegate.modeMap actionOptionValue:kHueDuration inDirection:direction];
+    NSNumber *sceneTransition = [NSNumber numberWithInteger:([sceneDuration integerValue] * 10 * 60)];
+    PHScene *activeScene;
+    PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
+    NSMutableArray *scenes = [[NSMutableArray alloc] init];
+    for (PHScene *scene in cache.scenes.allValues) {
+        [scenes addObject:@{@"name": scene.name, @"identifier": scene.identifier}];
+        NSLog(@"Checking scene %@=%@: %@", scene.identifier, sceneIdentifier, scene.name);
+        if ([scene.identifier isEqualToString:sceneIdentifier]) {
+            activeScene = scene;
+        }
+    }
+    
+    NSSortDescriptor *sd = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    [scenes sortUsingDescriptors:@[sd]];
+    
+    if (!sceneIdentifier || ![sceneIdentifier length]) {
+        // Use default, which is first scene in sorted scene list
+        sceneIdentifier = scenes[0][@"identifier"];
+    }
+    
+    NSNumber *originalTransitionTime = activeScene.transitionTime;
+    if ([sceneTransition integerValue] && (!originalTransitionTime ||
+                                           ![sceneTransition isEqualToNumber:originalTransitionTime])) {
+        activeScene.transitionTime = sceneTransition;
+        activeScene.identifier = [NSString stringWithFormat:@"%@-transition", activeScene.identifier];
+        NSLog(@"Transition: %@ (original %@)", activeScene.transitionTime, originalTransitionTime);
+        [bridgeSendAPI saveSceneWithCurrentLightStates:activeScene completionHandler:^(NSArray *errors) {
+            [bridgeSendAPI activateSceneWithIdentifier:sceneIdentifier onGroup:@"0" completionHandler:^(NSArray *errors) {
+                bridgeSendAPI
+            }];
+        }];
+    } else {
+        [bridgeSendAPI activateSceneWithIdentifier:sceneIdentifier onGroup:@"0" completionHandler:nil];
+    }
+}
+
 - (void)runTTModeHueSceneEarlyEvening:(TTModeDirection)direction {
     NSLog(@"Running early evening... %d", direction);
+    [self runScene:direction];
 }
 
 - (void)runTTModeHueSceneLateEvening:(TTModeDirection)direction {
     NSLog(@"Running late evening... %d", direction);
+    [self runScene:direction];
+}
+
+- (void)runTTModeHueSceneOff:(TTModeDirection)direction {
+    NSLog(@"Running scene off... %d", direction);
+    [self runScene:direction];
+}
+
+- (void)runTTModeHueSceneSleep:(TTModeDirection)direction {
+    NSLog(@"Running scene off... %d", direction);
+    [self runScene:direction];
 }
 
 #pragma mark - Hue Init
@@ -112,7 +164,7 @@
     }
     self.phHueSDK = [[PHHueSDK alloc] init];
     [self.phHueSDK startUpSDK];
-    [self.phHueSDK enableLogging:YES];
+    [self.phHueSDK enableLogging:NO];
     
     PHNotificationManager *notificationManager = [PHNotificationManager defaultManager];
     [notificationManager deregisterObjectForAllNotifications:self];
