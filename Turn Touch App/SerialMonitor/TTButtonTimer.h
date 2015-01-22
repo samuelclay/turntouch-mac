@@ -24,6 +24,7 @@ typedef enum {
     NSTimer *activeModeTimer;
     NSMutableArray *buttonState;
     BOOL inMultitouch;
+    NSDate *holdToastStart;
 }
 
 - (void)readButtons:(NSArray *)buttons;

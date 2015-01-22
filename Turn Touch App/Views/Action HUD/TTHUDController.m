@@ -41,6 +41,16 @@
     } afterDelay:2.5 cancelPreviousRequest:YES];
 }
 
+- (void)holdToastActiveMode {
+    if (modeOperation) [modeOperation cancel];
+
+    [modeHUDController fadeIn:nil];
+}
+
+- (void)releaseToastActiveMode {
+    [modeHUDController fadeOut:nil];
+}
+
 - (void)toastActiveAction:(TTModeDirection)direction {
     [actionHUDController fadeIn:direction];
     

@@ -121,7 +121,10 @@
     if (anyButtonPressed) {
         NSLog(@" ---> Button down%@: %d", inMultitouch ? @" (multi-touch)" : @"", state);
         if (inMultitouch) {
-            [appDelegate.hudController toastActiveMode];
+            if (!holdToastStart) {
+                holdToastStart = [NSDate date];
+                [appDelegate.hudController holdToastActiveMode];
+            }
             [self activateButton:NO_DIRECTION];
         } else if ((state & 0x01) == 0x01) {
             [self activateButton:NORTH];
@@ -153,11 +156,21 @@
         NSLog(@" ---> Nothing pressed%@: %d", inMultitouch ? @" (multi-touch)" : @"", state);
         if (state == 0x00) {
             [self activateButton:NO_DIRECTION];
+            [self maybeReleaseToastActiveMode];
             inMultitouch = NO;
         }
     }
     
     
+}
+
+- (void)maybeReleaseToastActiveMode {
+    if (!holdToastStart || [[NSDate date] timeIntervalSinceDate:holdToastStart] > 2.5) {
+        [appDelegate.hudController releaseToastActiveMode];
+    } else {
+        [appDelegate.hudController toastActiveMode];
+    }
+    holdToastStart = nil;
 }
 
 - (void)selectActiveMode:(TTModeDirection)direction {
