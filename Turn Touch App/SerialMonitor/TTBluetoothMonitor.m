@@ -9,8 +9,10 @@
 #import "TTBluetoothMonitor.h"
 #import "NSData+Conversion.h"
 
-#define DEVICE_SERVICE_UUID @"ddea706a-9d53-4bbb-ac0b-74ba819e7d9c"
+#define DEVICE_BUTTON_SERVICE_UUID @"ddea706a-9d53-4bbb-ac0b-74ba819e7d9c"
+#define DEVICE_BATTERY_SERVICE_UUID @"180F"
 #define DEVICE_CHARACTERISTIC_BUTTON_STATUS_UUID @"f1c7c102-27bc-4074-aee6-35c58a3b31f6"
+#define DEVICE_CHARACTERISTIC_BATTERY_LEVEL_UUID @"2a19"
 
 @implementation TTBluetoothMonitor
 
@@ -28,7 +30,7 @@
 #pragma mark - Start/Stop Scan methods
 
 - (void) startScan {
-    [manager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:DEVICE_SERVICE_UUID]] options:nil];
+    [manager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:DEVICE_BUTTON_SERVICE_UUID]] options:nil];
 }
 
 - (void) stopScan {
@@ -130,9 +132,13 @@
 
 - (void) peripheral:(CBPeripheral *)aPeripheral didDiscoverServices:(NSError *)error {
     for (CBService *aService in aPeripheral.services) {
-//        NSLog(@"Service found with UUID: %@", aService.UUID);
+        NSLog(@"Service found with UUID: %@", aService.UUID);
         
-        if ([aService.UUID isEqual:[CBUUID UUIDWithString:DEVICE_SERVICE_UUID]]) {
+        if ([aService.UUID isEqual:[CBUUID UUIDWithString:DEVICE_BUTTON_SERVICE_UUID]]) {
+            [aPeripheral discoverCharacteristics:nil forService:aService];
+        }
+        
+        if ([aService.UUID isEqual:[CBUUID UUIDWithString:DEVICE_BATTERY_SERVICE_UUID]]) {
             [aPeripheral discoverCharacteristics:nil forService:aService];
         }
         
@@ -149,11 +155,11 @@
 }
 
 - (void) peripheral:(CBPeripheral *)aPeripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error {
-    if ([service.UUID isEqual:[CBUUID UUIDWithString:DEVICE_SERVICE_UUID]]) {
+    if ([service.UUID isEqual:[CBUUID UUIDWithString:DEVICE_BUTTON_SERVICE_UUID]]) {
         for (CBCharacteristic *aChar in service.characteristics) {
             if ([aChar.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_BUTTON_STATUS_UUID]]) {
                 [peripheral setNotifyValue:YES forCharacteristic:aChar];
-//                NSLog(@"Found button status characteristic");
+                //                NSLog(@"Found button status characteristic");
                 [appDelegate.hudController toastActiveMode];
             }
 //            /* Read body sensor location */
@@ -172,6 +178,17 @@
         }
     }
     
+    if ( [service.UUID isEqual:[CBUUID UUIDWithString:DEVICE_BATTERY_SERVICE_UUID]] ) {
+        for (CBCharacteristic *aChar in service.characteristics) {
+            /* Read device name */
+            if ([aChar.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_BATTERY_LEVEL_UUID]]) {
+                [peripheral setNotifyValue:YES forCharacteristic:aChar];
+                [aPeripheral readValueForCharacteristic:aChar];
+                NSLog(@"Found a Battery Characteristic");
+            }
+        }
+    }
+
     if ( [service.UUID isEqual:[CBUUID UUIDWithString:CBUUIDGenericAccessProfileString]] ) {
         for (CBCharacteristic *aChar in service.characteristics) {
             /* Read device name */
@@ -202,6 +219,12 @@
         if( (characteristic.value)  || !error ) {
 //            NSLog(@"Characteristic value: %@", [characteristic.value hexadecimalString]);
             [buttonTimer readBluetoothData:characteristic.value];
+        }
+    } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_BATTERY_LEVEL_UUID]]) {
+        if( (characteristic.value)  || !error ) {
+            const uint8_t *bytes = [characteristic.value bytes]; // pointer to the bytes in data
+            int value = bytes[0]; // first byte
+            NSLog(@"Characteristic value: %@ (%d%%)", [characteristic.value hexadecimalString], value);
         }
     } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:CBUUIDDeviceNameString]]) {
         NSString * deviceName = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];

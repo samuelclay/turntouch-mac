@@ -123,7 +123,7 @@
         NSLog(@"Transition: %@ (original %@)", activeScene.transitionTime, originalTransitionTime);
         [bridgeSendAPI saveSceneWithCurrentLightStates:activeScene completionHandler:^(NSArray *errors) {
             [bridgeSendAPI activateSceneWithIdentifier:sceneIdentifier onGroup:@"0" completionHandler:^(NSArray *errors) {
-                bridgeSendAPI
+//                bridgeSendAPI
             }];
         }];
     } else {
