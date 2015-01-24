@@ -24,5 +24,6 @@
 
 - (IBAction)fadeIn:(id)sender;
 - (IBAction)fadeOut:(id)sender;
+- (void)teaseMode:(TTModeDirection)direction;
 
 @end

@@ -33,6 +33,7 @@
 - (void)reset;
 - (void)runActiveButton;
 - (NSString *)directionName:(TTModeDirection)direction;
+- (TTMode *)modeInDirection:(TTModeDirection)direction;
 - (void)changeDirection:(TTModeDirection)direction toMode:(NSString *)modeClassName;
 - (void)changeDirection:(TTModeDirection)direction toAction:(NSString *)actionClassName;
 - (void)changeModeOption:(NSString *)optionName to:(id)optionValue;

@@ -19,6 +19,9 @@
     TTDiamondLabels *diamondLabels;
 }
 
+@property (nonatomic, readwrite) BOOL isTeaser;
+
 - (void)setupTitleAttributes;
+- (void)setupTitleAttributes:(TTMode *)mode;
 
 @end

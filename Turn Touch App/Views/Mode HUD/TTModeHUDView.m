@@ -15,9 +15,12 @@ const NSInteger kImageMargin = 32;
 const NSInteger kImageSize = 36;
 const NSInteger kImageTextMargin = 24;
 
+@synthesize isTeaser;
+
 - (void)awakeFromNib {
     appDelegate = (TTAppDelegate *)[NSApp delegate];
     diamondLabels = [[TTDiamondLabels alloc] initWithInteractive:NO];
+    isTeaser = NO;
     [self addSubview:diamondLabels];
 }
 
@@ -105,7 +108,11 @@ const NSInteger kImageTextMargin = 24;
 }
 
 - (void)setupTitleAttributes {
-    modeTitle = [[appDelegate.modeMap.selectedMode class] title];
+    [self setupTitleAttributes:appDelegate.modeMap.selectedMode];
+}
+
+- (void)setupTitleAttributes:(TTMode *)mode {
+    modeTitle = [[mode class] title];
     NSShadow *stringShadow = [[NSShadow alloc] init];
     stringShadow.shadowColor = [NSColor whiteColor];
     stringShadow.shadowOffset = NSMakeSize(0, -1);

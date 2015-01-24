@@ -9,7 +9,7 @@
 #import "TTButtonTimer.h"
 #import "TTModeMap.h"
 
-//const double MODE_CHANGE_DURATION = 0.5f;
+const double MODE_CHANGE_DURATION = 0.5f;
 
 @implementation TTButtonTimer
 
@@ -185,17 +185,39 @@
 //    NSLog(@"Activating button: %d", activeModeDirection);
     [appDelegate.modeMap setActiveModeDirection:direction];
     [appDelegate.hudController holdToastActiveAction:direction];
+    
+    if (direction != NO_DIRECTION) {
+        NSDate *fireDate = [NSDate dateWithTimeIntervalSinceNow:MODE_CHANGE_DURATION/3];
+        activeModeTimer = [[NSTimer alloc]
+                           initWithFireDate:fireDate
+                           interval:0
+                           target:self
+                           selector:@selector(activeModeTimerFire:)
+                           userInfo:@{@"activeModeDirection": [NSNumber numberWithInt:direction]}
+                           repeats:NO];
+        NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
+        [runLoop addTimer:activeModeTimer forMode:NSDefaultRunLoopMode];
+    }
 }
 
-- (void)deactivateButton {
-    NSLog(@"Deactivate button: %d", activeModeDirection);
-}
 - (void)fireButton:(TTModeDirection)direction {
     [appDelegate.modeMap setActiveModeDirection:direction];
     [appDelegate.modeMap runActiveButton];
     [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];    
 
     [appDelegate.hudController toastActiveAction:direction];
+    [appDelegate.hudController hideModeTease];
+}
+
+- (void)activeModeTimerFire:(NSTimer *)timer {
+    NSLog(@"Firing active mode timer: %d", appDelegate.modeMap.activeModeDirection);
+    activeModeTimer = nil;
+    TTModeDirection timerDirection = (TTModeDirection)[[timer.userInfo objectForKey:@"activeModeDirection"]
+                                      integerValue];
+    NSLog(@" --> Teasing direction: %@ (%@)", [appDelegate.modeMap directionName:timerDirection], [appDelegate.modeMap directionName:appDelegate.modeMap.activeModeDirection]);
+    if (appDelegate.modeMap.activeModeDirection == timerDirection) {
+        [appDelegate.hudController teaseMode:timerDirection];
+    }
 }
 
 @end

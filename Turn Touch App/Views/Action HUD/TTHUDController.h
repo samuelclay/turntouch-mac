@@ -27,6 +27,8 @@
 - (void)toastActiveMode;
 - (void)holdToastActiveMode;
 - (void)releaseToastActiveMode;
+- (void)teaseMode:(TTModeDirection)direction;
+- (void)hideModeTease;
 - (void)toastActiveAction:(TTModeDirection)direction;
 - (void)holdToastActiveAction:(TTModeDirection)direction;
 - (void)releaseToastActiveAction;

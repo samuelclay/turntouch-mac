@@ -41,6 +41,7 @@
     [hudWindow makeKeyAndOrderFront:nil];
     [self showWindow:appDelegate];
     [hudView setupTitleAttributes];
+    hudView.isTeaser = NO;
     [hudView setNeedsDisplay:YES];
 
     if (hudWindow.frame.origin.y == [self hiddenFrame].origin.y) {
@@ -77,5 +78,27 @@
     [NSAnimationContext endGrouping];
 }
 
+- (void)teaseMode:(TTModeDirection)direction {
+    [hudWindow makeKeyAndOrderFront:nil];
+    [self showWindow:appDelegate];
+    [hudView setupTitleAttributes:[appDelegate.modeMap modeInDirection:direction]];
+    hudView.isTeaser = YES;
+    [hudView setNeedsDisplay:YES];
+    
+    if (hudWindow.frame.origin.y == [self hiddenFrame].origin.y) {
+        [hudWindow setFrame:[self visibleFrame] display:YES];
+        [[hudWindow animator] setAlphaValue:0.f];
+    }
+    
+    [NSAnimationContext beginGrouping];
+    [[NSAnimationContext currentContext] setDuration:.4f];
+    [[NSAnimationContext currentContext]
+     setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
+    
+    [[hudWindow animator] setAlphaValue:.8f];
+    [[hudWindow animator] setFrame:[self visibleFrame] display:YES];
+    
+    [NSAnimationContext endGrouping];
+}
 
 @end

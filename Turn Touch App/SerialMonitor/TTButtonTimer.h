@@ -20,7 +20,6 @@ typedef enum {
 
 @interface TTButtonTimer : NSObject {
     TTAppDelegate *appDelegate;
-    TTModeDirection activeModeDirection;
     NSTimer *activeModeTimer;
     NSMutableArray *buttonState;
     BOOL inMultitouch;
@@ -31,7 +30,6 @@ typedef enum {
 - (void)readBluetoothData:(NSData *)data;
 - (void)selectActiveMode:(TTModeDirection)direction;
 - (void)activateButton:(TTModeDirection)direction;
-- (void)deactivateButton;
 - (void)fireButton:(TTModeDirection)direction;
 
 @end

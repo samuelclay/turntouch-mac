@@ -111,25 +111,8 @@
         selectedMode = nil;
     }
     
-    switch (selectedModeDirection) {
-        case NORTH:
-            [self setSelectedMode:northMode];
-            break;
-            
-        case EAST:
-            [self setSelectedMode:eastMode];
-            break;
-            
-        case WEST:
-            [self setSelectedMode:westMode];
-            break;
-
-        case SOUTH:
-            [self setSelectedMode:southMode];
-            break;
-            
-        case NO_DIRECTION:
-            break;
+    if (selectedModeDirection != NO_DIRECTION) {
+        [self setSelectedMode:[self modeInDirection:selectedModeDirection]];
     }
     
     [self setAvailableActions:selectedMode.actions];
@@ -137,6 +120,31 @@
         [selectedMode activate];
         [self reset];
     }
+}
+
+- (TTMode *)modeInDirection:(TTModeDirection)direction {
+    switch (direction) {
+        case NORTH:
+            return northMode;
+            break;
+            
+        case EAST:
+            return eastMode;
+            break;
+            
+        case WEST:
+            return westMode;
+            break;
+            
+        case SOUTH:
+            return southMode;
+            break;
+            
+        case NO_DIRECTION:
+            break;
+    }
+    
+    return nil;
 }
 
 - (void)runActiveButton {

@@ -51,6 +51,14 @@
     [modeHUDController fadeOut:nil];
 }
 
+- (void)teaseMode:(TTModeDirection)direction {
+    [modeHUDController teaseMode:direction];
+}
+
+- (void)hideModeTease {
+    [modeHUDController fadeOut:nil];
+}
+
 - (void)toastActiveAction:(TTModeDirection)direction {
     [actionHUDController fadeIn:direction];
     
