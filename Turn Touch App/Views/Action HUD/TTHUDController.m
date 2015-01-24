@@ -57,8 +57,21 @@
     if (actionOperation) [actionOperation cancel];
     
     actionOperation = [self performBlock:^{
-        [actionHUDController fadeOut:nil];
+        [actionHUDController slideOut:nil];
     } afterDelay:0.5 cancelPreviousRequest:YES];
 }
 
+- (void)holdToastActiveAction:(TTModeDirection)direction {
+    if (actionOperation) [actionOperation cancel];
+    
+    if (direction == NO_DIRECTION) {
+        [actionHUDController fadeOut:nil];
+    } else {
+        [actionHUDController fadeIn:direction];
+    }
+}
+
+- (void)releaseToastActiveAction {
+    [actionHUDController slideOut:nil];
+}
 @end

@@ -227,7 +227,7 @@
             NSLog(@"Characteristic value: %@ (%d%%)", [characteristic.value hexadecimalString], value);
         }
     } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:CBUUIDDeviceNameString]]) {
-        NSString * deviceName = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
+//        NSString * deviceName = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
 //        NSLog(@"Device Name = %@", deviceName);
     } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A29"]]) {
         manufacturer = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];

@@ -24,5 +24,6 @@
 
 - (IBAction)fadeIn:(TTModeDirection)direction;
 - (IBAction)fadeOut:(id)sender;
+- (IBAction)slideOut:(id)sender;
 
 @end

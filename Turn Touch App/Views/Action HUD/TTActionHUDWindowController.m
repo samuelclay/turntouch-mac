@@ -63,9 +63,26 @@
 //    __block __unsafe_unretained NSWindow *window = hudWindow;
     
     [NSAnimationContext beginGrouping];
-    [[NSAnimationContext currentContext] setDuration:.55f];
+    [[NSAnimationContext currentContext] setDuration:.25f];
     [[NSAnimationContext currentContext] setCompletionHandler:^{
 //        [window orderOut:nil];
+    }];
+    [[NSAnimationContext currentContext]
+     setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
+    
+    [[hudWindow animator] setAlphaValue:0.f];
+//    [[hudWindow animator] setFrame:[self hiddenFrame] display:YES];
+    
+    [NSAnimationContext endGrouping];
+}
+
+- (IBAction)slideOut:(id)sender {
+    //    __block __unsafe_unretained NSWindow *window = hudWindow;
+    
+    [NSAnimationContext beginGrouping];
+    [[NSAnimationContext currentContext] setDuration:.55f];
+    [[NSAnimationContext currentContext] setCompletionHandler:^{
+        //        [window orderOut:nil];
     }];
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];

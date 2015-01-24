@@ -184,6 +184,7 @@
 - (void)activateButton:(TTModeDirection)direction {
 //    NSLog(@"Activating button: %d", activeModeDirection);
     [appDelegate.modeMap setActiveModeDirection:direction];
+    [appDelegate.hudController holdToastActiveAction:direction];
 }
 
 - (void)deactivateButton {
