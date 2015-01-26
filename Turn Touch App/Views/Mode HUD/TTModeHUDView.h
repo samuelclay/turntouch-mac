@@ -17,6 +17,7 @@
     NSDictionary *modeAttributes;
     CGSize textSize;
     TTDiamondLabels *diamondLabels;
+    TTMode *titleMode;
 }
 
 @property (nonatomic, readwrite) BOOL isTeaser;

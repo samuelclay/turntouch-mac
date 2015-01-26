@@ -26,6 +26,7 @@
     TTDiamondLabel *southLabel;
     
     TTDiamondView *diamondView;
+    TTMode *diamondMode;
 }
 
 @property (nonatomic) NSRect diamondRect;
@@ -33,5 +34,6 @@
 
 - (id)initWithInteractive:(BOOL)_interactive;
 - (void)drawLabels;
+- (void)setMode:(TTMode *)mode;
 
 @end

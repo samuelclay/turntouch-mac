@@ -65,6 +65,14 @@
     [diamondView setFrame:diamondRect];
 }
 
+- (void)setMode:(TTMode *)mode {
+    diamondMode = mode;
+    [northLabel setMode:mode];
+    [eastLabel setMode:mode];
+    [westLabel setMode:mode];
+    [southLabel setMode:mode];
+}
+
 #pragma mark - KVO
 
 - (void)dealloc {

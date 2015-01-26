@@ -21,7 +21,8 @@
     if (self) {
         appDelegate = (TTAppDelegate *)[NSApp delegate];
         labelDirection = direction;
-        
+        diamondMode = appDelegate.modeMap.selectedMode;
+
         [self setupLabels];
         [self registerAsObserver];
     }
@@ -55,6 +56,10 @@
                        ofObject:(id)object
                          change:(NSDictionary*)change
                         context:(void*)context {
+    if ([keyPath isEqual:NSStringFromSelector(@selector(selectedMode))]) {
+        diamondMode = appDelegate.modeMap.selectedMode;
+    }
+    
     if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))] ||
         [keyPath isEqual:NSStringFromSelector(@selector(hoverModeDirection))]      ||
         [keyPath isEqual:NSStringFromSelector(@selector(activeModeDirection))]     ||
@@ -72,7 +77,7 @@
     
 	NSString *directionLabel;
 
-    directionLabel = [appDelegate.modeMap.selectedMode titleInDirection:labelDirection];    
+    directionLabel = [diamondMode titleInDirection:labelDirection];
     [directionLabel drawInRect:self.bounds withAttributes:labelAttributes];
     
     // Draw border, used for debugging
@@ -80,6 +85,10 @@
 //    [textViewSurround setLineWidth:1];
 //    [[NSColor redColor] set];
 //    [textViewSurround stroke];
+}
+
+- (void)setMode:(TTMode *)mode {
+    diamondMode = mode;
 }
 
 - (void)setupLabels {

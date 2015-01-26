@@ -90,7 +90,7 @@ const NSInteger kImageTextMargin = 24;
 
 - (void)drawLabel {
     NSRect frame = [self labelFrame];
-    modeImage = [NSImage imageNamed:[[appDelegate.modeMap.selectedMode class] imageName]];
+    modeImage = [NSImage imageNamed:[[titleMode class] imageName]];
     [modeImage setSize:NSMakeSize(kImageSize, kImageSize)];
     CGFloat offset = (NSHeight(frame)/2) - (modeImage.size.height/2);
     NSPoint imagePoint = NSMakePoint(frame.origin.x + kImageMargin, frame.origin.y + offset);
@@ -104,6 +104,7 @@ const NSInteger kImageTextMargin = 24;
 }
 
 - (void)drawMap {
+    [diamondLabels setMode:titleMode];
     [diamondLabels setFrame:[self mapFrame]];
 }
 
@@ -112,7 +113,8 @@ const NSInteger kImageTextMargin = 24;
 }
 
 - (void)setupTitleAttributes:(TTMode *)mode {
-    modeTitle = [[mode class] title];
+    titleMode = mode;
+    modeTitle = [[titleMode class] title];
     NSShadow *stringShadow = [[NSShadow alloc] init];
     stringShadow.shadowColor = [NSColor whiteColor];
     stringShadow.shadowOffset = NSMakeSize(0, -1);

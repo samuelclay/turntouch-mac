@@ -15,6 +15,7 @@
     TTAppDelegate *appDelegate;
     TTModeDirection labelDirection;
     NSDictionary *labelAttributes;
+    TTMode *diamondMode;
     
     BOOL isHover;
     BOOL interactive;
@@ -23,5 +24,6 @@
 @property (nonatomic, readwrite) BOOL interactive;
 
 - (id)initWithFrame:(NSRect)frame inDirection:(TTModeDirection)direction;
+- (void)setMode:(TTMode *)mode;
 
 @end
