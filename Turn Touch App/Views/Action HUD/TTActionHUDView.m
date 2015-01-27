@@ -33,6 +33,7 @@ const CGFloat kMarginPct = .6f;
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
+    NSLog(@"Draw action HUD: %@", NSStringFromRect(dirtyRect));
     [super drawRect:dirtyRect];
     
     [self drawBackground];

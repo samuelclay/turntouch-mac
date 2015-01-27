@@ -24,6 +24,10 @@
     return self;
 }
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+}
+
 #pragma mark - Window management
 
 - (NSRect)visibleFrame {
@@ -60,6 +64,10 @@
     [[hudWindow animator] setFrame:[self visibleFrame] display:YES];
     
     [NSAnimationContext endGrouping];
+}
+
+- (void)setShouldCascadeWindows:(BOOL)shouldCascadeWindows {
+    [super setShouldCascadeWindows:shouldCascadeWindows];
 }
 
 - (IBAction)fadeOut:(id)sender {

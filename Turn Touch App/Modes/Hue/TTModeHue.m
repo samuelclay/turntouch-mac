@@ -95,13 +95,13 @@
     PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
     NSString *sceneIdentifier = [appDelegate.modeMap actionOptionValue:kHueScene inDirection:direction];
     NSNumber *sceneDuration = (NSNumber *)[appDelegate.modeMap actionOptionValue:kHueDuration inDirection:direction];
-    NSNumber *sceneTransition = [NSNumber numberWithInteger:([sceneDuration integerValue] * 10 * 60)];
+    NSNumber *sceneTransition = [NSNumber numberWithInteger:([sceneDuration integerValue] * 10 * 6)];
     PHScene *activeScene;
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
     NSMutableArray *scenes = [[NSMutableArray alloc] init];
     for (PHScene *scene in cache.scenes.allValues) {
         [scenes addObject:@{@"name": scene.name, @"identifier": scene.identifier}];
-        NSLog(@"Checking scene %@=%@: %@", scene.identifier, sceneIdentifier, scene.name);
+//        NSLog(@"Checking scene %@=%@: %@", scene.identifier, sceneIdentifier, scene.name);
         if ([scene.identifier isEqualToString:sceneIdentifier]) {
             activeScene = scene;
         }
@@ -119,11 +119,28 @@
     if ([sceneTransition integerValue] && (!originalTransitionTime ||
                                            ![sceneTransition isEqualToNumber:originalTransitionTime])) {
         activeScene.transitionTime = sceneTransition;
-        activeScene.identifier = [NSString stringWithFormat:@"%@-transition", activeScene.identifier];
-        NSLog(@"Transition: %@ (original %@)", activeScene.transitionTime, originalTransitionTime);
+        CFUUIDRef uuid = CFUUIDCreate(NULL);
+        NSString *uuidStr = (__bridge_transfer NSString *)CFUUIDCreateString(NULL, uuid);
+        CFRelease(uuid);
+        activeScene.identifier = [NSString stringWithFormat:@"%@-on-%@", [uuidStr substringToIndex:8], sceneTransition];
+        activeScene.name = [NSString stringWithFormat:@"%@ on %@", activeScene.name, sceneTransition];
+
+//        NSLog(@"Transition: %@ (original %@)", activeScene.transitionTime, originalTransitionTime);
         [bridgeSendAPI saveSceneWithCurrentLightStates:activeScene completionHandler:^(NSArray *errors) {
-            [bridgeSendAPI activateSceneWithIdentifier:sceneIdentifier onGroup:@"0" completionHandler:^(NSArray *errors) {
+            for (NSString *lightIdentifier in activeScene.lightIdentifiers) {
+                PHLight *light = [[cache lights] objectForKey:lightIdentifier];
+                light.lightState.transitionTime = sceneTransition;
+                light.lightState.alert = 0;
+                [bridgeSendAPI saveLightState:light.lightState forLightIdentifier:lightIdentifier inSceneWithIdentifier:activeScene.identifier completionHandler:^(NSArray *errors) {
+                    NSLog(@"Light saved: %@", errors);
+                }];
+//                NSLog(@"Light: %@", light);
+            }
+            NSLog(@"Running new scene: %@ (%@ errors?)", activeScene.identifier, errors);
+            [bridgeSendAPI activateSceneWithIdentifier:activeScene.identifier onGroup:@"0" completionHandler:^(NSArray *errors) {
 //                bridgeSendAPI
+                NSLog(@"Scene transition errors: %@", errors);
+                [self activate]; // Re-cache new scene
             }];
         }];
     } else {
