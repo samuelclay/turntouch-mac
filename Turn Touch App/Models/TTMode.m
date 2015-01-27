@@ -11,12 +11,20 @@
 
 @implementation TTMode
 
+@synthesize modeDirection;
+
 - (id)init {
     self = [super init];
     if (self) {
         appDelegate = (TTAppDelegate *)[NSApp delegate];
     }
     return self;
+}
+
+- (void)activate:(TTModeDirection)_modeDirection {
+    modeDirection = _modeDirection;
+
+    [self activate];
 }
 
 #pragma mark - Mode
@@ -152,7 +160,7 @@
 - (NSString *)actionNameInDirection:(TTModeDirection)direction {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    NSString *modeDirectionName = [appDelegate.modeMap directionName:appDelegate.modeMap.selectedModeDirection];
+    NSString *modeDirectionName = [appDelegate.modeMap directionName:modeDirection];
     NSString *actionDirectionName = [appDelegate.modeMap directionName:direction];
     NSString *directionAction;
     if (direction != NO_DIRECTION) {

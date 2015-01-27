@@ -15,6 +15,7 @@
     NSImage *modeImage;
     NSString *modeTitle;
     NSDictionary *modeAttributes;
+    NSDictionary *inactiveModeAttributes;
     CGSize textSize;
     TTDiamondLabels *diamondLabels;
     TTMode *titleMode;

@@ -24,6 +24,7 @@
 
 @optional
 - (void)activate;
+- (void)activate:(TTModeDirection)modeDirection;
 - (void)deactivate;
 - (NSArray *)optionlessActions;
 

@@ -101,6 +101,11 @@
         Class modeClass = NSClassFromString(directionModeName);
         [self setValue:[[modeClass alloc] init] forKey:[NSString stringWithFormat:@"%@Mode", direction]];
     }
+    
+    northMode.modeDirection = NORTH;
+    eastMode.modeDirection = EAST;
+    westMode.modeDirection = WEST;
+    southMode.modeDirection = SOUTH;
 }
 
 - (void)switchMode {
@@ -117,7 +122,7 @@
     
     [self setAvailableActions:selectedMode.actions];
     if (selectedMode && [selectedMode respondsToSelector:@selector(activate)]) {
-        [selectedMode activate];
+        [selectedMode activate:selectedModeDirection];
         [self reset];
     }
 }

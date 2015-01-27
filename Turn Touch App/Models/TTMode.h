@@ -14,8 +14,12 @@
 
 @interface TTMode : NSObject <TTModeProtocol> {
     TTAppDelegate *appDelegate;
+    TTModeDirection modeDirection;
 }
 
+@property (nonatomic) TTModeDirection modeDirection;
+
+- (void)activate:(TTModeDirection)_modeDirection;
 - (void)runDirection:(TTModeDirection)direction;
 - (NSString *)titleInDirection:(TTModeDirection)direction;
 - (NSString *)titleForAction:(NSString *)actionName;
