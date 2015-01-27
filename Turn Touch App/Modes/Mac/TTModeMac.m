@@ -13,6 +13,8 @@
 
 @implementation TTModeMac
 
+const CGFloat VOLUME_PCT_CHANGE = 0.08f;
+
 @dynamic volume;
 
 - (id)init {
@@ -85,11 +87,13 @@
 #pragma mark - Action methods
 
 - (void)runTTModeMacVolumeUp {
-    [self setVolume:[self volume] + 0.08f];
+    CGFloat volume = [self volume];
+    [self setVolume:volume < VOLUME_PCT_CHANGE ? VOLUME_PCT_CHANGE : ([self volume] + VOLUME_PCT_CHANGE)];
 }
 
 - (void)runTTModeMacVolumeDown {
-    [self setVolume:[self volume] - 0.08f];
+    CGFloat volume = [self volume];
+    [self setVolume:volume < VOLUME_PCT_CHANGE ? 0 : ([self volume] - VOLUME_PCT_CHANGE)];
 }
 
 - (void)runTTModeMacVolumeMute {
@@ -120,6 +124,10 @@
 }
 
 - (NSInteger)progressTTModeMacVolumeDown {
+    return [self progressVolume];
+}
+
+- (NSInteger)progressTTModeMacVolumeMute {
     return [self progressVolume];
 }
 
