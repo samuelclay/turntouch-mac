@@ -11,6 +11,8 @@
 
 @implementation TTModeMusic
 
+const NSInteger ITUNES_VOLUME_PCT_CHANGE = 8;
+
 #pragma mark - Mode
 
 + (NSString *)title {
@@ -38,10 +40,10 @@
 #pragma mark - Action Titles
 
 - (NSString *)titleTTModeMusicVolumeUp {
-    return @"Volume up";
+    return @"iTunes Volume up";
 }
 - (NSString *)titleTTModeMusicVolumeDown {
-    return @"Volume down";
+    return @"iTunes Volume down";
 }
 - (NSString *)titleTTModeMusicPause {
     return @"Play/pause";
@@ -65,13 +67,32 @@
     return @"next_track.png";
 }
 
+#pragma mark - Progress
+
+- (NSInteger)progressVolume {
+    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    return iTunes.soundVolume;
+}
+
+- (NSInteger)progressTTModeMusicVolumeUp {
+    return [self progressVolume];
+}
+
+- (NSInteger)progressTTModeMusicVolumeDown {
+    return [self progressVolume];
+}
+
+- (NSInteger)progressTTModeMusicVolumeMute {
+    return [self progressVolume];
+}
+
 #pragma mark - Action methods
 
 - (void)runTTModeMusicVolumeUp {
     iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
     NSInteger volume = iTunes.soundVolume;
     NSLog(@"Music mode North: %ld", (long)volume);
-    [iTunes setSoundVolume:MIN(100, volume+10)];
+    [iTunes setSoundVolume:MIN(100, volume+ITUNES_VOLUME_PCT_CHANGE)];
 }
 
 - (void)runTTModeMusicVolumeDown {
@@ -79,7 +100,7 @@
     
     NSInteger volume = iTunes.soundVolume;
     NSLog(@"Music mode South: %ld", (long)volume);
-    [iTunes setSoundVolume:MAX(0, volume-10)];
+    [iTunes setSoundVolume:MAX(0, volume-ITUNES_VOLUME_PCT_CHANGE)];
 }
 
 - (void)runTTModeMusicPause {
