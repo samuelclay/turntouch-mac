@@ -33,7 +33,8 @@ const NSInteger ITUNES_VOLUME_PCT_CHANGE = 8;
     return @[@"TTModeMusicVolumeUp",
              @"TTModeMusicVolumeDown",
              @"TTModeMusicPause",
-             @"TTModeMusicNextTrack"
+             @"TTModeMusicNextTrack",
+             @"TTModeMusicPreviousTrack"
              ];
 }
 
@@ -51,6 +52,9 @@ const NSInteger ITUNES_VOLUME_PCT_CHANGE = 8;
 - (NSString *)titleTTModeMusicNextTrack {
     return @"Next track";
 }
+- (NSString *)titleTTModeMusicPreviousTrack {
+    return @"Previous track";
+}
 
 #pragma mark - Action Images
 
@@ -65,6 +69,9 @@ const NSInteger ITUNES_VOLUME_PCT_CHANGE = 8;
 }
 - (NSString *)imageTTModeMusicNextTrack {
     return @"next_track.png";
+}
+- (NSString *)imageTTModeMusicPreviousTrack {
+    return @"previous_track.png";
 }
 
 #pragma mark - Progress
@@ -113,6 +120,12 @@ const NSInteger ITUNES_VOLUME_PCT_CHANGE = 8;
     iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
     
     [iTunes nextTrack];
+}
+
+- (void)runTTModeMusicPreviousTrack {
+    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    
+    [iTunes previousTrack];
 }
 
 #pragma mark - Defaults
