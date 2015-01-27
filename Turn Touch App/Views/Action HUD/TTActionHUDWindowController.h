@@ -21,6 +21,7 @@
 
 @property (nonatomic) IBOutlet TTActionHUDView *hudView;
 @property (nonatomic) IBOutlet TTActionHUDWindow *hudWindow;
+@property (nonatomic) IBOutlet NSProgressIndicator *progressBar;
 
 - (IBAction)fadeIn:(TTModeDirection)direction;
 - (IBAction)fadeOut:(id)sender;

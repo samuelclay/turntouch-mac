@@ -8,6 +8,6 @@
 
 #import "TTOptionsDetailView.h"
 
-@interface TTModeMacOptionsView : TTOptionsDetailView
+@interface TTModeMacOptions : TTOptionsDetailViewController
 
 @end

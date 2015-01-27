@@ -123,7 +123,7 @@
 		FFAA4F6F182D99640049FFC7 /* TTModeAlarmClock.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4F6E182D99640049FFC7 /* TTModeAlarmClock.m */; };
 		FFAA4F72182D9A5F0049FFC7 /* TTModeNews.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4F71182D9A5F0049FFC7 /* TTModeNews.m */; };
 		FFAFCBC519130F520058B9CB /* TTPanelArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAFCBC419130F520058B9CB /* TTPanelArrowView.m */; };
-		FFB1670B1922FE53008FA1AF /* TTModeMacOptionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB1670A1922FE53008FA1AF /* TTModeMacOptionsView.m */; };
+		FFB1670B1922FE53008FA1AF /* TTModeMacOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB1670A1922FE53008FA1AF /* TTModeMacOptions.m */; };
 		FFB1670E1923E61F008FA1AF /* TTTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB1670D1923E61F008FA1AF /* TTTabView.m */; };
 		FFB167111923E6BF008FA1AF /* TTBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB167101923E6BF008FA1AF /* TTBoxView.m */; };
 		FFB5FF381A671BA200DF617A /* TTModeHueSceneEarlyEveningOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB5FF371A671BA200DF617A /* TTModeHueSceneEarlyEveningOptions.m */; };
@@ -139,7 +139,7 @@
 		FFE2D4761A451FA200DDD413 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFE2D4751A451FA200DDD413 /* CoreBluetooth.framework */; };
 		FFE2D4791A46404500DDD413 /* NSData+Conversion.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE2D4781A46404500DDD413 /* NSData+Conversion.m */; };
 		FFE2D47E1A51EDF000DDD413 /* TTModeHue.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE2D47D1A51EDF000DDD413 /* TTModeHue.m */; };
-		FFEA6CB319216CDF0010874B /* TTModeMac.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFEA6CB219216CDF0010874B /* TTModeMac.xib */; };
+		FFEA6CB319216CDF0010874B /* TTModeMacOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFEA6CB219216CDF0010874B /* TTModeMacOptions.xib */; };
 		FFEA6CB819218A5C0010874B /* TTModeAlarmClockOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFEA6CB719218A5C0010874B /* TTModeAlarmClockOptions.xib */; };
 		FFF05F3018F60FF100AC6230 /* TTTitleBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF05F2F18F60FF100AC6230 /* TTTitleBarView.m */; };
 		FFF05F3318F6120200AC6230 /* Turn Touch title.png in Resources */ = {isa = PBXBuildFile; fileRef = FFF05F3218F6120200AC6230 /* Turn Touch title.png */; };
@@ -353,8 +353,8 @@
 		FFAA4F71182D9A5F0049FFC7 /* TTModeNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeNews.m; path = Modes/News/TTModeNews.m; sourceTree = "<group>"; };
 		FFAFCBC319130F520058B9CB /* TTPanelArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTPanelArrowView.h; sourceTree = "<group>"; };
 		FFAFCBC419130F520058B9CB /* TTPanelArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTPanelArrowView.m; sourceTree = "<group>"; };
-		FFB167091922FE53008FA1AF /* TTModeMacOptionsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMacOptionsView.h; path = Modes/Mac/TTModeMacOptionsView.h; sourceTree = "<group>"; };
-		FFB1670A1922FE53008FA1AF /* TTModeMacOptionsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeMacOptionsView.m; path = Modes/Mac/TTModeMacOptionsView.m; sourceTree = "<group>"; };
+		FFB167091922FE53008FA1AF /* TTModeMacOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMacOptions.h; path = Modes/Mac/TTModeMacOptions.h; sourceTree = "<group>"; };
+		FFB1670A1922FE53008FA1AF /* TTModeMacOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeMacOptions.m; path = Modes/Mac/TTModeMacOptions.m; sourceTree = "<group>"; };
 		FFB1670C1923E61F008FA1AF /* TTTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTTabView.h; path = "Views/Mode Options/TTTabView.h"; sourceTree = "<group>"; };
 		FFB1670D1923E61F008FA1AF /* TTTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTTabView.m; path = "Views/Mode Options/TTTabView.m"; sourceTree = "<group>"; };
 		FFB1670F1923E6BF008FA1AF /* TTBoxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTBoxView.h; path = "Views/Mode Options/TTBoxView.h"; sourceTree = "<group>"; };
@@ -382,7 +382,7 @@
 		FFE2D4781A46404500DDD413 /* NSData+Conversion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+Conversion.m"; path = "Categories/NSData+Conversion.m"; sourceTree = "<group>"; };
 		FFE2D47C1A51EDF000DDD413 /* TTModeHue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeHue.h; sourceTree = "<group>"; };
 		FFE2D47D1A51EDF000DDD413 /* TTModeHue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeHue.m; sourceTree = "<group>"; };
-		FFEA6CB219216CDF0010874B /* TTModeMac.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeMac.xib; path = Modes/Mac/TTModeMac.xib; sourceTree = "<group>"; };
+		FFEA6CB219216CDF0010874B /* TTModeMacOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeMacOptions.xib; path = Modes/Mac/TTModeMacOptions.xib; sourceTree = "<group>"; };
 		FFEA6CB719218A5C0010874B /* TTModeAlarmClockOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeAlarmClockOptions.xib; path = "Modes/Alarm Clock/TTModeAlarmClockOptions.xib"; sourceTree = "<group>"; };
 		FFF05F2E18F60FF100AC6230 /* TTTitleBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTitleBarView.h; sourceTree = "<group>"; };
 		FFF05F2F18F60FF100AC6230 /* TTTitleBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTitleBarView.m; sourceTree = "<group>"; };
@@ -788,9 +788,9 @@
 			children = (
 				FF8012F118692D0A00955218 /* TTModeMac.h */,
 				FF8012F218692D0A00955218 /* TTModeMac.m */,
-				FFEA6CB219216CDF0010874B /* TTModeMac.xib */,
-				FFB167091922FE53008FA1AF /* TTModeMacOptionsView.h */,
-				FFB1670A1922FE53008FA1AF /* TTModeMacOptionsView.m */,
+				FFEA6CB219216CDF0010874B /* TTModeMacOptions.xib */,
+				FFB167091922FE53008FA1AF /* TTModeMacOptions.h */,
+				FFB1670A1922FE53008FA1AF /* TTModeMacOptions.m */,
 			);
 			name = Mac;
 			sourceTree = "<group>";
@@ -1074,7 +1074,7 @@
 				FF913D2919243B89005C336F /* TTModeAlarmSnoozeOptions.xib in Resources */,
 				FFAA4F64182D96D60049FFC7 /* newspaper-3.png in Resources */,
 				FF98A3041868D3F90032CC7A /* macbookpro.png in Resources */,
-				FFEA6CB319216CDF0010874B /* TTModeMac.xib in Resources */,
+				FFEA6CB319216CDF0010874B /* TTModeMacOptions.xib in Resources */,
 				FF7305C41A5CB3EF009A852D /* TTModeHueConnect.xib in Resources */,
 				FFF05F3318F6120200AC6230 /* Turn Touch title.png in Resources */,
 			);
@@ -1129,7 +1129,7 @@
 				FF801319186CF8FF00955218 /* TTDiamondLabels.m in Sources */,
 				FF7305C01A5CA8F5009A852D /* TTModeHueConnected.m in Sources */,
 				FFF05F3E18F77CF500AC6230 /* TTChangeButtonView.m in Sources */,
-				FFB1670B1922FE53008FA1AF /* TTModeMacOptionsView.m in Sources */,
+				FFB1670B1922FE53008FA1AF /* TTModeMacOptions.m in Sources */,
 				FF801332186E156900955218 /* TTOptionsModeTitle.m in Sources */,
 				FFA1D4DD1A3B89A4003EA0BC /* TTModeHUDWindowController.m in Sources */,
 				FFA8EA9C190F07A500679A4D /* TTModeTabsContainer.m in Sources */,

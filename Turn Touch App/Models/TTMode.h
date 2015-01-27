@@ -22,6 +22,7 @@
 - (NSString *)imageNameInDirection:(TTModeDirection)direction;
 - (NSString *)imageNameForAction:(NSString *)actionName;
 - (NSString *)actionNameInDirection:(TTModeDirection)direction;
+- (NSInteger)progressInDirection:(TTModeDirection)direction;
 - (void)changeDirection:(TTModeDirection)direction toAction:(NSString *)actionClassName;
 
 @end

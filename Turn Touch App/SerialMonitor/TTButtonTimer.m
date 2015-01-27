@@ -107,10 +107,10 @@ const double MODE_CHANGE_DURATION = 0.5f;
             [self selectActiveMode:NORTH];
         } else if (state == 0x02) {
             [buttonState replaceObjectAtIndex:1 withObject:[NSNumber numberWithBool:NO]];
-            [self selectActiveMode:EAST];
+            [self selectActiveMode:WEST];
         } else if (state == 0x04) {
             [buttonState replaceObjectAtIndex:2 withObject:[NSNumber numberWithBool:NO]];
-            [self selectActiveMode:WEST];
+            [self selectActiveMode:EAST];
         } else if (state == 0x08) {
             [buttonState replaceObjectAtIndex:3 withObject:[NSNumber numberWithBool:NO]];
             [self selectActiveMode:SOUTH];
@@ -129,9 +129,9 @@ const double MODE_CHANGE_DURATION = 0.5f;
         } else if ((state & 0x01) == 0x01) {
             [self activateButton:NORTH];
         } else if ((state & 0x02) == 0x02) {
-            [self activateButton:EAST];
-        } else if ((state & 0x04) == 0x04) {
             [self activateButton:WEST];
+        } else if ((state & 0x04) == 0x04) {
+            [self activateButton:EAST];
         } else if ((state & 0x08) == 0x08) {
             [self activateButton:SOUTH];
         } else if (state == 0x00) {
@@ -144,9 +144,9 @@ const double MODE_CHANGE_DURATION = 0.5f;
         if (buttonLifted == 0) {
             [self fireButton:NORTH];
         } else if (buttonLifted == 1) {
-            [self fireButton:EAST];
-        } else if (buttonLifted == 2) {
             [self fireButton:WEST];
+        } else if (buttonLifted == 2) {
+            [self fireButton:EAST];
         } else if (buttonLifted == 3) {
             [self fireButton:SOUTH];
         } else {
@@ -207,6 +207,8 @@ const double MODE_CHANGE_DURATION = 0.5f;
 
     [appDelegate.hudController toastActiveAction:direction];
     [appDelegate.hudController hideModeTease];
+    [activeModeTimer invalidate];
+    activeModeTimer = nil;
 }
 
 - (void)activeModeTimerFire:(NSTimer *)timer {

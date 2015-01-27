@@ -178,6 +178,19 @@
     return directionAction;
 }
 
+- (NSInteger)progressInDirection:(TTModeDirection)direction {
+    NSString *actionName = [self actionNameInDirection:direction];
+    SEL selector = NSSelectorFromString([NSString stringWithFormat:@"progress%@",
+                                         actionName]);
+    IMP imp = [self methodForSelector:selector];
+    NSInteger (*func)(id, SEL) = (void *)imp;
+    if ([self respondsToSelector:selector]) {
+        return func(self, selector);
+    }
+    
+    return -1;
+}
+
 - (void)changeDirection:(TTModeDirection)direction toAction:(NSString *)actionClassName {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *modeDirectionName = [appDelegate.modeMap directionName:appDelegate.modeMap.selectedModeDirection];

@@ -85,11 +85,11 @@
 #pragma mark - Action methods
 
 - (void)runTTModeMacVolumeUp {
-    [self setVolume:[self volume] + 0.1];
+    [self setVolume:[self volume] + 0.08f];
 }
 
 - (void)runTTModeMacVolumeDown {
-    [self setVolume:[self volume] - 0.1];
+    [self setVolume:[self volume] - 0.08f];
 }
 
 - (void)runTTModeMacVolumeMute {
@@ -107,6 +107,20 @@
     } else {
         [self switchDisplay:NO];
     }
+}
+
+#pragma mark - Progress
+
+- (NSInteger)progressVolume {
+    return [self isMuted] ? 0 : lroundf([self volume] * 100);
+}
+
+- (NSInteger)progressTTModeMacVolumeUp {
+    return [self progressVolume];
+}
+
+- (NSInteger)progressTTModeMacVolumeDown {
+    return [self progressVolume];
 }
 
 #pragma mark - Defaults

@@ -343,4 +343,9 @@
     }
 }
 
+- (NSInteger)progressInDirection:(TTModeDirection)direction {
+    return [selectedMode progressInDirection:direction];
+}
+
+
 @end

@@ -18,11 +18,26 @@ const CGFloat kMarginPct = .6f;
     appDelegate = (TTAppDelegate *)[NSApp delegate];
 }
 
+- (void)drawProgressBar:(NSProgressIndicator *)_progressBar {
+    NSInteger progress = [appDelegate.modeMap.selectedMode progressInDirection:direction];
+    progressBar = _progressBar;
+    if (progress == -1) {
+        progressBar.hidden = YES;
+    } else {
+        progressBar.hidden = NO;
+        [progressBar setDoubleValue:progress];
+    }
+
+//    NSRect frame = [self actionFrame];
+//    [progressBar setFrame:NSInsetRect(frame, 100, 0)];
+}
+
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     
     [self drawBackground];
     [self drawLabel];
+    [self drawProgress];
 }
 
 - (NSRect)actionFrame {
@@ -67,6 +82,13 @@ const CGFloat kMarginPct = .6f;
                                 titleInDirection:direction];
     frame.size.height = frame.size.height / 2 + [directionLabel sizeWithAttributes:labelAttributes].height/2;
     [directionLabel drawInRect:frame withAttributes:labelAttributes];
+}
+
+- (void)drawProgress {
+    NSInteger progress = [appDelegate.modeMap.selectedMode progressInDirection:direction];
+    if (progress == -1) return;
+    
+    [progressBar setDoubleValue:progress];    
 }
 
 @end

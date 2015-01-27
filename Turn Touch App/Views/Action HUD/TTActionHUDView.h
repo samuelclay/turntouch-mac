@@ -14,8 +14,11 @@
 @interface TTActionHUDView : NSView {
     TTAppDelegate *appDelegate;
     TTModeDirection direction;
+    NSProgressIndicator *progressBar;
 }
 
 @property (nonatomic) TTModeDirection direction;
+
+- (void)drawProgressBar:(NSProgressIndicator *)progressBar;
 
 @end

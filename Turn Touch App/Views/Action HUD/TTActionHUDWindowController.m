@@ -13,6 +13,7 @@
 
 @synthesize hudView;
 @synthesize hudWindow;
+@synthesize progressBar;
 
 - (instancetype)initWithWindowNibName:(NSString *)windowNibName {
     if (self = [super initWithWindowNibName:windowNibName]) {
@@ -40,7 +41,9 @@
 - (IBAction)fadeIn:(TTModeDirection)direction {
     [hudWindow makeKeyAndOrderFront:nil];
     [self showWindow:appDelegate];
+
     [hudView setDirection:direction];
+    [hudView drawProgressBar:progressBar];
     [hudView setNeedsDisplay:YES];
     
     if (hudWindow.frame.origin.y == [self hiddenFrame].origin.y) {
@@ -77,13 +80,8 @@
 }
 
 - (IBAction)slideOut:(id)sender {
-    //    __block __unsafe_unretained NSWindow *window = hudWindow;
-    
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:.55f];
-    [[NSAnimationContext currentContext] setCompletionHandler:^{
-        //        [window orderOut:nil];
-    }];
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
     
