@@ -25,8 +25,8 @@ NSString *const kOnetimeAlarmEnabled = @"onetimeAlarmEnabled";
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    BOOL repeatAlarmEnabled = [[appDelegate.modeMap modeOptionValue:kRepeatAlarmEnabled] boolValue];
-    BOOL onetimeAlarmEnabled = [[appDelegate.modeMap modeOptionValue:kOnetimeAlarmEnabled] boolValue];
+    BOOL repeatAlarmEnabled = [[NSAppDelegate.modeMap modeOptionValue:kRepeatAlarmEnabled] boolValue];
+    BOOL onetimeAlarmEnabled = [[NSAppDelegate.modeMap modeOptionValue:kOnetimeAlarmEnabled] boolValue];
     
     [boxOnetimeConstraint     setConstant:onetimeAlarmEnabled ? kOnetimeHeight : 0];
     [boxOnetimeOptions      setAlphaValue:onetimeAlarmEnabled ? 1 : 0];

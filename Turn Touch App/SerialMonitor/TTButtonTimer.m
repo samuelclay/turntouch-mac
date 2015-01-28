@@ -152,7 +152,7 @@ const double MODE_CHANGE_DURATION = 0.5f;
         } else {
             [self activateButton:NO_DIRECTION];
         }
-    } else if (!anyButtonPressed && inMultitouch) {
+    } else if (!anyButtonPressed) {
         NSLog(@" ---> Nothing pressed%@: %d", inMultitouch ? @" (multi-touch)" : @"", state);
         if (state == 0x00) {
             [self activateButton:NO_DIRECTION];
@@ -178,7 +178,7 @@ const double MODE_CHANGE_DURATION = 0.5f;
     [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];
     [appDelegate.modeMap setSelectedModeDirection:direction];
     
-    [appDelegate.hudController toastActiveMode];
+    [appDelegate.hudController holdToastActiveMode];
 }
 
 - (void)activateButton:(TTModeDirection)direction {

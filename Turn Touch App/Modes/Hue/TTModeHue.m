@@ -503,23 +503,31 @@
 - (void)ensureScenes {
     PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
-    PHScene *scene = [[PHScene alloc] init];
+
+    // Collect scene ids to check against
+    NSDictionary *scenes = cache.scenes;
+    NSMutableArray *foundScenes = [[NSMutableArray alloc] init];
+    for (PHScene *scene in scenes.allValues) {
+        [foundScenes addObject:scene.identifier];
+    }
 
     // Scene: All Lights Off
-    scene.name = @"All Lights Off";
-    scene.identifier = @"TT-all-off";
-    scene.lightIdentifiers = cache.lights.allKeys;
-    [bridgeSendAPI saveSceneWithCurrentLightStates:scene completionHandler:^(NSArray *errors) {
-        NSLog(@"Hue:SceneOff scene: %@", errors);
-        for (PHLight *light in cache.lights.allValues) {
-            PHLightState *lightState = light.lightState;
-            lightState.on = [NSNumber numberWithBool:NO];
-            lightState.alert = 0;
-            [bridgeSendAPI saveLightState:lightState forLightIdentifier:light.identifier inSceneWithIdentifier:scene.identifier completionHandler:^(NSArray *errors) {
-                NSLog(@"Hue:SceneOff light: %@", errors);
-            }];
-        }
-    }];
+    if (![foundScenes containsObject:@"TT-all-off"]) {
+        PHScene *scene = [[PHScene alloc] init];
+        scene.name = @"All Lights Off";
+        scene.identifier = @"TT-all-off";
+        scene.lightIdentifiers = cache.lights.allKeys;
+        [bridgeSendAPI saveSceneWithCurrentLightStates:scene completionHandler:^(NSArray *errors) {
+            NSLog(@"Hue:SceneOff scene: %@", errors);
+            for (PHLight *light in cache.lights.allValues) {
+                PHLightState *lightState = light.lightState;
+                lightState.on = [NSNumber numberWithBool:NO];
+                lightState.alert = 0;
+                [bridgeSendAPI saveLightState:lightState forLightIdentifier:light.identifier inSceneWithIdentifier:scene.identifier completionHandler:^(NSArray *errors) {
+                    NSLog(@"Hue:SceneOff light: %@", errors);
+                }];
+            }
+        }];
+    }
 }
-
 @end

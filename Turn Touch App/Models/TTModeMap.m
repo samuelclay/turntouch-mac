@@ -215,10 +215,10 @@
                            optionName];
 
     NSString *pref = [prefs objectForKey:optionKey];
-    
+
+    NSLog(@" -> Getting mode option %@: %@", optionKey, pref);
     if (!pref) {
         pref = [self selectedModeDefaultPreference:optionName];
-
     }
     
     return pref;
