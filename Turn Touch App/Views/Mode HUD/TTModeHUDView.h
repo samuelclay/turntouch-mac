@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "TTAppDelegate.h"
 #import "TTDiamondLabels.h"
+#import "TTDiamondView.h"
 
 @interface TTModeHUDView : NSView {
     TTAppDelegate *appDelegate;

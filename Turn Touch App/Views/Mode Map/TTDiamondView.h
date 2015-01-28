@@ -10,7 +10,7 @@
 #import "TTAppDelegate.h"
 #import "TTModeMap.h"
 
-#define SPACING_PCT 0.02f
+#define SPACING_PCT 0.015f
 #define INACTIVE_OPACITY 0.7f
 
 @class TTAppDelegate;
@@ -20,10 +20,14 @@
     CGFloat _size;
     BOOL _isHighlighted;
     
-    NSBezierPath *northPath;
-    NSBezierPath *eastPath;
-    NSBezierPath *westPath;
-    NSBezierPath *southPath;
+    NSBezierPath *northPathTop;
+    NSBezierPath *eastPathTop;
+    NSBezierPath *westPathTop;
+    NSBezierPath *southPathTop;
+    NSBezierPath *northPathBottom;
+    NSBezierPath *eastPathBottom;
+    NSBezierPath *westPathBottom;
+    NSBezierPath *southPathBottom;
 }
 
 @property (nonatomic, assign) CGFloat size;

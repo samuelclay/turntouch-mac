@@ -38,10 +38,10 @@ const NSInteger kImageTextMargin = 24;
     [ellipse moveToPoint:NSMakePoint(mapFrame.origin.x,
                                      mapFrame.size.height/2 + mapFrame.origin.y)];
     [ellipse lineToPoint:NSMakePoint(mapFrame.size.width/2 + mapFrame.origin.x,
-                                     mapFrame.size.height + mapFrame.origin.y)];
+                                     mapFrame.size.height + mapFrame.origin.y - SPACING_PCT*mapFrame.size.height*1.3)];
     [ellipse lineToPoint:NSMakePoint(mapFrame.size.width + mapFrame.origin.x,
                                      mapFrame.size.height/2 + mapFrame.origin.y)];
-    [ellipse lineToPoint:NSMakePoint(mapFrame.size.width/2 + mapFrame.origin.x, mapFrame.origin.y)];
+    [ellipse lineToPoint:NSMakePoint(mapFrame.size.width/2 + mapFrame.origin.x, mapFrame.origin.y + SPACING_PCT*mapFrame.size.height*1.3)];
     [ellipse closePath];
     CGFloat alpha = 0.9f;
     [NSColorFromRGBAlpha(0xC0BCCF, alpha) setStroke];

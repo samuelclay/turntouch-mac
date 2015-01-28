@@ -66,10 +66,6 @@
     [NSAnimationContext endGrouping];
 }
 
-- (void)setShouldCascadeWindows:(BOOL)shouldCascadeWindows {
-    [super setShouldCascadeWindows:shouldCascadeWindows];
-}
-
 - (IBAction)fadeOut:(id)sender {
 //    __block __unsafe_unretained NSWindow *window = hudWindow;
     
@@ -79,7 +75,7 @@
 //        [window orderOut:nil];
     }];
     [[NSAnimationContext currentContext]
-     setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
+     setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
     
     [[hudWindow animator] setAlphaValue:0.f];
 //    [[hudWindow animator] setFrame:[self hiddenFrame] display:YES];
