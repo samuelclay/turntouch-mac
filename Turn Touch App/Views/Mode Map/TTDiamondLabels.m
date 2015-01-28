@@ -143,19 +143,19 @@
         NSRect textRect = diamondRect;
         
         if (direction == NORTH) {
-            textRect = NSMakeRect(offsetX, height * 3/4 + spacing + offsetY/2,
+            textRect = NSMakeRect(offsetX, height * 3/4 + 1.3*spacing + offsetY/2,
                                   width, offsetY);
             [northLabel setFrame:textRect];
         } else if (direction == EAST) {
-            textRect = NSMakeRect(offsetX + width/2 + spacing*2, height/2 + offsetY/2,
-                                  width/2 - spacing*2, offsetY);
+            textRect = NSMakeRect(offsetX + width/2 + 1.3*spacing*2, height/2 + offsetY/2,
+                                  width/2 - 1.3*spacing*2, offsetY);
             [eastLabel setFrame:textRect];
         } else if (direction == WEST) {
             textRect = NSMakeRect(offsetX, height/2 + offsetY/2,
-                                  width/2 - spacing*2, offsetY);
+                                  width/2 - 1.3*spacing*2, offsetY);
             [westLabel setFrame:textRect];
         } else if (direction == SOUTH) {
-            textRect = NSMakeRect(offsetX, height * 1/4 - spacing + offsetY/2,
+            textRect = NSMakeRect(offsetX, height * 1/4 - 1.3*spacing + offsetY/2,
                                   width, offsetY);
             [southLabel setFrame:textRect];
         }
