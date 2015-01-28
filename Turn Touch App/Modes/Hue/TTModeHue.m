@@ -101,8 +101,8 @@
     NSMutableArray *scenes = [[NSMutableArray alloc] init];
     for (PHScene *scene in cache.scenes.allValues) {
         [scenes addObject:@{@"name": scene.name, @"identifier": scene.identifier}];
-//        NSLog(@"Checking scene %@=%@: %@", scene.identifier, sceneIdentifier, scene.name);
         if ([scene.identifier isEqualToString:sceneIdentifier]) {
+//            NSLog(@"Checking scene %@=%@: %@", scene.identifier, sceneIdentifier, scene.name);
             activeScene = scene;
         }
     }
@@ -118,31 +118,15 @@
     NSNumber *originalTransitionTime = activeScene.transitionTime;
     if ([sceneTransition integerValue] && (!originalTransitionTime ||
                                            ![sceneTransition isEqualToNumber:originalTransitionTime])) {
-        activeScene.transitionTime = sceneTransition;
-        CFUUIDRef uuid = CFUUIDCreate(NULL);
-        NSString *uuidStr = (__bridge_transfer NSString *)CFUUIDCreateString(NULL, uuid);
-        CFRelease(uuid);
-        activeScene.identifier = [NSString stringWithFormat:@"%@-on-%@", [uuidStr substringToIndex:8], sceneTransition];
-        activeScene.name = [NSString stringWithFormat:@"%@ on %@", activeScene.name, sceneTransition];
-
-//        NSLog(@"Transition: %@ (original %@)", activeScene.transitionTime, originalTransitionTime);
-        [bridgeSendAPI saveSceneWithCurrentLightStates:activeScene completionHandler:^(NSArray *errors) {
-            for (NSString *lightIdentifier in activeScene.lightIdentifiers) {
-                PHLight *light = [[cache lights] objectForKey:lightIdentifier];
-                light.lightState.transitionTime = sceneTransition;
-                light.lightState.alert = 0;
-                [bridgeSendAPI saveLightState:light.lightState forLightIdentifier:lightIdentifier inSceneWithIdentifier:activeScene.identifier completionHandler:^(NSArray *errors) {
-                    NSLog(@"Light saved: %@", errors);
-                }];
-//                NSLog(@"Light: %@", light);
-            }
-            NSLog(@"Running new scene: %@ (%@ errors?)", activeScene.identifier, errors);
-            [bridgeSendAPI activateSceneWithIdentifier:activeScene.identifier onGroup:@"0" completionHandler:^(NSArray *errors) {
-//                bridgeSendAPI
-                NSLog(@"Scene transition errors: %@", errors);
-                [self activate]; // Re-cache new scene
+        for (NSString *lightIdentifier in activeScene.lightIdentifiers) {
+            PHLight *light = [[cache lights] objectForKey:lightIdentifier];
+            PHLightState *lightState = light.lightState;
+            lightState.transitionTime = sceneTransition;
+            lightState.alert = 0;
+            [bridgeSendAPI updateLightStateForId:light.identifier withLightState:lightState completionHandler:^(NSArray *errors) {
+                NSLog(@"Light saved: %@", errors);
             }];
-        }];
+        }
     } else {
         [bridgeSendAPI activateSceneWithIdentifier:sceneIdentifier onGroup:@"0" completionHandler:nil];
     }
@@ -268,6 +252,7 @@
         hueState = STATE_CONNECTED;
         [self.delegate changeState:hueState withMode:self showMessage:nil];
         [self disableLocalHeartbeat];
+        [self ensureScenes];
     }
 }
 
@@ -513,6 +498,28 @@
         // Bridge button not pressed in time
         [self showNotAuthenticatedDialog];
     }
+}
+
+- (void)ensureScenes {
+    PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
+    PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
+    PHScene *scene = [[PHScene alloc] init];
+
+    // Scene: All Lights Off
+    scene.name = @"All Lights Off";
+    scene.identifier = @"TT-all-off";
+    scene.lightIdentifiers = cache.lights.allKeys;
+    [bridgeSendAPI saveSceneWithCurrentLightStates:scene completionHandler:^(NSArray *errors) {
+        NSLog(@"Hue:SceneOff scene: %@", errors);
+        for (PHLight *light in cache.lights.allValues) {
+            PHLightState *lightState = light.lightState;
+            lightState.on = [NSNumber numberWithBool:NO];
+            lightState.alert = 0;
+            [bridgeSendAPI saveLightState:lightState forLightIdentifier:light.identifier inSceneWithIdentifier:scene.identifier completionHandler:^(NSArray *errors) {
+                NSLog(@"Hue:SceneOff light: %@", errors);
+            }];
+        }
+    }];
 }
 
 @end
