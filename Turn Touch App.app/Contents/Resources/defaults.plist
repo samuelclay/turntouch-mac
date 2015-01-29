@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>TT:mode:north</key>
+	<string>TTModeAlarmClock</string>
+	<key>TT:mode:east</key>
+	<string>TTModeMac</string>
+	<key>TT:mode:west</key>
+	<string>TTModeNews</string>
+	<key>TT:selectedModeDirection</key>
+	<string>1</string>
+	<key>TT:mode:south</key>
+	<string>TTModeMusic</string>
+</dict>
+</plist>
