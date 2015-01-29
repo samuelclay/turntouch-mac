@@ -190,8 +190,7 @@
 
 - (void)colorPaths:(NSRect)rect {
     CGFloat width = NSMaxX(rect);
-    CGFloat height = NSMaxY(rect);
-    CGFloat spacing = SPACING_PCT * width;
+
     TTModeDirection activeModeDirection = ignoreActiveMode ? overrideActiveDirection : appDelegate.modeMap.activeModeDirection;
     TTModeDirection selectedModeDirection = ignoreSelectedMode ? overrideSelectedDirection : appDelegate.modeMap.selectedModeDirection;
     TTModeDirection inspectingModeDirection = appDelegate.modeMap.inspectingModeDirection;

@@ -15,12 +15,12 @@ const NSUInteger SEGMENTED_CONTROL_HEIGHT = 26;
 
 #pragma mark - Init and sizing
 
--(id)initWithCoder:(NSCoder *)aDecoder {
-    if (self = [super initWithCoder:aDecoder]) {
-        [self setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [self setTabViewType:NSNoTabsNoBorder];
-        [self setDrawsBackground:NO];
-        
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    [self setTabViewType:NSNoTabsNoBorder];
+    [self setDrawsBackground:NO];
+    [self setTranslatesAutoresizingMaskIntoConstraints:NO];
+
         segmentedControl = [[TTSegmentedControl alloc] init];
         [segmentedControl setSegmentCount:self.numberOfTabViewItems];
         [segmentedControl setSelectedSegment:[self indexOfTabViewItem:[self selectedTabViewItem]]];
@@ -48,9 +48,6 @@ const NSUInteger SEGMENTED_CONTROL_HEIGHT = 26;
                                                          attribute:0
                                                         multiplier:1.0 constant:SEGMENTED_CONTROL_HEIGHT]];
         [self addSubview:segmentedControl];
-    }
-    
-    return self;
 }
 
 - (NSSize)minimumSize {
