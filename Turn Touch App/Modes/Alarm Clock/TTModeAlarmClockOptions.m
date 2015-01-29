@@ -197,10 +197,26 @@ NSString *const kOnetimeAlarmTime = @"onetimeAlarmTime";
         [textOnetimeLabel setStringValue:@"Alarm is in the past!"];
         return;
     }
-    unsigned int unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit | NSDayCalendarUnit | NSMonthCalendarUnit;
+    unsigned int unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit | NSDayCalendarUnit;
     NSCalendar *sysCalendar = [NSCalendar currentCalendar];
-    NSDateComponents *breakdownInfo = [sysCalendar components:unitFlags fromDate:[NSDate date] toDate:alarmDate options:0];
-    NSString *relativeTimeUntilAlarm = [NSString stringWithFormat:@"%ld days, %ld hours, %ld minutes", (long)[breakdownInfo day], (long)[breakdownInfo hour], (long)[breakdownInfo minute]];
+    NSDateComponents *breakdownInfo = [sysCalendar components:unitFlags
+                                                     fromDate:[NSDate date]
+                                                       toDate:alarmDate options:0];
+    NSString *relativeTimeUntilAlarm = @"";
+    NSInteger days = [breakdownInfo day];
+    NSInteger hours = [breakdownInfo hour];
+    NSInteger minutes = [breakdownInfo minute];
+    if (days) {
+        relativeTimeUntilAlarm = [NSString stringWithFormat:@"%ld %@", days, days == 1 ? @"day" : @"days"];
+    }
+    if (hours) {
+        relativeTimeUntilAlarm =  [relativeTimeUntilAlarm stringByAppendingString:
+                                   [NSString stringWithFormat:@"%@%ld %@", days ? @", " : @"", hours, hours == 1 ? @"hour" : @"hours"]];
+    }
+    if (minutes) {
+        relativeTimeUntilAlarm =  [relativeTimeUntilAlarm stringByAppendingString:
+                                   [NSString stringWithFormat:@"%@%ld %@", hours || days ? @", " : @"", minutes, minutes == 1 ? @"minute" : @"minutes"]];
+    }
 
     NSString *label = [NSString stringWithFormat:@"%@, in %@", [dateFormatter stringFromDate:alarmDate], relativeTimeUntilAlarm];
     [textOnetimeLabel setStringValue:label];
