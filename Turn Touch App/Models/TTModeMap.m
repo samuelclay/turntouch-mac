@@ -259,7 +259,8 @@
                                   ofType:@"plist"];
     NSDictionary *modeDefaults = [NSDictionary
                                   dictionaryWithContentsOfFile:defaultPrefsFile];
-    
+    NSLog(@" -> Getting mode option default %@: %@", optionName, [modeDefaults objectForKey:optionName]);
+
     return [modeDefaults objectForKey:optionName];
 }
 

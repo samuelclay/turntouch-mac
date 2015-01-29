@@ -13,7 +13,10 @@
                 <outlet property="boxRepeatOptions" destination="5ti-VC-9rp" id="4cD-uG-6Zd"/>
                 <outlet property="segOnetimeControl" destination="dtp-52-lrw" id="CHE-cn-f2R"/>
                 <outlet property="segRepeatControl" destination="eCO-fg-RdJ" id="a57-Cb-EC0"/>
+                <outlet property="segRepeatDays" destination="7pB-6Y-ebj" id="Acq-WK-Iex"/>
+                <outlet property="sliderRepeatTime" destination="C08-4a-kSZ" id="gZ4-y3-PYV"/>
                 <outlet property="tabView" destination="X6n-ol-Ve2" id="mF0-F9-d0H"/>
+                <outlet property="textRepeatTime" destination="08z-qa-ZtQ" id="ihh-Et-5ND"/>
                 <outlet property="view" destination="2fL-Hy-hGn" id="3h4-dH-xR0"/>
             </connections>
         </customObject>
@@ -69,7 +72,10 @@
                                                         <subviews>
                                                             <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="C08-4a-kSZ">
                                                                 <rect key="frame" x="6" y="37" width="344" height="25"/>
-                                                                <sliderCell key="cell" state="on" alignment="left" maxValue="24" doubleValue="10" tickMarkPosition="above" numberOfTickMarks="12" sliderType="linear" id="pV4-CP-edK"/>
+                                                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="1440" doubleValue="420" tickMarkPosition="above" numberOfTickMarks="24" sliderType="linear" id="pV4-CP-edK"/>
+                                                                <connections>
+                                                                    <action selector="changeRepeatTime:" target="-2" id="wN5-dO-ijz"/>
+                                                                </connections>
                                                             </slider>
                                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="08z-qa-ZtQ">
                                                                 <rect key="frame" x="-2" y="13" width="360" height="17"/>
@@ -82,8 +88,8 @@
                                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                 </textFieldCell>
                                                             </textField>
-                                                            <segmentedControl verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="7pB-6Y-ebj" customClass="TTSegmentedControl">
-                                                                <rect key="frame" x="-1" y="71" width="358" height="18"/>
+                                                            <segmentedControl verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7pB-6Y-ebj" customClass="TTSegmentedControl">
+                                                                <rect key="frame" x="-1" y="71" width="264" height="18"/>
                                                                 <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectAny" id="j1V-BO-kf2" customClass="TTSegmentedCell">
                                                                     <font key="font" metaFont="smallSystem"/>
                                                                     <segments>
@@ -96,6 +102,9 @@
                                                                         <segment label="Sat" imageScaling="proportionallyUpOrDown"/>
                                                                     </segments>
                                                                 </segmentedCell>
+                                                                <connections>
+                                                                    <action selector="changeRepeatDays:" target="-2" id="dX5-Rp-b0Z"/>
+                                                                </connections>
                                                             </segmentedControl>
                                                         </subviews>
                                                     </view>

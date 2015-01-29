@@ -17,7 +17,13 @@
 @property (nonatomic) IBOutlet NSSegmentedControl *segRepeatControl;
 @property (nonatomic) IBOutlet NSSegmentedControl *segOnetimeControl;
 
+@property (nonatomic) IBOutlet NSSegmentedControl *segRepeatDays;
+@property (nonatomic) IBOutlet NSSlider *sliderRepeatTime;
+@property (nonatomic) IBOutlet NSTextField *textRepeatTime;
+
 - (IBAction)changeSegRepeatControl:(id)sender;
 - (IBAction)changeSegOnetimeControl:(id)sender;
+- (IBAction)changeRepeatDays:(id)sender;
+- (IBAction)changeRepeatTime:(id)sender;
 
 @end
