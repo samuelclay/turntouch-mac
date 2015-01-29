@@ -11,11 +11,14 @@
                 <outlet property="boxOnetimeOptions" destination="oIq-Tz-CYQ" id="JG9-li-XVa"/>
                 <outlet property="boxRepeatConstraint" destination="ult-8c-kM5" id="QNF-sq-XLr"/>
                 <outlet property="boxRepeatOptions" destination="5ti-VC-9rp" id="4cD-uG-6Zd"/>
+                <outlet property="datePicker" destination="ASz-hE-Fct" id="gVU-al-0bk"/>
                 <outlet property="segOnetimeControl" destination="dtp-52-lrw" id="CHE-cn-f2R"/>
                 <outlet property="segRepeatControl" destination="eCO-fg-RdJ" id="a57-Cb-EC0"/>
                 <outlet property="segRepeatDays" destination="7pB-6Y-ebj" id="Acq-WK-Iex"/>
+                <outlet property="sliderOnetimeTime" destination="8Yx-qA-qzL" id="EBG-5p-hcG"/>
                 <outlet property="sliderRepeatTime" destination="C08-4a-kSZ" id="gZ4-y3-PYV"/>
                 <outlet property="tabView" destination="X6n-ol-Ve2" id="mF0-F9-d0H"/>
+                <outlet property="textOnetimeLabel" destination="TpU-io-mXB" id="Vp9-ox-ZyY"/>
                 <outlet property="textRepeatTime" destination="08z-qa-ZtQ" id="ihh-Et-5ND"/>
                 <outlet property="view" destination="2fL-Hy-hGn" id="3h4-dH-xR0"/>
             </connections>
@@ -72,7 +75,7 @@
                                                         <subviews>
                                                             <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="C08-4a-kSZ">
                                                                 <rect key="frame" x="6" y="37" width="344" height="25"/>
-                                                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="1440" doubleValue="420" tickMarkPosition="above" numberOfTickMarks="24" sliderType="linear" id="pV4-CP-edK"/>
+                                                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="288" doubleValue="84" tickMarkPosition="above" numberOfTickMarks="25" sliderType="linear" id="pV4-CP-edK"/>
                                                                 <connections>
                                                                     <action selector="changeRepeatTime:" target="-2" id="wN5-dO-ijz"/>
                                                                 </connections>
@@ -88,8 +91,8 @@
                                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                 </textFieldCell>
                                                             </textField>
-                                                            <segmentedControl verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7pB-6Y-ebj" customClass="TTSegmentedControl">
-                                                                <rect key="frame" x="-1" y="71" width="264" height="18"/>
+                                                            <segmentedControl verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="7pB-6Y-ebj" customClass="TTSegmentedControl">
+                                                                <rect key="frame" x="-1" y="71" width="358" height="18"/>
                                                                 <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectAny" id="j1V-BO-kf2" customClass="TTSegmentedCell">
                                                                     <font key="font" metaFont="smallSystem"/>
                                                                     <segments>
@@ -188,11 +191,14 @@
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8Yx-qA-qzL">
-                                                                <rect key="frame" x="141" y="32" width="209" height="25"/>
-                                                                <sliderCell key="cell" state="on" alignment="left" maxValue="24" doubleValue="10" tickMarkPosition="above" numberOfTickMarks="12" sliderType="linear" id="cXa-Bf-Dxu"/>
+                                                                <rect key="frame" x="113" y="32" width="237" height="25"/>
+                                                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="288" doubleValue="76" tickMarkPosition="above" numberOfTickMarks="25" sliderType="linear" id="cXa-Bf-Dxu"/>
+                                                                <connections>
+                                                                    <action selector="changeOnetimeTime:" target="-2" id="IaP-MY-qJO"/>
+                                                                </connections>
                                                             </slider>
                                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TpU-io-mXB">
-                                                                <rect key="frame" x="-2" y="3" width="354" height="19"/>
+                                                                <rect key="frame" x="-2" y="2" width="354" height="19"/>
                                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="7:00 AM (in 8 hours 21 minutes)" id="Rzq-bq-C5C">
                                                                     <font key="font" size="13" name="Effra-Regular"/>
                                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -200,11 +206,11 @@
                                                                 </textFieldCell>
                                                             </textField>
                                                             <datePicker verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ASz-hE-Fct" customClass="TFDatePicker">
-                                                                <rect key="frame" x="1" y="34" width="101" height="28"/>
+                                                                <rect key="frame" x="1" y="33" width="101" height="27"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="98" id="Ko2-Pd-8zU"/>
                                                                 </constraints>
-                                                                <datePickerCell key="cell" scrollable="YES" lineBreakMode="clipping" alignment="left" drawsBackground="NO" id="1ct-Tn-Ozu">
+                                                                <datePickerCell key="cell" scrollable="YES" lineBreakMode="clipping" continuous="YES" alignment="left" drawsBackground="NO" id="1ct-Tn-Ozu">
                                                                     <font key="font" size="13" name="Effra-Regular"/>
                                                                     <calendarDate key="date" timeIntervalSinceReferenceDate="-595929600" calendarFormat="%Y-%m-%d %H:%M:%S %z">
                                                                         <!--1982-02-12 16:00:00 +0000-->
@@ -213,28 +219,20 @@
                                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 </datePickerCell>
+                                                                <connections>
+                                                                    <action selector="changeOnetimeDate:" target="-2" id="cpF-oD-Rzv"/>
+                                                                </connections>
                                                             </datePicker>
-                                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oyu-je-rN4">
-                                                                <rect key="frame" x="113" y="34" width="22" height="23"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="22" id="PUu-90-A0N"/>
-                                                                </constraints>
-                                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="clock b&amp;w" id="Xfo-qw-15P"/>
-                                                            </imageView>
                                                         </subviews>
                                                     </view>
                                                     <constraints>
-                                                        <constraint firstItem="Oyu-je-rN4" firstAttribute="centerY" secondItem="8Yx-qA-qzL" secondAttribute="centerY" id="8Bd-7M-8w5"/>
-                                                        <constraint firstItem="8Yx-qA-qzL" firstAttribute="leading" secondItem="Oyu-je-rN4" secondAttribute="trailing" constant="8" symbolic="YES" id="FOf-oD-tC9"/>
                                                         <constraint firstItem="TpU-io-mXB" firstAttribute="top" secondItem="ASz-hE-Fct" secondAttribute="bottom" constant="12" id="HAi-8P-2cw"/>
-                                                        <constraint firstItem="Oyu-je-rN4" firstAttribute="leading" secondItem="ASz-hE-Fct" secondAttribute="trailing" constant="14" id="JDE-5R-iJh"/>
-                                                        <constraint firstItem="Oyu-je-rN4" firstAttribute="bottom" secondItem="8Yx-qA-qzL" secondAttribute="bottom" id="JSg-HT-fZi"/>
+                                                        <constraint firstItem="8Yx-qA-qzL" firstAttribute="leading" secondItem="ASz-hE-Fct" secondAttribute="trailing" constant="16" id="OcD-GA-OAj"/>
                                                         <constraint firstItem="TpU-io-mXB" firstAttribute="leading" secondItem="oIq-Tz-CYQ" secondAttribute="leading" id="PZC-Av-LQh"/>
-                                                        <constraint firstItem="Oyu-je-rN4" firstAttribute="top" secondItem="ASz-hE-Fct" secondAttribute="top" constant="1" id="SKx-bP-I01"/>
+                                                        <constraint firstItem="ASz-hE-Fct" firstAttribute="top" secondItem="oIq-Tz-CYQ" secondAttribute="top" constant="4" id="RLB-WZ-4Ql"/>
                                                         <constraint firstItem="ASz-hE-Fct" firstAttribute="leading" secondItem="oIq-Tz-CYQ" secondAttribute="leading" constant="1" id="gOJ-Oe-ODV"/>
                                                         <constraint firstAttribute="height" constant="60" id="pNf-HS-ux8"/>
                                                         <constraint firstAttribute="trailing" secondItem="TpU-io-mXB" secondAttribute="trailing" id="pxM-d1-TUb"/>
-                                                        <constraint firstItem="Oyu-je-rN4" firstAttribute="bottom" secondItem="ASz-hE-Fct" secondAttribute="bottom" id="t7S-gD-xgJ"/>
                                                         <constraint firstItem="8Yx-qA-qzL" firstAttribute="trailing" secondItem="TpU-io-mXB" secondAttribute="trailing" constant="-2" id="vSE-KB-erf"/>
                                                         <constraint firstItem="8Yx-qA-qzL" firstAttribute="top" secondItem="oIq-Tz-CYQ" secondAttribute="top" constant="3" id="zeD-ws-TTU"/>
                                                     </constraints>
@@ -274,11 +272,11 @@
                         </tabViewItem>
                         <tabViewItem label="Music and sounds" identifier="2" id="C5r-VN-Fk5">
                             <view key="view" id="dme-kN-wNJ">
-                                <rect key="frame" x="10" y="33" width="318" height="255"/>
+                                <rect key="frame" x="10" y="33" width="318" height="105"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <box autoresizesSubviews="NO" misplaced="YES" title="General" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="4X6-Q1-Mt2" customClass="TTBoxView">
-                                        <rect key="frame" x="-3" y="146" width="374" height="110"/>
+                                        <rect key="frame" x="-3" y="-4" width="374" height="110"/>
                                         <view key="contentView">
                                             <rect key="frame" x="1" y="1" width="372" height="108"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -379,7 +377,4 @@
             <point key="canvasLocation" x="53" y="694.5"/>
         </customView>
     </objects>
-    <resources>
-        <image name="clock b&amp;w" width="36" height="36"/>
-    </resources>
 </document>

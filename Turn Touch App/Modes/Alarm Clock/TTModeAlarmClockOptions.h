@@ -7,6 +7,7 @@
 //
 
 #import "TTOptionsDetailView.h"
+#import "TFDatePicker.h"
 
 @interface TTModeAlarmClockOptions : TTOptionsDetailViewController
 
@@ -21,9 +22,15 @@
 @property (nonatomic) IBOutlet NSSlider *sliderRepeatTime;
 @property (nonatomic) IBOutlet NSTextField *textRepeatTime;
 
+@property (nonatomic) IBOutlet TFDatePicker *datePicker;
+@property (nonatomic) IBOutlet NSSlider *sliderOnetimeTime;
+@property (nonatomic) IBOutlet NSTextField *textOnetimeLabel;
+
 - (IBAction)changeSegRepeatControl:(id)sender;
 - (IBAction)changeSegOnetimeControl:(id)sender;
 - (IBAction)changeRepeatDays:(id)sender;
 - (IBAction)changeRepeatTime:(id)sender;
+- (IBAction)changeOnetimeDate:(id)sender;
+- (IBAction)changeOnetimeTime:(id)sender;
 
 @end

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>repeatAlarmTime</key>
-	<integer>420</integer>
+	<integer>84</integer>
 	<key>repeatAlarmDays</key>
 	<array>
 		<false/>

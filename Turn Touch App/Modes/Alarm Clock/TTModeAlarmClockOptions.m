@@ -21,22 +21,30 @@
 @synthesize sliderRepeatTime;
 @synthesize textRepeatTime;
 
+@synthesize datePicker;
+@synthesize sliderOnetimeTime;
+@synthesize textOnetimeLabel;
+
 NSUInteger const kRepeatHeight = 88;
 NSUInteger const kOnetimeHeight = 68;
 NSString *const kRepeatAlarmEnabled = @"repeatAlarmEnabled";
 NSString *const kOnetimeAlarmEnabled = @"onetimeAlarmEnabled";
 NSString *const kRepeatAlarmDays = @"repeatAlarmDays";
 NSString *const kRepeatAlarmTime = @"repeatAlarmTime";
+NSString *const kOnetimeAlarmDate = @"onetimeAlarmDate";
+NSString *const kOnetimeAlarmTime = @"onetimeAlarmTime";
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     
     BOOL repeatAlarmEnabled = [[NSAppDelegate.modeMap modeOptionValue:kRepeatAlarmEnabled] boolValue];
-    BOOL onetimeAlarmEnabled = [[NSAppDelegate.modeMap modeOptionValue:kOnetimeAlarmEnabled] boolValue];
     NSInteger repeatAlarmTime = [[NSAppDelegate.modeMap modeOptionValue:kRepeatAlarmTime] integerValue];
-    id days = [NSAppDelegate.modeMap modeOptionValue:kRepeatAlarmDays];
-    NSArray *repeatDays = (NSArray *)days;
+    NSArray *repeatDays = [NSAppDelegate.modeMap modeOptionValue:kRepeatAlarmDays];
+    BOOL onetimeAlarmEnabled = [[NSAppDelegate.modeMap modeOptionValue:kOnetimeAlarmEnabled] boolValue];
+    NSDate *oneTimeAlarmDate = [NSAppDelegate.modeMap modeOptionValue:kOnetimeAlarmDate];
+    NSInteger onetimeAlarmTime = [[NSAppDelegate.modeMap modeOptionValue:kOnetimeAlarmTime] integerValue];
     
+    // Expand and size boxes for alarms
     [boxOnetimeConstraint     setConstant:onetimeAlarmEnabled ? kOnetimeHeight : 0];
     [boxOnetimeOptions      setAlphaValue:onetimeAlarmEnabled ? 1 : 0];
     [segOnetimeControl setSelectedSegment:onetimeAlarmEnabled ? 0 : 1];
@@ -45,16 +53,22 @@ NSString *const kRepeatAlarmTime = @"repeatAlarmTime";
     [boxRepeatOptions      setAlphaValue:repeatAlarmEnabled ? 1 : 0];
     [segRepeatControl setSelectedSegment:repeatAlarmEnabled ? 0 : 1];
     
+    // Set repeat alarm days and time
     int i = 0;
     for (NSNumber *dayNumber in repeatDays) {
         BOOL dayOn = [dayNumber boolValue];
         [segRepeatDays setSelected:dayOn forSegment:i];
         i++;
     }
-    
     [sliderRepeatTime setIntegerValue:repeatAlarmTime];
+    
+    // Set onetime alarm date and time
+    [datePicker setDateValue:oneTimeAlarmDate];
+    [sliderOnetimeTime setIntegerValue:onetimeAlarmTime];
+    
+    // Update all labels
     [self updateRepeatAlarmLabel];
-
+    [self updateOnetimeAlarmLabel];
 }
 
 #pragma mark - Drawing controls
@@ -69,6 +83,7 @@ NSString *const kRepeatAlarmTime = @"repeatAlarmTime";
             [boxOnetimeConstraint animator].constant = kOnetimeHeight;
             [boxOnetimeOptions animator].alphaValue = 1;
             [NSAppDelegate.modeMap changeModeOption:kOnetimeAlarmEnabled to:[NSNumber numberWithBool:YES]];
+            [self setOneTimeDate];
         }
     }];
 
@@ -88,6 +103,8 @@ NSString *const kRepeatAlarmTime = @"repeatAlarmTime";
     }];
 }
 
+#pragma mark - Repeat alarm
+
 - (IBAction)changeRepeatDays:(id)sender {
     NSUInteger i = 0;
     NSMutableArray *selectedDays = [[NSMutableArray alloc] init];
@@ -100,15 +117,14 @@ NSString *const kRepeatAlarmTime = @"repeatAlarmTime";
 }
 
 - (IBAction)changeRepeatTime:(id)sender {
-    NSInteger alarmTime = [sliderRepeatTime integerValue];
+    NSInteger alarmTime = MIN(287, [sliderRepeatTime integerValue]);
     [NSAppDelegate.modeMap changeModeOption:kRepeatAlarmTime to:[NSNumber numberWithInteger:alarmTime]];
     [self updateRepeatAlarmLabel];
 }
 
 - (void)updateRepeatAlarmLabel {
     NSInteger repeatAlarmTime = [[NSAppDelegate.modeMap modeOptionValue:kRepeatAlarmTime] integerValue];
-    id days = [NSAppDelegate.modeMap modeOptionValue:kRepeatAlarmDays];
-    NSArray *repeatDays = (NSArray *)days;
+    NSArray *repeatDays = [NSAppDelegate.modeMap modeOptionValue:kRepeatAlarmDays];
     NSInteger selectedDays = 0;
     NSInteger i = 0;
     while (i < [repeatDays count]) {
@@ -118,8 +134,89 @@ NSString *const kRepeatAlarmTime = @"repeatAlarmTime";
         i++;
     }
     
-    NSString *label = [NSString stringWithFormat:@"%ld, %ld %@ a week", (long)repeatAlarmTime, (long)selectedDays, selectedDays == 1 ? @"day" : @"days"];
+    NSDate *midnightToday = [self midnightToday];
+    NSTimeInterval timeInterval = repeatAlarmTime * 5 * 60;
+    NSDate *time = [[NSDate alloc] initWithTimeInterval:timeInterval sinceDate:midnightToday];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    
+    NSString *label = [NSString stringWithFormat:@"%@, %ld %@ a week", [dateFormatter stringFromDate:time], (long)selectedDays, selectedDays == 1 ? @"day" : @"days"];
     [textRepeatTime setStringValue:label];
+}
+
+#pragma mark - One Time alarm
+
+- (void)setOneTimeDate {
+    NSDate *midnightToday = [self midnightToday];
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *todayComponents = [gregorian components:(NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit) fromDate:midnightToday];
+    NSInteger theDay = [todayComponents day];
+    NSInteger theMonth = [todayComponents month];
+    NSInteger theYear = [todayComponents year];
+    
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    [components setDay:theDay];
+    [components setMonth:theMonth];
+    [components setYear:theYear];
+    NSDate *thisDate = [gregorian dateFromComponents:components];
+    
+    NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
+    [offsetComponents setDay:1];
+    NSDate *nextDate = [gregorian dateByAddingComponents:offsetComponents toDate:thisDate options:0];
+    
+    [datePicker setDateValue:nextDate];
+
+    [NSAppDelegate.modeMap changeModeOption:kOnetimeAlarmDate to:nextDate];
+}
+
+- (IBAction)changeOnetimeDate:(id)sender {
+    NSDate *onetimeDate = [datePicker dateValue];
+    
+    [NSAppDelegate.modeMap changeModeOption:kOnetimeAlarmDate to:onetimeDate];
+    [self updateOnetimeAlarmLabel];
+}
+
+- (IBAction)changeOnetimeTime:(id)sender {
+    NSInteger alarmTime = MIN(287, [sliderOnetimeTime integerValue]);
+    
+    [NSAppDelegate.modeMap changeModeOption:kOnetimeAlarmTime to:[NSNumber numberWithInteger:alarmTime]];
+    [self updateOnetimeAlarmLabel];
+}
+
+- (void)updateOnetimeAlarmLabel {
+    NSInteger onetimeAlarmTime = [[NSAppDelegate.modeMap modeOptionValue:kOnetimeAlarmTime] integerValue];
+    NSDate *onetimeAlarmDate = [NSAppDelegate.modeMap modeOptionValue:kOnetimeAlarmDate];
+    
+    NSTimeInterval timeInterval = onetimeAlarmTime * 5 * 60;
+    NSDate *alarmDate = [[NSDate alloc] initWithTimeInterval:timeInterval sinceDate:onetimeAlarmDate];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    
+    NSTimeInterval diff = [alarmDate timeIntervalSinceDate:[NSDate date]];
+    if (diff < 0) {
+        [textOnetimeLabel setStringValue:@"Alarm is in the past!"];
+        return;
+    }
+    unsigned int unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit | NSDayCalendarUnit | NSMonthCalendarUnit;
+    NSCalendar *sysCalendar = [NSCalendar currentCalendar];
+    NSDateComponents *breakdownInfo = [sysCalendar components:unitFlags fromDate:[NSDate date] toDate:alarmDate options:0];
+    NSString *relativeTimeUntilAlarm = [NSString stringWithFormat:@"%ld days, %ld hours, %ld minutes", (long)[breakdownInfo day], (long)[breakdownInfo hour], (long)[breakdownInfo minute]];
+
+    NSString *label = [NSString stringWithFormat:@"%@, in %@", [dateFormatter stringFromDate:alarmDate], relativeTimeUntilAlarm];
+    [textOnetimeLabel setStringValue:label];
+}
+
+#pragma mark - Date Helpers
+
+- (NSDate *)midnightToday {
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    NSDateComponents *comps = [cal components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:[NSDate date]];
+    [comps setHour:0];
+    [comps setMinute:0];
+    [comps setSecond:0];
+    NSDate *midnightOfToday = [cal dateFromComponents:comps];
+
+    return midnightOfToday;
 }
 
 @end

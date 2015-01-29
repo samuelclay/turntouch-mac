@@ -206,7 +206,7 @@
     [selectedMode changeDirection:direction toAction:actionClassName];
 }
 
-- (NSString *)modeOptionValue:(NSString *)optionName {
+- (id)modeOptionValue:(NSString *)optionName {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *directionName = [self directionName:selectedModeDirection];
     NSString *optionKey = [NSString stringWithFormat:@"TT:mode:%@-%@:option:%@",
@@ -214,7 +214,7 @@
                            directionName,
                            optionName];
 
-    NSString *pref = [prefs objectForKey:optionKey];
+    id pref = [prefs objectForKey:optionKey];
 
     NSLog(@" -> Getting mode option %@: %@", optionKey, pref);
     if (!pref) {
@@ -224,11 +224,11 @@
     return pref;
 }
 
-- (NSString *)actionOptionValue:(NSString *)optionName {
+- (id)actionOptionValue:(NSString *)optionName {
     return [self actionOptionValue:optionName inDirection:inspectingModeDirection];
 }
 
-- (NSString *)actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction {
+- (id)actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *modeDirectionName = [self directionName:selectedModeDirection];
     NSString *actionDirectionName = [self directionName:direction];
@@ -252,7 +252,7 @@
     return pref;
 }
 
-- (NSString *)selectedModeDefaultPreference:(NSString *)optionName {
+- (id)selectedModeDefaultPreference:(NSString *)optionName {
     NSString *modeOptionsDefaults = NSStringFromClass([selectedMode class]);
     NSString *defaultPrefsFile = [[NSBundle mainBundle]
                                   pathForResource:modeOptionsDefaults
@@ -264,7 +264,7 @@
     return [modeDefaults objectForKey:optionName];
 }
 
-- (NSString *)selectedActionDefaultPreference:(NSString *)actionName withOption:(NSString *)optionName {
+- (id)selectedActionDefaultPreference:(NSString *)actionName withOption:(NSString *)optionName {
     NSString *modeOptionsDefaults = NSStringFromClass([selectedMode class]);
     NSString *defaultPrefsFile = [[NSBundle mainBundle]
                                   pathForResource:modeOptionsDefaults
