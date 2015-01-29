@@ -21,33 +21,38 @@ const NSUInteger SEGMENTED_CONTROL_HEIGHT = 26;
     [self setDrawsBackground:NO];
     [self setTranslatesAutoresizingMaskIntoConstraints:NO];
 
-        segmentedControl = [[TTSegmentedControl alloc] init];
-        [segmentedControl setSegmentCount:self.numberOfTabViewItems];
-        [segmentedControl setSelectedSegment:[self indexOfTabViewItem:[self selectedTabViewItem]]];
-        [segmentedControl setTarget:self];
-        [segmentedControl setAction:@selector(ctrlSelected:)];
-        for (int i=0; i < self.numberOfTabViewItems; i++) {
-            [segmentedControl setLabel:[[self.tabViewItems objectAtIndex:i] label] forSegment:i];
-        }
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:segmentedControl
-                                                         attribute:NSLayoutAttributeTop
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:self
-                                                         attribute:NSLayoutAttributeTop
-                                                        multiplier:1.0 constant:0.0]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:segmentedControl
-                                                         attribute:NSLayoutAttributeCenterX
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:self
-                                                         attribute:NSLayoutAttributeCenterX
-                                                        multiplier:1.0 constant:0.0]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:segmentedControl
-                                                         attribute:NSLayoutAttributeHeight
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:nil
-                                                         attribute:0
-                                                        multiplier:1.0 constant:SEGMENTED_CONTROL_HEIGHT]];
-        [self addSubview:segmentedControl];
+    if (segmentedControl) {
+        [segmentedControl removeFromSuperview];
+        segmentedControl = nil;
+    }
+
+    segmentedControl = [[TTSegmentedControl alloc] init];
+    [segmentedControl setSegmentCount:self.numberOfTabViewItems];
+    [segmentedControl setSelectedSegment:[self indexOfTabViewItem:[self selectedTabViewItem]]];
+    [segmentedControl setTarget:self];
+    [segmentedControl setAction:@selector(ctrlSelected:)];
+    for (int i=0; i < self.numberOfTabViewItems; i++) {
+        [segmentedControl setLabel:[[self.tabViewItems objectAtIndex:i] label] forSegment:i];
+    }
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:segmentedControl
+                                                     attribute:NSLayoutAttributeTop
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeTop
+                                                    multiplier:1.0 constant:0.0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:segmentedControl
+                                                     attribute:NSLayoutAttributeCenterX
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeCenterX
+                                                    multiplier:1.0 constant:0.0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:segmentedControl
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:0
+                                                    multiplier:1.0 constant:SEGMENTED_CONTROL_HEIGHT]];
+    [self addSubview:segmentedControl];
 }
 
 - (NSSize)minimumSize {

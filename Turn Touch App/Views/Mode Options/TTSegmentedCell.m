@@ -26,8 +26,8 @@
 #pragma mark - Drawing
 
 - (void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {
-//    CGFloat radius = NSHeight(cellFrame) * 2.f/3.f;
-//    cellFrame.size.width = [self totalWidthInFrame:cellFrame withRadius:radius upToSegment:self.segmentCount];
+    CGFloat radius = NSHeight(cellFrame) * 2.f/3.f;
+    cellFrame.size.width = [self totalWidthInFrame:cellFrame withRadius:radius upToSegment:self.segmentCount];
     for (int i =0 ;i < [self segmentCount]; i++) {
         [self setupLabels:i];
         [self drawSegment:i inFrame:cellFrame withView:controlView];
@@ -39,16 +39,16 @@
     NSBezierPath *border = [NSBezierPath bezierPath];
     NSString *label = [self labelForSegment:segment];
     NSSize labelSize = [label sizeWithAttributes:labelAttributes];
-    CGFloat radius = NSHeight(frame) * 2.f/3.f;
+    radius = NSHeight(frame) * 2.f/3.f;
     CGFloat totalWidth = [self totalWidthInFrame:frame withRadius:radius upToSegment:self.segmentCount];
     CGFloat overageWidth = (totalWidth - NSWidth(frame)) / self.segmentCount;
-    if (overageWidth < 0) overageWidth = 0;
+//    NSLog(@"Drawing segment %ld: total: %f, overage: %f (%@)", (long)segment, totalWidth, overageWidth, NSStringFromRect(frame));
     BOOL highlighted = segment == highlightedSegment;
     BOOL selected = [self isSelectedForSegment:segment];
     
     CGFloat offset = [self totalWidthInFrame:frame withRadius:radius upToSegment:segment];
     NSRect segmentFrame = frame;
-    segmentFrame.origin.x = (NSWidth(frame)/2 - totalWidth/2) + (offset) - overageWidth*segment;
+    segmentFrame.origin.x = offset;
     segmentFrame.origin.y = NSMinY(frame) + 3;
     segmentFrame.size.width = labelSize.width + 2*radius - overageWidth;
     segmentFrame.size.height = NSHeight(frame) - 4;
@@ -123,8 +123,8 @@
 - (CGFloat)widthForSegment:(NSInteger)segment {
     NSString *label = [self labelForSegment:segment];
     NSSize labelSize = [label sizeWithAttributes:labelAttributes];
-    CGFloat radius = 29 * 2.f/3.f;
-    
+//    CGFloat radius =  * 2.f/3.f;
+//    NSLog(@"Width for segment %ld: %f", (long)segment, labelSize.width + 2*radius);
     return labelSize.width + 2*radius;
 }
 

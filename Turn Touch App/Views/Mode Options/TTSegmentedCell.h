@@ -12,6 +12,7 @@
 @interface TTSegmentedCell : NSSegmentedCell {
     TTAppDelegate *appDelegate;
     NSDictionary *labelAttributes;
+    CGFloat radius;
 }
 
 @property(assign) NSInteger highlightedSegment;
