@@ -25,6 +25,11 @@
 @synthesize sliderOnetimeTime;
 @synthesize textOnetimeLabel;
 
+@synthesize sliderAlarmDuration;
+@synthesize sliderAlarmVolume;
+@synthesize textAlarmDuration;
+@synthesize textAlarmVolume;
+
 NSUInteger const kRepeatHeight = 88;
 NSUInteger const kOnetimeHeight = 68;
 NSString *const kRepeatAlarmEnabled = @"repeatAlarmEnabled";
@@ -33,6 +38,8 @@ NSString *const kRepeatAlarmDays = @"repeatAlarmDays";
 NSString *const kRepeatAlarmTime = @"repeatAlarmTime";
 NSString *const kOnetimeAlarmDate = @"onetimeAlarmDate";
 NSString *const kOnetimeAlarmTime = @"onetimeAlarmTime";
+NSString *const kAlarmVolume = @"alarmVolume";
+NSString *const kAlarmDuration = @"alarmDuration";
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -43,6 +50,8 @@ NSString *const kOnetimeAlarmTime = @"onetimeAlarmTime";
     BOOL onetimeAlarmEnabled = [[NSAppDelegate.modeMap modeOptionValue:kOnetimeAlarmEnabled] boolValue];
     NSDate *oneTimeAlarmDate = [NSAppDelegate.modeMap modeOptionValue:kOnetimeAlarmDate];
     NSInteger onetimeAlarmTime = [[NSAppDelegate.modeMap modeOptionValue:kOnetimeAlarmTime] integerValue];
+    NSInteger alarmDuration = [[NSAppDelegate.modeMap modeOptionValue:kAlarmDuration] integerValue];
+    NSInteger alarmVolume = [[NSAppDelegate.modeMap modeOptionValue:kAlarmVolume] integerValue];
     
     // Expand and size boxes for alarms
     [boxOnetimeConstraint     setConstant:onetimeAlarmEnabled ? kOnetimeHeight : 0];
@@ -66,9 +75,14 @@ NSString *const kOnetimeAlarmTime = @"onetimeAlarmTime";
     [datePicker setDateValue:oneTimeAlarmDate];
     [sliderOnetimeTime setIntegerValue:onetimeAlarmTime];
     
+    // Set music/sounds options
+    [sliderAlarmVolume setIntegerValue:alarmVolume];
+    [sliderAlarmDuration setIntegerValue:alarmDuration];
+    
     // Update all labels
     [self updateRepeatAlarmLabel];
     [self updateOnetimeAlarmLabel];
+    [self updateAlarmSoundsLabels];
 }
 
 #pragma mark - Drawing controls
@@ -220,6 +234,28 @@ NSString *const kOnetimeAlarmTime = @"onetimeAlarmTime";
 
     NSString *label = [NSString stringWithFormat:@"%@, in %@", [dateFormatter stringFromDate:alarmDate], relativeTimeUntilAlarm];
     [textOnetimeLabel setStringValue:label];
+}
+
+#pragma mark - Alarm sounds
+
+- (void)updateAlarmSoundsLabels {
+    NSInteger alarmDuration = [[NSAppDelegate.modeMap modeOptionValue:kAlarmDuration] integerValue];
+    NSInteger alarmVolume = [[NSAppDelegate.modeMap modeOptionValue:kAlarmVolume] integerValue];
+    
+    [textAlarmVolume setStringValue:[NSString stringWithFormat:@"%ld%%", alarmVolume]];
+    [textAlarmDuration setStringValue:[NSString stringWithFormat:@"%ld min", alarmDuration]];
+}
+
+- (IBAction)changeAlarmDuration:(id)sender {
+    [NSAppDelegate.modeMap changeModeOption:kAlarmDuration to:[NSNumber numberWithInteger:sliderAlarmDuration.integerValue]];
+    
+    [self updateAlarmSoundsLabels];
+}
+
+- (IBAction)changeAlarmVolume:(id)sender {
+    [NSAppDelegate.modeMap changeModeOption:kAlarmVolume to:[NSNumber numberWithInteger:sliderAlarmVolume.integerValue]];
+    
+    [self updateAlarmSoundsLabels];
 }
 
 #pragma mark - Date Helpers

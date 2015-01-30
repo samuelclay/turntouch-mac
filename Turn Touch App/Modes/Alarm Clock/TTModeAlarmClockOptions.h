@@ -26,11 +26,18 @@
 @property (nonatomic) IBOutlet NSSlider *sliderOnetimeTime;
 @property (nonatomic) IBOutlet NSTextField *textOnetimeLabel;
 
+@property (nonatomic) IBOutlet NSSlider *sliderAlarmVolume;
+@property (nonatomic) IBOutlet NSTextField *textAlarmVolume;
+@property (nonatomic) IBOutlet NSSlider *sliderAlarmDuration;
+@property (nonatomic) IBOutlet NSTextField *textAlarmDuration;
+
 - (IBAction)changeSegRepeatControl:(id)sender;
 - (IBAction)changeSegOnetimeControl:(id)sender;
 - (IBAction)changeRepeatDays:(id)sender;
 - (IBAction)changeRepeatTime:(id)sender;
 - (IBAction)changeOnetimeDate:(id)sender;
 - (IBAction)changeOnetimeTime:(id)sender;
+- (IBAction)changeAlarmVolume:(id)sender;
+- (IBAction)changeAlarmDuration:(id)sender;
 
 @end
