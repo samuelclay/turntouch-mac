@@ -26,7 +26,7 @@
 #pragma mark - Drawing
 
 - (void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {
-    CGFloat radius = NSHeight(cellFrame) * 2.f/3.f;
+    radius = NSHeight(cellFrame) * 2.f/3.f;
     cellFrame.size.width = [self totalWidthInFrame:cellFrame withRadius:radius upToSegment:self.segmentCount];
     for (int i =0 ;i < [self segmentCount]; i++) {
         [self setupLabels:i];
@@ -161,12 +161,12 @@
     [NSGraphicsContext restoreGraphicsState];
 }
 
-- (CGFloat)totalWidthInFrame:(NSRect)frame withRadius:(CGFloat)radius upToSegment:(NSInteger)maxSegment {
+- (CGFloat)totalWidthInFrame:(NSRect)frame withRadius:(CGFloat)_radius upToSegment:(NSInteger)maxSegment {
     CGFloat totalWidth = 0;
 
     for (int s=0; s < maxSegment; s++) {
         totalWidth += [[self labelForSegment:s] sizeWithAttributes:labelAttributes].width;
-        totalWidth += 2 * radius;
+        totalWidth += 2 * _radius;
     }
     
     return totalWidth;
@@ -177,7 +177,7 @@
     stringShadow.shadowColor = [NSColor whiteColor];
     stringShadow.shadowOffset = NSMakeSize(0, -1);
     stringShadow.shadowBlurRadius = 0;
-    NSColor *textColor = NSColorFromRGB(0x606A80);
+    NSColor *textColor = NSColorFromRGB(0x808AA0);
     if ([self isSelectedForSegment:segment]) {
         textColor = NSColorFromRGB(0x303AA0);
     }
@@ -196,7 +196,6 @@
     [self setHighlightedSegment:-1];
     NSPoint loc = currentPoint;
     NSRect frame = controlView.frame;
-    CGFloat radius = NSHeight(frame) * 2/3;
     CGFloat totalWidth = [self totalWidthInFrame:frame withRadius:radius upToSegment:self.segmentCount];
     loc.x += frame.origin.x;
     loc.y += frame.origin.y;
