@@ -24,6 +24,16 @@
 		FF2365D3196F0DFA00A4ADBC /* mode_timer.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2365C9196F0DFA00A4ADBC /* mode_timer.png */; };
 		FF2365D4196F0DFA00A4ADBC /* mode_video.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2365CA196F0DFA00A4ADBC /* mode_video.png */; };
 		FF2365D5196F0DFA00A4ADBC /* mode_web.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2365CB196F0DFA00A4ADBC /* mode_web.png */; };
+		FF27406F1A7C576900C55579 /* itunes_audiobook_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2740681A7C576900C55579 /* itunes_audiobook_icon.png */; };
+		FF2740701A7C576900C55579 /* itunes_genius_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2740691A7C576900C55579 /* itunes_genius_icon.png */; };
+		FF2740711A7C576900C55579 /* itunes_library_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF27406A1A7C576900C55579 /* itunes_library_icon.png */; };
+		FF2740721A7C576900C55579 /* itunes_playlist_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF27406B1A7C576900C55579 /* itunes_playlist_icon.png */; };
+		FF2740731A7C576900C55579 /* itunes_podcast_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF27406C1A7C576900C55579 /* itunes_podcast_icon.png */; };
+		FF2740741A7C576900C55579 /* itunes_userplaylist_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF27406D1A7C576900C55579 /* itunes_userplaylist_icon.png */; };
+		FF2740751A7C576900C55579 /* originals.png in Resources */ = {isa = PBXBuildFile; fileRef = FF27406E1A7C576900C55579 /* originals.png */; };
+		FF2740791A7C5BC200C55579 /* itunes_itunesu_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2740761A7C5BC200C55579 /* itunes_itunesu_icon.png */; };
+		FF27407A1A7C5BC200C55579 /* itunes_movies_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2740771A7C5BC200C55579 /* itunes_movies_icon.png */; };
+		FF27407B1A7C5BC200C55579 /* itunes_tv_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2740781A7C5BC200C55579 /* itunes_tv_icon.png */; };
 		FF3641D81A5E241C003CC03C /* HueSDK_OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */; };
 		FF3641DA1A5F53DC003CC03C /* TTModeHueConnecting.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3641D91A5F53DC003CC03C /* TTModeHueConnecting.xib */; };
 		FF3641DC1A5F5617003CC03C /* TTModeHueOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3641DB1A5F5617003CC03C /* TTModeHueOptions.xib */; };
@@ -190,6 +200,16 @@
 		FF2365C9196F0DFA00A4ADBC /* mode_timer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mode_timer.png; path = icons/mode_timer.png; sourceTree = "<group>"; };
 		FF2365CA196F0DFA00A4ADBC /* mode_video.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mode_video.png; path = icons/mode_video.png; sourceTree = "<group>"; };
 		FF2365CB196F0DFA00A4ADBC /* mode_web.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mode_web.png; path = icons/mode_web.png; sourceTree = "<group>"; };
+		FF2740681A7C576900C55579 /* itunes_audiobook_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_audiobook_icon.png; sourceTree = "<group>"; };
+		FF2740691A7C576900C55579 /* itunes_genius_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_genius_icon.png; sourceTree = "<group>"; };
+		FF27406A1A7C576900C55579 /* itunes_library_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_library_icon.png; sourceTree = "<group>"; };
+		FF27406B1A7C576900C55579 /* itunes_playlist_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_playlist_icon.png; sourceTree = "<group>"; };
+		FF27406C1A7C576900C55579 /* itunes_podcast_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_podcast_icon.png; sourceTree = "<group>"; };
+		FF27406D1A7C576900C55579 /* itunes_userplaylist_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_userplaylist_icon.png; sourceTree = "<group>"; };
+		FF27406E1A7C576900C55579 /* originals.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = originals.png; sourceTree = "<group>"; };
+		FF2740761A7C5BC200C55579 /* itunes_itunesu_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_itunesu_icon.png; sourceTree = "<group>"; };
+		FF2740771A7C5BC200C55579 /* itunes_movies_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_movies_icon.png; sourceTree = "<group>"; };
+		FF2740781A7C5BC200C55579 /* itunes_tv_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_tv_icon.png; sourceTree = "<group>"; };
 		FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HueSDK_OSX.framework; sourceTree = "<group>"; };
 		FF3641D91A5F53DC003CC03C /* TTModeHueConnecting.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTModeHueConnecting.xib; sourceTree = "<group>"; };
 		FF3641DB1A5F5617003CC03C /* TTModeHueOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTModeHueOptions.xib; sourceTree = "<group>"; };
@@ -477,6 +497,23 @@
 			name = Video;
 			sourceTree = "<group>";
 		};
+		FF2740671A7C576900C55579 /* iTunes */ = {
+			isa = PBXGroup;
+			children = (
+				FF2740761A7C5BC200C55579 /* itunes_itunesu_icon.png */,
+				FF2740771A7C5BC200C55579 /* itunes_movies_icon.png */,
+				FF2740781A7C5BC200C55579 /* itunes_tv_icon.png */,
+				FF2740681A7C576900C55579 /* itunes_audiobook_icon.png */,
+				FF2740691A7C576900C55579 /* itunes_genius_icon.png */,
+				FF27406A1A7C576900C55579 /* itunes_library_icon.png */,
+				FF27406B1A7C576900C55579 /* itunes_playlist_icon.png */,
+				FF27406C1A7C576900C55579 /* itunes_podcast_icon.png */,
+				FF27406D1A7C576900C55579 /* itunes_userplaylist_icon.png */,
+				FF27406E1A7C576900C55579 /* originals.png */,
+			);
+			path = iTunes;
+			sourceTree = "<group>";
+		};
 		FF3641E31A5F66A8003CC03C /* Common Controls */ = {
 			isa = PBXGroup;
 			children = (
@@ -499,6 +536,7 @@
 		FF3A9F6217C42B5E00C5C2D5 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FF2740671A7C576900C55579 /* iTunes */,
 				FFF05F3118F6120200AC6230 /* logo */,
 				FFAA4F6A182D96E50049FFC7 /* icons */,
 			);
@@ -1024,23 +1062,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF27407B1A7C5BC200C55579 /* itunes_tv_icon.png in Resources */,
 				FF93604C196DF0B600675B7B /* Effra_Rg.ttf in Resources */,
+				FF2740741A7C576900C55579 /* itunes_userplaylist_icon.png in Resources */,
 				FF3641F01A60C422003CC03C /* TTModeHuePushlink.xib in Resources */,
 				FF8C834117AB14B5000166FC /* InfoPlist.strings in Resources */,
 				FF2365D1196F0DFA00A4ADBC /* mode_music.png in Resources */,
+				FF27406F1A7C576900C55579 /* itunes_audiobook_icon.png in Resources */,
 				FFAA4F61182D96D60049FFC7 /* heart.png in Resources */,
 				FF2365CD196F0DFA00A4ADBC /* mode_fitness.png in Resources */,
 				FF80132B186CF92000955218 /* TTPanel.xib in Resources */,
 				FF8012FB186A7B9000955218 /* vinyl.png in Resources */,
+				FF2740731A7C576900C55579 /* itunes_podcast_icon.png in Resources */,
 				FF8C834717AB14B5000166FC /* Credits.rtf in Resources */,
 				FF3641F81A660204003CC03C /* TTModeHueSceneOptions.xib in Resources */,
 				FFA1D4CC1A3B8916003EA0BC /* TTActionHUDView.xib in Resources */,
 				FFAA4F68182D96D60049FFC7 /* television.png in Resources */,
 				FFAA4F66182D96D60049FFC7 /* speaker.png in Resources */,
+				FF2740721A7C576900C55579 /* itunes_playlist_icon.png in Resources */,
 				FFAA4F65182D96D60049FFC7 /* presentation-chart.png in Resources */,
 				FFA1D4DB1A3B89A4003EA0BC /* TTModeHUDView.xib in Resources */,
 				FF8C834D17AB14B5000166FC /* MainMenu.xib in Resources */,
 				FF2365D2196F0DFA00A4ADBC /* mode_news.png in Resources */,
+				FF2740791A7C5BC200C55579 /* itunes_itunesu_icon.png in Resources */,
 				FF936067196DF67500675B7B /* TFDatePicker-Info.plist in Resources */,
 				FF2365D3196F0DFA00A4ADBC /* mode_timer.png in Resources */,
 				FF2365CF196F0DFA00A4ADBC /* mode_meditation.png in Resources */,
@@ -1050,9 +1094,12 @@
 				FF3641DC1A5F5617003CC03C /* TTModeHueOptions.xib in Resources */,
 				FF913D271924366C005C336F /* TTModeAlarmClock.plist in Resources */,
 				FFAA4F60182D96D60049FFC7 /* filmstrip-3.png in Resources */,
+				FF27407A1A7C5BC200C55579 /* itunes_movies_icon.png in Resources */,
 				FF936065196DF67500675B7B /* calendar@2x.png in Resources */,
 				FFAA4F63182D96D60049FFC7 /* icon_music.png in Resources */,
+				FF2740751A7C576900C55579 /* originals.png in Resources */,
 				FFAA4F5F182D96D60049FFC7 /* equalizer-1.png in Resources */,
+				FF2740711A7C576900C55579 /* itunes_library_icon.png in Resources */,
 				FF98A3031868D3F90032CC7A /* imac.png in Resources */,
 				FF2365CC196F0DFA00A4ADBC /* mode_alarm.png in Resources */,
 				FFB5FF431A6723EA00DF617A /* TTModeHue.plist in Resources */,
@@ -1073,6 +1120,7 @@
 				FF7305BB1A5C9C76009A852D /* press_smartbridge.png in Resources */,
 				FF913D2919243B89005C336F /* TTModeAlarmSnoozeOptions.xib in Resources */,
 				FFAA4F64182D96D60049FFC7 /* newspaper-3.png in Resources */,
+				FF2740701A7C576900C55579 /* itunes_genius_icon.png in Resources */,
 				FF98A3041868D3F90032CC7A /* macbookpro.png in Resources */,
 				FFEA6CB319216CDF0010874B /* TTModeMacOptions.xib in Resources */,
 				FF7305C41A5CB3EF009A852D /* TTModeHueConnect.xib in Resources */,

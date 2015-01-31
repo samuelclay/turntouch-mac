@@ -7,6 +7,7 @@
 //
 
 #import "TTModeAlarmClockOptions.h"
+#import "iTunes.h"
 
 @implementation TTModeAlarmClockOptions
 
@@ -29,6 +30,9 @@
 @synthesize sliderAlarmVolume;
 @synthesize textAlarmDuration;
 @synthesize textAlarmVolume;
+@synthesize dropdowniTunesSources;
+@synthesize checkboxShuffle;
+@synthesize textTracksCount;
 
 NSUInteger const kRepeatHeight = 88;
 NSUInteger const kOnetimeHeight = 68;
@@ -40,6 +44,8 @@ NSString *const kOnetimeAlarmDate = @"onetimeAlarmDate";
 NSString *const kOnetimeAlarmTime = @"onetimeAlarmTime";
 NSString *const kAlarmVolume = @"alarmVolume";
 NSString *const kAlarmDuration = @"alarmDuration";
+NSString *const kAlarmPlaylist = @"alarmPlaylist";
+NSString *const kAlarmShuffle = @"alarmShuffle";
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -52,6 +58,7 @@ NSString *const kAlarmDuration = @"alarmDuration";
     NSInteger onetimeAlarmTime = [[NSAppDelegate.modeMap modeOptionValue:kOnetimeAlarmTime] integerValue];
     NSInteger alarmDuration = [[NSAppDelegate.modeMap modeOptionValue:kAlarmDuration] integerValue];
     NSInteger alarmVolume = [[NSAppDelegate.modeMap modeOptionValue:kAlarmVolume] integerValue];
+    BOOL playlistShuffle = [[NSAppDelegate.modeMap modeOptionValue:kAlarmShuffle] boolValue];
     
     // Expand and size boxes for alarms
     [boxOnetimeConstraint     setConstant:onetimeAlarmEnabled ? kOnetimeHeight : 0];
@@ -78,6 +85,11 @@ NSString *const kAlarmDuration = @"alarmDuration";
     // Set music/sounds options
     [sliderAlarmVolume setIntegerValue:alarmVolume];
     [sliderAlarmDuration setIntegerValue:alarmDuration];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self populateiTunesSources];
+    });
+    [checkboxShuffle setState:playlistShuffle];
+    
     
     // Update all labels
     [self updateRepeatAlarmLabel];
@@ -256,6 +268,111 @@ NSString *const kAlarmDuration = @"alarmDuration";
     [NSAppDelegate.modeMap changeModeOption:kAlarmVolume to:[NSNumber numberWithInteger:sliderAlarmVolume.integerValue]];
     
     [self updateAlarmSoundsLabels];
+}
+
+- (IBAction)changeiTunesSource:(id)sender {
+    SBElementArray *playlists = [self playlists];
+    NSInteger tag = dropdowniTunesSources.selectedItem.tag;
+    NSInteger i = 0;
+    iTunesLibraryPlaylist *selectedPlaylist;
+    for (iTunesLibraryPlaylist *playlist in playlists) {
+        i++;
+        if (i == tag) {
+            selectedPlaylist = playlist;
+            break;
+        }
+    }
+
+    NSInteger tracks = selectedPlaylist.tracks.count;
+    [textTracksCount setStringValue:[NSString stringWithFormat:@"%ld %@",
+                                     (long)tracks, tracks == 1 ? @"track" : @"tracks"]];
+    
+    [NSAppDelegate.modeMap changeModeOption:kAlarmPlaylist
+                                         to:selectedPlaylist.persistentID];
+}
+
+- (IBAction)changeShuffle:(id)sender {
+    [NSAppDelegate.modeMap changeModeOption:kAlarmShuffle
+                                         to:[NSNumber numberWithBool:checkboxShuffle.state]];
+}
+
+- (SBElementArray *)playlists {
+    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    iTunesSource *librarySource = nil;
+    NSArray *sources = [iTunes sources];
+    for (iTunesSource *source in sources) {
+        if ([source kind] == iTunesESrcLibrary) {
+            librarySource = source;
+            break;
+        }
+    }
+    
+    SBElementArray *playlists = [librarySource playlists];
+
+    return playlists;
+}
+
+- (void)populateiTunesSources {
+    NSString *selectedPlaylistId = (NSString *)[NSAppDelegate.modeMap modeOptionValue:kAlarmPlaylist];
+    NSMenuItem *selectedMenuItem;
+    SBElementArray *playlists = [self playlists];
+    NSInteger tag = 0;
+    for (iTunesLibraryPlaylist *playlist in playlists) {
+        tag++;
+        if (!playlist.size) continue;
+        NSMenuItem *menuItem = [[NSMenuItem alloc] init];
+        NSImage *image;
+        switch (playlist.specialKind) {
+            case iTunesESpKLibrary:
+                image = [NSImage imageNamed:@"itunes_library_icon"];
+                break;
+                
+            case iTunesESpKMusic:
+                image = [NSImage imageNamed:@"itunes_userplaylist_icon"];
+                break;
+                
+            case iTunesESpKGenius:
+                image = [NSImage imageNamed:@"itunes_genius_icon"];
+                break;
+                
+            case iTunesESpKBooks:
+                image = [NSImage imageNamed:@"itunes_audiobook_icon"];
+                break;
+                
+            case iTunesESpKPodcasts:
+                image = [NSImage imageNamed:@"itunes_podcast_icon"];
+                break;
+                
+            case iTunesESpKITunesU:
+                image = [NSImage imageNamed:@"itunes_itunesu_icon"];
+                break;
+                
+            case iTunesESpKMovies:
+                image = [NSImage imageNamed:@"itunes_movies_icon"];
+                break;
+                
+            case iTunesESpKTVShows:
+                image = [NSImage imageNamed:@"itunes_tv_icon"];
+                break;
+                
+            default:
+//                NSLog(@"playlist.specialKind: %@", playlist.properties);
+                image = [NSImage imageNamed:@"itunes_playlist_icon"];
+                break;
+        }
+        [image setSize:NSMakeSize(16, 16)];
+        menuItem.image = image;
+        menuItem.title = playlist.name;
+        menuItem.tag = tag;
+        [dropdowniTunesSources.menu addItem:menuItem];
+        if ([playlist.persistentID isEqualToString:selectedPlaylistId]) {
+            selectedMenuItem = menuItem;
+        }
+    }
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        [dropdowniTunesSources selectItem:selectedMenuItem];
+        [dropdowniTunesSources setNeedsDisplay:YES];
+    });
 }
 
 #pragma mark - Date Helpers

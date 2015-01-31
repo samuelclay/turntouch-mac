@@ -30,6 +30,9 @@
 @property (nonatomic) IBOutlet NSTextField *textAlarmVolume;
 @property (nonatomic) IBOutlet NSSlider *sliderAlarmDuration;
 @property (nonatomic) IBOutlet NSTextField *textAlarmDuration;
+@property (nonatomic) IBOutlet NSPopUpButton *dropdowniTunesSources;
+@property (nonatomic) IBOutlet NSButton *checkboxShuffle;
+@property (nonatomic) IBOutlet NSTextField *textTracksCount;
 
 - (IBAction)changeSegRepeatControl:(id)sender;
 - (IBAction)changeSegOnetimeControl:(id)sender;
@@ -39,5 +42,8 @@
 - (IBAction)changeOnetimeTime:(id)sender;
 - (IBAction)changeAlarmVolume:(id)sender;
 - (IBAction)changeAlarmDuration:(id)sender;
+- (IBAction)changeiTunesSource:(id)sender;
+- (IBAction)changeShuffle:(id)sender;
+
 
 @end

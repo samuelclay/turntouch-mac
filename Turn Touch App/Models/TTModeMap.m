@@ -216,7 +216,7 @@
 
     id pref = [prefs objectForKey:optionKey];
 
-    NSLog(@" -> Getting mode option %@: %@", optionKey, pref);
+//    NSLog(@" -> Getting mode option %@: %@", optionKey, pref);
     if (!pref) {
         pref = [self selectedModeDefaultPreference:optionName];
     }
@@ -240,7 +240,7 @@
                            actionDirectionName,
                            optionName];
     NSString *pref = [prefs objectForKey:optionKey];
-    NSLog(@" -> Getting action options %@: %@", optionKey, pref);
+//    NSLog(@" -> Getting action options %@: %@", optionKey, pref);
     
     if (!pref) {
         pref = [self selectedActionDefaultPreference:actionName withOption:optionName];
@@ -259,7 +259,7 @@
                                   ofType:@"plist"];
     NSDictionary *modeDefaults = [NSDictionary
                                   dictionaryWithContentsOfFile:defaultPrefsFile];
-    NSLog(@" -> Getting mode option default %@: %@", optionName, [modeDefaults objectForKey:optionName]);
+//    NSLog(@" -> Getting mode option default %@: %@", optionName, [modeDefaults objectForKey:optionName]);
 
     return [modeDefaults objectForKey:optionName];
 }
