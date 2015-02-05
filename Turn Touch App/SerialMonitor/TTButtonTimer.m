@@ -58,22 +58,21 @@ const double MODE_CHANGE_DURATION = 0.5f;
 }
 
 - (void)readBluetoothData:(NSData *)data {
-    int state = *(int *)[[data subdataWithRange:NSMakeRange(0, 1)] bytes];
-//    int press = *(int *)[[data subdataWithRange:NSMakeRange(1, 1)] bytes]; // Unreliable
-    int pos = *(int *)[[data subdataWithRange:NSMakeRange(2, 1)] bytes];
+    uint8_t state = ~(*(int *)[[data subdataWithRange:NSMakeRange(0, 1)] bytes]) & 0x0F;
+    int pos = *(int *)[[data subdataWithRange:NSMakeRange(1, 1)] bytes];
     BOOL anyButtonPressed = NO;
     BOOL anyButtonHeld = NO;
     NSInteger buttonLifted = -1;
 //    NSLog(@"Buttons: %d, %d: %@", state, pos, buttonState);
     
-    NSMutableArray *newButtonState = [@[[NSNumber numberWithBool:(state & 0x01) == 0x01],
-                                        [NSNumber numberWithBool:(state & 0x02) == 0x02],
-                                        [NSNumber numberWithBool:(state & 0x04) == 0x04],
-                                        [NSNumber numberWithBool:(state & 0x08) == 0x08]] mutableCopy];
+    NSMutableArray *newButtonState = [@[[NSNumber numberWithBool:(state & 0x01)],
+                                        [NSNumber numberWithBool:(state & 0x02)],
+                                        [NSNumber numberWithBool:(state & 0x04)],
+                                        [NSNumber numberWithBool:(state & 0x08)]] mutableCopy];
     NSInteger i = buttonState.count;
     while (i--) {
         BOOL buttonDown = ((state & (1 << i)) == (1 << i));
-//        NSLog(@"Checking button #%ld: %d / %d", (long)i, buttonDown, anyButtonPressed);
+        NSLog(@"Checking button #%ld: %d / %d", (long)i, buttonDown, anyButtonPressed);
         if (buttonDown && anyButtonPressed) {
             inMultitouch = YES;
         }
@@ -107,10 +106,10 @@ const double MODE_CHANGE_DURATION = 0.5f;
             [self selectActiveMode:NORTH];
         } else if (state == 0x02) {
             [buttonState replaceObjectAtIndex:1 withObject:[NSNumber numberWithBool:NO]];
-            [self selectActiveMode:WEST];
+            [self selectActiveMode:EAST];
         } else if (state == 0x04) {
             [buttonState replaceObjectAtIndex:2 withObject:[NSNumber numberWithBool:NO]];
-            [self selectActiveMode:EAST];
+            [self selectActiveMode:WEST];
         } else if (state == 0x08) {
             [buttonState replaceObjectAtIndex:3 withObject:[NSNumber numberWithBool:NO]];
             [self selectActiveMode:SOUTH];
@@ -129,9 +128,9 @@ const double MODE_CHANGE_DURATION = 0.5f;
         } else if ((state & 0x01) == 0x01) {
             [self activateButton:NORTH];
         } else if ((state & 0x02) == 0x02) {
-            [self activateButton:WEST];
-        } else if ((state & 0x04) == 0x04) {
             [self activateButton:EAST];
+        } else if ((state & 0x04) == 0x04) {
+            [self activateButton:WEST];
         } else if ((state & 0x08) == 0x08) {
             [self activateButton:SOUTH];
         } else if (state == 0x00) {
@@ -144,9 +143,9 @@ const double MODE_CHANGE_DURATION = 0.5f;
         if (buttonLifted == 0) {
             [self fireButton:NORTH];
         } else if (buttonLifted == 1) {
-            [self fireButton:WEST];
-        } else if (buttonLifted == 2) {
             [self fireButton:EAST];
+        } else if (buttonLifted == 2) {
+            [self fireButton:WEST];
         } else if (buttonLifted == 3) {
             [self fireButton:SOUTH];
         } else {

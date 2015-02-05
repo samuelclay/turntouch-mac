@@ -217,8 +217,10 @@
     /* Updated value for heart rate measurement received */
     if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_BUTTON_STATUS_UUID]]) {
         if( (characteristic.value)  || !error ) {
-//            NSLog(@"Characteristic value: %@", [characteristic.value hexadecimalString]);
+            NSLog(@"Characteristic value: %@", [characteristic.value hexadecimalString]);
             [buttonTimer readBluetoothData:characteristic.value];
+        } else {
+            NSLog(@"Characteristic error: %@ / %@", characteristic.value, error);
         }
     } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_BATTERY_LEVEL_UUID]]) {
         if( (characteristic.value)  || !error ) {
@@ -232,6 +234,8 @@
     } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A29"]]) {
         manufacturer = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
 //        NSLog(@"Manufacturer Name = %@", manufacturer);
+    } else {
+        NSLog(@"Unidentified characteristic: %@", characteristic);
     }
 }
 
