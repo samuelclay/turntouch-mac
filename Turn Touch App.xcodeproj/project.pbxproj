@@ -34,6 +34,7 @@
 		FF2740791A7C5BC200C55579 /* itunes_itunesu_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2740761A7C5BC200C55579 /* itunes_itunesu_icon.png */; };
 		FF27407A1A7C5BC200C55579 /* itunes_movies_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2740771A7C5BC200C55579 /* itunes_movies_icon.png */; };
 		FF27407B1A7C5BC200C55579 /* itunes_tv_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2740781A7C5BC200C55579 /* itunes_tv_icon.png */; };
+		FF2DA7D91A8C6242003B5E06 /* TTGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2DA7D81A8C6242003B5E06 /* TTGradientView.m */; };
 		FF3641D81A5E241C003CC03C /* HueSDK_OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */; };
 		FF3641DA1A5F53DC003CC03C /* TTModeHueConnecting.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3641D91A5F53DC003CC03C /* TTModeHueConnecting.xib */; };
 		FF3641DC1A5F5617003CC03C /* TTModeHueOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3641DB1A5F5617003CC03C /* TTModeHueOptions.xib */; };
@@ -210,6 +211,8 @@
 		FF2740761A7C5BC200C55579 /* itunes_itunesu_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_itunesu_icon.png; sourceTree = "<group>"; };
 		FF2740771A7C5BC200C55579 /* itunes_movies_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_movies_icon.png; sourceTree = "<group>"; };
 		FF2740781A7C5BC200C55579 /* itunes_tv_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_tv_icon.png; sourceTree = "<group>"; };
+		FF2DA7D71A8C6242003B5E06 /* TTGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTGradientView.h; path = "Views/Common Controls/TTGradientView.h"; sourceTree = "<group>"; };
+		FF2DA7D81A8C6242003B5E06 /* TTGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTGradientView.m; path = "Views/Common Controls/TTGradientView.m"; sourceTree = "<group>"; };
 		FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HueSDK_OSX.framework; sourceTree = "<group>"; };
 		FF3641D91A5F53DC003CC03C /* TTModeHueConnecting.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTModeHueConnecting.xib; sourceTree = "<group>"; };
 		FF3641DB1A5F5617003CC03C /* TTModeHueOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTModeHueOptions.xib; sourceTree = "<group>"; };
@@ -529,6 +532,8 @@
 				FFF05F3D18F77CF500AC6230 /* TTChangeButtonView.m */,
 				FFF05F4018F77D5D00AC6230 /* TTChangeButtonCell.h */,
 				FFF05F4118F77D5D00AC6230 /* TTChangeButtonCell.m */,
+				FF2DA7D71A8C6242003B5E06 /* TTGradientView.h */,
+				FF2DA7D81A8C6242003B5E06 /* TTGradientView.m */,
 			);
 			name = "Common Controls";
 			sourceTree = "<group>";
@@ -1151,6 +1156,7 @@
 				FFF05F3B18F77BE000AC6230 /* TTModeTitleView.m in Sources */,
 				FF429AD21919C630007C485E /* TTModeMenuCollectionView.m in Sources */,
 				FFA1D4DA1A3B89A4003EA0BC /* TTModeHUDView.m in Sources */,
+				FF2DA7D91A8C6242003B5E06 /* TTGradientView.m in Sources */,
 				FF3641F71A660204003CC03C /* TTModeHueSceneOptions.m in Sources */,
 				FF66F2A619228DE100031478 /* TTModeAlarmClockOptions.m in Sources */,
 				FF98A2E11867DBA40032CC7A /* TTActionMap.m in Sources */,

@@ -10,6 +10,7 @@
 #import "TTAppDelegate.h"
 #import "TTDiamondLabels.h"
 #import "TTDiamondView.h"
+#import "TTGradientView.h"
 
 @interface TTModeHUDView : NSView {
     TTAppDelegate *appDelegate;
@@ -20,9 +21,13 @@
     CGSize textSize;
     TTDiamondLabels *diamondLabels;
     TTMode *titleMode;
+    TTGradientView *gradientView;
+    BOOL teaserFadeStarted;
 }
 
 @property (nonatomic, readwrite) BOOL isTeaser;
+@property (nonatomic, readwrite) TTGradientView *gradientView;
+@property (nonatomic, readwrite) TTGradientView *teaserGradientView;
 
 - (void)setupTitleAttributes;
 - (void)setupTitleAttributes:(TTMode *)mode;

@@ -155,7 +155,7 @@
 #pragma mark - Hue Init
 
 - (void)activate {
-    NSLog(@" ---> Activating Hue mode: %@", self.phHueSDK);
+//    NSLog(@" ---> Activating Hue mode: %@", self.phHueSDK);
     
     if (self.phHueSDK) {
         [[PHNotificationManager defaultManager] deregisterObjectForAllNotifications:self];
@@ -198,7 +198,7 @@
 }
 
 - (void)deactivate {
-    NSLog(@" ---> DE-Activating Hue mode: %@", self.phHueSDK);
+//    NSLog(@" ---> DE-Activating Hue mode: %@", self.phHueSDK);
 
     [[PHNotificationManager defaultManager] deregisterObjectForAllNotifications:self];
     [self disableLocalHeartbeat];

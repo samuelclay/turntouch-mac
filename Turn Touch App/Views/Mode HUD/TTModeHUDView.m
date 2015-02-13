@@ -16,9 +16,15 @@ const NSInteger kImageSize = 36;
 const NSInteger kImageTextMargin = 24;
 
 @synthesize isTeaser;
+@synthesize gradientView;
+@synthesize teaserGradientView;
 
 - (void)awakeFromNib {
     appDelegate = (TTAppDelegate *)[NSApp delegate];
+    teaserGradientView = [[TTGradientView alloc] initWithFrame:NSZeroRect];
+    [self addSubview:teaserGradientView];
+    gradientView = [[TTGradientView alloc] initWithFrame:NSZeroRect];
+    [self addSubview:gradientView];
     diamondLabels = [[TTDiamondLabels alloc] initWithInteractive:NO];
     isTeaser = NO;
     [self addSubview:diamondLabels];
@@ -33,23 +39,42 @@ const NSInteger kImageTextMargin = 24;
 }
 
 - (void)drawMapBackground {
+    NSLog(@"drawMapBackground");
     NSRect mapFrame = [self mapFrame];
-    NSBezierPath *ellipse = [NSBezierPath bezierPath];
-    [ellipse moveToPoint:NSMakePoint(mapFrame.origin.x,
+    [gradientView setFrame:self.bounds];
+    [teaserGradientView setFrame:self.bounds];
+    NSBezierPath *diamond = [NSBezierPath bezierPath];
+    [diamond moveToPoint:NSMakePoint(mapFrame.origin.x,
                                      mapFrame.size.height/2 + mapFrame.origin.y)];
-    [ellipse lineToPoint:NSMakePoint(mapFrame.size.width/2 + mapFrame.origin.x,
+    [diamond lineToPoint:NSMakePoint(mapFrame.size.width/2 + mapFrame.origin.x,
                                      mapFrame.size.height + mapFrame.origin.y - SPACING_PCT*mapFrame.size.height*1.3)];
-    [ellipse lineToPoint:NSMakePoint(mapFrame.size.width + mapFrame.origin.x,
+    [diamond lineToPoint:NSMakePoint(mapFrame.size.width + mapFrame.origin.x,
                                      mapFrame.size.height/2 + mapFrame.origin.y)];
-    [ellipse lineToPoint:NSMakePoint(mapFrame.size.width/2 + mapFrame.origin.x, mapFrame.origin.y + SPACING_PCT*mapFrame.size.height*1.3)];
-    [ellipse closePath];
+    [diamond lineToPoint:NSMakePoint(mapFrame.size.width/2 + mapFrame.origin.x, mapFrame.origin.y + SPACING_PCT*mapFrame.size.height*1.3)];
+    [diamond closePath];
     CGFloat alpha = 0.9f;
-    [NSColorFromRGBAlpha(0xC0BCCF, alpha) setStroke];
-    [ellipse stroke];
-    NSGradient *borderGradient = [[NSGradient alloc]
-                                  initWithStartingColor:NSColorFromRGBAlpha(0xffffff, alpha)
-                                  endingColor:NSColorFromRGB(0xa7a7a7)];
-    [borderGradient drawInBezierPath:ellipse angle:-90];
+    NSGradient *borderGradient;
+    if (isTeaser) {
+        [NSColorFromRGBAlpha(0x201C2F, alpha) setStroke];
+        borderGradient = [[NSGradient alloc]
+                          initWithStartingColor:NSColorFromRGBAlpha(0x404040, alpha)
+                          endingColor:NSColorFromRGB(0x070707)];
+        [teaserGradientView setDrawBlock:^{
+            NSLog(@"Start teaser gradient");
+            [borderGradient drawInBezierPath:diamond angle:-90];
+        }];
+    } else {
+        [NSColorFromRGBAlpha(0xC0BCCF, alpha) setStroke];
+        borderGradient = [[NSGradient alloc]
+                          initWithStartingColor:NSColorFromRGBAlpha(0xffffff, alpha)
+                          endingColor:NSColorFromRGB(0xa7a7a7)];
+
+        [gradientView setDrawBlock:^{
+            NSLog(@"Start full gradient");
+            [borderGradient drawInBezierPath:diamond angle:-90];
+        }];
+    }
+    [diamond stroke];
 }
 
 - (void)drawLabelBackgrounds {

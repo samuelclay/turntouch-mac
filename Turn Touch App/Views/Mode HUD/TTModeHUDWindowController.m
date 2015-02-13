@@ -42,11 +42,11 @@
     [self showWindow:appDelegate];
     [hudView setupTitleAttributes];
     hudView.isTeaser = NO;
-    [hudView setNeedsDisplay:YES];
+//    [hudView setNeedsDisplay:YES];
 
-    if (hudWindow.frame.origin.y == [self hiddenFrame].origin.y) {
+    if (hudWindow.frame.origin.y != [self visibleFrame].origin.y) {
         [hudWindow setFrame:[self visibleFrame] display:YES];
-        [[hudWindow animator] setAlphaValue:0.f];
+//        [[hudWindow animator] setAlphaValue:0.f];
     }
     
     
@@ -57,7 +57,8 @@
     
     [[hudWindow animator] setAlphaValue:1.f];
     [[hudWindow animator] setFrame:[self visibleFrame] display:YES];
-    
+    [[[hudView gradientView] animator] setAlphaValue:1.f];
+//    [[[hudView teaserGradientView] animator] setAlphaValue:0.f];
     [NSAnimationContext endGrouping];
 }
 
@@ -79,11 +80,13 @@
 }
 
 - (void)teaseMode:(TTModeDirection)direction {
+    hudView.isTeaser = YES;
     [hudWindow makeKeyAndOrderFront:nil];
     [self showWindow:appDelegate];
     [hudView setupTitleAttributes:[appDelegate.modeMap modeInDirection:direction]];
-    hudView.isTeaser = YES;
-    [hudView setNeedsDisplay:YES];
+    [[hudView gradientView] setAlphaValue:0.f];
+    [[hudView teaserGradientView] setAlphaValue:1.f];
+
     
     if (hudWindow.frame.origin.y == [self hiddenFrame].origin.y) {
         [hudWindow setFrame:[self visibleFrame] display:YES];
@@ -95,9 +98,9 @@
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
     
-    [[hudWindow animator] setAlphaValue:.8f];
+    [[hudWindow animator] setAlphaValue:1.f];
     [[hudWindow animator] setFrame:[self visibleFrame] display:YES];
-    
+
     [NSAnimationContext endGrouping];
 }
 

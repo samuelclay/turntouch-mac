@@ -72,7 +72,7 @@ const double MODE_CHANGE_DURATION = 0.5f;
     NSInteger i = buttonState.count;
     while (i--) {
         BOOL buttonDown = ((state & (1 << i)) == (1 << i));
-        NSLog(@"Checking button #%ld: %d / %d", (long)i, buttonDown, anyButtonPressed);
+//        NSLog(@"Checking button #%ld: %d / %d", (long)i, buttonDown, anyButtonPressed);
         if (buttonDown && anyButtonPressed) {
             inMultitouch = YES;
         }
@@ -99,7 +99,7 @@ const double MODE_CHANGE_DURATION = 0.5f;
     
     // Hold button
     if (anyButtonHeld) {
-        NSLog(@" ---> Button held: %d", state);
+//        NSLog(@" ---> Button held: %d", state);
         if (state == 0x01) {
             // Don't fire action on button release
             [buttonState replaceObjectAtIndex:0 withObject:[NSNumber numberWithBool:NO]];
@@ -118,7 +118,7 @@ const double MODE_CHANGE_DURATION = 0.5f;
     } else
     // Press button
     if (anyButtonPressed) {
-        NSLog(@" ---> Button down%@: %d", inMultitouch ? @" (multi-touch)" : @"", state);
+//        NSLog(@" ---> Button down%@: %d", inMultitouch ? @" (multi-touch)" : @"", state);
         if (inMultitouch) {
             if (!holdToastStart) {
                 holdToastStart = [NSDate date];
@@ -139,7 +139,7 @@ const double MODE_CHANGE_DURATION = 0.5f;
     }
     // Lift button
     else if (buttonLifted >= 0) {
-        NSLog(@" ---> Button lifted%@: %ld", inMultitouch ? @" (multi-touch)" : @"", (long)buttonLifted);
+//        NSLog(@" ---> Button lifted%@: %ld", inMultitouch ? @" (multi-touch)" : @"", (long)buttonLifted);
         if (buttonLifted == 0) {
             [self fireButton:NORTH];
         } else if (buttonLifted == 1) {
@@ -152,7 +152,7 @@ const double MODE_CHANGE_DURATION = 0.5f;
             [self activateButton:NO_DIRECTION];
         }
     } else if (!anyButtonPressed) {
-        NSLog(@" ---> Nothing pressed%@: %d", inMultitouch ? @" (multi-touch)" : @"", state);
+//        NSLog(@" ---> Nothing pressed%@: %d", inMultitouch ? @" (multi-touch)" : @"", state);
         if (state == 0x00) {
             [self activateButton:NO_DIRECTION];
             [self maybeReleaseToastActiveMode];
@@ -202,7 +202,7 @@ const double MODE_CHANGE_DURATION = 0.5f;
 - (void)fireButton:(TTModeDirection)direction {
     [appDelegate.modeMap setActiveModeDirection:direction];
     [appDelegate.modeMap runActiveButton];
-    [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];    
+    [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];
 
     [appDelegate.hudController toastActiveAction:direction];
     [appDelegate.hudController hideModeTease];
@@ -211,11 +211,11 @@ const double MODE_CHANGE_DURATION = 0.5f;
 }
 
 - (void)activeModeTimerFire:(NSTimer *)timer {
-    NSLog(@"Firing active mode timer: %d", appDelegate.modeMap.activeModeDirection);
+//    NSLog(@"Firing active mode timer: %d", appDelegate.modeMap.activeModeDirection);
     activeModeTimer = nil;
     TTModeDirection timerDirection = (TTModeDirection)[[timer.userInfo objectForKey:@"activeModeDirection"]
                                       integerValue];
-    NSLog(@" --> Teasing direction: %@ (%@)", [appDelegate.modeMap directionName:timerDirection], [appDelegate.modeMap directionName:appDelegate.modeMap.activeModeDirection]);
+//    NSLog(@" --> Teasing direction: %@ (%@)", [appDelegate.modeMap directionName:timerDirection], [appDelegate.modeMap directionName:appDelegate.modeMap.activeModeDirection]);
     if (appDelegate.modeMap.activeModeDirection == timerDirection) {
         [appDelegate.hudController teaseMode:timerDirection];
     }
