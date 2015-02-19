@@ -81,6 +81,7 @@
 		FF801332186E156900955218 /* TTOptionsModeTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801331186E156900955218 /* TTOptionsModeTitle.m */; };
 		FF801335186E207B00955218 /* TTDiamondLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801334186E207B00955218 /* TTDiamondLabel.m */; };
 		FF801338186E5D9700955218 /* TTOptionsActionTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801337186E5D9700955218 /* TTOptionsActionTitle.m */; };
+		FF8528F61A96A63A00B289FD /* TTModeMusic.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF8528F51A96A63A00B289FD /* TTModeMusic.plist */; };
 		FF8C833717AB14B5000166FC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8C833617AB14B5000166FC /* Cocoa.framework */; };
 		FF8C834117AB14B5000166FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF8C833F17AB14B5000166FC /* InfoPlist.strings */; };
 		FF8C834717AB14B5000166FC /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FF8C834517AB14B5000166FC /* Credits.rtf */; };
@@ -289,6 +290,7 @@
 		FF801334186E207B00955218 /* TTDiamondLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTDiamondLabel.m; sourceTree = "<group>"; };
 		FF801336186E5D9700955218 /* TTOptionsActionTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTOptionsActionTitle.h; path = "Views/Mode Options/TTOptionsActionTitle.h"; sourceTree = "<group>"; };
 		FF801337186E5D9700955218 /* TTOptionsActionTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTOptionsActionTitle.m; path = "Views/Mode Options/TTOptionsActionTitle.m"; sourceTree = "<group>"; };
+		FF8528F51A96A63A00B289FD /* TTModeMusic.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = TTModeMusic.plist; path = Modes/Music/TTModeMusic.plist; sourceTree = "<group>"; };
 		FF8C833317AB14B5000166FC /* Turn Touch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Turn Touch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF8C833617AB14B5000166FC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FF8C833917AB14B5000166FC /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -482,6 +484,7 @@
 		FF0E12CB18247D3000D49EC7 /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				FF8528F51A96A63A00B289FD /* TTModeMusic.plist */,
 				FF0E12CD18247D6100D49EC7 /* TTModeMusic.h */,
 				FF0E12CE18247D6100D49EC7 /* TTModeMusic.m */,
 				FF0E12CC18247D4600D49EC7 /* iTunes.h */,
@@ -1092,6 +1095,7 @@
 				FF2740791A7C5BC200C55579 /* itunes_itunesu_icon.png in Resources */,
 				FF936067196DF67500675B7B /* TFDatePicker-Info.plist in Resources */,
 				FF2365D3196F0DFA00A4ADBC /* mode_timer.png in Resources */,
+				FF8528F61A96A63A00B289FD /* TTModeMusic.plist in Resources */,
 				FF2365CF196F0DFA00A4ADBC /* mode_meditation.png in Resources */,
 				FF93606B196DF8A200675B7B /* clock b&w.png in Resources */,
 				FF2365D5196F0DFA00A4ADBC /* mode_web.png in Resources */,

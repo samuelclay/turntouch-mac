@@ -240,7 +240,7 @@
                            actionDirectionName,
                            optionName];
     NSString *pref = [prefs objectForKey:optionKey];
-//    NSLog(@" -> Getting action options %@: %@", optionKey, pref);
+    NSLog(@" -> Getting action options %@: %@", optionKey, pref);
     
     if (!pref) {
         pref = [self selectedActionDefaultPreference:actionName withOption:optionName];

@@ -12,6 +12,7 @@
 @implementation TTModeMusic
 
 const NSInteger ITUNES_VOLUME_PCT_CHANGE = 8;
+NSString *const kMusicVolumeJump = @"musicVolumeJump";
 
 #pragma mark - Mode
 
@@ -34,7 +35,8 @@ const NSInteger ITUNES_VOLUME_PCT_CHANGE = 8;
              @"TTModeMusicVolumeDown",
              @"TTModeMusicPause",
              @"TTModeMusicNextTrack",
-             @"TTModeMusicPreviousTrack"
+             @"TTModeMusicPreviousTrack",
+             @"TTModeMusicVolumeJump"
              ];
 }
 
@@ -55,6 +57,9 @@ const NSInteger ITUNES_VOLUME_PCT_CHANGE = 8;
 - (NSString *)titleTTModeMusicPreviousTrack {
     return @"Previous track";
 }
+- (NSString *)titleTTModeMusicVolumeJump {
+    return @"Volume jump";
+}
 
 #pragma mark - Action Images
 
@@ -73,6 +78,9 @@ const NSInteger ITUNES_VOLUME_PCT_CHANGE = 8;
 - (NSString *)imageTTModeMusicPreviousTrack {
     return @"previous_track.png";
 }
+- (NSString *)imageTTModeMusicVolumeJump {
+    return @"volume_jump.png";
+}
 
 #pragma mark - Progress
 
@@ -90,6 +98,10 @@ const NSInteger ITUNES_VOLUME_PCT_CHANGE = 8;
 }
 
 - (NSInteger)progressTTModeMusicVolumeMute {
+    return [self progressVolume];
+}
+
+- (NSInteger)progressTTModeMusicVolumeJump {
     return [self progressVolume];
 }
 
@@ -126,6 +138,16 @@ const NSInteger ITUNES_VOLUME_PCT_CHANGE = 8;
     iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
     
     [iTunes previousTrack];
+}
+
+- (void)runTTModeMusicVolumeJump:(TTModeDirection)direction {
+    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    NSInteger volume = iTunes.soundVolume;
+    NSInteger volumeJump = [[NSAppDelegate.modeMap actionOptionValue:kMusicVolumeJump inDirection:direction] integerValue];
+    if (volume != volumeJump) originalVolume = volume;
+
+    NSLog(@"Music mode volume jump: %ld (%ld) %ld", (long)volume, (long)originalVolume, (long)volumeJump);
+    [iTunes setSoundVolume:(volume == volumeJump ? originalVolume : volumeJump)];
 }
 
 #pragma mark - Defaults

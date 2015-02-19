@@ -226,7 +226,7 @@
         if( (characteristic.value)  || !error ) {
             const uint8_t *bytes = [characteristic.value bytes]; // pointer to the bytes in data
             int value = bytes[0]; // first byte
-//            NSLog(@"Battery level: %d%%", value);
+            NSLog(@"Battery level: %d%%", value);
         }
     } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:CBUUIDDeviceNameString]]) {
 //        NSString * deviceName = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];

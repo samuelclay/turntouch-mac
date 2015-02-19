@@ -10,6 +10,8 @@
 #import "TTMode.h"
 #import "TTModeProtocol.h"
 
-@interface TTModeMusic : TTMode
+@interface TTModeMusic : TTMode {
+    NSInteger originalVolume;
+}
 
 @end
