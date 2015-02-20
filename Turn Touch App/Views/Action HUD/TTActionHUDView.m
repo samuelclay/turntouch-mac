@@ -32,6 +32,19 @@ const CGFloat kMarginPct = .6f;
 //    [progressBar setFrame:NSInsetRect(frame, 100, 0)];
 }
 
+- (void)drawImageLayoutView {
+    ActionLayout layout = [appDelegate.modeMap.selectedMode layoutInDirection:direction];
+    [imageLayoutView removeFromSuperview];
+    if (layout == ACTION_LAYOUT_TITLE) {
+        [imageLayoutView setHidden:YES];
+    } else if (layout == ACTION_LAYOUT_IMAGE_TITLE) {
+        NSRect frame = [self actionFrame];
+        imageLayoutView = [appDelegate.modeMap.selectedMode viewForLayout:direction withRect:frame];
+        [self addSubview:imageLayoutView];
+        [imageLayoutView setHidden:NO];
+    }
+}
+
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     ActionLayout layout = [appDelegate.modeMap.selectedMode layoutInDirection:direction];
@@ -42,7 +55,7 @@ const CGFloat kMarginPct = .6f;
         [self drawProgress];
     } else if (layout == ACTION_LAYOUT_IMAGE_TITLE) {
         [self drawSmallLabel];
-        [self drawImage];
+        [imageLayoutView setHidden:NO];
     }
 }
 
@@ -102,11 +115,23 @@ const CGFloat kMarginPct = .6f;
 #pragma mark - Action Layout - Image
 
 - (void)drawSmallLabel {
-    
-}
-
-- (void)drawImage {
-    
+    NSRect frame = [self actionFrame];
+    NSShadow *stringShadow = [[NSShadow alloc] init];
+    stringShadow.shadowColor = [NSColor whiteColor];
+    stringShadow.shadowOffset = NSMakeSize(0, -1);
+    stringShadow.shadowBlurRadius = 0;
+    NSColor *textColor = NSColorFromRGB(0x404A60);
+    NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    [style setAlignment:NSCenterTextAlignment];
+    NSDictionary *labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:38],
+                                      NSForegroundColorAttributeName: textColor,
+                                      NSShadowAttributeName: stringShadow,
+                                      NSParagraphStyleAttributeName: style
+                                      };
+    NSString *directionLabel = [appDelegate.modeMap.selectedMode
+                                titleInDirection:direction];
+    frame.size.height = frame.size.height * 0.7 + [directionLabel sizeWithAttributes:labelAttributes].height/2;
+    [directionLabel drawInRect:frame withAttributes:labelAttributes];
 }
 
 @end

@@ -48,6 +48,7 @@
 
     [hudView setDirection:direction];
     [hudView drawProgressBar:progressBar];
+    [hudView drawImageLayoutView];
     [hudView setNeedsDisplay:YES];
     
     if (hudWindow.frame.origin.y == [self hiddenFrame].origin.y) {

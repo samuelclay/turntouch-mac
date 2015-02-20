@@ -133,22 +133,22 @@
 }
 
 - (void)runTTModeHueSceneEarlyEvening:(TTModeDirection)direction {
-    NSLog(@"Running early evening... %d", direction);
+//    NSLog(@"Running early evening... %d", direction);
     [self runScene:direction];
 }
 
 - (void)runTTModeHueSceneLateEvening:(TTModeDirection)direction {
-    NSLog(@"Running late evening... %d", direction);
+//    NSLog(@"Running late evening... %d", direction);
     [self runScene:direction];
 }
 
 - (void)runTTModeHueSceneOff:(TTModeDirection)direction {
-    NSLog(@"Running scene off... %d", direction);
+//    NSLog(@"Running scene off... %d", direction);
     [self runScene:direction];
 }
 
 - (void)runTTModeHueSceneSleep:(TTModeDirection)direction {
-    NSLog(@"Running scene off... %d", direction);
+//    NSLog(@"Running scene off... %d", direction);
     [self runScene:direction];
 }
 

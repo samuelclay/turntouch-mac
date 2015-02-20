@@ -39,7 +39,7 @@ const NSInteger kImageTextMargin = 24;
 }
 
 - (void)drawMapBackground {
-    NSLog(@"drawMapBackground");
+//    NSLog(@"drawMapBackground");
     NSRect mapFrame = [self mapFrame];
     [gradientView setFrame:self.bounds];
     [teaserGradientView setFrame:self.bounds];
@@ -60,7 +60,7 @@ const NSInteger kImageTextMargin = 24;
                           initWithStartingColor:NSColorFromRGBAlpha(0x404040, alpha)
                           endingColor:NSColorFromRGB(0x070707)];
         [teaserGradientView setDrawBlock:^{
-            NSLog(@"Start teaser gradient");
+//            NSLog(@"Start teaser gradient");
             [borderGradient drawInBezierPath:diamond angle:-90];
         }];
     } else {
@@ -70,7 +70,7 @@ const NSInteger kImageTextMargin = 24;
                           endingColor:NSColorFromRGB(0xa7a7a7)];
 
         [gradientView setDrawBlock:^{
-            NSLog(@"Start full gradient");
+//            NSLog(@"Start full gradient");
             [borderGradient drawInBezierPath:diamond angle:-90];
         }];
     }

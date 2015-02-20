@@ -26,8 +26,6 @@
     [self updateVolumeJumpLabel];
 }
 
-
-
 - (void)updateVolumeJumpLabel {
     NSInteger volumeJump = [[NSAppDelegate.modeMap actionOptionValue:kMusicVolumeJump] integerValue];
     

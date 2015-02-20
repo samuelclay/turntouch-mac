@@ -16,10 +16,12 @@
     TTAppDelegate *appDelegate;
     TTModeDirection direction;
     NSProgressIndicator *progressBar;
+    NSView *imageLayoutView;
 }
 
 @property (nonatomic) TTModeDirection direction;
 
 - (void)drawProgressBar:(NSProgressIndicator *)progressBar;
+- (void)drawImageLayoutView;
 
 @end

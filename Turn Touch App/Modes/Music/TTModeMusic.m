@@ -111,6 +111,25 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
     return ACTION_LAYOUT_IMAGE_TITLE;
 }
 
+- (NSView *)viewForLayoutTTModeMusicPause:(NSRect)rect {
+    NSView *view = [[NSView alloc] initWithFrame:rect];
+    
+    iTunesApplication * iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    NSImage *songArtwork;
+    iTunesTrack *current = [iTunes currentTrack];
+    iTunesArtwork *artwork = (iTunesArtwork *)[[[current artworks] get] lastObject];
+    if (artwork != nil) {
+        songArtwork = [artwork data];
+    } else {
+        songArtwork = [NSImage imageNamed:@"icon_music.png"];
+    }
+    NSImageView *imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(300, 20, 86, 86)];
+    [imageView setImage:songArtwork];
+    [view addSubview:imageView];
+    
+    return view;
+}
+
 #pragma mark - Action methods
 
 - (void)runTTModeMusicVolumeUp {

@@ -104,7 +104,7 @@
 
 - (void)runDirection:(TTModeDirection)direction {
     NSString *actionName = [self actionNameInDirection:direction];
-    NSLog(@"Running: %d - %@", direction, actionName);
+//    NSLog(@"Running: %d - %@", direction, actionName);
 
     // First check for runAction:direction...
     SEL selector = NSSelectorFromString([NSString stringWithFormat:@"run%@:",
@@ -173,6 +173,20 @@
     }
     
     return ACTION_LAYOUT_TITLE;
+}
+
+- (NSView *)viewForLayout:(TTModeDirection)direction withRect:(NSRect)rect {
+    NSString *actionName = [self actionNameInDirection:direction];
+    
+    return [self viewForLayoutOfAction:actionName withRect:rect];
+}
+
+- (NSView *)viewForLayoutOfAction:(NSString *)actionName withRect:(NSRect)rect {
+    SEL selector = NSSelectorFromString([NSString stringWithFormat:@"viewForLayout%@:",
+                                         actionName]);
+    IMP imp = [self methodForSelector:selector];
+    NSView *(*func)(id, SEL, NSRect) = (void *)imp;
+    return func(self, selector, rect);
 }
 
 - (NSString *)actionNameInDirection:(TTModeDirection)direction {
