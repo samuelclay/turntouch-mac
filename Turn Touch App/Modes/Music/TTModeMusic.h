@@ -10,6 +10,8 @@
 #import "TTMode.h"
 #import "TTModeProtocol.h"
 
+extern NSString *const kMusicVolumeJump;
+
 @interface TTModeMusic : TTMode {
     NSInteger originalVolume;
 }

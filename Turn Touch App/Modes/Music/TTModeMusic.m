@@ -105,6 +105,12 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
     return [self progressVolume];
 }
 
+#pragma mark - Layout
+
+- (ActionLayout)layoutTTModeMusicPause {
+    return ACTION_LAYOUT_IMAGE_TITLE;
+}
+
 #pragma mark - Action methods
 
 - (void)runTTModeMusicVolumeUp {

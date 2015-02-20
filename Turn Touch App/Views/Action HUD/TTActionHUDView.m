@@ -34,10 +34,16 @@ const CGFloat kMarginPct = .6f;
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
+    ActionLayout layout = [appDelegate.modeMap.selectedMode layoutInDirection:direction];
     
     [self drawBackground];
-    [self drawLabel];
-    [self drawProgress];
+    if (layout == ACTION_LAYOUT_TITLE) {
+        [self drawLabel];
+        [self drawProgress];
+    } else if (layout == ACTION_LAYOUT_IMAGE_TITLE) {
+        [self drawSmallLabel];
+        [self drawImage];
+    }
 }
 
 - (NSRect)actionFrame {
@@ -64,6 +70,8 @@ const CGFloat kMarginPct = .6f;
     [borderGradient drawInBezierPath:ellipse angle:-90];
 }
 
+#pragma mark - Action Layout - Text / Progress
+
 - (void)drawLabel {
     NSRect frame = [self actionFrame];
     NSShadow *stringShadow = [[NSShadow alloc] init];
@@ -89,6 +97,16 @@ const CGFloat kMarginPct = .6f;
     if (progress == -1) return;
     
     [progressBar setDoubleValue:progress];    
+}
+
+#pragma mark - Action Layout - Image
+
+- (void)drawSmallLabel {
+    
+}
+
+- (void)drawImage {
+    
 }
 
 @end

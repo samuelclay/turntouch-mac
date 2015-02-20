@@ -157,6 +157,24 @@
     return actionImageName;
 }
 
+- (ActionLayout)layoutInDirection:(TTModeDirection)direction {
+    NSString *actionName = [self actionNameInDirection:direction];
+    
+    return [self layoutForAction:actionName];
+}
+
+- (ActionLayout)layoutForAction:(NSString *)actionName {
+    SEL selector = NSSelectorFromString([NSString stringWithFormat:@"layout%@",
+                                         actionName]);
+    IMP imp = [self methodForSelector:selector];
+    ActionLayout (*func)(id, SEL) = (void *)imp;
+    if ([self respondsToSelector:selector]) {
+        return func(self, selector);
+    }
+    
+    return ACTION_LAYOUT_TITLE;
+}
+
 - (NSString *)actionNameInDirection:(TTModeDirection)direction {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     

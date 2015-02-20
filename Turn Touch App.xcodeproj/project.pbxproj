@@ -82,6 +82,8 @@
 		FF801335186E207B00955218 /* TTDiamondLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801334186E207B00955218 /* TTDiamondLabel.m */; };
 		FF801338186E5D9700955218 /* TTOptionsActionTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801337186E5D9700955218 /* TTOptionsActionTitle.m */; };
 		FF8528F61A96A63A00B289FD /* TTModeMusic.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF8528F51A96A63A00B289FD /* TTModeMusic.plist */; };
+		FF8528F81A96B58700B289FD /* TTModeMusicVolumeJumpOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF8528F71A96B58700B289FD /* TTModeMusicVolumeJumpOptions.xib */; };
+		FF8528FB1A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8528FA1A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.m */; };
 		FF8C833717AB14B5000166FC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8C833617AB14B5000166FC /* Cocoa.framework */; };
 		FF8C834117AB14B5000166FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF8C833F17AB14B5000166FC /* InfoPlist.strings */; };
 		FF8C834717AB14B5000166FC /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FF8C834517AB14B5000166FC /* Credits.rtf */; };
@@ -291,6 +293,9 @@
 		FF801336186E5D9700955218 /* TTOptionsActionTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTOptionsActionTitle.h; path = "Views/Mode Options/TTOptionsActionTitle.h"; sourceTree = "<group>"; };
 		FF801337186E5D9700955218 /* TTOptionsActionTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTOptionsActionTitle.m; path = "Views/Mode Options/TTOptionsActionTitle.m"; sourceTree = "<group>"; };
 		FF8528F51A96A63A00B289FD /* TTModeMusic.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = TTModeMusic.plist; path = Modes/Music/TTModeMusic.plist; sourceTree = "<group>"; };
+		FF8528F71A96B58700B289FD /* TTModeMusicVolumeJumpOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeMusicVolumeJumpOptions.xib; path = Modes/Music/TTModeMusicVolumeJumpOptions.xib; sourceTree = "<group>"; };
+		FF8528F91A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMusicVolumeJumpOptions.h; path = Modes/Music/TTModeMusicVolumeJumpOptions.h; sourceTree = "<group>"; };
+		FF8528FA1A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeMusicVolumeJumpOptions.m; path = Modes/Music/TTModeMusicVolumeJumpOptions.m; sourceTree = "<group>"; };
 		FF8C833317AB14B5000166FC /* Turn Touch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Turn Touch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF8C833617AB14B5000166FC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FF8C833917AB14B5000166FC /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -488,6 +493,9 @@
 				FF0E12CD18247D6100D49EC7 /* TTModeMusic.h */,
 				FF0E12CE18247D6100D49EC7 /* TTModeMusic.m */,
 				FF0E12CC18247D4600D49EC7 /* iTunes.h */,
+				FF8528F91A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.h */,
+				FF8528FA1A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.m */,
+				FF8528F71A96B58700B289FD /* TTModeMusicVolumeJumpOptions.xib */,
 			);
 			name = Music;
 			sourceTree = "<group>";
@@ -1073,6 +1081,7 @@
 				FF27407B1A7C5BC200C55579 /* itunes_tv_icon.png in Resources */,
 				FF93604C196DF0B600675B7B /* Effra_Rg.ttf in Resources */,
 				FF2740741A7C576900C55579 /* itunes_userplaylist_icon.png in Resources */,
+				FF8528F81A96B58700B289FD /* TTModeMusicVolumeJumpOptions.xib in Resources */,
 				FF3641F01A60C422003CC03C /* TTModeHuePushlink.xib in Resources */,
 				FF8C834117AB14B5000166FC /* InfoPlist.strings in Resources */,
 				FF2365D1196F0DFA00A4ADBC /* mode_music.png in Resources */,
@@ -1197,6 +1206,7 @@
 				FFB5FF3B1A671BE900DF617A /* TTModeHueSceneLateEveningOptions.m in Sources */,
 				FFB5FF411A671C4100DF617A /* TTModeHueSceneOffOptions.m in Sources */,
 				FFE2D4741A451BEA00DDD413 /* TTBluetoothMonitor.m in Sources */,
+				FF8528FB1A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.m in Sources */,
 				FFA1D4CF1A3B8916003EA0BC /* TTHUDController.m in Sources */,
 				FFB167111923E6BF008FA1AF /* TTBoxView.m in Sources */,
 				FFAFCBC519130F520058B9CB /* TTPanelArrowView.m in Sources */,

@@ -12,6 +12,11 @@
 
 @class TTAppDelegate;
 
+typedef enum {
+    ACTION_LAYOUT_TITLE = 0,
+    ACTION_LAYOUT_IMAGE_TITLE = 1
+} ActionLayout;
+
 @interface TTMode : NSObject <TTModeProtocol> {
     TTAppDelegate *appDelegate;
     TTModeDirection modeDirection;
@@ -25,6 +30,7 @@
 - (NSString *)titleForAction:(NSString *)actionName;
 - (NSString *)imageNameInDirection:(TTModeDirection)direction;
 - (NSString *)imageNameForAction:(NSString *)actionName;
+- (ActionLayout)layoutInDirection:(TTModeDirection)direction;
 - (NSString *)actionNameInDirection:(TTModeDirection)direction;
 - (NSInteger)progressInDirection:(TTModeDirection)direction;
 - (void)changeDirection:(TTModeDirection)direction toAction:(NSString *)actionClassName;
