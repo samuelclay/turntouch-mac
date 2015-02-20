@@ -112,20 +112,82 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
 }
 
 - (NSView *)viewForLayoutTTModeMusicPause:(NSRect)rect {
+    return [self songInfoView:rect];
+}
+
+- (ActionLayout)layoutTTModeMusicNextTrack {
+    return ACTION_LAYOUT_IMAGE_TITLE;
+}
+
+- (NSView *)viewForLayoutTTModeMusicNextTrack:(NSRect)rect {
+    return [self songInfoView:rect];
+}
+
+- (NSView *)songInfoView:(NSRect)rect {
     NSView *view = [[NSView alloc] initWithFrame:rect];
     
+    // Album art
     iTunesApplication * iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
     NSImage *songArtwork;
     iTunesTrack *current = [iTunes currentTrack];
     iTunesArtwork *artwork = (iTunesArtwork *)[[[current artworks] get] lastObject];
     if (artwork != nil) {
-        songArtwork = [artwork data];
+        songArtwork = [[NSImage alloc] initWithData:[artwork rawData]];
     } else {
         songArtwork = [NSImage imageNamed:@"icon_music.png"];
     }
     NSImageView *imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(300, 20, 86, 86)];
     [imageView setImage:songArtwork];
     [view addSubview:imageView];
+    
+    // Check if song playing
+    if (!current.name) {
+        NSTextView *songTitleView = [[NSTextView alloc] initWithFrame:NSMakeRect(400, 48, 400, 36)];
+        [songTitleView setString:@"iTunes isn't playing anything"];
+        [songTitleView setTextColor:NSColorFromRGB(0x604050)];
+        [songTitleView setFont:[NSFont fontWithName:@"Effra" size:24]];
+        [songTitleView setBackgroundColor:[NSColor clearColor]];
+        [view addSubview:songTitleView];
+    } else {
+        // Song title
+        NSTextField *songTitleView = [[NSTextField alloc] initWithFrame:NSMakeRect(400, 76, 350, 36)];
+        [songTitleView setStringValue:current.name];
+        [songTitleView setTextColor:NSColorFromRGB(0x604050)];
+        [songTitleView setFont:[NSFont fontWithName:@"Effra" size:24]];
+        [songTitleView setBackgroundColor:[NSColor clearColor]];
+        [songTitleView setLineBreakMode:NSLineBreakByTruncatingTail];
+        [songTitleView setBezeled:NO];
+        [songTitleView setEditable:NO];
+        [songTitleView setSelectable:NO];
+        [songTitleView setDrawsBackground:NO];
+        [view addSubview:songTitleView];
+        
+        // Artist
+        NSTextField *artistView = [[NSTextField alloc] initWithFrame:NSMakeRect(400, 48, 400, 36)];
+        [artistView setStringValue:current.artist];
+        [artistView setTextColor:NSColorFromRGB(0x9080A0)];
+        [artistView setFont:[NSFont fontWithName:@"Effra" size:24]];
+        [artistView setBackgroundColor:[NSColor clearColor]];
+        [artistView setLineBreakMode:NSLineBreakByTruncatingTail];
+        [artistView setBezeled:NO];
+        [artistView setEditable:NO];
+        [artistView setSelectable:NO];
+        [artistView setDrawsBackground:NO];
+        [view addSubview:artistView];
+        
+        // Album
+        NSTextField *albumView = [[NSTextField alloc] initWithFrame:NSMakeRect(400, 20, 450, 36)];
+        [albumView setStringValue:current.album];
+        [albumView setTextColor:NSColorFromRGB(0x9080A0)];
+        [albumView setFont:[NSFont fontWithName:@"Effra" size:24]];
+        [albumView setBackgroundColor:[NSColor clearColor]];
+        [albumView setLineBreakMode:NSLineBreakByTruncatingTail];
+        [albumView setBezeled:NO];
+        [albumView setEditable:NO];
+        [albumView setSelectable:NO];
+        [albumView setDrawsBackground:NO];
+        [view addSubview:albumView];
+    }
     
     return view;
 }

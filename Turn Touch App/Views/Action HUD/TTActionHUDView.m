@@ -94,7 +94,7 @@ const CGFloat kMarginPct = .6f;
     NSColor *textColor = NSColorFromRGB(0x404A60);
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [style setAlignment:NSCenterTextAlignment];
-    NSDictionary *labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:54],
+    NSDictionary *labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:52],
                                       NSForegroundColorAttributeName: textColor,
                                       NSShadowAttributeName: stringShadow,
                                       NSParagraphStyleAttributeName: style
