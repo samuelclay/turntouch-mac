@@ -61,11 +61,13 @@
 
 - (IBAction)fadeOut:(id)sender {
     //    __block __unsafe_unretained NSWindow *window = hudWindow;
-    
+    if (isFading) return;
+    isFading = YES;
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:.55f];
     [[NSAnimationContext currentContext] setCompletionHandler:^{
 //        [hudWindow orderOut:nil];
+        isFading = NO;
     }];
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];

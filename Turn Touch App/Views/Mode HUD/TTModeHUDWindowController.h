@@ -17,6 +17,8 @@
     TTAppDelegate *appDelegate;
     TTModeHUDView *hudView;
     TTModeHUDWindow *hudWindow;
+    
+    BOOL isFading;
 }
 
 @property (nonatomic) IBOutlet TTModeHUDView *hudView;
