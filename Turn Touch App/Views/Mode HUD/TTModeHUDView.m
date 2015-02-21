@@ -21,59 +21,65 @@ const NSInteger kImageTextMargin = 24;
 
 - (void)awakeFromNib {
     appDelegate = (TTAppDelegate *)[NSApp delegate];
-    teaserGradientView = [[TTGradientView alloc] initWithFrame:NSZeroRect];
-    [self addSubview:teaserGradientView];
-    gradientView = [[TTGradientView alloc] initWithFrame:NSZeroRect];
-    [self addSubview:gradientView];
     diamondLabels = [[TTDiamondLabels alloc] initWithInteractive:NO];
     isTeaser = NO;
+    teaserGradientView = [[NSImageView alloc] init];
+    gradientView = [[NSImageView alloc] init];
+    
+    [self drawMapBackground];
+
+    [self addSubview:teaserGradientView];
+    [self addSubview:gradientView];
     [self addSubview:diamondLabels];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
-    [self drawMapBackground];
+//    NSLog(@"Draw mode: %d / %@", isTeaser, NSStringFromRect(mapFrame));
+
     [self drawLabelBackgrounds];
     [self drawLabels];
     [self drawMap];
 }
 
 - (void)drawMapBackground {
-//    NSLog(@"drawMapBackground");
+    NSLog(@"drawMapBackground");
     NSRect mapFrame = [self mapFrame];
-    [gradientView setFrame:self.bounds];
-    [teaserGradientView setFrame:self.bounds];
+    [gradientView setFrame:mapFrame];
+    [teaserGradientView setFrame:mapFrame];
     NSBezierPath *diamond = [NSBezierPath bezierPath];
-    [diamond moveToPoint:NSMakePoint(mapFrame.origin.x,
-                                     mapFrame.size.height/2 + mapFrame.origin.y)];
-    [diamond lineToPoint:NSMakePoint(mapFrame.size.width/2 + mapFrame.origin.x,
-                                     mapFrame.size.height + mapFrame.origin.y - SPACING_PCT*mapFrame.size.height*1.3)];
-    [diamond lineToPoint:NSMakePoint(mapFrame.size.width + mapFrame.origin.x,
-                                     mapFrame.size.height/2 + mapFrame.origin.y)];
-    [diamond lineToPoint:NSMakePoint(mapFrame.size.width/2 + mapFrame.origin.x, mapFrame.origin.y + SPACING_PCT*mapFrame.size.height*1.3)];
+    [diamond moveToPoint:NSMakePoint(0,
+                                     mapFrame.size.height/2)];
+    [diamond lineToPoint:NSMakePoint(mapFrame.size.width/2,
+                                     mapFrame.size.height - SPACING_PCT*mapFrame.size.height*1.3)];
+    [diamond lineToPoint:NSMakePoint(mapFrame.size.width,
+                                     mapFrame.size.height/2)];
+    [diamond lineToPoint:NSMakePoint(mapFrame.size.width/2, SPACING_PCT*mapFrame.size.height*1.3)];
     [diamond closePath];
     CGFloat alpha = 0.9f;
     NSGradient *borderGradient;
-    if (isTeaser) {
-        [NSColorFromRGBAlpha(0x201C2F, alpha) setStroke];
-        borderGradient = [[NSGradient alloc]
-                          initWithStartingColor:NSColorFromRGBAlpha(0x404040, alpha)
-                          endingColor:NSColorFromRGB(0x070707)];
-        [teaserGradientView setDrawBlock:^{
-//            NSLog(@"Start teaser gradient");
-            [borderGradient drawInBezierPath:diamond angle:-90];
-        }];
-    } else {
-        [NSColorFromRGBAlpha(0xC0BCCF, alpha) setStroke];
-        borderGradient = [[NSGradient alloc]
-                          initWithStartingColor:NSColorFromRGBAlpha(0xffffff, alpha)
-                          endingColor:NSColorFromRGB(0xa7a7a7)];
 
-        [gradientView setDrawBlock:^{
-//            NSLog(@"Start full gradient");
-            [borderGradient drawInBezierPath:diamond angle:-90];
-        }];
-    }
+    NSImage *teaserGradientImage = [[NSImage alloc] initWithSize:mapFrame.size];
+    [teaserGradientImage lockFocus];
+    borderGradient = [[NSGradient alloc]
+                      initWithStartingColor:NSColorFromRGBAlpha(0x404040, alpha)
+                      endingColor:NSColorFromRGB(0x070707)];
+    [diamond addClip];
+    [NSColorFromRGBAlpha(0x201C2F, alpha) setStroke];
+    [borderGradient drawInRect:NSMakeRect(0, 0, mapFrame.size.width, mapFrame.size.height) angle:-90];
+    [teaserGradientImage unlockFocus];
+    [teaserGradientView setImage:teaserGradientImage];
+
+    NSImage *gradientImage = [[NSImage alloc] initWithSize:mapFrame.size];
+    [gradientImage lockFocus];
+    [NSColorFromRGBAlpha(0xC0BCCF, alpha) setStroke];
+    borderGradient = [[NSGradient alloc]
+                      initWithStartingColor:NSColorFromRGBAlpha(0xffffff, alpha)
+                      endingColor:NSColorFromRGB(0xa7a7a7)];
+    [borderGradient drawInBezierPath:diamond angle:-90];
+    [gradientImage unlockFocus];
+    [gradientView setImage:gradientImage];
+
     [diamond stroke];
 }
 

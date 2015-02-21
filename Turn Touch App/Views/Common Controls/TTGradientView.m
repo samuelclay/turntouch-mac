@@ -118,10 +118,10 @@
     fade.duration = animDuration;
     fade.timingFunction =  [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     fade.type = kCATransitionFade;
-    self.animations = @{@"subviews": fade};
+//    self.animations = @{@"subviews": fade};
     
     //Start the animation, fading from the NSImageView with the current view, to the one with the new one.
-    [self replaceSubview:currentImageView with:newImageView];
+//    [self replaceSubview:currentImageView with:newImageView];
     
     self.drawBlock = newDrawBlock;
     

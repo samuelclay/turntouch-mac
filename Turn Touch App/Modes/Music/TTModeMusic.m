@@ -130,6 +130,22 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
     return [self songInfoView:rect];
 }
 
+//- (ActionLayout)layoutTTModeMusicVolumeUp {
+//    return ACTION_LAYOUT_IMAGE_TITLE;
+//}
+//
+//- (NSView *)viewForLayoutTTModeMusicVolumeUp:(NSRect)rect {
+//    return [self songInfoView:rect];
+//}
+//
+//- (ActionLayout)layoutTTModeMusicVolumeDown {
+//    return ACTION_LAYOUT_IMAGE_TITLE;
+//}
+//
+//- (NSView *)viewForLayoutTTModeMusicVolumeDown:(NSRect)rect {
+//    return [self songInfoView:rect];
+//}
+
 - (NSView *)songInfoView:(NSRect)rect {
     NSView *view = [[NSView alloc] initWithFrame:rect];
     
