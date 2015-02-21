@@ -141,6 +141,26 @@
     return actionTitle;
 }
 
+- (NSString *)actionTitleInDirection:(TTModeDirection)direction {
+    NSString *actionName = [self actionNameInDirection:direction];
+    
+    return [self actionTitleForAction:actionName];
+}
+
+- (NSString *)actionTitleForAction:(NSString *)actionName {
+    SEL selector = NSSelectorFromString([NSString stringWithFormat:@"actionTitle%@",
+                                         actionName]);
+    if (![self respondsToSelector:selector]) {
+        return [self titleForAction:actionName];
+    }
+    
+    IMP imp = [self methodForSelector:selector];
+    NSString *(*func)(id, SEL) = (void *)imp;
+    NSString *actionTitle = func(self, selector);
+    
+    return actionTitle;
+}
+
 - (NSString *)imageNameInDirection:(TTModeDirection)direction {
     NSString *actionName = [self actionNameInDirection:direction];
     

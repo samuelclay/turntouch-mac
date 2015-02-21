@@ -100,7 +100,7 @@ const CGFloat kMarginPct = .6f;
                                       NSParagraphStyleAttributeName: style
                                       };
     NSString *directionLabel = [appDelegate.modeMap.selectedMode
-                                titleInDirection:direction];
+                                actionTitleInDirection:direction];
     frame.size.height = frame.size.height / 2 + [directionLabel sizeWithAttributes:labelAttributes].height/2;
     [directionLabel drawInRect:frame withAttributes:labelAttributes];
 }
@@ -129,7 +129,7 @@ const CGFloat kMarginPct = .6f;
                                       NSParagraphStyleAttributeName: style
                                       };
     NSString *directionLabel = [appDelegate.modeMap.selectedMode
-                                titleInDirection:direction];
+                                actionTitleInDirection:direction];
     frame.size.height = frame.size.height * 0.7 + [directionLabel sizeWithAttributes:labelAttributes].height/2;
     [directionLabel drawInRect:frame withAttributes:labelAttributes];
 }

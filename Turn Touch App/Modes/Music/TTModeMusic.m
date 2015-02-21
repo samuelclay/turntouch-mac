@@ -51,6 +51,13 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
 - (NSString *)titleTTModeMusicPause {
     return @"Play/pause";
 }
+- (NSString *)actionTitleTTModeMusicPause {
+    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    if (iTunes.playerState == iTunesEPlSPlaying) {
+        return @"Play";
+    }
+    return @"Pause";
+}
 - (NSString *)titleTTModeMusicNextTrack {
     return @"Next track";
 }

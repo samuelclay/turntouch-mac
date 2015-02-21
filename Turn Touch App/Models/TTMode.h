@@ -28,6 +28,7 @@ typedef enum {
 - (void)runDirection:(TTModeDirection)direction;
 - (NSString *)titleInDirection:(TTModeDirection)direction;
 - (NSString *)titleForAction:(NSString *)actionName;
+- (NSString *)actionTitleInDirection:(TTModeDirection)direction;
 - (NSString *)imageNameInDirection:(TTModeDirection)direction;
 - (NSString *)imageNameForAction:(NSString *)actionName;
 - (ActionLayout)layoutInDirection:(TTModeDirection)direction;
