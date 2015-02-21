@@ -42,13 +42,11 @@
     [self showWindow:appDelegate];
     [hudView setupTitleAttributes];
     hudView.isTeaser = NO;
-//    [hudView setNeedsDisplay:YES];
+    [hudView setNeedsDisplay:YES];
 
     if (hudWindow.frame.origin.y != [self visibleFrame].origin.y) {
         [hudWindow setFrame:[self visibleFrame] display:YES];
-//        [[hudWindow animator] setAlphaValue:0.f];
     }
-    
     
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:.5f];
@@ -58,7 +56,6 @@
     [[hudWindow animator] setAlphaValue:1.f];
     [[hudWindow animator] setFrame:[self visibleFrame] display:YES];
     [[[hudView gradientView] animator] setAlphaValue:1.f];
-//    [[[hudView teaserGradientView] animator] setAlphaValue:0.f];
     [NSAnimationContext endGrouping];
 }
 

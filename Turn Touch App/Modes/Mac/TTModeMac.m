@@ -216,10 +216,8 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
     
     // If the new volume is very low, just mute
     if (newVolume < 0.001) {
-        NSLog(@"Muting audio");
         propertyAOPA.mSelector = kAudioDevicePropertyMute;
     }	else {
-        NSLog(@"Setting audio volume to %d%%", (int) (newVolume * 100.0));
         propertyAOPA.mSelector = kAudioHardwareServiceDeviceProperty_VirtualMasterVolume;
     }
     

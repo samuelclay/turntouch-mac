@@ -220,7 +220,6 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
 - (void)runTTModeMusicVolumeUp {
     iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
     NSInteger volume = iTunes.soundVolume;
-    NSLog(@"Music mode North: %ld", (long)volume);
     [iTunes setSoundVolume:MIN(100, volume+ITUNES_VOLUME_PCT_CHANGE)];
 }
 
@@ -228,7 +227,6 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
     iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
     
     NSInteger volume = iTunes.soundVolume;
-    NSLog(@"Music mode South: %ld", (long)volume);
     [iTunes setSoundVolume:MAX(0, volume-ITUNES_VOLUME_PCT_CHANGE)];
 }
 
@@ -256,7 +254,6 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
     NSInteger volumeJump = [[NSAppDelegate.modeMap actionOptionValue:kMusicVolumeJump inDirection:direction] integerValue];
     if (volume != volumeJump) originalVolume = volume;
 
-    NSLog(@"Music mode volume jump: %ld (%ld) %ld", (long)volume, (long)originalVolume, (long)volumeJump);
     [iTunes setSoundVolume:(volume == volumeJump ? originalVolume : volumeJump)];
 }
 
