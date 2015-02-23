@@ -10,4 +10,20 @@
 
 @interface TTModeAlarmClock : TTMode
 
+extern NSString *const kRepeatAlarmEnabled;
+extern NSString *const kOnetimeAlarmEnabled;
+extern NSString *const kRepeatAlarmDays;
+extern NSString *const kRepeatAlarmTime;
+extern NSString *const kOnetimeAlarmDate;
+extern NSString *const kOnetimeAlarmTime;
+extern NSString *const kAlarmVolume;
+extern NSString *const kAlarmDuration;
+extern NSString *const kAlarmPlaylist;
+extern NSString *const kAlarmShuffle;
+
+@property (nonatomic, readwrite) NSTimer *repeatAlarmTimer;
+@property (nonatomic, readwrite) NSTimer *onetimeAlarmTimer;
+
+- (NSDate *)nextRepeatAlarmDate;
+
 @end

@@ -8,6 +8,8 @@
 
 #import "TTModeAlarmClockOptions.h"
 #import "iTunes.h"
+#import "TTModeAlarmClock.h"
+#import "NSDate+Extras.h"
 
 @implementation TTModeAlarmClockOptions
 
@@ -36,16 +38,6 @@
 
 NSUInteger const kRepeatHeight = 88;
 NSUInteger const kOnetimeHeight = 68;
-NSString *const kRepeatAlarmEnabled = @"repeatAlarmEnabled";
-NSString *const kOnetimeAlarmEnabled = @"onetimeAlarmEnabled";
-NSString *const kRepeatAlarmDays = @"repeatAlarmDays";
-NSString *const kRepeatAlarmTime = @"repeatAlarmTime";
-NSString *const kOnetimeAlarmDate = @"onetimeAlarmDate";
-NSString *const kOnetimeAlarmTime = @"onetimeAlarmTime";
-NSString *const kAlarmVolume = @"alarmVolume";
-NSString *const kAlarmDuration = @"alarmDuration";
-NSString *const kAlarmPlaylist = @"alarmPlaylist";
-NSString *const kAlarmShuffle = @"alarmShuffle";
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -160,7 +152,7 @@ NSString *const kAlarmShuffle = @"alarmShuffle";
         i++;
     }
     
-    NSDate *midnightToday = [self midnightToday];
+    NSDate *midnightToday = [NSDate midnightToday];
     NSTimeInterval timeInterval = repeatAlarmTime * 5 * 60;
     NSDate *time = [[NSDate alloc] initWithTimeInterval:timeInterval sinceDate:midnightToday];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -168,12 +160,14 @@ NSString *const kAlarmShuffle = @"alarmShuffle";
     
     NSString *label = [NSString stringWithFormat:@"%@, %ld %@ a week", [dateFormatter stringFromDate:time], (long)selectedDays, selectedDays == 1 ? @"day" : @"days"];
     [textRepeatTime setStringValue:label];
+    
+    [(TTModeAlarmClock *)appDelegate.modeMap.selectedMode nextRepeatAlarmDate];
 }
 
 #pragma mark - One Time alarm
 
 - (void)setOneTimeDate {
-    NSDate *midnightToday = [self midnightToday];
+    NSDate *midnightToday = [NSDate midnightToday];
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *todayComponents = [gregorian components:(NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit) fromDate:midnightToday];
     NSInteger theDay = [todayComponents day];
@@ -373,19 +367,6 @@ NSString *const kAlarmShuffle = @"alarmShuffle";
         [dropdowniTunesSources selectItem:selectedMenuItem];
         [dropdowniTunesSources setNeedsDisplay:YES];
     });
-}
-
-#pragma mark - Date Helpers
-
-- (NSDate *)midnightToday {
-    NSCalendar *cal = [NSCalendar currentCalendar];
-    NSDateComponents *comps = [cal components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:[NSDate date]];
-    [comps setHour:0];
-    [comps setMinute:0];
-    [comps setSecond:0];
-    NSDate *midnightOfToday = [cal dateFromComponents:comps];
-
-    return midnightOfToday;
 }
 
 @end
