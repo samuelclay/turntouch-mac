@@ -25,7 +25,7 @@
 @property (nonatomic) IBOutlet TTActionHUDWindowController *actionHUDController;
 
 - (void)toastActiveMode;
-- (void)holdToastActiveMode;
+- (void)holdToastActiveMode:(BOOL)animate;
 - (void)releaseToastActiveMode;
 - (void)teaseMode:(TTModeDirection)direction;
 - (void)hideModeTease;

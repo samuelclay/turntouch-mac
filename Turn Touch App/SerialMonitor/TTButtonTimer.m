@@ -122,7 +122,7 @@ const double MODE_CHANGE_DURATION = 0.5f;
         if (inMultitouch) {
             if (!holdToastStart) {
                 holdToastStart = [NSDate date];
-                [appDelegate.hudController holdToastActiveMode];
+                [appDelegate.hudController holdToastActiveMode:NO];
             }
             [self activateButton:NO_DIRECTION];
         } else if ((state & 0x01) == 0x01) {
@@ -177,7 +177,7 @@ const double MODE_CHANGE_DURATION = 0.5f;
     [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];
     [appDelegate.modeMap setSelectedModeDirection:direction];
     
-    [appDelegate.hudController holdToastActiveMode];
+    [appDelegate.hudController holdToastActiveMode:YES];
 }
 
 - (void)activateButton:(TTModeDirection)direction {

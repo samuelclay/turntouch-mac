@@ -32,7 +32,7 @@
 #pragma mark - Toasts
 
 - (void)toastActiveMode {
-    [modeHUDController fadeIn:nil];
+    [modeHUDController fadeIn:YES];
     
     if (modeOperation) [modeOperation cancel];
     
@@ -41,10 +41,10 @@
     } afterDelay:2.5 cancelPreviousRequest:YES];
 }
 
-- (void)holdToastActiveMode {
+- (void)holdToastActiveMode:(BOOL)animate {
     if (modeOperation) [modeOperation cancel];
 
-    [modeHUDController fadeIn:nil];
+    [modeHUDController fadeIn:animate];
 }
 
 - (void)releaseToastActiveMode {

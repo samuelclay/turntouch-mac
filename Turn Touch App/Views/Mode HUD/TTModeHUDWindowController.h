@@ -24,7 +24,7 @@
 @property (nonatomic) IBOutlet TTModeHUDView *hudView;
 @property (nonatomic) IBOutlet TTModeHUDWindow *hudWindow;
 
-- (IBAction)fadeIn:(id)sender;
+- (void)fadeIn:(BOOL)animate;
 - (IBAction)fadeOut:(id)sender;
 - (void)teaseMode:(TTModeDirection)direction;
 

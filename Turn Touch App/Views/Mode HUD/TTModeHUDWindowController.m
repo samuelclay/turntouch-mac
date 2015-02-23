@@ -37,7 +37,7 @@
     return NSMakeRect(0, 0, NSWidth(mainScreen.frame), NSHeight(mainScreen.frame));
 }
 
-- (IBAction)fadeIn:(id)sender {
+- (void)fadeIn:(BOOL)animate {
     [hudWindow makeKeyAndOrderFront:nil];
     [self showWindow:appDelegate];
     [hudView setupTitleAttributes];
@@ -47,6 +47,9 @@
     if (hudWindow.frame.origin.y != [self visibleFrame].origin.y) {
         [hudWindow setFrame:[self visibleFrame] display:YES];
     }
+    if (!animate) {
+        [[hudView gradientView] setAlphaValue:1.f];
+    }
     
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:.5f];
@@ -55,7 +58,9 @@
     
     [[hudWindow animator] setAlphaValue:1.f];
     [[hudWindow animator] setFrame:[self visibleFrame] display:YES];
-    [[[hudView gradientView] animator] setAlphaValue:1.f];
+    if (animate) {
+        [[[hudView gradientView] animator] setAlphaValue:1.f];
+    }
     [NSAnimationContext endGrouping];
 }
 
