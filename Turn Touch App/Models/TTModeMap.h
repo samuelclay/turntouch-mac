@@ -30,6 +30,7 @@
 @property (nonatomic) NSArray *availableModes;
 @property (nonatomic) NSArray *availableActions;
 
+- (void)activateTimers;
 - (void)reset;
 - (void)runActiveButton;
 - (NSString *)directionName:(TTModeDirection)direction;

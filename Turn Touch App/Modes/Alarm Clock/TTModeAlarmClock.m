@@ -178,7 +178,10 @@ NSString *const kAlarmShuffle = @"alarmShuffle";
     
     if (!onetimeAlarmEnabled) return nil;
     
-    return nil;
+    NSTimeInterval timeInterval = onetimeAlarmTime * 5 * 60;
+    NSDate *time = [[NSDate alloc] initWithTimeInterval:timeInterval sinceDate:oneTimeAlarmDate];
+
+    return time;
 }
 
 - (void)activateTimers {

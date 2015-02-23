@@ -45,6 +45,8 @@ void *kContextActivePanel = &kContextActivePanel;
     self.modeMap = [[TTModeMap alloc] init];
     self.menubarController = [[TTMenubarController alloc] init];
     self.bluetoothMonitor = [[TTBluetoothMonitor alloc] init];
+    
+    [self.modeMap activateTimers];
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender {

@@ -108,6 +108,14 @@
     southMode.modeDirection = SOUTH;
 }
 
+- (void)activateTimers {
+    for (TTMode *mode in @[northMode, eastMode, westMode, southMode]) {
+        if ([mode respondsToSelector:@selector(activateTimers)]) {
+            [mode activateTimers];
+        }
+    }
+}
+
 - (void)switchMode {
     if (selectedMode) {
         if ([selectedMode respondsToSelector:@selector(deactivate)]) {

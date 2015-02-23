@@ -132,12 +132,14 @@ NSUInteger const kOnetimeHeight = 68;
     }
     [NSAppDelegate.modeMap changeModeOption:kRepeatAlarmDays to:selectedDays];
     [self updateRepeatAlarmLabel];
+    [(TTModeAlarmClock *)appDelegate.modeMap.selectedMode activateTimers];
 }
 
 - (IBAction)changeRepeatTime:(id)sender {
     NSInteger alarmTime = MIN(287, [sliderRepeatTime integerValue]);
     [NSAppDelegate.modeMap changeModeOption:kRepeatAlarmTime to:[NSNumber numberWithInteger:alarmTime]];
     [self updateRepeatAlarmLabel];
+    [(TTModeAlarmClock *)appDelegate.modeMap.selectedMode activateTimers];
 }
 
 - (void)updateRepeatAlarmLabel {
@@ -160,8 +162,6 @@ NSUInteger const kOnetimeHeight = 68;
     
     NSString *label = [NSString stringWithFormat:@"%@, %ld %@ a week", [dateFormatter stringFromDate:time], (long)selectedDays, selectedDays == 1 ? @"day" : @"days"];
     [textRepeatTime setStringValue:label];
-    
-    [(TTModeAlarmClock *)appDelegate.modeMap.selectedMode nextRepeatAlarmDate];
 }
 
 #pragma mark - One Time alarm
@@ -187,6 +187,7 @@ NSUInteger const kOnetimeHeight = 68;
     [datePicker setDateValue:nextDate];
 
     [NSAppDelegate.modeMap changeModeOption:kOnetimeAlarmDate to:nextDate];
+    [(TTModeAlarmClock *)appDelegate.modeMap.selectedMode activateTimers];
 }
 
 - (IBAction)changeOnetimeDate:(id)sender {
@@ -194,6 +195,7 @@ NSUInteger const kOnetimeHeight = 68;
     
     [NSAppDelegate.modeMap changeModeOption:kOnetimeAlarmDate to:onetimeDate];
     [self updateOnetimeAlarmLabel];
+    [(TTModeAlarmClock *)appDelegate.modeMap.selectedMode activateTimers];
 }
 
 - (IBAction)changeOnetimeTime:(id)sender {
@@ -201,6 +203,7 @@ NSUInteger const kOnetimeHeight = 68;
     
     [NSAppDelegate.modeMap changeModeOption:kOnetimeAlarmTime to:[NSNumber numberWithInteger:alarmTime]];
     [self updateOnetimeAlarmLabel];
+    [(TTModeAlarmClock *)appDelegate.modeMap.selectedMode activateTimers];
 }
 
 - (void)updateOnetimeAlarmLabel {
