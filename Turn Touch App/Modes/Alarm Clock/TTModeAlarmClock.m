@@ -126,9 +126,9 @@ NSString *const kAlarmShuffle = @"alarmShuffle";
 #pragma mark - Timer
 
 - (NSDate *)nextRepeatAlarmDate {
-    BOOL repeatAlarmEnabled = [[NSAppDelegate.modeMap modeOptionValue:kRepeatAlarmEnabled] boolValue];
-    NSInteger repeatAlarmTime = [[NSAppDelegate.modeMap modeOptionValue:kRepeatAlarmTime] integerValue];
-    NSArray *repeatDays = [NSAppDelegate.modeMap modeOptionValue:kRepeatAlarmDays];
+    BOOL repeatAlarmEnabled = [[NSAppDelegate.modeMap mode:self optionValue:kRepeatAlarmEnabled] boolValue];
+    NSInteger repeatAlarmTime = [[NSAppDelegate.modeMap mode:self optionValue:kRepeatAlarmTime] integerValue];
+    NSArray *repeatDays = [NSAppDelegate.modeMap mode:self optionValue:kRepeatAlarmDays];
     
     if (!repeatAlarmEnabled) return nil;
     
@@ -140,18 +140,18 @@ NSString *const kAlarmShuffle = @"alarmShuffle";
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
     NSInteger offsetDayOfWeek = 0;
-    NSLog(@"Today's alarm: %@ / %@", time, midnightToday);
+//    NSLog(@"Today's alarm: %@ / %@", time, midnightToday);
     if ([time timeIntervalSinceDate:[NSDate date]] > 0) {
         // Alarm is later in the day
         NSString *dayOfWeekString = [dowFormatter stringFromDate:time];
         NSNumber *dayOfWeekNumber = [numberFormatter numberFromString:dayOfWeekString];
-        NSLog(@"Alarm is later in the day : %@ (%@)", time, dayOfWeekNumber);
+//        NSLog(@"Alarm is later in the day : %@ (%@)", time, dayOfWeekNumber);
         offsetDayOfWeek = [dayOfWeekNumber integerValue] - 1;
     } else {
         // Alarm is earlier in the day
         NSString *dayOfWeekString = [dowFormatter stringFromDate:time];
         NSNumber *dayOfWeekNumber = [numberFormatter numberFromString:dayOfWeekString];
-        NSLog(@"Alarm is earlier in the day : %@ (%@)", time, dayOfWeekNumber);
+//        NSLog(@"Alarm is earlier in the day : %@ (%@)", time, dayOfWeekNumber);
         offsetDayOfWeek = [dayOfWeekNumber integerValue];
     }
     
@@ -159,10 +159,10 @@ NSString *const kAlarmShuffle = @"alarmShuffle";
     NSInteger d = 0;
     while (d < 7) {
         NSInteger dayOfWeek = (d + offsetDayOfWeek) % 7;
-        NSLog(@"Checking %ld (%ld+%ld) day of week...", (long)dayOfWeek, (long)d, (long)offsetDayOfWeek);
+//        NSLog(@"Checking %ld (%ld+%ld) day of week...", (long)dayOfWeek, (long)d, (long)offsetDayOfWeek);
         if ([[repeatDays objectAtIndex:dayOfWeek] boolValue]) {
             time = [time dateByAddingTimeInterval:60*60*24*(d+offsetDayOfWeek-1)];
-            NSLog(@"Found next date: %@", time);
+//            NSLog(@"Found next date: %@", time);
             return time;
         }
         d++;
@@ -172,9 +172,9 @@ NSString *const kAlarmShuffle = @"alarmShuffle";
 }
 
 - (NSDate *)nextOnetimeAlarmDate {
-    BOOL onetimeAlarmEnabled = [[NSAppDelegate.modeMap modeOptionValue:kOnetimeAlarmEnabled] boolValue];
-    NSDate *oneTimeAlarmDate = [NSAppDelegate.modeMap modeOptionValue:kOnetimeAlarmDate];
-    NSInteger onetimeAlarmTime = [[NSAppDelegate.modeMap modeOptionValue:kOnetimeAlarmTime] integerValue];
+    BOOL onetimeAlarmEnabled = [[NSAppDelegate.modeMap mode:self optionValue:kOnetimeAlarmEnabled] boolValue];
+    NSDate *oneTimeAlarmDate = [NSAppDelegate.modeMap mode:self optionValue:kOnetimeAlarmDate];
+    NSInteger onetimeAlarmTime = [[NSAppDelegate.modeMap mode:self optionValue:kOnetimeAlarmTime] integerValue];
     
     if (!onetimeAlarmEnabled) return nil;
     
@@ -197,9 +197,10 @@ NSString *const kAlarmShuffle = @"alarmShuffle";
         repeatAlarmTimer = [[NSTimer alloc] initWithFireDate:nextRepeatAlarmDate
                                                     interval:0.f
                                                       target:self
-                                                    selector:@selector(fireAlarm)
+                                                    selector:@selector(fireRepeatAlarm)
                                                     userInfo:nil repeats:NO];
         [runner addTimer:repeatAlarmTimer forMode: NSDefaultRunLoopMode];
+        NSLog(@"Setting repeat alarm: %@", nextRepeatAlarmDate);
     }
 
     if (nextOnetimeAlarmDate &&
@@ -207,13 +208,20 @@ NSString *const kAlarmShuffle = @"alarmShuffle";
         onetimeAlarmTimer = [[NSTimer alloc] initWithFireDate:nextOnetimeAlarmDate
                                                      interval:0.f
                                                        target:self
-                                                     selector:@selector(fireAlarm)
+                                                     selector:@selector(fireOnetimeAlarm)
                                                      userInfo:nil repeats:NO];
         [runner addTimer:onetimeAlarmTimer forMode: NSDefaultRunLoopMode];
+        NSLog(@"Setting one-time alarm: %@", nextOnetimeAlarmDate);
     }
 }
 
-- (void)fireAlarm {
-    NSLog(@"Alarm fired: %@", [NSDate date]);
+- (void)fireRepeatAlarm {
+    NSLog(@"Repeat Alarm fired: %@", [NSDate date]);
 }
+
+- (void)fireOnetimeAlarm {
+    NSLog(@"One-time Alarm fired: %@", [NSDate date]);
+    [NSAppDelegate.modeMap changeMode:self option:kOnetimeAlarmEnabled to:[NSNumber numberWithBool:NO]];
+}
+
 @end
