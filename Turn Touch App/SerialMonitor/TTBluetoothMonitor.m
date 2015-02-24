@@ -132,7 +132,7 @@
 
 - (void) peripheral:(CBPeripheral *)aPeripheral didDiscoverServices:(NSError *)error {
     for (CBService *aService in aPeripheral.services) {
-        NSLog(@"Service found with UUID: %@", aService.UUID);
+//        NSLog(@"Service found with UUID: %@", aService.UUID);
         
         if ([aService.UUID isEqual:[CBUUID UUIDWithString:DEVICE_BUTTON_SERVICE_UUID]]) {
             [aPeripheral discoverCharacteristics:nil forService:aService];
@@ -184,7 +184,7 @@
             if ([aChar.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_BATTERY_LEVEL_UUID]]) {
                 [peripheral setNotifyValue:YES forCharacteristic:aChar];
                 [aPeripheral readValueForCharacteristic:aChar];
-                NSLog(@"Found a Battery Characteristic");
+//                NSLog(@"Found a Battery Characteristic");
             }
         }
     }

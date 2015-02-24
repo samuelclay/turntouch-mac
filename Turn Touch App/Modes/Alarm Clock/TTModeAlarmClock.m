@@ -140,18 +140,19 @@ NSString *const kAlarmShuffle = @"alarmShuffle";
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
     NSInteger offsetDayOfWeek = 0;
-//    NSLog(@"Today's alarm: %@ / %@", time, midnightToday);
+    NSInteger todayDayOfWeek = 0;
+
+    NSLog(@"Today's alarm: %@ / %@", time, midnightToday);
+    NSString *dayOfWeekString = [dowFormatter stringFromDate:time];
+    NSNumber *dayOfWeekNumber = [numberFormatter numberFromString:dayOfWeekString];
+    todayDayOfWeek = [dayOfWeekNumber integerValue] - 1; // 0-6, not 1-7
     if ([time timeIntervalSinceDate:[NSDate date]] > 0) {
         // Alarm is later in the day
-        NSString *dayOfWeekString = [dowFormatter stringFromDate:time];
-        NSNumber *dayOfWeekNumber = [numberFormatter numberFromString:dayOfWeekString];
-//        NSLog(@"Alarm is later in the day : %@ (%@)", time, dayOfWeekNumber);
+        NSLog(@"Alarm is later in the day : %@ (%@)", time, dayOfWeekNumber);
         offsetDayOfWeek = [dayOfWeekNumber integerValue] - 1;
     } else {
         // Alarm is earlier in the day
-        NSString *dayOfWeekString = [dowFormatter stringFromDate:time];
-        NSNumber *dayOfWeekNumber = [numberFormatter numberFromString:dayOfWeekString];
-//        NSLog(@"Alarm is earlier in the day : %@ (%@)", time, dayOfWeekNumber);
+        NSLog(@"Alarm is earlier in the day : %@ (%@)", time, dayOfWeekNumber);
         offsetDayOfWeek = [dayOfWeekNumber integerValue];
     }
     
@@ -159,10 +160,10 @@ NSString *const kAlarmShuffle = @"alarmShuffle";
     NSInteger d = 0;
     while (d < 7) {
         NSInteger dayOfWeek = (d + offsetDayOfWeek) % 7;
-//        NSLog(@"Checking %ld (%ld+%ld) day of week...", (long)dayOfWeek, (long)d, (long)offsetDayOfWeek);
+        NSLog(@"Checking %ld (%ld+%ld - %ld) day of week...", (long)dayOfWeek, (long)d, (long)offsetDayOfWeek, (long)todayDayOfWeek);
         if ([[repeatDays objectAtIndex:dayOfWeek] boolValue]) {
-            time = [time dateByAddingTimeInterval:60*60*24*(d+offsetDayOfWeek-1)];
-//            NSLog(@"Found next date: %@", time);
+            time = [time dateByAddingTimeInterval:60*60*24*(d+offsetDayOfWeek - todayDayOfWeek)];
+            NSLog(@"Found next date: %@", time);
             return time;
         }
         d++;
@@ -217,6 +218,7 @@ NSString *const kAlarmShuffle = @"alarmShuffle";
 
 - (void)fireRepeatAlarm {
     NSLog(@"Repeat Alarm fired: %@", [NSDate date]);
+    [self activateTimers];
 }
 
 - (void)fireOnetimeAlarm {

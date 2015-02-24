@@ -43,7 +43,7 @@ const NSInteger kImageTextMargin = 24;
 }
 
 - (void)drawMapBackground {
-    NSLog(@"drawMapBackground");
+//    NSLog(@"drawMapBackground");
     NSRect mapFrame = [self mapFrame];
     [gradientView setFrame:mapFrame];
     [teaserGradientView setFrame:mapFrame];
