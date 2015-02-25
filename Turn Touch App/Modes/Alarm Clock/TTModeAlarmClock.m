@@ -8,7 +8,7 @@
 
 #import "TTModeAlarmClock.h"
 #import "NSDate+Extras.h"
-#import "iTunes.h"
+#import "TTModeMusic.h"
 
 @implementation TTModeAlarmClock
 
@@ -26,11 +26,15 @@ NSString *const kAlarmShuffle = @"alarmShuffle";
 @synthesize repeatAlarmTimer;
 @synthesize onetimeAlarmTimer;
 @synthesize actionHUDController;
+@synthesize audioPlayer;
+@synthesize currentTrack;
 
 #pragma mark - Mode
 
 - (void)activate {
-    [self runAlarm];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self runAlarm];
+    });
 }
 
 + (NSString *)title {
@@ -70,7 +74,7 @@ NSString *const kAlarmShuffle = @"alarmShuffle";
     return @"Next Song";
 }
 - (NSString *)titleTTModeAlarmSongInfo {
-    return @"Song Info";
+    return @"Alarm Clock";
 }
 - (NSString *)titleTTModeAlarmStop {
     return @"Stop alarm";
@@ -110,6 +114,8 @@ NSString *const kAlarmShuffle = @"alarmShuffle";
 }
 - (void)runTTModeAlarmNextSong {
     NSLog(@"Running runTTModeAlarmNextSong");
+    [self playNextSong];
+    [self updateAlarmSongInfo];
 }
 - (void)runTTModeAlarmSongInfo {
     NSLog(@"Running runTTModeAlarmSongInfo");
@@ -149,76 +155,7 @@ NSString *const kAlarmShuffle = @"alarmShuffle";
 }
 
 - (NSView *)viewForLayoutTTModeAlarmSongInfo:(NSRect)rect {
-    return [self songInfoView:rect];
-}
-
-- (NSView *)songInfoView:(NSRect)rect {
-    NSView *view = [[NSView alloc] initWithFrame:rect];
-    
-    // Album art
-    iTunesApplication * iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
-    NSImage *songArtwork;
-    iTunesTrack *current = [iTunes currentTrack];
-    iTunesArtwork *artwork = (iTunesArtwork *)[[[current artworks] get] lastObject];
-    if (artwork != nil) {
-        songArtwork = [[NSImage alloc] initWithData:[artwork rawData]];
-    } else {
-        songArtwork = [NSImage imageNamed:@"icon_music.png"];
-    }
-    NSImageView *imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(300, 20, 86, 86)];
-    [imageView setImage:songArtwork];
-    [view addSubview:imageView];
-    
-    // Check if song playing
-    if (!current.name) {
-        NSTextView *songTitleView = [[NSTextView alloc] initWithFrame:NSMakeRect(400, 48, 400, 36)];
-        [songTitleView setString:@"iTunes isn't playing anything"];
-        [songTitleView setTextColor:NSColorFromRGB(0x604050)];
-        [songTitleView setFont:[NSFont fontWithName:@"Effra" size:24]];
-        [songTitleView setBackgroundColor:[NSColor clearColor]];
-        [view addSubview:songTitleView];
-    } else {
-        // Song title
-        NSTextField *songTitleView = [[NSTextField alloc] initWithFrame:NSMakeRect(400, 76, 350, 36)];
-        [songTitleView setStringValue:current.name];
-        [songTitleView setTextColor:NSColorFromRGB(0x604050)];
-        [songTitleView setFont:[NSFont fontWithName:@"Effra" size:24]];
-        [songTitleView setBackgroundColor:[NSColor clearColor]];
-        [songTitleView setLineBreakMode:NSLineBreakByTruncatingTail];
-        [songTitleView setBezeled:NO];
-        [songTitleView setEditable:NO];
-        [songTitleView setSelectable:NO];
-        [songTitleView setDrawsBackground:NO];
-        [view addSubview:songTitleView];
-        
-        // Artist
-        NSTextField *artistView = [[NSTextField alloc] initWithFrame:NSMakeRect(400, 48, 400, 36)];
-        [artistView setStringValue:current.artist];
-        [artistView setTextColor:NSColorFromRGB(0x9080A0)];
-        [artistView setFont:[NSFont fontWithName:@"Effra" size:24]];
-        [artistView setBackgroundColor:[NSColor clearColor]];
-        [artistView setLineBreakMode:NSLineBreakByTruncatingTail];
-        [artistView setBezeled:NO];
-        [artistView setEditable:NO];
-        [artistView setSelectable:NO];
-        [artistView setDrawsBackground:NO];
-        [view addSubview:artistView];
-        
-        // Album
-        NSTextField *albumView = [[NSTextField alloc] initWithFrame:NSMakeRect(400, 20, 450, 36)];
-        [albumView setStringValue:current.album];
-        [albumView setTextColor:NSColorFromRGB(0x9080A0)];
-        [albumView setFont:[NSFont fontWithName:@"Effra" size:24]];
-        [albumView setBackgroundColor:[NSColor clearColor]];
-        [albumView setLineBreakMode:NSLineBreakByTruncatingTail];
-        [albumView setBezeled:NO];
-        [albumView setEditable:NO];
-        [albumView setSelectable:NO];
-        [albumView setDrawsBackground:NO];
-        [view addSubview:albumView];
-    }
-    
-    return view;
+    return [TTModeMusic songInfoView:rect withTrack:currentTrack];
 }
 
 #pragma mark - Timer
@@ -240,17 +177,17 @@ NSString *const kAlarmShuffle = @"alarmShuffle";
     NSInteger offsetDayOfWeek = 0;
     NSInteger todayDayOfWeek = 0;
 
-    NSLog(@"Today's alarm: %@ / %@", time, midnightToday);
+//    NSLog(@"Today's alarm: %@ / %@", time, midnightToday);
     NSString *dayOfWeekString = [dowFormatter stringFromDate:time];
     NSNumber *dayOfWeekNumber = [numberFormatter numberFromString:dayOfWeekString];
     todayDayOfWeek = [dayOfWeekNumber integerValue] - 1; // 0-6, not 1-7
     if ([time timeIntervalSinceDate:[NSDate date]] > 0) {
         // Alarm is later in the day
-        NSLog(@"Alarm is later in the day : %@ (%@)", time, dayOfWeekNumber);
+//        NSLog(@"Alarm is later in the day : %@ (%@)", time, dayOfWeekNumber);
         offsetDayOfWeek = [dayOfWeekNumber integerValue] - 1;
     } else {
         // Alarm is earlier in the day
-        NSLog(@"Alarm is earlier in the day : %@ (%@)", time, dayOfWeekNumber);
+//        NSLog(@"Alarm is earlier in the day : %@ (%@)", time, dayOfWeekNumber);
         offsetDayOfWeek = [dayOfWeekNumber integerValue];
     }
     
@@ -258,10 +195,10 @@ NSString *const kAlarmShuffle = @"alarmShuffle";
     NSInteger d = 0;
     while (d < 7) {
         NSInteger dayOfWeek = (d + offsetDayOfWeek) % 7;
-        NSLog(@"Checking %ld (%ld+%ld - %ld) day of week...", (long)dayOfWeek, (long)d, (long)offsetDayOfWeek, (long)todayDayOfWeek);
+//        NSLog(@"Checking %ld (%ld+%ld - %ld) day of week...", (long)dayOfWeek, (long)d, (long)offsetDayOfWeek, (long)todayDayOfWeek);
         if ([[repeatDays objectAtIndex:dayOfWeek] boolValue]) {
             time = [time dateByAddingTimeInterval:60*60*24*(d+offsetDayOfWeek - todayDayOfWeek)];
-            NSLog(@"Found next date: %@", time);
+//            NSLog(@"Found next date: %@", time);
             return time;
         }
         d++;
@@ -320,21 +257,69 @@ NSString *const kAlarmShuffle = @"alarmShuffle";
     dispatch_after(time, dispatch_get_main_queue(), ^{
         [self activateTimers];
     });
+    [self runAlarm];
 }
 
 - (void)fireOnetimeAlarm {
     NSLog(@"One-time Alarm fired: %@", [NSDate date]);
     [NSAppDelegate.modeMap changeMode:self option:kOnetimeAlarmEnabled to:[NSNumber numberWithBool:NO]];
+    [self runAlarm];
 }
 
 #pragma mark - Alarm clock modal
 
 - (void)runAlarm {
+    [self playNextSong];
+    [self updateAlarmSongInfo];
+}
+
+- (void)playNextSong {
+    NSString *selectedPlaylist = (NSString *)[NSAppDelegate.modeMap mode:self optionValue:kAlarmPlaylist];
+    SBElementArray *playlists = [self.class playlists];
+
+    iTunesLibraryPlaylist *playlist;
+    for (iTunesLibraryPlaylist *pl in playlists) {
+        if ([pl.persistentID isEqualToString:selectedPlaylist]) {
+            playlist = pl;
+            break;
+        }
+    }
+    
+    SBElementArray *tracks = playlist.tracks;
+    NSInteger tracksCount = tracks.count;
+    NSLog(@"Playing %@ with %ld tracks: %@", playlist.name, (long)tracksCount, [tracks objectAtIndex:tracksCount/2]);
+    if (audioPlayer) {
+        [audioPlayer stop];
+    }
+    currentTrack = [[tracks objectAtIndex:round(arc4random()%tracksCount)] get];
+    audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:currentTrack.location error:nil];
+    [audioPlayer play];
+}
+
+- (void)updateAlarmSongInfo {
     if (!actionHUDController) {
         actionHUDController = [[TTActionHUDWindowController alloc]
                                initWithWindowNibName:@"TTActionHUDView"];
     }
     [actionHUDController fadeIn:INFO withMode:self];
+}
+
+#pragma mark - Playlists
+
++ (SBElementArray *)playlists {
+    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    iTunesSource *librarySource = nil;
+    
+    for (iTunesSource *source in iTunes.sources) {
+        if ([source kind] == iTunesESrcLibrary) {
+            librarySource = source;
+            break;
+        }
+    }
+    
+    SBElementArray *playlists = [librarySource playlists];
+    
+    return playlists;
 }
 
 @end

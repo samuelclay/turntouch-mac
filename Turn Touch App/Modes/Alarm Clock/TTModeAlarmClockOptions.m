@@ -268,7 +268,7 @@ NSUInteger const kOnetimeHeight = 68;
 }
 
 - (IBAction)changeiTunesSource:(id)sender {
-    SBElementArray *playlists = [self playlists];
+    SBElementArray *playlists = [TTModeAlarmClock playlists];
     NSInteger tag = dropdowniTunesSources.selectedItem.tag;
     NSInteger i = 0;
     iTunesLibraryPlaylist *selectedPlaylist;
@@ -293,26 +293,10 @@ NSUInteger const kOnetimeHeight = 68;
                                          to:[NSNumber numberWithBool:checkboxShuffle.state]];
 }
 
-- (SBElementArray *)playlists {
-    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
-    iTunesSource *librarySource = nil;
-
-    for (iTunesSource *source in iTunes.sources) {
-        if ([source kind] == iTunesESrcLibrary) {
-            librarySource = source;
-            break;
-        }
-    }
-    
-    SBElementArray *playlists = [librarySource playlists];
-
-    return playlists;
-}
-
 - (void)populateiTunesSources {
     NSString *selectedPlaylistId = (NSString *)[NSAppDelegate.modeMap modeOptionValue:kAlarmPlaylist];
     NSMenuItem *selectedMenuItem;
-    SBElementArray *playlists = [self playlists];
+    SBElementArray *playlists = [TTModeAlarmClock playlists];
     NSInteger tag = 0;
     for (iTunesLibraryPlaylist *playlist in playlists) {
         tag++;

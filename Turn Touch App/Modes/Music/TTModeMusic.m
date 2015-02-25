@@ -119,7 +119,9 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
 }
 
 - (NSView *)viewForLayoutTTModeMusicPause:(NSRect)rect {
-    return [self songInfoView:rect];
+    iTunesApplication * iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    iTunesTrack *current = [iTunes currentTrack];
+    return [self.class songInfoView:rect withTrack:current];
 }
 
 - (ActionLayout)layoutTTModeMusicNextTrack {
@@ -127,7 +129,9 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
 }
 
 - (NSView *)viewForLayoutTTModeMusicNextTrack:(NSRect)rect {
-    return [self songInfoView:rect];
+    iTunesApplication * iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    iTunesTrack *current = [iTunes currentTrack];
+    return [self.class songInfoView:rect withTrack:current];
 }
 
 //- (ActionLayout)layoutTTModeMusicVolumeUp {
@@ -146,14 +150,12 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
 //    return [self songInfoView:rect];
 //}
 
-- (NSView *)songInfoView:(NSRect)rect {
++ (NSView *)songInfoView:(NSRect)rect withTrack:(iTunesTrack *)currentTrack {
     NSView *view = [[NSView alloc] initWithFrame:rect];
     
     // Album art
-    iTunesApplication * iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
     NSImage *songArtwork;
-    iTunesTrack *current = [iTunes currentTrack];
-    iTunesArtwork *artwork = (iTunesArtwork *)[[[current artworks] get] lastObject];
+    iTunesArtwork *artwork = (iTunesArtwork *)[[[currentTrack artworks] get] lastObject];
     if (artwork != nil) {
         songArtwork = [[NSImage alloc] initWithData:[artwork rawData]];
     } else {
@@ -164,7 +166,7 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
     [view addSubview:imageView];
     
     // Check if song playing
-    if (!current.name) {
+    if (!currentTrack.name) {
         NSTextView *songTitleView = [[NSTextView alloc] initWithFrame:NSMakeRect(400, 48, 400, 36)];
         [songTitleView setString:@"iTunes isn't playing anything"];
         [songTitleView setTextColor:NSColorFromRGB(0x604050)];
@@ -174,7 +176,7 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
     } else {
         // Song title
         NSTextField *songTitleView = [[NSTextField alloc] initWithFrame:NSMakeRect(400, 76, 350, 36)];
-        [songTitleView setStringValue:current.name];
+        [songTitleView setStringValue:currentTrack.name];
         [songTitleView setTextColor:NSColorFromRGB(0x604050)];
         [songTitleView setFont:[NSFont fontWithName:@"Effra" size:24]];
         [songTitleView setBackgroundColor:[NSColor clearColor]];
@@ -187,7 +189,7 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
         
         // Artist
         NSTextField *artistView = [[NSTextField alloc] initWithFrame:NSMakeRect(400, 48, 400, 36)];
-        [artistView setStringValue:current.artist];
+        [artistView setStringValue:currentTrack.artist];
         [artistView setTextColor:NSColorFromRGB(0x9080A0)];
         [artistView setFont:[NSFont fontWithName:@"Effra" size:24]];
         [artistView setBackgroundColor:[NSColor clearColor]];
@@ -200,7 +202,7 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
         
         // Album
         NSTextField *albumView = [[NSTextField alloc] initWithFrame:NSMakeRect(400, 20, 450, 36)];
-        [albumView setStringValue:current.album];
+        [albumView setStringValue:currentTrack.album];
         [albumView setTextColor:NSColorFromRGB(0x9080A0)];
         [albumView setFont:[NSFont fontWithName:@"Effra" size:24]];
         [albumView setBackgroundColor:[NSColor clearColor]];

@@ -147,6 +147,7 @@
 		FFB5FF431A6723EA00DF617A /* TTModeHue.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFB5FF421A6723EA00DF617A /* TTModeHue.plist */; };
 		FFB653DD18DB9DEA00830B42 /* hid.c in Sources */ = {isa = PBXBuildFile; fileRef = FFB653DC18DB9DEA00830B42 /* hid.c */; };
 		FFB653E018DBA14E00830B42 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB653DF18DBA14E00830B42 /* CoreFoundation.framework */; };
+		FFBC625F1A9D699D0032AD24 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFBC625E1A9D699D0032AD24 /* AVFoundation.framework */; };
 		FFD62CCE194F935D0093004D /* TTSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD62CCD194F935D0093004D /* TTSegmentedCell.m */; };
 		FFD62CD11950EE770093004D /* TTSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD62CD01950EE770093004D /* TTSegmentedControl.m */; };
 		FFE2D4741A451BEA00DDD413 /* TTBluetoothMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE2D4731A451BEA00DDD413 /* TTBluetoothMonitor.m */; };
@@ -401,6 +402,7 @@
 		FFB653DC18DB9DEA00830B42 /* hid.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hid.c; path = SerialMonitor/hid.c; sourceTree = "<group>"; };
 		FFB653DE18DB9DFD00830B42 /* hidapi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = hidapi.h; path = SerialMonitor/hidapi.h; sourceTree = "<group>"; };
 		FFB653DF18DBA14E00830B42 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		FFBC625E1A9D699D0032AD24 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FFD62CCC194F935D0093004D /* TTSegmentedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSegmentedCell.h; path = "Views/Mode Options/TTSegmentedCell.h"; sourceTree = "<group>"; };
 		FFD62CCD194F935D0093004D /* TTSegmentedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSegmentedCell.m; path = "Views/Mode Options/TTSegmentedCell.m"; sourceTree = "<group>"; };
 		FFD62CCF1950EE770093004D /* TTSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSegmentedControl.h; path = "Views/Mode Options/TTSegmentedControl.h"; sourceTree = "<group>"; };
@@ -431,6 +433,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFBC625F1A9D699D0032AD24 /* AVFoundation.framework in Frameworks */,
 				FF7305C21A5CB2E3009A852D /* SystemConfiguration.framework in Frameworks */,
 				FFE2D4761A451FA200DDD413 /* CoreBluetooth.framework in Frameworks */,
 				FF3641D81A5E241C003CC03C /* HueSDK_OSX.framework in Frameworks */,
@@ -743,6 +746,7 @@
 		FF8C833517AB14B5000166FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FFBC625E1A9D699D0032AD24 /* AVFoundation.framework */,
 				FF7305C11A5CB2E3009A852D /* SystemConfiguration.framework */,
 				FFE2D4751A451FA200DDD413 /* CoreBluetooth.framework */,
 				FFB653DF18DBA14E00830B42 /* CoreFoundation.framework */,

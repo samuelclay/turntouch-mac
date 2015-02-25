@@ -9,11 +9,14 @@
 #import <Cocoa/Cocoa.h>
 #import "TTMode.h"
 #import "TTModeProtocol.h"
+#import "iTunes.h"
 
 extern NSString *const kMusicVolumeJump;
 
 @interface TTModeMusic : TTMode {
     NSInteger originalVolume;
 }
+
++ (NSView *)songInfoView:(NSRect)rect withTrack:(iTunesTrack *)currentTrack;
 
 @end
