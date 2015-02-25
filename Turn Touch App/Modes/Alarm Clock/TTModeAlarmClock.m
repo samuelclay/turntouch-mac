@@ -28,6 +28,7 @@ NSString *const kAlarmShuffle = @"alarmShuffle";
 @synthesize actionHUDController;
 @synthesize audioPlayer;
 @synthesize currentTrack;
+@synthesize randomTracks;
 
 #pragma mark - Mode
 
@@ -111,6 +112,7 @@ NSString *const kAlarmShuffle = @"alarmShuffle";
 
 - (void)runTTModeAlarmSnooze {
     NSLog(@"Running runTTModeAlarmSnooze");
+    [self snoozeAlarm];
 }
 - (void)runTTModeAlarmNextSong {
     NSLog(@"Running runTTModeAlarmNextSong");
@@ -122,6 +124,7 @@ NSString *const kAlarmShuffle = @"alarmShuffle";
 }
 - (void)runTTModeAlarmStop {
     NSLog(@"Running runTTModeAlarmStop");
+    [self stopAlarm];
 }
 - (void)runTTModeAlarmVolumeUp {
     NSLog(@"Running runTTModeAlarmVolumeUp");
@@ -269,14 +272,16 @@ NSString *const kAlarmShuffle = @"alarmShuffle";
 #pragma mark - Alarm clock modal
 
 - (void)runAlarm {
+    SBElementArray *tracks = [self selectedPlaylistTracks];
+    [self seedRandomTracks:tracks.count];
     [self playNextSong];
     [self updateAlarmSongInfo];
 }
 
-- (void)playNextSong {
+- (SBElementArray *)selectedPlaylistTracks {
     NSString *selectedPlaylist = (NSString *)[NSAppDelegate.modeMap mode:self optionValue:kAlarmPlaylist];
     SBElementArray *playlists = [self.class playlists];
-
+    
     iTunesLibraryPlaylist *playlist;
     for (iTunesLibraryPlaylist *pl in playlists) {
         if ([pl.persistentID isEqualToString:selectedPlaylist]) {
@@ -286,14 +291,39 @@ NSString *const kAlarmShuffle = @"alarmShuffle";
     }
     
     SBElementArray *tracks = playlist.tracks;
+    return tracks;
+}
+
+- (void)playNextSong {
+    SBElementArray *tracks = [self selectedPlaylistTracks];
     NSInteger tracksCount = tracks.count;
-    NSLog(@"Playing %@ with %ld tracks: %@", playlist.name, (long)tracksCount, [tracks objectAtIndex:tracksCount/2]);
+
     if (audioPlayer) {
         [audioPlayer stop];
     }
-    currentTrack = [[tracks objectAtIndex:round(arc4random()%tracksCount)] get];
+    NSInteger randomTrackIndex = [[randomTracks objectAtIndex:(trackIndex % tracksCount)] integerValue];
+//    NSLog(@"Random track: %d / %d", trackIndex, randomTrackIndex);
+    currentTrack = [[tracks objectAtIndex:randomTrackIndex] get];
+    trackIndex += 1;
     audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:currentTrack.location error:nil];
     [audioPlayer play];
+}
+
+- (void)seedRandomTracks:(NSInteger)count {
+    trackIndex = 0;
+    randomTracks = [[NSMutableArray alloc] init];
+    for (NSUInteger i = 0; i < count; ++i) {
+        [randomTracks addObject:[NSNumber numberWithInteger:i]];
+    }
+    
+    NSMutableArray *copy = [randomTracks mutableCopy];
+    randomTracks = [[NSMutableArray alloc] init];
+    while ([copy count] > 0) {
+        int index = arc4random_uniform((int)[copy count]);
+        id objectToMove = [copy objectAtIndex:index];
+        [randomTracks addObject:objectToMove];
+        [copy removeObjectAtIndex:index];
+    }
 }
 
 - (void)updateAlarmSongInfo {
@@ -302,6 +332,16 @@ NSString *const kAlarmShuffle = @"alarmShuffle";
                                initWithWindowNibName:@"TTActionHUDView"];
     }
     [actionHUDController fadeIn:INFO withMode:self];
+}
+
+- (void)snoozeAlarm {
+    [audioPlayer stop];
+    [actionHUDController fadeOut:nil];
+}
+
+- (void)stopAlarm {
+    [audioPlayer stop];
+    [actionHUDController fadeOut:nil];
 }
 
 #pragma mark - Playlists

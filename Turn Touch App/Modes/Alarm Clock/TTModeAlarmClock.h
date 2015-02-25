@@ -13,7 +13,9 @@
 
 @class SBElementArray;
 
-@interface TTModeAlarmClock : TTMode
+@interface TTModeAlarmClock : TTMode {
+    NSInteger trackIndex;
+}
 
 extern NSString *const kRepeatAlarmEnabled;
 extern NSString *const kOnetimeAlarmEnabled;
@@ -31,6 +33,7 @@ extern NSString *const kAlarmShuffle;
 @property (nonatomic) TTActionHUDWindowController *actionHUDController;
 @property (nonatomic) AVAudioPlayer *audioPlayer;
 @property (nonatomic) iTunesFileTrack *currentTrack;
+@property (nonatomic) NSMutableArray *randomTracks;
 
 - (NSDate *)nextRepeatAlarmDate;
 + (SBElementArray *)playlists;
