@@ -9,6 +9,7 @@
 #import "TTModeAlarmClock.h"
 #import "NSDate+Extras.h"
 #import "TTModeMusic.h"
+#import "TTModeMac.h"
 
 @implementation TTModeAlarmClock
 
@@ -22,9 +23,11 @@ NSString *const kAlarmVolume = @"alarmVolume";
 NSString *const kAlarmDuration = @"alarmDuration";
 NSString *const kAlarmPlaylist = @"alarmPlaylist";
 NSString *const kAlarmShuffle = @"alarmShuffle";
+NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
 
 @synthesize repeatAlarmTimer;
 @synthesize onetimeAlarmTimer;
+@synthesize stopAlarmTimer;
 @synthesize actionHUDController;
 @synthesize audioPlayer;
 @synthesize currentTrack;
@@ -117,7 +120,6 @@ NSString *const kAlarmShuffle = @"alarmShuffle";
 - (void)runTTModeAlarmNextSong {
     NSLog(@"Running runTTModeAlarmNextSong");
     [self playNextSong];
-    [self updateAlarmSongInfo];
 }
 - (void)runTTModeAlarmSongInfo {
     NSLog(@"Running runTTModeAlarmSongInfo");
@@ -269,13 +271,29 @@ NSString *const kAlarmShuffle = @"alarmShuffle";
     [self runAlarm];
 }
 
+- (void)startStopAlarmTimer {
+    NSRunLoop *runner = [NSRunLoop currentRunLoop];
+    NSInteger alarmDuration = [[NSAppDelegate.modeMap mode:self optionValue:kAlarmDuration] integerValue];
+    NSDate *stopAlarmDate = [[NSDate date] dateByAddingTimeInterval:alarmDuration * 60];
+    stopAlarmTimer = [[NSTimer alloc] initWithFireDate:stopAlarmDate
+                                                interval:0.f
+                                                  target:self
+                                                selector:@selector(stopAlarm)
+                                                userInfo:nil repeats:NO];
+    [runner addTimer:repeatAlarmTimer forMode: NSDefaultRunLoopMode];
+}
+
 #pragma mark - Alarm clock modal
 
 - (void)runAlarm {
-    SBElementArray *tracks = [self selectedPlaylistTracks];
+    originalSystemVolume = [TTModeMac volume];
+    NSInteger prefVolume = [[NSAppDelegate.modeMap mode:self optionValue:kAlarmVolume] integerValue];
+    [TTModeMac setVolume:(prefVolume / 100.f)];
+    
+    tracks = [self selectedPlaylistTracks];
     [self seedRandomTracks:tracks.count];
     [self playNextSong];
-    [self updateAlarmSongInfo];
+    [self startStopAlarmTimer];
 }
 
 - (SBElementArray *)selectedPlaylistTracks {
@@ -290,12 +308,14 @@ NSString *const kAlarmShuffle = @"alarmShuffle";
         }
     }
     
-    SBElementArray *tracks = playlist.tracks;
-    return tracks;
+    SBElementArray *playlistTracks = playlist.tracks;
+    return playlistTracks;
 }
 
 - (void)playNextSong {
-    SBElementArray *tracks = [self selectedPlaylistTracks];
+    if (!tracks) {
+        tracks = [self selectedPlaylistTracks];
+    }
     NSInteger tracksCount = tracks.count;
 
     if (audioPlayer) {
@@ -307,6 +327,13 @@ NSString *const kAlarmShuffle = @"alarmShuffle";
     trackIndex += 1;
     audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:currentTrack.location error:nil];
     [audioPlayer play];
+    [audioPlayer setDelegate:self];
+    
+    [self updateAlarmSongInfo];
+}
+
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
+    [self playNextSong];
 }
 
 - (void)seedRandomTracks:(NSInteger)count {
@@ -337,11 +364,24 @@ NSString *const kAlarmShuffle = @"alarmShuffle";
 - (void)snoozeAlarm {
     [audioPlayer stop];
     [actionHUDController fadeOut:nil];
+    [TTModeMac setVolume:originalSystemVolume];
+    
+    NSTimeInterval snoozeDuration = [[NSAppDelegate.modeMap mode:self optionValue:kAlarmSnoozeDuration] integerValue];
+    NSDate *snoozeDate = [[NSDate date] dateByAddingTimeInterval:snoozeDuration*60];
+    NSRunLoop *runner = [NSRunLoop currentRunLoop];
+    repeatAlarmTimer = [[NSTimer alloc] initWithFireDate:snoozeDate
+                                                interval:0.f
+                                                  target:self
+                                                selector:@selector(fireRepeatAlarm)
+                                                userInfo:nil repeats:NO];
+    [runner addTimer:repeatAlarmTimer forMode: NSDefaultRunLoopMode];
 }
 
 - (void)stopAlarm {
+    if (stopAlarmTimer) [stopAlarmTimer invalidate];
     [audioPlayer stop];
     [actionHUDController fadeOut:nil];
+    [TTModeMac setVolume:originalSystemVolume];
 }
 
 #pragma mark - Playlists

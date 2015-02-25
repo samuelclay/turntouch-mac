@@ -17,4 +17,7 @@
 
 @property float volume;
 
++ (float)volume;
++ (void)setVolume:(float)newVolume;
+
 @end

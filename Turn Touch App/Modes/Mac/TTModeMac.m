@@ -87,17 +87,17 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
 #pragma mark - Action methods
 
 - (void)runTTModeMacVolumeUp {
-    CGFloat volume = [self volume];
-    [self setVolume:volume < VOLUME_PCT_CHANGE ? VOLUME_PCT_CHANGE : ([self volume] + VOLUME_PCT_CHANGE)];
+    CGFloat volume = [self.class volume];
+    [self setVolume:volume < VOLUME_PCT_CHANGE ? VOLUME_PCT_CHANGE : ([self.class volume] + VOLUME_PCT_CHANGE)];
 }
 
 - (void)runTTModeMacVolumeDown {
-    CGFloat volume = [self volume];
-    [self setVolume:volume < VOLUME_PCT_CHANGE ? 0 : ([self volume] - VOLUME_PCT_CHANGE)];
+    CGFloat volume = [self.class volume];
+    [self setVolume:volume < VOLUME_PCT_CHANGE ? 0 : ([self.class volume] - VOLUME_PCT_CHANGE)];
 }
 
 - (void)runTTModeMacVolumeMute {
-    BOOL v = [self isMuted];
+    BOOL v = [self.class isMuted];
     if (v) {
         [self setVolume:self.volume];
     } else {
@@ -116,7 +116,7 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
 #pragma mark - Progress
 
 - (NSInteger)progressVolume {
-    return [self isMuted] ? 0 : lroundf([self volume] * 100);
+    return [self.class isMuted] ? 0 : lroundf([self.class volume] * 100);
 }
 
 - (NSInteger)progressTTModeMacVolumeUp {
@@ -146,7 +146,7 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
     return @"TTModeMacVolumeDown";
 }
 
-#pragma mark - Private methods
+#pragma mark - Volume
 
 + (NSString *) machineModel {
     size_t len = 0;
@@ -163,7 +163,7 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
     return @"Just an Apple Computer"; //incase model name can't be read
 }
 
-- (float)volume {
++ (float)volume {
     Float32 outputVolume;
     UInt32 propertySize = 0;
     OSStatus status = noErr;
@@ -173,7 +173,7 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
     propertyAOPA.mScope = kAudioDevicePropertyScopeOutput;
     
     // Get the default device
-    AudioDeviceID outputDeviceID = [self defaultOutputDeviceID];
+    AudioDeviceID outputDeviceID = [self.class defaultOutputDeviceID];
     if (outputDeviceID == kAudioObjectUnknown) {
         NSLog(@"Unknown default device");
         return 0.0f;
@@ -202,7 +202,7 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
     return outputVolume;
 }
 
-- (void)setVolume:(float)newVolume {
++ (void)setVolume:(float)newVolume {
     // Clamp it to [0,1]
     if (newVolume < 0.0f) newVolume = 0.0f;
     if (newVolume > 1.0f) newVolume = 1.0f;
@@ -222,7 +222,7 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
     }
     
     // Get the default audio device
-    AudioDeviceID outputDeviceID = [self defaultOutputDeviceID];
+    AudioDeviceID outputDeviceID = [self.class defaultOutputDeviceID];
     if (outputDeviceID == kAudioObjectUnknown) {
         NSLog(@"Unknown default audio device");
         return;
@@ -284,7 +284,7 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
     }
 }
 
-- (BOOL)isMuted {
++ (BOOL)isMuted {
     bool muted;
     UInt32 propertySize = 0;
     OSStatus status = noErr;
@@ -294,7 +294,7 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
     propertyAOPA.mScope = kAudioDevicePropertyScopeOutput;
     
     // Get the default device
-    AudioDeviceID outputDeviceID = [self defaultOutputDeviceID];
+    AudioDeviceID outputDeviceID = [self.class defaultOutputDeviceID];
     if (outputDeviceID == kAudioObjectUnknown) {
         NSLog(@"Unknown default device");
         return 0.0f;
@@ -319,7 +319,7 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
     return muted;
 }
 
-- (AudioDeviceID)defaultOutputDeviceID {
++ (AudioDeviceID)defaultOutputDeviceID {
     AudioDeviceID	outputDeviceID = kAudioObjectUnknown;
     
     // Prepare the request
@@ -345,6 +345,8 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
     }
     return outputDeviceID;
 }
+
+#pragma mark - Display
 
 - (BOOL)isDisplayOff {
     boolean_t displayOff = CGDisplayIsAsleep(CGMainDisplayID());

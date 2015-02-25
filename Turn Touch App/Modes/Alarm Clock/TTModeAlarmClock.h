@@ -13,8 +13,10 @@
 
 @class SBElementArray;
 
-@interface TTModeAlarmClock : TTMode {
+@interface TTModeAlarmClock : TTMode <AVAudioPlayerDelegate> {
     NSInteger trackIndex;
+    SBElementArray *tracks;
+    CGFloat originalSystemVolume;
 }
 
 extern NSString *const kRepeatAlarmEnabled;
@@ -27,9 +29,11 @@ extern NSString *const kAlarmVolume;
 extern NSString *const kAlarmDuration;
 extern NSString *const kAlarmPlaylist;
 extern NSString *const kAlarmShuffle;
+extern NSString *const kAlarmSnoozeDuration;
 
 @property (nonatomic, readwrite) NSTimer *repeatAlarmTimer;
 @property (nonatomic, readwrite) NSTimer *onetimeAlarmTimer;
+@property (nonatomic, readwrite) NSTimer *stopAlarmTimer;
 @property (nonatomic) TTActionHUDWindowController *actionHUDController;
 @property (nonatomic) AVAudioPlayer *audioPlayer;
 @property (nonatomic) iTunesFileTrack *currentTrack;
