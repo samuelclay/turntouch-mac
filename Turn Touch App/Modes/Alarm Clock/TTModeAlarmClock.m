@@ -218,7 +218,10 @@ NSString *const kAlarmShuffle = @"alarmShuffle";
 
 - (void)fireRepeatAlarm {
     NSLog(@"Repeat Alarm fired: %@", [NSDate date]);
-    [self activateTimers];
+    dispatch_time_t time = dispatch_walltime(NULL, NSEC_PER_SEC * 1);
+    dispatch_after(time, dispatch_get_main_queue(), ^{
+        [self activateTimers];
+    });
 }
 
 - (void)fireOnetimeAlarm {
