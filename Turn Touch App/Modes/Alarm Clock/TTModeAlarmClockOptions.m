@@ -77,9 +77,9 @@ NSUInteger const kOnetimeHeight = 68;
     // Set music/sounds options
     [sliderAlarmVolume setIntegerValue:alarmVolume];
     [sliderAlarmDuration setIntegerValue:alarmDuration];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01f * NSEC_PER_SEC)), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [self populateiTunesSources];
-    });
+//    });
     [checkboxShuffle setState:playlistShuffle];
     
     
@@ -296,8 +296,8 @@ NSUInteger const kOnetimeHeight = 68;
 - (SBElementArray *)playlists {
     iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
     iTunesSource *librarySource = nil;
-    NSArray *sources = [iTunes sources];
-    for (iTunesSource *source in sources) {
+
+    for (iTunesSource *source in iTunes.sources) {
         if ([source kind] == iTunesESrcLibrary) {
             librarySource = source;
             break;

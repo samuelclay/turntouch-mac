@@ -17,6 +17,7 @@
 - (NSString *)defaultEast;
 - (NSString *)defaultWest;
 - (NSString *)defaultSouth;
+- (NSString *)defaultInfo;
 
 + (NSString *)title;
 + (NSString *)description;

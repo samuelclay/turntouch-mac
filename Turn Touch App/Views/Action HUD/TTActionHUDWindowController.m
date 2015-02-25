@@ -43,9 +43,14 @@
 }
 
 - (IBAction)fadeIn:(TTModeDirection)direction {
-    [hudWindow makeKeyAndOrderFront:nil];
-    [self showWindow:appDelegate];
+    [self fadeIn:direction withMode:NSAppDelegate.modeMap.selectedMode];
+}
 
+- (IBAction)fadeIn:(TTModeDirection)direction withMode:(TTMode *)mode {
+    [hudWindow makeKeyAndOrderFront:nil];
+    [self showWindow:self];
+
+    [hudView setMode:mode];
     [hudView setDirection:direction];
     [hudView drawProgressBar:progressBar];
     [hudView drawImageLayoutView];
@@ -95,6 +100,5 @@
     
     [NSAnimationContext endGrouping];
 }
-
 
 @end

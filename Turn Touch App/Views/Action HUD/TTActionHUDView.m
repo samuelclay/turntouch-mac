@@ -11,6 +11,7 @@
 @implementation TTActionHUDView
 
 @synthesize direction;
+@synthesize mode;
 
 const CGFloat kMarginPct = .6f;
 
@@ -19,7 +20,7 @@ const CGFloat kMarginPct = .6f;
 }
 
 - (void)drawProgressBar:(NSProgressIndicator *)_progressBar {
-    NSInteger progress = [appDelegate.modeMap.selectedMode progressInDirection:direction];
+    NSInteger progress = [mode progressInDirection:direction];
     progressBar = _progressBar;
     if (progress == -1) {
         progressBar.hidden = YES;
@@ -33,13 +34,13 @@ const CGFloat kMarginPct = .6f;
 }
 
 - (void)drawImageLayoutView {
-    ActionLayout layout = [appDelegate.modeMap.selectedMode layoutInDirection:direction];
+    ActionLayout layout = [mode layoutInDirection:direction];
     [imageLayoutView removeFromSuperview];
     if (layout == ACTION_LAYOUT_TITLE) {
         [imageLayoutView setHidden:YES];
     } else if (layout == ACTION_LAYOUT_IMAGE_TITLE) {
         NSRect frame = [self actionFrame];
-        imageLayoutView = [appDelegate.modeMap.selectedMode viewForLayout:direction withRect:frame];
+        imageLayoutView = [mode viewForLayout:direction withRect:frame];
         [self addSubview:imageLayoutView];
         [imageLayoutView setHidden:NO];
     }
@@ -47,7 +48,7 @@ const CGFloat kMarginPct = .6f;
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
-    ActionLayout layout = [appDelegate.modeMap.selectedMode layoutInDirection:direction];
+    ActionLayout layout = [mode layoutInDirection:direction];
     
     [self drawBackground];
     if (layout == ACTION_LAYOUT_TITLE) {
@@ -99,14 +100,13 @@ const CGFloat kMarginPct = .6f;
                                       NSShadowAttributeName: stringShadow,
                                       NSParagraphStyleAttributeName: style
                                       };
-    NSString *directionLabel = [appDelegate.modeMap.selectedMode
-                                actionTitleInDirection:direction];
+    NSString *directionLabel = [mode actionTitleInDirection:direction];
     frame.size.height = frame.size.height / 2 + [directionLabel sizeWithAttributes:labelAttributes].height/2;
     [directionLabel drawInRect:frame withAttributes:labelAttributes];
 }
 
 - (void)drawProgress {
-    NSInteger progress = [appDelegate.modeMap.selectedMode progressInDirection:direction];
+    NSInteger progress = [mode progressInDirection:direction];
     if (progress == -1) return;
     
     [progressBar setDoubleValue:progress];    
@@ -128,8 +128,7 @@ const CGFloat kMarginPct = .6f;
                                       NSShadowAttributeName: stringShadow,
                                       NSParagraphStyleAttributeName: style
                                       };
-    NSString *directionLabel = [appDelegate.modeMap.selectedMode
-                                actionTitleInDirection:direction];
+    NSString *directionLabel = [mode actionTitleInDirection:direction];
     frame.size.height = frame.size.height * 0.7 + [directionLabel sizeWithAttributes:labelAttributes].height/2;
     [directionLabel drawInRect:frame withAttributes:labelAttributes];
 }

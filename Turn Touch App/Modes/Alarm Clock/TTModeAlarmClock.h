@@ -7,6 +7,7 @@
 //
 
 #import "TTMode.h"
+#import "TTActionHUDWindowController.h"
 
 @interface TTModeAlarmClock : TTMode
 
@@ -23,6 +24,7 @@ extern NSString *const kAlarmShuffle;
 
 @property (nonatomic, readwrite) NSTimer *repeatAlarmTimer;
 @property (nonatomic, readwrite) NSTimer *onetimeAlarmTimer;
+@property (nonatomic) TTActionHUDWindowController *actionHUDController;
 
 - (NSDate *)nextRepeatAlarmDate;
 

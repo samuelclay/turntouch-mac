@@ -232,6 +232,8 @@
             directionAction = [self defaultWest];
         } else if (direction == SOUTH) {
             directionAction = [self defaultSouth];
+        } else if (direction == INFO) {
+            directionAction = [self defaultInfo];
         }
     }
     

@@ -13,5 +13,6 @@ typedef enum {
     NORTH = 1,
     EAST = 2,
     WEST = 3,
-    SOUTH = 4
+    SOUTH = 4,
+    INFO = 5
 } TTModeDirection;

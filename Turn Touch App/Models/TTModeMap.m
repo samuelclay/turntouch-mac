@@ -188,6 +188,10 @@
         case SOUTH:
             return @"south";
             break;
+            
+        case INFO:
+            return @"info";
+            break;
 
         case NO_DIRECTION:
             break;

@@ -20,6 +20,7 @@
 }
 
 @property (nonatomic) TTModeDirection direction;
+@property (nonatomic) TTMode *mode;
 
 - (void)drawProgressBar:(NSProgressIndicator *)progressBar;
 - (void)drawImageLayoutView;

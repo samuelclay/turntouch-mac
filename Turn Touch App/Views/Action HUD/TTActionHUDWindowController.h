@@ -24,6 +24,7 @@
 @property (nonatomic) IBOutlet NSProgressIndicator *progressBar;
 
 - (IBAction)fadeIn:(TTModeDirection)direction;
+- (IBAction)fadeIn:(TTModeDirection)direction withMode:(TTMode *)mode;
 - (IBAction)fadeOut:(id)sender;
 - (IBAction)slideOut:(id)sender;
 
