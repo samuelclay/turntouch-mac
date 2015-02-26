@@ -333,7 +333,9 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
 }
 
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
-    [self playNextSong];
+    if (flag) {
+        [self playNextSong];
+    }
 }
 
 - (void)seedRandomTracks:(NSInteger)count {
@@ -375,6 +377,7 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
                                                 selector:@selector(fireRepeatAlarm)
                                                 userInfo:nil repeats:NO];
     [runner addTimer:repeatAlarmTimer forMode: NSDefaultRunLoopMode];
+    NSLog(@"Snoozing for %f minutes: %@", snoozeDuration, snoozeDate);
 }
 
 - (void)stopAlarm {

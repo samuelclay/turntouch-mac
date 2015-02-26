@@ -88,20 +88,20 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
 
 - (void)runTTModeMacVolumeUp {
     CGFloat volume = [self.class volume];
-    [self setVolume:volume < VOLUME_PCT_CHANGE ? VOLUME_PCT_CHANGE : ([self.class volume] + VOLUME_PCT_CHANGE)];
+    [self.class setVolume:volume < VOLUME_PCT_CHANGE ? VOLUME_PCT_CHANGE : ([self.class volume] + VOLUME_PCT_CHANGE)];
 }
 
 - (void)runTTModeMacVolumeDown {
     CGFloat volume = [self.class volume];
-    [self setVolume:volume < VOLUME_PCT_CHANGE ? 0 : ([self.class volume] - VOLUME_PCT_CHANGE)];
+    [self.class setVolume:volume < VOLUME_PCT_CHANGE ? 0 : ([self.class volume] - VOLUME_PCT_CHANGE)];
 }
 
 - (void)runTTModeMacVolumeMute {
     BOOL v = [self.class isMuted];
     if (v) {
-        [self setVolume:self.volume];
+        [self.class setVolume:self.volume];
     } else {
-        [self setVolume:0];
+        [self.class setVolume:0];
     }
 }
 
@@ -352,7 +352,7 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
     boolean_t displayOff = CGDisplayIsAsleep(CGMainDisplayID());
     boolean_t displayActive = CGDisplayIsOnline(CGMainDisplayID());
     NSLog(@"display: %d/%d", displayOff, displayActive);
-    return (BOOL)displayOff || self->turnedOffMonitor;
+    return (BOOL)displayOff;
 }
 
 - (void)switchDisplay:(BOOL)turnOn {
@@ -361,7 +361,7 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
     if (!r || r == MACH_PORT_NULL) return;
 
     CGDirectDisplayID display = CGMainDisplayID();
-    const double kMyFadeTime = 1.0; /* fade time in seconds */
+    const double kMyFadeTime = 0.5f; /* fade time in seconds */
     const int kMyFadeSteps = 100;
     const double kMyFadeInterval = (kMyFadeTime / (double) kMyFadeSteps);
     const useconds_t kMySleepTime = (1000000 * kMyFadeInterval); /* delay in microseconds */
@@ -416,7 +416,7 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
     }
     
     IOObjectRelease(r);
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC);
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC);
 	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         CGDisplayRestoreColorSyncSettings();
     });
