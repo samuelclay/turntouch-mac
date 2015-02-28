@@ -130,9 +130,11 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
 }
 - (void)runTTModeAlarmVolumeUp {
     NSLog(@"Running runTTModeAlarmVolumeUp");
+    [TTModeMac setVolume:[TTModeMac volume] + 0.04f];
 }
 - (void)runTTModeAlarmVolumeDown {
     NSLog(@"Running runTTModeAlarmVolumeDown");
+    [TTModeMac setVolume:[TTModeMac volume] - 0.04f];
 }
 
 #pragma mark - Defaults
@@ -280,7 +282,8 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
                                                   target:self
                                                 selector:@selector(stopAlarm)
                                                 userInfo:nil repeats:NO];
-    [runner addTimer:repeatAlarmTimer forMode: NSDefaultRunLoopMode];
+    [runner addTimer:stopAlarmTimer forMode: NSDefaultRunLoopMode];
+    NSLog(@"Setting stop alarm timer: %@", stopAlarmDate);
 }
 
 #pragma mark - Alarm clock modal
