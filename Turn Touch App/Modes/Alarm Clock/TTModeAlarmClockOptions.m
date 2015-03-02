@@ -267,6 +267,16 @@ NSUInteger const kOnetimeHeight = 68;
     [self updateAlarmSoundsLabels];
 }
 
+- (iTunesLibraryPlaylist *)iTunesPlaylist:(NSString *)persistentId {
+    SBElementArray *playlists = [TTModeAlarmClock playlists];
+    for (iTunesLibraryPlaylist *playlist in playlists) {
+        if ([playlist.persistentID isEqualToString:persistentId]) {
+            return playlist;
+        }
+    }
+    return nil;
+}
+
 - (IBAction)changeiTunesSource:(id)sender {
     SBElementArray *playlists = [TTModeAlarmClock playlists];
     NSInteger tag = dropdowniTunesSources.selectedItem.tag;
@@ -279,13 +289,21 @@ NSUInteger const kOnetimeHeight = 68;
             break;
         }
     }
-
-    NSInteger tracks = selectedPlaylist.tracks.count;
-    [textTracksCount setStringValue:[NSString stringWithFormat:@"%ld %@",
-                                     (long)tracks, tracks == 1 ? @"track" : @"tracks"]];
     
     [NSAppDelegate.modeMap changeModeOption:kAlarmPlaylist
                                          to:selectedPlaylist.persistentID];
+    
+    [self updateTracksCount:selectedPlaylist];
+}
+
+- (void)updateTracksCount:(iTunesLibraryPlaylist *)selectedPlaylist {
+    if (!selectedPlaylist) {
+        NSString *playlistPersistentId = [NSAppDelegate.modeMap modeOptionValue:kAlarmPlaylist];
+        selectedPlaylist = [self iTunesPlaylist:playlistPersistentId];
+    }
+    NSInteger tracks = selectedPlaylist.tracks.count;
+    [textTracksCount setStringValue:[NSString stringWithFormat:@"%ld %@",
+                                     (long)tracks, tracks == 1 ? @"track" : @"tracks"]];
 }
 
 - (IBAction)changeShuffle:(id)sender {
@@ -298,6 +316,10 @@ NSUInteger const kOnetimeHeight = 68;
     NSMenuItem *selectedMenuItem;
     SBElementArray *playlists = [TTModeAlarmClock playlists];
     NSInteger tag = 0;
+    iTunesLibraryPlaylist *selectedPlaylist;
+    iTunesLibraryPlaylist *libraryPlaylist;
+    NSMenuItem *libraryMenuItem;
+    
     for (iTunesLibraryPlaylist *playlist in playlists) {
         tag++;
         if (!playlist.size) continue;
@@ -306,6 +328,8 @@ NSUInteger const kOnetimeHeight = 68;
         switch (playlist.specialKind) {
             case iTunesESpKLibrary:
                 image = [NSImage imageNamed:@"itunes_library_icon"];
+                libraryPlaylist = playlist;
+                libraryMenuItem = menuItem;
                 break;
                 
             case iTunesESpKMusic:
@@ -348,7 +372,16 @@ NSUInteger const kOnetimeHeight = 68;
         [dropdowniTunesSources.menu addItem:menuItem];
         if ([playlist.persistentID isEqualToString:selectedPlaylistId]) {
             selectedMenuItem = menuItem;
+            selectedPlaylist = playlist;
         }
+    }
+    
+    if (!selectedPlaylistId) {
+        selectedMenuItem = libraryMenuItem;
+        [NSAppDelegate.modeMap changeModeOption:kAlarmPlaylist to:libraryPlaylist.persistentID];
+        [self updateTracksCount:libraryPlaylist];
+    } else {
+        [self updateTracksCount:selectedPlaylist];
     }
     dispatch_async(dispatch_get_main_queue(), ^(void){
         [dropdowniTunesSources selectItem:selectedMenuItem];

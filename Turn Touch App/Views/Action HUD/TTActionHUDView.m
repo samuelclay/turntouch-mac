@@ -69,7 +69,7 @@ const CGFloat kActionHUDMarginPct = .6f;
         margin = (screen.frame.size.width - width) / 2;
     }
 
-    return NSMakeRect(margin, 0, MAX(width, 900), 200);
+    return NSMakeRect(margin, 0, width, 200);
 }
 
 - (void)drawBackground {
@@ -91,6 +91,8 @@ const CGFloat kActionHUDMarginPct = .6f;
 #pragma mark - Action Layout - Text / Progress
 
 - (void)drawLabel {
+    NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
+    NSInteger fontSize = round(CGRectGetWidth(screen.frame) / 36);
     NSRect frame = [self.class actionFrame];
     NSShadow *stringShadow = [[NSShadow alloc] init];
     stringShadow.shadowColor = [NSColor whiteColor];
@@ -99,7 +101,7 @@ const CGFloat kActionHUDMarginPct = .6f;
     NSColor *textColor = NSColorFromRGB(0x404A60);
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [style setAlignment:NSCenterTextAlignment];
-    NSDictionary *labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:52],
+    NSDictionary *labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:fontSize],
                                       NSForegroundColorAttributeName: textColor,
                                       NSShadowAttributeName: stringShadow,
                                       NSParagraphStyleAttributeName: style

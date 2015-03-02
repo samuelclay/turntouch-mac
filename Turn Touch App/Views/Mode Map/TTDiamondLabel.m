@@ -92,6 +92,8 @@
 }
 
 - (void)setupLabels {
+    NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
+    NSInteger fontSize = round(CGRectGetWidth(screen.frame) / 56);
     BOOL hovering = appDelegate.modeMap.hoverModeDirection == labelDirection;
     BOOL selected = appDelegate.modeMap.inspectingModeDirection == labelDirection;
     NSShadow *stringShadow = [[NSShadow alloc] init];
@@ -101,7 +103,7 @@
     NSColor *textColor = (hovering || selected) ? NSColorFromRGB(0x303AA0) : NSColorFromRGB(0x404A60);
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [style setAlignment:NSCenterTextAlignment];
-    labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:(interactive ? 13 : 32)],
+    labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:(interactive ? 13 : fontSize)],
                         NSForegroundColorAttributeName: textColor,
                         NSShadowAttributeName: stringShadow,
                         NSParagraphStyleAttributeName: style

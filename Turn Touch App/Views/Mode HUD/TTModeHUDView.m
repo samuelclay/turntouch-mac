@@ -10,10 +10,10 @@
 
 @implementation TTModeHUDView
 
-const CGFloat kPaddingPct = .5f;
+const CGFloat kPaddingPct = .52f;
 const NSInteger kImageMargin = 18;
 const NSInteger kImageSize = 36;
-const NSInteger kImageTextMargin = 24;
+const NSInteger kImageTextMargin = 12;
 
 @synthesize isTeaser;
 @synthesize gradientView;
@@ -190,6 +190,7 @@ const NSInteger kImageTextMargin = 24;
 - (void)drawMap {
     [diamondLabels setMode:titleMode];
     [diamondLabels setFrame:[self mapFrame]];
+    
 }
 
 - (void)setupTitleAttributes {
