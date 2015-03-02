@@ -41,6 +41,7 @@ extern NSString *const kAlarmSnoozeDuration;
 
 - (NSDate *)nextRepeatAlarmDate;
 + (SBElementArray *)playlists;
++ (SBElementArray *)userPlaylists;
 + (NSView *)songInfoView:(NSRect)rect withTrack:(iTunesTrack *)currentTrack;
 
 @end

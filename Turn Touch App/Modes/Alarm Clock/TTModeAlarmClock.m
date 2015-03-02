@@ -409,4 +409,20 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
     return playlists;
 }
 
++ (SBElementArray *)userPlaylists {
+    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    iTunesSource *librarySource = nil;
+    
+    for (iTunesSource *source in iTunes.sources) {
+        if ([source kind] == iTunesESrcLibrary) {
+            librarySource = source;
+            break;
+        }
+    }
+    
+    SBElementArray *playlists = [librarySource userPlaylists];
+    
+    return playlists;
+}
+
 @end

@@ -77,9 +77,10 @@ NSUInteger const kOnetimeHeight = 68;
     // Set music/sounds options
     [sliderAlarmVolume setIntegerValue:alarmVolume];
     [sliderAlarmDuration setIntegerValue:alarmDuration];
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01f * NSEC_PER_SEC)), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC)),
+                   dispatch_get_main_queue(), ^{
         [self populateiTunesSources];
-//    });
+    });
     [checkboxShuffle setState:playlistShuffle];
     
     
@@ -268,7 +269,7 @@ NSUInteger const kOnetimeHeight = 68;
 }
 
 - (iTunesLibraryPlaylist *)iTunesPlaylist:(NSString *)persistentId {
-    SBElementArray *playlists = [TTModeAlarmClock playlists];
+    SBElementArray *playlists = [TTModeAlarmClock userPlaylists];
     for (iTunesLibraryPlaylist *playlist in playlists) {
         if ([playlist.persistentID isEqualToString:persistentId]) {
             return playlist;
@@ -278,11 +279,11 @@ NSUInteger const kOnetimeHeight = 68;
 }
 
 - (IBAction)changeiTunesSource:(id)sender {
-    SBElementArray *playlists = [TTModeAlarmClock playlists];
+    SBElementArray *playlists = [TTModeAlarmClock userPlaylists];
     NSInteger tag = dropdowniTunesSources.selectedItem.tag;
     NSInteger i = 0;
-    iTunesLibraryPlaylist *selectedPlaylist;
-    for (iTunesLibraryPlaylist *playlist in playlists) {
+    iTunesUserPlaylist *selectedPlaylist;
+    for (iTunesUserPlaylist *playlist in playlists) {
         i++;
         if (i == tag) {
             selectedPlaylist = playlist;
@@ -296,7 +297,7 @@ NSUInteger const kOnetimeHeight = 68;
     [self updateTracksCount:selectedPlaylist];
 }
 
-- (void)updateTracksCount:(iTunesLibraryPlaylist *)selectedPlaylist {
+- (void)updateTracksCount:(iTunesPlaylist *)selectedPlaylist {
     if (!selectedPlaylist) {
         NSString *playlistPersistentId = [NSAppDelegate.modeMap modeOptionValue:kAlarmPlaylist];
         selectedPlaylist = [self iTunesPlaylist:playlistPersistentId];
@@ -314,26 +315,26 @@ NSUInteger const kOnetimeHeight = 68;
 - (void)populateiTunesSources {
     NSString *selectedPlaylistId = (NSString *)[NSAppDelegate.modeMap modeOptionValue:kAlarmPlaylist];
     NSMenuItem *selectedMenuItem;
-    SBElementArray *playlists = [TTModeAlarmClock playlists];
+    SBElementArray *playlists = [TTModeAlarmClock userPlaylists];
     NSInteger tag = 0;
-    iTunesLibraryPlaylist *selectedPlaylist;
-    iTunesLibraryPlaylist *libraryPlaylist;
+    iTunesUserPlaylist *selectedPlaylist;
+    iTunesUserPlaylist *libraryPlaylist;
     NSMenuItem *libraryMenuItem;
+    NSImage *image;
     
-    for (iTunesLibraryPlaylist *playlist in playlists) {
+    for (iTunesUserPlaylist *playlist in playlists) {
         tag++;
         if (!playlist.size) continue;
         NSMenuItem *menuItem = [[NSMenuItem alloc] init];
-        NSImage *image;
         switch (playlist.specialKind) {
             case iTunesESpKLibrary:
                 image = [NSImage imageNamed:@"itunes_library_icon"];
-                libraryPlaylist = playlist;
-                libraryMenuItem = menuItem;
                 break;
                 
             case iTunesESpKMusic:
-                image = [NSImage imageNamed:@"itunes_userplaylist_icon"];
+                image = [NSImage imageNamed:@"itunes_music_icon"];
+                libraryPlaylist = playlist;
+                libraryMenuItem = menuItem;
                 break;
                 
             case iTunesESpKGenius:
@@ -359,10 +360,14 @@ NSUInteger const kOnetimeHeight = 68;
             case iTunesESpKTVShows:
                 image = [NSImage imageNamed:@"itunes_tv_icon"];
                 break;
-                
+            
             default:
 //                NSLog(@"playlist.specialKind: %@", playlist.properties);
-                image = [NSImage imageNamed:@"itunes_playlist_icon"];
+                if ([playlist smart]) {
+                    image = [NSImage imageNamed:@"itunes_playlist_icon"];
+                } else {
+                    image = [NSImage imageNamed:@"itunes_library_icon"];
+                }
                 break;
         }
         [image setSize:NSMakeSize(16, 16)];
