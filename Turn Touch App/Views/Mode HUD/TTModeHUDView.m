@@ -10,8 +10,8 @@
 
 @implementation TTModeHUDView
 
-const CGFloat kPaddingPct = .6f;
-const NSInteger kImageMargin = 32;
+const CGFloat kPaddingPct = .5f;
+const NSInteger kImageMargin = 18;
 const NSInteger kImageSize = 36;
 const NSInteger kImageTextMargin = 24;
 
@@ -115,7 +115,7 @@ const NSInteger kImageTextMargin = 24;
     CGFloat widthPadding = (screen.frame.size.width * kPaddingPct) / 2;
     CGFloat width = screen.frame.size.width - widthPadding*2;
     CGFloat height = width / 1.3;
-    CGFloat heightPadding = (screen.frame.size.height - height) / 2 + 60;
+    CGFloat heightPadding = (screen.frame.size.height - height + 210) / 2;
 
     return NSMakeRect(widthPadding, heightPadding, width, height);
 }
@@ -132,19 +132,19 @@ const NSInteger kImageTextMargin = 24;
     switch (direction) {
         case NORTH:
             x = (NSWidth(screen.frame) - width)/2;
-            y = mapFrame.origin.y + mapFrame.size.height + 36;
+            y = mapFrame.origin.y + mapFrame.size.height + 8;
             break;
         case EAST:
-            x = mapFrame.origin.x + NSWidth(mapFrame) + 36;
+            x = mapFrame.origin.x + NSWidth(mapFrame) + 24;
             y = mapFrame.origin.y + NSHeight(mapFrame)/2 - height/2;
             break;
         case WEST:
-            x = mapFrame.origin.x - width - 36;
+            x = mapFrame.origin.x - width - 24;
             y = mapFrame.origin.y + NSHeight(mapFrame)/2 - height/2;
             break;
         case SOUTH:
             x = (NSWidth(screen.frame) - width)/2;
-            y = mapFrame.origin.y - height - 36;
+            y = mapFrame.origin.y - height - 8;
             break;
             
         default:
@@ -197,6 +197,8 @@ const NSInteger kImageTextMargin = 24;
 }
 
 - (void)setupTitleAttributes:(TTMode *)mode {
+    NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
+    NSInteger fontSize = round(CGRectGetWidth(screen.frame) / 42);
     titleMode = mode;
     modeTitle = [[titleMode class] title];
     NSShadow *stringShadow = [[NSShadow alloc] init];
@@ -210,11 +212,11 @@ const NSInteger kImageTextMargin = 24;
     NSColor *textColor = NSColorFromRGB(0x404A60);
     CGFloat alpha = 0.5f;
     NSColor *inactiveTextColor = NSColorFromRGBAlpha(0xf9f9f9, alpha);
-    modeAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:52],
+    modeAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:fontSize],
                        NSForegroundColorAttributeName: textColor,
                        NSShadowAttributeName: stringShadow
                        };
-    inactiveModeAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:52],
+    inactiveModeAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:fontSize],
                                NSForegroundColorAttributeName: inactiveTextColor,
                                NSShadowAttributeName: inactiveStringShadow
                                };

@@ -99,7 +99,7 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
 - (void)runTTModeMacVolumeMute {
     BOOL v = [self.class isMuted];
     if (v) {
-        [self.class setVolume:self.volume];
+        [self.class setVolume:[self.class volume]];
     } else {
         [self.class setVolume:0];
     }

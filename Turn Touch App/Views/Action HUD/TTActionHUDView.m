@@ -13,7 +13,7 @@
 @synthesize direction;
 @synthesize mode;
 
-const CGFloat kMarginPct = .6f;
+const CGFloat kActionHUDMarginPct = .6f;
 
 - (void)awakeFromNib {
     appDelegate = (TTAppDelegate *)[NSApp delegate];
@@ -29,7 +29,7 @@ const CGFloat kMarginPct = .6f;
         [progressBar setDoubleValue:progress];
     }
 
-//    NSRect frame = [self actionFrame];
+//    NSRect frame = [self.class actionFrame];
 //    [progressBar setFrame:NSInsetRect(frame, 100, 0)];
 }
 
@@ -39,7 +39,7 @@ const CGFloat kMarginPct = .6f;
     if (layout == ACTION_LAYOUT_TITLE) {
         [imageLayoutView setHidden:YES];
     } else if (layout == ACTION_LAYOUT_IMAGE_TITLE) {
-        NSRect frame = [self actionFrame];
+        NSRect frame = [self.class actionFrame];
         imageLayoutView = [mode viewForLayout:direction withRect:frame];
         [self addSubview:imageLayoutView];
         [imageLayoutView setHidden:NO];
@@ -60,16 +60,20 @@ const CGFloat kMarginPct = .6f;
     }
 }
 
-- (NSRect)actionFrame {
++ (NSRect)actionFrame {
     NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
-    CGFloat margin = (screen.frame.size.width * kMarginPct) / 2;
+    CGFloat margin = (screen.frame.size.width * kActionHUDMarginPct) / 2;
     CGFloat width = screen.frame.size.width - margin*2;
-    
-    return NSMakeRect(margin, 0, width, 200);
+    if (width < 900) {
+        width = 900;
+        margin = (screen.frame.size.width - width) / 2;
+    }
+
+    return NSMakeRect(margin, 0, MAX(width, 900), 200);
 }
 
 - (void)drawBackground {
-    NSRect frame = [self actionFrame];
+    NSRect frame = [self.class actionFrame];
     NSBezierPath *ellipse = [NSBezierPath bezierPath];
     [ellipse moveToPoint:NSMakePoint(frame.origin.x, frame.origin.y)];
     [ellipse lineToPoint:NSMakePoint(frame.origin.x + frame.size.width/2, frame.origin.y + frame.size.height)];
@@ -87,7 +91,7 @@ const CGFloat kMarginPct = .6f;
 #pragma mark - Action Layout - Text / Progress
 
 - (void)drawLabel {
-    NSRect frame = [self actionFrame];
+    NSRect frame = [self.class actionFrame];
     NSShadow *stringShadow = [[NSShadow alloc] init];
     stringShadow.shadowColor = [NSColor whiteColor];
     stringShadow.shadowOffset = NSMakeSize(0, -1);
@@ -115,7 +119,7 @@ const CGFloat kMarginPct = .6f;
 #pragma mark - Action Layout - Image
 
 - (void)drawSmallLabel {
-    NSRect frame = [self actionFrame];
+    NSRect frame = [self.class actionFrame];
     NSShadow *stringShadow = [[NSShadow alloc] init];
     stringShadow.shadowColor = [NSColor whiteColor];
     stringShadow.shadowOffset = NSMakeSize(0, -1);

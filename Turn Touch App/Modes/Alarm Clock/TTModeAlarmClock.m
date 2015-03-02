@@ -37,7 +37,7 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
 
 - (void)activate {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self runAlarm];
+//        [self runAlarm];
     });
 }
 
@@ -320,7 +320,8 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
         tracks = [self selectedPlaylistTracks];
     }
     NSInteger tracksCount = tracks.count;
-
+    if (!tracksCount) return;
+    
     if (audioPlayer) {
         [audioPlayer stop];
     }

@@ -12,6 +12,8 @@
 
 @class TTAppDelegate;
 
+extern const CGFloat kActionHUDMarginPct;
+
 @interface TTActionHUDView : NSView {
     TTAppDelegate *appDelegate;
     TTModeDirection direction;
@@ -24,5 +26,6 @@
 
 - (void)drawProgressBar:(NSProgressIndicator *)progressBar;
 - (void)drawImageLayoutView;
++ (NSRect)actionFrame;
 
 @end
