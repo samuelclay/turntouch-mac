@@ -92,12 +92,17 @@
 #pragma mark - Action methods
 
 - (void)runScene:(TTModeDirection)direction {
+    if (!self.phHueSDK.localConnected) {
+        return;
+    }
+    
     PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
     NSString *sceneIdentifier = [appDelegate.modeMap actionOptionValue:kHueScene inDirection:direction];
     NSNumber *sceneDuration = (NSNumber *)[appDelegate.modeMap actionOptionValue:kHueDuration inDirection:direction];
     NSNumber *sceneTransition = [NSNumber numberWithInteger:([sceneDuration integerValue] * 10 * 6)];
     PHScene *activeScene;
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
+
     NSMutableArray *scenes = [[NSMutableArray alloc] init];
     for (PHScene *scene in cache.scenes.allValues) {
         [scenes addObject:@{@"name": scene.name, @"identifier": scene.identifier}];
