@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>alarmSnoozeDuration</key>
+	<integer>8</integer>
+	<key>alarmShuffle</key>
+	<true/>
+	<key>alarmDuration</key>
+	<integer>90</integer>
+	<key>alarmVolume</key>
+	<integer>50</integer>
+	<key>repeatAlarmTime</key>
+	<integer>84</integer>
+	<key>repeatAlarmDays</key>
+	<array>
+		<false/>
+		<true/>
+		<true/>
+		<true/>
+		<true/>
+		<true/>
+		<false/>
+	</array>
+	<key>repeatAlarmEnabled</key>
+	<false/>
+	<key>onetimeAlarmEnabled</key>
+	<false/>
+</dict>
+</plist>
