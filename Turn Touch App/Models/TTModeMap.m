@@ -154,6 +154,7 @@
             break;
             
         case NO_DIRECTION:
+        case INFO:
             break;
     }
     

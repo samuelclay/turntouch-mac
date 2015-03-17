@@ -16,9 +16,13 @@
 		<data>
 		47SO2hySy/dvN7qVMPq/A04R+4A=
 		</data>
+		<key>Resources/TTModeAlarmClock.plist</key>
+		<data>
+		1Wk3GmVqTE6F1F41akde0Al3xJE=
+		</data>
 		<key>Resources/TTModeAlarmClockOptions.nib</key>
 		<data>
-		Y2cL/VDWoKF7v4b8QZspNDrA1lE=
+		uptVw+xoYZpfDc2oIAOl/qVUYf0=
 		</data>
 		<key>Resources/TTModeAlarmSnoozeOptions.nib</key>
 		<data>
@@ -56,13 +60,17 @@
 		<data>
 		Hyxm25cQOAa2BITtubAqpWfdHyw=
 		</data>
-		<key>Resources/TTModeMac.plist</key>
-		<data>
-		9tnKIztXufDtbXEHZ1asVkH1vT8=
-		</data>
 		<key>Resources/TTModeMacOptions.nib</key>
 		<data>
 		RS1VcscPKkeZUXytwkOKdPvF/zA=
+		</data>
+		<key>Resources/TTModeMusic.plist</key>
+		<data>
+		apk+lgW7JBUf8vqthzNBwMCrsoM=
+		</data>
+		<key>Resources/TTModeMusicVolumeJumpOptions.nib</key>
+		<data>
+		x30pSjUH/z3zhWubkU1XsWIb9hM=
 		</data>
 		<key>Resources/TTPanel.nib</key>
 		<data>
@@ -155,6 +163,42 @@
 		<data>
 		hhYNb1Zyqu7F6UVyYa5Hx1mADwI=
 		</data>
+		<key>Resources/itunes_audiobook_icon.png</key>
+		<data>
+		iX2++dVfIzJ4N1LfVUsmw31TDMo=
+		</data>
+		<key>Resources/itunes_genius_icon.png</key>
+		<data>
+		YWqfds45N+3gFliCVe5uhFLoi7s=
+		</data>
+		<key>Resources/itunes_itunesu_icon.png</key>
+		<data>
+		KahKe/NrFVteDzZt/USv8XMtD3A=
+		</data>
+		<key>Resources/itunes_library_icon.png</key>
+		<data>
+		/smJUTi43yWIw0sWDRb8+6v3EZM=
+		</data>
+		<key>Resources/itunes_movies_icon.png</key>
+		<data>
+		VUrE4izEDGhs901HrwXlOJ/Ge8Q=
+		</data>
+		<key>Resources/itunes_music_icon.png</key>
+		<data>
+		TPh7mCKaIjXRKRkOrzVqauM8Qds=
+		</data>
+		<key>Resources/itunes_playlist_icon.png</key>
+		<data>
+		6tUR4c1Isgeu4OCU+AZ6ilFteJ0=
+		</data>
+		<key>Resources/itunes_podcast_icon.png</key>
+		<data>
+		CtGHfWJWZtR4QR8yHU9xfAyFrO0=
+		</data>
+		<key>Resources/itunes_tv_icon.png</key>
+		<data>
+		48DSGYOjsf91x/ZD3F+wAlKhwmE=
+		</data>
 		<key>Resources/macbookpro.png</key>
 		<data>
 		DV1zl6UUPJ+d4PejbHml/1exSJM=
@@ -202,6 +246,10 @@
 		<key>Resources/newspaper-3.png</key>
 		<data>
 		6bTkggdrz5GfdsLGUNqe9VozFhU=
+		</data>
+		<key>Resources/originals.png</key>
+		<data>
+		qxb4RGF8T1l4QFIXrvqlcuQBXXU=
 		</data>
 		<key>Resources/presentation-chart.png</key>
 		<data>
@@ -242,9 +290,13 @@
 		<data>
 		47SO2hySy/dvN7qVMPq/A04R+4A=
 		</data>
+		<key>Resources/TTModeAlarmClock.plist</key>
+		<data>
+		1Wk3GmVqTE6F1F41akde0Al3xJE=
+		</data>
 		<key>Resources/TTModeAlarmClockOptions.nib</key>
 		<data>
-		Y2cL/VDWoKF7v4b8QZspNDrA1lE=
+		uptVw+xoYZpfDc2oIAOl/qVUYf0=
 		</data>
 		<key>Resources/TTModeAlarmSnoozeOptions.nib</key>
 		<data>
@@ -282,13 +334,17 @@
 		<data>
 		Hyxm25cQOAa2BITtubAqpWfdHyw=
 		</data>
-		<key>Resources/TTModeMac.plist</key>
-		<data>
-		9tnKIztXufDtbXEHZ1asVkH1vT8=
-		</data>
 		<key>Resources/TTModeMacOptions.nib</key>
 		<data>
 		RS1VcscPKkeZUXytwkOKdPvF/zA=
+		</data>
+		<key>Resources/TTModeMusic.plist</key>
+		<data>
+		apk+lgW7JBUf8vqthzNBwMCrsoM=
+		</data>
+		<key>Resources/TTModeMusicVolumeJumpOptions.nib</key>
+		<data>
+		x30pSjUH/z3zhWubkU1XsWIb9hM=
 		</data>
 		<key>Resources/TTPanel.nib</key>
 		<data>
@@ -381,6 +437,42 @@
 		<data>
 		hhYNb1Zyqu7F6UVyYa5Hx1mADwI=
 		</data>
+		<key>Resources/itunes_audiobook_icon.png</key>
+		<data>
+		iX2++dVfIzJ4N1LfVUsmw31TDMo=
+		</data>
+		<key>Resources/itunes_genius_icon.png</key>
+		<data>
+		YWqfds45N+3gFliCVe5uhFLoi7s=
+		</data>
+		<key>Resources/itunes_itunesu_icon.png</key>
+		<data>
+		KahKe/NrFVteDzZt/USv8XMtD3A=
+		</data>
+		<key>Resources/itunes_library_icon.png</key>
+		<data>
+		/smJUTi43yWIw0sWDRb8+6v3EZM=
+		</data>
+		<key>Resources/itunes_movies_icon.png</key>
+		<data>
+		VUrE4izEDGhs901HrwXlOJ/Ge8Q=
+		</data>
+		<key>Resources/itunes_music_icon.png</key>
+		<data>
+		TPh7mCKaIjXRKRkOrzVqauM8Qds=
+		</data>
+		<key>Resources/itunes_playlist_icon.png</key>
+		<data>
+		6tUR4c1Isgeu4OCU+AZ6ilFteJ0=
+		</data>
+		<key>Resources/itunes_podcast_icon.png</key>
+		<data>
+		CtGHfWJWZtR4QR8yHU9xfAyFrO0=
+		</data>
+		<key>Resources/itunes_tv_icon.png</key>
+		<data>
+		48DSGYOjsf91x/ZD3F+wAlKhwmE=
+		</data>
 		<key>Resources/macbookpro.png</key>
 		<data>
 		DV1zl6UUPJ+d4PejbHml/1exSJM=
@@ -428,6 +520,10 @@
 		<key>Resources/newspaper-3.png</key>
 		<data>
 		6bTkggdrz5GfdsLGUNqe9VozFhU=
+		</data>
+		<key>Resources/originals.png</key>
+		<data>
+		qxb4RGF8T1l4QFIXrvqlcuQBXXU=
 		</data>
 		<key>Resources/presentation-chart.png</key>
 		<data>

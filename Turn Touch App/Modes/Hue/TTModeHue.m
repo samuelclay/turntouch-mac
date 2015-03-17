@@ -170,7 +170,7 @@
     }
     self.phHueSDK = [[PHHueSDK alloc] init];
     [self.phHueSDK startUpSDK];
-    [self.phHueSDK enableLogging:NO];
+    [self.phHueSDK enableLogging:YES];
     
     PHNotificationManager *notificationManager = [PHNotificationManager defaultManager];
     [notificationManager deregisterObjectForAllNotifications:self];
@@ -297,25 +297,12 @@
     // Stop heartbeats
     [self disableLocalHeartbeat];
     
-    // Remove currently showing popups, loading sheets or other screens
-    //    [self hideCurrentSheetWindow];
-    
-    // Show search screen
-    //    [self showLoadingViewWithText:NSLocalizedString(@"Searching for bridges...", @"Searching for bridges text")];
-    /***************************************************
-     A bridge search is started using UPnP to find local bridges
-     *****************************************************/
-    
     // Start search
     hueState = STATE_CONNECTING;
     [self.delegate changeState:hueState withMode:self showMessage:@"Searching for a Hue bridge..."];
     
     self.bridgeSearch = [[PHBridgeSearching alloc] initWithUpnpSearch:YES andPortalSearch:YES andIpAdressSearch:NO];
     [self.bridgeSearch startSearchWithCompletionHandler:^(NSDictionary *bridgesFound) {
-        
-        // Done with search, remove loading sheet view
-        //        [self hideCurrentSheetWindow];
-        
         /***************************************************
          The search is complete, check whether we found a bridge
          *****************************************************/
@@ -447,7 +434,7 @@
     [self disableLocalHeartbeat];
     
     // Start local heartbeat
-//    [self performSelector:@selector(enableLocalHeartbeat) withObject:nil afterDelay:1];
+    [self performSelector:@selector(enableLocalHeartbeat) withObject:nil afterDelay:1];
 }
 
 /**

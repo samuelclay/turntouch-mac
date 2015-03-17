@@ -23,6 +23,8 @@
     CBPeripheral *peripheral;
 }
 
+@property (nonatomic) NSNumber *batteryPct;
+
 - (void) startScan;
 - (void) stopScan;
 - (BOOL) isLECapableHardware;

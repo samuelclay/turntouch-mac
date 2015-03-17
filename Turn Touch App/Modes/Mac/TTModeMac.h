@@ -13,7 +13,7 @@
     BOOL turnedOffMonitor;
 }
 
-- (AudioDeviceID)defaultOutputDeviceID;
++ (AudioDeviceID)defaultOutputDeviceID;
 
 @property float volume;
 

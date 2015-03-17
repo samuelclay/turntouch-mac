@@ -100,6 +100,10 @@
     return @"TTAction4";
 }
 
+- (NSString *)defaultInfo {
+    return nil;
+}
+
 #pragma mark - Map directions to actions
 
 - (void)runDirection:(TTModeDirection)direction {

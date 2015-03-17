@@ -7,6 +7,7 @@
 //
 
 #import "TTTitleBarView.h"
+#import "TTBluetoothMonitor.h"
 
 #define CORNER_RADIUS 8.0f
 
@@ -19,14 +20,37 @@
         self.translatesAutoresizingMaskIntoConstraints = NO;
         title = [NSImage imageNamed:@"Turn Touch title.png"];
         [title setSize:NSMakeSize(100, 11)];
+        
+        [self setupTitleAttributes];
+        [self registerAsObserver];
     }
     return self;
+}
+
+- (void)registerAsObserver {
+    [appDelegate.bluetoothMonitor addObserver:self
+                                   forKeyPath:@"batteryPct"
+                                      options:0 context:nil];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context {
+    if ([keyPath isEqual:NSStringFromSelector(@selector(batteryPct))]) {
+        [self setNeedsDisplay:YES];
+    }
+}
+
+- (void)dealloc {
+    [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"batteryPct"];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     [self drawBackground];
     [self drawLabel];
+    [self drawBatteryPct];
 }
 
 - (void)setFrame:(NSRect)frameRect {
@@ -42,6 +66,16 @@
                                  title.size.width, title.size.height)];
 }
 
+- (void)drawBatteryPct {
+    if (!appDelegate.bluetoothMonitor.batteryPct) return;
+    NSString *batteryPct = [NSString stringWithFormat:@"%@%%", appDelegate.bluetoothMonitor.batteryPct];
+    NSSize batterySize = [batteryPct sizeWithAttributes:batteryAttributes];
+    NSPoint batteryPoint = NSMakePoint(NSMaxX(self.bounds) - batterySize.width - 16,
+                                       NSMidY(self.bounds) - batterySize.height/2 + 1);
+
+    [batteryPct drawInRect:NSMakeRect(batteryPoint.x, batteryPoint.y, batterySize.width, batterySize.height)
+            withAttributes:batteryAttributes];
+}
 
 
 - (void)drawBackground {
@@ -85,6 +119,19 @@
     [line setLineWidth:1.0];
     [NSColorFromRGB(0xD0D0D0) set];
     [line stroke];
+}
+
+
+- (void)setupTitleAttributes {
+    NSShadow *stringShadow = [[NSShadow alloc] init];
+    stringShadow.shadowColor = [NSColor whiteColor];
+    stringShadow.shadowOffset = NSMakeSize(0, -1);
+    stringShadow.shadowBlurRadius = 0;
+    NSColor *textColor = NSColorFromRGB(0x404A60);
+    batteryAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:13],
+                          NSForegroundColorAttributeName: textColor,
+                          NSShadowAttributeName: stringShadow
+                          };
 }
 
 @end
