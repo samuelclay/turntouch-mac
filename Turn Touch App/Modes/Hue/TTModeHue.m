@@ -99,7 +99,7 @@
     PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
     NSString *sceneIdentifier = [appDelegate.modeMap actionOptionValue:kHueScene inDirection:direction];
     NSNumber *sceneDuration = (NSNumber *)[appDelegate.modeMap actionOptionValue:kHueDuration inDirection:direction];
-    NSNumber *sceneTransition = [NSNumber numberWithInteger:([sceneDuration integerValue] * 10 * 6)];
+    NSNumber *sceneTransition = [NSNumber numberWithInteger:([sceneDuration integerValue] * 10 * 60)];
     PHScene *activeScene;
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
 
@@ -126,6 +126,13 @@
         for (NSString *lightIdentifier in activeScene.lightIdentifiers) {
             PHLight *light = [[cache lights] objectForKey:lightIdentifier];
             PHLightState *lightState = light.lightState;
+//            PHLightState *lightState = [[PHLightState alloc] init];
+            
+//            [lightState setHue:[NSNumber numberWithInt:0]];
+            lightState.on = [NSNumber numberWithBool:NO];
+            [lightState setBrightness:[NSNumber numberWithInt:0]];
+            [lightState setSaturation:[NSNumber numberWithInt:0]];
+
             lightState.transitionTime = sceneTransition;
             lightState.alert = 0;
             [bridgeSendAPI updateLightStateForId:light.identifier withLightState:lightState completionHandler:^(NSArray *errors) {
@@ -170,7 +177,7 @@
     }
     self.phHueSDK = [[PHHueSDK alloc] init];
     [self.phHueSDK startUpSDK];
-    [self.phHueSDK enableLogging:YES];
+    [self.phHueSDK enableLogging:NO];
     
     PHNotificationManager *notificationManager = [PHNotificationManager defaultManager];
     [notificationManager deregisterObjectForAllNotifications:self];
@@ -256,7 +263,6 @@
         // One of the connections is made, remove popups and loading views
         hueState = STATE_CONNECTED;
         [self.delegate changeState:hueState withMode:self showMessage:nil];
-//        [self disableLocalHeartbeat];
         [self ensureScenes];
     }
 }
