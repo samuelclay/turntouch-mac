@@ -17,4 +17,6 @@
 
 @property (nonatomic, strong) TTModeHue *modeHue;
 
+- (IBAction)selectOtherBridge:(id)sender;
+
 @end

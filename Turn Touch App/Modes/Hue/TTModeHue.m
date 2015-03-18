@@ -256,7 +256,7 @@
         // One of the connections is made, remove popups and loading views
         hueState = STATE_CONNECTED;
         [self.delegate changeState:hueState withMode:self showMessage:nil];
-        [self disableLocalHeartbeat];
+//        [self disableLocalHeartbeat];
         [self ensureScenes];
     }
 }
@@ -301,7 +301,7 @@
     hueState = STATE_CONNECTING;
     [self.delegate changeState:hueState withMode:self showMessage:@"Searching for a Hue bridge..."];
     
-    self.bridgeSearch = [[PHBridgeSearching alloc] initWithUpnpSearch:YES andPortalSearch:YES andIpAdressSearch:NO];
+    self.bridgeSearch = [[PHBridgeSearching alloc] initWithUpnpSearch:YES andPortalSearch:YES andIpAdressSearch:YES];
     [self.bridgeSearch startSearchWithCompletionHandler:^(NSDictionary *bridgesFound) {
         /***************************************************
          The search is complete, check whether we found a bridge

@@ -59,6 +59,10 @@
     }
 }
 
+- (IBAction)selectOtherBridge:(id)sender {
+    [self.modeHue searchForBridgeLocal];
+}
+
 #pragma mark - View Connectrollers
 
 - (void)clearViewConnectrollers {
