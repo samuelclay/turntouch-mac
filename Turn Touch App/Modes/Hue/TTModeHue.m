@@ -9,6 +9,8 @@
 #import "TTModeHue.h"
 #import "TTModeHueSceneOptions.h"
 
+#define MAX_HUE 65535
+
 @interface TTModeHue()
 
 @property (nonatomic, strong) PHBridgeSearching *bridgeSearch;
@@ -40,7 +42,8 @@
     return @[@"TTModeHueSceneEarlyEvening",
              @"TTModeHueSceneLateEvening",
              @"TTModeHueSceneSleep",
-             @"TTModeHueSceneOff"
+             @"TTModeHueSceneOff",
+             @"TTModeHueSceneRandom"
              ];
 }
 
@@ -58,6 +61,9 @@
 - (NSString *)titleTTModeHueSceneOff {
     return @"Lights off";
 }
+- (NSString *)titleTTModeHueSceneRandom {
+    return @"Random";
+}
 
 #pragma mark - Action Images
 
@@ -73,6 +79,9 @@
 - (NSString *)imageTTModeHueSceneOff {
     return @"next_track.png";
 }
+- (NSString *)imageTTModeHueSceneRandom {
+    return @"next_track.png";
+}
 
 #pragma mark - Defaults
 
@@ -83,7 +92,7 @@
     return @"TTModeHueSceneLateEvening";
 }
 - (NSString *)defaultWest {
-    return @"TTModeHueSceneOff";
+    return @"TTModeHueSceneRandom";
 }
 - (NSString *)defaultSouth {
     return @"TTModeHueSceneSleep";
@@ -160,8 +169,25 @@
 }
 
 - (void)runTTModeHueSceneSleep:(TTModeDirection)direction {
-//    NSLog(@"Running scene off... %d", direction);
+    //    NSLog(@"Running scene off... %d", direction);
     [self runScene:direction];
+}
+
+- (void)runTTModeHueSceneRandom:(TTModeDirection)direction {
+    //    NSLog(@"Running scene off... %d", direction);
+    
+    PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
+    PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
+    
+    for (PHLight *light in cache.lights.allValues) {
+        PHLightState *lightState = [[PHLightState alloc] init];
+        
+        [lightState setHue:[NSNumber numberWithInt:arc4random() % MAX_HUE]];
+        [lightState setBrightness:[NSNumber numberWithInt:254]];
+        [lightState setSaturation:[NSNumber numberWithInt:254]];
+        
+        [bridgeSendAPI updateLightStateForId:light.identifier withLightState:lightState completionHandler:^(NSArray *errors) {}];
+    }
 }
 
 #pragma mark - Hue Init
