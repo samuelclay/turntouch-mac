@@ -1,5 +1,5 @@
 //
-// Prefix header for all source files of the 'Turn Touch App' target in the 'Turn Touch App' project
+// Prefix header for all source files of the 'Turn Touch Remote' target in the 'Turn Touch Remote' project
 //
 
 #ifdef __OBJC__

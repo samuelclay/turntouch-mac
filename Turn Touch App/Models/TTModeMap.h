@@ -1,6 +1,6 @@
 //
 //  TTDiamond.h
-//  Turn Touch App
+//  Turn Touch Remote
 //
 //  Created by Samuel Clay on 8/21/13.
 //  Copyright (c) 2013 Turn Touch. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  TTTitleBarView.h
-//  Turn Touch App
+//  Turn Touch Remote
 //
 //  Created by Samuel Clay on 4/9/14.
 //  Copyright (c) 2014 Turn Touch. All rights reserved.

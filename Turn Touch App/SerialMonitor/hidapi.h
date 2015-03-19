@@ -1,6 +1,6 @@
 //
 //  hidapi.h
-//  Turn Touch App
+//  Turn Touch Remote
 //
 //  Created by Samuel Clay on 3/20/14.
 //  Copyright (c) 2014 Turn Touch. All rights reserved.

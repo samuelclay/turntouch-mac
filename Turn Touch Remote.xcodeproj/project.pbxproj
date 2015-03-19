@@ -185,7 +185,7 @@
 		FF0E12C3182477CB00D49EC7 /* TTModeProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TTModeProtocol.h; path = Models/TTModeProtocol.h; sourceTree = "<group>"; };
 		FF0E12C818247BAE00D49EC7 /* TTMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTMode.h; path = Models/TTMode.h; sourceTree = "<group>"; };
 		FF0E12C918247BAE00D49EC7 /* TTMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTMode.m; path = Models/TTMode.m; sourceTree = "<group>"; };
-		FF0E12CC18247D4600D49EC7 /* iTunes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = iTunes.h; path = Modes/Music/iTunes.h; sourceTree = "<group>"; };
+		FF0E12CC18247D4600D49EC7 /* iTunes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = iTunes.h; path = Modes/Music/iTunes.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		FF0E12CD18247D6100D49EC7 /* TTModeMusic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMusic.h; path = Modes/Music/TTModeMusic.h; sourceTree = "<group>"; };
 		FF0E12CE18247D6100D49EC7 /* TTModeMusic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeMusic.m; path = Modes/Music/TTModeMusic.m; sourceTree = "<group>"; };
 		FF0E12D01824811200D49EC7 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
@@ -193,8 +193,8 @@
 		FF0E12D31828560000D49EC7 /* TTModeVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeVideo.m; path = Modes/Video/TTModeVideo.m; sourceTree = "<group>"; };
 		FF0E12D61828569300D49EC7 /* Quicktime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Quicktime.h; path = Modes/Video/Quicktime.h; sourceTree = "<group>"; };
 		FF0E12D71828569300D49EC7 /* VLC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VLC.h; path = Modes/Video/VLC.h; sourceTree = "<group>"; };
-		FF1B02291A36898700BE764E /* NSObject+CancelableBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CancelableBlocks.h"; sourceTree = "<group>"; };
-		FF1B022A1A36898700BE764E /* NSObject+CancelableBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CancelableBlocks.m"; sourceTree = "<group>"; };
+		FF1B02291A36898700BE764E /* NSObject+CancelableBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSObject+CancelableBlocks.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		FF1B022A1A36898700BE764E /* NSObject+CancelableBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSObject+CancelableBlocks.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		FF2365C2196F0DFA00A4ADBC /* mode_alarm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mode_alarm.png; path = icons/mode_alarm.png; sourceTree = "<group>"; };
 		FF2365C3196F0DFA00A4ADBC /* mode_fitness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mode_fitness.png; path = icons/mode_fitness.png; sourceTree = "<group>"; };
 		FF2365C4196F0DFA00A4ADBC /* mode_mac.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mode_mac.png; path = icons/mode_mac.png; sourceTree = "<group>"; };
@@ -230,8 +230,8 @@
 		FF3641EC1A60C422003CC03C /* TTModeHuePushlink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeHuePushlink.h; sourceTree = "<group>"; };
 		FF3641ED1A60C422003CC03C /* TTModeHuePushlink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeHuePushlink.m; sourceTree = "<group>"; };
 		FF3641EE1A60C422003CC03C /* TTModeHuePushlink.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTModeHuePushlink.xib; sourceTree = "<group>"; };
-		FF3641F11A64AE39003CC03C /* NSAttributedString+Extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSAttributedString+Extra.h"; path = "Categories/NSAttributedString+Extra.h"; sourceTree = "<group>"; };
-		FF3641F21A64AE39003CC03C /* NSAttributedString+Extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSAttributedString+Extra.m"; path = "Categories/NSAttributedString+Extra.m"; sourceTree = "<group>"; };
+		FF3641F11A64AE39003CC03C /* NSAttributedString+Extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = "NSAttributedString+Extra.h"; path = "Categories/NSAttributedString+Extra.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		FF3641F21A64AE39003CC03C /* NSAttributedString+Extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = "NSAttributedString+Extra.m"; path = "Categories/NSAttributedString+Extra.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		FF3641F41A660204003CC03C /* TTModeHueSceneOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeHueSceneOptions.h; sourceTree = "<group>"; };
 		FF3641F51A660204003CC03C /* TTModeHueSceneOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeHueSceneOptions.m; sourceTree = "<group>"; };
 		FF3641F61A660204003CC03C /* TTModeHueSceneOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTModeHueSceneOptions.xib; sourceTree = "<group>"; };
@@ -245,8 +245,8 @@
 		FF66F2A519228DE100031478 /* TTModeAlarmClockOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeAlarmClockOptions.m; path = "Modes/Alarm Clock/TTModeAlarmClockOptions.m"; sourceTree = "<group>"; };
 		FF66F2A71922D1C100031478 /* TTOptionsDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTOptionsDetailView.h; path = "Views/Mode Options/TTOptionsDetailView.h"; sourceTree = "<group>"; };
 		FF66F2A81922D1C100031478 /* TTOptionsDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTOptionsDetailView.m; path = "Views/Mode Options/TTOptionsDetailView.m"; sourceTree = "<group>"; };
-		FF6A37CE1A9AEC9F006F3756 /* NSDate+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+Extras.h"; path = "Categories/NSDate+Extras.h"; sourceTree = "<group>"; };
-		FF6A37CF1A9AEC9F006F3756 /* NSDate+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+Extras.m"; path = "Categories/NSDate+Extras.m"; sourceTree = "<group>"; };
+		FF6A37CE1A9AEC9F006F3756 /* NSDate+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = "NSDate+Extras.h"; path = "Categories/NSDate+Extras.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		FF6A37CF1A9AEC9F006F3756 /* NSDate+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = "NSDate+Extras.m"; path = "Categories/NSDate+Extras.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		FF7305911A5C9C76009A852D /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
 		FF7305921A5C9C76009A852D /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
 		FF7305931A5C9C76009A852D /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
@@ -272,8 +272,8 @@
 		FF8012F6186A599600955218 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		FF8012F8186A79A600955218 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = clock.png; path = icons/clock.png; sourceTree = "<group>"; };
 		FF8012FA186A7B9000955218 /* vinyl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = vinyl.png; path = icons/vinyl.png; sourceTree = "<group>"; };
-		FF801300186CF8BE00955218 /* TTActionDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTActionDetailView.h; path = Views/Actions/TTActionDetailView.h; sourceTree = "<group>"; };
-		FF801301186CF8BE00955218 /* TTActionDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTActionDetailView.m; path = Views/Actions/TTActionDetailView.m; sourceTree = "<group>"; };
+		FF801300186CF8BE00955218 /* TTActionDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = TTActionDetailView.h; path = Views/Actions/TTActionDetailView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		FF801301186CF8BE00955218 /* TTActionDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = TTActionDetailView.m; path = Views/Actions/TTActionDetailView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		FF80130D186CF8FF00955218 /* TTDiamondLabels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTDiamondLabels.h; sourceTree = "<group>"; };
 		FF80130E186CF8FF00955218 /* TTDiamondLabels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTDiamondLabels.m; sourceTree = "<group>"; };
 		FF80130F186CF8FF00955218 /* TTDiamondView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTDiamondView.h; sourceTree = "<group>"; };
@@ -333,7 +333,7 @@
 		FF98A2E41867DBE70032CC7A /* TTPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTPanelController.h; path = Controllers/TTPanelController.h; sourceTree = "<group>"; };
 		FF98A2E51867DBE70032CC7A /* TTPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTPanelController.m; path = Controllers/TTPanelController.m; sourceTree = "<group>"; };
 		FF98A2E61867DBE70032CC7A /* TTPanelDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTPanelDelegate.h; path = Controllers/TTPanelDelegate.h; sourceTree = "<group>"; };
-		FF98A2E91867DC320032CC7A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Supporting Files/main.m"; sourceTree = "<group>"; };
+		FF98A2E91867DC320032CC7A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = main.m; path = "Supporting Files/main.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		FF98A2EA1867DC320032CC7A /* Turn Touch App-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Turn Touch App-Info.plist"; path = "Supporting Files/Turn Touch App-Info.plist"; sourceTree = "<group>"; };
 		FF98A2EB1867DC320032CC7A /* Turn Touch App-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Turn Touch App-Prefix.pch"; path = "Supporting Files/Turn Touch App-Prefix.pch"; sourceTree = "<group>"; };
 		FF98A2EC1867DC320032CC7A /* Turn Touch App.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "Turn Touch App.entitlements"; path = "Supporting Files/Turn Touch App.entitlements"; sourceTree = "<group>"; };
@@ -341,7 +341,7 @@
 		FF98A3021868D3F90032CC7A /* macbookpro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = macbookpro.png; path = icons/macbookpro.png; sourceTree = "<group>"; };
 		FF98A30C1868F1120032CC7A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FF98A30E1868F1190032CC7A /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
-		FFA1D4C21A3B8916003EA0BC /* TTActionHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTActionHUDView.h; sourceTree = "<group>"; };
+		FFA1D4C21A3B8916003EA0BC /* TTActionHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TTActionHUDView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		FFA1D4C31A3B8916003EA0BC /* TTActionHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTActionHUDView.m; sourceTree = "<group>"; };
 		FFA1D4C41A3B8916003EA0BC /* TTActionHUDView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTActionHUDView.xib; path = "Views/Action HUD/TTActionHUDView.xib"; sourceTree = "<group>"; };
 		FFA1D4C51A3B8916003EA0BC /* TTActionHUDWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTActionHUDWindow.h; sourceTree = "<group>"; };
@@ -399,8 +399,8 @@
 		FFB5FF3F1A671C4100DF617A /* TTModeHueSceneOffOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeHueSceneOffOptions.h; sourceTree = "<group>"; };
 		FFB5FF401A671C4100DF617A /* TTModeHueSceneOffOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeHueSceneOffOptions.m; sourceTree = "<group>"; };
 		FFB5FF421A6723EA00DF617A /* TTModeHue.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TTModeHue.plist; sourceTree = "<group>"; };
-		FFB653DC18DB9DEA00830B42 /* hid.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hid.c; path = SerialMonitor/hid.c; sourceTree = "<group>"; };
-		FFB653DE18DB9DFD00830B42 /* hidapi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = hidapi.h; path = SerialMonitor/hidapi.h; sourceTree = "<group>"; };
+		FFB653DC18DB9DEA00830B42 /* hid.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; lineEnding = 0; name = hid.c; path = SerialMonitor/hid.c; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.c; };
+		FFB653DE18DB9DFD00830B42 /* hidapi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = hidapi.h; path = SerialMonitor/hidapi.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		FFB653DF18DBA14E00830B42 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		FFBC625E1A9D699D0032AD24 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FFD62CCC194F935D0093004D /* TTSegmentedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSegmentedCell.h; path = "Views/Mode Options/TTSegmentedCell.h"; sourceTree = "<group>"; };
@@ -410,8 +410,8 @@
 		FFE2D4721A451BEA00DDD413 /* TTBluetoothMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTBluetoothMonitor.h; path = SerialMonitor/TTBluetoothMonitor.h; sourceTree = "<group>"; };
 		FFE2D4731A451BEA00DDD413 /* TTBluetoothMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTBluetoothMonitor.m; path = SerialMonitor/TTBluetoothMonitor.m; sourceTree = "<group>"; };
 		FFE2D4751A451FA200DDD413 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
-		FFE2D4771A46404500DDD413 /* NSData+Conversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+Conversion.h"; path = "Categories/NSData+Conversion.h"; sourceTree = "<group>"; };
-		FFE2D4781A46404500DDD413 /* NSData+Conversion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+Conversion.m"; path = "Categories/NSData+Conversion.m"; sourceTree = "<group>"; };
+		FFE2D4771A46404500DDD413 /* NSData+Conversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = "NSData+Conversion.h"; path = "Categories/NSData+Conversion.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		FFE2D4781A46404500DDD413 /* NSData+Conversion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = "NSData+Conversion.m"; path = "Categories/NSData+Conversion.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		FFE2D47C1A51EDF000DDD413 /* TTModeHue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeHue.h; sourceTree = "<group>"; };
 		FFE2D47D1A51EDF000DDD413 /* TTModeHue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeHue.m; sourceTree = "<group>"; };
 		FFEA6CB219216CDF0010874B /* TTModeMacOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeMacOptions.xib; path = Modes/Mac/TTModeMacOptions.xib; sourceTree = "<group>"; };
@@ -727,7 +727,7 @@
 		FF8C832A17AB14B5000166FC = {
 			isa = PBXGroup;
 			children = (
-				FF8C833C17AB14B5000166FC /* Turn Touch App */,
+				FF8C833C17AB14B5000166FC /* Turn Touch Remote */,
 				FF936058196DF67500675B7B /* Vendor */,
 				FF3A9F6217C42B5E00C5C2D5 /* Images */,
 				FF8C833517AB14B5000166FC /* Frameworks */,
@@ -772,7 +772,7 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		FF8C833C17AB14B5000166FC /* Turn Touch App */ = {
+		FF8C833C17AB14B5000166FC /* Turn Touch Remote */ = {
 			isa = PBXGroup;
 			children = (
 				FF5F70B317C428FB00511AB6 /* Controllers */,
@@ -784,6 +784,7 @@
 				FF8C833D17AB14B5000166FC /* Supporting Files */,
 				FFE2D47A1A46404C00DDD413 /* Categories */,
 			);
+			name = "Turn Touch Remote";
 			path = "Turn Touch App";
 			sourceTree = "<group>";
 		};

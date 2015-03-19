@@ -1,6 +1,6 @@
 //
 //  TTOptionsView.h
-//  Turn Touch App
+//  Turn Touch Remote
 //
 //  Created by Samuel Clay on 12/26/13.
 //  Copyright (c) 2013 Turn Touch. All rights reserved.
