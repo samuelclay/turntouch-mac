@@ -149,7 +149,11 @@
             }];
         }
     } else {
-        [bridgeSendAPI activateSceneWithIdentifier:sceneIdentifier onGroup:@"0" completionHandler:nil];
+        [bridgeSendAPI activateSceneWithIdentifier:sceneIdentifier onGroup:@"0" completionHandler:^(NSArray *errors) {
+            if (errors) {
+                NSLog(@"Error on scene change: %@", errors);
+            }
+        }];
     }
 }
 

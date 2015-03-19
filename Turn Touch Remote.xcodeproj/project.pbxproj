@@ -46,6 +46,7 @@
 		FF3641F31A64AE39003CC03C /* NSAttributedString+Extra.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3641F21A64AE39003CC03C /* NSAttributedString+Extra.m */; };
 		FF3641F71A660204003CC03C /* TTModeHueSceneOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3641F51A660204003CC03C /* TTModeHueSceneOptions.m */; };
 		FF3641F81A660204003CC03C /* TTModeHueSceneOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3641F61A660204003CC03C /* TTModeHueSceneOptions.xib */; };
+		FF3760C71ABB59210055EC6D /* logo_16.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3760C61ABB59210055EC6D /* logo_16.png */; };
 		FF429AD21919C630007C485E /* TTModeMenuCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF429AD11919C630007C485E /* TTModeMenuCollectionView.m */; };
 		FF4E2630182317D000D477F6 /* TTSerialMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4E262F182317D000D477F6 /* TTSerialMonitor.m */; };
 		FF4E26321823197D00D477F6 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4E26311823197D00D477F6 /* IOKit.framework */; };
@@ -143,7 +144,6 @@
 		FFAA4F6F182D99640049FFC7 /* TTModeAlarmClock.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4F6E182D99640049FFC7 /* TTModeAlarmClock.m */; };
 		FFAA4F72182D9A5F0049FFC7 /* TTModeNews.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4F71182D9A5F0049FFC7 /* TTModeNews.m */; };
 		FFAA61E01ABA6A9200AA422B /* HueSDK_OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */; };
-		FFAA61E31ABA6AD000AA422B /* Turn Touch Remote-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFAA61E11ABA6AD000AA422B /* Turn Touch Remote-Info.plist */; };
 		FFAFCBC519130F520058B9CB /* TTPanelArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAFCBC419130F520058B9CB /* TTPanelArrowView.m */; };
 		FFB1670B1922FE53008FA1AF /* TTModeMacOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB1670A1922FE53008FA1AF /* TTModeMacOptions.m */; };
 		FFB1670E1923E61F008FA1AF /* TTTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB1670D1923E61F008FA1AF /* TTTabView.m */; };
@@ -243,6 +243,7 @@
 		FF3641F41A660204003CC03C /* TTModeHueSceneOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeHueSceneOptions.h; sourceTree = "<group>"; };
 		FF3641F51A660204003CC03C /* TTModeHueSceneOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeHueSceneOptions.m; sourceTree = "<group>"; };
 		FF3641F61A660204003CC03C /* TTModeHueSceneOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTModeHueSceneOptions.xib; sourceTree = "<group>"; };
+		FF3760C61ABB59210055EC6D /* logo_16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_16.png; sourceTree = "<group>"; };
 		FF429AD01919C630007C485E /* TTModeMenuCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeMenuCollectionView.h; sourceTree = "<group>"; };
 		FF429AD11919C630007C485E /* TTModeMenuCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeMenuCollectionView.m; sourceTree = "<group>"; };
 		FF4E262E182317D000D477F6 /* TTSerialMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSerialMonitor.h; path = SerialMonitor/TTSerialMonitor.h; sourceTree = "<group>"; };
@@ -1018,6 +1019,7 @@
 		FFF05F3118F6120200AC6230 /* logo */ = {
 			isa = PBXGroup;
 			children = (
+				FF3760C61ABB59210055EC6D /* logo_16.png */,
 				FF8A73C11ABA69410023AA53 /* logo_32.png */,
 				FF8A73C21ABA69410023AA53 /* logo_64.png */,
 				FF8A73C31ABA69410023AA53 /* logo_128.png */,
@@ -1121,7 +1123,6 @@
 				FF3641F81A660204003CC03C /* TTModeHueSceneOptions.xib in Resources */,
 				FFA1D4CC1A3B8916003EA0BC /* TTActionHUDView.xib in Resources */,
 				FF8A73BF1ABA692F0023AA53 /* Images.xcassets in Resources */,
-				FFAA61E31ABA6AD000AA422B /* Turn Touch Remote-Info.plist in Resources */,
 				FFAA4F68182D96D60049FFC7 /* television.png in Resources */,
 				FFAA4F66182D96D60049FFC7 /* speaker.png in Resources */,
 				FF2740721A7C576900C55579 /* itunes_playlist_icon.png in Resources */,
@@ -1153,6 +1154,7 @@
 				FF98A3031868D3F90032CC7A /* imac.png in Resources */,
 				FF2365CC196F0DFA00A4ADBC /* mode_alarm.png in Resources */,
 				FFB5FF431A6723EA00DF617A /* TTModeHue.plist in Resources */,
+				FF3760C71ABB59210055EC6D /* logo_16.png in Resources */,
 				FF3641DA1A5F53DC003CC03C /* TTModeHueConnecting.xib in Resources */,
 				FF3641EB1A60BBEE003CC03C /* TTModeHueConnected.xib in Resources */,
 				FF8A73C91ABA69410023AA53 /* logo_128.png in Resources */,
@@ -1373,13 +1375,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Turn\\ Touch\\ App/Vendor/Hue",
-					"$(PROJECT_DIR)/Turn",
-					Touch,
-					Remote/Vendor/Hue,
-					"$(PROJECT_DIR)/Turn",
-					Touch,
-					Remote/Vendor/Hue,
+					"$(PROJECT_DIR)/Turn\\ Touch\\ Remote/Vendor/Hue",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Turn Touch Remote/Supporting Files/Turn Touch Remote-Prefix.pch";
@@ -1401,13 +1397,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Turn\\ Touch\\ App/Vendor/Hue",
-					"$(PROJECT_DIR)/Turn",
-					Touch,
-					Remote/Vendor/Hue,
-					"$(PROJECT_DIR)/Turn",
-					Touch,
-					Remote/Vendor/Hue,
+					"$(PROJECT_DIR)/Turn\\ Touch\\ Remote/Vendor/Hue",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Turn Touch Remote/Supporting Files/Turn Touch Remote-Prefix.pch";
