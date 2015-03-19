@@ -297,7 +297,7 @@
 		FF8528F71A96B58700B289FD /* TTModeMusicVolumeJumpOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeMusicVolumeJumpOptions.xib; path = Modes/Music/TTModeMusicVolumeJumpOptions.xib; sourceTree = "<group>"; };
 		FF8528F91A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMusicVolumeJumpOptions.h; path = Modes/Music/TTModeMusicVolumeJumpOptions.h; sourceTree = "<group>"; };
 		FF8528FA1A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeMusicVolumeJumpOptions.m; path = Modes/Music/TTModeMusicVolumeJumpOptions.m; sourceTree = "<group>"; };
-		FF8C833317AB14B5000166FC /* Turn Touch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Turn Touch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF8C833317AB14B5000166FC /* Turn Touch Remote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Turn Touch Remote.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF8C833617AB14B5000166FC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FF8C833917AB14B5000166FC /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		FF8C833A17AB14B5000166FC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -738,7 +738,7 @@
 		FF8C833417AB14B5000166FC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FF8C833317AB14B5000166FC /* Turn Touch App.app */,
+				FF8C833317AB14B5000166FC /* Turn Touch Remote.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1027,9 +1027,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FF8C833217AB14B5000166FC /* Turn Touch App */ = {
+		FF8C833217AB14B5000166FC /* Turn Touch Remote */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FF8C835017AB14B5000166FC /* Build configuration list for PBXNativeTarget "Turn Touch App" */;
+			buildConfigurationList = FF8C835017AB14B5000166FC /* Build configuration list for PBXNativeTarget "Turn Touch Remote" */;
 			buildPhases = (
 				FF8C832F17AB14B5000166FC /* Sources */,
 				FF8C833017AB14B5000166FC /* Frameworks */,
@@ -1040,9 +1040,9 @@
 			);
 			dependencies = (
 			);
-			name = "Turn Touch App";
+			name = "Turn Touch Remote";
 			productName = "Turn Touch App";
-			productReference = FF8C833317AB14B5000166FC /* Turn Touch App.app */;
+			productReference = FF8C833317AB14B5000166FC /* Turn Touch Remote.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1060,7 +1060,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FF8C832E17AB14B5000166FC /* Build configuration list for PBXProject "Turn Touch App" */;
+			buildConfigurationList = FF8C832E17AB14B5000166FC /* Build configuration list for PBXProject "Turn Touch Remote" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1072,7 +1072,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FF8C833217AB14B5000166FC /* Turn Touch App */,
+				FF8C833217AB14B5000166FC /* Turn Touch Remote */,
 			);
 		};
 /* End PBXProject section */
@@ -1349,7 +1349,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch App/Supporting Files/Turn Touch App-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Turn Touch Remote";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1370,7 +1370,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch App/Supporting Files/Turn Touch App-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Turn Touch Remote";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1379,7 +1379,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FF8C832E17AB14B5000166FC /* Build configuration list for PBXProject "Turn Touch App" */ = {
+		FF8C832E17AB14B5000166FC /* Build configuration list for PBXProject "Turn Touch Remote" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FF8C834E17AB14B5000166FC /* Debug */,
@@ -1388,7 +1388,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FF8C835017AB14B5000166FC /* Build configuration list for PBXNativeTarget "Turn Touch App" */ = {
+		FF8C835017AB14B5000166FC /* Build configuration list for PBXNativeTarget "Turn Touch Remote" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FF8C835117AB14B5000166FC /* Debug */,
