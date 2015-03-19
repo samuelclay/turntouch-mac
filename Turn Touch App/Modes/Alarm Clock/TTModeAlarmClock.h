@@ -13,10 +13,17 @@
 
 @class SBElementArray;
 
+typedef enum {
+    ALARM_CLOCK_STATUS_OFF = 0,
+    ALARM_CLOCK_STATUS_SNOOZING = 1,
+    ALARM_CLOCK_STATUS_ON = 2
+} TTModeAlarmClockStatus;
+
 @interface TTModeAlarmClock : TTMode <AVAudioPlayerDelegate> {
     NSInteger trackIndex;
     SBElementArray *tracks;
     CGFloat originalSystemVolume;
+    TTModeAlarmClockStatus status;
 }
 
 extern NSString *const kRepeatAlarmEnabled;
@@ -42,5 +49,6 @@ extern NSString *const kAlarmSnoozeDuration;
 - (NSDate *)nextRepeatAlarmDate;
 + (SBElementArray *)playlists;
 + (SBElementArray *)userPlaylists;
+- (void)runAlarm;
 
 @end

@@ -35,6 +35,7 @@
 @synthesize dropdowniTunesSources;
 @synthesize checkboxShuffle;
 @synthesize textTracksCount;
+@synthesize previewAlarmButton;
 
 NSUInteger const kRepeatHeight = 88;
 NSUInteger const kOnetimeHeight = 68;
@@ -392,6 +393,10 @@ NSUInteger const kOnetimeHeight = 68;
         [dropdowniTunesSources selectItem:selectedMenuItem];
         [dropdowniTunesSources setNeedsDisplay:YES];
     });
+}
+
+- (IBAction)previewAlarm:(id)sender {
+    [(TTModeAlarmClock *)appDelegate.modeMap.selectedMode runAlarm];
 }
 
 @end

@@ -289,6 +289,11 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
 #pragma mark - Alarm clock modal
 
 - (void)runAlarm {
+    if (status != ALARM_CLOCK_STATUS_OFF) {
+        [self stopAlarm];
+    }
+    
+    status = ALARM_CLOCK_STATUS_ON;
     originalSystemVolume = [TTModeMac volume];
     NSInteger prefVolume = [[NSAppDelegate.modeMap mode:self optionValue:kAlarmVolume] integerValue];
     [TTModeMac setVolume:(prefVolume / 100.f)];
@@ -316,6 +321,8 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
 }
 
 - (void)playNextSong {
+    if (status == ALARM_CLOCK_STATUS_OFF) return;
+    
     if (!tracks) {
         tracks = [self selectedPlaylistTracks];
     }
@@ -368,6 +375,9 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
 }
 
 - (void)snoozeAlarm {
+    if (status != ALARM_CLOCK_STATUS_ON) return;
+
+    status = ALARM_CLOCK_STATUS_SNOOZING;
     [audioPlayer stop];
     [actionHUDController fadeOut:nil];
     [TTModeMac setVolume:originalSystemVolume];
@@ -385,10 +395,15 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
 }
 
 - (void)stopAlarm {
+    if (status != ALARM_CLOCK_STATUS_SNOOZING && status != ALARM_CLOCK_STATUS_ON) return;
+    
+    status = ALARM_CLOCK_STATUS_OFF;
     if (stopAlarmTimer) [stopAlarmTimer invalidate];
     [audioPlayer stop];
     [actionHUDController fadeOut:nil];
-    [TTModeMac setVolume:originalSystemVolume];
+    if (originalSystemVolume) {
+        [TTModeMac setVolume:originalSystemVolume];
+    }
 }
 
 #pragma mark - Playlists

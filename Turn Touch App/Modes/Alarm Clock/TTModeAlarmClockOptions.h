@@ -33,6 +33,7 @@
 @property (nonatomic) IBOutlet NSPopUpButton *dropdowniTunesSources;
 @property (nonatomic) IBOutlet NSButton *checkboxShuffle;
 @property (nonatomic) IBOutlet NSTextField *textTracksCount;
+@property (nonatomic) IBOutlet NSButton *previewAlarmButton;
 
 - (IBAction)changeSegRepeatControl:(id)sender;
 - (IBAction)changeSegOnetimeControl:(id)sender;
@@ -44,6 +45,6 @@
 - (IBAction)changeAlarmDuration:(id)sender;
 - (IBAction)changeiTunesSource:(id)sender;
 - (IBAction)changeShuffle:(id)sender;
-
+- (IBAction)previewAlarm:(id)sender;
 
 @end
