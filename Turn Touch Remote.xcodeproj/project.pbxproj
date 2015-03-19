@@ -34,7 +34,6 @@
 		FF27407A1A7C5BC200C55579 /* itunes_movies_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2740771A7C5BC200C55579 /* itunes_movies_icon.png */; };
 		FF27407B1A7C5BC200C55579 /* itunes_tv_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2740781A7C5BC200C55579 /* itunes_tv_icon.png */; };
 		FF2EB77D1AA50D4D002549A7 /* itunes_music_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2EB77C1AA50D4D002549A7 /* itunes_music_icon.png */; };
-		FF3641D81A5E241C003CC03C /* HueSDK_OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */; };
 		FF3641DA1A5F53DC003CC03C /* TTModeHueConnecting.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3641D91A5F53DC003CC03C /* TTModeHueConnecting.xib */; };
 		FF3641DC1A5F5617003CC03C /* TTModeHueOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3641DB1A5F5617003CC03C /* TTModeHueOptions.xib */; };
 		FF3641DF1A5F5734003CC03C /* TTModeHueConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3641DE1A5F5734003CC03C /* TTModeHueConnect.m */; };
@@ -84,6 +83,13 @@
 		FF8528F61A96A63A00B289FD /* TTModeMusic.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF8528F51A96A63A00B289FD /* TTModeMusic.plist */; };
 		FF8528F81A96B58700B289FD /* TTModeMusicVolumeJumpOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF8528F71A96B58700B289FD /* TTModeMusicVolumeJumpOptions.xib */; };
 		FF8528FB1A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8528FA1A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.m */; };
+		FF8A73BF1ABA692F0023AA53 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF8A73BE1ABA692F0023AA53 /* Images.xcassets */; };
+		FF8A73C61ABA69410023AA53 /* logo - 1024.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8A73C01ABA69410023AA53 /* logo - 1024.png */; };
+		FF8A73C71ABA69410023AA53 /* logo_32.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8A73C11ABA69410023AA53 /* logo_32.png */; };
+		FF8A73C81ABA69410023AA53 /* logo_64.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8A73C21ABA69410023AA53 /* logo_64.png */; };
+		FF8A73C91ABA69410023AA53 /* logo_128.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8A73C31ABA69410023AA53 /* logo_128.png */; };
+		FF8A73CA1ABA69410023AA53 /* logo_256.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8A73C41ABA69410023AA53 /* logo_256.png */; };
+		FF8A73CB1ABA69410023AA53 /* logo_512.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8A73C51ABA69410023AA53 /* logo_512.png */; };
 		FF8C833717AB14B5000166FC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8C833617AB14B5000166FC /* Cocoa.framework */; };
 		FF8C834117AB14B5000166FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF8C833F17AB14B5000166FC /* InfoPlist.strings */; };
 		FF8C834717AB14B5000166FC /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FF8C834517AB14B5000166FC /* Credits.rtf */; };
@@ -106,7 +112,7 @@
 		FF98A2E71867DBE70032CC7A /* TTMenubarController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98A2E31867DBE70032CC7A /* TTMenubarController.m */; };
 		FF98A2E81867DBE70032CC7A /* TTPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98A2E51867DBE70032CC7A /* TTPanelController.m */; };
 		FF98A2ED1867DC320032CC7A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98A2E91867DC320032CC7A /* main.m */; };
-		FF98A2EF1867DC320032CC7A /* Turn Touch App.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = FF98A2EC1867DC320032CC7A /* Turn Touch App.entitlements */; };
+		FF98A2EF1867DC320032CC7A /* Turn Touch Remote.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = FF98A2EC1867DC320032CC7A /* Turn Touch Remote.entitlements */; };
 		FF98A3031868D3F90032CC7A /* imac.png in Resources */ = {isa = PBXBuildFile; fileRef = FF98A3011868D3F90032CC7A /* imac.png */; };
 		FF98A3041868D3F90032CC7A /* macbookpro.png in Resources */ = {isa = PBXBuildFile; fileRef = FF98A3021868D3F90032CC7A /* macbookpro.png */; };
 		FFA1D4CB1A3B8916003EA0BC /* TTActionHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA1D4C31A3B8916003EA0BC /* TTActionHUDView.m */; };
@@ -136,6 +142,8 @@
 		FFAA4F68182D96D60049FFC7 /* television.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAA4F5C182D96D60049FFC7 /* television.png */; };
 		FFAA4F6F182D99640049FFC7 /* TTModeAlarmClock.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4F6E182D99640049FFC7 /* TTModeAlarmClock.m */; };
 		FFAA4F72182D9A5F0049FFC7 /* TTModeNews.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4F71182D9A5F0049FFC7 /* TTModeNews.m */; };
+		FFAA61E01ABA6A9200AA422B /* HueSDK_OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */; };
+		FFAA61E31ABA6AD000AA422B /* Turn Touch Remote-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFAA61E11ABA6AD000AA422B /* Turn Touch Remote-Info.plist */; };
 		FFAFCBC519130F520058B9CB /* TTPanelArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAFCBC419130F520058B9CB /* TTPanelArrowView.m */; };
 		FFB1670B1922FE53008FA1AF /* TTModeMacOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB1670A1922FE53008FA1AF /* TTModeMacOptions.m */; };
 		FFB1670E1923E61F008FA1AF /* TTTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB1670D1923E61F008FA1AF /* TTTabView.m */; };
@@ -297,6 +305,13 @@
 		FF8528F71A96B58700B289FD /* TTModeMusicVolumeJumpOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeMusicVolumeJumpOptions.xib; path = Modes/Music/TTModeMusicVolumeJumpOptions.xib; sourceTree = "<group>"; };
 		FF8528F91A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMusicVolumeJumpOptions.h; path = Modes/Music/TTModeMusicVolumeJumpOptions.h; sourceTree = "<group>"; };
 		FF8528FA1A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeMusicVolumeJumpOptions.m; path = Modes/Music/TTModeMusicVolumeJumpOptions.m; sourceTree = "<group>"; };
+		FF8A73BE1ABA692F0023AA53 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Turn Touch Remote/Images.xcassets"; sourceTree = SOURCE_ROOT; };
+		FF8A73C01ABA69410023AA53 /* logo - 1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo - 1024.png"; sourceTree = "<group>"; };
+		FF8A73C11ABA69410023AA53 /* logo_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_32.png; sourceTree = "<group>"; };
+		FF8A73C21ABA69410023AA53 /* logo_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_64.png; sourceTree = "<group>"; };
+		FF8A73C31ABA69410023AA53 /* logo_128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_128.png; sourceTree = "<group>"; };
+		FF8A73C41ABA69410023AA53 /* logo_256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_256.png; sourceTree = "<group>"; };
+		FF8A73C51ABA69410023AA53 /* logo_512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_512.png; sourceTree = "<group>"; };
 		FF8C833317AB14B5000166FC /* Turn Touch Remote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Turn Touch Remote.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF8C833617AB14B5000166FC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FF8C833917AB14B5000166FC /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -334,9 +349,7 @@
 		FF98A2E51867DBE70032CC7A /* TTPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTPanelController.m; path = Controllers/TTPanelController.m; sourceTree = "<group>"; };
 		FF98A2E61867DBE70032CC7A /* TTPanelDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTPanelDelegate.h; path = Controllers/TTPanelDelegate.h; sourceTree = "<group>"; };
 		FF98A2E91867DC320032CC7A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = main.m; path = "Supporting Files/main.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		FF98A2EA1867DC320032CC7A /* Turn Touch App-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Turn Touch App-Info.plist"; path = "Supporting Files/Turn Touch App-Info.plist"; sourceTree = "<group>"; };
-		FF98A2EB1867DC320032CC7A /* Turn Touch App-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Turn Touch App-Prefix.pch"; path = "Supporting Files/Turn Touch App-Prefix.pch"; sourceTree = "<group>"; };
-		FF98A2EC1867DC320032CC7A /* Turn Touch App.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "Turn Touch App.entitlements"; path = "Supporting Files/Turn Touch App.entitlements"; sourceTree = "<group>"; };
+		FF98A2EC1867DC320032CC7A /* Turn Touch Remote.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "Turn Touch Remote.entitlements"; path = "Supporting Files/Turn Touch Remote.entitlements"; sourceTree = "<group>"; };
 		FF98A3011868D3F90032CC7A /* imac.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = imac.png; path = icons/imac.png; sourceTree = "<group>"; };
 		FF98A3021868D3F90032CC7A /* macbookpro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = macbookpro.png; path = icons/macbookpro.png; sourceTree = "<group>"; };
 		FF98A30C1868F1120032CC7A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -382,6 +395,8 @@
 		FFAA4F6E182D99640049FFC7 /* TTModeAlarmClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeAlarmClock.m; path = "Modes/Alarm Clock/TTModeAlarmClock.m"; sourceTree = "<group>"; };
 		FFAA4F70182D9A5F0049FFC7 /* TTModeNews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeNews.h; path = Modes/News/TTModeNews.h; sourceTree = "<group>"; };
 		FFAA4F71182D9A5F0049FFC7 /* TTModeNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeNews.m; path = Modes/News/TTModeNews.m; sourceTree = "<group>"; };
+		FFAA61E11ABA6AD000AA422B /* Turn Touch Remote-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Turn Touch Remote-Info.plist"; path = "Supporting Files/Turn Touch Remote-Info.plist"; sourceTree = "<group>"; };
+		FFAA61E21ABA6AD000AA422B /* Turn Touch Remote-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Turn Touch Remote-Prefix.pch"; path = "Supporting Files/Turn Touch Remote-Prefix.pch"; sourceTree = "<group>"; };
 		FFAFCBC319130F520058B9CB /* TTPanelArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTPanelArrowView.h; sourceTree = "<group>"; };
 		FFAFCBC419130F520058B9CB /* TTPanelArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTPanelArrowView.m; sourceTree = "<group>"; };
 		FFB167091922FE53008FA1AF /* TTModeMacOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMacOptions.h; path = Modes/Mac/TTModeMacOptions.h; sourceTree = "<group>"; };
@@ -433,10 +448,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFAA61E01ABA6A9200AA422B /* HueSDK_OSX.framework in Frameworks */,
 				FFBC625F1A9D699D0032AD24 /* AVFoundation.framework in Frameworks */,
 				FF7305C21A5CB2E3009A852D /* SystemConfiguration.framework in Frameworks */,
 				FFE2D4761A451FA200DDD413 /* CoreBluetooth.framework in Frameworks */,
-				FF3641D81A5E241C003CC03C /* HueSDK_OSX.framework in Frameworks */,
 				FFB653E018DBA14E00830B42 /* CoreFoundation.framework in Frameworks */,
 				FF8012F7186A599600955218 /* AudioToolbox.framework in Frameworks */,
 				FF7A1C6F1868FD72005FA756 /* QuartzCore.framework in Frameworks */,
@@ -558,7 +573,7 @@
 				FFAA4F6A182D96E50049FFC7 /* icons */,
 			);
 			name = Images;
-			path = "Turn Touch App/Images";
+			path = "Turn Touch Remote/Images";
 			sourceTree = "<group>";
 		};
 		FF4E26291823154500D477F6 /* Serial Monitor */ = {
@@ -783,9 +798,9 @@
 				FF0E12BF18242D2F00D49EC7 /* XIBs */,
 				FF8C833D17AB14B5000166FC /* Supporting Files */,
 				FFE2D47A1A46404C00DDD413 /* Categories */,
+				FF8A73BE1ABA692F0023AA53 /* Images.xcassets */,
 			);
-			name = "Turn Touch Remote";
-			path = "Turn Touch App";
+			path = "Turn Touch Remote";
 			sourceTree = "<group>";
 		};
 		FF8C833D17AB14B5000166FC /* Supporting Files */ = {
@@ -793,9 +808,9 @@
 			children = (
 				FF936038196DF0B600675B7B /* fonts */,
 				FF98A2E91867DC320032CC7A /* main.m */,
-				FF98A2EA1867DC320032CC7A /* Turn Touch App-Info.plist */,
-				FF98A2EB1867DC320032CC7A /* Turn Touch App-Prefix.pch */,
-				FF98A2EC1867DC320032CC7A /* Turn Touch App.entitlements */,
+				FFAA61E11ABA6AD000AA422B /* Turn Touch Remote-Info.plist */,
+				FFAA61E21ABA6AD000AA422B /* Turn Touch Remote-Prefix.pch */,
+				FF98A2EC1867DC320032CC7A /* Turn Touch Remote.entitlements */,
 				FF8C833F17AB14B5000166FC /* InfoPlist.strings */,
 				FF8C834517AB14B5000166FC /* Credits.rtf */,
 				FF8012F4186A1AD100955218 /* defaults.plist */,
@@ -821,7 +836,7 @@
 				FF1B022A1A36898700BE764E /* NSObject+CancelableBlocks.m */,
 			);
 			name = Vendor;
-			path = "Turn Touch App/Vendor";
+			path = "Turn Touch Remote/Vendor";
 			sourceTree = "<group>";
 		};
 		FF936059196DF67500675B7B /* TFDatePicker */ = {
@@ -1003,6 +1018,12 @@
 		FFF05F3118F6120200AC6230 /* logo */ = {
 			isa = PBXGroup;
 			children = (
+				FF8A73C11ABA69410023AA53 /* logo_32.png */,
+				FF8A73C21ABA69410023AA53 /* logo_64.png */,
+				FF8A73C31ABA69410023AA53 /* logo_128.png */,
+				FF8A73C41ABA69410023AA53 /* logo_256.png */,
+				FF8A73C51ABA69410023AA53 /* logo_512.png */,
+				FF8A73C01ABA69410023AA53 /* logo - 1024.png */,
 				FFF05F3218F6120200AC6230 /* Turn Touch title.png */,
 			);
 			path = logo;
@@ -1094,15 +1115,20 @@
 				FF2365CD196F0DFA00A4ADBC /* mode_fitness.png in Resources */,
 				FF80132B186CF92000955218 /* TTPanel.xib in Resources */,
 				FF8012FB186A7B9000955218 /* vinyl.png in Resources */,
+				FF8A73C61ABA69410023AA53 /* logo - 1024.png in Resources */,
 				FF2740731A7C576900C55579 /* itunes_podcast_icon.png in Resources */,
 				FF8C834717AB14B5000166FC /* Credits.rtf in Resources */,
 				FF3641F81A660204003CC03C /* TTModeHueSceneOptions.xib in Resources */,
 				FFA1D4CC1A3B8916003EA0BC /* TTActionHUDView.xib in Resources */,
+				FF8A73BF1ABA692F0023AA53 /* Images.xcassets in Resources */,
+				FFAA61E31ABA6AD000AA422B /* Turn Touch Remote-Info.plist in Resources */,
 				FFAA4F68182D96D60049FFC7 /* television.png in Resources */,
 				FFAA4F66182D96D60049FFC7 /* speaker.png in Resources */,
 				FF2740721A7C576900C55579 /* itunes_playlist_icon.png in Resources */,
+				FF8A73CA1ABA69410023AA53 /* logo_256.png in Resources */,
 				FFAA4F65182D96D60049FFC7 /* presentation-chart.png in Resources */,
 				FFA1D4DB1A3B89A4003EA0BC /* TTModeHUDView.xib in Resources */,
+				FF8A73CB1ABA69410023AA53 /* logo_512.png in Resources */,
 				FF8C834D17AB14B5000166FC /* MainMenu.xib in Resources */,
 				FF2365D2196F0DFA00A4ADBC /* mode_news.png in Resources */,
 				FF2740791A7C5BC200C55579 /* itunes_itunesu_icon.png in Resources */,
@@ -1117,6 +1143,7 @@
 				FF3641DC1A5F5617003CC03C /* TTModeHueOptions.xib in Resources */,
 				FF913D271924366C005C336F /* TTModeAlarmClock.plist in Resources */,
 				FFAA4F60182D96D60049FFC7 /* filmstrip-3.png in Resources */,
+				FF8A73C81ABA69410023AA53 /* logo_64.png in Resources */,
 				FF27407A1A7C5BC200C55579 /* itunes_movies_icon.png in Resources */,
 				FF936065196DF67500675B7B /* calendar@2x.png in Resources */,
 				FFAA4F63182D96D60049FFC7 /* icon_music.png in Resources */,
@@ -1128,6 +1155,7 @@
 				FFB5FF431A6723EA00DF617A /* TTModeHue.plist in Resources */,
 				FF3641DA1A5F53DC003CC03C /* TTModeHueConnecting.xib in Resources */,
 				FF3641EB1A60BBEE003CC03C /* TTModeHueConnected.xib in Resources */,
+				FF8A73C91ABA69410023AA53 /* logo_128.png in Resources */,
 				FF2365D4196F0DFA00A4ADBC /* mode_video.png in Resources */,
 				FF2365D0196F0DFA00A4ADBC /* mode_morning.png in Resources */,
 				FF8012F9186A79A600955218 /* clock.png in Resources */,
@@ -1135,7 +1163,7 @@
 				FF8012F5186A1AD100955218 /* defaults.plist in Resources */,
 				FF936066196DF67500675B7B /* InfoPlist.strings in Resources */,
 				FFAA4F67182D96D60049FFC7 /* sun.png in Resources */,
-				FF98A2EF1867DC320032CC7A /* Turn Touch App.entitlements in Resources */,
+				FF98A2EF1867DC320032CC7A /* Turn Touch Remote.entitlements in Resources */,
 				FFAA4F62182D96D60049FFC7 /* icon_movie.png in Resources */,
 				FF936064196DF67500675B7B /* calendar.png in Resources */,
 				FFFF683819D4E2C30081904A /* ideas.txt in Resources */,
@@ -1144,6 +1172,7 @@
 				FF913D2919243B89005C336F /* TTModeAlarmSnoozeOptions.xib in Resources */,
 				FFAA4F64182D96D60049FFC7 /* newspaper-3.png in Resources */,
 				FF2740701A7C576900C55579 /* itunes_genius_icon.png in Resources */,
+				FF8A73C71ABA69410023AA53 /* logo_32.png in Resources */,
 				FF98A3041868D3F90032CC7A /* macbookpro.png in Resources */,
 				FFEA6CB319216CDF0010874B /* TTModeMacOptions.xib in Resources */,
 				FF7305C41A5CB3EF009A852D /* TTModeHueConnect.xib in Resources */,
@@ -1338,16 +1367,23 @@
 		FF8C835117AB14B5000166FC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Turn\\ Touch\\ App/Vendor/Hue",
+					"$(PROJECT_DIR)/Turn",
+					Touch,
+					Remote/Vendor/Hue,
+					"$(PROJECT_DIR)/Turn",
+					Touch,
+					Remote/Vendor/Hue,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Turn Touch App/Supporting Files/Turn Touch App-Prefix.pch";
-				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch App/Supporting Files/Turn Touch App-Info.plist";
+				GCC_PREFIX_HEADER = "Turn Touch Remote/Supporting Files/Turn Touch Remote-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Remote/Supporting Files/Turn Touch Remote-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "Turn Touch Remote";
@@ -1359,16 +1395,23 @@
 		FF8C835217AB14B5000166FC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Turn\\ Touch\\ App/Vendor/Hue",
+					"$(PROJECT_DIR)/Turn",
+					Touch,
+					Remote/Vendor/Hue,
+					"$(PROJECT_DIR)/Turn",
+					Touch,
+					Remote/Vendor/Hue,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Turn Touch App/Supporting Files/Turn Touch App-Prefix.pch";
-				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch App/Supporting Files/Turn Touch App-Info.plist";
+				GCC_PREFIX_HEADER = "Turn Touch Remote/Supporting Files/Turn Touch Remote-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Remote/Supporting Files/Turn Touch Remote-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "Turn Touch Remote";

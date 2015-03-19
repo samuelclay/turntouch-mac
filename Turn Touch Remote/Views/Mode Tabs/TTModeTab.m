@@ -48,6 +48,7 @@
             itemMode = appDelegate.modeMap.southMode;
             break;
         case NO_DIRECTION:
+        case INFO:
             break;
     }
     

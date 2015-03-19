@@ -9,15 +9,15 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
-	<string>Turn Touch App</string>
+	<string>Turn Touch Remote</string>
 	<key>CFBundleIconFile</key>
-	<string>Logo</string>
+	<string>AppIcon</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.turntouch.Turn-Touch-App</string>
+	<string>com.turntouch.Turn-Touch-Remote</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Turn Touch App</string>
+	<string>Turn Touch Remote</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>

@@ -4,6 +4,10 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>Resources/AppIcon.icns</key>
+		<data>
+		hTgrMRRjCbjFyFMH6S0StBnM5bc=
+		</data>
 		<key>Resources/Effra_Rg.ttf</key>
 		<data>
 		V7/5eGD8hqn7/snzpPyBZY7Y/iQ=
@@ -22,7 +26,7 @@
 		</data>
 		<key>Resources/TTModeAlarmClockOptions.nib</key>
 		<data>
-		uptVw+xoYZpfDc2oIAOl/qVUYf0=
+		4gVZq4H2rIWHG5r58k9ZMUEDrcs=
 		</data>
 		<key>Resources/TTModeAlarmSnoozeOptions.nib</key>
 		<data>
@@ -50,7 +54,7 @@
 		</data>
 		<key>Resources/TTModeHueOptions.nib</key>
 		<data>
-		siMB+NAabhhRU2TN8jxpf/tqKYQ=
+		i4FG7kHwUAq2iYBPHljXuOk1hvc=
 		</data>
 		<key>Resources/TTModeHuePushlink.nib</key>
 		<data>
@@ -76,7 +80,11 @@
 		<data>
 		yh738xoeFHdUFnQ4zu1T066/NwM=
 		</data>
-		<key>Resources/Turn Touch App.entitlements</key>
+		<key>Resources/Turn Touch Remote-Info.plist</key>
+		<data>
+		WObVFDFIv2UH0jShgVxKRERBhUY=
+		</data>
+		<key>Resources/Turn Touch Remote.entitlements</key>
 		<data>
 		s3WSLfTKCP8Xv6f0V16/RZ/4paI=
 		</data>
@@ -198,6 +206,30 @@
 		<key>Resources/itunes_tv_icon.png</key>
 		<data>
 		48DSGYOjsf91x/ZD3F+wAlKhwmE=
+		</data>
+		<key>Resources/logo - 1024.png</key>
+		<data>
+		y3krwvHJ+byMqURlGRnIKqcZoyI=
+		</data>
+		<key>Resources/logo_128.png</key>
+		<data>
+		Amj8dBGXGz3DQox3VhCxrkx1nK0=
+		</data>
+		<key>Resources/logo_256.png</key>
+		<data>
+		W+zMp5tDhrcFZAUdbWL+h6/XCio=
+		</data>
+		<key>Resources/logo_32.png</key>
+		<data>
+		0FaL4FIzeRbG+eVHA1WPUWwpYfU=
+		</data>
+		<key>Resources/logo_512.png</key>
+		<data>
+		zPFhAsv0hUHRuVRiN1yb6cB9TYg=
+		</data>
+		<key>Resources/logo_64.png</key>
+		<data>
+		EBWgbwgmQQauWt3eW07gNq8WxEw=
 		</data>
 		<key>Resources/macbookpro.png</key>
 		<data>
@@ -278,6 +310,10 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>Resources/AppIcon.icns</key>
+		<data>
+		hTgrMRRjCbjFyFMH6S0StBnM5bc=
+		</data>
 		<key>Resources/Effra_Rg.ttf</key>
 		<data>
 		V7/5eGD8hqn7/snzpPyBZY7Y/iQ=
@@ -296,7 +332,7 @@
 		</data>
 		<key>Resources/TTModeAlarmClockOptions.nib</key>
 		<data>
-		uptVw+xoYZpfDc2oIAOl/qVUYf0=
+		4gVZq4H2rIWHG5r58k9ZMUEDrcs=
 		</data>
 		<key>Resources/TTModeAlarmSnoozeOptions.nib</key>
 		<data>
@@ -324,7 +360,7 @@
 		</data>
 		<key>Resources/TTModeHueOptions.nib</key>
 		<data>
-		siMB+NAabhhRU2TN8jxpf/tqKYQ=
+		i4FG7kHwUAq2iYBPHljXuOk1hvc=
 		</data>
 		<key>Resources/TTModeHuePushlink.nib</key>
 		<data>
@@ -350,7 +386,11 @@
 		<data>
 		yh738xoeFHdUFnQ4zu1T066/NwM=
 		</data>
-		<key>Resources/Turn Touch App.entitlements</key>
+		<key>Resources/Turn Touch Remote-Info.plist</key>
+		<data>
+		WObVFDFIv2UH0jShgVxKRERBhUY=
+		</data>
+		<key>Resources/Turn Touch Remote.entitlements</key>
 		<data>
 		s3WSLfTKCP8Xv6f0V16/RZ/4paI=
 		</data>
@@ -472,6 +512,30 @@
 		<key>Resources/itunes_tv_icon.png</key>
 		<data>
 		48DSGYOjsf91x/ZD3F+wAlKhwmE=
+		</data>
+		<key>Resources/logo - 1024.png</key>
+		<data>
+		y3krwvHJ+byMqURlGRnIKqcZoyI=
+		</data>
+		<key>Resources/logo_128.png</key>
+		<data>
+		Amj8dBGXGz3DQox3VhCxrkx1nK0=
+		</data>
+		<key>Resources/logo_256.png</key>
+		<data>
+		W+zMp5tDhrcFZAUdbWL+h6/XCio=
+		</data>
+		<key>Resources/logo_32.png</key>
+		<data>
+		0FaL4FIzeRbG+eVHA1WPUWwpYfU=
+		</data>
+		<key>Resources/logo_512.png</key>
+		<data>
+		zPFhAsv0hUHRuVRiN1yb6cB9TYg=
+		</data>
+		<key>Resources/logo_64.png</key>
+		<data>
+		EBWgbwgmQQauWt3eW07gNq8WxEw=
 		</data>
 		<key>Resources/macbookpro.png</key>
 		<data>
