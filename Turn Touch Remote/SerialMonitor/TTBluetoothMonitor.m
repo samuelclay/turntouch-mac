@@ -32,6 +32,8 @@
 #pragma mark - Start/Stop Scan methods
 
 - (void) startScan {
+    [appDelegate.hudController toastActiveMode];
+
     [manager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:DEVICE_BUTTON_SERVICE_UUID]] options:nil];
 }
 
@@ -84,8 +86,8 @@
       advertisementData:(NSDictionary *)advertisementData
                    RSSI:(NSNumber *)RSSI
 {
-    NSString *localName = [advertisementData objectForKey:CBAdvertisementDataLocalNameKey];
-    NSLog(@"Found bluetooth peripheral: %@/%@ (%@)", localName, advertisementData, RSSI);
+//    NSString *localName = [advertisementData objectForKey:CBAdvertisementDataLocalNameKey];
+//    NSLog(@"Found bluetooth peripheral: %@/%@ (%@)", localName, advertisementData, RSSI);
     NSArray *peripherals = [manager retrievePeripheralsWithIdentifiers:@[(id)aPeripheral.identifier]];
     
     [self stopScan];

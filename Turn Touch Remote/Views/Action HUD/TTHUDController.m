@@ -37,7 +37,7 @@
     if (modeOperation) [modeOperation cancel];
     
     modeOperation = [self performBlock:^{
-        [modeHUDController fadeOut:nil];
+//        [modeHUDController fadeOut:nil];
     } afterDelay:2.5 cancelPreviousRequest:YES];
 }
 

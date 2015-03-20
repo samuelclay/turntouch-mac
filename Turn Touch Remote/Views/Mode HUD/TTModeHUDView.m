@@ -181,16 +181,18 @@ const NSInteger kImageTextMargin = 12;
         
         NSString *directionModeTitle = [[directionMode class] title];
         NSSize titleSize = [directionModeTitle sizeWithAttributes:attributes];
-        NSPoint titlePoint = NSMakePoint(imagePoint.x + modeImage.size.width + kImageTextMargin,
-                                         frame.origin.y + titleSize.height/2 - kImageMargin/2 - 8);
-        [directionModeTitle drawAtPoint:titlePoint withAttributes:attributes];
+//        NSLog(@"Mode HUD: %@ - %@ / %@", directionModeTitle, NSStringFromSize(titleSize), NSStringFromRect(frame));
+        NSRect textFrame = frame;
+        textFrame.origin.x += modeImage.size.width + kImageMargin + kImageTextMargin;
+        textFrame.origin.y += 4;
+        [directionModeTitle drawInRect:textFrame withAttributes:attributes];
     }
 }
 
 - (void)drawMap {
     [diamondLabels setMode:titleMode];
-    [diamondLabels setFrame:[self mapFrame]];
-    
+    NSRect mapFrame = [self mapFrame];
+    [diamondLabels setFrame:mapFrame];
 }
 
 - (void)setupTitleAttributes {
