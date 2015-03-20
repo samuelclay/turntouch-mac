@@ -122,8 +122,11 @@
         NSEnumerator *quicktimeEnumerator = [quicktimeItems objectEnumerator];
         QuicktimeDocument *quicktimeItem;
         while (quicktimeItem = [quicktimeEnumerator nextObject]) {
-            double currentTime = quicktimeItem.currentTime;
-            [quicktimeItem setCurrentTime:(currentTime - 30.0f)];
+            if ([quicktimeItem playing]) {
+                [quicktimeItem pause];
+            } else {
+                [quicktimeItem play];
+            }
         }
     }
     
