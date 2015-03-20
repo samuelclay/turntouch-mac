@@ -60,13 +60,17 @@
 }
 
 - (void)toastActiveAction:(TTModeDirection)direction {
+    TTMode *mode = NSAppDelegate.modeMap.selectedMode;
+    ActionLayout layout = [mode layoutInDirection:direction];
+    NSTimeInterval delay = layout == ACTION_LAYOUT_IMAGE_TITLE ? 2.5 : 0.5;
+    
     [actionHUDController fadeIn:direction];
     
     if (actionOperation) [actionOperation cancel];
     
     actionOperation = [self performBlock:^{
         [actionHUDController slideOut:nil];
-    } afterDelay:0.5 cancelPreviousRequest:YES];
+    } afterDelay:delay cancelPreviousRequest:YES];
 }
 
 - (void)holdToastActiveAction:(TTModeDirection)direction {
