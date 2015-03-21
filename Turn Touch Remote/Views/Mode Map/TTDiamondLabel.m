@@ -66,7 +66,9 @@
         [keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]   ||
         [keyPath isEqual:NSStringFromSelector(@selector(selectedMode))]) {
         [self setupLabels];
-        [self.superview setNeedsDisplay:YES];
+        if (interactive) {
+            [self.superview setNeedsDisplay:YES];
+        }
     }
 }
 
@@ -78,8 +80,9 @@
 	NSString *directionLabel;
 
     directionLabel = [diamondMode titleInDirection:labelDirection];
-    [directionLabel drawInRect:self.bounds withAttributes:labelAttributes];
-    
+    NSSize labelSize = [directionLabel sizeWithAttributes:labelAttributes];
+    [directionLabel drawAtPoint:NSMakePoint(NSWidth(self.bounds)/2 - labelSize.width/2, NSHeight(self.bounds)/2 - labelSize.height/(140/50.f)) withAttributes:labelAttributes];
+
     // Draw border, used for debugging
 //    NSBezierPath *textViewSurround = [NSBezierPath bezierPathWithRect:self.bounds];
 //    [textViewSurround setLineWidth:1];

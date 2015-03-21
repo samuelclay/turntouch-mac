@@ -48,13 +48,15 @@ const NSInteger kImageTextMargin = 12;
     [gradientView setFrame:mapFrame];
     [teaserGradientView setFrame:mapFrame];
     NSBezierPath *diamond = [NSBezierPath bezierPath];
+    // West
     [diamond moveToPoint:NSMakePoint(0,
                                      mapFrame.size.height/2)];
+    // North
     [diamond lineToPoint:NSMakePoint(mapFrame.size.width/2,
-                                     mapFrame.size.height - SPACING_PCT*mapFrame.size.height*1.3)];
+                                     mapFrame.size.height)];
     [diamond lineToPoint:NSMakePoint(mapFrame.size.width,
                                      mapFrame.size.height/2)];
-    [diamond lineToPoint:NSMakePoint(mapFrame.size.width/2, SPACING_PCT*mapFrame.size.height*1.3)];
+    [diamond lineToPoint:NSMakePoint(mapFrame.size.width/2, 0)];
     [diamond closePath];
     CGFloat alpha = 0.9f;
     NSGradient *borderGradient;

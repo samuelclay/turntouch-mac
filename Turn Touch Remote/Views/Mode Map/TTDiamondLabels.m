@@ -143,24 +143,30 @@
         NSRect textRect = diamondRect;
         
         if (direction == NORTH) {
-            textRect = NSMakeRect(offsetX, height * 3/4 + 1.3*spacing + offsetY/2,
-                                  width, offsetY);
+            textRect = NSMakeRect(offsetX, offsetY + height/2 + spacing*2,
+                                  width, height/2 - spacing*2);
             [northLabel setFrame:textRect];
         } else if (direction == EAST) {
-            textRect = NSMakeRect(offsetX + width/2 + 1.3*spacing*2, height/2 + offsetY/2,
-                                  width/2 - 1.3*spacing*2, offsetY);
+            textRect = NSMakeRect(offsetX + width/2 + 1.3*spacing*2, 0,
+                                  width/2 - 1.3*spacing*2, offsetY*2 + height);
             [eastLabel setFrame:textRect];
         } else if (direction == WEST) {
-            textRect = NSMakeRect(offsetX, height/2 + offsetY/2,
-                                  width/2 - 1.3*spacing*2, offsetY);
+            textRect = NSMakeRect(offsetX, 0,
+                                  width/2 - 1.3*spacing*2, offsetY*2 + height);
             [westLabel setFrame:textRect];
         } else if (direction == SOUTH) {
-            textRect = NSMakeRect(offsetX, height * 1/4 - 1.3*spacing + offsetY/2,
-                                  width, offsetY);
+            textRect = NSMakeRect(offsetX, offsetY,
+                                  width, height/2 - spacing*2);
             [southLabel setFrame:textRect];
         }
 //        NSLog(@"Label rect: %@", NSStringFromRect(textRect));
     }
+
+    // Draw border, used for debugging
+//    NSBezierPath *textViewSurround = [NSBezierPath bezierPathWithRect:self.bounds];
+//    [textViewSurround setLineWidth:1];
+//    [[NSColor redColor] set];
+//    [textViewSurround stroke];
 }
 
 #pragma mark - Events
