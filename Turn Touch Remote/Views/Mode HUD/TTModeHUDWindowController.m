@@ -92,7 +92,6 @@
     [[hudView gradientView] setAlphaValue:0.f];
     [[hudView teaserGradientView] setAlphaValue:1.f];
 
-    
     if (hudWindow.frame.origin.y == [self hiddenFrame].origin.y) {
         [hudWindow setFrame:[self visibleFrame] display:YES];
         [[hudWindow animator] setAlphaValue:0.f];

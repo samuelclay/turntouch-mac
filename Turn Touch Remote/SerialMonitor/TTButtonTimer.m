@@ -27,7 +27,7 @@ const double MODE_CHANGE_DURATION = 0.5f;
 }
 
 - (void)readButtons:(NSArray *)buttons {
-    //    NSLog(@"Serial buttons: %@", buttons);
+        NSLog(@"Serial buttons: %@", buttons);
     
     if ([[buttons objectAtIndex:0] integerValue] == PRESS_ACTIVE) {
         [self activateButton:NORTH];
@@ -204,10 +204,13 @@ const double MODE_CHANGE_DURATION = 0.5f;
     [appDelegate.modeMap runActiveButton];
     [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];
 
-    [appDelegate.hudController toastActiveAction:direction];
-    [appDelegate.hudController hideModeTease];
     [activeModeTimer invalidate];
     activeModeTimer = nil;
+    [appDelegate.hudController toastActiveAction:direction];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.001 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [appDelegate.hudController hideModeTease];
+    });
+//    NSLog(@"Firing button: %@", [appDelegate.modeMap directionName:direction]);
 }
 
 - (void)activeModeTimerFire:(NSTimer *)timer {
