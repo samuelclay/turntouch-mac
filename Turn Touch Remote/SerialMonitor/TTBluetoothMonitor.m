@@ -32,8 +32,6 @@
 #pragma mark - Start/Stop Scan methods
 
 - (void) startScan {
-    [appDelegate.hudController toastActiveMode];
-
     [manager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:DEVICE_BUTTON_SERVICE_UUID]] options:nil];
 }
 
