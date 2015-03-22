@@ -53,10 +53,10 @@ const NSInteger kImageTextMargin = 12;
                                      mapFrame.size.height/2)];
     // North
     [diamond lineToPoint:NSMakePoint(mapFrame.size.width/2,
-                                     mapFrame.size.height)];
+                                     mapFrame.size.height - SPACING_PCT*mapFrame.size.width)];
     [diamond lineToPoint:NSMakePoint(mapFrame.size.width,
                                      mapFrame.size.height/2)];
-    [diamond lineToPoint:NSMakePoint(mapFrame.size.width/2, 0)];
+    [diamond lineToPoint:NSMakePoint(mapFrame.size.width/2, SPACING_PCT*mapFrame.size.width)];
     [diamond closePath];
     CGFloat alpha = 0.9f;
     NSGradient *borderGradient;
