@@ -130,11 +130,11 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
 }
 - (void)runTTModeAlarmVolumeUp {
     NSLog(@"Running runTTModeAlarmVolumeUp");
-    [TTModeMac setVolume:[TTModeMac volume] + 0.04f];
+    [TTModeMac setVolume:[TTModeMac volume] + 0.1f];
 }
 - (void)runTTModeAlarmVolumeDown {
     NSLog(@"Running runTTModeAlarmVolumeDown");
-    [TTModeMac setVolume:[TTModeMac volume] - 0.04f];
+    [TTModeMac setVolume:[TTModeMac volume] - 0.1f];
 }
 
 #pragma mark - Defaults
@@ -295,13 +295,16 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
     
     status = ALARM_CLOCK_STATUS_ON;
     originalSystemVolume = [TTModeMac volume];
+    volumeFadeMultiplier = 0.10;
     NSInteger prefVolume = [[NSAppDelegate.modeMap mode:self optionValue:kAlarmVolume] integerValue];
-    [TTModeMac setVolume:(prefVolume / 100.f)];
+    [TTModeMac setVolume:(prefVolume / 100.f) * volumeFadeMultiplier];
     
     tracks = [self selectedPlaylistTracks];
     [self seedRandomTracks:tracks.count];
     [self playNextSong];
     [self startStopAlarmTimer];
+    [self switchSelectedModeTo:self];
+    [self fadeVolumeIn];
 }
 
 - (SBElementArray *)selectedPlaylistTracks {
@@ -404,6 +407,31 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
     if (originalSystemVolume) {
         [TTModeMac setVolume:originalSystemVolume];
     }
+}
+
+- (void)fadeVolumeIn {
+    volumeFadeMultiplier += 0.01;
+    NSInteger prefVolume = [[NSAppDelegate.modeMap mode:self optionValue:kAlarmVolume] integerValue];
+    [TTModeMac setVolume:(prefVolume / 100.f) * volumeFadeMultiplier];
+    
+    if (volumeFadeTimer) {
+        [volumeFadeTimer invalidate];
+    }
+    
+    if (volumeFadeMultiplier >= 1.0) {
+        NSLog(@"Done fading in volume.");
+        return;
+    }
+    
+    NSDate *volumeBumpDate = [[NSDate date] dateByAddingTimeInterval:(10)/100.f];
+    NSRunLoop *runner = [NSRunLoop currentRunLoop];
+    volumeFadeTimer = [[NSTimer alloc] initWithFireDate:volumeBumpDate
+                                               interval:0.f
+                                                 target:self
+                                               selector:@selector(fadeVolumeIn)
+                                               userInfo:nil repeats:NO];
+    [runner addTimer:volumeFadeTimer forMode: NSDefaultRunLoopMode];
+    NSLog(@"Bumping volume: %f", volumeFadeMultiplier);
 }
 
 #pragma mark - Playlists

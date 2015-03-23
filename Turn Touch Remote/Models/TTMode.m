@@ -267,5 +267,11 @@
     [prefs setObject:actionClassName forKey:prefKey];
     [prefs synchronize];
 }
+
+#pragma mark - Timers
+
+- (void)switchSelectedModeTo:(TTMode *)mode {
+    [appDelegate.modeMap setSelectedModeDirection:mode.modeDirection];
+}
                                  
 @end

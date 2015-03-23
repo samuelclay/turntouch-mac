@@ -23,7 +23,9 @@ typedef enum {
     NSInteger trackIndex;
     SBElementArray *tracks;
     CGFloat originalSystemVolume;
+    CGFloat volumeFadeMultiplier;
     TTModeAlarmClockStatus status;
+    NSTimer *volumeFadeTimer;
 }
 
 extern NSString *const kRepeatAlarmEnabled;

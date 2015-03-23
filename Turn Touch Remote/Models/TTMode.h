@@ -36,5 +36,6 @@ typedef enum {
 - (NSString *)actionNameInDirection:(TTModeDirection)direction;
 - (NSInteger)progressInDirection:(TTModeDirection)direction;
 - (void)changeDirection:(TTModeDirection)direction toAction:(NSString *)actionClassName;
+- (void)switchSelectedModeTo:(TTMode *)mode;
 
 @end
