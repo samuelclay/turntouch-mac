@@ -6,7 +6,7 @@
 	<dict>
 		<key>Resources/AppIcon.icns</key>
 		<data>
-		hTgrMRRjCbjFyFMH6S0StBnM5bc=
+		lW8U8rgXQaSz+uX8JGjnDYvwDj8=
 		</data>
 		<key>Resources/Effra_Rg.ttf</key>
 		<data>
@@ -18,7 +18,7 @@
 		</data>
 		<key>Resources/TTActionHUDView.nib</key>
 		<data>
-		47SO2hySy/dvN7qVMPq/A04R+4A=
+		65ZNWnVN+BvyEDs8GSZneYjaZno=
 		</data>
 		<key>Resources/TTModeAlarmClock.plist</key>
 		<data>
@@ -79,10 +79,6 @@
 		<key>Resources/TTPanel.nib</key>
 		<data>
 		yh738xoeFHdUFnQ4zu1T066/NwM=
-		</data>
-		<key>Resources/Turn Touch Remote-Info.plist</key>
-		<data>
-		WObVFDFIv2UH0jShgVxKRERBhUY=
 		</data>
 		<key>Resources/Turn Touch Remote.entitlements</key>
 		<data>
@@ -214,6 +210,10 @@
 		<key>Resources/logo_128.png</key>
 		<data>
 		Amj8dBGXGz3DQox3VhCxrkx1nK0=
+		</data>
+		<key>Resources/logo_16.png</key>
+		<data>
+		OVq7KcNBlPbCGmPn1QINRkDt1AM=
 		</data>
 		<key>Resources/logo_256.png</key>
 		<data>
@@ -312,7 +312,7 @@
 	<dict>
 		<key>Resources/AppIcon.icns</key>
 		<data>
-		hTgrMRRjCbjFyFMH6S0StBnM5bc=
+		lW8U8rgXQaSz+uX8JGjnDYvwDj8=
 		</data>
 		<key>Resources/Effra_Rg.ttf</key>
 		<data>
@@ -324,7 +324,7 @@
 		</data>
 		<key>Resources/TTActionHUDView.nib</key>
 		<data>
-		47SO2hySy/dvN7qVMPq/A04R+4A=
+		65ZNWnVN+BvyEDs8GSZneYjaZno=
 		</data>
 		<key>Resources/TTModeAlarmClock.plist</key>
 		<data>
@@ -385,10 +385,6 @@
 		<key>Resources/TTPanel.nib</key>
 		<data>
 		yh738xoeFHdUFnQ4zu1T066/NwM=
-		</data>
-		<key>Resources/Turn Touch Remote-Info.plist</key>
-		<data>
-		WObVFDFIv2UH0jShgVxKRERBhUY=
 		</data>
 		<key>Resources/Turn Touch Remote.entitlements</key>
 		<data>
@@ -520,6 +516,10 @@
 		<key>Resources/logo_128.png</key>
 		<data>
 		Amj8dBGXGz3DQox3VhCxrkx1nK0=
+		</data>
+		<key>Resources/logo_16.png</key>
+		<data>
+		OVq7KcNBlPbCGmPn1QINRkDt1AM=
 		</data>
 		<key>Resources/logo_256.png</key>
 		<data>
