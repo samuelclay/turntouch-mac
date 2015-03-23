@@ -21,9 +21,12 @@
     NSString *manufacturer;
     CBCentralManager *manager;
     CBPeripheral *peripheral;
+    NSMutableArray *connectedDevices;
 }
 
 @property (nonatomic) NSNumber *batteryPct;
+@property (nonatomic) NSMutableArray *connectedDevices;
+@property (nonatomic) NSNumber *connectedDevicesCount;
 
 - (void) startScan;
 - (void) stopScan;

@@ -42,9 +42,9 @@ void *kContextActivePanel = &kContextActivePanel;
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaultPreferences];
     
     // Install icon into the menu bar
+    self.bluetoothMonitor = [[TTBluetoothMonitor alloc] init];
     self.modeMap = [[TTModeMap alloc] init];
     self.menubarController = [[TTMenubarController alloc] init];
-    self.bluetoothMonitor = [[TTBluetoothMonitor alloc] init];
     
     [self.modeMap activateTimers];
 }

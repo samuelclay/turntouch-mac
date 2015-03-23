@@ -38,8 +38,10 @@
 @property (nonatomic, assign) BOOL showOutline;
 @property (nonatomic, assign) BOOL interactive;
 @property (nonatomic, assign) BOOL statusBar;
+@property (nonatomic, assign) BOOL connected;
 @property (nonatomic, setter = setHighlighted:) BOOL isHighlighted;
 
 - (id)initWithFrame:(NSRect)frame interactive:(BOOL)interactive;
+- (id)initWithFrame:(NSRect)frame interactive:(BOOL)_interactive statusBar:(BOOL)_statusBar;
 
 @end

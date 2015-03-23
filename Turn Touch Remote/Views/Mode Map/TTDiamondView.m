@@ -20,6 +20,7 @@
 @synthesize showOutline;
 @synthesize interactive;
 @synthesize statusBar;
+@synthesize connected;
 
 #pragma mark - Initialization
 
@@ -29,12 +30,17 @@
 }
 
 - (id)initWithFrame:(NSRect)frame interactive:(BOOL)_interactive {
+    return [self initWithFrame:frame interactive:_interactive statusBar:NO];
+}
+
+- (id)initWithFrame:(NSRect)frame interactive:(BOOL)_interactive statusBar:(BOOL)_statusBar {
     self = [super initWithFrame:frame];
     if (self) {
         self.size = NSWidth(frame);
         self.isHighlighted = NO;
         self.showOutline = NO;
         self.interactive = _interactive;
+        self.statusBar = _statusBar;
         self.overrideSelectedDirection = NO_DIRECTION;
         self.overrideActiveDirection = NO_DIRECTION;
         self.ignoreSelectedMode = NO;
@@ -62,6 +68,9 @@
         [appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
         [appDelegate.modeMap removeObserver:self forKeyPath:@"hoverModeDirection"];
     }
+    if (statusBar) {
+        [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"connectedDevices"];
+    }
     [appDelegate.modeMap removeObserver:self forKeyPath:@"activeModeDirection"];
     [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedModeDirection"];
     [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedMode"];
@@ -73,6 +82,10 @@
                                  options:0 context:nil];
         [appDelegate.modeMap addObserver:self forKeyPath:@"hoverModeDirection"
                                  options:0 context:nil];
+    }
+    if (statusBar) {
+        [appDelegate.bluetoothMonitor addObserver:self forKeyPath:@"connectedDevicesCount"
+                                          options:0 context:nil];
     }
     [appDelegate.modeMap addObserver:self forKeyPath:@"activeModeDirection"
                              options:0 context:nil];
@@ -86,19 +99,26 @@
                        ofObject:(id)object
                          change:(NSDictionary*)change
                         context:(void*)context {
-    if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))]) {
+    NSLog(@"Change key: %@", keyPath);
+    if ([keyPath isEqualToString:NSStringFromSelector(@selector(inspectingModeDirection))]) {
         [self setNeedsDisplay:YES];
-    } else if ([keyPath isEqual:NSStringFromSelector(@selector(hoverModeDirection))]) {
+    } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(hoverModeDirection))]) {
         [self setNeedsDisplay:YES];
-    } else if ([keyPath isEqual:NSStringFromSelector(@selector(activeModeDirection))]) {
+    } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(activeModeDirection))]) {
         [self setNeedsDisplay:YES];
-    } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
+    } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(selectedModeDirection))]) {
         [self setNeedsDisplay:YES];
-    } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedMode))]) {
+    } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(selectedMode))]) {
+        [self setNeedsDisplay:YES];
+    } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(connectedDevicesCount))]) {
         [self setNeedsDisplay:YES];
     }
 }
-
+         
+- (BOOL)isDeviceConnected {
+    return appDelegate.bluetoothMonitor.connectedDevices.count > 0;
+}
+         
 #pragma mark - Drawing
 
 - (BOOL)wantsDefaultClipping {
@@ -241,6 +261,17 @@
                 } else {
                     CGFloat alpha = 0.5f;
                     modeColor = NSColorFromRGBAlpha(0xFFFFFF, alpha);
+                }
+            } else if (![self isDeviceConnected]) {
+                if (isActiveDirection) {
+                    CGFloat alpha = isSelectedDirection ? 0.8 : 1.0;
+                    modeColor = NSColorFromRGBAlpha(0xA0A0A0, alpha);
+                } else if (isSelectedDirection) {
+                    CGFloat alpha = isActiveDirection ? 0.8 : isSelectedDirection ? 1.0 : 0.4;
+                    modeColor = NSColorFromRGBAlpha(0xA0A0A0, alpha);
+                } else {
+                    CGFloat alpha = 0.5f;
+                    modeColor = NSColorFromRGBAlpha(0xA0A0A0, alpha);
                 }
             } else {
                 if (isActiveDirection) {

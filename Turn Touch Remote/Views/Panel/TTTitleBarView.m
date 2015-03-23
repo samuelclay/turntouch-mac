@@ -43,7 +43,7 @@
 }
 
 - (void)dealloc {
-    [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"batteryPct"];
+
 }
 
 - (void)drawRect:(NSRect)dirtyRect {

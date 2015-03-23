@@ -17,6 +17,8 @@
 @implementation TTBluetoothMonitor
 
 @synthesize batteryPct;
+@synthesize connectedDevices;
+@synthesize connectedDevicesCount;
 
 - (instancetype)init {
     if (self = [super init]) {
@@ -24,6 +26,8 @@
         appDelegate = (TTAppDelegate *)[NSApp delegate];
         buttonTimer = [[TTButtonTimer alloc] init];
         batteryPct = [[NSNumber alloc] init];
+        connectedDevicesCount = [[NSNumber alloc] init];
+        connectedDevices = [[NSMutableArray alloc] init];
         [self startScan];
     }
     return self;
@@ -67,7 +71,11 @@
 #pragma mark - CBCentralManager delegate methods
 
 - (void) centralManagerDidUpdateState:(CBCentralManager *)central {
-    [self isLECapableHardware];
+    if ([self isLECapableHardware]) {
+        [self startScan];
+    } else {
+        [self stopScan];
+    }
 }
 
 
@@ -84,8 +92,8 @@
       advertisementData:(NSDictionary *)advertisementData
                    RSSI:(NSNumber *)RSSI
 {
-//    NSString *localName = [advertisementData objectForKey:CBAdvertisementDataLocalNameKey];
-//    NSLog(@"Found bluetooth peripheral: %@/%@ (%@)", localName, advertisementData, RSSI);
+    NSString *localName = [advertisementData objectForKey:CBAdvertisementDataLocalNameKey];
+    NSLog(@"Found bluetooth peripheral: %@/%@ (%@)", localName, advertisementData, RSSI);
     NSArray *peripherals = [manager retrievePeripheralsWithIdentifiers:@[(id)aPeripheral.identifier]];
     
     [self stopScan];
@@ -108,6 +116,9 @@
     [aPeripheral setDelegate:self];
     [aPeripheral discoverServices:@[[CBUUID UUIDWithString:DEVICE_BUTTON_SERVICE_UUID],
                                     [CBUUID UUIDWithString:DEVICE_BATTERY_SERVICE_UUID]]];
+    
+    [connectedDevices addObject:aPeripheral];
+    [self setValue:@(connectedDevices.count) forKey:@"connectedDevicesCount"];
 }
 
 /*
@@ -116,7 +127,15 @@
  */
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)aPeripheral error:(NSError *)error {
     NSLog(@"Disconnected peripheral: %@", aPeripheral);
-    if( peripheral ) {
+    NSMutableArray *updatedConnectedDevices = [[NSMutableArray alloc] init];
+    for (CBPeripheral *device in connectedDevices) {
+        if (device == aPeripheral) continue;
+        [updatedConnectedDevices addObject:device];
+    }
+    connectedDevices = updatedConnectedDevices;
+    [self setValue:@(connectedDevices.count) forKey:@"connectedDevicesCount"];
+
+    if(peripheral) {
         [peripheral setDelegate:nil];
         peripheral = nil;
     }

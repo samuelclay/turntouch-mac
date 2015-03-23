@@ -7,12 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "TTAppDelegate.h"
 #import "TTDiamondView.h"
 
 @class TTDiamondView;
 
 @interface TTStatusItemView : NSView {
 @private
+    TTAppDelegate *appDelegate;
     NSImage *_image;
     NSImage *_alternateImage;
     TTDiamondView *_diamondView;

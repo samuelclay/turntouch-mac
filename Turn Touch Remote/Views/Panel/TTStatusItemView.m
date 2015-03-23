@@ -6,8 +6,10 @@
 //  Copyright (c) 2013 Turn Touch. All rights reserved.
 //
 
+#import "TTAppDelegate.h"
 #import "TTStatusItemView.h"
 #import "TTDiamondView.h"
+#import "TTBluetoothMonitor.h"
 
 @implementation TTStatusItemView
 
@@ -28,18 +30,18 @@
     self = [super initWithFrame:itemRect];
     
     if (self != nil) {
+        appDelegate = (TTAppDelegate *)[NSApp delegate];
         _statusItem = statusItem;
         _statusItem.view = self;
 
         NSRect diamondRect = NSInsetRect(itemRect, 4.0f, 3.0f);
-        self.diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect];
-        self.diamondView.statusBar = YES;
+        self.diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect interactive:NO statusBar:YES];
         [self addSubview:self.diamondView];
     }
     return self;
 }
 
-#pragma mark -
+#pragma mark - Drawing
 
 - (void)drawRect:(NSRect)dirtyRect {
 	[_statusItem drawStatusBarBackgroundInRect:self.bounds
