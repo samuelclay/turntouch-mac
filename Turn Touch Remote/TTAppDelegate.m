@@ -47,6 +47,7 @@ void *kContextActivePanel = &kContextActivePanel;
     self.menubarController = [[TTMenubarController alloc] init];
     
     [self.modeMap activateTimers];
+    [self observeSleepNotifications];
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender {
@@ -90,5 +91,34 @@ void *kContextActivePanel = &kContextActivePanel;
     return self.menubarController.statusItemView;
 }
 
+#pragma mark - Sleep
+
+- (void) receiveSleepNote: (NSNotification*) note {
+    NSLog(@"receiveSleepNote: %@", [note name]);
+    [_bluetoothMonitor stopScan];
+    [_bluetoothMonitor terminate];
+}
+
+- (void) receiveWakeNote: (NSNotification*) note {
+    NSLog(@"receiveWakeNote: %@", [note name]);
+    [_bluetoothMonitor stopScan];
+    [_bluetoothMonitor terminate];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [_bluetoothMonitor startScan];
+    });
+}
+
+- (void) observeSleepNotifications {
+    //These notifications are filed on NSWorkspace's notification center, not the default
+    // notification center. You will not receive sleep/wake notifications if you file
+    //with the default notification center.
+    [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver: self
+                                                           selector: @selector(receiveSleepNote:)
+                                                               name: NSWorkspaceWillSleepNotification object: NULL];
+    
+    [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver: self
+                                                           selector: @selector(receiveWakeNote:)
+                                                               name: NSWorkspaceDidWakeNotification object: NULL];
+}
 
 @end

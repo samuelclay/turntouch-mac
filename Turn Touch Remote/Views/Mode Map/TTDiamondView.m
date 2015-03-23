@@ -99,7 +99,6 @@
                        ofObject:(id)object
                          change:(NSDictionary*)change
                         context:(void*)context {
-    NSLog(@"Change key: %@", keyPath);
     if ([keyPath isEqualToString:NSStringFromSelector(@selector(inspectingModeDirection))]) {
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(hoverModeDirection))]) {

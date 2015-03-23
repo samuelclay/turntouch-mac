@@ -75,6 +75,7 @@
         [self startScan];
     } else {
         [self stopScan];
+        [self countDevices];
     }
 }
 
@@ -83,6 +84,18 @@
     if (peripheral) {
         [manager cancelPeripheralConnection:peripheral];
     }
+}
+
+- (void)countDevices {
+    NSLog(@"Counting: %@", connectedDevices);
+    NSMutableArray *updatedConnectedDevices = [[NSMutableArray alloc] init];
+    for (CBPeripheral *device in connectedDevices) {
+        if (device.state == CBPeripheralStateConnected) {
+            [updatedConnectedDevices addObject:device];
+        }
+    }
+    connectedDevices = updatedConnectedDevices;
+    [self setValue:@(connectedDevices.count) forKey:@"connectedDevicesCount"];
 }
 
 /*
@@ -96,7 +109,6 @@
     NSLog(@"Found bluetooth peripheral: %@/%@ (%@)", localName, advertisementData, RSSI);
     NSArray *peripherals = [manager retrievePeripheralsWithIdentifiers:@[(id)aPeripheral.identifier]];
     
-    [self stopScan];
     for (CBPeripheral *aPeripheral in peripherals) {
         peripheral = aPeripheral;
         [manager connectPeripheral:aPeripheral options:@{CBConnectPeripheralOptionNotifyOnDisconnectionKey: [NSNumber numberWithBool:YES],
