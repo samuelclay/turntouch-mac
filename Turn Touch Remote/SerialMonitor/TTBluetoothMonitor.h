@@ -11,6 +11,13 @@
 #import "TTAppDelegate.h"
 #import "TTButtonTimer.h"
 
+typedef enum {
+    FIRMWARE_INTERVAL_MIN = 0,
+    FIRMWARE_INTERVAL_MAX = 0,
+    FIRMWARE_CONN_LATENCY = 0,
+    FIRMWARE_CONN_TIMEOUT = 0
+} FirmwareSetting;
+
 @class TTButtonTimer;
 
 @interface TTBluetoothMonitor : NSObject
@@ -21,7 +28,9 @@
     NSString *manufacturer;
     CBCentralManager *manager;
     CBPeripheral *peripheral;
+    CBService *buttonStatusService;
     NSMutableArray *connectedDevices;
+    NSMutableDictionary *characteristics;
 }
 
 @property (nonatomic) NSNumber *batteryPct;

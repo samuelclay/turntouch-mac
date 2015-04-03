@@ -9,10 +9,14 @@
 #import "TTBluetoothMonitor.h"
 #import "NSData+Conversion.h"
 
-#define DEVICE_BUTTON_SERVICE_UUID @"ddea706a-9d53-4bbb-ac0b-74ba819e7d9c"
+#define DEVICE_BUTTON_SERVICE_UUID @"88c3907a-dc4f-41b1-bb04-4e4deb81fadd"
 #define DEVICE_BATTERY_SERVICE_UUID @"180F"
-#define DEVICE_CHARACTERISTIC_BUTTON_STATUS_UUID @"f1c7c102-27bc-4074-aee6-35c58a3b31f6"
 #define DEVICE_CHARACTERISTIC_BATTERY_LEVEL_UUID @"2a19"
+#define DEVICE_CHARACTERISTIC_BUTTON_STATUS_UUID @"47099164-4d08-4338-bedf-7fc043dbec5c"
+#define DEVICE_CHARACTERISTIC_INTERVAL_MIN_UUID @"0a02cefb-f546-4a56-ad2b-4aeadca0da6e"
+#define DEVICE_CHARACTERISTIC_INTERVAL_MAX_UUID @"50a71e79-f950-4973-9cbd-1ce5439603be"
+#define DEVICE_CHARACTERISTIC_CONN_LATENCY_UUID @"3b6ef6e7-d9dc-4010-960a-a48bbe114935"
+#define DEVICE_CHARACTERISTIC_CONN_TIMEOUT_UUID @"c6d87b9e-70c3-47ff-a534-e1ceb2bdf435"
 
 @implementation TTBluetoothMonitor
 
@@ -28,6 +32,7 @@
         batteryPct = [[NSNumber alloc] init];
         connectedDevicesCount = [[NSNumber alloc] init];
         connectedDevices = [[NSMutableArray alloc] init];
+        characteristics = [[NSMutableDictionary alloc] init];
         [self startScan];
     }
     return self;
@@ -174,6 +179,7 @@
 //        NSLog(@"Service found with UUID: %@", aService.UUID);
 
         if ([aService.UUID isEqual:[CBUUID UUIDWithString:DEVICE_BUTTON_SERVICE_UUID]]) {
+            buttonStatusService = aService;
             [aPeripheral discoverCharacteristics:@[[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_BUTTON_STATUS_UUID]]
                                       forService:aService];
         }
@@ -256,7 +262,9 @@
 /*
  Invoked upon completion of a -[readValueForCharacteristic:] request or on the reception of a notification/indication.
  */
-- (void) peripheral:(CBPeripheral *)aPeripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
+- (void) peripheral:(CBPeripheral *)aPeripheral
+didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
+              error:(NSError *)error {
     /* Updated value for heart rate measurement received */
     if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_BUTTON_STATUS_UUID]]) {
         if( (characteristic.value)  || !error ) {
@@ -272,6 +280,18 @@
 //            NSLog(@"Battery level: %d%%", value);
             [self setValue:@(value) forKey:@"batteryPct"];
         }
+    } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_INTERVAL_MIN_UUID]]) {
+        [characteristics setObject:characteristic forKey:@"interval_min"];
+        [self deviceSentFirmwareSettings:FIRMWARE_INTERVAL_MIN];
+    } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_INTERVAL_MAX_UUID]]) {
+        [characteristics setObject:characteristic forKey:@"interval_max"];
+        [self deviceSentFirmwareSettings:FIRMWARE_INTERVAL_MAX];
+    } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_CONN_LATENCY_UUID]]) {
+        [characteristics setObject:characteristic forKey:@"conn_latency"];
+        [self deviceSentFirmwareSettings:FIRMWARE_CONN_LATENCY];
+    } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_CONN_TIMEOUT_UUID]]) {
+        [characteristics setObject:characteristic forKey:@"conn_timeout"];
+        [self deviceSentFirmwareSettings:FIRMWARE_CONN_TIMEOUT];
     } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:CBUUIDDeviceNameString]]) {
 //        NSString * deviceName = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
 //        NSLog(@"Device Name = %@", deviceName);
@@ -281,6 +301,33 @@
     } else {
         NSLog(@"Unidentified characteristic: %@", characteristic);
     }
+}
+
+#pragma mark - Connection Attributes Firmware Updates
+
+/*
+ Invoked upon the peripheral notifying the server about a characteristic's value changing.
+ */
+- (void)retrieveFirmwareSettings {
+    [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_INTERVAL_MIN_UUID]]
+                             forService:buttonStatusService];
+}
+
+- (void)peripheral:(CBPeripheral *)_peripheral
+didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic
+             error:(NSError *)error {
+    NSLog(@"did Update notification: %@ - %@ (%@)", _peripheral, characteristic, error);
+}
+
+- (void)deviceSentFirmwareSettings:(FirmwareSetting)setting {
+    NSLog(@"Device sent firmware settings: %@", @(setting));
+}
+
+- (void)writeFirmwareConnectionValues {
+    for (FirmwareSetting setting in @[FIRMWARE_INTERVAL_MIN, FIRMWARE_INTERVAL_MAX, FIRMWARE_CONN_LATENCY, FIRMWARE_CONN_TIMEOUT]) {
+        CBCharacteristic *characteristic = 
+    }
+    peripheral writeValue:data forCharacteristic:<#(CBCharacteristic *)#> type:<#(CBCharacteristicWriteType)#>
 }
 
 @end
