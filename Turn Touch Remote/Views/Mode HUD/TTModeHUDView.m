@@ -182,7 +182,7 @@ const NSInteger kImageTextMargin = 12;
                      fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:alpha];
         
         NSString *directionModeTitle = [[directionMode class] title];
-        NSSize titleSize = [directionModeTitle sizeWithAttributes:attributes];
+//        NSSize titleSize = [directionModeTitle sizeWithAttributes:attributes];
 //        NSLog(@"Mode HUD: %@ - %@ / %@", directionModeTitle, NSStringFromSize(titleSize), NSStringFromRect(frame));
         NSRect textFrame = frame;
         textFrame.origin.x += modeImage.size.width + kImageMargin + kImageTextMargin;

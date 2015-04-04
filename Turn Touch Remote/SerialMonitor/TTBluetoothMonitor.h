@@ -13,9 +13,9 @@
 
 typedef enum {
     FIRMWARE_INTERVAL_MIN = 0,
-    FIRMWARE_INTERVAL_MAX = 0,
-    FIRMWARE_CONN_LATENCY = 0,
-    FIRMWARE_CONN_TIMEOUT = 0
+    FIRMWARE_INTERVAL_MAX = 1,
+    FIRMWARE_CONN_LATENCY = 2,
+    FIRMWARE_CONN_TIMEOUT = 3
 } FirmwareSetting;
 
 @class TTButtonTimer;
@@ -36,6 +36,10 @@ typedef enum {
 @property (nonatomic) NSNumber *batteryPct;
 @property (nonatomic) NSMutableArray *connectedDevices;
 @property (nonatomic) NSNumber *connectedDevicesCount;
+@property (nonatomic) NSNumber *firmwareIntervalMin;
+@property (nonatomic) NSNumber *firmwareIntervalMax;
+@property (nonatomic) NSNumber *firmwareConnLatency;
+@property (nonatomic) NSNumber *firmwareConnTimeout;
 
 - (void) startScan;
 - (void) stopScan;

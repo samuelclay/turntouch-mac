@@ -23,6 +23,10 @@
 @synthesize batteryPct;
 @synthesize connectedDevices;
 @synthesize connectedDevicesCount;
+@synthesize firmwareIntervalMin;
+@synthesize firmwareIntervalMax;
+@synthesize firmwareConnLatency;
+@synthesize firmwareConnTimeout;
 
 - (instancetype)init {
     if (self = [super init]) {
@@ -33,6 +37,10 @@
         connectedDevicesCount = [[NSNumber alloc] init];
         connectedDevices = [[NSMutableArray alloc] init];
         characteristics = [[NSMutableDictionary alloc] init];
+        firmwareIntervalMin = [[NSNumber alloc] init];
+        firmwareIntervalMax = [[NSNumber alloc] init];
+        firmwareConnLatency = [[NSNumber alloc] init];
+        firmwareConnTimeout = [[NSNumber alloc] init];
         [self startScan];
     }
     return self;
@@ -180,7 +188,11 @@
 
         if ([aService.UUID isEqual:[CBUUID UUIDWithString:DEVICE_BUTTON_SERVICE_UUID]]) {
             buttonStatusService = aService;
-            [aPeripheral discoverCharacteristics:@[[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_BUTTON_STATUS_UUID]]
+            [aPeripheral discoverCharacteristics:@[[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_BUTTON_STATUS_UUID],
+                                                   [CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_INTERVAL_MIN_UUID],
+                                                   [CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_INTERVAL_MAX_UUID],
+                                                   [CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_CONN_LATENCY_UUID],
+                                                   [CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_CONN_TIMEOUT_UUID]]
                                       forService:aService];
         }
         
@@ -208,9 +220,30 @@
         for (CBCharacteristic *aChar in service.characteristics) {
             if ([aChar.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_BUTTON_STATUS_UUID]]) {
                 [peripheral setNotifyValue:YES forCharacteristic:aChar];
-//                NSLog(@"Found button status characteristic");
+                //                NSLog(@"Found button status characteristic");
                 [appDelegate.hudController toastActiveMode];
             }
+            if ([aChar.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_INTERVAL_MIN_UUID]]) {
+//                [peripheral setNotifyValue:YES forCharacteristic:aChar];
+                NSLog(@"Found characteristic for interval_min");
+                [peripheral readValueForCharacteristic:aChar];
+            }
+            if ([aChar.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_INTERVAL_MAX_UUID]]) {
+//                [peripheral setNotifyValue:YES forCharacteristic:aChar];
+                NSLog(@"Found characteristic for interval_max");
+                [peripheral readValueForCharacteristic:aChar];
+            }
+            if ([aChar.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_CONN_LATENCY_UUID]]) {
+//                [peripheral setNotifyValue:YES forCharacteristic:aChar];
+                NSLog(@"Found characteristic for conn_latency");
+                [peripheral readValueForCharacteristic:aChar];
+            }
+            if ([aChar.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_CONN_TIMEOUT_UUID]]) {
+//                [peripheral setNotifyValue:YES forCharacteristic:aChar];
+                NSLog(@"Found characteristic for conn_timeout");
+                [peripheral readValueForCharacteristic:aChar];
+            }
+
 //            /* Read body sensor location */
 //            if ([aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A38"]])
 //            {
@@ -227,7 +260,7 @@
         }
     }
     
-    if ( [service.UUID isEqual:[CBUUID UUIDWithString:DEVICE_BATTERY_SERVICE_UUID]] ) {
+    if ([service.UUID isEqual:[CBUUID UUIDWithString:DEVICE_BATTERY_SERVICE_UUID]]) {
         for (CBCharacteristic *aChar in service.characteristics) {
             /* Read device name */
             if ([aChar.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_BATTERY_LEVEL_UUID]]) {
@@ -309,25 +342,85 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
  Invoked upon the peripheral notifying the server about a characteristic's value changing.
  */
 - (void)retrieveFirmwareSettings {
-    [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_INTERVAL_MIN_UUID]]
+    [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_INTERVAL_MIN_UUID],
+                                          [CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_INTERVAL_MAX_UUID],
+                                          [CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_CONN_LATENCY_UUID],
+                                          [CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_CONN_TIMEOUT_UUID]]
                              forService:buttonStatusService];
 }
 
 - (void)peripheral:(CBPeripheral *)_peripheral
 didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic
              error:(NSError *)error {
-    NSLog(@"did Update notification: %@ - %@ (%@)", _peripheral, characteristic, error);
+    NSLog(@"did Update notification: %@ - %d (%@)", characteristic.UUID, characteristic.isNotifying, error);
 }
 
 - (void)deviceSentFirmwareSettings:(FirmwareSetting)setting {
-    NSLog(@"Device sent firmware settings: %@", @(setting));
+    NSLog(@"Device sent firmware settings: %d", setting);
+    if (setting == FIRMWARE_INTERVAL_MIN) {
+        CBCharacteristic *characteristic = [characteristics objectForKey:@"interval_min"];
+        if (!characteristic.value) return;
+        const uint8_t *bytes = [characteristic.value bytes];
+        int value = bytes[0];
+        NSLog(@"Was %@, now %@", firmwareIntervalMin, @(value));
+        [self setValue:@(value) forKey:@"firmwareIntervalMin"];
+//        [peripheral setNotifyValue:NO forCharacteristic:characteristic];
+    }
+    if (setting == FIRMWARE_INTERVAL_MAX) {
+        CBCharacteristic *characteristic = [characteristics objectForKey:@"interval_max"];
+        if (!characteristic.value) return;
+        const uint8_t *bytes = [characteristic.value bytes];
+        int value = bytes[0];
+        NSLog(@"Was %@, now %@", firmwareIntervalMax, @(value));
+        [self setValue:@(value) forKey:@"firmwareIntervalMax"];
+//        [peripheral setNotifyValue:NO forCharacteristic:characteristic];
+    }
+    if (setting == FIRMWARE_CONN_LATENCY) {
+        CBCharacteristic *characteristic = [characteristics objectForKey:@"conn_latency"];
+        if (!characteristic.value) return;
+        const uint8_t *bytes = [characteristic.value bytes];
+        int value = bytes[0];
+        NSLog(@"Was %@, now %@", firmwareConnLatency, @(value));
+        [self setValue:@(value) forKey:@"firmwareConnLatency"];
+//        [peripheral setNotifyValue:NO forCharacteristic:characteristic];
+    }
+    if (setting == FIRMWARE_CONN_TIMEOUT) {
+        CBCharacteristic *characteristic = [characteristics objectForKey:@"conn_timeout"];
+        if (!characteristic.value) return;
+        const uint8_t *bytes = [characteristic.value bytes];
+        int value = bytes[0];
+        NSLog(@"Was %@, now %@", firmwareConnTimeout, @(value));
+        [self setValue:@(value) forKey:@"firmwareConnTimeout"];
+//        [peripheral setNotifyValue:NO forCharacteristic:characteristic];
+        [self writeFirmwareConnectionValues];
+    }
 }
 
 - (void)writeFirmwareConnectionValues {
-    for (FirmwareSetting setting in @[FIRMWARE_INTERVAL_MIN, FIRMWARE_INTERVAL_MAX, FIRMWARE_CONN_LATENCY, FIRMWARE_CONN_TIMEOUT]) {
-        CBCharacteristic *characteristic = 
-    }
-    peripheral writeValue:data forCharacteristic:<#(CBCharacteristic *)#> type:<#(CBCharacteristicWriteType)#>
+    NSLog(@"Writing firmware connection values...");
+    CBCharacteristic *characteristic = [characteristics objectForKey:@"interval_min"];
+    int value = firmwareIntervalMin.intValue;
+    NSData *data = [NSData dataWithBytes:(void*)&value length:sizeof(value)];
+    [peripheral writeValue:data forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
+    
+    characteristic = [characteristics objectForKey:@"interval_max"];
+    value = firmwareIntervalMax.intValue;
+    data = [NSData dataWithBytes:(void*)&value length:sizeof(value)];
+    [peripheral writeValue:data forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
+    
+    characteristic = [characteristics objectForKey:@"conn_latency"];
+    value = firmwareConnLatency.intValue;
+    data = [NSData dataWithBytes:(void*)&value length:sizeof(value)];
+    [peripheral writeValue:data forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
+
+    characteristic = [characteristics objectForKey:@"conn_timeout"];
+    value = firmwareConnTimeout.intValue;
+    data = [NSData dataWithBytes:(void*)&value length:sizeof(value)];
+    [peripheral writeValue:data forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
+}
+
+- (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
+    NSLog(@"Did write value: %@", error);
 }
 
 @end
