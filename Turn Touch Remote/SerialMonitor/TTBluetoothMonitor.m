@@ -334,32 +334,32 @@ didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic
     if (setting == FIRMWARE_INTERVAL_MIN) {
         CBCharacteristic *characteristic = [characteristics objectForKey:@"interval_min"];
         if (!characteristic.value) return;
-        const uint8_t *bytes = [characteristic.value bytes];
-        int value = bytes[0];
+        int value;
+        [characteristic.value getBytes:&value length:2];
         NSLog(@"Was %@, now %@", firmwareIntervalMin, @(value));
         [self setValue:@(value) forKey:@"firmwareIntervalMin"];
     }
     if (setting == FIRMWARE_INTERVAL_MAX) {
         CBCharacteristic *characteristic = [characteristics objectForKey:@"interval_max"];
         if (!characteristic.value) return;
-        const uint8_t *bytes = [characteristic.value bytes];
-        int value = bytes[0];
+        int value;
+        [characteristic.value getBytes:&value length:2];
         NSLog(@"Was %@, now %@", firmwareIntervalMax, @(value));
         [self setValue:@(value) forKey:@"firmwareIntervalMax"];
     }
     if (setting == FIRMWARE_CONN_LATENCY) {
         CBCharacteristic *characteristic = [characteristics objectForKey:@"conn_latency"];
         if (!characteristic.value) return;
-        const uint8_t *bytes = [characteristic.value bytes];
-        int value = bytes[0];
+        int value;
+        [characteristic.value getBytes:&value length:2];
         NSLog(@"Was %@, now %@", firmwareConnLatency, @(value));
         [self setValue:@(value) forKey:@"firmwareConnLatency"];
     }
     if (setting == FIRMWARE_CONN_TIMEOUT) {
         CBCharacteristic *characteristic = [characteristics objectForKey:@"conn_timeout"];
         if (!characteristic.value) return;
-        const uint8_t *bytes = [characteristic.value bytes];
-        int value = bytes[0];
+        int value;
+        [characteristic.value getBytes:&value length:2];
 //        if (firmwareConnTimeout.intValue != value) {
             NSLog(@"Was %@, now %@", firmwareConnTimeout, @(value));
             [self setValue:@(value) forKey:@"firmwareConnTimeout"];
@@ -372,28 +372,30 @@ didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic
     NSLog(@"Writing firmware connection values...");
     CBCharacteristic *characteristic = [characteristics objectForKey:@"interval_min"];
     uint16_t value = firmwareIntervalMin.intValue - 10;
-    NSLog(@"  interval_min length: %s - %d", (char*)&value, sizeof(value));
-    NSData *data = [NSData dataWithBytes:(char*)&value length:sizeof(value)];
+    NSLog(@"  interval_min length: %s - %d", (void*)&value, sizeof(value));
+    NSData *data = [NSData dataWithBytes:(void*)&value length:2];
     [peripheral writeValue:data forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
     
     characteristic = [characteristics objectForKey:@"interval_max"];
     value = firmwareIntervalMax.intValue - 10;
-    data = [NSData dataWithBytes:(char*)&value length:sizeof(value)];
+    data = [NSData dataWithBytes:(void*)&value length:2];
     [peripheral writeValue:data forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
     
     characteristic = [characteristics objectForKey:@"conn_latency"];
     value = firmwareConnLatency.intValue;
-    data = [NSData dataWithBytes:(char*)&value length:sizeof(value)];
+    data = [NSData dataWithBytes:(void*)&value length:2];
     [peripheral writeValue:data forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
 
     characteristic = [characteristics objectForKey:@"conn_timeout"];
     value = firmwareConnTimeout.intValue;
-    data = [NSData dataWithBytes:(char*)&value length:sizeof(value)];
+    data = [NSData dataWithBytes:(void*)&value length:2];
     [peripheral writeValue:data forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
-    NSLog(@"Did write value: %@", error);
+    int value;
+    [characteristic.value getBytes:&value length:2];
+    NSLog(@"Did write value: %d", value);
 }
 
 #pragma mark - Battery level
