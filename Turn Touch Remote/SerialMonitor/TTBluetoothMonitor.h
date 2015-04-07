@@ -24,6 +24,7 @@ typedef enum {
 <CBCentralManagerDelegate, CBPeripheralDelegate> {
     TTAppDelegate *appDelegate;
     TTButtonTimer *buttonTimer;
+    NSTimer *batteryLevelTimer;
 
     NSString *manufacturer;
     CBCentralManager *manager;
