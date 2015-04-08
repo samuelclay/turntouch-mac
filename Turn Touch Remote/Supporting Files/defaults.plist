@@ -7,9 +7,9 @@
 	<key>TT:firmware:interval_max</key>
 	<integer>148</integer>
 	<key>TT:firmware:conn_latency</key>
-	<integer>4</integer>
+	<integer>10</integer>
 	<key>TT:firmware:conn_timeout</key>
-	<integer>500</integer>
+	<integer>600</integer>
 	<key>TT:mode:north</key>
 	<string>TTModeAlarmClock</string>
 	<key>TT:mode:east</key>

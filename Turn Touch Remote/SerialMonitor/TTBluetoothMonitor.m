@@ -46,22 +46,6 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
     return self;
 }
 
-- (CBCharacteristic *)characteristicInPeripheral:(CBPeripheral *)peripheral
-                                  andServiceUUID:(NSString *)serviceUUID
-                           andCharacteristicUUID:(NSString *)characteristicUUID {
-    for (CBService *service in peripheral.services) {
-        if ([service.UUID isEqual:[CBUUID UUIDWithString:serviceUUID]]) {
-            for (CBCharacteristic *characteristic in service.characteristics) {
-                if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:characteristicUUID]]) {
-                    return characteristic;
-                }
-            }
-        }
-    }
-    
-    return nil;
-}
-
 #pragma mark - Start/Stop Scan methods
 
 - (void) startScan {
@@ -295,6 +279,20 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
 }
 
 /*
+ Invoked upon completion of a -[setNotifyValue:] request
+ */
+- (void)peripheral:(CBPeripheral *)peripheral
+didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic
+             error:(NSError *)error {
+    if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_BUTTON_STATUS_UUID]]) {
+        NSLog(@"Subscribed to button status notifications: %@", peripheral.identifier.UUIDString);
+        [appDelegate.hudController toastActiveMode];
+    } else {
+        NSLog(@"Subscribed to notifications: %@/%@", peripheral.identifier.UUIDString, characteristic.UUID.UUIDString);
+    }
+}
+
+/*
  Invoked upon completion of a -[readValueForCharacteristic:] request or on the reception of a notification/indication.
  */
 - (void) peripheral:(CBPeripheral *)peripheral
@@ -338,6 +336,18 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
     }
 }
 
+/*
+ Invoked upon completion of a -[writeValue:forCharacteristic:type:] request
+ */
+- (void)peripheral:(CBPeripheral *)peripheral
+didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
+             error:(NSError *)error {
+    uint16_t value;
+    [characteristic.value getBytes:&value length:2];
+    NSLog(@"Did write value: %d", value);
+}
+
+
 #pragma mark - Connection Attributes Firmware Updates
 
 /*
@@ -354,18 +364,6 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
         }
     }
 }
-
-- (void)peripheral:(CBPeripheral *)peripheral
-didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic
-             error:(NSError *)error {
-    if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_BUTTON_STATUS_UUID]]) {
-        NSLog(@"Subscribed to button status notifications: %@", peripheral.identifier.UUIDString);
-        [appDelegate.hudController toastActiveMode];
-    } else {
-        NSLog(@"Subscribed to notifications: %@/%@", peripheral.identifier.UUIDString, characteristic.UUID.UUIDString);
-    }
-}
-
 
 - (void)device:(CBPeripheral *)peripheral sentFirmwareSettings:(FirmwareSetting)setting {
     NSLog(@"Device sent firmware settings: %d", setting);
@@ -392,7 +390,7 @@ didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic
         uint16_t value;
         [characteristic.value getBytes:&value length:2];
         if (firmwareIntervalMax != value) {
-            NSLog(@"Server %d, remote %d", firmwareIntervalMin, value);
+            NSLog(@"Server %d, remote %d", firmwareIntervalMax, value);
             NSData *data = [NSData dataWithBytes:(void*)&firmwareIntervalMax length:2];
             [peripheral writeValue:data forCharacteristic:characteristic
                               type:CBCharacteristicWriteWithResponse];
@@ -403,7 +401,7 @@ didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic
         uint16_t value;
         [characteristic.value getBytes:&value length:2];
         if (firmwareConnLatency != value) {
-            NSLog(@"Server %d, remote %d", firmwareIntervalMin, value);
+            NSLog(@"Server %d, remote %d", firmwareConnLatency, value);
             NSData *data = [NSData dataWithBytes:(void*)&firmwareConnLatency length:2];
             [peripheral writeValue:data forCharacteristic:characteristic
                               type:CBCharacteristicWriteWithResponse];
@@ -414,20 +412,12 @@ didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic
         uint16_t value;
         [characteristic.value getBytes:&value length:2];
         if (firmwareConnTimeout != value) {
-            NSLog(@"Server %d, remote %d", firmwareIntervalMin, value);
+            NSLog(@"Server %d, remote %d", firmwareConnTimeout, value);
             NSData *data = [NSData dataWithBytes:(void*)&firmwareConnTimeout length:2];
             [peripheral writeValue:data forCharacteristic:characteristic
                               type:CBCharacteristicWriteWithResponse];
         }
     }
-}
-
-- (void)peripheral:(CBPeripheral *)peripheral
-didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
-             error:(NSError *)error {
-    uint16_t value;
-    [characteristic.value getBytes:&value length:2];
-    NSLog(@"Did write value: %d", value);
 }
 
 - (void)resetToDefaults {
@@ -469,6 +459,24 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
     }
     
     [self delayBatteryLevelReading];
+}
+
+#pragma mark - Convenience methods
+
+- (CBCharacteristic *)characteristicInPeripheral:(CBPeripheral *)peripheral
+                                  andServiceUUID:(NSString *)serviceUUID
+                           andCharacteristicUUID:(NSString *)characteristicUUID {
+    for (CBService *service in peripheral.services) {
+        if ([service.UUID isEqual:[CBUUID UUIDWithString:serviceUUID]]) {
+            for (CBCharacteristic *characteristic in service.characteristics) {
+                if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:characteristicUUID]]) {
+                    return characteristic;
+                }
+            }
+        }
+    }
+    
+    return nil;
 }
 
 @end
