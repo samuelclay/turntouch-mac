@@ -50,6 +50,10 @@
 		FF429AD21919C630007C485E /* TTModeMenuCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF429AD11919C630007C485E /* TTModeMenuCollectionView.m */; };
 		FF4E2630182317D000D477F6 /* TTSerialMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4E262F182317D000D477F6 /* TTSerialMonitor.m */; };
 		FF4E26321823197D00D477F6 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4E26311823197D00D477F6 /* IOKit.framework */; };
+		FF5295BC1AD4D112007DDC02 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = FF5295BA1AD4D112007DDC02 /* settings.png */; };
+		FF5295BD1AD4D112007DDC02 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF5295BB1AD4D112007DDC02 /* settings@2x.png */; };
+		FF5295C01AD4D2BE007DDC02 /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = FF5295BE1AD4D2BE007DDC02 /* title.png */; };
+		FF5295C11AD4D2BE007DDC02 /* title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF5295BF1AD4D2BE007DDC02 /* title@2x.png */; };
 		FF66F2A619228DE100031478 /* TTModeAlarmClockOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66F2A519228DE100031478 /* TTModeAlarmClockOptions.m */; };
 		FF66F2A91922D1C100031478 /* TTOptionsDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66F2A81922D1C100031478 /* TTOptionsDetailView.m */; };
 		FF6A37D01A9AEC9F006F3756 /* NSDate+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6A37CF1A9AEC9F006F3756 /* NSDate+Extras.m */; };
@@ -165,7 +169,6 @@
 		FFEA6CB319216CDF0010874B /* TTModeMacOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFEA6CB219216CDF0010874B /* TTModeMacOptions.xib */; };
 		FFEA6CB819218A5C0010874B /* TTModeAlarmClockOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFEA6CB719218A5C0010874B /* TTModeAlarmClockOptions.xib */; };
 		FFF05F3018F60FF100AC6230 /* TTTitleBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF05F2F18F60FF100AC6230 /* TTTitleBarView.m */; };
-		FFF05F3318F6120200AC6230 /* Turn Touch title.png in Resources */ = {isa = PBXBuildFile; fileRef = FFF05F3218F6120200AC6230 /* Turn Touch title.png */; };
 		FFF05F3B18F77BE000AC6230 /* TTModeTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF05F3A18F77BE000AC6230 /* TTModeTitleView.m */; };
 		FFF05F3E18F77CF500AC6230 /* TTChangeButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF05F3D18F77CF500AC6230 /* TTChangeButtonView.m */; };
 		FFF05F4218F77D5D00AC6230 /* TTChangeButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF05F4118F77D5D00AC6230 /* TTChangeButtonCell.m */; };
@@ -250,6 +253,10 @@
 		FF4E262F182317D000D477F6 /* TTSerialMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSerialMonitor.m; path = SerialMonitor/TTSerialMonitor.m; sourceTree = "<group>"; };
 		FF4E26311823197D00D477F6 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		FF4F9AF6182881FF00D2F975 /* AppleScriptObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptObjC.framework; path = System/Library/Frameworks/AppleScriptObjC.framework; sourceTree = SDKROOT; };
+		FF5295BA1AD4D112007DDC02 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = icons/settings.png; sourceTree = "<group>"; };
+		FF5295BB1AD4D112007DDC02 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings@2x.png"; path = "icons/settings@2x.png"; sourceTree = "<group>"; };
+		FF5295BE1AD4D2BE007DDC02 /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title.png; sourceTree = "<group>"; };
+		FF5295BF1AD4D2BE007DDC02 /* title@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title@2x.png"; sourceTree = "<group>"; };
 		FF66F2A419228DE100031478 /* TTModeAlarmClockOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeAlarmClockOptions.h; path = "Modes/Alarm Clock/TTModeAlarmClockOptions.h"; sourceTree = "<group>"; };
 		FF66F2A519228DE100031478 /* TTModeAlarmClockOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeAlarmClockOptions.m; path = "Modes/Alarm Clock/TTModeAlarmClockOptions.m"; sourceTree = "<group>"; };
 		FF66F2A71922D1C100031478 /* TTOptionsDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTOptionsDetailView.h; path = "Views/Mode Options/TTOptionsDetailView.h"; sourceTree = "<group>"; };
@@ -434,7 +441,6 @@
 		FFEA6CB719218A5C0010874B /* TTModeAlarmClockOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeAlarmClockOptions.xib; path = "Modes/Alarm Clock/TTModeAlarmClockOptions.xib"; sourceTree = "<group>"; };
 		FFF05F2E18F60FF100AC6230 /* TTTitleBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTitleBarView.h; sourceTree = "<group>"; };
 		FFF05F2F18F60FF100AC6230 /* TTTitleBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTitleBarView.m; sourceTree = "<group>"; };
-		FFF05F3218F6120200AC6230 /* Turn Touch title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Turn Touch title.png"; sourceTree = "<group>"; };
 		FFF05F3918F77BE000AC6230 /* TTModeTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeTitleView.h; path = "Views/Mode Title/TTModeTitleView.h"; sourceTree = "<group>"; };
 		FFF05F3A18F77BE000AC6230 /* TTModeTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeTitleView.m; path = "Views/Mode Title/TTModeTitleView.m"; sourceTree = "<group>"; };
 		FFF05F3C18F77CF500AC6230 /* TTChangeButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTChangeButtonView.h; path = Views/Buttons/TTChangeButtonView.h; sourceTree = "<group>"; };
@@ -910,6 +916,8 @@
 		FFAA4F6A182D96E50049FFC7 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				FF5295BA1AD4D112007DDC02 /* settings.png */,
+				FF5295BB1AD4D112007DDC02 /* settings@2x.png */,
 				FF2365C2196F0DFA00A4ADBC /* mode_alarm.png */,
 				FF2365C3196F0DFA00A4ADBC /* mode_fitness.png */,
 				FF2365C4196F0DFA00A4ADBC /* mode_mac.png */,
@@ -1026,7 +1034,8 @@
 				FF8A73C41ABA69410023AA53 /* logo_256.png */,
 				FF8A73C51ABA69410023AA53 /* logo_512.png */,
 				FF8A73C01ABA69410023AA53 /* logo - 1024.png */,
-				FFF05F3218F6120200AC6230 /* Turn Touch title.png */,
+				FF5295BE1AD4D2BE007DDC02 /* title.png */,
+				FF5295BF1AD4D2BE007DDC02 /* title@2x.png */,
 			);
 			path = logo;
 			sourceTree = "<group>";
@@ -1125,6 +1134,7 @@
 				FF8A73BF1ABA692F0023AA53 /* Images.xcassets in Resources */,
 				FFAA4F68182D96D60049FFC7 /* television.png in Resources */,
 				FFAA4F66182D96D60049FFC7 /* speaker.png in Resources */,
+				FF5295C11AD4D2BE007DDC02 /* title@2x.png in Resources */,
 				FF2740721A7C576900C55579 /* itunes_playlist_icon.png in Resources */,
 				FF8A73CA1ABA69410023AA53 /* logo_256.png in Resources */,
 				FFAA4F65182D96D60049FFC7 /* presentation-chart.png in Resources */,
@@ -1154,6 +1164,7 @@
 				FF98A3031868D3F90032CC7A /* imac.png in Resources */,
 				FF2365CC196F0DFA00A4ADBC /* mode_alarm.png in Resources */,
 				FFB5FF431A6723EA00DF617A /* TTModeHue.plist in Resources */,
+				FF5295BC1AD4D112007DDC02 /* settings.png in Resources */,
 				FF3760C71ABB59210055EC6D /* logo_16.png in Resources */,
 				FF3641DA1A5F53DC003CC03C /* TTModeHueConnecting.xib in Resources */,
 				FF3641EB1A60BBEE003CC03C /* TTModeHueConnected.xib in Resources */,
@@ -1175,10 +1186,11 @@
 				FFAA4F64182D96D60049FFC7 /* newspaper-3.png in Resources */,
 				FF2740701A7C576900C55579 /* itunes_genius_icon.png in Resources */,
 				FF8A73C71ABA69410023AA53 /* logo_32.png in Resources */,
+				FF5295BD1AD4D112007DDC02 /* settings@2x.png in Resources */,
 				FF98A3041868D3F90032CC7A /* macbookpro.png in Resources */,
 				FFEA6CB319216CDF0010874B /* TTModeMacOptions.xib in Resources */,
 				FF7305C41A5CB3EF009A852D /* TTModeHueConnect.xib in Resources */,
-				FFF05F3318F6120200AC6230 /* Turn Touch title.png in Resources */,
+				FF5295C01AD4D2BE007DDC02 /* title.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

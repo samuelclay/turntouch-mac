@@ -7,7 +7,7 @@
 	<key>TT:firmware:interval_max</key>
 	<integer>148</integer>
 	<key>TT:firmware:conn_latency</key>
-	<integer>10</integer>
+	<integer>4</integer>
 	<key>TT:firmware:conn_timeout</key>
 	<integer>600</integer>
 	<key>TT:mode:north</key>

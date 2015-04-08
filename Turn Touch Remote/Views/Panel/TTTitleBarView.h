@@ -14,6 +14,7 @@
 @interface TTTitleBarView : NSView <NSStackViewDelegate> {
     TTAppDelegate *appDelegate;
     NSImage *title;
+    NSImage *settings;
     NSDictionary *batteryAttributes;
 }
 

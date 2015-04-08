@@ -20,7 +20,7 @@
 #define DEVICE_CHARACTERISTIC_CONN_LATENCY_UUID     @"3b6ef6e7-d9dc-4010-960a-a48bbe114935"
 #define DEVICE_CHARACTERISTIC_CONN_TIMEOUT_UUID     @"c6d87b9e-70c3-47ff-a534-e1ceb2bdf435"
 
-const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
+const int BATTERY_LEVEL_READING_DELAY = 15; // 60*60*6; // every 6 hours
 
 @implementation TTBluetoothMonitor
 
@@ -144,7 +144,7 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
                                    [CBUUID UUIDWithString:DEVICE_FIRMWARE_SETTINGS_SERVICE_UUID]]];
     
     [connectedDevices addObject:peripheral];
-    [self setValue:@(connectedDevices.count) forKey:@"connectedDevicesCount"];
+    [self countDevices];
 }
 
 /*
@@ -163,7 +163,7 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
         }
     }
     connectedDevices = updatedConnectedDevices;
-    [self setValue:@(connectedDevices.count) forKey:@"connectedDevicesCount"];
+    [self countDevices];
     
     [self startScan];
 }
@@ -183,7 +183,7 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
         }
     }
     connectedDevices = updatedConnectedDevices;
-    [self setValue:@(connectedDevices.count) forKey:@"connectedDevicesCount"];
+    [self countDevices];
 
     [self startScan];
 }

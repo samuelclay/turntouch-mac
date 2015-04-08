@@ -18,8 +18,11 @@
     if (self) {
         appDelegate = (TTAppDelegate *)[NSApp delegate];
         self.translatesAutoresizingMaskIntoConstraints = NO;
-        title = [NSImage imageNamed:@"Turn Touch title.png"];
-        [title setSize:NSMakeSize(100, 11)];
+        title = [NSImage imageNamed:@"title"];
+        [title setSize:NSMakeSize(100, 12)];
+        
+        settings = [NSImage imageNamed:@"settings"];
+        [settings setSize:NSMakeSize(16, 16)];
         
         [self setupTitleAttributes];
         [self registerAsObserver];
@@ -51,6 +54,7 @@
     [self drawBackground];
     [self drawLabel];
     [self drawBatteryPct];
+    [self drawSettings];
 }
 
 - (void)setFrame:(NSRect)frameRect {
@@ -70,13 +74,19 @@
     if (!appDelegate.bluetoothMonitor.batteryPct) return;
     NSString *batteryPct = [NSString stringWithFormat:@"%@%%", appDelegate.bluetoothMonitor.batteryPct];
     NSSize batterySize = [batteryPct sizeWithAttributes:batteryAttributes];
-    NSPoint batteryPoint = NSMakePoint(NSMaxX(self.bounds) - batterySize.width - 16,
+    NSPoint batteryPoint = NSMakePoint(NSMinX(self.bounds) + 16,
                                        NSMidY(self.bounds) - batterySize.height/2 + 1);
 
     [batteryPct drawInRect:NSMakeRect(batteryPoint.x, batteryPoint.y, batterySize.width, batterySize.height)
             withAttributes:batteryAttributes];
 }
 
+- (void)drawSettings {
+    NSPoint settingsPoint = NSMakePoint(NSMaxX(self.bounds) - settings.size.width - 16,
+                                        NSMidY(self.bounds) - settings.size.height/2 + 1);
+    [settings drawInRect:NSMakeRect(settingsPoint.x, settingsPoint.y,
+                                    settings.size.width, settings.size.height)];
+}
 
 - (void)drawBackground {
     NSRect contentRect = NSInsetRect([self bounds], 0, 0);
