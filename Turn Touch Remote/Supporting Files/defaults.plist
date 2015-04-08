@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>TT:firmware:interval_min</key>
+	<integer>104</integer>
+	<key>TT:firmware:interval_max</key>
+	<integer>148</integer>
+	<key>TT:firmware:conn_latency</key>
+	<integer>3</integer>
+	<key>TT:firmware:conn_timeout</key>
+	<integer>500</integer>
 	<key>TT:mode:north</key>
 	<string>TTModeAlarmClock</string>
 	<key>TT:mode:east</key>

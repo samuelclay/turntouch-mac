@@ -28,19 +28,14 @@ typedef enum {
 
     NSString *manufacturer;
     CBCentralManager *manager;
-    CBPeripheral *peripheral;
-    CBService *buttonStatusService;
     NSMutableArray *connectedDevices;
     NSMutableDictionary *characteristics;
 }
 
 @property (nonatomic) NSNumber *batteryPct;
+@property (nonatomic) NSMutableArray *foundDevices;
 @property (nonatomic) NSMutableArray *connectedDevices;
 @property (nonatomic) NSNumber *connectedDevicesCount;
-@property (nonatomic) NSNumber *firmwareIntervalMin;
-@property (nonatomic) NSNumber *firmwareIntervalMax;
-@property (nonatomic) NSNumber *firmwareConnLatency;
-@property (nonatomic) NSNumber *firmwareConnTimeout;
 
 - (void) startScan;
 - (void) stopScan;
