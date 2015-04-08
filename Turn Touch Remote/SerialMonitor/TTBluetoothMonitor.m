@@ -9,16 +9,18 @@
 #import "TTBluetoothMonitor.h"
 #import "NSData+Conversion.h"
 
-#define DEVICE_BUTTON_SERVICE_UUID @"88c3907a-dc4f-41b1-bb04-4e4deb81fadd"
-#define DEVICE_BATTERY_SERVICE_UUID @"180F"
-#define DEVICE_CHARACTERISTIC_BATTERY_LEVEL_UUID @"2a19"
-#define DEVICE_CHARACTERISTIC_BUTTON_STATUS_UUID @"47099164-4d08-4338-bedf-7fc043dbec5c"
-#define DEVICE_CHARACTERISTIC_INTERVAL_MIN_UUID @"0a02cefb-f546-4a56-ad2b-4aeadca0da6e"
-#define DEVICE_CHARACTERISTIC_INTERVAL_MAX_UUID @"50a71e79-f950-4973-9cbd-1ce5439603be"
-#define DEVICE_CHARACTERISTIC_CONN_LATENCY_UUID @"3b6ef6e7-d9dc-4010-960a-a48bbe114935"
-#define DEVICE_CHARACTERISTIC_CONN_TIMEOUT_UUID @"c6d87b9e-70c3-47ff-a534-e1ceb2bdf435"
+#define DEVICE_BATTERY_SERVICE_UUID                 @"180F"
+#define DEVICE_BUTTON_SERVICE_UUID                  @"88c3907a-dc4f-41b1-bb04-4e4deb81fadd"
+#define DEVICE_FIRMWARE_SETTINGS_SERVICE_UUID       @"2f850855-71c4-4543-bcd3-9bc29d435390"
 
-const int BATTERY_LEVEL_READING_DELAY = 60*60*24; // every 24 hours
+#define DEVICE_CHARACTERISTIC_BATTERY_LEVEL_UUID    @"2a19"
+#define DEVICE_CHARACTERISTIC_BUTTON_STATUS_UUID    @"47099164-4d08-4338-bedf-7fc043dbec5c"
+#define DEVICE_CHARACTERISTIC_INTERVAL_MIN_UUID     @"0a02cefb-f546-4a56-ad2b-4aeadca0da6e"
+#define DEVICE_CHARACTERISTIC_INTERVAL_MAX_UUID     @"50a71e79-f950-4973-9cbd-1ce5439603be"
+#define DEVICE_CHARACTERISTIC_CONN_LATENCY_UUID     @"3b6ef6e7-d9dc-4010-960a-a48bbe114935"
+#define DEVICE_CHARACTERISTIC_CONN_TIMEOUT_UUID     @"c6d87b9e-70c3-47ff-a534-e1ceb2bdf435"
+
+const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
 
 @implementation TTBluetoothMonitor
 
@@ -133,7 +135,7 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*24; // every 24 hours
                    RSSI:(NSNumber *)RSSI
 {
     NSString *localName = [advertisementData objectForKey:CBAdvertisementDataLocalNameKey];
-    NSLog(@"Found bluetooth peripheral: %@/%@ (%@)", localName, advertisementData, RSSI);
+    NSLog(@"Found bluetooth peripheral: %@/%@ (%@)", localName, peripheral.identifier.UUIDString, RSSI);
     NSArray *peripherals = [manager retrievePeripheralsWithIdentifiers:@[(id)peripheral.identifier]];
     
     for (CBPeripheral *device in peripherals) {
@@ -154,7 +156,8 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*24; // every 24 hours
     
     [peripheral setDelegate:self];
     [peripheral discoverServices:@[[CBUUID UUIDWithString:DEVICE_BUTTON_SERVICE_UUID],
-                                   [CBUUID UUIDWithString:DEVICE_BATTERY_SERVICE_UUID]]];
+                                   [CBUUID UUIDWithString:DEVICE_BATTERY_SERVICE_UUID],
+                                   [CBUUID UUIDWithString:DEVICE_FIRMWARE_SETTINGS_SERVICE_UUID]]];
     
     [connectedDevices addObject:peripheral];
     [self setValue:@(connectedDevices.count) forKey:@"connectedDevicesCount"];
@@ -208,12 +211,16 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*24; // every 24 hours
 //        NSLog(@"Service found with UUID: %@", service.UUID);
 
         if ([service.UUID isEqual:[CBUUID UUIDWithString:DEVICE_BUTTON_SERVICE_UUID]]) {
-            [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_BUTTON_STATUS_UUID],
-                                                  [CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_INTERVAL_MIN_UUID],
+            [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_BUTTON_STATUS_UUID]]
+                                     forService:service];
+        }
+
+        if ([service.UUID isEqual:[CBUUID UUIDWithString:DEVICE_FIRMWARE_SETTINGS_SERVICE_UUID]]) {
+            [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_INTERVAL_MIN_UUID],
                                                   [CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_INTERVAL_MAX_UUID],
                                                   [CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_CONN_LATENCY_UUID],
                                                   [CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_CONN_TIMEOUT_UUID]]
-                                    forService:service];
+                                     forService:service];
         }
         
         if ([service.UUID isEqual:[CBUUID UUIDWithString:DEVICE_BATTERY_SERVICE_UUID]]) {
@@ -240,8 +247,12 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*24; // every 24 hours
         for (CBCharacteristic *aChar in service.characteristics) {
             if ([aChar.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_BUTTON_STATUS_UUID]]) {
                 [peripheral setNotifyValue:YES forCharacteristic:aChar];
-                [appDelegate.hudController toastActiveMode];
             }
+        }
+    }
+    
+    if ([service.UUID isEqual:[CBUUID UUIDWithString:DEVICE_FIRMWARE_SETTINGS_SERVICE_UUID]]) {
+        for (CBCharacteristic *aChar in service.characteristics) {
             if ([aChar.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_INTERVAL_MIN_UUID]]) {
                 [peripheral readValueForCharacteristic:aChar];
             }
@@ -334,7 +345,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
  */
 - (void)retrieveFirmwareSettings:(CBPeripheral *)peripheral {
     for (CBService *service in peripheral.services) {
-        if ([service.UUID isEqual:[CBUUID UUIDWithString:DEVICE_BUTTON_SERVICE_UUID]]) {
+        if ([service.UUID isEqual:[CBUUID UUIDWithString:DEVICE_FIRMWARE_SETTINGS_SERVICE_UUID]]) {
             [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_INTERVAL_MIN_UUID],
                                                   [CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_INTERVAL_MAX_UUID],
                                                   [CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_CONN_LATENCY_UUID],
@@ -344,10 +355,15 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
     }
 }
 
-- (void)peripheral:(CBPeripheral *)_peripheral
+- (void)peripheral:(CBPeripheral *)peripheral
 didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic
              error:(NSError *)error {
-    NSLog(@"did Update notification: %@ - %d (%@)", characteristic.UUID, characteristic.isNotifying, error);
+    if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_BUTTON_STATUS_UUID]]) {
+        NSLog(@"Subscribed to button status notifications: %@", peripheral.identifier.UUIDString);
+        [appDelegate.hudController toastActiveMode];
+    } else {
+        NSLog(@"Subscribed to notifications: %@/%@", peripheral.identifier.UUIDString, characteristic.UUID.UUIDString);
+    }
 }
 
 
