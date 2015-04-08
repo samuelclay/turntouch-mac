@@ -8,13 +8,17 @@
 
 #import <Cocoa/Cocoa.h>
 #import "TTAppDelegate.h"
+#import "TTSettingsButton.h"
 
 @class TTAppDelegate;
 
-@interface TTTitleBarView : NSView <NSStackViewDelegate> {
+@interface TTTitleBarView : NSView
+<NSStackViewDelegate, NSMenuDelegate> {
     TTAppDelegate *appDelegate;
     NSImage *title;
-    NSImage *settings;
+    TTSettingsButton *settingsButton;
+    
+    NSMenu *settingsMenu;
     NSDictionary *batteryAttributes;
 }
 

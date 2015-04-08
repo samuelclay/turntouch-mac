@@ -20,7 +20,7 @@
 #define DEVICE_CHARACTERISTIC_CONN_LATENCY_UUID     @"3b6ef6e7-d9dc-4010-960a-a48bbe114935"
 #define DEVICE_CHARACTERISTIC_CONN_TIMEOUT_UUID     @"c6d87b9e-70c3-47ff-a534-e1ceb2bdf435"
 
-const int BATTERY_LEVEL_READING_DELAY = 15; // 60*60*6; // every 6 hours
+const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
 
 @implementation TTBluetoothMonitor
 
@@ -112,7 +112,7 @@ const int BATTERY_LEVEL_READING_DELAY = 15; // 60*60*6; // every 6 hours
 }
 
 /*
- Invoked when the central discovers heart rate peripheral while scanning.
+ Invoked when the central discovers peripheral while scanning.
  */
 - (void) centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral
       advertisementData:(NSDictionary *)advertisementData
@@ -131,7 +131,7 @@ const int BATTERY_LEVEL_READING_DELAY = 15; // 60*60*6; // every 6 hours
 
 /*
  Invoked whenever a connection is succesfully created with the peripheral.
- Discover available services on the peripheral
+ Discover available services on the peripheral.
  */
 - (void) centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
@@ -149,7 +149,6 @@ const int BATTERY_LEVEL_READING_DELAY = 15; // 60*60*6; // every 6 hours
 
 /*
  Invoked whenever an existing connection with the peripheral is torn down.
- Reset local variables
  */
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
     NSLog(@"Disconnected peripheral: %@", peripheral);
@@ -286,7 +285,7 @@ didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic
              error:(NSError *)error {
     if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_BUTTON_STATUS_UUID]]) {
         NSLog(@"Subscribed to button status notifications: %@", peripheral.identifier.UUIDString);
-        [appDelegate.hudController toastActiveMode];
+//        [appDelegate.hudController toastActiveMode];
     } else {
         NSLog(@"Subscribed to notifications: %@/%@", peripheral.identifier.UUIDString, characteristic.UUID.UUIDString);
     }

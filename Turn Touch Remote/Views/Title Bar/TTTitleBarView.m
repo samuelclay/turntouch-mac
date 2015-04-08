@@ -10,6 +10,7 @@
 #import "TTBluetoothMonitor.h"
 
 #define CORNER_RADIUS 8.0f
+const NSInteger SETTINGS_ICON_SIZE = 16;
 
 @implementation TTTitleBarView
 
@@ -21,9 +22,7 @@
         title = [NSImage imageNamed:@"title"];
         [title setSize:NSMakeSize(100, 12)];
         
-        settings = [NSImage imageNamed:@"settings"];
-        [settings setSize:NSMakeSize(16, 16)];
-        
+        [self makeSettingsMenu];
         [self setupTitleAttributes];
         [self registerAsObserver];
     }
@@ -82,10 +81,10 @@
 }
 
 - (void)drawSettings {
-    NSPoint settingsPoint = NSMakePoint(NSMaxX(self.bounds) - settings.size.width - 16,
-                                        NSMidY(self.bounds) - settings.size.height/2 + 1);
-    [settings drawInRect:NSMakeRect(settingsPoint.x, settingsPoint.y,
-                                    settings.size.width, settings.size.height)];
+    NSPoint settingsPoint = NSMakePoint(NSMaxX(self.bounds) - SETTINGS_ICON_SIZE*3,
+                                        NSMidY(self.bounds) - SETTINGS_ICON_SIZE/2 + 1);
+    [settingsButton setFrame:NSMakeRect(settingsPoint.x, settingsPoint.y,
+                                        SETTINGS_ICON_SIZE*3, SETTINGS_ICON_SIZE)];
 }
 
 - (void)drawBackground {
@@ -144,4 +143,60 @@
                           };
 }
 
+#pragma mark - Settings menu
+
+- (void)makeSettingsMenu {
+    settingsMenu = [[NSMenu alloc] initWithTitle:@"Menu"];
+    [settingsMenu setDelegate:self];
+    [settingsMenu setAutoenablesItems:YES];
+    
+    NSMenuItem *menuItemSettings = [[NSMenuItem alloc] initWithTitle:@"Settings..."
+                                                              action:@selector(openSettingsDialog:)
+                                                       keyEquivalent:@""];
+    [menuItemSettings setEnabled:YES];
+    [menuItemSettings setTarget:self];
+    [settingsMenu addItem:menuItemSettings];
+    
+    NSMenuItem *menuItemSeparator = [NSMenuItem separatorItem];
+    [settingsMenu addItem:menuItemSeparator];
+    NSMenuItem *menuItemAbout = [[NSMenuItem alloc] initWithTitle:@"About Turn Touch"
+                                                           action:@selector(openAboutDialog:)
+                                                    keyEquivalent:@""];
+    [menuItemAbout setEnabled:YES];
+    [menuItemAbout setTarget:self];
+    [settingsMenu addItem:menuItemAbout];
+    
+    
+    NSMenuItem *menuItemQuit = [[NSMenuItem alloc] initWithTitle:@"Quit Turn Touch"
+                                                          action:@selector(quit:)
+                                                   keyEquivalent:@""];
+    [menuItemQuit setEnabled:YES];
+    [menuItemQuit setTarget:self];
+    [settingsMenu addItem:menuItemQuit];
+    
+    NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:@"" action:nil keyEquivalent:@""];
+    NSImage *image = [NSImage imageNamed:@"settings"];
+    [image setSize:NSMakeSize(SETTINGS_ICON_SIZE, SETTINGS_ICON_SIZE)];
+    [menuItem setImage:image];
+    [settingsMenu insertItem:menuItem atIndex:0];
+    
+    settingsButton = [[TTSettingsButton alloc] initWithFrame:NSZeroRect pullsDown:YES];
+    [settingsButton setTarget:self];
+    [settingsButton setMenu:settingsMenu];
+    [self addSubview:settingsButton];
+}
+
+#pragma mark - Menu Delegate
+
+- (void)openSettingsDialog:(id)sender {
+    NSLog(@"Open settings");
+}
+
+- (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
+    return YES;
+}
+
+- (BOOL)validateToolbarItem:(NSToolbarItem *)theItem {
+    return YES;
+}
 @end
