@@ -8,6 +8,7 @@
 
 #import "TTTitleBarView.h"
 #import "TTBluetoothMonitor.h"
+#import "TTDevice.h"
 
 #define CORNER_RADIUS 8.0f
 const NSInteger SETTINGS_ICON_SIZE = 16;
@@ -22,7 +23,12 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
         title = [NSImage imageNamed:@"title"];
         [title setSize:NSMakeSize(100, 12)];
         
-        [self makeSettingsMenu];
+        settingsButton = [[TTSettingsButton alloc] initWithFrame:NSZeroRect pullsDown:YES];
+        [self buildSettingsMenu];
+        [settingsButton setTarget:self];
+        [settingsButton setMenu:settingsMenu];
+        [self addSubview:settingsButton];
+        
         [self setupTitleAttributes];
         [self registerAsObserver];
     }
@@ -33,6 +39,9 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
     [appDelegate.bluetoothMonitor addObserver:self
                                    forKeyPath:@"batteryPct"
                                       options:0 context:nil];
+    [appDelegate.bluetoothMonitor addObserver:self
+                                   forKeyPath:@"connectedDevicesCount"
+                                      options:0 context:nil];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
@@ -40,7 +49,10 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
                         change:(NSDictionary *)change
                        context:(void *)context {
     if ([keyPath isEqual:NSStringFromSelector(@selector(batteryPct))]) {
-        [self setNeedsDisplay:YES];
+//        [self setNeedsDisplay:YES];
+        [self buildSettingsMenu];
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(connectedDevicesCount))]) {
+        [self buildSettingsMenu];
     }
 }
 
@@ -52,7 +64,6 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
     [super drawRect:dirtyRect];
     [self drawBackground];
     [self drawLabel];
-    [self drawBatteryPct];
     [self drawSettings];
 }
 
@@ -67,17 +78,6 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
                                      NSMidY(self.bounds)-(title.size.height/2));
     [title drawInRect:NSMakeRect(titlePoint.x, titlePoint.y,
                                  title.size.width, title.size.height)];
-}
-
-- (void)drawBatteryPct {
-    if (!appDelegate.bluetoothMonitor.batteryPct) return;
-    NSString *batteryPct = [NSString stringWithFormat:@"%@%%", appDelegate.bluetoothMonitor.batteryPct];
-    NSSize batterySize = [batteryPct sizeWithAttributes:batteryAttributes];
-    NSPoint batteryPoint = NSMakePoint(NSMinX(self.bounds) + 16,
-                                       NSMidY(self.bounds) - batterySize.height/2 + 1);
-
-    [batteryPct drawInRect:NSMakeRect(batteryPoint.x, batteryPoint.y, batterySize.width, batterySize.height)
-            withAttributes:batteryAttributes];
 }
 
 - (void)drawSettings {
@@ -145,10 +145,28 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
 
 #pragma mark - Settings menu
 
-- (void)makeSettingsMenu {
-    settingsMenu = [[NSMenu alloc] initWithTitle:@"Menu"];
-    [settingsMenu setDelegate:self];
-    [settingsMenu setAutoenablesItems:YES];
+- (void)buildSettingsMenu {
+    NSLog(@"build settings menu");
+    if (!settingsMenu) {
+        settingsMenu = [[NSMenu alloc] initWithTitle:@"Menu"];
+        [settingsMenu setDelegate:self];
+        [settingsMenu setAutoenablesItems:YES];
+    } else {
+        [settingsMenu removeAllItems];
+    }
+
+    NSArray *connectedDevices = appDelegate.bluetoothMonitor.connectedDevices;
+    for (TTDevice *device in connectedDevices) {
+        NSString *batteryLevel = [NSString stringWithFormat:@"Battery level: %d%%", (int)device.batteryPct.intValue];
+        if (device.batteryPct.intValue <= 0) {
+            batteryLevel = @"Remote is connecting...";
+        }
+        NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:batteryLevel action:nil keyEquivalent:@""];
+        [settingsMenu addItem:menuItem];
+
+        NSMenuItem *menuItemSeparator = [NSMenuItem separatorItem];
+        [settingsMenu addItem:menuItemSeparator];
+    }
     
     NSMenuItem *menuItemSettings = [[NSMenuItem alloc] initWithTitle:@"Settings..."
                                                               action:@selector(openSettingsDialog:)
@@ -179,11 +197,6 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
     [image setSize:NSMakeSize(SETTINGS_ICON_SIZE, SETTINGS_ICON_SIZE)];
     [menuItem setImage:image];
     [settingsMenu insertItem:menuItem atIndex:0];
-    
-    settingsButton = [[TTSettingsButton alloc] initWithFrame:NSZeroRect pullsDown:YES];
-    [settingsButton setTarget:self];
-    [settingsButton setMenu:settingsMenu];
-    [self addSubview:settingsButton];
 }
 
 #pragma mark - Menu Delegate

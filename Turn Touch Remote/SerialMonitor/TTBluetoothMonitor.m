@@ -8,6 +8,7 @@
 
 #import "TTBluetoothMonitor.h"
 #import "NSData+Conversion.h"
+#import "TTDevice.h"
 
 #define DEVICE_BATTERY_SERVICE_UUID                 @"180F"
 #define DEVICE_BUTTON_SERVICE_UUID                  @"88c3907a-dc4f-41b1-bb04-4e4deb81fadd"
@@ -102,8 +103,8 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
 - (void)countDevices {
     NSLog(@"Counting: %@", connectedDevices);
     NSMutableArray *updatedConnectedDevices = [[NSMutableArray alloc] init];
-    for (CBPeripheral *device in connectedDevices) {
-        if (device.state == CBPeripheralStateConnected) {
+    for (TTDevice *device in connectedDevices) {
+        if (device.peripheral.state == CBPeripheralStateConnected) {
             [updatedConnectedDevices addObject:device];
         }
     }
@@ -143,7 +144,8 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
                                    [CBUUID UUIDWithString:DEVICE_BATTERY_SERVICE_UUID],
                                    [CBUUID UUIDWithString:DEVICE_FIRMWARE_SETTINGS_SERVICE_UUID]]];
     
-    [connectedDevices addObject:peripheral];
+    TTDevice *device = [[TTDevice alloc] initWithPeripheral:peripheral];
+    [connectedDevices addObject:device];
     [self countDevices];
 }
 
@@ -153,8 +155,8 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
     NSLog(@"Disconnected peripheral: %@", peripheral);
     NSMutableArray *updatedConnectedDevices = [[NSMutableArray alloc] init];
-    for (CBPeripheral *device in connectedDevices) {
-        if (device == peripheral) {
+    for (TTDevice *device in connectedDevices) {
+        if (device.peripheral == peripheral) {
             [peripheral setDelegate:nil];
             peripheral = nil;
         } else {
@@ -173,8 +175,8 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
 - (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
     NSLog(@"Fail to connect to peripheral: %@ with error = %@", peripheral, [error localizedDescription]);
     NSMutableArray *updatedConnectedDevices = [[NSMutableArray alloc] init];
-    for (CBPeripheral *device in connectedDevices) {
-        if (device == peripheral) {
+    for (TTDevice *device in connectedDevices) {
+        if (device.peripheral == peripheral) {
             [peripheral setDelegate:nil];
             peripheral = nil;
         } else {
@@ -310,6 +312,12 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
             const uint8_t *bytes = [characteristic.value bytes]; // pointer to the bytes in data
             uint16_t value = bytes[0]; // first byte
             NSLog(@"Battery level: %d%%", value);
+            for (TTDevice *device in connectedDevices) {
+                if (device.peripheral == peripheral) {
+                    device.batteryPct = @(value);
+                    break;
+                }
+            }
             [self setValue:@(value) forKey:@"batteryPct"];
         }
     } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_INTERVAL_MIN_UUID]]) {
@@ -420,13 +428,13 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
 }
 
 - (void)resetToDefaults {
-    for (CBPeripheral *peripheral in connectedDevices) {
-        CBCharacteristic *characteristic = [self characteristicInPeripheral:peripheral
+    for (TTDevice *device in connectedDevices) {
+        CBCharacteristic *characteristic = [self characteristicInPeripheral:device.peripheral
                                                              andServiceUUID:DEVICE_BATTERY_SERVICE_UUID
                                                       andCharacteristicUUID:DEVICE_CHARACTERISTIC_BATTERY_LEVEL_UUID];
         NSData *data = [[NSData alloc] initWithBytes:nil length:0];
-        [peripheral writeValue:data forCharacteristic:characteristic
-                          type:CBCharacteristicWriteWithResponse];
+        [device.peripheral writeValue:data forCharacteristic:characteristic
+                                 type:CBCharacteristicWriteWithResponse];
     }
 }
 
@@ -450,11 +458,11 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
 }
 
 - (void)updateBatteryLevel:(NSTimer *)timer {
-    for (CBPeripheral *peripheral in connectedDevices) {
-        CBCharacteristic *characteristic = [self characteristicInPeripheral:peripheral
+    for (TTDevice *device in connectedDevices) {
+        CBCharacteristic *characteristic = [self characteristicInPeripheral:device.peripheral
                                                              andServiceUUID:DEVICE_BATTERY_SERVICE_UUID
                                                       andCharacteristicUUID:DEVICE_CHARACTERISTIC_BATTERY_LEVEL_UUID];
-        [peripheral readValueForCharacteristic:characteristic];
+        [device.peripheral readValueForCharacteristic:characteristic];
     }
     
     [self delayBatteryLevelReading];

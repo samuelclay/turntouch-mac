@@ -33,7 +33,7 @@
         appDelegate = (TTAppDelegate *)[NSApp delegate];
         _statusItem = statusItem;
         _statusItem.view = self;
-
+        
         NSRect diamondRect = NSInsetRect(itemRect, 4.0f, 3.0f);
         self.diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect interactive:NO statusBar:YES];
         [self addSubview:self.diamondView];
@@ -44,8 +44,9 @@
 #pragma mark - Drawing
 
 - (void)drawRect:(NSRect)dirtyRect {
+//    NSLog(@"Drawing status item: %@ - %d", NSStringFromRect(dirtyRect), self.isHighlighted);
 	[_statusItem drawStatusBarBackgroundInRect:self.bounds
-                                     withHighlight:self.isHighlighted];
+                                 withHighlight:self.isHighlighted];
 }
 
 #pragma mark -
