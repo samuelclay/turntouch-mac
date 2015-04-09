@@ -11,10 +11,9 @@
 #import "TTDevice.h"
 #import "RHPreferences.h"
 #import "NSDate+TimeAgo.h"
-
-#import "RHAboutViewController.h"
-#import "RHAccountsViewController.h"
-#import "RHWideViewController.h"
+#import "TTSettingsDevicesViewController.h"
+#import "TTSettingsSupportViewController.h"
+#import "TTSettingsAboutViewController.h"
 
 #define CORNER_RADIUS 8.0f
 const NSInteger SETTINGS_ICON_SIZE = 16;
@@ -271,18 +270,18 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
 }
 
 - (void)showPreferences:(NSString *)selectedTab {
-    RHAccountsViewController *accounts;
-    RHAboutViewController *about;
-    RHWideViewController *wide;
+    TTSettingsDevicesViewController *devices;
+    TTSettingsSupportViewController *support;
+    TTSettingsAboutViewController *about;
     
     if (!appDelegate.preferencesWindowController) {
-        accounts = [[RHAccountsViewController alloc] init];
-        about = [[RHAboutViewController alloc] init];
-        wide = [[RHWideViewController alloc] init];
+        devices = [[TTSettingsDevicesViewController alloc] init];
+        support = [[TTSettingsSupportViewController alloc] init];
+        about = [[TTSettingsAboutViewController alloc] init];
         
-        NSArray *controllers = [NSArray arrayWithObjects:accounts, wide,
+        NSArray *controllers = [NSArray arrayWithObjects:devices,
                                 [RHPreferencesWindowController flexibleSpacePlaceholderController],
-                                about,
+                                support, about,
                                 nil];
         
         appDelegate.preferencesWindowController = [[RHPreferencesWindowController alloc]
@@ -293,17 +292,18 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
     NSViewController<RHPreferencesViewControllerProtocol> * prefVc;
     if ([selectedTab isEqualToString:@"devices"]) {
         prefVc = [appDelegate.preferencesWindowController
-                  viewControllerWithIdentifier:@"RHAccountsViewController"];
-    } else if ([selectedTab isEqualToString:@"about"]) {
-        prefVc = [appDelegate.preferencesWindowController
-                  viewControllerWithIdentifier:@"RHAboutViewController"];
+                  viewControllerWithIdentifier:@"TTSettingsDevicesViewController"];
     } else if ([selectedTab isEqualToString:@"support"]) {
         prefVc = [appDelegate.preferencesWindowController
-                  viewControllerWithIdentifier:@"RHWideViewController"];
+                  viewControllerWithIdentifier:@"TTSettingsSupportViewController"];
+    } else if ([selectedTab isEqualToString:@"about"]) {
+        prefVc = [appDelegate.preferencesWindowController
+                  viewControllerWithIdentifier:@"TTSettingsAboutViewController"];
     }
     if (prefVc) {
         [appDelegate.preferencesWindowController setSelectedViewController:prefVc];
     }
+    [NSApp activateIgnoringOtherApps:YES];
     [appDelegate.preferencesWindowController showWindow:self];
     
 }

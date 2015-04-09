@@ -59,19 +59,15 @@
 		FF5295CB1AD5F59C007DDC02 /* TTDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5295CA1AD5F59C007DDC02 /* TTDevice.m */; };
 		FF5295DA1AD610A6007DDC02 /* RHPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5295D51AD610A6007DDC02 /* RHPreferencesWindow.xib */; };
 		FF5295DB1AD610A6007DDC02 /* RHPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5295D71AD610A6007DDC02 /* RHPreferencesWindowController.m */; };
-		FF5295F41AD610C4007DDC02 /* AboutPreferences.png in Resources */ = {isa = PBXBuildFile; fileRef = FF5295DD1AD610C4007DDC02 /* AboutPreferences.png */; };
-		FF5295F51AD610C4007DDC02 /* AccountsPreferences.png in Resources */ = {isa = PBXBuildFile; fileRef = FF5295DE1AD610C4007DDC02 /* AccountsPreferences.png */; };
-		FF5295FA1AD610C4007DDC02 /* RHAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5295E71AD610C4007DDC02 /* RHAboutViewController.m */; };
-		FF5295FB1AD610C4007DDC02 /* RHAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5295E81AD610C4007DDC02 /* RHAboutViewController.xib */; };
-		FF5295FC1AD610C4007DDC02 /* RHAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5295EA1AD610C4007DDC02 /* RHAccountsViewController.m */; };
-		FF5295FD1AD610C4007DDC02 /* RHAccountsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5295EB1AD610C4007DDC02 /* RHAccountsViewController.xib */; };
-		FF5295FF1AD610C4007DDC02 /* RHPreferencesTester-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF5295EE1AD610C4007DDC02 /* RHPreferencesTester-Info.plist */; };
-		FF5296001AD610C4007DDC02 /* RHWideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5295F11AD610C4007DDC02 /* RHWideViewController.m */; };
-		FF5296011AD610C4007DDC02 /* RHWideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5295F21AD610C4007DDC02 /* RHWideViewController.xib */; };
-		FF5296021AD610C4007DDC02 /* WidePreferences.png in Resources */ = {isa = PBXBuildFile; fileRef = FF5295F31AD610C4007DDC02 /* WidePreferences.png */; };
 		FF5296051AD6142B007DDC02 /* RHPreferencesCustomPlaceholderController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5296041AD6142B007DDC02 /* RHPreferencesCustomPlaceholderController.m */; };
 		FF5296081AD61E74007DDC02 /* NSDate+TimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5296071AD61E74007DDC02 /* NSDate+TimeAgo.m */; };
 		FF52960A1AD61F84007DDC02 /* NSDateTimeAgo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FF5296091AD61F84007DDC02 /* NSDateTimeAgo.bundle */; };
+		FF52960E1AD631D1007DDC02 /* TTSettingsDevicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF52960C1AD631D1007DDC02 /* TTSettingsDevicesViewController.m */; };
+		FF52960F1AD631D1007DDC02 /* TTSettingsDevicesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF52960D1AD631D1007DDC02 /* TTSettingsDevicesViewController.xib */; };
+		FF5296131AD633F4007DDC02 /* TTSettingsSupportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5296111AD633F4007DDC02 /* TTSettingsSupportViewController.m */; };
+		FF5296141AD633F4007DDC02 /* TTSettingsSupportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5296121AD633F4007DDC02 /* TTSettingsSupportViewController.xib */; };
+		FF5296181AD63425007DDC02 /* TTSettingsAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5296161AD63425007DDC02 /* TTSettingsAboutViewController.m */; };
+		FF5296191AD63425007DDC02 /* TTSettingsAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5296171AD63425007DDC02 /* TTSettingsAboutViewController.xib */; };
 		FF66F2A619228DE100031478 /* TTModeAlarmClockOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66F2A519228DE100031478 /* TTModeAlarmClockOptions.m */; };
 		FF66F2A91922D1C100031478 /* TTOptionsDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66F2A81922D1C100031478 /* TTOptionsDetailView.m */; };
 		FF6A37D01A9AEC9F006F3756 /* NSDate+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6A37CF1A9AEC9F006F3756 /* NSDate+Extras.m */; };
@@ -284,25 +280,20 @@
 		FF5295D51AD610A6007DDC02 /* RHPreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RHPreferencesWindow.xib; sourceTree = "<group>"; };
 		FF5295D61AD610A6007DDC02 /* RHPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHPreferencesWindowController.h; sourceTree = "<group>"; };
 		FF5295D71AD610A6007DDC02 /* RHPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHPreferencesWindowController.m; sourceTree = "<group>"; };
-		FF5295DD1AD610C4007DDC02 /* AboutPreferences.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AboutPreferences.png; sourceTree = "<group>"; };
-		FF5295DE1AD610C4007DDC02 /* AccountsPreferences.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AccountsPreferences.png; sourceTree = "<group>"; };
-		FF5295E61AD610C4007DDC02 /* RHAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHAboutViewController.h; sourceTree = "<group>"; };
-		FF5295E71AD610C4007DDC02 /* RHAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHAboutViewController.m; sourceTree = "<group>"; };
-		FF5295E81AD610C4007DDC02 /* RHAboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RHAboutViewController.xib; sourceTree = "<group>"; };
-		FF5295E91AD610C4007DDC02 /* RHAccountsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHAccountsViewController.h; sourceTree = "<group>"; };
-		FF5295EA1AD610C4007DDC02 /* RHAccountsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHAccountsViewController.m; sourceTree = "<group>"; };
-		FF5295EB1AD610C4007DDC02 /* RHAccountsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RHAccountsViewController.xib; sourceTree = "<group>"; };
-		FF5295EE1AD610C4007DDC02 /* RHPreferencesTester-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "RHPreferencesTester-Info.plist"; sourceTree = "<group>"; };
-		FF5295EF1AD610C4007DDC02 /* RHPreferencesTester-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RHPreferencesTester-Prefix.pch"; sourceTree = "<group>"; };
-		FF5295F01AD610C4007DDC02 /* RHWideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHWideViewController.h; sourceTree = "<group>"; };
-		FF5295F11AD610C4007DDC02 /* RHWideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHWideViewController.m; sourceTree = "<group>"; };
-		FF5295F21AD610C4007DDC02 /* RHWideViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RHWideViewController.xib; sourceTree = "<group>"; };
-		FF5295F31AD610C4007DDC02 /* WidePreferences.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WidePreferences.png; sourceTree = "<group>"; };
 		FF5296031AD6142B007DDC02 /* RHPreferencesCustomPlaceholderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHPreferencesCustomPlaceholderController.h; sourceTree = "<group>"; };
 		FF5296041AD6142B007DDC02 /* RHPreferencesCustomPlaceholderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHPreferencesCustomPlaceholderController.m; sourceTree = "<group>"; };
 		FF5296061AD61E74007DDC02 /* NSDate+TimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TimeAgo.h"; sourceTree = "<group>"; };
 		FF5296071AD61E74007DDC02 /* NSDate+TimeAgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TimeAgo.m"; sourceTree = "<group>"; };
 		FF5296091AD61F84007DDC02 /* NSDateTimeAgo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = NSDateTimeAgo.bundle; path = "Turn Touch Remote/Categories/NSDateTimeAgo.bundle"; sourceTree = SOURCE_ROOT; };
+		FF52960B1AD631D1007DDC02 /* TTSettingsDevicesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTSettingsDevicesViewController.h; sourceTree = "<group>"; };
+		FF52960C1AD631D1007DDC02 /* TTSettingsDevicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTSettingsDevicesViewController.m; sourceTree = "<group>"; };
+		FF52960D1AD631D1007DDC02 /* TTSettingsDevicesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTSettingsDevicesViewController.xib; sourceTree = "<group>"; };
+		FF5296101AD633F4007DDC02 /* TTSettingsSupportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTSettingsSupportViewController.h; sourceTree = "<group>"; };
+		FF5296111AD633F4007DDC02 /* TTSettingsSupportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTSettingsSupportViewController.m; sourceTree = "<group>"; };
+		FF5296121AD633F4007DDC02 /* TTSettingsSupportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTSettingsSupportViewController.xib; sourceTree = "<group>"; };
+		FF5296151AD63425007DDC02 /* TTSettingsAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTSettingsAboutViewController.h; sourceTree = "<group>"; };
+		FF5296161AD63425007DDC02 /* TTSettingsAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTSettingsAboutViewController.m; sourceTree = "<group>"; };
+		FF5296171AD63425007DDC02 /* TTSettingsAboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTSettingsAboutViewController.xib; sourceTree = "<group>"; };
 		FF66F2A419228DE100031478 /* TTModeAlarmClockOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeAlarmClockOptions.h; path = "Modes/Alarm Clock/TTModeAlarmClockOptions.h"; sourceTree = "<group>"; };
 		FF66F2A519228DE100031478 /* TTModeAlarmClockOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeAlarmClockOptions.m; path = "Modes/Alarm Clock/TTModeAlarmClockOptions.m"; sourceTree = "<group>"; };
 		FF66F2A71922D1C100031478 /* TTOptionsDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTOptionsDetailView.h; path = "Views/Mode Options/TTOptionsDetailView.h"; sourceTree = "<group>"; };
@@ -671,20 +662,15 @@
 		FF5295DC1AD610C4007DDC02 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				FF5295DD1AD610C4007DDC02 /* AboutPreferences.png */,
-				FF5295DE1AD610C4007DDC02 /* AccountsPreferences.png */,
-				FF5295E61AD610C4007DDC02 /* RHAboutViewController.h */,
-				FF5295E71AD610C4007DDC02 /* RHAboutViewController.m */,
-				FF5295E81AD610C4007DDC02 /* RHAboutViewController.xib */,
-				FF5295E91AD610C4007DDC02 /* RHAccountsViewController.h */,
-				FF5295EA1AD610C4007DDC02 /* RHAccountsViewController.m */,
-				FF5295EB1AD610C4007DDC02 /* RHAccountsViewController.xib */,
-				FF5295EE1AD610C4007DDC02 /* RHPreferencesTester-Info.plist */,
-				FF5295EF1AD610C4007DDC02 /* RHPreferencesTester-Prefix.pch */,
-				FF5295F01AD610C4007DDC02 /* RHWideViewController.h */,
-				FF5295F11AD610C4007DDC02 /* RHWideViewController.m */,
-				FF5295F21AD610C4007DDC02 /* RHWideViewController.xib */,
-				FF5295F31AD610C4007DDC02 /* WidePreferences.png */,
+				FF52960B1AD631D1007DDC02 /* TTSettingsDevicesViewController.h */,
+				FF52960C1AD631D1007DDC02 /* TTSettingsDevicesViewController.m */,
+				FF52960D1AD631D1007DDC02 /* TTSettingsDevicesViewController.xib */,
+				FF5296101AD633F4007DDC02 /* TTSettingsSupportViewController.h */,
+				FF5296111AD633F4007DDC02 /* TTSettingsSupportViewController.m */,
+				FF5296121AD633F4007DDC02 /* TTSettingsSupportViewController.xib */,
+				FF5296151AD63425007DDC02 /* TTSettingsAboutViewController.h */,
+				FF5296161AD63425007DDC02 /* TTSettingsAboutViewController.m */,
+				FF5296171AD63425007DDC02 /* TTSettingsAboutViewController.xib */,
 			);
 			name = Settings;
 			path = Views/Settings;
@@ -1219,29 +1205,28 @@
 				FF2365D1196F0DFA00A4ADBC /* mode_music.png in Resources */,
 				FF27406F1A7C576900C55579 /* itunes_audiobook_icon.png in Resources */,
 				FFAA4F61182D96D60049FFC7 /* heart.png in Resources */,
+				FF5296191AD63425007DDC02 /* TTSettingsAboutViewController.xib in Resources */,
 				FF2365CD196F0DFA00A4ADBC /* mode_fitness.png in Resources */,
 				FF80132B186CF92000955218 /* TTPanel.xib in Resources */,
 				FF8012FB186A7B9000955218 /* vinyl.png in Resources */,
 				FF8A73C61ABA69410023AA53 /* logo - 1024.png in Resources */,
-				FF5295F51AD610C4007DDC02 /* AccountsPreferences.png in Resources */,
 				FF2740731A7C576900C55579 /* itunes_podcast_icon.png in Resources */,
 				FF8C834717AB14B5000166FC /* Credits.rtf in Resources */,
 				FF3641F81A660204003CC03C /* TTModeHueSceneOptions.xib in Resources */,
 				FFA1D4CC1A3B8916003EA0BC /* TTActionHUDView.xib in Resources */,
 				FF8A73BF1ABA692F0023AA53 /* Images.xcassets in Resources */,
 				FFAA4F68182D96D60049FFC7 /* television.png in Resources */,
-				FF5296011AD610C4007DDC02 /* RHWideViewController.xib in Resources */,
 				FFAA4F66182D96D60049FFC7 /* speaker.png in Resources */,
 				FF5295C11AD4D2BE007DDC02 /* title@2x.png in Resources */,
 				FF2740721A7C576900C55579 /* itunes_playlist_icon.png in Resources */,
 				FF8A73CA1ABA69410023AA53 /* logo_256.png in Resources */,
 				FFAA4F65182D96D60049FFC7 /* presentation-chart.png in Resources */,
+				FF52960F1AD631D1007DDC02 /* TTSettingsDevicesViewController.xib in Resources */,
 				FFA1D4DB1A3B89A4003EA0BC /* TTModeHUDView.xib in Resources */,
 				FF8A73CB1ABA69410023AA53 /* logo_512.png in Resources */,
 				FF8C834D17AB14B5000166FC /* MainMenu.xib in Resources */,
 				FF2365D2196F0DFA00A4ADBC /* mode_news.png in Resources */,
 				FF2740791A7C5BC200C55579 /* itunes_itunesu_icon.png in Resources */,
-				FF5295FB1AD610C4007DDC02 /* RHAboutViewController.xib in Resources */,
 				FF936067196DF67500675B7B /* TFDatePicker-Info.plist in Resources */,
 				FF2365D3196F0DFA00A4ADBC /* mode_timer.png in Resources */,
 				FF2EB77D1AA50D4D002549A7 /* itunes_music_icon.png in Resources */,
@@ -1251,7 +1236,6 @@
 				FF93606B196DF8A200675B7B /* clock b&w.png in Resources */,
 				FF2365D5196F0DFA00A4ADBC /* mode_web.png in Resources */,
 				FFAA4F5E182D96D60049FFC7 /* cog.png in Resources */,
-				FF5295F41AD610C4007DDC02 /* AboutPreferences.png in Resources */,
 				FF3641DC1A5F5617003CC03C /* TTModeHueOptions.xib in Resources */,
 				FF913D271924366C005C336F /* TTModeAlarmClock.plist in Resources */,
 				FFAA4F60182D96D60049FFC7 /* filmstrip-3.png in Resources */,
@@ -1261,8 +1245,6 @@
 				FFAA4F63182D96D60049FFC7 /* icon_music.png in Resources */,
 				FF2740751A7C576900C55579 /* originals.png in Resources */,
 				FFAA4F5F182D96D60049FFC7 /* equalizer-1.png in Resources */,
-				FF5295FD1AD610C4007DDC02 /* RHAccountsViewController.xib in Resources */,
-				FF5295FF1AD610C4007DDC02 /* RHPreferencesTester-Info.plist in Resources */,
 				FF2740711A7C576900C55579 /* itunes_library_icon.png in Resources */,
 				FF98A3031868D3F90032CC7A /* imac.png in Resources */,
 				FF2365CC196F0DFA00A4ADBC /* mode_alarm.png in Resources */,
@@ -1278,10 +1260,10 @@
 				FF8012F9186A79A600955218 /* clock.png in Resources */,
 				FF2365CE196F0DFA00A4ADBC /* mode_mac.png in Resources */,
 				FF8012F5186A1AD100955218 /* defaults.plist in Resources */,
-				FF5296021AD610C4007DDC02 /* WidePreferences.png in Resources */,
 				FF936066196DF67500675B7B /* InfoPlist.strings in Resources */,
 				FFAA4F67182D96D60049FFC7 /* sun.png in Resources */,
 				FF98A2EF1867DC320032CC7A /* Turn Touch Remote.entitlements in Resources */,
+				FF5296141AD633F4007DDC02 /* TTSettingsSupportViewController.xib in Resources */,
 				FFAA4F62182D96D60049FFC7 /* icon_movie.png in Resources */,
 				FF936064196DF67500675B7B /* calendar.png in Resources */,
 				FFFF683819D4E2C30081904A /* ideas.txt in Resources */,
@@ -1323,6 +1305,7 @@
 				FF5296081AD61E74007DDC02 /* NSDate+TimeAgo.m in Sources */,
 				FF7305B21A5C9C76009A852D /* DDTTYLogger.m in Sources */,
 				FFF05F3B18F77BE000AC6230 /* TTModeTitleView.m in Sources */,
+				FF5296131AD633F4007DDC02 /* TTSettingsSupportViewController.m in Sources */,
 				FF429AD21919C630007C485E /* TTModeMenuCollectionView.m in Sources */,
 				FFA1D4DA1A3B89A4003EA0BC /* TTModeHUDView.m in Sources */,
 				FF3641F71A660204003CC03C /* TTModeHueSceneOptions.m in Sources */,
@@ -1333,7 +1316,6 @@
 				FFB5FF3E1A671C2600DF617A /* TTModeHueSceneSleepOptions.m in Sources */,
 				FF0E12BB1824286600D49EC7 /* TTModeMap.m in Sources */,
 				FF3641E21A5F6478003CC03C /* TTOptionsDetailViewController.m in Sources */,
-				FF5295FA1AD610C4007DDC02 /* RHAboutViewController.m in Sources */,
 				FF801326186CF90700955218 /* TTBackgroundView.m in Sources */,
 				FF0E12CA18247BAE00D49EC7 /* TTMode.m in Sources */,
 				FF7305B31A5C9C76009A852D /* ContextFilterLogFormatter.m in Sources */,
@@ -1343,9 +1325,9 @@
 				FFAA4F72182D9A5F0049FFC7 /* TTModeNews.m in Sources */,
 				FF0E12CF18247D6100D49EC7 /* TTModeMusic.m in Sources */,
 				FFB653DD18DB9DEA00830B42 /* hid.c in Sources */,
+				FF52960E1AD631D1007DDC02 /* TTSettingsDevicesViewController.m in Sources */,
 				FFB5FF381A671BA200DF617A /* TTModeHueSceneEarlyEveningOptions.m in Sources */,
 				FF7305B41A5C9C76009A852D /* DispatchQueueLogFormatter.m in Sources */,
-				FF5296001AD610C4007DDC02 /* RHWideViewController.m in Sources */,
 				FFA8EAA0190F090300679A4D /* TTModeMenuContainer.m in Sources */,
 				FFD62CCE194F935D0093004D /* TTSegmentedCell.m in Sources */,
 				FF8012F318692D0A00955218 /* TTModeMac.m in Sources */,
@@ -1372,7 +1354,6 @@
 				FF7305AF1A5C9C76009A852D /* DDASLLogger.m in Sources */,
 				FF6A37D01A9AEC9F006F3756 /* NSDate+Extras.m in Sources */,
 				FF7305B01A5C9C76009A852D /* DDFileLogger.m in Sources */,
-				FF5295FC1AD610C4007DDC02 /* RHAccountsViewController.m in Sources */,
 				FF3641E61A5F674A003CC03C /* TTModeHueOptions.m in Sources */,
 				FF0E12D41828560000D49EC7 /* TTModeVideo.m in Sources */,
 				FF3641E91A60BB8B003CC03C /* TTModeHueConnecting.m in Sources */,
@@ -1384,6 +1365,7 @@
 				FFA1D4CD1A3B8916003EA0BC /* TTActionHUDWindow.m in Sources */,
 				FF801338186E5D9700955218 /* TTOptionsActionTitle.m in Sources */,
 				FF98A2ED1867DC320032CC7A /* main.m in Sources */,
+				FF5296181AD63425007DDC02 /* TTSettingsAboutViewController.m in Sources */,
 				FF5295CB1AD5F59C007DDC02 /* TTDevice.m in Sources */,
 				FF3641DF1A5F5734003CC03C /* TTModeHueConnect.m in Sources */,
 				FFAA4F6F182D99640049FFC7 /* TTModeAlarmClock.m in Sources */,
