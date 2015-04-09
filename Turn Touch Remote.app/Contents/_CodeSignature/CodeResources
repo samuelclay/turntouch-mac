@@ -6,11 +6,303 @@
 	<dict>
 		<key>Resources/AppIcon.icns</key>
 		<data>
-		lW8U8rgXQaSz+uX8JGjnDYvwDj8=
+		LaYZpSUpkVgFv2yPteX8HvfTwdU=
 		</data>
 		<key>Resources/Effra_Rg.ttf</key>
 		<data>
 		V7/5eGD8hqn7/snzpPyBZY7Y/iQ=
+		</data>
+		<key>Resources/NSDateTimeAgo.bundle/ar.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			3wcGYI0z2dVGt8lq7lO7QBWAxTo=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/bg.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			44B3s45HmfGzwF6wRsHGKGMMQzw=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/cs.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			tbhRriXBb603+9ebKAUvw0q/9vE=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/da.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			IUFXGhN68m1Cqs01BVOXssLI+kA=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/de.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			INXudJjTqU4Ik3ZoKCOHp7FUZRA=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/en.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			HvU+csjOSKjsHe8Ro5C1GahoWfo=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/es.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			azmgZtbq/eOyOPHVbg6EFcJ1Wa4=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/fi.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			azVwC1Sxirf4F89bhrOKICgA2Uo=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/fr.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			HRCW7VJtKqZOtuWwyxyGUO8ExzE=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/gre.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			9XsnW3/P8BoaZBM0HyifwKar5hI=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/he.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			e8Czxl9NL2sH3dmuTRCgxfFv+Lg=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/hu.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			BMHBwarFlzNDQmHYykAyvFl4Tak=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/is.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			BRGNEP493CB1VgUZBFOD77U4FVY=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/it.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			nTBIpUCOAdtdNvryaejQPwNxetg=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/ja.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			T3eSKOZlNDnTWlnRjDa4Oj4Q710=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/ko.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			oqtb64DL92duaxSnoHHL/yYtuGs=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/lv.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			ZkgF+xCZj/Hdgw7q2IVmvD4oy2w=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/nb.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			+9gZvN62FS5URxkGOfDrvBoJ6BM=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/nl.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			xy8ahIN67NQd1zzQGgovpomLzjI=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/pl.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			MarOgCpxZLwzSucvqEn58wSij80=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/pt-PT.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			eYMYpL2pZaPPCGoSdTp0d+Gx9+E=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/pt.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			kZlAY37yECMxWU22GcwGc0f+gQw=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/ro.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			BoOTd4nHs1gvsXhe19IA61qtWVg=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/ru.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			cV/SPHSkU70H9JiwEPCvip6WTtY=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/sq.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			YognOT2nMaC6lBCGhpVZHBNoFR8=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/sv.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			rozUVrKDyUyDCy/2QxUfqi/pCM4=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/th.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			K5tvcopHoh35FVZnIPXAYhWDjiI=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/tr.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			NiK+hB8xwfXbw+UbNqYnz/f83FU=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/uk.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			yqidiYIoX3cBV4xtjZ8lwlvGc1A=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/vi.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			udcSVuBnAhTcqA+H8quJgqzllqA=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/zh-Hans.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			dWb7S72TvrnJ3v9jisvZNycHZSc=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/zh-Hant.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			AN4bjeIECBBvGD5cPtVCVChb+wI=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/RHPreferencesWindow.nib</key>
+		<data>
+		siI6YDgZ+t6Fw7wqd8r4+Lfcxk8=
 		</data>
 		<key>Resources/TFDatePicker-Info.plist</key>
 		<data>
@@ -22,7 +314,7 @@
 		</data>
 		<key>Resources/TTModeAlarmClock.plist</key>
 		<data>
-		1Wk3GmVqTE6F1F41akde0Al3xJE=
+		FWOUhF+5foI84V6p5rGHn7xyLqw=
 		</data>
 		<key>Resources/TTModeAlarmClockOptions.nib</key>
 		<data>
@@ -80,13 +372,21 @@
 		<data>
 		yh738xoeFHdUFnQ4zu1T066/NwM=
 		</data>
+		<key>Resources/TTSettingsAboutViewController.nib</key>
+		<data>
+		rMHFNZA5dBcGLSCthxTnN6cV8G0=
+		</data>
+		<key>Resources/TTSettingsDevicesViewController.nib</key>
+		<data>
+		w5/APgGlDjAB1xQemW1loUOb/zE=
+		</data>
+		<key>Resources/TTSettingsSupportViewController.nib</key>
+		<data>
+		KANJogOanVchMnynMSXwRe2qRlc=
+		</data>
 		<key>Resources/Turn Touch Remote.entitlements</key>
 		<data>
 		s3WSLfTKCP8Xv6f0V16/RZ/4paI=
-		</data>
-		<key>Resources/Turn Touch title.png</key>
-		<data>
-		FzMb7wcGO4g6+ncX7WtQPtyHDU4=
 		</data>
 		<key>Resources/calendar.tiff</key>
 		<data>
@@ -106,7 +406,7 @@
 		</data>
 		<key>Resources/defaults.plist</key>
 		<data>
-		jGUmPHSmnDR1yE4vL243HzpPz7g=
+		y0IbuyJj6tiP2wZKfxUqlsE8Bt0=
 		</data>
 		<key>Resources/en.lproj/Credits.rtf</key>
 		<dict>
@@ -130,7 +430,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			evvNWsC3HBiRkg/MlAwMKGRuwxs=
+			c8unYN7FoTAW1Yryd4xr20PdCAk=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -291,6 +591,10 @@
 		<data>
 		aBVq9/lSDg+61r5Iri4EMN9NWos=
 		</data>
+		<key>Resources/settings.tiff</key>
+		<data>
+		Ge9E/yI7/919gWZlCd9m4smVMN0=
+		</data>
 		<key>Resources/speaker.png</key>
 		<data>
 		nH6Sh44q0RNn5Z+iJUDo9S1U/dg=
@@ -302,6 +606,10 @@
 		<key>Resources/television.png</key>
 		<data>
 		cKKlogCi8rhlB9du6xdcOlTUis8=
+		</data>
+		<key>Resources/title.tiff</key>
+		<data>
+		RS8JifFJy0QAP9vrCrX0oJTe22w=
 		</data>
 		<key>Resources/vinyl.png</key>
 		<data>
@@ -312,11 +620,303 @@
 	<dict>
 		<key>Resources/AppIcon.icns</key>
 		<data>
-		lW8U8rgXQaSz+uX8JGjnDYvwDj8=
+		LaYZpSUpkVgFv2yPteX8HvfTwdU=
 		</data>
 		<key>Resources/Effra_Rg.ttf</key>
 		<data>
 		V7/5eGD8hqn7/snzpPyBZY7Y/iQ=
+		</data>
+		<key>Resources/NSDateTimeAgo.bundle/ar.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			3wcGYI0z2dVGt8lq7lO7QBWAxTo=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/bg.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			44B3s45HmfGzwF6wRsHGKGMMQzw=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/cs.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			tbhRriXBb603+9ebKAUvw0q/9vE=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/da.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			IUFXGhN68m1Cqs01BVOXssLI+kA=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/de.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			INXudJjTqU4Ik3ZoKCOHp7FUZRA=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/en.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			HvU+csjOSKjsHe8Ro5C1GahoWfo=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/es.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			azmgZtbq/eOyOPHVbg6EFcJ1Wa4=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/fi.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			azVwC1Sxirf4F89bhrOKICgA2Uo=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/fr.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			HRCW7VJtKqZOtuWwyxyGUO8ExzE=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/gre.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			9XsnW3/P8BoaZBM0HyifwKar5hI=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/he.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			e8Czxl9NL2sH3dmuTRCgxfFv+Lg=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/hu.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			BMHBwarFlzNDQmHYykAyvFl4Tak=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/is.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			BRGNEP493CB1VgUZBFOD77U4FVY=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/it.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			nTBIpUCOAdtdNvryaejQPwNxetg=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/ja.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			T3eSKOZlNDnTWlnRjDa4Oj4Q710=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/ko.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			oqtb64DL92duaxSnoHHL/yYtuGs=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/lv.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			ZkgF+xCZj/Hdgw7q2IVmvD4oy2w=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/nb.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			+9gZvN62FS5URxkGOfDrvBoJ6BM=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/nl.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			xy8ahIN67NQd1zzQGgovpomLzjI=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/pl.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			MarOgCpxZLwzSucvqEn58wSij80=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/pt-PT.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			eYMYpL2pZaPPCGoSdTp0d+Gx9+E=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/pt.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			kZlAY37yECMxWU22GcwGc0f+gQw=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/ro.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			BoOTd4nHs1gvsXhe19IA61qtWVg=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/ru.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			cV/SPHSkU70H9JiwEPCvip6WTtY=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/sq.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			YognOT2nMaC6lBCGhpVZHBNoFR8=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/sv.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			rozUVrKDyUyDCy/2QxUfqi/pCM4=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/th.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			K5tvcopHoh35FVZnIPXAYhWDjiI=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/tr.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			NiK+hB8xwfXbw+UbNqYnz/f83FU=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/uk.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			yqidiYIoX3cBV4xtjZ8lwlvGc1A=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/vi.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			udcSVuBnAhTcqA+H8quJgqzllqA=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/zh-Hans.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			dWb7S72TvrnJ3v9jisvZNycHZSc=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/NSDateTimeAgo.bundle/zh-Hant.lproj/NSDateTimeAgo.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			AN4bjeIECBBvGD5cPtVCVChb+wI=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/RHPreferencesWindow.nib</key>
+		<data>
+		siI6YDgZ+t6Fw7wqd8r4+Lfcxk8=
 		</data>
 		<key>Resources/TFDatePicker-Info.plist</key>
 		<data>
@@ -328,7 +928,7 @@
 		</data>
 		<key>Resources/TTModeAlarmClock.plist</key>
 		<data>
-		1Wk3GmVqTE6F1F41akde0Al3xJE=
+		FWOUhF+5foI84V6p5rGHn7xyLqw=
 		</data>
 		<key>Resources/TTModeAlarmClockOptions.nib</key>
 		<data>
@@ -386,13 +986,21 @@
 		<data>
 		yh738xoeFHdUFnQ4zu1T066/NwM=
 		</data>
+		<key>Resources/TTSettingsAboutViewController.nib</key>
+		<data>
+		rMHFNZA5dBcGLSCthxTnN6cV8G0=
+		</data>
+		<key>Resources/TTSettingsDevicesViewController.nib</key>
+		<data>
+		w5/APgGlDjAB1xQemW1loUOb/zE=
+		</data>
+		<key>Resources/TTSettingsSupportViewController.nib</key>
+		<data>
+		KANJogOanVchMnynMSXwRe2qRlc=
+		</data>
 		<key>Resources/Turn Touch Remote.entitlements</key>
 		<data>
 		s3WSLfTKCP8Xv6f0V16/RZ/4paI=
-		</data>
-		<key>Resources/Turn Touch title.png</key>
-		<data>
-		FzMb7wcGO4g6+ncX7WtQPtyHDU4=
 		</data>
 		<key>Resources/calendar.tiff</key>
 		<data>
@@ -412,7 +1020,7 @@
 		</data>
 		<key>Resources/defaults.plist</key>
 		<data>
-		jGUmPHSmnDR1yE4vL243HzpPz7g=
+		y0IbuyJj6tiP2wZKfxUqlsE8Bt0=
 		</data>
 		<key>Resources/en.lproj/Credits.rtf</key>
 		<dict>
@@ -436,7 +1044,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			evvNWsC3HBiRkg/MlAwMKGRuwxs=
+			c8unYN7FoTAW1Yryd4xr20PdCAk=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -597,6 +1205,10 @@
 		<data>
 		aBVq9/lSDg+61r5Iri4EMN9NWos=
 		</data>
+		<key>Resources/settings.tiff</key>
+		<data>
+		Ge9E/yI7/919gWZlCd9m4smVMN0=
+		</data>
 		<key>Resources/speaker.png</key>
 		<data>
 		nH6Sh44q0RNn5Z+iJUDo9S1U/dg=
@@ -608,6 +1220,10 @@
 		<key>Resources/television.png</key>
 		<data>
 		cKKlogCi8rhlB9du6xdcOlTUis8=
+		</data>
+		<key>Resources/title.tiff</key>
+		<data>
+		RS8JifFJy0QAP9vrCrX0oJTe22w=
 		</data>
 		<key>Resources/vinyl.png</key>
 		<data>

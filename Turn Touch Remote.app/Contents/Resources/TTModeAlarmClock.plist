@@ -9,7 +9,7 @@
 	<key>alarmDuration</key>
 	<integer>90</integer>
 	<key>alarmVolume</key>
-	<integer>50</integer>
+	<integer>30</integer>
 	<key>repeatAlarmTime</key>
 	<integer>84</integer>
 	<key>repeatAlarmDays</key>
