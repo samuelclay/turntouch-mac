@@ -15,6 +15,7 @@
 @property (nonatomic) CBUUID *uuid;
 @property (nonatomic) CBPeripheral *peripheral;
 @property (nonatomic) NSNumber *batteryPct;
+@property (nonatomic) NSDate *lastActionDate;
 
 - (id)initWithPeripheral:(CBPeripheral *)peripheral;
 

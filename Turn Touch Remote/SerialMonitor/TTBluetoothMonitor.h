@@ -33,6 +33,7 @@ typedef enum {
 }
 
 @property (nonatomic) NSNumber *batteryPct;
+@property (nonatomic) NSDate *lastActionDate;
 @property (nonatomic) NSMutableArray *foundDevices;
 @property (nonatomic) NSMutableArray *connectedDevices;
 @property (nonatomic) NSNumber *connectedDevicesCount;

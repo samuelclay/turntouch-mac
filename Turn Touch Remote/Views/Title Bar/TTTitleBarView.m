@@ -9,6 +9,12 @@
 #import "TTTitleBarView.h"
 #import "TTBluetoothMonitor.h"
 #import "TTDevice.h"
+#import "RHPreferences.h"
+#import "NSDate+TimeAgo.h"
+
+#import "RHAboutViewController.h"
+#import "RHAccountsViewController.h"
+#import "RHWideViewController.h"
 
 #define CORNER_RADIUS 8.0f
 const NSInteger SETTINGS_ICON_SIZE = 16;
@@ -24,7 +30,7 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
         [title setSize:NSMakeSize(100, 12)];
         
         settingsButton = [[TTSettingsButton alloc] initWithFrame:NSZeroRect pullsDown:YES];
-        [self buildSettingsMenu];
+        [self buildSettingsMenu:YES];
         [settingsButton setTarget:self];
         [settingsButton setMenu:settingsMenu];
         [self addSubview:settingsButton];
@@ -40,6 +46,9 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
                                    forKeyPath:@"batteryPct"
                                       options:0 context:nil];
     [appDelegate.bluetoothMonitor addObserver:self
+                                   forKeyPath:@"lastActionDate"
+                                      options:0 context:nil];
+    [appDelegate.bluetoothMonitor addObserver:self
                                    forKeyPath:@"connectedDevicesCount"
                                       options:0 context:nil];
 }
@@ -49,10 +58,11 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
                         change:(NSDictionary *)change
                        context:(void *)context {
     if ([keyPath isEqual:NSStringFromSelector(@selector(batteryPct))]) {
-//        [self setNeedsDisplay:YES];
-        [self buildSettingsMenu];
+        [self buildSettingsMenu:NO];
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(lastActionDate))]) {
+        [self buildSettingsMenu:NO];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(connectedDevicesCount))]) {
-        [self buildSettingsMenu];
+        [self buildSettingsMenu:NO];
     }
 }
 
@@ -82,7 +92,7 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
 
 - (void)drawSettings {
     NSPoint settingsPoint = NSMakePoint(NSMaxX(self.bounds) - SETTINGS_ICON_SIZE*3,
-                                        NSMidY(self.bounds) - SETTINGS_ICON_SIZE/2 + 1);
+                                        NSMidY(self.bounds) - SETTINGS_ICON_SIZE/2);
     [settingsButton setFrame:NSMakeRect(settingsPoint.x, settingsPoint.y,
                                         SETTINGS_ICON_SIZE*3, SETTINGS_ICON_SIZE)];
 }
@@ -145,54 +155,85 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
 
 #pragma mark - Settings menu
 
-- (void)buildSettingsMenu {
-    NSLog(@"build settings menu");
+- (void)buildSettingsMenu:(BOOL)force {
+    if (!force && !isMenuVisible) return;
+
+    NSMenuItem *menuItem;
+    
     if (!settingsMenu) {
         settingsMenu = [[NSMenu alloc] initWithTitle:@"Menu"];
         [settingsMenu setDelegate:self];
-        [settingsMenu setAutoenablesItems:YES];
+        [settingsMenu setAutoenablesItems:NO];
     } else {
         [settingsMenu removeAllItems];
     }
 
     NSArray *connectedDevices = appDelegate.bluetoothMonitor.connectedDevices;
     for (TTDevice *device in connectedDevices) {
-        NSString *batteryLevel = [NSString stringWithFormat:@"Battery level: %d%%", (int)device.batteryPct.intValue];
+        NSString *batteryLevel = [NSString stringWithFormat:@"Battery level: %d%%",
+                                  (int)device.batteryPct.intValue];
+        menuItem = [[NSMenuItem alloc] initWithTitle:batteryLevel action:@selector(openDevicesDialog:) keyEquivalent:@""];
+        [menuItem setTarget:self];
         if (device.batteryPct.intValue <= 0) {
-            batteryLevel = @"Remote is connecting...";
+            [menuItem setTitle:@"Connecting to remote..."];
+            [menuItem setEnabled:NO];
         }
-        NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:batteryLevel action:nil keyEquivalent:@""];
         [settingsMenu addItem:menuItem];
 
-        NSMenuItem *menuItemSeparator = [NSMenuItem separatorItem];
-        [settingsMenu addItem:menuItemSeparator];
+        
+        NSString *timeAgo = [device.lastActionDate timeAgo];
+        NSString *lastAction = [NSString stringWithFormat:@"Last action: %@",
+                                timeAgo];
+        if (!timeAgo) {
+            lastAction = @"Counting is difficult";
+        }
+        menuItem = [[NSMenuItem alloc] initWithTitle:lastAction action:nil keyEquivalent:@""];
+        [menuItem setEnabled:NO];
+        [settingsMenu addItem:menuItem];
+
+        [settingsMenu addItem:[NSMenuItem separatorItem]];
+    }
+    if (!connectedDevices.count) {
+        menuItem = [[NSMenuItem alloc] initWithTitle:@"No remotes connected" action:nil keyEquivalent:@""];
+        [menuItem setEnabled:NO];
+        [settingsMenu addItem:menuItem];
+        
+        [settingsMenu addItem:[NSMenuItem separatorItem]];
     }
     
-    NSMenuItem *menuItemSettings = [[NSMenuItem alloc] initWithTitle:@"Settings..."
-                                                              action:@selector(openSettingsDialog:)
-                                                       keyEquivalent:@""];
-    [menuItemSettings setEnabled:YES];
-    [menuItemSettings setTarget:self];
-    [settingsMenu addItem:menuItemSettings];
+    menuItem = [[NSMenuItem alloc] initWithTitle:@"Settings..."
+                                          action:@selector(openSettingsDialog:)
+                                   keyEquivalent:@""];
+    [menuItem setTarget:self];
+    [settingsMenu addItem:menuItem];
     
-    NSMenuItem *menuItemSeparator = [NSMenuItem separatorItem];
-    [settingsMenu addItem:menuItemSeparator];
-    NSMenuItem *menuItemAbout = [[NSMenuItem alloc] initWithTitle:@"About Turn Touch"
-                                                           action:@selector(openAboutDialog:)
-                                                    keyEquivalent:@""];
-    [menuItemAbout setEnabled:YES];
-    [menuItemAbout setTarget:self];
-    [settingsMenu addItem:menuItemAbout];
+    menuItem = [[NSMenuItem alloc] initWithTitle:@"Submit an idea"
+                                          action:@selector(openSupportDialog:)
+                                   keyEquivalent:@""];
+    [menuItem setTarget:self];
+    [settingsMenu addItem:menuItem];
+
+    menuItem = [[NSMenuItem alloc] initWithTitle:@"Contact support"
+                                          action:@selector(openSupportDialog:)
+                                   keyEquivalent:@""];
+    [menuItem setTarget:self];
+    [settingsMenu addItem:menuItem];
     
+    [settingsMenu addItem:[NSMenuItem separatorItem]];
     
-    NSMenuItem *menuItemQuit = [[NSMenuItem alloc] initWithTitle:@"Quit Turn Touch"
-                                                          action:@selector(quit:)
-                                                   keyEquivalent:@""];
-    [menuItemQuit setEnabled:YES];
-    [menuItemQuit setTarget:self];
-    [settingsMenu addItem:menuItemQuit];
+    menuItem = [[NSMenuItem alloc] initWithTitle:@"About Turn Touch"
+                                          action:@selector(openAboutDialog:)
+                                   keyEquivalent:@""];
+    [menuItem setTarget:self];
+    [settingsMenu addItem:menuItem];
     
-    NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:@"" action:nil keyEquivalent:@""];
+    menuItem = [[NSMenuItem alloc] initWithTitle:@"Quit Turn Touch Remote"
+                                          action:@selector(quit:)
+                                   keyEquivalent:@""];
+    [menuItem setTarget:self];
+    [settingsMenu addItem:menuItem];
+    
+    menuItem = [[NSMenuItem alloc] initWithTitle:@"" action:nil keyEquivalent:@""];
     NSImage *image = [NSImage imageNamed:@"settings"];
     [image setSize:NSMakeSize(SETTINGS_ICON_SIZE, SETTINGS_ICON_SIZE)];
     [menuItem setImage:image];
@@ -201,15 +242,70 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
 
 #pragma mark - Menu Delegate
 
+- (void)menuWillOpen:(NSMenu *)menu {
+    isMenuVisible = YES;
+    [self buildSettingsMenu:YES];
+}
+
+- (void)menuDidClose:(NSMenu *)menu {
+    isMenuVisible = NO;
+}
 - (void)openSettingsDialog:(id)sender {
-    NSLog(@"Open settings");
+    [self showPreferences:@"settings"];
 }
 
-- (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
-    return YES;
+- (void)openAboutDialog:(id)sender {
+    [self showPreferences:@"about"];
 }
 
-- (BOOL)validateToolbarItem:(NSToolbarItem *)theItem {
-    return YES;
+- (void)openSupportDialog:(id)sender {
+    [self showPreferences:@"support"];
 }
+
+- (void)openDevicesDialog:(id)sender {
+    [self showPreferences:@"devices"];
+}
+
+- (void)quit:(id)sender {
+    [[NSApplication sharedApplication] terminate:sender];
+}
+
+- (void)showPreferences:(NSString *)selectedTab {
+    RHAccountsViewController *accounts;
+    RHAboutViewController *about;
+    RHWideViewController *wide;
+    
+    if (!appDelegate.preferencesWindowController) {
+        accounts = [[RHAccountsViewController alloc] init];
+        about = [[RHAboutViewController alloc] init];
+        wide = [[RHWideViewController alloc] init];
+        
+        NSArray *controllers = [NSArray arrayWithObjects:accounts, wide,
+                                [RHPreferencesWindowController flexibleSpacePlaceholderController],
+                                about,
+                                nil];
+        
+        appDelegate.preferencesWindowController = [[RHPreferencesWindowController alloc]
+                                                   initWithViewControllers:controllers
+                                                   andTitle:@"Turn Touch Settings"];
+    }
+
+    NSViewController<RHPreferencesViewControllerProtocol> * prefVc;
+    if ([selectedTab isEqualToString:@"devices"]) {
+        prefVc = [appDelegate.preferencesWindowController
+                  viewControllerWithIdentifier:@"RHAccountsViewController"];
+    } else if ([selectedTab isEqualToString:@"about"]) {
+        prefVc = [appDelegate.preferencesWindowController
+                  viewControllerWithIdentifier:@"RHAboutViewController"];
+    } else if ([selectedTab isEqualToString:@"support"]) {
+        prefVc = [appDelegate.preferencesWindowController
+                  viewControllerWithIdentifier:@"RHWideViewController"];
+    }
+    if (prefVc) {
+        [appDelegate.preferencesWindowController setSelectedViewController:prefVc];
+    }
+    [appDelegate.preferencesWindowController showWindow:self];
+    
+}
+
 @end

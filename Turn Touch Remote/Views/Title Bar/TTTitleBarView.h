@@ -17,7 +17,7 @@
     TTAppDelegate *appDelegate;
     NSImage *title;
     TTSettingsButton *settingsButton;
-    
+    BOOL isMenuVisible;
     NSMenu *settingsMenu;
     NSDictionary *batteryAttributes;
 }

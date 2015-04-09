@@ -26,6 +26,7 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
 @implementation TTBluetoothMonitor
 
 @synthesize batteryPct;
+@synthesize lastActionDate;
 @synthesize foundDevices;
 @synthesize connectedDevices;
 @synthesize connectedDevicesCount;
@@ -37,6 +38,7 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
         appDelegate = (TTAppDelegate *)[NSApp delegate];
         buttonTimer = [[TTButtonTimer alloc] init];
         batteryPct = [[NSNumber alloc] init];
+        lastActionDate = [NSDate date];
         connectedDevicesCount = [[NSNumber alloc] init];
         connectedDevices = [[NSMutableArray alloc] init];
         foundDevices = [[NSMutableArray alloc] init];
@@ -95,8 +97,8 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
 
 
 - (void) terminate {
-    for (CBPeripheral *device in connectedDevices) {
-        [manager cancelPeripheralConnection:device];
+    for (TTDevice *device in connectedDevices) {
+        [manager cancelPeripheralConnection:device.peripheral];
     }
 }
 
@@ -304,6 +306,12 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
         if( (characteristic.value)  || !error ) {
 //            NSLog(@"Characteristic value: %@", [characteristic.value hexadecimalString]);
             [buttonTimer readBluetoothData:characteristic.value];
+            for (TTDevice *device in connectedDevices) {
+                if (device.peripheral == peripheral) {
+                    device.lastActionDate = [NSDate date];
+                }
+            }
+            [self setValue:[NSDate date] forKey:@"lastActionDate"];
         } else {
             NSLog(@"Characteristic error: %@ / %@", characteristic.value, error);
         }
@@ -314,11 +322,13 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
             NSLog(@"Battery level: %d%%", value);
             for (TTDevice *device in connectedDevices) {
                 if (device.peripheral == peripheral) {
+                    device.lastActionDate = [NSDate date];
                     device.batteryPct = @(value);
                     break;
                 }
             }
             [self setValue:@(value) forKey:@"batteryPct"];
+            [self setValue:[NSDate date] forKey:@"lastActionDate"];
         }
     } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_INTERVAL_MIN_UUID]]) {
         [characteristics setObject:characteristic forKey:@"interval_min"];
