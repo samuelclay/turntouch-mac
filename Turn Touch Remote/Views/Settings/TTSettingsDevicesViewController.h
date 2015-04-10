@@ -8,8 +8,18 @@
 
 #import <Cocoa/Cocoa.h>
 #import "RHPreferences.h"
+#import "TTAppDelegate.h"
 
 @interface TTSettingsDevicesViewController : NSViewController
-<RHPreferencesViewControllerProtocol>
+<RHPreferencesViewControllerProtocol, NSTableViewDataSource, NSTableViewDelegate> {
+    TTAppDelegate *appDelegate;
+}
+
+@property (nonatomic) IBOutlet NSTableView *devicesTable;
+@property (nonatomic) IBOutlet NSSlider *latencySlider;
+@property (nonatomic) IBOutlet NSSlider *modeChangeSlider;
+
+- (IBAction)slideLatency:(id)sender;
+- (IBAction)slideModeChange:(id)sender;
 
 @end

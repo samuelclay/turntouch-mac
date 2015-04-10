@@ -184,9 +184,12 @@ const double MODE_CHANGE_DURATION = 0.5f;
 //    NSLog(@"Activating button: %d", activeModeDirection);
     [appDelegate.modeMap setActiveModeDirection:direction];
     [appDelegate.hudController holdToastActiveAction:direction];
+    NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+    CGFloat deviceInterval = [[preferences objectForKey:@"TT:firmware:interval_max"] integerValue] / 1000.f;
+    CGFloat buttonHoldTimeInterval = MAX(MODE_CHANGE_DURATION * 0.3f, deviceInterval * 1.05f);
     
     if (direction != NO_DIRECTION) {
-        NSDate *fireDate = [NSDate dateWithTimeIntervalSinceNow:MODE_CHANGE_DURATION/3];
+        NSDate *fireDate = [NSDate dateWithTimeIntervalSinceNow:buttonHoldTimeInterval];
         activeModeTimer = [[NSTimer alloc]
                            initWithFireDate:fireDate
                            interval:0

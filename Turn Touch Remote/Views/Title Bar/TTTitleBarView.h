@@ -22,4 +22,6 @@
     NSDictionary *batteryAttributes;
 }
 
+- (void)showPreferences:(NSString *)selectedTab;
+
 @end

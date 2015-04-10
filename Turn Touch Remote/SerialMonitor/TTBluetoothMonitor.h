@@ -38,9 +38,10 @@ typedef enum {
 @property (nonatomic) NSMutableArray *connectedDevices;
 @property (nonatomic) NSNumber *connectedDevicesCount;
 
-- (void) startScan;
-- (void) stopScan;
-- (BOOL) isLECapableHardware;
-- (void) terminate;
+- (void)startScan;
+- (void)stopScan;
+- (BOOL)isLECapableHardware;
+- (void)terminate;
+- (void)setDeviceLatency:(NSInteger)latency;
 
 @end

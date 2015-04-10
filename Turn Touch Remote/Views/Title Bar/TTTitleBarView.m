@@ -66,7 +66,9 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
 }
 
 - (void)dealloc {
-
+    [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"batteryPct"];
+    [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"lastActionDate"];
+    [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"connectedDevicesCount"];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
@@ -205,12 +207,6 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
                                    keyEquivalent:@""];
     [menuItem setTarget:self];
     [settingsMenu addItem:menuItem];
-    
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Submit an idea"
-                                          action:@selector(openSupportDialog:)
-                                   keyEquivalent:@""];
-    [menuItem setTarget:self];
-    [settingsMenu addItem:menuItem];
 
     menuItem = [[NSMenuItem alloc] initWithTitle:@"Contact support"
                                           action:@selector(openSupportDialog:)
@@ -218,13 +214,13 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
     [menuItem setTarget:self];
     [settingsMenu addItem:menuItem];
     
-    [settingsMenu addItem:[NSMenuItem separatorItem]];
-    
     menuItem = [[NSMenuItem alloc] initWithTitle:@"About Turn Touch"
                                           action:@selector(openAboutDialog:)
                                    keyEquivalent:@""];
     [menuItem setTarget:self];
     [settingsMenu addItem:menuItem];
+
+    [settingsMenu addItem:[NSMenuItem separatorItem]];
     
     menuItem = [[NSMenuItem alloc] initWithTitle:@"Quit Turn Touch Remote"
                                           action:@selector(quit:)
