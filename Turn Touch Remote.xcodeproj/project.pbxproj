@@ -176,6 +176,7 @@
 		FFBC625F1A9D699D0032AD24 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFBC625E1A9D699D0032AD24 /* AVFoundation.framework */; };
 		FFD62CCE194F935D0093004D /* TTSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD62CCD194F935D0093004D /* TTSegmentedCell.m */; };
 		FFD62CD11950EE770093004D /* TTSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD62CD01950EE770093004D /* TTSegmentedControl.m */; };
+		FFE0B3D01AD70DC600FC6080 /* logo_with_title.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE0B3CF1AD70DC600FC6080 /* logo_with_title.png */; };
 		FFE2D4741A451BEA00DDD413 /* TTBluetoothMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE2D4731A451BEA00DDD413 /* TTBluetoothMonitor.m */; };
 		FFE2D4761A451FA200DDD413 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFE2D4751A451FA200DDD413 /* CoreBluetooth.framework */; };
 		FFE2D4791A46404500DDD413 /* NSData+Conversion.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE2D4781A46404500DDD413 /* NSData+Conversion.m */; };
@@ -467,6 +468,7 @@
 		FFD62CCD194F935D0093004D /* TTSegmentedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSegmentedCell.m; path = "Views/Mode Options/TTSegmentedCell.m"; sourceTree = "<group>"; };
 		FFD62CCF1950EE770093004D /* TTSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSegmentedControl.h; path = "Views/Mode Options/TTSegmentedControl.h"; sourceTree = "<group>"; };
 		FFD62CD01950EE770093004D /* TTSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSegmentedControl.m; path = "Views/Mode Options/TTSegmentedControl.m"; sourceTree = "<group>"; };
+		FFE0B3CF1AD70DC600FC6080 /* logo_with_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_with_title.png; sourceTree = "<group>"; };
 		FFE2D4721A451BEA00DDD413 /* TTBluetoothMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTBluetoothMonitor.h; path = SerialMonitor/TTBluetoothMonitor.h; sourceTree = "<group>"; };
 		FFE2D4731A451BEA00DDD413 /* TTBluetoothMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTBluetoothMonitor.m; path = SerialMonitor/TTBluetoothMonitor.m; sourceTree = "<group>"; };
 		FFE2D4751A451FA200DDD413 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
@@ -1118,6 +1120,7 @@
 				FF8A73C01ABA69410023AA53 /* logo - 1024.png */,
 				FF5295BE1AD4D2BE007DDC02 /* title.png */,
 				FF5295BF1AD4D2BE007DDC02 /* title@2x.png */,
+				FFE0B3CF1AD70DC600FC6080 /* logo_with_title.png */,
 			);
 			path = logo;
 			sourceTree = "<group>";
@@ -1212,6 +1215,7 @@
 				FF8A73C61ABA69410023AA53 /* logo - 1024.png in Resources */,
 				FF2740731A7C576900C55579 /* itunes_podcast_icon.png in Resources */,
 				FF8C834717AB14B5000166FC /* Credits.rtf in Resources */,
+				FFE0B3D01AD70DC600FC6080 /* logo_with_title.png in Resources */,
 				FF3641F81A660204003CC03C /* TTModeHueSceneOptions.xib in Resources */,
 				FFA1D4CC1A3B8916003EA0BC /* TTActionHUDView.xib in Resources */,
 				FF8A73BF1ABA692F0023AA53 /* Images.xcassets in Resources */,

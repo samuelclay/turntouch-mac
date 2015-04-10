@@ -407,6 +407,7 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
     if (originalSystemVolume) {
         [TTModeMac setVolume:originalSystemVolume];
     }
+    [self activateTimers];
 }
 
 - (void)fadeVolumeIn {
