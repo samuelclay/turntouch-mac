@@ -20,6 +20,7 @@
 #define DEVICE_CHARACTERISTIC_INTERVAL_MAX_UUID     @"50a71e79-f950-4973-9cbd-1ce5439603be"
 #define DEVICE_CHARACTERISTIC_CONN_LATENCY_UUID     @"3b6ef6e7-d9dc-4010-960a-a48bbe114935"
 #define DEVICE_CHARACTERISTIC_CONN_TIMEOUT_UUID     @"c6d87b9e-70c3-47ff-a534-e1ceb2bdf435"
+#define DEVICE_CHARACTERISTIC_MODE_DURATION_UUID    @"bc382b21-1617-48cc-9e93-f4104561f71d"
 
 const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
 
@@ -206,8 +207,7 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
         if ([service.UUID isEqual:[CBUUID UUIDWithString:DEVICE_FIRMWARE_SETTINGS_SERVICE_UUID]]) {
             [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_INTERVAL_MIN_UUID],
                                                   [CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_INTERVAL_MAX_UUID],
-                                                  [CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_CONN_LATENCY_UUID],
-                                                  [CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_CONN_TIMEOUT_UUID]]
+                                                  [CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_MODE_DURATION_UUID]]
                                      forService:service];
         }
         
@@ -247,12 +247,15 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
             if ([aChar.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_INTERVAL_MAX_UUID]]) {
                 [peripheral readValueForCharacteristic:aChar];
             }
-            if ([aChar.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_CONN_LATENCY_UUID]]) {
+            if ([aChar.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_MODE_DURATION_UUID]]) {
                 [peripheral readValueForCharacteristic:aChar];
             }
-            if ([aChar.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_CONN_TIMEOUT_UUID]]) {
-                [peripheral readValueForCharacteristic:aChar];
-            }
+//            if ([aChar.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_CONN_LATENCY_UUID]]) {
+//                [peripheral readValueForCharacteristic:aChar];
+//            }
+//            if ([aChar.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_CONN_TIMEOUT_UUID]]) {
+//                [peripheral readValueForCharacteristic:aChar];
+//            }
         }
     }
     
@@ -338,12 +341,12 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
     } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_INTERVAL_MAX_UUID]]) {
         [characteristics setObject:characteristic forKey:@"interval_max"];
         [self device:peripheral sentFirmwareSettings:FIRMWARE_INTERVAL_MAX];
-    } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_CONN_LATENCY_UUID]]) {
-        [characteristics setObject:characteristic forKey:@"conn_latency"];
-        [self device:peripheral sentFirmwareSettings:FIRMWARE_CONN_LATENCY];
-    } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_CONN_TIMEOUT_UUID]]) {
-        [characteristics setObject:characteristic forKey:@"conn_timeout"];
-        [self device:peripheral sentFirmwareSettings:FIRMWARE_CONN_TIMEOUT];
+//    } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_CONN_LATENCY_UUID]]) {
+//        [characteristics setObject:characteristic forKey:@"conn_latency"];
+//        [self device:peripheral sentFirmwareSettings:FIRMWARE_CONN_LATENCY];
+//    } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_CONN_TIMEOUT_UUID]]) {
+//        [characteristics setObject:characteristic forKey:@"conn_timeout"];
+//        [self device:peripheral sentFirmwareSettings:FIRMWARE_CONN_TIMEOUT];
     } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:CBUUIDDeviceNameString]]) {
 //        NSString * deviceName = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
 //        NSLog(@"Device Name = %@", deviceName);
@@ -383,8 +386,7 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
         if ([service.UUID isEqual:[CBUUID UUIDWithString:DEVICE_FIRMWARE_SETTINGS_SERVICE_UUID]]) {
             [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_INTERVAL_MIN_UUID],
                                                   [CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_INTERVAL_MAX_UUID],
-                                                  [CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_CONN_LATENCY_UUID],
-                                                  [CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_CONN_TIMEOUT_UUID]]
+                                                  [CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_MODE_DURATION_UUID]]
                                      forService:service];
         }
     }
@@ -397,6 +399,7 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
     uint16_t firmwareIntervalMax = [[prefs objectForKey:@"TT:firmware:interval_max"] intValue];
     uint16_t firmwareConnLatency = [[prefs objectForKey:@"TT:firmware:conn_latency"] intValue];
     uint16_t firmwareConnTimeout = [[prefs objectForKey:@"TT:firmware:conn_timeout"] intValue];
+    uint16_t firmwareModeDuration = [[prefs objectForKey:@"TT:firmware:mode_duration"] intValue];
     
     if (setting == FIRMWARE_INTERVAL_MIN) {
         CBCharacteristic *characteristic = [self characteristicInPeripheral:peripheral
@@ -450,6 +453,19 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
             [peripheral writeValue:data forCharacteristic:characteristic
                               type:CBCharacteristicWriteWithResponse];
         }
+    } else if (setting == FIRMWARE_MODE_DURATION) {
+        CBCharacteristic *characteristic = [self characteristicInPeripheral:peripheral
+                                                             andServiceUUID:DEVICE_FIRMWARE_SETTINGS_SERVICE_UUID
+                                                      andCharacteristicUUID:DEVICE_CHARACTERISTIC_MODE_DURATION_UUID];
+        if (!characteristic.value) return;
+        uint16_t value;
+        [characteristic.value getBytes:&value length:2];
+        if (firmwareModeDuration != value) {
+            NSLog(@"Server %d, remote %d", firmwareModeDuration, value);
+            NSData *data = [NSData dataWithBytes:(void*)&firmwareModeDuration length:2];
+            [peripheral writeValue:data forCharacteristic:characteristic
+                              type:CBCharacteristicWriteWithResponse];
+        }
     }
 }
 
@@ -477,6 +493,18 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
         [self device:device.peripheral sentFirmwareSettings:FIRMWARE_INTERVAL_MIN];
         [self device:device.peripheral sentFirmwareSettings:FIRMWARE_INTERVAL_MAX];
         device.needsReconnection = YES;
+    }
+}
+
+- (void)setModeDuration:(NSInteger)duration {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    uint16_t modeDuration = duration;
+    
+    [prefs setObject:@(modeDuration) forKey:@"TT:firmware:mode_duration"];
+    [prefs synchronize];
+    
+    for (TTDevice *device in connectedDevices) {
+        [self device:device.peripheral sentFirmwareSettings:FIRMWARE_MODE_DURATION];
     }
 }
 

@@ -15,7 +15,8 @@ typedef enum {
     FIRMWARE_INTERVAL_MIN = 0,
     FIRMWARE_INTERVAL_MAX = 1,
     FIRMWARE_CONN_LATENCY = 2,
-    FIRMWARE_CONN_TIMEOUT = 3
+    FIRMWARE_CONN_TIMEOUT = 3,
+    FIRMWARE_MODE_DURATION = 4
 } FirmwareSetting;
 
 @class TTButtonTimer;
@@ -43,5 +44,6 @@ typedef enum {
 - (BOOL)isLECapableHardware;
 - (void)terminate;
 - (void)setDeviceLatency:(NSInteger)latency;
+- (void)setModeDuration:(NSInteger)duration;
 
 @end

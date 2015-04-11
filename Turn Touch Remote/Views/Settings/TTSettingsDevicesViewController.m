@@ -41,6 +41,7 @@
     [super viewWillAppear];
     [devicesTable reloadData];
     [latencySlider setIntegerValue:[[preferences objectForKey:@"TT:firmware:interval_max"] integerValue]];
+    [modeChangeSlider setIntegerValue:[[preferences objectForKey:@"TT:firmware:mode_duration"] integerValue]];
 }
 
 - (void)registerAsObserver {
@@ -148,7 +149,15 @@
 #pragma mark - Mode Change Slider
 
 - (void)slideModeChange:(id)sender {
+    NSEvent *event = [[NSApplication sharedApplication] currentEvent];
+    BOOL endingDrag = event.type == NSLeftMouseUp;
+    NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
     
+    NSLog(@"slider value: %d - %d", [sender integerValue], [[preferences objectForKey:@"TT:firmware:mode_duration"] intValue]);
+    
+    if (endingDrag) {
+        [appDelegate.bluetoothMonitor setModeDuration:[sender integerValue]];
+    }
 }
 
 @end
