@@ -68,11 +68,17 @@
                                                               attribute:NSLayoutAttributeTop
                                                              multiplier:1.0 constant:0]];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:arrowView
-                                                              attribute:NSLayoutAttributeHeight
-                                                              relatedBy:NSLayoutRelationEqual
-                                                                 toItem:nil
-                                                              attribute:0
-                                                             multiplier:1.0 constant:ARROW_HEIGHT]];
+                                                         attribute:NSLayoutAttributeHeight
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:0
+                                                        multiplier:1.0 constant:ARROW_HEIGHT]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:arrowView
+                                                         attribute:NSLayoutAttributeCenterX
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeCenterX
+                                                        multiplier:1.0 constant:0]];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:titleBarView
                                                               attribute:NSLayoutAttributeHeight
                                                               relatedBy:NSLayoutRelationEqual

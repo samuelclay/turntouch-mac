@@ -208,7 +208,7 @@
 }
 
 - (void)colorPaths:(NSRect)rect {
-    TTModeDirection activeModeDirection = ignoreActiveMode ? overrideActiveDirection : appDelegate.modeMap.activeModeDirection;
+    TTModeDirection activeModeDirection = (ignoreActiveMode || interactive) ? overrideActiveDirection : appDelegate.modeMap.activeModeDirection;
     TTModeDirection selectedModeDirection = ignoreSelectedMode ? overrideSelectedDirection : appDelegate.modeMap.selectedModeDirection;
     TTModeDirection inspectingModeDirection = appDelegate.modeMap.inspectingModeDirection;
     TTModeDirection hoverModeDirection = appDelegate.modeMap.hoverModeDirection;
@@ -240,13 +240,13 @@
             if (isActiveDirection) {
                 modeColor = NSColorFromRGB(0x505AC0);
             } else if (isHoveringDirection && !isInspectingDirection) {
-                modeColor = NSColorFromRGB(0x505AC0);
+                modeColor = NSColorFromRGB(0xD3D7D9);
             } else if (isInspectingDirection) {
                 modeColor = NSColorFromRGB(0x303AA0);
             } else {
                 modeColor = NSColorFromRGB(0xD3D7D9);
                 if (bottomHalf) {
-                    modeColor = NSColorFromRGB(0xA3A7A9);
+                    modeColor = NSColorFromRGB(0xC3C7C9);
                 }
             }
         } else if (statusBar) {
@@ -318,7 +318,9 @@
         }
         
         if (interactive) {
-            if (isInspectingDirection || isHoveringDirection) {
+            if (isActiveDirection) {
+                [NSColorFromRGB(0xFFFFFF) set];
+            } else if (isInspectingDirection || isHoveringDirection) {
                 [NSColorFromRGB(0xFFFFFF) set];
             } else {
                 [NSColorFromRGB(0xFAFBFD) set];
@@ -339,11 +341,13 @@
 #pragma mark - Events
 
 - (void)updateTrackingAreas {
+    [super updateTrackingAreas];
     [self createTrackingArea];
 }
 
 - (void)createTrackingArea {
     if (!interactive) return;
+    
     for (NSTrackingArea *area in self.trackingAreas) {
         [self removeTrackingArea:area];
     }
@@ -357,6 +361,28 @@
     [self addTrackingArea:trackingArea];
 }
 
+- (void)mouseDown:(NSEvent *)theEvent {
+    if (!interactive) {
+        [super mouseDown:theEvent];
+        return;
+    }
+
+    NSPoint location = [theEvent locationInWindow];
+    NSPoint center = [self convertPoint:location fromView:nil];
+    
+    if ([northPathTop containsPoint:center] || [northPathBottom containsPoint:center]) {
+        overrideActiveDirection = NORTH;
+    } else if ([eastPathTop containsPoint:center] || [eastPathBottom containsPoint:center]) {
+        overrideActiveDirection = EAST;
+    } else if ([westPathTop containsPoint:center] || [westPathBottom containsPoint:center]) {
+        overrideActiveDirection = WEST;
+    } else if ([southPathTop containsPoint:center] || [southPathBottom containsPoint:center]) {
+        overrideActiveDirection = SOUTH;
+    }
+    
+    [self setNeedsDisplay:YES];
+}
+
 - (void)mouseUp:(NSEvent *)theEvent {
     if (!interactive) {
         [super mouseUp:theEvent];
@@ -365,7 +391,7 @@
     
     NSPoint location = [theEvent locationInWindow];
     NSPoint center = [self convertPoint:location fromView:nil];
-    
+
     if ([northPathTop containsPoint:center] || [northPathBottom containsPoint:center]) {
         [appDelegate.modeMap toggleInspectingModeDirection:NORTH];
     } else if ([eastPathTop containsPoint:center] || [eastPathBottom containsPoint:center]) {
@@ -375,6 +401,10 @@
     } else if ([southPathTop containsPoint:center] || [southPathBottom containsPoint:center]) {
         [appDelegate.modeMap toggleInspectingModeDirection:SOUTH];
     }
+
+    overrideActiveDirection = NO_DIRECTION;
+    
+    [self setNeedsDisplay:YES];
 }
 
 - (void)mouseMoved:(NSEvent *)theEvent {

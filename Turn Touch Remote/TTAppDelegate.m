@@ -50,8 +50,8 @@ void *kContextActivePanel = &kContextActivePanel;
     [self observeSleepNotifications];
     
     [self.panelController openPanel];
-    [self.panelController.backgroundView.titleBarView showPreferences:@"devices"];
-    [self.panelController closePanel];
+//    [self.panelController.backgroundView.titleBarView showPreferences:@"devices"];
+//    [self.panelController closePanel];
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender {
