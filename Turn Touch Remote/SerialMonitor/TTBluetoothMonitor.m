@@ -35,6 +35,7 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
 @synthesize connectedDevicesCount;
 @synthesize unpairedDevicesCount;
 @synthesize addingDevice;
+@synthesize unpairedDeviceConnected;
 
 - (instancetype)init {
     if (self = [super init]) {
@@ -194,6 +195,7 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
         if (![unpairedPeripherals containsObject:peripheral]) {
             [unpairedPeripherals addObject:peripheral];
         }
+        [self setValue:@(NO) forKey:@"unpairedDeviceConnected"];
         [buttonTimer resetPairingState];
         [self countDevices];
     }
@@ -339,6 +341,9 @@ didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic
              error:(NSError *)error {
     if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_BUTTON_STATUS_UUID]]) {
         NSLog(@"Subscribed to button status notifications: %@", peripheral.identifier.UUIDString);
+        if ([unpairedPeripherals containsObject:peripheral]) {
+            [self setValue:@(YES) forKey:@"unpairedDeviceConnected"];
+        }
 //        [appDelegate.hudController toastActiveMode];
     } else {
         NSLog(@"Subscribed to notifications: %@/%@", peripheral.identifier.UUIDString, characteristic.UUID.UUIDString);

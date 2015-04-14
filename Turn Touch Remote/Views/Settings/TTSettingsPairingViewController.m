@@ -49,6 +49,9 @@
     [appDelegate.bluetoothMonitor addObserver:self
                                    forKeyPath:@"unpairedDevicesCount"
                                       options:0 context:nil];
+    [appDelegate.bluetoothMonitor addObserver:self
+                                   forKeyPath:@"unpairedDeviceConnected"
+                                      options:0 context:nil];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
@@ -57,11 +60,14 @@
                        context:(void *)context {
     if ([keyPath isEqual:NSStringFromSelector(@selector(unpairedDevicesCount))]) {
         [self countChanged];
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(unpairedDeviceConnected))]) {
+        [self countChanged];
     }
 }
 
 - (void)dealloc {
     [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"unpairedDevicesCount"];
+    [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"unpairedDeviceConnected"];
 }
 
 #pragma mark - RHPreferencesViewControllerProtocol
@@ -84,27 +90,47 @@
 
 - (void)countChanged {
     BOOL found = !!appDelegate.bluetoothMonitor.unpairedDevicesCount;
+    BOOL connected = [appDelegate.bluetoothMonitor.unpairedDeviceConnected boolValue];
     
-    [titleBox setHidden:!found];
-    [labelPressButtons setHidden:!found];
-    [countdownIndicator setHidden:!found];
-    [diamondView setHidden:!found];
-    if (found) {
+    if (!found && !connected) {
+        [titleBox setHidden:YES];
+        [labelPressButtons setHidden:YES];
+        [countdownIndicator setHidden:YES];
+        [diamondView setHidden:YES];
+        
+        [spinnerScanning setHidden:NO];
+        [labelScanning setHidden:NO];
+        [spinnerScanning startAnimation:nil];
+        
+        [labelScanning setStringValue:@"Scanning for remotes..."];
+    } else if (found && !connected) {
+        [titleBox setHidden:NO];
+        [labelPressButtons setHidden:YES];
+        [countdownIndicator setHidden:YES];
+        [diamondView setHidden:YES];
+        
+        [spinnerScanning setHidden:NO];
+        [labelScanning setHidden:NO];
+        [spinnerScanning startAnimation:nil];
+        [labelScanning setStringValue:@"Connecting..."];
+    } else if (found && connected) {
+        [titleBox setHidden:NO];
+        [labelPressButtons setHidden:NO];
+        [countdownIndicator setHidden:NO];
+        [diamondView setHidden:NO];
+
         diamondView = [[TTDiamondView alloc] initWithFrame:diamondViewPlaceholder.bounds pairing:YES];
         [diamondView setIgnoreSelectedMode:YES];
         for (NSView *subview in diamondViewPlaceholder.subviews) {
             [subview removeFromSuperview];
         }
         [diamondViewPlaceholder addSubview:diamondView];
+
+        [spinnerScanning setHidden:YES];
+        [labelScanning setHidden:YES];
+        [spinnerScanning stopAnimation:nil];
     }
     
-    [spinnerScanning setHidden:found];
-    [labelScanning setHidden:found];
-    if (found) {
-        [spinnerScanning stopAnimation:nil];
-    } else {
-        [spinnerScanning startAnimation:nil];
-    }
 }
 
 @end
