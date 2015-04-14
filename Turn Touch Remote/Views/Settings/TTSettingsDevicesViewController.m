@@ -44,6 +44,8 @@
     [modeChangeSlider setIntegerValue:[[preferences objectForKey:@"TT:firmware:mode_duration"] integerValue]];
 }
 
+#pragma mark - KVO
+
 - (void)registerAsObserver {
     [appDelegate.bluetoothMonitor addObserver:self
                                    forKeyPath:@"batteryPct"

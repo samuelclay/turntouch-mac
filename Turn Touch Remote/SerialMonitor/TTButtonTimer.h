@@ -28,11 +28,14 @@ typedef enum {
     NSDate *holdToastStart;
 }
 
+@property (nonatomic) NSNumber *pairingActivatedCount;
+
 - (void)readBluetoothData:(NSData *)data;
 - (void)selectActiveMode:(TTModeDirection)direction;
 - (void)activateButton:(TTModeDirection)direction;
 - (void)fireButton:(TTModeDirection)direction;
 - (void)resetPairingState;
 - (void)readBluetoothDataDuringPairing:(NSData *)data;
+- (BOOL)isDirectionPaired:(TTModeDirection)direction;
 
 @end

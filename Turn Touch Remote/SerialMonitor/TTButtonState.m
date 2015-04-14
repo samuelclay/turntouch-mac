@@ -61,6 +61,10 @@
     }
 }
 
+- (NSInteger)activatedCount {
+    return (north ? 1 : 0) + (east ? 1 : 0) + (west ? 1 : 0) + (south ? 1 : 0);
+}
+
 - (NSString *)description {
     return [NSString stringWithFormat:@"N:%d E:%d W:%d S:%d", north, east, west, south];
 }

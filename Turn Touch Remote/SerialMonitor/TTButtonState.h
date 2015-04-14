@@ -18,5 +18,6 @@
 
 - (BOOL)state:(NSInteger)i;
 - (void)replaceState:(NSInteger)i withState:(BOOL)state;
+- (NSInteger)activatedCount;
 
 @end

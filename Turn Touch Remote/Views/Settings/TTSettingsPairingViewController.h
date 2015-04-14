@@ -8,8 +8,19 @@
 
 #import <Cocoa/Cocoa.h>
 #import "RHPreferences.h"
+#import "TTAppDelegate.h"
 
 @interface TTSettingsPairingViewController : NSViewController
-<RHPreferencesViewControllerProtocol>
+<RHPreferencesViewControllerProtocol> {
+    TTAppDelegate *appDelegate;
+}
+
+@property (nonatomic) IBOutlet NSBox *titleBox;
+@property (nonatomic) IBOutlet NSTextField *labelPressButtons;
+@property (nonatomic) IBOutlet NSProgressIndicator *countdownIndicator;
+@property (nonatomic) IBOutlet NSView *diamondViewPlaceholder;
+@property (nonatomic) IBOutlet TTDiamondView *diamondView;
+@property (nonatomic) IBOutlet NSProgressIndicator *spinnerScanning;
+@property (nonatomic) IBOutlet NSTextField *labelScanning;
 
 @end

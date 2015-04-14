@@ -54,9 +54,9 @@ void *kContextActivePanel = &kContextActivePanel;
     [self.modeMap activateTimers];
     [self observeSleepNotifications];
     
-//    [self.panelController openPanel];
-//    [self.panelController.backgroundView.titleBarView showPreferences:@"devices"];
-//    [self.panelController closePanel];
+    [self.panelController openPanel];
+    [self showPreferences:@"pairing"];
+    [self.panelController closePanel];
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender {

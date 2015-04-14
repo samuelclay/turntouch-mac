@@ -26,12 +26,14 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
 
 @implementation TTBluetoothMonitor
 
+@synthesize buttonTimer;
 @synthesize batteryPct;
 @synthesize lastActionDate;
 @synthesize foundPeripherals;
 @synthesize unpairedPeripherals;
 @synthesize connectedDevices;
 @synthesize connectedDevicesCount;
+@synthesize unpairedDevicesCount;
 @synthesize addingDevice;
 
 - (instancetype)init {
@@ -43,6 +45,7 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
         batteryPct = [[NSNumber alloc] init];
         lastActionDate = [NSDate date];
         connectedDevicesCount = [[NSNumber alloc] init];
+        unpairedDevicesCount = [[NSNumber alloc] init];
         foundPeripherals = [[NSMutableArray alloc] init];
         connectedDevices = [[NSMutableArray alloc] init];
         unpairedPeripherals = [[NSMutableArray alloc] init];
@@ -125,6 +128,7 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
     }
     connectedDevices = updatedConnectedDevices;
     [self setValue:@(connectedDevices.count) forKey:@"connectedDevicesCount"];
+    [self setValue:@(unpairedPeripherals.count) forKey:@"unpairedDevicesCount"];
 }
 
 /*
@@ -188,6 +192,7 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
             [unpairedPeripherals addObject:peripheral];
         }
         [buttonTimer resetPairingState];
+        [self countDevices];
     }
 }
 

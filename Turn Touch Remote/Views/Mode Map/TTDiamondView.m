@@ -21,6 +21,7 @@
 @synthesize interactive;
 @synthesize statusBar;
 @synthesize connected;
+@synthesize pairing;
 
 #pragma mark - Initialization
 
@@ -31,6 +32,11 @@
 
 - (id)initWithFrame:(NSRect)frame interactive:(BOOL)_interactive {
     return [self initWithFrame:frame interactive:_interactive statusBar:NO];
+}
+
+- (id)initWithFrame:(NSRect)frame pairing:(BOOL)_pairing {
+    self.pairing = _pairing;
+    return [self initWithFrame:frame interactive:NO statusBar:NO];
 }
 
 - (id)initWithFrame:(NSRect)frame interactive:(BOOL)_interactive statusBar:(BOOL)_statusBar {
@@ -71,6 +77,9 @@
     if (statusBar) {
         [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"connectedDevices"];
     }
+    if (pairing) {
+        [appDelegate.bluetoothMonitor.buttonTimer removeObserver:self forKeyPath:@"pairingActivatedCount"];
+    }
     [appDelegate.modeMap removeObserver:self forKeyPath:@"activeModeDirection"];
     [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedModeDirection"];
     [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedMode"];
@@ -86,6 +95,10 @@
     if (statusBar) {
         [appDelegate.bluetoothMonitor addObserver:self forKeyPath:@"connectedDevicesCount"
                                           options:0 context:nil];
+    }
+    if (pairing) {
+        [appDelegate.bluetoothMonitor.buttonTimer addObserver:self forKeyPath:@"pairingActivatedCount"
+                                                      options:0 context:nil];
     }
     [appDelegate.modeMap addObserver:self forKeyPath:@"activeModeDirection"
                              options:0 context:nil];
@@ -111,6 +124,8 @@
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(connectedDevicesCount))]) {
         [self setNeedsDisplay:YES];
+    } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(pairingActivatedCount))]) {
+        [self setNeedsDisplay:YES];
     }
 }
          
@@ -133,7 +148,7 @@
 }
 
 - (void)drawPaths:(NSRect)rect {
-//    NSLog(@"Draw diamond: %@ - %@", NSStringFromRect(rect), NSStringFromRect(self.bounds));
+    NSLog(@"Draw diamond: %@ - %@", NSStringFromRect(rect), NSStringFromRect(self.bounds));
     CGFloat width = NSMaxX(rect);
     CGFloat height = NSMaxY(rect);
     CGFloat spacing = SPACING_PCT * width;
@@ -238,6 +253,10 @@
         BOOL isSelectedDirection    = selectedModeDirection == direction;
         BOOL isActiveDirection      = activeModeDirection == direction;
         
+        if (pairing) {
+            isSelectedDirection = [appDelegate.bluetoothMonitor.buttonTimer isDirectionPaired:direction];
+        }
+        
         // Fill in the color as a stroke or fill
         NSColor *modeColor;
         if (interactive) {
@@ -292,7 +311,7 @@
                 CGFloat alpha = 0.5f;
                 modeColor = NSColorFromRGBAlpha(0x303033, alpha);
             } else if (isSelectedDirection) {
-                if (appDelegate.modeMap.selectedModeDirection == direction) {
+                if (pairing || appDelegate.modeMap.selectedModeDirection == direction) {
                     CGFloat alpha = 0.8f;
                     modeColor = NSColorFromRGBAlpha(0x1555D8, alpha);
                 } else {

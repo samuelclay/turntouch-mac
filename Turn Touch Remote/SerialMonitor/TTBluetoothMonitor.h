@@ -39,6 +39,8 @@ typedef enum {
 @property (nonatomic) NSMutableArray *unpairedPeripherals;
 @property (nonatomic) NSMutableArray *connectedDevices;
 @property (nonatomic) NSNumber *connectedDevicesCount;
+@property (nonatomic) NSNumber *unpairedDevicesCount;
+@property (nonatomic) TTButtonTimer *buttonTimer;
 @property (nonatomic, readwrite) BOOL addingDevice;
 
 - (void)startScan;

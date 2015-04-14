@@ -11,10 +11,13 @@
 
 @implementation TTButtonTimer
 
+@synthesize pairingActivatedCount;
+
 - (id)init {
     if (self = [super init]) {
         appDelegate = (TTAppDelegate *)[NSApp delegate];
         buttonState = [[TTButtonState alloc] init];
+        pairingActivatedCount = [[NSNumber alloc] init];
         inMultitouch = NO;
     }
     
@@ -205,10 +208,31 @@
 
 - (void)readBluetoothDataDuringPairing:(NSData *)data {
     uint8_t state = [self stateFromData:data];
-    pairingButtonState.north |= (state & (1 << 0));
-    pairingButtonState.east |= (state & (1 << 1));
-    pairingButtonState.west |= (state & (1 << 2));
-    pairingButtonState.south |= (state & (1 << 3));
+    pairingButtonState.north |= !!(state & (1 << 0));
+    pairingButtonState.east |= !!(state & (1 << 1));
+    pairingButtonState.west |= !!(state & (1 << 2));
+    pairingButtonState.south |= !!(state & (1 << 3));
+    [self setValue:@([pairingButtonState activatedCount]) forKey:@"pairingActivatedCount"];
 }
 
+- (BOOL)isDirectionPaired:(TTModeDirection)direction {
+    switch (direction) {
+        case NORTH:
+            return pairingButtonState.north;
+            
+        case EAST:
+            return pairingButtonState.east;
+            
+        case WEST:
+            return pairingButtonState.west;
+            
+        case SOUTH:
+            return pairingButtonState.south;
+            
+        default:
+            break;
+    }
+    
+    return NO;
+}
 @end
