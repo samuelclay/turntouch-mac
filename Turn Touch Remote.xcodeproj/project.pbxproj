@@ -55,7 +55,6 @@
 		FF3641F81A660204003CC03C /* TTModeHueSceneOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3641F61A660204003CC03C /* TTModeHueSceneOptions.xib */; };
 		FF3760C71ABB59210055EC6D /* logo_16.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3760C61ABB59210055EC6D /* logo_16.png */; };
 		FF429AD21919C630007C485E /* TTModeMenuCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF429AD11919C630007C485E /* TTModeMenuCollectionView.m */; };
-		FF4E2630182317D000D477F6 /* TTSerialMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4E262F182317D000D477F6 /* TTSerialMonitor.m */; };
 		FF4E26321823197D00D477F6 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4E26311823197D00D477F6 /* IOKit.framework */; };
 		FF5295BC1AD4D112007DDC02 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = FF5295BA1AD4D112007DDC02 /* settings.png */; };
 		FF5295BD1AD4D112007DDC02 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF5295BB1AD4D112007DDC02 /* settings@2x.png */; };
@@ -177,6 +176,7 @@
 		FFBC625F1A9D699D0032AD24 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFBC625E1A9D699D0032AD24 /* AVFoundation.framework */; };
 		FFD62CCE194F935D0093004D /* TTSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD62CCD194F935D0093004D /* TTSegmentedCell.m */; };
 		FFD62CD11950EE770093004D /* TTSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD62CD01950EE770093004D /* TTSegmentedControl.m */; };
+		FFD8524F1ADD912F00325235 /* TTButtonState.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD8524E1ADD912F00325235 /* TTButtonState.m */; };
 		FFE0B3D01AD70DC600FC6080 /* logo_with_title.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE0B3CF1AD70DC600FC6080 /* logo_with_title.png */; };
 		FFE2D4741A451BEA00DDD413 /* TTBluetoothMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE2D4731A451BEA00DDD413 /* TTBluetoothMonitor.m */; };
 		FFE2D4761A451FA200DDD413 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFE2D4751A451FA200DDD413 /* CoreBluetooth.framework */; };
@@ -286,8 +286,6 @@
 		FF3760C61ABB59210055EC6D /* logo_16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_16.png; sourceTree = "<group>"; };
 		FF429AD01919C630007C485E /* TTModeMenuCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeMenuCollectionView.h; sourceTree = "<group>"; };
 		FF429AD11919C630007C485E /* TTModeMenuCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeMenuCollectionView.m; sourceTree = "<group>"; };
-		FF4E262E182317D000D477F6 /* TTSerialMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSerialMonitor.h; path = SerialMonitor/TTSerialMonitor.h; sourceTree = "<group>"; };
-		FF4E262F182317D000D477F6 /* TTSerialMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSerialMonitor.m; path = SerialMonitor/TTSerialMonitor.m; sourceTree = "<group>"; };
 		FF4E26311823197D00D477F6 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		FF4F9AF6182881FF00D2F975 /* AppleScriptObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptObjC.framework; path = System/Library/Frameworks/AppleScriptObjC.framework; sourceTree = SDKROOT; };
 		FF5295BA1AD4D112007DDC02 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = icons/settings.png; sourceTree = "<group>"; };
@@ -482,6 +480,8 @@
 		FFD62CCD194F935D0093004D /* TTSegmentedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSegmentedCell.m; path = "Views/Mode Options/TTSegmentedCell.m"; sourceTree = "<group>"; };
 		FFD62CCF1950EE770093004D /* TTSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSegmentedControl.h; path = "Views/Mode Options/TTSegmentedControl.h"; sourceTree = "<group>"; };
 		FFD62CD01950EE770093004D /* TTSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSegmentedControl.m; path = "Views/Mode Options/TTSegmentedControl.m"; sourceTree = "<group>"; };
+		FFD8524D1ADD912F00325235 /* TTButtonState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTButtonState.h; path = SerialMonitor/TTButtonState.h; sourceTree = "<group>"; };
+		FFD8524E1ADD912F00325235 /* TTButtonState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTButtonState.m; path = SerialMonitor/TTButtonState.m; sourceTree = "<group>"; };
 		FFE0B3CF1AD70DC600FC6080 /* logo_with_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_with_title.png; sourceTree = "<group>"; };
 		FFE2D4721A451BEA00DDD413 /* TTBluetoothMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTBluetoothMonitor.h; path = SerialMonitor/TTBluetoothMonitor.h; sourceTree = "<group>"; };
 		FFE2D4731A451BEA00DDD413 /* TTBluetoothMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTBluetoothMonitor.m; path = SerialMonitor/TTBluetoothMonitor.m; sourceTree = "<group>"; };
@@ -660,8 +660,8 @@
 				FFE2D4731A451BEA00DDD413 /* TTBluetoothMonitor.m */,
 				FF0E12C018242DF000D49EC7 /* TTButtonTimer.h */,
 				FF0E12C118242DF000D49EC7 /* TTButtonTimer.m */,
-				FF4E262E182317D000D477F6 /* TTSerialMonitor.h */,
-				FF4E262F182317D000D477F6 /* TTSerialMonitor.m */,
+				FFD8524D1ADD912F00325235 /* TTButtonState.h */,
+				FFD8524E1ADD912F00325235 /* TTButtonState.m */,
 				FFB653DC18DB9DEA00830B42 /* hid.c */,
 				FFB653DE18DB9DFD00830B42 /* hidapi.h */,
 			);
@@ -1308,7 +1308,7 @@
 			files = (
 				FFE2D4791A46404500DDD413 /* NSData+Conversion.m in Sources */,
 				FF8C834A17AB14B5000166FC /* TTAppDelegate.m in Sources */,
-				FF4E2630182317D000D477F6 /* TTSerialMonitor.m in Sources */,
+				FFD8524F1ADD912F00325235 /* TTButtonState.m in Sources */,
 				FFA1D4CE1A3B8916003EA0BC /* TTActionHUDWindowController.m in Sources */,
 				FFA8EAA3190F091000679A4D /* TTModeMenuItem.m in Sources */,
 				FF5296051AD6142B007DDC02 /* RHPreferencesCustomPlaceholderController.m in Sources */,

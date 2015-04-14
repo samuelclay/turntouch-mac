@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "TTAppDelegate.h"
 #import "TTModeMap.h"
+#import "TTButtonState.h"
 
 @class TTAppDelegate;
 
@@ -21,15 +22,17 @@ typedef enum {
 @interface TTButtonTimer : NSObject {
     TTAppDelegate *appDelegate;
     NSTimer *activeModeTimer;
-    NSMutableArray *buttonState;
+    TTButtonState *buttonState;
+    TTButtonState *pairingButtonState;
     BOOL inMultitouch;
     NSDate *holdToastStart;
 }
 
-- (void)readButtons:(NSArray *)buttons;
 - (void)readBluetoothData:(NSData *)data;
 - (void)selectActiveMode:(TTModeDirection)direction;
 - (void)activateButton:(TTModeDirection)direction;
 - (void)fireButton:(TTModeDirection)direction;
+- (void)resetPairingState;
+- (void)readBluetoothDataDuringPairing:(NSData *)data;
 
 @end

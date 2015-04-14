@@ -14,60 +14,33 @@
 - (id)init {
     if (self = [super init]) {
         appDelegate = (TTAppDelegate *)[NSApp delegate];
-        buttonState = [@[[NSNumber numberWithBool:NO],
-                         [NSNumber numberWithBool:NO],
-                         [NSNumber numberWithBool:NO],
-                         [NSNumber numberWithBool:NO]] mutableCopy];
+        buttonState = [[TTButtonState alloc] init];
         inMultitouch = NO;
     }
     
     return self;
 }
 
-- (void)readButtons:(NSArray *)buttons {
-        NSLog(@"Serial buttons: %@", buttons);
-    
-    if ([[buttons objectAtIndex:0] integerValue] == PRESS_ACTIVE) {
-        [self activateButton:NORTH];
-    } else if ([[buttons objectAtIndex:1] integerValue] == PRESS_ACTIVE) {
-        [self activateButton:EAST];
-    } else if ([[buttons objectAtIndex:2] integerValue] == PRESS_ACTIVE) {
-        [self activateButton:WEST];
-    } else if ([[buttons objectAtIndex:3] integerValue] == PRESS_ACTIVE) {
-        [self activateButton:SOUTH];
-    } else if ([[buttons objectAtIndex:0] integerValue] == PRESS_TOGGLE) {
-        [self fireButton:NORTH];
-    } else if ([[buttons objectAtIndex:1] integerValue] == PRESS_TOGGLE) {
-        [self fireButton:EAST];
-    } else if ([[buttons objectAtIndex:2] integerValue] == PRESS_TOGGLE) {
-        [self fireButton:WEST];
-    } else if ([[buttons objectAtIndex:3] integerValue] == PRESS_TOGGLE) {
-        [self fireButton:SOUTH];
-    } else if ([[buttons objectAtIndex:0] integerValue] == PRESS_MODE) {
-        [self selectActiveMode:NORTH];
-    } else if ([[buttons objectAtIndex:1] integerValue] == PRESS_MODE) {
-        [self selectActiveMode:EAST];
-    } else if ([[buttons objectAtIndex:2] integerValue] == PRESS_MODE) {
-        [self selectActiveMode:WEST];
-    } else if ([[buttons objectAtIndex:3] integerValue] == PRESS_MODE) {
-        [self selectActiveMode:SOUTH];
-    }
-    
+- (uint8_t)stateFromData:(NSData *)data {
+    return ~(*(int *)[[data subdataWithRange:NSMakeRange(0, 1)] bytes]) & 0x0F;
 }
 
 - (void)readBluetoothData:(NSData *)data {
-    uint8_t state = ~(*(int *)[[data subdataWithRange:NSMakeRange(0, 1)] bytes]) & 0x0F;
+    uint8_t state = [self stateFromData:data];
     int pos = *(int *)[[data subdataWithRange:NSMakeRange(1, 1)] bytes];
+    //    NSLog(@"Buttons: %d, %d: %@", state, pos, buttonState);
+
     BOOL anyButtonPressed = NO;
     BOOL anyButtonHeld = NO;
     NSInteger buttonLifted = -1;
-//    NSLog(@"Buttons: %d, %d: %@", state, pos, buttonState);
     
-    NSMutableArray *newButtonState = [@[[NSNumber numberWithBool:(state & 0x01)],
-                                        [NSNumber numberWithBool:(state & 0x02)],
-                                        [NSNumber numberWithBool:(state & 0x04)],
-                                        [NSNumber numberWithBool:(state & 0x08)]] mutableCopy];
-    NSInteger i = buttonState.count;
+    TTButtonState *newButtonState = [[TTButtonState alloc] init];
+    newButtonState.north = (state & (1 << 0));
+    newButtonState.east = (state & (1 << 1));
+    newButtonState.west = (state & (1 << 2));
+    newButtonState.south = (state & (1 << 3));
+    
+    NSInteger i = newButtonState.count;
     while (i--) {
         BOOL buttonDown = ((state & (1 << i)) == (1 << i));
 //        NSLog(@"Checking button #%ld: %d / %d", (long)i, buttonDown, anyButtonPressed);
@@ -75,13 +48,13 @@
             inMultitouch = YES;
         }
         // Press button down
-        if (![[buttonState objectAtIndex:i] boolValue] && buttonDown) {
+        if (![buttonState state:i] && buttonDown) {
             anyButtonPressed = YES;
-            [newButtonState replaceObjectAtIndex:i withObject:[NSNumber numberWithBool:buttonDown]];
+            [newButtonState replaceState:i withState:buttonDown];
         }
         // Lift button
-        else if ([[buttonState objectAtIndex:i] boolValue] && !buttonDown) {
-            [newButtonState replaceObjectAtIndex:i withObject:[NSNumber numberWithBool:NO]];
+        else if ([buttonState state:i] && !buttonDown) {
+            [newButtonState replaceState:i withState:NO];
             if (!inMultitouch) {
                 buttonLifted = i;
             }
@@ -89,7 +62,7 @@
         // Button remains pressed down
         else {
             if (buttonDown) anyButtonPressed = YES;
-            [newButtonState replaceObjectAtIndex:i withObject:[NSNumber numberWithBool:buttonDown]];
+            [newButtonState replaceState:i withState:buttonDown];
         }
     }
     buttonState = newButtonState;
@@ -100,16 +73,16 @@
 //        NSLog(@" ---> Button held: %d", state);
         if (state == 0x01) {
             // Don't fire action on button release
-            [buttonState replaceObjectAtIndex:0 withObject:[NSNumber numberWithBool:NO]];
+            buttonState.north = NO;
             [self selectActiveMode:NORTH];
         } else if (state == 0x02) {
-            [buttonState replaceObjectAtIndex:1 withObject:[NSNumber numberWithBool:NO]];
+            buttonState.east = NO;
             [self selectActiveMode:EAST];
         } else if (state == 0x04) {
-            [buttonState replaceObjectAtIndex:2 withObject:[NSNumber numberWithBool:NO]];
+            buttonState.west = NO;
             [self selectActiveMode:WEST];
         } else if (state == 0x08) {
-            [buttonState replaceObjectAtIndex:3 withObject:[NSNumber numberWithBool:NO]];
+            buttonState.south = NO;
             [self selectActiveMode:SOUTH];
         }
         [self activateButton:NO_DIRECTION];
@@ -157,8 +130,6 @@
             inMultitouch = NO;
         }
     }
-    
-    
 }
 
 - (void)maybeReleaseToastActiveMode {
@@ -224,6 +195,20 @@
     if (appDelegate.modeMap.activeModeDirection == timerDirection) {
         [appDelegate.hudController teaseMode:timerDirection];
     }
+}
+
+#pragma mark - Pairing
+
+- (void)resetPairingState {
+    pairingButtonState = [[TTButtonState alloc] init];
+}
+
+- (void)readBluetoothDataDuringPairing:(NSData *)data {
+    uint8_t state = [self stateFromData:data];
+    pairingButtonState.north |= (state & (1 << 0));
+    pairingButtonState.east |= (state & (1 << 1));
+    pairingButtonState.west |= (state & (1 << 2));
+    pairingButtonState.south |= (state & (1 << 3));
 }
 
 @end

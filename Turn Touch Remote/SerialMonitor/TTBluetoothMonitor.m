@@ -28,9 +28,11 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
 
 @synthesize batteryPct;
 @synthesize lastActionDate;
-@synthesize foundDevices;
+@synthesize foundPeripherals;
+@synthesize unpairedPeripherals;
 @synthesize connectedDevices;
 @synthesize connectedDevicesCount;
+@synthesize addingDevice;
 
 - (instancetype)init {
     if (self = [super init]) {
@@ -41,8 +43,9 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
         batteryPct = [[NSNumber alloc] init];
         lastActionDate = [NSDate date];
         connectedDevicesCount = [[NSNumber alloc] init];
+        foundPeripherals = [[NSMutableArray alloc] init];
         connectedDevices = [[NSMutableArray alloc] init];
-        foundDevices = [[NSMutableArray alloc] init];
+        unpairedPeripherals = [[NSMutableArray alloc] init];
         characteristics = [[NSMutableDictionary alloc] init];
 
 //        [self startScan];
@@ -53,10 +56,19 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
 #pragma mark - Start/Stop Scan methods
 
 - (void) startScan {
+    NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+    NSArray *pairedDevices = [preferences objectForKey:@"CB:paired_devices"];
+
+    if (!pairedDevices || !pairedDevices.count) {
+        addingDevice = YES;
+    }
+    
     [manager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:DEVICE_BUTTON_SERVICE_UUID]] options:nil];
 }
 
 - (void) stopScan {
+    addingDevice = NO;
+    
     [manager stopScan];
 }
 
@@ -125,11 +137,18 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
     NSString *localName = [advertisementData objectForKey:CBAdvertisementDataLocalNameKey];
     NSLog(@"Found bluetooth peripheral: %@/%@ (%@)", localName, peripheral.identifier.UUIDString, RSSI);
     NSArray *peripherals = [manager retrievePeripheralsWithIdentifiers:@[(id)peripheral.identifier]];
-    
-    for (CBPeripheral *device in peripherals) {
-        [foundDevices addObject:device];
-        [manager connectPeripheral:device options:@{CBConnectPeripheralOptionNotifyOnDisconnectionKey: [NSNumber numberWithBool:YES],
-                                                        CBCentralManagerOptionShowPowerAlertKey: [NSNumber numberWithBool:YES]}];
+    NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+    NSArray *pairedDevices = [preferences objectForKey:@"CB:paired_devices"];
+
+    for (CBPeripheral *peripheral in peripherals) {
+        if (![foundPeripherals containsObject:peripheral]) {
+            [foundPeripherals addObject:peripheral];
+        }
+        if ([pairedDevices containsObject:peripheral.identifier.UUIDString] || addingDevice) {
+            [manager connectPeripheral:peripheral
+                               options:@{CBConnectPeripheralOptionNotifyOnDisconnectionKey: [NSNumber numberWithBool:YES],
+                                         CBCentralManagerOptionShowPowerAlertKey: [NSNumber numberWithBool:YES]}];
+        }
     }
 }
 
@@ -139,18 +158,37 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
  */
 - (void) centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
-    [preferences setObject:peripheral.identifier.UUIDString forKey:@"CB:last_identifier"];
-    [preferences synchronize];
-    
+    NSArray *pairedDevices = [preferences objectForKey:@"CB:paired_devices"];
+
     [peripheral setDelegate:self];
-    [peripheral discoverServices:@[[CBUUID UUIDWithString:DEVICE_BUTTON_SERVICE_UUID],
-                                   [CBUUID UUIDWithString:DEVICE_BATTERY_SERVICE_UUID],
-                                   [CBUUID UUIDWithString:DEVICE_FIRMWARE_SETTINGS_SERVICE_UUID]]];
-    
-    TTDevice *device = [[TTDevice alloc] initWithPeripheral:peripheral];
-    [connectedDevices addObject:device];
-    [self countDevices];
-    device.needsReconnection = NO;
+
+    if ([pairedDevices containsObject:peripheral.identifier.UUIDString]) {
+        // Seen device before, connect and discover services
+        if ([unpairedPeripherals containsObject:peripheral]) {
+            [unpairedPeripherals removeObject:peripheral];
+        }
+        [preferences setObject:peripheral.identifier.UUIDString forKey:@"CB:last_identifier"];
+        [preferences synchronize];
+        
+        [peripheral discoverServices:@[[CBUUID UUIDWithString:DEVICE_BUTTON_SERVICE_UUID],
+                                       [CBUUID UUIDWithString:DEVICE_BATTERY_SERVICE_UUID],
+                                       [CBUUID UUIDWithString:DEVICE_FIRMWARE_SETTINGS_SERVICE_UUID]]];
+        
+        TTDevice *device = [[TTDevice alloc] initWithPeripheral:peripheral];
+        device.isPaired = YES;
+        device.needsReconnection = NO;
+        [connectedDevices addObject:device];
+        [self countDevices];
+    } else {
+        // Never seen device before, start the pairing process
+        [peripheral discoverServices:@[[CBUUID UUIDWithString:DEVICE_BUTTON_SERVICE_UUID],
+                                       [CBUUID UUIDWithString:DEVICE_BATTERY_SERVICE_UUID]]];
+        
+        if (![unpairedPeripherals containsObject:peripheral]) {
+            [unpairedPeripherals addObject:peripheral];
+        }
+        [buttonTimer resetPairingState];
+    }
 }
 
 /*
@@ -305,16 +343,17 @@ didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic
 - (void) peripheral:(CBPeripheral *)peripheral
 didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
               error:(NSError *)error {
-    /* Updated value for heart rate measurement received */
+    TTDevice *device = [self deviceForPeripheral:peripheral];
+
     if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_BUTTON_STATUS_UUID]]) {
         if( (characteristic.value)  || !error ) {
 //            NSLog(@"Characteristic value: %@", [characteristic.value hexadecimalString]);
-            [buttonTimer readBluetoothData:characteristic.value];
-            for (TTDevice *device in connectedDevices) {
-                if (device.peripheral == peripheral) {
-                    device.lastActionDate = [NSDate date];
-                }
+            if (device.isPaired) {
+                [buttonTimer readBluetoothData:characteristic.value];
+            } else {
+                [buttonTimer readBluetoothDataDuringPairing:characteristic.value];
             }
+            device.lastActionDate = [NSDate date];
             [self setValue:[NSDate date] forKey:@"lastActionDate"];
         } else {
             NSLog(@"Characteristic error: %@ / %@", characteristic.value, error);
@@ -324,14 +363,9 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
             const uint8_t *bytes = [characteristic.value bytes]; // pointer to the bytes in data
             uint16_t value = bytes[0]; // first byte
             NSLog(@"Battery level: %d%%", value);
-            for (TTDevice *device in connectedDevices) {
-                if (device.peripheral == peripheral) {
-                    device.lastActionDate = [NSDate date];
-                    device.batteryPct = @(value);
-                    device.uuid = [CBUUID UUIDWithNSUUID:peripheral.identifier];
-                    break;
-                }
-            }
+            device.lastActionDate = [NSDate date];
+            device.batteryPct = @(value);
+            device.uuid = [CBUUID UUIDWithNSUUID:peripheral.identifier];
             [self setValue:@(value) forKey:@"batteryPct"];
             [self setValue:[NSDate date] forKey:@"lastActionDate"];
         }
@@ -551,6 +585,14 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
                 }
             }
         }
+    }
+    
+    return nil;
+}
+
+- (TTDevice *)deviceForPeripheral:(CBPeripheral *)peripheral {
+    for (TTDevice *device in connectedDevices) {
+        if (device.peripheral == peripheral) return device;
     }
     
     return nil;
