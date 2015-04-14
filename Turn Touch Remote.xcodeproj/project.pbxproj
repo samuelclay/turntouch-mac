@@ -19,6 +19,8 @@
 		FF1F135F1ADC90E700B52A0D /* MLCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1F135B1ADC90E700B52A0D /* MLCalendarView.m */; };
 		FF1F13601ADC90E700B52A0D /* MLCalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF1F135C1ADC90E700B52A0D /* MLCalendarView.xib */; };
 		FF1F13631ADC98C400B52A0D /* TTDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1F13621ADC98C400B52A0D /* TTDatePicker.m */; };
+		FF1F13651ADC9DEC00B52A0D /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF1F13641ADC9DEC00B52A0D /* Sparkle.framework */; };
+		FF1F13671ADC9E6F00B52A0D /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = FF1F13641ADC9DEC00B52A0D /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF2365CC196F0DFA00A4ADBC /* mode_alarm.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2365C2196F0DFA00A4ADBC /* mode_alarm.png */; };
 		FF2365CD196F0DFA00A4ADBC /* mode_fitness.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2365C3196F0DFA00A4ADBC /* mode_fitness.png */; };
 		FF2365CE196F0DFA00A4ADBC /* mode_mac.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2365C4196F0DFA00A4ADBC /* mode_mac.png */; };
@@ -123,7 +125,7 @@
 		FF913D2919243B89005C336F /* TTModeAlarmSnoozeOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF913D2819243B89005C336F /* TTModeAlarmSnoozeOptions.xib */; };
 		FF913D2C19243BFD005C336F /* TTModeAlarmSnoozeOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF913D2B19243BFD005C336F /* TTModeAlarmSnoozeOptions.m */; };
 		FF93604C196DF0B600675B7B /* Effra_Rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF936042196DF0B600675B7B /* Effra_Rg.ttf */; };
-		FF936057196DF1A500675B7B /* Effra_Rg.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = FF936042196DF0B600675B7B /* Effra_Rg.ttf */; };
+		FF936057196DF1A500675B7B /* Effra_Rg.ttf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = FF936042196DF0B600675B7B /* Effra_Rg.ttf */; };
 		FF93606B196DF8A200675B7B /* clock b&w.png in Resources */ = {isa = PBXBuildFile; fileRef = FF93606A196DF8A200675B7B /* clock b&w.png */; };
 		FF981FCB191AB46600A4A94B /* TTModeMenuBordersView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF981FCA191AB46600A4A94B /* TTModeMenuBordersView.m */; };
 		FF98A2E11867DBA40032CC7A /* TTActionMap.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98A2E01867DBA40032CC7A /* TTActionMap.m */; };
@@ -189,14 +191,26 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		FF93604D196DF18F00675B7B /* CopyFiles */ = {
+		FF1F13661ADC9E5800B52A0D /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FF1F13671ADC9E6F00B52A0D /* Sparkle.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF93604D196DF18F00675B7B /* Copy Fonts */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = fonts;
 			dstSubfolderSpec = 7;
 			files = (
-				FF936057196DF1A500675B7B /* Effra_Rg.ttf in CopyFiles */,
+				FF936057196DF1A500675B7B /* Effra_Rg.ttf in Copy Fonts */,
 			);
+			name = "Copy Fonts";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -228,6 +242,7 @@
 		FF1F135C1ADC90E700B52A0D /* MLCalendarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MLCalendarView.xib; sourceTree = "<group>"; };
 		FF1F13611ADC98C400B52A0D /* TTDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTDatePicker.h; sourceTree = "<group>"; };
 		FF1F13621ADC98C400B52A0D /* TTDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTDatePicker.m; sourceTree = "<group>"; };
+		FF1F13641ADC9DEC00B52A0D /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = "Turn Touch Remote/Vendor/Sparkle.framework"; sourceTree = "<group>"; };
 		FF2365C2196F0DFA00A4ADBC /* mode_alarm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mode_alarm.png; path = icons/mode_alarm.png; sourceTree = "<group>"; };
 		FF2365C3196F0DFA00A4ADBC /* mode_fitness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mode_fitness.png; path = icons/mode_fitness.png; sourceTree = "<group>"; };
 		FF2365C4196F0DFA00A4ADBC /* mode_mac.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mode_mac.png; path = icons/mode_mac.png; sourceTree = "<group>"; };
@@ -491,6 +506,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF1F13651ADC9DEC00B52A0D /* Sparkle.framework in Frameworks */,
 				FFAA61E01ABA6A9200AA422B /* HueSDK_OSX.framework in Frameworks */,
 				FFBC625F1A9D699D0032AD24 /* AVFoundation.framework in Frameworks */,
 				FF7305C21A5CB2E3009A852D /* SystemConfiguration.framework in Frameworks */,
@@ -863,6 +879,7 @@
 		FF8C833517AB14B5000166FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FF1F13641ADC9DEC00B52A0D /* Sparkle.framework */,
 				FFBC625E1A9D699D0032AD24 /* AVFoundation.framework */,
 				FF7305C11A5CB2E3009A852D /* SystemConfiguration.framework */,
 				FFE2D4751A451FA200DDD413 /* CoreBluetooth.framework */,
@@ -1151,7 +1168,8 @@
 				FF8C832F17AB14B5000166FC /* Sources */,
 				FF8C833017AB14B5000166FC /* Frameworks */,
 				FF8C833117AB14B5000166FC /* Resources */,
-				FF93604D196DF18F00675B7B /* CopyFiles */,
+				FF93604D196DF18F00675B7B /* Copy Fonts */,
+				FF1F13661ADC9E5800B52A0D /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1476,13 +1494,17 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PROJECT_DIR)/Turn\\ Touch\\ Remote/Vendor/",
 					"$(PROJECT_DIR)/Turn\\ Touch\\ Remote/Vendor/Hue",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Turn Touch Remote/Supporting Files/Turn Touch Remote-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Remote/Supporting Files/Turn Touch Remote-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-Wl,-rpath,@loader_path/../Frameworks",
+				);
 				PRODUCT_NAME = "Turn Touch Remote";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -1498,13 +1520,17 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PROJECT_DIR)/Turn\\ Touch\\ Remote/Vendor/",
 					"$(PROJECT_DIR)/Turn\\ Touch\\ Remote/Vendor/Hue",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Turn Touch Remote/Supporting Files/Turn Touch Remote-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Remote/Supporting Files/Turn Touch Remote-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-Wl,-rpath,@loader_path/../Frameworks",
+				);
 				PRODUCT_NAME = "Turn Touch Remote";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

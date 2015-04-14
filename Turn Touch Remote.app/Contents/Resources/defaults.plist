@@ -10,6 +10,8 @@
 	<integer>4</integer>
 	<key>TT:firmware:conn_timeout</key>
 	<integer>600</integer>
+	<key>TT:firmware:mode_duration</key>
+	<integer>600</integer>
 	<key>TT:mode:north</key>
 	<string>TTModeAlarmClock</string>
 	<key>TT:mode:east</key>

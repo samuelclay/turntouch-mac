@@ -13,17 +13,29 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView focusRingType="exterior" id="bT4-Om-JDp">
-            <rect key="frame" x="0.0" y="2" width="515" height="212"/>
+            <rect key="frame" x="0.0" y="-1" width="515" height="318"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="s3g-FM-Kvy">
-                    <rect key="frame" x="183" y="36" width="149" height="149"/>
+                    <rect key="frame" x="183" y="142" width="149" height="149"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="logo_with_title" id="eSM-wG-Mdq"/>
                 </imageView>
+                <button verticalHuggingPriority="750" id="YpZ-SU-82O">
+                    <rect key="frame" x="174" y="50" width="166" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Check for updates..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bqg-LA-S3O">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="checkForUpdates:" target="aiS-TO-fRQ" id="U13-OX-Veu"/>
+                    </connections>
+                </button>
             </subviews>
-            <point key="canvasLocation" x="229.5" y="364"/>
+            <point key="canvasLocation" x="229.5" y="417"/>
         </customView>
+        <customObject id="aiS-TO-fRQ" customClass="SUUpdater"/>
     </objects>
     <resources>
         <image name="logo_with_title" width="308" height="322"/>

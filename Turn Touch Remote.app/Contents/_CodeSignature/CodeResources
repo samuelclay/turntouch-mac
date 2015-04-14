@@ -6,11 +6,15 @@
 	<dict>
 		<key>Resources/AppIcon.icns</key>
 		<data>
-		LaYZpSUpkVgFv2yPteX8HvfTwdU=
+		lW8U8rgXQaSz+uX8JGjnDYvwDj8=
 		</data>
 		<key>Resources/Effra_Rg.ttf</key>
 		<data>
 		V7/5eGD8hqn7/snzpPyBZY7Y/iQ=
+		</data>
+		<key>Resources/MLCalendarView.nib</key>
+		<data>
+		2JCMWTqpQ8fwEgMt7glJL6CDdGo=
 		</data>
 		<key>Resources/NSDateTimeAgo.bundle/ar.lproj/NSDateTimeAgo.strings</key>
 		<dict>
@@ -304,10 +308,6 @@
 		<data>
 		siI6YDgZ+t6Fw7wqd8r4+Lfcxk8=
 		</data>
-		<key>Resources/TFDatePicker-Info.plist</key>
-		<data>
-		LsMOvskKSTKUgQtMh+T0ADfeTdA=
-		</data>
 		<key>Resources/TTActionHUDView.nib</key>
 		<data>
 		65ZNWnVN+BvyEDs8GSZneYjaZno=
@@ -318,7 +318,7 @@
 		</data>
 		<key>Resources/TTModeAlarmClockOptions.nib</key>
 		<data>
-		4gVZq4H2rIWHG5r58k9ZMUEDrcs=
+		7EfYJPSXvuOX0JAh0ALfGCVGaf0=
 		</data>
 		<key>Resources/TTModeAlarmSnoozeOptions.nib</key>
 		<data>
@@ -374,23 +374,19 @@
 		</data>
 		<key>Resources/TTSettingsAboutViewController.nib</key>
 		<data>
-		rMHFNZA5dBcGLSCthxTnN6cV8G0=
+		h4S0HPZuQg52948M9TrKQiGKWZs=
 		</data>
 		<key>Resources/TTSettingsDevicesViewController.nib</key>
 		<data>
-		w5/APgGlDjAB1xQemW1loUOb/zE=
+		WpmKZ+31+lff1BwTKssuAHILvPU=
 		</data>
 		<key>Resources/TTSettingsSupportViewController.nib</key>
 		<data>
-		KANJogOanVchMnynMSXwRe2qRlc=
+		b7V9l04c/7faPtizvNnRSdsDbHY=
 		</data>
 		<key>Resources/Turn Touch Remote.entitlements</key>
 		<data>
 		s3WSLfTKCP8Xv6f0V16/RZ/4paI=
-		</data>
-		<key>Resources/calendar.tiff</key>
-		<data>
-		6YC7A1FEEyC3CGnzyHWpm2YDhIM=
 		</data>
 		<key>Resources/clock b&amp;w.png</key>
 		<data>
@@ -406,7 +402,7 @@
 		</data>
 		<key>Resources/defaults.plist</key>
 		<data>
-		y0IbuyJj6tiP2wZKfxUqlsE8Bt0=
+		Duq7He3EACEgA6p0gwW4E3/etn0=
 		</data>
 		<key>Resources/en.lproj/Credits.rtf</key>
 		<dict>
@@ -430,7 +426,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			c8unYN7FoTAW1Yryd4xr20PdCAk=
+			JnVLazPyNLbwBQHgPtk2WINgNg8=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -530,6 +526,10 @@
 		<key>Resources/logo_64.png</key>
 		<data>
 		EBWgbwgmQQauWt3eW07gNq8WxEw=
+		</data>
+		<key>Resources/logo_with_title.png</key>
+		<data>
+		yW0Si4WniB0oUxK2vpp7cchB9as=
 		</data>
 		<key>Resources/macbookpro.png</key>
 		<data>
@@ -618,13 +618,26 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>Frameworks/Sparkle.framework</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			/4trsD4RTC4fg33Xd8RzAo5zTeo=
+			</data>
+			<key>requirement</key>
+			<string>anchor apple generic and identifier "org.andymatuschak.Sparkle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
+		</dict>
 		<key>Resources/AppIcon.icns</key>
 		<data>
-		LaYZpSUpkVgFv2yPteX8HvfTwdU=
+		lW8U8rgXQaSz+uX8JGjnDYvwDj8=
 		</data>
 		<key>Resources/Effra_Rg.ttf</key>
 		<data>
 		V7/5eGD8hqn7/snzpPyBZY7Y/iQ=
+		</data>
+		<key>Resources/MLCalendarView.nib</key>
+		<data>
+		2JCMWTqpQ8fwEgMt7glJL6CDdGo=
 		</data>
 		<key>Resources/NSDateTimeAgo.bundle/ar.lproj/NSDateTimeAgo.strings</key>
 		<dict>
@@ -918,10 +931,6 @@
 		<data>
 		siI6YDgZ+t6Fw7wqd8r4+Lfcxk8=
 		</data>
-		<key>Resources/TFDatePicker-Info.plist</key>
-		<data>
-		LsMOvskKSTKUgQtMh+T0ADfeTdA=
-		</data>
 		<key>Resources/TTActionHUDView.nib</key>
 		<data>
 		65ZNWnVN+BvyEDs8GSZneYjaZno=
@@ -932,7 +941,7 @@
 		</data>
 		<key>Resources/TTModeAlarmClockOptions.nib</key>
 		<data>
-		4gVZq4H2rIWHG5r58k9ZMUEDrcs=
+		7EfYJPSXvuOX0JAh0ALfGCVGaf0=
 		</data>
 		<key>Resources/TTModeAlarmSnoozeOptions.nib</key>
 		<data>
@@ -988,23 +997,19 @@
 		</data>
 		<key>Resources/TTSettingsAboutViewController.nib</key>
 		<data>
-		rMHFNZA5dBcGLSCthxTnN6cV8G0=
+		h4S0HPZuQg52948M9TrKQiGKWZs=
 		</data>
 		<key>Resources/TTSettingsDevicesViewController.nib</key>
 		<data>
-		w5/APgGlDjAB1xQemW1loUOb/zE=
+		WpmKZ+31+lff1BwTKssuAHILvPU=
 		</data>
 		<key>Resources/TTSettingsSupportViewController.nib</key>
 		<data>
-		KANJogOanVchMnynMSXwRe2qRlc=
+		b7V9l04c/7faPtizvNnRSdsDbHY=
 		</data>
 		<key>Resources/Turn Touch Remote.entitlements</key>
 		<data>
 		s3WSLfTKCP8Xv6f0V16/RZ/4paI=
-		</data>
-		<key>Resources/calendar.tiff</key>
-		<data>
-		6YC7A1FEEyC3CGnzyHWpm2YDhIM=
 		</data>
 		<key>Resources/clock b&amp;w.png</key>
 		<data>
@@ -1020,7 +1025,7 @@
 		</data>
 		<key>Resources/defaults.plist</key>
 		<data>
-		y0IbuyJj6tiP2wZKfxUqlsE8Bt0=
+		Duq7He3EACEgA6p0gwW4E3/etn0=
 		</data>
 		<key>Resources/en.lproj/Credits.rtf</key>
 		<dict>
@@ -1044,7 +1049,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			c8unYN7FoTAW1Yryd4xr20PdCAk=
+			JnVLazPyNLbwBQHgPtk2WINgNg8=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1144,6 +1149,10 @@
 		<key>Resources/logo_64.png</key>
 		<data>
 		EBWgbwgmQQauWt3eW07gNq8WxEw=
+		</data>
+		<key>Resources/logo_with_title.png</key>
+		<data>
+		yW0Si4WniB0oUxK2vpp7cchB9as=
 		</data>
 		<key>Resources/macbookpro.png</key>
 		<data>
