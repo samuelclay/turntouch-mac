@@ -215,6 +215,10 @@
     [self setValue:@([pairingButtonState activatedCount]) forKey:@"pairingActivatedCount"];
 }
 
+- (BOOL)isDevicePaired {
+    return pairingActivatedCount.integerValue == pairingButtonState.count;
+}
+
 - (BOOL)isDirectionPaired:(TTModeDirection)direction {
     switch (direction) {
         case NORTH:

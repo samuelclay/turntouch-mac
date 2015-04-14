@@ -357,6 +357,9 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
                 [buttonTimer readBluetoothData:characteristic.value];
             } else {
                 [buttonTimer readBluetoothDataDuringPairing:characteristic.value];
+                if ([buttonTimer isDevicePaired]) {
+                    [self pairDevice:peripheral];
+                }
             }
             device.lastActionDate = [NSDate date];
             [self setValue:[NSDate date] forKey:@"lastActionDate"];
@@ -575,6 +578,21 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
     }
     
     [self delayBatteryLevelReading];
+}
+
+#pragma mark - Pairing
+
+- (void)pairDevice:(CBPeripheral *)peripheral {
+    NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *pairedDevices = [[preferences objectForKey:@"CB:paired_devices"] mutableCopy];
+    if (!pairedDevices) {
+        pairedDevices = [[NSMutableArray alloc] init];
+    }
+    [pairedDevices addObject:peripheral.identifier.UUIDString];
+    [preferences setObject:pairedDevices forKey:@"CB:paired_devices"];
+    [preferences synchronize];
+    
+    [manager cancelPeripheralConnection:peripheral];
 }
 
 #pragma mark - Convenience methods

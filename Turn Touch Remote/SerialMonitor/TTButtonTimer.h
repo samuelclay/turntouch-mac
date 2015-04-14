@@ -36,6 +36,7 @@ typedef enum {
 - (void)fireButton:(TTModeDirection)direction;
 - (void)resetPairingState;
 - (void)readBluetoothDataDuringPairing:(NSData *)data;
+- (BOOL)isDevicePaired;
 - (BOOL)isDirectionPaired:(TTModeDirection)direction;
 
 @end
