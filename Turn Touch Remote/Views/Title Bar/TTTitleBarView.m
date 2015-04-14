@@ -11,9 +11,6 @@
 #import "TTDevice.h"
 #import "RHPreferences.h"
 #import "NSDate+TimeAgo.h"
-#import "TTSettingsDevicesViewController.h"
-#import "TTSettingsSupportViewController.h"
-#import "TTSettingsAboutViewController.h"
 
 #define CORNER_RADIUS 8.0f
 const NSInteger SETTINGS_ICON_SIZE = 16;
@@ -246,62 +243,23 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
     isMenuVisible = NO;
 }
 - (void)openSettingsDialog:(id)sender {
-    [self showPreferences:@"settings"];
+    [appDelegate showPreferences:@"settings"];
 }
 
 - (void)openAboutDialog:(id)sender {
-    [self showPreferences:@"about"];
+    [appDelegate showPreferences:@"about"];
 }
 
 - (void)openSupportDialog:(id)sender {
-    [self showPreferences:@"support"];
+    [appDelegate showPreferences:@"support"];
 }
 
 - (void)openDevicesDialog:(id)sender {
-    [self showPreferences:@"devices"];
+    [appDelegate showPreferences:@"devices"];
 }
 
 - (void)quit:(id)sender {
     [[NSApplication sharedApplication] terminate:sender];
-}
-
-- (void)showPreferences:(NSString *)selectedTab {
-    TTSettingsDevicesViewController *devices;
-    TTSettingsSupportViewController *support;
-    TTSettingsAboutViewController *about;
-    
-    if (!appDelegate.preferencesWindowController) {
-        devices = [[TTSettingsDevicesViewController alloc] init];
-        support = [[TTSettingsSupportViewController alloc] init];
-        about = [[TTSettingsAboutViewController alloc] init];
-        
-        NSArray *controllers = [NSArray arrayWithObjects:devices,
-                                [RHPreferencesWindowController flexibleSpacePlaceholderController],
-                                support, about,
-                                nil];
-        
-        appDelegate.preferencesWindowController = [[RHPreferencesWindowController alloc]
-                                                   initWithViewControllers:controllers
-                                                   andTitle:@"Turn Touch Settings"];
-    }
-
-    NSViewController<RHPreferencesViewControllerProtocol> * prefVc;
-    if ([selectedTab isEqualToString:@"devices"]) {
-        prefVc = [appDelegate.preferencesWindowController
-                  viewControllerWithIdentifier:@"TTSettingsDevicesViewController"];
-    } else if ([selectedTab isEqualToString:@"support"]) {
-        prefVc = [appDelegate.preferencesWindowController
-                  viewControllerWithIdentifier:@"TTSettingsSupportViewController"];
-    } else if ([selectedTab isEqualToString:@"about"]) {
-        prefVc = [appDelegate.preferencesWindowController
-                  viewControllerWithIdentifier:@"TTSettingsAboutViewController"];
-    }
-    if (prefVc) {
-        [appDelegate.preferencesWindowController setSelectedViewController:prefVc];
-    }
-    [NSApp activateIgnoringOtherApps:YES];
-    [appDelegate.preferencesWindowController showWindow:self];
-    
 }
 
 @end

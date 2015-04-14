@@ -35,5 +35,6 @@
 @property (retain) RHPreferencesWindowController *preferencesWindowController;
 
 - (IBAction)togglePanel:(id)sender;
+- (void)showPreferences:(NSString *)selectedTab;
 
 @end

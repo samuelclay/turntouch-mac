@@ -177,6 +177,8 @@
 		FFD62CCE194F935D0093004D /* TTSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD62CCD194F935D0093004D /* TTSegmentedCell.m */; };
 		FFD62CD11950EE770093004D /* TTSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD62CD01950EE770093004D /* TTSegmentedControl.m */; };
 		FFD8524F1ADD912F00325235 /* TTButtonState.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD8524E1ADD912F00325235 /* TTButtonState.m */; };
+		FFD852591ADDA49200325235 /* TTSettingsPairingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD852571ADDA49200325235 /* TTSettingsPairingViewController.m */; };
+		FFD8525A1ADDA49200325235 /* TTSettingsPairingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFD852581ADDA49200325235 /* TTSettingsPairingViewController.xib */; };
 		FFE0B3D01AD70DC600FC6080 /* logo_with_title.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE0B3CF1AD70DC600FC6080 /* logo_with_title.png */; };
 		FFE2D4741A451BEA00DDD413 /* TTBluetoothMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE2D4731A451BEA00DDD413 /* TTBluetoothMonitor.m */; };
 		FFE2D4761A451FA200DDD413 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFE2D4751A451FA200DDD413 /* CoreBluetooth.framework */; };
@@ -482,6 +484,9 @@
 		FFD62CD01950EE770093004D /* TTSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSegmentedControl.m; path = "Views/Mode Options/TTSegmentedControl.m"; sourceTree = "<group>"; };
 		FFD8524D1ADD912F00325235 /* TTButtonState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTButtonState.h; path = SerialMonitor/TTButtonState.h; sourceTree = "<group>"; };
 		FFD8524E1ADD912F00325235 /* TTButtonState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTButtonState.m; path = SerialMonitor/TTButtonState.m; sourceTree = "<group>"; };
+		FFD852561ADDA49200325235 /* TTSettingsPairingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTSettingsPairingViewController.h; sourceTree = "<group>"; };
+		FFD852571ADDA49200325235 /* TTSettingsPairingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTSettingsPairingViewController.m; sourceTree = "<group>"; };
+		FFD852581ADDA49200325235 /* TTSettingsPairingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTSettingsPairingViewController.xib; sourceTree = "<group>"; };
 		FFE0B3CF1AD70DC600FC6080 /* logo_with_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_with_title.png; sourceTree = "<group>"; };
 		FFE2D4721A451BEA00DDD413 /* TTBluetoothMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTBluetoothMonitor.h; path = SerialMonitor/TTBluetoothMonitor.h; sourceTree = "<group>"; };
 		FFE2D4731A451BEA00DDD413 /* TTBluetoothMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTBluetoothMonitor.m; path = SerialMonitor/TTBluetoothMonitor.m; sourceTree = "<group>"; };
@@ -704,6 +709,9 @@
 				FF5296151AD63425007DDC02 /* TTSettingsAboutViewController.h */,
 				FF5296161AD63425007DDC02 /* TTSettingsAboutViewController.m */,
 				FF5296171AD63425007DDC02 /* TTSettingsAboutViewController.xib */,
+				FFD852561ADDA49200325235 /* TTSettingsPairingViewController.h */,
+				FFD852571ADDA49200325235 /* TTSettingsPairingViewController.m */,
+				FFD852581ADDA49200325235 /* TTSettingsPairingViewController.xib */,
 			);
 			name = Settings;
 			path = Views/Settings;
@@ -1287,6 +1295,7 @@
 				FFFF683819D4E2C30081904A /* ideas.txt in Resources */,
 				FFEA6CB819218A5C0010874B /* TTModeAlarmClockOptions.xib in Resources */,
 				FF7305BB1A5C9C76009A852D /* press_smartbridge.png in Resources */,
+				FFD8525A1ADDA49200325235 /* TTSettingsPairingViewController.xib in Resources */,
 				FF913D2919243B89005C336F /* TTModeAlarmSnoozeOptions.xib in Resources */,
 				FFAA4F64182D96D60049FFC7 /* newspaper-3.png in Resources */,
 				FF2740701A7C576900C55579 /* itunes_genius_icon.png in Resources */,
@@ -1330,6 +1339,7 @@
 				FF1F135E1ADC90E700B52A0D /* MLCalendarCell.m in Sources */,
 				FFA1D4DA1A3B89A4003EA0BC /* TTModeHUDView.m in Sources */,
 				FF3641F71A660204003CC03C /* TTModeHueSceneOptions.m in Sources */,
+				FFD852591ADDA49200325235 /* TTSettingsPairingViewController.m in Sources */,
 				FF66F2A619228DE100031478 /* TTModeAlarmClockOptions.m in Sources */,
 				FF98A2E11867DBA40032CC7A /* TTActionMap.m in Sources */,
 				FF7305B11A5C9C76009A852D /* DDLog.m in Sources */,
