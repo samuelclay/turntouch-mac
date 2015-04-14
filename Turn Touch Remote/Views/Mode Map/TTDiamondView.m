@@ -208,6 +208,9 @@
 }
 
 - (void)colorPaths:(NSRect)rect {
+    // TODO: This entire view needs to be split into a mode diamond and action diamond, since only
+    //       the action diamond is interactive.
+    
     TTModeDirection activeModeDirection = (ignoreActiveMode || interactive) ? overrideActiveDirection : appDelegate.modeMap.activeModeDirection;
     TTModeDirection selectedModeDirection = ignoreSelectedMode ? overrideSelectedDirection : appDelegate.modeMap.selectedModeDirection;
     TTModeDirection inspectingModeDirection = appDelegate.modeMap.inspectingModeDirection;
@@ -218,7 +221,8 @@
                                  westPathTop, westPathBottom,
                                  southPathTop, southPathBottom]) {
         TTModeDirection direction = NO_DIRECTION;
-        BOOL bottomHalf = [@[northPathBottom, eastPathBottom, westPathBottom, southPathBottom] containsObject:path];
+        BOOL bottomHalf = [@[northPathBottom, eastPathBottom, westPathBottom, southPathBottom]
+                           containsObject:path];
         if ([path isEqual:northPathTop] || [path isEqual:northPathBottom]) {
             direction = NORTH;
         } else if ([path isEqual:eastPathTop] || [path isEqual:eastPathBottom]) {

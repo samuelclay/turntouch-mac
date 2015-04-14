@@ -137,9 +137,9 @@
 - (IBAction)slideLatency:(id)sender {
     NSEvent *event = [[NSApplication sharedApplication] currentEvent];
     BOOL endingDrag = event.type == NSLeftMouseUp;
-    NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+//    NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
     
-    NSLog(@"slider value: %d - %d", [sender integerValue], [[preferences objectForKey:@"TT:firmware:interval_min"] intValue]);
+//    NSLog(@"slider value: %d - %d", [sender integerValue], [[preferences objectForKey:@"TT:firmware:interval_min"] intValue]);
     
     if (endingDrag) {
         [appDelegate.bluetoothMonitor setDeviceLatency:[sender integerValue]];
@@ -151,9 +151,9 @@
 - (void)slideModeChange:(id)sender {
     NSEvent *event = [[NSApplication sharedApplication] currentEvent];
     BOOL endingDrag = event.type == NSLeftMouseUp;
-    NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+//    NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
     
-    NSLog(@"slider value: %d - %d", [sender integerValue], [[preferences objectForKey:@"TT:firmware:mode_duration"] intValue]);
+//    NSLog(@"slider value: %d - %d", [sender integerValue], [[preferences objectForKey:@"TT:firmware:mode_duration"] intValue]);
     
     if (endingDrag) {
         [appDelegate.bluetoothMonitor setModeDuration:[sender integerValue]];

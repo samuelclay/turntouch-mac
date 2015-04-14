@@ -14,6 +14,11 @@
 		FF0E12D11824811200D49EC7 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0E12D01824811200D49EC7 /* ScriptingBridge.framework */; };
 		FF0E12D41828560000D49EC7 /* TTModeVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12D31828560000D49EC7 /* TTModeVideo.m */; };
 		FF1B022B1A36898700BE764E /* NSObject+CancelableBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1B022A1A36898700BE764E /* NSObject+CancelableBlocks.m */; };
+		FF1F135D1ADC90E700B52A0D /* MLCalendarBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1F13571ADC90E700B52A0D /* MLCalendarBackground.m */; };
+		FF1F135E1ADC90E700B52A0D /* MLCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1F13591ADC90E700B52A0D /* MLCalendarCell.m */; };
+		FF1F135F1ADC90E700B52A0D /* MLCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1F135B1ADC90E700B52A0D /* MLCalendarView.m */; };
+		FF1F13601ADC90E700B52A0D /* MLCalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF1F135C1ADC90E700B52A0D /* MLCalendarView.xib */; };
+		FF1F13631ADC98C400B52A0D /* TTDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1F13621ADC98C400B52A0D /* TTDatePicker.m */; };
 		FF2365CC196F0DFA00A4ADBC /* mode_alarm.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2365C2196F0DFA00A4ADBC /* mode_alarm.png */; };
 		FF2365CD196F0DFA00A4ADBC /* mode_fitness.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2365C3196F0DFA00A4ADBC /* mode_fitness.png */; };
 		FF2365CE196F0DFA00A4ADBC /* mode_mac.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2365C4196F0DFA00A4ADBC /* mode_mac.png */; };
@@ -119,12 +124,6 @@
 		FF913D2C19243BFD005C336F /* TTModeAlarmSnoozeOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF913D2B19243BFD005C336F /* TTModeAlarmSnoozeOptions.m */; };
 		FF93604C196DF0B600675B7B /* Effra_Rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF936042196DF0B600675B7B /* Effra_Rg.ttf */; };
 		FF936057196DF1A500675B7B /* Effra_Rg.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = FF936042196DF0B600675B7B /* Effra_Rg.ttf */; };
-		FF936064196DF67500675B7B /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = FF93605A196DF67500675B7B /* calendar.png */; };
-		FF936065196DF67500675B7B /* calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF93605B196DF67500675B7B /* calendar@2x.png */; };
-		FF936066196DF67500675B7B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF93605C196DF67500675B7B /* InfoPlist.strings */; };
-		FF936067196DF67500675B7B /* TFDatePicker-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF93605E196DF67500675B7B /* TFDatePicker-Info.plist */; };
-		FF936068196DF67500675B7B /* TFDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = FF936061196DF67500675B7B /* TFDatePicker.m */; };
-		FF936069196DF67500675B7B /* TFDatePickerPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF936063196DF67500675B7B /* TFDatePickerPopoverController.m */; };
 		FF93606B196DF8A200675B7B /* clock b&w.png in Resources */ = {isa = PBXBuildFile; fileRef = FF93606A196DF8A200675B7B /* clock b&w.png */; };
 		FF981FCB191AB46600A4A94B /* TTModeMenuBordersView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF981FCA191AB46600A4A94B /* TTModeMenuBordersView.m */; };
 		FF98A2E11867DBA40032CC7A /* TTActionMap.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98A2E01867DBA40032CC7A /* TTActionMap.m */; };
@@ -220,6 +219,15 @@
 		FF0E12D71828569300D49EC7 /* VLC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VLC.h; path = Modes/Video/VLC.h; sourceTree = "<group>"; };
 		FF1B02291A36898700BE764E /* NSObject+CancelableBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSObject+CancelableBlocks.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		FF1B022A1A36898700BE764E /* NSObject+CancelableBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSObject+CancelableBlocks.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		FF1F13561ADC90E700B52A0D /* MLCalendarBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLCalendarBackground.h; sourceTree = "<group>"; };
+		FF1F13571ADC90E700B52A0D /* MLCalendarBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLCalendarBackground.m; sourceTree = "<group>"; };
+		FF1F13581ADC90E700B52A0D /* MLCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLCalendarCell.h; sourceTree = "<group>"; };
+		FF1F13591ADC90E700B52A0D /* MLCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLCalendarCell.m; sourceTree = "<group>"; };
+		FF1F135A1ADC90E700B52A0D /* MLCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLCalendarView.h; sourceTree = "<group>"; };
+		FF1F135B1ADC90E700B52A0D /* MLCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLCalendarView.m; sourceTree = "<group>"; };
+		FF1F135C1ADC90E700B52A0D /* MLCalendarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MLCalendarView.xib; sourceTree = "<group>"; };
+		FF1F13611ADC98C400B52A0D /* TTDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTDatePicker.h; sourceTree = "<group>"; };
+		FF1F13621ADC98C400B52A0D /* TTDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTDatePicker.m; sourceTree = "<group>"; };
 		FF2365C2196F0DFA00A4ADBC /* mode_alarm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mode_alarm.png; path = icons/mode_alarm.png; sourceTree = "<group>"; };
 		FF2365C3196F0DFA00A4ADBC /* mode_fitness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mode_fitness.png; path = icons/mode_fitness.png; sourceTree = "<group>"; };
 		FF2365C4196F0DFA00A4ADBC /* mode_mac.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mode_mac.png; path = icons/mode_mac.png; sourceTree = "<group>"; };
@@ -373,15 +381,6 @@
 		FF913D2A19243BFD005C336F /* TTModeAlarmSnoozeOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeAlarmSnoozeOptions.h; path = "Modes/Alarm Clock/TTModeAlarmSnoozeOptions.h"; sourceTree = "<group>"; };
 		FF913D2B19243BFD005C336F /* TTModeAlarmSnoozeOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeAlarmSnoozeOptions.m; path = "Modes/Alarm Clock/TTModeAlarmSnoozeOptions.m"; sourceTree = "<group>"; };
 		FF936042196DF0B600675B7B /* Effra_Rg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Effra_Rg.ttf; sourceTree = "<group>"; };
-		FF93605A196DF67500675B7B /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
-		FF93605B196DF67500675B7B /* calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar@2x.png"; sourceTree = "<group>"; };
-		FF93605D196DF67500675B7B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		FF93605E196DF67500675B7B /* TFDatePicker-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TFDatePicker-Info.plist"; sourceTree = "<group>"; };
-		FF93605F196DF67500675B7B /* TFDatePicker-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TFDatePicker-Prefix.pch"; sourceTree = "<group>"; };
-		FF936060196DF67500675B7B /* TFDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFDatePicker.h; sourceTree = "<group>"; };
-		FF936061196DF67500675B7B /* TFDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFDatePicker.m; sourceTree = "<group>"; };
-		FF936062196DF67500675B7B /* TFDatePickerPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFDatePickerPopoverController.h; sourceTree = "<group>"; };
-		FF936063196DF67500675B7B /* TFDatePickerPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFDatePickerPopoverController.m; sourceTree = "<group>"; };
 		FF93606A196DF8A200675B7B /* clock b&w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "clock b&w.png"; path = "icons/clock b&w.png"; sourceTree = "<group>"; };
 		FF981FC9191AB46600A4A94B /* TTModeMenuBordersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeMenuBordersView.h; sourceTree = "<group>"; };
 		FF981FCA191AB46600A4A94B /* TTModeMenuBordersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeMenuBordersView.m; sourceTree = "<group>"; };
@@ -573,6 +572,22 @@
 				FF0E12D71828569300D49EC7 /* VLC.h */,
 			);
 			name = Video;
+			sourceTree = "<group>";
+		};
+		FF1F13551ADC90E700B52A0D /* MLCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				FF1F13561ADC90E700B52A0D /* MLCalendarBackground.h */,
+				FF1F13571ADC90E700B52A0D /* MLCalendarBackground.m */,
+				FF1F13581ADC90E700B52A0D /* MLCalendarCell.h */,
+				FF1F13591ADC90E700B52A0D /* MLCalendarCell.m */,
+				FF1F135A1ADC90E700B52A0D /* MLCalendarView.h */,
+				FF1F135B1ADC90E700B52A0D /* MLCalendarView.m */,
+				FF1F135C1ADC90E700B52A0D /* MLCalendarView.xib */,
+				FF1F13611ADC98C400B52A0D /* TTDatePicker.h */,
+				FF1F13621ADC98C400B52A0D /* TTDatePicker.m */,
+			);
+			path = MLCalendar;
 			sourceTree = "<group>";
 		};
 		FF2740671A7C576900C55579 /* iTunes */ = {
@@ -917,9 +932,9 @@
 		FF936058196DF67500675B7B /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				FF1F13551ADC90E700B52A0D /* MLCalendar */,
 				FF5295CF1AD610A6007DDC02 /* RHPreferences */,
 				FF73058E1A5C9C76009A852D /* Hue */,
-				FF936059196DF67500675B7B /* TFDatePicker */,
 				FF1B02291A36898700BE764E /* NSObject+CancelableBlocks.h */,
 				FF1B022A1A36898700BE764E /* NSObject+CancelableBlocks.m */,
 				FF5296061AD61E74007DDC02 /* NSDate+TimeAgo.h */,
@@ -928,22 +943,6 @@
 			);
 			name = Vendor;
 			path = "Turn Touch Remote/Vendor";
-			sourceTree = "<group>";
-		};
-		FF936059196DF67500675B7B /* TFDatePicker */ = {
-			isa = PBXGroup;
-			children = (
-				FF93605A196DF67500675B7B /* calendar.png */,
-				FF93605B196DF67500675B7B /* calendar@2x.png */,
-				FF93605C196DF67500675B7B /* InfoPlist.strings */,
-				FF93605E196DF67500675B7B /* TFDatePicker-Info.plist */,
-				FF93605F196DF67500675B7B /* TFDatePicker-Prefix.pch */,
-				FF936060196DF67500675B7B /* TFDatePicker.h */,
-				FF936061196DF67500675B7B /* TFDatePicker.m */,
-				FF936062196DF67500675B7B /* TFDatePickerPopoverController.h */,
-				FF936063196DF67500675B7B /* TFDatePickerPopoverController.m */,
-			);
-			path = TFDatePicker;
 			sourceTree = "<group>";
 		};
 		FF98A2FD1868D37C0032CC7A /* Mac */ = {
@@ -1215,6 +1214,7 @@
 				FF8A73C61ABA69410023AA53 /* logo - 1024.png in Resources */,
 				FF2740731A7C576900C55579 /* itunes_podcast_icon.png in Resources */,
 				FF8C834717AB14B5000166FC /* Credits.rtf in Resources */,
+				FF1F13601ADC90E700B52A0D /* MLCalendarView.xib in Resources */,
 				FFE0B3D01AD70DC600FC6080 /* logo_with_title.png in Resources */,
 				FF3641F81A660204003CC03C /* TTModeHueSceneOptions.xib in Resources */,
 				FFA1D4CC1A3B8916003EA0BC /* TTActionHUDView.xib in Resources */,
@@ -1231,7 +1231,6 @@
 				FF8C834D17AB14B5000166FC /* MainMenu.xib in Resources */,
 				FF2365D2196F0DFA00A4ADBC /* mode_news.png in Resources */,
 				FF2740791A7C5BC200C55579 /* itunes_itunesu_icon.png in Resources */,
-				FF936067196DF67500675B7B /* TFDatePicker-Info.plist in Resources */,
 				FF2365D3196F0DFA00A4ADBC /* mode_timer.png in Resources */,
 				FF2EB77D1AA50D4D002549A7 /* itunes_music_icon.png in Resources */,
 				FF8528F61A96A63A00B289FD /* TTModeMusic.plist in Resources */,
@@ -1245,7 +1244,6 @@
 				FFAA4F60182D96D60049FFC7 /* filmstrip-3.png in Resources */,
 				FF8A73C81ABA69410023AA53 /* logo_64.png in Resources */,
 				FF27407A1A7C5BC200C55579 /* itunes_movies_icon.png in Resources */,
-				FF936065196DF67500675B7B /* calendar@2x.png in Resources */,
 				FFAA4F63182D96D60049FFC7 /* icon_music.png in Resources */,
 				FF2740751A7C576900C55579 /* originals.png in Resources */,
 				FFAA4F5F182D96D60049FFC7 /* equalizer-1.png in Resources */,
@@ -1264,12 +1262,10 @@
 				FF8012F9186A79A600955218 /* clock.png in Resources */,
 				FF2365CE196F0DFA00A4ADBC /* mode_mac.png in Resources */,
 				FF8012F5186A1AD100955218 /* defaults.plist in Resources */,
-				FF936066196DF67500675B7B /* InfoPlist.strings in Resources */,
 				FFAA4F67182D96D60049FFC7 /* sun.png in Resources */,
 				FF98A2EF1867DC320032CC7A /* Turn Touch Remote.entitlements in Resources */,
 				FF5296141AD633F4007DDC02 /* TTSettingsSupportViewController.xib in Resources */,
 				FFAA4F62182D96D60049FFC7 /* icon_movie.png in Resources */,
-				FF936064196DF67500675B7B /* calendar.png in Resources */,
 				FFFF683819D4E2C30081904A /* ideas.txt in Resources */,
 				FFEA6CB819218A5C0010874B /* TTModeAlarmClockOptions.xib in Resources */,
 				FF7305BB1A5C9C76009A852D /* press_smartbridge.png in Resources */,
@@ -1300,6 +1296,8 @@
 				FF5296051AD6142B007DDC02 /* RHPreferencesCustomPlaceholderController.m in Sources */,
 				FF1B022B1A36898700BE764E /* NSObject+CancelableBlocks.m in Sources */,
 				FF5295DB1AD610A6007DDC02 /* RHPreferencesWindowController.m in Sources */,
+				FF1F135D1ADC90E700B52A0D /* MLCalendarBackground.m in Sources */,
+				FF1F135F1ADC90E700B52A0D /* MLCalendarView.m in Sources */,
 				FFD62CD11950EE770093004D /* TTSegmentedControl.m in Sources */,
 				FFE2D47E1A51EDF000DDD413 /* TTModeHue.m in Sources */,
 				FF0E12C218242DF000D49EC7 /* TTButtonTimer.m in Sources */,
@@ -1311,11 +1309,11 @@
 				FFF05F3B18F77BE000AC6230 /* TTModeTitleView.m in Sources */,
 				FF5296131AD633F4007DDC02 /* TTSettingsSupportViewController.m in Sources */,
 				FF429AD21919C630007C485E /* TTModeMenuCollectionView.m in Sources */,
+				FF1F135E1ADC90E700B52A0D /* MLCalendarCell.m in Sources */,
 				FFA1D4DA1A3B89A4003EA0BC /* TTModeHUDView.m in Sources */,
 				FF3641F71A660204003CC03C /* TTModeHueSceneOptions.m in Sources */,
 				FF66F2A619228DE100031478 /* TTModeAlarmClockOptions.m in Sources */,
 				FF98A2E11867DBA40032CC7A /* TTActionMap.m in Sources */,
-				FF936068196DF67500675B7B /* TFDatePicker.m in Sources */,
 				FF7305B11A5C9C76009A852D /* DDLog.m in Sources */,
 				FFB5FF3E1A671C2600DF617A /* TTModeHueSceneSleepOptions.m in Sources */,
 				FF0E12BB1824286600D49EC7 /* TTModeMap.m in Sources */,
@@ -1327,6 +1325,7 @@
 				FF98A2E71867DBE70032CC7A /* TTMenubarController.m in Sources */,
 				FF80131A186CF8FF00955218 /* TTDiamondView.m in Sources */,
 				FFAA4F72182D9A5F0049FFC7 /* TTModeNews.m in Sources */,
+				FF1F13631ADC98C400B52A0D /* TTDatePicker.m in Sources */,
 				FF0E12CF18247D6100D49EC7 /* TTModeMusic.m in Sources */,
 				FFB653DD18DB9DEA00830B42 /* hid.c in Sources */,
 				FF52960E1AD631D1007DDC02 /* TTSettingsDevicesViewController.m in Sources */,
@@ -1378,7 +1377,6 @@
 				FF801329186CF90700955218 /* TTStatusItemView.m in Sources */,
 				FFA8EAA6190F11B200679A4D /* TTModeMenuItemView.m in Sources */,
 				FF981FCB191AB46600A4A94B /* TTModeMenuBordersView.m in Sources */,
-				FF936069196DF67500675B7B /* TFDatePickerPopoverController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1407,14 +1405,6 @@
 				FF8C834C17AB14B5000166FC /* en */,
 			);
 			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-		FF93605C196DF67500675B7B /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FF93605D196DF67500675B7B /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

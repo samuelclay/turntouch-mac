@@ -72,6 +72,8 @@ NSUInteger const kOnetimeHeight = 68;
     [sliderRepeatTime setIntegerValue:repeatAlarmTime];
     
     // Set onetime alarm date and time
+    datePicker.delegate = self;
+    [datePicker sendActionOn:NSLeftMouseDown];
     [datePicker setDateValue:oneTimeAlarmDate];
     [sliderOnetimeTime setIntegerValue:onetimeAlarmTime];
     
@@ -200,6 +202,14 @@ NSUInteger const kOnetimeHeight = 68;
     [(TTModeAlarmClock *)appDelegate.modeMap.selectedMode activateTimers];
 }
 
+- (void)didSelectDate:(NSDate *)selectedDate {
+    [self.datePicker.calendarPopover close];
+    [datePicker setDateValue:selectedDate];
+    [NSAppDelegate.modeMap changeModeOption:kOnetimeAlarmDate to:selectedDate];
+    [self updateOnetimeAlarmLabel];
+    [(TTModeAlarmClock *)appDelegate.modeMap.selectedMode activateTimers];
+}
+
 - (IBAction)changeOnetimeTime:(id)sender {
     NSInteger alarmTime = MIN(287, [sliderOnetimeTime integerValue]);
     
@@ -208,6 +218,9 @@ NSUInteger const kOnetimeHeight = 68;
     [(TTModeAlarmClock *)appDelegate.modeMap.selectedMode activateTimers];
 }
 
+- (void)datePickerCell:(NSDatePickerCell *)aDatePickerCell validateProposedDateValue:(NSDate *__autoreleasing *)proposedDateValue timeInterval:(NSTimeInterval *)proposedTimeInterval {
+    NSLog(@"proposed date: %@", aDatePickerCell);
+}
 - (void)updateOnetimeAlarmLabel {
     NSInteger onetimeAlarmTime = [[NSAppDelegate.modeMap modeOptionValue:kOnetimeAlarmTime] integerValue];
     NSDate *onetimeAlarmDate = [NSAppDelegate.modeMap modeOptionValue:kOnetimeAlarmDate];
@@ -218,7 +231,7 @@ NSUInteger const kOnetimeHeight = 68;
     [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
     
     NSTimeInterval diff = [alarmDate timeIntervalSinceDate:[NSDate date]];
-    if (diff < 0) {
+    if (diff <= 59) {
         [textOnetimeLabel setStringValue:@"Alarm is in the past!"];
         return;
     }

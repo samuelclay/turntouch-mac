@@ -7,9 +7,9 @@
 //
 
 #import "TTOptionsDetailView.h"
-#import "TFDatePicker.h"
+#import "TTDatePicker.h"
 
-@interface TTModeAlarmClockOptions : TTOptionsDetailViewController
+@interface TTModeAlarmClockOptions : TTOptionsDetailViewController <MLCalendarViewDelegate, NSDatePickerCellDelegate>
 
 @property (nonatomic) IBOutlet NSBox *boxRepeatOptions;
 @property (nonatomic) IBOutlet NSBox *boxOnetimeOptions;
@@ -22,7 +22,8 @@
 @property (nonatomic) IBOutlet NSSlider *sliderRepeatTime;
 @property (nonatomic) IBOutlet NSTextField *textRepeatTime;
 
-@property (nonatomic) IBOutlet TFDatePicker *datePicker;
+@property (nonatomic) IBOutlet TTDatePicker *datePicker;
+
 @property (nonatomic) IBOutlet NSSlider *sliderOnetimeTime;
 @property (nonatomic) IBOutlet NSTextField *textOnetimeLabel;
 
