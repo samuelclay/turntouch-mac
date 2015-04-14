@@ -213,6 +213,18 @@
     pairingButtonState.west |= !!(state & (1 << 2));
     pairingButtonState.south |= !!(state & (1 << 3));
     [self setValue:@([pairingButtonState activatedCount]) forKey:@"pairingActivatedCount"];
+    
+    if ((state & (1 << 0)) == (1 << 0)) {
+        [appDelegate.modeMap setActiveModeDirection:NORTH];
+    } else if ((state & (1 << 1)) == (1 << 1)) {
+        [appDelegate.modeMap setActiveModeDirection:EAST];
+    } else if ((state & (1 << 2)) == (1 << 2)) {
+        [appDelegate.modeMap setActiveModeDirection:WEST];
+    } else if ((state & (1 << 3)) == (1 << 3)) {
+        [appDelegate.modeMap setActiveModeDirection:SOUTH];
+    } else {
+        [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];
+    }
 }
 
 - (BOOL)isDevicePaired {

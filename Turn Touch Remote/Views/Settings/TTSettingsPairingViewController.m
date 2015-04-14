@@ -92,7 +92,6 @@
     if (found) {
         diamondView = [[TTDiamondView alloc] initWithFrame:diamondViewPlaceholder.bounds pairing:YES];
         [diamondView setIgnoreSelectedMode:YES];
-        [diamondView setIgnoreActiveMode:YES];
         for (NSView *subview in diamondViewPlaceholder.subviews) {
             [subview removeFromSuperview];
         }

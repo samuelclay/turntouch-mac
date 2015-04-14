@@ -61,6 +61,9 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
 - (void) startScan {
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
     NSArray *pairedDevices = [preferences objectForKey:@"CB:paired_devices"];
+    [preferences setObject:nil forKey:@"CB:paired_devices"];
+    [preferences synchronize];
+    pairedDevices = nil;
 
     if (!pairedDevices || !pairedDevices.count) {
         addingDevice = YES;
@@ -589,9 +592,11 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
         pairedDevices = [[NSMutableArray alloc] init];
     }
     [pairedDevices addObject:peripheral.identifier.UUIDString];
-    [preferences setObject:pairedDevices forKey:@"CB:paired_devices"];
+//    [preferences setObject:pairedDevices forKey:@"CB:paired_devices"];
     [preferences synchronize];
     
+    [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];
+
     [manager cancelPeripheralConnection:peripheral];
 }
 
