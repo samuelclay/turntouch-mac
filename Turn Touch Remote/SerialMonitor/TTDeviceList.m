@@ -56,11 +56,20 @@
     [self addDevice:device];
 }
 
-- (void)addDevice:(TTDevice *)device {
-    if (![devices containsObject:device]) {
-        [devices addObject:device];
+- (void)addDevice:(TTDevice *)addDevice {
+    for (TTDevice *device in devices) {
+        if ([device.peripheral.identifier.UUIDString
+             isEqualToString:addDevice.peripheral.identifier.UUIDString]) {
+            return;
+        }
     }
-    device.isPaired = [self isDevicePaired:device];
+
+    if (![devices containsObject:addDevice]) {
+        [devices addObject:addDevice];
+    } else {
+        NSLog(@"Already added device: %@", addDevice);
+    }
+    addDevice.isPaired = [self isDevicePaired:addDevice];
 }
 
 - (void)removePeripheral:(CBPeripheral *)peripheral {
