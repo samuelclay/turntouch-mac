@@ -88,6 +88,7 @@
 		FF7305C01A5CA8F5009A852D /* TTModeHueConnected.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7305BF1A5CA8F5009A852D /* TTModeHueConnected.m */; };
 		FF7305C21A5CB2E3009A852D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7305C11A5CB2E3009A852D /* SystemConfiguration.framework */; };
 		FF7305C41A5CB3EF009A852D /* TTModeHueConnect.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF7305C31A5CB3EF009A852D /* TTModeHueConnect.xib */; };
+		FF74D5321AF03A4C00794F00 /* TTDeviceList.m in Sources */ = {isa = PBXBuildFile; fileRef = FF74D5311AF03A4C00794F00 /* TTDeviceList.m */; };
 		FF7A1C6F1868FD72005FA756 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF98A30C1868F1120032CC7A /* QuartzCore.framework */; };
 		FF8012F318692D0A00955218 /* TTModeMac.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8012F218692D0A00955218 /* TTModeMac.m */; };
 		FF8012F5186A1AD100955218 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF8012F4186A1AD100955218 /* defaults.plist */; };
@@ -343,6 +344,8 @@
 		FF7305BF1A5CA8F5009A852D /* TTModeHueConnected.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeHueConnected.m; sourceTree = "<group>"; };
 		FF7305C11A5CB2E3009A852D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		FF7305C31A5CB3EF009A852D /* TTModeHueConnect.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTModeHueConnect.xib; sourceTree = "<group>"; };
+		FF74D5301AF03A4C00794F00 /* TTDeviceList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTDeviceList.h; path = SerialMonitor/TTDeviceList.h; sourceTree = "<group>"; };
+		FF74D5311AF03A4C00794F00 /* TTDeviceList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTDeviceList.m; path = SerialMonitor/TTDeviceList.m; sourceTree = "<group>"; };
 		FF8012F118692D0A00955218 /* TTModeMac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMac.h; path = Modes/Mac/TTModeMac.h; sourceTree = "<group>"; };
 		FF8012F218692D0A00955218 /* TTModeMac.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeMac.m; path = Modes/Mac/TTModeMac.m; sourceTree = "<group>"; };
 		FF8012F4186A1AD100955218 /* defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = defaults.plist; path = "Supporting Files/defaults.plist"; sourceTree = "<group>"; };
@@ -663,6 +666,8 @@
 			children = (
 				FFE2D4721A451BEA00DDD413 /* TTBluetoothMonitor.h */,
 				FFE2D4731A451BEA00DDD413 /* TTBluetoothMonitor.m */,
+				FF74D5301AF03A4C00794F00 /* TTDeviceList.h */,
+				FF74D5311AF03A4C00794F00 /* TTDeviceList.m */,
 				FF0E12C018242DF000D49EC7 /* TTButtonTimer.h */,
 				FF0E12C118242DF000D49EC7 /* TTButtonTimer.m */,
 				FFD8524D1ADD912F00325235 /* TTButtonState.h */,
@@ -1370,6 +1375,7 @@
 				FF801332186E156900955218 /* TTOptionsModeTitle.m in Sources */,
 				FFA1D4DD1A3B89A4003EA0BC /* TTModeHUDWindowController.m in Sources */,
 				FFA8EA9C190F07A500679A4D /* TTModeTabsContainer.m in Sources */,
+				FF74D5321AF03A4C00794F00 /* TTDeviceList.m in Sources */,
 				FF66F2A91922D1C100031478 /* TTOptionsDetailView.m in Sources */,
 				FFA1D4DC1A3B89A4003EA0BC /* TTModeHUDWindow.m in Sources */,
 				FF801335186E207B00955218 /* TTDiamondLabel.m in Sources */,

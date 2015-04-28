@@ -54,7 +54,7 @@
                                    forKeyPath:@"lastActionDate"
                                       options:0 context:nil];
     [appDelegate.bluetoothMonitor addObserver:self
-                                   forKeyPath:@"connectedDevicesCount"
+                                   forKeyPath:@"pairedDevicesCount"
                                       options:0 context:nil];
 }
 
@@ -66,7 +66,7 @@
         [devicesTable reloadData];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(lastActionDate))]) {
         [devicesTable reloadData];
-    } else if ([keyPath isEqual:NSStringFromSelector(@selector(connectedDevicesCount))]) {
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(pairedDevicesCount))]) {
         [devicesTable reloadData];
     }
 }
@@ -74,7 +74,7 @@
 - (void)dealloc {
     [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"batteryPct"];
     [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"lastActionDate"];
-    [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"connectedDevicesCount"];
+    [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"pairedDevicesCount"];
 }
 
 #pragma mark - RHPreferencesViewControllerProtocol
@@ -96,7 +96,7 @@
 #pragma mark - Devices Table
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return appDelegate.bluetoothMonitor.connectedDevicesCount.integerValue;
+    return appDelegate.bluetoothMonitor.foundDevices.count;
 }
 
 - (NSView *)tableView:(NSTableView *)tableView
@@ -111,8 +111,17 @@
         [result setBackgroundColor:[NSColor clearColor]];
     }
     
-    TTDevice *device = [appDelegate.bluetoothMonitor.connectedDevices objectAtIndex:row];
-    if (device.batteryPct.intValue <= 0) {
+    TTDevice *device = [appDelegate.bluetoothMonitor.foundDevices objectAtIndex:row];
+    if (!device.isPaired) {
+        // Unpaired
+        if ([tableColumn.identifier isEqualToString:@"deviceIdentifier"]) {
+            result.stringValue = device.uuid ? device.uuid.UUIDString : @"";
+        } else if ([tableColumn.identifier isEqualToString:@"batteryLevel"]) {
+            result.stringValue = device.batteryPct ? [NSString stringWithFormat:@"%@%%", device.batteryPct] : @"";
+        } else if ([tableColumn.identifier isEqualToString:@"lastAction"]) {
+            result.stringValue = @"Pairing...";
+        }
+    } else if (device.batteryPct.intValue <= 0) {
         // Still connecting
         if ([tableColumn.identifier isEqualToString:@"deviceIdentifier"]) {
             result.stringValue = @"Connecting to remote...";

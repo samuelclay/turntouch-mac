@@ -53,7 +53,7 @@
                                    forKeyPath:@"unpairedDeviceConnected"
                                       options:0 context:nil];
     [appDelegate.bluetoothMonitor addObserver:self
-                                   forKeyPath:@"connectedDevicesCount"
+                                   forKeyPath:@"pairedDevicesCount"
                                       options:0 context:nil];
 }
 
@@ -65,7 +65,7 @@
         [self countUnpairedDevices];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(unpairedDeviceConnected))]) {
         [self countUnpairedDevices];
-    } else if ([keyPath isEqual:NSStringFromSelector(@selector(connectedDevicesCount))]) {
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(pairedDevicesCount))]) {
         [self countUnpairedDevices];
     }
 }
@@ -73,7 +73,7 @@
 - (void)dealloc {
     [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"unpairedDevicesCount"];
     [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"unpairedDeviceConnected"];
-    [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"connectedDevicesCount"];
+    [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"pairedDevicesCount"];
 }
 
 #pragma mark - RHPreferencesViewControllerProtocol
@@ -99,7 +99,7 @@
     BOOL connected = [appDelegate.bluetoothMonitor.unpairedDeviceConnected boolValue];
     
     NSLog(@"Counting unpaired devices: %d-%d", found, connected);
-    if (!found && !connected) {
+    if (!found) {
         [titleBox setHidden:YES];
         [labelPressButtons setHidden:YES];
         [countdownIndicator setHidden:YES];

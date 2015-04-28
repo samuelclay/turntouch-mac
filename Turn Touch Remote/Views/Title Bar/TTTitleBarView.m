@@ -45,7 +45,7 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
                                    forKeyPath:@"lastActionDate"
                                       options:0 context:nil];
     [appDelegate.bluetoothMonitor addObserver:self
-                                   forKeyPath:@"connectedDevicesCount"
+                                   forKeyPath:@"pairedDevicesCount"
                                       options:0 context:nil];
 }
 
@@ -57,7 +57,7 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
         [self buildSettingsMenu:NO];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(lastActionDate))]) {
         [self buildSettingsMenu:NO];
-    } else if ([keyPath isEqual:NSStringFromSelector(@selector(connectedDevicesCount))]) {
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(pairedDevicesCount))]) {
         [self buildSettingsMenu:NO];
     }
 }
@@ -65,7 +65,7 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
 - (void)dealloc {
     [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"batteryPct"];
     [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"lastActionDate"];
-    [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"connectedDevicesCount"];
+    [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"pairedDevicesCount"];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
@@ -166,14 +166,17 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
         [settingsMenu removeAllItems];
     }
 
-    NSArray *connectedDevices = appDelegate.bluetoothMonitor.connectedDevices;
-    for (TTDevice *device in connectedDevices) {
+    TTDeviceList *foundDevices = appDelegate.bluetoothMonitor.foundDevices;
+    for (TTDevice *device in foundDevices) {
         NSString *batteryLevel = [NSString stringWithFormat:@"Battery level: %d%%",
                                   (int)device.batteryPct.intValue];
         menuItem = [[NSMenuItem alloc] initWithTitle:batteryLevel action:@selector(openDevicesDialog:) keyEquivalent:@""];
         [menuItem setTarget:self];
-        if (device.batteryPct.intValue <= 0) {
+        if (device.isPaired && device.batteryPct.intValue <= 0) {
             [menuItem setTitle:@"Connecting to remote..."];
+            [menuItem setEnabled:NO];
+        } else if (!device.isPaired) {
+            [menuItem setTitle:@"Pairing with remote..."];
             [menuItem setEnabled:NO];
         }
         [settingsMenu addItem:menuItem];
@@ -191,7 +194,7 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
 
         [settingsMenu addItem:[NSMenuItem separatorItem]];
     }
-    if (!connectedDevices.count) {
+    if (!foundDevices.count) {
         menuItem = [[NSMenuItem alloc] initWithTitle:@"No remotes connected" action:nil keyEquivalent:@""];
         [menuItem setEnabled:NO];
         [settingsMenu addItem:menuItem];

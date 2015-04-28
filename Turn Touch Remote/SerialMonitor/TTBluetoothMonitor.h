@@ -10,6 +10,7 @@
 #import <IOBluetooth/IOBluetooth.h>
 #import "TTAppDelegate.h"
 #import "TTButtonTimer.h"
+#import "TTDeviceList.h"
 
 typedef enum {
     FIRMWARE_INTERVAL_MIN = 0,
@@ -29,19 +30,18 @@ typedef enum {
 
     NSString *manufacturer;
     CBCentralManager *manager;
-    NSMutableArray *connectedDevices;
     NSMutableDictionary *characteristics;
 }
 
 @property (nonatomic) NSNumber *batteryPct;
 @property (nonatomic) NSDate *lastActionDate;
-@property (nonatomic) NSMutableArray *foundPeripherals;
-@property (nonatomic) NSMutableArray *unpairedPeripherals;
-@property (nonatomic) NSMutableArray *connectedDevices;
-@property (nonatomic) NSNumber *connectedDevicesCount;
-@property (nonatomic) NSNumber *unpairedDevicesCount;
 @property (nonatomic) TTButtonTimer *buttonTimer;
 @property (nonatomic, readwrite) BOOL addingDevice;
+
+// Both unpaired and paired peripherals
+@property (nonatomic) TTDeviceList *foundDevices;
+@property (nonatomic) NSNumber *pairedDevicesCount;
+@property (nonatomic) NSNumber *unpairedDevicesCount;
 @property (nonatomic, readwrite) NSNumber *unpairedDeviceConnected;
 
 - (void)startScan;

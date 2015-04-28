@@ -75,7 +75,7 @@
         [appDelegate.modeMap removeObserver:self forKeyPath:@"hoverModeDirection"];
     }
     if (statusBar) {
-        [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"connectedDevices"];
+        [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"pairedDevicesCount"];
     }
     if (pairing) {
         [appDelegate.bluetoothMonitor.buttonTimer removeObserver:self forKeyPath:@"pairingActivatedCount"];
@@ -93,7 +93,7 @@
                                  options:0 context:nil];
     }
     if (statusBar) {
-        [appDelegate.bluetoothMonitor addObserver:self forKeyPath:@"connectedDevicesCount"
+        [appDelegate.bluetoothMonitor addObserver:self forKeyPath:@"pairedDevicesCount"
                                           options:0 context:nil];
     }
     if (pairing) {
@@ -122,7 +122,7 @@
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(selectedMode))]) {
         [self setNeedsDisplay:YES];
-    } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(connectedDevicesCount))]) {
+    } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(pairedDevicesCount))]) {
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(pairingActivatedCount))]) {
         [self setNeedsDisplay:YES];
@@ -130,7 +130,7 @@
 }
          
 - (BOOL)isDeviceConnected {
-    return appDelegate.bluetoothMonitor.connectedDevices.count > 0;
+    return appDelegate.bluetoothMonitor.pairedDevicesCount.integerValue > 0;
 }
          
 #pragma mark - Drawing
