@@ -60,11 +60,18 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
 #pragma mark - Start/Stop Scan methods
 
 - (void) startScan {
+    [self startScan:addingDevice];
+}
+
+- (void)startScan:(BOOL)_addingDevice {
+    addingDevice = _addingDevice;
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
     NSArray *pairedDevices = [preferences objectForKey:@"CB:paired_devices"];
-    [preferences setObject:nil forKey:@"CB:paired_devices"];
-    [preferences synchronize];
-    pairedDevices = nil;
+    if (NO) {
+        [preferences setObject:nil forKey:@"CB:paired_devices"];
+        [preferences synchronize];
+        pairedDevices = nil;
+    }
 
     if (!pairedDevices || !pairedDevices.count) {
         addingDevice = YES;
@@ -153,6 +160,10 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
             [foundPeripherals addObject:peripheral];
         }
         if ([pairedDevices containsObject:peripheral.identifier.UUIDString] || addingDevice) {
+            if (addingDevice) {
+                [appDelegate showPreferences:@"pairing"];
+                addingDevice = NO;
+            }
             [manager connectPeripheral:peripheral
                                options:@{CBConnectPeripheralOptionNotifyOnDisconnectionKey: [NSNumber numberWithBool:YES],
                                          CBCentralManagerOptionShowPowerAlertKey: [NSNumber numberWithBool:YES]}];
@@ -168,6 +179,7 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
     NSArray *pairedDevices = [preferences objectForKey:@"CB:paired_devices"];
 
+    [self setValue:@(NO) forKey:@"unpairedDeviceConnected"];
     [peripheral setDelegate:self];
 
     if ([pairedDevices containsObject:peripheral.identifier.UUIDString]) {
@@ -195,7 +207,6 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
         if (![unpairedPeripherals containsObject:peripheral]) {
             [unpairedPeripherals addObject:peripheral];
         }
-        [self setValue:@(NO) forKey:@"unpairedDeviceConnected"];
         [buttonTimer resetPairingState];
         [self countDevices];
     }
@@ -597,10 +608,11 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
         pairedDevices = [[NSMutableArray alloc] init];
     }
     [pairedDevices addObject:peripheral.identifier.UUIDString];
-//    [preferences setObject:pairedDevices forKey:@"CB:paired_devices"];
+    [preferences setObject:pairedDevices forKey:@"CB:paired_devices"];
     [preferences synchronize];
     
     [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];
+    [appDelegate showPreferences:@"devices"];
 
     [manager cancelPeripheralConnection:peripheral];
 }

@@ -198,6 +198,14 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
         
         [settingsMenu addItem:[NSMenuItem separatorItem]];
     }
+
+    menuItem = [[NSMenuItem alloc] initWithTitle:@"Add a new remote..."
+                                          action:@selector(openPairingDialog:)
+                                   keyEquivalent:@""];
+    [menuItem setTarget:self];
+    [settingsMenu addItem:menuItem];
+
+    [settingsMenu addItem:[NSMenuItem separatorItem]];
     
     menuItem = [[NSMenuItem alloc] initWithTitle:@"Settings..."
                                           action:@selector(openSettingsDialog:)
@@ -242,8 +250,13 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
 - (void)menuDidClose:(NSMenu *)menu {
     isMenuVisible = NO;
 }
+
 - (void)openSettingsDialog:(id)sender {
     [appDelegate showPreferences:@"settings"];
+}
+
+- (void)openPairingDialog:(id)sender {
+    [appDelegate showPreferences:@"pairing"];
 }
 
 - (void)openAboutDialog:(id)sender {

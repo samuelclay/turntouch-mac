@@ -148,7 +148,7 @@
 }
 
 - (void)drawPaths:(NSRect)rect {
-    NSLog(@"Draw diamond: %@ - %@", NSStringFromRect(rect), NSStringFromRect(self.bounds));
+//    NSLog(@"Draw diamond: %@ - %@", NSStringFromRect(rect), NSStringFromRect(self.bounds));
     CGFloat width = NSMaxX(rect);
     CGFloat height = NSMaxY(rect);
     CGFloat spacing = SPACING_PCT * width;

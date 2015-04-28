@@ -39,7 +39,7 @@
 }
 
 - (void)viewWillAppear {
-    [self countChanged];
+    [self countUnpairedDevices];
     [appDelegate.bluetoothMonitor startScan];
 }
 
@@ -52,6 +52,9 @@
     [appDelegate.bluetoothMonitor addObserver:self
                                    forKeyPath:@"unpairedDeviceConnected"
                                       options:0 context:nil];
+    [appDelegate.bluetoothMonitor addObserver:self
+                                   forKeyPath:@"connectedDevicesCount"
+                                      options:0 context:nil];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
@@ -59,15 +62,18 @@
                         change:(NSDictionary *)change
                        context:(void *)context {
     if ([keyPath isEqual:NSStringFromSelector(@selector(unpairedDevicesCount))]) {
-        [self countChanged];
+        [self countUnpairedDevices];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(unpairedDeviceConnected))]) {
-        [self countChanged];
+        [self countUnpairedDevices];
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(connectedDevicesCount))]) {
+        [self countUnpairedDevices];
     }
 }
 
 - (void)dealloc {
     [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"unpairedDevicesCount"];
     [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"unpairedDeviceConnected"];
+    [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"connectedDevicesCount"];
 }
 
 #pragma mark - RHPreferencesViewControllerProtocol
@@ -88,10 +94,11 @@
 
 #pragma mark - Drawing
 
-- (void)countChanged {
-    BOOL found = !!appDelegate.bluetoothMonitor.unpairedDevicesCount;
+- (void)countUnpairedDevices {
+    BOOL found = !![appDelegate.bluetoothMonitor.unpairedDevicesCount integerValue];
     BOOL connected = [appDelegate.bluetoothMonitor.unpairedDeviceConnected boolValue];
     
+    NSLog(@"Counting unpaired devices: %d-%d", found, connected);
     if (!found && !connected) {
         [titleBox setHidden:YES];
         [labelPressButtons setHidden:YES];

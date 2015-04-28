@@ -54,9 +54,9 @@ void *kContextActivePanel = &kContextActivePanel;
     [self.modeMap activateTimers];
     [self observeSleepNotifications];
     
-    [self.panelController openPanel];
-    [self showPreferences:@"pairing"];
-    [self.panelController closePanel];
+//    [self.panelController openPanel];
+//    [self showPreferences:@"pairing"];
+//    [self.panelController closePanel];
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender {
@@ -160,7 +160,7 @@ void *kContextActivePanel = &kContextActivePanel;
                   viewControllerWithIdentifier:@"TTSettingsDevicesViewController"];
     } else if ([selectedTab isEqualToString:@"pairing"]) {
         prefVc = [preferencesWindowController
-                  viewControllerWithIdentifier:@"TTPairingViewControllertit"];
+                  viewControllerWithIdentifier:@"TTSettingsPairingViewController"];
     } else if ([selectedTab isEqualToString:@"support"]) {
         prefVc = [preferencesWindowController
                   viewControllerWithIdentifier:@"TTSettingsSupportViewController"];
