@@ -19,7 +19,9 @@
 }
 
 - (NSInteger)count {
-    return [devices count] || 0;
+    NSInteger count = [devices count];
+    if (!count) return 0;
+    return count;
 }
 
 - (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(__unsafe_unretained id [])buffer count:(NSUInteger)len {

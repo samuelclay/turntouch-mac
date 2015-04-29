@@ -136,17 +136,13 @@ const int BATTERY_LEVEL_READING_DELAY = 60*60*6; // every 6 hours
     
     for (CBPeripheral *peripheral in peripherals) {
         [foundDevices addPeripheral:peripheral];
-        BOOL devicePaired = [foundDevices isPeripheralPaired:peripheral];
-
-        if (devicePaired || noPairedDevices) {
-            if (noPairedDevices) {
-                [appDelegate showPreferences:@"pairing"];
-            }
-
-            [manager connectPeripheral:peripheral
-                               options:@{CBConnectPeripheralOptionNotifyOnDisconnectionKey: [NSNumber numberWithBool:YES],
-                                         CBCentralManagerOptionShowPowerAlertKey: [NSNumber numberWithBool:YES]}];
+        if (noPairedDevices) {
+            [appDelegate showPreferences:@"pairing"];
         }
+
+        [manager connectPeripheral:peripheral
+                           options:@{CBConnectPeripheralOptionNotifyOnDisconnectionKey: [NSNumber numberWithBool:YES],
+                                     CBCentralManagerOptionShowPowerAlertKey: [NSNumber numberWithBool:YES]}];
     }
 }
 
