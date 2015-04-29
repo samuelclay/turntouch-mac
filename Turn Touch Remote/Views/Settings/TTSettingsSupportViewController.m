@@ -14,6 +14,8 @@
 
 @implementation TTSettingsSupportViewController
 
+@synthesize emailButton;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:@"TTSettingsSupportViewController" bundle:nibBundleOrNil];
     if (self) {
@@ -24,7 +26,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do view setup here.
+
+    NSColor *color = NSColorFromRGB(0x086DD6);
+    NSMutableAttributedString *colorTitle = [[NSMutableAttributedString alloc]
+                                             initWithAttributedString:[emailButton attributedTitle]];
+    NSRange titleRange = NSMakeRange(0, [colorTitle length]);
+    [colorTitle addAttribute:NSForegroundColorAttributeName
+                       value:color
+                       range:titleRange];
+    [emailButton setAttributedTitle:colorTitle];
+    
+    [emailButton addCursorRect:[emailButton bounds] cursor:[NSCursor pointingHandCursor]];
+
 }
 
 #pragma mark - RHPreferencesViewControllerProtocol
@@ -43,5 +56,23 @@
     return nil;
 }
 
+#pragma mark - Actions
+
+- (IBAction)openSupportEmail:(id)sender {
+    NSString *mailtoAddress = [[NSString stringWithFormat:@"mailto:%@?Subject=%@&body=%@", @"samuel@turntouch.com", @"", @""] stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:mailtoAddress]];
+}
+
+@end
+
+@interface TTLinkButton : NSButton
+
+@end
+
+@implementation TTLinkButton
+
+- (void)resetCursorRects {
+    [self addCursorRect:[self bounds] cursor:[NSCursor pointingHandCursor]];
+}
 
 @end

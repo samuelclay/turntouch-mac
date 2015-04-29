@@ -12,4 +12,8 @@
 @interface TTSettingsSupportViewController : NSViewController
 <RHPreferencesViewControllerProtocol>
 
+@property (nonatomic) IBOutlet NSButton *emailButton;
+
+- (IBAction)openSupportEmail:(id)sender;
+
 @end
