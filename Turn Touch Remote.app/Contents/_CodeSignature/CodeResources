@@ -380,9 +380,13 @@
 		<data>
 		WpmKZ+31+lff1BwTKssuAHILvPU=
 		</data>
+		<key>Resources/TTSettingsPairingViewController.nib</key>
+		<data>
+		yF4i1UXNYUuHoV67ltiC3c5cXgM=
+		</data>
 		<key>Resources/TTSettingsSupportViewController.nib</key>
 		<data>
-		b7V9l04c/7faPtizvNnRSdsDbHY=
+		3KzIXzCEpqVNhOQwNvar3IkJpyo=
 		</data>
 		<key>Resources/Turn Touch Remote.entitlements</key>
 		<data>
@@ -622,7 +626,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			/4trsD4RTC4fg33Xd8RzAo5zTeo=
+			gJurpk4yx+OETtUwRK+IRbubX70=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.andymatuschak.Sparkle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -1003,9 +1007,13 @@
 		<data>
 		WpmKZ+31+lff1BwTKssuAHILvPU=
 		</data>
+		<key>Resources/TTSettingsPairingViewController.nib</key>
+		<data>
+		yF4i1UXNYUuHoV67ltiC3c5cXgM=
+		</data>
 		<key>Resources/TTSettingsSupportViewController.nib</key>
 		<data>
-		b7V9l04c/7faPtizvNnRSdsDbHY=
+		3KzIXzCEpqVNhOQwNvar3IkJpyo=
 		</data>
 		<key>Resources/Turn Touch Remote.entitlements</key>
 		<data>

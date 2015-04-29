@@ -45,7 +45,6 @@ typedef enum {
 @property (nonatomic, readwrite) NSNumber *unpairedDeviceConnected;
 
 - (void)startScan;
-- (void)startScan:(BOOL)_addingDevice;
 - (void)stopScan;
 - (BOOL)isLECapableHardware;
 - (void)terminate;

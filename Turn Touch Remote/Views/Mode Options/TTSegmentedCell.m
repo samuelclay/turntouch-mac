@@ -242,11 +242,16 @@
             [self setSelected:YES forSegment:highlightedSegment];
         }
         if ([self.target respondsToSelector:self.action]) {
-            IMP imp = [self.target methodForSelector:self.action];
-            void (*func)(id, SEL) = (void *)imp;
-            func(self.target, self.action);
+            // Lines below crash in release but not in debug, so using warning-suppression instead
+//            IMP imp = [self.target methodForSelector:self.action];
+//            void (*func)(id, SEL) = (void *)imp;
+//            func(self.target, self.action);
             // Verbose above, but without warnings from line below
-//            [self.target performSelector:self.action withObject:controlView];
+            //disable warning:"PerformSelector may cause a leak because its selector is unknown"
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+            [self.target performSelector:self.action withObject:controlView];
+#pragma clang diagnostic pop
         }
     }
     
