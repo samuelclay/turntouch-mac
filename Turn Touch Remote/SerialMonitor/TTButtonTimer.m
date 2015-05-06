@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Turn Touch. All rights reserved.
 //
 
+#import <AudioToolbox/AudioToolbox.h>
 #import "TTButtonTimer.h"
 #import "TTModeMap.h"
 
@@ -150,6 +151,11 @@
     [appDelegate.modeMap setSelectedModeDirection:direction];
     
     [appDelegate.hudController holdToastActiveMode:YES];
+
+    SystemSoundID soundID;
+    NSString *soundFile = [[NSBundle mainBundle] pathForResource:@"north tone" ofType:@"wav"];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:soundFile], &soundID);
+    AudioServicesPlaySystemSound(soundID);
 }
 
 - (void)activateButton:(TTModeDirection)direction {

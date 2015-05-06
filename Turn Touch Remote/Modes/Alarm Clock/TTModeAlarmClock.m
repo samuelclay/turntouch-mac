@@ -407,6 +407,9 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
     if (originalSystemVolume) {
         [TTModeMac setVolume:originalSystemVolume];
     }
+    if (volumeFadeTimer) {
+        [volumeFadeTimer invalidate];
+    }
     [self activateTimers];
 }
 
@@ -421,6 +424,11 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
     
     if (volumeFadeMultiplier >= 1.0) {
         NSLog(@"Done fading in volume.");
+        return;
+    }
+    
+    if (![stopAlarmTimer isValid]) {
+        NSLog(@"Alarm stopped before volume fade completed.");
         return;
     }
     

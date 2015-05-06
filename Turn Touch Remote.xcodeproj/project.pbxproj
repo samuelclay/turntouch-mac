@@ -124,6 +124,10 @@
 		FF913D271924366C005C336F /* TTModeAlarmClock.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF913D261924366C005C336F /* TTModeAlarmClock.plist */; };
 		FF913D2919243B89005C336F /* TTModeAlarmSnoozeOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF913D2819243B89005C336F /* TTModeAlarmSnoozeOptions.xib */; };
 		FF913D2C19243BFD005C336F /* TTModeAlarmSnoozeOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF913D2B19243BFD005C336F /* TTModeAlarmSnoozeOptions.m */; };
+		FF9170991AF9B19100FAAC88 /* east tone.wav in Resources */ = {isa = PBXBuildFile; fileRef = FF9170951AF9B19100FAAC88 /* east tone.wav */; };
+		FF91709A1AF9B19100FAAC88 /* north tone.wav in Resources */ = {isa = PBXBuildFile; fileRef = FF9170961AF9B19100FAAC88 /* north tone.wav */; };
+		FF91709B1AF9B19100FAAC88 /* south tone.wav in Resources */ = {isa = PBXBuildFile; fileRef = FF9170971AF9B19100FAAC88 /* south tone.wav */; };
+		FF91709C1AF9B19100FAAC88 /* west tone.wav in Resources */ = {isa = PBXBuildFile; fileRef = FF9170981AF9B19100FAAC88 /* west tone.wav */; };
 		FF93604C196DF0B600675B7B /* Effra_Rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF936042196DF0B600675B7B /* Effra_Rg.ttf */; };
 		FF936057196DF1A500675B7B /* Effra_Rg.ttf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = FF936042196DF0B600675B7B /* Effra_Rg.ttf */; };
 		FF93606B196DF8A200675B7B /* clock b&w.png in Resources */ = {isa = PBXBuildFile; fileRef = FF93606A196DF8A200675B7B /* clock b&w.png */; };
@@ -398,6 +402,10 @@
 		FF913D2819243B89005C336F /* TTModeAlarmSnoozeOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeAlarmSnoozeOptions.xib; path = "Modes/Alarm Clock/TTModeAlarmSnoozeOptions.xib"; sourceTree = "<group>"; };
 		FF913D2A19243BFD005C336F /* TTModeAlarmSnoozeOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeAlarmSnoozeOptions.h; path = "Modes/Alarm Clock/TTModeAlarmSnoozeOptions.h"; sourceTree = "<group>"; };
 		FF913D2B19243BFD005C336F /* TTModeAlarmSnoozeOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeAlarmSnoozeOptions.m; path = "Modes/Alarm Clock/TTModeAlarmSnoozeOptions.m"; sourceTree = "<group>"; };
+		FF9170951AF9B19100FAAC88 /* east tone.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "east tone.wav"; sourceTree = "<group>"; };
+		FF9170961AF9B19100FAAC88 /* north tone.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "north tone.wav"; sourceTree = "<group>"; };
+		FF9170971AF9B19100FAAC88 /* south tone.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "south tone.wav"; sourceTree = "<group>"; };
+		FF9170981AF9B19100FAAC88 /* west tone.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "west tone.wav"; sourceTree = "<group>"; };
 		FF936042196DF0B600675B7B /* Effra_Rg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Effra_Rg.ttf; sourceTree = "<group>"; };
 		FF93606A196DF8A200675B7B /* clock b&w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "clock b&w.png"; path = "icons/clock b&w.png"; sourceTree = "<group>"; };
 		FF981FC9191AB46600A4A94B /* TTModeMenuBordersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeMenuBordersView.h; sourceTree = "<group>"; };
@@ -514,13 +522,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF8012F7186A599600955218 /* AudioToolbox.framework in Frameworks */,
 				FF1F13651ADC9DEC00B52A0D /* Sparkle.framework in Frameworks */,
 				FFAA61E01ABA6A9200AA422B /* HueSDK_OSX.framework in Frameworks */,
 				FFBC625F1A9D699D0032AD24 /* AVFoundation.framework in Frameworks */,
 				FF7305C21A5CB2E3009A852D /* SystemConfiguration.framework in Frameworks */,
 				FFE2D4761A451FA200DDD413 /* CoreBluetooth.framework in Frameworks */,
 				FFB653E018DBA14E00830B42 /* CoreFoundation.framework in Frameworks */,
-				FF8012F7186A599600955218 /* AudioToolbox.framework in Frameworks */,
 				FF7A1C6F1868FD72005FA756 /* QuartzCore.framework in Frameworks */,
 				FF0E12D11824811200D49EC7 /* ScriptingBridge.framework in Frameworks */,
 				FF4E26321823197D00D477F6 /* IOKit.framework in Frameworks */,
@@ -939,6 +947,7 @@
 			isa = PBXGroup;
 			children = (
 				FF936038196DF0B600675B7B /* fonts */,
+				FF9170941AF9B19100FAAC88 /* sounds */,
 				FF98A2E91867DC320032CC7A /* main.m */,
 				FFAA61E11ABA6AD000AA422B /* Turn Touch Remote-Info.plist */,
 				FFAA61E21ABA6AD000AA422B /* Turn Touch Remote-Prefix.pch */,
@@ -948,6 +957,18 @@
 				FF8012F4186A1AD100955218 /* defaults.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FF9170941AF9B19100FAAC88 /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				FF9170951AF9B19100FAAC88 /* east tone.wav */,
+				FF9170961AF9B19100FAAC88 /* north tone.wav */,
+				FF9170971AF9B19100FAAC88 /* south tone.wav */,
+				FF9170981AF9B19100FAAC88 /* west tone.wav */,
+			);
+			name = sounds;
+			path = Resources/sounds;
 			sourceTree = "<group>";
 		};
 		FF936038196DF0B600675B7B /* fonts */ = {
@@ -1230,6 +1251,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF9170991AF9B19100FAAC88 /* east tone.wav in Resources */,
 				FF27407B1A7C5BC200C55579 /* itunes_tv_icon.png in Resources */,
 				FF93604C196DF0B600675B7B /* Effra_Rg.ttf in Resources */,
 				FF8528F81A96B58700B289FD /* TTModeMusicVolumeJumpOptions.xib in Resources */,
@@ -1270,6 +1292,7 @@
 				FF93606B196DF8A200675B7B /* clock b&w.png in Resources */,
 				FF2365D5196F0DFA00A4ADBC /* mode_web.png in Resources */,
 				FFAA4F5E182D96D60049FFC7 /* cog.png in Resources */,
+				FF91709A1AF9B19100FAAC88 /* north tone.wav in Resources */,
 				FF3641DC1A5F5617003CC03C /* TTModeHueOptions.xib in Resources */,
 				FF913D271924366C005C336F /* TTModeAlarmClock.plist in Resources */,
 				FFAA4F60182D96D60049FFC7 /* filmstrip-3.png in Resources */,
@@ -1281,6 +1304,7 @@
 				FF2740711A7C576900C55579 /* itunes_library_icon.png in Resources */,
 				FF98A3031868D3F90032CC7A /* imac.png in Resources */,
 				FF2365CC196F0DFA00A4ADBC /* mode_alarm.png in Resources */,
+				FF91709B1AF9B19100FAAC88 /* south tone.wav in Resources */,
 				FFB5FF431A6723EA00DF617A /* TTModeHue.plist in Resources */,
 				FF5295BC1AD4D112007DDC02 /* settings.png in Resources */,
 				FF5295DA1AD610A6007DDC02 /* RHPreferencesWindow.xib in Resources */,
@@ -1289,6 +1313,7 @@
 				FF3641EB1A60BBEE003CC03C /* TTModeHueConnected.xib in Resources */,
 				FF8A73C91ABA69410023AA53 /* logo_128.png in Resources */,
 				FF2365D4196F0DFA00A4ADBC /* mode_video.png in Resources */,
+				FF91709C1AF9B19100FAAC88 /* west tone.wav in Resources */,
 				FF2365D0196F0DFA00A4ADBC /* mode_morning.png in Resources */,
 				FF8012F9186A79A600955218 /* clock.png in Resources */,
 				FF2365CE196F0DFA00A4ADBC /* mode_mac.png in Resources */,
