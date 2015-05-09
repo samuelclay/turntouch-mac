@@ -40,7 +40,7 @@
 
 - (void)viewWillAppear {
     [self countUnpairedDevices];
-    [appDelegate.bluetoothMonitor startScan];
+    [appDelegate.bluetoothMonitor startScan:YES];
 }
 
 #pragma mark - KVO
@@ -98,7 +98,7 @@
     BOOL found = !![appDelegate.bluetoothMonitor.unpairedDevicesCount integerValue];
     BOOL connected = [appDelegate.bluetoothMonitor.unpairedDeviceConnected boolValue];
     
-    NSLog(@"Counting unpaired devices: %d-%d", found, connected);
+//    NSLog(@"Counting unpaired devices: %d-%d", found, connected);
     if (!found) {
         [titleBox setHidden:YES];
         [labelPressButtons setHidden:YES];

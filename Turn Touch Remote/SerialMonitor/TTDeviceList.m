@@ -18,6 +18,14 @@
     return self;
 }
 
+- (NSString *)description {
+    NSMutableArray *peripheralIds = [NSMutableArray array];
+    for (TTDevice *device in devices) {
+        [peripheralIds addObject:[device.peripheral.identifier.UUIDString substringToIndex:8]];
+    }
+    return [NSString stringWithFormat:@"%@", [peripheralIds componentsJoinedByString:@", "]];
+}
+
 - (NSInteger)count {
     NSInteger count = [devices count];
     if (!count) return 0;

@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Turn Touch. All rights reserved.
 //
 
-#import <AudioToolbox/AudioToolbox.h>
 #import "TTButtonTimer.h"
 #import "TTModeMap.h"
 
@@ -34,7 +33,6 @@
 - (void)readBluetoothData:(NSData *)data {
     uint8_t state = [self stateFromData:data];
     int pos = *(int *)[[data subdataWithRange:NSMakeRange(1, 1)] bytes];
-    NSLog(@"Buttons: %d, %d: %@", state, pos, buttonState);
 
     BOOL anyButtonPressed = NO;
     BOOL anyButtonHeld = NO;
@@ -133,11 +131,13 @@
         if (state == 0x00) {
             [self activateButton:NO_DIRECTION];
             [self maybeReleaseToastActiveMode];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.150 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 inMultitouch = NO;
             });
         }
     }
+    
+    NSLog(@"Buttons: %d, %d: %@", state, pos, buttonState);
 }
 
 - (void)maybeReleaseToastActiveMode {
@@ -156,7 +156,6 @@
     
     [appDelegate.hudController holdToastActiveMode:YES];
 
-    SystemSoundID soundID;
     NSString *soundFile = [[NSBundle mainBundle]
                            pathForResource:[NSString stringWithFormat:@"%@ tone",
                                             direction == NORTH ? @"north" :
@@ -179,7 +178,7 @@
     CGFloat deviceInterval = [[preferences objectForKey:@"TT:firmware:interval_max"] integerValue] / 1000.f;
     CGFloat modeChangeDuration = [[preferences objectForKey:@"TT:firmware:mode_duration"] floatValue] / 1000.f;
     CGFloat buttonHoldTimeInterval = MAX(MIN(.15f, modeChangeDuration*0.3f), deviceInterval * 1.05f);
-    NSLog(@"Mode change duration (%f): %f -- %f", buttonHoldTimeInterval, modeChangeDuration*.3f, deviceInterval*1.05f);
+//    NSLog(@"Mode change duration (%f): %f -- %f", buttonHoldTimeInterval, modeChangeDuration*.3f, deviceInterval*1.05f);
     if (direction != NO_DIRECTION) {
         NSDate *fireDate = [NSDate dateWithTimeIntervalSinceNow:buttonHoldTimeInterval];
         activeModeTimer = [[NSTimer alloc]

@@ -92,7 +92,6 @@
 		FF7A1C6F1868FD72005FA756 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF98A30C1868F1120032CC7A /* QuartzCore.framework */; };
 		FF8012F318692D0A00955218 /* TTModeMac.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8012F218692D0A00955218 /* TTModeMac.m */; };
 		FF8012F5186A1AD100955218 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF8012F4186A1AD100955218 /* defaults.plist */; };
-		FF8012F7186A599600955218 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8012F6186A599600955218 /* AudioToolbox.framework */; };
 		FF8012F9186A79A600955218 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8012F8186A79A600955218 /* clock.png */; };
 		FF8012FB186A7B9000955218 /* vinyl.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8012FA186A7B9000955218 /* vinyl.png */; };
 		FF801302186CF8BE00955218 /* TTActionDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801301186CF8BE00955218 /* TTActionDetailView.m */; };
@@ -196,6 +195,7 @@
 		FFF05F4218F77D5D00AC6230 /* TTChangeButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF05F4118F77D5D00AC6230 /* TTChangeButtonCell.m */; };
 		FFF8AE3B1AFDAB3E0064DCEF /* Turn_Touch_Remote_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF8AE3A1AFDAB3E0064DCEF /* Turn_Touch_Remote_Tests.m */; };
 		FFF8AE421AFDAB8E0064DCEF /* TTBluetoothTimerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF8AE411AFDAB8E0064DCEF /* TTBluetoothTimerTest.m */; };
+		FFF8AE461AFDC2BA0064DCEF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8012F6186A599600955218 /* AudioToolbox.framework */; };
 		FFFF683819D4E2C30081904A /* ideas.txt in Resources */ = {isa = PBXBuildFile; fileRef = FFFF683619D4E2C30081904A /* ideas.txt */; };
 /* End PBXBuildFile section */
 
@@ -538,7 +538,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF8012F7186A599600955218 /* AudioToolbox.framework in Frameworks */,
+				FFF8AE461AFDC2BA0064DCEF /* AudioToolbox.framework in Frameworks */,
 				FF1F13651ADC9DEC00B52A0D /* Sparkle.framework in Frameworks */,
 				FFAA61E01ABA6A9200AA422B /* HueSDK_OSX.framework in Frameworks */,
 				FFBC625F1A9D699D0032AD24 /* AVFoundation.framework in Frameworks */,
