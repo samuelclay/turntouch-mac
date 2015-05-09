@@ -13,6 +13,8 @@
 @implementation TTButtonTimer
 
 @synthesize pairingActivatedCount;
+@synthesize buttonState;
+@synthesize inMultitouch;
 
 - (id)init {
     if (self = [super init]) {
@@ -32,7 +34,7 @@
 - (void)readBluetoothData:(NSData *)data {
     uint8_t state = [self stateFromData:data];
     int pos = *(int *)[[data subdataWithRange:NSMakeRange(1, 1)] bytes];
-    //    NSLog(@"Buttons: %d, %d: %@", state, pos, buttonState);
+    NSLog(@"Buttons: %d, %d: %@", state, pos, buttonState);
 
     BOOL anyButtonPressed = NO;
     BOOL anyButtonHeld = NO;
@@ -131,7 +133,9 @@
         if (state == 0x00) {
             [self activateButton:NO_DIRECTION];
             [self maybeReleaseToastActiveMode];
-            inMultitouch = NO;
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                inMultitouch = NO;
+            });
         }
     }
 }
@@ -153,9 +157,18 @@
     [appDelegate.hudController holdToastActiveMode:YES];
 
     SystemSoundID soundID;
-    NSString *soundFile = [[NSBundle mainBundle] pathForResource:@"north tone" ofType:@"wav"];
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:soundFile], &soundID);
-    AudioServicesPlaySystemSound(soundID);
+    NSString *soundFile = [[NSBundle mainBundle]
+                           pathForResource:[NSString stringWithFormat:@"%@ tone",
+                                            direction == NORTH ? @"north" :
+                                            direction == EAST ? @"east" :
+                                            direction == WEST ? @"west" :
+                                            @"south"] ofType:@"wav"];
+    NSSound *sound = [[NSSound alloc]
+                      initWithContentsOfFile:soundFile
+                      byReference: YES];
+    
+//    [sound setDelegate:self];
+    [sound play];
 }
 
 - (void)activateButton:(TTModeDirection)direction {
@@ -183,7 +196,9 @@
 
 - (void)fireButton:(TTModeDirection)direction {
     [appDelegate.modeMap setActiveModeDirection:direction];
+#ifndef TEST
     [appDelegate.modeMap runActiveButton];
+#endif
     [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];
 
     [activeModeTimer invalidate];

@@ -28,6 +28,8 @@ typedef enum {
     NSDate *holdToastStart;
 }
 
+@property (nonatomic, readwrite) BOOL inMultitouch;
+@property (nonatomic) TTButtonState *buttonState;
 @property (nonatomic) NSNumber *pairingActivatedCount;
 
 - (void)readBluetoothData:(NSData *)data;
