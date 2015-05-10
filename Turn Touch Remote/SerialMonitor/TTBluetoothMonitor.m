@@ -35,7 +35,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60*60*6; // every 6 hours
 @synthesize pairedDevicesCount;
 @synthesize unpairedDevicesCount;
 @synthesize addingDevice;
-@synthesize unpairedDeviceConnected;
+@synthesize unpairedDevicesConnected;
 
 - (instancetype)init {
     if (self = [super init]) {
@@ -153,8 +153,8 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60*60*6; // every 6 hours
     [foundDevices ensureDevicesConnected];
     
     [self setValue:@([foundDevices pairedConnectedCount]) forKey:@"pairedDevicesCount"];
-    [self setValue:@([foundDevices unpairedConnectedCount]) forKey:@"unpairedDevicesCount"];
-    [self setValue:@([self.unpairedDevicesCount boolValue]) forKey:@"unpairedDeviceConnected"];
+    [self setValue:@([foundDevices unpairedCount]) forKey:@"unpairedDevicesCount"];
+    [self setValue:@([foundDevices unpairedConnectedCount]) forKey:@"unpairedDevicesConnected"];
 
 }
 
@@ -341,9 +341,8 @@ didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic
         NSLog(@"Subscribed to button status notifications: %@", peripheral.identifier.UUIDString);
         
         TTDevice *device = [foundDevices deviceForPeripheral:peripheral];
-        if (!device.isPaired) {
-            [self setValue:@(YES) forKey:@"unpairedDeviceConnected"];
-        }
+        device.isNotified = YES;
+        [self countDevices];
 //        [appDelegate.hudController toastActiveMode];
     } else {
         NSLog(@"Subscribed to notifications: %@/%@", peripheral.identifier.UUIDString, characteristic.UUID.UUIDString);
@@ -608,6 +607,16 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
     [appDelegate showPreferences:@"devices"];
 
     [manager cancelPeripheralConnection:peripheral];
+}
+
+- (void)disconnectUnpairedDevices {
+    for (TTDevice *device in foundDevices) {
+        if (!device.isPaired) {
+            [manager cancelPeripheralConnection:device.peripheral];
+        }
+    }
+    
+    [self stopScan];
 }
 
 #pragma mark - Convenience methods

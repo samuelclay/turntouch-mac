@@ -42,13 +42,14 @@ typedef enum {
 @property (nonatomic) TTDeviceList *foundDevices;
 @property (nonatomic) NSNumber *pairedDevicesCount;
 @property (nonatomic) NSNumber *unpairedDevicesCount;
-@property (nonatomic, readwrite) NSNumber *unpairedDeviceConnected;
+@property (nonatomic, readwrite) NSNumber *unpairedDevicesConnected;
 
+- (BOOL)isLECapableHardware;
 - (void)startScan;
 - (void)startScan:(BOOL)findUnpaired;
 - (void)stopScan;
-- (BOOL)isLECapableHardware;
 - (void)terminate;
+- (void)disconnectUnpairedDevices;
 - (void)setDeviceLatency:(NSInteger)latency;
 - (void)setModeDuration:(NSInteger)duration;
 

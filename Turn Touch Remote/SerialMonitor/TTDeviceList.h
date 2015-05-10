@@ -30,6 +30,7 @@
 
 - (NSUInteger)totalPairedCount;
 - (NSUInteger)pairedConnectedCount;
+- (NSUInteger)unpairedCount;
 - (NSUInteger)unpairedConnectedCount;
 
 @end

@@ -148,11 +148,23 @@
     return count;
 }
 
-- (NSUInteger)unpairedConnectedCount {
+- (NSUInteger)unpairedCount {
     NSUInteger count = 0;
     
     for (TTDevice *device in devices) {
         if (![self isPeripheralPaired:device.peripheral]) {
+            count++;
+        }
+    }
+    
+    return count;
+}
+
+- (NSUInteger)unpairedConnectedCount {
+    NSUInteger count = 0;
+    
+    for (TTDevice *device in devices) {
+        if (![self isPeripheralPaired:device.peripheral] && device.isNotified) {
             count++;
         }
     }

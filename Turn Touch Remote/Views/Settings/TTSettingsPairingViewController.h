@@ -13,6 +13,7 @@
 @interface TTSettingsPairingViewController : NSViewController
 <RHPreferencesViewControllerProtocol> {
     TTAppDelegate *appDelegate;
+    NSTimer *countdownTimer;
 }
 
 @property (nonatomic) IBOutlet NSBox *titleBox;
