@@ -137,7 +137,7 @@
         }
     }
     
-    NSLog(@"Buttons: %d, %d: %@", state, pos, buttonState);
+//    NSLog(@"Buttons: %d, %d: %@", state, pos, buttonState);
 }
 
 - (void)maybeReleaseToastActiveMode {

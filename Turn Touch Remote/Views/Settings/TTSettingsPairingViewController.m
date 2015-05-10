@@ -43,6 +43,10 @@
     [appDelegate.bluetoothMonitor startScan:YES];
 }
 
+- (void)viewWillDisappear {
+    [appDelegate.bluetoothMonitor stopScan];
+}
+
 #pragma mark - KVO
 
 - (void)registerAsObserver {

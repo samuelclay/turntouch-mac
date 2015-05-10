@@ -24,6 +24,8 @@
 
 const int BATTERY_LEVEL_READING_INTERVAL = 60*60*6; // every 6 hours
 
+#define CLEAR_PAIRED_DEVICES 0
+
 @implementation TTBluetoothMonitor
 
 @synthesize buttonTimer;
@@ -84,7 +86,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60*60*6; // every 6 hours
 
 - (void)startScan:(BOOL)findUnpaired {
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
-    if (NO) {
+    if (CLEAR_PAIRED_DEVICES || NO) {
         [preferences setObject:nil forKey:@"CB:paired_devices"];
         [preferences synchronize];
     }
@@ -146,12 +148,14 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60*60*6; // every 6 hours
 }
 
 - (void)countDevices {
-    NSLog(@"Counting %d: %@", (int)foundDevices.count, foundDevices);
+//    NSLog(@"Counting %d: %@", (int)foundDevices.count, foundDevices);
     
     [foundDevices ensureDevicesConnected];
     
     [self setValue:@([foundDevices pairedConnectedCount]) forKey:@"pairedDevicesCount"];
     [self setValue:@([foundDevices unpairedConnectedCount]) forKey:@"unpairedDevicesCount"];
+    [self setValue:@([self.unpairedDevicesCount boolValue]) forKey:@"unpairedDeviceConnected"];
+
 }
 
 /*
@@ -185,7 +189,6 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60*60*6; // every 6 hours
  Discover available services on the peripheral.
  */
 - (void) centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
-    [self setValue:@(NO) forKey:@"unpairedDeviceConnected"];
     [peripheral setDelegate:self];
     NSLog(@"Connected bluetooth peripheral: %@", [peripheral.identifier.UUIDString substringToIndex:8]);
 
@@ -363,7 +366,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
             } else {
                 [buttonTimer readBluetoothDataDuringPairing:characteristic.value];
                 if ([buttonTimer isDevicePaired]) {
-                    [self pairDevice:peripheral];
+                    [self pairDeviceSuccess:peripheral];
                 }
             }
             device.lastActionDate = [NSDate date];
@@ -375,7 +378,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
         if( (characteristic.value)  || !error ) {
             const uint8_t *bytes = [characteristic.value bytes]; // pointer to the bytes in data
             uint16_t value = bytes[0]; // first byte
-            NSLog(@"Battery level: %d%%", value);
+//            NSLog(@"Battery level: %d%%", value);
             device.lastActionDate = [NSDate date];
             device.batteryPct = @(value);
             device.uuid = [CBUUID UUIDWithNSUUID:peripheral.identifier];
@@ -401,7 +404,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
         manufacturer = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
 //        NSLog(@"Manufacturer Name = %@", manufacturer);
     } else {
-        NSLog(@"Unidentified characteristic: %@", characteristic);
+//        NSLog(@"Unidentified characteristic: %@", characteristic);
     }
 }
 
@@ -439,7 +442,7 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
 }
 
 - (void)device:(CBPeripheral *)peripheral sentFirmwareSettings:(FirmwareSetting)setting {
-    NSLog(@"Device sent firmware settings: %d", setting);
+//    NSLog(@"Device sent firmware settings: %d", setting);
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     uint16_t firmwareIntervalMin = [[prefs objectForKey:@"TT:firmware:interval_min"] intValue];
     uint16_t firmwareIntervalMax = [[prefs objectForKey:@"TT:firmware:interval_max"] intValue];
@@ -590,7 +593,7 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
 
 #pragma mark - Pairing
 
-- (void)pairDevice:(CBPeripheral *)peripheral {
+- (void)pairDeviceSuccess:(CBPeripheral *)peripheral {
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
     NSMutableArray *pairedDevices = [[preferences objectForKey:@"CB:paired_devices"] mutableCopy];
     if (!pairedDevices) {
@@ -600,6 +603,7 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
     [preferences setObject:pairedDevices forKey:@"CB:paired_devices"];
     [preferences synchronize];
     
+    [buttonTimer resetPairingState];
     [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];
     [appDelegate showPreferences:@"devices"];
 
