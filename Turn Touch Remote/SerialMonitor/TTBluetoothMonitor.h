@@ -17,7 +17,8 @@ typedef enum {
     FIRMWARE_INTERVAL_MAX = 1,
     FIRMWARE_CONN_LATENCY = 2,
     FIRMWARE_CONN_TIMEOUT = 3,
-    FIRMWARE_MODE_DURATION = 4
+    FIRMWARE_MODE_DURATION = 4,
+    FIRMWARE_NICKNAME = 5,
 } FirmwareSetting;
 
 @class TTButtonTimer;
