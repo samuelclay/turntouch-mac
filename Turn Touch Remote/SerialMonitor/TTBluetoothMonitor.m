@@ -530,10 +530,12 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
         NSString *preferenceKey = [NSString stringWithFormat:@"TT:device:%@:nickname", peripheral.identifier.UUIDString];
         NSString *firmwareNickname = [prefs stringForKey:preferenceKey];
-        NSString *remoteNickname = [[[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding]
-                                    stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        NSString *remoteNickname = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
+        
+        NSMutableData *firmwareData = [NSMutableData dataWithData:[firmwareNickname dataUsingEncoding:NSUTF8StringEncoding]];
+        [firmwareData increaseLengthBy:(32-firmwareData.length)];
 
-        if (![firmwareNickname isEqualToString:remoteNickname]) {
+        if (![characteristic.value isEqualToData:firmwareData]) {
             NSLog(@"Server %@, remote %@", firmwareNickname, remoteNickname);
             NSData *data = [firmwareNickname dataUsingEncoding:NSUTF8StringEncoding];
 
