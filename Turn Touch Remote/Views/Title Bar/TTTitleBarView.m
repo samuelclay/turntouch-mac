@@ -178,6 +178,7 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
         NSString *batteryLevel = [NSString stringWithFormat:@"Battery level: %d%%",
                                   (int)device.batteryPct.intValue];
         menuItem = [[NSMenuItem alloc] initWithTitle:batteryLevel action:@selector(openDevicesDialog:) keyEquivalent:@""];
+        [menuItem setEnabled:NO];
         [menuItem setTarget:self];
         if (device.isPaired && device.batteryPct.intValue <= 0) {
             [menuItem setTitle:@"Connecting to remote..."];

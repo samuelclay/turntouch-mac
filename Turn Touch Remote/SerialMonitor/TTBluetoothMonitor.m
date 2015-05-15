@@ -136,7 +136,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60*60*6; // every 6 hours
         [self stopScan];
         [self startScan];
     } else {
-        connectionDelay = 5;
+        connectionDelay = 4;
     }
 }
 
