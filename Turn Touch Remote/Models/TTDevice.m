@@ -18,4 +18,8 @@
     return self;
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"%@ / %@ (%@)", [self.uuid.UUIDString substringToIndex:8], self.nickname, self.isPaired ? @"PAIRED" : @"unpaired"];
+}
+
 @end

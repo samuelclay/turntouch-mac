@@ -46,6 +46,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60*60*6; // every 6 hours
         batteryPct = [[NSNumber alloc] init];
         lastActionDate = [NSDate date];
         characteristics = [[NSMutableDictionary alloc] init];
+        connectionDelay = 4;
 
         foundDevices = [[TTDeviceList alloc] init];
         pairedDevicesCount = [[NSNumber alloc] initWithInteger:0];
@@ -109,12 +110,34 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60*60*6; // every 6 hours
             [foundDevices addPeripheral:peripheral];
             [manager connectPeripheral:peripheral options:@{CBConnectPeripheralOptionNotifyOnDisconnectionKey: [NSNumber numberWithBool:YES],
                                                             CBCentralManagerOptionShowPowerAlertKey: [NSNumber numberWithBool:YES]}];
+            static dispatch_once_t onceToken;
+            dispatch_once(&onceToken, ^{
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * connectionDelay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    onceToken = 0;
+                    [self maybeScan];
+                });
+            });
         }
     }
 }
 
 - (void) stopScan {
     [manager stopScan];
+}
+
+- (void)maybeScan {
+    [self countDevices];
+    NSInteger knownCount = [[self knownPeripheralIdentifiers] count];
+    NSInteger connectedCount = [[self pairedDevicesCount] integerValue];
+    
+    if (knownCount > connectedCount) {
+        connectionDelay = MIN(5*60, 2*connectionDelay);
+        NSLog(@" ---> Attemping connect to %ld/%ld still unconnected devices, delay: %ld sec", (knownCount-connectedCount), (long)knownCount, connectionDelay);
+        [self stopScan];
+        [self startScan];
+    } else {
+        connectionDelay = 5;
+    }
 }
 
 - (NSArray *)knownPeripheralIdentifiers {
@@ -348,7 +371,6 @@ didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic
         TTDevice *device = [foundDevices deviceForPeripheral:peripheral];
         device.isNotified = YES;
         [self countDevices];
-        [self updateNicknameOnDevice:device];
 //        [appDelegate.hudController toastActiveMode];
     } else {
         NSLog(@"Subscribed to notifications: %@/%@", peripheral.identifier.UUIDString, characteristic.UUID.UUIDString);
@@ -402,6 +424,14 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
 //    } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_CONN_TIMEOUT_UUID]]) {
 //        [characteristics setObject:characteristic forKey:@"conn_timeout"];
 //        [self device:peripheral sentFirmwareSettings:FIRMWARE_CONN_TIMEOUT];
+    } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_NICKNAME_UUID]]) {
+        if (!characteristic || !characteristic.value) return;
+        TTDevice *device = [foundDevices deviceForPeripheral:peripheral];
+        device.nickname = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
+        
+        NSLog(@" ---> Hello %@", device);
+        
+        [self ensureNicknameOnDevice:device];
     } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:CBUUIDDeviceNameString]]) {
 //        NSString * deviceName = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
 //        NSLog(@"Device Name = %@", deviceName);
@@ -431,21 +461,6 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
 
 
 #pragma mark - Connection Attributes Firmware Updates
-
-/*
- Invoked upon the peripheral notifying the server about a characteristic's value changing.
- */
-- (void)retrieveFirmwareSettings:(CBPeripheral *)peripheral {
-    for (CBService *service in peripheral.services) {
-        if ([service.UUID isEqual:[CBUUID UUIDWithString:DEVICE_SERVICE_FIRMWARE_SETTINGS_UUID]]) {
-            [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_INTERVAL_MIN_UUID],
-                                                  [CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_INTERVAL_MAX_UUID],
-                                                  [CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_MODE_DURATION_UUID],
-                                                  [CBUUID UUIDWithString:DEVICE_CHARACTERISTIC_NICKNAME_UUID]]
-                                     forService:service];
-        }
-    }
-}
 
 - (void)device:(CBPeripheral *)peripheral sentFirmwareSettings:(FirmwareSetting)setting {
 //    NSLog(@"Device sent firmware settings: %d", setting);
@@ -521,27 +536,6 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
             [peripheral writeValue:data forCharacteristic:characteristic
                               type:CBCharacteristicWriteWithResponse];
         }
-    } else if (setting == FIRMWARE_NICKNAME) {
-        CBCharacteristic *characteristic = [self characteristicInPeripheral:peripheral
-                                                             andServiceUUID:DEVICE_SERVICE_FIRMWARE_SETTINGS_UUID
-                                                      andCharacteristicUUID:DEVICE_CHARACTERISTIC_NICKNAME_UUID];
-        if (!characteristic || !characteristic.value) return;
-        
-        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-        NSString *preferenceKey = [NSString stringWithFormat:@"TT:device:%@:nickname", peripheral.identifier.UUIDString];
-        NSString *firmwareNickname = [prefs stringForKey:preferenceKey];
-        NSString *remoteNickname = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
-        
-        NSMutableData *firmwareData = [NSMutableData dataWithData:[firmwareNickname dataUsingEncoding:NSUTF8StringEncoding]];
-        [firmwareData increaseLengthBy:(32-firmwareData.length)];
-
-        if (![characteristic.value isEqualToData:firmwareData]) {
-            NSLog(@"Server %@, remote %@", firmwareNickname, remoteNickname);
-            NSData *data = [firmwareNickname dataUsingEncoding:NSUTF8StringEncoding];
-
-            [peripheral writeValue:data forCharacteristic:characteristic
-                              type:CBCharacteristicWriteWithResponse];
-        }
     }
 }
 
@@ -588,21 +582,49 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
     }
 }
 
-- (void)updateNicknameOnDevice:(TTDevice *)device {
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    NSString *preferenceKey = [NSString stringWithFormat:@"TT:device:%@:nickname", device.peripheral.identifier.UUIDString];
-    NSString *nickname = [prefs stringForKey:preferenceKey];
-    
+- (void)ensureNicknameOnDevice:(TTDevice *)device {
     if (!device.isPaired) return;
-    if (!nickname) {
+
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *preferenceKey = [NSString stringWithFormat:@"TT:device:%@:nickname", device.uuid.UUIDString];
+    NSString *newNickname;
+    NSString *localNickname = [prefs stringForKey:preferenceKey];
+    NSMutableData *localNicknameData = [NSMutableData dataWithData:[localNickname dataUsingEncoding:NSUTF8StringEncoding]];
+    NSData *deviceNicknameData = [device.nickname dataUsingEncoding:NSUTF8StringEncoding];
+    [localNicknameData increaseLengthBy:(deviceNicknameData.length-localNicknameData.length)];
+    
+    if (!localNickname && !device.nickname) {
         NSArray *emoji = @[@"🐱", @"🐼", @"🐶", @"🍒", @"⚽️"];
         NSString *randomEmoji = [emoji objectAtIndex:arc4random_uniform((uint32_t)emoji.count)];
-        nickname = [NSString stringWithFormat:@"The %@ Turn Touch Remote", randomEmoji];
-        [prefs setObject:nickname forKey:preferenceKey];
+        newNickname = [NSString stringWithFormat:@"The %@ Turn Touch Remote", randomEmoji];
+        device.nickname = newNickname;
+    } else if (localNickname && !device.nickname) {
+        newNickname = localNickname;
+        device.nickname = localNickname;
+    } else if (!localNickname && device.nickname) {
+        newNickname = device.nickname;
+    } else if (localNickname && device.nickname) {
+        if ([localNicknameData isEqualToData:deviceNicknameData]) {
+            NSLog(@"Nicknames same: %@", device);
+        } else {
+            NSLog(@"Nicknames diff: %@ will get %@", device, localNickname);
+            newNickname = localNickname;
+        }
+    }
+    
+    if (newNickname) {
+        NSLog(@"New Nickname, Local %@, remote %@ => %@", localNickname, device.nickname, newNickname);
+        NSData *data = [newNickname dataUsingEncoding:NSUTF8StringEncoding];
+        CBCharacteristic *characteristic = [self characteristicInPeripheral:device.peripheral
+                                                             andServiceUUID:DEVICE_SERVICE_FIRMWARE_SETTINGS_UUID
+                                                      andCharacteristicUUID:DEVICE_CHARACTERISTIC_NICKNAME_UUID];
+        
+        [device.peripheral writeValue:data forCharacteristic:characteristic
+                                 type:CBCharacteristicWriteWithResponse];
+
+        [prefs setObject:newNickname forKey:preferenceKey];
         [prefs synchronize];
     }
-
-    [self device:device.peripheral sentFirmwareSettings:FIRMWARE_NICKNAME];
 }
 
 #pragma mark - Battery level

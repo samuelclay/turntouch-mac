@@ -32,6 +32,7 @@ typedef enum {
     NSString *manufacturer;
     CBCentralManager *manager;
     NSMutableDictionary *characteristics;
+    NSInteger connectionDelay;
 }
 
 @property (nonatomic) NSNumber *batteryPct;
