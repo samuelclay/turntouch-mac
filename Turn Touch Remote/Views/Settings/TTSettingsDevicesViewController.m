@@ -148,7 +148,11 @@
 }
 
 - (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor {
-    TTDevice *device = [appDelegate.bluetoothMonitor.foundDevices objectAtIndex:[devicesTable rowForView:control]];
+    NSInteger row = [devicesTable rowForView:control];
+    if (row == -1) {
+        return YES;
+    }
+    TTDevice *device = [appDelegate.bluetoothMonitor.foundDevices objectAtIndex:row];
     
     [appDelegate.bluetoothMonitor writeNickname:control.stringValue toDevice:device];
 

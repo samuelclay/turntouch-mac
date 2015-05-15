@@ -604,6 +604,43 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
 - (void)writeNickname:(NSString *)newNickname toDevice:(TTDevice *)device {
     NSLog(@"New Nickname: %@ => %@", device.nickname, newNickname);
     NSMutableData *data = [NSMutableData dataWithData:[newNickname dataUsingEncoding:NSUTF8StringEncoding]];
+
+    // Clear out the NULL \0 bytes that accumulate
+    [self clearDataOfNullBytes:data];
+
+    // Must have a 32 byte string to overwrite old nicknames that were longer.
+    if (data.length > 32) {
+        NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        dataString = [dataString substringToIndex:32];
+        NSUInteger maxLength = MIN(32, dataString.length);
+        while (maxLength > 0) {
+            NSInteger encodedLength = [dataString lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
+            if (encodedLength > 32 || !encodedLength) {
+                --maxLength;
+                dataString = [dataString substringToIndex:maxLength];
+            } else {
+                break;
+            }
+        }
+        [dataString substringToIndex:maxLength];
+        data = [NSMutableData dataWithData:[dataString dataUsingEncoding:NSUTF8StringEncoding]];
+    } else {
+        [data increaseLengthBy:(32-data.length)];
+    }
+
+    CBCharacteristic *characteristic = [self characteristicInPeripheral:device.peripheral
+                                                         andServiceUUID:DEVICE_SERVICE_FIRMWARE_SETTINGS_UUID
+                                                  andCharacteristicUUID:DEVICE_CHARACTERISTIC_NICKNAME_UUID];
+    [device.peripheral writeValue:data forCharacteristic:characteristic
+                             type:CBCharacteristicWriteWithResponse];
+    
+    // Clear it again since it was padded out
+    [self clearDataOfNullBytes:data];
+
+    device.nickname = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+}
+
+- (void)clearDataOfNullBytes:(NSMutableData *)data {
     NSInteger i = MIN(32, data.length);
     char nullBytes[] = "\0";
     NSData *emptyData = [NSData dataWithBytes:nullBytes length:1];
@@ -614,19 +651,6 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
             [data replaceBytesInRange:range withBytes:NULL length:0];
         }
     }
-
-    if (data.length > 32) {
-        data = [NSMutableData dataWithData:[data subdataWithRange:NSMakeRange(0, 32)]];
-    } else {
-        [data increaseLengthBy:(32-data.length)];
-    }
-    CBCharacteristic *characteristic = [self characteristicInPeripheral:device.peripheral
-                                                         andServiceUUID:DEVICE_SERVICE_FIRMWARE_SETTINGS_UUID
-                                                  andCharacteristicUUID:DEVICE_CHARACTERISTIC_NICKNAME_UUID];
-    
-    device.nickname = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    [device.peripheral writeValue:data forCharacteristic:characteristic
-                             type:CBCharacteristicWriteWithResponse];
 }
 
 #pragma mark - Battery level
