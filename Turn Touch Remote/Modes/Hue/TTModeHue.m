@@ -10,6 +10,7 @@
 #import "TTModeHueSceneOptions.h"
 
 #define MAX_HUE 65535
+#define MAX_BRIGHTNESS 255
 
 @interface TTModeHue()
 
@@ -18,6 +19,9 @@
 @end
 
 @implementation TTModeHue
+
+NSString *const kRandomColors = @"randomColors";
+NSString *const kRandomBrightness = @"randomBrightness";
 
 @synthesize delegate;
 @synthesize hueState;
@@ -183,11 +187,27 @@
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
     PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
     
+    TTHueRandomColors randomColors = (TTHueRandomColors)[[NSAppDelegate.modeMap actionOptionValue:kRandomColors] integerValue];
+    TTHueRandomBrightness randomBrightnesses = (TTHueRandomBrightness)[[NSAppDelegate.modeMap actionOptionValue:kRandomBrightness] integerValue];
+    NSNumber *randomColor = [NSNumber numberWithInt:arc4random() % MAX_HUE];
+    
     for (PHLight *light in cache.lights.allValues) {
         PHLightState *lightState = [[PHLightState alloc] init];
         
-        [lightState setHue:[NSNumber numberWithInt:arc4random() % MAX_HUE]];
-        [lightState setBrightness:[NSNumber numberWithInt:254]];
+        if (randomColors == TTHueRandomColorsAllSame || (randomColors == TTHueRandomColorsSomeDifferent && arc4random() % 10 > 5)) {
+            [lightState setHue:randomColor];
+        } else {
+            [lightState setHue:[NSNumber numberWithInt:arc4random() % MAX_HUE]];
+        }
+
+        if (randomBrightnesses == TTHueRandomBrightnessLow) {
+            [lightState setBrightness:[NSNumber numberWithInt:arc4random() % 100]];
+        } else if (randomBrightnesses == TTHueRandomBrightnessVaried) {
+            [lightState setBrightness:[NSNumber numberWithInt:arc4random() % MAX_BRIGHTNESS]];
+        } else if (randomBrightnesses == TTHueRandomBrightnessHigh) {
+            [lightState setBrightness:[NSNumber numberWithInt:254]];
+        }
+        
         [lightState setSaturation:[NSNumber numberWithInt:254]];
         
         [bridgeSendAPI updateLightStateForId:light.identifier withLightState:lightState completionHandler:^(NSArray *errors) {}];

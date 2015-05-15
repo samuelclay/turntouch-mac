@@ -10,5 +10,9 @@
 	<string></string>
 	<key>hueDuration</key>
 	<integer>0</integer>
+	<key>TTModeHueSceneRandom:randomColors</key>
+	<integer>3</integer>
+	<key>TTModeHueSceneRandom:randomBrightness</key>
+	<integer>3</integer>
 </dict>
 </plist>

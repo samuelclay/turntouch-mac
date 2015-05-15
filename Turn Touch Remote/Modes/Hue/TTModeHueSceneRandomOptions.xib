@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7702" systemVersion="14E17e" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7702"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="TTModeHueSceneRandomOptions">
+            <connections>
+                <outlet property="segRandomBrightness" destination="SMf-U6-ghJ" id="WOx-10-RpH"/>
+                <outlet property="segRandomColors" destination="Fqe-9d-WDM" id="F8s-6X-IOM"/>
+                <outlet property="view" destination="c22-O7-iKe" id="HJ5-Xi-DvM"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView translatesAutoresizingMaskIntoConstraints="NO" id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="397" height="156"/>
+            <subviews>
+                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SMf-U6-ghJ" customClass="TTSegmentedControl">
+                    <rect key="frame" x="62" y="18" width="272" height="24"/>
+                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="Aeq-U5-5qx" customClass="TTSegmentedCell">
+                        <font key="font" metaFont="system"/>
+                        <segments>
+                            <segment label="All dim"/>
+                            <segment label="Varied brightness" selected="YES" tag="1"/>
+                            <segment label="All bright"/>
+                        </segments>
+                    </segmentedCell>
+                    <connections>
+                        <action selector="changeRandomBrightness:" target="-2" id="QFm-Ta-7Ef"/>
+                    </connections>
+                </segmentedControl>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ab0-0p-Vmn">
+                    <rect key="frame" x="149" y="119" width="98" height="21"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Random colors" id="CnZ-6B-OPP">
+                        <font key="font" size="14" name="Effra-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N29-Q7-eTX">
+                    <rect key="frame" x="137" y="49" width="122" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="118" id="Nq7-Xy-9z0"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Random brightness" id="9YE-RM-3sn">
+                        <font key="font" size="14" name="Effra-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Fqe-9d-WDM" customClass="TTSegmentedControl">
+                    <rect key="frame" x="58" y="88" width="281" height="24"/>
+                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="CcS-hq-CN1" customClass="TTSegmentedCell">
+                        <font key="font" metaFont="system"/>
+                        <segments>
+                            <segment label="All different"/>
+                            <segment label="Some different" selected="YES" tag="1"/>
+                            <segment label="All same"/>
+                        </segments>
+                    </segmentedCell>
+                    <connections>
+                        <action selector="changeRandomColors:" target="-2" id="VXn-hk-KPO"/>
+                    </connections>
+                </segmentedControl>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="Fqe-9d-WDM" secondAttribute="centerX" id="2n4-dK-PNn"/>
+                <constraint firstItem="N29-Q7-eTX" firstAttribute="top" secondItem="Fqe-9d-WDM" secondAttribute="bottom" constant="20" id="3Oz-3y-GbQ"/>
+                <constraint firstItem="Fqe-9d-WDM" firstAttribute="top" secondItem="Ab0-0p-Vmn" secondAttribute="bottom" constant="8" symbolic="YES" id="CqK-CT-yPp"/>
+                <constraint firstItem="SMf-U6-ghJ" firstAttribute="top" secondItem="N29-Q7-eTX" secondAttribute="bottom" constant="8" symbolic="YES" id="ENx-nS-7fF"/>
+                <constraint firstAttribute="centerX" secondItem="SMf-U6-ghJ" secondAttribute="centerX" id="KKW-Jx-y9r"/>
+                <constraint firstItem="Ab0-0p-Vmn" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="16" id="Ls8-TN-kY6"/>
+                <constraint firstAttribute="centerX" secondItem="N29-Q7-eTX" secondAttribute="centerX" id="Qmx-mK-41n"/>
+                <constraint firstAttribute="bottom" secondItem="SMf-U6-ghJ" secondAttribute="bottom" constant="20" symbolic="YES" id="caV-gz-xLa"/>
+                <constraint firstAttribute="centerX" secondItem="Ab0-0p-Vmn" secondAttribute="centerX" id="qjT-CK-cWI"/>
+            </constraints>
+            <point key="canvasLocation" x="250.5" y="418"/>
+        </customView>
+    </objects>
+</document>

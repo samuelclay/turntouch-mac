@@ -677,6 +677,7 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
         CBCharacteristic *characteristic = [self characteristicInPeripheral:device.peripheral
                                                              andServiceUUID:DEVICE_SERVICE_BATTERY_UUID
                                                       andCharacteristicUUID:DEVICE_CHARACTERISTIC_BATTERY_LEVEL_UUID];
+        if (!characteristic) return;
         [device.peripheral readValueForCharacteristic:characteristic];
     }
     

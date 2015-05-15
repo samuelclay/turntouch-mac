@@ -22,6 +22,18 @@ typedef enum TTHueState : NSUInteger {
     STATE_CONNECTED
 } TTHueState;
 
+typedef enum {
+    TTHueRandomColorsAllDifferent = 1,
+    TTHueRandomColorsSomeDifferent = 2,
+    TTHueRandomColorsAllSame = 3,
+} TTHueRandomColors;
+
+typedef enum {
+    TTHueRandomBrightnessLow = 1,
+    TTHueRandomBrightnessVaried = 2,
+    TTHueRandomBrightnessHigh = 3,
+} TTHueRandomBrightness;
+
 @protocol TTModeHueDelegate <NSObject>
 
 @required
@@ -31,6 +43,9 @@ typedef enum TTHueState : NSUInteger {
 @end
 
 @interface TTModeHue : TTMode
+
+extern NSString *const kRandomColors;
+extern NSString *const kRandomBrightness;
 
 @property (strong, nonatomic) PHHueSDK *phHueSDK;
 @property (nonatomic, weak) id <TTModeHueDelegate> delegate;
