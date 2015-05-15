@@ -591,10 +591,12 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
     NSString *localNickname = [prefs stringForKey:preferenceKey];
     NSMutableData *localNicknameData = [NSMutableData dataWithData:[localNickname dataUsingEncoding:NSUTF8StringEncoding]];
     NSData *deviceNicknameData = [device.nickname dataUsingEncoding:NSUTF8StringEncoding];
-    [localNicknameData increaseLengthBy:(deviceNicknameData.length-localNicknameData.length)];
+    if (deviceNicknameData) {
+        [localNicknameData increaseLengthBy:(deviceNicknameData.length-localNicknameData.length)];
+    }
     
     if (!localNickname && !device.nickname) {
-        NSArray *emoji = @[@"🐱", @"🐼", @"🐶", @"🍒", @"⚽️"];
+        NSArray *emoji = @[@"🐱", @"🐼", @"🐶", @"🍒", @"⚽️", @"🎻", @"🎱", @"☀️", @"🌎", @"🌴", @"🌻"];
         NSString *randomEmoji = [emoji objectAtIndex:arc4random_uniform((uint32_t)emoji.count)];
         newNickname = [NSString stringWithFormat:@"The %@ Turn Touch Remote", randomEmoji];
         device.nickname = newNickname;
