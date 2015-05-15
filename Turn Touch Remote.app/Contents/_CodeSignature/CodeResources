@@ -378,7 +378,7 @@
 		</data>
 		<key>Resources/TTSettingsDevicesViewController.nib</key>
 		<data>
-		WpmKZ+31+lff1BwTKssuAHILvPU=
+		F+pCRSDI4QHZZFy8C7nip71AOPc=
 		</data>
 		<key>Resources/TTSettingsPairingViewController.nib</key>
 		<data>
@@ -407,6 +407,10 @@
 		<key>Resources/defaults.plist</key>
 		<data>
 		Duq7He3EACEgA6p0gwW4E3/etn0=
+		</data>
+		<key>Resources/east tone.wav</key>
+		<data>
+		g9U8ha+q/m/nc9S/g76muv0U9h4=
 		</data>
 		<key>Resources/en.lproj/Credits.rtf</key>
 		<dict>
@@ -583,6 +587,10 @@
 		<data>
 		6bTkggdrz5GfdsLGUNqe9VozFhU=
 		</data>
+		<key>Resources/north tone.wav</key>
+		<data>
+		cVT/Vv8tf06x3PtuSIaL9DzbrpA=
+		</data>
 		<key>Resources/originals.png</key>
 		<data>
 		qxb4RGF8T1l4QFIXrvqlcuQBXXU=
@@ -598,6 +606,10 @@
 		<key>Resources/settings.tiff</key>
 		<data>
 		Ge9E/yI7/919gWZlCd9m4smVMN0=
+		</data>
+		<key>Resources/south tone.wav</key>
+		<data>
+		reHgHQ0FjUkpZmIt6yZckFnyOuk=
 		</data>
 		<key>Resources/speaker.png</key>
 		<data>
@@ -619,6 +631,10 @@
 		<data>
 		2HMWtu3pm3E63ITztWlKINaVviI=
 		</data>
+		<key>Resources/west tone.wav</key>
+		<data>
+		i9WsRhmsMpZ+VU1/Rz+meB7RcrI=
+		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
@@ -626,7 +642,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			nq71XRJH8AF1XhwqoKa9iZdXR/Y=
+			BRPqIWNQzX02xt1nEG2l2lfJ1UI=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.andymatuschak.Sparkle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -1005,7 +1021,7 @@
 		</data>
 		<key>Resources/TTSettingsDevicesViewController.nib</key>
 		<data>
-		WpmKZ+31+lff1BwTKssuAHILvPU=
+		F+pCRSDI4QHZZFy8C7nip71AOPc=
 		</data>
 		<key>Resources/TTSettingsPairingViewController.nib</key>
 		<data>
@@ -1034,6 +1050,10 @@
 		<key>Resources/defaults.plist</key>
 		<data>
 		Duq7He3EACEgA6p0gwW4E3/etn0=
+		</data>
+		<key>Resources/east tone.wav</key>
+		<data>
+		g9U8ha+q/m/nc9S/g76muv0U9h4=
 		</data>
 		<key>Resources/en.lproj/Credits.rtf</key>
 		<dict>
@@ -1210,6 +1230,10 @@
 		<data>
 		6bTkggdrz5GfdsLGUNqe9VozFhU=
 		</data>
+		<key>Resources/north tone.wav</key>
+		<data>
+		cVT/Vv8tf06x3PtuSIaL9DzbrpA=
+		</data>
 		<key>Resources/originals.png</key>
 		<data>
 		qxb4RGF8T1l4QFIXrvqlcuQBXXU=
@@ -1225,6 +1249,10 @@
 		<key>Resources/settings.tiff</key>
 		<data>
 		Ge9E/yI7/919gWZlCd9m4smVMN0=
+		</data>
+		<key>Resources/south tone.wav</key>
+		<data>
+		reHgHQ0FjUkpZmIt6yZckFnyOuk=
 		</data>
 		<key>Resources/speaker.png</key>
 		<data>
@@ -1245,6 +1273,10 @@
 		<key>Resources/vinyl.png</key>
 		<data>
 		2HMWtu3pm3E63ITztWlKINaVviI=
+		</data>
+		<key>Resources/west tone.wav</key>
+		<data>
+		i9WsRhmsMpZ+VU1/Rz+meB7RcrI=
 		</data>
 	</dict>
 	<key>rules</key>
