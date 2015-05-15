@@ -89,7 +89,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60*60*6; // every 6 hours
 - (void)startScan:(BOOL)findUnpaired {
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
     if (CLEAR_PAIRED_DEVICES || NO) {
-        [preferences setObject:nil forKey:@"CB:paired_devices"];
+        [preferences setObject:nil forKey:@"TT:devices:paired"];
         [preferences synchronize];
     }
 
@@ -143,7 +143,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60*60*6; // every 6 hours
 - (NSArray *)knownPeripheralIdentifiers {
     NSMutableArray *identifiers = [NSMutableArray array];
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
-    NSMutableArray *pairedDevices = [[preferences objectForKey:@"CB:paired_devices"] mutableCopy];
+    NSMutableArray *pairedDevices = [[preferences objectForKey:@"TT:devices:paired"] mutableCopy];
     
     for (NSString *identifier in pairedDevices) {
         [identifiers addObject:[[NSUUID alloc] initWithUUIDString:identifier]];
@@ -588,24 +588,31 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *preferenceKey = [NSString stringWithFormat:@"TT:device:%@:nickname", device.uuid.UUIDString];
     NSString *newNickname;
-    NSString *localNickname = [prefs stringForKey:preferenceKey];
+    NSString *localNickname = [prefs objectForKey:preferenceKey];
+    NSMutableData *emptyNickname = [NSMutableData dataWithLength:32];
     NSMutableData *localNicknameData = [NSMutableData dataWithData:[localNickname dataUsingEncoding:NSUTF8StringEncoding]];
     NSData *deviceNicknameData = [device.nickname dataUsingEncoding:NSUTF8StringEncoding];
     if (deviceNicknameData) {
         [localNicknameData increaseLengthBy:(deviceNicknameData.length-localNicknameData.length)];
     }
     
-    if (!localNickname && !device.nickname) {
+    BOOL hasLocalNickname = ![localNicknameData isEqualToData:emptyNickname];
+    BOOL hasDeviceNickname = ![deviceNicknameData isEqualToData:emptyNickname];
+    
+    if (!hasLocalNickname && !hasDeviceNickname) {
+        NSLog(@"Generating emoji nickname...");
         NSArray *emoji = @[@"🐱", @"🐼", @"🐶", @"🍒", @"⚽️", @"🎻", @"🎱", @"☀️", @"🌎", @"🌴", @"🌻"];
         NSString *randomEmoji = [emoji objectAtIndex:arc4random_uniform((uint32_t)emoji.count)];
         newNickname = [NSString stringWithFormat:@"The %@ Turn Touch Remote", randomEmoji];
         device.nickname = newNickname;
-    } else if (localNickname && !device.nickname) {
+    } else if (hasLocalNickname && !hasDeviceNickname) {
+        NSLog(@"Found local nickname, but no remote nickname...");
         newNickname = localNickname;
         device.nickname = localNickname;
-    } else if (!localNickname && device.nickname) {
+    } else if (!hasLocalNickname && hasDeviceNickname) {
+        NSLog(@"Found remote nickname, but no local nickname...");
         newNickname = device.nickname;
-    } else if (localNickname && device.nickname) {
+    } else if (hasLocalNickname && hasDeviceNickname) {
         if ([localNicknameData isEqualToData:deviceNicknameData]) {
             NSLog(@"Nicknames same: %@", device);
         } else {
@@ -614,7 +621,7 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
         }
     }
     
-    if (newNickname) {
+    if (newNickname.length) {
         NSLog(@"New Nickname, Local %@, remote %@ => %@", localNickname, device.nickname, newNickname);
         NSData *data = [newNickname dataUsingEncoding:NSUTF8StringEncoding];
         CBCharacteristic *characteristic = [self characteristicInPeripheral:device.peripheral
@@ -663,12 +670,12 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
 
 - (void)pairDeviceSuccess:(CBPeripheral *)peripheral {
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
-    NSMutableArray *pairedDevices = [[preferences objectForKey:@"CB:paired_devices"] mutableCopy];
+    NSMutableArray *pairedDevices = [[preferences objectForKey:@"TT:devices:paired"] mutableCopy];
     if (!pairedDevices) {
         pairedDevices = [[NSMutableArray alloc] init];
     }
     [pairedDevices addObject:peripheral.identifier.UUIDString];
-    [preferences setObject:pairedDevices forKey:@"CB:paired_devices"];
+    [preferences setObject:pairedDevices forKey:@"TT:devices:paired"];
     [preferences synchronize];
     
     [buttonTimer resetPairingState];

@@ -118,7 +118,7 @@
 
 - (BOOL)isPeripheralPaired:(CBPeripheral *)peripheral {
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
-    NSArray *pairedDevices = [preferences objectForKey:@"CB:paired_devices"];
+    NSArray *pairedDevices = [preferences objectForKey:@"TT:devices:paired"];
 
     return [pairedDevices containsObject:peripheral.identifier.UUIDString];
 }
@@ -131,7 +131,7 @@
 
 - (NSUInteger)totalPairedCount {
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
-    NSArray *pairedDevices = [preferences objectForKey:@"CB:paired_devices"];
+    NSArray *pairedDevices = [preferences objectForKey:@"TT:devices:paired"];
     
     return [pairedDevices count];
 }
