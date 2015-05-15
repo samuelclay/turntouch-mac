@@ -149,9 +149,11 @@
 
 - (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor {
     TTDevice *device = [appDelegate.bluetoothMonitor.foundDevices objectAtIndex:[devicesTable rowForView:control]];
-    NSLog(@"New nickname: %@ on %@", control.stringValue, device);
+    
     [appDelegate.bluetoothMonitor writeNickname:control.stringValue toDevice:device];
+
     [control setStringValue:device.nickname];
+
     return YES;
 }
 
