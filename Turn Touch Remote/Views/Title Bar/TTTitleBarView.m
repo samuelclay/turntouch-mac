@@ -168,6 +168,13 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
 
     TTDeviceList *foundDevices = appDelegate.bluetoothMonitor.foundDevices;
     for (TTDevice *device in foundDevices) {
+        if (device.uuid || device.nickname) {
+            menuItem = [[NSMenuItem alloc] initWithTitle:(device.nickname ? device.nickname : device.uuid.UUIDString)
+                                                  action:@selector(openDevicesDialog:) keyEquivalent:@""];
+            [menuItem setTarget:self];
+            [settingsMenu addItem:menuItem];
+        }
+
         NSString *batteryLevel = [NSString stringWithFormat:@"Battery level: %d%%",
                                   (int)device.batteryPct.intValue];
         menuItem = [[NSMenuItem alloc] initWithTitle:batteryLevel action:@selector(openDevicesDialog:) keyEquivalent:@""];
@@ -180,7 +187,6 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
             [menuItem setEnabled:NO];
         }
         [settingsMenu addItem:menuItem];
-
         
         NSString *timeAgo = [device.lastActionDate timeAgo];
         NSString *lastAction = [NSString stringWithFormat:@"Last action: %@",
