@@ -109,6 +109,7 @@
         [result setEditable:NO];
         [result setBordered:NO];
         [result setBackgroundColor:[NSColor clearColor]];
+        [result setDelegate:self];
     }
     
     TTDevice *device = [appDelegate.bluetoothMonitor.foundDevices objectAtIndex:row];
@@ -133,6 +134,9 @@
     } else {
         if ([tableColumn.identifier isEqualToString:@"deviceIdentifier"]) {
             result.stringValue = device.nickname ? device.nickname : device.uuid.UUIDString;
+            if (device.nickname) {
+                [result setEditable:YES];
+            }
         } else if ([tableColumn.identifier isEqualToString:@"batteryLevel"]) {
             result.stringValue = [NSString stringWithFormat:@"%@%%", device.batteryPct];
         } else if ([tableColumn.identifier isEqualToString:@"lastAction"]) {
@@ -141,6 +145,14 @@
     }
     
     return result;
+}
+
+- (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor {
+    TTDevice *device = [appDelegate.bluetoothMonitor.foundDevices objectAtIndex:[devicesTable rowForView:control]];
+    NSLog(@"New nickname: %@ on %@", control.stringValue, device);
+    [appDelegate.bluetoothMonitor writeNickname:control.stringValue toDevice:device];
+    [control setStringValue:device.nickname];
+    return YES;
 }
 
 #pragma mark - Latency Slider

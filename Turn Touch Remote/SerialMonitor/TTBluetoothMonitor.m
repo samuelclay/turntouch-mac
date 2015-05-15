@@ -585,55 +585,48 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
 - (void)ensureNicknameOnDevice:(TTDevice *)device {
     if (!device.isPaired) return;
 
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    NSString *preferenceKey = [NSString stringWithFormat:@"TT:device:%@:nickname", device.uuid.UUIDString];
     NSString *newNickname;
-    NSString *localNickname = [prefs objectForKey:preferenceKey];
     NSMutableData *emptyNickname = [NSMutableData dataWithLength:32];
-    NSMutableData *localNicknameData = [NSMutableData dataWithData:[localNickname dataUsingEncoding:NSUTF8StringEncoding]];
     NSData *deviceNicknameData = [device.nickname dataUsingEncoding:NSUTF8StringEncoding];
-    if (deviceNicknameData) {
-        [localNicknameData increaseLengthBy:(deviceNicknameData.length-localNicknameData.length)];
-    }
     
-    BOOL hasLocalNickname = ![localNicknameData isEqualToData:emptyNickname];
     BOOL hasDeviceNickname = ![deviceNicknameData isEqualToData:emptyNickname];
     
-    if (!hasLocalNickname && !hasDeviceNickname) {
+    if (!hasDeviceNickname) {
         NSLog(@"Generating emoji nickname...");
         NSArray *emoji = @[@"🐱", @"🐼", @"🐶", @"🍒", @"⚽️", @"🎻", @"🎱", @"☀️", @"🌎", @"🌴", @"🌻"];
         NSString *randomEmoji = [emoji objectAtIndex:arc4random_uniform((uint32_t)emoji.count)];
         newNickname = [NSString stringWithFormat:@"The %@ Turn Touch Remote", randomEmoji];
-        device.nickname = newNickname;
-    } else if (hasLocalNickname && !hasDeviceNickname) {
-        NSLog(@"Found local nickname, but no remote nickname...");
-        newNickname = localNickname;
-        device.nickname = localNickname;
-    } else if (!hasLocalNickname && hasDeviceNickname) {
-        NSLog(@"Found remote nickname, but no local nickname...");
-        newNickname = device.nickname;
-    } else if (hasLocalNickname && hasDeviceNickname) {
-        if ([localNicknameData isEqualToData:deviceNicknameData]) {
-            NSLog(@"Nicknames same: %@", device);
-        } else {
-            NSLog(@"Nicknames diff: %@ will get %@", device, localNickname);
-            newNickname = localNickname;
+
+        [self writeNickname:newNickname toDevice:device];
+    }
+}
+
+- (void)writeNickname:(NSString *)newNickname toDevice:(TTDevice *)device {
+    NSLog(@"New Nickname: %@ => %@", device.nickname, newNickname);
+    NSMutableData *data = [NSMutableData dataWithData:[newNickname dataUsingEncoding:NSUTF8StringEncoding]];
+    NSInteger i = MIN(32, data.length);
+    char nullBytes[] = "\0";
+    NSData *emptyData = [NSData dataWithBytes:nullBytes length:1];
+    while (i--) {
+        NSRange range = NSMakeRange(i, 1);
+        NSData *dataAtByte = [data subdataWithRange:range];
+        if ([dataAtByte isEqualToData:emptyData]) {
+            [data replaceBytesInRange:range withBytes:NULL length:0];
         }
     }
-    
-    if (newNickname.length) {
-        NSLog(@"New Nickname, Local %@, remote %@ => %@", localNickname, device.nickname, newNickname);
-        NSData *data = [newNickname dataUsingEncoding:NSUTF8StringEncoding];
-        CBCharacteristic *characteristic = [self characteristicInPeripheral:device.peripheral
-                                                             andServiceUUID:DEVICE_SERVICE_FIRMWARE_SETTINGS_UUID
-                                                      andCharacteristicUUID:DEVICE_CHARACTERISTIC_NICKNAME_UUID];
-        
-        [device.peripheral writeValue:data forCharacteristic:characteristic
-                                 type:CBCharacteristicWriteWithResponse];
 
-        [prefs setObject:newNickname forKey:preferenceKey];
-        [prefs synchronize];
+    if (data.length > 32) {
+        data = [NSMutableData dataWithData:[data subdataWithRange:NSMakeRange(0, 32)]];
+    } else {
+        [data increaseLengthBy:(32-data.length)];
     }
+    CBCharacteristic *characteristic = [self characteristicInPeripheral:device.peripheral
+                                                         andServiceUUID:DEVICE_SERVICE_FIRMWARE_SETTINGS_UUID
+                                                  andCharacteristicUUID:DEVICE_CHARACTERISTIC_NICKNAME_UUID];
+    
+    device.nickname = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    [device.peripheral writeValue:data forCharacteristic:characteristic
+                             type:CBCharacteristicWriteWithResponse];
 }
 
 #pragma mark - Battery level

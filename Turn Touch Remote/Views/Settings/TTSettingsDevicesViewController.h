@@ -11,7 +11,8 @@
 #import "TTAppDelegate.h"
 
 @interface TTSettingsDevicesViewController : NSViewController
-<RHPreferencesViewControllerProtocol, NSTableViewDataSource, NSTableViewDelegate> {
+<RHPreferencesViewControllerProtocol, NSTableViewDataSource, NSTableViewDelegate,
+NSTextFieldDelegate> {
     TTAppDelegate *appDelegate;
 }
 
