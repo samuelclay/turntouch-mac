@@ -107,6 +107,7 @@ NSUInteger const kOnetimeHeight = 68;
             [NSAppDelegate.modeMap changeModeOption:kOnetimeAlarmEnabled to:[NSNumber numberWithBool:YES]];
             [self setOneTimeDate];
         }
+        [(TTModeAlarmClock *)appDelegate.modeMap.selectedMode activateTimers];
     }];
 
 }
@@ -122,6 +123,7 @@ NSUInteger const kOnetimeHeight = 68;
             [boxRepeatOptions animator].alphaValue = 1;
             [NSAppDelegate.modeMap changeModeOption:kRepeatAlarmEnabled to:[NSNumber numberWithBool:YES]];
         }
+        [(TTModeAlarmClock *)appDelegate.modeMap.selectedMode activateTimers];
     }];
 }
 

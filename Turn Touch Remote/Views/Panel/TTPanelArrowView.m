@@ -28,7 +28,7 @@
     
     CGFloat statusX = roundf(NSMidX(statusRect));
     CGFloat panelX = statusX - NSMinX(panelRect);
-    NSLog(@"Arrow rect: %@ - %f", NSStringFromRect(self.bounds), panelX);
+//    NSLog(@"Arrow rect: %@ - %f", NSStringFromRect(self.bounds), panelX);
 
     NSRect contentRect = NSInsetRect(self.bounds, LINE_THICKNESS, LINE_THICKNESS);
     NSBezierPath *path = [NSBezierPath bezierPath];
