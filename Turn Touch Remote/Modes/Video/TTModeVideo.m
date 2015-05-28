@@ -95,9 +95,15 @@
         }
     }
     
-    //    if ([vlc isRunning]) {
-    //
-    //    }
+    if ([vlc isRunning]) {
+        SBElementArray *vlcItems = [vlc windows];
+        NSEnumerator *vlcEnumerator = [vlcItems objectEnumerator];
+        VLCWindow *vlcWindow;
+        while (vlcWindow = [vlcEnumerator nextObject]) {
+            [vlcWindow.document stepForward];
+            break;
+        }
+    }
 }
 
 - (void)runTTModeVideoRewind {
@@ -111,13 +117,19 @@
         }
     }
     
-    //    if ([vlc isRunning]) {
-    //
-    //    }
+    if ([vlc isRunning]) {
+        SBElementArray *vlcItems = [vlc windows];
+        NSEnumerator *vlcEnumerator = [vlcItems objectEnumerator];
+        VLCWindow *vlcWindow;
+        while (vlcWindow = [vlcEnumerator nextObject]) {
+            [vlcWindow.document stepBackward];
+            break;
+        }
+    }
 }
 
 - (void)runTTModeVideoPause {
-    if ([quicktime isRunning]) {
+    if ([quicktime isRunning] && quicktime.frontmost) {
         SBElementArray *quicktimeItems = [quicktime documents];
         NSEnumerator *quicktimeEnumerator = [quicktimeItems objectEnumerator];
         QuicktimeDocument *quicktimeItem;
@@ -130,9 +142,15 @@
         }
     }
     
-    //    if ([vlc isRunning]) {
-    //
-    //    }
+    if ([vlc isRunning]) {
+        SBElementArray *vlcItems = [vlc windows];
+        NSEnumerator *vlcEnumerator = [vlcItems objectEnumerator];
+        VLCWindow *vlcWindow;
+        while (vlcWindow = [vlcEnumerator nextObject]) {
+            [vlcWindow.document play];
+            break;
+        }
+    }
 }
 
 #pragma mark - Defaults
@@ -154,7 +172,7 @@
 
 - (void)activate {
     quicktime = [SBApplication applicationWithBundleIdentifier:@"com.apple.QuickTimePlayerX"];
-//    vlc = [SBApplication applicationWithBundleIdentifier:@"org.videolan.vlc"];
+    vlc = [SBApplication applicationWithBundleIdentifier:@"org.videolan.vlc"];
 }
 
 - (void)moveVolume:(VideoVolumeDirection)direction {
@@ -174,28 +192,19 @@
         }
     }
     
-//    if ([vlc isRunning]) {
-//        NSString *vlcSource = [NSString stringWithFormat:@"tell application \"VLC\" to volume%@",
-//                               direction == UP ? @"Up" : @"Down"];
-//    NSString *vlcSource2 = [NSString stringWithFormat:@"set current_volume to output volume of (get volume settings)"
-//                            "if current_volume is less than 100 then "
-//                            "  set current_volume to current_volume + 2 "
-//                            "end if "
-//                            "set volume output volume current_volume"];
-//        NSAppleScript *vlcScript = [[NSAppleScript alloc] initWithSource:vlcSource];
-//        [vlcScript executeAndReturnError:nil];
-//
-//        NSAppleScript *vlcVolumeScript = [[NSAppleScript alloc] initWithSource:@"tell application \"VLC\" return volume;"];
-//        NSDictionary* errorInfo = [NSDictionary dictionary];
-//        NSAppleEventDescriptor *vlcDesc = [vlcVolumeScript executeAndReturnError:&errorInfo];
-//        if (vlcDesc == nil) { // there was a compile error
-//            NSString* error = [errorInfo objectForKey:NSAppleScriptErrorMessage];
-//            NSLog(@"doAppleScript error = %@", error); NSBeep();
-//        } else {
-//            NSLog(@"VLC Desc: %@", [vlcDesc description]);
-//        }
-//    }
-    
+    if ([vlc isRunning]) {
+        SBElementArray *vlcItems = [vlc windows];
+        NSEnumerator *vlcEnumerator = [vlcItems objectEnumerator];
+        VLCWindow *vlcWindow;
+        while (vlcWindow = [vlcEnumerator nextObject]) {
+            if (direction == UP) {
+                [vlcWindow.document volumeUp];
+            } else if (direction == DOWN) {
+                [vlcWindow.document volumeDown];
+            }
+            break;
+        }
+    }
 }
 
 @end

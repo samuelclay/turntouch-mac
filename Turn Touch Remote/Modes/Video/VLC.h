@@ -32,12 +32,12 @@ typedef enum VLCEnum VLCEnum;
 
 @property (copy) NSDictionary *properties;  // All of the object's properties.
 
-- (void) closeSaving:(VLCSavo)saving savingIn:(NSURL *)savingIn;  // Close an object.
+- (void) closeSaving:(VLCSavo)saving savingIn:(id)savingIn;  // Close an object.
 - (void) delete;  // Delete an object.
 - (void) duplicateTo:(SBObject *)to withProperties:(NSDictionary *)withProperties;  // Copy object(s) and put the copies at a new location.
 - (BOOL) exists;  // Verify if an object exists.
 - (void) moveTo:(SBObject *)to;  // Move object(s) to a new location.
-- (void) saveAs:(NSString *)as in:(NSURL *)in_;  // Save an object.
+- (void) saveAs:(NSString *)as in:(id)in_;  // Save an object.
 - (void) fullscreen;  // Toggle between fullscreen and windowed mode.
 - (void) GetURL;  // Get a URL
 - (void) mute;  // Mute the audio
@@ -45,6 +45,8 @@ typedef enum VLCEnum VLCEnum;
 - (void) OpenURL;  // Open a URL
 - (void) play;  // Start playing the current playlistitem or pause it when it is already playing.
 - (void) previous;  // Go to the previous item in the playlist or the previous chapter in the DVD/VCD.
+- (void) stepBackward;  // Step the current playlist item backward the specified step width (default is 2) (1=extraShort, 2=short, 3=medium, 4=long).
+- (void) stepForward;  // Step the current playlist item forward the specified step width (default is 2) (1=extraShort, 2=short, 3=medium, 4=long).
 - (void) stop;  // Stop playing the current playlistitem
 - (void) volumeDown;  // Bring the volume down by one step. There are 32 steps from 0 to 400% volume.
 - (void) volumeUp;  // Bring the volume up by one step. There are 32 steps from 0 to 400% volume.
@@ -61,8 +63,8 @@ typedef enum VLCEnum VLCEnum;
 @property (copy, readonly) NSString *name;  // The name of the application.
 @property (copy, readonly) NSString *version;  // The version of the application.
 
-- (VLCDocument *) open:(NSURL *)x;  // Open an object.
-- (void) print:(NSURL *)x printDialog:(BOOL)printDialog withProperties:(VLCPrintSettings *)withProperties;  // Print an object.
+- (VLCDocument *) open:(id)x;  // Open an object.
+- (void) print:(id)x printDialog:(BOOL)printDialog withProperties:(VLCPrintSettings *)withProperties;  // Print an object.
 - (void) quitSaving:(VLCSavo)saving;  // Quit an application.
 
 @end
@@ -208,7 +210,14 @@ typedef enum VLCEnum VLCEnum;
 // VLC's top level scripting object
 @interface VLCApplication (VLCSuite)
 
+@property NSInteger audioVolume;  // The volume of the current playlist item from 0 to 4, where 4 is 400%
+@property NSInteger currentTime;  // The current time of the current playlist item in seconds.
+@property (readonly) NSInteger durationOfCurrentItem;  // The duration of the current playlist item in seconds.
 @property BOOL fullscreenMode;  // indicates wheter fullscreen is enabled or not
+@property (readonly) BOOL muted;  // Is VLC currently muted?
+@property (copy, readonly) NSString *nameOfCurrentItem;  // Name of the current playlist item.
+@property (copy, readonly) NSString *pathOfCurrentItem;  // Path to the current playlist item.
+@property (readonly) BOOL playing;  // Is VLC playing an item?
 
 @end
 
@@ -231,12 +240,12 @@ typedef enum VLCEnum VLCEnum;
 @property (copy) NSString *faxNumber;  // for fax number
 @property (copy) NSString *targetPrinter;  // for target printer
 
-- (void) closeSaving:(VLCSavo)saving savingIn:(NSURL *)savingIn;  // Close an object.
+- (void) closeSaving:(VLCSavo)saving savingIn:(id)savingIn;  // Close an object.
 - (void) delete;  // Delete an object.
 - (void) duplicateTo:(SBObject *)to withProperties:(NSDictionary *)withProperties;  // Copy object(s) and put the copies at a new location.
 - (BOOL) exists;  // Verify if an object exists.
 - (void) moveTo:(SBObject *)to;  // Move object(s) to a new location.
-- (void) saveAs:(NSString *)as in:(NSURL *)in_;  // Save an object.
+- (void) saveAs:(NSString *)as in:(id)in_;  // Save an object.
 - (void) fullscreen;  // Toggle between fullscreen and windowed mode.
 - (void) GetURL;  // Get a URL
 - (void) mute;  // Mute the audio
@@ -244,6 +253,8 @@ typedef enum VLCEnum VLCEnum;
 - (void) OpenURL;  // Open a URL
 - (void) play;  // Start playing the current playlistitem or pause it when it is already playing.
 - (void) previous;  // Go to the previous item in the playlist or the previous chapter in the DVD/VCD.
+- (void) stepBackward;  // Step the current playlist item backward the specified step width (default is 2) (1=extraShort, 2=short, 3=medium, 4=long).
+- (void) stepForward;  // Step the current playlist item forward the specified step width (default is 2) (1=extraShort, 2=short, 3=medium, 4=long).
 - (void) stop;  // Stop playing the current playlistitem
 - (void) volumeDown;  // Bring the volume down by one step. There are 32 steps from 0 to 400% volume.
 - (void) volumeUp;  // Bring the volume up by one step. There are 32 steps from 0 to 400% volume.
