@@ -96,7 +96,7 @@
 #pragma mark - Devices Table
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return appDelegate.bluetoothMonitor.foundDevices.count;
+    return appDelegate.bluetoothMonitor.foundDevices.connectedCount;
 }
 
 - (NSView *)tableView:(NSTableView *)tableView
@@ -112,7 +112,7 @@
         [result setDelegate:self];
     }
     
-    TTDevice *device = [appDelegate.bluetoothMonitor.foundDevices objectAtIndex:row];
+    TTDevice *device = [appDelegate.bluetoothMonitor.foundDevices connectedDeviceAtIndex:row];
     if (!device.isPaired) {
         // Unpaired
         if ([tableColumn.identifier isEqualToString:@"deviceIdentifier"]) {
@@ -152,7 +152,7 @@
     if (row == -1) {
         return YES;
     }
-    TTDevice *device = [appDelegate.bluetoothMonitor.foundDevices objectAtIndex:row];
+    TTDevice *device = [appDelegate.bluetoothMonitor.foundDevices connectedDeviceAtIndex:row];
     
     [appDelegate.bluetoothMonitor writeNickname:control.stringValue toDevice:device];
 

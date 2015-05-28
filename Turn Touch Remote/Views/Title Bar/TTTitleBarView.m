@@ -168,6 +168,7 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
 
     TTDeviceList *foundDevices = appDelegate.bluetoothMonitor.foundDevices;
     for (TTDevice *device in foundDevices) {
+        if (device.peripheral.state == CBPeripheralStateDisconnected) continue;
         if (device.uuid || device.nickname) {
             menuItem = [[NSMenuItem alloc] initWithTitle:(device.nickname ? device.nickname : device.uuid.UUIDString)
                                                   action:@selector(openDevicesDialog:) keyEquivalent:@""];

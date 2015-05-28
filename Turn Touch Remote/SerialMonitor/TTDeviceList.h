@@ -15,7 +15,6 @@
     NSMutableArray *devices;
 }
 
-- (NSInteger)count;
 - (TTDevice *)deviceForPeripheral:(CBPeripheral *)peripheral;
 - (TTDevice *)objectAtIndex:(NSUInteger)index;
 
@@ -24,10 +23,13 @@
 - (void)removePeripheral:(CBPeripheral *)peripheral;
 - (void)removeDevice:(TTDevice *)removeDevice;
 - (void)ensureDevicesConnected;
+- (TTDevice *)connectedDeviceAtIndex:(NSInteger)index;
 
 - (BOOL)isPeripheralPaired:(CBPeripheral *)peripheral;
 - (BOOL)isDevicePaired:(TTDevice *)device;
 
+- (NSInteger)count;
+- (NSInteger)connectedCount;
 - (NSUInteger)totalPairedCount;
 - (NSUInteger)pairedConnectedCount;
 - (NSUInteger)unpairedCount;

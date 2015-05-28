@@ -179,7 +179,6 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60*60*6; // every 6 hours
     [self setValue:@([foundDevices pairedConnectedCount]) forKey:@"pairedDevicesCount"];
     [self setValue:@([foundDevices unpairedCount]) forKey:@"unpairedDevicesCount"];
     [self setValue:@([foundDevices unpairedConnectedCount]) forKey:@"unpairedDevicesConnected"];
-
 }
 
 /*

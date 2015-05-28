@@ -26,16 +26,6 @@
     return [NSString stringWithFormat:@"%@", [peripheralIds componentsJoinedByString:@", "]];
 }
 
-- (NSInteger)count {
-    NSInteger count = [devices count];
-    if (!count) return 0;
-    return count;
-}
-
-- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(__unsafe_unretained id [])buffer count:(NSUInteger)len {
-    return [devices countByEnumeratingWithState:state objects:buffer count:len];
-}
-
 - (TTDevice *)deviceForPeripheral:(CBPeripheral *)peripheral {
     for (TTDevice *device in devices) {
         if (device.peripheral == peripheral) return device;
@@ -114,6 +104,17 @@
     devices = updatedConnectedDevices;
 }
 
+- (TTDevice *)connectedDeviceAtIndex:(NSInteger)index {
+    NSInteger i = 0;
+    for (TTDevice *device in devices) {
+        if (device.peripheral.state != CBPeripheralStateDisconnected) {
+            if (i == index) return device;
+            i++;
+        }
+    }
+    return nil;
+}
+
 #pragma mark - Paired
 
 - (BOOL)isPeripheralPaired:(CBPeripheral *)peripheral {
@@ -128,6 +129,24 @@
 }
 
 #pragma mark - Counts
+
+- (NSInteger)count {
+    NSInteger count = [devices count];
+    if (!count) return 0;
+    return count;
+}
+
+- (NSInteger)connectedCount {
+    NSInteger count = 0;
+    for (TTDevice *device in devices) {
+        if (device.peripheral.state != CBPeripheralStateDisconnected) count++;
+    }
+    return count;
+}
+
+- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(__unsafe_unretained id [])buffer count:(NSUInteger)len {
+    return [devices countByEnumeratingWithState:state objects:buffer count:len];
+}
 
 - (NSUInteger)totalPairedCount {
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
