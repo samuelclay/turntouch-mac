@@ -336,9 +336,16 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
         [audioPlayer stop];
     }
     NSInteger randomTrackIndex = [[randomTracks objectAtIndex:(trackIndex % tracksCount)] integerValue];
-//    NSLog(@"Random track: %d / %d", trackIndex, randomTrackIndex);
     currentTrack = [[tracks objectAtIndex:randomTrackIndex] get];
+    NSLog(@"Random track: %ld / %ld: %@", (long)trackIndex, (long)randomTrackIndex, currentTrack);
     trackIndex += 1;
+
+    if (![currentTrack respondsToSelector:@selector(location)]) {
+        NSLog(@" ---> !! Track has no location, skipping...");
+        [self playNextSong];
+        return;
+    }
+    
     audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:currentTrack.location error:nil];
     [audioPlayer play];
     [audioPlayer setDelegate:self];
