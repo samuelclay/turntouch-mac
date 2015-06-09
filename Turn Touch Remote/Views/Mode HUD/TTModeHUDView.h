@@ -30,5 +30,6 @@
 
 - (void)setupTitleAttributes;
 - (void)setupTitleAttributes:(TTMode *)mode;
+- (void)drawMapBackground;
 
 @end

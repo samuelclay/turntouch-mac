@@ -43,7 +43,8 @@ const NSInteger kImageTextMargin = 12;
 }
 
 - (void)drawMapBackground {
-//    NSLog(@"drawMapBackground");
+    NSLog(@"drawMapBackground");
+
     NSRect mapFrame = [self mapFrame];
     [gradientView setFrame:mapFrame];
     [teaserGradientView setFrame:mapFrame];
@@ -117,7 +118,8 @@ const NSInteger kImageTextMargin = 12;
     CGFloat widthPadding = (screen.frame.size.width * kPaddingPct) / 2;
     CGFloat width = screen.frame.size.width - widthPadding*2;
     CGFloat height = width / 1.3;
-    CGFloat heightPadding = (screen.frame.size.height - height + 210) / 2;
+    CGFloat actionHeight = NSHeight(screen.frame) / 6;
+    CGFloat heightPadding = (screen.frame.size.height - height + actionHeight) / 2;
 
     return NSMakeRect(widthPadding, heightPadding, width, height);
 }

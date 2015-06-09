@@ -74,7 +74,7 @@
 
 - (IBAction)fadeOut:(id)sender {
 //    __block __unsafe_unretained NSWindow *window = hudWindow;
-    
+
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:.25f];
     [[NSAnimationContext currentContext] setCompletionHandler:^{

@@ -18,6 +18,8 @@
     if (self = [super initWithWindowNibName:windowNibName]) {
         appDelegate = (TTAppDelegate *)[NSApp delegate];
         [hudWindow setFrame:[self hiddenFrame] display:YES];
+        
+        [self showWindow:appDelegate];
     }
     
     return self;
@@ -39,7 +41,6 @@
 
 - (void)fadeIn:(BOOL)animate {
     [hudWindow makeKeyAndOrderFront:nil];
-    [self showWindow:appDelegate];
     [hudView setupTitleAttributes];
     hudView.isTeaser = NO;
     [hudView setNeedsDisplay:YES];
@@ -56,8 +57,9 @@
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
     
+    [hudWindow setFrame:[self visibleFrame] display:YES];
+    
     [[hudWindow animator] setAlphaValue:1.f];
-    [[hudWindow animator] setFrame:[self visibleFrame] display:YES];
     if (animate) {
         [[[hudView gradientView] animator] setAlphaValue:1.f];
     }
@@ -78,7 +80,7 @@
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
     
     [[hudWindow animator] setAlphaValue:0.f];
-    [[hudWindow animator] setFrame:[self hiddenFrame] display:YES];
+    [hudWindow setFrame:[self hiddenFrame] display:YES];
     
     [NSAnimationContext endGrouping];
 }

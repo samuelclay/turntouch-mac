@@ -48,7 +48,6 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    // Make a fully skinned panel
     NSPanel *panel = (id)[self window];
     [panel setDelegate:self];
     [panel setAcceptsMouseMovedEvents:YES];
@@ -84,17 +83,17 @@
 }
 
 - (void)resize:(NSNotification *)notification {
-//    NSLog(@"Resize notification: %@", NSStringFromRect(self.window.frame));
+    NSLog(@"Resize notification: %@", NSStringFromRect(self.window.frame));
 //    [self.window display];
 //    [self.window setHasShadow:NO];
 //    [self.window setHasShadow:YES];
 //    [self.window invalidateShadow];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidResizeNotification object:self.window];
+  /*  [[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidResizeNotification object:self.window];
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(resize:)
                                                  name:NSWindowDidResizeNotification
-                                               object:self.window];
+                                               object:self.window];*/
 
 }
 
@@ -130,14 +129,14 @@
 }
 
 - (void)windowDidResize:(NSNotification *)notification {
-//    NSLog(@"windowDidResize: %@", notification);
+    NSLog(@"windowDidResize: %@", notification);
 
     [self.window display];
     [self.window invalidateShadow];
 }
 
 - (NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize {
-//    NSLog(@"windowWillResize:%@ toSize:%@", sender, NSStringFromSize(frameSize));
+    NSLog(@"windowWillResize:%@ toSize:%@", sender, NSStringFromSize(frameSize));
 
     return frameSize;
 }

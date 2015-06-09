@@ -62,14 +62,16 @@ const CGFloat kActionHUDMarginPct = .6f;
 
 + (NSRect)actionFrame {
     NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
-    CGFloat margin = (screen.frame.size.width * kActionHUDMarginPct) / 2;
-    CGFloat width = screen.frame.size.width - margin*2;
+    CGFloat margin = (NSWidth(screen.frame) * kActionHUDMarginPct) / 2;
+    CGFloat width = NSWidth(screen.frame) - margin*2;
+    CGFloat height = NSHeight(screen.frame) / 6;
+    
     if (width < 900) {
         width = 900;
         margin = (screen.frame.size.width - width) / 2;
     }
 
-    return NSMakeRect(margin, 0, width, 200);
+    return NSMakeRect(margin, 0, width, height);
 }
 
 - (void)drawBackground {

@@ -225,7 +225,7 @@
 - (void)colorPaths:(NSRect)rect {
     // TODO: This entire view needs to be split into a mode diamond and action diamond, since only
     //       the action diamond is interactive.
-    
+//    NSLog(@"Color paths");
     TTModeDirection activeModeDirection = (ignoreActiveMode || interactive) ? overrideActiveDirection : appDelegate.modeMap.activeModeDirection;
     TTModeDirection selectedModeDirection = ignoreSelectedMode ? overrideSelectedDirection : appDelegate.modeMap.selectedModeDirection;
     TTModeDirection inspectingModeDirection = appDelegate.modeMap.inspectingModeDirection;
