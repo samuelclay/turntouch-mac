@@ -120,7 +120,7 @@
                                                             relatedBy:NSLayoutRelationEqual
                                                                toItem:nil
                                                             attribute:0
-                                                           multiplier:1.0 constant:0];
+                                                           multiplier:1.0 constant:1];
         [self addConstraint:actionMenuConstraint];
         optionsConstraint = [NSLayoutConstraint constraintWithItem:optionsView
                                                          attribute:NSLayoutAttributeHeight
@@ -236,7 +236,7 @@
     if (appDelegate.modeMap.openedActionChangeMenu) {
         [[actionMenuConstraint animator] setConstant:ACTION_MENU_HEIGHT];
     } else {
-        [[actionMenuConstraint animator] setConstant:0];
+        [[actionMenuConstraint animator] setConstant:1];
     }
     
     [NSAnimationContext endGrouping];

@@ -61,7 +61,7 @@
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:self
                                                          attribute:NSLayoutAttributeTop
-                                                        multiplier:1.0 constant:1]];
+                                                        multiplier:1.0 constant:0]];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:scrollView
                                                          attribute:NSLayoutAttributeHeight
                                                          relatedBy:NSLayoutRelationEqual
