@@ -94,6 +94,7 @@
     [self showWindow:appDelegate];
     [hudView setupTitleAttributes:[appDelegate.modeMap modeInDirection:direction]];
     [hudView setNeedsDisplay:YES];
+
     [[hudView gradientView] setAlphaValue:0.f];
     [[hudView teaserGradientView] setAlphaValue:1.f];
 
@@ -106,7 +107,6 @@
     [[NSAnimationContext currentContext] setDuration:.4f];
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
-    [hudView setNeedsDisplay:YES];
 
     [[hudWindow animator] setAlphaValue:1.f];
     [hudWindow setFrame:[self visibleFrame] display:YES];

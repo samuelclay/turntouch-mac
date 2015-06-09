@@ -276,7 +276,10 @@
         
         // Fill in the color as a stroke or fill
         NSColor *modeColor;
-        if (interactive || isHud) {
+        if (isHud) {
+            CGFloat alpha = 0.9f;
+            modeColor = NSColorFromRGBAlpha(0xFFFFFF, alpha);
+        } else if (interactive) {
             if (isActiveDirection) {
                 modeColor = NSColorFromRGB(0x505AC0);
             } else if (isHoveringDirection && !isInspectingDirection) {

@@ -74,6 +74,11 @@
 
 #pragma mark - Drawing
 
+- (void)setFrame:(NSRect)frame {
+    [super setFrame:frame];
+    [self setNeedsDisplay:YES];
+}
+
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     

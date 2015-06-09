@@ -34,11 +34,14 @@ const NSInteger kImageTextMargin = 12;
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
-//    NSLog(@"Draw mode: %d / %@", isTeaser, NSStringFromRect(mapFrame));
+    NSRect mapFrame = [self mapFrame];
+    NSLog(@"Draw mode: %d / %@", isTeaser, NSStringFromRect(mapFrame));
     
     [self drawMap];
     [self drawLabelBackgrounds];
     [self drawLabels];
+    
+    [diamondLabels setNeedsDisplay:YES];
 }
 
 - (void)drawMapBackground {

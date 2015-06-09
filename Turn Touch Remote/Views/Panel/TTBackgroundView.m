@@ -41,6 +41,10 @@
     if (self = [super initWithFrame:frameRect]) {
         appDelegate = (TTAppDelegate *)[NSApp delegate];
         
+        [self setWantsLayer:YES];
+        [self setHuggingPriority:NSLayoutPriorityDefaultHigh
+                  forOrientation:NSLayoutConstraintOrientationVertical];
+        
         arrowView = [[TTPanelArrowView alloc] init];
         titleBarView = [[TTTitleBarView alloc] init];
         modeTabs = [[TTModeTabsContainer alloc] init];
@@ -200,9 +204,9 @@
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:openDuration];
     [[NSAnimationContext currentContext] setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
-    [[NSAnimationContext currentContext] setCompletionHandler:^{
-        [self redrawShadow];
-    }];
+//    [[NSAnimationContext currentContext] setCompletionHandler:^{
+//        [self redrawShadow];
+//    }];
     
     if (appDelegate.modeMap.openedModeChangeMenu) {
         [[modeMenuConstraint animator] setConstant:MODE_MENU_HEIGHT];
