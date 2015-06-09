@@ -18,7 +18,7 @@
     if (self = [super initWithWindowNibName:windowNibName]) {
         appDelegate = (TTAppDelegate *)[NSApp delegate];
         [hudWindow setFrame:[self hiddenFrame] display:YES];
-        
+
         [self showWindow:appDelegate];
     }
     
@@ -61,7 +61,10 @@
     
     [[hudWindow animator] setAlphaValue:1.f];
     if (animate) {
+        [hudView setNeedsDisplay:YES];
         [[[hudView gradientView] animator] setAlphaValue:1.f];
+//        [[hudView gradientView] setAlphaValue:1.f];
+
     }
     [NSAnimationContext endGrouping];
 }
@@ -103,9 +106,10 @@
     [[NSAnimationContext currentContext] setDuration:.4f];
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
-    
+    [hudView setNeedsDisplay:YES];
+
     [[hudWindow animator] setAlphaValue:1.f];
-    [[hudWindow animator] setFrame:[self visibleFrame] display:YES];
+    [hudWindow setFrame:[self visibleFrame] display:YES];
 
     [NSAnimationContext endGrouping];
 }

@@ -16,17 +16,23 @@
 
 @synthesize diamondRect;
 @synthesize interactive;
+@synthesize isHud;
 
 - (id)initWithInteractive:(BOOL)_interactive {
+    return [self initWithInteractive:_interactive isHud:NO];
+}
+
+- (id)initWithInteractive:(BOOL)_interactive isHud:(BOOL)_isHud {
     self = [super initWithFrame:CGRectZero];
     if (self) {
         appDelegate = (TTAppDelegate *)[NSApp delegate];
         interactive = _interactive;
+        isHud = _isHud;
         self.translatesAutoresizingMaskIntoConstraints = NO;
         
-        diamondView = [[TTDiamondView alloc] initWithFrame:CGRectZero interactive:YES];
+        diamondView = [[TTDiamondView alloc] initWithFrame:CGRectZero interactive:interactive statusBar:NO isHud:isHud];
         [diamondView setIgnoreSelectedMode:YES];
-        [diamondView setShowOutline:YES];
+        [diamondView setShowOutline:!isHud];
         [self addSubview:diamondView];
         
         northLabel = [[TTDiamondLabel alloc] initWithFrame:CGRectZero inDirection:NORTH];
@@ -54,7 +60,7 @@
     [super setFrame:frameRect];
     
     if (interactive) {
-        [self drawBackground];
+        [self setNeedsDisplay:YES];
     }
     
     if (interactive) {

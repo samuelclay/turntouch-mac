@@ -77,8 +77,7 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
 
 - (void)setFrame:(NSRect)frameRect {
     [super setFrame:frameRect];
-    [self drawBackground];
-    [self drawLabel];
+    [self setNeedsDisplay:YES];
 }
 
 - (void)drawLabel {

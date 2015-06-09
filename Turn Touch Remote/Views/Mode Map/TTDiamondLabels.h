@@ -31,8 +31,10 @@
 
 @property (nonatomic) NSRect diamondRect;
 @property (nonatomic, readwrite) BOOL interactive;
+@property (nonatomic, readwrite) BOOL isHud;
 
 - (id)initWithInteractive:(BOOL)_interactive;
+- (id)initWithInteractive:(BOOL)_interactive isHud:(BOOL)_isHud;
 - (void)drawLabels;
 - (void)setMode:(TTMode *)mode;
 

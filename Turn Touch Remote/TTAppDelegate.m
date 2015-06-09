@@ -110,9 +110,9 @@ void *kContextActivePanel = &kContextActivePanel;
 
 - (void) receiveWakeNote: (NSNotification*) note {
     NSLog(@"receiveWakeNote: %@", [note name]);
-    [_bluetoothMonitor stopScan];
-    [_bluetoothMonitor terminate];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [_bluetoothMonitor stopScan];
+        [_bluetoothMonitor terminate];
         [_bluetoothMonitor startScan];
     });
 }

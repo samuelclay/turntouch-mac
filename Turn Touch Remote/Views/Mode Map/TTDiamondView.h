@@ -38,12 +38,14 @@
 @property (nonatomic, assign) BOOL showOutline;
 @property (nonatomic, assign) BOOL interactive;
 @property (nonatomic, assign) BOOL statusBar;
+@property (nonatomic, assign) BOOL isHud;
 @property (nonatomic, assign) BOOL connected;
 @property (nonatomic, assign) BOOL pairing;
 @property (nonatomic, setter = setHighlighted:) BOOL isHighlighted;
 
 - (id)initWithFrame:(NSRect)frame pairing:(BOOL)_pairing;
 - (id)initWithFrame:(NSRect)frame interactive:(BOOL)interactive;
-- (id)initWithFrame:(NSRect)frame interactive:(BOOL)_interactive statusBar:(BOOL)_statusBar;
+- (id)initWithFrame:(NSRect)frame statusBar:(BOOL)_statusBar;
+- (id)initWithFrame:(NSRect)frame interactive:(BOOL)_interactive statusBar:(BOOL)_statusBar isHud:(BOOL)_isHud;
 
 @end

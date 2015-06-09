@@ -21,13 +21,12 @@ const NSInteger kImageTextMargin = 12;
 
 - (void)awakeFromNib {
     appDelegate = (TTAppDelegate *)[NSApp delegate];
-    diamondLabels = [[TTDiamondLabels alloc] initWithInteractive:NO];
+    diamondLabels = [[TTDiamondLabels alloc] initWithInteractive:NO isHud:YES];
     isTeaser = NO;
     teaserGradientView = [[NSImageView alloc] init];
     gradientView = [[NSImageView alloc] init];
     
     [self drawMapBackground];
-
     [self addSubview:teaserGradientView];
     [self addSubview:gradientView];
     [self addSubview:diamondLabels];
@@ -36,10 +35,10 @@ const NSInteger kImageTextMargin = 12;
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
 //    NSLog(@"Draw mode: %d / %@", isTeaser, NSStringFromRect(mapFrame));
-
+    
+    [self drawMap];
     [self drawLabelBackgrounds];
     [self drawLabels];
-    [self drawMap];
 }
 
 - (void)drawMapBackground {

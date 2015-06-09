@@ -22,6 +22,7 @@
 @synthesize statusBar;
 @synthesize connected;
 @synthesize pairing;
+@synthesize isHud;
 
 #pragma mark - Initialization
 
@@ -31,31 +32,46 @@
 }
 
 - (id)initWithFrame:(NSRect)frame interactive:(BOOL)_interactive {
-    return [self initWithFrame:frame interactive:_interactive statusBar:NO];
+    return [self initWithFrame:frame interactive:_interactive statusBar:NO isHud:NO];
+}
+
+- (id)initWithFrame:(NSRect)frame isHud:(BOOL)_isHud {
+    return [self initWithFrame:frame interactive:NO statusBar:NO isHud:_isHud];
+}
+
+- (id)initWithFrame:(NSRect)frame statusBar:(BOOL)_statusBar {
+    return [self initWithFrame:frame interactive:NO statusBar:_statusBar isHud:NO];
 }
 
 - (id)initWithFrame:(NSRect)frame pairing:(BOOL)_pairing {
     self.pairing = _pairing;
-    return [self initWithFrame:frame interactive:NO statusBar:NO];
+    return [self initWithFrame:frame interactive:NO statusBar:NO isHud:NO];
 }
 
-- (id)initWithFrame:(NSRect)frame interactive:(BOOL)_interactive statusBar:(BOOL)_statusBar {
+- (id)initWithFrame:(NSRect)frame interactive:(BOOL)_interactive statusBar:(BOOL)_statusBar isHud:(BOOL)_isHud {
     self = [super initWithFrame:frame];
     if (self) {
+        interactive = _interactive;
+        isHud = _isHud;
+        statusBar = _statusBar;
         self.size = NSWidth(frame);
         self.isHighlighted = NO;
         self.showOutline = NO;
-        self.interactive = _interactive;
-        self.statusBar = _statusBar;
         self.overrideSelectedDirection = NO_DIRECTION;
         self.overrideActiveDirection = NO_DIRECTION;
         self.ignoreSelectedMode = NO;
         self.ignoreActiveMode = NO;
         
+        if (isHud) {
+            self.wantsLayer = YES;
+        }
+        
         appDelegate = (TTAppDelegate *)[NSApp delegate];
         
         [self registerAsObserver];
-        [self createTrackingArea];
+        if (interactive) {
+            [self createTrackingArea];
+        }
     }
     
     return self;
@@ -140,6 +156,7 @@
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
+//    NSLog(@"Diamond draw rect: %@", NSStringFromRect(dirtyRect));
     [super drawRect:dirtyRect];
 
     NSRect rect = self.bounds;
@@ -259,7 +276,7 @@
         
         // Fill in the color as a stroke or fill
         NSColor *modeColor;
-        if (interactive) {
+        if (interactive || isHud) {
             if (isActiveDirection) {
                 modeColor = NSColorFromRGB(0x505AC0);
             } else if (isHoveringDirection && !isInspectingDirection) {
@@ -430,6 +447,11 @@
     [self setNeedsDisplay:YES];
 }
 
+- (void)mouseEntered:(NSEvent *)theEvent {
+    [super mouseEntered:theEvent];
+    
+    [[NSCursor pointingHandCursor] set];
+}
 - (void)mouseMoved:(NSEvent *)theEvent {
     if (!interactive) {
         [super mouseMoved:theEvent];
@@ -440,10 +462,16 @@
 }
 
 - (void)mouseExited:(NSEvent *)theEvent {
+    if (!interactive) {
+        [super mouseExited:theEvent];
+        return;
+    }
+    [[NSCursor arrowCursor] set];
     [appDelegate.modeMap toggleHoverModeDirection:NO_DIRECTION hovering:NO];
 }
 
 - (void)mouseMovement:(NSEvent *)theEvent hovering:(BOOL)hovering {
+    if (!self.interactive) return;
     NSPoint location = [theEvent locationInWindow];
     NSPoint center = [self convertPoint:location fromView:nil];
 //    NSLog(@"Movement: %@ in %@", NSStringFromPoint(center), NSStringFromRect(self.bounds));
