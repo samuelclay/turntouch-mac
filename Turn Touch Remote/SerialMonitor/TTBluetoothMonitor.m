@@ -592,9 +592,9 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
     
     if (!hasDeviceNickname) {
         NSLog(@"Generating emoji nickname...");
-        NSArray *emoji = @[@"🐱", @"🐼", @"🐶", @"🍒", @"⚽️", @"🎻", @"🎱", @"☀️", @"🌎", @"🌴", @"🌻"];
+        NSArray *emoji = @[@"🐱", @"🐼", @"🐶", @"🍒", @"⚽️", @"🎻", @"🎱", @"☀️", @"🌎", @"🌴", @"🌻", @"🌀", @"📚", @"🔮", @"📡", @"⛵️", @"🚲", @"⛄️", @"🍉"];
         NSString *randomEmoji = [emoji objectAtIndex:arc4random_uniform((uint32_t)emoji.count)];
-        newNickname = [NSString stringWithFormat:@"The %@ Turn Touch Remote", randomEmoji];
+        newNickname = [NSString stringWithFormat:@"%@ Turn Touch Remote", randomEmoji];
 
         [self writeNickname:newNickname toDevice:device];
     }
