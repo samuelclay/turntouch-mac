@@ -39,6 +39,7 @@ typedef enum {
 @property (nonatomic) NSDate *lastActionDate;
 @property (nonatomic) TTButtonTimer *buttonTimer;
 @property (nonatomic, readwrite) BOOL addingDevice;
+@property (nonatomic, strong) CBCentralManager *manager;
 
 // Both unpaired and paired peripherals
 @property (nonatomic) TTDeviceList *foundDevices;
@@ -50,6 +51,7 @@ typedef enum {
 - (void)startScan;
 - (void)startScan:(BOOL)findUnpaired;
 - (void)stopScan;
+- (void)updateBluetoothState:(BOOL)renew;
 - (void)terminate;
 - (void)disconnectUnpairedDevices;
 - (void)setDeviceLatency:(NSInteger)latency;

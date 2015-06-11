@@ -29,6 +29,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60*60*6; // every 6 hours
 
 @implementation TTBluetoothMonitor
 
+@synthesize manager;
 @synthesize buttonTimer;
 @synthesize batteryPct;
 @synthesize lastActionDate;
@@ -72,7 +73,8 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60*60*6; // every 6 hours
             return TRUE;
         case CBCentralManagerStateUnknown:
         default:
-            return FALSE;
+            state = @"Bluetooth in unknown state.";
+            break;
     }
     
     NSLog(@"Central manager state: %@", state);
@@ -155,6 +157,15 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60*60*6; // every 6 hours
 #pragma mark - CBCentralManager delegate methods
 
 - (void) centralManagerDidUpdateState:(CBCentralManager *)central {
+    manager = central;
+    [self updateBluetoothState:NO];
+}
+
+- (void)updateBluetoothState:(BOOL)renew {
+    if (renew) {
+        manager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
+    }
+    
     if ([self isLECapableHardware]) {
         [self startScan];
     } else {
