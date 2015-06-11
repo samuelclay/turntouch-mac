@@ -83,7 +83,7 @@
 }
 
 - (void)resize:(NSNotification *)notification {
-    NSLog(@"Resize notification: %@", NSStringFromRect(self.window.frame));
+//    NSLog(@"Resize notification: %@", NSStringFromRect(self.window.frame));
 //    [self.window display];
 //    [self.window setHasShadow:NO];
 //    [self.window setHasShadow:YES];
@@ -129,16 +129,10 @@
 }
 
 - (void)windowDidResize:(NSNotification *)notification {
-    NSLog(@"windowDidResize: %@", notification);
+//    NSLog(@"windowDidResize: %@", notification);
 
-    [self.window display];
-    [self.window invalidateShadow];
-}
-
-- (NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize {
-    NSLog(@"windowWillResize:%@ toSize:%@", sender, NSStringFromSize(frameSize));
-
-    return frameSize;
+//    [self.window display];
+//    [self.window invalidateShadow];
 }
 
 #pragma mark - Keyboard
