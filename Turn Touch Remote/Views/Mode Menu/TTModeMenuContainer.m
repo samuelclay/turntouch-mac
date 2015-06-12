@@ -135,8 +135,10 @@
         if (appDelegate.modeMap.openedActionChangeMenu) {
             [appDelegate.modeMap setOpenedActionChangeMenu:NO];
         }
+        [self setNeedsDisplay:YES];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(openedActionChangeMenu))]) {
         [self setCollectionContent];
+        [self setNeedsDisplay:YES];
     }
 }
 
@@ -147,6 +149,19 @@
     
     [bordersView drawRect:dirtyRect];
     [collectionView drawRect:dirtyRect];
+    
+    [NSAnimationContext beginGrouping];
+    [[NSAnimationContext currentContext] setDuration:0.5];
+    [[NSAnimationContext currentContext] setTimingFunction:
+     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+
+    if (menuType == MODE_MENU_TYPE) {
+        [[collectionView animator] setAlphaValue:appDelegate.modeMap.openedModeChangeMenu ? 1.0 : 0];
+    } else if (menuType == ACTION_MENU_TYPE) {
+        [[collectionView animator] setAlphaValue:appDelegate.modeMap.openedActionChangeMenu ? 1.0 : 0];
+    }
+    
+    [NSAnimationContext endGrouping];
 }
 
 
