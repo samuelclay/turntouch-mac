@@ -23,11 +23,6 @@
     return self;
 }
 
-- (void)drawRect:(NSRect)dirtyRect {
-    [super drawRect:dirtyRect];
-}
-
-
 - (void)setContent:(NSArray *)content withMenuType:(TTMenuType)_menuType {
     NSLog(@"Collection view: %d / %@", _menuType, content);
     menuType = _menuType;

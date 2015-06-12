@@ -45,6 +45,7 @@
     [appDelegate.modeMap removeObserver:self forKeyPath:@"activeModeDirection"];
     [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedModeDirection"];
     [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedMode"];
+    [appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
 }
 #pragma mark - KVO
 
@@ -54,6 +55,8 @@
     [appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
                              options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"selectedMode"
+                             options:0 context:nil];
+    [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
                              options:0 context:nil];
 }
 
@@ -65,6 +68,8 @@
         [keyPath isEqual:NSStringFromSelector(@selector(selectedMode))]) {
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
+        [self setNeedsDisplay:YES];
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))]) {
         [self setNeedsDisplay:YES];
     }
 }
@@ -226,6 +231,7 @@
         [appDelegate.modeMap changeDirection:appDelegate.modeMap.inspectingModeDirection
                                     toAction:modeName];
         [appDelegate.panelController.backgroundView setNeedsDisplay:YES];
+        [appDelegate.panelController.backgroundView.modeMenu.collectionView setNeedsDisplay:YES];
         [appDelegate.modeMap setInspectingModeDirection:appDelegate.modeMap.inspectingModeDirection];
     }
 }
