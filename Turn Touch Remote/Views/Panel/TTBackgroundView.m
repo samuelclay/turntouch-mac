@@ -199,14 +199,21 @@
     NSEvent *currentEvent = [NSApp currentEvent];
     NSUInteger clearFlags = ([currentEvent modifierFlags] & NSDeviceIndependentModifierFlagsMask);
     BOOL shiftPressed = (clearFlags == NSShiftKeyMask);
-    if (shiftPressed) openDuration *= 50;
+    if (shiftPressed) openDuration *= 10;
+    
+    if (appDelegate.modeMap.openedModeChangeMenu) {
+        [modeMenu toggleScrollbar:appDelegate.modeMap.openedModeChangeMenu];
+    }
     
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:openDuration];
     [[NSAnimationContext currentContext] setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
-//    [[NSAnimationContext currentContext] setCompletionHandler:^{
-//        [self redrawShadow];
-//    }];
+    
+    if (!appDelegate.modeMap.openedModeChangeMenu) {
+        [[NSAnimationContext currentContext] setCompletionHandler:^{
+            [modeMenu toggleScrollbar:appDelegate.modeMap.openedModeChangeMenu];
+        }];
+    }
     
     if (appDelegate.modeMap.openedModeChangeMenu) {
         [[modeMenuConstraint animator] setConstant:MODE_MENU_HEIGHT];
@@ -225,13 +232,19 @@
     BOOL shiftPressed = (clearFlags == NSShiftKeyMask);
     if (shiftPressed) openDuration *= 10;
     
+    if (appDelegate.modeMap.openedActionChangeMenu) {
+        [actionMenu toggleScrollbar:appDelegate.modeMap.openedActionChangeMenu];
+    }
+    
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:openDuration];
     [[NSAnimationContext currentContext] setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
-    [[NSAnimationContext currentContext] setCompletionHandler:^{
-        [self.window invalidateShadow];
-        [self.window update];
-    }];
+    
+    if (!appDelegate.modeMap.openedActionChangeMenu) {
+        [[NSAnimationContext currentContext] setCompletionHandler:^{
+            [actionMenu toggleScrollbar:appDelegate.modeMap.openedActionChangeMenu];
+        }];
+    }
     
     if (appDelegate.modeMap.openedActionChangeMenu) {
         [[actionMenuConstraint animator] setConstant:ACTION_MENU_HEIGHT];

@@ -32,7 +32,7 @@
         
         scrollView = [[NSScrollView alloc] init];
         scrollView.borderType = NSNoBorder;
-        scrollView.hasVerticalScroller = YES;
+        scrollView.hasVerticalScroller = NO;
         scrollView.translatesAutoresizingMaskIntoConstraints = NO;
         
         [scrollView addConstraint:[NSLayoutConstraint constraintWithItem:collectionView
@@ -169,6 +169,11 @@
         [NSColorFromRGB(0xD0D0D0) set];
         [line stroke];
     }
+}
+
+- (void)toggleScrollbar:(BOOL)visible {
+    scrollView.hasVerticalScroller = visible;
+    [scrollView setNeedsDisplay:YES];
 }
 
 - (void)setCollectionContent {

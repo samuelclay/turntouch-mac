@@ -25,5 +25,6 @@
 @property (nonatomic) TTModeMenuBordersView *bordersView;
 
 - (id)initWithType:(TTMenuType)_menuType;
+- (void)toggleScrollbar:(BOOL)visible;
 
 @end

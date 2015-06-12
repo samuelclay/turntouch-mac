@@ -32,6 +32,8 @@
     return self;
 }
 
+#pragma mark - Drawing
+
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     [self setupTitleAttributes];
@@ -91,10 +93,13 @@
 
 - (void)dealloc {
     [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedMode"];
+    [appDelegate.modeMap removeObserver:self forKeyPath:@"openedModeChangeMenu"];
 }
 
 - (void)registerAsObserver {
     [appDelegate.modeMap addObserver:self forKeyPath:@"selectedMode"
+                             options:0 context:nil];
+    [appDelegate.modeMap addObserver:self forKeyPath:@"openedModeChangeMenu"
                              options:0 context:nil];
 }
 
@@ -103,6 +108,8 @@
                          change:(NSDictionary*)change
                         context:(void*)context {
     if ([keyPath isEqual:NSStringFromSelector(@selector(selectedMode))]) {
+        [self setNeedsDisplay:YES];
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(openedModeChangeMenu))]) {
         [self setNeedsDisplay:YES];
     }
 }
