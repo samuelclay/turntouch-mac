@@ -15,6 +15,14 @@
 
 @class TTAppDelegate;
 
+typedef enum TTDiamondType : NSUInteger {
+    DIAMOND_TYPE_INTERACTIVE,
+    DIAMOND_TYPE_MODE,
+    DIAMOND_TYPE_STATUSBAR,
+    DIAMOND_TYPE_HUD,
+    DIAMOND_TYPE_PAIRING
+} TTDiamondType;
+
 @interface TTDiamondView : NSView {
     TTAppDelegate *appDelegate;
     CGFloat _size;
@@ -30,22 +38,16 @@
     NSBezierPath *southPathBottom;
 }
 
+@property (nonatomic) TTDiamondType diamondType;
 @property (nonatomic, assign) CGFloat size;
 @property (nonatomic, assign) TTModeDirection overrideSelectedDirection;
 @property (nonatomic, assign) TTModeDirection overrideActiveDirection;
 @property (nonatomic, assign) BOOL ignoreSelectedMode;
 @property (nonatomic, assign) BOOL ignoreActiveMode;
 @property (nonatomic, assign) BOOL showOutline;
-@property (nonatomic, assign) BOOL interactive;
-@property (nonatomic, assign) BOOL statusBar;
-@property (nonatomic, assign) BOOL isHud;
 @property (nonatomic, assign) BOOL connected;
-@property (nonatomic, assign) BOOL pairing;
 @property (nonatomic, setter = setHighlighted:) BOOL isHighlighted;
 
-- (id)initWithFrame:(NSRect)frame pairing:(BOOL)_pairing;
-- (id)initWithFrame:(NSRect)frame interactive:(BOOL)interactive;
-- (id)initWithFrame:(NSRect)frame statusBar:(BOOL)_statusBar;
-- (id)initWithFrame:(NSRect)frame interactive:(BOOL)_interactive statusBar:(BOOL)_statusBar isHud:(BOOL)_isHud;
+- (id)initWithFrame:(NSRect)frame diamondType:(TTDiamondType)_diamondType;
 
 @end

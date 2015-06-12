@@ -110,8 +110,9 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60*60*6; // every 6 hours
             }
             NSLog(@" ---> Connecting to known: %@", peripheral);
             [foundDevices addPeripheral:peripheral];
-            [manager connectPeripheral:peripheral options:@{CBConnectPeripheralOptionNotifyOnDisconnectionKey: [NSNumber numberWithBool:YES],
-                                                            CBCentralManagerOptionShowPowerAlertKey: [NSNumber numberWithBool:YES]}];
+            NSDictionary *options = @{CBConnectPeripheralOptionNotifyOnDisconnectionKey: [NSNumber numberWithBool:YES],
+                                      CBCentralManagerOptionShowPowerAlertKey: [NSNumber numberWithBool:YES]};
+            [manager connectPeripheral:peripheral options:options];
             static dispatch_once_t onceToken;
             dispatch_once(&onceToken, ^{
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * connectionDelay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -120,6 +121,10 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60*60*6; // every 6 hours
                 });
             });
         }
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * connectionDelay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self countDevices];
+        });
     }
 }
 

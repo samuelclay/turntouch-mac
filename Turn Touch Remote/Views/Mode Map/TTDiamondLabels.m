@@ -30,7 +30,11 @@
         isHud = _isHud;
         self.translatesAutoresizingMaskIntoConstraints = NO;
         
-        diamondView = [[TTDiamondView alloc] initWithFrame:CGRectZero interactive:interactive statusBar:NO isHud:isHud];
+        if (isHud) {
+            diamondView = [[TTDiamondView alloc] initWithFrame:CGRectZero diamondType:DIAMOND_TYPE_HUD];
+        } else {
+            diamondView = [[TTDiamondView alloc] initWithFrame:CGRectZero diamondType:DIAMOND_TYPE_INTERACTIVE];
+        }
         [diamondView setIgnoreSelectedMode:YES];
         [diamondView setShowOutline:!isHud];
         [self addSubview:diamondView];

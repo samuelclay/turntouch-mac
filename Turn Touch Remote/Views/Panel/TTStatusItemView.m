@@ -35,7 +35,8 @@
         _statusItem.view = self;
         
         NSRect diamondRect = NSInsetRect(itemRect, 4.0f, 3.0f);
-        self.diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect statusBar:YES];
+        self.diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect
+                                                    diamondType:DIAMOND_TYPE_STATUSBAR];
         [self addSubview:self.diamondView];
     }
     return self;

@@ -136,7 +136,8 @@
         [self updateCountdown];
         [diamondView setHidden:NO];
 
-        diamondView = [[TTDiamondView alloc] initWithFrame:diamondViewPlaceholder.bounds pairing:YES];
+        diamondView = [[TTDiamondView alloc] initWithFrame:diamondViewPlaceholder.bounds
+                                               diamondType:DIAMOND_TYPE_PAIRING];
         [diamondView setIgnoreSelectedMode:YES];
         for (NSView *subview in diamondViewPlaceholder.subviews) {
             [subview removeFromSuperview];

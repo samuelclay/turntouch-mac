@@ -11,6 +11,7 @@
 
 @implementation TTDiamondView
 
+@synthesize diamondType;
 @synthesize size = _size;
 @synthesize isHighlighted = _isHighlighted;
 @synthesize overrideSelectedDirection;
@@ -18,42 +19,20 @@
 @synthesize ignoreSelectedMode;
 @synthesize ignoreActiveMode;
 @synthesize showOutline;
-@synthesize interactive;
-@synthesize statusBar;
 @synthesize connected;
-@synthesize pairing;
-@synthesize isHud;
 
 #pragma mark - Initialization
 
 
 - (id)initWithFrame:(NSRect)frame {
-    return [self initWithFrame:frame interactive:NO];
+    return [self initWithFrame:frame diamondType:DIAMOND_TYPE_MODE];
 }
 
-- (id)initWithFrame:(NSRect)frame interactive:(BOOL)_interactive {
-    return [self initWithFrame:frame interactive:_interactive statusBar:NO isHud:NO];
-}
-
-- (id)initWithFrame:(NSRect)frame isHud:(BOOL)_isHud {
-    return [self initWithFrame:frame interactive:NO statusBar:NO isHud:_isHud];
-}
-
-- (id)initWithFrame:(NSRect)frame statusBar:(BOOL)_statusBar {
-    return [self initWithFrame:frame interactive:NO statusBar:_statusBar isHud:NO];
-}
-
-- (id)initWithFrame:(NSRect)frame pairing:(BOOL)_pairing {
-    self.pairing = _pairing;
-    return [self initWithFrame:frame interactive:NO statusBar:NO isHud:NO];
-}
-
-- (id)initWithFrame:(NSRect)frame interactive:(BOOL)_interactive statusBar:(BOOL)_statusBar isHud:(BOOL)_isHud {
+- (id)initWithFrame:(NSRect)frame diamondType:(TTDiamondType)_diamondType {
+    diamondType = _diamondType;
+    
     self = [super initWithFrame:frame];
     if (self) {
-        interactive = _interactive;
-        isHud = _isHud;
-        statusBar = _statusBar;
         self.size = NSWidth(frame);
         self.isHighlighted = NO;
         self.showOutline = NO;
@@ -62,15 +41,14 @@
         self.ignoreSelectedMode = NO;
         self.ignoreActiveMode = NO;
         
-        if (isHud) {
-            self.wantsLayer = YES;
-        }
-        
         appDelegate = (TTAppDelegate *)[NSApp delegate];
         
         [self registerAsObserver];
-        if (interactive) {
+
+        if (diamondType == DIAMOND_TYPE_INTERACTIVE) {
             [self createTrackingArea];
+        } else if (diamondType == DIAMOND_TYPE_HUD) {
+            self.wantsLayer = YES;
         }
     }
     
@@ -86,14 +64,12 @@
 #pragma mark - KVO
 
 - (void)dealloc {
-    if (interactive) {
+    if (diamondType == DIAMOND_TYPE_INTERACTIVE) {
         [appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
         [appDelegate.modeMap removeObserver:self forKeyPath:@"hoverModeDirection"];
     }
-    if (statusBar) {
+    if (diamondType == DIAMOND_TYPE_PAIRING || diamondType == DIAMOND_TYPE_STATUSBAR) {
         [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"pairedDevicesCount"];
-    }
-    if (pairing) {
         [appDelegate.bluetoothMonitor.buttonTimer removeObserver:self forKeyPath:@"pairingActivatedCount"];
     }
     [appDelegate.modeMap removeObserver:self forKeyPath:@"activeModeDirection"];
@@ -102,17 +78,15 @@
 }
 
 - (void)registerAsObserver {
-    if (interactive) {
+    if (diamondType == DIAMOND_TYPE_INTERACTIVE) {
         [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
                                  options:0 context:nil];
         [appDelegate.modeMap addObserver:self forKeyPath:@"hoverModeDirection"
                                  options:0 context:nil];
     }
-    if (statusBar) {
+    if (diamondType == DIAMOND_TYPE_PAIRING || diamondType == DIAMOND_TYPE_STATUSBAR) {
         [appDelegate.bluetoothMonitor addObserver:self forKeyPath:@"pairedDevicesCount"
                                           options:0 context:nil];
-    }
-    if (pairing) {
         [appDelegate.bluetoothMonitor.buttonTimer addObserver:self forKeyPath:@"pairingActivatedCount"
                                                       options:0 context:nil];
     }
@@ -243,7 +217,7 @@
     // TODO: This entire view needs to be split into a mode diamond and action diamond, since only
     //       the action diamond is interactive.
 //    NSLog(@"Color paths");
-    TTModeDirection activeModeDirection = (ignoreActiveMode || interactive) ? overrideActiveDirection : appDelegate.modeMap.activeModeDirection;
+    TTModeDirection activeModeDirection = (ignoreActiveMode || diamondType == DIAMOND_TYPE_INTERACTIVE) ? overrideActiveDirection : appDelegate.modeMap.activeModeDirection;
     TTModeDirection selectedModeDirection = ignoreSelectedMode ? overrideSelectedDirection : appDelegate.modeMap.selectedModeDirection;
     TTModeDirection inspectingModeDirection = appDelegate.modeMap.inspectingModeDirection;
     TTModeDirection hoverModeDirection = appDelegate.modeMap.hoverModeDirection;
@@ -270,16 +244,16 @@
         BOOL isSelectedDirection    = selectedModeDirection == direction;
         BOOL isActiveDirection      = activeModeDirection == direction;
         
-        if (pairing) {
+        if (diamondType == DIAMOND_TYPE_PAIRING) {
             isSelectedDirection = [appDelegate.bluetoothMonitor.buttonTimer isDirectionPaired:direction];
         }
         
         // Fill in the color as a stroke or fill
         NSColor *modeColor;
-        if (isHud) {
+        if (diamondType == DIAMOND_TYPE_HUD) {
             CGFloat alpha = 0.9f;
             modeColor = NSColorFromRGBAlpha(0xFFFFFF, alpha);
-        } else if (interactive) {
+        } else if (diamondType == DIAMOND_TYPE_INTERACTIVE) {
             if (isActiveDirection) {
                 modeColor = NSColorFromRGB(0x505AC0);
             } else if (isHoveringDirection && !isInspectingDirection) {
@@ -292,7 +266,7 @@
                     modeColor = NSColorFromRGB(0xC3C7C9);
                 }
             }
-        } else if (statusBar) {
+        } else if (diamondType == DIAMOND_TYPE_STATUSBAR) {
             if (self.isHighlighted) {
                 if (isActiveDirection) {
                     CGFloat alpha = isSelectedDirection ? 0.8 : 1.0;
@@ -326,12 +300,12 @@
                     modeColor = NSColorFromRGBAlpha(0x515559, alpha);
                 }
             }
-        } else {
+        } else if (diamondType == DIAMOND_TYPE_MODE || diamondType == DIAMOND_TYPE_PAIRING) {
             if (isActiveDirection) {
                 CGFloat alpha = 0.5f;
                 modeColor = NSColorFromRGBAlpha(0x303033, alpha);
             } else if (isSelectedDirection) {
-                if (pairing || appDelegate.modeMap.selectedModeDirection == direction) {
+                if (diamondType == DIAMOND_TYPE_PAIRING || appDelegate.modeMap.selectedModeDirection == direction) {
                     CGFloat alpha = 0.8f;
                     modeColor = NSColorFromRGBAlpha(0x1555D8, alpha);
                 } else {
@@ -360,7 +334,7 @@
             [path stroke];
         }
         
-        if (interactive) {
+        if (diamondType == DIAMOND_TYPE_INTERACTIVE) {
             if (isActiveDirection) {
                 [NSColorFromRGB(0xFFFFFF) set];
             } else if (isInspectingDirection || isHoveringDirection) {
@@ -389,7 +363,7 @@
 }
 
 - (void)createTrackingArea {
-    if (!interactive) return;
+    if (diamondType != DIAMOND_TYPE_INTERACTIVE) return;
     
     for (NSTrackingArea *area in self.trackingAreas) {
         [self removeTrackingArea:area];
@@ -405,7 +379,7 @@
 }
 
 - (void)mouseDown:(NSEvent *)theEvent {
-    if (!interactive) {
+    if (diamondType != DIAMOND_TYPE_INTERACTIVE) {
         [super mouseDown:theEvent];
         return;
     }
@@ -427,7 +401,7 @@
 }
 
 - (void)mouseUp:(NSEvent *)theEvent {
-    if (!interactive) {
+    if (diamondType != DIAMOND_TYPE_INTERACTIVE) {
         [super mouseUp:theEvent];
         return;
     }
@@ -456,7 +430,7 @@
     [[NSCursor pointingHandCursor] set];
 }
 - (void)mouseMoved:(NSEvent *)theEvent {
-    if (!interactive) {
+    if (diamondType != DIAMOND_TYPE_INTERACTIVE) {
         [super mouseMoved:theEvent];
         return;
     }
@@ -465,7 +439,7 @@
 }
 
 - (void)mouseExited:(NSEvent *)theEvent {
-    if (!interactive) {
+    if (diamondType != DIAMOND_TYPE_INTERACTIVE) {
         [super mouseExited:theEvent];
         return;
     }
@@ -474,7 +448,8 @@
 }
 
 - (void)mouseMovement:(NSEvent *)theEvent hovering:(BOOL)hovering {
-    if (!self.interactive) return;
+    if (diamondType != DIAMOND_TYPE_INTERACTIVE) return;
+    
     NSPoint location = [theEvent locationInWindow];
     NSPoint center = [self convertPoint:location fromView:nil];
 //    NSLog(@"Movement: %@ in %@", NSStringFromPoint(center), NSStringFromRect(self.bounds));
