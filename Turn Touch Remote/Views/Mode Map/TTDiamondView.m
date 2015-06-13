@@ -57,7 +57,8 @@
 
 - (void)setFrame:(NSRect)frameRect {
     [super setFrame:frameRect];
-    self.size = NSWidth(self.frame);
+    
+    self.size = NSWidth(frameRect);
 //    NSLog(@"Diamond size: %f", self.size);
 }
 

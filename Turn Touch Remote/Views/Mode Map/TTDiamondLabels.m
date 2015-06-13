@@ -64,10 +64,6 @@
     [super setFrame:frameRect];
     
     if (interactive) {
-        [self setNeedsDisplay:YES];
-    }
-    
-    if (interactive) {
         diamondRect = NSInsetRect(self.bounds, 24, 24);
     } else {
         diamondRect = NSInsetRect(self.bounds, 48, 48);
