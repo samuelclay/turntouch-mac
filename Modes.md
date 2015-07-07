@@ -10,11 +10,13 @@
  6. Slider: Choose duration (90 minutes default)
  7. Slider: Choose max volume (0 - 100%)
 
- * [NORTH] Snooze for X minutes
-    - Slider: X minutes
+ * [NORTH] Switch to playlist/genre
+    - Playlist/genre selector
  * [EAST] Skip to next song
- * [WEST] 
- * [SOUTH] Terminate alarm
+ * [WEST] Snooze (first tap) for X minutes / Stop alarm (second tap)
+    - Slider: X minutes
+ * [SOUTH] Switch to playlist/genre
+    - Playlist/genre selector
  
 # Morning App
 
