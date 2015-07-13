@@ -29,5 +29,6 @@
 - (void)activateTimers;
 - (void)deactivate;
 - (NSArray *)optionlessActions;
+- (BOOL)hideActionMenu;
 
 @end

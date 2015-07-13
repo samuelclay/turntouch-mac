@@ -199,6 +199,10 @@
     return ACTION_LAYOUT_TITLE;
 }
 
+- (BOOL)hideActionMenu {
+    return NO;
+}
+
 - (NSView *)viewForLayout:(TTModeDirection)direction withRect:(NSRect)rect {
     NSString *actionName = [self actionNameInDirection:direction];
     

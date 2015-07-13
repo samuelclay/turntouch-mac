@@ -165,6 +165,10 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
     return [TTModeMusic songInfoView:rect withTrack:currentTrack];
 }
 
+- (BOOL)hideActionMenu {
+    return YES;
+}
+
 #pragma mark - Timer
 
 - (NSDate *)nextRepeatAlarmDate {
