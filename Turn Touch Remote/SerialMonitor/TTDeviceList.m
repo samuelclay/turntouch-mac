@@ -71,6 +71,7 @@
         NSLog(@"Already added device: %@", addDevice);
     }
     addDevice.isPaired = [self isDevicePaired:addDevice];
+    addDevice.state = TTDeviceStateSearching;
 }
 
 - (void)removePeripheral:(CBPeripheral *)peripheral {
@@ -86,6 +87,7 @@
         } else if (device == removeDevice) {
             [device.peripheral setDelegate:nil];
             device.peripheral = nil;
+            device.state = TTDeviceStateDisconnected;
         }
     }
     devices = updatedDevices;
@@ -97,7 +99,8 @@
     
     // Counting paired devices
     for (TTDevice *device in devices) {
-        if (device.peripheral.state == CBPeripheralStateConnected) {
+        if (device.peripheral.state == CBPeripheralStateConnected &&
+            (device.state == TTDeviceStateConnected || device.state == TTDeviceStateConnecting)) {
             [updatedConnectedDevices addObject:device];
         }
     }
@@ -108,7 +111,8 @@
 - (TTDevice *)connectedDeviceAtIndex:(NSInteger)index {
     NSInteger i = 0;
     for (TTDevice *device in devices) {
-        if (device.peripheral.state != CBPeripheralStateDisconnected) {
+        if (device.peripheral.state != CBPeripheralStateDisconnected &&
+            (device.state == TTDeviceStateConnected || device.state == TTDeviceStateConnecting)) {
             if (i == index) return device;
             i++;
         }
@@ -140,7 +144,10 @@
 - (NSInteger)connectedCount {
     NSInteger count = 0;
     for (TTDevice *device in devices) {
-        if (device.peripheral.state != CBPeripheralStateDisconnected) count++;
+        if (device.peripheral.state != CBPeripheralStateDisconnected &&
+            device.state == TTDeviceStateConnected) {
+            count++;
+        }
     }
     return count;
 }
@@ -160,7 +167,7 @@
     NSUInteger count = 0;
 
     for (TTDevice *device in devices) {
-        if ([self isPeripheralPaired:device.peripheral]) {
+        if ([self isPeripheralPaired:device.peripheral] && device.state == TTDeviceStateConnected) {
             count++;
         }
     }

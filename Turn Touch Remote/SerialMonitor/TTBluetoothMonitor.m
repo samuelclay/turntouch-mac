@@ -179,7 +179,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 #pragma mark - CBCentralManager delegate methods
 
 - (void) centralManagerDidUpdateState:(CBCentralManager *)central {
-    NSLog(@"centralManagerDidUpdateState: %@ vs %@", central, manager);
+    NSLog(@"centralManagerDidUpdateState: %ld vs %ld", (long)central.state, (long)manager.state);
     manager = central;
     [self updateBluetoothState:NO];
 }
@@ -259,7 +259,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
                                        [CBUUID UUIDWithString:DEVICE_V2_SERVICE_BUTTON_UUID],
                                        [CBUUID UUIDWithString:DEVICE_V2_SERVICE_BATTERY_UUID]]];
 
-        
+        device.state = TTDeviceStateConnecting;
         device.needsReconnection = NO;
 
         [self countDevices];
@@ -270,8 +270,9 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
                                        [CBUUID UUIDWithString:DEVICE_V2_SERVICE_BUTTON_UUID],
                                        [CBUUID UUIDWithString:DEVICE_V2_SERVICE_BATTERY_UUID]]];
         
+        device.state = TTDeviceStateConnecting;
         device.needsReconnection = NO;
-        
+
         [buttonTimer resetPairingState];
         [self countDevices];
     }
@@ -284,7 +285,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
  */
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
     NSLog(@"Disconnected peripheral: %@", peripheral);
-    
+
     [foundDevices removePeripheral:peripheral];
     [self countDevices];
     [self startScan];
@@ -445,6 +446,7 @@ didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic
         
         TTDevice *device = [foundDevices deviceForPeripheral:peripheral];
         device.isNotified = YES;
+        device.state = TTDeviceStateConnected;
         [self countDevices];
 //        [appDelegate.hudController toastActiveMode];
     } else {

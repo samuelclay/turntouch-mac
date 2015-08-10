@@ -11,6 +11,13 @@
 
 @interface TTDevice : NSObject
 
+typedef enum {
+    TTDeviceStateDisconnected = 0,
+    TTDeviceStateSearching = 1,
+    TTDeviceStateConnecting = 2,
+    TTDeviceStateConnected = 3
+} TTDeviceState;
+
 @property (nonatomic) NSString *nickname;
 @property (nonatomic) CBUUID *uuid;
 @property (nonatomic, retain) CBPeripheral *peripheral;
@@ -20,6 +27,7 @@
 @property (nonatomic, readwrite) BOOL isNotified;
 @property (nonatomic, readwrite) BOOL needsReconnection;
 @property (nonatomic) int firmwareVersion;
+@property (nonatomic) TTDeviceState state;
 
 - (id)initWithPeripheral:(CBPeripheral *)peripheral;
 
