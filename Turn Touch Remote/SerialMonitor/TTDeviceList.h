@@ -15,6 +15,8 @@
     NSMutableArray *devices;
 }
 
+@property (nonatomic) NSMutableArray *devices;
+
 - (TTDevice *)deviceForPeripheral:(CBPeripheral *)peripheral;
 - (TTDevice *)objectAtIndex:(NSUInteger)index;
 

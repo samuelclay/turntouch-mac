@@ -101,7 +101,7 @@
     BOOL found = !![appDelegate.bluetoothMonitor.unpairedDevicesCount integerValue];
     BOOL connected = !![appDelegate.bluetoothMonitor.unpairedDevicesConnected integerValue];
     
-    NSLog(@"Counting unpaired devices: %d-%d", found, connected);
+//    NSLog(@"Counting unpaired devices: %d-%d", found, connected);
     if (!found) {
         [titleBox setHidden:YES];
         [labelPressButtons setHidden:YES];
