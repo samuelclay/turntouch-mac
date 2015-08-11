@@ -166,10 +166,16 @@
     activeModeDirection = NO_DIRECTION;
     
     if (!selectedMode) return;
-
+    
     [selectedMode runDirection:direction];
-
+    
     activeModeDirection = NO_DIRECTION;
+}
+
+- (void)runDoubleClickButton:(TTModeDirection)direction {
+    if (!selectedMode) return;
+    
+    [selectedMode runDoubleClickDirection:direction];
 }
 
 - (NSString *)directionName:(TTModeDirection)direction {

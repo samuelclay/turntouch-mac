@@ -25,6 +25,8 @@ typedef enum {
     TTButtonState *buttonState;
     TTButtonState *pairingButtonState;
     BOOL inMultitouch;
+    TTModeDirection lastButtonPressedDirection;
+    NSDate *lastButtonPressStart;
     NSDate *holdToastStart;
 }
 

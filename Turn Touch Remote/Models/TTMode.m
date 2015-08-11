@@ -129,6 +129,10 @@
     }
 }
 
+- (void)runDoubleClickDirection:(TTModeDirection)direction {
+    NSLog(@"Double click: %u", direction);
+}
+
 - (NSString *)titleInDirection:(TTModeDirection)direction {
     NSString *actionName = [self actionNameInDirection:direction];
     

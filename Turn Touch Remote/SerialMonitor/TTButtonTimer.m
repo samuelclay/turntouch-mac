@@ -114,18 +114,46 @@
     }
     // Lift button
     else if (buttonLifted >= 0) {
-//        NSLog(@" ---> Button lifted%@: %ld", inMultitouch ? @" (multi-touch)" : @"", (long)buttonLifted);
-        if (buttonLifted == 0) {
-            [self fireButton:NORTH];
-        } else if (buttonLifted == 1) {
-            [self fireButton:EAST];
-        } else if (buttonLifted == 2) {
-            [self fireButton:WEST];
-        } else if (buttonLifted == 3) {
-            [self fireButton:SOUTH];
-        } else {
-            [self activateButton:NO_DIRECTION];
+        NSLog(@" ---> Button lifted%@: %ld", inMultitouch ? @" (multi-touch)" : @"", (long)buttonLifted);
+        TTModeDirection buttonPressedDirection;
+        switch (buttonLifted) {
+            case 0:
+                buttonPressedDirection = NORTH;
+                break;
+            case 1:
+                buttonPressedDirection = EAST;
+                break;
+            case 2:
+                buttonPressedDirection = WEST;
+                break;
+            case 3:
+                buttonPressedDirection = SOUTH;
+                break;
+                
+            default:
+                buttonPressedDirection = NO_DIRECTION;
+                break;
         }
+        // Check for double click and setup double click timer
+        if (lastButtonPressedDirection != NO_DIRECTION &&
+            buttonPressedDirection == lastButtonPressedDirection &&
+            [[NSDate date] timeIntervalSinceDate:lastButtonPressStart] < 0.500) {
+            // Double click detected
+            [self fireDoubleClickButton:buttonPressedDirection];
+            lastButtonPressedDirection = NO_DIRECTION;
+            lastButtonPressStart = nil;
+        } else {
+            lastButtonPressedDirection = buttonPressedDirection;
+            lastButtonPressStart = [NSDate date];
+            
+            [self fireButton:buttonPressedDirection];
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.500 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                lastButtonPressedDirection = NO_DIRECTION;
+                lastButtonPressStart = nil;
+            });
+        }
+        
     } else if (!anyButtonPressed) {
 //        NSLog(@" ---> Nothing pressed%@: %d", inMultitouch ? @" (multi-touch)" : @"", state);
         if (state == 0x00) {
@@ -200,13 +228,29 @@
 #endif
     [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];
 
+    [appDelegate.hudController toastActiveAction:direction];
+
+    [self cancelModeTimer];
+//    NSLog(@"Firing button: %@", [appDelegate.modeMap directionName:direction]);
+}
+
+- (void)fireDoubleClickButton:(TTModeDirection)direction {
+    if (direction == NO_DIRECTION) return;
+    
+    [appDelegate.modeMap runDoubleClickButton:direction];
+    
+    [appDelegate.hudController toastActiveAction:direction];
+
+    [self cancelModeTimer];
+}
+
+- (void)cancelModeTimer {
     [activeModeTimer invalidate];
     activeModeTimer = nil;
-    [appDelegate.hudController toastActiveAction:direction];
+
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.001 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [appDelegate.hudController hideModeTease];
     });
-//    NSLog(@"Firing button: %@", [appDelegate.modeMap directionName:direction]);
 }
 
 - (void)activeModeTimerFire:(NSTimer *)timer {
