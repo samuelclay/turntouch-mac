@@ -8,7 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 #import "TTAppDelegate.h"
-#import "TTMode.h"
 
 @class TTAppDelegate;
 
@@ -23,9 +22,11 @@ extern const CGFloat kActionHUDMarginPct;
 
 @property (nonatomic) TTModeDirection direction;
 @property (nonatomic) TTMode *mode;
+@property (nonatomic) TTButtonAction buttonAction;
 
 - (void)drawProgressBar:(NSProgressIndicator *)progressBar;
 - (void)drawImageLayoutView;
 + (NSRect)actionFrame;
+
 
 @end

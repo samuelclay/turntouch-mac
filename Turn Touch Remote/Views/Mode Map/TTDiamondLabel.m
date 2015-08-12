@@ -84,7 +84,7 @@
     
 	NSString *directionLabel;
 
-    directionLabel = [diamondMode titleInDirection:labelDirection];
+    directionLabel = [diamondMode titleInDirection:labelDirection buttonAction:BUTTON_ACTION_PRESSUP];
     NSSize labelSize = [directionLabel sizeWithAttributes:labelAttributes];
     [directionLabel drawAtPoint:NSMakePoint(NSWidth(self.bounds)/2 - labelSize.width/2, NSHeight(self.bounds)/2 - labelSize.height/(140/50.f)) withAttributes:labelAttributes];
 

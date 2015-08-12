@@ -79,7 +79,7 @@
     ActionLayout layout = [mode layoutInDirection:direction];
     NSTimeInterval delay = layout == ACTION_LAYOUT_IMAGE_TITLE ? 2.5 : 0.5;
     
-//    [actionHUDController fadeIn:direction actionType:ACTION_TYPE_DOUBLE];
+    [actionHUDController fadeIn:direction withMode:nil buttonAction:BUTTON_ACTION_DOUBLE];
     
     if (actionOperation) [actionOperation cancel];
     
@@ -94,7 +94,7 @@
     if (direction == NO_DIRECTION) {
         [actionHUDController fadeOut:nil];
     } else {
-        [actionHUDController fadeIn:direction];
+        [actionHUDController fadeIn:direction withMode:nil buttonAction:BUTTON_ACTION_PRESSDOWN];
     }
 }
 

@@ -16,3 +16,12 @@ typedef enum {
     SOUTH = 4,
     INFO = 5
 } TTModeDirection;
+
+
+typedef enum {
+    BUTTON_ACTION_OFF = 0,
+    BUTTON_ACTION_PRESSDOWN = 1,
+    BUTTON_ACTION_PRESSUP = 2,
+    BUTTON_ACTION_HELD = 3,
+    BUTTON_ACTION_DOUBLE = 4,
+} TTButtonAction;

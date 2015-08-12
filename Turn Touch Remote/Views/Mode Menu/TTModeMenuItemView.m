@@ -125,7 +125,7 @@
     if (menuType == MODE_MENU_TYPE) {
         modeTitle = [[modeClass title] uppercaseString];
     } else if (menuType == ACTION_MENU_TYPE) {
-        modeTitle = [[activeMode titleForAction:modeName] uppercaseString];
+        modeTitle = [[activeMode titleForAction:modeName buttonAction:BUTTON_ACTION_PRESSUP] uppercaseString];
     }
 
     NSShadow *stringShadow = [[NSShadow alloc] init];

@@ -12,6 +12,7 @@
 
 @synthesize direction;
 @synthesize mode;
+@synthesize buttonAction;
 
 const CGFloat kActionHUDMarginPct = .6f;
 
@@ -108,7 +109,7 @@ const CGFloat kActionHUDMarginPct = .6f;
                                       NSShadowAttributeName: stringShadow,
                                       NSParagraphStyleAttributeName: style
                                       };
-    NSString *directionLabel = [mode actionTitleInDirection:direction];
+    NSString *directionLabel = [mode actionTitleInDirection:direction buttonAction:buttonAction];
     frame.size.height = frame.size.height / 2 + [directionLabel sizeWithAttributes:labelAttributes].height/2;
     [directionLabel drawInRect:frame withAttributes:labelAttributes];
 }
@@ -136,7 +137,7 @@ const CGFloat kActionHUDMarginPct = .6f;
                                       NSShadowAttributeName: stringShadow,
                                       NSParagraphStyleAttributeName: style
                                       };
-    NSString *directionLabel = [mode actionTitleInDirection:direction];
+    NSString *directionLabel = [mode actionTitleInDirection:direction buttonAction:buttonAction];
     frame.size.height = frame.size.height * 0.7 + [directionLabel sizeWithAttributes:labelAttributes].height/2;
     [directionLabel drawInRect:frame withAttributes:labelAttributes];
 }

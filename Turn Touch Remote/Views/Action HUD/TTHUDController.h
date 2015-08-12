@@ -30,6 +30,7 @@
 - (void)teaseMode:(TTModeDirection)direction;
 - (void)hideModeTease;
 - (void)toastActiveAction:(TTModeDirection)direction;
+- (void)toastDoubleClickAction:(TTModeDirection)direction;
 - (void)holdToastActiveAction:(TTModeDirection)direction;
 - (void)releaseToastActiveAction;
 

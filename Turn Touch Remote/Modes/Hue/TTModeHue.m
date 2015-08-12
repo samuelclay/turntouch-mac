@@ -63,7 +63,7 @@ NSString *const kRandomSaturation = @"randomSaturation";
 - (NSString *)titleTTModeHueSceneSleep {
     return @"Sleep";
 }
-- (NSString *)doubleClickTitleTTModeHueSceneSleep {
+- (NSString *)doubleTitleTTModeHueSceneSleep {
     return @"Sleep fast";
 }
 - (NSString *)titleTTModeHueSceneOff {

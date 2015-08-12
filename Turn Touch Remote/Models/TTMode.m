@@ -138,15 +138,22 @@
     }
 }
 
-- (NSString *)titleInDirection:(TTModeDirection)direction {
+- (NSString *)titleInDirection:(TTModeDirection)direction buttonAction:(TTButtonAction)buttonAction {
     NSString *actionName = [self actionNameInDirection:direction];
     
-    return [self titleForAction:actionName];
+    return [self titleForAction:actionName buttonAction:buttonAction];
 }
 
-- (NSString *)titleForAction:(NSString *)actionName {
-    SEL selector = NSSelectorFromString([NSString stringWithFormat:@"title%@",
-                                         actionName]);
+- (NSString *)titleForAction:(NSString *)actionName buttonAction:(TTButtonAction)buttonAction {
+    NSString *runAction = @"title";
+    if (buttonAction == BUTTON_ACTION_DOUBLE) runAction = @"doubleTitle";
+    SEL selector = NSSelectorFromString([NSString stringWithFormat:@"%@%@",
+                                         runAction, actionName]);
+    if (![self respondsToSelector:selector]) {
+        NSLog(@" ---> No double click title: %@", actionName);
+        return [self titleForAction:actionName buttonAction:BUTTON_ACTION_PRESSUP];
+    }
+    
     IMP imp = [self methodForSelector:selector];
     NSString *(*func)(id, SEL) = (void *)imp;
     NSString *actionTitle = func(self, selector);
@@ -154,17 +161,19 @@
     return actionTitle;
 }
 
-- (NSString *)actionTitleInDirection:(TTModeDirection)direction {
+- (NSString *)actionTitleInDirection:(TTModeDirection)direction buttonAction:(TTButtonAction)buttonAction {
     NSString *actionName = [self actionNameInDirection:direction];
     
-    return [self actionTitleForAction:actionName];
+    return [self actionTitleForAction:actionName buttonAction:buttonAction];
 }
 
-- (NSString *)actionTitleForAction:(NSString *)actionName {
-    SEL selector = NSSelectorFromString([NSString stringWithFormat:@"actionTitle%@",
-                                         actionName]);
+- (NSString *)actionTitleForAction:(NSString *)actionName buttonAction:(TTButtonAction)buttonAction {
+    NSString *runAction = @"actionTitle";
+    if (buttonAction == BUTTON_ACTION_DOUBLE) runAction = @"doubleActionTitle";
+    SEL selector = NSSelectorFromString([NSString stringWithFormat:@"%@%@",
+                                         runAction, actionName]);
     if (![self respondsToSelector:selector]) {
-        return [self titleForAction:actionName];
+        return [self titleForAction:actionName buttonAction:buttonAction];
     }
     
     IMP imp = [self methodForSelector:selector];

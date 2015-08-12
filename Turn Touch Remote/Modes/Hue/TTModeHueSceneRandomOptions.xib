@@ -19,7 +19,7 @@
             <rect key="frame" x="0.0" y="0.0" width="397" height="226"/>
             <subviews>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SMf-U6-ghJ" customClass="TTSegmentedControl">
-                    <rect key="frame" x="62" y="88" width="272" height="24"/>
+                    <rect key="frame" x="63" y="88" width="272" height="24"/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="Aeq-U5-5qx" customClass="TTSegmentedCell">
                         <font key="font" metaFont="system"/>
                         <segments>
@@ -33,28 +33,31 @@
                     </connections>
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ab0-0p-Vmn">
-                    <rect key="frame" x="149" y="189" width="98" height="21"/>
+                    <rect key="frame" x="150" y="189" width="98" height="21"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Random colors" id="CnZ-6B-OPP">
                         <font key="font" size="14" name="Effra-Regular"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N29-Q7-eTX">
-                    <rect key="frame" x="137" y="119" width="122" height="21"/>
+                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fK0-9l-j0Z" customClass="TTSegmentedControl">
+                    <rect key="frame" x="63" y="18" width="276" height="24"/>
+                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="40w-nu-1kA" customClass="TTSegmentedCell">
+                        <font key="font" metaFont="system"/>
+                        <segments>
+                            <segment label="Pastels"/>
+                            <segment label="Mixed colors" selected="YES" tag="1"/>
+                            <segment label="Strong colors"/>
+                        </segments>
+                    </segmentedCell>
+                    <connections>
+                        <action selector="changeRandomSaturation:" target="-2" id="Z7J-AN-rdg"/>
+                    </connections>
+                </segmentedControl>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GdS-bS-cNL">
+                    <rect key="frame" x="140" y="49" width="122" height="21"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="118" id="Nq7-Xy-9z0"/>
-                    </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Random brightness" id="9YE-RM-3sn">
-                        <font key="font" size="14" name="Effra-Regular"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GdS-bS-cNL">
-                    <rect key="frame" x="140" y="49" width="125" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="118" id="1ne-qu-eqa"/>
+                        <constraint firstAttribute="width" constant="118" id="f1L-Xl-WHO"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Random Saturation" id="cCd-Xm-8wj">
                         <font key="font" size="14" name="Effra-Regular"/>
@@ -76,35 +79,31 @@
                         <action selector="changeRandomColors:" target="-2" id="VXn-hk-KPO"/>
                     </connections>
                 </segmentedControl>
-                <segmentedControl verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fK0-9l-j0Z" customClass="TTSegmentedControl">
-                    <rect key="frame" x="72" y="18" width="276" height="24"/>
-                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="40w-nu-1kA" customClass="TTSegmentedCell">
-                        <font key="font" metaFont="system"/>
-                        <segments>
-                            <segment label="Pastels"/>
-                            <segment label="Mixed colors" selected="YES" tag="1"/>
-                            <segment label="Strong colors"/>
-                        </segments>
-                    </segmentedCell>
-                    <connections>
-                        <action selector="changeRandomSaturation:" target="-2" id="Z7J-AN-rdg"/>
-                    </connections>
-                </segmentedControl>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N29-Q7-eTX">
+                    <rect key="frame" x="138" y="119" width="122" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="118" id="qcu-cB-7fM"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Random brightness" id="9YE-RM-3sn">
+                        <font key="font" size="14" name="Effra-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <constraints>
-                <constraint firstAttribute="centerX" secondItem="Fqe-9d-WDM" secondAttribute="centerX" id="2n4-dK-PNn"/>
-                <constraint firstItem="N29-Q7-eTX" firstAttribute="top" secondItem="Fqe-9d-WDM" secondAttribute="bottom" constant="20" id="3Oz-3y-GbQ"/>
-                <constraint firstItem="Fqe-9d-WDM" firstAttribute="top" secondItem="Ab0-0p-Vmn" secondAttribute="bottom" constant="8" symbolic="YES" id="CqK-CT-yPp"/>
-                <constraint firstItem="SMf-U6-ghJ" firstAttribute="top" secondItem="N29-Q7-eTX" secondAttribute="bottom" constant="8" symbolic="YES" id="ENx-nS-7fF"/>
-                <constraint firstAttribute="centerX" secondItem="SMf-U6-ghJ" secondAttribute="centerX" id="KKW-Jx-y9r"/>
-                <constraint firstItem="Ab0-0p-Vmn" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="16" id="Ls8-TN-kY6"/>
-                <constraint firstAttribute="centerX" secondItem="N29-Q7-eTX" secondAttribute="centerX" id="Qmx-mK-41n"/>
-                <constraint firstItem="fK0-9l-j0Z" firstAttribute="top" secondItem="GdS-bS-cNL" secondAttribute="bottom" constant="8" symbolic="YES" id="kjs-ZH-Efx"/>
-                <constraint firstAttribute="bottom" secondItem="fK0-9l-j0Z" secondAttribute="bottom" constant="20" symbolic="YES" id="nVZ-Q0-eMr"/>
-                <constraint firstItem="fK0-9l-j0Z" firstAttribute="centerX" secondItem="GdS-bS-cNL" secondAttribute="centerX" id="nyI-8r-RZB"/>
-                <constraint firstAttribute="centerX" secondItem="Ab0-0p-Vmn" secondAttribute="centerX" id="qjT-CK-cWI"/>
-                <constraint firstItem="fK0-9l-j0Z" firstAttribute="trailing" secondItem="Fqe-9d-WDM" secondAttribute="trailing" id="qr7-lx-DkA"/>
-                <constraint firstItem="GdS-bS-cNL" firstAttribute="top" secondItem="SMf-U6-ghJ" secondAttribute="bottom" constant="20" id="w89-Bg-M0u"/>
+                <constraint firstItem="N29-Q7-eTX" firstAttribute="centerX" secondItem="Ab0-0p-Vmn" secondAttribute="centerX" id="3qL-4M-rc8"/>
+                <constraint firstAttribute="bottom" secondItem="fK0-9l-j0Z" secondAttribute="bottom" constant="20" symbolic="YES" id="42g-Dy-gPy"/>
+                <constraint firstItem="fK0-9l-j0Z" firstAttribute="leading" secondItem="SMf-U6-ghJ" secondAttribute="leading" id="AI2-xb-Cla"/>
+                <constraint firstItem="fK0-9l-j0Z" firstAttribute="top" secondItem="GdS-bS-cNL" secondAttribute="bottom" constant="8" symbolic="YES" id="DaT-tI-p1d"/>
+                <constraint firstItem="Fqe-9d-WDM" firstAttribute="top" secondItem="Ab0-0p-Vmn" secondAttribute="bottom" constant="8" symbolic="YES" id="Mlw-b9-613"/>
+                <constraint firstItem="N29-Q7-eTX" firstAttribute="centerX" secondItem="SMf-U6-ghJ" secondAttribute="centerX" id="NY2-gR-ed9"/>
+                <constraint firstItem="Fqe-9d-WDM" firstAttribute="trailing" secondItem="fK0-9l-j0Z" secondAttribute="trailing" id="Nc9-yK-cfw"/>
+                <constraint firstItem="N29-Q7-eTX" firstAttribute="top" secondItem="Fqe-9d-WDM" secondAttribute="bottom" constant="20" id="UZh-BU-BLd"/>
+                <constraint firstItem="SMf-U6-ghJ" firstAttribute="top" secondItem="N29-Q7-eTX" secondAttribute="bottom" constant="8" symbolic="YES" id="Vz0-2I-MVH"/>
+                <constraint firstItem="Fqe-9d-WDM" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="Z5K-a0-99m"/>
+                <constraint firstItem="fK0-9l-j0Z" firstAttribute="centerX" secondItem="GdS-bS-cNL" secondAttribute="centerX" id="tpW-LQ-It7"/>
+                <constraint firstItem="GdS-bS-cNL" firstAttribute="top" secondItem="SMf-U6-ghJ" secondAttribute="bottom" constant="20" id="x7E-eb-Q1z"/>
             </constraints>
             <point key="canvasLocation" x="250.5" y="452"/>
         </customView>

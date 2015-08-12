@@ -43,20 +43,23 @@
 }
 
 - (IBAction)fadeIn:(TTModeDirection)direction {
-    [self fadeIn:direction withMode:NSAppDelegate.modeMap.selectedMode];
+    [self fadeIn:direction withMode:nil];
 }
 
 - (IBAction)fadeIn:(TTModeDirection)direction withMode:(TTMode *)mode {
-    [self fadeIn:direction withMode:mode actionType:ACTION_TYPE_PRESSUP];
+    [self fadeIn:direction withMode:mode buttonAction:BUTTON_ACTION_PRESSUP];
 }
 
-- (IBAction)fadeIn:(TTModeDirection)direction withMode:(TTMode *)mode actionType:(TTActionType)actionType {
+- (IBAction)fadeIn:(TTModeDirection)direction withMode:(TTMode *)mode buttonAction:(TTButtonAction)buttonAction {
+    if (!mode) mode = NSAppDelegate.modeMap.selectedMode;
+    
     [hudWindow makeKeyAndOrderFront:nil];
     [self showWindow:self];
-
+    
     [hudView setMode:mode];
     [hudView setDirection:direction];
-//    [hudView setActionType:actionType];
+    NSLog(@"buttonAction: %u", buttonAction);
+    [hudView setButtonAction:buttonAction];
     [hudView drawProgressBar:progressBar];
     [hudView drawImageLayoutView];
     [hudView setNeedsDisplay:YES];

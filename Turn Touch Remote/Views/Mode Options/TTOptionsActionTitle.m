@@ -89,7 +89,7 @@
     
     NSString *actionTitle;
     
-    actionTitle = [appDelegate.modeMap.selectedMode titleInDirection:labelDirection];
+    actionTitle = [appDelegate.modeMap.selectedMode titleInDirection:labelDirection buttonAction:BUTTON_ACTION_PRESSUP];
     NSSize titleSize = [actionTitle sizeWithAttributes:titleAttributes];
     
     NSPoint titlePoint = NSMakePoint(NSMaxX(diamondView.frame) + X_MARGIN,
