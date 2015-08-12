@@ -8,6 +8,7 @@
 
 #import "TTHUDController.h"
 #import "NSObject+CancelableBlocks.h"
+#import "TTMode.h"
 
 @interface TTHUDController ()
 
@@ -65,6 +66,20 @@
     NSTimeInterval delay = layout == ACTION_LAYOUT_IMAGE_TITLE ? 2.5 : 0.5;
     
     [actionHUDController fadeIn:direction];
+    
+    if (actionOperation) [actionOperation cancel];
+    
+    actionOperation = [self performBlock:^{
+        [actionHUDController slideOut:nil];
+    } afterDelay:delay cancelPreviousRequest:YES];
+}
+
+- (void)toastDoubleClickAction:(TTModeDirection)direction {
+    TTMode *mode = NSAppDelegate.modeMap.selectedMode;
+    ActionLayout layout = [mode layoutInDirection:direction];
+    NSTimeInterval delay = layout == ACTION_LAYOUT_IMAGE_TITLE ? 2.5 : 0.5;
+    
+//    [actionHUDController fadeIn:direction actionType:ACTION_TYPE_DOUBLE];
     
     if (actionOperation) [actionOperation cancel];
     

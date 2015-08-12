@@ -239,7 +239,7 @@
     
     [appDelegate.modeMap runDoubleClickButton:direction];
     
-    [appDelegate.hudController toastActiveAction:direction];
+//    [appDelegate.hudController toastDoubleClickAction:direction];
 
     [self cancelModeTimer];
 }

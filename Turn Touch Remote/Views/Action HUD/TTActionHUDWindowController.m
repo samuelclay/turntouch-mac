@@ -47,11 +47,16 @@
 }
 
 - (IBAction)fadeIn:(TTModeDirection)direction withMode:(TTMode *)mode {
+    [self fadeIn:direction withMode:mode actionType:ACTION_TYPE_PRESSUP];
+}
+
+- (IBAction)fadeIn:(TTModeDirection)direction withMode:(TTMode *)mode actionType:(TTActionType)actionType {
     [hudWindow makeKeyAndOrderFront:nil];
     [self showWindow:self];
 
     [hudView setMode:mode];
     [hudView setDirection:direction];
+//    [hudView setActionType:actionType];
     [hudView drawProgressBar:progressBar];
     [hudView drawImageLayoutView];
     [hudView setNeedsDisplay:YES];

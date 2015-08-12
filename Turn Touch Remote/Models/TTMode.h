@@ -17,6 +17,13 @@ typedef enum {
     ACTION_LAYOUT_IMAGE_TITLE = 1
 } ActionLayout;
 
+typedef enum {
+    ACTION_TYPE_PRESSDOWN = 0,
+    ACTION_TYPE_PRESSUP = 1,
+    ACTION_TYPE_HOLD = 2,
+    ACTION_TYPE_DOUBLE = 3,
+} TTActionType;
+
 @interface TTMode : NSObject <TTModeProtocol> {
     TTAppDelegate *appDelegate;
     TTModeDirection modeDirection;

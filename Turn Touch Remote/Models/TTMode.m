@@ -107,30 +107,35 @@
 #pragma mark - Map directions to actions
 
 - (void)runDirection:(TTModeDirection)direction {
+    [self runDirection:direction action:@"run"];
+}
+
+- (void)runDoubleClickDirection:(TTModeDirection)direction {
+    NSLog(@"Double click: %u", direction);
+    [self runDirection:direction action:@"doubleClick"];
+}
+
+- (void)runDirection:(TTModeDirection)direction action:(NSString *)funcAction {
     NSString *actionName = [self actionNameInDirection:direction];
-//    NSLog(@"Running: %d - %@", direction, actionName);
+    NSLog(@"Running: %d - %@%@", direction, actionName, funcAction);
 
     // First check for runAction:direction...
-    SEL selector = NSSelectorFromString([NSString stringWithFormat:@"run%@:",
-                                         actionName]);
+    SEL selector = NSSelectorFromString([NSString stringWithFormat:@"%@%@:",
+                                         funcAction, actionName]);
     IMP imp = [self methodForSelector:selector];
     void (*func)(id, SEL, TTModeDirection) = (void *)imp;
     if ([self respondsToSelector:selector]) {
         func(self, selector, direction);
     } else {
         // Then check for runAction... without direction
-        SEL selector = NSSelectorFromString([NSString stringWithFormat:@"run%@",
-                                             actionName]);
+        SEL selector = NSSelectorFromString([NSString stringWithFormat:@"%@%@",
+                                             funcAction, actionName]);
         IMP imp = [self methodForSelector:selector];
         void (*func)(id, SEL) = (void *)imp;
         if ([self respondsToSelector:selector]) {
             func(self, selector);
         }
     }
-}
-
-- (void)runDoubleClickDirection:(TTModeDirection)direction {
-    NSLog(@"Double click: %u", direction);
 }
 
 - (NSString *)titleInDirection:(TTModeDirection)direction {

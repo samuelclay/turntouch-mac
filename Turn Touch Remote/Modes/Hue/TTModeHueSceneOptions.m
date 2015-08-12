@@ -84,9 +84,11 @@ NSString *const kHueDuration = @"hueDuration";
     NSInteger duration = durationSlider.integerValue;
     
     NSString *durationString;
-    if (duration == 0)      durationString = @"Immediate";
-    else if (duration == 1) durationString = @"1 minute";
-    else                    durationString = [NSString stringWithFormat:@"%@ minutes", @(duration)];
+    if (duration == 0)       durationString = @"Immediate";
+    else if (duration == 1)  durationString = @"1 second";
+    else if (duration < 60)  durationString = [NSString stringWithFormat:@"%@ seconds", @(duration)];
+    else if (duration < 60*2) durationString = @"1 minute";
+    else                     durationString = [NSString stringWithFormat:@"%@ minutes", @(duration/60)];
     
     [durationLabel setStringValue:durationString];
 }

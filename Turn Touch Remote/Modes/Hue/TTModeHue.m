@@ -62,6 +62,9 @@ NSString *const kRandomBrightness = @"randomBrightness";
 - (NSString *)titleTTModeHueSceneSleep {
     return @"Sleep";
 }
+- (NSString *)doubleClickTitleTTModeHueSceneSleep {
+    return @"Sleep fast";
+}
 - (NSString *)titleTTModeHueSceneOff {
     return @"Lights off";
 }
@@ -105,6 +108,10 @@ NSString *const kRandomBrightness = @"randomBrightness";
 #pragma mark - Action methods
 
 - (void)runScene:(TTModeDirection)direction {
+    [self runScene:direction overrideDuration:nil];
+}
+
+- (void)runScene:(TTModeDirection)direction overrideDuration:(NSNumber *)overrideDuration {
     if (!self.phHueSDK.localConnected) {
         return;
     }
@@ -112,7 +119,11 @@ NSString *const kRandomBrightness = @"randomBrightness";
     PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
     NSString *sceneIdentifier = [appDelegate.modeMap actionOptionValue:kHueScene inDirection:direction];
     NSNumber *sceneDuration = (NSNumber *)[appDelegate.modeMap actionOptionValue:kHueDuration inDirection:direction];
-    NSNumber *sceneTransition = [NSNumber numberWithInteger:([sceneDuration integerValue] * 10 * 60)];
+    if (overrideDuration) {
+        sceneDuration = overrideDuration;
+    }
+    NSNumber *sceneTransition = [NSNumber numberWithInteger:([sceneDuration integerValue] * 10)];
+    NSLog(@"Scene: %@ / %@", sceneIdentifier, sceneTransition);
     PHScene *activeScene;
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
 
@@ -179,6 +190,10 @@ NSString *const kRandomBrightness = @"randomBrightness";
 - (void)runTTModeHueSceneSleep:(TTModeDirection)direction {
     //    NSLog(@"Running scene off... %d", direction);
     [self runScene:direction];
+}
+- (void)doubleClickTTModeHueSceneSleep:(TTModeDirection)direction {
+    //    NSLog(@"Running scene off... %d", direction);
+    [self runScene:direction overrideDuration:[NSNumber numberWithInt:2]];
 }
 
 - (void)runTTModeHueSceneRandom:(TTModeDirection)direction {

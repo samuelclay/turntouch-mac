@@ -154,7 +154,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
     
     if (knownCount > connectedCount) {
         connectionDelay = MIN(1*60, 1+connectionDelay);
-        NSLog(@" ---> Attemping connect to %ld/%ld still unconnected devices, delay: %ld sec (bluetooth: %@/%ld)", (knownCount-connectedCount), (long)knownCount, connectionDelay, manager, (long)manager.state);
+//        NSLog(@" ---> Attemping connect to %ld/%ld still unconnected devices, delay: %ld sec (bluetooth: %@/%ld)", (knownCount-connectedCount), (long)knownCount, connectionDelay, manager, (long)manager.state);
         [self stopScan];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             [self startScan];
@@ -207,7 +207,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 }
 
 - (void)countDevices {
-    NSLog(@"Counting %d: %@", (int)foundDevices.count, foundDevices);
+//    NSLog(@"Counting %d: %@", (int)foundDevices.count, foundDevices);
     
     [foundDevices ensureDevicesConnected];
     

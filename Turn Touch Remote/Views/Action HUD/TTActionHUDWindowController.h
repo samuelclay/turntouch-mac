@@ -10,6 +10,7 @@
 #import "TTAppDelegate.h"
 #import "TTActionHUDView.h"
 #import "TTActionHUDWindow.h"
+#import "TTMode.h"
 
 @class TTActionHUDView;
 
@@ -25,6 +26,7 @@
 
 - (IBAction)fadeIn:(TTModeDirection)direction;
 - (IBAction)fadeIn:(TTModeDirection)direction withMode:(TTMode *)mode;
+//- (IBAction)fadeIn:(TTModeDirection)direction withMode:(TTMode *)mode actionType:(TTActionType)actionType;
 - (IBAction)fadeOut:(id)sender;
 - (IBAction)slideOut:(id)sender;
 
