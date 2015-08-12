@@ -34,6 +34,12 @@ typedef enum {
     TTHueRandomBrightnessHigh = 3,
 } TTHueRandomBrightness;
 
+typedef enum {
+    TTHueRandomSaturationLow = 1,
+    TTHueRandomSaturationVaried = 2,
+    TTHueRandomSaturationHigh = 3,
+} TTHueRandomSaturation;
+
 @protocol TTModeHueDelegate <NSObject>
 
 @required
@@ -46,6 +52,7 @@ typedef enum {
 
 extern NSString *const kRandomColors;
 extern NSString *const kRandomBrightness;
+extern NSString *const kRandomSaturation;
 
 @property (strong, nonatomic) PHHueSDK *phHueSDK;
 @property (nonatomic, weak) id <TTModeHueDelegate> delegate;

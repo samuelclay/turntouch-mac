@@ -22,6 +22,7 @@
 
 NSString *const kRandomColors = @"randomColors";
 NSString *const kRandomBrightness = @"randomBrightness";
+NSString *const kRandomSaturation = @"randomSaturation";
 
 @synthesize delegate;
 @synthesize hueState;
@@ -108,30 +109,19 @@ NSString *const kRandomBrightness = @"randomBrightness";
 #pragma mark - Action methods
 
 - (void)runScene:(TTModeDirection)direction {
-    [self runScene:direction overrideDuration:nil];
-}
-
-- (void)runScene:(TTModeDirection)direction overrideDuration:(NSNumber *)overrideDuration {
     if (!self.phHueSDK.localConnected) {
         return;
     }
     
     PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
-    NSString *sceneIdentifier = [appDelegate.modeMap actionOptionValue:kHueScene inDirection:direction];
-    NSNumber *sceneDuration = (NSNumber *)[appDelegate.modeMap actionOptionValue:kHueDuration inDirection:direction];
-    if (overrideDuration) {
-        sceneDuration = overrideDuration;
-    }
-    NSNumber *sceneTransition = [NSNumber numberWithInteger:([sceneDuration integerValue] * 10)];
-    NSLog(@"Scene: %@ / %@", sceneIdentifier, sceneTransition);
-    PHScene *activeScene;
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
+    PHScene *activeScene;
+    NSString *sceneIdentifier = [appDelegate.modeMap actionOptionValue:kHueScene inDirection:direction];
 
     NSMutableArray *scenes = [[NSMutableArray alloc] init];
     for (PHScene *scene in cache.scenes.allValues) {
         [scenes addObject:@{@"name": scene.name, @"identifier": scene.identifier}];
         if ([scene.identifier isEqualToString:sceneIdentifier]) {
-//            NSLog(@"Checking scene %@=%@: %@", scene.identifier, sceneIdentifier, scene.name);
             activeScene = scene;
         }
     }
@@ -144,32 +134,9 @@ NSString *const kRandomBrightness = @"randomBrightness";
         sceneIdentifier = scenes[0][@"identifier"];
     }
     
-    NSNumber *originalTransitionTime = activeScene.transitionTime;
-    if ([sceneTransition integerValue] && (!originalTransitionTime ||
-                                           ![sceneTransition isEqualToNumber:originalTransitionTime])) {
-        for (NSString *lightIdentifier in activeScene.lightIdentifiers) {
-            PHLight *light = [[cache lights] objectForKey:lightIdentifier];
-            PHLightState *lightState = light.lightState;
-//            PHLightState *lightState = [[PHLightState alloc] init];
-            
-//            [lightState setHue:[NSNumber numberWithInt:0]];
-            lightState.on = [NSNumber numberWithBool:NO];
-            [lightState setBrightness:[NSNumber numberWithInt:0]];
-            [lightState setSaturation:[NSNumber numberWithInt:0]];
-
-            lightState.transitionTime = sceneTransition;
-            lightState.alert = 0;
-            [bridgeSendAPI updateLightStateForId:light.identifier withLightState:lightState completionHandler:^(NSArray *errors) {
-                NSLog(@"Light saved: %@", errors);
-            }];
-        }
-    } else {
-        [bridgeSendAPI activateSceneWithIdentifier:sceneIdentifier onGroup:@"0" completionHandler:^(NSArray *errors) {
-            if (errors) {
-                NSLog(@"Error on scene change: %@", errors);
-            }
-        }];
-    }
+    [bridgeSendAPI activateSceneWithIdentifier:sceneIdentifier onGroup:@"0" completionHandler:^(NSArray *errors) {
+        NSLog(@"Scene change: %@", errors);
+    }];
 }
 
 - (void)runTTModeHueSceneEarlyEvening:(TTModeDirection)direction {
@@ -188,12 +155,34 @@ NSString *const kRandomBrightness = @"randomBrightness";
 }
 
 - (void)runTTModeHueSceneSleep:(TTModeDirection)direction {
-    //    NSLog(@"Running scene off... %d", direction);
-    [self runScene:direction];
+    NSNumber *sceneDuration = (NSNumber *)[appDelegate.modeMap actionOptionValue:kHueDuration inDirection:direction];
+    [self runTTModeHueSceneSleep:direction duration:sceneDuration];
 }
+
 - (void)doubleClickTTModeHueSceneSleep:(TTModeDirection)direction {
     //    NSLog(@"Running scene off... %d", direction);
-    [self runScene:direction overrideDuration:[NSNumber numberWithInt:2]];
+    [self runTTModeHueSceneSleep:direction duration:[NSNumber numberWithInt:1]];
+}
+
+- (void)runTTModeHueSceneSleep:(TTModeDirection)direction duration:(NSNumber *)sceneDuration {
+    //    NSLog(@"Running scene off... %d", direction);
+    PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
+    PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
+    NSNumber *sceneTransition = [NSNumber numberWithInteger:([sceneDuration integerValue] * 10)];
+
+    for (PHLight *light in cache.lights.allValues) {
+        PHLightState *lightState = [[PHLightState alloc] init];
+        
+        [lightState setOn:[NSNumber numberWithBool:NO]];
+        [lightState setTransitionTime:sceneTransition];
+        [lightState setBrightness:[NSNumber numberWithInt:0]];
+        
+        lightState.transitionTime = sceneTransition;
+        lightState.alert = 0;
+        [bridgeSendAPI updateLightStateForId:light.identifier withLightState:lightState completionHandler:^(NSArray *errors) {
+            NSLog(@"Sleep light in %@: %@", sceneTransition, errors);
+        }];
+    }
 }
 
 - (void)runTTModeHueSceneRandom:(TTModeDirection)direction {
@@ -204,12 +193,14 @@ NSString *const kRandomBrightness = @"randomBrightness";
     
     TTHueRandomColors randomColors = (TTHueRandomColors)[[NSAppDelegate.modeMap actionOptionValue:kRandomColors] integerValue];
     TTHueRandomBrightness randomBrightnesses = (TTHueRandomBrightness)[[NSAppDelegate.modeMap actionOptionValue:kRandomBrightness] integerValue];
+    TTHueRandomSaturation randomSaturation = (TTHueRandomSaturation)[[NSAppDelegate.modeMap actionOptionValue:kRandomSaturation] integerValue];
     NSNumber *randomColor = [NSNumber numberWithInt:arc4random() % MAX_HUE];
     
     for (PHLight *light in cache.lights.allValues) {
         PHLightState *lightState = [[PHLightState alloc] init];
         
-        if (randomColors == TTHueRandomColorsAllSame || (randomColors == TTHueRandomColorsSomeDifferent && arc4random() % 10 > 5)) {
+        if ((randomColors == TTHueRandomColorsAllSame) ||
+            (randomColors == TTHueRandomColorsSomeDifferent && arc4random() % 10 > 5)) {
             [lightState setHue:randomColor];
         } else {
             [lightState setHue:[NSNumber numberWithInt:arc4random() % MAX_HUE]];
@@ -223,7 +214,13 @@ NSString *const kRandomBrightness = @"randomBrightness";
             [lightState setBrightness:[NSNumber numberWithInt:254]];
         }
         
-        [lightState setSaturation:[NSNumber numberWithInt:254]];
+        if (randomSaturation == TTHueRandomSaturationLow) {
+            [lightState setSaturation:[NSNumber numberWithInt:174]];
+        } else if (randomSaturation == TTHueRandomSaturationVaried) {
+            [lightState setSaturation:[NSNumber numberWithInt:254 - floor(arc4random() % 80)]];
+        } else if (randomSaturation == TTHueRandomSaturationHigh) {
+            [lightState setSaturation:[NSNumber numberWithInt:254]];
+        }
         
         [bridgeSendAPI updateLightStateForId:light.identifier withLightState:lightState completionHandler:^(NSArray *errors) {}];
     }

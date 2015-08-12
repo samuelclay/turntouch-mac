@@ -17,15 +17,18 @@
 
 @synthesize segRandomBrightness;
 @synthesize segRandomColors;
+@synthesize segRandomSaturation;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     TTHueRandomColors randomColors = (TTHueRandomColors)[[NSAppDelegate.modeMap actionOptionValue:kRandomColors] integerValue];
     TTHueRandomBrightness randomBrightness = (TTHueRandomBrightness)[[NSAppDelegate.modeMap actionOptionValue:kRandomBrightness] integerValue];
+    TTHueRandomSaturation randomSaturation = (TTHueRandomSaturation)[[NSAppDelegate.modeMap actionOptionValue:kRandomSaturation] integerValue];
 
     [segRandomColors setSelectedSegment:randomColors ? randomColors-1 : 2];
     [segRandomBrightness setSelectedSegment:randomBrightness ? randomBrightness-1 : 0];
+    [segRandomSaturation setSelectedSegment:randomSaturation ? randomSaturation-1 : 0];
 }
 
 - (IBAction)changeRandomColors:(id)sender {
@@ -36,6 +39,11 @@
 - (IBAction)changeRandomBrightness:(id)sender {
     TTHueRandomBrightness randomBrightness = (TTHueRandomBrightness)segRandomBrightness.selectedSegment+1;
     [NSAppDelegate.modeMap changeActionOption:kRandomBrightness to:[NSNumber numberWithInteger:randomBrightness]];
+}
+
+- (IBAction)changeRandomSaturation:(id)sender {
+    TTHueRandomSaturation randomSaturation = (TTHueRandomSaturation)segRandomSaturation.selectedSegment+1;
+    [NSAppDelegate.modeMap changeActionOption:kRandomSaturation to:[NSNumber numberWithInteger:randomSaturation]];
 }
 
 @end
