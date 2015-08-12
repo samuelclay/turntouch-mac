@@ -384,7 +384,7 @@ NSString *const kRandomBrightness = @"randomBrightness";
             [self.delegate changeState:hueState withMode:self showMessage:@"Found Hue bridge..."];
             NSString *macAddress = [[bridgesFound allKeys] objectAtIndex:0];
             NSString *ipAddress = [bridgesFound objectForKey:macAddress];
-            [self.phHueSDK setBridgeToUseWithIpAddress:ipAddress macAddress:macAddress];
+            [self.phHueSDK setBridgeToUseWithId:macAddress ipAddress:ipAddress];
             [self enableLocalHeartbeat];
         }
         else {
