@@ -173,9 +173,13 @@
 }
 
 - (void)runDoubleButton:(TTModeDirection)direction {
+    activeModeDirection = NO_DIRECTION;
+   
     if (!selectedMode) return;
     
     [selectedMode runDoubleDirection:direction];
+
+    activeModeDirection = NO_DIRECTION;
 }
 
 - (NSString *)directionName:(TTModeDirection)direction {

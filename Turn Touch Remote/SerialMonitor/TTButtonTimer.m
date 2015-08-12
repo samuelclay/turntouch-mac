@@ -238,6 +238,8 @@
     if (direction == NO_DIRECTION) return;
     
     [appDelegate.modeMap runDoubleButton:direction];
+
+    [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];
     
     [appDelegate.hudController toastDoubleAction:direction];
 
