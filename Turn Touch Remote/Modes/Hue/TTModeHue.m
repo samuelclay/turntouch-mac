@@ -159,7 +159,7 @@ NSString *const kRandomSaturation = @"randomSaturation";
     [self runTTModeHueSceneSleep:direction duration:sceneDuration];
 }
 
-- (void)doubleClickTTModeHueSceneSleep:(TTModeDirection)direction {
+- (void)doubleRunTTModeHueSceneSleep:(TTModeDirection)direction {
     //    NSLog(@"Running scene off... %d", direction);
     [self runTTModeHueSceneSleep:direction duration:[NSNumber numberWithInt:1]];
 }

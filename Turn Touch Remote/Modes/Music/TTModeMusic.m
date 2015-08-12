@@ -51,6 +51,9 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
 - (NSString *)titleTTModeMusicPause {
     return @"Play/pause";
 }
+- (NSString *)doubleTitleTTModeMusicPause {
+    return @"Previous track";
+}
 - (NSString *)actionTitleTTModeMusicPause {
     iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
     if (iTunes.playerState == iTunesEPlSPlaying) {
@@ -60,6 +63,9 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
 }
 - (NSString *)titleTTModeMusicNextTrack {
     return @"Next track";
+}
+- (NSString *)doubleTitleTTModeMusicNextTrack {
+    return @"Next album";
 }
 - (NSString *)titleTTModeMusicPreviousTrack {
     return @"Previous track";
@@ -240,11 +246,34 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
     
     [iTunes playpause];
 }
+- (void)doubleRunTTModeMusicPause {
+    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    
+    [iTunes previousTrack];
+    if (iTunes.playerState != iTunesEPlSPlaying) {
+        [iTunes playpause];
+    }
+}
 
 - (void)runTTModeMusicNextTrack {
     iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
     
     [iTunes nextTrack];
+}
+
+- (void)doubleRunTTModeMusicNextTrack {
+    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    NSString *original = [[iTunes currentTrack] album];
+    iTunesTrack *current;
+    int tries = 30;
+    
+    while (tries--) {
+        [iTunes nextTrack];
+        current = [iTunes currentTrack];
+        if (![original isEqualToString:current.album]) {
+            break;
+        }
+    }
 }
 
 - (void)runTTModeMusicPreviousTrack {

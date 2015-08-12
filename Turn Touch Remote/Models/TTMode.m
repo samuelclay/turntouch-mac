@@ -110,10 +110,10 @@
     [self runDirection:direction action:@"run"];
 }
 
-- (void)runDoubleClickDirection:(TTModeDirection)direction {
+- (void)runDoubleDirection:(TTModeDirection)direction {
     NSLog(@"Double click: %u", direction);
-    BOOL doubleClickRan = [self runDirection:direction action:@"doubleClick"];
-    if (!doubleClickRan) {
+    BOOL doubleRan = [self runDirection:direction action:@"doubleRun"];
+    if (!doubleRan) {
         [self runDirection:direction];
     }
 }

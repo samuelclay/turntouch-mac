@@ -33,7 +33,7 @@
 - (void)activateTimers;
 - (void)reset;
 - (void)runActiveButton;
-- (void)runDoubleClickButton:(TTModeDirection)direction;
+- (void)runDoubleButton:(TTModeDirection)direction;
 - (NSString *)directionName:(TTModeDirection)direction;
 - (TTMode *)modeInDirection:(TTModeDirection)direction;
 - (void)changeDirection:(TTModeDirection)direction toMode:(NSString *)modeClassName;

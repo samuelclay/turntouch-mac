@@ -139,7 +139,7 @@
             buttonPressedDirection == lastButtonPressedDirection &&
             [[NSDate date] timeIntervalSinceDate:lastButtonPressStart] < 0.500) {
             // Double click detected
-            [self fireDoubleClickButton:buttonPressedDirection];
+            [self fireDoubleButton:buttonPressedDirection];
             lastButtonPressedDirection = NO_DIRECTION;
             lastButtonPressStart = nil;
         } else {
@@ -234,12 +234,12 @@
 //    NSLog(@"Firing button: %@", [appDelegate.modeMap directionName:direction]);
 }
 
-- (void)fireDoubleClickButton:(TTModeDirection)direction {
+- (void)fireDoubleButton:(TTModeDirection)direction {
     if (direction == NO_DIRECTION) return;
     
-    [appDelegate.modeMap runDoubleClickButton:direction];
+    [appDelegate.modeMap runDoubleButton:direction];
     
-    [appDelegate.hudController toastDoubleClickAction:direction];
+    [appDelegate.hudController toastDoubleAction:direction];
 
     [self cancelModeTimer];
 }

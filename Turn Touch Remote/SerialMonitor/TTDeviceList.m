@@ -10,6 +10,8 @@
 
 @implementation TTDeviceList
 
+@synthesize devices;
+
 - (instancetype)init {
     if (self = [super init]) {
         devices = [[NSMutableArray alloc] init];
