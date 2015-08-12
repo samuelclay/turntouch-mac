@@ -465,7 +465,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
     if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_V1_CHARACTERISTIC_BUTTON_STATUS_UUID]] ||
         [characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_V2_CHARACTERISTIC_BUTTON_STATUS_UUID]]) {
         if( (characteristic.value)  || !error ) {
-            NSLog(@"Characteristic value: %@", [characteristic.value hexadecimalString]);
+//            NSLog(@"Characteristic value: %@", [characteristic.value hexadecimalString]);
             if (device.isPaired) {
                 [buttonTimer readBluetoothData:characteristic.value];
             } else {

@@ -58,7 +58,6 @@
     
     [hudView setMode:mode];
     [hudView setDirection:direction];
-    NSLog(@"buttonAction: %u", buttonAction);
     [hudView setButtonAction:buttonAction];
     [hudView drawProgressBar:progressBar];
     [hudView drawImageLayoutView];

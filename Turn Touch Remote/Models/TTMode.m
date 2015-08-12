@@ -112,12 +112,16 @@
 
 - (void)runDoubleClickDirection:(TTModeDirection)direction {
     NSLog(@"Double click: %u", direction);
-    [self runDirection:direction action:@"doubleClick"];
+    BOOL doubleClickRan = [self runDirection:direction action:@"doubleClick"];
+    if (!doubleClickRan) {
+        [self runDirection:direction];
+    }
 }
 
-- (void)runDirection:(TTModeDirection)direction action:(NSString *)funcAction {
+- (BOOL)runDirection:(TTModeDirection)direction action:(NSString *)funcAction {
+    BOOL success = NO;
     NSString *actionName = [self actionNameInDirection:direction];
-    NSLog(@"Running: %d - %@%@", direction, actionName, funcAction);
+    NSLog(@"Running: %d - %@%@", direction, funcAction, actionName);
 
     // First check for runAction:direction...
     SEL selector = NSSelectorFromString([NSString stringWithFormat:@"%@%@:",
@@ -126,6 +130,7 @@
     void (*func)(id, SEL, TTModeDirection) = (void *)imp;
     if ([self respondsToSelector:selector]) {
         func(self, selector, direction);
+        success = YES;
     } else {
         // Then check for runAction... without direction
         SEL selector = NSSelectorFromString([NSString stringWithFormat:@"%@%@",
@@ -134,8 +139,11 @@
         void (*func)(id, SEL) = (void *)imp;
         if ([self respondsToSelector:selector]) {
             func(self, selector);
+            success = YES;
         }
     }
+    
+    return success;
 }
 
 - (NSString *)titleInDirection:(TTModeDirection)direction buttonAction:(TTButtonAction)buttonAction {
