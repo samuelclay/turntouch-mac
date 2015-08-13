@@ -14,13 +14,13 @@
 
 - (id)initWithCoder:(NSCoder *)decoder {
     if (self = [super initWithCoder:decoder]) {
-//        [self setHighlightedSegment:-1];
+
     }
     return self;
 }
 
 - (void)awakeFromNib {
-//    [self setHighlightedSegment:-1];
+    [self setHighlightedSegment:-1];
 }
 
 #pragma mark - Drawing

@@ -59,7 +59,7 @@
                     <constraints>
                         <constraint firstAttribute="width" constant="118" id="f1L-Xl-WHO"/>
                     </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Random Saturation" id="cCd-Xm-8wj">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Random saturation" id="cCd-Xm-8wj">
                         <font key="font" size="14" name="Effra-Regular"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -80,9 +80,9 @@
                     </connections>
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N29-Q7-eTX">
-                    <rect key="frame" x="138" y="119" width="122" height="21"/>
+                    <rect key="frame" x="136" y="119" width="126" height="21"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="118" id="qcu-cB-7fM"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="118" id="Tip-Fc-A9D"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Random brightness" id="9YE-RM-3sn">
                         <font key="font" size="14" name="Effra-Regular"/>
@@ -92,16 +92,17 @@
                 </textField>
             </subviews>
             <constraints>
-                <constraint firstItem="N29-Q7-eTX" firstAttribute="centerX" secondItem="Ab0-0p-Vmn" secondAttribute="centerX" id="3qL-4M-rc8"/>
+                <constraint firstItem="SMf-U6-ghJ" firstAttribute="top" secondItem="N29-Q7-eTX" secondAttribute="bottom" constant="8" symbolic="YES" id="3zo-Pq-o88"/>
                 <constraint firstAttribute="bottom" secondItem="fK0-9l-j0Z" secondAttribute="bottom" constant="20" symbolic="YES" id="42g-Dy-gPy"/>
+                <constraint firstItem="N29-Q7-eTX" firstAttribute="top" secondItem="Fqe-9d-WDM" secondAttribute="bottom" constant="20" id="7O5-ef-E52"/>
                 <constraint firstItem="fK0-9l-j0Z" firstAttribute="leading" secondItem="SMf-U6-ghJ" secondAttribute="leading" id="AI2-xb-Cla"/>
                 <constraint firstItem="fK0-9l-j0Z" firstAttribute="top" secondItem="GdS-bS-cNL" secondAttribute="bottom" constant="8" symbolic="YES" id="DaT-tI-p1d"/>
+                <constraint firstItem="N29-Q7-eTX" firstAttribute="centerX" secondItem="SMf-U6-ghJ" secondAttribute="centerX" id="Db1-Wp-CNp"/>
                 <constraint firstItem="Fqe-9d-WDM" firstAttribute="top" secondItem="Ab0-0p-Vmn" secondAttribute="bottom" constant="8" symbolic="YES" id="Mlw-b9-613"/>
-                <constraint firstItem="N29-Q7-eTX" firstAttribute="centerX" secondItem="SMf-U6-ghJ" secondAttribute="centerX" id="NY2-gR-ed9"/>
                 <constraint firstItem="Fqe-9d-WDM" firstAttribute="trailing" secondItem="fK0-9l-j0Z" secondAttribute="trailing" id="Nc9-yK-cfw"/>
-                <constraint firstItem="N29-Q7-eTX" firstAttribute="top" secondItem="Fqe-9d-WDM" secondAttribute="bottom" constant="20" id="UZh-BU-BLd"/>
-                <constraint firstItem="SMf-U6-ghJ" firstAttribute="top" secondItem="N29-Q7-eTX" secondAttribute="bottom" constant="8" symbolic="YES" id="Vz0-2I-MVH"/>
+                <constraint firstItem="Ab0-0p-Vmn" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="16" id="Vey-ik-MqH"/>
                 <constraint firstItem="Fqe-9d-WDM" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="Z5K-a0-99m"/>
+                <constraint firstItem="N29-Q7-eTX" firstAttribute="centerX" secondItem="Ab0-0p-Vmn" secondAttribute="centerX" id="hMH-tS-p6y"/>
                 <constraint firstItem="fK0-9l-j0Z" firstAttribute="centerX" secondItem="GdS-bS-cNL" secondAttribute="centerX" id="tpW-LQ-It7"/>
                 <constraint firstItem="GdS-bS-cNL" firstAttribute="top" secondItem="SMf-U6-ghJ" secondAttribute="bottom" constant="20" id="x7E-eb-Q1z"/>
             </constraints>

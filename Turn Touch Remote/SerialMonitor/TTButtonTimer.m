@@ -158,9 +158,7 @@
         if (state == 0x00) {
             [self activateButton:NO_DIRECTION];
             [self maybeReleaseToastActiveMode];
-//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.150 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                inMultitouch = NO;
-//            });
+            inMultitouch = NO;
         }
     }
     
