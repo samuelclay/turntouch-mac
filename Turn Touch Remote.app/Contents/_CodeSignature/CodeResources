@@ -330,7 +330,7 @@
 		</data>
 		<key>Resources/TTModeHue.plist</key>
 		<data>
-		mofKFARXkWVeIMOaEGum8a/fknA=
+		SGerBL+2BD4FN4xr1hXctfztM2I=
 		</data>
 		<key>Resources/TTModeHueConnect.nib</key>
 		<data>
@@ -354,11 +354,11 @@
 		</data>
 		<key>Resources/TTModeHueSceneOptions.nib</key>
 		<data>
-		Hyxm25cQOAa2BITtubAqpWfdHyw=
+		4ZlEhQPAgwszDQKrSGFxRXRNYSk=
 		</data>
 		<key>Resources/TTModeHueSceneRandomOptions.nib</key>
 		<data>
-		HhqXPP49dWDz61pt7Tn+HTkqfKI=
+		XW+Ss3MXFzihss/dBbl8jghCVkM=
 		</data>
 		<key>Resources/TTModeMacOptions.nib</key>
 		<data>
@@ -646,7 +646,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			C2/K+K6gFEyHuCTCcpwAs5A6Dkw=
+			7XdJTN3IAG0uQtHU3TROxGd2FK4=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.andymatuschak.Sparkle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -977,7 +977,7 @@
 		</data>
 		<key>Resources/TTModeHue.plist</key>
 		<data>
-		mofKFARXkWVeIMOaEGum8a/fknA=
+		SGerBL+2BD4FN4xr1hXctfztM2I=
 		</data>
 		<key>Resources/TTModeHueConnect.nib</key>
 		<data>
@@ -1001,11 +1001,11 @@
 		</data>
 		<key>Resources/TTModeHueSceneOptions.nib</key>
 		<data>
-		Hyxm25cQOAa2BITtubAqpWfdHyw=
+		4ZlEhQPAgwszDQKrSGFxRXRNYSk=
 		</data>
 		<key>Resources/TTModeHueSceneRandomOptions.nib</key>
 		<data>
-		HhqXPP49dWDz61pt7Tn+HTkqfKI=
+		XW+Ss3MXFzihss/dBbl8jghCVkM=
 		</data>
 		<key>Resources/TTModeMacOptions.nib</key>
 		<data>

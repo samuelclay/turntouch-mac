@@ -14,5 +14,7 @@
 	<integer>3</integer>
 	<key>TTModeHueSceneRandom:randomBrightness</key>
 	<integer>3</integer>
+	<key>TTModeHueSceneRandom:randomSaturation</key>
+	<integer>3</integer>
 </dict>
 </plist>
