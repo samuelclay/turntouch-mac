@@ -158,9 +158,9 @@
         if (state == 0x00) {
             [self activateButton:NO_DIRECTION];
             [self maybeReleaseToastActiveMode];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.150 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.150 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 inMultitouch = NO;
-            });
+//            });
         }
     }
     
@@ -168,7 +168,7 @@
 }
 
 - (void)maybeReleaseToastActiveMode {
-    if (!holdToastStart || [[NSDate date] timeIntervalSinceDate:holdToastStart] > 2.5) {
+    if (!holdToastStart || [[NSDate date] timeIntervalSinceDate:holdToastStart] > 1.0) {
         [appDelegate.hudController releaseToastActiveMode];
     } else {
         [appDelegate.hudController toastActiveMode];
