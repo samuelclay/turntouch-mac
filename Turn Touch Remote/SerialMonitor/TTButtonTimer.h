@@ -22,7 +22,7 @@ typedef enum {
 @interface TTButtonTimer : NSObject {
     TTAppDelegate *appDelegate;
     NSTimer *activeModeTimer;
-    TTButtonState *buttonState;
+    TTButtonState *lastButtonState;
     TTButtonState *pairingButtonState;
     BOOL inMultitouch;
     TTModeDirection lastButtonPressedDirection;
@@ -31,11 +31,11 @@ typedef enum {
 }
 
 @property (nonatomic, readwrite) BOOL inMultitouch;
-@property (nonatomic) TTButtonState *buttonState;
+@property (nonatomic) TTButtonState *lastButtonState;
 @property (nonatomic) NSNumber *pairingActivatedCount;
 
 - (void)readBluetoothData:(NSData *)data;
-- (void)selectActiveMode:(TTModeDirection)direction;
+- (void)activateMode:(TTModeDirection)direction;
 - (void)activateButton:(TTModeDirection)direction;
 - (void)fireButton:(TTModeDirection)direction;
 - (void)resetPairingState;

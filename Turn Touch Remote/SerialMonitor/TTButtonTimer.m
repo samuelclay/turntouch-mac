@@ -12,13 +12,13 @@
 @implementation TTButtonTimer
 
 @synthesize pairingActivatedCount;
-@synthesize buttonState;
+@synthesize lastButtonState;
 @synthesize inMultitouch;
 
 - (id)init {
     if (self = [super init]) {
         appDelegate = (TTAppDelegate *)[NSApp delegate];
-        buttonState = [[TTButtonState alloc] init];
+        lastButtonState = [[TTButtonState alloc] init];
         pairingActivatedCount = [[NSNumber alloc] init];
         inMultitouch = NO;
     }
@@ -30,11 +30,15 @@
     return ~(*(int *)[[data subdataWithRange:NSMakeRange(0, 1)] bytes]) & 0x0F;
 }
 
+- (int)heldStateFromData:(NSData *)data {
+    return *(int *)[[data subdataWithRange:NSMakeRange(1, 1)] bytes];
+}
+
 - (void)readBluetoothData:(NSData *)data {
     uint8_t state = [self stateFromData:data];
-    int pos = *(int *)[[data subdataWithRange:NSMakeRange(1, 1)] bytes];
+    int heldData = [self heldStateFromData:data];
 
-    BOOL anyButtonPressed = NO;
+    BOOL anyButtonPressedDown = NO;
     BOOL anyButtonHeld = NO;
     NSInteger buttonLifted = -1;
     
@@ -47,53 +51,49 @@
     NSInteger i = newButtonState.count;
     while (i--) {
         BOOL buttonDown = ((state & (1 << i)) == (1 << i));
-//        NSLog(@"Checking button #%ld: %d / %d", (long)i, buttonDown, anyButtonPressed);
-        if (buttonDown && anyButtonPressed) {
+        if (buttonDown && anyButtonPressedDown) {
             inMultitouch = YES;
         }
-        // Press button down
-        if (![buttonState state:i] && buttonDown) {
-            anyButtonPressed = YES;
+
+        if (![lastButtonState state:i] && buttonDown) {
+            // Press button down
+            anyButtonPressedDown = YES;
             [newButtonState replaceState:i withState:buttonDown];
-        }
-        // Lift button
-        else if ([buttonState state:i] && !buttonDown) {
+        } else if ([lastButtonState state:i] && !buttonDown) {
+            // Lift button
             [newButtonState replaceState:i withState:NO];
             if (!inMultitouch) {
                 buttonLifted = i;
             }
-        }
-        // Button remains pressed down
-        else {
-            if (buttonDown) anyButtonPressed = YES;
+        } else {
+            // Button remains pressed down
+            if (buttonDown) anyButtonPressedDown = YES;
             [newButtonState replaceState:i withState:buttonDown];
         }
     }
-    buttonState = newButtonState;
-    anyButtonHeld = !inMultitouch && pos == 0xFF;
     
-    // Hold button
+    lastButtonState = newButtonState;
+    anyButtonHeld = !inMultitouch && heldData == 0xFF;
+    
     if (anyButtonHeld) {
-//        NSLog(@" ---> Button held: %d", state);
+        // Hold button
         if (state == 0x01) {
             // Don't fire action on button release
-            buttonState.north = NO;
-            [self selectActiveMode:NORTH];
+            lastButtonState.north = NO;
+            [self activateMode:NORTH];
         } else if (state == 0x02) {
-            buttonState.east = NO;
-            [self selectActiveMode:EAST];
+            lastButtonState.east = NO;
+            [self activateMode:EAST];
         } else if (state == 0x04) {
-            buttonState.west = NO;
-            [self selectActiveMode:WEST];
+            lastButtonState.west = NO;
+            [self activateMode:WEST];
         } else if (state == 0x08) {
-            buttonState.south = NO;
-            [self selectActiveMode:SOUTH];
+            lastButtonState.south = NO;
+            [self activateMode:SOUTH];
         }
         [self activateButton:NO_DIRECTION];
-    } else
-    // Press button
-    if (anyButtonPressed) {
-//        NSLog(@" ---> Button down%@: %d", inMultitouch ? @" (multi-touch)" : @"", state);
+    } else if (anyButtonPressedDown) {
+        // Press down button
         if (inMultitouch) {
             if (!holdToastStart) {
                 holdToastStart = [NSDate date];
@@ -111,9 +111,8 @@
         } else if (state == 0x00) {
             [self activateButton:NO_DIRECTION];
         }
-    }
-    // Lift button
-    else if (buttonLifted >= 0) {
+    } else if (buttonLifted >= 0) {
+        // Press up button
         NSLog(@" ---> Button lifted%@: %ld", inMultitouch ? @" (multi-touch)" : @"", (long)buttonLifted);
         TTModeDirection buttonPressedDirection;
         switch (buttonLifted) {
@@ -134,6 +133,7 @@
                 buttonPressedDirection = NO_DIRECTION;
                 break;
         }
+        
         // Check for double click and setup double click timer
         if (lastButtonPressedDirection != NO_DIRECTION &&
             buttonPressedDirection == lastButtonPressedDirection &&
@@ -153,8 +153,7 @@
                 lastButtonPressStart = nil;
             });
         }
-        
-    } else if (!anyButtonPressed) {
+    } else if (!anyButtonPressedDown) {
 //        NSLog(@" ---> Nothing pressed%@: %d", inMultitouch ? @" (multi-touch)" : @"", state);
         if (state == 0x00) {
             [self activateButton:NO_DIRECTION];
@@ -165,7 +164,7 @@
         }
     }
     
-//    NSLog(@"Buttons: %d, %d: %@", state, pos, buttonState);
+//    NSLog(@"Buttons: %d, %d: %@", state, heldData, lastButtonState);
 }
 
 - (void)maybeReleaseToastActiveMode {
@@ -177,7 +176,7 @@
     holdToastStart = nil;
 }
 
-- (void)selectActiveMode:(TTModeDirection)direction {
+- (void)activateMode:(TTModeDirection)direction {
 //    NSLog(@"Selecting mode: %d", activeModeDirection);
     [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];
     [appDelegate.modeMap setSelectedModeDirection:direction];
@@ -317,4 +316,5 @@
     
     return NO;
 }
+
 @end
