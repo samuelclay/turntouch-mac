@@ -330,7 +330,7 @@
 		</data>
 		<key>Resources/TTModeHue.plist</key>
 		<data>
-		SGerBL+2BD4FN4xr1hXctfztM2I=
+		P+m7M/CRFSt7MRxTQhUp6lA13/M=
 		</data>
 		<key>Resources/TTModeHueConnect.nib</key>
 		<data>
@@ -352,13 +352,17 @@
 		<data>
 		YdHU4mUPcj5wSivzX0N3zy0pqa4=
 		</data>
+		<key>Resources/TTModeHueRandomOptions.nib</key>
+		<data>
+		ZlifDfv8bXClhJSMmRUBdp+Ds3I=
+		</data>
 		<key>Resources/TTModeHueSceneOptions.nib</key>
 		<data>
-		4ZlEhQPAgwszDQKrSGFxRXRNYSk=
+		IwK8lwk9mTGE8tGcfxmE07LnLCQ=
 		</data>
-		<key>Resources/TTModeHueSceneRandomOptions.nib</key>
+		<key>Resources/TTModeHueSleepOptions.nib</key>
 		<data>
-		XW+Ss3MXFzihss/dBbl8jghCVkM=
+		I4wseV5nKPyDPowcWPGEE7/eADU=
 		</data>
 		<key>Resources/TTModeMacOptions.nib</key>
 		<data>
@@ -646,7 +650,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			7XdJTN3IAG0uQtHU3TROxGd2FK4=
+			o92I0GXsBE8Isnzfs6EW1rdW2dI=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.andymatuschak.Sparkle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -977,7 +981,7 @@
 		</data>
 		<key>Resources/TTModeHue.plist</key>
 		<data>
-		SGerBL+2BD4FN4xr1hXctfztM2I=
+		P+m7M/CRFSt7MRxTQhUp6lA13/M=
 		</data>
 		<key>Resources/TTModeHueConnect.nib</key>
 		<data>
@@ -999,13 +1003,17 @@
 		<data>
 		YdHU4mUPcj5wSivzX0N3zy0pqa4=
 		</data>
+		<key>Resources/TTModeHueRandomOptions.nib</key>
+		<data>
+		ZlifDfv8bXClhJSMmRUBdp+Ds3I=
+		</data>
 		<key>Resources/TTModeHueSceneOptions.nib</key>
 		<data>
-		4ZlEhQPAgwszDQKrSGFxRXRNYSk=
+		IwK8lwk9mTGE8tGcfxmE07LnLCQ=
 		</data>
-		<key>Resources/TTModeHueSceneRandomOptions.nib</key>
+		<key>Resources/TTModeHueSleepOptions.nib</key>
 		<data>
-		XW+Ss3MXFzihss/dBbl8jghCVkM=
+		I4wseV5nKPyDPowcWPGEE7/eADU=
 		</data>
 		<key>Resources/TTModeMacOptions.nib</key>
 		<data>
