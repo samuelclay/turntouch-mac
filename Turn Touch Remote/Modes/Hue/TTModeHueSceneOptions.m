@@ -19,9 +19,18 @@ NSString *const kHueScene = @"hueScene";
 @implementation TTModeHueSceneOptions
 
 @synthesize scenePopup;
+@synthesize spinner;
+@synthesize refreshButton;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self drawScenes];
+}
+
+- (void)drawScenes {
+    [spinner setHidden:YES];
+    [refreshButton setHidden:NO];
     
     NSString *sceneSelectedIdentifier = [appDelegate.modeMap actionOptionValue:kHueScene];
     NSString *sceneSelected;
@@ -64,6 +73,16 @@ NSString *const kHueScene = @"hueScene";
     }
     
     [appDelegate.modeMap changeActionOption:kHueScene to:sceneIdentifier];
+}
+
+- (IBAction)didClickRefresh:(id)sender {
+    [spinner setHidden:NO];
+    [refreshButton setHidden:YES];
+    
+    PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
+    [bridgeSendAPI getAllScenesWithCompletionHandler:^(NSDictionary *dictionary, NSArray *errors) {
+        [self drawScenes];
+    }];
 }
 
 @end

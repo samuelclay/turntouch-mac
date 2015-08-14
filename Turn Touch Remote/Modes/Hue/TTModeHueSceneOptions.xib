@@ -7,7 +7,9 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTModeHueSceneOptions">
             <connections>
+                <outlet property="refreshButton" destination="sOG-L3-IFj" id="rDf-Iw-GYx"/>
                 <outlet property="scenePopup" destination="9V4-ui-N7B" id="b1N-rx-hGD"/>
+                <outlet property="spinner" destination="Ere-Kn-0fN" id="YDh-E0-D2f"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -44,27 +46,40 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A9T-60-PBR">
-                    <rect key="frame" x="441" y="22" width="18" height="17"/>
+                <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Ere-Kn-0fN">
+                    <rect key="frame" x="444" y="23" width="16" height="16"/>
+                </progressIndicator>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="sOG-L3-IFj">
+                    <rect key="frame" x="441" y="23" width="18" height="18"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="18" id="VKU-Qb-rEt"/>
+                        <constraint firstAttribute="height" constant="18" id="Rxk-F4-UOt"/>
+                        <constraint firstAttribute="width" constant="18" id="XjR-U7-8wQ"/>
                     </constraints>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="cog" id="EiS-cm-wuZ"/>
-                </imageView>
+                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="cog" imagePosition="above" alignment="center" imageScaling="proportionallyDown" inset="2" id="7nG-aP-WTW">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="didClickRefresh:" target="-2" id="2ws-uU-CNm"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
-                <constraint firstItem="A9T-60-PBR" firstAttribute="centerY" secondItem="9V4-ui-N7B" secondAttribute="centerY" id="5fC-GA-T4g"/>
                 <constraint firstAttribute="bottom" secondItem="IM5-A5-WMY" secondAttribute="bottom" constant="22" id="CW9-aN-CEu"/>
                 <constraint firstItem="IM5-A5-WMY" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" symbolic="YES" id="EUw-5A-fJC"/>
-                <constraint firstAttribute="trailing" secondItem="A9T-60-PBR" secondAttribute="trailing" constant="21" id="Jy0-sN-3dp"/>
-                <constraint firstAttribute="bottom" secondItem="A9T-60-PBR" secondAttribute="bottom" constant="22" id="KIm-nM-6Dg"/>
+                <constraint firstAttribute="bottom" secondItem="Ere-Kn-0fN" secondAttribute="bottom" constant="23" id="KNN-D3-eQa"/>
                 <constraint firstItem="IM5-A5-WMY" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="PSg-QD-4n7"/>
                 <constraint firstItem="IM5-A5-WMY" firstAttribute="top" secondItem="9V4-ui-N7B" secondAttribute="top" id="QJG-Wy-0Q3"/>
-                <constraint firstItem="A9T-60-PBR" firstAttribute="leading" secondItem="9V4-ui-N7B" secondAttribute="trailing" constant="8" symbolic="YES" id="YM7-6u-YSO"/>
+                <constraint firstItem="Ere-Kn-0fN" firstAttribute="leading" secondItem="9V4-ui-N7B" secondAttribute="trailing" constant="11" id="Tnk-CL-KG7"/>
+                <constraint firstItem="sOG-L3-IFj" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="Xtr-gT-c9w"/>
+                <constraint firstItem="Ere-Kn-0fN" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="22" id="YJf-co-Lzd"/>
+                <constraint firstAttribute="trailing" secondItem="sOG-L3-IFj" secondAttribute="trailing" constant="21" id="YsG-PN-46C"/>
+                <constraint firstAttribute="trailing" secondItem="Ere-Kn-0fN" secondAttribute="trailing" constant="20" id="eoh-B4-a0X"/>
+                <constraint firstItem="sOG-L3-IFj" firstAttribute="leading" secondItem="9V4-ui-N7B" secondAttribute="trailing" constant="8" id="f9b-sR-ZPW"/>
                 <constraint firstItem="9V4-ui-N7B" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="j8u-6J-vtr"/>
                 <constraint firstAttribute="bottom" secondItem="9V4-ui-N7B" secondAttribute="bottom" constant="20" symbolic="YES" id="mHV-fv-Huo"/>
-                <constraint firstItem="A9T-60-PBR" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="22" id="oEs-xB-6Hk"/>
                 <constraint firstItem="9V4-ui-N7B" firstAttribute="leading" secondItem="IM5-A5-WMY" secondAttribute="trailing" constant="8" id="smT-bI-uiS"/>
+                <constraint firstAttribute="bottom" secondItem="sOG-L3-IFj" secondAttribute="bottom" constant="23" id="v2h-6s-hIr"/>
             </constraints>
             <point key="canvasLocation" x="362" y="303.5"/>
         </customView>

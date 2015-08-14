@@ -15,7 +15,10 @@ extern NSString *const kHueScene;
 @interface TTModeHueSceneOptions : TTOptionsDetailViewController
 
 @property (nonatomic) IBOutlet NSPopUpButton *scenePopup;
+@property (nonatomic) IBOutlet NSProgressIndicator *spinner;
+@property (nonatomic) IBOutlet NSButton *refreshButton;
 
 - (IBAction)didChangeScene:(id)sender;
+- (IBAction)didClickRefresh:(id)sender;
 
 @end
