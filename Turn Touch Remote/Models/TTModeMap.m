@@ -167,12 +167,23 @@
     
     if (!selectedMode) return;
     
-    [selectedMode runDirection:direction];
+    BOOL shouldIgnoreSingleBeforeDouble = [self shouldIgnoreSingleBeforeDouble:direction];
+    if (shouldIgnoreSingleBeforeDouble) {
+        waitingForDoubleClick = YES;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DOUBLE_CLICK_ACTION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            if (waitingForDoubleClick) {
+                [selectedMode runDirection:direction];
+            }
+        });
+    } else {
+        [selectedMode runDirection:direction];
+    }
     
     activeModeDirection = NO_DIRECTION;
 }
 
 - (void)runDoubleButton:(TTModeDirection)direction {
+    waitingForDoubleClick = NO;
     activeModeDirection = NO_DIRECTION;
    
     if (!selectedMode) return;
@@ -180,6 +191,18 @@
     [selectedMode runDoubleDirection:direction];
 
     activeModeDirection = NO_DIRECTION;
+}
+
+- (BOOL)shouldIgnoreSingleBeforeDouble:(TTModeDirection)direction {
+    BOOL ignore = NO;
+    NSString *actionName = [selectedMode actionNameInDirection:direction];
+    SEL selector = NSSelectorFromString([NSString stringWithFormat:@"shouldIgnoreSingleBeforeDouble%@", actionName]);
+    if ([selectedMode respondsToSelector:selector]) {
+        IMP imp = [selectedMode methodForSelector:selector];
+        BOOL (*func)(id, SEL) = (void *)imp;
+        ignore = func(self, selector);
+    }
+    return ignore;
 }
 
 - (NSString *)directionName:(TTModeDirection)direction {

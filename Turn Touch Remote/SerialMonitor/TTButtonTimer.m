@@ -137,7 +137,7 @@
         // Check for double click and setup double click timer
         if (lastButtonPressedDirection != NO_DIRECTION &&
             buttonPressedDirection == lastButtonPressedDirection &&
-            [[NSDate date] timeIntervalSinceDate:lastButtonPressStart] < 0.500) {
+            [[NSDate date] timeIntervalSinceDate:lastButtonPressStart] < DOUBLE_CLICK_ACTION_DURATION) {
             // Double click detected
             [self fireDoubleButton:buttonPressedDirection];
             lastButtonPressedDirection = NO_DIRECTION;
@@ -148,7 +148,7 @@
             
             [self fireButton:buttonPressedDirection];
             
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.500 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DOUBLE_CLICK_ACTION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 lastButtonPressedDirection = NO_DIRECTION;
                 lastButtonPressStart = nil;
             });

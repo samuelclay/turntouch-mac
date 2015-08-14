@@ -13,7 +13,7 @@
 @class TTMode;
 
 @interface TTModeMap : NSObject {
-
+    BOOL waitingForDoubleClick;
 }
 
 @property (nonatomic, assign) TTModeDirection activeModeDirection;
