@@ -6,16 +6,16 @@
 //  Copyright (c) 2015 Turn Touch. All rights reserved.
 //
 
-#import "TTModeHueSceneOffOptions.h"
+#import "TTModeHueOffOptions.h"
 
-@interface TTModeHueSceneOffOptions ()
+@interface TTModeHueOffOptions ()
 
 @end
 
-@implementation TTModeHueSceneOffOptions
+@implementation TTModeHueOffOptions
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if (self = [super initWithNibName:@"TTModeHueSceneOptions" bundle:nibBundleOrNil]) {
+    if (self = [super initWithNibName:@"TTModeHueSleepOptions" bundle:nibBundleOrNil]) {
         
     }
     

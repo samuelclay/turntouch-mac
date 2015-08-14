@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="TTModeHueSleepOptions">
+            <connections>
+                <outlet property="durationLabel" destination="vlJ-pv-RxR" id="Cup-tM-qsN"/>
+                <outlet property="durationSlider" destination="SI4-b6-ibl" id="jP6-a1-bRG"/>
+                <outlet property="view" destination="c22-O7-iKe" id="db5-TT-jbb"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView translatesAutoresizingMaskIntoConstraints="NO" id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="61"/>
+            <subviews>
+                <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SI4-b6-ibl">
+                    <rect key="frame" x="90" y="17" width="296" height="25"/>
+                    <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="120" tickMarkPosition="above" numberOfTickMarks="6" sliderType="linear" id="FvG-o1-a7r"/>
+                    <connections>
+                        <action selector="didChangeDuration:" target="-2" id="e1h-0j-XHE"/>
+                    </connections>
+                </slider>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zya-Qn-hDI">
+                    <rect key="frame" x="18" y="20" width="61" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="57" id="5wm-dX-PDe"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Duration:" id="jDG-KO-WUV">
+                        <font key="font" size="13" name="Effra-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vlJ-pv-RxR">
+                    <rect key="frame" x="392" y="21" width="70" height="19"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="66" id="ecG-2l-yqJ"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Immediate" id="JA0-IE-ke3">
+                        <font key="font" size="13" name="Effra-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="vlJ-pv-RxR" firstAttribute="leading" secondItem="SI4-b6-ibl" secondAttribute="trailing" constant="10" id="3x7-dx-fAR"/>
+                <constraint firstAttribute="trailing" secondItem="vlJ-pv-RxR" secondAttribute="trailing" constant="20" symbolic="YES" id="8pG-L7-ZBi"/>
+                <constraint firstItem="SI4-b6-ibl" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="19" id="efR-bY-sgT"/>
+                <constraint firstAttribute="bottom" secondItem="Zya-Qn-hDI" secondAttribute="bottom" constant="22" id="f00-HM-fEv"/>
+                <constraint firstAttribute="bottom" secondItem="SI4-b6-ibl" secondAttribute="bottom" constant="19" id="hIl-7o-u9G"/>
+                <constraint firstItem="SI4-b6-ibl" firstAttribute="leading" secondItem="Zya-Qn-hDI" secondAttribute="trailing" constant="15" id="kUu-zN-VXr"/>
+                <constraint firstItem="Zya-Qn-hDI" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" id="vtZ-c2-Qe9"/>
+                <constraint firstItem="Zya-Qn-hDI" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" symbolic="YES" id="xw8-dt-2QJ"/>
+            </constraints>
+            <point key="canvasLocation" x="318" y="307.5"/>
+        </customView>
+    </objects>
+</document>

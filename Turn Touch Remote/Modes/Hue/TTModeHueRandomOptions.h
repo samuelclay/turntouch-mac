@@ -1,5 +1,5 @@
 //
-//  TTModeHueSceneRandom.h
+//  TTModeHueRandom.h
 //  Turn Touch Remote
 //
 //  Created by Samuel Clay on 5/15/15.
@@ -11,7 +11,7 @@
 
 @class TTModeHue;
 
-@interface TTModeHueSceneRandomOptions : TTOptionsDetailViewController
+@interface TTModeHueRandomOptions : TTOptionsDetailViewController
 
 @property (nonatomic) IBOutlet TTSegmentedControl *segRandomColors;
 @property (nonatomic) IBOutlet TTSegmentedControl *segRandomBrightness;

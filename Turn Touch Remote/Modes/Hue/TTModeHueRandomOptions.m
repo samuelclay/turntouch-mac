@@ -1,19 +1,19 @@
 //
-//  TTModeHueSceneRandom.m
+//  TTModeHueRandom.m
 //  Turn Touch Remote
 //
 //  Created by Samuel Clay on 5/15/15.
 //  Copyright (c) 2015 Turn Touch. All rights reserved.
 //
 
-#import "TTModeHueSceneRandomOptions.h"
+#import "TTModeHueRandomOptions.h"
 #import "TTModeHue.h"
 
-@interface TTModeHueSceneRandomOptions ()
+@interface TTModeHueRandomOptions ()
 
 @end
 
-@implementation TTModeHueSceneRandomOptions
+@implementation TTModeHueRandomOptions
 
 @synthesize segRandomBrightness;
 @synthesize segRandomColors;

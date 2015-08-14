@@ -2,19 +2,19 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>TTModeHueSceneSleep:hueDuration</key>
-	<integer>1</integer>
+	<key>TTModeHueSleep:hueDuration</key>
+	<integer>30</integer>
 	<key>TTModeHueSceneEarlyEvening:hueScene</key>
 	<string>Sunset</string>
 	<key>hueScene</key>
 	<string></string>
 	<key>hueDuration</key>
 	<integer>0</integer>
-	<key>TTModeHueSceneRandom:randomColors</key>
+	<key>TTModeHueRandom:randomColors</key>
 	<integer>3</integer>
-	<key>TTModeHueSceneRandom:randomBrightness</key>
+	<key>TTModeHueRandom:randomBrightness</key>
 	<integer>3</integer>
-	<key>TTModeHueSceneRandom:randomSaturation</key>
+	<key>TTModeHueRandom:randomSaturation</key>
 	<integer>3</integer>
 </dict>
 </plist>

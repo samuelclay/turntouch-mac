@@ -8,6 +8,7 @@
 
 #import "TTModeHue.h"
 #import "TTModeHueSceneOptions.h"
+#import "TTModeHueSleepOptions.h"
 
 #define MAX_HUE 65535
 #define MAX_BRIGHTNESS 255
@@ -46,9 +47,9 @@ NSString *const kRandomSaturation = @"randomSaturation";
 - (NSArray *)actions {
     return @[@"TTModeHueSceneEarlyEvening",
              @"TTModeHueSceneLateEvening",
-             @"TTModeHueSceneSleep",
-             @"TTModeHueSceneOff",
-             @"TTModeHueSceneRandom"
+             @"TTModeHueSleep",
+             @"TTModeHueOff",
+             @"TTModeHueRandom"
              ];
 }
 
@@ -60,16 +61,16 @@ NSString *const kRandomSaturation = @"randomSaturation";
 - (NSString *)titleTTModeHueSceneLateEvening {
     return @"Late evening";
 }
-- (NSString *)titleTTModeHueSceneSleep {
+- (NSString *)titleTTModeHueSleep {
     return @"Sleep";
 }
-- (NSString *)doubleTitleTTModeHueSceneSleep {
+- (NSString *)doubleTitleTTModeHueSleep {
     return @"Sleep fast";
 }
-- (NSString *)titleTTModeHueSceneOff {
+- (NSString *)titleTTModeHueOff {
     return @"Lights off";
 }
-- (NSString *)titleTTModeHueSceneRandom {
+- (NSString *)titleTTModeHueRandom {
     return @"Random";
 }
 
@@ -81,13 +82,13 @@ NSString *const kRandomSaturation = @"randomSaturation";
 - (NSString *)imageTTModeHueSceneLateEvening {
     return @"volume_down.png";
 }
-- (NSString *)imageTTModeHueSceneSleep {
+- (NSString *)imageTTModeHueSleep {
     return @"play.png";
 }
-- (NSString *)imageTTModeHueSceneOff {
+- (NSString *)imageTTModeHueOff {
     return @"next_track.png";
 }
-- (NSString *)imageTTModeHueSceneRandom {
+- (NSString *)imageTTModeHueRandom {
     return @"next_track.png";
 }
 
@@ -100,10 +101,10 @@ NSString *const kRandomSaturation = @"randomSaturation";
     return @"TTModeHueSceneLateEvening";
 }
 - (NSString *)defaultWest {
-    return @"TTModeHueSceneRandom";
+    return @"TTModeHueRandom";
 }
 - (NSString *)defaultSouth {
-    return @"TTModeHueSceneSleep";
+    return @"TTModeHueSleep";
 }
 
 #pragma mark - Action methods
@@ -149,22 +150,22 @@ NSString *const kRandomSaturation = @"randomSaturation";
     [self runScene:direction];
 }
 
-- (void)runTTModeHueSceneOff:(TTModeDirection)direction {
+- (void)runTTModeHueOff:(TTModeDirection)direction {
 //    NSLog(@"Running scene off... %d", direction);
-    [self runScene:direction];
+    [self runTTModeHueSleep:direction duration:@(1)];
 }
 
-- (void)runTTModeHueSceneSleep:(TTModeDirection)direction {
+- (void)runTTModeHueSleep:(TTModeDirection)direction {
     NSNumber *sceneDuration = (NSNumber *)[appDelegate.modeMap actionOptionValue:kHueDuration inDirection:direction];
-    [self runTTModeHueSceneSleep:direction duration:sceneDuration];
+    [self runTTModeHueSleep:direction duration:sceneDuration];
 }
 
-- (void)doubleRunTTModeHueSceneSleep:(TTModeDirection)direction {
+- (void)doubleRunTTModeHueSleep:(TTModeDirection)direction {
     //    NSLog(@"Running scene off... %d", direction);
-    [self runTTModeHueSceneSleep:direction duration:[NSNumber numberWithInt:1]];
+    [self runTTModeHueSleep:direction duration:[NSNumber numberWithInt:1]];
 }
 
-- (void)runTTModeHueSceneSleep:(TTModeDirection)direction duration:(NSNumber *)sceneDuration {
+- (void)runTTModeHueSleep:(TTModeDirection)direction duration:(NSNumber *)sceneDuration {
     //    NSLog(@"Running scene off... %d", direction);
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
     PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
@@ -185,7 +186,7 @@ NSString *const kRandomSaturation = @"randomSaturation";
     }
 }
 
-- (void)runTTModeHueSceneRandom:(TTModeDirection)direction {
+- (void)runTTModeHueRandom:(TTModeDirection)direction {
     //    NSLog(@"Running scene off... %d", direction);
     
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];

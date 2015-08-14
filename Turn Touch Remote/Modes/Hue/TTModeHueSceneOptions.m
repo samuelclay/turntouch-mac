@@ -11,7 +11,6 @@
 #import <HueSDK_OSX/HueSDK.h>
 
 NSString *const kHueScene = @"hueScene";
-NSString *const kHueDuration = @"hueDuration";
 
 @interface TTModeHueSceneOptions ()
 
@@ -20,14 +19,11 @@ NSString *const kHueDuration = @"hueDuration";
 @implementation TTModeHueSceneOptions
 
 @synthesize scenePopup;
-@synthesize durationLabel;
-@synthesize durationSlider;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     NSString *sceneSelectedIdentifier = [appDelegate.modeMap actionOptionValue:kHueScene];
-    NSInteger sceneDuration = [[appDelegate.modeMap actionOptionValue:kHueDuration] integerValue];
     NSString *sceneSelected;
     
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
@@ -51,9 +47,6 @@ NSString *const kHueDuration = @"hueDuration";
     if (sceneSelected) {
         [scenePopup selectItemWithTitle:sceneSelected];
     }
-    
-    [durationSlider setIntegerValue:sceneDuration];
-    [self updateSliderLabel];
 }
 
 #pragma mark - Actions
@@ -71,26 +64,6 @@ NSString *const kHueDuration = @"hueDuration";
     }
     
     [appDelegate.modeMap changeActionOption:kHueScene to:sceneIdentifier];
-}
-
-- (IBAction)didChangeDuration:(id)sender {
-    NSInteger duration = durationSlider.integerValue;
-
-    [appDelegate.modeMap changeActionOption:kHueDuration to:[NSNumber numberWithInteger:duration]];
-    [self updateSliderLabel];
-}
-
-- (void)updateSliderLabel {
-    NSInteger duration = durationSlider.integerValue;
-    
-    NSString *durationString;
-    if (duration == 0)       durationString = @"Immediate";
-    else if (duration == 1)  durationString = @"1 second";
-    else if (duration < 60)  durationString = [NSString stringWithFormat:@"%@ seconds", @(duration)];
-    else if (duration < 60*2) durationString = @"1 minute";
-    else                     durationString = [NSString stringWithFormat:@"%@ minutes", @(duration/60)];
-    
-    [durationLabel setStringValue:durationString];
 }
 
 @end

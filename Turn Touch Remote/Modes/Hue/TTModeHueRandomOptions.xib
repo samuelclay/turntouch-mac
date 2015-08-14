@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="TTModeHueSceneRandomOptions">
+        <customObject id="-2" userLabel="File's Owner" customClass="TTModeHueRandomOptions">
             <connections>
                 <outlet property="segRandomBrightness" destination="SMf-U6-ghJ" id="WOx-10-RpH"/>
                 <outlet property="segRandomColors" destination="Fqe-9d-WDM" id="F8s-6X-IOM"/>

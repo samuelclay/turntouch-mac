@@ -1,5 +1,5 @@
 //
-//  TTModeHueSceneOffOptions.h
+//  TTModeHueOffOptions.h
 //  Turn Touch Remote
 //
 //  Created by Samuel Clay on 1/14/15.
@@ -8,6 +8,6 @@
 
 #import "TTModeHueSceneOptions.h"
 
-@interface TTModeHueSceneOffOptions : TTModeHueSceneOptions
+@interface TTModeHueOffOptions : TTModeHueSceneOptions
 
 @end
