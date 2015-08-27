@@ -52,6 +52,7 @@ typedef enum {
 - (void)startScan:(BOOL)findUnpaired;
 - (void)stopScan;
 - (void)updateBluetoothState:(BOOL)renew;
+- (void)reconnect;
 - (void)terminate;
 - (void)disconnectUnpairedDevices;
 - (void)setDeviceLatency:(NSInteger)latency;

@@ -85,6 +85,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
             break;
         default:
             state = @"Bluetooth not in any state!";
+            
             break;
     }
     
@@ -198,10 +199,17 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
     }
 }
 
+- (void) reconnect {
+    [self stopScan];
+    [self terminate];
+    [self updateBluetoothState:YES];
+}
 
 - (void) terminate {
     for (TTDevice *device in foundDevices) {
+        if (!device.peripheral) return;
         [manager cancelPeripheralConnection:device.peripheral];
+        [foundDevices removeDevice:device];
     }
     manager = nil;
 }
@@ -536,7 +544,7 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
     uint16_t value;
     [characteristic.value getBytes:&value length:2];
     
-    NSLog(@"Did write value: %d/%@ - %@", value, characteristic.value, error);
+    NSLog(@"Did write value. Old: %d/%@ - %@", value, characteristic.value, error);
     
     TTDevice *device = [foundDevices deviceForPeripheral:peripheral];
     if (device.needsReconnection) {
@@ -679,10 +687,11 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
     force = NO;
     
     if (!hasDeviceNickname || force) {
-        NSLog(@"Generating emoji nickname...");
         NSArray *emoji = @[@"🐱", @"🐼", @"🐶", @"🍒", @"⚽️", @"🎻", @"🎱", @"☀️", @"🌎", @"🌴", @"🌻", @"🌀", @"📚", @"🔮", @"📡", @"⛵️", @"🚲", @"⛄️", @"🍉"];
         NSString *randomEmoji = [emoji objectAtIndex:arc4random_uniform((uint32_t)emoji.count)];
         newNickname = [NSString stringWithFormat:@"%@ Turn Touch Remote", randomEmoji];
+
+        NSLog(@"Generating emoji nickname: %@", newNickname);
 
         [self writeNickname:newNickname toDevice:device];
     }
@@ -726,7 +735,7 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
                                     andCharacteristicUUID:DEVICE_V2_CHARACTERISTIC_NICKNAME_UUID];
     }
 
-    NSLog(@"New Nickname: %@ => %@ (%@)", device.nickname, newNickname, data);
+    NSLog(@"New Nickname: => %@ (%@)", newNickname, data);
     
     [device.peripheral writeValue:data forCharacteristic:characteristic
                              type:CBCharacteristicWriteWithResponse];
