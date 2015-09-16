@@ -305,11 +305,13 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
  Invoked whenever the central manager fails to create a connection with the peripheral.
  */
 - (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
-    NSLog(@"Fail to connect to peripheral: %@ with error = %@", peripheral, [error localizedDescription]);
-
+    NSLog(@"Fail to connect to peripheral: %@ (%@) with error = %@", peripheral.name, [peripheral.identifier.UUIDString substringToIndex:8], [error localizedDescription]);
+    
     [foundDevices removePeripheral:peripheral];
     [self countDevices];
-    [self startScan];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self startScan];
+    });
 }
 
 #pragma mark - CBPeripheral delegate methods

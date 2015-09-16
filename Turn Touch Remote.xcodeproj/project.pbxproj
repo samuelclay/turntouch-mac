@@ -1293,7 +1293,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = TT;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Turn Touch";
 				TargetAttributes = {
 					FF8C833217AB14B5000166FC = {
@@ -1586,6 +1586,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -1650,6 +1651,7 @@
 					"-ObjC",
 					"-Wl,-rpath,@loader_path/../Frameworks",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "Turn Touch Remote";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -1676,6 +1678,7 @@
 					"-ObjC",
 					"-Wl,-rpath,@loader_path/../Frameworks",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "Turn Touch Remote";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -1712,6 +1715,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Turn Touch Remote.app/Contents/MacOS/Turn Touch Remote";
 			};
@@ -1743,6 +1747,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Turn Touch Remote.app/Contents/MacOS/Turn Touch Remote";
 			};
@@ -1801,6 +1806,7 @@
 					"-ObjC",
 					"-Wl,-rpath,@loader_path/../Frameworks",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "Turn Touch Remote";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -1837,6 +1843,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Turn Touch Remote.app/Contents/MacOS/Turn Touch Remote";
 			};

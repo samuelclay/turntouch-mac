@@ -62,7 +62,8 @@
     for (TTDevice *device in devices) {
         if ([device.peripheral.identifier.UUIDString
              isEqualToString:addDevice.peripheral.identifier.UUIDString]) {
-            NSLog(@"Already added device: %@ / %@", device, addDevice);
+            NSLog(@"Already added device: %@ / %@ ... removing", device, addDevice);
+//            [self removeDevice:device];
             return;
         }
     }

@@ -1,23 +1,94 @@
+This document is a list of all apps with their respective app-level options, actions and defaults, and action-level options.
+
+# Turn Touch App Options
+
+ 1. Device list (renamable title, battery, signal strength)
+ 2. Checkbox: Show mode HUD
+ 3. Checkbox: Show action HUD
+
 # Alarm Clock App
 
- 1. Radio/Segmented Control: Choose wake-up method: music or sound
+ 1. Groups: Choose wake-up method: music or sound
  2. Dropdown: Choose music: iTunes playlists
  3. Dropdown: Choose sound: annoying sounds
  4. Combo Option: Choose recurring time and days. Default to M-F 7am.
- 5. Combo Option: Choose one-off time for next day. Only time is editable, but confirms
-                  it's for tomorrow morning (alarm may be set for 7am at 1am the same day).
-                  I prefer a slider rather than a text box.
+ 5. Combo Option: Choose one-off time for next day.
  6. Slider: Choose duration (90 minutes default)
  7. Slider: Choose max volume (0 - 100%)
 
  * [NORTH] Switch to playlist/genre
     - Playlist/genre selector
  * [EAST] Skip to next song
- * [WEST] Snooze (first tap) for X minutes / Stop alarm (second tap)
+    - Double-tap: selector for switch to playlist/genre
+ * [WEST] Snooze (first tap) for X minutes
     - Slider: X minutes
- * [SOUTH] Switch to playlist/genre
-    - Playlist/genre selector
+    - Double-tap: stop alarm
+ * [SOUTH] Volume down
+
+# Hue App
+
+ 1. Details of connected Hue hub
+ 2. Button: Disconnect from Hue hub
+ 3. Button: Connect to Hue hub (if not connected)
  
+ * [NORTH] Early evening scene
+ * [EAST] Late evening scene
+ * [WEST] Random
+   - Segmented control: randomness of colors
+   - Segmented control: randomness of brightness
+   - Segmented control: randomness of saturation
+ * [SOUTH] Sleep
+   - Slider: 0 sec - 10 min
+
+# Belkin Wemo App
+
+ 1. Details of connected Wemos in list
+ 2. Connect to additional Wemo
+
+ * [NORTH] Cycle to next wemo
+ * [EAST] Turn wemo on
+ * [WEST] Turn wemo off
+ * [SOUTH] Cycle to previous wemo
+
+# Nest App
+
+ 1. Details of connected Nest
+ 2. Button: Disconnect/Connect
+ 
+ * [NORTH] Set to Morning temperature
+ * [EAST] Set to Evening temperature
+ * [WEST] Turn off
+ * [SOUTH] Set to Sleeping temperature
+
+# Electric Objects App / Artwork App
+
+ 1. Details of connected EO1
+ 2. Button: Disconnect/connect
+
+ * [NORTH] Flip to specific work
+  - Dropdown: artwork list
+ * [EAST] Next work
+ * [WEST] Previous work
+ * [SOUTH] Flip to specific work
+  - Dropdown: artwork list
+
+# Lockitron/August Smartlock App
+
+ 1. Details of connected smartlock
+ 2. Button: Disconnect/connect
+ 
+ * [NORTH]: Unlock
+ * [EAST]: Unlock
+ * [WEST]: Lock
+ * [SOUTH]: Lock
+
+# Presentation App
+
+ * [NORTH] Volume up
+ * [EAST] Next slide
+ * [WEST] Previous slide
+ * [SOUTH] Volume down
+
 # Morning App
 
  * [NORTH] Public transit times
@@ -26,7 +97,7 @@
     - Dropdown: 1st MUNI direction (Inbound to Market St)
     - Dropdown: 2nd MUNI line (6 bus)
     - Dropdown: 2nd MUNI stop (Buena Vista Ave West at Haight)
-    - Dropdown: 2nd MUNI direction (Inbound to Market St)
+    - Dropdown: 2nd MUNI direction (Inbound to Mission St)
  * [EAST] Email
     - Dropdown: Mail.app account dropdown (personal or business or both)
     - Checkbox: Announce total count
@@ -35,7 +106,7 @@
     * Intended to read top 5 headlines from NYTimes.
     - Multi-checkbox: Sources (There will be around 50)
     - Slider: # of headlines to read
- * [SOUTH] 
+ * [SOUTH] Notifications rollup
 
 # Timer App
 
@@ -54,14 +125,18 @@
 
  * [NORTH] Volume up
  * [EAST] Next track
+   - Double-tap: next album
  * [WEST] Play/Pause
+   - Double-tap: previous track
  * [SOUTH] Volume down
  * Previous track
  * Rewind 30s
-    - Slider: 1s - 60s
+   - Slider: 1s - 60s
  * Fast Forward 30s
-    - Slider: 1s - 60s
+   - Slider: 1s - 60s
  * Mute
+ * Volume jump
+   - Slider: volume to jump back and forth to
 
 # Video App
 
@@ -79,8 +154,8 @@
 # Mac OS App
 
  * [NORTH] System volume up
- * [EAST] System stats (custom view with system stats: battery, activity, utilization)
- * [WEST] Turn off screen
+ * [EAST] Turn off screen
+ * [WEST] System stats (custom view with system stats: battery, activity, utilization)
  * [SOUTH] System volume down
  * Sleep
  * Mute
@@ -96,31 +171,36 @@
  1. Multi-select: Routines
  2. Slider: Routine duration (10s - Forever)
  
- * [NORTH] Previous routine
- * [EAST] Start/stop
- * [WEST] Extend routine
- * [SOUTH] Next routine
+ * [NORTH] Extend routine
+ * [EAST] Next routine
+ * [WEST] Previous routine
+ * [SOUTH] Start/stop
 
 # Meditation App
 
  1. Multi-select: Routines
  2. Slider: Routine duration (10s - Forever)
  
- * [NORTH] Previous routine
- * [EAST] Start/stop
- * [WEST] Extend routine
- * [SOUTH] Next routine
+ * [NORTH] Extend routine
+ * [EAST] Next routine
+ * [WEST] Previous routine
+ * [SOUTH] Start/stop
 
 # NewsBlur App
 
  1. Text boxes: Username/password
  2. Radio: Read by folder or sites
  
- * [NORTH] Up
- * [EAST] Open
- * [WEST] Close
- * [SOUTH] Down
+ * [NORTH] Previous site
+ * [EAST] Next story / Scroll
+ * [WEST] Previous story / Scroll
+ * [SOUTH] Next site
 
 # Web App
 
  1. List of paired websites / Explainer if none
+
+ * [NORTH] Generic north
+ * [EAST] Generic east
+ * [WEST] Generic west
+ * [SOUTH] Generic south
