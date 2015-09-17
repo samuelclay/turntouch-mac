@@ -66,53 +66,53 @@ This document is a list of all apps with their respective app-level options, act
  2. Button: Disconnect/connect
 
  * [NORTH] Flip to specific work
-  - Dropdown: artwork list
+   - Dropdown: artwork list
  * [EAST] Next work
  * [WEST] Previous work
  * [SOUTH] Flip to specific work
-  - Dropdown: artwork list
+   - Dropdown: artwork list
 
 # Lockitron/August Smartlock App
 
  1. Details of connected smartlock
  2. Button: Disconnect/connect
- 
- * [NORTH]: Unlock
- * [EAST]: Unlock
- * [WEST]: Lock
- * [SOUTH]: Lock
+
+ * [NORTH] Unlock
+ * [EAST] Unlock
+ * [WEST] Lock
+ * [SOUTH] Lock
 
 # Home App
 
- * [NORTH]: Wakeup
-  - Hue: Turn on scene
-  - Nest: Turn on setting/temperature
-  - Wemo: Turn on wemo
-  - Music: Turn on music
- * [EAST]: Arrive home
-  - Hue: Turn on scene
-  - Nest: Turn on setting/temperature
-  - Wemo: Turn on wemo
-  - Music: Turn on music
- * [WEST]: Leave home
-  - Hue: Turn off lights
-   - Slider: time to fade, default 60s
-   - Double-tap: fade in 5s
-  - Nest: Turn on setting/temperature
-  - Wemo: Turn off wemo
-  - Music: Fade out music
-   - Slider: time to fade, default 60s
-   - Double-tap: fade in 5s
- * [SOUTH]: Sleep
-  - Hue: Turn off lights
-   - Slider: defualt to 60s
-   - Double-tap: turns off in 5 s
-  - Nest: Turn on setting/temperature
-  - Wemo: Turn off wemo
-  - Music: Fade out music
-   - Slider: time to fade, default 60s
-   - Double-tap: fade in 5s
- 
+ * [NORTH] Wakeup
+   - Hue: Turn on scene
+   - Nest: Turn on setting/temperature
+   - Wemo: Turn on wemo
+   - Music: Turn on music
+ * [EAST] Arrive home
+   - Hue: Turn on scene
+   - Nest: Turn on setting/temperature
+   - Wemo: Turn on wemo
+   - Music: Turn on music
+ * [WEST] Leave home
+   - Hue: Turn off lights
+     - Slider: time to fade, default 60s
+     - Double-tap: fade in 5s
+   - Nest: Turn on setting/temperature
+   - Wemo: Turn off wemo
+   - Music: Fade out music
+     - Slider: time to fade, default 60s
+     - Double-tap: fade in 5s
+ * [SOUTH] Sleep
+   - Hue: Turn off lights
+     - Slider: defualt to 60s
+     - Double-tap: turns off in 5 s
+   - Nest: Turn on setting/temperature
+   - Wemo: Turn off wemo
+   - Music: Fade out music
+     - Slider: time to fade, default 60s
+     - Double-tap: fade in 5s
+
 # Presentation App
 
  * [NORTH] Volume up
