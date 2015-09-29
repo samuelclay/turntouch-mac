@@ -14,7 +14,7 @@
 		</data>
 		<key>Resources/MLCalendarView.nib</key>
 		<data>
-		2JCMWTqpQ8fwEgMt7glJL6CDdGo=
+		BRoaewk3Xg0AmnhlsRgH9rX8joM=
 		</data>
 		<key>Resources/NSDateTimeAgo.bundle/ar.lproj/NSDateTimeAgo.strings</key>
 		<dict>
@@ -306,11 +306,11 @@
 		</dict>
 		<key>Resources/RHPreferencesWindow.nib</key>
 		<data>
-		siI6YDgZ+t6Fw7wqd8r4+Lfcxk8=
+		vePIJNc+AkOXD/WXZWu92amw8IU=
 		</data>
 		<key>Resources/TTActionHUDView.nib</key>
 		<data>
-		65ZNWnVN+BvyEDs8GSZneYjaZno=
+		ksPeIZl5WoraWodwDG4ao0emknE=
 		</data>
 		<key>Resources/TTModeAlarmClock.plist</key>
 		<data>
@@ -318,15 +318,15 @@
 		</data>
 		<key>Resources/TTModeAlarmClockOptions.nib</key>
 		<data>
-		7EfYJPSXvuOX0JAh0ALfGCVGaf0=
+		Dxr/JuJbC53cLsYUcLRafJAUYUA=
 		</data>
 		<key>Resources/TTModeAlarmSnoozeOptions.nib</key>
 		<data>
-		PEOEcJ5NyMjSB4VwYmL2SGIxtQg=
+		yLXTo2Uc7E7Yi/rmtMzCQw5tJ6s=
 		</data>
 		<key>Resources/TTModeHUDView.nib</key>
 		<data>
-		MidWWdTWE3+73dlWgozzrZE4yVs=
+		E2GJzW1U6Zc8SuIcv4pA9/sp0+8=
 		</data>
 		<key>Resources/TTModeHue.plist</key>
 		<data>
@@ -334,7 +334,7 @@
 		</data>
 		<key>Resources/TTModeHueConnect.nib</key>
 		<data>
-		Fn6dGtt1JQxDp2j2gy8xoI1kdc8=
+		nipC+1N1RZ5YQ6/2hz+Wv8obF/U=
 		</data>
 		<key>Resources/TTModeHueConnected.nib</key>
 		<data>
@@ -342,31 +342,31 @@
 		</data>
 		<key>Resources/TTModeHueConnecting.nib</key>
 		<data>
-		EqtTSJICq5o1DOhVnDUY3v/ojuw=
+		gX4nAzKpAlewPQO935wtiEck/OI=
 		</data>
 		<key>Resources/TTModeHueOptions.nib</key>
 		<data>
-		i4FG7kHwUAq2iYBPHljXuOk1hvc=
+		u/p7vpU8eN66SAExBU2f7Nf4YpI=
 		</data>
 		<key>Resources/TTModeHuePushlink.nib</key>
 		<data>
-		YdHU4mUPcj5wSivzX0N3zy0pqa4=
+		s05kozHsPbl9h2+dGWJNR2P5LLM=
 		</data>
 		<key>Resources/TTModeHueRandomOptions.nib</key>
 		<data>
-		ZlifDfv8bXClhJSMmRUBdp+Ds3I=
+		TwVyF6b0ocGvrAtj+rMcPsSTeU8=
 		</data>
 		<key>Resources/TTModeHueSceneOptions.nib</key>
 		<data>
-		IwK8lwk9mTGE8tGcfxmE07LnLCQ=
+		SE6Pd535ZZIt8z1bWoRaBY5BH3o=
 		</data>
 		<key>Resources/TTModeHueSleepOptions.nib</key>
 		<data>
-		I4wseV5nKPyDPowcWPGEE7/eADU=
+		Qp6HUSFjkjpdmoInMXHh9ZNxlmA=
 		</data>
 		<key>Resources/TTModeMacOptions.nib</key>
 		<data>
-		RS1VcscPKkeZUXytwkOKdPvF/zA=
+		AJvn3F4oWlOv4kyliwieQkxqlYI=
 		</data>
 		<key>Resources/TTModeMusic.plist</key>
 		<data>
@@ -374,27 +374,27 @@
 		</data>
 		<key>Resources/TTModeMusicVolumeJumpOptions.nib</key>
 		<data>
-		x30pSjUH/z3zhWubkU1XsWIb9hM=
+		B4pzTYR9nf28L5OpTRDhQSMBiE4=
 		</data>
 		<key>Resources/TTPanel.nib</key>
 		<data>
-		yh738xoeFHdUFnQ4zu1T066/NwM=
+		GWJc/W4OxsXvS9r/ymF9cfokYEs=
 		</data>
 		<key>Resources/TTSettingsAboutViewController.nib</key>
 		<data>
-		h4S0HPZuQg52948M9TrKQiGKWZs=
+		txD44zneKGfBuzaJx2c99V5Cuco=
 		</data>
 		<key>Resources/TTSettingsDevicesViewController.nib</key>
 		<data>
-		F+pCRSDI4QHZZFy8C7nip71AOPc=
+		ZO3wbrO71OIUi3ywPZKwsRC3yqQ=
 		</data>
 		<key>Resources/TTSettingsPairingViewController.nib</key>
 		<data>
-		yF4i1UXNYUuHoV67ltiC3c5cXgM=
+		FEwPeAseqZXX3HxNHmJRjuanoPM=
 		</data>
 		<key>Resources/TTSettingsSupportViewController.nib</key>
 		<data>
-		3KzIXzCEpqVNhOQwNvar3IkJpyo=
+		isf1Zedy3pJyiESXRFAvnduD43I=
 		</data>
 		<key>Resources/Turn Touch Remote.entitlements</key>
 		<data>
@@ -442,7 +442,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			JnVLazPyNLbwBQHgPtk2WINgNg8=
+			1EeUYCgM0rCNGwaYg6fGe9HlUYM=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -613,7 +613,7 @@
 		</data>
 		<key>Resources/settings.tiff</key>
 		<data>
-		Ge9E/yI7/919gWZlCd9m4smVMN0=
+		tdwWtbQb4fIAfoRtT2T077QhH2s=
 		</data>
 		<key>Resources/south tone.wav</key>
 		<data>
@@ -633,7 +633,7 @@
 		</data>
 		<key>Resources/title.tiff</key>
 		<data>
-		RS8JifFJy0QAP9vrCrX0oJTe22w=
+		BlI3PZJfqcGpgpYeuN7nhot0pLg=
 		</data>
 		<key>Resources/vinyl.png</key>
 		<data>
@@ -650,7 +650,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			o92I0GXsBE8Isnzfs6EW1rdW2dI=
+			JNs10OxlkO8lspxH67vmn2S3Fek=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.andymatuschak.Sparkle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -665,7 +665,7 @@
 		</data>
 		<key>Resources/MLCalendarView.nib</key>
 		<data>
-		2JCMWTqpQ8fwEgMt7glJL6CDdGo=
+		BRoaewk3Xg0AmnhlsRgH9rX8joM=
 		</data>
 		<key>Resources/NSDateTimeAgo.bundle/ar.lproj/NSDateTimeAgo.strings</key>
 		<dict>
@@ -957,11 +957,11 @@
 		</dict>
 		<key>Resources/RHPreferencesWindow.nib</key>
 		<data>
-		siI6YDgZ+t6Fw7wqd8r4+Lfcxk8=
+		vePIJNc+AkOXD/WXZWu92amw8IU=
 		</data>
 		<key>Resources/TTActionHUDView.nib</key>
 		<data>
-		65ZNWnVN+BvyEDs8GSZneYjaZno=
+		ksPeIZl5WoraWodwDG4ao0emknE=
 		</data>
 		<key>Resources/TTModeAlarmClock.plist</key>
 		<data>
@@ -969,15 +969,15 @@
 		</data>
 		<key>Resources/TTModeAlarmClockOptions.nib</key>
 		<data>
-		7EfYJPSXvuOX0JAh0ALfGCVGaf0=
+		Dxr/JuJbC53cLsYUcLRafJAUYUA=
 		</data>
 		<key>Resources/TTModeAlarmSnoozeOptions.nib</key>
 		<data>
-		PEOEcJ5NyMjSB4VwYmL2SGIxtQg=
+		yLXTo2Uc7E7Yi/rmtMzCQw5tJ6s=
 		</data>
 		<key>Resources/TTModeHUDView.nib</key>
 		<data>
-		MidWWdTWE3+73dlWgozzrZE4yVs=
+		E2GJzW1U6Zc8SuIcv4pA9/sp0+8=
 		</data>
 		<key>Resources/TTModeHue.plist</key>
 		<data>
@@ -985,7 +985,7 @@
 		</data>
 		<key>Resources/TTModeHueConnect.nib</key>
 		<data>
-		Fn6dGtt1JQxDp2j2gy8xoI1kdc8=
+		nipC+1N1RZ5YQ6/2hz+Wv8obF/U=
 		</data>
 		<key>Resources/TTModeHueConnected.nib</key>
 		<data>
@@ -993,31 +993,31 @@
 		</data>
 		<key>Resources/TTModeHueConnecting.nib</key>
 		<data>
-		EqtTSJICq5o1DOhVnDUY3v/ojuw=
+		gX4nAzKpAlewPQO935wtiEck/OI=
 		</data>
 		<key>Resources/TTModeHueOptions.nib</key>
 		<data>
-		i4FG7kHwUAq2iYBPHljXuOk1hvc=
+		u/p7vpU8eN66SAExBU2f7Nf4YpI=
 		</data>
 		<key>Resources/TTModeHuePushlink.nib</key>
 		<data>
-		YdHU4mUPcj5wSivzX0N3zy0pqa4=
+		s05kozHsPbl9h2+dGWJNR2P5LLM=
 		</data>
 		<key>Resources/TTModeHueRandomOptions.nib</key>
 		<data>
-		ZlifDfv8bXClhJSMmRUBdp+Ds3I=
+		TwVyF6b0ocGvrAtj+rMcPsSTeU8=
 		</data>
 		<key>Resources/TTModeHueSceneOptions.nib</key>
 		<data>
-		IwK8lwk9mTGE8tGcfxmE07LnLCQ=
+		SE6Pd535ZZIt8z1bWoRaBY5BH3o=
 		</data>
 		<key>Resources/TTModeHueSleepOptions.nib</key>
 		<data>
-		I4wseV5nKPyDPowcWPGEE7/eADU=
+		Qp6HUSFjkjpdmoInMXHh9ZNxlmA=
 		</data>
 		<key>Resources/TTModeMacOptions.nib</key>
 		<data>
-		RS1VcscPKkeZUXytwkOKdPvF/zA=
+		AJvn3F4oWlOv4kyliwieQkxqlYI=
 		</data>
 		<key>Resources/TTModeMusic.plist</key>
 		<data>
@@ -1025,27 +1025,27 @@
 		</data>
 		<key>Resources/TTModeMusicVolumeJumpOptions.nib</key>
 		<data>
-		x30pSjUH/z3zhWubkU1XsWIb9hM=
+		B4pzTYR9nf28L5OpTRDhQSMBiE4=
 		</data>
 		<key>Resources/TTPanel.nib</key>
 		<data>
-		yh738xoeFHdUFnQ4zu1T066/NwM=
+		GWJc/W4OxsXvS9r/ymF9cfokYEs=
 		</data>
 		<key>Resources/TTSettingsAboutViewController.nib</key>
 		<data>
-		h4S0HPZuQg52948M9TrKQiGKWZs=
+		txD44zneKGfBuzaJx2c99V5Cuco=
 		</data>
 		<key>Resources/TTSettingsDevicesViewController.nib</key>
 		<data>
-		F+pCRSDI4QHZZFy8C7nip71AOPc=
+		ZO3wbrO71OIUi3ywPZKwsRC3yqQ=
 		</data>
 		<key>Resources/TTSettingsPairingViewController.nib</key>
 		<data>
-		yF4i1UXNYUuHoV67ltiC3c5cXgM=
+		FEwPeAseqZXX3HxNHmJRjuanoPM=
 		</data>
 		<key>Resources/TTSettingsSupportViewController.nib</key>
 		<data>
-		3KzIXzCEpqVNhOQwNvar3IkJpyo=
+		isf1Zedy3pJyiESXRFAvnduD43I=
 		</data>
 		<key>Resources/Turn Touch Remote.entitlements</key>
 		<data>
@@ -1093,7 +1093,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			JnVLazPyNLbwBQHgPtk2WINgNg8=
+			1EeUYCgM0rCNGwaYg6fGe9HlUYM=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1264,7 +1264,7 @@
 		</data>
 		<key>Resources/settings.tiff</key>
 		<data>
-		Ge9E/yI7/919gWZlCd9m4smVMN0=
+		tdwWtbQb4fIAfoRtT2T077QhH2s=
 		</data>
 		<key>Resources/south tone.wav</key>
 		<data>
@@ -1284,7 +1284,7 @@
 		</data>
 		<key>Resources/title.tiff</key>
 		<data>
-		RS8JifFJy0QAP9vrCrX0oJTe22w=
+		BlI3PZJfqcGpgpYeuN7nhot0pLg=
 		</data>
 		<key>Resources/vinyl.png</key>
 		<data>
