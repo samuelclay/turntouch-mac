@@ -117,14 +117,14 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
                                                   [CBUUID UUIDWithString:@"1523"]]
                                         options:nil];
     } else {
-//        NSLog(@" ---> Retrieving known: %@", [self knownPeripheralIdentifiers]);
+        NSLog(@" ---> Retrieving known: %@", [self knownPeripheralIdentifiers]);
         NSArray *peripherals = [manager retrievePeripheralsWithIdentifiers:[self knownPeripheralIdentifiers]];
         for (CBPeripheral *peripheral in peripherals) {
-            if (peripheral.state != CBPeripheralStateDisconnected) {
-//                NSLog(@" ---> Already connected: %@", peripheral);
+            if ([foundDevices deviceForPeripheral:peripheral] && peripheral.state != CBPeripheralStateDisconnected) {
+                NSLog(@" ---> Already connected: %@/%@", [foundDevices deviceForPeripheral:peripheral], peripheral);
                 continue;
             }
-//            NSLog(@" ---> Connecting to known: %@", peripheral);
+            NSLog(@" ---> Connecting to known: %@", peripheral);
             [foundDevices addPeripheral:peripheral];
             NSDictionary *options = @{CBConnectPeripheralOptionNotifyOnDisconnectionKey: [NSNumber numberWithBool:YES],
                                       CBCentralManagerOptionShowPowerAlertKey: [NSNumber numberWithBool:YES]};
@@ -155,7 +155,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
     
     if (knownCount > connectedCount) {
         connectionDelay = MIN(1*60, 1+connectionDelay);
-//        NSLog(@" ---> Attemping connect to %ld/%ld still unconnected devices, delay: %ld sec (bluetooth: %@/%ld)", (knownCount-connectedCount), (long)knownCount, connectionDelay, manager, (long)manager.state);
+        NSLog(@" ---> Attemping connect to %ld/%ld still unconnected devices, delay: %ld sec", (knownCount-connectedCount), (long)knownCount, connectionDelay);
         [self stopScan];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             [self startScan];
