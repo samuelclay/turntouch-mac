@@ -1,4 +1,8 @@
-This document is a list of all apps with their respective app-level options, actions and defaults, and action-level options.
+The Turn Touch Remote is a four button remote designed for your home. Push a button to control the connected devices in your home, like Hue lights, smart locks, Nest thermostat, and custom-built apps on your Mac, like an alarm clock, a news reader, and music/video players.
+
+The Turn Touch Remote has nearly two dozen apps, each of which controls individual devices or Mac apps. Each app is controlled by pressing one of four buttons: north, east, west, south. Holding down a button switches you to that direction's app. Each app has its own four buttons, giving you four apps with four buttons each for a total of sixteen actions.
+
+This document shows each app, its tagline and description, numbered optional preferences, and bulleted actions in their default directions. Every action is customization and can also be combined with other apps into a single button press called a batch action.
 
 # Turn Touch App Options
 
