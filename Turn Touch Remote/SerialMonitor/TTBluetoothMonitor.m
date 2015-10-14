@@ -96,10 +96,6 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 
 #pragma mark - Start/Stop Scan methods
 
-- (void)startScan {
-    [self startScan:NO];
-}
-
 - (void)startScan:(BOOL)findUnpaired {
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
     if (CLEAR_PAIRED_DEVICES || NO) {
@@ -117,23 +113,36 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
                                                   [CBUUID UUIDWithString:@"1523"]]
                                         options:nil];
     } else {
-        NSLog(@" ---> Retrieving known: %@", [self knownPeripheralIdentifiers]);
+//        NSLog(@" ---> Retrieving known: %@", [self knownPeripheralIdentifiers]);
         NSArray *peripherals = [manager retrievePeripheralsWithIdentifiers:[self knownPeripheralIdentifiers]];
         for (CBPeripheral *peripheral in peripherals) {
             if ([foundDevices deviceForPeripheral:peripheral] && peripheral.state != CBPeripheralStateDisconnected) {
-                NSLog(@" ---> Already connected: %@/%@", [foundDevices deviceForPeripheral:peripheral], peripheral);
+//                NSLog(@" ---> Already connected: %@/%@", [foundDevices deviceForPeripheral:peripheral], peripheral);
                 continue;
             }
-            NSLog(@" ---> Connecting to known: %@", peripheral);
+//            NSLog(@" ---> Connecting to known: %@", peripheral);
             [foundDevices addPeripheral:peripheral];
             NSDictionary *options = @{CBConnectPeripheralOptionNotifyOnDisconnectionKey: [NSNumber numberWithBool:YES],
                                       CBCentralManagerOptionShowPowerAlertKey: [NSNumber numberWithBool:YES]};
             [manager connectPeripheral:peripheral options:options];
-            static dispatch_once_t onceToken;
-            dispatch_once(&onceToken, ^{
+            static dispatch_once_t onceKnownToken;
+            dispatch_once(&onceKnownToken, ^{
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * connectionDelay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    onceToken = 0;
-                    [self maybeScan];
+                    onceKnownToken = 0;
+                    [self maybeScan:NO];
+                });
+            });
+
+            static dispatch_once_t onceUnknownToken;
+            dispatch_once(&onceUnknownToken, ^{
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(300. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    onceUnknownToken = 0;
+                    [self maybeScan:YES];
+                    NSLog(@" ---> Starting scan for unpaired...");
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        NSLog(@" ---> Stopping scan for unpaired");
+                        [self stopScan];
+                    });
                 });
             });
         }
@@ -148,7 +157,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
     [manager stopScan];
 }
 
-- (void)maybeScan {
+- (void)maybeScan:(BOOL)findUnpaired {
     [self countDevices];
     NSInteger knownCount = [[self knownPeripheralIdentifiers] count];
     NSInteger connectedCount = [[self pairedDevicesCount] integerValue];
@@ -157,8 +166,8 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
         connectionDelay = MIN(1*60, 1+connectionDelay);
         NSLog(@" ---> Attemping connect to %ld/%ld still unconnected devices, delay: %ld sec", (knownCount-connectedCount), (long)knownCount, connectionDelay);
         [self stopScan];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-            [self startScan];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            [self startScan:findUnpaired];
         });
     } else {
         connectionDelay = 4;
@@ -192,7 +201,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
     }
     
     if ([self isLECapableHardware]) {
-        [self startScan];
+        [self startScan:NO];
     } else {
         [self stopScan];
         [self countDevices];
@@ -285,7 +294,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
         [self countDevices];
     }
 
-    [self startScan];
+    [self startScan:NO];
 }
 
 /*
@@ -297,7 +306,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
     [foundDevices removePeripheral:peripheral];
     [self countDevices];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self startScan];
+        [self startScan:NO];
     });
 }
 

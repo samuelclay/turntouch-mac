@@ -65,7 +65,7 @@
     for (TTDevice *device in devices) {
         if ([device.peripheral.identifier.UUIDString
              isEqualToString:addDevice.peripheral.identifier.UUIDString]) {
-            NSLog(@"Already added device: %@ / %@ ... ignoring", device, addDevice);
+            NSLog(@"Already added device: %@ / %@ ... whatever", device, addDevice);
 //            [self removeDevice:device];
 //            return;
         }
@@ -74,7 +74,7 @@
     if (![devices containsObject:addDevice]) {
         [devices addObject:addDevice];
     } else {
-        NSLog(@"Already added device: %@", addDevice);
+        NSLog(@"Already added device and not adding again: %@", addDevice);
     }
     addDevice.isPaired = [self isDevicePaired:addDevice];
     addDevice.state = TTDeviceStateSearching;

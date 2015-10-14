@@ -8,6 +8,8 @@ This document is a list of all apps with their respective app-level options, act
 
 # Alarm Clock App
 
+Wake up on time to music. The alarm clock app fades in playlist or random songs from your iTunes library. Touching east lets you skip songs you don't like to hear, so if heavy metal is too much for the early morning, easily move to the next song. Double-tapping east switches the app to a playlist like classical music or podcasts.
+
  1. Groups: Choose wake-up method: music or sound
  2. Dropdown: Choose music: iTunes playlists
  3. Dropdown: Choose sound: annoying sounds
@@ -27,6 +29,8 @@ This document is a list of all apps with their respective app-level options, act
 
 # Hue App
 
+Better lighting makes the room. The Hue app has four buttons that set the scene in your home or office. Touch north for an early evening scene, where lights are bright and soft with a warm amber glow. Touching east gives you a late evening scene, where the lights fade to a muted violet tone, letting you watch videos without the glare of bright lights. Touch west to switch to a random pattern of lights, useful for finding that unexpected scene that better matches your mood.
+
  1. Details of connected Hue hub
  2. Button: Disconnect from Hue hub
  3. Button: Connect to Hue hub (if not connected)
@@ -42,6 +46,8 @@ This document is a list of all apps with their respective app-level options, act
 
 # Belkin Wemo App
 
+Turn on or off anything that plugs into the wall. The Belkin Wemo app connects all of your plugged in appliances, lights, and energy meters to a remote so you can turn them on or off either one at a time or in a batch action.
+
  1. Details of connected Wemos in list
  2. Connect to additional Wemo
 
@@ -52,6 +58,8 @@ This document is a list of all apps with their respective app-level options, act
 
 # Nest App
 
+Temperature control built for your hand. Adjust temperature, set targets, and let your Nest when you're away or back home. You can tie the Nest app up in other actions as part of a batch action, letting you add the Nest to a recipe of other actions.
+
  1. Details of connected Nest
  2. Button: Disconnect/Connect
  
@@ -61,6 +69,8 @@ This document is a list of all apps with their respective app-level options, act
  * [SOUTH] Set to Sleeping temperature
 
 # Electric Objects App / Artwork App
+
+Change the art on your wall. The Electronic Objects artwork app lets you switch to a chosen artwork or cycle through artworks, looking for a piece that fits the day.
 
  1. Details of connected EO1
  2. Button: Disconnect/connect
@@ -74,6 +84,8 @@ This document is a list of all apps with their respective app-level options, act
 
 # Lockitron/August Smartlock App
 
+Control your locks as part of your day. Lock the door when you go to sleep by using the smart lock app in the Home app. And the alarm clock app can automatically unlock your door, since the whole system is controlled from the same app.
+
  1. Details of connected smartlock
  2. Button: Disconnect/connect
 
@@ -83,6 +95,8 @@ This document is a list of all apps with their respective app-level options, act
  * [SOUTH] Lock
 
 # Home App
+
+A single button for every connected device in your home. Split into four directions, waking up, leaving home, arriving back home, and going to bed, the Home app combines actions for your lights, locks, shades, WeMo's, and Mac into a single batch.
 
  * [NORTH] Wakeup
    - Hue: Turn on scene
@@ -115,12 +129,16 @@ This document is a list of all apps with their respective app-level options, act
 
 # Presentation App
 
+Present in style with a remote as easy on the eyes are your presentation. The presentation app supports both Apple Keynote and Microsoft Office Powerpoint, so you can advance slides up to 36 feet away.
+
  * [NORTH] Volume up
  * [EAST] Next slide
  * [WEST] Previous slide
  * [SOUTH] Volume down
 
 # Morning App
+
+Have your news, weather, transit times, and notifications read to you. The morning app gives you a convenient way to hear what's new in the world and to get the information you need to start your day quickly.
 
  * [NORTH] Public transit times
     - Dropdown: 1st MUNI line (71 bus)
@@ -141,6 +159,8 @@ This document is a list of all apps with their respective app-level options, act
 
 # Timer App
 
+A basic utility that only does one thing. The timer app is perfect for meetings or brainstorming session where you want a clearly visible timer that can be reset, extended, and started in a second.
+
  1. Checkbox: Show timer fullscreen
  2. Dropdown: End of timer sound
  
@@ -153,6 +173,8 @@ This document is a list of all apps with their respective app-level options, act
  * [SOUTH] Terminate timer
 
 # Music App
+
+The #1 reason to use a remote. The music app lets you change tracks, switch to playlists, control iTunes, Spotify, and Panodra, and adjust volume. You can even double-tap east to switch to the next album. 
 
  * [NORTH] Volume up
  * [EAST] Next track
@@ -171,6 +193,8 @@ This document is a list of all apps with their respective app-level options, act
 
 # Video App
 
+Control Quicktime and VLC from your couch. The video app puts volume and playlist control right into your hands. Switch videos, rewind and fast forward, and full screen your films and videos.
+
  * [NORTH] Volume up
  * [EAST] Play/Pause
  * [WEST] Full screen
@@ -183,6 +207,8 @@ This document is a list of all apps with their respective app-level options, act
     - Slider: 1s - 60s
 
 # Mac OS App
+
+Run your Mac from your remote. The Mac app puts your Mac into the same system as your connected devices, letting you fade out the screen when you fade out your lights, as well as change volume, launch other apps, and adjust your screen's brightness.
 
  * [NORTH] System volume up
  * [EAST] Turn off screen
@@ -199,6 +225,8 @@ This document is a list of all apps with their respective app-level options, act
 
 # Fitness App
 
+Work out in your home with a trainer you can train. The fitness app lets you work out to music, adjusted to match the specific timings of a workout. The routines in the fitness app can offer you a template for a workout that frees you to simply focus on your body and not just counting.
+
  1. Multi-select: Routines
  2. Slider: Routine duration (10s - Forever)
  
@@ -208,6 +236,8 @@ This document is a list of all apps with their respective app-level options, act
  * [SOUTH] Start/stop
 
 # Meditation App
+
+Focus on your beathing as you meditate. The meditation app frees you from thinking about timing, giving you routines that help relax your body and time your movements.
 
  1. Multi-select: Routines
  2. Slider: Routine duration (10s - Forever)
@@ -219,6 +249,8 @@ This document is a list of all apps with their respective app-level options, act
 
 # NewsBlur App
 
+Focus on the news you want to read. The NewsBlur app hooks up your favorite RSS news reader with your favorite remote control. Stories are presented one at a time. Flip through photos from photo blogs. Catch up on headlines from the news organiations that give it to you straight.
+
  1. Text boxes: Username/password
  2. Radio: Read by folder or sites
  
@@ -228,6 +260,8 @@ This document is a list of all apps with their respective app-level options, act
  * [SOUTH] Next site
 
 # Web App
+
+It's not just the NewsBlur web app that gets a remote, so does every website that wants it. The web app integrates with Chrome, Safari, and Firefox to bring a remote control to any website with only one line of code. And the website doesn't have to be the one to write that line of code. There's a whole open-source community of web sites that integrate with the Turn Touch Remote.
 
  1. List of paired websites / Explainer if none
 
