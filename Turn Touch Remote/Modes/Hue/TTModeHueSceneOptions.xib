@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTModeHueSceneOptions">
@@ -15,11 +15,12 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="-1" width="480" height="61"/>
+        <customView verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="61"/>
             <subviews>
-                <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9V4-ui-N7B">
+                <popUpButton horizontalHuggingPriority="150" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9V4-ui-N7B">
                     <rect key="frame" x="70" y="17" width="366" height="26"/>
+                    <animations/>
                     <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="HKE-0J-wIi" id="hZJ-RX-VR2">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
@@ -40,6 +41,7 @@
                     <constraints>
                         <constraint firstAttribute="width" constant="44" id="omh-bX-xjw"/>
                     </constraints>
+                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Scene:" id="L2c-Gn-dhm">
                         <font key="font" size="13" name="Effra-Regular"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -48,6 +50,7 @@
                 </textField>
                 <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Ere-Kn-0fN">
                     <rect key="frame" x="444" y="23" width="16" height="16"/>
+                    <animations/>
                 </progressIndicator>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="sOG-L3-IFj">
                     <rect key="frame" x="441" y="23" width="18" height="18"/>
@@ -55,6 +58,7 @@
                         <constraint firstAttribute="height" constant="18" id="Rxk-F4-UOt"/>
                         <constraint firstAttribute="width" constant="18" id="XjR-U7-8wQ"/>
                     </constraints>
+                    <animations/>
                     <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="cog" imagePosition="above" alignment="center" imageScaling="proportionallyDown" inset="2" id="7nG-aP-WTW">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -81,6 +85,7 @@
                 <constraint firstItem="9V4-ui-N7B" firstAttribute="leading" secondItem="IM5-A5-WMY" secondAttribute="trailing" constant="8" id="smT-bI-uiS"/>
                 <constraint firstAttribute="bottom" secondItem="sOG-L3-IFj" secondAttribute="bottom" constant="23" id="v2h-6s-hIr"/>
             </constraints>
+            <animations/>
             <point key="canvasLocation" x="362" y="303.5"/>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="edl-6I-vcB"/>

@@ -48,7 +48,6 @@ typedef enum {
 @property (nonatomic, readwrite) NSNumber *unpairedDevicesConnected;
 
 - (BOOL)isLECapableHardware;
-- (void)startScan;
 - (void)startScan:(BOOL)findUnpaired;
 - (void)stopScan;
 - (void)updateBluetoothState:(BOOL)renew;
