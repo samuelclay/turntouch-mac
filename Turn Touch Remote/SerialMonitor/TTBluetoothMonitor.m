@@ -308,6 +308,9 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self startScan:NO];
     });
+    
+    [appDelegate.hudController releaseToastActiveAction];
+    [appDelegate.hudController releaseToastActiveMode];
 }
 
 /*

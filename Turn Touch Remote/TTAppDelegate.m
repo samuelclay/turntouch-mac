@@ -57,6 +57,8 @@ void *kContextActivePanel = &kContextActivePanel;
 //    [self.panelController openPanel];
 //    [self showPreferences:@"devices"];
 //    [self.panelController closePanel];
+    
+    [self.hudController toastActiveMode];
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender {

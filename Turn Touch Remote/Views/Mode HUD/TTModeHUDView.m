@@ -7,12 +7,13 @@
 //
 
 #import "TTModeHUDView.h"
+#import <CoreImage/CoreImage.h>
 
 @implementation TTModeHUDView
 
 const CGFloat kPaddingPct = .52f;
-const NSInteger kImageMargin = 18;
-const NSInteger kImageSize = 36;
+const NSInteger kImageMargin = 32;
+const NSInteger kImageSize = 54;
 const NSInteger kImageTextMargin = 12;
 
 @synthesize isTeaser;
@@ -34,8 +35,8 @@ const NSInteger kImageTextMargin = 12;
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
-    NSRect mapFrame = [self mapFrame];
-    NSLog(@"Draw mode: %d / %@", isTeaser, NSStringFromRect(mapFrame));
+//    NSRect mapFrame = [self mapFrame];
+//    NSLog(@"Draw mode: %d / %@", isTeaser, NSStringFromRect(mapFrame));
     
     [self drawMap];
     [self drawLabelBackgrounds];
@@ -45,8 +46,6 @@ const NSInteger kImageTextMargin = 12;
 }
 
 - (void)drawMapBackground {
-    NSLog(@"drawMapBackground");
-
     NSRect mapFrame = [self mapFrame];
     [gradientView setFrame:mapFrame];
     [teaserGradientView setFrame:mapFrame];
@@ -95,23 +94,16 @@ const NSInteger kImageTextMargin = 12;
                                         [NSNumber numberWithInteger:SOUTH]]) {
         TTModeDirection direction = (TTModeDirection)[directionNumber integerValue];
         NSBezierPath *ellipse = [NSBezierPath bezierPathWithRoundedRect:[self labelFrame:direction]
-                                                                xRadius:35.0
-                                                                yRadius:35.0];
-        CGFloat alpha = 0.9f;
-        NSGradient *borderGradient = [[NSGradient alloc]
-                                      initWithStartingColor:NSColorFromRGBAlpha(0xffffff, alpha)
-                                      endingColor:NSColorFromRGBAlpha(0xa7a7a7, alpha)];
+                                                                xRadius:28.0
+                                                                yRadius:28.0];
+        CGFloat alpha = 0.99f;
+        NSColor *labelColor = NSColorFromRGBAlpha(0xF1F1F2, alpha);
         if (titleMode != [appDelegate.modeMap modeInDirection:direction]) {
-            alpha = 0.7f;
-            borderGradient = [[NSGradient alloc]
-                              initWithStartingColor:NSColorFromRGBAlpha(0x404040, alpha)
-                              endingColor:NSColorFromRGBAlpha(0x070707, alpha)];
-            [NSColorFromRGBAlpha(0xC0BCCF, alpha) setStroke];
-        } else {
-            [NSColorFromRGBAlpha(0xC0BCCF, alpha) setStroke];
+            alpha = 0.6f;
+            labelColor = NSColorFromRGBAlpha(0xF1F1F2, alpha);
         }
-        [ellipse stroke];
-        [borderGradient drawInBezierPath:ellipse angle:-90];
+        [labelColor setFill];
+        [ellipse fill];
     }
 }
 
@@ -132,7 +124,7 @@ const NSInteger kImageTextMargin = 12;
     NSString *directionModeTitle = [[[appDelegate.modeMap modeInDirection:direction] class] title];
     NSSize titleSize = [directionModeTitle sizeWithAttributes:modeAttributes];
     CGFloat width = titleSize.width + kImageSize + kImageMargin*2 + kImageTextMargin;
-    CGFloat height = titleSize.height + kImageMargin/2;
+    CGFloat height = titleSize.height + kImageMargin;
     CGFloat x = 0;
     CGFloat y = 0;
     switch (direction) {
@@ -170,27 +162,35 @@ const NSInteger kImageTextMargin = 12;
                                         appDelegate.modeMap.southMode]) {
         TTModeDirection direction = [directionMode modeDirection];
         NSDictionary *attributes = modeAttributes;
-        CGFloat alpha = 1.0f;
+        CGFloat imageAlpha = 1.0f;
         if (titleMode != [appDelegate.modeMap modeInDirection:direction]) {
             attributes = inactiveModeAttributes;
-            alpha = 0.6f;
+            imageAlpha = 0.9f;
         }
         NSRect frame = [self labelFrame:direction];
+
+        // Used to debug label frame
+//        NSBezierPath *textViewSurround = [NSBezierPath bezierPathWithRect:frame];
+//        [textViewSurround setLineWidth:1];
+//        [[NSColor redColor] set];
+//        [textViewSurround stroke];
+        
         TTMode *directionMode = [appDelegate.modeMap modeInDirection:direction];
         modeImage = [NSImage imageNamed:[[directionMode class] imageName]];
         [modeImage setSize:NSMakeSize(kImageSize, kImageSize)];
+                
         CGFloat offset = (NSHeight(frame)/2) - (modeImage.size.height/2);
         NSPoint imagePoint = NSMakePoint(frame.origin.x + kImageMargin, frame.origin.y + offset);
         [modeImage drawInRect:NSMakeRect(imagePoint.x, imagePoint.y,
                                          modeImage.size.width, modeImage.size.height)
-                     fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:alpha];
+                     fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:imageAlpha];
         
         NSString *directionModeTitle = [[directionMode class] title];
-//        NSSize titleSize = [directionModeTitle sizeWithAttributes:attributes];
+        NSSize titleSize = [directionModeTitle sizeWithAttributes:attributes];
 //        NSLog(@"Mode HUD: %@ - %@ / %@", directionModeTitle, NSStringFromSize(titleSize), NSStringFromRect(frame));
         NSRect textFrame = frame;
         textFrame.origin.x += modeImage.size.width + kImageMargin + kImageTextMargin;
-        textFrame.origin.y += 4;
+        textFrame.origin.y += kImageMargin/2 - titleSize.height/2;
         [directionModeTitle drawInRect:textFrame withAttributes:attributes];
     }
 }
@@ -207,27 +207,18 @@ const NSInteger kImageTextMargin = 12;
 
 - (void)setupTitleAttributes:(TTMode *)mode {
     NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
-    NSInteger fontSize = round(CGRectGetWidth(screen.frame) / 42);
+    NSInteger fontSize = round(CGRectGetWidth(screen.frame) / 72);
     titleMode = mode;
     modeTitle = [[titleMode class] title];
-    NSShadow *stringShadow = [[NSShadow alloc] init];
-    stringShadow.shadowColor = [NSColor whiteColor];
-    stringShadow.shadowOffset = NSMakeSize(0, -1);
-    stringShadow.shadowBlurRadius = 0;
-    NSShadow *inactiveStringShadow = [[NSShadow alloc] init];
-    inactiveStringShadow.shadowColor = [NSColor blackColor];
-    inactiveStringShadow.shadowOffset = NSMakeSize(0, -1);
-    inactiveStringShadow.shadowBlurRadius = 0;
-    NSColor *textColor = NSColorFromRGB(0x404A60);
-    CGFloat alpha = 0.5f;
-    NSColor *inactiveTextColor = NSColorFromRGBAlpha(0xf9f9f9, alpha);
+    NSColor *textColor = NSColorFromRGB(0x57585F);
+    CGFloat alpha = 0.99f;
+
+    NSColor *inactiveTextColor = NSColorFromRGBAlpha(0x57585F, alpha);
     modeAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:fontSize],
-                       NSForegroundColorAttributeName: textColor,
-                       NSShadowAttributeName: stringShadow
+                       NSForegroundColorAttributeName: textColor
                        };
     inactiveModeAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:fontSize],
-                               NSForegroundColorAttributeName: inactiveTextColor,
-                               NSShadowAttributeName: inactiveStringShadow
+                               NSForegroundColorAttributeName: inactiveTextColor
                                };
     textSize = [modeTitle sizeWithAttributes:modeAttributes];
 }
