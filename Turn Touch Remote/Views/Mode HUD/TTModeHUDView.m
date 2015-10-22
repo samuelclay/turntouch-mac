@@ -11,7 +11,7 @@
 
 @implementation TTModeHUDView
 
-const CGFloat kPaddingPct = .52f;
+const CGFloat kPaddingPct = .64f;
 const NSInteger kImageMargin = 32;
 const NSInteger kImageSize = 54;
 const NSInteger kImageTextMargin = 12;
@@ -45,46 +45,56 @@ const NSInteger kImageTextMargin = 12;
     [diamondLabels setNeedsDisplay:YES];
 }
 
+- (NSRect)mapFrame:(BOOL)rotated {
+    NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
+    CGFloat widthPadding = (screen.frame.size.width * kPaddingPct) / 2;
+    CGFloat width = screen.frame.size.width - widthPadding*2;
+    CGFloat height = width;
+    CGFloat actionHeight = NSHeight(screen.frame) / 6;
+    CGFloat heightPadding = (screen.frame.size.height - height + actionHeight) / 2;
+    
+    if (rotated) {
+        return NSMakeRect(widthPadding + width/1.414/2/2, heightPadding + height/1.414/2/2, width/1.414, height/1.414);
+    } else {
+        return NSMakeRect(widthPadding, heightPadding, width, height);
+    }
+}
+
 - (void)drawMapBackground {
-    NSRect mapFrame = [self mapFrame];
+    NSRect mapFrame = [self mapFrame:NO];
     [gradientView setFrame:mapFrame];
     [teaserGradientView setFrame:mapFrame];
-    NSBezierPath *diamond = [NSBezierPath bezierPath];
-    // West
-    [diamond moveToPoint:NSMakePoint(0,
-                                     mapFrame.size.height/2)];
-    // North
-    [diamond lineToPoint:NSMakePoint(mapFrame.size.width/2,
-                                     mapFrame.size.height - SPACING_PCT*mapFrame.size.width)];
-    [diamond lineToPoint:NSMakePoint(mapFrame.size.width,
-                                     mapFrame.size.height/2)];
-    [diamond lineToPoint:NSMakePoint(mapFrame.size.width/2, SPACING_PCT*mapFrame.size.width)];
-    [diamond closePath];
-    CGFloat alpha = 0.9f;
-    NSGradient *borderGradient;
+    NSRect diamondFrame = mapFrame;
+    diamondFrame.origin = CGPointZero;
+    
+    NSBezierPath *diamond = [NSBezierPath bezierPathWithRoundedRect:diamondFrame
+                                                            xRadius:28.0
+                                                            yRadius:28.0];
+
+    NSAffineTransform *rotation = [NSAffineTransform transform];
+    [rotation translateXBy:diamondFrame.size.width/2 yBy:0];
+    [rotation rotateByDegrees:45.f];
+    [rotation scaleBy:1/1.414f];
+    [diamond transformUsingAffineTransform:rotation];
+    
+    CGFloat alpha = 0.99f;
+    NSColor *diamondColor = NSColorFromRGBAlpha(0xF1F1F2, alpha);
+    alpha = 0.6f;
+    NSColor *teaserDiamondColor = NSColorFromRGBAlpha(0xF1F1F2, alpha);
 
     NSImage *teaserGradientImage = [[NSImage alloc] initWithSize:mapFrame.size];
     [teaserGradientImage lockFocus];
-    borderGradient = [[NSGradient alloc]
-                      initWithStartingColor:NSColorFromRGBAlpha(0x404040, alpha)
-                      endingColor:NSColorFromRGB(0x070707)];
-    [diamond addClip];
-    [NSColorFromRGBAlpha(0x201C2F, alpha) setStroke];
-    [borderGradient drawInRect:NSMakeRect(0, 0, mapFrame.size.width, mapFrame.size.height) angle:-90];
+    [teaserDiamondColor set];
+    [diamond fill];
     [teaserGradientImage unlockFocus];
     [teaserGradientView setImage:teaserGradientImage];
 
     NSImage *gradientImage = [[NSImage alloc] initWithSize:mapFrame.size];
     [gradientImage lockFocus];
-    [NSColorFromRGBAlpha(0xC0BCCF, alpha) setStroke];
-    borderGradient = [[NSGradient alloc]
-                      initWithStartingColor:NSColorFromRGBAlpha(0xffffff, alpha)
-                      endingColor:NSColorFromRGB(0xa7a7a7)];
-    [borderGradient drawInBezierPath:diamond angle:-90];
+    [diamondColor set];
+    [diamond fill];
     [gradientImage unlockFocus];
     [gradientView setImage:gradientImage];
-
-    [diamond stroke];
 }
 
 - (void)drawLabelBackgrounds {
@@ -107,20 +117,9 @@ const NSInteger kImageTextMargin = 12;
     }
 }
 
-- (NSRect)mapFrame {
-    NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
-    CGFloat widthPadding = (screen.frame.size.width * kPaddingPct) / 2;
-    CGFloat width = screen.frame.size.width - widthPadding*2;
-    CGFloat height = width / 1.3;
-    CGFloat actionHeight = NSHeight(screen.frame) / 6;
-    CGFloat heightPadding = (screen.frame.size.height - height + actionHeight) / 2;
-
-    return NSMakeRect(widthPadding, heightPadding, width, height);
-}
-
 - (NSRect)labelFrame:(TTModeDirection)direction {
     NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
-    NSRect mapFrame = [self mapFrame];
+    NSRect mapFrame = [self mapFrame:NO];
     NSString *directionModeTitle = [[[appDelegate.modeMap modeInDirection:direction] class] title];
     NSSize titleSize = [directionModeTitle sizeWithAttributes:modeAttributes];
     CGFloat width = titleSize.width + kImageSize + kImageMargin*2 + kImageTextMargin;
@@ -197,8 +196,15 @@ const NSInteger kImageTextMargin = 12;
 
 - (void)drawMap {
     [diamondLabels setMode:titleMode];
-    NSRect mapFrame = [self mapFrame];
+    NSRect mapFrame = [self mapFrame:NO];
     [diamondLabels setFrame:mapFrame];
+    
+    
+    // Debug for map frame
+//    NSBezierPath *textViewSurround = [NSBezierPath bezierPathWithRect:mapFrame];
+//    [textViewSurround setLineWidth:10];
+//    [[NSColor redColor] set];
+//    [textViewSurround stroke];
 }
 
 - (void)setupTitleAttributes {
