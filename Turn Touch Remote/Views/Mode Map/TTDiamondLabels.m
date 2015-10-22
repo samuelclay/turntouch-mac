@@ -41,15 +41,26 @@
         
         northLabel = [[TTDiamondLabel alloc] initWithFrame:CGRectZero inDirection:NORTH];
         [northLabel setInteractive:interactive];
+        [northLabel setIsHud:isHud];
+        [northLabel setupLabels];
         [self addSubview:northLabel];
+
         eastLabel = [[TTDiamondLabel alloc] initWithFrame:CGRectZero inDirection:EAST];
         [eastLabel setInteractive:interactive];
+        [eastLabel setIsHud:isHud];
+        [eastLabel setupLabels];
         [self addSubview:eastLabel];
+
         westLabel = [[TTDiamondLabel alloc] initWithFrame:CGRectZero inDirection:WEST];
         [westLabel setInteractive:interactive];
+        [westLabel setIsHud:isHud];
+        [westLabel setupLabels];
         [self addSubview:westLabel];
+
         southLabel = [[TTDiamondLabel alloc] initWithFrame:CGRectZero inDirection:SOUTH];
         [southLabel setInteractive:interactive];
+        [southLabel setIsHud:isHud];
+        [southLabel setupLabels];
         [self addSubview:southLabel];
         
         if (interactive) {

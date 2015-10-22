@@ -11,7 +11,7 @@
 
 @implementation TTModeHUDView
 
-const CGFloat kPaddingPct = .64f;
+const CGFloat kPaddingPct = .7f;
 const NSInteger kImageMargin = 32;
 const NSInteger kImageSize = 54;
 const NSInteger kImageTextMargin = 12;
@@ -68,24 +68,40 @@ const NSInteger kImageTextMargin = 12;
     diamondFrame.origin = CGPointZero;
     
     NSBezierPath *diamond = [NSBezierPath bezierPathWithRoundedRect:diamondFrame
-                                                            xRadius:28.0
-                                                            yRadius:28.0];
-
+                                                            xRadius:48.0
+                                                            yRadius:48.0];
+    
+    NSBezierPath *diamondBorder1 = [NSBezierPath bezierPath];
+    [diamondBorder1 moveToPoint:NSMakePoint(0, diamondFrame.size.height/2)];
+    [diamondBorder1 lineToPoint:NSMakePoint(diamondFrame.size.width, diamondFrame.size.height/2)];
+    [diamondBorder1 setLineWidth:1.f];
+    
+    NSBezierPath *diamondBorder2 = [NSBezierPath bezierPath];
+    [diamondBorder2 moveToPoint:NSMakePoint(diamondFrame.size.width/2, 0)];
+    [diamondBorder2 lineToPoint:NSMakePoint(diamondFrame.size.width/2, diamondFrame.size.height)];
+    [diamondBorder2 setLineWidth:1.f];
+    
     NSAffineTransform *rotation = [NSAffineTransform transform];
     [rotation translateXBy:diamondFrame.size.width/2 yBy:0];
     [rotation rotateByDegrees:45.f];
     [rotation scaleBy:1/1.414f];
     [diamond transformUsingAffineTransform:rotation];
+    [diamondBorder1 transformUsingAffineTransform:rotation];
+    [diamondBorder2 transformUsingAffineTransform:rotation];
     
-    CGFloat alpha = 0.99f;
-    NSColor *diamondColor = NSColorFromRGBAlpha(0xF1F1F2, alpha);
-    alpha = 0.6f;
+    NSColor *diamondColor = NSColorFromRGB(0xF1F1F2);
+    NSColor *borderColor = NSColorFromRGB(0x57585F);
+    CGFloat alpha = 0.6f;
     NSColor *teaserDiamondColor = NSColorFromRGBAlpha(0xF1F1F2, alpha);
+    NSColor *teaserBorderColor = NSColorFromRGBAlpha(0x57585F, alpha);
 
     NSImage *teaserGradientImage = [[NSImage alloc] initWithSize:mapFrame.size];
     [teaserGradientImage lockFocus];
     [teaserDiamondColor set];
     [diamond fill];
+    [teaserBorderColor set];
+    [diamondBorder1 stroke];
+    [diamondBorder2 stroke];
     [teaserGradientImage unlockFocus];
     [teaserGradientView setImage:teaserGradientImage];
 
@@ -93,6 +109,9 @@ const NSInteger kImageTextMargin = 12;
     [gradientImage lockFocus];
     [diamondColor set];
     [diamond fill];
+    [borderColor set];
+    [diamondBorder1 stroke];
+    [diamondBorder2 stroke];
     [gradientImage unlockFocus];
     [gradientView setImage:gradientImage];
 }

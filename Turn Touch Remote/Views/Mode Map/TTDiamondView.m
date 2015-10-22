@@ -136,7 +136,9 @@
 
     NSRect rect = self.bounds;
     [self drawPaths:rect];
-    [self colorPaths:rect];
+    if (diamondType != DIAMOND_TYPE_HUD) {
+        [self colorPaths:rect];
+    }
 }
 
 - (void)drawPaths:(NSRect)rect {

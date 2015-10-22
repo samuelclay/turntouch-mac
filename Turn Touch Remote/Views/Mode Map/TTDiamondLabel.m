@@ -13,6 +13,7 @@
 @implementation TTDiamondLabel
 
 @synthesize interactive;
+@synthesize isHud;
 
 - (id)initWithFrame:(NSRect)frame inDirection:(TTModeDirection)direction {
     frame = NSInsetRect(frame, 0, -1 * PADDING);
@@ -23,7 +24,6 @@
         labelDirection = direction;
         diamondMode = appDelegate.modeMap.selectedMode;
 
-        [self setupLabels];
         [self registerAsObserver];
     }
     return self;
@@ -101,21 +101,29 @@
 
 - (void)setupLabels {
     NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
-    NSInteger fontSize = round(CGRectGetWidth(screen.frame) / 56);
     BOOL hovering = appDelegate.modeMap.hoverModeDirection == labelDirection;
     BOOL selected = appDelegate.modeMap.inspectingModeDirection == labelDirection;
-    NSShadow *stringShadow = [[NSShadow alloc] init];
-    stringShadow.shadowColor = [NSColor whiteColor];
-    stringShadow.shadowOffset = NSMakeSize(0, -1);
-    stringShadow.shadowBlurRadius = 0;
     NSColor *textColor = (hovering || selected) ? NSColorFromRGB(0x303AA0) : NSColorFromRGB(0x404A60);
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [style setAlignment:NSCenterTextAlignment];
-    labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:(interactive ? 13 : fontSize)],
-                        NSForegroundColorAttributeName: textColor,
-                        NSShadowAttributeName: stringShadow,
-                        NSParagraphStyleAttributeName: style
-                        };
+    if (!isHud) {
+        NSInteger fontSize = round(CGRectGetWidth(screen.frame) / 56);
+        NSShadow *stringShadow = [[NSShadow alloc] init];
+        stringShadow.shadowColor = [NSColor whiteColor];
+        stringShadow.shadowOffset = NSMakeSize(0, -1);
+        stringShadow.shadowBlurRadius = 0;
+        labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:(interactive ? 13 : fontSize)],
+                            NSForegroundColorAttributeName: textColor,
+                            NSShadowAttributeName: stringShadow,
+                            NSParagraphStyleAttributeName: style
+                            };
+    } else {
+        NSInteger fontSize = round(CGRectGetWidth(screen.frame) / 76);
+        labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:(interactive ? 13 : fontSize)],
+                            NSForegroundColorAttributeName: textColor,
+                            NSParagraphStyleAttributeName: style
+                            };
+    }
 }
 
 @end

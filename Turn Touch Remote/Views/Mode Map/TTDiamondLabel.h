@@ -22,8 +22,10 @@
 }
 
 @property (nonatomic, readwrite) BOOL interactive;
+@property (nonatomic, readwrite) BOOL isHud;
 
 - (id)initWithFrame:(NSRect)frame inDirection:(TTModeDirection)direction;
 - (void)setMode:(TTMode *)mode;
+- (void)setupLabels;
 
 @end
