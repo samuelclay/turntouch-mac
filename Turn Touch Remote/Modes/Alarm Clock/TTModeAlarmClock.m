@@ -74,6 +74,9 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
 - (NSString *)titleTTModeAlarmSnooze {
     return @"Snooze";
 }
+- (NSString *)doubleTitleTTModeAlarmSnooze {
+    return @"Stop alarm";
+}
 - (NSString *)titleTTModeAlarmNextSong {
     return @"Next Song";
 }
@@ -117,6 +120,10 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
     NSLog(@"Running runTTModeAlarmSnooze");
     [self snoozeAlarm];
 }
+- (void)doubleRunTTModeAlarmSnooze {
+    NSLog(@"Running doubleRunTTModeAlarmSnooze");
+    [self stopAlarm];
+}
 - (void)runTTModeAlarmNextSong {
     NSLog(@"Running runTTModeAlarmNextSong");
     [self playNextSong];
@@ -140,13 +147,13 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
 #pragma mark - Defaults
 
 - (NSString *)defaultNorth {
-    return @"TTModeAlarmSnooze";
+    return @"TTModeAlarmVolumeUp";
 }
 - (NSString *)defaultEast {
     return @"TTModeAlarmNextSong";
 }
 - (NSString *)defaultWest {
-    return @"TTModeAlarmStop";
+    return @"TTModeAlarmSnooze";
 }
 - (NSString *)defaultSouth {
     return @"TTModeAlarmVolumeDown";
