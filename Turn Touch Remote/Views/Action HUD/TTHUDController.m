@@ -63,7 +63,7 @@
 - (void)toastActiveAction:(TTModeDirection)direction {
     TTMode *mode = NSAppDelegate.modeMap.selectedMode;
     ActionLayout layout = [mode layoutInDirection:direction];
-    NSTimeInterval delay = layout == ACTION_LAYOUT_IMAGE_TITLE ? 2.5 : 0.5;
+    NSTimeInterval delay = layout == ACTION_LAYOUT_IMAGE_TITLE ? 2.5 : 1.5;
     
     [actionHUDController fadeIn:direction];
     

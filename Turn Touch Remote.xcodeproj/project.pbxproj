@@ -74,6 +74,7 @@
 		FF5296141AD633F4007DDC02 /* TTSettingsSupportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5296121AD633F4007DDC02 /* TTSettingsSupportViewController.xib */; };
 		FF5296181AD63425007DDC02 /* TTSettingsAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5296161AD63425007DDC02 /* TTSettingsAboutViewController.m */; };
 		FF5296191AD63425007DDC02 /* TTSettingsAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5296171AD63425007DDC02 /* TTSettingsAboutViewController.xib */; };
+		FF58717B1BDC83AB00CDCC1C /* TTProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = FF58717A1BDC83AB00CDCC1C /* TTProgressBar.m */; settings = {ASSET_TAGS = (); }; };
 		FF66F2A619228DE100031478 /* TTModeAlarmClockOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66F2A519228DE100031478 /* TTModeAlarmClockOptions.m */; };
 		FF66F2A91922D1C100031478 /* TTOptionsDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66F2A81922D1C100031478 /* TTOptionsDetailView.m */; };
 		FF6A37D01A9AEC9F006F3756 /* NSDate+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6A37CF1A9AEC9F006F3756 /* NSDate+Extras.m */; };
@@ -338,6 +339,8 @@
 		FF5296151AD63425007DDC02 /* TTSettingsAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTSettingsAboutViewController.h; sourceTree = "<group>"; };
 		FF5296161AD63425007DDC02 /* TTSettingsAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTSettingsAboutViewController.m; sourceTree = "<group>"; };
 		FF5296171AD63425007DDC02 /* TTSettingsAboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTSettingsAboutViewController.xib; sourceTree = "<group>"; };
+		FF5871791BDC83AB00CDCC1C /* TTProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTProgressBar.h; sourceTree = "<group>"; };
+		FF58717A1BDC83AB00CDCC1C /* TTProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTProgressBar.m; sourceTree = "<group>"; };
 		FF66F2A419228DE100031478 /* TTModeAlarmClockOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeAlarmClockOptions.h; path = "Modes/Alarm Clock/TTModeAlarmClockOptions.h"; sourceTree = "<group>"; };
 		FF66F2A519228DE100031478 /* TTModeAlarmClockOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeAlarmClockOptions.m; path = "Modes/Alarm Clock/TTModeAlarmClockOptions.m"; sourceTree = "<group>"; };
 		FF66F2A71922D1C100031478 /* TTOptionsDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTOptionsDetailView.h; path = "Views/Mode Options/TTOptionsDetailView.h"; sourceTree = "<group>"; };
@@ -1049,6 +1052,8 @@
 				FFA1D4C81A3B8916003EA0BC /* TTActionHUDWindowController.m */,
 				FFA1D4C21A3B8916003EA0BC /* TTActionHUDView.h */,
 				FFA1D4C31A3B8916003EA0BC /* TTActionHUDView.m */,
+				FF5871791BDC83AB00CDCC1C /* TTProgressBar.h */,
+				FF58717A1BDC83AB00CDCC1C /* TTProgressBar.m */,
 			);
 			name = "Action HUD";
 			path = "Views/Action HUD";
@@ -1438,6 +1443,7 @@
 				FFA8EAA3190F091000679A4D /* TTModeMenuItem.m in Sources */,
 				FF5296051AD6142B007DDC02 /* RHPreferencesCustomPlaceholderController.m in Sources */,
 				FF1B022B1A36898700BE764E /* NSObject+CancelableBlocks.m in Sources */,
+				FF58717B1BDC83AB00CDCC1C /* TTProgressBar.m in Sources */,
 				FF5295DB1AD610A6007DDC02 /* RHPreferencesWindowController.m in Sources */,
 				FF1F135D1ADC90E700B52A0D /* MLCalendarBackground.m in Sources */,
 				FF1F135F1ADC90E700B52A0D /* MLCalendarView.m in Sources */,

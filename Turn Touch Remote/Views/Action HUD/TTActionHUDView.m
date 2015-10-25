@@ -18,20 +18,28 @@ const CGFloat kActionHUDMarginPct = .6f;
 
 - (void)awakeFromNib {
     appDelegate = (TTAppDelegate *)[NSApp delegate];
+    backgroundView = [[NSImageView alloc] init];
+    progressBar = [[TTProgressBar alloc] init];
+
+    [self addSubview:backgroundView];
+    [self addSubview:progressBar];
 }
 
 - (void)drawProgressBar:(NSProgressIndicator *)_progressBar {
     NSInteger progress = [mode progressInDirection:direction];
-    progressBar = _progressBar;
+
     if (progress == -1) {
         progressBar.hidden = YES;
     } else {
         progressBar.hidden = NO;
-        [progressBar setDoubleValue:progress];
+        [progressBar setProgress:progress];
     }
-
-//    NSRect frame = [self.class actionFrame];
-//    [progressBar setFrame:NSInsetRect(frame, 100, 0)];
+    
+    NSRect actionFrame = [self.class actionFrame];
+    NSRect frame = NSInsetRect(actionFrame, 100, 0);
+    frame.size.height = 8;
+    frame.origin.y = frame.origin.y + NSHeight(actionFrame) / 4;
+    [progressBar setFrame:frame];
 }
 
 - (void)drawImageLayoutView {
@@ -63,62 +71,83 @@ const CGFloat kActionHUDMarginPct = .6f;
 
 + (NSRect)actionFrame {
     NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
-    CGFloat margin = (NSWidth(screen.frame) * kActionHUDMarginPct) / 2;
-    CGFloat width = NSWidth(screen.frame) - margin*2;
-    CGFloat height = NSHeight(screen.frame) / 6;
-    
-    if (width < 900) {
-        width = 900;
-        margin = (screen.frame.size.width - width) / 2;
+    CGFloat width = NSWidth(screen.frame)/8;
+    CGFloat height = width;
+
+    if (width < 220) {
+        width = 220;
+        height = 220;
     }
 
-    return NSMakeRect(margin, 0, width, height);
+    CGFloat widthPadding = NSWidth(screen.frame) / 2 - width / 2;
+    CGFloat heightPadding = 48;
+
+    return NSMakeRect(widthPadding, heightPadding, width, height);
 }
 
 - (void)drawBackground {
     NSRect frame = [self.class actionFrame];
-    NSBezierPath *ellipse = [NSBezierPath bezierPath];
-    [ellipse moveToPoint:NSMakePoint(frame.origin.x, frame.origin.y)];
-    [ellipse lineToPoint:NSMakePoint(frame.origin.x + frame.size.width/2, frame.origin.y + frame.size.height)];
-    [ellipse lineToPoint:NSMakePoint(frame.origin.x + frame.size.width, frame.origin.y)];
-    [ellipse closePath];
+    [backgroundView setFrame:frame];
+    NSRect diamondFrame = frame;
+    diamondFrame.origin = CGPointZero;
+
+    NSBezierPath *diamond = [NSBezierPath bezierPathWithRoundedRect:diamondFrame
+                                                            xRadius:36.0
+                                                            yRadius:36.0];
+
+    NSAffineTransform *rotation = [NSAffineTransform transform];
+    [rotation translateXBy:diamondFrame.size.width/2 yBy:0];
+    [rotation rotateByDegrees:45.f];
+    [rotation scaleBy:1/1.414f];
+    [diamond transformUsingAffineTransform:rotation];
+
     CGFloat alpha = 0.9f;
-    [NSColorFromRGBAlpha(0xC0BCCF, alpha) setStroke];
-    [ellipse stroke];
-    NSGradient *borderGradient = [[NSGradient alloc]
-                                  initWithStartingColor:NSColorFromRGBAlpha(0xffffff, alpha)
-                                  endingColor:NSColorFromRGB(0xa7a7a7)];
-    [borderGradient drawInBezierPath:ellipse angle:-90];
+    NSColor *backgroundColor = NSColorFromRGBAlpha(0xE0E1E1, alpha);
+    NSImage *backgroundImage = [[NSImage alloc] initWithSize:diamondFrame.size];
+    [backgroundImage lockFocus];
+    [backgroundColor set];
+    [diamond fill];
+    [backgroundImage unlockFocus];
+    [backgroundView setImage:backgroundImage];
+
+    // Used to debug label frame
+//    NSBezierPath *textViewSurround = [NSBezierPath bezierPathWithRect:frame];
+//    [textViewSurround setLineWidth:1];
+//    [[NSColor redColor] set];
+//    [textViewSurround stroke];
 }
 
 #pragma mark - Action Layout - Text / Progress
 
 - (void)drawLabel {
     NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
-    NSInteger fontSize = round(CGRectGetWidth(screen.frame) / 36);
+    NSInteger fontSize = round(CGRectGetWidth(screen.frame) / 96);
     NSRect frame = [self.class actionFrame];
-    NSShadow *stringShadow = [[NSShadow alloc] init];
-    stringShadow.shadowColor = [NSColor whiteColor];
-    stringShadow.shadowOffset = NSMakeSize(0, -1);
-    stringShadow.shadowBlurRadius = 0;
-    NSColor *textColor = NSColorFromRGB(0x404A60);
+//    NSShadow *stringShadow = [[NSShadow alloc] init];
+//    stringShadow.shadowColor = [NSColor whiteColor];
+//    stringShadow.shadowOffset = NSMakeSize(0, -1);
+//    stringShadow.shadowBlurRadius = 0;
+    NSColor *textColor = NSColorFromRGB(0x57585F);
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [style setAlignment:NSCenterTextAlignment];
     NSDictionary *labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:fontSize],
                                       NSForegroundColorAttributeName: textColor,
-                                      NSShadowAttributeName: stringShadow,
+//                                      NSShadowAttributeName: stringShadow,
                                       NSParagraphStyleAttributeName: style
                                       };
     NSString *directionLabel = [mode actionTitleInDirection:direction buttonAction:buttonAction];
-    frame.size.height = frame.size.height / 2 + [directionLabel sizeWithAttributes:labelAttributes].height/2;
+    frame.size.height = frame.size.height * (0.6f) + [directionLabel sizeWithAttributes:labelAttributes].height/2;
+    [backgroundView.image lockFocus];
+    frame.origin = NSZeroPoint;
     [directionLabel drawInRect:frame withAttributes:labelAttributes];
+    [backgroundView.image unlockFocus];
 }
 
 - (void)drawProgress {
     NSInteger progress = [mode progressInDirection:direction];
     if (progress == -1) return;
     
-    [progressBar setDoubleValue:progress];    
+    [progressBar setProgress:progress];
 }
 
 #pragma mark - Action Layout - Image

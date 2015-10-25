@@ -33,13 +33,13 @@
 - (NSRect)visibleFrame {
     NSScreen *mainScreen = [[NSScreen screens] objectAtIndex:0];
     
-    return NSMakeRect(0, 0, NSWidth(mainScreen.frame), 200);
+    return NSMakeRect(0, 0, NSWidth(mainScreen.frame), NSHeight(mainScreen.frame));
 }
 
 - (NSRect)hiddenFrame {
     NSScreen *mainScreen = [[NSScreen screens] objectAtIndex:0];
     
-    return NSMakeRect(0, -200, NSWidth(mainScreen.frame), 200);
+    return NSMakeRect(0, -200, NSWidth(mainScreen.frame), NSHeight(mainScreen.frame));
 }
 
 - (IBAction)fadeIn:(TTModeDirection)direction {
@@ -61,6 +61,7 @@
     [hudView setButtonAction:buttonAction];
     [hudView drawProgressBar:progressBar];
     [hudView drawImageLayoutView];
+    [hudView setHidden:NO];
     [hudView setNeedsDisplay:YES];
     
     if (hudWindow.frame.origin.y == [self hiddenFrame].origin.y) {
@@ -85,7 +86,7 @@
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:.25f];
     [[NSAnimationContext currentContext] setCompletionHandler:^{
-//        [window orderOut:nil];
+        [hudView setHidden:YES];
     }];
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
@@ -101,6 +102,9 @@
     [[NSAnimationContext currentContext] setDuration:.55f];
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
+    [[NSAnimationContext currentContext] setCompletionHandler:^{
+        [hudView setHidden:YES];
+    }];
     
     [[hudWindow animator] setAlphaValue:0.15f];
     [[hudWindow animator] setFrame:[self hiddenFrame] display:YES];

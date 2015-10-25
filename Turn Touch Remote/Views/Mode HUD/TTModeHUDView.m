@@ -50,8 +50,8 @@ const NSInteger kImageTextMargin = 12;
     CGFloat widthPadding = (screen.frame.size.width * kPaddingPct) / 2;
     CGFloat width = screen.frame.size.width - widthPadding*2;
     CGFloat height = width;
-    CGFloat actionHeight = NSHeight(screen.frame) / 6;
-    CGFloat heightPadding = (screen.frame.size.height - height + actionHeight) / 2;
+    CGFloat actionHeight = NSHeight(screen.frame) / 4;
+    CGFloat heightPadding = (NSHeight(screen.frame) - height + actionHeight) / 2;
     
     if (rotated) {
         return NSMakeRect(widthPadding + width/1.414/2/2, heightPadding + height/1.414/2/2, width/1.414, height/1.414);

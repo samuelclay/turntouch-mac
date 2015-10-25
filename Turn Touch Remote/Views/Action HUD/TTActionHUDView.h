@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "TTAppDelegate.h"
+#import "TTProgressBar.h"
 
 @class TTAppDelegate;
 
@@ -16,8 +17,9 @@ extern const CGFloat kActionHUDMarginPct;
 @interface TTActionHUDView : NSView {
     TTAppDelegate *appDelegate;
     TTModeDirection direction;
-    NSProgressIndicator *progressBar;
+    TTProgressBar *progressBar;
     NSView *imageLayoutView;
+    NSImageView *backgroundView;
 }
 
 @property (nonatomic) TTModeDirection direction;
