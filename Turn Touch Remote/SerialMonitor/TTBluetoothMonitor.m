@@ -242,11 +242,11 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 {
     NSString *localName = [advertisementData objectForKey:CBAdvertisementDataLocalNameKey];
     NSLog(@"Found bluetooth peripheral: %@/%@ (%@)", localName, [peripheral.identifier.UUIDString substringToIndex:8], RSSI);
-    NSArray *peripherals = [manager retrievePeripheralsWithIdentifiers:@[(id)peripheral.identifier]];
+//    NSArray *peripherals = [manager retrievePeripheralsWithIdentifiers:@[(id)peripheral.identifier]];
     
     BOOL noPairedDevices = ![foundDevices totalPairedCount];
     
-    for (CBPeripheral *peripheral in peripherals) {
+//    for (CBPeripheral *peripheral in peripherals) {
         NSLog(@"Connecting bluetooth peripheral: %@ / %d", [peripheral.identifier.UUIDString substringToIndex:8], noPairedDevices);
         [foundDevices addPeripheral:peripheral];
         if (noPairedDevices) {
@@ -256,7 +256,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
         [manager connectPeripheral:peripheral
                            options:@{CBConnectPeripheralOptionNotifyOnDisconnectionKey: [NSNumber numberWithBool:YES],
                                      CBCentralManagerOptionShowPowerAlertKey: [NSNumber numberWithBool:YES]}];
-    }
+//    }
 }
 
 /*
