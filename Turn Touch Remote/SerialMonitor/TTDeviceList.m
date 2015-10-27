@@ -25,7 +25,7 @@
     for (TTDevice *device in devices) {
         [peripheralIds addObject:[device.peripheral.identifier.UUIDString substringToIndex:8]];
     }
-    return [NSString stringWithFormat:@"%@", [peripheralIds componentsJoinedByString:@", "]];
+    return [NSString stringWithFormat:@"<%@>", [peripheralIds componentsJoinedByString:@", "]];
 }
 
 - (TTDevice *)deviceForPeripheral:(CBPeripheral *)peripheral {
@@ -66,6 +66,7 @@
         if ([device.peripheral.identifier.UUIDString
              isEqualToString:addDevice.peripheral.identifier.UUIDString]) {
             NSLog(@"Already added device: %@ / %@ ... whatever", device, addDevice);
+            addDevice = device;
 //            [self removeDevice:device];
 //            return;
         }
@@ -108,6 +109,9 @@
         if (device.peripheral.state == CBPeripheralStateConnected &&
             (device.state == TTDeviceStateConnected || device.state == TTDeviceStateConnecting)) {
             [updatedConnectedDevices addObject:device];
+        } else {
+            [device.peripheral setDelegate:nil];
+            device.peripheral = nil;
         }
     }
 
