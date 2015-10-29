@@ -77,19 +77,19 @@ NSString *const kRandomSaturation = @"randomSaturation";
 #pragma mark - Action Images
 
 - (NSString *)imageTTModeHueSceneEarlyEvening {
-    return @"volume_up.png";
+    return @"hue_sunset.png";
 }
 - (NSString *)imageTTModeHueSceneLateEvening {
-    return @"volume_down.png";
+    return @"hue_evening.png";
 }
 - (NSString *)imageTTModeHueSleep {
-    return @"play.png";
+    return @"hue_sleep.png";
 }
 - (NSString *)imageTTModeHueOff {
-    return @"next_track.png";
+    return @"hue_sleep.png";
 }
 - (NSString *)imageTTModeHueRandom {
-    return @"next_track.png";
+    return @"hue_random.png";
 }
 
 #pragma mark - Defaults

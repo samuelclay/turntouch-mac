@@ -164,7 +164,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
     
     if (knownCount > connectedCount) {
         connectionDelay = MIN(1*60, 1+connectionDelay);
-        NSLog(@" ---> Attemping connect to %ld/%ld still unconnected devices, delay: %ld sec", (knownCount-connectedCount), (long)knownCount, connectionDelay);
+//        NSLog(@" ---> Attempting connect to %ld/%ld still unconnected devices, delay: %ld sec", (knownCount-connectedCount), (long)knownCount, connectionDelay);
         [self stopScan];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             [self startScan:findUnpaired];
@@ -224,7 +224,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 }
 
 - (void)countDevices {
-    NSLog(@"Counting %d: %@", (int)foundDevices.count, foundDevices);
+//    NSLog(@"Counting %d: %@", (int)foundDevices.count, foundDevices);
     
     [foundDevices ensureDevicesConnected];
     
@@ -255,9 +255,11 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
             [appDelegate showPreferences:@"pairing"];
         }
 
-        [manager connectPeripheral:peripheral
-                           options:@{CBConnectPeripheralOptionNotifyOnDisconnectionKey: [NSNumber numberWithBool:YES],
-                                     CBCentralManagerOptionShowPowerAlertKey: [NSNumber numberWithBool:YES]}];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [manager connectPeripheral:peripheral
+                               options:@{CBConnectPeripheralOptionNotifyOnDisconnectionKey: [NSNumber numberWithBool:YES],
+                                         CBCentralManagerOptionShowPowerAlertKey: [NSNumber numberWithBool:YES]}];
+        });
 //    }
 }
 

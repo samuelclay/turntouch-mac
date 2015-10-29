@@ -74,7 +74,7 @@
 		FF5296141AD633F4007DDC02 /* TTSettingsSupportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5296121AD633F4007DDC02 /* TTSettingsSupportViewController.xib */; };
 		FF5296181AD63425007DDC02 /* TTSettingsAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5296161AD63425007DDC02 /* TTSettingsAboutViewController.m */; };
 		FF5296191AD63425007DDC02 /* TTSettingsAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5296171AD63425007DDC02 /* TTSettingsAboutViewController.xib */; };
-		FF58717B1BDC83AB00CDCC1C /* TTProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = FF58717A1BDC83AB00CDCC1C /* TTProgressBar.m */; settings = {ASSET_TAGS = (); }; };
+		FF58717B1BDC83AB00CDCC1C /* TTProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = FF58717A1BDC83AB00CDCC1C /* TTProgressBar.m */; };
 		FF66F2A619228DE100031478 /* TTModeAlarmClockOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66F2A519228DE100031478 /* TTModeAlarmClockOptions.m */; };
 		FF66F2A91922D1C100031478 /* TTOptionsDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66F2A81922D1C100031478 /* TTOptionsDetailView.m */; };
 		FF6A37D01A9AEC9F006F3756 /* NSDate+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6A37CF1A9AEC9F006F3756 /* NSDate+Extras.m */; };
@@ -106,6 +106,7 @@
 		FF801332186E156900955218 /* TTOptionsModeTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801331186E156900955218 /* TTOptionsModeTitle.m */; };
 		FF801335186E207B00955218 /* TTDiamondLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801334186E207B00955218 /* TTDiamondLabel.m */; };
 		FF801338186E5D9700955218 /* TTOptionsActionTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801337186E5D9700955218 /* TTOptionsActionTitle.m */; };
+		FF80E8B11BE194D100B2A0CC /* actions in Resources */ = {isa = PBXBuildFile; fileRef = FF80E8B01BE194D100B2A0CC /* actions */; };
 		FF8528F61A96A63A00B289FD /* TTModeMusic.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF8528F51A96A63A00B289FD /* TTModeMusic.plist */; };
 		FF8528F81A96B58700B289FD /* TTModeMusicVolumeJumpOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF8528F71A96B58700B289FD /* TTModeMusicVolumeJumpOptions.xib */; };
 		FF8528FB1A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8528FA1A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.m */; };
@@ -395,6 +396,7 @@
 		FF801334186E207B00955218 /* TTDiamondLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTDiamondLabel.m; sourceTree = "<group>"; };
 		FF801336186E5D9700955218 /* TTOptionsActionTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTOptionsActionTitle.h; path = "Views/Mode Options/TTOptionsActionTitle.h"; sourceTree = "<group>"; };
 		FF801337186E5D9700955218 /* TTOptionsActionTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTOptionsActionTitle.m; path = "Views/Mode Options/TTOptionsActionTitle.m"; sourceTree = "<group>"; };
+		FF80E8B01BE194D100B2A0CC /* actions */ = {isa = PBXFileReference; lastKnownFileType = folder; path = actions; sourceTree = "<group>"; };
 		FF8528F51A96A63A00B289FD /* TTModeMusic.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = TTModeMusic.plist; path = Modes/Music/TTModeMusic.plist; sourceTree = "<group>"; };
 		FF8528F71A96B58700B289FD /* TTModeMusicVolumeJumpOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeMusicVolumeJumpOptions.xib; path = Modes/Music/TTModeMusicVolumeJumpOptions.xib; sourceTree = "<group>"; };
 		FF8528F91A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMusicVolumeJumpOptions.h; path = Modes/Music/TTModeMusicVolumeJumpOptions.h; sourceTree = "<group>"; };
@@ -694,6 +696,7 @@
 		FF3A9F6217C42B5E00C5C2D5 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FF80E8B01BE194D100B2A0CC /* actions */,
 				FF2740671A7C576900C55579 /* iTunes */,
 				FFF05F3118F6120200AC6230 /* logo */,
 				FFAA4F6A182D96E50049FFC7 /* icons */,
@@ -1402,6 +1405,7 @@
 				FF8012F9186A79A600955218 /* clock.png in Resources */,
 				FF2365CE196F0DFA00A4ADBC /* mode_mac.png in Resources */,
 				FF8012F5186A1AD100955218 /* defaults.plist in Resources */,
+				FF80E8B11BE194D100B2A0CC /* actions in Resources */,
 				FFAA4F67182D96D60049FFC7 /* sun.png in Resources */,
 				FF98A2EF1867DC320032CC7A /* Turn Touch Remote.entitlements in Resources */,
 				FF5296141AD633F4007DDC02 /* TTSettingsSupportViewController.xib in Resources */,

@@ -20,6 +20,7 @@ extern const CGFloat kActionHUDMarginPct;
     TTProgressBar *progressBar;
     NSView *imageLayoutView;
     NSImageView *backgroundView;
+    NSImageView *iconView;
 }
 
 @property (nonatomic) TTModeDirection direction;

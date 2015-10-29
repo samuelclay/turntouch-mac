@@ -20,9 +20,30 @@ const CGFloat kActionHUDMarginPct = .6f;
     appDelegate = (TTAppDelegate *)[NSApp delegate];
     backgroundView = [[NSImageView alloc] init];
     progressBar = [[TTProgressBar alloc] init];
-
+    iconView = [[NSImageView alloc] init];
+    
+    NSRect actionFrame = [self.class actionFrame];
+    [iconView setFrame:NSInsetRect(actionFrame, 20, 20)];
+    
     [self addSubview:backgroundView];
     [self addSubview:progressBar];
+    [self addSubview:iconView];
+}
+
++ (NSRect)actionFrame {
+    NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
+    CGFloat width = NSWidth(screen.frame)/8;
+    CGFloat height = width;
+    
+    if (width < 220) {
+        width = 220;
+        height = 220;
+    }
+    
+    CGFloat widthPadding = NSWidth(screen.frame) / 2 - width / 2;
+    CGFloat heightPadding = 48;
+    
+    return NSMakeRect(widthPadding, heightPadding, width, height);
 }
 
 - (void)drawProgressBar:(NSProgressIndicator *)_progressBar {
@@ -60,29 +81,15 @@ const CGFloat kActionHUDMarginPct = .6f;
     ActionLayout layout = [mode layoutInDirection:direction];
     
     [self drawBackground];
+    [self drawIcon];
     if (layout == ACTION_LAYOUT_TITLE) {
-        [self drawLabel];
+        [self drawModeLabel];
+        [self drawActionLabel];
         [self drawProgress];
     } else if (layout == ACTION_LAYOUT_IMAGE_TITLE) {
         [self drawSmallLabel];
         [imageLayoutView setHidden:NO];
     }
-}
-
-+ (NSRect)actionFrame {
-    NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
-    CGFloat width = NSWidth(screen.frame)/8;
-    CGFloat height = width;
-
-    if (width < 220) {
-        width = 220;
-        height = 220;
-    }
-
-    CGFloat widthPadding = NSWidth(screen.frame) / 2 - width / 2;
-    CGFloat heightPadding = 48;
-
-    return NSMakeRect(widthPadding, heightPadding, width, height);
 }
 
 - (void)drawBackground {
@@ -117,26 +124,53 @@ const CGFloat kActionHUDMarginPct = .6f;
 //    [textViewSurround stroke];
 }
 
+- (void)drawIcon {
+    NSString *iconFilename = [mode imageNameInDirection:direction];
+    NSString *imageFile = [NSString stringWithFormat:@"%@/actions/%@", [[NSBundle mainBundle] resourcePath], iconFilename];
+    NSImage *icon = [[NSImage alloc] initWithContentsOfFile:imageFile];
+    [icon setSize:NSMakeSize(128, 128)];
+    [iconView setImage:icon];
+}
+
 #pragma mark - Action Layout - Text / Progress
 
-- (void)drawLabel {
+- (void)drawModeLabel {
     NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
     NSInteger fontSize = round(CGRectGetWidth(screen.frame) / 96);
     NSRect frame = [self.class actionFrame];
-//    NSShadow *stringShadow = [[NSShadow alloc] init];
-//    stringShadow.shadowColor = [NSColor whiteColor];
-//    stringShadow.shadowOffset = NSMakeSize(0, -1);
-//    stringShadow.shadowBlurRadius = 0;
     NSColor *textColor = NSColorFromRGB(0x57585F);
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [style setAlignment:NSCenterTextAlignment];
     NSDictionary *labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:fontSize],
                                       NSForegroundColorAttributeName: textColor,
-//                                      NSShadowAttributeName: stringShadow,
+                                      NSParagraphStyleAttributeName: style
+                                      };
+    NSString *modeLabel = [[mode class] title];
+    frame.size.height = frame.size.height * (0.7f) + [modeLabel sizeWithAttributes:labelAttributes].height/2;
+    [backgroundView.image lockFocus];
+    frame.origin = NSZeroPoint;
+    [modeLabel drawInRect:frame withAttributes:labelAttributes];
+    [backgroundView.image unlockFocus];
+}
+
+- (void)drawActionLabel {
+    NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
+    NSInteger fontSize = round(CGRectGetWidth(screen.frame) / 118);
+    NSRect frame = [self.class actionFrame];
+    //    NSShadow *stringShadow = [[NSShadow alloc] init];
+    //    stringShadow.shadowColor = [NSColor whiteColor];
+    //    stringShadow.shadowOffset = NSMakeSize(0, -1);
+    //    stringShadow.shadowBlurRadius = 0;
+    NSColor *textColor = NSColorFromRGB(0x57585F);
+    NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    [style setAlignment:NSCenterTextAlignment];
+    NSDictionary *labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:fontSize],
+                                      NSForegroundColorAttributeName: textColor,
+                                      //                                      NSShadowAttributeName: stringShadow,
                                       NSParagraphStyleAttributeName: style
                                       };
     NSString *directionLabel = [mode actionTitleInDirection:direction buttonAction:buttonAction];
-    frame.size.height = frame.size.height * (0.6f) + [directionLabel sizeWithAttributes:labelAttributes].height/2;
+    frame.size.height = frame.size.height * (0.3f) + [directionLabel sizeWithAttributes:labelAttributes].height/2;
     [backgroundView.image lockFocus];
     frame.origin = NSZeroPoint;
     [directionLabel drawInRect:frame withAttributes:labelAttributes];
