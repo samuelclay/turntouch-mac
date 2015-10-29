@@ -23,7 +23,10 @@
         appDelegate = (TTAppDelegate *)[NSApp delegate];
         labelDirection = direction;
         diamondMode = appDelegate.modeMap.selectedMode;
-
+        iconView = [[NSImageView alloc] init];
+        
+        [self addSubview:iconView];
+        
         [self registerAsObserver];
     }
     return self;
@@ -82,17 +85,43 @@
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     
-	NSString *directionLabel;
-
-    directionLabel = [diamondMode titleInDirection:labelDirection buttonAction:BUTTON_ACTION_PRESSUP];
-    NSSize labelSize = [directionLabel sizeWithAttributes:labelAttributes];
-    [directionLabel drawAtPoint:NSMakePoint(NSWidth(self.bounds)/2 - labelSize.width/2, NSHeight(self.bounds)/2 - labelSize.height/(140/50.f)) withAttributes:labelAttributes];
-
+    [self drawLabel];
+    [self drawIcon];
+    
     // Draw border, used for debugging
 //    NSBezierPath *textViewSurround = [NSBezierPath bezierPathWithRect:self.bounds];
 //    [textViewSurround setLineWidth:1];
 //    [[NSColor redColor] set];
 //    [textViewSurround stroke];
+}
+
+- (void)drawLabel {
+    NSString *directionLabel;
+    
+    directionLabel = [diamondMode titleInDirection:labelDirection buttonAction:BUTTON_ACTION_PRESSUP];
+    NSSize labelSize = [directionLabel sizeWithAttributes:labelAttributes];
+    NSInteger iconOffset = 0;
+    if (isHud) {
+        iconOffset = 96 / 2 - 24;
+    }
+    [directionLabel drawAtPoint:NSMakePoint(NSWidth(self.bounds)/2 - labelSize.width/2,
+                                            NSHeight(self.bounds)/2 - labelSize.height/(140/50.f) - iconOffset)
+                 withAttributes:labelAttributes];
+}
+
+- (void)drawIcon {
+    if (!isHud) return;
+    
+    NSRect iconFrame = self.bounds;
+    iconFrame.origin.y += 36;
+    [iconView setFrame:iconFrame];
+    
+    NSString *imageFilename = [diamondMode imageNameInDirection:labelDirection];
+    NSString *imagePath = [NSString stringWithFormat:@"%@/actions/%@", [[NSBundle mainBundle] resourcePath], imageFilename];
+    NSImage *image = [[NSImage alloc] initWithContentsOfFile:imagePath];
+    [image setSize:NSMakeSize(96, 96)];
+    [iconView setImage:image];
+    
 }
 
 - (void)setMode:(TTMode *)mode {

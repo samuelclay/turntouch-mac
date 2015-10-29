@@ -136,7 +136,11 @@
 //    NSLog(@"Drawing labels: %@", NSStringFromRect(dirtyRect));
 	[super drawRect:dirtyRect];
 
-    [self drawLabels];
+    if (isHud) {
+        [self drawHudLabels];
+    } else {
+        [self drawDiamondLabels];
+    }
     if (interactive) {
         [self drawBackground];
     }
@@ -149,13 +153,13 @@
     NSRectFill(self.bounds);
 }
 
-- (void)drawLabels {
+- (void)drawDiamondLabels {
     CGFloat offsetX = NSMinX(diamondRect);
     CGFloat offsetY = NSMinY(diamondRect);
     CGFloat width = NSWidth(diamondRect);
     CGFloat height = NSHeight(diamondRect);
     CGFloat spacing = SPACING_PCT * width;
-    
+
     for (TTModeDirection direction=1; direction <= 4; direction++) {
         NSRect textRect = diamondRect;
         
@@ -176,13 +180,51 @@
                                   width, height/2 - spacing*2);
             [southLabel setFrame:textRect];
         }
+
 //        NSLog(@"Label rect: %@", NSStringFromRect(textRect));
     }
 
     // Draw border, used for debugging
 //    NSBezierPath *textViewSurround = [NSBezierPath bezierPathWithRect:self.bounds];
 //    [textViewSurround setLineWidth:1];
-//    [[NSColor redColor] set];
+//    [[NSColor cyanColor] set];
+//    [textViewSurround stroke];
+}
+
+- (void)drawHudLabels {
+    CGFloat offsetX = NSMinX(self.bounds);
+    CGFloat offsetY = NSMinY(self.bounds);
+    CGFloat width = NSWidth(self.bounds);
+    CGFloat height = NSHeight(self.bounds);
+    
+    for (TTModeDirection direction=1; direction <= 4; direction++) {
+        NSRect textRect;
+        
+        if (direction == NORTH) {
+            textRect = NSMakeRect(offsetX, offsetY + height/2,
+                                  width, height/2);
+            [northLabel setFrame:textRect];
+        } else if (direction == EAST) {
+            textRect = NSMakeRect(offsetX + width/2, 0,
+                                  width/2, offsetY*2 + height);
+            [eastLabel setFrame:textRect];
+        } else if (direction == WEST) {
+            textRect = NSMakeRect(offsetX, 0,
+                                  width/2, offsetY*2 + height);
+            [westLabel setFrame:textRect];
+        } else if (direction == SOUTH) {
+            textRect = NSMakeRect(offsetX, offsetY,
+                                  width, height/2);
+            [southLabel setFrame:textRect];
+        }
+        
+        //        NSLog(@"Label rect: %@", NSStringFromRect(textRect));
+    }
+    
+    // Draw border, used for debugging
+//    NSBezierPath *textViewSurround = [NSBezierPath bezierPathWithRect:self.bounds];
+//    [textViewSurround setLineWidth:1];
+//    [[NSColor cyanColor] set];
 //    [textViewSurround stroke];
 }
 

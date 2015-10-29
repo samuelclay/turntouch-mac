@@ -16,6 +16,7 @@
     TTModeDirection labelDirection;
     NSDictionary *labelAttributes;
     TTMode *diamondMode;
+    NSImageView *iconView;
     
     BOOL isHover;
     BOOL interactive;
