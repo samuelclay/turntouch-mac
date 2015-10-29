@@ -39,8 +39,8 @@ const NSInteger kImageTextMargin = 12;
 //    NSLog(@"Draw mode: %d / %@", isTeaser, NSStringFromRect(mapFrame));
     
     [self drawMap];
-    [self drawLabelBackgrounds];
-    [self drawLabels];
+    [self drawModeLabelBackgrounds];
+    [self drawModeLabels];
     
     [diamondLabels setNeedsDisplay:YES];
 }
@@ -116,13 +116,13 @@ const NSInteger kImageTextMargin = 12;
     [gradientView setImage:gradientImage];
 }
 
-- (void)drawLabelBackgrounds {
+- (void)drawModeLabelBackgrounds {
     for (NSNumber *directionNumber in @[[NSNumber numberWithInteger:NORTH],
                                         [NSNumber numberWithInteger:EAST],
                                         [NSNumber numberWithInteger:WEST],
                                         [NSNumber numberWithInteger:SOUTH]]) {
         TTModeDirection direction = (TTModeDirection)[directionNumber integerValue];
-        NSBezierPath *ellipse = [NSBezierPath bezierPathWithRoundedRect:[self labelFrame:direction]
+        NSBezierPath *ellipse = [NSBezierPath bezierPathWithRoundedRect:[self modeLabelFrame:direction]
                                                                 xRadius:28.0
                                                                 yRadius:28.0];
         CGFloat alpha = 0.99f;
@@ -136,7 +136,7 @@ const NSInteger kImageTextMargin = 12;
     }
 }
 
-- (NSRect)labelFrame:(TTModeDirection)direction {
+- (NSRect)modeLabelFrame:(TTModeDirection)direction {
     NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
     NSRect mapFrame = [self mapFrame:NO];
     NSString *directionModeTitle = [[[appDelegate.modeMap modeInDirection:direction] class] title];
@@ -173,7 +173,7 @@ const NSInteger kImageTextMargin = 12;
                       height);
 }
 
-- (void)drawLabels {
+- (void)drawModeLabels {
     for (TTMode *directionMode in @[appDelegate.modeMap.northMode,
                                         appDelegate.modeMap.eastMode,
                                         appDelegate.modeMap.westMode,
@@ -185,7 +185,7 @@ const NSInteger kImageTextMargin = 12;
             attributes = inactiveModeAttributes;
             imageAlpha = 0.9f;
         }
-        NSRect frame = [self labelFrame:direction];
+        NSRect frame = [self modeLabelFrame:direction];
 
         // Used to debug label frame
 //        NSBezierPath *textViewSurround = [NSBezierPath bezierPathWithRect:frame];
@@ -194,7 +194,9 @@ const NSInteger kImageTextMargin = 12;
 //        [textViewSurround stroke];
         
         TTMode *directionMode = [appDelegate.modeMap modeInDirection:direction];
-        modeImage = [NSImage imageNamed:[[directionMode class] imageName]];
+        NSString *imageFilename = [[directionMode class] imageName];
+        NSString *imagePath = [NSString stringWithFormat:@"%@/icons/%@", [[NSBundle mainBundle] resourcePath], imageFilename];
+        modeImage = [[NSImage alloc] initWithContentsOfFile:imagePath];
         [modeImage setSize:NSMakeSize(kImageSize, kImageSize)];
                 
         CGFloat offset = (NSHeight(frame)/2) - (modeImage.size.height/2);

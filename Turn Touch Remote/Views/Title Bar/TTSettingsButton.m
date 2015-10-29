@@ -12,7 +12,9 @@
 
 - (id)initWithFrame:(NSRect)buttonFrame pullsDown:(BOOL)flag {
     if (self = [super initWithFrame:buttonFrame pullsDown:flag]) {
-        [self setImage:[NSImage imageNamed:@"settings"]];
+        NSString *imagePath = [NSString stringWithFormat:@"%@/icons/settings.png", [[NSBundle mainBundle] resourcePath]];
+        NSImage *image = [[NSImage alloc] initWithContentsOfFile:imagePath];
+        [self setImage:image];
         [self.image setSize:NSMakeSize(16, 16)];
         [self setImagePosition:NSImageOnly];
         [self setButtonType:NSMomentaryChangeButton];

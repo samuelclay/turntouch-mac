@@ -89,7 +89,9 @@
 }
 
 - (void)drawMode {
-    modeImage = [NSImage imageNamed:[modeClass imageName]];
+    NSString *imageFilename = [modeClass imageName];
+    NSString *imagePath = [NSString stringWithFormat:@"%@/icons/%@", [[NSBundle mainBundle] resourcePath], imageFilename];
+    modeImage = [[NSImage alloc] initWithContentsOfFile:imagePath];
     [modeImage setSize:NSMakeSize(IMAGE_SIZE, IMAGE_SIZE)];
     CGFloat offset = (NSHeight(self.frame)/2) - (modeImage.size.height/2);
     NSPoint imagePoint = NSMakePoint(offset, offset + 1);
@@ -105,7 +107,9 @@
 }
 
 - (void)drawAction {
-    modeImage = [NSImage imageNamed:[activeMode imageNameForAction:modeName]];
+    NSString *imageFilename = [activeMode imageNameForAction:modeName];
+    NSString *imagePath = [NSString stringWithFormat:@"%@/actions/%@", [[NSBundle mainBundle] resourcePath], imageFilename];
+    modeImage = [[NSImage alloc] initWithContentsOfFile:imagePath];
 
     [modeImage setSize:NSMakeSize(IMAGE_SIZE, IMAGE_SIZE)];
     CGFloat offset = (NSHeight(self.frame)/2) - (modeImage.size.height/2);

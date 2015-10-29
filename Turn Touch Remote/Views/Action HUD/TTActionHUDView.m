@@ -17,13 +17,12 @@
 const CGFloat kActionHUDMarginPct = .6f;
 
 - (void)awakeFromNib {
-    appDelegate = (TTAppDelegate *)[NSApp delegate];
-    backgroundView = [[NSImageView alloc] init];
-    progressBar = [[TTProgressBar alloc] init];
-    iconView = [[NSImageView alloc] init];
-    
     NSRect actionFrame = [self.class actionFrame];
-    [iconView setFrame:NSInsetRect(actionFrame, 20, 20)];
+
+    appDelegate = (TTAppDelegate *)[NSApp delegate];
+    backgroundView = [[NSImageView alloc] initWithFrame:actionFrame];
+    progressBar = [[TTProgressBar alloc] init];
+    iconView = [[NSImageView alloc] initWithFrame:actionFrame];
     
     [self addSubview:backgroundView];
     [self addSubview:progressBar];
@@ -93,9 +92,7 @@ const CGFloat kActionHUDMarginPct = .6f;
 }
 
 - (void)drawBackground {
-    NSRect frame = [self.class actionFrame];
-    [backgroundView setFrame:frame];
-    NSRect diamondFrame = frame;
+    NSRect diamondFrame = [self.class actionFrame];
     diamondFrame.origin = CGPointZero;
 
     NSBezierPath *diamond = [NSBezierPath bezierPathWithRoundedRect:diamondFrame
@@ -128,7 +125,7 @@ const CGFloat kActionHUDMarginPct = .6f;
     NSString *iconFilename = [mode imageNameInDirection:direction];
     NSString *imageFile = [NSString stringWithFormat:@"%@/actions/%@", [[NSBundle mainBundle] resourcePath], iconFilename];
     NSImage *icon = [[NSImage alloc] initWithContentsOfFile:imageFile];
-    [icon setSize:NSMakeSize(128, 128)];
+    [icon setSize:NSMakeSize(96, 96)];
     [iconView setImage:icon];
 }
 

@@ -39,7 +39,7 @@ NSString *const kRandomSaturation = @"randomSaturation";
 }
 
 + (NSString *)imageName {
-    return @"mode_meditation.png";
+    return @"mode_hue.png";
 }
 
 #pragma mark - Actions
