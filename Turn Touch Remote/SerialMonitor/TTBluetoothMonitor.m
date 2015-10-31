@@ -375,7 +375,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error {
     for (CBService *service in peripheral.services) {
-        NSLog(@"Service found with UUID: %@", service.UUID);
+        NSLog(@" ---> (%X) Service found with UUID: %@", bluetoothState, service.UUID);
         TTDevice *device = [foundDevices deviceForPeripheral:peripheral];
 
         if ([service.UUID isEqual:[CBUUID UUIDWithString:DEVICE_V1_SERVICE_BUTTON_UUID]]) {
@@ -580,7 +580,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
         TTDevice *device = [foundDevices deviceForPeripheral:peripheral];
         device.nickname = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
         
-        NSLog(@" ---> Hello %@ / %@", characteristic.value, device);
+        NSLog(@" ---> (%X) Hello %@ / %@", bluetoothState, characteristic.value, device);
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             [self ensureNicknameOnDevice:device];
         });
