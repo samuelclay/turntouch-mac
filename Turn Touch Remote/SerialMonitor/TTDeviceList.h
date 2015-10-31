@@ -20,7 +20,7 @@
 - (TTDevice *)deviceForPeripheral:(CBPeripheral *)peripheral;
 - (TTDevice *)objectAtIndex:(NSUInteger)index;
 
-- (void)addPeripheral:(CBPeripheral *)peripheral;
+- (TTDevice *)addPeripheral:(CBPeripheral *)peripheral;
 - (void)addDevice:(TTDevice *)device;
 - (void)removePeripheral:(CBPeripheral *)peripheral;
 - (void)removeDevice:(TTDevice *)removeDevice;

@@ -39,11 +39,11 @@
 }
 
 - (void)viewWillAppear {
-    [appDelegate.bluetoothMonitor startScan:YES];
+    [appDelegate.bluetoothMonitor scanUnknown];
 }
 
 - (void)viewWillDisappear {
-    [appDelegate.bluetoothMonitor stopScan];
+//    [appDelegate.bluetoothMonitor stopScan];
 }
 
 #pragma mark - KVO

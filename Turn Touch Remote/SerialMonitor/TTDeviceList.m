@@ -53,9 +53,11 @@
 
 #pragma mark - Devices
 
-- (void)addPeripheral:(CBPeripheral *)peripheral {
+- (TTDevice *)addPeripheral:(CBPeripheral *)peripheral {
     TTDevice *device = [[TTDevice alloc] initWithPeripheral:peripheral];
     [self addDevice:device];
+    
+    return device;
 }
 
 

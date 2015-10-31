@@ -21,6 +21,15 @@ typedef enum {
     FIRMWARE_NICKNAME = 5,
 } FirmwareSetting;
 
+typedef enum {
+    BT_STATE_DOING_NOTHING = 0,
+    BT_STATE_SCANNING_KNOWN = 1,
+    BT_STATE_CONNECTING_KNOWN = 2,
+    BT_STATE_SCANNING_UNKNOWN = 3,
+    BT_STATE_CONNECTING_UNKNOWN = 4,
+    BT_STATE_PAIRING_UNKNOWN = 5
+} BluetoothState;
+
 @class TTButtonTimer;
 
 @interface TTBluetoothMonitor : NSObject
@@ -33,6 +42,7 @@ typedef enum {
     CBCentralManager *manager;
     NSMutableDictionary *characteristics;
     NSInteger connectionDelay;
+    BluetoothState bluetoothState;
 }
 
 @property (nonatomic) NSNumber *batteryPct;
@@ -48,7 +58,8 @@ typedef enum {
 @property (nonatomic, readwrite) NSNumber *unpairedDevicesConnected;
 
 - (BOOL)isLECapableHardware;
-- (void)startScan:(BOOL)findUnpaired;
+- (void)scanKnown;
+- (void)scanUnknown;
 - (void)stopScan;
 - (void)updateBluetoothState:(BOOL)renew;
 - (void)reconnect;
