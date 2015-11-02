@@ -58,7 +58,13 @@ NSString *const kRandomSaturation = @"randomSaturation";
 - (NSString *)titleTTModeHueSceneEarlyEvening {
     return @"Early evening";
 }
+- (NSString *)doubleTitleTTModeHueSceneEarlyEvening {
+    return @"Early evening 2";
+}
 - (NSString *)titleTTModeHueSceneLateEvening {
+    return @"Late evening";
+}
+- (NSString *)doubleTitleTTModeHueSceneLateEvening {
     return @"Late evening";
 }
 - (NSString *)titleTTModeHueSleep {
@@ -109,7 +115,7 @@ NSString *const kRandomSaturation = @"randomSaturation";
 
 #pragma mark - Action methods
 
-- (void)runScene:(TTModeDirection)direction {
+- (void)runScene:(TTModeDirection)direction doubleTap:(BOOL)doubleTap {
     if (!self.phHueSDK.localConnected) {
         return;
     }
@@ -117,7 +123,8 @@ NSString *const kRandomSaturation = @"randomSaturation";
     PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
     PHScene *activeScene;
-    NSString *sceneIdentifier = [appDelegate.modeMap actionOptionValue:kHueScene inDirection:direction];
+    NSString *sceneIdentifier = [appDelegate.modeMap actionOptionValue:(doubleTap ? kDoubleTapHueScene : kHueScene)
+                                                           inDirection:direction];
 
     NSMutableArray *scenes = [[NSMutableArray alloc] init];
     for (PHScene *scene in cache.scenes.allValues) {
@@ -136,18 +143,24 @@ NSString *const kRandomSaturation = @"randomSaturation";
     }
     
     [bridgeSendAPI activateSceneWithIdentifier:sceneIdentifier onGroup:@"0" completionHandler:^(NSArray *errors) {
-        NSLog(@"Scene change: %@", errors);
+        NSLog(@"Scene change: %@ (%@)", sceneIdentifier, errors);
     }];
 }
 
 - (void)runTTModeHueSceneEarlyEvening:(TTModeDirection)direction {
-//    NSLog(@"Running early evening... %d", direction);
-    [self runScene:direction];
+    [self runScene:direction doubleTap:NO];
+}
+
+- (void)doubleRunTTModeHueSceneEarlyEvening:(TTModeDirection)direction {
+    [self runScene:direction doubleTap:YES];
 }
 
 - (void)runTTModeHueSceneLateEvening:(TTModeDirection)direction {
-//    NSLog(@"Running late evening... %d", direction);
-    [self runScene:direction];
+    [self runScene:direction doubleTap:NO];
+}
+
+- (void)doubleRunTTModeHueSceneLateEvening:(TTModeDirection)direction {
+    [self runScene:direction doubleTap:YES];
 }
 
 - (void)runTTModeHueOff:(TTModeDirection)direction {
@@ -158,6 +171,14 @@ NSString *const kRandomSaturation = @"randomSaturation";
 - (void)runTTModeHueSleep:(TTModeDirection)direction {
     NSNumber *sceneDuration = (NSNumber *)[appDelegate.modeMap actionOptionValue:kHueDuration inDirection:direction];
     [self runTTModeHueSleep:direction duration:sceneDuration];
+}
+
+- (BOOL)shouldIgnoreSingleBeforeDoubleTTModeHueSceneEarlyEvening {
+    return YES;
+}
+
+- (BOOL)shouldIgnoreSingleBeforeDoubleTTModeHueSceneLateEvening {
+    return YES;
 }
 
 - (BOOL)shouldIgnoreSingleBeforeDoubleTTModeHueSleep {

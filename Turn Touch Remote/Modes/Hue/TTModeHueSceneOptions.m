@@ -11,6 +11,7 @@
 #import <HueSDK_OSX/HueSDK.h>
 
 NSString *const kHueScene = @"hueScene";
+NSString *const kDoubleTapHueScene = @"doubleTapHueScene";
 
 @interface TTModeHueSceneOptions ()
 
@@ -21,6 +22,9 @@ NSString *const kHueScene = @"hueScene";
 @synthesize scenePopup;
 @synthesize spinner;
 @synthesize refreshButton;
+@synthesize doubleTapScenePopup;
+@synthesize doubleTapSpinner;
+@synthesize doubleTapRefreshButton;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -30,10 +34,14 @@ NSString *const kHueScene = @"hueScene";
 
 - (void)drawScenes {
     [spinner setHidden:YES];
+    [doubleTapSpinner setHidden:YES];
     [refreshButton setHidden:NO];
+    [doubleTapRefreshButton setHidden:NO];
     
     NSString *sceneSelectedIdentifier = [appDelegate.modeMap actionOptionValue:kHueScene];
+    NSString *doubleTapSceneSelectedIdentifier = [appDelegate.modeMap actionOptionValue:kDoubleTapHueScene];
     NSString *sceneSelected;
+    NSString *doubleTapSceneSelected;
     
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
     NSMutableArray *scenes = [[NSMutableArray alloc] init];
@@ -48,20 +56,28 @@ NSString *const kHueScene = @"hueScene";
     
     for (NSDictionary *scene in scenes) {
         [scenePopup addItemWithTitle:scene[@"name"]];
+        [doubleTapScenePopup addItemWithTitle:scene[@"name"]];
         if ([scene[@"identifier"] isEqualToString:sceneSelectedIdentifier]) {
             sceneSelected = scene[@"name"];
+        }
+        if ([scene[@"identifier"] isEqualToString:doubleTapSceneSelectedIdentifier]) {
+            doubleTapSceneSelected = scene[@"name"];
         }
         
     }
     if (sceneSelected) {
         [scenePopup selectItemWithTitle:sceneSelected];
     }
+    if (doubleTapSceneSelected) {
+        [doubleTapScenePopup selectItemWithTitle:doubleTapSceneSelected];
+    }
 }
 
 #pragma mark - Actions
 
 - (IBAction)didChangeScene:(id)sender {
-    NSMenuItem *menuItem = [scenePopup selectedItem];
+    BOOL doubleTap = sender == doubleTapScenePopup;
+    NSMenuItem *menuItem = [(doubleTap ? doubleTapScenePopup : scenePopup) selectedItem];
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
     NSString *sceneIdentifier;
     
@@ -72,7 +88,11 @@ NSString *const kHueScene = @"hueScene";
         }
     }
     
-    [appDelegate.modeMap changeActionOption:kHueScene to:sceneIdentifier];
+    if (sender == scenePopup) {
+        [appDelegate.modeMap changeActionOption:kHueScene to:sceneIdentifier];
+    } else if (sender == doubleTapScenePopup) {
+        [appDelegate.modeMap changeActionOption:kDoubleTapHueScene to:sceneIdentifier];
+    }
 }
 
 - (IBAction)didClickRefresh:(id)sender {

@@ -178,12 +178,18 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
         return;
     }
     if (bluetoothState == BT_STATE_CONNECTING_UNKNOWN) {
-        NSLog(@" ---> (%X) Not scanning unknown since already scanning unknown.", bluetoothState);
+        for (TTDevice *foundDevice in foundDevices) {
+            if (foundDevice.peripheral.state == CBPeripheralStateConnecting) {
+                NSLog(@" ---> (%X) Canceling peripheral connection: %@", bluetoothState, foundDevice);
+                [manager cancelPeripheralConnection:foundDevice.peripheral];
+            }
+        }
+//        NSLog(@" ---> (%X) Not scanning unknown since already connecting to unknown.", bluetoothState);
         return;
     }
 
     [self stopScan];
-    bluetoothState = BT_STATE_CONNECTING_UNKNOWN;
+    bluetoothState = BT_STATE_SCANNING_UNKNOWN;
     NSLog(@" ---> (%X) Scanning unknown: %@", bluetoothState, [self knownPeripheralIdentifiers]);
 
     [manager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:DEVICE_V1_SERVICE_BUTTON_UUID],
