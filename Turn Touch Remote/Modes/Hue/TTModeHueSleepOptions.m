@@ -11,6 +11,7 @@
 #import <HueSDK_OSX/HueSDK.h>
 
 NSString *const kHueDuration = @"hueDuration";
+NSString *const kHueDoubleTapDuration = @"hueDoubleTapDuration";
 
 @interface TTModeHueSleepOptions ()
 
@@ -20,26 +21,35 @@ NSString *const kHueDuration = @"hueDuration";
 
 @synthesize durationLabel;
 @synthesize durationSlider;
+@synthesize doubleTapDurationLabel;
+@synthesize doubleTapDurationSlider;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     NSInteger sceneDuration = [[appDelegate.modeMap actionOptionValue:kHueDuration] integerValue];
     [durationSlider setIntegerValue:sceneDuration];
-    [self updateSliderLabel];
+    [self updateSliderLabel:NO];
+    
+    NSInteger doubleTapSceneDuration = [[appDelegate.modeMap actionOptionValue:kHueDoubleTapDuration] integerValue];
+    [doubleTapDurationSlider setIntegerValue:doubleTapSceneDuration];
+    [self updateSliderLabel:YES];
 }
 
 #pragma mark - Actions
 
 - (IBAction)didChangeDuration:(id)sender {
     NSInteger duration = durationSlider.integerValue;
-    
     [appDelegate.modeMap changeActionOption:kHueDuration to:[NSNumber numberWithInteger:duration]];
-    [self updateSliderLabel];
+    [self updateSliderLabel:NO];
+
+    NSInteger doubleTapDuration = doubleTapDurationSlider.integerValue;
+    [appDelegate.modeMap changeActionOption:kHueDoubleTapDuration to:[NSNumber numberWithInteger:doubleTapDuration]];
+    [self updateSliderLabel:YES];
 }
 
-- (void)updateSliderLabel {
-    NSInteger duration = durationSlider.integerValue;
+- (void)updateSliderLabel:(BOOL)doubleTap {
+    NSInteger duration = doubleTap ? doubleTapDurationSlider.integerValue : durationSlider.integerValue;
     
     NSString *durationString;
     if (duration == 0)       durationString = @"Immediate";
@@ -48,7 +58,7 @@ NSString *const kHueDuration = @"hueDuration";
     else if (duration < 60*2) durationString = @"1 minute";
     else                     durationString = [NSString stringWithFormat:@"%@ minutes", @(duration/60)];
     
-    [durationLabel setStringValue:durationString];
+    [(doubleTap ? doubleTapDurationLabel : durationLabel) setStringValue:durationString];
 }
 
 @end

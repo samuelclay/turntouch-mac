@@ -8,8 +8,8 @@
 
 #import "TTOptionsDetailViewController.h"
 
-extern NSString *const kHueScene;
 extern NSString *const kHueDuration;
+extern NSString *const kHueDoubleTapDuration;
 
 @class TTModeHue;
 
@@ -17,6 +17,8 @@ extern NSString *const kHueDuration;
 
 @property (nonatomic) IBOutlet NSTextField *durationLabel;
 @property (nonatomic) IBOutlet NSSlider *durationSlider;
+@property (nonatomic) IBOutlet NSTextField *doubleTapDurationLabel;
+@property (nonatomic) IBOutlet NSSlider *doubleTapDurationSlider;
 
 - (IBAction)didChangeDuration:(id)sender;
 

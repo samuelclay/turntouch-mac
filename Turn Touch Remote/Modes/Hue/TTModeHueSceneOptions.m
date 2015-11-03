@@ -97,7 +97,9 @@ NSString *const kDoubleTapHueScene = @"doubleTapHueScene";
 
 - (IBAction)didClickRefresh:(id)sender {
     [spinner setHidden:NO];
+    [doubleTapSpinner setHidden:NO];
     [refreshButton setHidden:YES];
+    [doubleTapRefreshButton setHidden:YES];
     
     PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
     [bridgeSendAPI getAllScenesWithCompletionHandler:^(NSDictionary *dictionary, NSArray *errors) {

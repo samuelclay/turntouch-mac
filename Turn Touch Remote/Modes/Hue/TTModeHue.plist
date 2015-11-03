@@ -4,6 +4,8 @@
 <dict>
 	<key>TTModeHueSleep:hueDuration</key>
 	<integer>30</integer>
+	<key>TTModeHueSleep:hueDoubleTapDuration</key>
+	<integer>5</integer>
 	<key>TTModeHueSceneEarlyEvening:hueScene</key>
 	<string>Sunset</string>
 	<key>hueScene</key>
