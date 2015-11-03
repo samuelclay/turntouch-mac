@@ -63,7 +63,7 @@
     [NSAppDelegate.modeMap changeActionOption:kRandomSaturation to:[NSNumber numberWithInteger:randomSaturation]];
 
     TTHueRandomSaturation doubleTapRandomSaturation = (TTHueRandomSaturation)doubleTapSegRandomSaturation.selectedSegment+1;
-    [NSAppDelegate.modeMap changeActionOption:kDoubleTapRandomSaturation to:[NSNumber numberWithInteger:doubleTapSegRandomSaturation]];
+    [NSAppDelegate.modeMap changeActionOption:kDoubleTapRandomSaturation to:[NSNumber numberWithInteger:doubleTapRandomSaturation]];
 }
 
 @end

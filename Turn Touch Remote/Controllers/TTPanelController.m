@@ -67,10 +67,10 @@
 #pragma mark - KVO
 
 - (void)registerAsObserver {
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(resize:)
-                                                 name:NSWindowDidResizeNotification
-                                               object:self.window];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(resize:)
+//                                                 name:NSWindowDidResizeNotification
+//                                               object:self.window];
 }
 
 - (void) observeValueForKeyPath:(NSString*)keyPath
@@ -170,9 +170,9 @@
     NSRect screenRect = [[[NSScreen screens] objectAtIndex:0] frame];
     NSRect statusRect = [self statusRectForWindow:panel];
     
+    [self.backgroundView resetPosition];
+
     NSRect panelRect = [panel frame];
-//    panelRect.size.height = PANEL_HEIGHT;
-//    panelRect.size.width = PANEL_WIDTH;
     panelRect.origin.x = roundf(NSMidX(statusRect) - NSWidth(panelRect) / 2);
     panelRect.origin.y = NSMaxY(statusRect) - NSHeight(panelRect);
     
@@ -185,8 +185,6 @@
     [panel setFrame:panelRect display:YES];
     [panel setDelegate:self];
     [panel makeKeyAndOrderFront:nil];
-
-    [self.backgroundView resetPosition];
     
     NSTimeInterval openDuration = PANEL_OPEN_DURATION;
     
