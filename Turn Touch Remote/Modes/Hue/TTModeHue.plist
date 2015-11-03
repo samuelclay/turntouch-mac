@@ -14,9 +14,15 @@
 	<integer>0</integer>
 	<key>TTModeHueRandom:randomColors</key>
 	<integer>3</integer>
+	<key>TTModeHueRandom:doubleTapRandomColors</key>
+	<integer>1</integer>
 	<key>TTModeHueRandom:randomBrightness</key>
 	<integer>3</integer>
+	<key>TTModeHueRandom:doubleTapRandomBrightness</key>
+	<integer>2</integer>
 	<key>TTModeHueRandom:randomSaturation</key>
 	<integer>3</integer>
+	<key>TTModeHueRandom:doubleTapRandomSaturation</key>
+	<integer>2</integer>
 </dict>
 </plist>

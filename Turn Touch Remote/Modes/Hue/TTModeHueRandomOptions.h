@@ -16,6 +16,9 @@
 @property (nonatomic) IBOutlet TTSegmentedControl *segRandomColors;
 @property (nonatomic) IBOutlet TTSegmentedControl *segRandomBrightness;
 @property (nonatomic) IBOutlet TTSegmentedControl *segRandomSaturation;
+@property (nonatomic) IBOutlet TTSegmentedControl *doubleTapSegRandomColors;
+@property (nonatomic) IBOutlet TTSegmentedControl *doubleTapSegRandomBrightness;
+@property (nonatomic) IBOutlet TTSegmentedControl *doubleTapSegRandomSaturation;
 
 - (IBAction)changeRandomColors:(id)sender;
 - (IBAction)changeRandomBrightness:(id)sender;

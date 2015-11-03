@@ -53,6 +53,9 @@ typedef enum {
 extern NSString *const kRandomColors;
 extern NSString *const kRandomBrightness;
 extern NSString *const kRandomSaturation;
+extern NSString *const kDoubleTapRandomColors;
+extern NSString *const kDoubleTapRandomBrightness;
+extern NSString *const kDoubleTapRandomSaturation;
 
 @property (strong, nonatomic) PHHueSDK *phHueSDK;
 @property (nonatomic, weak) id <TTModeHueDelegate> delegate;

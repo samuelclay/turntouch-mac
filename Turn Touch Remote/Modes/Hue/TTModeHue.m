@@ -24,6 +24,9 @@
 NSString *const kRandomColors = @"randomColors";
 NSString *const kRandomBrightness = @"randomBrightness";
 NSString *const kRandomSaturation = @"randomSaturation";
+NSString *const kDoubleTapRandomColors = @"doubleTapRandomColors";
+NSString *const kDoubleTapRandomBrightness = @"doubleTapRandomBrightness";
+NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 
 @synthesize delegate;
 @synthesize hueState;
@@ -65,7 +68,7 @@ NSString *const kRandomSaturation = @"randomSaturation";
     return @"Late evening";
 }
 - (NSString *)doubleTitleTTModeHueSceneLateEvening {
-    return @"Late evening";
+    return @"Late evening 2";
 }
 - (NSString *)titleTTModeHueSleep {
     return @"Sleep";
@@ -78,6 +81,9 @@ NSString *const kRandomSaturation = @"randomSaturation";
 }
 - (NSString *)titleTTModeHueRandom {
     return @"Random";
+}
+- (NSString *)doubleTitleTTModeHueRandom {
+    return @"Random 2";
 }
 
 #pragma mark - Action Images
@@ -191,6 +197,10 @@ NSString *const kRandomSaturation = @"randomSaturation";
     return YES;
 }
 
+- (BOOL)shouldIgnoreSingleBeforeDoubleTTModeHueRandom {
+    return YES;
+}
+
 - (void)runTTModeHueSleep:(TTModeDirection)direction duration:(NSNumber *)sceneDuration {
     //    NSLog(@"Running scene off... %d", direction);
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
@@ -213,14 +223,25 @@ NSString *const kRandomSaturation = @"randomSaturation";
 }
 
 - (void)runTTModeHueRandom:(TTModeDirection)direction {
+    [self runTTModeHueRandom:direction doubleTap:NO];
+}
+
+- (void)doubleRunTTModeHueRandom:(TTModeDirection)direction {
+    [self runTTModeHueRandom:direction doubleTap:YES];
+}
+
+- (void)runTTModeHueRandom:(TTModeDirection)direction doubleTap:(BOOL)doubleTap {
     //    NSLog(@"Running scene off... %d", direction);
     
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
     PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
     
-    TTHueRandomColors randomColors = (TTHueRandomColors)[[NSAppDelegate.modeMap actionOptionValue:kRandomColors] integerValue];
-    TTHueRandomBrightness randomBrightnesses = (TTHueRandomBrightness)[[NSAppDelegate.modeMap actionOptionValue:kRandomBrightness] integerValue];
-    TTHueRandomSaturation randomSaturation = (TTHueRandomSaturation)[[NSAppDelegate.modeMap actionOptionValue:kRandomSaturation] integerValue];
+    TTHueRandomColors randomColors = (TTHueRandomColors)[[NSAppDelegate.modeMap
+                                                          actionOptionValue:doubleTap ? kDoubleTapRandomColors : kRandomColors] integerValue];
+    TTHueRandomBrightness randomBrightnesses = (TTHueRandomBrightness)[[NSAppDelegate.modeMap
+                                                                        actionOptionValue:doubleTap ? kDoubleTapRandomBrightness : kRandomBrightness] integerValue];
+    TTHueRandomSaturation randomSaturation = (TTHueRandomSaturation)[[NSAppDelegate.modeMap
+                                                                      actionOptionValue:doubleTap ? kDoubleTapRandomSaturation : kRandomSaturation] integerValue];
     NSNumber *randomColor = [NSNumber numberWithInt:arc4random() % MAX_HUE];
     
     for (PHLight *light in cache.lights.allValues) {

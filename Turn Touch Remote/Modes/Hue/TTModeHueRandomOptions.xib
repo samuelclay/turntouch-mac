@@ -7,6 +7,9 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTModeHueRandomOptions">
             <connections>
+                <outlet property="doubleTapSegRandomBrightness" destination="iDC-Rd-X9V" id="Kl5-Kz-hjk"/>
+                <outlet property="doubleTapSegRandomColors" destination="QWJ-A5-EWQ" id="yT3-Yp-lUz"/>
+                <outlet property="doubleTapSegRandomSaturation" destination="3Kf-bj-Vw4" id="a7w-KM-Nv0"/>
                 <outlet property="segRandomBrightness" destination="SMf-U6-ghJ" id="WOx-10-RpH"/>
                 <outlet property="segRandomColors" destination="Fqe-9d-WDM" id="F8s-6X-IOM"/>
                 <outlet property="segRandomSaturation" destination="fK0-9l-j0Z" id="mfq-j5-PmY"/>
@@ -16,16 +19,16 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="c22-O7-iKe">
-            <rect key="frame" x="0.0" y="0.0" width="397" height="226"/>
+            <rect key="frame" x="0.0" y="0.0" width="397" height="246"/>
             <subviews>
-                <segmentedControl verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SMf-U6-ghJ" customClass="TTSegmentedControl">
-                    <rect key="frame" x="63" y="88" width="272" height="24"/>
+                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SMf-U6-ghJ" customClass="TTSegmentedControl">
+                    <rect key="frame" x="163" y="174" width="216" height="24"/>
                     <animations/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="Aeq-U5-5qx" customClass="TTSegmentedCell">
                         <font key="font" metaFont="system"/>
                         <segments>
                             <segment label="All dim"/>
-                            <segment label="Varied brightness" selected="YES" tag="1"/>
+                            <segment label="Mix" selected="YES" tag="1"/>
                             <segment label="All bright"/>
                         </segments>
                     </segmentedCell>
@@ -33,23 +36,23 @@
                         <action selector="changeRandomBrightness:" target="-2" id="QFm-Ta-7Ef"/>
                     </connections>
                 </segmentedControl>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ab0-0p-Vmn">
-                    <rect key="frame" x="150" y="189" width="98" height="21"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ab0-0p-Vmn">
+                    <rect key="frame" x="18" y="205" width="44" height="21"/>
                     <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Random colors" id="CnZ-6B-OPP">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Colors" id="CnZ-6B-OPP">
                         <font key="font" size="14" name="Effra-Regular"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <segmentedControl verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fK0-9l-j0Z" customClass="TTSegmentedControl">
-                    <rect key="frame" x="63" y="18" width="276" height="24"/>
+                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fK0-9l-j0Z" customClass="TTSegmentedControl">
+                    <rect key="frame" x="163" y="145" width="216" height="24"/>
                     <animations/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="40w-nu-1kA" customClass="TTSegmentedCell">
                         <font key="font" metaFont="system"/>
                         <segments>
                             <segment label="Pastels"/>
-                            <segment label="Mixed colors" selected="YES" tag="1"/>
+                            <segment label="Mix" selected="YES" tag="1"/>
                             <segment label="Strong colors"/>
                         </segments>
                     </segmentedCell>
@@ -57,26 +60,23 @@
                         <action selector="changeRandomSaturation:" target="-2" id="Z7J-AN-rdg"/>
                     </connections>
                 </segmentedControl>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GdS-bS-cNL">
-                    <rect key="frame" x="140" y="49" width="122" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="118" id="f1L-Xl-WHO"/>
-                    </constraints>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GdS-bS-cNL">
+                    <rect key="frame" x="18" y="147" width="68" height="21"/>
                     <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Random saturation" id="cCd-Xm-8wj">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Saturation" id="cCd-Xm-8wj">
                         <font key="font" size="14" name="Effra-Regular"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Fqe-9d-WDM" customClass="TTSegmentedControl">
-                    <rect key="frame" x="58" y="158" width="281" height="24"/>
+                    <rect key="frame" x="163" y="203" width="216" height="24"/>
                     <animations/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="CcS-hq-CN1" customClass="TTSegmentedCell">
                         <font key="font" metaFont="system"/>
                         <segments>
                             <segment label="All different"/>
-                            <segment label="Some different" selected="YES" tag="1"/>
+                            <segment label="Mix" selected="YES" tag="1"/>
                             <segment label="All same"/>
                         </segments>
                     </segmentedCell>
@@ -84,36 +84,145 @@
                         <action selector="changeRandomColors:" target="-2" id="VXn-hk-KPO"/>
                     </connections>
                 </segmentedControl>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N29-Q7-eTX">
-                    <rect key="frame" x="136" y="119" width="126" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="118" id="Tip-Fc-A9D"/>
-                    </constraints>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N29-Q7-eTX">
+                    <rect key="frame" x="18" y="176" width="70" height="21"/>
                     <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Random brightness" id="9YE-RM-3sn">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Brightness" id="9YE-RM-3sn">
                         <font key="font" size="14" name="Effra-Regular"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iDC-Rd-X9V" customClass="TTSegmentedControl">
+                    <rect key="frame" x="163" y="47" width="216" height="24"/>
+                    <animations/>
+                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="yJC-uA-kHZ" customClass="TTSegmentedCell">
+                        <font key="font" metaFont="system"/>
+                        <segments>
+                            <segment label="All dim"/>
+                            <segment label="Mix" selected="YES" tag="1"/>
+                            <segment label="All bright"/>
+                        </segments>
+                    </segmentedCell>
+                    <connections>
+                        <action selector="changeRandomBrightness:" target="-2" id="WGp-Qy-Hcv"/>
+                    </connections>
+                </segmentedControl>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="96R-ps-o2X">
+                    <rect key="frame" x="18" y="78" width="44" height="21"/>
+                    <animations/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Colors" id="XSQ-Rl-N41">
+                        <font key="font" size="14" name="Effra-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Kf-bj-Vw4" customClass="TTSegmentedControl">
+                    <rect key="frame" x="163" y="18" width="216" height="24"/>
+                    <animations/>
+                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="98X-tQ-Z3e" customClass="TTSegmentedCell">
+                        <font key="font" metaFont="system"/>
+                        <segments>
+                            <segment label="Pastels"/>
+                            <segment label="Mix" selected="YES" tag="1"/>
+                            <segment label="Strong colors"/>
+                        </segments>
+                    </segmentedCell>
+                    <connections>
+                        <action selector="changeRandomSaturation:" target="-2" id="6bq-uR-fxK"/>
+                    </connections>
+                </segmentedControl>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bxH-Zq-xpU">
+                    <rect key="frame" x="18" y="20" width="68" height="21"/>
+                    <animations/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Saturation" id="vJb-4K-O43">
+                        <font key="font" size="14" name="Effra-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QWJ-A5-EWQ" customClass="TTSegmentedControl">
+                    <rect key="frame" x="163" y="76" width="216" height="24"/>
+                    <animations/>
+                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="VdM-tN-qLN" customClass="TTSegmentedCell">
+                        <font key="font" metaFont="system"/>
+                        <segments>
+                            <segment label="All different"/>
+                            <segment label="Mix" selected="YES" tag="1"/>
+                            <segment label="All same"/>
+                        </segments>
+                    </segmentedCell>
+                    <connections>
+                        <action selector="changeRandomColors:" target="-2" id="bLr-eX-smT"/>
+                    </connections>
+                </segmentedControl>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Eiq-6F-KKf">
+                    <rect key="frame" x="18" y="49" width="70" height="21"/>
+                    <animations/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Brightness" id="Ofa-pl-ofo">
+                        <font key="font" size="14" name="Effra-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4Zc-vm-Jnv">
+                    <rect key="frame" x="165" y="107" width="66" height="19"/>
+                    <animations/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Double tap" id="zm1-WK-eIx">
+                        <font key="font" size="13" name="Effra-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <box verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="aWX-Pt-N8o">
+                    <rect key="frame" x="150" y="132" width="96" height="5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="96" id="USq-Xh-AYL"/>
+                    </constraints>
+                    <animations/>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <font key="titleFont" metaFont="system"/>
+                </box>
             </subviews>
             <constraints>
-                <constraint firstItem="SMf-U6-ghJ" firstAttribute="top" secondItem="N29-Q7-eTX" secondAttribute="bottom" constant="8" symbolic="YES" id="3zo-Pq-o88"/>
-                <constraint firstAttribute="bottom" secondItem="fK0-9l-j0Z" secondAttribute="bottom" constant="20" symbolic="YES" id="42g-Dy-gPy"/>
-                <constraint firstItem="N29-Q7-eTX" firstAttribute="top" secondItem="Fqe-9d-WDM" secondAttribute="bottom" constant="20" id="7O5-ef-E52"/>
-                <constraint firstItem="fK0-9l-j0Z" firstAttribute="leading" secondItem="SMf-U6-ghJ" secondAttribute="leading" id="AI2-xb-Cla"/>
-                <constraint firstItem="fK0-9l-j0Z" firstAttribute="top" secondItem="GdS-bS-cNL" secondAttribute="bottom" constant="8" symbolic="YES" id="DaT-tI-p1d"/>
-                <constraint firstItem="N29-Q7-eTX" firstAttribute="centerX" secondItem="SMf-U6-ghJ" secondAttribute="centerX" id="Db1-Wp-CNp"/>
-                <constraint firstItem="Fqe-9d-WDM" firstAttribute="top" secondItem="Ab0-0p-Vmn" secondAttribute="bottom" constant="8" symbolic="YES" id="Mlw-b9-613"/>
-                <constraint firstItem="Fqe-9d-WDM" firstAttribute="trailing" secondItem="fK0-9l-j0Z" secondAttribute="trailing" id="Nc9-yK-cfw"/>
-                <constraint firstItem="Ab0-0p-Vmn" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="16" id="Vey-ik-MqH"/>
-                <constraint firstItem="Fqe-9d-WDM" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="Z5K-a0-99m"/>
-                <constraint firstItem="N29-Q7-eTX" firstAttribute="centerX" secondItem="Ab0-0p-Vmn" secondAttribute="centerX" id="hMH-tS-p6y"/>
-                <constraint firstItem="fK0-9l-j0Z" firstAttribute="centerX" secondItem="GdS-bS-cNL" secondAttribute="centerX" id="tpW-LQ-It7"/>
-                <constraint firstItem="GdS-bS-cNL" firstAttribute="top" secondItem="SMf-U6-ghJ" secondAttribute="bottom" constant="20" id="x7E-eb-Q1z"/>
+                <constraint firstAttribute="trailing" secondItem="3Kf-bj-Vw4" secondAttribute="trailing" constant="20" id="3dy-O1-W0C"/>
+                <constraint firstItem="bxH-Zq-xpU" firstAttribute="top" secondItem="Eiq-6F-KKf" secondAttribute="bottom" constant="8" id="5Ex-hz-RgG"/>
+                <constraint firstAttribute="trailing" secondItem="SMf-U6-ghJ" secondAttribute="trailing" constant="20" id="5n5-nc-ULF"/>
+                <constraint firstItem="iDC-Rd-X9V" firstAttribute="width" secondItem="Fqe-9d-WDM" secondAttribute="width" id="9bE-s2-ity"/>
+                <constraint firstItem="aWX-Pt-N8o" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="CJr-x6-4u2"/>
+                <constraint firstItem="QWJ-A5-EWQ" firstAttribute="top" secondItem="4Zc-vm-Jnv" secondAttribute="bottom" constant="8" id="CUf-no-Dv3"/>
+                <constraint firstItem="4Zc-vm-Jnv" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="DLa-fp-KMc"/>
+                <constraint firstItem="3Kf-bj-Vw4" firstAttribute="top" secondItem="iDC-Rd-X9V" secondAttribute="bottom" constant="8" id="E4M-Hc-v2B"/>
+                <constraint firstAttribute="trailing" secondItem="Fqe-9d-WDM" secondAttribute="trailing" constant="20" id="EUm-XF-wkR"/>
+                <constraint firstItem="iDC-Rd-X9V" firstAttribute="top" secondItem="QWJ-A5-EWQ" secondAttribute="bottom" constant="8" id="FkF-84-yha"/>
+                <constraint firstItem="3Kf-bj-Vw4" firstAttribute="width" secondItem="Fqe-9d-WDM" secondAttribute="width" id="I2q-z2-f4j"/>
+                <constraint firstItem="N29-Q7-eTX" firstAttribute="top" secondItem="Ab0-0p-Vmn" secondAttribute="bottom" constant="8" id="KYK-iM-LwI"/>
+                <constraint firstItem="Fqe-9d-WDM" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" id="LTk-Os-28j"/>
+                <constraint firstItem="Ab0-0p-Vmn" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" id="Lu4-Xh-QoZ"/>
+                <constraint firstItem="fK0-9l-j0Z" firstAttribute="width" secondItem="Fqe-9d-WDM" secondAttribute="width" id="Muc-Oz-PSP"/>
+                <constraint firstItem="Eiq-6F-KKf" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="NWA-5q-qWw"/>
+                <constraint firstItem="SMf-U6-ghJ" firstAttribute="width" secondItem="Fqe-9d-WDM" secondAttribute="width" id="Nhb-bK-cSE"/>
+                <constraint firstAttribute="trailing" secondItem="iDC-Rd-X9V" secondAttribute="trailing" constant="20" id="Pth-yL-KjS"/>
+                <constraint firstItem="GdS-bS-cNL" firstAttribute="top" secondItem="N29-Q7-eTX" secondAttribute="bottom" constant="8" id="SXK-aH-2G9"/>
+                <constraint firstItem="QWJ-A5-EWQ" firstAttribute="width" secondItem="Fqe-9d-WDM" secondAttribute="width" id="SdL-8c-oBu"/>
+                <constraint firstItem="fK0-9l-j0Z" firstAttribute="top" secondItem="SMf-U6-ghJ" secondAttribute="bottom" constant="8" id="SwM-6U-ZcB"/>
+                <constraint firstItem="N29-Q7-eTX" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="TXL-kp-pSp"/>
+                <constraint firstItem="aWX-Pt-N8o" firstAttribute="top" secondItem="fK0-9l-j0Z" secondAttribute="bottom" constant="12" id="UnO-qG-des"/>
+                <constraint firstItem="QWJ-A5-EWQ" firstAttribute="top" secondItem="96R-ps-o2X" secondAttribute="top" id="YEy-LX-XFr"/>
+                <constraint firstItem="Eiq-6F-KKf" firstAttribute="top" secondItem="96R-ps-o2X" secondAttribute="bottom" constant="8" id="Ydi-9P-gaE"/>
+                <constraint firstItem="bxH-Zq-xpU" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="ZRh-gq-cTV"/>
+                <constraint firstAttribute="trailing" secondItem="fK0-9l-j0Z" secondAttribute="trailing" constant="20" id="bEj-Wr-ytK"/>
+                <constraint firstItem="GdS-bS-cNL" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="d2z-NB-Itm"/>
+                <constraint firstItem="Ab0-0p-Vmn" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="hCz-qo-hgs"/>
+                <constraint firstAttribute="trailing" secondItem="QWJ-A5-EWQ" secondAttribute="trailing" constant="20" id="iz3-pN-Qmi"/>
+                <constraint firstAttribute="bottom" secondItem="3Kf-bj-Vw4" secondAttribute="bottom" constant="20" id="mVc-aZ-pw4"/>
+                <constraint firstItem="4Zc-vm-Jnv" firstAttribute="top" secondItem="aWX-Pt-N8o" secondAttribute="bottom" constant="8" symbolic="YES" id="ubi-Ac-Ic4"/>
+                <constraint firstItem="SMf-U6-ghJ" firstAttribute="top" secondItem="Fqe-9d-WDM" secondAttribute="bottom" constant="8" id="uuL-tt-G8h"/>
+                <constraint firstItem="96R-ps-o2X" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="xNY-IW-Oyg"/>
             </constraints>
             <animations/>
-            <point key="canvasLocation" x="250.5" y="452"/>
+            <point key="canvasLocation" x="252.5" y="495"/>
         </customView>
     </objects>
 </document>
