@@ -153,7 +153,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
     
     static dispatch_once_t onceUnknownToken;
     dispatch_once(&onceUnknownToken, ^{
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             onceUnknownToken = 0;
             if (bluetoothState != BT_STATE_SCANNING_KNOWN) {
                 NSLog(@" ---> (%X) Not scanning for unpaired, since not scanning known.", bluetoothState);
@@ -311,8 +311,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 
         [self countDevices];
 
-        bluetoothState = BT_STATE_DOING_NOTHING;
-        [self scanKnown];
+        bluetoothState = BT_STATE_DISCOVER_SERVICES;
     } else {
         // Never seen device before, start the pairing process
 
@@ -335,7 +334,8 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
         }
     }
     
-    [self scanKnown];
+    // Should put in a timer to ensure that scanknown is called in 10 seconds, just in case
+//    [self scanKnown];
 }
 
 /*
@@ -380,6 +380,8 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 #pragma mark - CBPeripheral delegate methods
 
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error {
+    bluetoothState = BT_STATE_DISCOVER_CHARACTERISTICS;
+    
     for (CBService *service in peripheral.services) {
         NSLog(@" ---> (%X) Service found with UUID: %@", bluetoothState, service.UUID);
         TTDevice *device = [foundDevices deviceForPeripheral:peripheral];
@@ -433,6 +435,8 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 }
 
 - (void) peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error {
+    bluetoothState = BT_STATE_CHAR_NOTIFICATION;
+    
     if ([service.UUID isEqual:[CBUUID UUIDWithString:DEVICE_V1_SERVICE_BUTTON_UUID]]) {
         for (CBCharacteristic *aChar in service.characteristics) {
             if ([aChar.UUID isEqual:[CBUUID UUIDWithString:DEVICE_V1_CHARACTERISTIC_BUTTON_STATUS_UUID]]) {
@@ -524,6 +528,9 @@ didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic
         device.isNotified = YES;
         device.state = TTDeviceStateConnected;
         [self countDevices];
+        
+        bluetoothState = BT_STATE_DOING_NOTHING;
+        [self scanKnown];
 //        [appDelegate.hudController toastActiveMode];
     } else {
         NSLog(@"ERROR: Subscribed to notifications: %@/%@", peripheral.identifier.UUIDString, characteristic.UUID.UUIDString);
