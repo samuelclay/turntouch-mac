@@ -22,7 +22,6 @@
 
 #import "UnzipFirmware.h"
 #import "SSZipArchive.h"
-#import "AccessFileSystem.h"
 
 @implementation UnzipFirmware
 
@@ -32,16 +31,16 @@
     NSString *zipFilePath = [zipFileURL path];
     NSString *outputPath = [self cachesPath:@"/UnzipFiles"];
     [SSZipArchive unzipFileAtPath:zipFilePath toDestination:outputPath delegate:self];
-    AccessFileSystem *fileSystem = [[AccessFileSystem alloc]init];
-    NSArray *files = [fileSystem getAllFilesFromDirectory:outputPath];
-    NSLog(@"number of files inside zip file: %lu",(unsigned long)[files count]);
-    if ([self findManifestFileInsideZip:files outputPathInPhone:outputPath]) {
-        return [self getAllFilesURLInsideZipFile:files outputPathInPhone:outputPath];
-    }
-    else {
-        [self findFilesInsideZip:files outputPathInPhone:outputPath];
-        return [self.filesURL copy];
-    }    
+//    AccessFileSystem *fileSystem = [[AccessFileSystem alloc]init];
+//    NSArray *files = [fileSystem getAllFilesFromDirectory:outputPath];
+//    NSLog(@"number of files inside zip file: %lu",(unsigned long)[files count]);
+//    if ([self findManifestFileInsideZip:files outputPathInPhone:outputPath]) {
+//        return [self getAllFilesURLInsideZipFile:files outputPathInPhone:outputPath];
+//    }
+//    else {
+//        [self findFilesInsideZip:files outputPathInPhone:outputPath];
+//        return [self.filesURL copy];
+//    }    
 }
 
 -(void)findFilesInsideZip:(NSArray *)files outputPathInPhone:(NSString *)outputPath

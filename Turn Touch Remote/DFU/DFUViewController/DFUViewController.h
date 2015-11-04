@@ -20,19 +20,19 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <UIKit/UIKit.h>
+#import <Cocoa/Cocoa.h>
 #import <CoreBluetooth/CoreBluetooth.h>
-#import "ScannerDelegate.h"
-#import "FileTypeTableViewController.h"
-#import "AppFilesTableViewController.h"
 #import "DFUOperations.h"
+#import "TTAppDelegate.h"
 
-@interface DFUViewController : UIViewController <ScannerDelegate, FileSelectionDelegate, DFUOperationsDelegate>
+@interface DFUViewController : NSViewController <DFUOperationsDelegate> {
+    TTAppDelegate *appDelegate;
+}
 
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
-@property (weak, nonatomic) IBOutlet UILabel *verticalLabel;
-@property (weak, nonatomic) IBOutlet UILabel *deviceName;
-@property (weak, nonatomic) IBOutlet UIButton *connectButton;
-@property (strong, nonatomic)NSString *selectedFileType;
+//@property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
+//@property (weak, nonatomic) IBOutlet UILabel *verticalLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *deviceName;
+//@property (weak, nonatomic) IBOutlet UIButton *connectButton;
+//@property (strong, nonatomic)NSString *selectedFileType;
 
 @end
