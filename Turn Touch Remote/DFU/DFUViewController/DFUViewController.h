@@ -35,4 +35,6 @@
 //@property (weak, nonatomic) IBOutlet UIButton *connectButton;
 //@property (strong, nonatomic)NSString *selectedFileType;
 
+-(void)centralManager:(CBCentralManager *)manager didPeripheralSelected:(CBPeripheral *)peripheral;
+
 @end
