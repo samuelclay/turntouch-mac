@@ -114,6 +114,25 @@
 		FF904B4D1BE9B82200AD00F3 /* TTButtonState.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B461BE9B82200AD00F3 /* TTButtonState.m */; };
 		FF904B4E1BE9B82200AD00F3 /* TTButtonTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B481BE9B82200AD00F3 /* TTButtonTimer.m */; };
 		FF904B4F1BE9B82200AD00F3 /* TTDeviceList.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B4A1BE9B82200AD00F3 /* TTDeviceList.m */; };
+		FF904B761BE9B88700AD00F3 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B531BE9B88700AD00F3 /* Utility.m */; };
+		FF904B771BE9B88700AD00F3 /* BLEOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B561BE9B88700AD00F3 /* BLEOperations.m */; };
+		FF904B781BE9B88700AD00F3 /* DFUOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B581BE9B88700AD00F3 /* DFUOperations.m */; };
+		FF904B791BE9B88700AD00F3 /* DFUOperationsDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B5A1BE9B88700AD00F3 /* DFUOperationsDetails.m */; };
+		FF904B7A1BE9B88700AD00F3 /* FileOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B5C1BE9B88700AD00F3 /* FileOperations.m */; };
+		FF904B7B1BE9B88700AD00F3 /* DFUHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B5F1BE9B88700AD00F3 /* DFUHelper.m */; };
+		FF904B7C1BE9B88700AD00F3 /* DFUViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B611BE9B88700AD00F3 /* DFUViewController.m */; };
+		FF904B7D1BE9B88700AD00F3 /* hrs_s110_5_0.hex in Resources */ = {isa = PBXBuildFile; fileRef = FF904B631BE9B88700AD00F3 /* hrs_s110_5_0.hex */; };
+		FF904B7E1BE9B88700AD00F3 /* hrs_s110_6_0.hex in Resources */ = {isa = PBXBuildFile; fileRef = FF904B641BE9B88700AD00F3 /* hrs_s110_6_0.hex */; };
+		FF904B7F1BE9B88700AD00F3 /* hrs_s110_7_0.hex in Resources */ = {isa = PBXBuildFile; fileRef = FF904B651BE9B88700AD00F3 /* hrs_s110_7_0.hex */; };
+		FF904B801BE9B88700AD00F3 /* hrs_s110_7_1_sdk7_1.zip in Resources */ = {isa = PBXBuildFile; fileRef = FF904B661BE9B88700AD00F3 /* hrs_s110_7_1_sdk7_1.zip */; };
+		FF904B811BE9B88700AD00F3 /* hrs_s110_8_0_sdk_8_0.zip in Resources */ = {isa = PBXBuildFile; fileRef = FF904B671BE9B88700AD00F3 /* hrs_s110_8_0_sdk_8_0.zip */; };
+		FF904B821BE9B88700AD00F3 /* rscs_s110_5_0.hex in Resources */ = {isa = PBXBuildFile; fileRef = FF904B681BE9B88700AD00F3 /* rscs_s110_5_0.hex */; };
+		FF904B831BE9B88700AD00F3 /* rscs_s110_6_0.hex in Resources */ = {isa = PBXBuildFile; fileRef = FF904B691BE9B88700AD00F3 /* rscs_s110_6_0.hex */; };
+		FF904B841BE9B88700AD00F3 /* rscs_s110_7_0.hex in Resources */ = {isa = PBXBuildFile; fileRef = FF904B6A1BE9B88700AD00F3 /* rscs_s110_7_0.hex */; };
+		FF904B851BE9B88700AD00F3 /* IntelHex2BinConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B6D1BE9B88700AD00F3 /* IntelHex2BinConverter.m */; };
+		FF904B861BE9B88700AD00F3 /* InitData.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B701BE9B88700AD00F3 /* InitData.m */; };
+		FF904B871BE9B88700AD00F3 /* JsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B721BE9B88700AD00F3 /* JsonParser.m */; };
+		FF904B881BE9B88700AD00F3 /* UnzipFirmware.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B751BE9B88700AD00F3 /* UnzipFirmware.m */; };
 		FF913D271924366C005C336F /* TTModeAlarmClock.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF913D261924366C005C336F /* TTModeAlarmClock.plist */; };
 		FF913D2919243B89005C336F /* TTModeAlarmSnoozeOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF913D2819243B89005C336F /* TTModeAlarmSnoozeOptions.xib */; };
 		FF913D2C19243BFD005C336F /* TTModeAlarmSnoozeOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF913D2B19243BFD005C336F /* TTModeAlarmSnoozeOptions.m */; };
@@ -388,6 +407,36 @@
 		FF904B481BE9B82200AD00F3 /* TTButtonTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTButtonTimer.m; sourceTree = "<group>"; };
 		FF904B491BE9B82200AD00F3 /* TTDeviceList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTDeviceList.h; sourceTree = "<group>"; };
 		FF904B4A1BE9B82200AD00F3 /* TTDeviceList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTDeviceList.m; sourceTree = "<group>"; };
+		FF904B521BE9B88700AD00F3 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		FF904B531BE9B88700AD00F3 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		FF904B551BE9B88700AD00F3 /* BLEOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEOperations.h; sourceTree = "<group>"; };
+		FF904B561BE9B88700AD00F3 /* BLEOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEOperations.m; sourceTree = "<group>"; };
+		FF904B571BE9B88700AD00F3 /* DFUOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFUOperations.h; sourceTree = "<group>"; };
+		FF904B581BE9B88700AD00F3 /* DFUOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFUOperations.m; sourceTree = "<group>"; };
+		FF904B591BE9B88700AD00F3 /* DFUOperationsDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFUOperationsDetails.h; sourceTree = "<group>"; };
+		FF904B5A1BE9B88700AD00F3 /* DFUOperationsDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFUOperationsDetails.m; sourceTree = "<group>"; };
+		FF904B5B1BE9B88700AD00F3 /* FileOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileOperations.h; sourceTree = "<group>"; };
+		FF904B5C1BE9B88700AD00F3 /* FileOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileOperations.m; sourceTree = "<group>"; };
+		FF904B5E1BE9B88700AD00F3 /* DFUHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFUHelper.h; sourceTree = "<group>"; };
+		FF904B5F1BE9B88700AD00F3 /* DFUHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFUHelper.m; sourceTree = "<group>"; };
+		FF904B601BE9B88700AD00F3 /* DFUViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFUViewController.h; sourceTree = "<group>"; };
+		FF904B611BE9B88700AD00F3 /* DFUViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFUViewController.m; sourceTree = "<group>"; };
+		FF904B631BE9B88700AD00F3 /* hrs_s110_5_0.hex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hrs_s110_5_0.hex; sourceTree = "<group>"; };
+		FF904B641BE9B88700AD00F3 /* hrs_s110_6_0.hex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hrs_s110_6_0.hex; sourceTree = "<group>"; };
+		FF904B651BE9B88700AD00F3 /* hrs_s110_7_0.hex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hrs_s110_7_0.hex; sourceTree = "<group>"; };
+		FF904B661BE9B88700AD00F3 /* hrs_s110_7_1_sdk7_1.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = hrs_s110_7_1_sdk7_1.zip; sourceTree = "<group>"; };
+		FF904B671BE9B88700AD00F3 /* hrs_s110_8_0_sdk_8_0.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = hrs_s110_8_0_sdk_8_0.zip; sourceTree = "<group>"; };
+		FF904B681BE9B88700AD00F3 /* rscs_s110_5_0.hex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rscs_s110_5_0.hex; sourceTree = "<group>"; };
+		FF904B691BE9B88700AD00F3 /* rscs_s110_6_0.hex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rscs_s110_6_0.hex; sourceTree = "<group>"; };
+		FF904B6A1BE9B88700AD00F3 /* rscs_s110_7_0.hex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rscs_s110_7_0.hex; sourceTree = "<group>"; };
+		FF904B6C1BE9B88700AD00F3 /* IntelHex2BinConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntelHex2BinConverter.h; sourceTree = "<group>"; };
+		FF904B6D1BE9B88700AD00F3 /* IntelHex2BinConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntelHex2BinConverter.m; sourceTree = "<group>"; };
+		FF904B6F1BE9B88700AD00F3 /* InitData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitData.h; sourceTree = "<group>"; };
+		FF904B701BE9B88700AD00F3 /* InitData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitData.m; sourceTree = "<group>"; };
+		FF904B711BE9B88700AD00F3 /* JsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonParser.h; sourceTree = "<group>"; };
+		FF904B721BE9B88700AD00F3 /* JsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonParser.m; sourceTree = "<group>"; };
+		FF904B741BE9B88700AD00F3 /* UnzipFirmware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnzipFirmware.h; sourceTree = "<group>"; };
+		FF904B751BE9B88700AD00F3 /* UnzipFirmware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnzipFirmware.m; sourceTree = "<group>"; };
 		FF913D261924366C005C336F /* TTModeAlarmClock.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = TTModeAlarmClock.plist; path = Modes/Mac/TTModeAlarmClock.plist; sourceTree = "<group>"; };
 		FF913D2819243B89005C336F /* TTModeAlarmSnoozeOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeAlarmSnoozeOptions.xib; path = "Modes/Alarm Clock/TTModeAlarmSnoozeOptions.xib"; sourceTree = "<group>"; };
 		FF913D2A19243BFD005C336F /* TTModeAlarmSnoozeOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeAlarmSnoozeOptions.h; path = "Modes/Alarm Clock/TTModeAlarmSnoozeOptions.h"; sourceTree = "<group>"; };
@@ -902,6 +951,7 @@
 				FF0E12B51824283B00D49EC7 /* Models */,
 				FF0E12C418247B7A00D49EC7 /* Modes */,
 				FF904B401BE9B82200AD00F3 /* Bluetooth */,
+				FF904B501BE9B88700AD00F3 /* DFU */,
 				FF0E12BF18242D2F00D49EC7 /* XIBs */,
 				FF8C833D17AB14B5000166FC /* Supporting Files */,
 				FFE2D47A1A46404C00DDD413 /* Categories */,
@@ -941,6 +991,100 @@
 				FF904B4A1BE9B82200AD00F3 /* TTDeviceList.m */,
 			);
 			path = Bluetooth;
+			sourceTree = "<group>";
+		};
+		FF904B501BE9B88700AD00F3 /* DFU */ = {
+			isa = PBXGroup;
+			children = (
+				FF904B511BE9B88700AD00F3 /* Constants */,
+				FF904B541BE9B88700AD00F3 /* DFUImplementation */,
+				FF904B5D1BE9B88700AD00F3 /* DFUViewController */,
+				FF904B621BE9B88700AD00F3 /* firmwares */,
+				FF904B6B1BE9B88700AD00F3 /* HexToBinConverter */,
+				FF904B6E1BE9B88700AD00F3 /* JSONParser */,
+				FF904B731BE9B88700AD00F3 /* Unzip */,
+			);
+			name = DFU;
+			path = "Turn Touch Remote/DFU";
+			sourceTree = SOURCE_ROOT;
+		};
+		FF904B511BE9B88700AD00F3 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				FF904B521BE9B88700AD00F3 /* Utility.h */,
+				FF904B531BE9B88700AD00F3 /* Utility.m */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		FF904B541BE9B88700AD00F3 /* DFUImplementation */ = {
+			isa = PBXGroup;
+			children = (
+				FF904B551BE9B88700AD00F3 /* BLEOperations.h */,
+				FF904B561BE9B88700AD00F3 /* BLEOperations.m */,
+				FF904B571BE9B88700AD00F3 /* DFUOperations.h */,
+				FF904B581BE9B88700AD00F3 /* DFUOperations.m */,
+				FF904B591BE9B88700AD00F3 /* DFUOperationsDetails.h */,
+				FF904B5A1BE9B88700AD00F3 /* DFUOperationsDetails.m */,
+				FF904B5B1BE9B88700AD00F3 /* FileOperations.h */,
+				FF904B5C1BE9B88700AD00F3 /* FileOperations.m */,
+			);
+			path = DFUImplementation;
+			sourceTree = "<group>";
+		};
+		FF904B5D1BE9B88700AD00F3 /* DFUViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FF904B5E1BE9B88700AD00F3 /* DFUHelper.h */,
+				FF904B5F1BE9B88700AD00F3 /* DFUHelper.m */,
+				FF904B601BE9B88700AD00F3 /* DFUViewController.h */,
+				FF904B611BE9B88700AD00F3 /* DFUViewController.m */,
+			);
+			path = DFUViewController;
+			sourceTree = "<group>";
+		};
+		FF904B621BE9B88700AD00F3 /* firmwares */ = {
+			isa = PBXGroup;
+			children = (
+				FF904B631BE9B88700AD00F3 /* hrs_s110_5_0.hex */,
+				FF904B641BE9B88700AD00F3 /* hrs_s110_6_0.hex */,
+				FF904B651BE9B88700AD00F3 /* hrs_s110_7_0.hex */,
+				FF904B661BE9B88700AD00F3 /* hrs_s110_7_1_sdk7_1.zip */,
+				FF904B671BE9B88700AD00F3 /* hrs_s110_8_0_sdk_8_0.zip */,
+				FF904B681BE9B88700AD00F3 /* rscs_s110_5_0.hex */,
+				FF904B691BE9B88700AD00F3 /* rscs_s110_6_0.hex */,
+				FF904B6A1BE9B88700AD00F3 /* rscs_s110_7_0.hex */,
+			);
+			path = firmwares;
+			sourceTree = "<group>";
+		};
+		FF904B6B1BE9B88700AD00F3 /* HexToBinConverter */ = {
+			isa = PBXGroup;
+			children = (
+				FF904B6C1BE9B88700AD00F3 /* IntelHex2BinConverter.h */,
+				FF904B6D1BE9B88700AD00F3 /* IntelHex2BinConverter.m */,
+			);
+			path = HexToBinConverter;
+			sourceTree = "<group>";
+		};
+		FF904B6E1BE9B88700AD00F3 /* JSONParser */ = {
+			isa = PBXGroup;
+			children = (
+				FF904B6F1BE9B88700AD00F3 /* InitData.h */,
+				FF904B701BE9B88700AD00F3 /* InitData.m */,
+				FF904B711BE9B88700AD00F3 /* JsonParser.h */,
+				FF904B721BE9B88700AD00F3 /* JsonParser.m */,
+			);
+			path = JSONParser;
+			sourceTree = "<group>";
+		};
+		FF904B731BE9B88700AD00F3 /* Unzip */ = {
+			isa = PBXGroup;
+			children = (
+				FF904B741BE9B88700AD00F3 /* UnzipFirmware.h */,
+				FF904B751BE9B88700AD00F3 /* UnzipFirmware.m */,
+			);
+			path = Unzip;
 			sourceTree = "<group>";
 		};
 		FF9170941AF9B19100FAAC88 /* sounds */ = {
@@ -1263,6 +1407,7 @@
 				FF8C834717AB14B5000166FC /* Credits.rtf in Resources */,
 				FF1F13601ADC90E700B52A0D /* MLCalendarView.xib in Resources */,
 				FFE0B3D01AD70DC600FC6080 /* logo_with_title.png in Resources */,
+				FF904B841BE9B88700AD00F3 /* rscs_s110_7_0.hex in Resources */,
 				FF3641F81A660204003CC03C /* TTModeHueSceneOptions.xib in Resources */,
 				FFA1D4CC1A3B8916003EA0BC /* TTActionHUDView.xib in Resources */,
 				FF5295C11AD4D2BE007DDC02 /* title@2x.png in Resources */,
@@ -1270,8 +1415,11 @@
 				FF8A73CA1ABA69410023AA53 /* logo_256.png in Resources */,
 				FF52960F1AD631D1007DDC02 /* TTSettingsDevicesViewController.xib in Resources */,
 				FFA1D4DB1A3B89A4003EA0BC /* TTModeHUDView.xib in Resources */,
+				FF904B801BE9B88700AD00F3 /* hrs_s110_7_1_sdk7_1.zip in Resources */,
 				FF8A73CB1ABA69410023AA53 /* logo_512.png in Resources */,
 				FF8C834D17AB14B5000166FC /* MainMenu.xib in Resources */,
+				FF904B811BE9B88700AD00F3 /* hrs_s110_8_0_sdk_8_0.zip in Resources */,
+				FF904B7F1BE9B88700AD00F3 /* hrs_s110_7_0.hex in Resources */,
 				FF2740791A7C5BC200C55579 /* itunes_itunesu_icon.png in Resources */,
 				FF2EB77D1AA50D4D002549A7 /* itunes_music_icon.png in Resources */,
 				FF8528F61A96A63A00B289FD /* TTModeMusic.plist in Resources */,
@@ -1279,6 +1427,8 @@
 				FF91709A1AF9B19100FAAC88 /* north tone.wav in Resources */,
 				FF3641DC1A5F5617003CC03C /* TTModeHueOptions.xib in Resources */,
 				FF913D271924366C005C336F /* TTModeAlarmClock.plist in Resources */,
+				FF904B831BE9B88700AD00F3 /* rscs_s110_6_0.hex in Resources */,
+				FF904B7E1BE9B88700AD00F3 /* hrs_s110_6_0.hex in Resources */,
 				FF8A73C81ABA69410023AA53 /* logo_64.png in Resources */,
 				FF80E8B31BE19D2300B2A0CC /* icons in Resources */,
 				FF27407A1A7C5BC200C55579 /* itunes_movies_icon.png in Resources */,
@@ -1297,6 +1447,7 @@
 				FF80E8B11BE194D100B2A0CC /* actions in Resources */,
 				FF98A2EF1867DC320032CC7A /* Turn Touch Remote.entitlements in Resources */,
 				FF5296141AD633F4007DDC02 /* TTSettingsSupportViewController.xib in Resources */,
+				FF904B7D1BE9B88700AD00F3 /* hrs_s110_5_0.hex in Resources */,
 				FFFF683819D4E2C30081904A /* ideas.txt in Resources */,
 				FFEA6CB819218A5C0010874B /* TTModeAlarmClockOptions.xib in Resources */,
 				FF7305BB1A5C9C76009A852D /* press_smartbridge.png in Resources */,
@@ -1306,6 +1457,7 @@
 				FF8A73C71ABA69410023AA53 /* logo_32.png in Resources */,
 				FFEA6CB319216CDF0010874B /* TTModeMacOptions.xib in Resources */,
 				FF7305C41A5CB3EF009A852D /* TTModeHueConnect.xib in Resources */,
+				FF904B821BE9B88700AD00F3 /* rscs_s110_5_0.hex in Resources */,
 				FF5295C01AD4D2BE007DDC02 /* title.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1327,6 +1479,8 @@
 				FFE2D4791A46404500DDD413 /* NSData+Conversion.m in Sources */,
 				FF8C834A17AB14B5000166FC /* TTAppDelegate.m in Sources */,
 				FF904B4B1BE9B82200AD00F3 /* hid.c in Sources */,
+				FF904B7A1BE9B88700AD00F3 /* FileOperations.m in Sources */,
+				FF904B771BE9B88700AD00F3 /* BLEOperations.m in Sources */,
 				FF904B4E1BE9B82200AD00F3 /* TTButtonTimer.m in Sources */,
 				FFA8EAA3190F091000679A4D /* TTModeMenuItem.m in Sources */,
 				FF5296051AD6142B007DDC02 /* RHPreferencesCustomPlaceholderController.m in Sources */,
@@ -1336,6 +1490,7 @@
 				FF5295DB1AD610A6007DDC02 /* RHPreferencesWindowController.m in Sources */,
 				FF1F135D1ADC90E700B52A0D /* MLCalendarBackground.m in Sources */,
 				FF1F135F1ADC90E700B52A0D /* MLCalendarView.m in Sources */,
+				FF904B781BE9B88700AD00F3 /* DFUOperations.m in Sources */,
 				FFD62CD11950EE770093004D /* TTSegmentedControl.m in Sources */,
 				FFE2D47E1A51EDF000DDD413 /* TTModeHue.m in Sources */,
 				FF904B4D1BE9B82200AD00F3 /* TTButtonState.m in Sources */,
@@ -1344,6 +1499,8 @@
 				FFF05F4218F77D5D00AC6230 /* TTChangeButtonCell.m in Sources */,
 				FF5296081AD61E74007DDC02 /* NSDate+TimeAgo.m in Sources */,
 				FF7305B21A5C9C76009A852D /* DDTTYLogger.m in Sources */,
+				FF904B761BE9B88700AD00F3 /* Utility.m in Sources */,
+				FF904B7C1BE9B88700AD00F3 /* DFUViewController.m in Sources */,
 				FFF05F3B18F77BE000AC6230 /* TTModeTitleView.m in Sources */,
 				FF5296131AD633F4007DDC02 /* TTSettingsSupportViewController.m in Sources */,
 				FF429AD21919C630007C485E /* TTModeMenuCollectionView.m in Sources */,
@@ -1354,6 +1511,8 @@
 				FF66F2A619228DE100031478 /* TTModeAlarmClockOptions.m in Sources */,
 				FF98A2E11867DBA40032CC7A /* TTActionMap.m in Sources */,
 				FF7305B11A5C9C76009A852D /* DDLog.m in Sources */,
+				FF904B7B1BE9B88700AD00F3 /* DFUHelper.m in Sources */,
+				FF904B871BE9B88700AD00F3 /* JsonParser.m in Sources */,
 				FFB5FF3E1A671C2600DF617A /* TTModeHueSleepOptions.m in Sources */,
 				FF0E12BB1824286600D49EC7 /* TTModeMap.m in Sources */,
 				FF3641E21A5F6478003CC03C /* TTOptionsDetailViewController.m in Sources */,
@@ -1362,10 +1521,12 @@
 				FF7305B31A5C9C76009A852D /* ContextFilterLogFormatter.m in Sources */,
 				FF904B3F1BE9B80100AD00F3 /* TTModeHUDWindowController.m in Sources */,
 				FF801327186CF90700955218 /* TTPanel.m in Sources */,
+				FF904B881BE9B88700AD00F3 /* UnzipFirmware.m in Sources */,
 				FF98A2E71867DBE70032CC7A /* TTMenubarController.m in Sources */,
 				FF80131A186CF8FF00955218 /* TTDiamondView.m in Sources */,
 				FFAA4F72182D9A5F0049FFC7 /* TTModeNews.m in Sources */,
 				FF1F13631ADC98C400B52A0D /* TTDatePicker.m in Sources */,
+				FF904B791BE9B88700AD00F3 /* DFUOperationsDetails.m in Sources */,
 				FF0E12CF18247D6100D49EC7 /* TTModeMusic.m in Sources */,
 				FF52960E1AD631D1007DDC02 /* TTSettingsDevicesViewController.m in Sources */,
 				FFB5FF381A671BA200DF617A /* TTModeHueSceneEarlyEveningOptions.m in Sources */,
@@ -1374,6 +1535,7 @@
 				FFA8EAA0190F090300679A4D /* TTModeMenuContainer.m in Sources */,
 				FFD62CCE194F935D0093004D /* TTSegmentedCell.m in Sources */,
 				FF8012F318692D0A00955218 /* TTModeMac.m in Sources */,
+				FF904B851BE9B88700AD00F3 /* IntelHex2BinConverter.m in Sources */,
 				FF3641F31A64AE39003CC03C /* NSAttributedString+Extra.m in Sources */,
 				FF801319186CF8FF00955218 /* TTDiamondLabels.m in Sources */,
 				FF904B3C1BE9B7F500AD00F3 /* TTActionHUDWindowController.m in Sources */,
@@ -1417,6 +1579,7 @@
 				FF801329186CF90700955218 /* TTStatusItemView.m in Sources */,
 				FFA8EAA6190F11B200679A4D /* TTModeMenuItemView.m in Sources */,
 				FF981FCB191AB46600A4A94B /* TTModeMenuBordersView.m in Sources */,
+				FF904B861BE9B88700AD00F3 /* InitData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
