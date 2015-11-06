@@ -35,7 +35,6 @@
 
 - (id)initWithInteractive:(BOOL)_interactive;
 - (id)initWithInteractive:(BOOL)_interactive isHud:(BOOL)_isHud;
-- (void)drawLabels;
 - (void)setMode:(TTMode *)mode;
 
 @end

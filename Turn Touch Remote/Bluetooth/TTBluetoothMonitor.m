@@ -184,7 +184,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
                 [manager cancelPeripheralConnection:foundDevice.peripheral];
             }
         }
-//        NSLog(@" ---> (%X) Not scanning unknown since already connecting to unknown.", bluetoothState);
+        NSLog(@" ---> (%X) Not scanning unknown since already connecting to unknown.", bluetoothState);
         return;
     }
 
@@ -436,7 +436,8 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 
 - (void) peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error {
     bluetoothState = BT_STATE_CHAR_NOTIFICATION;
-    
+    NSLog(@" ---> (%X) Characteristic found with UUID: %@", bluetoothState, service.UUID);
+
     if ([service.UUID isEqual:[CBUUID UUIDWithString:DEVICE_V1_SERVICE_BUTTON_UUID]]) {
         for (CBCharacteristic *aChar in service.characteristics) {
             if ([aChar.UUID isEqual:[CBUUID UUIDWithString:DEVICE_V1_CHARACTERISTIC_BUTTON_STATUS_UUID]]) {

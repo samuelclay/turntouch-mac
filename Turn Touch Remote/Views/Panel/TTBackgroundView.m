@@ -34,6 +34,7 @@
 @synthesize diamondLabels;
 @synthesize optionsView;
 @synthesize optionsConstraint;
+@synthesize dfuView;
 
 #pragma mark -
 
@@ -53,17 +54,19 @@
         diamondLabels = [[TTDiamondLabels alloc] initWithInteractive:YES];
         optionsView = [[TTOptionsView alloc] init];
         actionMenu = [[TTModeMenuContainer alloc] initWithType:ACTION_MENU_TYPE];
+        dfuView = [[TTDFUView alloc] init];
         
         [self setTranslatesAutoresizingMaskIntoConstraints:NO];
 
         [self setViews:@[arrowView,
-                              titleBarView,
-                              modeTabs,
-                              modeTitle,
-                              modeMenu,
-                              diamondLabels,
-                              actionMenu,
-                              optionsView] inGravity:NSStackViewGravityTop];
+                         titleBarView,
+                         dfuView,
+                         modeTabs,
+                         modeTitle,
+                         modeMenu,
+                         diamondLabels,
+                         actionMenu,
+                         optionsView] inGravity:NSStackViewGravityTop];
         
         [self addConstraint:[NSLayoutConstraint constraintWithItem:arrowView
                                                               attribute:NSLayoutAttributeTop
@@ -89,6 +92,12 @@
                                                                  toItem:nil
                                                               attribute:0
                                                              multiplier:1.0 constant:TITLE_BAR_HEIGHT]];
+        dfuConstraint = [NSLayoutConstraint constraintWithItem:dfuView
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:0 multiplier:1.0 constant:0];
+        [self addConstraint:dfuConstraint];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:modeTabs
                                                               attribute:NSLayoutAttributeHeight
                                                               relatedBy:NSLayoutRelationEqual
@@ -167,6 +176,9 @@
                              options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
                              options:0 context:nil];
+    [appDelegate.bluetoothMonitor addObserver:self
+                                   forKeyPath:@"pairedDevicesCount"
+                                      options:0 context:nil];
 }
 
 - (void) observeValueForKeyPath:(NSString*)keyPath
@@ -181,6 +193,8 @@
         [self resetPosition];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))]) {
         [self toggleActionMenuFrame];
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(pairedDevicesCount))]) {
+        [self toggleDfuList];
     }
 }
 
@@ -250,6 +264,27 @@
         [[actionMenuConstraint animator] setConstant:ACTION_MENU_HEIGHT];
     } else {
         [[actionMenuConstraint animator] setConstant:1];
+    }
+    
+    [NSAnimationContext endGrouping];
+}
+
+- (void)toggleDfuList {
+    NSTimeInterval openDuration = OPEN_DURATION;
+    
+    NSEvent *currentEvent = [NSApp currentEvent];
+    NSUInteger clearFlags = ([currentEvent modifierFlags] & NSDeviceIndependentModifierFlagsMask);
+    BOOL shiftPressed = (clearFlags == NSShiftKeyMask);
+    if (shiftPressed) openDuration *= 10;
+    
+    [NSAnimationContext beginGrouping];
+    [[NSAnimationContext currentContext] setDuration:openDuration];
+    [[NSAnimationContext currentContext] setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+    
+    if ([appDelegate.bluetoothMonitor.foundDevices count]) {
+        [[dfuConstraint animator] setConstant:34 * [appDelegate.bluetoothMonitor.foundDevices count]];
+    } else {
+        [[dfuConstraint animator] setConstant:0];
     }
     
     [NSAnimationContext endGrouping];
