@@ -43,7 +43,7 @@
     
     for (TTDevice *device in appDelegate.bluetoothMonitor.foundDevices) {
         TTDFUDeviceView *deviceView = [[TTDFUDeviceView alloc] initWithDevice:device];
-        [deviceView setFrame:NSMakeRect(0, 0, NSWidth(self.frame), 36)];
+        [deviceView setFrame:NSMakeRect(0, 0, NSWidth(self.frame), 176)];
         [dfuDeviceViews addObject:deviceView];
     }
     

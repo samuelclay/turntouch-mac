@@ -127,20 +127,19 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
     
     NSArray *peripherals = [manager retrievePeripheralsWithIdentifiers:[self knownPeripheralIdentifiers]];
     for (CBPeripheral *peripheral in peripherals) {
-        TTDevice *device = [foundDevices deviceForPeripheral:peripheral];
-        if (!device) {
-            device = [foundDevices addPeripheral:peripheral];
+        TTDevice *foundDevice = [foundDevices deviceForPeripheral:peripheral];
+        if (!foundDevice) {
+            foundDevice = [foundDevices addPeripheral:peripheral];
         }
-        
-        if (peripheral.state != CBPeripheralStateDisconnected) {
-            NSLog(@" ---> (%X) Already connected: %@", bluetoothState, device);
+        if (peripheral.state != CBPeripheralStateDisconnected && foundDevice.state != TTDeviceStateSearching) {
+            NSLog(@" ---> (%X) Already connected: %@", bluetoothState, foundDevice);
             continue;
         } else {
             knownDevicesStillDisconnected = YES;
         }
         
         bluetoothState = BT_STATE_CONNECTING_KNOWN;
-        NSLog(@" ---> (%X) Attempting connect to known: %@", bluetoothState, device);
+        NSLog(@" ---> (%X) Attempting connect to known: %@/%@", bluetoothState, [peripheral.identifier.UUIDString substringToIndex:8], foundDevice);
         NSDictionary *options = @{CBConnectPeripheralOptionNotifyOnDisconnectionKey: [NSNumber numberWithBool:YES],
                                   CBCentralManagerOptionShowPowerAlertKey: [NSNumber numberWithBool:YES]};
         [manager connectPeripheral:peripheral options:options];
@@ -151,11 +150,12 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
         NSLog(@" ---> (%X) All done, no known devices left to connect.", bluetoothState);
     }
     
+    // Search for unpaired devices or paired devices that aren't responding to `connectPeripheral`
     static dispatch_once_t onceUnknownToken;
     dispatch_once(&onceUnknownToken, ^{
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(600 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             onceUnknownToken = 0;
-            if (bluetoothState != BT_STATE_SCANNING_KNOWN) {
+            if (bluetoothState != BT_STATE_SCANNING_KNOWN && bluetoothState != BT_STATE_CONNECTING_KNOWN) {
                 NSLog(@" ---> (%X) Not scanning for unpaired, since not scanning known.", bluetoothState);
                 return;
             }

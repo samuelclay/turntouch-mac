@@ -32,7 +32,7 @@
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
-    [self drawBackground];
+
     NSLog(@"Drawing %@: %@", NSStringFromRect(self.frame), device.nickname);
     NSString *imagePath = [NSString stringWithFormat:@"%@/icons/remote_graphic.png", [[NSBundle mainBundle] resourcePath]];
     NSImage *remoteIcon = [[NSImage alloc] initWithContentsOfFile:imagePath];
