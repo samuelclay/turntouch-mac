@@ -33,6 +33,7 @@
 - (NSInteger)count;
 - (NSInteger)connectedCount;
 - (NSUInteger)totalPairedCount;
+- (NSArray *)nicknamedConnected;
 - (NSUInteger)pairedConnectedCount;
 - (NSUInteger)unpairedCount;
 - (NSUInteger)unpairedConnectedCount;

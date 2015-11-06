@@ -43,6 +43,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 @synthesize batteryPct;
 @synthesize lastActionDate;
 @synthesize foundDevices;
+@synthesize nicknamedConnectedCount;
 @synthesize pairedDevicesCount;
 @synthesize unpairedDevicesCount;
 @synthesize addingDevice;
@@ -59,6 +60,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
         connectionDelay = 4;
 
         foundDevices = [[TTDeviceList alloc] init];
+        nicknamedConnectedCount = [[NSNumber alloc] initWithInteger:0];
         pairedDevicesCount = [[NSNumber alloc] initWithInteger:0];
         unpairedDevicesCount = [[NSNumber alloc] initWithInteger:0];
         
@@ -246,6 +248,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
     
     [foundDevices ensureDevicesConnected];
     
+    [self setValue:@([[foundDevices nicknamedConnected] count]) forKey:@"nicknamedConnectedCount"];
     [self setValue:@([foundDevices pairedConnectedCount]) forKey:@"pairedDevicesCount"];
     [self setValue:@([foundDevices unpairedCount]) forKey:@"unpairedDevicesCount"];
     [self setValue:@([foundDevices unpairedConnectedCount]) forKey:@"unpairedDevicesConnected"];
@@ -592,8 +595,9 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
             NSLog(@" ---> !!! %@ has no nickname", peripheral);
         }
         TTDevice *device = [foundDevices deviceForPeripheral:peripheral];
-        device.nickname = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
+        [device setNickname:characteristic.value];
         
+        [self countDevices];
         NSLog(@" ---> (%X) Hello %@ / %@", bluetoothState, characteristic.value, device);
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             [self ensureNicknameOnDevice:device];

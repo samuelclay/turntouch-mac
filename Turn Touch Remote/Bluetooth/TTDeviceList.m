@@ -177,14 +177,26 @@
 
 - (NSUInteger)pairedConnectedCount {
     NSUInteger count = 0;
-
+    
     for (TTDevice *device in devices) {
         if ([self isPeripheralPaired:device.peripheral] && device.state == TTDeviceStateConnected) {
             count++;
         }
     }
-
+    
     return count;
+}
+
+- (NSArray *)nicknamedConnected {
+    NSMutableArray *connectedDevices = [NSMutableArray array];
+    
+    for (TTDevice *device in devices) {
+        if ([self isPeripheralPaired:device.peripheral] && device.state == TTDeviceStateConnected && device.nickname) {
+            [connectedDevices addObject:device];
+        }
+    }
+    
+    return connectedDevices;
 }
 
 - (NSUInteger)unpairedCount {

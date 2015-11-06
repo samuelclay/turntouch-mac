@@ -177,7 +177,7 @@
     [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
                              options:0 context:nil];
     [appDelegate.bluetoothMonitor addObserver:self
-                                   forKeyPath:@"pairedDevicesCount"
+                                   forKeyPath:@"nicknamedConnectedCount"
                                       options:0 context:nil];
 }
 
@@ -193,7 +193,7 @@
         [self resetPosition];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))]) {
         [self toggleActionMenuFrame];
-    } else if ([keyPath isEqual:NSStringFromSelector(@selector(pairedDevicesCount))]) {
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(nicknamedConnectedCount))]) {
         [self toggleDfuList];
     }
 }
@@ -281,11 +281,7 @@
     [[NSAnimationContext currentContext] setDuration:openDuration];
     [[NSAnimationContext currentContext] setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
     
-    if ([appDelegate.bluetoothMonitor.foundDevices count]) {
-        [[dfuConstraint animator] setConstant:34 * [appDelegate.bluetoothMonitor.foundDevices count]];
-    } else {
-        [[dfuConstraint animator] setConstant:0];
-    }
+    [[dfuConstraint animator] setConstant:34 * [[appDelegate.bluetoothMonitor.foundDevices nicknamedConnected] count]];
     
     [NSAnimationContext endGrouping];
 }

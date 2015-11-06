@@ -41,7 +41,7 @@
 - (void)drawStackView {
     NSMutableArray *dfuDeviceViews = [NSMutableArray array];
     
-    for (TTDevice *device in appDelegate.bluetoothMonitor.foundDevices) {
+    for (TTDevice *device in appDelegate.bluetoothMonitor.foundDevices.nicknamedConnected) {
         TTDFUDeviceView *deviceView = [[TTDFUDeviceView alloc] initWithDevice:device];
         [deviceView setFrame:NSMakeRect(0, 0, NSWidth(self.frame), 176)];
         [dfuDeviceViews addObject:deviceView];

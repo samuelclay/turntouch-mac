@@ -56,6 +56,7 @@ typedef enum {
 
 // Both unpaired and paired peripherals
 @property (nonatomic) TTDeviceList *foundDevices;
+@property (nonatomic) NSNumber *nicknamedConnectedCount;
 @property (nonatomic) NSNumber *pairedDevicesCount;
 @property (nonatomic) NSNumber *unpairedDevicesCount;
 @property (nonatomic, readwrite) NSNumber *unpairedDevicesConnected;
