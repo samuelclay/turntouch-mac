@@ -38,7 +38,6 @@
     NSLayoutConstraint *dfuConstraint;
 }
 
-@property (nonatomic) NSStackView *stackView;
 @property (nonatomic) IBOutlet TTPanelArrowView *arrowView;
 @property (nonatomic) IBOutlet TTTitleBarView *titleBarView;
 @property (nonatomic) IBOutlet TTModeTabsContainer *modeTabs;

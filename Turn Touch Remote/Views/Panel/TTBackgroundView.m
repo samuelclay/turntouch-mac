@@ -24,7 +24,6 @@
 
 @implementation TTBackgroundView
 
-@synthesize stackView;
 @synthesize arrowView;
 @synthesize titleBarView;
 @synthesize modeTabs;
@@ -98,6 +97,12 @@
                                                         toItem:nil
                                                      attribute:0 multiplier:1.0 constant:0];
         [self addConstraint:dfuConstraint];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:dfuView
+                                                         attribute:NSLayoutAttributeWidth
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeWidth
+                                                        multiplier:1.0 constant:0]];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:modeTabs
                                                               attribute:NSLayoutAttributeHeight
                                                               relatedBy:NSLayoutRelationEqual
@@ -281,13 +286,12 @@
     [[NSAnimationContext currentContext] setDuration:openDuration];
     [[NSAnimationContext currentContext] setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
     
-    [[dfuConstraint animator] setConstant:34 * [[appDelegate.bluetoothMonitor.foundDevices nicknamedConnected] count]];
+    [[dfuConstraint animator] setConstant:40 * [[appDelegate.bluetoothMonitor.foundDevices nicknamedConnected] count]];
     
     [NSAnimationContext endGrouping];
 }
 
 - (void)adjustOptionsHeight:(NSView *)optionsDetailView {
-//    if (!stackView) return;
     if (!optionsView) return;
 
     [self removeConstraint:optionsConstraint];
@@ -310,7 +314,6 @@
         [optionsView addConstraint:optionsConstraint];
     }
     
-//    NSLog(@"stackView constraints: %@", stackView.constraints);
 //    NSLog(@"optionsView constraints: %@", optionsView.constraints);
 //    NSLog(@"modeOptionsView constraints: %@", optionsView.modeOptionsView.constraints);
 }
