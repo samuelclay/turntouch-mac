@@ -32,7 +32,7 @@
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
 
-    NSLog(@"Drawing %@: %@.", NSStringFromRect(self.frame), device);
+//    NSLog(@"Drawing %@: %@.", NSStringFromRect(self.frame), device);
     NSString *imagePath = [NSString stringWithFormat:@"%@/icons/remote_graphic.png", [[NSBundle mainBundle] resourcePath]];
     NSImage *remoteIcon = [[NSImage alloc] initWithContentsOfFile:imagePath];
     
@@ -76,6 +76,8 @@
 
 - (void)beginUpgrade:(id)sender {
     NSLog(@"Begin upgrade: %@", device);
+    
+    [appDelegate.panelController.backgroundView.dfuView performDFU:device];
 }
 
 @end

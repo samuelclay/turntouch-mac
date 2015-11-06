@@ -7,10 +7,16 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "DFUOperations.h"
 #import "TTAppDelegate.h"
+#import "TTDevice.h"
 
-@interface TTDFUView : NSStackView <NSStackViewDelegate> {
+@interface TTDFUView : NSStackView <NSStackViewDelegate, DFUOperationsDelegate> {
     TTAppDelegate *appDelegate;
+
+    TTDevice *currentDevice;
 }
+
+-(void)performDFU:(TTDevice *)device;
 
 @end
