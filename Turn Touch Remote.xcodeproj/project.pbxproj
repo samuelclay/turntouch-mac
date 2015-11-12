@@ -120,7 +120,6 @@
 		FF904B791BE9B88700AD00F3 /* DFUOperationsDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B5A1BE9B88700AD00F3 /* DFUOperationsDetails.m */; };
 		FF904B7A1BE9B88700AD00F3 /* FileOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B5C1BE9B88700AD00F3 /* FileOperations.m */; };
 		FF904B7B1BE9B88700AD00F3 /* DFUHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B5F1BE9B88700AD00F3 /* DFUHelper.m */; };
-		FF904B7C1BE9B88700AD00F3 /* DFUViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B611BE9B88700AD00F3 /* DFUViewController.m */; };
 		FF904B851BE9B88700AD00F3 /* IntelHex2BinConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B6D1BE9B88700AD00F3 /* IntelHex2BinConverter.m */; };
 		FF904B861BE9B88700AD00F3 /* InitData.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B701BE9B88700AD00F3 /* InitData.m */; };
 		FF904B871BE9B88700AD00F3 /* JsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B721BE9B88700AD00F3 /* JsonParser.m */; };
@@ -420,8 +419,6 @@
 		FF904B5C1BE9B88700AD00F3 /* FileOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileOperations.m; sourceTree = "<group>"; };
 		FF904B5E1BE9B88700AD00F3 /* DFUHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFUHelper.h; sourceTree = "<group>"; };
 		FF904B5F1BE9B88700AD00F3 /* DFUHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFUHelper.m; sourceTree = "<group>"; };
-		FF904B601BE9B88700AD00F3 /* DFUViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFUViewController.h; sourceTree = "<group>"; };
-		FF904B611BE9B88700AD00F3 /* DFUViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFUViewController.m; sourceTree = "<group>"; };
 		FF904B6C1BE9B88700AD00F3 /* IntelHex2BinConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntelHex2BinConverter.h; sourceTree = "<group>"; };
 		FF904B6D1BE9B88700AD00F3 /* IntelHex2BinConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntelHex2BinConverter.m; sourceTree = "<group>"; };
 		FF904B6F1BE9B88700AD00F3 /* InitData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitData.h; sourceTree = "<group>"; };
@@ -1051,8 +1048,6 @@
 			children = (
 				FF904B5E1BE9B88700AD00F3 /* DFUHelper.h */,
 				FF904B5F1BE9B88700AD00F3 /* DFUHelper.m */,
-				FF904B601BE9B88700AD00F3 /* DFUViewController.h */,
-				FF904B611BE9B88700AD00F3 /* DFUViewController.m */,
 			);
 			path = DFUViewController;
 			sourceTree = "<group>";
@@ -1531,7 +1526,6 @@
 				FF5296081AD61E74007DDC02 /* NSDate+TimeAgo.m in Sources */,
 				FF7305B21A5C9C76009A852D /* DDTTYLogger.m in Sources */,
 				FF904B761BE9B88700AD00F3 /* Utility.m in Sources */,
-				FF904B7C1BE9B88700AD00F3 /* DFUViewController.m in Sources */,
 				FFF05F3B18F77BE000AC6230 /* TTModeTitleView.m in Sources */,
 				FF5296131AD633F4007DDC02 /* TTSettingsSupportViewController.m in Sources */,
 				FF429AD21919C630007C485E /* TTModeMenuCollectionView.m in Sources */,

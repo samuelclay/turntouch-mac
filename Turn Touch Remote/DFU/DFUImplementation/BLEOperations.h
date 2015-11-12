@@ -37,6 +37,7 @@ andControlPointCharacteristic:(CBCharacteristic *)dfuControlPointCharacteristic;
 -(void)onDeviceDisconnected:(CBPeripheral *)peripheral;
 -(void)onReceivedNotification:(NSData *)data;
 -(void)onReadDfuVersion:(int)version;
+-(void)onNotifyBeginForControlPoint;
 -(void)onError:(NSString *)errorMessage;
 
 @end

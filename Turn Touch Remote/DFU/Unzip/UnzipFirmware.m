@@ -31,16 +31,15 @@
     NSString *zipFilePath = [zipFileURL path];
     NSString *outputPath = [self cachesPath:@"/UnzipFiles"];
     [SSZipArchive unzipFileAtPath:zipFilePath toDestination:outputPath delegate:self];
-//    AccessFileSystem *fileSystem = [[AccessFileSystem alloc]init];
-//    NSArray *files = [fileSystem getAllFilesFromDirectory:outputPath];
-//    NSLog(@"number of files inside zip file: %lu",(unsigned long)[files count]);
-//    if ([self findManifestFileInsideZip:files outputPathInPhone:outputPath]) {
-//        return [self getAllFilesURLInsideZipFile:files outputPathInPhone:outputPath];
-//    }
-//    else {
-//        [self findFilesInsideZip:files outputPathInPhone:outputPath];
-//        return [self.filesURL copy];
-//    }    
+    NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:outputPath error:nil];
+    NSLog(@"number of files inside zip file: %lu",(unsigned long)[files count]);
+    if ([self findManifestFileInsideZip:files outputPathInPhone:outputPath]) {
+        return [self getAllFilesURLInsideZipFile:files outputPathInPhone:outputPath];
+    }
+    else {
+        [self findFilesInsideZip:files outputPathInPhone:outputPath];
+        return [self.filesURL copy];
+    }    
 }
 
 -(void)findFilesInsideZip:(NSArray *)files outputPathInPhone:(NSString *)outputPath
@@ -110,18 +109,18 @@
 
 -(NSString *)cachesPath:(NSString *)directory {
 	NSString *path = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject]
-                      stringByAppendingPathComponent:@"com.nordicsemi.nRFToolbox"];
+                      stringByAppendingPathComponent:@"com.turntouch.TurnTouchRemote"];
 	if (directory) {
 		path = [path stringByAppendingPathComponent:directory];
 	}
     
 	NSFileManager *fileManager = [NSFileManager defaultManager];    
 	if (![fileManager fileExistsAtPath:path]) {
-        NSLog(@"creating unzip directory under Cache");
+        NSLog(@"creating unzip directory under Cache: %@", path);
 		[fileManager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
 	}
     else {
-        NSLog(@"unzip directory already exist. removing it and then creating one");
+        NSLog(@"unzip directory already exist. removing it and then creating one: %@", path);
         [fileManager removeItemAtPath:path error:nil];
         [fileManager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
     }

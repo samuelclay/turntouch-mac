@@ -24,7 +24,7 @@
     return [NSString stringWithFormat:@"%@ / %@ (%@)", [self.peripheral.identifier.UUIDString substringToIndex:8], self.nickname, self.isPaired ? @"PAIRED" : @"unpaired"];
 }
 
-- (void)setNickname:(NSData *)nicknameData {
+- (void)setNicknameData:(NSData *)nicknameData {
     NSMutableData *fixedNickname = [[NSMutableData alloc] init];
 
     const char *bytes = [nicknameData bytes];

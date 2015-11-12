@@ -30,5 +30,6 @@ typedef enum {
 @property (nonatomic) TTDeviceState state;
 
 - (id)initWithPeripheral:(CBPeripheral *)peripheral;
+- (void)setNicknameData:(NSData *)nicknameData;
 
 @end

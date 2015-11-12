@@ -107,13 +107,23 @@
     }
 }
 
-#pragma mark - DFU
 
+#pragma mark Device Selection Delegate
+
+-(void)centralManager:(CBCentralManager *)manager didPeripheralSelected:(CBPeripheral *)peripheral {
+    selectedPeripheral = peripheral;
+    [dfuOperations setCentralManager:manager];
+    //    deviceName.text = peripheral.name;
+    dfuOperations.bleOperations.bluetoothPeripheral = peripheral;
+    [dfuOperations.bleOperations.bluetoothPeripheral setDelegate:dfuOperations.bleOperations];
+    [dfuOperations.bleOperations centralManager:manager didConnectPeripheral:peripheral];
+}
+
+#pragma mark - DFU
 
 -(void)performDFU:(TTDevice *)device {
     currentDevice = device;
     [self centralManager:appDelegate.bluetoothMonitor.manager didPeripheralSelected:device.peripheral];
-    
     dispatch_async(dispatch_get_main_queue(), ^{
         [self disableOtherButtons];
         //        uploadStatus.hidden = NO;
@@ -121,7 +131,26 @@
         //        progressLabel.hidden = NO;
         //        uploadButton.enabled = NO;
     });
-    [self.dfuHelper checkAndPerformDFU];
+    
+    [self prepareFirmware];
+//    [self.dfuHelper checkAndPerformDFU];
+}
+
+- (void)prepareFirmware {
+    NSString *filePath = [NSString stringWithFormat:@"%@/firmwares/nrf51_01.zip",
+                          [[NSBundle mainBundle] resourcePath]];
+    NSURL *fileUrl = [NSURL fileURLWithPath:filePath];
+    self.dfuHelper.selectedFileURL = fileUrl;
+    [self.dfuHelper setFirmwareType:FIRMWARE_TYPE_APPLICATION];
+    
+    NSString *selectedFileName = [[fileUrl path] lastPathComponent];
+    NSData *fileData = [NSData dataWithContentsOfURL:fileUrl];
+    self.dfuHelper.selectedFileSize = fileData.length;
+    NSLog(@" ---> Upgrading with %@", selectedFileName);
+    
+    self.dfuHelper.isSelectedFileZipped = YES;
+    self.dfuHelper.isManifestExist = NO;
+    [self.dfuHelper unzipFiles:self.dfuHelper.selectedFileURL];
 }
 
 - (void) clearUI {
@@ -152,7 +181,7 @@
             }
         }
         if (self.dfuHelper.isDfuVersionExist) {
-            if (selectedPeripheral && self.dfuHelper.selectedFileSize > 0 && self.isConnected && self.dfuHelper.dfuVersion > 1) {
+            if (selectedPeripheral && self.dfuHelper.selectedFileSize > 0 && self.isConnected && self.dfuHelper.dfuVersion >= 1) {
                 if ([self.dfuHelper isInitPacketFileExist]) {
                     //                    uploadButton.enabled = YES;
                 }
@@ -175,52 +204,6 @@
         
     });
 }
-
-#pragma mark Device Selection Delegate
-
--(void)centralManager:(CBCentralManager *)manager didPeripheralSelected:(CBPeripheral *)peripheral {
-    selectedPeripheral = peripheral;
-    [dfuOperations setCentralManager:manager];
-    //    deviceName.text = peripheral.name;
-    [dfuOperations connectDevice:peripheral];
-}
-
-#pragma mark File Selection Delegate
-
--(void)onFileSelected:(NSURL *)url {
-    NSLog(@"onFileSelected");
-    self.dfuHelper.selectedFileURL = url;
-    if (self.dfuHelper.selectedFileURL) {
-        NSLog(@"selectedFile URL %@",self.dfuHelper.selectedFileURL);
-        NSString *selectedFileName = [[url path]lastPathComponent];
-        NSData *fileData = [NSData dataWithContentsOfURL:url];
-        self.dfuHelper.selectedFileSize = fileData.length;
-        NSLog(@"fileSelected %@",selectedFileName);
-        
-        //get last three characters for file extension
-        NSString *extension = [selectedFileName substringFromIndex: [selectedFileName length] - 3];
-        NSLog(@"selected file extension is %@",extension);
-        if ([extension isEqualToString:@"zip"]) {
-            NSLog(@"this is zip file");
-            self.dfuHelper.isSelectedFileZipped = YES;
-            self.dfuHelper.isManifestExist = NO;
-            [self.dfuHelper unzipFiles:self.dfuHelper.selectedFileURL];
-        }
-        else {
-            self.dfuHelper.isSelectedFileZipped = NO;
-        }
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            //            fileName.text = selectedFileName;
-            //            fileSize.text = [NSString stringWithFormat:@"%lu bytes", (unsigned long)self.dfuHelper.selectedFileSize];
-            [self enableUploadButton];
-        });
-    }
-    else {
-        //        [Utility showAlert:@"Selected file not exist!"];
-    }
-}
-
 
 #pragma mark DFUOperations delegate methods
 
@@ -245,14 +228,15 @@
     
     // Scanner uses other queue to send events. We must edit UI in the main queue
     dispatch_async(dispatch_get_main_queue(), ^{
-        if (self.dfuHelper.dfuVersion != 1) {
+        if (self.dfuHelper.dfuVersion >= 2) {
             [self clearUI];
             
             self.isTransferCancelled = NO;
             self.isTransfered = NO;
             self.isErrorKnown = NO;
-        }
-        else {
+            
+            [self returnBluetoothManager];
+        } else {
             double delayInSeconds = 3.0;
             dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
             dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
@@ -268,9 +252,14 @@
     self.dfuHelper.dfuVersion = version;
     NSLog(@"DFU Version: %d",self.dfuHelper.dfuVersion);
     if (self.dfuHelper.dfuVersion == 1) {
-        [dfuOperations setAppToBootloaderMode];
+//        [dfuOperations setAppToBootloaderMode];
     }
     [self enableUploadButton];
+}
+
+- (void)onNotifyBeginForControlPoint {
+    NSLog(@"Notifying for control point, begin...");
+    [dfuOperations setAppToBootloaderMode];
 }
 
 -(void)onDFUStarted {
@@ -294,6 +283,7 @@
     self.isTransferCancelled = YES;
     dispatch_async(dispatch_get_main_queue(), ^{
         [self enableOtherButtons];
+        [self returnBluetoothManager];
     });
 }
 
@@ -337,6 +327,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         self.isTransferring = NO;
         self.isTransfered = YES;
+        [self returnBluetoothManager];
         //        NSString* message = [NSString stringWithFormat:@"%lu bytes transfered in %lu seconds", (unsigned long)dfuOperations.binFileSize, (unsigned long)dfuOperations.uploadTimeInSeconds];
         //        if ([Utility isApplicationStateInactiveORBackground]) {
         //            [Utility showBackgroundNotification:message];
@@ -355,6 +346,11 @@
         //        [Utility showAlert:errorMessage];
         [self clearUI];
     });
+}
+
+- (void)returnBluetoothManager {
+    NSLog(@" ---> Returning Bluetooth Monitor");
+    [appDelegate.bluetoothMonitor.manager setDelegate:appDelegate.bluetoothMonitor];
 }
 
 @end

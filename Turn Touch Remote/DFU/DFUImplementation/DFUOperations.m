@@ -437,6 +437,7 @@ NSDate *startTime, *finishTime;
     self.dfuControlPointCharacteristic = dfuControlPointCharacteristic;
     self.dfuVersionCharacteristic = dfuVersionCharacteristic;
     [self setDFUOperationsDetailsWithVersion];
+    [self.dfuRequests enableNotification];
     [dfuDelegate onDeviceConnectedWithVersion:peripheral];
 }
 
@@ -449,6 +450,7 @@ andControlPointCharacteristic:(CBCharacteristic *)dfuControlPointCharacteristic
     self.dfuPacketCharacteristic = dfuPacketCharacteristic;
     self.dfuControlPointCharacteristic = dfuControlPointCharacteristic;
     [self setDFUOperationsDetails];
+    [dfuRequests enableNotification];
     [dfuDelegate onDeviceConnected:peripheral];
 }
 
@@ -469,6 +471,10 @@ andControlPointCharacteristic:(CBCharacteristic *)dfuControlPointCharacteristic
     else {
         [dfuDelegate onReadDFUVersion:version];
     }
+}
+
+- (void)onNotifyBeginForControlPoint {
+    [dfuDelegate onNotifyBeginForControlPoint];
 }
 
 -(void)onReceivedNotification:(NSData *)data

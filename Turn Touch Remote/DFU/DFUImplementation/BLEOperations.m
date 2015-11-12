@@ -132,6 +132,7 @@ static NSString * const hrsSensorLocationCharacteristicUUIDString = @"00002A38-0
         [self searchDFURequiredCharacteristics:service];
         if (isDFUControlPointCharacteristic && isDFUPacketCharacteristicFound && isDFUVersionCharacteristicFound) {
             [self.bluetoothPeripheral readValueForCharacteristic:self.dfuVersionCharacteristic];
+            [self.bluetoothPeripheral setNotifyValue:YES forCharacteristic:self.dfuControlPointCharacteristic];
             [self.bleDelegate onDeviceConnectedWithVersion:self.bluetoothPeripheral
                                   withPacketCharacteristic:self.dfuPacketCharacteristic
                              andControlPointCharacteristic:self.dfuControlPointCharacteristic
@@ -174,7 +175,7 @@ static NSString * const hrsSensorLocationCharacteristicUUIDString = @"00002A38-0
     }
     else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:dfuVersionCharacteritsicUUIDString]]) {
         const uint8_t *version = [characteristic.value bytes] ;
-        NSLog(@"dfu Version Characteristic first byte is %d and second byte is %d",version[0],version[1]);        
+        NSLog(@"dfu Version Characteristic first byte is %d and second byte is %d",version[0],version[1]);
         [self.bleDelegate onReadDfuVersion:version[0]];
     }
     else {
@@ -182,6 +183,21 @@ static NSString * const hrsSensorLocationCharacteristicUUIDString = @"00002A38-0
         [self.bleDelegate onReceivedNotification:characteristic.value];
     }
 }
+
+/*
+ Invoked upon completion of a -[setNotifyValue:] request
+ */
+- (void)peripheral:(CBPeripheral *)peripheral
+didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic
+             error:(NSError *)error {
+    if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:dfuControlPointCharacteristicUUIDString]]) {
+        NSLog(@"dfu control point charactistic notification");
+        [self.bleDelegate onNotifyBeginForControlPoint];
+    } else {
+        NSLog(@"ERROR: Subscribed to notifications: %@/%@", peripheral.identifier.UUIDString, characteristic.UUID.UUIDString);
+    }
+}
+
 
 -(void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {

@@ -38,6 +38,7 @@
 -(void)onDeviceConnectedWithVersion:(CBPeripheral *)peripheral;
 -(void)onDeviceDisconnected:(CBPeripheral *)peripheral;
 -(void)onReadDFUVersion:(int)version;
+-(void)onNotifyBeginForControlPoint;
 -(void)onDFUStarted;
 -(void)onDFUCancelled;
 -(void)onSoftDeviceUploadStarted;
