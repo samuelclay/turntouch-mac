@@ -27,7 +27,7 @@
 @property BOOL isTransferCancelled;
 @property BOOL isConnected;
 @property BOOL isErrorKnown;
-
+@property BOOL isNotifying;
 @end
 
 @implementation TTDFUView
@@ -48,8 +48,9 @@
         self.translatesAutoresizingMaskIntoConstraints = NO;
         [self registerAsObserver];
 
-        PACKETS_NOTIFICATION_INTERVAL = [[[NSUserDefaults standardUserDefaults] valueForKey:@"dfu_number_of_packets"] intValue];
-        NSLog(@"PACKETS_NOTIFICATION_INTERVAL %d",PACKETS_NOTIFICATION_INTERVAL);
+        // This is set to 10 elsewhere. Why make it user configurable?
+//        PACKETS_NOTIFICATION_INTERVAL = [[[NSUserDefaults standardUserDefaults] valueForKey:@"dfu_number_of_packets"] intValue];
+//        NSLog(@"PACKETS_NOTIFICATION_INTERVAL %d",PACKETS_NOTIFICATION_INTERVAL);
         dfuOperations = [[DFUOperations alloc] initWithDelegate:self];
         self.dfuHelper = [[DFUHelper alloc] initWithData:dfuOperations];
     }
@@ -61,6 +62,10 @@
     [appDelegate.bluetoothMonitor addObserver:self
                                    forKeyPath:@"nicknamedConnectedCount"
                                       options:0 context:nil];
+    
+    [appDelegate.bluetoothMonitor addObserver:self
+                                   forKeyPath:@"pairedDevicesCount"
+                                      options:0 context:nil];
 }
 
 - (void) observeValueForKeyPath:(NSString*)keyPath
@@ -70,11 +75,15 @@
     if ([keyPath isEqual:NSStringFromSelector(@selector(nicknamedConnectedCount))]) {
         [self setNeedsDisplay:YES];
         [self drawStackView];
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(pairedDevicesCount))]) {
+        [self setNeedsDisplay:YES];
+        [self drawStackView];
     }
 }
 
 - (void)dealloc {
     [self removeObserver:self forKeyPath:@"nicknamedConnectedCount"];
+    [self removeObserver:self forKeyPath:@"pairedDevicesCount"];
 }
 
 #pragma mark - Drawing
@@ -123,6 +132,8 @@
 
 -(void)performDFU:(TTDevice *)device {
     currentDevice = device;
+    [self prepareFirmware];
+
     [self centralManager:appDelegate.bluetoothMonitor.manager didPeripheralSelected:device.peripheral];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self disableOtherButtons];
@@ -131,9 +142,6 @@
         //        progressLabel.hidden = NO;
         //        uploadButton.enabled = NO;
     });
-    
-    [self prepareFirmware];
-//    [self.dfuHelper checkAndPerformDFU];
 }
 
 - (void)prepareFirmware {
@@ -248,18 +256,23 @@
 }
 
 -(void)onReadDFUVersion:(int)version {
-    NSLog(@"onReadDFUVersion %d",version);
     self.dfuHelper.dfuVersion = version;
     NSLog(@"DFU Version: %d",self.dfuHelper.dfuVersion);
-    if (self.dfuHelper.dfuVersion == 1) {
+    if (self.dfuHelper.dfuVersion >= 1) {
 //        [dfuOperations setAppToBootloaderMode];
     }
     [self enableUploadButton];
 }
 
 - (void)onNotifyBeginForControlPoint {
-    NSLog(@"Notifying for control point, begin...");
-    [dfuOperations setAppToBootloaderMode];
+    NSLog(@"Notifying for control point, begin... %d", self.isNotifying);
+    if (self.isNotifying) {
+        self.isNotifying = NO;
+        [self.dfuHelper checkAndPerformDFU];
+    } else {
+        [dfuOperations setAppToBootloaderMode];
+        self.isNotifying = YES;
+    }
 }
 
 -(void)onDFUStarted {

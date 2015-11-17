@@ -462,7 +462,6 @@ andControlPointCharacteristic:(CBCharacteristic *)dfuControlPointCharacteristic
 
 -(void)onReadDfuVersion:(int)version
 {
-    NSLog(@"onReadDfuVersion %d",version);
     //check if DfuVersionCharacteristic has been read successfully
     //one reason is that Service Changed Indication is not enabled in Buttonless DFU update
     if (version == 0) {

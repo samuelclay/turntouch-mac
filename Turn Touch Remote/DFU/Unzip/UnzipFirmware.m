@@ -32,7 +32,7 @@
     NSString *outputPath = [self cachesPath:@"/UnzipFiles"];
     [SSZipArchive unzipFileAtPath:zipFilePath toDestination:outputPath delegate:self];
     NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:outputPath error:nil];
-    NSLog(@"number of files inside zip file: %lu",(unsigned long)[files count]);
+//    NSLog(@"number of files inside zip file: %lu",(unsigned long)[files count]);
     if ([self findManifestFileInsideZip:files outputPathInPhone:outputPath]) {
         return [self getAllFilesURLInsideZipFile:files outputPathInPhone:outputPath];
     }
@@ -46,43 +46,43 @@
 {
     for (NSString* file in files) {
          if ([file isEqualToString:@"softdevice.hex"]) {
-             NSLog(@"softdevice.hex is found inside zip file");
+//             NSLog(@"softdevice.hex is found inside zip file");
              [self.filesURL addObject:[NSURL fileURLWithPath:[outputPath stringByAppendingPathComponent:@"softdevice.hex"]]];
          }
          else if ([file isEqualToString:@"bootloader.hex"]) {
-             NSLog(@"bootloader.hex is found inside zip file");
+//             NSLog(@"bootloader.hex is found inside zip file");
              [self.filesURL addObject:[NSURL fileURLWithPath:[outputPath stringByAppendingPathComponent:@"bootloader.hex"]]];
          }
          else if ([file isEqualToString:@"application.hex"]) {
-             NSLog(@"application.hex is found inside zip file");
+//             NSLog(@"application.hex is found inside zip file");
              [self.filesURL addObject:[NSURL fileURLWithPath:[outputPath stringByAppendingPathComponent:@"application.hex"]]];
          }
          else if ([file isEqualToString:@"softdevice.bin"]) {
-             NSLog(@"softdevice.bin is found inside zip file");
+//             NSLog(@"softdevice.bin is found inside zip file");
              [self.filesURL addObject:[NSURL fileURLWithPath:[outputPath stringByAppendingPathComponent:@"softdevice.bin"]]];
          }
          else if ([file isEqualToString:@"bootloader.bin"]) {
-             NSLog(@"bootloader.bin is found inside zip file");
+//             NSLog(@"bootloader.bin is found inside zip file");
              [self.filesURL addObject:[NSURL fileURLWithPath:[outputPath stringByAppendingPathComponent:@"bootloader.bin"]]];
          }
          else if ([file isEqualToString:@"application.bin"]) {
-             NSLog(@"application.bin is found inside zip file");
+//             NSLog(@"application.bin is found inside zip file");
              [self.filesURL addObject:[NSURL fileURLWithPath:[outputPath stringByAppendingPathComponent:@"application.bin"]]];
          }
          else if ([file isEqualToString:@"application.dat"]) {
-             NSLog(@"application.dat is found inside zip file");
+//             NSLog(@"application.dat is found inside zip file");
              [self.filesURL addObject:[NSURL fileURLWithPath:[outputPath stringByAppendingPathComponent:@"application.dat"]]];
          }
          else if ([file isEqualToString:@"bootloader.dat"]) {
-             NSLog(@"bootloader.dat is found inside zip file");
+//             NSLog(@"bootloader.dat is found inside zip file");
              [self.filesURL addObject:[NSURL fileURLWithPath:[outputPath stringByAppendingPathComponent:@"bootloader.dat"]]];
          }
          else if ([file isEqualToString:@"softdevice.dat"]) {
-             NSLog(@"softdevice.dat is found inside zip file");
+//             NSLog(@"softdevice.dat is found inside zip file");
              [self.filesURL addObject:[NSURL fileURLWithPath:[outputPath stringByAppendingPathComponent:@"softdevice.dat"]]];
          }
          else if ([file isEqualToString:@"system.dat"]) {
-             NSLog(@"system.dat is found inside zip file");
+//             NSLog(@"system.dat is found inside zip file");
              [self.filesURL addObject:[NSURL fileURLWithPath:[outputPath stringByAppendingPathComponent:@"system.dat"]]];
          }
      }
@@ -92,7 +92,7 @@
 {
     for (NSString* file in files) {
         if ([file isEqualToString:@"manifest.json"]) {
-            NSLog(@"manifest.json file is found inside zip");
+//            NSLog(@"manifest.json file is found inside zip");
             return YES;
         }
     }
@@ -101,7 +101,7 @@
 -(NSArray *)getAllFilesURLInsideZipFile:files outputPathInPhone:outputPath
 {
     for (NSString* file in files) {
-        NSLog(@"with Manifest, Inside Zip found file: %@",file);
+//        NSLog(@"with Manifest, Inside Zip found file: %@",file);
         [self.filesURL addObject:[NSURL fileURLWithPath:[outputPath stringByAppendingPathComponent:file]]];
     }
     return [self.filesURL copy];
@@ -116,11 +116,11 @@
     
 	NSFileManager *fileManager = [NSFileManager defaultManager];    
 	if (![fileManager fileExistsAtPath:path]) {
-        NSLog(@"creating unzip directory under Cache: %@", path);
+//        NSLog(@"creating unzip directory under Cache: %@", path);
 		[fileManager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
 	}
     else {
-        NSLog(@"unzip directory already exist. removing it and then creating one: %@", path);
+//        NSLog(@"unzip directory already exist. removing it and then creating one: %@", path);
         [fileManager removeItemAtPath:path error:nil];
         [fileManager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
     }
@@ -130,27 +130,27 @@
 
 -(void)zipArchiveDidUnzipArchiveAtPath:(NSString *)path zipInfo:(unz_global_info)zipInfo unzippedPath:(NSString *)unzippedPath
 {
-    NSLog(@"zipArchiveDidUnzipArchiveAtPath, path: %@, unzippedPath: %@",path,unzippedPath);
+//    NSLog(@"zipArchiveDidUnzipArchiveAtPath, path: %@, unzippedPath: %@",path,unzippedPath);
 }
 
 -(void)zipArchiveDidUnzipFileAtIndex:(NSInteger)fileIndex totalFiles:(NSInteger)totalFiles archivePath:(NSString *)archivePath fileInfo:(unz_file_info)fileInfo
 {
-    NSLog(@"zipArchiveDidUnzipFileAtIndex, fileIndex: %ld, totalFiles: %ld, archivePath: %@",(long)fileIndex,(long)totalFiles,archivePath);
+//    NSLog(@"zipArchiveDidUnzipFileAtIndex, fileIndex: %ld, totalFiles: %ld, archivePath: %@",(long)fileIndex,(long)totalFiles,archivePath);
 }
 
 -(void)zipArchiveProgressEvent:(NSInteger)loaded total:(NSInteger)total
 {
-    NSLog(@"zipArchiveProgressEvent, loaded: %ld, total: %ld",(long)loaded,(long)total);
+//    NSLog(@"zipArchiveProgressEvent, loaded: %ld, total: %ld",(long)loaded,(long)total);
 }
 
 -(void)zipArchiveWillUnzipArchiveAtPath:(NSString *)path zipInfo:(unz_global_info)zipInfo
 {
-    NSLog(@"zipArchiveWillUnzipArchiveAtPath, path: %@",path);
+//    NSLog(@"zipArchiveWillUnzipArchiveAtPath, path: %@",path);
 }
 
 -(void)zipArchiveWillUnzipFileAtIndex:(NSInteger)fileIndex totalFiles:(NSInteger)totalFiles archivePath:(NSString *)archivePath fileInfo:(unz_file_info)fileInfo
 {
-    NSLog(@"zipArchiveWillUnzipFileAtIndex fileIndex: %ld totalFiles: %ld archivePath: %@",(long)fileIndex,(long)totalFiles,archivePath);
+//    NSLog(@"zipArchiveWillUnzipFileAtIndex fileIndex: %ld totalFiles: %ld archivePath: %@",(long)fileIndex,(long)totalFiles,archivePath);
 }
 
 @end

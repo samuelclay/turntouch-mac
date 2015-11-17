@@ -156,7 +156,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
     // Search for unpaired devices or paired devices that aren't responding to `connectPeripheral`
     static dispatch_once_t onceUnknownToken;
     dispatch_once(&onceUnknownToken, ^{
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(600 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(60 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             onceUnknownToken = 0;
             if (bluetoothState != BT_STATE_SCANNING_KNOWN && bluetoothState != BT_STATE_CONNECTING_KNOWN) {
                 NSLog(@" ---> (%X) Not scanning for unpaired, since not scanning known.", bluetoothState);
