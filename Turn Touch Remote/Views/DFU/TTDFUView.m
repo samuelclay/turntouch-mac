@@ -145,7 +145,7 @@
 }
 
 - (void)prepareFirmware {
-    NSString *filePath = [NSString stringWithFormat:@"%@/firmwares/nrf51_01.zip",
+    NSString *filePath = [NSString stringWithFormat:@"%@/firmwares/nrf51_02.zip",
                           [[NSBundle mainBundle] resourcePath]];
     NSURL *fileUrl = [NSURL fileURLWithPath:filePath];
     self.dfuHelper.selectedFileURL = fileUrl;

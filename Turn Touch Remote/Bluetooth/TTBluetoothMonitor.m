@@ -9,6 +9,7 @@
 #import "TTBluetoothMonitor.h"
 #import "NSData+Conversion.h"
 #import "TTDevice.h"
+#import "Utility.h"
 
 // Firmware rev. 10 - 19 = v1
 #define DEVICE_V1_SERVICE_BATTERY_UUID                 @"180F"
@@ -237,7 +238,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 
 - (void) terminate {
     for (TTDevice *device in foundDevices) {
-        if (!device.peripheral) return;
+//        if (!device.peripheral) return;
         [manager cancelPeripheralConnection:device.peripheral];
         [foundDevices removeDevice:device];
     }
@@ -318,7 +319,9 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
                                        [CBUUID UUIDWithString:DEVICE_V1_SERVICE_BATTERY_UUID],
                                        [CBUUID UUIDWithString:DEVICE_V1_SERVICE_FIRMWARE_SETTINGS_UUID],
                                        [CBUUID UUIDWithString:DEVICE_V2_SERVICE_BUTTON_UUID],
-                                       [CBUUID UUIDWithString:DEVICE_V2_SERVICE_BATTERY_UUID]]];
+                                       [CBUUID UUIDWithString:DEVICE_V2_SERVICE_BATTERY_UUID],
+                                       [CBUUID UUIDWithString:dfuServiceUUIDString]
+                                       ]];
 
         device.state = TTDeviceStateConnecting;
         device.needsReconnection = NO;
@@ -427,10 +430,16 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
                                                   [CBUUID UUIDWithString:DEVICE_V2_CHARACTERISTIC_NICKNAME_UUID]]
                                      forService:service];
         }
-
+        
         if ([service.UUID isEqual:[CBUUID UUIDWithString:DEVICE_V2_SERVICE_BATTERY_UUID]]) {
             device.firmwareVersion = 2;
             [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:DEVICE_V2_CHARACTERISTIC_BATTERY_LEVEL_UUID]]
+                                     forService:service];
+        }
+        
+        if ([service.UUID isEqual:[CBUUID UUIDWithString:dfuServiceUUIDString]]) {
+            device.firmwareVersion = 2;
+            [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:dfuVersionCharacteritsicUUIDString]]
                                      forService:service];
         }
         
@@ -465,6 +474,14 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
             if ([aChar.UUID isEqual:[CBUUID UUIDWithString:DEVICE_V2_CHARACTERISTIC_BUTTON_STATUS_UUID]]) {
                 [peripheral setNotifyValue:YES forCharacteristic:aChar];
             } else if ([aChar.UUID isEqual:[CBUUID UUIDWithString:DEVICE_V2_CHARACTERISTIC_NICKNAME_UUID]]) {
+                [peripheral readValueForCharacteristic:aChar];
+            }
+        }
+    }
+    
+    if ([service.UUID isEqual:[CBUUID UUIDWithString:dfuServiceUUIDString]]) {
+        for (CBCharacteristic *aChar in service.characteristics) {
+            if ([aChar.UUID isEqual:[CBUUID UUIDWithString:dfuVersionCharacteritsicUUIDString]]) {
                 [peripheral readValueForCharacteristic:aChar];
             }
         }
@@ -619,6 +636,11 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
     } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A29"]]) {
         manufacturer = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
         NSLog(@"Manufacturer Name = %@", manufacturer);
+    } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:dfuVersionCharacteritsicUUIDString]]) {
+        int firmwareVersion;
+        [characteristic.value getBytes:&firmwareVersion];
+        NSLog(@" ---> Firmware version of %@: %d", device, firmwareVersion);
+        device.firmwareVersion = firmwareVersion;
     } else {
         NSLog(@"Unidentified characteristic: %@", characteristic);
     }
