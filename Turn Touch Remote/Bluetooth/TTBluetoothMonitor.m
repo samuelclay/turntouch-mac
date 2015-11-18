@@ -836,14 +836,21 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
 
     CBCharacteristic *characteristic;
     
-    if (device.firmwareVersion == 1) {
+    if (device.firmwareVersion <= 1) {
+        // BlueGiga's BLE112
         characteristic = [self characteristicInPeripheral:device.peripheral
                                            andServiceUUID:DEVICE_V1_SERVICE_FIRMWARE_SETTINGS_UUID
                                     andCharacteristicUUID:DEVICE_V1_CHARACTERISTIC_NICKNAME_UUID];
-    } else if (device.firmwareVersion == 2) {
+    } else if (device.firmwareVersion >= 2) {
+        // Nordic's nRF51
         characteristic = [self characteristicInPeripheral:device.peripheral
                                            andServiceUUID:DEVICE_V2_SERVICE_BUTTON_UUID
                                     andCharacteristicUUID:DEVICE_V2_CHARACTERISTIC_NICKNAME_UUID];
+    }
+    
+    if (!characteristic) {
+        NSLog(@" ***> Problem! No valid characteristic: %d", device.firmwareVersion);
+        return;
     }
 
     NSLog(@"New Nickname: => %@ (%@)", newNickname, data);
