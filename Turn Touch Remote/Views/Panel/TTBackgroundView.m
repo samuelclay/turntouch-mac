@@ -286,7 +286,8 @@
     [[NSAnimationContext currentContext] setDuration:openDuration];
     [[NSAnimationContext currentContext] setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
     
-    [[dfuConstraint animator] setConstant:40 * [[appDelegate.bluetoothMonitor.foundDevices nicknamedConnected] count]];
+//    [[dfuConstraint animator] setConstant:40 * [[appDelegate.bluetoothMonitor.foundDevices nicknamedConnected] count]];
+    [[dfuConstraint animator] setConstant:0 * [[appDelegate.bluetoothMonitor.foundDevices nicknamedConnected] count]];
     
     [NSAnimationContext endGrouping];
 }

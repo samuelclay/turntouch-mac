@@ -310,7 +310,7 @@
 		</data>
 		<key>Resources/TTActionHUDView.nib</key>
 		<data>
-		ksPeIZl5WoraWodwDG4ao0emknE=
+		IrQCdFZ+t2COAVDHbaNQ9qJcf/8=
 		</data>
 		<key>Resources/TTModeAlarmClock.plist</key>
 		<data>
@@ -330,7 +330,7 @@
 		</data>
 		<key>Resources/TTModeHue.plist</key>
 		<data>
-		P+m7M/CRFSt7MRxTQhUp6lA13/M=
+		xq3+dfVY/INe8cYTEpaItvVV0sc=
 		</data>
 		<key>Resources/TTModeHueConnect.nib</key>
 		<data>
@@ -354,19 +354,19 @@
 		</data>
 		<key>Resources/TTModeHueRandomOptions.nib</key>
 		<data>
-		TwVyF6b0ocGvrAtj+rMcPsSTeU8=
+		KaDEaVtvvS6kHXfAY9epODZPXFM=
 		</data>
 		<key>Resources/TTModeHueSceneOptions.nib</key>
 		<data>
-		SE6Pd535ZZIt8z1bWoRaBY5BH3o=
+		Hl6KkSCiwakrtAGK36A2sMSVwVU=
 		</data>
 		<key>Resources/TTModeHueSleepOptions.nib</key>
 		<data>
-		Qp6HUSFjkjpdmoInMXHh9ZNxlmA=
+		aqil3+5BiNYmX7n3Ps3OTVQCV58=
 		</data>
 		<key>Resources/TTModeMacOptions.nib</key>
 		<data>
-		AJvn3F4oWlOv4kyliwieQkxqlYI=
+		rekciTmVBR09+OTimerh4rNh3CY=
 		</data>
 		<key>Resources/TTModeMusic.plist</key>
 		<data>
@@ -400,17 +400,21 @@
 		<data>
 		s3WSLfTKCP8Xv6f0V16/RZ/4paI=
 		</data>
-		<key>Resources/clock b&amp;w.png</key>
+		<key>Resources/actions/hue_evening.png</key>
 		<data>
-		dHHfkkN2cdiI0L82LdhRSp8zedY=
+		wjal2ON8IYF99P2MtOPM1JPHZGY=
 		</data>
-		<key>Resources/clock.png</key>
+		<key>Resources/actions/hue_random.png</key>
 		<data>
-		MRke99UJtoDSFEOvwbEmVF8Lrh8=
+		yUkYveyvJtsxozGKzFLohaXG+5Y=
 		</data>
-		<key>Resources/cog.png</key>
+		<key>Resources/actions/hue_sleep.png</key>
 		<data>
-		W9rkvXdyfkh42RN/r9T5nxpIvWg=
+		PZNGhhGyfFiQti2DOgeChfJyVG4=
+		</data>
+		<key>Resources/actions/hue_sunset.png</key>
+		<data>
+		JRz2zU/Elo65ukZFa/ALjYWO4hg=
 		</data>
 		<key>Resources/defaults.plist</key>
 		<data>
@@ -447,37 +451,189 @@
 			<key>optional</key>
 			<true/>
 		</dict>
-		<key>Resources/equalizer-1.png</key>
+		<key>Resources/firmwares/hrs_s110_5_0.hex</key>
 		<data>
-		YehFPEbUsISXQuREhIFLXPVrlIY=
+		mJzE1zjU2JyuNSgsgHKr4grPhcg=
 		</data>
-		<key>Resources/filmstrip-3.png</key>
+		<key>Resources/firmwares/hrs_s110_6_0.hex</key>
 		<data>
-		f8Efei8X9Dmf+aEIl/p2r1A5Zww=
+		Kecie1n0RJZLldkGCHn+Rex5LbA=
+		</data>
+		<key>Resources/firmwares/hrs_s110_7_0.hex</key>
+		<data>
+		ODYGUeuVZYePW42OVqRP82MrYLk=
+		</data>
+		<key>Resources/firmwares/hrs_s110_7_1_sdk7_1.zip</key>
+		<data>
+		x2SqHokGIxGZN2yGIhO+ulGlPRo=
+		</data>
+		<key>Resources/firmwares/hrs_s110_8_0_sdk_8_0.zip</key>
+		<data>
+		Xc+jnLIe1FshJYT7BVH6uKqUm/I=
+		</data>
+		<key>Resources/firmwares/nrf51_01.zip</key>
+		<data>
+		M/+1+/aJL+GV8eW2N6/tQmSoe48=
+		</data>
+		<key>Resources/firmwares/nrf51_01/manifest.json</key>
+		<data>
+		VwATXLRKtxIUnojxnQguKzZ06uY=
+		</data>
+		<key>Resources/firmwares/nrf51_01/nrf51422_xxac_s110.bin</key>
+		<data>
+		8gosoWP5AYpTTg4OTjfynhxnsxg=
+		</data>
+		<key>Resources/firmwares/nrf51_01/nrf51422_xxac_s110.dat</key>
+		<data>
+		r6X3NGuthBd1llC6NHZb5jY7ESg=
+		</data>
+		<key>Resources/firmwares/nrf51_02.zip</key>
+		<data>
+		VHYf59POPSxZNGcNE7+IbzBgc8g=
+		</data>
+		<key>Resources/firmwares/rscs_s110_5_0.hex</key>
+		<data>
+		r5VJeAsvqINf2oHJhAarvAMGYJw=
+		</data>
+		<key>Resources/firmwares/rscs_s110_6_0.hex</key>
+		<data>
+		1cNjKTiFl5fx5yITE8Ixg1sadeA=
+		</data>
+		<key>Resources/firmwares/rscs_s110_7_0.hex</key>
+		<data>
+		ggpmdRUNu6EO2cQEJ4yYjU/ie+k=
 		</data>
 		<key>Resources/fonts/Effra_Rg.ttf</key>
 		<data>
 		V7/5eGD8hqn7/snzpPyBZY7Y/iQ=
 		</data>
-		<key>Resources/heart.png</key>
+		<key>Resources/icons/clock b&amp;w.png</key>
+		<data>
+		dHHfkkN2cdiI0L82LdhRSp8zedY=
+		</data>
+		<key>Resources/icons/clock.png</key>
+		<data>
+		MRke99UJtoDSFEOvwbEmVF8Lrh8=
+		</data>
+		<key>Resources/icons/cog.png</key>
+		<data>
+		W9rkvXdyfkh42RN/r9T5nxpIvWg=
+		</data>
+		<key>Resources/icons/equalizer-1.png</key>
+		<data>
+		YehFPEbUsISXQuREhIFLXPVrlIY=
+		</data>
+		<key>Resources/icons/filmstrip-3.png</key>
+		<data>
+		f8Efei8X9Dmf+aEIl/p2r1A5Zww=
+		</data>
+		<key>Resources/icons/finger.png</key>
+		<data>
+		TzhjdCaDWKZUAFgjZzcZ9pxCKiw=
+		</data>
+		<key>Resources/icons/heart.png</key>
 		<data>
 		bQZsW0+9hhOxosDwSRFyaO7fifU=
 		</data>
-		<key>Resources/icon_movie.png</key>
+		<key>Resources/icons/icon_movie.png</key>
 		<data>
 		KRSF1Z5sA8IHOQFBUE9QDVAvv6g=
 		</data>
-		<key>Resources/icon_music.png</key>
+		<key>Resources/icons/icon_music.png</key>
 		<data>
 		yIcfblUuyUleEGTRqJjAfM7wEP4=
+		</data>
+		<key>Resources/icons/imac.png</key>
+		<data>
+		hhYNb1Zyqu7F6UVyYa5Hx1mADwI=
+		</data>
+		<key>Resources/icons/macbookpro.png</key>
+		<data>
+		DV1zl6UUPJ+d4PejbHml/1exSJM=
+		</data>
+		<key>Resources/icons/mode_alarm.png</key>
+		<data>
+		U5ilfDFlatv8YqT5hqzd4cS2QbQ=
+		</data>
+		<key>Resources/icons/mode_fitness.png</key>
+		<data>
+		YlVcSM5rjShllQRe0kB8PJL0O/4=
+		</data>
+		<key>Resources/icons/mode_hue.png</key>
+		<data>
+		gknwoSMdt/zTkdcm4+kXL0/HJDE=
+		</data>
+		<key>Resources/icons/mode_mac.png</key>
+		<data>
+		bLnlrsv0P1t1PsFmDkJktwX55qE=
+		</data>
+		<key>Resources/icons/mode_meditation.png</key>
+		<data>
+		908ekdtzP1ttRFS38kNAdH7XUic=
+		</data>
+		<key>Resources/icons/mode_morning.png</key>
+		<data>
+		SOE1sVusJloQGGG7Bp7u5Y97178=
+		</data>
+		<key>Resources/icons/mode_music.png</key>
+		<data>
+		Q2vQZv0sk87J67a6X2Hv6BlqDao=
+		</data>
+		<key>Resources/icons/mode_news.png</key>
+		<data>
+		mkXFyBXAGuNqlDS7MhiuzFHcPBQ=
+		</data>
+		<key>Resources/icons/mode_timer.png</key>
+		<data>
+		SIgXE7RTvy32sPrSoHB/GSQq9u8=
+		</data>
+		<key>Resources/icons/mode_video.png</key>
+		<data>
+		usa1zseYo4SH52mtUpANBvHevpw=
+		</data>
+		<key>Resources/icons/mode_web.png</key>
+		<data>
+		90xc0BFFpJJ+SB3BZqCCUu/QKeg=
+		</data>
+		<key>Resources/icons/newspaper-3.png</key>
+		<data>
+		6bTkggdrz5GfdsLGUNqe9VozFhU=
+		</data>
+		<key>Resources/icons/presentation-chart.png</key>
+		<data>
+		nhOe//O9E/bQjHH4DZchJCkVtzQ=
+		</data>
+		<key>Resources/icons/remote_graphic.png</key>
+		<data>
+		ZRrPBY13am/h2HSgR5CkYXylHt0=
+		</data>
+		<key>Resources/icons/settings.png</key>
+		<data>
+		Y/LrBC3NAIyVB7q9eIWntBBayUw=
+		</data>
+		<key>Resources/icons/settings@2x.png</key>
+		<data>
+		ISE+LRsnl26BY0MtLStI9GP5Htw=
+		</data>
+		<key>Resources/icons/speaker.png</key>
+		<data>
+		nH6Sh44q0RNn5Z+iJUDo9S1U/dg=
+		</data>
+		<key>Resources/icons/sun.png</key>
+		<data>
+		g52Yx/k+edrmrJv5DYuzlSlDSrE=
+		</data>
+		<key>Resources/icons/television.png</key>
+		<data>
+		cKKlogCi8rhlB9du6xdcOlTUis8=
+		</data>
+		<key>Resources/icons/vinyl.png</key>
+		<data>
+		2HMWtu3pm3E63ITztWlKINaVviI=
 		</data>
 		<key>Resources/ideas.txt</key>
 		<data>
 		ft4XDoRDWH3p0lIzIzKwN0Vd01A=
-		</data>
-		<key>Resources/imac.png</key>
-		<data>
-		hhYNb1Zyqu7F6UVyYa5Hx1mADwI=
 		</data>
 		<key>Resources/itunes_audiobook_icon.png</key>
 		<data>
@@ -547,54 +703,6 @@
 		<data>
 		yW0Si4WniB0oUxK2vpp7cchB9as=
 		</data>
-		<key>Resources/macbookpro.png</key>
-		<data>
-		DV1zl6UUPJ+d4PejbHml/1exSJM=
-		</data>
-		<key>Resources/mode_alarm.png</key>
-		<data>
-		U5ilfDFlatv8YqT5hqzd4cS2QbQ=
-		</data>
-		<key>Resources/mode_fitness.png</key>
-		<data>
-		YlVcSM5rjShllQRe0kB8PJL0O/4=
-		</data>
-		<key>Resources/mode_mac.png</key>
-		<data>
-		bLnlrsv0P1t1PsFmDkJktwX55qE=
-		</data>
-		<key>Resources/mode_meditation.png</key>
-		<data>
-		908ekdtzP1ttRFS38kNAdH7XUic=
-		</data>
-		<key>Resources/mode_morning.png</key>
-		<data>
-		SOE1sVusJloQGGG7Bp7u5Y97178=
-		</data>
-		<key>Resources/mode_music.png</key>
-		<data>
-		Q2vQZv0sk87J67a6X2Hv6BlqDao=
-		</data>
-		<key>Resources/mode_news.png</key>
-		<data>
-		mkXFyBXAGuNqlDS7MhiuzFHcPBQ=
-		</data>
-		<key>Resources/mode_timer.png</key>
-		<data>
-		SIgXE7RTvy32sPrSoHB/GSQq9u8=
-		</data>
-		<key>Resources/mode_video.png</key>
-		<data>
-		usa1zseYo4SH52mtUpANBvHevpw=
-		</data>
-		<key>Resources/mode_web.png</key>
-		<data>
-		90xc0BFFpJJ+SB3BZqCCUu/QKeg=
-		</data>
-		<key>Resources/newspaper-3.png</key>
-		<data>
-		6bTkggdrz5GfdsLGUNqe9VozFhU=
-		</data>
 		<key>Resources/north tone.wav</key>
 		<data>
 		cVT/Vv8tf06x3PtuSIaL9DzbrpA=
@@ -603,41 +711,17 @@
 		<data>
 		qxb4RGF8T1l4QFIXrvqlcuQBXXU=
 		</data>
-		<key>Resources/presentation-chart.png</key>
-		<data>
-		nhOe//O9E/bQjHH4DZchJCkVtzQ=
-		</data>
 		<key>Resources/press_smartbridge.png</key>
 		<data>
 		aBVq9/lSDg+61r5Iri4EMN9NWos=
-		</data>
-		<key>Resources/settings.tiff</key>
-		<data>
-		tdwWtbQb4fIAfoRtT2T077QhH2s=
 		</data>
 		<key>Resources/south tone.wav</key>
 		<data>
 		reHgHQ0FjUkpZmIt6yZckFnyOuk=
 		</data>
-		<key>Resources/speaker.png</key>
-		<data>
-		nH6Sh44q0RNn5Z+iJUDo9S1U/dg=
-		</data>
-		<key>Resources/sun.png</key>
-		<data>
-		g52Yx/k+edrmrJv5DYuzlSlDSrE=
-		</data>
-		<key>Resources/television.png</key>
-		<data>
-		cKKlogCi8rhlB9du6xdcOlTUis8=
-		</data>
 		<key>Resources/title.tiff</key>
 		<data>
 		BlI3PZJfqcGpgpYeuN7nhot0pLg=
-		</data>
-		<key>Resources/vinyl.png</key>
-		<data>
-		2HMWtu3pm3E63ITztWlKINaVviI=
 		</data>
 		<key>Resources/west tone.wav</key>
 		<data>
@@ -650,7 +734,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			JNs10OxlkO8lspxH67vmn2S3Fek=
+			ND2T352IrqLgkrpsPPq3+BKU3+E=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.andymatuschak.Sparkle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -961,7 +1045,7 @@
 		</data>
 		<key>Resources/TTActionHUDView.nib</key>
 		<data>
-		ksPeIZl5WoraWodwDG4ao0emknE=
+		IrQCdFZ+t2COAVDHbaNQ9qJcf/8=
 		</data>
 		<key>Resources/TTModeAlarmClock.plist</key>
 		<data>
@@ -981,7 +1065,7 @@
 		</data>
 		<key>Resources/TTModeHue.plist</key>
 		<data>
-		P+m7M/CRFSt7MRxTQhUp6lA13/M=
+		xq3+dfVY/INe8cYTEpaItvVV0sc=
 		</data>
 		<key>Resources/TTModeHueConnect.nib</key>
 		<data>
@@ -1005,19 +1089,19 @@
 		</data>
 		<key>Resources/TTModeHueRandomOptions.nib</key>
 		<data>
-		TwVyF6b0ocGvrAtj+rMcPsSTeU8=
+		KaDEaVtvvS6kHXfAY9epODZPXFM=
 		</data>
 		<key>Resources/TTModeHueSceneOptions.nib</key>
 		<data>
-		SE6Pd535ZZIt8z1bWoRaBY5BH3o=
+		Hl6KkSCiwakrtAGK36A2sMSVwVU=
 		</data>
 		<key>Resources/TTModeHueSleepOptions.nib</key>
 		<data>
-		Qp6HUSFjkjpdmoInMXHh9ZNxlmA=
+		aqil3+5BiNYmX7n3Ps3OTVQCV58=
 		</data>
 		<key>Resources/TTModeMacOptions.nib</key>
 		<data>
-		AJvn3F4oWlOv4kyliwieQkxqlYI=
+		rekciTmVBR09+OTimerh4rNh3CY=
 		</data>
 		<key>Resources/TTModeMusic.plist</key>
 		<data>
@@ -1051,17 +1135,21 @@
 		<data>
 		s3WSLfTKCP8Xv6f0V16/RZ/4paI=
 		</data>
-		<key>Resources/clock b&amp;w.png</key>
+		<key>Resources/actions/hue_evening.png</key>
 		<data>
-		dHHfkkN2cdiI0L82LdhRSp8zedY=
+		wjal2ON8IYF99P2MtOPM1JPHZGY=
 		</data>
-		<key>Resources/clock.png</key>
+		<key>Resources/actions/hue_random.png</key>
 		<data>
-		MRke99UJtoDSFEOvwbEmVF8Lrh8=
+		yUkYveyvJtsxozGKzFLohaXG+5Y=
 		</data>
-		<key>Resources/cog.png</key>
+		<key>Resources/actions/hue_sleep.png</key>
 		<data>
-		W9rkvXdyfkh42RN/r9T5nxpIvWg=
+		PZNGhhGyfFiQti2DOgeChfJyVG4=
+		</data>
+		<key>Resources/actions/hue_sunset.png</key>
+		<data>
+		JRz2zU/Elo65ukZFa/ALjYWO4hg=
 		</data>
 		<key>Resources/defaults.plist</key>
 		<data>
@@ -1098,37 +1186,189 @@
 			<key>optional</key>
 			<true/>
 		</dict>
-		<key>Resources/equalizer-1.png</key>
+		<key>Resources/firmwares/hrs_s110_5_0.hex</key>
 		<data>
-		YehFPEbUsISXQuREhIFLXPVrlIY=
+		mJzE1zjU2JyuNSgsgHKr4grPhcg=
 		</data>
-		<key>Resources/filmstrip-3.png</key>
+		<key>Resources/firmwares/hrs_s110_6_0.hex</key>
 		<data>
-		f8Efei8X9Dmf+aEIl/p2r1A5Zww=
+		Kecie1n0RJZLldkGCHn+Rex5LbA=
+		</data>
+		<key>Resources/firmwares/hrs_s110_7_0.hex</key>
+		<data>
+		ODYGUeuVZYePW42OVqRP82MrYLk=
+		</data>
+		<key>Resources/firmwares/hrs_s110_7_1_sdk7_1.zip</key>
+		<data>
+		x2SqHokGIxGZN2yGIhO+ulGlPRo=
+		</data>
+		<key>Resources/firmwares/hrs_s110_8_0_sdk_8_0.zip</key>
+		<data>
+		Xc+jnLIe1FshJYT7BVH6uKqUm/I=
+		</data>
+		<key>Resources/firmwares/nrf51_01.zip</key>
+		<data>
+		M/+1+/aJL+GV8eW2N6/tQmSoe48=
+		</data>
+		<key>Resources/firmwares/nrf51_01/manifest.json</key>
+		<data>
+		VwATXLRKtxIUnojxnQguKzZ06uY=
+		</data>
+		<key>Resources/firmwares/nrf51_01/nrf51422_xxac_s110.bin</key>
+		<data>
+		8gosoWP5AYpTTg4OTjfynhxnsxg=
+		</data>
+		<key>Resources/firmwares/nrf51_01/nrf51422_xxac_s110.dat</key>
+		<data>
+		r6X3NGuthBd1llC6NHZb5jY7ESg=
+		</data>
+		<key>Resources/firmwares/nrf51_02.zip</key>
+		<data>
+		VHYf59POPSxZNGcNE7+IbzBgc8g=
+		</data>
+		<key>Resources/firmwares/rscs_s110_5_0.hex</key>
+		<data>
+		r5VJeAsvqINf2oHJhAarvAMGYJw=
+		</data>
+		<key>Resources/firmwares/rscs_s110_6_0.hex</key>
+		<data>
+		1cNjKTiFl5fx5yITE8Ixg1sadeA=
+		</data>
+		<key>Resources/firmwares/rscs_s110_7_0.hex</key>
+		<data>
+		ggpmdRUNu6EO2cQEJ4yYjU/ie+k=
 		</data>
 		<key>Resources/fonts/Effra_Rg.ttf</key>
 		<data>
 		V7/5eGD8hqn7/snzpPyBZY7Y/iQ=
 		</data>
-		<key>Resources/heart.png</key>
+		<key>Resources/icons/clock b&amp;w.png</key>
+		<data>
+		dHHfkkN2cdiI0L82LdhRSp8zedY=
+		</data>
+		<key>Resources/icons/clock.png</key>
+		<data>
+		MRke99UJtoDSFEOvwbEmVF8Lrh8=
+		</data>
+		<key>Resources/icons/cog.png</key>
+		<data>
+		W9rkvXdyfkh42RN/r9T5nxpIvWg=
+		</data>
+		<key>Resources/icons/equalizer-1.png</key>
+		<data>
+		YehFPEbUsISXQuREhIFLXPVrlIY=
+		</data>
+		<key>Resources/icons/filmstrip-3.png</key>
+		<data>
+		f8Efei8X9Dmf+aEIl/p2r1A5Zww=
+		</data>
+		<key>Resources/icons/finger.png</key>
+		<data>
+		TzhjdCaDWKZUAFgjZzcZ9pxCKiw=
+		</data>
+		<key>Resources/icons/heart.png</key>
 		<data>
 		bQZsW0+9hhOxosDwSRFyaO7fifU=
 		</data>
-		<key>Resources/icon_movie.png</key>
+		<key>Resources/icons/icon_movie.png</key>
 		<data>
 		KRSF1Z5sA8IHOQFBUE9QDVAvv6g=
 		</data>
-		<key>Resources/icon_music.png</key>
+		<key>Resources/icons/icon_music.png</key>
 		<data>
 		yIcfblUuyUleEGTRqJjAfM7wEP4=
+		</data>
+		<key>Resources/icons/imac.png</key>
+		<data>
+		hhYNb1Zyqu7F6UVyYa5Hx1mADwI=
+		</data>
+		<key>Resources/icons/macbookpro.png</key>
+		<data>
+		DV1zl6UUPJ+d4PejbHml/1exSJM=
+		</data>
+		<key>Resources/icons/mode_alarm.png</key>
+		<data>
+		U5ilfDFlatv8YqT5hqzd4cS2QbQ=
+		</data>
+		<key>Resources/icons/mode_fitness.png</key>
+		<data>
+		YlVcSM5rjShllQRe0kB8PJL0O/4=
+		</data>
+		<key>Resources/icons/mode_hue.png</key>
+		<data>
+		gknwoSMdt/zTkdcm4+kXL0/HJDE=
+		</data>
+		<key>Resources/icons/mode_mac.png</key>
+		<data>
+		bLnlrsv0P1t1PsFmDkJktwX55qE=
+		</data>
+		<key>Resources/icons/mode_meditation.png</key>
+		<data>
+		908ekdtzP1ttRFS38kNAdH7XUic=
+		</data>
+		<key>Resources/icons/mode_morning.png</key>
+		<data>
+		SOE1sVusJloQGGG7Bp7u5Y97178=
+		</data>
+		<key>Resources/icons/mode_music.png</key>
+		<data>
+		Q2vQZv0sk87J67a6X2Hv6BlqDao=
+		</data>
+		<key>Resources/icons/mode_news.png</key>
+		<data>
+		mkXFyBXAGuNqlDS7MhiuzFHcPBQ=
+		</data>
+		<key>Resources/icons/mode_timer.png</key>
+		<data>
+		SIgXE7RTvy32sPrSoHB/GSQq9u8=
+		</data>
+		<key>Resources/icons/mode_video.png</key>
+		<data>
+		usa1zseYo4SH52mtUpANBvHevpw=
+		</data>
+		<key>Resources/icons/mode_web.png</key>
+		<data>
+		90xc0BFFpJJ+SB3BZqCCUu/QKeg=
+		</data>
+		<key>Resources/icons/newspaper-3.png</key>
+		<data>
+		6bTkggdrz5GfdsLGUNqe9VozFhU=
+		</data>
+		<key>Resources/icons/presentation-chart.png</key>
+		<data>
+		nhOe//O9E/bQjHH4DZchJCkVtzQ=
+		</data>
+		<key>Resources/icons/remote_graphic.png</key>
+		<data>
+		ZRrPBY13am/h2HSgR5CkYXylHt0=
+		</data>
+		<key>Resources/icons/settings.png</key>
+		<data>
+		Y/LrBC3NAIyVB7q9eIWntBBayUw=
+		</data>
+		<key>Resources/icons/settings@2x.png</key>
+		<data>
+		ISE+LRsnl26BY0MtLStI9GP5Htw=
+		</data>
+		<key>Resources/icons/speaker.png</key>
+		<data>
+		nH6Sh44q0RNn5Z+iJUDo9S1U/dg=
+		</data>
+		<key>Resources/icons/sun.png</key>
+		<data>
+		g52Yx/k+edrmrJv5DYuzlSlDSrE=
+		</data>
+		<key>Resources/icons/television.png</key>
+		<data>
+		cKKlogCi8rhlB9du6xdcOlTUis8=
+		</data>
+		<key>Resources/icons/vinyl.png</key>
+		<data>
+		2HMWtu3pm3E63ITztWlKINaVviI=
 		</data>
 		<key>Resources/ideas.txt</key>
 		<data>
 		ft4XDoRDWH3p0lIzIzKwN0Vd01A=
-		</data>
-		<key>Resources/imac.png</key>
-		<data>
-		hhYNb1Zyqu7F6UVyYa5Hx1mADwI=
 		</data>
 		<key>Resources/itunes_audiobook_icon.png</key>
 		<data>
@@ -1198,54 +1438,6 @@
 		<data>
 		yW0Si4WniB0oUxK2vpp7cchB9as=
 		</data>
-		<key>Resources/macbookpro.png</key>
-		<data>
-		DV1zl6UUPJ+d4PejbHml/1exSJM=
-		</data>
-		<key>Resources/mode_alarm.png</key>
-		<data>
-		U5ilfDFlatv8YqT5hqzd4cS2QbQ=
-		</data>
-		<key>Resources/mode_fitness.png</key>
-		<data>
-		YlVcSM5rjShllQRe0kB8PJL0O/4=
-		</data>
-		<key>Resources/mode_mac.png</key>
-		<data>
-		bLnlrsv0P1t1PsFmDkJktwX55qE=
-		</data>
-		<key>Resources/mode_meditation.png</key>
-		<data>
-		908ekdtzP1ttRFS38kNAdH7XUic=
-		</data>
-		<key>Resources/mode_morning.png</key>
-		<data>
-		SOE1sVusJloQGGG7Bp7u5Y97178=
-		</data>
-		<key>Resources/mode_music.png</key>
-		<data>
-		Q2vQZv0sk87J67a6X2Hv6BlqDao=
-		</data>
-		<key>Resources/mode_news.png</key>
-		<data>
-		mkXFyBXAGuNqlDS7MhiuzFHcPBQ=
-		</data>
-		<key>Resources/mode_timer.png</key>
-		<data>
-		SIgXE7RTvy32sPrSoHB/GSQq9u8=
-		</data>
-		<key>Resources/mode_video.png</key>
-		<data>
-		usa1zseYo4SH52mtUpANBvHevpw=
-		</data>
-		<key>Resources/mode_web.png</key>
-		<data>
-		90xc0BFFpJJ+SB3BZqCCUu/QKeg=
-		</data>
-		<key>Resources/newspaper-3.png</key>
-		<data>
-		6bTkggdrz5GfdsLGUNqe9VozFhU=
-		</data>
 		<key>Resources/north tone.wav</key>
 		<data>
 		cVT/Vv8tf06x3PtuSIaL9DzbrpA=
@@ -1254,41 +1446,17 @@
 		<data>
 		qxb4RGF8T1l4QFIXrvqlcuQBXXU=
 		</data>
-		<key>Resources/presentation-chart.png</key>
-		<data>
-		nhOe//O9E/bQjHH4DZchJCkVtzQ=
-		</data>
 		<key>Resources/press_smartbridge.png</key>
 		<data>
 		aBVq9/lSDg+61r5Iri4EMN9NWos=
-		</data>
-		<key>Resources/settings.tiff</key>
-		<data>
-		tdwWtbQb4fIAfoRtT2T077QhH2s=
 		</data>
 		<key>Resources/south tone.wav</key>
 		<data>
 		reHgHQ0FjUkpZmIt6yZckFnyOuk=
 		</data>
-		<key>Resources/speaker.png</key>
-		<data>
-		nH6Sh44q0RNn5Z+iJUDo9S1U/dg=
-		</data>
-		<key>Resources/sun.png</key>
-		<data>
-		g52Yx/k+edrmrJv5DYuzlSlDSrE=
-		</data>
-		<key>Resources/television.png</key>
-		<data>
-		cKKlogCi8rhlB9du6xdcOlTUis8=
-		</data>
 		<key>Resources/title.tiff</key>
 		<data>
 		BlI3PZJfqcGpgpYeuN7nhot0pLg=
-		</data>
-		<key>Resources/vinyl.png</key>
-		<data>
-		2HMWtu3pm3E63ITztWlKINaVviI=
 		</data>
 		<key>Resources/west tone.wav</key>
 		<data>
