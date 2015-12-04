@@ -94,6 +94,13 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
 - (NSString *)imageTTModeMusicVolumeJump {
     return @"music_volume.png";
 }
+- (NSString *)imageActionHudTTModeMusicPause {
+    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    if (iTunes.playerState == iTunesEPlSPlaying) {
+        return @"music_play.png";
+    }
+    return @"music_pause.png";
+}
 
 #pragma mark - Progress
 
@@ -120,9 +127,9 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
 
 #pragma mark - Layout
 
-- (ActionLayout)layoutTTModeMusicPause {
-    return ACTION_LAYOUT_IMAGE_TITLE;
-}
+//- (ActionLayout)layoutTTModeMusicPause {
+//    return ACTION_LAYOUT_IMAGE_TITLE;
+//}
 
 - (NSView *)viewForLayoutTTModeMusicPause:(NSRect)rect {
     iTunesApplication * iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];

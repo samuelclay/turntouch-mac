@@ -207,6 +207,20 @@
     return actionImageName;
 }
 
+
+- (NSString *)imageNameForActionHudInDirection:(TTModeDirection)direction {
+    NSString *actionName = [self actionNameInDirection:direction];
+    SEL selector = NSSelectorFromString([NSString stringWithFormat:@"imageActionHud%@",
+                                         actionName]);
+    IMP imp = [self methodForSelector:selector];
+    NSString *(*func)(id, SEL) = (void *)imp;
+    if ([self respondsToSelector:selector]) {
+        return func(self, selector);
+    }
+    
+    return [self imageNameForAction:actionName];
+}
+
 - (ActionLayout)layoutInDirection:(TTModeDirection)direction {
     NSString *actionName = [self actionNameInDirection:direction];
     
