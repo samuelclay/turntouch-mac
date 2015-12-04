@@ -51,7 +51,7 @@ const NSInteger kModeLabelRadius = 28;
     CGFloat widthPadding = (screen.frame.size.width * kPaddingPct) / 2;
     CGFloat width = screen.frame.size.width - widthPadding*2;
     CGFloat height = width;
-    CGFloat actionHeight = NSHeight(screen.frame) / 4;
+    CGFloat actionHeight = NSHeight(screen.frame) / 3;
     CGFloat heightPadding = (NSHeight(screen.frame) - height + actionHeight) / 2;
     
     if (rotated) {

@@ -16,6 +16,7 @@
 
 const CGFloat kActionHUDMarginPct = .6f;
 const NSInteger kChevronSize = 48;
+const NSInteger kActionLayoutRadius = 28;
 
 - (void)awakeFromNib {
     NSRect actionFrame = [self.class actionFrame];
@@ -54,7 +55,7 @@ const NSInteger kChevronSize = 48;
     }
     
     CGFloat widthPadding = NSWidth(screen.frame) / 2 - width / 2;
-    CGFloat heightPadding = 48;
+    CGFloat heightPadding = NSHeight(screen.frame) / 10;
     
     return NSMakeRect(widthPadding, heightPadding, width, height);
 }
@@ -109,7 +110,6 @@ const NSInteger kChevronSize = 48;
         [imageLayoutView setHidden:YES];
     } else if (layout == ACTION_LAYOUT_IMAGE_TITLE) {
         NSRect frame = [self.class actionFrame];
-        frame.origin.y -= 64;
         imageLayoutView = [mode viewForLayout:direction withRect:frame];
         [self addSubview:imageLayoutView];
         [imageLayoutView setHidden:NO];
@@ -119,7 +119,7 @@ const NSInteger kChevronSize = 48;
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     ActionLayout layout = [mode layoutInDirection:direction];
-    
+
     [self drawBackground];
     [self drawIcon];
     [self drawChevron];
@@ -128,8 +128,11 @@ const NSInteger kChevronSize = 48;
         [self drawActionLabel];
         [self drawProgress];
     } else if (layout == ACTION_LAYOUT_IMAGE_TITLE) {
-        [self drawSmallLabel];
+        [self drawModeLabel];
+        [self drawActionLabel];
+//        [self drawSmallLabel];
         [imageLayoutView setHidden:NO];
+        [self drawActionLayoutImageTitleBackground];
     }
 }
 
@@ -247,21 +250,32 @@ const NSInteger kChevronSize = 48;
 
 - (void)drawSmallLabel {
     NSRect frame = [self.class actionFrame];
-    NSShadow *stringShadow = [[NSShadow alloc] init];
-    stringShadow.shadowColor = [NSColor whiteColor];
-    stringShadow.shadowOffset = NSMakeSize(0, -1);
-    stringShadow.shadowBlurRadius = 0;
-    NSColor *textColor = NSColorFromRGB(0x404A60);
+//    NSShadow *stringShadow = [[NSShadow alloc] init];
+//    stringShadow.shadowColor = [NSColor whiteColor];
+//    stringShadow.shadowOffset = NSMakeSize(0, -1);
+//    stringShadow.shadowBlurRadius = 0;
+    NSColor *textColor = NSColorFromRGB(0x57585F);
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [style setAlignment:NSCenterTextAlignment];
     NSDictionary *labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:38],
                                       NSForegroundColorAttributeName: textColor,
-                                      NSShadowAttributeName: stringShadow,
+//                                      NSShadowAttributeName: stringShadow,
                                       NSParagraphStyleAttributeName: style
                                       };
     NSString *directionLabel = [mode actionTitleInDirection:direction buttonAction:buttonAction];
     frame.size.height = frame.size.height * 0.7 + [directionLabel sizeWithAttributes:labelAttributes].height/2;
     [directionLabel drawInRect:frame withAttributes:labelAttributes];
 }
+
+- (void)drawActionLayoutImageTitleBackground {
+    NSBezierPath *ellipse = [NSBezierPath bezierPathWithRoundedRect:imageLayoutView.frame
+                                                            xRadius:kActionLayoutRadius
+                                                            yRadius:kActionLayoutRadius];
+    CGFloat alpha = 0.99f;
+    NSColor *color = NSColorFromRGBAlpha(0xF1F1F2, alpha);
+    [color setFill];
+    [ellipse fill];
+}
+
 
 @end
