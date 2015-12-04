@@ -21,6 +21,10 @@ extern const CGFloat kActionHUDMarginPct;
     NSView *imageLayoutView;
     NSImageView *backgroundView;
     NSImageView *iconView;
+    NSImageView *northChevron;
+    NSImageView *eastChevron;
+    NSImageView *westChevron;
+    NSImageView *southChevron;
 }
 
 @property (nonatomic) TTModeDirection direction;
