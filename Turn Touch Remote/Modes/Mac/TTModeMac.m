@@ -72,16 +72,16 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
 #pragma mark - Action Images
 
 - (NSString *)imageTTModeMacVolumeUp {
-    return @"volume_up.png";
+    return @"music_volume_up.png";
 }
 - (NSString *)imageTTModeMacVolumeDown {
-    return @"volume_down.png";
+    return @"music_volume_down.png";
 }
 - (NSString *)imageTTModeMacVolumeMute {
-    return @"mute.png";
+    return @"music_volume_mute.png";
 }
 - (NSString *)imageTTModeMacTurnOffScreen {
-    return @"imac.png";
+    return @"hue_sleep.png";
 }
 
 #pragma mark - Action methods

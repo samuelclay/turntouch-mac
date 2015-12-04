@@ -109,6 +109,7 @@ const NSInteger kChevronSize = 48;
         [imageLayoutView setHidden:YES];
     } else if (layout == ACTION_LAYOUT_IMAGE_TITLE) {
         NSRect frame = [self.class actionFrame];
+        frame.origin.y -= 64;
         imageLayoutView = [mode viewForLayout:direction withRect:frame];
         [self addSubview:imageLayoutView];
         [imageLayoutView setHidden:NO];

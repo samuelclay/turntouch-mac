@@ -115,11 +115,12 @@
     NSRect iconFrame = self.bounds;
     iconFrame.origin.y += 36;
     [iconView setFrame:iconFrame];
-    
+
     NSString *imageFilename = [diamondMode imageNameInDirection:labelDirection];
     NSString *imagePath = [NSString stringWithFormat:@"%@/actions/%@", [[NSBundle mainBundle] resourcePath], imageFilename];
     NSImage *image = [[NSImage alloc] initWithContentsOfFile:imagePath];
-    [image setSize:NSMakeSize(96, 96)];
+    NSInteger iconSize = round(MAX(CGRectGetHeight(iconFrame), CGRectGetWidth(iconFrame)) / 10);
+    [image setSize:NSMakeSize(iconSize, iconSize)];
     [iconView setImage:image];
     
 }
@@ -147,7 +148,7 @@
                             NSParagraphStyleAttributeName: style
                             };
     } else {
-        NSInteger fontSize = round(CGRectGetWidth(screen.frame) / 76);
+        NSInteger fontSize = round(CGRectGetWidth(screen.frame) / 96);
         labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:(interactive ? 13 : fontSize)],
                             NSForegroundColorAttributeName: textColor,
                             NSParagraphStyleAttributeName: style

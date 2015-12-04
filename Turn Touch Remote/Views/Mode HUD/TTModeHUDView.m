@@ -1,5 +1,5 @@
 //
-//  TTHUDView.m
+//  TTModeHUDView.m
 //  Turn Touch Remote
 //
 //  Created by Samuel Clay on 12/4/14.
@@ -11,10 +11,11 @@
 
 @implementation TTModeHUDView
 
-const CGFloat kPaddingPct = .7f;
+const NSInteger kSizeMultiplier = 16;
+const CGFloat kPaddingPct = .75f;
 const NSInteger kImageMargin = 32;
-const NSInteger kImageSize = 54;
 const NSInteger kImageTextMargin = 12;
+const NSInteger kModeLabelRadius = 28;
 
 @synthesize isTeaser;
 @synthesize gradientView;
@@ -123,8 +124,8 @@ const NSInteger kImageTextMargin = 12;
                                         [NSNumber numberWithInteger:SOUTH]]) {
         TTModeDirection direction = (TTModeDirection)[directionNumber integerValue];
         NSBezierPath *ellipse = [NSBezierPath bezierPathWithRoundedRect:[self modeLabelFrame:direction]
-                                                                xRadius:28.0
-                                                                yRadius:28.0];
+                                                                xRadius:kModeLabelRadius
+                                                                yRadius:kModeLabelRadius];
         CGFloat alpha = 0.99f;
         NSColor *labelColor = NSColorFromRGBAlpha(0xF1F1F2, alpha);
         if (titleMode != [appDelegate.modeMap modeInDirection:direction]) {
@@ -141,7 +142,8 @@ const NSInteger kImageTextMargin = 12;
     NSRect mapFrame = [self mapFrame:NO];
     NSString *directionModeTitle = [[[appDelegate.modeMap modeInDirection:direction] class] title];
     NSSize titleSize = [directionModeTitle sizeWithAttributes:modeAttributes];
-    CGFloat width = titleSize.width + kImageSize + kImageMargin*2 + kImageTextMargin;
+    NSInteger imageSize = titleSize.height;
+    CGFloat width = titleSize.width + imageSize + kImageMargin*2 + kImageTextMargin;
     CGFloat height = titleSize.height + kImageMargin;
     CGFloat x = 0;
     CGFloat y = 0;
@@ -197,7 +199,9 @@ const NSInteger kImageTextMargin = 12;
         NSString *imageFilename = [[directionMode class] imageName];
         NSString *imagePath = [NSString stringWithFormat:@"%@/icons/%@", [[NSBundle mainBundle] resourcePath], imageFilename];
         modeImage = [[NSImage alloc] initWithContentsOfFile:imagePath];
-        [modeImage setSize:NSMakeSize(kImageSize, kImageSize)];
+        NSString *directionModeTitle = [[[appDelegate.modeMap modeInDirection:direction] class] title];
+        NSSize titleSize = [directionModeTitle sizeWithAttributes:modeAttributes];
+        [modeImage setSize:NSMakeSize(titleSize.height, titleSize.height)];
                 
         CGFloat offset = (NSHeight(frame)/2) - (modeImage.size.height/2);
         NSPoint imagePoint = NSMakePoint(frame.origin.x + kImageMargin, frame.origin.y + offset);
@@ -205,12 +209,12 @@ const NSInteger kImageTextMargin = 12;
                                          modeImage.size.width, modeImage.size.height)
                      fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:imageAlpha];
         
-        NSString *directionModeTitle = [[directionMode class] title];
-        NSSize titleSize = [directionModeTitle sizeWithAttributes:attributes];
 //        NSLog(@"Mode HUD: %@ - %@ / %@", directionModeTitle, NSStringFromSize(titleSize), NSStringFromRect(frame));
         NSRect textFrame = frame;
+        NSInteger fudgeFactor = 8;
         textFrame.origin.x += modeImage.size.width + kImageMargin + kImageTextMargin;
-        textFrame.origin.y += kImageMargin/2 - titleSize.height/2;
+        textFrame.origin.y += NSHeight(frame)/2 - titleSize.height/2 + titleSize.height/fudgeFactor;
+        textFrame.size.height = titleSize.height;
         [directionModeTitle drawInRect:textFrame withAttributes:attributes];
     }
 }
@@ -233,8 +237,8 @@ const NSInteger kImageTextMargin = 12;
 }
 
 - (void)setupTitleAttributes:(TTMode *)mode {
-    NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
-    NSInteger fontSize = round(CGRectGetWidth(screen.frame) / 72);
+    NSRect mapFrame = [self mapFrame:NO];
+    NSInteger fontSize = round(CGRectGetHeight(mapFrame) / kSizeMultiplier);
     titleMode = mode;
     modeTitle = [[titleMode class] title];
     NSColor *textColor = NSColorFromRGB(0x57585F);
