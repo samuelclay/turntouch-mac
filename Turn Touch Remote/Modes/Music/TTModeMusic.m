@@ -77,22 +77,22 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
 #pragma mark - Action Images
 
 - (NSString *)imageTTModeMusicVolumeUp {
-    return @"volume_up.png";
+    return @"music_volume_up.png";
 }
 - (NSString *)imageTTModeMusicVolumeDown {
-    return @"volume_down.png";
+    return @"music_volume_down.png";
 }
 - (NSString *)imageTTModeMusicPause {
-    return @"play.png";
+    return @"music_play.png";
 }
 - (NSString *)imageTTModeMusicNextTrack {
-    return @"next_track.png";
+    return @"music_ff.png";
 }
 - (NSString *)imageTTModeMusicPreviousTrack {
-    return @"previous_track.png";
+    return @"music_rewind.png";
 }
 - (NSString *)imageTTModeMusicVolumeJump {
-    return @"volume_jump.png";
+    return @"music_volume.png";
 }
 
 #pragma mark - Progress

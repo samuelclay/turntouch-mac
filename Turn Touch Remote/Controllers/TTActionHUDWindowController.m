@@ -53,6 +53,7 @@
 - (IBAction)fadeIn:(TTModeDirection)direction withMode:(TTMode *)mode buttonAction:(TTButtonAction)buttonAction {
     if (!mode) mode = NSAppDelegate.modeMap.selectedMode;
     
+    NSLog(@" ---> Fade in action: %d", direction);
     [hudWindow makeKeyAndOrderFront:nil];
     [self showWindow:self];
     
@@ -69,10 +70,14 @@
         [[hudWindow animator] setAlphaValue:0.f];
     }
     
+    fadingIn = YES;
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:.2f];
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
+    [[NSAnimationContext currentContext] setCompletionHandler:^{
+        fadingIn = NO;
+    }];
     
     [[hudWindow animator] setAlphaValue:1.f];
     [[hudWindow animator] setFrame:[self visibleFrame] display:YES];
@@ -82,11 +87,14 @@
 
 - (IBAction)fadeOut:(id)sender {
 //    __block __unsafe_unretained NSWindow *window = hudWindow;
-
+    NSLog(@" ---> Fade out action");
+    
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:.25f];
     [[NSAnimationContext currentContext] setCompletionHandler:^{
+        if (fadingIn) return;
         [hudView setHidden:YES];
+        
     }];
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];

@@ -17,6 +17,8 @@
     TTAppDelegate *appDelegate;
     TTActionHUDView *hudView;
     TTActionHUDWindow *hudWindow;
+    
+    BOOL fadingIn;
 }
 
 @property (nonatomic) IBOutlet TTActionHUDView *hudView;
