@@ -13,9 +13,6 @@
 
 const NSInteger kSizeMultiplier = 16;
 const CGFloat kPaddingPct = .75f;
-const NSInteger kImageMargin = 32;
-const NSInteger kImageTextMargin = 12;
-const NSInteger kModeLabelRadius = 28;
 
 @synthesize isTeaser;
 @synthesize gradientView;
@@ -33,6 +30,28 @@ const NSInteger kModeLabelRadius = 28;
     [self addSubview:gradientView];
     [self addSubview:diamondLabels];
 }
+
+#pragma mark - Constants
+
+- (CGFloat)hudRadius {
+    NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
+    
+    return NSWidth(screen.frame)/84.f;
+}
+
+- (CGFloat)hudImageMargin {
+    NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
+    
+    return NSWidth(screen.frame)/128.f;
+}
+
+- (CGFloat)hudImageTextMargin {
+    NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
+    
+    return NSWidth(screen.frame)/384.f;
+}
+
+#pragma mark - Drawing
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
@@ -69,8 +88,8 @@ const NSInteger kModeLabelRadius = 28;
     diamondFrame.origin = CGPointZero;
     
     NSBezierPath *diamond = [NSBezierPath bezierPathWithRoundedRect:diamondFrame
-                                                            xRadius:48.0
-                                                            yRadius:48.0];
+                                                            xRadius:self.hudRadius
+                                                            yRadius:self.hudRadius];
     
     NSBezierPath *diamondBorder1 = [NSBezierPath bezierPath];
     [diamondBorder1 moveToPoint:NSMakePoint(0, diamondFrame.size.height/2)];
@@ -124,8 +143,8 @@ const NSInteger kModeLabelRadius = 28;
                                         [NSNumber numberWithInteger:SOUTH]]) {
         TTModeDirection direction = (TTModeDirection)[directionNumber integerValue];
         NSBezierPath *ellipse = [NSBezierPath bezierPathWithRoundedRect:[self modeLabelFrame:direction]
-                                                                xRadius:kModeLabelRadius
-                                                                yRadius:kModeLabelRadius];
+                                                                xRadius:self.hudRadius
+                                                                yRadius:self.hudRadius];
         CGFloat alpha = 0.99f;
         NSColor *labelColor = NSColorFromRGBAlpha(0xF1F1F2, alpha);
         if (titleMode != [appDelegate.modeMap modeInDirection:direction]) {
@@ -143,8 +162,8 @@ const NSInteger kModeLabelRadius = 28;
     NSString *directionModeTitle = [[[appDelegate.modeMap modeInDirection:direction] class] title];
     NSSize titleSize = [directionModeTitle sizeWithAttributes:modeAttributes];
     NSInteger imageSize = titleSize.height;
-    CGFloat width = titleSize.width + imageSize + kImageMargin*2 + kImageTextMargin;
-    CGFloat height = titleSize.height + kImageMargin;
+    CGFloat width = titleSize.width + imageSize + self.hudImageMargin*2 + self.hudImageTextMargin;
+    CGFloat height = titleSize.height + self.hudImageMargin;
     CGFloat x = 0;
     CGFloat y = 0;
     switch (direction) {
@@ -204,7 +223,7 @@ const NSInteger kModeLabelRadius = 28;
         [modeImage setSize:NSMakeSize(titleSize.height, titleSize.height)];
                 
         CGFloat offset = (NSHeight(frame)/2) - (modeImage.size.height/2);
-        NSPoint imagePoint = NSMakePoint(frame.origin.x + kImageMargin, frame.origin.y + offset);
+        NSPoint imagePoint = NSMakePoint(frame.origin.x + self.hudImageMargin, frame.origin.y + offset);
         [modeImage drawInRect:NSMakeRect(imagePoint.x, imagePoint.y,
                                          modeImage.size.width, modeImage.size.height)
                      fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:imageAlpha];
@@ -212,7 +231,7 @@ const NSInteger kModeLabelRadius = 28;
 //        NSLog(@"Mode HUD: %@ - %@ / %@", directionModeTitle, NSStringFromSize(titleSize), NSStringFromRect(frame));
         NSRect textFrame = frame;
         NSInteger fudgeFactor = 8;
-        textFrame.origin.x += modeImage.size.width + kImageMargin + kImageTextMargin;
+        textFrame.origin.x += modeImage.size.width + self.hudImageMargin + self.hudImageTextMargin;
         textFrame.origin.y += NSHeight(frame)/2 - titleSize.height/2 + titleSize.height/fudgeFactor;
         textFrame.size.height = titleSize.height;
         [directionModeTitle drawInRect:textFrame withAttributes:attributes];

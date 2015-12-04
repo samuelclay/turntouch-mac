@@ -15,8 +15,6 @@
 @synthesize buttonAction;
 
 const CGFloat kActionHUDMarginPct = .6f;
-const NSInteger kChevronSize = 48;
-const NSInteger kActionLayoutRadius = 28;
 
 - (void)awakeFromNib {
     NSRect actionFrame = [self.class actionFrame];
@@ -44,6 +42,40 @@ const NSInteger kActionLayoutRadius = 28;
     [self addSubview:southChevron];
 }
 
+#pragma mark - Constants
+
+- (CGFloat)hudRadius {
+    NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
+    
+    return NSWidth(screen.frame)/84.f;
+}
+
+- (CGFloat)hudChevronSize {
+    NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
+    
+    return NSWidth(screen.frame)/64.f;
+}
+
+- (CGFloat)hudIconSize {
+    NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
+    
+    return NSWidth(screen.frame)/32.f;
+}
+
+- (CGFloat)hudModeTitleSize {
+    NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
+    
+    return NSWidth(screen.frame)/96.f;
+}
+
+- (CGFloat)hudActionTitleSize {
+    NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
+    
+    return NSWidth(screen.frame)/118.f;
+}
+
+#pragma mark - Drawing
+
 + (NSRect)actionFrame {
     NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
     CGFloat width = NSWidth(screen.frame)/8;
@@ -62,22 +94,22 @@ const NSInteger kActionLayoutRadius = 28;
 
 - (NSRect)frameForChevron:(NSRect)actionFrame inDirection:(TTModeDirection)_direction {
     if (_direction == NORTH) {
-        NSRect horizontalRect = NSInsetRect(actionFrame, NSWidth(actionFrame)/2-kChevronSize/2, 0);
+        NSRect horizontalRect = NSInsetRect(actionFrame, NSWidth(actionFrame)/2-self.hudChevronSize/2, 0);
         NSRect verticalRect = horizontalRect;
         verticalRect.origin.y += NSHeight(verticalRect)/2 - 36 - 12;
         return verticalRect;
     } else if (_direction == SOUTH) {
-        NSRect horizontalRect = NSInsetRect(actionFrame, NSWidth(actionFrame)/2-kChevronSize/2, 0);
+        NSRect horizontalRect = NSInsetRect(actionFrame, NSWidth(actionFrame)/2-self.hudChevronSize/2, 0);
         NSRect verticalRect = horizontalRect;
         verticalRect.origin.y -= NSHeight(verticalRect)/2 - 36 - 12;
         return verticalRect;
     } else if (_direction == EAST) {
-        NSRect verticalRect = NSInsetRect(actionFrame, 0, NSHeight(actionFrame)/2-kChevronSize/2);
+        NSRect verticalRect = NSInsetRect(actionFrame, 0, NSHeight(actionFrame)/2-self.hudChevronSize/2);
         NSRect horizontalRect = verticalRect;
         horizontalRect.origin.x += NSWidth(verticalRect)/2 - 36 - 12;
         return horizontalRect;
     } else if (_direction == WEST) {
-        NSRect verticalRect = NSInsetRect(actionFrame, 0, NSHeight(actionFrame)/2-kChevronSize/2);
+        NSRect verticalRect = NSInsetRect(actionFrame, 0, NSHeight(actionFrame)/2-self.hudChevronSize/2);
         NSRect horizontalRect = verticalRect;
         horizontalRect.origin.x -= NSWidth(verticalRect)/2 - 36 - 12;
         return horizontalRect;
@@ -170,7 +202,7 @@ const NSInteger kActionLayoutRadius = 28;
     NSString *iconFilename = [mode imageNameForActionHudInDirection:direction];
     NSString *imageFile = [NSString stringWithFormat:@"%@/actions/%@", [[NSBundle mainBundle] resourcePath], iconFilename];
     NSImage *icon = [[NSImage alloc] initWithContentsOfFile:imageFile];
-    [icon setSize:NSMakeSize(96, 96)];
+    [icon setSize:NSMakeSize(self.hudIconSize, self.hudIconSize)];
     [iconView setImage:icon];
 }
 
@@ -197,13 +229,11 @@ const NSInteger kActionLayoutRadius = 28;
 #pragma mark - Action Layout - Text / Progress
 
 - (void)drawModeLabel {
-    NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
-    NSInteger fontSize = round(CGRectGetWidth(screen.frame) / 96);
     NSRect frame = [self.class actionFrame];
     NSColor *textColor = NSColorFromRGB(0x57585F);
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [style setAlignment:NSCenterTextAlignment];
-    NSDictionary *labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:fontSize],
+    NSDictionary *labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:self.hudModeTitleSize],
                                       NSForegroundColorAttributeName: textColor,
                                       NSParagraphStyleAttributeName: style
                                       };
@@ -216,8 +246,6 @@ const NSInteger kActionLayoutRadius = 28;
 }
 
 - (void)drawActionLabel {
-    NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
-    NSInteger fontSize = round(CGRectGetWidth(screen.frame) / 118);
     NSRect frame = [self.class actionFrame];
     //    NSShadow *stringShadow = [[NSShadow alloc] init];
     //    stringShadow.shadowColor = [NSColor whiteColor];
@@ -226,7 +254,7 @@ const NSInteger kActionLayoutRadius = 28;
     NSColor *textColor = NSColorFromRGB(0x57585F);
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [style setAlignment:NSCenterTextAlignment];
-    NSDictionary *labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:fontSize],
+    NSDictionary *labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:self.hudActionTitleSize],
                                       NSForegroundColorAttributeName: textColor,
                                       //                                      NSShadowAttributeName: stringShadow,
                                       NSParagraphStyleAttributeName: style
@@ -269,8 +297,8 @@ const NSInteger kActionLayoutRadius = 28;
 
 - (void)drawActionLayoutImageTitleBackground {
     NSBezierPath *ellipse = [NSBezierPath bezierPathWithRoundedRect:imageLayoutView.frame
-                                                            xRadius:kActionLayoutRadius
-                                                            yRadius:kActionLayoutRadius];
+                                                            xRadius:self.hudRadius
+                                                            yRadius:self.hudRadius];
     CGFloat alpha = 0.99f;
     NSColor *color = NSColorFromRGBAlpha(0xF1F1F2, alpha);
     [color setFill];

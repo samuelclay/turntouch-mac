@@ -102,7 +102,7 @@
     NSSize labelSize = [directionLabel sizeWithAttributes:labelAttributes];
     NSInteger iconOffset = 0;
     if (isHud) {
-        iconOffset = 96 / 2 - 24;
+        iconOffset = MIN(NSWidth(self.bounds), NSHeight(self.bounds))/16;
     }
     [directionLabel drawAtPoint:NSMakePoint(NSWidth(self.bounds)/2 - labelSize.width/2,
                                             NSHeight(self.bounds)/2 - labelSize.height/(140/50.f) - iconOffset)
@@ -113,7 +113,7 @@
     if (!isHud) return;
     
     NSRect iconFrame = self.bounds;
-    iconFrame.origin.y += 36;
+    iconFrame.origin.y += MIN(NSWidth(self.bounds), NSHeight(self.bounds))/8;
     [iconView setFrame:iconFrame];
 
     NSString *imageFilename = [diamondMode imageNameInDirection:labelDirection];
