@@ -96,22 +96,22 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
 #pragma mark - Action Images
 
 - (NSString *)imageTTModeAlarmSnooze {
-    return @"snooze.png";
+    return @"alarm_snooze.png";
 }
 - (NSString *)imageTTModeAlarmNextSong {
-    return @"next_song.png";
+    return @"music_ff.png";
 }
 - (NSString *)imageTTModeAlarmSongInfo {
     return @"song_info.png";
 }
 - (NSString *)imageTTModeAlarmStop {
-    return @"stop_alarm.png";
+    return @"alarm_snooze.png";
 }
 - (NSString *)imageTTModeAlarmVolumeUp {
-    return @"volume_up.png";
+    return @"music_volume_up.png";
 }
 - (NSString *)imageTTModeAlarmVolumeDown {
-    return @"volume_down.png";
+    return @"music_volume_down.png";
 }
 
 #pragma mark - Action methods
