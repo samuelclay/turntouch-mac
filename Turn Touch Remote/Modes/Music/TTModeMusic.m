@@ -165,7 +165,7 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
 
 + (NSView *)songInfoView:(NSRect)rect withTrack:(iTunesTrack *)currentTrack {
     NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
-    NSInteger fontSize = round(CGRectGetWidth(screen.frame) / 96);
+    NSInteger fontSize = round(CGRectGetWidth(screen.frame) / 128);
     NSColor *textColor = NSColorFromRGB(0x604050);
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [style setAlignment:NSCenterTextAlignment];
@@ -175,10 +175,11 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
                                       };
     NSSize textSize = [(currentTrack.name ? currentTrack.name : @"iTunes") sizeWithAttributes:labelAttributes];
     rect.size.height = textSize.height * 3;
+    rect.size.width *= 1.25;
+    rect.origin.x -= NSWidth(rect)*0.25/2;
     rect.origin.y -= rect.size.height + 16;
-    
     NSView *view = [[NSView alloc] initWithFrame:rect];
-    NSRect hudFrame = [TTActionHUDView actionFrame];
+    NSRect hudFrame = rect;
     
     // Album art
     NSImage *songArtwork;
@@ -188,17 +189,17 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
     } else {
         songArtwork = [NSImage imageNamed:@"icon_music.png"];
     }
-    NSInteger imageMargin = 12;
+    NSInteger imageMargin = NSWidth(screen.frame)/512;
     NSInteger imageSize = rect.size.height - imageMargin*2;
-    NSInteger infoX = imageMargin + imageSize + imageMargin;
-    NSInteger infoWidth = hudFrame.size.width - infoX - imageMargin;
+    NSInteger infoX = imageMargin*2 + imageSize + imageMargin;
+    NSInteger infoWidth = NSWidth(hudFrame) - infoX - imageMargin;
     NSImageView *imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(imageMargin, imageMargin, imageSize, imageSize)];
     [imageView setImage:songArtwork];
     [view addSubview:imageView];
     
     // Check if song playing
     if (!currentTrack.name) {
-        NSTextView *songTitleView = [[NSTextView alloc] initWithFrame:NSMakeRect(infoX, textSize.height*1.5, infoWidth, textSize.height)];
+        NSTextView *songTitleView = [[NSTextView alloc] initWithFrame:NSMakeRect(infoX, textSize.height, infoWidth, textSize.height)];
         [songTitleView setString:@"iTunes isn't playing anything"];
         [songTitleView setTextColor:NSColorFromRGB(0x604050)];
         [songTitleView setFont:[NSFont fontWithName:@"Effra" size:fontSize]];

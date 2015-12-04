@@ -162,7 +162,6 @@ const CGFloat kActionHUDMarginPct = .6f;
     } else if (layout == ACTION_LAYOUT_IMAGE_TITLE) {
         [self drawModeLabel];
         [self drawActionLabel];
-//        [self drawSmallLabel];
         [imageLayoutView setHidden:NO];
         [self drawActionLayoutImageTitleBackground];
     }
@@ -276,29 +275,10 @@ const CGFloat kActionHUDMarginPct = .6f;
 
 #pragma mark - Action Layout - Image
 
-- (void)drawSmallLabel {
-    NSRect frame = [self.class actionFrame];
-//    NSShadow *stringShadow = [[NSShadow alloc] init];
-//    stringShadow.shadowColor = [NSColor whiteColor];
-//    stringShadow.shadowOffset = NSMakeSize(0, -1);
-//    stringShadow.shadowBlurRadius = 0;
-    NSColor *textColor = NSColorFromRGB(0x57585F);
-    NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-    [style setAlignment:NSCenterTextAlignment];
-    NSDictionary *labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:38],
-                                      NSForegroundColorAttributeName: textColor,
-//                                      NSShadowAttributeName: stringShadow,
-                                      NSParagraphStyleAttributeName: style
-                                      };
-    NSString *directionLabel = [mode actionTitleInDirection:direction buttonAction:buttonAction];
-    frame.size.height = frame.size.height * 0.7 + [directionLabel sizeWithAttributes:labelAttributes].height/2;
-    [directionLabel drawInRect:frame withAttributes:labelAttributes];
-}
-
 - (void)drawActionLayoutImageTitleBackground {
-    NSBezierPath *ellipse = [NSBezierPath bezierPathWithRoundedRect:imageLayoutView.frame
-                                                            xRadius:self.hudRadius
-                                                            yRadius:self.hudRadius];
+    NSBezierPath *ellipse = [NSBezierPath bezierPathWithRoundedRect:NSInsetRect(imageLayoutView.frame, self.hudRadius*-0.25, self.hudRadius*-0.25)
+                                                            xRadius:self.hudRadius/2
+                                                            yRadius:self.hudRadius/2];
     CGFloat alpha = 0.99f;
     NSColor *color = NSColorFromRGBAlpha(0xF1F1F2, alpha);
     [color setFill];
