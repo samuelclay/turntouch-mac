@@ -15,6 +15,7 @@
 @synthesize buttonAction;
 
 const CGFloat kActionHUDMarginPct = .6f;
+const NSInteger kChevronSize = 48;
 
 - (void)awakeFromNib {
     NSRect actionFrame = [self.class actionFrame];
@@ -60,24 +61,24 @@ const CGFloat kActionHUDMarginPct = .6f;
 
 - (NSRect)frameForChevron:(NSRect)actionFrame inDirection:(TTModeDirection)_direction {
     if (_direction == NORTH) {
-        NSRect horizontalRect = NSInsetRect(actionFrame, NSWidth(actionFrame)/2-64/2, 0);
+        NSRect horizontalRect = NSInsetRect(actionFrame, NSWidth(actionFrame)/2-kChevronSize/2, 0);
         NSRect verticalRect = horizontalRect;
-        verticalRect.origin.y += NSHeight(verticalRect)/2 - 36;
+        verticalRect.origin.y += NSHeight(verticalRect)/2 - 36 - 12;
         return verticalRect;
     } else if (_direction == SOUTH) {
-        NSRect horizontalRect = NSInsetRect(actionFrame, NSWidth(actionFrame)/2-64/2, 0);
+        NSRect horizontalRect = NSInsetRect(actionFrame, NSWidth(actionFrame)/2-kChevronSize/2, 0);
         NSRect verticalRect = horizontalRect;
-        verticalRect.origin.y -= NSHeight(verticalRect)/2 - 36;
+        verticalRect.origin.y -= NSHeight(verticalRect)/2 - 36 - 12;
         return verticalRect;
     } else if (_direction == EAST) {
-        NSRect verticalRect = NSInsetRect(actionFrame, 0, NSHeight(actionFrame)/2-64/2);
+        NSRect verticalRect = NSInsetRect(actionFrame, 0, NSHeight(actionFrame)/2-kChevronSize/2);
         NSRect horizontalRect = verticalRect;
-        horizontalRect.origin.x += NSWidth(verticalRect)/2 - 36;
+        horizontalRect.origin.x += NSWidth(verticalRect)/2 - 36 - 12;
         return horizontalRect;
     } else if (_direction == WEST) {
-        NSRect verticalRect = NSInsetRect(actionFrame, 0, NSHeight(actionFrame)/2-64/2);
+        NSRect verticalRect = NSInsetRect(actionFrame, 0, NSHeight(actionFrame)/2-kChevronSize/2);
         NSRect horizontalRect = verticalRect;
-        horizontalRect.origin.x -= NSWidth(verticalRect)/2 - 36;
+        horizontalRect.origin.x -= NSWidth(verticalRect)/2 - 36 - 12;
         return horizontalRect;
     }
     
@@ -185,9 +186,6 @@ const CGFloat kActionHUDMarginPct = .6f;
     NSString *directionName = [appDelegate.modeMap directionName:_direction];
     NSString *imageFile = [NSString stringWithFormat:@"%@/actions/chevron_%@.png", [[NSBundle mainBundle] resourcePath], directionName];
     NSImage *icon = [[NSImage alloc] initWithContentsOfFile:imageFile];
-
-    if (direction == NORTH || direction == SOUTH) [icon setSize:NSMakeSize(128, 54)];
-    else if (direction == EAST || direction == WEST) [icon setSize:NSMakeSize(54, 128)];
 
     return icon;
 }
