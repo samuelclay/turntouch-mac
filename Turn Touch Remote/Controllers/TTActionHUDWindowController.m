@@ -106,11 +106,13 @@
 }
 
 - (IBAction)slideOut:(id)sender {
+    NSLog(@" ---> Slide out action");
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:.55f];
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
     [[NSAnimationContext currentContext] setCompletionHandler:^{
+        if (fadingIn) return;
         [hudView setHidden:YES];
     }];
     
