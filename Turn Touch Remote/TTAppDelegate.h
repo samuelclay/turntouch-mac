@@ -36,6 +36,7 @@
 @property (retain) RHPreferencesWindowController *preferencesWindowController;
 
 - (IBAction)togglePanel:(id)sender;
+- (void)showPreferences:(NSString *)selectedTab onlyIfVisible:(BOOL)onlyIfVisible;
 - (void)showPreferences:(NSString *)selectedTab;
 
 @end

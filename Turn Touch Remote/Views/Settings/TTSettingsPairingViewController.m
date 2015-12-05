@@ -46,6 +46,7 @@
             [appDelegate.bluetoothMonitor scanUnknown];
         });
     });
+    [self countUnpairedDevices];
 }
 
 - (void)viewWillDisappear {
@@ -166,7 +167,7 @@
 //    NSLog(@"Countdown: %f", minusOneSecond);
     if (minusOneSecond >= countdownIndicator.maxValue) {
         [appDelegate.bluetoothMonitor disconnectUnpairedDevices];
-        [appDelegate showPreferences:@"devices"];
+        [appDelegate showPreferences:@"devices" onlyIfVisible:YES];
         [countdownTimer invalidate];
         countdownTimer = nil;
     } else {

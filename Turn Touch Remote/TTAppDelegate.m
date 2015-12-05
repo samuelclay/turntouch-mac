@@ -137,6 +137,17 @@ void *kContextActivePanel = &kContextActivePanel;
 
 #pragma mark - Preferences
 
+- (void)showPreferences:(NSString *)selectedTab onlyIfVisible:(BOOL)onlyIfVisible {
+    if (!preferencesWindowController) return;
+    
+    if (!preferencesWindowController.window) {
+        NSLog(@" ---> Not showing preferences because not currently visible.");
+        return;
+    }
+    
+    [self showPreferences:selectedTab];
+}
+
 - (void)showPreferences:(NSString *)selectedTab {
     TTSettingsDevicesViewController *devices;
     TTSettingsSupportViewController *support;
