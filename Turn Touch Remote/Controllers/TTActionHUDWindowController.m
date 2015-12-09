@@ -53,7 +53,7 @@
 - (IBAction)fadeIn:(TTModeDirection)direction withMode:(TTMode *)mode buttonAction:(TTButtonAction)buttonAction {
     if (!mode) mode = NSAppDelegate.modeMap.selectedMode;
     
-    NSLog(@" ---> Fade in action: %d", direction);
+//    NSLog(@" ---> Fade in action: %d", direction);
     [hudWindow makeKeyAndOrderFront:nil];
     [self showWindow:self];
     
@@ -87,7 +87,7 @@
 
 - (IBAction)fadeOut:(id)sender {
 //    __block __unsafe_unretained NSWindow *window = hudWindow;
-    NSLog(@" ---> Fade out action");
+//    NSLog(@" ---> Fade out action");
     
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:.25f];
@@ -106,7 +106,7 @@
 }
 
 - (IBAction)slideOut:(id)sender {
-    NSLog(@" ---> Slide out action");
+//    NSLog(@" ---> Slide out action");
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:.55f];
     [[NSAnimationContext currentContext]
