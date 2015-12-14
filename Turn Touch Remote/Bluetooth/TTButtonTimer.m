@@ -142,7 +142,7 @@
         }
         
         // Check for double click and setup double click timer
-        if (doubleState == 0 &&
+        if (doubleState == 0xF &&
             lastButtonPressedDirection != NO_DIRECTION &&
             buttonPressedDirection == lastButtonPressedDirection &&
             [[NSDate date] timeIntervalSinceDate:lastButtonPressStart] < DOUBLE_CLICK_ACTION_DURATION) {
@@ -150,7 +150,7 @@
             [self fireDoubleButton:buttonPressedDirection];
             lastButtonPressedDirection = NO_DIRECTION;
             lastButtonPressStart = nil;
-        } else if (doubleState) {
+        } else if (doubleState != 0xF && doubleState != 0x0) {
             // Firmware v3+ has hardware support for double-click
             [self fireDoubleButton:buttonPressedDirection];
         } else {
