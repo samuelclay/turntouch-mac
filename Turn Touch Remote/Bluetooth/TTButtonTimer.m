@@ -26,8 +26,13 @@
     return self;
 }
 
-- (uint8_t)stateFromData:(NSData *)data {
+- (uint8_t)buttonDownStateFromData:(NSData *)data {
     return ~(*(int *)[[data subdataWithRange:NSMakeRange(0, 1)] bytes]) & 0x0F;
+}
+
+- (uint8_t)doubleStateFromData:(NSData *)data {
+    uint8_t state = ~(*(int *)[[data subdataWithRange:NSMakeRange(0, 1)] bytes]);
+    return state >> 4;
 }
 
 - (int)heldStateFromData:(NSData *)data {
@@ -35,8 +40,10 @@
 }
 
 - (void)readBluetoothData:(NSData *)data {
-    uint8_t state = [self stateFromData:data];
+    uint8_t state = [self buttonDownStateFromData:data];
+    uint8_t doubleState = [self doubleStateFromData:data];
     int heldData = [self heldStateFromData:data];
+    NSLog(@" ---> Bluetooth data: %@ (%d/%d/%d)", data, doubleState, state, heldData);
 
     BOOL anyButtonPressedDown = NO;
     BOOL anyButtonHeld = NO;
@@ -135,13 +142,17 @@
         }
         
         // Check for double click and setup double click timer
-        if (lastButtonPressedDirection != NO_DIRECTION &&
+        if (doubleState == 0 &&
+            lastButtonPressedDirection != NO_DIRECTION &&
             buttonPressedDirection == lastButtonPressedDirection &&
             [[NSDate date] timeIntervalSinceDate:lastButtonPressStart] < DOUBLE_CLICK_ACTION_DURATION) {
             // Double click detected
             [self fireDoubleButton:buttonPressedDirection];
             lastButtonPressedDirection = NO_DIRECTION;
             lastButtonPressStart = nil;
+        } else if (doubleState) {
+            // Firmware v3+ has hardware support for double-click
+            [self fireDoubleButton:buttonPressedDirection];
         } else {
             lastButtonPressedDirection = buttonPressedDirection;
             lastButtonPressStart = [NSDate date];
@@ -270,7 +281,7 @@
 }
 
 - (void)readBluetoothDataDuringPairing:(NSData *)data {
-    uint8_t state = [self stateFromData:data];
+    uint8_t state = [self buttonDownStateFromData:data];
     pairingButtonState.north |= !!(state & (1 << 0));
     pairingButtonState.east |= !!(state & (1 << 1));
     pairingButtonState.west |= !!(state & (1 << 2));

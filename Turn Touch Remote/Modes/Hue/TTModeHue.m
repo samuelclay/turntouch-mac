@@ -149,7 +149,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     }
     
     [bridgeSendAPI activateSceneWithIdentifier:sceneIdentifier onGroup:@"0" completionHandler:^(NSArray *errors) {
-        NSLog(@"Scene change: %@ (%@)", sceneIdentifier, errors);
+//        NSLog(@"Scene change: %@ (%@)", sceneIdentifier, errors);
     }];
 }
 
@@ -237,11 +237,14 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
     
     TTHueRandomColors randomColors = (TTHueRandomColors)[[NSAppDelegate.modeMap
-                                                          actionOptionValue:doubleTap ? kDoubleTapRandomColors : kRandomColors] integerValue];
+                                                          actionOptionValue:(doubleTap ? kDoubleTapRandomColors : kRandomColors)
+                                                          inDirection:direction] integerValue];
     TTHueRandomBrightness randomBrightnesses = (TTHueRandomBrightness)[[NSAppDelegate.modeMap
-                                                                        actionOptionValue:doubleTap ? kDoubleTapRandomBrightness : kRandomBrightness] integerValue];
+                                                                        actionOptionValue:(doubleTap ? kDoubleTapRandomBrightness : kRandomBrightness)
+                                                                        inDirection:direction] integerValue];
     TTHueRandomSaturation randomSaturation = (TTHueRandomSaturation)[[NSAppDelegate.modeMap
-                                                                      actionOptionValue:doubleTap ? kDoubleTapRandomSaturation : kRandomSaturation] integerValue];
+                                                                      actionOptionValue:(doubleTap ? kDoubleTapRandomSaturation : kRandomSaturation)
+                                                                      inDirection:direction] integerValue];
     NSNumber *randomColor = [NSNumber numberWithInt:arc4random() % MAX_HUE];
     
     for (PHLight *light in cache.lights.allValues) {
