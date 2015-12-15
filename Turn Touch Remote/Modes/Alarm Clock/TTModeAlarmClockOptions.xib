@@ -194,7 +194,7 @@
                                                         <subviews>
                                                             <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8Yx-qA-qzL" customClass="TTSlider">
                                                                 <rect key="frame" x="80" y="32" width="305" height="25"/>
-                                                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="288" doubleValue="76" tickMarkPosition="above" numberOfTickMarks="25" sliderType="linear" id="cXa-Bf-Dxu"/>
+                                                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="288" doubleValue="76" tickMarkPosition="above" numberOfTickMarks="25" sliderType="linear" id="cXa-Bf-Dxu" customClass="TTSliderCell"/>
                                                                 <connections>
                                                                     <action selector="changeOnetimeTime:" target="-2" id="IaP-MY-qJO"/>
                                                                 </connections>

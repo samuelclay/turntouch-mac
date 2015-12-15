@@ -94,7 +94,13 @@
     _flipped = flipped;
     CGFloat value = ([self doubleValue]  - [self minValue]) / ([self maxValue] - [self minValue]);
     CGFloat finalWidth = value * ([[self controlView] frame].size.width - 8);
-
+    CGFloat posY = 0.90;
+    if (self.numberOfTickMarks == 0) {
+        posY = 0.75;
+    } else if (self.tickMarkPosition == NSTickMarkBelow) {
+        posY = 0.75;
+    }
+    
     //// General Declarations
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     
@@ -118,7 +124,7 @@
     
     //// Subframes
     NSRect ltrack = NSMakeRect(NSMinX(leftRect) + floor(NSWidth(leftRect) * 0.00000 + 0.5),
-                               NSMinY(leftRect) + floor((NSHeight(leftRect) - 16) * 0.750000 + 0.5),
+                               NSMinY(leftRect) + floor((NSHeight(leftRect) - 16) * posY + 0.5),
                                MAX(1, floor(NSWidth(leftRect) * 1.00000 + 0.5) - floor(NSWidth(leftRect) * 0.00000 + 0.5)), 18);
     NSRect ltrackFrame = NSMakeRect(NSMinX(ltrack) + floor(NSWidth(ltrack) * 0.00000 + 0.5),
                                     NSMinY(ltrack) + NSHeight(ltrack) - 9,
@@ -127,7 +133,7 @@
                                 NSMinY(ltrackFrame),
                                 MAX(1, NSWidth(ltrackFrame) - 2), 5);
     NSRect rtrack = NSMakeRect(NSMinX(sliderFrame) + floor(NSWidth(sliderFrame) * 0.00000 + 0.5),
-                               NSMinY(sliderFrame) + floor((NSHeight(sliderFrame) - 16) * 0.750000 + 0.5),
+                               NSMinY(sliderFrame) + floor((NSHeight(sliderFrame) - 16) * posY + 0.5),
                                MAX(1, floor(NSWidth(sliderFrame) * 1.00000 + 0.5) - floor(NSWidth(sliderFrame) * 0.00000 + 0.5)), 18);
     NSRect rtrackFrame = NSMakeRect(NSMinX(rtrack) + floor(NSWidth(rtrack) * 0.00000 + 0.5),
                                     NSMinY(rtrack) + NSHeight(rtrack) - 9,
