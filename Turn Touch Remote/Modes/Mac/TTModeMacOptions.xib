@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTOptionsDetailViewController">
@@ -20,24 +20,21 @@
                     <constraints>
                         <constraint firstAttribute="width" constant="123" id="BqY-AM-v3C"/>
                     </constraints>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Volume adjustment" id="xC9-PN-rNO">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <slider horizontalHuggingPriority="150" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="J2w-55-eqW">
+                <slider horizontalHuggingPriority="150" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="J2w-55-eqW" customClass="TTSlider">
                     <rect key="frame" x="151" y="37" width="185" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="N7B-Nn-D9Q"/>
                     </constraints>
-                    <animations/>
                     <sliderCell key="cell" state="on" alignment="left" maxValue="20" doubleValue="5" tickMarkPosition="below" numberOfTickMarks="9" allowsTickMarkValuesOnly="YES" sliderType="linear" id="i6M-Kb-eEZ"/>
                 </slider>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UWO-Kz-kl2">
                     <rect key="frame" x="351" y="44" width="23" height="17"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="5%" id="8yI-4A-FvM">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -46,7 +43,6 @@
                 </textField>
                 <textField horizontalHuggingPriority="150" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1LL-hz-UVY">
                     <rect key="frame" x="151" y="14" width="221" height="14"/>
-                    <animations/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Changes how fast volume adjusts" id="RuP-VZ-QM9">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="secondarySelectedControlColor" catalog="System" colorSpace="catalog"/>
@@ -68,7 +64,6 @@
                 <constraint firstItem="8Ry-RW-zDm" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" symbolic="YES" id="ysa-NX-M9Y"/>
                 <constraint firstItem="UWO-Kz-kl2" firstAttribute="leading" secondItem="J2w-55-eqW" secondAttribute="trailing" constant="19" id="ysn-n0-AXM"/>
             </constraints>
-            <animations/>
             <point key="canvasLocation" x="367" y="472.5"/>
         </customView>
     </objects>

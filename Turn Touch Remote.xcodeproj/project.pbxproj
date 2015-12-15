@@ -76,6 +76,8 @@
 		FF7305C01A5CA8F5009A852D /* TTModeHueConnected.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7305BF1A5CA8F5009A852D /* TTModeHueConnected.m */; };
 		FF7305C21A5CB2E3009A852D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7305C11A5CB2E3009A852D /* SystemConfiguration.framework */; };
 		FF7305C41A5CB3EF009A852D /* TTModeHueConnect.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF7305C31A5CB3EF009A852D /* TTModeHueConnect.xib */; };
+		FF76AD121C1F86A900A6ED97 /* TTSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF76AD111C1F86A900A6ED97 /* TTSliderCell.m */; };
+		FF76AD161C1F8FD000A6ED97 /* TTSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = FF76AD151C1F8FD000A6ED97 /* TTSlider.m */; };
 		FF7A1C6F1868FD72005FA756 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF98A30C1868F1120032CC7A /* QuartzCore.framework */; };
 		FF8012F318692D0A00955218 /* TTModeMac.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8012F218692D0A00955218 /* TTModeMac.m */; };
 		FF8012F5186A1AD100955218 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF8012F4186A1AD100955218 /* defaults.plist */; };
@@ -345,6 +347,10 @@
 		FF7305BF1A5CA8F5009A852D /* TTModeHueConnected.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeHueConnected.m; sourceTree = "<group>"; };
 		FF7305C11A5CB2E3009A852D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		FF7305C31A5CB3EF009A852D /* TTModeHueConnect.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTModeHueConnect.xib; sourceTree = "<group>"; };
+		FF76AD101C1F86A900A6ED97 /* TTSliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSliderCell.h; path = Views/Controls/TTSliderCell.h; sourceTree = "<group>"; };
+		FF76AD111C1F86A900A6ED97 /* TTSliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSliderCell.m; path = Views/Controls/TTSliderCell.m; sourceTree = "<group>"; };
+		FF76AD141C1F8FD000A6ED97 /* TTSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSlider.h; path = Views/Controls/TTSlider.h; sourceTree = "<group>"; };
+		FF76AD151C1F8FD000A6ED97 /* TTSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSlider.m; path = Views/Controls/TTSlider.m; sourceTree = "<group>"; };
 		FF8012F118692D0A00955218 /* TTModeMac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMac.h; path = Modes/Mac/TTModeMac.h; sourceTree = "<group>"; };
 		FF8012F218692D0A00955218 /* TTModeMac.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeMac.m; path = Modes/Mac/TTModeMac.m; sourceTree = "<group>"; };
 		FF8012F4186A1AD100955218 /* defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = defaults.plist; path = "Supporting Files/defaults.plist"; sourceTree = "<group>"; };
@@ -692,6 +698,10 @@
 				FFF05F3D18F77CF500AC6230 /* TTChangeButtonView.m */,
 				FFF05F4018F77D5D00AC6230 /* TTChangeButtonCell.h */,
 				FFF05F4118F77D5D00AC6230 /* TTChangeButtonCell.m */,
+				FF76AD101C1F86A900A6ED97 /* TTSliderCell.h */,
+				FF76AD111C1F86A900A6ED97 /* TTSliderCell.m */,
+				FF76AD141C1F8FD000A6ED97 /* TTSlider.h */,
+				FF76AD151C1F8FD000A6ED97 /* TTSlider.m */,
 			);
 			name = "Common Controls";
 			sourceTree = "<group>";
@@ -1586,6 +1596,7 @@
 				FFA8EA9D190F07A500679A4D /* TTModeTab.m in Sources */,
 				FF7305AF1A5C9C76009A852D /* DDASLLogger.m in Sources */,
 				FF6A37D01A9AEC9F006F3756 /* NSDate+Extras.m in Sources */,
+				FF76AD121C1F86A900A6ED97 /* TTSliderCell.m in Sources */,
 				FF7305B01A5C9C76009A852D /* DDFileLogger.m in Sources */,
 				FF3641E61A5F674A003CC03C /* TTModeHueOptions.m in Sources */,
 				FF0E12D41828560000D49EC7 /* TTModeVideo.m in Sources */,
@@ -1595,6 +1606,7 @@
 				FF5295C81AD5B9B8007DDC02 /* TTSettingsButton.m in Sources */,
 				FF3641EF1A60C422003CC03C /* TTModeHuePushlink.m in Sources */,
 				FF7305AE1A5C9C76009A852D /* DDAbstractDatabaseLogger.m in Sources */,
+				FF76AD161C1F8FD000A6ED97 /* TTSlider.m in Sources */,
 				FF904B991BE9BA3700AD00F3 /* zip.c in Sources */,
 				FF904B4F1BE9B82200AD00F3 /* TTDeviceList.m in Sources */,
 				FFA1D4CD1A3B8916003EA0BC /* TTActionHUDWindow.m in Sources */,
