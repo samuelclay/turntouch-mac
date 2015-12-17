@@ -17,6 +17,8 @@
 #import "TTTitleBarView.h"
 #import "TTOptionsDetailViewController.h"
 #import "TTDFUView.h"
+#import "TTActionAddView.h"
+#import "TTFooterView.h"
 
 @class TTAppDelegate;
 @class TTPanelArrowView;
@@ -29,6 +31,7 @@
 @class TTTitleBarView;
 @class TTOptionsDetailViewController;
 @class TTDFUView;
+@class TTActionAddView;
 
 @interface TTBackgroundView : NSStackView <NSStackViewDelegate> {
     TTAppDelegate *appDelegate;
@@ -36,6 +39,7 @@
     NSLayoutConstraint *actionMenuConstraint;
     NSLayoutConstraint *optionsConstraint;
     NSLayoutConstraint *dfuConstraint;
+    NSLayoutConstraint *actionAddConstraint;
 }
 
 @property (nonatomic) IBOutlet TTPanelArrowView *arrowView;
@@ -47,6 +51,8 @@
 @property (nonatomic) IBOutlet TTDiamondLabels *diamondLabels;
 @property (nonatomic) IBOutlet TTOptionsView *optionsView;
 @property (nonatomic) IBOutlet TTDFUView *dfuView;
+@property (nonatomic) IBOutlet TTActionAddView *actionAddView;
+@property (nonatomic) IBOutlet TTFooterView *footerView;
 @property (nonatomic) NSLayoutConstraint *optionsConstraint;
 
 - (void)resetPosition;

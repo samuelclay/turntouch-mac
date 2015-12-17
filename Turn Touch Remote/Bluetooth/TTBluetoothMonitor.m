@@ -211,7 +211,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 #pragma mark - CBCentralManager delegate methods
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central {
-    NSLog(@" ---> centralManagerDidUpdateState: %ld vs %ld", (long)central.state, (long)manager.state);
+//    NSLog(@" ---> centralManagerDidUpdateState: %ld vs %ld", (long)central.state, (long)manager.state);
     manager = central;
     [self updateBluetoothState:NO];
 }

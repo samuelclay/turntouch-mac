@@ -166,6 +166,8 @@
 		FFAA4F6F182D99640049FFC7 /* TTModeAlarmClock.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4F6E182D99640049FFC7 /* TTModeAlarmClock.m */; };
 		FFAA4F72182D9A5F0049FFC7 /* TTModeNews.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4F71182D9A5F0049FFC7 /* TTModeNews.m */; };
 		FFAA61E01ABA6A9200AA422B /* HueSDK_OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */; };
+		FFABAB771C234CB900AD5620 /* TTActionAddView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB761C234CB900AD5620 /* TTActionAddView.m */; };
+		FFABAB7A1C235EC500AD5620 /* TTFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB791C235EC500AD5620 /* TTFooterView.m */; };
 		FFAFCBC519130F520058B9CB /* TTPanelArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAFCBC419130F520058B9CB /* TTPanelArrowView.m */; };
 		FFB1670B1922FE53008FA1AF /* TTModeMacOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB1670A1922FE53008FA1AF /* TTModeMacOptions.m */; };
 		FFB1670E1923E61F008FA1AF /* TTTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB1670D1923E61F008FA1AF /* TTTabView.m */; };
@@ -503,6 +505,10 @@
 		FFAA4F71182D9A5F0049FFC7 /* TTModeNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeNews.m; path = Modes/News/TTModeNews.m; sourceTree = "<group>"; };
 		FFAA61E11ABA6AD000AA422B /* Turn Touch Remote-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Turn Touch Remote-Info.plist"; path = "Supporting Files/Turn Touch Remote-Info.plist"; sourceTree = "<group>"; };
 		FFAA61E21ABA6AD000AA422B /* Turn Touch Remote-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Turn Touch Remote-Prefix.pch"; path = "Supporting Files/Turn Touch Remote-Prefix.pch"; sourceTree = "<group>"; };
+		FFABAB751C234CB900AD5620 /* TTActionAddView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTActionAddView.h; path = Views/Actions/TTActionAddView.h; sourceTree = "<group>"; };
+		FFABAB761C234CB900AD5620 /* TTActionAddView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTActionAddView.m; path = Views/Actions/TTActionAddView.m; sourceTree = "<group>"; };
+		FFABAB781C235EC500AD5620 /* TTFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTFooterView.h; path = "Views/Title Bar/TTFooterView.h"; sourceTree = "<group>"; };
+		FFABAB791C235EC500AD5620 /* TTFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTFooterView.m; path = "Views/Title Bar/TTFooterView.m"; sourceTree = "<group>"; };
 		FFAFCBC319130F520058B9CB /* TTPanelArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTPanelArrowView.h; sourceTree = "<group>"; };
 		FFAFCBC419130F520058B9CB /* TTPanelArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTPanelArrowView.m; sourceTree = "<group>"; };
 		FFB167091922FE53008FA1AF /* TTModeMacOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMacOptions.h; path = Modes/Mac/TTModeMacOptions.h; sourceTree = "<group>"; };
@@ -725,6 +731,8 @@
 				FF5295C41AD5B9A4007DDC02 /* TTTitleBarView.m */,
 				FF5295C61AD5B9B8007DDC02 /* TTSettingsButton.h */,
 				FF5295C71AD5B9B8007DDC02 /* TTSettingsButton.m */,
+				FFABAB781C235EC500AD5620 /* TTFooterView.h */,
+				FFABAB791C235EC500AD5620 /* TTFooterView.m */,
 			);
 			name = "Title Bar";
 			sourceTree = "<group>";
@@ -841,6 +849,8 @@
 			children = (
 				FF801300186CF8BE00955218 /* TTActionDetailView.h */,
 				FF801301186CF8BE00955218 /* TTActionDetailView.m */,
+				FFABAB751C234CB900AD5620 /* TTActionAddView.h */,
+				FFABAB761C234CB900AD5620 /* TTActionAddView.m */,
 			);
 			name = Actions;
 			sourceTree = "<group>";
@@ -1524,6 +1534,7 @@
 				FF5295DB1AD610A6007DDC02 /* RHPreferencesWindowController.m in Sources */,
 				FF1F135D1ADC90E700B52A0D /* MLCalendarBackground.m in Sources */,
 				FF1F135F1ADC90E700B52A0D /* MLCalendarView.m in Sources */,
+				FFABAB771C234CB900AD5620 /* TTActionAddView.m in Sources */,
 				FF904BA71BEBFCDE00AD00F3 /* TTDFUDeviceView.m in Sources */,
 				FF904B781BE9B88700AD00F3 /* DFUOperations.m in Sources */,
 				FFD62CD11950EE770093004D /* TTSegmentedControl.m in Sources */,
@@ -1621,6 +1632,7 @@
 				FF801329186CF90700955218 /* TTStatusItemView.m in Sources */,
 				FFA8EAA6190F11B200679A4D /* TTModeMenuItemView.m in Sources */,
 				FF981FCB191AB46600A4A94B /* TTModeMenuBordersView.m in Sources */,
+				FFABAB7A1C235EC500AD5620 /* TTFooterView.m in Sources */,
 				FF904B861BE9B88700AD00F3 /* InitData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

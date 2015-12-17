@@ -10,6 +10,7 @@
 #import "TTPanelController.h"
 #import "TTBackgroundView.h"
 
+#define PANEL_WIDTH 360.0f
 #define STROKE_OPACITY .5f
 #define SEARCH_INSET 10.0f
 #define TITLE_BAR_HEIGHT 38.0f
@@ -19,6 +20,8 @@
 #define ACTION_MENU_HEIGHT 98.0f
 #define MODE_OPTIONS_HEIGHT 148.0f
 #define DIAMOND_LABELS_SIZE 270.0f
+#define ACTION_ADD_SIZE 72.0f
+#define FOOTER_HEIGHT 8.0f
 
 #pragma mark -
 
@@ -34,6 +37,8 @@
 @synthesize optionsView;
 @synthesize optionsConstraint;
 @synthesize dfuView;
+@synthesize actionAddView;
+@synthesize footerView;
 
 #pragma mark -
 
@@ -47,13 +52,15 @@
         
         arrowView = [[TTPanelArrowView alloc] init];
         titleBarView = [[TTTitleBarView alloc] init];
+        dfuView = [[TTDFUView alloc] init];
         modeTabs = [[TTModeTabsContainer alloc] init];
         modeTitle = [[TTModeTitleView alloc] init];
         modeMenu = [[TTModeMenuContainer alloc] initWithType:MODE_MENU_TYPE];
         diamondLabels = [[TTDiamondLabels alloc] initWithInteractive:YES];
         optionsView = [[TTOptionsView alloc] init];
         actionMenu = [[TTModeMenuContainer alloc] initWithType:ACTION_MENU_TYPE];
-        dfuView = [[TTDFUView alloc] init];
+        actionAddView = [[TTActionAddView alloc] init];
+        footerView = [[TTFooterView alloc] init];
         
         [self setTranslatesAutoresizingMaskIntoConstraints:NO];
 
@@ -65,7 +72,9 @@
                          modeMenu,
                          diamondLabels,
                          actionMenu,
-                         optionsView] inGravity:NSStackViewGravityTop];
+                         optionsView,
+                         actionAddView,
+                         footerView] inGravity:NSStackViewGravityTop];
         
         [self addConstraint:[NSLayoutConstraint constraintWithItem:arrowView
                                                               attribute:NSLayoutAttributeTop
@@ -143,7 +152,19 @@
                                                          attribute:NSLayoutAttributeHeight
                                                         multiplier:1.0 constant:0];
         [self addConstraint:optionsConstraint];
-        
+        actionAddConstraint = [NSLayoutConstraint constraintWithItem:actionAddView
+                                                           attribute:NSLayoutAttributeHeight
+                                                           relatedBy:NSLayoutRelationEqual
+                                                              toItem:nil
+                                                           attribute:0 multiplier:1.0
+                                                            constant:ACTION_ADD_SIZE];
+        [self addConstraint:actionAddConstraint];        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:footerView
+                                                         attribute:NSLayoutAttributeHeight
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:0
+                                                        multiplier:0 constant:FOOTER_HEIGHT]];
 //        NSLog(@"Init modeOptionsView View height: %.f", NSHeight(optionsView.modeOptionsViewController.view.bounds));
 //        NSLog(@"Init options View height: %.f", NSHeight(optionsView.bounds));
 
@@ -153,7 +174,7 @@
                                                                  toItem:nil
                                                               attribute:0
                                                              multiplier:0
-                                                               constant:360]];
+                                                               constant:PANEL_WIDTH]];
         
         self.orientation = NSUserInterfaceLayoutOrientationVertical;
         self.alignment = NSLayoutAttributeCenterX;
