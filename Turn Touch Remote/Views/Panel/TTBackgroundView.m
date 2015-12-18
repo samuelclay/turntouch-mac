@@ -219,6 +219,7 @@
         [self resetPosition];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))]) {
         [self toggleActionMenuFrame];
+        [self toggleActionAddView];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(nicknamedConnectedCount))]) {
         [self toggleDfuList];
     }
@@ -295,6 +296,14 @@
     [NSAnimationContext endGrouping];
 }
 
+- (void)toggleActionAddView {
+    if (appDelegate.modeMap.inspectingModeDirection != NO_DIRECTION) {
+        [actionAddConstraint setConstant:ACTION_ADD_SIZE];
+    } else {
+        [actionAddConstraint setConstant:0.f];
+    }
+}
+
 - (void)toggleDfuList {
     NSTimeInterval openDuration = OPEN_DURATION;
     
@@ -315,9 +324,9 @@
 
 - (void)adjustOptionsHeight:(NSView *)optionsDetailView {
     if (!optionsView) return;
-
+    
     [self removeConstraint:optionsConstraint];
-
+    
     if (!optionsDetailView) {
         optionsConstraint = [NSLayoutConstraint constraintWithItem:optionsView
                                                          attribute:NSLayoutAttributeHeight
@@ -336,8 +345,8 @@
         [optionsView addConstraint:optionsConstraint];
     }
     
-//    NSLog(@"optionsView constraints: %@", optionsView.constraints);
-//    NSLog(@"modeOptionsView constraints: %@", optionsView.modeOptionsView.constraints);
+    //    NSLog(@"optionsView constraints: %@", optionsView.constraints);
+    //    NSLog(@"modeOptionsView constraints: %@", optionsView.modeOptionsView.constraints);
 }
 
 - (void)resetPosition {

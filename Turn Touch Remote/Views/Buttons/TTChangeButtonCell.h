@@ -11,5 +11,6 @@
 @interface TTChangeButtonCell : NSButtonCell
 
 @property (nonatomic, readwrite) BOOL mouseDown;
+@property (nonatomic) CGFloat borderRadius;
 
 @end

@@ -56,6 +56,12 @@
     }
 }
 
+- (void)dealloc {
+    [appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
+    [appDelegate.modeMap removeObserver:self forKeyPath:@"activeModeDirection"];
+    [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedMode"];
+}
+
 #pragma mark - Drawing
 
 - (void)redrawOptions {

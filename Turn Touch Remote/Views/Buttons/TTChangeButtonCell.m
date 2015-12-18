@@ -9,15 +9,17 @@
 #import "TTChangeButtonCell.h"
 #import "NSAttributedString+Extra.h"
 
-#define BORDER_RADIUS 5.0f
+#define DEFAULT_BORDER_RADIUS 5.0f
 
 @implementation TTChangeButtonCell
 
 @synthesize mouseDown;
+@synthesize borderRadius;
 
 - (id)init {
     if (self = [super init]) {
         mouseDown = NO;
+        borderRadius = DEFAULT_BORDER_RADIUS;
     }
     
     return self;
@@ -34,7 +36,7 @@
     // Create clip boundary
     NSBezierPath *clip = [NSBezierPath bezierPath];
     [clip appendBezierPathWithRoundedRect:borderRect
-                                  xRadius:BORDER_RADIUS yRadius:BORDER_RADIUS];
+                                  xRadius:borderRadius yRadius:borderRadius];
     [clip addClip];
     
     // Add gradient background
@@ -53,7 +55,7 @@
     // Add border
     NSBezierPath *line = [NSBezierPath bezierPath];
     [line appendBezierPathWithRoundedRect:borderRect
-                                  xRadius:BORDER_RADIUS yRadius:BORDER_RADIUS];
+                                  xRadius:borderRadius yRadius:borderRadius];
     [line setLineWidth:1.0];
     [NSColorFromRGB(0xD0D0D0) set];
     [line stroke];
@@ -66,6 +68,9 @@
     [title enumerateAttribute:NSFontAttributeName inRange:NSMakeRange(0, title.length) options:0 usingBlock:^(id value, NSRange range, BOOL *stop) {
         NSFont *font = [NSFont fontWithName:@"Effra" size:11.f];
         NSColor *color = NSColorFromRGB(0xA0A3A8);
+        if (self.isHighlighted) {
+            color = NSColorFromRGB(0x606368);
+        }
         [title removeAttribute:NSFontAttributeName range:range];
         [title addAttribute:NSFontAttributeName value:font range:range];
         [title addAttribute:NSForegroundColorAttributeName value:color range:range];
@@ -75,7 +80,7 @@
     NSSize textSize = [title size];
     
     [title drawAtPoint:NSMakePoint(frame.origin.x + frame.size.width/2 - textSize.width/2,
-                                   frame.origin.y + frame.size.height/2 - textSize.height/2 - 1)];
+                                   frame.origin.y + frame.size.height/2.f - textSize.height/2.f - 2.f)];
 
     
     return frame;

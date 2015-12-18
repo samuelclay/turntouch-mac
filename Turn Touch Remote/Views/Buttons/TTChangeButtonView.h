@@ -13,4 +13,6 @@
     TTChangeButtonCell *cell;
 }
 
+@property (nonatomic) CGFloat borderRadius;
+
 @end

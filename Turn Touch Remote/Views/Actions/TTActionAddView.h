@@ -11,6 +11,7 @@
 
 @interface TTActionAddView : NSView {
     TTAppDelegate *appDelegate;
+    TTChangeButtonView *addButton;
 }
 
 @end

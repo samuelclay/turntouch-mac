@@ -11,6 +11,8 @@
 
 @implementation TTChangeButtonView
 
+@synthesize borderRadius;
+
 - (void)awakeFromNib {
     cell = self.cell;
 }
@@ -31,6 +33,10 @@
     [super drawRect:dirtyRect];
 }
 
+- (void)setBorderRadius:(CGFloat)_borderRadius {
+    borderRadius = _borderRadius;
+    [cell setBorderRadius:borderRadius];
+}
 #pragma mark - Events
 
 - (void)mouseDown:(NSEvent *)theEvent {
