@@ -22,6 +22,7 @@
 @property (nonatomic, assign) TTModeDirection hoverModeDirection;
 @property (nonatomic, assign) BOOL openedModeChangeMenu;
 @property (nonatomic, assign) BOOL openedActionChangeMenu;
+@property (nonatomic, assign) BOOL openedAddActionChangeMenu;
 @property (nonatomic) TTMode *selectedMode;
 @property (nonatomic) TTMode *northMode;
 @property (nonatomic) TTMode *eastMode;

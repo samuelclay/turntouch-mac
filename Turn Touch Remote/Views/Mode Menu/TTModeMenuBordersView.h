@@ -7,9 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "TTMenuType.h"
 
 @interface TTModeMenuBordersView : NSView
 
 @property (nonatomic) BOOL hideBorder;
+@property (nonatomic) TTMenuType borderStyle;
 
 @end

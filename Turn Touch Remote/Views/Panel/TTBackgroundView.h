@@ -17,7 +17,7 @@
 #import "TTTitleBarView.h"
 #import "TTOptionsDetailViewController.h"
 #import "TTDFUView.h"
-#import "TTActionAddView.h"
+#import "TTAddActionButtonView.h"
 #import "TTFooterView.h"
 
 @class TTAppDelegate;
@@ -31,15 +31,16 @@
 @class TTTitleBarView;
 @class TTOptionsDetailViewController;
 @class TTDFUView;
-@class TTActionAddView;
+@class TTAddActionButtonView;
 
 @interface TTBackgroundView : NSStackView <NSStackViewDelegate> {
     TTAppDelegate *appDelegate;
     NSLayoutConstraint *modeMenuConstraint;
     NSLayoutConstraint *actionMenuConstraint;
+    NSLayoutConstraint *addActionMenuConstraint;
     NSLayoutConstraint *optionsConstraint;
     NSLayoutConstraint *dfuConstraint;
-    NSLayoutConstraint *actionAddConstraint;
+    NSLayoutConstraint *addActionButtonConstraint;
 }
 
 @property (nonatomic) IBOutlet TTPanelArrowView *arrowView;
@@ -47,11 +48,12 @@
 @property (nonatomic) IBOutlet TTModeTabsContainer *modeTabs;
 @property (nonatomic) IBOutlet TTModeMenuContainer *modeMenu;
 @property (nonatomic) IBOutlet TTModeMenuContainer *actionMenu;
+@property (nonatomic) IBOutlet TTModeMenuContainer *addActionMenu;
 @property (nonatomic) IBOutlet TTModeTitleView *modeTitle;
 @property (nonatomic) IBOutlet TTDiamondLabels *diamondLabels;
 @property (nonatomic) IBOutlet TTOptionsView *optionsView;
 @property (nonatomic) IBOutlet TTDFUView *dfuView;
-@property (nonatomic) IBOutlet TTActionAddView *actionAddView;
+@property (nonatomic) IBOutlet TTAddActionButtonView *addActionButtonView;
 @property (nonatomic) IBOutlet TTFooterView *footerView;
 @property (nonatomic) NSLayoutConstraint *optionsConstraint;
 

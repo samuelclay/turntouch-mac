@@ -148,7 +148,11 @@
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
 
-    if (menuType == ACTION_MENU_TYPE &&
+    [bordersView setBorderStyle:menuType];
+
+    if (menuType == ADD_ACTION_MENU_TYPE) {
+
+    } else if (menuType == ACTION_MENU_TYPE &&
         [appDelegate.modeMap.selectedMode hideActionMenu] &&
         appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION) {
         [bordersView setHideBorder:YES];

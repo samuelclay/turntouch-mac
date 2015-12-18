@@ -8,9 +8,12 @@
 
 #import "TTModeMenuBordersView.h"
 
+#define BUTTON_MARGIN 12
+
 @implementation TTModeMenuBordersView
 
 @synthesize hideBorder;
+@synthesize borderStyle;
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -25,7 +28,14 @@
 {
     [super drawRect:dirtyRect];
     
-    if (hideBorder) {
+    if (borderStyle == ADD_ACTION_MENU_TYPE) {
+        NSBezierPath *path = [NSBezierPath bezierPath];
+        [path moveToPoint:NSMakePoint(NSMinX(self.bounds) + BUTTON_MARGIN, NSMaxY(self.bounds))];
+        [path lineToPoint:NSMakePoint(NSMaxX(self.bounds) - BUTTON_MARGIN, NSMaxY(self.bounds))];
+        [path setLineWidth:0.5f];
+        [NSColorFromRGB(0xC2CBCE) set];
+        [path stroke];
+    } else if (hideBorder) {
         [NSColorFromRGB(0xF5F6F8) set];
         NSBezierPath *border = [NSBezierPath bezierPath];
         [border moveToPoint:NSMakePoint(NSMinX(self.bounds), NSMinY(self.bounds))];

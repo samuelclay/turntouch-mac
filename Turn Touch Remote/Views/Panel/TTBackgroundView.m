@@ -20,7 +20,7 @@
 #define ACTION_MENU_HEIGHT 98.0f
 #define MODE_OPTIONS_HEIGHT 148.0f
 #define DIAMOND_LABELS_SIZE 270.0f
-#define ACTION_ADD_SIZE 72.0f
+#define ADD_ACTION_BUTTON_HEIGHT 64.0f
 #define FOOTER_HEIGHT 8.0f
 
 #pragma mark -
@@ -33,11 +33,12 @@
 @synthesize modeTitle;
 @synthesize modeMenu;
 @synthesize actionMenu;
+@synthesize addActionMenu;
 @synthesize diamondLabels;
 @synthesize optionsView;
 @synthesize optionsConstraint;
 @synthesize dfuView;
-@synthesize actionAddView;
+@synthesize addActionButtonView;
 @synthesize footerView;
 
 #pragma mark -
@@ -59,7 +60,8 @@
         diamondLabels = [[TTDiamondLabels alloc] initWithInteractive:YES];
         optionsView = [[TTOptionsView alloc] init];
         actionMenu = [[TTModeMenuContainer alloc] initWithType:ACTION_MENU_TYPE];
-        actionAddView = [[TTActionAddView alloc] init];
+        addActionMenu = [[TTModeMenuContainer alloc] initWithType:ADD_ACTION_MENU_TYPE];
+        addActionButtonView = [[TTAddActionButtonView alloc] init];
         footerView = [[TTFooterView alloc] init];
         
         [self setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -73,7 +75,8 @@
                          diamondLabels,
                          actionMenu,
                          optionsView,
-                         actionAddView,
+                         addActionMenu,
+                         addActionButtonView,
                          footerView] inGravity:NSStackViewGravityTop];
         
         [self addConstraint:[NSLayoutConstraint constraintWithItem:arrowView
@@ -152,13 +155,20 @@
                                                          attribute:NSLayoutAttributeHeight
                                                         multiplier:1.0 constant:0];
         [self addConstraint:optionsConstraint];
-        actionAddConstraint = [NSLayoutConstraint constraintWithItem:actionAddView
-                                                           attribute:NSLayoutAttributeHeight
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:nil
-                                                           attribute:0 multiplier:1.0
-                                                            constant:ACTION_ADD_SIZE];
-        [self addConstraint:actionAddConstraint];        
+        addActionMenuConstraint = [NSLayoutConstraint constraintWithItem:addActionMenu
+                                                               attribute:NSLayoutAttributeHeight
+                                                               relatedBy:NSLayoutRelationEqual
+                                                                  toItem:nil
+                                                               attribute:0
+                                                              multiplier:1.0 constant:1];
+        [self addConstraint:addActionMenuConstraint];
+        addActionButtonConstraint = [NSLayoutConstraint constraintWithItem:addActionButtonView
+                                                                 attribute:NSLayoutAttributeHeight
+                                                                 relatedBy:NSLayoutRelationEqual
+                                                                    toItem:nil
+                                                                 attribute:0 multiplier:1.0
+                                                                  constant:ADD_ACTION_BUTTON_HEIGHT];
+        [self addConstraint:addActionButtonConstraint];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:footerView
                                                          attribute:NSLayoutAttributeHeight
                                                          relatedBy:NSLayoutRelationEqual
@@ -198,6 +208,8 @@
                              options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"openedActionChangeMenu"
                              options:0 context:nil];
+    [appDelegate.modeMap addObserver:self forKeyPath:@"openedAddActionChangeMenu"
+                             options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"selectedMode"
                              options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
@@ -215,11 +227,14 @@
         [self toggleModeMenuFrame];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(openedActionChangeMenu))]) {
         [self toggleActionMenuFrame];
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(openedAddActionChangeMenu))]) {
+        [self toggleAddActionMenuFrame];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedMode))]) {
         [self resetPosition];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))]) {
         [self toggleActionMenuFrame];
-        [self toggleActionAddView];
+        [self toggleAddActionMenuFrame];
+        [self toggleAddActionButtonView];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(nicknamedConnectedCount))]) {
         [self toggleDfuList];
     }
@@ -289,11 +304,42 @@
     [NSAnimationContext endGrouping];
 }
 
-- (void)toggleActionAddView {
-    if (appDelegate.modeMap.inspectingModeDirection != NO_DIRECTION) {
-        [actionAddConstraint setConstant:ACTION_ADD_SIZE];
+- (void)toggleAddActionMenuFrame {
+    NSTimeInterval openDuration = OPEN_DURATION;
+    
+    NSEvent *currentEvent = [NSApp currentEvent];
+    NSUInteger clearFlags = ([currentEvent modifierFlags] & NSDeviceIndependentModifierFlagsMask);
+    BOOL shiftPressed = (clearFlags == NSShiftKeyMask);
+    if (shiftPressed) openDuration *= 10;
+    
+    if (appDelegate.modeMap.openedAddActionChangeMenu) {
+        [addActionMenu toggleScrollbar:appDelegate.modeMap.openedAddActionChangeMenu];
+    }
+    
+    [NSAnimationContext beginGrouping];
+    [[NSAnimationContext currentContext] setDuration:openDuration];
+    [[NSAnimationContext currentContext] setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+    
+    if (!appDelegate.modeMap.openedAddActionChangeMenu) {
+        [[NSAnimationContext currentContext] setCompletionHandler:^{
+            [addActionMenu toggleScrollbar:appDelegate.modeMap.openedAddActionChangeMenu];
+        }];
+    }
+    
+    if (appDelegate.modeMap.openedAddActionChangeMenu) {
+        [[addActionMenuConstraint animator] setConstant:ACTION_MENU_HEIGHT];
     } else {
-        [actionAddConstraint setConstant:0.f];
+        [[addActionMenuConstraint animator] setConstant:1];
+    }
+    
+    [NSAnimationContext endGrouping];
+}
+
+- (void)toggleAddActionButtonView {
+    if (appDelegate.modeMap.inspectingModeDirection != NO_DIRECTION) {
+        [addActionButtonConstraint setConstant:ADD_ACTION_BUTTON_HEIGHT];
+    } else {
+        [addActionButtonConstraint setConstant:0.f];
     }
 }
 

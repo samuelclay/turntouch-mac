@@ -6,13 +6,12 @@
 //  Copyright © 2015 Turn Touch. All rights reserved.
 //
 
-#import "TTActionAddView.h"
+#import "TTAddActionButtonView.h"
 #import "TTChangeButtonView.h"
 
-#define BUTTON_MARGIN 12
 #define ADD_BUTTON_WIDTH 120
 
-@implementation TTActionAddView
+@implementation TTAddActionButtonView
 
 - (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
@@ -69,22 +68,12 @@
     [super drawRect:dirtyRect];
     
     [self drawBackground];
-    [self drawBorder];
     [self drawAddButton];
 }
 
 - (void)drawBackground {
     [NSColorFromRGB(0xFFFFFF) set];
     NSRectFill(self.bounds);
-}
-
-- (void)drawBorder {
-    NSBezierPath *path = [NSBezierPath bezierPath];
-    [path moveToPoint:NSMakePoint(NSMinX(self.bounds) + BUTTON_MARGIN, NSMaxY(self.bounds))];
-    [path lineToPoint:NSMakePoint(NSMaxX(self.bounds) - BUTTON_MARGIN, NSMaxY(self.bounds))];
-    [path setLineWidth:0.5f];
-    [NSColorFromRGB(0xC2CBCE) set];
-    [path stroke];
 }
 
 - (void)drawAddButton {

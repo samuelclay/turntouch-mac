@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "TTAppDelegate.h"
 
-@interface TTActionAddView : NSView {
+@interface TTAddActionButtonView : NSView {
     TTAppDelegate *appDelegate;
     TTChangeButtonView *addButton;
 }

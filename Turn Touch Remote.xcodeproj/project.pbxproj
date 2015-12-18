@@ -166,7 +166,7 @@
 		FFAA4F6F182D99640049FFC7 /* TTModeAlarmClock.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4F6E182D99640049FFC7 /* TTModeAlarmClock.m */; };
 		FFAA4F72182D9A5F0049FFC7 /* TTModeNews.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4F71182D9A5F0049FFC7 /* TTModeNews.m */; };
 		FFAA61E01ABA6A9200AA422B /* HueSDK_OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */; };
-		FFABAB771C234CB900AD5620 /* TTActionAddView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB761C234CB900AD5620 /* TTActionAddView.m */; };
+		FFABAB771C234CB900AD5620 /* TTAddActionButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB761C234CB900AD5620 /* TTAddActionButtonView.m */; };
 		FFABAB7A1C235EC500AD5620 /* TTFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB791C235EC500AD5620 /* TTFooterView.m */; };
 		FFAFCBC519130F520058B9CB /* TTPanelArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAFCBC419130F520058B9CB /* TTPanelArrowView.m */; };
 		FFB1670B1922FE53008FA1AF /* TTModeMacOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB1670A1922FE53008FA1AF /* TTModeMacOptions.m */; };
@@ -505,8 +505,8 @@
 		FFAA4F71182D9A5F0049FFC7 /* TTModeNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeNews.m; path = Modes/News/TTModeNews.m; sourceTree = "<group>"; };
 		FFAA61E11ABA6AD000AA422B /* Turn Touch Remote-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Turn Touch Remote-Info.plist"; path = "Supporting Files/Turn Touch Remote-Info.plist"; sourceTree = "<group>"; };
 		FFAA61E21ABA6AD000AA422B /* Turn Touch Remote-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Turn Touch Remote-Prefix.pch"; path = "Supporting Files/Turn Touch Remote-Prefix.pch"; sourceTree = "<group>"; };
-		FFABAB751C234CB900AD5620 /* TTActionAddView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTActionAddView.h; path = Views/Actions/TTActionAddView.h; sourceTree = "<group>"; };
-		FFABAB761C234CB900AD5620 /* TTActionAddView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTActionAddView.m; path = Views/Actions/TTActionAddView.m; sourceTree = "<group>"; };
+		FFABAB751C234CB900AD5620 /* TTAddActionButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTAddActionButtonView.h; path = Views/Actions/TTAddActionButtonView.h; sourceTree = "<group>"; };
+		FFABAB761C234CB900AD5620 /* TTAddActionButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTAddActionButtonView.m; path = Views/Actions/TTAddActionButtonView.m; sourceTree = "<group>"; };
 		FFABAB781C235EC500AD5620 /* TTFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTFooterView.h; path = "Views/Title Bar/TTFooterView.h"; sourceTree = "<group>"; };
 		FFABAB791C235EC500AD5620 /* TTFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTFooterView.m; path = "Views/Title Bar/TTFooterView.m"; sourceTree = "<group>"; };
 		FFAFCBC319130F520058B9CB /* TTPanelArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTPanelArrowView.h; sourceTree = "<group>"; };
@@ -849,8 +849,8 @@
 			children = (
 				FF801300186CF8BE00955218 /* TTActionDetailView.h */,
 				FF801301186CF8BE00955218 /* TTActionDetailView.m */,
-				FFABAB751C234CB900AD5620 /* TTActionAddView.h */,
-				FFABAB761C234CB900AD5620 /* TTActionAddView.m */,
+				FFABAB751C234CB900AD5620 /* TTAddActionButtonView.h */,
+				FFABAB761C234CB900AD5620 /* TTAddActionButtonView.m */,
 			);
 			name = Actions;
 			sourceTree = "<group>";
@@ -1534,7 +1534,7 @@
 				FF5295DB1AD610A6007DDC02 /* RHPreferencesWindowController.m in Sources */,
 				FF1F135D1ADC90E700B52A0D /* MLCalendarBackground.m in Sources */,
 				FF1F135F1ADC90E700B52A0D /* MLCalendarView.m in Sources */,
-				FFABAB771C234CB900AD5620 /* TTActionAddView.m in Sources */,
+				FFABAB771C234CB900AD5620 /* TTAddActionButtonView.m in Sources */,
 				FF904BA71BEBFCDE00AD00F3 /* TTDFUDeviceView.m in Sources */,
 				FF904B781BE9B88700AD00F3 /* DFUOperations.m in Sources */,
 				FFD62CD11950EE770093004D /* TTSegmentedControl.m in Sources */,

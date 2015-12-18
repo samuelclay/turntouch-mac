@@ -22,6 +22,7 @@
 @synthesize hoverModeDirection;
 @synthesize openedModeChangeMenu;
 @synthesize openedActionChangeMenu;
+@synthesize openedAddActionChangeMenu;
 @synthesize selectedMode;
 @synthesize northMode;
 @synthesize eastMode;
@@ -45,6 +46,7 @@
         hoverModeDirection = NO_DIRECTION;
         openedModeChangeMenu = NO;
         openedActionChangeMenu = NO;
+        openedAddActionChangeMenu = NO;
         
         [self setupModes];
         
@@ -373,6 +375,7 @@
 - (void)toggleInspectingModeDirection:(TTModeDirection)direction {
     if (inspectingModeDirection == direction) {
         [self setOpenedActionChangeMenu:NO];
+        [self setOpenedAddActionChangeMenu:NO];
         [self setInspectingModeDirection:NO_DIRECTION];
     } else {
         [self setInspectingModeDirection:direction];
@@ -408,6 +411,12 @@
 - (void)setOpenedActionChangeMenu:(BOOL)_openedActionChangeMenu {
     if (openedActionChangeMenu != _openedActionChangeMenu) {
         openedActionChangeMenu = _openedActionChangeMenu;
+    }
+}
+
+- (void)setOpenedAddActionChangeMenu:(BOOL)_openedAddActionChangeMenu {
+    if (openedAddActionChangeMenu != _openedAddActionChangeMenu) {
+        openedAddActionChangeMenu = _openedAddActionChangeMenu;
     }
 }
 
