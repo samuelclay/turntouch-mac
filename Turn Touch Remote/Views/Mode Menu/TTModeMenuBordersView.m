@@ -10,6 +10,8 @@
 
 @implementation TTModeMenuBordersView
 
+@synthesize hideBorder;
+
 - (id)initWithFrame:(NSRect)frame
 {
     self = [super initWithFrame:frame];
@@ -22,9 +24,15 @@
 - (void)drawRect:(NSRect)dirtyRect
 {
     [super drawRect:dirtyRect];
-    [self drawShadowTop:dirtyRect];
-    if (NSHeight(self.bounds) > 36) {
-        [self drawShadowBottom:dirtyRect];
+    
+    if (hideBorder) {
+        [NSColorFromRGB(0xF5F6F8) set];
+        NSRectFill(self.bounds);
+    } else {
+        [self drawShadowTop:dirtyRect];
+        if (NSHeight(self.bounds) > 36) {
+            [self drawShadowBottom:dirtyRect];
+        }
     }
 }
 

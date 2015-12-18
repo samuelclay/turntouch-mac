@@ -10,4 +10,6 @@
 
 @interface TTModeMenuBordersView : NSView
 
+@property (nonatomic) BOOL hideBorder;
+
 @end

@@ -280,14 +280,7 @@
         }];
     }
     
-    if ([appDelegate.modeMap.selectedMode hideActionMenu] &&
-        !appDelegate.modeMap.inspectingModeDirection) {
-        if (!appDelegate.modeMap.openedActionChangeMenu) {
-            [[actionMenuConstraint animator] setConstant:0];
-        } else {
-            [actionMenuConstraint setConstant:0];
-        }
-    } else if (appDelegate.modeMap.openedActionChangeMenu) {
+    if (appDelegate.modeMap.openedActionChangeMenu) {
         [[actionMenuConstraint animator] setConstant:ACTION_MENU_HEIGHT];
     } else {
         [[actionMenuConstraint animator] setConstant:1];

@@ -131,6 +131,7 @@
         
         [collectionView setNeedsDisplay:YES];
         [self scrollToInspectingDirection];
+        [self setNeedsDisplay:YES];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(openedModeChangeMenu))]) {
         if (appDelegate.modeMap.openedActionChangeMenu) {
             [appDelegate.modeMap setOpenedActionChangeMenu:NO];
@@ -146,9 +147,16 @@
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
-    
-    [bordersView drawRect:dirtyRect];
-    [collectionView drawRect:dirtyRect];
+
+    if (menuType == ACTION_MENU_TYPE &&
+        [appDelegate.modeMap.selectedMode hideActionMenu] &&
+        appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION) {
+        [bordersView setHideBorder:YES];
+    } else {
+        [bordersView setHideBorder:NO];
+    }
+    [bordersView setNeedsDisplay:YES];
+    [collectionView setNeedsDisplay:YES];
     
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:0.5];
@@ -166,6 +174,11 @@
 
 
 - (void)drawBorder {
+    if ([appDelegate.modeMap.selectedMode hideActionMenu] &&
+        !appDelegate.modeMap.inspectingModeDirection) {
+        return;
+    }
+    
     // Top border
     BOOL open = appDelegate.modeMap.openedModeChangeMenu;
     NSBezierPath *line = [NSBezierPath bezierPath];
