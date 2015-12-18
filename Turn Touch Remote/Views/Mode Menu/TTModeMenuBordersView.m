@@ -27,7 +27,11 @@
     
     if (hideBorder) {
         [NSColorFromRGB(0xF5F6F8) set];
-        NSRectFill(self.bounds);
+        NSBezierPath *border = [NSBezierPath bezierPath];
+        [border moveToPoint:NSMakePoint(NSMinX(self.bounds), NSMinY(self.bounds))];
+        [border lineToPoint:NSMakePoint(NSMaxX(self.bounds), NSMinY(self.bounds))];
+        [border setLineWidth:2.0f];
+        [border stroke];
     } else {
         [self drawShadowTop:dirtyRect];
         if (NSHeight(self.bounds) > 36) {
