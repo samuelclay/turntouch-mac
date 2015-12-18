@@ -31,7 +31,7 @@
         [addButton setImagePosition:NSImageRight];
         [self addSubview:addButton];
         
-//        [self registerAsObserver];
+        [self registerAsObserver];
     }
     
     return self;
@@ -40,23 +40,26 @@
 
 #pragma mark - KVO
 
-//- (void)registerAsObserver {
-//    [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
-//                             options:0 context:nil];
-//}
-//
-//- (void) observeValueForKeyPath:(NSString*)keyPath
-//                       ofObject:(id)object
-//                         change:(NSDictionary*)change
-//                        context:(void*)context {
-//    if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))]) {
-//        [self adjustHeight];
-//    }
-//}
-//
-//- (void)dealloc {
-//    [appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
-//}
+- (void)registerAsObserver {
+    [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
+                             options:0 context:nil];
+}
+
+- (void) observeValueForKeyPath:(NSString*)keyPath
+                       ofObject:(id)object
+                         change:(NSDictionary*)change
+                        context:(void*)context {
+    if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))]) {
+        if (appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION) {
+            // Only hide when switching modes (or closing actions), not when switching actions
+            [self hideAddActionMenu:nil];
+        }
+    }
+}
+
+- (void)dealloc {
+    [appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
+}
 
 #pragma mark - Drawing
 
@@ -78,7 +81,7 @@
 
 - (void)drawAddButton {
     NSRect buttonFrame = NSMakeRect(NSWidth(self.frame)/2 - ADD_BUTTON_WIDTH/2,
-                                    (NSHeight(self.frame)/2) - (24.f/2),
+                                    (NSHeight(self.frame)/2) - (24.f/2) - (8.f/2),
                                     ADD_BUTTON_WIDTH, 24.f);
     addButton.frame = buttonFrame;
 }
@@ -97,6 +100,8 @@
     [icon setSize:NSMakeSize(15, 10)];
     [addButton setImage:icon];
     [addButton setImagePosition:NSImageLeft];
+    
+    [appDelegate.modeMap setOpenedAddActionChangeMenu:YES];
 }
 
 - (IBAction)hideAddActionMenu:(id)sender {
@@ -107,6 +112,8 @@
     [icon setSize:NSMakeSize(15, 10)];
     [addButton setImage:icon];
     [addButton setImagePosition:NSImageRight];
+
+    [appDelegate.modeMap setOpenedAddActionChangeMenu:NO];
 }
 
 @end
