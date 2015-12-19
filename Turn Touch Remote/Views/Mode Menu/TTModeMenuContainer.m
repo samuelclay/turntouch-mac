@@ -106,6 +106,7 @@
     [appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
     [appDelegate.modeMap removeObserver:self forKeyPath:@"openedModeChangeMenu"];
     [appDelegate.modeMap removeObserver:self forKeyPath:@"openedActionChangeMenu"];
+    [appDelegate.modeMap removeObserver:self forKeyPath:@"openedAddActionChangeMenu"];
 }
 
 #pragma mark - KVO
@@ -116,6 +117,8 @@
     [appDelegate.modeMap addObserver:self forKeyPath:@"openedModeChangeMenu"
                              options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"openedActionChangeMenu"
+                             options:0 context:nil];
+    [appDelegate.modeMap addObserver:self forKeyPath:@"openedAddActionChangeMenu"
                              options:0 context:nil];
 }
 
@@ -136,8 +139,14 @@
         if (appDelegate.modeMap.openedActionChangeMenu) {
             [appDelegate.modeMap setOpenedActionChangeMenu:NO];
         }
+        if (appDelegate.modeMap.openedAddActionChangeMenu) {
+            [appDelegate.modeMap setOpenedAddActionChangeMenu:NO];
+        }
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(openedActionChangeMenu))]) {
+        [self setCollectionContent];
+        [self setNeedsDisplay:YES];
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(openedAddActionChangeMenu))]) {
         [self setCollectionContent];
         [self setNeedsDisplay:YES];
     }
@@ -151,12 +160,26 @@
     [bordersView setBorderStyle:menuType];
 
     if (menuType == ADD_ACTION_MENU_TYPE) {
-
+        if (appDelegate.modeMap.openedAddActionChangeMenu) {
+            // Active
+            [bordersView setHideBorder:NO];
+            [bordersView setHideShadow:NO];
+        } else if (appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION) {
+            // Only mode active (no actions selected)
+            [bordersView setHideBorder:YES];
+            [bordersView setHideShadow:YES];
+        } else {
+            // Inspecting action, not active yet
+            [bordersView setHideBorder:NO];
+            [bordersView setHideShadow:YES];
+        }
     } else if (menuType == ACTION_MENU_TYPE &&
         [appDelegate.modeMap.selectedMode hideActionMenu] &&
         appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION) {
+        [bordersView setHideShadow:NO];
         [bordersView setHideBorder:YES];
     } else {
+        [bordersView setHideShadow:NO];
         [bordersView setHideBorder:NO];
     }
     [bordersView setNeedsDisplay:YES];
@@ -171,6 +194,8 @@
         [[collectionView animator] setAlphaValue:appDelegate.modeMap.openedModeChangeMenu ? 1.0 : 0];
     } else if (menuType == ACTION_MENU_TYPE) {
         [[collectionView animator] setAlphaValue:appDelegate.modeMap.openedActionChangeMenu ? 1.0 : 0];
+    } else if (menuType == ADD_ACTION_MENU_TYPE) {
+        [[collectionView animator] setAlphaValue:appDelegate.modeMap.openedAddActionChangeMenu ? 1.0 : 0];
     }
     
     [NSAnimationContext endGrouping];
@@ -214,6 +239,8 @@
         content = appDelegate.modeMap.availableModes;
     } else if (menuType == ACTION_MENU_TYPE) {
         content = appDelegate.modeMap.availableActions;
+    } else if (menuType == ADD_ACTION_MENU_TYPE) {
+        content = appDelegate.modeMap.availableModes;
     }
     [collectionView setContent:content];
 }

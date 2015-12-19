@@ -13,6 +13,7 @@
 @implementation TTModeMenuBordersView
 
 @synthesize hideBorder;
+@synthesize hideShadow;
 @synthesize borderStyle;
 
 - (id)initWithFrame:(NSRect)frame
@@ -28,25 +29,31 @@
 {
     [super drawRect:dirtyRect];
     
-    if (borderStyle == ADD_ACTION_MENU_TYPE) {
+    if (!hideBorder && !hideShadow) {
+        [self drawShadowTop:dirtyRect];
+        if (NSHeight(self.bounds) > 36) {
+            [self drawShadowBottom:dirtyRect];
+        }
+    } else {
+        if (borderStyle == ADD_ACTION_MENU_TYPE) {
+            [NSColorFromRGB(0xFFFFFF) set];
+        } else {
+            [NSColorFromRGB(0xF5F6F8) set];
+        }
+        NSBezierPath *border = [NSBezierPath bezierPath];
+        [border moveToPoint:NSMakePoint(NSMinX(self.bounds), NSMinY(self.bounds))];
+        [border lineToPoint:NSMakePoint(NSMaxX(self.bounds), NSMinY(self.bounds))];
+        [border setLineWidth:2.0f];
+        [border stroke];
+    }
+    
+    if (borderStyle == ADD_ACTION_MENU_TYPE && !hideBorder) {
         NSBezierPath *path = [NSBezierPath bezierPath];
         [path moveToPoint:NSMakePoint(NSMinX(self.bounds) + BUTTON_MARGIN, NSMaxY(self.bounds))];
         [path lineToPoint:NSMakePoint(NSMaxX(self.bounds) - BUTTON_MARGIN, NSMaxY(self.bounds))];
         [path setLineWidth:0.5f];
         [NSColorFromRGB(0xC2CBCE) set];
         [path stroke];
-    } else if (hideBorder) {
-        [NSColorFromRGB(0xF5F6F8) set];
-        NSBezierPath *border = [NSBezierPath bezierPath];
-        [border moveToPoint:NSMakePoint(NSMinX(self.bounds), NSMinY(self.bounds))];
-        [border lineToPoint:NSMakePoint(NSMaxX(self.bounds), NSMinY(self.bounds))];
-        [border setLineWidth:2.0f];
-        [border stroke];
-    } else {
-        [self drawShadowTop:dirtyRect];
-        if (NSHeight(self.bounds) > 36) {
-            [self drawShadowBottom:dirtyRect];
-        }
     }
 }
 

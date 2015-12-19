@@ -72,7 +72,7 @@
     NSRect diamondRect = NSMakeRect(X_MARGIN, NSMaxY(self.bounds) - DIAMOND_SIZE/2 - Y_MARGIN,
                                     DIAMOND_SIZE * 1.3, DIAMOND_SIZE);
     [diamondView setFrame:diamondRect];
-
+    
     NSRect buttonFrame = NSMakeRect(NSWidth(self.bounds) - BUTTON_WIDTH - 12,
                                     NSMaxY(self.bounds) - BUTTON_HEIGHT/2 - Y_MARGIN,
                                     BUTTON_WIDTH,
@@ -107,19 +107,20 @@
 #pragma mark - Attributes
 
 - (void)setChangeButtonTitle:(NSString *)title {
-    NSMutableParagraphStyle *centredStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-    [centredStyle setLineHeightMultiple:0.6f];
-    [centredStyle setAlignment:NSCenterTextAlignment];
-    NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:centredStyle,
-                           NSParagraphStyleAttributeName,
-                           [NSFont fontWithName:@"Effra" size:10.f],
-                           NSFontAttributeName,
-                           NSColorFromRGB(0xA0A3A8),
-                           NSForegroundColorAttributeName,
-                           nil];
-    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]
-                                                   initWithString:[title uppercaseString] attributes:attrs];
-    [changeButton setAttributedTitle:attributedString];
+//    NSMutableParagraphStyle *centredStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+//    [centredStyle setLineHeightMultiple:0.6f];
+//    [centredStyle setAlignment:NSCenterTextAlignment];
+//    NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:centredStyle,
+//                           NSParagraphStyleAttributeName,
+//                           [NSFont fontWithName:@"Effra" size:10.f],
+//                           NSFontAttributeName,
+//                           NSColorFromRGB(0xA0A3A8),
+//                           NSForegroundColorAttributeName,
+//                           nil];
+//    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]
+//                                                   initWithString:[title uppercaseString] attributes:attrs];
+//    [changeButton setAttributedTitle:attributedString];
+    [changeButton setTitle:title];
 }
 
 - (void)setupLabels {

@@ -12,6 +12,7 @@
 @interface TTModeMenuBordersView : NSView
 
 @property (nonatomic) BOOL hideBorder;
+@property (nonatomic) BOOL hideShadow;
 @property (nonatomic) TTMenuType borderStyle;
 
 @end

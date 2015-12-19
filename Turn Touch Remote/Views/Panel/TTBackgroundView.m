@@ -17,7 +17,7 @@
 #define MODE_TABS_HEIGHT 92.0f
 #define MODE_TITLE_HEIGHT 64.0f
 #define MODE_MENU_HEIGHT 146.0f
-#define ACTION_MENU_HEIGHT 98.0f
+#define ACTION_MENU_HEIGHT 96.0f
 #define MODE_OPTIONS_HEIGHT 148.0f
 #define DIAMOND_LABELS_SIZE 270.0f
 #define ADD_ACTION_BUTTON_HEIGHT 48.0f
@@ -160,7 +160,7 @@
                                                                relatedBy:NSLayoutRelationEqual
                                                                   toItem:nil
                                                                attribute:0
-                                                              multiplier:1.0 constant:1];
+                                                              multiplier:1.0 constant:1.f];
         [self addConstraint:addActionMenuConstraint];
         addActionButtonConstraint = [NSLayoutConstraint constraintWithItem:addActionButtonView
                                                                  attribute:NSLayoutAttributeHeight
@@ -293,12 +293,9 @@
         [[NSAnimationContext currentContext] setCompletionHandler:^{
             [actionMenu toggleScrollbar:appDelegate.modeMap.openedActionChangeMenu];
         }];
-    }
-    
-    if (appDelegate.modeMap.openedActionChangeMenu) {
-        [[actionMenuConstraint animator] setConstant:ACTION_MENU_HEIGHT];
-    } else {
         [[actionMenuConstraint animator] setConstant:1];
+    } else {
+        [[actionMenuConstraint animator] setConstant:ACTION_MENU_HEIGHT];
     }
     
     [NSAnimationContext endGrouping];
@@ -324,12 +321,9 @@
         [[NSAnimationContext currentContext] setCompletionHandler:^{
             [addActionMenu toggleScrollbar:appDelegate.modeMap.openedAddActionChangeMenu];
         }];
-    }
-    
-    if (appDelegate.modeMap.openedAddActionChangeMenu) {
-        [[addActionMenuConstraint animator] setConstant:ACTION_MENU_HEIGHT];
+        [[addActionMenuConstraint animator] setConstant:1.f];
     } else {
-        [[addActionMenuConstraint animator] setConstant:1];
+        [[addActionMenuConstraint animator] setConstant:ACTION_MENU_HEIGHT];
     }
     
     [NSAnimationContext endGrouping];
@@ -395,6 +389,9 @@
     }
     if (appDelegate.modeMap.openedActionChangeMenu) {
         [appDelegate.modeMap setOpenedActionChangeMenu:NO];
+    }
+    if (appDelegate.modeMap.openedAddActionChangeMenu) {
+        [appDelegate.modeMap setOpenedAddActionChangeMenu:NO];
     }
 }
 
