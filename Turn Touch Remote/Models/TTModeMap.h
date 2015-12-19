@@ -30,6 +30,8 @@
 @property (nonatomic) TTMode *southMode;
 @property (nonatomic) NSArray *availableModes;
 @property (nonatomic) NSArray *availableActions;
+@property (nonatomic) NSArray *availableAddModes;
+@property (nonatomic) NSArray *availableAddActions;
 
 - (void)activateTimers;
 - (void)reset;

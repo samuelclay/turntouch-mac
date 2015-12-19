@@ -41,6 +41,18 @@
     menuType = ACTION_MENU_TYPE;
 }
 
+- (void)setAddModeName:(NSString *)_modeName {
+    modeName = _modeName;
+    modeClass = NSClassFromString(modeName);
+    menuType = ADD_MODE_MENU_TYPE;
+}
+
+- (void)setAddActionName:(NSString *)_actionName {
+    modeName = _actionName;
+    activeMode = appDelegate.modeMap.selectedMode;
+    menuType = ADD_ACTION_MENU_TYPE;
+}
+
 - (void)dealloc {
     [appDelegate.modeMap removeObserver:self forKeyPath:@"activeModeDirection"];
     [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedModeDirection"];

@@ -15,10 +15,11 @@
     appDelegate = (TTAppDelegate *)[NSApp delegate];
     NSRect collectionRect;
     TTModeMenuCollectionView *cv = (TTModeMenuCollectionView *)self.collectionView;
-
-    if (cv.menuType == MODE_MENU_TYPE) {
+    
+    menuType = cv.menuType;
+    if (cv.menuType == MODE_MENU_TYPE || cv.menuType == ADD_MODE_MENU_TYPE) {
         collectionRect = appDelegate.panelController.backgroundView.modeMenu.frame;
-    } else if (cv.menuType == ACTION_MENU_TYPE) {
+    } else if (cv.menuType == ACTION_MENU_TYPE || cv.menuType == ADD_ACTION_MENU_TYPE) {
         collectionRect = appDelegate.panelController.backgroundView.actionMenu.frame;
     }
     [self setView:[[TTModeMenuItemView alloc]
@@ -29,8 +30,17 @@
 
 - (void)setRepresentedObject:(id)representedObject {
     [super setRepresentedObject:representedObject];
-
-    if ([appDelegate.modeMap.availableModes containsObject:representedObject]) {
+    if (!representedObject) return;
+    
+    if ([representedObject isKindOfClass:[NSDictionary class]]) {
+        NSDictionary *object = (NSDictionary *)representedObject;
+        menuType = [[object objectForKey:@"type"] intValue];
+        if (menuType == ADD_MODE_MENU_TYPE) {
+            [(TTModeMenuItemView *)[self view] setAddModeName:representedObject];
+        } else if (menuType == ADD_ACTION_MENU_TYPE) {
+            [(TTModeMenuItemView *)[self view] setAddActionName:representedObject];
+        }
+    } else if ([appDelegate.modeMap.availableModes containsObject:representedObject]) {
         [(TTModeMenuItemView *)[self view] setModeName:representedObject];
     } else if ([appDelegate.modeMap.availableActions containsObject:representedObject]) {
         [(TTModeMenuItemView *)[self view] setActionName:representedObject];

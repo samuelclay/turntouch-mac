@@ -30,6 +30,8 @@
 @synthesize southMode;
 @synthesize availableModes;
 @synthesize availableActions;
+@synthesize availableAddModes;
+@synthesize availableAddActions;
 
 - (id)init {
     if (self = [super init]) {
@@ -61,6 +63,24 @@
     }
     
     return self;
+}
+
+- (void)setAvailableModes:(NSArray *)_availableModes {
+    availableModes = _availableModes;
+    NSMutableArray *_availableAddModes = [NSMutableArray array];
+    for (NSString *mode in availableModes) {
+        [_availableAddModes addObject:@{@"id": mode, @"type": [NSNumber numberWithInt:ADD_MODE_MENU_TYPE]}];
+    }
+    availableAddModes = _availableAddModes;
+}
+
+- (void)setAvailableActions:(NSArray *)_availableActions {
+    availableActions = _availableActions;
+    NSMutableArray *_availableAddActions = [NSMutableArray array];
+    for (NSString *action in availableActions) {
+        [_availableAddActions addObject:@{@"id": action, @"type": [NSNumber numberWithInt:ADD_ACTION_MENU_TYPE]}];
+    }
+    availableAddActions = _availableAddActions;
 }
 
 #pragma mark - KVO

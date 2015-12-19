@@ -239,10 +239,13 @@
         content = appDelegate.modeMap.availableModes;
     } else if (menuType == ACTION_MENU_TYPE) {
         content = appDelegate.modeMap.availableActions;
+    } else if (menuType == ADD_MODE_MENU_TYPE) {
+        content = appDelegate.modeMap.availableAddModes;
     } else if (menuType == ADD_ACTION_MENU_TYPE) {
-        content = appDelegate.modeMap.availableModes;
+        content = appDelegate.modeMap.availableAddActions;
     }
-    [collectionView setContent:content];
+    
+    [collectionView setContent:content withMenuType:menuType];
 }
 
 - (void)scrollToInspectingDirection {

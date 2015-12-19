@@ -18,6 +18,7 @@
 
 @interface TTModeMenuItem : NSCollectionViewItem {
     TTAppDelegate *appDelegate;
+    TTMenuType menuType;
 }
 
 @end

@@ -33,4 +33,7 @@
 - (void)setModeName:(NSString *)_modeName;
 - (void)setActionName:(NSString *)_actionName;
 
+- (void)setAddModeName:(NSString *)_modeName;
+- (void)setAddActionName:(NSString *)_actionName;
+
 @end
