@@ -157,7 +157,7 @@
     if (buttonAction == BUTTON_ACTION_DOUBLE) runAction = @"doubleTitle";
     SEL selector = NSSelectorFromString([NSString stringWithFormat:@"%@%@",
                                          runAction, actionName]);
-    if (![self respondsToSelector:selector]) {
+    if (![self respondsToSelector:selector] && buttonAction != BUTTON_ACTION_PRESSUP) {
         NSLog(@" ---> No double click title: %@", actionName);
         return [self titleForAction:actionName buttonAction:BUTTON_ACTION_PRESSUP];
     }

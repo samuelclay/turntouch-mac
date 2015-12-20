@@ -41,14 +41,14 @@
     menuType = ACTION_MENU_TYPE;
 }
 
-- (void)setAddModeName:(NSString *)_modeName {
-    modeName = _modeName;
+- (void)setAddModeName:(NSDictionary *)_modeName {
+    modeName = [_modeName objectForKey:@"id"];
     modeClass = NSClassFromString(modeName);
     menuType = ADD_MODE_MENU_TYPE;
 }
 
-- (void)setAddActionName:(NSString *)_actionName {
-    modeName = _actionName;
+- (void)setAddActionName:(NSDictionary *)_actionName {
+    modeName = [_actionName objectForKey:@"id"];
     activeMode = appDelegate.modeMap.selectedMode;
     menuType = ADD_ACTION_MENU_TYPE;
 }
@@ -93,9 +93,9 @@
     [self setupTitleAttributes];
     [self drawBackground];
     
-    if (menuType == MODE_MENU_TYPE) {
+    if (menuType == MODE_MENU_TYPE || menuType == ADD_MODE_MENU_TYPE) {
         [self drawMode];
-    } else if (menuType == ACTION_MENU_TYPE) {
+    } else if (menuType == ACTION_MENU_TYPE || menuType == ADD_ACTION_MENU_TYPE) {
         [self drawAction];
     }
 }
@@ -138,9 +138,9 @@
 }
 
 - (void)setupTitleAttributes {
-    if (menuType == MODE_MENU_TYPE) {
+    if (menuType == MODE_MENU_TYPE || menuType == ADD_MODE_MENU_TYPE) {
         modeTitle = [[modeClass title] uppercaseString];
-    } else if (menuType == ACTION_MENU_TYPE) {
+    } else if (menuType == ACTION_MENU_TYPE || menuType == ADD_ACTION_MENU_TYPE) {
         modeTitle = [[activeMode titleForAction:modeName buttonAction:BUTTON_ACTION_PRESSUP] uppercaseString];
     }
 
@@ -249,6 +249,10 @@
         [appDelegate.panelController.backgroundView setNeedsDisplay:YES];
         [appDelegate.panelController.backgroundView.modeMenu.collectionView setNeedsDisplay:YES];
         [appDelegate.modeMap setInspectingModeDirection:appDelegate.modeMap.inspectingModeDirection];
+    } else if (menuType == ADD_MODE_MENU_TYPE) {
+        
+    } else if (menuType == ADD_ACTION_MENU_TYPE) {
+        
     }
 }
 

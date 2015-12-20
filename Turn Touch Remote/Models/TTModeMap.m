@@ -36,12 +36,12 @@
 - (id)init {
     if (self = [super init]) {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        availableModes = @[@"TTModeMac",
-                           @"TTModeAlarmClock",
-                           @"TTModeMusic",
-                           @"TTModeVideo",
-                           @"TTModeNews",
-                           @"TTModeHue"];
+        [self setAvailableModes:@[@"TTModeMac",
+                                  @"TTModeAlarmClock",
+                                  @"TTModeMusic",
+                                  @"TTModeVideo",
+                                  @"TTModeNews",
+                                  @"TTModeHue"]];
         
         activeModeDirection = NO_DIRECTION;
         inspectingModeDirection = NO_DIRECTION;

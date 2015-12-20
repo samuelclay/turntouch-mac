@@ -60,7 +60,7 @@
         diamondLabels = [[TTDiamondLabels alloc] initWithInteractive:YES];
         optionsView = [[TTOptionsView alloc] init];
         actionMenu = [[TTModeMenuContainer alloc] initWithType:ACTION_MENU_TYPE];
-        addActionMenu = [[TTModeMenuContainer alloc] initWithType:ADD_ACTION_MENU_TYPE];
+        addActionMenu = [[TTModeMenuContainer alloc] initWithType:ADD_MODE_MENU_TYPE];
         addActionButtonView = [[TTAddActionButtonView alloc] init];
         footerView = [[TTFooterView alloc] init];
         

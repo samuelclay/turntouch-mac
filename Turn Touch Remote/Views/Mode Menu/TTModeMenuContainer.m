@@ -159,7 +159,7 @@
 
     [bordersView setBorderStyle:menuType];
 
-    if (menuType == ADD_ACTION_MENU_TYPE) {
+    if (menuType == ADD_MODE_MENU_TYPE || menuType == ADD_ACTION_MENU_TYPE) {
         if (appDelegate.modeMap.openedAddActionChangeMenu) {
             // Active
             [bordersView setHideBorder:NO];
@@ -194,13 +194,12 @@
         [[collectionView animator] setAlphaValue:appDelegate.modeMap.openedModeChangeMenu ? 1.0 : 0];
     } else if (menuType == ACTION_MENU_TYPE) {
         [[collectionView animator] setAlphaValue:appDelegate.modeMap.openedActionChangeMenu ? 1.0 : 0];
-    } else if (menuType == ADD_ACTION_MENU_TYPE) {
+    } else if (menuType == ADD_MODE_MENU_TYPE || menuType == ADD_ACTION_MENU_TYPE) {
         [[collectionView animator] setAlphaValue:appDelegate.modeMap.openedAddActionChangeMenu ? 1.0 : 0];
     }
     
     [NSAnimationContext endGrouping];
 }
-
 
 - (void)drawBorder {
     if ([appDelegate.modeMap.selectedMode hideActionMenu] &&
