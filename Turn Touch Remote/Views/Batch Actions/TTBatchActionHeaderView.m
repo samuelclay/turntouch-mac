@@ -10,10 +10,21 @@
 
 @implementation TTBatchActionHeaderView
 
+@synthesize modeName;
+
+- (instancetype)initWithMode:(NSString *)_modeName {
+    if (self = [super init]) {
+        modeName = _modeName;
+    }
+
+    return self;
+}
+
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     
-    // Drawing code here.
+    [NSColorFromRGB(0xFFFFFF) set];
+    NSRectFill(self.bounds);
 }
 
 @end

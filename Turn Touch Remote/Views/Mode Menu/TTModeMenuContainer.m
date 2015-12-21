@@ -108,6 +108,7 @@
     [appDelegate.modeMap removeObserver:self forKeyPath:@"openedActionChangeMenu"];
     [appDelegate.modeMap removeObserver:self forKeyPath:@"openedAddActionChangeMenu"];
     [appDelegate.modeMap removeObserver:self forKeyPath:@"availableActions"];
+    [appDelegate.modeMap removeObserver:self forKeyPath:@"tempModeName"];
 }
 
 #pragma mark - KVO
@@ -122,6 +123,8 @@
     [appDelegate.modeMap addObserver:self forKeyPath:@"openedAddActionChangeMenu"
                              options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"availableActions"
+                             options:0 context:nil];
+    [appDelegate.modeMap addObserver:self forKeyPath:@"tempModeName"
                              options:0 context:nil];
 }
 
@@ -153,6 +156,9 @@
         [self setCollectionContent];
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(availableActions))]) {
+        [self setCollectionContent];
+        [self setNeedsDisplay:YES];
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(tempModeName))]) {
         [self setCollectionContent];
         [self setNeedsDisplay:YES];
     }
@@ -240,6 +246,13 @@
 
 - (void)setCollectionContent {
     NSArray *content;
+    if (menuType == ADD_MODE_MENU_TYPE && appDelegate.modeMap.tempModeName) {
+        menuType = ADD_ACTION_MENU_TYPE;
+    }
+    if (menuType == ADD_ACTION_MENU_TYPE && !appDelegate.modeMap.tempModeName) {
+        menuType = ADD_MODE_MENU_TYPE;
+    }
+    
     if (menuType == MODE_MENU_TYPE) {
         content = appDelegate.modeMap.availableModes;
     } else if (menuType == ACTION_MENU_TYPE) {

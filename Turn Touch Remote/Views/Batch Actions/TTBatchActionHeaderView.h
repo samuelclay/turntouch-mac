@@ -10,4 +10,8 @@
 
 @interface TTBatchActionHeaderView : NSView
 
+@property (nonatomic) NSString *modeName;
+
+- (instancetype)initWithMode:(NSString *)_modeName;
+
 @end

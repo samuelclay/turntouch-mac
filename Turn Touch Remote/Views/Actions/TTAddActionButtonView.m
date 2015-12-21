@@ -101,6 +101,9 @@
     [addButton setImage:icon];
     [addButton setImagePosition:NSImageLeft];
     
+    if (appDelegate.modeMap.tempModeName) {
+        [appDelegate.modeMap setTempModeName:nil];
+    }
     [appDelegate.modeMap setOpenedAddActionChangeMenu:YES];
 }
 
@@ -113,7 +116,12 @@
     [addButton setImage:icon];
     [addButton setImagePosition:NSImageRight];
 
-    [appDelegate.modeMap setOpenedAddActionChangeMenu:NO];
+    if (appDelegate.modeMap.tempModeName) {
+        [appDelegate.modeMap setTempModeName:nil];
+    }
+    if (appDelegate.modeMap.openedAddActionChangeMenu) {
+        [appDelegate.modeMap setOpenedAddActionChangeMenu:NO];
+    }
 }
 
 @end

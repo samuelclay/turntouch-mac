@@ -20,6 +20,7 @@
 @property (nonatomic, assign) TTModeDirection selectedModeDirection;
 @property (nonatomic, assign) TTModeDirection inspectingModeDirection;
 @property (nonatomic, assign) TTModeDirection hoverModeDirection;
+@property (nonatomic, assign) NSString *tempModeName;
 @property (nonatomic, assign) BOOL openedModeChangeMenu;
 @property (nonatomic, assign) BOOL openedActionChangeMenu;
 @property (nonatomic, assign) BOOL openedAddActionChangeMenu;

@@ -170,6 +170,7 @@
 		FFABAB7A1C235EC500AD5620 /* TTFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB791C235EC500AD5620 /* TTFooterView.m */; };
 		FFABAB7D1C2777AD00AD5620 /* TTBatchActionContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB7C1C2777AD00AD5620 /* TTBatchActionContainerView.m */; };
 		FFABAB811C2777D500AD5620 /* TTBatchActionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB801C2777D500AD5620 /* TTBatchActionHeaderView.m */; };
+		FFABAB841C2784E300AD5620 /* TTBatchActionStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB831C2784E300AD5620 /* TTBatchActionStackView.m */; };
 		FFAFCBC519130F520058B9CB /* TTPanelArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAFCBC419130F520058B9CB /* TTPanelArrowView.m */; };
 		FFB1670B1922FE53008FA1AF /* TTModeMacOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB1670A1922FE53008FA1AF /* TTModeMacOptions.m */; };
 		FFB1670E1923E61F008FA1AF /* TTTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB1670D1923E61F008FA1AF /* TTTabView.m */; };
@@ -515,6 +516,8 @@
 		FFABAB7C1C2777AD00AD5620 /* TTBatchActionContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTBatchActionContainerView.m; path = "Views/Batch Actions/TTBatchActionContainerView.m"; sourceTree = "<group>"; };
 		FFABAB7F1C2777D500AD5620 /* TTBatchActionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTBatchActionHeaderView.h; path = "Views/Batch Actions/TTBatchActionHeaderView.h"; sourceTree = "<group>"; };
 		FFABAB801C2777D500AD5620 /* TTBatchActionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTBatchActionHeaderView.m; path = "Views/Batch Actions/TTBatchActionHeaderView.m"; sourceTree = "<group>"; };
+		FFABAB821C2784E300AD5620 /* TTBatchActionStackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTBatchActionStackView.h; path = "Views/Batch Actions/TTBatchActionStackView.h"; sourceTree = "<group>"; };
+		FFABAB831C2784E300AD5620 /* TTBatchActionStackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTBatchActionStackView.m; path = "Views/Batch Actions/TTBatchActionStackView.m"; sourceTree = "<group>"; };
 		FFAFCBC319130F520058B9CB /* TTPanelArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTPanelArrowView.h; sourceTree = "<group>"; };
 		FFAFCBC419130F520058B9CB /* TTPanelArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTPanelArrowView.m; sourceTree = "<group>"; };
 		FFB167091922FE53008FA1AF /* TTModeMacOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMacOptions.h; path = Modes/Mac/TTModeMacOptions.h; sourceTree = "<group>"; };
@@ -1263,6 +1266,8 @@
 		FFABAB7E1C2777B400AD5620 /* Batch Actions */ = {
 			isa = PBXGroup;
 			children = (
+				FFABAB821C2784E300AD5620 /* TTBatchActionStackView.h */,
+				FFABAB831C2784E300AD5620 /* TTBatchActionStackView.m */,
 				FFABAB7B1C2777AD00AD5620 /* TTBatchActionContainerView.h */,
 				FFABAB7C1C2777AD00AD5620 /* TTBatchActionContainerView.m */,
 				FFABAB7F1C2777D500AD5620 /* TTBatchActionHeaderView.h */,
@@ -1638,6 +1643,7 @@
 				FF7305AE1A5C9C76009A852D /* DDAbstractDatabaseLogger.m in Sources */,
 				FF76AD161C1F8FD000A6ED97 /* TTSlider.m in Sources */,
 				FF904B991BE9BA3700AD00F3 /* zip.c in Sources */,
+				FFABAB841C2784E300AD5620 /* TTBatchActionStackView.m in Sources */,
 				FF904B4F1BE9B82200AD00F3 /* TTDeviceList.m in Sources */,
 				FFA1D4CD1A3B8916003EA0BC /* TTActionHUDWindow.m in Sources */,
 				FF801338186E5D9700955218 /* TTOptionsActionTitle.m in Sources */,

@@ -23,6 +23,7 @@
 @synthesize openedModeChangeMenu;
 @synthesize openedActionChangeMenu;
 @synthesize openedAddActionChangeMenu;
+@synthesize tempModeName;
 @synthesize selectedMode;
 @synthesize northMode;
 @synthesize eastMode;

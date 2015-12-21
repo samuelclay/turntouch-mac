@@ -19,6 +19,7 @@
 #import "TTDFUView.h"
 #import "TTAddActionButtonView.h"
 #import "TTFooterView.h"
+#import "TTBatchActionStackView.h"
 
 @class TTAppDelegate;
 @class TTPanelArrowView;
@@ -32,6 +33,7 @@
 @class TTOptionsDetailViewController;
 @class TTDFUView;
 @class TTAddActionButtonView;
+@class TTBatchActionStackView;
 
 @interface TTBackgroundView : NSStackView <NSStackViewDelegate> {
     TTAppDelegate *appDelegate;
@@ -41,6 +43,7 @@
     NSLayoutConstraint *optionsConstraint;
     NSLayoutConstraint *dfuConstraint;
     NSLayoutConstraint *addActionButtonConstraint;
+    NSLayoutConstraint *batchActionsConstraint;
 }
 
 @property (nonatomic) IBOutlet TTPanelArrowView *arrowView;
@@ -55,9 +58,11 @@
 @property (nonatomic) IBOutlet TTDFUView *dfuView;
 @property (nonatomic) IBOutlet TTAddActionButtonView *addActionButtonView;
 @property (nonatomic) IBOutlet TTFooterView *footerView;
+@property (nonatomic) IBOutlet TTBatchActionStackView *batchActionStackView;
 @property (nonatomic) NSLayoutConstraint *optionsConstraint;
 
 - (void)resetPosition;
 - (void)adjustOptionsHeight:(NSView *)optionsDetailView;
+- (void)adjustBatchActionsHeight;
 
 @end
