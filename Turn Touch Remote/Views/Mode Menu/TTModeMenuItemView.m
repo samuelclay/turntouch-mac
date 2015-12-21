@@ -78,7 +78,7 @@
                         context:(void*)context {
     if ([keyPath isEqual:NSStringFromSelector(@selector(activeModeDirection))] ||
         [keyPath isEqual:NSStringFromSelector(@selector(selectedMode))]) {
-        [self setNeedsDisplay:YES];
+//        [self setNeedsDisplay:YES];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))]) {
@@ -250,6 +250,7 @@
         [appDelegate.panelController.backgroundView.modeMenu.collectionView setNeedsDisplay:YES];
         [appDelegate.modeMap setInspectingModeDirection:appDelegate.modeMap.inspectingModeDirection];
     } else if (menuType == ADD_MODE_MENU_TYPE) {
+        
         
     } else if (menuType == ADD_ACTION_MENU_TYPE) {
         

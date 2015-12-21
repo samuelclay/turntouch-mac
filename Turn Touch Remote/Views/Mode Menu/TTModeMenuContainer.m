@@ -107,6 +107,7 @@
     [appDelegate.modeMap removeObserver:self forKeyPath:@"openedModeChangeMenu"];
     [appDelegate.modeMap removeObserver:self forKeyPath:@"openedActionChangeMenu"];
     [appDelegate.modeMap removeObserver:self forKeyPath:@"openedAddActionChangeMenu"];
+    [appDelegate.modeMap removeObserver:self forKeyPath:@"availableActions"];
 }
 
 #pragma mark - KVO
@@ -119,6 +120,8 @@
     [appDelegate.modeMap addObserver:self forKeyPath:@"openedActionChangeMenu"
                              options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"openedAddActionChangeMenu"
+                             options:0 context:nil];
+    [appDelegate.modeMap addObserver:self forKeyPath:@"availableActions"
                              options:0 context:nil];
 }
 
@@ -147,6 +150,9 @@
         [self setCollectionContent];
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(openedAddActionChangeMenu))]) {
+        [self setCollectionContent];
+        [self setNeedsDisplay:YES];
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(availableActions))]) {
         [self setCollectionContent];
         [self setNeedsDisplay:YES];
     }

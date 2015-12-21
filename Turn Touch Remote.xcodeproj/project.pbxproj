@@ -168,6 +168,8 @@
 		FFAA61E01ABA6A9200AA422B /* HueSDK_OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */; };
 		FFABAB771C234CB900AD5620 /* TTAddActionButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB761C234CB900AD5620 /* TTAddActionButtonView.m */; };
 		FFABAB7A1C235EC500AD5620 /* TTFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB791C235EC500AD5620 /* TTFooterView.m */; };
+		FFABAB7D1C2777AD00AD5620 /* TTBatchActionContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB7C1C2777AD00AD5620 /* TTBatchActionContainerView.m */; };
+		FFABAB811C2777D500AD5620 /* TTBatchActionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB801C2777D500AD5620 /* TTBatchActionHeaderView.m */; };
 		FFAFCBC519130F520058B9CB /* TTPanelArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAFCBC419130F520058B9CB /* TTPanelArrowView.m */; };
 		FFB1670B1922FE53008FA1AF /* TTModeMacOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB1670A1922FE53008FA1AF /* TTModeMacOptions.m */; };
 		FFB1670E1923E61F008FA1AF /* TTTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB1670D1923E61F008FA1AF /* TTTabView.m */; };
@@ -509,6 +511,10 @@
 		FFABAB761C234CB900AD5620 /* TTAddActionButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTAddActionButtonView.m; path = Views/Actions/TTAddActionButtonView.m; sourceTree = "<group>"; };
 		FFABAB781C235EC500AD5620 /* TTFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTFooterView.h; path = "Views/Title Bar/TTFooterView.h"; sourceTree = "<group>"; };
 		FFABAB791C235EC500AD5620 /* TTFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTFooterView.m; path = "Views/Title Bar/TTFooterView.m"; sourceTree = "<group>"; };
+		FFABAB7B1C2777AD00AD5620 /* TTBatchActionContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTBatchActionContainerView.h; path = "Views/Batch Actions/TTBatchActionContainerView.h"; sourceTree = "<group>"; };
+		FFABAB7C1C2777AD00AD5620 /* TTBatchActionContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTBatchActionContainerView.m; path = "Views/Batch Actions/TTBatchActionContainerView.m"; sourceTree = "<group>"; };
+		FFABAB7F1C2777D500AD5620 /* TTBatchActionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTBatchActionHeaderView.h; path = "Views/Batch Actions/TTBatchActionHeaderView.h"; sourceTree = "<group>"; };
+		FFABAB801C2777D500AD5620 /* TTBatchActionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTBatchActionHeaderView.m; path = "Views/Batch Actions/TTBatchActionHeaderView.m"; sourceTree = "<group>"; };
 		FFAFCBC319130F520058B9CB /* TTPanelArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTPanelArrowView.h; sourceTree = "<group>"; };
 		FFAFCBC419130F520058B9CB /* TTPanelArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTPanelArrowView.m; sourceTree = "<group>"; };
 		FFB167091922FE53008FA1AF /* TTModeMacOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMacOptions.h; path = Modes/Mac/TTModeMacOptions.h; sourceTree = "<group>"; };
@@ -786,6 +792,7 @@
 				FF8012FF186CF87100955218 /* Actions */,
 				FF5295DC1AD610C4007DDC02 /* Settings */,
 				FF904BA81BEBFCE700AD00F3 /* DFU */,
+				FFABAB7E1C2777B400AD5620 /* Batch Actions */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1253,6 +1260,17 @@
 			name = "Alarm Clock";
 			sourceTree = "<group>";
 		};
+		FFABAB7E1C2777B400AD5620 /* Batch Actions */ = {
+			isa = PBXGroup;
+			children = (
+				FFABAB7B1C2777AD00AD5620 /* TTBatchActionContainerView.h */,
+				FFABAB7C1C2777AD00AD5620 /* TTBatchActionContainerView.m */,
+				FFABAB7F1C2777D500AD5620 /* TTBatchActionHeaderView.h */,
+				FFABAB801C2777D500AD5620 /* TTBatchActionHeaderView.m */,
+			);
+			name = "Batch Actions";
+			sourceTree = "<group>";
+		};
 		FFE2D47A1A46404C00DDD413 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -1588,6 +1606,7 @@
 				FF7305C01A5CA8F5009A852D /* TTModeHueConnected.m in Sources */,
 				FFF05F3E18F77CF500AC6230 /* TTChangeButtonView.m in Sources */,
 				FFB1670B1922FE53008FA1AF /* TTModeMacOptions.m in Sources */,
+				FFABAB811C2777D500AD5620 /* TTBatchActionHeaderView.m in Sources */,
 				FF801332186E156900955218 /* TTOptionsModeTitle.m in Sources */,
 				FFA8EA9C190F07A500679A4D /* TTModeTabsContainer.m in Sources */,
 				FF66F2A91922D1C100031478 /* TTOptionsDetailView.m in Sources */,
@@ -1634,6 +1653,7 @@
 				FF981FCB191AB46600A4A94B /* TTModeMenuBordersView.m in Sources */,
 				FFABAB7A1C235EC500AD5620 /* TTFooterView.m in Sources */,
 				FF904B861BE9B88700AD00F3 /* InitData.m in Sources */,
+				FFABAB7D1C2777AD00AD5620 /* TTBatchActionContainerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
