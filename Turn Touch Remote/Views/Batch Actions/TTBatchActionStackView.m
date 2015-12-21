@@ -59,8 +59,8 @@
     NSMutableArray *views = [NSMutableArray array];
     TTBatchActionHeaderView *tempHeaderView;
     
-    if (appDelegate.modeMap.tempModeName) {
-        tempHeaderView = [[TTBatchActionHeaderView alloc] initWithMode:appDelegate.modeMap.tempModeName];
+    if (appDelegate.modeMap.tempMode) {
+        tempHeaderView = [[TTBatchActionHeaderView alloc] initWithMode:appDelegate.modeMap.tempMode];
         [views addObject:tempHeaderView];
     }
     

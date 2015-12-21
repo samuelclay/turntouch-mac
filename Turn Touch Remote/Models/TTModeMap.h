@@ -29,6 +29,7 @@
 @property (nonatomic) TTMode *eastMode;
 @property (nonatomic) TTMode *westMode;
 @property (nonatomic) TTMode *southMode;
+@property (nonatomic) TTMode *tempMode;
 @property (nonatomic) NSArray *availableModes;
 @property (nonatomic) NSArray *availableActions;
 @property (nonatomic) NSArray *availableAddModes;

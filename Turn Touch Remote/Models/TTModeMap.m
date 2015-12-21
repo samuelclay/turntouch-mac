@@ -29,6 +29,7 @@
 @synthesize eastMode;
 @synthesize westMode;
 @synthesize southMode;
+@synthesize tempMode;
 @synthesize availableModes;
 @synthesize availableActions;
 @synthesize availableAddModes;
@@ -66,6 +67,16 @@
     return self;
 }
 
+- (void)setTempModeName:(NSString *)_tempModeName {
+    tempModeName = _tempModeName;
+    Class modeClass = NSClassFromString(tempModeName);
+    tempMode = [[modeClass alloc] init];
+    NSMutableArray *_availableAddActions = [NSMutableArray array];
+    for (NSString *action in tempMode.actions) {
+        [_availableAddActions addObject:@{@"id": action, @"type": [NSNumber numberWithInt:ADD_ACTION_MENU_TYPE]}];
+    }
+    availableAddActions = _availableAddActions;
+}
 - (void)setAvailableModes:(NSArray *)_availableModes {
     availableModes = _availableModes;
     NSMutableArray *_availableAddModes = [NSMutableArray array];
@@ -77,11 +88,6 @@
 
 - (void)setAvailableActions:(NSArray *)_availableActions {
     availableActions = _availableActions;
-    NSMutableArray *_availableAddActions = [NSMutableArray array];
-    for (NSString *action in availableActions) {
-        [_availableAddActions addObject:@{@"id": action, @"type": [NSNumber numberWithInt:ADD_ACTION_MENU_TYPE]}];
-    }
-    availableAddActions = _availableAddActions;
 }
 
 #pragma mark - KVO

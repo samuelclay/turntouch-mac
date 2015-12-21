@@ -7,11 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "TTAppDelegate.h"
 
-@interface TTBatchActionHeaderView : NSView
+@interface TTBatchActionHeaderView : NSView {
+    TTAppDelegate *appDelegate;
+    NSDictionary *titleAttributes;
+}
 
-@property (nonatomic) NSString *modeName;
+@property (nonatomic) TTMode *mode;
 
-- (instancetype)initWithMode:(NSString *)_modeName;
+- (instancetype)initWithMode:(TTMode *)_mode;
 
 @end

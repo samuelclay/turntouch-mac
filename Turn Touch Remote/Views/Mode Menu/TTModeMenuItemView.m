@@ -49,7 +49,7 @@
 
 - (void)setAddActionName:(NSDictionary *)_actionName {
     modeName = [_actionName objectForKey:@"id"];
-    activeMode = appDelegate.modeMap.selectedMode;
+    activeMode = appDelegate.modeMap.tempMode;
     menuType = ADD_ACTION_MENU_TYPE;
 }
 

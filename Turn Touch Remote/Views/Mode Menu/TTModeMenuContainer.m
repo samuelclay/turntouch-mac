@@ -160,6 +160,7 @@
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(tempModeName))]) {
         [self setCollectionContent];
+        [self scrollToInspectingDirection];
         [self setNeedsDisplay:YES];
     }
 }
