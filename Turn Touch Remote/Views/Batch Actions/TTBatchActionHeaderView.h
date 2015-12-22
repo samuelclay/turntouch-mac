@@ -12,6 +12,7 @@
 @interface TTBatchActionHeaderView : NSView {
     TTAppDelegate *appDelegate;
     NSDictionary *titleAttributes;
+    NSImage *modeImage;
 }
 
 @property (nonatomic) TTMode *mode;
