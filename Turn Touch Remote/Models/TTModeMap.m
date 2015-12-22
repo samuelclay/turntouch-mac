@@ -54,14 +54,14 @@
         openedModeChangeMenu = NO;
         openedActionChangeMenu = NO;
         openedAddActionChangeMenu = NO;
-        
+        batchActions = [[TTBatchActions alloc] init];
+
         [self setupModes];
         
         if ([[defaults objectForKey:@"TT:selectedModeDirection"] integerValue]) {
             selectedModeDirection = (TTModeDirection)[[defaults
                                                        objectForKey:@"TT:selectedModeDirection"]
                                                       integerValue];
-            [self switchMode];
         }
 
         [self registerAsObserver];
@@ -165,7 +165,6 @@
         [selectedMode activate:selectedModeDirection];
         [self reset];
     }
-    batchActions = [[TTBatchActions alloc] init];
     [batchActions assembleBatchActions];
 }
 

@@ -39,6 +39,7 @@
 @property (nonatomic) NSArray *availableAddActions;
 
 - (void)activateTimers;
+- (void)switchMode;
 - (void)reset;
 - (void)runActiveButton;
 - (void)runDoubleButton:(TTModeDirection)direction;

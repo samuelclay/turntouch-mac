@@ -51,6 +51,7 @@ void *kContextActivePanel = &kContextActivePanel;
     self.modeMap = [[TTModeMap alloc] init];
     self.menubarController = [[TTMenubarController alloc] init];
     
+    [self.modeMap switchMode];
     [self.modeMap activateTimers];
     [self observeSleepNotifications];
     
