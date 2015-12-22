@@ -13,15 +13,29 @@
 @implementation TTBatchActionHeaderView
 
 @synthesize mode;
+@synthesize batchAction;
 
-- (instancetype)initWithMode:(TTMode *)_mode {
+- (instancetype)initWithTempMode:(TTMode *)_mode {
     if (self = [super init]) {
         appDelegate = (TTAppDelegate *)[NSApp delegate];
+        batchAction = nil;
         mode = _mode;
         
         [self setupLabels];
     }
+    
+    return self;
+}
 
+- (instancetype)initWithBatchAction:(TTBatchAction *)_batchAction {
+    if (self = [super init]) {
+        appDelegate = (TTAppDelegate *)[NSApp delegate];
+        batchAction = _batchAction;
+        mode = batchAction.mode;
+        
+        [self setupLabels];
+    }
+    
     return self;
 }
 

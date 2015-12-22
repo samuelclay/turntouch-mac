@@ -251,9 +251,8 @@
         [appDelegate.modeMap setInspectingModeDirection:appDelegate.modeMap.inspectingModeDirection];
     } else if (menuType == ADD_MODE_MENU_TYPE) {
         [appDelegate.modeMap setTempModeName:modeName];
-        
     } else if (menuType == ADD_ACTION_MENU_TYPE) {
-        
+        [appDelegate.modeMap addBatchAction:modeName];
     }
 }
 

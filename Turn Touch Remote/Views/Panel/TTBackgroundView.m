@@ -22,7 +22,6 @@
 #define DIAMOND_LABELS_SIZE 270.0f
 #define ADD_ACTION_BUTTON_HEIGHT 48.0f
 #define FOOTER_HEIGHT 8.0f
-#define BATCH_ACTION_HEADER_HEIGHT 36.f
 
 #pragma mark -
 
@@ -161,13 +160,6 @@
                                                          attribute:NSLayoutAttributeHeight
                                                         multiplier:1.0 constant:0];
         [self addConstraint:optionsConstraint];
-        batchActionsConstraint = [NSLayoutConstraint constraintWithItem:batchActionStackView
-                                                              attribute:NSLayoutAttributeHeight
-                                                              relatedBy:NSLayoutRelationEqual
-                                                                 toItem:nil
-                                                              attribute:0
-                                                             multiplier:1.0 constant:0];
-        [self addConstraint:batchActionsConstraint];
         addActionMenuConstraint = [NSLayoutConstraint constraintWithItem:addActionMenu
                                                                attribute:NSLayoutAttributeHeight
                                                                relatedBy:NSLayoutRelationEqual
@@ -246,10 +238,11 @@
         [self toggleActionMenuFrame];
         [self toggleAddActionMenuFrame];
         [self toggleAddActionButtonView];
+        [self adjustBatchActionsHeight:NO];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(nicknamedConnectedCount))]) {
         [self toggleDfuList];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(tempModeName))]) {
-        [self adjustBatchActionsHeight];
+        [self adjustBatchActionsHeight:YES];
     }
 }
 
@@ -396,29 +389,10 @@
     //    NSLog(@"modeOptionsView constraints: %@", optionsView.modeOptionsView.constraints);
 }
 
-- (void)adjustBatchActionsHeight {
+- (void)adjustBatchActionsHeight:(BOOL)animated {
     NSLog(@"adjustBatchActionsHeight: %@", appDelegate.modeMap.tempModeName);
-    NSTimeInterval openDuration = OPEN_DURATION;
-    NSEvent *currentEvent = [NSApp currentEvent];
-    NSUInteger clearFlags = ([currentEvent modifierFlags] & NSDeviceIndependentModifierFlagsMask);
-    BOOL shiftPressed = (clearFlags == NSShiftKeyMask);
-    if (shiftPressed) openDuration *= 10;
-    
-    [NSAnimationContext beginGrouping];
-    [[NSAnimationContext currentContext] setDuration:OPEN_DURATION];
-    [[NSAnimationContext currentContext] setTimingFunction:[CAMediaTimingFunction functionWithName:
-                                                            kCAMediaTimingFunctionEaseInEaseOut]];
-    if (appDelegate.modeMap.tempModeName) {
-        [[batchActionsConstraint animator] setConstant:BATCH_ACTION_HEADER_HEIGHT];
-        [batchActionStackView assembleViews];
-    } else {
-        [[batchActionsConstraint animator] setConstant:0];
-        [[NSAnimationContext currentContext] setCompletionHandler:^{
-//            [batchActionStackView assembleViews];
-        }];
-    }
 
-    [NSAnimationContext endGrouping];
+    [batchActionStackView assembleViews:animated];
 }
 
 - (void)resetPosition {

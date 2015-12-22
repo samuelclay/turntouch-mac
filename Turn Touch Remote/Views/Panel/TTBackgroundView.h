@@ -63,6 +63,5 @@
 
 - (void)resetPosition;
 - (void)adjustOptionsHeight:(NSView *)optionsDetailView;
-- (void)adjustBatchActionsHeight;
 
 @end

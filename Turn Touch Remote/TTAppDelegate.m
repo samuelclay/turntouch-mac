@@ -64,6 +64,7 @@ void *kContextActivePanel = &kContextActivePanel;
 //    [self.panelController closePanel];
 //    [self.hudController toastActiveMode];
 //    [self.hudController toastActiveAction:EAST];
+//    NSLog(@"%@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender {

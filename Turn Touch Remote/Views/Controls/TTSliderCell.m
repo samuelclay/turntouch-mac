@@ -25,7 +25,7 @@
 
 - (void)drawKnob:(NSRect)knobRect
 {
-    NSLog(@"drawKnob: %@", NSStringFromRect(knobRect));
+//    NSLog(@"drawKnob: %@", NSStringFromRect(knobRect));
     [self drawBarInside:_barRect flipped:_flipped];
     [self.controlView lockFocus];
     //// Color Declarations
@@ -89,7 +89,7 @@
 
 - (void)drawBarInside:(NSRect)rect flipped:(BOOL)flipped
 {
-    NSLog(@"Draw bar: %@ / %d", NSStringFromRect(rect), flipped);
+//    NSLog(@"Draw bar: %@ / %d", NSStringFromRect(rect), flipped);
     _barRect = rect;
     _flipped = flipped;
     CGFloat value = ([self doubleValue]  - [self minValue]) / ([self maxValue] - [self minValue]);

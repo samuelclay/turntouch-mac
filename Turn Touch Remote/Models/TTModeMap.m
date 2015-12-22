@@ -13,6 +13,8 @@
 #import "TTModeNews.h"
 #import "TTModeMac.h"
 #import "TTModeHue.h"
+#import "TTBatchAction.h"
+#import "TTBatchActions.h"
 
 @implementation TTModeMap
 
@@ -30,6 +32,7 @@
 @synthesize westMode;
 @synthesize southMode;
 @synthesize tempMode;
+@synthesize batchActions;
 @synthesize availableModes;
 @synthesize availableActions;
 @synthesize availableAddModes;
@@ -162,6 +165,8 @@
         [selectedMode activate:selectedModeDirection];
         [self reset];
     }
+    batchActions = [[TTBatchActions alloc] init];
+    [batchActions assembleBatchActions];
 }
 
 - (TTMode *)modeInDirection:(TTModeDirection)direction {
@@ -263,7 +268,7 @@
     return nil;
 }
 
-#pragma mark - Changing modes, actions, and options
+#pragma mark - Changing modes, actions, batch actions
 
 - (void)changeDirection:(TTModeDirection)direction toMode:(NSString *)modeClassName {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
@@ -280,6 +285,47 @@
 - (void)changeDirection:(TTModeDirection)direction toAction:(NSString *)actionClassName {
     [selectedMode changeDirection:direction toAction:actionClassName];
 }
+
+- (void)addBatchAction:(NSString *)actionName {
+    NSLog(@"Adding %@ from %@", actionName, NSStringFromClass([tempMode class]));
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    
+    // Start by reading current array of batch actions in mode's direction's action's direction
+    NSString *modeDirectionName = [self directionName:selectedModeDirection];
+    NSString *actionDirectionName = [self directionName:inspectingModeDirection];
+    NSString *batchKey = [NSString stringWithFormat:@"TT:mode:%@:action:%@:batchactions",
+                          modeDirectionName,
+                          actionDirectionName];
+    NSMutableArray *batchActionKeys;
+    NSArray *batchActionsPrefArray = [prefs objectForKey:batchKey];
+    if (!batchActionsPrefArray) {
+        batchActionKeys = [NSMutableArray array];
+    } else {
+        batchActionKeys = [batchActionsPrefArray mutableCopy];
+    }
+
+    // Add new batch action to existing batch actions
+    NSString *newActionKey = [NSString stringWithFormat:@"%@:%@:%@",
+                              NSStringFromClass([tempMode class]),
+                              actionName,
+                              [[[NSUUID UUID] UUIDString] substringToIndex:8]];
+    [batchActionKeys addObject:newActionKey];
+    [prefs setObject:batchActionKeys forKey:batchKey];
+    [prefs synchronize];
+    
+    [batchActions assembleBatchActions];
+    
+    tempMode = nil;
+    tempModeName = nil;
+}
+
+#pragma mark - Batch actions
+
+- (NSArray *)selectedModeBatchActions:(TTModeDirection)direction {
+    return [batchActions batchActionsInDirection:direction];
+}
+
+#pragma mark - Mode options
 
 - (id)modeOptionValue:(NSString *)optionName {
     return [self mode:selectedMode optionValue:optionName];
@@ -302,6 +348,8 @@
     
     return pref;
 }
+
+#pragma mark - Action options
 
 - (id)actionOptionValue:(NSString *)optionName {
     return [self actionOptionValue:optionName inDirection:inspectingModeDirection];

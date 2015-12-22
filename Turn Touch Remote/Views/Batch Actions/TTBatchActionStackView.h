@@ -9,6 +9,8 @@
 #import <Cocoa/Cocoa.h>
 #import "TTAppDelegate.h"
 
+extern const NSInteger BATCH_ACTION_HEADER_HEIGHT;
+
 @interface TTBatchActionStackView : NSStackView
 <NSStackViewDelegate> {
     TTAppDelegate *appDelegate;
@@ -17,6 +19,6 @@
 
 @property (nonatomic) NSString *tempMode;
 
-- (void)assembleViews;
+- (void)assembleViews:(BOOL)animated;
 
 @end

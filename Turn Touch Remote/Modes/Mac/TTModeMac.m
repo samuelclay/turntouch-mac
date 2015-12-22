@@ -165,6 +165,7 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
 
 + (float)volume {
     Float32 outputVolume;
+    UInt16 inQualifierData = 0;
     UInt32 propertySize = 0;
     OSStatus status = noErr;
     AudioObjectPropertyAddress propertyAOPA;
@@ -187,7 +188,7 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
     
     // Read the volume
     propertySize = (UInt32) sizeof(Float32);
-    status = AudioHardwareServiceGetPropertyData(outputDeviceID, &propertyAOPA, 0, NULL, &propertySize, &outputVolume);
+    status = AudioHardwareServiceGetPropertyData(outputDeviceID, &propertyAOPA, 0, &inQualifierData, &propertySize, &outputVolume);
     
     // Check success
     if (status) {
@@ -209,6 +210,7 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
     
     // Set up the change request
     UInt32 propertySize = 0;
+    UInt16 inQualifierData = 0;
     OSStatus status = noErr;
     AudioObjectPropertyAddress propertyAOPA;
     propertyAOPA.mElement = kAudioObjectPropertyElementMaster;
@@ -248,11 +250,11 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
         // Request setting the muted state
         propertySize = (UInt32) sizeof(UInt32);
         UInt32 mute = 1;
-        status = AudioHardwareServiceSetPropertyData(outputDeviceID, &propertyAOPA, 0, NULL, propertySize, &mute);
+        status = AudioHardwareServiceSetPropertyData(outputDeviceID, &propertyAOPA, 0, &inQualifierData, propertySize, &mute);
     } else {
         // Request setting the volume
         propertySize = (UInt32) sizeof(Float32);
-        status = AudioHardwareServiceSetPropertyData(outputDeviceID, &propertyAOPA, 0, NULL, propertySize, &newVolume);
+        status = AudioHardwareServiceSetPropertyData(outputDeviceID, &propertyAOPA, 0, &inQualifierData, propertySize, &newVolume);
         
         if (status) {
             NSLog(@"Unable to set volume for device 0x%0x", outputDeviceID);
@@ -276,7 +278,7 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
         }
         
         // Set device unmuted
-        status = AudioHardwareServiceSetPropertyData(outputDeviceID, &propertyAOPA, 0, NULL, propertySize, &mute);
+        status = AudioHardwareServiceSetPropertyData(outputDeviceID, &propertyAOPA, 0, &inQualifierData, propertySize, &mute);
 	}
     
     if (status) {
@@ -287,6 +289,7 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
 + (BOOL)isMuted {
     bool muted;
     UInt32 propertySize = 0;
+    UInt16 inQualifierData = 0;
     OSStatus status = noErr;
     AudioObjectPropertyAddress propertyAOPA;
     propertyAOPA.mElement = kAudioObjectPropertyElementMaster;
@@ -308,7 +311,7 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
     
     // Read the volume
     propertySize = (UInt32) sizeof(bool);
-    status = AudioHardwareServiceGetPropertyData(outputDeviceID, &propertyAOPA, 0, NULL, &propertySize, &muted);
+    status = AudioHardwareServiceGetPropertyData(outputDeviceID, &propertyAOPA, 0, &inQualifierData, &propertySize, &muted);
     
     // Check success
     if (status) {
@@ -324,6 +327,7 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
     
     // Prepare the request
     UInt32 propertySize = 0;
+    UInt16 inQualifierData = 0;
     OSStatus status = noErr;
     AudioObjectPropertyAddress propertyAOPA;
     propertyAOPA.mScope = kAudioObjectPropertyScopeGlobal;
@@ -339,7 +343,7 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
     // Send the request to get the default device
     propertySize = (UInt32) sizeof(AudioDeviceID);
     status = AudioHardwareServiceGetPropertyData(kAudioObjectSystemObject,
-                                                 &propertyAOPA, 0, NULL, &propertySize, &outputDeviceID);
+                                                 &propertyAOPA, 0, &inQualifierData, &propertySize, &outputDeviceID);
     if (status) {
         NSLog(@"Cannot find default output device!");
     }

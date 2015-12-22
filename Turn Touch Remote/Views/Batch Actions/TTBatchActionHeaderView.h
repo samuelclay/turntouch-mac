@@ -15,7 +15,9 @@
 }
 
 @property (nonatomic) TTMode *mode;
+@property (nonatomic) TTBatchAction *batchAction;
 
-- (instancetype)initWithMode:(TTMode *)_mode;
+- (instancetype)initWithTempMode:(TTMode *)_mode;
+- (instancetype)initWithBatchAction:(TTBatchAction *)_batchAction;
 
 @end

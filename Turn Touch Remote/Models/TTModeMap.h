@@ -9,8 +9,10 @@
 #import <Cocoa/Cocoa.h>
 #import "TTModeDirection.h"
 #import "TTMode.h"
+#import "TTBatchActions.h"
 
 @class TTMode;
+@class TTBatchActions;
 
 @interface TTModeMap : NSObject {
     BOOL waitingForDoubleClick;
@@ -30,6 +32,7 @@
 @property (nonatomic) TTMode *westMode;
 @property (nonatomic) TTMode *southMode;
 @property (nonatomic) TTMode *tempMode;
+@property (nonatomic) TTBatchActions *batchActions;
 @property (nonatomic) NSArray *availableModes;
 @property (nonatomic) NSArray *availableActions;
 @property (nonatomic) NSArray *availableAddModes;
@@ -43,6 +46,8 @@
 - (TTMode *)modeInDirection:(TTModeDirection)direction;
 - (void)changeDirection:(TTModeDirection)direction toMode:(NSString *)modeClassName;
 - (void)changeDirection:(TTModeDirection)direction toAction:(NSString *)actionClassName;
+- (void)addBatchAction:(NSString *)actionName;
+- (NSArray *)selectedModeBatchActions:(TTModeDirection)direction;
 - (void)changeModeOption:(NSString *)optionName to:(id)optionValue;
 - (void)changeMode:(TTMode *)mode option:(NSString *)optionName to:(id)optionValue;
 - (void)changeActionOption:(NSString *)optionName to:(id)optionValue;

@@ -171,6 +171,8 @@
 		FFABAB7D1C2777AD00AD5620 /* TTBatchActionContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB7C1C2777AD00AD5620 /* TTBatchActionContainerView.m */; };
 		FFABAB811C2777D500AD5620 /* TTBatchActionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB801C2777D500AD5620 /* TTBatchActionHeaderView.m */; };
 		FFABAB841C2784E300AD5620 /* TTBatchActionStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB831C2784E300AD5620 /* TTBatchActionStackView.m */; };
+		FFABAB871C28DD2400AD5620 /* TTBatchAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB861C28DD2400AD5620 /* TTBatchAction.m */; };
+		FFABAB8A1C28E6F000AD5620 /* TTBatchActions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB891C28E6F000AD5620 /* TTBatchActions.m */; };
 		FFAFCBC519130F520058B9CB /* TTPanelArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAFCBC419130F520058B9CB /* TTPanelArrowView.m */; };
 		FFB1670B1922FE53008FA1AF /* TTModeMacOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB1670A1922FE53008FA1AF /* TTModeMacOptions.m */; };
 		FFB1670E1923E61F008FA1AF /* TTTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB1670D1923E61F008FA1AF /* TTTabView.m */; };
@@ -518,6 +520,10 @@
 		FFABAB801C2777D500AD5620 /* TTBatchActionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTBatchActionHeaderView.m; path = "Views/Batch Actions/TTBatchActionHeaderView.m"; sourceTree = "<group>"; };
 		FFABAB821C2784E300AD5620 /* TTBatchActionStackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTBatchActionStackView.h; path = "Views/Batch Actions/TTBatchActionStackView.h"; sourceTree = "<group>"; };
 		FFABAB831C2784E300AD5620 /* TTBatchActionStackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTBatchActionStackView.m; path = "Views/Batch Actions/TTBatchActionStackView.m"; sourceTree = "<group>"; };
+		FFABAB851C28DD2400AD5620 /* TTBatchAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTBatchAction.h; path = Models/TTBatchAction.h; sourceTree = "<group>"; };
+		FFABAB861C28DD2400AD5620 /* TTBatchAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTBatchAction.m; path = Models/TTBatchAction.m; sourceTree = "<group>"; };
+		FFABAB881C28E6F000AD5620 /* TTBatchActions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTBatchActions.h; path = Models/TTBatchActions.h; sourceTree = "<group>"; };
+		FFABAB891C28E6F000AD5620 /* TTBatchActions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTBatchActions.m; path = Models/TTBatchActions.m; sourceTree = "<group>"; };
 		FFAFCBC319130F520058B9CB /* TTPanelArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTPanelArrowView.h; sourceTree = "<group>"; };
 		FFAFCBC419130F520058B9CB /* TTPanelArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTPanelArrowView.m; sourceTree = "<group>"; };
 		FFB167091922FE53008FA1AF /* TTModeMacOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMacOptions.h; path = Modes/Mac/TTModeMacOptions.h; sourceTree = "<group>"; };
@@ -611,6 +617,10 @@
 				FF981FDC191AFBEF00A4A94B /* TTModeDirection.h */,
 				FF5295C91AD5F59C007DDC02 /* TTDevice.h */,
 				FF5295CA1AD5F59C007DDC02 /* TTDevice.m */,
+				FFABAB881C28E6F000AD5620 /* TTBatchActions.h */,
+				FFABAB891C28E6F000AD5620 /* TTBatchActions.m */,
+				FFABAB851C28DD2400AD5620 /* TTBatchAction.h */,
+				FFABAB861C28DD2400AD5620 /* TTBatchAction.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1615,6 +1625,7 @@
 				FF801332186E156900955218 /* TTOptionsModeTitle.m in Sources */,
 				FFA8EA9C190F07A500679A4D /* TTModeTabsContainer.m in Sources */,
 				FF66F2A91922D1C100031478 /* TTOptionsDetailView.m in Sources */,
+				FFABAB871C28DD2400AD5620 /* TTBatchAction.m in Sources */,
 				FF904B961BE9BA3700AD00F3 /* ioapi.c in Sources */,
 				FF904B971BE9BA3700AD00F3 /* mztools.c in Sources */,
 				FFA1D4DC1A3B89A4003EA0BC /* TTModeHUDWindow.m in Sources */,
@@ -1636,6 +1647,7 @@
 				FF3641E61A5F674A003CC03C /* TTModeHueOptions.m in Sources */,
 				FF0E12D41828560000D49EC7 /* TTModeVideo.m in Sources */,
 				FF3641E91A60BB8B003CC03C /* TTModeHueConnecting.m in Sources */,
+				FFABAB8A1C28E6F000AD5620 /* TTBatchActions.m in Sources */,
 				FF913D2C19243BFD005C336F /* TTModeAlarmSnoozeOptions.m in Sources */,
 				FF98A2E81867DBE70032CC7A /* TTPanelController.m in Sources */,
 				FF5295C81AD5B9B8007DDC02 /* TTSettingsButton.m in Sources */,
