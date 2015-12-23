@@ -65,7 +65,6 @@ const NSInteger BATCH_ACTION_HEADER_HEIGHT = 36;
 #pragma mark - Drawing
 
 - (void)assembleViews:(BOOL)animated {
-    NSLog(@"assembleViews: %@", appDelegate.modeMap.tempModeName);
     NSTimeInterval openDuration = OPEN_DURATION;
     NSEvent *currentEvent = [NSApp currentEvent];
     NSUInteger clearFlags = ([currentEvent modifierFlags] & NSDeviceIndependentModifierFlagsMask);
