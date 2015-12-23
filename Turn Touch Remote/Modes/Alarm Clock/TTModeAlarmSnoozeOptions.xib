@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14C94b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTModeAlarmSnoozeOptions">
             <connections>
+                <outlet property="durationLabel" destination="9dB-yo-Pin" id="TrG-XU-tcf"/>
+                <outlet property="durationSlider" destination="wce-UW-XqP" id="ja1-L8-efp"/>
                 <outlet property="view" destination="c22-O7-iKe" id="65s-LJ-Scl"/>
             </connections>
         </customObject>
@@ -17,24 +20,30 @@
             <subviews>
                 <box autoresizesSubviews="NO" title="Snooze" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Nc8-gD-PGI" customClass="TTBoxView">
                     <rect key="frame" x="-3" y="-4" width="435" height="55"/>
-                    <view key="contentView">
+                    <view key="contentView" id="RVh-CU-xGI">
                         <rect key="frame" x="1" y="1" width="433" height="53"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lE4-be-gMl">
-                                <rect key="frame" x="16" y="23" width="105" height="17"/>
+                                <rect key="frame" x="16" y="23" width="103" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Snooze duration" id="ddW-lu-0sn">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wce-UW-XqP">
-                                <rect key="frame" x="125" y="17" width="237" height="25"/>
-                                <sliderCell key="cell" state="on" alignment="left" maxValue="20" doubleValue="10" tickMarkPosition="below" numberOfTickMarks="9" allowsTickMarkValuesOnly="YES" sliderType="linear" id="hZJ-XT-pn3"/>
+                            <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wce-UW-XqP" customClass="TTSlider">
+                                <rect key="frame" x="123" y="17" width="242" height="25"/>
+                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="1" maxValue="20" doubleValue="3.1578947368421053" tickMarkPosition="below" numberOfTickMarks="20" allowsTickMarkValuesOnly="YES" sliderType="linear" id="hZJ-XT-pn3" customClass="TTSliderCell"/>
+                                <connections>
+                                    <action selector="slideDuration:" target="-2" id="hoK-jm-yDh"/>
+                                </connections>
                             </slider>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9dB-yo-Pin">
-                                <rect key="frame" x="379" y="24" width="38" height="17"/>
+                                <rect key="frame" x="373" y="24" width="44" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="ea8-1h-OzK"/>
+                                </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="8 min" id="aKi-lG-XrY">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -44,14 +53,14 @@
                         </subviews>
                     </view>
                     <constraints>
-                        <constraint firstItem="lE4-be-gMl" firstAttribute="top" secondItem="wce-UW-XqP" secondAttribute="top" id="6EI-uZ-SlG"/>
-                        <constraint firstItem="lE4-be-gMl" firstAttribute="leading" secondItem="Nc8-gD-PGI" secondAttribute="leading" constant="16" id="E5D-d0-5T1"/>
-                        <constraint firstItem="9dB-yo-Pin" firstAttribute="leading" secondItem="wce-UW-XqP" secondAttribute="trailing" constant="21" id="IYV-Ui-iIx"/>
-                        <constraint firstItem="lE4-be-gMl" firstAttribute="top" secondItem="Nc8-gD-PGI" secondAttribute="top" constant="12" id="UFc-B0-2Pd"/>
+                        <constraint firstItem="lE4-be-gMl" firstAttribute="top" secondItem="Nc8-gD-PGI" secondAttribute="top" constant="12" id="0zG-xh-dIa"/>
+                        <constraint firstAttribute="trailing" secondItem="9dB-yo-Pin" secondAttribute="trailing" constant="16" id="6Fx-SM-Em9"/>
+                        <constraint firstItem="9dB-yo-Pin" firstAttribute="leading" secondItem="wce-UW-XqP" secondAttribute="trailing" constant="12" id="I9H-uy-Fc4"/>
+                        <constraint firstItem="lE4-be-gMl" firstAttribute="leading" secondItem="Nc8-gD-PGI" secondAttribute="leading" constant="16" id="K2N-Ns-7sb"/>
+                        <constraint firstItem="lE4-be-gMl" firstAttribute="top" secondItem="wce-UW-XqP" secondAttribute="top" id="c2L-1r-42I"/>
+                        <constraint firstItem="9dB-yo-Pin" firstAttribute="top" secondItem="Nc8-gD-PGI" secondAttribute="top" constant="11" id="d61-Nx-tDQ"/>
                         <constraint firstAttribute="height" constant="49" id="l8k-oS-OdY"/>
-                        <constraint firstAttribute="trailing" secondItem="9dB-yo-Pin" secondAttribute="trailing" constant="16" id="ngq-io-qHd"/>
-                        <constraint firstItem="9dB-yo-Pin" firstAttribute="top" secondItem="Nc8-gD-PGI" secondAttribute="top" constant="11" id="oPc-6v-rRa"/>
-                        <constraint firstItem="wce-UW-XqP" firstAttribute="leading" secondItem="lE4-be-gMl" secondAttribute="trailing" constant="8" symbolic="YES" id="w90-wz-U1x"/>
+                        <constraint firstItem="wce-UW-XqP" firstAttribute="leading" secondItem="lE4-be-gMl" secondAttribute="trailing" constant="8" symbolic="YES" id="skW-rR-wPg"/>
                     </constraints>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

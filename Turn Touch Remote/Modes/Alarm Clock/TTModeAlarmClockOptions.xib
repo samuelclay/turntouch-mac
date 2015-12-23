@@ -34,10 +34,10 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView translatesAutoresizingMaskIntoConstraints="NO" id="2fL-Hy-hGn">
+        <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2fL-Hy-hGn">
             <rect key="frame" x="0.0" y="0.0" width="437" height="242"/>
             <subviews>
-                <tabView initialItem="CX8-qh-iYR" translatesAutoresizingMaskIntoConstraints="NO" id="X6n-ol-Ve2" customClass="TTTabView">
+                <tabView misplaced="YES" initialItem="CX8-qh-iYR" translatesAutoresizingMaskIntoConstraints="NO" id="X6n-ol-Ve2" customClass="TTTabView">
                     <rect key="frame" x="-7" y="-10" width="451" height="258"/>
                     <font key="font" metaFont="system"/>
                     <tabViewItems>
@@ -285,13 +285,13 @@
                                 <rect key="frame" x="10" y="33" width="431" height="212"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <box autoresizesSubviews="NO" title="General" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="4X6-Q1-Mt2" customClass="TTBoxView">
+                                    <box autoresizesSubviews="NO" misplaced="YES" title="General" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="4X6-Q1-Mt2" customClass="TTBoxView">
                                         <rect key="frame" x="-3" y="-4" width="437" height="217"/>
                                         <view key="contentView" id="vgH-Nb-fsl">
                                             <rect key="frame" x="1" y="1" width="435" height="215"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rWd-kr-Tbb">
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rWd-kr-Tbb">
                                                     <rect key="frame" x="20" y="108" width="47" height="19"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Volume" id="0jR-Ze-BSt">
                                                         <font key="font" size="13" name="Effra-Regular"/>
@@ -299,7 +299,7 @@
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SHX-MK-AV1">
+                                                <popUpButton verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SHX-MK-AV1">
                                                     <rect key="frame" x="78" y="169" width="338" height="28"/>
                                                     <popUpButtonCell key="cell" type="push" bezelStyle="rounded" imagePosition="left" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" preferredEdge="maxY" id="DYy-yW-x4D">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -310,7 +310,7 @@
                                                         <action selector="changeiTunesSource:" target="-2" id="WtF-SH-XuP"/>
                                                     </connections>
                                                 </popUpButton>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FRo-dL-Yba">
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FRo-dL-Yba">
                                                     <rect key="frame" x="16" y="174" width="44" height="19"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Source" id="fKo-6T-run">
                                                         <font key="font" size="13" name="Effra-Regular"/>
@@ -326,14 +326,14 @@
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ue1-lp-26l" customClass="TTSlider">
-                                                    <rect key="frame" x="79" y="104" width="284" height="25"/>
-                                                    <sliderCell key="cell" continuous="YES" alignment="left" maxValue="100" doubleValue="10" tickMarkPosition="below" numberOfTickMarks="11" allowsTickMarkValuesOnly="YES" sliderType="linear" id="eCk-zB-B6m" customClass="TTSliderCell"/>
+                                                <slider verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ue1-lp-26l" customClass="TTSlider">
+                                                    <rect key="frame" x="79" y="109" width="284" height="20"/>
+                                                    <sliderCell key="cell" continuous="YES" alignment="left" maxValue="100" doubleValue="10" tickMarkPosition="below" allowsTickMarkValuesOnly="YES" sliderType="linear" id="eCk-zB-B6m" customClass="TTSliderCell"/>
                                                     <connections>
                                                         <action selector="changeAlarmVolume:" target="-2" id="XhD-no-TFe"/>
                                                     </connections>
                                                 </slider>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3eh-T6-07a">
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3eh-T6-07a">
                                                     <rect key="frame" x="367" y="111" width="48" height="19"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="44" id="dF2-l3-1LH"/>
@@ -344,7 +344,7 @@
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lin-HM-nlJ">
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lin-HM-nlJ">
                                                     <rect key="frame" x="20" y="59" width="54" height="19"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Duration" id="hSM-hS-V9Y">
                                                         <font key="font" size="13" name="Effra-Regular"/>
@@ -354,12 +354,12 @@
                                                 </textField>
                                                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7kX-jo-jpj" customClass="TTSlider">
                                                     <rect key="frame" x="79" y="54" width="284" height="25"/>
-                                                    <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="120" doubleValue="90" tickMarkPosition="below" numberOfTickMarks="9" allowsTickMarkValuesOnly="YES" sliderType="linear" id="UBI-1C-1LB" customClass="TTSliderCell"/>
+                                                    <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="120" doubleValue="90" tickMarkPosition="below" numberOfTickMarks="9" sliderType="linear" id="UBI-1C-1LB" customClass="TTSliderCell"/>
                                                     <connections>
                                                         <action selector="changeAlarmDuration:" target="-2" id="T5z-aj-qvZ"/>
                                                     </connections>
                                                 </slider>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dc3-5g-yAR">
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dc3-5g-yAR">
                                                     <rect key="frame" x="367" y="60" width="48" height="19"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="90 min" id="bxJ-z4-oXd">
                                                         <font key="font" size="13" name="Effra-Regular"/>
@@ -367,7 +367,7 @@
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <button translatesAutoresizingMaskIntoConstraints="NO" id="OFJ-2m-8Pd">
+                                                <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OFJ-2m-8Pd">
                                                     <rect key="frame" x="78" y="140" width="65" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="61" id="TDA-GC-ayX"/>
@@ -380,7 +380,7 @@
                                                         <action selector="changeShuffle:" target="-2" id="dTs-mY-vg7"/>
                                                     </connections>
                                                 </button>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sf3-6B-Gsu">
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sf3-6B-Gsu">
                                                     <rect key="frame" x="305" y="142" width="110" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="106" id="hDr-r8-qF4"/>

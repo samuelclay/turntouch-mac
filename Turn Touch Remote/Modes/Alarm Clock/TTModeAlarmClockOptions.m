@@ -265,7 +265,7 @@ NSUInteger const kOnetimeHeight = 68;
 #pragma mark - Alarm sounds
 
 - (void)updateAlarmSoundsLabels {
-    NSInteger alarmDuration = [[NSAppDelegate.modeMap modeOptionValue:kAlarmDuration] integerValue];
+    NSInteger alarmDuration = MAX(1, [[NSAppDelegate.modeMap modeOptionValue:kAlarmDuration] integerValue]);
     NSInteger alarmVolume = [[NSAppDelegate.modeMap modeOptionValue:kAlarmVolume] integerValue];
     
     [textAlarmVolume setStringValue:[NSString stringWithFormat:@"%ld%%", alarmVolume]];
@@ -273,7 +273,7 @@ NSUInteger const kOnetimeHeight = 68;
 }
 
 - (IBAction)changeAlarmDuration:(id)sender {
-    [NSAppDelegate.modeMap changeModeOption:kAlarmDuration to:[NSNumber numberWithInteger:sliderAlarmDuration.integerValue]];
+    [NSAppDelegate.modeMap changeModeOption:kAlarmDuration to:[NSNumber numberWithInteger:MAX(1, sliderAlarmDuration.integerValue)]];
     
     [self updateAlarmSoundsLabels];
 }

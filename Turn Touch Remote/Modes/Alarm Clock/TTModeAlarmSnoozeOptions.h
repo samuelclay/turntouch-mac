@@ -10,4 +10,9 @@
 
 @interface TTModeAlarmSnoozeOptions : TTOptionsDetailViewController
 
+@property (nonatomic) IBOutlet NSTextField *durationLabel;
+@property (nonatomic) IBOutlet NSSlider *durationSlider;
+
+- (IBAction)slideDuration:(id)sender;
+
 @end

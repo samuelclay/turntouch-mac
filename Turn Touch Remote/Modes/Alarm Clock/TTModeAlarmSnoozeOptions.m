@@ -7,11 +7,34 @@
 //
 
 #import "TTModeAlarmSnoozeOptions.h"
+#import "TTModeAlarmClock.h"
 
 @implementation TTModeAlarmSnoozeOptions
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
+@synthesize durationSlider;
+@synthesize durationLabel;
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    NSInteger snoozeDuration = [[self.action optionValue:kAlarmSnoozeDuration] integerValue];
+    // Run in TTModeMusic:
+    // NSInteger volumeJump = [[NSAppDelegate.modeMap actionOptionValue:kMusicVolumeJump inDirection:direction] integerValue];
+    
+    [durationSlider setIntegerValue:snoozeDuration];
+    [self updateSnoozeDurationLabel];
+}
+
+- (void)updateSnoozeDurationLabel {
+    NSInteger snoozeDuration = [[self.action optionValue:kAlarmSnoozeDuration] integerValue];
+    
+    [durationLabel setStringValue:[NSString stringWithFormat:@"%ld min", (long)snoozeDuration]];
+}
+
+- (IBAction)slideDuration:(id)sender {
+    [self.action changeActionOption:kAlarmSnoozeDuration to:[NSNumber numberWithInteger:durationSlider.integerValue]];
+    
+    [self updateSnoozeDurationLabel];
 }
 
 @end
