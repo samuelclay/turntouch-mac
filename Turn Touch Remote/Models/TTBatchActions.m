@@ -59,7 +59,7 @@
     NSMutableArray *batchActions = [NSMutableArray array];
     NSArray *batchActionKeys = [prefs objectForKey:[self batchActionKey:direction]];
     for (NSString *batchActionKey in batchActionKeys) {
-        TTBatchAction *batchAction = [[TTBatchAction alloc] initWithKey:batchActionKey];
+        TTAction *batchAction = [[TTAction alloc] initWithBatchActionKey:batchActionKey];
         [batchActions addObject:batchAction];
     }
     

@@ -172,6 +172,7 @@
 		FFABAB871C28DD2400AD5620 /* TTBatchAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB861C28DD2400AD5620 /* TTBatchAction.m */; };
 		FFABAB8A1C28E6F000AD5620 /* TTBatchActions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB891C28E6F000AD5620 /* TTBatchActions.m */; };
 		FFABAB8D1C2A21A200AD5620 /* TTAddActionButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB8C1C2A21A200AD5620 /* TTAddActionButtonView.m */; };
+		FFABAB901C2A32E000AD5620 /* TTAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB8F1C2A32E000AD5620 /* TTAction.m */; };
 		FFAFCBC519130F520058B9CB /* TTPanelArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAFCBC419130F520058B9CB /* TTPanelArrowView.m */; };
 		FFB1670B1922FE53008FA1AF /* TTModeMacOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB1670A1922FE53008FA1AF /* TTModeMacOptions.m */; };
 		FFB1670E1923E61F008FA1AF /* TTTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB1670D1923E61F008FA1AF /* TTTabView.m */; };
@@ -521,6 +522,8 @@
 		FFABAB891C28E6F000AD5620 /* TTBatchActions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTBatchActions.m; path = Models/TTBatchActions.m; sourceTree = "<group>"; };
 		FFABAB8B1C2A21A200AD5620 /* TTAddActionButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTAddActionButtonView.h; path = "Views/Batch Actions/TTAddActionButtonView.h"; sourceTree = "<group>"; };
 		FFABAB8C1C2A21A200AD5620 /* TTAddActionButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTAddActionButtonView.m; path = "Views/Batch Actions/TTAddActionButtonView.m"; sourceTree = "<group>"; };
+		FFABAB8E1C2A32E000AD5620 /* TTAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTAction.h; path = Models/TTAction.h; sourceTree = "<group>"; };
+		FFABAB8F1C2A32E000AD5620 /* TTAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTAction.m; path = Models/TTAction.m; sourceTree = "<group>"; };
 		FFAFCBC319130F520058B9CB /* TTPanelArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTPanelArrowView.h; sourceTree = "<group>"; };
 		FFAFCBC419130F520058B9CB /* TTPanelArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTPanelArrowView.m; sourceTree = "<group>"; };
 		FFB167091922FE53008FA1AF /* TTModeMacOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMacOptions.h; path = Modes/Mac/TTModeMacOptions.h; sourceTree = "<group>"; };
@@ -618,6 +621,8 @@
 				FFABAB891C28E6F000AD5620 /* TTBatchActions.m */,
 				FFABAB851C28DD2400AD5620 /* TTBatchAction.h */,
 				FFABAB861C28DD2400AD5620 /* TTBatchAction.m */,
+				FFABAB8E1C2A32E000AD5620 /* TTAction.h */,
+				FFABAB8F1C2A32E000AD5620 /* TTAction.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -914,14 +919,14 @@
 			children = (
 				FF80132D186D210200955218 /* TTOptionsView.h */,
 				FF80132E186D210200955218 /* TTOptionsView.m */,
-				FF3641E01A5F6478003CC03C /* TTOptionsDetailViewController.h */,
-				FF3641E11A5F6478003CC03C /* TTOptionsDetailViewController.m */,
-				FF66F2A71922D1C100031478 /* TTOptionsDetailView.h */,
-				FF66F2A81922D1C100031478 /* TTOptionsDetailView.m */,
 				FF801330186E156900955218 /* TTOptionsModeTitle.h */,
 				FF801331186E156900955218 /* TTOptionsModeTitle.m */,
 				FF801336186E5D9700955218 /* TTOptionsActionTitle.h */,
 				FF801337186E5D9700955218 /* TTOptionsActionTitle.m */,
+				FF3641E01A5F6478003CC03C /* TTOptionsDetailViewController.h */,
+				FF3641E11A5F6478003CC03C /* TTOptionsDetailViewController.m */,
+				FF66F2A71922D1C100031478 /* TTOptionsDetailView.h */,
+				FF66F2A81922D1C100031478 /* TTOptionsDetailView.m */,
 			);
 			name = "Mode Options";
 			sourceTree = "<group>";
@@ -1657,6 +1662,7 @@
 				FF981FCB191AB46600A4A94B /* TTModeMenuBordersView.m in Sources */,
 				FFABAB7A1C235EC500AD5620 /* TTFooterView.m in Sources */,
 				FF904B861BE9B88700AD00F3 /* InitData.m in Sources */,
+				FFABAB901C2A32E000AD5620 /* TTAction.m in Sources */,
 				FFABAB7D1C2777AD00AD5620 /* TTBatchActionContainerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

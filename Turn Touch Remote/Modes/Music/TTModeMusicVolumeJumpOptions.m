@@ -21,19 +21,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSInteger volumeJump = [[NSAppDelegate.modeMap actionOptionValue:kMusicVolumeJump] integerValue];
+    NSInteger volumeJump = [[self.action optionValue:kMusicVolumeJump] integerValue];
+    // Run in TTModeMusic:
+    // NSInteger volumeJump = [[NSAppDelegate.modeMap actionOptionValue:kMusicVolumeJump inDirection:direction] integerValue];
+
     [volumeSlider setIntegerValue:volumeJump];
     [self updateVolumeJumpLabel];
 }
 
 - (void)updateVolumeJumpLabel {
-    NSInteger volumeJump = [[NSAppDelegate.modeMap actionOptionValue:kMusicVolumeJump] integerValue];
+    NSInteger volumeJump = [[self.action optionValue:kMusicVolumeJump] integerValue];
     
     [percentageLabel setStringValue:[NSString stringWithFormat:@"%ld%%", (long)volumeJump]];
 }
 
 - (IBAction)slideVolume:(id)sender {
-    [NSAppDelegate.modeMap changeActionOption:kMusicVolumeJump to:[NSNumber numberWithInteger:volumeSlider.integerValue]];
+    [self.action changeActionOption:kMusicVolumeJump to:[NSNumber numberWithInteger:volumeSlider.integerValue]];
     
     [self updateVolumeJumpLabel];
 }

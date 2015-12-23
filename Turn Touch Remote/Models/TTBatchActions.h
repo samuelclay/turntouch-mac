@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TTAppDelegate.h"
-#import "TTBatchAction.h"
+#import "TTAction.h"
 
 @class TTAppDelegate;
 

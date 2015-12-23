@@ -18,6 +18,8 @@
 
 @synthesize tabView;
 @synthesize menuType;
+@synthesize action;
+@synthesize mode;
 
 - (void)viewDidLoad {
     [super viewDidLoad];

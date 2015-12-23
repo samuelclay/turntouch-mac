@@ -27,7 +27,7 @@
     return self;
 }
 
-- (instancetype)initWithBatchAction:(TTBatchAction *)_batchAction {
+- (instancetype)initWithBatchAction:(TTAction *)_batchAction {
     if (self = [super init]) {
         appDelegate = (TTAppDelegate *)[NSApp delegate];
         batchAction = _batchAction;
@@ -68,7 +68,7 @@
     if (!batchAction) return;
     
     // Action dropdown
-    NSString *actionName = [mode titleForAction:batchAction.action buttonAction:BUTTON_ACTION_PRESSUP];
+    NSString *actionName = [mode titleForAction:batchAction.actionName buttonAction:BUTTON_ACTION_PRESSUP];
     NSSize actionSize = [actionName sizeWithAttributes:titleAttributes];
     NSPoint actionPoint = NSMakePoint(NSMinX(self.frame) + BATCH_ACTION_HEADER_MARGIN + 128,
                                       NSHeight(self.frame)/2 - floor(actionSize.height/2) + 1);

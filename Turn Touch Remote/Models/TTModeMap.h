@@ -12,6 +12,7 @@
 #import "TTBatchActions.h"
 
 @class TTMode;
+@class TTAction;
 @class TTBatchActions;
 
 @interface TTModeMap : NSObject {
@@ -53,11 +54,15 @@
 - (void)changeMode:(TTMode *)mode option:(NSString *)optionName to:(id)optionValue;
 - (void)changeActionOption:(NSString *)optionName to:(id)optionValue;
 - (void)changeMode:(TTMode *)mode actionOption:(NSString *)optionName to:(id)optionValue;
+- (void)changeMode:(TTMode *)mode batchActionKey:(NSString *)batchActionKey
+      actionOption:(NSString *)optionName to:(id)optionValue;
 - (id)modeOptionValue:(NSString *)optionName;
 - (id)mode:(TTMode *)mode optionValue:(NSString *)optionName;
 - (id)actionOptionValue:(NSString *)optionName;
 - (id)actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction;
 - (id)mode:(TTMode *)mode actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction;
+- (id)mode:(TTMode *)mode action:(TTAction *)action
+actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction;
 - (void)toggleInspectingModeDirection:(TTModeDirection)direction;
 - (void)toggleHoverModeDirection:(TTModeDirection)direction hovering:(BOOL)hovering;
 

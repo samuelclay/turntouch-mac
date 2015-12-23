@@ -210,6 +210,7 @@
                                                         multiplier:1.0 constant:CORNER_RADIUS]];
     } else {
         actionOptionsViewController.menuType = ACTION_MENU_TYPE;
+        actionOptionsViewController.action = [[TTAction alloc] init];
         [self addSubview:actionOptionsViewController.view];
     }
     

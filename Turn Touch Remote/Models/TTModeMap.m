@@ -370,10 +370,33 @@
                            actionDirectionName,
                            optionName];
     NSString *pref = [prefs objectForKey:optionKey];
-//    NSLog(@" -> Getting action options %@: %@", optionKey, pref);
+    //    NSLog(@" -> Getting action options %@: %@", optionKey, pref);
     
     if (!pref) {
         pref = [self mode:mode action:actionName defaultOption:optionName];
+    }
+    if (!pref) {
+        pref = [self mode:mode defaultOption:optionName];
+    }
+    
+    return pref;
+}
+
+- (id)mode:(TTMode *)mode action:(TTAction *)action
+actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *modeDirectionName = [self directionName:mode.modeDirection];
+    NSString *actionDirectionName = [self directionName:direction];
+    NSString *optionKey = [NSString stringWithFormat:@"TT:mode:%@:action:%@:batchactions:%@:actionoption:%@",
+                           modeDirectionName,
+                           actionDirectionName,
+                           action.batchActionKey,
+                           optionName];
+    NSString *pref = [prefs objectForKey:optionKey];
+    NSLog(@" -> Getting batch action options %@: %@", optionKey, pref);
+    
+    if (!pref) {
+        pref = [self mode:mode action:action.actionName defaultOption:optionName];
     }
     if (!pref) {
         pref = [self mode:mode defaultOption:optionName];
@@ -438,8 +461,24 @@
                            actionName,
                            actionDirectionName,
                            optionName];
-
+    
     NSLog(@" -> Setting action option %@ to: %@", optionKey, optionValue);
+    [prefs setObject:optionValue forKey:optionKey];
+    [prefs synchronize];
+}
+
+- (void)changeMode:(TTMode *)mode batchActionKey:(NSString *)batchActionKey
+      actionOption:(NSString *)optionName to:(id)optionValue {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *modeDirectionName = [self directionName:mode.modeDirection];
+    NSString *actionDirectionName = [self directionName:inspectingModeDirection];
+    NSString *optionKey = [NSString stringWithFormat:@"TT:mode:%@:action:%@:batchactions:%@:actionoption:%@",
+                           modeDirectionName,
+                           actionDirectionName,
+                           batchActionKey,
+                           optionName];
+    
+    NSLog(@" -> Setting batch action option %@ to: %@", optionKey, optionValue);
     [prefs setObject:optionValue forKey:optionKey];
     [prefs synchronize];
 }

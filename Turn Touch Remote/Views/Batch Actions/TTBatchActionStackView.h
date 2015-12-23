@@ -18,6 +18,7 @@ extern const NSInteger BATCH_ACTION_HEADER_HEIGHT;
 }
 
 @property (nonatomic) NSString *tempMode;
+@property (nonatomic, strong) NSMutableArray *actionOptionsViewControllers;
 
 - (void)assembleViews:(BOOL)animated;
 
