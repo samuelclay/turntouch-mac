@@ -122,25 +122,7 @@ const NSInteger BATCH_ACTION_HEADER_HEIGHT = 36;
             [self addConstraint:constraint];
             if (animated && view == tempHeaderView) tempHeaderConstraint = constraint;
         } else if ([view isKindOfClass:[TTOptionsDetailViewController class]]) {
-//            [self addConstraint:[NSLayoutConstraint constraintWithItem:view
-//                                                             attribute:NSLayoutAttributeTop
-//                                                             relatedBy:NSLayoutRelationEqual
-//                                                                toItem:self
-//                                                             attribute:NSLayoutAttributeBottom
-//                                                            multiplier:1.0 constant:0]];
-//            [self addConstraint:[NSLayoutConstraint constraintWithItem:view
-//                                                             attribute:NSLayoutAttributeLeading
-//                                                             relatedBy:NSLayoutRelationEqual
-//                                                                toItem:self
-//                                                             attribute:NSLayoutAttributeLeading
-//                                                            multiplier:1.0 constant:0]];
-//            [self addConstraint:[NSLayoutConstraint constraintWithItem:view
-//                                                             attribute:NSLayoutAttributeTrailing
-//                                                             relatedBy:NSLayoutRelationEqual
-//                                                                toItem:self
-//                                                             attribute:NSLayoutAttributeTrailing
-//                                                            multiplier:1.0 constant:0]];
-//            [appDelegate.panelController.backgroundView adjustOptionsHeight:actionOptionsViewController.view];
+
         }
     }
 

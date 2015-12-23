@@ -12,6 +12,7 @@
 @implementation TTMode
 
 @synthesize modeDirection;
+@synthesize action;
 
 - (id)init {
     self = [super init];
@@ -122,7 +123,7 @@
     BOOL success = NO;
     NSString *actionName = [self actionNameInDirection:direction];
     NSLog(@"Running: %d - %@%@", direction, funcAction, actionName);
-
+    
     // First check for runAction:direction...
     SEL selector = NSSelectorFromString([NSString stringWithFormat:@"%@%@:",
                                          funcAction, actionName]);
@@ -258,11 +259,16 @@
 }
 
 - (NSString *)actionNameInDirection:(TTModeDirection)direction {
+    if (action.batchActionKey) {
+        return action.actionName;
+    }
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     NSString *modeDirectionName = [appDelegate.modeMap directionName:modeDirection];
     NSString *actionDirectionName = [appDelegate.modeMap directionName:direction];
     NSString *directionAction;
+
     if (direction != NO_DIRECTION) {
         // Use default action in direction
         directionAction = [defaults stringForKey:[NSString stringWithFormat:@"TT:%@-%@:action:%@",
@@ -271,6 +277,7 @@
     if (directionAction && ![self.actions containsObject:directionAction]) {
         directionAction = nil;
     }
+
     if (!directionAction) {
         if (direction == NORTH) {
             directionAction = [self defaultNorth];

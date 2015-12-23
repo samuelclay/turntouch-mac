@@ -21,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSInteger volumeJump = [[self.action optionValue:kMusicVolumeJump] integerValue];
+    NSInteger volumeJump = [[self.action optionValue:kMusicVolumeJump inDirection:appDelegate.modeMap.inspectingModeDirection] integerValue];
     // Run in TTModeMusic:
     // NSInteger volumeJump = [[NSAppDelegate.modeMap actionOptionValue:kMusicVolumeJump inDirection:direction] integerValue];
 
@@ -30,7 +30,7 @@
 }
 
 - (void)updateVolumeJumpLabel {
-    NSInteger volumeJump = [[self.action optionValue:kMusicVolumeJump] integerValue];
+    NSInteger volumeJump = [[self.action optionValue:kMusicVolumeJump inDirection:appDelegate.modeMap.inspectingModeDirection] integerValue];
     
     [percentageLabel setStringValue:[NSString stringWithFormat:@"%ld%%", (long)volumeJump]];
 }

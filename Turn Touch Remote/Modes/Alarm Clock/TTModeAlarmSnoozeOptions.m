@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSInteger snoozeDuration = [[self.action optionValue:kAlarmSnoozeDuration] integerValue];
+    NSInteger snoozeDuration = [[self.action optionValue:kAlarmSnoozeDuration inDirection:appDelegate.modeMap.inspectingModeDirection] integerValue];
     // Run in TTModeMusic:
     // NSInteger volumeJump = [[NSAppDelegate.modeMap actionOptionValue:kMusicVolumeJump inDirection:direction] integerValue];
     
@@ -26,7 +26,7 @@
 }
 
 - (void)updateSnoozeDurationLabel {
-    NSInteger snoozeDuration = [[self.action optionValue:kAlarmSnoozeDuration] integerValue];
+    NSInteger snoozeDuration = [[self.action optionValue:kAlarmSnoozeDuration inDirection:appDelegate.modeMap.inspectingModeDirection] integerValue];
     
     [durationLabel setStringValue:[NSString stringWithFormat:@"%ld min", (long)snoozeDuration]];
 }

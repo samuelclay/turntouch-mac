@@ -9,8 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "TTAppDelegate.h"
 #import "TTModeProtocol.h"
+#import "TTAction.h"
 
 @class TTAppDelegate;
+@class TTAction;
 
 typedef enum {
     ACTION_LAYOUT_TITLE = 0,
@@ -23,6 +25,7 @@ typedef enum {
 }
 
 @property (nonatomic) TTModeDirection modeDirection;
+@property (nonatomic) TTAction *action;
 
 - (void)activate:(TTModeDirection)_modeDirection;
 - (void)runDirection:(TTModeDirection)direction;

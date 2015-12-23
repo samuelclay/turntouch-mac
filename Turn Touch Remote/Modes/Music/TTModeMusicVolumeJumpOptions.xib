@@ -25,9 +25,9 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jBE-uf-91y">
+                <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jBE-uf-91y" customClass="TTSlider">
                     <rect key="frame" x="127" y="15" width="278" height="20"/>
-                    <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="vq0-Ai-hoV"/>
+                    <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="vq0-Ai-hoV" customClass="TTSliderCell"/>
                     <connections>
                         <action selector="slideVolume:" target="-2" id="l0x-uy-AJX"/>
                     </connections>

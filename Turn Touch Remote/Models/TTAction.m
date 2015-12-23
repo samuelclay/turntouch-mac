@@ -19,21 +19,22 @@
         batchActionKey = _key;
         NSArray *chunks = [batchActionKey componentsSeparatedByString:@":"];
         mode = [[NSClassFromString([chunks objectAtIndex:0]) alloc] init];
-        mode.modeDirection = NSAppDelegate.modeMap.selectedModeDirection;
+        [mode setModeDirection:NSAppDelegate.modeMap.selectedModeDirection];
+        [mode setAction:self];
         actionName = [chunks objectAtIndex:1];
     }
     
     return self;
 }
 
-- (id)optionValue:(NSString *)optionName {
+- (id)optionValue:(NSString *)optionName inDirection:(TTModeDirection)direction {
     if (!batchActionKey) {
-        return [NSAppDelegate.modeMap actionOptionValue:optionName];
+        return [NSAppDelegate.modeMap actionOptionValue:optionName inDirection:direction];
     } else {
         return [NSAppDelegate.modeMap mode:mode
-                                    action:self
+                               batchAction:self
                          actionOptionValue:optionName
-                               inDirection:NSAppDelegate.modeMap.inspectingModeDirection];
+                               inDirection:direction];
     }
 }
 

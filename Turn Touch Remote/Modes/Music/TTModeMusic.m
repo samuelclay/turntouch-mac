@@ -308,7 +308,7 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
 - (void)runTTModeMusicVolumeJump:(TTModeDirection)direction {
     iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
     NSInteger volume = iTunes.soundVolume;
-    NSInteger volumeJump = [[NSAppDelegate.modeMap actionOptionValue:kMusicVolumeJump inDirection:direction] integerValue];
+    NSInteger volumeJump = [[self.action optionValue:kMusicVolumeJump inDirection:direction] integerValue];
     if (volume != volumeJump) originalVolume = volume;
 
     [iTunes setSoundVolume:(volume == volumeJump ? originalVolume : volumeJump)];

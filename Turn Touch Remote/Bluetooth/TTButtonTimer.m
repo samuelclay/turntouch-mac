@@ -231,7 +231,7 @@
 
 - (void)fireButton:(TTModeDirection)direction {
     [appDelegate.modeMap setActiveModeDirection:direction];
-#ifndef TEST
+#ifndef SKIP_BUTTON_ACTIONS
     [appDelegate.modeMap runActiveButton];
 #endif
     [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];

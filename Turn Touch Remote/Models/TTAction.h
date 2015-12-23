@@ -22,7 +22,7 @@
 @property (nonatomic) NSString *batchActionKey;
 
 - (id)initWithBatchActionKey:(NSString *)_key;
-- (id)optionValue:(NSString *)optionName;
+- (id)optionValue:(NSString *)optionName inDirection:(TTModeDirection)direction;
 - (void)changeActionOption:(NSString *)optionName to:(id)optionValue;
 
 @end

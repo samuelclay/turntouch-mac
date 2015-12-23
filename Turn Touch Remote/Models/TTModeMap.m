@@ -205,14 +205,24 @@
         waitingForDoubleClick = YES;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DOUBLE_CLICK_ACTION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             if (waitingForDoubleClick) {
-                [selectedMode runDirection:direction];
+                [self runDirection:direction];
             }
         });
     } else {
-        [selectedMode runDirection:direction];
+        [self runDirection:direction];
     }
     
     activeModeDirection = NO_DIRECTION;
+}
+
+- (void)runDirection:(TTModeDirection)direction {
+    selectedMode.action = [[TTAction alloc] init];
+    [selectedMode runDirection:direction];
+
+    NSArray *actions = [self selectedModeBatchActions:direction];
+    for (TTAction *batchAction in actions) {
+        [batchAction.mode runDirection:direction];
+    }
 }
 
 - (void)runDoubleButton:(TTModeDirection)direction {
@@ -382,7 +392,7 @@
     return pref;
 }
 
-- (id)mode:(TTMode *)mode action:(TTAction *)action
+- (id)mode:(TTMode *)mode batchAction:(TTAction *)action
 actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *modeDirectionName = [self directionName:mode.modeDirection];
