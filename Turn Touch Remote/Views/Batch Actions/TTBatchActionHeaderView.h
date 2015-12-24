@@ -13,6 +13,8 @@
     TTAppDelegate *appDelegate;
     NSDictionary *titleAttributes;
     NSImage *modeImage;
+    TTChangeButtonView *deleteButton;
+    TTChangeButtonView *actionButton;
 }
 
 @property (nonatomic) TTMode *mode;

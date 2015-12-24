@@ -15,17 +15,22 @@
 
 @synthesize mouseDown;
 @synthesize borderRadius;
+@synthesize useAltStyle;
 
 - (id)init {
     if (self = [super init]) {
         mouseDown = NO;
         borderRadius = DEFAULT_BORDER_RADIUS;
+        useAltStyle = NO;
     }
     
     return self;
 }
 
 - (NSCellStyleMask)highlightsBy {
+    if (useAltStyle) {
+        return NSNoCellMask;
+    }
     return NSContentsCellMask;
 }
 
@@ -42,13 +47,25 @@
     // Add gradient background
     NSGradient *gradient;
     if (mouseDown) {
-        gradient = [[NSGradient alloc]
-                    initWithStartingColor:NSColorFromRGB(0xF7F7F7)
-                    endingColor:NSColorFromRGB(0xE0E0E0)];
+        if (useAltStyle) {
+            gradient = [[NSGradient alloc]
+                        initWithStartingColor:NSColorFromRGB(0x3173AB)
+                        endingColor:NSColorFromRGB(0x3173AB)];
+        } else {
+            gradient = [[NSGradient alloc]
+                        initWithStartingColor:NSColorFromRGB(0xF7F7F7)
+                        endingColor:NSColorFromRGB(0xE0E0E0)];
+        }
     } else {
-        gradient = [[NSGradient alloc]
-                    initWithStartingColor:[NSColor whiteColor]
-                    endingColor:NSColorFromRGB(0xE7E7E7)];
+        if (useAltStyle) {
+            gradient = [[NSGradient alloc]
+                        initWithStartingColor:NSColorFromRGB(0x4284C1)
+                        endingColor:NSColorFromRGB(0x4284C1)];
+        } else {
+            gradient = [[NSGradient alloc]
+                        initWithStartingColor:[NSColor whiteColor]
+                        endingColor:NSColorFromRGB(0xE7E7E7)];
+        }
     }
     [gradient drawInRect:frame angle:90];
     
@@ -57,7 +74,11 @@
     [line appendBezierPathWithRoundedRect:borderRect
                                   xRadius:borderRadius yRadius:borderRadius];
     [line setLineWidth:1.0];
-    [NSColorFromRGB(0xD0D0D0) set];
+    if (useAltStyle) {
+        [NSColorFromRGB(0x206396) set];
+    } else {
+        [NSColorFromRGB(0xD0D0D0) set];
+    }
     [line stroke];
 }
 

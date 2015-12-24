@@ -12,6 +12,7 @@
 @implementation TTChangeButtonView
 
 @synthesize borderRadius;
+@synthesize useAltStyle;
 
 - (void)awakeFromNib {
     cell = self.cell;
@@ -36,6 +37,11 @@
 - (void)setBorderRadius:(CGFloat)_borderRadius {
     borderRadius = _borderRadius;
     [cell setBorderRadius:borderRadius];
+}
+
+- (void)setUseAltStyle:(BOOL)_useAltStyle {
+    useAltStyle = _useAltStyle;
+    [cell setUseAltStyle:useAltStyle];
 }
 #pragma mark - Events
 

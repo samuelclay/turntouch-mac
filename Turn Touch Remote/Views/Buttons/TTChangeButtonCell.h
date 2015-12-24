@@ -12,5 +12,6 @@
 
 @property (nonatomic, readwrite) BOOL mouseDown;
 @property (nonatomic) CGFloat borderRadius;
+@property (nonatomic) BOOL useAltStyle;
 
 @end
