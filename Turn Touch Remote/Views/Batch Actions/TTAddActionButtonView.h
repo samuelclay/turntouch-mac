@@ -14,4 +14,6 @@
     TTChangeButtonView *addButton;
 }
 
+- (IBAction)hideAddActionMenu:(id)sender;
+
 @end

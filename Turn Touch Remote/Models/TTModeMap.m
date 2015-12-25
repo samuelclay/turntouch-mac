@@ -295,6 +295,12 @@
     [selectedMode changeDirection:direction toAction:actionClassName];
 }
 
+#pragma mark - Batch actions
+
+- (NSArray *)selectedModeBatchActions:(TTModeDirection)direction {
+    return [batchActions batchActionsInDirection:direction];
+}
+
 - (void)addBatchAction:(NSString *)actionName {
     NSLog(@"Adding %@ from %@", actionName, NSStringFromClass([tempMode class]));
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
@@ -312,7 +318,7 @@
     } else {
         batchActionKeys = [batchActionsPrefArray mutableCopy];
     }
-
+    
     // Add new batch action to existing batch actions
     NSString *newActionKey = [NSString stringWithFormat:@"%@:%@:%@",
                               NSStringFromClass([tempMode class]),
@@ -326,12 +332,32 @@
     
     tempMode = nil;
     tempModeName = nil;
+
+    [self setInspectingModeDirection:inspectingModeDirection];
 }
 
-#pragma mark - Batch actions
-
-- (NSArray *)selectedModeBatchActions:(TTModeDirection)direction {
-    return [batchActions batchActionsInDirection:direction];
+- (void)removeBatchAction:(NSString *)batchActionKey {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    
+    NSString *modeDirectionName = [self directionName:selectedModeDirection];
+    NSString *actionDirectionName = [self directionName:inspectingModeDirection];
+    NSString *batchKey = [NSString stringWithFormat:@"TT:mode:%@:action:%@:batchactions",
+                          modeDirectionName,
+                          actionDirectionName];
+    NSArray *batchActionKeys = [prefs objectForKey:batchKey];
+    NSMutableArray *newBatchActionKeys = [NSMutableArray array];
+    
+    // Take batch action out of existing batch actions
+    for (NSString *key in batchActionKeys) {
+        if (![key isEqualToString:batchActionKey]) {
+            [newBatchActionKeys addObject:key];
+        }
+    }
+    [prefs setObject:newBatchActionKeys forKey:batchKey];
+    [prefs synchronize];
+    
+    [batchActions assembleBatchActions];
+    [self setInspectingModeDirection:inspectingModeDirection];
 }
 
 #pragma mark - Mode options

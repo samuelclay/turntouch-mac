@@ -100,7 +100,7 @@
     // Action dropdown
     NSBezierPath *actionPath = [NSBezierPath bezierPath];
     CGFloat xLeft = actionPoint.x - 16;
-    CGFloat xRight = deletePoint.x - BATCH_ACTION_HEADER_MARGIN;
+    CGFloat xRight = deletePoint.x - BATCH_ACTION_HEADER_MARGIN*2;
     CGFloat yTop = NSMaxY(self.bounds) - BATCH_ACTION_HEADER_PADDING;
     CGFloat yBottom = NSMinY(self.bounds) + BATCH_ACTION_HEADER_PADDING;
     NSRect actionRect = NSInsetRect(NSMakeRect(xLeft, yBottom, xRight - xLeft, yTop - yBottom), 1, 1);
@@ -135,7 +135,7 @@
     [actionButton setTitle:@""];
     [actionButton setUseAltStyle:NO];
     [actionButton setBezelStyle:NSRoundRectBezelStyle];
-    [actionButton setAction:@selector(deleteBatchAction:)];
+    [actionButton setAction:@selector(showBatchActionMenu:)];
     [actionButton setTarget:self];
     [actionButton setBorderRadius:0.f];
     [self addSubview:actionButton];
@@ -159,6 +159,10 @@
 }
 
 - (IBAction)deleteBatchAction:(id)sender {
+    [appDelegate.modeMap removeBatchAction:batchAction.batchActionKey];
+}
+
+- (IBAction)showBatchActionMenu:(id)sender {
     
 }
 

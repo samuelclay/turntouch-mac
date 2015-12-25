@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
-        <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTModeAlarmSnoozeOptions">
@@ -16,62 +15,46 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="c22-O7-iKe">
-            <rect key="frame" x="0.0" y="0.0" width="429" height="49"/>
+            <rect key="frame" x="0.0" y="0.0" width="429" height="56"/>
             <subviews>
-                <box autoresizesSubviews="NO" title="Snooze" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Nc8-gD-PGI" customClass="TTBoxView">
-                    <rect key="frame" x="-3" y="-4" width="435" height="55"/>
-                    <view key="contentView" id="RVh-CU-xGI">
-                        <rect key="frame" x="1" y="1" width="433" height="53"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lE4-be-gMl">
-                                <rect key="frame" x="16" y="23" width="103" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Snooze duration" id="ddW-lu-0sn">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wce-UW-XqP" customClass="TTSlider">
-                                <rect key="frame" x="123" y="17" width="242" height="25"/>
-                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="1" maxValue="20" doubleValue="3.1578947368421053" tickMarkPosition="below" numberOfTickMarks="20" allowsTickMarkValuesOnly="YES" sliderType="linear" id="hZJ-XT-pn3" customClass="TTSliderCell"/>
-                                <connections>
-                                    <action selector="slideDuration:" target="-2" id="hoK-jm-yDh"/>
-                                </connections>
-                            </slider>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9dB-yo-Pin">
-                                <rect key="frame" x="373" y="24" width="44" height="17"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="ea8-1h-OzK"/>
-                                </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="8 min" id="aKi-lG-XrY">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                        </subviews>
-                    </view>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lE4-be-gMl">
+                    <rect key="frame" x="18" y="17.5" width="96" height="19"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Snooze duration" id="ddW-lu-0sn">
+                        <font key="font" size="13" name="Effra-Regular"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9dB-yo-Pin">
+                    <rect key="frame" x="362" y="17.5" width="44" height="19"/>
                     <constraints>
-                        <constraint firstItem="lE4-be-gMl" firstAttribute="top" secondItem="Nc8-gD-PGI" secondAttribute="top" constant="12" id="0zG-xh-dIa"/>
-                        <constraint firstAttribute="trailing" secondItem="9dB-yo-Pin" secondAttribute="trailing" constant="16" id="6Fx-SM-Em9"/>
-                        <constraint firstItem="9dB-yo-Pin" firstAttribute="leading" secondItem="wce-UW-XqP" secondAttribute="trailing" constant="12" id="I9H-uy-Fc4"/>
-                        <constraint firstItem="lE4-be-gMl" firstAttribute="leading" secondItem="Nc8-gD-PGI" secondAttribute="leading" constant="16" id="K2N-Ns-7sb"/>
-                        <constraint firstItem="lE4-be-gMl" firstAttribute="top" secondItem="wce-UW-XqP" secondAttribute="top" id="c2L-1r-42I"/>
-                        <constraint firstItem="9dB-yo-Pin" firstAttribute="top" secondItem="Nc8-gD-PGI" secondAttribute="top" constant="11" id="d61-Nx-tDQ"/>
-                        <constraint firstAttribute="height" constant="49" id="l8k-oS-OdY"/>
-                        <constraint firstItem="wce-UW-XqP" firstAttribute="leading" secondItem="lE4-be-gMl" secondAttribute="trailing" constant="8" symbolic="YES" id="skW-rR-wPg"/>
+                        <constraint firstAttribute="width" constant="40" id="ea8-1h-OzK"/>
                     </constraints>
-                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                </box>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="8 min" id="aKi-lG-XrY">
+                        <font key="font" size="13" name="Effra-Regular"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wce-UW-XqP" customClass="TTSlider">
+                    <rect key="frame" x="129" y="15" width="220" height="25"/>
+                    <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="1" maxValue="20" doubleValue="3.1578947368421053" tickMarkPosition="below" numberOfTickMarks="20" allowsTickMarkValuesOnly="YES" sliderType="linear" id="hZJ-XT-pn3" customClass="TTSliderCell"/>
+                    <connections>
+                        <action selector="slideDuration:" target="-2" id="hoK-jm-yDh"/>
+                    </connections>
+                </slider>
             </subviews>
             <constraints>
-                <constraint firstItem="Nc8-gD-PGI" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="4DG-jK-Vxh"/>
-                <constraint firstAttribute="bottom" secondItem="Nc8-gD-PGI" secondAttribute="bottom" id="VEX-xC-bsZ"/>
-                <constraint firstAttribute="trailing" secondItem="Nc8-gD-PGI" secondAttribute="trailing" id="r71-mD-FI6"/>
-                <constraint firstItem="Nc8-gD-PGI" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="uKP-3J-AvD"/>
+                <constraint firstAttribute="trailing" secondItem="9dB-yo-Pin" secondAttribute="trailing" constant="25" id="1YW-DH-3Vf"/>
+                <constraint firstAttribute="bottom" secondItem="wce-UW-XqP" secondAttribute="bottom" constant="16" id="1Z3-8i-G0G"/>
+                <constraint firstItem="9dB-yo-Pin" firstAttribute="leading" secondItem="wce-UW-XqP" secondAttribute="trailing" constant="17" id="WeL-ib-1C6"/>
+                <constraint firstItem="9dB-yo-Pin" firstAttribute="centerY" secondItem="wce-UW-XqP" secondAttribute="centerY" id="ayU-DV-KxL"/>
+                <constraint firstItem="wce-UW-XqP" firstAttribute="centerY" secondItem="lE4-be-gMl" secondAttribute="centerY" id="gGV-Gm-jRg"/>
+                <constraint firstItem="wce-UW-XqP" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="18" id="nWq-rV-iDt"/>
+                <constraint firstItem="lE4-be-gMl" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="oUN-Q2-nkM"/>
+                <constraint firstItem="wce-UW-XqP" firstAttribute="leading" secondItem="lE4-be-gMl" secondAttribute="trailing" constant="19" id="yod-eE-IUS"/>
             </constraints>
+            <point key="canvasLocation" x="302.5" y="504.5"/>
         </customView>
     </objects>
 </document>

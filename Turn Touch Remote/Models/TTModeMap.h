@@ -49,7 +49,9 @@
 - (void)changeDirection:(TTModeDirection)direction toMode:(NSString *)modeClassName;
 - (void)changeDirection:(TTModeDirection)direction toAction:(NSString *)actionClassName;
 - (void)addBatchAction:(NSString *)actionName;
+- (void)removeBatchAction:(NSString *)batchActionKey;
 - (NSArray *)selectedModeBatchActions:(TTModeDirection)direction;
+
 - (void)changeModeOption:(NSString *)optionName to:(id)optionValue;
 - (void)changeMode:(TTMode *)mode option:(NSString *)optionName to:(id)optionValue;
 - (void)changeActionOption:(NSString *)optionName to:(id)optionValue;
