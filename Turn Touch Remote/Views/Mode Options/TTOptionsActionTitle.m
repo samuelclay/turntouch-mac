@@ -34,7 +34,7 @@
         [self addSubview:diamondView];
 
         changeButton = [[TTChangeButtonView alloc] init];
-        [self setChangeButtonTitle:@"change"];
+        [self setChangeButtonTitle:@"Change"];
         [changeButton setBezelStyle:NSRoundRectBezelStyle];
         [changeButton setAction:@selector(showChangeActionMenu:)];
         [changeButton setTarget:self];
@@ -98,9 +98,9 @@
     [actionTitle drawAtPoint:titlePoint withAttributes:titleAttributes];
     
     if (appDelegate.modeMap.openedActionChangeMenu) {
-        [self setChangeButtonTitle:@"done"];
+        [self setChangeButtonTitle:@"Done"];
     } else {
-        [self setChangeButtonTitle:@"change"];
+        [self setChangeButtonTitle:@"Change"];
     }
 }
 

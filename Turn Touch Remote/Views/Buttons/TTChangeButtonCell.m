@@ -35,12 +35,9 @@
 }
 
 - (void)drawBezelWithFrame:(NSRect)frame inView:(NSView *)controlView {
-    NSRect borderRect = NSMakeRect(0.5f, 0.5f,
-                                   NSWidth(frame) - 1,
-                                   NSHeight(frame) - 1);
     // Create clip boundary
     NSBezierPath *clip = [NSBezierPath bezierPath];
-    [clip appendBezierPathWithRoundedRect:borderRect
+    [clip appendBezierPathWithRoundedRect:frame
                                   xRadius:borderRadius yRadius:borderRadius];
     [clip addClip];
     
@@ -53,8 +50,8 @@
                         endingColor:NSColorFromRGB(0x3173AB)];
         } else {
             gradient = [[NSGradient alloc]
-                        initWithStartingColor:NSColorFromRGB(0xF7F7F7)
-                        endingColor:NSColorFromRGB(0xE0E0E0)];
+                        initWithStartingColor:NSColorFromRGB(0xE0E0E0)
+                        endingColor:NSColorFromRGB(0xF7F7F7)];
         }
     } else {
         if (useAltStyle) {
@@ -63,45 +60,42 @@
                         endingColor:NSColorFromRGB(0x4284C1)];
         } else {
             gradient = [[NSGradient alloc]
-                        initWithStartingColor:[NSColor whiteColor]
-                        endingColor:NSColorFromRGB(0xE7E7E7)];
+                        initWithStartingColor:NSColorFromRGB(0xE7E7E7)
+                        endingColor:[NSColor whiteColor]];
         }
     }
     [gradient drawInRect:frame angle:90];
     
     // Add border
     NSBezierPath *line = [NSBezierPath bezierPath];
-    [line appendBezierPathWithRoundedRect:borderRect
+    [line appendBezierPathWithRoundedRect:frame
                                   xRadius:borderRadius yRadius:borderRadius];
     [line setLineWidth:1.0];
     if (useAltStyle) {
         [NSColorFromRGB(0x206396) set];
     } else {
-        [NSColorFromRGB(0xD0D0D0) set];
+        [NSColorFromRGB(0xC2CBCE) set];
     }
     [line stroke];
 }
 
-- (NSRect)drawTitle:(NSAttributedString *)_title withFrame:(NSRect)frame inView:(NSView *)controlView {
-    NSMutableAttributedString *title = [[_title upperCaseAttributedStringFromAttributedString:_title]
-                                        mutableCopy];
-    [title beginEditing];
-    [title enumerateAttribute:NSFontAttributeName inRange:NSMakeRange(0, title.length) options:0 usingBlock:^(id value, NSRange range, BOOL *stop) {
-        NSFont *font = [NSFont fontWithName:@"Effra" size:11.f];
-        NSColor *color = NSColorFromRGB(0xA0A3A8);
-        if (self.isHighlighted) {
-            color = NSColorFromRGB(0x606368);
-        }
-        [title removeAttribute:NSFontAttributeName range:range];
-        [title addAttribute:NSFontAttributeName value:font range:range];
-        [title addAttribute:NSForegroundColorAttributeName value:color range:range];
-    }];
-    [title endEditing];
-
-    NSSize textSize = [title size];
+- (NSRect)drawTitle:(NSAttributedString *)title withFrame:(NSRect)frame inView:(NSView *)controlView {
+    NSFont *font = [NSFont fontWithName:@"Effra" size:12.f];
+    NSColor *color = NSColorFromRGB(0xA0A3A8);
+    if (self.isHighlighted) {
+        color = NSColorFromRGB(0x606368);
+    }
+    NSDictionary *titleAttributes = @{NSFontAttributeName:font,
+                                      NSForegroundColorAttributeName: color};
+    NSSize placeholderSize = [@"Aj" boundingRectWithSize:frame.size
+                                                 options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesDeviceMetrics|NSStringDrawingUsesFontLeading
+                                              attributes:titleAttributes].size;
+    NSSize textSize = [title.string boundingRectWithSize:frame.size
+                                                 options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesDeviceMetrics|NSStringDrawingUsesFontLeading
+                                              attributes:titleAttributes].size;
     
-    [title drawAtPoint:NSMakePoint(frame.origin.x + frame.size.width/2 - textSize.width/2,
-                                   frame.origin.y + frame.size.height/2.f - textSize.height/2.f - 2.f)];
+    [title.string drawAtPoint:NSMakePoint(NSMidX(frame) - textSize.width/2,
+                                   NSHeight(controlView.frame)/2 - placeholderSize.height/2 - 2.f) withAttributes:titleAttributes];
 
     
     return frame;

@@ -133,7 +133,7 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
     [line moveToPoint:NSMakePoint(NSMinX([path bounds]), NSMinY([path bounds]))];
     [line lineToPoint:NSMakePoint(NSMaxX([path bounds]), NSMinY([path bounds]))];
     [line setLineWidth:1.0];
-    [NSColorFromRGB(0xD0D0D0) set];
+    [NSColorFromRGB(0xC2CBCE) set];
     [line stroke];
 }
 

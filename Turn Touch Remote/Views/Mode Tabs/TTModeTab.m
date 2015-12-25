@@ -174,7 +174,7 @@
         [line moveToPoint:NSMakePoint(NSMinX(self.bounds), NSMinY(self.bounds))];
         [line lineToPoint:NSMakePoint(NSMinX(self.bounds), NSMaxY(self.bounds))];
         [line setLineWidth:1.0];
-        [NSColorFromRGB(0xD0D0D0) set];
+        [NSColorFromRGB(0xC2CBCE) set];
         [line stroke];
     }
     
@@ -183,7 +183,7 @@
         [line moveToPoint:NSMakePoint(NSMaxX(self.bounds), NSMinY(self.bounds))];
         [line lineToPoint:NSMakePoint(NSMaxX(self.bounds), NSMaxY(self.bounds))];
         [line setLineWidth:1.0];
-        [NSColorFromRGB(0xD0D0D0) set];
+        [NSColorFromRGB(0xC2CBCE) set];
         [line stroke];
     }
 }
@@ -201,7 +201,7 @@
         [line moveToPoint:NSMakePoint(NSMaxX(self.bounds), NSMinY(self.bounds) + 24)];
         [line lineToPoint:NSMakePoint(NSMaxX(self.bounds), NSMaxY(self.bounds) - 24)];
         [line setLineWidth:1.0];
-        [NSColorFromRGB(0xD0D0D0) set];
+        [NSColorFromRGB(0xC2CBCE) set];
         [line stroke];
     }
     
@@ -209,7 +209,7 @@
     [line moveToPoint:NSMakePoint(NSMinX(self.bounds), NSMinY(self.bounds))];
     [line lineToPoint:NSMakePoint(NSMaxX(self.bounds), NSMinY(self.bounds))];
     [line setLineWidth:1.0];
-    [NSColorFromRGB(0xD0D0D0) set];
+    [NSColorFromRGB(0xC2CBCE) set];
     [line stroke];
 }
 

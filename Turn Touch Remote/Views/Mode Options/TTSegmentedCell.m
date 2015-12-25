@@ -77,7 +77,7 @@
     }
     [border closePath];
     [border setLineWidth:1];
-    [NSColorFromRGB(0xD0D0D0) set];
+    [NSColorFromRGB(0xC2CBCE) set];
     [border stroke];
     
     // Fill

@@ -226,7 +226,7 @@
     [line moveToPoint:NSMakePoint(NSMinX(self.bounds) + (open ? 0 : 12), NSMinY(self.bounds))];
     [line lineToPoint:NSMakePoint(NSMaxX(self.bounds) - (open ? 0 : 12), NSMinY(self.bounds))];
     [line setLineWidth:1.0];
-    [NSColorFromRGB(0xD0D0D0) set];
+    [NSColorFromRGB(0xC2CBCE) set];
     [line stroke];
     
     // Bottom border
@@ -235,7 +235,7 @@
         [line moveToPoint:NSMakePoint(NSMinX(self.bounds), NSMaxY(self.bounds))];
         [line lineToPoint:NSMakePoint(NSMaxX(self.bounds), NSMaxY(self.bounds))];
         [line setLineWidth:1.0];
-        [NSColorFromRGB(0xD0D0D0) set];
+        [NSColorFromRGB(0xC2CBCE) set];
         [line stroke];
     }
 }

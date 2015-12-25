@@ -71,10 +71,8 @@
     // Action title
     NSString *actionName = [mode titleForAction:batchAction.actionName buttonAction:BUTTON_ACTION_PRESSUP];
     NSSize actionSize = [actionName sizeWithAttributes:titleAttributes];
-    NSPoint actionPoint = NSMakePoint(NSMinX(self.frame) + BATCH_ACTION_HEADER_MARGIN + 128,
+    NSPoint actionPoint = NSMakePoint(NSMinX(self.frame) + BATCH_ACTION_HEADER_MARGIN + 112,
                                       NSHeight(self.frame)/2 - floor(actionSize.height/2) + 1);
-    
-    [actionName drawAtPoint:actionPoint withAttributes:titleAttributes];
     
     // Delete button
     NSSize deleteSize = NSMakeSize(NSHeight(self.frame)/2 + BATCH_ACTION_HEADER_PADDING*2,
@@ -101,24 +99,23 @@
     
     // Action dropdown
     NSBezierPath *actionPath = [NSBezierPath bezierPath];
-    CGFloat xLeft = actionPoint.x + .5f;
-    CGFloat xRight = deletePoint.x - BATCH_ACTION_HEADER_MARGIN - .5f;
-    CGFloat yTop = NSMaxY(self.bounds) - BATCH_ACTION_HEADER_PADDING - .5f;
-    CGFloat yBottom = NSMinY(self.bounds) + BATCH_ACTION_HEADER_PADDING + .5f;
-    CGFloat cornerRadius = NSHeight(self.bounds)/2 + BATCH_ACTION_HEADER_PADDING;
-    [actionPath moveToPoint:NSMakePoint(xLeft, yTop)];
-    [actionPath lineToPoint:NSMakePoint(xRight - cornerRadius, yTop)];
-    [actionPath curveToPoint:NSMakePoint(xRight - cornerRadius, yBottom)
-               controlPoint1:NSMakePoint(xRight, yTop)
-               controlPoint2:NSMakePoint(xRight, yBottom)];
-    [actionPath lineToPoint:NSMakePoint(xLeft, yBottom)];
-    [actionPath curveToPoint:NSMakePoint(xLeft, yTop)
-               controlPoint1:NSMakePoint(xLeft - cornerRadius, yBottom)
-               controlPoint2:NSMakePoint(xLeft - cornerRadius, yTop)];
+    CGFloat xLeft = actionPoint.x - 16;
+    CGFloat xRight = deletePoint.x - BATCH_ACTION_HEADER_MARGIN;
+    CGFloat yTop = NSMaxY(self.bounds) - BATCH_ACTION_HEADER_PADDING;
+    CGFloat yBottom = NSMinY(self.bounds) + BATCH_ACTION_HEADER_PADDING;
+    NSRect actionRect = NSInsetRect(NSMakeRect(xLeft, yBottom, xRight - xLeft, yTop - yBottom), 1, 1);
+    CGFloat cornerRadius = NSHeight(actionRect)/2;
+    [actionPath appendBezierPathWithRoundedRect:actionRect xRadius:cornerRadius yRadius:cornerRadius];
     [actionPath closePath];
     [NSColorFromRGB(0xC2CBCE) set];
-    [actionPath setLineWidth:.5f];
+    [actionPath setLineWidth:1];
     [actionPath stroke];
+    
+    [NSColorFromRGB(0xFFFFFF) set];
+    [actionPath fill];
+    
+    [actionName drawAtPoint:actionPoint withAttributes:titleAttributes];
+    
 
     // Action dropdown button
     [NSGraphicsContext saveGraphicsState];
@@ -126,10 +123,10 @@
         [actionButton removeFromSuperview];
         actionButton = nil;
     }
-    actionButton = [[TTChangeButtonView alloc] initWithFrame:NSMakeRect(xRight - (yTop - yBottom),
-                                                                        yBottom - 1.f,
-                                                                        yTop - yBottom,
-                                                                        yTop - yBottom + 2.f)];
+    actionButton = [[TTChangeButtonView alloc] initWithFrame:NSMakeRect(NSMaxX(actionRect) - NSHeight(actionRect),
+                                                                        NSMinY(actionRect) - .5f,
+                                                                        NSHeight(actionRect) + 1.f,
+                                                                        NSHeight(actionRect) + 1.f)];
     NSString *chevronFile = [NSString stringWithFormat:@"%@/icons/button_chevron.png", [[NSBundle mainBundle] resourcePath]];
     NSImage *chevron = [[NSImage alloc] initWithContentsOfFile:chevronFile];
     [chevron setSize:NSMakeSize(13, 13)];

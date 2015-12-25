@@ -10,6 +10,7 @@
 
 #define IMAGE_SIZE 32.0f
 #define BUTTON_WIDTH 82.0f
+#define BUTTON_MARGIN 16.f
 
 @implementation TTModeTitleView
 
@@ -22,7 +23,7 @@
         self.translatesAutoresizingMaskIntoConstraints = NO;
 
         changeButton = [[TTChangeButtonView alloc] init];
-        [self setChangeButtonTitle:@"change"];
+        [self setChangeButtonTitle:@"Change"];
         [changeButton setAction:@selector(showChangeModeMenu:)];
         [changeButton setTarget:self];
         [self addSubview:changeButton];
@@ -55,13 +56,14 @@
     [modeTitle drawAtPoint:titlePoint withAttributes:modeAttributes];
 
     NSRect buttonFrame = NSMakeRect(NSWidth(self.frame) - BUTTON_WIDTH - 12,
-                                    (NSHeight(self.frame)/2) - (32.0f/2),
-                                    BUTTON_WIDTH, NSHeight(self.frame) - 32.0f);
+                                    (NSHeight(self.frame)/2) - BUTTON_MARGIN,
+                                    BUTTON_WIDTH,
+                                    NSHeight(self.frame) - BUTTON_MARGIN*2);
     changeButton.frame = buttonFrame;
     if (appDelegate.modeMap.openedModeChangeMenu) {
-        [self setChangeButtonTitle:@"cancel"];
+        [self setChangeButtonTitle:@"Cancel"];
     } else {
-        [self setChangeButtonTitle:@"change"];
+        [self setChangeButtonTitle:@"Change"];
     }
 }
 

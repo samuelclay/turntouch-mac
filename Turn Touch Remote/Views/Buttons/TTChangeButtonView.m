@@ -61,4 +61,7 @@
     [self setNeedsDisplay];
 }
 
+- (BOOL)isFlipped {
+    return NO;
+}
 @end

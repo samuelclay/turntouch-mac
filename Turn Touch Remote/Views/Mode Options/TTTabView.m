@@ -80,7 +80,7 @@ const NSUInteger SEGMENTED_CONTROL_HEIGHT = 26;
     [line moveToPoint:NSMakePoint(NSMinX(self.bounds), NSMinY(self.bounds) + SEGMENTED_CONTROL_HEIGHT/2 + 0.5f)];
     [line lineToPoint:NSMakePoint(NSMaxX(self.bounds), NSMinY(self.bounds) + SEGMENTED_CONTROL_HEIGHT/2 + 0.5f)];
     [line setLineWidth:0.5f];
-    [NSColorFromRGB(0xD0D0D0) set];
+    [NSColorFromRGB(0xC2CBCE) set];
     [line stroke];
     
     [super drawRect:dirtyRect];
