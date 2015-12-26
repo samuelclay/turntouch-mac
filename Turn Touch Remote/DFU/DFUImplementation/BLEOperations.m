@@ -53,7 +53,10 @@ static NSString * const hrsSensorLocationCharacteristicUUIDString = @"00002A38-0
 {
     self.bluetoothPeripheral = peripheral;
     self.bluetoothPeripheral.delegate = self;
-    [self.centralManager connectPeripheral:peripheral options:nil];
+    NSDictionary *options = @{CBConnectPeripheralOptionNotifyOnDisconnectionKey: [NSNumber numberWithBool:YES],
+                              CBCentralManagerOptionShowPowerAlertKey: [NSNumber numberWithBool:YES]};
+    [self.centralManager cancelPeripheralConnection:peripheral];
+    [self.centralManager connectPeripheral:peripheral options:options];
 }
 
 -(void)searchDFURequiredCharacteristics:(CBService *)service

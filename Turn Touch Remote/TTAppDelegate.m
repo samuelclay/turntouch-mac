@@ -124,6 +124,10 @@ void *kContextActivePanel = &kContextActivePanel;
     });
 }
 
+- (void)receiveSysTimeChangedNotification:(NSNotification *)notification {
+    [self.modeMap activateTimers];
+}
+
 - (void) observeSleepNotifications {
     //These notifications are filed on NSWorkspace's notification center, not the default
     // notification center. You will not receive sleep/wake notifications if you file
@@ -135,6 +139,11 @@ void *kContextActivePanel = &kContextActivePanel;
     [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver: self
                                                            selector: @selector(receiveWakeNote:)
                                                                name: NSWorkspaceDidWakeNotification object: NULL];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveSysTimeChangedNotification:)
+                                                 name:NSSystemClockDidChangeNotification
+                                               object:nil];
 }
 
 #pragma mark - Preferences
