@@ -15,5 +15,6 @@
 
 @property (nonatomic) CGFloat borderRadius;
 @property (nonatomic) BOOL useAltStyle;
+@property (nonatomic) CGFloat rightBorderRadius;
 
 @end

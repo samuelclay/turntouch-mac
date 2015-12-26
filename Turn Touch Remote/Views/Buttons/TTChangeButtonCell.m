@@ -16,6 +16,7 @@
 @synthesize mouseDown;
 @synthesize borderRadius;
 @synthesize useAltStyle;
+@synthesize rightBorderRadius;
 
 - (id)init {
     if (self = [super init]) {
@@ -36,10 +37,24 @@
 
 - (void)drawBezelWithFrame:(NSRect)frame inView:(NSView *)controlView {
     // Create clip boundary
-    NSBezierPath *clip = [NSBezierPath bezierPath];
-    [clip appendBezierPathWithRoundedRect:frame
-                                  xRadius:borderRadius yRadius:borderRadius];
-    [clip addClip];
+    NSBezierPath *clip;
+    if (rightBorderRadius) {
+        // .292 = 1 - 1/sqrt(2)
+        clip = [NSBezierPath bezierPath];
+        [clip moveToPoint:NSMakePoint(NSMinX(frame), NSMinY(frame))];
+        [clip lineToPoint:NSMakePoint(NSMaxX(frame) - rightBorderRadius, NSMinY(frame))];
+        [clip curveToPoint:NSMakePoint(NSMaxX(frame) - rightBorderRadius, NSMaxY(frame))
+             controlPoint1:NSMakePoint(NSMaxX(frame) + rightBorderRadius*.292, NSMinY(frame))
+             controlPoint2:NSMakePoint(NSMaxX(frame) + rightBorderRadius*.292, NSMaxY(frame))];
+        [clip lineToPoint:NSMakePoint(NSMinX(frame), NSMaxY(frame))];
+        [clip closePath];
+        [clip addClip];
+    } else {
+        clip = [NSBezierPath bezierPath];
+        [clip appendBezierPathWithRoundedRect:frame
+                                      xRadius:borderRadius yRadius:borderRadius];
+        [clip addClip];
+    }
     
     // Add gradient background
     NSGradient *gradient;
@@ -67,9 +82,7 @@
     [gradient drawInRect:frame angle:90];
     
     // Add border
-    NSBezierPath *line = [NSBezierPath bezierPath];
-    [line appendBezierPathWithRoundedRect:frame
-                                  xRadius:borderRadius yRadius:borderRadius];
+    NSBezierPath *line = [clip copy];
     [line setLineWidth:1.0];
     if (useAltStyle) {
         [NSColorFromRGB(0x206396) set];

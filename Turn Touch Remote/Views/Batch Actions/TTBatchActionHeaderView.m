@@ -123,9 +123,9 @@
         [actionButton removeFromSuperview];
         actionButton = nil;
     }
-    actionButton = [[TTChangeButtonView alloc] initWithFrame:NSMakeRect(NSMaxX(actionRect) - NSHeight(actionRect),
+    actionButton = [[TTChangeButtonView alloc] initWithFrame:NSMakeRect(NSMaxX(actionRect) - NSHeight(actionRect)*1.1,
                                                                         NSMinY(actionRect) - .5f,
-                                                                        NSHeight(actionRect) + 1.f,
+                                                                        NSHeight(actionRect)*1.1 + 1.f,
                                                                         NSHeight(actionRect) + 1.f)];
     NSString *chevronFile = [NSString stringWithFormat:@"%@/icons/button_chevron.png", [[NSBundle mainBundle] resourcePath]];
     NSImage *chevron = [[NSImage alloc] initWithContentsOfFile:chevronFile];
@@ -134,12 +134,13 @@
     [actionButton setImagePosition:NSImageOnly];
     [actionButton setTitle:@""];
     [actionButton setUseAltStyle:NO];
+    [actionButton setRightBorderRadius:cornerRadius];
     [actionButton setBezelStyle:NSRoundRectBezelStyle];
     [actionButton setAction:@selector(showBatchActionMenu:)];
     [actionButton setTarget:self];
     [actionButton setBorderRadius:0.f];
-    [self addSubview:actionButton];
     [actionPath addClip];
+    [self addSubview:actionButton];
     [NSGraphicsContext restoreGraphicsState];
 }
 

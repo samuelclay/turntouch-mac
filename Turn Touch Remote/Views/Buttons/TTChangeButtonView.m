@@ -13,6 +13,7 @@
 
 @synthesize borderRadius;
 @synthesize useAltStyle;
+@synthesize rightBorderRadius;
 
 - (void)awakeFromNib {
     cell = self.cell;
@@ -43,6 +44,12 @@
     useAltStyle = _useAltStyle;
     [cell setUseAltStyle:useAltStyle];
 }
+
+- (void)setRightBorderRadius:(CGFloat)_rightBorderRadius {
+    rightBorderRadius = _rightBorderRadius;
+    [cell setRightBorderRadius:rightBorderRadius];
+}
+
 #pragma mark - Events
 
 - (void)mouseDown:(NSEvent *)theEvent {
