@@ -119,6 +119,8 @@
             result.stringValue = device.nickname ? device.nickname : device.uuid ? device.uuid.UUIDString : @"";
         } else if ([tableColumn.identifier isEqualToString:@"batteryLevel"]) {
             result.stringValue = device.batteryPct ? [NSString stringWithFormat:@"%@%%", device.batteryPct] : @"";
+        } else if ([tableColumn.identifier isEqualToString:@"firmwareVersion"]) {
+            result.stringValue = [NSString stringWithFormat:@"v%d", device.firmwareVersion];
         } else if ([tableColumn.identifier isEqualToString:@"lastAction"]) {
             result.stringValue = @"Pairing...";
         }
@@ -127,6 +129,8 @@
         if ([tableColumn.identifier isEqualToString:@"deviceIdentifier"]) {
             result.stringValue = @"Connecting to remote...";
         } else if ([tableColumn.identifier isEqualToString:@"batteryLevel"]) {
+            result.stringValue = @"";
+        } else if ([tableColumn.identifier isEqualToString:@"firmwareVersion"]) {
             result.stringValue = @"";
         } else if ([tableColumn.identifier isEqualToString:@"lastAction"]) {
             result.stringValue = @"";
@@ -139,6 +143,8 @@
             }
         } else if ([tableColumn.identifier isEqualToString:@"batteryLevel"]) {
             result.stringValue = [NSString stringWithFormat:@"%@%%", device.batteryPct];
+        } else if ([tableColumn.identifier isEqualToString:@"firmwareVersion"]) {
+            result.stringValue = [NSString stringWithFormat:@"v%d", device.firmwareVersion];
         } else if ([tableColumn.identifier isEqualToString:@"lastAction"]) {
             result.stringValue = [device.lastActionDate timeAgo];
         }

@@ -95,7 +95,7 @@
 }
 
 - (void)drawBackground {
-    [NSColorFromRGB(0xEDDF31) set];
+    [NSColorFromRGB(0xFFFFFF) set];
     NSRectFill(self.bounds);
 }
 
@@ -145,8 +145,11 @@
 }
 
 - (void)prepareFirmware {
-    NSString *filePath = [NSString stringWithFormat:@"%@/firmwares/nrf51_02.zip",
-                          [[NSBundle mainBundle] resourcePath]];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSInteger latestVersion = [[prefs objectForKey:@"TT:firmware:version"] integerValue];
+
+    NSString *filePath = [NSString stringWithFormat:@"%@/firmwares/nrf51_%ld.zip",
+                          [[NSBundle mainBundle] resourcePath], (long)latestVersion];
     NSURL *fileUrl = [NSURL fileURLWithPath:filePath];
     self.dfuHelper.selectedFileURL = fileUrl;
     [self.dfuHelper setFirmwareType:FIRMWARE_TYPE_APPLICATION];
@@ -184,7 +187,6 @@
                 NSLog(@" valid file selected");
             } else {
                 NSLog(@"Valid file not available in zip file");
-                //                [Utility showAlert:[self.dfuHelper getFileValidationMessage]];
                 return;
             }
         }

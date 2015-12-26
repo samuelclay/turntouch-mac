@@ -17,6 +17,7 @@
     NSDictionary *titleAttributes;
     CGSize textSize;
     TTChangeButtonView *changeButton;
+    NSInteger latestVersion;
 }
 
 - (instancetype)initWithDevice:(TTDevice *)_device;

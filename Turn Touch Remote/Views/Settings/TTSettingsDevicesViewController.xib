@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7702" systemVersion="14E11f" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTSettingsDevicesViewController">
@@ -16,26 +17,26 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView focusRingType="exterior" id="NnR-Na-aOq">
-            <rect key="frame" x="0.0" y="5" width="515" height="440"/>
+            <rect key="frame" x="0.0" y="0.0" width="515" height="440"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="Ta6-E4-Vdk">
                     <rect key="frame" x="20" y="326" width="475" height="94"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <clipView key="contentView" id="ZSW-03-BmZ">
-                        <rect key="frame" x="1" y="17" width="473" height="76"/>
+                        <rect key="frame" x="1" y="0.0" width="473" height="93"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="sequential" selectionHighlightStyle="none" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" headerView="cDd-yR-GRe" id="pFh-W8-bNt">
-                                <rect key="frame" x="0.0" y="0.0" width="466" height="19"/>
+                                <rect key="frame" x="0.0" y="0.0" width="473" height="76"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn identifier="deviceIdentifier" width="278" minWidth="40" maxWidth="1000" id="sbp-HB-rvl">
+                                    <tableColumn identifier="deviceIdentifier" width="235" minWidth="40" maxWidth="1000" id="sbp-HB-rvl">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Nickname">
-                                            <font key="font" size="13" name="Effra-Regular"/>
+                                            <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
                                         </tableHeaderCell>
@@ -46,9 +47,22 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                     </tableColumn>
-                                    <tableColumn identifier="batteryLevel" width="70" minWidth="40" maxWidth="1000" id="b1N-mX-bUD">
+                                    <tableColumn identifier="batteryLevel" editable="NO" width="54" minWidth="40" maxWidth="1000" id="Kjc-e0-b8m">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Battery">
-                                            <font key="font" size="12" name="Effra-Regular"/>
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" continuous="YES" alignment="left" title="Text Cell" usesSingleLineMode="YES" id="Wpd-Pe-S2o">
+                                            <font key="font" size="13" name="Effra-Regular"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                    </tableColumn>
+                                    <tableColumn identifier="firmwareVersion" editable="NO" width="61" minWidth="40" maxWidth="1000" id="b1N-mX-bUD">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Firmware">
+                                            <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
                                         </tableHeaderCell>
@@ -59,9 +73,9 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                     </tableColumn>
-                                    <tableColumn identifier="lastAction" width="109" minWidth="10" maxWidth="3.4028234663852886e+38" id="CIW-4b-mJN">
+                                    <tableColumn identifier="lastAction" editable="NO" width="107" minWidth="10" maxWidth="3.4028234663852886e+38" id="CIW-4b-mJN">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Last action">
-                                            <font key="font" size="12" name="Effra-Regular"/>
+                                            <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                         </tableHeaderCell>
@@ -97,7 +111,7 @@
                 <box autoresizesSubviews="NO" title="Tap delay" borderType="line" id="viT-lN-rp9">
                     <rect key="frame" x="17" y="159" width="481" height="150"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <view key="contentView">
+                    <view key="contentView" id="KdT-hs-qYg">
                         <rect key="frame" x="1" y="1" width="479" height="128"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -163,7 +177,7 @@
                 <box autoresizesSubviews="NO" title="Mode change time" borderType="line" id="Z8Y-vb-rnF">
                     <rect key="frame" x="17" y="16" width="481" height="130"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <view key="contentView">
+                    <view key="contentView" id="VwS-1A-aSQ">
                         <rect key="frame" x="1" y="1" width="479" height="108"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

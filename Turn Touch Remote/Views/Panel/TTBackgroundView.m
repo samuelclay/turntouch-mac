@@ -346,6 +346,13 @@
 
 - (void)toggleDfuList {
     NSTimeInterval openDuration = OPEN_DURATION;
+    NSArray *devices = [appDelegate.bluetoothMonitor.foundDevices nicknamedConnected];
+    BOOL anyExpired = NO;
+    for (TTDevice *device in devices) {
+        if (device.isFirmwareOld) {
+            anyExpired = YES;
+        }
+    }
     
     NSEvent *currentEvent = [NSApp currentEvent];
     NSUInteger clearFlags = ([currentEvent modifierFlags] & NSDeviceIndependentModifierFlagsMask);
@@ -356,8 +363,11 @@
     [[NSAnimationContext currentContext] setDuration:openDuration];
     [[NSAnimationContext currentContext] setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
     
-//    [[dfuConstraint animator] setConstant:40 * [[appDelegate.bluetoothMonitor.foundDevices nicknamedConnected] count]];
-    [[dfuConstraint animator] setConstant:0 * [[appDelegate.bluetoothMonitor.foundDevices nicknamedConnected] count]];
+    if (anyExpired) {
+        [[dfuConstraint animator] setConstant:40 * [devices count]];
+    } else {
+        [[dfuConstraint animator] setConstant:0 * [devices count]];
+    }
     
     [NSAnimationContext endGrouping];
 }

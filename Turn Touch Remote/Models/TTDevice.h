@@ -27,6 +27,7 @@ typedef enum {
 @property (nonatomic, readwrite) BOOL isNotified;
 @property (nonatomic, readwrite) BOOL needsReconnection;
 @property (nonatomic) int firmwareVersion;
+@property (nonatomic) BOOL isFirmwareOld;
 @property (nonatomic) TTDeviceState state;
 
 - (id)initWithPeripheral:(CBPeripheral *)peripheral;

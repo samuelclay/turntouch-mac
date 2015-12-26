@@ -8,8 +8,6 @@
 
 #import "TTDFUDeviceView.h"
 
-#define UPLOAD_BUTTON_WIDTH 64
-
 @implementation TTDFUDeviceView
 
 - (instancetype)initWithDevice:(TTDevice *)_device {
@@ -17,8 +15,11 @@
         appDelegate = (TTAppDelegate *)[NSApp delegate];
         device = _device;
 
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        latestVersion = [[prefs objectForKey:@"TT:firmware:version"] integerValue];
+
         changeButton = [[TTChangeButtonView alloc] init];
-        [self setChangeButtonTitle:@"upgrade"];
+        [self setChangeButtonTitle:[NSString stringWithFormat:@"Upgrade to v%ld", (long)latestVersion]];
         [changeButton setAction:@selector(beginUpgrade:)];
         [changeButton setTarget:self];
         [self addSubview:changeButton];
@@ -32,6 +33,7 @@
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
 
+    [self drawBackground];
 //    NSLog(@"Drawing %@: %@.", NSStringFromRect(self.frame), device);
     NSString *imagePath = [NSString stringWithFormat:@"%@/icons/remote_graphic.png", [[NSBundle mainBundle] resourcePath]];
     NSImage *remoteIcon = [[NSImage alloc] initWithContentsOfFile:imagePath];
@@ -47,11 +49,27 @@
                                      (NSHeight(self.frame)/2) - (titleSize.height/2));
     [device.nickname drawAtPoint:titlePoint withAttributes:titleAttributes];
     
-    NSRect buttonFrame = NSMakeRect(NSWidth(self.frame) - UPLOAD_BUTTON_WIDTH - 12,
+    NSString *buttonText;
+    if (device.isFirmwareOld) {
+        buttonText = [NSString stringWithFormat:@"Upgrade to v%ld", (long)latestVersion];
+        [changeButton setUseAltStyle:NO];
+        [changeButton setEnabled:YES];
+    } else {
+        buttonText = [NSString stringWithFormat:@"All set with v%d", device.firmwareVersion];
+        [changeButton setUseAltStyle:YES];
+        [changeButton setEnabled:NO];
+    }
+    NSSize buttonSize = [buttonText sizeWithAttributes:@{NSFontNameAttribute: [NSFont fontWithName:@"Effra" size:13]}];
+    NSRect buttonFrame = NSMakeRect(NSWidth(self.frame) - buttonSize.width*1.25 - 12,
                                     8,
-                                    UPLOAD_BUTTON_WIDTH, NSHeight(self.frame) - 8*2);
+                                    buttonSize.width*1.25, NSHeight(self.frame) - 8*2);
     changeButton.frame = buttonFrame;
-    [self setChangeButtonTitle:@"upgrade"];
+    [self setChangeButtonTitle:buttonText];
+}
+
+- (void)drawBackground {
+    [NSColorFromRGB(0xEFEFE6) set];
+    NSRectFill(self.bounds);
 }
 
 - (void)setChangeButtonTitle:(NSString *)title {

@@ -425,20 +425,17 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
         }
         
         if ([service.UUID isEqual:[CBUUID UUIDWithString:DEVICE_V2_SERVICE_BUTTON_UUID]]) {
-            device.firmwareVersion = 2;
             [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:DEVICE_V2_CHARACTERISTIC_BUTTON_STATUS_UUID],
                                                   [CBUUID UUIDWithString:DEVICE_V2_CHARACTERISTIC_NICKNAME_UUID]]
                                      forService:service];
         }
         
         if ([service.UUID isEqual:[CBUUID UUIDWithString:DEVICE_V2_SERVICE_BATTERY_UUID]]) {
-            device.firmwareVersion = 2;
             [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:DEVICE_V2_CHARACTERISTIC_BATTERY_LEVEL_UUID]]
                                      forService:service];
         }
         
         if ([service.UUID isEqual:[CBUUID UUIDWithString:dfuServiceUUIDString]]) {
-            device.firmwareVersion = 2;
             [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:dfuVersionCharacteritsicUUIDString]]
                                      forService:service];
         }
@@ -641,6 +638,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
         [characteristic.value getBytes:&firmwareVersion];
         NSLog(@" ---> Firmware version of %@: %d", device, firmwareVersion);
         device.firmwareVersion = firmwareVersion;
+        [self countDevices];
     } else {
         NSLog(@"Unidentified characteristic: %@", characteristic);
     }

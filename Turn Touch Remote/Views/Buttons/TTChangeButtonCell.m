@@ -97,7 +97,10 @@
     NSColor *color = NSColorFromRGB(0xA0A3A8);
     if (self.isHighlighted) {
         color = NSColorFromRGB(0x606368);
+    } else if (useAltStyle) {
+        color = NSColorFromRGB(0xFEFBFA);
     }
+
     NSDictionary *titleAttributes = @{NSFontAttributeName:font,
                                       NSForegroundColorAttributeName: color};
     NSSize placeholderSize = [@"Aj" boundingRectWithSize:frame.size

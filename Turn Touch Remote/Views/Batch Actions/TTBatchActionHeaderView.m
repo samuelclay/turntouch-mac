@@ -111,11 +111,12 @@
     [actionPath setLineWidth:1];
     [actionPath stroke];
     
+    // Fill background
     [NSColorFromRGB(0xFFFFFF) set];
     [actionPath fill];
     
+    // Have to draw the action title after the background path is filled
     [actionName drawAtPoint:actionPoint withAttributes:titleAttributes];
-    
 
     // Action dropdown button
     [NSGraphicsContext saveGraphicsState];
@@ -139,7 +140,6 @@
     [actionButton setAction:@selector(showBatchActionMenu:)];
     [actionButton setTarget:self];
     [actionButton setBorderRadius:0.f];
-    [actionPath addClip];
     [self addSubview:actionButton];
     [NSGraphicsContext restoreGraphicsState];
 }

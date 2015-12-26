@@ -11,6 +11,8 @@
 @implementation TTDevice
 
 @synthesize nickname;
+@synthesize firmwareVersion;
+@synthesize isFirmwareOld;
 
 - (id)initWithPeripheral:(CBPeripheral *)peripheral {
     if (self = [super init]) {
@@ -41,4 +43,16 @@
     nickname = [[NSString alloc] initWithData:fixedNickname encoding:NSUTF8StringEncoding];
 }
 
+- (void)setFirmwareVersion:(int)_firmwareVersion {
+    firmwareVersion = _firmwareVersion;
+
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSInteger latestVersion = [[prefs objectForKey:@"TT:firmware:version"] integerValue];
+
+    if (firmwareVersion < latestVersion) {
+        isFirmwareOld = YES;
+    } else {
+        isFirmwareOld = NO;
+    }
+}
 @end
