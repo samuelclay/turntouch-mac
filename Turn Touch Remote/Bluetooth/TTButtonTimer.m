@@ -177,11 +177,11 @@
 }
 
 - (void)maybeReleaseToastActiveMode {
-    if (!holdToastStart || [[NSDate date] timeIntervalSinceDate:holdToastStart] > 1.0) {
-        [appDelegate.hudController releaseToastActiveMode];
-    } else {
-        [appDelegate.hudController toastActiveMode];
-    }
+//    if (!holdToastStart || [[NSDate date] timeIntervalSinceDate:holdToastStart] > 1.0) {
+    [appDelegate.hudController releaseToastActiveMode];
+//    } else {
+//        [appDelegate.hudController toastActiveMode];
+//    }
     holdToastStart = nil;
 }
 

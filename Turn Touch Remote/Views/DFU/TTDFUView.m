@@ -73,11 +73,11 @@
                          change:(NSDictionary*)change
                         context:(void*)context {
     if ([keyPath isEqual:NSStringFromSelector(@selector(nicknamedConnectedCount))]) {
-        [self setNeedsDisplay:YES];
         [self drawStackView];
+        [self setNeedsDisplay:YES];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(pairedDevicesCount))]) {
-        [self setNeedsDisplay:YES];
         [self drawStackView];
+        [self setNeedsDisplay:YES];
     }
 }
 
@@ -92,6 +92,13 @@
     [super drawRect:dirtyRect];
 
     [self drawBackground];
+    
+    NSBezierPath *border = [NSBezierPath bezierPath];
+    [border moveToPoint:NSMakePoint(NSMinX(self.bounds), NSMinY(self.bounds))];
+    [border lineToPoint:NSMakePoint(NSMaxX(self.bounds), NSMinY(self.bounds))];
+    [NSColorFromRGB(0xD0D0D0) set];
+    [border setLineWidth:1.f];
+    [border stroke];
 }
 
 - (void)drawBackground {
@@ -148,7 +155,7 @@
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSInteger latestVersion = [[prefs objectForKey:@"TT:firmware:version"] integerValue];
 
-    NSString *filePath = [NSString stringWithFormat:@"%@/firmwares/nrf51_%ld.zip",
+    NSString *filePath = [NSString stringWithFormat:@"%@/firmwares/nrf51_%02ld.zip",
                           [[NSBundle mainBundle] resourcePath], (long)latestVersion];
     NSURL *fileUrl = [NSURL fileURLWithPath:filePath];
     self.dfuHelper.selectedFileURL = fileUrl;
@@ -238,22 +245,22 @@
     
     // Scanner uses other queue to send events. We must edit UI in the main queue
     dispatch_async(dispatch_get_main_queue(), ^{
-        if (self.dfuHelper.dfuVersion >= 2) {
-            [self clearUI];
-            
-            self.isTransferCancelled = NO;
-            self.isTransfered = NO;
-            self.isErrorKnown = NO;
-            
-            [self returnBluetoothManager];
-        } else {
+//        if (self.dfuHelper.dfuVersion >= 2) {
+//            [self clearUI];
+//            
+//            self.isTransferCancelled = NO;
+//            self.isTransfered = NO;
+//            self.isErrorKnown = NO;
+//            
+//            [self returnBluetoothManager];
+//        } else {
             double delayInSeconds = 3.0;
             dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
             dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
                 [dfuOperations connectDevice:peripheral];
             });
             
-        }
+//        }
     });
 }
 

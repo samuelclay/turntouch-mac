@@ -790,16 +790,28 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
     NSString *newNickname;
     NSMutableData *emptyNickname = [NSMutableData dataWithLength:32];
     NSData *deviceNicknameData = [device.nickname dataUsingEncoding:NSUTF8StringEncoding];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *nicknameKey = [NSString stringWithFormat:@"TT:device:%@:nickname", device.uuid.UUIDString];
+    NSString *existingNickname = [prefs objectForKey:nicknameKey];
     
     BOOL hasDeviceNickname = ![deviceNicknameData isEqualToData:emptyNickname] && device.nickname.length;
     BOOL force = YES;
     force = NO;
     
+    if (!existingNickname && hasDeviceNickname) {
+        [prefs setObject:device.nickname forKey:nicknameKey];
+        [prefs synchronize];
+    }
+    
     if (!hasDeviceNickname || force) {
-        NSArray *emoji = @[@"🐱", @"🐼", @"🐶", @"🍒", @"⚽️", @"🎻", @"🎱", @"☀️", @"🌎", @"🌴", @"🌻", @"🌀", @"📚", @"🔮", @"📡", @"⛵️", @"🚲", @"⛄️", @"🍉"];
-        NSString *randomEmoji = [emoji objectAtIndex:arc4random_uniform((uint32_t)emoji.count)];
-        newNickname = [NSString stringWithFormat:@"%@ Turn Touch Remote", randomEmoji];
-
+        if (existingNickname) {
+            newNickname = existingNickname;
+        } else {
+            NSArray *emoji = @[@"🐱", @"🐼", @"🐶", @"🍒", @"⚽️", @"🎻", @"🎱", @"☀️", @"🌎", @"🌴", @"🌻", @"🌀", @"📚", @"🔮", @"📡", @"⛵️", @"🚲", @"⛄️", @"🍉", @"🏺", @"🚀", @"🔭", @"🔬", @"🗿", @"🏮", @"⚜", @"💠"];
+            NSString *randomEmoji = [emoji objectAtIndex:arc4random_uniform((uint32_t)emoji.count)];
+            newNickname = [NSString stringWithFormat:@"%@ Turn Touch Remote", randomEmoji];
+        }
+        
         NSLog(@"Generating emoji nickname: %@", newNickname);
 
         [self writeNickname:newNickname toDevice:device];
@@ -808,6 +820,7 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
 
 - (void)writeNickname:(NSString *)newNickname toDevice:(TTDevice *)device {
     NSMutableData *data = [NSMutableData dataWithData:[newNickname dataUsingEncoding:NSUTF8StringEncoding]];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
 
     // Clear out the NULL \0 bytes that accumulate
     [self clearDataOfNullBytes:data];
@@ -860,6 +873,11 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
     [self clearDataOfNullBytes:data];
 
     [device setNicknameData:data];
+    
+    [prefs setObject:newNickname forKey:[NSString stringWithFormat:@"TT:device:%@:nickname", device.uuid.UUIDString]];
+    [prefs synchronize];
+
+    [self countDevices];
 }
 
 - (void)clearDataOfNullBytes:(NSMutableData *)data {
