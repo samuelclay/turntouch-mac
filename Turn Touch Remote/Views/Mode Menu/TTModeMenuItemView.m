@@ -253,6 +253,7 @@
         [appDelegate.modeMap setTempModeName:modeName];
     } else if (menuType == ADD_ACTION_MENU_TYPE) {
         [appDelegate.modeMap addBatchAction:modeName];
+        [appDelegate.panelController.backgroundView.addActionButtonView hideAddActionMenu:nil];
     }
 }
 
