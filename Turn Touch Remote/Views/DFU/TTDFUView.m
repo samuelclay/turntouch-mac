@@ -144,9 +144,10 @@
     currentDevice = device;
     [self prepareFirmware];
     
-    for (TTDFUDeviceView *deviceView in self.views) {
-        if (deviceView.device != device) {
-            [deviceView disableUpgrade];
+    for (NSView *deviceView in self.views) {
+        if (deviceView == border) continue;
+        if (((TTDFUDeviceView *)deviceView).device != device) {
+            [(TTDFUDeviceView *)deviceView disableUpgrade];
         }
     }
 
@@ -360,8 +361,9 @@
 }
 
 - (TTDFUDeviceView *)deviceInDFU {
-    for (TTDFUDeviceView *deviceView in self.views) {
-        if (deviceView.device.inDFU) return deviceView;
+    for (NSView *deviceView in self.views) {
+        if (deviceView == border) continue;
+        if (((TTDFUDeviceView *)deviceView).device.inDFU) return (TTDFUDeviceView *)deviceView;
     }
     
     return nil;
@@ -397,8 +399,9 @@
 }
 
 - (void)returnBluetoothManager {
-    for (TTDFUDeviceView *deviceView in self.views) {
-        [deviceView enableUpgrade];
+    for (NSView *deviceView in self.views) {
+        if (deviceView == border) continue;
+        [(TTDFUDeviceView *)deviceView enableUpgrade];
     }
 
     NSLog(@" ---> Returning Bluetooth Monitor");

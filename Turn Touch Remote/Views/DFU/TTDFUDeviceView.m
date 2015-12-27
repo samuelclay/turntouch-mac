@@ -123,6 +123,7 @@
 
 - (void)disableUpgrade {
     [changeButton setEnabled:NO];
+    if (!self.device.isFirmwareOld) return;
     [changeButton setTitle:@"Waiting..."];
 }
 
