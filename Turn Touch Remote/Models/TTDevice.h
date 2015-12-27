@@ -26,6 +26,7 @@ typedef enum {
 @property (nonatomic, readwrite) BOOL isPaired;
 @property (nonatomic, readwrite) BOOL isNotified;
 @property (nonatomic, readwrite) BOOL needsReconnection;
+@property (nonatomic, readwrite) BOOL inDFU;
 @property (nonatomic) int firmwareVersion;
 @property (nonatomic) BOOL isFirmwareOld;
 @property (nonatomic) TTDeviceState state;

@@ -10,6 +10,9 @@
 
 @implementation TTDFUDeviceView
 
+@synthesize device;
+@synthesize progress;
+
 - (instancetype)initWithDevice:(TTDevice *)_device {
     if (self = [super init]) {
         appDelegate = (TTAppDelegate *)[NSApp delegate];
@@ -23,7 +26,15 @@
         [changeButton setAction:@selector(beginUpgrade:)];
         [changeButton setTarget:self];
         [self addSubview:changeButton];
-
+        
+        progress = [[NSProgressIndicator alloc] init];
+        [progress setStyle:NSProgressIndicatorBarStyle];
+        [progress setDisplayedWhenStopped:NO];
+        [progress setUsesThreadedAnimation:YES];
+        [progress setMinValue:0];
+        [progress setMaxValue:100];
+        [self addSubview:progress];
+        
         [self setupTitleAttributes];
     }
     
@@ -49,21 +60,15 @@
                                      (NSHeight(self.frame)/2) - (titleSize.height/2));
     [device.nickname drawAtPoint:titlePoint withAttributes:titleAttributes];
     
-    NSString *buttonText;
-    if (device.isFirmwareOld) {
-        buttonText = [NSString stringWithFormat:@"Upgrade to v%ld", (long)latestVersion];
-        [changeButton setUseAltStyle:NO];
-        [changeButton setEnabled:YES];
-    } else {
-        buttonText = [NSString stringWithFormat:@"All set with v%d", device.firmwareVersion];
-        [changeButton setUseAltStyle:YES];
-        [changeButton setEnabled:NO];
-    }
+    NSString *buttonText = [self updateButtonTitle];
     NSSize buttonSize = [buttonText sizeWithAttributes:@{NSFontNameAttribute: [NSFont fontWithName:@"Effra" size:13]}];
     NSRect buttonFrame = NSMakeRect(NSWidth(self.frame) - buttonSize.width*1.25 - 12,
                                     8,
                                     buttonSize.width*1.25, NSHeight(self.frame) - 8*2);
     changeButton.frame = buttonFrame;
+    
+    progress.frame = buttonFrame;
+
     [self setChangeButtonTitle:buttonText];
 }
 
@@ -95,7 +100,38 @@
 - (void)beginUpgrade:(id)sender {
     NSLog(@"Begin upgrade: %@", device);
     
+    device.inDFU = YES;
+    [changeButton setHidden:YES];
+    [progress setIndeterminate:YES];
+    [progress startAnimation:nil];
     [appDelegate.panelController.backgroundView.dfuView performDFU:device];
+}
+
+- (NSString *)updateButtonTitle {
+    NSString *buttonText;
+    if (device.isFirmwareOld) {
+        buttonText = [NSString stringWithFormat:@"Upgrade to v%ld", (long)latestVersion];
+        [changeButton setUseAltStyle:NO];
+        [changeButton setEnabled:YES];
+    } else {
+        buttonText = [NSString stringWithFormat:@"All set with v%d", device.firmwareVersion];
+        [changeButton setUseAltStyle:YES];
+        [changeButton setEnabled:NO];
+    }
+    return buttonText;
+}
+
+- (void)disableUpgrade {
+    [changeButton setEnabled:NO];
+    [changeButton setTitle:@"Waiting..."];
+}
+
+- (void)enableUpgrade {
+    if (device.isFirmwareOld) {
+        [changeButton setEnabled:YES];
+    }
+    NSString *buttonText = [self updateButtonTitle];
+    [changeButton setTitle:buttonText];
 }
 
 @end

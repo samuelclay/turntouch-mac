@@ -12,7 +12,6 @@
 
 @interface TTDFUDeviceView : NSView {
     TTAppDelegate *appDelegate;
-    TTDevice *device;
 
     NSDictionary *titleAttributes;
     CGSize textSize;
@@ -20,6 +19,11 @@
     NSInteger latestVersion;
 }
 
+@property (nonatomic) TTDevice *device;
+@property (nonatomic) NSProgressIndicator *progress;
+
 - (instancetype)initWithDevice:(TTDevice *)_device;
+- (void)disableUpgrade;
+- (void)enableUpgrade;
 
 @end

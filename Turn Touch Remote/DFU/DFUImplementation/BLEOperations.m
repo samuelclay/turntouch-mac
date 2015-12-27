@@ -80,7 +80,8 @@ static NSString * const hrsSensorLocationCharacteristicUUIDString = @"00002A38-0
             NSLog(@"Version Characteristic is found");
             isDFUVersionCharacteristicFound = YES;
             self.dfuVersionCharacteristic = characteristic;
-        }    }
+        }
+    }
 }
 
 #pragma mark - CentralManager delegates

@@ -861,6 +861,7 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
     
     if (!characteristic) {
         NSLog(@" ***> Problem! No valid characteristic: %d", device.firmwareVersion);
+        [manager cancelPeripheralConnection:device.peripheral];
         return;
     }
 

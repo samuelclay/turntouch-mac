@@ -140,6 +140,12 @@
 -(void)performDFU:(TTDevice *)device {
     currentDevice = device;
     [self prepareFirmware];
+    
+    for (TTDFUDeviceView *deviceView in self.views) {
+        if (deviceView.device != device) {
+            [deviceView disableUpgrade];
+        }
+    }
 
     [self centralManager:appDelegate.bluetoothMonitor.manager didPeripheralSelected:device.peripheral];
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -165,7 +171,7 @@
     NSData *fileData = [NSData dataWithContentsOfURL:fileUrl];
     self.dfuHelper.selectedFileSize = fileData.length;
     NSLog(@" ---> Upgrading with %@", selectedFileName);
-    
+
     self.dfuHelper.isSelectedFileZipped = YES;
     self.dfuHelper.isManifestExist = NO;
     [self.dfuHelper unzipFiles:self.dfuHelper.selectedFileURL];
@@ -288,7 +294,10 @@
 -(void)onDFUStarted {
     NSLog(@"onDFUStarted");
     self.isTransferring = YES;
+    TTDFUDeviceView *dfuDeviceView = [self deviceInDFU];
     dispatch_async(dispatch_get_main_queue(), ^{
+        [dfuDeviceView.progress setIndeterminate:NO];
+        [dfuDeviceView.progress startAnimation:nil];
         //        uploadButton.enabled = YES;
         //        [uploadButton setTitle:@"Cancel" forState:UIControlStateNormal];
         //        NSString *uploadStatusMessage = [self.dfuHelper getUploadStatusMessage];
@@ -337,11 +346,22 @@
 
 -(void)onTransferPercentage:(int)percentage {
     NSLog(@"onTransferPercentage %d",percentage);
+    
+    TTDFUDeviceView *dfuDeviceView = [self deviceInDFU];
     // Scanner uses other queue to send events. We must edit UI in the main queue
     dispatch_async(dispatch_get_main_queue(), ^{
-        //        progressLabel.text = [NSString stringWithFormat:@"%d %%", percentage];
-        //        [progress setProgress:((float)percentage/100.0) animated:YES];
+        [dfuDeviceView.progress setIndeterminate:NO];
+        [dfuDeviceView.progress startAnimation:nil];
+        [dfuDeviceView.progress setDoubleValue:(float)percentage];
     });
+}
+
+- (TTDFUDeviceView *)deviceInDFU {
+    for (TTDFUDeviceView *deviceView in self.views) {
+        if (deviceView.device.inDFU) return deviceView;
+    }
+    
+    return nil;
 }
 
 -(void)onSuccessfulFileTranferred {
@@ -350,6 +370,8 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         self.isTransferring = NO;
         self.isTransfered = YES;
+        self.isNotifying = NO;
+
         [self returnBluetoothManager];
         //        NSString* message = [NSString stringWithFormat:@"%lu bytes transfered in %lu seconds", (unsigned long)dfuOperations.binFileSize, (unsigned long)dfuOperations.uploadTimeInSeconds];
         //        if ([Utility isApplicationStateInactiveORBackground]) {
@@ -372,6 +394,10 @@
 }
 
 - (void)returnBluetoothManager {
+    for (TTDFUDeviceView *deviceView in self.views) {
+        [deviceView enableUpgrade];
+    }
+
     NSLog(@" ---> Returning Bluetooth Monitor");
     [appDelegate.bluetoothMonitor.manager setDelegate:appDelegate.bluetoothMonitor];
 }
