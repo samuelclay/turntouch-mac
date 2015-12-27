@@ -53,6 +53,8 @@
 //        NSLog(@"PACKETS_NOTIFICATION_INTERVAL %d",PACKETS_NOTIFICATION_INTERVAL);
         dfuOperations = [[DFUOperations alloc] initWithDelegate:self];
         self.dfuHelper = [[DFUHelper alloc] initWithData:dfuOperations];
+        
+        border = [[TTBorder alloc] init];
     }
 
     return self;
@@ -93,12 +95,6 @@
 
     [self drawBackground];
     
-    NSBezierPath *border = [NSBezierPath bezierPath];
-    [border moveToPoint:NSMakePoint(NSMinX(self.bounds), NSMinY(self.bounds))];
-    [border lineToPoint:NSMakePoint(NSMaxX(self.bounds), NSMinY(self.bounds))];
-    [NSColorFromRGB(0xD0D0D0) set];
-    [border setLineWidth:1.f];
-    [border stroke];
 }
 
 - (void)drawBackground {
@@ -116,10 +112,17 @@
         [dfuDeviceViews addObject:deviceView];
     }
     
+    [dfuDeviceViews addObject:border];
     [self setViews:dfuDeviceViews inGravity:NSStackViewGravityTop];
     
-    for (TTDFUDeviceView *deviceView in self.views) {
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:deviceView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationLessThanOrEqual toItem:nil attribute:0 multiplier:1.0 constant:40]];
+    for (NSView *deviceView in self.views) {
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:deviceView
+                                                         attribute:NSLayoutAttributeHeight
+                                                         relatedBy:NSLayoutRelationLessThanOrEqual
+                                                            toItem:nil
+                                                         attribute:0
+                                                        multiplier:1.0
+                                                          constant:deviceView == border ? 0.5f : 40]];
     }
 }
 

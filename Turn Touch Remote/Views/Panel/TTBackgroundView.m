@@ -364,9 +364,9 @@
     [[NSAnimationContext currentContext] setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
     
     if (anyExpired) {
-        [[dfuConstraint animator] setConstant:40 * [devices count]];
+        [[dfuConstraint animator] setConstant:40*[devices count] + 1];
     } else {
-        [[dfuConstraint animator] setConstant:0 * [devices count]];
+        [[dfuConstraint animator] setConstant:0];
     }
     
     [NSAnimationContext endGrouping];

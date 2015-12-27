@@ -10,10 +10,11 @@
 #import "DFUOperations.h"
 #import "TTAppDelegate.h"
 #import "TTDevice.h"
+#import "TTBorder.h"
 
 @interface TTDFUView : NSStackView <NSStackViewDelegate, DFUOperationsDelegate> {
     TTAppDelegate *appDelegate;
-
+    TTBorder *border;
     TTDevice *currentDevice;
 }
 

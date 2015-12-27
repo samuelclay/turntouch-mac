@@ -173,6 +173,7 @@
 		FFABAB8A1C28E6F000AD5620 /* TTBatchActions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB891C28E6F000AD5620 /* TTBatchActions.m */; };
 		FFABAB8D1C2A21A200AD5620 /* TTAddActionButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB8C1C2A21A200AD5620 /* TTAddActionButtonView.m */; };
 		FFABAB901C2A32E000AD5620 /* TTAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB8F1C2A32E000AD5620 /* TTAction.m */; };
+		FFABAB931C2F723000AD5620 /* TTBorder.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB921C2F723000AD5620 /* TTBorder.m */; };
 		FFAFCBC519130F520058B9CB /* TTPanelArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAFCBC419130F520058B9CB /* TTPanelArrowView.m */; };
 		FFB1670B1922FE53008FA1AF /* TTModeMacOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB1670A1922FE53008FA1AF /* TTModeMacOptions.m */; };
 		FFB1670E1923E61F008FA1AF /* TTTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB1670D1923E61F008FA1AF /* TTTabView.m */; };
@@ -524,6 +525,8 @@
 		FFABAB8C1C2A21A200AD5620 /* TTAddActionButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTAddActionButtonView.m; path = "Views/Batch Actions/TTAddActionButtonView.m"; sourceTree = "<group>"; };
 		FFABAB8E1C2A32E000AD5620 /* TTAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTAction.h; path = Models/TTAction.h; sourceTree = "<group>"; };
 		FFABAB8F1C2A32E000AD5620 /* TTAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTAction.m; path = Models/TTAction.m; sourceTree = "<group>"; };
+		FFABAB911C2F723000AD5620 /* TTBorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTBorder.h; path = "Turn Touch Remote/Views/Panel/TTBorder.h"; sourceTree = SOURCE_ROOT; };
+		FFABAB921C2F723000AD5620 /* TTBorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTBorder.m; path = "Turn Touch Remote/Views/Panel/TTBorder.m"; sourceTree = SOURCE_ROOT; };
 		FFAFCBC319130F520058B9CB /* TTPanelArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTPanelArrowView.h; sourceTree = "<group>"; };
 		FFAFCBC419130F520058B9CB /* TTPanelArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTPanelArrowView.m; sourceTree = "<group>"; };
 		FFB167091922FE53008FA1AF /* TTModeMacOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMacOptions.h; path = Modes/Mac/TTModeMacOptions.h; sourceTree = "<group>"; };
@@ -909,6 +912,8 @@
 				FF801325186CF90700955218 /* TTStatusItemView.m */,
 				FFAFCBC319130F520058B9CB /* TTPanelArrowView.h */,
 				FFAFCBC419130F520058B9CB /* TTPanelArrowView.m */,
+				FFABAB911C2F723000AD5620 /* TTBorder.h */,
+				FFABAB921C2F723000AD5620 /* TTBorder.m */,
 			);
 			name = Panel;
 			path = Views/Panel;
@@ -1628,6 +1633,7 @@
 				FF5295C51AD5B9A4007DDC02 /* TTTitleBarView.m in Sources */,
 				FF904B9A1BE9BA3700AD00F3 /* SSZipArchive.m in Sources */,
 				FFA1D4CF1A3B8916003EA0BC /* TTHUDController.m in Sources */,
+				FFABAB931C2F723000AD5620 /* TTBorder.m in Sources */,
 				FFB167111923E6BF008FA1AF /* TTBoxView.m in Sources */,
 				FFAFCBC519130F520058B9CB /* TTPanelArrowView.m in Sources */,
 				FFA8EA9D190F07A500679A4D /* TTModeTab.m in Sources */,
