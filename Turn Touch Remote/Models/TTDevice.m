@@ -17,6 +17,10 @@
 - (id)initWithPeripheral:(CBPeripheral *)peripheral {
     if (self = [super init]) {
         self.peripheral = peripheral;
+        
+        // Init with latest firmware version, correct later
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        firmwareVersion = [[prefs objectForKey:@"TT:firmware:version"] intValue];
     }
     
     return self;

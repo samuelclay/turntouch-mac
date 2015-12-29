@@ -14,7 +14,7 @@
 		</data>
 		<key>Resources/MLCalendarView.nib</key>
 		<data>
-		2JCMWTqpQ8fwEgMt7glJL6CDdGo=
+		BRoaewk3Xg0AmnhlsRgH9rX8joM=
 		</data>
 		<key>Resources/NSDateTimeAgo.bundle/ar.lproj/NSDateTimeAgo.strings</key>
 		<dict>
@@ -306,11 +306,11 @@
 		</dict>
 		<key>Resources/RHPreferencesWindow.nib</key>
 		<data>
-		siI6YDgZ+t6Fw7wqd8r4+Lfcxk8=
+		yo2ny4/sKoKUPaP8aBZIMc/xedU=
 		</data>
 		<key>Resources/TTActionHUDView.nib</key>
 		<data>
-		vDuwONmkSvRKckOjI1UsDrwOk8g=
+		IrQCdFZ+t2COAVDHbaNQ9qJcf/8=
 		</data>
 		<key>Resources/TTModeAlarmClock.plist</key>
 		<data>
@@ -318,15 +318,15 @@
 		</data>
 		<key>Resources/TTModeAlarmClockOptions.nib</key>
 		<data>
-		AEOIDRZe0I8qXFfh5KTd6nTOqsI=
+		Pm96TfJ2yAJnopSDLmPWF1SaUUw=
 		</data>
 		<key>Resources/TTModeAlarmSnoozeOptions.nib</key>
 		<data>
-		Z1vuxkiL9BzNNeF/bLUSX4S5I1w=
+		GGZWgAavqQKKr2ugmFRjVX6Y7Ss=
 		</data>
 		<key>Resources/TTModeHUDView.nib</key>
 		<data>
-		MidWWdTWE3+73dlWgozzrZE4yVs=
+		E2GJzW1U6Zc8SuIcv4pA9/sp0+8=
 		</data>
 		<key>Resources/TTModeHue.plist</key>
 		<data>
@@ -334,7 +334,7 @@
 		</data>
 		<key>Resources/TTModeHueConnect.nib</key>
 		<data>
-		Fn6dGtt1JQxDp2j2gy8xoI1kdc8=
+		nipC+1N1RZ5YQ6/2hz+Wv8obF/U=
 		</data>
 		<key>Resources/TTModeHueConnected.nib</key>
 		<data>
@@ -342,31 +342,31 @@
 		</data>
 		<key>Resources/TTModeHueConnecting.nib</key>
 		<data>
-		EqtTSJICq5o1DOhVnDUY3v/ojuw=
+		gX4nAzKpAlewPQO935wtiEck/OI=
 		</data>
 		<key>Resources/TTModeHueOptions.nib</key>
 		<data>
-		i4FG7kHwUAq2iYBPHljXuOk1hvc=
+		u/p7vpU8eN66SAExBU2f7Nf4YpI=
 		</data>
 		<key>Resources/TTModeHuePushlink.nib</key>
 		<data>
-		jvUIblzuy9KWaVWK2tvZxGoDF0M=
+		s05kozHsPbl9h2+dGWJNR2P5LLM=
 		</data>
 		<key>Resources/TTModeHueRandomOptions.nib</key>
 		<data>
-		ZfJxs7F6PBbYw3BRhNcg48eXg2s=
+		KaDEaVtvvS6kHXfAY9epODZPXFM=
 		</data>
 		<key>Resources/TTModeHueSceneOptions.nib</key>
 		<data>
-		u3Kb3y+mHZv/CC6D4sa/8zpZx0g=
+		Hl6KkSCiwakrtAGK36A2sMSVwVU=
 		</data>
 		<key>Resources/TTModeHueSleepOptions.nib</key>
 		<data>
-		nlUI0rR1rRuhJryOomSJEs6vioc=
+		dPZ405uBZ6LLhzRvf8xZC1D8taU=
 		</data>
 		<key>Resources/TTModeMacOptions.nib</key>
 		<data>
-		zhhmBvIz2zX8PJxPWgH7msSo/Xc=
+		z++pzqu2BcxS+rv6Dn0DvVxyKQk=
 		</data>
 		<key>Resources/TTModeMusic.plist</key>
 		<data>
@@ -374,27 +374,27 @@
 		</data>
 		<key>Resources/TTModeMusicVolumeJumpOptions.nib</key>
 		<data>
-		x30pSjUH/z3zhWubkU1XsWIb9hM=
+		cbGdVnumsq/STZ0lIN1fj2WuR6E=
 		</data>
 		<key>Resources/TTPanel.nib</key>
 		<data>
-		yh738xoeFHdUFnQ4zu1T066/NwM=
+		GWJc/W4OxsXvS9r/ymF9cfokYEs=
 		</data>
 		<key>Resources/TTSettingsAboutViewController.nib</key>
 		<data>
-		zy81wec8DIpJfkXwpPwp6wUm0jo=
+		txD44zneKGfBuzaJx2c99V5Cuco=
 		</data>
 		<key>Resources/TTSettingsDevicesViewController.nib</key>
 		<data>
-		Q8TnCjEOWUa0tVtWqKcYobcL0Bk=
+		0b9WSvgtIt3HWdsbGnHY4VVCaUU=
 		</data>
 		<key>Resources/TTSettingsPairingViewController.nib</key>
 		<data>
-		dFqpU1drwMARe8H6O7O7Mfn+T5U=
+		FEwPeAseqZXX3HxNHmJRjuanoPM=
 		</data>
 		<key>Resources/TTSettingsSupportViewController.nib</key>
 		<data>
-		l4dvLcWeKBUngA0/DLi6W8/8EJI=
+		isf1Zedy3pJyiESXRFAvnduD43I=
 		</data>
 		<key>Resources/Turn Touch Remote.entitlements</key>
 		<data>
@@ -474,7 +474,7 @@
 		</data>
 		<key>Resources/defaults.plist</key>
 		<data>
-		Duq7He3EACEgA6p0gwW4E3/etn0=
+		ffhMnOLqSovW1XFY+vEEnWrMI8k=
 		</data>
 		<key>Resources/east tone.wav</key>
 		<data>
@@ -502,66 +502,42 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			JnVLazPyNLbwBQHgPtk2WINgNg8=
+			1EeUYCgM0rCNGwaYg6fGe9HlUYM=
 			</data>
 			<key>optional</key>
 			<true/>
 		</dict>
-		<key>Resources/firmwares/hrs_s110_5_0.hex</key>
-		<data>
-		mJzE1zjU2JyuNSgsgHKr4grPhcg=
-		</data>
-		<key>Resources/firmwares/hrs_s110_6_0.hex</key>
-		<data>
-		Kecie1n0RJZLldkGCHn+Rex5LbA=
-		</data>
-		<key>Resources/firmwares/hrs_s110_7_0.hex</key>
-		<data>
-		ODYGUeuVZYePW42OVqRP82MrYLk=
-		</data>
-		<key>Resources/firmwares/hrs_s110_7_1_sdk7_1.zip</key>
-		<data>
-		x2SqHokGIxGZN2yGIhO+ulGlPRo=
-		</data>
-		<key>Resources/firmwares/hrs_s110_8_0_sdk_8_0.zip</key>
-		<data>
-		Xc+jnLIe1FshJYT7BVH6uKqUm/I=
-		</data>
 		<key>Resources/firmwares/nrf51_01.zip</key>
 		<data>
-		M/+1+/aJL+GV8eW2N6/tQmSoe48=
-		</data>
-		<key>Resources/firmwares/nrf51_01/manifest.json</key>
-		<data>
-		VwATXLRKtxIUnojxnQguKzZ06uY=
-		</data>
-		<key>Resources/firmwares/nrf51_01/nrf51422_xxac_s110.bin</key>
-		<data>
-		8gosoWP5AYpTTg4OTjfynhxnsxg=
-		</data>
-		<key>Resources/firmwares/nrf51_01/nrf51422_xxac_s110.dat</key>
-		<data>
-		r6X3NGuthBd1llC6NHZb5jY7ESg=
+		bPLIcjohlUQxnDLVr4ryFi3EprQ=
 		</data>
 		<key>Resources/firmwares/nrf51_02.zip</key>
 		<data>
-		VHYf59POPSxZNGcNE7+IbzBgc8g=
+		FJAihIiDe8MDz35XkiIJ1b5x81k=
 		</data>
-		<key>Resources/firmwares/rscs_s110_5_0.hex</key>
+		<key>Resources/firmwares/nrf51_03.zip</key>
 		<data>
-		r5VJeAsvqINf2oHJhAarvAMGYJw=
-		</data>
-		<key>Resources/firmwares/rscs_s110_6_0.hex</key>
-		<data>
-		1cNjKTiFl5fx5yITE8Ixg1sadeA=
-		</data>
-		<key>Resources/firmwares/rscs_s110_7_0.hex</key>
-		<data>
-		ggpmdRUNu6EO2cQEJ4yYjU/ie+k=
+		pEi6I3HVgvdcL4mb3vzqKi4IcUU=
 		</data>
 		<key>Resources/fonts/Effra_Rg.ttf</key>
 		<data>
 		V7/5eGD8hqn7/snzpPyBZY7Y/iQ=
+		</data>
+		<key>Resources/icons/button_chevron.png</key>
+		<data>
+		R3y5McrDIcuYKHSA0G57VU4Fxnw=
+		</data>
+		<key>Resources/icons/button_dash.png</key>
+		<data>
+		BBV8c8eehzXHcu0dl8IaGf8PQWs=
+		</data>
+		<key>Resources/icons/button_plus.png</key>
+		<data>
+		C70NHqCWht2f2FgCaNuNFqacNf8=
+		</data>
+		<key>Resources/icons/button_x.png</key>
+		<data>
+		cFW5ElhGZee6Fqny3FDiBeje308=
 		</data>
 		<key>Resources/icons/clock b&amp;w.png</key>
 		<data>
@@ -574,6 +550,10 @@
 		<key>Resources/icons/cog.png</key>
 		<data>
 		W9rkvXdyfkh42RN/r9T5nxpIvWg=
+		</data>
+		<key>Resources/icons/double_tap.png</key>
+		<data>
+		LoPdHeeZ5TUV7RmsDyyquLWLo70=
 		</data>
 		<key>Resources/icons/equalizer-1.png</key>
 		<data>
@@ -777,7 +757,7 @@
 		</data>
 		<key>Resources/title.tiff</key>
 		<data>
-		RS8JifFJy0QAP9vrCrX0oJTe22w=
+		BlI3PZJfqcGpgpYeuN7nhot0pLg=
 		</data>
 		<key>Resources/west tone.wav</key>
 		<data>
@@ -790,7 +770,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			GjNqrHTiU/6hWuEGFavBBsFsMFw=
+			VJyykUnNGok051iLMDN0W7LgaFY=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.andymatuschak.Sparkle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -805,7 +785,7 @@
 		</data>
 		<key>Resources/MLCalendarView.nib</key>
 		<data>
-		2JCMWTqpQ8fwEgMt7glJL6CDdGo=
+		BRoaewk3Xg0AmnhlsRgH9rX8joM=
 		</data>
 		<key>Resources/NSDateTimeAgo.bundle/ar.lproj/NSDateTimeAgo.strings</key>
 		<dict>
@@ -1097,11 +1077,11 @@
 		</dict>
 		<key>Resources/RHPreferencesWindow.nib</key>
 		<data>
-		siI6YDgZ+t6Fw7wqd8r4+Lfcxk8=
+		yo2ny4/sKoKUPaP8aBZIMc/xedU=
 		</data>
 		<key>Resources/TTActionHUDView.nib</key>
 		<data>
-		vDuwONmkSvRKckOjI1UsDrwOk8g=
+		IrQCdFZ+t2COAVDHbaNQ9qJcf/8=
 		</data>
 		<key>Resources/TTModeAlarmClock.plist</key>
 		<data>
@@ -1109,15 +1089,15 @@
 		</data>
 		<key>Resources/TTModeAlarmClockOptions.nib</key>
 		<data>
-		AEOIDRZe0I8qXFfh5KTd6nTOqsI=
+		Pm96TfJ2yAJnopSDLmPWF1SaUUw=
 		</data>
 		<key>Resources/TTModeAlarmSnoozeOptions.nib</key>
 		<data>
-		Z1vuxkiL9BzNNeF/bLUSX4S5I1w=
+		GGZWgAavqQKKr2ugmFRjVX6Y7Ss=
 		</data>
 		<key>Resources/TTModeHUDView.nib</key>
 		<data>
-		MidWWdTWE3+73dlWgozzrZE4yVs=
+		E2GJzW1U6Zc8SuIcv4pA9/sp0+8=
 		</data>
 		<key>Resources/TTModeHue.plist</key>
 		<data>
@@ -1125,7 +1105,7 @@
 		</data>
 		<key>Resources/TTModeHueConnect.nib</key>
 		<data>
-		Fn6dGtt1JQxDp2j2gy8xoI1kdc8=
+		nipC+1N1RZ5YQ6/2hz+Wv8obF/U=
 		</data>
 		<key>Resources/TTModeHueConnected.nib</key>
 		<data>
@@ -1133,31 +1113,31 @@
 		</data>
 		<key>Resources/TTModeHueConnecting.nib</key>
 		<data>
-		EqtTSJICq5o1DOhVnDUY3v/ojuw=
+		gX4nAzKpAlewPQO935wtiEck/OI=
 		</data>
 		<key>Resources/TTModeHueOptions.nib</key>
 		<data>
-		i4FG7kHwUAq2iYBPHljXuOk1hvc=
+		u/p7vpU8eN66SAExBU2f7Nf4YpI=
 		</data>
 		<key>Resources/TTModeHuePushlink.nib</key>
 		<data>
-		jvUIblzuy9KWaVWK2tvZxGoDF0M=
+		s05kozHsPbl9h2+dGWJNR2P5LLM=
 		</data>
 		<key>Resources/TTModeHueRandomOptions.nib</key>
 		<data>
-		ZfJxs7F6PBbYw3BRhNcg48eXg2s=
+		KaDEaVtvvS6kHXfAY9epODZPXFM=
 		</data>
 		<key>Resources/TTModeHueSceneOptions.nib</key>
 		<data>
-		u3Kb3y+mHZv/CC6D4sa/8zpZx0g=
+		Hl6KkSCiwakrtAGK36A2sMSVwVU=
 		</data>
 		<key>Resources/TTModeHueSleepOptions.nib</key>
 		<data>
-		nlUI0rR1rRuhJryOomSJEs6vioc=
+		dPZ405uBZ6LLhzRvf8xZC1D8taU=
 		</data>
 		<key>Resources/TTModeMacOptions.nib</key>
 		<data>
-		zhhmBvIz2zX8PJxPWgH7msSo/Xc=
+		z++pzqu2BcxS+rv6Dn0DvVxyKQk=
 		</data>
 		<key>Resources/TTModeMusic.plist</key>
 		<data>
@@ -1165,27 +1145,27 @@
 		</data>
 		<key>Resources/TTModeMusicVolumeJumpOptions.nib</key>
 		<data>
-		x30pSjUH/z3zhWubkU1XsWIb9hM=
+		cbGdVnumsq/STZ0lIN1fj2WuR6E=
 		</data>
 		<key>Resources/TTPanel.nib</key>
 		<data>
-		yh738xoeFHdUFnQ4zu1T066/NwM=
+		GWJc/W4OxsXvS9r/ymF9cfokYEs=
 		</data>
 		<key>Resources/TTSettingsAboutViewController.nib</key>
 		<data>
-		zy81wec8DIpJfkXwpPwp6wUm0jo=
+		txD44zneKGfBuzaJx2c99V5Cuco=
 		</data>
 		<key>Resources/TTSettingsDevicesViewController.nib</key>
 		<data>
-		Q8TnCjEOWUa0tVtWqKcYobcL0Bk=
+		0b9WSvgtIt3HWdsbGnHY4VVCaUU=
 		</data>
 		<key>Resources/TTSettingsPairingViewController.nib</key>
 		<data>
-		dFqpU1drwMARe8H6O7O7Mfn+T5U=
+		FEwPeAseqZXX3HxNHmJRjuanoPM=
 		</data>
 		<key>Resources/TTSettingsSupportViewController.nib</key>
 		<data>
-		l4dvLcWeKBUngA0/DLi6W8/8EJI=
+		isf1Zedy3pJyiESXRFAvnduD43I=
 		</data>
 		<key>Resources/Turn Touch Remote.entitlements</key>
 		<data>
@@ -1265,7 +1245,7 @@
 		</data>
 		<key>Resources/defaults.plist</key>
 		<data>
-		Duq7He3EACEgA6p0gwW4E3/etn0=
+		ffhMnOLqSovW1XFY+vEEnWrMI8k=
 		</data>
 		<key>Resources/east tone.wav</key>
 		<data>
@@ -1293,66 +1273,42 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			JnVLazPyNLbwBQHgPtk2WINgNg8=
+			1EeUYCgM0rCNGwaYg6fGe9HlUYM=
 			</data>
 			<key>optional</key>
 			<true/>
 		</dict>
-		<key>Resources/firmwares/hrs_s110_5_0.hex</key>
-		<data>
-		mJzE1zjU2JyuNSgsgHKr4grPhcg=
-		</data>
-		<key>Resources/firmwares/hrs_s110_6_0.hex</key>
-		<data>
-		Kecie1n0RJZLldkGCHn+Rex5LbA=
-		</data>
-		<key>Resources/firmwares/hrs_s110_7_0.hex</key>
-		<data>
-		ODYGUeuVZYePW42OVqRP82MrYLk=
-		</data>
-		<key>Resources/firmwares/hrs_s110_7_1_sdk7_1.zip</key>
-		<data>
-		x2SqHokGIxGZN2yGIhO+ulGlPRo=
-		</data>
-		<key>Resources/firmwares/hrs_s110_8_0_sdk_8_0.zip</key>
-		<data>
-		Xc+jnLIe1FshJYT7BVH6uKqUm/I=
-		</data>
 		<key>Resources/firmwares/nrf51_01.zip</key>
 		<data>
-		M/+1+/aJL+GV8eW2N6/tQmSoe48=
-		</data>
-		<key>Resources/firmwares/nrf51_01/manifest.json</key>
-		<data>
-		VwATXLRKtxIUnojxnQguKzZ06uY=
-		</data>
-		<key>Resources/firmwares/nrf51_01/nrf51422_xxac_s110.bin</key>
-		<data>
-		8gosoWP5AYpTTg4OTjfynhxnsxg=
-		</data>
-		<key>Resources/firmwares/nrf51_01/nrf51422_xxac_s110.dat</key>
-		<data>
-		r6X3NGuthBd1llC6NHZb5jY7ESg=
+		bPLIcjohlUQxnDLVr4ryFi3EprQ=
 		</data>
 		<key>Resources/firmwares/nrf51_02.zip</key>
 		<data>
-		VHYf59POPSxZNGcNE7+IbzBgc8g=
+		FJAihIiDe8MDz35XkiIJ1b5x81k=
 		</data>
-		<key>Resources/firmwares/rscs_s110_5_0.hex</key>
+		<key>Resources/firmwares/nrf51_03.zip</key>
 		<data>
-		r5VJeAsvqINf2oHJhAarvAMGYJw=
-		</data>
-		<key>Resources/firmwares/rscs_s110_6_0.hex</key>
-		<data>
-		1cNjKTiFl5fx5yITE8Ixg1sadeA=
-		</data>
-		<key>Resources/firmwares/rscs_s110_7_0.hex</key>
-		<data>
-		ggpmdRUNu6EO2cQEJ4yYjU/ie+k=
+		pEi6I3HVgvdcL4mb3vzqKi4IcUU=
 		</data>
 		<key>Resources/fonts/Effra_Rg.ttf</key>
 		<data>
 		V7/5eGD8hqn7/snzpPyBZY7Y/iQ=
+		</data>
+		<key>Resources/icons/button_chevron.png</key>
+		<data>
+		R3y5McrDIcuYKHSA0G57VU4Fxnw=
+		</data>
+		<key>Resources/icons/button_dash.png</key>
+		<data>
+		BBV8c8eehzXHcu0dl8IaGf8PQWs=
+		</data>
+		<key>Resources/icons/button_plus.png</key>
+		<data>
+		C70NHqCWht2f2FgCaNuNFqacNf8=
+		</data>
+		<key>Resources/icons/button_x.png</key>
+		<data>
+		cFW5ElhGZee6Fqny3FDiBeje308=
 		</data>
 		<key>Resources/icons/clock b&amp;w.png</key>
 		<data>
@@ -1365,6 +1321,10 @@
 		<key>Resources/icons/cog.png</key>
 		<data>
 		W9rkvXdyfkh42RN/r9T5nxpIvWg=
+		</data>
+		<key>Resources/icons/double_tap.png</key>
+		<data>
+		LoPdHeeZ5TUV7RmsDyyquLWLo70=
 		</data>
 		<key>Resources/icons/equalizer-1.png</key>
 		<data>
@@ -1568,7 +1528,7 @@
 		</data>
 		<key>Resources/title.tiff</key>
 		<data>
-		RS8JifFJy0QAP9vrCrX0oJTe22w=
+		BlI3PZJfqcGpgpYeuN7nhot0pLg=
 		</data>
 		<key>Resources/west tone.wav</key>
 		<data>
