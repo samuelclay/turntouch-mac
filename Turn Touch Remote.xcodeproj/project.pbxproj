@@ -174,6 +174,13 @@
 		FFABAB8D1C2A21A200AD5620 /* TTAddActionButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB8C1C2A21A200AD5620 /* TTAddActionButtonView.m */; };
 		FFABAB901C2A32E000AD5620 /* TTAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB8F1C2A32E000AD5620 /* TTAction.m */; };
 		FFABAB931C2F723000AD5620 /* TTBorder.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB921C2F723000AD5620 /* TTBorder.m */; };
+		FFABAB961C334FCA00AD5620 /* TTModeWeb.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB951C334FCA00AD5620 /* TTModeWeb.m */; };
+		FFABAB9B1C33674000AD5620 /* TTModeWebWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB991C33674000AD5620 /* TTModeWebWindowController.m */; };
+		FFABAB9C1C33674000AD5620 /* TTModeWebWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFABAB9A1C33674000AD5620 /* TTModeWebWindowController.xib */; };
+		FFABAB9F1C33675200AD5620 /* TTModeWebWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB9E1C33675200AD5620 /* TTModeWebWindow.m */; };
+		FFABABA21C33676700AD5620 /* TTModeWebBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABABA11C33676700AD5620 /* TTModeWebBrowserView.m */; };
+		FFABABA51C3495E500AD5620 /* TTModeWebBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABABA41C3495E500AD5620 /* TTModeWebBackgroundView.m */; };
+		FFABABA71C34996A00AD5620 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFABABA61C34996A00AD5620 /* WebKit.framework */; };
 		FFAFCBC519130F520058B9CB /* TTPanelArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAFCBC419130F520058B9CB /* TTPanelArrowView.m */; };
 		FFB1670B1922FE53008FA1AF /* TTModeMacOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB1670A1922FE53008FA1AF /* TTModeMacOptions.m */; };
 		FFB1670E1923E61F008FA1AF /* TTTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB1670D1923E61F008FA1AF /* TTTabView.m */; };
@@ -373,7 +380,7 @@
 		FF801322186CF90700955218 /* TTPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTPanel.m; sourceTree = "<group>"; };
 		FF801324186CF90700955218 /* TTStatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTStatusItemView.h; sourceTree = "<group>"; };
 		FF801325186CF90700955218 /* TTStatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTStatusItemView.m; sourceTree = "<group>"; };
-		FF80132A186CF92000955218 /* TTPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTPanel.xib; path = Views/Panel/TTPanel.xib; sourceTree = "<group>"; };
+		FF80132A186CF92000955218 /* TTPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTPanel.xib; sourceTree = "<group>"; };
 		FF80132D186D210200955218 /* TTOptionsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTOptionsView.h; path = "Views/Mode Options/TTOptionsView.h"; sourceTree = "<group>"; };
 		FF80132E186D210200955218 /* TTOptionsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTOptionsView.m; path = "Views/Mode Options/TTOptionsView.m"; sourceTree = "<group>"; };
 		FF801330186E156900955218 /* TTOptionsModeTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTOptionsModeTitle.h; path = "Views/Mode Options/TTOptionsModeTitle.h"; sourceTree = "<group>"; };
@@ -482,14 +489,14 @@
 		FF98A30E1868F1190032CC7A /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		FFA1D4C21A3B8916003EA0BC /* TTActionHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TTActionHUDView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		FFA1D4C31A3B8916003EA0BC /* TTActionHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTActionHUDView.m; sourceTree = "<group>"; };
-		FFA1D4C41A3B8916003EA0BC /* TTActionHUDView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTActionHUDView.xib; path = "Views/Action HUD/TTActionHUDView.xib"; sourceTree = "<group>"; };
+		FFA1D4C41A3B8916003EA0BC /* TTActionHUDView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTActionHUDView.xib; sourceTree = "<group>"; };
 		FFA1D4C51A3B8916003EA0BC /* TTActionHUDWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTActionHUDWindow.h; sourceTree = "<group>"; };
 		FFA1D4C61A3B8916003EA0BC /* TTActionHUDWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTActionHUDWindow.m; sourceTree = "<group>"; };
 		FFA1D4C91A3B8916003EA0BC /* TTHUDController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTHUDController.h; path = "Views/Action HUD/TTHUDController.h"; sourceTree = "<group>"; };
 		FFA1D4CA1A3B8916003EA0BC /* TTHUDController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTHUDController.m; path = "Views/Action HUD/TTHUDController.m"; sourceTree = "<group>"; };
 		FFA1D4D31A3B89A4003EA0BC /* TTModeHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeHUDView.h; sourceTree = "<group>"; };
 		FFA1D4D41A3B89A4003EA0BC /* TTModeHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeHUDView.m; sourceTree = "<group>"; };
-		FFA1D4D51A3B89A4003EA0BC /* TTModeHUDView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeHUDView.xib; path = "Views/Mode HUD/TTModeHUDView.xib"; sourceTree = "<group>"; };
+		FFA1D4D51A3B89A4003EA0BC /* TTModeHUDView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTModeHUDView.xib; sourceTree = "<group>"; };
 		FFA1D4D61A3B89A4003EA0BC /* TTModeHUDWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeHUDWindow.h; sourceTree = "<group>"; };
 		FFA1D4D71A3B89A4003EA0BC /* TTModeHUDWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeHUDWindow.m; sourceTree = "<group>"; };
 		FFA1F5F61B7D849200268907 /* TTModeHueSleepOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTModeHueSleepOptions.xib; sourceTree = "<group>"; };
@@ -527,6 +534,18 @@
 		FFABAB8F1C2A32E000AD5620 /* TTAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTAction.m; path = Models/TTAction.m; sourceTree = "<group>"; };
 		FFABAB911C2F723000AD5620 /* TTBorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTBorder.h; path = "Turn Touch Remote/Views/Panel/TTBorder.h"; sourceTree = SOURCE_ROOT; };
 		FFABAB921C2F723000AD5620 /* TTBorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTBorder.m; path = "Turn Touch Remote/Views/Panel/TTBorder.m"; sourceTree = SOURCE_ROOT; };
+		FFABAB941C334FCA00AD5620 /* TTModeWeb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeWeb.h; path = Modes/Web/TTModeWeb.h; sourceTree = "<group>"; };
+		FFABAB951C334FCA00AD5620 /* TTModeWeb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeWeb.m; path = Modes/Web/TTModeWeb.m; sourceTree = "<group>"; };
+		FFABAB981C33674000AD5620 /* TTModeWebWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeWebWindowController.h; path = Modes/Web/TTModeWebWindowController.h; sourceTree = "<group>"; };
+		FFABAB991C33674000AD5620 /* TTModeWebWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeWebWindowController.m; path = Modes/Web/TTModeWebWindowController.m; sourceTree = "<group>"; };
+		FFABAB9A1C33674000AD5620 /* TTModeWebWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeWebWindowController.xib; path = Modes/Web/TTModeWebWindowController.xib; sourceTree = "<group>"; };
+		FFABAB9D1C33675200AD5620 /* TTModeWebWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeWebWindow.h; path = Modes/Web/TTModeWebWindow.h; sourceTree = "<group>"; };
+		FFABAB9E1C33675200AD5620 /* TTModeWebWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeWebWindow.m; path = Modes/Web/TTModeWebWindow.m; sourceTree = "<group>"; };
+		FFABABA01C33676700AD5620 /* TTModeWebBrowserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeWebBrowserView.h; path = Modes/Web/TTModeWebBrowserView.h; sourceTree = "<group>"; };
+		FFABABA11C33676700AD5620 /* TTModeWebBrowserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeWebBrowserView.m; path = Modes/Web/TTModeWebBrowserView.m; sourceTree = "<group>"; };
+		FFABABA31C3495E500AD5620 /* TTModeWebBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeWebBackgroundView.h; path = Modes/Web/TTModeWebBackgroundView.h; sourceTree = "<group>"; };
+		FFABABA41C3495E500AD5620 /* TTModeWebBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeWebBackgroundView.m; path = Modes/Web/TTModeWebBackgroundView.m; sourceTree = "<group>"; };
+		FFABABA61C34996A00AD5620 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		FFAFCBC319130F520058B9CB /* TTPanelArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTPanelArrowView.h; sourceTree = "<group>"; };
 		FFAFCBC419130F520058B9CB /* TTPanelArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTPanelArrowView.m; sourceTree = "<group>"; };
 		FFB167091922FE53008FA1AF /* TTModeMacOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMacOptions.h; path = Modes/Mac/TTModeMacOptions.h; sourceTree = "<group>"; };
@@ -582,6 +601,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFABABA71C34996A00AD5620 /* WebKit.framework in Frameworks */,
 				FF904B9C1BE9BFEC00AD00F3 /* libz.tbd in Frameworks */,
 				FFF8AE461AFDC2BA0064DCEF /* AudioToolbox.framework in Frameworks */,
 				FF1F13651ADC9DEC00B52A0D /* Sparkle.framework in Frameworks */,
@@ -630,17 +650,6 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		FF0E12BF18242D2F00D49EC7 /* XIBs */ = {
-			isa = PBXGroup;
-			children = (
-				FF80132A186CF92000955218 /* TTPanel.xib */,
-				FF8C834B17AB14B5000166FC /* MainMenu.xib */,
-				FFA1D4D51A3B89A4003EA0BC /* TTModeHUDView.xib */,
-				FFA1D4C41A3B8916003EA0BC /* TTActionHUDView.xib */,
-			);
-			name = XIBs;
-			sourceTree = "<group>";
-		};
 		FF0E12C418247B7A00D49EC7 /* Modes */ = {
 			isa = PBXGroup;
 			children = (
@@ -651,6 +660,7 @@
 				FF0E12D51828560400D49EC7 /* Video */,
 				FF0E12CB18247D3000D49EC7 /* Music */,
 				FFE2D47B1A51EDF000DDD413 /* Hue */,
+				FFABAB971C334FCE00AD5620 /* Web */,
 			);
 			name = Modes;
 			sourceTree = "<group>";
@@ -908,6 +918,7 @@
 				FF801320186CF90700955218 /* TTBackgroundView.m */,
 				FF801321186CF90700955218 /* TTPanel.h */,
 				FF801322186CF90700955218 /* TTPanel.m */,
+				FF80132A186CF92000955218 /* TTPanel.xib */,
 				FF801324186CF90700955218 /* TTStatusItemView.h */,
 				FF801325186CF90700955218 /* TTStatusItemView.m */,
 				FFAFCBC319130F520058B9CB /* TTPanelArrowView.h */,
@@ -960,6 +971,7 @@
 		FF8C833517AB14B5000166FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FFABABA61C34996A00AD5620 /* WebKit.framework */,
 				FF904B9B1BE9BFEC00AD00F3 /* libz.tbd */,
 				FF1F13641ADC9DEC00B52A0D /* Sparkle.framework */,
 				FFBC625E1A9D699D0032AD24 /* AVFoundation.framework */,
@@ -997,7 +1009,6 @@
 				FF0E12C418247B7A00D49EC7 /* Modes */,
 				FF904B401BE9B82200AD00F3 /* Bluetooth */,
 				FF904B501BE9B88700AD00F3 /* DFU */,
-				FF0E12BF18242D2F00D49EC7 /* XIBs */,
 				FF8C833D17AB14B5000166FC /* Supporting Files */,
 				FFE2D47A1A46404C00DDD413 /* Categories */,
 				FF904B381BE9B78800AD00F3 /* Images.xcassets */,
@@ -1008,6 +1019,7 @@
 		FF8C833D17AB14B5000166FC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FF8C834B17AB14B5000166FC /* MainMenu.xib */,
 				FF936038196DF0B600675B7B /* fonts */,
 				FF9170941AF9B19100FAAC88 /* sounds */,
 				FF98A2E91867DC320032CC7A /* main.m */,
@@ -1211,6 +1223,7 @@
 				FF904B3B1BE9B7F500AD00F3 /* TTActionHUDWindowController.m */,
 				FFA1D4C21A3B8916003EA0BC /* TTActionHUDView.h */,
 				FFA1D4C31A3B8916003EA0BC /* TTActionHUDView.m */,
+				FFA1D4C41A3B8916003EA0BC /* TTActionHUDView.xib */,
 				FF5871791BDC83AB00CDCC1C /* TTProgressBar.h */,
 				FF58717A1BDC83AB00CDCC1C /* TTProgressBar.m */,
 			);
@@ -1227,6 +1240,7 @@
 				FF904B3E1BE9B80100AD00F3 /* TTModeHUDWindowController.m */,
 				FFA1D4D31A3B89A4003EA0BC /* TTModeHUDView.h */,
 				FFA1D4D41A3B89A4003EA0BC /* TTModeHUDView.m */,
+				FFA1D4D51A3B89A4003EA0BC /* TTModeHUDView.xib */,
 			);
 			name = "Mode HUD";
 			path = "Views/Mode HUD";
@@ -1281,6 +1295,24 @@
 				FFABAB8C1C2A21A200AD5620 /* TTAddActionButtonView.m */,
 			);
 			name = "Batch Actions";
+			sourceTree = "<group>";
+		};
+		FFABAB971C334FCE00AD5620 /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				FFABAB941C334FCA00AD5620 /* TTModeWeb.h */,
+				FFABAB951C334FCA00AD5620 /* TTModeWeb.m */,
+				FFABAB981C33674000AD5620 /* TTModeWebWindowController.h */,
+				FFABAB991C33674000AD5620 /* TTModeWebWindowController.m */,
+				FFABAB9A1C33674000AD5620 /* TTModeWebWindowController.xib */,
+				FFABAB9D1C33675200AD5620 /* TTModeWebWindow.h */,
+				FFABAB9E1C33675200AD5620 /* TTModeWebWindow.m */,
+				FFABABA31C3495E500AD5620 /* TTModeWebBackgroundView.h */,
+				FFABABA41C3495E500AD5620 /* TTModeWebBackgroundView.m */,
+				FFABABA01C33676700AD5620 /* TTModeWebBrowserView.h */,
+				FFABABA11C33676700AD5620 /* TTModeWebBrowserView.m */,
+			);
+			name = Web;
 			sourceTree = "<group>";
 		};
 		FFE2D47A1A46404C00DDD413 /* Categories */ = {
@@ -1491,6 +1523,7 @@
 				FFE0B3D01AD70DC600FC6080 /* logo_with_title.png in Resources */,
 				FF3641F81A660204003CC03C /* TTModeHueSceneOptions.xib in Resources */,
 				FFA1D4CC1A3B8916003EA0BC /* TTActionHUDView.xib in Resources */,
+				FFABAB9C1C33674000AD5620 /* TTModeWebWindowController.xib in Resources */,
 				FF5295C11AD4D2BE007DDC02 /* title@2x.png in Resources */,
 				FF2740721A7C576900C55579 /* itunes_playlist_icon.png in Resources */,
 				FF8A73CA1ABA69410023AA53 /* logo_256.png in Resources */,
@@ -1551,6 +1584,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFE2D4791A46404500DDD413 /* NSData+Conversion.m in Sources */,
+				FFABAB9F1C33675200AD5620 /* TTModeWebWindow.m in Sources */,
 				FF8C834A17AB14B5000166FC /* TTAppDelegate.m in Sources */,
 				FF904B4B1BE9B82200AD00F3 /* hid.c in Sources */,
 				FF904B7A1BE9B88700AD00F3 /* FileOperations.m in Sources */,
@@ -1585,6 +1619,7 @@
 				FFD852591ADDA49200325235 /* TTSettingsPairingViewController.m in Sources */,
 				FF66F2A619228DE100031478 /* TTModeAlarmClockOptions.m in Sources */,
 				FF98A2E11867DBA40032CC7A /* TTActionMap.m in Sources */,
+				FFABABA21C33676700AD5620 /* TTModeWebBrowserView.m in Sources */,
 				FF7305B11A5C9C76009A852D /* DDLog.m in Sources */,
 				FF904B7B1BE9B88700AD00F3 /* DFUHelper.m in Sources */,
 				FF904B871BE9B88700AD00F3 /* JsonParser.m in Sources */,
@@ -1598,6 +1633,7 @@
 				FF801327186CF90700955218 /* TTPanel.m in Sources */,
 				FF904B881BE9B88700AD00F3 /* UnzipFirmware.m in Sources */,
 				FF98A2E71867DBE70032CC7A /* TTMenubarController.m in Sources */,
+				FFABABA51C3495E500AD5620 /* TTModeWebBackgroundView.m in Sources */,
 				FF80131A186CF8FF00955218 /* TTDiamondView.m in Sources */,
 				FFAA4F72182D9A5F0049FFC7 /* TTModeNews.m in Sources */,
 				FF1F13631ADC98C400B52A0D /* TTDatePicker.m in Sources */,
@@ -1669,7 +1705,9 @@
 				FFABAB7A1C235EC500AD5620 /* TTFooterView.m in Sources */,
 				FF904B861BE9B88700AD00F3 /* InitData.m in Sources */,
 				FFABAB901C2A32E000AD5620 /* TTAction.m in Sources */,
+				FFABAB9B1C33674000AD5620 /* TTModeWebWindowController.m in Sources */,
 				FFABAB7D1C2777AD00AD5620 /* TTBatchActionContainerView.m in Sources */,
+				FFABAB961C334FCA00AD5620 /* TTModeWeb.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1793,7 +1831,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Turn Touch Remote/Supporting Files/Turn Touch Remote-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Remote/Supporting Files/Turn Touch Remote-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-Wl,-rpath,@loader_path/../Frameworks",
@@ -1820,7 +1858,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Turn Touch Remote/Supporting Files/Turn Touch Remote-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Remote/Supporting Files/Turn Touch Remote-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-Wl,-rpath,@loader_path/../Frameworks",
@@ -1948,7 +1986,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Turn Touch Remote/Supporting Files/Turn Touch Remote-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Remote/Supporting Files/Turn Touch Remote-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-Wl,-rpath,@loader_path/../Frameworks",

@@ -11,6 +11,7 @@
 #import "TTModeVideo.h"
 #import "TTModeAlarmClock.h"
 #import "TTModeNews.h"
+#import "TTModeWeb.h"
 #import "TTModeMac.h"
 #import "TTModeHue.h"
 #import "TTBatchAction.h"
@@ -46,6 +47,7 @@
                                   @"TTModeMusic",
                                   @"TTModeVideo",
                                   @"TTModeNews",
+                                  @"TTModeWeb",
                                   @"TTModeHue"]];
         
         activeModeDirection = NO_DIRECTION;

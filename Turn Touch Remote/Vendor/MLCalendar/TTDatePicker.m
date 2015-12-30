@@ -36,7 +36,7 @@
         self.calendarView = [[MLCalendarView alloc] init];
         self.calendarView.delegate = (id<MLCalendarViewDelegate>)self.delegate;
         myPopover.contentViewController = self.calendarView;
-        myPopover.appearance = (NSPopoverAppearance)[NSAppearance appearanceNamed:NSAppearanceNameAqua];
+        myPopover.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
         myPopover.animates = YES;
         myPopover.behavior = NSPopoverBehaviorTransient;
         myPopover.delegate = self;

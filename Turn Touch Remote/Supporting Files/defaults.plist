@@ -19,7 +19,7 @@
 	<key>TT:mode:east</key>
 	<string>TTModeMac</string>
 	<key>TT:mode:west</key>
-	<string>TTModeNews</string>
+	<string>TTModeWeb</string>
 	<key>TT:selectedModeDirection</key>
 	<string>1</string>
 	<key>TT:mode:south</key>
