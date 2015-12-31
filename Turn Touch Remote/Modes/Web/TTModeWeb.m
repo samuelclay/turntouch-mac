@@ -7,6 +7,7 @@
 //
 
 #import "TTModeWeb.h"
+#import <WebKit/WebKit.h>
 
 @implementation TTModeWeb
 
@@ -68,15 +69,19 @@
 
 - (void)runTTModeWebBack {
     NSLog(@"Running TTModeWebBack");
+    [webWindowController.browserView zoomOut];
 }
 - (void)runTTModeWebNext {
     NSLog(@"Running TTModeWebNext");
+    [webWindowController.browserView zoomIn];
 }
 - (void)runTTModeWebScrollUp {
     NSLog(@"Running TTModeWebScrollUp");
+    [webWindowController.browserView scrollUp];
 }
 - (void)runTTModeWebScrollDown {
     NSLog(@"Running TTModeWebScrollDown");
+    [webWindowController.browserView scrollDown];
 }
 
 #pragma mark - Defaults
@@ -97,8 +102,11 @@
 #pragma mark - Web
 
 - (void)activate {
+    state = TTModeWebStateBrowser;
+    
     webWindowController = [[TTModeWebWindowController alloc] initWithWindowNibName:@"TTModeWebWindowController"];
     [webWindowController fadeIn];
+    [webWindowController.browserView loadURL:@"https://medium.com/message/is-mars-man-s-midlife-crisis-cab4723c611d"];
 }
 
 - (void)deactivate {

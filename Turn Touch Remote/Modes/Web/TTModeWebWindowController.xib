@@ -18,17 +18,17 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hasShadow="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="F0z-JX-Cv5" customClass="TTModeWebWindow">
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="746" height="489"/>
+            <rect key="contentRect" x="196" y="240" width="1391" height="489"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="se5-gp-TjO" customClass="TTModeWebBackgroundView">
-                <rect key="frame" x="0.0" y="0.0" width="746" height="489"/>
+                <rect key="frame" x="0.0" y="0.0" width="1391" height="489"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <visualEffectView appearanceType="vibrantDark" blendingMode="behindWindow" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="gl1-qu-tkf" customClass="TTModeWebBrowserView">
-                        <rect key="frame" x="123" y="0.0" width="500" height="489"/>
+                        <rect key="frame" x="196" y="0.0" width="1000" height="489"/>
                         <subviews>
                             <webView translatesAutoresizingMaskIntoConstraints="NO" id="4hW-nZ-lId">
-                                <rect key="frame" x="0.0" y="0.0" width="500" height="489"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1000" height="489"/>
                                 <webPreferences key="preferences" defaultFontSize="16" defaultFixedFontSize="13" minimumFontSize="0">
                                     <nil key="identifier"/>
                                 </webPreferences>
@@ -38,24 +38,34 @@
                             <constraint firstItem="4hW-nZ-lId" firstAttribute="leading" secondItem="gl1-qu-tkf" secondAttribute="leading" id="5YC-ek-adu"/>
                             <constraint firstAttribute="trailing" secondItem="4hW-nZ-lId" secondAttribute="trailing" id="ITY-QA-zAd"/>
                             <constraint firstAttribute="bottom" secondItem="4hW-nZ-lId" secondAttribute="bottom" id="gGa-dv-M5Z"/>
-                            <constraint firstAttribute="width" constant="500" id="nX3-zO-sY2"/>
+                            <constraint firstAttribute="width" constant="1000" id="nX3-zO-sY2"/>
                             <constraint firstItem="4hW-nZ-lId" firstAttribute="top" secondItem="gl1-qu-tkf" secondAttribute="top" id="w6G-Of-djr"/>
                         </constraints>
                         <connections>
                             <outlet property="webView" destination="4hW-nZ-lId" id="YQZ-uN-VXi"/>
+                            <outlet property="widthConstraint" destination="nX3-zO-sY2" id="ZcJ-tj-fqL"/>
                         </connections>
+                    </visualEffectView>
+                    <visualEffectView appearanceType="vibrantDark" blendingMode="behindWindow" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="URX-Jz-AdV" customClass="TTModeWebMenuView">
+                        <rect key="frame" x="0.0" y="0.0" width="380" height="489"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="380" id="xpv-XQ-Rx3"/>
+                        </constraints>
                     </visualEffectView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="gl1-qu-tkf" secondAttribute="bottom" id="0p2-rw-KQo"/>
+                    <constraint firstItem="URX-Jz-AdV" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="CEM-4k-Dfq"/>
                     <constraint firstItem="gl1-qu-tkf" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="L7t-AR-hRu"/>
+                    <constraint firstItem="URX-Jz-AdV" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="fBT-mH-BUm"/>
+                    <constraint firstAttribute="bottom" secondItem="URX-Jz-AdV" secondAttribute="bottom" id="kiv-r8-nes"/>
                     <constraint firstItem="gl1-qu-tkf" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="v9G-Az-Gs7"/>
                 </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="734" y="657.5"/>
+            <point key="canvasLocation" x="903.5" y="521.5"/>
         </window>
     </objects>
 </document>

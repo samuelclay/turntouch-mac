@@ -181,6 +181,7 @@
 		FFABABA21C33676700AD5620 /* TTModeWebBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABABA11C33676700AD5620 /* TTModeWebBrowserView.m */; };
 		FFABABA51C3495E500AD5620 /* TTModeWebBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABABA41C3495E500AD5620 /* TTModeWebBackgroundView.m */; };
 		FFABABA71C34996A00AD5620 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFABABA61C34996A00AD5620 /* WebKit.framework */; };
+		FFABABAA1C349F6700AD5620 /* TTModeWebMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABABA91C349F6700AD5620 /* TTModeWebMenuView.m */; };
 		FFAFCBC519130F520058B9CB /* TTPanelArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAFCBC419130F520058B9CB /* TTPanelArrowView.m */; };
 		FFB1670B1922FE53008FA1AF /* TTModeMacOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB1670A1922FE53008FA1AF /* TTModeMacOptions.m */; };
 		FFB1670E1923E61F008FA1AF /* TTTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB1670D1923E61F008FA1AF /* TTTabView.m */; };
@@ -546,6 +547,8 @@
 		FFABABA31C3495E500AD5620 /* TTModeWebBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeWebBackgroundView.h; path = Modes/Web/TTModeWebBackgroundView.h; sourceTree = "<group>"; };
 		FFABABA41C3495E500AD5620 /* TTModeWebBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeWebBackgroundView.m; path = Modes/Web/TTModeWebBackgroundView.m; sourceTree = "<group>"; };
 		FFABABA61C34996A00AD5620 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		FFABABA81C349F6700AD5620 /* TTModeWebMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeWebMenuView.h; path = Modes/Web/TTModeWebMenuView.h; sourceTree = "<group>"; };
+		FFABABA91C349F6700AD5620 /* TTModeWebMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeWebMenuView.m; path = Modes/Web/TTModeWebMenuView.m; sourceTree = "<group>"; };
 		FFAFCBC319130F520058B9CB /* TTPanelArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTPanelArrowView.h; sourceTree = "<group>"; };
 		FFAFCBC419130F520058B9CB /* TTPanelArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTPanelArrowView.m; sourceTree = "<group>"; };
 		FFB167091922FE53008FA1AF /* TTModeMacOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMacOptions.h; path = Modes/Mac/TTModeMacOptions.h; sourceTree = "<group>"; };
@@ -1311,6 +1314,8 @@
 				FFABABA41C3495E500AD5620 /* TTModeWebBackgroundView.m */,
 				FFABABA01C33676700AD5620 /* TTModeWebBrowserView.h */,
 				FFABABA11C33676700AD5620 /* TTModeWebBrowserView.m */,
+				FFABABA81C349F6700AD5620 /* TTModeWebMenuView.h */,
+				FFABABA91C349F6700AD5620 /* TTModeWebMenuView.m */,
 			);
 			name = Web;
 			sourceTree = "<group>";
@@ -1670,6 +1675,7 @@
 				FF904B9A1BE9BA3700AD00F3 /* SSZipArchive.m in Sources */,
 				FFA1D4CF1A3B8916003EA0BC /* TTHUDController.m in Sources */,
 				FFABAB931C2F723000AD5620 /* TTBorder.m in Sources */,
+				FFABABAA1C349F6700AD5620 /* TTModeWebMenuView.m in Sources */,
 				FFB167111923E6BF008FA1AF /* TTBoxView.m in Sources */,
 				FFAFCBC519130F520058B9CB /* TTPanelArrowView.m in Sources */,
 				FFA8EA9D190F07A500679A4D /* TTModeTab.m in Sources */,
