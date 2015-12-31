@@ -69,7 +69,13 @@
 
 - (void)runTTModeWebBack {
     NSLog(@"Running TTModeWebBack");
-    [webWindowController.browserView zoomOut];
+    if (state == TTModeWebStateBrowser) {
+        state = TTModeWebStateMenu;
+        [webWindowController.menuView slideIn];
+    } else if (state == TTModeWebStateMenu) {
+        state = TTModeWebStateBrowser;
+        [webWindowController.menuView slideOut];
+    }
 }
 - (void)runTTModeWebNext {
     NSLog(@"Running TTModeWebNext");

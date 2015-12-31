@@ -16,8 +16,9 @@
 @implementation TTModeWebWindowController
 
 @synthesize webWindow;
-@synthesize browserView;
 @synthesize backgroundView;
+@synthesize browserView;
+@synthesize menuView;
 
 - (instancetype)initWithWindowNibName:(NSString *)windowNibName {
     if (self = [super initWithWindowNibName:windowNibName]) {

@@ -10,4 +10,9 @@
 
 @interface TTModeWebMenuView : NSVisualEffectView
 
+@property (nonatomic) IBOutlet NSLayoutConstraint *widthConstraint;
+
+- (void)slideIn;
+- (void)slideOut;
+
 @end

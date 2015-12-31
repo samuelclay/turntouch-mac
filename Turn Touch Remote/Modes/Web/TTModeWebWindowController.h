@@ -11,18 +11,18 @@
 #import "TTModeWebBrowserView.h"
 #import "TTModeWebWindow.h"
 #import "TTModeWebBackgroundView.h"
+#import "TTModeWebMenuView.h"
 
 @interface TTModeWebWindowController : NSWindowController  <NSWindowDelegate> {
     TTAppDelegate *appDelegate;
-    TTModeWebBrowserView *browserView;
-    TTModeWebWindow *webWindow;
     
     BOOL isFading;
 }
 
-@property (nonatomic) IBOutlet TTModeWebBrowserView *browserView;
 @property (nonatomic) IBOutlet TTModeWebWindow *webWindow;
 @property (nonatomic) IBOutlet TTModeWebBackgroundView *backgroundView;
+@property (nonatomic) IBOutlet TTModeWebBrowserView *browserView;
+@property (nonatomic) IBOutlet TTModeWebMenuView *menuView;
 
 - (void)fadeIn;
 - (IBAction)fadeOut;

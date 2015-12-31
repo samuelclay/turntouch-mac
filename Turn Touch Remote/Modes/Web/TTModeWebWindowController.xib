@@ -10,6 +10,7 @@
             <connections>
                 <outlet property="backgroundView" destination="se5-gp-TjO" id="3g7-4Q-o1r"/>
                 <outlet property="browserView" destination="gl1-qu-tkf" id="8Rd-DX-Pxd"/>
+                <outlet property="menuView" destination="URX-Jz-AdV" id="66Y-aj-Dsi"/>
                 <outlet property="webWindow" destination="F0z-JX-Cv5" id="eHp-p3-tt6"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
@@ -51,6 +52,9 @@
                         <constraints>
                             <constraint firstAttribute="width" constant="380" id="xpv-XQ-Rx3"/>
                         </constraints>
+                        <connections>
+                            <outlet property="widthConstraint" destination="xpv-XQ-Rx3" id="oNc-PZ-XDN"/>
+                        </connections>
                     </visualEffectView>
                 </subviews>
                 <constraints>

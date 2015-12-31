@@ -10,9 +10,11 @@
 
 @implementation TTModeWebMenuView
 
+@synthesize widthConstraint;
+
 - (void)awakeFromNib {
     self.material = NSVisualEffectMaterialSidebar;
-    self.blendingMode = NSVisualEffectBlendingModeBehindWindow;
+    self.blendingMode = NSVisualEffectBlendingModeWithinWindow;
     self.state = NSVisualEffectStateActive;
 }
 
@@ -20,6 +22,18 @@
     [super drawRect:dirtyRect];
     
     // Drawing code here.
+}
+
+
+
+#pragma mark - Interaction
+
+- (void)slideIn {
+    [widthConstraint setConstant:400];
+}
+
+- (void)slideOut {
+    [widthConstraint setConstant:0];
 }
 
 @end
