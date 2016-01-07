@@ -6,6 +6,7 @@
 //  Copyright © 2015 Turn Touch. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "TTModeWebMenuView.h"
 
 @implementation TTModeWebMenuView
@@ -16,6 +17,8 @@
     self.material = NSVisualEffectMaterialSidebar;
     self.blendingMode = NSVisualEffectBlendingModeWithinWindow;
     self.state = NSVisualEffectStateActive;
+    [self setWantsLayer:YES];
+    [widthConstraint setConstant:0];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
@@ -29,11 +32,21 @@
 #pragma mark - Interaction
 
 - (void)slideIn {
-    [widthConstraint setConstant:400];
+    [NSAnimationContext beginGrouping];
+    [[NSAnimationContext currentContext] setDuration:.24f];
+    [[NSAnimationContext currentContext] setTimingFunction:
+     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
+    [[widthConstraint animator] setConstant:400];
+    [NSAnimationContext endGrouping];
 }
 
 - (void)slideOut {
-    [widthConstraint setConstant:0];
+    [NSAnimationContext beginGrouping];
+    [[NSAnimationContext currentContext] setDuration:.3f];
+    [[NSAnimationContext currentContext] setTimingFunction:
+     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
+    [[widthConstraint animator] setConstant:0];
+    [NSAnimationContext endGrouping];
 }
 
 @end

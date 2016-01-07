@@ -14,6 +14,7 @@
     self.material = NSVisualEffectMaterialDark;
     self.blendingMode = NSVisualEffectBlendingModeBehindWindow;
     self.state = NSVisualEffectStateActive;
+    [self setWantsLayer:YES];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
