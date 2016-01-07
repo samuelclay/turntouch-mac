@@ -811,7 +811,10 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
         if (existingNickname) {
             newNickname = existingNickname;
         } else {
-            NSArray *emoji = @[@"🐱", @"🐼", @"🐶", @"🍒", @"⚽️", @"🎻", @"🎱", @"☀️", @"🌎", @"🌴", @"🌻", @"🌀", @"📚", @"🔮", @"📡", @"⛵️", @"🚲", @"⛄️", @"🍉", @"🏺", @"🚀", @"🔭", @"🔬", @"🗿", @"🏮", @"⚜", @"💠"];
+            NSArray *emoji = @[@"🐱", @"🐼", @"🐶", @"🐨", @"🐙", @"🐝", @"🐠", @"🐳", @"⛄️",
+                               @"⚽️", @"🎻", @"🎱", @"🌀", @"📚", @"🔮", @"📡", @"⛵️", @"🚲",
+                               @"☀️", @"🌎", @"🌵", @"🌴", @"🌻", @"🍉", @"🍒", @"🌸", @"🍄",
+                               @"🏺", @"🚀", @"🔭", @"🔬", @"🗿", @"🏮", @"💎", @"🎵", @"💠"];
             NSString *randomEmoji = [emoji objectAtIndex:arc4random_uniform((uint32_t)emoji.count)];
             newNickname = [NSString stringWithFormat:@"%@ Turn Touch Remote", randomEmoji];
         }
