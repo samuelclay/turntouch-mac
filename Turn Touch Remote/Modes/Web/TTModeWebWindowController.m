@@ -23,8 +23,7 @@
 - (instancetype)initWithWindowNibName:(NSString *)windowNibName {
     if (self = [super initWithWindowNibName:windowNibName]) {
         appDelegate = (TTAppDelegate *)[NSApp delegate];
-        [webWindow setFrame:[self hiddenFrame] display:YES];
-        
+
         [self showWindow:appDelegate];
     }
     
@@ -46,21 +45,18 @@
 }
 
 - (void)fadeIn {
+    [webWindow setFrame:[self visibleFrame] display:YES];
     [webWindow makeKeyAndOrderFront:nil];
     [browserView setNeedsDisplay:YES];
-    
-    if (webWindow.frame.origin.y != [self visibleFrame].origin.y) {
-        [webWindow setFrame:[self visibleFrame] display:YES];
-    }
+    [menuView setNeedsDisplay:YES];
     
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:.5f];
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
     
-    [webWindow setFrame:[self visibleFrame] display:YES];
-    
     [[webWindow animator] setAlphaValue:1.f];
+    [webWindow setFrame:[self visibleFrame] display:YES];
 
     [browserView setNeedsDisplay:YES];
 
@@ -81,7 +77,6 @@
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
     
     [[webWindow animator] setAlphaValue:0.f];
-    [webWindow setFrame:[self hiddenFrame] display:YES];
     
     [NSAnimationContext endGrouping];
 }

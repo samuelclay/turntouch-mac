@@ -57,7 +57,7 @@
     if ([webView canMakeTextLarger]) {
         [webView makeTextLarger:nil];
         textSize += 1;
-        NSLog(@" ---> Text size: %d", textSize);
+        NSLog(@" ---> Text size: %ld", (long)textSize);
     }
 }
 
@@ -65,7 +65,7 @@
     if ([webView canMakeTextSmaller]) {
         [webView makeTextSmaller:nil];
         textSize -= 1;
-        NSLog(@" ---> Text size: %d", textSize);
+        NSLog(@" ---> Text size: %ld", (long)textSize);
     }
 }
 

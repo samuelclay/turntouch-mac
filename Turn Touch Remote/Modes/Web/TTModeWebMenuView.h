@@ -9,8 +9,15 @@
 #import <Cocoa/Cocoa.h>
 
 @interface TTModeWebMenuView : NSVisualEffectView
+<NSTableViewDelegate, NSTableViewDataSource> {
+    NSTableView *tableView;
+    NSArray *menuOptions;
+}
 
 @property (nonatomic) IBOutlet NSLayoutConstraint *widthConstraint;
+@property (nonatomic) IBOutlet NSTableView *tableView;
+@property (nonatomic) IBOutlet NSScrollView *scrollView;
+@property (nonatomic) IBOutlet NSClipView *clipView;;
 
 - (void)slideIn;
 - (void)slideOut;

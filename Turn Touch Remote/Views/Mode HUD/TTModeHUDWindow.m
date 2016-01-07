@@ -17,8 +17,7 @@
     if (self = [super initWithContentRect:NSZeroRect styleMask:aStyle backing:bufferingType defer:flag]) {
         [self makeKeyAndOrderFront:NSApp];
         [self setLevel:CGShieldingWindowLevel()];
-        [self setCollectionBehavior:(NSWindowCollectionBehaviorIgnoresCycle |
-                                     NSWindowCollectionBehaviorCanJoinAllSpaces)];
+        [self setCollectionBehavior:(NSWindowCollectionBehaviorMoveToActiveSpace)];
         [self setBackgroundColor:[NSColor clearColor]];
         [self setOpaque:NO];
         [self setAlphaValue:0.0];
