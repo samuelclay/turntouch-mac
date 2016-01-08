@@ -84,6 +84,7 @@
 #pragma mark - Interaction
 
 - (void)slideIn {
+    [self setAlphaValue:1.0f];
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:.24f];
     [[NSAnimationContext currentContext] setTimingFunction:
@@ -101,6 +102,9 @@
      [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
     [[offsetConstraint animator] setConstant:-400];
     [[tableView animator] setAlphaValue:0.f];
+    [[NSAnimationContext currentContext] setCompletionHandler:^{
+        [self setAlphaValue:.0f];
+    }];
     [NSAnimationContext endGrouping];
 }
 

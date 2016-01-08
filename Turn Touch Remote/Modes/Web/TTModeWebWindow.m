@@ -16,7 +16,6 @@
                               defer:(BOOL)flag {
     if (self = [super initWithContentRect:NSZeroRect styleMask:aStyle backing:bufferingType defer:flag]) {
         [self makeKeyAndOrderFront:NSApp];
-        [self setLevel:CGShieldingWindowLevel()];
         [self setCollectionBehavior:(NSWindowCollectionBehaviorMoveToActiveSpace)];
         [self setBackgroundColor:[NSColor clearColor]];
         [self setOpaque:NO];
