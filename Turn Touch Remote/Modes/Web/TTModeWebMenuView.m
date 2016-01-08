@@ -12,7 +12,7 @@
 
 @implementation TTModeWebMenuView
 
-@synthesize widthConstraint;
+@synthesize offsetConstraint;
 @synthesize tableView;
 @synthesize scrollView;
 @synthesize clipView;
@@ -70,7 +70,7 @@
                     ];
 
     highlightedRow = 1;
-    [widthConstraint setConstant:0];
+    [offsetConstraint setConstant:0];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
@@ -88,7 +88,7 @@
     [[NSAnimationContext currentContext] setDuration:.24f];
     [[NSAnimationContext currentContext] setTimingFunction:
      [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
-    [[widthConstraint animator] setConstant:400];
+    [[offsetConstraint animator] setConstant:0];
     [[tableView animator] setAlphaValue:1.0f];
     [self changeHighlightedRow:0];
     [NSAnimationContext endGrouping];
@@ -99,7 +99,7 @@
     [[NSAnimationContext currentContext] setDuration:.3f];
     [[NSAnimationContext currentContext] setTimingFunction:
      [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
-    [[widthConstraint animator] setConstant:0];
+    [[offsetConstraint animator] setConstant:-400];
     [[tableView animator] setAlphaValue:0.f];
     [NSAnimationContext endGrouping];
 }

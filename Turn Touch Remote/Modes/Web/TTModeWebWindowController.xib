@@ -186,9 +186,9 @@
                         </constraints>
                         <connections>
                             <outlet property="clipView" destination="M99-S2-Uda" id="Ocs-NZ-nUr"/>
+                            <outlet property="offsetConstraint" destination="CEM-4k-Dfq" id="jks-iX-tLn"/>
                             <outlet property="scrollView" destination="Iu6-K3-Mpb" id="MjP-SM-qFf"/>
                             <outlet property="tableView" destination="FNF-8h-DQd" id="9ek-cX-D0z"/>
-                            <outlet property="widthConstraint" destination="xpv-XQ-Rx3" id="oNc-PZ-XDN"/>
                         </connections>
                     </visualEffectView>
                 </subviews>

@@ -17,7 +17,7 @@
     NSInteger highlightedRow;
 }
 
-@property (nonatomic) IBOutlet NSLayoutConstraint *widthConstraint;
+@property (nonatomic) IBOutlet NSLayoutConstraint *offsetConstraint;
 @property (nonatomic) IBOutlet NSTableView *tableView;
 @property (nonatomic) IBOutlet NSScrollView *scrollView;
 @property (nonatomic) IBOutlet NSClipView *clipView;;
