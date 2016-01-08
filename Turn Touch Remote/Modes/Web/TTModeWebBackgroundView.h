@@ -8,6 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface TTModeWebBackgroundView : NSVisualEffectView
+@interface TTModeWebBackgroundView : NSView
 
 @end

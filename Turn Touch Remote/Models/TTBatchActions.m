@@ -30,7 +30,7 @@
     NSString *batchKey = [NSString stringWithFormat:@"TT:mode:%@:action:%@:batchactions",
                           modeDirectionName,
                           actionDirectionName];
-    NSLog(@"Batch key: %@", batchKey);
+//    NSLog(@"Batch key: %@", batchKey);
     return batchKey;
 }
 

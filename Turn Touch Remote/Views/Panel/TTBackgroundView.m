@@ -400,7 +400,7 @@
 }
 
 - (void)adjustBatchActionsHeight:(BOOL)animated {
-    NSLog(@"adjustBatchActionsHeight: %@", appDelegate.modeMap.tempModeName);
+//    NSLog(@"adjustBatchActionsHeight: %@", appDelegate.modeMap.tempModeName);
 
     [batchActionStackView assembleViews:animated];
 }

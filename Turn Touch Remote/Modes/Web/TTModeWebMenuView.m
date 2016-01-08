@@ -6,6 +6,7 @@
 //  Copyright © 2015 Turn Touch. All rights reserved.
 //
 
+#import <Cocoa/Cocoa.h>
 #import <QuartzCore/QuartzCore.h>
 #import "TTModeWebMenuView.h"
 
@@ -17,6 +18,8 @@
 @synthesize clipView;
 
 - (void)awakeFromNib {
+    appDelegate = (TTAppDelegate *)[NSApp delegate];
+
     [self setMaterial:NSVisualEffectMaterialSidebar];
     [self setBlendingMode:NSVisualEffectBlendingModeWithinWindow];
     [self setState:NSVisualEffectStateActive];
@@ -30,25 +33,25 @@
     menuOptions = @[@{@"identifier" : @"space"},
                     @{@"identifier" : @"TTModeWebMenuReturn",
                       @"title"      : @"Return",
-                      @"icon"       : @"arrow",
+                      @"icon"       : @"double_tap",
                       },
                     @{@"identifier" : @"space"},
                     @{@"identifier" : @"TTModeWebMenuNextStory",
                       @"title"      : @"Next story",
-                      @"icon"       : @"arrow",
+                      @"icon"       : @"heart",
                       },
                     @{@"identifier" : @"TTModeWebMenuPreviousStory",
                       @"title"      : @"Previous story",
-                      @"icon"       : @"arrow",
+                      @"icon"       : @"cog",
                       },
                     @{@"identifier" : @"space"},
                     @{@"identifier" : @"TTModeWebMenuFontSizeUp",
                       @"title"      : @"Larger text",
-                      @"icon"       : @"plus",
+                      @"icon"       : @"button_chevron",
                       },
                     @{@"identifier" : @"TTModeWebMenuFontSizeDown",
                       @"title"      : @"Smaller text",
-                      @"icon"       : @"minus",
+                      @"icon"       : @"button_dash",
                       },
                     @{@"identifier" : @"space"},
                     @{@"identifier" : @"TTModeWebMenuMarginWider",
@@ -66,7 +69,8 @@
                       },
                     ];
 
-    [widthConstraint setConstant:400];
+    highlightedRow = 1;
+    [widthConstraint setConstant:0];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
@@ -85,6 +89,8 @@
     [[NSAnimationContext currentContext] setTimingFunction:
      [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
     [[widthConstraint animator] setConstant:400];
+    [[tableView animator] setAlphaValue:1.0f];
+    [self changeHighlightedRow:0];
     [NSAnimationContext endGrouping];
 }
 
@@ -94,7 +100,41 @@
     [[NSAnimationContext currentContext] setTimingFunction:
      [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
     [[widthConstraint animator] setConstant:0];
+    [[tableView animator] setAlphaValue:0.f];
     [NSAnimationContext endGrouping];
+}
+
+- (void)menuUp {
+    [self changeHighlightedRow:-1];
+}
+
+- (void)menuDown {
+    [self changeHighlightedRow:1];
+}
+
+- (void)changeHighlightedRow:(NSInteger)direction {
+    NSInteger newRow = highlightedRow + direction;
+
+    if (newRow >= tableView.numberOfRows || newRow < 0) return;
+    if ([self isRowASpace:highlightedRow+direction]) {
+        direction *= 2;
+        [self changeHighlightedRow:direction];
+        return;
+    }
+    
+    NSTableRowView *oldRowView = [tableView rowViewAtRow:highlightedRow makeIfNecessary:NO];
+    NSTableRowView *newRowView = [tableView rowViewAtRow:newRow makeIfNecessary:NO];
+    CGFloat alpha = 0.2f;
+
+    [NSAnimationContext beginGrouping];
+    [[NSAnimationContext currentContext] setDuration:.12f];
+    [[NSAnimationContext currentContext] setTimingFunction:
+     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
+    [[oldRowView animator] setBackgroundColor:[NSColor clearColor]];
+    [[newRowView animator] setBackgroundColor:NSColorFromRGBAlpha(0x000000, alpha)];
+    [NSAnimationContext endGrouping];
+
+    highlightedRow = newRow;
 }
 
 #pragma mark - NSTableView Delegate
@@ -117,7 +157,10 @@
 
 - (NSView *)tableView:(NSTableView *)_tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     if ([@[@"leadingPaddingColumn", @"trailingPaddingColumn"] containsObject:tableColumn.identifier]) {
+        [tableColumn setWidth:24];
         return nil;
+    } else {
+        [tableColumn setWidth:(400-24*2)];
     }
     
     BOOL isSpace = [self isRowASpace:row];
@@ -127,23 +170,24 @@
     if (result == nil) {
         result = [[NSButton alloc] init];
         [result setTarget:self];
-        [result setAction:nil];
         [result setBordered:NO];
         [result setFont:[NSFont fontWithName:@"Effra" size:28]];
         [result setImagePosition:NSImageRight];
         [result setAlignment:NSTextAlignmentLeft];
         [result setButtonType:NSMomentaryChangeButton];
         [result setIdentifier:cellIdentifier];
-        
     }
     
     if (!isSpace) {
         NSDictionary *menuOption = [menuOptions objectAtIndex:row];
+        SEL selector = NSSelectorFromString([menuOption objectForKey:@"identifier"]);
         NSString *imageFile = [NSString stringWithFormat:@"%@/icons/%@.png", [[NSBundle mainBundle] resourcePath], [menuOption objectForKey:@"icon"]];
         NSImage *icon = [[NSImage alloc] initWithContentsOfFile:imageFile];
         [icon setSize:NSMakeSize(75, 50)];
         [result setImage:icon];
         [result setTitle:[menuOption objectForKey:@"title"]];
+        [result setAction:selector];
+        [result setTarget:appDelegate.modeMap.selectedMode];
     } else {
         [result setTitle:@""];
     }

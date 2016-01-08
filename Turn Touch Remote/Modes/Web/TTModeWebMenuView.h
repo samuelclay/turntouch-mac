@@ -7,11 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "TTAppDelegate.h"
 
 @interface TTModeWebMenuView : NSVisualEffectView
 <NSTableViewDelegate, NSTableViewDataSource> {
+    TTAppDelegate *appDelegate;
     NSTableView *tableView;
     NSArray *menuOptions;
+    NSInteger highlightedRow;
 }
 
 @property (nonatomic) IBOutlet NSLayoutConstraint *widthConstraint;
@@ -21,5 +24,7 @@
 
 - (void)slideIn;
 - (void)slideOut;
+- (void)menuUp;
+- (void)menuDown;
 
 @end

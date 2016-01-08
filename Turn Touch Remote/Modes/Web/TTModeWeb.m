@@ -79,15 +79,27 @@
 }
 - (void)runTTModeWebNext {
     NSLog(@"Running TTModeWebNext");
-    [webWindowController.browserView zoomIn];
+    if (state == TTModeWebStateBrowser) {
+        [webWindowController.browserView zoomIn];
+    } else if (state == TTModeWebStateMenu) {
+//        [webWindowController.menuView menuUp];
+    }
 }
 - (void)runTTModeWebScrollUp {
     NSLog(@"Running TTModeWebScrollUp");
-    [webWindowController.browserView scrollUp];
+    if (state == TTModeWebStateBrowser) {
+        [webWindowController.browserView scrollUp];
+    } else if (state == TTModeWebStateMenu) {
+        [webWindowController.menuView menuUp];
+    }
 }
 - (void)runTTModeWebScrollDown {
     NSLog(@"Running TTModeWebScrollDown");
-    [webWindowController.browserView scrollDown];
+    if (state == TTModeWebStateBrowser) {
+        [webWindowController.browserView scrollDown];
+    } else if (state == TTModeWebStateMenu) {
+        [webWindowController.menuView menuDown];
+    }
 }
 
 #pragma mark - Defaults
@@ -113,6 +125,8 @@
     webWindowController = [[TTModeWebWindowController alloc] initWithWindowNibName:@"TTModeWebWindowController"];
     [webWindowController fadeIn];
     [webWindowController.browserView loadURL:@"https://medium.com/message/is-mars-man-s-midlife-crisis-cab4723c611d"];
+    
+    [webWindowController.browserView setHidden:YES];
 }
 
 - (void)deactivate {

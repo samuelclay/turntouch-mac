@@ -116,7 +116,7 @@
 //    NSLog(@"Options frame %@ pre: %@", modeOptionsViewControllerName, NSStringFromRect(self.frame));
     
     if (!modeOptionsViewController) {
-        NSLog(@" --- Missing mode options view for %@", modeName);
+//        NSLog(@" --- Missing mode options view for %@", modeName);
         modeOptionsViewController = (TTOptionsDetailViewController *)[[NSViewController alloc] init];
         [modeOptionsViewController setView:[[TTOptionsDetailView alloc] init]];
         [self addSubview:modeOptionsViewController.view];

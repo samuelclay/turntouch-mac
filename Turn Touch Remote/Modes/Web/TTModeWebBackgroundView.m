@@ -11,9 +11,9 @@
 @implementation TTModeWebBackgroundView
 
 - (void)awakeFromNib {
-    self.material = NSVisualEffectMaterialDark;
-    self.blendingMode = NSVisualEffectBlendingModeBehindWindow;
-    self.state = NSVisualEffectStateActive;
+//    self.material = NSVisualEffectMaterialDark;
+//    self.blendingMode = NSVisualEffectBlendingModeBehindWindow;
+//    self.state = NSVisualEffectStateActive;
     [self setWantsLayer:YES];
 }
 

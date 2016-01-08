@@ -126,7 +126,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
     BOOL knownDevicesStillDisconnected = NO;
     
     bluetoothState = BT_STATE_SCANNING_KNOWN;
-    NSLog(@" ---> (%X) Scanning known: %@", bluetoothState, [self knownPeripheralIdentifiers]);
+    NSLog(@" ---> (%X) Scanning known: %lu remotes", bluetoothState, (unsigned long)[[self knownPeripheralIdentifiers] count]);
     
     NSArray *peripherals = [manager retrievePeripheralsWithIdentifiers:[self knownPeripheralIdentifiers]];
     for (CBPeripheral *peripheral in peripherals) {
