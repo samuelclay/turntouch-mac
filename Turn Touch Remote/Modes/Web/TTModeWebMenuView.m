@@ -70,7 +70,9 @@
                     ];
 
     highlightedRow = 1;
-    [offsetConstraint setConstant:0];
+    [self setAlphaValue:0.f];
+    [offsetConstraint setConstant:-400];
+    [self changeHighlightedRow:0];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
@@ -85,13 +87,14 @@
 
 - (void)slideIn {
     [self setAlphaValue:1.0f];
+    [self changeHighlightedRow:0];
+
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:.24f];
     [[NSAnimationContext currentContext] setTimingFunction:
      [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
     [[offsetConstraint animator] setConstant:0];
     [[tableView animator] setAlphaValue:1.0f];
-    [self changeHighlightedRow:0];
     [NSAnimationContext endGrouping];
 }
 
@@ -103,7 +106,7 @@
     [[offsetConstraint animator] setConstant:-400];
     [[tableView animator] setAlphaValue:0.f];
     [[NSAnimationContext currentContext] setCompletionHandler:^{
-        [self setAlphaValue:.0f];
+        [self setAlphaValue:0.f];
     }];
     [NSAnimationContext endGrouping];
 }
@@ -119,10 +122,14 @@
 - (void)changeHighlightedRow:(NSInteger)direction {
     NSInteger newRow = highlightedRow + direction;
 
-    if (newRow >= tableView.numberOfRows || newRow < 0) return;
+    if (newRow >= tableView.numberOfRows || newRow < 0) {
+        NSLog(@"Skipping change highlighted row: %d+%d >|< %d", highlightedRow, direction, tableView.numberOfRows);
+        return;
+    }
     if ([self isRowASpace:highlightedRow+direction]) {
         direction *= 2;
         [self changeHighlightedRow:direction];
+        NSLog(@"Found space: %d+%d >|< %d", highlightedRow, direction, tableView.numberOfRows);
         return;
     }
     
@@ -160,6 +167,9 @@
 }
 
 - (NSView *)tableView:(NSTableView *)_tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+    NSTableRowView *rowView = [tableView rowViewAtRow:row makeIfNecessary:NO];
+    [rowView setBackgroundColor:[NSColor clearColor]];
+
     if ([@[@"leadingPaddingColumn", @"trailingPaddingColumn"] containsObject:tableColumn.identifier]) {
         [tableColumn setWidth:24];
         return nil;
