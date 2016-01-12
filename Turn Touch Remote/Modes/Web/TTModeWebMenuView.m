@@ -120,18 +120,7 @@
 }
 
 - (void)changeHighlightedRow:(NSInteger)direction {
-    NSInteger newRow = highlightedRow + direction;
-
-    if (newRow >= tableView.numberOfRows || newRow < 0) {
-        NSLog(@"Skipping change highlighted row: %d+%d >|< %d", highlightedRow, direction, tableView.numberOfRows);
-        return;
-    }
-    if ([self isRowASpace:highlightedRow+direction]) {
-        direction *= 2;
-        [self changeHighlightedRow:direction];
-        NSLog(@"Found space: %d+%d >|< %d", highlightedRow, direction, tableView.numberOfRows);
-        return;
-    }
+    NSInteger newRow = [self nextRowInDirection:direction];
     
     NSTableRowView *oldRowView = [tableView rowViewAtRow:highlightedRow makeIfNecessary:NO];
     NSTableRowView *newRowView = [tableView rowViewAtRow:newRow makeIfNecessary:NO];
@@ -146,6 +135,27 @@
     [NSAnimationContext endGrouping];
 
     highlightedRow = newRow;
+}
+
+- (NSInteger)nextRowInDirection:(NSInteger)direction {
+    NSInteger newRow = highlightedRow + direction;
+    
+    if (newRow >= tableView.numberOfRows) {
+        NSLog(@"Skipping change highlighted row: %ld+%ld >= %ld", (long)highlightedRow, (long)direction, (long)tableView.numberOfRows);
+        newRow = 0 + direction ;
+    } else if (newRow < 0) {
+        NSLog(@"Skipping change highlighted row: %ld+%ld < 0/%ld", (long)highlightedRow, (long)direction, (long)tableView.numberOfRows);
+        newRow = tableView.numberOfRows + (highlightedRow + direction);
+    }
+    
+    if ([self isRowASpace:newRow]) {
+        if (direction >= 0) direction += 1;
+        else if (direction < 0) direction -= 1;
+        NSLog(@"Found space: %ld+%ld >|< %ld", (long)highlightedRow, (long)direction, (long)tableView.numberOfRows);
+        return [self nextRowInDirection:direction];
+    }
+    
+    return newRow;
 }
 
 #pragma mark - NSTableView Delegate
