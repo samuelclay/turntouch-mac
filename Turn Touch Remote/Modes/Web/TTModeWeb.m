@@ -28,7 +28,7 @@
 #pragma mark - Actions
 
 - (NSArray *)actions {
-    return @[@"TTModeWebBack",
+    return @[@"TTModeWebMenu",
              @"TTModeWebNext",
              @"TTModeWebScrollUp",
              @"TTModeWebScrollDown",
@@ -78,8 +78,8 @@
 
 #pragma mark - Action Titles
 
-- (NSString *)titleTTModeWebBack {
-    return @"Menu / Back";
+- (NSString *)titleTTModeWebMenu {
+    return @"Menu";
 }
 - (NSString *)titleTTModeWebNext {
     return @"OK / Next";
@@ -93,7 +93,7 @@
 
 #pragma mark - Action Images
 
-- (NSString *)imageTTModeWebBack {
+- (NSString *)imageTTModeWebMenu {
     return @"next_story.png";
 }
 - (NSString *)imageTTModeWebNext {
@@ -119,7 +119,7 @@
     return NO;
 }
 
-- (void)runTTModeWebBack {
+- (void)runTTModeWebMenu {
     if ([self checkClosed]) return;
     
     if (state == TTModeWebStateBrowser) {
@@ -167,7 +167,7 @@
     return @"TTModeWebNext";
 }
 - (NSString *)defaultWest {
-    return @"TTModeWebBack";
+    return @"TTModeWebMenu";
 }
 - (NSString *)defaultSouth {
     return @"TTModeWebScrollDown";
@@ -199,7 +199,7 @@
 }
 
 - (void)menuTTModeWebMenuPreviousStory {
-    
+    [webWindowController.browserView.webView goBack];
 }
 
 - (void)menuTTModeWebMenuFontSizeUp {

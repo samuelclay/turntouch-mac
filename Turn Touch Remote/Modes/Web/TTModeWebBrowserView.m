@@ -36,16 +36,28 @@
 
 - (void)webView:(WebView *)sender resource:(id)identifier didFinishLoadingFromDataSource:(WebDataSource *)dataSource {
     [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.documentElement.style.zoom = \"%f\"", zoomFactor]];
+    
+    for (NSString *scriptName in @[@"jquery-2.0.3.js"]) {
+        NSString *jQueryFile = [NSString stringWithFormat:@"%@/scripts/%@", [[NSBundle mainBundle] resourcePath], scriptName];
+        NSString *jQuery = [NSString stringWithContentsOfFile:jQueryFile encoding:NSUTF8StringEncoding error:nil];
+        [webView stringByEvaluatingJavaScriptFromString:jQuery];
+    }
+
+    [webView stringByEvaluatingJavaScriptFromString:@"window.$TT = jQuery = jQuery.noConflict(true);"];
 }
 
 #pragma mark - Interacting with webView
 
+- (NSInteger)currentScroll {
+    return [[webView stringByEvaluatingJavaScriptFromString:@"window.pageYOffset"] integerValue];
+}
+
 - (void)scrollUp {
-    [webView scrollPageUp:nil];
+    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"$TT('body').stop().animate({scrollTop:%ld}, 150, 'swing')", self.currentScroll - 200]];
 }
 
 - (void)scrollDown {
-    [webView scrollPageDown:nil];
+    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"$TT('body').stop().animate({scrollTop:%ld}, 200, 'swing')", self.currentScroll + 200]];
 }
 
 - (void)adjustTextSizeUp {
