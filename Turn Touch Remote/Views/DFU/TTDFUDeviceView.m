@@ -46,8 +46,7 @@
 
     [self drawBackground];
 //    NSLog(@"Drawing %@: %@.", NSStringFromRect(self.frame), device);
-    NSString *imagePath = [NSString stringWithFormat:@"%@/icons/remote_graphic.png", [[NSBundle mainBundle] resourcePath]];
-    NSImage *remoteIcon = [[NSImage alloc] initWithContentsOfFile:imagePath];
+    NSImage *remoteIcon = [NSImage imageNamed:@"remote_graphic"];
     
     [remoteIcon setSize:NSMakeSize(32, 32)];
     CGFloat offset = (NSHeight(self.frame)/2) - (remoteIcon.size.height/2);

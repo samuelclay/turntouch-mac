@@ -8,17 +8,18 @@
 
 #import "TTModeWeb.h"
 #import <WebKit/WebKit.h>
+#import "Safari.h"
 
 @implementation TTModeWeb
 
 #pragma mark - Mode
 
 + (NSString *)title {
-    return @"Reader";
+    return @"Web";
 }
 
 + (NSString *)description {
-    return @"Read the news on your Mac";
+    return @"Read the web on your Mac";
 }
 
 + (NSString *)imageName {
@@ -129,7 +130,7 @@
 - (BOOL)checkClosed {
     if (closed) {
         closed = NO;
-        [webWindowController fadeIn];
+        [self loadSafari];
 
         return YES;
     }
@@ -194,15 +195,29 @@
 #pragma mark - Web
 
 - (void)activate {
+    closed = YES;
     state = TTModeWebStateBrowser;
     
     webWindowController = [[TTModeWebWindowController alloc] initWithWindowNibName:@"TTModeWebWindowController"];
-    [webWindowController fadeIn];
-    [webWindowController.browserView loadURL:@"https://medium.com/message/is-mars-man-s-midlife-crisis-cab4723c611d"];
+//    [webWindowController fadeIn];
 }
 
 - (void)deactivate {
     [webWindowController fadeOut];
+}
+
+- (void)loadSafari {
+    [webWindowController fadeIn];
+
+    SafariApplication *safari = [SBApplication applicationWithBundleIdentifier:@"com.apple.Safari"];
+    
+    SBElementArray* windows = [safari windows];
+    SafariWindow *safariWindow = [windows objectAtIndex:0];
+    SafariTab* currentTab = [safariWindow currentTab];
+    
+    // This fails when in full-screen mode:
+    [webWindowController.browserView loadURL:currentTab.URL];
+    
 }
 
 #pragma mark - Menu Options

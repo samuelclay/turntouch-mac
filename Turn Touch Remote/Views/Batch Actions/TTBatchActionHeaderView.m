@@ -49,8 +49,7 @@
     
     // Mode image
     NSString *imageFilename = [[mode class] imageName];
-    NSString *imagePath = [NSString stringWithFormat:@"%@/icons/%@", [[NSBundle mainBundle] resourcePath], imageFilename];
-    modeImage = [[NSImage alloc] initWithContentsOfFile:imagePath];
+    modeImage = [NSImage imageNamed:imageFilename];
     
     [modeImage setSize:NSMakeSize(22, 22)];
     CGFloat offset = (NSHeight(self.frame)/2) - (modeImage.size.height/2);
@@ -84,8 +83,7 @@
         deleteButton = nil;
     }
     deleteButton = [[TTChangeButtonView alloc] initWithFrame:NSMakeRect(deletePoint.x, deletePoint.y, deleteSize.width, deleteSize.height)];
-    NSString *imageFile = [NSString stringWithFormat:@"%@/icons/button_dash.png", [[NSBundle mainBundle] resourcePath]];
-    NSImage *icon = [[NSImage alloc] initWithContentsOfFile:imageFile];
+    NSImage *icon = [NSImage imageNamed:@"button_dash"];
     [icon setSize:NSMakeSize(13, 13)];
     [deleteButton setImage:icon];
     [deleteButton setImagePosition:NSImageOnly];
@@ -128,8 +126,7 @@
                                                                         NSMinY(actionRect) - .5f,
                                                                         NSHeight(actionRect)*1.1 + 1.f,
                                                                         NSHeight(actionRect) + 1.f)];
-    NSString *chevronFile = [NSString stringWithFormat:@"%@/icons/button_chevron.png", [[NSBundle mainBundle] resourcePath]];
-    NSImage *chevron = [[NSImage alloc] initWithContentsOfFile:chevronFile];
+    NSImage *chevron = [NSImage imageNamed:@"button_chevron"];
     [chevron setSize:NSMakeSize(13, 13)];
     [actionButton setImage:chevron];
     [actionButton setImagePosition:NSImageOnly];

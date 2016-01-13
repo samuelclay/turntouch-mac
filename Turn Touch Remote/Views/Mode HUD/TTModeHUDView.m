@@ -216,8 +216,7 @@ const CGFloat kPaddingPct = .75f;
         
         TTMode *directionMode = [appDelegate.modeMap modeInDirection:direction];
         NSString *imageFilename = [[directionMode class] imageName];
-        NSString *imagePath = [NSString stringWithFormat:@"%@/icons/%@", [[NSBundle mainBundle] resourcePath], imageFilename];
-        modeImage = [[NSImage alloc] initWithContentsOfFile:imagePath];
+        modeImage = [NSImage imageNamed:imageFilename];
         NSString *directionModeTitle = [[[appDelegate.modeMap modeInDirection:direction] class] title];
         NSSize titleSize = [directionModeTitle sizeWithAttributes:modeAttributes];
         [modeImage setSize:NSMakeSize(titleSize.height, titleSize.height)];

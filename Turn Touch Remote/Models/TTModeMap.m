@@ -270,7 +270,7 @@
     if ([selectedMode respondsToSelector:selector]) {
         IMP imp = [selectedMode methodForSelector:selector];
         BOOL (*func)(id, SEL) = (void *)imp;
-        immediate = func(self, selector);
+        immediate = func(selectedMode, selector);
     }
     return immediate;
 }

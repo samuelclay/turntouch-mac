@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTModeHueSceneOptions">
@@ -19,11 +18,10 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="130"/>
+            <rect key="frame" x="0.0" y="0.0" width="480" height="125"/>
             <subviews>
                 <popUpButton horizontalHuggingPriority="150" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9V4-ui-N7B">
-                    <rect key="frame" x="70" y="86" width="366" height="26"/>
-                    <animations/>
+                    <rect key="frame" x="70" y="81" width="366" height="26"/>
                     <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="HKE-0J-wIi" id="hZJ-RX-VR2">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
@@ -40,11 +38,10 @@
                     </connections>
                 </popUpButton>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IM5-A5-WMY">
-                    <rect key="frame" x="18" y="91" width="48" height="19"/>
+                    <rect key="frame" x="18" y="86" width="48" height="19"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="44" id="omh-bX-xjw"/>
                     </constraints>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Scene:" id="L2c-Gn-dhm">
                         <font key="font" size="13" name="Effra-Regular"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -52,16 +49,14 @@
                     </textFieldCell>
                 </textField>
                 <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Ere-Kn-0fN">
-                    <rect key="frame" x="444" y="92" width="16" height="16"/>
-                    <animations/>
+                    <rect key="frame" x="444" y="87" width="16" height="16"/>
                 </progressIndicator>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="sOG-L3-IFj">
-                    <rect key="frame" x="441" y="92" width="18" height="18"/>
+                    <rect key="frame" x="441" y="87" width="18" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="Rxk-F4-UOt"/>
                         <constraint firstAttribute="width" constant="18" id="XjR-U7-8wQ"/>
                     </constraints>
-                    <animations/>
                     <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="cog" imagePosition="above" alignment="center" imageScaling="proportionallyDown" inset="2" id="7nG-aP-WTW">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -75,26 +70,14 @@
                     <constraints>
                         <constraint firstAttribute="width" constant="62" id="W8o-9Z-22O"/>
                     </constraints>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Double tap" id="LR8-Hu-IpB">
                         <font key="font" size="13" name="Effra-Regular"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <box verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Dx9-Su-TEO">
-                    <rect key="frame" x="192" y="74" width="96" height="5"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="96" id="ygZ-iL-GJH"/>
-                    </constraints>
-                    <animations/>
-                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <font key="titleFont" metaFont="system"/>
-                </box>
                 <popUpButton horizontalHuggingPriority="150" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0gw-7v-l4z">
                     <rect key="frame" x="70" y="17" width="366" height="26"/>
-                    <animations/>
                     <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Chm-hz-OK7" id="E8H-8T-pVK">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
@@ -115,7 +98,6 @@
                     <constraints>
                         <constraint firstAttribute="width" constant="44" id="sLA-NA-KZI"/>
                     </constraints>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Scene:" id="l8c-H8-Xlq">
                         <font key="font" size="13" name="Effra-Regular"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -124,7 +106,6 @@
                 </textField>
                 <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="mtS-WV-AbJ">
                     <rect key="frame" x="444" y="23" width="16" height="16"/>
-                    <animations/>
                 </progressIndicator>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="9uM-S5-sjk">
                     <rect key="frame" x="441" y="23" width="18" height="18"/>
@@ -132,7 +113,6 @@
                         <constraint firstAttribute="width" constant="18" id="0ab-8s-OAT"/>
                         <constraint firstAttribute="height" constant="18" id="rg8-C0-HMc"/>
                     </constraints>
-                    <animations/>
                     <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="cog" imagePosition="above" alignment="center" imageScaling="proportionallyDown" inset="2" id="AyC-pt-Lph">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -141,16 +121,24 @@
                         <action selector="didClickRefresh:" target="-2" id="O16-1O-ozj"/>
                     </connections>
                 </button>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wYJ-lf-HSQ">
+                    <rect key="frame" x="177" y="49" width="29" height="19"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="19" id="WK1-HA-J3k"/>
+                        <constraint firstAttribute="width" constant="29" id="rIf-NC-GOx"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="double_tap" id="bI6-I4-vSS"/>
+                </imageView>
             </subviews>
             <constraints>
                 <constraint firstItem="9V4-ui-N7B" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="0xE-Lz-Mcm"/>
                 <constraint firstItem="9uM-S5-sjk" firstAttribute="leading" secondItem="0gw-7v-l4z" secondAttribute="trailing" constant="8" id="1Ih-Fr-rmX"/>
                 <constraint firstItem="sOG-L3-IFj" firstAttribute="bottom" secondItem="Ere-Kn-0fN" secondAttribute="bottom" id="1yZ-EM-gMC"/>
-                <constraint firstItem="Dx9-Su-TEO" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="9d3-wx-4iZ"/>
+                <constraint firstItem="guV-S1-vdL" firstAttribute="centerY" secondItem="wYJ-lf-HSQ" secondAttribute="centerY" id="2lC-KQ-7Pa"/>
                 <constraint firstItem="IM5-A5-WMY" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" symbolic="YES" id="A8i-xG-fCn"/>
                 <constraint firstAttribute="trailing" secondItem="Ere-Kn-0fN" secondAttribute="trailing" constant="20" symbolic="YES" id="FNp-dI-Utq"/>
                 <constraint firstItem="Ere-Kn-0fN" firstAttribute="leading" secondItem="mtS-WV-AbJ" secondAttribute="leading" id="IDS-Ux-YAf"/>
-                <constraint firstItem="Dx9-Su-TEO" firstAttribute="top" secondItem="9V4-ui-N7B" secondAttribute="bottom" constant="12" id="JfV-DQ-Wr4"/>
+                <constraint firstItem="guV-S1-vdL" firstAttribute="leading" secondItem="wYJ-lf-HSQ" secondAttribute="trailing" constant="3" id="IGd-SF-2wO"/>
                 <constraint firstItem="mtS-WV-AbJ" firstAttribute="bottom" secondItem="9uM-S5-sjk" secondAttribute="bottom" id="MS4-Cc-Sl8"/>
                 <constraint firstItem="0gw-7v-l4z" firstAttribute="leading" secondItem="FWG-U6-RZO" secondAttribute="trailing" constant="8" id="NIO-Hk-SQQ"/>
                 <constraint firstItem="FWG-U6-RZO" firstAttribute="top" secondItem="0gw-7v-l4z" secondAttribute="top" id="ODz-UM-gBM"/>
@@ -164,16 +152,16 @@
                 <constraint firstItem="9uM-S5-sjk" firstAttribute="baseline" secondItem="0gw-7v-l4z" secondAttribute="baseline" id="doI-gJ-bwQ"/>
                 <constraint firstItem="sOG-L3-IFj" firstAttribute="leading" secondItem="9V4-ui-N7B" secondAttribute="trailing" constant="8" id="f9b-sR-ZPW"/>
                 <constraint firstItem="mtS-WV-AbJ" firstAttribute="leading" secondItem="0gw-7v-l4z" secondAttribute="trailing" constant="11" id="hWk-4t-CMH"/>
-                <constraint firstItem="guV-S1-vdL" firstAttribute="top" secondItem="Dx9-Su-TEO" secondAttribute="bottom" constant="8" symbolic="YES" id="kxx-K8-WyZ"/>
+                <constraint firstItem="guV-S1-vdL" firstAttribute="top" secondItem="9V4-ui-N7B" secondAttribute="bottom" constant="16" id="l1F-Lc-mkF"/>
                 <constraint firstItem="IM5-A5-WMY" firstAttribute="leading" secondItem="FWG-U6-RZO" secondAttribute="leading" id="ouz-4l-TjL"/>
                 <constraint firstItem="9V4-ui-N7B" firstAttribute="leading" secondItem="IM5-A5-WMY" secondAttribute="trailing" constant="8" id="smT-bI-uiS"/>
             </constraints>
-            <animations/>
             <point key="canvasLocation" x="362" y="336.5"/>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="edl-6I-vcB"/>
     </objects>
     <resources>
         <image name="cog" width="128" height="128"/>
+        <image name="double_tap" width="512" height="512"/>
     </resources>
 </document>

@@ -172,8 +172,7 @@
     if (!isSpace) {
         NSDictionary *menuOption = [menuOptions objectAtIndex:row];
         SEL selector = NSSelectorFromString([NSString stringWithFormat:@"menu%@", [menuOption objectForKey:@"identifier"]]);
-        NSString *imageFile = [NSString stringWithFormat:@"%@/icons/%@.png", [[NSBundle mainBundle] resourcePath], [menuOption objectForKey:@"icon"]];
-        NSImage *icon = [[NSImage alloc] initWithContentsOfFile:imageFile];
+        NSImage *icon = [NSImage imageNamed:[menuOption objectForKey:@"icon"]];
         [icon setSize:NSMakeSize(75, 50)];
         [result setImage:icon];
         [result setTitle:[menuOption objectForKey:@"title"]];

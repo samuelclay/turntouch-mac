@@ -24,8 +24,7 @@
         [self setChangeButtonTitle:@"Add New"];
         [addButton setAction:@selector(showAddActionMenu:)];
         [addButton setTarget:self];
-        NSString *imageFile = [NSString stringWithFormat:@"%@/icons/button_plus.png", [[NSBundle mainBundle] resourcePath]];
-        NSImage *icon = [[NSImage alloc] initWithContentsOfFile:imageFile];
+        NSImage *icon = [NSImage imageNamed:@"button_plus"];
         [icon setSize:NSMakeSize(15, 10)];
         [addButton setImage:icon];
         [addButton setImagePosition:NSImageRight];
@@ -95,8 +94,7 @@
 - (IBAction)showAddActionMenu:(id)sender {
     [self setChangeButtonTitle:@"Cancel"];
     [addButton setAction:@selector(hideAddActionMenu:)];
-    NSString *imageFile = [NSString stringWithFormat:@"%@/icons/button_x.png", [[NSBundle mainBundle] resourcePath]];
-    NSImage *icon = [[NSImage alloc] initWithContentsOfFile:imageFile];
+    NSImage *icon = [NSImage imageNamed:@"button_x"];
     [icon setSize:NSMakeSize(15, 10)];
     [addButton setImage:icon];
     [addButton setImagePosition:NSImageLeft];
@@ -110,8 +108,7 @@
 - (IBAction)hideAddActionMenu:(id)sender {
     [self setChangeButtonTitle:@"Add New"];
     [addButton setAction:@selector(showAddActionMenu:)];
-    NSString *imageFile = [NSString stringWithFormat:@"%@/icons/button_plus.png", [[NSBundle mainBundle] resourcePath]];
-    NSImage *icon = [[NSImage alloc] initWithContentsOfFile:imageFile];
+    NSImage *icon = [NSImage imageNamed:@"button_plus"];
     [icon setSize:NSMakeSize(15, 10)];
     [addButton setImage:icon];
     [addButton setImagePosition:NSImageRight];

@@ -41,8 +41,7 @@
     [self drawBackground];
 
     NSString *imageFilename = [[appDelegate.modeMap.selectedMode class] imageName];
-    NSString *imagePath = [NSString stringWithFormat:@"%@/icons/%@", [[NSBundle mainBundle] resourcePath], imageFilename];
-    modeImage = [[NSImage alloc] initWithContentsOfFile:imagePath];
+    modeImage = [NSImage imageNamed:imageFilename];
 
     [modeImage setSize:NSMakeSize(IMAGE_SIZE, IMAGE_SIZE)];
     CGFloat offset = (NSHeight(self.frame)/2) - (modeImage.size.height/2);

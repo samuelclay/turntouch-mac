@@ -245,8 +245,7 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
     [settingsMenu addItem:menuItem];
     
     menuItem = [[NSMenuItem alloc] initWithTitle:@"" action:nil keyEquivalent:@""];
-    NSString *imagePath = [NSString stringWithFormat:@"%@/icons/settings.png", [[NSBundle mainBundle] resourcePath]];
-    NSImage *image = [[NSImage alloc] initWithContentsOfFile:imagePath];
+    NSImage *image = [NSImage imageNamed:@"settings"];
     [image setSize:NSMakeSize(SETTINGS_ICON_SIZE, SETTINGS_ICON_SIZE)];
     [menuItem setImage:image];
     [settingsMenu insertItem:menuItem atIndex:0];

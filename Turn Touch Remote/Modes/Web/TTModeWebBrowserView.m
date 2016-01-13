@@ -31,7 +31,7 @@
 #pragma mark - Loading URLs
 
 - (void)loadURL:(NSString *)urlString {
-    [webView setMainFrameURL:@"https://medium.com/message/is-mars-man-s-midlife-crisis-cab4723c611d"];
+    [webView setMainFrameURL:urlString];
 }
 
 - (void)webView:(WebView *)sender resource:(id)identifier didFinishLoadingFromDataSource:(WebDataSource *)dataSource {

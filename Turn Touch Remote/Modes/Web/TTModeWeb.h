@@ -20,4 +20,6 @@ typedef enum {
     BOOL closed;
 }
 
+- (BOOL)checkClosed;
+
 @end
