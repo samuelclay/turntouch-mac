@@ -106,6 +106,24 @@
     return @"previous_site.png";
 }
 
+#pragma mark - Immediate Fire on Tap Down
+
+- (BOOL)shouldFireImmediateTTModeWebMenu {
+    return YES;
+}
+
+- (BOOL)shouldFireImmediateTTModeWebNext {
+    return YES;
+}
+
+- (BOOL)shouldFireImmediateTTModeWebScrollUp {
+    return YES;
+}
+
+- (BOOL)shouldFireImmediateTTModeWebScrollDown {
+    return YES;
+}
+
 #pragma mark - Action methods
 
 - (BOOL)checkClosed {

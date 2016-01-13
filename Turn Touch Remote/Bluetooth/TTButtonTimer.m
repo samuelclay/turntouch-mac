@@ -216,6 +216,9 @@
     CGFloat buttonHoldTimeInterval = MAX(MIN(.15f, modeChangeDuration*0.3f), deviceInterval * 1.05f);
 //    NSLog(@"Mode change duration (%f): %f -- %f", buttonHoldTimeInterval, modeChangeDuration*.3f, deviceInterval*1.05f);
     if (direction != NO_DIRECTION) {
+#ifndef SKIP_BUTTON_ACTIONS
+        [appDelegate.modeMap maybeFireActiveButton];
+#endif
         NSDate *fireDate = [NSDate dateWithTimeIntervalSinceNow:buttonHoldTimeInterval];
         activeModeTimer = [[NSTimer alloc]
                            initWithFireDate:fireDate

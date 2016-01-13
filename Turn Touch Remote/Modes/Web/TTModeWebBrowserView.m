@@ -52,12 +52,17 @@
     return [[webView stringByEvaluatingJavaScriptFromString:@"window.pageYOffset"] integerValue];
 }
 
+- (NSInteger)scrollAmount {
+    NSScreen *mainScreen = [[NSScreen screens] objectAtIndex:0];
+    return NSHeight(mainScreen.frame) / 3;
+}
+
 - (void)scrollUp {
-    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"$TT('body').stop().animate({scrollTop:%ld}, 150, 'swing')", self.currentScroll - 200]];
+    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"$TT('body').stop().animate({scrollTop:%ld}, 150, 'swing')", self.currentScroll - self.scrollAmount]];
 }
 
 - (void)scrollDown {
-    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"$TT('body').stop().animate({scrollTop:%ld}, 200, 'swing')", self.currentScroll + 200]];
+    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"$TT('body').stop().animate({scrollTop:%ld}, 200, 'swing')", self.currentScroll + self.scrollAmount]];
 }
 
 - (void)adjustTextSizeUp {

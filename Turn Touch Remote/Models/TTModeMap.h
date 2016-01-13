@@ -42,6 +42,7 @@
 - (void)activateTimers;
 - (void)switchMode;
 - (void)reset;
+- (void)maybeFireActiveButton;
 - (void)runActiveButton;
 - (void)runDoubleButton:(TTModeDirection)direction;
 - (NSString *)directionName:(TTModeDirection)direction;

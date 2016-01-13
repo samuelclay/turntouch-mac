@@ -103,7 +103,7 @@
 
 - (void)registerAsObserver {
     [self addObserver:self forKeyPath:@"selectedModeDirection"
-                             options:0 context:nil];
+              options:0 context:nil];
 }
 
 - (void) observeValueForKeyPath:(NSString*)keyPath
@@ -196,12 +196,20 @@
     return nil;
 }
 
+- (void)maybeFireActiveButton {
+    BOOL shouldFireImmediateOnTapDown = [self shouldFireImmediateOnTapDown:activeModeDirection];
+    if (shouldFireImmediateOnTapDown && activeModeDirection != NO_DIRECTION) {
+        selectedMode.action = [[TTAction alloc] init];
+        [selectedMode runDirection:activeModeDirection];
+    }
+}
+
 - (void)runActiveButton {
     TTModeDirection direction = activeModeDirection;
     activeModeDirection = NO_DIRECTION;
     
     if (!selectedMode) return;
-    
+
     BOOL shouldIgnoreSingleBeforeDouble = [self shouldIgnoreSingleBeforeDouble:direction];
     if (shouldIgnoreSingleBeforeDouble) {
         waitingForDoubleClick = YES;
@@ -218,8 +226,11 @@
 }
 
 - (void)runDirection:(TTModeDirection)direction {
-    selectedMode.action = [[TTAction alloc] init];
-    [selectedMode runDirection:direction];
+    BOOL shouldFireImmediateOnTapDown = [self shouldFireImmediateOnTapDown:direction];
+    if (!shouldFireImmediateOnTapDown) {
+        selectedMode.action = [[TTAction alloc] init];
+        [selectedMode runDirection:direction];
+    }
 
     NSArray *actions = [self selectedModeBatchActions:direction];
     for (TTAction *batchAction in actions) {
@@ -228,10 +239,12 @@
 }
 
 - (void)runDoubleButton:(TTModeDirection)direction {
+    BOOL shouldFireImmediateOnTapDown = [self shouldFireImmediateOnTapDown:direction];
     waitingForDoubleClick = NO;
     activeModeDirection = NO_DIRECTION;
    
     if (!selectedMode) return;
+    if (shouldFireImmediateOnTapDown) return;
     
     [selectedMode runDoubleDirection:direction];
 
@@ -248,6 +261,18 @@
         ignore = func(self, selector);
     }
     return ignore;
+}
+
+- (BOOL)shouldFireImmediateOnTapDown:(TTModeDirection)direction {
+    BOOL immediate = NO;
+    NSString *actionName = [selectedMode actionNameInDirection:direction];
+    SEL selector = NSSelectorFromString([NSString stringWithFormat:@"shouldFireImmediate%@", actionName]);
+    if ([selectedMode respondsToSelector:selector]) {
+        IMP imp = [selectedMode methodForSelector:selector];
+        BOOL (*func)(id, SEL) = (void *)imp;
+        immediate = func(self, selector);
+    }
+    return immediate;
 }
 
 - (NSString *)directionName:(TTModeDirection)direction {
