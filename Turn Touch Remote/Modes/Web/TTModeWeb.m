@@ -108,8 +108,20 @@
 
 #pragma mark - Action methods
 
+- (BOOL)checkClosed {
+    if (closed) {
+        closed = NO;
+        [webWindowController fadeIn];
+
+        return YES;
+    }
+    
+    return NO;
+}
+
 - (void)runTTModeWebBack {
-    NSLog(@"Running TTModeWebBack");
+    if ([self checkClosed]) return;
+    
     if (state == TTModeWebStateBrowser) {
         state = TTModeWebStateMenu;
         [webWindowController.menuView slideIn];
@@ -119,15 +131,17 @@
     }
 }
 - (void)runTTModeWebNext {
-    NSLog(@"Running TTModeWebNext");
+    if ([self checkClosed]) return;
+    
     if (state == TTModeWebStateBrowser) {
-        [webWindowController.browserView zoomIn];
+
     } else if (state == TTModeWebStateMenu) {
         [webWindowController.menuView selectMenuItem];
     }
 }
 - (void)runTTModeWebScrollUp {
-    NSLog(@"Running TTModeWebScrollUp");
+    if ([self checkClosed]) return;
+    
     if (state == TTModeWebStateBrowser) {
         [webWindowController.browserView scrollUp];
     } else if (state == TTModeWebStateMenu) {
@@ -135,7 +149,8 @@
     }
 }
 - (void)runTTModeWebScrollDown {
-    NSLog(@"Running TTModeWebScrollDown");
+    if ([self checkClosed]) return;
+    
     if (state == TTModeWebStateBrowser) {
         [webWindowController.browserView scrollDown];
     } else if (state == TTModeWebStateMenu) {
@@ -177,6 +192,39 @@
 - (void)menuTTModeWebMenuReturn {
     state = TTModeWebStateBrowser;
     [webWindowController.menuView slideOut];
+}
+
+- (void)menuTTModeWebMenuNextStory {
+    
+}
+
+- (void)menuTTModeWebMenuPreviousStory {
+    
+}
+
+- (void)menuTTModeWebMenuFontSizeUp {
+    [webWindowController.browserView zoomIn];
+}
+
+- (void)menuTTModeWebMenuFontSizeDown {
+    [webWindowController.browserView zoomOut];
+}
+
+- (void)menuTTModeWebMenuMarginWider {
+    
+}
+
+- (void)menuTTModeWebMenuMarginNarrower {
+    
+}
+
+- (void)menuTTModeWebMenuClose {
+    if (!closed) {
+        closed = YES;
+        [webWindowController fadeOut];
+        state = TTModeWebStateBrowser;
+        [webWindowController.menuView slideOut];
+    }
 }
 
 @end

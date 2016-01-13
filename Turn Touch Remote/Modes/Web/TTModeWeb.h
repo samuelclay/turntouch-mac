@@ -17,6 +17,7 @@ typedef enum {
 @interface TTModeWeb : TTMode {
     TTModeWebWindowController *webWindowController;
     TTModeWebState state;
+    BOOL closed;
 }
 
 @end
