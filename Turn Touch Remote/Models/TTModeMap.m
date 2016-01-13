@@ -197,8 +197,8 @@
 }
 
 - (void)maybeFireActiveButton {
-    BOOL shouldFireImmediateOnTapDown = [self shouldFireImmediateOnTapDown:activeModeDirection];
-    if (shouldFireImmediateOnTapDown && activeModeDirection != NO_DIRECTION) {
+    BOOL shouldFireImmediateOnPress = [self shouldFireImmediateOnPress:activeModeDirection];
+    if (shouldFireImmediateOnPress && activeModeDirection != NO_DIRECTION) {
         selectedMode.action = [[TTAction alloc] init];
         [selectedMode runDirection:activeModeDirection];
     }
@@ -226,8 +226,8 @@
 }
 
 - (void)runDirection:(TTModeDirection)direction {
-    BOOL shouldFireImmediateOnTapDown = [self shouldFireImmediateOnTapDown:direction];
-    if (!shouldFireImmediateOnTapDown) {
+    BOOL shouldFireImmediateOnPress = [self shouldFireImmediateOnPress:direction];
+    if (!shouldFireImmediateOnPress) {
         selectedMode.action = [[TTAction alloc] init];
         [selectedMode runDirection:direction];
     }
@@ -239,12 +239,12 @@
 }
 
 - (void)runDoubleButton:(TTModeDirection)direction {
-    BOOL shouldFireImmediateOnTapDown = [self shouldFireImmediateOnTapDown:direction];
+    BOOL shouldFireImmediateOnPress = [self shouldFireImmediateOnPress:direction];
     waitingForDoubleClick = NO;
     activeModeDirection = NO_DIRECTION;
    
     if (!selectedMode) return;
-    if (shouldFireImmediateOnTapDown) return;
+    if (shouldFireImmediateOnPress) return;
     
     [selectedMode runDoubleDirection:direction];
 
@@ -263,7 +263,7 @@
     return ignore;
 }
 
-- (BOOL)shouldFireImmediateOnTapDown:(TTModeDirection)direction {
+- (BOOL)shouldFireImmediateOnPress:(TTModeDirection)direction {
     BOOL immediate = NO;
     NSString *actionName = [selectedMode actionNameInDirection:direction];
     SEL selector = NSSelectorFromString([NSString stringWithFormat:@"shouldFireImmediate%@", actionName]);
