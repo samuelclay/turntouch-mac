@@ -68,7 +68,7 @@
     if (isFading) return;
     isFading = YES;
     [NSAnimationContext beginGrouping];
-    [[NSAnimationContext currentContext] setDuration:.55f];
+    [[NSAnimationContext currentContext] setDuration:.65f];
     [[NSAnimationContext currentContext] setCompletionHandler:^{
         //        [webWindow orderOut:nil];
         isFading = NO;

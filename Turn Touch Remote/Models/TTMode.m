@@ -324,5 +324,5 @@
 - (void)switchSelectedModeTo:(TTMode *)mode {
     [appDelegate.modeMap setSelectedModeDirection:mode.modeDirection];
 }
-                                 
+
 @end

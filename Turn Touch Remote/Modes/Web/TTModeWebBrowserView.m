@@ -26,11 +26,6 @@
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
-    
-    
-//    CGFloat alpha = 0.5f;
-//    [NSColorFromRGBAlpha(0x50fbd6, alpha) set];
-//    NSRectFill(self.bounds);
 }
 
 #pragma mark - Loading URLs

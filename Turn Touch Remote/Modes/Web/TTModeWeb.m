@@ -35,6 +35,47 @@
              ];
 }
 
+- (NSArray *)menuOptions {
+    return @[@{@"identifier" : @"space"},
+             @{@"identifier" : @"TTModeWebMenuReturn",
+               @"title"      : @"Return",
+               @"icon"       : @"double_tap",
+               },
+             @{@"identifier" : @"space"},
+             @{@"identifier" : @"TTModeWebMenuNextStory",
+               @"title"      : @"Next story",
+               @"icon"       : @"heart",
+               },
+             @{@"identifier" : @"TTModeWebMenuPreviousStory",
+               @"title"      : @"Previous story",
+               @"icon"       : @"cog",
+               },
+             @{@"identifier" : @"space"},
+             @{@"identifier" : @"TTModeWebMenuFontSizeUp",
+               @"title"      : @"Larger text",
+               @"icon"       : @"button_chevron",
+               },
+             @{@"identifier" : @"TTModeWebMenuFontSizeDown",
+               @"title"      : @"Smaller text",
+               @"icon"       : @"button_dash",
+               },
+             @{@"identifier" : @"space"},
+             @{@"identifier" : @"TTModeWebMenuMarginWider",
+               @"title"      : @"Widen margin",
+               @"icon"       : @"arrow",
+               },
+             @{@"identifier" : @"TTModeWebMenuMarginNarrower",
+               @"title"      : @"Narrow margin",
+               @"icon"       : @"arrow",
+               },
+             @{@"identifier" : @"space"},
+             @{@"identifier" : @"TTModeWebMenuClose",
+               @"title"      : @"Close Reader",
+               @"icon"       : @"button_x",
+               },
+             ];
+}
+
 #pragma mark - Action Titles
 
 - (NSString *)titleTTModeWebBack {
@@ -82,7 +123,7 @@
     if (state == TTModeWebStateBrowser) {
         [webWindowController.browserView zoomIn];
     } else if (state == TTModeWebStateMenu) {
-//        [webWindowController.menuView menuUp];
+        [webWindowController.menuView selectMenuItem];
     }
 }
 - (void)runTTModeWebScrollUp {
@@ -125,12 +166,17 @@
     webWindowController = [[TTModeWebWindowController alloc] initWithWindowNibName:@"TTModeWebWindowController"];
     [webWindowController fadeIn];
     [webWindowController.browserView loadURL:@"https://medium.com/message/is-mars-man-s-midlife-crisis-cab4723c611d"];
-    
-    [webWindowController.browserView setHidden:YES];
 }
 
 - (void)deactivate {
     [webWindowController fadeOut];
+}
+
+#pragma mark - Menu Options
+
+- (void)menuTTModeWebMenuReturn {
+    state = TTModeWebStateBrowser;
+    [webWindowController.menuView slideOut];
 }
 
 @end

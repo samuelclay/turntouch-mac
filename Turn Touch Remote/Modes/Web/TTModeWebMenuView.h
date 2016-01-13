@@ -26,5 +26,6 @@
 - (void)slideOut;
 - (void)menuUp;
 - (void)menuDown;
+- (void)selectMenuItem;
 
 @end

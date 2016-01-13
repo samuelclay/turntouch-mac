@@ -20,73 +20,32 @@
 - (void)awakeFromNib {
     appDelegate = (TTAppDelegate *)[NSApp delegate];
 
+    [self setWantsLayer:YES];
     [self setMaterial:NSVisualEffectMaterialSidebar];
     [self setBlendingMode:NSVisualEffectBlendingModeWithinWindow];
     [self setState:NSVisualEffectStateActive];
-    [self setWantsLayer:YES];
 
     [self setTranslatesAutoresizingMaskIntoConstraints:NO];
     [tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [clipView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [scrollView setTranslatesAutoresizingMaskIntoConstraints:NO];
     
-    menuOptions = @[@{@"identifier" : @"space"},
-                    @{@"identifier" : @"TTModeWebMenuReturn",
-                      @"title"      : @"Return",
-                      @"icon"       : @"double_tap",
-                      },
-                    @{@"identifier" : @"space"},
-                    @{@"identifier" : @"TTModeWebMenuNextStory",
-                      @"title"      : @"Next story",
-                      @"icon"       : @"heart",
-                      },
-                    @{@"identifier" : @"TTModeWebMenuPreviousStory",
-                      @"title"      : @"Previous story",
-                      @"icon"       : @"cog",
-                      },
-                    @{@"identifier" : @"space"},
-                    @{@"identifier" : @"TTModeWebMenuFontSizeUp",
-                      @"title"      : @"Larger text",
-                      @"icon"       : @"button_chevron",
-                      },
-                    @{@"identifier" : @"TTModeWebMenuFontSizeDown",
-                      @"title"      : @"Smaller text",
-                      @"icon"       : @"button_dash",
-                      },
-                    @{@"identifier" : @"space"},
-                    @{@"identifier" : @"TTModeWebMenuMarginWider",
-                      @"title"      : @"Widen margin",
-                      @"icon"       : @"arrow",
-                      },
-                    @{@"identifier" : @"TTModeWebMenuMarginNarrower",
-                      @"title"      : @"Narrow margin",
-                      @"icon"       : @"arrow",
-                      },
-                    @{@"identifier" : @"space"},
-                    @{@"identifier" : @"TTModeWebMenuClose",
-                      @"title"      : @"Close Reader",
-                      @"icon"       : @"button_x",
-                      },
-                    ];
-
+    menuOptions = appDelegate.modeMap.selectedMode.menuOptions;
+    
     highlightedRow = 1;
-    [self setAlphaValue:0.f];
+    [self setHidden:YES];
     [offsetConstraint setConstant:-400];
     [self changeHighlightedRow:0];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
-    
-    // Drawing code here.
 }
-
-
 
 #pragma mark - Interaction
 
 - (void)slideIn {
-    [self setAlphaValue:1.0f];
+    [self setHidden:NO];
     [self changeHighlightedRow:0];
 
     [NSAnimationContext beginGrouping];
@@ -94,7 +53,6 @@
     [[NSAnimationContext currentContext] setTimingFunction:
      [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
     [[offsetConstraint animator] setConstant:0];
-    [[tableView animator] setAlphaValue:1.0f];
     [NSAnimationContext endGrouping];
 }
 
@@ -103,11 +61,10 @@
     [[NSAnimationContext currentContext] setDuration:.3f];
     [[NSAnimationContext currentContext] setTimingFunction:
      [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
-    [[offsetConstraint animator] setConstant:-400];
-    [[tableView animator] setAlphaValue:0.f];
     [[NSAnimationContext currentContext] setCompletionHandler:^{
-        [self setAlphaValue:0.f];
+        [self setHidden:YES];
     }];
+    [[offsetConstraint animator] setConstant:-400];
     [NSAnimationContext endGrouping];
 }
 
@@ -158,6 +115,16 @@
     return newRow;
 }
 
+- (void)selectMenuItem {
+    NSDictionary *menuOption = [menuOptions objectAtIndex:highlightedRow];
+    SEL selector = NSSelectorFromString([NSString stringWithFormat:@"menu%@", [menuOption objectForKey:@"identifier"]]);
+    IMP imp = [appDelegate.modeMap.selectedMode methodForSelector:selector];
+    void (*func)(id, SEL) = (void *)imp;
+    if ([appDelegate.modeMap.selectedMode respondsToSelector:selector]) {
+        func(appDelegate.modeMap.selectedMode, selector);
+    }
+}
+
 #pragma mark - NSTableView Delegate
 
 - (BOOL)isRowASpace:(NSInteger)row {
@@ -204,7 +171,7 @@
     
     if (!isSpace) {
         NSDictionary *menuOption = [menuOptions objectAtIndex:row];
-        SEL selector = NSSelectorFromString([menuOption objectForKey:@"identifier"]);
+        SEL selector = NSSelectorFromString([NSString stringWithFormat:@"menu%@", [menuOption objectForKey:@"identifier"]]);
         NSString *imageFile = [NSString stringWithFormat:@"%@/icons/%@.png", [[NSBundle mainBundle] resourcePath], [menuOption objectForKey:@"icon"]];
         NSImage *icon = [[NSImage alloc] initWithContentsOfFile:imageFile];
         [icon setSize:NSMakeSize(75, 50)];

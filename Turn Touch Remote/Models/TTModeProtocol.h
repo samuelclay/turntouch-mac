@@ -30,5 +30,6 @@
 - (void)deactivate;
 - (NSArray *)optionlessActions;
 - (BOOL)hideActionMenu;
+- (NSArray *)menuOptions;
 
 @end
