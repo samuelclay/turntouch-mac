@@ -177,8 +177,12 @@
         [icon setSize:NSMakeSize(75, 50)];
         [result setImage:icon];
         [result setTitle:[menuOption objectForKey:@"title"]];
-        [result setAction:selector];
-        [result setTarget:appDelegate.modeMap.selectedMode];
+        if ([appDelegate.modeMap.selectedMode respondsToSelector:selector]) {
+            [result setAction:selector];
+            [result setTarget:appDelegate.modeMap.selectedMode];
+        } else {
+            NSLog(@" ***> %@ doesn't respond to menu%@", appDelegate.modeMap.selectedMode, [menuOption objectForKey:@"identifier"]);
+        }
     } else {
         [result setTitle:@""];
     }
