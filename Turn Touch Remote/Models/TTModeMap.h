@@ -45,6 +45,7 @@
 - (void)maybeFireActiveButton;
 - (void)runActiveButton;
 - (void)runDoubleButton:(TTModeDirection)direction;
+- (BOOL)shouldHideHud:(TTModeDirection)direction;
 - (NSString *)directionName:(TTModeDirection)direction;
 - (TTMode *)modeInDirection:(TTModeDirection)direction;
 - (void)changeDirection:(TTModeDirection)direction toMode:(NSString *)modeClassName;

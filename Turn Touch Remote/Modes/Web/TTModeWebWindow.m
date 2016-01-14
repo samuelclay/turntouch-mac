@@ -16,7 +16,7 @@
                               defer:(BOOL)flag {
     if (self = [super initWithContentRect:NSZeroRect styleMask:aStyle backing:bufferingType defer:flag]) {
         [self makeKeyAndOrderFront:NSApp];
-//        [self setLevel:NSStatusWindowLevel];
+        [self setLevel:NSStatusWindowLevel];
         [self setCollectionBehavior:(NSWindowCollectionBehaviorMoveToActiveSpace)];
         [self setOpaque:NO];
         [self setAlphaValue:0.f];

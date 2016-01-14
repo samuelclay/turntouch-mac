@@ -275,6 +275,18 @@
     return immediate;
 }
 
+- (BOOL)shouldHideHud:(TTModeDirection)direction {
+    BOOL hideHud = NO;
+    NSString *actionName = [selectedMode actionNameInDirection:direction];
+    SEL selector = NSSelectorFromString([NSString stringWithFormat:@"shouldHideHud%@", actionName]);
+    if ([selectedMode respondsToSelector:selector]) {
+        IMP imp = [selectedMode methodForSelector:selector];
+        BOOL (*func)(id, SEL) = (void *)imp;
+        hideHud = func(selectedMode, selector);
+    }
+    return hideHud;
+}
+
 - (NSString *)directionName:(TTModeDirection)direction {
     switch (direction) {
         case NORTH:

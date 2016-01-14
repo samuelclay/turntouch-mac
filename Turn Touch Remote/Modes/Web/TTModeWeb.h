@@ -18,8 +18,10 @@ typedef enum {
     TTModeWebWindowController *webWindowController;
     TTModeWebState state;
     BOOL closed;
+    BOOL timerActive;
 }
 
 - (BOOL)checkClosed;
+- (void)startHideMouseTimer;
 
 @end

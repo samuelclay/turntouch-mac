@@ -9,6 +9,7 @@
 #import "TTModeWeb.h"
 #import <WebKit/WebKit.h>
 #import "Safari.h"
+#import <IOKit/pwr_mgt/IOPMLib.h>
 
 @implementation TTModeWeb
 
@@ -107,15 +108,7 @@
     return @"previous_site.png";
 }
 
-#pragma mark - Immediate Fire on Tap Down
-
-- (BOOL)shouldFireImmediateTTModeWebMenu {
-    return YES;
-}
-
-- (BOOL)shouldFireImmediateTTModeWebNext {
-    return YES;
-}
+#pragma mark - Immediate Fire on Press
 
 - (BOOL)shouldFireImmediateTTModeWebScrollUp {
     return YES;
@@ -125,17 +118,70 @@
     return YES;
 }
 
+#pragma mark - Hide HUD
+
+- (BOOL)shouldHideHudTTModeWebScrollUp {
+    return YES;
+}
+
+- (BOOL)shouldHideHudTTModeWebScrollDown {
+    return YES;
+}
+
 #pragma mark - Action methods
 
 - (BOOL)checkClosed {
     if (closed) {
         closed = NO;
         [self loadSafari];
-
+        [self startHideMouseTimer];
+        [self setDisplayAwake:YES];
+        
         return YES;
     }
     
     return NO;
+}
+
+- (void)startHideMouseTimer {
+    if (timerActive) return;
+    [NSCursor unhide];
+    timerActive = YES;
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        timerActive = NO;
+        CFTimeInterval secondsSinceMouseMove = CGEventSourceSecondsSinceLastEventType(kCGEventSourceStateCombinedSessionState, kCGEventMouseMoved);
+        if (secondsSinceMouseMove > 2.5) {
+            [NSCursor hide];
+        } else {
+            [self startHideMouseTimer];
+        }
+    });
+}
+
+- (void)setDisplayAwake:(BOOL)forceAwake {
+    // kIOPMAssertionTypeNoDisplaySleep prevents display sleep,
+    // kIOPMAssertionTypeNoIdleSleep prevents idle sleep
+    
+    //reasonForActivity is a descriptive string used by the system whenever it needs
+    //  to tell the user why the system is not sleeping. For example,
+    //  "Mail Compacting Mailboxes" would be a useful string.
+    
+    //  NOTE: IOPMAssertionCreateWithName limits the string to 128 characters.
+    CFStringRef* reasonForActivity= CFSTR("Turn Touch Reader");
+    
+    IOPMAssertionID assertionID;
+    IOReturn success = IOPMAssertionCreateWithName(kIOPMAssertionTypeNoDisplaySleep,
+                                                   forceAwake ? kIOPMAssertionLevelOn : kIOPMAssertionLevelOff, reasonForActivity, &assertionID);
+    if (success == kIOReturnSuccess)
+    {
+        
+        //Add the work you need to do without
+        //  the system sleeping here.
+        
+        success = IOPMAssertionRelease(assertionID);
+        //The system will be able to sleep again. 
+    }
 }
 
 - (void)runTTModeWebMenu {
@@ -163,6 +209,7 @@
     
     if (state == TTModeWebStateBrowser) {
         [webWindowController.browserView scrollUp];
+        [NSCursor hide];
     } else if (state == TTModeWebStateMenu) {
         [webWindowController.menuView menuUp];
     }
@@ -172,6 +219,7 @@
     
     if (state == TTModeWebStateBrowser) {
         [webWindowController.browserView scrollDown];
+        [NSCursor hide];
     } else if (state == TTModeWebStateMenu) {
         [webWindowController.menuView menuDown];
     }
@@ -199,11 +247,12 @@
     state = TTModeWebStateBrowser;
     
     webWindowController = [[TTModeWebWindowController alloc] initWithWindowNibName:@"TTModeWebWindowController"];
-//    [webWindowController fadeIn];
 }
 
 - (void)deactivate {
     [webWindowController fadeOut];
+    [self setDisplayAwake:NO];
+    [NSCursor unhide];
 }
 
 - (void)loadSafari {
@@ -213,11 +262,11 @@
     
     SBElementArray* windows = [safari windows];
     SafariWindow *safariWindow = [windows objectAtIndex:0];
+    // This fails when in full-screen mode:
     SafariTab* currentTab = [safariWindow currentTab];
     
-    // This fails when in full-screen mode:
+    // https://medium.com/the-development-set/the-reductive-seduction-of-other-people-s-problems-3c07b307732d
     [webWindowController.browserView loadURL:currentTab.URL];
-    
 }
 
 #pragma mark - Menu Options
@@ -254,6 +303,8 @@
 - (void)menuTTModeWebMenuClose {
     if (!closed) {
         closed = YES;
+        [self setDisplayAwake:NO];
+        [NSCursor unhide];
         [webWindowController fadeOut];
         state = TTModeWebStateBrowser;
         [webWindowController.menuView slideOut];

@@ -51,9 +51,11 @@
 }
 
 - (IBAction)fadeIn:(TTModeDirection)direction withMode:(TTMode *)mode buttonAction:(TTButtonAction)buttonAction {
-    if (!mode) mode = NSAppDelegate.modeMap.selectedMode;
-    
-//    NSLog(@" ---> Fade in action: %d", direction);
+    if (!mode) mode = appDelegate.modeMap.selectedMode;
+
+    if ([appDelegate.modeMap shouldHideHud:direction]) return;
+
+    //    NSLog(@" ---> Fade in action: %d", direction);
     [hudWindow makeKeyAndOrderFront:nil];
     [self showWindow:self];
     

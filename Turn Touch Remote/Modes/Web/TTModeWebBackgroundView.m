@@ -6,6 +6,8 @@
 //  Copyright © 2015 Turn Touch. All rights reserved.
 //
 
+#import "TTAppDelegate.h"
+#import "TTModeWeb.h"
 #import "TTModeWebBackgroundView.h"
 
 @implementation TTModeWebBackgroundView
@@ -15,6 +17,15 @@
     self.blendingMode = NSVisualEffectBlendingModeBehindWindow;
     self.state = NSVisualEffectStateActive;
     [self setWantsLayer:YES];
+    
+    NSTrackingAreaOptions options = (NSTrackingActiveAlways | NSTrackingInVisibleRect |
+                                     NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved);
+    
+    NSTrackingArea *area = [[NSTrackingArea alloc] initWithRect:[self bounds]
+                                                        options:options
+                                                          owner:self
+                                                       userInfo:nil];
+    [self addTrackingArea:area];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
@@ -22,5 +33,10 @@
     
     // Drawing code here.
 }
+
+- (void)mouseMoved:(NSEvent *)theEvent {
+    [(TTModeWeb *)NSAppDelegate.modeMap.selectedMode startHideMouseTimer];
+}
+
 
 @end
