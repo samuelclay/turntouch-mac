@@ -350,7 +350,7 @@
                                              encoding:encoding];
     NSXMLDocumentContentKind contentKind = NSXMLDocumentXHTMLKind;
     NSUInteger xmlOutputOptions = (contentKind
-                                   //| NSXMLNodePrettyPrint
+                                   | NSXMLNodePrettyPrint
                                    | NSXMLNodePreserveWhitespace
                                    | NSXMLNodeCompactEmptyElement
                                    );
@@ -376,7 +376,10 @@
         }
     }
     
-    return [NSString stringWithCString:[[cleanedDoc XMLString] UTF8String] encoding:NSUTF8StringEncoding];
+    // Create a new webarchive with the processed markup as main content and the resources from the source webarchive
+    NSData *docData = [summaryDoc XMLDataWithOptions:xmlOutputOptions];
+    return [[NSString alloc] initWithData:docData encoding:NSUTF8StringEncoding];
+    
 }
 
 @end

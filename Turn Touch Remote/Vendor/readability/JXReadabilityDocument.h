@@ -68,3 +68,8 @@ Possible keys (in flux):
 - (NSXMLDocument *)summaryXMLDocument;
 
 @end
+
+
+#ifndef JXReadabilityNSXMLDocumentKind
+#define JXReadabilityNSXMLDocumentKind NSXMLDocumentXMLKind
+#endif

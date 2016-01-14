@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString * const		tagNameXPath;
+extern NSString * const		tagNameXPathFormat;
 
 @interface NSXMLNode (HTMLUtilities)
 

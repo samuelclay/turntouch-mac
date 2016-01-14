@@ -10,7 +10,8 @@
 
 
 // Original XPath: @".//%@". Alternative XPath: @".//*[matches(name(),'%@','i')]"
-NSString * const	tagNameXPath = @".//*[lower-case(name())='%@']";
+//NSString * const	tagNameXPath = @".//*[lower-case(name())='%@']";
+NSString * const	tagNameXPathFormat = @".//%@|.//%@";
 
 
 @implementation NSXMLNode (HTMLUtilities)
@@ -22,7 +23,7 @@ NSString * const	tagNameXPath = @".//*[lower-case(name())='%@']";
 	va_list tag_names;
 	va_start (tag_names, firstTagName);
     for (NSString *tagName = firstTagName; tagName != nil; tagName = va_arg(tag_names, NSString *)) {
-		NSArray *foundNodes = [self nodesForXPath:[NSString stringWithFormat:tagNameXPath, tagName] 
+		NSArray *foundNodes = [self nodesForXPath:[NSString stringWithFormat:tagNameXPathFormat, [tagName lowercaseString], [tagName uppercaseString]]
 											error:NULL];
 		//foundNodes = [[foundNodes reverseObjectEnumerator] allObjects];
 		[tags addObjectsFromArray:foundNodes];
@@ -39,7 +40,7 @@ NSString * const	tagNameXPath = @".//*[lower-case(name())='%@']";
 	va_list tag_names;
 	va_start (tag_names, firstTagName);
     for (NSString *tagName = firstTagName; tagName != nil; tagName = va_arg(tag_names, NSString *)) {
-		NSArray *foundNodes = [self nodesForXPath:[NSString stringWithFormat:tagNameXPath, tagName] 
+		NSArray *foundNodes = [self nodesForXPath:[NSString stringWithFormat:tagNameXPathFormat, [tagName lowercaseString], [tagName uppercaseString]]
 											error:NULL];
 		foundNodes = [[foundNodes reverseObjectEnumerator] allObjects];
 		[tags addObjectsFromArray:foundNodes];

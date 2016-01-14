@@ -140,7 +140,7 @@ NSString * shortenTitleInDocument(NSXMLDocument *doc) {
 	NSString *orig;
 	title = orig = normTitle(title);
 
-#warning How does NSXML treat HTML entities? 
+    //TODO: Work out how NSXML treats HTML entities?
 
 	NSMutableSet *candidates = [NSMutableSet set];
 

@@ -30,7 +30,7 @@
 
 NSString * const	unlikelyCandidates = 	@"combx|comment|community|disqus|extra|foot|header|menu|remark|rss|shoutbox|sidebar|sponsor|ad-break|agegate|pagination|pager|popup|tweet|twitter";
 NSString * const	okMaybeItsACandidate = 	@"and|article|body|column|main|shadow";
-NSString * const	positiveNames =			@"article|body|content|entry|hentry|main|page|pagination|post|text|blog|story";
+NSString * const	positiveNames =			@"abstract|article|body|content|entry|hentry|main|page|pagination|post|text|blog|story|contribution|reference|results";
 NSString * const	negativeNames =			@"combx|comment|com-|contact|foot|footer|footnote|masthead|media|meta|outbrain|promo|related|scroll|shoutbox|sidebar|sponsor|shopping|tags|tool|widget";
 NSString * const	divToPElements =		@"<(a|blockquote|dl|div|img|ol|p|pre|table|ul)";
 
@@ -131,9 +131,9 @@ NSSet * stringSetForListStringDelimitedBy(NSString *listString, NSString *delimi
 
 - (void)debug:(id)a
 {
-	if ([(NSNumber *)(self.options)[@"debug"] boolValue]) {
-		NSLog(@"%@", a);
-	}
+	//if ([(NSNumber *)(self.options)[@"debug"] boolValue]) {
+		NSLog(@"[READABILITY] %@", a);
+	//}
 }
 
 - (void)removeUnlikelyCandidates
@@ -160,7 +160,7 @@ NSSet * stringSetForListStringDelimitedBy(NSString *listString, NSString *delimi
 				&& ([okMaybeItsACandidateRe rangeOfFirstMatchInString:s options:0 range:sRange].location == NSNotFound)
 				&& ![elem.name isEqualToString:@"html"]
 				&& ![elem.name isEqualToString:@"body"]) {
-				//[self debug:[NSString stringWithFormat:@"Removing unlikely candidate - %@", [elem readabilityDescription]]];
+				[self debug:[NSString stringWithFormat:@"Removing unlikely candidate - %@", [elem readabilityDescription]]];
 				[elem detach];
 			}
 		}
@@ -187,7 +187,7 @@ NSSet * stringSetForListStringDelimitedBy(NSString *listString, NSString *delimi
 		}
 		
 		if (blockElementFound == NO) {
-			//[self debug:[NSString stringWithFormat:@"Altering %@ to p", [elem readabilityDescription]]];
+			[self debug:[NSString stringWithFormat:@"Altering %@ to p", [elem readabilityDescription]]];
 			[elem setName:@"p"];
 			//NSLog(@"Fixed element %@", [elem readabilityDescription]);
 		}
@@ -306,11 +306,14 @@ NSSet * stringSetForListStringDelimitedBy(NSString *listString, NSString *delimi
 	static NSSet *preTDBlockquote = nil;
 	static NSSet *addressEtc = nil;
 	static NSSet *headlines = nil;
+    static NSSet *lists = nil;
 	
 	if (firstRun) {
 		preTDBlockquote = [[NSSet alloc] initWithObjects:@"pre", @"td", @"blockquote", nil];
-		addressEtc = [[NSSet alloc] initWithObjects:@"address", @"ol", @"ul", @"dl", @"dd", @"dt", @"li", @"form", nil];
+		//addressEtc = [[NSSet alloc] initWithObjects:@"address", @"ol", @"ul", @"dl", @"dd", @"dt", @"li", @"form", nil];
+        addressEtc = [[NSSet alloc] initWithObjects:@"address", @"form", nil];
 		headlines = [[NSSet alloc] initWithObjects:@"h1", @"h2", @"h3", @"h4", @"h5", @"h6", @"th", nil];
+        lists = [[NSSet alloc] initWithObjects:@"ol", @"ul", @"dl", @"dd", @"dt", @"li", nil];
 		firstRun = NO;
 	}
 	
@@ -318,15 +321,34 @@ NSSet * stringSetForListStringDelimitedBy(NSString *listString, NSString *delimi
 	NSString *name = [elem.name lowercaseString];
 	if ([name isEqualToString:@"div"]) {
 		contentScore += 5;
-	}
+        
+        static NSSet *identifiers = nil;
+        if (!identifiers)
+        {
+            identifiers = [NSSet setWithArray:@[@"content", @"article", @"reference"]];
+        }
+        
+        NSString *classes = [[[elem attributeForName:@"class"] stringValue] lowercaseString]; // FIXME: This temporary hack helps pass through all content sections in a Genome Biology demo content with the class 'collapsible-content'
+        NSString *ID = [[[elem attributeForName:@"id"] stringValue] lowercaseString];
+        
+        for (NSString *s in identifiers)
+        {
+            if (classes && [classes rangeOfString:s].location != NSNotFound) {
+                contentScore += 100;
+            }
+            if (ID && [ID rangeOfString:s].location != NSNotFound) {
+                contentScore += 100;
+            }
+        }
+    }
 	else if ([preTDBlockquote containsObject:name]) {
 		contentScore += 3;
 	}
 	else if ([addressEtc containsObject:name]) {
 		contentScore -= 3;
 	}
-	else if ([headlines containsObject:name]) {
-		contentScore -= 5;
+	else if ([headlines containsObject:name] || [lists containsObject:name]) {
+		contentScore += 100;
 	}
 	
 	return [NSMutableDictionary dictionaryWithObjectsAndKeys: 
@@ -348,7 +370,7 @@ NSSet * stringSetForListStringDelimitedBy(NSString *listString, NSString *delimi
 	NSXMLDocument *output = [[NSXMLDocument alloc] initWithXMLString:@"<html><head><title /></head><body><div id='readibility-root' /></body></html>"
 																options:NSXMLDocumentTidyHTML 
 																  error:NULL];
-	[output setDocumentContentKind:NSXMLDocumentXHTMLKind];
+	[output setDocumentContentKind:JXReadabilityNSXMLDocumentKind];
 	NSXMLElement *htmlDiv = [output nodesForXPath:@"/html/body/div" 
 											  error:NULL][0];
 #if 0
@@ -519,7 +541,7 @@ NSSet * stringSetForListStringDelimitedBy(NSString *listString, NSString *delimi
 		candidate = candidates[hashableElem];
 		ld = [self getLinkDensity:elem];
 		score = [candidate[@"contentScore"] floatValue];
-		//[self debug:[NSString stringWithFormat:@"Candid: %6.3f %s link density %.3f -> %6.3f", score, [elem readabilityDescription], ld, score*(1-ld)]];
+		[self debug:[NSString stringWithFormat:@"Candid: %6.3f %@ link density %.3f -> %6.3f", score, [elem readabilityDescription], ld, score*(1-ld)]];
 		score *= (1 - ld);
 		candidate[@"contentScore"] = @(score);
 	}
@@ -541,17 +563,17 @@ NSUInteger sumCFArrayOfNSUInteger(CFArrayRef array) {
 
 - (NSXMLDocument *)sanitizeArticle:(NSXMLDocument *)node forCandidates:(NSDictionary *)candidates
 {
-#ifndef DEBUG_SANITIZE
-#	define DEBUG_SANITIZE	0
-#endif
+//#ifndef DEBUG_SANITIZE
+#	define DEBUG_SANITIZE	1
+//#endif
 	
 	NSNumber *minTextLengthNum = (self.options)[@"minTextLength"];
 	NSUInteger minLen = (minTextLengthNum != nil) ? [minTextLengthNum unsignedIntegerValue] : TEXT_LENGTH_THRESHOLD;
-	for (NSXMLElement *header in [node tagsWithNames:@"h1", @"h2", @"h3", @"h4", @"h5", @"h6", nil]) {
-		if ([self classWeight:header] < 0 || [self getLinkDensity:header] > 0.33) { 
+/*	for (NSXMLElement *header in [node tagsWithNames:@"h1", @"h2", @"h3", @"h4", @"h5", @"h6", nil]) {
+		if ([self classWeight:header] < 0 || [self getLinkDensity:header] > 0.33) {
 			[header detach];
 		}
-	}
+	}*/
 
 	for (NSXMLElement *elem in [node tagsWithNames:@"form", @"iframe", @"textarea", nil]) {
 		[elem detach];
@@ -578,7 +600,7 @@ NSUInteger sumCFArrayOfNSUInteger(CFArrayRef array) {
 	// Conditionally clean <table>s, <ul>s, and <div>s
 	for (NSXMLElement *el in [node tagsWithNames:@"table", @"ul", @"div", nil]) {
 		hashableEl = [HashableElement elementForNode:el];
-		
+        
 		if (CFDictionaryContainsValue(allowed, (__bridge const void *)(hashableEl)))  continue;
 		
 		weight = [self classWeight:el];
@@ -595,14 +617,14 @@ NSUInteger sumCFArrayOfNSUInteger(CFArrayRef array) {
 		tag = el.name;
 		
 		if ((weight + contentScore) < 0.0) {
-			//[self debug:[NSString stringWithFormat:@"Cleaned %@ with score %6.3f and weight %-3s", [el readabilityDescription], contentScore, weight]];
+			[self debug:[NSString stringWithFormat:@"Cleaned %@ with score %6.3f and weight %-3f", [el readabilityDescription], contentScore, weight]];
 			[el detach];
 		}
 		else if ([[el stringValue] countOccurancesOfString:@","] < 10) {
 			CFMutableDictionaryRef counts = CFDictionaryCreateMutable(kCFAllocatorDefault, 0, &kCFTypeDictionaryKeyCallBacks, NULL); // keys: NSString, values:raw CFIndex
 			
 			for (NSString *kind in tagKinds) {
-				kindCount = (CFIndex)[[node nodesForXPath:[NSString stringWithFormat:tagNameXPath, kind] 
+				kindCount = (CFIndex)[[node nodesForXPath:[NSString stringWithFormat:tagNameXPathFormat, kind, [kind uppercaseString]] //tagNameXPath, kind]
 													error:NULL] count];
 				CFDictionaryAddValue(counts, (__bridge const void *)(kind), (void *)kindCount);
 			}
@@ -644,6 +666,7 @@ NSUInteger sumCFArrayOfNSUInteger(CFArrayRef array) {
 				
 				//if el.tag == 'div' and counts["img"] >= 1:
 				//	continue
+                /*
 				if (countsFor(@"p") 
 					&& (countsFor(@"img") > countsFor(@"p"))) {
 #if DEBUG_SANITIZE
@@ -651,6 +674,8 @@ NSUInteger sumCFArrayOfNSUInteger(CFArrayRef array) {
 #endif
 					toRemove = YES;
 				}
+                 */
+                /*
 				else if ((countsFor(@"li") > countsFor(@"p")) 
 						 && ![tag isEqualToString:@"ul"] 
 						 && ![tag isEqualToString:@"ol"]) {
@@ -658,13 +683,14 @@ NSUInteger sumCFArrayOfNSUInteger(CFArrayRef array) {
 					reason = @"more <li>s than <p>s";
 #endif
 					toRemove = YES;
-				}
-				else if (countsFor(@"input") > (countsFor(@"p") / 3)) {
+				}*/
+				/*else*/ if (countsFor(@"input") > (countsFor(@"p") / 3)) {
 #if DEBUG_SANITIZE
 					reason = @"less than 3x <p>s than <input>s";
 #endif
 					toRemove = YES;
 				}
+                /*
 				else if ((contentLength < minLen) 
 						 && ((countsFor(@"img") == 0) 
 							 || (countsFor(@"img") > 2))) {
@@ -672,7 +698,7 @@ NSUInteger sumCFArrayOfNSUInteger(CFArrayRef array) {
 					reason = [NSString stringWithFormat:@"too short content length %lu without a single image", (unsigned long)contentLength];
 #endif
 					toRemove = YES;
-				}
+				}*/
 				else if (weight < 25 && linkDensity > 0.2) {
 #if DEBUG_SANITIZE
 					reason = [NSString stringWithFormat:@"too many links %.3f for its weight %.0f", linkDensity, weight];
@@ -748,7 +774,7 @@ NSUInteger sumCFArrayOfNSUInteger(CFArrayRef array) {
 					&& (sumCFArrayOfNSUInteger(siblings) > 1000)) {
 					
 					toRemove = NO;
-					//[self debug:[NSString stringWithFormat:@"Allowing %@", [el readabilityDescription]]];
+					[self debug:[NSString stringWithFormat:@"Allowing %@", [el readabilityDescription]]];
 					
 					BOOL yesBool = YES;
 					for (NSXMLElement *desnode in [el tagsWithNames:@"table", @"ul", @"div", nil]) {
