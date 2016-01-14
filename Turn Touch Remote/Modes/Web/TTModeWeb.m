@@ -10,6 +10,12 @@
 #import <WebKit/WebKit.h>
 #import "Safari.h"
 #import <IOKit/pwr_mgt/IOPMLib.h>
+#import <Webkit/Webkit.h>
+#import <WebKit/WebArchive.h>
+
+#import "KBWebArchiver.h"
+#import "JXReadabilityDocument.h"
+#import "JXWebResourceLoadingBarrier.h"
 
 @implementation TTModeWeb
 
@@ -266,7 +272,7 @@
     SafariTab* currentTab = [safariWindow currentTab];
     
     // https://medium.com/the-development-set/the-reductive-seduction-of-other-people-s-problems-3c07b307732d
-    [webWindowController.browserView loadURL:currentTab.URL];
+    [webWindowController.browserView loadURL:currentTab.URL withHtml:[self readabilityForUrl:currentTab.URL htmlSource:nil]];
 }
 
 #pragma mark - Menu Options
@@ -309,6 +315,68 @@
         state = TTModeWebStateBrowser;
         [webWindowController.menuView slideOut];
     }
+}
+
+#pragma mark - Readability
+
+- (NSString *)readabilityForUrl:(NSString *)urlString htmlSource:(NSString *)htmlSource {
+    NSError *error = nil;
+    WebArchive *webarchive;
+    KBWebArchiver *archiver = [[KBWebArchiver alloc] initWithURLString:urlString];
+    archiver.localResourceLoadingOnly = htmlSource && htmlSource.length;
+    webarchive = [archiver webArchive];
+    NSData *data = [webarchive data];
+    error = [archiver error];
+    
+    WebResource *resource = [webarchive mainResource];
+    
+    NSString *textEncodingName = [resource textEncodingName];
+    
+    NSStringEncoding encoding;
+    if (textEncodingName == nil) {
+        encoding = NSISOLatin1StringEncoding;
+    }
+    else {
+        CFStringEncoding cfEnc = CFStringConvertIANACharSetNameToEncoding((CFStringRef)textEncodingName);
+        if (kCFStringEncodingInvalidId == cfEnc) {
+            encoding = NSUTF8StringEncoding;
+        }
+        else {
+            encoding = CFStringConvertEncodingToNSStringEncoding(cfEnc);
+        }
+    }
+    
+    NSString *source = [[NSString alloc] initWithData:[resource data]
+                                             encoding:encoding];
+    NSXMLDocumentContentKind contentKind = NSXMLDocumentXHTMLKind;
+    NSUInteger xmlOutputOptions = (contentKind
+                                   //| NSXMLNodePrettyPrint
+                                   | NSXMLNodePreserveWhitespace
+                                   | NSXMLNodeCompactEmptyElement
+                                   );
+    
+    NSXMLDocument *doc = [[NSXMLDocument alloc] initWithXMLString:source
+                                                          options:NSXMLDocumentTidyHTML
+                                                            error:&error];
+    NSXMLDocument *cleanedDoc = nil;
+    NSXMLDocument *summaryDoc = nil;
+    
+    if (doc != nil) {
+        [doc setDocumentContentKind:contentKind];
+        
+        {
+            JXReadabilityDocument *readabilityDoc = [[JXReadabilityDocument alloc] initWithXMLDocument:doc
+                                                                                          copyDocument:NO];
+            summaryDoc = [readabilityDoc summaryXMLDocument];
+            cleanedDoc = readabilityDoc.html;
+            
+            NSLog(@"\nTitle: %@", readabilityDoc.title);
+            NSLog(@"\nShort Title: %@", readabilityDoc.shortTitle);
+            
+        }
+    }
+    
+    return [NSString stringWithCString:[[cleanedDoc XMLString] UTF8String] encoding:NSUTF8StringEncoding];
 }
 
 @end

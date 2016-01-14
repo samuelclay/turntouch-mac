@@ -53,6 +53,16 @@
 		FF01CA831C46DCC200F83A73 /* sun.png in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA561C46DCC200F83A73 /* sun.png */; };
 		FF01CA841C46DCC200F83A73 /* television.png in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA571C46DCC200F83A73 /* television.png */; };
 		FF01CA851C46DCC200F83A73 /* vinyl.png in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA581C46DCC200F83A73 /* vinyl.png */; };
+		FF01CAA51C473EC100F83A73 /* htmls.m in Sources */ = {isa = PBXBuildFile; fileRef = FF01CA881C473EC100F83A73 /* htmls.m */; };
+		FF01CAA61C473EC100F83A73 /* JXReadabilityDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = FF01CA8A1C473EC100F83A73 /* JXReadabilityDocument.m */; };
+		FF01CAA71C473EC100F83A73 /* JXWebResourceLoadingBarrier.m in Sources */ = {isa = PBXBuildFile; fileRef = FF01CA8C1C473EC100F83A73 /* JXWebResourceLoadingBarrier.m */; };
+		FF01CAA91C473EC100F83A73 /* NSString+Counting.m in Sources */ = {isa = PBXBuildFile; fileRef = FF01CA8F1C473EC100F83A73 /* NSString+Counting.m */; };
+		FF01CAAA1C473EC100F83A73 /* NSString+JXRemoving.m in Sources */ = {isa = PBXBuildFile; fileRef = FF01CA911C473EC100F83A73 /* NSString+JXRemoving.m */; };
+		FF01CAAB1C473EC100F83A73 /* NSString+ReplaceExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF01CA931C473EC100F83A73 /* NSString+ReplaceExtensions.m */; };
+		FF01CAAC1C473EC100F83A73 /* NSXMLNode+HTMLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = FF01CA951C473EC100F83A73 /* NSXMLNode+HTMLUtilities.m */; };
+		FF01CAAF1C473EC100F83A73 /* KBWebArchiver.m in Sources */ = {isa = PBXBuildFile; fileRef = FF01CA9B1C473EC100F83A73 /* KBWebArchiver.m */; };
+		FF01CAB01C473EC100F83A73 /* NSURL+ValidityChecking.m in Sources */ = {isa = PBXBuildFile; fileRef = FF01CA9D1C473EC100F83A73 /* NSURL+ValidityChecking.m */; };
+		FF01CAB11C473EC100F83A73 /* README in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA9E1C473EC100F83A73 /* README */; };
 		FF0E12BB1824286600D49EC7 /* TTModeMap.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12BA1824286600D49EC7 /* TTModeMap.m */; };
 		FF0E12CA18247BAE00D49EC7 /* TTMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12C918247BAE00D49EC7 /* TTMode.m */; };
 		FF0E12CF18247D6100D49EC7 /* TTModeMusic.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12CE18247D6100D49EC7 /* TTModeMusic.m */; };
@@ -342,6 +352,25 @@
 		FF01CA561C46DCC200F83A73 /* sun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sun.png; sourceTree = "<group>"; };
 		FF01CA571C46DCC200F83A73 /* television.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = television.png; sourceTree = "<group>"; };
 		FF01CA581C46DCC200F83A73 /* vinyl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vinyl.png; sourceTree = "<group>"; };
+		FF01CA871C473EC100F83A73 /* htmls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = htmls.h; sourceTree = "<group>"; };
+		FF01CA881C473EC100F83A73 /* htmls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = htmls.m; sourceTree = "<group>"; };
+		FF01CA891C473EC100F83A73 /* JXReadabilityDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXReadabilityDocument.h; sourceTree = "<group>"; };
+		FF01CA8A1C473EC100F83A73 /* JXReadabilityDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXReadabilityDocument.m; sourceTree = "<group>"; };
+		FF01CA8B1C473EC100F83A73 /* JXWebResourceLoadingBarrier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXWebResourceLoadingBarrier.h; sourceTree = "<group>"; };
+		FF01CA8C1C473EC100F83A73 /* JXWebResourceLoadingBarrier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXWebResourceLoadingBarrier.m; sourceTree = "<group>"; };
+		FF01CA8E1C473EC100F83A73 /* NSString+Counting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Counting.h"; sourceTree = "<group>"; };
+		FF01CA8F1C473EC100F83A73 /* NSString+Counting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Counting.m"; sourceTree = "<group>"; };
+		FF01CA901C473EC100F83A73 /* NSString+JXRemoving.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JXRemoving.h"; sourceTree = "<group>"; };
+		FF01CA911C473EC100F83A73 /* NSString+JXRemoving.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JXRemoving.m"; sourceTree = "<group>"; };
+		FF01CA921C473EC100F83A73 /* NSString+ReplaceExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ReplaceExtensions.h"; sourceTree = "<group>"; };
+		FF01CA931C473EC100F83A73 /* NSString+ReplaceExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ReplaceExtensions.m"; sourceTree = "<group>"; };
+		FF01CA941C473EC100F83A73 /* NSXMLNode+HTMLUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSXMLNode+HTMLUtilities.h"; sourceTree = "<group>"; };
+		FF01CA951C473EC100F83A73 /* NSXMLNode+HTMLUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSXMLNode+HTMLUtilities.m"; sourceTree = "<group>"; };
+		FF01CA9A1C473EC100F83A73 /* KBWebArchiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KBWebArchiver.h; sourceTree = "<group>"; };
+		FF01CA9B1C473EC100F83A73 /* KBWebArchiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KBWebArchiver.m; sourceTree = "<group>"; };
+		FF01CA9C1C473EC100F83A73 /* NSURL+ValidityChecking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+ValidityChecking.h"; sourceTree = "<group>"; };
+		FF01CA9D1C473EC100F83A73 /* NSURL+ValidityChecking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+ValidityChecking.m"; sourceTree = "<group>"; };
+		FF01CA9E1C473EC100F83A73 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		FF0E12B91824286600D49EC7 /* TTModeMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMap.h; path = Models/TTModeMap.h; sourceTree = "<group>"; };
 		FF0E12BA1824286600D49EC7 /* TTModeMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeMap.m; path = Models/TTModeMap.m; sourceTree = "<group>"; };
 		FF0E12C3182477CB00D49EC7 /* TTModeProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TTModeProtocol.h; path = Models/TTModeProtocol.h; sourceTree = "<group>"; };
@@ -771,6 +800,41 @@
 				FF01CA581C46DCC200F83A73 /* vinyl.png */,
 			);
 			path = icons;
+			sourceTree = "<group>";
+		};
+		FF01CA861C473EC100F83A73 /* readability */ = {
+			isa = PBXGroup;
+			children = (
+				FF01CA871C473EC100F83A73 /* htmls.h */,
+				FF01CA881C473EC100F83A73 /* htmls.m */,
+				FF01CA891C473EC100F83A73 /* JXReadabilityDocument.h */,
+				FF01CA8A1C473EC100F83A73 /* JXReadabilityDocument.m */,
+				FF01CA8B1C473EC100F83A73 /* JXWebResourceLoadingBarrier.h */,
+				FF01CA8C1C473EC100F83A73 /* JXWebResourceLoadingBarrier.m */,
+				FF01CA8E1C473EC100F83A73 /* NSString+Counting.h */,
+				FF01CA8F1C473EC100F83A73 /* NSString+Counting.m */,
+				FF01CA901C473EC100F83A73 /* NSString+JXRemoving.h */,
+				FF01CA911C473EC100F83A73 /* NSString+JXRemoving.m */,
+				FF01CA921C473EC100F83A73 /* NSString+ReplaceExtensions.h */,
+				FF01CA931C473EC100F83A73 /* NSString+ReplaceExtensions.m */,
+				FF01CA941C473EC100F83A73 /* NSXMLNode+HTMLUtilities.h */,
+				FF01CA951C473EC100F83A73 /* NSXMLNode+HTMLUtilities.m */,
+				FF01CA961C473EC100F83A73 /* webarchiver */,
+			);
+			name = readability;
+			path = "Turn Touch Remote/Vendor/readability";
+			sourceTree = SOURCE_ROOT;
+		};
+		FF01CA961C473EC100F83A73 /* webarchiver */ = {
+			isa = PBXGroup;
+			children = (
+				FF01CA9A1C473EC100F83A73 /* KBWebArchiver.h */,
+				FF01CA9B1C473EC100F83A73 /* KBWebArchiver.m */,
+				FF01CA9C1C473EC100F83A73 /* NSURL+ValidityChecking.h */,
+				FF01CA9D1C473EC100F83A73 /* NSURL+ValidityChecking.m */,
+				FF01CA9E1C473EC100F83A73 /* README */,
+			);
+			path = webarchiver;
 			sourceTree = "<group>";
 		};
 		FF0E12B51824283B00D49EC7 /* Models */ = {
@@ -1337,6 +1401,7 @@
 			isa = PBXGroup;
 			children = (
 				FF1F13551ADC90E700B52A0D /* MLCalendar */,
+				FF01CA861C473EC100F83A73 /* readability */,
 				FF5295CF1AD610A6007DDC02 /* RHPreferences */,
 				FF73058E1A5C9C76009A852D /* Hue */,
 				FF1B02291A36898700BE764E /* NSObject+CancelableBlocks.h */,
@@ -1752,6 +1817,7 @@
 				FF01CA7E1C46DCC200F83A73 /* presentation-chart.png in Resources */,
 				FF01CA291C46009E00F83A73 /* scripts in Resources */,
 				FF01CA741C46DCC200F83A73 /* mode_news.png in Resources */,
+				FF01CAB11C473EC100F83A73 /* README in Resources */,
 				FF01CA651C46DCC200F83A73 /* heart.png in Resources */,
 				FF2740701A7C576900C55579 /* itunes_genius_icon.png in Resources */,
 				FF01CA621C46DCC200F83A73 /* equalizer-1.png in Resources */,
@@ -1781,6 +1847,7 @@
 				FFE2D4791A46404500DDD413 /* NSData+Conversion.m in Sources */,
 				FFABAB9F1C33675200AD5620 /* TTModeWebWindow.m in Sources */,
 				FF8C834A17AB14B5000166FC /* TTAppDelegate.m in Sources */,
+				FF01CAAA1C473EC100F83A73 /* NSString+JXRemoving.m in Sources */,
 				FF904B4B1BE9B82200AD00F3 /* hid.c in Sources */,
 				FF904B7A1BE9B88700AD00F3 /* FileOperations.m in Sources */,
 				FF904B771BE9B88700AD00F3 /* BLEOperations.m in Sources */,
@@ -1791,6 +1858,7 @@
 				FF904B4C1BE9B82200AD00F3 /* TTBluetoothMonitor.m in Sources */,
 				FF58717B1BDC83AB00CDCC1C /* TTProgressBar.m in Sources */,
 				FF5295DB1AD610A6007DDC02 /* RHPreferencesWindowController.m in Sources */,
+				FF01CAAF1C473EC100F83A73 /* KBWebArchiver.m in Sources */,
 				FF1F135D1ADC90E700B52A0D /* MLCalendarBackground.m in Sources */,
 				FF1F135F1ADC90E700B52A0D /* MLCalendarView.m in Sources */,
 				FF904BA71BEBFCDE00AD00F3 /* TTDFUDeviceView.m in Sources */,
@@ -1799,6 +1867,7 @@
 				FFE2D47E1A51EDF000DDD413 /* TTModeHue.m in Sources */,
 				FF904BAD1BEBFD1400AD00F3 /* TTDFUView.m in Sources */,
 				FF904B4D1BE9B82200AD00F3 /* TTButtonState.m in Sources */,
+				FF01CAA71C473EC100F83A73 /* JXWebResourceLoadingBarrier.m in Sources */,
 				FFB1670E1923E61F008FA1AF /* TTTabView.m in Sources */,
 				FFA1D4CB1A3B8916003EA0BC /* TTActionHUDView.m in Sources */,
 				FFF05F4218F77D5D00AC6230 /* TTChangeButtonCell.m in Sources */,
@@ -1833,11 +1902,13 @@
 				FFAA4F72182D9A5F0049FFC7 /* TTModeNews.m in Sources */,
 				FF1F13631ADC98C400B52A0D /* TTDatePicker.m in Sources */,
 				FF904B791BE9B88700AD00F3 /* DFUOperationsDetails.m in Sources */,
+				FF01CAAC1C473EC100F83A73 /* NSXMLNode+HTMLUtilities.m in Sources */,
 				FF0E12CF18247D6100D49EC7 /* TTModeMusic.m in Sources */,
 				FF52960E1AD631D1007DDC02 /* TTSettingsDevicesViewController.m in Sources */,
 				FFB5FF381A671BA200DF617A /* TTModeHueSceneEarlyEveningOptions.m in Sources */,
 				FFC730E81B067434003538D5 /* TTModeHueRandomOptions.m in Sources */,
 				FF7305B41A5C9C76009A852D /* DispatchQueueLogFormatter.m in Sources */,
+				FF01CAA51C473EC100F83A73 /* htmls.m in Sources */,
 				FFA8EAA0190F090300679A4D /* TTModeMenuContainer.m in Sources */,
 				FFD62CCE194F935D0093004D /* TTSegmentedCell.m in Sources */,
 				FF8012F318692D0A00955218 /* TTModeMac.m in Sources */,
@@ -1846,6 +1917,7 @@
 				FF801319186CF8FF00955218 /* TTDiamondLabels.m in Sources */,
 				FF904B3C1BE9B7F500AD00F3 /* TTActionHUDWindowController.m in Sources */,
 				FF7305C01A5CA8F5009A852D /* TTModeHueConnected.m in Sources */,
+				FF01CAAB1C473EC100F83A73 /* NSString+ReplaceExtensions.m in Sources */,
 				FFF05F3E18F77CF500AC6230 /* TTChangeButtonView.m in Sources */,
 				FFB1670B1922FE53008FA1AF /* TTModeMacOptions.m in Sources */,
 				FFABAB811C2777D500AD5620 /* TTBatchActionHeaderView.m in Sources */,
@@ -1879,6 +1951,7 @@
 				FFABAB8A1C28E6F000AD5620 /* TTBatchActions.m in Sources */,
 				FF913D2C19243BFD005C336F /* TTModeAlarmSnoozeOptions.m in Sources */,
 				FF98A2E81867DBE70032CC7A /* TTPanelController.m in Sources */,
+				FF01CAB01C473EC100F83A73 /* NSURL+ValidityChecking.m in Sources */,
 				FF5295C81AD5B9B8007DDC02 /* TTSettingsButton.m in Sources */,
 				FF3641EF1A60C422003CC03C /* TTModeHuePushlink.m in Sources */,
 				FF7305AE1A5C9C76009A852D /* DDAbstractDatabaseLogger.m in Sources */,
@@ -1886,6 +1959,7 @@
 				FF904B991BE9BA3700AD00F3 /* zip.c in Sources */,
 				FFABAB841C2784E300AD5620 /* TTBatchActionStackView.m in Sources */,
 				FF904B4F1BE9B82200AD00F3 /* TTDeviceList.m in Sources */,
+				FF01CAA91C473EC100F83A73 /* NSString+Counting.m in Sources */,
 				FFA1D4CD1A3B8916003EA0BC /* TTActionHUDWindow.m in Sources */,
 				FF801338186E5D9700955218 /* TTOptionsActionTitle.m in Sources */,
 				FF98A2ED1867DC320032CC7A /* main.m in Sources */,
@@ -1902,6 +1976,7 @@
 				FF904B861BE9B88700AD00F3 /* InitData.m in Sources */,
 				FFABAB901C2A32E000AD5620 /* TTAction.m in Sources */,
 				FFABAB9B1C33674000AD5620 /* TTModeWebWindowController.m in Sources */,
+				FF01CAA61C473EC100F83A73 /* JXReadabilityDocument.m in Sources */,
 				FFABAB7D1C2777AD00AD5620 /* TTBatchActionContainerView.m in Sources */,
 				FFABAB961C334FCA00AD5620 /* TTModeWeb.m in Sources */,
 			);

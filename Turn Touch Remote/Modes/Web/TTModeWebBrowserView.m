@@ -34,6 +34,10 @@
     [webView setMainFrameURL:urlString];
 }
 
+- (void)loadURL:(NSString *)urlString withHtml:(NSString *)htmlSource {
+    [[webView mainFrame] loadHTMLString:htmlSource baseURL:[NSURL URLWithString:urlString]];
+}
+
 - (void)webView:(WebView *)sender resource:(id)identifier didFinishLoadingFromDataSource:(WebDataSource *)dataSource {
     [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.documentElement.style.zoom = \"%f\"", zoomFactor]];
     

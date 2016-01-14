@@ -21,6 +21,7 @@
 @property (nonatomic) IBOutlet NSLayoutConstraint *widthConstraint;
 
 - (void)loadURL:(NSString *)urlString;
+- (void)loadURL:(NSString *)urlString withHtml:(NSString *)htmlSource;
 - (void)scrollUp;
 - (void)scrollDown;
 - (void)adjustTextSizeUp;
