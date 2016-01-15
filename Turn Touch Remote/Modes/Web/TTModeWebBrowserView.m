@@ -100,18 +100,18 @@
 
 - (void)widenMargin {
     [NSAnimationContext beginGrouping];
-    [[NSAnimationContext currentContext] setDuration:.25f];
+    [[NSAnimationContext currentContext] setDuration:.26f];
     [[NSAnimationContext currentContext]
-     setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
+     setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
     [[widthConstraint animator] setConstant:widthConstraint.constant+125];
     [NSAnimationContext endGrouping];
 }
 
 - (void)narrowMargin {
     [NSAnimationContext beginGrouping];
-    [[NSAnimationContext currentContext] setDuration:.25f];
+    [[NSAnimationContext currentContext] setDuration:.26f];
     [[NSAnimationContext currentContext]
-     setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
+     setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
     [[widthConstraint animator] setConstant:widthConstraint.constant-125];
     [NSAnimationContext endGrouping];
 }
