@@ -6,6 +6,7 @@
 //  Copyright © 2015 Turn Touch. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "TTModeWebBrowserView.h"
 
 @implementation TTModeWebBrowserView
@@ -95,6 +96,24 @@
     zoomFactor -= 0.05;
     [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.documentElement.style.zoom = \"%f\"", zoomFactor]];
     NSLog(@" ---> Zoom factor: %f", zoomFactor);
+}
+
+- (void)widenMargin {
+    [NSAnimationContext beginGrouping];
+    [[NSAnimationContext currentContext] setDuration:.25f];
+    [[NSAnimationContext currentContext]
+     setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
+    [[widthConstraint animator] setConstant:widthConstraint.constant+125];
+    [NSAnimationContext endGrouping];
+}
+
+- (void)narrowMargin {
+    [NSAnimationContext beginGrouping];
+    [[NSAnimationContext currentContext] setDuration:.25f];
+    [[NSAnimationContext currentContext]
+     setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
+    [[widthConstraint animator] setConstant:widthConstraint.constant-125];
+    [NSAnimationContext endGrouping];
 }
 
 @end

@@ -299,11 +299,11 @@
 }
 
 - (void)menuTTModeWebMenuMarginWider {
-    
+    [webWindowController.browserView widenMargin];
 }
 
 - (void)menuTTModeWebMenuMarginNarrower {
-    
+    [webWindowController.browserView narrowMargin];
 }
 
 - (void)menuTTModeWebMenuClose {

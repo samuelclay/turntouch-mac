@@ -117,6 +117,8 @@
 		FF5296141AD633F4007DDC02 /* TTSettingsSupportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5296121AD633F4007DDC02 /* TTSettingsSupportViewController.xib */; };
 		FF5296181AD63425007DDC02 /* TTSettingsAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5296161AD63425007DDC02 /* TTSettingsAboutViewController.m */; };
 		FF5296191AD63425007DDC02 /* TTSettingsAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5296171AD63425007DDC02 /* TTSettingsAboutViewController.xib */; };
+		FF557A9E1C4855BD005FB7FD /* TTModeNest.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557A9D1C4855BD005FB7FD /* TTModeNest.m */; };
+		FF557AA21C4855D4005FB7FD /* TTModeWemo.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AA11C4855D4005FB7FD /* TTModeWemo.m */; };
 		FF58717B1BDC83AB00CDCC1C /* TTProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = FF58717A1BDC83AB00CDCC1C /* TTProgressBar.m */; };
 		FF66F2A619228DE100031478 /* TTModeAlarmClockOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66F2A519228DE100031478 /* TTModeAlarmClockOptions.m */; };
 		FF66F2A91922D1C100031478 /* TTOptionsDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66F2A81922D1C100031478 /* TTOptionsDetailView.m */; };
@@ -457,6 +459,10 @@
 		FF5296151AD63425007DDC02 /* TTSettingsAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTSettingsAboutViewController.h; sourceTree = "<group>"; };
 		FF5296161AD63425007DDC02 /* TTSettingsAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTSettingsAboutViewController.m; sourceTree = "<group>"; };
 		FF5296171AD63425007DDC02 /* TTSettingsAboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTSettingsAboutViewController.xib; sourceTree = "<group>"; };
+		FF557A9C1C4855BD005FB7FD /* TTModeNest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeNest.h; path = Modes/Nest/TTModeNest.h; sourceTree = "<group>"; };
+		FF557A9D1C4855BD005FB7FD /* TTModeNest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeNest.m; path = Modes/Nest/TTModeNest.m; sourceTree = "<group>"; };
+		FF557AA01C4855D4005FB7FD /* TTModeWemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeWemo.h; path = Modes/Wemo/TTModeWemo.h; sourceTree = "<group>"; };
+		FF557AA11C4855D4005FB7FD /* TTModeWemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeWemo.m; path = Modes/Wemo/TTModeWemo.m; sourceTree = "<group>"; };
 		FF5871791BDC83AB00CDCC1C /* TTProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTProgressBar.h; sourceTree = "<group>"; };
 		FF58717A1BDC83AB00CDCC1C /* TTProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTProgressBar.m; sourceTree = "<group>"; };
 		FF66F2A419228DE100031478 /* TTModeAlarmClockOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeAlarmClockOptions.h; path = "Modes/Alarm Clock/TTModeAlarmClockOptions.h"; sourceTree = "<group>"; };
@@ -863,6 +869,8 @@
 		FF0E12C418247B7A00D49EC7 /* Modes */ = {
 			isa = PBXGroup;
 			children = (
+				FF557A9F1C4855C6005FB7FD /* Wemo */,
+				FF557A9B1C4855A5005FB7FD /* Nest */,
 				FFFF683519D4E2AF0081904A /* Meditation */,
 				FF98A2FD1868D37C0032CC7A /* Mac */,
 				FFAA4F6C182D99440049FFC7 /* Alarm Clock */,
@@ -1012,6 +1020,24 @@
 			);
 			name = Settings;
 			path = Views/Settings;
+			sourceTree = "<group>";
+		};
+		FF557A9B1C4855A5005FB7FD /* Nest */ = {
+			isa = PBXGroup;
+			children = (
+				FF557A9C1C4855BD005FB7FD /* TTModeNest.h */,
+				FF557A9D1C4855BD005FB7FD /* TTModeNest.m */,
+			);
+			name = Nest;
+			sourceTree = "<group>";
+		};
+		FF557A9F1C4855C6005FB7FD /* Wemo */ = {
+			isa = PBXGroup;
+			children = (
+				FF557AA01C4855D4005FB7FD /* TTModeWemo.h */,
+				FF557AA11C4855D4005FB7FD /* TTModeWemo.m */,
+			);
+			name = Wemo;
 			sourceTree = "<group>";
 		};
 		FF5F70B217C428F200511AB6 /* Views */ = {
@@ -1892,6 +1918,7 @@
 				FF3641E21A5F6478003CC03C /* TTOptionsDetailViewController.m in Sources */,
 				FF801326186CF90700955218 /* TTBackgroundView.m in Sources */,
 				FF0E12CA18247BAE00D49EC7 /* TTMode.m in Sources */,
+				FF557AA21C4855D4005FB7FD /* TTModeWemo.m in Sources */,
 				FF7305B31A5C9C76009A852D /* ContextFilterLogFormatter.m in Sources */,
 				FF904B3F1BE9B80100AD00F3 /* TTModeHUDWindowController.m in Sources */,
 				FF801327186CF90700955218 /* TTPanel.m in Sources */,
@@ -1906,6 +1933,7 @@
 				FF0E12CF18247D6100D49EC7 /* TTModeMusic.m in Sources */,
 				FF52960E1AD631D1007DDC02 /* TTSettingsDevicesViewController.m in Sources */,
 				FFB5FF381A671BA200DF617A /* TTModeHueSceneEarlyEveningOptions.m in Sources */,
+				FF557A9E1C4855BD005FB7FD /* TTModeNest.m in Sources */,
 				FFC730E81B067434003538D5 /* TTModeHueRandomOptions.m in Sources */,
 				FF7305B41A5C9C76009A852D /* DispatchQueueLogFormatter.m in Sources */,
 				FF01CAA51C473EC100F83A73 /* htmls.m in Sources */,

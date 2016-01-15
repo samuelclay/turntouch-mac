@@ -28,5 +28,7 @@
 - (void)adjustTextSizeDown;
 - (void)zoomIn;
 - (void)zoomOut;
+- (void)widenMargin;
+- (void)narrowMargin;
 
 @end

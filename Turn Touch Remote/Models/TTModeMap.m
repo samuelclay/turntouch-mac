@@ -14,6 +14,8 @@
 #import "TTModeWeb.h"
 #import "TTModeMac.h"
 #import "TTModeHue.h"
+#import "TTModeNest.h"
+#import "TTModeWemo.h"
 #import "TTBatchAction.h"
 #import "TTBatchActions.h"
 
@@ -48,7 +50,9 @@
                                   @"TTModeVideo",
                                   @"TTModeNews",
                                   @"TTModeWeb",
-                                  @"TTModeHue"]];
+                                  @"TTModeHue",
+                                  @"TTModeNest",
+                                  @"TTModeWemo"]];
         
         activeModeDirection = NO_DIRECTION;
         inspectingModeDirection = NO_DIRECTION;
