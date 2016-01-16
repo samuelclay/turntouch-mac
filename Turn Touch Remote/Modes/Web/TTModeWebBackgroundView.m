@@ -21,11 +21,11 @@
     NSTrackingAreaOptions options = (NSTrackingActiveAlways | NSTrackingInVisibleRect |
                                      NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved);
     
-    NSTrackingArea *area = [[NSTrackingArea alloc] initWithRect:[self bounds]
-                                                        options:options
-                                                          owner:self
-                                                       userInfo:nil];
-    [self addTrackingArea:area];
+    trackingArea = [[NSTrackingArea alloc] initWithRect:[self bounds]
+                                                options:options
+                                                  owner:self
+                                               userInfo:nil];
+    [self addTrackingArea:trackingArea];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
@@ -35,6 +35,10 @@
 }
 
 - (void)mouseMoved:(NSEvent *)theEvent {
+    if (![NSAppDelegate.modeMap.selectedMode isKindOfClass:[TTModeWeb class]]) {
+        [self removeTrackingArea:trackingArea];
+        return;
+    }
     [(TTModeWeb *)NSAppDelegate.modeMap.selectedMode startHideMouseTimer];
 }
 

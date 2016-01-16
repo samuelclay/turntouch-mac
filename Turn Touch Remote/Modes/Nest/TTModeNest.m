@@ -37,16 +37,16 @@
 #pragma mark - Action Titles
 
 - (NSString *)titleTTModeNestRaiseTemp {
-    return @"Next story";
+    return @"Raise temperature";
 }
 - (NSString *)titleTTModeNestLowerTemp {
-    return @"Next site";
+    return @"Lower temperature";
 }
 - (NSString *)titleTTModeNestSetTemp {
-    return @"Previous story";
+    return @"Set temperature";
 }
 - (NSString *)titleTTModeNestChangeMode {
-    return @"Previous site";
+    return @"Change mode";
 }
 
 #pragma mark - Action Images

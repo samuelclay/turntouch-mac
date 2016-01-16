@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface TTModeWebBackgroundView : NSVisualEffectView
+@interface TTModeWebBackgroundView : NSVisualEffectView {
+    NSTrackingArea *trackingArea;
+}
 
 @end
