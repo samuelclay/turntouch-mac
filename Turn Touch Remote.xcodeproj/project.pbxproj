@@ -119,7 +119,6 @@
 		FF5296191AD63425007DDC02 /* TTSettingsAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5296171AD63425007DDC02 /* TTSettingsAboutViewController.xib */; };
 		FF557A9E1C4855BD005FB7FD /* TTModeNest.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557A9D1C4855BD005FB7FD /* TTModeNest.m */; };
 		FF557AA21C4855D4005FB7FD /* TTModeWemo.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AA11C4855D4005FB7FD /* TTModeWemo.m */; };
-		FF557AA51C49C5EF005FB7FD /* TTModeNestAuthPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AA41C49C5EF005FB7FD /* TTModeNestAuthPopover.m */; };
 		FF557AB31C49C63D005FB7FD /* AccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AA81C49C63D005FB7FD /* AccessToken.m */; };
 		FF557AB41C49C63D005FB7FD /* FirebaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AAA1C49C63D005FB7FD /* FirebaseManager.m */; };
 		FF557AB51C49C63D005FB7FD /* NestAuthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AAC1C49C63D005FB7FD /* NestAuthManager.m */; };
@@ -135,6 +134,8 @@
 		FF557ACD1C49CE8C005FB7FD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF557ACC1C49CE8C005FB7FD /* CFNetwork.framework */; };
 		FF557ACF1C49CE94005FB7FD /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF557ACE1C49CE94005FB7FD /* Security.framework */; };
 		FF557AD11C49D0B2005FB7FD /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF557AD01C49D0B2005FB7FD /* Firebase.framework */; };
+		FF557AD51C4DBB4A005FB7FD /* TTModeNestAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AD31C4DBB4A005FB7FD /* TTModeNestAuthViewController.m */; };
+		FF557AD61C4DBB4A005FB7FD /* TTModeNestAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF557AD41C4DBB4A005FB7FD /* TTModeNestAuthViewController.xib */; };
 		FF58717B1BDC83AB00CDCC1C /* TTProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = FF58717A1BDC83AB00CDCC1C /* TTProgressBar.m */; };
 		FF66F2A619228DE100031478 /* TTModeAlarmClockOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66F2A519228DE100031478 /* TTModeAlarmClockOptions.m */; };
 		FF66F2A91922D1C100031478 /* TTOptionsDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66F2A81922D1C100031478 /* TTOptionsDetailView.m */; };
@@ -480,8 +481,6 @@
 		FF557A9D1C4855BD005FB7FD /* TTModeNest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeNest.m; path = Modes/Nest/TTModeNest.m; sourceTree = "<group>"; };
 		FF557AA01C4855D4005FB7FD /* TTModeWemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeWemo.h; path = Modes/Wemo/TTModeWemo.h; sourceTree = "<group>"; };
 		FF557AA11C4855D4005FB7FD /* TTModeWemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeWemo.m; path = Modes/Wemo/TTModeWemo.m; sourceTree = "<group>"; };
-		FF557AA31C49C5EF005FB7FD /* TTModeNestAuthPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeNestAuthPopover.h; path = Modes/Nest/TTModeNestAuthPopover.h; sourceTree = "<group>"; };
-		FF557AA41C49C5EF005FB7FD /* TTModeNestAuthPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeNestAuthPopover.m; path = Modes/Nest/TTModeNestAuthPopover.m; sourceTree = "<group>"; };
 		FF557AA71C49C63D005FB7FD /* AccessToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessToken.h; sourceTree = "<group>"; };
 		FF557AA81C49C63D005FB7FD /* AccessToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessToken.m; sourceTree = "<group>"; };
 		FF557AA91C49C63D005FB7FD /* FirebaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirebaseManager.h; sourceTree = "<group>"; };
@@ -504,6 +503,9 @@
 		FF557ACC1C49CE8C005FB7FD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		FF557ACE1C49CE94005FB7FD /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		FF557AD01C49D0B2005FB7FD /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
+		FF557AD21C4DBB4A005FB7FD /* TTModeNestAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeNestAuthViewController.h; path = Modes/Nest/TTModeNestAuthViewController.h; sourceTree = "<group>"; };
+		FF557AD31C4DBB4A005FB7FD /* TTModeNestAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeNestAuthViewController.m; path = Modes/Nest/TTModeNestAuthViewController.m; sourceTree = "<group>"; };
+		FF557AD41C4DBB4A005FB7FD /* TTModeNestAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeNestAuthViewController.xib; path = Modes/Nest/TTModeNestAuthViewController.xib; sourceTree = "<group>"; };
 		FF5871791BDC83AB00CDCC1C /* TTProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTProgressBar.h; sourceTree = "<group>"; };
 		FF58717A1BDC83AB00CDCC1C /* TTProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTProgressBar.m; sourceTree = "<group>"; };
 		FF66F2A419228DE100031478 /* TTModeAlarmClockOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeAlarmClockOptions.h; path = "Modes/Alarm Clock/TTModeAlarmClockOptions.h"; sourceTree = "<group>"; };
@@ -1078,8 +1080,9 @@
 				FF557AB91C49C6A8005FB7FD /* TTModeNestOptions.h */,
 				FF557ABA1C49C6A8005FB7FD /* TTModeNestOptions.m */,
 				FF557ABB1C49C6A8005FB7FD /* TTModeNestOptions.xib */,
-				FF557AA31C49C5EF005FB7FD /* TTModeNestAuthPopover.h */,
-				FF557AA41C49C5EF005FB7FD /* TTModeNestAuthPopover.m */,
+				FF557AD21C4DBB4A005FB7FD /* TTModeNestAuthViewController.h */,
+				FF557AD31C4DBB4A005FB7FD /* TTModeNestAuthViewController.m */,
+				FF557AD41C4DBB4A005FB7FD /* TTModeNestAuthViewController.xib */,
 			);
 			name = Nest;
 			sourceTree = "<group>";
@@ -1875,6 +1878,7 @@
 				FF52960A1AD61F84007DDC02 /* NSDateTimeAgo.bundle in Resources */,
 				FF91709A1AF9B19100FAAC88 /* north tone.wav in Resources */,
 				FF3641DC1A5F5617003CC03C /* TTModeHueOptions.xib in Resources */,
+				FF557AD61C4DBB4A005FB7FD /* TTModeNestAuthViewController.xib in Resources */,
 				FF913D271924366C005C336F /* TTModeAlarmClock.plist in Resources */,
 				FF8A73C81ABA69410023AA53 /* logo_64.png in Resources */,
 				FF27407A1A7C5BC200C55579 /* itunes_movies_icon.png in Resources */,
@@ -1970,7 +1974,6 @@
 				FF1F135D1ADC90E700B52A0D /* MLCalendarBackground.m in Sources */,
 				FF1F135F1ADC90E700B52A0D /* MLCalendarView.m in Sources */,
 				FF904BA71BEBFCDE00AD00F3 /* TTDFUDeviceView.m in Sources */,
-				FF557AA51C49C5EF005FB7FD /* TTModeNestAuthPopover.m in Sources */,
 				FF904B781BE9B88700AD00F3 /* DFUOperations.m in Sources */,
 				FFD62CD11950EE770093004D /* TTSegmentedControl.m in Sources */,
 				FFE2D47E1A51EDF000DDD413 /* TTModeHue.m in Sources */,
@@ -1995,6 +1998,7 @@
 				FF98A2E11867DBA40032CC7A /* TTActionMap.m in Sources */,
 				FFABABA21C33676700AD5620 /* TTModeWebBrowserView.m in Sources */,
 				FF7305B11A5C9C76009A852D /* DDLog.m in Sources */,
+				FF557AD51C4DBB4A005FB7FD /* TTModeNestAuthViewController.m in Sources */,
 				FF904B7B1BE9B88700AD00F3 /* DFUHelper.m in Sources */,
 				FF904B871BE9B88700AD00F3 /* JsonParser.m in Sources */,
 				FFB5FF3E1A671C2600DF617A /* TTModeHueSleepOptions.m in Sources */,

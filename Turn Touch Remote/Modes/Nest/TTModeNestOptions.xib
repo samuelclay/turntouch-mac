@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTModeNestOptions">
             <connections>
+                <outlet property="authButton" destination="AU1-wD-Vns" id="T0g-Mh-tNj"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -14,8 +15,8 @@
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
             <rect key="frame" x="0.0" y="0.0" width="480" height="80"/>
             <subviews>
-                <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AU1-wD-Vns" customClass="TTButton">
-                    <rect key="frame" x="140" y="19" width="200" height="32"/>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AU1-wD-Vns">
+                    <rect key="frame" x="134" y="23" width="212" height="32"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="200" id="Rgb-WD-drw"/>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="zaZ-hT-V8e"/>
@@ -24,6 +25,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="clickAuthButton:" target="-2" id="YVF-yE-8zo"/>
+                    </connections>
                 </button>
             </subviews>
             <constraints>
