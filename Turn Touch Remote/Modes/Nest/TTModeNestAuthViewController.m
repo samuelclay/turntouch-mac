@@ -9,7 +9,7 @@
 #import "TTModeNestAuthViewController.h"
 #import "NestAuthManager.h"
 #import "NestConstants.h"
-#import "TTModeNestOptions.h"
+#import "TTModeNest.h"
 
 #define QUESTION_MARK @"?"
 #define SLASH @"/"
@@ -85,7 +85,7 @@
 {
     if ([[NestAuthManager sharedManager] isValidSession]) {
         [self invalidateTimer];
-        [((TTModeNestOptions *)appDelegate.panelController.backgroundView.optionsView.modeOptionsViewController) displayThermostats];
+        [((TTModeNest *)appDelegate.modeMap.selectedMode) subscribeToThermostat:0];
     }
 }
 

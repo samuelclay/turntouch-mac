@@ -10,6 +10,10 @@
 
 @implementation TTModeNest
 
+@synthesize nestStructureManager;
+@synthesize nestThermostatManager;
+@synthesize currentStructure;
+
 #pragma mark - Mode
 
 + (NSString *)title {
@@ -93,5 +97,33 @@
 - (NSString *)defaultSouth {
     return @"TTModeNestChangeMode";
 }
+
+#pragma mark - Activation
+
+- (void)activate {
+    self.nestStructureManager = [[NestStructureManager alloc] init];
+    [self.nestStructureManager setDelegate:self];
+    [self.nestStructureManager initialize];
+    
+    self.nestThermostatManager = [[NestThermostatManager alloc] init];
+    [self.nestThermostatManager setDelegate:self];
+}
+
+- (void)structureUpdated:(NSDictionary *)structure {
+    NSLog(@"Nest Structure updated: %@", structure);
+    self.currentStructure = structure;
+    [self subscribeToThermostat:0];
+}
+
+- (void)thermostatValuesChanged:(Thermostat *)thermostat {
+    NSLog(@"thermostat value changed: %@: %ld - %ld", thermostat, thermostat.targetTemperatureF, thermostat.ambientTemperatureF);
+}
+
+- (void)subscribeToThermostat:(NSInteger)thermostatIndex {
+    NSLog(@"Subscribing to thermostat: %ld", thermostatIndex);
+    Thermostat *thermostat = [[self.currentStructure objectForKey:@"thermostats"] objectAtIndex:thermostatIndex];
+    [self.nestThermostatManager beginSubscriptionForThermostat:thermostat];
+}
+
 
 @end

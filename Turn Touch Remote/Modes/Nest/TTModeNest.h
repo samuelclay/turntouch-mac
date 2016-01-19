@@ -7,7 +7,16 @@
 //
 
 #import "TTMode.h"
+#import "NestThermostatManager.h"
+#import "NestStructureManager.h"
 
-@interface TTModeNest : TTMode
+@interface TTModeNest : TTMode <NestThermostatManagerDelegate, NestStructureManagerDelegate>
+
+@property (nonatomic, strong) NestThermostatManager *nestThermostatManager;
+@property (nonatomic, strong) NestStructureManager *nestStructureManager;
+
+@property (nonatomic, strong) NSDictionary *currentStructure;
+
+- (void)subscribeToThermostat:(NSInteger)thermostatIndex;
 
 @end
