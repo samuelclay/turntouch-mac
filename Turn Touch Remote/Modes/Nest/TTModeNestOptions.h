@@ -6,15 +6,11 @@
 //  Copyright © 2016 Turn Touch. All rights reserved.
 //
 
+#import "TTModeNest.h"
 #import "TTOptionsDetailViewController.h"
 
-@interface TTModeNestOptions : TTOptionsDetailViewController {
-    NSPopover *authPopover;
-}
+@interface TTModeNestOptions : TTOptionsDetailViewController <TTModeNestDelegate>
 
-@property (nonatomic) IBOutlet NSButton *authButton;
-
-- (IBAction)clickAuthButton:(id)sender;
-- (void)closePopover;
+@property (nonatomic, strong) TTModeNest *modeNest;
 
 @end

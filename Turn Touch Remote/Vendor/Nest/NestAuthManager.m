@@ -63,7 +63,7 @@
 - (NSString *)authorizationURL
 {
     // First get the client id
-    NSString *clientId = [[NSUserDefaults standardUserDefaults] valueForKey:@"clientId"];
+    NSString *clientId = [[NSUserDefaults standardUserDefaults] valueForKey:@"TT:mode:nest:clientId"];
     if (clientId) {
         return [NSString stringWithFormat:@"https://%@/login/oauth2?client_id=%@&state=%@", NestCurrentAPIDomain, clientId, NestState];
     } else {
@@ -78,9 +78,9 @@
  */
 - (NSString *)accessURL
 {
-    NSString *clientId = [[NSUserDefaults standardUserDefaults] valueForKey:@"clientId"];
-    NSString *clientSecret = [[NSUserDefaults standardUserDefaults] valueForKey:@"clientSecret"];
-    NSString *authorizationCode = [[NSUserDefaults standardUserDefaults] valueForKey:@"authorizationCode"];
+    NSString *clientId = [[NSUserDefaults standardUserDefaults] valueForKey:@"TT:mode:nest:clientId"];
+    NSString *clientSecret = [[NSUserDefaults standardUserDefaults] valueForKey:@"TT:mode:nest:clientSecret"];
+    NSString *authorizationCode = [[NSUserDefaults standardUserDefaults] valueForKey:@"TT:mode:nest:authorizationCode"];
     
     if (clientId && clientSecret && authorizationCode) {
         return [NSString stringWithFormat:@"https://api.%@/oauth2/access_token?code=%@&client_id=%@&client_secret=%@&grant_type=authorization_code", NestCurrentAPIDomain, authorizationCode, clientId, clientSecret];
@@ -104,7 +104,7 @@
  */
 - (NSString *)accessToken
 {
-    NSData *encodedObject = [[NSUserDefaults standardUserDefaults] objectForKey:@"accessToken"];
+    NSData *encodedObject = [[NSUserDefaults standardUserDefaults] objectForKey:@"TT:mode:nest:accessToken"];
     
     // If there is nothing there -- return
     if (!encodedObject) {
@@ -126,7 +126,7 @@
  */
 - (void)setAuthorizationCode:(NSString *)authorizationCode
 {
-    [[NSUserDefaults standardUserDefaults] setObject:authorizationCode forKey:@"authorizationCode"];
+    [[NSUserDefaults standardUserDefaults] setObject:authorizationCode forKey:@"TT:mode:nest:authorizationCode"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [self exchangeCodeForToken];
 }
@@ -140,7 +140,7 @@
 {
     AccessToken *nat = [AccessToken tokenWithToken:accessToken expiresIn:expiration];
     NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:nat];
-    [[NSUserDefaults standardUserDefaults] setObject:encodedObject forKey:@"accessToken"];
+    [[NSUserDefaults standardUserDefaults] setObject:encodedObject forKey:@"TT:mode:nest:accessToken"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -151,7 +151,7 @@
  */
 - (void)setClientId:(NSString *)clientId
 {
-    [[NSUserDefaults standardUserDefaults] setObject:clientId forKey:@"clientId"];
+    [[NSUserDefaults standardUserDefaults] setObject:clientId forKey:@"TT:mode:nest:clientId"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -161,7 +161,7 @@
  */
 - (void)setClientSecret:(NSString *)clientSecret
 {
-    [[NSUserDefaults standardUserDefaults] setObject:clientSecret forKey:@"clientSecret"];
+    [[NSUserDefaults standardUserDefaults] setObject:clientSecret forKey:@"TT:mode:nest:clientSecret"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
 }
@@ -183,7 +183,6 @@
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     [connection scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
     [connection start];
-//    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 }
 
 #pragma mark NSURLConnection Delegate Methods

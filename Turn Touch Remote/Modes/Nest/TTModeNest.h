@@ -10,13 +10,33 @@
 #import "NestThermostatManager.h"
 #import "NestStructureManager.h"
 
+
+typedef enum TTNestState : NSUInteger {
+    NEST_STATE_NOT_CONNECTED,
+    NEST_STATE_CONNECTING,
+    NEST_STATE_CONNECTED
+} TTNestState;
+
+@class TTModeNest;
+
+@protocol TTModeNestDelegate <NSObject>
+@required
+
+- (void)changeState:(TTNestState)hueState withMode:(TTModeNest *)modeNest;
+- (void)updateThermostat:(Thermostat *)thermostat;
+@end
+
+
 @interface TTModeNest : TTMode <NestThermostatManagerDelegate, NestStructureManagerDelegate>
 
 @property (nonatomic, strong) NestThermostatManager *nestThermostatManager;
 @property (nonatomic, strong) NestStructureManager *nestStructureManager;
-
 @property (nonatomic, strong) NSDictionary *currentStructure;
+@property (nonatomic, weak) id <TTModeNestDelegate> delegate;
+@property (nonatomic) TTNestState nestState;
 
+- (void)beginConnectingToNest;
+- (void)cancelConnectingToNest;
 - (void)subscribeToThermostat:(NSInteger)thermostatIndex;
 
 @end

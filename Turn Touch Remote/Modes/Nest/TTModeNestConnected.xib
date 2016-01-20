@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="TTModeNestConnected">
+            <connections>
+                <outlet property="labelAmbient" destination="dsX-dJ-xaY" id="ir2-M9-801"/>
+                <outlet property="labelTarget" destination="JuO-04-etB" id="oaJ-mg-0Rw"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="120"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dsX-dJ-xaY">
+                    <rect key="frame" x="75" y="20" width="131" height="49"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Ambient" id="6XF-TQ-JhJ">
+                        <font key="font" size="33" name="Effra-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ja5-9N-XEm">
+                    <rect key="frame" x="85" y="81" width="111" height="19"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Room temperature" id="znj-EJ-Qb2">
+                        <font key="font" size="13" name="Effra-Regular"/>
+                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hZb-Ki-xl8">
+                    <rect key="frame" x="284" y="81" width="112" height="19"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Temperature set to" id="ezJ-Ir-0bB">
+                        <font key="font" size="13" name="Effra-Regular"/>
+                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JuO-04-etB">
+                    <rect key="frame" x="290" y="20" width="100" height="49"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Target" id="bC6-j6-av6">
+                        <font key="font" size="33" name="Effra-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="hZb-Ki-xl8" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="3qc-DC-abB"/>
+                <constraint firstItem="JuO-04-etB" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" constant="100" id="5rx-gO-3oO"/>
+                <constraint firstItem="hZb-Ki-xl8" firstAttribute="centerX" secondItem="JuO-04-etB" secondAttribute="centerX" id="Acy-90-4vs"/>
+                <constraint firstItem="dsX-dJ-xaY" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" constant="-100" id="Egn-D1-aaW"/>
+                <constraint firstItem="ja5-9N-XEm" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="FEW-OA-E2Y"/>
+                <constraint firstItem="ja5-9N-XEm" firstAttribute="centerX" secondItem="dsX-dJ-xaY" secondAttribute="centerX" id="ONQ-IY-dfe"/>
+                <constraint firstItem="dsX-dJ-xaY" firstAttribute="top" secondItem="ja5-9N-XEm" secondAttribute="bottom" constant="12" id="WTi-Js-ebi"/>
+                <constraint firstAttribute="bottom" secondItem="JuO-04-etB" secondAttribute="bottom" constant="20" id="hBN-vk-vlJ"/>
+                <constraint firstItem="JuO-04-etB" firstAttribute="top" secondItem="hZb-Ki-xl8" secondAttribute="bottom" constant="12" id="zw3-Ae-wD3"/>
+            </constraints>
+            <point key="canvasLocation" x="269" y="437"/>
+        </customView>
+    </objects>
+</document>

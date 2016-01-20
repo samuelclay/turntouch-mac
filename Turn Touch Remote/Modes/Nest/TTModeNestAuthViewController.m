@@ -25,6 +25,8 @@
 @implementation TTModeNestAuthViewController
 
 @synthesize webView;
+@synthesize modeNest;
+@synthesize authPopover;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -52,9 +54,7 @@
     // Check for the access token every second and once we have it leave this page
     [self setupcheckTokenTimer];
     
-    // Set the button to disabled
-//    [self.nestConnectButton setEnabled:NO];
-//    [self.nestConnectButton setTitle:@"Loading..." forState:UIControlStateNormal];
+    [modeNest beginConnectingToNest];
 }
 
 - (void)invalidateTimer
@@ -85,7 +85,8 @@
 {
     if ([[NestAuthManager sharedManager] isValidSession]) {
         [self invalidateTimer];
-        [((TTModeNest *)appDelegate.modeMap.selectedMode) subscribeToThermostat:0];
+        [authPopover close];
+        [modeNest subscribeToThermostat:0];
     }
 }
 
@@ -93,7 +94,7 @@
     NSURL *url = [request URL];
     NSURL *redirectURL = [[NSURL alloc] initWithString:RedirectURL];
     if ([[url host] isEqualToString:[redirectURL host]]) {
-        
+        NSLog(@"Nest auth URL: %@", url);
         // Clean the string
         NSString *urlResources = [url resourceSpecifier];
         urlResources = [urlResources stringByReplacingOccurrencesOfString:QUESTION_MARK withString:EMPTY_STRING];
@@ -118,6 +119,8 @@
         }
         
         return request;
+    } else {
+        NSLog(@"Auth web url: %@ (%@)", url, [redirectResponse URL]);
     }
 
     return request;

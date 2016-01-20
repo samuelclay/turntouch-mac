@@ -7,12 +7,15 @@
 //
 
 #import "TTModeNest.h"
+#import "NestAuthManager.h"
 
 @implementation TTModeNest
 
 @synthesize nestStructureManager;
 @synthesize nestThermostatManager;
 @synthesize currentStructure;
+@synthesize delegate;
+@synthesize nestState;
 
 #pragma mark - Mode
 
@@ -71,10 +74,16 @@
 #pragma mark - Action methods
 
 - (void)runTTModeNestRaiseTemp {
-    NSLog(@"Running TTModeNestRaiseTemp");
+    Thermostat *thermostat = [[self.currentStructure objectForKey:@"thermostats"] objectAtIndex:0];
+    NSLog(@"Running TTModeNestRaiseTemp: %ld+1", thermostat.targetTemperatureF);
+    thermostat.targetTemperatureF += 1;
+    [self.nestThermostatManager saveChangesForThermostat:thermostat];
 }
 - (void)runTTModeNestLowerTemp {
-    NSLog(@"Running TTModeNestLowerTemp");
+    Thermostat *thermostat = [[self.currentStructure objectForKey:@"thermostats"] objectAtIndex:0];
+    NSLog(@"Running TTModeNestLowerTemp: %ld-1", thermostat.targetTemperatureF);
+    thermostat.targetTemperatureF -= 1;
+    [self.nestThermostatManager saveChangesForThermostat:thermostat];
 }
 - (void)runTTModeNestSetTemp {
     NSLog(@"Running TTModeNestSetTemp");
@@ -89,24 +98,47 @@
     return @"TTModeNestRaiseTemp";
 }
 - (NSString *)defaultEast {
-    return @"TTModeNestLowerTemp";
-}
-- (NSString *)defaultWest {
     return @"TTModeNestSetTemp";
 }
-- (NSString *)defaultSouth {
+- (NSString *)defaultWest {
     return @"TTModeNestChangeMode";
+}
+- (NSString *)defaultSouth {
+    return @"TTModeNestLowerTemp";
 }
 
 #pragma mark - Activation
 
 - (void)activate {
+    self.nestThermostatManager = [[NestThermostatManager alloc] init];
+    [self.nestThermostatManager setDelegate:self];
+
     self.nestStructureManager = [[NestStructureManager alloc] init];
     [self.nestStructureManager setDelegate:self];
     [self.nestStructureManager initialize];
-    
-    self.nestThermostatManager = [[NestThermostatManager alloc] init];
-    [self.nestThermostatManager setDelegate:self];
+
+    if ([[NestAuthManager sharedManager] accessToken]) {
+        nestState = NEST_STATE_CONNECTING;
+        [self subscribeToThermostat:0];
+    } else {
+        nestState = NEST_STATE_NOT_CONNECTED;
+    }
+    [self.delegate changeState:nestState withMode:self];
+}
+
+- (void)deactivate {
+    self.nestThermostatManager = nil;
+    self.nestStructureManager = nil;
+}
+
+- (void)beginConnectingToNest {
+    nestState = NEST_STATE_CONNECTING;
+    [self.delegate changeState:nestState withMode:self];
+}
+
+- (void)cancelConnectingToNest {
+    nestState = NEST_STATE_NOT_CONNECTED;
+    [self.delegate changeState:nestState withMode:self];
 }
 
 - (void)structureUpdated:(NSDictionary *)structure {
@@ -117,12 +149,18 @@
 
 - (void)thermostatValuesChanged:(Thermostat *)thermostat {
     NSLog(@"thermostat value changed: %@: %ld - %ld", thermostat, thermostat.targetTemperatureF, thermostat.ambientTemperatureF);
+    [self.delegate updateThermostat:thermostat];
 }
 
 - (void)subscribeToThermostat:(NSInteger)thermostatIndex {
-    NSLog(@"Subscribing to thermostat: %ld", thermostatIndex);
     Thermostat *thermostat = [[self.currentStructure objectForKey:@"thermostats"] objectAtIndex:thermostatIndex];
+    NSLog(@"Subscribing to thermostat: %ld=%@", thermostatIndex, thermostat);
+    if (!thermostat) return;
+    
     [self.nestThermostatManager beginSubscriptionForThermostat:thermostat];
+
+    nestState = NEST_STATE_CONNECTED;
+    [self.delegate changeState:nestState withMode:self];
 }
 
 

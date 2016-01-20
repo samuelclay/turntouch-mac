@@ -15,6 +15,7 @@
 @class TTModeHue;
 @class TTModeHueSceneOptions;
 
+
 typedef enum TTHueState : NSUInteger {
     STATE_NOT_CONNECTED,
     STATE_CONNECTING,
@@ -40,13 +41,14 @@ typedef enum {
     TTHueRandomSaturationHigh = 3,
 } TTHueRandomSaturation;
 
-@protocol TTModeHueDelegate <NSObject>
 
+@protocol TTModeHueDelegate <NSObject>
 @required
 
 - (void)changeState:(TTHueState)hueState withMode:(TTModeHue *)modeHue showMessage:(id)message;
 
 @end
+
 
 @interface TTModeHue : TTMode
 
