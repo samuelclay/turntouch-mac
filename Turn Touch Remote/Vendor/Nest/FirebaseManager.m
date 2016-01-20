@@ -52,11 +52,17 @@
         self.subscribedURLs = [[NSMutableDictionary alloc] init];
         self.fireBi = [[NSMutableDictionary alloc] init];
         self.rootFirebase = [[Firebase alloc] initWithUrl:@"https://developer-api.nest.com/"];
+        [self.rootFirebase removeAllObservers];
         NSString *accessToken = [[NestAuthManager sharedManager] accessToken];
-        [self.rootFirebase authWithCustomToken:accessToken
-                           withCompletionBlock:^(NSError *error, id data) {
-                               NSLog(@"Completed firebase init: %@/%@", error, data);
-                           }];
+        [self.rootFirebase observeAuthEventWithBlock:^(FAuthData *authData) {
+            NSLog(@"authData: %@", authData);
+            if (!authData) {
+                [self.rootFirebase authWithCustomToken:accessToken
+                                   withCompletionBlock:^(NSError *error, id data) {
+                                       NSLog(@"Completed firebase init: %@/%@", error, data);
+                                   }];
+            }
+        }];
     }
     
     return self;
@@ -77,7 +83,7 @@
         
     } else {
         Firebase *newFirebase = [self.rootFirebase childByAppendingPath:URL];
-
+        NSLog(@"Subscribing to firebase: %@", URL);
         [newFirebase observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
             NSLog(@"Received Firebase observeEventType");
             [self.subscribedURLs setObject:snapshot forKey:URL];
