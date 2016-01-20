@@ -142,6 +142,9 @@
 		FF557AE01C4ED8AF005FB7FD /* TTModeNestConnecting.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF557ADE1C4ED8AF005FB7FD /* TTModeNestConnecting.xib */; };
 		FF557AE41C4ED8BE005FB7FD /* TTModeNestConnected.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AE21C4ED8BE005FB7FD /* TTModeNestConnected.m */; };
 		FF557AE51C4ED8BE005FB7FD /* TTModeNestConnected.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF557AE31C4ED8BE005FB7FD /* TTModeNestConnected.xib */; };
+		FF557AE91C4F1CD0005FB7FD /* TTModeNestSetTempOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AE71C4F1CD0005FB7FD /* TTModeNestSetTempOptions.m */; };
+		FF557AEA1C4F1CD0005FB7FD /* TTModeNestSetTempOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF557AE81C4F1CD0005FB7FD /* TTModeNestSetTempOptions.xib */; };
+		FF557AEC1C4F2626005FB7FD /* TTModeNest.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF557AEB1C4F2626005FB7FD /* TTModeNest.plist */; };
 		FF58717B1BDC83AB00CDCC1C /* TTProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = FF58717A1BDC83AB00CDCC1C /* TTProgressBar.m */; };
 		FF66F2A619228DE100031478 /* TTModeAlarmClockOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66F2A519228DE100031478 /* TTModeAlarmClockOptions.m */; };
 		FF66F2A91922D1C100031478 /* TTOptionsDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66F2A81922D1C100031478 /* TTOptionsDetailView.m */; };
@@ -521,6 +524,10 @@
 		FF557AE11C4ED8BE005FB7FD /* TTModeNestConnected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeNestConnected.h; path = Modes/Nest/TTModeNestConnected.h; sourceTree = "<group>"; };
 		FF557AE21C4ED8BE005FB7FD /* TTModeNestConnected.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeNestConnected.m; path = Modes/Nest/TTModeNestConnected.m; sourceTree = "<group>"; };
 		FF557AE31C4ED8BE005FB7FD /* TTModeNestConnected.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeNestConnected.xib; path = Modes/Nest/TTModeNestConnected.xib; sourceTree = "<group>"; };
+		FF557AE61C4F1CD0005FB7FD /* TTModeNestSetTempOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeNestSetTempOptions.h; path = Modes/Nest/TTModeNestSetTempOptions.h; sourceTree = "<group>"; };
+		FF557AE71C4F1CD0005FB7FD /* TTModeNestSetTempOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeNestSetTempOptions.m; path = Modes/Nest/TTModeNestSetTempOptions.m; sourceTree = "<group>"; };
+		FF557AE81C4F1CD0005FB7FD /* TTModeNestSetTempOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeNestSetTempOptions.xib; path = Modes/Nest/TTModeNestSetTempOptions.xib; sourceTree = "<group>"; };
+		FF557AEB1C4F2626005FB7FD /* TTModeNest.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = TTModeNest.plist; path = Modes/Nest/TTModeNest.plist; sourceTree = "<group>"; };
 		FF5871791BDC83AB00CDCC1C /* TTProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTProgressBar.h; sourceTree = "<group>"; };
 		FF58717A1BDC83AB00CDCC1C /* TTProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTProgressBar.m; sourceTree = "<group>"; };
 		FF66F2A419228DE100031478 /* TTModeAlarmClockOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeAlarmClockOptions.h; path = "Modes/Alarm Clock/TTModeAlarmClockOptions.h"; sourceTree = "<group>"; };
@@ -1105,8 +1112,12 @@
 				FF557AD21C4DBB4A005FB7FD /* TTModeNestAuthViewController.h */,
 				FF557AD31C4DBB4A005FB7FD /* TTModeNestAuthViewController.m */,
 				FF557AD41C4DBB4A005FB7FD /* TTModeNestAuthViewController.xib */,
+				FF557AE61C4F1CD0005FB7FD /* TTModeNestSetTempOptions.h */,
+				FF557AE71C4F1CD0005FB7FD /* TTModeNestSetTempOptions.m */,
+				FF557AE81C4F1CD0005FB7FD /* TTModeNestSetTempOptions.xib */,
 				FF557ABE1C49C71A005FB7FD /* NestConstants.h */,
 				FF557ABF1C49C71A005FB7FD /* NestConstants.m */,
+				FF557AEB1C4F2626005FB7FD /* TTModeNest.plist */,
 			);
 			name = Nest;
 			sourceTree = "<group>";
@@ -1912,9 +1923,11 @@
 				FFA1F5F71B7D849200268907 /* TTModeHueSleepOptions.xib in Resources */,
 				FF2740711A7C576900C55579 /* itunes_library_icon.png in Resources */,
 				FF01CA801C46DCC200F83A73 /* settings.png in Resources */,
+				FF557AEC1C4F2626005FB7FD /* TTModeNest.plist in Resources */,
 				FF01CA7D1C46DCC200F83A73 /* newspaper-3.png in Resources */,
 				FF01CA831C46DCC200F83A73 /* sun.png in Resources */,
 				FF01CA821C46DCC200F83A73 /* speaker.png in Resources */,
+				FF557AEA1C4F1CD0005FB7FD /* TTModeNestSetTempOptions.xib in Resources */,
 				FF01CA781C46DCC200F83A73 /* mode_spotify.png in Resources */,
 				FF01CA711C46DCC200F83A73 /* mode_morning.png in Resources */,
 				FF01CA5C1C46DCC200F83A73 /* button_plus.png in Resources */,
@@ -2027,6 +2040,7 @@
 				FFABABA21C33676700AD5620 /* TTModeWebBrowserView.m in Sources */,
 				FF557AE41C4ED8BE005FB7FD /* TTModeNestConnected.m in Sources */,
 				FF7305B11A5C9C76009A852D /* DDLog.m in Sources */,
+				FF557AE91C4F1CD0005FB7FD /* TTModeNestSetTempOptions.m in Sources */,
 				FF557AD51C4DBB4A005FB7FD /* TTModeNestAuthViewController.m in Sources */,
 				FF904B7B1BE9B88700AD00F3 /* DFUHelper.m in Sources */,
 				FF904B871BE9B88700AD00F3 /* JsonParser.m in Sources */,

@@ -43,14 +43,6 @@
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
     
-    [[NSAnimationContext currentContext] setCompletionHandler:^{
-        //        [appDelegate.panelController.backgroundView.optionsView resize];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [appDelegate.panelController.window invalidateShadow];
-        });
-    }];
-    
     block();
     
     [appDelegate.panelController.backgroundView.optionsView layoutSubtreeIfNeeded];
@@ -58,15 +50,6 @@
     
     [NSAnimationContext endGrouping];
     
-}
-
-#pragma mark - Tab View
-
-- (void)tabView:(NSTabView *)tabView didSelectTabViewItem:(NSTabViewItem *)tabViewItem {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [appDelegate.panelController.window invalidateShadow];
-        [appDelegate.panelController.window update];
-    });
 }
 
 @end

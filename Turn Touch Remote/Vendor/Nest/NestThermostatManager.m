@@ -25,9 +25,12 @@
 #define FAN_TIMER_ACTIVE @"fan_timer_active"
 #define HAS_FAN @"has_fan"
 #define TARGET_TEMPERATURE_F @"target_temperature_f"
+#define TARGET_TEMPERATURE_C @"target_temperature_c"
 #define AMBIENT_TEMPERATURE_F @"ambient_temperature_f"
+#define AMBIENT_TEMPERATURE_C @"ambient_temperature_c"
 #define NAME_LONG @"name_long"
 #define THERMOSTAT_PATH @"devices/thermostats"
+#define TEMPERATURE_SCALE @"temperature_scale"
 
 @implementation NestThermostatManager
 
@@ -54,8 +57,17 @@
     if ([structure objectForKey:AMBIENT_TEMPERATURE_F]) {
         thermostat.ambientTemperatureF = [[structure objectForKey:AMBIENT_TEMPERATURE_F] integerValue];
     }
+    if ([structure objectForKey:AMBIENT_TEMPERATURE_C]) {
+        thermostat.ambientTemperatureC = [[structure objectForKey:AMBIENT_TEMPERATURE_C] integerValue];
+    }
     if ([structure objectForKey:TARGET_TEMPERATURE_F]) {
         thermostat.targetTemperatureF = [[structure objectForKey:TARGET_TEMPERATURE_F] integerValue];
+    }
+    if ([structure objectForKey:TARGET_TEMPERATURE_C]) {
+        thermostat.targetTemperatureC = [[structure objectForKey:TARGET_TEMPERATURE_C] integerValue];
+    }
+    if ([structure objectForKey:TEMPERATURE_SCALE]) {
+        thermostat.temperatureScale = [structure objectForKey:TEMPERATURE_SCALE];
     }
     if ([structure objectForKey:HAS_FAN]) {
         thermostat.hasFan = [[structure objectForKey:HAS_FAN] boolValue];

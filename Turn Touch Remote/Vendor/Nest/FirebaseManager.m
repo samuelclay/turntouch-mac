@@ -52,8 +52,11 @@
         self.subscribedURLs = [[NSMutableDictionary alloc] init];
         self.fireBi = [[NSMutableDictionary alloc] init];
         self.rootFirebase = [[Firebase alloc] initWithUrl:@"https://developer-api.nest.com/"];
-        [self.rootFirebase authWithCustomToken:[[NestAuthManager sharedManager] accessToken]
-                           withCompletionBlock:^(NSError *error, id data) {}];
+        NSString *accessToken = [[NestAuthManager sharedManager] accessToken];
+        [self.rootFirebase authWithCustomToken:accessToken
+                           withCompletionBlock:^(NSError *error, id data) {
+                               NSLog(@"Completed firebase init: %@/%@", error, data);
+                           }];
     }
     
     return self;

@@ -52,8 +52,15 @@
 }
 
 - (void)updateThermostat:(Thermostat *)thermostat {
-    [self.connectedViewController.labelAmbient setStringValue:[NSString stringWithFormat:@"%ld", thermostat.ambientTemperatureF]];
-    [self.connectedViewController.labelTarget setStringValue:[NSString stringWithFormat:@"%ld", thermostat.targetTemperatureF]];
+    BOOL isCelsius = [thermostat.temperatureScale isEqualToString:@"C"];
+    [self.connectedViewController.labelAmbient setStringValue:[NSString stringWithFormat:@"%ld°%@",
+                                                               isCelsius ? thermostat.ambientTemperatureC :
+                                                               thermostat.ambientTemperatureF,
+                                                               thermostat.temperatureScale]];
+    [self.connectedViewController.labelTarget setStringValue:[NSString stringWithFormat:@"%ld°%@",
+                                                              isCelsius ? thermostat.targetTemperatureC :
+                                                              thermostat.targetTemperatureF,
+                                                              thermostat.temperatureScale]];
 }
 
 #pragma mark - View Connectrollers
@@ -126,6 +133,7 @@
                                     bundle:[NSBundle mainBundle]];
     self.connectedViewController.modeNest = self.modeNest;
     [self drawViewController:self.connectedViewController];
+    [self updateThermostat:[self.modeNest selectedThermostat]];
 }
 
 @end

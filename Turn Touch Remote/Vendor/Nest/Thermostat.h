@@ -21,6 +21,9 @@
 @property (nonatomic) BOOL hasFan;
 @property (nonatomic) BOOL fanTimerActive;
 @property (nonatomic) NSInteger ambientTemperatureF;
+@property (nonatomic) NSInteger ambientTemperatureC;
 @property (nonatomic) NSInteger targetTemperatureF;
+@property (nonatomic) NSInteger targetTemperatureC;
+@property (nonatomic) NSString *temperatureScale;
 
 @end

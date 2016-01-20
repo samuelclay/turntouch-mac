@@ -195,8 +195,6 @@
     NSString *actionOptionsViewControllerName = [NSString stringWithFormat:@"%@Options", actionName];
     actionOptionsViewController = [[NSClassFromString(actionOptionsViewControllerName) alloc]
                                    initWithNibName:actionOptionsViewControllerName bundle:nil];
-    
-    
     if (!actionOptionsViewController) {
         NSLog(@" --- Missing action options view for %@", actionName);
         actionOptionsViewController = (TTOptionsDetailViewController *)[[NSViewController alloc] init];
@@ -211,6 +209,7 @@
     } else {
         actionOptionsViewController.menuType = ACTION_MENU_TYPE;
         actionOptionsViewController.action = [[TTAction alloc] init];
+        actionOptionsViewController.mode = appDelegate.modeMap.selectedMode;
         [self addSubview:actionOptionsViewController.view];
     }
     

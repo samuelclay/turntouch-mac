@@ -29,6 +29,8 @@ typedef enum TTNestState : NSUInteger {
 
 @interface TTModeNest : TTMode <NestThermostatManagerDelegate, NestStructureManagerDelegate>
 
+extern NSString *const kNestSetTemperature;
+
 @property (nonatomic, strong) NestThermostatManager *nestThermostatManager;
 @property (nonatomic, strong) NestStructureManager *nestStructureManager;
 @property (nonatomic, strong) NSDictionary *currentStructure;
@@ -38,5 +40,6 @@ typedef enum TTNestState : NSUInteger {
 - (void)beginConnectingToNest;
 - (void)cancelConnectingToNest;
 - (void)subscribeToThermostat:(NSInteger)thermostatIndex;
+- (Thermostat *)selectedThermostat;
 
 @end

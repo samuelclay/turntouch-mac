@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
     </dependencies>
     <objects>
@@ -18,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="429" height="56"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lE4-be-gMl">
-                    <rect key="frame" x="18" y="17.5" width="96" height="19"/>
+                    <rect key="frame" x="18" y="17" width="96" height="19"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Snooze duration" id="ddW-lu-0sn">
                         <font key="font" size="13" name="Effra-Regular"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -26,7 +25,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9dB-yo-Pin">
-                    <rect key="frame" x="362" y="17.5" width="44" height="19"/>
+                    <rect key="frame" x="362" y="17" width="44" height="19"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="ea8-1h-OzK"/>
                     </constraints>
@@ -38,7 +37,7 @@
                 </textField>
                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wce-UW-XqP" customClass="TTSlider">
                     <rect key="frame" x="129" y="15" width="220" height="25"/>
-                    <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="1" maxValue="20" doubleValue="3.1578947368421053" tickMarkPosition="below" numberOfTickMarks="20" allowsTickMarkValuesOnly="YES" sliderType="linear" id="hZJ-XT-pn3" customClass="TTSliderCell"/>
+                    <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="1" maxValue="20" doubleValue="3" tickMarkPosition="below" numberOfTickMarks="20" allowsTickMarkValuesOnly="YES" sliderType="linear" id="hZJ-XT-pn3" customClass="TTSliderCell"/>
                     <connections>
                         <action selector="slideDuration:" target="-2" id="hoK-jm-yDh"/>
                     </connections>

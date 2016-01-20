@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="TTModeNestSetTempOptions">
+            <connections>
+                <outlet property="labelTemp" destination="IeW-HY-6uh" id="umQ-7P-ODt"/>
+                <outlet property="sliderTemp" destination="3am-9s-AWT" id="ySZ-u5-Kl5"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="56"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="T1U-gr-pjf">
+                    <rect key="frame" x="18" y="18.5" width="77" height="19"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Temperature" id="hfX-0y-zfM">
+                        <font key="font" size="13" name="Effra-Regular"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IeW-HY-6uh">
+                    <rect key="frame" x="418" y="18.5" width="44" height="19"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="mwx-hq-OoI"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="72°F" id="n8l-KY-u0J">
+                        <font key="font" size="13" name="Effra-Regular"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3am-9s-AWT" customClass="TTSlider">
+                    <rect key="frame" x="110" y="18" width="295" height="20"/>
+                    <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="50" maxValue="90" doubleValue="72" tickMarkPosition="above" sliderType="linear" id="hNZ-m7-qTn" customClass="TTSliderCell"/>
+                    <connections>
+                        <action selector="changeTempSlider:" target="-2" id="kmb-UH-T2c"/>
+                    </connections>
+                </slider>
+            </subviews>
+            <constraints>
+                <constraint firstItem="IeW-HY-6uh" firstAttribute="leading" secondItem="3am-9s-AWT" secondAttribute="trailing" constant="17" id="0Gj-3g-hi8"/>
+                <constraint firstItem="3am-9s-AWT" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="3Dv-yj-oUX"/>
+                <constraint firstItem="T1U-gr-pjf" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="C7R-8Y-gx0"/>
+                <constraint firstAttribute="trailing" secondItem="IeW-HY-6uh" secondAttribute="trailing" constant="20" id="QfR-xU-cYT"/>
+                <constraint firstItem="IeW-HY-6uh" firstAttribute="centerY" secondItem="3am-9s-AWT" secondAttribute="centerY" id="lj6-BT-B7O"/>
+                <constraint firstItem="3am-9s-AWT" firstAttribute="centerY" secondItem="T1U-gr-pjf" secondAttribute="centerY" id="qfw-I3-cGH"/>
+                <constraint firstAttribute="bottom" secondItem="3am-9s-AWT" secondAttribute="bottom" constant="20" id="sg5-2o-gPA"/>
+                <constraint firstItem="3am-9s-AWT" firstAttribute="leading" secondItem="T1U-gr-pjf" secondAttribute="trailing" constant="19" id="wla-tN-Kj6"/>
+            </constraints>
+            <point key="canvasLocation" x="269" y="300"/>
+        </customView>
+    </objects>
+</document>
