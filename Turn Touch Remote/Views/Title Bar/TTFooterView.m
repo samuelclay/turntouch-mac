@@ -13,6 +13,14 @@
 
 @implementation TTFooterView
 
+- (instancetype)init {
+    if (self = [super init]) {
+        self.translatesAutoresizingMaskIntoConstraints = NO;
+    }
+
+    return self;
+}
+
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     
