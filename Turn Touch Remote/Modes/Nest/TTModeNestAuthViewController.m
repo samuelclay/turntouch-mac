@@ -52,7 +52,7 @@
     [[NestAuthManager sharedManager] setAuthorizationCode:authorizationCode];
     
     // Check for the access token every second and once we have it leave this page
-    [self setupcheckTokenTimer];
+    [self setupCheckTokenTimer];
     
     [modeNest beginConnectingToNest];
 }
@@ -68,7 +68,7 @@
 /**
  * Setup the checkTokenTimer
  */
-- (void)setupcheckTokenTimer
+- (void)setupCheckTokenTimer
 {
     [self invalidateTimer];
     checkTokenTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self

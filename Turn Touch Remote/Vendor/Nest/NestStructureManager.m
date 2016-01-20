@@ -29,7 +29,7 @@
 {
     NSLog(@"Initializing Nest structure manager");
     [[FirebaseManager sharedManager] addSubscriptionToURL:@"structures/" withBlock:^(FDataSnapshot *snapshot) {
-        NSLog(@"Parsing thermostate structure: %@", snapshot.value);
+        NSLog(@"Parsing thermostat structure: %@", snapshot.value);
         [self parseStructure:snapshot.value];
     }];
 }

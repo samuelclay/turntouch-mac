@@ -8,6 +8,7 @@
 
 #import "TTModeNest.h"
 #import "NestAuthManager.h"
+#import "FirebaseManager.h"
 
 @implementation TTModeNest
 
@@ -108,7 +109,7 @@ NSString *const kNestSetTemperature = @"nestSetTemperature";
 #pragma mark - Activation
 
 - (void)activate {
-    if ([[NestAuthManager sharedManager] accessToken]) {
+    if ([[NestAuthManager sharedManager] isValidSession]) {
         if (self.currentStructure) {
             nestState = NEST_STATE_CONNECTED;
         } else {

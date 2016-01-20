@@ -82,8 +82,6 @@
             NSLog(@"Received Firebase observeEventType");
             [self.subscribedURLs setObject:snapshot forKey:URL];
             block(snapshot);
-        } withCancelBlock:^(NSError *error) {
-            NSLog(@"Canceled Firebase observeEventType");
         }];
         
         [self.fireBi setObject:newFirebase forKey:URL];
