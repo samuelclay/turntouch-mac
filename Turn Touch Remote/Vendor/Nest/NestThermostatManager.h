@@ -27,6 +27,7 @@
 @property (nonatomic, strong) id <NestThermostatManagerDelegate>delegate;
 
 - (void)beginSubscriptionForThermostat:(Thermostat *)thermostat;
+- (void)updateThermostat:(Thermostat *)thermostat forStructure:(NSDictionary *)structure;
 - (void)saveChangesForThermostat:(Thermostat *)thermostat;
 
 @end

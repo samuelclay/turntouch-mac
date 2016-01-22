@@ -10,7 +10,10 @@
 
 @interface TTModeNestSetTempOptions : TTOptionsDetailViewController
 
+@property (nonatomic) IBOutlet NSPopUpButton *thermostatPopup;
 @property (nonatomic) IBOutlet NSTextField *labelTemp;
 @property (nonatomic) IBOutlet NSSlider *sliderTemp;
+
+- (IBAction)didChangeThermostat:(id)sender;
 
 @end

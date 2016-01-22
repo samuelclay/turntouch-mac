@@ -21,6 +21,9 @@
         mode = [[NSClassFromString([chunks objectAtIndex:0]) alloc] init];
         [mode setModeDirection:NSAppDelegate.modeMap.selectedModeDirection];
         [mode setAction:self];
+        if ([mode respondsToSelector:@selector(activate)]) {
+            [mode activate:NSAppDelegate.modeMap.selectedModeDirection];
+        }
         actionName = [chunks objectAtIndex:1];
     }
     

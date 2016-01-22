@@ -32,4 +32,6 @@
 - (void)setAccessToken:(NSString *)accessToken withExpiration:(long)expiration;
 - (void)setAuthorizationCode:(NSString *)authorizationCode;
 
+- (void)clearAccessToken;
+
 @end

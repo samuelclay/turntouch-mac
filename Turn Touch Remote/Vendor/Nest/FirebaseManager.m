@@ -55,17 +55,23 @@
         [self.rootFirebase removeAllObservers];
         NSString *accessToken = [[NestAuthManager sharedManager] accessToken];
         [self.rootFirebase observeAuthEventWithBlock:^(FAuthData *authData) {
-            NSLog(@"authData: %@", authData);
             if (!authData) {
                 [self.rootFirebase authWithCustomToken:accessToken
                                    withCompletionBlock:^(NSError *error, id data) {
                                        NSLog(@"Completed firebase init: %@/%@", error, data);
+                                       if (error) {
+                                           [self handleBrokenAuth];
+                                       }
                                    }];
             }
         }];
     }
     
     return self;
+}
+
+- (void)handleBrokenAuth {
+    [[NestAuthManager sharedManager] clearAccessToken];
 }
 
 /**

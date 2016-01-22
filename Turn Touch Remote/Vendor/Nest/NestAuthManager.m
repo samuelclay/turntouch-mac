@@ -144,6 +144,10 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+- (void)clearAccessToken {
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"TT:mode:nest:accessToken"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 
 /**
  * Set the client's ID.

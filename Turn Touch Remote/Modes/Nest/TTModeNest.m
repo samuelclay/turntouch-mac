@@ -12,7 +12,11 @@
 
 @implementation TTModeNest
 
+NSString *const kNestThermostat = @"nestThermostatIdentifier";
 NSString *const kNestSetTemperature = @"nestSetTemperature";
+NSString *const kNestApiHost = @"https://developer-api.nest.com/";
+NSString *const kNestApiThermostats = @"devices/thermostats/";
+NSString *const kNestApiStructures = @"structures/";
 
 @synthesize nestStructureManager;
 @synthesize nestThermostatManager;
@@ -110,10 +114,12 @@ NSString *const kNestSetTemperature = @"nestSetTemperature";
 
 - (void)activate {
     if ([[NestAuthManager sharedManager] isValidSession]) {
+        NSLog(@"Nest access token: %@", [[NestAuthManager sharedManager] accessToken]);
         if (self.currentStructure) {
             nestState = NEST_STATE_CONNECTED;
         } else {
             nestState = NEST_STATE_CONNECTING;
+            [self loadNestStructures];
         }
     } else {
         nestState = NEST_STATE_NOT_CONNECTED;
@@ -126,12 +132,15 @@ NSString *const kNestSetTemperature = @"nestSetTemperature";
     self.nestStructureManager = [[NestStructureManager alloc] init];
     [self.nestStructureManager setDelegate:self];
     [self.nestStructureManager initialize];
+    
 }
 
 - (void)deactivate {
     self.nestThermostatManager = nil;
     self.nestStructureManager = nil;
 }
+
+#pragma mark - Delegate
 
 - (void)beginConnectingToNest {
     nestState = NEST_STATE_CONNECTING;
@@ -142,6 +151,8 @@ NSString *const kNestSetTemperature = @"nestSetTemperature";
     nestState = NEST_STATE_NOT_CONNECTED;
     [self.delegate changeState:nestState withMode:self];
 }
+
+#pragma mark - Nest API w/ Firebase
 
 - (void)structureUpdated:(NSDictionary *)structure {
     NSLog(@"Nest Structure updated: %@", structure);
@@ -160,6 +171,7 @@ NSString *const kNestSetTemperature = @"nestSetTemperature";
     Thermostat *thermostat = [[self.currentStructure objectForKey:@"thermostats"] objectAtIndex:0];;
     return thermostat;
 }
+
 - (void)subscribeToThermostat:(NSInteger)thermostatIndex {
     Thermostat *thermostat = [self selectedThermostat];
     
@@ -172,5 +184,53 @@ NSString *const kNestSetTemperature = @"nestSetTemperature";
     [self.delegate changeState:nestState withMode:self];
 }
 
+#pragma mark - Nest API w/ REST
+
+- (void)loadNestStructures {
+    NSString *accessToken = [[NestAuthManager sharedManager] accessToken];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@?auth=%@",
+                                       kNestApiHost, kNestApiStructures, accessToken]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse * _Nullable response,
+                                               NSData * _Nullable data,
+                                               NSError * _Nullable connectionError) {
+                               if (!connectionError) {
+                                   NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                                   if (httpResponse.statusCode == 200){
+                                       NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers|NSJSONReadingAllowFragments error:nil];
+                                       [self.nestStructureManager parseStructure:jsonData];
+                                   }
+                               } else {
+                                   NSLog(@"Nest REST error: %@", connectionError);
+                               }
+                           }];
+}
+
+- (void)loadNestThermostats {
+    NSString *accessToken = [[NestAuthManager sharedManager] accessToken];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@?auth=%@",
+                                       kNestApiHost, kNestApiThermostats, accessToken]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse * _Nullable response,
+                                               NSData * _Nullable data,
+                                               NSError * _Nullable connectionError) {
+                               if (!connectionError) {
+                                   NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                                   if (httpResponse.statusCode == 200){
+                                       NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers|NSJSONReadingAllowFragments error:nil];
+                                       for (NSDictionary *data in [jsonData allValues]) {
+//                                           [self.nestThermostatManager parseStructure:jsonData];
+                                           NSLog(@"Thermostat: %@", data);
+                                       }
+                                   }
+                               } else {
+                                   NSLog(@"Nest REST error: %@", connectionError);
+                               }
+                           }];
+}
 
 @end

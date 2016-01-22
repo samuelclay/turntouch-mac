@@ -36,6 +36,7 @@
 const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 
 #define CLEAR_PAIRED_DEVICES 0
+//#define DEBUG_CONNECT
 
 @implementation TTBluetoothMonitor
 
@@ -126,7 +127,9 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
     BOOL knownDevicesStillDisconnected = NO;
     
     bluetoothState = BT_STATE_SCANNING_KNOWN;
+#ifdef DEBUG_CONNECT
     NSLog(@" ---> (%X) Scanning known: %lu remotes", bluetoothState, (unsigned long)[[self knownPeripheralIdentifiers] count]);
+#endif
     
     NSArray *peripherals = [manager retrievePeripheralsWithIdentifiers:[self knownPeripheralIdentifiers]];
     for (CBPeripheral *peripheral in peripherals) {
@@ -135,14 +138,18 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
             foundDevice = [foundDevices addPeripheral:peripheral];
         }
         if (peripheral.state != CBPeripheralStateDisconnected && foundDevice.state != TTDeviceStateSearching) {
+#ifdef DEBUG_CONNECT
             NSLog(@" ---> (%X) Already connected: %@", bluetoothState, foundDevice);
+#endif
             continue;
         } else {
             knownDevicesStillDisconnected = YES;
         }
         
         bluetoothState = BT_STATE_CONNECTING_KNOWN;
+#ifdef DEBUG_CONNECT
         NSLog(@" ---> (%X) Attempting connect to known: %@/%@", bluetoothState, [peripheral.identifier.UUIDString substringToIndex:8], foundDevice);
+#endif
         NSDictionary *options = @{CBConnectPeripheralOptionNotifyOnDisconnectionKey: [NSNumber numberWithBool:YES],
                                   CBCentralManagerOptionShowPowerAlertKey: [NSNumber numberWithBool:YES]};
         [manager cancelPeripheralConnection:peripheral];
@@ -151,7 +158,9 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
     
     if (!knownDevicesStillDisconnected) {
         bluetoothState = BT_STATE_DOING_NOTHING;
+#ifdef DEBUG_CONNECT
         NSLog(@" ---> (%X) All done, no known devices left to connect.", bluetoothState);
+#endif
     }
     
     // Search for unpaired devices or paired devices that aren't responding to `connectPeripheral`
@@ -160,15 +169,21 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(60 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             onceUnknownToken = 0;
             if (bluetoothState != BT_STATE_SCANNING_KNOWN && bluetoothState != BT_STATE_CONNECTING_KNOWN) {
+#ifdef DEBUG_CONNECT
                 NSLog(@" ---> (%X) Not scanning for unpaired, since not scanning known.", bluetoothState);
+#endif
                 return;
             }
 
+#ifdef DEBUG_CONNECT
             NSLog(@" ---> (%X) Starting scan for unpaired...", bluetoothState);
+#endif
             [self stopScan];
             [self scanUnknown];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+#ifdef DEBUG_CONNECT
                 NSLog(@" ---> (%X) Stopping scan for unpaired", bluetoothState);
+#endif
                 [self stopScan];
                 [self scanKnown];
             });
@@ -178,24 +193,32 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 
 - (void)scanUnknown {
     if (bluetoothState == BT_STATE_PAIRING_UNKNOWN) {
+#ifdef DEBUG_CONNECT
         NSLog(@" ---> (%X) Not scanning unknown since in pairing state.", bluetoothState);
+#endif
         return;
     }
     if (bluetoothState == BT_STATE_CONNECTING_UNKNOWN) {
         for (TTDevice *foundDevice in foundDevices) {
             if (foundDevice.peripheral.state == CBPeripheralStateConnecting) {
+#ifdef DEBUG_CONNECT
                 NSLog(@" ---> (%X) [Scanning unknown] Canceling peripheral connection: %@", bluetoothState, foundDevice);
+#endif
                 [manager cancelPeripheralConnection:foundDevice.peripheral];
             }
         }
+#ifdef DEBUG_CONNECT
         NSLog(@" ---> (%X) Not scanning unknown since already connecting to unknown.", bluetoothState);
+#endif
         return;
     }
 
     [self stopScan];
     bluetoothState = BT_STATE_SCANNING_UNKNOWN;
+#ifdef DEBUG_CONNECT
     NSLog(@" ---> (%X) Scanning unknown: %@", bluetoothState, [self knownPeripheralIdentifiers]);
-
+#endif
+    
     [manager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:DEVICE_V1_SERVICE_BUTTON_UUID],
                                               [CBUUID UUIDWithString:DEVICE_V2_SERVICE_BUTTON_UUID],
                                               [CBUUID UUIDWithString:@"1523"]]
@@ -203,7 +226,9 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 }
 
 - (void) stopScan {
+#ifdef DEBUG_CONNECT
     NSLog(@" ---> (%X) Stopping scan.", bluetoothState);
+#endif
     [manager stopScan];
 }
 
@@ -211,7 +236,9 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 #pragma mark - CBCentralManager delegate methods
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central {
+#ifdef DEBUG_CONNECT
 //    NSLog(@" ---> centralManagerDidUpdateState: %ld vs %ld", (long)central.state, (long)manager.state);
+#endif
     manager = central;
     [self updateBluetoothState:NO];
 }
@@ -276,7 +303,9 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
     for (TTDevice *foundDevice in foundDevices) {
         if (foundDevice.peripheral == peripheral) continue;
         if (foundDevice.peripheral.state == CBPeripheralStateConnecting) {
+#ifdef DEBUG_CONNECT
             NSLog(@" ---> (%X) [Connecting to another] Canceling peripheral connection: %@", bluetoothState, foundDevice);
+#endif
             [manager cancelPeripheralConnection:foundDevice.peripheral];
         }
     }
@@ -288,7 +317,9 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
     // In case stillconnecting 30 seconds from now, disconnect.
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(30.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if (bluetoothState != BT_STATE_CONNECTING_UNKNOWN) return;
+#ifdef DEBUG_CONNECT
         NSLog(@" ---> (%X) Still connecting to unknown, disconnecting...", bluetoothState);
+#endif
         bluetoothState = BT_STATE_DOING_NOTHING;
         [self stopScan];
         [self scanKnown];
@@ -306,13 +337,16 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
     for (TTDevice *foundDevice in foundDevices) {
         if (foundDevice.peripheral == peripheral) continue;
         if (foundDevice.peripheral.state == CBPeripheralStateConnecting) {
+#ifdef DEBUG_CONNECT
             NSLog(@" ---> (%X) [Connected another] Canceling peripheral connection: %@ (connecting to %@)", bluetoothState, foundDevice, device);
+#endif
             [manager cancelPeripheralConnection:foundDevice.peripheral];
         }
     }
     [peripheral setDelegate:self];
+#ifdef DEBUG_CONNECT
     NSLog(@" ---> (%X) Connected bluetooth peripheral: %@", bluetoothState, device);
-
+#endif
     if (device.isPaired) {
         // Seen device before, connect and discover services
         [peripheral discoverServices:@[[CBUUID UUIDWithString:DEVICE_V1_SERVICE_BUTTON_UUID],
@@ -360,7 +394,9 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
  */
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
     TTDevice *device = [foundDevices deviceForPeripheral:peripheral];
+#ifdef DEBUG_CONNECT
     NSLog(@" ---> (%X) Disconnected device: %@", bluetoothState, device);
+#endif
     connectionDelay = 4;
     [foundDevices removePeripheral:peripheral];
     [self countDevices];
@@ -386,8 +422,10 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
         return;
     }
     
+#ifdef DEBUG_CONNECT
     NSLog(@" ---> (%X) Fail to connect to peripheral: %@ (%@) with error = %@", bluetoothState,
           peripheral.name, [peripheral.identifier.UUIDString substringToIndex:8], [error localizedDescription]);
+#endif
     
     [foundDevices removePeripheral:peripheral];
     [self countDevices];
@@ -404,7 +442,9 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
     bluetoothState = BT_STATE_DISCOVER_CHARACTERISTICS;
     
     for (CBService *service in peripheral.services) {
+#ifdef DEBUG_CONNECT
         NSLog(@" ---> (%X) Service found with UUID: %@", bluetoothState, service.UUID);
+#endif
         TTDevice *device = [foundDevices deviceForPeripheral:peripheral];
 
         if ([service.UUID isEqual:[CBUUID UUIDWithString:DEVICE_V1_SERVICE_BUTTON_UUID]]) {
@@ -460,8 +500,10 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 
 - (void) peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error {
     bluetoothState = BT_STATE_CHAR_NOTIFICATION;
+#ifdef DEBUG_CONNECT
     NSLog(@" ---> (%X) Characteristic found with UUID: %@", bluetoothState, service.UUID);
-
+#endif
+    
     if ([service.UUID isEqual:[CBUUID UUIDWithString:DEVICE_V1_SERVICE_BUTTON_UUID]]) {
         for (CBCharacteristic *aChar in service.characteristics) {
             if ([aChar.UUID isEqual:[CBUUID UUIDWithString:DEVICE_V1_CHARACTERISTIC_BUTTON_STATUS_UUID]]) {
@@ -554,8 +596,10 @@ didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic
              error:(NSError *)error {
     if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_V1_CHARACTERISTIC_BUTTON_STATUS_UUID]] ||
         [characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_V2_CHARACTERISTIC_BUTTON_STATUS_UUID]]) {
+#ifdef DEBUG_CONNECT
         NSLog(@" ---> (%X) Subscribed to button status notifications: %@", bluetoothState,
               [peripheral.identifier.UUIDString substringToIndex:8]);
+#endif
         
         TTDevice *device = [foundDevices deviceForPeripheral:peripheral];
         device.isNotified = YES;
@@ -621,7 +665,9 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
     } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_V1_CHARACTERISTIC_NICKNAME_UUID]] ||
                [characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_V2_CHARACTERISTIC_NICKNAME_UUID]]) {
         if (!characteristic || !characteristic.value || !characteristic.value.length) {
+#ifdef DEBUG_CONNECT
             NSLog(@" ---> !!! %@ has no nickname", peripheral);
+#endif
         }
         TTDevice *device = [foundDevices deviceForPeripheral:peripheral];
         [device setNicknameData:characteristic.value];
@@ -640,7 +686,9 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
     } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:dfuVersionCharacteritsicUUIDString]]) {
         int firmwareVersion;
         [characteristic.value getBytes:&firmwareVersion];
+#ifdef DEBUG_CONNECT
         NSLog(@" ---> Firmware version of %@: %d", device, firmwareVersion);
+#endif
         device.firmwareVersion = firmwareVersion;
         [self countDevices];
     } else {

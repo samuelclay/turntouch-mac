@@ -25,5 +25,6 @@
 @property (nonatomic, strong) id <NestStructureManagerDelegate>delegate;
 
 - (void)initialize;
+- (void)parseStructure:(NSDictionary *)structure;
 
 @end
