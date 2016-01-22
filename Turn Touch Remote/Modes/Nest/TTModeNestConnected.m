@@ -50,4 +50,8 @@
     }
 }
 
+- (void)didChangeThermostat:(id)sender {
+    
+}
+
 @end

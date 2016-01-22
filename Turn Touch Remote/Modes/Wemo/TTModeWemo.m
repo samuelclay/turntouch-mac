@@ -36,13 +36,13 @@
 #pragma mark - Action Titles
 
 - (NSString *)titleTTModeWemoDeviceOn {
-    return @"Next story";
+    return @"Turn on";
 }
 - (NSString *)titleTTModeWemoDeviceOff {
-    return @"Next site";
+    return @"Turn off";
 }
 - (NSString *)titleTTModeWemoDeviceToggle {
-    return @"Previous story";
+    return @"Toggle device";
 }
 
 #pragma mark - Action Images
@@ -82,6 +82,16 @@
 }
 - (NSString *)defaultSouth {
     return @"TTModeWemoDeviceOff";
+}
+
+#pragma mark - Wemo devices
+
+- (void)activate {
+    [self loadWemoDevices];
+}
+
+- (void)loadWemoDevices {
+
 }
 
 @end

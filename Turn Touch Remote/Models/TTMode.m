@@ -164,6 +164,8 @@
     }
     
     IMP imp = [self methodForSelector:selector];
+    if (![self respondsToSelector:selector]) return nil;
+    
     NSString *(*func)(id, SEL) = (void *)imp;
     NSString *actionTitle = func(self, selector);
     
