@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GCDAsyncUdpSocket.h"
 
 @protocol TTModeWemoMulticastDelegate <NSObject>
 
@@ -15,7 +16,7 @@
 @end
 
 
-@interface TTModeWemoMulticastServer : NSObject {
+@interface TTModeWemoMulticastServer : NSObject <GCDAsyncUdpSocketDelegate> {
     NSSocketNativeHandle receiveSocket;
     NSSocketNativeHandle sendSocket;
 }

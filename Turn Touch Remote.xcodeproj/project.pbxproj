@@ -86,22 +86,12 @@
 		FF27407A1A7C5BC200C55579 /* itunes_movies_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2740771A7C5BC200C55579 /* itunes_movies_icon.png */; };
 		FF27407B1A7C5BC200C55579 /* itunes_tv_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2740781A7C5BC200C55579 /* itunes_tv_icon.png */; };
 		FF2C2E031C52E62000FAD7E2 /* TTModeWemoMulticastServer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E021C52E62000FAD7E2 /* TTModeWemoMulticastServer.m */; };
-		FF2C2E281C53061D00FAD7E2 /* Documentation.html in Resources */ = {isa = PBXBuildFile; fileRef = FF2C2E071C53061D00FAD7E2 /* Documentation.html */; };
-		FF2C2E291C53061D00FAD7E2 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E091C53061D00FAD7E2 /* GCDAsyncSocket.m */; };
-		FF2C2E2A1C53061D00FAD7E2 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E0B1C53061D00FAD7E2 /* GCDAsyncUdpSocket.m */; };
-		FF2C2E2B1C53061D00FAD7E2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF2C2E0C1C53061D00FAD7E2 /* Info.plist */; };
-		FF2C2E2C1C53061D00FAD7E2 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E0F1C53061D00FAD7E2 /* AsyncSocket.m */; };
-		FF2C2E2D1C53061D00FAD7E2 /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E111C53061D00FAD7E2 /* AsyncUdpSocket.m */; };
-		FF2C2E2E1C53061D00FAD7E2 /* Documentation.html in Resources */ = {isa = PBXBuildFile; fileRef = FF2C2E121C53061D00FAD7E2 /* Documentation.html */; };
-		FF2C2E2F1C53061D00FAD7E2 /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E161C53061D00FAD7E2 /* DDAbstractDatabaseLogger.m */; };
-		FF2C2E301C53061D00FAD7E2 /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E181C53061D00FAD7E2 /* DDASLLogger.m */; };
-		FF2C2E311C53061D00FAD7E2 /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E1A1C53061D00FAD7E2 /* DDFileLogger.m */; };
-		FF2C2E321C53061D00FAD7E2 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E1D1C53061D00FAD7E2 /* DDLog.m */; };
-		FF2C2E331C53061D00FAD7E2 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E1F1C53061D00FAD7E2 /* DDTTYLogger.m */; };
-		FF2C2E341C53061D00FAD7E2 /* DDContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E221C53061D00FAD7E2 /* DDContextFilterLogFormatter.m */; };
-		FF2C2E351C53061D00FAD7E2 /* DDDispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E241C53061D00FAD7E2 /* DDDispatchQueueLogFormatter.m */; };
-		FF2C2E361C53061D00FAD7E2 /* DDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E261C53061D00FAD7E2 /* DDMultiFormatter.m */; };
-		FF2C2E371C53061D00FAD7E2 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = FF2C2E271C53061D00FAD7E2 /* README.txt */; };
+		FF2C2E471C53077300FAD7E2 /* Documentation.html in Resources */ = {isa = PBXBuildFile; fileRef = FF2C2E3B1C53077300FAD7E2 /* Documentation.html */; };
+		FF2C2E481C53077300FAD7E2 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E3D1C53077300FAD7E2 /* GCDAsyncSocket.m */; };
+		FF2C2E491C53077300FAD7E2 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E3F1C53077300FAD7E2 /* GCDAsyncUdpSocket.m */; };
+		FF2C2E4A1C53077300FAD7E2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF2C2E401C53077300FAD7E2 /* Info.plist */; };
+		FF2C2E4B1C53077300FAD7E2 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E431C53077300FAD7E2 /* AsyncSocket.m */; };
+		FF2C2E4D1C53077300FAD7E2 /* Documentation.html in Resources */ = {isa = PBXBuildFile; fileRef = FF2C2E461C53077300FAD7E2 /* Documentation.html */; };
 		FF2EB77D1AA50D4D002549A7 /* itunes_music_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2EB77C1AA50D4D002549A7 /* itunes_music_icon.png */; };
 		FF3641DA1A5F53DC003CC03C /* TTModeHueConnecting.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3641D91A5F53DC003CC03C /* TTModeHueConnecting.xib */; };
 		FF3641DC1A5F5617003CC03C /* TTModeHueOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3641DB1A5F5617003CC03C /* TTModeHueOptions.xib */; };
@@ -453,36 +443,17 @@
 		FF2740781A7C5BC200C55579 /* itunes_tv_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_tv_icon.png; sourceTree = "<group>"; };
 		FF2C2E011C52E62000FAD7E2 /* TTModeWemoMulticastServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeWemoMulticastServer.h; path = Modes/Wemo/TTModeWemoMulticastServer.h; sourceTree = "<group>"; };
 		FF2C2E021C52E62000FAD7E2 /* TTModeWemoMulticastServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeWemoMulticastServer.m; path = Modes/Wemo/TTModeWemoMulticastServer.m; sourceTree = "<group>"; };
-		FF2C2E051C53061D00FAD7E2 /* CocoaAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaAsyncSocket.h; sourceTree = "<group>"; };
-		FF2C2E071C53061D00FAD7E2 /* Documentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Documentation.html; sourceTree = "<group>"; };
-		FF2C2E081C53061D00FAD7E2 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
-		FF2C2E091C53061D00FAD7E2 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
-		FF2C2E0A1C53061D00FAD7E2 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
-		FF2C2E0B1C53061D00FAD7E2 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
-		FF2C2E0C1C53061D00FAD7E2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FF2C2E0E1C53061D00FAD7E2 /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
-		FF2C2E0F1C53061D00FAD7E2 /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
-		FF2C2E101C53061D00FAD7E2 /* AsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncUdpSocket.h; sourceTree = "<group>"; };
-		FF2C2E111C53061D00FAD7E2 /* AsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncUdpSocket.m; sourceTree = "<group>"; };
-		FF2C2E121C53061D00FAD7E2 /* Documentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Documentation.html; sourceTree = "<group>"; };
-		FF2C2E151C53061D00FAD7E2 /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
-		FF2C2E161C53061D00FAD7E2 /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
-		FF2C2E171C53061D00FAD7E2 /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
-		FF2C2E181C53061D00FAD7E2 /* DDASLLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDASLLogger.m; sourceTree = "<group>"; };
-		FF2C2E191C53061D00FAD7E2 /* DDFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFileLogger.h; sourceTree = "<group>"; };
-		FF2C2E1A1C53061D00FAD7E2 /* DDFileLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFileLogger.m; sourceTree = "<group>"; };
-		FF2C2E1B1C53061D00FAD7E2 /* DDLog+LOGV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DDLog+LOGV.h"; sourceTree = "<group>"; };
-		FF2C2E1C1C53061D00FAD7E2 /* DDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLog.h; sourceTree = "<group>"; };
-		FF2C2E1D1C53061D00FAD7E2 /* DDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLog.m; sourceTree = "<group>"; };
-		FF2C2E1E1C53061D00FAD7E2 /* DDTTYLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTTYLogger.h; sourceTree = "<group>"; };
-		FF2C2E1F1C53061D00FAD7E2 /* DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTTYLogger.m; sourceTree = "<group>"; };
-		FF2C2E211C53061D00FAD7E2 /* DDContextFilterLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDContextFilterLogFormatter.h; sourceTree = "<group>"; };
-		FF2C2E221C53061D00FAD7E2 /* DDContextFilterLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDContextFilterLogFormatter.m; sourceTree = "<group>"; };
-		FF2C2E231C53061D00FAD7E2 /* DDDispatchQueueLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDispatchQueueLogFormatter.h; sourceTree = "<group>"; };
-		FF2C2E241C53061D00FAD7E2 /* DDDispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDispatchQueueLogFormatter.m; sourceTree = "<group>"; };
-		FF2C2E251C53061D00FAD7E2 /* DDMultiFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMultiFormatter.h; sourceTree = "<group>"; };
-		FF2C2E261C53061D00FAD7E2 /* DDMultiFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMultiFormatter.m; sourceTree = "<group>"; };
-		FF2C2E271C53061D00FAD7E2 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		FF2C2E391C53077300FAD7E2 /* CocoaAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaAsyncSocket.h; sourceTree = "<group>"; };
+		FF2C2E3B1C53077300FAD7E2 /* Documentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Documentation.html; sourceTree = "<group>"; };
+		FF2C2E3C1C53077300FAD7E2 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		FF2C2E3D1C53077300FAD7E2 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		FF2C2E3E1C53077300FAD7E2 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
+		FF2C2E3F1C53077300FAD7E2 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
+		FF2C2E401C53077300FAD7E2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF2C2E421C53077300FAD7E2 /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
+		FF2C2E431C53077300FAD7E2 /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
+		FF2C2E441C53077300FAD7E2 /* AsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncUdpSocket.h; sourceTree = "<group>"; };
+		FF2C2E461C53077300FAD7E2 /* Documentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Documentation.html; sourceTree = "<group>"; };
 		FF2EB77C1AA50D4D002549A7 /* itunes_music_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_music_icon.png; sourceTree = "<group>"; };
 		FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HueSDK_OSX.framework; sourceTree = "<group>"; };
 		FF3641D91A5F53DC003CC03C /* TTModeHueConnecting.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTModeHueConnecting.xib; sourceTree = "<group>"; };
@@ -1060,81 +1031,38 @@
 			path = iTunes;
 			sourceTree = "<group>";
 		};
-		FF2C2E041C53061D00FAD7E2 /* CocoaAsyncSocket */ = {
+		FF2C2E381C53077300FAD7E2 /* CocoaAsyncSocket */ = {
 			isa = PBXGroup;
 			children = (
-				FF2C2E051C53061D00FAD7E2 /* CocoaAsyncSocket.h */,
-				FF2C2E061C53061D00FAD7E2 /* GCD */,
-				FF2C2E0C1C53061D00FAD7E2 /* Info.plist */,
-				FF2C2E0D1C53061D00FAD7E2 /* RunLoop */,
-				FF2C2E131C53061D00FAD7E2 /* Vendor */,
+				FF2C2E391C53077300FAD7E2 /* CocoaAsyncSocket.h */,
+				FF2C2E3A1C53077300FAD7E2 /* GCD */,
+				FF2C2E401C53077300FAD7E2 /* Info.plist */,
+				FF2C2E411C53077300FAD7E2 /* RunLoop */,
 			);
 			path = CocoaAsyncSocket;
 			sourceTree = "<group>";
 		};
-		FF2C2E061C53061D00FAD7E2 /* GCD */ = {
+		FF2C2E3A1C53077300FAD7E2 /* GCD */ = {
 			isa = PBXGroup;
 			children = (
-				FF2C2E071C53061D00FAD7E2 /* Documentation.html */,
-				FF2C2E081C53061D00FAD7E2 /* GCDAsyncSocket.h */,
-				FF2C2E091C53061D00FAD7E2 /* GCDAsyncSocket.m */,
-				FF2C2E0A1C53061D00FAD7E2 /* GCDAsyncUdpSocket.h */,
-				FF2C2E0B1C53061D00FAD7E2 /* GCDAsyncUdpSocket.m */,
+				FF2C2E3B1C53077300FAD7E2 /* Documentation.html */,
+				FF2C2E3C1C53077300FAD7E2 /* GCDAsyncSocket.h */,
+				FF2C2E3D1C53077300FAD7E2 /* GCDAsyncSocket.m */,
+				FF2C2E3E1C53077300FAD7E2 /* GCDAsyncUdpSocket.h */,
+				FF2C2E3F1C53077300FAD7E2 /* GCDAsyncUdpSocket.m */,
 			);
 			path = GCD;
 			sourceTree = "<group>";
 		};
-		FF2C2E0D1C53061D00FAD7E2 /* RunLoop */ = {
+		FF2C2E411C53077300FAD7E2 /* RunLoop */ = {
 			isa = PBXGroup;
 			children = (
-				FF2C2E0E1C53061D00FAD7E2 /* AsyncSocket.h */,
-				FF2C2E0F1C53061D00FAD7E2 /* AsyncSocket.m */,
-				FF2C2E101C53061D00FAD7E2 /* AsyncUdpSocket.h */,
-				FF2C2E111C53061D00FAD7E2 /* AsyncUdpSocket.m */,
-				FF2C2E121C53061D00FAD7E2 /* Documentation.html */,
+				FF2C2E421C53077300FAD7E2 /* AsyncSocket.h */,
+				FF2C2E431C53077300FAD7E2 /* AsyncSocket.m */,
+				FF2C2E441C53077300FAD7E2 /* AsyncUdpSocket.h */,
+				FF2C2E461C53077300FAD7E2 /* Documentation.html */,
 			);
 			path = RunLoop;
-			sourceTree = "<group>";
-		};
-		FF2C2E131C53061D00FAD7E2 /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-				FF2C2E141C53061D00FAD7E2 /* CocoaLumberjack */,
-			);
-			path = Vendor;
-			sourceTree = "<group>";
-		};
-		FF2C2E141C53061D00FAD7E2 /* CocoaLumberjack */ = {
-			isa = PBXGroup;
-			children = (
-				FF2C2E151C53061D00FAD7E2 /* DDAbstractDatabaseLogger.h */,
-				FF2C2E161C53061D00FAD7E2 /* DDAbstractDatabaseLogger.m */,
-				FF2C2E171C53061D00FAD7E2 /* DDASLLogger.h */,
-				FF2C2E181C53061D00FAD7E2 /* DDASLLogger.m */,
-				FF2C2E191C53061D00FAD7E2 /* DDFileLogger.h */,
-				FF2C2E1A1C53061D00FAD7E2 /* DDFileLogger.m */,
-				FF2C2E1B1C53061D00FAD7E2 /* DDLog+LOGV.h */,
-				FF2C2E1C1C53061D00FAD7E2 /* DDLog.h */,
-				FF2C2E1D1C53061D00FAD7E2 /* DDLog.m */,
-				FF2C2E1E1C53061D00FAD7E2 /* DDTTYLogger.h */,
-				FF2C2E1F1C53061D00FAD7E2 /* DDTTYLogger.m */,
-				FF2C2E201C53061D00FAD7E2 /* Extensions */,
-			);
-			path = CocoaLumberjack;
-			sourceTree = "<group>";
-		};
-		FF2C2E201C53061D00FAD7E2 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				FF2C2E211C53061D00FAD7E2 /* DDContextFilterLogFormatter.h */,
-				FF2C2E221C53061D00FAD7E2 /* DDContextFilterLogFormatter.m */,
-				FF2C2E231C53061D00FAD7E2 /* DDDispatchQueueLogFormatter.h */,
-				FF2C2E241C53061D00FAD7E2 /* DDDispatchQueueLogFormatter.m */,
-				FF2C2E251C53061D00FAD7E2 /* DDMultiFormatter.h */,
-				FF2C2E261C53061D00FAD7E2 /* DDMultiFormatter.m */,
-				FF2C2E271C53061D00FAD7E2 /* README.txt */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		FF3641E31A5F66A8003CC03C /* Common Controls */ = {
@@ -1668,7 +1596,7 @@
 		FF936058196DF67500675B7B /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				FF2C2E041C53061D00FAD7E2 /* CocoaAsyncSocket */,
+				FF2C2E381C53077300FAD7E2 /* CocoaAsyncSocket */,
 				FF557AED1C4F393C005FB7FD /* Firebase.framework */,
 				FF557AA61C49C63D005FB7FD /* Nest */,
 				FF1F13551ADC90E700B52A0D /* MLCalendar */,
@@ -2007,7 +1935,7 @@
 				FFC730E51B0673E9003538D5 /* TTModeHueRandomOptions.xib in Resources */,
 				FF01CA631C46DCC200F83A73 /* filmstrip-3.png in Resources */,
 				FF3641F01A60C422003CC03C /* TTModeHuePushlink.xib in Resources */,
-				FF2C2E2E1C53061D00FAD7E2 /* Documentation.html in Resources */,
+				FF2C2E4D1C53077300FAD7E2 /* Documentation.html in Resources */,
 				FF557ABD1C49C6A8005FB7FD /* TTModeNestOptions.xib in Resources */,
 				FF8C834117AB14B5000166FC /* InfoPlist.strings in Resources */,
 				FF27406F1A7C576900C55579 /* itunes_audiobook_icon.png in Resources */,
@@ -2029,7 +1957,7 @@
 				FFABAB9C1C33674000AD5620 /* TTModeWebWindowController.xib in Resources */,
 				FF5295C11AD4D2BE007DDC02 /* title@2x.png in Resources */,
 				FF2740721A7C576900C55579 /* itunes_playlist_icon.png in Resources */,
-				FF2C2E2B1C53061D00FAD7E2 /* Info.plist in Resources */,
+				FF2C2E4A1C53077300FAD7E2 /* Info.plist in Resources */,
 				FF8A73CA1ABA69410023AA53 /* logo_256.png in Resources */,
 				FF01CA761C46DCC200F83A73 /* mode_presentation.png in Resources */,
 				FF52960F1AD631D1007DDC02 /* TTSettingsDevicesViewController.xib in Resources */,
@@ -2093,10 +2021,9 @@
 				FF7305BB1A5C9C76009A852D /* press_smartbridge.png in Resources */,
 				FF01CA6D1C46DCC200F83A73 /* mode_home.png in Resources */,
 				FFD8525A1ADDA49200325235 /* TTSettingsPairingViewController.xib in Resources */,
-				FF2C2E371C53061D00FAD7E2 /* README.txt in Resources */,
 				FF913D2919243B89005C336F /* TTModeAlarmSnoozeOptions.xib in Resources */,
 				FF01CA7E1C46DCC200F83A73 /* presentation-chart.png in Resources */,
-				FF2C2E281C53061D00FAD7E2 /* Documentation.html in Resources */,
+				FF2C2E471C53077300FAD7E2 /* Documentation.html in Resources */,
 				FF01CA291C46009E00F83A73 /* scripts in Resources */,
 				FF01CA741C46DCC200F83A73 /* mode_news.png in Resources */,
 				FF01CAB11C473EC100F83A73 /* README in Resources */,
@@ -2142,7 +2069,6 @@
 				FF5296051AD6142B007DDC02 /* RHPreferencesCustomPlaceholderController.m in Sources */,
 				FF1B022B1A36898700BE764E /* NSObject+CancelableBlocks.m in Sources */,
 				FF904B4C1BE9B82200AD00F3 /* TTBluetoothMonitor.m in Sources */,
-				FF2C2E341C53061D00FAD7E2 /* DDContextFilterLogFormatter.m in Sources */,
 				FF58717B1BDC83AB00CDCC1C /* TTProgressBar.m in Sources */,
 				FF5295DB1AD610A6007DDC02 /* RHPreferencesWindowController.m in Sources */,
 				FF01CAAF1C473EC100F83A73 /* KBWebArchiver.m in Sources */,
@@ -2200,35 +2126,29 @@
 				FF0E12CF18247D6100D49EC7 /* TTModeMusic.m in Sources */,
 				FF52960E1AD631D1007DDC02 /* TTSettingsDevicesViewController.m in Sources */,
 				FFB5FF381A671BA200DF617A /* TTModeHueSceneEarlyEveningOptions.m in Sources */,
-				FF2C2E2A1C53061D00FAD7E2 /* GCDAsyncUdpSocket.m in Sources */,
-				FF2C2E2F1C53061D00FAD7E2 /* DDAbstractDatabaseLogger.m in Sources */,
+				FF2C2E491C53077300FAD7E2 /* GCDAsyncUdpSocket.m in Sources */,
 				FF557A9E1C4855BD005FB7FD /* TTModeNest.m in Sources */,
 				FFC730E81B067434003538D5 /* TTModeHueRandomOptions.m in Sources */,
 				FF7305B41A5C9C76009A852D /* DispatchQueueLogFormatter.m in Sources */,
 				FF01CAA51C473EC100F83A73 /* htmls.m in Sources */,
 				FFA8EAA0190F090300679A4D /* TTModeMenuContainer.m in Sources */,
 				FFD62CCE194F935D0093004D /* TTSegmentedCell.m in Sources */,
-				FF2C2E331C53061D00FAD7E2 /* DDTTYLogger.m in Sources */,
 				FF8012F318692D0A00955218 /* TTModeMac.m in Sources */,
 				FF904B851BE9B88700AD00F3 /* IntelHex2BinConverter.m in Sources */,
 				FF3641F31A64AE39003CC03C /* NSAttributedString+Extra.m in Sources */,
 				FF801319186CF8FF00955218 /* TTDiamondLabels.m in Sources */,
 				FF904B3C1BE9B7F500AD00F3 /* TTActionHUDWindowController.m in Sources */,
 				FF7305C01A5CA8F5009A852D /* TTModeHueConnected.m in Sources */,
-				FF2C2E321C53061D00FAD7E2 /* DDLog.m in Sources */,
 				FF01CAAB1C473EC100F83A73 /* NSString+ReplaceExtensions.m in Sources */,
-				FF2C2E361C53061D00FAD7E2 /* DDMultiFormatter.m in Sources */,
 				FFF05F3E18F77CF500AC6230 /* TTChangeButtonView.m in Sources */,
 				FFB1670B1922FE53008FA1AF /* TTModeMacOptions.m in Sources */,
 				FFABAB811C2777D500AD5620 /* TTBatchActionHeaderView.m in Sources */,
 				FF801332186E156900955218 /* TTOptionsModeTitle.m in Sources */,
-				FF2C2E2D1C53061D00FAD7E2 /* AsyncUdpSocket.m in Sources */,
 				FFA8EA9C190F07A500679A4D /* TTModeTabsContainer.m in Sources */,
 				FF66F2A91922D1C100031478 /* TTOptionsDetailView.m in Sources */,
 				FF557AB61C49C63D005FB7FD /* NestStructureManager.m in Sources */,
 				FFABAB871C28DD2400AD5620 /* TTBatchAction.m in Sources */,
 				FF904B961BE9BA3700AD00F3 /* ioapi.c in Sources */,
-				FF2C2E351C53061D00FAD7E2 /* DDDispatchQueueLogFormatter.m in Sources */,
 				FF904B971BE9BA3700AD00F3 /* mztools.c in Sources */,
 				FFA1D4DC1A3B89A4003EA0BC /* TTModeHUDWindow.m in Sources */,
 				FF801335186E207B00955218 /* TTDiamondLabel.m in Sources */,
@@ -2245,9 +2165,8 @@
 				FFABABAA1C349F6700AD5620 /* TTModeWebMenuView.m in Sources */,
 				FFB167111923E6BF008FA1AF /* TTBoxView.m in Sources */,
 				FFAFCBC519130F520058B9CB /* TTPanelArrowView.m in Sources */,
-				FF2C2E301C53061D00FAD7E2 /* DDASLLogger.m in Sources */,
 				FFA8EA9D190F07A500679A4D /* TTModeTab.m in Sources */,
-				FF2C2E291C53061D00FAD7E2 /* GCDAsyncSocket.m in Sources */,
+				FF2C2E481C53077300FAD7E2 /* GCDAsyncSocket.m in Sources */,
 				FF7305AF1A5C9C76009A852D /* DDASLLogger.m in Sources */,
 				FF6A37D01A9AEC9F006F3756 /* NSDate+Extras.m in Sources */,
 				FF76AD121C1F86A900A6ED97 /* TTSliderCell.m in Sources */,
@@ -2256,7 +2175,6 @@
 				FF0E12D41828560000D49EC7 /* TTModeVideo.m in Sources */,
 				FF3641E91A60BB8B003CC03C /* TTModeHueConnecting.m in Sources */,
 				FFABAB8A1C28E6F000AD5620 /* TTBatchActions.m in Sources */,
-				FF2C2E311C53061D00FAD7E2 /* DDFileLogger.m in Sources */,
 				FF913D2C19243BFD005C336F /* TTModeAlarmSnoozeOptions.m in Sources */,
 				FF98A2E81867DBE70032CC7A /* TTPanelController.m in Sources */,
 				FF01CAB01C473EC100F83A73 /* NSURL+ValidityChecking.m in Sources */,
@@ -2274,7 +2192,7 @@
 				FF98A2ED1867DC320032CC7A /* main.m in Sources */,
 				FF5296181AD63425007DDC02 /* TTSettingsAboutViewController.m in Sources */,
 				FF5295CB1AD5F59C007DDC02 /* TTDevice.m in Sources */,
-				FF2C2E2C1C53061D00FAD7E2 /* AsyncSocket.m in Sources */,
+				FF2C2E4B1C53077300FAD7E2 /* AsyncSocket.m in Sources */,
 				FFABAB8D1C2A21A200AD5620 /* TTAddActionButtonView.m in Sources */,
 				FF3641DF1A5F5734003CC03C /* TTModeHueConnect.m in Sources */,
 				FFAA4F6F182D99640049FFC7 /* TTModeAlarmClock.m in Sources */,
