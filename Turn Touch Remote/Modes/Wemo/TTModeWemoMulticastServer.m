@@ -27,9 +27,9 @@
 }
 
 - (void)beginbroadcast {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul), ^{
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul), ^{
         [self createMulticastReceiver];
-    });
+//    });
 }
 
 #pragma mark - Multicast Receive
@@ -37,8 +37,7 @@
 - (void)createMulticastReceiver {
     GCDAsyncUdpSocket *udpSocket = [[GCDAsyncUdpSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
     NSError *error = nil;
-    if (![udpSocket bindToPort:7700 error:&error])
-    {
+    if (![udpSocket bindToPort:7700 error:&error]) {
         NSLog(@"Error binding to port: %@", error);
         return;
     }
@@ -47,12 +46,16 @@
         return;
     }
 
-    NSString *message = @"M-SEARCH * HTTP/1.1\r\nHOST:239.255.255.250:1900\r\nST:upnp:rootdevice\r\nMX:2\r\nMAN:\"ssdp:discover\"\r\n\r\n";
+    NSString *message = [@[@"M-SEARCH * HTTP/1.1",
+                           @"HOST:239.255.255.250:1900",
+                           @"ST:upnp:rootdevice",
+                           @"MX:2",
+                           @"MAN:\"ssdp:discover\"",
+                           @"", @""] componentsJoinedByString:@"\r\n"];
     NSData* data=[message dataUsingEncoding:NSUTF8StringEncoding];
     [udpSocket sendData:data toHost:@"239.255.255.250" port:1900 withTimeout:3 tag:0];
 
-    if (![udpSocket beginReceiving:&error])
-    {
+    if (![udpSocket beginReceiving:&error]) {
         NSLog(@"Error receiving: %@", error);
         return;
     }
@@ -71,13 +74,10 @@
         [headers setObject:value forKey:key];
     }
     
-    NSLog(@"%@", headers);
     NSString *userAgent = [headers objectForKey:@"x-user-agent"];
-    if ([userAgent containsString:@"redsonic"]) {
-        NSLog(@"Found Wemo: %@: %@", host, headers);
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [delegate foundDevice:headers host:host port:port];
-        });
+    if ([userAgent containsString:@"redsonic"]) { // redsonic = belkin
+//        NSLog(@"Found Wemo: %@: %@", host, headers);
+        [delegate foundDevice:headers host:host port:port];
     }
 }
 
@@ -90,4 +90,7 @@
                  port:[GCDAsyncUdpSocket portFromAddress:address]];
 }
 
+-(void)udpSocketDidClose:(GCDAsyncUdpSocket *)sock withError:(NSError *)error {
+    NSLog(@"Closed UDP socket");
+}
 @end
