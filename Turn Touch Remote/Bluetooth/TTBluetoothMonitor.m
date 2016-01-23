@@ -673,7 +673,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
         [device setNicknameData:characteristic.value];
         
         [self countDevices];
-        NSLog(@" ---> (%X) Hello %@ / %@", bluetoothState, characteristic.value, device);
+        NSLog(@" ---> (%X) Hello %@", bluetoothState, device);
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             [self ensureNicknameOnDevice:device];
         });

@@ -7,7 +7,10 @@
 //
 
 #import "TTMode.h"
+#import "TTModeWemoMulticastServer.h"
 
-@interface TTModeWemo : TTMode
+@interface TTModeWemo : TTMode <TTModeWemoMulticastDelegate>
+
+@property (nonatomic) TTModeWemoMulticastServer *multicastServer;
 
 @end

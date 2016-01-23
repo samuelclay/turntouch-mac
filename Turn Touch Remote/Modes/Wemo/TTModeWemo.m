@@ -10,6 +10,16 @@
 
 @implementation TTModeWemo
 
+@synthesize multicastServer;
+
+- (instancetype)init {
+    if (self = [super init]) {
+        multicastServer = [[TTModeWemoMulticastServer alloc] init];
+    }
+    
+    return self;
+}
+
 #pragma mark - Mode
 
 + (NSString *)title {
@@ -91,7 +101,11 @@
 }
 
 - (void)loadWemoDevices {
+    [multicastServer beginbroadcast];
+}
 
+- (void)foundDevice:(NSDictionary *)headers host:(NSString *)ipAddress port:(NSInteger)port {
+    
 }
 
 @end
