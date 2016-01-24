@@ -10,10 +10,30 @@
 #import "TTModeWemoMulticastServer.h"
 #import "TTModeWemoDevice.h"
 
-@interface TTModeWemo : TTMode <TTModeWemoMulticastDelegate, TTModeWemoDeviceDelegate> {
-    NSMutableArray *foundDevices;
-}
+typedef enum TTWemoState : NSUInteger {
+    WEMO_STATE_NOT_CONNECTED,
+    WEMO_STATE_CONNECTING,
+    WEMO_STATE_CONNECTED
+} TTWemoState;
 
+@class TTModeWemo;
+
+@protocol TTModeWemoDelegate <NSObject>
+@required
+- (void)changeState:(TTWemoState)hueState withMode:(TTModeWemo *)modeWemo;
+@end
+
+
+@interface TTModeWemo : TTMode <TTModeWemoMulticastDelegate, TTModeWemoDeviceDelegate>
+
+extern NSString *const kWemoDeviceLocation;
+
+@property (nonatomic) NSMutableArray *foundDevices;
 @property (nonatomic) TTModeWemoMulticastServer *multicastServer;
+@property (nonatomic, weak) id <TTModeWemoDelegate> delegate;
+@property (nonatomic) TTWemoState wemoState;
+
+- (void)beginConnectingToWemo;
+- (void)cancelConnectingToWemo;
 
 @end

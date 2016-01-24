@@ -22,7 +22,7 @@ typedef enum TTNestState : NSUInteger {
 @protocol TTModeNestDelegate <NSObject>
 @required
 
-- (void)changeState:(TTNestState)hueState withMode:(TTModeNest *)modeNest;
+- (void)changeState:(TTNestState)nestState withMode:(TTModeNest *)modeNest;
 - (void)updateThermostat:(Thermostat *)thermostat;
 @end
 

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="TTModeWemoSwitchOptions">
+            <connections>
+                <outlet property="devicePopup" destination="bR4-fY-CdL" id="ulF-7c-Yyt"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="61"/>
+            <subviews>
+                <popUpButton horizontalHuggingPriority="150" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bR4-fY-CdL">
+                    <rect key="frame" x="18" y="17" width="445" height="26"/>
+                    <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="wij-QX-XMe" id="6sy-2n-jDb">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" id="9ei-vH-3yd">
+                            <items>
+                                <menuItem title="Item 1" state="on" id="wij-QX-XMe"/>
+                                <menuItem title="Item 2" id="YgJ-S5-whC"/>
+                                <menuItem title="Item 3" id="2jE-dR-ptm"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="didChangeDevice:" target="-2" id="ZAf-PI-jgi"/>
+                    </connections>
+                </popUpButton>
+            </subviews>
+            <constraints>
+                <constraint firstItem="bR4-fY-CdL" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="ALt-JV-RND"/>
+                <constraint firstItem="bR4-fY-CdL" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="M2h-hk-vhN"/>
+                <constraint firstAttribute="trailing" secondItem="bR4-fY-CdL" secondAttribute="trailing" constant="20" id="Mmf-dE-9zm"/>
+                <constraint firstAttribute="bottom" secondItem="bR4-fY-CdL" secondAttribute="bottom" constant="20" id="d55-Sl-hwI"/>
+            </constraints>
+            <point key="canvasLocation" x="269" y="314.5"/>
+        </customView>
+    </objects>
+</document>

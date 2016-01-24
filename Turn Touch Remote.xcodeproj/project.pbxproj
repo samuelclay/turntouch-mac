@@ -103,6 +103,8 @@
 		FF2C2E681C546D6E00FAD7E2 /* TTModeWemoConnecting.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2C2E5F1C546D6E00FAD7E2 /* TTModeWemoConnecting.xib */; };
 		FF2C2E691C546D6E00FAD7E2 /* TTModeWemoOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E611C546D6E00FAD7E2 /* TTModeWemoOptions.m */; };
 		FF2C2E6A1C546D6E00FAD7E2 /* TTModeWemoOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2C2E621C546D6E00FAD7E2 /* TTModeWemoOptions.xib */; };
+		FF2C2E6E1C5479E000FAD7E2 /* TTModeWemoSwitchOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E6C1C5479E000FAD7E2 /* TTModeWemoSwitchOptions.m */; };
+		FF2C2E6F1C5479E000FAD7E2 /* TTModeWemoSwitchOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2C2E6D1C5479E000FAD7E2 /* TTModeWemoSwitchOptions.xib */; };
 		FF2EB77D1AA50D4D002549A7 /* itunes_music_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2EB77C1AA50D4D002549A7 /* itunes_music_icon.png */; };
 		FF3641DA1A5F53DC003CC03C /* TTModeHueConnecting.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3641D91A5F53DC003CC03C /* TTModeHueConnecting.xib */; };
 		FF3641DC1A5F5617003CC03C /* TTModeHueOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3641DB1A5F5617003CC03C /* TTModeHueOptions.xib */; };
@@ -482,6 +484,9 @@
 		FF2C2E601C546D6E00FAD7E2 /* TTModeWemoOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeWemoOptions.h; path = Modes/Wemo/TTModeWemoOptions.h; sourceTree = "<group>"; };
 		FF2C2E611C546D6E00FAD7E2 /* TTModeWemoOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeWemoOptions.m; path = Modes/Wemo/TTModeWemoOptions.m; sourceTree = "<group>"; };
 		FF2C2E621C546D6E00FAD7E2 /* TTModeWemoOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeWemoOptions.xib; path = Modes/Wemo/TTModeWemoOptions.xib; sourceTree = "<group>"; };
+		FF2C2E6B1C5479E000FAD7E2 /* TTModeWemoSwitchOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeWemoSwitchOptions.h; path = Modes/Wemo/TTModeWemoSwitchOptions.h; sourceTree = "<group>"; };
+		FF2C2E6C1C5479E000FAD7E2 /* TTModeWemoSwitchOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeWemoSwitchOptions.m; path = Modes/Wemo/TTModeWemoSwitchOptions.m; sourceTree = "<group>"; };
+		FF2C2E6D1C5479E000FAD7E2 /* TTModeWemoSwitchOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeWemoSwitchOptions.xib; path = Modes/Wemo/TTModeWemoSwitchOptions.xib; sourceTree = "<group>"; };
 		FF2EB77C1AA50D4D002549A7 /* itunes_music_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_music_icon.png; sourceTree = "<group>"; };
 		FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HueSDK_OSX.framework; sourceTree = "<group>"; };
 		FF3641D91A5F53DC003CC03C /* TTModeHueConnecting.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTModeHueConnecting.xib; sourceTree = "<group>"; };
@@ -1223,6 +1228,9 @@
 				FF2C2E021C52E62000FAD7E2 /* TTModeWemoMulticastServer.m */,
 				FF2C2E4E1C544A5300FAD7E2 /* TTModeWemoDevice.h */,
 				FF2C2E4F1C544A5300FAD7E2 /* TTModeWemoDevice.m */,
+				FF2C2E601C546D6E00FAD7E2 /* TTModeWemoOptions.h */,
+				FF2C2E611C546D6E00FAD7E2 /* TTModeWemoOptions.m */,
+				FF2C2E621C546D6E00FAD7E2 /* TTModeWemoOptions.xib */,
 				FF2C2E571C546D6E00FAD7E2 /* TTModeWemoConnect.h */,
 				FF2C2E581C546D6E00FAD7E2 /* TTModeWemoConnect.m */,
 				FF2C2E591C546D6E00FAD7E2 /* TTModeWemoConnect.xib */,
@@ -1232,9 +1240,9 @@
 				FF2C2E5D1C546D6E00FAD7E2 /* TTModeWemoConnecting.h */,
 				FF2C2E5E1C546D6E00FAD7E2 /* TTModeWemoConnecting.m */,
 				FF2C2E5F1C546D6E00FAD7E2 /* TTModeWemoConnecting.xib */,
-				FF2C2E601C546D6E00FAD7E2 /* TTModeWemoOptions.h */,
-				FF2C2E611C546D6E00FAD7E2 /* TTModeWemoOptions.m */,
-				FF2C2E621C546D6E00FAD7E2 /* TTModeWemoOptions.xib */,
+				FF2C2E6B1C5479E000FAD7E2 /* TTModeWemoSwitchOptions.h */,
+				FF2C2E6C1C5479E000FAD7E2 /* TTModeWemoSwitchOptions.m */,
+				FF2C2E6D1C5479E000FAD7E2 /* TTModeWemoSwitchOptions.xib */,
 			);
 			name = Wemo;
 			sourceTree = "<group>";
@@ -2018,6 +2026,7 @@
 				FF52960F1AD631D1007DDC02 /* TTSettingsDevicesViewController.xib in Resources */,
 				FF01CA601C46DCC200F83A73 /* cog.png in Resources */,
 				FF01CA691C46DCC200F83A73 /* macbookpro.png in Resources */,
+				FF2C2E6F1C5479E000FAD7E2 /* TTModeWemoSwitchOptions.xib in Resources */,
 				FFA1D4DB1A3B89A4003EA0BC /* TTModeHUDView.xib in Resources */,
 				FF2C2E6A1C546D6E00FAD7E2 /* TTModeWemoOptions.xib in Resources */,
 				FF8A73CB1ABA69410023AA53 /* logo_512.png in Resources */,
@@ -2180,6 +2189,7 @@
 				FF80131A186CF8FF00955218 /* TTDiamondView.m in Sources */,
 				FFAA4F72182D9A5F0049FFC7 /* TTModeNews.m in Sources */,
 				FF1F13631ADC98C400B52A0D /* TTDatePicker.m in Sources */,
+				FF2C2E6E1C5479E000FAD7E2 /* TTModeWemoSwitchOptions.m in Sources */,
 				FF904B791BE9B88700AD00F3 /* DFUOperationsDetails.m in Sources */,
 				FF01CAAC1C473EC100F83A73 /* NSXMLNode+HTMLUtilities.m in Sources */,
 				FF0E12CF18247D6100D49EC7 /* TTModeMusic.m in Sources */,

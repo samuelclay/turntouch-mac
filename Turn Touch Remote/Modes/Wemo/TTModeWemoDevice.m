@@ -43,6 +43,10 @@
     return sameAddress && samePort;
 }
 
+- (NSString *)location {
+    return [NSString stringWithFormat:@"%@:%ld", ipAddress, port];
+}
+
 #pragma mark - Actions
 
 - (void)turnOn {
@@ -65,13 +69,13 @@
 
 - (void)requestDeviceInfo:(NSInteger)attemptsLeft {
     if (!attemptsLeft) {
-        NSLog(@"Error: could not find wemo setup.xml %@:%ld", ipAddress, port);
+        NSLog(@"Error: could not find wemo setup.xml %@", self.location);
         return;
     }
     
     attemptsLeft -= 1;
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@:%ld/setup.xml",
-                                       ipAddress, port]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/setup.xml",
+                                       self.location]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"GET"];
 
@@ -100,22 +104,34 @@
                                             "wemo", "urn:Belkin:device-1-0");
     if (![results count]) {
         NSLog(@"Error: Could not find friendlyName for wemo.");
-        deviceName = [NSString stringWithFormat:@"Wemo device (%@:%ld)", ipAddress, port];
+        deviceName = [NSString stringWithFormat:@"Wemo device (%@)", self.location];
     } else {
         deviceName = [[results objectAtIndex:0] objectForKey:@"nodeContent"];
-        NSLog(@" ---> Found wemo device: %@ (%@:%ld)", deviceName, ipAddress, port);
+        NSLog(@" ---> Found wemo device: %@ (%@)", deviceName, self.location);
     }
     
     [delegate deviceReady:self];
 }
 
 - (void)changeDeviceState:(TTWemoDeviceState)state {
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@:%ld/upnp/control/basicevent1",
-                                       ipAddress, port]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/upnp/control/basicevent1",
+                                       self.location]];
+    NSData *body = [[NSString stringWithFormat:
+                     [@[@"<?xml version=\"1.0\" encoding=\"utf-8\"?>",
+                        @"<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\" s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">",
+                        @"<s:Body>",
+                        @"<u:SetBinaryState xmlns:u=\"urn:Belkin:service:basicevent:1\">",
+                        @"<BinaryState>%d</BinaryState>",
+                        @"</u:SetBinaryState>",
+                        @"</s:Body>",
+                        @"</s:Envelope>"] componentsJoinedByString:@"\r\n"],
+                     state == WEMO_DEVICE_STATE_OFF ? 0 : 1]
+                    dataUsingEncoding:NSUTF8StringEncoding];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"POST"];
-    [request setValue:@"urn:Belkin:service:basicevent:1#GetBinaryState" forHTTPHeaderField:@"SOAPACTION"];
-    [request setHTTPBody:[[NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?><s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\" s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\"><s:Body><u:SetBinaryState xmlns:u=\"urn:Belkin:service:basicevent:1\"><BinaryState>%d</BinaryState></u:SetBinaryState></s:Body></s:Envelope>", state == WEMO_DEVICE_STATE_OFF ? 0 : 1] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setValue:@"\"urn:Belkin:service:basicevent:1#SetBinaryState\"" forHTTPHeaderField:@"SOAPACTION"];
+    [request setValue:@"text/xml" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:body];
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse * _Nullable response,

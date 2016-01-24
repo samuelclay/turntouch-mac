@@ -11,7 +11,12 @@
 
 @implementation TTModeWemo
 
+NSString *const kWemoDeviceLocation = @"wemoDeviceLocation";
+
+@synthesize foundDevices;
 @synthesize multicastServer;
+@synthesize delegate;
+@synthesize wemoState;
 
 - (instancetype)init {
     if (self = [super init]) {
@@ -104,16 +109,35 @@
 #pragma mark - Wemo devices
 
 - (void)activate {
-    [self loadWemoDevices];
+    if ([foundDevices count]) {
+        wemoState = WEMO_STATE_CONNECTED;
+    } else {
+        wemoState = WEMO_STATE_CONNECTING;
+        [self beginConnectingToWemo];
+    }
+    [self.delegate changeState:wemoState withMode:self];
 }
 
 - (void)deactivate {
     [multicastServer deactivate];
 }
 
-- (void)loadWemoDevices {
+#pragma mark - Connection
+
+- (void)beginConnectingToWemo {
+    wemoState = WEMO_STATE_CONNECTING;
+    [self.delegate changeState:wemoState withMode:self];
+
     [multicastServer beginbroadcast];
 }
+
+- (void)cancelConnectingToWemo {
+    wemoState = WEMO_STATE_NOT_CONNECTED;
+    [self.delegate changeState:wemoState withMode:self];
+}
+
+
+#pragma mark - Multicast delegate
 
 - (void)foundDevice:(NSDictionary *)headers host:(NSString *)ipAddress port:(NSInteger)port {
     BOOL alreadyFound = NO;
@@ -135,9 +159,12 @@
     [newDevice requestDeviceInfo];
 }
 
+#pragma mark - Device delegate
+
 - (void)deviceReady:(id)device {
     // Device's name has been found, ready to display
-    
+    wemoState = WEMO_STATE_CONNECTED;
+    [self.delegate changeState:wemoState withMode:self];
 }
 
 @end

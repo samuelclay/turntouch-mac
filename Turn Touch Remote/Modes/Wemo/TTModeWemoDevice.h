@@ -13,6 +13,8 @@ typedef enum {
     WEMO_DEVICE_STATE_OFF
 } TTWemoDeviceState;
 
+@class TTModeWemoDevice;
+
 @protocol TTModeWemoDeviceDelegate <NSObject>
 
 - (void)deviceReady:(TTModeWemoDevice *)device;
@@ -31,6 +33,7 @@ typedef enum {
 - (BOOL)isOn;
 - (TTWemoDeviceState)state;
 - (BOOL)isEqualToDevice:(TTModeWemoDevice *)device;
+- (NSString *)location;
 
 - (void)turnOn;
 - (void)turnOff;

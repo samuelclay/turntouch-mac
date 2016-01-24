@@ -24,6 +24,14 @@ NSString *const kNestApiStructures = @"structures/";
 @synthesize delegate;
 @synthesize nestState;
 
+- (instancetype)init {
+    if (self = [super init]) {
+
+    }
+    
+    return self;
+}
+
 #pragma mark - Mode
 
 + (NSString *)title {
@@ -140,7 +148,7 @@ NSString *const kNestApiStructures = @"structures/";
     self.nestStructureManager = nil;
 }
 
-#pragma mark - Delegate
+#pragma mark - Connection
 
 - (void)beginConnectingToNest {
     nestState = NEST_STATE_CONNECTING;
