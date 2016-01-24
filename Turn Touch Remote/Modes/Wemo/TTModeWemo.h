@@ -8,8 +8,11 @@
 
 #import "TTMode.h"
 #import "TTModeWemoMulticastServer.h"
+#import "TTModeWemoDevice.h"
 
-@interface TTModeWemo : TTMode <TTModeWemoMulticastDelegate>
+@interface TTModeWemo : TTMode <TTModeWemoMulticastDelegate, TTModeWemoDeviceDelegate> {
+    NSMutableArray *foundDevices;
+}
 
 @property (nonatomic) TTModeWemoMulticastServer *multicastServer;
 

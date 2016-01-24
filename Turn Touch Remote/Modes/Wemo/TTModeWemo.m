@@ -7,6 +7,7 @@
 //
 
 #import "TTModeWemo.h"
+#import "TTModeWemoDevice.h"
 
 @implementation TTModeWemo
 
@@ -14,7 +15,9 @@
 
 - (instancetype)init {
     if (self = [super init]) {
+        foundDevices = [NSMutableArray array];
         multicastServer = [[TTModeWemoMulticastServer alloc] init];
+        [multicastServer setDelegate:self];
     }
     
     return self;
@@ -71,9 +74,13 @@
 
 - (void)runTTModeWemoDeviceOn {
     NSLog(@"Running TTModeWemoDeviceOn");
+    TTModeWemoDevice *device = [foundDevices objectAtIndex:0];
+    [device changeDeviceState:WEMO_DEVICE_STATE_ON];
 }
 - (void)runTTModeWemoDeviceOff {
     NSLog(@"Running TTModeWemoDeviceOff");
+    TTModeWemoDevice *device = [foundDevices objectAtIndex:0];
+    [device changeDeviceState:WEMO_DEVICE_STATE_OFF];
 }
 - (void)runTTModeWemoDeviceToggle {
     NSLog(@"Running TTModeWemoDeviceToggle");
@@ -100,11 +107,36 @@
     [self loadWemoDevices];
 }
 
+- (void)deactivate {
+    [multicastServer deactivate];
+}
+
 - (void)loadWemoDevices {
     [multicastServer beginbroadcast];
 }
 
 - (void)foundDevice:(NSDictionary *)headers host:(NSString *)ipAddress port:(NSInteger)port {
+    BOOL alreadyFound = NO;
+
+    TTModeWemoDevice *newDevice = [[TTModeWemoDevice alloc] initWithIpAddress:ipAddress port:port];
+    [newDevice setDelegate:self];
+    
+    for (TTModeWemoDevice *device in foundDevices) {
+        if ([device isEqualToDevice:newDevice]) {
+            alreadyFound = YES;
+            break;
+        }
+    }
+    
+    if (alreadyFound) return;
+    
+    [foundDevices addObject:newDevice];
+
+    [newDevice requestDeviceInfo];
+}
+
+- (void)deviceReady:(id)device {
+    // Device's name has been found, ready to display
     
 }
 

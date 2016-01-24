@@ -92,6 +92,9 @@
 		FF2C2E4A1C53077300FAD7E2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF2C2E401C53077300FAD7E2 /* Info.plist */; };
 		FF2C2E4B1C53077300FAD7E2 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E431C53077300FAD7E2 /* AsyncSocket.m */; };
 		FF2C2E4D1C53077300FAD7E2 /* Documentation.html in Resources */ = {isa = PBXBuildFile; fileRef = FF2C2E461C53077300FAD7E2 /* Documentation.html */; };
+		FF2C2E501C544A5300FAD7E2 /* TTModeWemoDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E4F1C544A5300FAD7E2 /* TTModeWemoDevice.m */; };
+		FF2C2E521C545D1800FAD7E2 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FF2C2E511C545D1800FAD7E2 /* libxml2.tbd */; };
+		FF2C2E561C545E6400FAD7E2 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E551C545E6400FAD7E2 /* XPathQuery.m */; };
 		FF2EB77D1AA50D4D002549A7 /* itunes_music_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2EB77C1AA50D4D002549A7 /* itunes_music_icon.png */; };
 		FF3641DA1A5F53DC003CC03C /* TTModeHueConnecting.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3641D91A5F53DC003CC03C /* TTModeHueConnecting.xib */; };
 		FF3641DC1A5F5617003CC03C /* TTModeHueOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3641DB1A5F5617003CC03C /* TTModeHueOptions.xib */; };
@@ -454,6 +457,11 @@
 		FF2C2E431C53077300FAD7E2 /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
 		FF2C2E441C53077300FAD7E2 /* AsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncUdpSocket.h; sourceTree = "<group>"; };
 		FF2C2E461C53077300FAD7E2 /* Documentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Documentation.html; sourceTree = "<group>"; };
+		FF2C2E4E1C544A5300FAD7E2 /* TTModeWemoDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeWemoDevice.h; path = Modes/Wemo/TTModeWemoDevice.h; sourceTree = "<group>"; };
+		FF2C2E4F1C544A5300FAD7E2 /* TTModeWemoDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeWemoDevice.m; path = Modes/Wemo/TTModeWemoDevice.m; sourceTree = "<group>"; };
+		FF2C2E511C545D1800FAD7E2 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		FF2C2E541C545E6400FAD7E2 /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
+		FF2C2E551C545E6400FAD7E2 /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
 		FF2EB77C1AA50D4D002549A7 /* itunes_music_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_music_icon.png; sourceTree = "<group>"; };
 		FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HueSDK_OSX.framework; sourceTree = "<group>"; };
 		FF3641D91A5F53DC003CC03C /* TTModeHueConnecting.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTModeHueConnecting.xib; sourceTree = "<group>"; };
@@ -815,6 +823,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF2C2E521C545D1800FAD7E2 /* libxml2.tbd in Frameworks */,
 				FF557ACF1C49CE94005FB7FD /* Security.framework in Frameworks */,
 				FF557AEE1C4F393C005FB7FD /* Firebase.framework in Frameworks */,
 				FF557ACD1C49CE8C005FB7FD /* CFNetwork.framework in Frameworks */,
@@ -1065,6 +1074,15 @@
 			path = RunLoop;
 			sourceTree = "<group>";
 		};
+		FF2C2E531C545E6400FAD7E2 /* XPathQuery */ = {
+			isa = PBXGroup;
+			children = (
+				FF2C2E541C545E6400FAD7E2 /* XPathQuery.h */,
+				FF2C2E551C545E6400FAD7E2 /* XPathQuery.m */,
+			);
+			path = XPathQuery;
+			sourceTree = "<group>";
+		};
 		FF3641E31A5F66A8003CC03C /* Common Controls */ = {
 			isa = PBXGroup;
 			children = (
@@ -1183,6 +1201,8 @@
 				FF557AA11C4855D4005FB7FD /* TTModeWemo.m */,
 				FF2C2E011C52E62000FAD7E2 /* TTModeWemoMulticastServer.h */,
 				FF2C2E021C52E62000FAD7E2 /* TTModeWemoMulticastServer.m */,
+				FF2C2E4E1C544A5300FAD7E2 /* TTModeWemoDevice.h */,
+				FF2C2E4F1C544A5300FAD7E2 /* TTModeWemoDevice.m */,
 			);
 			name = Wemo;
 			sourceTree = "<group>";
@@ -1373,6 +1393,7 @@
 		FF8C833517AB14B5000166FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FF2C2E511C545D1800FAD7E2 /* libxml2.tbd */,
 				FF557ACE1C49CE94005FB7FD /* Security.framework */,
 				FF557ACC1C49CE8C005FB7FD /* CFNetwork.framework */,
 				FF557ACA1C49CE85005FB7FD /* libc++.tbd */,
@@ -1596,6 +1617,7 @@
 		FF936058196DF67500675B7B /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				FF2C2E531C545E6400FAD7E2 /* XPathQuery */,
 				FF2C2E381C53077300FAD7E2 /* CocoaAsyncSocket */,
 				FF557AED1C4F393C005FB7FD /* Firebase.framework */,
 				FF557AA61C49C63D005FB7FD /* Nest */,
@@ -2087,6 +2109,7 @@
 				FF5296081AD61E74007DDC02 /* NSDate+TimeAgo.m in Sources */,
 				FF7305B21A5C9C76009A852D /* DDTTYLogger.m in Sources */,
 				FF904B761BE9B88700AD00F3 /* Utility.m in Sources */,
+				FF2C2E561C545E6400FAD7E2 /* XPathQuery.m in Sources */,
 				FFF05F3B18F77BE000AC6230 /* TTModeTitleView.m in Sources */,
 				FF557AB41C49C63D005FB7FD /* FirebaseManager.m in Sources */,
 				FF5296131AD633F4007DDC02 /* TTSettingsSupportViewController.m in Sources */,
@@ -2191,6 +2214,7 @@
 				FF557AB31C49C63D005FB7FD /* AccessToken.m in Sources */,
 				FF98A2ED1867DC320032CC7A /* main.m in Sources */,
 				FF5296181AD63425007DDC02 /* TTSettingsAboutViewController.m in Sources */,
+				FF2C2E501C544A5300FAD7E2 /* TTModeWemoDevice.m in Sources */,
 				FF5295CB1AD5F59C007DDC02 /* TTDevice.m in Sources */,
 				FF2C2E4B1C53077300FAD7E2 /* AsyncSocket.m in Sources */,
 				FFABAB8D1C2A21A200AD5620 /* TTAddActionButtonView.m in Sources */,
@@ -2329,6 +2353,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Turn Touch Remote/Supporting Files/Turn Touch Remote-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Remote/Supporting Files/Turn Touch Remote-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = (
@@ -2356,6 +2381,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Turn Touch Remote/Supporting Files/Turn Touch Remote-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Remote/Supporting Files/Turn Touch Remote-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = (
@@ -2484,6 +2510,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Turn Touch Remote/Supporting Files/Turn Touch Remote-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Remote/Supporting Files/Turn Touch Remote-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = (

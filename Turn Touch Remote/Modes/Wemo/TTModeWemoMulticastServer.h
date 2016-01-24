@@ -17,12 +17,13 @@
 
 
 @interface TTModeWemoMulticastServer : NSObject <GCDAsyncUdpSocketDelegate> {
-    NSSocketNativeHandle receiveSocket;
-    NSSocketNativeHandle sendSocket;
+    GCDAsyncUdpSocket *udpSocket;
+    NSInteger attemptsLeft;
 }
 
 @property (nonatomic) id<TTModeWemoMulticastDelegate> delegate;
 
 - (void)beginbroadcast;
+- (void)deactivate;
 
 @end
