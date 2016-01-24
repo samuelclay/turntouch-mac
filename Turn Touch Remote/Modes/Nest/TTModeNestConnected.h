@@ -14,8 +14,8 @@
 @property (nonatomic, strong) TTModeNest *modeNest;
 @property (nonatomic) IBOutlet NSTextField *labelAmbient;
 @property (nonatomic) IBOutlet NSTextField *labelTarget;
-@property (nonatomic) IBOutlet NSPopUpButton *thermostatPopup;
+@property (nonatomic) IBOutlet NSPopUpButton *devicePopup;
 
-- (IBAction)didChangeThermostat:(id)sender;
+- (IBAction)didChangeDevice:(id)sender;
 
 @end

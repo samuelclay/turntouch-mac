@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTModeNestConnected">
             <connections>
+                <outlet property="devicePopup" destination="yYb-jV-Fre" id="X2F-5W-7lz"/>
                 <outlet property="labelAmbient" destination="dsX-dJ-xaY" id="ir2-M9-801"/>
                 <outlet property="labelTarget" destination="JuO-04-etB" id="oaJ-mg-0Rw"/>
-                <outlet property="thermostatPopup" destination="yYb-jV-Fre" id="zxW-Hv-Jjm"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -63,7 +63,7 @@
                         </menu>
                     </popUpButtonCell>
                     <connections>
-                        <action selector="didChangeThermostat:" target="-2" id="EhL-Yb-tw2"/>
+                        <action selector="didChangeDevice:" target="-2" id="7LM-Hr-Aba"/>
                     </connections>
                 </popUpButton>
             </subviews>

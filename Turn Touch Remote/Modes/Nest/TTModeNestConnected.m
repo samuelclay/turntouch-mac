@@ -14,43 +14,43 @@
 
 @implementation TTModeNestConnected
 
-@synthesize thermostatPopup;
+@synthesize devicePopup;
 @synthesize labelAmbient;
 @synthesize labelTarget;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self selectThermostat];
+    [self selectDevice];
 }
 
-- (void)selectThermostat {
-    NSString *thermostatSelectedIdentifier = [appDelegate.modeMap mode:self.mode
-                                                     actionOptionValue:kNestThermostat
-                                                           inDirection:appDelegate.modeMap.inspectingModeDirection];
-    NSString *thermostatSelected;
-    NSMutableArray *thermostats = [NSMutableArray array];
-    [thermostatPopup removeAllItems];
+- (void)selectDevice {
+    NSString *deviceSelectedIdentifier = [appDelegate.modeMap mode:self.mode
+                                                 actionOptionValue:kNestThermostat
+                                                       inDirection:appDelegate.modeMap.inspectingModeDirection];
+    NSString *deviceSelected;
+    NSMutableArray *devices = [NSMutableArray array];
+    [devicePopup removeAllItems];
     for (Thermostat *thermostat in [self.modeNest.currentStructure objectForKey:@"thermostats"]) {
         if (!thermostat.nameLong) thermostat.nameLong = @"Connecting to Nest...";
-        [thermostats addObject:@{@"name": thermostat.nameLong, @"identifier": thermostat.thermostatId}];
+        [devices addObject:@{@"name": thermostat.nameLong, @"identifier": thermostat.thermostatId}];
     }
     
     NSSortDescriptor *sd = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-    [thermostats sortUsingDescriptors:@[sd]];
+    [devices sortUsingDescriptors:@[sd]];
     
-    for (NSDictionary *thermostatData in thermostats) {
-        [thermostatPopup addItemWithTitle:thermostatData[@"name"]];
-        if ([thermostatData[@"identifier"] isEqualToString:thermostatSelectedIdentifier]) {
-            thermostatSelected = thermostatData[@"name"];
+    for (NSDictionary *deviceData in devices) {
+        [devicePopup addItemWithTitle:deviceData[@"name"]];
+        if ([deviceData[@"identifier"] isEqualToString:deviceSelectedIdentifier]) {
+            deviceSelected = deviceData[@"name"];
         }
     }
-    if (thermostatSelected) {
-        [thermostatPopup selectItemWithTitle:thermostatSelected];
+    if (deviceSelected) {
+        [devicePopup selectItemWithTitle:deviceSelected];
     }
 }
 
-- (void)didChangeThermostat:(id)sender {
+- (void)didChangeDevice:(id)sender {
     
 }
 
