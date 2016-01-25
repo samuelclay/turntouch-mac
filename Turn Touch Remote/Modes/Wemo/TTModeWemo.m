@@ -79,16 +79,19 @@ NSString *const kWemoDeviceLocation = @"wemoDeviceLocation";
 
 - (void)runTTModeWemoDeviceOn {
     NSLog(@"Running TTModeWemoDeviceOn");
+    if (!foundDevices.count) return;
     TTModeWemoDevice *device = [foundDevices objectAtIndex:0];
     [device changeDeviceState:WEMO_DEVICE_STATE_ON];
 }
 - (void)runTTModeWemoDeviceOff {
     NSLog(@"Running TTModeWemoDeviceOff");
+    if (!foundDevices.count) return;
     TTModeWemoDevice *device = [foundDevices objectAtIndex:0];
     [device changeDeviceState:WEMO_DEVICE_STATE_OFF];
 }
 - (void)runTTModeWemoDeviceToggle {
     NSLog(@"Running TTModeWemoDeviceToggle");
+    if (!foundDevices.count) return;
 }
 
 #pragma mark - Defaults
