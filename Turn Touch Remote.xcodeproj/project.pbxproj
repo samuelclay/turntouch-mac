@@ -272,7 +272,6 @@
 		FFABAB7D1C2777AD00AD5620 /* TTBatchActionContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB7C1C2777AD00AD5620 /* TTBatchActionContainerView.m */; };
 		FFABAB811C2777D500AD5620 /* TTBatchActionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB801C2777D500AD5620 /* TTBatchActionHeaderView.m */; };
 		FFABAB841C2784E300AD5620 /* TTBatchActionStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB831C2784E300AD5620 /* TTBatchActionStackView.m */; };
-		FFABAB871C28DD2400AD5620 /* TTBatchAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB861C28DD2400AD5620 /* TTBatchAction.m */; };
 		FFABAB8A1C28E6F000AD5620 /* TTBatchActions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB891C28E6F000AD5620 /* TTBatchActions.m */; };
 		FFABAB8D1C2A21A200AD5620 /* TTAddActionButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB8C1C2A21A200AD5620 /* TTAddActionButtonView.m */; };
 		FFABAB901C2A32E000AD5620 /* TTAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB8F1C2A32E000AD5620 /* TTAction.m */; };
@@ -769,8 +768,6 @@
 		FFABAB801C2777D500AD5620 /* TTBatchActionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTBatchActionHeaderView.m; path = "Views/Batch Actions/TTBatchActionHeaderView.m"; sourceTree = "<group>"; };
 		FFABAB821C2784E300AD5620 /* TTBatchActionStackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTBatchActionStackView.h; path = "Views/Batch Actions/TTBatchActionStackView.h"; sourceTree = "<group>"; };
 		FFABAB831C2784E300AD5620 /* TTBatchActionStackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTBatchActionStackView.m; path = "Views/Batch Actions/TTBatchActionStackView.m"; sourceTree = "<group>"; };
-		FFABAB851C28DD2400AD5620 /* TTBatchAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTBatchAction.h; path = Models/TTBatchAction.h; sourceTree = "<group>"; };
-		FFABAB861C28DD2400AD5620 /* TTBatchAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTBatchAction.m; path = Models/TTBatchAction.m; sourceTree = "<group>"; };
 		FFABAB881C28E6F000AD5620 /* TTBatchActions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTBatchActions.h; path = Models/TTBatchActions.h; sourceTree = "<group>"; };
 		FFABAB891C28E6F000AD5620 /* TTBatchActions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTBatchActions.m; path = Models/TTBatchActions.m; sourceTree = "<group>"; };
 		FFABAB8B1C2A21A200AD5620 /* TTAddActionButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTAddActionButtonView.h; path = "Views/Batch Actions/TTAddActionButtonView.h"; sourceTree = "<group>"; };
@@ -982,8 +979,6 @@
 				FF5295CA1AD5F59C007DDC02 /* TTDevice.m */,
 				FFABAB881C28E6F000AD5620 /* TTBatchActions.h */,
 				FFABAB891C28E6F000AD5620 /* TTBatchActions.m */,
-				FFABAB851C28DD2400AD5620 /* TTBatchAction.h */,
-				FFABAB861C28DD2400AD5620 /* TTBatchAction.m */,
 				FFABAB8E1C2A32E000AD5620 /* TTAction.h */,
 				FFABAB8F1C2A32E000AD5620 /* TTAction.m */,
 			);
@@ -2216,7 +2211,6 @@
 				FFA8EA9C190F07A500679A4D /* TTModeTabsContainer.m in Sources */,
 				FF66F2A91922D1C100031478 /* TTOptionsDetailView.m in Sources */,
 				FF557AB61C49C63D005FB7FD /* NestStructureManager.m in Sources */,
-				FFABAB871C28DD2400AD5620 /* TTBatchAction.m in Sources */,
 				FF904B961BE9BA3700AD00F3 /* ioapi.c in Sources */,
 				FF2C2E631C546D6E00FAD7E2 /* TTModeWemoConnect.m in Sources */,
 				FF2C2E651C546D6E00FAD7E2 /* TTModeWemoConnected.m in Sources */,

@@ -30,6 +30,12 @@
     return self;
 }
 
+- (void)deactivate {
+    if ([mode respondsToSelector:@selector(activate)]) {
+        [mode deactivate];
+    }
+}
+
 - (id)optionValue:(NSString *)optionName inDirection:(TTModeDirection)direction {
     if (!batchActionKey) {
         return [NSAppDelegate.modeMap actionOptionValue:optionName inDirection:direction];

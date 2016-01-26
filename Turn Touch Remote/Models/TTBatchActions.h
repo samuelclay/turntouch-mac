@@ -22,6 +22,7 @@
 }
 
 - (void)assembleBatchActions;
+- (void)deactivate;
 - (NSString *)batchActionKey:(TTModeDirection)direction;
 - (NSArray *)batchActionsInDirection:(TTModeDirection)direction;
 

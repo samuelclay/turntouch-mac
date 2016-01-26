@@ -16,7 +16,6 @@
 #import "TTModeHue.h"
 #import "TTModeNest.h"
 #import "TTModeWemo.h"
-#import "TTBatchAction.h"
 #import "TTBatchActions.h"
 
 @implementation TTModeMap
@@ -156,6 +155,8 @@
 
 - (void)switchMode {
     if (selectedMode) {
+        [batchActions deactivate];
+        
         if ([selectedMode respondsToSelector:@selector(deactivate)]) {
             [selectedMode deactivate];
         }

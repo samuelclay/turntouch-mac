@@ -51,6 +51,14 @@
     return nil;
 }
 
+- (void)deactivate {
+    for (NSArray *actions in @[northActions, eastActions, westActions, southActions]) {
+        for (TTAction *batchAction in actions) {
+            [batchAction deactivate];
+        }
+    }
+}
+
 #pragma mark - Private
 
 - (NSArray *)_assembleBatchActionsInDirection:(TTModeDirection)direction {
