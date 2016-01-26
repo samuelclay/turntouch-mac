@@ -85,13 +85,15 @@ NSString *const kNestApiStructures = @"structures/";
     Thermostat *thermostat = [self selectedThermostat];
     NSLog(@"Running TTModeNestRaiseTemp: %ld+1", thermostat.targetTemperatureF);
     thermostat.targetTemperatureF += 1;
-    [self.nestThermostatManager saveChangesForThermostat:thermostat];
+    [self changeThermostatTemp:thermostat];
+//    [self.nestThermostatManager saveChangesForThermostat:thermostat];
 }
 - (void)runTTModeNestLowerTemp {
     Thermostat *thermostat = [self selectedThermostat];
     NSLog(@"Running TTModeNestLowerTemp: %ld-1", thermostat.targetTemperatureF);
     thermostat.targetTemperatureF -= 1;
-    [self.nestThermostatManager saveChangesForThermostat:thermostat];
+    [self changeThermostatTemp:thermostat];
+//    [self.nestThermostatManager saveChangesForThermostat:thermostat];
 }
 - (void)runTTModeNestSetTemp:(TTModeDirection)direction {
     Thermostat *thermostat = [self selectedThermostat];
@@ -100,7 +102,8 @@ NSString *const kNestApiStructures = @"structures/";
     NSLog(@"Running TTModeNestSetTemp: %ld", temperature);
 
     thermostat.targetTemperatureF = temperature;
-    [self.nestThermostatManager saveChangesForThermostat:thermostat];
+    [self changeThermostatTemp:thermostat];
+//    [self.nestThermostatManager saveChangesForThermostat:thermostat];
 }
 
 #pragma mark - Defaults
@@ -136,10 +139,10 @@ NSString *const kNestApiStructures = @"structures/";
     
     self.nestThermostatManager = [[NestThermostatManager alloc] init];
     [self.nestThermostatManager setDelegate:self];
-
+//
     self.nestStructureManager = [[NestStructureManager alloc] init];
     [self.nestStructureManager setDelegate:self];
-    [self.nestStructureManager initialize];
+//    [self.nestStructureManager initialize];
     
 }
 
@@ -165,7 +168,7 @@ NSString *const kNestApiStructures = @"structures/";
 - (void)structureUpdated:(NSDictionary *)structure {
     NSLog(@"Nest Structure updated: %@", structure);
     self.currentStructure = structure;
-    [self subscribeToThermostat:0];
+    [self loadNestThermostats];
 }
 
 - (void)thermostatValuesChanged:(Thermostat *)thermostat {
@@ -180,10 +183,10 @@ NSString *const kNestApiStructures = @"structures/";
     return thermostat;
 }
 
-- (void)subscribeToThermostat:(NSInteger)thermostatIndex {
-    Thermostat *thermostat = [self selectedThermostat];
+- (void)subscribeToThermostat:(Thermostat *)thermostat {
+//    Thermostat *thermostat = [self selectedThermostat];
     
-    NSLog(@"Subscribing to thermostat: %ld=%@", thermostatIndex, thermostat);
+    NSLog(@"Subscribing to thermostat: %@", thermostat);
     if (!thermostat) return;
     
     [self.nestThermostatManager beginSubscriptionForThermostat:thermostat];
@@ -206,7 +209,7 @@ NSString *const kNestApiStructures = @"structures/";
                                                NSError * _Nullable connectionError) {
                                if (!connectionError) {
                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-                                   if (httpResponse.statusCode == 200){
+                                   if (httpResponse.statusCode == 200) {
                                        NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers|NSJSONReadingAllowFragments error:nil];
                                        [self.nestStructureManager parseStructure:jsonData];
                                    }
@@ -228,17 +231,73 @@ NSString *const kNestApiStructures = @"structures/";
                                                NSError * _Nullable connectionError) {
                                if (!connectionError) {
                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-                                   if (httpResponse.statusCode == 200){
+                                   if (httpResponse.statusCode == 200) {
                                        NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers|NSJSONReadingAllowFragments error:nil];
                                        for (NSDictionary *data in [jsonData allValues]) {
-//                                           [self.nestThermostatManager parseStructure:jsonData];
-                                           NSLog(@"Thermostat: %@", data);
+                                           for (Thermostat *device in [self.currentStructure objectForKey:@"thermostats"]) {
+                                               if ([device.thermostatId isEqualToString:[data objectForKey:@"device_id"]]) {
+                                                   NSLog(@"Thermostat: %@", data);
+                                                   [self.nestThermostatManager updateThermostat:device forStructure:data];
+//                                                   [self subscribeToThermostat:device];
+                                                   break;
+                                               }
+                                           }
                                        }
                                    }
                                } else {
                                    NSLog(@"Nest REST error: %@", connectionError);
                                }
                            }];
+}
+
+- (void)changeThermostatTemp:(Thermostat *)thermostat {
+    NSString *accessToken = [[NestAuthManager sharedManager] accessToken];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@?auth=%@",
+                                       kNestApiHost, kNestApiThermostats, thermostat.thermostatId, accessToken]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"PUT"];
+    [request setHTTPBody:[[NSString stringWithFormat:@"{\"target_temperature_f\": %ld}", thermostat.targetTemperatureF]
+                          dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse * _Nullable response,
+                                               NSData * _Nullable data,
+                                               NSError * _Nullable connectionError) {
+                               if (!connectionError) {
+                                   NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                                   if (httpResponse.statusCode == 200) {
+                                       NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers|NSJSONReadingAllowFragments error:nil];
+//                                       [self.nestStructureManager parseStructure:jsonData];
+                                   } else {
+                                       NSLog(@"Nest REST error %ld: %@ - %@", httpResponse.statusCode, response, [NSString stringWithUTF8String:[data bytes]]);
+                                   }
+                               } else {
+                                   NSLog(@"Nest REST error: %@ / %@", connectionError, [NSString stringWithUTF8String:[data bytes]]);
+                               }
+                           }];
+}
+
+- (NSData *)httpBodyForParamsDictionary:(NSDictionary *)paramDictionary {
+    NSMutableArray *parameterArray = [NSMutableArray array];
+    
+    [paramDictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *obj, BOOL *stop) {
+        NSString *param = [NSString stringWithFormat:@"%@=%@", key, [self percentEscapeString:obj]];
+        [parameterArray addObject:param];
+    }];
+    
+    NSString *string = [parameterArray componentsJoinedByString:@"&"];
+    
+    return [string dataUsingEncoding:NSUTF8StringEncoding];
+}
+
+- (NSString *)percentEscapeString:(NSString *)string {
+    NSString *result = CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                                                                 (CFStringRef)string,
+                                                                                 (CFStringRef)@" ",
+                                                                                 (CFStringRef)@":/?@!$&'()*+,;=",
+                                                                                 kCFStringEncodingUTF8));
+    return [result stringByReplacingOccurrencesOfString:@" " withString:@"+"];
 }
 
 @end

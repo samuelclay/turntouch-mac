@@ -40,7 +40,7 @@ extern NSString *const kNestSetTemperature;
 
 - (void)beginConnectingToNest;
 - (void)cancelConnectingToNest;
-- (void)subscribeToThermostat:(NSInteger)thermostatIndex;
+- (void)subscribeToThermostat:(Thermostat *)thermostat;
 - (Thermostat *)selectedThermostat;
 
 @end

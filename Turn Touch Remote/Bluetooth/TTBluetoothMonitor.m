@@ -393,8 +393,8 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
  Invoked whenever an existing connection with the peripheral is torn down.
  */
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
-    TTDevice *device = [foundDevices deviceForPeripheral:peripheral];
 #ifdef DEBUG_CONNECT
+    TTDevice *device = [foundDevices deviceForPeripheral:peripheral];
     NSLog(@" ---> (%X) Disconnected device: %@", bluetoothState, device);
 #endif
     connectionDelay = 4;
@@ -685,7 +685,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
         NSLog(@"Manufacturer Name = %@", manufacturer);
     } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:dfuVersionCharacteritsicUUIDString]]) {
         int firmwareVersion;
-        [characteristic.value getBytes:&firmwareVersion];
+        [characteristic.value getBytes:&firmwareVersion length:1];
 #ifdef DEBUG_CONNECT
         NSLog(@" ---> Firmware version of %@: %d", device, firmwareVersion);
 #endif
