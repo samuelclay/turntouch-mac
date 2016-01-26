@@ -68,7 +68,7 @@
     if (!batchAction) return;
     
     // Action title
-    NSString *actionName = [mode titleForAction:batchAction.actionName buttonAction:BUTTON_ACTION_PRESSUP];
+    NSString *actionName = [mode titleForAction:batchAction.actionName buttonMoment:BUTTON_MOMENT_PRESSUP];
     NSSize actionSize = [actionName sizeWithAttributes:titleAttributes];
     NSPoint actionPoint = NSMakePoint(NSMinX(self.frame) + BATCH_ACTION_HEADER_MARGIN + 112,
                                       NSHeight(self.frame)/2 - floor(actionSize.height/2) + 1);

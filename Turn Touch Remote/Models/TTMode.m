@@ -108,18 +108,18 @@
 #pragma mark - Map directions to actions
 
 - (void)runDirection:(TTModeDirection)direction {
-    [self runDirection:direction action:@"run"];
+    [self runDirection:direction funcAction:@"run"];
 }
 
 - (void)runDoubleDirection:(TTModeDirection)direction {
     NSLog(@"Double click: %u", direction);
-    BOOL doubleRan = [self runDirection:direction action:@"doubleRun"];
+    BOOL doubleRan = [self runDirection:direction funcAction:@"doubleRun"];
     if (!doubleRan) {
         [self runDirection:direction];
     }
 }
 
-- (BOOL)runDirection:(TTModeDirection)direction action:(NSString *)funcAction {
+- (BOOL)runDirection:(TTModeDirection)direction funcAction:(NSString *)funcAction {
     BOOL success = NO;
     NSString *actionName = [self actionNameInDirection:direction];
     NSLog(@"Running: %d - %@%@", direction, funcAction, actionName);
@@ -147,20 +147,20 @@
     return success;
 }
 
-- (NSString *)titleInDirection:(TTModeDirection)direction buttonAction:(TTButtonAction)buttonAction {
+- (NSString *)titleInDirection:(TTModeDirection)direction buttonMoment:(TTButtonMoment)buttonMoment {
     NSString *actionName = [self actionNameInDirection:direction];
     
-    return [self titleForAction:actionName buttonAction:buttonAction];
+    return [self titleForAction:actionName buttonMoment:buttonMoment];
 }
 
-- (NSString *)titleForAction:(NSString *)actionName buttonAction:(TTButtonAction)buttonAction {
+- (NSString *)titleForAction:(NSString *)actionName buttonMoment:(TTButtonMoment)buttonMoment {
     NSString *runAction = @"title";
-    if (buttonAction == BUTTON_ACTION_DOUBLE) runAction = @"doubleTitle";
+    if (buttonMoment == BUTTON_MOMENT_DOUBLE) runAction = @"doubleTitle";
     SEL selector = NSSelectorFromString([NSString stringWithFormat:@"%@%@",
                                          runAction, actionName]);
-    if (![self respondsToSelector:selector] && buttonAction != BUTTON_ACTION_PRESSUP) {
+    if (![self respondsToSelector:selector] && buttonMoment != BUTTON_MOMENT_PRESSUP) {
         NSLog(@" ---> No double click title: %@", actionName);
-        return [self titleForAction:actionName buttonAction:BUTTON_ACTION_PRESSUP];
+        return [self titleForAction:actionName buttonMoment:BUTTON_MOMENT_PRESSUP];
     }
     
     IMP imp = [self methodForSelector:selector];
@@ -172,19 +172,19 @@
     return actionTitle;
 }
 
-- (NSString *)actionTitleInDirection:(TTModeDirection)direction buttonAction:(TTButtonAction)buttonAction {
+- (NSString *)actionTitleInDirection:(TTModeDirection)direction buttonMoment:(TTButtonMoment)buttonMoment {
     NSString *actionName = [self actionNameInDirection:direction];
     
-    return [self actionTitleForAction:actionName buttonAction:buttonAction];
+    return [self actionTitleForAction:actionName buttonMoment:buttonMoment];
 }
 
-- (NSString *)actionTitleForAction:(NSString *)actionName buttonAction:(TTButtonAction)buttonAction {
+- (NSString *)actionTitleForAction:(NSString *)actionName buttonMoment:(TTButtonMoment)buttonMoment {
     NSString *runAction = @"actionTitle";
-    if (buttonAction == BUTTON_ACTION_DOUBLE) runAction = @"doubleActionTitle";
+    if (buttonMoment == BUTTON_MOMENT_DOUBLE) runAction = @"doubleActionTitle";
     SEL selector = NSSelectorFromString([NSString stringWithFormat:@"%@%@",
                                          runAction, actionName]);
     if (![self respondsToSelector:selector]) {
-        return [self titleForAction:actionName buttonAction:buttonAction];
+        return [self titleForAction:actionName buttonMoment:buttonMoment];
     }
     
     IMP imp = [self methodForSelector:selector];

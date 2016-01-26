@@ -98,7 +98,7 @@
 - (void)drawLabel {
     NSString *directionLabel;
     
-    directionLabel = [diamondMode titleInDirection:labelDirection buttonAction:BUTTON_ACTION_PRESSUP];
+    directionLabel = [diamondMode titleInDirection:labelDirection buttonMoment:BUTTON_MOMENT_PRESSUP];
     NSSize labelSize = [directionLabel sizeWithAttributes:labelAttributes];
     NSInteger iconOffset = 0;
     if (isHud) {

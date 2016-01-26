@@ -47,10 +47,10 @@
 }
 
 - (IBAction)fadeIn:(TTModeDirection)direction withMode:(TTMode *)mode {
-    [self fadeIn:direction withMode:mode buttonAction:BUTTON_ACTION_PRESSUP];
+    [self fadeIn:direction withMode:mode buttonMoment:BUTTON_MOMENT_PRESSUP];
 }
 
-- (IBAction)fadeIn:(TTModeDirection)direction withMode:(TTMode *)mode buttonAction:(TTButtonAction)buttonAction {
+- (IBAction)fadeIn:(TTModeDirection)direction withMode:(TTMode *)mode buttonMoment:(TTButtonMoment)buttonMoment {
     if (!mode) mode = appDelegate.modeMap.selectedMode;
 
     if ([appDelegate.modeMap shouldHideHud:direction]) return;
@@ -61,7 +61,7 @@
     
     [hudView setMode:mode];
     [hudView setDirection:direction];
-    [hudView setButtonAction:buttonAction];
+    [hudView setButtonMoment:buttonMoment];
     [hudView drawProgressBar:progressBar];
     [hudView drawImageLayoutView];
     [hudView setHidden:NO];

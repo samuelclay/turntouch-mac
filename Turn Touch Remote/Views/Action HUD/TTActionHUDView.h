@@ -29,7 +29,7 @@ extern const CGFloat kActionHUDMarginPct;
 
 @property (nonatomic) TTModeDirection direction;
 @property (nonatomic) TTMode *mode;
-@property (nonatomic) TTButtonAction buttonAction;
+@property (nonatomic) TTButtonMoment buttonMoment;
 
 - (void)drawProgressBar:(NSProgressIndicator *)progressBar;
 - (void)drawImageLayoutView;

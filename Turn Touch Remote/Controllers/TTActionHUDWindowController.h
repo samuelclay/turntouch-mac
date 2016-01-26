@@ -27,7 +27,7 @@
 
 - (IBAction)fadeIn:(TTModeDirection)direction;
 - (IBAction)fadeIn:(TTModeDirection)direction withMode:(TTMode *)mode;
-- (IBAction)fadeIn:(TTModeDirection)direction withMode:(TTMode *)mode buttonAction:(TTButtonAction)buttonAction;
+- (IBAction)fadeIn:(TTModeDirection)direction withMode:(TTMode *)mode buttonMoment:(TTButtonMoment)buttonMoment;
 - (IBAction)fadeOut:(id)sender;
 - (IBAction)slideOut:(id)sender;
 
