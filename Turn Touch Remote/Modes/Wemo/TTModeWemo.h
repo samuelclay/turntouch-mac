@@ -28,11 +28,12 @@ typedef enum TTWemoState : NSUInteger {
 
 extern NSString *const kWemoDeviceLocation;
 
-@property (nonatomic) NSMutableArray *foundDevices;
-@property (nonatomic) TTModeWemoMulticastServer *multicastServer;
+//@property (nonatomic) NSMutableArray *foundDevices;
+//@property (nonatomic) TTModeWemoMulticastServer *multicastServer;
 @property (nonatomic, weak) id <TTModeWemoDelegate> delegate;
 @property (nonatomic) TTWemoState wemoState;
 
+- (NSMutableArray *)sharedFoundDevices;
 - (void)beginConnectingToWemo;
 - (void)cancelConnectingToWemo;
 

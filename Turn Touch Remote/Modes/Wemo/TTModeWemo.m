@@ -13,19 +13,37 @@
 
 NSString *const kWemoDeviceLocation = @"wemoDeviceLocation";
 
-@synthesize foundDevices;
-@synthesize multicastServer;
+//@synthesize foundDevices;
+//@synthesize multicastServer;
 @synthesize delegate;
 @synthesize wemoState;
 
 - (instancetype)init {
     if (self = [super init]) {
-        foundDevices = [NSMutableArray array];
-        multicastServer = [[TTModeWemoMulticastServer alloc] init];
-        [multicastServer setDelegate:self];
+//        foundDevices = [NSMutableArray array];
+//        multicastServer = [[TTModeWemoMulticastServer alloc] init];
+        [[self sharedMulticastServer] setDelegate:self];
     }
     
     return self;
+}
+
+- (TTModeWemoMulticastServer *)sharedMulticastServer {
+    static TTModeWemoMulticastServer *multicastServer = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        multicastServer = [[TTModeWemoMulticastServer alloc] init];
+    });
+    return multicastServer;
+}
+
+- (NSMutableArray *)sharedFoundDevices {
+    static NSMutableArray *foundDevices = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        foundDevices = [NSMutableArray array];
+    });
+    return foundDevices;
 }
 
 #pragma mark - Mode
@@ -79,19 +97,19 @@ NSString *const kWemoDeviceLocation = @"wemoDeviceLocation";
 
 - (void)runTTModeWemoDeviceOn {
     NSLog(@"Running TTModeWemoDeviceOn");
-    if (!foundDevices.count) return;
-    TTModeWemoDevice *device = [foundDevices objectAtIndex:0];
+    if (![self sharedFoundDevices].count) return;
+    TTModeWemoDevice *device = [[self sharedFoundDevices] objectAtIndex:0];
     [device changeDeviceState:WEMO_DEVICE_STATE_ON];
 }
 - (void)runTTModeWemoDeviceOff {
     NSLog(@"Running TTModeWemoDeviceOff");
-    if (!foundDevices.count) return;
-    TTModeWemoDevice *device = [foundDevices objectAtIndex:0];
+    if (![self sharedFoundDevices].count) return;
+    TTModeWemoDevice *device = [[self sharedFoundDevices] objectAtIndex:0];
     [device changeDeviceState:WEMO_DEVICE_STATE_OFF];
 }
 - (void)runTTModeWemoDeviceToggle {
     NSLog(@"Running TTModeWemoDeviceToggle");
-    if (!foundDevices.count) return;
+    if (![self sharedFoundDevices].count) return;
 }
 
 #pragma mark - Defaults
@@ -112,7 +130,7 @@ NSString *const kWemoDeviceLocation = @"wemoDeviceLocation";
 #pragma mark - Wemo devices
 
 - (void)activate {
-    if ([foundDevices count]) {
+    if ([[self sharedFoundDevices] count]) {
         wemoState = WEMO_STATE_CONNECTED;
     } else {
         wemoState = WEMO_STATE_CONNECTING;
@@ -122,7 +140,7 @@ NSString *const kWemoDeviceLocation = @"wemoDeviceLocation";
 }
 
 - (void)deactivate {
-    [multicastServer deactivate];
+    [[self sharedMulticastServer] deactivate];
 }
 
 #pragma mark - Connection
@@ -131,7 +149,7 @@ NSString *const kWemoDeviceLocation = @"wemoDeviceLocation";
     wemoState = WEMO_STATE_CONNECTING;
     [self.delegate changeState:wemoState withMode:self];
 
-    [multicastServer beginbroadcast];
+    [[self sharedMulticastServer] beginbroadcast];
 }
 
 - (void)cancelConnectingToWemo {
@@ -148,7 +166,7 @@ NSString *const kWemoDeviceLocation = @"wemoDeviceLocation";
     TTModeWemoDevice *newDevice = [[TTModeWemoDevice alloc] initWithIpAddress:ipAddress port:port];
     [newDevice setDelegate:self];
     
-    for (TTModeWemoDevice *device in foundDevices) {
+    for (TTModeWemoDevice *device in [self sharedFoundDevices]) {
         if ([device isEqualToDevice:newDevice]) {
             alreadyFound = YES;
             break;
@@ -157,7 +175,7 @@ NSString *const kWemoDeviceLocation = @"wemoDeviceLocation";
     
     if (alreadyFound) return;
     
-    [foundDevices addObject:newDevice];
+    [[self sharedFoundDevices] addObject:newDevice];
 
     [newDevice requestDeviceInfo];
 }

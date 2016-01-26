@@ -31,7 +31,7 @@
     NSString *deviceSelected;
     NSMutableArray *devices = [NSMutableArray array];
     [devicePopup removeAllItems];
-    for (TTModeWemoDevice *device in self.modeWemo.foundDevices) {
+    for (TTModeWemoDevice *device in [self.modeWemo sharedFoundDevices]) {
         [devices addObject:@{@"name": device.deviceName, @"identifier": device.location}];
     }
     
