@@ -19,7 +19,7 @@ typedef NS_ENUM(NSUInteger, KBWebArchiverErrorCode) {
     KBWebArchiverErrorCodeArchiveCreationFailed = 3
 };
 
-@interface KBWebArchiver : NSObject
+@interface KBWebArchiver : NSObject <WebFrameLoadDelegate, WebResourceLoadDelegate, WebPolicyDelegate>
 {
 	NSURL *_URL;
 	

@@ -30,14 +30,9 @@ typedef enum {
 @property (nonatomic) id<TTModeWemoDeviceDelegate> delegate;
 
 - (id)initWithIpAddress:(NSString *)_ip port:(NSInteger)_port;
-- (BOOL)isOn;
-- (TTWemoDeviceState)state;
 - (BOOL)isEqualToDevice:(TTModeWemoDevice *)device;
 - (NSString *)location;
 
-- (void)turnOn;
-- (void)turnOff;
-- (void)toggleState;
 - (void)requestDeviceInfo;
 - (void)changeDeviceState:(TTWemoDeviceState)state;
 

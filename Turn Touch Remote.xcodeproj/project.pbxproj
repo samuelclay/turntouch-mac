@@ -62,7 +62,6 @@
 		FF01CAAC1C473EC100F83A73 /* NSXMLNode+HTMLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = FF01CA951C473EC100F83A73 /* NSXMLNode+HTMLUtilities.m */; };
 		FF01CAAF1C473EC100F83A73 /* KBWebArchiver.m in Sources */ = {isa = PBXBuildFile; fileRef = FF01CA9B1C473EC100F83A73 /* KBWebArchiver.m */; };
 		FF01CAB01C473EC100F83A73 /* NSURL+ValidityChecking.m in Sources */ = {isa = PBXBuildFile; fileRef = FF01CA9D1C473EC100F83A73 /* NSURL+ValidityChecking.m */; };
-		FF01CAB11C473EC100F83A73 /* README in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA9E1C473EC100F83A73 /* README */; };
 		FF0E12BB1824286600D49EC7 /* TTModeMap.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12BA1824286600D49EC7 /* TTModeMap.m */; };
 		FF0E12CA18247BAE00D49EC7 /* TTMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12C918247BAE00D49EC7 /* TTMode.m */; };
 		FF0E12CF18247D6100D49EC7 /* TTModeMusic.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12CE18247D6100D49EC7 /* TTModeMusic.m */; };
@@ -418,7 +417,6 @@
 		FF01CA9B1C473EC100F83A73 /* KBWebArchiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KBWebArchiver.m; sourceTree = "<group>"; };
 		FF01CA9C1C473EC100F83A73 /* NSURL+ValidityChecking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+ValidityChecking.h"; sourceTree = "<group>"; };
 		FF01CA9D1C473EC100F83A73 /* NSURL+ValidityChecking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+ValidityChecking.m"; sourceTree = "<group>"; };
-		FF01CA9E1C473EC100F83A73 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		FF0E12B91824286600D49EC7 /* TTModeMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMap.h; path = Models/TTModeMap.h; sourceTree = "<group>"; };
 		FF0E12BA1824286600D49EC7 /* TTModeMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeMap.m; path = Models/TTModeMap.m; sourceTree = "<group>"; };
 		FF0E12C3182477CB00D49EC7 /* TTModeProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TTModeProtocol.h; path = Models/TTModeProtocol.h; sourceTree = "<group>"; };
@@ -808,6 +806,7 @@
 		FFB5FF401A671C4100DF617A /* TTModeHueOffOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeHueOffOptions.m; sourceTree = "<group>"; };
 		FFB5FF421A6723EA00DF617A /* TTModeHue.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TTModeHue.plist; sourceTree = "<group>"; };
 		FFB653DF18DBA14E00830B42 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		FFBAC7011C583B5B009CA53C /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		FFBC625E1A9D699D0032AD24 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FFC730E41B0673E9003538D5 /* TTModeHueRandomOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTModeHueRandomOptions.xib; sourceTree = "<group>"; };
 		FFC730E61B067434003538D5 /* TTModeHueRandomOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeHueRandomOptions.h; sourceTree = "<group>"; };
@@ -959,7 +958,7 @@
 				FF01CA9B1C473EC100F83A73 /* KBWebArchiver.m */,
 				FF01CA9C1C473EC100F83A73 /* NSURL+ValidityChecking.h */,
 				FF01CA9D1C473EC100F83A73 /* NSURL+ValidityChecking.m */,
-				FF01CA9E1C473EC100F83A73 /* README */,
+				FFBAC7011C583B5B009CA53C /* README */,
 			);
 			path = webarchiver;
 			sourceTree = "<group>";
@@ -2088,7 +2087,6 @@
 				FF2C2E471C53077300FAD7E2 /* Documentation.html in Resources */,
 				FF01CA291C46009E00F83A73 /* scripts in Resources */,
 				FF01CA741C46DCC200F83A73 /* mode_news.png in Resources */,
-				FF01CAB11C473EC100F83A73 /* README in Resources */,
 				FF01CA651C46DCC200F83A73 /* heart.png in Resources */,
 				FF2740701A7C576900C55579 /* itunes_genius_icon.png in Resources */,
 				FF01CA621C46DCC200F83A73 /* equalizer-1.png in Resources */,

@@ -174,8 +174,8 @@ NSUInteger const kOnetimeHeight = 68;
 
 - (void)setOneTimeDate {
     NSDate *midnightToday = [NSDate midnightToday];
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *todayComponents = [gregorian components:(NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit) fromDate:midnightToday];
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *todayComponents = [gregorian components:(NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear) fromDate:midnightToday];
     NSInteger theDay = [todayComponents day];
     NSInteger theMonth = [todayComponents month];
     NSInteger theYear = [todayComponents year];

@@ -28,14 +28,6 @@
 
 #pragma mark - State
 
-- (BOOL)isOn {
-    return [self state] == WEMO_DEVICE_STATE_ON;
-}
-
-- (TTWemoDeviceState)state {
-    
-}
-
 - (BOOL)isEqualToDevice:(TTModeWemoDevice *)device {
     BOOL sameAddress = [ipAddress isEqualToString:device.ipAddress];
     BOOL samePort = port == device.port;
@@ -45,20 +37,6 @@
 
 - (NSString *)location {
     return [NSString stringWithFormat:@"%@:%ld", ipAddress, port];
-}
-
-#pragma mark - Actions
-
-- (void)turnOn {
-    
-}
-
-- (void)turnOff {
-    
-}
-
-- (void)toggleState {
-    
 }
 
 #pragma mark - Networking
