@@ -685,7 +685,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
         NSLog(@"Manufacturer Name = %@", manufacturer);
     } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:dfuVersionCharacteritsicUUIDString]]) {
         int firmwareVersion;
-        [characteristic.value getBytes:&firmwareVersion length:1];
+        [characteristic.value getBytes:&firmwareVersion length:2];
 #ifdef DEBUG_CONNECT
         NSLog(@" ---> Firmware version of %@: %d", device, firmwareVersion);
 #endif

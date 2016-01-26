@@ -268,7 +268,8 @@ NSString *const kNestApiStructures = @"structures/";
                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
                                    if (httpResponse.statusCode == 200) {
                                        NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers|NSJSONReadingAllowFragments error:nil];
-//                                       [self.nestStructureManager parseStructure:jsonData];
+                                       NSLog(@"thermostat temp data: %@", jsonData);
+                                       [self.nestThermostatManager updateThermostat:thermostat forStructure:jsonData];
                                    } else {
                                        NSLog(@"Nest REST error %ld: %@ - %@", httpResponse.statusCode, response, [NSString stringWithUTF8String:[data bytes]]);
                                    }
