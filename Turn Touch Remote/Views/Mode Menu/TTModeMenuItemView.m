@@ -201,7 +201,6 @@
 #pragma mark - Actions
 
 - (void)mouseEntered:(NSEvent *)theEvent {
-    if (!appDelegate.modeMap.openedModeChangeMenu) return;
     [[NSCursor pointingHandCursor] set];
     
     hoverActive = YES;
@@ -210,7 +209,6 @@
 }
 
 - (void)mouseExited:(NSEvent *)theEvent {
-    if (!appDelegate.modeMap.openedModeChangeMenu) return;
     [[NSCursor arrowCursor] set];
     
     hoverActive = NO;
@@ -220,14 +218,12 @@
 }
 
 - (void)mouseDown:(NSEvent *)theEvent {
-    if (!appDelegate.modeMap.openedModeChangeMenu) return;
     mouseDownActive = YES;
     [self drawBackground];
     [self setNeedsDisplay:YES];
 }
 
 - (void)mouseUp:(NSEvent *)theEvent {
-    if (!appDelegate.modeMap.openedModeChangeMenu) return;
     if (!mouseDownActive) {
         [self drawBackground];
         [self setNeedsDisplay:YES];
