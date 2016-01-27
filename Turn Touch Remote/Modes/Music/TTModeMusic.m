@@ -34,6 +34,8 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
     return @[@"TTModeMusicVolumeUp",
              @"TTModeMusicVolumeDown",
              @"TTModeMusicPause",
+             @"TTModeMusicPlay",
+             @"TTModeMusicPlayPause",
              @"TTModeMusicNextTrack",
              @"TTModeMusicPreviousTrack",
              @"TTModeMusicVolumeJump"
@@ -49,17 +51,29 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
     return @"iTunes Volume down";
 }
 - (NSString *)titleTTModeMusicPause {
+    return @"Pause";
+}
+- (NSString *)titleTTModeMusicPlay {
+    return @"Play";
+}
+- (NSString *)titleTTModeMusicPlayPause {
     return @"Play/pause";
 }
 - (NSString *)doubleTitleTTModeMusicPause {
     return @"Previous track";
 }
 - (NSString *)actionTitleTTModeMusicPause {
+    return @"Pause";
+}
+- (NSString *)actionTitleTTModeMusicPlay {
+    return @"Play";
+}
+- (NSString *)actionTitleTTModeMusicPlayPause {
     iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
     if (iTunes.playerState == iTunesEPlSPlaying) {
-        return @"Play";
+        return @"Pause";
     }
-    return @"Pause";
+    return @"Play";
 }
 - (NSString *)titleTTModeMusicNextTrack {
     return @"Next track";
@@ -83,6 +97,12 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
     return @"music_volume_down.png";
 }
 - (NSString *)imageTTModeMusicPause {
+    return @"music_pause.png";
+}
+- (NSString *)imageTTModeMusicPlay {
+    return @"music_play.png";
+}
+- (NSString *)imageTTModeMusicPlayPause {
     return @"music_play.png";
 }
 - (NSString *)imageTTModeMusicNextTrack {
@@ -94,12 +114,12 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
 - (NSString *)imageTTModeMusicVolumeJump {
     return @"music_volume.png";
 }
-- (NSString *)imageActionHudTTModeMusicPause {
+- (NSString *)imageActionHudTTModeMusicPlayPause {
     iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
     if (iTunes.playerState == iTunesEPlSPlaying) {
-        return @"music_play.png";
+        return @"music_pause.png";
     }
-    return @"music_pause.png";
+    return @"music_play.png";
 }
 
 #pragma mark - Progress
@@ -130,11 +150,23 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
 - (ActionLayout)layoutTTModeMusicPause {
     return ACTION_LAYOUT_IMAGE_TITLE;
 }
+- (ActionLayout)layoutTTModeMusicPlay {
+    return ACTION_LAYOUT_IMAGE_TITLE;
+}
+- (ActionLayout)layoutTTModeMusicPlayPause {
+    return ACTION_LAYOUT_IMAGE_TITLE;
+}
 
 - (NSView *)viewForLayoutTTModeMusicPause:(NSRect)rect {
     iTunesApplication * iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
     iTunesTrack *current = [iTunes currentTrack];
     return [self.class songInfoView:rect withTrack:current];
+}
+- (NSView *)viewForLayoutTTModeMusicPlay:(NSRect)rect {
+    return [self viewForLayoutTTModeMusicPause:rect];
+}
+- (NSView *)viewForLayoutTTModeMusicPlayPause:(NSRect)rect {
+    return [self viewForLayoutTTModeMusicPause:rect];
 }
 
 - (ActionLayout)layoutTTModeMusicNextTrack {
@@ -267,6 +299,20 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
 - (void)runTTModeMusicPause {
     iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
     
+    if (iTunes.playerState == iTunesEPlSPlaying) {
+        [iTunes playpause];
+    }
+}
+- (void)runTTModeMusicPlay {
+    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    
+    if (iTunes.playerState != iTunesEPlSPlaying) {
+        [iTunes playpause];
+    }
+}
+- (void)runTTModeMusicPlayPause {
+    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    
     [iTunes playpause];
 }
 - (void)doubleRunTTModeMusicPause {
@@ -323,7 +369,7 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
     return @"TTModeMusicNextTrack";
 }
 - (NSString *)defaultWest {
-    return @"TTModeMusicPause";
+    return @"TTModeMusicPlayPause";
 }
 - (NSString *)defaultSouth {
     return @"TTModeMusicVolumeDown";

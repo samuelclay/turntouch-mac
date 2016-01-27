@@ -50,6 +50,7 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
     return @[@"TTModeMacVolumeUp",
              @"TTModeMacVolumeDown",
              @"TTModeMacTurnOffScreen",
+             @"TTModeMacTurnOnScreen",
              @"TTModeMacVolumeMute"
              ];
 }
@@ -68,6 +69,9 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
 - (NSString *)titleTTModeMacTurnOffScreen {
     return @"Turn off screen";
 }
+- (NSString *)titleTTModeMacTurnOnScreen {
+    return @"Turn on screen";
+}
 
 #pragma mark - Action Images
 
@@ -81,6 +85,9 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
     return @"music_volume_mute.png";
 }
 - (NSString *)imageTTModeMacTurnOffScreen {
+    return @"hue_sleep.png";
+}
+- (NSString *)imageTTModeMacTurnOnScreen {
     return @"hue_sleep.png";
 }
 
@@ -106,6 +113,14 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
 }
 
 - (void)runTTModeMacTurnOffScreen {
+    if ([self isDisplayOff]) {
+        [self switchDisplay:YES];
+    } else {
+        [self switchDisplay:NO];
+    }
+}
+
+- (void)runTTModeMacTurnOnScreen {
     if ([self isDisplayOff]) {
         [self switchDisplay:YES];
     } else {

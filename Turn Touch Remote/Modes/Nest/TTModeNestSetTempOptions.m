@@ -56,7 +56,7 @@
     [thermostatPopup removeAllItems];
     TTModeNest *modeNest = (TTModeNest *)self.action.mode;
     for (Thermostat *thermostat in [modeNest.currentStructure objectForKey:@"thermostats"]) {
-        if (!thermostat.thermostatId) return; // Thermostats not yet loaded, wait for delegate call
+        if (!thermostat.thermostatId || !thermostat.nameLong) return; // Thermostats not yet loaded, wait for delegate call
         [thermostats addObject:@{@"name": thermostat.nameLong, @"identifier": thermostat.thermostatId}];
     }
     
