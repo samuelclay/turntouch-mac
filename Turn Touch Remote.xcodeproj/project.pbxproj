@@ -85,12 +85,10 @@
 		FF27407A1A7C5BC200C55579 /* itunes_movies_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2740771A7C5BC200C55579 /* itunes_movies_icon.png */; };
 		FF27407B1A7C5BC200C55579 /* itunes_tv_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2740781A7C5BC200C55579 /* itunes_tv_icon.png */; };
 		FF2C2E031C52E62000FAD7E2 /* TTModeWemoMulticastServer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E021C52E62000FAD7E2 /* TTModeWemoMulticastServer.m */; };
-		FF2C2E471C53077300FAD7E2 /* Documentation.html in Resources */ = {isa = PBXBuildFile; fileRef = FF2C2E3B1C53077300FAD7E2 /* Documentation.html */; };
 		FF2C2E481C53077300FAD7E2 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E3D1C53077300FAD7E2 /* GCDAsyncSocket.m */; };
 		FF2C2E491C53077300FAD7E2 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E3F1C53077300FAD7E2 /* GCDAsyncUdpSocket.m */; };
 		FF2C2E4A1C53077300FAD7E2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF2C2E401C53077300FAD7E2 /* Info.plist */; };
 		FF2C2E4B1C53077300FAD7E2 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E431C53077300FAD7E2 /* AsyncSocket.m */; };
-		FF2C2E4D1C53077300FAD7E2 /* Documentation.html in Resources */ = {isa = PBXBuildFile; fileRef = FF2C2E461C53077300FAD7E2 /* Documentation.html */; };
 		FF2C2E501C544A5300FAD7E2 /* TTModeWemoDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E4F1C544A5300FAD7E2 /* TTModeWemoDevice.m */; };
 		FF2C2E521C545D1800FAD7E2 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FF2C2E511C545D1800FAD7E2 /* libxml2.tbd */; };
 		FF2C2E561C545E6400FAD7E2 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E551C545E6400FAD7E2 /* XPathQuery.m */; };
@@ -1992,7 +1990,6 @@
 				FFC730E51B0673E9003538D5 /* TTModeHueRandomOptions.xib in Resources */,
 				FF01CA631C46DCC200F83A73 /* filmstrip-3.png in Resources */,
 				FF3641F01A60C422003CC03C /* TTModeHuePushlink.xib in Resources */,
-				FF2C2E4D1C53077300FAD7E2 /* Documentation.html in Resources */,
 				FF557ABD1C49C6A8005FB7FD /* TTModeNestOptions.xib in Resources */,
 				FF8C834117AB14B5000166FC /* InfoPlist.strings in Resources */,
 				FF27406F1A7C576900C55579 /* itunes_audiobook_icon.png in Resources */,
@@ -2084,7 +2081,6 @@
 				FFD8525A1ADDA49200325235 /* TTSettingsPairingViewController.xib in Resources */,
 				FF913D2919243B89005C336F /* TTModeAlarmSnoozeOptions.xib in Resources */,
 				FF01CA7E1C46DCC200F83A73 /* presentation-chart.png in Resources */,
-				FF2C2E471C53077300FAD7E2 /* Documentation.html in Resources */,
 				FF01CA291C46009E00F83A73 /* scripts in Resources */,
 				FF01CA741C46DCC200F83A73 /* mode_news.png in Resources */,
 				FF01CA651C46DCC200F83A73 /* heart.png in Resources */,
