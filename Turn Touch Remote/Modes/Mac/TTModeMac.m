@@ -47,8 +47,8 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
 #pragma mark - Actions
 
 - (NSArray *)actions {
-    return @[@"TTModeMacVolumeUp",
-             @"TTModeMacVolumeDown",
+    return @[@"TTModeMacVolumeDown",
+             @"TTModeMacVolumeUp",
              @"TTModeMacTurnOffScreen",
              @"TTModeMacTurnOnScreen",
              @"TTModeMacVolumeMute"
@@ -88,7 +88,7 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
     return @"hue_sleep.png";
 }
 - (NSString *)imageTTModeMacTurnOnScreen {
-    return @"hue_sleep.png";
+    return @"hue_sunset.png";
 }
 
 #pragma mark - Action methods
