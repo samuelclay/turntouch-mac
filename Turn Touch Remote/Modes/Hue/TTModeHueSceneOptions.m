@@ -46,6 +46,8 @@ NSString *const kDoubleTapHueScene = @"doubleTapHueScene";
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
     NSMutableArray *scenes = [[NSMutableArray alloc] init];
     [scenePopup removeAllItems];
+    [doubleTapScenePopup removeAllItems];
+    
     for (PHScene *scene in cache.scenes.allValues) {
         NSLog(@"Scene: %@ %@", scene.identifier, scene.name);
         [scenes addObject:@{@"name": scene.name, @"identifier": scene.identifier}];

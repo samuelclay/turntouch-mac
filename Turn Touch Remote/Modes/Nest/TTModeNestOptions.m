@@ -30,7 +30,7 @@
 }
 
 - (void)changeState:(TTNestState)nestState withMode:(TTModeNest *)modeNest {
-    NSLog(@" Changing Nest state: %lu", nestState);
+//    NSLog(@" Changing Nest state: %lu", nestState);
     switch (nestState) {
         case NEST_STATE_NOT_CONNECTED:
             [self drawConnectViewController];

@@ -21,6 +21,8 @@
 
 @implementation TTModeHue
 
+static PHHueSDK *phHueSDK;
+
 NSString *const kRandomColors = @"randomColors";
 NSString *const kRandomBrightness = @"randomBrightness";
 NSString *const kRandomSaturation = @"randomSaturation";
@@ -30,6 +32,61 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 
 @synthesize delegate;
 @synthesize hueState;
+
+- (instancetype)init {
+    if (self = [super init]) {
+        [self initializeHue];
+    }
+    
+    return self;
+}
+
+- (PHHueSDK *)sharedPhHueSDK {
+    return phHueSDK;
+}
+
+- (void)initializeHue {
+//    if (phHueSDK) {
+//        [[PHNotificationManager defaultManager] deregisterObjectForAllNotifications:self];
+//        [self disableLocalHeartbeat];
+//        [phHueSDK stopSDK];
+//        phHueSDK = nil;
+//    }
+    if (phHueSDK) return;
+    
+    phHueSDK = [[PHHueSDK alloc] init];
+    [phHueSDK startUpSDK];
+    [phHueSDK enableLogging:NO];
+    
+    PHNotificationManager *notificationManager = [PHNotificationManager defaultManager];
+    [notificationManager deregisterObjectForAllNotifications:self];
+    
+    /***************************************************
+     The SDK will send the following notifications in response to events:
+     
+     - LOCAL_CONNECTION_NOTIFICATION
+     This notification will notify that the bridge heartbeat occurred and the bridge resources cache data has been updated
+     
+     - NO_LOCAL_CONNECTION_NOTIFICATION
+     This notification will notify that there is no connection with the bridge
+     
+     - NO_LOCAL_AUTHENTICATION_NOTIFICATION
+     This notification will notify that there is no authentication against the bridge
+     *****************************************************/
+    
+    [notificationManager registerObject:self withSelector:@selector(localConnection)
+                        forNotification:LOCAL_CONNECTION_NOTIFICATION];
+    [notificationManager registerObject:self withSelector:@selector(noLocalConnection)
+                        forNotification:NO_LOCAL_CONNECTION_NOTIFICATION];
+    [notificationManager registerObject:self withSelector:@selector(notAuthenticated)
+                        forNotification:NO_LOCAL_AUTHENTICATION_NOTIFICATION];
+    
+    // No Hue found, show connection button
+    hueState = STATE_CONNECTING;
+    [self.delegate changeState:hueState withMode:self showMessage:@"Connecting..."];
+    
+    [self enableLocalHeartbeat];
+}
 
 #pragma mark - Mode
 
@@ -122,7 +179,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 #pragma mark - Action methods
 
 - (void)runScene:(TTModeDirection)direction doubleTap:(BOOL)doubleTap {
-    if (!self.phHueSDK.localConnected) {
+    if (!phHueSDK.localConnected) {
         return;
     }
     
@@ -280,55 +337,16 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 #pragma mark - Hue Init
 
 - (void)activate {
-//    NSLog(@" ---> Activating Hue mode: %@", self.phHueSDK);
-    
-    if (self.phHueSDK) {
-        [[PHNotificationManager defaultManager] deregisterObjectForAllNotifications:self];
-        [self disableLocalHeartbeat];
-        [self.phHueSDK stopSDK];
-        self.phHueSDK = nil;
-    }
-    self.phHueSDK = [[PHHueSDK alloc] init];
-    [self.phHueSDK startUpSDK];
-    [self.phHueSDK enableLogging:NO];
-    
-    PHNotificationManager *notificationManager = [PHNotificationManager defaultManager];
-    [notificationManager deregisterObjectForAllNotifications:self];
-    
-    /***************************************************
-     The SDK will send the following notifications in response to events:
-     
-     - LOCAL_CONNECTION_NOTIFICATION
-     This notification will notify that the bridge heartbeat occurred and the bridge resources cache data has been updated
-     
-     - NO_LOCAL_CONNECTION_NOTIFICATION
-     This notification will notify that there is no connection with the bridge
-     
-     - NO_LOCAL_AUTHENTICATION_NOTIFICATION
-     This notification will notify that there is no authentication against the bridge
-     *****************************************************/
-    
-    [notificationManager registerObject:self withSelector:@selector(localConnection)
-                        forNotification:LOCAL_CONNECTION_NOTIFICATION];
-    [notificationManager registerObject:self withSelector:@selector(noLocalConnection)
-                        forNotification:NO_LOCAL_CONNECTION_NOTIFICATION];
-    [notificationManager registerObject:self withSelector:@selector(notAuthenticated)
-                        forNotification:NO_LOCAL_AUTHENTICATION_NOTIFICATION];
-
-    // No Hue found, show connection button
-    hueState = STATE_CONNECTING;
-    [self.delegate changeState:hueState withMode:self showMessage:@"Connecting..."];
-    
-    [self enableLocalHeartbeat];
+//    NSLog(@" ---> Activating Hue mode: %@", phHueSDK);
 }
 
 - (void)deactivate {
-//    NSLog(@" ---> DE-Activating Hue mode: %@", self.phHueSDK);
+//    NSLog(@" ---> DE-Activating Hue mode: %@", phHueSDK);
 
-    [[PHNotificationManager defaultManager] deregisterObjectForAllNotifications:self];
-    [self disableLocalHeartbeat];
-    [self.phHueSDK stopSDK];
-    self.phHueSDK = nil;
+//    [[PHNotificationManager defaultManager] deregisterObjectForAllNotifications:self];
+//    [self disableLocalHeartbeat];
+//    [phHueSDK stopSDK];
+//    phHueSDK = nil;
 }
 
 #pragma mark - HueSDK
@@ -369,7 +387,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
  Checks if we are currently connected to the bridge locally and if not, it will show an error when the error is not already shown.
  */
 - (void)checkConnectionState {
-    if (!self.phHueSDK.localConnected) {
+    if (!phHueSDK.localConnected) {
         [self showNoConnectionDialog];
     }
     else {
@@ -432,7 +450,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
             [self.delegate changeState:hueState withMode:self showMessage:@"Found Hue bridge..."];
             NSString *macAddress = [[bridgesFound allKeys] objectAtIndex:0];
             NSString *ipAddress = [bridgesFound objectForKey:macAddress];
-            [self.phHueSDK setBridgeToUseWithId:macAddress ipAddress:ipAddress];
+            [phHueSDK setBridgeToUseWithId:macAddress ipAddress:ipAddress];
             [self enableLocalHeartbeat];
         }
         else {
@@ -461,7 +479,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
     if (cache != nil && cache.bridgeConfiguration != nil && cache.bridgeConfiguration.ipaddress != nil) {
         // Enable heartbeat with interval of 10 seconds
-        [self.phHueSDK enableLocalConnection];
+        [phHueSDK enableLocalConnection];
     } else {
         // Automaticly start searching for bridges
         [self searchForBridgeLocal];
@@ -472,7 +490,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
  Stops the local heartbeat
  */
 - (void)disableLocalHeartbeat {
-    [self.phHueSDK disableLocalConnection];
+    [phHueSDK disableLocalConnection];
 }
 
 #pragma mark - Bridge authentication
@@ -530,7 +548,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
      or failure of push linking
      *****************************************************/
     
-    [self.phHueSDK startPushlinkAuthentication];
+    [phHueSDK startPushlinkAuthentication];
 }
 
 #pragma mark - Notifications for Pushlink
