@@ -18,9 +18,11 @@ NSString *const kNestApiHost = @"https://developer-api.nest.com/";
 NSString *const kNestApiThermostats = @"devices/thermostats/";
 NSString *const kNestApiStructures = @"structures/";
 
-@synthesize nestStructureManager;
-@synthesize nestThermostatManager;
-@synthesize currentStructure;
+static NSDictionary *currentStructure;
+
+//@synthesize nestStructureManager;
+//@synthesize nestThermostatManager;
+//@synthesize currentStructure;
 @synthesize delegate;
 @synthesize nestState;
 
@@ -30,6 +32,28 @@ NSString *const kNestApiStructures = @"structures/";
     }
     
     return self;
+}
+
+- (NestStructureManager *)sharedNestStructureManager {
+    static NestStructureManager *nestStructureManager = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        nestStructureManager = [[NestStructureManager alloc] init];
+    });
+    return nestStructureManager;
+}
+
+- (NestThermostatManager *)sharedNestThermostatManager {
+    static NestThermostatManager *nestThermostatManager = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        nestThermostatManager = [[NestThermostatManager alloc] init];
+    });
+    return nestThermostatManager;
+}
+
+- (NSDictionary *)currentStructure {
+    return currentStructure;
 }
 
 #pragma mark - Mode
@@ -126,7 +150,7 @@ NSString *const kNestApiStructures = @"structures/";
 - (void)activate {
     if ([[NestAuthManager sharedManager] isValidSession]) {
         NSLog(@"Nest access token: %@", [[NestAuthManager sharedManager] accessToken]);
-        if (self.currentStructure) {
+        if (currentStructure) {
             nestState = NEST_STATE_CONNECTED;
         } else {
             nestState = NEST_STATE_CONNECTING;
@@ -137,18 +161,16 @@ NSString *const kNestApiStructures = @"structures/";
     }
     [self.delegate changeState:nestState withMode:self];
     
-    self.nestThermostatManager = [[NestThermostatManager alloc] init];
-    [self.nestThermostatManager setDelegate:self];
-//
-    self.nestStructureManager = [[NestStructureManager alloc] init];
-    [self.nestStructureManager setDelegate:self];
+    [[self sharedNestThermostatManager] setDelegate:self];
+
+    [[self sharedNestStructureManager] setDelegate:self];
 //    [self.nestStructureManager initialize];
     
 }
 
 - (void)deactivate {
-    self.nestThermostatManager = nil;
-    self.nestStructureManager = nil;
+//    self.nestThermostatManager = nil;
+//    self.nestStructureManager = nil;
 }
 
 #pragma mark - Connection
@@ -167,7 +189,7 @@ NSString *const kNestApiStructures = @"structures/";
 
 - (void)structureUpdated:(NSDictionary *)structure {
     NSLog(@"Nest Structure updated: %@", structure);
-    self.currentStructure = structure;
+    currentStructure = structure;
     [self loadNestThermostats];
 }
 
@@ -179,7 +201,7 @@ NSString *const kNestApiStructures = @"structures/";
 }
 
 - (Thermostat *)selectedThermostat {
-    Thermostat *thermostat = [[self.currentStructure objectForKey:@"thermostats"] objectAtIndex:0];;
+    Thermostat *thermostat = [[currentStructure objectForKey:@"thermostats"] objectAtIndex:0];;
     return thermostat;
 }
 
@@ -189,7 +211,7 @@ NSString *const kNestApiStructures = @"structures/";
     NSLog(@"Subscribing to thermostat: %@", thermostat);
     if (!thermostat) return;
     
-    [self.nestThermostatManager beginSubscriptionForThermostat:thermostat];
+    [[self sharedNestThermostatManager] beginSubscriptionForThermostat:thermostat];
 
     nestState = NEST_STATE_CONNECTED;
     [self.delegate changeState:nestState withMode:self];
@@ -211,7 +233,7 @@ NSString *const kNestApiStructures = @"structures/";
                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
                                    if (httpResponse.statusCode == 200) {
                                        NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers|NSJSONReadingAllowFragments error:nil];
-                                       [self.nestStructureManager parseStructure:jsonData];
+                                       [[self sharedNestStructureManager] parseStructure:jsonData];
                                    }
                                } else {
                                    NSLog(@"Nest REST error: %@", connectionError);
@@ -234,10 +256,10 @@ NSString *const kNestApiStructures = @"structures/";
                                    if (httpResponse.statusCode == 200) {
                                        NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers|NSJSONReadingAllowFragments error:nil];
                                        for (NSDictionary *data in [jsonData allValues]) {
-                                           for (Thermostat *device in [self.currentStructure objectForKey:@"thermostats"]) {
+                                           for (Thermostat *device in [currentStructure objectForKey:@"thermostats"]) {
                                                if ([device.thermostatId isEqualToString:[data objectForKey:@"device_id"]]) {
                                                    NSLog(@"Thermostat: %@", data);
-                                                   [self.nestThermostatManager updateThermostat:device forStructure:data];
+                                                   [[self sharedNestThermostatManager] updateThermostat:device forStructure:data];
 //                                                   [self subscribeToThermostat:device];
                                                    break;
                                                }
@@ -269,7 +291,7 @@ NSString *const kNestApiStructures = @"structures/";
                                    if (httpResponse.statusCode == 200) {
                                        NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers|NSJSONReadingAllowFragments error:nil];
                                        NSLog(@"thermostat temp data: %@", jsonData);
-                                       [self.nestThermostatManager updateThermostat:thermostat forStructure:jsonData];
+                                       [[self sharedNestThermostatManager] updateThermostat:thermostat forStructure:jsonData];
                                    } else {
                                        NSLog(@"Nest REST error %ld: %@ - %@", httpResponse.statusCode, response, [NSString stringWithUTF8String:[data bytes]]);
                                    }
