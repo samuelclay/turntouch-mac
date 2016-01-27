@@ -127,6 +127,7 @@
                                                          attribute:0
                                                         multiplier:1.0 constant:CORNER_RADIUS]];
     } else {
+        modeOptionsViewController.mode = appDelegate.modeMap.selectedMode;
         modeOptionsViewController.menuType = MODE_MENU_TYPE;
         [self addSubview:modeOptionsViewController.view];
     }
@@ -210,6 +211,8 @@
         actionOptionsViewController.menuType = ACTION_MENU_TYPE;
         actionOptionsViewController.action = [[TTAction alloc] init];
         actionOptionsViewController.mode = appDelegate.modeMap.selectedMode;
+        [actionOptionsViewController.mode setAction:actionOptionsViewController.action];
+        actionOptionsViewController.action.mode = appDelegate.modeMap.selectedMode; // To parallel batch actions
         [self addSubview:actionOptionsViewController.view];
     }
     

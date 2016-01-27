@@ -149,7 +149,7 @@ static NSDictionary *currentStructure;
 
 - (void)activate {
     if ([[NestAuthManager sharedManager] isValidSession]) {
-        NSLog(@"Nest access token: %@", [[NestAuthManager sharedManager] accessToken]);
+//        NSLog(@"Nest access token: %@", [[NestAuthManager sharedManager] accessToken]);
         if (currentStructure) {
             nestState = NEST_STATE_CONNECTED;
         } else {

@@ -23,15 +23,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.modeNest = ((TTModeNest *)NSAppDelegate.modeMap.selectedMode);
+    self.modeNest = (TTModeNest *)self.mode;
     [self.modeNest setDelegate:self];
     
     [self changeState:self.modeNest.nestState withMode:self.modeNest];
 }
 
 - (void)changeState:(TTNestState)nestState withMode:(TTModeNest *)modeNest {
-    //    NSLog(@" Changing Nest state: %lu", nestState);
+    NSLog(@" Changing Nest state: %lu", nestState);
     switch (nestState) {
         case NEST_STATE_NOT_CONNECTED:
             [self drawConnectViewController];

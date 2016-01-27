@@ -48,14 +48,15 @@
 }
 
 - (void)selectThermostat {
-    NSString *thermostatSelectedIdentifier = [appDelegate.modeMap mode:self.mode
+    NSString *thermostatSelectedIdentifier = [appDelegate.modeMap mode:self.action.mode
                                                      actionOptionValue:kNestThermostat
                                                            inDirection:appDelegate.modeMap.inspectingModeDirection];
     NSString *thermostatSelected;
     NSMutableArray *thermostats = [NSMutableArray array];
     [thermostatPopup removeAllItems];
-    TTModeNest *modeNest = (TTModeNest *)self.mode;
+    TTModeNest *modeNest = (TTModeNest *)self.action.mode;
     for (Thermostat *thermostat in [modeNest.currentStructure objectForKey:@"thermostats"]) {
+        if (!thermostat.thermostatId) return; // Thermostats not yet loaded, wait for delegate call
         [thermostats addObject:@{@"name": thermostat.nameLong, @"identifier": thermostat.thermostatId}];
     }
     
