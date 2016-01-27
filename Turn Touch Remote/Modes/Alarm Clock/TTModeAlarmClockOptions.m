@@ -237,7 +237,7 @@ NSUInteger const kOnetimeHeight = 68;
         [textOnetimeLabel setStringValue:@"Alarm is in the past!"];
         return;
     }
-    unsigned int unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit | NSDayCalendarUnit;
+    unsigned int unitFlags = NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitDay;
     NSCalendar *sysCalendar = [NSCalendar currentCalendar];
     NSDateComponents *breakdownInfo = [sysCalendar components:unitFlags
                                                      fromDate:[NSDate date]

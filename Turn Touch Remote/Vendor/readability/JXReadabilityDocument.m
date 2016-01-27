@@ -567,8 +567,8 @@ NSUInteger sumCFArrayOfNSUInteger(CFArrayRef array) {
 #	define DEBUG_SANITIZE	1
 //#endif
 	
-	NSNumber *minTextLengthNum = (self.options)[@"minTextLength"];
-	NSUInteger minLen = (minTextLengthNum != nil) ? [minTextLengthNum unsignedIntegerValue] : TEXT_LENGTH_THRESHOLD;
+//	NSNumber *minTextLengthNum = (self.options)[@"minTextLength"];
+//	NSUInteger minLen = (minTextLengthNum != nil) ? [minTextLengthNum unsignedIntegerValue] : TEXT_LENGTH_THRESHOLD;
 /*	for (NSXMLElement *header in [node tagsWithNames:@"h1", @"h2", @"h3", @"h4", @"h5", @"h6", nil]) {
 		if ([self classWeight:header] < 0 || [self getLinkDensity:header] > 0.33) {
 			[header detach];
@@ -880,7 +880,7 @@ NSUInteger sumCFArrayOfNSUInteger(CFArrayRef array) {
 			else {
 				[self debug:@"Ruthless and lenient parsing did not work. Returning raw html"];
 				if ([self.html kind] == NSXMLElementKind) {
-					article = [(NSXMLElement *)self.html elementsForName:@"body"][0];
+					article = (NSXMLDocument *)[(NSXMLElement *)self.html elementsForName:@"body"][0];
 				}
 				if (article == nil) {
 					article = self.html;

@@ -174,7 +174,7 @@
     //  "Mail Compacting Mailboxes" would be a useful string.
     
     //  NOTE: IOPMAssertionCreateWithName limits the string to 128 characters.
-    CFStringRef* reasonForActivity= CFSTR("Turn Touch Reader");
+    CFStringRef reasonForActivity= CFSTR("Turn Touch Reader");
     
     IOPMAssertionID assertionID;
     IOReturn success = IOPMAssertionCreateWithName(kIOPMAssertionTypeNoDisplaySleep,
@@ -325,7 +325,7 @@
     KBWebArchiver *archiver = [[KBWebArchiver alloc] initWithURLString:urlString];
     archiver.localResourceLoadingOnly = htmlSource && htmlSource.length;
     webarchive = [archiver webArchive];
-    NSData *data = [webarchive data];
+    [webarchive data];
     error = [archiver error];
     
     WebResource *resource = [webarchive mainResource];

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>TT:firmware:version</key>
-	<string>3</string>
+	<string>4</string>
 	<key>TT:firmware:interval_min</key>
 	<integer>111</integer>
 	<key>TT:firmware:interval_max</key>
@@ -19,7 +19,7 @@
 	<key>TT:mode:east</key>
 	<string>TTModeMac</string>
 	<key>TT:mode:west</key>
-	<string>TTModeNews</string>
+	<string>TTModeHue</string>
 	<key>TT:selectedModeDirection</key>
 	<string>1</string>
 	<key>TT:mode:south</key>
