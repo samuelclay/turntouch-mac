@@ -874,7 +874,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			DK22BwzrjQwTB0Op6hJd6OkrvF8=
+			f9kaQxcywwhYzI+XDPGq6kjvHvU=
 			</data>
 			<key>requirement</key>
 			<string>identifier "com.philips.hue.HueSDK-OSX" and anchor apple generic and certificate leaf[subject.CN] = "Mac Developer: Sam Clay (BYABZ8TGVG)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
@@ -883,7 +883,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			xybuks2JfFfUwwbW4Us0dEADm/o=
+			HSWJdvdeU4UhMoPHuNWnnKrDkaA=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.andymatuschak.Sparkle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
