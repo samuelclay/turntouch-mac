@@ -15,6 +15,8 @@ extern NSString *const kMusicVolumeJump;
 
 @interface TTModeMusic : TTMode {
     NSInteger originalVolume;
+    CGFloat volumeFadeMultiplier;
+    NSTimer *volumeFadeTimer;
 }
 
 + (NSView *)songInfoView:(NSRect)rect withTrack:(iTunesTrack *)currentTrack;

@@ -38,7 +38,8 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
              @"TTModeMusicPlayPause",
              @"TTModeMusicNextTrack",
              @"TTModeMusicPreviousTrack",
-             @"TTModeMusicVolumeJump"
+             @"TTModeMusicVolumeJump",
+             @"TTModeMusicSleep"
              ];
 }
 
@@ -87,6 +88,9 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
 - (NSString *)titleTTModeMusicVolumeJump {
     return @"Volume jump";
 }
+- (NSString *)titleTTModeMusicSleep {
+    return @"Sleep";
+}
 
 #pragma mark - Action Images
 
@@ -113,6 +117,9 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
 }
 - (NSString *)imageTTModeMusicVolumeJump {
     return @"music_volume.png";
+}
+- (NSString *)imageTTModeMusicSleep {
+    return @"hue_sleep.png";
 }
 - (NSString *)imageActionHudTTModeMusicPlayPause {
     iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
@@ -364,6 +371,45 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
     if (volume != volumeJump) originalVolume = volume;
 
     [iTunes setSoundVolume:(volume == volumeJump ? originalVolume : volumeJump)];
+}
+
+- (void)runTTModeMusicSleep:(TTModeDirection)direction {
+    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    NSInteger volume = iTunes.soundVolume;
+    NSInteger volumeJump = [[self.action optionValue:kMusicVolumeJump inDirection:direction] integerValue];
+    if (volume != volumeJump) originalVolume = volume;
+    originalVolume = volume;
+    [iTunes setSoundVolume:(volume == volumeJump ? originalVolume : volumeJump)];
+}
+
+- (void)fadeVolumeDown {
+    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    volumeFadeMultiplier -= 1;
+    
+    [iTunes setSoundVolume:volumeFadeMultiplier];
+    
+    if (volumeFadeTimer) {
+        [volumeFadeTimer invalidate];
+    }
+    
+    if (volumeFadeMultiplier <= 0.f) {
+        NSLog(@"Done fading out volume.");
+        if (iTunes.playerState == iTunesEPlSPlaying) {
+            [iTunes playpause];
+        }
+        [iTunes setSoundVolume:originalVolume];
+        return;
+    }
+    
+    NSDate *volumeBumpDate = [[NSDate date] dateByAddingTimeInterval:(10)/100.f];
+    NSRunLoop *runner = [NSRunLoop currentRunLoop];
+    volumeFadeTimer = [[NSTimer alloc] initWithFireDate:volumeBumpDate
+                                               interval:0.f
+                                                 target:self
+                                               selector:@selector(fadeVolumeOut)
+                                               userInfo:nil repeats:NO];
+    [runner addTimer:volumeFadeTimer forMode: NSDefaultRunLoopMode];
+    NSLog(@"Bumping volume: %f", volumeFadeMultiplier);
 }
 
 #pragma mark - Defaults
