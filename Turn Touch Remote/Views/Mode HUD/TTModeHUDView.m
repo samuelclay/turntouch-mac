@@ -17,6 +17,9 @@ const CGFloat kPaddingPct = .75f;
 @synthesize isTeaser;
 @synthesize gradientView;
 @synthesize teaserGradientView;
+@synthesize modeAttributes;
+@synthesize titleMode;
+@synthesize inactiveModeAttributes;
 
 - (void)awakeFromNib {
     appDelegate = (TTAppDelegate *)[NSApp delegate];
@@ -24,11 +27,30 @@ const CGFloat kPaddingPct = .75f;
     isTeaser = NO;
     teaserGradientView = [[NSImageView alloc] init];
     gradientView = [[NSImageView alloc] init];
+    labelsView = [[TTModeHUDLabelsView alloc] initWithHUDView:self];
     
+    visualEffectView = [[NSVisualEffectView alloc] init];
+    visualEffectView.translatesAutoresizingMaskIntoConstraints = NO;
+    visualEffectView.material = NSVisualEffectMaterialDark;
+    visualEffectView.blendingMode = NSVisualEffectBlendingModeBehindWindow;
+    visualEffectView.state = NSVisualEffectStateActive;
+    [visualEffectView setWantsLayer:YES];
+    
+    [self addSubview:visualEffectView];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:visualEffectView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeHeight multiplier:1.f constant:0.f]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:visualEffectView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:1.f constant:0.f]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:visualEffectView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeading multiplier:1.f constant:0.f]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:visualEffectView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.f constant:0.f]];
+
     [self drawMapBackground];
     [self addSubview:teaserGradientView];
     [self addSubview:gradientView];
     [self addSubview:diamondLabels];
+    [self addSubview:labelsView];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:labelsView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeHeight multiplier:1.f constant:0.f]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:labelsView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:1.f constant:0.f]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:labelsView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeading multiplier:1.f constant:0.f]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:labelsView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.f constant:0.f]];
 }
 
 #pragma mark - Constants
@@ -59,9 +81,8 @@ const CGFloat kPaddingPct = .75f;
 //    NSLog(@"Draw mode: %d / %@", isTeaser, NSStringFromRect(mapFrame));
     
     [self drawMap];
-    [self drawModeLabelBackgrounds];
-    [self drawModeLabels];
     
+    [labelsView setNeedsDisplay:YES];
     [diamondLabels setNeedsDisplay:YES];
 }
 
@@ -134,107 +155,6 @@ const CGFloat kPaddingPct = .75f;
     [diamondBorder2 stroke];
     [gradientImage unlockFocus];
     [gradientView setImage:gradientImage];
-}
-
-- (void)drawModeLabelBackgrounds {
-    for (NSNumber *directionNumber in @[[NSNumber numberWithInteger:NORTH],
-                                        [NSNumber numberWithInteger:EAST],
-                                        [NSNumber numberWithInteger:WEST],
-                                        [NSNumber numberWithInteger:SOUTH]]) {
-        TTModeDirection direction = (TTModeDirection)[directionNumber integerValue];
-        NSBezierPath *ellipse = [NSBezierPath bezierPathWithRoundedRect:[self modeLabelFrame:direction]
-                                                                xRadius:self.hudRadius
-                                                                yRadius:self.hudRadius];
-        CGFloat alpha = 0.99f;
-        NSColor *labelColor = NSColorFromRGBAlpha(0xF1F1F2, alpha);
-        if (titleMode != [appDelegate.modeMap modeInDirection:direction]) {
-            alpha = 0.6f;
-            labelColor = NSColorFromRGBAlpha(0xF1F1F2, alpha);
-        }
-        [labelColor setFill];
-        [ellipse fill];
-    }
-}
-
-- (NSRect)modeLabelFrame:(TTModeDirection)direction {
-    NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
-    NSRect mapFrame = [self mapFrame:NO];
-    NSString *directionModeTitle = [[[appDelegate.modeMap modeInDirection:direction] class] title];
-    NSSize titleSize = [directionModeTitle sizeWithAttributes:modeAttributes];
-    NSInteger imageSize = titleSize.height;
-    CGFloat width = titleSize.width + imageSize + self.hudImageMargin*2 + self.hudImageTextMargin;
-    CGFloat height = titleSize.height + self.hudImageMargin;
-    CGFloat x = 0;
-    CGFloat y = 0;
-    switch (direction) {
-        case NORTH:
-            x = (NSWidth(screen.frame) - width)/2;
-            y = mapFrame.origin.y + mapFrame.size.height + 8;
-            break;
-        case EAST:
-            x = mapFrame.origin.x + NSWidth(mapFrame) + 24;
-            y = mapFrame.origin.y + NSHeight(mapFrame)/2 - height/2;
-            break;
-        case WEST:
-            x = mapFrame.origin.x - width - 24;
-            y = mapFrame.origin.y + NSHeight(mapFrame)/2 - height/2;
-            break;
-        case SOUTH:
-            x = (NSWidth(screen.frame) - width)/2;
-            y = mapFrame.origin.y - height - 8;
-            break;
-            
-        default:
-            break;
-    }
-    
-    return NSMakeRect(x,
-                      y,
-                      width,
-                      height);
-}
-
-- (void)drawModeLabels {
-    for (TTMode *directionMode in @[appDelegate.modeMap.northMode,
-                                        appDelegate.modeMap.eastMode,
-                                        appDelegate.modeMap.westMode,
-                                        appDelegate.modeMap.southMode]) {
-        TTModeDirection direction = [directionMode modeDirection];
-        NSDictionary *attributes = modeAttributes;
-        CGFloat imageAlpha = 1.0f;
-        if (titleMode != [appDelegate.modeMap modeInDirection:direction]) {
-            attributes = inactiveModeAttributes;
-            imageAlpha = 0.9f;
-        }
-        NSRect frame = [self modeLabelFrame:direction];
-
-        // Used to debug label frame
-//        NSBezierPath *textViewSurround = [NSBezierPath bezierPathWithRect:frame];
-//        [textViewSurround setLineWidth:1];
-//        [[NSColor redColor] set];
-//        [textViewSurround stroke];
-        
-        TTMode *directionMode = [appDelegate.modeMap modeInDirection:direction];
-        NSString *imageFilename = [[directionMode class] imageName];
-        modeImage = [NSImage imageNamed:imageFilename];
-        NSString *directionModeTitle = [[[appDelegate.modeMap modeInDirection:direction] class] title];
-        NSSize titleSize = [directionModeTitle sizeWithAttributes:modeAttributes];
-        [modeImage setSize:NSMakeSize(titleSize.height, titleSize.height)];
-                
-        CGFloat offset = (NSHeight(frame)/2) - (modeImage.size.height/2);
-        NSPoint imagePoint = NSMakePoint(frame.origin.x + self.hudImageMargin, frame.origin.y + offset);
-        [modeImage drawInRect:NSMakeRect(imagePoint.x, imagePoint.y,
-                                         modeImage.size.width, modeImage.size.height)
-                     fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:imageAlpha];
-        
-//        NSLog(@"Mode HUD: %@ - %@ / %@", directionModeTitle, NSStringFromSize(titleSize), NSStringFromRect(frame));
-        NSRect textFrame = frame;
-        NSInteger fudgeFactor = 8;
-        textFrame.origin.x += modeImage.size.width + self.hudImageMargin + self.hudImageTextMargin;
-        textFrame.origin.y += NSHeight(frame)/2 - titleSize.height/2 + titleSize.height/fudgeFactor;
-        textFrame.size.height = titleSize.height;
-        [directionModeTitle drawInRect:textFrame withAttributes:attributes];
-    }
 }
 
 - (void)drawMap {

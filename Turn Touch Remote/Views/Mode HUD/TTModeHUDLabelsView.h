@@ -1,0 +1,22 @@
+//
+//  TTModeHUDLabelsView.h
+//  Turn Touch Remote
+//
+//  Created by Samuel Clay on 1/27/16.
+//  Copyright © 2016 Turn Touch. All rights reserved.
+//
+
+#import <Cocoa/Cocoa.h>
+#import "TTAppDelegate.h"
+#import "TTModeHUDView.h"
+
+@class TTModeHUDView;
+
+@interface TTModeHUDLabelsView : NSView {
+    TTAppDelegate *appDelegate;
+    TTModeHUDView *modeHudView;
+}
+
+- (id)initWithHUDView:(TTModeHUDView *)HUDView;
+
+@end

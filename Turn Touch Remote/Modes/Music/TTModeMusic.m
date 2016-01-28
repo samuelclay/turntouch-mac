@@ -315,13 +315,19 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
     
     [iTunes playpause];
 }
-- (void)doubleRunTTModeMusicPause {
+- (void)doubleRunTTModeMusicPlayPause {
     iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
     
     [iTunes previousTrack];
     if (iTunes.playerState != iTunesEPlSPlaying) {
         [iTunes playpause];
     }
+}
+- (void)doubleRunTTModeMusicPlay {
+    [self doubleRunTTModeMusicPlayPause];
+}
+- (void)doubleRunTTModeMusicPause {
+    [self doubleRunTTModeMusicPlayPause];
 }
 
 - (void)runTTModeMusicNextTrack {

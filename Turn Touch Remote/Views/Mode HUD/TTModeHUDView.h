@@ -10,26 +10,35 @@
 #import "TTAppDelegate.h"
 #import "TTDiamondLabels.h"
 #import "TTDiamondView.h"
+#import "TTModeHUDLabelsView.h"
+
+@class TTModeHUDLabelsView;
 
 @interface TTModeHUDView : NSView {
     TTAppDelegate *appDelegate;
     NSImage *modeImage;
     NSString *modeTitle;
-    NSDictionary *modeAttributes;
-    NSDictionary *inactiveModeAttributes;
     CGSize textSize;
     TTDiamondLabels *diamondLabels;
-    TTMode *titleMode;
+    TTModeHUDLabelsView *labelsView;
     NSImageView *gradientView;
     BOOL teaserFadeStarted;
+    NSVisualEffectView *visualEffectView;
 }
 
 @property (nonatomic, readwrite) BOOL isTeaser;
 @property (nonatomic, readwrite) NSImageView *gradientView;
 @property (nonatomic, readwrite) NSImageView *teaserGradientView;
+@property (nonatomic) NSDictionary *modeAttributes;
+@property (nonatomic) TTMode *titleMode;
+@property (nonatomic) NSDictionary *inactiveModeAttributes;
 
 - (void)setupTitleAttributes;
 - (void)setupTitleAttributes:(TTMode *)mode;
 - (void)drawMapBackground;
+- (CGFloat)hudRadius;
+- (CGFloat)hudImageMargin;
+- (CGFloat)hudImageTextMargin;
+- (NSRect)mapFrame:(BOOL)rotated;
 
 @end

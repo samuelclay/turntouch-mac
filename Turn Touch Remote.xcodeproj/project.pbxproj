@@ -291,6 +291,7 @@
 		FFB5FF411A671C4100DF617A /* TTModeHueOffOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB5FF401A671C4100DF617A /* TTModeHueOffOptions.m */; };
 		FFB5FF431A6723EA00DF617A /* TTModeHue.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFB5FF421A6723EA00DF617A /* TTModeHue.plist */; };
 		FFB653E018DBA14E00830B42 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB653DF18DBA14E00830B42 /* CoreFoundation.framework */; };
+		FFBAC7051C596057009CA53C /* TTModeHUDLabelsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBAC7041C596057009CA53C /* TTModeHUDLabelsView.m */; };
 		FFBC625F1A9D699D0032AD24 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFBC625E1A9D699D0032AD24 /* AVFoundation.framework */; };
 		FFC730E51B0673E9003538D5 /* TTModeHueRandomOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFC730E41B0673E9003538D5 /* TTModeHueRandomOptions.xib */; };
 		FFC730E81B067434003538D5 /* TTModeHueRandomOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC730E71B067434003538D5 /* TTModeHueRandomOptions.m */; };
@@ -805,6 +806,8 @@
 		FFB5FF421A6723EA00DF617A /* TTModeHue.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TTModeHue.plist; sourceTree = "<group>"; };
 		FFB653DF18DBA14E00830B42 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		FFBAC7011C583B5B009CA53C /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		FFBAC7031C596057009CA53C /* TTModeHUDLabelsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeHUDLabelsView.h; sourceTree = "<group>"; };
+		FFBAC7041C596057009CA53C /* TTModeHUDLabelsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeHUDLabelsView.m; sourceTree = "<group>"; };
 		FFBC625E1A9D699D0032AD24 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FFC730E41B0673E9003538D5 /* TTModeHueRandomOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTModeHueRandomOptions.xib; sourceTree = "<group>"; };
 		FFC730E61B067434003538D5 /* TTModeHueRandomOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeHueRandomOptions.h; sourceTree = "<group>"; };
@@ -1706,6 +1709,8 @@
 				FFA1D4D31A3B89A4003EA0BC /* TTModeHUDView.h */,
 				FFA1D4D41A3B89A4003EA0BC /* TTModeHUDView.m */,
 				FFA1D4D51A3B89A4003EA0BC /* TTModeHUDView.xib */,
+				FFBAC7031C596057009CA53C /* TTModeHUDLabelsView.h */,
+				FFBAC7041C596057009CA53C /* TTModeHUDLabelsView.m */,
 			);
 			name = "Mode HUD";
 			path = "Views/Mode HUD";
@@ -2189,6 +2194,7 @@
 				FFC730E81B067434003538D5 /* TTModeHueRandomOptions.m in Sources */,
 				FF7305B41A5C9C76009A852D /* DispatchQueueLogFormatter.m in Sources */,
 				FF01CAA51C473EC100F83A73 /* htmls.m in Sources */,
+				FFBAC7051C596057009CA53C /* TTModeHUDLabelsView.m in Sources */,
 				FFA8EAA0190F090300679A4D /* TTModeMenuContainer.m in Sources */,
 				FFD62CCE194F935D0093004D /* TTSegmentedCell.m in Sources */,
 				FF8012F318692D0A00955218 /* TTModeMac.m in Sources */,

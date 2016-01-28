@@ -63,8 +63,6 @@
     if (animate) {
         [hudView setNeedsDisplay:YES];
         [[[hudView gradientView] animator] setAlphaValue:1.f];
-//        [[hudView gradientView] setAlphaValue:1.f];
-
     }
     [NSAnimationContext endGrouping];
 }

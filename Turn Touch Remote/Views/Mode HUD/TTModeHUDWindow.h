@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface TTModeHUDWindow : NSWindow
+@interface TTModeHUDWindow : NSWindow {
+    NSVisualEffectView *visualEffectView;
+}
 
 @end
