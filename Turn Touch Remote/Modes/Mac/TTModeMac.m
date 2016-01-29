@@ -124,7 +124,7 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
     if ([self isDisplayOff]) {
         [self switchDisplay:YES];
     } else {
-        [self switchDisplay:NO];
+//        [self switchDisplay:NO];
     }
 }
 

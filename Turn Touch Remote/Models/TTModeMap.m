@@ -253,6 +253,11 @@
     
     [selectedMode runDoubleDirection:direction];
 
+    NSArray *actions = [self selectedModeBatchActions:direction];
+    for (TTAction *batchAction in actions) {
+        [batchAction.mode runDoubleDirection:direction];
+    }
+
     activeModeDirection = NO_DIRECTION;
 }
 

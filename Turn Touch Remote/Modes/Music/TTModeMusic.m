@@ -331,10 +331,18 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
     }
 }
 - (void)doubleRunTTModeMusicPlay {
-    [self doubleRunTTModeMusicPlayPause];
+    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    
+    if (iTunes.playerState != iTunesEPlSPlaying) {
+        [iTunes playpause];
+    }
 }
 - (void)doubleRunTTModeMusicPause {
-    [self doubleRunTTModeMusicPlayPause];
+    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    
+    if (iTunes.playerState == iTunesEPlSPlaying) {
+        [iTunes playpause];
+    }
 }
 
 - (void)runTTModeMusicNextTrack {

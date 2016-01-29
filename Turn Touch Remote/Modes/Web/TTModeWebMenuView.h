@@ -8,24 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 #import "TTAppDelegate.h"
+#import "TTHUDMenuView.h"
 
-@interface TTModeWebMenuView : NSVisualEffectView
-<NSTableViewDelegate, NSTableViewDataSource> {
-    TTAppDelegate *appDelegate;
-    NSTableView *tableView;
-    NSArray *menuOptions;
-    NSInteger highlightedRow;
-}
-
-@property (nonatomic) IBOutlet NSLayoutConstraint *offsetConstraint;
-@property (nonatomic) IBOutlet NSTableView *tableView;
-@property (nonatomic) IBOutlet NSScrollView *scrollView;
-@property (nonatomic) IBOutlet NSClipView *clipView;;
-
-- (void)slideIn;
-- (void)slideOut;
-- (void)menuUp;
-- (void)menuDown;
-- (void)selectMenuItem;
+@interface TTModeWebMenuView : TTHUDMenuView
 
 @end

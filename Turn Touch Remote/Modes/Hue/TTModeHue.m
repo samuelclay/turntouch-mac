@@ -294,12 +294,15 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
     
     TTHueRandomColors randomColors = (TTHueRandomColors)[[NSAppDelegate.modeMap
+                                                          mode:self.action.mode
                                                           actionOptionValue:(doubleTap ? kDoubleTapRandomColors : kRandomColors)
                                                           inDirection:direction] integerValue];
     TTHueRandomBrightness randomBrightnesses = (TTHueRandomBrightness)[[NSAppDelegate.modeMap
+                                                                        mode:self.action.mode
                                                                         actionOptionValue:(doubleTap ? kDoubleTapRandomBrightness : kRandomBrightness)
                                                                         inDirection:direction] integerValue];
     TTHueRandomSaturation randomSaturation = (TTHueRandomSaturation)[[NSAppDelegate.modeMap
+                                                                      mode:self.action.mode
                                                                       actionOptionValue:(doubleTap ? kDoubleTapRandomSaturation : kRandomSaturation)
                                                                       inDirection:direction] integerValue];
     NSNumber *randomColor = [NSNumber numberWithInt:arc4random() % MAX_HUE];

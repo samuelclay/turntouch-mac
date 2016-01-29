@@ -23,7 +23,7 @@
 - (instancetype)initWithWindowNibName:(NSString *)windowNibName {
     if (self = [super initWithWindowNibName:windowNibName]) {
         appDelegate = (TTAppDelegate *)[NSApp delegate];
-
+        [menuView setDelegate:self];
         [self showWindow:appDelegate];
     }
     

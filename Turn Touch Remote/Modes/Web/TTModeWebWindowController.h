@@ -13,7 +13,7 @@
 #import "TTModeWebBackgroundView.h"
 #import "TTModeWebMenuView.h"
 
-@interface TTModeWebWindowController : NSWindowController  <NSWindowDelegate> {
+@interface TTModeWebWindowController : NSWindowController  <NSWindowDelegate, TTHUDMenuDelegate> {
     TTAppDelegate *appDelegate;
     
     BOOL isFading;
