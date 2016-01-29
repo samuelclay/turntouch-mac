@@ -71,7 +71,7 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
 }
 - (NSString *)actionTitleTTModeMusicPlayPause {
     iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
-    if (iTunes.playerState == iTunesEPlSPlaying) {
+    if (iTunes.playerState != iTunesEPlSPlaying) {
         return @"Pause";
     }
     return @"Play";
@@ -123,7 +123,7 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
 }
 - (NSString *)imageActionHudTTModeMusicPlayPause {
     iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
-    if (iTunes.playerState == iTunesEPlSPlaying) {
+    if (iTunes.playerState != iTunesEPlSPlaying) {
         return @"music_pause.png";
     }
     return @"music_play.png";
@@ -310,6 +310,14 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
         [iTunes playpause];
     }
 }
+- (void)doubleRunTTModeMusicPause {
+    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    
+    if (iTunes.playerState == iTunesEPlSPlaying) {
+        [iTunes playpause];
+    }
+}
+
 - (void)runTTModeMusicPlay {
     iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
     
@@ -317,6 +325,14 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
         [iTunes playpause];
     }
 }
+- (void)doubleRunTTModeMusicPlay {
+    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    
+    if (iTunes.playerState != iTunesEPlSPlaying) {
+        [iTunes playpause];
+    }
+}
+
 - (void)runTTModeMusicPlayPause {
     iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
     
@@ -330,27 +346,12 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
         [iTunes playpause];
     }
 }
-- (void)doubleRunTTModeMusicPlay {
-    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
-    
-    if (iTunes.playerState != iTunesEPlSPlaying) {
-        [iTunes playpause];
-    }
-}
-- (void)doubleRunTTModeMusicPause {
-    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
-    
-    if (iTunes.playerState == iTunesEPlSPlaying) {
-        [iTunes playpause];
-    }
-}
 
 - (void)runTTModeMusicNextTrack {
     iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
     
     [iTunes nextTrack];
 }
-
 - (void)doubleRunTTModeMusicNextTrack {
     iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
     NSString *original = [[iTunes currentTrack] album];
