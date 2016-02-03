@@ -42,6 +42,10 @@
     return @"equalizer-1";
 }
 
+- (NSArray *)menuOptions {
+    return @[];
+}
+
 #pragma mark - Actions
 
 - (NSArray *)actions {

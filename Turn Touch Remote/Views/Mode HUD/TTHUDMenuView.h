@@ -7,7 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "TTAppDelegate.h"
+
+@class TTAppDelegate;
 
 @protocol TTHUDMenuDelegate <NSObject>
 
@@ -15,7 +16,7 @@
 
 @optional
 - (NSArray *)menuOptions;
-- (NSInteger)initialPosition;
+- (NSInteger)menuInitialPosition;
 - (NSInteger)menuWidth;
 
 @end
@@ -28,6 +29,7 @@
 }
 
 @property (nonatomic) IBOutlet NSLayoutConstraint *offsetConstraint;
+@property (nonatomic) IBOutlet NSLayoutConstraint *widthConstraint;
 @property (nonatomic) IBOutlet NSTableView *tableView;
 @property (nonatomic) IBOutlet NSScrollView *scrollView;
 @property (nonatomic) IBOutlet NSClipView *clipView;

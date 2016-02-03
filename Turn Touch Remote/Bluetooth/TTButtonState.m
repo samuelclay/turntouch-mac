@@ -61,6 +61,14 @@
     }
 }
 
+- (BOOL)anyPressedDown {
+    return north || east || west || south;
+}
+
+- (BOOL)inMultitouch {
+    return (north && east) || (north && west) || (north && south) || (east && west) || (east && south) || (west && south);
+ }
+
 - (NSInteger)activatedCount {
     return (north ? 1 : 0) + (east ? 1 : 0) + (west ? 1 : 0) + (south ? 1 : 0);
 }

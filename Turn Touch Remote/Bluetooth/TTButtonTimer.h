@@ -19,20 +19,27 @@ typedef enum {
     PRESS_MODE   = 0x03
 } TTPressState;
 
+typedef enum {
+    TTHUDMenuStateHidden = 0,
+    TTHUDMenuStateActive = 1,
+} TTHUDMenuState;
+
+
 @interface TTButtonTimer : NSObject {
     TTAppDelegate *appDelegate;
     NSTimer *activeModeTimer;
-    TTButtonState *lastButtonState;
+    TTButtonState *previousButtonState;
     TTButtonState *pairingButtonState;
-    BOOL inMultitouch;
     TTModeDirection lastButtonPressedDirection;
     NSDate *lastButtonPressStart;
     NSDate *holdToastStart;
+    BOOL menuHysteresis;
 }
 
-@property (nonatomic, readwrite) BOOL inMultitouch;
-@property (nonatomic) TTButtonState *lastButtonState;
+@property (nonatomic) TTButtonState *previousButtonState;
 @property (nonatomic) NSNumber *pairingActivatedCount;
+@property (nonatomic) BOOL skipButtonActions;
+@property (nonatomic) TTHUDMenuState menuState;
 
 - (void)readBluetoothData:(NSData *)data;
 - (void)activateMode:(TTModeDirection)direction;

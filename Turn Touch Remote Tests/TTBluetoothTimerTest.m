@@ -30,6 +30,7 @@
     [super setUp];
     appDelegate = [NSApp delegate];
     buttonTimer = appDelegate.bluetoothMonitor.buttonTimer;
+    buttonTimer.skipButtonActions = YES;
     
     clearByte = 0x000F;
     northByte = 0x0F - (1 << 0);
@@ -51,84 +52,129 @@
 // Test each direction individually
 - (void)testButtonsIndividually {
     [self readBluetoothData:northByte];
-    XCTAssertEqual(buttonTimer.lastButtonState.north, YES);
-    XCTAssertEqual(buttonTimer.lastButtonState.east,  NO);
-    XCTAssertEqual(buttonTimer.lastButtonState.west,  NO);
-    XCTAssertEqual(buttonTimer.lastButtonState.south, NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.north, YES);
+    XCTAssertEqual(buttonTimer.previousButtonState.east,  NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.west,  NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.south, NO);
     
     [self readBluetoothData:clearByte];
-    XCTAssertEqual(buttonTimer.lastButtonState.north, NO);
-    XCTAssertEqual(buttonTimer.lastButtonState.east,  NO);
-    XCTAssertEqual(buttonTimer.lastButtonState.west,  NO);
-    XCTAssertEqual(buttonTimer.lastButtonState.south, NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.north, NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.east,  NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.west,  NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.south, NO);
     
     [self readBluetoothData:eastByte];
-    XCTAssertEqual(buttonTimer.lastButtonState.north, NO);
-    XCTAssertEqual(buttonTimer.lastButtonState.east,  YES);
-    XCTAssertEqual(buttonTimer.lastButtonState.west,  NO);
-    XCTAssertEqual(buttonTimer.lastButtonState.south, NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.north, NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.east,  YES);
+    XCTAssertEqual(buttonTimer.previousButtonState.west,  NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.south, NO);
     
     [self readBluetoothData:clearByte];
-    XCTAssertEqual(buttonTimer.lastButtonState.north, NO);
-    XCTAssertEqual(buttonTimer.lastButtonState.east,  NO);
-    XCTAssertEqual(buttonTimer.lastButtonState.west,  NO);
-    XCTAssertEqual(buttonTimer.lastButtonState.south, NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.north, NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.east,  NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.west,  NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.south, NO);
     
     [self readBluetoothData:westByte];
-    XCTAssertEqual(buttonTimer.lastButtonState.north, NO);
-    XCTAssertEqual(buttonTimer.lastButtonState.east,  NO);
-    XCTAssertEqual(buttonTimer.lastButtonState.west,  YES);
-    XCTAssertEqual(buttonTimer.lastButtonState.south, NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.north, NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.east,  NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.west,  YES);
+    XCTAssertEqual(buttonTimer.previousButtonState.south, NO);
     
     [self readBluetoothData:clearByte];
-    XCTAssertEqual(buttonTimer.lastButtonState.north, NO);
-    XCTAssertEqual(buttonTimer.lastButtonState.east,  NO);
-    XCTAssertEqual(buttonTimer.lastButtonState.west,  NO);
-    XCTAssertEqual(buttonTimer.lastButtonState.south, NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.north, NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.east,  NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.west,  NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.south, NO);
     
     [self readBluetoothData:southByte];
-    XCTAssertEqual(buttonTimer.lastButtonState.north, NO);
-    XCTAssertEqual(buttonTimer.lastButtonState.east,  NO);
-    XCTAssertEqual(buttonTimer.lastButtonState.west,  NO);
-    XCTAssertEqual(buttonTimer.lastButtonState.south, YES);
+    XCTAssertEqual(buttonTimer.previousButtonState.north, NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.east,  NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.west,  NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.south, YES);
     
     [self readBluetoothData:clearByte];
-    XCTAssertEqual(buttonTimer.lastButtonState.north, NO);
-    XCTAssertEqual(buttonTimer.lastButtonState.east,  NO);
-    XCTAssertEqual(buttonTimer.lastButtonState.west,  NO);
-    XCTAssertEqual(buttonTimer.lastButtonState.south, NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.north, NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.east,  NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.west,  NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.south, NO);
 }
 
 // Test multiple directions at once
 - (void)testButtonsMultitouch {
     [self readBluetoothData:northByte];
-    XCTAssertEqual(buttonTimer.lastButtonState.north, YES);
-    XCTAssertEqual(buttonTimer.lastButtonState.east,  NO);
-    XCTAssertEqual(buttonTimer.lastButtonState.west,  NO);
-    XCTAssertEqual(buttonTimer.lastButtonState.south, NO);
-    XCTAssertFalse(buttonTimer.inMultitouch);
+    XCTAssertEqual(buttonTimer.previousButtonState.north, YES);
+    XCTAssertEqual(buttonTimer.previousButtonState.east,  NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.west,  NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.south, NO);
+    XCTAssertFalse(buttonTimer.previousButtonState.inMultitouch);
+    XCTAssertEqual(buttonTimer.menuState, TTHUDMenuStateHidden);
     
     [self readBluetoothData:northByte & eastByte];
-    XCTAssertEqual(buttonTimer.lastButtonState.north, YES);
-    XCTAssertEqual(buttonTimer.lastButtonState.east,  YES);
-    XCTAssertEqual(buttonTimer.lastButtonState.west,  NO);
-    XCTAssertEqual(buttonTimer.lastButtonState.south, NO);
-    XCTAssertTrue(buttonTimer.inMultitouch);
+    XCTAssertEqual(buttonTimer.previousButtonState.north, YES);
+    XCTAssertEqual(buttonTimer.previousButtonState.east,  YES);
+    XCTAssertEqual(buttonTimer.previousButtonState.west,  NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.south, NO);
+    XCTAssertTrue(buttonTimer.previousButtonState.inMultitouch);
+    XCTAssertEqual(buttonTimer.menuState, TTHUDMenuStateActive);
     
     [self readBluetoothData:clearByte];
-    XCTAssertEqual(buttonTimer.lastButtonState.north, NO);
-    XCTAssertEqual(buttonTimer.lastButtonState.east,  NO);
-    XCTAssertEqual(buttonTimer.lastButtonState.west,  NO);
-    XCTAssertEqual(buttonTimer.lastButtonState.south, NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.north, NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.east,  NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.west,  NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.south, NO);
+    XCTAssertFalse(buttonTimer.previousButtonState.inMultitouch);
+    XCTAssertEqual(buttonTimer.menuState, TTHUDMenuStateActive);
     
+    [self readBluetoothData:clearByte];
+    XCTAssertEqual(buttonTimer.previousButtonState.north, NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.east,  NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.west,  NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.south, NO);
+    XCTAssertFalse(buttonTimer.previousButtonState.inMultitouch);
+    XCTAssertEqual(buttonTimer.menuState, TTHUDMenuStateActive);
+
+    [self readBluetoothData:northByte];
+    XCTAssertEqual(buttonTimer.previousButtonState.north, YES);
+    XCTAssertEqual(buttonTimer.previousButtonState.east,  NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.west,  NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.south, NO);
+    XCTAssertFalse(buttonTimer.previousButtonState.inMultitouch);
+    XCTAssertEqual(buttonTimer.menuState, TTHUDMenuStateActive);
+    
+    [self readBluetoothData:northByte & eastByte];
+    XCTAssertEqual(buttonTimer.previousButtonState.north, YES);
+    XCTAssertEqual(buttonTimer.previousButtonState.east,  YES);
+    XCTAssertEqual(buttonTimer.previousButtonState.west,  NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.south, NO);
+    XCTAssertTrue(buttonTimer.previousButtonState.inMultitouch);
+    XCTAssertEqual(buttonTimer.menuState, TTHUDMenuStateHidden);
+    
+    [self readBluetoothData:clearByte];
+    XCTAssertEqual(buttonTimer.previousButtonState.north, NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.east,  NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.west,  NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.south, NO);
+    XCTAssertFalse(buttonTimer.previousButtonState.inMultitouch);
+    XCTAssertEqual(buttonTimer.menuState, TTHUDMenuStateHidden);
+    
+    [self readBluetoothData:clearByte];
+    XCTAssertEqual(buttonTimer.previousButtonState.north, NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.east,  NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.west,  NO);
+    XCTAssertEqual(buttonTimer.previousButtonState.south, NO);
+    XCTAssertFalse(buttonTimer.previousButtonState.inMultitouch);
+    XCTAssertEqual(buttonTimer.menuState, TTHUDMenuStateHidden);
+    
+
     // This tests for the accidental button press registered when lifting fingers off multiple buttons
     __block BOOL finished = NO;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.050 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        XCTAssertTrue(buttonTimer.inMultitouch);
+        XCTAssertFalse(buttonTimer.previousButtonState.inMultitouch);
     });
 
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.250 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        XCTAssertFalse(buttonTimer.inMultitouch);
+        XCTAssertFalse(buttonTimer.previousButtonState.inMultitouch);
         finished = YES;
     });
     
@@ -136,7 +182,7 @@
         NSDate *oneSecond = [NSDate dateWithTimeIntervalSinceNow:1];
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:oneSecond];
     }
-    XCTAssertFalse(buttonTimer.inMultitouch);
+    XCTAssertFalse(buttonTimer.previousButtonState.inMultitouch);
 }
 
 - (void)testPerformanceExample {

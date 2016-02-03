@@ -12,15 +12,16 @@
 @implementation TTButtonTimer
 
 @synthesize pairingActivatedCount;
-@synthesize lastButtonState;
-@synthesize inMultitouch;
+@synthesize previousButtonState;
+@synthesize skipButtonActions;
+@synthesize menuState;
 
 - (id)init {
     if (self = [super init]) {
         appDelegate = (TTAppDelegate *)[NSApp delegate];
-        lastButtonState = [[TTButtonState alloc] init];
+        previousButtonState = [[TTButtonState alloc] init];
         pairingActivatedCount = [[NSNumber alloc] init];
-        inMultitouch = NO;
+        menuHysteresis = NO;
     }
     
     return self;
@@ -42,69 +43,69 @@
 - (void)readBluetoothData:(NSData *)data {
     uint8_t state = [self buttonDownStateFromData:data];
     uint8_t doubleState = [self doubleStateFromData:data];
-    int heldData = [self heldStateFromData:data];
-    NSLog(@" ---> Bluetooth data: %@ (%d/%d/%d)", data, doubleState, state, heldData);
-
-    BOOL anyButtonPressedDown = NO;
-    BOOL anyButtonHeld = NO;
+    BOOL heldState = [self heldStateFromData:data] == 0xFF;
     NSInteger buttonLifted = -1;
+    NSLog(@" ---> Bluetooth data: %@ (%d/%d/%d)", data, doubleState, state, heldState);
     
-    TTButtonState *newButtonState = [[TTButtonState alloc] init];
-    newButtonState.north = (state & (1 << 0));
-    newButtonState.east = (state & (1 << 1));
-    newButtonState.west = (state & (1 << 2));
-    newButtonState.south = (state & (1 << 3));
+    TTButtonState *latestButtonState = [[TTButtonState alloc] init];
+    latestButtonState.north = !!(state & (1 << 0));
+    latestButtonState.east = !!(state & (1 << 1));
+    latestButtonState.west = !!(state & (1 << 2));
+    latestButtonState.south = !!(state & (1 << 3));
     
-    NSInteger i = newButtonState.count;
+    // Figure out which buttons are held and lifted
+    NSInteger i = latestButtonState.count;
     while (i--) {
-        BOOL buttonDown = ((state & (1 << i)) == (1 << i));
-        if (buttonDown && anyButtonPressedDown) {
-            inMultitouch = YES;
-        }
-
-        if (![lastButtonState state:i] && buttonDown) {
+        if (![previousButtonState state:i] && [latestButtonState state:i]) {
             // Press button down
-            anyButtonPressedDown = YES;
-            [newButtonState replaceState:i withState:buttonDown];
-        } else if ([lastButtonState state:i] && !buttonDown) {
+
+        } else if ([previousButtonState state:i] && ![latestButtonState state:i]) {
             // Lift button
-            [newButtonState replaceState:i withState:NO];
-            if (!inMultitouch) {
-                buttonLifted = i;
-            }
+            buttonLifted = i;
         } else {
             // Button remains pressed down
-            if (buttonDown) anyButtonPressedDown = YES;
-            [newButtonState replaceState:i withState:buttonDown];
+
         }
     }
     
-    lastButtonState = newButtonState;
-    anyButtonHeld = !inMultitouch && heldData == 0xFF;
+    BOOL anyButtonHeld = !latestButtonState.inMultitouch && !menuHysteresis && heldState;
+    BOOL anyButtonPressed = !menuHysteresis && latestButtonState.anyPressedDown;
+    BOOL anyButtonLifted = !previousButtonState.inMultitouch && !menuHysteresis && buttonLifted >= 0;
     
     if (anyButtonHeld) {
         // Hold button
+        NSLog(@" ---> Hold button");
+        previousButtonState = latestButtonState;
+        menuState = TTHUDMenuStateHidden;
+        
         if (state == 0x01) {
             // Don't fire action on button release
-            lastButtonState.north = NO;
+            previousButtonState.north = NO;
             [self activateMode:NORTH];
         } else if (state == 0x02) {
-            lastButtonState.east = NO;
+            previousButtonState.east = NO;
             [self activateMode:EAST];
         } else if (state == 0x04) {
-            lastButtonState.west = NO;
+            previousButtonState.west = NO;
             [self activateMode:WEST];
         } else if (state == 0x08) {
-            lastButtonState.south = NO;
+            previousButtonState.south = NO;
             [self activateMode:SOUTH];
         }
         [self activateButton:NO_DIRECTION];
-    } else if (anyButtonPressedDown) {
+    } else if (anyButtonPressed) {
         // Press down button
-        if (inMultitouch) {
-            if (!holdToastStart) {
+        NSLog(@" ---> Press down button%@", previousButtonState.inMultitouch ? @" (multi-touch)" : @"");
+        if (latestButtonState.inMultitouch) {
+            if (!holdToastStart && !menuHysteresis && menuState == TTHUDMenuStateHidden) {
                 holdToastStart = [NSDate date];
+                menuHysteresis = YES;
+                menuState = TTHUDMenuStateActive;
                 [appDelegate.hudController holdToastActiveMode:NO];
+            } else if (menuState == TTHUDMenuStateActive && !menuHysteresis) {
+                menuHysteresis = YES;
+                menuState = TTHUDMenuStateHidden;
+                [appDelegate.hudController releaseToastActiveMode];
             }
             [self activateButton:NO_DIRECTION];
         } else if ((state & 0x01) == 0x01) {
@@ -118,9 +119,11 @@
         } else if (state == 0x00) {
             [self activateButton:NO_DIRECTION];
         }
-    } else if (buttonLifted >= 0) {
+
+        previousButtonState = latestButtonState;
+    } else if (anyButtonLifted) {
         // Press up button
-        NSLog(@" ---> Button lifted%@: %ld", inMultitouch ? @" (multi-touch)" : @"", (long)buttonLifted);
+        NSLog(@" ---> Button lifted%@: %ld", previousButtonState.inMultitouch ? @" (multi-touch)" : @"", (long)buttonLifted);
         TTModeDirection buttonPressedDirection;
         switch (buttonLifted) {
             case 0:
@@ -164,24 +167,27 @@
                 lastButtonPressStart = nil;
             });
         }
-    } else if (!anyButtonPressedDown) {
-//        NSLog(@" ---> Nothing pressed%@: %d", inMultitouch ? @" (multi-touch)" : @"", state);
-        if (state == 0x00) {
-            [self activateButton:NO_DIRECTION];
-            [self maybeReleaseToastActiveMode];
-            inMultitouch = NO;
+
+        previousButtonState = latestButtonState;
+    } else if (!latestButtonState.anyPressedDown) {
+        NSLog(@" ---> Nothing pressed%@: %d (lifted: %ld)", latestButtonState.inMultitouch ? @" (multi-touch)" : @"", state, buttonLifted);
+        if (!previousButtonState.inMultitouch && buttonLifted >= 0 && menuHysteresis) {
+            [self releaseToastActiveMode];
+        } else if (menuState == TTHUDMenuStateHidden) {
+            [self releaseToastActiveMode];
         }
+        [self activateButton:NO_DIRECTION];
+        menuHysteresis = NO;
+        holdToastStart = nil;
+        previousButtonState = latestButtonState;
     }
     
-//    NSLog(@"Buttons: %d, %d: %@", state, heldData, lastButtonState);
+//    NSLog(@"Buttons: %d, %d: %@", state, heldData, previousButtonState);
 }
 
-- (void)maybeReleaseToastActiveMode {
-//    if (!holdToastStart || [[NSDate date] timeIntervalSinceDate:holdToastStart] > 1.0) {
+- (void)releaseToastActiveMode {
     [appDelegate.hudController releaseToastActiveMode];
-//    } else {
-//        [appDelegate.hudController toastActiveMode];
-//    }
+
     holdToastStart = nil;
 }
 
@@ -217,7 +223,9 @@
 //    NSLog(@"Mode change duration (%f): %f -- %f", buttonHoldTimeInterval, modeChangeDuration*.3f, deviceInterval*1.05f);
     if (direction != NO_DIRECTION) {
 #ifndef SKIP_BUTTON_ACTIONS
-        [appDelegate.modeMap maybeFireActiveButton];
+        if (!skipButtonActions) {
+            [appDelegate.modeMap maybeFireActiveButton];
+        }
 #endif
         NSDate *fireDate = [NSDate dateWithTimeIntervalSinceNow:buttonHoldTimeInterval];
         activeModeTimer = [[NSTimer alloc]
@@ -235,7 +243,9 @@
 - (void)fireButton:(TTModeDirection)direction {
     [appDelegate.modeMap setActiveModeDirection:direction];
 #ifndef SKIP_BUTTON_ACTIONS
-    [appDelegate.modeMap runActiveButton];
+    if (!skipButtonActions) {
+        [appDelegate.modeMap runActiveButton];
+    }
 #endif
     [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];
 
@@ -247,8 +257,12 @@
 
 - (void)fireDoubleButton:(TTModeDirection)direction {
     if (direction == NO_DIRECTION) return;
-    
-    [appDelegate.modeMap runDoubleButton:direction];
+
+#ifndef SKIP_BUTTON_ACTIONS
+    if (!skipButtonActions) {
+        [appDelegate.modeMap runDoubleButton:direction];
+    }
+#endif
 
     [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];
     

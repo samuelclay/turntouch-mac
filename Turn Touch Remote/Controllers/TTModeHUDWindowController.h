@@ -10,10 +10,12 @@
 #import "TTAppDelegate.h"
 #import "TTModeHUDView.h"
 #import "TTModeHUDWindow.h"
+#import "TTHUDMenuView.h"
 
 @class TTModeHUDView;
+@class TTHUDMenuView;
 
-@interface TTModeHUDWindowController : NSWindowController <NSWindowDelegate> {
+@interface TTModeHUDWindowController : NSWindowController <NSWindowDelegate, TTHUDMenuDelegate> {
     TTAppDelegate *appDelegate;
     TTModeHUDView *hudView;
     TTModeHUDWindow *hudWindow;

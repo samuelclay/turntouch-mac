@@ -19,6 +19,19 @@
             <view key="contentView" id="QD6-lC-jb8" customClass="TTModeHUDView">
                 <rect key="frame" x="7" y="11" width="480" height="270"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <customView ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MLP-rW-Vok" customClass="TTHUDMenuView">
+                        <rect key="frame" x="0.0" y="0.0" width="163" height="270"/>
+                    </customView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="MLP-rW-Vok" firstAttribute="top" secondItem="QD6-lC-jb8" secondAttribute="top" id="QD4-Um-5K7"/>
+                    <constraint firstAttribute="bottom" secondItem="MLP-rW-Vok" secondAttribute="bottom" id="Qxd-OH-PPC"/>
+                    <constraint firstItem="MLP-rW-Vok" firstAttribute="leading" secondItem="QD6-lC-jb8" secondAttribute="leading" id="eQV-Ec-TEu"/>
+                </constraints>
+                <connections>
+                    <outlet property="menuView" destination="MLP-rW-Vok" id="lqP-jL-FkC"/>
+                </connections>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="bkm-Pg-04P"/>

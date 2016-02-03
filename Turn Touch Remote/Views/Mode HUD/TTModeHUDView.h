@@ -11,6 +11,7 @@
 #import "TTDiamondLabels.h"
 #import "TTDiamondView.h"
 #import "TTModeHUDLabelsView.h"
+#import "TTHUDMenuView.h"
 
 @class TTModeHUDLabelsView;
 
@@ -32,6 +33,7 @@
 @property (nonatomic) NSDictionary *modeAttributes;
 @property (nonatomic) TTMode *titleMode;
 @property (nonatomic) NSDictionary *inactiveModeAttributes;
+@property (nonatomic) IBOutlet TTHUDMenuView *menuView;
 
 - (void)setupTitleAttributes;
 - (void)setupTitleAttributes:(TTMode *)mode;

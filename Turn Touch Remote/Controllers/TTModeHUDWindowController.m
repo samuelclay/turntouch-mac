@@ -18,7 +18,7 @@
     if (self = [super initWithWindowNibName:windowNibName]) {
         appDelegate = (TTAppDelegate *)[NSApp delegate];
         [hudWindow setFrame:[self hiddenFrame] display:YES];
-
+        [hudView.menuView setDelegate:self];
         [self showWindow:appDelegate];
     }
     
@@ -44,6 +44,7 @@
     [hudView setupTitleAttributes];
     hudView.isTeaser = NO;
     [hudView setNeedsDisplay:YES];
+    [hudView.menuView setNeedsDisplay:YES];
 
     if (hudWindow.frame.origin.y != [self visibleFrame].origin.y) {
         [hudWindow setFrame:[self visibleFrame] display:YES];
@@ -71,6 +72,7 @@
     //    __block __unsafe_unretained NSWindow *window = hudWindow;
     if (isFading) return;
     isFading = YES;
+
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:.55f];
     [[NSAnimationContext currentContext] setCompletionHandler:^{
@@ -88,11 +90,12 @@
 
 - (void)teaseMode:(TTModeDirection)direction {
     hudView.isTeaser = YES;
+
     [hudWindow makeKeyAndOrderFront:nil];
     [self showWindow:appDelegate];
     [hudView setupTitleAttributes:[appDelegate.modeMap modeInDirection:direction]];
     [hudView setNeedsDisplay:YES];
-
+    
     [[hudView gradientView] setAlphaValue:0.f];
     [[hudView teaserGradientView] setAlphaValue:1.f];
 
@@ -110,6 +113,12 @@
     [hudWindow setFrame:[self visibleFrame] display:YES];
 
     [NSAnimationContext endGrouping];
+}
+
+#pragma mark - HUD Menu Delegate
+
+- (NSInteger)initialPosition {
+    return 0;
 }
 
 @end

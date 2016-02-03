@@ -8,10 +8,12 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "TTHUDMenuView.h"
+#import "TTAppDelegate.h"
 
 @implementation TTHUDMenuView
 
 @synthesize offsetConstraint;
+@synthesize widthConstraint;
 @synthesize tableView;
 @synthesize scrollView;
 @synthesize clipView;
@@ -32,12 +34,13 @@
     
     highlightedRow = 1;
     [self setHidden:YES];
-    [offsetConstraint setConstant:self.initialPosition];
     [self changeHighlightedRow:0];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
+    [offsetConstraint setConstant:self.menuInitialPosition];
+    [widthConstraint setConstant:self.menuWidth];
 }
 
 - (NSInteger)menuWidth {
@@ -50,9 +53,9 @@
     return MIN(400, NSWidth(mainScreen.frame) * 0.25);
 }
 
-- (NSInteger)initialPosition {
-    if ([delegate respondsToSelector:@selector(initialPosition)]) {
-        return [delegate initialPosition];
+- (NSInteger)menuInitialPosition {
+    if ([delegate respondsToSelector:@selector(menuInitialPosition)]) {
+        return [delegate menuInitialPosition];
     }
     
     return -1 * self.menuWidth;
@@ -101,6 +104,8 @@
 }
 
 - (void)changeHighlightedRow:(NSInteger)direction {
+    if (![self.menuOptions count]) return;
+    
     NSInteger newRow = [self nextRowInDirection:direction];
     
     NSTableRowView *oldRowView = [tableView rowViewAtRow:highlightedRow makeIfNecessary:NO];
