@@ -119,8 +119,7 @@
 
 - (void)drawAction {
     NSString *imageFilename = [activeMode imageNameForAction:modeName];
-    NSString *imagePath = [NSString stringWithFormat:@"%@/actions/%@", [[NSBundle mainBundle] resourcePath], imageFilename];
-    modeImage = [[NSImage alloc] initWithContentsOfFile:imagePath];
+    modeImage = [NSImage imageNamed:imageFilename];
 
     [modeImage setSize:NSMakeSize(IMAGE_SIZE, IMAGE_SIZE)];
     CGFloat offset = (NSHeight(self.frame)/2) - (modeImage.size.height/2);

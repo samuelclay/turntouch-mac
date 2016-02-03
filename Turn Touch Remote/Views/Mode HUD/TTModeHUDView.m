@@ -179,10 +179,4 @@ const CGFloat kPaddingPct = .75f;
     textSize = [modeTitle sizeWithAttributes:modeAttributes];
 }
 
-#pragma mark - HUD Menu Delegate
-
-- (NSInteger)initialPosition {
-    return 0;
-}
-
 @end

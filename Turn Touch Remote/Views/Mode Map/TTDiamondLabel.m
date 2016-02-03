@@ -117,8 +117,7 @@
     [iconView setFrame:iconFrame];
 
     NSString *imageFilename = [diamondMode imageNameInDirection:labelDirection];
-    NSString *imagePath = [NSString stringWithFormat:@"%@/actions/%@", [[NSBundle mainBundle] resourcePath], imageFilename];
-    NSImage *image = [[NSImage alloc] initWithContentsOfFile:imagePath];
+    NSImage *image = [NSImage imageNamed:imageFilename];
     NSInteger iconSize = round(MAX(CGRectGetHeight(iconFrame), CGRectGetWidth(iconFrame)) / 10);
     [image setSize:NSMakeSize(iconSize, iconSize)];
     [iconView setImage:image];

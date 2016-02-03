@@ -11,11 +11,10 @@
 #import "TTDiamondLabels.h"
 #import "TTDiamondView.h"
 #import "TTModeHUDLabelsView.h"
-#import "TTHUDMenuViewController.h"
 
 @class TTModeHUDLabelsView;
 
-@interface TTModeHUDView : NSView <TTHUDMenuDelegate> {
+@interface TTModeHUDView : NSView {
     TTAppDelegate *appDelegate;
     NSImage *modeImage;
     NSString *modeTitle;

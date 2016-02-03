@@ -199,8 +199,7 @@ const CGFloat kActionHUDMarginPct = .6f;
 
 - (void)drawIcon {
     NSString *iconFilename = [mode imageNameForActionHudInDirection:direction];
-    NSString *imageFile = [NSString stringWithFormat:@"%@/actions/%@", [[NSBundle mainBundle] resourcePath], iconFilename];
-    NSImage *icon = [[NSImage alloc] initWithContentsOfFile:imageFile];
+    NSImage *icon = [NSImage imageNamed:iconFilename];
     [icon setSize:NSMakeSize(self.hudIconSize, self.hudIconSize)];
     [iconView setImage:icon];
 }
@@ -219,8 +218,8 @@ const CGFloat kActionHUDMarginPct = .6f;
 
 - (NSImage *)chevronForDirection:(TTModeDirection)_direction {
     NSString *directionName = [appDelegate.modeMap directionName:_direction];
-    NSString *imageFile = [NSString stringWithFormat:@"%@/actions/chevron_%@.png", [[NSBundle mainBundle] resourcePath], directionName];
-    NSImage *icon = [[NSImage alloc] initWithContentsOfFile:imageFile];
+    NSString *imageFile = [NSString stringWithFormat:@"chevron_%@.png", directionName];
+    NSImage *icon = [NSImage imageNamed:imageFile];
 
     return icon;
 }

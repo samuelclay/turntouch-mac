@@ -25,6 +25,12 @@
     return self;
 }
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    [menuView setDelegate:self];
+}
+
 #pragma mark - Window management
 
 - (NSRect)visibleFrame {
@@ -40,13 +46,13 @@
 }
 
 - (void)fadeIn:(BOOL)animate {
-    [menuView setDelegate:self];
     [hudWindow makeKeyAndOrderFront:nil];
     [hudView setupTitleAttributes];
     hudView.isTeaser = NO;
     [hudView setNeedsDisplay:YES];
     [menuView setNeedsDisplay:YES];
-
+    [menuView.tableView reloadData];
+    
     if (hudWindow.frame.origin.y != [self visibleFrame].origin.y) {
         [hudWindow setFrame:[self visibleFrame] display:YES];
     }
@@ -114,6 +120,37 @@
     [hudWindow setFrame:[self visibleFrame] display:YES];
 
     [NSAnimationContext endGrouping];
+}
+
+#pragma mark - HUD Menu Delegate
+
+- (NSInteger)menuInitialPosition {
+    return 0;
+}
+
+- (NSArray *)menuOptions {
+    NSMutableArray *options = [NSMutableArray array];
+    [options addObject:@{@"identifier": @"space"}];
+    
+    for (NSString *action in appDelegate.modeMap.availableActions) {
+        [options addObject:@{@"identifier" : action,
+                             @"title"      : [appDelegate.modeMap.selectedMode titleForAction:action buttonMoment:BUTTON_MOMENT_PRESSDOWN],
+                             @"icon"       : [appDelegate.modeMap.selectedMode imageNameForAction:action],
+                             }];
+    }
+    
+    [options addObject:@{@"identifier": @"space"}];
+
+    
+    for (NSString *modeName in appDelegate.modeMap.availableModes) {
+        Class modeClass = NSClassFromString(modeName);
+        [options addObject:@{@"identifier" : modeName,
+                             @"title"      : [modeClass title],
+                             @"icon"       : [modeClass imageName],
+                             }];
+    }
+
+    return options;
 }
 
 @end
