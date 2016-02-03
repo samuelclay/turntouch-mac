@@ -22,7 +22,7 @@
 @end
 
 @interface TTHUDMenuView : NSVisualEffectView
-<NSTableViewDelegate, NSTableViewDataSource> {
+<TTHUDMenuDelegate, NSTableViewDelegate, NSTableViewDataSource> {
     TTAppDelegate *appDelegate;
     NSTableView *tableView;
     NSInteger highlightedRow;

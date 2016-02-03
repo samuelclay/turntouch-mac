@@ -13,12 +13,12 @@
 
 @synthesize hudView;
 @synthesize hudWindow;
+@synthesize menuView;
 
 - (instancetype)initWithWindowNibName:(NSString *)windowNibName {
     if (self = [super initWithWindowNibName:windowNibName]) {
         appDelegate = (TTAppDelegate *)[NSApp delegate];
         [hudWindow setFrame:[self hiddenFrame] display:YES];
-        [hudView.menuView setDelegate:self];
         [self showWindow:appDelegate];
     }
     
@@ -40,11 +40,12 @@
 }
 
 - (void)fadeIn:(BOOL)animate {
+    [menuView setDelegate:self];
     [hudWindow makeKeyAndOrderFront:nil];
     [hudView setupTitleAttributes];
     hudView.isTeaser = NO;
     [hudView setNeedsDisplay:YES];
-    [hudView.menuView setNeedsDisplay:YES];
+    [menuView setNeedsDisplay:YES];
 
     if (hudWindow.frame.origin.y != [self visibleFrame].origin.y) {
         [hudWindow setFrame:[self visibleFrame] display:YES];
@@ -113,12 +114,6 @@
     [hudWindow setFrame:[self visibleFrame] display:YES];
 
     [NSAnimationContext endGrouping];
-}
-
-#pragma mark - HUD Menu Delegate
-
-- (NSInteger)initialPosition {
-    return 0;
 }
 
 @end

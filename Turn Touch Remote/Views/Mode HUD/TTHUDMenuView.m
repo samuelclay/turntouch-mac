@@ -19,22 +19,42 @@
 @synthesize clipView;
 @synthesize delegate;
 
-- (void)awakeFromNib {
-    appDelegate = (TTAppDelegate *)[NSApp delegate];
+- (instancetype)init {
+    if (self = [super init]) {
+        appDelegate = (TTAppDelegate *)[NSApp delegate];
+        
+        [self setWantsLayer:YES];
+        [self setMaterial:NSVisualEffectMaterialSidebar];
+        [self setBlendingMode:NSVisualEffectBlendingModeWithinWindow];
+        [self setState:NSVisualEffectStateActive];
+        
+        [self setTranslatesAutoresizingMaskIntoConstraints:NO];
+        
+        scrollView = [[NSScrollView alloc] init];
+        [self addSubview:scrollView];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:scrollView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeHeight multiplier:1.f constant:0.f]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:scrollView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:1.f constant:0.f]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:scrollView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeading multiplier:1.f constant:0.f]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:scrollView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.f constant:0.f]];
+        
+        clipView = [[NSClipView alloc] init];
+        [scrollView addSubview:clipView];
+        
+        tableView = [[NSTableView alloc] init];
+        [clipView addSubview:tableView];
+        [tableView setDelegate:self];
+        [tableView setDataSource:self];
+        
+        [tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [clipView setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [scrollView setTranslatesAutoresizingMaskIntoConstraints:NO];
+        
+        highlightedRow = 1;
+        [self setHidden:NO];
+        [self changeHighlightedRow:0];
+    }
     
-    [self setWantsLayer:YES];
-    [self setMaterial:NSVisualEffectMaterialSidebar];
-    [self setBlendingMode:NSVisualEffectBlendingModeWithinWindow];
-    [self setState:NSVisualEffectStateActive];
-    
-    [self setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [clipView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [scrollView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    
-    highlightedRow = 1;
-    [self setHidden:YES];
-    [self changeHighlightedRow:0];
+    return self;
 }
 
 - (void)drawRect:(NSRect)dirtyRect {

@@ -8,14 +8,21 @@
 
 #import "TTHUDMenuViewController.h"
 
-@interface TTHUDMenuViewController ()
-
-@end
-
 @implementation TTHUDMenuViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+@synthesize menuView;
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+//        menuView = (TTHUDMenuView *)self.view;    
+    }
+    
+    return self;
+}
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+
     // Do view setup here.
 }
 

@@ -7,7 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "TTHUDMenuView.h"
 
 @interface TTHUDMenuViewController : NSViewController
+
+@property (nonatomic) IBOutlet TTHUDMenuView *menuView;
 
 @end

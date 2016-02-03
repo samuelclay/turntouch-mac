@@ -47,7 +47,7 @@
                             <outlet property="widthConstraint" destination="nX3-zO-sY2" id="ZcJ-tj-fqL"/>
                         </connections>
                     </visualEffectView>
-                    <visualEffectView autoresizesSubviews="NO" appearanceType="vibrantDark" blendingMode="behindWindow" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="URX-Jz-AdV" customClass="TTModeWebMenuView">
+                    <visualEffectView autoresizesSubviews="NO" appearanceType="vibrantDark" blendingMode="behindWindow" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="URX-Jz-AdV" customClass="TTHUDMenuView">
                         <rect key="frame" x="0.0" y="0.0" width="400" height="489"/>
                         <subviews>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="Iu6-K3-Mpb">
