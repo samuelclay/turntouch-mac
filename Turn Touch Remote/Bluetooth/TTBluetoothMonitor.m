@@ -844,9 +844,9 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
     NSData *deviceNicknameData = [device.nickname dataUsingEncoding:NSUTF8StringEncoding];
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *nicknameKey = [NSString stringWithFormat:@"TT:device:%@:nickname", device.uuid.UUIDString];
-    NSString *existingNickname = [prefs objectForKey:nicknameKey];
+    NSString *existingNickname = [[prefs objectForKey:nicknameKey] stringByTrimmingCharactersInSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]];
     
-    BOOL hasDeviceNickname = ![deviceNicknameData isEqualToData:emptyNickname] && device.nickname.length;
+    BOOL hasDeviceNickname = ![deviceNicknameData isEqualToData:emptyNickname] && [device.nickname stringByTrimmingCharactersInSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]].length;
     BOOL force = YES;
     force = NO;
     
@@ -856,7 +856,7 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
     }
     
     if (!hasDeviceNickname || force) {
-        if (existingNickname) {
+        if (existingNickname && existingNickname.length) {
             newNickname = existingNickname;
         } else {
             NSArray *emoji = @[@"🐱", @"🐼", @"🐶", @"🐨", @"🐙", @"🐝", @"🐠", @"🐳", @"⛄️",
