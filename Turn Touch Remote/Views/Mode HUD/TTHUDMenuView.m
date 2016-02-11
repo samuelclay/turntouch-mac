@@ -169,11 +169,12 @@
     }
     
     BOOL isSpace = [self isRowASpace:row];
-    NSTableCellView *result = [tableView makeViewWithIdentifier:tableColumn.identifier owner:self];
+    NSString *identifier = isSpace ? @"space" : tableColumn.identifier;
+    NSTableCellView *result = [tableView makeViewWithIdentifier:identifier owner:self];
     
     if (result == nil) {
         result = [[NSTableCellView alloc] init];
-        [result setIdentifier:tableColumn.identifier];
+        [result setIdentifier:identifier];
     }
     
     if (!isSpace) {
@@ -199,7 +200,6 @@
 }
 
 -(void)tableViewSelectionDidChange:(NSNotification *)aNotification {
-    
     NSInteger selectedRow = [tableView selectedRow];
     NSTableRowView *myRowView = [tableView rowViewAtRow:selectedRow makeIfNecessary:NO];
     [myRowView setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleNone];
@@ -221,6 +221,11 @@
     
     highlightedRow = selectedRow;
     [tableView setNeedsDisplay:YES];
-
 }
+
+-(BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row {
+    BOOL isSpace = [self isRowASpace:row];
+    return !isSpace;
+}
+
 @end

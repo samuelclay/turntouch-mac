@@ -115,9 +115,9 @@
             if ((state & 0x01) == 0x01) {
                 [self fireMenuButton:NORTH];
             } else if ((state & 0x02) == 0x02) {
-                [self fireMenuButton:EAST];
+//                [self fireMenuButton:EAST];
             } else if ((state & 0x04) == 0x04) {
-                [self fireMenuButton:WEST];
+//                [self fireMenuButton:WEST];
             } else if ((state & 0x08) == 0x08) {
                 [self fireMenuButton:SOUTH];
             } else if (state == 0x00) {
@@ -136,7 +136,7 @@
                 [self activateButton:NO_DIRECTION];
             }
         }
-    } else if (anyButtonLifted && menuState == TTHUDMenuStateHidden) {
+    } else if (anyButtonLifted) {
         // Press up button
         NSLog(@" ---> Button lifted%@: %ld", previousButtonState.inMultitouch ? @" (multi-touch)" : @"", (long)buttonLifted);
         previousButtonState = latestButtonState;
@@ -162,7 +162,19 @@
         }
         
         // Check for double click and setup double click timer
-        if (doubleState == 0xF &&
+        if (menuState == TTHUDMenuStateActive) {
+            if (buttonPressedDirection == NORTH) {
+//                [self fireMenuButton:NORTH];
+            } else if (buttonPressedDirection == EAST) {
+                [self fireMenuButton:EAST];
+            } else if (buttonPressedDirection == WEST) {
+                [self fireMenuButton:WEST];
+            } else if (buttonPressedDirection == SOUTH) {
+//                [self fireMenuButton:SOUTH];
+            } else if (state == 0x00) {
+                [self activateButton:NO_DIRECTION];
+            }
+        } else if (doubleState == 0xF &&
             lastButtonPressedDirection != NO_DIRECTION &&
             buttonPressedDirection == lastButtonPressedDirection &&
             [[NSDate date] timeIntervalSinceDate:lastButtonPressStart] < DOUBLE_CLICK_ACTION_DURATION) {
