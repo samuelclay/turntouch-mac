@@ -129,11 +129,11 @@
 
 - (void)selectMenuItem {
     NSDictionary *menuOption = [self.menuOptions objectAtIndex:highlightedRow];
-    SEL selector = NSSelectorFromString([NSString stringWithFormat:@"menu%@", [menuOption objectForKey:@"identifier"]]);
-    IMP imp = [appDelegate.modeMap.selectedMode methodForSelector:selector];
-    void (*func)(id, SEL) = (void *)imp;
-    if ([appDelegate.modeMap.selectedMode respondsToSelector:selector]) {
-        func(appDelegate.modeMap.selectedMode, selector);
+    if ([[menuOption objectForKey:@"group"] isEqualToString:@"action"]) {
+        [appDelegate.modeMap.selectedMode runAction:[menuOption objectForKey:@"identifier"] inDirection:NO_DIRECTION];
+        [appDelegate.hudController toastActiveAction:[menuOption objectForKey:@"identifier"] inDirection:NO_DIRECTION];
+    } else {
+        NSLog(@"Switch into: %@", menuOption);
     }
 }
 

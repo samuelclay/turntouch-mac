@@ -120,8 +120,9 @@
                 [self fireMenuButton:WEST];
             } else if ((state & 0x08) == 0x08) {
                 [self fireMenuButton:SOUTH];
+            } else if (state == 0x00) {
+                [self activateButton:NO_DIRECTION];
             }
-            [self activateButton:NO_DIRECTION];
         } else {
             if ((state & 0x01) == 0x01) {
                 [self activateButton:NORTH];
@@ -230,8 +231,9 @@
 
 - (void)activateButton:(TTModeDirection)direction {
 //    NSLog(@"Activating button: %d", activeModeDirection);
+    NSString *actionName = [appDelegate.modeMap.selectedMode actionNameInDirection:direction];
     [appDelegate.modeMap setActiveModeDirection:direction];
-    [appDelegate.hudController holdToastActiveAction:direction];
+    [appDelegate.hudController holdToastActiveAction:actionName inDirection:direction];
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
     CGFloat deviceInterval = [[preferences objectForKey:@"TT:firmware:interval_max"] integerValue] / 1000.f;
     CGFloat modeChangeDuration = [[preferences objectForKey:@"TT:firmware:mode_duration"] floatValue] / 1000.f;
@@ -268,8 +270,9 @@
     }
 #endif
     [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];
-
-    [appDelegate.hudController toastActiveAction:direction];
+    
+    NSString *actionName = [appDelegate.modeMap.selectedMode actionNameInDirection:direction];
+    [appDelegate.hudController toastActiveAction:actionName inDirection:direction];
 
     [self cancelModeTimer];
 //    NSLog(@"Firing button: %@", [appDelegate.modeMap directionName:direction]);
@@ -286,7 +289,8 @@
 
     [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];
     
-    [appDelegate.hudController toastDoubleAction:direction];
+    NSString *actionName = [appDelegate.modeMap.selectedMode actionNameInDirection:direction];
+    [appDelegate.hudController toastDoubleAction:actionName inDirection:direction];
 
     [self cancelModeTimer];
 }

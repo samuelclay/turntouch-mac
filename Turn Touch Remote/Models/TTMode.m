@@ -112,7 +112,12 @@
 #pragma mark - Map directions to actions
 
 - (void)runDirection:(TTModeDirection)direction {
-    [self runDirection:direction funcAction:@"run"];
+    NSString *actionName = [self actionNameInDirection:direction];
+    [self runAction:actionName inDirection:direction funcAction:@"run"];
+}
+
+- (void)runAction:(NSString *)actionName inDirection:(TTModeDirection)direction {
+    [self runAction:actionName inDirection:direction funcAction:@"run"];
 }
 
 - (void)runDoubleDirection:(TTModeDirection)direction {
@@ -124,8 +129,12 @@
 }
 
 - (BOOL)runDirection:(TTModeDirection)direction funcAction:(NSString *)funcAction {
-    BOOL success = NO;
     NSString *actionName = [self actionNameInDirection:direction];
+    return [self runAction:actionName inDirection:direction funcAction:funcAction];
+}
+
+- (BOOL)runAction:(NSString *)actionName inDirection:(TTModeDirection)direction funcAction:(NSString *)funcAction {
+    BOOL success = NO;
     NSLog(@"Running: %d - %@%@", direction, funcAction, actionName);
     
     // First check for runAction:direction...
@@ -250,7 +259,7 @@
     return NO;
 }
 
-- (NSView *)viewForLayout:(TTModeDirection)direction withRect:(NSRect)rect {
+- (NSView *)viewForLayoutInDirection:(TTModeDirection)direction withRect:(NSRect)rect {
     NSString *actionName = [self actionNameInDirection:direction];
     
     return [self viewForLayoutOfAction:actionName withRect:rect];
@@ -301,8 +310,8 @@
     return directionAction;
 }
 
-- (NSInteger)progressInDirection:(TTModeDirection)direction {
-    NSString *actionName = [self actionNameInDirection:direction];
+- (NSInteger)progressForAction:(NSString *)actionName {
+//    NSString *actionName = [self actionNameInDirection:direction];
     SEL selector = NSSelectorFromString([NSString stringWithFormat:@"progress%@",
                                          actionName]);
     IMP imp = [self methodForSelector:selector];

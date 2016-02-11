@@ -142,6 +142,7 @@
         [options addObject:@{@"identifier" : action,
                              @"title"      : [appDelegate.modeMap.selectedMode titleForAction:action buttonMoment:BUTTON_MOMENT_PRESSDOWN],
                              @"icon"       : [appDelegate.modeMap.selectedMode imageNameForAction:action],
+                             @"group"      : @"action",
                              }];
     }
     
@@ -153,6 +154,7 @@
         [options addObject:@{@"identifier" : modeName,
                              @"title"      : [modeClass title],
                              @"icon"       : [modeClass imageName],
+                             @"group"      : @"mode",
                              }];
     }
 

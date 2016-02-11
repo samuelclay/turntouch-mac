@@ -60,12 +60,13 @@
     [modeHUDController fadeOut:nil];
 }
 
-- (void)toastActiveAction:(TTModeDirection)direction {
+- (void)toastActiveAction:(NSString *)actionName inDirection:(TTModeDirection)direction {
     TTMode *mode = NSAppDelegate.modeMap.selectedMode;
     ActionLayout layout = [mode layoutInDirection:direction];
     NSTimeInterval delay = layout == ACTION_LAYOUT_IMAGE_TITLE ? 2.5 : 0.9;
+    if (!actionName) actionName = [mode actionNameInDirection:direction];
     
-    [actionHUDController fadeIn:direction];
+    [actionHUDController fadeIn:actionName inDirection:direction];
     
     if (actionOperation) [actionOperation cancel];
     
@@ -74,12 +75,12 @@
     } afterDelay:delay cancelPreviousRequest:YES];
 }
 
-- (void)toastDoubleAction:(TTModeDirection)direction {
+- (void)toastDoubleAction:(NSString *)actionName inDirection:(TTModeDirection)direction {
     TTMode *mode = NSAppDelegate.modeMap.selectedMode;
     ActionLayout layout = [mode layoutInDirection:direction];
     NSTimeInterval delay = layout == ACTION_LAYOUT_IMAGE_TITLE ? 2.5 : 1.25;
     
-    [actionHUDController fadeIn:direction withMode:nil buttonMoment:BUTTON_MOMENT_DOUBLE];
+    [actionHUDController fadeIn:actionName inDirection:direction withMode:nil buttonMoment:BUTTON_MOMENT_DOUBLE];
     
     if (actionOperation) [actionOperation cancel];
     
@@ -88,13 +89,13 @@
     } afterDelay:delay cancelPreviousRequest:YES];
 }
 
-- (void)holdToastActiveAction:(TTModeDirection)direction {
+- (void)holdToastActiveAction:(NSString *)actionName inDirection:(TTModeDirection)direction {
     if (actionOperation) [actionOperation cancel];
     
     if (direction == NO_DIRECTION) {
         [actionHUDController fadeOut:nil];
     } else {
-        [actionHUDController fadeIn:direction withMode:nil buttonMoment:BUTTON_MOMENT_PRESSDOWN];
+        [actionHUDController fadeIn:actionName inDirection:direction withMode:nil buttonMoment:BUTTON_MOMENT_PRESSDOWN];
     }
 }
 

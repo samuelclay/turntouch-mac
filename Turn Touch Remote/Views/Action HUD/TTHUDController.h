@@ -29,9 +29,9 @@
 - (void)releaseToastActiveMode;
 - (void)teaseMode:(TTModeDirection)direction;
 - (void)hideModeTease;
-- (void)toastActiveAction:(TTModeDirection)direction;
-- (void)toastDoubleAction:(TTModeDirection)direction;
-- (void)holdToastActiveAction:(TTModeDirection)direction;
+- (void)toastActiveAction:(NSString *)actionName inDirection:(TTModeDirection)direction;
+- (void)toastDoubleAction:(NSString *)actionName inDirection:(TTModeDirection)direction;
+- (void)holdToastActiveAction:(NSString *)actionName inDirection:(TTModeDirection)direction;
 - (void)releaseToastActiveAction;
 
 @end

@@ -42,25 +42,27 @@
     return NSMakeRect(0, -200, NSWidth(mainScreen.frame), NSHeight(mainScreen.frame));
 }
 
-- (IBAction)fadeIn:(TTModeDirection)direction {
-    [self fadeIn:direction withMode:nil];
+- (IBAction)fadeIn:(NSString *)actionName inDirection:(TTModeDirection)direction {
+    [self fadeIn:actionName inDirection:direction withMode:nil];
 }
 
-- (IBAction)fadeIn:(TTModeDirection)direction withMode:(TTMode *)mode {
-    [self fadeIn:direction withMode:mode buttonMoment:BUTTON_MOMENT_PRESSUP];
+- (IBAction)fadeIn:(NSString *)actionName inDirection:(TTModeDirection)direction withMode:(TTMode *)mode {
+    [self fadeIn:actionName inDirection:direction withMode:mode buttonMoment:BUTTON_MOMENT_PRESSUP];
 }
 
-- (IBAction)fadeIn:(TTModeDirection)direction withMode:(TTMode *)mode buttonMoment:(TTButtonMoment)buttonMoment {
+- (IBAction)fadeIn:(NSString *)actionName inDirection:(TTModeDirection)direction withMode:(TTMode *)mode buttonMoment:(TTButtonMoment)buttonMoment {
     if (!mode) mode = appDelegate.modeMap.selectedMode;
 
     if ([appDelegate.modeMap shouldHideHud:direction]) return;
 
     //    NSLog(@" ---> Fade in action: %d", direction);
-    [hudWindow makeKeyAndOrderFront:nil];
-    [self showWindow:self];
+//    [hudWindow setLevel:10];
+    [hudWindow makeKeyAndOrderFront:NSApp];
+    [self showWindow:nil];
     
     [hudView setMode:mode];
     [hudView setDirection:direction];
+    [hudView setActionName:actionName];
     [hudView setButtonMoment:buttonMoment];
     [hudView drawProgressBar:progressBar];
     [hudView drawImageLayoutView];
@@ -69,7 +71,7 @@
     
     if (hudWindow.frame.origin.y == [self hiddenFrame].origin.y) {
         [hudWindow setFrame:[self visibleFrame] display:YES];
-        [[hudWindow animator] setAlphaValue:0.f];
+        [[hudWindow animator] setAlphaValue:0.1f];
     }
     
     fadingIn = YES;

@@ -392,7 +392,7 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
         actionHUDController = [[TTActionHUDWindowController alloc]
                                initWithWindowNibName:@"TTActionHUDView"];
     }
-    [actionHUDController fadeIn:INFO withMode:self];
+    [actionHUDController fadeIn:nil inDirection:INFO withMode:self];
 }
 
 - (void)snoozeAlarm {

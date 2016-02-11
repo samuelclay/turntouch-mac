@@ -29,17 +29,21 @@ typedef enum {
 
 - (void)activate:(TTModeDirection)_modeDirection;
 - (void)runDirection:(TTModeDirection)direction;
+- (void)runAction:(NSString *)actionName inDirection:(TTModeDirection)direction;
 - (void)runDoubleDirection:(TTModeDirection)direction;
 - (NSString *)titleInDirection:(TTModeDirection)direction buttonMoment:(TTButtonMoment)buttonMoment;
 - (NSString *)titleForAction:(NSString *)actionName buttonMoment:(TTButtonMoment)buttonMoment;
 - (NSString *)actionTitleInDirection:(TTModeDirection)direction buttonMoment:(TTButtonMoment)buttonMoment;
+- (NSString *)actionTitleForAction:(NSString *)actionName buttonMoment:(TTButtonMoment)buttonMoment;
 - (NSString *)imageNameInDirection:(TTModeDirection)direction;
 - (NSString *)imageNameForAction:(NSString *)actionName;
 - (NSString *)imageNameForActionHudInDirection:(TTModeDirection)direction;
 - (ActionLayout)layoutInDirection:(TTModeDirection)direction;
-- (NSView *)viewForLayout:(TTModeDirection)direction withRect:(NSRect)rect;
+- (ActionLayout)layoutForAction:(NSString *)actionName;
+- (NSView *)viewForLayoutInDirection:(TTModeDirection)direction withRect:(NSRect)rect;
+- (NSView *)viewForLayoutOfAction:(NSString *)actionName withRect:(NSRect)rect;
 - (NSString *)actionNameInDirection:(TTModeDirection)direction;
-- (NSInteger)progressInDirection:(TTModeDirection)direction;
+- (NSInteger)progressForAction:(NSString *)actionName;
 - (void)changeDirection:(TTModeDirection)direction toAction:(NSString *)actionClassName;
 - (void)switchSelectedModeTo:(TTMode *)mode;
 

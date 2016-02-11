@@ -11,6 +11,7 @@
 @implementation TTActionHUDView
 
 @synthesize direction;
+@synthesize actionName;
 @synthesize mode;
 @synthesize buttonMoment;
 
@@ -119,7 +120,7 @@ const CGFloat kActionHUDMarginPct = .6f;
 }
 
 - (void)drawProgressBar:(NSProgressIndicator *)_progressBar {
-    NSInteger progress = [mode progressInDirection:direction];
+    NSInteger progress = [mode progressForAction:actionName];
 
     if (progress == -1) {
         progressBar.hidden = YES;
@@ -136,13 +137,13 @@ const CGFloat kActionHUDMarginPct = .6f;
 }
 
 - (void)drawImageLayoutView {
-    ActionLayout layout = [mode layoutInDirection:direction];
+    ActionLayout layout = [mode layoutForAction:actionName];
     [imageLayoutView removeFromSuperview];
     if (layout == ACTION_LAYOUT_TITLE) {
         [imageLayoutView setHidden:YES];
     } else if (layout == ACTION_LAYOUT_IMAGE_TITLE) {
         NSRect frame = [self.class actionFrame];
-        imageLayoutView = [mode viewForLayout:direction withRect:frame];
+        imageLayoutView = [mode viewForLayoutOfAction:actionName withRect:frame];
         [self addSubview:imageLayoutView];
         [imageLayoutView setHidden:NO];
     }
@@ -150,7 +151,7 @@ const CGFloat kActionHUDMarginPct = .6f;
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
-    ActionLayout layout = [mode layoutInDirection:direction];
+    ActionLayout layout = [mode layoutForAction:actionName];
 
     [self drawBackground];
     [self drawIcon];
@@ -198,7 +199,7 @@ const CGFloat kActionHUDMarginPct = .6f;
 }
 
 - (void)drawIcon {
-    NSString *iconFilename = [mode imageNameForActionHudInDirection:direction];
+    NSString *iconFilename = [mode imageNameForAction:actionName];
     NSImage *icon = [NSImage imageNamed:iconFilename];
     [icon setSize:NSMakeSize(self.hudIconSize, self.hudIconSize)];
     [iconView setImage:icon];
@@ -257,7 +258,7 @@ const CGFloat kActionHUDMarginPct = .6f;
                                       //                                      NSShadowAttributeName: stringShadow,
                                       NSParagraphStyleAttributeName: style
                                       };
-    NSString *directionLabel = [mode actionTitleInDirection:direction buttonMoment:buttonMoment];
+    NSString *directionLabel = [mode actionTitleForAction:actionName buttonMoment:buttonMoment];
     frame.size.height = frame.size.height * (0.3f) + [directionLabel sizeWithAttributes:labelAttributes].height/2;
     [backgroundView.image lockFocus];
     frame.origin = NSZeroPoint;
@@ -266,7 +267,7 @@ const CGFloat kActionHUDMarginPct = .6f;
 }
 
 - (void)drawProgress {
-    NSInteger progress = [mode progressInDirection:direction];
+    NSInteger progress = [mode progressForAction:actionName];
     if (progress == -1) return;
     
     [progressBar setProgress:progress];

@@ -17,6 +17,7 @@ extern const CGFloat kActionHUDMarginPct;
 @interface TTActionHUDView : NSView {
     TTAppDelegate *appDelegate;
     TTModeDirection direction;
+    NSString *actionName;
     TTProgressBar *progressBar;
     NSView *imageLayoutView;
     NSImageView *backgroundView;
@@ -28,6 +29,7 @@ extern const CGFloat kActionHUDMarginPct;
 }
 
 @property (nonatomic) TTModeDirection direction;
+@property (nonatomic) NSString *actionName;
 @property (nonatomic) TTMode *mode;
 @property (nonatomic) TTButtonMoment buttonMoment;
 
