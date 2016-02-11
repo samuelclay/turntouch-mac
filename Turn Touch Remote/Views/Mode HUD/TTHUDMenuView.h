@@ -33,6 +33,7 @@
 @property (nonatomic) IBOutlet NSTableView *tableView;
 @property (nonatomic) IBOutlet NSScrollView *scrollView;
 @property (nonatomic) IBOutlet NSClipView *clipView;
+@property (nonatomic) NSInteger highlightedRow;
 @property (nonatomic) id<TTHUDMenuDelegate> delegate;
 
 - (void)slideIn;

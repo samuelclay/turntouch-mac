@@ -18,6 +18,7 @@
 @synthesize tableView;
 @synthesize scrollView;
 @synthesize clipView;
+@synthesize highlightedRow;
 @synthesize delegate;
 
 - (void)awakeFromNib {
@@ -31,8 +32,8 @@
     [self setTranslatesAutoresizingMaskIntoConstraints:NO];
     
     highlightedRow = 1;
+    [tableView deselectAll:nil];
     [self setHidden:NO];
-    [self changeHighlightedRow:0];
     
     [offsetConstraint setConstant:self.menuInitialPosition];
     [widthConstraint setConstant:self.menuWidth];
@@ -170,7 +171,7 @@
     
     BOOL isSpace = [self isRowASpace:row];
     NSString *identifier = isSpace ? @"space" : tableColumn.identifier;
-    NSTableCellView *result = [tableView makeViewWithIdentifier:identifier owner:self];
+    NSTableCellView *result = [tableView makeViewWithIdentifier:identifier owner:tableView];
     
     if (result == nil) {
         result = [[NSTableCellView alloc] init];
@@ -196,15 +197,15 @@
         result.textField.stringValue = @"";
     }
     
+//    if (row == highlightedRow) {
+//        [tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
+//    }
+
     return result;
 }
 
--(void)tableViewSelectionDidChange:(NSNotification *)aNotification {
+- (void)tableViewSelectionDidChange:(NSNotification *)notification {
     NSInteger selectedRow = [tableView selectedRow];
-    NSTableRowView *myRowView = [tableView rowViewAtRow:selectedRow makeIfNecessary:NO];
-    [myRowView setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleNone];
-    [myRowView setEmphasized:NO];
-    
     NSTableRowView *oldRowView = [tableView rowViewAtRow:highlightedRow makeIfNecessary:NO];
     NSTableRowView *newRowView = [tableView rowViewAtRow:selectedRow makeIfNecessary:NO];
     CGFloat alpha = 0.2f;
@@ -219,6 +220,7 @@
     [[newRowView animator] setBackgroundColor:NSColorFromRGBAlpha(0x000000, alpha)];
     [NSAnimationContext endGrouping];
     
+    NSLog(@"Highlighting row: %ld (was: %ld)", selectedRow, highlightedRow);
     highlightedRow = selectedRow;
     [tableView setNeedsDisplay:YES];
 }

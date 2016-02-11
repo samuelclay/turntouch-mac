@@ -161,7 +161,6 @@
                 break;
         }
         
-        // Check for double click and setup double click timer
         if (menuState == TTHUDMenuStateActive) {
             if (buttonPressedDirection == NORTH) {
 //                [self fireMenuButton:NORTH];
@@ -178,6 +177,7 @@
             lastButtonPressedDirection != NO_DIRECTION &&
             buttonPressedDirection == lastButtonPressedDirection &&
             [[NSDate date] timeIntervalSinceDate:lastButtonPressStart] < DOUBLE_CLICK_ACTION_DURATION) {
+            // Check for double click and setup double click timer
             // Double click detected
             [self fireDoubleButton:buttonPressedDirection];
             lastButtonPressedDirection = NO_DIRECTION;

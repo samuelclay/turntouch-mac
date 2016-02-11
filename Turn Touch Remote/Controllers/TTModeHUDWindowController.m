@@ -50,8 +50,8 @@
     [hudView setupTitleAttributes];
     hudView.isTeaser = NO;
     [hudView setNeedsDisplay:YES];
-    [menuView setNeedsDisplay:YES];
     [menuView.tableView reloadData];
+    [menuView changeHighlightedRow:0];
     
     if (hudWindow.frame.origin.y != [self visibleFrame].origin.y) {
         [hudWindow setFrame:[self visibleFrame] display:YES];
@@ -61,6 +61,9 @@
     }
     
     [NSAnimationContext beginGrouping];
+    [[NSAnimationContext currentContext] setCompletionHandler:^{
+
+    }];
     [[NSAnimationContext currentContext] setDuration:.5f];
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
@@ -72,9 +75,6 @@
         [hudView setNeedsDisplay:YES];
         [[[hudView gradientView] animator] setAlphaValue:1.f];
     }
-    [[NSAnimationContext currentContext] setCompletionHandler:^{
-        [menuView changeHighlightedRow:0];
-    }];
     [NSAnimationContext endGrouping];
 }
 
