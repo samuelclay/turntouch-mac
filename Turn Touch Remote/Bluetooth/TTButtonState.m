@@ -61,6 +61,13 @@
     }
 }
 
+- (void)clearState {
+    north = NO;
+    east = NO;
+    west = NO;
+    south = NO;
+}
+
 - (BOOL)anyPressedDown {
     return north || east || west || south;
 }

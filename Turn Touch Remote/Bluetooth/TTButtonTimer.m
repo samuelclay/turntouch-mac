@@ -97,6 +97,8 @@
     } else if (anyButtonPressed) {
         // Press down button
         NSLog(@" ---> Press down button%@", previousButtonState.inMultitouch ? @" (multi-touch)" : @"");
+        previousButtonState = latestButtonState;
+
         if (latestButtonState.inMultitouch) {
             if (!holdToastStart && !menuHysteresis && menuState == TTHUDMenuStateHidden) {
                 holdToastStart = [NSDate date];
@@ -133,11 +135,11 @@
                 [self activateButton:NO_DIRECTION];
             }
         }
-
-        previousButtonState = latestButtonState;
     } else if (anyButtonLifted && menuState == TTHUDMenuStateHidden) {
         // Press up button
         NSLog(@" ---> Button lifted%@: %ld", previousButtonState.inMultitouch ? @" (multi-touch)" : @"", (long)buttonLifted);
+        previousButtonState = latestButtonState;
+
         TTModeDirection buttonPressedDirection;
         switch (buttonLifted) {
             case 0:
@@ -181,11 +183,12 @@
                 lastButtonPressStart = nil;
             });
         }
-
-        previousButtonState = latestButtonState;
     } else if (!latestButtonState.anyPressedDown) {
         NSLog(@" ---> Nothing pressed%@: %d (lifted: %ld)", latestButtonState.inMultitouch ? @" (multi-touch)" : @"", state, buttonLifted);
-        if (!previousButtonState.inMultitouch && buttonLifted >= 0 && menuHysteresis) {
+        BOOL inMultitouch = previousButtonState.inMultitouch;
+        previousButtonState = latestButtonState;
+
+        if (!inMultitouch && buttonLifted >= 0 && menuHysteresis) {
             [self releaseToastActiveMode];
         } else if (menuState == TTHUDMenuStateHidden) {
             [self releaseToastActiveMode];
@@ -193,7 +196,6 @@
         [self activateButton:NO_DIRECTION];
         menuHysteresis = NO;
         holdToastStart = nil;
-        previousButtonState = latestButtonState;
     }
     
 //    NSLog(@"Buttons: %d, %d: %@", state, heldData, previousButtonState);
@@ -307,6 +309,13 @@
     if (appDelegate.modeMap.activeModeDirection == timerDirection) {
         [appDelegate.hudController teaseMode:timerDirection];
     }
+}
+
+#pragma mark - HUD Menu
+
+- (void)closeMenu {
+    menuState = TTHUDMenuStateHidden;
+    [previousButtonState clearState];
 }
 
 #pragma mark - Pairing

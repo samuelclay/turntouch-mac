@@ -21,7 +21,7 @@
         [self setBackgroundColor:[NSColor clearColor]];
         [self setOpaque:NO];
         [self setAlphaValue:0.0];
-        [self setIgnoresMouseEvents:YES];
+//        [self setIgnoresMouseEvents:YES];
         [self.contentView setWantsLayer:YES];
     }
     

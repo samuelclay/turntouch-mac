@@ -9,6 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "TTHUDMenuView.h"
 #import "TTAppDelegate.h"
+#import "TTHUDMenuButton.h"
 
 @implementation TTHUDMenuView
 
@@ -24,7 +25,7 @@
     
     [self setWantsLayer:YES];
     [self setMaterial:NSVisualEffectMaterialSidebar];
-    [self setBlendingMode:NSVisualEffectBlendingModeWithinWindow];
+    [self setBlendingMode:NSVisualEffectBlendingModeBehindWindow];
     [self setState:NSVisualEffectStateActive];
     
     [self setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -32,12 +33,10 @@
     highlightedRow = 1;
     [self setHidden:NO];
     [self changeHighlightedRow:0];
-}
-
-- (void)drawRect:(NSRect)dirtyRect {
-    [super drawRect:dirtyRect];
+    
     [offsetConstraint setConstant:self.menuInitialPosition];
     [widthConstraint setConstant:self.menuWidth];
+
 }
 
 - (NSInteger)menuWidth {
@@ -104,20 +103,7 @@
     if (![self.menuOptions count]) return;
     
     NSInteger newRow = [self nextRowInDirection:direction];
-    
-    NSTableRowView *oldRowView = [tableView rowViewAtRow:highlightedRow makeIfNecessary:NO];
-    NSTableRowView *newRowView = [tableView rowViewAtRow:newRow makeIfNecessary:NO];
-    CGFloat alpha = 0.2f;
-    
-    [NSAnimationContext beginGrouping];
-    [[NSAnimationContext currentContext] setDuration:.12f];
-    [[NSAnimationContext currentContext] setTimingFunction:
-     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
-    [[oldRowView animator] setBackgroundColor:[NSColor clearColor]];
-    [[newRowView animator] setBackgroundColor:NSColorFromRGBAlpha(0x000000, alpha)];
-    [NSAnimationContext endGrouping];
-    
-    highlightedRow = newRow;
+    [tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:newRow] byExtendingSelection:NO];
 }
 
 - (NSInteger)nextRowInDirection:(NSInteger)direction {
@@ -176,44 +162,65 @@
     if ([@[@"leadingPaddingColumn", @"trailingPaddingColumn"] containsObject:tableColumn.identifier]) {
         [tableColumn setWidth:24];
         return nil;
+    } else if ([tableColumn.identifier isEqualToString:@"imageColumn"]) {
+        [tableColumn setWidth:72];
     } else {
-        [tableColumn setWidth:(self.menuWidth - 24*2)];
+        [tableColumn setWidth:(self.menuWidth - 24*2 - 72)];
     }
     
     BOOL isSpace = [self isRowASpace:row];
-    NSString *cellIdentifier = isSpace ? @"space" : @"option";
-    NSButton *result = [tableView makeViewWithIdentifier:cellIdentifier owner:self];
+    NSTableCellView *result = [tableView makeViewWithIdentifier:tableColumn.identifier owner:self];
     
     if (result == nil) {
-        result = [[NSButton alloc] init];
-        [result setTarget:self];
-        [result setBordered:NO];
-        [result setFont:[NSFont fontWithName:@"Effra" size:28]];
-        [result setImagePosition:NSImageRight];
-        [result setAlignment:NSTextAlignmentLeft];
-        [result setButtonType:NSMomentaryChangeButton];
-        [result setIdentifier:cellIdentifier];
+        result = [[NSTableCellView alloc] init];
+        [result setIdentifier:tableColumn.identifier];
     }
     
     if (!isSpace) {
         NSDictionary *menuOption = [self.menuOptions objectAtIndex:row];
         SEL selector = NSSelectorFromString([NSString stringWithFormat:@"menu%@", [menuOption objectForKey:@"identifier"]]);
-        NSImage *icon = [NSImage imageNamed:[menuOption objectForKey:@"icon"]];
-        [icon setSize:NSMakeSize(36, 36)];
-        [result setImage:icon];
-        [result setTitle:[menuOption objectForKey:@"title"]];
-        if ([appDelegate.modeMap.selectedMode respondsToSelector:selector]) {
-            [result setAction:selector];
-            [result setTarget:appDelegate.modeMap.selectedMode];
+        if ([tableColumn.identifier isEqualToString:@"imageColumn"]) {
+            NSImage *icon = [NSImage imageNamed:[menuOption objectForKey:@"icon"]];
+            [icon setSize:NSMakeSize(36, 36)];
+            result.imageView.image = icon;
         } else {
-            NSLog(@" ***> %@ doesn't respond to menu%@", appDelegate.modeMap.selectedMode, [menuOption objectForKey:@"identifier"]);
+            result.textField.stringValue = [menuOption objectForKey:@"title"];
+        }
+        if ([appDelegate.modeMap.selectedMode respondsToSelector:selector]) {
+//            [result setTarget:appDelegate.modeMap.selectedMode];
+        } else {
+//            NSLog(@" ***> %@ doesn't respond to menu%@", appDelegate.modeMap.selectedMode, [menuOption objectForKey:@"identifier"]);
         }
     } else {
-        [result setTitle:@""];
+        result.textField.stringValue = @"";
     }
     
     return result;
 }
 
+-(void)tableViewSelectionDidChange:(NSNotification *)aNotification {
+    
+    NSInteger selectedRow = [tableView selectedRow];
+    NSTableRowView *myRowView = [tableView rowViewAtRow:selectedRow makeIfNecessary:NO];
+    [myRowView setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleNone];
+    [myRowView setEmphasized:NO];
+    
+    NSTableRowView *oldRowView = [tableView rowViewAtRow:highlightedRow makeIfNecessary:NO];
+    NSTableRowView *newRowView = [tableView rowViewAtRow:selectedRow makeIfNecessary:NO];
+    CGFloat alpha = 0.2f;
+    
+    [tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:selectedRow] byExtendingSelection:NO];
+    
+    [NSAnimationContext beginGrouping];
+    [[NSAnimationContext currentContext] setDuration:.12f];
+    [[NSAnimationContext currentContext] setTimingFunction:
+     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
+    [[oldRowView animator] setBackgroundColor:[NSColor clearColor]];
+    [[newRowView animator] setBackgroundColor:NSColorFromRGBAlpha(0x000000, alpha)];
+    [NSAnimationContext endGrouping];
+    
+    highlightedRow = selectedRow;
+    [tableView setNeedsDisplay:YES];
 
+}
 @end

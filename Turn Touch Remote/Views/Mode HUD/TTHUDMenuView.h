@@ -40,5 +40,6 @@
 - (void)menuUp;
 - (void)menuDown;
 - (void)selectMenuItem;
+- (void)changeHighlightedRow:(NSInteger)direction;
 
 @end

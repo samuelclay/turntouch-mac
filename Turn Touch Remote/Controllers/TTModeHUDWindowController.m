@@ -72,6 +72,9 @@
         [hudView setNeedsDisplay:YES];
         [[[hudView gradientView] animator] setAlphaValue:1.f];
     }
+    [[NSAnimationContext currentContext] setCompletionHandler:^{
+        [menuView changeHighlightedRow:0];
+    }];
     [NSAnimationContext endGrouping];
 }
 
@@ -125,11 +128,14 @@
 #pragma mark - HUD Menu Delegate
 
 - (NSInteger)menuInitialPosition {
-    return 0;
+    return -200;
 }
 
 - (NSArray *)menuOptions {
     NSMutableArray *options = [NSMutableArray array];
+    [options addObject:@{@"identifier": @"space"}];
+    [options addObject:@{@"identifier": @"close",
+                         @"title"       : @"Close"}];
     [options addObject:@{@"identifier": @"space"}];
     
     for (NSString *action in appDelegate.modeMap.availableActions) {
@@ -160,6 +166,7 @@
         [menuView selectMenuItem];
     } else if (direction == WEST) {
         [self fadeOut:nil];
+        [appDelegate.bluetoothMonitor.buttonTimer closeMenu];
     } else if (direction == SOUTH) {
         [menuView menuDown];
     }

@@ -179,4 +179,8 @@ const CGFloat kPaddingPct = .75f;
     textSize = [modeTitle sizeWithAttributes:modeAttributes];
 }
 
+- (NSView *)hitTest:(NSPoint)aPoint {
+    return nil;
+}
+
 @end

@@ -215,6 +215,7 @@
 		FF8528F61A96A63A00B289FD /* TTModeMusic.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF8528F51A96A63A00B289FD /* TTModeMusic.plist */; };
 		FF8528F81A96B58700B289FD /* TTModeMusicVolumeJumpOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF8528F71A96B58700B289FD /* TTModeMusicVolumeJumpOptions.xib */; };
 		FF8528FB1A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8528FA1A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.m */; };
+		FF877CD81C6C19F1007940C3 /* TTHUDMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FF877CD71C6C19F1007940C3 /* TTHUDMenuButton.m */; };
 		FF8A73C61ABA69410023AA53 /* logo - 1024.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8A73C01ABA69410023AA53 /* logo - 1024.png */; };
 		FF8A73C71ABA69410023AA53 /* logo_32.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8A73C11ABA69410023AA53 /* logo_32.png */; };
 		FF8A73C81ABA69410023AA53 /* logo_64.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8A73C21ABA69410023AA53 /* logo_64.png */; };
@@ -676,6 +677,8 @@
 		FF8528F71A96B58700B289FD /* TTModeMusicVolumeJumpOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeMusicVolumeJumpOptions.xib; path = Modes/Music/TTModeMusicVolumeJumpOptions.xib; sourceTree = "<group>"; };
 		FF8528F91A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMusicVolumeJumpOptions.h; path = Modes/Music/TTModeMusicVolumeJumpOptions.h; sourceTree = "<group>"; };
 		FF8528FA1A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeMusicVolumeJumpOptions.m; path = Modes/Music/TTModeMusicVolumeJumpOptions.m; sourceTree = "<group>"; };
+		FF877CD61C6C19F1007940C3 /* TTHUDMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTHUDMenuButton.h; sourceTree = "<group>"; };
+		FF877CD71C6C19F1007940C3 /* TTHUDMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTHUDMenuButton.m; sourceTree = "<group>"; };
 		FF8A73C01ABA69410023AA53 /* logo - 1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo - 1024.png"; sourceTree = "<group>"; };
 		FF8A73C11ABA69410023AA53 /* logo_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_32.png; sourceTree = "<group>"; };
 		FF8A73C21ABA69410023AA53 /* logo_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_64.png; sourceTree = "<group>"; };
@@ -1781,6 +1784,8 @@
 				FFBAC7041C596057009CA53C /* TTModeHUDLabelsView.m */,
 				FF6135331C5AF59D00F431D7 /* TTHUDMenuView.h */,
 				FF6135341C5AF59D00F431D7 /* TTHUDMenuView.m */,
+				FF877CD61C6C19F1007940C3 /* TTHUDMenuButton.h */,
+				FF877CD71C6C19F1007940C3 /* TTHUDMenuButton.m */,
 			);
 			name = "Mode HUD";
 			path = "Views/Mode HUD";
@@ -2247,6 +2252,7 @@
 				FF66F2A619228DE100031478 /* TTModeAlarmClockOptions.m in Sources */,
 				FF98A2E11867DBA40032CC7A /* TTActionMap.m in Sources */,
 				FFABABA21C33676700AD5620 /* TTModeWebBrowserView.m in Sources */,
+				FF877CD81C6C19F1007940C3 /* TTHUDMenuButton.m in Sources */,
 				FF557AE41C4ED8BE005FB7FD /* TTModeNestConnected.m in Sources */,
 				FF7305B11A5C9C76009A852D /* DDLog.m in Sources */,
 				FF557AE91C4F1CD0005FB7FD /* TTModeNestSetTempOptions.m in Sources */,

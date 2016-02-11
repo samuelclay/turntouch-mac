@@ -18,6 +18,8 @@
 
 - (BOOL)state:(NSInteger)i;
 - (void)replaceState:(NSInteger)i withState:(BOOL)state;
+- (void)clearState;
+
 - (BOOL)anyPressedDown;
 - (BOOL)inMultitouch;
 - (NSInteger)activatedCount;
