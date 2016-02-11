@@ -19,23 +19,19 @@
 @synthesize clipView;
 @synthesize delegate;
 
-- (instancetype)init {
-    if (self = [super init]) {
-        appDelegate = (TTAppDelegate *)[NSApp delegate];
-        
-        [self setWantsLayer:YES];
-        [self setMaterial:NSVisualEffectMaterialSidebar];
-        [self setBlendingMode:NSVisualEffectBlendingModeWithinWindow];
-        [self setState:NSVisualEffectStateActive];
-        
-        [self setTranslatesAutoresizingMaskIntoConstraints:NO];
-        
-        highlightedRow = 1;
-        [self setHidden:NO];
-        [self changeHighlightedRow:0];
-    }
+- (void)awakeFromNib {
+    appDelegate = (TTAppDelegate *)[NSApp delegate];
     
-    return self;
+    [self setWantsLayer:YES];
+    [self setMaterial:NSVisualEffectMaterialSidebar];
+    [self setBlendingMode:NSVisualEffectBlendingModeWithinWindow];
+    [self setState:NSVisualEffectStateActive];
+    
+    [self setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    highlightedRow = 1;
+    [self setHidden:NO];
+    [self changeHighlightedRow:0];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
@@ -203,7 +199,7 @@
         NSDictionary *menuOption = [self.menuOptions objectAtIndex:row];
         SEL selector = NSSelectorFromString([NSString stringWithFormat:@"menu%@", [menuOption objectForKey:@"identifier"]]);
         NSImage *icon = [NSImage imageNamed:[menuOption objectForKey:@"icon"]];
-        [icon setSize:NSMakeSize(75, 50)];
+        [icon setSize:NSMakeSize(36, 36)];
         [result setImage:icon];
         [result setTitle:[menuOption objectForKey:@"title"]];
         if ([appDelegate.modeMap.selectedMode respondsToSelector:selector]) {

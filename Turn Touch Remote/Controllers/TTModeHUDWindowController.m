@@ -153,4 +153,16 @@
     return options;
 }
 
+- (void)runDirection:(TTModeDirection)direction {
+    if (direction == NORTH) {
+        [menuView menuUp];
+    } else if (direction == EAST) {
+        [menuView selectMenuItem];
+    } else if (direction == WEST) {
+        [self fadeOut:nil];
+    } else if (direction == SOUTH) {
+        [menuView menuDown];
+    }
+}
+
 @end

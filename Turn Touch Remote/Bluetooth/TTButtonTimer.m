@@ -45,13 +45,14 @@
     uint8_t doubleState = [self doubleStateFromData:data];
     BOOL heldState = [self heldStateFromData:data] == 0xFF;
     NSInteger buttonLifted = -1;
-    NSLog(@" ---> Bluetooth data: %@ (%d/%d/%d)", data, doubleState, state, heldState);
     
     TTButtonState *latestButtonState = [[TTButtonState alloc] init];
     latestButtonState.north = !!(state & (1 << 0));
     latestButtonState.east = !!(state & (1 << 1));
     latestButtonState.west = !!(state & (1 << 2));
     latestButtonState.south = !!(state & (1 << 3));
+
+    NSLog(@" ---> Bluetooth data: %@ (%d/%d/%d) %@", data, doubleState, state, heldState, latestButtonState);
     
     // Figure out which buttons are held and lifted
     NSInteger i = latestButtonState.count;
@@ -108,20 +109,33 @@
                 [appDelegate.hudController releaseToastActiveMode];
             }
             [self activateButton:NO_DIRECTION];
-        } else if ((state & 0x01) == 0x01) {
-            [self activateButton:NORTH];
-        } else if ((state & 0x02) == 0x02) {
-            [self activateButton:EAST];
-        } else if ((state & 0x04) == 0x04) {
-            [self activateButton:WEST];
-        } else if ((state & 0x08) == 0x08) {
-            [self activateButton:SOUTH];
-        } else if (state == 0x00) {
+        } else if (menuState == TTHUDMenuStateActive) {
+            if ((state & 0x01) == 0x01) {
+                [self fireMenuButton:NORTH];
+            } else if ((state & 0x02) == 0x02) {
+                [self fireMenuButton:EAST];
+            } else if ((state & 0x04) == 0x04) {
+                [self fireMenuButton:WEST];
+            } else if ((state & 0x08) == 0x08) {
+                [self fireMenuButton:SOUTH];
+            }
             [self activateButton:NO_DIRECTION];
+        } else {
+            if ((state & 0x01) == 0x01) {
+                [self activateButton:NORTH];
+            } else if ((state & 0x02) == 0x02) {
+                [self activateButton:EAST];
+            } else if ((state & 0x04) == 0x04) {
+                [self activateButton:WEST];
+            } else if ((state & 0x08) == 0x08) {
+                [self activateButton:SOUTH];
+            } else if (state == 0x00) {
+                [self activateButton:NO_DIRECTION];
+            }
         }
 
         previousButtonState = latestButtonState;
-    } else if (anyButtonLifted) {
+    } else if (anyButtonLifted && menuState == TTHUDMenuStateHidden) {
         // Press up button
         NSLog(@" ---> Button lifted%@: %ld", previousButtonState.inMultitouch ? @" (multi-touch)" : @"", (long)buttonLifted);
         TTModeDirection buttonPressedDirection;
@@ -238,6 +252,10 @@
         NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
         [runLoop addTimer:activeModeTimer forMode:NSDefaultRunLoopMode];
     }
+}
+
+- (void)fireMenuButton:(TTModeDirection)direction {
+    [appDelegate.hudController.modeHUDController runDirection:direction];
 }
 
 - (void)fireButton:(TTModeDirection)direction {

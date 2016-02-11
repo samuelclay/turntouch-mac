@@ -33,5 +33,6 @@
 - (void)fadeIn:(BOOL)animate;
 - (IBAction)fadeOut:(id)sender;
 - (void)teaseMode:(TTModeDirection)direction;
+- (void)runDirection:(TTModeDirection)direction;
 
 @end
