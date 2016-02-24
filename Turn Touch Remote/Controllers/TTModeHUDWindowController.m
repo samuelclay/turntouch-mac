@@ -51,7 +51,6 @@
     hudView.isTeaser = NO;
     [hudView setNeedsDisplay:YES];
     [menuView.tableView reloadData];
-    [menuView changeHighlightedRow:0];
     
     if (hudWindow.frame.origin.y != [self visibleFrame].origin.y) {
         [hudWindow setFrame:[self visibleFrame] display:YES];
@@ -76,12 +75,18 @@
         [[[hudView gradientView] animator] setAlphaValue:1.f];
     }
     [NSAnimationContext endGrouping];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [menuView changeHighlightedRow:0];
+    });
 }
 
 - (IBAction)fadeOut:(id)sender {
     //    __block __unsafe_unretained NSWindow *window = hudWindow;
     if (isFading) return;
     isFading = YES;
+
+    [appDelegate.bluetoothMonitor.buttonTimer closeMenu];
 
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:.55f];
@@ -168,7 +173,6 @@
         [menuView selectMenuItem];
     } else if (direction == WEST) {
         [self fadeOut:nil];
-        [appDelegate.bluetoothMonitor.buttonTimer closeMenu];
     } else if (direction == SOUTH) {
         [menuView menuDown];
     }

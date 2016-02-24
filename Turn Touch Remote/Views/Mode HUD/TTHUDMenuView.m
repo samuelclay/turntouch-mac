@@ -133,6 +133,8 @@
     if ([[menuOption objectForKey:@"group"] isEqualToString:@"action"]) {
         [appDelegate.modeMap.selectedMode runAction:[menuOption objectForKey:@"identifier"] inDirection:NO_DIRECTION];
         [appDelegate.hudController toastActiveAction:[menuOption objectForKey:@"identifier"] inDirection:NO_DIRECTION];
+    } else if ([[menuOption objectForKey:@"identifier"] isEqualToString:@"close"]) {
+        [appDelegate.hudController.modeHUDController fadeOut:nil];
     } else {
         NSLog(@"Switch into: %@", menuOption);
     }
@@ -184,6 +186,7 @@
         if ([tableColumn.identifier isEqualToString:@"imageColumn"]) {
             NSImage *icon = [NSImage imageNamed:[menuOption objectForKey:@"icon"]];
             [icon setSize:NSMakeSize(36, 36)];
+//            NSLog(@"icon size: %@", NSStringFromSize(icon.size));
             result.imageView.image = icon;
         } else {
             result.textField.stringValue = [menuOption objectForKey:@"title"];
@@ -207,10 +210,9 @@
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
     NSInteger selectedRow = [tableView selectedRow];
     NSTableRowView *oldRowView = [tableView rowViewAtRow:highlightedRow makeIfNecessary:NO];
+    if (selectedRow < 0) selectedRow = highlightedRow;
     NSTableRowView *newRowView = [tableView rowViewAtRow:selectedRow makeIfNecessary:NO];
     CGFloat alpha = 0.2f;
-    
-    [tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:selectedRow] byExtendingSelection:NO];
     
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:.12f];

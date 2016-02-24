@@ -52,7 +52,7 @@
     latestButtonState.west = !!(state & (1 << 2));
     latestButtonState.south = !!(state & (1 << 3));
 
-    NSLog(@" ---> Bluetooth data: %@ (%d/%d/%d) %@", data, doubleState, state, heldState, latestButtonState);
+//    NSLog(@" ---> Bluetooth data: %@ (%d/%d/%d) %@", data, doubleState, state, heldState, latestButtonState);
     
     // Figure out which buttons are held and lifted
     NSInteger i = latestButtonState.count;
@@ -75,7 +75,7 @@
     
     if (anyButtonHeld) {
         // Hold button
-        NSLog(@" ---> Hold button");
+//        NSLog(@" ---> Hold button");
         previousButtonState = latestButtonState;
         menuState = TTHUDMenuStateHidden;
         
@@ -96,7 +96,7 @@
         [self activateButton:NO_DIRECTION];
     } else if (anyButtonPressed) {
         // Press down button
-        NSLog(@" ---> Press down button%@", previousButtonState.inMultitouch ? @" (multi-touch)" : @"");
+//        NSLog(@" ---> Press down button%@", previousButtonState.inMultitouch ? @" (multi-touch)" : @"");
         previousButtonState = latestButtonState;
 
         if (latestButtonState.inMultitouch) {
@@ -138,7 +138,7 @@
         }
     } else if (anyButtonLifted) {
         // Press up button
-        NSLog(@" ---> Button lifted%@: %ld", previousButtonState.inMultitouch ? @" (multi-touch)" : @"", (long)buttonLifted);
+//        NSLog(@" ---> Button lifted%@: %ld", previousButtonState.inMultitouch ? @" (multi-touch)" : @"", (long)buttonLifted);
         previousButtonState = latestButtonState;
 
         TTModeDirection buttonPressedDirection;
@@ -197,7 +197,7 @@
             });
         }
     } else if (!latestButtonState.anyPressedDown) {
-        NSLog(@" ---> Nothing pressed%@: %d (lifted: %ld)", latestButtonState.inMultitouch ? @" (multi-touch)" : @"", state, buttonLifted);
+//        NSLog(@" ---> Nothing pressed%@: %d (lifted: %ld)", latestButtonState.inMultitouch ? @" (multi-touch)" : @"", state, buttonLifted);
         BOOL inMultitouch = previousButtonState.inMultitouch;
         previousButtonState = latestButtonState;
 
