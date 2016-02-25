@@ -114,6 +114,8 @@
                          change:(NSDictionary*)change
                         context:(void*)context {
     if ([keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
+        if (selectedModeDirection == NO_DIRECTION) return;
+        
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:[NSNumber numberWithInt:selectedModeDirection]
                      forKey:@"TT:selectedModeDirection"];
@@ -154,6 +156,10 @@
 }
 
 - (void)switchMode {
+    [self switchMode:nil];
+}
+
+- (void)switchMode:(NSString *)modeName {
     if (selectedMode) {
         [batchActions deactivate];
         
@@ -165,6 +171,10 @@
     
     if (selectedModeDirection != NO_DIRECTION) {
         [self setSelectedMode:[self modeInDirection:selectedModeDirection]];
+    } else {
+        Class modeClass = NSClassFromString(modeName);
+        TTMode *mode = [[modeClass alloc] init];
+        [self setSelectedMode:mode];
     }
     
     [self setAvailableActions:selectedMode.actions];

@@ -137,6 +137,10 @@
         [appDelegate.hudController.modeHUDController fadeOut:nil];
     } else {
         NSLog(@"Switch into: %@", menuOption);
+        [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];
+        [appDelegate.modeMap setSelectedModeDirection:NO_DIRECTION];
+        [appDelegate.modeMap switchMode:[menuOption objectForKey:@"identifier"]];
+        [appDelegate.hudController holdToastActiveMode:YES];
     }
 }
 
@@ -209,8 +213,9 @@
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
     NSInteger selectedRow = [tableView selectedRow];
+    if (highlightedRow < 0 || highlightedRow >= tableView.numberOfRows) highlightedRow = 1;
     NSTableRowView *oldRowView = [tableView rowViewAtRow:highlightedRow makeIfNecessary:NO];
-    if (selectedRow < 0) selectedRow = highlightedRow;
+    if (selectedRow < 0 || selectedRow >= tableView.numberOfRows) selectedRow = 1;
     NSTableRowView *newRowView = [tableView rowViewAtRow:selectedRow makeIfNecessary:NO];
     CGFloat alpha = 0.2f;
     

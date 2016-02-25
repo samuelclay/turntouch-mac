@@ -41,6 +41,7 @@
 
 - (void)activateTimers;
 - (void)switchMode;
+- (void)switchMode:(NSString *)modeName;
 - (void)reset;
 - (void)maybeFireActiveButton;
 - (void)runActiveButton;
