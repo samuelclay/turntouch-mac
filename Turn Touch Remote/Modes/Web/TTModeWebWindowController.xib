@@ -108,20 +108,20 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="dFU-sK-0mN">
-                                                            <rect key="frame" x="28" y="1" width="252" height="17"/>
+                                                            <rect key="frame" x="28" y="1" width="252" height="52"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A8N-RS-aJS">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="17"/>
-                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="Xc8-R6-Dgn">
-                                                                        <font key="font" metaFont="system"/>
-                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hkg-aa-B1w">
+                                                                    <rect key="frame" x="-4" y="-14" width="261" height="63"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Table View Cell" id="cPd-gt-fRm">
+                                                                        <font key="font" size="28" name="Effra-Regular"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
                                                             </subviews>
                                                             <connections>
-                                                                <outlet property="textField" destination="A8N-RS-aJS" id="Mye-5o-Wls"/>
+                                                                <outlet property="textField" destination="Hkg-aa-B1w" id="L6c-RJ-rAN"/>
                                                             </connections>
                                                         </tableCellView>
                                                     </prototypeCellViews>
@@ -185,6 +185,7 @@
                         </constraints>
                         <connections>
                             <outlet property="clipView" destination="M99-S2-Uda" id="Ocs-NZ-nUr"/>
+                            <outlet property="offsetConstraint" destination="CEM-4k-Dfq" id="hy3-iX-Fvx"/>
                             <outlet property="scrollView" destination="Iu6-K3-Mpb" id="MjP-SM-qFf"/>
                             <outlet property="tableView" destination="FNF-8h-DQd" id="9ek-cX-D0z"/>
                             <outlet property="widthConstraint" destination="xpv-XQ-Rx3" id="5Pr-W3-Rpr"/>

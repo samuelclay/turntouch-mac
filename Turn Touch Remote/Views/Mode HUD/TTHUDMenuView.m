@@ -79,7 +79,10 @@
 
 - (void)slideIn {
     [self setHidden:NO];
-    [self changeHighlightedRow:0];
+    [tableView reloadData];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self changeHighlightedRow:0];
+    });
     
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:.24f];
