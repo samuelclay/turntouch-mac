@@ -24,9 +24,8 @@
 }
 
 - (void)selectDevice {
-    NSString *deviceSelectedIdentifier = [appDelegate.modeMap mode:self.mode
-                                                 actionOptionValue:kWemoDeviceLocation
-                                                       inDirection:appDelegate.modeMap.inspectingModeDirection];
+    NSString *deviceSelectedIdentifier = [self.action optionValue:kWemoDeviceLocation
+                                                      inDirection:appDelegate.modeMap.inspectingModeDirection];
     NSString *deviceSelected;
     NSMutableArray *devices = [NSMutableArray array];
     [devicePopup removeAllItems];
@@ -50,7 +49,18 @@
 }
 
 - (void)didChangeDevice:(id)sender {
+    NSMenuItem *menuItem = [devicePopup selectedItem];
+    NSString *deviceIdentifier;
     
+    TTModeWemo *modeWemo = (TTModeWemo *)self.mode;
+    for (TTModeWemoDevice *device in [modeWemo sharedFoundDevices]) {
+        if ([device.deviceName isEqualToString:menuItem.title]) {
+            deviceIdentifier = device.location;
+            break;
+        }
+    }
+    
+    [self.action changeActionOption:kWemoDeviceLocation to:deviceIdentifier];
 }
 
 @end

@@ -95,21 +95,27 @@ NSString *const kWemoDeviceLocation = @"wemoDeviceLocation";
 
 #pragma mark - Action methods
 
-- (void)runTTModeWemoDeviceOn {
+- (void)runTTModeWemoDeviceOn:(TTModeDirection)direction {
     NSLog(@"Running TTModeWemoDeviceOn");
-    if (![self sharedFoundDevices].count) return;
-    TTModeWemoDevice *device = [[self sharedFoundDevices] objectAtIndex:0];
+    TTModeWemoDevice *device = [self selectedDevice:direction];
     [device changeDeviceState:WEMO_DEVICE_STATE_ON];
 }
-- (void)runTTModeWemoDeviceOff {
+
+- (void)runTTModeWemoDeviceOff:(TTModeDirection)direction {
     NSLog(@"Running TTModeWemoDeviceOff");
-    if (![self sharedFoundDevices].count) return;
-    TTModeWemoDevice *device = [[self sharedFoundDevices] objectAtIndex:0];
+    TTModeWemoDevice *device = [self selectedDevice:direction];
     [device changeDeviceState:WEMO_DEVICE_STATE_OFF];
 }
-- (void)runTTModeWemoDeviceToggle {
+- (void)runTTModeWemoDeviceToggle:(TTModeDirection)direction {
     NSLog(@"Running TTModeWemoDeviceToggle");
-    if (![self sharedFoundDevices].count) return;
+    TTModeWemoDevice *device = [self selectedDevice:direction];
+    [device requestDeviceState:^() {
+        if (device.deviceState == WEMO_DEVICE_STATE_ON) {
+            [device changeDeviceState:WEMO_DEVICE_STATE_OFF];
+        } else {
+            [device changeDeviceState:WEMO_DEVICE_STATE_ON];
+        }
+    }];
 }
 
 #pragma mark - Defaults
@@ -128,6 +134,21 @@ NSString *const kWemoDeviceLocation = @"wemoDeviceLocation";
 }
 
 #pragma mark - Wemo devices
+
+- (TTModeWemoDevice *)selectedDevice:(TTModeDirection)direction {
+    if (![self sharedFoundDevices].count) return nil;
+    
+    TTModeWemoDevice *device;
+    NSString *deviceLocation = [self.action optionValue:kWemoDeviceLocation inDirection:direction];
+    for (TTModeWemoDevice *foundDevice in [self sharedFoundDevices]) {
+        if (foundDevice.location == deviceLocation) {
+            device = foundDevice;
+            break;
+        }
+    }
+    if (!device) device = [[self sharedFoundDevices] objectAtIndex:0];
+    return device;
+}
 
 - (void)activate {
     if ([[self sharedFoundDevices] count]) {

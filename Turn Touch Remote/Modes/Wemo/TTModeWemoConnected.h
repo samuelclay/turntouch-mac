@@ -12,10 +12,5 @@
 @interface TTModeWemoConnected : TTOptionsDetailViewController
 
 @property (nonatomic, strong) TTModeWemo *modeWemo;
-@property (nonatomic) IBOutlet NSTextField *labelAmbient;
-@property (nonatomic) IBOutlet NSTextField *labelTarget;
-@property (nonatomic) IBOutlet NSPopUpButton *devicePopup;
-
-- (IBAction)didChangeDevice:(id)sender;
 
 @end
