@@ -184,36 +184,37 @@
 - (NSView *)tableView:(NSTableView *)_tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     NSTableRowView *rowView = [tableView rowViewAtRow:row makeIfNecessary:NO];
     [rowView setBackgroundColor:[NSColor clearColor]];
-    
+    NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
+    NSInteger iconSize = round(CGRectGetWidth(screen.frame) / 44);
+
     if ([@[@"leadingPaddingColumn", @"trailingPaddingColumn"] containsObject:tableColumn.identifier]) {
         [tableColumn setWidth:24];
         return nil;
     } else if ([tableColumn.identifier isEqualToString:@"imageColumn"]) {
-        [tableColumn setWidth:72];
+        [tableColumn setWidth:iconSize*2];
     } else {
-        [tableColumn setWidth:(self.menuWidth - 24*2 - 72)];
+        [tableColumn setWidth:(self.menuWidth - 24*2 - iconSize*2)];
     }
     
     BOOL isSpace = [self isRowASpace:row];
     NSString *identifier = isSpace ? @"space" : tableColumn.identifier;
     NSTableCellView *result = [tableView makeViewWithIdentifier:identifier owner:tableView];
-    
+    [tableView setRowSizeStyle:NSTableViewRowSizeStyleCustom];
     if (result == nil) {
         result = [[NSTableCellView alloc] init];
         [result setIdentifier:identifier];
     }
     
     if (!isSpace) {
+        NSInteger fontSize = round(CGRectGetWidth(screen.frame) / 64);
         NSDictionary *menuOption = [self.menuOptions objectAtIndex:row];
         SEL selector = NSSelectorFromString([NSString stringWithFormat:@"menu%@", [menuOption objectForKey:@"identifier"]]);
         if ([tableColumn.identifier isEqualToString:@"imageColumn"]) {
             NSImage *icon = [NSImage imageNamed:[menuOption objectForKey:@"icon"]];
-            [icon setSize:NSMakeSize(36, 36)];
+            [icon setSize:NSMakeSize(iconSize, iconSize)];
 //            NSLog(@"icon size: %@", NSStringFromSize(icon.size));
             result.imageView.image = icon;
         } else {
-            NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
-            NSInteger fontSize = round(CGRectGetWidth(screen.frame) / 64);
             result.textField.font = [NSFont fontWithName:@"Effra" size:fontSize];
             result.textField.stringValue = [menuOption objectForKey:@"title"];
             if ([NSStringFromClass([appDelegate.modeMap.selectedMode class]) isEqualToString:[menuOption objectForKey:@"identifier"]]) {

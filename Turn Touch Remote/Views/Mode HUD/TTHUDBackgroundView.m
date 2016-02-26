@@ -11,10 +11,10 @@
 @implementation TTHUDBackgroundView
 
 - (void)awakeFromNib {
+    [self setWantsLayer:YES];
     self.material = NSVisualEffectMaterialDark;
     self.blendingMode = NSVisualEffectBlendingModeBehindWindow;
     self.state = NSVisualEffectStateActive;
-    [self setWantsLayer:YES];
     
     NSTrackingAreaOptions options = (NSTrackingActiveAlways | NSTrackingInVisibleRect |
                                      NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved);

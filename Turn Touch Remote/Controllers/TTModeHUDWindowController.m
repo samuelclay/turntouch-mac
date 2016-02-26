@@ -52,6 +52,12 @@
     [hudView setNeedsDisplay:YES];
     [menuView.tableView reloadData];
     
+    CGFloat alpha = 1.f;
+    NSOperatingSystemVersion version = [[NSProcessInfo processInfo] operatingSystemVersion];
+    if (version.minorVersion <= 10) {
+        alpha = 0.95f;
+    }
+    
     if (hudWindow.frame.origin.y != [self visibleFrame].origin.y) {
         [hudWindow setFrame:[self visibleFrame] display:YES];
     }
@@ -69,7 +75,7 @@
     
     [hudWindow setFrame:[self visibleFrame] display:YES];
     
-    [[hudWindow animator] setAlphaValue:1.f];
+    [[hudWindow animator] setAlphaValue:alpha];
     if (animate) {
         [hudView setNeedsDisplay:YES];
         [[[hudView gradientView] animator] setAlphaValue:1.f];
