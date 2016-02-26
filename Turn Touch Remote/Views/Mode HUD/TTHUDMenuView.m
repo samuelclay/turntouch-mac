@@ -178,6 +178,9 @@
     
     NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
     NSInteger height = round(CGRectGetWidth(screen.frame) / 32);
+    if (NSWidth(screen.frame) > 1500) {
+        height = round(CGRectGetWidth(screen.frame) / 48);
+    }
     return height;
 }
 
@@ -185,7 +188,12 @@
     NSTableRowView *rowView = [tableView rowViewAtRow:row makeIfNecessary:NO];
     [rowView setBackgroundColor:[NSColor clearColor]];
     NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
+    NSInteger fontSize = round(CGRectGetWidth(screen.frame) / 64);
     NSInteger iconSize = round(CGRectGetWidth(screen.frame) / 44);
+    if (NSWidth(screen.frame) > 1500) {
+        fontSize = round(CGRectGetWidth(screen.frame) / 84);
+        iconSize = round(CGRectGetWidth(screen.frame) / 72);
+    }
 
     if ([@[@"leadingPaddingColumn", @"trailingPaddingColumn"] containsObject:tableColumn.identifier]) {
         [tableColumn setWidth:24];
@@ -206,7 +214,6 @@
     }
     
     if (!isSpace) {
-        NSInteger fontSize = round(CGRectGetWidth(screen.frame) / 64);
         NSDictionary *menuOption = [self.menuOptions objectAtIndex:row];
         SEL selector = NSSelectorFromString([NSString stringWithFormat:@"menu%@", [menuOption objectForKey:@"identifier"]]);
         if ([tableColumn.identifier isEqualToString:@"imageColumn"]) {
