@@ -15,14 +15,14 @@
 	<key>TT:firmware:mode_duration</key>
 	<integer>600</integer>
 	<key>TT:mode:north</key>
-	<string>TTModeAlarmClock</string>
-	<key>TT:mode:east</key>
 	<string>TTModeMac</string>
+	<key>TT:mode:east</key>
+	<string>TTModeMusic</string>
 	<key>TT:mode:west</key>
 	<string>TTModeHue</string>
 	<key>TT:selectedModeDirection</key>
-	<string>1</string>
+	<string>2</string>
 	<key>TT:mode:south</key>
-	<string>TTModeMusic</string>
+	<string>TTModeAlarmClock</string>
 </dict>
 </plist>

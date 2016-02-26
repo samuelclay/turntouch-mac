@@ -314,7 +314,7 @@
 		</data>
 		<key>Resources/TTActionHUDView.nib</key>
 		<data>
-		IrQCdFZ+t2COAVDHbaNQ9qJcf/8=
+		8eStcIeAb9FX+sKmlIQxBzAGe1k=
 		</data>
 		<key>Resources/TTModeAlarmClock.plist</key>
 		<data>
@@ -330,11 +330,11 @@
 		</data>
 		<key>Resources/TTModeHUDView.nib</key>
 		<data>
-		E2GJzW1U6Zc8SuIcv4pA9/sp0+8=
+		RzwdsCUvjFQiSxUvxi0KZIX3uFw=
 		</data>
 		<key>Resources/TTModeHue.plist</key>
 		<data>
-		xq3+dfVY/INe8cYTEpaItvVV0sc=
+		X7cZX94/ux4nvZkR9KcBQCUcH5U=
 		</data>
 		<key>Resources/TTModeHueConnect.nib</key>
 		<data>
@@ -367,10 +367,6 @@
 		<key>Resources/TTModeHueSleepOptions.nib</key>
 		<data>
 		dPZ405uBZ6LLhzRvf8xZC1D8taU=
-		</data>
-		<key>Resources/TTModeMacOptions.nib</key>
-		<data>
-		z++pzqu2BcxS+rv6Dn0DvVxyKQk=
 		</data>
 		<key>Resources/TTModeMusic.plist</key>
 		<data>
@@ -410,7 +406,7 @@
 		</data>
 		<key>Resources/TTModeWebWindowController.nib</key>
 		<data>
-		I9EFI8ZbAsbQppvGVWQKOurjwns=
+		Npvs5+PRcLHYU6r7qD5WXzlnTjU=
 		</data>
 		<key>Resources/TTModeWemoConnect.nib</key>
 		<data>
@@ -418,11 +414,11 @@
 		</data>
 		<key>Resources/TTModeWemoConnected.nib</key>
 		<data>
-		sF3/FVw9rDlC/zAv53vniTR6JbA=
+		Pf7YNh6wSqBKpIFY8cx/rXIA8jE=
 		</data>
 		<key>Resources/TTModeWemoConnecting.nib</key>
 		<data>
-		CzCLxXXIP27rkM6uECKO5KKrwIo=
+		+BxgPO0hoJJSWgT8wM9B0X6pKEE=
 		</data>
 		<key>Resources/TTModeWemoOptions.nib</key>
 		<data>
@@ -456,77 +452,9 @@
 		<data>
 		s3WSLfTKCP8Xv6f0V16/RZ/4paI=
 		</data>
-		<key>Resources/actions/alarm_snooze.png</key>
+		<key>Resources/alarm_snooze.png</key>
 		<data>
 		X0V+4AWQu73xsalpykHB3pOXjJI=
-		</data>
-		<key>Resources/actions/chevron_east.png</key>
-		<data>
-		iYYXuHxkisRIvzdP6WEpKkzvmO8=
-		</data>
-		<key>Resources/actions/chevron_north.png</key>
-		<data>
-		slC+CBMWlC0ODfAWRNxJ0tX+ygk=
-		</data>
-		<key>Resources/actions/chevron_south.png</key>
-		<data>
-		vrx0ePDn4j54LAlPtDq7ndSLgNo=
-		</data>
-		<key>Resources/actions/chevron_west.png</key>
-		<data>
-		DGpSjesBQcsmeGAHvy4JLmdu7H0=
-		</data>
-		<key>Resources/actions/hue_evening.png</key>
-		<data>
-		wjal2ON8IYF99P2MtOPM1JPHZGY=
-		</data>
-		<key>Resources/actions/hue_random.png</key>
-		<data>
-		yUkYveyvJtsxozGKzFLohaXG+5Y=
-		</data>
-		<key>Resources/actions/hue_sleep.png</key>
-		<data>
-		PZNGhhGyfFiQti2DOgeChfJyVG4=
-		</data>
-		<key>Resources/actions/hue_sunset.png</key>
-		<data>
-		JRz2zU/Elo65ukZFa/ALjYWO4hg=
-		</data>
-		<key>Resources/actions/music_ff.png</key>
-		<data>
-		yLyMcfvCCRmAAtCXwBY3gRB8Nl4=
-		</data>
-		<key>Resources/actions/music_pause.png</key>
-		<data>
-		utTe7fgsA+dPUacu6uND97hJkw0=
-		</data>
-		<key>Resources/actions/music_play.png</key>
-		<data>
-		4UhB4oDiRdsSGRJxK9YSHqJjzJc=
-		</data>
-		<key>Resources/actions/music_playlist.png</key>
-		<data>
-		Hj1koC8YD4wQVzpLJPx1kbSgWs4=
-		</data>
-		<key>Resources/actions/music_rewind.png</key>
-		<data>
-		eUOA+KD+dUSh83GA0tOXhSrF9b8=
-		</data>
-		<key>Resources/actions/music_volume.png</key>
-		<data>
-		xFs+XZPlLNllqkXT0F89U1PC++M=
-		</data>
-		<key>Resources/actions/music_volume_down.png</key>
-		<data>
-		E65Ul6JYMWaHQPr8AAPtDXbuft0=
-		</data>
-		<key>Resources/actions/music_volume_mute.png</key>
-		<data>
-		OEoU8oKTbz5cZ0KnbLWgJpClWcE=
-		</data>
-		<key>Resources/actions/music_volume_up.png</key>
-		<data>
-		aS2Drhr7nO79Lp3WgKhk9704Nro=
 		</data>
 		<key>Resources/app_music.png</key>
 		<data>
@@ -548,6 +476,22 @@
 		<data>
 		cFW5ElhGZee6Fqny3FDiBeje308=
 		</data>
+		<key>Resources/chevron_east.png</key>
+		<data>
+		iYYXuHxkisRIvzdP6WEpKkzvmO8=
+		</data>
+		<key>Resources/chevron_north.png</key>
+		<data>
+		slC+CBMWlC0ODfAWRNxJ0tX+ygk=
+		</data>
+		<key>Resources/chevron_south.png</key>
+		<data>
+		vrx0ePDn4j54LAlPtDq7ndSLgNo=
+		</data>
+		<key>Resources/chevron_west.png</key>
+		<data>
+		DGpSjesBQcsmeGAHvy4JLmdu7H0=
+		</data>
 		<key>Resources/clock b&amp;w.png</key>
 		<data>
 		dHHfkkN2cdiI0L82LdhRSp8zedY=
@@ -562,7 +506,7 @@
 		</data>
 		<key>Resources/defaults.plist</key>
 		<data>
-		Dl5g1dlG7TSoxZ+ZOkLMraexays=
+		cjlM9kV+COpXq/sW/9eC4uA/h2E=
 		</data>
 		<key>Resources/double_tap.png</key>
 		<data>
@@ -634,6 +578,22 @@
 		<key>Resources/heart.png</key>
 		<data>
 		bQZsW0+9hhOxosDwSRFyaO7fifU=
+		</data>
+		<key>Resources/hue_evening.png</key>
+		<data>
+		wjal2ON8IYF99P2MtOPM1JPHZGY=
+		</data>
+		<key>Resources/hue_random.png</key>
+		<data>
+		yUkYveyvJtsxozGKzFLohaXG+5Y=
+		</data>
+		<key>Resources/hue_sleep.png</key>
+		<data>
+		PZNGhhGyfFiQti2DOgeChfJyVG4=
+		</data>
+		<key>Resources/hue_sunset.png</key>
+		<data>
+		JRz2zU/Elo65ukZFa/ALjYWO4hg=
 		</data>
 		<key>Resources/icon_movie.png</key>
 		<data>
@@ -799,6 +759,42 @@
 		<data>
 		5a6lze4neaJFiZy/wAoYHAxOPNQ=
 		</data>
+		<key>Resources/music_ff.png</key>
+		<data>
+		yLyMcfvCCRmAAtCXwBY3gRB8Nl4=
+		</data>
+		<key>Resources/music_pause.png</key>
+		<data>
+		utTe7fgsA+dPUacu6uND97hJkw0=
+		</data>
+		<key>Resources/music_play.png</key>
+		<data>
+		4UhB4oDiRdsSGRJxK9YSHqJjzJc=
+		</data>
+		<key>Resources/music_playlist.png</key>
+		<data>
+		Hj1koC8YD4wQVzpLJPx1kbSgWs4=
+		</data>
+		<key>Resources/music_rewind.png</key>
+		<data>
+		eUOA+KD+dUSh83GA0tOXhSrF9b8=
+		</data>
+		<key>Resources/music_volume.png</key>
+		<data>
+		xFs+XZPlLNllqkXT0F89U1PC++M=
+		</data>
+		<key>Resources/music_volume_down.png</key>
+		<data>
+		E65Ul6JYMWaHQPr8AAPtDXbuft0=
+		</data>
+		<key>Resources/music_volume_mute.png</key>
+		<data>
+		OEoU8oKTbz5cZ0KnbLWgJpClWcE=
+		</data>
+		<key>Resources/music_volume_up.png</key>
+		<data>
+		aS2Drhr7nO79Lp3WgKhk9704Nro=
+		</data>
 		<key>Resources/newspaper-3.png</key>
 		<data>
 		6bTkggdrz5GfdsLGUNqe9VozFhU=
@@ -874,16 +870,16 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			f9kaQxcywwhYzI+XDPGq6kjvHvU=
+			2lfT2K/QWoGK9uUG3/lVTQlizV0=
 			</data>
 			<key>requirement</key>
-			<string>identifier "com.philips.hue.HueSDK-OSX" and anchor apple generic and certificate leaf[subject.CN] = "Mac Developer: Sam Clay (BYABZ8TGVG)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+			<string>anchor apple generic and identifier "com.philips.hue.HueSDK-OSX" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
 		</dict>
 		<key>Frameworks/Sparkle.framework</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			HSWJdvdeU4UhMoPHuNWnnKrDkaA=
+			uEV/idwpUlKJvnIjL/IuMsn4ZzM=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.andymatuschak.Sparkle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -1198,7 +1194,7 @@
 		</data>
 		<key>Resources/TTActionHUDView.nib</key>
 		<data>
-		IrQCdFZ+t2COAVDHbaNQ9qJcf/8=
+		8eStcIeAb9FX+sKmlIQxBzAGe1k=
 		</data>
 		<key>Resources/TTModeAlarmClock.plist</key>
 		<data>
@@ -1214,11 +1210,11 @@
 		</data>
 		<key>Resources/TTModeHUDView.nib</key>
 		<data>
-		E2GJzW1U6Zc8SuIcv4pA9/sp0+8=
+		RzwdsCUvjFQiSxUvxi0KZIX3uFw=
 		</data>
 		<key>Resources/TTModeHue.plist</key>
 		<data>
-		xq3+dfVY/INe8cYTEpaItvVV0sc=
+		X7cZX94/ux4nvZkR9KcBQCUcH5U=
 		</data>
 		<key>Resources/TTModeHueConnect.nib</key>
 		<data>
@@ -1251,10 +1247,6 @@
 		<key>Resources/TTModeHueSleepOptions.nib</key>
 		<data>
 		dPZ405uBZ6LLhzRvf8xZC1D8taU=
-		</data>
-		<key>Resources/TTModeMacOptions.nib</key>
-		<data>
-		z++pzqu2BcxS+rv6Dn0DvVxyKQk=
 		</data>
 		<key>Resources/TTModeMusic.plist</key>
 		<data>
@@ -1294,7 +1286,7 @@
 		</data>
 		<key>Resources/TTModeWebWindowController.nib</key>
 		<data>
-		I9EFI8ZbAsbQppvGVWQKOurjwns=
+		Npvs5+PRcLHYU6r7qD5WXzlnTjU=
 		</data>
 		<key>Resources/TTModeWemoConnect.nib</key>
 		<data>
@@ -1302,11 +1294,11 @@
 		</data>
 		<key>Resources/TTModeWemoConnected.nib</key>
 		<data>
-		sF3/FVw9rDlC/zAv53vniTR6JbA=
+		Pf7YNh6wSqBKpIFY8cx/rXIA8jE=
 		</data>
 		<key>Resources/TTModeWemoConnecting.nib</key>
 		<data>
-		CzCLxXXIP27rkM6uECKO5KKrwIo=
+		+BxgPO0hoJJSWgT8wM9B0X6pKEE=
 		</data>
 		<key>Resources/TTModeWemoOptions.nib</key>
 		<data>
@@ -1340,77 +1332,9 @@
 		<data>
 		s3WSLfTKCP8Xv6f0V16/RZ/4paI=
 		</data>
-		<key>Resources/actions/alarm_snooze.png</key>
+		<key>Resources/alarm_snooze.png</key>
 		<data>
 		X0V+4AWQu73xsalpykHB3pOXjJI=
-		</data>
-		<key>Resources/actions/chevron_east.png</key>
-		<data>
-		iYYXuHxkisRIvzdP6WEpKkzvmO8=
-		</data>
-		<key>Resources/actions/chevron_north.png</key>
-		<data>
-		slC+CBMWlC0ODfAWRNxJ0tX+ygk=
-		</data>
-		<key>Resources/actions/chevron_south.png</key>
-		<data>
-		vrx0ePDn4j54LAlPtDq7ndSLgNo=
-		</data>
-		<key>Resources/actions/chevron_west.png</key>
-		<data>
-		DGpSjesBQcsmeGAHvy4JLmdu7H0=
-		</data>
-		<key>Resources/actions/hue_evening.png</key>
-		<data>
-		wjal2ON8IYF99P2MtOPM1JPHZGY=
-		</data>
-		<key>Resources/actions/hue_random.png</key>
-		<data>
-		yUkYveyvJtsxozGKzFLohaXG+5Y=
-		</data>
-		<key>Resources/actions/hue_sleep.png</key>
-		<data>
-		PZNGhhGyfFiQti2DOgeChfJyVG4=
-		</data>
-		<key>Resources/actions/hue_sunset.png</key>
-		<data>
-		JRz2zU/Elo65ukZFa/ALjYWO4hg=
-		</data>
-		<key>Resources/actions/music_ff.png</key>
-		<data>
-		yLyMcfvCCRmAAtCXwBY3gRB8Nl4=
-		</data>
-		<key>Resources/actions/music_pause.png</key>
-		<data>
-		utTe7fgsA+dPUacu6uND97hJkw0=
-		</data>
-		<key>Resources/actions/music_play.png</key>
-		<data>
-		4UhB4oDiRdsSGRJxK9YSHqJjzJc=
-		</data>
-		<key>Resources/actions/music_playlist.png</key>
-		<data>
-		Hj1koC8YD4wQVzpLJPx1kbSgWs4=
-		</data>
-		<key>Resources/actions/music_rewind.png</key>
-		<data>
-		eUOA+KD+dUSh83GA0tOXhSrF9b8=
-		</data>
-		<key>Resources/actions/music_volume.png</key>
-		<data>
-		xFs+XZPlLNllqkXT0F89U1PC++M=
-		</data>
-		<key>Resources/actions/music_volume_down.png</key>
-		<data>
-		E65Ul6JYMWaHQPr8AAPtDXbuft0=
-		</data>
-		<key>Resources/actions/music_volume_mute.png</key>
-		<data>
-		OEoU8oKTbz5cZ0KnbLWgJpClWcE=
-		</data>
-		<key>Resources/actions/music_volume_up.png</key>
-		<data>
-		aS2Drhr7nO79Lp3WgKhk9704Nro=
 		</data>
 		<key>Resources/app_music.png</key>
 		<data>
@@ -1432,6 +1356,22 @@
 		<data>
 		cFW5ElhGZee6Fqny3FDiBeje308=
 		</data>
+		<key>Resources/chevron_east.png</key>
+		<data>
+		iYYXuHxkisRIvzdP6WEpKkzvmO8=
+		</data>
+		<key>Resources/chevron_north.png</key>
+		<data>
+		slC+CBMWlC0ODfAWRNxJ0tX+ygk=
+		</data>
+		<key>Resources/chevron_south.png</key>
+		<data>
+		vrx0ePDn4j54LAlPtDq7ndSLgNo=
+		</data>
+		<key>Resources/chevron_west.png</key>
+		<data>
+		DGpSjesBQcsmeGAHvy4JLmdu7H0=
+		</data>
 		<key>Resources/clock b&amp;w.png</key>
 		<data>
 		dHHfkkN2cdiI0L82LdhRSp8zedY=
@@ -1446,7 +1386,7 @@
 		</data>
 		<key>Resources/defaults.plist</key>
 		<data>
-		Dl5g1dlG7TSoxZ+ZOkLMraexays=
+		cjlM9kV+COpXq/sW/9eC4uA/h2E=
 		</data>
 		<key>Resources/double_tap.png</key>
 		<data>
@@ -1518,6 +1458,22 @@
 		<key>Resources/heart.png</key>
 		<data>
 		bQZsW0+9hhOxosDwSRFyaO7fifU=
+		</data>
+		<key>Resources/hue_evening.png</key>
+		<data>
+		wjal2ON8IYF99P2MtOPM1JPHZGY=
+		</data>
+		<key>Resources/hue_random.png</key>
+		<data>
+		yUkYveyvJtsxozGKzFLohaXG+5Y=
+		</data>
+		<key>Resources/hue_sleep.png</key>
+		<data>
+		PZNGhhGyfFiQti2DOgeChfJyVG4=
+		</data>
+		<key>Resources/hue_sunset.png</key>
+		<data>
+		JRz2zU/Elo65ukZFa/ALjYWO4hg=
 		</data>
 		<key>Resources/icon_movie.png</key>
 		<data>
@@ -1682,6 +1638,42 @@
 		<key>Resources/mode_wemo.png</key>
 		<data>
 		5a6lze4neaJFiZy/wAoYHAxOPNQ=
+		</data>
+		<key>Resources/music_ff.png</key>
+		<data>
+		yLyMcfvCCRmAAtCXwBY3gRB8Nl4=
+		</data>
+		<key>Resources/music_pause.png</key>
+		<data>
+		utTe7fgsA+dPUacu6uND97hJkw0=
+		</data>
+		<key>Resources/music_play.png</key>
+		<data>
+		4UhB4oDiRdsSGRJxK9YSHqJjzJc=
+		</data>
+		<key>Resources/music_playlist.png</key>
+		<data>
+		Hj1koC8YD4wQVzpLJPx1kbSgWs4=
+		</data>
+		<key>Resources/music_rewind.png</key>
+		<data>
+		eUOA+KD+dUSh83GA0tOXhSrF9b8=
+		</data>
+		<key>Resources/music_volume.png</key>
+		<data>
+		xFs+XZPlLNllqkXT0F89U1PC++M=
+		</data>
+		<key>Resources/music_volume_down.png</key>
+		<data>
+		E65Ul6JYMWaHQPr8AAPtDXbuft0=
+		</data>
+		<key>Resources/music_volume_mute.png</key>
+		<data>
+		OEoU8oKTbz5cZ0KnbLWgJpClWcE=
+		</data>
+		<key>Resources/music_volume_up.png</key>
+		<data>
+		aS2Drhr7nO79Lp3WgKhk9704Nro=
 		</data>
 		<key>Resources/newspaper-3.png</key>
 		<data>
