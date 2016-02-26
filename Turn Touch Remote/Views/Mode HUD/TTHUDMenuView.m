@@ -27,7 +27,7 @@
     [self setWantsLayer:YES];
     NSOperatingSystemVersion version = [[NSProcessInfo processInfo] operatingSystemVersion];
     if (version.minorVersion <= 10) {
-        [self setMaterial:NSVisualEffectMaterialDark];
+        [self setMaterial:NSVisualEffectMaterialAppearanceBased];
     } else {
         [self setMaterial:NSVisualEffectMaterialSidebar];
     }
@@ -176,7 +176,9 @@
         return 54;
     }
     
-    return 54;
+    NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
+    NSInteger height = round(CGRectGetWidth(screen.frame) / 32);
+    return height;
 }
 
 - (NSView *)tableView:(NSTableView *)_tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
@@ -210,6 +212,9 @@
 //            NSLog(@"icon size: %@", NSStringFromSize(icon.size));
             result.imageView.image = icon;
         } else {
+            NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
+            NSInteger fontSize = round(CGRectGetWidth(screen.frame) / 64);
+            result.textField.font = [NSFont fontWithName:@"Effra" size:fontSize];
             result.textField.stringValue = [menuOption objectForKey:@"title"];
             if ([NSStringFromClass([appDelegate.modeMap.selectedMode class]) isEqualToString:[menuOption objectForKey:@"identifier"]]) {
                 result.textField.textColor = NSColorFromRGB(0x4685BE);
