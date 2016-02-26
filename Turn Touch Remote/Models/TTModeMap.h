@@ -66,6 +66,7 @@
 - (id)actionOptionValue:(NSString *)optionName;
 - (id)actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction;
 - (id)mode:(TTMode *)mode actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction;
+- (id)mode:(TTMode *)mode actionOptionValue:(NSString *)optionName actionName:(NSString *)actionName inDirection:(TTModeDirection)direction;
 - (id)mode:(TTMode *)mode batchAction:(TTAction *)action
 actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction;
 - (void)toggleInspectingModeDirection:(TTModeDirection)direction;

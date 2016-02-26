@@ -178,7 +178,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 
 #pragma mark - Action methods
 
-- (void)runScene:(TTModeDirection)direction doubleTap:(BOOL)doubleTap {
+- (void)runScene:(NSString *)sceneName inDirection:(TTModeDirection)direction doubleTap:(BOOL)doubleTap {
     if (!phHueSDK.localConnected) {
         return;
     }
@@ -186,8 +186,10 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
     PHScene *activeScene;
-    NSString *sceneIdentifier = [appDelegate.modeMap actionOptionValue:(doubleTap ? kDoubleTapHueScene : kHueScene)
-                                                           inDirection:direction];
+    NSString *sceneIdentifier = [appDelegate.modeMap mode:self.action.mode
+                                        actionOptionValue:(doubleTap ? kDoubleTapHueScene : kHueScene)
+                                               actionName:sceneName
+                                              inDirection:direction];
 
     NSMutableArray *scenes = [[NSMutableArray alloc] init];
     for (PHScene *scene in cache.scenes.allValues) {
@@ -211,19 +213,19 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 }
 
 - (void)runTTModeHueSceneEarlyEvening:(TTModeDirection)direction {
-    [self runScene:direction doubleTap:NO];
+    [self runScene:@"TTModeHueSceneEarlyEvening" inDirection:direction doubleTap:NO];
 }
 
 - (void)doubleRunTTModeHueSceneEarlyEvening:(TTModeDirection)direction {
-    [self runScene:direction doubleTap:YES];
+    [self runScene:@"TTModeHueSceneEarlyEvening" inDirection:direction doubleTap:YES];
 }
 
 - (void)runTTModeHueSceneLateEvening:(TTModeDirection)direction {
-    [self runScene:direction doubleTap:NO];
+    [self runScene:@"TTModeHueSceneLateEvening" inDirection:direction doubleTap:NO];
 }
 
 - (void)doubleRunTTModeHueSceneLateEvening:(TTModeDirection)direction {
-    [self runScene:direction doubleTap:YES];
+    [self runScene:@"TTModeHueSceneLateEvening" inDirection:direction doubleTap:YES];
 }
 
 - (void)runTTModeHueOff:(TTModeDirection)direction {
@@ -232,13 +234,13 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 }
 
 - (void)runTTModeHueSleep:(TTModeDirection)direction {
-    NSNumber *sceneDuration = (NSNumber *)[appDelegate.modeMap actionOptionValue:kHueDuration inDirection:direction];
+    NSNumber *sceneDuration = (NSNumber *)[appDelegate.modeMap mode:self.action.mode actionOptionValue:kHueDuration actionName:@"TTModeHueSleep" inDirection:direction];
     [self runTTModeHueSleep:direction duration:sceneDuration];
 }
 
 - (void)doubleRunTTModeHueSleep:(TTModeDirection)direction {
     //    NSLog(@"Running scene off... %d", direction);
-    NSNumber *sceneDuration = (NSNumber *)[appDelegate.modeMap actionOptionValue:kHueDoubleTapDuration inDirection:direction];
+    NSNumber *sceneDuration = (NSNumber *)[appDelegate.modeMap mode:self.action.mode actionOptionValue:kHueDoubleTapDuration actionName:@"TTModeHueRandom" inDirection:direction];
     [self runTTModeHueSleep:direction duration:sceneDuration];
 }
 
@@ -296,14 +298,17 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     TTHueRandomColors randomColors = (TTHueRandomColors)[[NSAppDelegate.modeMap
                                                           mode:self.action.mode
                                                           actionOptionValue:(doubleTap ? kDoubleTapRandomColors : kRandomColors)
+                                                          actionName:@"TTModeHueRandom"
                                                           inDirection:direction] integerValue];
     TTHueRandomBrightness randomBrightnesses = (TTHueRandomBrightness)[[NSAppDelegate.modeMap
                                                                         mode:self.action.mode
                                                                         actionOptionValue:(doubleTap ? kDoubleTapRandomBrightness : kRandomBrightness)
+                                                                        actionName:@"TTModeHueRandom"
                                                                         inDirection:direction] integerValue];
     TTHueRandomSaturation randomSaturation = (TTHueRandomSaturation)[[NSAppDelegate.modeMap
                                                                       mode:self.action.mode
                                                                       actionOptionValue:(doubleTap ? kDoubleTapRandomSaturation : kRandomSaturation)
+                                                                      actionName:@"TTModeHueRandom"
                                                                       inDirection:direction] integerValue];
     NSNumber *randomColor = [NSNumber numberWithInt:arc4random() % MAX_HUE];
     
