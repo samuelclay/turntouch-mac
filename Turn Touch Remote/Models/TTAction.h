@@ -21,6 +21,7 @@
 @property (nonatomic) NSString *actionName;
 @property (nonatomic) NSString *batchActionKey;
 
+- (id)initWithActionName:(NSString *)_actionName;
 - (id)initWithBatchActionKey:(NSString *)_key;
 - (void)deactivate;
 - (id)optionValue:(NSString *)optionName inDirection:(TTModeDirection)direction;

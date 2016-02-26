@@ -266,7 +266,7 @@
     [[newRowView animator] setBackgroundColor:NSColorFromRGBAlpha(0x000000, alpha)];
     [NSAnimationContext endGrouping];
     
-    NSLog(@"Highlighting row: %ld (was: %ld)", selectedRow, highlightedRow);
+//    NSLog(@"Highlighting row: %ld (was: %ld)", selectedRow, highlightedRow);
     highlightedRow = selectedRow;
     [tableView setNeedsDisplay:YES];
 }

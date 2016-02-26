@@ -92,6 +92,16 @@
             [quicktimeItem present];
         }
     }
+    
+    if ([vlc isRunning]) {
+        SBElementArray *vlcItems = [vlc windows];
+        NSEnumerator *vlcEnumerator = [vlcItems objectEnumerator];
+        VLCWindow *vlcWindow;
+        while (vlcWindow = [vlcEnumerator nextObject]) {
+            [vlcWindow.document fullscreen];
+            break;
+        }
+    }
 }
 
 - (void)runTTModeVideoVolumeUp {

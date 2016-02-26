@@ -214,7 +214,7 @@
 - (void)maybeFireActiveButton {
     BOOL shouldFireImmediateOnPress = [self shouldFireImmediateOnPress:activeModeDirection];
     if (shouldFireImmediateOnPress && activeModeDirection != NO_DIRECTION) {
-        selectedMode.action = [[TTAction alloc] init];
+        selectedMode.action = [[TTAction alloc] initWithActionName:[selectedMode actionNameInDirection:activeModeDirection]];
         [selectedMode runDirection:activeModeDirection];
     }
 }
@@ -243,7 +243,7 @@
 - (void)runDirection:(TTModeDirection)direction {
     BOOL shouldFireImmediateOnPress = [self shouldFireImmediateOnPress:direction];
     if (!shouldFireImmediateOnPress) {
-        selectedMode.action = [[TTAction alloc] init];
+        selectedMode.action = [[TTAction alloc] initWithActionName:[selectedMode actionNameInDirection:direction]];
         [selectedMode runDirection:direction];
     }
 

@@ -136,6 +136,9 @@
 - (BOOL)runAction:(NSString *)actionName inDirection:(TTModeDirection)direction funcAction:(NSString *)funcAction {
     BOOL success = NO;
     NSLog(@"Running: %d - %@%@", direction, funcAction, actionName);
+    if (!self.action && !self.action.batchActionKey) {
+        self.action = [[TTAction alloc] initWithActionName:actionName];
+    }
     
     // First check for runAction:direction...
     SEL selector = NSSelectorFromString([NSString stringWithFormat:@"%@%@:",
@@ -155,6 +158,10 @@
             func(self, selector);
             success = YES;
         }
+    }
+    
+    if (!self.action.batchActionKey) {
+        self.action = nil;
     }
     
     return success;

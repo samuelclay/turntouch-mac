@@ -186,10 +186,11 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
     PHScene *activeScene;
-    NSString *sceneIdentifier = [appDelegate.modeMap mode:self.action.mode
-                                        actionOptionValue:(doubleTap ? kDoubleTapHueScene : kHueScene)
-                                               actionName:sceneName
-                                              inDirection:direction];
+    NSString *sceneIdentifier = [self.action optionValue:(doubleTap ? kDoubleTapHueScene : kHueScene) inDirection:direction];
+//    NSString *sceneIdentifier = [appDelegate.modeMap mode:self.action.mode
+//                                        actionOptionValue:(doubleTap ? kDoubleTapHueScene : kHueScene)
+//                                               actionName:sceneName
+//                                              inDirection:direction];
 
     NSMutableArray *scenes = [[NSMutableArray alloc] init];
     for (PHScene *scene in cache.scenes.allValues) {
@@ -240,7 +241,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 
 - (void)doubleRunTTModeHueSleep:(TTModeDirection)direction {
     //    NSLog(@"Running scene off... %d", direction);
-    NSNumber *sceneDuration = (NSNumber *)[appDelegate.modeMap mode:self.action.mode actionOptionValue:kHueDoubleTapDuration actionName:@"TTModeHueRandom" inDirection:direction];
+    NSNumber *sceneDuration = (NSNumber *)[appDelegate.modeMap mode:self.action.mode actionOptionValue:kHueDoubleTapDuration actionName:@"TTModeHueSleep" inDirection:direction];
     [self runTTModeHueSleep:direction duration:sceneDuration];
 }
 
@@ -295,20 +296,14 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
     PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
     
-    TTHueRandomColors randomColors = (TTHueRandomColors)[[NSAppDelegate.modeMap
-                                                          mode:self.action.mode
-                                                          actionOptionValue:(doubleTap ? kDoubleTapRandomColors : kRandomColors)
-                                                          actionName:@"TTModeHueRandom"
+    TTHueRandomColors randomColors = (TTHueRandomColors)[[self.action
+                                                          optionValue:(doubleTap ? kDoubleTapRandomColors : kRandomColors)
                                                           inDirection:direction] integerValue];
-    TTHueRandomBrightness randomBrightnesses = (TTHueRandomBrightness)[[NSAppDelegate.modeMap
-                                                                        mode:self.action.mode
-                                                                        actionOptionValue:(doubleTap ? kDoubleTapRandomBrightness : kRandomBrightness)
-                                                                        actionName:@"TTModeHueRandom"
+    TTHueRandomBrightness randomBrightnesses = (TTHueRandomBrightness)[[self.action
+                                                                        optionValue:(doubleTap ? kDoubleTapRandomBrightness : kRandomBrightness)
                                                                         inDirection:direction] integerValue];
-    TTHueRandomSaturation randomSaturation = (TTHueRandomSaturation)[[NSAppDelegate.modeMap
-                                                                      mode:self.action.mode
-                                                                      actionOptionValue:(doubleTap ? kDoubleTapRandomSaturation : kRandomSaturation)
-                                                                      actionName:@"TTModeHueRandom"
+    TTHueRandomSaturation randomSaturation = (TTHueRandomSaturation)[[self.action
+                                                                      optionValue:(doubleTap ? kDoubleTapRandomSaturation : kRandomSaturation)
                                                                       inDirection:direction] integerValue];
     NSNumber *randomColor = [NSNumber numberWithInt:arc4random() % MAX_HUE];
     

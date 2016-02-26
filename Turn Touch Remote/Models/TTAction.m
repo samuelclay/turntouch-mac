@@ -14,6 +14,15 @@
 @synthesize actionName;
 @synthesize batchActionKey;
 
+- (id)initWithActionName:(NSString *)_actionName {
+    if (self = [super init]) {
+        mode = appDelegate.modeMap.selectedMode;
+        actionName = _actionName;
+    }
+    
+    return self;
+}
+
 - (id)initWithBatchActionKey:(NSString *)_key {
     if (self = [super init]) {
         batchActionKey = _key;
@@ -38,7 +47,7 @@
 
 - (id)optionValue:(NSString *)optionName inDirection:(TTModeDirection)direction {
     if (!batchActionKey) {
-        return [NSAppDelegate.modeMap actionOptionValue:optionName inDirection:direction];
+        return [NSAppDelegate.modeMap mode:mode actionOptionValue:optionName actionName:actionName inDirection:direction];
     } else {
         return [NSAppDelegate.modeMap mode:mode
                                batchAction:self

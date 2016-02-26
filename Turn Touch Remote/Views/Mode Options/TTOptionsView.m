@@ -209,7 +209,7 @@
                                                         multiplier:1.0 constant:CORNER_RADIUS]];
     } else {
         actionOptionsViewController.menuType = ACTION_MENU_TYPE;
-        actionOptionsViewController.action = [[TTAction alloc] init];
+        actionOptionsViewController.action = [[TTAction alloc] initWithActionName:actionName];
         actionOptionsViewController.mode = appDelegate.modeMap.selectedMode;
         [actionOptionsViewController.mode setAction:actionOptionsViewController.action];
         actionOptionsViewController.action.mode = appDelegate.modeMap.selectedMode; // To parallel batch actions

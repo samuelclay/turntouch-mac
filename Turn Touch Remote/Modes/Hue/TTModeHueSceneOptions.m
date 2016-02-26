@@ -38,8 +38,8 @@ NSString *const kDoubleTapHueScene = @"doubleTapHueScene";
     [refreshButton setHidden:NO];
     [doubleTapRefreshButton setHidden:NO];
     
-    NSString *sceneSelectedIdentifier = [appDelegate.modeMap actionOptionValue:kHueScene];
-    NSString *doubleTapSceneSelectedIdentifier = [appDelegate.modeMap actionOptionValue:kDoubleTapHueScene];
+    NSString *sceneSelectedIdentifier = [self.action optionValue:kHueScene inDirection:appDelegate.modeMap.inspectingModeDirection];
+    NSString *doubleTapSceneSelectedIdentifier = [self.action optionValue:kDoubleTapHueScene inDirection:appDelegate.modeMap.inspectingModeDirection];
     NSString *sceneSelected;
     NSString *doubleTapSceneSelected;
     
@@ -91,9 +91,9 @@ NSString *const kDoubleTapHueScene = @"doubleTapHueScene";
     }
     
     if (sender == scenePopup) {
-        [appDelegate.modeMap changeActionOption:kHueScene to:sceneIdentifier];
+        [self.action changeActionOption:kHueScene to:sceneIdentifier];
     } else if (sender == doubleTapScenePopup) {
-        [appDelegate.modeMap changeActionOption:kDoubleTapHueScene to:sceneIdentifier];
+        [self.action changeActionOption:kDoubleTapHueScene to:sceneIdentifier];
     }
 }
 
