@@ -34,7 +34,8 @@
              @"TTModeVideoVolumeDown",
              @"TTModeVideoFF",
              @"TTModeVideoRewind",
-             @"TTModeVideoPause"
+             @"TTModeVideoPause",
+             @"TTModeVideoFullScreen",
              ];
 }
 
@@ -47,13 +48,16 @@
     return @"Volume down";
 }
 - (NSString *)titleTTModeVideoFF {
-    return @"Fast Forward";
+    return @"Fast forward";
 }
 - (NSString *)titleTTModeVideoRewind {
     return @"Rewind";
 }
 - (NSString *)titleTTModeVideoPause {
     return @"Play/pause";
+}
+- (NSString *)titleTTModeVideoFullScreen {
+    return @"Full screen";
 }
 
 #pragma mark - Action Images
@@ -73,8 +77,22 @@
 - (NSString *)imageTTModeVideoPause {
     return @"play.png";
 }
+- (NSString *)imageTTModeVideoFullScreen {
+    return @"full_screen.png";
+}
 
 #pragma mark - Action methods
+
+- (void)runTTModeVideoFullScreen {
+    if ([quicktime isRunning]) {
+        SBElementArray *quicktimeItems = [quicktime documents];
+        NSEnumerator *quicktimeEnumerator = [quicktimeItems objectEnumerator];
+        QuicktimeDocument *quicktimeItem;
+        while (quicktimeItem = [quicktimeEnumerator nextObject]) {
+            [quicktimeItem present];
+        }
+    }
+}
 
 - (void)runTTModeVideoVolumeUp {
     [self moveVolume:UP];
@@ -162,7 +180,7 @@
     return @"TTModeVideoPause";
 }
 - (NSString *)defaultWest {
-    return @"TTModeVideoRewind";
+    return @"TTModeVideoFullScreen";
 }
 - (NSString *)defaultSouth {
     return @"TTModeVideoVolumeDown";
