@@ -48,38 +48,46 @@
              @{@"identifier" : @"TTModeWebMenuReturn",
                @"title"      : @"Return",
                @"icon"       : @"double_tap",
+               @"group"      : @"action",
                },
              @{@"identifier" : @"space"},
              @{@"identifier" : @"TTModeWebMenuNextStory",
                @"title"      : @"Next story",
                @"icon"       : @"heart",
+               @"group"      : @"action",
                },
              @{@"identifier" : @"TTModeWebMenuPreviousStory",
                @"title"      : @"Previous story",
                @"icon"       : @"cog",
+               @"group"      : @"action",
                },
              @{@"identifier" : @"space"},
              @{@"identifier" : @"TTModeWebMenuFontSizeUp",
                @"title"      : @"Larger text",
                @"icon"       : @"button_chevron",
+               @"group"      : @"action",
                },
              @{@"identifier" : @"TTModeWebMenuFontSizeDown",
                @"title"      : @"Smaller text",
                @"icon"       : @"button_dash",
+               @"group"      : @"action",
                },
              @{@"identifier" : @"space"},
              @{@"identifier" : @"TTModeWebMenuMarginWider",
                @"title"      : @"Widen margin",
                @"icon"       : @"arrow",
+               @"group"      : @"action",
                },
              @{@"identifier" : @"TTModeWebMenuMarginNarrower",
                @"title"      : @"Narrow margin",
                @"icon"       : @"arrow",
+               @"group"      : @"action",
                },
              @{@"identifier" : @"space"},
              @{@"identifier" : @"TTModeWebMenuClose",
                @"title"      : @"Close Reader",
                @"icon"       : @"button_x",
+               @"group"      : @"action",
                },
              ];
 }
@@ -277,36 +285,36 @@
 
 #pragma mark - Menu Options
 
-- (void)menuTTModeWebMenuReturn {
+- (void)runTTModeWebMenuReturn {
     state = TTModeWebStateBrowser;
     [webWindowController.menuView slideOut];
 }
 
-- (void)menuTTModeWebMenuNextStory {
+- (void)runTTModeWebMenuNextStory {
     
 }
 
-- (void)menuTTModeWebMenuPreviousStory {
+- (void)runTTModeWebMenuPreviousStory {
     [webWindowController.browserView.webView goBack];
 }
 
-- (void)menuTTModeWebMenuFontSizeUp {
+- (void)runTTModeWebMenuFontSizeUp {
     [webWindowController.browserView zoomIn];
 }
 
-- (void)menuTTModeWebMenuFontSizeDown {
+- (void)runTTModeWebMenuFontSizeDown {
     [webWindowController.browserView zoomOut];
 }
 
-- (void)menuTTModeWebMenuMarginWider {
+- (void)runTTModeWebMenuMarginWider {
     [webWindowController.browserView widenMargin];
 }
 
-- (void)menuTTModeWebMenuMarginNarrower {
+- (void)runTTModeWebMenuMarginNarrower {
     [webWindowController.browserView narrowMargin];
 }
 
-- (void)menuTTModeWebMenuClose {
+- (void)runTTModeWebMenuClose {
     if (!closed) {
         closed = YES;
         [self setDisplayAwake:NO];

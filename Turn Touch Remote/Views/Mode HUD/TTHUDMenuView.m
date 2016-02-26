@@ -215,7 +215,7 @@
     
     if (!isSpace) {
         NSDictionary *menuOption = [self.menuOptions objectAtIndex:row];
-        SEL selector = NSSelectorFromString([NSString stringWithFormat:@"menu%@", [menuOption objectForKey:@"identifier"]]);
+        SEL selector = NSSelectorFromString([NSString stringWithFormat:@"run%@", [menuOption objectForKey:@"identifier"]]);
         if ([tableColumn.identifier isEqualToString:@"imageColumn"]) {
             NSImage *icon = [NSImage imageNamed:[menuOption objectForKey:@"icon"]];
             [icon setSize:NSMakeSize(iconSize, iconSize)];
@@ -231,7 +231,8 @@
             }
         }
         if ([appDelegate.modeMap.selectedMode respondsToSelector:selector]) {
-//            [result setTarget:appDelegate.modeMap.selectedMode];
+            [result.textField setTarget:appDelegate.modeMap.selectedMode];
+            [result.imageView setTarget:appDelegate.modeMap.selectedMode];
         } else {
 //            NSLog(@" ***> %@ doesn't respond to menu%@", appDelegate.modeMap.selectedMode, [menuOption objectForKey:@"identifier"]);
         }
