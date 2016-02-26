@@ -25,7 +25,12 @@
     appDelegate = (TTAppDelegate *)[NSApp delegate];
     
     [self setWantsLayer:YES];
-    [self setMaterial:NSVisualEffectMaterialSidebar];
+    NSOperatingSystemVersion version = [[NSProcessInfo processInfo] operatingSystemVersion];
+    if (version.minorVersion <= 10) {
+        [self setMaterial:NSVisualEffectMaterialDark];
+    } else {
+        [self setMaterial:NSVisualEffectMaterialSidebar];
+    }
     [self setBlendingMode:NSVisualEffectBlendingModeBehindWindow];
     [self setState:NSVisualEffectStateActive];
     
@@ -38,6 +43,10 @@
     [offsetConstraint setConstant:self.menuInitialPosition];
     [widthConstraint setConstant:self.menuWidth];
 
+}
+
+- (BOOL)allowsVibrancy {
+    return YES;
 }
 
 - (NSInteger)menuWidth {
@@ -103,7 +112,12 @@
 - (void)changeHighlightedRow:(NSInteger)direction {
     if (![self.menuOptions count]) return;
     
-    NSInteger newRow = [self nextRowInDirection:direction];
+    NSInteger newRow;
+    if (direction == 0) {
+        newRow = 1;
+    } else {
+        newRow = [self nextRowInDirection:direction];
+    }
     [tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:newRow] byExtendingSelection:NO];
 }
 
@@ -141,6 +155,9 @@
         [appDelegate.modeMap setSelectedModeDirection:NO_DIRECTION];
         [appDelegate.modeMap switchMode:[menuOption objectForKey:@"identifier"]];
         [appDelegate.hudController holdToastActiveMode:YES];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self changeHighlightedRow:0];
+        });
     }
 }
 
@@ -194,6 +211,11 @@
             result.imageView.image = icon;
         } else {
             result.textField.stringValue = [menuOption objectForKey:@"title"];
+            if ([NSStringFromClass([appDelegate.modeMap.selectedMode class]) isEqualToString:[menuOption objectForKey:@"identifier"]]) {
+                result.textField.textColor = NSColorFromRGB(0x4685BE);
+            } else {
+                result.textField.textColor = NSColorFromRGB(0xFFFFFF);
+            }
         }
         if ([appDelegate.modeMap.selectedMode respondsToSelector:selector]) {
 //            [result setTarget:appDelegate.modeMap.selectedMode];

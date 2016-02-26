@@ -94,9 +94,11 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
         case CBCentralManagerStateUnknown:
             state = @"Bluetooth in unknown state.";
             break;
+        case CBCentralManagerStateResetting:
+            state = @"Bluetooth in resetting state.";
+            break;
         default:
             state = @"Bluetooth not in any state!";
-            
             break;
     }
     
@@ -254,6 +256,9 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
         [self scanKnown];
     } else {
         [self countDevices];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(30.f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self reconnect];
+        });
     }
 }
 
