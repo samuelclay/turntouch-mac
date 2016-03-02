@@ -21,6 +21,7 @@
         appDelegate = (TTAppDelegate *)[NSApp delegate];
         batchAction = nil;
         mode = _mode;
+        self.translatesAutoresizingMaskIntoConstraints = NO;
         
         [self setupLabels];
     }
@@ -33,6 +34,7 @@
         appDelegate = (TTAppDelegate *)[NSApp delegate];
         batchAction = _batchAction;
         mode = batchAction.mode;
+        self.translatesAutoresizingMaskIntoConstraints = NO;
         
         [self setupLabels];
     }

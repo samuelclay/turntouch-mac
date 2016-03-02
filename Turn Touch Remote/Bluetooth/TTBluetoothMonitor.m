@@ -270,7 +270,8 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 
 - (void) terminate {
     for (TTDevice *device in foundDevices) {
-//        if (!device.peripheral) return;
+        if (!device) return;
+        if (!device.peripheral) return;
         [manager cancelPeripheralConnection:device.peripheral];
         [foundDevices removeDevice:device];
     }
