@@ -19,7 +19,7 @@ typedef enum {
 } TTDeviceState;
 
 @property (nonatomic) NSString *nickname;
-@property (nonatomic) CBUUID *uuid;
+@property (nonatomic) NSString *uuid;
 @property (nonatomic, retain) CBPeripheral *peripheral;
 @property (nonatomic) NSNumber *batteryPct;
 @property (nonatomic) NSDate *lastActionDate;

@@ -17,6 +17,7 @@
 - (id)initWithPeripheral:(CBPeripheral *)peripheral {
     if (self = [super init]) {
         self.peripheral = peripheral;
+        self.uuid = peripheral.identifier.UUIDString;
         
         // Init with latest firmware version, correct later
         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
@@ -27,7 +28,11 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"%@ / %@ (%@)", [self.peripheral.identifier.UUIDString substringToIndex:8], self.nickname, self.isPaired ? @"PAIRED" : @"unpaired"];
+    return [NSString stringWithFormat:@"%@ / %@ (%@-%@)",
+            [self.uuid substringToIndex:8],
+            self.nickname,
+            self.state == TTDeviceStateConnected ? @"connected" : @"X",
+            self.isPaired ? @"PAIRED" : @"unpaired"];
 }
 
 - (void)setNicknameData:(NSData *)nicknameData {

@@ -269,10 +269,23 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 }
 
 - (void) terminate {
+    NSMutableArray *identifiers;
     for (TTDevice *device in foundDevices) {
-        if (!device) return;
-        if (!device.peripheral) return;
-        [manager cancelPeripheralConnection:device.peripheral];
+        NSLog(@"Terminating device: %@", device);
+        if (device.state != TTDeviceStateConnected) continue;
+        [identifiers addObject:device.uuid];
+    }
+
+    if (!identifiers.count) {
+        NSLog(@"No identifiers to terminate...");
+        manager = nil;
+        return;
+    }
+    
+    NSArray *peripherals = [manager retrievePeripheralsWithIdentifiers:identifiers];
+    for (CBPeripheral *peripheral in peripherals) {
+        [manager cancelPeripheralConnection:peripheral];
+        TTDevice *device = [foundDevices deviceForPeripheral:peripheral];
         [foundDevices removeDevice:device];
     }
     manager = nil;
@@ -652,7 +665,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
 //            NSLog(@"Battery level: %d%%", value);
             device.lastActionDate = [NSDate date];
             device.batteryPct = @(value);
-            device.uuid = [CBUUID UUIDWithNSUUID:peripheral.identifier];
+            device.uuid = peripheral.identifier.UUIDString;
             [self setValue:@(value) forKey:@"batteryPct"];
             [self setValue:[NSDate date] forKey:@"lastActionDate"];
         }
@@ -849,7 +862,7 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
     NSMutableData *emptyNickname = [NSMutableData dataWithLength:32];
     NSData *deviceNicknameData = [device.nickname dataUsingEncoding:NSUTF8StringEncoding];
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    NSString *nicknameKey = [NSString stringWithFormat:@"TT:device:%@:nickname", device.uuid.UUIDString];
+    NSString *nicknameKey = [NSString stringWithFormat:@"TT:device:%@:nickname", device.uuid];
     NSString *existingNickname = [[prefs objectForKey:nicknameKey] stringByTrimmingCharactersInSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]];
     
     BOOL hasDeviceNickname = ![deviceNicknameData isEqualToData:emptyNickname] && [device.nickname stringByTrimmingCharactersInSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]].length;
@@ -936,7 +949,7 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
 
     [device setNicknameData:data];
     
-    [prefs setObject:newNickname forKey:[NSString stringWithFormat:@"TT:device:%@:nickname", device.uuid.UUIDString]];
+    [prefs setObject:newNickname forKey:[NSString stringWithFormat:@"TT:device:%@:nickname", device.uuid]];
     [prefs synchronize];
 
     [self countDevices];

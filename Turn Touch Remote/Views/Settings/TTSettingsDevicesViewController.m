@@ -116,7 +116,7 @@
     if (!device.isPaired) {
         // Unpaired
         if ([tableColumn.identifier isEqualToString:@"deviceIdentifier"]) {
-            result.stringValue = device.nickname ? device.nickname : device.uuid ? device.uuid.UUIDString : @"";
+            result.stringValue = device.nickname ? device.nickname : device.uuid ? device.uuid : @"";
         } else if ([tableColumn.identifier isEqualToString:@"batteryLevel"]) {
             result.stringValue = device.batteryPct ? [NSString stringWithFormat:@"%@%%", device.batteryPct] : @"";
         } else if ([tableColumn.identifier isEqualToString:@"firmwareVersion"]) {
@@ -137,7 +137,7 @@
         }
     } else {
         if ([tableColumn.identifier isEqualToString:@"deviceIdentifier"]) {
-            result.stringValue = device.nickname ? device.nickname : device.uuid.UUIDString;
+            result.stringValue = device.nickname ? device.nickname : device.uuid;
             if (device.nickname) {
                 [result setEditable:YES];
             }

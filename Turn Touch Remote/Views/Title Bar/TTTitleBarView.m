@@ -170,7 +170,7 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
         if (device.peripheral.state == CBPeripheralStateDisconnected) continue;
         if (device.state != TTDeviceStateConnected && device.state != TTDeviceStateConnecting) continue;
         if (device.uuid || device.nickname) {
-            menuItem = [[NSMenuItem alloc] initWithTitle:(device.nickname ? device.nickname : device.uuid.UUIDString)
+            menuItem = [[NSMenuItem alloc] initWithTitle:(device.nickname ? device.nickname : device.uuid)
                                                   action:@selector(openDevicesDialog:) keyEquivalent:@""];
             [menuItem setTarget:self];
             [settingsMenu addItem:menuItem];
