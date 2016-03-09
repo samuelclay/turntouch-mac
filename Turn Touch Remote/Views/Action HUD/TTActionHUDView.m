@@ -120,6 +120,14 @@ const CGFloat kActionHUDMarginPct = .6f;
 }
 
 - (void)drawProgressBar:(TTProgressBar *)_progressBar {
+    ActionLayout layout = [mode layoutForAction:actionName];
+    if (layout == ACTION_LAYOUT_TITLE || layout == ACTION_LAYOUT_IMAGE_TITLE) {
+        progressBar.hidden = YES;
+        return;
+    } else if (layout == ACTION_LAYOUT_PROGRESSBAR) {
+        progressBar.hidden = NO;
+    }
+
     NSInteger progress = [mode progressForAction:actionName];
 
     if (progress == -1) {
@@ -131,8 +139,8 @@ const CGFloat kActionHUDMarginPct = .6f;
     
     NSRect actionFrame = [self.class actionFrame];
     NSRect frame = NSInsetRect(actionFrame, 100, 0);
-    frame.size.height = 18;
-    frame.origin.y = frame.origin.y + NSHeight(actionFrame) / 4;
+    frame.size.height = 8;
+    frame.origin.y = frame.origin.y + NSHeight(actionFrame) * 0.3f - NSHeight(frame);
     [progressBar setFrame:frame];
 }
 

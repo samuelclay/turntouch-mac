@@ -12,6 +12,7 @@
 #import "TTActionHUDWindow.h"
 
 @class TTActionHUDView;
+@class TTProgressBar;
 
 @interface TTActionHUDWindowController : NSWindowController <NSWindowDelegate> {
     TTAppDelegate *appDelegate;

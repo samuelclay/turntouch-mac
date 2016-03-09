@@ -161,6 +161,16 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
     return [self progressVolume];
 }
 
+#pragma mark - Layout
+
+- (ActionLayout)layoutTTModeMacVolumeUp {
+    return ACTION_LAYOUT_PROGRESSBAR;
+}
+
+- (ActionLayout)layoutTTModeMacVolumeDown {
+    return ACTION_LAYOUT_PROGRESSBAR;
+}
+
 #pragma mark - Defaults
 
 - (NSString *)defaultNorth {

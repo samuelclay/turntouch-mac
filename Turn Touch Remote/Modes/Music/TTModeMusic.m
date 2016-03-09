@@ -11,7 +11,7 @@
 
 @implementation TTModeMusic
 
-const NSInteger ITUNES_VOLUME_PCT_CHANGE = 8;
+const NSInteger ITUNES_VOLUME_PCT_CHANGE = 6;
 NSString *const kMusicVolumeJump = @"musicVolumeJump";
 
 #pragma mark - Mode
