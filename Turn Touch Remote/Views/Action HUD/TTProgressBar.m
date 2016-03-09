@@ -27,7 +27,7 @@
     [clipPath addClip];
     
     CGFloat alpha = 0.6f;
-    [NSColorFromRGBAlpha(0x606060, alpha) setFill];
+    [NSColorFromRGBAlpha(0x57585F, alpha) setFill];
     NSRectFill(self.bounds);
     [NSGraphicsContext restoreGraphicsState];
     
