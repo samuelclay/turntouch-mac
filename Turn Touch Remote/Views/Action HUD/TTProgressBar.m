@@ -23,7 +23,9 @@
     // Background of progress bar
     [NSGraphicsContext saveGraphicsState];
     NSBezierPath *clipPath = [NSBezierPath bezierPath];
-    [clipPath appendBezierPathWithRoundedRect:self.bounds xRadius:NSHeight(self.bounds)/2 yRadius:NSHeight(self.bounds)/2];
+    [clipPath appendBezierPathWithRoundedRect:self.bounds
+                                      xRadius:NSHeight(self.bounds)/2
+                                      yRadius:NSHeight(self.bounds)/2];
     [clipPath addClip];
     
     CGFloat alpha = 0.6f;
@@ -34,26 +36,20 @@
     
     [NSGraphicsContext saveGraphicsState];
     NSBezierPath *innerClipPath = [NSBezierPath bezierPath];
-    [innerClipPath appendBezierPathWithRoundedRect:NSInsetRect(self.bounds, 0.5f, 0.5f) xRadius:NSHeight(self.bounds)/2 yRadius:NSHeight(self.bounds)/2];
+    [innerClipPath appendBezierPathWithRoundedRect:NSInsetRect(self.bounds, 0.5f, 0.5f)
+                                           xRadius:NSHeight(self.bounds)/2
+                                           yRadius:NSHeight(self.bounds)/2];
     [innerClipPath addClip];
     
     // Progress bar itself
     NSRect rect = NSInsetRect([self bounds], 0.5, 0.5);
     [NSColorFromRGB(0xFFFFFF) set];
-//    if (_progress <= 40)
-//        [[NSColor redColor] set];
-//    else if (_progress <= 60)
-//        [[NSColor yellowColor] set];
-//    else
-//        [[NSColor greenColor] set];
-    
     rect.size.width = floor(rect.size.width * (_progress / 100.0));
     [NSBezierPath fillRect:rect];
 
     // Bars separating progress bar cells
     [NSColorFromRGBAlpha(0x606060, alpha) setFill];
     NSInteger slots = 12;
-    
     for (int i=1; i < slots; i++) {
         NSRect bar = NSMakeRect(i*NSWidth(self.bounds)/slots - 0.5, 0, 0.5, NSHeight(self.bounds));
         NSRectFill(bar);
