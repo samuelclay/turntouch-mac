@@ -16,7 +16,8 @@
 
 typedef enum {
     ACTION_LAYOUT_TITLE = 0,
-    ACTION_LAYOUT_IMAGE_TITLE = 1
+    ACTION_LAYOUT_IMAGE_TITLE = 1,
+    ACTION_LAYOUT_PROGRESSBAR = 2,
 } ActionLayout;
 
 @interface TTMode : NSObject <TTModeProtocol> {

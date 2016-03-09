@@ -163,6 +163,12 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
 - (ActionLayout)layoutTTModeMusicPlayPause {
     return ACTION_LAYOUT_IMAGE_TITLE;
 }
+- (ActionLayout)layoutTTModeMusicVolumeUp {
+    return ACTION_LAYOUT_PROGRESSBAR;
+}
+- (ActionLayout)layoutTTModeMusicVolumeDown {
+    return ACTION_LAYOUT_PROGRESSBAR;
+}
 
 - (NSView *)viewForLayoutTTModeMusicPause:(NSRect)rect {
     iTunesApplication * iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];

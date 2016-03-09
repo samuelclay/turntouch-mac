@@ -119,7 +119,7 @@ const CGFloat kActionHUDMarginPct = .6f;
     return actionFrame;
 }
 
-- (void)drawProgressBar:(NSProgressIndicator *)_progressBar {
+- (void)drawProgressBar:(TTProgressBar *)_progressBar {
     NSInteger progress = [mode progressForAction:actionName];
 
     if (progress == -1) {
@@ -131,7 +131,7 @@ const CGFloat kActionHUDMarginPct = .6f;
     
     NSRect actionFrame = [self.class actionFrame];
     NSRect frame = NSInsetRect(actionFrame, 100, 0);
-    frame.size.height = 8;
+    frame.size.height = 18;
     frame.origin.y = frame.origin.y + NSHeight(actionFrame) / 4;
     [progressBar setFrame:frame];
 }
@@ -139,7 +139,7 @@ const CGFloat kActionHUDMarginPct = .6f;
 - (void)drawImageLayoutView {
     ActionLayout layout = [mode layoutForAction:actionName];
     [imageLayoutView removeFromSuperview];
-    if (layout == ACTION_LAYOUT_TITLE) {
+    if (layout == ACTION_LAYOUT_TITLE || layout == ACTION_LAYOUT_PROGRESSBAR) {
         [imageLayoutView setHidden:YES];
     } else if (layout == ACTION_LAYOUT_IMAGE_TITLE) {
         NSRect frame = [self.class actionFrame];
@@ -159,12 +159,14 @@ const CGFloat kActionHUDMarginPct = .6f;
     if (layout == ACTION_LAYOUT_TITLE) {
         [self drawModeLabel];
         [self drawActionLabel];
-        [self drawProgress];
     } else if (layout == ACTION_LAYOUT_IMAGE_TITLE) {
         [self drawModeLabel];
         [self drawActionLabel];
         [imageLayoutView setHidden:NO];
         [self drawActionLayoutImageTitleBackground];
+    } else if (layout == ACTION_LAYOUT_PROGRESSBAR) {
+        [self drawModeLabel];
+        [self drawProgress];
     }
 }
 

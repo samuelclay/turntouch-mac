@@ -32,4 +32,5 @@
     rect.size.width = floor(rect.size.width * (_progress / 100.0));
     [NSBezierPath fillRect:rect];
 }
+
 @end
