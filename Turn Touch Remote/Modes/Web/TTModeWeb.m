@@ -280,7 +280,7 @@
     SafariTab* currentTab = [safariWindow currentTab];
     
     // https://medium.com/the-development-set/the-reductive-seduction-of-other-people-s-problems-3c07b307732d
-    [webWindowController.browserView loadURL:currentTab.URL withHtml:[self readabilityForUrl:currentTab.URL htmlSource:nil]];
+    [webWindowController.browserView loadURL:currentTab.URL html:[self readabilityForUrl:currentTab.URL htmlSource:nil] title:currentTab.name];
 }
 
 #pragma mark - Menu Options

@@ -63,8 +63,8 @@ void *kContextActivePanel = &kContextActivePanel;
 //    [self.panelController openPanel];
 //    [self showPreferences:@"devices"];
 //    [self.panelController closePanel];
-    [self.hudController toastActiveMode];
-//    [self.hudController toastActiveAction:nil inDirection:EAST];
+//    [self.hudController toastActiveMode];
+    [self.hudController toastActiveAction:nil inDirection:SOUTH];
 //    NSLog(@"%@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
 }
 

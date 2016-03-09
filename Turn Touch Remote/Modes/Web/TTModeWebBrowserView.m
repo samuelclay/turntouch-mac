@@ -35,7 +35,8 @@
     [webView setMainFrameURL:urlString];
 }
 
-- (void)loadURL:(NSString *)urlString withHtml:(NSString *)htmlSource {
+- (void)loadURL:(NSString *)urlString html:(NSString *)htmlSource title:(NSString *)title {
+    NSLog(@"Loading: %@", title);
     [[webView mainFrame] loadHTMLString:htmlSource baseURL:[NSURL URLWithString:urlString]];
 }
 
