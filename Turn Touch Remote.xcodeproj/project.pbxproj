@@ -77,6 +77,10 @@
 		FF1F13631ADC98C400B52A0D /* TTDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1F13621ADC98C400B52A0D /* TTDatePicker.m */; };
 		FF1F13651ADC9DEC00B52A0D /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF1F13641ADC9DEC00B52A0D /* Sparkle.framework */; };
 		FF1F13671ADC9E6F00B52A0D /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = FF1F13641ADC9DEC00B52A0D /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FF2705211C90F88C000BB10F /* modal_ftux_mode.png in Resources */ = {isa = PBXBuildFile; fileRef = FF27051D1C90F88C000BB10F /* modal_ftux_mode.png */; };
+		FF2705221C90F88C000BB10F /* modal_remote_failed.png in Resources */ = {isa = PBXBuildFile; fileRef = FF27051E1C90F88C000BB10F /* modal_remote_failed.png */; };
+		FF2705231C90F88C000BB10F /* modal_remote_hero.png in Resources */ = {isa = PBXBuildFile; fileRef = FF27051F1C90F88C000BB10F /* modal_remote_hero.png */; };
+		FF2705241C90F88C000BB10F /* modal_remote_paired.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2705201C90F88C000BB10F /* modal_remote_paired.png */; };
 		FF27406F1A7C576900C55579 /* itunes_audiobook_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2740681A7C576900C55579 /* itunes_audiobook_icon.png */; };
 		FF2740701A7C576900C55579 /* itunes_genius_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2740691A7C576900C55579 /* itunes_genius_icon.png */; };
 		FF2740711A7C576900C55579 /* itunes_library_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF27406A1A7C576900C55579 /* itunes_library_icon.png */; };
@@ -462,6 +466,10 @@
 		FF1F13611ADC98C400B52A0D /* TTDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTDatePicker.h; sourceTree = "<group>"; };
 		FF1F13621ADC98C400B52A0D /* TTDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTDatePicker.m; sourceTree = "<group>"; };
 		FF1F13641ADC9DEC00B52A0D /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = "Turn Touch Remote/Vendor/Sparkle.framework"; sourceTree = "<group>"; };
+		FF27051D1C90F88C000BB10F /* modal_ftux_mode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_ftux_mode.png; sourceTree = "<group>"; };
+		FF27051E1C90F88C000BB10F /* modal_remote_failed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_remote_failed.png; sourceTree = "<group>"; };
+		FF27051F1C90F88C000BB10F /* modal_remote_hero.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_remote_hero.png; sourceTree = "<group>"; };
+		FF2705201C90F88C000BB10F /* modal_remote_paired.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_remote_paired.png; sourceTree = "<group>"; };
 		FF2740681A7C576900C55579 /* itunes_audiobook_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_audiobook_icon.png; sourceTree = "<group>"; };
 		FF2740691A7C576900C55579 /* itunes_genius_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_genius_icon.png; sourceTree = "<group>"; };
 		FF27406A1A7C576900C55579 /* itunes_library_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_library_icon.png; sourceTree = "<group>"; };
@@ -1090,6 +1098,17 @@
 			path = MLCalendar;
 			sourceTree = "<group>";
 		};
+		FF27051C1C90F88C000BB10F /* modal */ = {
+			isa = PBXGroup;
+			children = (
+				FF27051D1C90F88C000BB10F /* modal_ftux_mode.png */,
+				FF27051E1C90F88C000BB10F /* modal_remote_failed.png */,
+				FF27051F1C90F88C000BB10F /* modal_remote_hero.png */,
+				FF2705201C90F88C000BB10F /* modal_remote_paired.png */,
+			);
+			path = modal;
+			sourceTree = "<group>";
+		};
 		FF2740671A7C576900C55579 /* iTunes */ = {
 			isa = PBXGroup;
 			children = (
@@ -1176,6 +1195,7 @@
 		FF3A9F6217C42B5E00C5C2D5 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FF27051C1C90F88C000BB10F /* modal */,
 				FF61353E1C61CDDC00F431D7 /* actions */,
 				FF01CA2B1C46DCC200F83A73 /* icons */,
 				FF2740671A7C576900C55579 /* iTunes */,
@@ -2065,6 +2085,7 @@
 				FF6135601C61CDDC00F431D7 /* music_volume_down.png in Resources */,
 				FF6135541C61CDDC00F431D7 /* chevron_south.png in Resources */,
 				FF01CA6F1C46DCC200F83A73 /* mode_mac.png in Resources */,
+				FF2705241C90F88C000BB10F /* modal_remote_paired.png in Resources */,
 				FF27407B1A7C5BC200C55579 /* itunes_tv_icon.png in Resources */,
 				FF01CA791C46DCC200F83A73 /* mode_timer.png in Resources */,
 				FF93604C196DF0B600675B7B /* Effra_Rg.ttf in Resources */,
@@ -2131,6 +2152,7 @@
 				FF557AD61C4DBB4A005FB7FD /* TTModeNestAuthViewController.xib in Resources */,
 				FF913D271924366C005C336F /* TTModeAlarmClock.plist in Resources */,
 				FF8A73C81ABA69410023AA53 /* logo_64.png in Resources */,
+				FF2705221C90F88C000BB10F /* modal_remote_failed.png in Resources */,
 				FF27407A1A7C5BC200C55579 /* itunes_movies_icon.png in Resources */,
 				FF6135591C61CDDC00F431D7 /* hue_sunset.png in Resources */,
 				FF2740751A7C576900C55579 /* originals.png in Resources */,
@@ -2148,6 +2170,7 @@
 				FF61355F1C61CDDC00F431D7 /* music_volume.png in Resources */,
 				FF01CA5C1C46DCC200F83A73 /* button_plus.png in Resources */,
 				FF6135531C61CDDC00F431D7 /* chevron_north.png in Resources */,
+				FF2705211C90F88C000BB10F /* modal_ftux_mode.png in Resources */,
 				FF91709B1AF9B19100FAAC88 /* south tone.wav in Resources */,
 				FFB5FF431A6723EA00DF617A /* TTModeHue.plist in Resources */,
 				FF01CA7C1C46DCC200F83A73 /* mode_wemo.png in Resources */,
@@ -2160,6 +2183,7 @@
 				FF61355B1C61CDDC00F431D7 /* music_pause.png in Resources */,
 				FF3641DA1A5F53DC003CC03C /* TTModeHueConnecting.xib in Resources */,
 				FF3641EB1A60BBEE003CC03C /* TTModeHueConnected.xib in Resources */,
+				FF2705231C90F88C000BB10F /* modal_remote_hero.png in Resources */,
 				FF01CA591C46DCC200F83A73 /* app_music.png in Resources */,
 				FF01CA5E1C46DCC200F83A73 /* clock b&w.png in Resources */,
 				FF8A73C91ABA69410023AA53 /* logo_128.png in Resources */,
