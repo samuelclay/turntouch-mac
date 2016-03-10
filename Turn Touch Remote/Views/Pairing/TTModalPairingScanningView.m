@@ -6,6 +6,7 @@
 //  Copyright © 2016 Turn Touch. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "TTModalPairingScanningView.h"
 #import "TTDiamondView.h"
 
@@ -96,8 +97,42 @@
         
         [spinnerScanning setHidden:NO];
         [labelScanning setHidden:NO];
-        [spinnerScanning startAnimation:nil];
-        
+        for (CALayer *layer in [spinnerScanning.layer.sublayers copy]) {
+            [layer removeFromSuperlayer];
+        }
+
+        NSTimeInterval beginTime = CACurrentMediaTime();
+        for (NSInteger i=0; i < 2; i+=1) {
+            CALayer *circle = [CALayer layer];
+            circle.frame = CGRectMake(0, 0, NSWidth(spinnerScanning.frame), NSHeight(spinnerScanning.frame));
+            circle.backgroundColor = NSColorFromRGB(0x0000FF).CGColor;
+            circle.anchorPoint = CGPointMake(0.5, 0.5);
+            circle.opacity = 0.6;
+            circle.cornerRadius = CGRectGetHeight(circle.bounds) * 0.5;
+            circle.transform = CATransform3DMakeScale(0.0, 0.0, 0.0);
+            
+            CAKeyframeAnimation *anim = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+            anim.removedOnCompletion = NO;
+            anim.repeatCount = HUGE_VALF;
+            anim.duration = 2.0;
+            anim.beginTime = beginTime - (1.0 * i);
+            anim.keyTimes = @[@(0.0), @(0.5), @(1.0)];
+            
+            anim.timingFunctions = @[
+                                     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                                     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                                     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]
+                                     ];
+            
+            anim.values = @[
+                            [NSValue valueWithCATransform3D:CATransform3DMakeScale(0.0, 0.0, 0.0)],
+                            [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 0.0)],
+                            [NSValue valueWithCATransform3D:CATransform3DMakeScale(0.0, 0.0, 0.0)]
+                            ];
+            
+            [spinnerScanning.layer addSublayer:circle];
+            [circle addAnimation:anim forKey:@"transform"];
+        }
         [labelScanning setStringValue:@"Scanning for remotes..."];
         
         if (countdownTimer) {
@@ -112,7 +147,6 @@
         
         [spinnerScanning setHidden:NO];
         [labelScanning setHidden:NO];
-        [spinnerScanning startAnimation:nil];
         [labelScanning setStringValue:@"Connecting..."];
     } else if (found && connected) {
         [titleBox setHidden:NO];
@@ -132,7 +166,6 @@
         
         [spinnerScanning setHidden:YES];
         [labelScanning setHidden:YES];
-        [spinnerScanning stopAnimation:nil];
     }
     
 }

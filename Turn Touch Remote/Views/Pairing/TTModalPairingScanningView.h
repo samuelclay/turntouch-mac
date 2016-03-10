@@ -19,7 +19,7 @@
 @property (nonatomic) IBOutlet NSProgressIndicator *countdownIndicator;
 @property (nonatomic) IBOutlet NSView *diamondViewPlaceholder;
 @property (nonatomic) IBOutlet TTDiamondView *diamondView;
-@property (nonatomic) IBOutlet NSProgressIndicator *spinnerScanning;
+@property (nonatomic) IBOutlet NSView *spinnerScanning;
 @property (nonatomic) IBOutlet NSTextField *labelScanning;
 
 

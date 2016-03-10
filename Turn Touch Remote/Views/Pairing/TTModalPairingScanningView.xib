@@ -11,7 +11,7 @@
                 <outlet property="diamondViewPlaceholder" destination="bTv-Bk-WPs" id="Awx-jR-7Za"/>
                 <outlet property="labelPressButtons" destination="A0u-uo-J91" id="tGe-R1-TaC"/>
                 <outlet property="labelScanning" destination="law-WV-8Ej" id="3n3-ku-UCO"/>
-                <outlet property="spinnerScanning" destination="qkJ-7s-oj9" id="JJp-SX-bIY"/>
+                <outlet property="spinnerScanning" destination="qq2-dq-n1R" id="reP-bm-QG8"/>
                 <outlet property="view" destination="c22-O7-iKe" id="eNn-hz-nBX"/>
             </connections>
         </customObject>
@@ -26,52 +26,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="368" height="514"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="A0u-uo-J91">
+                                <rect key="frame" x="83" y="169" width="202" height="21"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Press all four buttons to connect" id="oKU-lv-SE5">
+                                    <font key="font" size="14" name="Effra-Regular"/>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <progressIndicator wantsLayer="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="krw-Pg-8fe">
                                 <rect key="frame" x="48" y="33" width="272" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="272" id="Pww-bZ-ao4"/>
                                 </constraints>
                             </progressIndicator>
-                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="qkJ-7s-oj9">
-                                <rect key="frame" x="10" y="63" width="32" height="32"/>
-                            </progressIndicator>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="law-WV-8Ej">
-                                <rect key="frame" x="48" y="60" width="273" height="39"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Searching for remotes..." id="JE5-1s-GTR">
-                                    <font key="font" size="26" name="Effra-Regular"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <rect key="frame" x="97.5" y="60" width="174" height="24"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Searching for remotes..." id="JE5-1s-GTR">
+                                    <font key="font" size="16" name="Effra-Regular"/>
+                                    <color key="textColor" red="0.65098039215686276" green="0.68235294117647061" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="bTv-Bk-WPs">
-                                <rect key="frame" x="48" y="258" width="272" height="207"/>
+                                <rect key="frame" x="48" y="267" width="272" height="198"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="272" id="gAp-Yq-fe1"/>
                                 </constraints>
                             </customView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EAR-H7-0wQ">
-                                <rect key="frame" x="74" y="183" width="221" height="39"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Turn Touch Remote" id="WPJ-AI-DeI">
-                                    <font key="font" size="26" name="Effra-Regular"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <rect key="frame" x="70" y="198" width="228" height="33"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Pairing your Turn Touch" id="WPJ-AI-DeI">
+                                    <font key="font" size="22" name="Effra-Regular"/>
+                                    <color key="textColor" red="0.40106728457840241" green="0.39912976146449708" blue="0.40300480769230773" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="A0u-uo-J91">
-                                <rect key="frame" x="83.5" y="154" width="202" height="21"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Press all four buttons to connect" id="oKU-lv-SE5">
-                                    <font key="font" size="14" name="Effra-Regular"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="qq2-dq-n1R">
+                                <rect key="frame" x="164" y="106" width="39" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="39" id="4yA-vd-77I"/>
+                                    <constraint firstAttribute="height" constant="39" id="OMa-Zu-jA1"/>
+                                </constraints>
+                            </customView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="law-WV-8Ej" firstAttribute="leading" secondItem="qkJ-7s-oj9" secondAttribute="trailing" constant="8" id="16J-MX-WPF"/>
-                            <constraint firstItem="qkJ-7s-oj9" firstAttribute="centerY" secondItem="law-WV-8Ej" secondAttribute="centerY" id="8Fh-WB-QqB"/>
+                            <constraint firstItem="qq2-dq-n1R" firstAttribute="centerX" secondItem="bRq-bw-YzL" secondAttribute="centerX" id="7Wy-SR-Gq5"/>
                             <constraint firstItem="krw-Pg-8fe" firstAttribute="centerX" secondItem="bRq-bw-YzL" secondAttribute="centerX" id="LGg-3b-d1d"/>
                             <constraint firstItem="A0u-uo-J91" firstAttribute="centerX" secondItem="bRq-bw-YzL" secondAttribute="centerX" id="MsE-Kq-k83"/>
                             <constraint firstItem="bTv-Bk-WPs" firstAttribute="centerX" secondItem="bRq-bw-YzL" secondAttribute="centerX" id="V3G-bA-bho"/>
+                            <constraint firstItem="qq2-dq-n1R" firstAttribute="top" secondItem="A0u-uo-J91" secondAttribute="bottom" constant="24" id="WRw-zK-Tf4"/>
                             <constraint firstItem="A0u-uo-J91" firstAttribute="top" secondItem="EAR-H7-0wQ" secondAttribute="bottom" constant="8" id="cUW-oJ-AoV"/>
                             <constraint firstAttribute="trailing" secondItem="bTv-Bk-WPs" secondAttribute="trailing" constant="48" id="dFE-el-LOf"/>
                             <constraint firstItem="EAR-H7-0wQ" firstAttribute="top" secondItem="bTv-Bk-WPs" secondAttribute="bottom" constant="36" id="gp1-hL-Uae"/>
@@ -79,9 +83,9 @@
                             <constraint firstItem="law-WV-8Ej" firstAttribute="centerX" secondItem="bRq-bw-YzL" secondAttribute="centerX" id="jkN-aN-2G7"/>
                             <constraint firstItem="EAR-H7-0wQ" firstAttribute="centerX" secondItem="bRq-bw-YzL" secondAttribute="centerX" id="jtB-ZE-Fc1"/>
                             <constraint firstItem="krw-Pg-8fe" firstAttribute="top" secondItem="law-WV-8Ej" secondAttribute="bottom" constant="8" id="kW0-GV-Fku"/>
-                            <constraint firstItem="law-WV-8Ej" firstAttribute="top" secondItem="A0u-uo-J91" secondAttribute="bottom" constant="55" id="qvX-tp-tcQ"/>
                             <constraint firstItem="bTv-Bk-WPs" firstAttribute="leading" secondItem="bRq-bw-YzL" secondAttribute="leading" constant="48" id="r6l-Jr-rZf"/>
                             <constraint firstItem="bTv-Bk-WPs" firstAttribute="top" secondItem="bRq-bw-YzL" secondAttribute="top" constant="49" id="tW1-CF-AOs"/>
+                            <constraint firstItem="law-WV-8Ej" firstAttribute="top" secondItem="qq2-dq-n1R" secondAttribute="bottom" constant="22" id="xfU-X2-0se"/>
                         </constraints>
                     </view>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
