@@ -21,6 +21,8 @@
 @property (nonatomic) IBOutlet TTDiamondView *diamondView;
 @property (nonatomic) IBOutlet NSView *spinnerScanning;
 @property (nonatomic) IBOutlet NSTextField *labelScanning;
+@property (nonatomic) IBOutlet NSButton *closeButton;
 
+- (IBAction)closeModal:(id)sender;
 
 @end

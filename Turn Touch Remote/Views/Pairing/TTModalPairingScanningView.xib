@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTModalPairingScanningView">
             <connections>
+                <outlet property="closeButton" destination="hPz-Kw-1aT" id="Ai6-vQ-EF2"/>
                 <outlet property="countdownIndicator" destination="krw-Pg-8fe" id="igv-x7-Koc"/>
                 <outlet property="diamondViewPlaceholder" destination="bTv-Bk-WPs" id="Awx-jR-7Za"/>
                 <outlet property="labelPressButtons" destination="A0u-uo-J91" id="tGe-R1-TaC"/>
@@ -18,16 +19,16 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="c22-O7-iKe">
-            <rect key="frame" x="0.0" y="0.0" width="368" height="514"/>
+            <rect key="frame" x="0.0" y="0.0" width="426" height="514"/>
             <subviews>
                 <box title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Pfw-Cs-VFh">
-                    <rect key="frame" x="0.0" y="0.0" width="368" height="514"/>
+                    <rect key="frame" x="0.0" y="0.0" width="426" height="514"/>
                     <view key="contentView" id="bRq-bw-YzL">
-                        <rect key="frame" x="0.0" y="0.0" width="368" height="514"/>
+                        <rect key="frame" x="0.0" y="0.0" width="426" height="514"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="A0u-uo-J91">
-                                <rect key="frame" x="83" y="169" width="202" height="21"/>
+                                <rect key="frame" x="112" y="169" width="202" height="21"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Press all four buttons to connect" id="oKU-lv-SE5">
                                     <font key="font" size="14" name="Effra-Regular"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -35,27 +36,21 @@
                                 </textFieldCell>
                             </textField>
                             <progressIndicator wantsLayer="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="krw-Pg-8fe">
-                                <rect key="frame" x="48" y="33" width="272" height="20"/>
+                                <rect key="frame" x="77" y="33" width="272" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="272" id="Pww-bZ-ao4"/>
                                 </constraints>
                             </progressIndicator>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="law-WV-8Ej">
-                                <rect key="frame" x="97.5" y="60" width="174" height="24"/>
+                                <rect key="frame" x="126" y="60" width="174" height="24"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Searching for remotes..." id="JE5-1s-GTR">
                                     <font key="font" size="16" name="Effra-Regular"/>
                                     <color key="textColor" red="0.65098039215686276" green="0.68235294117647061" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="bTv-Bk-WPs">
-                                <rect key="frame" x="48" y="267" width="272" height="198"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="272" id="gAp-Yq-fe1"/>
-                                </constraints>
-                            </customView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EAR-H7-0wQ">
-                                <rect key="frame" x="70" y="198" width="228" height="33"/>
+                                <rect key="frame" x="99" y="198" width="228" height="33"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Pairing your Turn Touch" id="WPJ-AI-DeI">
                                     <font key="font" size="22" name="Effra-Regular"/>
                                     <color key="textColor" red="0.40106728457840241" green="0.39912976146449708" blue="0.40300480769230773" alpha="1" colorSpace="calibratedRGB"/>
@@ -63,27 +58,48 @@
                                 </textFieldCell>
                             </textField>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="qq2-dq-n1R">
-                                <rect key="frame" x="164" y="106" width="39" height="39"/>
+                                <rect key="frame" x="193.5" y="106" width="39" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="39" id="4yA-vd-77I"/>
                                     <constraint firstAttribute="height" constant="39" id="OMa-Zu-jA1"/>
                                 </constraints>
                             </customView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hPz-Kw-1aT">
+                                <rect key="frame" x="376" y="464" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="fq5-ia-ktL"/>
+                                    <constraint firstAttribute="width" constant="50" id="xa3-cA-pap"/>
+                                </constraints>
+                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSStopProgressTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="GGc-l0-TYJ">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="closeModal:" target="-2" id="tHA-VC-tEk"/>
+                                </connections>
+                            </button>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="bTv-Bk-WPs">
+                                <rect key="frame" x="77" y="267" width="272" height="198"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="272" id="gAp-Yq-fe1"/>
+                                </constraints>
+                            </customView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="qq2-dq-n1R" firstAttribute="centerX" secondItem="bRq-bw-YzL" secondAttribute="centerX" id="7Wy-SR-Gq5"/>
+                            <constraint firstAttribute="trailing" secondItem="hPz-Kw-1aT" secondAttribute="trailing" id="CzN-sj-BrW"/>
                             <constraint firstItem="krw-Pg-8fe" firstAttribute="centerX" secondItem="bRq-bw-YzL" secondAttribute="centerX" id="LGg-3b-d1d"/>
                             <constraint firstItem="A0u-uo-J91" firstAttribute="centerX" secondItem="bRq-bw-YzL" secondAttribute="centerX" id="MsE-Kq-k83"/>
+                            <constraint firstItem="bTv-Bk-WPs" firstAttribute="centerX" secondItem="bRq-bw-YzL" secondAttribute="centerX" id="TdN-L7-xC4"/>
                             <constraint firstItem="bTv-Bk-WPs" firstAttribute="centerX" secondItem="bRq-bw-YzL" secondAttribute="centerX" id="V3G-bA-bho"/>
+                            <constraint firstItem="hPz-Kw-1aT" firstAttribute="top" secondItem="bRq-bw-YzL" secondAttribute="top" id="VLw-M3-NSg"/>
                             <constraint firstItem="qq2-dq-n1R" firstAttribute="top" secondItem="A0u-uo-J91" secondAttribute="bottom" constant="24" id="WRw-zK-Tf4"/>
                             <constraint firstItem="A0u-uo-J91" firstAttribute="top" secondItem="EAR-H7-0wQ" secondAttribute="bottom" constant="8" id="cUW-oJ-AoV"/>
-                            <constraint firstAttribute="trailing" secondItem="bTv-Bk-WPs" secondAttribute="trailing" constant="48" id="dFE-el-LOf"/>
                             <constraint firstItem="EAR-H7-0wQ" firstAttribute="top" secondItem="bTv-Bk-WPs" secondAttribute="bottom" constant="36" id="gp1-hL-Uae"/>
                             <constraint firstAttribute="bottom" secondItem="krw-Pg-8fe" secondAttribute="bottom" constant="34" id="i3N-gb-B66"/>
                             <constraint firstItem="law-WV-8Ej" firstAttribute="centerX" secondItem="bRq-bw-YzL" secondAttribute="centerX" id="jkN-aN-2G7"/>
                             <constraint firstItem="EAR-H7-0wQ" firstAttribute="centerX" secondItem="bRq-bw-YzL" secondAttribute="centerX" id="jtB-ZE-Fc1"/>
                             <constraint firstItem="krw-Pg-8fe" firstAttribute="top" secondItem="law-WV-8Ej" secondAttribute="bottom" constant="8" id="kW0-GV-Fku"/>
-                            <constraint firstItem="bTv-Bk-WPs" firstAttribute="leading" secondItem="bRq-bw-YzL" secondAttribute="leading" constant="48" id="r6l-Jr-rZf"/>
                             <constraint firstItem="bTv-Bk-WPs" firstAttribute="top" secondItem="bRq-bw-YzL" secondAttribute="top" constant="49" id="tW1-CF-AOs"/>
                             <constraint firstItem="law-WV-8Ej" firstAttribute="top" secondItem="qq2-dq-n1R" secondAttribute="bottom" constant="22" id="xfU-X2-0se"/>
                         </constraints>
@@ -98,7 +114,10 @@
                 <constraint firstAttribute="trailing" secondItem="Pfw-Cs-VFh" secondAttribute="trailing" id="cS7-nM-HbT"/>
                 <constraint firstItem="Pfw-Cs-VFh" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="fC1-NR-ply"/>
             </constraints>
-            <point key="canvasLocation" x="474" y="415"/>
+            <point key="canvasLocation" x="515" y="415"/>
         </customView>
     </objects>
+    <resources>
+        <image name="NSStopProgressTemplate" width="11" height="11"/>
+    </resources>
 </document>

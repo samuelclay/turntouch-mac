@@ -19,6 +19,7 @@
 @synthesize diamondView;
 @synthesize spinnerScanning;
 @synthesize labelScanning;
+@synthesize closeButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:@"TTModalPairingScanningView" bundle:nibBundleOrNil];
@@ -192,6 +193,12 @@
                                                   userInfo:nil repeats:NO];
         [runner addTimer:countdownTimer forMode:NSDefaultRunLoopMode];
     }
+}
+
+#pragma mark - Actions
+
+- (void)closeModal:(id)sender {
+    [appDelegate.panelController.backgroundView switchPanelModel:PANEL_MODAL_APP];
 }
 
 @end
