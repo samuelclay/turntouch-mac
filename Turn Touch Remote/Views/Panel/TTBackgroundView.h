@@ -35,6 +35,14 @@
 @class TTAddActionButtonView;
 @class TTBatchActionStackView;
 
+typedef enum TTPanelModal : NSUInteger {
+    PANEL_MODAL_APP,
+    PANEL_MODAL_FTUX,
+    PANEL_MODAL_PAIRING,
+    PANEL_MODAL_DEVICES,
+    PANEL_MODAL_ABOUT,
+} TTPanelModal;
+
 @interface TTBackgroundView : NSStackView <NSStackViewDelegate> {
     TTAppDelegate *appDelegate;
     NSLayoutConstraint *modeMenuConstraint;
@@ -44,6 +52,8 @@
     NSLayoutConstraint *dfuConstraint;
     NSLayoutConstraint *addActionButtonConstraint;
     NSLayoutConstraint *batchActionsConstraint;
+    TTPanelModal panelModal;
+//    NSArray<NSLayoutConstraint *> *constraints;
 }
 
 @property (nonatomic) IBOutlet TTPanelArrowView *arrowView;

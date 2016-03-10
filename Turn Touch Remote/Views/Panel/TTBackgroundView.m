@@ -70,131 +70,142 @@
         addActionButtonView = [[TTAddActionButtonView alloc] init];
         footerView = [[TTFooterView alloc] init];
         
-        [self setViews:@[arrowView,
-                         titleBarView,
-                         dfuView,
-                         modeTabs,
-                         modeTitle,
-                         modeMenu,
-                         diamondLabels,
-                         actionMenu,
-                         optionsView,
-                         batchActionStackView,
-                         addActionMenu,
-                         addActionButtonView,
-                         footerView] inGravity:NSStackViewGravityTop];
-        
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:arrowView
-                                                              attribute:NSLayoutAttributeTop
-                                                              relatedBy:NSLayoutRelationEqual
-                                                                 toItem:self
-                                                              attribute:NSLayoutAttributeTop
-                                                             multiplier:1.0 constant:0]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:arrowView
-                                                         attribute:NSLayoutAttributeHeight
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:nil
-                                                         attribute:0
-                                                        multiplier:1.0 constant:ARROW_HEIGHT]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:arrowView
-                                                         attribute:NSLayoutAttributeCenterX
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:self
-                                                         attribute:NSLayoutAttributeCenterX
-                                                        multiplier:1.0 constant:0]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:titleBarView
-                                                              attribute:NSLayoutAttributeHeight
-                                                              relatedBy:NSLayoutRelationEqual
-                                                                 toItem:nil
-                                                              attribute:0
-                                                             multiplier:1.0 constant:TITLE_BAR_HEIGHT]];
-        dfuConstraint = [NSLayoutConstraint constraintWithItem:dfuView
-                                                     attribute:NSLayoutAttributeHeight
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:nil
-                                                     attribute:0 multiplier:1.0 constant:0];
-        [self addConstraint:dfuConstraint];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:dfuView
-                                                         attribute:NSLayoutAttributeWidth
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:self
-                                                         attribute:NSLayoutAttributeWidth
-                                                        multiplier:1.0 constant:0]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:modeTabs
-                                                              attribute:NSLayoutAttributeHeight
-                                                              relatedBy:NSLayoutRelationEqual
-                                                                 toItem:nil
-                                                              attribute:0
-                                                             multiplier:1.0 constant:MODE_TABS_HEIGHT]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:modeTitle
-                                                              attribute:NSLayoutAttributeHeight
-                                                              relatedBy:NSLayoutRelationEqual
-                                                                 toItem:nil
-                                                              attribute:0
-                                                             multiplier:1.0 constant:MODE_TITLE_HEIGHT]];
-        modeMenuConstraint = [NSLayoutConstraint constraintWithItem:modeMenu
-                                                          attribute:NSLayoutAttributeHeight
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:nil
-                                                          attribute:0
-                                                         multiplier:1.0 constant:1];
-        [modeMenuConstraint setPriority:NSLayoutPriorityDefaultHigh];
-        [self addConstraint:modeMenuConstraint];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:diamondLabels
-                                                              attribute:NSLayoutAttributeHeight
-                                                              relatedBy:NSLayoutRelationEqual
-                                                                 toItem:nil
-                                                              attribute:0
-                                                             multiplier:0 constant:DIAMOND_LABELS_SIZE]];
-        actionMenuConstraint = [NSLayoutConstraint constraintWithItem:actionMenu
-                                                            attribute:NSLayoutAttributeHeight
-                                                            relatedBy:NSLayoutRelationEqual
-                                                               toItem:nil
-                                                            attribute:0
-                                                           multiplier:1.0 constant:1];
-        [self addConstraint:actionMenuConstraint];
-        optionsConstraint = [NSLayoutConstraint constraintWithItem:optionsView
-                                                         attribute:NSLayoutAttributeHeight
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:optionsView.modeOptionsViewController.view
-                                                         attribute:NSLayoutAttributeHeight
-                                                        multiplier:1.0 constant:0];
-        [self addConstraint:optionsConstraint];
-        addActionMenuConstraint = [NSLayoutConstraint constraintWithItem:addActionMenu
-                                                               attribute:NSLayoutAttributeHeight
-                                                               relatedBy:NSLayoutRelationEqual
-                                                                  toItem:nil
-                                                               attribute:0
-                                                              multiplier:1.0 constant:1.f];
-        [self addConstraint:addActionMenuConstraint];
-        addActionButtonConstraint = [NSLayoutConstraint constraintWithItem:addActionButtonView
-                                                                 attribute:NSLayoutAttributeHeight
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:nil
-                                                                 attribute:0 multiplier:1.0
-                                                                  constant:ADD_ACTION_BUTTON_HEIGHT];
-        [self addConstraint:addActionButtonConstraint];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:footerView
-                                                         attribute:NSLayoutAttributeHeight
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:nil
-                                                         attribute:0
-                                                        multiplier:0 constant:FOOTER_HEIGHT]];
-//        NSLog(@"Init modeOptionsView View height: %.f", NSHeight(optionsView.modeOptionsViewController.view.bounds));
-//        NSLog(@"Init options View height: %.f", NSHeight(optionsView.bounds));
-
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:self
-                                                              attribute:NSLayoutAttributeWidth
-                                                              relatedBy:NSLayoutRelationEqual
-                                                                 toItem:nil
-                                                              attribute:0
-                                                             multiplier:0
-                                                               constant:PANEL_WIDTH]];
-        
+        [self switchPanelModel:PANEL_MODAL_APP];
         [self registerAsObserver];
     }
     
     return self;
+}
+
+- (void)switchPanelModel:(TTPanelModal)_panelModal {
+    panelModal = _panelModal;
+    [self removeConstraints:[self constraints]];
+    if (panelModal == PANEL_MODAL_APP) {
+        [self switchPanelModalApp];
+    }
+}
+
+- (void)switchPanelModalApp {
+    [self setViews:@[arrowView,
+                     titleBarView,
+                     dfuView,
+                     modeTabs,
+                     modeTitle,
+                     modeMenu,
+                     diamondLabels,
+                     actionMenu,
+                     optionsView,
+                     batchActionStackView,
+                     addActionMenu,
+                     addActionButtonView,
+                     footerView] inGravity:NSStackViewGravityTop];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:arrowView
+                                                     attribute:NSLayoutAttributeTop
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeTop
+                                                    multiplier:1.0 constant:0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:arrowView
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:0
+                                                    multiplier:1.0 constant:ARROW_HEIGHT]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:arrowView
+                                                     attribute:NSLayoutAttributeCenterX
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeCenterX
+                                                    multiplier:1.0 constant:0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:titleBarView
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:0
+                                                    multiplier:1.0 constant:TITLE_BAR_HEIGHT]];
+    dfuConstraint = [NSLayoutConstraint constraintWithItem:dfuView
+                                                 attribute:NSLayoutAttributeHeight
+                                                 relatedBy:NSLayoutRelationEqual
+                                                    toItem:nil
+                                                 attribute:0 multiplier:1.0 constant:0];
+    [self addConstraint:dfuConstraint];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:dfuView
+                                                     attribute:NSLayoutAttributeWidth
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeWidth
+                                                    multiplier:1.0 constant:0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:modeTabs
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:0
+                                                    multiplier:1.0 constant:MODE_TABS_HEIGHT]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:modeTitle
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:0
+                                                    multiplier:1.0 constant:MODE_TITLE_HEIGHT]];
+    modeMenuConstraint = [NSLayoutConstraint constraintWithItem:modeMenu
+                                                      attribute:NSLayoutAttributeHeight
+                                                      relatedBy:NSLayoutRelationEqual
+                                                         toItem:nil
+                                                      attribute:0
+                                                     multiplier:1.0 constant:1];
+    [modeMenuConstraint setPriority:NSLayoutPriorityDefaultHigh];
+    [self addConstraint:modeMenuConstraint];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:diamondLabels
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:0
+                                                    multiplier:0 constant:DIAMOND_LABELS_SIZE]];
+    actionMenuConstraint = [NSLayoutConstraint constraintWithItem:actionMenu
+                                                        attribute:NSLayoutAttributeHeight
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:nil
+                                                        attribute:0
+                                                       multiplier:1.0 constant:1];
+    [self addConstraint:actionMenuConstraint];
+    optionsConstraint = [NSLayoutConstraint constraintWithItem:optionsView
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:optionsView.modeOptionsViewController.view
+                                                     attribute:NSLayoutAttributeHeight
+                                                    multiplier:1.0 constant:0];
+    [self addConstraint:optionsConstraint];
+    addActionMenuConstraint = [NSLayoutConstraint constraintWithItem:addActionMenu
+                                                           attribute:NSLayoutAttributeHeight
+                                                           relatedBy:NSLayoutRelationEqual
+                                                              toItem:nil
+                                                           attribute:0
+                                                          multiplier:1.0 constant:1.f];
+    [self addConstraint:addActionMenuConstraint];
+    addActionButtonConstraint = [NSLayoutConstraint constraintWithItem:addActionButtonView
+                                                             attribute:NSLayoutAttributeHeight
+                                                             relatedBy:NSLayoutRelationEqual
+                                                                toItem:nil
+                                                             attribute:0 multiplier:1.0
+                                                              constant:ADD_ACTION_BUTTON_HEIGHT];
+    [self addConstraint:addActionButtonConstraint];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:footerView
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:0
+                                                    multiplier:0 constant:FOOTER_HEIGHT]];
+    //        NSLog(@"Init modeOptionsView View height: %.f", NSHeight(optionsView.modeOptionsViewController.view.bounds));
+    //        NSLog(@"Init options View height: %.f", NSHeight(optionsView.bounds));
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self
+                                                     attribute:NSLayoutAttributeWidth
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:0
+                                                    multiplier:0
+                                                      constant:PANEL_WIDTH]];
 }
 
 - (void)updateConstraints {
