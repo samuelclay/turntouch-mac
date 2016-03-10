@@ -41,6 +41,7 @@
 @synthesize batchActionStackView;
 @synthesize addActionButtonView;
 @synthesize footerView;
+@synthesize modalPairingScanningView;
 
 #pragma mark -
 
@@ -82,6 +83,8 @@
     [self removeConstraints:[self constraints]];
     if (panelModal == PANEL_MODAL_APP) {
         [self switchPanelModalApp];
+    } else if (panelModal == PANEL_MODAL_PAIRING) {
+        [self switchPanelModalPairing];
     }
 }
 
@@ -206,6 +209,52 @@
                                                      attribute:0
                                                     multiplier:0
                                                       constant:PANEL_WIDTH]];
+}
+
+- (void)switchPanelModalPairing {
+    modalPairingScanningView = [[TTModalPairingScanningView alloc] init];
+    [self setViews:@[arrowView,
+                     titleBarView,
+                     modalPairingScanningView.view,
+                     footerView]
+         inGravity:NSStackViewGravityTop];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:arrowView
+                                                     attribute:NSLayoutAttributeTop
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeTop
+                                                    multiplier:1.0 constant:0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:arrowView
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:0
+                                                    multiplier:1.0 constant:ARROW_HEIGHT]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:arrowView
+                                                     attribute:NSLayoutAttributeCenterX
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeCenterX
+                                                    multiplier:1.0 constant:0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:titleBarView
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:0
+                                                    multiplier:1.0 constant:TITLE_BAR_HEIGHT]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:modalPairingScanningView.view
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:0
+                                                    multiplier:1.0 constant:400]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:footerView
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:0
+                                                    multiplier:0 constant:FOOTER_HEIGHT]];
 }
 
 - (void)updateConstraints {

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="TTModalPairingScanningView">
+            <connections>
+                <outlet property="countdownIndicator" destination="krw-Pg-8fe" id="igv-x7-Koc"/>
+                <outlet property="diamondViewPlaceholder" destination="bTv-Bk-WPs" id="Awx-jR-7Za"/>
+                <outlet property="labelPressButtons" destination="A0u-uo-J91" id="tGe-R1-TaC"/>
+                <outlet property="labelScanning" destination="law-WV-8Ej" id="3n3-ku-UCO"/>
+                <outlet property="spinnerScanning" destination="qkJ-7s-oj9" id="JJp-SX-bIY"/>
+                <outlet property="view" destination="c22-O7-iKe" id="eNn-hz-nBX"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView translatesAutoresizingMaskIntoConstraints="NO" id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="368" height="514"/>
+            <subviews>
+                <box title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Pfw-Cs-VFh">
+                    <rect key="frame" x="0.0" y="0.0" width="368" height="514"/>
+                    <view key="contentView" id="bRq-bw-YzL">
+                        <rect key="frame" x="0.0" y="0.0" width="368" height="514"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <progressIndicator wantsLayer="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="krw-Pg-8fe">
+                                <rect key="frame" x="48" y="33" width="272" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="272" id="Pww-bZ-ao4"/>
+                                </constraints>
+                            </progressIndicator>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="qkJ-7s-oj9">
+                                <rect key="frame" x="10" y="63" width="32" height="32"/>
+                            </progressIndicator>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="law-WV-8Ej">
+                                <rect key="frame" x="48" y="60" width="273" height="39"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Searching for remotes..." id="JE5-1s-GTR">
+                                    <font key="font" size="26" name="Effra-Regular"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="bTv-Bk-WPs">
+                                <rect key="frame" x="48" y="258" width="272" height="207"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="272" id="gAp-Yq-fe1"/>
+                                </constraints>
+                            </customView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EAR-H7-0wQ">
+                                <rect key="frame" x="74" y="183" width="221" height="39"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Turn Touch Remote" id="WPJ-AI-DeI">
+                                    <font key="font" size="26" name="Effra-Regular"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="A0u-uo-J91">
+                                <rect key="frame" x="83.5" y="154" width="202" height="21"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Press all four buttons to connect" id="oKU-lv-SE5">
+                                    <font key="font" size="14" name="Effra-Regular"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="law-WV-8Ej" firstAttribute="leading" secondItem="qkJ-7s-oj9" secondAttribute="trailing" constant="8" id="16J-MX-WPF"/>
+                            <constraint firstItem="qkJ-7s-oj9" firstAttribute="centerY" secondItem="law-WV-8Ej" secondAttribute="centerY" id="8Fh-WB-QqB"/>
+                            <constraint firstItem="krw-Pg-8fe" firstAttribute="centerX" secondItem="bRq-bw-YzL" secondAttribute="centerX" id="LGg-3b-d1d"/>
+                            <constraint firstItem="A0u-uo-J91" firstAttribute="centerX" secondItem="bRq-bw-YzL" secondAttribute="centerX" id="MsE-Kq-k83"/>
+                            <constraint firstItem="bTv-Bk-WPs" firstAttribute="centerX" secondItem="bRq-bw-YzL" secondAttribute="centerX" id="V3G-bA-bho"/>
+                            <constraint firstItem="A0u-uo-J91" firstAttribute="top" secondItem="EAR-H7-0wQ" secondAttribute="bottom" constant="8" id="cUW-oJ-AoV"/>
+                            <constraint firstAttribute="trailing" secondItem="bTv-Bk-WPs" secondAttribute="trailing" constant="48" id="dFE-el-LOf"/>
+                            <constraint firstItem="EAR-H7-0wQ" firstAttribute="top" secondItem="bTv-Bk-WPs" secondAttribute="bottom" constant="36" id="gp1-hL-Uae"/>
+                            <constraint firstAttribute="bottom" secondItem="krw-Pg-8fe" secondAttribute="bottom" constant="34" id="i3N-gb-B66"/>
+                            <constraint firstItem="law-WV-8Ej" firstAttribute="centerX" secondItem="bRq-bw-YzL" secondAttribute="centerX" id="jkN-aN-2G7"/>
+                            <constraint firstItem="EAR-H7-0wQ" firstAttribute="centerX" secondItem="bRq-bw-YzL" secondAttribute="centerX" id="jtB-ZE-Fc1"/>
+                            <constraint firstItem="krw-Pg-8fe" firstAttribute="top" secondItem="law-WV-8Ej" secondAttribute="bottom" constant="8" id="kW0-GV-Fku"/>
+                            <constraint firstItem="law-WV-8Ej" firstAttribute="top" secondItem="A0u-uo-J91" secondAttribute="bottom" constant="55" id="qvX-tp-tcQ"/>
+                            <constraint firstItem="bTv-Bk-WPs" firstAttribute="leading" secondItem="bRq-bw-YzL" secondAttribute="leading" constant="48" id="r6l-Jr-rZf"/>
+                            <constraint firstItem="bTv-Bk-WPs" firstAttribute="top" secondItem="bRq-bw-YzL" secondAttribute="top" constant="49" id="tW1-CF-AOs"/>
+                        </constraints>
+                    </view>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" red="0.94901960784313721" green="0.95686274509803926" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                </box>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Pfw-Cs-VFh" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="OVY-9U-Q5A"/>
+                <constraint firstAttribute="bottom" secondItem="Pfw-Cs-VFh" secondAttribute="bottom" id="TfE-Os-8Jg"/>
+                <constraint firstAttribute="trailing" secondItem="Pfw-Cs-VFh" secondAttribute="trailing" id="cS7-nM-HbT"/>
+                <constraint firstItem="Pfw-Cs-VFh" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="fC1-NR-ply"/>
+            </constraints>
+            <point key="canvasLocation" x="474" y="415"/>
+        </customView>
+    </objects>
+</document>

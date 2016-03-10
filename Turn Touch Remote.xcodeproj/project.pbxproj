@@ -81,6 +81,9 @@
 		FF2705221C90F88C000BB10F /* modal_remote_failed.png in Resources */ = {isa = PBXBuildFile; fileRef = FF27051E1C90F88C000BB10F /* modal_remote_failed.png */; };
 		FF2705231C90F88C000BB10F /* modal_remote_hero.png in Resources */ = {isa = PBXBuildFile; fileRef = FF27051F1C90F88C000BB10F /* modal_remote_hero.png */; };
 		FF2705241C90F88C000BB10F /* modal_remote_paired.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2705201C90F88C000BB10F /* modal_remote_paired.png */; };
+		FF2705291C90FAE7000BB10F /* TTModalPairingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2705281C90FAE7000BB10F /* TTModalPairingViewController.m */; };
+		FF27052D1C90FB3B000BB10F /* TTModalPairingScanningView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF27052C1C90FB3B000BB10F /* TTModalPairingScanningView.m */; };
+		FF27052F1C90FB68000BB10F /* TTModalPairingScanningView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF27052E1C90FB68000BB10F /* TTModalPairingScanningView.xib */; };
 		FF27406F1A7C576900C55579 /* itunes_audiobook_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2740681A7C576900C55579 /* itunes_audiobook_icon.png */; };
 		FF2740701A7C576900C55579 /* itunes_genius_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2740691A7C576900C55579 /* itunes_genius_icon.png */; };
 		FF2740711A7C576900C55579 /* itunes_library_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF27406A1A7C576900C55579 /* itunes_library_icon.png */; };
@@ -470,6 +473,11 @@
 		FF27051E1C90F88C000BB10F /* modal_remote_failed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_remote_failed.png; sourceTree = "<group>"; };
 		FF27051F1C90F88C000BB10F /* modal_remote_hero.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_remote_hero.png; sourceTree = "<group>"; };
 		FF2705201C90F88C000BB10F /* modal_remote_paired.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_remote_paired.png; sourceTree = "<group>"; };
+		FF2705271C90FAE7000BB10F /* TTModalPairingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModalPairingViewController.h; path = Views/Pairing/TTModalPairingViewController.h; sourceTree = "<group>"; };
+		FF2705281C90FAE7000BB10F /* TTModalPairingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModalPairingViewController.m; path = Views/Pairing/TTModalPairingViewController.m; sourceTree = "<group>"; };
+		FF27052B1C90FB3B000BB10F /* TTModalPairingScanningView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModalPairingScanningView.h; path = Views/Pairing/TTModalPairingScanningView.h; sourceTree = "<group>"; };
+		FF27052C1C90FB3B000BB10F /* TTModalPairingScanningView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModalPairingScanningView.m; path = Views/Pairing/TTModalPairingScanningView.m; sourceTree = "<group>"; };
+		FF27052E1C90FB68000BB10F /* TTModalPairingScanningView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModalPairingScanningView.xib; path = Views/Pairing/TTModalPairingScanningView.xib; sourceTree = "<group>"; };
 		FF2740681A7C576900C55579 /* itunes_audiobook_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_audiobook_icon.png; sourceTree = "<group>"; };
 		FF2740691A7C576900C55579 /* itunes_genius_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_genius_icon.png; sourceTree = "<group>"; };
 		FF27406A1A7C576900C55579 /* itunes_library_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_library_icon.png; sourceTree = "<group>"; };
@@ -1109,6 +1117,18 @@
 			path = modal;
 			sourceTree = "<group>";
 		};
+		FF27052A1C90FAED000BB10F /* Modal: Pairing */ = {
+			isa = PBXGroup;
+			children = (
+				FF2705271C90FAE7000BB10F /* TTModalPairingViewController.h */,
+				FF2705281C90FAE7000BB10F /* TTModalPairingViewController.m */,
+				FF27052B1C90FB3B000BB10F /* TTModalPairingScanningView.h */,
+				FF27052C1C90FB3B000BB10F /* TTModalPairingScanningView.m */,
+				FF27052E1C90FB68000BB10F /* TTModalPairingScanningView.xib */,
+			);
+			name = "Modal: Pairing";
+			sourceTree = "<group>";
+		};
 		FF2740671A7C576900C55579 /* iTunes */ = {
 			isa = PBXGroup;
 			children = (
@@ -1350,6 +1370,7 @@
 				FF5295DC1AD610C4007DDC02 /* Settings */,
 				FF904BA81BEBFCE700AD00F3 /* DFU */,
 				FFABAB7E1C2777B400AD5620 /* Batch Actions */,
+				FF27052A1C90FAED000BB10F /* Modal: Pairing */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -2211,6 +2232,7 @@
 				FF01CA741C46DCC200F83A73 /* mode_news.png in Resources */,
 				FF61355E1C61CDDC00F431D7 /* music_rewind.png in Resources */,
 				FF01CA651C46DCC200F83A73 /* heart.png in Resources */,
+				FF27052F1C90FB68000BB10F /* TTModalPairingScanningView.xib in Resources */,
 				FF2740701A7C576900C55579 /* itunes_genius_icon.png in Resources */,
 				FF01CA621C46DCC200F83A73 /* equalizer-1.png in Resources */,
 				FF01CA5D1C46DCC200F83A73 /* button_x.png in Resources */,
@@ -2302,7 +2324,9 @@
 				FF98A2E71867DBE70032CC7A /* TTMenubarController.m in Sources */,
 				FF557AB71C49C63D005FB7FD /* NestThermostatManager.m in Sources */,
 				FF557ADA1C4ED8A0005FB7FD /* TTModeNestConnect.m in Sources */,
+				FF27052D1C90FB3B000BB10F /* TTModalPairingScanningView.m in Sources */,
 				FFABABA51C3495E500AD5620 /* TTModeWebBackgroundView.m in Sources */,
+				FF2705291C90FAE7000BB10F /* TTModalPairingViewController.m in Sources */,
 				FF80131A186CF8FF00955218 /* TTDiamondView.m in Sources */,
 				FFAA4F72182D9A5F0049FFC7 /* TTModeNews.m in Sources */,
 				FF1F13631ADC98C400B52A0D /* TTDatePicker.m in Sources */,
