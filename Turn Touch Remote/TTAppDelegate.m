@@ -57,14 +57,14 @@ void *kContextActivePanel = &kContextActivePanel;
     
     
     // Useful for debugging:
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [self togglePanel:nil];
-//    });
-//    [self.panelController openPanel];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self togglePanel:nil];
+    });
+    [self.panelController openPanel];
 //    [self showPreferences:@"devices"];
 //    [self.panelController closePanel];
 //    [self.hudController toastActiveMode];
-    [self.hudController toastActiveAction:nil inDirection:SOUTH];
+//    [self.hudController toastActiveAction:nil inDirection:SOUTH];
 //    NSLog(@"%@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
 }
 

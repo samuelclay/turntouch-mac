@@ -96,6 +96,7 @@ const NSInteger BATCH_ACTION_HEADER_HEIGHT = 36;
         } else {
             actionOptionsViewController.menuType = ADD_ACTION_MENU_TYPE; // I apologize for re-using this enum
             actionOptionsViewController.action = batchAction;
+            actionOptionsViewController.mode = batchAction.mode;
             [views addObject:actionOptionsViewController.view];
             [actionOptionsViewControllers addObject:actionOptionsViewController]; // Cache so it doesn't lose reference in xib
         }

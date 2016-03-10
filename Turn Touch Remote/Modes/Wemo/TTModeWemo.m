@@ -141,7 +141,7 @@ NSString *const kWemoDeviceLocation = @"wemoDeviceLocation";
     TTModeWemoDevice *device;
     NSString *deviceLocation = [self.action optionValue:kWemoDeviceLocation inDirection:direction];
     for (TTModeWemoDevice *foundDevice in [self sharedFoundDevices]) {
-        if (foundDevice.location == deviceLocation) {
+        if ([foundDevice.location isEqualToString:deviceLocation]) {
             device = foundDevice;
             break;
         }
