@@ -111,6 +111,7 @@
         if (device.peripheral.state == CBPeripheralStateConnected &&
             (device.state == TTDeviceStateConnected || device.state == TTDeviceStateConnecting)) {
             [updatedConnectedDevices addObject:device];
+            device.isPaired = [self isDevicePaired:device];
         } else {
             [device.peripheral setDelegate:nil];
             device.peripheral = nil;

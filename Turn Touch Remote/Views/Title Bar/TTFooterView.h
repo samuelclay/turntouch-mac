@@ -10,4 +10,6 @@
 
 @interface TTFooterView : NSView
 
+@property (nonatomic) NSColor *backgroundColor;
+
 @end

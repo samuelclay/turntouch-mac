@@ -42,6 +42,7 @@
 @synthesize addActionButtonView;
 @synthesize footerView;
 @synthesize modalPairingScanningView;
+@synthesize modalBarButton;
 
 #pragma mark -
 
@@ -213,10 +214,12 @@
 
 - (void)switchPanelModalPairing {
     modalPairingScanningView = [[TTModalPairingScanningView alloc] init];
+    modalBarButton = [[TTModalBarButton alloc] init];
+    
     [self setViews:@[arrowView,
                      titleBarView,
                      modalPairingScanningView.view,
-                     footerView]
+                     modalBarButton]
          inGravity:NSStackViewGravityTop];
     
     [self addConstraint:[NSLayoutConstraint constraintWithItem:arrowView
@@ -248,13 +251,13 @@
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:nil
                                                      attribute:0
-                                                    multiplier:1.0 constant:400]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:footerView
+                                                    multiplier:1.0 constant:524]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:modalBarButton
                                                      attribute:NSLayoutAttributeHeight
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:nil
                                                      attribute:0
-                                                    multiplier:0 constant:FOOTER_HEIGHT]];
+                                                    multiplier:0 constant:84]];
 }
 
 - (void)updateConstraints {

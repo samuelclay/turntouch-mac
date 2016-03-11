@@ -13,9 +13,12 @@
 
 @implementation TTFooterView
 
+@synthesize backgroundColor;
+
 - (instancetype)init {
     if (self = [super init]) {
         self.translatesAutoresizingMaskIntoConstraints = NO;
+        backgroundColor = NSColorFromRGB(0xFFFFFF);
     }
 
     return self;
@@ -23,7 +26,7 @@
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
-    
+
     [self drawBackground];
 }
 
@@ -50,8 +53,8 @@
     [path closePath];
     
     NSGradient* aGradient = [[NSGradient alloc]
-                             initWithStartingColor:NSColorFromRGB(0xFFFFFF)
-                             endingColor:NSColorFromRGB(0xFFFFFF)];
+                             initWithStartingColor:backgroundColor
+                             endingColor:backgroundColor];
     [aGradient drawInBezierPath:path angle:-90];
     
     [NSGraphicsContext saveGraphicsState];

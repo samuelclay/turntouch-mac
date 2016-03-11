@@ -81,9 +81,10 @@
 		FF2705221C90F88C000BB10F /* modal_remote_failed.png in Resources */ = {isa = PBXBuildFile; fileRef = FF27051E1C90F88C000BB10F /* modal_remote_failed.png */; };
 		FF2705231C90F88C000BB10F /* modal_remote_hero.png in Resources */ = {isa = PBXBuildFile; fileRef = FF27051F1C90F88C000BB10F /* modal_remote_hero.png */; };
 		FF2705241C90F88C000BB10F /* modal_remote_paired.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2705201C90F88C000BB10F /* modal_remote_paired.png */; };
-		FF2705291C90FAE7000BB10F /* TTModalPairingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2705281C90FAE7000BB10F /* TTModalPairingViewController.m */; };
 		FF27052D1C90FB3B000BB10F /* TTModalPairingScanningView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF27052C1C90FB3B000BB10F /* TTModalPairingScanningView.m */; };
 		FF27052F1C90FB68000BB10F /* TTModalPairingScanningView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF27052E1C90FB68000BB10F /* TTModalPairingScanningView.xib */; };
+		FF2705331C9247A8000BB10F /* TTModalBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2705311C9247A8000BB10F /* TTModalBarButton.m */; };
+		FF2705361C9248F0000BB10F /* modal_bar_button_chevron.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2705351C9248F0000BB10F /* modal_bar_button_chevron.png */; };
 		FF27406F1A7C576900C55579 /* itunes_audiobook_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2740681A7C576900C55579 /* itunes_audiobook_icon.png */; };
 		FF2740701A7C576900C55579 /* itunes_genius_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2740691A7C576900C55579 /* itunes_genius_icon.png */; };
 		FF2740711A7C576900C55579 /* itunes_library_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF27406A1A7C576900C55579 /* itunes_library_icon.png */; };
@@ -473,11 +474,12 @@
 		FF27051E1C90F88C000BB10F /* modal_remote_failed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_remote_failed.png; sourceTree = "<group>"; };
 		FF27051F1C90F88C000BB10F /* modal_remote_hero.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_remote_hero.png; sourceTree = "<group>"; };
 		FF2705201C90F88C000BB10F /* modal_remote_paired.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_remote_paired.png; sourceTree = "<group>"; };
-		FF2705271C90FAE7000BB10F /* TTModalPairingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModalPairingViewController.h; path = Views/Pairing/TTModalPairingViewController.h; sourceTree = "<group>"; };
-		FF2705281C90FAE7000BB10F /* TTModalPairingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModalPairingViewController.m; path = Views/Pairing/TTModalPairingViewController.m; sourceTree = "<group>"; };
 		FF27052B1C90FB3B000BB10F /* TTModalPairingScanningView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModalPairingScanningView.h; path = Views/Pairing/TTModalPairingScanningView.h; sourceTree = "<group>"; };
 		FF27052C1C90FB3B000BB10F /* TTModalPairingScanningView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModalPairingScanningView.m; path = Views/Pairing/TTModalPairingScanningView.m; sourceTree = "<group>"; };
 		FF27052E1C90FB68000BB10F /* TTModalPairingScanningView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModalPairingScanningView.xib; path = Views/Pairing/TTModalPairingScanningView.xib; sourceTree = "<group>"; };
+		FF2705301C9247A8000BB10F /* TTModalBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModalBarButton.h; path = Views/Pairing/TTModalBarButton.h; sourceTree = "<group>"; };
+		FF2705311C9247A8000BB10F /* TTModalBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModalBarButton.m; path = Views/Pairing/TTModalBarButton.m; sourceTree = "<group>"; };
+		FF2705351C9248F0000BB10F /* modal_bar_button_chevron.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_bar_button_chevron.png; sourceTree = "<group>"; };
 		FF2740681A7C576900C55579 /* itunes_audiobook_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_audiobook_icon.png; sourceTree = "<group>"; };
 		FF2740691A7C576900C55579 /* itunes_genius_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_genius_icon.png; sourceTree = "<group>"; };
 		FF27406A1A7C576900C55579 /* itunes_library_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_library_icon.png; sourceTree = "<group>"; };
@@ -1113,6 +1115,7 @@
 				FF27051E1C90F88C000BB10F /* modal_remote_failed.png */,
 				FF27051F1C90F88C000BB10F /* modal_remote_hero.png */,
 				FF2705201C90F88C000BB10F /* modal_remote_paired.png */,
+				FF2705351C9248F0000BB10F /* modal_bar_button_chevron.png */,
 			);
 			path = modal;
 			sourceTree = "<group>";
@@ -1120,11 +1123,11 @@
 		FF27052A1C90FAED000BB10F /* Modal: Pairing */ = {
 			isa = PBXGroup;
 			children = (
-				FF2705271C90FAE7000BB10F /* TTModalPairingViewController.h */,
-				FF2705281C90FAE7000BB10F /* TTModalPairingViewController.m */,
 				FF27052B1C90FB3B000BB10F /* TTModalPairingScanningView.h */,
 				FF27052C1C90FB3B000BB10F /* TTModalPairingScanningView.m */,
 				FF27052E1C90FB68000BB10F /* TTModalPairingScanningView.xib */,
+				FF2705301C9247A8000BB10F /* TTModalBarButton.h */,
+				FF2705311C9247A8000BB10F /* TTModalBarButton.m */,
 			);
 			name = "Modal: Pairing";
 			sourceTree = "<group>";
@@ -2148,6 +2151,7 @@
 				FF5295C11AD4D2BE007DDC02 /* title@2x.png in Resources */,
 				FF2740721A7C576900C55579 /* itunes_playlist_icon.png in Resources */,
 				FF2C2E4A1C53077300FAD7E2 /* Info.plist in Resources */,
+				FF2705361C9248F0000BB10F /* modal_bar_button_chevron.png in Resources */,
 				FF8A73CA1ABA69410023AA53 /* logo_256.png in Resources */,
 				FF01CA761C46DCC200F83A73 /* mode_presentation.png in Resources */,
 				FF52960F1AD631D1007DDC02 /* TTSettingsDevicesViewController.xib in Resources */,
@@ -2326,7 +2330,6 @@
 				FF557ADA1C4ED8A0005FB7FD /* TTModeNestConnect.m in Sources */,
 				FF27052D1C90FB3B000BB10F /* TTModalPairingScanningView.m in Sources */,
 				FFABABA51C3495E500AD5620 /* TTModeWebBackgroundView.m in Sources */,
-				FF2705291C90FAE7000BB10F /* TTModalPairingViewController.m in Sources */,
 				FF80131A186CF8FF00955218 /* TTDiamondView.m in Sources */,
 				FFAA4F72182D9A5F0049FFC7 /* TTModeNews.m in Sources */,
 				FF1F13631ADC98C400B52A0D /* TTDatePicker.m in Sources */,
@@ -2406,6 +2409,7 @@
 				FF6135351C5AF59D00F431D7 /* TTHUDMenuView.m in Sources */,
 				FF98A2ED1867DC320032CC7A /* main.m in Sources */,
 				FF5296181AD63425007DDC02 /* TTSettingsAboutViewController.m in Sources */,
+				FF2705331C9247A8000BB10F /* TTModalBarButton.m in Sources */,
 				FF2C2E501C544A5300FAD7E2 /* TTModeWemoDevice.m in Sources */,
 				FF5295CB1AD5F59C007DDC02 /* TTDevice.m in Sources */,
 				FF2C2E4B1C53077300FAD7E2 /* AsyncSocket.m in Sources */,

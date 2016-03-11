@@ -21,6 +21,7 @@
 #import "TTFooterView.h"
 #import "TTBatchActionStackView.h"
 #import "TTModalPairingScanningView.h"
+#import "TTModalBarButton.h"
 
 @class TTAppDelegate;
 @class TTPanelArrowView;
@@ -36,6 +37,7 @@
 @class TTAddActionButtonView;
 @class TTBatchActionStackView;
 @class TTModalPairingScanningView;
+@class TTModalBarButton;
 
 typedef enum TTPanelModal : NSUInteger {
     PANEL_MODAL_APP,
@@ -72,6 +74,7 @@ typedef enum TTPanelModal : NSUInteger {
 @property (nonatomic) IBOutlet TTFooterView *footerView;
 @property (nonatomic) IBOutlet TTBatchActionStackView *batchActionStackView;
 @property (nonatomic) IBOutlet TTModalPairingScanningView *modalPairingScanningView;
+@property (nonatomic) IBOutlet TTModalBarButton *modalBarButton;
 @property (nonatomic) NSLayoutConstraint *optionsConstraint;
 
 - (void)resetPosition;

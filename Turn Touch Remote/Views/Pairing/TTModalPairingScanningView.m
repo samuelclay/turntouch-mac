@@ -25,7 +25,7 @@
     self = [super initWithNibName:@"TTModalPairingScanningView" bundle:nibBundleOrNil];
     if (self) {
         appDelegate = (TTAppDelegate *)[NSApp delegate];
-
+        spinnerBeginTime = CACurrentMediaTime();
         [self registerAsObserver];
     }
     return self;
@@ -43,6 +43,8 @@
             [appDelegate.bluetoothMonitor scanUnknown];
         });
     });
+
+    [self resetDiamond];
     [self countUnpairedDevices];
 }
 
@@ -94,7 +96,7 @@
         [titleBox setHidden:YES];
         [labelPressButtons setHidden:YES];
         [countdownIndicator setHidden:YES];
-        [diamondView setHidden:YES];
+        [diamondView setHidden:NO];
         
         [spinnerScanning setHidden:NO];
         [labelScanning setHidden:NO];
@@ -102,7 +104,6 @@
             [layer removeFromSuperlayer];
         }
 
-        NSTimeInterval beginTime = CACurrentMediaTime();
         for (NSInteger i=0; i < 2; i+=1) {
             CALayer *circle = [CALayer layer];
             circle.frame = CGRectMake(0, 0, NSWidth(spinnerScanning.frame), NSHeight(spinnerScanning.frame));
@@ -116,7 +117,7 @@
             anim.removedOnCompletion = NO;
             anim.repeatCount = HUGE_VALF;
             anim.duration = 2.0;
-            anim.beginTime = beginTime - (1.0 * i);
+            anim.beginTime = spinnerBeginTime - (1.0 * i);
             anim.keyTimes = @[@(0.0), @(0.5), @(1.0)];
             
             anim.timingFunctions = @[
@@ -144,7 +145,7 @@
         [titleBox setHidden:NO];
         [labelPressButtons setHidden:YES];
         [countdownIndicator setHidden:YES];
-        [diamondView setHidden:YES];
+        [diamondView setHidden:NO];
         
         [spinnerScanning setHidden:NO];
         [labelScanning setHidden:NO];
@@ -156,19 +157,22 @@
         [countdownIndicator setDoubleValue:0];
         [self updateCountdown];
         [diamondView setHidden:NO];
-        
-        diamondView = [[TTDiamondView alloc] initWithFrame:diamondViewPlaceholder.bounds
-                                               diamondType:DIAMOND_TYPE_PAIRING];
-        [diamondView setIgnoreSelectedMode:YES];
-        for (NSView *subview in diamondViewPlaceholder.subviews) {
-            [subview removeFromSuperview];
-        }
-        [diamondViewPlaceholder addSubview:diamondView];
+        [self resetDiamond];
         
         [spinnerScanning setHidden:YES];
         [labelScanning setHidden:YES];
     }
     
+}
+
+- (void)resetDiamond {
+    diamondView = [[TTDiamondView alloc] initWithFrame:diamondViewPlaceholder.bounds
+                                           diamondType:DIAMOND_TYPE_PAIRING];
+    [diamondView setIgnoreSelectedMode:YES];
+    for (NSView *subview in diamondViewPlaceholder.subviews) {
+        [subview removeFromSuperview];
+    }
+    [diamondViewPlaceholder addSubview:diamondView];
 }
 
 #pragma mark - Countdown timer
@@ -177,7 +181,7 @@
     double minusOneSecond = countdownIndicator.doubleValue + countdownIndicator.maxValue/60;
     [countdownIndicator setDoubleValue:minusOneSecond];
     
-    //    NSLog(@"Countdown: %f", minusOneSecond);
+//    NSLog(@"Countdown: %f >= %f", minusOneSecond, countdownIndicator.maxValue);
     if (minusOneSecond >= countdownIndicator.maxValue) {
         [appDelegate.bluetoothMonitor disconnectUnpairedDevices];
         [appDelegate showPreferences:@"devices" onlyIfVisible:YES];
