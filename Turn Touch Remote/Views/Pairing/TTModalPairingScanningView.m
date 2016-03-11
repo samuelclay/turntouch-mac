@@ -13,7 +13,6 @@
 @implementation TTModalPairingScanningView
 
 @synthesize titleBox;
-@synthesize labelPressButtons;
 @synthesize countdownIndicator;
 @synthesize diamondViewPlaceholder;
 @synthesize diamondView;
@@ -93,13 +92,9 @@
     
     //    NSLog(@"Counting unpaired devices: %d-%d", found, connected);
     if (!found) {
-        [titleBox setHidden:YES];
-        [labelPressButtons setHidden:YES];
         [countdownIndicator setHidden:YES];
-        [diamondView setHidden:NO];
-        
         [spinnerScanning setHidden:NO];
-        [labelScanning setHidden:NO];
+        
         for (CALayer *layer in [spinnerScanning.layer.sublayers copy]) {
             [layer removeFromSuperlayer];
         }
@@ -142,25 +137,17 @@
             countdownTimer = nil;
         }
     } else if (found && !connected) {
-        [titleBox setHidden:NO];
-        [labelPressButtons setHidden:YES];
         [countdownIndicator setHidden:YES];
-        [diamondView setHidden:NO];
-        
         [spinnerScanning setHidden:NO];
-        [labelScanning setHidden:NO];
         [labelScanning setStringValue:@"Connecting..."];
     } else if (found && connected) {
-        [titleBox setHidden:NO];
-        [labelPressButtons setHidden:NO];
         [countdownIndicator setHidden:NO];
         [countdownIndicator setDoubleValue:0];
-        [self updateCountdown];
-        [diamondView setHidden:NO];
-        [self resetDiamond];
-        
         [spinnerScanning setHidden:YES];
-        [labelScanning setHidden:YES];
+        [labelScanning setStringValue:@"Press all four buttons to connect"];
+        [self resetDiamond];
+        [self updateCountdown];
+        
     }
     
 }

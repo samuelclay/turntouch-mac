@@ -16,7 +16,6 @@
 }
 
 @property (nonatomic) IBOutlet NSBox *titleBox;
-@property (nonatomic) IBOutlet NSTextField *labelPressButtons;
 @property (nonatomic) IBOutlet NSProgressIndicator *countdownIndicator;
 @property (nonatomic) IBOutlet NSView *diamondViewPlaceholder;
 @property (nonatomic) IBOutlet TTDiamondView *diamondView;

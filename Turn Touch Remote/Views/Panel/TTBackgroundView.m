@@ -228,12 +228,12 @@
          inGravity:NSStackViewGravityTop];
     
     [self addArrowAndTitleConstraints];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:modalPairingScanningView.view
-                                                     attribute:NSLayoutAttributeHeight
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:nil
-                                                     attribute:0
-                                                    multiplier:1.0 constant:524]];
+//    [self addConstraint:[NSLayoutConstraint constraintWithItem:modalPairingScanningView.view
+//                                                     attribute:NSLayoutAttributeHeight
+//                                                     relatedBy:NSLayoutRelationEqual
+//                                                        toItem:nil
+//                                                     attribute:0
+//                                                    multiplier:1.0 constant:524]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:modalBarButton
                                                      attribute:NSLayoutAttributeHeight
                                                      relatedBy:NSLayoutRelationEqual
