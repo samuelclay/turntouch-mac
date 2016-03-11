@@ -217,36 +217,6 @@
                                                       constant:PANEL_WIDTH]];
 }
 
-- (void)switchPanelModalPairing {
-    modalPairingScanningView = [[TTModalPairingScanningView alloc] init];
-    modalBarButton = [[TTModalBarButton alloc] init];
-    
-    [self setViews:@[arrowView,
-                     titleBarView,
-                     modalPairingScanningView.view,
-                     modalBarButton]
-         inGravity:NSStackViewGravityTop];
-    
-    [self addArrowAndTitleConstraints];
-//    [self addConstraint:[NSLayoutConstraint constraintWithItem:modalPairingScanningView.view
-//                                                     attribute:NSLayoutAttributeHeight
-//                                                     relatedBy:NSLayoutRelationEqual
-//                                                        toItem:nil
-//                                                     attribute:0
-//                                                    multiplier:1.0 constant:524]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:modalBarButton
-                                                     attribute:NSLayoutAttributeHeight
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:nil
-                                                     attribute:0
-                                                    multiplier:0 constant:84]];
-}
-
-- (void)updateConstraints {
-//    NSLog(@"updateConstraints");
-    [super updateConstraints];
-}
-
 #pragma mark - KVO
 
 - (void)registerAsObserver {
@@ -465,6 +435,21 @@
 
 - (void)viewDidMoveToWindow {
     [[self window] setAcceptsMouseMovedEvents:YES];
+}
+
+#pragma mark - Pairing Modal
+
+- (void)switchPanelModalPairing {
+    modalPairingScanningView = [[TTModalPairingScanningView alloc] init];
+    modalBarButton = [[TTModalBarButton alloc] init];
+    
+    [self setViews:@[arrowView,
+                     titleBarView,
+                     modalPairingScanningView.view,
+                     modalBarButton]
+         inGravity:NSStackViewGravityTop];
+    
+    [self addArrowAndTitleConstraints];
 }
 
 @end
