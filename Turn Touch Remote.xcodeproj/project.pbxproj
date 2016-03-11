@@ -85,6 +85,7 @@
 		FF27052F1C90FB68000BB10F /* TTModalPairingScanningView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF27052E1C90FB68000BB10F /* TTModalPairingScanningView.xib */; };
 		FF2705331C9247A8000BB10F /* TTModalBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2705311C9247A8000BB10F /* TTModalBarButton.m */; };
 		FF2705361C9248F0000BB10F /* modal_bar_button_chevron.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2705351C9248F0000BB10F /* modal_bar_button_chevron.png */; };
+		FF27053A1C926D21000BB10F /* TTModalPairingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2705391C926D21000BB10F /* TTModalPairingInfo.m */; };
 		FF27406F1A7C576900C55579 /* itunes_audiobook_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2740681A7C576900C55579 /* itunes_audiobook_icon.png */; };
 		FF2740701A7C576900C55579 /* itunes_genius_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2740691A7C576900C55579 /* itunes_genius_icon.png */; };
 		FF2740711A7C576900C55579 /* itunes_library_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF27406A1A7C576900C55579 /* itunes_library_icon.png */; };
@@ -480,6 +481,9 @@
 		FF2705301C9247A8000BB10F /* TTModalBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModalBarButton.h; path = Views/Pairing/TTModalBarButton.h; sourceTree = "<group>"; };
 		FF2705311C9247A8000BB10F /* TTModalBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModalBarButton.m; path = Views/Pairing/TTModalBarButton.m; sourceTree = "<group>"; };
 		FF2705351C9248F0000BB10F /* modal_bar_button_chevron.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_bar_button_chevron.png; sourceTree = "<group>"; };
+		FF2705371C926BAC000BB10F /* TTPanelStates.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTPanelStates.h; sourceTree = "<group>"; };
+		FF2705381C926D21000BB10F /* TTModalPairingInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModalPairingInfo.h; path = Views/Pairing/TTModalPairingInfo.h; sourceTree = "<group>"; };
+		FF2705391C926D21000BB10F /* TTModalPairingInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModalPairingInfo.m; path = Views/Pairing/TTModalPairingInfo.m; sourceTree = "<group>"; };
 		FF2740681A7C576900C55579 /* itunes_audiobook_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_audiobook_icon.png; sourceTree = "<group>"; };
 		FF2740691A7C576900C55579 /* itunes_genius_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_genius_icon.png; sourceTree = "<group>"; };
 		FF27406A1A7C576900C55579 /* itunes_library_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_library_icon.png; sourceTree = "<group>"; };
@@ -1126,6 +1130,8 @@
 				FF27052B1C90FB3B000BB10F /* TTModalPairingScanningView.h */,
 				FF27052C1C90FB3B000BB10F /* TTModalPairingScanningView.m */,
 				FF27052E1C90FB68000BB10F /* TTModalPairingScanningView.xib */,
+				FF2705381C926D21000BB10F /* TTModalPairingInfo.h */,
+				FF2705391C926D21000BB10F /* TTModalPairingInfo.m */,
 				FF2705301C9247A8000BB10F /* TTModalBarButton.h */,
 				FF2705311C9247A8000BB10F /* TTModalBarButton.m */,
 			);
@@ -1505,6 +1511,7 @@
 				FFAFCBC419130F520058B9CB /* TTPanelArrowView.m */,
 				FFABAB911C2F723000AD5620 /* TTBorder.h */,
 				FFABAB921C2F723000AD5620 /* TTBorder.m */,
+				FF2705371C926BAC000BB10F /* TTPanelStates.h */,
 			);
 			name = Panel;
 			path = Views/Panel;
@@ -2365,6 +2372,7 @@
 				FF904B961BE9BA3700AD00F3 /* ioapi.c in Sources */,
 				FF2C2E631C546D6E00FAD7E2 /* TTModeWemoConnect.m in Sources */,
 				FF2C2E651C546D6E00FAD7E2 /* TTModeWemoConnected.m in Sources */,
+				FF27053A1C926D21000BB10F /* TTModalPairingInfo.m in Sources */,
 				FF904B971BE9BA3700AD00F3 /* mztools.c in Sources */,
 				FFA1D4DC1A3B89A4003EA0BC /* TTModeHUDWindow.m in Sources */,
 				FF801335186E207B00955218 /* TTDiamondLabel.m in Sources */,

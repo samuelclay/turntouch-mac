@@ -1,5 +1,5 @@
 //
-//  TTModalBarButton.h
+//  TTModalPairingInfo.h
 //  Turn Touch Remote
 //
 //  Created by Samuel Clay on 3/10/16.
@@ -8,12 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 #import "TTPanelStates.h"
-#import "TTFooterView.h"
 
-@interface TTModalBarButton : TTFooterView
+@interface TTModalPairingInfo : NSView
 
-@property (nonatomic) IBOutlet NSTextField *buttonLabel;
-@property (nonatomic) IBOutlet NSImageView *chevronImage;
+@property (nonatomic) IBOutlet NSTextField *titleLabel;
+@property (nonatomic) IBOutlet NSTextField *subtitleLabel;
+@property (nonatomic) IBOutlet NSImageView *heroImage;
 
 - (instancetype)initWithPairing:(TTModalPairing)modalPairing;
 

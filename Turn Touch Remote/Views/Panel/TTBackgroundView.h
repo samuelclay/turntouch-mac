@@ -22,6 +22,7 @@
 #import "TTBatchActionStackView.h"
 #import "TTModalPairingScanningView.h"
 #import "TTModalBarButton.h"
+#import "TTPanelStates.h"
 
 @class TTAppDelegate;
 @class TTPanelArrowView;
@@ -39,14 +40,6 @@
 @class TTModalPairingScanningView;
 @class TTModalBarButton;
 
-typedef enum TTPanelModal : NSUInteger {
-    PANEL_MODAL_APP,
-    PANEL_MODAL_FTUX,
-    PANEL_MODAL_PAIRING,
-    PANEL_MODAL_DEVICES,
-    PANEL_MODAL_ABOUT,
-} TTPanelModal;
-
 @interface TTBackgroundView : NSStackView <NSStackViewDelegate> {
     TTAppDelegate *appDelegate;
     NSLayoutConstraint *modeMenuConstraint;
@@ -57,6 +50,8 @@ typedef enum TTPanelModal : NSUInteger {
     NSLayoutConstraint *addActionButtonConstraint;
     NSLayoutConstraint *batchActionsConstraint;
     TTPanelModal panelModal;
+    TTModalPairing modalPairing;
+    TTModalFTUX modalFTUX;
 //    NSArray<NSLayoutConstraint *> *constraints;
 }
 
@@ -80,5 +75,6 @@ typedef enum TTPanelModal : NSUInteger {
 - (void)resetPosition;
 - (void)adjustOptionsHeight:(NSView *)optionsDetailView;
 - (void)switchPanelModel:(TTPanelModal)_panelModal;
+- (void)switchPanelModalPairing:(TTModalPairing)_modalPairing;
 
 @end

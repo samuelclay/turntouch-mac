@@ -17,12 +17,25 @@
 @synthesize buttonLabel;
 @synthesize chevronImage;
 
-- (instancetype)init {
+- (instancetype)initWithPairing:(TTModalPairing)modalPairing {
     if (self = [super init]) {
         self.translatesAutoresizingMaskIntoConstraints = NO;
-        self.backgroundColor = NSColorFromRGB(0x4383C0);
+        if (modalPairing == MODAL_PAIRING_INTRO) {
+            self.backgroundColor = NSColorFromRGB(0x4383C0);
+        } else if (modalPairing == MODAL_PAIRING_SUCCESS) {
+            self.backgroundColor = NSColorFromRGB(0x2FB789);
+        } else if (modalPairing == MODAL_PAIRING_FAILURE) {
+            self.backgroundColor = NSColorFromRGB(0xFFCA44);
+        }
         buttonLabel = [[NSTextField alloc] init];
-        buttonLabel.stringValue = @"Pair Remote";
+        
+        if (modalPairing == MODAL_PAIRING_INTRO) {
+            buttonLabel.stringValue = @"Pair Remote";
+        } else if (modalPairing == MODAL_PAIRING_SUCCESS) {
+            buttonLabel.stringValue = @"Show me how it works";
+        } else if (modalPairing == MODAL_PAIRING_FAILURE) {
+            buttonLabel.stringValue = @"Try again";
+        }
         buttonLabel.editable = NO;
         buttonLabel.bordered = NO;
         buttonLabel.backgroundColor = [NSColor clearColor];
