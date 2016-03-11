@@ -186,7 +186,7 @@ void *kContextActivePanel = &kContextActivePanel;
         prefVc = [preferencesWindowController
                   viewControllerWithIdentifier:@"TTSettingsDevicesViewController"];
     } else if ([selectedTab isEqualToString:@"pairing"]) {
-        [self.panelController.backgroundView switchPanelModel:PANEL_MODAL_PAIRING];
+        [self.panelController.backgroundView switchPanelModal:PANEL_MODAL_PAIRING];
         return;
     } else if ([selectedTab isEqualToString:@"support"]) {
         prefVc = [preferencesWindowController

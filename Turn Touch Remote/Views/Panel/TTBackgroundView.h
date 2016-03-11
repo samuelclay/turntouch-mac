@@ -74,7 +74,7 @@
 
 - (void)resetPosition;
 - (void)adjustOptionsHeight:(NSView *)optionsDetailView;
-- (void)switchPanelModel:(TTPanelModal)_panelModal;
+- (void)switchPanelModal:(TTPanelModal)_panelModal;
 - (void)switchPanelModalPairing:(TTModalPairing)_modalPairing;
 
 @end

@@ -189,7 +189,7 @@
 #pragma mark - Actions
 
 - (void)closeModal:(id)sender {
-    [appDelegate.panelController.backgroundView switchPanelModel:PANEL_MODAL_APP];
+    [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_APP];
 }
 
 @end

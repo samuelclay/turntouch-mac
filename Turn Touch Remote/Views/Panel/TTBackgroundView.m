@@ -72,14 +72,14 @@
         addActionButtonView = [[TTAddActionButtonView alloc] init];
         footerView = [[TTFooterView alloc] init];
         
-        [self switchPanelModel:PANEL_MODAL_APP];
+        [self switchPanelModal:PANEL_MODAL_APP];
         [self registerAsObserver];
     }
     
     return self;
 }
 
-- (void)switchPanelModel:(TTPanelModal)_panelModal {
+- (void)switchPanelModal:(TTPanelModal)_panelModal {
     panelModal = _panelModal;
     [self removeConstraints:[self constraints]];
     if (panelModal == PANEL_MODAL_APP) {
@@ -440,6 +440,10 @@
 #pragma mark - Pairing Modal
 
 - (void)switchPanelModalPairing:(TTModalPairing)_modalPairing {
+    if (_modalPairing == MODAL_PAIRING_INTRO && modalPairing == MODAL_PAIRING_SEARCH) {
+        // Don't switch away from pairing search...
+        return;
+    }
     modalPairing = _modalPairing;
     modalBarButton = [[TTModalBarButton alloc] initWithPairing:modalPairing];
 

@@ -400,7 +400,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 
         BOOL noPairedDevices = ![foundDevices totalPairedCount];
         if (noPairedDevices) {
-            [appDelegate.panelController.backgroundView switchPanelModel:PANEL_MODAL_PAIRING];
+            [appDelegate.panelController.backgroundView switchPanelModalPairing:MODAL_PAIRING_SEARCH];
         }
     }
 
@@ -1013,7 +1013,7 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
     [buttonTimer resetPairingState];
     [self countDevices];
     [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];
-    [appDelegate.panelController.backgroundView switchPanelModel:PANEL_MODAL_APP];
+    [appDelegate.panelController.backgroundView switchPanelModalPairing:MODAL_PAIRING_SUCCESS];
 
 #ifdef DEBUG_CONNECT
 //    NSLog(@" ---> (%X) [Pairing success] Canceling peripheral connection: %@", bluetoothState, foundDevice);
