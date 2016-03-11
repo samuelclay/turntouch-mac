@@ -12,6 +12,7 @@
 @interface TTModalPairingScanningView : NSViewController    {
     TTAppDelegate *appDelegate;
     NSTimer *countdownTimer;
+    NSTimer *searchingTimer;
     NSTimeInterval spinnerBeginTime;
 }
 

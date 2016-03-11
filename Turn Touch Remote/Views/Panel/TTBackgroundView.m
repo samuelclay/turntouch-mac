@@ -82,7 +82,8 @@
 
 - (void)switchPanelModal:(TTPanelModal)_panelModal {
     panelModal = _panelModal;
-
+    [self cleanupPanelModalPairing];
+    
     if (panelModal == PANEL_MODAL_APP) {
         [self switchPanelModalApp];
     } else if (panelModal == PANEL_MODAL_PAIRING) {
@@ -447,14 +448,19 @@
         // Don't switch away from pairing search...
         return;
     }
+    if (_modalPairing == MODAL_PAIRING_FAILURE && modalPairing != MODAL_PAIRING_SEARCH) {
+        // Don't switch into failure if not searching...
+        return;
+    }
     
     panelModal = PANEL_MODAL_PAIRING;
 
     [self removeConstraints:[self constraints]];
 
+    [self cleanupPanelModalPairing];
     modalPairing = _modalPairing;
     modalBarButton = [[TTModalBarButton alloc] initWithPairing:modalPairing];
-
+    
     if (modalPairing == MODAL_PAIRING_INTRO ||
         modalPairing == MODAL_PAIRING_SUCCESS ||
         modalPairing == MODAL_PAIRING_FAILURE) {
@@ -474,6 +480,11 @@
     }
     
     [self addArrowAndTitleConstraints];
+}
+
+- (void)cleanupPanelModalPairing {
+    modalPairingScanningView = nil;
+    modalBarButton = nil;
 }
 
 @end

@@ -400,6 +400,11 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 
         BOOL noPairedDevices = ![foundDevices totalPairedCount];
         if (noPairedDevices) {
+            // This is a hack, but the panelController doesn't have a backgroundView if it hasn't
+            // been opened yet, so only open it if it hasn't been opened.
+            if (!appDelegate.panelController.backgroundView) {
+                [appDelegate openPanel];
+            }
             [appDelegate.panelController.backgroundView switchPanelModalPairing:MODAL_PAIRING_INTRO];
         }
     }

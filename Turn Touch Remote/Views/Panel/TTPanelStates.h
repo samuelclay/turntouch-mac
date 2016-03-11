@@ -22,6 +22,7 @@ typedef enum TTModalPairing : NSUInteger {
     MODAL_PAIRING_SEARCH,
     MODAL_PAIRING_SUCCESS,
     MODAL_PAIRING_FAILURE,
+    MODAL_PAIRING_FAILURE_EXPLAINER,
 } TTModalPairing;
 
 typedef enum TTModalFTUX : NSUInteger {

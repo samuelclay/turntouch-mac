@@ -108,9 +108,9 @@
     if (modalPairing == MODAL_PAIRING_INTRO) {
         self.backgroundColor = NSColorFromRGB(0x6B9DCB);
     } else if (modalPairing == MODAL_PAIRING_SUCCESS) {
-        self.backgroundColor = NSColorFromRGB(0x1FA779);
+        self.backgroundColor = NSColorFromRGB(0x65C4A1);
     } else if (modalPairing == MODAL_PAIRING_FAILURE) {
-        self.backgroundColor = NSColorFromRGB(0xDFAA34);
+        self.backgroundColor = NSColorFromRGB(0xFDD375);
     }
     [self setNeedsDisplay:YES];
 }
@@ -124,11 +124,11 @@
 
 - (void)mouseDown:(NSEvent *)theEvent {
     if (modalPairing == MODAL_PAIRING_INTRO) {
-        self.backgroundColor = NSColorFromRGB(0x366B9C);
+        self.backgroundColor = NSColorFromRGB(0x396C9A);
     } else if (modalPairing == MODAL_PAIRING_SUCCESS) {
-        self.backgroundColor = NSColorFromRGB(0x1FA779);
+        self.backgroundColor = NSColorFromRGB(0x36A07A);
     } else if (modalPairing == MODAL_PAIRING_FAILURE) {
-        self.backgroundColor = NSColorFromRGB(0xDFAA34);
+        self.backgroundColor = NSColorFromRGB(0xE4B449);
     }
 
     [self setNeedsDisplay:YES];

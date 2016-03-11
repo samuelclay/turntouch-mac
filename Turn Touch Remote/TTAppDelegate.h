@@ -35,6 +35,7 @@
 @property (nonatomic) TTHUDController *hudController;
 @property (retain) RHPreferencesWindowController *preferencesWindowController;
 
+- (void)openPanel;
 - (IBAction)togglePanel:(id)sender;
 - (void)showPreferences:(NSString *)selectedTab onlyIfVisible:(BOOL)onlyIfVisible;
 - (void)showPreferences:(NSString *)selectedTab;

@@ -48,7 +48,12 @@
 }
 
 - (void)viewWillDisappear {
-    //    [appDelegate.bluetoothMonitor stopScan];
+    [appDelegate.bluetoothMonitor stopScan];
+
+    if (countdownTimer) {
+        [countdownTimer invalidate];
+        countdownTimer = nil;
+    }
 }
 
 #pragma mark - KVO
@@ -79,6 +84,10 @@
 }
 
 - (void)dealloc {
+    if (countdownTimer) {
+        [countdownTimer invalidate];
+        countdownTimer = nil;
+    }
     [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"unpairedDevicesCount"];
     [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"unpairedDevicesConnected"];
     [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"pairedDevicesCount"];
@@ -94,7 +103,16 @@
     if (!found) {
         [countdownIndicator setHidden:YES];
         [spinnerScanning setHidden:NO];
-        
+        [appDelegate.bluetoothMonitor disconnectUnpairedDevices];
+        NSRunLoop *runner = [NSRunLoop currentRunLoop];
+        if (searchingTimer) [searchingTimer invalidate];
+        searchingTimer = [[NSTimer alloc] initWithFireDate:[[NSDate date] dateByAddingTimeInterval:10.f]
+                                                  interval:0.f
+                                                    target:self
+                                                  selector:@selector(searchingFailure)
+                                                  userInfo:nil repeats:NO];
+        [runner addTimer:searchingTimer forMode:NSDefaultRunLoopMode];
+
         for (CALayer *layer in [spinnerScanning.layer.sublayers copy]) {
             [layer removeFromSuperlayer];
         }
@@ -140,14 +158,15 @@
         [countdownIndicator setHidden:YES];
         [spinnerScanning setHidden:NO];
         [labelScanning setStringValue:@"Connecting..."];
+        [searchingTimer invalidate];
     } else if (found && connected) {
         [countdownIndicator setHidden:NO];
         [countdownIndicator setDoubleValue:0];
         [spinnerScanning setHidden:YES];
         [labelScanning setStringValue:@"Press all four buttons to connect"];
+        [searchingTimer invalidate];
         [self resetDiamond];
         [self updateCountdown];
-        
     }
     
 }
@@ -184,6 +203,11 @@
                                                   userInfo:nil repeats:NO];
         [runner addTimer:countdownTimer forMode:NSDefaultRunLoopMode];
     }
+}
+
+- (void)searchingFailure {
+    [searchingTimer invalidate];
+    [appDelegate.panelController.backgroundView switchPanelModalPairing:MODAL_PAIRING_FAILURE];
 }
 
 #pragma mark - Actions
