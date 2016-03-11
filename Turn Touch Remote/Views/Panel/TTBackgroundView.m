@@ -43,6 +43,7 @@
 @synthesize footerView;
 @synthesize modalPairingScanningView;
 @synthesize modalBarButton;
+@synthesize modalPairingInfo;
 
 #pragma mark -
 
@@ -81,7 +82,7 @@
 
 - (void)switchPanelModal:(TTPanelModal)_panelModal {
     panelModal = _panelModal;
-    [self removeConstraints:[self constraints]];
+
     if (panelModal == PANEL_MODAL_APP) {
         [self switchPanelModalApp];
     } else if (panelModal == PANEL_MODAL_PAIRING) {
@@ -117,6 +118,8 @@
 }
 
 - (void)switchPanelModalApp {
+    [self removeConstraints:[self constraints]];
+
     [self setViews:@[arrowView,
                      titleBarView,
                      dfuView,
@@ -440,17 +443,25 @@
 #pragma mark - Pairing Modal
 
 - (void)switchPanelModalPairing:(TTModalPairing)_modalPairing {
-    if (_modalPairing == MODAL_PAIRING_INTRO && modalPairing == MODAL_PAIRING_SEARCH) {
+    if (_modalPairing == MODAL_PAIRING_INTRO && panelModal == PANEL_MODAL_PAIRING) {
         // Don't switch away from pairing search...
         return;
     }
+    
+    panelModal = PANEL_MODAL_PAIRING;
+
+    [self removeConstraints:[self constraints]];
+
     modalPairing = _modalPairing;
     modalBarButton = [[TTModalBarButton alloc] initWithPairing:modalPairing];
 
-    if (modalPairing == MODAL_PAIRING_INTRO) {
+    if (modalPairing == MODAL_PAIRING_INTRO ||
+        modalPairing == MODAL_PAIRING_SUCCESS ||
+        modalPairing == MODAL_PAIRING_FAILURE) {
+        modalPairingInfo = [[TTModalPairingInfo alloc] initWithPairing:modalPairing];
         [self setViews:@[arrowView,
                          titleBarView,
-                         
+                         modalPairingInfo,
                          modalBarButton]
              inGravity:NSStackViewGravityTop];
     } else if (modalPairing == MODAL_PAIRING_SEARCH) {
@@ -458,24 +469,6 @@
         [self setViews:@[arrowView,
                          titleBarView,
                          modalPairingScanningView.view,
-                         footerView]
-             inGravity:NSStackViewGravityTop];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:footerView
-                                                         attribute:NSLayoutAttributeHeight
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:nil
-                                                         attribute:0
-                                                        multiplier:0 constant:FOOTER_HEIGHT]];
-    } else if (modalPairing == MODAL_PAIRING_SUCCESS) {
-        [self setViews:@[arrowView,
-                         titleBarView,
-
-                         modalBarButton]
-             inGravity:NSStackViewGravityTop];
-    } else if (modalPairing == MODAL_PAIRING_FAILURE) {
-        [self setViews:@[arrowView,
-                         titleBarView,
-
                          modalBarButton]
              inGravity:NSStackViewGravityTop];
     }

@@ -136,7 +136,7 @@
         [self removeTrackingArea:area];
     }
     
-    int opts = (NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways);
+    int opts = (NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways | NSTrackingInVisibleRect);
     NSTrackingArea *trackingArea = [ [NSTrackingArea alloc] initWithRect:[self bounds]
                                                                  options:opts
                                                                    owner:self

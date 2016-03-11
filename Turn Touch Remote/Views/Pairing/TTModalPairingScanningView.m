@@ -165,13 +165,13 @@
 #pragma mark - Countdown timer
 
 - (void)updateCountdown {
-    double minusOneSecond = countdownIndicator.doubleValue + countdownIndicator.maxValue/60;
+    double minusOneSecond = countdownIndicator.doubleValue + countdownIndicator.maxValue/10;
     [countdownIndicator setDoubleValue:minusOneSecond];
     
-//    NSLog(@"Countdown: %f >= %f", minusOneSecond, countdownIndicator.maxValue);
+    NSLog(@"Countdown: %f >= %f", minusOneSecond, countdownIndicator.maxValue);
     if (minusOneSecond >= countdownIndicator.maxValue) {
         [appDelegate.bluetoothMonitor disconnectUnpairedDevices];
-        [appDelegate showPreferences:@"devices" onlyIfVisible:YES];
+        [appDelegate.panelController.backgroundView switchPanelModalPairing:MODAL_PAIRING_FAILURE];
         [countdownTimer invalidate];
         countdownTimer = nil;
     } else {

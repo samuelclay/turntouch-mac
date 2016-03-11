@@ -8,12 +8,18 @@
 
 #import <Cocoa/Cocoa.h>
 #import "TTPanelStates.h"
+#import "TTAppDelegate.h"
 
-@interface TTModalPairingInfo : NSView
+@class TTAppDelegate;
+
+@interface TTModalPairingInfo : NSView {
+    TTAppDelegate *appDelegate;
+}
 
 @property (nonatomic) IBOutlet NSTextField *titleLabel;
 @property (nonatomic) IBOutlet NSTextField *subtitleLabel;
 @property (nonatomic) IBOutlet NSImageView *heroImage;
+@property (nonatomic) IBOutlet NSButton *closeButton;
 
 - (instancetype)initWithPairing:(TTModalPairing)modalPairing;
 

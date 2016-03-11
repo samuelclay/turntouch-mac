@@ -400,7 +400,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 
         BOOL noPairedDevices = ![foundDevices totalPairedCount];
         if (noPairedDevices) {
-            [appDelegate.panelController.backgroundView switchPanelModalPairing:MODAL_PAIRING_SEARCH];
+            [appDelegate.panelController.backgroundView switchPanelModalPairing:MODAL_PAIRING_INTRO];
         }
     }
 

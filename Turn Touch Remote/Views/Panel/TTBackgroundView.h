@@ -22,6 +22,7 @@
 #import "TTBatchActionStackView.h"
 #import "TTModalPairingScanningView.h"
 #import "TTModalBarButton.h"
+#import "TTModalPairingInfo.h"
 #import "TTPanelStates.h"
 
 @class TTAppDelegate;
@@ -39,6 +40,7 @@
 @class TTBatchActionStackView;
 @class TTModalPairingScanningView;
 @class TTModalBarButton;
+@class TTModalPairingInfo;
 
 @interface TTBackgroundView : NSStackView <NSStackViewDelegate> {
     TTAppDelegate *appDelegate;
@@ -70,6 +72,7 @@
 @property (nonatomic) IBOutlet TTBatchActionStackView *batchActionStackView;
 @property (nonatomic) IBOutlet TTModalPairingScanningView *modalPairingScanningView;
 @property (nonatomic) IBOutlet TTModalBarButton *modalBarButton;
+@property (nonatomic) IBOutlet TTModalPairingInfo *modalPairingInfo;
 @property (nonatomic) NSLayoutConstraint *optionsConstraint;
 
 - (void)resetPosition;

@@ -9,12 +9,17 @@
 #import <Cocoa/Cocoa.h>
 #import "TTPanelStates.h"
 #import "TTFooterView.h"
+#import "TTAppDelegate.h"
 
-@interface TTModalBarButton : TTFooterView
+@interface TTModalBarButton : TTFooterView {
+    TTAppDelegate *appDelegate;
+    TTModalPairing modalPairing;
+    NSTrackingArea *trackingArea;
+}
 
 @property (nonatomic) IBOutlet NSTextField *buttonLabel;
 @property (nonatomic) IBOutlet NSImageView *chevronImage;
 
-- (instancetype)initWithPairing:(TTModalPairing)modalPairing;
+- (instancetype)initWithPairing:(TTModalPairing)_modalPairing;
 
 @end

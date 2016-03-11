@@ -376,7 +376,7 @@
     }
     
     int opts = (NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways |
-                NSTrackingMouseMoved | NSTrackingActiveInKeyWindow);
+                NSTrackingMouseMoved | NSTrackingActiveInKeyWindow | NSTrackingInVisibleRect);
     NSTrackingArea *trackingArea = [ [NSTrackingArea alloc] initWithRect:[self bounds]
                                                                  options:opts
                                                                    owner:self

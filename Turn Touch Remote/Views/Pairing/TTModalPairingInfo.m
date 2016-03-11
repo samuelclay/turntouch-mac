@@ -10,6 +10,7 @@
 
 @implementation TTModalPairingInfo
 
+@synthesize closeButton;
 @synthesize titleLabel;
 @synthesize subtitleLabel;
 @synthesize heroImage;
@@ -17,8 +18,24 @@
 - (instancetype)initWithPairing:(TTModalPairing)modalPairing {
     if (self = [super init]) {
         self.translatesAutoresizingMaskIntoConstraints = NO;
-
+        appDelegate = (TTAppDelegate *)[NSApp delegate];
+        
+        closeButton = [[NSButton alloc] init];
+        closeButton.translatesAutoresizingMaskIntoConstraints = NO;
+        [closeButton setBordered:NO];
+        [closeButton setButtonType:NSMomentaryPushInButton];
+        [closeButton setImage:[NSImage imageNamed:NSImageNameStopProgressTemplate]];
+        [closeButton setTarget:self];
+        [closeButton setAction:@selector(closeModal:)];
+        [self addSubview:closeButton];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:closeButton attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1.0f constant:0.0f]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:closeButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0f constant:0.0f]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:closeButton attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:0 multiplier:1.0f constant:50.0f]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:closeButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:0 multiplier:1.0f constant:50.0f]];
+        
         heroImage = [[NSImageView alloc] init];
+        heroImage.translatesAutoresizingMaskIntoConstraints = NO;
         if (modalPairing == MODAL_PAIRING_INTRO) {
             heroImage.image = [NSImage imageNamed:@"modal_remote_hero"];
         } else if (modalPairing == MODAL_PAIRING_SUCCESS) {
@@ -30,23 +47,22 @@
         
         [self addConstraint:[NSLayoutConstraint constraintWithItem:heroImage attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f]];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:heroImage attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0f constant:48.0f]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:heroImage attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:0 multiplier:1.0f constant:260.f]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:heroImage attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:0 multiplier:1.0f constant:256.f]];
         
         titleLabel = [[NSTextField alloc] init];
         if (modalPairing == MODAL_PAIRING_INTRO) {
             titleLabel.stringValue = @"Welcome to Turn Touch";
         } else if (modalPairing == MODAL_PAIRING_SUCCESS) {
-            titleLabel.stringValue = @"Working perfectly";
+            titleLabel.stringValue = @"That worked perfectly!";
         } else if (modalPairing == MODAL_PAIRING_FAILURE) {
-            titleLabel.stringValue = @"Uh Oh";
+            titleLabel.stringValue = @"Uh Oh...";
         }
         titleLabel.editable = NO;
         titleLabel.bordered = NO;
         titleLabel.backgroundColor = [NSColor clearColor];
-        titleLabel.font = [NSFont fontWithName:@"Effra" size:16.f];
-        titleLabel.textColor = NSColorFromRGB(0x8C979C);
+        titleLabel.font = [NSFont fontWithName:@"Effra" size:23.f];
+        titleLabel.textColor = NSColorFromRGB(0x7C878C);
         titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-        [titleLabel sizeToFit];
         [self addSubview:titleLabel];
         
         [self addConstraint:[NSLayoutConstraint constraintWithItem:titleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f]];
@@ -63,15 +79,14 @@
         subtitleLabel.editable = NO;
         subtitleLabel.bordered = NO;
         subtitleLabel.backgroundColor = [NSColor clearColor];
-        subtitleLabel.font = [NSFont fontWithName:@"Effra" size:13.f];
+        subtitleLabel.font = [NSFont fontWithName:@"Effra" size:17.f];
         subtitleLabel.textColor = NSColorFromRGB(0x9A9A9C);
         subtitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-        [subtitleLabel sizeToFit];
         [self addSubview:subtitleLabel];
         
         [self addConstraint:[NSLayoutConstraint constraintWithItem:subtitleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:subtitleLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:titleLabel attribute:NSLayoutAttributeBottom multiplier:1.0f constant:18.0f]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:subtitleLabel attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0f constant:36.0f]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:subtitleLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:titleLabel attribute:NSLayoutAttributeBottom multiplier:1.0f constant:4.0f]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:subtitleLabel attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0f constant:-36.0f]];
     }
     return self;
 }
@@ -81,6 +96,12 @@
 
     [NSColorFromRGB(0xEFF1F3) setFill];
     NSRectFill(self.bounds);
+}
+
+#pragma mark - Actions
+
+- (void)closeModal:(id)sender {
+    [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_APP];
 }
 
 @end
