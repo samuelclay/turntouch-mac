@@ -247,6 +247,9 @@
         BOOL isSelectedDirection    = selectedModeDirection == direction;
         BOOL isActiveDirection      = activeModeDirection == direction;
         
+        if (diamondType != DIAMOND_TYPE_INTERACTIVE) {
+            isInspectingDirection = NO;
+        }
         if (diamondType == DIAMOND_TYPE_PAIRING) {
             isSelectedDirection = [appDelegate.bluetoothMonitor.buttonTimer isDirectionPaired:direction];
         }

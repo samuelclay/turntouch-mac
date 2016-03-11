@@ -132,6 +132,11 @@
     NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
     BOOL hovering = appDelegate.modeMap.hoverModeDirection == labelDirection;
     BOOL selected = appDelegate.modeMap.inspectingModeDirection == labelDirection;
+    if (!interactive) {
+        selected = NO;
+        hovering = NO;
+    }
+    
     NSColor *textColor = (hovering || selected) ? NSColorFromRGB(0x303AA0) : NSColorFromRGB(0x404A60);
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [style setAlignment:NSCenterTextAlignment];
