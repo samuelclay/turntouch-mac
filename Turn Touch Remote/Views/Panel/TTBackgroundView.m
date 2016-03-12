@@ -210,7 +210,7 @@
                                                              relatedBy:NSLayoutRelationEqual
                                                                 toItem:nil
                                                              attribute:0 multiplier:1.0
-                                                              constant:ADD_ACTION_BUTTON_HEIGHT];
+                                                              constant:0];
     [self addConstraint:addActionButtonConstraint];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:footerView
                                                      attribute:NSLayoutAttributeHeight
