@@ -50,18 +50,19 @@ void *kContextActivePanel = &kContextActivePanel;
     self.bluetoothMonitor = [[TTBluetoothMonitor alloc] init];
     self.modeMap = [[TTModeMap alloc] init];
     self.menubarController = [[TTMenubarController alloc] init];
-    self.panelController.hasActivePanel = NO;
     
     [self.modeMap switchMode];
     [self.modeMap activateTimers];
     [self observeSleepNotifications];
     
+    self.menubarController.hasActiveIcon = NO;
+    self.panelController.hasActivePanel = NO;
     
     // Useful for debugging:
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //        [self togglePanel:nil];
 //    });
-    [self openPanel];
+//    [self openPanel];
 //    [self showPreferences:@"devices"];
 //    [self.panelController closePanel];
 //    [self.hudController toastActiveMode];

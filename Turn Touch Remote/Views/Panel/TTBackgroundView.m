@@ -73,7 +73,6 @@
         addActionButtonView = [[TTAddActionButtonView alloc] init];
         footerView = [[TTFooterView alloc] init];
         
-        [self switchPanelModal:PANEL_MODAL_APP];
         [self registerAsObserver];
     }
     
@@ -82,7 +81,6 @@
 
 - (void)switchPanelModal:(TTPanelModal)_panelModal {
     panelModal = _panelModal;
-    [self cleanupPanelModalPairing];
     
     if (panelModal == PANEL_MODAL_APP) {
         [self switchPanelModalApp];
@@ -116,9 +114,20 @@
                                                         toItem:nil
                                                      attribute:0
                                                     multiplier:1.0 constant:TITLE_BAR_HEIGHT]];
+    
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self
+                                                     attribute:NSLayoutAttributeWidth
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:0
+                                                    multiplier:0
+                                                      constant:PANEL_WIDTH]];
 }
 
 - (void)switchPanelModalApp {
+    panelModal = PANEL_MODAL_APP;
+    [self cleanupPanelModalPairing];
     [self removeConstraints:[self constraints]];
 
     [self setViews:@[arrowView,
@@ -211,14 +220,6 @@
                                                     multiplier:0 constant:FOOTER_HEIGHT]];
     //        NSLog(@"Init modeOptionsView View height: %.f", NSHeight(optionsView.modeOptionsViewController.view.bounds));
     //        NSLog(@"Init options View height: %.f", NSHeight(optionsView.bounds));
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self
-                                                     attribute:NSLayoutAttributeWidth
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:nil
-                                                     attribute:0
-                                                    multiplier:0
-                                                      constant:PANEL_WIDTH]];
 }
 
 #pragma mark - KVO
@@ -444,7 +445,7 @@
 #pragma mark - Pairing Modal
 
 - (void)switchPanelModalPairing:(TTModalPairing)_modalPairing {
-    if (_modalPairing == MODAL_PAIRING_INTRO && panelModal == PANEL_MODAL_PAIRING) {
+    if (_modalPairing == MODAL_PAIRING_INTRO && modalPairing == MODAL_PAIRING_SEARCH) {
         // Don't switch away from pairing search...
         return;
     }
@@ -453,11 +454,10 @@
         return;
     }
     
-    panelModal = PANEL_MODAL_PAIRING;
-
+    [self cleanupPanelModalPairing];
     [self removeConstraints:[self constraints]];
 
-    [self cleanupPanelModalPairing];
+    panelModal = PANEL_MODAL_PAIRING;
     modalPairing = _modalPairing;
     modalBarButton = [[TTModalBarButton alloc] initWithPairing:modalPairing];
     

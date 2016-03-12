@@ -86,8 +86,6 @@
         trackingArea = nil;
     }
     
-    NSLog(@"Creating tracking area: %@", NSStringFromRect(self.bounds));
-    
     NSTrackingAreaOptions opts = (NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways | NSTrackingInVisibleRect);
     trackingArea = [[NSTrackingArea alloc] initWithRect:[self bounds]
                                                 options:opts

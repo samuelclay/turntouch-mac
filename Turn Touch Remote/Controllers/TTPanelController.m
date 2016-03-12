@@ -171,6 +171,7 @@
     NSRect statusRect = [self statusRectForWindow:panel];
     
     [self.backgroundView resetPosition];
+    [self.backgroundView switchPanelModal:PANEL_MODAL_APP];
 
     NSRect panelRect = [panel frame];
     panelRect.origin.x = roundf(NSMidX(statusRect) - NSWidth(panelRect) / 2);
@@ -178,14 +179,14 @@
     
     if (NSMaxX(panelRect) > (NSMaxX(screenRect) - ARROW_HEIGHT))
         panelRect.origin.x -= NSMaxX(panelRect) - (NSMaxX(screenRect) - ARROW_HEIGHT);
-//    NSLog(@"Panel rect: %@ (%@)", NSStringFromRect(statusRect), NSStringFromRect(panelRect));
+//    NSLog(@"Panel rect: %@ (%@) screen: %@", NSStringFromRect(statusRect), NSStringFromRect(panelRect), NSStringFromRect(screenRect));
 
     [NSApp activateIgnoringOtherApps:NO];
     [panel setAlphaValue:0];
     [panel setFrame:panelRect display:YES];
     [panel setDelegate:self];
     [panel makeKeyAndOrderFront:nil];
-    
+//    [panel performSelector:@selector(makeKeyAndOrderFront:) withObject:nil afterDelay:0.0];
     NSTimeInterval openDuration = PANEL_OPEN_DURATION;
     
     NSEvent *currentEvent = [NSApp currentEvent];

@@ -36,7 +36,7 @@
 const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 
 #define CLEAR_PAIRED_DEVICES 1
-#define DEBUG_CONNECT
+//#define DEBUG_CONNECT
 
 @implementation TTBluetoothMonitor
 
@@ -405,7 +405,9 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
             if (!appDelegate.panelController.backgroundView) {
                 [appDelegate openPanel];
             }
-            [appDelegate.panelController.backgroundView switchPanelModalPairing:MODAL_PAIRING_INTRO];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [appDelegate.panelController.backgroundView switchPanelModalPairing:MODAL_PAIRING_INTRO];                
+            });
         }
     }
 
