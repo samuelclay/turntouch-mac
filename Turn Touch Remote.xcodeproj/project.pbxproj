@@ -77,15 +77,19 @@
 		FF1F13631ADC98C400B52A0D /* TTDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1F13621ADC98C400B52A0D /* TTDatePicker.m */; };
 		FF1F13651ADC9DEC00B52A0D /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF1F13641ADC9DEC00B52A0D /* Sparkle.framework */; };
 		FF1F13671ADC9E6F00B52A0D /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = FF1F13641ADC9DEC00B52A0D /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		FF2705211C90F88C000BB10F /* modal_ftux_mode.png in Resources */ = {isa = PBXBuildFile; fileRef = FF27051D1C90F88C000BB10F /* modal_ftux_mode.png */; };
-		FF2705221C90F88C000BB10F /* modal_remote_failed.png in Resources */ = {isa = PBXBuildFile; fileRef = FF27051E1C90F88C000BB10F /* modal_remote_failed.png */; };
-		FF2705231C90F88C000BB10F /* modal_remote_hero.png in Resources */ = {isa = PBXBuildFile; fileRef = FF27051F1C90F88C000BB10F /* modal_remote_hero.png */; };
-		FF2705241C90F88C000BB10F /* modal_remote_paired.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2705201C90F88C000BB10F /* modal_remote_paired.png */; };
 		FF27052D1C90FB3B000BB10F /* TTModalPairingScanningView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF27052C1C90FB3B000BB10F /* TTModalPairingScanningView.m */; };
 		FF27052F1C90FB68000BB10F /* TTModalPairingScanningView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF27052E1C90FB68000BB10F /* TTModalPairingScanningView.xib */; };
 		FF2705331C9247A8000BB10F /* TTModalBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2705311C9247A8000BB10F /* TTModalBarButton.m */; };
-		FF2705361C9248F0000BB10F /* modal_bar_button_chevron.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2705351C9248F0000BB10F /* modal_bar_button_chevron.png */; };
 		FF27053A1C926D21000BB10F /* TTModalPairingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2705391C926D21000BB10F /* TTModalPairingInfo.m */; };
+		FF2705441C93A348000BB10F /* modal_bar_button_chevron.png in Resources */ = {isa = PBXBuildFile; fileRef = FF27053B1C93A348000BB10F /* modal_bar_button_chevron.png */; };
+		FF2705451C93A348000BB10F /* modal_ftux_action.png in Resources */ = {isa = PBXBuildFile; fileRef = FF27053C1C93A348000BB10F /* modal_ftux_action.png */; };
+		FF2705461C93A348000BB10F /* modal_ftux_change_action.png in Resources */ = {isa = PBXBuildFile; fileRef = FF27053D1C93A348000BB10F /* modal_ftux_change_action.png */; };
+		FF2705471C93A348000BB10F /* modal_ftux_change_mode.png in Resources */ = {isa = PBXBuildFile; fileRef = FF27053E1C93A348000BB10F /* modal_ftux_change_mode.png */; };
+		FF2705481C93A348000BB10F /* modal_ftux_doubletap.png in Resources */ = {isa = PBXBuildFile; fileRef = FF27053F1C93A348000BB10F /* modal_ftux_doubletap.png */; };
+		FF2705491C93A348000BB10F /* modal_ftux_mode.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2705401C93A348000BB10F /* modal_ftux_mode.png */; };
+		FF27054A1C93A348000BB10F /* modal_remote_failed.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2705411C93A348000BB10F /* modal_remote_failed.png */; };
+		FF27054B1C93A348000BB10F /* modal_remote_hero.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2705421C93A348000BB10F /* modal_remote_hero.png */; };
+		FF27054C1C93A348000BB10F /* modal_remote_paired.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2705431C93A348000BB10F /* modal_remote_paired.png */; };
 		FF27406F1A7C576900C55579 /* itunes_audiobook_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2740681A7C576900C55579 /* itunes_audiobook_icon.png */; };
 		FF2740701A7C576900C55579 /* itunes_genius_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2740691A7C576900C55579 /* itunes_genius_icon.png */; };
 		FF2740711A7C576900C55579 /* itunes_library_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF27406A1A7C576900C55579 /* itunes_library_icon.png */; };
@@ -229,6 +233,9 @@
 		FF8528F81A96B58700B289FD /* TTModeMusicVolumeJumpOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF8528F71A96B58700B289FD /* TTModeMusicVolumeJumpOptions.xib */; };
 		FF8528FB1A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8528FA1A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.m */; };
 		FF877CD81C6C19F1007940C3 /* TTHUDMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FF877CD71C6C19F1007940C3 /* TTHUDMenuButton.m */; };
+		FF87E9F21C9630E500682461 /* TTModalFTUXView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF87E9F01C9630E500682461 /* TTModalFTUXView.m */; };
+		FF87E9F31C9630E500682461 /* TTModalFTUXView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF87E9F11C9630E500682461 /* TTModalFTUXView.xib */; };
+		FF87E9F61C96328800682461 /* TTPairingSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = FF87E9F51C96328800682461 /* TTPairingSpinner.m */; };
 		FF8A73C61ABA69410023AA53 /* logo - 1024.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8A73C01ABA69410023AA53 /* logo - 1024.png */; };
 		FF8A73C71ABA69410023AA53 /* logo_32.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8A73C11ABA69410023AA53 /* logo_32.png */; };
 		FF8A73C81ABA69410023AA53 /* logo_64.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8A73C21ABA69410023AA53 /* logo_64.png */; };
@@ -471,19 +478,23 @@
 		FF1F13611ADC98C400B52A0D /* TTDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTDatePicker.h; sourceTree = "<group>"; };
 		FF1F13621ADC98C400B52A0D /* TTDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTDatePicker.m; sourceTree = "<group>"; };
 		FF1F13641ADC9DEC00B52A0D /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = "Turn Touch Remote/Vendor/Sparkle.framework"; sourceTree = "<group>"; };
-		FF27051D1C90F88C000BB10F /* modal_ftux_mode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_ftux_mode.png; sourceTree = "<group>"; };
-		FF27051E1C90F88C000BB10F /* modal_remote_failed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_remote_failed.png; sourceTree = "<group>"; };
-		FF27051F1C90F88C000BB10F /* modal_remote_hero.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_remote_hero.png; sourceTree = "<group>"; };
-		FF2705201C90F88C000BB10F /* modal_remote_paired.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_remote_paired.png; sourceTree = "<group>"; };
 		FF27052B1C90FB3B000BB10F /* TTModalPairingScanningView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModalPairingScanningView.h; path = Views/Pairing/TTModalPairingScanningView.h; sourceTree = "<group>"; };
 		FF27052C1C90FB3B000BB10F /* TTModalPairingScanningView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModalPairingScanningView.m; path = Views/Pairing/TTModalPairingScanningView.m; sourceTree = "<group>"; };
 		FF27052E1C90FB68000BB10F /* TTModalPairingScanningView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModalPairingScanningView.xib; path = Views/Pairing/TTModalPairingScanningView.xib; sourceTree = "<group>"; };
 		FF2705301C9247A8000BB10F /* TTModalBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModalBarButton.h; path = Views/Pairing/TTModalBarButton.h; sourceTree = "<group>"; };
 		FF2705311C9247A8000BB10F /* TTModalBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModalBarButton.m; path = Views/Pairing/TTModalBarButton.m; sourceTree = "<group>"; };
-		FF2705351C9248F0000BB10F /* modal_bar_button_chevron.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_bar_button_chevron.png; sourceTree = "<group>"; };
 		FF2705371C926BAC000BB10F /* TTPanelStates.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTPanelStates.h; sourceTree = "<group>"; };
 		FF2705381C926D21000BB10F /* TTModalPairingInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModalPairingInfo.h; path = Views/Pairing/TTModalPairingInfo.h; sourceTree = "<group>"; };
 		FF2705391C926D21000BB10F /* TTModalPairingInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModalPairingInfo.m; path = Views/Pairing/TTModalPairingInfo.m; sourceTree = "<group>"; };
+		FF27053B1C93A348000BB10F /* modal_bar_button_chevron.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_bar_button_chevron.png; sourceTree = "<group>"; };
+		FF27053C1C93A348000BB10F /* modal_ftux_action.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_ftux_action.png; sourceTree = "<group>"; };
+		FF27053D1C93A348000BB10F /* modal_ftux_change_action.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_ftux_change_action.png; sourceTree = "<group>"; };
+		FF27053E1C93A348000BB10F /* modal_ftux_change_mode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_ftux_change_mode.png; sourceTree = "<group>"; };
+		FF27053F1C93A348000BB10F /* modal_ftux_doubletap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_ftux_doubletap.png; sourceTree = "<group>"; };
+		FF2705401C93A348000BB10F /* modal_ftux_mode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_ftux_mode.png; sourceTree = "<group>"; };
+		FF2705411C93A348000BB10F /* modal_remote_failed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_remote_failed.png; sourceTree = "<group>"; };
+		FF2705421C93A348000BB10F /* modal_remote_hero.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_remote_hero.png; sourceTree = "<group>"; };
+		FF2705431C93A348000BB10F /* modal_remote_paired.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_remote_paired.png; sourceTree = "<group>"; };
 		FF2740681A7C576900C55579 /* itunes_audiobook_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_audiobook_icon.png; sourceTree = "<group>"; };
 		FF2740691A7C576900C55579 /* itunes_genius_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_genius_icon.png; sourceTree = "<group>"; };
 		FF27406A1A7C576900C55579 /* itunes_library_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_library_icon.png; sourceTree = "<group>"; };
@@ -708,6 +719,11 @@
 		FF8528FA1A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeMusicVolumeJumpOptions.m; path = Modes/Music/TTModeMusicVolumeJumpOptions.m; sourceTree = "<group>"; };
 		FF877CD61C6C19F1007940C3 /* TTHUDMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTHUDMenuButton.h; sourceTree = "<group>"; };
 		FF877CD71C6C19F1007940C3 /* TTHUDMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTHUDMenuButton.m; sourceTree = "<group>"; };
+		FF87E9EF1C9630E500682461 /* TTModalFTUXView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModalFTUXView.h; path = Views/FTUX/TTModalFTUXView.h; sourceTree = "<group>"; };
+		FF87E9F01C9630E500682461 /* TTModalFTUXView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModalFTUXView.m; path = Views/FTUX/TTModalFTUXView.m; sourceTree = "<group>"; };
+		FF87E9F11C9630E500682461 /* TTModalFTUXView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModalFTUXView.xib; path = Views/FTUX/TTModalFTUXView.xib; sourceTree = "<group>"; };
+		FF87E9F41C96328800682461 /* TTPairingSpinner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTPairingSpinner.h; path = Views/Pairing/TTPairingSpinner.h; sourceTree = "<group>"; };
+		FF87E9F51C96328800682461 /* TTPairingSpinner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTPairingSpinner.m; path = Views/Pairing/TTPairingSpinner.m; sourceTree = "<group>"; };
 		FF8A73C01ABA69410023AA53 /* logo - 1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo - 1024.png"; sourceTree = "<group>"; };
 		FF8A73C11ABA69410023AA53 /* logo_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_32.png; sourceTree = "<group>"; };
 		FF8A73C21ABA69410023AA53 /* logo_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_64.png; sourceTree = "<group>"; };
@@ -1115,16 +1131,20 @@
 		FF27051C1C90F88C000BB10F /* modal */ = {
 			isa = PBXGroup;
 			children = (
-				FF27051D1C90F88C000BB10F /* modal_ftux_mode.png */,
-				FF27051E1C90F88C000BB10F /* modal_remote_failed.png */,
-				FF27051F1C90F88C000BB10F /* modal_remote_hero.png */,
-				FF2705201C90F88C000BB10F /* modal_remote_paired.png */,
-				FF2705351C9248F0000BB10F /* modal_bar_button_chevron.png */,
+				FF27053B1C93A348000BB10F /* modal_bar_button_chevron.png */,
+				FF27053C1C93A348000BB10F /* modal_ftux_action.png */,
+				FF27053D1C93A348000BB10F /* modal_ftux_change_action.png */,
+				FF27053E1C93A348000BB10F /* modal_ftux_change_mode.png */,
+				FF27053F1C93A348000BB10F /* modal_ftux_doubletap.png */,
+				FF2705401C93A348000BB10F /* modal_ftux_mode.png */,
+				FF2705411C93A348000BB10F /* modal_remote_failed.png */,
+				FF2705421C93A348000BB10F /* modal_remote_hero.png */,
+				FF2705431C93A348000BB10F /* modal_remote_paired.png */,
 			);
 			path = modal;
 			sourceTree = "<group>";
 		};
-		FF27052A1C90FAED000BB10F /* Modal: Pairing */ = {
+		FF27052A1C90FAED000BB10F /* Modal */ = {
 			isa = PBXGroup;
 			children = (
 				FF27052B1C90FB3B000BB10F /* TTModalPairingScanningView.h */,
@@ -1132,10 +1152,15 @@
 				FF27052E1C90FB68000BB10F /* TTModalPairingScanningView.xib */,
 				FF2705381C926D21000BB10F /* TTModalPairingInfo.h */,
 				FF2705391C926D21000BB10F /* TTModalPairingInfo.m */,
+				FF87E9F41C96328800682461 /* TTPairingSpinner.h */,
+				FF87E9F51C96328800682461 /* TTPairingSpinner.m */,
 				FF2705301C9247A8000BB10F /* TTModalBarButton.h */,
 				FF2705311C9247A8000BB10F /* TTModalBarButton.m */,
+				FF87E9EF1C9630E500682461 /* TTModalFTUXView.h */,
+				FF87E9F01C9630E500682461 /* TTModalFTUXView.m */,
+				FF87E9F11C9630E500682461 /* TTModalFTUXView.xib */,
 			);
-			name = "Modal: Pairing";
+			name = Modal;
 			sourceTree = "<group>";
 		};
 		FF2740671A7C576900C55579 /* iTunes */ = {
@@ -1379,7 +1404,7 @@
 				FF5295DC1AD610C4007DDC02 /* Settings */,
 				FF904BA81BEBFCE700AD00F3 /* DFU */,
 				FFABAB7E1C2777B400AD5620 /* Batch Actions */,
-				FF27052A1C90FAED000BB10F /* Modal: Pairing */,
+				FF27052A1C90FAED000BB10F /* Modal */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -2116,7 +2141,7 @@
 				FF6135601C61CDDC00F431D7 /* music_volume_down.png in Resources */,
 				FF6135541C61CDDC00F431D7 /* chevron_south.png in Resources */,
 				FF01CA6F1C46DCC200F83A73 /* mode_mac.png in Resources */,
-				FF2705241C90F88C000BB10F /* modal_remote_paired.png in Resources */,
+				FF27054A1C93A348000BB10F /* modal_remote_failed.png in Resources */,
 				FF27407B1A7C5BC200C55579 /* itunes_tv_icon.png in Resources */,
 				FF01CA791C46DCC200F83A73 /* mode_timer.png in Resources */,
 				FF93604C196DF0B600675B7B /* Effra_Rg.ttf in Resources */,
@@ -2139,8 +2164,10 @@
 				FF6135511C61CDDC00F431D7 /* alarm_snooze.png in Resources */,
 				FF5296191AD63425007DDC02 /* TTSettingsAboutViewController.xib in Resources */,
 				FF01CA811C46DCC200F83A73 /* settings@2x.png in Resources */,
+				FF27054B1C93A348000BB10F /* modal_remote_hero.png in Resources */,
 				FF80132B186CF92000955218 /* TTPanel.xib in Resources */,
 				FF8A73C61ABA69410023AA53 /* logo - 1024.png in Resources */,
+				FF27054C1C93A348000BB10F /* modal_remote_paired.png in Resources */,
 				FF01CA841C46DCC200F83A73 /* television.png in Resources */,
 				FF2740731A7C576900C55579 /* itunes_podcast_icon.png in Resources */,
 				FF8C834717AB14B5000166FC /* Credits.rtf in Resources */,
@@ -2158,14 +2185,15 @@
 				FF5295C11AD4D2BE007DDC02 /* title@2x.png in Resources */,
 				FF2740721A7C576900C55579 /* itunes_playlist_icon.png in Resources */,
 				FF2C2E4A1C53077300FAD7E2 /* Info.plist in Resources */,
-				FF2705361C9248F0000BB10F /* modal_bar_button_chevron.png in Resources */,
 				FF8A73CA1ABA69410023AA53 /* logo_256.png in Resources */,
 				FF01CA761C46DCC200F83A73 /* mode_presentation.png in Resources */,
 				FF52960F1AD631D1007DDC02 /* TTSettingsDevicesViewController.xib in Resources */,
 				FF6135611C61CDDC00F431D7 /* music_volume_mute.png in Resources */,
 				FF01CA601C46DCC200F83A73 /* cog.png in Resources */,
+				FF2705461C93A348000BB10F /* modal_ftux_change_action.png in Resources */,
 				FF01CA691C46DCC200F83A73 /* macbookpro.png in Resources */,
 				FF2C2E6F1C5479E000FAD7E2 /* TTModeWemoSwitchOptions.xib in Resources */,
+				FF87E9F31C9630E500682461 /* TTModalFTUXView.xib in Resources */,
 				FFA1D4DB1A3B89A4003EA0BC /* TTModeHUDView.xib in Resources */,
 				FF2C2E6A1C546D6E00FAD7E2 /* TTModeWemoOptions.xib in Resources */,
 				FF8A73CB1ABA69410023AA53 /* logo_512.png in Resources */,
@@ -2184,7 +2212,6 @@
 				FF557AD61C4DBB4A005FB7FD /* TTModeNestAuthViewController.xib in Resources */,
 				FF913D271924366C005C336F /* TTModeAlarmClock.plist in Resources */,
 				FF8A73C81ABA69410023AA53 /* logo_64.png in Resources */,
-				FF2705221C90F88C000BB10F /* modal_remote_failed.png in Resources */,
 				FF27407A1A7C5BC200C55579 /* itunes_movies_icon.png in Resources */,
 				FF6135591C61CDDC00F431D7 /* hue_sunset.png in Resources */,
 				FF2740751A7C576900C55579 /* originals.png in Resources */,
@@ -2200,12 +2227,15 @@
 				FF01CA781C46DCC200F83A73 /* mode_spotify.png in Resources */,
 				FF01CA711C46DCC200F83A73 /* mode_morning.png in Resources */,
 				FF61355F1C61CDDC00F431D7 /* music_volume.png in Resources */,
+				FF2705441C93A348000BB10F /* modal_bar_button_chevron.png in Resources */,
 				FF01CA5C1C46DCC200F83A73 /* button_plus.png in Resources */,
 				FF6135531C61CDDC00F431D7 /* chevron_north.png in Resources */,
-				FF2705211C90F88C000BB10F /* modal_ftux_mode.png in Resources */,
+				FF2705451C93A348000BB10F /* modal_ftux_action.png in Resources */,
 				FF91709B1AF9B19100FAAC88 /* south tone.wav in Resources */,
 				FFB5FF431A6723EA00DF617A /* TTModeHue.plist in Resources */,
+				FF2705491C93A348000BB10F /* modal_ftux_mode.png in Resources */,
 				FF01CA7C1C46DCC200F83A73 /* mode_wemo.png in Resources */,
+				FF2705481C93A348000BB10F /* modal_ftux_doubletap.png in Resources */,
 				FF2C2E641C546D6E00FAD7E2 /* TTModeWemoConnect.xib in Resources */,
 				FF5295DA1AD610A6007DDC02 /* RHPreferencesWindow.xib in Resources */,
 				FF01CA6A1C46DCC200F83A73 /* mode_alarm.png in Resources */,
@@ -2215,7 +2245,6 @@
 				FF61355B1C61CDDC00F431D7 /* music_pause.png in Resources */,
 				FF3641DA1A5F53DC003CC03C /* TTModeHueConnecting.xib in Resources */,
 				FF3641EB1A60BBEE003CC03C /* TTModeHueConnected.xib in Resources */,
-				FF2705231C90F88C000BB10F /* modal_remote_hero.png in Resources */,
 				FF01CA591C46DCC200F83A73 /* app_music.png in Resources */,
 				FF01CA5E1C46DCC200F83A73 /* clock b&w.png in Resources */,
 				FF8A73C91ABA69410023AA53 /* logo_128.png in Resources */,
@@ -2247,6 +2276,7 @@
 				FF2740701A7C576900C55579 /* itunes_genius_icon.png in Resources */,
 				FF01CA621C46DCC200F83A73 /* equalizer-1.png in Resources */,
 				FF01CA5D1C46DCC200F83A73 /* button_x.png in Resources */,
+				FF2705471C93A348000BB10F /* modal_ftux_change_mode.png in Resources */,
 				FF8A73C71ABA69410023AA53 /* logo_32.png in Resources */,
 				FF01CA7A1C46DCC200F83A73 /* mode_video.png in Resources */,
 				FF7305C41A5CB3EF009A852D /* TTModeHueConnect.xib in Resources */,
@@ -2296,6 +2326,7 @@
 				FFE2D47E1A51EDF000DDD413 /* TTModeHue.m in Sources */,
 				FF904BAD1BEBFD1400AD00F3 /* TTDFUView.m in Sources */,
 				FF904B4D1BE9B82200AD00F3 /* TTButtonState.m in Sources */,
+				FF87E9F61C96328800682461 /* TTPairingSpinner.m in Sources */,
 				FF01CAA71C473EC100F83A73 /* JXWebResourceLoadingBarrier.m in Sources */,
 				FFB1670E1923E61F008FA1AF /* TTTabView.m in Sources */,
 				FFA1D4CB1A3B8916003EA0BC /* TTActionHUDView.m in Sources */,
@@ -2348,6 +2379,7 @@
 				FFB5FF381A671BA200DF617A /* TTModeHueSceneEarlyEveningOptions.m in Sources */,
 				FF2C2E491C53077300FAD7E2 /* GCDAsyncUdpSocket.m in Sources */,
 				FF557A9E1C4855BD005FB7FD /* TTModeNest.m in Sources */,
+				FF87E9F21C9630E500682461 /* TTModalFTUXView.m in Sources */,
 				FFC730E81B067434003538D5 /* TTModeHueRandomOptions.m in Sources */,
 				FF7305B41A5C9C76009A852D /* DispatchQueueLogFormatter.m in Sources */,
 				FF01CAA51C473EC100F83A73 /* htmls.m in Sources */,

@@ -8,19 +8,19 @@
 
 #import <Cocoa/Cocoa.h>
 #import "TTAppDelegate.h"
+#import "TTPairingSpinner.h"
 
 @interface TTModalPairingScanningView : NSViewController    {
     TTAppDelegate *appDelegate;
     NSTimer *countdownTimer;
     NSTimer *searchingTimer;
-    NSTimeInterval spinnerBeginTime;
 }
 
 @property (nonatomic) IBOutlet NSBox *titleBox;
 @property (nonatomic) IBOutlet NSProgressIndicator *countdownIndicator;
 @property (nonatomic) IBOutlet NSView *diamondViewPlaceholder;
 @property (nonatomic) IBOutlet TTDiamondView *diamondView;
-@property (nonatomic) IBOutlet NSView *spinnerScanning;
+@property (nonatomic) IBOutlet TTPairingSpinner *spinnerScanning;
 @property (nonatomic) IBOutlet NSTextField *labelScanning;
 @property (nonatomic) IBOutlet NSButton *closeButton;
 

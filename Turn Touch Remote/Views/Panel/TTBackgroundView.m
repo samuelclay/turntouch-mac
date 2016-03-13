@@ -449,7 +449,8 @@
         // Don't switch away from pairing search...
         return;
     }
-    if (_modalPairing == MODAL_PAIRING_FAILURE && modalPairing != MODAL_PAIRING_SEARCH) {
+    if (_modalPairing == MODAL_PAIRING_FAILURE &&
+        (modalPairing != MODAL_PAIRING_SEARCH || panelModal != PANEL_MODAL_PAIRING)) {
         // Don't switch into failure if not searching...
         return;
     }

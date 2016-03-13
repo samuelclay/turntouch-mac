@@ -69,8 +69,8 @@
                                     <constraint firstAttribute="width" constant="272" id="gAp-Yq-fe1"/>
                                 </constraints>
                             </customView>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="qq2-dq-n1R">
-                                <rect key="frame" x="194" y="31.5" width="39" height="39"/>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="qq2-dq-n1R" customClass="TTPairingSpinner">
+                                <rect key="frame" x="194" y="31" width="39" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="39" id="4yA-vd-77I"/>
                                     <constraint firstAttribute="height" constant="39" id="OMa-Zu-jA1"/>
