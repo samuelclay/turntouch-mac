@@ -21,51 +21,79 @@
     if (self = [super init]) {
         appDelegate = (TTAppDelegate *)[NSApp delegate];
         modalPairing = _modalPairing;
+        modalFTUX = 0;
         self.translatesAutoresizingMaskIntoConstraints = NO;
         
-        [self resetBackgroundColor];
-        
-        if (modalPairing == MODAL_PAIRING_SEARCH) {
-            // Just need the background color, no actual button
-            [self addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:0 multiplier:1.0f constant:12.0f]];
-            return self;
-        }
-        
-        buttonLabel = [[NSTextField alloc] init];
-        
-        if (modalPairing == MODAL_PAIRING_INTRO) {
-            buttonLabel.stringValue = @"Pair Remote";
-        } else if (modalPairing == MODAL_PAIRING_SUCCESS) {
-            buttonLabel.stringValue = @"Show me how it works";
-        } else if (modalPairing == MODAL_PAIRING_FAILURE) {
-            buttonLabel.stringValue = @"Try again";
-        }
-        buttonLabel.editable = NO;
-        buttonLabel.bordered = NO;
-        buttonLabel.backgroundColor = [NSColor clearColor];
-        buttonLabel.font = [NSFont fontWithName:@"Effra" size:16.f];
-        buttonLabel.textColor = NSColorFromRGB(0xFFFFFF);
-        buttonLabel.translatesAutoresizingMaskIntoConstraints = NO;
-        [buttonLabel sizeToFit];
-        [self addSubview:buttonLabel];
-        
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:buttonLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:buttonLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0f constant:20.0f]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:buttonLabel attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0f constant:-20.0f]];
-        
-        chevronImage = [[NSImageView alloc] init];
-        chevronImage.image = [NSImage imageNamed:@"modal_bar_button_chevron"];
-        chevronImage.translatesAutoresizingMaskIntoConstraints = NO;
-        [self addSubview:chevronImage];
-        
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:chevronImage attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.0f constant:2.0f]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:chevronImage attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:buttonLabel attribute:NSLayoutAttributeRight multiplier:1.0f constant:2.0f]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:chevronImage attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:0 multiplier:1.0f constant:12.0f]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:chevronImage attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:0 multiplier:1.0f constant:14.0f]];
-        
-        [self createTrackingArea];
+        [self commonInit];
     }
     return self;
+}
+
+- (instancetype)initWithFTUX:(TTModalFTUX)_modalFTUX {
+    if (self = [super init]) {
+        appDelegate = (TTAppDelegate *)[NSApp delegate];
+        modalPairing = 0;
+        modalFTUX = _modalFTUX;
+        self.translatesAutoresizingMaskIntoConstraints = NO;
+        
+        [self commonInit];
+    }
+    return self;
+}
+
+- (void)commonInit {
+    
+    [self resetBackgroundColor];
+    
+    if (modalPairing == MODAL_PAIRING_SEARCH) {
+        // Just need the background color, no actual button
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:0 multiplier:1.0f constant:12.0f]];
+        return;
+    }
+    
+    buttonLabel = [[NSTextField alloc] init];
+    
+    if (modalPairing == MODAL_PAIRING_INTRO) {
+        buttonLabel.stringValue = @"Pair Remote";
+    } else if (modalPairing == MODAL_PAIRING_SUCCESS) {
+        buttonLabel.stringValue = @"Show me how it works";
+    } else if (modalPairing == MODAL_PAIRING_FAILURE) {
+        buttonLabel.stringValue = @"Try again";
+    } else if (modalFTUX == MODAL_FTUX_INTRO) {
+        buttonLabel.stringValue = @"Continue";
+    } else if (modalFTUX == MODAL_FTUX_ACTIONS) {
+        buttonLabel.stringValue = @"Continue";
+    } else if (modalFTUX == MODAL_FTUX_MODES) {
+        buttonLabel.stringValue = @"Continue";
+    } else if (modalFTUX == MODAL_FTUX_BATCHACTIONS) {
+        buttonLabel.stringValue = @"Continue";
+    } else if (modalFTUX == MODAL_FTUX_HUD) {
+        buttonLabel.stringValue = @"That's all there is to it";
+    }
+    buttonLabel.editable = NO;
+    buttonLabel.bordered = NO;
+    buttonLabel.backgroundColor = [NSColor clearColor];
+    buttonLabel.font = [NSFont fontWithName:@"Effra" size:16.f];
+    buttonLabel.textColor = NSColorFromRGB(0xFFFFFF);
+    buttonLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [buttonLabel sizeToFit];
+    [self addSubview:buttonLabel];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:buttonLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:buttonLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0f constant:20.0f]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:buttonLabel attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0f constant:-20.0f]];
+    
+    chevronImage = [[NSImageView alloc] init];
+    chevronImage.image = [NSImage imageNamed:@"modal_bar_button_chevron"];
+    chevronImage.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:chevronImage];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:chevronImage attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.0f constant:2.0f]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:chevronImage attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:buttonLabel attribute:NSLayoutAttributeRight multiplier:1.0f constant:2.0f]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:chevronImage attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:0 multiplier:1.0f constant:12.0f]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:chevronImage attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:0 multiplier:1.0f constant:14.0f]];
+    
+    [self createTrackingArea];
 }
 
 - (void)resetBackgroundColor {
@@ -77,6 +105,8 @@
         self.backgroundColor = NSColorFromRGB(0x2FB789);
     } else if (modalPairing == MODAL_PAIRING_FAILURE) {
         self.backgroundColor = NSColorFromRGB(0xFFCA44);
+    } else if (modalFTUX) {
+        self.backgroundColor = NSColorFromRGB(0x4383C0);
     }
 }
 
@@ -109,6 +139,8 @@
         self.backgroundColor = NSColorFromRGB(0x65C4A1);
     } else if (modalPairing == MODAL_PAIRING_FAILURE) {
         self.backgroundColor = NSColorFromRGB(0xFDD375);
+    } else if (modalFTUX) {
+        self.backgroundColor = NSColorFromRGB(0x6B9DCB);
     }
     [self setNeedsDisplay:YES];
 }
@@ -127,6 +159,8 @@
         self.backgroundColor = NSColorFromRGB(0x36A07A);
     } else if (modalPairing == MODAL_PAIRING_FAILURE) {
         self.backgroundColor = NSColorFromRGB(0xE4B449);
+    } else if (modalFTUX) {
+        self.backgroundColor = NSColorFromRGB(0x396C9A);
     }
 
     [self setNeedsDisplay:YES];
@@ -150,6 +184,16 @@
         [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_FTUX];
     } else if (modalPairing == MODAL_PAIRING_FAILURE) {
         [appDelegate.panelController.backgroundView switchPanelModalPairing:MODAL_PAIRING_SEARCH];
+    } else if (modalFTUX == MODAL_FTUX_INTRO) {
+        [appDelegate.panelController.backgroundView switchPanelModalFTUX:MODAL_FTUX_ACTIONS];
+    } else if (modalFTUX == MODAL_FTUX_ACTIONS) {
+        [appDelegate.panelController.backgroundView switchPanelModalFTUX:MODAL_FTUX_MODES];
+    } else if (modalFTUX == MODAL_FTUX_MODES) {
+        [appDelegate.panelController.backgroundView switchPanelModalFTUX:MODAL_FTUX_BATCHACTIONS];
+    } else if (modalFTUX == MODAL_FTUX_BATCHACTIONS) {
+        [appDelegate.panelController.backgroundView switchPanelModalFTUX:MODAL_FTUX_HUD];
+    } else if (modalFTUX == MODAL_FTUX_HUD) {
+        [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_APP];
     }
 }
 

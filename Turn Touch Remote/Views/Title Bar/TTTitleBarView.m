@@ -224,6 +224,12 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
     [menuItem setTarget:self];
     [settingsMenu addItem:menuItem];
 
+    menuItem = [[NSMenuItem alloc] initWithTitle:@"How it works"
+                                          action:@selector(openFTUXDialog:)
+                                   keyEquivalent:@""];
+    [menuItem setTarget:self];
+    [settingsMenu addItem:menuItem];
+    
     menuItem = [[NSMenuItem alloc] initWithTitle:@"Contact support"
                                           action:@selector(openSupportDialog:)
                                    keyEquivalent:@""];
@@ -268,6 +274,10 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
 
 - (void)openPairingDialog:(id)sender {
     [appDelegate showPreferences:@"pairing"];
+}
+
+- (void)openFTUXDialog:(id)sender {
+    [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_FTUX];
 }
 
 - (void)openAboutDialog:(id)sender {

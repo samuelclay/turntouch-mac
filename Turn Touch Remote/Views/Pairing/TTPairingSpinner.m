@@ -12,16 +12,12 @@
 @implementation TTPairingSpinner
 
 - (void)awakeFromNib {
-    NSLog(@"Initing spinner");
     spinnerBeginTime = CACurrentMediaTime();
     self.translatesAutoresizingMaskIntoConstraints = NO;
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
-    NSLog(@"Drawing spinner");
     [super drawRect:dirtyRect];
-    
-    [self.layer removeAllAnimations];
     
     for (CALayer *layer in [self.layer.sublayers copy]) {
         [layer removeFromSuperlayer];

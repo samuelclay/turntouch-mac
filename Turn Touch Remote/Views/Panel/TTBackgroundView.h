@@ -21,6 +21,7 @@
 #import "TTFooterView.h"
 #import "TTBatchActionStackView.h"
 #import "TTModalPairingScanningView.h"
+#import "TTModalFTUXView.h"
 #import "TTModalBarButton.h"
 #import "TTModalPairingInfo.h"
 #import "TTPanelStates.h"
@@ -38,9 +39,10 @@
 @class TTDFUView;
 @class TTAddActionButtonView;
 @class TTBatchActionStackView;
+@class TTModalPairingInfo;
 @class TTModalPairingScanningView;
 @class TTModalBarButton;
-@class TTModalPairingInfo;
+@class TTModalFTUXView;
 
 @interface TTBackgroundView : NSStackView <NSStackViewDelegate> {
     TTAppDelegate *appDelegate;
@@ -70,14 +72,16 @@
 @property (nonatomic) IBOutlet TTAddActionButtonView *addActionButtonView;
 @property (nonatomic) IBOutlet TTFooterView *footerView;
 @property (nonatomic) IBOutlet TTBatchActionStackView *batchActionStackView;
-@property (nonatomic) IBOutlet TTModalPairingScanningView *modalPairingScanningView;
-@property (nonatomic) IBOutlet TTModalBarButton *modalBarButton;
 @property (nonatomic) IBOutlet TTModalPairingInfo *modalPairingInfo;
+@property (nonatomic) IBOutlet TTModalPairingScanningView *modalPairingScanningView;
+@property (nonatomic) IBOutlet TTModalFTUXView *modalFTUXView;
+@property (nonatomic) IBOutlet TTModalBarButton *modalBarButton;
 @property (nonatomic) NSLayoutConstraint *optionsConstraint;
 
 - (void)resetPosition;
 - (void)adjustOptionsHeight:(NSView *)optionsDetailView;
 - (void)switchPanelModal:(TTPanelModal)_panelModal;
 - (void)switchPanelModalPairing:(TTModalPairing)_modalPairing;
+- (void)switchPanelModalFTUX:(TTModalFTUX)_modalFTUX;
 
 @end

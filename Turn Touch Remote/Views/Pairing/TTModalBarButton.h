@@ -14,6 +14,7 @@
 @interface TTModalBarButton : TTFooterView {
     TTAppDelegate *appDelegate;
     TTModalPairing modalPairing;
+    TTModalFTUX modalFTUX;
     NSTrackingArea *trackingArea;
 }
 
@@ -21,5 +22,6 @@
 @property (nonatomic) IBOutlet NSImageView *chevronImage;
 
 - (instancetype)initWithPairing:(TTModalPairing)_modalPairing;
+- (instancetype)initWithFTUX:(TTModalFTUX)_modalFTUX;
 
 @end

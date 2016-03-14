@@ -44,6 +44,7 @@
 @synthesize modalPairingScanningView;
 @synthesize modalBarButton;
 @synthesize modalPairingInfo;
+@synthesize modalFTUXView;
 
 #pragma mark -
 
@@ -86,7 +87,15 @@
         [self switchPanelModalApp];
     } else if (panelModal == PANEL_MODAL_PAIRING) {
         [self switchPanelModalPairing:MODAL_PAIRING_SEARCH];
+    } else if (panelModal == PANEL_MODAL_FTUX) {
+        [self switchPanelModalFTUX:MODAL_FTUX_INTRO];
     }
+}
+
+- (void)cleanup {
+    [self cleanupPanelModalPairing];
+    [self cleanupPanelModalFTUX];
+    [self removeConstraints:[self constraints]];
 }
 
 - (void)addArrowAndTitleConstraints {
@@ -127,9 +136,8 @@
 
 - (void)switchPanelModalApp {
     panelModal = PANEL_MODAL_APP;
-    [self cleanupPanelModalPairing];
-    [self removeConstraints:[self constraints]];
-
+    [self cleanup];
+    
     [self setViews:@[arrowView,
                      titleBarView,
                      dfuView,
@@ -455,8 +463,7 @@
         return;
     }
     
-    [self cleanupPanelModalPairing];
-    [self removeConstraints:[self constraints]];
+    [self cleanup];
 
     panelModal = PANEL_MODAL_PAIRING;
     modalPairing = _modalPairing;
@@ -485,6 +492,30 @@
 
 - (void)cleanupPanelModalPairing {
     modalPairingScanningView = nil;
+    modalBarButton = nil;
+}
+
+#pragma mark - FTUX Modal
+
+- (void)switchPanelModalFTUX:(TTModalFTUX)_modalFTUX {
+    [self cleanup];
+    
+    panelModal = PANEL_MODAL_FTUX;
+    modalFTUX = _modalFTUX;
+    modalBarButton = [[TTModalBarButton alloc] initWithFTUX:modalFTUX];
+    modalFTUXView = [[TTModalFTUXView alloc] initWithFTUX:modalFTUX];
+    
+    [self setViews:@[arrowView,
+                     titleBarView,
+                     modalFTUXView.view,
+                     modalBarButton]
+         inGravity:NSStackViewGravityTop];
+
+    [self addArrowAndTitleConstraints];
+}
+
+- (void)cleanupPanelModalFTUX {
+    modalFTUXView = nil;
     modalBarButton = nil;
 }
 
