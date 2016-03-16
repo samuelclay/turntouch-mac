@@ -13,18 +13,18 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView misplaced="YES" id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="426" height="372"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="426" height="374"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <box misplaced="YES" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ooR-EN-Ndh">
-                    <rect key="frame" x="0.0" y="0.0" width="426" height="372"/>
+                <box title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ooR-EN-Ndh">
+                    <rect key="frame" x="0.0" y="0.0" width="426" height="374"/>
                     <view key="contentView" id="rXD-cl-H6D">
-                        <rect key="frame" x="0.0" y="0.0" width="426" height="372"/>
+                        <rect key="frame" x="0.0" y="0.0" width="426" height="374"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rHl-bY-ZL0">
-                                <rect key="frame" x="376" y="322" width="50" height="50"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rHl-bY-ZL0">
+                                <rect key="frame" x="376" y="324" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="Vdp-pO-rIJ"/>
                                     <constraint firstAttribute="height" constant="50" id="g7p-CK-GkD"/>
@@ -37,13 +37,13 @@
                                     <action selector="closeModal:" target="-2" id="LId-JI-Ty3"/>
                                 </connections>
                             </button>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hNn-X2-ufs">
-                                <rect key="frame" x="113" y="124" width="200" height="200"/>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hNn-X2-ufs">
+                                <rect key="frame" x="113" y="126" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="LYt-dT-ULY"/>
                                     <constraint firstAttribute="width" constant="200" id="aoa-Jv-TYm"/>
                                 </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="F6981C44-E9FB-410B-84FA-926CE4A34E35" id="IDJ-49-a18"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="7836CBF8-6AFF-4167-8FFF-7B949F5F122A" id="IDJ-49-a18"/>
                             </imageView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pNw-4t-ahN">
                                 <rect key="frame" x="132" y="41" width="163" height="32"/>
@@ -55,8 +55,8 @@
                                     <action selector="checkForUpdates:" target="fLK-mV-B8g" id="enJ-9r-YXj"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WIA-tT-buc">
-                                <rect key="frame" x="173" y="81" width="81" height="19"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WIA-tT-buc">
+                                <rect key="frame" x="170" y="81" width="87" height="21"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Version 1.0.0" id="poD-Et-zEB">
                                     <font key="font" size="14" name="Effra-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -91,7 +91,7 @@
         <customObject id="fLK-mV-B8g" customClass="SUUpdater"/>
     </objects>
     <resources>
-        <image name="F6981C44-E9FB-410B-84FA-926CE4A34E35" width="308" height="322">
+        <image name="7836CBF8-6AFF-4167-8FFF-7B949F5F122A" width="308" height="322">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA

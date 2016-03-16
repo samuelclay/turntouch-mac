@@ -47,6 +47,7 @@
 @synthesize modalFTUXView;
 @synthesize modalFTUX;
 @synthesize modalAbout;
+@synthesize modalDevices;
 
 #pragma mark -
 
@@ -93,6 +94,8 @@
         [self switchPanelModalFTUX:MODAL_FTUX_INTRO];
     } else if (panelModal == PANEL_MODAL_ABOUT) {
         [self switchPanelModalAbout];
+    } else if (panelModal == PANEL_MODAL_DEVICES) {
+        [self switchPanelModalDevices];
     }
 }
 
@@ -535,6 +538,19 @@
     [self setViews:@[arrowView,
                      titleBarView,
                      modalAbout.view,
+                     footerView]
+         inGravity:NSStackViewGravityTop];
+    [self addArrowAndTitleConstraints];
+}
+
+#pragma mark - Devices Modal
+
+- (void)switchPanelModalDevices {
+    panelModal = PANEL_MODAL_DEVICES;
+    modalDevices = [[TTModalDevices alloc] init];
+    [self setViews:@[arrowView,
+                     titleBarView,
+                     modalDevices.view,
                      footerView]
          inGravity:NSStackViewGravityTop];
     [self addArrowAndTitleConstraints];

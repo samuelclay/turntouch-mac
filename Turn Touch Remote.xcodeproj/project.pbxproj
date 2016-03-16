@@ -251,6 +251,8 @@
 		FF8D1AA61C98F292006AA1A2 /* TTModalAbout.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8D1AA41C98F292006AA1A2 /* TTModalAbout.m */; };
 		FF8D1AA71C98F292006AA1A2 /* TTModalAbout.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF8D1AA51C98F292006AA1A2 /* TTModalAbout.xib */; };
 		FF8D1AA91C98F5D3006AA1A2 /* logo_white_with_title.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8D1AA81C98F5D3006AA1A2 /* logo_white_with_title.png */; };
+		FF8D1AAD1C98FE1E006AA1A2 /* TTModalDevices.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8D1AAB1C98FE1E006AA1A2 /* TTModalDevices.m */; };
+		FF8D1AAE1C98FE1E006AA1A2 /* TTModalDevices.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF8D1AAC1C98FE1E006AA1A2 /* TTModalDevices.xib */; };
 		FF904B391BE9B78800AD00F3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF904B381BE9B78800AD00F3 /* Images.xcassets */; };
 		FF904B3C1BE9B7F500AD00F3 /* TTActionHUDWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B3B1BE9B7F500AD00F3 /* TTActionHUDWindowController.m */; };
 		FF904B3F1BE9B80100AD00F3 /* TTModeHUDWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B3E1BE9B80100AD00F3 /* TTModeHUDWindowController.m */; };
@@ -750,6 +752,9 @@
 		FF8D1AA41C98F292006AA1A2 /* TTModalAbout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModalAbout.m; path = Views/Settings/TTModalAbout.m; sourceTree = "<group>"; };
 		FF8D1AA51C98F292006AA1A2 /* TTModalAbout.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModalAbout.xib; path = Views/Settings/TTModalAbout.xib; sourceTree = "<group>"; };
 		FF8D1AA81C98F5D3006AA1A2 /* logo_white_with_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_white_with_title.png; sourceTree = "<group>"; };
+		FF8D1AAA1C98FE1E006AA1A2 /* TTModalDevices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModalDevices.h; path = Views/Settings/TTModalDevices.h; sourceTree = "<group>"; };
+		FF8D1AAB1C98FE1E006AA1A2 /* TTModalDevices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModalDevices.m; path = Views/Settings/TTModalDevices.m; sourceTree = "<group>"; };
+		FF8D1AAC1C98FE1E006AA1A2 /* TTModalDevices.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModalDevices.xib; path = Views/Settings/TTModalDevices.xib; sourceTree = "<group>"; };
 		FF904B381BE9B78800AD00F3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Resources/Images.xcassets; sourceTree = "<group>"; };
 		FF904B3A1BE9B7F500AD00F3 /* TTActionHUDWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTActionHUDWindowController.h; path = "Turn Touch Remote/Controllers/TTActionHUDWindowController.h"; sourceTree = SOURCE_ROOT; };
 		FF904B3B1BE9B7F500AD00F3 /* TTActionHUDWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTActionHUDWindowController.m; path = "Turn Touch Remote/Controllers/TTActionHUDWindowController.m"; sourceTree = SOURCE_ROOT; };
@@ -1174,6 +1179,9 @@
 				FF8D1AA31C98F292006AA1A2 /* TTModalAbout.h */,
 				FF8D1AA41C98F292006AA1A2 /* TTModalAbout.m */,
 				FF8D1AA51C98F292006AA1A2 /* TTModalAbout.xib */,
+				FF8D1AAA1C98FE1E006AA1A2 /* TTModalDevices.h */,
+				FF8D1AAB1C98FE1E006AA1A2 /* TTModalDevices.m */,
+				FF8D1AAC1C98FE1E006AA1A2 /* TTModalDevices.xib */,
 			);
 			name = Modal;
 			sourceTree = "<group>";
@@ -2252,6 +2260,7 @@
 				FFB5FF431A6723EA00DF617A /* TTModeHue.plist in Resources */,
 				FF2705491C93A348000BB10F /* modal_ftux_mode.png in Resources */,
 				FF01CA7C1C46DCC200F83A73 /* mode_wemo.png in Resources */,
+				FF8D1AAE1C98FE1E006AA1A2 /* TTModalDevices.xib in Resources */,
 				FF2705481C93A348000BB10F /* modal_ftux_doubletap.png in Resources */,
 				FF2C2E641C546D6E00FAD7E2 /* TTModeWemoConnect.xib in Resources */,
 				FF5295DA1AD610A6007DDC02 /* RHPreferencesWindow.xib in Resources */,
@@ -2386,6 +2395,7 @@
 				FF557ADA1C4ED8A0005FB7FD /* TTModeNestConnect.m in Sources */,
 				FF27052D1C90FB3B000BB10F /* TTModalPairingScanningView.m in Sources */,
 				FFABABA51C3495E500AD5620 /* TTModeWebBackgroundView.m in Sources */,
+				FF8D1AAD1C98FE1E006AA1A2 /* TTModalDevices.m in Sources */,
 				FF80131A186CF8FF00955218 /* TTDiamondView.m in Sources */,
 				FFAA4F72182D9A5F0049FFC7 /* TTModeNews.m in Sources */,
 				FF1F13631ADC98C400B52A0D /* TTDatePicker.m in Sources */,

@@ -25,6 +25,7 @@
 #import "TTModalBarButton.h"
 #import "TTModalPairingInfo.h"
 #import "TTModalAbout.h"
+#import "TTModalDevices.h"
 #import "TTPanelStates.h"
 
 @class TTAppDelegate;
@@ -45,6 +46,7 @@
 @class TTModalBarButton;
 @class TTModalFTUXView;
 @class TTModalAbout;
+@class TTModalDevices;
 
 @interface TTBackgroundView : NSStackView <NSStackViewDelegate> {
     TTAppDelegate *appDelegate;
@@ -78,6 +80,7 @@
 @property (nonatomic) IBOutlet TTModalFTUXView *modalFTUXView;
 @property (nonatomic) IBOutlet TTModalBarButton *modalBarButton;
 @property (nonatomic) IBOutlet TTModalAbout *modalAbout;
+@property (nonatomic) IBOutlet TTModalDevices *modalDevices;
 @property (nonatomic) TTModalFTUX modalFTUX;
 @property (nonatomic) NSLayoutConstraint *optionsConstraint;
 
