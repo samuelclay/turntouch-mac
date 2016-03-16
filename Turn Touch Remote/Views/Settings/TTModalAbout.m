@@ -14,9 +14,12 @@
 
 @implementation TTModalAbout
 
+@synthesize versionLabel;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     appDelegate = (TTAppDelegate *)[NSApp delegate];
+    [versionLabel setStringValue:[NSString stringWithFormat:@"Version %@", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]]];
 }
 
 - (void)closeModal:(id)sender {

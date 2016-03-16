@@ -19,32 +19,32 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="512" height="451"/>
+            <rect key="frame" x="0.0" y="0.0" width="512" height="475"/>
             <subviews>
                 <box title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Hlg-kD-cdk">
-                    <rect key="frame" x="0.0" y="0.0" width="512" height="451"/>
+                    <rect key="frame" x="0.0" y="0.0" width="512" height="475"/>
                     <view key="contentView" id="zez-Z8-iaL">
-                        <rect key="frame" x="0.0" y="0.0" width="512" height="451"/>
+                        <rect key="frame" x="0.0" y="0.0" width="512" height="475"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z5G-Fm-vks">
-                                <rect key="frame" x="62" y="58" width="388" height="24"/>
-                                <textFieldCell key="cell" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="Searching for remotes..." id="tyP-8r-fHX">
+                                <rect key="frame" x="62" y="58" width="388" height="48"/>
+                                <textFieldCell key="cell" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="Subtitle explainer gives a bit more context, esp. for those really long subtitles that stretch two lines." id="tyP-8r-fHX">
                                     <font key="font" size="16" name="Effra-Regular"/>
                                     <color key="textColor" red="0.65098039220000004" green="0.68235294120000001" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NOH-r4-kNu">
-                                <rect key="frame" x="142" y="90" width="228" height="33"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Pairing your Turn Touch" id="LXo-r6-7h1">
+                                <rect key="frame" x="185" y="114" width="142" height="33"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Title explainer" id="LXo-r6-7h1">
                                     <font key="font" size="22" name="Effra-Regular"/>
                                     <color key="textColor" red="0.40106728460000002" green="0.39912976150000001" blue="0.40300480770000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZMI-5x-WVE">
-                                <rect key="frame" x="462" y="401" width="50" height="50"/>
+                                <rect key="frame" x="462" y="425" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="QLC-nU-pas"/>
                                     <constraint firstAttribute="height" constant="50" id="eoQ-yK-pi7"/>
@@ -58,7 +58,7 @@
                                 </connections>
                             </button>
                             <imageView translatesAutoresizingMaskIntoConstraints="NO" id="End-Np-mCu">
-                                <rect key="frame" x="0.0" y="147" width="512" height="256"/>
+                                <rect key="frame" x="0.0" y="171" width="512" height="256"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="256" id="KsC-Mp-sQO"/>
                                 </constraints>

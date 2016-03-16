@@ -13,6 +13,8 @@
     TTAppDelegate *appDelegate;
 }
 
+@property (nonatomic) IBOutlet NSTextField *versionLabel;
+
 - (IBAction)closeModal:(id)sender;
 
 @end
