@@ -111,7 +111,9 @@
             [self openPanel];
         } else {
             // Comment closePanel to debug.
-            [self closePanel];
+            BOOL closed = [self closePanel];
+            if (!closed) _hasActivePanel = YES;
+
         }
     }
 }
@@ -213,8 +215,13 @@
     [animation startAnimation];
 }
 
-- (void)closePanel {
-//    return; // Enable this line to never close app. Useful for debugging
+- (BOOL)closePanel {
+    //    return NO; // Enable this line to never close app. Useful for debugging
+
+    if (self.backgroundView.panelModal == PANEL_MODAL_SUPPORT) {
+        // Don't close the window when in support
+        return NO;
+    }
     
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:PANEL_CLOSE_DURATION];
@@ -224,6 +231,8 @@
     dispatch_after(dispatch_walltime(NULL, NSEC_PER_SEC * PANEL_CLOSE_DURATION * 2), dispatch_get_main_queue(), ^{
         [self.window orderOut:nil];
     });
+    
+    return YES;
 }
 
 @end

@@ -86,6 +86,7 @@
 @property (nonatomic) IBOutlet TTModalDevices *modalDevices;
 @property (nonatomic) IBOutlet TTModalSupportView *modalSupportView;
 @property (nonatomic) TTModalFTUX modalFTUX;
+@property (nonatomic) TTPanelModal panelModal;
 @property (nonatomic) NSLayoutConstraint *optionsConstraint;
 
 - (void)resetPosition;

@@ -8,11 +8,18 @@
 
 #import <Cocoa/Cocoa.h>
 #import "TTAppDelegate.h"
+#import "TTSegmentedControl.h"
 
-@interface TTModalSupportView : NSViewController {
+@interface TTModalSupportView : NSViewController <NSTextFieldDelegate> {
     TTAppDelegate *appDelegate;
 }
 
+@property (nonatomic) IBOutlet TTSegmentedControl *supportSegmentedControl;
+@property (nonatomic) IBOutlet NSTextField *supportLabel;
+@property (nonatomic) IBOutlet NSTextField *supportComment;
+@property (nonatomic) IBOutlet NSTextField *supportEmail;
+
 - (IBAction)closeModal:(id)sender;
+- (IBAction)chooseSupportSegmentedControl:(id)sender;
 
 @end

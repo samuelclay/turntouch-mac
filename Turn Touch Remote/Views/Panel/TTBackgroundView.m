@@ -49,6 +49,7 @@
 @synthesize modalAbout;
 @synthesize modalDevices;
 @synthesize modalSupportView;
+@synthesize panelModal;
 
 #pragma mark -
 
@@ -572,7 +573,7 @@
                      modalBarButton,
                      ]
          inGravity:NSStackViewGravityTop];
-
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:modalSupportView.view attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:1.f constant:0.f]];
     [self addArrowAndTitleConstraints];
     [modalBarButton setPageSupport:MODAL_SUPPORT_QUESTION];
 }
