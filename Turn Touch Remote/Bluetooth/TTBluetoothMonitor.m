@@ -318,9 +318,9 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
         device = [foundDevices addPeripheral:peripheral];
     }
 
-    NSString *localName = [advertisementData objectForKey:CBAdvertisementDataLocalNameKey];
     bluetoothState = BT_STATE_CONNECTING_UNKNOWN;
 #ifdef DEBUG_CONNECT
+    NSString *localName = [advertisementData objectForKey:CBAdvertisementDataLocalNameKey];
     NSLog(@" --> (%X) Found bluetooth peripheral, attempting connect: %@/%@ (%@)", bluetoothState, localName, device, RSSI);
 #endif
     [self stopScan];

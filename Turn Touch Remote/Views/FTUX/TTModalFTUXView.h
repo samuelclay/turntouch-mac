@@ -9,10 +9,13 @@
 #import <Cocoa/Cocoa.h>
 #import "TTAppDelegate.h"
 #import "TTPanelStates.h"
+#import "BFPageControl.h"
+#import "TTPageIndicatorView.h"
 
-@interface TTModalFTUXView : NSViewController {
+@interface TTModalFTUXView : NSViewController <BFPageControlDelegate> {
     TTAppDelegate *appDelegate;
     TTModalFTUX modalFTUX;
+    NSMutableArray *indicatorViews;
 }
 
 @property (nonatomic) IBOutlet NSBox *box;
@@ -20,8 +23,9 @@
 @property (nonatomic) IBOutlet NSTextField *labelSubtitle;
 @property (nonatomic) IBOutlet NSImageView *imageView;
 @property (nonatomic) IBOutlet NSButton *closeButton;
+@property (nonatomic) IBOutlet NSStackView *pageControl;
 
-- (instancetype)initWithFTUX:(TTModalFTUX)modalFTUX;
+- (void)setPage:(TTModalFTUX)_modalFTUX;
 - (IBAction)closeModal:(id)sender;
 
 @end

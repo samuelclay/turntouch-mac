@@ -21,7 +21,7 @@
 @property (nonatomic) IBOutlet NSTextField *buttonLabel;
 @property (nonatomic) IBOutlet NSImageView *chevronImage;
 
-- (instancetype)initWithPairing:(TTModalPairing)_modalPairing;
-- (instancetype)initWithFTUX:(TTModalFTUX)_modalFTUX;
+- (void)setPagePairing:(TTModalPairing)_modalPairing;
+- (void)setPageFTUX:(TTModalFTUX)_modalFTUX;
 
 @end

@@ -56,7 +56,6 @@
     TTPanelModal panelModal;
     TTModalPairing modalPairing;
     TTModalFTUX modalFTUX;
-//    NSArray<NSLayoutConstraint *> *constraints;
 }
 
 @property (nonatomic) IBOutlet TTPanelArrowView *arrowView;
@@ -76,6 +75,7 @@
 @property (nonatomic) IBOutlet TTModalPairingScanningView *modalPairingScanningView;
 @property (nonatomic) IBOutlet TTModalFTUXView *modalFTUXView;
 @property (nonatomic) IBOutlet TTModalBarButton *modalBarButton;
+@property (nonatomic) TTModalFTUX modalFTUX;
 @property (nonatomic) NSLayoutConstraint *optionsConstraint;
 
 - (void)resetPosition;

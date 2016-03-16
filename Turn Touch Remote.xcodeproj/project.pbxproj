@@ -236,6 +236,7 @@
 		FF87E9F21C9630E500682461 /* TTModalFTUXView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF87E9F01C9630E500682461 /* TTModalFTUXView.m */; };
 		FF87E9F31C9630E500682461 /* TTModalFTUXView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF87E9F11C9630E500682461 /* TTModalFTUXView.xib */; };
 		FF87E9F61C96328800682461 /* TTPairingSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = FF87E9F51C96328800682461 /* TTPairingSpinner.m */; };
+		FF87E9FF1C97671E00682461 /* TTPageIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF87E9FE1C97671E00682461 /* TTPageIndicatorView.m */; };
 		FF8A73C61ABA69410023AA53 /* logo - 1024.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8A73C01ABA69410023AA53 /* logo - 1024.png */; };
 		FF8A73C71ABA69410023AA53 /* logo_32.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8A73C11ABA69410023AA53 /* logo_32.png */; };
 		FF8A73C81ABA69410023AA53 /* logo_64.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8A73C21ABA69410023AA53 /* logo_64.png */; };
@@ -724,6 +725,8 @@
 		FF87E9F11C9630E500682461 /* TTModalFTUXView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModalFTUXView.xib; path = Views/FTUX/TTModalFTUXView.xib; sourceTree = "<group>"; };
 		FF87E9F41C96328800682461 /* TTPairingSpinner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTPairingSpinner.h; path = Views/Pairing/TTPairingSpinner.h; sourceTree = "<group>"; };
 		FF87E9F51C96328800682461 /* TTPairingSpinner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTPairingSpinner.m; path = Views/Pairing/TTPairingSpinner.m; sourceTree = "<group>"; };
+		FF87E9FD1C97671E00682461 /* TTPageIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTPageIndicatorView.h; path = Views/FTUX/TTPageIndicatorView.h; sourceTree = "<group>"; };
+		FF87E9FE1C97671E00682461 /* TTPageIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTPageIndicatorView.m; path = Views/FTUX/TTPageIndicatorView.m; sourceTree = "<group>"; };
 		FF8A73C01ABA69410023AA53 /* logo - 1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo - 1024.png"; sourceTree = "<group>"; };
 		FF8A73C11ABA69410023AA53 /* logo_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_32.png; sourceTree = "<group>"; };
 		FF8A73C21ABA69410023AA53 /* logo_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_64.png; sourceTree = "<group>"; };
@@ -1159,6 +1162,8 @@
 				FF87E9EF1C9630E500682461 /* TTModalFTUXView.h */,
 				FF87E9F01C9630E500682461 /* TTModalFTUXView.m */,
 				FF87E9F11C9630E500682461 /* TTModalFTUXView.xib */,
+				FF87E9FD1C97671E00682461 /* TTPageIndicatorView.h */,
+				FF87E9FE1C97671E00682461 /* TTPageIndicatorView.m */,
 			);
 			name = Modal;
 			sourceTree = "<group>";
@@ -2414,6 +2419,7 @@
 				FF2C2E031C52E62000FAD7E2 /* TTModeWemoMulticastServer.m in Sources */,
 				FF8528FB1A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.m in Sources */,
 				FF5295C51AD5B9A4007DDC02 /* TTTitleBarView.m in Sources */,
+				FF87E9FF1C97671E00682461 /* TTPageIndicatorView.m in Sources */,
 				FF557AC01C49C71A005FB7FD /* NestConstants.m in Sources */,
 				FF904B9A1BE9BA3700AD00F3 /* SSZipArchive.m in Sources */,
 				FFA1D4CF1A3B8916003EA0BC /* TTHUDController.m in Sources */,
