@@ -9,10 +9,9 @@
 #import <Cocoa/Cocoa.h>
 #import "TTAppDelegate.h"
 #import "TTPanelStates.h"
-#import "BFPageControl.h"
 #import "TTPageIndicatorView.h"
 
-@interface TTModalFTUXView : NSViewController <BFPageControlDelegate> {
+@interface TTModalFTUXView : NSViewController {
     TTAppDelegate *appDelegate;
     TTModalFTUX modalFTUX;
     NSMutableArray *indicatorViews;

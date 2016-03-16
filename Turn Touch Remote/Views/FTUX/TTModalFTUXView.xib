@@ -57,14 +57,14 @@
                                     <action selector="closeModal:" target="-2" id="nLo-bf-mcJ"/>
                                 </connections>
                             </button>
-                            <imageView horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="End-Np-mCu">
+                            <imageView translatesAutoresizingMaskIntoConstraints="NO" id="End-Np-mCu">
                                 <rect key="frame" x="0.0" y="147" width="512" height="256"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="256" id="KsC-Mp-sQO"/>
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="modal_ftux_action" id="JBv-je-gG5"/>
                             </imageView>
-                            <stackView orientation="horizontal" alignment="bottom" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="251" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fNc-WR-LrX">
+                            <stackView orientation="horizontal" alignment="bottom" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fNc-WR-LrX">
                                 <rect key="frame" x="156" y="20" width="200" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="1NW-gH-erh"/>

@@ -269,11 +269,11 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
 }
 
 - (void)openSettingsDialog:(id)sender {
-    [appDelegate showPreferences:@"settings"];
+    [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_DEVICES];
 }
 
 - (void)openPairingDialog:(id)sender {
-    [appDelegate showPreferences:@"pairing"];
+    [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_PAIRING];
 }
 
 - (void)openFTUXDialog:(id)sender {
@@ -281,15 +281,15 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
 }
 
 - (void)openAboutDialog:(id)sender {
-    [appDelegate showPreferences:@"about"];
+    [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_ABOUT];
 }
 
 - (void)openSupportDialog:(id)sender {
-    [appDelegate showPreferences:@"support"];
+    [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_SUPPORT];
 }
 
 - (void)openDevicesDialog:(id)sender {
-    [appDelegate showPreferences:@"devices"];
+    [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_DEVICES];
 }
 
 - (void)quit:(id)sender {

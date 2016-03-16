@@ -186,7 +186,7 @@
                                if (!connectionError) {
                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
                                    if (httpResponse.statusCode == 200) {
-                                       NSLog(@"Wemo basicevent: %@", [NSString stringWithUTF8String:[data bytes]]);
+//                                       NSLog(@"Wemo basicevent: %@", [NSString stringWithUTF8String:[data bytes]]);
                                    }
                                } else {
                                    NSLog(@"Wemo REST error: %@", connectionError);

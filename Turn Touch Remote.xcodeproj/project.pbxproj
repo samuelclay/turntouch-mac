@@ -248,6 +248,9 @@
 		FF8C834717AB14B5000166FC /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FF8C834517AB14B5000166FC /* Credits.rtf */; };
 		FF8C834A17AB14B5000166FC /* TTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8C834917AB14B5000166FC /* TTAppDelegate.m */; };
 		FF8C834D17AB14B5000166FC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF8C834B17AB14B5000166FC /* MainMenu.xib */; };
+		FF8D1AA61C98F292006AA1A2 /* TTModalAbout.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8D1AA41C98F292006AA1A2 /* TTModalAbout.m */; };
+		FF8D1AA71C98F292006AA1A2 /* TTModalAbout.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF8D1AA51C98F292006AA1A2 /* TTModalAbout.xib */; };
+		FF8D1AA91C98F5D3006AA1A2 /* logo_white_with_title.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8D1AA81C98F5D3006AA1A2 /* logo_white_with_title.png */; };
 		FF904B391BE9B78800AD00F3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF904B381BE9B78800AD00F3 /* Images.xcassets */; };
 		FF904B3C1BE9B7F500AD00F3 /* TTActionHUDWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B3B1BE9B7F500AD00F3 /* TTActionHUDWindowController.m */; };
 		FF904B3F1BE9B80100AD00F3 /* TTModeHUDWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B3E1BE9B80100AD00F3 /* TTModeHUDWindowController.m */; };
@@ -743,6 +746,10 @@
 		FF8C834817AB14B5000166FC /* TTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTAppDelegate.h; sourceTree = "<group>"; };
 		FF8C834917AB14B5000166FC /* TTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTAppDelegate.m; sourceTree = "<group>"; };
 		FF8C834C17AB14B5000166FC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		FF8D1AA31C98F292006AA1A2 /* TTModalAbout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModalAbout.h; path = Views/Settings/TTModalAbout.h; sourceTree = "<group>"; };
+		FF8D1AA41C98F292006AA1A2 /* TTModalAbout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModalAbout.m; path = Views/Settings/TTModalAbout.m; sourceTree = "<group>"; };
+		FF8D1AA51C98F292006AA1A2 /* TTModalAbout.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModalAbout.xib; path = Views/Settings/TTModalAbout.xib; sourceTree = "<group>"; };
+		FF8D1AA81C98F5D3006AA1A2 /* logo_white_with_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_white_with_title.png; sourceTree = "<group>"; };
 		FF904B381BE9B78800AD00F3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Resources/Images.xcassets; sourceTree = "<group>"; };
 		FF904B3A1BE9B7F500AD00F3 /* TTActionHUDWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTActionHUDWindowController.h; path = "Turn Touch Remote/Controllers/TTActionHUDWindowController.h"; sourceTree = SOURCE_ROOT; };
 		FF904B3B1BE9B7F500AD00F3 /* TTActionHUDWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTActionHUDWindowController.m; path = "Turn Touch Remote/Controllers/TTActionHUDWindowController.m"; sourceTree = SOURCE_ROOT; };
@@ -1164,6 +1171,9 @@
 				FF87E9F11C9630E500682461 /* TTModalFTUXView.xib */,
 				FF87E9FD1C97671E00682461 /* TTPageIndicatorView.h */,
 				FF87E9FE1C97671E00682461 /* TTPageIndicatorView.m */,
+				FF8D1AA31C98F292006AA1A2 /* TTModalAbout.h */,
+				FF8D1AA41C98F292006AA1A2 /* TTModalAbout.m */,
+				FF8D1AA51C98F292006AA1A2 /* TTModalAbout.xib */,
 			);
 			name = Modal;
 			sourceTree = "<group>";
@@ -2009,6 +2019,7 @@
 		FFF05F3118F6120200AC6230 /* logo */ = {
 			isa = PBXGroup;
 			children = (
+				FF8D1AA81C98F5D3006AA1A2 /* logo_white_with_title.png */,
 				FF3760C61ABB59210055EC6D /* logo_16.png */,
 				FF8A73C11ABA69410023AA53 /* logo_32.png */,
 				FF8A73C21ABA69410023AA53 /* logo_64.png */,
@@ -2193,6 +2204,7 @@
 				FF8A73CA1ABA69410023AA53 /* logo_256.png in Resources */,
 				FF01CA761C46DCC200F83A73 /* mode_presentation.png in Resources */,
 				FF52960F1AD631D1007DDC02 /* TTSettingsDevicesViewController.xib in Resources */,
+				FF8D1AA91C98F5D3006AA1A2 /* logo_white_with_title.png in Resources */,
 				FF6135611C61CDDC00F431D7 /* music_volume_mute.png in Resources */,
 				FF01CA601C46DCC200F83A73 /* cog.png in Resources */,
 				FF2705461C93A348000BB10F /* modal_ftux_change_action.png in Resources */,
@@ -2281,6 +2293,7 @@
 				FF2740701A7C576900C55579 /* itunes_genius_icon.png in Resources */,
 				FF01CA621C46DCC200F83A73 /* equalizer-1.png in Resources */,
 				FF01CA5D1C46DCC200F83A73 /* button_x.png in Resources */,
+				FF8D1AA71C98F292006AA1A2 /* TTModalAbout.xib in Resources */,
 				FF2705471C93A348000BB10F /* modal_ftux_change_mode.png in Resources */,
 				FF8A73C71ABA69410023AA53 /* logo_32.png in Resources */,
 				FF01CA7A1C46DCC200F83A73 /* mode_video.png in Resources */,
@@ -2476,6 +2489,7 @@
 				FFABAB7D1C2777AD00AD5620 /* TTBatchActionContainerView.m in Sources */,
 				FFABAB961C334FCA00AD5620 /* TTModeWeb.m in Sources */,
 				FF2C2E691C546D6E00FAD7E2 /* TTModeWemoOptions.m in Sources */,
+				FF8D1AA61C98F292006AA1A2 /* TTModalAbout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -73,20 +73,11 @@
         [labelSubtitle setStringValue:@""];
     }
 
-    NSLog(@"page control frame: %ld", (long)modalFTUX);
-
-//    [pageControl setCurrentPage: modalFTUX+1];
     [pageControl setNeedsDisplay:YES];
 }
 
 - (void)closeModal:(id)sender {
     [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_APP];
-}
-
-#pragma mark - Page Control
-
-- (void)pageControl:(BFPageControl *)pageControl didSelectPageAtIndex:(NSInteger)index {
-    [appDelegate.panelController.backgroundView switchPanelModalFTUX:index+1];
 }
 
 @end

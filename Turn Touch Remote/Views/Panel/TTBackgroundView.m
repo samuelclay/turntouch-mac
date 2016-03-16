@@ -46,6 +46,7 @@
 @synthesize modalPairingInfo;
 @synthesize modalFTUXView;
 @synthesize modalFTUX;
+@synthesize modalAbout;
 
 #pragma mark -
 
@@ -90,6 +91,8 @@
         [self switchPanelModalPairing:MODAL_PAIRING_SEARCH];
     } else if (panelModal == PANEL_MODAL_FTUX) {
         [self switchPanelModalFTUX:MODAL_FTUX_INTRO];
+    } else if (panelModal == PANEL_MODAL_ABOUT) {
+        [self switchPanelModalAbout];
     }
 }
 
@@ -522,6 +525,19 @@
 - (void)cleanupPanelModalFTUX {
     modalFTUXView = nil;
     modalBarButton = nil;
+}
+
+#pragma mark - About Modal
+
+- (void)switchPanelModalAbout {
+    panelModal = PANEL_MODAL_ABOUT;
+    modalAbout = [[TTModalAbout alloc] init];
+    [self setViews:@[arrowView,
+                     titleBarView,
+                     modalAbout.view,
+                     footerView]
+         inGravity:NSStackViewGravityTop];
+    [self addArrowAndTitleConstraints];
 }
 
 @end
