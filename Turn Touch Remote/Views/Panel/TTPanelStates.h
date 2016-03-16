@@ -34,4 +34,10 @@ typedef enum TTModalFTUX : NSUInteger {
     MODAL_FTUX_HUD = 5,
 } TTModalFTUX;
 
+typedef enum TTModalSupport : NSUInteger {
+    MODAL_SUPPORT_QUESTION = 1,
+    MODAL_SUPPORT_IDEA = 2,
+    MODAL_SUPPORT_PROBLEM = 3,
+} TTModalSupport;
+
 #endif /* TTPanelStates_h */

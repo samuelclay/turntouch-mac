@@ -15,6 +15,7 @@
     TTAppDelegate *appDelegate;
     TTModalPairing modalPairing;
     TTModalFTUX modalFTUX;
+    TTModalSupport modalSupport;
     NSTrackingArea *trackingArea;
 }
 
@@ -23,5 +24,6 @@
 
 - (void)setPagePairing:(TTModalPairing)_modalPairing;
 - (void)setPageFTUX:(TTModalFTUX)_modalFTUX;
+- (void)setPageSupport:(TTModalSupport)_modalSupport;
 
 @end

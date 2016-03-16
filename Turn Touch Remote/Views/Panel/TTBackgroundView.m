@@ -48,6 +48,7 @@
 @synthesize modalFTUX;
 @synthesize modalAbout;
 @synthesize modalDevices;
+@synthesize modalSupportView;
 
 #pragma mark -
 
@@ -96,6 +97,8 @@
         [self switchPanelModalAbout];
     } else if (panelModal == PANEL_MODAL_DEVICES) {
         [self switchPanelModalDevices];
+    } else if (panelModal == PANEL_MODAL_SUPPORT) {
+        [self switchPanelModalSupport];
     }
 }
 
@@ -554,6 +557,24 @@
                      footerView]
          inGravity:NSStackViewGravityTop];
     [self addArrowAndTitleConstraints];
+}
+
+#pragma mark - Support Modal
+
+- (void)switchPanelModalSupport {
+    panelModal = PANEL_MODAL_SUPPORT;
+    modalSupportView = [[TTModalSupportView alloc] init];
+    modalBarButton = [[TTModalBarButton alloc] init];
+
+    [self setViews:@[arrowView,
+                     titleBarView,
+                     modalSupportView.view,
+                     modalBarButton,
+                     ]
+         inGravity:NSStackViewGravityTop];
+
+    [self addArrowAndTitleConstraints];
+    [modalBarButton setPageSupport:MODAL_SUPPORT_QUESTION];
 }
 
 @end

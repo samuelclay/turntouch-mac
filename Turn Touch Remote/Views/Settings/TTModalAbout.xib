@@ -43,11 +43,15 @@
                                     <constraint firstAttribute="height" constant="200" id="LYt-dT-ULY"/>
                                     <constraint firstAttribute="width" constant="200" id="aoa-Jv-TYm"/>
                                 </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="7836CBF8-6AFF-4167-8FFF-7B949F5F122A" id="IDJ-49-a18"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="B7CFB2AF-D33F-4C1C-B6C8-61BC3A9DBD44" id="IDJ-49-a18"/>
                             </imageView>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pNw-4t-ahN">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pNw-4t-ahN" customClass="TTChangeButtonView">
                                 <rect key="frame" x="132" y="41" width="163" height="32"/>
-                                <buttonCell key="cell" type="push" title="Check for updates..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XvV-al-DqQ">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="odF-re-sgn"/>
+                                    <constraint firstAttribute="width" constant="151" id="xTk-Js-Gak"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Check for updates..." bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="XvV-al-DqQ" customClass="TTChangeButtonCell">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -91,7 +95,7 @@
         <customObject id="fLK-mV-B8g" customClass="SUUpdater"/>
     </objects>
     <resources>
-        <image name="7836CBF8-6AFF-4167-8FFF-7B949F5F122A" width="308" height="322">
+        <image name="B7CFB2AF-D33F-4C1C-B6C8-61BC3A9DBD44" width="308" height="322">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA

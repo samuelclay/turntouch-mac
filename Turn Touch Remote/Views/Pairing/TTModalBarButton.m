@@ -56,6 +56,7 @@
 - (void)setPagePairing:(TTModalPairing)_modalPairing {
     modalPairing = _modalPairing;
     modalFTUX = 0;
+    modalSupport = 0;
     
     [self updateModal];
     [self setNeedsDisplay:YES];
@@ -64,7 +65,17 @@
 - (void)setPageFTUX:(TTModalFTUX)_modalFTUX {
     modalPairing = 0;
     modalFTUX = _modalFTUX;
+    modalSupport = 0;
     
+    [self updateModal];
+    [self setNeedsDisplay:YES];
+}
+
+- (void)setPageSupport:(TTModalSupport)_modalSupport {
+    modalSupport = _modalSupport;
+    modalFTUX = 0;
+    modalPairing = 0;
+
     [self updateModal];
     [self setNeedsDisplay:YES];
 }
@@ -93,6 +104,12 @@
         buttonLabel.stringValue = @"Continue";
     } else if (modalFTUX == MODAL_FTUX_HUD) {
         buttonLabel.stringValue = @"That's all there is to it";
+    } else if (modalSupport == MODAL_SUPPORT_QUESTION) {
+        buttonLabel.stringValue = @"Submit Question";
+    } else if (modalSupport == MODAL_SUPPORT_IDEA) {
+        buttonLabel.stringValue = @"Submit Idea";
+    } else if (modalSupport == MODAL_SUPPORT_PROBLEM) {
+        buttonLabel.stringValue = @"Submit Problem";
     }
 
     [self resetBackgroundColor];
@@ -111,6 +128,12 @@
         self.backgroundColor = NSColorFromRGB(0x434340);
     } else if (modalFTUX) {
         self.backgroundColor = NSColorFromRGB(0x4383C0);
+    } else if (modalSupport == MODAL_SUPPORT_QUESTION) {
+        self.backgroundColor = NSColorFromRGB(0x4383C0);
+    } else if (modalSupport == MODAL_SUPPORT_IDEA) {
+        self.backgroundColor = NSColorFromRGB(0x2FB789);
+    } else if (modalSupport == MODAL_SUPPORT_PROBLEM) {
+        self.backgroundColor = NSColorFromRGB(0xFFCA44);
     }
 }
 
