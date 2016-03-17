@@ -158,6 +158,10 @@
     [spinner setHidden:YES];
     [successImage setHidden:NO];
     [appDelegate.panelController.backgroundView.modalBarButton setPageSupport:MODAL_SUPPORT_SUBMITTED];
+
+    NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+    [preferences setObject:supportEmail.stringValue forKey:@"TT:support:last_email"];
+    [preferences synchronize];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
