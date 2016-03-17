@@ -11,14 +11,15 @@
 #import "TTSegmentedControl.h"
 #import "TTPairingSpinner.h"
 
-@interface TTModalSupportView : NSViewController <NSTextFieldDelegate, NSURLConnectionDelegate, NSURLConnectionDataDelegate> {
+@interface TTModalSupportView : NSViewController <NSTextFieldDelegate, NSTextViewDelegate, NSURLConnectionDelegate, NSURLConnectionDataDelegate> {
     TTAppDelegate *appDelegate;
     TTModalSupport modalSupport;
+    NSMutableData *receivedData;
 }
 
 @property (nonatomic) IBOutlet TTSegmentedControl *supportSegmentedControl;
 @property (nonatomic) IBOutlet NSTextField *supportLabel;
-@property (nonatomic) IBOutlet NSTextField *supportComment;
+@property (nonatomic) IBOutlet NSTextView *supportComment;
 @property (nonatomic) IBOutlet NSTextField *supportEmail;
 @property (nonatomic) IBOutlet TTPairingSpinner *spinner;
 @property (nonatomic) IBOutlet NSImageView *successImage;

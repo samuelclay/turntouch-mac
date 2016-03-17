@@ -256,6 +256,7 @@
 		FF8D1AB21C9902F8006AA1A2 /* TTModalSupportView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8D1AB01C9902F8006AA1A2 /* TTModalSupportView.m */; };
 		FF8D1AB31C9902F8006AA1A2 /* TTModalSupportView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF8D1AB11C9902F8006AA1A2 /* TTModalSupportView.xib */; };
 		FF8D1AB51C9A4050006AA1A2 /* modal_success.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8D1AB41C9A4050006AA1A2 /* modal_success.png */; };
+		FF8D1ABB1C9B3C54006AA1A2 /* NSString+TTEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8D1ABA1C9B3C54006AA1A2 /* NSString+TTEncoding.m */; };
 		FF904B391BE9B78800AD00F3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF904B381BE9B78800AD00F3 /* Images.xcassets */; };
 		FF904B3C1BE9B7F500AD00F3 /* TTActionHUDWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B3B1BE9B7F500AD00F3 /* TTActionHUDWindowController.m */; };
 		FF904B3F1BE9B80100AD00F3 /* TTModeHUDWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B3E1BE9B80100AD00F3 /* TTModeHUDWindowController.m */; };
@@ -762,6 +763,8 @@
 		FF8D1AB01C9902F8006AA1A2 /* TTModalSupportView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModalSupportView.m; path = Views/Settings/TTModalSupportView.m; sourceTree = "<group>"; };
 		FF8D1AB11C9902F8006AA1A2 /* TTModalSupportView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModalSupportView.xib; path = Views/Settings/TTModalSupportView.xib; sourceTree = "<group>"; };
 		FF8D1AB41C9A4050006AA1A2 /* modal_success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_success.png; sourceTree = "<group>"; };
+		FF8D1AB91C9B3C54006AA1A2 /* NSString+TTEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+TTEncoding.h"; path = "Categories/NSString+TTEncoding.h"; sourceTree = "<group>"; };
+		FF8D1ABA1C9B3C54006AA1A2 /* NSString+TTEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+TTEncoding.m"; path = "Categories/NSString+TTEncoding.m"; sourceTree = "<group>"; };
 		FF904B381BE9B78800AD00F3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Resources/Images.xcassets; sourceTree = "<group>"; };
 		FF904B3A1BE9B7F500AD00F3 /* TTActionHUDWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTActionHUDWindowController.h; path = "Turn Touch Remote/Controllers/TTActionHUDWindowController.h"; sourceTree = SOURCE_ROOT; };
 		FF904B3B1BE9B7F500AD00F3 /* TTActionHUDWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTActionHUDWindowController.m; path = "Turn Touch Remote/Controllers/TTActionHUDWindowController.m"; sourceTree = SOURCE_ROOT; };
@@ -1989,6 +1992,8 @@
 				FF3641F21A64AE39003CC03C /* NSAttributedString+Extra.m */,
 				FF6A37CE1A9AEC9F006F3756 /* NSDate+Extras.h */,
 				FF6A37CF1A9AEC9F006F3756 /* NSDate+Extras.m */,
+				FF8D1AB91C9B3C54006AA1A2 /* NSString+TTEncoding.h */,
+				FF8D1ABA1C9B3C54006AA1A2 /* NSString+TTEncoding.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -2501,6 +2506,7 @@
 				FF5250191C80F9930017A847 /* TTModeWemoDeviceOffOptions.m in Sources */,
 				FFAA4F6F182D99640049FFC7 /* TTModeAlarmClock.m in Sources */,
 				FF80132F186D210200955218 /* TTOptionsView.m in Sources */,
+				FF8D1ABB1C9B3C54006AA1A2 /* NSString+TTEncoding.m in Sources */,
 				FF801329186CF90700955218 /* TTStatusItemView.m in Sources */,
 				FFA8EAA6190F11B200679A4D /* TTModeMenuItemView.m in Sources */,
 				FF981FCB191AB46600A4A94B /* TTModeMenuBordersView.m in Sources */,

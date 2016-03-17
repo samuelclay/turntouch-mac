@@ -7,6 +7,7 @@
 //
 
 #import "TTModalSupportView.h"
+#import "NSString+TTEncoding.h"
 
 @interface TTModalSupportView ()
 
@@ -31,6 +32,9 @@
     if (lastSupportEmail) {
         [supportEmail setStringValue:lastSupportEmail];
     }
+
+    [supportComment setFont:[NSFont fontWithName:@"Effra" size:13]];
+    [[supportComment textStorage] setFont:[NSFont fontWithName:@"Effra" size:13]];
 }
 
 - (void)closeModal:(id)sender {
@@ -78,6 +82,12 @@
     return result;
 }
 
+- (void)textDidChange:(NSNotification *)notification {
+    [supportComment setBackgroundColor:NSColorFromRGB(0xFFFFFF)];
+    [supportEmail setBackgroundColor:NSColorFromRGB(0xFFFFFF)];
+}
+                        
+
 - (void)controlTextDidChange:(NSNotification *)obj {
     [supportComment setBackgroundColor:NSColorFromRGB(0xFFFFFF)];
     [supportEmail setBackgroundColor:NSColorFromRGB(0xFFFFFF)];
@@ -116,18 +126,19 @@
         return;
     }
     
-    if ([self isEmptyMessage:supportComment.stringValue]) {
+    if ([self isEmptyMessage:supportComment.string]) {
         [supportComment setBackgroundColor:NSColorFromRGB(0xFFCA44)];
         return;
     }
     
     NSURL *url = [NSURL URLWithString:@"https://www.turntouch.com/support/in_app"];
-    NSString *postString = [NSString stringWithFormat:@"type=%@&email=%@&comments=%@",
+    NSString *postString = [NSString stringWithFormat:@"thread_type=%@&email=%@&comments=%@",
                             supportSegmentedControl.selectedSegment == 0 ? @"question" :
                             supportSegmentedControl.selectedSegment == 1 ? @"idea" :
-                            supportSegmentedControl.selectedSegment == 2 ? @"problem" : @"error",
-                            [supportEmail.stringValue stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-                            [supportComment.stringValue stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+                            supportSegmentedControl.selectedSegment == 2 ? @"problem" :
+                            supportSegmentedControl.selectedSegment == 3 ? @"praise" : @"error",
+                            [supportEmail.stringValue urlEncodeUsingEncoding:NSUTF8StringEncoding],
+                            [supportComment.string urlEncodeUsingEncoding:NSUTF8StringEncoding]];
     NSData *postData = [postString dataUsingEncoding:NSUTF8StringEncoding];
     NSString *postLength = [NSString stringWithFormat:@"%ld", (long)postData.length];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
@@ -141,7 +152,7 @@
     
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request
                                                                   delegate:self];
-    
+    receivedData = [NSMutableData data];
     [connection start];
     
     [spinner setHidden:NO];
@@ -153,8 +164,17 @@
     [appDelegate.panelController.backgroundView.modalBarButton setPageSupport:MODAL_SUPPORT_SUBMITTING];
 }
 
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    [receivedData setLength:0];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [receivedData appendData:data];
+}
+
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"Connection finished: %@", connection);
+    NSString *receivedString = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
+    NSLog(@"Connection finished: %@", receivedString);
     [spinner setHidden:YES];
     [successImage setHidden:NO];
     [appDelegate.panelController.backgroundView.modalBarButton setPageSupport:MODAL_SUPPORT_SUBMITTED];
