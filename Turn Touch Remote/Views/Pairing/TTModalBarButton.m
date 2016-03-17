@@ -225,6 +225,8 @@
         [appDelegate.panelController.backgroundView switchPanelModalFTUX:MODAL_FTUX_HUD];
     } else if (modalFTUX == MODAL_FTUX_HUD) {
         [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_APP];
+    } else if (modalSupport) {
+        [appDelegate.panelController.backgroundView.modalSupportView submitSupport];
     }
 }
 

@@ -10,7 +10,7 @@
 #import "TTAppDelegate.h"
 #import "TTSegmentedControl.h"
 
-@interface TTModalSupportView : NSViewController <NSTextFieldDelegate> {
+@interface TTModalSupportView : NSViewController <NSTextFieldDelegate, NSURLConnectionDelegate, NSURLConnectionDataDelegate> {
     TTAppDelegate *appDelegate;
 }
 
@@ -21,5 +21,6 @@
 
 - (IBAction)closeModal:(id)sender;
 - (IBAction)chooseSupportSegmentedControl:(id)sender;
+- (void)submitSupport;
 
 @end

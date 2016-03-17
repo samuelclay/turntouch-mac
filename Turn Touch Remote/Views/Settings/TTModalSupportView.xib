@@ -16,18 +16,18 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView misplaced="YES" id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="426" height="346"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="426" height="348"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <box misplaced="YES" title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="WIK-Ji-3Ll">
-                    <rect key="frame" x="0.0" y="0.0" width="426" height="346"/>
+                <box title="Box" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="WIK-Ji-3Ll">
+                    <rect key="frame" x="0.0" y="0.0" width="426" height="348"/>
                     <view key="contentView" id="oaQ-Wm-dYY">
-                        <rect key="frame" x="0.0" y="0.0" width="426" height="346"/>
+                        <rect key="frame" x="0.0" y="0.0" width="426" height="348"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xmp-hT-Dan">
-                                <rect key="frame" x="376" y="296" width="50" height="50"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xmp-hT-Dan">
+                                <rect key="frame" x="376" y="298" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="45Z-vo-B1H"/>
                                     <constraint firstAttribute="width" constant="50" id="zZM-p2-8ki"/>
@@ -40,16 +40,16 @@
                                     <action selector="closeModal:" target="-2" id="NJP-Qr-GGl"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hZ2-tL-1m0">
-                                <rect key="frame" x="18" y="280" width="390" height="21"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hZ2-tL-1m0">
+                                <rect key="frame" x="18" y="282" width="390" height="21"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="What's up?" id="EaR-sr-DIv">
                                     <font key="font" size="14" name="Effra-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <segmentedControl verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mjl-K3-DSb" customClass="TTSegmentedControl">
-                                <rect key="frame" x="18" y="311" width="352" height="24"/>
+                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mjl-K3-DSb" customClass="TTSegmentedControl">
+                                <rect key="frame" x="18" y="313" width="200" height="24"/>
                                 <segmentedCell key="cell" continuous="YES" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="bNn-TO-8JW" customClass="TTSegmentedCell">
                                     <font key="font" metaFont="system"/>
                                     <segments>
@@ -62,12 +62,12 @@
                                     <action selector="chooseSupportSegmentedControl:" target="-2" id="9sl-d8-lnS"/>
                                 </connections>
                             </segmentedControl>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="752" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C9i-23-ScR">
-                                <rect key="frame" x="20" y="54" width="386" height="218"/>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="C9i-23-ScR">
+                                <rect key="frame" x="20" y="56" width="386" height="218"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="218" id="2fr-97-M9z"/>
                                 </constraints>
-                                <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" allowsEditingTextAttributes="YES" id="arL-Hr-n5M">
+                                <textFieldCell key="cell" selectable="YES" editable="YES" continuous="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" allowsEditingTextAttributes="YES" id="arL-Hr-n5M">
                                     <font key="font" size="13" name="Effra-Regular"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -76,32 +76,44 @@
                                     <outlet property="delegate" destination="-2" id="MQ6-pE-2w5"/>
                                 </connections>
                             </textField>
-                            <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vxi-c6-MqI">
-                                <rect key="frame" x="91" y="20" width="315" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="GRJ-4p-Tma">
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vxi-c6-MqI">
+                                <rect key="frame" x="91" y="20" width="315" height="24"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" continuous="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="GRJ-4p-Tma">
                                     <font key="font" size="13" name="Effra-Regular"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <outlet property="delegate" destination="-2" id="1Dq-l2-47q"/>
+                                </connections>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VkZ-Qj-gdi">
-                                <rect key="frame" x="18" y="21" width="67" height="21"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VkZ-Qj-gdi">
+                                <rect key="frame" x="18" y="23" width="67" height="21"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Your email" id="v0j-Is-pxN">
                                     <font key="font" size="14" name="Effra-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="ED3-Po-qNl">
+                                <rect key="frame" x="188" y="140" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="9Kn-yH-ukj"/>
+                                    <constraint firstAttribute="height" constant="50" id="aiM-Gg-Fir"/>
+                                </constraints>
+                            </customView>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Vxi-c6-MqI" secondAttribute="trailing" constant="20" id="3rU-tc-Y24"/>
                             <constraint firstItem="Vxi-c6-MqI" firstAttribute="leading" secondItem="VkZ-Qj-gdi" secondAttribute="trailing" constant="8" id="41q-1Y-FRf"/>
                             <constraint firstItem="hZ2-tL-1m0" firstAttribute="leading" secondItem="oaQ-Wm-dYY" secondAttribute="leading" constant="20" id="5Sg-Vw-fmA"/>
+                            <constraint firstItem="ED3-Po-qNl" firstAttribute="centerX" secondItem="C9i-23-ScR" secondAttribute="centerX" id="Crj-cX-jkj"/>
                             <constraint firstItem="VkZ-Qj-gdi" firstAttribute="top" secondItem="C9i-23-ScR" secondAttribute="bottom" constant="12" id="GHn-cD-Si9"/>
                             <constraint firstAttribute="trailing" secondItem="xmp-hT-Dan" secondAttribute="trailing" id="Hfj-uo-XqF"/>
                             <constraint firstAttribute="trailing" secondItem="C9i-23-ScR" secondAttribute="trailing" constant="20" id="Hnl-OH-ODu"/>
                             <constraint firstAttribute="bottom" secondItem="Vxi-c6-MqI" secondAttribute="bottom" constant="20" id="LKI-DV-S7I"/>
                             <constraint firstItem="xmp-hT-Dan" firstAttribute="top" secondItem="oaQ-Wm-dYY" secondAttribute="top" id="W0o-Rm-WMc"/>
+                            <constraint firstItem="ED3-Po-qNl" firstAttribute="centerY" secondItem="C9i-23-ScR" secondAttribute="centerY" id="cBf-NA-2kC"/>
                             <constraint firstItem="C9i-23-ScR" firstAttribute="leading" secondItem="oaQ-Wm-dYY" secondAttribute="leading" constant="20" id="iOB-he-OrN"/>
                             <constraint firstItem="Vxi-c6-MqI" firstAttribute="top" secondItem="C9i-23-ScR" secondAttribute="bottom" constant="12" id="krc-Vs-DfQ"/>
                             <constraint firstAttribute="trailing" secondItem="hZ2-tL-1m0" secondAttribute="trailing" constant="20" id="ndP-Ba-d14"/>
