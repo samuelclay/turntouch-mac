@@ -18,6 +18,8 @@
 @synthesize supportEmail;
 @synthesize supportLabel;
 @synthesize supportSegmentedControl;
+@synthesize spinner;
+@synthesize successImage;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,14 +40,19 @@
 - (IBAction)chooseSupportSegmentedControl:(id)sender {
     if (supportSegmentedControl.selectedSegment == 0) {
         [supportLabel setStringValue:@"What can we help you with?"];
-        [appDelegate.panelController.backgroundView.modalBarButton setPageSupport:MODAL_SUPPORT_QUESTION];
+        modalSupport = MODAL_SUPPORT_QUESTION;
     } else if (supportSegmentedControl.selectedSegment == 1) {
         [supportLabel setStringValue:@"What feature would you like to see?"];
-        [appDelegate.panelController.backgroundView.modalBarButton setPageSupport:MODAL_SUPPORT_IDEA];
+        modalSupport = MODAL_SUPPORT_IDEA;
     } else if (supportSegmentedControl.selectedSegment == 2) {
         [supportLabel setStringValue:@"What issue are you running into?"];
-        [appDelegate.panelController.backgroundView.modalBarButton setPageSupport:MODAL_SUPPORT_PROBLEM];
+        modalSupport = MODAL_SUPPORT_PROBLEM;
+    } else if (supportSegmentedControl.selectedSegment == 3) {
+        [supportLabel setStringValue:@"Thank you! What would you like to say?"];
+        modalSupport = MODAL_SUPPORT_PRAISE;
     }
+
+    [appDelegate.panelController.backgroundView.modalBarButton setPageSupport:modalSupport];
 }
 
 - (BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector {
@@ -105,12 +112,12 @@
 
 - (void)submitSupport {
     if (![self isValidEmailAddress:supportEmail.stringValue]) {
-        [supportEmail setBackgroundColor:NSColorFromRGB(0xE4B449)];
+        [supportEmail setBackgroundColor:NSColorFromRGB(0xFFCA44)];
         return;
     }
     
     if ([self isEmptyMessage:supportComment.stringValue]) {
-        [supportComment setBackgroundColor:NSColorFromRGB(0xE4B449)];
+        [supportComment setBackgroundColor:NSColorFromRGB(0xFFCA44)];
         return;
     }
     
@@ -136,14 +143,33 @@
                                                                   delegate:self];
     
     [connection start];
+    
+    [spinner setHidden:NO];
+    [supportComment setBackgroundColor:NSColorFromRGB(0xE0E0E0)];
+    [supportComment setEditable:NO];
+    [supportEmail setBackgroundColor:NSColorFromRGB(0xE0E0E0)];
+    [supportEmail setEditable:NO];
+    [supportSegmentedControl setEnabled:NO];
+    [appDelegate.panelController.backgroundView.modalBarButton setPageSupport:MODAL_SUPPORT_SUBMITTING];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     NSLog(@"Connection finished: %@", connection);
+    [spinner setHidden:YES];
+    [successImage setHidden:NO];
+    [appDelegate.panelController.backgroundView.modalBarButton setPageSupport:MODAL_SUPPORT_SUBMITTED];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     NSLog(@"Connection error: %@ / %@", connection, error);
+    [spinner setHidden:YES];
+    [successImage setHidden:YES];
+    [supportComment setBackgroundColor:NSColorFromRGB(0xFFFFFF)];
+    [supportComment setEditable:YES];
+    [supportEmail setBackgroundColor:NSColorFromRGB(0xFFFFFF)];
+    [supportEmail setEditable:YES];
+    [supportSegmentedControl setEnabled:YES];
+    [appDelegate.panelController.backgroundView.modalBarButton setPageSupport:modalSupport];
 }
 
 @end

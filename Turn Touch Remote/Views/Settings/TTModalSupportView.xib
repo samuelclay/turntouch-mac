@@ -7,6 +7,8 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTModalSupportView">
             <connections>
+                <outlet property="spinner" destination="ED3-Po-qNl" id="Vge-HK-R5h"/>
+                <outlet property="successImage" destination="btT-qt-hlD" id="8oV-E7-4ou"/>
                 <outlet property="supportComment" destination="C9i-23-ScR" id="9sd-9u-hQJ"/>
                 <outlet property="supportEmail" destination="Vxi-c6-MqI" id="kyw-hz-5vn"/>
                 <outlet property="supportLabel" destination="hZ2-tL-1m0" id="dnP-7M-c6Y"/>
@@ -49,13 +51,14 @@
                                 </textFieldCell>
                             </textField>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mjl-K3-DSb" customClass="TTSegmentedControl">
-                                <rect key="frame" x="18" y="313" width="200" height="24"/>
+                                <rect key="frame" x="18" y="313" width="259" height="24"/>
                                 <segmentedCell key="cell" continuous="YES" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="bNn-TO-8JW" customClass="TTSegmentedCell">
                                     <font key="font" metaFont="system"/>
                                     <segments>
                                         <segment label="Question" imageScaling="none" selected="YES"/>
                                         <segment label="Idea" tag="1"/>
                                         <segment label="Problem"/>
+                                        <segment label="Praise"/>
                                     </segments>
                                 </segmentedCell>
                                 <connections>
@@ -67,7 +70,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="218" id="2fr-97-M9z"/>
                                 </constraints>
-                                <textFieldCell key="cell" selectable="YES" editable="YES" continuous="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" allowsEditingTextAttributes="YES" id="arL-Hr-n5M">
+                                <textFieldCell key="cell" selectable="YES" editable="YES" continuous="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="arL-Hr-n5M">
                                     <font key="font" size="13" name="Effra-Regular"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -95,24 +98,34 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="ED3-Po-qNl">
+                            <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ED3-Po-qNl" customClass="TTPairingSpinner">
                                 <rect key="frame" x="188" y="140" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="9Kn-yH-ukj"/>
                                     <constraint firstAttribute="height" constant="50" id="aiM-Gg-Fir"/>
                                 </constraints>
                             </customView>
+                            <imageView hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="btT-qt-hlD">
+                                <rect key="frame" x="165" y="117" width="96" height="96"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="96" id="lAo-EP-zOe"/>
+                                    <constraint firstAttribute="height" constant="96" id="mmU-Rp-0uF"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="modal_success" id="QI3-na-hA9"/>
+                            </imageView>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Vxi-c6-MqI" secondAttribute="trailing" constant="20" id="3rU-tc-Y24"/>
                             <constraint firstItem="Vxi-c6-MqI" firstAttribute="leading" secondItem="VkZ-Qj-gdi" secondAttribute="trailing" constant="8" id="41q-1Y-FRf"/>
                             <constraint firstItem="hZ2-tL-1m0" firstAttribute="leading" secondItem="oaQ-Wm-dYY" secondAttribute="leading" constant="20" id="5Sg-Vw-fmA"/>
                             <constraint firstItem="ED3-Po-qNl" firstAttribute="centerX" secondItem="C9i-23-ScR" secondAttribute="centerX" id="Crj-cX-jkj"/>
+                            <constraint firstItem="btT-qt-hlD" firstAttribute="centerX" secondItem="C9i-23-ScR" secondAttribute="centerX" id="DIv-oD-lc7"/>
                             <constraint firstItem="VkZ-Qj-gdi" firstAttribute="top" secondItem="C9i-23-ScR" secondAttribute="bottom" constant="12" id="GHn-cD-Si9"/>
                             <constraint firstAttribute="trailing" secondItem="xmp-hT-Dan" secondAttribute="trailing" id="Hfj-uo-XqF"/>
                             <constraint firstAttribute="trailing" secondItem="C9i-23-ScR" secondAttribute="trailing" constant="20" id="Hnl-OH-ODu"/>
                             <constraint firstAttribute="bottom" secondItem="Vxi-c6-MqI" secondAttribute="bottom" constant="20" id="LKI-DV-S7I"/>
                             <constraint firstItem="xmp-hT-Dan" firstAttribute="top" secondItem="oaQ-Wm-dYY" secondAttribute="top" id="W0o-Rm-WMc"/>
+                            <constraint firstItem="btT-qt-hlD" firstAttribute="centerY" secondItem="C9i-23-ScR" secondAttribute="centerY" id="XGP-Tr-kh8"/>
                             <constraint firstItem="ED3-Po-qNl" firstAttribute="centerY" secondItem="C9i-23-ScR" secondAttribute="centerY" id="cBf-NA-2kC"/>
                             <constraint firstItem="C9i-23-ScR" firstAttribute="leading" secondItem="oaQ-Wm-dYY" secondAttribute="leading" constant="20" id="iOB-he-OrN"/>
                             <constraint firstItem="Vxi-c6-MqI" firstAttribute="top" secondItem="C9i-23-ScR" secondAttribute="bottom" constant="12" id="krc-Vs-DfQ"/>
@@ -139,5 +152,6 @@
     </objects>
     <resources>
         <image name="NSStopProgressTemplate" width="11" height="11"/>
+        <image name="modal_success" width="262" height="262"/>
     </resources>
 </document>

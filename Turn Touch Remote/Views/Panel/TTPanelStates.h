@@ -38,6 +38,9 @@ typedef enum TTModalSupport : NSUInteger {
     MODAL_SUPPORT_QUESTION = 1,
     MODAL_SUPPORT_IDEA = 2,
     MODAL_SUPPORT_PROBLEM = 3,
+    MODAL_SUPPORT_PRAISE = 4,
+    MODAL_SUPPORT_SUBMITTING = 5,
+    MODAL_SUPPORT_SUBMITTED = 6,
 } TTModalSupport;
 
 #endif /* TTPanelStates_h */

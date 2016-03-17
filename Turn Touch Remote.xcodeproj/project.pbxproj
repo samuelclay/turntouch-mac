@@ -255,6 +255,7 @@
 		FF8D1AAE1C98FE1E006AA1A2 /* TTModalDevices.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF8D1AAC1C98FE1E006AA1A2 /* TTModalDevices.xib */; };
 		FF8D1AB21C9902F8006AA1A2 /* TTModalSupportView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8D1AB01C9902F8006AA1A2 /* TTModalSupportView.m */; };
 		FF8D1AB31C9902F8006AA1A2 /* TTModalSupportView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF8D1AB11C9902F8006AA1A2 /* TTModalSupportView.xib */; };
+		FF8D1AB51C9A4050006AA1A2 /* modal_success.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8D1AB41C9A4050006AA1A2 /* modal_success.png */; };
 		FF904B391BE9B78800AD00F3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF904B381BE9B78800AD00F3 /* Images.xcassets */; };
 		FF904B3C1BE9B7F500AD00F3 /* TTActionHUDWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B3B1BE9B7F500AD00F3 /* TTActionHUDWindowController.m */; };
 		FF904B3F1BE9B80100AD00F3 /* TTModeHUDWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B3E1BE9B80100AD00F3 /* TTModeHUDWindowController.m */; };
@@ -760,6 +761,7 @@
 		FF8D1AAF1C9902F8006AA1A2 /* TTModalSupportView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModalSupportView.h; path = Views/Settings/TTModalSupportView.h; sourceTree = "<group>"; };
 		FF8D1AB01C9902F8006AA1A2 /* TTModalSupportView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModalSupportView.m; path = Views/Settings/TTModalSupportView.m; sourceTree = "<group>"; };
 		FF8D1AB11C9902F8006AA1A2 /* TTModalSupportView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModalSupportView.xib; path = Views/Settings/TTModalSupportView.xib; sourceTree = "<group>"; };
+		FF8D1AB41C9A4050006AA1A2 /* modal_success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_success.png; sourceTree = "<group>"; };
 		FF904B381BE9B78800AD00F3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Resources/Images.xcassets; sourceTree = "<group>"; };
 		FF904B3A1BE9B7F500AD00F3 /* TTActionHUDWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTActionHUDWindowController.h; path = "Turn Touch Remote/Controllers/TTActionHUDWindowController.h"; sourceTree = SOURCE_ROOT; };
 		FF904B3B1BE9B7F500AD00F3 /* TTActionHUDWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTActionHUDWindowController.m; path = "Turn Touch Remote/Controllers/TTActionHUDWindowController.m"; sourceTree = SOURCE_ROOT; };
@@ -1160,6 +1162,7 @@
 				FF2705411C93A348000BB10F /* modal_remote_failed.png */,
 				FF2705421C93A348000BB10F /* modal_remote_hero.png */,
 				FF2705431C93A348000BB10F /* modal_remote_paired.png */,
+				FF8D1AB41C9A4050006AA1A2 /* modal_success.png */,
 			);
 			path = modal;
 			sourceTree = "<group>";
@@ -2256,6 +2259,7 @@
 				FF01CA7D1C46DCC200F83A73 /* newspaper-3.png in Resources */,
 				FF01CA831C46DCC200F83A73 /* sun.png in Resources */,
 				FF61355A1C61CDDC00F431D7 /* music_ff.png in Resources */,
+				FF8D1AB51C9A4050006AA1A2 /* modal_success.png in Resources */,
 				FF01CA821C46DCC200F83A73 /* speaker.png in Resources */,
 				FF557AEA1C4F1CD0005FB7FD /* TTModeNestSetTempOptions.xib in Resources */,
 				FF01CA781C46DCC200F83A73 /* mode_spotify.png in Resources */,

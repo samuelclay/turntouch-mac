@@ -9,15 +9,19 @@
 #import <Cocoa/Cocoa.h>
 #import "TTAppDelegate.h"
 #import "TTSegmentedControl.h"
+#import "TTPairingSpinner.h"
 
 @interface TTModalSupportView : NSViewController <NSTextFieldDelegate, NSURLConnectionDelegate, NSURLConnectionDataDelegate> {
     TTAppDelegate *appDelegate;
+    TTModalSupport modalSupport;
 }
 
 @property (nonatomic) IBOutlet TTSegmentedControl *supportSegmentedControl;
 @property (nonatomic) IBOutlet NSTextField *supportLabel;
 @property (nonatomic) IBOutlet NSTextField *supportComment;
 @property (nonatomic) IBOutlet NSTextField *supportEmail;
+@property (nonatomic) IBOutlet TTPairingSpinner *spinner;
+@property (nonatomic) IBOutlet NSImageView *successImage;
 
 - (IBAction)closeModal:(id)sender;
 - (IBAction)chooseSupportSegmentedControl:(id)sender;

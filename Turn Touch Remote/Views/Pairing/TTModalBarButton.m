@@ -88,6 +88,8 @@
         return;
     }
 
+    [chevronImage setHidden:NO];
+    
     if (modalPairing == MODAL_PAIRING_INTRO) {
         buttonLabel.stringValue = @"Pair Remote";
     } else if (modalPairing == MODAL_PAIRING_SUCCESS) {
@@ -110,6 +112,13 @@
         buttonLabel.stringValue = @"Submit Idea";
     } else if (modalSupport == MODAL_SUPPORT_PROBLEM) {
         buttonLabel.stringValue = @"Submit Problem";
+    } else if (modalSupport == MODAL_SUPPORT_PRAISE) {
+        buttonLabel.stringValue = @"Send Praise";
+    } else if (modalSupport == MODAL_SUPPORT_SUBMITTING) {
+        buttonLabel.stringValue = @"Sending...";
+        [chevronImage setHidden:YES];
+    } else if (modalSupport == MODAL_SUPPORT_SUBMITTED) {
+        buttonLabel.stringValue = @"Return to app";
     }
 
     [self resetBackgroundColor];
@@ -134,6 +143,12 @@
         self.backgroundColor = NSColorFromRGB(0x2FB789);
     } else if (modalSupport == MODAL_SUPPORT_PROBLEM) {
         self.backgroundColor = NSColorFromRGB(0xFFCA44);
+    } else if (modalSupport == MODAL_SUPPORT_PRAISE) {
+        self.backgroundColor = NSColorFromRGB(0x2FB789);
+    } else if (modalSupport == MODAL_SUPPORT_SUBMITTING) {
+        self.backgroundColor = NSColorFromRGB(0x838380);
+    } else if (modalSupport == MODAL_SUPPORT_SUBMITTED) {
+        self.backgroundColor = NSColorFromRGB(0x434340);
     }
 }
 
@@ -170,6 +185,18 @@
         self.backgroundColor = NSColorFromRGB(0x535350);
     } else if (modalFTUX) {
         self.backgroundColor = NSColorFromRGB(0x6B9DCB);
+    } else if (modalSupport == MODAL_SUPPORT_QUESTION) {
+        self.backgroundColor = NSColorFromRGB(0x6B9DCB);
+    } else if (modalSupport == MODAL_SUPPORT_IDEA) {
+        self.backgroundColor = NSColorFromRGB(0x65C4A1);
+    } else if (modalSupport == MODAL_SUPPORT_PROBLEM) {
+        self.backgroundColor = NSColorFromRGB(0xFDD375);
+    } else if (modalSupport == MODAL_SUPPORT_PRAISE) {
+        self.backgroundColor = NSColorFromRGB(0x65C4A1);
+    } else if (modalSupport == MODAL_SUPPORT_SUBMITTING) {
+        // Do nothing
+    } else if (modalSupport == MODAL_SUPPORT_SUBMITTED) {
+        self.backgroundColor = NSColorFromRGB(0x535350);
     }
     [self setNeedsDisplay:YES];
 }
@@ -192,6 +219,18 @@
         self.backgroundColor = NSColorFromRGB(0x333330);
     } else if (modalFTUX) {
         self.backgroundColor = NSColorFromRGB(0x396C9A);
+    } else if (modalSupport == MODAL_SUPPORT_QUESTION) {
+        self.backgroundColor = NSColorFromRGB(0x396C9A);
+    } else if (modalSupport == MODAL_SUPPORT_IDEA) {
+        self.backgroundColor = NSColorFromRGB(0x36A07A);
+    } else if (modalSupport == MODAL_SUPPORT_PROBLEM) {
+        self.backgroundColor = NSColorFromRGB(0xE4B449);
+    } else if (modalSupport == MODAL_SUPPORT_PRAISE) {
+        self.backgroundColor = NSColorFromRGB(0x36A07A);
+    } else if (modalSupport == MODAL_SUPPORT_SUBMITTING) {
+        // Do nothing
+    } else if (modalSupport == MODAL_SUPPORT_SUBMITTED) {
+        self.backgroundColor = NSColorFromRGB(0x333330);
     }
 
     [self setNeedsDisplay:YES];
@@ -225,6 +264,10 @@
         [appDelegate.panelController.backgroundView switchPanelModalFTUX:MODAL_FTUX_HUD];
     } else if (modalFTUX == MODAL_FTUX_HUD) {
         [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_APP];
+    } else if (modalSupport == MODAL_SUPPORT_SUBMITTED) {
+        [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_APP];
+    } else if (modalSupport == MODAL_SUPPORT_SUBMITTING) {
+        // Do nothing
     } else if (modalSupport) {
         [appDelegate.panelController.backgroundView.modalSupportView submitSupport];
     }
