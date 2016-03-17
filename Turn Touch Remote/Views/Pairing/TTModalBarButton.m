@@ -118,7 +118,7 @@
         buttonLabel.stringValue = @"Sending...";
         [chevronImage setHidden:YES];
     } else if (modalSupport == MODAL_SUPPORT_SUBMITTED) {
-        buttonLabel.stringValue = @"Return to app";
+        buttonLabel.stringValue = @"All done";
     }
 
     [self resetBackgroundColor];
