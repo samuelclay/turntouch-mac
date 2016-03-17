@@ -8,10 +8,6 @@
 
 #import "TTAppDelegate.h"
 #import <dispatch/dispatch.h>
-#import "TTSettingsDevicesViewController.h"
-#import "TTSettingsSupportViewController.h"
-#import "TTSettingsAboutViewController.h"
-#import "TTSettingsPairingViewController.h"
 
 @implementation TTAppDelegate
 
@@ -19,7 +15,6 @@
 @synthesize menubarController = _menubarController;
 @synthesize bluetoothMonitor = _bluetoothMonitor;
 @synthesize hudController = _hudController;
-@synthesize preferencesWindowController;
 
 #pragma mark - Dealloc
 
@@ -65,7 +60,6 @@ void *kContextActivePanel = &kContextActivePanel;
 //            [self.panelController.backgroundView switchPanelModal:PANEL_MODAL_SUPPORT];
 //        });
 //    });
-//    [self showPreferences:@"devices"];
 //    [self.panelController closePanel];
 //    [self.hudController toastActiveMode];
 //    [self.hudController toastActiveAction:nil inDirection:SOUTH];
@@ -154,62 +148,6 @@ void *kContextActivePanel = &kContextActivePanel;
                                              selector:@selector(receiveSysTimeChangedNotification:)
                                                  name:NSSystemClockDidChangeNotification
                                                object:nil];
-}
-
-#pragma mark - Preferences
-
-- (void)showPreferences:(NSString *)selectedTab onlyIfVisible:(BOOL)onlyIfVisible {
-    if (!preferencesWindowController ||
-        !preferencesWindowController.window ||
-        !preferencesWindowController.window.visible) {
-        NSLog(@" ---> Not showing preferences because not currently visible.");
-        return;
-    }
-    
-    [self showPreferences:selectedTab];
-}
-
-- (void)showPreferences:(NSString *)selectedTab {
-    TTSettingsDevicesViewController *devices;
-    TTSettingsSupportViewController *support;
-    TTSettingsAboutViewController *about;
-    TTSettingsPairingViewController *pairing;
-    
-    if (!preferencesWindowController) {
-        devices = [[TTSettingsDevicesViewController alloc] init];
-        pairing = [[TTSettingsPairingViewController alloc] init];
-        support = [[TTSettingsSupportViewController alloc] init];
-        about = [[TTSettingsAboutViewController alloc] init];
-        
-        NSArray *controllers = [NSArray arrayWithObjects:devices, pairing,
-                                [RHPreferencesWindowController flexibleSpacePlaceholderController],
-                                support, about,
-                                nil];
-        
-        preferencesWindowController = [[RHPreferencesWindowController alloc]
-                                       initWithViewControllers:controllers
-                                       andTitle:@"Turn Touch Settings"];
-    }
-    
-    NSViewController<RHPreferencesViewControllerProtocol> * prefVc;
-    if ([selectedTab isEqualToString:@"devices"]) {
-        prefVc = [preferencesWindowController
-                  viewControllerWithIdentifier:@"TTSettingsDevicesViewController"];
-    } else if ([selectedTab isEqualToString:@"pairing"]) {
-        [self.panelController.backgroundView switchPanelModal:PANEL_MODAL_PAIRING];
-        return;
-    } else if ([selectedTab isEqualToString:@"support"]) {
-        prefVc = [preferencesWindowController
-                  viewControllerWithIdentifier:@"TTSettingsSupportViewController"];
-    } else if ([selectedTab isEqualToString:@"about"]) {
-        prefVc = [preferencesWindowController
-                  viewControllerWithIdentifier:@"TTSettingsAboutViewController"];
-    }
-    if (prefVc) {
-        [preferencesWindowController setSelectedViewController:prefVc];
-    }
-    [NSApp activateIgnoringOtherApps:YES];
-    [preferencesWindowController showWindow:self];
 }
 
 @end

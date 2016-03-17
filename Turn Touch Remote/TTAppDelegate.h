@@ -13,7 +13,6 @@
 #import "TTBluetoothMonitor.h"
 #import "TTModeMap.h"
 #import "TTHUDController.h"
-#import "Vendor/RHPreferences/RHPreferences.h"
 
 #define NSAppDelegate  ((TTAppDelegate *)[[NSApplication sharedApplication] delegate])
 
@@ -33,11 +32,8 @@
 @property (nonatomic) TTBluetoothMonitor *bluetoothMonitor;
 @property (nonatomic) TTModeMap *modeMap;
 @property (nonatomic) TTHUDController *hudController;
-@property (retain) RHPreferencesWindowController *preferencesWindowController;
 
 - (void)openPanel;
 - (IBAction)togglePanel:(id)sender;
-- (void)showPreferences:(NSString *)selectedTab onlyIfVisible:(BOOL)onlyIfVisible;
-- (void)showPreferences:(NSString *)selectedTab;
 
 @end

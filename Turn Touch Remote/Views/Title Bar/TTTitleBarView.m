@@ -9,7 +9,6 @@
 #import "TTTitleBarView.h"
 #import "TTBluetoothMonitor.h"
 #import "TTDevice.h"
-#import "RHPreferences.h"
 #import "NSDate+TimeAgo.h"
 
 #define CORNER_RADIUS 8.0f
