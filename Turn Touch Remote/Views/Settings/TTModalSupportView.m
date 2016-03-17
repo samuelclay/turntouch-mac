@@ -38,10 +38,13 @@
 - (IBAction)chooseSupportSegmentedControl:(id)sender {
     if (supportSegmentedControl.selectedSegment == 0) {
         [supportLabel setStringValue:@"What can we help you with?"];
+        [appDelegate.panelController.backgroundView.modalBarButton setPageSupport:MODAL_SUPPORT_QUESTION];
     } else if (supportSegmentedControl.selectedSegment == 1) {
         [supportLabel setStringValue:@"What feature would you like to see?"];
+        [appDelegate.panelController.backgroundView.modalBarButton setPageSupport:MODAL_SUPPORT_IDEA];
     } else if (supportSegmentedControl.selectedSegment == 2) {
         [supportLabel setStringValue:@"What issue are you running into?"];
+        [appDelegate.panelController.backgroundView.modalBarButton setPageSupport:MODAL_SUPPORT_PROBLEM];
     }
 }
 
