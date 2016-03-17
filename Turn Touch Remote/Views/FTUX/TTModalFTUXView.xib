@@ -28,7 +28,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z5G-Fm-vks">
-                                <rect key="frame" x="62" y="58" width="388" height="48"/>
+                                <rect key="frame" x="46" y="58" width="420" height="48"/>
                                 <textFieldCell key="cell" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="Subtitle explainer gives a bit more context, esp. for those really long subtitles that stretch two lines." id="tyP-8r-fHX">
                                     <font key="font" size="16" name="Effra-Regular"/>
                                     <color key="textColor" red="0.65098039220000004" green="0.68235294120000001" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -79,7 +79,7 @@
                             <constraint firstItem="End-Np-mCu" firstAttribute="leading" secondItem="zez-Z8-iaL" secondAttribute="leading" id="HxT-tG-gyv"/>
                             <constraint firstItem="NOH-r4-kNu" firstAttribute="centerX" secondItem="zez-Z8-iaL" secondAttribute="centerX" id="NA5-D8-wD0"/>
                             <constraint firstItem="ZMI-5x-WVE" firstAttribute="top" secondItem="zez-Z8-iaL" secondAttribute="top" id="P8c-N7-pd4"/>
-                            <constraint firstAttribute="trailing" secondItem="Z5G-Fm-vks" secondAttribute="trailing" constant="64" id="Q5O-GK-zNV"/>
+                            <constraint firstAttribute="trailing" secondItem="Z5G-Fm-vks" secondAttribute="trailing" constant="48" id="Q5O-GK-zNV"/>
                             <constraint firstAttribute="trailing" secondItem="End-Np-mCu" secondAttribute="trailing" id="YVp-Wd-V5l"/>
                             <constraint firstItem="Z5G-Fm-vks" firstAttribute="top" secondItem="NOH-r4-kNu" secondAttribute="bottom" constant="8" id="auv-pJ-g3n"/>
                             <constraint firstAttribute="trailing" secondItem="ZMI-5x-WVE" secondAttribute="trailing" id="bK5-T8-oGh"/>
@@ -87,7 +87,7 @@
                             <constraint firstAttribute="bottom" secondItem="fNc-WR-LrX" secondAttribute="bottom" constant="20" id="f2A-yB-BXl"/>
                             <constraint firstItem="End-Np-mCu" firstAttribute="top" secondItem="zez-Z8-iaL" secondAttribute="top" constant="48" id="u6v-nM-qjJ"/>
                             <constraint firstItem="fNc-WR-LrX" firstAttribute="top" secondItem="Z5G-Fm-vks" secondAttribute="bottom" constant="8" id="vJv-c3-vje"/>
-                            <constraint firstItem="Z5G-Fm-vks" firstAttribute="leading" secondItem="zez-Z8-iaL" secondAttribute="leading" constant="64" id="vWK-Ai-9Y0"/>
+                            <constraint firstItem="Z5G-Fm-vks" firstAttribute="leading" secondItem="zez-Z8-iaL" secondAttribute="leading" constant="48" id="vWK-Ai-9Y0"/>
                         </constraints>
                     </view>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>

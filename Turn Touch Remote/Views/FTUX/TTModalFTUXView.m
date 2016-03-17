@@ -54,23 +54,23 @@
     if (modalFTUX == MODAL_FTUX_INTRO) {
         [imageView setImage:[NSImage imageNamed:@"modal_ftux_action"]];
         [labelTitle setStringValue:@"Here's how it works"];
-        [labelSubtitle setStringValue:@"There are four buttons."];
+        [labelSubtitle setStringValue:@"Your remote has four buttons"];
     } else if (modalFTUX == MODAL_FTUX_ACTIONS) {
-        [imageView setImage:[NSImage imageNamed:@"modal_ftux_change_action"]];
+        [imageView setImage:[NSImage imageNamed:@"modal_ftux_doubletap"]];
         [labelTitle setStringValue:@"Each button performs an action"];
-        [labelSubtitle setStringValue:@"Each button"];
+        [labelSubtitle setStringValue:@"Like changing the lights, playing music, or turning up the volume"];
     } else if (modalFTUX == MODAL_FTUX_MODES) {
         [imageView setImage:[NSImage imageNamed:@"modal_ftux_mode"]];
         [labelTitle setStringValue:@"Press and hold to change apps"];
-        [labelSubtitle setStringValue:@""];
+        [labelSubtitle setStringValue:@"Four apps × four buttons per app\n= sixteen different actions"];
     } else if (modalFTUX == MODAL_FTUX_BATCHACTIONS) {
-        [imageView setImage:[NSImage imageNamed:@"modal_ftux_doubletap"]];
+        [imageView setImage:[NSImage imageNamed:@"modal_ftux_change_action"]];
         [labelTitle setStringValue:@"Each button can do multiple actions"];
-        [labelSubtitle setStringValue:@""];
+        [labelSubtitle setStringValue:@"There are batch actions and double-tap actions, all configurable in this app"];
     } else if (modalFTUX == MODAL_FTUX_HUD) {
         [imageView setImage:[NSImage imageNamed:@"modal_ftux_change_mode"]];
-        [labelTitle setStringValue:@"Customize each button"];
-        [labelSubtitle setStringValue:@""];
+        [labelTitle setStringValue:@"Press all four buttons for the HUD"];
+        [labelSubtitle setStringValue:@"The Heads-Up Display (HUD) shows what each button does and gives you access to even more actions and apps"];
     }
 
     [pageControl setNeedsDisplay:YES];

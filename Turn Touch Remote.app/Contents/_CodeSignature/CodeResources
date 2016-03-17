@@ -308,10 +308,6 @@
 			<key>optional</key>
 			<true/>
 		</dict>
-		<key>Resources/RHPreferencesWindow.nib</key>
-		<data>
-		yo2ny4/sKoKUPaP8aBZIMc/xedU=
-		</data>
 		<key>Resources/TTActionHUDView.nib</key>
 		<data>
 		8eStcIeAb9FX+sKmlIQxBzAGe1k=
@@ -326,7 +322,7 @@
 		</data>
 		<key>Resources/TTModalFTUXView.nib</key>
 		<data>
-		YIhNYX3lhUqE3YhlO1g1br9wj7Q=
+		arhUNeAIXVKt6Xa9WceVuG+agd8=
 		</data>
 		<key>Resources/TTModalPairingScanningView.nib</key>
 		<data>
@@ -451,22 +447,6 @@
 		<key>Resources/TTPanel.nib</key>
 		<data>
 		GWJc/W4OxsXvS9r/ymF9cfokYEs=
-		</data>
-		<key>Resources/TTSettingsAboutViewController.nib</key>
-		<data>
-		q4fsi0sZH16x9iDJ/fKRdFvQU8o=
-		</data>
-		<key>Resources/TTSettingsDevicesViewController.nib</key>
-		<data>
-		0b9WSvgtIt3HWdsbGnHY4VVCaUU=
-		</data>
-		<key>Resources/TTSettingsPairingViewController.nib</key>
-		<data>
-		z+e+4drXQ5R31LcjCZW6a0lu3GM=
-		</data>
-		<key>Resources/TTSettingsSupportViewController.nib</key>
-		<data>
-		aDuOXLUynlaqTiArXOhkvttu5uY=
 		</data>
 		<key>Resources/Turn Touch Remote.entitlements</key>
 		<data>
@@ -934,7 +914,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			CX6+q9x98dEbwKt6Ext35bHgEE4=
+			1xZ7dCzpmETbfoO7It7xW6PusA8=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "com.philips.hue.HueSDK-OSX" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -943,7 +923,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			B4vckKb5bdNPRSJD9Uv0m75lpw0=
+			pULjjENDsbUC2JzyCnMqcbZTe88=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.andymatuschak.Sparkle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -1252,10 +1232,6 @@
 			<key>optional</key>
 			<true/>
 		</dict>
-		<key>Resources/RHPreferencesWindow.nib</key>
-		<data>
-		yo2ny4/sKoKUPaP8aBZIMc/xedU=
-		</data>
 		<key>Resources/TTActionHUDView.nib</key>
 		<data>
 		8eStcIeAb9FX+sKmlIQxBzAGe1k=
@@ -1270,7 +1246,7 @@
 		</data>
 		<key>Resources/TTModalFTUXView.nib</key>
 		<data>
-		YIhNYX3lhUqE3YhlO1g1br9wj7Q=
+		arhUNeAIXVKt6Xa9WceVuG+agd8=
 		</data>
 		<key>Resources/TTModalPairingScanningView.nib</key>
 		<data>
@@ -1395,22 +1371,6 @@
 		<key>Resources/TTPanel.nib</key>
 		<data>
 		GWJc/W4OxsXvS9r/ymF9cfokYEs=
-		</data>
-		<key>Resources/TTSettingsAboutViewController.nib</key>
-		<data>
-		q4fsi0sZH16x9iDJ/fKRdFvQU8o=
-		</data>
-		<key>Resources/TTSettingsDevicesViewController.nib</key>
-		<data>
-		0b9WSvgtIt3HWdsbGnHY4VVCaUU=
-		</data>
-		<key>Resources/TTSettingsPairingViewController.nib</key>
-		<data>
-		z+e+4drXQ5R31LcjCZW6a0lu3GM=
-		</data>
-		<key>Resources/TTSettingsSupportViewController.nib</key>
-		<data>
-		aDuOXLUynlaqTiArXOhkvttu5uY=
 		</data>
 		<key>Resources/Turn Touch Remote.entitlements</key>
 		<data>
