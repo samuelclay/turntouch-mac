@@ -242,9 +242,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 #pragma mark - CBCentralManager delegate methods
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central {
-#ifdef DEBUG_CONNECT
-//    NSLog(@" ---> centralManagerDidUpdateState: %ld vs %ld", (long)central.state, (long)manager.state);
-#endif
+    NSLog(@" ---> centralManagerDidUpdateState: %@/%@ - %ld vs %ld", central, manager, (long)central.state, (long)manager.state);
     manager = central;
     [self updateBluetoothState:NO];
 }
@@ -252,6 +250,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 - (void)updateBluetoothState:(BOOL)renew {
     if (renew) {
         NSLog(@"Renewing CB manager. Old: %@/%ld", manager, (long)manager.state);
+        if (manager) [self terminate];
         manager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
     }
     
@@ -261,38 +260,46 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
     } else {
         [self countDevices];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(30.f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self reconnect];
+            [self reconnect:NO];
         });
     }
 }
 
-- (void) reconnect {
+- (void)reconnect:(BOOL)renew {
+    // If not renew, then only force a reconnection if nothing is connected
+    if (!renew) {
+        for (TTDevice *device in foundDevices) {
+            if (device.state == TTDeviceStateConnected) {
+                return;
+            }
+        }
+    }
+    
     [self stopScan];
     [self terminate];
     [self updateBluetoothState:YES];
 }
 
 - (void) terminate {
-    NSMutableArray *identifiers;
+    NSMutableArray *identifiers = [NSMutableArray array];
     for (TTDevice *device in foundDevices) {
         NSLog(@"Terminating device: %@", device);
-        if (device.state != TTDeviceStateConnected) continue;
-        [identifiers addObject:device.uuid];
-    }
-
-    if (!identifiers.count) {
-        NSLog(@"No identifiers to terminate...");
-        manager = nil;
-        return;
+        if (device.state != TTDeviceStateConnected) {
+            continue;
+        }
+        [identifiers addObject:[[NSUUID alloc] initWithUUIDString:device.uuid]];
     }
     
     NSArray *peripherals = [manager retrievePeripheralsWithIdentifiers:identifiers];
     for (CBPeripheral *peripheral in peripherals) {
+        if (peripheral.state != CBPeripheralStateConnected) continue;
         [manager cancelPeripheralConnection:peripheral];
         TTDevice *device = [foundDevices deviceForPeripheral:peripheral];
         [foundDevices removeDevice:device];
     }
+    
     manager = nil;
+    foundDevices = [[TTDeviceList alloc] init];
 }
 
 - (void)countDevices {

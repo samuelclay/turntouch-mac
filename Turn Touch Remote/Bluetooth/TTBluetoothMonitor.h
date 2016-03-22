@@ -55,7 +55,7 @@ typedef enum {
 @property (nonatomic, strong) CBCentralManager *manager;
 
 // Both unpaired and paired peripherals
-@property (nonatomic) TTDeviceList *foundDevices;
+@property (strong, nonatomic) TTDeviceList *foundDevices;
 @property (nonatomic) NSNumber *nicknamedConnectedCount;
 @property (nonatomic) NSNumber *pairedDevicesCount;
 @property (nonatomic) NSNumber *unpairedDevicesCount;
@@ -66,7 +66,7 @@ typedef enum {
 - (void)scanUnknown;
 - (void)stopScan;
 - (void)updateBluetoothState:(BOOL)renew;
-- (void)reconnect;
+- (void)reconnect:(BOOL)renew;
 - (void)terminate;
 - (void)disconnectUnpairedDevices;
 - (void)setDeviceLatency:(NSInteger)latency;
