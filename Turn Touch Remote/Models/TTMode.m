@@ -221,11 +221,14 @@
 }
 
 - (NSString *)imageNameForAction:(NSString *)actionName {
+    NSString *actionImageName;
     SEL selector = NSSelectorFromString([NSString stringWithFormat:@"image%@",
                                          actionName]);
     IMP imp = [self methodForSelector:selector];
     NSString *(*func)(id, SEL) = (void *)imp;
-    NSString *actionImageName = func(self, selector);
+    if ([self respondsToSelector:selector]) {
+        actionImageName = func(self, selector);
+    }
     
     return actionImageName;
 }
