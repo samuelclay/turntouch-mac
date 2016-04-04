@@ -171,6 +171,7 @@
                                                     toItem:nil
                                                  attribute:0 multiplier:1.0 constant:0];
     [self addConstraint:dfuConstraint];
+    if (showingDFU) [self toggleDfuList];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:dfuView
                                                      attribute:NSLayoutAttributeWidth
                                                      relatedBy:NSLayoutRelationEqual
@@ -403,8 +404,10 @@
     [[NSAnimationContext currentContext] setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
     
     if (anyExpired) {
+        showingDFU = YES;
         [[dfuConstraint animator] setConstant:40*[devices count] + 1];
     } else {
+        showingDFU = NO;
         [[dfuConstraint animator] setConstant:0];
     }
     

@@ -63,6 +63,7 @@
     TTModalPairing modalPairing;
     TTModalFTUX modalFTUX;
     TTModalSupport modalSupport;
+    BOOL showingDFU;
 }
 
 @property (nonatomic) IBOutlet TTPanelArrowView *arrowView;

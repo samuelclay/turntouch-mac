@@ -9,6 +9,8 @@
 #import "TTButtonTimer.h"
 #import "TTModeMap.h"
 
+#define DEBUG_BUTTON_STATE 1
+
 @implementation TTButtonTimer
 
 @synthesize pairingActivatedCount;
@@ -52,7 +54,9 @@
     latestButtonState.west = !!(state & (1 << 2));
     latestButtonState.south = !!(state & (1 << 3));
 
-//    NSLog(@" ---> Bluetooth data: %@ (%d/%d/%d) %@", data, doubleState, state, heldState, latestButtonState);
+#if DEBUG_BUTTON_STATE
+    NSLog(@" ---> Bluetooth data: %@ (%d/%d/%d) %@", data, doubleState, state, heldState, latestButtonState);
+#endif
     
     // Figure out which buttons are held and lifted
     NSInteger i = latestButtonState.count;
@@ -96,7 +100,9 @@
         [self activateButton:NO_DIRECTION];
     } else if (anyButtonPressed) {
         // Press down button
+#if DEBUG_BUTTON_STATE
 //        NSLog(@" ---> Press down button%@", previousButtonState.inMultitouch ? @" (multi-touch)" : @"");
+#endif
         previousButtonState = latestButtonState;
 
         if (latestButtonState.inMultitouch) {
@@ -138,7 +144,9 @@
         }
     } else if (anyButtonLifted) {
         // Press up button
+#if DEBUG_BUTTON_STATE
 //        NSLog(@" ---> Button lifted%@: %ld", previousButtonState.inMultitouch ? @" (multi-touch)" : @"", (long)buttonLifted);
+#endif
         previousButtonState = latestButtonState;
 
         TTModeDirection buttonPressedDirection;
@@ -197,7 +205,9 @@
             });
         }
     } else if (!latestButtonState.anyPressedDown) {
-//        NSLog(@" ---> Nothing pressed%@: %d (lifted: %ld)", latestButtonState.inMultitouch ? @" (multi-touch)" : @"", state, buttonLifted);
+#if DEBUG_BUTTON_STATE
+        NSLog(@" ---> Nothing pressed%@: %d (lifted: %ld)", latestButtonState.inMultitouch ? @" (multi-touch)" : @"", state, buttonLifted);
+#endif
         BOOL inMultitouch = previousButtonState.inMultitouch;
         previousButtonState = latestButtonState;
 
@@ -211,7 +221,9 @@
         holdToastStart = nil;
     }
     
-//    NSLog(@"Buttons: %d, %d: %@", state, heldData, previousButtonState);
+#if DEBUG_BUTTON_STATE
+    NSLog(@"Buttons: %d: %@", state, previousButtonState);
+#endif
 }
 
 - (void)releaseToastActiveMode {

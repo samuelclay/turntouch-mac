@@ -36,7 +36,7 @@
 const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 
 #define CLEAR_PAIRED_DEVICES 0
-#define DEBUG_CONNECT
+//#define DEBUG_CONNECT
 
 @implementation TTBluetoothMonitor
 
@@ -728,9 +728,9 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
     } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:dfuVersionCharacteritsicUUIDString]]) {
         int firmwareVersion;
         [characteristic.value getBytes:&firmwareVersion length:2];
-#ifdef DEBUG_CONNECT
+//#ifdef DEBUG_CONNECT
         NSLog(@" ---> Firmware version of %@: %d", device, firmwareVersion);
-#endif
+//#endif
         device.firmwareVersion = firmwareVersion;
         [self countDevices];
     } else {
