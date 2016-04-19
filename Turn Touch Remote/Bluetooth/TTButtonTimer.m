@@ -55,7 +55,7 @@
     latestButtonState.south = !!(state & (1 << 3));
 
 #if DEBUG_BUTTON_STATE
-    NSLog(@" ---> Bluetooth data: %@ (%d/%d/%d) %@", data, doubleState, state, heldState, latestButtonState);
+    NSLog(@" ---> Bluetooth data: %@ (%d/%d/%d) was:%@ is:%@", data, doubleState, state, heldState, previousButtonState, latestButtonState);
 #endif
     
     // Figure out which buttons are held and lifted
@@ -79,7 +79,9 @@
     
     if (anyButtonHeld) {
         // Hold button
-//        NSLog(@" ---> Hold button");
+#if DEBUG_BUTTON_STATE
+        NSLog(@" ---> Hold button");
+#endif
         previousButtonState = latestButtonState;
         menuState = TTHUDMenuStateHidden;
         
@@ -101,7 +103,7 @@
     } else if (anyButtonPressed) {
         // Press down button
 #if DEBUG_BUTTON_STATE
-//        NSLog(@" ---> Press down button%@", previousButtonState.inMultitouch ? @" (multi-touch)" : @"");
+        NSLog(@" ---> Press down button%@", previousButtonState.inMultitouch ? @" (multi-touch)" : @"");
 #endif
         previousButtonState = latestButtonState;
 
@@ -145,7 +147,7 @@
     } else if (anyButtonLifted) {
         // Press up button
 #if DEBUG_BUTTON_STATE
-//        NSLog(@" ---> Button lifted%@: %ld", previousButtonState.inMultitouch ? @" (multi-touch)" : @"", (long)buttonLifted);
+        NSLog(@" ---> Button up%@: %ld", previousButtonState.inMultitouch ? @" (multi-touch)" : @"", (long)buttonLifted);
 #endif
         previousButtonState = latestButtonState;
 
@@ -342,8 +344,10 @@
 #pragma mark - HUD Menu
 
 - (void)closeMenu {
-    menuState = TTHUDMenuStateHidden;
-    [previousButtonState clearState];
+    if (menuState != TTHUDMenuStateHidden) {
+        menuState = TTHUDMenuStateHidden;
+        [previousButtonState clearState];
+    }
 }
 
 #pragma mark - Pairing

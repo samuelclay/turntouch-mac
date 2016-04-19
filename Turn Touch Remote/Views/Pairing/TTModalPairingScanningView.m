@@ -101,7 +101,7 @@
     if (!found) {
         [countdownIndicator setHidden:YES];
         [spinnerScanning setHidden:NO];
-        [appDelegate.bluetoothMonitor disconnectUnpairedDevices];
+//        [appDelegate.bluetoothMonitor disconnectUnpairedDevices];
         NSRunLoop *runner = [NSRunLoop currentRunLoop];
         if (searchingTimer) [searchingTimer invalidate];
         searchingTimer = [[NSTimer alloc] initWithFireDate:[[NSDate date] dateByAddingTimeInterval:10.f]
