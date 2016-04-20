@@ -506,7 +506,7 @@
 		</data>
 		<key>Resources/defaults.plist</key>
 		<data>
-		cjlM9kV+COpXq/sW/9eC4uA/h2E=
+		kBPZysMBJenN2/5+D2xFMabadq4=
 		</data>
 		<key>Resources/double_tap.png</key>
 		<data>
@@ -570,6 +570,10 @@
 		<key>Resources/firmwares/nrf51_04.zip</key>
 		<data>
 		fuRqw0aLU3MzvOX5eL1NLTZdb2E=
+		</data>
+		<key>Resources/firmwares/nrf51_05.zip</key>
+		<data>
+		dvw4KFupbmZxehjjw4RNqbi+ZQU=
 		</data>
 		<key>Resources/fonts/Effra_Rg.ttf</key>
 		<data>
@@ -914,7 +918,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			rlJur8Ts7w2g5uHx9it0VbZ4Hbw=
+			1tomB0eBQ/k9+64a4xUuEMJCm1g=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "com.philips.hue.HueSDK-OSX" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -923,7 +927,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			K6NuP2dg050mtKfPuFUgGILI4Nw=
+			RxuMlrteH4nKe0n672vSkhBC/uU=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.andymatuschak.Sparkle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -1931,11 +1935,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			cjlM9kV+COpXq/sW/9eC4uA/h2E=
+			kBPZysMBJenN2/5+D2xFMabadq4=
 			</data>
 			<key>hash2</key>
 			<data>
-			wB+LN1B+DDGG+vltitqs6sDb1yEaWAQCpi6cGqToGg4=
+			vmTut2d5qiJso4rflFzeh+jtYL0ikM3pWR79o8ysOnk=
 			</data>
 		</dict>
 		<key>Resources/double_tap.png</key>
@@ -2074,6 +2078,17 @@
 			<key>hash2</key>
 			<data>
 			1H/YSd6zU14mu2KXE5gi7Dkr6PcGzngEBTRWWIU6zvI=
+			</data>
+		</dict>
+		<key>Resources/firmwares/nrf51_05.zip</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			dvw4KFupbmZxehjjw4RNqbi+ZQU=
+			</data>
+			<key>hash2</key>
+			<data>
+			WxVXfwyY+0OdnVIjkTselggDIsBwlnkzbW52AALq1dQ=
 			</data>
 		</dict>
 		<key>Resources/fonts/Effra_Rg.ttf</key>
