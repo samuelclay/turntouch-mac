@@ -22,7 +22,7 @@ typedef enum {
 } FirmwareSetting;
 
 typedef enum {
-    BT_STATE_DOING_NOTHING = 0,
+    BT_STATE_IDLE = 0,
     BT_STATE_SCANNING_KNOWN = 1,
     BT_STATE_CONNECTING_KNOWN = 2,
     BT_STATE_SCANNING_UNKNOWN = 3,

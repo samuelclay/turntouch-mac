@@ -36,7 +36,7 @@
 const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 
 #define CLEAR_PAIRED_DEVICES 0
-//#define DEBUG_CONNECT
+#define DEBUG_CONNECT
 
 @implementation TTBluetoothMonitor
 
@@ -158,7 +158,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
     }
     
     if (!knownDevicesStillDisconnected) {
-        bluetoothState = BT_STATE_DOING_NOTHING;
+        bluetoothState = BT_STATE_IDLE;
 #ifdef DEBUG_CONNECT
         NSLog(@" ---> (%X) All done, no known devices left to connect.", bluetoothState);
 #endif
@@ -345,18 +345,22 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
     if (isAlreadyConnecting) {
         [manager cancelPeripheralConnection:peripheral];
     } else {
+#ifdef DEBUG_CONNECT
+        NSString *localName = [advertisementData objectForKey:CBAdvertisementDataLocalNameKey];
+        NSLog(@" --> (%X) Attempting connect: %@/%@ (%@)", bluetoothState, localName, device, RSSI);
+#endif
         [manager connectPeripheral:peripheral
                            options:@{CBConnectPeripheralOptionNotifyOnDisconnectionKey: [NSNumber numberWithBool:YES],
                                      CBCentralManagerOptionShowPowerAlertKey: [NSNumber numberWithBool:YES]}];
     }
 
-    // In case stillconnecting 30 seconds from now, disconnect.
+    // In case still connecting 30 seconds from now, disconnect.
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(30.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if (bluetoothState != BT_STATE_CONNECTING_UNKNOWN) return;
 #ifdef DEBUG_CONNECT
         NSLog(@" ---> (%X) Still connecting to unknown, disconnecting...", bluetoothState);
 #endif
-        bluetoothState = BT_STATE_DOING_NOTHING;
+        bluetoothState = BT_STATE_IDLE;
         [self stopScan];
         [self scanKnown];
     });
@@ -648,7 +652,7 @@ didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic
         device.state = TTDeviceStateConnected;
         [self countDevices];
         
-        bluetoothState = BT_STATE_DOING_NOTHING;
+        bluetoothState = BT_STATE_IDLE;
         [self scanKnown];
 //        [appDelegate.hudController toastActiveMode];
     } else {
@@ -876,7 +880,7 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
     NSData *deviceNicknameData = [device.nickname dataUsingEncoding:NSUTF8StringEncoding];
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *nicknameKey = [NSString stringWithFormat:@"TT:device:%@:nickname", device.uuid];
-    NSString *existingNickname = [[prefs objectForKey:nicknameKey] stringByTrimmingCharactersInSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]];
+    NSString *existingNickname = [prefs objectForKey:nicknameKey];
     
     BOOL hasDeviceNickname = ![deviceNicknameData isEqualToData:emptyNickname] && [device.nickname stringByTrimmingCharactersInSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]].length;
     BOOL force = YES;
