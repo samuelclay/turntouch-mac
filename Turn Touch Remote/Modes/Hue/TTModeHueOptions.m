@@ -18,6 +18,7 @@
 @property (nonatomic, strong) TTModeHueConnecting *connectingViewController;
 @property (nonatomic, strong) TTModeHueConnected *connectedViewController;
 @property (nonatomic, strong) TTModeHuePushlink *pushlinkViewController;
+@property (nonatomic, strong) TTModeHueBridge *bridgeViewController;
 
 @end
 
@@ -43,6 +44,11 @@
         case STATE_CONNECTING:
             [self drawConnectingViewController];
             [self.connectingViewController setConnectingWithMessage:message];
+            break;
+            
+        case STATE_BRIDGE_SELECT:
+            [self drawBridgeViewController];
+            [self.bridgeViewController setBridges:(NSDictionary *)message];
             break;
             
         case STATE_PUSHLINK:
@@ -77,6 +83,10 @@
     if (self.pushlinkViewController) {
         [self.pushlinkViewController.view removeFromSuperview];
         self.pushlinkViewController = nil;
+    }
+    if (self.bridgeViewController) {
+        [self.bridgeViewController.view removeFromSuperview];
+        self.bridgeViewController = nil;
     }
 }
 
@@ -138,10 +148,19 @@
 - (void)drawPushlinkViewController {
     [self clearViewConnectrollers];
     self.pushlinkViewController = [[TTModeHuePushlink alloc]
-                                    initWithNibName:@"TTModeHuePushlink"
-                                    bundle:[NSBundle mainBundle]];
+                                   initWithNibName:@"TTModeHuePushlink"
+                                   bundle:[NSBundle mainBundle]];
     self.pushlinkViewController.modeHue = self.modeHue;
     [self drawViewController:self.pushlinkViewController];
+}
+
+- (void)drawBridgeViewController {
+    [self clearViewConnectrollers];
+    self.bridgeViewController = [[TTModeHueBridge alloc]
+                                 initWithNibName:@"TTModeHueBridge"
+                                 bundle:[NSBundle mainBundle]];
+    self.bridgeViewController.modeHue = self.modeHue;
+    [self drawViewController:self.bridgeViewController];
 }
 
 @end

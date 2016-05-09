@@ -449,12 +449,8 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
         
         // Check for results
         if (bridgesFound.count > 0) {
-            hueState = STATE_CONNECTING;
-            [self.delegate changeState:hueState withMode:self showMessage:@"Found Hue bridge..."];
-            NSString *macAddress = [[bridgesFound allKeys] objectAtIndex:0];
-            NSString *ipAddress = [bridgesFound objectForKey:macAddress];
-            [phHueSDK setBridgeToUseWithId:macAddress ipAddress:ipAddress];
-            [self enableLocalHeartbeat];
+            hueState = STATE_BRIDGE_SELECT;
+            [self.delegate changeState:hueState withMode:self showMessage:bridgesFound];
         }
         else {
             /***************************************************
@@ -466,6 +462,16 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
         }
     }];
     
+}
+
+- (void)bridgeSelectedWithIpAddress:(NSString *)ipAddress andBridgeId:(NSString *)bridgeId {
+    hueState = STATE_CONNECTING;
+    [self.delegate changeState:hueState withMode:self showMessage:@"Found Hue bridge..."];
+//    NSString *macAddress = [[bridgesFound allKeys] objectAtIndex:1];
+//    NSString *ipAddress = [bridgesFound objectForKey:macAddress];
+    [phHueSDK setBridgeToUseWithId:bridgeId ipAddress:ipAddress];
+
+    [self performSelector:@selector(enableLocalHeartbeat) withObject:nil afterDelay:1];
 }
 
 #pragma mark - Heartbeat control

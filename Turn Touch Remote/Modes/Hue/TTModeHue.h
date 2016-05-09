@@ -19,6 +19,7 @@
 typedef enum TTHueState : NSUInteger {
     STATE_NOT_CONNECTED,
     STATE_CONNECTING,
+    STATE_BRIDGE_SELECT,
     STATE_PUSHLINK,
     STATE_CONNECTED
 } TTHueState;
@@ -64,5 +65,6 @@ extern NSString *const kDoubleTapRandomSaturation;
 @property (nonatomic) TTHueState hueState;
 
 - (void)searchForBridgeLocal;
+- (void)bridgeSelectedWithIpAddress:(NSString *)ipAddress andBridgeId:(NSString *)bridgeId;
 
 @end

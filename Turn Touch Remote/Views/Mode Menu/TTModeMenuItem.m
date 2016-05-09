@@ -13,7 +13,7 @@
 
 - (void)loadView {
     appDelegate = (TTAppDelegate *)[NSApp delegate];
-    NSRect collectionRect;
+    NSRect collectionRect = {0};
     TTModeMenuCollectionView *cv = (TTModeMenuCollectionView *)self.collectionView;
     
     menuType = cv.menuType;

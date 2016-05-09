@@ -341,6 +341,8 @@
 		FFE2D4791A46404500DDD413 /* NSData+Conversion.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE2D4781A46404500DDD413 /* NSData+Conversion.m */; };
 		FFE2D47E1A51EDF000DDD413 /* TTModeHue.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE2D47D1A51EDF000DDD413 /* TTModeHue.m */; };
 		FFEA6CB819218A5C0010874B /* TTModeAlarmClockOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFEA6CB719218A5C0010874B /* TTModeAlarmClockOptions.xib */; };
+		FFF049771CE11FCF006CE427 /* TTModeHueBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF049751CE11FCF006CE427 /* TTModeHueBridge.m */; };
+		FFF049781CE11FCF006CE427 /* TTModeHueBridge.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFF049761CE11FCF006CE427 /* TTModeHueBridge.xib */; };
 		FFF05F3B18F77BE000AC6230 /* TTModeTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF05F3A18F77BE000AC6230 /* TTModeTitleView.m */; };
 		FFF05F3E18F77CF500AC6230 /* TTChangeButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF05F3D18F77CF500AC6230 /* TTChangeButtonView.m */; };
 		FFF05F4218F77D5D00AC6230 /* TTChangeButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF05F4118F77D5D00AC6230 /* TTChangeButtonCell.m */; };
@@ -908,6 +910,9 @@
 		FFE2D47C1A51EDF000DDD413 /* TTModeHue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeHue.h; sourceTree = "<group>"; };
 		FFE2D47D1A51EDF000DDD413 /* TTModeHue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeHue.m; sourceTree = "<group>"; };
 		FFEA6CB719218A5C0010874B /* TTModeAlarmClockOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeAlarmClockOptions.xib; path = "Modes/Alarm Clock/TTModeAlarmClockOptions.xib"; sourceTree = "<group>"; };
+		FFF049741CE11FCF006CE427 /* TTModeHueBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeHueBridge.h; sourceTree = "<group>"; };
+		FFF049751CE11FCF006CE427 /* TTModeHueBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeHueBridge.m; sourceTree = "<group>"; };
+		FFF049761CE11FCF006CE427 /* TTModeHueBridge.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTModeHueBridge.xib; sourceTree = "<group>"; };
 		FFF05F3918F77BE000AC6230 /* TTModeTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeTitleView.h; path = "Views/Mode Title/TTModeTitleView.h"; sourceTree = "<group>"; };
 		FFF05F3A18F77BE000AC6230 /* TTModeTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeTitleView.m; path = "Views/Mode Title/TTModeTitleView.m"; sourceTree = "<group>"; };
 		FFF05F3C18F77CF500AC6230 /* TTChangeButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTChangeButtonView.h; path = Views/Buttons/TTChangeButtonView.h; sourceTree = "<group>"; };
@@ -1949,6 +1954,9 @@
 				FF3641E71A60BB8B003CC03C /* TTModeHueConnecting.h */,
 				FF3641E81A60BB8B003CC03C /* TTModeHueConnecting.m */,
 				FF3641D91A5F53DC003CC03C /* TTModeHueConnecting.xib */,
+				FFF049741CE11FCF006CE427 /* TTModeHueBridge.h */,
+				FFF049751CE11FCF006CE427 /* TTModeHueBridge.m */,
+				FFF049761CE11FCF006CE427 /* TTModeHueBridge.xib */,
 				FF3641EC1A60C422003CC03C /* TTModeHuePushlink.h */,
 				FF3641ED1A60C422003CC03C /* TTModeHuePushlink.m */,
 				FF3641EE1A60C422003CC03C /* TTModeHuePushlink.xib */,
@@ -2163,6 +2171,7 @@
 				FF8A73CA1ABA69410023AA53 /* logo_256.png in Resources */,
 				FF01CA761C46DCC200F83A73 /* mode_presentation.png in Resources */,
 				FF8D1AA91C98F5D3006AA1A2 /* logo_white_with_title.png in Resources */,
+				FFF049781CE11FCF006CE427 /* TTModeHueBridge.xib in Resources */,
 				FF8D1AB31C9902F8006AA1A2 /* TTModalSupportView.xib in Resources */,
 				FF6135611C61CDDC00F431D7 /* music_volume_mute.png in Resources */,
 				FF01CA601C46DCC200F83A73 /* cog.png in Resources */,
@@ -2411,6 +2420,7 @@
 				FF01CAB01C473EC100F83A73 /* NSURL+ValidityChecking.m in Sources */,
 				FF5295C81AD5B9B8007DDC02 /* TTSettingsButton.m in Sources */,
 				FF3641EF1A60C422003CC03C /* TTModeHuePushlink.m in Sources */,
+				FFF049771CE11FCF006CE427 /* TTModeHueBridge.m in Sources */,
 				FF7305AE1A5C9C76009A852D /* DDAbstractDatabaseLogger.m in Sources */,
 				FF76AD161C1F8FD000A6ED97 /* TTSlider.m in Sources */,
 				FF904B991BE9BA3700AD00F3 /* zip.c in Sources */,

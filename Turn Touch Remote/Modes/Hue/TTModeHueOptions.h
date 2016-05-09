@@ -11,6 +11,7 @@
 #import "TTModeHueConnecting.h"
 #import "TTModeHueConnected.h"
 #import "TTModeHuePushlink.h"
+#import "TTModeHueBridge.h"
 
 @interface TTModeHueOptions : TTOptionsDetailViewController
 <TTModeHueDelegate>
