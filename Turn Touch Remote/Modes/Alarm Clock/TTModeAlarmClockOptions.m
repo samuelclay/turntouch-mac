@@ -43,15 +43,15 @@ NSUInteger const kOnetimeHeight = 68;
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    BOOL repeatAlarmEnabled = [[NSAppDelegate.modeMap modeOptionValue:kRepeatAlarmEnabled] boolValue];
-    NSInteger repeatAlarmTime = [[NSAppDelegate.modeMap modeOptionValue:kRepeatAlarmTime] integerValue];
-    NSArray *repeatDays = [NSAppDelegate.modeMap modeOptionValue:kRepeatAlarmDays];
-    BOOL onetimeAlarmEnabled = [[NSAppDelegate.modeMap modeOptionValue:kOnetimeAlarmEnabled] boolValue];
-    NSDate *oneTimeAlarmDate = [NSAppDelegate.modeMap modeOptionValue:kOnetimeAlarmDate];
-    NSInteger onetimeAlarmTime = [[NSAppDelegate.modeMap modeOptionValue:kOnetimeAlarmTime] integerValue];
-    NSInteger alarmDuration = [[NSAppDelegate.modeMap modeOptionValue:kAlarmDuration] integerValue];
-    NSInteger alarmVolume = [[NSAppDelegate.modeMap modeOptionValue:kAlarmVolume] integerValue];
-    BOOL playlistShuffle = [[NSAppDelegate.modeMap modeOptionValue:kAlarmShuffle] boolValue];
+    BOOL repeatAlarmEnabled = [[NSAppDelegate.modeMap mode:self.mode optionValue:kRepeatAlarmEnabled] boolValue];
+    NSInteger repeatAlarmTime = [[NSAppDelegate.modeMap mode:self.mode optionValue:kRepeatAlarmTime] integerValue];
+    NSArray *repeatDays = [NSAppDelegate.modeMap mode:self.mode optionValue:kRepeatAlarmDays];
+    BOOL onetimeAlarmEnabled = [[NSAppDelegate.modeMap mode:self.mode optionValue:kOnetimeAlarmEnabled] boolValue];
+    NSDate *oneTimeAlarmDate = [NSAppDelegate.modeMap mode:self.mode optionValue:kOnetimeAlarmDate];
+    NSInteger onetimeAlarmTime = [[NSAppDelegate.modeMap mode:self.mode optionValue:kOnetimeAlarmTime] integerValue];
+    NSInteger alarmDuration = [[NSAppDelegate.modeMap mode:self.mode optionValue:kAlarmDuration] integerValue];
+    NSInteger alarmVolume = [[NSAppDelegate.modeMap mode:self.mode optionValue:kAlarmVolume] integerValue];
+    BOOL playlistShuffle = [[NSAppDelegate.modeMap mode:self.mode optionValue:kAlarmShuffle] boolValue];
     
     // Expand and size boxes for alarms
     [boxOnetimeConstraint     setConstant:onetimeAlarmEnabled ? kOnetimeHeight : 0];
@@ -100,11 +100,11 @@ NSUInteger const kOnetimeHeight = 68;
         if (segOnetimeControl.selectedSegment == 1) {
             [boxOnetimeConstraint animator].constant = 0;
             [boxOnetimeOptions animator].alphaValue = 0;
-            [NSAppDelegate.modeMap changeModeOption:kOnetimeAlarmEnabled to:[NSNumber numberWithBool:NO]];
+            [NSAppDelegate.modeMap changeMode:self.mode option:kOnetimeAlarmEnabled to:[NSNumber numberWithBool:NO]];
         } else {
             [boxOnetimeConstraint animator].constant = kOnetimeHeight;
             [boxOnetimeOptions animator].alphaValue = 1;
-            [NSAppDelegate.modeMap changeModeOption:kOnetimeAlarmEnabled to:[NSNumber numberWithBool:YES]];
+            [NSAppDelegate.modeMap changeMode:self.mode option:kOnetimeAlarmEnabled to:[NSNumber numberWithBool:YES]];
             [self setOneTimeDate];
         }
         [(TTModeAlarmClock *)appDelegate.modeMap.selectedMode activateTimers];
@@ -117,11 +117,11 @@ NSUInteger const kOnetimeHeight = 68;
         if (segRepeatControl.selectedSegment == 1) {
             [boxRepeatConstraint animator].constant = 0;
             [boxRepeatOptions animator].alphaValue = 0;
-            [NSAppDelegate.modeMap changeModeOption:kRepeatAlarmEnabled to:[NSNumber numberWithBool:NO]];
+            [NSAppDelegate.modeMap changeMode:self.mode option:kRepeatAlarmEnabled to:[NSNumber numberWithBool:NO]];
         } else {
             [boxRepeatConstraint animator].constant = kRepeatHeight;
             [boxRepeatOptions animator].alphaValue = 1;
-            [NSAppDelegate.modeMap changeModeOption:kRepeatAlarmEnabled to:[NSNumber numberWithBool:YES]];
+            [NSAppDelegate.modeMap changeMode:self.mode option:kRepeatAlarmEnabled to:[NSNumber numberWithBool:YES]];
         }
         [(TTModeAlarmClock *)appDelegate.modeMap.selectedMode activateTimers];
     }];
@@ -136,21 +136,21 @@ NSUInteger const kOnetimeHeight = 68;
         [selectedDays addObject:[NSNumber numberWithBool:[segRepeatDays isSelectedForSegment:i]]];
         i++;
     }
-    [NSAppDelegate.modeMap changeModeOption:kRepeatAlarmDays to:selectedDays];
+    [NSAppDelegate.modeMap changeMode:self.mode option:kRepeatAlarmDays to:selectedDays];
     [self updateRepeatAlarmLabel];
     [(TTModeAlarmClock *)appDelegate.modeMap.selectedMode activateTimers];
 }
 
 - (IBAction)changeRepeatTime:(id)sender {
     NSInteger alarmTime = MIN(287, [sliderRepeatTime integerValue]);
-    [NSAppDelegate.modeMap changeModeOption:kRepeatAlarmTime to:[NSNumber numberWithInteger:alarmTime]];
+    [NSAppDelegate.modeMap changeMode:self.mode option:kRepeatAlarmTime to:[NSNumber numberWithInteger:alarmTime]];
     [self updateRepeatAlarmLabel];
     [(TTModeAlarmClock *)appDelegate.modeMap.selectedMode activateTimers];
 }
 
 - (void)updateRepeatAlarmLabel {
-    NSInteger repeatAlarmTime = [[NSAppDelegate.modeMap modeOptionValue:kRepeatAlarmTime] integerValue];
-    NSArray *repeatDays = [NSAppDelegate.modeMap modeOptionValue:kRepeatAlarmDays];
+    NSInteger repeatAlarmTime = [[NSAppDelegate.modeMap mode:self.mode optionValue:kRepeatAlarmTime] integerValue];
+    NSArray *repeatDays = [NSAppDelegate.modeMap mode:self.mode optionValue:kRepeatAlarmDays];
     NSInteger selectedDays = 0;
     NSInteger i = 0;
     while (i < [repeatDays count]) {
@@ -192,14 +192,15 @@ NSUInteger const kOnetimeHeight = 68;
     
     [datePicker setDateValue:nextDate];
 
-    [NSAppDelegate.modeMap changeModeOption:kOnetimeAlarmDate to:nextDate];
+    [NSAppDelegate.modeMap changeMode:self.mode option:kOnetimeAlarmDate to:nextDate];
+    [self updateOnetimeAlarmLabel];
     [(TTModeAlarmClock *)appDelegate.modeMap.selectedMode activateTimers];
 }
 
 - (IBAction)changeOnetimeDate:(id)sender {
     NSDate *onetimeDate = [datePicker dateValue];
     
-    [NSAppDelegate.modeMap changeModeOption:kOnetimeAlarmDate to:onetimeDate];
+    [NSAppDelegate.modeMap changeMode:self.mode option:kOnetimeAlarmDate to:onetimeDate];
     [self updateOnetimeAlarmLabel];
     [(TTModeAlarmClock *)appDelegate.modeMap.selectedMode activateTimers];
 }
@@ -207,7 +208,7 @@ NSUInteger const kOnetimeHeight = 68;
 - (void)didSelectDate:(NSDate *)selectedDate {
     [self.datePicker.calendarPopover close];
     [datePicker setDateValue:selectedDate];
-    [NSAppDelegate.modeMap changeModeOption:kOnetimeAlarmDate to:selectedDate];
+    [NSAppDelegate.modeMap changeMode:self.mode option:kOnetimeAlarmDate to:selectedDate];
     [self updateOnetimeAlarmLabel];
     [(TTModeAlarmClock *)appDelegate.modeMap.selectedMode activateTimers];
 }
@@ -215,7 +216,7 @@ NSUInteger const kOnetimeHeight = 68;
 - (IBAction)changeOnetimeTime:(id)sender {
     NSInteger alarmTime = MIN(287, [sliderOnetimeTime integerValue]);
     
-    [NSAppDelegate.modeMap changeModeOption:kOnetimeAlarmTime to:[NSNumber numberWithInteger:alarmTime]];
+    [NSAppDelegate.modeMap changeMode:self.mode option:kOnetimeAlarmTime to:[NSNumber numberWithInteger:alarmTime]];
     [self updateOnetimeAlarmLabel];
     [(TTModeAlarmClock *)appDelegate.modeMap.selectedMode activateTimers];
 }
@@ -224,8 +225,8 @@ NSUInteger const kOnetimeHeight = 68;
     NSLog(@"proposed date: %@", aDatePickerCell);
 }
 - (void)updateOnetimeAlarmLabel {
-    NSInteger onetimeAlarmTime = [[NSAppDelegate.modeMap modeOptionValue:kOnetimeAlarmTime] integerValue];
-    NSDate *onetimeAlarmDate = [NSAppDelegate.modeMap modeOptionValue:kOnetimeAlarmDate];
+    NSInteger onetimeAlarmTime = [[NSAppDelegate.modeMap mode:self.mode optionValue:kOnetimeAlarmTime] integerValue];
+    NSDate *onetimeAlarmDate = [NSAppDelegate.modeMap mode:self.mode optionValue:kOnetimeAlarmDate];
     
     NSTimeInterval timeInterval = onetimeAlarmTime * 5 * 60;
     NSDate *alarmDate = [[NSDate alloc] initWithTimeInterval:timeInterval sinceDate:onetimeAlarmDate];
@@ -265,21 +266,21 @@ NSUInteger const kOnetimeHeight = 68;
 #pragma mark - Alarm sounds
 
 - (void)updateAlarmSoundsLabels {
-    NSInteger alarmDuration = MAX(1, [[NSAppDelegate.modeMap modeOptionValue:kAlarmDuration] integerValue]);
-    NSInteger alarmVolume = [[NSAppDelegate.modeMap modeOptionValue:kAlarmVolume] integerValue];
+    NSInteger alarmDuration = MAX(1, [[NSAppDelegate.modeMap mode:self.mode optionValue:kAlarmDuration] integerValue]);
+    NSInteger alarmVolume = [[NSAppDelegate.modeMap mode:self.mode optionValue:kAlarmVolume] integerValue];
     
     [textAlarmVolume setStringValue:[NSString stringWithFormat:@"%ld%%", alarmVolume]];
     [textAlarmDuration setStringValue:[NSString stringWithFormat:@"%ld min", alarmDuration]];
 }
 
 - (IBAction)changeAlarmDuration:(id)sender {
-    [NSAppDelegate.modeMap changeModeOption:kAlarmDuration to:[NSNumber numberWithInteger:MAX(1, sliderAlarmDuration.integerValue)]];
+    [NSAppDelegate.modeMap changeMode:self.mode option:kAlarmDuration to:[NSNumber numberWithInteger:MAX(1, sliderAlarmDuration.integerValue)]];
     
     [self updateAlarmSoundsLabels];
 }
 
 - (IBAction)changeAlarmVolume:(id)sender {
-    [NSAppDelegate.modeMap changeModeOption:kAlarmVolume to:[NSNumber numberWithInteger:sliderAlarmVolume.integerValue]];
+    [NSAppDelegate.modeMap changeMode:self.mode option:kAlarmVolume to:[NSNumber numberWithInteger:sliderAlarmVolume.integerValue]];
     
     [self updateAlarmSoundsLabels];
 }
@@ -307,15 +308,15 @@ NSUInteger const kOnetimeHeight = 68;
         }
     }
     
-    [NSAppDelegate.modeMap changeModeOption:kAlarmPlaylist
-                                         to:selectedPlaylist.persistentID];
+    [NSAppDelegate.modeMap changeMode:self.mode option:kAlarmPlaylist
+                                            to:selectedPlaylist.persistentID];
     
     [self updateTracksCount:selectedPlaylist];
 }
 
 - (void)updateTracksCount:(iTunesPlaylist *)selectedPlaylist {
     if (!selectedPlaylist) {
-        NSString *playlistPersistentId = [NSAppDelegate.modeMap modeOptionValue:kAlarmPlaylist];
+        NSString *playlistPersistentId = [NSAppDelegate.modeMap mode:self.mode optionValue:kAlarmPlaylist];
         selectedPlaylist = [self iTunesPlaylist:playlistPersistentId];
     }
     NSInteger tracks = selectedPlaylist.tracks.count;
@@ -324,12 +325,12 @@ NSUInteger const kOnetimeHeight = 68;
 }
 
 - (IBAction)changeShuffle:(id)sender {
-    [NSAppDelegate.modeMap changeModeOption:kAlarmShuffle
-                                         to:[NSNumber numberWithBool:checkboxShuffle.state]];
+    [NSAppDelegate.modeMap changeMode:self.mode option:kAlarmShuffle
+                                            to:[NSNumber numberWithBool:checkboxShuffle.state]];
 }
 
 - (void)populateiTunesSources {
-    NSString *selectedPlaylistId = (NSString *)[NSAppDelegate.modeMap modeOptionValue:kAlarmPlaylist];
+    NSString *selectedPlaylistId = (NSString *)[NSAppDelegate.modeMap mode:self.mode optionValue:kAlarmPlaylist];
     NSMenuItem *selectedMenuItem;
     SBElementArray *playlists = [TTModeAlarmClock userPlaylists];
     NSInteger tag = 0;
@@ -399,7 +400,7 @@ NSUInteger const kOnetimeHeight = 68;
     
     if (!selectedPlaylistId) {
         selectedMenuItem = libraryMenuItem;
-        [NSAppDelegate.modeMap changeModeOption:kAlarmPlaylist to:libraryPlaylist.persistentID];
+        [NSAppDelegate.modeMap changeMode:self.mode option:kAlarmPlaylist to:libraryPlaylist.persistentID];
         [self updateTracksCount:libraryPlaylist];
     } else {
         [self updateTracksCount:selectedPlaylist];

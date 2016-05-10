@@ -280,8 +280,8 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
 
 - (void)fireOnetimeAlarm {
     NSLog(@"One-time Alarm fired: %@", [NSDate date]);
-    [NSAppDelegate.modeMap changeMode:self option:kOnetimeAlarmEnabled to:[NSNumber numberWithBool:NO]];
     [self runAlarm];
+    [NSAppDelegate.modeMap changeMode:self option:kOnetimeAlarmEnabled to:[NSNumber numberWithBool:NO]];
 }
 
 - (void)startStopAlarmTimer {

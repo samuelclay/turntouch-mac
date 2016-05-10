@@ -561,7 +561,7 @@ actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction 
                            directionName,
                            optionName];
     
-//    NSLog(@" -> Setting mode option %@ to: %@", optionKey, optionValue);
+    NSLog(@" -> Setting mode option %@ to: %@", optionKey, optionValue);
     [prefs setObject:optionValue forKey:optionKey];
     [prefs synchronize];
 }
