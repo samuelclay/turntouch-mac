@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
-        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTModeHueBridge">
@@ -18,9 +17,9 @@
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="xWD-X7-NWk">
             <rect key="frame" x="0.0" y="0.0" width="314" height="201"/>
             <subviews>
-                <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FWK-pn-0nB">
+                <stackView orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" translatesAutoresizingMaskIntoConstraints="NO" id="FWK-pn-0nB">
                     <rect key="frame" x="20" y="53" width="274" height="100"/>
-                    <subviews>
+                    <beginningViews>
                         <scrollView horizontalCompressionResistancePriority="1000" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJI-Bc-N74">
                             <rect key="frame" x="0.0" y="0.0" width="274" height="100"/>
                             <clipView key="contentView" id="BVu-He-kcc">
@@ -123,7 +122,7 @@
                                 <autoresizingMask key="autoresizingMask"/>
                             </tableHeaderView>
                         </scrollView>
-                    </subviews>
+                    </beginningViews>
                     <visibilityPriorities>
                         <integer value="1000"/>
                     </visibilityPriorities>
@@ -157,7 +156,7 @@
                         <action selector="refreshButtonClicked:" target="-2" id="GW4-cO-AbM"/>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="b5K-h3-NlN">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b5K-h3-NlN">
                     <rect key="frame" x="17" y="162" width="151" height="19"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Please select a Hue Bridge" id="ksY-FR-GhK">
                         <font key="font" size="13" name="Effra-Regular"/>

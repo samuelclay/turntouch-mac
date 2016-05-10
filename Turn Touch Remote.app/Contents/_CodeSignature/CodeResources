@@ -352,6 +352,10 @@
 		<data>
 		X7cZX94/ux4nvZkR9KcBQCUcH5U=
 		</data>
+		<key>Resources/TTModeHueBridge.nib</key>
+		<data>
+		1qr6ET5nsj+3RWQMmRAlEEV8j0U=
+		</data>
 		<key>Resources/TTModeHueConnect.nib</key>
 		<data>
 		YUA/h3efvi7dWwNkarM1/zLqTyE=
@@ -574,6 +578,10 @@
 		<key>Resources/firmwares/nrf51_05.zip</key>
 		<data>
 		dvw4KFupbmZxehjjw4RNqbi+ZQU=
+		</data>
+		<key>Resources/firmwares/nrf51_06.zip</key>
+		<data>
+		E0OsBr0ogCg2+r8DtUIa8BF8IO8=
 		</data>
 		<key>Resources/fonts/Effra_Rg.ttf</key>
 		<data>
@@ -918,7 +926,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			1tomB0eBQ/k9+64a4xUuEMJCm1g=
+			3odwTDLu6xuHZ3VbC5Iv2lRVchY=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "com.philips.hue.HueSDK-OSX" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -927,7 +935,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			RxuMlrteH4nKe0n672vSkhBC/uU=
+			ZLQ3Ze9uIMxoBSLVSIQkbdheUqM=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.andymatuschak.Sparkle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -1513,6 +1521,17 @@
 			OxiMsqveklPsYZuASXpqyZ1hIthb4jk8j7ruramZCNg=
 			</data>
 		</dict>
+		<key>Resources/TTModeHueBridge.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			1qr6ET5nsj+3RWQMmRAlEEV8j0U=
+			</data>
+			<key>hash2</key>
+			<data>
+			eHHqbAxBDripW7j82o5Oz//46Nsx404udmaLorxYGW4=
+			</data>
+		</dict>
 		<key>Resources/TTModeHueConnect.nib</key>
 		<dict>
 			<key>hash</key>
@@ -2089,6 +2108,17 @@
 			<key>hash2</key>
 			<data>
 			WxVXfwyY+0OdnVIjkTselggDIsBwlnkzbW52AALq1dQ=
+			</data>
+		</dict>
+		<key>Resources/firmwares/nrf51_06.zip</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			E0OsBr0ogCg2+r8DtUIa8BF8IO8=
+			</data>
+			<key>hash2</key>
+			<data>
+			+eYug+nKu3IubUXL6Nh5/2ppsMTKEZtovMDZEbbjyvc=
 			</data>
 		</dict>
 		<key>Resources/fonts/Effra_Rg.ttf</key>
