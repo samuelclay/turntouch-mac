@@ -55,7 +55,7 @@
 
     if ([appDelegate.modeMap shouldHideHud:direction]) return;
 
-    //    NSLog(@" ---> Fade in action: %d", direction);
+    NSLog(@" ---> Fade in action: %d", direction);
 //    [hudWindow setLevel:10];
     [hudWindow makeKeyAndOrderFront:NSApp];
     [self showWindow:nil];
