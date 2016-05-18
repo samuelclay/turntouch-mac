@@ -209,7 +209,7 @@ const CGFloat kActionHUDMarginPct = .6f;
 }
 
 - (void)drawIcon {
-    NSString *iconFilename = [mode imageNameForAction:actionName];
+    NSString *iconFilename = [mode imageNameForActionHudInDirection:actionName];
     NSImage *icon = [NSImage imageNamed:iconFilename];
     [icon setSize:NSMakeSize(self.hudIconSize, self.hudIconSize)];
     [iconView setImage:icon];

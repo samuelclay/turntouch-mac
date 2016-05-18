@@ -16,6 +16,7 @@
 #import "TTModeHue.h"
 #import "TTModeNest.h"
 #import "TTModeWemo.h"
+#import "TTModeSpotify.h"
 #import "TTBatchActions.h"
 
 @implementation TTModeMap
@@ -46,6 +47,7 @@
         [self setAvailableModes:@[@"TTModeMac",
                                   @"TTModeAlarmClock",
                                   @"TTModeMusic",
+                                  @"TTModeSpotify",
                                   @"TTModeVideo",
                                   @"TTModeNews",
                                   @"TTModeWeb",

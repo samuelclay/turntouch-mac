@@ -38,7 +38,7 @@ typedef enum {
 - (NSString *)actionTitleForAction:(NSString *)actionName buttonMoment:(TTButtonMoment)buttonMoment;
 - (NSString *)imageNameInDirection:(TTModeDirection)direction;
 - (NSString *)imageNameForAction:(NSString *)actionName;
-- (NSString *)imageNameForActionHudInDirection:(TTModeDirection)direction;
+- (NSString *)imageNameForActionHudInDirection:(NSString *)actionName;
 - (ActionLayout)layoutInDirection:(TTModeDirection)direction;
 - (ActionLayout)layoutForAction:(NSString *)actionName;
 - (NSView *)viewForLayoutInDirection:(TTModeDirection)direction withRect:(NSRect)rect;

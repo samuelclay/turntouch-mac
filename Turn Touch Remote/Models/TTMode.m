@@ -234,8 +234,8 @@
 }
 
 
-- (NSString *)imageNameForActionHudInDirection:(TTModeDirection)direction {
-    NSString *actionName = [self actionNameInDirection:direction];
+- (NSString *)imageNameForActionHudInDirection:(NSString *)actionName {
+//    NSString *actionName = [self actionNameInDirection:direction];
     SEL selector = NSSelectorFromString([NSString stringWithFormat:@"imageActionHud%@",
                                          actionName]);
     IMP imp = [self methodForSelector:selector];

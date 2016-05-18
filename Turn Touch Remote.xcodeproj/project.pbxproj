@@ -193,6 +193,7 @@
 		FF6135621C61CDDC00F431D7 /* music_volume_up.png in Resources */ = {isa = PBXBuildFile; fileRef = FF6135501C61CDDC00F431D7 /* music_volume_up.png */; };
 		FF66F2A619228DE100031478 /* TTModeAlarmClockOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66F2A519228DE100031478 /* TTModeAlarmClockOptions.m */; };
 		FF66F2A91922D1C100031478 /* TTOptionsDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66F2A81922D1C100031478 /* TTOptionsDetailView.m */; };
+		FF6792381CEBE11200639148 /* TTModeSpotify.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6792371CEBE11200639148 /* TTModeSpotify.m */; };
 		FF6A37D01A9AEC9F006F3756 /* NSDate+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6A37CF1A9AEC9F006F3756 /* NSDate+Extras.m */; };
 		FF7305AE1A5C9C76009A852D /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7305921A5C9C76009A852D /* DDAbstractDatabaseLogger.m */; };
 		FF7305AF1A5C9C76009A852D /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7305941A5C9C76009A852D /* DDASLLogger.m */; };
@@ -651,6 +652,9 @@
 		FF66F2A519228DE100031478 /* TTModeAlarmClockOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeAlarmClockOptions.m; path = "Modes/Alarm Clock/TTModeAlarmClockOptions.m"; sourceTree = "<group>"; };
 		FF66F2A71922D1C100031478 /* TTOptionsDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTOptionsDetailView.h; path = "Views/Mode Options/TTOptionsDetailView.h"; sourceTree = "<group>"; };
 		FF66F2A81922D1C100031478 /* TTOptionsDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTOptionsDetailView.m; path = "Views/Mode Options/TTOptionsDetailView.m"; sourceTree = "<group>"; };
+		FF6792361CEBE11200639148 /* TTModeSpotify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeSpotify.h; path = Modes/Spotify/TTModeSpotify.h; sourceTree = "<group>"; };
+		FF6792371CEBE11200639148 /* TTModeSpotify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeSpotify.m; path = Modes/Spotify/TTModeSpotify.m; sourceTree = "<group>"; };
+		FF67923A1CEBE82800639148 /* Spotify.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Spotify.h; path = Modes/Spotify/Spotify.h; sourceTree = "<group>"; };
 		FF6A37CE1A9AEC9F006F3756 /* NSDate+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = "NSDate+Extras.h"; path = "Categories/NSDate+Extras.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		FF6A37CF1A9AEC9F006F3756 /* NSDate+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = "NSDate+Extras.m"; path = "Categories/NSDate+Extras.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		FF7305911A5C9C76009A852D /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
@@ -1084,6 +1088,7 @@
 				FF0E12CB18247D3000D49EC7 /* Music */,
 				FFE2D47B1A51EDF000DDD413 /* Hue */,
 				FFABAB971C334FCE00AD5620 /* Web */,
+				FF6792391CEBE11700639148 /* Spotify */,
 			);
 			name = Modes;
 			sourceTree = "<group>";
@@ -1429,6 +1434,16 @@
 			name = actions;
 			path = "Turn Touch Remote/Images/actions";
 			sourceTree = SOURCE_ROOT;
+		};
+		FF6792391CEBE11700639148 /* Spotify */ = {
+			isa = PBXGroup;
+			children = (
+				FF67923A1CEBE82800639148 /* Spotify.h */,
+				FF6792361CEBE11200639148 /* TTModeSpotify.h */,
+				FF6792371CEBE11200639148 /* TTModeSpotify.m */,
+			);
+			name = Spotify;
+			sourceTree = "<group>";
 		};
 		FF73058E1A5C9C76009A852D /* Hue */ = {
 			isa = PBXGroup;
@@ -2309,6 +2324,7 @@
 				FFD62CD11950EE770093004D /* TTSegmentedControl.m in Sources */,
 				FFE2D47E1A51EDF000DDD413 /* TTModeHue.m in Sources */,
 				FF904BAD1BEBFD1400AD00F3 /* TTDFUView.m in Sources */,
+				FF6792381CEBE11200639148 /* TTModeSpotify.m in Sources */,
 				FF904B4D1BE9B82200AD00F3 /* TTButtonState.m in Sources */,
 				FF87E9F61C96328800682461 /* TTPairingSpinner.m in Sources */,
 				FF01CAA71C473EC100F83A73 /* JXWebResourceLoadingBarrier.m in Sources */,
