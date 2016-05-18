@@ -207,7 +207,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
         // Use default, which is first scene in sorted scene list
         sceneIdentifier = scenes[0][@"identifier"];
     }
-    
+
     [bridgeSendAPI activateSceneWithIdentifier:sceneIdentifier onGroup:@"0" completionHandler:^(NSArray *errors) {
 //        NSLog(@"Scene change: %@ (%@)", sceneIdentifier, errors);
     }];
@@ -276,9 +276,11 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
         
         lightState.transitionTime = sceneTransition;
         lightState.alert = 0;
-        [bridgeSendAPI updateLightStateForId:light.identifier withLightState:lightState completionHandler:^(NSArray *errors) {
-            NSLog(@"Sleep light in %@: %@", sceneTransition, errors);
-        }];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [bridgeSendAPI updateLightStateForId:light.identifier withLightState:lightState completionHandler:^(NSArray *errors) {
+                NSLog(@"Sleep light in %@: %@", sceneTransition, errors);
+            }];
+        });
     }
 }
 
@@ -333,7 +335,9 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
             [lightState setSaturation:[NSNumber numberWithInt:254]];
         }
         
-        [bridgeSendAPI updateLightStateForId:light.identifier withLightState:lightState completionHandler:^(NSArray *errors) {}];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [bridgeSendAPI updateLightStateForId:light.identifier withLightState:lightState completionHandler:^(NSArray *errors) {}];
+        });
     }
 }
 

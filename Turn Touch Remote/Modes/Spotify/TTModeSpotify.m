@@ -192,7 +192,7 @@ NSString *const kSpotifyVolumeJump = @"spotifyVolumeJump";
 - (NSView *)viewForLayoutTTModeSpotifyPause:(NSRect)rect {
     SpotifyApplication *spotify = [SBApplication applicationWithBundleIdentifier:@"com.spotify.client"];
     SpotifyTrack *current = [spotify currentTrack];
-    return [self.class songInfoView:rect withTrack:current];
+    return [self songInfoView:rect withTrack:current];
 }
 - (NSView *)viewForLayoutTTModeSpotifyPlay:(NSRect)rect {
     return [self viewForLayoutTTModeSpotifyPause:rect];
@@ -208,10 +208,10 @@ NSString *const kSpotifyVolumeJump = @"spotifyVolumeJump";
 - (NSView *)viewForLayoutTTModeSpotifyNextTrack:(NSRect)rect {
     SpotifyApplication *spotify = [SBApplication applicationWithBundleIdentifier:@"com.spotify.client"];
     SpotifyTrack *current = [spotify currentTrack];
-    return [self.class songInfoView:rect withTrack:current];
+    return [self songInfoView:rect withTrack:current];
 }
 
-+ (NSView *)songInfoView:(NSRect)rect withTrack:(SpotifyTrack *)currentTrack {
+- (NSView *)songInfoView:(NSRect)rect withTrack:(SpotifyTrack *)currentTrack {
     NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
     NSInteger fontSize = round(CGRectGetWidth(screen.frame) / 128);
     NSColor *textColor = NSColorFromRGB(0x604050);
@@ -231,20 +231,19 @@ NSString *const kSpotifyVolumeJump = @"spotifyVolumeJump";
     
     // Album art
     NSImage *songArtwork;
-    // TODO: Fetch track.artworkUrl and update image when loaded and cached
-//    iTunesArtwork *artwork = (iTunesArtwork *)[[[currentTrack artworks] get] lastObject];
-//    if (artwork != nil) {
-//        songArtwork = [[NSImage alloc] initWithData:[artwork rawData]];
-//    } else {
-        songArtwork = [NSImage imageNamed:@"icon_music.png"];
-//    }
+    songArtwork = [NSImage imageNamed:@"icon_music.png"];
     NSInteger imageMargin = NSWidth(screen.frame)/512;
     NSInteger imageSize = rect.size.height - imageMargin*2;
     NSInteger infoX = imageMargin*2 + imageSize + imageMargin;
     NSInteger infoWidth = NSWidth(hudFrame) - infoX - imageMargin;
-    NSImageView *imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(imageMargin, imageMargin, imageSize, imageSize)];
-    [imageView setImage:songArtwork];
-    [view addSubview:imageView];
+    if (artworkImageView) {
+        [artworkImageView removeFromSuperview];
+        artworkImageView = nil;
+    }
+    artworkImageView = [[NSImageView alloc] initWithFrame:NSMakeRect(imageMargin, imageMargin, imageSize, imageSize)];
+    [artworkImageView setImage:songArtwork];
+    [view addSubview:artworkImageView];
+    [self loadImage:[NSURL URLWithString:currentTrack.artworkUrl]];
     
     // Check if song playing
     if (!currentTrack.name) {
@@ -296,6 +295,27 @@ NSString *const kSpotifyVolumeJump = @"spotifyVolumeJump";
     }
     
     return view;
+}
+
+- (void)loadImage:(NSURL *)imageURL
+{
+    NSOperationQueue *queue = [NSOperationQueue new];
+    NSInvocationOperation *operation = [[NSInvocationOperation alloc]
+                                        initWithTarget:self
+                                        selector:@selector(requestRemoteImage:)
+                                        object:imageURL];
+    [queue addOperation:operation];
+}
+
+- (void)requestRemoteImage:(NSURL *)imageURL {
+    NSData *imageData = [[NSData alloc] initWithContentsOfURL:imageURL];
+    NSImage *image = [[NSImage alloc] initWithData:imageData];
+    
+    [self performSelectorOnMainThread:@selector(placeImageInUI:) withObject:image waitUntilDone:YES];
+}
+
+- (void)placeImageInUI:(NSImage *)image {
+    [artworkImageView setImage:image];
 }
 
 #pragma mark - Action methods
@@ -359,23 +379,64 @@ NSString *const kSpotifyVolumeJump = @"spotifyVolumeJump";
 
 - (void)runTTModeSpotifyNextTrack {
     SpotifyApplication *spotify = [SBApplication applicationWithBundleIdentifier:@"com.spotify.client"];
+    NSString *actionName = self.action.actionName;
     
-    [spotify nextTrack];
-}
-- (void)doubleRunTTModeSpotifyNextTrack {
-    SpotifyApplication *spotify = [SBApplication applicationWithBundleIdentifier:@"com.spotify.client"];
-
-    NSString *original = [[spotify currentTrack] album];
-    SpotifyTrack *current;
-    int tries = 30;
-    
-    while (tries--) {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, (unsigned long)NULL), ^{
+        SpotifyTrack *original = [spotify currentTrack];
+        NSString *originalAlbum = original.album;
+        NSString *originalTrack = original.name;
+        SpotifyTrack *current = [spotify currentTrack];
         [spotify nextTrack];
-        current = [spotify currentTrack];
-        if (![original isEqualToString:current.album]) {
-            break;
+        int tries = 500;
+        
+        while (tries--) {
+            current = [spotify currentTrack];
+            NSLog(@"Spotify next: %d %@=%@", tries, current.name, originalTrack);
+            if (![current.album isEqualToString:originalAlbum] || ![current.name isEqualToString:originalTrack]) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [appDelegate.hudController toastDoubleAction:actionName inDirection:INFO];
+                });
+                break;
+            }
         }
-    }
+    });
+}
+
+- (void)doubleRunTTModeSpotifyNextTrack {
+    NSString *actionName = self.action.actionName;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, (unsigned long)NULL), ^{
+        SpotifyApplication *spotify = [SBApplication applicationWithBundleIdentifier:@"com.spotify.client"];
+
+        SpotifyTrack *original = [spotify currentTrack];
+        NSString *originalAlbum = original.album;
+        NSString *originalTrack = original.name;
+        NSString *lastSeenTrack = original.name;
+        SpotifyTrack *current;
+        int tries = 200;
+        BOOL noChange = NO;
+        
+        while (tries--) {
+            if (!noChange) {
+                [spotify nextTrack];
+            } else {
+                noChange = NO;
+            }
+            current = [spotify currentTrack];
+            if ([current.album isEqualToString:originalAlbum] && [current.name isEqualToString:lastSeenTrack]) {
+                noChange = YES;
+                NSLog(@"Spotify no change: %d > %d %@=%@=%@", tries, [originalAlbum isEqualToString:current.album], originalTrack, current.name, lastSeenTrack);
+                continue;
+            } else if (![originalAlbum isEqualToString:current.album]) {
+                NSLog(@"Spotify FOUND: %d > %d %@=%@=%@", tries, [originalAlbum isEqualToString:current.album], originalTrack, current.name, lastSeenTrack);
+                break;
+            }
+            NSLog(@"Spotify next: %d > %d %@=%@=%@", tries, [originalAlbum isEqualToString:current.album], originalTrack, current.name, lastSeenTrack);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [appDelegate.hudController toastDoubleAction:actionName inDirection:INFO];
+            });
+            lastSeenTrack = current.name;
+        }
+    });
 }
 
 - (void)runTTModeSpotifyPreviousTrack {

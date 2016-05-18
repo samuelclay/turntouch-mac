@@ -16,8 +16,7 @@ extern NSString *const kSpotifyVolumeJump;
     NSInteger originalVolume;
     CGFloat volumeFadeMultiplier;
     NSTimer *volumeFadeTimer;
+    NSImageView *artworkImageView;
 }
-
-+ (NSView *)songInfoView:(NSRect)rect withTrack:(SpotifyTrack *)currentTrack;
 
 @end

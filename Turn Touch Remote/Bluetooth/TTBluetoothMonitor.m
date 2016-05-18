@@ -36,7 +36,7 @@
 const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 
 #define CLEAR_PAIRED_DEVICES 0
-#define DEBUG_CONNECT
+//#define DEBUG_CONNECT
 
 @implementation TTBluetoothMonitor
 
