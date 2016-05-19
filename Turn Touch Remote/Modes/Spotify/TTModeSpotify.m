@@ -412,7 +412,7 @@ NSString *const kSpotifyVolumeJump = @"spotifyVolumeJump";
     });
 }
 
-- (void)doubleRunTTModeSpotifyNextTrack {
+- (void)doubleRunTTModeSpotifyNextTrack:(TTModeDirection)direction {
     NSString *actionName = self.action.actionName;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, (unsigned long)NULL), ^{
         SpotifyApplication *spotify = [SBApplication applicationWithBundleIdentifier:@"com.spotify.client"];
@@ -442,9 +442,21 @@ NSString *const kSpotifyVolumeJump = @"spotifyVolumeJump";
             }
             NSLog(@"Spotify next: %d > %d %@=%@=%@", tries, [originalAlbum isEqualToString:current.album], originalTrack, current.name, lastSeenTrack);
             dispatch_async(dispatch_get_main_queue(), ^{
-                [appDelegate.hudController toastDoubleAction:actionName inDirection:INFO];
+                [appDelegate.hudController toastDoubleAction:actionName inDirection:direction];
             });
             lastSeenTrack = current.name;
+        }
+        
+        tries = 500;
+        while (tries--) {
+            current = [spotify currentTrack];
+            NSLog(@"Spotify next: %d %@=%@", tries, current.album, originalAlbum);
+            if (![current.album isEqualToString:originalAlbum]) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [appDelegate.hudController toastActiveAction:actionName inDirection:direction];
+                });
+                break;
+            }
         }
     });
 }
