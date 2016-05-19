@@ -368,25 +368,35 @@ NSString *const kSpotifyVolumeJump = @"spotifyVolumeJump";
     
     [spotify playpause];
 }
-- (void)doubleRunTTModeSpotifyPlayPause {
+- (void)doubleRunTTModeSpotifyPlayPause:(TTModeDirection)direction {
     SpotifyApplication *spotify = [SBApplication applicationWithBundleIdentifier:@"com.spotify.client"];
-    
-    [spotify previousTrack];
+    NSString *actionName = self.action.actionName;
+
+    [self toastCurrentSpotifyTrack:[spotify currentTrack] forAction:actionName inDirection:direction];
+
     if (spotify.playerState != SpotifyEPlSPlaying) {
-        [spotify playpause];
+        [spotify play];
     }
 }
 
-- (void)runTTModeSpotifyNextTrack {
+- (void)runTTModeSpotifyNextTrack:(TTModeDirection)direction {
     SpotifyApplication *spotify = [SBApplication applicationWithBundleIdentifier:@"com.spotify.client"];
     NSString *actionName = self.action.actionName;
     
+    [self toastCurrentSpotifyTrack:[spotify currentTrack] forAction:actionName inDirection:direction];
+}
+
+- (void)toastCurrentSpotifyTrack:(SpotifyTrack *)original forAction:(NSString *)actionName inDirection:(TTModeDirection)direction {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, (unsigned long)NULL), ^{
-        SpotifyTrack *original = [spotify currentTrack];
+        SpotifyApplication *spotify = [SBApplication applicationWithBundleIdentifier:@"com.spotify.client"];
         NSString *originalAlbum = original.album;
         NSString *originalTrack = original.name;
         SpotifyTrack *current = [spotify currentTrack];
-        [spotify nextTrack];
+        if ([actionName isEqualToString:@"TTModeSpotifyNextTrack"]) {
+            [spotify nextTrack];
+        } else if ([actionName isEqualToString:@"TTModeSpotifyPlayPause"]) {
+            [spotify previousTrack];
+        }
         int tries = 500;
         
         while (tries--) {
@@ -394,7 +404,7 @@ NSString *const kSpotifyVolumeJump = @"spotifyVolumeJump";
             NSLog(@"Spotify next: %d %@=%@", tries, current.name, originalTrack);
             if (![current.album isEqualToString:originalAlbum] || ![current.name isEqualToString:originalTrack]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [appDelegate.hudController toastDoubleAction:actionName inDirection:INFO];
+                    [appDelegate.hudController toastActiveAction:actionName inDirection:direction];
                 });
                 break;
             }
@@ -412,7 +422,7 @@ NSString *const kSpotifyVolumeJump = @"spotifyVolumeJump";
         NSString *originalTrack = original.name;
         NSString *lastSeenTrack = original.name;
         SpotifyTrack *current;
-        int tries = 200;
+        int tries = 500;
         BOOL noChange = NO;
         
         while (tries--) {
