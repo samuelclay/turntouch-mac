@@ -17,6 +17,7 @@ extern NSString *const kSpotifyVolumeJump;
     CGFloat volumeFadeMultiplier;
     NSTimer *volumeFadeTimer;
     NSImageView *artworkImageView;
+    NSCache *artworkCache;
 }
 
 @end

@@ -13,6 +13,12 @@
 const NSInteger SPOTIFY_VOLUME_PCT_CHANGE = 6;
 NSString *const kSpotifyVolumeJump = @"spotifyVolumeJump";
 
+- (instancetype)init {
+    if (self = [super init]) {
+        artworkCache = [[NSCache alloc] init];
+    }
+    return self;
+}
 #pragma mark - Mode
 
 + (NSString *)title {
@@ -241,9 +247,13 @@ NSString *const kSpotifyVolumeJump = @"spotifyVolumeJump";
         artworkImageView = nil;
     }
     artworkImageView = [[NSImageView alloc] initWithFrame:NSMakeRect(imageMargin, imageMargin, imageSize, imageSize)];
-    [artworkImageView setImage:songArtwork];
+    if ([artworkCache objectForKey:currentTrack.artworkUrl]) {
+        [artworkImageView setImage:[artworkCache objectForKey:currentTrack.artworkUrl]];
+    } else {
+        [artworkImageView setImage:songArtwork];
+        [self loadImage:[NSURL URLWithString:currentTrack.artworkUrl]];
+    }
     [view addSubview:artworkImageView];
-    [self loadImage:[NSURL URLWithString:currentTrack.artworkUrl]];
     
     // Check if song playing
     if (!currentTrack.name) {
@@ -297,8 +307,7 @@ NSString *const kSpotifyVolumeJump = @"spotifyVolumeJump";
     return view;
 }
 
-- (void)loadImage:(NSURL *)imageURL
-{
+- (void)loadImage:(NSURL *)imageURL {
     NSOperationQueue *queue = [NSOperationQueue new];
     NSInvocationOperation *operation = [[NSInvocationOperation alloc]
                                         initWithTarget:self
@@ -310,6 +319,8 @@ NSString *const kSpotifyVolumeJump = @"spotifyVolumeJump";
 - (void)requestRemoteImage:(NSURL *)imageURL {
     NSData *imageData = [[NSData alloc] initWithContentsOfURL:imageURL];
     NSImage *image = [[NSImage alloc] initWithData:imageData];
+    
+    [artworkCache setObject:image forKey:imageURL.absoluteString];
     
     [self performSelectorOnMainThread:@selector(placeImageInUI:) withObject:image waitUntilDone:YES];
 }
