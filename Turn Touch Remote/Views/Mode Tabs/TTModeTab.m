@@ -195,7 +195,8 @@
     // Right border
     if ((modeDirection == NORTH && activeDirection == EAST) ||
         (modeDirection == EAST && activeDirection == WEST) ||
-        (modeDirection == WEST && activeDirection == SOUTH)) {
+        (modeDirection == WEST && activeDirection == SOUTH) ||
+        modeDirection == SOUTH) {
         
     } else {
         [line moveToPoint:NSMakePoint(NSMaxX(self.bounds), NSMinY(self.bounds) + 24)];

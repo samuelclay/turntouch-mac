@@ -354,7 +354,7 @@
 		</data>
 		<key>Resources/TTModeHueBridge.nib</key>
 		<data>
-		1qr6ET5nsj+3RWQMmRAlEEV8j0U=
+		XaO7UhKaTfdo4Ym0rh3sn2xgUpA=
 		</data>
 		<key>Resources/TTModeHueConnect.nib</key>
 		<data>
@@ -454,7 +454,7 @@
 		</data>
 		<key>Resources/Turn Touch Remote.entitlements</key>
 		<data>
-		s3WSLfTKCP8Xv6f0V16/RZ/4paI=
+		XASk+0e9UPBlu6jZJMai+dVuf3I=
 		</data>
 		<key>Resources/alarm_snooze.png</key>
 		<data>
@@ -463,6 +463,10 @@
 		<key>Resources/app_music.png</key>
 		<data>
 		bZhdIKlWa9p8y1+Kav2za9qrwwk=
+		</data>
+		<key>Resources/archived-expanded-entitlements.xcent</key>
+		<data>
+		bcgn1H3TH/S/eBJhEj9QysG+2wc=
 		</data>
 		<key>Resources/button_chevron.png</key>
 		<data>
@@ -926,7 +930,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			3odwTDLu6xuHZ3VbC5Iv2lRVchY=
+			NXLMsLCmSaBkkUmjmP4Sfo3cqSE=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "com.philips.hue.HueSDK-OSX" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -935,7 +939,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			ZLQ3Ze9uIMxoBSLVSIQkbdheUqM=
+			Xm+6MVL0hXF/ahX/+cJYg7KBD98=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.andymatuschak.Sparkle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -1525,11 +1529,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			1qr6ET5nsj+3RWQMmRAlEEV8j0U=
+			XaO7UhKaTfdo4Ym0rh3sn2xgUpA=
 			</data>
 			<key>hash2</key>
 			<data>
-			eHHqbAxBDripW7j82o5Oz//46Nsx404udmaLorxYGW4=
+			LZUn7Ajjr0moKIOhFw6GBLSrF83YTsL1n0qAxV7rTLI=
 			</data>
 		</dict>
 		<key>Resources/TTModeHueConnect.nib</key>
@@ -1800,11 +1804,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			s3WSLfTKCP8Xv6f0V16/RZ/4paI=
+			XASk+0e9UPBlu6jZJMai+dVuf3I=
 			</data>
 			<key>hash2</key>
 			<data>
-			K1WyApEM/UGNPPkxPuAVMRFUJCLXgqqWvhFyksaYw+M=
+			5KNjfITHhKfjwyESNpMcpU7doaRCm+jT30nFfVpy/K4=
 			</data>
 		</dict>
 		<key>Resources/alarm_snooze.png</key>
@@ -1827,6 +1831,17 @@
 			<key>hash2</key>
 			<data>
 			zovpzeoNc29ex4a/v5gSA2bjooj/GX910qA06jGXu/o=
+			</data>
+		</dict>
+		<key>Resources/archived-expanded-entitlements.xcent</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			bcgn1H3TH/S/eBJhEj9QysG+2wc=
+			</data>
+			<key>hash2</key>
+			<data>
+			K5zxFcfoWwh55Di5g0hLgblmO26gu6KbCT13uGOG1Eg=
 			</data>
 		</dict>
 		<key>Resources/button_chevron.png</key>

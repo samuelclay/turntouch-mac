@@ -903,6 +903,7 @@
 		FFC730E41B0673E9003538D5 /* TTModeHueRandomOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTModeHueRandomOptions.xib; sourceTree = "<group>"; };
 		FFC730E61B067434003538D5 /* TTModeHueRandomOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeHueRandomOptions.h; sourceTree = "<group>"; };
 		FFC730E71B067434003538D5 /* TTModeHueRandomOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeHueRandomOptions.m; sourceTree = "<group>"; };
+		FFC9FE971D022AED00038817 /* ReceiptValidation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ReceiptValidation.h; path = "Supporting Files/ReceiptValidation.h"; sourceTree = "<group>"; };
 		FFD62CCC194F935D0093004D /* TTSegmentedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSegmentedCell.h; path = "Views/Mode Options/TTSegmentedCell.h"; sourceTree = "<group>"; };
 		FFD62CCD194F935D0093004D /* TTSegmentedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSegmentedCell.m; path = "Views/Mode Options/TTSegmentedCell.m"; sourceTree = "<group>"; };
 		FFD62CCF1950EE770093004D /* TTSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSegmentedControl.h; path = "Views/Mode Options/TTSegmentedControl.h"; sourceTree = "<group>"; };
@@ -1641,6 +1642,7 @@
 				FF8C833F17AB14B5000166FC /* InfoPlist.strings */,
 				FF8C834517AB14B5000166FC /* Credits.rtf */,
 				FF8012F4186A1AD100955218 /* defaults.plist */,
+				FFC9FE971D022AED00038817 /* ReceiptValidation.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -2104,9 +2106,15 @@
 				TargetAttributes = {
 					FF8C833217AB14B5000166FC = {
 						DevelopmentTeam = 6W5HRS3393;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					FFF8AE351AFDAB3E0064DCEF = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 6W5HRS3393;
 						TestTargetID = FF8C833217AB14B5000166FC;
 					};
 				};
@@ -2583,6 +2591,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Turn Touch Remote/Supporting Files/Turn Touch Remote.entitlements";
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2602,7 +2611,7 @@
 					"-ObjC",
 					"-Wl,-rpath,@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.turntouch.remote;
 				PRODUCT_NAME = "Turn Touch Remote";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -2613,6 +2622,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Turn Touch Remote/Supporting Files/Turn Touch Remote.entitlements";
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2632,7 +2642,7 @@
 					"-ObjC",
 					"-Wl,-rpath,@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.turntouch.remote;
 				PRODUCT_NAME = "Turn Touch Remote";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -2648,6 +2658,8 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -2671,6 +2683,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Turn Touch Remote.app/Contents/MacOS/Turn Touch Remote";
 			};
 			name = Debug;
@@ -2684,6 +2697,8 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -2703,6 +2718,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Turn Touch Remote.app/Contents/MacOS/Turn Touch Remote";
 			};
 			name = Release;
@@ -2744,6 +2760,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Turn Touch Remote/Supporting Files/Turn Touch Remote.entitlements";
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2763,7 +2780,7 @@
 					"-ObjC",
 					"-Wl,-rpath,@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.turntouch.remote;
 				PRODUCT_NAME = "Turn Touch Remote";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -2779,6 +2796,8 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -2802,6 +2821,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Turn Touch Remote.app/Contents/MacOS/Turn Touch Remote";
 			};
 			name = Testing;
