@@ -2611,7 +2611,7 @@
 					"-ObjC",
 					"-Wl,-rpath,@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.turntouch.remote;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.mac-remote";
 				PRODUCT_NAME = "Turn Touch Remote";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -2642,7 +2642,7 @@
 					"-ObjC",
 					"-Wl,-rpath,@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.turntouch.remote;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.mac-remote";
 				PRODUCT_NAME = "Turn Touch Remote";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -2780,7 +2780,7 @@
 					"-ObjC",
 					"-Wl,-rpath,@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.turntouch.remote;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.mac-remote";
 				PRODUCT_NAME = "Turn Touch Remote";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

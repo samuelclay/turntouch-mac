@@ -177,10 +177,10 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
     return @"TTModeMacVolumeUp";
 }
 - (NSString *)defaultEast {
-    return @"TTModeMacToggleScreen";
+    return @"TTModeMacTurnOnScreen";
 }
 - (NSString *)defaultWest {
-    return @"TTModeMacVolumeMute";
+    return @"TTModeMacTurnOffScreen";
 }
 - (NSString *)defaultSouth {
     return @"TTModeMacVolumeDown";

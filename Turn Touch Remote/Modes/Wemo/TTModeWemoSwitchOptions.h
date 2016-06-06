@@ -9,9 +9,10 @@
 #import "TTModeWemo.h"
 #import "TTOptionsDetailViewController.h"
 
-@interface TTModeWemoSwitchOptions : TTOptionsDetailViewController
+@interface TTModeWemoSwitchOptions : TTOptionsDetailViewController <TTModeWemoDelegate>
 
 @property (nonatomic) IBOutlet NSPopUpButton *devicePopup;
+@property (nonatomic, strong) TTModeWemo *modeWemo;
 
 - (IBAction)didChangeDevice:(id)sender;
 

@@ -34,7 +34,7 @@
 
 - (void)setFrame:(NSRect)frameRect display:(BOOL)flag {
     if (frameRect.origin.y > 0) {
-        NSLog(@"HUD Window: %@/%d", NSStringFromRect(frameRect), flag);
+        // NSLog(@"HUD Window: %@/%d", NSStringFromRect(frameRect), flag);
     } else {
         [super setFrame:frameRect display:flag];
     }

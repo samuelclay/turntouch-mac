@@ -20,7 +20,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.modeWemo = ((TTModeWemo *)self.mode);
+    [self.modeWemo setDelegate:self];
+
     [self selectDevice];
+    [self changeState:self.modeWemo.wemoState withMode:self.modeWemo];
 }
 
 - (void)selectDevice {
@@ -31,6 +35,7 @@
     [devicePopup removeAllItems];
     TTModeWemo *modeWemo = (TTModeWemo *)self.mode;
     for (TTModeWemoDevice *device in [modeWemo sharedFoundDevices]) {
+        if (!device.deviceName || !device.location) continue;
         [devices addObject:@{@"name": device.deviceName, @"identifier": device.location}];
     }
     
@@ -45,6 +50,8 @@
     }
     if (deviceSelected) {
         [devicePopup selectItemWithTitle:deviceSelected];
+    } else if (devicePopup.numberOfItems) {
+        [self didChangeDevice:nil];
     }
 }
 
@@ -61,6 +68,29 @@
     }
     
     [self.action changeActionOption:kWemoDeviceLocation to:deviceIdentifier];
+}
+
+#pragma mark - Wemo Delegate
+
+
+- (void)changeState:(TTWemoState)wemoState withMode:(TTModeWemo *)modeWemo {
+        NSLog(@" Changing Wemo state: %lu", wemoState);
+    switch (wemoState) {
+        case WEMO_STATE_NOT_CONNECTED:
+            [self selectDevice];
+            break;
+            
+        case WEMO_STATE_CONNECTING:
+            [self selectDevice];
+            break;
+            
+        case WEMO_STATE_CONNECTED:
+            [self selectDevice];
+            break;
+            
+        default:
+            break;
+    }
 }
 
 @end

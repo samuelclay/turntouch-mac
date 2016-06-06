@@ -357,7 +357,10 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
         return;
     }
     
+//    AVAudioSession *session = [AVAudioSession sharedInstance];
+//    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
     audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:currentTrack.location error:nil];
+    [audioPlayer prepareToPlay];
     [audioPlayer play];
     [audioPlayer setDelegate:self];
     
