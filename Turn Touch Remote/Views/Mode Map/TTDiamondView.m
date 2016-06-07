@@ -324,20 +324,22 @@
             }
         }
         
-        if (path == northPathTop) [path appendBezierPath:northPathBottom];
-        if (path == eastPathTop) [path appendBezierPath:eastPathBottom];
-        if (path == westPathTop) [path appendBezierPath:westPathBottom];
-        if (path == southPathTop) [path appendBezierPath:southPathBottom];
+        NSBezierPath *combinedPath = [NSBezierPath alloc];
+        [combinedPath appendBezierPath:path];
+        if (path == northPathTop) [combinedPath appendBezierPath:northPathBottom];
+        if (path == eastPathTop) [combinedPath appendBezierPath:eastPathBottom];
+        if (path == westPathTop) [combinedPath appendBezierPath:westPathBottom];
+        if (path == southPathTop) [combinedPath appendBezierPath:southPathBottom];
 
         if (!showOutline) {
             [modeColor setFill];
             if (!bottomHalf) {
-                [path fill];
+                [combinedPath fill];
             }
         } else {
-            path.lineWidth = isInspectingDirection ? 3.0f : 1.0f;
+            combinedPath.lineWidth = isInspectingDirection ? 3.0f : 1.0f;
             [modeColor setStroke];
-            [path stroke];
+            [combinedPath stroke];
         }
         
         if (diamondType == DIAMOND_TYPE_INTERACTIVE) {
@@ -349,7 +351,7 @@
                 [NSColorFromRGB(0xFAFBFD) set];
             }
             if (!bottomHalf) {
-                [path fill];
+                [combinedPath fill];
             }
         }
     }
