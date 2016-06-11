@@ -33,10 +33,10 @@
     buttonTimer.skipButtonActions = YES;
     
     clearByte = 0x000F;
-    northByte = 0x0F - (1 << 0);
-    eastByte = 0x0F - (1 << 1);
-    westByte = 0x0F - (1 << 2);
-    southByte = 0x0F - (1 << 3);
+    northByte = 0x0F ^ (1 << 0);
+    eastByte = 0x0F ^ (1 << 1);
+    westByte = 0x0F ^ (1 << 2);
+    southByte = 0x0F ^ (1 << 3);
 }
 
 - (void)tearDown {

@@ -8,7 +8,6 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "TTOptionsDetailViewController.h"
-#import "TTOptionsModeTitle.h"
 #import "TTOptionsActionTitle.h"
 
 #define MARGIN 0.0f

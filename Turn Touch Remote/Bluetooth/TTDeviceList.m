@@ -62,8 +62,6 @@
 
 
 - (void)addDevice:(TTDevice *)addDevice {
-    addDevice.isPaired = [self isDevicePaired:addDevice];
-
     for (TTDevice *device in devices) {
         if ([device.peripheral.identifier.UUIDString
              isEqualToString:addDevice.peripheral.identifier.UUIDString]) {

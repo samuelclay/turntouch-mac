@@ -79,27 +79,24 @@
                              options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
                              options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"selectedMode"
-                             options:0 context:nil];
 }
 
 - (void) observeValueForKeyPath:(NSString*)keyPath
                        ofObject:(id)object
                          change:(NSDictionary*)change
                         context:(void*)context {
+    if ([keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
+        [self setupMode];
+    }
     if ([keyPath isEqual:NSStringFromSelector(@selector(activeModeDirection))] ||
-        [keyPath isEqual:NSStringFromSelector(@selector(selectedMode))]) {
+        [keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
         if (appDelegate.modeMap.selectedModeDirection == modeDirection) {
             [diamondView setIgnoreSelectedMode:NO];
             [diamondView setIgnoreActiveMode:NO];
-            [self setupMode];
-            [self setNeedsDisplay:YES];
         } else {
             [diamondView setIgnoreSelectedMode:YES];
             [diamondView setIgnoreActiveMode:YES];
         }
-    } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
-        [self setupMode];
         [self setNeedsDisplay:YES];
     }
 }

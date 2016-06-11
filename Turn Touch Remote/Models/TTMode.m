@@ -247,6 +247,30 @@
     return [self imageNameForAction:actionName];
 }
 
+- (BOOL)shouldIgnoreSingleBeforeDouble:(TTModeDirection)direction {
+    BOOL ignore = NO;
+    NSString *actionName = [self actionNameInDirection:direction];
+    SEL selector = NSSelectorFromString([NSString stringWithFormat:@"shouldIgnoreSingleBeforeDouble%@", actionName]);
+    if ([self respondsToSelector:selector]) {
+        IMP imp = [self methodForSelector:selector];
+        BOOL (*func)(id, SEL) = (void *)imp;
+        ignore = func(self, selector);
+    }
+    return ignore;
+}
+
+- (BOOL)shouldFireImmediateOnPress:(TTModeDirection)direction {
+    BOOL immediate = NO;
+    NSString *actionName = [self actionNameInDirection:direction];
+    SEL selector = NSSelectorFromString([NSString stringWithFormat:@"shouldFireImmediate%@", actionName]);
+    if ([self respondsToSelector:selector]) {
+        IMP imp = [self methodForSelector:selector];
+        BOOL (*func)(id, SEL) = (void *)imp;
+        immediate = func(self, selector);
+    }
+    return immediate;
+}
+
 - (ActionLayout)layoutInDirection:(TTModeDirection)direction {
     NSString *actionName = [self actionNameInDirection:direction];
     

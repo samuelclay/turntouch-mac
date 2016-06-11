@@ -116,13 +116,14 @@
             } else if (menuState == TTHUDMenuStateActive && !menuHysteresis) {
                 menuHysteresis = YES;
                 menuState = TTHUDMenuStateHidden;
-                [appDelegate.hudController releaseToastActiveMode];
+                [self releaseToastActiveMode];
             }
             [self activateButton:NO_DIRECTION];
         } else if (menuState == TTHUDMenuStateActive) {
             if ((state & 0x01) == 0x01) {
                 [self fireMenuButton:NORTH];
             } else if ((state & 0x02) == 0x02) {
+                // Not on button down, wait for button up
 //                [self fireMenuButton:EAST];
             } else if ((state & 0x04) == 0x04) {
 //                [self fireMenuButton:WEST];

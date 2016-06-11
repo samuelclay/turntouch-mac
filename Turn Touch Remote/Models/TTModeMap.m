@@ -187,34 +187,8 @@
     [batchActions assembleBatchActions];
 }
 
-- (TTMode *)modeInDirection:(TTModeDirection)direction {
-    switch (direction) {
-        case NORTH:
-            return northMode;
-            break;
-            
-        case EAST:
-            return eastMode;
-            break;
-            
-        case WEST:
-            return westMode;
-            break;
-            
-        case SOUTH:
-            return southMode;
-            break;
-            
-        case NO_DIRECTION:
-        case INFO:
-            break;
-    }
-    
-    return nil;
-}
-
 - (void)maybeFireActiveButton {
-    BOOL shouldFireImmediateOnPress = [self shouldFireImmediateOnPress:activeModeDirection];
+    BOOL shouldFireImmediateOnPress = [selectedMode shouldFireImmediateOnPress:activeModeDirection];
     if (shouldFireImmediateOnPress && activeModeDirection != NO_DIRECTION) {
         selectedMode.action = [[TTAction alloc] initWithActionName:[selectedMode actionNameInDirection:activeModeDirection]];
         [selectedMode runDirection:activeModeDirection];
@@ -227,8 +201,7 @@
     
     if (!selectedMode) return;
 
-    BOOL shouldIgnoreSingleBeforeDouble = [self shouldIgnoreSingleBeforeDouble:direction];
-    if (shouldIgnoreSingleBeforeDouble) {
+    if ([selectedMode shouldIgnoreSingleBeforeDouble:direction]) {
         waitingForDoubleClick = YES;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DOUBLE_CLICK_ACTION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             if (waitingForDoubleClick) {
@@ -243,7 +216,7 @@
 }
 
 - (void)runDirection:(TTModeDirection)direction {
-    BOOL shouldFireImmediateOnPress = [self shouldFireImmediateOnPress:direction];
+    BOOL shouldFireImmediateOnPress = [selectedMode shouldFireImmediateOnPress:direction];
     if (!shouldFireImmediateOnPress) {
         selectedMode.action = [[TTAction alloc] initWithActionName:[selectedMode actionNameInDirection:direction]];
         [selectedMode runDirection:direction];
@@ -256,7 +229,7 @@
 }
 
 - (void)runDoubleButton:(TTModeDirection)direction {
-    BOOL shouldFireImmediateOnPress = [self shouldFireImmediateOnPress:direction];
+    BOOL shouldFireImmediateOnPress = [selectedMode shouldFireImmediateOnPress:direction];
     waitingForDoubleClick = NO;
     activeModeDirection = NO_DIRECTION;
    
@@ -273,30 +246,6 @@
     activeModeDirection = NO_DIRECTION;
 }
 
-- (BOOL)shouldIgnoreSingleBeforeDouble:(TTModeDirection)direction {
-    BOOL ignore = NO;
-    NSString *actionName = [selectedMode actionNameInDirection:direction];
-    SEL selector = NSSelectorFromString([NSString stringWithFormat:@"shouldIgnoreSingleBeforeDouble%@", actionName]);
-    if ([selectedMode respondsToSelector:selector]) {
-        IMP imp = [selectedMode methodForSelector:selector];
-        BOOL (*func)(id, SEL) = (void *)imp;
-        ignore = func(self, selector);
-    }
-    return ignore;
-}
-
-- (BOOL)shouldFireImmediateOnPress:(TTModeDirection)direction {
-    BOOL immediate = NO;
-    NSString *actionName = [selectedMode actionNameInDirection:direction];
-    SEL selector = NSSelectorFromString([NSString stringWithFormat:@"shouldFireImmediate%@", actionName]);
-    if ([selectedMode respondsToSelector:selector]) {
-        IMP imp = [selectedMode methodForSelector:selector];
-        BOOL (*func)(id, SEL) = (void *)imp;
-        immediate = func(selectedMode, selector);
-    }
-    return immediate;
-}
-
 - (BOOL)shouldHideHud:(TTModeDirection)direction {
     BOOL hideHud = NO;
     NSString *actionName = [selectedMode actionNameInDirection:direction];
@@ -307,35 +256,6 @@
         hideHud = func(selectedMode, selector);
     }
     return hideHud;
-}
-
-- (NSString *)directionName:(TTModeDirection)direction {
-    switch (direction) {
-        case NORTH:
-            return @"north";
-            break;
-        
-        case EAST:
-            return @"east";
-            break;
-            
-        case WEST:
-            return @"west";
-            break;
-            
-        case SOUTH:
-            return @"south";
-            break;
-            
-        case INFO:
-            return @"info";
-            break;
-
-        case NO_DIRECTION:
-            break;
-    }
-    
-    return nil;
 }
 
 #pragma mark - Changing modes, actions, batch actions
@@ -606,6 +526,62 @@ actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction 
 }
 
 #pragma mark - Direction helpers
+
+
+- (TTMode *)modeInDirection:(TTModeDirection)direction {
+    switch (direction) {
+        case NORTH:
+            return northMode;
+            break;
+            
+        case EAST:
+            return eastMode;
+            break;
+            
+        case WEST:
+            return westMode;
+            break;
+            
+        case SOUTH:
+            return southMode;
+            break;
+            
+        case NO_DIRECTION:
+        case INFO:
+            break;
+    }
+    
+    return nil;
+}
+
+- (NSString *)directionName:(TTModeDirection)direction {
+    switch (direction) {
+        case NORTH:
+            return @"north";
+            break;
+            
+        case EAST:
+            return @"east";
+            break;
+            
+        case WEST:
+            return @"west";
+            break;
+            
+        case SOUTH:
+            return @"south";
+            break;
+            
+        case INFO:
+            return @"info";
+            break;
+            
+        case NO_DIRECTION:
+            break;
+    }
+    
+    return nil;
+}
 
 - (void)toggleInspectingModeDirection:(TTModeDirection)direction {
     if (inspectingModeDirection == direction) {

@@ -66,8 +66,8 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
         pairedDevicesCount = [[NSNumber alloc] initWithInteger:0];
         unpairedDevicesCount = [[NSNumber alloc] initWithInteger:0];
         
-        NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
         if (CLEAR_PAIRED_DEVICES) {
+            NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
             [preferences setObject:nil forKey:@"TT:devices:paired"];
             [preferences synchronize];
         }
@@ -239,7 +239,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 }
 
 
-#pragma mark - CBCentralManager delegate methods
+#pragma mark - CBCentralManager delegate
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central {
     NSLog(@" ---> centralManagerDidUpdateState: %@/%@ - %ld vs %ld", central, manager, (long)central.state, (long)manager.state);
@@ -486,13 +486,13 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error {
     bluetoothState = BT_STATE_DISCOVER_CHARACTERISTICS;
-    
+    TTDevice *device = [foundDevices deviceForPeripheral:peripheral];
+
     for (CBService *service in peripheral.services) {
 #ifdef DEBUG_CONNECT
 //        NSLog(@" ---> (%X) Service found with UUID: %@", bluetoothState, service.UUID);
 #endif
-        TTDevice *device = [foundDevices deviceForPeripheral:peripheral];
-
+        
         if ([service.UUID isEqual:[CBUUID UUIDWithString:DEVICE_V1_SERVICE_BUTTON_UUID]]) {
             device.firmwareVersion = 1;
             [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:DEVICE_V1_CHARACTERISTIC_BUTTON_STATUS_UUID]]

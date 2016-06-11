@@ -8,7 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 #import "TTAppDelegate.h"
-#import "TTOptionsModeTitle.h"
 #import "TTOptionsActionTitle.h"
 #import "TTOptionsDetailView.h"
 
@@ -20,7 +19,6 @@
 
 @interface TTOptionsView : NSView {
     TTAppDelegate *appDelegate;
-    TTOptionsModeTitle *modeTitleView;
     TTOptionsActionTitle *actionTitleView;
 }
 
