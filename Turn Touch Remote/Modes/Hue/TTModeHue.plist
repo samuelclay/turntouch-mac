@@ -14,8 +14,6 @@
 	<integer>30</integer>
 	<key>TTModeHueSleep:hueDoubleTapDuration</key>
 	<integer>5</integer>
-	<key>hueDuration</key>
-	<integer>0</integer>
 	<key>TTModeHueRandom:randomColors</key>
 	<integer>3</integer>
 	<key>TTModeHueRandom:doubleTapRandomColors</key>

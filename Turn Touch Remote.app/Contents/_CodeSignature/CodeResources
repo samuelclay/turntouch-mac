@@ -350,19 +350,19 @@
 		</data>
 		<key>Resources/TTModeHue.plist</key>
 		<data>
-		jG4bKyegmHPhyWN6Z+RpMeA1gWE=
+		IgS1g/yBVbygzgRcMG4rskzjBg4=
 		</data>
 		<key>Resources/TTModeHueBridge.nib</key>
 		<data>
-		hYkgnCi9V2SNxqpgayV9GrS5PUE=
+		aWyDiAp9TvgYq/32t/ZQ2Cj364k=
 		</data>
 		<key>Resources/TTModeHueConnect.nib</key>
 		<data>
-		YUA/h3efvi7dWwNkarM1/zLqTyE=
+		luufzMmfQSLYyh3kyjZo+Z/JS0w=
 		</data>
 		<key>Resources/TTModeHueConnected.nib</key>
 		<data>
-		ieDFMPeuDj2NpqXVAL91LOhxYAA=
+		QZgdrBc7noPWDA/3vK3onSsHKIg=
 		</data>
 		<key>Resources/TTModeHueConnecting.nib</key>
 		<data>
@@ -382,11 +382,11 @@
 		</data>
 		<key>Resources/TTModeHueSceneOptions.nib</key>
 		<data>
-		IHW109C/tstwFEDhxeg6SU5iEVg=
+		OCh32Z4w81ZUSLIgETyJqNLwvsA=
 		</data>
 		<key>Resources/TTModeHueSleepOptions.nib</key>
 		<data>
-		dPZ405uBZ6LLhzRvf8xZC1D8taU=
+		0HaRMBEHjJ6viCqFQxaMLTesfEE=
 		</data>
 		<key>Resources/TTModeMusic.plist</key>
 		<data>
@@ -875,6 +875,10 @@
 		<data>
 		aBVq9/lSDg+61r5Iri4EMN9NWos=
 		</data>
+		<key>Resources/refresh.png</key>
+		<data>
+		9THTWSdC1BEoxe0cHxuvt89eqNg=
+		</data>
 		<key>Resources/remote_graphic.png</key>
 		<data>
 		ZRrPBY13am/h2HSgR5CkYXylHt0=
@@ -894,6 +898,10 @@
 		<key>Resources/settings.tiff</key>
 		<data>
 		tdwWtbQb4fIAfoRtT2T077QhH2s=
+		</data>
+		<key>Resources/single_tap.png</key>
+		<data>
+		cDawOUhnfoYRTmMNt2zKvYGwDCY=
 		</data>
 		<key>Resources/south tone.wav</key>
 		<data>
@@ -930,7 +938,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			hMMd+3sY5Ybz2yHa0miZlzHL6Ks=
+			aGEYqu8DDdQF9tc7PHhv+bxYn/4=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "com.philips.hue.HueSDK-OSX" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -939,7 +947,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			rnY3n+HDcqxkWIZaVG+BBQ6+mhI=
+			RykH7OGGVE7bIiNcpuCYNYAgGDE=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.andymatuschak.Sparkle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -1518,44 +1526,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			jG4bKyegmHPhyWN6Z+RpMeA1gWE=
+			IgS1g/yBVbygzgRcMG4rskzjBg4=
 			</data>
 			<key>hash2</key>
 			<data>
-			JrfBIbsY85l6I1EhuPFhPYAEqQPBpOOcjOQbH1IXfDk=
+			W0QODqDjnrmtXDZE1jBoNyfJSkF5EROlsSfqCoiFMpc=
 			</data>
 		</dict>
 		<key>Resources/TTModeHueBridge.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			hYkgnCi9V2SNxqpgayV9GrS5PUE=
+			aWyDiAp9TvgYq/32t/ZQ2Cj364k=
 			</data>
 			<key>hash2</key>
 			<data>
-			ovGm4HszkghT8U+xi59J/v8UaBhc9ljghAqt0S7ttRI=
+			P76WCQqDr8R3IdcWuZ8Mj37nKzucIeJ41dcJbjK0OuU=
 			</data>
 		</dict>
 		<key>Resources/TTModeHueConnect.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			YUA/h3efvi7dWwNkarM1/zLqTyE=
+			luufzMmfQSLYyh3kyjZo+Z/JS0w=
 			</data>
 			<key>hash2</key>
 			<data>
-			I1ovwNc92RYXCt6q9ZZNFCDZ8f3cV2G/yP/X/U2cLxw=
+			n58asGOOfGbxra3xMrRraskfeNAE+QPXr9rDR0zbOzg=
 			</data>
 		</dict>
 		<key>Resources/TTModeHueConnected.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ieDFMPeuDj2NpqXVAL91LOhxYAA=
+			QZgdrBc7noPWDA/3vK3onSsHKIg=
 			</data>
 			<key>hash2</key>
 			<data>
-			YG38w1d291PwEa4rZIzog9VgVI7/QX5HcMi+QQSYegk=
+			KeSuzf9Y8T9eAIwLNAXKnDWu1qFqL5sbqB/bkkh4fOo=
 			</data>
 		</dict>
 		<key>Resources/TTModeHueConnecting.nib</key>
@@ -1606,22 +1614,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			IHW109C/tstwFEDhxeg6SU5iEVg=
+			OCh32Z4w81ZUSLIgETyJqNLwvsA=
 			</data>
 			<key>hash2</key>
 			<data>
-			Okeyio2Ygo3zlQzZc3t9+BZzam7SME8vGnYpnmnI7Tg=
+			2wc316sTY/jgPCsq37qDzPFUmIH0d7gzY6+Bm3hn3aU=
 			</data>
 		</dict>
 		<key>Resources/TTModeHueSleepOptions.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			dPZ405uBZ6LLhzRvf8xZC1D8taU=
+			0HaRMBEHjJ6viCqFQxaMLTesfEE=
 			</data>
 			<key>hash2</key>
 			<data>
-			IUrBO17r+ob949kmVhcbarOpcpq2pyFXTCkfNBVjqG4=
+			NEhAIB63wRB2xXINTo7hE9hhsNNCv9WLL7bb9R6KVHs=
 			</data>
 		</dict>
 		<key>Resources/TTModeMusic.plist</key>
@@ -2928,6 +2936,17 @@
 			XvtMe8SPpBivfh/il3IOlqm4VeU7sPI+nULi4+Zky5k=
 			</data>
 		</dict>
+		<key>Resources/refresh.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			9THTWSdC1BEoxe0cHxuvt89eqNg=
+			</data>
+			<key>hash2</key>
+			<data>
+			IJAX28kRXjJsjoww5xvIf8D7hQ7UtZ9c/Ei6IH5M2Gs=
+			</data>
+		</dict>
 		<key>Resources/remote_graphic.png</key>
 		<dict>
 			<key>hash</key>
@@ -2981,6 +3000,17 @@
 			<key>hash2</key>
 			<data>
 			5ll7/ZhxsQuQdlC2/kq2Szg+kiM+AiR2YLZ1zzfhEvs=
+			</data>
+		</dict>
+		<key>Resources/single_tap.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			cDawOUhnfoYRTmMNt2zKvYGwDCY=
+			</data>
+			<key>hash2</key>
+			<data>
+			k3k4sjvE0jOctUgx+X+OlU/Dxei1fOY1qRHjsNyGJEI=
 			</data>
 		</dict>
 		<key>Resources/south tone.wav</key>
