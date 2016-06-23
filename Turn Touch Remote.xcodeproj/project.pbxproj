@@ -77,6 +77,8 @@
 		FF1F13631ADC98C400B52A0D /* TTDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1F13621ADC98C400B52A0D /* TTDatePicker.m */; };
 		FF1F13651ADC9DEC00B52A0D /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF1F13641ADC9DEC00B52A0D /* Sparkle.framework */; };
 		FF1F13671ADC9E6F00B52A0D /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = FF1F13641ADC9DEC00B52A0D /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FF254F671D1B68E000E96378 /* single_tap.png in Resources */ = {isa = PBXBuildFile; fileRef = FF254F661D1B68E000E96378 /* single_tap.png */; };
+		FF254F691D1B6A9800E96378 /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = FF254F681D1B6A9800E96378 /* refresh.png */; };
 		FF27052D1C90FB3B000BB10F /* TTModalPairingScanningView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF27052C1C90FB3B000BB10F /* TTModalPairingScanningView.m */; };
 		FF27052F1C90FB68000BB10F /* TTModalPairingScanningView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF27052E1C90FB68000BB10F /* TTModalPairingScanningView.xib */; };
 		FF2705331C9247A8000BB10F /* TTModalBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2705311C9247A8000BB10F /* TTModalBarButton.m */; };
@@ -479,6 +481,8 @@
 		FF1F13611ADC98C400B52A0D /* TTDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTDatePicker.h; sourceTree = "<group>"; };
 		FF1F13621ADC98C400B52A0D /* TTDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTDatePicker.m; sourceTree = "<group>"; };
 		FF1F13641ADC9DEC00B52A0D /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = "Turn Touch Remote/Vendor/Sparkle.framework"; sourceTree = "<group>"; };
+		FF254F661D1B68E000E96378 /* single_tap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = single_tap.png; sourceTree = "<group>"; };
+		FF254F681D1B6A9800E96378 /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh.png; sourceTree = "<group>"; };
 		FF27052B1C90FB3B000BB10F /* TTModalPairingScanningView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModalPairingScanningView.h; path = Views/Pairing/TTModalPairingScanningView.h; sourceTree = "<group>"; };
 		FF27052C1C90FB3B000BB10F /* TTModalPairingScanningView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModalPairingScanningView.m; path = Views/Pairing/TTModalPairingScanningView.m; sourceTree = "<group>"; };
 		FF27052E1C90FB68000BB10F /* TTModalPairingScanningView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModalPairingScanningView.xib; path = Views/Pairing/TTModalPairingScanningView.xib; sourceTree = "<group>"; };
@@ -1006,9 +1010,11 @@
 				FF01CA4F1C46DCC200F83A73 /* mode_wemo.png */,
 				FF01CA501C46DCC200F83A73 /* newspaper-3.png */,
 				FF01CA511C46DCC200F83A73 /* presentation-chart.png */,
+				FF254F681D1B6A9800E96378 /* refresh.png */,
 				FF01CA521C46DCC200F83A73 /* remote_graphic.png */,
 				FF01CA531C46DCC200F83A73 /* settings.png */,
 				FF01CA541C46DCC200F83A73 /* settings@2x.png */,
+				FF254F661D1B68E000E96378 /* single_tap.png */,
 				FF01CA551C46DCC200F83A73 /* speaker.png */,
 				FF01CA561C46DCC200F83A73 /* sun.png */,
 				FF01CA571C46DCC200F83A73 /* television.png */,
@@ -2156,6 +2162,7 @@
 				FF01CA671C46DCC200F83A73 /* icon_music.png in Resources */,
 				FF01CA5F1C46DCC200F83A73 /* clock.png in Resources */,
 				FF557AE51C4ED8BE005FB7FD /* TTModeNestConnected.xib in Resources */,
+				FF254F691D1B6A9800E96378 /* refresh.png in Resources */,
 				FFC730E51B0673E9003538D5 /* TTModeHueRandomOptions.xib in Resources */,
 				FF01CA631C46DCC200F83A73 /* filmstrip-3.png in Resources */,
 				FF3641F01A60C422003CC03C /* TTModeHuePushlink.xib in Resources */,
@@ -2202,6 +2209,7 @@
 				FF8A73CB1ABA69410023AA53 /* logo_512.png in Resources */,
 				FF8C834D17AB14B5000166FC /* MainMenu.xib in Resources */,
 				FF01CA851C46DCC200F83A73 /* vinyl.png in Resources */,
+				FF254F671D1B68E000E96378 /* single_tap.png in Resources */,
 				FF01CA7F1C46DCC200F83A73 /* remote_graphic.png in Resources */,
 				FF2740791A7C5BC200C55579 /* itunes_itunesu_icon.png in Resources */,
 				FF2EB77D1AA50D4D002549A7 /* itunes_music_icon.png in Resources */,

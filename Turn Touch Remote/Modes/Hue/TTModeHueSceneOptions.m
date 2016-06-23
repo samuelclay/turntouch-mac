@@ -52,7 +52,29 @@ NSString *const kDoubleTapHueScene = @"doubleTapHueScene";
         NSLog(@"Scene: %@ %@", scene.identifier, scene.name);
         [scenes addObject:@{@"name": scene.name, @"identifier": scene.identifier}];
     }
-
+    
+    if (!sceneSelectedIdentifier) {
+        if ([self.action.actionName isEqualToString:@"TTModeHueSceneEarlyEvening"]) {
+            sceneSelectedIdentifier = @"TT-ee-1";
+        } else if ([self.action.actionName isEqualToString:@"TTModeHueSceneLateEvening"]) {
+            sceneSelectedIdentifier = @"TT-le-1";
+        } else {
+            sceneSelectedIdentifier = @"TT-ee-1";
+        }
+        [self.action changeActionOption:kHueScene to:sceneSelectedIdentifier];
+    }
+    
+    if (!doubleTapSceneSelectedIdentifier) {
+        if ([self.action.actionName isEqualToString:@"TTModeHueSceneEarlyEvening"]) {
+            doubleTapSceneSelectedIdentifier = @"TT-ee-2";
+        } else if ([self.action.actionName isEqualToString:@"TTModeHueSceneLateEvening"]) {
+            doubleTapSceneSelectedIdentifier = @"TT-le-2";
+        } else {
+            doubleTapSceneSelectedIdentifier = @"TT-ee-2";
+        }
+        [self.action changeActionOption:kDoubleTapHueScene to:doubleTapSceneSelectedIdentifier];
+    }
+    
     NSSortDescriptor *sd = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     [scenes sortUsingDescriptors:@[sd]];
     

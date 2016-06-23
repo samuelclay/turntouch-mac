@@ -22,7 +22,7 @@
 @class TTBluetoothMonitor;
 
 #define OPEN_DURATION 0.42f
-#define DOUBLE_CLICK_ACTION_DURATION 0.500f
+#define DOUBLE_CLICK_ACTION_DURATION 0.250f
 
 @interface TTAppDelegate : NSObject
 <NSApplicationDelegate, TTPanelControllerDelegate>

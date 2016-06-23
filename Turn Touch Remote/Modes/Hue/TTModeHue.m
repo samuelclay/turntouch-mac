@@ -41,10 +41,6 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     return self;
 }
 
-- (PHHueSDK *)sharedPhHueSDK {
-    return phHueSDK;
-}
-
 - (void)initializeHue {
 //    if (phHueSDK) {
 //        [[PHNotificationManager defaultManager] deregisterObjectForAllNotifications:self];
@@ -396,12 +392,13 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 - (void)checkConnectionState {
     if (!phHueSDK.localConnected) {
         [self showNoConnectionDialog];
-    }
-    else {
+    } else {
         // One of the connections is made, remove popups and loading views
-        hueState = STATE_CONNECTED;
-        [self.delegate changeState:hueState withMode:self showMessage:nil];
-        [self ensureScenes];
+        if (hueState != STATE_CONNECTED) {
+            hueState = STATE_CONNECTED;
+            [self.delegate changeState:hueState withMode:self showMessage:nil];
+            [self ensureScenes];
+        }
     }
 }
 
@@ -541,7 +538,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     
     // Register for notifications about pushlinking
     PHNotificationManager *phNotificationMgr = [PHNotificationManager defaultManager];
-    [phNotificationMgr deregisterObjectForAllNotifications:self];
+//    [phNotificationMgr deregisterObjectForAllNotifications:self];
     
     [phNotificationMgr registerObject:self withSelector:@selector(authenticationSuccess)
                       forNotification:PUSHLINK_LOCAL_AUTHENTICATION_SUCCESS_NOTIFICATION];
@@ -577,7 +574,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
      pushLinkSuccess on the delegate
      *****************************************************/
     // Deregister for all notifications
-    [[PHNotificationManager defaultManager] deregisterObjectForAllNotifications:self];
+//    [[PHNotificationManager defaultManager] deregisterObjectForAllNotifications:self];
     
     hueState = STATE_CONNECTED;
     [self.delegate changeState:hueState withMode:self showMessage:nil];
@@ -592,7 +589,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
  */
 - (void)authenticationFailed {
     // Deregister for all notifications
-    [[PHNotificationManager defaultManager] deregisterObjectForAllNotifications:self];
+//    [[PHNotificationManager defaultManager] deregisterObjectForAllNotifications:self];
     
     // Inform delegate
     [self pushlinkFailed:[PHError errorWithDomain:SDK_ERROR_DOMAIN
@@ -605,7 +602,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
  */
 - (void)noLocalBridge {
     // Deregister for all notifications
-    [[PHNotificationManager defaultManager] deregisterObjectForAllNotifications:self];
+//    [[PHNotificationManager defaultManager] deregisterObjectForAllNotifications:self];
     
     // Inform delegate
     [self pushlinkFailed:[PHError errorWithDomain:SDK_ERROR_DOMAIN code:PUSHLINK_NO_LOCAL_BRIDGE userInfo:[NSDictionary dictionaryWithObject:@"Authentication failed: No local bridge found." forKey:NSLocalizedDescriptionKey]]];
@@ -652,7 +649,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     for (PHScene *scene in scenes.allValues) {
         [foundScenes addObject:scene.identifier];
     }
-
+    
     // Scene: All Lights Off
     if (![foundScenes containsObject:@"TT-all-off"]) {
         PHScene *scene = [[PHScene alloc] init];
@@ -662,7 +659,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
         [bridgeSendAPI saveSceneWithCurrentLightStates:scene completionHandler:^(NSArray *errors) {
             NSLog(@"Hue:SceneOff scene: %@", errors);
             for (PHLight *light in cache.lights.allValues) {
-                PHLightState *lightState = light.lightState;
+                PHLightState *lightState = [[PHLightState alloc] init];
                 lightState.on = [NSNumber numberWithBool:NO];
                 lightState.alert = 0;
                 [bridgeSendAPI saveLightState:lightState forLightIdentifier:light.identifier inSceneWithIdentifier:scene.identifier completionHandler:^(NSArray *errors) {
@@ -671,5 +668,123 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
             }
         }];
     }
+    
+    // Scene: Color loop
+    if (![foundScenes containsObject:@"TT-loop"]) {
+        PHScene *scene = [[PHScene alloc] init];
+        scene.name = @"Color Loop";
+        scene.identifier = @"TT-loop";
+        scene.lightIdentifiers = cache.lights.allKeys;
+        [bridgeSendAPI saveSceneWithCurrentLightStates:scene completionHandler:^(NSArray *errors) {
+            for (PHLight *light in cache.lights.allValues) {
+                PHLightState *lightState = [[PHLightState alloc] init];
+                lightState.on = [NSNumber numberWithBool:YES];
+                lightState.alert = 0;
+                lightState.effect = EFFECT_COLORLOOP;
+                [bridgeSendAPI saveLightState:lightState forLightIdentifier:light.identifier inSceneWithIdentifier:scene.identifier completionHandler:^(NSArray *errors) {
+                    NSLog(@"Hue:Loop light: %@", errors);
+                }];
+            }
+        }];
+    }
+    
+    if (![foundScenes containsObject:@"TT-ee-1"] || YES) {
+        PHScene *scene = [[PHScene alloc] init];
+        scene.name = @"Early Evening";
+        scene.identifier = @"TT-ee-1";
+        scene.lightIdentifiers = cache.lights.allKeys;
+        [bridgeSendAPI saveSceneWithCurrentLightStates:scene completionHandler:^(NSArray *errors) {
+            for (PHLight *light in cache.lights.allValues) {
+                PHLightState *lightState = [[PHLightState alloc] init];
+                lightState.on = [NSNumber numberWithBool:YES];
+                lightState.alert = 0;
+                lightState.brightness = @(MAX_BRIGHTNESS);
+                lightState.saturation = @(MAX_BRIGHTNESS);
+                CGPoint point = [PHUtilities calculateXY:[NSColor colorWithRed:235/255.0 green:206/255.0 blue:146/255.0 alpha:1.0] forModel:light.modelNumber];
+                lightState.x = @(point.x);
+                lightState.y = @(point.y);
+                [bridgeSendAPI saveLightState:lightState forLightIdentifier:light.identifier inSceneWithIdentifier:scene.identifier completionHandler:^(NSArray *errors) {
+                    NSLog(@"Hue:EE1 light: %@", errors);
+                }];
+            }
+        }];
+    }
+    
+    if (![foundScenes containsObject:@"TT-ee-2"] || YES) {
+        PHScene *scene = [[PHScene alloc] init];
+        scene.name = @"Early Evening 2";
+        scene.identifier = @"TT-ee-2";
+        scene.lightIdentifiers = cache.lights.allKeys;
+        [bridgeSendAPI saveSceneWithCurrentLightStates:scene completionHandler:^(NSArray *errors) {
+            [cache.lights.allValues enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                PHLight *light = (PHLight *)obj;
+                PHLightState *lightState = [[PHLightState alloc] init];
+                lightState.on = [NSNumber numberWithBool:YES];
+                lightState.alert = 0;
+                lightState.brightness = @(MAX_BRIGHTNESS);
+                lightState.saturation = @(MAX_BRIGHTNESS);
+                CGPoint point = [PHUtilities calculateXY:[NSColor colorWithRed:245/255.0 green:176/255.0 blue:116/255.0 alpha:1.0] forModel:light.modelNumber];
+                if (idx % 3 == 2) {
+                    point = [PHUtilities calculateXY:[NSColor colorWithRed:44/255.0 green:56/255.0 blue:225/255.0 alpha:1.0] forModel:light.modelNumber];
+                }
+                lightState.x = @(point.x);
+                lightState.y = @(point.y);
+                [bridgeSendAPI saveLightState:lightState forLightIdentifier:light.identifier inSceneWithIdentifier:scene.identifier completionHandler:^(NSArray *errors) {
+                    NSLog(@"Hue:EE2 light: %@", errors);
+                }];
+            }];
+        }];
+    }
+    
+    if (![foundScenes containsObject:@"TT-le-1"] || YES) {
+        PHScene *scene = [[PHScene alloc] init];
+        scene.name = @"Late Evening";
+        scene.identifier = @"TT-le-1";
+        scene.lightIdentifiers = cache.lights.allKeys;
+        [bridgeSendAPI saveSceneWithCurrentLightStates:scene completionHandler:^(NSArray *errors) {
+            [cache.lights.allValues enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                PHLight *light = (PHLight *)obj;
+                PHLightState *lightState = [[PHLightState alloc] init];
+                lightState.on = [NSNumber numberWithBool:YES];
+                lightState.alert = 0;
+                lightState.brightness = @(MAX_BRIGHTNESS*(6/10.0));
+                lightState.saturation = @(MAX_BRIGHTNESS);
+                CGPoint point = [PHUtilities calculateXY:[NSColor colorWithRed:95/255.0 green:76/255.0 blue:36/255.0 alpha:1.0] forModel:light.modelNumber];
+                lightState.x = @(point.x);
+                lightState.y = @(point.y);
+                [bridgeSendAPI saveLightState:lightState forLightIdentifier:light.identifier inSceneWithIdentifier:scene.identifier completionHandler:^(NSArray *errors) {
+                    NSLog(@"Hue:LE1 light: %@", errors);
+                }];
+            }];
+        }];
+    }
+    
+    if (![foundScenes containsObject:@"TT-le-2"] || YES) {
+        PHScene *scene = [[PHScene alloc] init];
+        scene.name = @"Late Evening 2";
+        scene.identifier = @"TT-le-2";
+        scene.lightIdentifiers = cache.lights.allKeys;
+        [bridgeSendAPI saveSceneWithCurrentLightStates:scene completionHandler:^(NSArray *errors) {
+            [cache.lights.allValues enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                PHLight *light = (PHLight *)obj;
+                PHLightState *lightState = [[PHLightState alloc] init];
+                lightState.on = [NSNumber numberWithBool:YES];
+                lightState.alert = 0;
+                lightState.brightness = @(MAX_BRIGHTNESS*(6/10.0));
+                lightState.saturation = @(MAX_BRIGHTNESS);
+                CGPoint point = [PHUtilities calculateXY:[NSColor colorWithRed:145/255.0 green:76/255.0 blue:16/255.0 alpha:1.0] forModel:light.modelNumber];
+                if (idx % 3 == 2) {
+                    lightState.brightness = @(MAX_BRIGHTNESS*(8/10.0));
+                    point = [PHUtilities calculateXY:[NSColor colorWithRed:134/255.0 green:56/255.0 blue:205/255.0 alpha:1.0] forModel:light.modelNumber];
+                }
+                lightState.x = @(point.x);
+                lightState.y = @(point.y);
+                [bridgeSendAPI saveLightState:lightState forLightIdentifier:light.identifier inSceneWithIdentifier:scene.identifier completionHandler:^(NSArray *errors) {
+                    NSLog(@"Hue:LE2 light: %@", errors);
+                }];
+            }];
+        }];
+    }
+    
 }
 @end

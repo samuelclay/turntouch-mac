@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTModeHueConnected">
@@ -14,22 +14,33 @@
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="c22-O7-iKe">
             <rect key="frame" x="0.0" y="0.0" width="480" height="61"/>
             <subviews>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FUb-Bo-EvM">
-                    <rect key="frame" x="144.5" y="13" width="191" height="32"/>
-                    <buttonCell key="cell" type="push" title="Connect to different Hue" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rkv-GV-IX2">
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FUb-Bo-EvM" customClass="TTChangeButtonView">
+                    <rect key="frame" x="361" y="13" width="101" height="32"/>
+                    <buttonCell key="cell" type="push" title="Reconnect" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="rkv-GV-IX2" customClass="TTChangeButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" size="13" name="Effra-Regular"/>
                     </buttonCell>
                     <connections>
                         <action selector="selectOtherBridge:" target="-2" id="Nln-qE-F3Q"/>
                     </connections>
                 </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UO5-lO-ooA">
+                    <rect key="frame" x="22" y="22" width="107" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Connected to Hue" id="Sky-Mu-For">
+                        <font key="font" size="13" name="Effra-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <constraints>
-                <constraint firstItem="FUb-Bo-EvM" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="Bf8-hV-mHp"/>
                 <constraint firstItem="FUb-Bo-EvM" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" id="MHm-pn-kp8"/>
                 <constraint firstAttribute="bottom" secondItem="FUb-Bo-EvM" secondAttribute="bottom" constant="20" id="UwN-aF-2uE"/>
+                <constraint firstAttribute="trailing" secondItem="FUb-Bo-EvM" secondAttribute="trailing" constant="24" id="chO-jB-OHO"/>
                 <constraint firstItem="FUb-Bo-EvM" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="dK1-g8-Akp"/>
+                <constraint firstAttribute="bottom" secondItem="UO5-lO-ooA" secondAttribute="bottom" constant="22" id="e4V-1y-0HN"/>
+                <constraint firstItem="UO5-lO-ooA" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="24" id="ehb-Z1-DOk"/>
+                <constraint firstItem="UO5-lO-ooA" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="22" id="erO-eC-fqE"/>
             </constraints>
             <point key="canvasLocation" x="269" y="299.5"/>
         </customView>
