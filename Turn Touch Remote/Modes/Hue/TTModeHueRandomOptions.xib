@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTModeHueRandomOptions">
@@ -23,7 +22,6 @@
             <subviews>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SMf-U6-ghJ" customClass="TTSegmentedControl">
                     <rect key="frame" x="163" y="174" width="216" height="24"/>
-                    <animations/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="Aeq-U5-5qx" customClass="TTSegmentedCell">
                         <font key="font" metaFont="system"/>
                         <segments>
@@ -38,7 +36,6 @@
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ab0-0p-Vmn">
                     <rect key="frame" x="18" y="205" width="44" height="21"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Colors" id="CnZ-6B-OPP">
                         <font key="font" size="14" name="Effra-Regular"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -47,7 +44,6 @@
                 </textField>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fK0-9l-j0Z" customClass="TTSegmentedControl">
                     <rect key="frame" x="163" y="145" width="216" height="24"/>
-                    <animations/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="40w-nu-1kA" customClass="TTSegmentedCell">
                         <font key="font" metaFont="system"/>
                         <segments>
@@ -62,7 +58,6 @@
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GdS-bS-cNL">
                     <rect key="frame" x="18" y="147" width="68" height="21"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Saturation" id="cCd-Xm-8wj">
                         <font key="font" size="14" name="Effra-Regular"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -71,7 +66,6 @@
                 </textField>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Fqe-9d-WDM" customClass="TTSegmentedControl">
                     <rect key="frame" x="163" y="203" width="216" height="24"/>
-                    <animations/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="CcS-hq-CN1" customClass="TTSegmentedCell">
                         <font key="font" metaFont="system"/>
                         <segments>
@@ -86,7 +80,6 @@
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N29-Q7-eTX">
                     <rect key="frame" x="18" y="176" width="70" height="21"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Brightness" id="9YE-RM-3sn">
                         <font key="font" size="14" name="Effra-Regular"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -95,7 +88,6 @@
                 </textField>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iDC-Rd-X9V" customClass="TTSegmentedControl">
                     <rect key="frame" x="163" y="47" width="216" height="24"/>
-                    <animations/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="yJC-uA-kHZ" customClass="TTSegmentedCell">
                         <font key="font" metaFont="system"/>
                         <segments>
@@ -110,7 +102,6 @@
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="96R-ps-o2X">
                     <rect key="frame" x="18" y="78" width="44" height="21"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Colors" id="XSQ-Rl-N41">
                         <font key="font" size="14" name="Effra-Regular"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -119,7 +110,6 @@
                 </textField>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Kf-bj-Vw4" customClass="TTSegmentedControl">
                     <rect key="frame" x="163" y="18" width="216" height="24"/>
-                    <animations/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="98X-tQ-Z3e" customClass="TTSegmentedCell">
                         <font key="font" metaFont="system"/>
                         <segments>
@@ -134,7 +124,6 @@
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bxH-Zq-xpU">
                     <rect key="frame" x="18" y="20" width="68" height="21"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Saturation" id="vJb-4K-O43">
                         <font key="font" size="14" name="Effra-Regular"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -143,7 +132,6 @@
                 </textField>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QWJ-A5-EWQ" customClass="TTSegmentedControl">
                     <rect key="frame" x="163" y="76" width="216" height="24"/>
-                    <animations/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="VdM-tN-qLN" customClass="TTSegmentedCell">
                         <font key="font" metaFont="system"/>
                         <segments>
@@ -158,7 +146,6 @@
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Eiq-6F-KKf">
                     <rect key="frame" x="18" y="49" width="70" height="21"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Brightness" id="Ofa-pl-ofo">
                         <font key="font" size="14" name="Effra-Regular"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -167,7 +154,6 @@
                 </textField>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4Zc-vm-Jnv">
                     <rect key="frame" x="165" y="107" width="66" height="19"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Double tap" id="zm1-WK-eIx">
                         <font key="font" size="13" name="Effra-Regular"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -179,7 +165,6 @@
                     <constraints>
                         <constraint firstAttribute="width" constant="96" id="USq-Xh-AYL"/>
                     </constraints>
-                    <animations/>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <font key="titleFont" metaFont="system"/>
@@ -221,7 +206,6 @@
                 <constraint firstItem="SMf-U6-ghJ" firstAttribute="top" secondItem="Fqe-9d-WDM" secondAttribute="bottom" constant="8" id="uuL-tt-G8h"/>
                 <constraint firstItem="96R-ps-o2X" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="xNY-IW-Oyg"/>
             </constraints>
-            <animations/>
             <point key="canvasLocation" x="252.5" y="495"/>
         </customView>
     </objects>

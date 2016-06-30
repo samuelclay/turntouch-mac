@@ -1339,12 +1339,12 @@
 				FF2C2E571C546D6E00FAD7E2 /* TTModeWemoConnect.h */,
 				FF2C2E581C546D6E00FAD7E2 /* TTModeWemoConnect.m */,
 				FF2C2E591C546D6E00FAD7E2 /* TTModeWemoConnect.xib */,
-				FF2C2E5A1C546D6E00FAD7E2 /* TTModeWemoConnected.h */,
-				FF2C2E5B1C546D6E00FAD7E2 /* TTModeWemoConnected.m */,
-				FF52501E1C80FD7C0017A847 /* TTModeWemoConnected.xib */,
 				FF2C2E5D1C546D6E00FAD7E2 /* TTModeWemoConnecting.h */,
 				FF2C2E5E1C546D6E00FAD7E2 /* TTModeWemoConnecting.m */,
 				FF2C2E5F1C546D6E00FAD7E2 /* TTModeWemoConnecting.xib */,
+				FF2C2E5A1C546D6E00FAD7E2 /* TTModeWemoConnected.h */,
+				FF2C2E5B1C546D6E00FAD7E2 /* TTModeWemoConnected.m */,
+				FF52501E1C80FD7C0017A847 /* TTModeWemoConnected.xib */,
 				FF2C2E6B1C5479E000FAD7E2 /* TTModeWemoSwitchOptions.h */,
 				FF2C2E6C1C5479E000FAD7E2 /* TTModeWemoSwitchOptions.m */,
 				FF2C2E6D1C5479E000FAD7E2 /* TTModeWemoSwitchOptions.xib */,
@@ -2109,7 +2109,7 @@
 						DevelopmentTeam = 6W5HRS3393;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};

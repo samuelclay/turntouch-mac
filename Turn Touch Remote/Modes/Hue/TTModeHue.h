@@ -25,21 +25,21 @@ typedef enum TTHueState : NSUInteger {
 } TTHueState;
 
 typedef enum {
-    TTHueRandomColorsAllDifferent = 1,
-    TTHueRandomColorsSomeDifferent = 2,
-    TTHueRandomColorsAllSame = 3,
+    TTHueRandomColorsAllDifferent = 0,
+    TTHueRandomColorsSomeDifferent = 1,
+    TTHueRandomColorsAllSame = 2,
 } TTHueRandomColors;
 
 typedef enum {
-    TTHueRandomBrightnessLow = 1,
-    TTHueRandomBrightnessVaried = 2,
-    TTHueRandomBrightnessHigh = 3,
+    TTHueRandomBrightnessLow = 0,
+    TTHueRandomBrightnessVaried = 1,
+    TTHueRandomBrightnessHigh = 2,
 } TTHueRandomBrightness;
 
 typedef enum {
-    TTHueRandomSaturationLow = 1,
-    TTHueRandomSaturationVaried = 2,
-    TTHueRandomSaturationHigh = 3,
+    TTHueRandomSaturationLow = 0,
+    TTHueRandomSaturationVaried = 1,
+    TTHueRandomSaturationHigh = 2,
 } TTHueRandomSaturation;
 
 

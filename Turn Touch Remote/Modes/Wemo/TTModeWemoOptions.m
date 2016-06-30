@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.modeWemo = ((TTModeWemo *)NSAppDelegate.modeMap.selectedMode);
+    self.modeWemo = (TTModeWemo *)self.mode;
     [self.modeWemo setDelegate:self];
     
     [self changeState:self.modeWemo.wemoState withMode:self.modeWemo];
