@@ -53,7 +53,7 @@
         if (modalPairing == MODAL_PAIRING_INTRO) {
             titleLabel.stringValue = @"Welcome to Turn Touch";
         } else if (modalPairing == MODAL_PAIRING_SUCCESS) {
-            titleLabel.stringValue = @"That worked perfectly!";
+            titleLabel.stringValue = @"That worked perfectly";
         } else if (modalPairing == MODAL_PAIRING_FAILURE) {
             titleLabel.stringValue = @"Uh Oh...";
         }
