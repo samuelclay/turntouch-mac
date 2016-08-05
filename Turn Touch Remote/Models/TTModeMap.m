@@ -122,8 +122,6 @@
         [defaults setObject:[NSNumber numberWithInt:selectedModeDirection]
                      forKey:@"TT:selectedModeDirection"];
         [defaults synchronize];
-        
-        [self switchMode];
     }
 }
 
@@ -158,10 +156,12 @@
 }
 
 - (void)switchMode {
-    [self switchMode:nil];
+    [self switchMode:selectedModeDirection modeName:nil];
 }
 
-- (void)switchMode:(NSString *)modeName {
+- (void)switchMode:(TTModeDirection)direction modeName:(NSString *)modeName {
+    [self setActiveModeDirection:NO_DIRECTION];
+    
     if (selectedMode) {
         [batchActions deactivate];
         
@@ -171,8 +171,8 @@
         selectedMode = nil;
     }
     
-    if (selectedModeDirection != NO_DIRECTION) {
-        [self setSelectedMode:[self modeInDirection:selectedModeDirection]];
+    if (direction != NO_DIRECTION) {
+        [self setSelectedMode:[self modeInDirection:direction]];
     } else {
         Class modeClass = NSClassFromString(modeName);
         TTMode *mode = [[modeClass alloc] init];
@@ -180,11 +180,11 @@
     }
     
     [self setAvailableActions:selectedMode.actions];
-    if (selectedMode && [selectedMode respondsToSelector:@selector(activate)]) {
-        [selectedMode activate:selectedModeDirection];
-        [self reset];
-    }
+    [selectedMode activate:direction];
+    [self reset];
     [batchActions assembleBatchActions];
+    
+    self.selectedModeDirection = direction;
 }
 
 - (void)maybeFireActiveButton {

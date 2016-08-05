@@ -97,7 +97,6 @@
         [appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
         [appDelegate.modeMap removeObserver:self forKeyPath:@"activeModeDirection"];
         [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedModeDirection"];
-        [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedMode"];
     }
 }
 
@@ -108,8 +107,6 @@
         [appDelegate.modeMap addObserver:self forKeyPath:@"activeModeDirection"
                                  options:0 context:nil];
         [appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
-                                 options:0 context:nil];
-        [appDelegate.modeMap addObserver:self forKeyPath:@"selectedMode"
                                  options:0 context:nil];
     }
 }
@@ -124,8 +121,6 @@
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(activeModeDirection))]) {
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
-        [self setNeedsDisplay:YES];
-    } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedMode))]) {
         [self setNeedsDisplay:YES];
     }
 }

@@ -96,12 +96,12 @@
 #pragma mark - KVO
 
 - (void)dealloc {
-    [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedMode"];
+    [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedModeDirection"];
     [appDelegate.modeMap removeObserver:self forKeyPath:@"openedModeChangeMenu"];
 }
 
 - (void)registerAsObserver {
-    [appDelegate.modeMap addObserver:self forKeyPath:@"selectedMode"
+    [appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
                              options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"openedModeChangeMenu"
                              options:0 context:nil];
@@ -111,7 +111,7 @@
                        ofObject:(id)object
                          change:(NSDictionary*)change
                         context:(void*)context {
-    if ([keyPath isEqual:NSStringFromSelector(@selector(selectedMode))]) {
+    if ([keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(openedModeChangeMenu))]) {
         [self setNeedsDisplay:YES];

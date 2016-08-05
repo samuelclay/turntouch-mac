@@ -40,7 +40,7 @@
 }
 
 - (void)deactivate {
-    if ([mode respondsToSelector:@selector(activate)]) {
+    if ([mode respondsToSelector:@selector(deactivate)]) {
         [mode deactivate];
     }
 }

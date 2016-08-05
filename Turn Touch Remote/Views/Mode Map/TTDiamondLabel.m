@@ -39,7 +39,6 @@
     [appDelegate.modeMap removeObserver:self forKeyPath:@"hoverModeDirection"];
     [appDelegate.modeMap removeObserver:self forKeyPath:@"activeModeDirection"];
     [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedModeDirection"];
-    [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedMode"];
 }
 
 - (void)registerAsObserver {
@@ -51,15 +50,13 @@
                              options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
                              options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"selectedMode"
-                             options:0 context:nil];
 }
 
 - (void) observeValueForKeyPath:(NSString*)keyPath
                        ofObject:(id)object
                          change:(NSDictionary*)change
                         context:(void*)context {
-    if ([keyPath isEqual:NSStringFromSelector(@selector(selectedMode))]) {
+    if ([keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
         diamondMode = appDelegate.modeMap.selectedMode;
     }
     

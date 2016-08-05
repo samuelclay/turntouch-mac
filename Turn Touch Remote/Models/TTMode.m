@@ -28,6 +28,10 @@
     [self activate];
 }
 
+- (void)activate {
+
+}
+
 #pragma mark - Mode
 
 + (NSString *)title {

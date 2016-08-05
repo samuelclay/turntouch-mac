@@ -233,7 +233,6 @@
     if (menuType == MODE_MENU_TYPE) {
         [appDelegate.modeMap changeDirection:appDelegate.modeMap.selectedModeDirection
                                       toMode:modeName];
-        [appDelegate.modeMap reset];
     } else if (menuType == ACTION_MENU_TYPE) {
         [appDelegate.modeMap changeDirection:appDelegate.modeMap.inspectingModeDirection
                                     toAction:modeName];
