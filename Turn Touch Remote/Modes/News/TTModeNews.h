@@ -7,7 +7,21 @@
 //
 
 #import "TTMode.h"
+#import "TTModeNewsWindowController.h"
 
-@interface TTModeNews : TTMode
+typedef enum {
+    TTModeNewsStateBrowser = 0,
+    TTModeNewsStateMenu = 1,
+} TTModeNewsState;
+
+@interface TTModeNews : TTMode {
+    TTModeNewsWindowController *newsWindowController;
+    TTModeNewsState state;
+    BOOL closed;
+    BOOL timerActive;
+}
+
+- (BOOL)checkClosed;
+- (void)startHideMouseTimer;
 
 @end

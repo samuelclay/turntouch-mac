@@ -210,6 +210,12 @@
 		FF7305C41A5CB3EF009A852D /* TTModeHueConnect.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF7305C31A5CB3EF009A852D /* TTModeHueConnect.xib */; };
 		FF76AD121C1F86A900A6ED97 /* TTSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF76AD111C1F86A900A6ED97 /* TTSliderCell.m */; };
 		FF76AD161C1F8FD000A6ED97 /* TTSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = FF76AD151C1F8FD000A6ED97 /* TTSlider.m */; };
+		FF79C5811D581590006C75C9 /* TTModeNewsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF79C57F1D581590006C75C9 /* TTModeNewsWindowController.m */; };
+		FF79C5821D581590006C75C9 /* TTModeNewsWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF79C5801D581590006C75C9 /* TTModeNewsWindowController.xib */; };
+		FF79C5851D5815AB006C75C9 /* TTModeNewsWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FF79C5841D5815AB006C75C9 /* TTModeNewsWindow.m */; };
+		FF79C5881D5815C0006C75C9 /* TTModeNewsBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF79C5871D5815C0006C75C9 /* TTModeNewsBackgroundView.m */; };
+		FF79C58B1D5815D5006C75C9 /* TTModeNewsBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF79C58A1D5815D5006C75C9 /* TTModeNewsBrowserView.m */; };
+		FF79C58E1D5815ED006C75C9 /* TTModeNewsMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF79C58D1D5815ED006C75C9 /* TTModeNewsMenuView.m */; };
 		FF7A1C6F1868FD72005FA756 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF98A30C1868F1120032CC7A /* QuartzCore.framework */; };
 		FF8012F318692D0A00955218 /* TTModeMac.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8012F218692D0A00955218 /* TTModeMac.m */; };
 		FF8012F5186A1AD100955218 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF8012F4186A1AD100955218 /* defaults.plist */; };
@@ -683,6 +689,17 @@
 		FF76AD111C1F86A900A6ED97 /* TTSliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSliderCell.m; path = Views/Controls/TTSliderCell.m; sourceTree = "<group>"; };
 		FF76AD141C1F8FD000A6ED97 /* TTSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSlider.h; path = Views/Controls/TTSlider.h; sourceTree = "<group>"; };
 		FF76AD151C1F8FD000A6ED97 /* TTSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSlider.m; path = Views/Controls/TTSlider.m; sourceTree = "<group>"; };
+		FF79C57E1D581590006C75C9 /* TTModeNewsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeNewsWindowController.h; path = Modes/News/TTModeNewsWindowController.h; sourceTree = "<group>"; };
+		FF79C57F1D581590006C75C9 /* TTModeNewsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeNewsWindowController.m; path = Modes/News/TTModeNewsWindowController.m; sourceTree = "<group>"; };
+		FF79C5801D581590006C75C9 /* TTModeNewsWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeNewsWindowController.xib; path = Modes/News/TTModeNewsWindowController.xib; sourceTree = "<group>"; };
+		FF79C5831D5815AA006C75C9 /* TTModeNewsWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeNewsWindow.h; path = Modes/News/TTModeNewsWindow.h; sourceTree = "<group>"; };
+		FF79C5841D5815AB006C75C9 /* TTModeNewsWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeNewsWindow.m; path = Modes/News/TTModeNewsWindow.m; sourceTree = "<group>"; };
+		FF79C5861D5815C0006C75C9 /* TTModeNewsBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeNewsBackgroundView.h; path = Modes/News/TTModeNewsBackgroundView.h; sourceTree = "<group>"; };
+		FF79C5871D5815C0006C75C9 /* TTModeNewsBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeNewsBackgroundView.m; path = Modes/News/TTModeNewsBackgroundView.m; sourceTree = "<group>"; };
+		FF79C5891D5815D5006C75C9 /* TTModeNewsBrowserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeNewsBrowserView.h; path = Modes/News/TTModeNewsBrowserView.h; sourceTree = "<group>"; };
+		FF79C58A1D5815D5006C75C9 /* TTModeNewsBrowserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeNewsBrowserView.m; path = Modes/News/TTModeNewsBrowserView.m; sourceTree = "<group>"; };
+		FF79C58C1D5815ED006C75C9 /* TTModeNewsMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeNewsMenuView.h; path = Modes/News/TTModeNewsMenuView.h; sourceTree = "<group>"; };
+		FF79C58D1D5815ED006C75C9 /* TTModeNewsMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeNewsMenuView.m; path = Modes/News/TTModeNewsMenuView.m; sourceTree = "<group>"; };
 		FF8012F118692D0A00955218 /* TTModeMac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMac.h; path = Modes/Mac/TTModeMac.h; sourceTree = "<group>"; };
 		FF8012F218692D0A00955218 /* TTModeMac.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeMac.m; path = Modes/Mac/TTModeMac.m; sourceTree = "<group>"; };
 		FF8012F4186A1AD100955218 /* defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = defaults.plist; path = "Supporting Files/defaults.plist"; sourceTree = "<group>"; };
@@ -1886,6 +1903,17 @@
 			children = (
 				FFAA4F70182D9A5F0049FFC7 /* TTModeNews.h */,
 				FFAA4F71182D9A5F0049FFC7 /* TTModeNews.m */,
+				FF79C57E1D581590006C75C9 /* TTModeNewsWindowController.h */,
+				FF79C57F1D581590006C75C9 /* TTModeNewsWindowController.m */,
+				FF79C5801D581590006C75C9 /* TTModeNewsWindowController.xib */,
+				FF79C5831D5815AA006C75C9 /* TTModeNewsWindow.h */,
+				FF79C5841D5815AB006C75C9 /* TTModeNewsWindow.m */,
+				FF79C5861D5815C0006C75C9 /* TTModeNewsBackgroundView.h */,
+				FF79C5871D5815C0006C75C9 /* TTModeNewsBackgroundView.m */,
+				FF79C5891D5815D5006C75C9 /* TTModeNewsBrowserView.h */,
+				FF79C58A1D5815D5006C75C9 /* TTModeNewsBrowserView.m */,
+				FF79C58C1D5815ED006C75C9 /* TTModeNewsMenuView.h */,
+				FF79C58D1D5815ED006C75C9 /* TTModeNewsMenuView.m */,
 			);
 			name = News;
 			sourceTree = "<group>";
@@ -2279,6 +2307,7 @@
 				FF913D2919243B89005C336F /* TTModeAlarmSnoozeOptions.xib in Resources */,
 				FF01CA7E1C46DCC200F83A73 /* presentation-chart.png in Resources */,
 				FF01CA291C46009E00F83A73 /* scripts in Resources */,
+				FF79C5821D581590006C75C9 /* TTModeNewsWindowController.xib in Resources */,
 				FF01CA741C46DCC200F83A73 /* mode_news.png in Resources */,
 				FF61355E1C61CDDC00F431D7 /* music_rewind.png in Resources */,
 				FF01CA651C46DCC200F83A73 /* heart.png in Resources */,
@@ -2319,6 +2348,7 @@
 				FF01CAAA1C473EC100F83A73 /* NSString+JXRemoving.m in Sources */,
 				FF904B4B1BE9B82200AD00F3 /* hid.c in Sources */,
 				FF904B7A1BE9B88700AD00F3 /* FileOperations.m in Sources */,
+				FF79C58E1D5815ED006C75C9 /* TTModeNewsMenuView.m in Sources */,
 				FF557ABC1C49C6A8005FB7FD /* TTModeNestOptions.m in Sources */,
 				FF904B771BE9B88700AD00F3 /* BLEOperations.m in Sources */,
 				FF904B4E1BE9B82200AD00F3 /* TTButtonTimer.m in Sources */,
@@ -2376,6 +2406,7 @@
 				FF557AB71C49C63D005FB7FD /* NestThermostatManager.m in Sources */,
 				FF557ADA1C4ED8A0005FB7FD /* TTModeNestConnect.m in Sources */,
 				FF27052D1C90FB3B000BB10F /* TTModalPairingScanningView.m in Sources */,
+				FF79C58B1D5815D5006C75C9 /* TTModeNewsBrowserView.m in Sources */,
 				FFABABA51C3495E500AD5620 /* TTModeWebBackgroundView.m in Sources */,
 				FF8D1AAD1C98FE1E006AA1A2 /* TTModalDevices.m in Sources */,
 				FF80131A186CF8FF00955218 /* TTDiamondView.m in Sources */,
@@ -2391,6 +2422,7 @@
 				FF87E9F21C9630E500682461 /* TTModalFTUXView.m in Sources */,
 				FFC730E81B067434003538D5 /* TTModeHueRandomOptions.m in Sources */,
 				FF7305B41A5C9C76009A852D /* DispatchQueueLogFormatter.m in Sources */,
+				FF79C5811D581590006C75C9 /* TTModeNewsWindowController.m in Sources */,
 				FF01CAA51C473EC100F83A73 /* htmls.m in Sources */,
 				FF5250151C80F9740017A847 /* TTModeWemoDeviceOnOptions.m in Sources */,
 				FF52501D1C80F9AF0017A847 /* TTModeWemoDeviceToggleOptions.m in Sources */,
@@ -2409,6 +2441,7 @@
 				FFA8EA9C190F07A500679A4D /* TTModeTabsContainer.m in Sources */,
 				FF66F2A91922D1C100031478 /* TTOptionsDetailView.m in Sources */,
 				FF557AB61C49C63D005FB7FD /* NestStructureManager.m in Sources */,
+				FF79C5881D5815C0006C75C9 /* TTModeNewsBackgroundView.m in Sources */,
 				FF904B961BE9BA3700AD00F3 /* ioapi.c in Sources */,
 				FF2C2E631C546D6E00FAD7E2 /* TTModeWemoConnect.m in Sources */,
 				FF2C2E651C546D6E00FAD7E2 /* TTModeWemoConnected.m in Sources */,
@@ -2456,6 +2489,7 @@
 				FFA1D4CD1A3B8916003EA0BC /* TTActionHUDWindow.m in Sources */,
 				FF801338186E5D9700955218 /* TTOptionsActionTitle.m in Sources */,
 				FF557AB31C49C63D005FB7FD /* AccessToken.m in Sources */,
+				FF79C5851D5815AB006C75C9 /* TTModeNewsWindow.m in Sources */,
 				FF6135351C5AF59D00F431D7 /* TTHUDMenuView.m in Sources */,
 				FF98A2ED1867DC320032CC7A /* main.m in Sources */,
 				FF2705331C9247A8000BB10F /* TTModalBarButton.m in Sources */,

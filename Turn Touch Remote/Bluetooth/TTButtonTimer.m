@@ -237,8 +237,7 @@
 
 - (void)activateMode:(TTModeDirection)direction {
 //    NSLog(@"Selecting mode: %d", activeModeDirection);
-    [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];
-    [appDelegate.modeMap setSelectedModeDirection:direction];
+    [appDelegate.modeMap switchMode:direction modeName:nil];
     
     [appDelegate.hudController holdToastActiveMode:YES];
 
@@ -338,7 +337,7 @@
                                       integerValue];
 //    NSLog(@" --> Teasing direction: %@ (%@)", [appDelegate.modeMap directionName:timerDirection], [appDelegate.modeMap directionName:appDelegate.modeMap.activeModeDirection]);
     if (appDelegate.modeMap.activeModeDirection == timerDirection) {
-        [appDelegate.hudController teaseMode:timerDirection];
+//        [appDelegate.hudController teaseMode:timerDirection];
     }
 }
 

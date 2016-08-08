@@ -1,0 +1,34 @@
+//
+//  TTModeNewsBrowserView.h
+//  Turn Touch Remote
+//
+//  Created by Samuel Clay on 8/7/16.
+//  Copyright © 2016 Turn Touch. All rights reserved.
+//
+
+#import <Cocoa/Cocoa.h>
+#import <WebKit/WebKit.h>
+#import "TTAppDelegate.h"
+
+@interface TTModeNewsBrowserView : NSView <WebResourceLoadDelegate> {
+    TTAppDelegate *appDelegate;
+    WebView *webView;
+    CGFloat zoomFactor;
+    NSInteger textSize;
+}
+
+@property (nonatomic) IBOutlet WebView *webView;
+@property (nonatomic) IBOutlet NSLayoutConstraint *widthConstraint;
+
+- (void)loadURL:(NSString *)urlString;
+- (void)loadURL:(NSString *)urlString html:(NSString *)htmlSource title:(NSString *)title;
+- (void)scrollUp;
+- (void)scrollDown;
+- (void)adjustTextSizeUp;
+- (void)adjustTextSizeDown;
+- (void)zoomIn;
+- (void)zoomOut;
+- (void)widenMargin;
+- (void)narrowMargin;
+
+@end
