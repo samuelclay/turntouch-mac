@@ -182,9 +182,10 @@
     [self setAvailableActions:selectedMode.actions];
     [selectedMode activate:direction];
     [self reset];
-    [batchActions assembleBatchActions];
     
     self.selectedModeDirection = direction;
+    
+    [batchActions assembleBatchActions];
 }
 
 - (void)maybeFireActiveButton {

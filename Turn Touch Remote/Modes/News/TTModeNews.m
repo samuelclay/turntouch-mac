@@ -183,7 +183,7 @@
 - (BOOL)checkClosed {
     if (closed) {
         closed = NO;
-        [self loadSafari];
+        [self loadStories];
         [self startHideMouseTimer];
         [self setDisplayAwake:YES];
         
@@ -277,12 +277,14 @@
 
 - (void)runTTModeNewsNextStory {
     NSLog(@"Running TTModeNewsNextStory");
+    [newsWindowController.browserView nextStory];
 }
 - (void)runTTModeNewsNextSite {
     NSLog(@"Running TTModeNewsNextSite");
 }
 - (void)runTTModeNewsPreviousStory {
     NSLog(@"Running TTModeNewsPreviousStory");
+    [newsWindowController.browserView previousStory];
 }
 - (void)runTTModeNewsPreviousSite {
     NSLog(@"Running TTModeNewsPreviousSite");
@@ -304,18 +306,10 @@
     [NSCursor unhide];
 }
 
-- (void)loadSafari {
+- (void)loadStories {
     [newsWindowController fadeIn];
     
-    SafariApplication *safari = [SBApplication applicationWithBundleIdentifier:@"com.apple.Safari"];
-    
-    SBElementArray* windows = [safari windows];
-    SafariWindow *safariWindow = [windows objectAtIndex:0];
-    // This fails when in full-screen mode:
-    SafariTab* currentTab = [safariWindow currentTab];
-    
-    // https://medium.com/the-development-set/the-reductive-seduction-of-other-people-s-problems-3c07b307732d
-    [newsWindowController.browserView loadURL:currentTab.URL html:[self readabilityForUrl:currentTab.URL htmlSource:nil] title:currentTab.name];
+//    [newsWindowController.browserView ];
 }
 
 #pragma mark - Menu Options
@@ -330,7 +324,7 @@
 }
 
 - (void)runTTModeNewsMenuPreviousStory {
-    [newsWindowController.browserView.webView goBack];
+//    [newsWindowController.browserView.webView goBack];
 }
 
 - (void)runTTModeNewsMenuFontSizeUp {

@@ -251,7 +251,7 @@
                              options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"openedAddActionChangeMenu"
                              options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"selectedMode"
+    [appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
                              options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
                              options:0 context:nil];
@@ -272,7 +272,7 @@
         [self toggleActionMenuFrame];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(openedAddActionChangeMenu))]) {
         [self toggleAddActionMenuFrame];
-    } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedMode))]) {
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
         [self resetPosition];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))]) {
         [self toggleActionMenuFrame];

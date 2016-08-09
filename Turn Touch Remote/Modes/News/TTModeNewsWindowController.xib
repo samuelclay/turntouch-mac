@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
+        <deployment version="101100" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="10117"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTModeNewsWindowController">
@@ -23,29 +24,23 @@
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="MMt-KA-svi" customClass="TTModeNewsBackgroundView">
                 <rect key="frame" x="0.0" y="0.0" width="1391" height="489"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="N3r-oR-wwj" customClass="TTModeNewsBrowserView">
                         <rect key="frame" x="0.0" y="0.0" width="1391" height="489"/>
                         <subviews>
-                            <webView translatesAutoresizingMaskIntoConstraints="NO" id="qHG-zN-F1O">
-                                <rect key="frame" x="195" y="0.0" width="1000" height="489"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="1000" id="0PM-MO-5hD"/>
-                                </constraints>
-                                <webPreferences key="preferences" defaultFontSize="16" defaultFixedFontSize="13" minimumFontSize="0">
-                                    <nil key="identifier"/>
-                                </webPreferences>
-                            </webView>
+                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="64" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vsn-Ye-R2p">
+                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="489"/>
+                            </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="qHG-zN-F1O" firstAttribute="top" secondItem="N3r-oR-wwj" secondAttribute="top" id="PHF-o4-rRo"/>
-                            <constraint firstItem="qHG-zN-F1O" firstAttribute="centerX" secondItem="N3r-oR-wwj" secondAttribute="centerX" id="gh7-fk-4mZ"/>
-                            <constraint firstAttribute="bottom" secondItem="qHG-zN-F1O" secondAttribute="bottom" id="wMr-v4-uW7"/>
+                            <constraint firstItem="Vsn-Ye-R2p" firstAttribute="top" secondItem="N3r-oR-wwj" secondAttribute="top" id="h8J-kw-fib"/>
+                            <constraint firstItem="Vsn-Ye-R2p" firstAttribute="leading" secondItem="N3r-oR-wwj" secondAttribute="leading" id="ivQ-sf-PY8"/>
+                            <constraint firstAttribute="bottom" secondItem="Vsn-Ye-R2p" secondAttribute="bottom" id="jWt-K9-nDI"/>
                         </constraints>
                         <connections>
-                            <outlet property="webView" destination="qHG-zN-F1O" id="tSB-M8-AAr"/>
-                            <outlet property="widthConstraint" destination="0PM-MO-5hD" id="mdE-Px-acP"/>
+                            <outlet property="stackOffsetConstraint" destination="ivQ-sf-PY8" id="wnA-41-8XT"/>
+                            <outlet property="storyStack" destination="Vsn-Ye-R2p" id="5uj-op-gyy"/>
                         </connections>
                     </customView>
                     <visualEffectView appearanceType="vibrantDark" blendingMode="behindWindow" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="iOl-Vb-tYM" customClass="TTModeNewsMenuView">
@@ -58,7 +53,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" selectionHighlightStyle="none" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="kGc-Qw-3UN">
-                                            <rect key="frame" x="0.0" y="0.0" width="400" height="489"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="309" height="0.0"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>

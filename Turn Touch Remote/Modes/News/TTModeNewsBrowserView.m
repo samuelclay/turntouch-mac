@@ -8,94 +8,82 @@
 
 #import "TTModeNewsBrowserView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "TTModeNewsStoryView.h"
 
 @implementation TTModeNewsBrowserView
 
-@synthesize widthConstraint;
-@synthesize webView;
+@synthesize stackOffsetConstraint;
+@synthesize storyStack;
+@synthesize zoomFactor;
+@synthesize textSize;
+@synthesize currentStoryIndex;
+@synthesize storyCount;
+@synthesize storyViews;
+@synthesize storyWidth;
 
 - (void)awakeFromNib {
     appDelegate = (TTAppDelegate *)[NSApp delegate];
     
-    [webView setResourceLoadDelegate:self];
-    zoomFactor  = 2.3f;
+    zoomFactor = 2.3f;
     textSize = 0;
+    storyWidth = 800;
     
-    NSScreen *mainScreen = [[NSScreen screens] objectAtIndex:0];
-    [widthConstraint setConstant:NSWidth(mainScreen.frame) * 0.85];
+    self.translatesAutoresizingMaskIntoConstraints = NO;
+    storyStack.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self assembleStoryViews];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
 }
 
-#pragma mark - Loading URLs
-
-- (void)loadURL:(NSString *)urlString {
-    [webView setMainFrameURL:urlString];
-}
-
-- (void)loadURL:(NSString *)urlString html:(NSString *)htmlSource title:(NSString *)title {
-    NSLog(@"Loading: %@", title);
-    [[webView mainFrame] loadHTMLString:htmlSource baseURL:[NSURL URLWithString:urlString]];
-}
-
-- (void)webView:(WebView *)sender resource:(id)identifier didFinishLoadingFromDataSource:(WebDataSource *)dataSource {
-    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.documentElement.style.zoom = \"%f\"", zoomFactor]];
-    
-    for (NSString *scriptName in @[@"jquery-2.0.3.js"]) {
-        NSString *jQueryFile = [NSString stringWithFormat:@"%@/scripts/%@", [[NSBundle mainBundle] resourcePath], scriptName];
-        NSString *jQuery = [NSString stringWithContentsOfFile:jQueryFile encoding:NSUTF8StringEncoding error:nil];
-        [webView stringByEvaluatingJavaScriptFromString:jQuery];
+- (void)assembleStoryViews {
+    for (int i=0; i < 12; i++) {
+        TTModeNewsStoryView *storyView = [[TTModeNewsStoryView alloc] init];
+        [storyViews addObject:storyView];
+        storyView.storyIndex = i;
+        storyCount += 1;
+        [storyStack addArrangedSubview:storyView];
+        [storyStack addConstraint:[NSLayoutConstraint constraintWithItem:storyView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1. constant:storyWidth]];
+        [storyView loadStory];
     }
     
-    [webView stringByEvaluatingJavaScriptFromString:@"window.$TT = jQuery = jQuery.noConflict(true);"];
+    NSScreen *mainScreen = [[NSScreen screens] objectAtIndex:0];
+    stackOffsetConstraint.constant = NSWidth(mainScreen.frame)/2 - currentStoryIndex*(storyWidth+64) - storyWidth/2;
 }
 
 #pragma mark - Interacting with webView
 
-- (NSInteger)currentScroll {
-    return [[webView stringByEvaluatingJavaScriptFromString:@"window.pageYOffset"] integerValue];
-}
-
-- (NSInteger)scrollAmount {
+- (void)nextStory {
+    currentStoryIndex += 1;
     NSScreen *mainScreen = [[NSScreen screens] objectAtIndex:0];
-    return NSHeight(mainScreen.frame) / 3;
+    CGFloat openDuration = 0.65f;
+    
+    [NSAnimationContext beginGrouping];
+    [[NSAnimationContext currentContext] setDuration:openDuration];
+    
+    [[NSAnimationContext currentContext]
+     setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+    
+    [stackOffsetConstraint animator].constant = NSWidth(mainScreen.frame)/2 - currentStoryIndex*(storyWidth+64) - storyWidth/2;
+    
+    [NSAnimationContext endGrouping];
 }
 
-- (void)scrollUp {
-    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"$TT('body').stop().animate({scrollTop:%ld}, 150, 'swing')", self.currentScroll - self.scrollAmount]];
-}
-
-- (void)scrollDown {
-    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"$TT('body').stop().animate({scrollTop:%ld}, 200, 'swing')", self.currentScroll + self.scrollAmount]];
-}
-
-- (void)adjustTextSizeUp {
-    if ([webView canMakeTextLarger]) {
-        [webView makeTextLarger:nil];
-        textSize += 1;
-        NSLog(@" ---> Text size: %ld", (long)textSize);
-    }
-}
-
-- (void)adjustTextSizeDown {
-    if ([webView canMakeTextSmaller]) {
-        [webView makeTextSmaller:nil];
-        textSize -= 1;
-        NSLog(@" ---> Text size: %ld", (long)textSize);
-    }
+- (void)previousStory {
+    
 }
 
 - (void)zoomIn {
     zoomFactor += 0.05;
-    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.documentElement.style.zoom = \"%f\"", zoomFactor]];
+    
     NSLog(@" ---> Zoom factor: %f", zoomFactor);
 }
 
 - (void)zoomOut {
     zoomFactor -= 0.05;
-    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.documentElement.style.zoom = \"%f\"", zoomFactor]];
+
     NSLog(@" ---> Zoom factor: %f", zoomFactor);
 }
 
@@ -104,7 +92,8 @@
     [[NSAnimationContext currentContext] setDuration:.26f];
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
-    [[widthConstraint animator] setConstant:widthConstraint.constant+125];
+    storyWidth += 125;
+//    [[widthConstraint animator] setConstant:widthConstraint.constant+125];
     [NSAnimationContext endGrouping];
 }
 
@@ -113,8 +102,19 @@
     [[NSAnimationContext currentContext] setDuration:.26f];
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
-    [[widthConstraint animator] setConstant:widthConstraint.constant-125];
+    storyWidth -= 125;
+//    [[widthConstraint animator] setConstant:widthConstraint.constant-125];
     [NSAnimationContext endGrouping];
+}
+
+- (void)scrollUp {
+    TTModeNewsStoryView *activeStoryView = [storyViews objectAtIndex:currentStoryIndex];
+    [activeStoryView scrollUp];
+}
+
+- (void)scrollDown {
+    TTModeNewsStoryView *activeStoryView = [storyViews objectAtIndex:currentStoryIndex];
+    [activeStoryView scrollDown];
 }
 
 @end

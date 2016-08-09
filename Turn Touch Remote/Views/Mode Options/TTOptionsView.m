@@ -40,7 +40,7 @@
                              options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"activeModeDirection"
                              options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"selectedMode"
+    [appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
                              options:0 context:nil];
 }
 
@@ -50,7 +50,7 @@
                         context:(void*)context {
     if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))]) {
         [self redrawOptions];
-    } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedMode))]) {
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
         [self drawModeOptions];
     }
 }
@@ -58,7 +58,7 @@
 - (void)dealloc {
     [appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
     [appDelegate.modeMap removeObserver:self forKeyPath:@"activeModeDirection"];
-    [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedMode"];
+    [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedModeDirection"];
 }
 
 #pragma mark - Drawing

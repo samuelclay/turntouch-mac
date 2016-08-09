@@ -7,25 +7,29 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <WebKit/WebKit.h>
 #import "TTAppDelegate.h"
 
-@interface TTModeNewsBrowserView : NSView <WebResourceLoadDelegate> {
+@interface TTModeNewsBrowserView : NSView {
     TTAppDelegate *appDelegate;
-    WebView *webView;
+    NSStackView *storyStack;
     CGFloat zoomFactor;
     NSInteger textSize;
 }
 
-@property (nonatomic) IBOutlet WebView *webView;
-@property (nonatomic) IBOutlet NSLayoutConstraint *widthConstraint;
+@property (nonatomic) IBOutlet NSStackView *storyStack;
+@property (nonatomic) IBOutlet NSLayoutConstraint *stackOffsetConstraint;
+@property (nonatomic) CGFloat zoomFactor;
+@property (nonatomic) NSInteger textSize;
+@property (nonatomic) NSInteger currentStoryIndex;
+@property (nonatomic) NSInteger storyCount;
+@property (nonatomic) NSInteger storyWidth;
+@property (nonatomic) NSMutableArray *storyViews;
 
-- (void)loadURL:(NSString *)urlString;
-- (void)loadURL:(NSString *)urlString html:(NSString *)htmlSource title:(NSString *)title;
+
+- (void)nextStory;
+- (void)previousStory;
 - (void)scrollUp;
 - (void)scrollDown;
-- (void)adjustTextSizeUp;
-- (void)adjustTextSizeDown;
 - (void)zoomIn;
 - (void)zoomOut;
 - (void)widenMargin;
