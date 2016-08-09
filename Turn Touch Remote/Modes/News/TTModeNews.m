@@ -19,10 +19,20 @@
 
 @implementation TTModeNews
 
+@synthesize newsblur;
+
 #pragma mark - Mode
 
+- (instancetype)init {
+    if (self = [super init]) {
+        newsblur = [[TTModeNewsNewsBlur alloc] init];
+    }
+    
+    return self;
+}
+
 + (NSString *)title {
-    return @"News";
+    return @"NewsBlur";
 }
 
 + (NSString *)description {
@@ -308,6 +318,9 @@
 
 - (void)loadStories {
     [newsWindowController fadeIn];
+    [newsblur fetchRiverStories:^(NSArray *stories) {
+        [newsWindowController addStories:stories];
+    }];
     
 //    [newsWindowController.browserView ];
 }
@@ -353,71 +366,5 @@
         [newsWindowController.menuView slideOut];
     }
 }
-
-#pragma mark - Readability
-
-- (NSString *)readabilityForUrl:(NSString *)urlString htmlSource:(NSString *)htmlSource {
-    NSError *error = nil;
-    WebArchive *webarchive;
-    KBWebArchiver *archiver = [[KBWebArchiver alloc] initWithURLString:urlString];
-    archiver.localResourceLoadingOnly = htmlSource && htmlSource.length;
-    webarchive = [archiver webArchive];
-    [webarchive data];
-    error = [archiver error];
-    
-    WebResource *resource = [webarchive mainResource];
-    
-    NSString *textEncodingName = [resource textEncodingName];
-    
-    NSStringEncoding encoding;
-    if (textEncodingName == nil) {
-        encoding = NSISOLatin1StringEncoding;
-    }
-    else {
-        CFStringEncoding cfEnc = CFStringConvertIANACharSetNameToEncoding((CFStringRef)textEncodingName);
-        if (kCFStringEncodingInvalidId == cfEnc) {
-            encoding = NSUTF8StringEncoding;
-        }
-        else {
-            encoding = CFStringConvertEncodingToNSStringEncoding(cfEnc);
-        }
-    }
-    
-    NSString *source = [[NSString alloc] initWithData:[resource data]
-                                             encoding:encoding];
-    NSXMLDocumentContentKind contentKind = NSXMLDocumentXHTMLKind;
-    NSUInteger xmlOutputOptions = (contentKind
-                                   | NSXMLNodePrettyPrint
-                                   | NSXMLNodePreserveWhitespace
-                                   | NSXMLNodeCompactEmptyElement
-                                   );
-    
-    NSXMLDocument *doc = [[NSXMLDocument alloc] initWithXMLString:source
-                                                          options:NSXMLDocumentTidyHTML
-                                                            error:&error];
-    NSXMLDocument *cleanedDoc = nil;
-    NSXMLDocument *summaryDoc = nil;
-    
-    if (doc != nil) {
-        [doc setDocumentContentKind:contentKind];
-        
-        {
-            JXReadabilityDocument *readabilityDoc = [[JXReadabilityDocument alloc] initWithXMLDocument:doc
-                                                                                          copyDocument:NO];
-            summaryDoc = [readabilityDoc summaryXMLDocument];
-            cleanedDoc = readabilityDoc.html;
-            
-            NSLog(@"\nTitle: %@", readabilityDoc.title);
-            NSLog(@"\nShort Title: %@", readabilityDoc.shortTitle);
-            
-        }
-    }
-    
-    // Create a new webarchive with the processed markup as main content and the resources from the source webarchive
-    NSData *docData = [summaryDoc XMLDataWithOptions:xmlOutputOptions];
-    return [[NSString alloc] initWithData:docData encoding:NSUTF8StringEncoding];
-    
-}
-
 
 @end

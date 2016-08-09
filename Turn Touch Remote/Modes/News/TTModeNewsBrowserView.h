@@ -14,6 +14,7 @@
     NSStackView *storyStack;
     CGFloat zoomFactor;
     NSInteger textSize;
+    NSInteger page;
 }
 
 @property (nonatomic) IBOutlet NSStackView *storyStack;
@@ -25,7 +26,7 @@
 @property (nonatomic) NSInteger storyWidth;
 @property (nonatomic) NSMutableArray *storyViews;
 
-
+- (void)addStories:(NSArray *)stories;
 - (void)nextStory;
 - (void)previousStory;
 - (void)scrollUp;

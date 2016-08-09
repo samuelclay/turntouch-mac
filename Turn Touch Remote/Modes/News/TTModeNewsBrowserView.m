@@ -27,22 +27,51 @@
     zoomFactor = 2.3f;
     textSize = 0;
     storyWidth = 800;
+    page = 0;
+    currentStoryIndex = 0;
     
+    storyViews = [NSMutableArray array];
     self.translatesAutoresizingMaskIntoConstraints = NO;
     storyStack.translatesAutoresizingMaskIntoConstraints = NO;
     
-    [self assembleStoryViews];
+    [self showLoadingStories];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
 }
 
-- (void)assembleStoryViews {
-    for (int i=0; i < 12; i++) {
+- (void)showLoadingStories {
+    TTModeNewsStoryView *storyView = [[TTModeNewsStoryView alloc] init];
+    [storyViews addObject:storyView];
+    storyView.storyIndex = 0;
+    storyCount = 1;
+    [storyStack addArrangedSubview:storyView];
+    [storyStack addConstraint:[NSLayoutConstraint constraintWithItem:storyView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1. constant:storyWidth]];
+    [storyView showLoadingView];
+
+    NSScreen *mainScreen = [[NSScreen screens] objectAtIndex:0];
+    stackOffsetConstraint.constant = NSWidth(mainScreen.frame)/2 - currentStoryIndex*(storyWidth+64) - storyWidth/2;
+}
+
+- (void)addStories:(NSArray *)stories {
+    if (page == 0) {
+        for (NSView *view in storyStack.arrangedSubviews) {
+            [storyStack removeArrangedSubview:view];
+        }
+        storyCount = 0;
+        [storyStack removeConstraints:storyStack.constraints];
+        storyViews = [NSMutableArray array];
+    }
+    
+    page += 1;
+    
+    for (int i=0; i < stories.count; i++) {
+        TTNewsBlurStory *story = [[TTNewsBlurStory alloc] initWithStory:[stories objectAtIndex:i]];
         TTModeNewsStoryView *storyView = [[TTModeNewsStoryView alloc] init];
         [storyViews addObject:storyView];
         storyView.storyIndex = i;
+        storyView.story = story;
         storyCount += 1;
         [storyStack addArrangedSubview:storyView];
         [storyStack addConstraint:[NSLayoutConstraint constraintWithItem:storyView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1. constant:storyWidth]];
@@ -51,6 +80,9 @@
     
     NSScreen *mainScreen = [[NSScreen screens] objectAtIndex:0];
     stackOffsetConstraint.constant = NSWidth(mainScreen.frame)/2 - currentStoryIndex*(storyWidth+64) - storyWidth/2;
+    
+    TTModeNewsStoryView *activeStory = [storyViews objectAtIndex:currentStoryIndex];
+    [activeStory focusStory];
 }
 
 #pragma mark - Interacting with webView
@@ -69,6 +101,13 @@
     [stackOffsetConstraint animator].constant = NSWidth(mainScreen.frame)/2 - currentStoryIndex*(storyWidth+64) - storyWidth/2;
     
     [NSAnimationContext endGrouping];
+    
+    if (currentStoryIndex > 0 && storyViews.count > 1) {
+        TTModeNewsStoryView *oldStory = [storyViews objectAtIndex:currentStoryIndex-1];
+        [oldStory blurStory];
+    }
+    TTModeNewsStoryView *activeStory = [storyViews objectAtIndex:currentStoryIndex];
+    [activeStory focusStory];
 }
 
 - (void)previousStory {

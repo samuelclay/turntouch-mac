@@ -8,6 +8,7 @@
 
 #import "TTMode.h"
 #import "TTModeNewsWindowController.h"
+#import "TTModeNewsNewsBlur.h"
 
 typedef enum {
     TTModeNewsStateBrowser = 0,
@@ -17,9 +18,12 @@ typedef enum {
 @interface TTModeNews : TTMode {
     TTModeNewsWindowController *newsWindowController;
     TTModeNewsState state;
+    TTModeNewsNewsBlur *newsblur;
     BOOL closed;
     BOOL timerActive;
 }
+
+@property (nonatomic) TTModeNewsNewsBlur *newsblur;
 
 - (BOOL)checkClosed;
 - (void)startHideMouseTimer;

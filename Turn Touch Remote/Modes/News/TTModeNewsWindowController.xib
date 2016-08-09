@@ -34,6 +34,7 @@
                             </stackView>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="height" constant="489" id="d2J-2I-xMk"/>
                             <constraint firstItem="Vsn-Ye-R2p" firstAttribute="top" secondItem="N3r-oR-wwj" secondAttribute="top" id="h8J-kw-fib"/>
                             <constraint firstItem="Vsn-Ye-R2p" firstAttribute="leading" secondItem="N3r-oR-wwj" secondAttribute="leading" id="ivQ-sf-PY8"/>
                             <constraint firstAttribute="bottom" secondItem="Vsn-Ye-R2p" secondAttribute="bottom" id="jWt-K9-nDI"/>

@@ -26,5 +26,6 @@
 
 - (void)fadeIn;
 - (IBAction)fadeOut;
+- (void)addStories:(NSArray *)stories;
 
 @end

@@ -9,14 +9,21 @@
 #import <Cocoa/Cocoa.h>
 #import <WebKit/WebKit.h>
 #import "TTModeNewsBrowserView.h"
+#import "TTNewsBlurStory.h"
 
 @interface TTModeNewsStoryView : NSView  <WebResourceLoadDelegate> {
     WebView *webView;
+    TTPairingSpinner *loadingSpinner;
 }
 
 @property (nonatomic) IBOutlet WebView *webView;
 @property (nonatomic) TTModeNewsBrowserView *browserView;
 @property (nonatomic) NSInteger storyIndex;
+@property (nonatomic) TTNewsBlurStory *story;
+
+- (void)showLoadingView;
+- (void)blurStory;
+- (void)focusStory;
 
 - (void)loadStory;
 - (void)scrollUp;

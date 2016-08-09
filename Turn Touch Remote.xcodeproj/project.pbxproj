@@ -342,6 +342,8 @@
 		FFB653E018DBA14E00830B42 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB653DF18DBA14E00830B42 /* CoreFoundation.framework */; };
 		FFBAC7051C596057009CA53C /* TTModeHUDLabelsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBAC7041C596057009CA53C /* TTModeHUDLabelsView.m */; };
 		FFBC625F1A9D699D0032AD24 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFBC625E1A9D699D0032AD24 /* AVFoundation.framework */; };
+		FFBD46F81D5A8C2700838AAC /* TTModeNewsNewsBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBD46F71D5A8C2700838AAC /* TTModeNewsNewsBlur.m */; };
+		FFBD46FB1D5A8F3200838AAC /* TTNewsBlurStory.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBD46FA1D5A8F3200838AAC /* TTNewsBlurStory.m */; };
 		FFC730E51B0673E9003538D5 /* TTModeHueRandomOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFC730E41B0673E9003538D5 /* TTModeHueRandomOptions.xib */; };
 		FFC730E81B067434003538D5 /* TTModeHueRandomOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC730E71B067434003538D5 /* TTModeHueRandomOptions.m */; };
 		FFD62CCE194F935D0093004D /* TTSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD62CCD194F935D0093004D /* TTSegmentedCell.m */; };
@@ -924,6 +926,10 @@
 		FFBAC7031C596057009CA53C /* TTModeHUDLabelsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeHUDLabelsView.h; sourceTree = "<group>"; };
 		FFBAC7041C596057009CA53C /* TTModeHUDLabelsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeHUDLabelsView.m; sourceTree = "<group>"; };
 		FFBC625E1A9D699D0032AD24 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		FFBD46F61D5A8C2700838AAC /* TTModeNewsNewsBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeNewsNewsBlur.h; path = Modes/News/TTModeNewsNewsBlur.h; sourceTree = "<group>"; };
+		FFBD46F71D5A8C2700838AAC /* TTModeNewsNewsBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeNewsNewsBlur.m; path = Modes/News/TTModeNewsNewsBlur.m; sourceTree = "<group>"; };
+		FFBD46F91D5A8F3200838AAC /* TTNewsBlurStory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTNewsBlurStory.h; path = Modes/News/TTNewsBlurStory.h; sourceTree = "<group>"; };
+		FFBD46FA1D5A8F3200838AAC /* TTNewsBlurStory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTNewsBlurStory.m; path = Modes/News/TTNewsBlurStory.m; sourceTree = "<group>"; };
 		FFC730E41B0673E9003538D5 /* TTModeHueRandomOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTModeHueRandomOptions.xib; sourceTree = "<group>"; };
 		FFC730E61B067434003538D5 /* TTModeHueRandomOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeHueRandomOptions.h; sourceTree = "<group>"; };
 		FFC730E71B067434003538D5 /* TTModeHueRandomOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeHueRandomOptions.m; sourceTree = "<group>"; };
@@ -1909,6 +1915,10 @@
 			children = (
 				FFAA4F70182D9A5F0049FFC7 /* TTModeNews.h */,
 				FFAA4F71182D9A5F0049FFC7 /* TTModeNews.m */,
+				FFBD46F61D5A8C2700838AAC /* TTModeNewsNewsBlur.h */,
+				FFBD46F71D5A8C2700838AAC /* TTModeNewsNewsBlur.m */,
+				FFBD46F91D5A8F3200838AAC /* TTNewsBlurStory.h */,
+				FFBD46FA1D5A8F3200838AAC /* TTNewsBlurStory.m */,
 				FF79C57E1D581590006C75C9 /* TTModeNewsWindowController.h */,
 				FF79C57F1D581590006C75C9 /* TTModeNewsWindowController.m */,
 				FF79C5801D581590006C75C9 /* TTModeNewsWindowController.xib */,
@@ -2372,6 +2382,7 @@
 				FF1F135F1ADC90E700B52A0D /* MLCalendarView.m in Sources */,
 				FF8D1AB21C9902F8006AA1A2 /* TTModalSupportView.m in Sources */,
 				FF904BA71BEBFCDE00AD00F3 /* TTDFUDeviceView.m in Sources */,
+				FFBD46F81D5A8C2700838AAC /* TTModeNewsNewsBlur.m in Sources */,
 				FF904B781BE9B88700AD00F3 /* DFUOperations.m in Sources */,
 				FFD62CD11950EE770093004D /* TTSegmentedControl.m in Sources */,
 				FFE2D47E1A51EDF000DDD413 /* TTModeHue.m in Sources */,
@@ -2515,6 +2526,7 @@
 				FF80132F186D210200955218 /* TTOptionsView.m in Sources */,
 				FF8D1ABB1C9B3C54006AA1A2 /* NSString+TTEncoding.m in Sources */,
 				FF801329186CF90700955218 /* TTStatusItemView.m in Sources */,
+				FFBD46FB1D5A8F3200838AAC /* TTNewsBlurStory.m in Sources */,
 				FFA8EAA6190F11B200679A4D /* TTModeMenuItemView.m in Sources */,
 				FF981FCB191AB46600A4A94B /* TTModeMenuBordersView.m in Sources */,
 				FFABAB7A1C235EC500AD5620 /* TTFooterView.m in Sources */,
