@@ -344,6 +344,7 @@
 		FFBC625F1A9D699D0032AD24 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFBC625E1A9D699D0032AD24 /* AVFoundation.framework */; };
 		FFBD46F81D5A8C2700838AAC /* TTModeNewsNewsBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBD46F71D5A8C2700838AAC /* TTModeNewsNewsBlur.m */; };
 		FFBD46FB1D5A8F3200838AAC /* TTNewsBlurStory.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBD46FA1D5A8F3200838AAC /* TTNewsBlurStory.m */; };
+		FFBD46FE1D5AB5E100838AAC /* TTNewsBlurUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBD46FD1D5AB5E100838AAC /* TTNewsBlurUtilities.m */; };
 		FFC730E51B0673E9003538D5 /* TTModeHueRandomOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFC730E41B0673E9003538D5 /* TTModeHueRandomOptions.xib */; };
 		FFC730E81B067434003538D5 /* TTModeHueRandomOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC730E71B067434003538D5 /* TTModeHueRandomOptions.m */; };
 		FFD62CCE194F935D0093004D /* TTSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD62CCD194F935D0093004D /* TTSegmentedCell.m */; };
@@ -930,6 +931,8 @@
 		FFBD46F71D5A8C2700838AAC /* TTModeNewsNewsBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeNewsNewsBlur.m; path = Modes/News/TTModeNewsNewsBlur.m; sourceTree = "<group>"; };
 		FFBD46F91D5A8F3200838AAC /* TTNewsBlurStory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTNewsBlurStory.h; path = Modes/News/TTNewsBlurStory.h; sourceTree = "<group>"; };
 		FFBD46FA1D5A8F3200838AAC /* TTNewsBlurStory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTNewsBlurStory.m; path = Modes/News/TTNewsBlurStory.m; sourceTree = "<group>"; };
+		FFBD46FC1D5AB5E100838AAC /* TTNewsBlurUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTNewsBlurUtilities.h; path = Modes/News/TTNewsBlurUtilities.h; sourceTree = "<group>"; };
+		FFBD46FD1D5AB5E100838AAC /* TTNewsBlurUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTNewsBlurUtilities.m; path = Modes/News/TTNewsBlurUtilities.m; sourceTree = "<group>"; };
 		FFC730E41B0673E9003538D5 /* TTModeHueRandomOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTModeHueRandomOptions.xib; sourceTree = "<group>"; };
 		FFC730E61B067434003538D5 /* TTModeHueRandomOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeHueRandomOptions.h; sourceTree = "<group>"; };
 		FFC730E71B067434003538D5 /* TTModeHueRandomOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeHueRandomOptions.m; sourceTree = "<group>"; };
@@ -1934,6 +1937,8 @@
 				FF97E46D1D5951D400141BFB /* TTModeNewsStory.m */,
 				FF79C58C1D5815ED006C75C9 /* TTModeNewsMenuView.h */,
 				FF79C58D1D5815ED006C75C9 /* TTModeNewsMenuView.m */,
+				FFBD46FC1D5AB5E100838AAC /* TTNewsBlurUtilities.h */,
+				FFBD46FD1D5AB5E100838AAC /* TTNewsBlurUtilities.m */,
 			);
 			name = News;
 			sourceTree = "<group>";
@@ -2425,6 +2430,7 @@
 				FF801327186CF90700955218 /* TTPanel.m in Sources */,
 				FF904B881BE9B88700AD00F3 /* UnzipFirmware.m in Sources */,
 				FF98A2E71867DBE70032CC7A /* TTMenubarController.m in Sources */,
+				FFBD46FE1D5AB5E100838AAC /* TTNewsBlurUtilities.m in Sources */,
 				FF557AB71C49C63D005FB7FD /* NestThermostatManager.m in Sources */,
 				FF557ADA1C4ED8A0005FB7FD /* TTModeNestConnect.m in Sources */,
 				FF27052D1C90FB3B000BB10F /* TTModalPairingScanningView.m in Sources */,

@@ -12,6 +12,13 @@
 
 @property (nonatomic) NSString *storyTitle;
 @property (nonatomic) NSString *storyContent;
+@property (nonatomic) NSString *originalText;
+@property (nonatomic) NSString *feedId;
+@property (nonatomic) NSString *storyAuthor;
+@property (nonatomic) NSArray *storyTags;
+@property (nonatomic) NSString *storyPermalink;
+@property (nonatomic) NSNumber *storyTimestamp;
+@property (nonatomic) NSNumber *shareCount;
 
 - (instancetype)initWithStory:(NSDictionary *)storyDict;
 
