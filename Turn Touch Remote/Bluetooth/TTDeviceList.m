@@ -106,13 +106,13 @@
     
     // Counting paired devices
     for (TTDevice *device in devices) {
-        if (device.peripheral.state == CBPeripheralStateConnected &&
-            (device.state == TTDeviceStateConnected || device.state == TTDeviceStateConnecting)) {
-            [updatedConnectedDevices addObject:device];
-            device.isPaired = [self isDevicePaired:device];
-        } else {
+        if (device.peripheral.state == CBPeripheralStateDisconnected &&
+            (device.state == TTDeviceStateConnected)) {
             [device.peripheral setDelegate:nil];
             device.peripheral = nil;
+//            device.isPaired = [self isDevicePaired:device];
+        } else {
+            [updatedConnectedDevices addObject:device];
         }
     }
 

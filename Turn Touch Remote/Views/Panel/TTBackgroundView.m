@@ -165,13 +165,12 @@
     
     [self addArrowAndTitleConstraints];
     
-    dfuConstraint = [NSLayoutConstraint constraintWithItem:deviceTitlesView
+    deviceTitlesConstraint = [NSLayoutConstraint constraintWithItem:deviceTitlesView
                                                  attribute:NSLayoutAttributeHeight
                                                  relatedBy:NSLayoutRelationEqual
                                                     toItem:nil
-                                                 attribute:0 multiplier:1.0 constant:0];
-    [self addConstraint:dfuConstraint];
-    if (showingDFU) [self toggleDfuList];
+                                                 attribute:0 multiplier:1.0 constant:appDelegate.bluetoothMonitor.pairedDevicesCount.intValue*40];
+    [self addConstraint:deviceTitlesConstraint];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:deviceTitlesView
                                                      attribute:NSLayoutAttributeWidth
                                                      relatedBy:NSLayoutRelationEqual
@@ -257,6 +256,8 @@
                              options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"tempModeName"
                              options:0 context:nil];
+    [appDelegate.bluetoothMonitor addObserver:self forKeyPath:@"pairedDevicesCount"
+                                      options:0 context:nil];
     [appDelegate.bluetoothMonitor addObserver:self
                                    forKeyPath:@"nicknamedConnectedCount"
                                       options:0 context:nil];
@@ -279,8 +280,8 @@
         [self toggleAddActionMenuFrame];
         [self toggleAddActionButtonView];
         [self adjustBatchActionsHeight:NO];
-    } else if ([keyPath isEqual:NSStringFromSelector(@selector(nicknamedConnectedCount))]) {
-        [self toggleDfuList];
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(pairedDevicesCount))]) {
+        [self adjustDeviceTitles];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(tempModeName))]) {
         [self adjustBatchActionsHeight:YES];
     }
@@ -384,15 +385,9 @@
     }
 }
 
-- (void)toggleDfuList {
+- (void)adjustDeviceTitles {
     NSTimeInterval openDuration = OPEN_DURATION;
-    NSArray *devices = [appDelegate.bluetoothMonitor.foundDevices nicknamedConnected];
-    BOOL anyExpired = NO;
-    for (TTDevice *device in devices) {
-        if (device.isFirmwareOld) {
-            anyExpired = YES;
-        }
-    }
+    NSArray *devices = appDelegate.bluetoothMonitor.foundDevices.devices;
     
     NSEvent *currentEvent = [NSApp currentEvent];
     NSUInteger clearFlags = ([currentEvent modifierFlags] & NSDeviceIndependentModifierFlagsMask);
@@ -403,13 +398,7 @@
     [[NSAnimationContext currentContext] setDuration:openDuration];
     [[NSAnimationContext currentContext] setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
     
-    if (anyExpired) {
-        showingDFU = YES;
-        [[dfuConstraint animator] setConstant:40*[devices count] + 1];
-    } else {
-        showingDFU = NO;
-        [[dfuConstraint animator] setConstant:0];
-    }
+    [[deviceTitlesConstraint animator] setConstant:40*[devices count] + 1];
     
     [NSAnimationContext endGrouping];
 }
@@ -490,6 +479,7 @@
         modalPairingInfo = [[TTModalPairingInfo alloc] initWithPairing:modalPairing];
         [self setViews:@[arrowView,
                          titleBarView,
+                         deviceTitlesView,
                          modalPairingInfo,
                          modalBarButton]
              inGravity:NSStackViewGravityTop];
@@ -497,6 +487,7 @@
         modalPairingScanningView = [[TTModalPairingScanningView alloc] init];
         [self setViews:@[arrowView,
                          titleBarView,
+                         deviceTitlesView,
                          modalPairingScanningView.view,
                          modalBarButton]
              inGravity:NSStackViewGravityTop];
@@ -520,6 +511,7 @@
         
         [self setViews:@[arrowView,
                          titleBarView,
+                         deviceTitlesView,
                          modalFTUXView.view,
                          modalBarButton]
              inGravity:NSStackViewGravityTop];
@@ -544,6 +536,7 @@
     modalAbout = [[TTModalAbout alloc] init];
     [self setViews:@[arrowView,
                      titleBarView,
+                     deviceTitlesView,
                      modalAbout.view,
                      footerView]
          inGravity:NSStackViewGravityTop];
@@ -557,6 +550,7 @@
     modalDevices = [[TTModalDevices alloc] init];
     [self setViews:@[arrowView,
                      titleBarView,
+                     deviceTitlesView,
                      modalDevices.view,
                      footerView]
          inGravity:NSStackViewGravityTop];
@@ -572,6 +566,7 @@
 
     [self setViews:@[arrowView,
                      titleBarView,
+                     deviceTitlesView,
                      modalSupportView.view,
                      modalBarButton,
                      ]

@@ -56,14 +56,13 @@
     NSLayoutConstraint *actionMenuConstraint;
     NSLayoutConstraint *addActionMenuConstraint;
     NSLayoutConstraint *optionsConstraint;
-    NSLayoutConstraint *dfuConstraint;
+    NSLayoutConstraint *deviceTitlesConstraint;
     NSLayoutConstraint *addActionButtonConstraint;
     NSLayoutConstraint *batchActionsConstraint;
     TTPanelModal panelModal;
     TTModalPairing modalPairing;
     TTModalFTUX modalFTUX;
     TTModalSupport modalSupport;
-    BOOL showingDFU;
 }
 
 @property (nonatomic) IBOutlet TTPanelArrowView *arrowView;

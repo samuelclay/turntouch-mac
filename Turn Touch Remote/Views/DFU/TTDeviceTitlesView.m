@@ -75,10 +75,10 @@
                          change:(NSDictionary*)change
                         context:(void*)context {
     if ([keyPath isEqual:NSStringFromSelector(@selector(nicknamedConnectedCount))]) {
-        [self drawStackView];
+        [self assembleDeviceTitles];
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(pairedDevicesCount))]) {
-        [self drawStackView];
+        [self assembleDeviceTitles];
         [self setNeedsDisplay:YES];
     }
 }
@@ -98,13 +98,30 @@
 }
 
 - (void)drawBackground {
-    [NSColorFromRGB(0xFFFFFF) set];
-    NSRectFill(self.bounds);
+//    [NSColorFromRGB(0xFFFFFF) set];
+//    NSRectFill(self.bounds);
+    NSRect contentRect = NSInsetRect([self bounds], 0, 0);
+    
+    NSGradient* aGradient = [[NSGradient alloc]
+                             initWithStartingColor:[NSColor whiteColor]
+                             endingColor:NSColorFromRGB(0xE7E7E7)];
+    [aGradient drawInRect:self.bounds angle:-90];
+//    [aGradient drawInBezierPath:path angle:-90];
+    
+    
+    NSBezierPath *line = [NSBezierPath bezierPath];
+    [line moveToPoint:NSMakePoint(NSMinX([self bounds]), NSMinY([self bounds]))];
+    [line lineToPoint:NSMakePoint(NSMaxX([self bounds]), NSMinY([self bounds]))];
+    [line moveToPoint:NSMakePoint(NSMinX([self bounds]), NSMaxY([self bounds]))];
+    [line lineToPoint:NSMakePoint(NSMaxX([self bounds]), NSMaxY([self bounds]))];
+    [line setLineWidth:1.0];
+    [NSColorFromRGB(0xC2CBCE) set];
+    [line stroke];
 }
 
-- (void)drawStackView {
+- (void)assembleDeviceTitles {
     NSMutableArray *dfuDeviceViews = [NSMutableArray array];
-    NSArray *devices = appDelegate.bluetoothMonitor.foundDevices.nicknamedConnected;
+    NSArray *devices = appDelegate.bluetoothMonitor.foundDevices.devices;
     [self removeConstraints:[self constraints]];
 
     for (TTDevice *device in devices) {
@@ -146,8 +163,8 @@
     
     for (NSView *deviceView in self.views) {
         if (deviceView == border) continue;
-        if (((TTDFUDeviceView *)deviceView).device != device) {
-            [(TTDFUDeviceView *)deviceView disableUpgrade];
+        if (((TTDeviceTitleView *)deviceView).device != device) {
+            [(TTDeviceTitleView *)deviceView disableUpgrade];
         }
     }
 
@@ -363,7 +380,7 @@
 - (TTDeviceTitleView *)deviceInDFU {
     for (NSView *deviceView in self.views) {
         if (deviceView == border) continue;
-        if (((TTDFUDeviceView *)deviceView).device.inDFU) return (TTDFUDeviceView *)deviceView;
+        if (((TTDeviceTitleView *)deviceView).device.inDFU) return (TTDeviceTitleView *)deviceView;
     }
     
     return nil;
@@ -401,7 +418,7 @@
 - (void)returnBluetoothManager {
     for (NSView *deviceView in self.views) {
         if (deviceView == border) continue;
-        [(TTDFUDeviceView *)deviceView enableUpgrade];
+        [(TTDeviceTitleView *)deviceView enableUpgrade];
     }
 
     NSLog(@" ---> Returning Bluetooth Monitor");

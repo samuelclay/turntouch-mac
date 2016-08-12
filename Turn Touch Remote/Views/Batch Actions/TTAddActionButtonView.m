@@ -79,6 +79,7 @@
 }
 
 - (void)drawAddButton {
+    // 8px to compensate for footer
     NSRect buttonFrame = NSMakeRect(NSWidth(self.frame)/2 - ADD_BUTTON_WIDTH/2,
                                     (NSHeight(self.frame)/2) - (24.f/2) - (8.f/2),
                                     ADD_BUTTON_WIDTH, 24.f);
