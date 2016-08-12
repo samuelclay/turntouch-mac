@@ -16,6 +16,15 @@
     self.translatesAutoresizingMaskIntoConstraints = NO;
 }
 
+- (instancetype)initWithFrame:(NSRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        spinnerBeginTime = CACurrentMediaTime();
+        self.translatesAutoresizingMaskIntoConstraints = NO;
+    }
+    return self;
+}
+
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     

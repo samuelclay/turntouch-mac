@@ -345,6 +345,7 @@
 		FFBD46F81D5A8C2700838AAC /* TTModeNewsNewsBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBD46F71D5A8C2700838AAC /* TTModeNewsNewsBlur.m */; };
 		FFBD46FB1D5A8F3200838AAC /* TTNewsBlurStory.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBD46FA1D5A8F3200838AAC /* TTNewsBlurStory.m */; };
 		FFBD46FE1D5AB5E100838AAC /* TTNewsBlurUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBD46FD1D5AB5E100838AAC /* TTNewsBlurUtilities.m */; };
+		FFBD47001D5BD9E300838AAC /* styles in Resources */ = {isa = PBXBuildFile; fileRef = FFBD46FF1D5BD9E300838AAC /* styles */; };
 		FFC730E51B0673E9003538D5 /* TTModeHueRandomOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFC730E41B0673E9003538D5 /* TTModeHueRandomOptions.xib */; };
 		FFC730E81B067434003538D5 /* TTModeHueRandomOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC730E71B067434003538D5 /* TTModeHueRandomOptions.m */; };
 		FFD62CCE194F935D0093004D /* TTSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD62CCD194F935D0093004D /* TTSegmentedCell.m */; };
@@ -933,6 +934,7 @@
 		FFBD46FA1D5A8F3200838AAC /* TTNewsBlurStory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTNewsBlurStory.m; path = Modes/News/TTNewsBlurStory.m; sourceTree = "<group>"; };
 		FFBD46FC1D5AB5E100838AAC /* TTNewsBlurUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTNewsBlurUtilities.h; path = Modes/News/TTNewsBlurUtilities.h; sourceTree = "<group>"; };
 		FFBD46FD1D5AB5E100838AAC /* TTNewsBlurUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTNewsBlurUtilities.m; path = Modes/News/TTNewsBlurUtilities.m; sourceTree = "<group>"; };
+		FFBD46FF1D5BD9E300838AAC /* styles */ = {isa = PBXFileReference; lastKnownFileType = folder; name = styles; path = Resources/styles; sourceTree = "<group>"; };
 		FFC730E41B0673E9003538D5 /* TTModeHueRandomOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTModeHueRandomOptions.xib; sourceTree = "<group>"; };
 		FFC730E61B067434003538D5 /* TTModeHueRandomOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeHueRandomOptions.h; sourceTree = "<group>"; };
 		FFC730E71B067434003538D5 /* TTModeHueRandomOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeHueRandomOptions.m; sourceTree = "<group>"; };
@@ -1666,6 +1668,7 @@
 			children = (
 				FF8C834B17AB14B5000166FC /* MainMenu.xib */,
 				FF01CA281C46009E00F83A73 /* scripts */,
+				FFBD46FF1D5BD9E300838AAC /* styles */,
 				FF936038196DF0B600675B7B /* fonts */,
 				FF9170941AF9B19100FAAC88 /* sounds */,
 				FF98A2E91867DC320032CC7A /* main.m */,
@@ -2286,6 +2289,7 @@
 				FF01CA7D1C46DCC200F83A73 /* newspaper-3.png in Resources */,
 				FF01CA831C46DCC200F83A73 /* sun.png in Resources */,
 				FF61355A1C61CDDC00F431D7 /* music_ff.png in Resources */,
+				FFBD47001D5BD9E300838AAC /* styles in Resources */,
 				FF8D1AB51C9A4050006AA1A2 /* modal_success.png in Resources */,
 				FF01CA821C46DCC200F83A73 /* speaker.png in Resources */,
 				FF557AEA1C4F1CD0005FB7FD /* TTModeNestSetTempOptions.xib in Resources */,

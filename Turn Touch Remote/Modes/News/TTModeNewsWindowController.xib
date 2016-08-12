@@ -30,13 +30,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="1391" height="489"/>
                         <subviews>
                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="64" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vsn-Ye-R2p">
-                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="489"/>
+                                <rect key="frame" x="-1000" y="0.0" width="0.0" height="489"/>
                             </stackView>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="height" constant="489" id="d2J-2I-xMk"/>
                             <constraint firstItem="Vsn-Ye-R2p" firstAttribute="top" secondItem="N3r-oR-wwj" secondAttribute="top" id="h8J-kw-fib"/>
-                            <constraint firstItem="Vsn-Ye-R2p" firstAttribute="leading" secondItem="N3r-oR-wwj" secondAttribute="leading" id="ivQ-sf-PY8"/>
+                            <constraint firstItem="Vsn-Ye-R2p" firstAttribute="leading" secondItem="N3r-oR-wwj" secondAttribute="leading" constant="-1000" id="ivQ-sf-PY8"/>
                             <constraint firstAttribute="bottom" secondItem="Vsn-Ye-R2p" secondAttribute="bottom" id="jWt-K9-nDI"/>
                         </constraints>
                         <connections>

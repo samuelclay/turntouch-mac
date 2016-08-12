@@ -51,7 +51,17 @@
     [storyView showLoadingView];
 
     NSScreen *mainScreen = [[NSScreen screens] objectAtIndex:0];
-    stackOffsetConstraint.constant = NSWidth(mainScreen.frame)/2 - currentStoryIndex*(storyWidth+64) - storyWidth/2;
+
+    [NSAnimationContext beginGrouping];
+    [[NSAnimationContext currentContext] setDuration:1];
+    
+    [[NSAnimationContext currentContext]
+     setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+    
+    CGFloat offset = NSWidth(mainScreen.frame)/2 - currentStoryIndex*(storyWidth+64) - storyWidth/2;
+    [stackOffsetConstraint animator].constant = offset;
+    
+    [NSAnimationContext endGrouping];
 }
 
 - (void)addStories:(NSArray *)stories {
@@ -78,8 +88,8 @@
         [storyView loadStory];
     }
     
-    NSScreen *mainScreen = [[NSScreen screens] objectAtIndex:0];
-    stackOffsetConstraint.constant = NSWidth(mainScreen.frame)/2 - currentStoryIndex*(storyWidth+64) - storyWidth/2;
+//    NSScreen *mainScreen = [[NSScreen screens] objectAtIndex:0];
+//    stackOffsetConstraint.constant = NSWidth(mainScreen.frame)/2 - currentStoryIndex*(storyWidth+64) - storyWidth/2;
     
     TTModeNewsStoryView *activeStory = [storyViews objectAtIndex:currentStoryIndex];
     [activeStory focusStory];
@@ -89,6 +99,7 @@
 
 - (void)nextStory {
     currentStoryIndex += 1;
+    
     NSScreen *mainScreen = [[NSScreen screens] objectAtIndex:0];
     CGFloat openDuration = 0.65f;
     
@@ -98,8 +109,9 @@
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
     
-    [stackOffsetConstraint animator].constant = NSWidth(mainScreen.frame)/2 - currentStoryIndex*(storyWidth+64) - storyWidth/2;
-    
+    CGFloat offset = NSWidth(mainScreen.frame)/2 - currentStoryIndex*(storyWidth+64) - storyWidth/2;
+    [stackOffsetConstraint animator].constant = offset;
+
     [NSAnimationContext endGrouping];
     
     if (currentStoryIndex > 0 && storyViews.count > 1) {

@@ -139,16 +139,16 @@
     
     NSString *riverClass = @"NB-river";
     
-    // set up layout values based on iPad/iPhone
+    NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
     headerString = [NSString stringWithFormat:@
-                    "<link rel=\"stylesheet\" type=\"text/css\" href=\"storyDetailView.css\">"
+                    "<link rel=\"stylesheet\" type=\"text/css\" href=\"%@/styles/storyDetailView.css\">"
                     "<meta name=\"viewport\" id=\"viewport\" content=\"width=%d, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no\"/>",
-                    contentWidth];
+                    resourcePath, contentWidth];
     footerString = [NSString stringWithFormat:@
-                    "<script src=\"zepto.js\"></script>"
-                    "<script src=\"fitvid.js\"></script>"
-                    "<script src=\"storyDetailView.js\"></script>"
-                    "<script src=\"fastTouch.js\"></script>"];
+                    "<script src=\"%@/scripts/zepto.js\"></script>"
+                    "<script src=\"%@/scripts/fitvid.js\"></script>"
+                    "<script src=\"%@/scripts/storyDetailView.js\"></script>"
+                    "<script src=\"%@/scripts/fastTouch.js\"></script>", resourcePath, resourcePath, resourcePath, resourcePath];
     
     NSString *storyHeader = [self getHeader];
     
@@ -234,7 +234,7 @@
 #pragma mark Story layout
 
 - (NSString *)getHeader {
-    NSString *feedId = [NSString stringWithFormat:@"%@", story.feedId];
+//    NSString *feedId = [NSString stringWithFormat:@"%@", story.feedId];
     NSString *storyAuthor = @"";
     if ([story.storyAuthor length]) {
         NSString *author = [NSString stringWithFormat:@"%@",
