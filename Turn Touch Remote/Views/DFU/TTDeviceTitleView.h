@@ -10,7 +10,7 @@
 #import "TTAppDelegate.h"
 #import "TTChangeButtonView.h"
 
-@interface TTDFUDeviceView : NSView {
+@interface TTDeviceTitleView : NSView {
     TTAppDelegate *appDelegate;
 
     NSDictionary *titleAttributes;

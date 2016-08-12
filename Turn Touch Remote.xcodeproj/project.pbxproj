@@ -281,8 +281,8 @@
 		FF904B9A1BE9BA3700AD00F3 /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B951BE9BA3700AD00F3 /* SSZipArchive.m */; };
 		FF904B9C1BE9BFEC00AD00F3 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FF904B9B1BE9BFEC00AD00F3 /* libz.tbd */; };
 		FF904B9E1BE9C02300AD00F3 /* firmwares in Resources */ = {isa = PBXBuildFile; fileRef = FF904B9D1BE9C02300AD00F3 /* firmwares */; };
-		FF904BA71BEBFCDE00AD00F3 /* TTDFUDeviceView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904BA61BEBFCDE00AD00F3 /* TTDFUDeviceView.m */; };
-		FF904BAD1BEBFD1400AD00F3 /* TTDFUView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904BAA1BEBFD1400AD00F3 /* TTDFUView.m */; };
+		FF904BA71BEBFCDE00AD00F3 /* TTDeviceTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904BA61BEBFCDE00AD00F3 /* TTDeviceTitleView.m */; };
+		FF904BAD1BEBFD1400AD00F3 /* TTDeviceTitlesView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904BAA1BEBFD1400AD00F3 /* TTDeviceTitlesView.m */; };
 		FF913D271924366C005C336F /* TTModeAlarmClock.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF913D261924366C005C336F /* TTModeAlarmClock.plist */; };
 		FF913D2919243B89005C336F /* TTModeAlarmSnoozeOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF913D2819243B89005C336F /* TTModeAlarmSnoozeOptions.xib */; };
 		FF913D2C19243BFD005C336F /* TTModeAlarmSnoozeOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF913D2B19243BFD005C336F /* TTModeAlarmSnoozeOptions.m */; };
@@ -817,10 +817,10 @@
 		FF904B951BE9BA3700AD00F3 /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
 		FF904B9B1BE9BFEC00AD00F3 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		FF904B9D1BE9C02300AD00F3 /* firmwares */ = {isa = PBXFileReference; lastKnownFileType = folder; path = firmwares; sourceTree = "<group>"; };
-		FF904BA51BEBFCDE00AD00F3 /* TTDFUDeviceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTDFUDeviceView.h; path = "Turn Touch Remote/Views/DFU/TTDFUDeviceView.h"; sourceTree = SOURCE_ROOT; };
-		FF904BA61BEBFCDE00AD00F3 /* TTDFUDeviceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTDFUDeviceView.m; path = "Turn Touch Remote/Views/DFU/TTDFUDeviceView.m"; sourceTree = SOURCE_ROOT; };
-		FF904BA91BEBFD1400AD00F3 /* TTDFUView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTDFUView.h; path = "Turn Touch Remote/Views/DFU/TTDFUView.h"; sourceTree = SOURCE_ROOT; };
-		FF904BAA1BEBFD1400AD00F3 /* TTDFUView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTDFUView.m; path = "Turn Touch Remote/Views/DFU/TTDFUView.m"; sourceTree = SOURCE_ROOT; };
+		FF904BA51BEBFCDE00AD00F3 /* TTDeviceTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTDeviceTitleView.h; path = "Turn Touch Remote/Views/DFU/TTDeviceTitleView.h"; sourceTree = SOURCE_ROOT; };
+		FF904BA61BEBFCDE00AD00F3 /* TTDeviceTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTDeviceTitleView.m; path = "Turn Touch Remote/Views/DFU/TTDeviceTitleView.m"; sourceTree = SOURCE_ROOT; };
+		FF904BA91BEBFD1400AD00F3 /* TTDeviceTitlesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTDeviceTitlesView.h; path = "Turn Touch Remote/Views/DFU/TTDeviceTitlesView.h"; sourceTree = SOURCE_ROOT; };
+		FF904BAA1BEBFD1400AD00F3 /* TTDeviceTitlesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTDeviceTitlesView.m; path = "Turn Touch Remote/Views/DFU/TTDeviceTitlesView.m"; sourceTree = SOURCE_ROOT; };
 		FF913D261924366C005C336F /* TTModeAlarmClock.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = TTModeAlarmClock.plist; path = Modes/Mac/TTModeAlarmClock.plist; sourceTree = "<group>"; };
 		FF913D2819243B89005C336F /* TTModeAlarmSnoozeOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeAlarmSnoozeOptions.xib; path = "Modes/Alarm Clock/TTModeAlarmSnoozeOptions.xib"; sourceTree = "<group>"; };
 		FF913D2A19243BFD005C336F /* TTModeAlarmSnoozeOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeAlarmSnoozeOptions.h; path = "Modes/Alarm Clock/TTModeAlarmSnoozeOptions.h"; sourceTree = "<group>"; };
@@ -1807,10 +1807,10 @@
 		FF904BA81BEBFCE700AD00F3 /* DFU */ = {
 			isa = PBXGroup;
 			children = (
-				FF904BA91BEBFD1400AD00F3 /* TTDFUView.h */,
-				FF904BAA1BEBFD1400AD00F3 /* TTDFUView.m */,
-				FF904BA51BEBFCDE00AD00F3 /* TTDFUDeviceView.h */,
-				FF904BA61BEBFCDE00AD00F3 /* TTDFUDeviceView.m */,
+				FF904BA91BEBFD1400AD00F3 /* TTDeviceTitlesView.h */,
+				FF904BAA1BEBFD1400AD00F3 /* TTDeviceTitlesView.m */,
+				FF904BA51BEBFCDE00AD00F3 /* TTDeviceTitleView.h */,
+				FF904BA61BEBFCDE00AD00F3 /* TTDeviceTitleView.m */,
 			);
 			path = DFU;
 			sourceTree = "<group>";
@@ -2390,12 +2390,12 @@
 				FF1F135D1ADC90E700B52A0D /* MLCalendarBackground.m in Sources */,
 				FF1F135F1ADC90E700B52A0D /* MLCalendarView.m in Sources */,
 				FF8D1AB21C9902F8006AA1A2 /* TTModalSupportView.m in Sources */,
-				FF904BA71BEBFCDE00AD00F3 /* TTDFUDeviceView.m in Sources */,
+				FF904BA71BEBFCDE00AD00F3 /* TTDeviceTitleView.m in Sources */,
 				FFBD46F81D5A8C2700838AAC /* TTModeNewsNewsBlur.m in Sources */,
 				FF904B781BE9B88700AD00F3 /* DFUOperations.m in Sources */,
 				FFD62CD11950EE770093004D /* TTSegmentedControl.m in Sources */,
 				FFE2D47E1A51EDF000DDD413 /* TTModeHue.m in Sources */,
-				FF904BAD1BEBFD1400AD00F3 /* TTDFUView.m in Sources */,
+				FF904BAD1BEBFD1400AD00F3 /* TTDeviceTitlesView.m in Sources */,
 				FF6792381CEBE11200639148 /* TTModeSpotify.m in Sources */,
 				FF904B4D1BE9B82200AD00F3 /* TTButtonState.m in Sources */,
 				FF87E9F61C96328800682461 /* TTPairingSpinner.m in Sources */,

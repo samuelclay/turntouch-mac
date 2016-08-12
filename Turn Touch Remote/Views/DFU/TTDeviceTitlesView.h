@@ -12,7 +12,7 @@
 #import "TTDevice.h"
 #import "TTBorder.h"
 
-@interface TTDFUView : NSStackView <NSStackViewDelegate, DFUOperationsDelegate> {
+@interface TTDeviceTitlesView : NSStackView <NSStackViewDelegate, DFUOperationsDelegate> {
     TTAppDelegate *appDelegate;
     TTBorder *border;
     TTDevice *currentDevice;

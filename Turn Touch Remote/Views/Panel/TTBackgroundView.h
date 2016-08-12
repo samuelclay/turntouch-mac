@@ -16,7 +16,7 @@
 #import "TTOptionsView.h"
 #import "TTTitleBarView.h"
 #import "TTOptionsDetailViewController.h"
-#import "TTDFUView.h"
+#import "TTDeviceTitlesView.h"
 #import "TTAddActionButtonView.h"
 #import "TTFooterView.h"
 #import "TTBatchActionStackView.h"
@@ -39,7 +39,7 @@
 @class TTOptionsView;
 @class TTTitleBarView;
 @class TTOptionsDetailViewController;
-@class TTDFUView;
+@class TTDeviceTitlesView;
 @class TTAddActionButtonView;
 @class TTBatchActionStackView;
 @class TTModalPairingInfo;
@@ -75,7 +75,7 @@
 @property (nonatomic) IBOutlet TTModeTitleView *modeTitle;
 @property (nonatomic) IBOutlet TTDiamondLabels *diamondLabels;
 @property (nonatomic) IBOutlet TTOptionsView *optionsView;
-@property (nonatomic) IBOutlet TTDFUView *dfuView;
+@property (nonatomic) IBOutlet TTDeviceTitlesView *deviceTitlesView;
 @property (nonatomic) IBOutlet TTAddActionButtonView *addActionButtonView;
 @property (nonatomic) IBOutlet TTFooterView *footerView;
 @property (nonatomic) IBOutlet TTBatchActionStackView *batchActionStackView;

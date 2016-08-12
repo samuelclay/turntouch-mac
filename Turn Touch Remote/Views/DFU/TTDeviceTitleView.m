@@ -1,14 +1,14 @@
 //
-//  TTDFUDeviceView.m
+//  TTDeviceTitleView.m
 //  Turn Touch Remote
 //
 //  Created by Samuel Clay on 11/5/15.
 //  Copyright © 2015 Turn Touch. All rights reserved.
 //
 
-#import "TTDFUDeviceView.h"
+#import "TTDeviceTitleView.h"
 
-@implementation TTDFUDeviceView
+@implementation TTDeviceTitleView
 
 @synthesize device;
 @synthesize progress;
@@ -103,7 +103,7 @@
     [changeButton setHidden:YES];
     [progress setIndeterminate:YES];
     [progress startAnimation:nil];
-    [appDelegate.panelController.backgroundView.dfuView performDFU:device];
+    [appDelegate.panelController.backgroundView.deviceTitlesView performDFU:device];
 }
 
 - (NSString *)updateButtonTitle {

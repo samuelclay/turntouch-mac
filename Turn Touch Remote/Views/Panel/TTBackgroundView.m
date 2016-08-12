@@ -37,7 +37,7 @@
 @synthesize diamondLabels;
 @synthesize optionsView;
 @synthesize optionsConstraint;
-@synthesize dfuView;
+@synthesize deviceTitlesView;
 @synthesize batchActionStackView;
 @synthesize addActionButtonView;
 @synthesize footerView;
@@ -67,7 +67,7 @@
 
         arrowView = [[TTPanelArrowView alloc] init];
         titleBarView = [[TTTitleBarView alloc] init];
-        dfuView = [[TTDFUView alloc] init];
+        deviceTitlesView = [[TTDeviceTitlesView alloc] init];
         modeTabs = [[TTModeTabsContainer alloc] init];
         modeTitle = [[TTModeTitleView alloc] init];
         modeMenu = [[TTModeMenuContainer alloc] initWithType:MODE_MENU_TYPE];
@@ -151,7 +151,7 @@
     
     [self setViews:@[arrowView,
                      titleBarView,
-                     dfuView,
+                     deviceTitlesView,
                      modeTabs,
                      modeTitle,
                      modeMenu,
@@ -165,14 +165,14 @@
     
     [self addArrowAndTitleConstraints];
     
-    dfuConstraint = [NSLayoutConstraint constraintWithItem:dfuView
+    dfuConstraint = [NSLayoutConstraint constraintWithItem:deviceTitlesView
                                                  attribute:NSLayoutAttributeHeight
                                                  relatedBy:NSLayoutRelationEqual
                                                     toItem:nil
                                                  attribute:0 multiplier:1.0 constant:0];
     [self addConstraint:dfuConstraint];
     if (showingDFU) [self toggleDfuList];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:dfuView
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:deviceTitlesView
                                                      attribute:NSLayoutAttributeWidth
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:self

@@ -6,14 +6,14 @@
 //  Copyright © 2015 Turn Touch. All rights reserved.
 //
 
-#import "TTDFUView.h"
-#import "TTDFUDeviceView.h"
+#import "TTDeviceTitlesView.h"
+#import "TTDeviceTitleView.h"
 #import "SSZipArchive.h"
 #import "UnzipFirmware.h"
 #import "DFUHelper.h"
 #include "DFUHelper.h"
 
-@interface TTDFUView ()
+@interface TTDeviceTitlesView ()
 
 /*!
  * This property is set when the device has been selected on the Scanner View Controller.
@@ -30,7 +30,7 @@
 @property BOOL isNotifying;
 @end
 
-@implementation TTDFUView
+@implementation TTDeviceTitlesView
 
 @synthesize selectedPeripheral;
 @synthesize dfuOperations;
@@ -108,7 +108,7 @@
     [self removeConstraints:[self constraints]];
 
     for (TTDevice *device in devices) {
-        TTDFUDeviceView *deviceView = [[TTDFUDeviceView alloc] initWithDevice:device];
+        TTDeviceTitleView *deviceView = [[TTDeviceTitleView alloc] initWithDevice:device];
         [dfuDeviceViews addObject:deviceView];
     }
     
@@ -298,7 +298,7 @@
 -(void)onDFUStarted {
     NSLog(@"onDFUStarted");
     self.isTransferring = YES;
-    TTDFUDeviceView *dfuDeviceView = [self deviceInDFU];
+    TTDeviceTitleView *dfuDeviceView = [self deviceInDFU];
     dispatch_async(dispatch_get_main_queue(), ^{
         [dfuDeviceView.progress setIndeterminate:NO];
         [dfuDeviceView.progress startAnimation:nil];
@@ -351,7 +351,7 @@
 -(void)onTransferPercentage:(int)percentage {
     NSLog(@"onTransferPercentage %d",percentage);
     
-    TTDFUDeviceView *dfuDeviceView = [self deviceInDFU];
+    TTDeviceTitleView *dfuDeviceView = [self deviceInDFU];
     // Scanner uses other queue to send events. We must edit UI in the main queue
     dispatch_async(dispatch_get_main_queue(), ^{
         [dfuDeviceView.progress setIndeterminate:NO];
@@ -360,7 +360,7 @@
     });
 }
 
-- (TTDFUDeviceView *)deviceInDFU {
+- (TTDeviceTitleView *)deviceInDFU {
     for (NSView *deviceView in self.views) {
         if (deviceView == border) continue;
         if (((TTDFUDeviceView *)deviceView).device.inDFU) return (TTDFUDeviceView *)deviceView;
