@@ -92,7 +92,7 @@
         } else if ([tableColumn.identifier isEqualToString:@"batteryLevel"]) {
             result.stringValue = device.batteryPct ? [NSString stringWithFormat:@"%@%%", device.batteryPct] : @"";
         } else if ([tableColumn.identifier isEqualToString:@"firmwareVersion"]) {
-            result.stringValue = [NSString stringWithFormat:@"v%d", device.firmwareVersion];
+            result.stringValue = [NSString stringWithFormat:@"v%ld", (long)device.firmwareVersion];
         } else if ([tableColumn.identifier isEqualToString:@"lastAction"]) {
             result.stringValue = @"Pairing...";
         }
@@ -116,7 +116,7 @@
         } else if ([tableColumn.identifier isEqualToString:@"batteryLevel"]) {
             result.stringValue = [NSString stringWithFormat:@"%@%%", device.batteryPct];
         } else if ([tableColumn.identifier isEqualToString:@"firmwareVersion"]) {
-            result.stringValue = [NSString stringWithFormat:@"v%d", device.firmwareVersion];
+            result.stringValue = [NSString stringWithFormat:@"v%ld", (long)device.firmwareVersion];
         } else if ([tableColumn.identifier isEqualToString:@"lastAction"]) {
             result.stringValue = [device.lastActionDate timeAgo];
         }

@@ -293,7 +293,6 @@
 		FF93604C196DF0B600675B7B /* Effra_Rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF936042196DF0B600675B7B /* Effra_Rg.ttf */; };
 		FF936057196DF1A500675B7B /* Effra_Rg.ttf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = FF936042196DF0B600675B7B /* Effra_Rg.ttf */; };
 		FF97E46B1D594B3700141BFB /* TTModeNewsStoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF97E46A1D594B3700141BFB /* TTModeNewsStoryView.m */; };
-		FF97E46E1D5951D400141BFB /* TTModeNewsStory.m in Sources */ = {isa = PBXBuildFile; fileRef = FF97E46D1D5951D400141BFB /* TTModeNewsStory.m */; };
 		FF981FCB191AB46600A4A94B /* TTModeMenuBordersView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF981FCA191AB46600A4A94B /* TTModeMenuBordersView.m */; };
 		FF98A2E11867DBA40032CC7A /* TTActionMap.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98A2E01867DBA40032CC7A /* TTActionMap.m */; };
 		FF98A2E71867DBE70032CC7A /* TTMenubarController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98A2E31867DBE70032CC7A /* TTMenubarController.m */; };
@@ -832,8 +831,6 @@
 		FF936042196DF0B600675B7B /* Effra_Rg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Effra_Rg.ttf; sourceTree = "<group>"; };
 		FF97E4691D594B3700141BFB /* TTModeNewsStoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeNewsStoryView.h; path = Modes/News/TTModeNewsStoryView.h; sourceTree = "<group>"; };
 		FF97E46A1D594B3700141BFB /* TTModeNewsStoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeNewsStoryView.m; path = Modes/News/TTModeNewsStoryView.m; sourceTree = "<group>"; };
-		FF97E46C1D5951D400141BFB /* TTModeNewsStory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeNewsStory.h; path = Modes/News/TTModeNewsStory.h; sourceTree = "<group>"; };
-		FF97E46D1D5951D400141BFB /* TTModeNewsStory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeNewsStory.m; path = Modes/News/TTModeNewsStory.m; sourceTree = "<group>"; };
 		FF981FC9191AB46600A4A94B /* TTModeMenuBordersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeMenuBordersView.h; sourceTree = "<group>"; };
 		FF981FCA191AB46600A4A94B /* TTModeMenuBordersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeMenuBordersView.m; sourceTree = "<group>"; };
 		FF981FDC191AFBEF00A4A94B /* TTModeDirection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TTModeDirection.h; path = Models/TTModeDirection.h; sourceTree = "<group>"; };
@@ -1936,8 +1933,6 @@
 				FF79C58A1D5815D5006C75C9 /* TTModeNewsBrowserView.m */,
 				FF97E4691D594B3700141BFB /* TTModeNewsStoryView.h */,
 				FF97E46A1D594B3700141BFB /* TTModeNewsStoryView.m */,
-				FF97E46C1D5951D400141BFB /* TTModeNewsStory.h */,
-				FF97E46D1D5951D400141BFB /* TTModeNewsStory.m */,
 				FF79C58C1D5815ED006C75C9 /* TTModeNewsMenuView.h */,
 				FF79C58D1D5815ED006C75C9 /* TTModeNewsMenuView.m */,
 				FFBD46FC1D5AB5E100838AAC /* TTNewsBlurUtilities.h */,
@@ -2487,7 +2482,6 @@
 				FF2C2E031C52E62000FAD7E2 /* TTModeWemoMulticastServer.m in Sources */,
 				FF8528FB1A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.m in Sources */,
 				FF5295C51AD5B9A4007DDC02 /* TTTitleBarView.m in Sources */,
-				FF97E46E1D5951D400141BFB /* TTModeNewsStory.m in Sources */,
 				FF87E9FF1C97671E00682461 /* TTPageIndicatorView.m in Sources */,
 				FF557AC01C49C71A005FB7FD /* NestConstants.m in Sources */,
 				FF904B9A1BE9BA3700AD00F3 /* SSZipArchive.m in Sources */,

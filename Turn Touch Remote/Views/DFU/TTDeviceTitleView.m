@@ -164,7 +164,7 @@
         [changeButton setUseAltStyle:NO];
         [changeButton setEnabled:YES];
     } else {
-        buttonText = [NSString stringWithFormat:@"All set with v%d", device.firmwareVersion];
+        buttonText = [NSString stringWithFormat:@"All set with v%ld", (long)device.firmwareVersion];
         [changeButton setUseAltStyle:YES];
         [changeButton setEnabled:NO];
     }

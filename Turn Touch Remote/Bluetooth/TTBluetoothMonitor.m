@@ -507,13 +507,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
                                                   [CBUUID UUIDWithString:DEVICE_V1_CHARACTERISTIC_NICKNAME_UUID]]
                                      forService:service];
         }
-        
-        if ([service.UUID isEqual:[CBUUID UUIDWithString:DEVICE_V1_SERVICE_BATTERY_UUID]]) {
-            device.firmwareVersion = 1;
-            [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:DEVICE_V1_CHARACTERISTIC_BATTERY_LEVEL_UUID]]
-                                     forService:service];
-        }
-        
+                
         if ([service.UUID isEqual:[CBUUID UUIDWithString:DEVICE_V2_SERVICE_BUTTON_UUID]]) {
             [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:DEVICE_V2_CHARACTERISTIC_BUTTON_STATUS_UUID],
                                                   [CBUUID UUIDWithString:DEVICE_V2_CHARACTERISTIC_NICKNAME_UUID]]
@@ -951,7 +945,7 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
     }
     
     if (!characteristic) {
-        NSLog(@" ***> Problem! No valid nickname characteristic: v%d", device.firmwareVersion);
+        NSLog(@" ***> Problem! No valid nickname characteristic: v%ld", (long)device.firmwareVersion);
         [manager cancelPeripheralConnection:device.peripheral];
         return;
     }

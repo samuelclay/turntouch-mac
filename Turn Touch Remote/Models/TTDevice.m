@@ -21,9 +21,10 @@
         
         // Init with latest firmware version, correct later
         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-        firmwareVersion = [[prefs objectForKey:@"TT:firmware:version"] intValue];
+        firmwareVersion = [[prefs objectForKey:@"TT:firmware:version"] integerValue];
         NSString *nicknameKey = [NSString stringWithFormat:@"TT:device:%@:nickname", self.uuid];
         self.nickname = [prefs stringForKey:nicknameKey];
+        isFirmwareOld = NO;
     }
     
     return self;
@@ -60,7 +61,7 @@
     nickname = [[NSString alloc] initWithData:fixedNickname encoding:NSUTF8StringEncoding];
 }
 
-- (void)setFirmwareVersion:(int)_firmwareVersion {
+- (void)setFirmwareVersion:(NSInteger)_firmwareVersion {
     firmwareVersion = _firmwareVersion;
 
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
