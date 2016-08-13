@@ -40,6 +40,7 @@
 - (void)slideOut;
 - (void)menuUp;
 - (void)menuDown;
+- (NSString *)highlightedRowTitle;
 - (void)selectMenuItem;
 - (void)changeHighlightedRow:(NSInteger)direction;
 

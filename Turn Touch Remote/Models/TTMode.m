@@ -115,6 +115,10 @@
 
 #pragma mark - Map directions to actions
 
+- (BOOL)shouldRunDirection:(TTModeDirection)direction {
+    return YES;
+}
+
 - (void)runDirection:(TTModeDirection)direction {
     NSString *actionName = [self actionNameInDirection:direction];
     [self runAction:actionName inDirection:direction funcAction:@"run"];

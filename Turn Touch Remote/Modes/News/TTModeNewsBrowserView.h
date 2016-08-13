@@ -33,7 +33,7 @@
 - (void)scrollDown;
 - (void)zoomIn;
 - (void)zoomOut;
-- (void)widenMargin;
-- (void)narrowMargin;
+- (void)widenStory;
+- (void)narrowStory;
 
 @end

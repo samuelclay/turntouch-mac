@@ -535,9 +535,9 @@ div + p {
 }
 
 .NB-story img.NB-large-image {
-    max-width: 320px;
+    max-width: 100%;
     margin-left: -12px !important;
-    width: 320px !important;
+    width: 100% !important;
     height: auto !important;
 }
 

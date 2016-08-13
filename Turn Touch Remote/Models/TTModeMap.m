@@ -192,25 +192,33 @@
     BOOL shouldFireImmediateOnPress = [selectedMode shouldFireImmediateOnPress:activeModeDirection];
     if (shouldFireImmediateOnPress && activeModeDirection != NO_DIRECTION) {
         selectedMode.action = [[TTAction alloc] initWithActionName:[selectedMode actionNameInDirection:activeModeDirection]];
-        [selectedMode runDirection:activeModeDirection];
+        if ([selectedMode shouldRunDirection:activeModeDirection]) {
+            [selectedMode runDirection:activeModeDirection];
+        }
     }
 }
 
 - (void)runActiveButton {
     TTModeDirection direction = activeModeDirection;
     activeModeDirection = NO_DIRECTION;
+    BOOL shouldFireImmediateOnPress = [selectedMode shouldFireImmediateOnPress:direction];
     
     if (!selectedMode) return;
-
+    if (shouldFireImmediateOnPress) return; // Already fired by now, on press up
+    
     if ([selectedMode shouldIgnoreSingleBeforeDouble:direction]) {
         waitingForDoubleClick = YES;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DOUBLE_CLICK_ACTION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             if (waitingForDoubleClick) {
-                [self runDirection:direction];
+                if ([selectedMode shouldRunDirection:direction]) {
+                    [self runDirection:direction];
+                }
             }
         });
     } else {
-        [self runDirection:direction];
+        if ([selectedMode shouldRunDirection:direction]) {
+            [self runDirection:direction];
+        }
     }
     
     activeModeDirection = NO_DIRECTION;
@@ -218,14 +226,20 @@
 
 - (void)runDirection:(TTModeDirection)direction {
     BOOL shouldFireImmediateOnPress = [selectedMode shouldFireImmediateOnPress:direction];
+    BOOL shouldRunDirection = NO;
     if (!shouldFireImmediateOnPress) {
         selectedMode.action = [[TTAction alloc] initWithActionName:[selectedMode actionNameInDirection:direction]];
-        [selectedMode runDirection:direction];
+        shouldRunDirection = [selectedMode shouldRunDirection:direction];
+        if (shouldRunDirection) {
+            [selectedMode runDirection:direction];
+        }
     }
 
-    NSArray *actions = [self selectedModeBatchActions:direction];
-    for (TTAction *batchAction in actions) {
-        [batchAction.mode runDirection:direction];
+    if (shouldRunDirection) {
+        NSArray *actions = [self selectedModeBatchActions:direction];
+        for (TTAction *batchAction in actions) {
+            [batchAction.mode runDirection:direction];
+        }
     }
 }
 
@@ -237,7 +251,9 @@
     if (!selectedMode) return;
     if (shouldFireImmediateOnPress) return;
     
-    [selectedMode runDoubleDirection:direction];
+    if ([selectedMode shouldRunDirection:direction]) {
+        [selectedMode runDoubleDirection:direction];
+    }
 
     NSArray *actions = [self selectedModeBatchActions:direction];
     for (TTAction *batchAction in actions) {

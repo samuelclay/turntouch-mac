@@ -24,7 +24,9 @@
         self.translatesAutoresizingMaskIntoConstraints = NO;
 
         self.wantsLayer = YES;
-        self.layer.backgroundColor = CGColorCreateGenericRGB(0, 0, 0, 0.1);
+//        self.layer.backgroundColor = CGColorCreateGenericRGB(0, 0, 0, 0.1);
+        self.layer.backgroundColor = CGColorCreateGenericRGB(1, 1, 1, 1);
+        self.layer.opacity = 0.1;
         
         webView = [[WebView alloc] init];
         webView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -59,24 +61,25 @@
 
 - (void)blurStory {
     NSLog(@"Blurring: %@", story.storyTitle);
-    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"backgroundColor"];
-    animation.fromValue = (id)self.layer.backgroundColor;
-    animation.toValue = [CIColor colorWithRed:0 green:0 blue:0 alpha:0.1];
-    animation.duration = 0.5f;
-    [self.layer addAnimation:animation forKey:@"backgroundColor"];
-    self.layer.backgroundColor = CGColorCreateGenericRGB(0, 0, 0, 0.1);
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    animation.fromValue = [NSNumber numberWithFloat:self.layer.opacity];
+    animation.toValue = [NSNumber numberWithFloat:0.1f];
+    animation.duration = 0.3f;
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    [self.layer addAnimation:animation forKey:@"opacity"];
+    self.layer.opacity = 0.1f;
 
 }
 
 - (void)focusStory {
     NSLog(@"Focusing: %@", story.storyTitle);
-    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"backgroundColor"];
-    animation.fromValue = (id)self.layer.backgroundColor;
-    animation.toValue = [CIColor colorWithRed:1 green:1 blue:1 alpha:1];
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    animation.fromValue = [NSNumber numberWithFloat:self.layer.opacity];
+    animation.toValue = [NSNumber numberWithFloat:1.f];
     animation.duration = 0.65f;
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    [self.layer addAnimation:animation forKey:@"backgroundColor"];
-    self.layer.backgroundColor = CGColorCreateGenericRGB(1, 1, 1, 1);
+    [self.layer addAnimation:animation forKey:@"opacity"];
+    self.layer.opacity = 1.f;
 }
 
 #pragma mark - Loading URLs
@@ -118,7 +121,7 @@
     }
     
     int contentWidth = CGRectGetWidth(webView.bounds);
-    NSString *contentWidthClass = [NSString stringWithFormat:@"NB-ipad-narrow NB-width-%d",
+    NSString *contentWidthClass = [NSString stringWithFormat:@"NB-ipad-pro-narrow NB-xl NB-width-%d",
                                    (int)floorf(CGRectGetWidth(self.frame))];
     
     // Replace image urls that are locally cached, even when online
@@ -145,7 +148,7 @@
                     "<meta name=\"viewport\" id=\"viewport\" content=\"width=%d, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no\"/>",
                     resourcePath, contentWidth];
     footerString = [NSString stringWithFormat:@
-                    "<script src=\"%@/scripts/zepto.js\"></script>"
+                    "<script src=\"%@/scripts/zepto-1.1.6.js\"></script>"
                     "<script src=\"%@/scripts/fitvid.js\"></script>"
                     "<script src=\"%@/scripts/storyDetailView.js\"></script>"
                     "<script src=\"%@/scripts/fastTouch.js\"></script>", resourcePath, resourcePath, resourcePath, resourcePath];

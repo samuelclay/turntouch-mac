@@ -268,7 +268,7 @@ const CGFloat kActionHUDMarginPct = .6f;
                                       //                                      NSShadowAttributeName: stringShadow,
                                       NSParagraphStyleAttributeName: style
                                       };
-    NSString *directionLabel = [mode actionTitleForAction:actionName buttonMoment:buttonMoment];
+    NSString *directionLabel = [mode actionTitleInDirection:direction buttonMoment:buttonMoment];
     frame.size.height = frame.size.height * (0.3f) + [directionLabel sizeWithAttributes:labelAttributes].height/2;
     [backgroundView.image lockFocus];
     frame.origin = NSZeroPoint;

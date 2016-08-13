@@ -45,6 +45,7 @@
 - (void)reset;
 - (void)maybeFireActiveButton;
 - (void)runActiveButton;
+- (void)runDirection:(TTModeDirection)direction;
 - (void)runDoubleButton:(TTModeDirection)direction;
 - (BOOL)shouldHideHud:(TTModeDirection)direction;
 - (NSString *)directionName:(TTModeDirection)direction;

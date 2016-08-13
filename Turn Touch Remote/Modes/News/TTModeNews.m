@@ -58,47 +58,47 @@
 
 - (NSArray *)menuOptions {
     return @[@{@"identifier" : @"space"},
-             @{@"identifier" : @"TTModeWebMenuReturn",
+             @{@"identifier" : @"TTModeNewsMenuReturn",
                @"title"      : @"Return",
                @"icon"       : @"double_tap",
                @"group"      : @"action",
                },
              @{@"identifier" : @"space"},
-             @{@"identifier" : @"TTModeWebMenuNextStory",
+             @{@"identifier" : @"TTModeNewsNextStory",
                @"title"      : @"Next story",
                @"icon"       : @"heart",
                @"group"      : @"action",
                },
-             @{@"identifier" : @"TTModeWebMenuPreviousStory",
+             @{@"identifier" : @"TTModeNewsPreviousStory",
                @"title"      : @"Previous story",
                @"icon"       : @"cog",
                @"group"      : @"action",
                },
              @{@"identifier" : @"space"},
-             @{@"identifier" : @"TTModeWebMenuFontSizeUp",
+             @{@"identifier" : @"TTModeNewsMenuFontSizeUp",
                @"title"      : @"Larger text",
                @"icon"       : @"button_chevron",
                @"group"      : @"action",
                },
-             @{@"identifier" : @"TTModeWebMenuFontSizeDown",
+             @{@"identifier" : @"TTModeNewsMenuFontSizeDown",
                @"title"      : @"Smaller text",
                @"icon"       : @"button_dash",
                @"group"      : @"action",
                },
              @{@"identifier" : @"space"},
-             @{@"identifier" : @"TTModeWebMenuMarginWider",
-               @"title"      : @"Widen margin",
+             @{@"identifier" : @"TTModeNewsMenuWider",
+               @"title"      : @"Widen story",
                @"icon"       : @"arrow",
                @"group"      : @"action",
                },
-             @{@"identifier" : @"TTModeWebMenuMarginNarrower",
-               @"title"      : @"Narrow margin",
+             @{@"identifier" : @"TTModeNewsMenuNarrower",
+               @"title"      : @"Narrow story",
                @"icon"       : @"arrow",
                @"group"      : @"action",
                },
              @{@"identifier" : @"space"},
-             @{@"identifier" : @"TTModeWebMenuClose",
-               @"title"      : @"Close Reader",
+             @{@"identifier" : @"TTModeNewsMenuClose",
+               @"title"      : @"Close NewsBlur",
                @"icon"       : @"button_x",
                @"group"      : @"action",
                },
@@ -106,6 +106,21 @@
 }
 
 #pragma mark - Action Titles
+
+- (NSString *)actionTitleInDirection:(TTModeDirection)direction buttonMoment:(TTButtonMoment)buttonMoment {
+    if (state == TTModeNewsStateMenu) {
+        switch (direction) {
+            case EAST:
+                return [newsWindowController.menuView highlightedRowTitle];
+            case WEST:
+                return @"Hide menu";
+            default:
+                break;
+        }
+    }
+    
+    return [super actionTitleInDirection:direction buttonMoment:buttonMoment];
+}
 
 - (NSString *)titleTTModeNewsMenu {
     return @"Menu";
@@ -267,22 +282,14 @@
 - (void)runTTModeNewsScrollUp {
     if ([self checkClosed]) return;
     
-    if (state == TTModeNewsStateBrowser) {
-        [newsWindowController.browserView scrollUp];
-        [NSCursor hide];
-    } else if (state == TTModeNewsStateMenu) {
-        [newsWindowController.menuView menuUp];
-    }
+    [newsWindowController.browserView scrollUp];
+    [NSCursor hide];
 }
 - (void)runTTModeNewsScrollDown {
     if ([self checkClosed]) return;
     
-    if (state == TTModeNewsStateBrowser) {
-        [newsWindowController.browserView scrollDown];
-        [NSCursor hide];
-    } else if (state == TTModeNewsStateMenu) {
-        [newsWindowController.menuView menuDown];
-    }
+    [newsWindowController.browserView scrollDown];
+    [NSCursor hide];
 }
 
 - (void)runTTModeNewsNextStory {
@@ -298,6 +305,21 @@
 }
 - (void)runTTModeNewsPreviousSite {
     NSLog(@"Running TTModeNewsPreviousSite");
+}
+- (void)runTTModeNewsMenuFontSizeUp {
+    [newsWindowController.browserView zoomIn];
+}
+
+- (void)runTTModeNewsMenuFontSizeDown {
+    [newsWindowController.browserView zoomOut];
+}
+
+- (void)runTTModeNewsMenuWider {
+    [newsWindowController.browserView widenStory];
+}
+
+- (void)runTTModeNewsMenuNarrower {
+    [newsWindowController.browserView narrowStory];
 }
 
 
@@ -327,33 +349,41 @@
 
 #pragma mark - Menu Options
 
+- (BOOL)shouldRunDirection:(TTModeDirection)direction {
+    if (state == TTModeNewsStateMenu) {
+        switch (direction) {
+            case NORTH:
+                [self runTTModeNewsMenuUp];
+                return NO;
+            case EAST:
+                [self runTTModeNewsMenuSelect];
+                return NO;
+            case WEST:
+                [self runTTModeNewsMenuReturn];
+                return NO;
+            case SOUTH:
+                [self runTTModeNewsMenuDown];
+                return NO;
+            default:
+                break;
+        }
+    }
+    
+    return YES;
+}
+
 - (void)runTTModeNewsMenuReturn {
     state = TTModeNewsStateBrowser;
     [newsWindowController.menuView slideOut];
 }
-
-- (void)runTTModeNewsMenuNextStory {
-    
+- (void)runTTModeNewsMenuUp {
+    [newsWindowController.menuView menuUp];
 }
-
-- (void)runTTModeNewsMenuPreviousStory {
-//    [newsWindowController.browserView.webView goBack];
+- (void)runTTModeNewsMenuDown {
+    [newsWindowController.menuView menuDown];
 }
-
-- (void)runTTModeNewsMenuFontSizeUp {
-    [newsWindowController.browserView zoomIn];
-}
-
-- (void)runTTModeNewsMenuFontSizeDown {
-    [newsWindowController.browserView zoomOut];
-}
-
-- (void)runTTModeNewsMenuMarginWider {
-    [newsWindowController.browserView widenMargin];
-}
-
-- (void)runTTModeNewsMenuMarginNarrower {
-    [newsWindowController.browserView narrowMargin];
+- (void)runTTModeNewsMenuSelect {
+    [newsWindowController.menuView selectMenuItem];
 }
 
 - (void)runTTModeNewsMenuClose {

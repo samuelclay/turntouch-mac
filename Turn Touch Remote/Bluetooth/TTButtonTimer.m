@@ -289,13 +289,13 @@
 }
 
 - (void)fireButton:(TTModeDirection)direction {
-    [appDelegate.modeMap setActiveModeDirection:direction];
+//    [appDelegate.modeMap setActiveModeDirection:direction];
 #ifndef SKIP_BUTTON_ACTIONS
     if (!skipButtonActions) {
         [appDelegate.modeMap runActiveButton];
     }
 #endif
-    [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];
+//    [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];
     
     NSString *actionName = [appDelegate.modeMap.selectedMode actionNameInDirection:direction];
     [appDelegate.hudController toastActiveAction:actionName inDirection:direction];

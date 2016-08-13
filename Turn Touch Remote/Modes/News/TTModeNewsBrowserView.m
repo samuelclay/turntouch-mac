@@ -60,7 +60,6 @@
     
     CGFloat offset = NSWidth(mainScreen.frame)/2 - currentStoryIndex*(storyWidth+64) - storyWidth/2;
     [stackOffsetConstraint animator].constant = offset;
-    
     [NSAnimationContext endGrouping];
 }
 
@@ -98,7 +97,17 @@
 #pragma mark - Interacting with webView
 
 - (void)nextStory {
-    currentStoryIndex += 1;
+    [self changeStory:1];
+}
+
+- (void)previousStory {
+    [self changeStory:-1];
+}
+
+- (void)changeStory:(NSInteger)diff {
+    if (currentStoryIndex + diff < 0) return;
+    if (currentStoryIndex + diff >= storyViews.count) return;
+    currentStoryIndex += diff;
     
     NSScreen *mainScreen = [[NSScreen screens] objectAtIndex:0];
     CGFloat openDuration = 0.65f;
@@ -111,19 +120,18 @@
     
     CGFloat offset = NSWidth(mainScreen.frame)/2 - currentStoryIndex*(storyWidth+64) - storyWidth/2;
     [stackOffsetConstraint animator].constant = offset;
-
-    [NSAnimationContext endGrouping];
     
-    if (currentStoryIndex > 0 && storyViews.count > 1) {
-        TTModeNewsStoryView *oldStory = [storyViews objectAtIndex:currentStoryIndex-1];
+    [NSAnimationContext endGrouping];
+    NSLog(@"> stackOffsetConstraint: %f/%f", stackOffsetConstraint.constant, offset);
+    
+    if (currentStoryIndex-diff >= 0 && storyViews.count > 1) {
+        TTModeNewsStoryView *oldStory = [storyViews objectAtIndex:currentStoryIndex-diff];
         [oldStory blurStory];
     }
-    TTModeNewsStoryView *activeStory = [storyViews objectAtIndex:currentStoryIndex];
-    [activeStory focusStory];
-}
-
-- (void)previousStory {
-    
+    if (currentStoryIndex >= 0 && storyViews.count > 1) {
+        TTModeNewsStoryView *activeStory = [storyViews objectAtIndex:currentStoryIndex];
+        [activeStory focusStory];
+    }
 }
 
 - (void)zoomIn {
@@ -138,22 +146,44 @@
     NSLog(@" ---> Zoom factor: %f", zoomFactor);
 }
 
-- (void)widenMargin {
+- (void)widenStory {
+    NSScreen *mainScreen = [[NSScreen screens] objectAtIndex:0];
+    
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:.26f];
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
     storyWidth += 125;
+//    [self changeStory:0];
+    CGFloat offset = NSWidth(mainScreen.frame)/2 - currentStoryIndex*(storyWidth+64) - storyWidth/2;
+    [stackOffsetConstraint animator].constant = offset;
+    for (NSLayoutConstraint *constraint in storyStack.constraints) {
+        if (constraint.firstAttribute == NSLayoutAttributeWidth) {
+            [constraint animator].constant = storyWidth;
+        }
+    }
 //    [[widthConstraint animator] setConstant:widthConstraint.constant+125];
     [NSAnimationContext endGrouping];
 }
 
-- (void)narrowMargin {
+- (void)narrowStory {
+    if (storyWidth <= 400) return;
+    
+    NSScreen *mainScreen = [[NSScreen screens] objectAtIndex:0];
+
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:.26f];
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
     storyWidth -= 125;
+//    [self changeStory:0];
+    CGFloat offset = NSWidth(mainScreen.frame)/2 - currentStoryIndex*(storyWidth+64) - storyWidth/2;
+    [stackOffsetConstraint animator].constant = offset;
+    for (NSLayoutConstraint *constraint in storyStack.constraints) {
+        if (constraint.firstAttribute == NSLayoutAttributeWidth) {
+            [constraint animator].constant = storyWidth;
+        }
+    }
 //    [[widthConstraint animator] setConstant:widthConstraint.constant-125];
     [NSAnimationContext endGrouping];
 }

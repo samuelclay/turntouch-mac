@@ -29,6 +29,7 @@ typedef enum {
 @property (nonatomic) TTAction *action;
 
 - (void)activate:(TTModeDirection)_modeDirection;
+- (BOOL)shouldRunDirection:(TTModeDirection)direction;
 - (void)runDirection:(TTModeDirection)direction;
 - (void)runAction:(NSString *)actionName inDirection:(TTModeDirection)direction;
 - (void)runDoubleDirection:(TTModeDirection)direction;

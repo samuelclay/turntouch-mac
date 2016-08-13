@@ -162,6 +162,12 @@
     }
 }
 
+- (NSString *)highlightedRowTitle {
+    NSDictionary *menuOption = [self.menuOptions objectAtIndex:highlightedRow];
+    
+    return menuOption[@"title"];
+}
+
 #pragma mark - NSTableView Delegate
 
 - (BOOL)isRowASpace:(NSInteger)row {

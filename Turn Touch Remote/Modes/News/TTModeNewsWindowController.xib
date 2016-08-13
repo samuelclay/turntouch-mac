@@ -20,24 +20,24 @@
             <windowStyleMask key="styleMask" fullSizeContentView="YES"/>
             <windowCollectionBehavior key="collectionBehavior" moveToActiveSpace="YES" transient="YES" fullScreenPrimary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="1391" height="489"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <rect key="contentRect" x="196" y="240" width="1391" height="360"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1440"/>
             <view key="contentView" id="MMt-KA-svi" customClass="TTModeNewsBackgroundView">
-                <rect key="frame" x="0.0" y="0.0" width="1391" height="489"/>
+                <rect key="frame" x="0.0" y="0.0" width="1391" height="360"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="N3r-oR-wwj" customClass="TTModeNewsBrowserView">
-                        <rect key="frame" x="0.0" y="0.0" width="1391" height="489"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1391" height="360"/>
                         <subviews>
                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="64" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vsn-Ye-R2p">
-                                <rect key="frame" x="-1000" y="0.0" width="0.0" height="489"/>
+                                <rect key="frame" x="-1000" y="0.0" width="0.0" height="360"/>
                             </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="height" constant="489" id="d2J-2I-xMk"/>
                             <constraint firstItem="Vsn-Ye-R2p" firstAttribute="top" secondItem="N3r-oR-wwj" secondAttribute="top" id="h8J-kw-fib"/>
-                            <constraint firstItem="Vsn-Ye-R2p" firstAttribute="leading" secondItem="N3r-oR-wwj" secondAttribute="leading" constant="-1000" id="ivQ-sf-PY8"/>
+                            <constraint firstItem="Vsn-Ye-R2p" firstAttribute="left" secondItem="N3r-oR-wwj" secondAttribute="left" constant="-1000" id="ivQ-sf-PY8"/>
                             <constraint firstAttribute="bottom" secondItem="Vsn-Ye-R2p" secondAttribute="bottom" id="jWt-K9-nDI"/>
+                            <constraint firstAttribute="height" constant="360" id="vbG-Hd-EkM"/>
                         </constraints>
                         <connections>
                             <outlet property="stackOffsetConstraint" destination="ivQ-sf-PY8" id="wnA-41-8XT"/>
@@ -45,16 +45,16 @@
                         </connections>
                     </customView>
                     <visualEffectView appearanceType="vibrantDark" blendingMode="behindWindow" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="iOl-Vb-tYM" customClass="TTModeNewsMenuView">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="489"/>
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="360"/>
                         <subviews>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="kPQ-sC-dgW">
-                                <rect key="frame" x="0.0" y="0.0" width="400" height="489"/>
+                                <rect key="frame" x="0.0" y="0.0" width="400" height="360"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="dV1-Bg-PCt">
-                                    <rect key="frame" x="0.0" y="0.0" width="400" height="489"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="360"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" selectionHighlightStyle="none" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="kGc-Qw-3UN">
-                                            <rect key="frame" x="0.0" y="0.0" width="309" height="0.0"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="400" height="360"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
@@ -191,7 +191,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="N3r-oR-wwj" secondAttribute="trailing" id="175-ll-hFd"/>
-                    <constraint firstItem="iOl-Vb-tYM" firstAttribute="leading" secondItem="MMt-KA-svi" secondAttribute="leading" id="1Jv-dR-Kka"/>
+                    <constraint firstItem="iOl-Vb-tYM" firstAttribute="left" secondItem="MMt-KA-svi" secondAttribute="left" id="1Jv-dR-Kka"/>
                     <constraint firstItem="N3r-oR-wwj" firstAttribute="top" secondItem="MMt-KA-svi" secondAttribute="top" id="4dO-vL-Y5w"/>
                     <constraint firstAttribute="bottom" secondItem="iOl-Vb-tYM" secondAttribute="bottom" id="6Ot-oW-MTi"/>
                     <constraint firstAttribute="bottom" secondItem="N3r-oR-wwj" secondAttribute="bottom" id="SIL-NT-2Ix"/>
