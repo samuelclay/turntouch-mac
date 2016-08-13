@@ -169,7 +169,7 @@
                                                  attribute:NSLayoutAttributeHeight
                                                  relatedBy:NSLayoutRelationEqual
                                                     toItem:nil
-                                                 attribute:0 multiplier:1.0 constant:appDelegate.bluetoothMonitor.pairedDevicesCount.intValue*40];
+                                                 attribute:0 multiplier:1.0 constant:appDelegate.bluetoothMonitor.foundDevices.devices.count*40];
     [self addConstraint:deviceTitlesConstraint];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:deviceTitlesView
                                                      attribute:NSLayoutAttributeWidth
@@ -398,7 +398,7 @@
     [[NSAnimationContext currentContext] setDuration:openDuration];
     [[NSAnimationContext currentContext] setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
     
-    [[deviceTitlesConstraint animator] setConstant:40*[devices count] + 1];
+    [[deviceTitlesConstraint animator] setConstant:40*[devices count]];
     
     [NSAnimationContext endGrouping];
 }

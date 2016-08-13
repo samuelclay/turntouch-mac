@@ -22,6 +22,8 @@
         // Init with latest firmware version, correct later
         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
         firmwareVersion = [[prefs objectForKey:@"TT:firmware:version"] intValue];
+        NSString *nicknameKey = [NSString stringWithFormat:@"TT:device:%@:nickname", self.uuid];
+        self.nickname = [prefs stringForKey:nicknameKey];
     }
     
     return self;
@@ -33,6 +35,12 @@
             self.nickname,
             self.state == TTDeviceStateConnected ? @"connected" : @"X",
             self.isPaired ? @"PAIRED" : @"unpaired"];
+}
+
+- (NSString *)stateLabel {
+    return self.state == TTDeviceStateConnected ? @"connected" :
+    self.state == TTDeviceStateSearching ? @"searching" :
+    self.state == TTDeviceStateConnecting ? @"connecting" : @"X";
 }
 
 - (void)setNicknameData:(NSData *)nicknameData {

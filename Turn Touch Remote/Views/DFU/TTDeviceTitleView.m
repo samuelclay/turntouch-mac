@@ -7,6 +7,7 @@
 //
 
 #import "TTDeviceTitleView.h"
+#import "NSDate+TimeAgo.h"
 
 @implementation TTDeviceTitleView
 
@@ -197,77 +198,41 @@
         [settingsMenu removeAllItems];
     }
     
-    TTDeviceList *foundDevices = appDelegate.bluetoothMonitor.foundDevices;
-    for (TTDevice *device in foundDevices) {
-        if (device.state != TTDeviceStateConnected && device.state != TTDeviceStateConnecting) continue;
-        if (device.uuid || device.nickname) {
-            menuItem = [[NSMenuItem alloc] initWithTitle:(device.nickname ? device.nickname : device.uuid)
-                                                  action:@selector(openDevicesDialog:) keyEquivalent:@""];
-            [menuItem setTarget:self];
-            [settingsMenu addItem:menuItem];
-        }
-        
-        NSString *batteryLevel = [NSString stringWithFormat:@"Battery level: %d%%",
-                                  (int)device.batteryPct.intValue];
-        menuItem = [[NSMenuItem alloc] initWithTitle:batteryLevel action:@selector(openDevicesDialog:) keyEquivalent:@""];
-        [menuItem setEnabled:NO];
-        [menuItem setTarget:self];
-        if (device.isPaired && device.batteryPct.intValue <= 0) {
-            [menuItem setTitle:@"Connecting to remote..."];
-            [menuItem setEnabled:NO];
-        } else if (!device.isPaired) {
-            [menuItem setTitle:@"Pairing with remote..."];
-            [menuItem setEnabled:NO];
-        }
-        [settingsMenu addItem:menuItem];
-        
-        
-        [settingsMenu addItem:[NSMenuItem separatorItem]];
-    }
-    if (!foundDevices.count) {
-        menuItem = [[NSMenuItem alloc] initWithTitle:@"No remotes connected" action:nil keyEquivalent:@""];
-        [menuItem setEnabled:NO];
-        [settingsMenu addItem:menuItem];
-        
-        [settingsMenu addItem:[NSMenuItem separatorItem]];
-    }
-    
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Add a new remote..."
-                                          action:@selector(openPairingDialog:)
-                                   keyEquivalent:@""];
+    NSString *batteryLevel = [NSString stringWithFormat:@"Battery level: %d%%",
+                              (int)device.batteryPct.intValue];
+    menuItem = [[NSMenuItem alloc] initWithTitle:batteryLevel action:@selector(openDevicesDialog:) keyEquivalent:@""];
+    [menuItem setEnabled:NO];
     [menuItem setTarget:self];
+    if (device.isPaired && device.batteryPct.intValue <= 0) {
+        [menuItem setTitle:@"Connecting to remote..."];
+        [menuItem setEnabled:NO];
+    } else if (!device.isPaired) {
+        [menuItem setTitle:@"Pairing with remote..."];
+        [menuItem setEnabled:NO];
+    }
     [settingsMenu addItem:menuItem];
-    
+    NSString *timeAgo = [device.lastActionDate timeAgo];
+    NSString *lastAction = [NSString stringWithFormat:@"Last action: %@",
+                            timeAgo];
+    if (!timeAgo) {
+        lastAction = @"Counting is difficult";
+    }
+    menuItem = [[NSMenuItem alloc] initWithTitle:lastAction action:nil keyEquivalent:@""];
+    [menuItem setEnabled:NO];
+    [settingsMenu addItem:menuItem];
+
     [settingsMenu addItem:[NSMenuItem separatorItem]];
-    
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Settings..."
+
+    menuItem = [[NSMenuItem alloc] initWithTitle:@"Rename this remote"
                                           action:@selector(openSettingsDialog:)
                                    keyEquivalent:@""];
     [menuItem setTarget:self];
     [settingsMenu addItem:menuItem];
     
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"How it works"
-                                          action:@selector(openFTUXDialog:)
-                                   keyEquivalent:@""];
-    [menuItem setTarget:self];
-    [settingsMenu addItem:menuItem];
-    
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Contact support"
-                                          action:@selector(openSupportDialog:)
-                                   keyEquivalent:@""];
-    [menuItem setTarget:self];
-    [settingsMenu addItem:menuItem];
-    
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"About Turn Touch"
-                                          action:@selector(openAboutDialog:)
-                                   keyEquivalent:@""];
-    [menuItem setTarget:self];
-    [settingsMenu addItem:menuItem];
-    
     [settingsMenu addItem:[NSMenuItem separatorItem]];
     
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Quit Turn Touch Remote"
-                                          action:@selector(quit:)
+    menuItem = [[NSMenuItem alloc] initWithTitle:@"Forget this remote"
+                                          action:@selector(forgetDevice:)
                                    keyEquivalent:@""];
     [menuItem setTarget:self];
     [settingsMenu addItem:menuItem];
@@ -294,29 +259,12 @@
     [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_DEVICES];
 }
 
-- (void)openPairingDialog:(id)sender {
-    [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_PAIRING];
-}
-
-- (void)openFTUXDialog:(id)sender {
-    [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_FTUX];
-}
-
-- (void)openAboutDialog:(id)sender {
-    [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_ABOUT];
-}
-
-- (void)openSupportDialog:(id)sender {
-    [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_SUPPORT];
+- (void)forgetDevice:(id)sender {
+    [appDelegate.bluetoothMonitor forgetDevice:device];
 }
 
 - (void)openDevicesDialog:(id)sender {
     [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_DEVICES];
 }
-
-- (void)quit:(id)sender {
-    [[NSApplication sharedApplication] terminate:sender];
-}
-
 
 @end

@@ -100,8 +100,6 @@
 - (void)drawBackground {
 //    [NSColorFromRGB(0xFFFFFF) set];
 //    NSRectFill(self.bounds);
-    NSRect contentRect = NSInsetRect([self bounds], 0, 0);
-    
     NSGradient* aGradient = [[NSGradient alloc]
                              initWithStartingColor:[NSColor whiteColor]
                              endingColor:NSColorFromRGB(0xE7E7E7)];
@@ -122,15 +120,20 @@
 - (void)assembleDeviceTitles {
     NSMutableArray *dfuDeviceViews = [NSMutableArray array];
     NSArray *devices = appDelegate.bluetoothMonitor.foundDevices.devices;
-    [self removeConstraints:[self constraints]];
-
+    
+    [self removeConstraints:self.constraints];
+    for (NSView *subview in self.arrangedSubviews) {
+        [subview removeFromSuperview];
+    }
+    
     for (TTDevice *device in devices) {
         TTDeviceTitleView *deviceView = [[TTDeviceTitleView alloc] initWithDevice:device];
         [dfuDeviceViews addObject:deviceView];
+        [self addArrangedSubview:deviceView];
     }
     
-    [dfuDeviceViews addObject:border];
-    [self setViews:dfuDeviceViews inGravity:NSStackViewGravityTop];
+//    [dfuDeviceViews addObject:border];
+//    [self setViews:dfuDeviceViews inGravity:NSStackViewGravityTop];
     
     for (NSView *deviceView in self.views) {
         [self addConstraint:[NSLayoutConstraint constraintWithItem:deviceView

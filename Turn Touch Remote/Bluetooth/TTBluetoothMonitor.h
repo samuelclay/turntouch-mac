@@ -68,6 +68,7 @@ typedef enum {
 - (void)updateBluetoothState:(BOOL)renew;
 - (void)reconnect:(BOOL)renew;
 - (void)terminate;
+- (void)forgetDevice:(TTDevice *)device;
 - (void)disconnectUnpairedDevices;
 - (void)setDeviceLatency:(NSInteger)latency;
 - (void)setModeDuration:(NSInteger)duration;

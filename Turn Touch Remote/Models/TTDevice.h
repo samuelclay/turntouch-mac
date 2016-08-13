@@ -31,6 +31,7 @@ typedef enum {
 @property (nonatomic) BOOL isFirmwareOld;
 @property (nonatomic) TTDeviceState state;
 
+- (NSString *)stateLabel;
 - (id)initWithPeripheral:(CBPeripheral *)peripheral;
 - (void)setNicknameData:(NSData *)nicknameData;
 

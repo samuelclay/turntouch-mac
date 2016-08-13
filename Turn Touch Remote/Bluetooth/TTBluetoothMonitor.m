@@ -1039,6 +1039,30 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
 //    [manager cancelPeripheralConnection:peripheral];
 }
 
+- (void)forgetDevice:(TTDevice *)device {
+    NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+    NSArray *pairedDevices = [preferences arrayForKey:@"TT:devices:paired"];
+    NSMutableArray *remainingPairedDevices = [NSMutableArray array];
+    for (NSString *identifier in pairedDevices) {
+        if (![identifier isEqual:device.uuid]) {
+            [remainingPairedDevices addObject:identifier];
+        } else {
+            NSLog(@" ---> Forgetting %@", device);
+        }
+    }
+    [preferences setObject:remainingPairedDevices forKey:@"TT:devices:paired"];
+    [preferences synchronize];
+    
+    [self disconnectDevice:device];
+}
+
+- (void)disconnectDevice:(TTDevice *)device {
+    NSLog(@" ---> Disconnecting %@", device);
+    [manager cancelPeripheralConnection:device.peripheral];
+    [foundDevices removeDevice:device];
+    [self countDevices];
+}
+
 - (void)disconnectUnpairedDevices {
     for (TTDevice *device in foundDevices) {
         if (!device.isPaired) {
