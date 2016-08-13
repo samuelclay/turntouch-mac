@@ -101,6 +101,16 @@
     progress.frame = buttonFrame;
 
     [self setChangeButtonTitle:buttonText];
+    
+    if (device.isFirmwareOld) {
+        changeButton.hidden = NO;
+    } else {
+        changeButton.hidden = YES;
+        NSSize stateSize = [device.stateLabel sizeWithAttributes:stateAttributes];
+        NSPoint statePoint = NSMakePoint(NSMaxX(self.frame) - stateSize.width - 22,
+                                         (NSHeight(self.frame)/2) - (stateSize.height/2));
+        [device.stateLabel drawAtPoint:statePoint withAttributes:stateAttributes];
+    }
 }
 
 - (void)drawBackground {
@@ -119,13 +129,22 @@
     stringShadow.shadowColor = [NSColor whiteColor];
     stringShadow.shadowOffset = NSMakeSize(0, -1);
     stringShadow.shadowBlurRadius = 0;
-    NSColor *textColor = NSColorFromRGB(0x404A60);
-
+    NSColor *textColor = NSColorFromRGB(0x808AA0);
+    if (device.state == TTDeviceStateConnected) {
+        textColor = NSColorFromRGB(0x404A60);
+    }
+    
     titleAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:13],
                         NSForegroundColorAttributeName: textColor,
                         NSShadowAttributeName: stringShadow
                         };
     textSize = [device.nickname sizeWithAttributes:titleAttributes];
+    
+    textColor = NSColorFromRGB(0x808AA0);
+    stateAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:13],
+                        NSForegroundColorAttributeName: textColor,
+                        NSShadowAttributeName: stringShadow
+                        };
 }
 
 - (void)beginUpgrade:(id)sender {

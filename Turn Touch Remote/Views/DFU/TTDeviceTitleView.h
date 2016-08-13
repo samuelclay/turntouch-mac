@@ -14,6 +14,7 @@
     TTAppDelegate *appDelegate;
 
     NSDictionary *titleAttributes;
+    NSDictionary *stateAttributes;
     CGSize textSize;
     TTChangeButtonView *changeButton;
     NSInteger latestVersion;
