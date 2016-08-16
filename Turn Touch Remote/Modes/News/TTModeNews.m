@@ -191,6 +191,14 @@
     return YES;
 }
 
+- (BOOL)shouldFireImmediateTTModeNewsMenuUp {
+    return YES;
+}
+
+- (BOOL)shouldFireImmediateTTModeNewsMenuDown {
+    return YES;
+}
+
 #pragma mark - Hide HUD
 
 - (BOOL)shouldHideHudTTModeNewsScrollUp {
@@ -206,6 +214,18 @@
 }
 
 - (BOOL)shouldHideHudTTModeNewsMenu {
+    return YES;
+}
+
+- (BOOL)shouldHideHudTTModeNewsMenuReturn {
+    return YES;
+}
+
+- (BOOL)shouldHideHudTTModeNewsMenuUp {
+    return YES;
+}
+
+- (BOOL)shouldHideHudTTModeNewsMenuDown {
     return YES;
 }
 
@@ -355,27 +375,23 @@
 
 #pragma mark - Menu Options
 
-- (BOOL)shouldRunDirection:(TTModeDirection)direction {
+- (NSString *)actionNameInDirection:(TTModeDirection)direction {
     if (state == TTModeNewsStateMenu) {
         switch (direction) {
             case NORTH:
-                [self runTTModeNewsMenuUp];
-                return NO;
+                return @"TTModeNewsMenuUp";
             case EAST:
-                [self runTTModeNewsMenuSelect];
-                return NO;
+                return @"TTModeNewsMenuSelect";
             case WEST:
-                [self runTTModeNewsMenuReturn];
-                return NO;
+                return @"TTModeNewsMenuReturn";
             case SOUTH:
-                [self runTTModeNewsMenuDown];
-                return NO;
+                return @"TTModeNewsMenuDown";
             default:
                 break;
         }
     }
     
-    return YES;
+    return [super actionNameInDirection:direction];
 }
 
 - (void)runTTModeNewsMenuReturn {

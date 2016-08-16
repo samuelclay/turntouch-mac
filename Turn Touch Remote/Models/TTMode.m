@@ -115,10 +115,6 @@
 
 #pragma mark - Map directions to actions
 
-- (BOOL)shouldRunDirection:(TTModeDirection)direction {
-    return YES;
-}
-
 - (void)runDirection:(TTModeDirection)direction {
     NSString *actionName = [self actionNameInDirection:direction];
     [self runAction:actionName inDirection:direction funcAction:@"run"];
@@ -327,7 +323,7 @@
     NSString *directionAction;
 
     if (direction != NO_DIRECTION) {
-        // Use default action in direction
+        // Otherwise use set action in direction
         directionAction = [defaults stringForKey:[NSString stringWithFormat:@"TT:%@-%@:action:%@",
                                                         NSStringFromClass([self class]), modeDirectionName, actionDirectionName]];
     }
@@ -336,6 +332,7 @@
     }
 
     if (!directionAction) {
+        // No action override, so use default action
         if (direction == NORTH) {
             directionAction = [self defaultNorth];
         } else if (direction == EAST) {
