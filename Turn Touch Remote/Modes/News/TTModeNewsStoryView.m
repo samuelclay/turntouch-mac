@@ -31,7 +31,7 @@
         webView = [[WebView alloc] init];
         webView.translatesAutoresizingMaskIntoConstraints = NO;
         webView.resourceLoadDelegate = self;
-        webView.drawsBackground = NO;
+//        webView.drawsBackground = NO;
         [self addSubview:webView];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:webView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1. constant:0]];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:webView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1. constant:0]];
@@ -121,7 +121,7 @@
     }
     
     int contentWidth = CGRectGetWidth(webView.bounds);
-    NSString *contentWidthClass = [NSString stringWithFormat:@"NB-ipad-pro-narrow NB-xl NB-width-%d",
+    NSString *contentWidthClass = [NSString stringWithFormat:@"NB-ipad-narrow NB-medium NB-width-%d",
                                    (int)floorf(CGRectGetWidth(self.frame))];
     
     // Replace image urls that are locally cached, even when online

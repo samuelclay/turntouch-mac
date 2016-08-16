@@ -112,8 +112,6 @@
         switch (direction) {
             case EAST:
                 return [newsWindowController.menuView highlightedRowTitle];
-            case WEST:
-                return @"Hide menu";
             default:
                 break;
         }
@@ -200,6 +198,14 @@
 }
 
 - (BOOL)shouldHideHudTTModeNewsScrollDown {
+    return YES;
+}
+
+- (BOOL)shouldHideHudTTModeNewsNextStory {
+    return YES;
+}
+
+- (BOOL)shouldHideHudTTModeNewsMenu {
     return YES;
 }
 

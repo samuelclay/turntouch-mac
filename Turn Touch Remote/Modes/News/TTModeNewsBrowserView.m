@@ -124,6 +124,8 @@
     [NSAnimationContext endGrouping];
     NSLog(@"> stackOffsetConstraint: %f/%f", stackOffsetConstraint.constant, offset);
     
+    [self setNeedsUpdateConstraints:YES];
+    
     if (currentStoryIndex-diff >= 0 && storyViews.count > 1) {
         TTModeNewsStoryView *oldStory = [storyViews objectAtIndex:currentStoryIndex-diff];
         [oldStory blurStory];
