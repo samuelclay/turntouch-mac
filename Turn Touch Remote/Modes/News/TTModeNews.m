@@ -229,6 +229,14 @@
     return YES;
 }
 
+- (BOOL)shouldHideHudTTModeNewsMenuSelect {
+    if (state == TTModeNewsStateMenu) {
+        return NO;
+    }
+    
+    return NO;
+}
+
 #pragma mark - Action methods
 
 - (BOOL)checkClosed {
@@ -296,6 +304,25 @@
         [newsWindowController.menuView slideOut];
     }
 }
+
+- (void)doubleRunTTModeNewsMenu {
+    [self doubleRunTTModeNewsMenuReturnBack];
+}
+
+- (void)doubleRunTTModeNewsMenuReturn {
+    [self doubleRunTTModeNewsMenuReturnBack];
+}
+
+- (void)doubleRunTTModeNewsMenuReturnBack {
+    if ([self checkClosed]) return;
+    
+    [self runTTModeNewsPreviousStory];
+    if (state == TTModeNewsStateMenu) {
+        state = TTModeNewsStateBrowser;
+        [newsWindowController.menuView slideOut];
+    }
+}
+
 - (void)runTTModeNewsNext {
     if ([self checkClosed]) return;
     
@@ -319,17 +346,25 @@
 }
 
 - (void)runTTModeNewsNextStory {
+    if ([self checkClosed]) return;
+    
     NSLog(@"Running TTModeNewsNextStory");
     [newsWindowController.browserView nextStory];
 }
 - (void)runTTModeNewsNextSite {
+    if ([self checkClosed]) return;
+    
     NSLog(@"Running TTModeNewsNextSite");
 }
 - (void)runTTModeNewsPreviousStory {
+    if ([self checkClosed]) return;
+    
     NSLog(@"Running TTModeNewsPreviousStory");
     [newsWindowController.browserView previousStory];
 }
 - (void)runTTModeNewsPreviousSite {
+    if ([self checkClosed]) return;
+    
     NSLog(@"Running TTModeNewsPreviousSite");
 }
 - (void)runTTModeNewsMenuFontSizeUp {

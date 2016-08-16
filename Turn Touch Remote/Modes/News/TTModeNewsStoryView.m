@@ -298,7 +298,7 @@
                              story.storyPermalink,
                              story.storyTitle,
                              storyDate,
-                             story.storyAuthor,
+                             storyAuthor,
                              storyTags];
     return storyHeader;
 }
