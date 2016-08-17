@@ -27,6 +27,8 @@
 - (void)showLoadingView;
 - (void)blurStory;
 - (void)focusStory;
+- (void)adjustSize;
+- (void)adjustSize:(CGFloat)width;
 
 - (void)loadStory;
 - (void)scrollUp;

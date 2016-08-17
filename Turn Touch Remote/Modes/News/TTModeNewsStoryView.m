@@ -82,6 +82,14 @@
     self.layer.opacity = 1.f;
 }
 
+- (void)adjustSize {
+    [webView stringByEvaluatingJavaScriptFromString:@"resizeWindow();"];    
+}
+
+- (void)adjustSize:(CGFloat)width {
+    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"resizeWindow(%f);", width]];
+}
+
 #pragma mark - Loading URLs
 
 - (void)loadStory {
@@ -120,7 +128,7 @@
         lineSpacingClass = [lineSpacingClass stringByAppendingString:@"medium"];
     }
     
-    int contentWidth = CGRectGetWidth(webView.bounds);
+    int contentWidth = NSWidth(self.frame);
     NSString *contentWidthClass = [NSString stringWithFormat:@"NB-ipad-narrow NB-medium NB-width-%d",
                                    (int)floorf(CGRectGetWidth(self.frame))];
     

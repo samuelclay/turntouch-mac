@@ -10,6 +10,12 @@ var loadImages = function() {
 
 };
 
+var resizeWindow = function(width) {
+    width = width || $("body").width();
+    var style = "<style>.NB-ipad-narrow .NB-story img.NB-large-image {max-width: "+width+"px;margin-left: -30px !important;width: "+width+"px !important;}</style>"
+    console.log(['resizeWindow', width, style]);
+    $("html > head").append(style);
+}
 var fitVideos = function() {
        $(".NB-story").fitVids({
             customSelector: "iframe[src*='youtu.be'],iframe[src*='flickr.com'],iframe[src*='vimeo.com']"
@@ -210,6 +216,7 @@ function attachFastClick() {
 }
 
 loadImages();
+resizeWindow();
 fitVideos();
 
 Zepto(function($) {

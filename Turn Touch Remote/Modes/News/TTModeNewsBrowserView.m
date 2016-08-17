@@ -23,10 +23,11 @@
 
 - (void)awakeFromNib {
     appDelegate = (TTAppDelegate *)[NSApp delegate];
-    
+    NSScreen *mainScreen = [[NSScreen screens] objectAtIndex:0];
+
     zoomFactor = 2.3f;
     textSize = 0;
-    storyWidth = 800;
+    storyWidth = NSWidth(mainScreen.frame) / 2.5f;
     page = 0;
     currentStoryIndex = 0;
     
@@ -77,7 +78,7 @@
     
     for (int i=0; i < stories.count; i++) {
         TTNewsBlurStory *story = [[TTNewsBlurStory alloc] initWithStory:[stories objectAtIndex:i]];
-        TTModeNewsStoryView *storyView = [[TTModeNewsStoryView alloc] init];
+        TTModeNewsStoryView *storyView = [[TTModeNewsStoryView alloc] initWithFrame:NSMakeRect(0, 0, storyWidth, NSHeight(self.frame))];
         [storyViews addObject:storyView];
         storyView.storyIndex = i;
         storyView.story = story;
@@ -166,6 +167,10 @@
     }
 //    [[widthConstraint animator] setConstant:widthConstraint.constant+125];
     [NSAnimationContext endGrouping];
+    
+    for (TTModeNewsStoryView *storyView in storyViews) {
+        [storyView adjustSize:storyWidth];
+    }
 }
 
 - (void)narrowStory {
@@ -188,6 +193,10 @@
     }
 //    [[widthConstraint animator] setConstant:widthConstraint.constant-125];
     [NSAnimationContext endGrouping];
+
+    for (TTModeNewsStoryView *storyView in storyViews) {
+        [storyView adjustSize:storyWidth];
+    }
 }
 
 - (void)scrollUp {
