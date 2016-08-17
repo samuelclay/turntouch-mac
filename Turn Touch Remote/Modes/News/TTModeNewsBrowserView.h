@@ -33,6 +33,8 @@
 - (void)scrollDown;
 - (void)zoomIn;
 - (void)zoomOut;
+- (void)increaseFontSize;
+- (void)decreaseFontSize;
 - (void)widenStory;
 - (void)narrowStory;
 

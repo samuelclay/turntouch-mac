@@ -16,6 +16,16 @@ var resizeWindow = function(width) {
     console.log(['resizeWindow', width, style]);
     $("html > head").append(style);
 }
+
+var adjustFontSize = function(size) {
+    $("body").removeClass("NB-xs")
+             .removeClass("NB-small")
+             .removeClass("NB-medium")
+             .removeClass("NB-large")
+             .removeClass("NB-xl")
+             .addClass("NB-" + size);
+}
+
 var fitVideos = function() {
        $(".NB-story").fitVids({
             customSelector: "iframe[src*='youtu.be'],iframe[src*='flickr.com'],iframe[src*='vimeo.com']"

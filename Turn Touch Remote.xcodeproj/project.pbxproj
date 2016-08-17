@@ -331,6 +331,7 @@
 		FFABABA71C34996A00AD5620 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFABABA61C34996A00AD5620 /* WebKit.framework */; };
 		FFABABAA1C349F6700AD5620 /* TTModeWebMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABABA91C349F6700AD5620 /* TTModeWebMenuView.m */; };
 		FFAFCBC519130F520058B9CB /* TTPanelArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAFCBC419130F520058B9CB /* TTPanelArrowView.m */; };
+		FFB08E441D63EAB70040A531 /* TTModeNews.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFB08E431D63EAB70040A531 /* TTModeNews.plist */; };
 		FFB1670E1923E61F008FA1AF /* TTTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB1670D1923E61F008FA1AF /* TTTabView.m */; };
 		FFB167111923E6BF008FA1AF /* TTBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB167101923E6BF008FA1AF /* TTBoxView.m */; };
 		FFB5FF381A671BA200DF617A /* TTModeHueSceneEarlyEveningOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB5FF371A671BA200DF617A /* TTModeHueSceneEarlyEveningOptions.m */; };
@@ -907,6 +908,7 @@
 		FFABABA91C349F6700AD5620 /* TTModeWebMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeWebMenuView.m; path = Modes/Web/TTModeWebMenuView.m; sourceTree = "<group>"; };
 		FFAFCBC319130F520058B9CB /* TTPanelArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTPanelArrowView.h; sourceTree = "<group>"; };
 		FFAFCBC419130F520058B9CB /* TTPanelArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTPanelArrowView.m; sourceTree = "<group>"; };
+		FFB08E431D63EAB70040A531 /* TTModeNews.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = TTModeNews.plist; path = Modes/News/TTModeNews.plist; sourceTree = "<group>"; };
 		FFB1670C1923E61F008FA1AF /* TTTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTTabView.h; path = "Views/Mode Options/TTTabView.h"; sourceTree = "<group>"; };
 		FFB1670D1923E61F008FA1AF /* TTTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTTabView.m; path = "Views/Mode Options/TTTabView.m"; sourceTree = "<group>"; };
 		FFB1670F1923E6BF008FA1AF /* TTBoxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTBoxView.h; path = "Views/Mode Options/TTBoxView.h"; sourceTree = "<group>"; };
@@ -1916,6 +1918,7 @@
 		FFAA4F6B182D993F0049FFC7 /* News */ = {
 			isa = PBXGroup;
 			children = (
+				FFB08E431D63EAB70040A531 /* TTModeNews.plist */,
 				FFAA4F70182D9A5F0049FFC7 /* TTModeNews.h */,
 				FFAA4F71182D9A5F0049FFC7 /* TTModeNews.m */,
 				FFBD46F61D5A8C2700838AAC /* TTModeNewsNewsBlur.h */,
@@ -2224,6 +2227,7 @@
 				FF6135511C61CDDC00F431D7 /* alarm_snooze.png in Resources */,
 				FF01CA811C46DCC200F83A73 /* settings@2x.png in Resources */,
 				FF27054B1C93A348000BB10F /* modal_remote_hero.png in Resources */,
+				FFB08E441D63EAB70040A531 /* TTModeNews.plist in Resources */,
 				FF80132B186CF92000955218 /* TTPanel.xib in Resources */,
 				FF8A73C61ABA69410023AA53 /* logo - 1024.png in Resources */,
 				FF27054C1C93A348000BB10F /* modal_remote_paired.png in Resources */,

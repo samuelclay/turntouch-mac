@@ -149,6 +149,24 @@
     NSLog(@" ---> Zoom factor: %f", zoomFactor);
 }
 
+- (void)increaseFontSize {
+    NSInteger fontSize = [[appDelegate.modeMap modeOptionValue:@"fontSize"] integerValue];
+    [appDelegate.modeMap changeModeOption:@"fontSize" to:[NSNumber numberWithInteger:MIN(4, fontSize+1)]];
+    
+    for (TTModeNewsStoryView *storyView in storyViews) {
+        [storyView adjustFontSize];
+    }
+}
+
+- (void)decreaseFontSize {
+    NSInteger fontSize = [[appDelegate.modeMap modeOptionValue:@"fontSize"] integerValue];
+    [appDelegate.modeMap changeModeOption:@"fontSize" to:[NSNumber numberWithInteger:MAX(0, fontSize-1)]];
+    
+    for (TTModeNewsStoryView *storyView in storyViews) {
+        [storyView adjustFontSize];
+    }
+}
+
 - (void)widenStory {
     NSScreen *mainScreen = [[NSScreen screens] objectAtIndex:0];
     

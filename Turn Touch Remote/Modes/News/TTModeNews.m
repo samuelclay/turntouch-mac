@@ -368,11 +368,11 @@
     NSLog(@"Running TTModeNewsPreviousSite");
 }
 - (void)runTTModeNewsMenuFontSizeUp {
-    [newsWindowController.browserView zoomIn];
+    [newsWindowController.browserView increaseFontSize];
 }
 
 - (void)runTTModeNewsMenuFontSizeDown {
-    [newsWindowController.browserView zoomOut];
+    [newsWindowController.browserView decreaseFontSize];
 }
 
 - (void)runTTModeNewsMenuWider {

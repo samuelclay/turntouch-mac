@@ -12,15 +12,18 @@
 
 @implementation TTModeNewsStoryView
 
+@synthesize appDelegate;
 @synthesize browserView;
 @synthesize webView;
 @synthesize storyIndex;
 @synthesize story;
 @synthesize loadingURL;
 @synthesize loadingHTML;
+@synthesize mode;
 
 - (instancetype)initWithFrame:(NSRect)frameRect {
     if (self = [super initWithFrame:frameRect]) {
+        appDelegate = (TTAppDelegate *)[NSApp delegate];
         self.translatesAutoresizingMaskIntoConstraints = NO;
 
         self.wantsLayer = YES;
@@ -83,11 +86,40 @@
 }
 
 - (void)adjustSize {
-    [webView stringByEvaluatingJavaScriptFromString:@"resizeWindow();"];    
+    [webView stringByEvaluatingJavaScriptFromString:@"resizeWindow();"];
 }
 
 - (void)adjustSize:(CGFloat)width {
     [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"resizeWindow(%f);", width]];
+}
+
+- (void)adjustFontSize {
+    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"adjustFontSize(\"%@\")", [self fontSize]]];
+}
+
+#pragma mark - Customizations
+
+- (NSString *)fontSize {
+    NSString *fontSize;
+    switch ([[appDelegate.modeMap modeOptionValue:@"fontSize"] integerValue]) {
+        case 0:
+            fontSize = @"xs";
+            break;
+        case 1:
+            fontSize = @"small";
+            break;
+        case 2:
+            fontSize = @"medium";
+            break;
+        case 3:
+            fontSize = @"large";
+            break;
+        case 4:
+            fontSize = @"xl";
+            break;
+    }
+    
+    return fontSize;
 }
 
 #pragma mark - Loading URLs
@@ -100,8 +132,7 @@
 //    NSString *sharingHtmlString;
     NSString *footerString;
     NSString *fontStyleClass = @"";
-    NSString *customStyle = @"";
-    NSString *fontSizeClass = @"NB-";
+    NSString *fontSizeClass = [NSString stringWithFormat:@"NB-%@", [self fontSize]];
     NSString *lineSpacingClass = @"NB-line-spacing-";
     NSString *storyContent = story.storyContent;
     if (inTextView && story.originalText) {
@@ -114,14 +145,6 @@
         fontStyleClass = @"NB-helvetica";
     }
     
-    if ([userPreferences stringForKey:@"TT:mode:news:fontSize"]) {
-        fontSizeClass = [fontSizeClass stringByAppendingString:[userPreferences stringForKey:@"TT:mode:news:fontSize"]];
-    }
-    
-    if (![fontStyleClass hasPrefix:@"NB-"]) {
-        customStyle = [NSString stringWithFormat:@" style='font-family: %@;'", fontStyleClass];
-    }
-    
     if ([userPreferences stringForKey:@"TT:mode:news:lineSpacing"]){
         lineSpacingClass = [lineSpacingClass stringByAppendingString:[userPreferences stringForKey:@"TT:mode:news:lineSpacing"]];
     } else {
@@ -129,7 +152,8 @@
     }
     
     int contentWidth = NSWidth(self.frame);
-    NSString *contentWidthClass = [NSString stringWithFormat:@"NB-ipad-narrow NB-medium NB-width-%d",
+    NSString *contentWidthClass = [NSString stringWithFormat:@"NB-ipad-narrow %@ NB-width-%d",
+                                   fontSizeClass,
                                    (int)floorf(CGRectGetWidth(self.frame))];
     
     // Replace image urls that are locally cached, even when online
@@ -168,17 +192,12 @@
                          "<html>"
                          "<head>%@</head>" // header string
                          "<body id=\"story_pane\" class=\"%@ %@\">"
-                         "    <div class=\"%@\" id=\"NB-font-style\"%@>"
-                         "    <div class=\"%@\" id=\"NB-font-size\">"
                          "    <div class=\"%@\" id=\"NB-line-spacing\">"
                          "        <div id=\"NB-header-container\">%@</div>", // storyHeader
 //                         "        %@", // shareBar
                          headerString,
                          contentWidthClass,
                          riverClass,
-                         fontStyleClass,
-                         customStyle,
-                         fontSizeClass,
                          lineSpacingClass,
                          storyHeader
 //                         shareBarString
@@ -186,8 +205,6 @@
     
     NSString *htmlBottom = [NSString stringWithFormat:@
                             "    </div>" // line-spacing
-                            "    </div>" // font-size
-                            "    </div>" // font-style
                             "</body>"
                             "</html>"
                             ];
