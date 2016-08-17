@@ -23,11 +23,14 @@
 
 - (void)awakeFromNib {
     appDelegate = (TTAppDelegate *)[NSApp delegate];
-    NSScreen *mainScreen = [[NSScreen screens] objectAtIndex:0];
 
     zoomFactor = 2.3f;
-    textSize = 0;
-    storyWidth = NSWidth(mainScreen.frame) / 2.5f;
+    textSize = [[appDelegate.modeMap modeOptionValue:@"fontSize"] integerValue];
+    storyWidth = [[appDelegate.modeMap modeOptionValue:@"browserWidth"] integerValue];
+    if (storyWidth <= 100) {
+        NSScreen *mainScreen = [[NSScreen screens] objectAtIndex:0];
+        storyWidth = NSWidth(mainScreen.frame) / 2.5f;
+    }
     page = 0;
     currentStoryIndex = 0;
     
@@ -189,6 +192,8 @@
     for (TTModeNewsStoryView *storyView in storyViews) {
         [storyView adjustSize:storyWidth];
     }
+    
+    [appDelegate.modeMap changeModeOption:@"browserWidth" to:[NSNumber numberWithInteger:storyWidth]];
 }
 
 - (void)narrowStory {
@@ -215,6 +220,8 @@
     for (TTModeNewsStoryView *storyView in storyViews) {
         [storyView adjustSize:storyWidth];
     }
+    
+    [appDelegate.modeMap changeModeOption:@"browserWidth" to:[NSNumber numberWithInteger:storyWidth]];
 }
 
 - (void)scrollUp {
