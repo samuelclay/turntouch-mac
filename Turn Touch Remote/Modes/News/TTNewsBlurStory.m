@@ -14,6 +14,7 @@
 @synthesize storyContent;
 @synthesize originalText;
 @synthesize feedId;
+@synthesize feed;
 @synthesize storyAuthor;
 @synthesize storyTags;
 @synthesize storyPermalink;

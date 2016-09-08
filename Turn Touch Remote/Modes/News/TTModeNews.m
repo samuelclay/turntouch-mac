@@ -262,6 +262,7 @@
         CFTimeInterval secondsSinceMouseMove = CGEventSourceSecondsSinceLastEventType(kCGEventSourceStateCombinedSessionState, kCGEventMouseMoved);
         if (secondsSinceMouseMove > 2.5) {
             [NSCursor hide];
+            CGDisplayHideCursor(kCGDirectMainDisplay);
         } else {
             [self startHideMouseTimer];
         }
@@ -334,21 +335,24 @@
 }
 - (void)runTTModeNewsScrollUp {
     if ([self checkClosed]) return;
-    
+
     [newsWindowController.browserView scrollUp];
     [NSCursor hide];
+    CGDisplayHideCursor(kCGDirectMainDisplay);
 }
 - (void)runTTModeNewsScrollDown {
     if ([self checkClosed]) return;
     
     [newsWindowController.browserView scrollDown];
     [NSCursor hide];
+    CGDisplayHideCursor(kCGDirectMainDisplay);
 }
 
 - (void)runTTModeNewsNextStory {
     if ([self checkClosed]) return;
     
-    NSLog(@"Running TTModeNewsNextStory");
+    [NSCursor hide];
+    CGDisplayHideCursor(kCGDirectMainDisplay);
     [newsWindowController.browserView nextStory];
 }
 - (void)runTTModeNewsNextSite {
@@ -359,7 +363,7 @@
 - (void)runTTModeNewsPreviousStory {
     if ([self checkClosed]) return;
     
-    NSLog(@"Running TTModeNewsPreviousStory");
+    [NSCursor hide];
     [newsWindowController.browserView previousStory];
 }
 - (void)runTTModeNewsPreviousSite {
@@ -397,11 +401,13 @@
     [newsWindowController fadeOut];
     [self setDisplayAwake:NO];
     [NSCursor unhide];
+    CGDisplayShowCursor(kCGDirectMainDisplay);
 }
 
 - (void)loadStories {
     [newsWindowController fadeIn];
-    [newsblur fetchRiverStories:^(NSArray *stories) {
+    [newsblur fetchRiverStories:^(NSArray *stories, NSArray *feeds) {
+        [newsWindowController addFeeds:feeds];
         [newsWindowController addStories:stories];
     }];
     
@@ -448,6 +454,7 @@
         closed = YES;
         [self setDisplayAwake:NO];
         [NSCursor unhide];
+        CGDisplayShowCursor(kCGDirectMainDisplay);
         [newsWindowController fadeOut];
         state = TTModeNewsStateBrowser;
         [newsWindowController.menuView slideOut];

@@ -25,7 +25,9 @@
 @property (nonatomic) NSInteger storyCount;
 @property (nonatomic) NSInteger storyWidth;
 @property (nonatomic) NSMutableArray *storyViews;
+@property (nonatomic) NSMutableDictionary *feeds;
 
+- (void)addFeeds:(NSArray *)feeds;
 - (void)addStories:(NSArray *)stories;
 - (void)nextStory;
 - (void)previousStory;

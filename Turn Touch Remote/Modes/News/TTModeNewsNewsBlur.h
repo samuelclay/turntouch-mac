@@ -10,6 +10,6 @@
 
 @interface TTModeNewsNewsBlur : NSObject
 
-- (void)fetchRiverStories:(void (^)(NSArray *stories))callback;
+- (void)fetchRiverStories:(void (^)(NSArray *stories, NSArray *feeds))callback;
 
 @end

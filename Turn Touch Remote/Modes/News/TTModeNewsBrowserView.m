@@ -9,6 +9,7 @@
 #import "TTModeNewsBrowserView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "TTModeNewsStoryView.h"
+#import "TTNewsBlurFeed.h"
 
 @implementation TTModeNewsBrowserView
 
@@ -20,6 +21,7 @@
 @synthesize storyCount;
 @synthesize storyViews;
 @synthesize storyWidth;
+@synthesize feeds;
 
 - (void)awakeFromNib {
     appDelegate = (TTAppDelegate *)[NSApp delegate];
@@ -67,6 +69,13 @@
     [NSAnimationContext endGrouping];
 }
 
+- (void)addFeeds:(NSArray *)newFeeds {
+    for (NSDictionary *feedDict in newFeeds) {
+        TTNewsBlurFeed *feed = [[TTNewsBlurFeed alloc] initWithFeed:feedDict];
+        [feeds setObject:feed forKey:feed.feedId];
+    }
+}
+
 - (void)addStories:(NSArray *)stories {
     if (page == 0) {
         for (NSView *view in storyStack.arrangedSubviews) {
@@ -81,6 +90,7 @@
     
     for (int i=0; i < stories.count; i++) {
         TTNewsBlurStory *story = [[TTNewsBlurStory alloc] initWithStory:[stories objectAtIndex:i]];
+        story.feed = [feeds objectForKey:story.feedId];
         TTModeNewsStoryView *storyView = [[TTModeNewsStoryView alloc] initWithFrame:NSMakeRect(0, 0, storyWidth, NSHeight(self.frame))];
         [storyViews addObject:storyView];
         storyView.storyIndex = i;

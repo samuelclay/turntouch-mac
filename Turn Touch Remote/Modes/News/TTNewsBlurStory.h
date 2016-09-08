@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TTNewsBlurFeed.h"
 
 @interface TTNewsBlurStory : NSObject
 
@@ -14,6 +15,7 @@
 @property (nonatomic) NSString *storyContent;
 @property (nonatomic) NSString *originalText;
 @property (nonatomic) NSString *feedId;
+@property (nonatomic) TTNewsBlurFeed *feed;
 @property (nonatomic) NSString *storyAuthor;
 @property (nonatomic) NSArray *storyTags;
 @property (nonatomic) NSString *storyPermalink;

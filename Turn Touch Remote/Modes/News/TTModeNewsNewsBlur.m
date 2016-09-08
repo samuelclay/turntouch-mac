@@ -10,7 +10,7 @@
 
 @implementation TTModeNewsNewsBlur
 
-- (void)fetchRiverStories:(void (^)(NSArray *stories))callback {
+- (void)fetchRiverStories:(void (^)(NSArray *stories, NSArray *feeds))callback {
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://www.newsblur.com/reader/river_stories"]];
     
     __block NSDictionary *json;
@@ -22,7 +22,7 @@
 //         NSLog(@"Async JSON: %@", json);
          
          dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-             callback(json[@"stories"]);
+             callback(json[@"stories"], json[@"feeds"]);
          });
      }];
 }

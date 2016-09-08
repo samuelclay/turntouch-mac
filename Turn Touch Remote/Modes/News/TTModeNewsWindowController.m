@@ -81,6 +81,10 @@
     [NSAnimationContext endGrouping];
 }
 
+- (void)addFeeds:(NSArray *)stories {
+    [browserView addFeeds:stories];
+}
+
 - (void)addStories:(NSArray *)stories {
     [browserView addStories:stories];
 }
