@@ -64,10 +64,16 @@
     [appDelegate.bluetoothMonitor addObserver:self
                                    forKeyPath:@"nicknamedConnectedCount"
                                       options:0 context:nil];
-    
     [appDelegate.bluetoothMonitor addObserver:self
                                    forKeyPath:@"pairedDevicesCount"
                                       options:0 context:nil];
+    [appDelegate.bluetoothMonitor addObserver:self
+                                   forKeyPath:@"unpairedDevicesCount"
+                                      options:0 context:nil];
+    [appDelegate.bluetoothMonitor addObserver:self
+                                   forKeyPath:@"unpairedDevicesConnected"
+                                      options:0 context:nil];
+
 }
 
 - (void) observeValueForKeyPath:(NSString*)keyPath
@@ -80,12 +86,20 @@
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(pairedDevicesCount))]) {
         [self assembleDeviceTitles];
         [self setNeedsDisplay:YES];
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(unpairedDevicesCount))]) {
+        [self assembleDeviceTitles];
+        [self setNeedsDisplay:YES];
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(unpairedDevicesConnected))]) {
+        [self assembleDeviceTitles];
+        [self setNeedsDisplay:YES];
     }
 }
 
 - (void)dealloc {
     [self removeObserver:self forKeyPath:@"nicknamedConnectedCount"];
     [self removeObserver:self forKeyPath:@"pairedDevicesCount"];
+    [self removeObserver:self forKeyPath:@"unpairedDevicesCount"];
+    [self removeObserver:self forKeyPath:@"unpairedDevicesConnected"];
 }
 
 #pragma mark - Drawing
@@ -320,8 +334,7 @@
     self.isTransferring = YES;
     TTDeviceTitleView *dfuDeviceView = [self deviceInDFU];
     dispatch_async(dispatch_get_main_queue(), ^{
-        [dfuDeviceView.progress setIndeterminate:NO];
-        [dfuDeviceView.progress startAnimation:nil];
+        [dfuDeviceView startIndeterminateProgress];
         //        uploadButton.enabled = YES;
         //        [uploadButton setTitle:@"Cancel" forState:UIControlStateNormal];
         //        NSString *uploadStatusMessage = [self.dfuHelper getUploadStatusMessage];
@@ -374,9 +387,7 @@
     TTDeviceTitleView *dfuDeviceView = [self deviceInDFU];
     // Scanner uses other queue to send events. We must edit UI in the main queue
     dispatch_async(dispatch_get_main_queue(), ^{
-        [dfuDeviceView.progress setIndeterminate:NO];
-        [dfuDeviceView.progress startAnimation:nil];
-        [dfuDeviceView.progress setDoubleValue:(float)percentage];
+        [dfuDeviceView setProgressPercentage:(float)percentage];
     });
 }
 

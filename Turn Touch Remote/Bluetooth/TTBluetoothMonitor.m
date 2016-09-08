@@ -1022,6 +1022,9 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
     [preferences setObject:pairedDevices forKey:@"TT:devices:paired"];
     [preferences synchronize];
     
+    TTDevice *device = [foundDevices deviceForPeripheral:peripheral];
+    device.isPaired = [foundDevices isDevicePaired:device];
+    
     [buttonTimer resetPairingState];
     [self countDevices];
     [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];

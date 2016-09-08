@@ -185,7 +185,18 @@
     [changeButton setTitle:buttonText];
 }
 
+- (void)startIndeterminateProgress {
+    [progress setIndeterminate:NO];
+    [progress startAnimation:nil];
+    changeButton.hidden = YES;
+}
 
+- (void)setProgressPercentage:(CGFloat)percentage {
+    [progress setIndeterminate:NO];
+    [progress startAnimation:nil];
+    [progress setDoubleValue:percentage];
+    changeButton.hidden = YES;
+}
 
 #pragma mark - Mouse
 

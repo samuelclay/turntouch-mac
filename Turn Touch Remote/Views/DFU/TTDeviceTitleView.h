@@ -30,5 +30,7 @@
 - (instancetype)initWithDevice:(TTDevice *)_device;
 - (void)disableUpgrade;
 - (void)enableUpgrade;
+- (void)setProgressPercentage:(CGFloat)percentage;
+- (void)startIndeterminateProgress;
 
 @end
