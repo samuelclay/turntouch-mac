@@ -103,6 +103,7 @@
                        ofObject:(id)object
                          change:(NSDictionary*)change
                         context:(void*)context {
+    NSLog(@" ---> observe change: %@ / %d", keyPath, appDelegate.modeMap.activeModeDirection);
     if ([keyPath isEqualToString:NSStringFromSelector(@selector(inspectingModeDirection))]) {
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(hoverModeDirection))]) {
@@ -131,7 +132,7 @@
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
-//    NSLog(@"Diamond draw rect: %@", NSStringFromRect(dirtyRect));
+    NSLog(@"Diamond draw rect: %@", NSStringFromRect(dirtyRect));
     [super drawRect:dirtyRect];
 
     NSRect rect = self.bounds;
@@ -219,7 +220,7 @@
 - (void)colorPaths:(NSRect)rect {
     // TODO: This entire view needs to be split into a mode diamond and action diamond, since only
     //       the action diamond is interactive.
-//    NSLog(@"Color paths");
+    NSLog(@"Color paths");
     TTModeDirection activeModeDirection = (ignoreActiveMode || diamondType == DIAMOND_TYPE_INTERACTIVE) ? overrideActiveDirection : appDelegate.modeMap.activeModeDirection;
     TTModeDirection selectedModeDirection = ignoreSelectedMode ? overrideSelectedDirection : appDelegate.modeMap.selectedModeDirection;
     TTModeDirection inspectingModeDirection = appDelegate.modeMap.inspectingModeDirection;
@@ -246,6 +247,10 @@
         BOOL isInspectingDirection  = inspectingModeDirection == direction;
         BOOL isSelectedDirection    = selectedModeDirection == direction;
         BOOL isActiveDirection      = activeModeDirection == direction;
+        
+        if (direction == NORTH) {
+            NSLog(@" ---> North active: %d", appDelegate.modeMap.activeModeDirection);
+        }
         
         if (diamondType != DIAMOND_TYPE_INTERACTIVE) {
             isInspectingDirection = NO;

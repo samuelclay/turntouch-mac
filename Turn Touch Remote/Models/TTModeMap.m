@@ -214,8 +214,6 @@
     } else {
         [self runDirection:direction];
     }
-    
-    activeModeDirection = NO_DIRECTION;
 }
 
 - (void)runDirection:(TTModeDirection)direction {

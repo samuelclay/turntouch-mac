@@ -103,7 +103,7 @@
     } else if (anyButtonPressed) {
         // Press down button
 #if DEBUG_BUTTON_STATE
-        NSLog(@" ---> Press down button%@", previousButtonState.inMultitouch ? @" (multi-touch)" : @"");
+        NSLog(@" ---> Button down%@", previousButtonState.inMultitouch ? @" (multi-touch)" : @"");
 #endif
         previousButtonState = latestButtonState;
 
@@ -289,14 +289,13 @@
 }
 
 - (void)fireButton:(TTModeDirection)direction {
-//    [appDelegate.modeMap setActiveModeDirection:direction];
 #ifndef SKIP_BUTTON_ACTIONS
     if (!skipButtonActions) {
         [appDelegate.modeMap runActiveButton];
     }
 #endif
-//    [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];
-    
+    [appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];
+
     NSString *actionName = [appDelegate.modeMap.selectedMode actionNameInDirection:direction];
     [appDelegate.hudController toastActiveAction:actionName inDirection:direction];
 
