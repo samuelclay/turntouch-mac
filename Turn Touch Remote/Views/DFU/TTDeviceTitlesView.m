@@ -107,6 +107,7 @@
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
 
+    [self assembleDeviceTitles];
     [self drawBackground];
     
 }
