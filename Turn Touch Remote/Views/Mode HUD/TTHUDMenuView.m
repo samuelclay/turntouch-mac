@@ -171,6 +171,8 @@
 #pragma mark - NSTableView Delegate
 
 - (BOOL)isRowASpace:(NSInteger)row {
+    if (!self.menuOptions.count) return NO;
+    
     return [[[self.menuOptions objectAtIndex:row] objectForKey:@"identifier"] isEqualToString:@"space"];
 }
 

@@ -11,7 +11,10 @@
 @implementation TTModeNewsNewsBlur
 
 - (void)fetchRiverStories:(void (^)(NSArray *stories, NSArray *feeds))callback {
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://www.newsblur.com/reader/river_stories"]];
+//    NSString *path = @"/reader/river_stories?include_feeds=true";
+    NSString *path = @"/reader/feed/107?include_feeds=true";
+    
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", NEWSBLUR_HOST, path]]];
     
     __block NSDictionary *json;
     [NSURLConnection

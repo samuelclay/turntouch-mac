@@ -172,7 +172,7 @@
     return @"TTModeNewsScrollUp";
 }
 - (NSString *)defaultEast {
-    return @"TTModeNewsNextSite";
+    return @"TTModeNewsNextStory";
 }
 - (NSString *)defaultWest {
     return @"TTModeNewsMenu";

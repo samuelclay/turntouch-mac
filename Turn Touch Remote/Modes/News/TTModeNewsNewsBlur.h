@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define NEWSBLUR_HOST [NSString stringWithFormat:@"http://nb.local.com"]
+
 @interface TTModeNewsNewsBlur : NSObject
 
 - (void)fetchRiverStories:(void (^)(NSArray *stories, NSArray *feeds))callback;

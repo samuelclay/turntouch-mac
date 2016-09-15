@@ -28,7 +28,7 @@
 
 - (void)setUp {
     [super setUp];
-    appDelegate = [NSApp delegate];
+    appDelegate = (TTAppDelegate *)[NSApp delegate];
     buttonTimer = appDelegate.bluetoothMonitor.buttonTimer;
     buttonTimer.skipButtonActions = YES;
     

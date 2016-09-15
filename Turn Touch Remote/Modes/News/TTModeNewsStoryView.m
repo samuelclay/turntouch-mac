@@ -9,6 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "TTModeNewsStoryView.h"
 #import "TTNewsBlurUtilities.h"
+#import "TTModeNewsFeedView.h"
 
 @implementation TTModeNewsStoryView
 
@@ -34,6 +35,7 @@
         webView = [[WebView alloc] init];
         webView.translatesAutoresizingMaskIntoConstraints = NO;
         webView.resourceLoadDelegate = self;
+        
 //        webView.drawsBackground = NO;
         [self addSubview:webView];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:webView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1. constant:0]];
@@ -63,7 +65,7 @@
 }
 
 - (void)blurStory {
-    NSLog(@"Blurring: %@", story.storyTitle);
+    // NSLog(@"Blurring: %@", story.storyTitle);
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
     animation.fromValue = [NSNumber numberWithFloat:self.layer.opacity];
     animation.toValue = [NSNumber numberWithFloat:0.1f];
@@ -75,7 +77,7 @@
 }
 
 - (void)focusStory {
-    NSLog(@"Focusing: %@", story.storyTitle);
+    // NSLog(@"Focusing: %@", story.storyTitle);
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
     animation.fromValue = [NSNumber numberWithFloat:self.layer.opacity];
     animation.toValue = [NSNumber numberWithFloat:1.f];
@@ -125,6 +127,8 @@
 #pragma mark - Loading URLs
 
 - (void)loadStory {
+    [self loadFeedTitle];
+    
     loadingSpinner.hidden = YES;
 //    NSString *shareBarString = [self getShareBar];
 //    NSString *commentString = [self getComments];
@@ -256,6 +260,19 @@
     }
     
     [webView stringByEvaluatingJavaScriptFromString:@"window.$TT = jQuery = jQuery.noConflict(true);"];
+}
+
+- (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame {
+    //get the scroll view that contains the frame contents
+    NSScrollView* scrollView = [[[[webView mainFrame] frameView] documentView] enclosingScrollView];
+    [[scrollView verticalScroller] setControlSize: NSSmallControlSize];
+    [[scrollView horizontalScroller] setControlSize: NSSmallControlSize];
+}
+
+- (void)loadFeedTitle {
+    TTModeNewsFeedView *feedTitleView = [[TTModeNewsFeedView alloc] initWithFeed:story.feed inFrame:NSMakeRect(0, NSMaxY(self.bounds)-48, NSWidth(self.bounds), 48)];
+    feedTitleView.autoresizingMask = NSViewWidthSizable;
+    [self addSubview:feedTitleView];
 }
 
 #pragma mark -

@@ -8,6 +8,7 @@
 
 #import "TTAppDelegate.h"
 #import <dispatch/dispatch.h>
+#import "LaunchAtLoginController.h"
 
 @implementation TTAppDelegate
 
@@ -52,6 +53,11 @@ void *kContextActivePanel = &kContextActivePanel;
     
     self.menubarController.hasActiveIcon = NO;
     self.panelController.hasActivePanel = NO;
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        LaunchAtLoginController *launchController = [[LaunchAtLoginController alloc] init];
+        [launchController setLaunchAtLogin:YES];
+    });
     
     // Useful for debugging:
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

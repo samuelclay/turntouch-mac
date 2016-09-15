@@ -7,6 +7,7 @@
 //
 
 #import "TTNewsBlurFeed.h"
+#import "TTModeNewsNewsBlur.h"
 
 @implementation TTNewsBlurFeed
 
@@ -16,15 +17,17 @@
 @synthesize faviconColor;
 @synthesize faviconBorder;
 @synthesize faviconTextColor;
+@synthesize faviconUrl;
 
 - (instancetype)initWithFeed:(NSDictionary *)feedDict {
     if (self = [super init]) {
         feedTitle = feedDict[@"feed_title"];
-        feedId = feedDict[@"feedId"];
-        faviconFade = feedDict[@"faviconFade"];
-        faviconColor = feedDict[@"faviconColor"];
-        faviconBorder = feedDict[@"faviconBorder"];
-        faviconTextColor = feedDict[@"faviconTextColor"];
+        feedId = feedDict[@"id"];
+        faviconFade = feedDict[@"favicon_fade"];
+        faviconColor = feedDict[@"favicon_color"];
+        faviconBorder = feedDict[@"favicon_border"];
+        faviconTextColor = feedDict[@"favicon_text_color"];
+        faviconUrl = [NSString stringWithFormat:@"%@%@", NEWSBLUR_HOST, feedDict[@"favicon_url"]];
     }
     
     return self;

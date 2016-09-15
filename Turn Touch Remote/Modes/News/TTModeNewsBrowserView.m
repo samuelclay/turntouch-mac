@@ -1,4 +1,4 @@
-//
+ //
 //  TTModeNewsBrowserView.m
 //  Turn Touch Remote
 //
@@ -65,11 +65,13 @@
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
     
     CGFloat offset = NSWidth(mainScreen.frame)/2 - currentStoryIndex*(storyWidth+64) - storyWidth/2;
-    [stackOffsetConstraint animator].constant = offset;
+    [stackOffsetConstraint animator].constant = -4096;//offset;
     [NSAnimationContext endGrouping];
 }
 
 - (void)addFeeds:(NSArray *)newFeeds {
+    if (!feeds) feeds = [NSMutableDictionary dictionary];
+    
     for (NSDictionary *feedDict in newFeeds) {
         TTNewsBlurFeed *feed = [[TTNewsBlurFeed alloc] initWithFeed:feedDict];
         [feeds setObject:feed forKey:feed.feedId];

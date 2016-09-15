@@ -16,6 +16,7 @@
 @property (nonatomic) NSString *faviconFade;
 @property (nonatomic) NSString *faviconBorder;
 @property (nonatomic) NSString *faviconTextColor;
+@property (nonatomic) NSString *faviconUrl;
 
 - (instancetype)initWithFeed:(NSDictionary *)feedDict;
 

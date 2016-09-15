@@ -421,7 +421,7 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
     volumeFadeTimer = [[NSTimer alloc] initWithFireDate:volumeBumpDate
                                                interval:0.f
                                                  target:self
-                                               selector:@selector(fadeVolumeOut)
+                                               selector:@selector(fadeVolumeDown)
                                                userInfo:nil repeats:NO];
     [runner addTimer:volumeFadeTimer forMode: NSDefaultRunLoopMode];
     NSLog(@"Bumping volume: %f", volumeFadeMultiplier);

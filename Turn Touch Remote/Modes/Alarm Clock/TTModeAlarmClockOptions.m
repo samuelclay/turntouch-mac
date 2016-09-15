@@ -73,7 +73,7 @@ NSUInteger const kOnetimeHeight = 68;
     
     // Set onetime alarm date and time
     datePicker.delegate = self;
-    [datePicker sendActionOn:NSLeftMouseDown];
+    [datePicker sendActionOn:NSEventMaskLeftMouseDown];
     [datePicker setDateValue:oneTimeAlarmDate];
     [sliderOnetimeTime setIntegerValue:onetimeAlarmTime];
     

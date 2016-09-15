@@ -11,7 +11,7 @@
 @implementation TTModeHUDWindow
 
 - (instancetype)initWithContentRect:(NSRect)contentRect
-                          styleMask:(NSUInteger)aStyle
+                          styleMask:(NSWindowStyleMask)aStyle
                             backing:(NSBackingStoreType)bufferingType
                               defer:(BOOL)flag {
     if (self = [super initWithContentRect:NSZeroRect styleMask:aStyle backing:bufferingType defer:flag]) {

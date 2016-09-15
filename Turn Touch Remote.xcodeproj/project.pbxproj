@@ -256,6 +256,7 @@
 		FF8D1AB31C9902F8006AA1A2 /* TTModalSupportView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF8D1AB11C9902F8006AA1A2 /* TTModalSupportView.xib */; };
 		FF8D1AB51C9A4050006AA1A2 /* modal_success.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8D1AB41C9A4050006AA1A2 /* modal_success.png */; };
 		FF8D1ABB1C9B3C54006AA1A2 /* NSString+TTEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8D1ABA1C9B3C54006AA1A2 /* NSString+TTEncoding.m */; };
+		FF9006331D8A1B89008A65AD /* TTModeNewsFeedView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9006321D8A1B89008A65AD /* TTModeNewsFeedView.m */; };
 		FF904B391BE9B78800AD00F3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF904B381BE9B78800AD00F3 /* Images.xcassets */; };
 		FF904B3C1BE9B7F500AD00F3 /* TTActionHUDWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B3B1BE9B7F500AD00F3 /* TTActionHUDWindowController.m */; };
 		FF904B3F1BE9B80100AD00F3 /* TTModeHUDWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B3E1BE9B80100AD00F3 /* TTModeHUDWindowController.m */; };
@@ -349,6 +350,7 @@
 		FFBD47001D5BD9E300838AAC /* styles in Resources */ = {isa = PBXBuildFile; fileRef = FFBD46FF1D5BD9E300838AAC /* styles */; };
 		FFC730E51B0673E9003538D5 /* TTModeHueRandomOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFC730E41B0673E9003538D5 /* TTModeHueRandomOptions.xib */; };
 		FFC730E81B067434003538D5 /* TTModeHueRandomOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC730E71B067434003538D5 /* TTModeHueRandomOptions.m */; };
+		FFCFCFBA1D88D9CE00FBC3E7 /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFCFCFB81D88D9CE00FBC3E7 /* LaunchAtLoginController.m */; };
 		FFD62CCE194F935D0093004D /* TTSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD62CCD194F935D0093004D /* TTSegmentedCell.m */; };
 		FFD62CD11950EE770093004D /* TTSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD62CD01950EE770093004D /* TTSegmentedControl.m */; };
 		FFE0B3D01AD70DC600FC6080 /* logo_with_title.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE0B3CF1AD70DC600FC6080 /* logo_with_title.png */; };
@@ -770,6 +772,8 @@
 		FF8D1AB41C9A4050006AA1A2 /* modal_success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_success.png; sourceTree = "<group>"; };
 		FF8D1AB91C9B3C54006AA1A2 /* NSString+TTEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+TTEncoding.h"; path = "Categories/NSString+TTEncoding.h"; sourceTree = "<group>"; };
 		FF8D1ABA1C9B3C54006AA1A2 /* NSString+TTEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+TTEncoding.m"; path = "Categories/NSString+TTEncoding.m"; sourceTree = "<group>"; };
+		FF9006311D8A1B89008A65AD /* TTModeNewsFeedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeNewsFeedView.h; path = Modes/News/TTModeNewsFeedView.h; sourceTree = "<group>"; };
+		FF9006321D8A1B89008A65AD /* TTModeNewsFeedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeNewsFeedView.m; path = Modes/News/TTModeNewsFeedView.m; sourceTree = "<group>"; };
 		FF904B381BE9B78800AD00F3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Resources/Images.xcassets; sourceTree = "<group>"; };
 		FF904B3A1BE9B7F500AD00F3 /* TTActionHUDWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTActionHUDWindowController.h; path = "Turn Touch Remote/Controllers/TTActionHUDWindowController.h"; sourceTree = SOURCE_ROOT; };
 		FF904B3B1BE9B7F500AD00F3 /* TTActionHUDWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTActionHUDWindowController.m; path = "Turn Touch Remote/Controllers/TTActionHUDWindowController.m"; sourceTree = SOURCE_ROOT; };
@@ -941,6 +945,8 @@
 		FFC730E61B067434003538D5 /* TTModeHueRandomOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeHueRandomOptions.h; sourceTree = "<group>"; };
 		FFC730E71B067434003538D5 /* TTModeHueRandomOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeHueRandomOptions.m; sourceTree = "<group>"; };
 		FFC9FE971D022AED00038817 /* ReceiptValidation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ReceiptValidation.h; path = "Supporting Files/ReceiptValidation.h"; sourceTree = "<group>"; };
+		FFCFCFB71D88D9CE00FBC3E7 /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchAtLoginController.h; sourceTree = "<group>"; };
+		FFCFCFB81D88D9CE00FBC3E7 /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchAtLoginController.m; sourceTree = "<group>"; };
 		FFD62CCC194F935D0093004D /* TTSegmentedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSegmentedCell.h; path = "Views/Mode Options/TTSegmentedCell.h"; sourceTree = "<group>"; };
 		FFD62CCD194F935D0093004D /* TTSegmentedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSegmentedCell.m; path = "Views/Mode Options/TTSegmentedCell.m"; sourceTree = "<group>"; };
 		FFD62CCF1950EE770093004D /* TTSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSegmentedControl.h; path = "Views/Mode Options/TTSegmentedControl.h"; sourceTree = "<group>"; };
@@ -1848,6 +1854,7 @@
 				FF1F13551ADC90E700B52A0D /* MLCalendar */,
 				FF01CA861C473EC100F83A73 /* readability */,
 				FF73058E1A5C9C76009A852D /* Hue */,
+				FFCFCFB61D88D9CE00FBC3E7 /* LaunchAtLoginController */,
 				FF1B02291A36898700BE764E /* NSObject+CancelableBlocks.h */,
 				FF1B022A1A36898700BE764E /* NSObject+CancelableBlocks.m */,
 				FF5296061AD61E74007DDC02 /* NSDate+TimeAgo.h */,
@@ -1941,6 +1948,8 @@
 				FF79C58A1D5815D5006C75C9 /* TTModeNewsBrowserView.m */,
 				FF97E4691D594B3700141BFB /* TTModeNewsStoryView.h */,
 				FF97E46A1D594B3700141BFB /* TTModeNewsStoryView.m */,
+				FF9006311D8A1B89008A65AD /* TTModeNewsFeedView.h */,
+				FF9006321D8A1B89008A65AD /* TTModeNewsFeedView.m */,
 				FF79C58C1D5815ED006C75C9 /* TTModeNewsMenuView.h */,
 				FF79C58D1D5815ED006C75C9 /* TTModeNewsMenuView.m */,
 				FFBD46FC1D5AB5E100838AAC /* TTNewsBlurUtilities.h */,
@@ -1999,6 +2008,15 @@
 				FF01CA2A1C4613C500F83A73 /* Safari.h */,
 			);
 			name = Web;
+			sourceTree = "<group>";
+		};
+		FFCFCFB61D88D9CE00FBC3E7 /* LaunchAtLoginController */ = {
+			isa = PBXGroup;
+			children = (
+				FFCFCFB71D88D9CE00FBC3E7 /* LaunchAtLoginController.h */,
+				FFCFCFB81D88D9CE00FBC3E7 /* LaunchAtLoginController.m */,
+			);
+			path = LaunchAtLoginController;
 			sourceTree = "<group>";
 		};
 		FFE2D47A1A46404C00DDD413 /* Categories */ = {
@@ -2161,7 +2179,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = TT;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Turn Touch";
 				TargetAttributes = {
 					FF8C833217AB14B5000166FC = {
@@ -2380,6 +2398,7 @@
 				FF557AB51C49C63D005FB7FD /* NestAuthManager.m in Sources */,
 				FF01CAAA1C473EC100F83A73 /* NSString+JXRemoving.m in Sources */,
 				FF904B4B1BE9B82200AD00F3 /* hid.c in Sources */,
+				FF9006331D8A1B89008A65AD /* TTModeNewsFeedView.m in Sources */,
 				FF904B7A1BE9B88700AD00F3 /* FileOperations.m in Sources */,
 				FF79C58E1D5815ED006C75C9 /* TTModeNewsMenuView.m in Sources */,
 				FF557ABC1C49C6A8005FB7FD /* TTModeNestOptions.m in Sources */,
@@ -2503,6 +2522,7 @@
 				FFAFCBC519130F520058B9CB /* TTPanelArrowView.m in Sources */,
 				FFA8EA9D190F07A500679A4D /* TTModeTab.m in Sources */,
 				FF2C2E481C53077300FAD7E2 /* GCDAsyncSocket.m in Sources */,
+				FFCFCFBA1D88D9CE00FBC3E7 /* LaunchAtLoginController.m in Sources */,
 				FF7305AF1A5C9C76009A852D /* DDASLLogger.m in Sources */,
 				FF6A37D01A9AEC9F006F3756 /* NSDate+Extras.m in Sources */,
 				FF76AD121C1F86A900A6ED97 /* TTSliderCell.m in Sources */,
@@ -2610,16 +2630,22 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -2628,7 +2654,9 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2643,18 +2671,26 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				SDKROOT = macosx;
@@ -2666,7 +2702,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Turn Touch Remote/Supporting Files/Turn Touch Remote.entitlements";
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2697,7 +2733,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Turn Touch Remote/Supporting Files/Turn Touch Remote.entitlements";
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2804,15 +2840,21 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -2822,7 +2864,9 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2835,7 +2879,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Turn Touch Remote/Supporting Files/Turn Touch Remote.entitlements";
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
