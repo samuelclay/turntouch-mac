@@ -227,7 +227,7 @@ body.NB-iphone {
 .NB-story-title {
     clear: left;
     font-size: 1.2em;
-    margin: .2em 0 .4em;
+    margin: .4em 0 .4em;
     color: #313330;
 }
 
@@ -235,7 +235,7 @@ body.NB-iphone {
     padding-top: 9px;
 }
 .NB-river .NB-story-title {
-    padding-top: 20px;
+    padding-top: 36px;
 }
 
 .NB-story-title-positive {

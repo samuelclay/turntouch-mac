@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define NEWSBLUR_HOST [NSString stringWithFormat:@"http://nb.local.com"]
+#define NEWSBLUR_HOST [NSString stringWithFormat:@"http://www.newsblur.com"]
 
 @interface TTModeNewsNewsBlur : NSObject
 

@@ -65,7 +65,7 @@
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
     
     CGFloat offset = NSWidth(mainScreen.frame)/2 - currentStoryIndex*(storyWidth+64) - storyWidth/2;
-    [stackOffsetConstraint animator].constant = -4096;//offset;
+    [stackOffsetConstraint animator].constant = offset;
     [NSAnimationContext endGrouping];
 }
 
@@ -126,7 +126,7 @@
     currentStoryIndex += diff;
     
     NSScreen *mainScreen = [[NSScreen screens] objectAtIndex:0];
-    CGFloat openDuration = 0.65f;
+    CGFloat openDuration = 0.65f;// * 4;
     
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:openDuration];

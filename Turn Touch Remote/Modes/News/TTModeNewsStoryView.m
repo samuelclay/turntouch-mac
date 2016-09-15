@@ -69,7 +69,7 @@
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
     animation.fromValue = [NSNumber numberWithFloat:self.layer.opacity];
     animation.toValue = [NSNumber numberWithFloat:0.1f];
-    animation.duration = 0.3f;
+    animation.duration = 0.3f;// * 4;
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     [self.layer addAnimation:animation forKey:@"opacity"];
     self.layer.opacity = 0.1f;
@@ -81,7 +81,7 @@
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
     animation.fromValue = [NSNumber numberWithFloat:self.layer.opacity];
     animation.toValue = [NSNumber numberWithFloat:1.f];
-    animation.duration = 0.65f;
+    animation.duration = 0.65f;// * 4;
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     [self.layer addAnimation:animation forKey:@"opacity"];
     self.layer.opacity = 1.f;
@@ -184,10 +184,10 @@
                     "<meta name=\"viewport\" id=\"viewport\" content=\"width=%d, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no\"/>",
                     resourcePath, contentWidth];
     footerString = [NSString stringWithFormat:@
-                    "<script src=\"%@/scripts/zepto-1.1.6.js\"></script>"
+                    "<script src=\"%@/scripts/jquery-2.0.3.js\"></script>"
                     "<script src=\"%@/scripts/fitvid.js\"></script>"
-                    "<script src=\"%@/scripts/storyDetailView.js\"></script>"
-                    "<script src=\"%@/scripts/fastTouch.js\"></script>", resourcePath, resourcePath, resourcePath, resourcePath];
+                    "<script src=\"%@/scripts/velocity.min.js\"></script>"
+                    "<script src=\"%@/scripts/storyDetailView.js\"></script>", resourcePath, resourcePath, resourcePath, resourcePath];
     
     NSString *storyHeader = [self getHeader];
     
@@ -252,14 +252,6 @@
     }
 
     [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.documentElement.style.zoom = \"%f\"", browserView.zoomFactor]];
-    
-    for (NSString *scriptName in @[@"jquery-2.0.3.js"]) {
-        NSString *jQueryFile = [NSString stringWithFormat:@"%@/scripts/%@", [[NSBundle mainBundle] resourcePath], scriptName];
-        NSString *jQuery = [NSString stringWithContentsOfFile:jQueryFile encoding:NSUTF8StringEncoding error:nil];
-        [webView stringByEvaluatingJavaScriptFromString:jQuery];
-    }
-    
-    [webView stringByEvaluatingJavaScriptFromString:@"window.$TT = jQuery = jQuery.noConflict(true);"];
 }
 
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame {
@@ -799,15 +791,19 @@
 
 - (NSInteger)scrollAmount {
     NSScreen *mainScreen = [[NSScreen screens] objectAtIndex:0];
-    return NSHeight(mainScreen.frame) / 3;
+    return NSHeight(mainScreen.frame) / 4;
 }
 
 - (void)scrollUp {
-    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"$TT('body').stop().animate({scrollTop:%ld}, 150, 'swing')", self.currentScroll - self.scrollAmount]];
+    [self scroll:-1*self.scrollAmount duration:200];
 }
 
 - (void)scrollDown {
-    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"$TT('body').stop().animate({scrollTop:%ld}, 200, 'swing')", self.currentScroll + self.scrollAmount]];
+    [self scroll:self.scrollAmount duration:360];
+}
+
+- (void)scroll:(NSInteger)amount duration:(NSInteger)duration {
+    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"$('body').velocity('stop').velocity('scroll', {duration: %ld, easing: 'easeOutCubic', queue: false, offset: $('body').scrollTop() + %ld}); console.log(['velocity', $('body').scrollTop(), $('body').velocity()]);", duration, amount]];
 }
 
 - (void)zoomIn {
