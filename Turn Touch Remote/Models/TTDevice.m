@@ -39,7 +39,7 @@
 }
 
 - (NSString *)stateLabel {
-    return self.state == TTDeviceStateConnected ? @"connected" :
+    return self.state == TTDeviceStateConnected ? (self.isPaired ? @"connected" : @"pairing") :
     self.state == TTDeviceStateSearching ? @"searching" :
     self.state == TTDeviceStateConnecting ? @"connecting" : @"X";
 }

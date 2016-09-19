@@ -111,6 +111,12 @@
                                          (NSHeight(self.frame)/2) - (stateSize.height/2));
         [device.stateLabel drawAtPoint:statePoint withAttributes:stateAttributes];
     }
+    
+    if (device.state == TTDeviceStateConnected) {
+        self.alphaValue = 1.0;
+    } else {
+        self.alphaValue = 0.6f;
+    }
 }
 
 - (void)drawBackground {
