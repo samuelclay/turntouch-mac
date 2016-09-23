@@ -38,9 +38,9 @@ void *kContextActivePanel = &kContextActivePanel;
 #pragma mark - NSApplicationDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
-    NSString *defaultPrefsFile = [[NSBundle mainBundle] pathForResource:@"defaults" ofType:@"plist"];
-    NSDictionary *defaultPreferences = [NSDictionary dictionaryWithContentsOfFile:defaultPrefsFile];
-    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultPreferences];
+    
+//    [self erasePreferences];
+    [self loadPreferences];
     
     // Install icon into the menu bar
     self.bluetoothMonitor = [[TTBluetoothMonitor alloc] init];
@@ -57,6 +57,12 @@ void *kContextActivePanel = &kContextActivePanel;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         LaunchAtLoginController *launchController = [[LaunchAtLoginController alloc] init];
         [launchController setLaunchAtLogin:YES];
+    });
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if ([self.bluetoothMonitor noKnownDevices]) {
+            [self.panelController openModal:MODAL_PAIRING_INTRO];
+        }
     });
     
     // Useful for debugging:
@@ -154,6 +160,18 @@ void *kContextActivePanel = &kContextActivePanel;
                                              selector:@selector(receiveSysTimeChangedNotification:)
                                                  name:NSSystemClockDidChangeNotification
                                                object:nil];
+}
+
+#pragma mark - Preferences
+
+- (void)loadPreferences {
+    NSString *defaultPrefsFile = [[NSBundle mainBundle] pathForResource:@"defaults" ofType:@"plist"];
+    NSDictionary *defaultPreferences = [NSDictionary dictionaryWithContentsOfFile:defaultPrefsFile];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultPreferences];
+}
+
+- (void)erasePreferences {
+    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:[NSBundle mainBundle].bundleIdentifier];
 }
 
 @end

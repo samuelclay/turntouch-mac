@@ -443,6 +443,21 @@
         return;
     }
     
+    NSPoint location = [theEvent locationInWindow];
+    NSPoint center = [self convertPoint:location fromView:nil];
+    
+    if ([northPathTop containsPoint:center] || [northPathBottom containsPoint:center]) {
+        overrideActiveDirection = NORTH;
+    } else if ([eastPathTop containsPoint:center] || [eastPathBottom containsPoint:center]) {
+        overrideActiveDirection = EAST;
+    } else if ([westPathTop containsPoint:center] || [westPathBottom containsPoint:center]) {
+        overrideActiveDirection = WEST;
+    } else if ([southPathTop containsPoint:center] || [southPathBottom containsPoint:center]) {
+        overrideActiveDirection = SOUTH;
+    } else {
+        overrideActiveDirection = NO_DIRECTION;
+    }
+    
     [self mouseMovement:theEvent hovering:YES];
 }
 

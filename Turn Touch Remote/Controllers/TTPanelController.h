@@ -11,6 +11,7 @@
 #import "TTStatusItemView.h"
 #import "TTPanelDelegate.h"
 #import "TTPanelArrowView.h"
+#import "TTPanelStates.h"
 
 #pragma mark -
 
@@ -33,5 +34,6 @@
 
 - (void)openPanel;
 - (BOOL)closePanel;
+- (void)openModal:(TTModalPairing)modal;
 
 @end

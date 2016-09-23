@@ -55,6 +55,8 @@
         self.dfuHelper = [[DFUHelper alloc] initWithData:dfuOperations];
         
         border = [[TTBorder alloc] init];
+        
+        [self assembleDeviceTitles];
     }
 
     return self;
@@ -107,9 +109,7 @@
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
 
-    [self assembleDeviceTitles];
     [self drawBackground];
-    
 }
 
 - (void)drawBackground {

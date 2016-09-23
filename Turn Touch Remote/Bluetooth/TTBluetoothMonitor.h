@@ -73,5 +73,6 @@ typedef enum {
 - (void)setDeviceLatency:(NSInteger)latency;
 - (void)setModeDuration:(NSInteger)duration;
 - (void)writeNickname:(NSString *)newNickname toDevice:(TTDevice *)device;
+- (BOOL)noKnownDevices;
 
 @end

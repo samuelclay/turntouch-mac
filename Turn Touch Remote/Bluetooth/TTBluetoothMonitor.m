@@ -411,14 +411,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 
         BOOL noPairedDevices = ![foundDevices totalPairedCount];
         if (noPairedDevices) {
-            // This is a hack, but the panelController doesn't have a backgroundView if it hasn't
-            // been opened yet, so only open it if it hasn't been opened.
-            if (!appDelegate.panelController.backgroundView) {
-                [appDelegate openPanel];
-            }
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [appDelegate.panelController.backgroundView switchPanelModalPairing:MODAL_PAIRING_INTRO];                
-            });
+            [appDelegate.panelController openModal:MODAL_PAIRING_INTRO];
         }
     }
 
@@ -1071,6 +1064,10 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
     }
     
     [self stopScan];
+}
+
+- (BOOL)noKnownDevices {
+    return [self knownPeripheralIdentifiers].count == 0;
 }
 
 #pragma mark - Convenience methods
