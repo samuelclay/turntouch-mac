@@ -10,7 +10,7 @@
 		</data>
 		<key>Resources/Autoupdate.app/Contents/MacOS/Autoupdate</key>
 		<data>
-		bIbBuri58FxBADuIqLv8I9nSMqY=
+		6Wry5wTMy/BdWMVzDmLIqWYwXQE=
 		</data>
 		<key>Resources/Autoupdate.app/Contents/PkgInfo</key>
 		<data>
@@ -267,10 +267,6 @@
 			<key>optional</key>
 			<true/>
 		</dict>
-		<key>Resources/Autoupdate.app/Contents/_CodeSignature/CodeResources</key>
-		<data>
-		EornVr9L8kzTQycMsuOhvIboCT8=
-		</data>
 		<key>Resources/Info.plist</key>
 		<data>
 		i6fKlQry21r/wM10bbXRht7lqEI=
@@ -1273,11 +1269,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			bIbBuri58FxBADuIqLv8I9nSMqY=
+			6Wry5wTMy/BdWMVzDmLIqWYwXQE=
 			</data>
 			<key>hash2</key>
 			<data>
-			RKkUtDs3tY0xUr8x5O+wWfbmwQhrMh54VCZKUyvqXTY=
+			8kUcru2dl0cmSqO9InWNmRLgqLWPeBye2z5UGOuqPmk=
 			</data>
 		</dict>
 		<key>Resources/Autoupdate.app/Contents/PkgInfo</key>
@@ -1663,17 +1659,6 @@
 			</data>
 			<key>optional</key>
 			<true/>
-		</dict>
-		<key>Resources/Autoupdate.app/Contents/_CodeSignature/CodeResources</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			EornVr9L8kzTQycMsuOhvIboCT8=
-			</data>
-			<key>hash2</key>
-			<data>
-			l+fZfgxmJIIsP7us8dHukIdwLmvqeMzj6wXfKgYnyWY=
-			</data>
 		</dict>
 		<key>Resources/Info.plist</key>
 		<dict>
@@ -3141,6 +3126,11 @@
 			<key>weight</key>
 			<real>1100</real>
 		</dict>
+		<key>^Resources/Base\.lproj/</key>
+		<dict>
+			<key>weight</key>
+			<real>1010</real>
+		</dict>
 		<key>^version.plist$</key>
 		<true/>
 	</dict>
@@ -3199,6 +3189,11 @@
 			<true/>
 			<key>weight</key>
 			<real>1100</real>
+		</dict>
+		<key>^Resources/Base\.lproj/</key>
+		<dict>
+			<key>weight</key>
+			<real>1010</real>
 		</dict>
 		<key>^[^/]+$</key>
 		<dict>
