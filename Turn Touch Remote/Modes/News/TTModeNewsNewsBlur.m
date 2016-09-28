@@ -11,9 +11,9 @@
 @implementation TTModeNewsNewsBlur
 
 - (void)fetchRiverStories:(void (^)(NSArray *stories, NSArray *feeds))callback {
-//    NSString *path = @"/reader/river_stories?include_feeds=true";
+    NSString *path = @"/reader/river_stories?include_feeds=true";
 //    NSString *path = @"/reader/feed/107?include_feeds=true";
-    NSString *path = @"/reader/feed/39?include_feeds=true";
+//    NSString *path = @"/reader/feed/39?include_feeds=true";
     
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", NEWSBLUR_HOST, path]]];
     

@@ -69,7 +69,7 @@
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
     animation.fromValue = [NSNumber numberWithFloat:self.layer.opacity];
     animation.toValue = [NSNumber numberWithFloat:0.1f];
-    animation.duration = 0.3f;// * 4;
+    animation.duration = 0.3f;// * 5;
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     [self.layer addAnimation:animation forKey:@"opacity"];
     self.layer.opacity = 0.1f;
@@ -81,7 +81,7 @@
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
     animation.fromValue = [NSNumber numberWithFloat:self.layer.opacity];
     animation.toValue = [NSNumber numberWithFloat:1.f];
-    animation.duration = 0.65f;// * 4;
+    animation.duration = 0.65f;// * 5;
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     [self.layer addAnimation:animation forKey:@"opacity"];
     self.layer.opacity = 1.f;

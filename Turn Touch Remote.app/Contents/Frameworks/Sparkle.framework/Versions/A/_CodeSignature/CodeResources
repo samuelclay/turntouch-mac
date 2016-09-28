@@ -10,7 +10,7 @@
 		</data>
 		<key>Resources/Autoupdate.app/Contents/MacOS/Autoupdate</key>
 		<data>
-		6Wry5wTMy/BdWMVzDmLIqWYwXQE=
+		aH3+o18IkeioG9rzw8wUCyEiez8=
 		</data>
 		<key>Resources/Autoupdate.app/Contents/PkgInfo</key>
 		<data>
@@ -267,6 +267,10 @@
 			<key>optional</key>
 			<true/>
 		</dict>
+		<key>Resources/Autoupdate.app/Contents/_CodeSignature/CodeResources</key>
+		<data>
+		NyUfOEPH6E1bO/UrT/sLnbyaw8w=
+		</data>
 		<key>Resources/Info.plist</key>
 		<data>
 		i6fKlQry21r/wM10bbXRht7lqEI=
@@ -1269,11 +1273,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			6Wry5wTMy/BdWMVzDmLIqWYwXQE=
+			aH3+o18IkeioG9rzw8wUCyEiez8=
 			</data>
 			<key>hash2</key>
 			<data>
-			8kUcru2dl0cmSqO9InWNmRLgqLWPeBye2z5UGOuqPmk=
+			d45OXiQhP7raw+8CWlX0ommpl0xt6i9+CN3RVTMqG6A=
 			</data>
 		</dict>
 		<key>Resources/Autoupdate.app/Contents/PkgInfo</key>
@@ -1659,6 +1663,17 @@
 			</data>
 			<key>optional</key>
 			<true/>
+		</dict>
+		<key>Resources/Autoupdate.app/Contents/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			NyUfOEPH6E1bO/UrT/sLnbyaw8w=
+			</data>
+			<key>hash2</key>
+			<data>
+			o8ZyZl9aTqRPNkkQbpxPscJ8BRGPMiESDZbgRrSmqnk=
+			</data>
 		</dict>
 		<key>Resources/Info.plist</key>
 		<dict>

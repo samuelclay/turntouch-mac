@@ -1,4 +1,4 @@
- //
+//
 //  TTModeNewsBrowserView.m
 //  Turn Touch Remote
 //
@@ -126,7 +126,7 @@
     currentStoryIndex += diff;
     
     NSScreen *mainScreen = [[NSScreen screens] objectAtIndex:0];
-    CGFloat openDuration = 0.65f;// * 4;
+    CGFloat openDuration = 0.65f;// * 5;
     
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:openDuration];
