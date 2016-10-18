@@ -46,8 +46,8 @@
     [super drawRect:dirtyRect];
     
     // Background
-//    [NSColorFromRGB(0xFFFFFF) set];
-//    NSRectFill(self.bounds);
+    [NSColorFromRGB(0xFCFCFC) set];
+    NSRectFill(self.bounds);
     
     // Mode image
     NSString *imageFilename = [[mode class] imageName];
@@ -69,10 +69,16 @@
 
     if (!batchAction) return;
     
+    // Action diamond
+    NSSize diamondSize = NSMakeSize(18 * 1.3, 18);
+    NSPoint diamondPoint = NSMakePoint(NSMinX(self.frame) + BATCH_ACTION_HEADER_MARGIN + 116,
+                                       NSMaxY(self.bounds)/2 - floor(diamondSize.height)/2);
+    [diamondView setFrame:NSMakeRect(diamondPoint.x, diamondPoint.y, diamondSize.width, diamondSize.height)];
+
     // Action title
     NSString *actionName = [mode titleForAction:batchAction.actionName buttonMoment:BUTTON_MOMENT_PRESSUP];
     NSSize actionSize = [actionName sizeWithAttributes:titleAttributes];
-    NSPoint actionPoint = NSMakePoint(NSMinX(self.frame) + BATCH_ACTION_HEADER_MARGIN + 112,
+    NSPoint actionPoint = NSMakePoint(NSMaxX(diamondView.frame) + 8,
                                       NSHeight(self.frame)/2 - floor(actionSize.height/2) + 1);
     
     // Delete button
@@ -95,12 +101,13 @@
     [deleteButton setAction:@selector(deleteBatchAction:)];
     [deleteButton setTarget:self];
     [deleteButton setBorderRadius:4.f];
-    [self addSubview:deleteButton];
+//    [self addSubview:deleteButton];
     
     // Action dropdown
     NSBezierPath *actionPath = [NSBezierPath bezierPath];
-    CGFloat xLeft = actionPoint.x - 16;
-    CGFloat xRight = deletePoint.x - BATCH_ACTION_HEADER_MARGIN*2;
+    CGFloat xLeft = actionPoint.x - 42;
+//    CGFloat xRight = deletePoint.x - BATCH_ACTION_HEADER_MARGIN*2;
+    CGFloat xRight = NSMaxX(self.bounds) - BATCH_ACTION_HEADER_MARGIN;
     CGFloat yTop = NSMaxY(self.bounds) - BATCH_ACTION_HEADER_PADDING;
     CGFloat yBottom = NSMinY(self.bounds) + BATCH_ACTION_HEADER_PADDING;
     NSRect actionRect = NSInsetRect(NSMakeRect(xLeft, yBottom, xRight - xLeft, yTop - yBottom), 1, 1);
@@ -141,6 +148,18 @@
     [actionButton setBorderRadius:0.f];
     [self addSubview:actionButton];
     [NSGraphicsContext restoreGraphicsState];
+    
+    // Bottom border
+    NSBezierPath *line = [NSBezierPath bezierPath];
+    [line moveToPoint:NSMakePoint(NSMinX(self.bounds), NSMinY(self.bounds))];
+    [line lineToPoint:NSMakePoint(NSMaxX(self.bounds), NSMinY(self.bounds))];
+    [line setLineWidth:0.5];
+    [NSColorFromRGB(0xC2CBCE) set];
+    [line stroke];
+
+    [line moveToPoint:NSMakePoint(NSMinX(self.bounds), NSMaxY(self.bounds))];
+    [line lineToPoint:NSMakePoint(NSMaxX(self.bounds), NSMaxY(self.bounds))];
+    [line stroke];
 }
 
 - (void)setupLabels {
@@ -156,6 +175,12 @@
                         NSShadowAttributeName: stringShadow,
                         NSParagraphStyleAttributeName: style
                         };
+    
+    diamondView = [[TTDiamondView alloc] initWithFrame:CGRectZero];
+    [diamondView setIgnoreSelectedMode:YES];
+    [diamondView setIgnoreActiveMode:YES];
+    [diamondView setOverrideActiveDirection:appDelegate.modeMap.inspectingModeDirection];
+    [self addSubview:diamondView];
 }
 
 - (IBAction)deleteBatchAction:(id)sender {

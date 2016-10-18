@@ -102,10 +102,11 @@
 
     [self setChangeButtonTitle:buttonText];
     
-    if (device.isFirmwareOld) {
+    if (device.isFirmwareOld && !device.inDFU) {
         changeButton.hidden = NO;
-    } else {
+    } else if (device.inDFU) {
         changeButton.hidden = YES;
+    } else {
         NSSize stateSize = [device.stateLabel sizeWithAttributes:stateAttributes];
         NSPoint statePoint = NSMakePoint(NSMaxX(self.frame) - stateSize.width - 22,
                                          (NSHeight(self.frame)/2) - (stateSize.height/2));
@@ -125,6 +126,7 @@
 }
 
 - (void)setChangeButtonTitle:(NSString *)title {
+    if (!title) return;
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]
                                                    initWithString:title attributes:nil];
     [changeButton setAttributedTitle:attributedString];
@@ -157,10 +159,10 @@
     NSLog(@"Begin upgrade: %@", device);
     
     device.inDFU = YES;
-    [changeButton setHidden:YES];
     [progress setIndeterminate:YES];
     [progress startAnimation:nil];
     [appDelegate.panelController.backgroundView.deviceTitlesView performDFU:device];
+    changeButton.hidden = YES;
 }
 
 - (NSString *)updateButtonTitle {
@@ -170,9 +172,10 @@
         [changeButton setUseAltStyle:NO];
         [changeButton setEnabled:YES];
     } else {
-        buttonText = [NSString stringWithFormat:@"All set with v%ld", (long)device.firmwareVersion];
-        [changeButton setUseAltStyle:YES];
-        [changeButton setEnabled:NO];
+//        buttonText = [NSString stringWithFormat:@"All set with v%ld", (long)device.firmwareVersion];
+//        [changeButton setUseAltStyle:YES];
+//        [changeButton setEnabled:NO];
+        changeButton.hidden = YES;
     }
     return buttonText;
 }

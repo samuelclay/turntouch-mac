@@ -58,7 +58,6 @@
     NSLayoutConstraint *optionsConstraint;
     NSLayoutConstraint *deviceTitlesConstraint;
     NSLayoutConstraint *addActionButtonConstraint;
-    NSLayoutConstraint *batchActionsConstraint;
     TTPanelModal panelModal;
     TTModalPairing modalPairing;
     TTModalFTUX modalFTUX;

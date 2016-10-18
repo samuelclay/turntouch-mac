@@ -13,6 +13,7 @@
     TTAppDelegate *appDelegate;
     NSDictionary *titleAttributes;
     NSImage *modeImage;
+    TTDiamondView *diamondView;
     TTChangeButtonView *deleteButton;
     TTChangeButtonView *actionButton;
 }

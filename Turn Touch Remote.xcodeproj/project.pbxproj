@@ -316,7 +316,6 @@
 		FFAA4F6F182D99640049FFC7 /* TTModeAlarmClock.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4F6E182D99640049FFC7 /* TTModeAlarmClock.m */; };
 		FFAA4F72182D9A5F0049FFC7 /* TTModeNews.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4F71182D9A5F0049FFC7 /* TTModeNews.m */; };
 		FFABAB7A1C235EC500AD5620 /* TTFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB791C235EC500AD5620 /* TTFooterView.m */; };
-		FFABAB7D1C2777AD00AD5620 /* TTBatchActionContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB7C1C2777AD00AD5620 /* TTBatchActionContainerView.m */; };
 		FFABAB811C2777D500AD5620 /* TTBatchActionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB801C2777D500AD5620 /* TTBatchActionHeaderView.m */; };
 		FFABAB841C2784E300AD5620 /* TTBatchActionStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB831C2784E300AD5620 /* TTBatchActionStackView.m */; };
 		FFABAB8A1C28E6F000AD5620 /* TTBatchActions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB891C28E6F000AD5620 /* TTBatchActions.m */; };
@@ -883,8 +882,6 @@
 		FFAA61E21ABA6AD000AA422B /* Turn Touch Remote-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Turn Touch Remote-Prefix.pch"; path = "Supporting Files/Turn Touch Remote-Prefix.pch"; sourceTree = "<group>"; };
 		FFABAB781C235EC500AD5620 /* TTFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTFooterView.h; path = "Views/Title Bar/TTFooterView.h"; sourceTree = "<group>"; };
 		FFABAB791C235EC500AD5620 /* TTFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTFooterView.m; path = "Views/Title Bar/TTFooterView.m"; sourceTree = "<group>"; };
-		FFABAB7B1C2777AD00AD5620 /* TTBatchActionContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTBatchActionContainerView.h; path = "Views/Batch Actions/TTBatchActionContainerView.h"; sourceTree = "<group>"; };
-		FFABAB7C1C2777AD00AD5620 /* TTBatchActionContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTBatchActionContainerView.m; path = "Views/Batch Actions/TTBatchActionContainerView.m"; sourceTree = "<group>"; };
 		FFABAB7F1C2777D500AD5620 /* TTBatchActionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTBatchActionHeaderView.h; path = "Views/Batch Actions/TTBatchActionHeaderView.h"; sourceTree = "<group>"; };
 		FFABAB801C2777D500AD5620 /* TTBatchActionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTBatchActionHeaderView.m; path = "Views/Batch Actions/TTBatchActionHeaderView.m"; sourceTree = "<group>"; };
 		FFABAB821C2784E300AD5620 /* TTBatchActionStackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTBatchActionStackView.h; path = "Views/Batch Actions/TTBatchActionStackView.h"; sourceTree = "<group>"; };
@@ -1979,8 +1976,6 @@
 			children = (
 				FFABAB821C2784E300AD5620 /* TTBatchActionStackView.h */,
 				FFABAB831C2784E300AD5620 /* TTBatchActionStackView.m */,
-				FFABAB7B1C2777AD00AD5620 /* TTBatchActionContainerView.h */,
-				FFABAB7C1C2777AD00AD5620 /* TTBatchActionContainerView.m */,
 				FFABAB7F1C2777D500AD5620 /* TTBatchActionHeaderView.h */,
 				FFABAB801C2777D500AD5620 /* TTBatchActionHeaderView.m */,
 				FFABAB8B1C2A21A200AD5620 /* TTAddActionButtonView.h */,
@@ -2569,7 +2564,6 @@
 				FFABAB901C2A32E000AD5620 /* TTAction.m in Sources */,
 				FFABAB9B1C33674000AD5620 /* TTModeWebWindowController.m in Sources */,
 				FF01CAA61C473EC100F83A73 /* JXReadabilityDocument.m in Sources */,
-				FFABAB7D1C2777AD00AD5620 /* TTBatchActionContainerView.m in Sources */,
 				FFABAB961C334FCA00AD5620 /* TTModeWeb.m in Sources */,
 				FF2C2E691C546D6E00FAD7E2 /* TTModeWemoOptions.m in Sources */,
 				FF8D1AA61C98F292006AA1A2 /* TTModalAbout.m in Sources */,
