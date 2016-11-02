@@ -14,7 +14,7 @@
 		</data>
 		<key>Resources/Info.plist</key>
 		<data>
-		gEXFl5LvS1aL0q5dMLYOYWt8oWs=
+		ALwrocYRju8bcA8qQ0Oqer9o4PM=
 		</data>
 		<key>Resources/MLCalendarView.nib</key>
 		<data>
@@ -354,7 +354,7 @@
 		</data>
 		<key>Resources/TTModeHueBridge.nib</key>
 		<data>
-		ewhAeauVupi6/o9hoju63klgFNA=
+		cYJyBywWgm9nr6vfILblclY5xcM=
 		</data>
 		<key>Resources/TTModeHueConnect.nib</key>
 		<data>
@@ -966,7 +966,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			LA0wnzFjU06P4IpJZ2Zb7GECjUc=
+			/uSq8l1CHL97H6ht+3v/Qh0SY9A=
 			</data>
 			<key>requirement</key>
 			<string>identifier "com.philips.hue.HueSDK-OSX" and anchor apple generic and certificate leaf[subject.CN] = "Mac Developer: Sam Clay (BYABZ8TGVG)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
@@ -975,7 +975,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			xt75I2OuaeC8U0WjIlT7aMa8TFw=
+			KeRvdArXcx9DJ8DeUCSvuNcK7C8=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.andymatuschak.Sparkle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -1006,11 +1006,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			gEXFl5LvS1aL0q5dMLYOYWt8oWs=
+			ALwrocYRju8bcA8qQ0Oqer9o4PM=
 			</data>
 			<key>hash2</key>
 			<data>
-			Ikc0t/F8r1hd6urvEpN6v6qygED9QC3TVD1LeflqVHE=
+			jlhK7ysyFMzmmeGWnBhgm4t3qWYzhruAQPSCpql0fiY=
 			</data>
 		</dict>
 		<key>Resources/MLCalendarView.nib</key>
@@ -1565,11 +1565,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ewhAeauVupi6/o9hoju63klgFNA=
+			cYJyBywWgm9nr6vfILblclY5xcM=
 			</data>
 			<key>hash2</key>
 			<data>
-			ptO2VrFMlBp6xSjbv9EWw9j1i7Us6PBeZjcHb+KfA78=
+			pv0OrbOKJb686I8idVP8Nyju/f+alN3njJ5op8yO4W0=
 			</data>
 		</dict>
 		<key>Resources/TTModeHueConnect.nib</key>
