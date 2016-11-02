@@ -137,14 +137,14 @@
     NSArray *devices = appDelegate.bluetoothMonitor.foundDevices.devices;
     
     [self removeConstraints:self.constraints];
-    for (NSView *subview in self.arrangedSubviews) {
-        [subview removeFromSuperview];
+    for (NSView *subview in [self viewsInGravity:NSStackViewGravityTop]) {
+        [self removeView:subview];
     }
     
     for (TTDevice *device in devices) {
         TTDeviceTitleView *deviceView = [[TTDeviceTitleView alloc] initWithDevice:device];
         [dfuDeviceViews addObject:deviceView];
-        [self addArrangedSubview:deviceView];
+        [self addView:deviceView inGravity:NSStackViewGravityTop];
     }
     
 //    [dfuDeviceViews addObject:border];

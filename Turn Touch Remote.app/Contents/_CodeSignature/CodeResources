@@ -354,7 +354,7 @@
 		</data>
 		<key>Resources/TTModeHueBridge.nib</key>
 		<data>
-		+XPvTPE9Wp6D/ikPCHfXXPX57pw=
+		Lcceu08vnjC6z+OiTdyNp9ADHL0=
 		</data>
 		<key>Resources/TTModeHueConnect.nib</key>
 		<data>
@@ -471,10 +471,6 @@
 		<key>Resources/app_music.png</key>
 		<data>
 		bZhdIKlWa9p8y1+Kav2za9qrwwk=
-		</data>
-		<key>Resources/archived-expanded-entitlements.xcent</key>
-		<data>
-		97a7PlMwni8IUdENS2TMBhBm/2Q=
 		</data>
 		<key>Resources/button_chevron.png</key>
 		<data>
@@ -966,7 +962,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			Mzb66Ls9tVUEY7bn2sddA2rBtic=
+			48OXp2zup0KAHtJdw7vmiX1rIxA=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "com.philips.hue.HueSDK-OSX" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -975,7 +971,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			+HKIJ45/WOmLdHA/ILaKoF7Z3hw=
+			4Bee0yQdedAlE5NNqbHME8hpQ68=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.andymatuschak.Sparkle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -1565,11 +1561,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			+XPvTPE9Wp6D/ikPCHfXXPX57pw=
+			Lcceu08vnjC6z+OiTdyNp9ADHL0=
 			</data>
 			<key>hash2</key>
 			<data>
-			XJ0d8vFB8jTOePXDLwt1OOKuIPSVjQ3guoCPAg6QIyA=
+			B576nA/bEXhwWF4ZPRWj/fLLUaUVgUvXNldsh8K2mys=
 			</data>
 		</dict>
 		<key>Resources/TTModeHueConnect.nib</key>
@@ -1889,17 +1885,6 @@
 			<key>hash2</key>
 			<data>
 			zovpzeoNc29ex4a/v5gSA2bjooj/GX910qA06jGXu/o=
-			</data>
-		</dict>
-		<key>Resources/archived-expanded-entitlements.xcent</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			97a7PlMwni8IUdENS2TMBhBm/2Q=
-			</data>
-			<key>hash2</key>
-			<data>
-			fHN3p5L/QCIfRE1RHedK0pYXGasvdtYJI/3b8GJhe+4=
 			</data>
 		</dict>
 		<key>Resources/button_chevron.png</key>

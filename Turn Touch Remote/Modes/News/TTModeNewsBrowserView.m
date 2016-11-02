@@ -52,7 +52,7 @@
     [storyViews addObject:storyView];
     storyView.storyIndex = 0;
     storyCount = 1;
-    [storyStack addArrangedSubview:storyView];
+    [storyStack addView:storyView inGravity:NSStackViewGravityLeading];
     [storyStack addConstraint:[NSLayoutConstraint constraintWithItem:storyView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1. constant:storyWidth]];
     [storyView showLoadingView];
 
@@ -80,8 +80,8 @@
 
 - (void)addStories:(NSArray *)stories {
     if (page == 0) {
-        for (NSView *view in storyStack.arrangedSubviews) {
-            [storyStack removeArrangedSubview:view];
+        for (NSView *view in [storyStack viewsInGravity:NSStackViewGravityLeading]) {
+            [storyStack removeView:view];
         }
         storyCount = 0;
         [storyStack removeConstraints:storyStack.constraints];
@@ -98,7 +98,7 @@
         storyView.storyIndex = i;
         storyView.story = story;
         storyCount += 1;
-        [storyStack addArrangedSubview:storyView];
+        [storyStack addView:storyView inGravity:NSStackViewGravityLeading];
         [storyStack addConstraint:[NSLayoutConstraint constraintWithItem:storyView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1. constant:storyWidth]];
         [storyView loadStory];
     }
