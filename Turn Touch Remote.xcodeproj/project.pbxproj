@@ -2698,6 +2698,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Turn Touch Remote/Supporting Files/Turn Touch Remote.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 6W5HRS3393;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Turn\\ Touch\\ Remote/Vendor/",
@@ -2729,6 +2730,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Turn Touch Remote/Supporting Files/Turn Touch Remote.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 6W5HRS3393;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Turn\\ Touch\\ Remote/Vendor/",
@@ -2875,6 +2877,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Turn Touch Remote/Supporting Files/Turn Touch Remote.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 6W5HRS3393;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Turn\\ Touch\\ Remote/Vendor/",

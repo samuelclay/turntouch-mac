@@ -338,7 +338,7 @@
 		</data>
 		<key>Resources/TTModeAlarmClockOptions.nib</key>
 		<data>
-		Dx6hWDZSUUiOSf5M1eEkrAGfQYI=
+		Xj6jl1tOzc9IoQP2iYU6fIodFbU=
 		</data>
 		<key>Resources/TTModeAlarmSnoozeOptions.nib</key>
 		<data>
@@ -354,7 +354,7 @@
 		</data>
 		<key>Resources/TTModeHueBridge.nib</key>
 		<data>
-		ylw4Dx0f9H1mrulEv9mmFqZUdns=
+		gkkbBoETJRclijng5MMHLPTXe1k=
 		</data>
 		<key>Resources/TTModeHueConnect.nib</key>
 		<data>
@@ -966,7 +966,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			ghK/Wh+rMDNOXia6oEdvMJK6hGY=
+			Huvy0KMaLsX3/EsdyjMelfkKm4c=
 			</data>
 			<key>requirement</key>
 			<string>identifier "com.philips.hue.HueSDK-OSX" and anchor apple generic and certificate leaf[subject.CN] = "Mac Developer: Sam Clay (BYABZ8TGVG)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
@@ -975,7 +975,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			cGHYjg39cMVh2cXfpoPL239cZHk=
+			zlIqqcBEkOiSbMonutrVZ7z3akQ=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.andymatuschak.Sparkle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -1521,11 +1521,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Dx6hWDZSUUiOSf5M1eEkrAGfQYI=
+			Xj6jl1tOzc9IoQP2iYU6fIodFbU=
 			</data>
 			<key>hash2</key>
 			<data>
-			BcIdtec7Emw1OIe2E2eEJdtseIimCleWuB7oHYENqKo=
+			vzqWtw5xfDXYIe1iB3W0hf8MTgEQ1Wa0vXLlKB9dwE0=
 			</data>
 		</dict>
 		<key>Resources/TTModeAlarmSnoozeOptions.nib</key>
@@ -1565,11 +1565,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ylw4Dx0f9H1mrulEv9mmFqZUdns=
+			gkkbBoETJRclijng5MMHLPTXe1k=
 			</data>
 			<key>hash2</key>
 			<data>
-			iNeMgx4RmJLeXwszNM9qK16L9q0VVLKNtBknIjhiNGs=
+			pr0hbzXHPMcZEI+bOxxjjvUuJubNHfDPzw497s1Vt+4=
 			</data>
 		</dict>
 		<key>Resources/TTModeHueConnect.nib</key>
