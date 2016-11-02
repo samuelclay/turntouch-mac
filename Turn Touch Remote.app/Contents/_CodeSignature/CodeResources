@@ -354,7 +354,7 @@
 		</data>
 		<key>Resources/TTModeHueBridge.nib</key>
 		<data>
-		cYJyBywWgm9nr6vfILblclY5xcM=
+		+XPvTPE9Wp6D/ikPCHfXXPX57pw=
 		</data>
 		<key>Resources/TTModeHueConnect.nib</key>
 		<data>
@@ -966,16 +966,16 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			/uSq8l1CHL97H6ht+3v/Qh0SY9A=
+			Mzb66Ls9tVUEY7bn2sddA2rBtic=
 			</data>
 			<key>requirement</key>
-			<string>identifier "com.philips.hue.HueSDK-OSX" and anchor apple generic and certificate leaf[subject.CN] = "Mac Developer: Sam Clay (BYABZ8TGVG)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+			<string>anchor apple generic and identifier "com.philips.hue.HueSDK-OSX" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
 		</dict>
 		<key>Frameworks/Sparkle.framework</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			KeRvdArXcx9DJ8DeUCSvuNcK7C8=
+			+HKIJ45/WOmLdHA/ILaKoF7Z3hw=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.andymatuschak.Sparkle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -1565,11 +1565,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			cYJyBywWgm9nr6vfILblclY5xcM=
+			+XPvTPE9Wp6D/ikPCHfXXPX57pw=
 			</data>
 			<key>hash2</key>
 			<data>
-			pv0OrbOKJb686I8idVP8Nyju/f+alN3njJ5op8yO4W0=
+			XJ0d8vFB8jTOePXDLwt1OOKuIPSVjQ3guoCPAg6QIyA=
 			</data>
 		</dict>
 		<key>Resources/TTModeHueConnect.nib</key>
@@ -3193,6 +3193,17 @@
 			<key>hash2</key>
 			<data>
 			2bj7sMSDEuRolQ+sQf7NqccJwpcnzvo0JPkl3jGflik=
+			</data>
+		</dict>
+		<key>embedded.provisionprofile</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			9gOkieSqu8xUFfL1Jy54XXarxM0=
+			</data>
+			<key>hash2</key>
+			<data>
+			GWMvRUvovKyFsgJbCbVKjtkDGJBuG1HC44rw4vbizRU=
 			</data>
 		</dict>
 	</dict>

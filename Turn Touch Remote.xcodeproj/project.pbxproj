@@ -2179,6 +2179,7 @@
 				TargetAttributes = {
 					FF8C833217AB14B5000166FC = {
 						DevelopmentTeam = 6W5HRS3393;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 0;
@@ -2696,7 +2697,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Turn Touch Remote/Supporting Files/Turn Touch Remote.entitlements";
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 6W5HRS3393;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2718,6 +2719,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.mac-remote";
 				PRODUCT_NAME = "Turn Touch Remote";
+				PROVISIONING_PROFILE = "6918aade-e7fe-41f9-8d97-58b9aa86eb24";
+				PROVISIONING_PROFILE_SPECIFIER = "Turn Touch Developer ID";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2727,7 +2730,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Turn Touch Remote/Supporting Files/Turn Touch Remote.entitlements";
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 6W5HRS3393;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2749,6 +2752,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.mac-remote";
 				PRODUCT_NAME = "Turn Touch Remote";
+				PROVISIONING_PROFILE = "6918aade-e7fe-41f9-8d97-58b9aa86eb24";
+				PROVISIONING_PROFILE_SPECIFIER = "Turn Touch Developer ID";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -2873,7 +2878,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Turn Touch Remote/Supporting Files/Turn Touch Remote.entitlements";
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 6W5HRS3393;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2895,6 +2900,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.mac-remote";
 				PRODUCT_NAME = "Turn Touch Remote";
+				PROVISIONING_PROFILE = "6918aade-e7fe-41f9-8d97-58b9aa86eb24";
+				PROVISIONING_PROFILE_SPECIFIER = "Turn Touch Developer ID";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Testing;
