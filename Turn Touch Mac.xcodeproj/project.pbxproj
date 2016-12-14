@@ -299,7 +299,7 @@
 		FF98A2E71867DBE70032CC7A /* TTMenubarController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98A2E31867DBE70032CC7A /* TTMenubarController.m */; };
 		FF98A2E81867DBE70032CC7A /* TTPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98A2E51867DBE70032CC7A /* TTPanelController.m */; };
 		FF98A2ED1867DC320032CC7A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98A2E91867DC320032CC7A /* main.m */; };
-		FF98A2EF1867DC320032CC7A /* Turn Touch Remote.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = FF98A2EC1867DC320032CC7A /* Turn Touch Remote.entitlements */; };
+		FF98A2EF1867DC320032CC7A /* Turn Touch Mac.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = FF98A2EC1867DC320032CC7A /* Turn Touch Mac.entitlements */; };
 		FFA1D4CB1A3B8916003EA0BC /* TTActionHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA1D4C31A3B8916003EA0BC /* TTActionHUDView.m */; };
 		FFA1D4CC1A3B8916003EA0BC /* TTActionHUDView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFA1D4C41A3B8916003EA0BC /* TTActionHUDView.xib */; };
 		FFA1D4CD1A3B8916003EA0BC /* TTActionHUDWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA1D4C61A3B8916003EA0BC /* TTActionHUDWindow.m */; };
@@ -405,7 +405,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		FF01CA281C46009E00F83A73 /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = scripts; path = "Turn Touch Remote/Resources/scripts"; sourceTree = SOURCE_ROOT; };
+		FF01CA281C46009E00F83A73 /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = scripts; path = Resources/scripts; sourceTree = "<group>"; };
 		FF01CA2A1C4613C500F83A73 /* Safari.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Safari.h; path = Modes/Web/Safari.h; sourceTree = "<group>"; };
 		FF01CA2C1C46DCC200F83A73 /* app_music.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_music.png; sourceTree = "<group>"; };
 		FF01CA2D1C46DCC200F83A73 /* button_chevron.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_chevron.png; sourceTree = "<group>"; };
@@ -494,7 +494,7 @@
 		FF1F135C1ADC90E700B52A0D /* MLCalendarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MLCalendarView.xib; sourceTree = "<group>"; };
 		FF1F13611ADC98C400B52A0D /* TTDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTDatePicker.h; sourceTree = "<group>"; };
 		FF1F13621ADC98C400B52A0D /* TTDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTDatePicker.m; sourceTree = "<group>"; };
-		FF1F13641ADC9DEC00B52A0D /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = "Turn Touch Remote/Vendor/Sparkle.framework"; sourceTree = "<group>"; };
+		FF1F13641ADC9DEC00B52A0D /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = "Turn Touch Mac/Vendor/Sparkle.framework"; sourceTree = "<group>"; };
 		FF254F661D1B68E000E96378 /* single_tap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = single_tap.png; sourceTree = "<group>"; };
 		FF254F681D1B6A9800E96378 /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh.png; sourceTree = "<group>"; };
 		FF27052B1C90FB3B000BB10F /* TTModalPairingScanningView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModalPairingScanningView.h; path = Views/Pairing/TTModalPairingScanningView.h; sourceTree = "<group>"; };
@@ -598,7 +598,7 @@
 		FF5295CA1AD5F59C007DDC02 /* TTDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTDevice.m; path = Models/TTDevice.m; sourceTree = "<group>"; };
 		FF5296061AD61E74007DDC02 /* NSDate+TimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TimeAgo.h"; sourceTree = "<group>"; };
 		FF5296071AD61E74007DDC02 /* NSDate+TimeAgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TimeAgo.m"; sourceTree = "<group>"; };
-		FF5296091AD61F84007DDC02 /* NSDateTimeAgo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = NSDateTimeAgo.bundle; path = "Turn Touch Remote/Categories/NSDateTimeAgo.bundle"; sourceTree = SOURCE_ROOT; };
+		FF5296091AD61F84007DDC02 /* NSDateTimeAgo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = NSDateTimeAgo.bundle; path = ../Categories/NSDateTimeAgo.bundle; sourceTree = "<group>"; };
 		FF557A9C1C4855BD005FB7FD /* TTModeNest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeNest.h; path = Modes/Nest/TTModeNest.h; sourceTree = "<group>"; };
 		FF557A9D1C4855BD005FB7FD /* TTModeNest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeNest.m; path = Modes/Nest/TTModeNest.m; sourceTree = "<group>"; };
 		FF557AA01C4855D4005FB7FD /* TTModeWemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeWemo.h; path = Modes/Wemo/TTModeWemo.h; sourceTree = "<group>"; };
@@ -748,7 +748,7 @@
 		FF8A73C31ABA69410023AA53 /* logo_128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_128.png; sourceTree = "<group>"; };
 		FF8A73C41ABA69410023AA53 /* logo_256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_256.png; sourceTree = "<group>"; };
 		FF8A73C51ABA69410023AA53 /* logo_512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_512.png; sourceTree = "<group>"; };
-		FF8C833317AB14B5000166FC /* Turn Touch Remote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Turn Touch Remote.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF8C833317AB14B5000166FC /* Turn Touch Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Turn Touch Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF8C833617AB14B5000166FC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FF8C833917AB14B5000166FC /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		FF8C833A17AB14B5000166FC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -774,10 +774,10 @@
 		FF9006311D8A1B89008A65AD /* TTModeNewsFeedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeNewsFeedView.h; path = Modes/News/TTModeNewsFeedView.h; sourceTree = "<group>"; };
 		FF9006321D8A1B89008A65AD /* TTModeNewsFeedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeNewsFeedView.m; path = Modes/News/TTModeNewsFeedView.m; sourceTree = "<group>"; };
 		FF904B381BE9B78800AD00F3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Resources/Images.xcassets; sourceTree = "<group>"; };
-		FF904B3A1BE9B7F500AD00F3 /* TTActionHUDWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTActionHUDWindowController.h; path = "Turn Touch Remote/Controllers/TTActionHUDWindowController.h"; sourceTree = SOURCE_ROOT; };
-		FF904B3B1BE9B7F500AD00F3 /* TTActionHUDWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTActionHUDWindowController.m; path = "Turn Touch Remote/Controllers/TTActionHUDWindowController.m"; sourceTree = SOURCE_ROOT; };
-		FF904B3D1BE9B80100AD00F3 /* TTModeHUDWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeHUDWindowController.h; path = "Turn Touch Remote/Controllers/TTModeHUDWindowController.h"; sourceTree = SOURCE_ROOT; };
-		FF904B3E1BE9B80100AD00F3 /* TTModeHUDWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeHUDWindowController.m; path = "Turn Touch Remote/Controllers/TTModeHUDWindowController.m"; sourceTree = SOURCE_ROOT; };
+		FF904B3A1BE9B7F500AD00F3 /* TTActionHUDWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTActionHUDWindowController.h; path = Controllers/TTActionHUDWindowController.h; sourceTree = "<group>"; };
+		FF904B3B1BE9B7F500AD00F3 /* TTActionHUDWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTActionHUDWindowController.m; path = Controllers/TTActionHUDWindowController.m; sourceTree = "<group>"; };
+		FF904B3D1BE9B80100AD00F3 /* TTModeHUDWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeHUDWindowController.h; path = Controllers/TTModeHUDWindowController.h; sourceTree = "<group>"; };
+		FF904B3E1BE9B80100AD00F3 /* TTModeHUDWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeHUDWindowController.m; path = Controllers/TTModeHUDWindowController.m; sourceTree = "<group>"; };
 		FF904B411BE9B82200AD00F3 /* hid.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hid.c; sourceTree = "<group>"; };
 		FF904B421BE9B82200AD00F3 /* hidapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hidapi.h; sourceTree = "<group>"; };
 		FF904B431BE9B82200AD00F3 /* TTBluetoothMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTBluetoothMonitor.h; sourceTree = "<group>"; };
@@ -821,10 +821,10 @@
 		FF904B951BE9BA3700AD00F3 /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
 		FF904B9B1BE9BFEC00AD00F3 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		FF904B9D1BE9C02300AD00F3 /* firmwares */ = {isa = PBXFileReference; lastKnownFileType = folder; path = firmwares; sourceTree = "<group>"; };
-		FF904BA51BEBFCDE00AD00F3 /* TTDeviceTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTDeviceTitleView.h; path = "Turn Touch Remote/Views/DFU/TTDeviceTitleView.h"; sourceTree = SOURCE_ROOT; };
-		FF904BA61BEBFCDE00AD00F3 /* TTDeviceTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTDeviceTitleView.m; path = "Turn Touch Remote/Views/DFU/TTDeviceTitleView.m"; sourceTree = SOURCE_ROOT; };
-		FF904BA91BEBFD1400AD00F3 /* TTDeviceTitlesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTDeviceTitlesView.h; path = "Turn Touch Remote/Views/DFU/TTDeviceTitlesView.h"; sourceTree = SOURCE_ROOT; };
-		FF904BAA1BEBFD1400AD00F3 /* TTDeviceTitlesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTDeviceTitlesView.m; path = "Turn Touch Remote/Views/DFU/TTDeviceTitlesView.m"; sourceTree = SOURCE_ROOT; };
+		FF904BA51BEBFCDE00AD00F3 /* TTDeviceTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTDeviceTitleView.h; path = ../Views/DFU/TTDeviceTitleView.h; sourceTree = "<group>"; };
+		FF904BA61BEBFCDE00AD00F3 /* TTDeviceTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTDeviceTitleView.m; path = ../Views/DFU/TTDeviceTitleView.m; sourceTree = "<group>"; };
+		FF904BA91BEBFD1400AD00F3 /* TTDeviceTitlesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTDeviceTitlesView.h; path = ../Views/DFU/TTDeviceTitlesView.h; sourceTree = "<group>"; };
+		FF904BAA1BEBFD1400AD00F3 /* TTDeviceTitlesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTDeviceTitlesView.m; path = ../Views/DFU/TTDeviceTitlesView.m; sourceTree = "<group>"; };
 		FF913D261924366C005C336F /* TTModeAlarmClock.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = TTModeAlarmClock.plist; path = Modes/Mac/TTModeAlarmClock.plist; sourceTree = "<group>"; };
 		FF913D2819243B89005C336F /* TTModeAlarmSnoozeOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeAlarmSnoozeOptions.xib; path = "Modes/Alarm Clock/TTModeAlarmSnoozeOptions.xib"; sourceTree = "<group>"; };
 		FF913D2A19243BFD005C336F /* TTModeAlarmSnoozeOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeAlarmSnoozeOptions.h; path = "Modes/Alarm Clock/TTModeAlarmSnoozeOptions.h"; sourceTree = "<group>"; };
@@ -848,7 +848,7 @@
 		FF98A2E51867DBE70032CC7A /* TTPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTPanelController.m; path = Controllers/TTPanelController.m; sourceTree = "<group>"; };
 		FF98A2E61867DBE70032CC7A /* TTPanelDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTPanelDelegate.h; path = Controllers/TTPanelDelegate.h; sourceTree = "<group>"; };
 		FF98A2E91867DC320032CC7A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = main.m; path = "Supporting Files/main.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		FF98A2EC1867DC320032CC7A /* Turn Touch Remote.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "Turn Touch Remote.entitlements"; path = "Supporting Files/Turn Touch Remote.entitlements"; sourceTree = "<group>"; };
+		FF98A2EC1867DC320032CC7A /* Turn Touch Mac.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = "Turn Touch Mac.entitlements"; path = "Supporting Files/Turn Touch Mac.entitlements"; sourceTree = "<group>"; };
 		FF98A30C1868F1120032CC7A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FF98A30E1868F1190032CC7A /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		FFA1D4C21A3B8916003EA0BC /* TTActionHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TTActionHUDView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -879,7 +879,7 @@
 		FFAA4F70182D9A5F0049FFC7 /* TTModeNews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeNews.h; path = Modes/News/TTModeNews.h; sourceTree = "<group>"; };
 		FFAA4F71182D9A5F0049FFC7 /* TTModeNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeNews.m; path = Modes/News/TTModeNews.m; sourceTree = "<group>"; };
 		FFAA61E11ABA6AD000AA422B /* Turn Touch Remote-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Turn Touch Remote-Info.plist"; path = "Supporting Files/Turn Touch Remote-Info.plist"; sourceTree = "<group>"; };
-		FFAA61E21ABA6AD000AA422B /* Turn Touch Remote-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Turn Touch Remote-Prefix.pch"; path = "Supporting Files/Turn Touch Remote-Prefix.pch"; sourceTree = "<group>"; };
+		FFAA61E21ABA6AD000AA422B /* Turn Touch Mac-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Turn Touch Mac-Prefix.pch"; path = "Supporting Files/Turn Touch Mac-Prefix.pch"; sourceTree = "<group>"; };
 		FFABAB781C235EC500AD5620 /* TTFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTFooterView.h; path = "Views/Title Bar/TTFooterView.h"; sourceTree = "<group>"; };
 		FFABAB791C235EC500AD5620 /* TTFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTFooterView.m; path = "Views/Title Bar/TTFooterView.m"; sourceTree = "<group>"; };
 		FFABAB7F1C2777D500AD5620 /* TTBatchActionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTBatchActionHeaderView.h; path = "Views/Batch Actions/TTBatchActionHeaderView.h"; sourceTree = "<group>"; };
@@ -892,8 +892,8 @@
 		FFABAB8C1C2A21A200AD5620 /* TTAddActionButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTAddActionButtonView.m; path = "Views/Batch Actions/TTAddActionButtonView.m"; sourceTree = "<group>"; };
 		FFABAB8E1C2A32E000AD5620 /* TTAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTAction.h; path = Models/TTAction.h; sourceTree = "<group>"; };
 		FFABAB8F1C2A32E000AD5620 /* TTAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTAction.m; path = Models/TTAction.m; sourceTree = "<group>"; };
-		FFABAB911C2F723000AD5620 /* TTBorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTBorder.h; path = "Turn Touch Remote/Views/Panel/TTBorder.h"; sourceTree = SOURCE_ROOT; };
-		FFABAB921C2F723000AD5620 /* TTBorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTBorder.m; path = "Turn Touch Remote/Views/Panel/TTBorder.m"; sourceTree = SOURCE_ROOT; };
+		FFABAB911C2F723000AD5620 /* TTBorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTBorder.h; sourceTree = "<group>"; };
+		FFABAB921C2F723000AD5620 /* TTBorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTBorder.m; sourceTree = "<group>"; };
 		FFABAB941C334FCA00AD5620 /* TTModeWeb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeWeb.h; path = Modes/Web/TTModeWeb.h; sourceTree = "<group>"; };
 		FFABAB951C334FCA00AD5620 /* TTModeWeb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeWeb.m; path = Modes/Web/TTModeWeb.m; sourceTree = "<group>"; };
 		FFABAB981C33674000AD5620 /* TTModeWebWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeWebWindowController.h; path = Modes/Web/TTModeWebWindowController.h; sourceTree = "<group>"; };
@@ -964,7 +964,7 @@
 		FFF05F3D18F77CF500AC6230 /* TTChangeButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTChangeButtonView.m; path = Views/Buttons/TTChangeButtonView.m; sourceTree = "<group>"; };
 		FFF05F4018F77D5D00AC6230 /* TTChangeButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTChangeButtonCell.h; path = Views/Buttons/TTChangeButtonCell.h; sourceTree = "<group>"; };
 		FFF05F4118F77D5D00AC6230 /* TTChangeButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTChangeButtonCell.m; path = Views/Buttons/TTChangeButtonCell.m; sourceTree = "<group>"; };
-		FFF8AE361AFDAB3E0064DCEF /* Turn Touch Remote Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Turn Touch Remote Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFF8AE361AFDAB3E0064DCEF /* Turn Touch Mac Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Turn Touch Mac Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFF8AE391AFDAB3E0064DCEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFF8AE3A1AFDAB3E0064DCEF /* Turn_Touch_Remote_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Turn_Touch_Remote_Tests.m; sourceTree = "<group>"; };
 		FFF8AE411AFDAB8E0064DCEF /* TTBluetoothTimerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTBluetoothTimerTest.m; sourceTree = "<group>"; };
@@ -1081,9 +1081,8 @@
 				FF01CA951C473EC100F83A73 /* NSXMLNode+HTMLUtilities.m */,
 				FF01CA961C473EC100F83A73 /* webarchiver */,
 			);
-			name = readability;
-			path = "Turn Touch Remote/Vendor/readability";
-			sourceTree = SOURCE_ROOT;
+			path = readability;
+			sourceTree = "<group>";
 		};
 		FF01CA961C473EC100F83A73 /* webarchiver */ = {
 			isa = PBXGroup;
@@ -1317,7 +1316,7 @@
 				FFF05F3118F6120200AC6230 /* logo */,
 			);
 			name = Images;
-			path = "Turn Touch Remote/Images";
+			path = "Turn Touch Mac/Images";
 			sourceTree = "<group>";
 		};
 		FF5295C21AD5B970007DDC02 /* Title Bar */ = {
@@ -1448,6 +1447,10 @@
 				FFA1D4C91A3B8916003EA0BC /* TTHUDController.h */,
 				FFA1D4CA1A3B8916003EA0BC /* TTHUDController.m */,
 				FF98A2E61867DBE70032CC7A /* TTPanelDelegate.h */,
+				FF904B3D1BE9B80100AD00F3 /* TTModeHUDWindowController.h */,
+				FF904B3E1BE9B80100AD00F3 /* TTModeHUDWindowController.m */,
+				FF904B3A1BE9B7F500AD00F3 /* TTActionHUDWindowController.h */,
+				FF904B3B1BE9B7F500AD00F3 /* TTActionHUDWindowController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1474,9 +1477,8 @@
 				FF61354F1C61CDDC00F431D7 /* music_volume_mute.png */,
 				FF6135501C61CDDC00F431D7 /* music_volume_up.png */,
 			);
-			name = actions;
-			path = "Turn Touch Remote/Images/actions";
-			sourceTree = SOURCE_ROOT;
+			path = actions;
+			sourceTree = "<group>";
 		};
 		FF6792391CEBE11700639148 /* Spotify */ = {
 			isa = PBXGroup;
@@ -1597,10 +1599,10 @@
 		FF8C832A17AB14B5000166FC = {
 			isa = PBXGroup;
 			children = (
-				FF8C833C17AB14B5000166FC /* Turn Touch Remote */,
+				FF8C833C17AB14B5000166FC /* Turn Touch Mac */,
 				FF936058196DF67500675B7B /* Vendor */,
 				FF3A9F6217C42B5E00C5C2D5 /* Images */,
-				FFF8AE371AFDAB3E0064DCEF /* Turn Touch Remote Tests */,
+				FFF8AE371AFDAB3E0064DCEF /* Turn Touch Mac Tests */,
 				FF8C833517AB14B5000166FC /* Frameworks */,
 				FF8C833417AB14B5000166FC /* Products */,
 			);
@@ -1609,8 +1611,8 @@
 		FF8C833417AB14B5000166FC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FF8C833317AB14B5000166FC /* Turn Touch Remote.app */,
-				FFF8AE361AFDAB3E0064DCEF /* Turn Touch Remote Tests.xctest */,
+				FF8C833317AB14B5000166FC /* Turn Touch Mac.app */,
+				FFF8AE361AFDAB3E0064DCEF /* Turn Touch Mac Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1652,7 +1654,7 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		FF8C833C17AB14B5000166FC /* Turn Touch Remote */ = {
+		FF8C833C17AB14B5000166FC /* Turn Touch Mac */ = {
 			isa = PBXGroup;
 			children = (
 				FF5F70B317C428FB00511AB6 /* Controllers */,
@@ -1665,7 +1667,7 @@
 				FFE2D47A1A46404C00DDD413 /* Categories */,
 				FF904B381BE9B78800AD00F3 /* Images.xcassets */,
 			);
-			path = "Turn Touch Remote";
+			path = "Turn Touch Mac";
 			sourceTree = "<group>";
 		};
 		FF8C833D17AB14B5000166FC /* Supporting Files */ = {
@@ -1678,8 +1680,8 @@
 				FF9170941AF9B19100FAAC88 /* sounds */,
 				FF98A2E91867DC320032CC7A /* main.m */,
 				FFAA61E11ABA6AD000AA422B /* Turn Touch Remote-Info.plist */,
-				FFAA61E21ABA6AD000AA422B /* Turn Touch Remote-Prefix.pch */,
-				FF98A2EC1867DC320032CC7A /* Turn Touch Remote.entitlements */,
+				FFAA61E21ABA6AD000AA422B /* Turn Touch Mac-Prefix.pch */,
+				FF98A2EC1867DC320032CC7A /* Turn Touch Mac.entitlements */,
 				FF8C833F17AB14B5000166FC /* InfoPlist.strings */,
 				FF8C834517AB14B5000166FC /* Credits.rtf */,
 				FF8012F4186A1AD100955218 /* defaults.plist */,
@@ -1717,9 +1719,8 @@
 				FF904B731BE9B88700AD00F3 /* Unzip */,
 				FF904B891BE9BA3700AD00F3 /* SSZipArchive */,
 			);
-			name = DFU;
-			path = "Turn Touch Remote/DFU";
-			sourceTree = SOURCE_ROOT;
+			path = DFU;
+			sourceTree = "<group>";
 		};
 		FF904B511BE9B88700AD00F3 /* Constants */ = {
 			isa = PBXGroup;
@@ -1859,7 +1860,7 @@
 				FF5296091AD61F84007DDC02 /* NSDateTimeAgo.bundle */,
 			);
 			name = Vendor;
-			path = "Turn Touch Remote/Vendor";
+			path = "Turn Touch Mac/Vendor";
 			sourceTree = "<group>";
 		};
 		FF98A2FD1868D37C0032CC7A /* Mac */ = {
@@ -1876,8 +1877,6 @@
 			children = (
 				FFA1D4C51A3B8916003EA0BC /* TTActionHUDWindow.h */,
 				FFA1D4C61A3B8916003EA0BC /* TTActionHUDWindow.m */,
-				FF904B3A1BE9B7F500AD00F3 /* TTActionHUDWindowController.h */,
-				FF904B3B1BE9B7F500AD00F3 /* TTActionHUDWindowController.m */,
 				FFA1D4C21A3B8916003EA0BC /* TTActionHUDView.h */,
 				FFA1D4C31A3B8916003EA0BC /* TTActionHUDView.m */,
 				FFA1D4C41A3B8916003EA0BC /* TTActionHUDView.xib */,
@@ -1893,8 +1892,6 @@
 			children = (
 				FFA1D4D61A3B89A4003EA0BC /* TTModeHUDWindow.h */,
 				FFA1D4D71A3B89A4003EA0BC /* TTModeHUDWindow.m */,
-				FF904B3D1BE9B80100AD00F3 /* TTModeHUDWindowController.h */,
-				FF904B3E1BE9B80100AD00F3 /* TTModeHUDWindowController.m */,
 				FF61353B1C61C09100F431D7 /* TTHUDBackgroundView.h */,
 				FF61353C1C61C09100F431D7 /* TTHUDBackgroundView.m */,
 				FFA1D4D31A3B89A4003EA0BC /* TTModeHUDView.h */,
@@ -2101,14 +2098,14 @@
 			name = "Mode Title";
 			sourceTree = "<group>";
 		};
-		FFF8AE371AFDAB3E0064DCEF /* Turn Touch Remote Tests */ = {
+		FFF8AE371AFDAB3E0064DCEF /* Turn Touch Mac Tests */ = {
 			isa = PBXGroup;
 			children = (
 				FFF8AE381AFDAB3E0064DCEF /* Supporting Files */,
 				FFF8AE3A1AFDAB3E0064DCEF /* Turn_Touch_Remote_Tests.m */,
 				FFF8AE411AFDAB8E0064DCEF /* TTBluetoothTimerTest.m */,
 			);
-			path = "Turn Touch Remote Tests";
+			path = "Turn Touch Mac Tests";
 			sourceTree = "<group>";
 		};
 		FFF8AE381AFDAB3E0064DCEF /* Supporting Files */ = {
@@ -2130,9 +2127,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FF8C833217AB14B5000166FC /* Turn Touch Remote */ = {
+		FF8C833217AB14B5000166FC /* Turn Touch Mac */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FF8C835017AB14B5000166FC /* Build configuration list for PBXNativeTarget "Turn Touch Remote" */;
+			buildConfigurationList = FF8C835017AB14B5000166FC /* Build configuration list for PBXNativeTarget "Turn Touch Mac" */;
 			buildPhases = (
 				FF8C832F17AB14B5000166FC /* Sources */,
 				FF8C833017AB14B5000166FC /* Frameworks */,
@@ -2144,14 +2141,14 @@
 			);
 			dependencies = (
 			);
-			name = "Turn Touch Remote";
+			name = "Turn Touch Mac";
 			productName = "Turn Touch App";
-			productReference = FF8C833317AB14B5000166FC /* Turn Touch Remote.app */;
+			productReference = FF8C833317AB14B5000166FC /* Turn Touch Mac.app */;
 			productType = "com.apple.product-type.application";
 		};
-		FFF8AE351AFDAB3E0064DCEF /* Turn Touch Remote Tests */ = {
+		FFF8AE351AFDAB3E0064DCEF /* Turn Touch Mac Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FFF8AE401AFDAB3E0064DCEF /* Build configuration list for PBXNativeTarget "Turn Touch Remote Tests" */;
+			buildConfigurationList = FFF8AE401AFDAB3E0064DCEF /* Build configuration list for PBXNativeTarget "Turn Touch Mac Tests" */;
 			buildPhases = (
 				FFF8AE321AFDAB3E0064DCEF /* Sources */,
 				FFF8AE331AFDAB3E0064DCEF /* Frameworks */,
@@ -2162,9 +2159,9 @@
 			dependencies = (
 				FFF8AE3D1AFDAB3E0064DCEF /* PBXTargetDependency */,
 			);
-			name = "Turn Touch Remote Tests";
+			name = "Turn Touch Mac Tests";
 			productName = "Turn Touch Remote Tests";
-			productReference = FFF8AE361AFDAB3E0064DCEF /* Turn Touch Remote Tests.xctest */;
+			productReference = FFF8AE361AFDAB3E0064DCEF /* Turn Touch Mac Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -2193,7 +2190,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FF8C832E17AB14B5000166FC /* Build configuration list for PBXProject "Turn Touch Remote" */;
+			buildConfigurationList = FF8C832E17AB14B5000166FC /* Build configuration list for PBXProject "Turn Touch Mac" */;
 			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -2205,8 +2202,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FF8C833217AB14B5000166FC /* Turn Touch Remote */,
-				FFF8AE351AFDAB3E0064DCEF /* Turn Touch Remote Tests */,
+				FF8C833217AB14B5000166FC /* Turn Touch Mac */,
+				FFF8AE351AFDAB3E0064DCEF /* Turn Touch Mac Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -2339,7 +2336,7 @@
 				FF91709C1AF9B19100FAAC88 /* west tone.wav in Resources */,
 				FF8012F5186A1AD100955218 /* defaults.plist in Resources */,
 				FF01CA681C46DCC200F83A73 /* imac.png in Resources */,
-				FF98A2EF1867DC320032CC7A /* Turn Touch Remote.entitlements in Resources */,
+				FF98A2EF1867DC320032CC7A /* Turn Touch Mac.entitlements in Resources */,
 				FF01CA771C46DCC200F83A73 /* mode_smartlock.png in Resources */,
 				FF01CA6E1C46DCC200F83A73 /* mode_hue.png in Resources */,
 				FF01CA751C46DCC200F83A73 /* mode_pandora.png in Resources */,
@@ -2585,7 +2582,7 @@
 /* Begin PBXTargetDependency section */
 		FFF8AE3D1AFDAB3E0064DCEF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FF8C833217AB14B5000166FC /* Turn Touch Remote */;
+			target = FF8C833217AB14B5000166FC /* Turn Touch Mac */;
 			targetProxy = FFF8AE3C1AFDAB3E0064DCEF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -2696,20 +2693,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Turn Touch Remote/Supporting Files/Turn Touch Remote.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Turn Touch Mac/Supporting Files/Turn Touch Mac.entitlements";
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 6W5HRS3393;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Turn\\ Touch\\ Remote/Vendor/",
-					"$(PROJECT_DIR)/Turn\\ Touch\\ Remote/Vendor/Hue",
+					"$(PROJECT_DIR)/Turn\\ Touch\\ Mac/Vendor/",
+					"$(PROJECT_DIR)/Turn\\ Touch\\ Mac/Vendor/Hue",
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Turn Touch Remote/Supporting Files/Turn Touch Remote-Prefix.pch";
+				GCC_PREFIX_HEADER = "Turn Touch Mac/Supporting Files/Turn Touch Mac-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
-				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Remote/Supporting Files/Turn Touch Remote-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Mac/Supporting Files/Turn Touch Mac-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_CFLAGS = "-v";
@@ -2718,7 +2715,7 @@
 					"-Wl,-rpath,@loader_path/../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.mac-remote";
-				PRODUCT_NAME = "Turn Touch Remote";
+				PRODUCT_NAME = "Turn Touch Mac";
 				PROVISIONING_PROFILE = "6918aade-e7fe-41f9-8d97-58b9aa86eb24";
 				PROVISIONING_PROFILE_SPECIFIER = "Turn Touch Developer ID";
 				WRAPPER_EXTENSION = app;
@@ -2729,20 +2726,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Turn Touch Remote/Supporting Files/Turn Touch Remote.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Turn Touch Mac/Supporting Files/Turn Touch Mac.entitlements";
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 6W5HRS3393;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Turn\\ Touch\\ Remote/Vendor/",
-					"$(PROJECT_DIR)/Turn\\ Touch\\ Remote/Vendor/Hue",
+					"$(PROJECT_DIR)/Turn\\ Touch\\ Mac/Vendor/",
+					"$(PROJECT_DIR)/Turn\\ Touch\\ Mac/Vendor/Hue",
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Turn Touch Remote/Supporting Files/Turn Touch Remote-Prefix.pch";
+				GCC_PREFIX_HEADER = "Turn Touch Mac/Supporting Files/Turn Touch Mac-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
-				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Remote/Supporting Files/Turn Touch Remote-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Mac/Supporting Files/Turn Touch Mac-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_CFLAGS = "-v";
@@ -2751,7 +2748,7 @@
 					"-Wl,-rpath,@loader_path/../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.mac-remote";
-				PRODUCT_NAME = "Turn Touch Remote";
+				PRODUCT_NAME = "Turn Touch Mac";
 				PROVISIONING_PROFILE = "6918aade-e7fe-41f9-8d97-58b9aa86eb24";
 				PROVISIONING_PROFILE_SPECIFIER = "Turn Touch Developer ID";
 				WRAPPER_EXTENSION = app;
@@ -2786,14 +2783,14 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				INFOPLIST_FILE = "Turn Touch Remote Tests/Info.plist";
+				INFOPLIST_FILE = "Turn Touch Mac Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Turn Touch Remote.app/Contents/MacOS/Turn Touch Remote";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Turn Touch Mac.app/Contents/MacOS/Turn Touch Mac";
 			};
 			name = Debug;
 		};
@@ -2821,14 +2818,14 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				INFOPLIST_FILE = "Turn Touch Remote Tests/Info.plist";
+				INFOPLIST_FILE = "Turn Touch Mac Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Turn Touch Remote.app/Contents/MacOS/Turn Touch Remote";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Turn Touch Mac.app/Contents/MacOS/Turn Touch Mac";
 			};
 			name = Release;
 		};
@@ -2877,20 +2874,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Turn Touch Remote/Supporting Files/Turn Touch Remote.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Turn Touch Mac/Supporting Files/Turn Touch Mac.entitlements";
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 6W5HRS3393;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Turn\\ Touch\\ Remote/Vendor/",
-					"$(PROJECT_DIR)/Turn\\ Touch\\ Remote/Vendor/Hue",
+					"$(PROJECT_DIR)/Turn\\ Touch\\ Mac/Vendor/",
+					"$(PROJECT_DIR)/Turn\\ Touch\\ Mac/Vendor/Hue",
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Turn Touch Remote/Supporting Files/Turn Touch Remote-Prefix.pch";
+				GCC_PREFIX_HEADER = "Turn Touch Mac/Supporting Files/Turn Touch Mac-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
-				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Remote/Supporting Files/Turn Touch Remote-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Mac/Supporting Files/Turn Touch Mac-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_CFLAGS = "-v";
@@ -2899,7 +2896,7 @@
 					"-Wl,-rpath,@loader_path/../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.mac-remote";
-				PRODUCT_NAME = "Turn Touch Remote";
+				PRODUCT_NAME = "Turn Touch Mac";
 				PROVISIONING_PROFILE = "6918aade-e7fe-41f9-8d97-58b9aa86eb24";
 				PROVISIONING_PROFILE_SPECIFIER = "Turn Touch Developer ID";
 				WRAPPER_EXTENSION = app;
@@ -2934,21 +2931,21 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				INFOPLIST_FILE = "Turn Touch Remote Tests/Info.plist";
+				INFOPLIST_FILE = "Turn Touch Mac Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Turn Touch Remote.app/Contents/MacOS/Turn Touch Remote";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Turn Touch Mac.app/Contents/MacOS/Turn Touch Mac";
 			};
 			name = Testing;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FF8C832E17AB14B5000166FC /* Build configuration list for PBXProject "Turn Touch Remote" */ = {
+		FF8C832E17AB14B5000166FC /* Build configuration list for PBXProject "Turn Touch Mac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FF8C834E17AB14B5000166FC /* Debug */,
@@ -2958,7 +2955,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FF8C835017AB14B5000166FC /* Build configuration list for PBXNativeTarget "Turn Touch Remote" */ = {
+		FF8C835017AB14B5000166FC /* Build configuration list for PBXNativeTarget "Turn Touch Mac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FF8C835117AB14B5000166FC /* Debug */,
@@ -2968,7 +2965,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FFF8AE401AFDAB3E0064DCEF /* Build configuration list for PBXNativeTarget "Turn Touch Remote Tests" */ = {
+		FFF8AE401AFDAB3E0064DCEF /* Build configuration list for PBXNativeTarget "Turn Touch Mac Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FFF8AE3E1AFDAB3E0064DCEF /* Debug */,
