@@ -23,9 +23,11 @@
         batchAction = nil;
         mode = _mode;
         self.translatesAutoresizingMaskIntoConstraints = NO;
+        isChangeActionVisible = NO;
         
         [self setupLabels];
         [self buildSettingsMenu:YES];
+        [self registerAsObserver];
     }
     
     return self;
@@ -37,13 +39,40 @@
         batchAction = _batchAction;
         mode = batchAction.mode;
         self.translatesAutoresizingMaskIntoConstraints = NO;
+        isChangeActionVisible = NO;
         
         [self setupLabels];
         [self buildSettingsMenu:YES];
+        [self registerAsObserver];
     }
     
     return self;
 }
+
+#pragma mark - KVO
+
+- (void)registerAsObserver {
+    [appDelegate.modeMap addObserver:self forKeyPath:@"batchActionChangeAction"
+                             options:0 context:nil];
+}
+
+- (void) observeValueForKeyPath:(NSString*)keyPath
+                       ofObject:(id)object
+                         change:(NSDictionary*)change
+                        context:(void*)context {
+    if ([keyPath isEqual:NSStringFromSelector(@selector(batchActionChangeAction))]) {
+        if (isChangeActionVisible && appDelegate.modeMap.batchActionChangeAction != batchAction) {
+            isChangeActionVisible = NO;
+            [appDelegate.panelController.backgroundView toggleBatchActionsChangeActionMenu:batchAction visible:NO];
+        }
+    }
+}
+
+- (void)dealloc {
+    [appDelegate.modeMap removeObserver:self forKeyPath:@"batchActionChangeAction"];
+}
+
+#pragma mark - Drawing
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
@@ -84,28 +113,6 @@
     NSPoint actionPoint = NSMakePoint(NSMaxX(diamondView.frame) + 8,
                                       NSHeight(self.frame)/2 - floor(actionSize.height/2) + 1);
     
-    // Delete button
-    NSSize deleteSize = NSMakeSize(NSHeight(self.frame)/2 + BATCH_ACTION_HEADER_PADDING*2,
-                                   NSHeight(self.frame)/2 + BATCH_ACTION_HEADER_PADDING*2);
-    NSPoint deletePoint = NSMakePoint(NSMaxX(self.bounds) - deleteSize.width - BATCH_ACTION_HEADER_MARGIN,
-                                      NSHeight(self.bounds)/2 - floor(deleteSize.height/2));
-    if (deleteButton) {
-        [deleteButton removeFromSuperview];
-        deleteButton = nil;
-    }
-    deleteButton = [[TTChangeButtonView alloc] initWithFrame:NSMakeRect(deletePoint.x, deletePoint.y, deleteSize.width, deleteSize.height)];
-    NSImage *icon = [NSImage imageNamed:@"button_dash"];
-    [icon setSize:NSMakeSize(13, 13)];
-    [deleteButton setImage:icon];
-    [deleteButton setImagePosition:NSImageOnly];
-    [deleteButton setTitle:@""];
-    [deleteButton setUseAltStyle:YES];
-    [deleteButton setBezelStyle:NSRoundRectBezelStyle];
-    [deleteButton setAction:@selector(deleteBatchAction:)];
-    [deleteButton setTarget:self];
-    [deleteButton setBorderRadius:4.f];
-//    [self addSubview:deleteButton];
-    
     // Action dropdown
     NSBezierPath *actionPath = [NSBezierPath bezierPath];
     CGFloat xLeft = actionPoint.x - 42;
@@ -138,7 +145,11 @@
                                                                         NSMinY(actionRect) - .5f,
                                                                         NSHeight(actionRect)*1.1 + 1.f,
                                                                         NSHeight(actionRect) + 1.f)];
+    
     NSImage *chevron = [NSImage imageNamed:@"button_chevron"];
+    if (isChangeActionVisible) {
+        chevron = [NSImage imageNamed:@"button_chevron_x"];
+    }
     [chevron setSize:NSMakeSize(13, 13)];
     [actionButton setImage:chevron];
     [actionButton setImagePosition:NSImageOnly];
@@ -197,43 +208,20 @@
     } else {
         appDelegate.modeMap.batchActionChangeAction = self.batchAction;
         isChangeActionVisible = YES;
-        changeActionMenu = [[TTModeMenuContainer alloc] initWithType:CHANGE_BATCH_ACTION_MENU_TYPE];
-        [self addSubview:changeActionMenu];
     }
     
-    NSTimeInterval openDuration = OPEN_DURATION;
-    
-    NSEvent *currentEvent = [NSApp currentEvent];
-    NSUInteger clearFlags = ([currentEvent modifierFlags] & NSDeviceIndependentModifierFlagsMask);
-    BOOL shiftPressed = (clearFlags == NSShiftKeyMask);
-    if (shiftPressed) openDuration *= 10;
-    
-    if (!isChangeActionVisible) {
-        [changeActionMenu toggleScrollbar:YES];
-    }
-    
-    [NSAnimationContext beginGrouping];
-    [[NSAnimationContext currentContext] setDuration:openDuration];
-    [[NSAnimationContext currentContext] setTimingFunction:[CAMediaTimingFunction functionWithName:
-                                                            kCAMediaTimingFunctionEaseInEaseOut]];
-    
-    if (isChangeActionVisible) {
-        [[NSAnimationContext currentContext] setCompletionHandler:^{
-            [changeActionMenu toggleScrollbar:NO];
-        }];
-        [[changeActionMenuConstraint animator] setConstant:0.f];
-    } else {
-        [[changeActionMenuConstraint animator] setConstant:ACTION_MENU_HEIGHT];
-    }
-    
-    [NSAnimationContext endGrouping];
-
+    [appDelegate.panelController.backgroundView toggleBatchActionsChangeActionMenu:batchAction visible:isChangeActionVisible];
+    [self setNeedsDisplay:YES];
 }
 
 - (IBAction)showBatchActionMenu:(id)sender {
-    [NSMenu popUpContextMenu:settingsMenu
-                   withEvent:[NSApp currentEvent]
-                     forView:sender];
+    if (isChangeActionVisible) {
+        [self changeAction:sender];
+    } else {
+        [NSMenu popUpContextMenu:settingsMenu
+                       withEvent:[NSApp currentEvent]
+                         forView:sender];
+    }
 }
 
 #pragma mark - Settings menu

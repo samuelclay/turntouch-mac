@@ -107,6 +107,6 @@
 - (void)switchPanelModal:(TTPanelModal)_panelModal;
 - (void)switchPanelModalPairing:(TTModalPairing)_modalPairing;
 - (void)switchPanelModalFTUX:(TTModalFTUX)_modalFTUX;
-- (void)toggleBatchActionsChangeActionMenu:(NSString *)batchActionKey withMode:(TTMode *)mode;
+- (void)toggleBatchActionsChangeActionMenu:(TTAction *)batchAction visible:(BOOL)visible;
 
 @end

@@ -59,7 +59,7 @@ const NSInteger BATCH_ACTION_HEADER_HEIGHT = 36;
                         context:(void*)context {
     if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))]) {
         if (changeActionBatchActionKey) {
-            [self toggleChangeActionMenu:nil withMode:nil];
+            [self toggleChangeActionMenu:nil visible:NO];
         }
     }
 }
@@ -70,36 +70,41 @@ const NSInteger BATCH_ACTION_HEADER_HEIGHT = 36;
 
 #pragma mark - Change Action Menu
 
-- (void)toggleChangeActionMenu:(NSString *)batchActionKey withMode:(TTMode *)mode {
-    if (batchActionKey == nil || changeActionBatchActionKey == batchActionKey) {
+- (void)toggleChangeActionMenu:(TTAction *)batchAction visible:(BOOL)visible {
+    NSLayoutConstraint *changeActionMenuConstraint;
+    
+    if (!visible) {
         changeActionBatchActionKey = nil;
         appDelegate.modeMap.batchActionChangeAction = nil;
         [appDelegate.modeMap setOpenedChangeActionMenu:NO];
+        
+        changeActionMenuConstraint = changeActionMenuViewConstraints[batchAction.batchActionKey];
     } else {
-        changeActionBatchActionKey = batchActionKey;
-        appDelegate.modeMap.batchActionChangeAction = mode.action;
+        changeActionBatchActionKey = batchAction.batchActionKey;
+        appDelegate.modeMap.batchActionChangeAction = batchAction;
         [appDelegate.modeMap setOpenedChangeActionMenu:YES];
+
+        NSView *changeActionMenuPlaceholder = changeActionMenuViewControllers[batchAction.batchActionKey];
+        TTModeMenuContainer *changeActionMenu = [[TTModeMenuContainer alloc] initWithType:CHANGE_BATCH_ACTION_MENU_TYPE];
+        [self replaceSubview:changeActionMenuPlaceholder with:changeActionMenu];
+        [changeActionMenuViewControllers setObject:changeActionMenu forKey:batchAction.batchActionKey];
+        
+        changeActionMenuConstraint = changeActionMenuViewConstraints[batchAction.batchActionKey];
+        [self removeConstraint:changeActionMenuConstraint];
+        changeActionMenuConstraint = [NSLayoutConstraint constraintWithItem:changeActionMenuViewControllers[batchAction.batchActionKey]
+                                                                  attribute:NSLayoutAttributeHeight
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:nil
+                                                                  attribute:0
+                                                                 multiplier:1.0 constant:0.f];
+        [self addConstraint:changeActionMenuConstraint];
+        [changeActionMenuViewConstraints setObject:changeActionMenuConstraint forKey:batchAction.batchActionKey];
+        
+        
+        [changeActionMenu setNeedsDisplay:YES];
+        batchAction.changeActionMenu = changeActionMenu;
     }
     
-    NSView *changeActionMenuPlaceholder = changeActionMenuViewControllers[batchActionKey];
-    TTModeMenuContainer *changeActionMenu = [[TTModeMenuContainer alloc] initWithType:CHANGE_BATCH_ACTION_MENU_TYPE];
-    [self replaceSubview:changeActionMenuPlaceholder with:changeActionMenu];
-    [changeActionMenuViewControllers setObject:changeActionMenu forKey:batchActionKey];
-    
-    NSLayoutConstraint *changeActionMenuConstraint = changeActionMenuViewConstraints[batchActionKey];
-    [self removeConstraint:changeActionMenuConstraint];
-    changeActionMenuConstraint = [NSLayoutConstraint constraintWithItem:changeActionMenuViewControllers[batchActionKey]
-                                                                                  attribute:NSLayoutAttributeHeight
-                                                                                  relatedBy:NSLayoutRelationEqual
-                                                                                     toItem:nil
-                                                                                  attribute:0
-                                                                                 multiplier:1.0 constant:0.f];
-    [self addConstraint:changeActionMenuConstraint];
-    [changeActionMenuViewConstraints setObject:changeActionMenuConstraint forKey:batchActionKey];
-
-    
-    [changeActionMenu setNeedsDisplay:YES];
-    mode.action.changeActionMenu = changeActionMenu;
 
     NSTimeInterval openDuration = OPEN_DURATION;
     
@@ -109,7 +114,7 @@ const NSInteger BATCH_ACTION_HEADER_HEIGHT = 36;
     if (shiftPressed) openDuration *= 10;
     
     if (changeActionBatchActionKey) {
-        [changeActionMenu toggleScrollbar:YES];
+        [batchAction.changeActionMenu toggleScrollbar:YES];
     }
     
     [NSAnimationContext beginGrouping];
@@ -119,7 +124,7 @@ const NSInteger BATCH_ACTION_HEADER_HEIGHT = 36;
     
     if (!changeActionBatchActionKey) {
         [[NSAnimationContext currentContext] setCompletionHandler:^{
-            [changeActionMenu toggleScrollbar:NO];
+            [batchAction.changeActionMenu toggleScrollbar:NO];
         }];
         [[changeActionMenuConstraint animator] setConstant:0.f];
     } else {

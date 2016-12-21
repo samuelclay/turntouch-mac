@@ -13,21 +13,10 @@
 
 - (void)loadView {
     appDelegate = (TTAppDelegate *)[NSApp delegate];
-    NSRect collectionRect = {0};
-    TTModeMenuCollectionView *cv = (TTModeMenuCollectionView *)self.collectionView;
     
-    menuType = cv.menuType;
-    if (cv.menuType == MODE_MENU_TYPE || cv.menuType == ADD_MODE_MENU_TYPE) {
-        collectionRect = appDelegate.panelController.backgroundView.modeMenu.frame;
-    } else if (cv.menuType == ACTION_MENU_TYPE || cv.menuType == ADD_ACTION_MENU_TYPE) {
-        collectionRect = appDelegate.panelController.backgroundView.actionMenu.frame;
-    } else if (cv.menuType == CHANGE_BATCH_ACTION_MENU_TYPE) {
-        collectionRect = appDelegate.modeMap.batchActionChangeAction.changeActionMenu.frame;
-    }
     [self setView:[[TTModeMenuItemView alloc]
                    initWithFrame:NSMakeRect(0, 0,
-                                            NSWidth(collectionRect) / 2,
-                                            MENU_ITEM_HEIGHT)]];
+                                            0, MENU_ITEM_HEIGHT)]];
 }
 
 - (void)setRepresentedObject:(id)representedObject {

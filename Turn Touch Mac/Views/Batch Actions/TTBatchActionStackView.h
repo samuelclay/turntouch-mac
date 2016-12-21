@@ -27,7 +27,7 @@ extern const NSInteger BATCH_ACTION_HEADER_HEIGHT;
 @property (nonatomic, strong) NSMutableDictionary *changeActionMenuViewControllers;
 @property (nonatomic, strong) NSMutableDictionary *changeActionMenuViewConstraints;
 
-- (void)toggleChangeActionMenu:(NSString *)batchActionKey withMode:(TTMode *)mode;
+- (void)toggleChangeActionMenu:(TTAction *)batchAction visible:(BOOL)visible;
 - (void)assembleViews:(BOOL)animated;
 
 @end

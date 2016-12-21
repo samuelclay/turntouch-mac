@@ -19,7 +19,6 @@
     BOOL isMenuVisible;
     NSMenu *settingsMenu;
     BOOL isChangeActionVisible;
-    TTModeMenuContainer *changeActionMenu;
 }
 
 @property (nonatomic) TTMode *mode;

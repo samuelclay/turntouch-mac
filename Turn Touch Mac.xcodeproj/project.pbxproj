@@ -315,6 +315,7 @@
 		FFA8EAA6190F11B200679A4D /* TTModeMenuItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA8EAA5190F11B200679A4D /* TTModeMenuItemView.m */; };
 		FFAA4F6F182D99640049FFC7 /* TTModeAlarmClock.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4F6E182D99640049FFC7 /* TTModeAlarmClock.m */; };
 		FFAA4F72182D9A5F0049FFC7 /* TTModeNews.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4F71182D9A5F0049FFC7 /* TTModeNews.m */; };
+		FFAB2C131E0B377A00A16433 /* button_chevron_x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAB2C121E0B377A00A16433 /* button_chevron_x.png */; };
 		FFABAB7A1C235EC500AD5620 /* TTFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB791C235EC500AD5620 /* TTFooterView.m */; };
 		FFABAB811C2777D500AD5620 /* TTBatchActionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB801C2777D500AD5620 /* TTBatchActionHeaderView.m */; };
 		FFABAB841C2784E300AD5620 /* TTBatchActionStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB831C2784E300AD5620 /* TTBatchActionStackView.m */; };
@@ -879,6 +880,7 @@
 		FFAA4F70182D9A5F0049FFC7 /* TTModeNews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeNews.h; path = Modes/News/TTModeNews.h; sourceTree = "<group>"; };
 		FFAA4F71182D9A5F0049FFC7 /* TTModeNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeNews.m; path = Modes/News/TTModeNews.m; sourceTree = "<group>"; };
 		FFAA61E21ABA6AD000AA422B /* Turn Touch Mac-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Turn Touch Mac-Prefix.pch"; path = "Supporting Files/Turn Touch Mac-Prefix.pch"; sourceTree = "<group>"; };
+		FFAB2C121E0B377A00A16433 /* button_chevron_x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_chevron_x.png; sourceTree = "<group>"; };
 		FFABAB781C235EC500AD5620 /* TTFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTFooterView.h; path = "Views/Title Bar/TTFooterView.h"; sourceTree = "<group>"; };
 		FFABAB791C235EC500AD5620 /* TTFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTFooterView.m; path = "Views/Title Bar/TTFooterView.m"; sourceTree = "<group>"; };
 		FFABAB7F1C2777D500AD5620 /* TTBatchActionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTBatchActionHeaderView.h; path = "Views/Batch Actions/TTBatchActionHeaderView.h"; sourceTree = "<group>"; };
@@ -1014,6 +1016,7 @@
 				FF01CA2D1C46DCC200F83A73 /* button_chevron.png */,
 				FF01CA2E1C46DCC200F83A73 /* button_dash.png */,
 				FF01CA2F1C46DCC200F83A73 /* button_plus.png */,
+				FFAB2C121E0B377A00A16433 /* button_chevron_x.png */,
 				FF01CA301C46DCC200F83A73 /* button_x.png */,
 				FF01CA311C46DCC200F83A73 /* clock b&w.png */,
 				FF01CA321C46DCC200F83A73 /* clock.png */,
@@ -2271,6 +2274,7 @@
 				FF01CA601C46DCC200F83A73 /* cog.png in Resources */,
 				FF2705461C93A348000BB10F /* modal_ftux_change_action.png in Resources */,
 				FF01CA691C46DCC200F83A73 /* macbookpro.png in Resources */,
+				FFAB2C131E0B377A00A16433 /* button_chevron_x.png in Resources */,
 				FF2C2E6F1C5479E000FAD7E2 /* TTModeWemoSwitchOptions.xib in Resources */,
 				FF87E9F31C9630E500682461 /* TTModalFTUXView.xib in Resources */,
 				FFA1D4DB1A3B89A4003EA0BC /* TTModeHUDView.xib in Resources */,

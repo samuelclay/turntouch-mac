@@ -417,10 +417,8 @@
     //    NSLog(@"modeOptionsView constraints: %@", optionsView.modeOptionsView.constraints);
 }
 
-- (void)toggleBatchActionsChangeActionMenu:(NSString *)batchActionKey withMode:(TTMode *)mode {
-    appDelegate.modeMap.batchActionChangeAction = mode.action;
-    
-    [batchActionStackView toggleChangeActionMenu:batchActionKey withMode:mode];
+- (void)toggleBatchActionsChangeActionMenu:(TTAction *)batchAction visible:(BOOL)visible {    
+    [batchActionStackView toggleChangeActionMenu:batchAction visible:visible];
 }
 
 - (void)adjustBatchActionsHeight:(BOOL)animated {
