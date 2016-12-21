@@ -29,6 +29,19 @@
 #import "TTModalSupportView.h"
 #import "TTPanelStates.h"
 
+#define PANEL_WIDTH 360.0f
+#define STROKE_OPACITY .5f
+#define SEARCH_INSET 10.0f
+#define TITLE_BAR_HEIGHT 38.0f
+#define MODE_TABS_HEIGHT 92.0f
+#define MODE_TITLE_HEIGHT 64.0f
+#define MODE_MENU_HEIGHT 146.0f
+#define ACTION_MENU_HEIGHT 96.0f
+#define MODE_OPTIONS_HEIGHT 148.0f
+#define DIAMOND_LABELS_SIZE 270.0f
+#define ADD_ACTION_BUTTON_HEIGHT 48.0f
+#define FOOTER_HEIGHT 8.0f
+
 @class TTAppDelegate;
 @class TTPanelArrowView;
 @class TTDiamondView;
@@ -89,9 +102,11 @@
 @property (nonatomic) NSLayoutConstraint *optionsConstraint;
 
 - (void)resetPosition;
+- (void)adjustBatchActionsHeight:(BOOL)animated;
 - (void)adjustOptionsHeight:(NSView *)optionsDetailView;
 - (void)switchPanelModal:(TTPanelModal)_panelModal;
 - (void)switchPanelModalPairing:(TTModalPairing)_modalPairing;
 - (void)switchPanelModalFTUX:(TTModalFTUX)_modalFTUX;
+- (void)toggleBatchActionsChangeActionMenu:(NSString *)batchActionKey withMode:(TTMode *)mode;
 
 @end

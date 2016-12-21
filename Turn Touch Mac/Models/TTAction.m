@@ -13,6 +13,7 @@
 @synthesize mode;
 @synthesize actionName;
 @synthesize batchActionKey;
+@synthesize changeActionMenu;
 
 - (id)initWithActionName:(NSString *)_actionName {
     if (self = [super init]) {

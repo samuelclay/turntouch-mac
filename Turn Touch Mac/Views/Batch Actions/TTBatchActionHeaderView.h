@@ -9,13 +9,17 @@
 #import <Cocoa/Cocoa.h>
 #import "TTAppDelegate.h"
 
-@interface TTBatchActionHeaderView : NSView {
+@interface TTBatchActionHeaderView : NSView <NSMenuDelegate> {
     TTAppDelegate *appDelegate;
     NSDictionary *titleAttributes;
     NSImage *modeImage;
     TTDiamondView *diamondView;
     TTChangeButtonView *deleteButton;
     TTChangeButtonView *actionButton;
+    BOOL isMenuVisible;
+    NSMenu *settingsMenu;
+    BOOL isChangeActionVisible;
+    TTModeMenuContainer *changeActionMenu;
 }
 
 @property (nonatomic) TTMode *mode;

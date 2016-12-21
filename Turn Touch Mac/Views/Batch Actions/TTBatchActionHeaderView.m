@@ -6,6 +6,7 @@
 //  Copyright © 2015 Turn Touch. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "TTBatchActionHeaderView.h"
 
 #define BATCH_ACTION_HEADER_MARGIN 13.f
@@ -24,6 +25,7 @@
         self.translatesAutoresizingMaskIntoConstraints = NO;
         
         [self setupLabels];
+        [self buildSettingsMenu:YES];
     }
     
     return self;
@@ -37,6 +39,7 @@
         self.translatesAutoresizingMaskIntoConstraints = NO;
         
         [self setupLabels];
+        [self buildSettingsMenu:YES];
     }
     
     return self;
@@ -145,6 +148,7 @@
     [actionButton setBezelStyle:NSRoundRectBezelStyle];
     [actionButton setAction:@selector(showBatchActionMenu:)];
     [actionButton setTarget:self];
+    [actionButton setMenu:settingsMenu];
     [actionButton setBorderRadius:0.f];
     [self addSubview:actionButton];
     [NSGraphicsContext restoreGraphicsState];
@@ -187,8 +191,88 @@
     [appDelegate.modeMap removeBatchAction:batchAction.batchActionKey];
 }
 
-- (IBAction)showBatchActionMenu:(id)sender {
+- (IBAction)changeAction:(id)sender {
+    if (isChangeActionVisible) {
+        isChangeActionVisible = NO;
+    } else {
+        appDelegate.modeMap.batchActionChangeAction = self.batchAction;
+        isChangeActionVisible = YES;
+        changeActionMenu = [[TTModeMenuContainer alloc] initWithType:CHANGE_BATCH_ACTION_MENU_TYPE];
+        [self addSubview:changeActionMenu];
+    }
     
+    NSTimeInterval openDuration = OPEN_DURATION;
+    
+    NSEvent *currentEvent = [NSApp currentEvent];
+    NSUInteger clearFlags = ([currentEvent modifierFlags] & NSDeviceIndependentModifierFlagsMask);
+    BOOL shiftPressed = (clearFlags == NSShiftKeyMask);
+    if (shiftPressed) openDuration *= 10;
+    
+    if (!isChangeActionVisible) {
+        [changeActionMenu toggleScrollbar:YES];
+    }
+    
+    [NSAnimationContext beginGrouping];
+    [[NSAnimationContext currentContext] setDuration:openDuration];
+    [[NSAnimationContext currentContext] setTimingFunction:[CAMediaTimingFunction functionWithName:
+                                                            kCAMediaTimingFunctionEaseInEaseOut]];
+    
+    if (isChangeActionVisible) {
+        [[NSAnimationContext currentContext] setCompletionHandler:^{
+            [changeActionMenu toggleScrollbar:NO];
+        }];
+        [[changeActionMenuConstraint animator] setConstant:0.f];
+    } else {
+        [[changeActionMenuConstraint animator] setConstant:ACTION_MENU_HEIGHT];
+    }
+    
+    [NSAnimationContext endGrouping];
+
+}
+
+- (IBAction)showBatchActionMenu:(id)sender {
+    [NSMenu popUpContextMenu:settingsMenu
+                   withEvent:[NSApp currentEvent]
+                     forView:sender];
+}
+
+#pragma mark - Settings menu
+
+- (void)buildSettingsMenu:(BOOL)force {
+    if (!force && !isMenuVisible) return;
+    
+    NSMenuItem *menuItem;
+    
+    if (!settingsMenu) {
+        settingsMenu = [[NSMenu alloc] initWithTitle:@"Action Menu"];
+        [settingsMenu setDelegate:self];
+        [settingsMenu setAutoenablesItems:NO];
+    } else {
+        [settingsMenu removeAllItems];
+    }
+    
+    menuItem = [[NSMenuItem alloc] initWithTitle:@"Change" action:@selector(changeAction:) keyEquivalent:@""];
+    [menuItem setEnabled:YES];
+    [menuItem setTarget:self];
+    [settingsMenu addItem:menuItem];
+    
+    [settingsMenu addItem:[NSMenuItem separatorItem]];
+
+    menuItem = [[NSMenuItem alloc] initWithTitle:@"Remove" action:@selector(deleteBatchAction:) keyEquivalent:@""];
+    [menuItem setEnabled:YES];
+    [menuItem setTarget:self];
+    [settingsMenu addItem:menuItem];
+}
+
+#pragma mark - Menu Delegate
+
+- (void)menuWillOpen:(NSMenu *)menu {
+    isMenuVisible = YES;
+    [self buildSettingsMenu:YES];
+}
+
+- (void)menuDidClose:(NSMenu *)menu {
+    isMenuVisible = NO;
 }
 
 @end

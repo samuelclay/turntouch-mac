@@ -12,6 +12,7 @@
 
 @class TTAppDelegate;
 @class TTMode;
+@class TTModeMenuContainer;
 
 @interface TTAction : NSObject {
     TTAppDelegate *appDelegate;
@@ -20,6 +21,7 @@
 @property (nonatomic) TTMode *mode;
 @property (nonatomic) NSString *actionName;
 @property (nonatomic) NSString *batchActionKey;
+@property (nonatomic) TTModeMenuContainer *changeActionMenu;
 
 - (id)initWithActionName:(NSString *)_actionName;
 - (id)initWithBatchActionKey:(NSString *)_key;

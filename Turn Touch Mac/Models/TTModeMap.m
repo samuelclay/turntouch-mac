@@ -28,6 +28,7 @@
 @synthesize openedModeChangeMenu;
 @synthesize openedActionChangeMenu;
 @synthesize openedAddActionChangeMenu;
+@synthesize openedChangeActionMenu;
 @synthesize tempModeName;
 @synthesize selectedMode;
 @synthesize northMode;
@@ -35,6 +36,7 @@
 @synthesize westMode;
 @synthesize southMode;
 @synthesize tempMode;
+@synthesize batchActionChangeAction;
 @synthesize batchActions;
 @synthesize availableModes;
 @synthesize availableActions;
@@ -61,6 +63,7 @@
         openedModeChangeMenu = NO;
         openedActionChangeMenu = NO;
         openedAddActionChangeMenu = NO;
+        openedChangeActionMenu = NO;
         batchActions = [[TTBatchActions alloc] init];
 
         [self setupModes];
@@ -87,6 +90,7 @@
     }
     availableAddActions = _availableAddActions;
 }
+
 - (void)setAvailableModes:(NSArray *)_availableModes {
     availableModes = _availableModes;
     NSMutableArray *_availableAddModes = [NSMutableArray array];
@@ -94,6 +98,16 @@
         [_availableAddModes addObject:@{@"id": mode, @"type": [NSNumber numberWithInt:ADD_MODE_MENU_TYPE]}];
     }
     availableAddModes = _availableAddModes;
+}
+
+
+- (void)setBatchActionChangeAction:(TTAction *)_batchActionChangeAction {
+    batchActionChangeAction = _batchActionChangeAction;
+    NSMutableArray *_availableAddActions = [NSMutableArray array];
+    for (NSString *action in batchActionChangeAction.mode.actions) {
+        [_availableAddActions addObject:@{@"id": action, @"type": [NSNumber numberWithInt:CHANGE_BATCH_ACTION_MENU_TYPE]}];
+    }
+    availableAddActions = _availableAddActions;
 }
 
 - (void)setAvailableActions:(NSArray *)_availableActions {
@@ -316,6 +330,38 @@
     tempModeName = nil;
 
     [self setInspectingModeDirection:inspectingModeDirection];
+}
+
+- (void)changeBatchAction:(NSString *)batchActionKey toAction:(NSString *)actionName {
+    NSLog(@"Changing %@ from %@", actionName, NSStringFromClass([batchActionChangeAction class]));
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    
+    // Start by reading current array of batch actions in mode's direction's action's direction
+    NSString *modeDirectionName = [self directionName:selectedModeDirection];
+    NSString *actionDirectionName = [self directionName:inspectingModeDirection];
+    NSString *batchKey = [NSString stringWithFormat:@"TT:mode:%@:action:%@:batchactions",
+                          modeDirectionName,
+                          actionDirectionName];
+    NSArray *batchActionKeys = [prefs objectForKey:batchKey];
+    NSMutableArray *newBatchActionKeys = [NSMutableArray array];
+    
+    // Replace batch action in existing batch actions
+    for (NSString *key in batchActionKeys) {
+        if (![key isEqualToString:batchActionKey]) {
+            [newBatchActionKeys addObject:key];
+        } else {
+            NSArray *keyParts = [key componentsSeparatedByString:@":"];
+            NSString *newActionKey = [NSString stringWithFormat:@"%@:%@:%@",
+                                      NSStringFromClass([batchActionChangeAction.mode class]),
+                                      actionName,
+                                      keyParts[2]];
+            [newBatchActionKeys addObject:newActionKey];
+        }
+    }
+    [prefs setObject:newBatchActionKeys forKey:batchKey];
+    [prefs synchronize];
+    
+    [batchActions assembleBatchActions];
 }
 
 - (void)removeBatchAction:(NSString *)batchActionKey {
@@ -588,6 +634,7 @@ actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction 
     if (inspectingModeDirection == direction) {
         [self setOpenedActionChangeMenu:NO];
         [self setOpenedAddActionChangeMenu:NO];
+        [self setOpenedChangeActionMenu:NO];
         [self setInspectingModeDirection:NO_DIRECTION];
     } else {
         [self setInspectingModeDirection:direction];
@@ -629,6 +676,12 @@ actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction 
 - (void)setOpenedAddActionChangeMenu:(BOOL)_openedAddActionChangeMenu {
     if (openedAddActionChangeMenu != _openedAddActionChangeMenu) {
         openedAddActionChangeMenu = _openedAddActionChangeMenu;
+    }
+}
+
+- (void)setOpenedChangeActionMenu:(BOOL)_openedChangeActionMenu {
+    if (openedChangeActionMenu != _openedChangeActionMenu) {
+        openedChangeActionMenu = _openedChangeActionMenu;
     }
 }
 

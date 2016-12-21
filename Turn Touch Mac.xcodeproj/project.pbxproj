@@ -878,7 +878,6 @@
 		FFAA4F6E182D99640049FFC7 /* TTModeAlarmClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeAlarmClock.m; path = "Modes/Alarm Clock/TTModeAlarmClock.m"; sourceTree = "<group>"; };
 		FFAA4F70182D9A5F0049FFC7 /* TTModeNews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeNews.h; path = Modes/News/TTModeNews.h; sourceTree = "<group>"; };
 		FFAA4F71182D9A5F0049FFC7 /* TTModeNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeNews.m; path = Modes/News/TTModeNews.m; sourceTree = "<group>"; };
-		FFAA61E11ABA6AD000AA422B /* Turn Touch Remote-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Turn Touch Remote-Info.plist"; path = "Supporting Files/Turn Touch Remote-Info.plist"; sourceTree = "<group>"; };
 		FFAA61E21ABA6AD000AA422B /* Turn Touch Mac-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Turn Touch Mac-Prefix.pch"; path = "Supporting Files/Turn Touch Mac-Prefix.pch"; sourceTree = "<group>"; };
 		FFABAB781C235EC500AD5620 /* TTFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTFooterView.h; path = "Views/Title Bar/TTFooterView.h"; sourceTree = "<group>"; };
 		FFABAB791C235EC500AD5620 /* TTFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTFooterView.m; path = "Views/Title Bar/TTFooterView.m"; sourceTree = "<group>"; };
@@ -1679,7 +1678,6 @@
 				FF936038196DF0B600675B7B /* fonts */,
 				FF9170941AF9B19100FAAC88 /* sounds */,
 				FF98A2E91867DC320032CC7A /* main.m */,
-				FFAA61E11ABA6AD000AA422B /* Turn Touch Remote-Info.plist */,
 				FFAA61E21ABA6AD000AA422B /* Turn Touch Mac-Prefix.pch */,
 				FF98A2EC1867DC320032CC7A /* Turn Touch Mac.entitlements */,
 				FF8C833F17AB14B5000166FC /* InfoPlist.strings */,

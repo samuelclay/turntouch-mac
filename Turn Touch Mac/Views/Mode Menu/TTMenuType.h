@@ -13,4 +13,5 @@ typedef enum {
     ACTION_MENU_TYPE = 1,
     ADD_MODE_MENU_TYPE = 2,
     ADD_ACTION_MENU_TYPE = 3,
+    CHANGE_BATCH_ACTION_MENU_TYPE = 4,
 } TTMenuType;

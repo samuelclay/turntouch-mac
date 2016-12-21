@@ -27,12 +27,14 @@
 @property (nonatomic, assign) BOOL openedModeChangeMenu;
 @property (nonatomic, assign) BOOL openedActionChangeMenu;
 @property (nonatomic, assign) BOOL openedAddActionChangeMenu;
+@property (nonatomic, assign) BOOL openedChangeActionMenu;
 @property (nonatomic) TTMode *selectedMode;
 @property (nonatomic) TTMode *northMode;
 @property (nonatomic) TTMode *eastMode;
 @property (nonatomic) TTMode *westMode;
 @property (nonatomic) TTMode *southMode;
 @property (nonatomic) TTMode *tempMode;
+@property (nonatomic) TTAction *batchActionChangeAction;
 @property (nonatomic) TTBatchActions *batchActions;
 @property (nonatomic) NSArray *availableModes;
 @property (nonatomic) NSArray *availableActions;
@@ -53,6 +55,7 @@
 - (void)changeDirection:(TTModeDirection)direction toMode:(NSString *)modeClassName;
 - (void)changeDirection:(TTModeDirection)direction toAction:(NSString *)actionClassName;
 - (void)addBatchAction:(NSString *)actionName;
+- (void)changeBatchAction:(NSString *)batchActionKey toAction:(NSString *)actionName;
 - (void)removeBatchAction:(NSString *)batchActionKey;
 - (NSArray *)selectedModeBatchActions:(TTModeDirection)direction;
 

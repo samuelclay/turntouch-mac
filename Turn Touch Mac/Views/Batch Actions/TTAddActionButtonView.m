@@ -120,6 +120,8 @@
     if (appDelegate.modeMap.openedAddActionChangeMenu) {
         [appDelegate.modeMap setOpenedAddActionChangeMenu:NO];
     }
+    
+    [appDelegate.panelController.backgroundView adjustBatchActionsHeight:YES];
 }
 
 @end

@@ -107,6 +107,7 @@
     [appDelegate.modeMap removeObserver:self forKeyPath:@"openedModeChangeMenu"];
     [appDelegate.modeMap removeObserver:self forKeyPath:@"openedActionChangeMenu"];
     [appDelegate.modeMap removeObserver:self forKeyPath:@"openedAddActionChangeMenu"];
+    [appDelegate.modeMap removeObserver:self forKeyPath:@"openedChangeActionMenu"];
     [appDelegate.modeMap removeObserver:self forKeyPath:@"availableActions"];
     [appDelegate.modeMap removeObserver:self forKeyPath:@"tempModeName"];
 }
@@ -121,6 +122,8 @@
     [appDelegate.modeMap addObserver:self forKeyPath:@"openedActionChangeMenu"
                              options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"openedAddActionChangeMenu"
+                             options:0 context:nil];
+    [appDelegate.modeMap addObserver:self forKeyPath:@"openedChangeActionMenu"
                              options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"availableActions"
                              options:0 context:nil];
@@ -148,12 +151,19 @@
         if (appDelegate.modeMap.openedAddActionChangeMenu) {
             [appDelegate.modeMap setOpenedAddActionChangeMenu:NO];
         }
+        if (appDelegate.modeMap.openedChangeActionMenu) {
+            [appDelegate.modeMap setOpenedChangeActionMenu:NO];
+        }
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(openedActionChangeMenu))]) {
         [self setCollectionContent];
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(openedAddActionChangeMenu))]) {
         [self setCollectionContent];
+        [self setNeedsDisplay:YES];
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(openedChangeActionMenu))]) {
+        [self setCollectionContent];
+        [self scrollToInspectingDirection];
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(availableActions))]) {
         [self setCollectionContent];
@@ -209,6 +219,8 @@
         [[collectionView animator] setAlphaValue:appDelegate.modeMap.openedActionChangeMenu ? 1.0 : 0];
     } else if (menuType == ADD_MODE_MENU_TYPE || menuType == ADD_ACTION_MENU_TYPE) {
         [[collectionView animator] setAlphaValue:appDelegate.modeMap.openedAddActionChangeMenu ? 1.0 : 0];
+    } else if (menuType == CHANGE_BATCH_ACTION_MENU_TYPE) {
+        [[collectionView animator] setAlphaValue:appDelegate.modeMap.openedChangeActionMenu ? 1.0 : 0];
     }
     
     [NSAnimationContext endGrouping];
@@ -262,6 +274,8 @@
         content = appDelegate.modeMap.availableAddModes;
     } else if (menuType == ADD_ACTION_MENU_TYPE) {
         content = appDelegate.modeMap.availableAddActions;
+    } else if (menuType == CHANGE_BATCH_ACTION_MENU_TYPE) {
+        content = appDelegate.modeMap.availableAddActions;
     }
     
     [collectionView setContent:content withMenuType:menuType];
@@ -278,9 +292,18 @@
         NSString *actionName = [appDelegate.modeMap.selectedMode
                                 actionNameInDirection:appDelegate.modeMap.inspectingModeDirection];
         index = [collectionView.content indexOfObject:actionName];
+    } else if (menuType == CHANGE_BATCH_ACTION_MENU_TYPE) {
+        NSArray *batchActions = [appDelegate.modeMap selectedModeBatchActions:appDelegate.modeMap.inspectingModeDirection];
+        for (TTAction *batchAction in batchActions) {
+            if ([batchAction.batchActionKey isEqualToString:appDelegate.modeMap.batchActionChangeAction.batchActionKey]) {
+                NSString *actionName = appDelegate.modeMap.batchActionChangeAction.actionName;
+                index = [collectionView.content indexOfObject:actionName];
+                break;
+            }
+        }
     }
 
-    if (index >= 0) {
+    if (index != NSNotFound && index >= 0) {
         CGRect rect = [collectionView frameForItemAtIndex:index];
         [self scrollToPosition:rect.origin.y];
     }

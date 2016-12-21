@@ -10,19 +10,6 @@
 #import "TTPanelController.h"
 #import "TTBackgroundView.h"
 
-#define PANEL_WIDTH 360.0f
-#define STROKE_OPACITY .5f
-#define SEARCH_INSET 10.0f
-#define TITLE_BAR_HEIGHT 38.0f
-#define MODE_TABS_HEIGHT 92.0f
-#define MODE_TITLE_HEIGHT 64.0f
-#define MODE_MENU_HEIGHT 146.0f
-#define ACTION_MENU_HEIGHT 96.0f
-#define MODE_OPTIONS_HEIGHT 148.0f
-#define DIAMOND_LABELS_SIZE 270.0f
-#define ADD_ACTION_BUTTON_HEIGHT 48.0f
-#define FOOTER_HEIGHT 8.0f
-
 #pragma mark -
 
 @implementation TTBackgroundView
@@ -250,11 +237,11 @@
                              options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"openedAddActionChangeMenu"
                              options:0 context:nil];
+    [appDelegate.modeMap addObserver:self forKeyPath:@"openedChangeActionMenu"
+                             options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
                              options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
-                             options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"tempModeName"
                              options:0 context:nil];
     [appDelegate.bluetoothMonitor addObserver:self forKeyPath:@"pairedDevicesCount"
                                       options:0 context:nil];
@@ -273,6 +260,8 @@
         [self toggleActionMenuFrame];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(openedAddActionChangeMenu))]) {
         [self toggleAddActionMenuFrame];
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(openedChangeActionMenu))]) {
+        // Called directly to include mode and batch action
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
         [self resetPosition];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))]) {
@@ -282,8 +271,6 @@
         [self adjustBatchActionsHeight:NO];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(pairedDevicesCount))]) {
         [self adjustDeviceTitles];
-    } else if ([keyPath isEqual:NSStringFromSelector(@selector(tempModeName))]) {
-        [self adjustBatchActionsHeight:YES];
     }
 }
 
@@ -430,6 +417,12 @@
     //    NSLog(@"modeOptionsView constraints: %@", optionsView.modeOptionsView.constraints);
 }
 
+- (void)toggleBatchActionsChangeActionMenu:(NSString *)batchActionKey withMode:(TTMode *)mode {
+    appDelegate.modeMap.batchActionChangeAction = mode.action;
+    
+    [batchActionStackView toggleChangeActionMenu:batchActionKey withMode:mode];
+}
+
 - (void)adjustBatchActionsHeight:(BOOL)animated {
 //    NSLog(@"adjustBatchActionsHeight: %@", appDelegate.modeMap.tempModeName);
 
@@ -446,6 +439,9 @@
     }
     if (appDelegate.modeMap.openedAddActionChangeMenu) {
         [appDelegate.modeMap setOpenedAddActionChangeMenu:NO];
+    }
+    if (appDelegate.modeMap.openedChangeActionMenu) {
+        [appDelegate.modeMap setOpenedChangeActionMenu:NO];
     }
 }
 

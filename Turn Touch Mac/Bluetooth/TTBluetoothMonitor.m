@@ -36,7 +36,7 @@
 const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 
 #define CLEAR_PAIRED_DEVICES 0
-//#define DEBUG_CONNECT
+#define DEBUG_CONNECT
 
 @implementation TTBluetoothMonitor
 
@@ -672,16 +672,17 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
         } else {
             NSLog(@"Characteristic error: %@ / %@", characteristic.value, error);
         }
-    } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_V1_CHARACTERISTIC_BATTERY_LEVEL_UUID]]) {
+    } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_V1_CHARACTERISTIC_BATTERY_LEVEL_UUID]] ||
+               [characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_V2_CHARACTERISTIC_BATTERY_LEVEL_UUID]]) {
         if( (characteristic.value)  || !error ) {
             const uint8_t *bytes = [characteristic.value bytes]; // pointer to the bytes in data
             uint16_t value = bytes[0]; // first byte
 //            NSLog(@"Battery level: %d%%", value);
-            device.lastActionDate = [NSDate date];
+//            device.lastActionDate = [NSDate date];
             device.batteryPct = @(value);
             device.uuid = peripheral.identifier.UUIDString;
             [self setValue:@(value) forKey:@"batteryPct"];
-            [self setValue:[NSDate date] forKey:@"lastActionDate"];
+//            [self setValue:[NSDate date] forKey:@"lastActionDate"];
         }
     } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DEVICE_V1_CHARACTERISTIC_INTERVAL_MIN_UUID]]) {
         [characteristics setObject:characteristic forKey:@"interval_min"];

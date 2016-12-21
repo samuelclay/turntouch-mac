@@ -35,5 +35,6 @@
 
 - (void)setAddModeName:(NSDictionary *)_modeName;
 - (void)setAddActionName:(NSDictionary *)_actionName;
+- (void)setChangeActionName:(NSDictionary *)_actionName;
 
 @end

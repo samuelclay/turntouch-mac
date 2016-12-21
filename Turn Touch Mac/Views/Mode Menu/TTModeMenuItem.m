@@ -21,6 +21,8 @@
         collectionRect = appDelegate.panelController.backgroundView.modeMenu.frame;
     } else if (cv.menuType == ACTION_MENU_TYPE || cv.menuType == ADD_ACTION_MENU_TYPE) {
         collectionRect = appDelegate.panelController.backgroundView.actionMenu.frame;
+    } else if (cv.menuType == CHANGE_BATCH_ACTION_MENU_TYPE) {
+        collectionRect = appDelegate.modeMap.batchActionChangeAction.changeActionMenu.frame;
     }
     [self setView:[[TTModeMenuItemView alloc]
                    initWithFrame:NSMakeRect(0, 0,
@@ -39,6 +41,8 @@
             [(TTModeMenuItemView *)[self view] setAddModeName:representedObject];
         } else if (menuType == ADD_ACTION_MENU_TYPE) {
             [(TTModeMenuItemView *)[self view] setAddActionName:representedObject];
+        } else if (menuType == CHANGE_BATCH_ACTION_MENU_TYPE) {
+            [(TTModeMenuItemView *)[self view] setChangeActionName:representedObject];
         }
     } else if ([appDelegate.modeMap.availableModes containsObject:representedObject]) {
         [(TTModeMenuItemView *)[self view] setModeName:representedObject];

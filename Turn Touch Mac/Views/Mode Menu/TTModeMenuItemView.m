@@ -53,6 +53,12 @@
     menuType = ADD_ACTION_MENU_TYPE;
 }
 
+- (void)setChangeActionName:(NSDictionary *)_actionName {
+    modeName = [_actionName objectForKey:@"id"];
+    activeMode = appDelegate.modeMap.batchActionChangeAction.mode;
+    menuType = CHANGE_BATCH_ACTION_MENU_TYPE;
+}
+
 - (void)dealloc {
     [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedModeDirection"];
     [appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
@@ -87,7 +93,7 @@
     
     if (menuType == MODE_MENU_TYPE || menuType == ADD_MODE_MENU_TYPE) {
         [self drawMode];
-    } else if (menuType == ACTION_MENU_TYPE || menuType == ADD_ACTION_MENU_TYPE) {
+    } else if (menuType == ACTION_MENU_TYPE || menuType == ADD_ACTION_MENU_TYPE || menuType == CHANGE_BATCH_ACTION_MENU_TYPE) {
         [self drawAction];
     }
 }
@@ -130,7 +136,7 @@
 - (void)setupTitleAttributes {
     if (menuType == MODE_MENU_TYPE || menuType == ADD_MODE_MENU_TYPE) {
         modeTitle = [[modeClass title] uppercaseString];
-    } else if (menuType == ACTION_MENU_TYPE || menuType == ADD_ACTION_MENU_TYPE) {
+    } else if (menuType == ACTION_MENU_TYPE || menuType == ADD_ACTION_MENU_TYPE || menuType == CHANGE_BATCH_ACTION_MENU_TYPE) {
         modeTitle = [[activeMode titleForAction:modeName buttonMoment:BUTTON_MOMENT_PRESSUP] uppercaseString];
     }
 
@@ -155,6 +161,8 @@
                        isEqualToString:modeName];
     } else if (menuType == MODE_MENU_TYPE) {
         highlighted = [appDelegate.modeMap.selectedMode class] == modeClass;
+    } else if (menuType == CHANGE_BATCH_ACTION_MENU_TYPE) {
+        highlighted = [appDelegate.modeMap.batchActionChangeAction.actionName isEqualToString:modeName];
     }
     return highlighted;
 }
@@ -241,9 +249,13 @@
         [appDelegate.modeMap setInspectingModeDirection:appDelegate.modeMap.inspectingModeDirection];
     } else if (menuType == ADD_MODE_MENU_TYPE) {
         [appDelegate.modeMap setTempModeName:modeName];
+        [appDelegate.panelController.backgroundView adjustBatchActionsHeight:YES];
     } else if (menuType == ADD_ACTION_MENU_TYPE) {
         [appDelegate.modeMap addBatchAction:modeName];
         [appDelegate.panelController.backgroundView.addActionButtonView hideAddActionMenu:nil];
+    } else if (menuType == CHANGE_BATCH_ACTION_MENU_TYPE) {
+        [appDelegate.modeMap changeBatchAction:appDelegate.modeMap.batchActionChangeAction.batchActionKey toAction:modeName];
+        [appDelegate.panelController.backgroundView adjustBatchActionsHeight:YES];
     }
 }
 
