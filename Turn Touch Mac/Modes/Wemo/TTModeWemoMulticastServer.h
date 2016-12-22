@@ -13,6 +13,7 @@
 @protocol TTModeWemoMulticastDelegate <NSObject>
 
 - (TTModeWemoDevice *)foundDevice:(NSDictionary *)headers host:(NSString *)ipAddress port:(NSInteger)port name:(NSString *)name;
+- (void)finishScanning;
 
 @end
 

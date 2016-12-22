@@ -212,6 +212,7 @@ static NSMutableArray *foundDevices;
     wemoState = WEMO_STATE_CONNECTING;
     [self.delegate changeState:wemoState withMode:self];
 
+    [[self sharedMulticastServer] setDelegate:self];
     [[self sharedMulticastServer] beginbroadcast];
 }
 
@@ -242,6 +243,11 @@ static NSMutableArray *foundDevices;
     [newDevice requestDeviceInfo];
     
     return newDevice;
+}
+
+- (void)finishScanning {
+    wemoState = WEMO_STATE_CONNECTED;
+    [self.delegate changeState:wemoState withMode:self];
 }
 
 #pragma mark - Device delegate

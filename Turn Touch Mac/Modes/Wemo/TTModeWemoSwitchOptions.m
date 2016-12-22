@@ -16,6 +16,8 @@
 @implementation TTModeWemoSwitchOptions
 
 @synthesize devicePopup;
+@synthesize refreshButton;
+@synthesize spinner;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,6 +25,9 @@
     self.modeWemo = ((TTModeWemo *)self.mode);
     [self.modeWemo setDelegate:self];
 
+    spinner.hidden = YES;
+    refreshButton.hidden = NO;
+    
     [self selectDevice];
     [self changeState:TTModeWemo.wemoState withMode:self.modeWemo];
 }
@@ -69,11 +74,20 @@
     [self.action changeActionOption:kWemoDeviceLocation to:deviceIdentifier];
 }
 
+- (IBAction)refreshDevices:(id)sender {
+    spinner.hidden = NO;
+    [spinner startAnimation:nil];
+    refreshButton.hidden = YES;
+    
+    [self.modeWemo beginConnectingToWemo];
+}
+
 #pragma mark - Wemo Delegate
 
 
 - (void)changeState:(TTWemoState)wemoState withMode:(TTModeWemo *)modeWemo {
-        NSLog(@" Changing Wemo state: %lu", wemoState);
+    NSLog(@" Changing Wemo state: %lu", wemoState);
+    
     switch (wemoState) {
         case WEMO_STATE_NOT_CONNECTED:
             [self selectDevice];
@@ -84,6 +98,8 @@
             break;
             
         case WEMO_STATE_CONNECTED:
+            spinner.hidden = YES;
+            refreshButton.hidden = NO;
             [self selectDevice];
             break;
             

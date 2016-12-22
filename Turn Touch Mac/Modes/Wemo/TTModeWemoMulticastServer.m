@@ -71,7 +71,10 @@
     NSData* data = [message dataUsingEncoding:NSUTF8StringEncoding];
     [udpSocket sendData:data toHost:@"239.255.255.250" port:1900 withTimeout:2 tag:0];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        if (!attemptsLeft || !udpSocket) return;
+        if (!attemptsLeft || !udpSocket) {
+            [self.delegate finishScanning];
+            return;
+        }
         attemptsLeft -= 1;
         NSLog(@"Attempting wemo M-SEARCH: %ld attempts left...", attemptsLeft);
         [self createMulticastReceiver];

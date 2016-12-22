@@ -12,6 +12,8 @@
 @interface TTModeWemoSwitchOptions : TTOptionsDetailViewController <TTModeWemoDelegate>
 
 @property (nonatomic) IBOutlet NSPopUpButton *devicePopup;
+@property (nonatomic) IBOutlet NSButton *refreshButton;
+@property (nonatomic) IBOutlet NSProgressIndicator *spinner;
 @property (nonatomic, strong) TTModeWemo *modeWemo;
 
 - (IBAction)didChangeDevice:(id)sender;
