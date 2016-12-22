@@ -28,6 +28,11 @@
 #define TARGET_TEMPERATURE_C @"target_temperature_c"
 #define AMBIENT_TEMPERATURE_F @"ambient_temperature_f"
 #define AMBIENT_TEMPERATURE_C @"ambient_temperature_c"
+#define TARGET_TEMPERATURE_HIGH_F @"target_temperature_high_f"
+#define TARGET_TEMPERATURE_HIGH_C @"target_temperature_high_c"
+#define TARGET_TEMPERATURE_LOW_F @"target_temperature_low_f"
+#define TARGET_TEMPERATURE_LOW_C @"target_temperature_low_c"
+#define HVAC_MODE @"hvac_mode"
 #define NAME_LONG @"name_long"
 #define THERMOSTAT_PATH @"devices/thermostats"
 #define TEMPERATURE_SCALE @"temperature_scale"
@@ -65,6 +70,21 @@
     }
     if ([structure objectForKey:TARGET_TEMPERATURE_C]) {
         thermostat.targetTemperatureC = [[structure objectForKey:TARGET_TEMPERATURE_C] integerValue];
+    }
+    if ([structure objectForKey:TARGET_TEMPERATURE_HIGH_F]) {
+        thermostat.targetTemperatureHighF = [[structure objectForKey:TARGET_TEMPERATURE_HIGH_F] integerValue];
+    }
+    if ([structure objectForKey:TARGET_TEMPERATURE_HIGH_C]) {
+        thermostat.targetTemperatureHighC = [[structure objectForKey:TARGET_TEMPERATURE_HIGH_C] integerValue];
+    }
+    if ([structure objectForKey:TARGET_TEMPERATURE_LOW_F]) {
+        thermostat.targetTemperatureLowF = [[structure objectForKey:TARGET_TEMPERATURE_LOW_F] integerValue];
+    }
+    if ([structure objectForKey:TARGET_TEMPERATURE_LOW_C]) {
+        thermostat.targetTemperatureLowC = [[structure objectForKey:TARGET_TEMPERATURE_LOW_C] integerValue];
+    }
+    if ([structure objectForKey:HVAC_MODE]) {
+        thermostat.hvacMode = [structure objectForKey:HVAC_MODE];
     }
     if ([structure objectForKey:TEMPERATURE_SCALE]) {
         thermostat.temperatureScale = [structure objectForKey:TEMPERATURE_SCALE];

@@ -1,11 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTModeNestSetTempOptions">
             <connections>
+                <outlet property="heatControl" destination="AMi-G5-DE5" id="QNz-bS-cEC"/>
                 <outlet property="labelTemp" destination="IeW-HY-6uh" id="umQ-7P-ODt"/>
                 <outlet property="sliderTemp" destination="3am-9s-AWT" id="ySZ-u5-Kl5"/>
                 <outlet property="thermostatPopup" destination="bR4-fY-CdL" id="MQS-RN-Mtj"/>
@@ -15,7 +17,7 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="92"/>
+            <rect key="frame" x="0.0" y="0.0" width="480" height="91"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="T1U-gr-pjf">
                     <rect key="frame" x="18" y="18" width="77" height="19"/>
@@ -36,15 +38,15 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3am-9s-AWT" customClass="TTSlider">
-                    <rect key="frame" x="110" y="18" width="295" height="20"/>
+                <slider horizontalHuggingPriority="247" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3am-9s-AWT" customClass="TTSlider">
+                    <rect key="frame" x="110" y="18" width="295" height="19"/>
                     <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="50" maxValue="90" doubleValue="72" tickMarkPosition="above" sliderType="linear" id="hNZ-m7-qTn" customClass="TTSliderCell"/>
                     <connections>
                         <action selector="changeTempSlider:" target="-2" id="kmb-UH-T2c"/>
                     </connections>
                 </slider>
-                <popUpButton horizontalHuggingPriority="150" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bR4-fY-CdL">
-                    <rect key="frame" x="18" y="48" width="445" height="26"/>
+                <popUpButton horizontalHuggingPriority="248" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bR4-fY-CdL">
+                    <rect key="frame" x="18" y="47" width="325" height="26"/>
                     <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="wij-QX-XMe" id="6sy-2n-jDb">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
@@ -60,15 +62,30 @@
                         <action selector="didChangeThermostat:" target="-2" id="Pim-SQ-u24"/>
                     </connections>
                 </popUpButton>
+                <segmentedControl horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AMi-G5-DE5" customClass="TTSegmentedControl">
+                    <rect key="frame" x="358" y="48" width="104" height="24"/>
+                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="Min-6e-JO2" customClass="TTSegmentedCell">
+                        <font key="font" metaFont="system"/>
+                        <segments>
+                            <segment label="Heat"/>
+                            <segment label="Cool" selected="YES" tag="1"/>
+                        </segments>
+                    </segmentedCell>
+                    <connections>
+                        <action selector="changeHeatControl:" target="-2" id="cgj-0n-mUy"/>
+                    </connections>
+                </segmentedControl>
             </subviews>
             <constraints>
                 <constraint firstItem="IeW-HY-6uh" firstAttribute="leading" secondItem="3am-9s-AWT" secondAttribute="trailing" constant="17" id="0Gj-3g-hi8"/>
+                <constraint firstAttribute="trailing" secondItem="AMi-G5-DE5" secondAttribute="trailing" constant="20" id="1Ac-ic-RX3"/>
                 <constraint firstItem="3am-9s-AWT" firstAttribute="top" secondItem="bR4-fY-CdL" secondAttribute="bottom" constant="15" id="3DC-S0-IFa"/>
                 <constraint firstItem="bR4-fY-CdL" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="ALt-JV-RND"/>
                 <constraint firstItem="T1U-gr-pjf" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="C7R-8Y-gx0"/>
                 <constraint firstItem="bR4-fY-CdL" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="M2h-hk-vhN"/>
-                <constraint firstAttribute="trailing" secondItem="bR4-fY-CdL" secondAttribute="trailing" constant="20" id="Mmf-dE-9zm"/>
                 <constraint firstAttribute="trailing" secondItem="IeW-HY-6uh" secondAttribute="trailing" constant="20" id="QfR-xU-cYT"/>
+                <constraint firstItem="AMi-G5-DE5" firstAttribute="centerY" secondItem="bR4-fY-CdL" secondAttribute="centerY" id="XPn-G1-w90"/>
+                <constraint firstItem="AMi-G5-DE5" firstAttribute="leading" secondItem="bR4-fY-CdL" secondAttribute="trailing" constant="20" id="dmA-Zf-YXH"/>
                 <constraint firstItem="IeW-HY-6uh" firstAttribute="centerY" secondItem="3am-9s-AWT" secondAttribute="centerY" id="lj6-BT-B7O"/>
                 <constraint firstItem="3am-9s-AWT" firstAttribute="centerY" secondItem="T1U-gr-pjf" secondAttribute="centerY" id="qfw-I3-cGH"/>
                 <constraint firstAttribute="bottom" secondItem="3am-9s-AWT" secondAttribute="bottom" constant="20" id="sg5-2o-gPA"/>

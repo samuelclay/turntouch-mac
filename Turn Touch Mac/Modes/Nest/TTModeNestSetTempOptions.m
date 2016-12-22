@@ -19,13 +19,21 @@
 @synthesize thermostatPopup;
 @synthesize labelTemp;
 @synthesize sliderTemp;
+@synthesize heatControl;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSInteger temperature = [[self.action optionValue:kNestSetTemperature
                                           inDirection:appDelegate.modeMap.inspectingModeDirection] integerValue];
+    NSString *temperatureMode = [self.action optionValue:kNestSetTemperatureMode
+                                             inDirection:appDelegate.modeMap.inspectingModeDirection];
     
     [sliderTemp setIntegerValue:temperature];
+    if ([temperatureMode isEqualToString:@"cool"]) {
+        [heatControl setSelectedSegment:1];
+    } else {
+        [heatControl setSelectedSegment:0];
+    }
     [self updateTempLabel];
     
     [self selectThermostat];
@@ -45,6 +53,10 @@
     [self.action changeActionOption:kNestSetTemperature
                                  to:[NSNumber numberWithInteger:sliderTemp.integerValue]];
     [self updateTempLabel];
+}
+
+- (IBAction)changeHeatControl:(id)sender {
+    [self.action changeActionOption:kNestSetTemperatureMode to:(heatControl.selectedSegment == 1 ? @"cool" : @"heat")];
 }
 
 - (void)selectThermostat {

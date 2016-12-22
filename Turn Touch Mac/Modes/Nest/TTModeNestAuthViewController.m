@@ -112,7 +112,7 @@
         NSArray *keyValueArray = [keyValue componentsSeparatedByString:EQUALS];
         
         // We found the code
-        if([[keyValueArray objectAtIndex:(0)] isEqualToString:@"code"]) {
+        if([[keyValueArray objectAtIndex:0] isEqualToString:@"code"]) {
             [self foundAuthorizationCode:[keyValueArray objectAtIndex:1]];
         } else {
             NSLog(@"Error retrieving the authorization code.");

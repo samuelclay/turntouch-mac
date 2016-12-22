@@ -14,6 +14,7 @@
 
 NSString *const kNestThermostat = @"nestThermostatIdentifier";
 NSString *const kNestSetTemperature = @"nestSetTemperature";
+NSString *const kNestSetTemperatureMode = @"nestSetTemperatureMode";
 NSString *const kNestApiHost = @"https://developer-api.nest.com/";
 NSString *const kNestApiThermostats = @"devices/thermostats/";
 NSString *const kNestApiStructures = @"structures/";
@@ -105,29 +106,60 @@ static NSDictionary *currentStructure;
 
 #pragma mark - Action methods
 
-- (void)runTTModeNestRaiseTemp {
+- (void)runTTModeNestRaiseTemp:(TTModeDirection)direction {
     Thermostat *thermostat = [self selectedThermostat];
     NSLog(@"Running TTModeNestRaiseTemp: %ld+1", thermostat.targetTemperatureF);
-    thermostat.targetTemperatureF += 1;
-    [self changeThermostatTemp:thermostat];
-//    [self.nestThermostatManager saveChangesForThermostat:thermostat];
+    
+    if ([thermostat.hvacMode isEqualToString:@"heat-cool"]) {
+//        if ([[self.action optionValue:kNestSetTemperatureMode inDirection:direction] isEqualToString:@"cool"]) {
+            thermostat.targetTemperatureHighF -= 1;
+//        } else {
+            thermostat.targetTemperatureLowF -= 1;
+//        }
+    } else {
+        thermostat.targetTemperatureF += 1;
+    }
+    
+    [self changeThermostatTemp:thermostat]; // HTTP, not Firebase
+//    [self.nestThermostatManager saveChangesForThermostat:thermostat]; // Firebase
 }
-- (void)runTTModeNestLowerTemp {
+
+- (void)runTTModeNestLowerTemp:(TTModeDirection)direction {
     Thermostat *thermostat = [self selectedThermostat];
     NSLog(@"Running TTModeNestLowerTemp: %ld-1", thermostat.targetTemperatureF);
-    thermostat.targetTemperatureF -= 1;
-    [self changeThermostatTemp:thermostat];
-//    [self.nestThermostatManager saveChangesForThermostat:thermostat];
+    
+    if ([thermostat.hvacMode isEqualToString:@"heat-cool"]) {
+//        if ([[self.action optionValue:kNestSetTemperatureMode inDirection:direction] isEqualToString:@"cool"]) {
+            thermostat.targetTemperatureHighF += 1;
+//        } else {
+            thermostat.targetTemperatureLowF += 1;
+//        }
+    } else {
+        thermostat.targetTemperatureF -= 1;
+    }
+    
+    [self changeThermostatTemp:thermostat]; // HTTP, not Firebase
+//    [self.nestThermostatManager saveChangesForThermostat:thermostat]; // Firebase
 }
+
 - (void)runTTModeNestSetTemp:(TTModeDirection)direction {
     Thermostat *thermostat = [self selectedThermostat];
     NSInteger temperature = [[self.action optionValue:kNestSetTemperature
                                           inDirection:direction] integerValue];
     NSLog(@"Running TTModeNestSetTemp: %ld", temperature);
 
-    thermostat.targetTemperatureF = temperature;
-    [self changeThermostatTemp:thermostat];
-//    [self.nestThermostatManager saveChangesForThermostat:thermostat];
+    if ([thermostat.hvacMode isEqualToString:@"heat-cool"]) {
+        if ([[self.action optionValue:kNestSetTemperatureMode inDirection:direction] isEqualToString:@"cool"]) {
+            thermostat.targetTemperatureHighF = temperature;
+        } else {
+            thermostat.targetTemperatureLowF = temperature;
+        }
+    } else {
+        thermostat.targetTemperatureF = temperature;
+    }
+    
+    [self changeThermostatTemp:thermostat]; // HTTP, not Firebase
+//    [self.nestThermostatManager saveChangesForThermostat:thermostat]; // Firebase
 }
 
 #pragma mark - Defaults
@@ -206,7 +238,9 @@ static NSDictionary *currentStructure;
 }
 
 - (void)subscribeToThermostat:(Thermostat *)thermostat {
-//    Thermostat *thermostat = [self selectedThermostat];
+    if (!thermostat) {
+        thermostat = [self selectedThermostat];
+    }
     
     NSLog(@"Subscribing to thermostat: %@", thermostat);
     if (!thermostat) return;
@@ -278,9 +312,18 @@ static NSDictionary *currentStructure;
                                        kNestApiHost, kNestApiThermostats, thermostat.thermostatId, accessToken]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"PUT"];
-    [request setHTTPBody:[[NSString stringWithFormat:@"{\"target_temperature_f\": %ld}", thermostat.targetTemperatureF]
-                          dataUsingEncoding:NSUTF8StringEncoding]];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    
+    if ([thermostat.hvacMode isEqualToString:@"heat-cool"]) {
+        [request setHTTPBody:[[NSString stringWithFormat:@"{\"target_temperature_high_f\": %ld,"
+                               "\"target_temperature_low_f\": %ld}",
+                               thermostat.targetTemperatureHighF,
+                               thermostat.targetTemperatureLowF]
+                              dataUsingEncoding:NSUTF8StringEncoding]];
+    } else {
+        [request setHTTPBody:[[NSString stringWithFormat:@"{\"target_temperature_f\": %ld}", thermostat.targetTemperatureF]
+                              dataUsingEncoding:NSUTF8StringEncoding]];
+    }
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse * _Nullable response,

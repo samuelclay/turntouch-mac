@@ -24,6 +24,11 @@
 @property (nonatomic) NSInteger ambientTemperatureC;
 @property (nonatomic) NSInteger targetTemperatureF;
 @property (nonatomic) NSInteger targetTemperatureC;
+@property (nonatomic) NSInteger targetTemperatureHighF;
+@property (nonatomic) NSInteger targetTemperatureHighC;
+@property (nonatomic) NSInteger targetTemperatureLowF;
+@property (nonatomic) NSInteger targetTemperatureLowC;
+@property (nonatomic) NSString *hvacMode;
 @property (nonatomic) NSString *temperatureScale;
 
 @end
