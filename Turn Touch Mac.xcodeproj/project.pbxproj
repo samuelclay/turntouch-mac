@@ -319,6 +319,7 @@
 		FFAB2C171E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAB2C151E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.m */; };
 		FFAB2C181E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFAB2C161E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.xib */; };
 		FFAB2C1A1E0B5E3C00A16433 /* TTModeSpotify.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFAB2C191E0B5E3C00A16433 /* TTModeSpotify.plist */; };
+		FFAB2C1D1E0C7C9400A16433 /* TTModeNestDelegateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAB2C1C1E0C7C9400A16433 /* TTModeNestDelegateManager.m */; };
 		FFABAB7A1C235EC500AD5620 /* TTFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB791C235EC500AD5620 /* TTFooterView.m */; };
 		FFABAB811C2777D500AD5620 /* TTBatchActionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB801C2777D500AD5620 /* TTBatchActionHeaderView.m */; };
 		FFABAB841C2784E300AD5620 /* TTBatchActionStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB831C2784E300AD5620 /* TTBatchActionStackView.m */; };
@@ -888,6 +889,8 @@
 		FFAB2C151E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeSpotifyVolumeJumpOptions.m; path = Modes/Spotify/TTModeSpotifyVolumeJumpOptions.m; sourceTree = "<group>"; };
 		FFAB2C161E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeSpotifyVolumeJumpOptions.xib; path = Modes/Spotify/TTModeSpotifyVolumeJumpOptions.xib; sourceTree = "<group>"; };
 		FFAB2C191E0B5E3C00A16433 /* TTModeSpotify.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = TTModeSpotify.plist; path = Modes/Spotify/TTModeSpotify.plist; sourceTree = "<group>"; };
+		FFAB2C1B1E0C7C9400A16433 /* TTModeNestDelegateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeNestDelegateManager.h; path = Modes/Nest/TTModeNestDelegateManager.h; sourceTree = "<group>"; };
+		FFAB2C1C1E0C7C9400A16433 /* TTModeNestDelegateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeNestDelegateManager.m; path = Modes/Nest/TTModeNestDelegateManager.m; sourceTree = "<group>"; };
 		FFABAB781C235EC500AD5620 /* TTFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTFooterView.h; path = "Views/Title Bar/TTFooterView.h"; sourceTree = "<group>"; };
 		FFABAB791C235EC500AD5620 /* TTFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTFooterView.m; path = "Views/Title Bar/TTFooterView.m"; sourceTree = "<group>"; };
 		FFABAB7F1C2777D500AD5620 /* TTBatchActionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTBatchActionHeaderView.h; path = "Views/Batch Actions/TTBatchActionHeaderView.h"; sourceTree = "<group>"; };
@@ -1346,6 +1349,8 @@
 			children = (
 				FF557A9C1C4855BD005FB7FD /* TTModeNest.h */,
 				FF557A9D1C4855BD005FB7FD /* TTModeNest.m */,
+				FFAB2C1B1E0C7C9400A16433 /* TTModeNestDelegateManager.h */,
+				FFAB2C1C1E0C7C9400A16433 /* TTModeNestDelegateManager.m */,
 				FF557AB91C49C6A8005FB7FD /* TTModeNestOptions.h */,
 				FF557ABA1C49C6A8005FB7FD /* TTModeNestOptions.m */,
 				FF557ABB1C49C6A8005FB7FD /* TTModeNestOptions.xib */,
@@ -2505,6 +2510,7 @@
 				FFA8EA9C190F07A500679A4D /* TTModeTabsContainer.m in Sources */,
 				FF66F2A91922D1C100031478 /* TTOptionsDetailView.m in Sources */,
 				FF557AB61C49C63D005FB7FD /* NestStructureManager.m in Sources */,
+				FFAB2C1D1E0C7C9400A16433 /* TTModeNestDelegateManager.m in Sources */,
 				FF79C5881D5815C0006C75C9 /* TTModeNewsBackgroundView.m in Sources */,
 				FF904B961BE9BA3700AD00F3 /* ioapi.c in Sources */,
 				FF2C2E631C546D6E00FAD7E2 /* TTModeWemoConnect.m in Sources */,

@@ -20,6 +20,7 @@ NSString *const kNestApiThermostats = @"devices/thermostats/";
 NSString *const kNestApiStructures = @"structures/";
 
 static NSDictionary *currentStructure;
+static TTModeNestDelegateManager *delegateManager;
 
 //@synthesize nestStructureManager;
 //@synthesize nestThermostatManager;
@@ -29,7 +30,11 @@ static NSDictionary *currentStructure;
 
 - (instancetype)init {
     if (self = [super init]) {
-
+        if (!delegateManager) {
+            delegateManager = [[TTModeNestDelegateManager alloc] init];
+        }
+        
+        [delegateManager.delegates addObject:self];
     }
     
     return self;
@@ -193,16 +198,16 @@ static NSDictionary *currentStructure;
     }
     [self.delegate changeState:nestState withMode:self];
     
-    [[self sharedNestThermostatManager] setDelegate:self];
+    [[self sharedNestThermostatManager] setDelegate:delegateManager];
 
-    [[self sharedNestStructureManager] setDelegate:self];
-//    [self.nestStructureManager initialize];
+    [[self sharedNestStructureManager] setDelegate:delegateManager];
     
 }
 
 - (void)deactivate {
 //    self.nestThermostatManager = nil;
 //    self.nestStructureManager = nil;
+    [delegateManager.delegates removeObject:self];
 }
 
 #pragma mark - Connection
@@ -226,7 +231,9 @@ static NSDictionary *currentStructure;
 }
 
 - (void)thermostatValuesChanged:(Thermostat *)thermostat {
-    NSLog(@"thermostat value changed: %@: %ld - %ld", thermostat, thermostat.targetTemperatureF, thermostat.ambientTemperatureF);
+    NSLog(@"thermostat value changed: %@ %ld°F (%ld°F-%ld°F) — currently: %ld°F",
+          thermostat, thermostat.targetTemperatureF, thermostat.targetTemperatureLowF,
+          thermostat.targetTemperatureHighF, thermostat.ambientTemperatureF);
     nestState = NEST_STATE_CONNECTED;
     [self.delegate changeState:nestState withMode:self];
     [self.delegate updateThermostat:thermostat];
@@ -254,6 +261,12 @@ static NSDictionary *currentStructure;
 #pragma mark - Nest API w/ REST
 
 - (void)loadNestStructures {
+    static BOOL loading = false;
+    if (loading) {
+        NSLog(@" ---> Already loading Nest structures...");
+        return;
+    }
+    loading = true;
     NSString *accessToken = [[NestAuthManager sharedManager] accessToken];
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@?auth=%@",
                                        kNestApiHost, kNestApiStructures, accessToken]];
@@ -272,10 +285,18 @@ static NSDictionary *currentStructure;
                                } else {
                                    NSLog(@"Nest REST error: %@", connectionError);
                                }
+                               loading = false;
                            }];
 }
 
 - (void)loadNestThermostats {
+    static BOOL loading = false;
+    if (loading) {
+        NSLog(@" ---> Already loading Nest thermostats...");
+        return;
+    }
+    loading = true;
+    
     NSString *accessToken = [[NestAuthManager sharedManager] accessToken];
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@?auth=%@",
                                        kNestApiHost, kNestApiThermostats, accessToken]];
@@ -294,7 +315,7 @@ static NSDictionary *currentStructure;
                                                if ([device.thermostatId isEqualToString:[data objectForKey:@"device_id"]]) {
                                                    NSLog(@"Thermostat: %@", data);
                                                    [[self sharedNestThermostatManager] updateThermostat:device forStructure:data];
-//                                                   [self subscribeToThermostat:device];
+                                                   [self subscribeToThermostat:device];
                                                    break;
                                                }
                                            }
@@ -303,6 +324,7 @@ static NSDictionary *currentStructure;
                                } else {
                                    NSLog(@"Nest REST error: %@", connectionError);
                                }
+                               loading = false;
                            }];
 }
 

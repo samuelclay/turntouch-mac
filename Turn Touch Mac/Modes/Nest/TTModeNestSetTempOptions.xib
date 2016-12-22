@@ -8,6 +8,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="TTModeNestSetTempOptions">
             <connections>
                 <outlet property="heatControl" destination="AMi-G5-DE5" id="QNz-bS-cEC"/>
+                <outlet property="heatControlWidth" destination="3Tz-gG-fJn" id="Q8R-wS-fci"/>
                 <outlet property="labelTemp" destination="IeW-HY-6uh" id="umQ-7P-ODt"/>
                 <outlet property="sliderTemp" destination="3am-9s-AWT" id="ySZ-u5-Kl5"/>
                 <outlet property="thermostatPopup" destination="bR4-fY-CdL" id="MQS-RN-Mtj"/>
@@ -46,7 +47,7 @@
                     </connections>
                 </slider>
                 <popUpButton horizontalHuggingPriority="248" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bR4-fY-CdL">
-                    <rect key="frame" x="18" y="47" width="325" height="26"/>
+                    <rect key="frame" x="18" y="47" width="425" height="26"/>
                     <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="wij-QX-XMe" id="6sy-2n-jDb">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
@@ -62,8 +63,11 @@
                         <action selector="didChangeThermostat:" target="-2" id="Pim-SQ-u24"/>
                     </connections>
                 </popUpButton>
-                <segmentedControl horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AMi-G5-DE5" customClass="TTSegmentedControl">
-                    <rect key="frame" x="358" y="48" width="104" height="24"/>
+                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AMi-G5-DE5" customClass="TTSegmentedControl">
+                    <rect key="frame" x="458" y="48" width="4" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" id="3Tz-gG-fJn"/>
+                    </constraints>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="Min-6e-JO2" customClass="TTSegmentedCell">
                         <font key="font" metaFont="system"/>
                         <segments>

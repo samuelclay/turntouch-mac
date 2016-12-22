@@ -20,6 +20,7 @@
 @synthesize labelTemp;
 @synthesize sliderTemp;
 @synthesize heatControl;
+@synthesize heatControlWidth;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,8 +46,20 @@
     
     TTModeNest *nestMode = (TTModeNest *)self.action.mode;
     Thermostat *thermostat = [nestMode selectedThermostat];
+    NSString *scale = [thermostat temperatureScale];
+    if ([scale isKindOfClass:[NSNull class]] || !scale || !scale.length) {
+        scale = @"";
+    }
     [labelTemp setStringValue:[NSString stringWithFormat:@"%ld°%@",
-                               temperature, [thermostat temperatureScale]]];
+                               temperature, scale]];
+    
+    if ([thermostat.hvacMode isEqualToString:@"heat-cool"]) {
+        heatControl.hidden = NO;
+        [heatControlWidth setActive:NO];
+    } else {
+        heatControl.hidden = YES;
+        [heatControlWidth setActive:YES];
+    }
 }
 
 - (IBAction)changeTempSlider:(id)sender {

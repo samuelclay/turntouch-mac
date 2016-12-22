@@ -56,10 +56,20 @@
                                                                isCelsius ? thermostat.ambientTemperatureC :
                                                                thermostat.ambientTemperatureF,
                                                                thermostat.temperatureScale]];
-    [self.connectedViewController.labelTarget setStringValue:[NSString stringWithFormat:@"%ld°%@",
-                                                              isCelsius ? thermostat.targetTemperatureC :
-                                                              thermostat.targetTemperatureF,
-                                                              thermostat.temperatureScale]];
+    if ([thermostat.hvacMode isEqualToString:@"heat-cool"]) {
+        [self.connectedViewController.labelTarget setStringValue:[NSString stringWithFormat:@"%ld°%@ - %ld°%@",
+                                                                  isCelsius ? thermostat.targetTemperatureLowC :
+                                                                  thermostat.targetTemperatureLowF,
+                                                                  thermostat.temperatureScale,
+                                                                  isCelsius ? thermostat.targetTemperatureHighC :
+                                                                  thermostat.targetTemperatureHighF,
+                                                                  thermostat.temperatureScale]];
+    } else {
+        [self.connectedViewController.labelTarget setStringValue:[NSString stringWithFormat:@"%ld°%@",
+                                                                  isCelsius ? thermostat.targetTemperatureC :
+                                                                  thermostat.targetTemperatureF,
+                                                                  thermostat.temperatureScale]];
+    }
 }
 
 #pragma mark - View Connectrollers

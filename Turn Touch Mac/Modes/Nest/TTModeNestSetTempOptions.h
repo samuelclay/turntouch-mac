@@ -14,6 +14,7 @@
 @property (nonatomic) IBOutlet NSTextField *labelTemp;
 @property (nonatomic) IBOutlet NSSlider *sliderTemp;
 @property (nonatomic) IBOutlet TTSegmentedControl *heatControl;
+@property (nonatomic) IBOutlet NSLayoutConstraint *heatControlWidth;
 
 - (IBAction)didChangeThermostat:(id)sender;
 
