@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "GCDAsyncUdpSocket.h"
+#import "TTModeWemoDevice.h"
 
 @protocol TTModeWemoMulticastDelegate <NSObject>
 
-- (void)foundDevice:(NSDictionary *)headers host:(NSString *)ipAddress port:(NSInteger)port;
+- (TTModeWemoDevice *)foundDevice:(NSDictionary *)headers host:(NSString *)ipAddress port:(NSInteger)port name:(NSString *)name;
 
 @end
 

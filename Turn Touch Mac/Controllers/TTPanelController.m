@@ -15,12 +15,6 @@
 #define PANEL_OPEN_DURATION .12
 #define PANEL_CLOSE_DURATION .14
 
-#define SEARCH_INSET 17
-
-#define PANEL_HEIGHT 262
-#define PANEL_WIDTH 362
-#define MENU_ANIMATION_DURATION .12
-
 #pragma mark -
 
 @implementation TTPanelController
@@ -216,7 +210,7 @@
 }
 
 - (BOOL)closePanel {
-        return NO; // Enable this line to never close app. Useful for debugging
+//        return NO; // Enable this line to never close app. Useful for debugging
 
     if (self.backgroundView.panelModal != PANEL_MODAL_APP) {
         // Don't close the window when not on main app

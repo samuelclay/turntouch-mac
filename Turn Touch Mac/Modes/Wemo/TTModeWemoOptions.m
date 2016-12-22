@@ -27,7 +27,7 @@
     self.modeWemo = (TTModeWemo *)self.mode;
     [self.modeWemo setDelegate:self];
     
-    [self changeState:self.modeWemo.wemoState withMode:self.modeWemo];
+    [self changeState:TTModeWemo.wemoState withMode:self.modeWemo];
 }
 
 - (void)changeState:(TTWemoState)wemoState withMode:(TTModeWemo *)modeWemo {

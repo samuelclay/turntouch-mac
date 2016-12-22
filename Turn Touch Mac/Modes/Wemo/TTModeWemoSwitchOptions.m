@@ -24,7 +24,7 @@
     [self.modeWemo setDelegate:self];
 
     [self selectDevice];
-    [self changeState:self.modeWemo.wemoState withMode:self.modeWemo];
+    [self changeState:TTModeWemo.wemoState withMode:self.modeWemo];
 }
 
 - (void)selectDevice {
@@ -33,8 +33,8 @@
     NSString *deviceSelected;
     NSMutableArray *devices = [NSMutableArray array];
     [devicePopup removeAllItems];
-    TTModeWemo *modeWemo = (TTModeWemo *)self.mode;
-    for (TTModeWemoDevice *device in [modeWemo sharedFoundDevices]) {
+
+    for (TTModeWemoDevice *device in TTModeWemo.foundDevices) {
         if (!device.deviceName || !device.location) continue;
         [devices addObject:@{@"name": device.deviceName, @"identifier": device.location}];
     }
@@ -59,8 +59,7 @@
     NSMenuItem *menuItem = [devicePopup selectedItem];
     NSString *deviceIdentifier;
     
-    TTModeWemo *modeWemo = (TTModeWemo *)self.mode;
-    for (TTModeWemoDevice *device in [modeWemo sharedFoundDevices]) {
+    for (TTModeWemoDevice *device in TTModeWemo.foundDevices) {
         if ([device.deviceName isEqualToString:menuItem.title]) {
             deviceIdentifier = device.location;
             break;

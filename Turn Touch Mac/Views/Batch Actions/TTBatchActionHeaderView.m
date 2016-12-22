@@ -52,6 +52,8 @@
 #pragma mark - KVO
 
 - (void)registerAsObserver {
+    [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
+                             options:0 context:nil];
     [appDelegate.modeMap addObserver:self forKeyPath:@"batchActionChangeAction"
                              options:0 context:nil];
 }
@@ -60,16 +62,15 @@
                        ofObject:(id)object
                          change:(NSDictionary*)change
                         context:(void*)context {
-    if ([keyPath isEqual:NSStringFromSelector(@selector(batchActionChangeAction))]) {
-        if (isChangeActionVisible && appDelegate.modeMap.batchActionChangeAction != batchAction) {
-            isChangeActionVisible = NO;
-            [appDelegate.panelController.backgroundView toggleBatchActionsChangeActionMenu:batchAction visible:NO];
-        }
+    if (isChangeActionVisible && appDelegate.modeMap.batchActionChangeAction != batchAction) {
+        isChangeActionVisible = NO;
+        [appDelegate.panelController.backgroundView toggleBatchActionsChangeActionMenu:batchAction visible:NO];
     }
 }
 
 - (void)dealloc {
     [appDelegate.modeMap removeObserver:self forKeyPath:@"batchActionChangeAction"];
+    [appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
 }
 
 #pragma mark - Drawing

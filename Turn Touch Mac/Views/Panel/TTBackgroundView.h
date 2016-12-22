@@ -31,7 +31,6 @@
 
 #define PANEL_WIDTH 360.0f
 #define STROKE_OPACITY .5f
-#define SEARCH_INSET 10.0f
 #define TITLE_BAR_HEIGHT 38.0f
 #define MODE_TABS_HEIGHT 92.0f
 #define MODE_TITLE_HEIGHT 64.0f
