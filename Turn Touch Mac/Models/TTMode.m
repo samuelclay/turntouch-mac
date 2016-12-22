@@ -376,7 +376,7 @@
 #pragma mark - Timers
 
 - (void)switchSelectedModeTo:(TTMode *)mode {
-    [appDelegate.modeMap setSelectedModeDirection:mode.modeDirection];
+    [appDelegate.modeMap switchMode:mode.modeDirection modeName:self.className];
 }
 
 @end
