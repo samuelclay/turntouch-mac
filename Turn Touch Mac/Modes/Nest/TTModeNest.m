@@ -112,9 +112,9 @@ static NSDictionary *currentStructure;
     
     if ([thermostat.hvacMode isEqualToString:@"heat-cool"]) {
 //        if ([[self.action optionValue:kNestSetTemperatureMode inDirection:direction] isEqualToString:@"cool"]) {
-            thermostat.targetTemperatureHighF -= 1;
+            thermostat.targetTemperatureHighF += 1;
 //        } else {
-            thermostat.targetTemperatureLowF -= 1;
+            thermostat.targetTemperatureLowF += 1;
 //        }
     } else {
         thermostat.targetTemperatureF += 1;
@@ -130,9 +130,9 @@ static NSDictionary *currentStructure;
     
     if ([thermostat.hvacMode isEqualToString:@"heat-cool"]) {
 //        if ([[self.action optionValue:kNestSetTemperatureMode inDirection:direction] isEqualToString:@"cool"]) {
-            thermostat.targetTemperatureHighF += 1;
+            thermostat.targetTemperatureHighF -= 1;
 //        } else {
-            thermostat.targetTemperatureLowF += 1;
+            thermostat.targetTemperatureLowF -= 1;
 //        }
     } else {
         thermostat.targetTemperatureF -= 1;
