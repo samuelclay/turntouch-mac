@@ -316,6 +316,9 @@
 		FFAA4F6F182D99640049FFC7 /* TTModeAlarmClock.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4F6E182D99640049FFC7 /* TTModeAlarmClock.m */; };
 		FFAA4F72182D9A5F0049FFC7 /* TTModeNews.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4F71182D9A5F0049FFC7 /* TTModeNews.m */; };
 		FFAB2C131E0B377A00A16433 /* button_chevron_x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAB2C121E0B377A00A16433 /* button_chevron_x.png */; };
+		FFAB2C171E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAB2C151E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.m */; };
+		FFAB2C181E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFAB2C161E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.xib */; };
+		FFAB2C1A1E0B5E3C00A16433 /* TTModeSpotify.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFAB2C191E0B5E3C00A16433 /* TTModeSpotify.plist */; };
 		FFABAB7A1C235EC500AD5620 /* TTFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB791C235EC500AD5620 /* TTFooterView.m */; };
 		FFABAB811C2777D500AD5620 /* TTBatchActionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB801C2777D500AD5620 /* TTBatchActionHeaderView.m */; };
 		FFABAB841C2784E300AD5620 /* TTBatchActionStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB831C2784E300AD5620 /* TTBatchActionStackView.m */; };
@@ -881,6 +884,10 @@
 		FFAA4F71182D9A5F0049FFC7 /* TTModeNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeNews.m; path = Modes/News/TTModeNews.m; sourceTree = "<group>"; };
 		FFAA61E21ABA6AD000AA422B /* Turn Touch Mac-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Turn Touch Mac-Prefix.pch"; path = "Supporting Files/Turn Touch Mac-Prefix.pch"; sourceTree = "<group>"; };
 		FFAB2C121E0B377A00A16433 /* button_chevron_x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_chevron_x.png; sourceTree = "<group>"; };
+		FFAB2C141E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeSpotifyVolumeJumpOptions.h; path = Modes/Spotify/TTModeSpotifyVolumeJumpOptions.h; sourceTree = "<group>"; };
+		FFAB2C151E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeSpotifyVolumeJumpOptions.m; path = Modes/Spotify/TTModeSpotifyVolumeJumpOptions.m; sourceTree = "<group>"; };
+		FFAB2C161E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeSpotifyVolumeJumpOptions.xib; path = Modes/Spotify/TTModeSpotifyVolumeJumpOptions.xib; sourceTree = "<group>"; };
+		FFAB2C191E0B5E3C00A16433 /* TTModeSpotify.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = TTModeSpotify.plist; path = Modes/Spotify/TTModeSpotify.plist; sourceTree = "<group>"; };
 		FFABAB781C235EC500AD5620 /* TTFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTFooterView.h; path = "Views/Title Bar/TTFooterView.h"; sourceTree = "<group>"; };
 		FFABAB791C235EC500AD5620 /* TTFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTFooterView.m; path = "Views/Title Bar/TTFooterView.m"; sourceTree = "<group>"; };
 		FFABAB7F1C2777D500AD5620 /* TTBatchActionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTBatchActionHeaderView.h; path = "Views/Batch Actions/TTBatchActionHeaderView.h"; sourceTree = "<group>"; };
@@ -1485,9 +1492,13 @@
 		FF6792391CEBE11700639148 /* Spotify */ = {
 			isa = PBXGroup;
 			children = (
+				FFAB2C191E0B5E3C00A16433 /* TTModeSpotify.plist */,
 				FF67923A1CEBE82800639148 /* Spotify.h */,
 				FF6792361CEBE11200639148 /* TTModeSpotify.h */,
 				FF6792371CEBE11200639148 /* TTModeSpotify.m */,
+				FFAB2C141E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.h */,
+				FFAB2C151E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.m */,
+				FFAB2C161E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.xib */,
 			);
 			name = Spotify;
 			sourceTree = "<group>";
@@ -2318,6 +2329,7 @@
 				FF6135531C61CDDC00F431D7 /* chevron_north.png in Resources */,
 				FF2705451C93A348000BB10F /* modal_ftux_action.png in Resources */,
 				FF91709B1AF9B19100FAAC88 /* south tone.wav in Resources */,
+				FFAB2C1A1E0B5E3C00A16433 /* TTModeSpotify.plist in Resources */,
 				FFB5FF431A6723EA00DF617A /* TTModeHue.plist in Resources */,
 				FF2705491C93A348000BB10F /* modal_ftux_mode.png in Resources */,
 				FF01CA7C1C46DCC200F83A73 /* mode_wemo.png in Resources */,
@@ -2363,6 +2375,7 @@
 				FF01CA5D1C46DCC200F83A73 /* button_x.png in Resources */,
 				FF8D1AA71C98F292006AA1A2 /* TTModalAbout.xib in Resources */,
 				FF2705471C93A348000BB10F /* modal_ftux_change_mode.png in Resources */,
+				FFAB2C181E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.xib in Resources */,
 				FF8A73C71ABA69410023AA53 /* logo_32.png in Resources */,
 				FF01CA7A1C46DCC200F83A73 /* mode_video.png in Resources */,
 				FF7305C41A5CB3EF009A852D /* TTModeHueConnect.xib in Resources */,
@@ -2532,6 +2545,7 @@
 				FF5295C81AD5B9B8007DDC02 /* TTSettingsButton.m in Sources */,
 				FF3641EF1A60C422003CC03C /* TTModeHuePushlink.m in Sources */,
 				FFF049771CE11FCF006CE427 /* TTModeHueBridge.m in Sources */,
+				FFAB2C171E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.m in Sources */,
 				FF7305AE1A5C9C76009A852D /* DDAbstractDatabaseLogger.m in Sources */,
 				FF76AD161C1F8FD000A6ED97 /* TTSlider.m in Sources */,
 				FF904B991BE9BA3700AD00F3 /* zip.c in Sources */,
