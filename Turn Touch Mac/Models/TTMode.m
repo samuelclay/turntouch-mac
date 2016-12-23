@@ -140,7 +140,7 @@
 - (BOOL)runAction:(NSString *)actionName inDirection:(TTModeDirection)direction funcAction:(NSString *)funcAction {
     BOOL success = NO;
     NSLog(@"Running: %d - %@%@", direction, funcAction, actionName);
-    if (!self.action && !self.action.batchActionKey) {
+    if (!self.action || !self.action.batchActionKey) {
         self.action = [[TTAction alloc] initWithActionName:actionName];
     }
     

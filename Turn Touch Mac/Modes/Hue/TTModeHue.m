@@ -205,7 +205,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
         sceneIdentifier = scenes[0][@"identifier"];
     }
 
-    [bridgeSendAPI activateSceneWithIdentifier:sceneIdentifier onGroup:doubleTap?@"1":@"2" completionHandler:^(NSArray *errors) {
+    [bridgeSendAPI activateSceneWithIdentifier:sceneIdentifier onGroup:roomIdentifier completionHandler:^(NSArray *errors) {
 //        NSLog(@"Scene change: %@ (%@)", sceneIdentifier, errors);
     }];
 }

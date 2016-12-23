@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTModeHueRandomOptions">
@@ -18,10 +19,10 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="c22-O7-iKe">
-            <rect key="frame" x="0.0" y="0.0" width="397" height="246"/>
+            <rect key="frame" x="0.0" y="0.0" width="451" height="223"/>
             <subviews>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SMf-U6-ghJ" customClass="TTSegmentedControl">
-                    <rect key="frame" x="163" y="174" width="216" height="24"/>
+                    <rect key="frame" x="121" y="151" width="324" height="24"/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="Aeq-U5-5qx" customClass="TTSegmentedCell">
                         <font key="font" metaFont="system"/>
                         <segments>
@@ -35,7 +36,7 @@
                     </connections>
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ab0-0p-Vmn">
-                    <rect key="frame" x="18" y="205" width="44" height="21"/>
+                    <rect key="frame" x="43" y="182" width="70" height="21"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Colors" id="CnZ-6B-OPP">
                         <font key="font" size="14" name="Effra-Regular"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -43,7 +44,7 @@
                     </textFieldCell>
                 </textField>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fK0-9l-j0Z" customClass="TTSegmentedControl">
-                    <rect key="frame" x="163" y="145" width="216" height="24"/>
+                    <rect key="frame" x="121" y="122" width="324" height="24"/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="40w-nu-1kA" customClass="TTSegmentedCell">
                         <font key="font" metaFont="system"/>
                         <segments>
@@ -57,7 +58,7 @@
                     </connections>
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GdS-bS-cNL">
-                    <rect key="frame" x="18" y="147" width="68" height="21"/>
+                    <rect key="frame" x="43" y="124" width="70" height="21"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Saturation" id="cCd-Xm-8wj">
                         <font key="font" size="14" name="Effra-Regular"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -65,7 +66,7 @@
                     </textFieldCell>
                 </textField>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Fqe-9d-WDM" customClass="TTSegmentedControl">
-                    <rect key="frame" x="163" y="203" width="216" height="24"/>
+                    <rect key="frame" x="121" y="180" width="324" height="24"/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="CcS-hq-CN1" customClass="TTSegmentedCell">
                         <font key="font" metaFont="system"/>
                         <segments>
@@ -79,7 +80,7 @@
                     </connections>
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N29-Q7-eTX">
-                    <rect key="frame" x="18" y="176" width="70" height="21"/>
+                    <rect key="frame" x="43" y="153" width="70" height="21"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Brightness" id="9YE-RM-3sn">
                         <font key="font" size="14" name="Effra-Regular"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -87,7 +88,7 @@
                     </textFieldCell>
                 </textField>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iDC-Rd-X9V" customClass="TTSegmentedControl">
-                    <rect key="frame" x="163" y="47" width="216" height="24"/>
+                    <rect key="frame" x="121" y="47" width="324" height="24"/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="yJC-uA-kHZ" customClass="TTSegmentedCell">
                         <font key="font" metaFont="system"/>
                         <segments>
@@ -101,7 +102,7 @@
                     </connections>
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="96R-ps-o2X">
-                    <rect key="frame" x="18" y="78" width="44" height="21"/>
+                    <rect key="frame" x="43" y="78" width="70" height="21"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Colors" id="XSQ-Rl-N41">
                         <font key="font" size="14" name="Effra-Regular"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -109,7 +110,7 @@
                     </textFieldCell>
                 </textField>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Kf-bj-Vw4" customClass="TTSegmentedControl">
-                    <rect key="frame" x="163" y="18" width="216" height="24"/>
+                    <rect key="frame" x="121" y="18" width="324" height="24"/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="98X-tQ-Z3e" customClass="TTSegmentedCell">
                         <font key="font" metaFont="system"/>
                         <segments>
@@ -123,7 +124,7 @@
                     </connections>
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bxH-Zq-xpU">
-                    <rect key="frame" x="18" y="20" width="68" height="21"/>
+                    <rect key="frame" x="43" y="20" width="70" height="21"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Saturation" id="vJb-4K-O43">
                         <font key="font" size="14" name="Effra-Regular"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -131,7 +132,7 @@
                     </textFieldCell>
                 </textField>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QWJ-A5-EWQ" customClass="TTSegmentedControl">
-                    <rect key="frame" x="163" y="76" width="216" height="24"/>
+                    <rect key="frame" x="121" y="76" width="324" height="24"/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="VdM-tN-qLN" customClass="TTSegmentedCell">
                         <font key="font" metaFont="system"/>
                         <segments>
@@ -145,68 +146,126 @@
                     </connections>
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Eiq-6F-KKf">
-                    <rect key="frame" x="18" y="49" width="70" height="21"/>
+                    <rect key="frame" x="43" y="49" width="70" height="21"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Brightness" id="Ofa-pl-ofo">
                         <font key="font" size="14" name="Effra-Regular"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4Zc-vm-Jnv">
-                    <rect key="frame" x="165" y="107" width="66" height="19"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Double tap" id="zm1-WK-eIx">
-                        <font key="font" size="13" name="Effra-Regular"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <box verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="aWX-Pt-N8o">
-                    <rect key="frame" x="150" y="132" width="96" height="5"/>
+                <box verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="aWX-Pt-N8o">
+                    <rect key="frame" x="177.5" y="109" width="96" height="5"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="96" id="USq-Xh-AYL"/>
                     </constraints>
-                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <font key="titleFont" metaFont="system"/>
                 </box>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vfb-h6-8G7">
+                    <rect key="frame" x="8" y="76" width="29" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="29" id="2WC-Vc-NlF"/>
+                        <constraint firstAttribute="height" constant="24" id="q6w-GU-Xz1"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="double_tap" id="xrt-OK-8qN"/>
+                </imageView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IXz-Ii-Q7q">
+                    <rect key="frame" x="8" y="47" width="29" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="04B-qB-Dmn"/>
+                        <constraint firstAttribute="width" constant="29" id="ENc-Zj-bMr"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="double_tap" id="EZB-LD-ogH"/>
+                </imageView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mYn-fO-v8V">
+                    <rect key="frame" x="8" y="180" width="29" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="AKf-6t-BR3"/>
+                        <constraint firstAttribute="width" constant="29" id="LLp-Kf-DCm"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="single_tap" id="6Bv-pr-nfM"/>
+                </imageView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oWB-3w-LDG">
+                    <rect key="frame" x="8" y="151" width="29" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="2zr-cH-DDP"/>
+                        <constraint firstAttribute="width" constant="29" id="N8Q-OB-42d"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="single_tap" id="pgy-EA-Fvh"/>
+                </imageView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a8m-oj-VQa">
+                    <rect key="frame" x="8" y="123" width="29" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="5UX-KG-Ie7"/>
+                        <constraint firstAttribute="width" constant="29" id="HZg-V5-5Bo"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="single_tap" id="oqb-e7-3nW"/>
+                </imageView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hHE-Bt-M9R">
+                    <rect key="frame" x="8" y="19" width="29" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="4jD-y2-xII"/>
+                        <constraint firstAttribute="width" constant="29" id="5Tq-LX-F2C"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="double_tap" id="xws-54-VNz"/>
+                </imageView>
             </subviews>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="3Kf-bj-Vw4" secondAttribute="trailing" constant="20" id="3dy-O1-W0C"/>
+                <constraint firstItem="QWJ-A5-EWQ" firstAttribute="leading" secondItem="SMf-U6-ghJ" secondAttribute="leading" id="02R-3W-BFa"/>
+                <constraint firstItem="fK0-9l-j0Z" firstAttribute="centerY" secondItem="GdS-bS-cNL" secondAttribute="centerY" id="3cJ-CD-qs8"/>
+                <constraint firstItem="IXz-Ii-Q7q" firstAttribute="leading" secondItem="mYn-fO-v8V" secondAttribute="leading" id="4P7-1n-dTw"/>
                 <constraint firstItem="bxH-Zq-xpU" firstAttribute="top" secondItem="Eiq-6F-KKf" secondAttribute="bottom" constant="8" id="5Ex-hz-RgG"/>
-                <constraint firstAttribute="trailing" secondItem="SMf-U6-ghJ" secondAttribute="trailing" constant="20" id="5n5-nc-ULF"/>
+                <constraint firstItem="N29-Q7-eTX" firstAttribute="centerY" secondItem="oWB-3w-LDG" secondAttribute="centerY" id="6oC-o5-gSo"/>
+                <constraint firstItem="Fqe-9d-WDM" firstAttribute="leading" secondItem="SMf-U6-ghJ" secondAttribute="leading" id="7KY-Nd-hAG"/>
+                <constraint firstItem="3Kf-bj-Vw4" firstAttribute="centerY" secondItem="bxH-Zq-xpU" secondAttribute="centerY" id="7lj-Es-TB2"/>
                 <constraint firstItem="iDC-Rd-X9V" firstAttribute="width" secondItem="Fqe-9d-WDM" secondAttribute="width" id="9bE-s2-ity"/>
+                <constraint firstItem="Eiq-6F-KKf" firstAttribute="centerY" secondItem="IXz-Ii-Q7q" secondAttribute="centerY" id="AdX-rl-pRj"/>
                 <constraint firstItem="aWX-Pt-N8o" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="CJr-x6-4u2"/>
-                <constraint firstItem="QWJ-A5-EWQ" firstAttribute="top" secondItem="4Zc-vm-Jnv" secondAttribute="bottom" constant="8" id="CUf-no-Dv3"/>
-                <constraint firstItem="4Zc-vm-Jnv" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="DLa-fp-KMc"/>
-                <constraint firstItem="3Kf-bj-Vw4" firstAttribute="top" secondItem="iDC-Rd-X9V" secondAttribute="bottom" constant="8" id="E4M-Hc-v2B"/>
-                <constraint firstAttribute="trailing" secondItem="Fqe-9d-WDM" secondAttribute="trailing" constant="20" id="EUm-XF-wkR"/>
-                <constraint firstItem="iDC-Rd-X9V" firstAttribute="top" secondItem="QWJ-A5-EWQ" secondAttribute="bottom" constant="8" id="FkF-84-yha"/>
+                <constraint firstItem="Eiq-6F-KKf" firstAttribute="leading" secondItem="Ab0-0p-Vmn" secondAttribute="leading" id="Dug-aJ-DAR"/>
+                <constraint firstItem="GdS-bS-cNL" firstAttribute="leading" secondItem="Ab0-0p-Vmn" secondAttribute="leading" id="E8V-Kx-0dv"/>
+                <constraint firstItem="GdS-bS-cNL" firstAttribute="width" secondItem="Ab0-0p-Vmn" secondAttribute="width" id="E9t-jK-fRS"/>
+                <constraint firstAttribute="trailing" secondItem="Fqe-9d-WDM" secondAttribute="trailing" constant="8" id="EUm-XF-wkR"/>
+                <constraint firstItem="GdS-bS-cNL" firstAttribute="centerY" secondItem="a8m-oj-VQa" secondAttribute="centerY" id="FJ1-6U-ZrW"/>
+                <constraint firstItem="QWJ-A5-EWQ" firstAttribute="top" secondItem="aWX-Pt-N8o" secondAttribute="bottom" constant="12" id="FV0-Dj-C1V"/>
+                <constraint firstItem="hHE-Bt-M9R" firstAttribute="leading" secondItem="mYn-fO-v8V" secondAttribute="leading" id="Ghg-bW-eZl"/>
                 <constraint firstItem="3Kf-bj-Vw4" firstAttribute="width" secondItem="Fqe-9d-WDM" secondAttribute="width" id="I2q-z2-f4j"/>
+                <constraint firstItem="N29-Q7-eTX" firstAttribute="leading" secondItem="Ab0-0p-Vmn" secondAttribute="leading" id="INK-C6-ead"/>
                 <constraint firstItem="N29-Q7-eTX" firstAttribute="top" secondItem="Ab0-0p-Vmn" secondAttribute="bottom" constant="8" id="KYK-iM-LwI"/>
+                <constraint firstItem="a8m-oj-VQa" firstAttribute="leading" secondItem="mYn-fO-v8V" secondAttribute="leading" id="L7h-hS-Mkg"/>
                 <constraint firstItem="Fqe-9d-WDM" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" id="LTk-Os-28j"/>
+                <constraint firstItem="3Kf-bj-Vw4" firstAttribute="leading" secondItem="SMf-U6-ghJ" secondAttribute="leading" id="Los-6y-kEF"/>
                 <constraint firstItem="Ab0-0p-Vmn" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" id="Lu4-Xh-QoZ"/>
                 <constraint firstItem="fK0-9l-j0Z" firstAttribute="width" secondItem="Fqe-9d-WDM" secondAttribute="width" id="Muc-Oz-PSP"/>
-                <constraint firstItem="Eiq-6F-KKf" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="NWA-5q-qWw"/>
                 <constraint firstItem="SMf-U6-ghJ" firstAttribute="width" secondItem="Fqe-9d-WDM" secondAttribute="width" id="Nhb-bK-cSE"/>
-                <constraint firstAttribute="trailing" secondItem="iDC-Rd-X9V" secondAttribute="trailing" constant="20" id="Pth-yL-KjS"/>
+                <constraint firstItem="Vfb-h6-8G7" firstAttribute="leading" secondItem="mYn-fO-v8V" secondAttribute="leading" id="Oi5-Ki-Vsm"/>
+                <constraint firstItem="fK0-9l-j0Z" firstAttribute="leading" secondItem="SMf-U6-ghJ" secondAttribute="leading" id="Po3-V8-PQv"/>
                 <constraint firstItem="GdS-bS-cNL" firstAttribute="top" secondItem="N29-Q7-eTX" secondAttribute="bottom" constant="8" id="SXK-aH-2G9"/>
                 <constraint firstItem="QWJ-A5-EWQ" firstAttribute="width" secondItem="Fqe-9d-WDM" secondAttribute="width" id="SdL-8c-oBu"/>
-                <constraint firstItem="fK0-9l-j0Z" firstAttribute="top" secondItem="SMf-U6-ghJ" secondAttribute="bottom" constant="8" id="SwM-6U-ZcB"/>
-                <constraint firstItem="N29-Q7-eTX" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="TXL-kp-pSp"/>
+                <constraint firstItem="96R-ps-o2X" firstAttribute="leading" secondItem="Ab0-0p-Vmn" secondAttribute="leading" id="UQH-Ql-rIP"/>
                 <constraint firstItem="aWX-Pt-N8o" firstAttribute="top" secondItem="fK0-9l-j0Z" secondAttribute="bottom" constant="12" id="UnO-qG-des"/>
                 <constraint firstItem="QWJ-A5-EWQ" firstAttribute="top" secondItem="96R-ps-o2X" secondAttribute="top" id="YEy-LX-XFr"/>
+                <constraint firstItem="Eiq-6F-KKf" firstAttribute="width" secondItem="Ab0-0p-Vmn" secondAttribute="width" id="YGh-Tj-vCl"/>
                 <constraint firstItem="Eiq-6F-KKf" firstAttribute="top" secondItem="96R-ps-o2X" secondAttribute="bottom" constant="8" id="Ydi-9P-gaE"/>
-                <constraint firstItem="bxH-Zq-xpU" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="ZRh-gq-cTV"/>
-                <constraint firstAttribute="trailing" secondItem="fK0-9l-j0Z" secondAttribute="trailing" constant="20" id="bEj-Wr-ytK"/>
-                <constraint firstItem="GdS-bS-cNL" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="d2z-NB-Itm"/>
-                <constraint firstItem="Ab0-0p-Vmn" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="hCz-qo-hgs"/>
-                <constraint firstAttribute="trailing" secondItem="QWJ-A5-EWQ" secondAttribute="trailing" constant="20" id="iz3-pN-Qmi"/>
+                <constraint firstItem="bxH-Zq-xpU" firstAttribute="width" secondItem="Ab0-0p-Vmn" secondAttribute="width" id="ZJG-b0-bVj"/>
+                <constraint firstItem="SMf-U6-ghJ" firstAttribute="centerY" secondItem="N29-Q7-eTX" secondAttribute="centerY" id="Zib-Lx-ewX"/>
+                <constraint firstItem="96R-ps-o2X" firstAttribute="centerY" secondItem="Vfb-h6-8G7" secondAttribute="centerY" id="cGA-Z6-kYR"/>
+                <constraint firstItem="mYn-fO-v8V" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="8" id="dWY-dW-B51"/>
+                <constraint firstItem="QWJ-A5-EWQ" firstAttribute="centerY" secondItem="96R-ps-o2X" secondAttribute="centerY" id="glp-ce-i2E"/>
+                <constraint firstItem="iDC-Rd-X9V" firstAttribute="centerY" secondItem="Eiq-6F-KKf" secondAttribute="centerY" id="hIs-oq-ND5"/>
+                <constraint firstItem="Ab0-0p-Vmn" firstAttribute="centerY" secondItem="mYn-fO-v8V" secondAttribute="centerY" id="hXK-gz-V22"/>
+                <constraint firstItem="Fqe-9d-WDM" firstAttribute="leading" secondItem="Ab0-0p-Vmn" secondAttribute="trailing" constant="12" id="hx7-hf-KEA"/>
+                <constraint firstItem="N29-Q7-eTX" firstAttribute="width" secondItem="Ab0-0p-Vmn" secondAttribute="width" id="jd5-ef-S2Y"/>
+                <constraint firstItem="oWB-3w-LDG" firstAttribute="leading" secondItem="mYn-fO-v8V" secondAttribute="leading" id="lSJ-H1-wVd"/>
+                <constraint firstItem="96R-ps-o2X" firstAttribute="width" secondItem="Ab0-0p-Vmn" secondAttribute="width" id="mF4-N8-MeA"/>
                 <constraint firstAttribute="bottom" secondItem="3Kf-bj-Vw4" secondAttribute="bottom" constant="20" id="mVc-aZ-pw4"/>
-                <constraint firstItem="4Zc-vm-Jnv" firstAttribute="top" secondItem="aWX-Pt-N8o" secondAttribute="bottom" constant="8" symbolic="YES" id="ubi-Ac-Ic4"/>
-                <constraint firstItem="SMf-U6-ghJ" firstAttribute="top" secondItem="Fqe-9d-WDM" secondAttribute="bottom" constant="8" id="uuL-tt-G8h"/>
-                <constraint firstItem="96R-ps-o2X" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="xNY-IW-Oyg"/>
+                <constraint firstItem="iDC-Rd-X9V" firstAttribute="leading" secondItem="SMf-U6-ghJ" secondAttribute="leading" id="nPT-HX-kJI"/>
+                <constraint firstItem="bxH-Zq-xpU" firstAttribute="leading" secondItem="Ab0-0p-Vmn" secondAttribute="leading" id="oW3-8m-Jjx"/>
+                <constraint firstItem="Ab0-0p-Vmn" firstAttribute="leading" secondItem="mYn-fO-v8V" secondAttribute="trailing" constant="8" id="s9f-EJ-Hxl"/>
+                <constraint firstItem="bxH-Zq-xpU" firstAttribute="centerY" secondItem="hHE-Bt-M9R" secondAttribute="centerY" id="uvi-fa-zSl"/>
             </constraints>
-            <point key="canvasLocation" x="252.5" y="495"/>
+            <point key="canvasLocation" x="162.5" y="515"/>
         </customView>
     </objects>
+    <resources>
+        <image name="double_tap" width="512" height="512"/>
+        <image name="single_tap" width="512" height="512"/>
+    </resources>
 </document>
