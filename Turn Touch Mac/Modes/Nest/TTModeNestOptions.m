@@ -25,6 +25,7 @@
     [super viewDidLoad];
     self.modeNest = (TTModeNest *)self.mode;
     [self.modeNest setDelegate:self];
+    NSLog(@" ---> NEST %@ delegate: %@", self.modeNest, self);
     
     [self changeState:self.modeNest.nestState withMode:self.modeNest];
 }

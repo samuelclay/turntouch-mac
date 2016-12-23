@@ -48,11 +48,11 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 //        [phHueSDK stopSDK];
 //        phHueSDK = nil;
 //    }
-    if (phHueSDK) return;
-    
-    phHueSDK = [[PHHueSDK alloc] init];
-    [phHueSDK startUpSDK];
-    [phHueSDK enableLogging:NO];
+    if (!phHueSDK) {
+        phHueSDK = [[PHHueSDK alloc] init];
+        [phHueSDK startUpSDK];
+        [phHueSDK enableLogging:NO];
+    }
     
     PHNotificationManager *notificationManager = [PHNotificationManager defaultManager];
     [notificationManager deregisterObjectForAllNotifications:self];
@@ -688,7 +688,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
         }];
     }
     
-    if (![foundScenes containsObject:@"TT-ee-1"] || YES) {
+    if (![foundScenes containsObject:@"TT-ee-1"]) {
         PHScene *scene = [[PHScene alloc] init];
         scene.name = @"Early Evening";
         scene.identifier = @"TT-ee-1";
@@ -710,7 +710,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
         }];
     }
     
-    if (![foundScenes containsObject:@"TT-ee-2"] || YES) {
+    if (![foundScenes containsObject:@"TT-ee-2"]) {
         PHScene *scene = [[PHScene alloc] init];
         scene.name = @"Early Evening 2";
         scene.identifier = @"TT-ee-2";
@@ -736,7 +736,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
         }];
     }
     
-    if (![foundScenes containsObject:@"TT-le-1"] || YES) {
+    if (![foundScenes containsObject:@"TT-le-1"]) {
         PHScene *scene = [[PHScene alloc] init];
         scene.name = @"Late Evening";
         scene.identifier = @"TT-le-1";
@@ -759,7 +759,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
         }];
     }
     
-    if (![foundScenes containsObject:@"TT-le-2"] || YES) {
+    if (![foundScenes containsObject:@"TT-le-2"]) {
         PHScene *scene = [[PHScene alloc] init];
         scene.name = @"Late Evening 2";
         scene.identifier = @"TT-le-2";
