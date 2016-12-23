@@ -1,6 +1,0 @@
-framework module SwiftyHue {
-  umbrella header "SwiftyHue-umbrella.h"
-
-  export *
-  module * { export * }
-}

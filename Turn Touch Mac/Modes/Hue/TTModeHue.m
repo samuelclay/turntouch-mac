@@ -183,6 +183,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
     PHScene *activeScene;
     NSString *sceneIdentifier = [self.action optionValue:(doubleTap ? kDoubleTapHueScene : kHueScene) inDirection:direction];
+    NSString *roomIdentifier = [self.action optionValue:kHueRoom inDirection:direction];
 //    NSString *sceneIdentifier = [appDelegate.modeMap mode:self.action.mode
 //                                        actionOptionValue:(doubleTap ? kDoubleTapHueScene : kHueScene)
 //                                               actionName:sceneName
@@ -204,7 +205,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
         sceneIdentifier = scenes[0][@"identifier"];
     }
 
-    [bridgeSendAPI activateSceneWithIdentifier:sceneIdentifier onGroup:@"0" completionHandler:^(NSArray *errors) {
+    [bridgeSendAPI activateSceneWithIdentifier:sceneIdentifier onGroup:doubleTap?@"1":@"2" completionHandler:^(NSArray *errors) {
 //        NSLog(@"Scene change: %@ (%@)", sceneIdentifier, errors);
     }];
 }
@@ -272,7 +273,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
         
         lightState.transitionTime = sceneTransition;
         lightState.alert = 0;
-        dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, (unsigned long)NULL), ^{
             [bridgeSendAPI updateLightStateForId:light.identifier withLightState:lightState completionHandler:^(NSArray *errors) {
                 NSLog(@"Sleep light in %@: %@", sceneTransition, errors);
             }];
@@ -331,7 +332,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
             [lightState setSaturation:[NSNumber numberWithInt:254]];
         }
         
-        dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, (unsigned long)NULL), ^{
             [bridgeSendAPI updateLightStateForId:light.identifier withLightState:lightState completionHandler:^(NSArray *errors) {}];
         });
     }

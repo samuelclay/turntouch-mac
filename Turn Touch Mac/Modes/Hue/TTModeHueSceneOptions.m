@@ -10,6 +10,7 @@
 #import "TTModeHueSceneOptions.h"
 #import <HueSDK_OSX/HueSDK.h>
 
+NSString *const kHueRoom = @"hueRoom";
 NSString *const kHueScene = @"hueScene";
 NSString *const kDoubleTapHueScene = @"doubleTapHueScene";
 

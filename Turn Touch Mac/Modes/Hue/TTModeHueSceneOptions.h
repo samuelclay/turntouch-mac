@@ -8,6 +8,7 @@
 
 #import "TTOptionsDetailViewController.h"
 
+extern NSString *const kHueRoom;
 extern NSString *const kHueScene;
 extern NSString *const kDoubleTapHueScene;
 

@@ -15,7 +15,6 @@
 @class TTModeHue;
 @class TTModeHueSceneOptions;
 
-
 typedef enum TTHueState : NSUInteger {
     STATE_NOT_CONNECTED,
     STATE_CONNECTING,

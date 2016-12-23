@@ -38,9 +38,7 @@ extern NSString *const kNestSetTemperatureMode;
 //@property (nonatomic, strong) NSDictionary *currentStructure;
 @property (nonatomic, weak) id <TTModeNestDelegate> delegate;
 @property (nonatomic) TTNestState nestState;
-@property (nonatomic, class) TTModeNestDelegateManager *delegateManager;
 
-+ (TTModeNestDelegateManager *)delegateManager;
 - (NSDictionary *)currentStructure;
 - (void)beginConnectingToNest;
 - (void)cancelConnectingToNest;
