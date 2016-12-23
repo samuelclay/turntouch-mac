@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E71E979296FA75C1DFBE017 /* Pods_Turn_Touch_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D6C41BC1CC180E2E10940C /* Pods_Turn_Touch_Mac.framework */; };
+		55DD686086E689F9A85E7F37 /* Pods_Turn_Touch_Mac_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69A6AEC01B54671B7C1F2D33 /* Pods_Turn_Touch_Mac_Tests.framework */; };
 		A83CE3081C7FDC6C00011751 /* HueSDK_OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */; };
 		A83CE3091C7FDC6C00011751 /* HueSDK_OSX.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF01CA291C46009E00F83A73 /* scripts in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA281C46009E00F83A73 /* scripts */; };
@@ -410,6 +412,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		428C973338513E40413ECE89 /* Pods-Turn Touch Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turn Touch Mac.release.xcconfig"; path = "Pods/Target Support Files/Pods-Turn Touch Mac/Pods-Turn Touch Mac.release.xcconfig"; sourceTree = "<group>"; };
+		46D6C41BC1CC180E2E10940C /* Pods_Turn_Touch_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Turn_Touch_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48A22888DC47EC205B5C719E /* Pods-Turn Touch Mac Tests.testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turn Touch Mac Tests.testing.xcconfig"; path = "Pods/Target Support Files/Pods-Turn Touch Mac Tests/Pods-Turn Touch Mac Tests.testing.xcconfig"; sourceTree = "<group>"; };
+		69A6AEC01B54671B7C1F2D33 /* Pods_Turn_Touch_Mac_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Turn_Touch_Mac_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6EEE753351ED088BDBC4293B /* Pods-Turn Touch Mac.testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turn Touch Mac.testing.xcconfig"; path = "Pods/Target Support Files/Pods-Turn Touch Mac/Pods-Turn Touch Mac.testing.xcconfig"; sourceTree = "<group>"; };
+		A6517B39D641808C7D567ADB /* Pods-Turn Touch Mac Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turn Touch Mac Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Turn Touch Mac Tests/Pods-Turn Touch Mac Tests.release.xcconfig"; sourceTree = "<group>"; };
+		B4B21159397490C1D510DA8C /* Pods-Turn Touch Mac Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turn Touch Mac Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Turn Touch Mac Tests/Pods-Turn Touch Mac Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		EFAC2EEEBF69A3D19B84B135 /* Pods-Turn Touch Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turn Touch Mac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Turn Touch Mac/Pods-Turn Touch Mac.debug.xcconfig"; sourceTree = "<group>"; };
 		FF01CA281C46009E00F83A73 /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = scripts; path = Resources/scripts; sourceTree = "<group>"; };
 		FF01CA2A1C4613C500F83A73 /* Safari.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Safari.h; path = Modes/Web/Safari.h; sourceTree = "<group>"; };
 		FF01CA2C1C46DCC200F83A73 /* app_music.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_music.png; sourceTree = "<group>"; };
@@ -1006,6 +1016,7 @@
 				FF0E12D11824811200D49EC7 /* ScriptingBridge.framework in Frameworks */,
 				FF4E26321823197D00D477F6 /* IOKit.framework in Frameworks */,
 				FF8C833717AB14B5000166FC /* Cocoa.framework in Frameworks */,
+				0E71E979296FA75C1DFBE017 /* Pods_Turn_Touch_Mac.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1013,12 +1024,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55DD686086E689F9A85E7F37 /* Pods_Turn_Touch_Mac_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		69DB97B5E2083208811EC99D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EFAC2EEEBF69A3D19B84B135 /* Pods-Turn Touch Mac.debug.xcconfig */,
+				6EEE753351ED088BDBC4293B /* Pods-Turn Touch Mac.testing.xcconfig */,
+				428C973338513E40413ECE89 /* Pods-Turn Touch Mac.release.xcconfig */,
+				B4B21159397490C1D510DA8C /* Pods-Turn Touch Mac Tests.debug.xcconfig */,
+				48A22888DC47EC205B5C719E /* Pods-Turn Touch Mac Tests.testing.xcconfig */,
+				A6517B39D641808C7D567ADB /* Pods-Turn Touch Mac Tests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		FF01CA2B1C46DCC200F83A73 /* icons */ = {
 			isa = PBXGroup;
 			children = (
@@ -1623,6 +1648,7 @@
 				FFF8AE371AFDAB3E0064DCEF /* Turn Touch Mac Tests */,
 				FF8C833517AB14B5000166FC /* Frameworks */,
 				FF8C833417AB14B5000166FC /* Products */,
+				69DB97B5E2083208811EC99D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1658,6 +1684,8 @@
 				FF4E26311823197D00D477F6 /* IOKit.framework */,
 				FF8C833617AB14B5000166FC /* Cocoa.framework */,
 				FF8C833817AB14B5000166FC /* Other Frameworks */,
+				46D6C41BC1CC180E2E10940C /* Pods_Turn_Touch_Mac.framework */,
+				69A6AEC01B54671B7C1F2D33 /* Pods_Turn_Touch_Mac_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2148,11 +2176,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF8C835017AB14B5000166FC /* Build configuration list for PBXNativeTarget "Turn Touch Mac" */;
 			buildPhases = (
+				FBAC4C845C2B45A27CFF868B /* [CP] Check Pods Manifest.lock */,
 				FF8C832F17AB14B5000166FC /* Sources */,
 				FF8C833017AB14B5000166FC /* Frameworks */,
 				FF8C833117AB14B5000166FC /* Resources */,
 				FF93604D196DF18F00675B7B /* Copy Fonts */,
 				FF1F13661ADC9E5800B52A0D /* Copy Frameworks */,
+				8F2188AB64060C23D677D5B0 /* [CP] Embed Pods Frameworks */,
+				6C7183CE32776E66609AC613 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2167,9 +2198,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FFF8AE401AFDAB3E0064DCEF /* Build configuration list for PBXNativeTarget "Turn Touch Mac Tests" */;
 			buildPhases = (
+				D9411EFFD3E94745DA19E87A /* [CP] Check Pods Manifest.lock */,
 				FFF8AE321AFDAB3E0064DCEF /* Sources */,
 				FFF8AE331AFDAB3E0064DCEF /* Frameworks */,
 				FFF8AE341AFDAB3E0064DCEF /* Resources */,
+				5F553945DF7328275B55BAD3 /* [CP] Embed Pods Frameworks */,
+				F0FE476070A82454E7ACF1D2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2397,6 +2431,99 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5F553945DF7328275B55BAD3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Turn Touch Mac Tests/Pods-Turn Touch Mac Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6C7183CE32776E66609AC613 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Turn Touch Mac/Pods-Turn Touch Mac-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8F2188AB64060C23D677D5B0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Turn Touch Mac/Pods-Turn Touch Mac-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D9411EFFD3E94745DA19E87A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F0FE476070A82454E7ACF1D2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Turn Touch Mac Tests/Pods-Turn Touch Mac Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FBAC4C845C2B45A27CFF868B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FF8C832F17AB14B5000166FC /* Sources */ = {
@@ -2713,6 +2840,7 @@
 		};
 		FF8C835117AB14B5000166FC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EFAC2EEEBF69A3D19B84B135 /* Pods-Turn Touch Mac.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Turn Touch Mac/Supporting Files/Turn Touch Mac.entitlements";
@@ -2730,11 +2858,15 @@
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Mac/Supporting Files/Turn Touch Mac-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_CFLAGS = "-v";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-v",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-Wl,-rpath,@loader_path/../Frameworks",
+					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.mac-remote";
 				PRODUCT_NAME = "Turn Touch Mac";
@@ -2746,6 +2878,7 @@
 		};
 		FF8C835217AB14B5000166FC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 428C973338513E40413ECE89 /* Pods-Turn Touch Mac.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Turn Touch Mac/Supporting Files/Turn Touch Mac.entitlements";
@@ -2763,11 +2896,15 @@
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Mac/Supporting Files/Turn Touch Mac-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_CFLAGS = "-v";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-v",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-Wl,-rpath,@loader_path/../Frameworks",
+					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.mac-remote";
 				PRODUCT_NAME = "Turn Touch Mac";
@@ -2779,6 +2916,7 @@
 		};
 		FFF8AE3E1AFDAB3E0064DCEF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4B21159397490C1D510DA8C /* Pods-Turn Touch Mac Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
@@ -2818,6 +2956,7 @@
 		};
 		FFF8AE3F1AFDAB3E0064DCEF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6517B39D641808C7D567ADB /* Pods-Turn Touch Mac Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
@@ -2894,6 +3033,7 @@
 		};
 		FFF8AE441AFDBB3B0064DCEF /* Testing */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6EEE753351ED088BDBC4293B /* Pods-Turn Touch Mac.testing.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Turn Touch Mac/Supporting Files/Turn Touch Mac.entitlements";
@@ -2911,11 +3051,15 @@
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Mac/Supporting Files/Turn Touch Mac-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_CFLAGS = "-v";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-v",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-Wl,-rpath,@loader_path/../Frameworks",
+					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.mac-remote";
 				PRODUCT_NAME = "Turn Touch Mac";
@@ -2927,6 +3071,7 @@
 		};
 		FFF8AE451AFDBB3B0064DCEF /* Testing */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48A22888DC47EC205B5C719E /* Pods-Turn Touch Mac Tests.testing.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
