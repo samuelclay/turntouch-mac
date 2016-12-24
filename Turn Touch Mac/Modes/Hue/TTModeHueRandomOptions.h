@@ -8,10 +8,11 @@
 
 #import "TTOptionsDetailViewController.h"
 #import "TTSegmentedControl.h"
+#import "TTModeHuePicker.h"
 
 @class TTModeHue;
 
-@interface TTModeHueRandomOptions : TTOptionsDetailViewController
+@interface TTModeHueRandomOptions : TTModeHuePicker
 
 @property (nonatomic) IBOutlet TTSegmentedControl *segRandomColors;
 @property (nonatomic) IBOutlet TTSegmentedControl *segRandomBrightness;

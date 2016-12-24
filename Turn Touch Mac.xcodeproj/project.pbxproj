@@ -230,6 +230,7 @@
 		FF80132F186D210200955218 /* TTOptionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF80132E186D210200955218 /* TTOptionsView.m */; };
 		FF801335186E207B00955218 /* TTDiamondLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801334186E207B00955218 /* TTDiamondLabel.m */; };
 		FF801338186E5D9700955218 /* TTOptionsActionTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801337186E5D9700955218 /* TTOptionsActionTitle.m */; };
+		FF8448F11E0DFE3E00C1091E /* TTModeHuePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8448F01E0DFE3E00C1091E /* TTModeHuePicker.m */; };
 		FF8528F61A96A63A00B289FD /* TTModeMusic.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF8528F51A96A63A00B289FD /* TTModeMusic.plist */; };
 		FF8528F81A96B58700B289FD /* TTModeMusicVolumeJumpOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF8528F71A96B58700B289FD /* TTModeMusicVolumeJumpOptions.xib */; };
 		FF8528FB1A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8528FA1A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.m */; };
@@ -744,6 +745,8 @@
 		FF801334186E207B00955218 /* TTDiamondLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTDiamondLabel.m; sourceTree = "<group>"; };
 		FF801336186E5D9700955218 /* TTOptionsActionTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTOptionsActionTitle.h; path = "Views/Mode Options/TTOptionsActionTitle.h"; sourceTree = "<group>"; };
 		FF801337186E5D9700955218 /* TTOptionsActionTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTOptionsActionTitle.m; path = "Views/Mode Options/TTOptionsActionTitle.m"; sourceTree = "<group>"; };
+		FF8448EF1E0DFE3E00C1091E /* TTModeHuePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeHuePicker.h; sourceTree = "<group>"; };
+		FF8448F01E0DFE3E00C1091E /* TTModeHuePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeHuePicker.m; sourceTree = "<group>"; };
 		FF8528F51A96A63A00B289FD /* TTModeMusic.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = TTModeMusic.plist; path = Modes/Music/TTModeMusic.plist; sourceTree = "<group>"; };
 		FF8528F71A96B58700B289FD /* TTModeMusicVolumeJumpOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeMusicVolumeJumpOptions.xib; path = Modes/Music/TTModeMusicVolumeJumpOptions.xib; sourceTree = "<group>"; };
 		FF8528F91A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMusicVolumeJumpOptions.h; path = Modes/Music/TTModeMusicVolumeJumpOptions.h; sourceTree = "<group>"; };
@@ -2095,6 +2098,8 @@
 				FF7305BE1A5CA8F5009A852D /* TTModeHueConnected.h */,
 				FF7305BF1A5CA8F5009A852D /* TTModeHueConnected.m */,
 				FF3641EA1A60BBEE003CC03C /* TTModeHueConnected.xib */,
+				FF8448EF1E0DFE3E00C1091E /* TTModeHuePicker.h */,
+				FF8448F01E0DFE3E00C1091E /* TTModeHuePicker.m */,
 				FF3641F41A660204003CC03C /* TTModeHueSceneOptions.h */,
 				FF3641F51A660204003CC03C /* TTModeHueSceneOptions.m */,
 				FF3641F61A660204003CC03C /* TTModeHueSceneOptions.xib */,
@@ -2566,6 +2571,7 @@
 				FFB1670E1923E61F008FA1AF /* TTTabView.m in Sources */,
 				FFA1D4CB1A3B8916003EA0BC /* TTActionHUDView.m in Sources */,
 				FFF05F4218F77D5D00AC6230 /* TTChangeButtonCell.m in Sources */,
+				FF8448F11E0DFE3E00C1091E /* TTModeHuePicker.m in Sources */,
 				FF5296081AD61E74007DDC02 /* NSDate+TimeAgo.m in Sources */,
 				FF7305B21A5C9C76009A852D /* DDTTYLogger.m in Sources */,
 				FF904B761BE9B88700AD00F3 /* Utility.m in Sources */,

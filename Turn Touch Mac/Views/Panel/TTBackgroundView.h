@@ -29,7 +29,7 @@
 #import "TTModalSupportView.h"
 #import "TTPanelStates.h"
 
-#define PANEL_WIDTH 360.0f
+#define PANEL_WIDTH 380.0f
 #define STROKE_OPACITY .5f
 #define TITLE_BAR_HEIGHT 38.0f
 #define MODE_TABS_HEIGHT 92.0f

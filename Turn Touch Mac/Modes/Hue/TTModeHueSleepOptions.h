@@ -7,13 +7,14 @@
 //
 
 #import "TTOptionsDetailViewController.h"
+#import "TTModeHuePicker.h"
 
 extern NSString *const kHueDuration;
 extern NSString *const kHueDoubleTapDuration;
 
 @class TTModeHue;
 
-@interface TTModeHueSleepOptions : TTOptionsDetailViewController
+@interface TTModeHueSleepOptions : TTModeHuePicker
 
 @property (nonatomic) IBOutlet NSTextField *durationLabel;
 @property (nonatomic) IBOutlet NSSlider *durationSlider;

@@ -7,6 +7,7 @@
 //
 
 #import "TTOptionsDetailViewController.h"
+#import "TTModeHuePicker.h"
 
 extern NSString *const kHueRoom;
 extern NSString *const kHueScene;
@@ -14,7 +15,7 @@ extern NSString *const kDoubleTapHueScene;
 
 @class TTModeHue;
 
-@interface TTModeHueSceneOptions : TTOptionsDetailViewController
+@interface TTModeHueSceneOptions : TTModeHuePicker
 
 @property (nonatomic) IBOutlet NSPopUpButton *scenePopup;
 @property (nonatomic) IBOutlet NSProgressIndicator *spinner;

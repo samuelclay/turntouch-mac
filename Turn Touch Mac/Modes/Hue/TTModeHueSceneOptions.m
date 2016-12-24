@@ -8,6 +8,7 @@
 
 #import "TTModeHue.h"
 #import "TTModeHueSceneOptions.h"
+#import "TTModeHuePicker.h"
 #import <HueSDK_OSX/HueSDK.h>
 
 NSString *const kHueRoom = @"hueRoom";
@@ -35,8 +36,10 @@ NSString *const kDoubleTapHueScene = @"doubleTapHueScene";
 
 - (void)drawScenes {
     [spinner setHidden:YES];
+    [self.roomSpinner setHidden:YES];
     [doubleTapSpinner setHidden:YES];
     [refreshButton setHidden:NO];
+    [self.roomRefreshButton setHidden:NO];
     [doubleTapRefreshButton setHidden:NO];
     
     NSString *sceneSelectedIdentifier = [self.action optionValue:kHueScene inDirection:appDelegate.modeMap.inspectingModeDirection];
@@ -123,7 +126,9 @@ NSString *const kDoubleTapHueScene = @"doubleTapHueScene";
 - (IBAction)didClickRefresh:(id)sender {
     [spinner setHidden:NO];
     [doubleTapSpinner setHidden:NO];
+    [self.roomSpinner setHidden:NO];
     [refreshButton setHidden:YES];
+    [self.roomRefreshButton setHidden:YES];
     [doubleTapRefreshButton setHidden:YES];
     
     PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
