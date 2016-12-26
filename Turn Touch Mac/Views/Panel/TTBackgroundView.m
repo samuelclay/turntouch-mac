@@ -123,15 +123,16 @@
                                                     multiplier:1.0 constant:TITLE_BAR_HEIGHT]];
     
     
-//    [self addConstraint:[NSLayoutConstraint constraintWithItem:self
-//                                                     attribute:NSLayoutAttributeWidth
-//                                                     relatedBy:NSLayoutRelationEqual
-//                                                        toItem:nil
-//                                                     attribute:0
-//                                                    multiplier:0
-//                                                      constant:PANEL_WIDTH]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self
+                                                     attribute:NSLayoutAttributeWidth
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:0
+                                                    multiplier:0
+                                                      constant:PANEL_WIDTH]];
     
-    [appDelegate.panelController.window setContentSize:NSMakeSize(PANEL_WIDTH, 0)];
+    [appDelegate.panelController.window setContentSize:NSMakeSize(PANEL_WIDTH,
+                                                                  NSHeight(appDelegate.panelController.window.frame))];
 }
 
 - (void)switchPanelModalApp {
