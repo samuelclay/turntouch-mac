@@ -637,6 +637,7 @@ didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic
         TTDevice *device = [foundDevices deviceForPeripheral:peripheral];
         device.isNotified = YES;
         device.state = TTDeviceStateConnected;
+        device.lastActionDate = [NSDate date];
         [self countDevices];
         
         bluetoothState = BT_STATE_IDLE;
