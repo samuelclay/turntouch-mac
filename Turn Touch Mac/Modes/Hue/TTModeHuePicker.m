@@ -36,6 +36,7 @@
     NSMutableArray *rooms = [[NSMutableArray alloc] init];
     [roomDropdown removeAllItems];
     
+    [rooms addObject:@{@"name": @"All Rooms", @"identifier": @"all"}];
     for (PHGroup *group in cache.groups.allValues) {
         //        NSLog(@"Room: %@ %@", group.identifier, group.name);
         [rooms addObject:@{@"name": group.name, @"identifier": group.identifier}];

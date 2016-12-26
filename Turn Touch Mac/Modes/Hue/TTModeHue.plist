@@ -2,18 +2,26 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>TTModeHueSceneLateEvening:hueRoom</key>
+	<string>all</string>
 	<key>TTModeHueSceneLateEvening:hueScene</key>
 	<string>TT-le-1</string>
 	<key>TTModeHueSceneLateEvening:doubleTapHueScene</key>
 	<string>TT-le-2</string>
+	<key>TTModeHueSceneEarlyEvening:hueRoom</key>
+	<string>all</string>
 	<key>TTModeHueSceneEarlyEvening:hueScene</key>
 	<string>TT-ee-1</string>
 	<key>TTModeHueSceneEarlyEvening:doubleTapHueScene</key>
 	<string>TT-ee-2</string>
+	<key>TTModeHueSleep:hueRoom</key>
+	<string>all</string>
 	<key>TTModeHueSleep:hueDuration</key>
-	<integer>30</integer>
+	<integer>10</integer>
 	<key>TTModeHueSleep:hueDoubleTapDuration</key>
-	<integer>5</integer>
+	<integer>1</integer>
+	<key>TTModeHueRandom:hueRoom</key>
+	<string>all</string>
 	<key>TTModeHueRandom:randomColors</key>
 	<integer>2</integer>
 	<key>TTModeHueRandom:randomBrightness</key>
@@ -23,7 +31,7 @@
 	<key>TTModeHueRandom:doubleTapRandomColors</key>
 	<integer>1</integer>
 	<key>TTModeHueRandom:doubleTapRandomBrightness</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>TTModeHueRandom:doubleTapRandomSaturation</key>
 	<integer>2</integer>
 </dict>

@@ -263,8 +263,16 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
     PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
     NSNumber *sceneTransition = [NSNumber numberWithInteger:([sceneDuration integerValue] * 10)];
-
+    NSString *roomIdentifier = [self.action optionValue:kHueRoom inDirection:direction];
+    PHGroup *group = [cache.groups objectForKey:roomIdentifier];
+    
     for (PHLight *light in cache.lights.allValues) {
+        if (group && ![roomIdentifier isEqualToString:@"all"]) {
+            if (![[group lightIdentifiers] containsObject:light.identifier]) {
+                continue;
+            }
+        }
+        
         PHLightState *lightState = [[PHLightState alloc] init];
         
         [lightState setOn:[NSNumber numberWithBool:NO]];
@@ -305,9 +313,19 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
                                                                       optionValue:(doubleTap ? kDoubleTapRandomSaturation : kRandomSaturation)
                                                                       inDirection:direction] integerValue];
     NSNumber *randomColor = [NSNumber numberWithInt:arc4random() % MAX_HUE];
+    NSString *roomIdentifier = [self.action optionValue:kHueRoom inDirection:direction];
+    PHGroup *group = [cache.groups objectForKey:roomIdentifier];
     
     for (PHLight *light in cache.lights.allValues) {
+        if (group && ![roomIdentifier isEqualToString:@"all"]) {
+            if (![[group lightIdentifiers] containsObject:light.identifier]) {
+                continue;
+            }
+        }
+
         PHLightState *lightState = [[PHLightState alloc] init];
+        
+        lightState.on = [NSNumber numberWithBool:YES];
         
         if ((randomColors == TTHueRandomColorsAllSame) ||
             (randomColors == TTHueRandomColorsSomeDifferent && arc4random() % 10 > 5)) {
@@ -786,6 +804,6 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
             }];
         }];
     }
-    
 }
+
 @end

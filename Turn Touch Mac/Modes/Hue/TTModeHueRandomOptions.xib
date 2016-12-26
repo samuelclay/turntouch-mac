@@ -295,7 +295,7 @@
                 <constraint firstItem="Ab0-0p-Vmn" firstAttribute="leading" secondItem="mYn-fO-v8V" secondAttribute="trailing" constant="8" id="s9f-EJ-Hxl"/>
                 <constraint firstItem="bxH-Zq-xpU" firstAttribute="centerY" secondItem="hHE-Bt-M9R" secondAttribute="centerY" constant="-2" id="uvi-fa-zSl"/>
             </constraints>
-            <point key="canvasLocation" x="414" y="665.5"/>
+            <point key="canvasLocation" x="414" y="665"/>
         </customView>
     </objects>
     <resources>
