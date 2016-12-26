@@ -344,6 +344,10 @@
 		<data>
 		gF9+1omE+WkTv/YhjToeY25hwAY=
 		</data>
+		<key>Resources/TTModeCustomURLOptions.nib</key>
+		<data>
+		B0LssNRmXFLzOA9l5xobjB4d0q4=
+		</data>
 		<key>Resources/TTModeHUDView.nib</key>
 		<data>
 		tqaMeLiNqfbR4x3HRL8S/xmIczU=
@@ -354,7 +358,7 @@
 		</data>
 		<key>Resources/TTModeHueBridge.nib</key>
 		<data>
-		DyRk2MZVBS99ooQjlS1lORDZTNQ=
+		kvH8Cl4a2Mm3pvioaKwH0KL/N94=
 		</data>
 		<key>Resources/TTModeHueConnect.nib</key>
 		<data>
@@ -731,6 +735,10 @@
 		<data>
 		rHtrEH8JCMGTYWsLrRGHYhb0ve8=
 		</data>
+		<key>Resources/modal_failure.png</key>
+		<data>
+		mHdmK7z/rlMDQL+sJRIVj3hlSFQ=
+		</data>
 		<key>Resources/modal_ftux_action.png</key>
 		<data>
 		0XyJpDxzGWg5Ou0Ki8sieKNH6ys=
@@ -982,16 +990,16 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			EgvR9vRvPPOFkHfrc1XQRrg5s+g=
+			TKyIiUvQTniyiEBGxI7jljv2QQM=
 			</data>
 			<key>requirement</key>
-			<string>identifier "com.philips.hue.HueSDK-OSX" and anchor apple generic and certificate leaf[subject.CN] = "Mac Developer: Sam Clay (BYABZ8TGVG)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+			<string>anchor apple generic and identifier "com.philips.hue.HueSDK-OSX" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
 		</dict>
 		<key>Frameworks/Sparkle.framework</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			bw1tTbUKRq4k9FMawJqAlBkgbm8=
+			gAtK1YwDiQhRQu6mQXwJVgdS5ps=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.andymatuschak.Sparkle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -1555,6 +1563,17 @@
 			gpvoJ+aZzHpGcb+mlQvl+BlQ9Rt7rp5FFZ2P3J1CtAk=
 			</data>
 		</dict>
+		<key>Resources/TTModeCustomURLOptions.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			B0LssNRmXFLzOA9l5xobjB4d0q4=
+			</data>
+			<key>hash2</key>
+			<data>
+			x53yiSVMyqEuVpRG6hDQ+z84n/C8188io3MfwXBgaYI=
+			</data>
+		</dict>
 		<key>Resources/TTModeHUDView.nib</key>
 		<dict>
 			<key>hash</key>
@@ -1581,11 +1600,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			DyRk2MZVBS99ooQjlS1lORDZTNQ=
+			kvH8Cl4a2Mm3pvioaKwH0KL/N94=
 			</data>
 			<key>hash2</key>
 			<data>
-			qTMh+QOSLed/jJ5ilqaoaJsp1S9jyAu+53VULAoMuqg=
+			Sv2zYCh0+cr0i8N+idmwMh1PKuj7pYUwuWRvWRd8mb8=
 			</data>
 		</dict>
 		<key>Resources/TTModeHueConnect.nib</key>
@@ -2584,6 +2603,17 @@
 			c4nsGZsIe48iAd06ZRDNxlWrDt3Rfi2DoxWG9IhTlyA=
 			</data>
 		</dict>
+		<key>Resources/modal_failure.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			mHdmK7z/rlMDQL+sJRIVj3hlSFQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			bSrh7REdCK7Gozr7JbEHuvZo9lYuYvdcfajbPM4U46o=
+			</data>
+		</dict>
 		<key>Resources/modal_ftux_action.png</key>
 		<dict>
 			<key>hash</key>
@@ -3253,6 +3283,17 @@
 			<key>hash2</key>
 			<data>
 			2bj7sMSDEuRolQ+sQf7NqccJwpcnzvo0JPkl3jGflik=
+			</data>
+		</dict>
+		<key>embedded.provisionprofile</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			9gOkieSqu8xUFfL1Jy54XXarxM0=
+			</data>
+			<key>hash2</key>
+			<data>
+			GWMvRUvovKyFsgJbCbVKjtkDGJBuG1HC44rw4vbizRU=
 			</data>
 		</dict>
 	</dict>

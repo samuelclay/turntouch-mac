@@ -247,6 +247,7 @@
         [appDelegate.panelController.backgroundView setNeedsDisplay:YES];
         [appDelegate.panelController.backgroundView.modeMenu.collectionView setNeedsDisplay:YES];
         [appDelegate.modeMap setInspectingModeDirection:appDelegate.modeMap.inspectingModeDirection];
+        [appDelegate.modeMap setOpenedActionChangeMenu:NO];
     } else if (menuType == ADD_MODE_MENU_TYPE) {
         [appDelegate.modeMap setTempModeName:modeName];
         [appDelegate.panelController.backgroundView adjustBatchActionsHeight:YES];

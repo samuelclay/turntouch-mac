@@ -16,6 +16,7 @@
 #import "TTModeHue.h"
 #import "TTModeNest.h"
 #import "TTModeWemo.h"
+#import "TTModeCustom.h"
 #import "TTModeSpotify.h"
 #import "TTBatchActions.h"
 
@@ -55,7 +56,8 @@
                                   @"TTModeWeb",
                                   @"TTModeHue",
                                   @"TTModeNest",
-                                  @"TTModeWemo"]];
+                                  @"TTModeWemo",
+                                  @"TTModeCustom"]];
         
         activeModeDirection = NO_DIRECTION;
         inspectingModeDirection = NO_DIRECTION;
@@ -573,7 +575,6 @@ actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction 
 }
 
 #pragma mark - Direction helpers
-
 
 - (TTMode *)modeInDirection:(TTModeDirection)direction {
     switch (direction) {

@@ -184,6 +184,10 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     PHScene *activeScene;
     NSString *sceneIdentifier = [self.action optionValue:(doubleTap ? kDoubleTapHueScene : kHueScene) inDirection:direction];
     NSString *roomIdentifier = [self.action optionValue:kHueRoom inDirection:direction];
+    if (!roomIdentifier || [roomIdentifier isEqualToString:@"all"]) {
+        roomIdentifier = @"0";
+    }
+    
 //    NSString *sceneIdentifier = [appDelegate.modeMap mode:self.action.mode
 //                                        actionOptionValue:(doubleTap ? kDoubleTapHueScene : kHueScene)
 //                                               actionName:sceneName

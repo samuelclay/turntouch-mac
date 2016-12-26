@@ -79,6 +79,7 @@
 		FF1F13631ADC98C400B52A0D /* TTDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1F13621ADC98C400B52A0D /* TTDatePicker.m */; };
 		FF1F13651ADC9DEC00B52A0D /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF1F13641ADC9DEC00B52A0D /* Sparkle.framework */; };
 		FF1F13671ADC9E6F00B52A0D /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = FF1F13641ADC9DEC00B52A0D /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FF21F92E1E10EB6800DFDBB4 /* modal_failure.png in Resources */ = {isa = PBXBuildFile; fileRef = FF21F92D1E10EB6800DFDBB4 /* modal_failure.png */; };
 		FF254F671D1B68E000E96378 /* single_tap.png in Resources */ = {isa = PBXBuildFile; fileRef = FF254F661D1B68E000E96378 /* single_tap.png */; };
 		FF254F691D1B6A9800E96378 /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = FF254F681D1B6A9800E96378 /* refresh.png */; };
 		FF27052D1C90FB3B000BB10F /* TTModalPairingScanningView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF27052C1C90FB3B000BB10F /* TTModalPairingScanningView.m */; };
@@ -231,6 +232,9 @@
 		FF801335186E207B00955218 /* TTDiamondLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801334186E207B00955218 /* TTDiamondLabel.m */; };
 		FF801338186E5D9700955218 /* TTOptionsActionTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801337186E5D9700955218 /* TTOptionsActionTitle.m */; };
 		FF8448F11E0DFE3E00C1091E /* TTModeHuePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8448F01E0DFE3E00C1091E /* TTModeHuePicker.m */; };
+		FF8448F41E10D60700C1091E /* TTModeCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8448F31E10D60700C1091E /* TTModeCustom.m */; };
+		FF8448F91E10DB1A00C1091E /* TTModeCustomURLOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8448F71E10DB1A00C1091E /* TTModeCustomURLOptions.m */; };
+		FF8448FA1E10DB1A00C1091E /* TTModeCustomURLOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF8448F81E10DB1A00C1091E /* TTModeCustomURLOptions.xib */; };
 		FF8528F61A96A63A00B289FD /* TTModeMusic.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF8528F51A96A63A00B289FD /* TTModeMusic.plist */; };
 		FF8528F81A96B58700B289FD /* TTModeMusicVolumeJumpOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF8528F71A96B58700B289FD /* TTModeMusicVolumeJumpOptions.xib */; };
 		FF8528FB1A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8528FA1A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.m */; };
@@ -511,6 +515,7 @@
 		FF1F13611ADC98C400B52A0D /* TTDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTDatePicker.h; sourceTree = "<group>"; };
 		FF1F13621ADC98C400B52A0D /* TTDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTDatePicker.m; sourceTree = "<group>"; };
 		FF1F13641ADC9DEC00B52A0D /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = "Turn Touch Mac/Vendor/Sparkle.framework"; sourceTree = "<group>"; };
+		FF21F92D1E10EB6800DFDBB4 /* modal_failure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_failure.png; sourceTree = "<group>"; };
 		FF254F661D1B68E000E96378 /* single_tap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = single_tap.png; sourceTree = "<group>"; };
 		FF254F681D1B6A9800E96378 /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh.png; sourceTree = "<group>"; };
 		FF27052B1C90FB3B000BB10F /* TTModalPairingScanningView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModalPairingScanningView.h; path = Views/Pairing/TTModalPairingScanningView.h; sourceTree = "<group>"; };
@@ -747,6 +752,11 @@
 		FF801337186E5D9700955218 /* TTOptionsActionTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTOptionsActionTitle.m; path = "Views/Mode Options/TTOptionsActionTitle.m"; sourceTree = "<group>"; };
 		FF8448EF1E0DFE3E00C1091E /* TTModeHuePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeHuePicker.h; sourceTree = "<group>"; };
 		FF8448F01E0DFE3E00C1091E /* TTModeHuePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeHuePicker.m; sourceTree = "<group>"; };
+		FF8448F21E10D60700C1091E /* TTModeCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeCustom.h; path = Modes/Custom/TTModeCustom.h; sourceTree = "<group>"; };
+		FF8448F31E10D60700C1091E /* TTModeCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeCustom.m; path = Modes/Custom/TTModeCustom.m; sourceTree = "<group>"; };
+		FF8448F61E10DB1A00C1091E /* TTModeCustomURLOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeCustomURLOptions.h; path = Modes/Custom/TTModeCustomURLOptions.h; sourceTree = "<group>"; };
+		FF8448F71E10DB1A00C1091E /* TTModeCustomURLOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeCustomURLOptions.m; path = Modes/Custom/TTModeCustomURLOptions.m; sourceTree = "<group>"; };
+		FF8448F81E10DB1A00C1091E /* TTModeCustomURLOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeCustomURLOptions.xib; path = Modes/Custom/TTModeCustomURLOptions.xib; sourceTree = "<group>"; };
 		FF8528F51A96A63A00B289FD /* TTModeMusic.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = TTModeMusic.plist; path = Modes/Music/TTModeMusic.plist; sourceTree = "<group>"; };
 		FF8528F71A96B58700B289FD /* TTModeMusicVolumeJumpOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeMusicVolumeJumpOptions.xib; path = Modes/Music/TTModeMusicVolumeJumpOptions.xib; sourceTree = "<group>"; };
 		FF8528F91A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMusicVolumeJumpOptions.h; path = Modes/Music/TTModeMusicVolumeJumpOptions.h; sourceTree = "<group>"; };
@@ -1171,6 +1181,7 @@
 				FFE2D47B1A51EDF000DDD413 /* Hue */,
 				FFABAB971C334FCE00AD5620 /* Web */,
 				FF6792391CEBE11700639148 /* Spotify */,
+				FF8448F51E10D60C00C1091E /* Custom */,
 			);
 			name = Modes;
 			sourceTree = "<group>";
@@ -1229,6 +1240,7 @@
 				FF2705421C93A348000BB10F /* modal_remote_hero.png */,
 				FF2705431C93A348000BB10F /* modal_remote_paired.png */,
 				FF8D1AB41C9A4050006AA1A2 /* modal_success.png */,
+				FF21F92D1E10EB6800DFDBB4 /* modal_failure.png */,
 			);
 			path = modal;
 			sourceTree = "<group>";
@@ -1640,6 +1652,18 @@
 				FF66F2A81922D1C100031478 /* TTOptionsDetailView.m */,
 			);
 			name = "Mode Options";
+			sourceTree = "<group>";
+		};
+		FF8448F51E10D60C00C1091E /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				FF8448F21E10D60700C1091E /* TTModeCustom.h */,
+				FF8448F31E10D60700C1091E /* TTModeCustom.m */,
+				FF8448F61E10DB1A00C1091E /* TTModeCustomURLOptions.h */,
+				FF8448F71E10DB1A00C1091E /* TTModeCustomURLOptions.m */,
+				FF8448F81E10DB1A00C1091E /* TTModeCustomURLOptions.xib */,
+			);
+			name = Custom;
 			sourceTree = "<group>";
 		};
 		FF8C832A17AB14B5000166FC = {
@@ -2231,8 +2255,7 @@
 				ORGANIZATIONNAME = "Turn Touch";
 				TargetAttributes = {
 					FF8C833217AB14B5000166FC = {
-						DevelopmentTeam = 6W5HRS3393;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 0;
@@ -2353,6 +2376,7 @@
 				FF8A73C81ABA69410023AA53 /* logo_64.png in Resources */,
 				FF27407A1A7C5BC200C55579 /* itunes_movies_icon.png in Resources */,
 				FF6135591C61CDDC00F431D7 /* hue_sunset.png in Resources */,
+				FF8448FA1E10DB1A00C1091E /* TTModeCustomURLOptions.xib in Resources */,
 				FF2740751A7C576900C55579 /* originals.png in Resources */,
 				FFA1F5F71B7D849200268907 /* TTModeHueSleepOptions.xib in Resources */,
 				FF2740711A7C576900C55579 /* itunes_library_icon.png in Resources */,
@@ -2414,6 +2438,7 @@
 				FF61355E1C61CDDC00F431D7 /* music_rewind.png in Resources */,
 				FF01CA651C46DCC200F83A73 /* heart.png in Resources */,
 				FF27052F1C90FB68000BB10F /* TTModalPairingScanningView.xib in Resources */,
+				FF21F92E1E10EB6800DFDBB4 /* modal_failure.png in Resources */,
 				FF2740701A7C576900C55579 /* itunes_genius_icon.png in Resources */,
 				FF01CA621C46DCC200F83A73 /* equalizer-1.png in Resources */,
 				FF01CA5D1C46DCC200F83A73 /* button_x.png in Resources */,
@@ -2592,6 +2617,7 @@
 				FF557AD51C4DBB4A005FB7FD /* TTModeNestAuthViewController.m in Sources */,
 				FF904B7B1BE9B88700AD00F3 /* DFUHelper.m in Sources */,
 				FF904B871BE9B88700AD00F3 /* JsonParser.m in Sources */,
+				FF8448F91E10DB1A00C1091E /* TTModeCustomURLOptions.m in Sources */,
 				FFB5FF3E1A671C2600DF617A /* TTModeHueSleepOptions.m in Sources */,
 				FF0E12BB1824286600D49EC7 /* TTModeMap.m in Sources */,
 				FF3641E21A5F6478003CC03C /* TTOptionsDetailViewController.m in Sources */,
@@ -2686,6 +2712,7 @@
 				FFF049771CE11FCF006CE427 /* TTModeHueBridge.m in Sources */,
 				FFAB2C171E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.m in Sources */,
 				FF7305AE1A5C9C76009A852D /* DDAbstractDatabaseLogger.m in Sources */,
+				FF8448F41E10D60700C1091E /* TTModeCustom.m in Sources */,
 				FF76AD161C1F8FD000A6ED97 /* TTSlider.m in Sources */,
 				FF904B991BE9BA3700AD00F3 /* zip.c in Sources */,
 				FFABAB841C2784E300AD5620 /* TTBatchActionStackView.m in Sources */,
@@ -2854,10 +2881,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Turn Touch Mac/Supporting Files/Turn Touch Mac.entitlements";
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6W5HRS3393;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Turn\\ Touch\\ Mac/Vendor/",
@@ -2884,8 +2911,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.mac-remote";
 				PRODUCT_NAME = "Turn Touch Mac";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "6918aade-e7fe-41f9-8d97-58b9aa86eb24";
+				PROVISIONING_PROFILE_SPECIFIER = "Turn Touch Developer ID";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2896,10 +2923,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Turn Touch Mac/Supporting Files/Turn Touch Mac.entitlements";
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6W5HRS3393;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Turn\\ Touch\\ Mac/Vendor/",
@@ -2926,8 +2953,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.mac-remote";
 				PRODUCT_NAME = "Turn Touch Mac";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "6918aade-e7fe-41f9-8d97-58b9aa86eb24";
+				PROVISIONING_PROFILE_SPECIFIER = "Turn Touch Developer ID";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -3057,10 +3084,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Turn Touch Mac/Supporting Files/Turn Touch Mac.entitlements";
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6W5HRS3393;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Turn\\ Touch\\ Mac/Vendor/",
@@ -3087,8 +3114,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.mac-remote";
 				PRODUCT_NAME = "Turn Touch Mac";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "6918aade-e7fe-41f9-8d97-58b9aa86eb24";
+				PROVISIONING_PROFILE_SPECIFIER = "Turn Touch Developer ID";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Testing;
