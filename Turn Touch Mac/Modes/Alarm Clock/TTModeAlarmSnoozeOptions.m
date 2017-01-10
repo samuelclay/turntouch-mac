@@ -18,8 +18,6 @@
     [super viewDidLoad];
     
     NSInteger snoozeDuration = [[self.action optionValue:kAlarmSnoozeDuration inDirection:appDelegate.modeMap.inspectingModeDirection] integerValue];
-    // Run in TTModeMusic:
-    // NSInteger volumeJump = [[NSAppDelegate.modeMap actionOptionValue:kMusicVolumeJump inDirection:direction] integerValue];
     
     [durationSlider setIntegerValue:snoozeDuration];
     [self updateSnoozeDurationLabel];

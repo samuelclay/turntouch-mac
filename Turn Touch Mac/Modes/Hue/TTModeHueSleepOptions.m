@@ -27,11 +27,11 @@ NSString *const kHueDoubleTapDuration = @"hueDoubleTapDuration";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSInteger sceneDuration = [[appDelegate.modeMap actionOptionValue:kHueDuration] integerValue];
+    NSInteger sceneDuration = [[self.action optionValue:kHueDuration inDirection:appDelegate.modeMap.inspectingModeDirection] integerValue];
     [durationSlider setIntegerValue:sceneDuration];
     [self updateSliderLabel:NO];
     
-    NSInteger doubleTapSceneDuration = [[appDelegate.modeMap actionOptionValue:kHueDoubleTapDuration] integerValue];
+    NSInteger doubleTapSceneDuration = [[self.action optionValue:kHueDoubleTapDuration inDirection:appDelegate.modeMap.inspectingModeDirection] integerValue];
     [doubleTapDurationSlider setIntegerValue:doubleTapSceneDuration];
     [self updateSliderLabel:YES];
 }
@@ -40,11 +40,13 @@ NSString *const kHueDoubleTapDuration = @"hueDoubleTapDuration";
 
 - (IBAction)didChangeDuration:(id)sender {
     NSInteger duration = durationSlider.integerValue;
-    [appDelegate.modeMap changeActionOption:kHueDuration to:[NSNumber numberWithInteger:duration]];
+    [self.action changeActionOption:kHueDuration to:[NSNumber numberWithInteger:duration]];
+//    [appDelegate.modeMap changeActionOption:kHueDuration to:[NSNumber numberWithInteger:duration]];
     [self updateSliderLabel:NO];
 
     NSInteger doubleTapDuration = doubleTapDurationSlider.integerValue;
-    [appDelegate.modeMap changeActionOption:kHueDoubleTapDuration to:[NSNumber numberWithInteger:doubleTapDuration]];
+    [self.action changeActionOption:kHueDoubleTapDuration to:[NSNumber numberWithInteger:doubleTapDuration]];
+//    [appDelegate.modeMap changeActionOption:kHueDoubleTapDuration to:[NSNumber numberWithInteger:doubleTapDuration]];
     [self updateSliderLabel:YES];
 }
 

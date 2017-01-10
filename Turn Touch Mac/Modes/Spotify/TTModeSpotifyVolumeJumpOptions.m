@@ -22,8 +22,6 @@
     [super viewDidLoad];
     
     NSInteger volumeJump = [[self.action optionValue:kSpotifyVolumeJump inDirection:appDelegate.modeMap.inspectingModeDirection] integerValue];
-    // Run in TTModeSpotify:
-    // NSInteger volumeJump = [[NSAppDelegate.modeMap actionOptionValue:kSpotifyVolumeJump inDirection:direction] integerValue];
 
     [volumeSlider setIntegerValue:volumeJump];
     [self updateVolumeJumpLabel];

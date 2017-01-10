@@ -22,8 +22,6 @@
     [super viewDidLoad];
     
     NSInteger volumeJump = [[self.action optionValue:kMusicVolumeJump inDirection:appDelegate.modeMap.inspectingModeDirection] integerValue];
-    // Run in TTModeMusic:
-    // NSInteger volumeJump = [[NSAppDelegate.modeMap actionOptionValue:kMusicVolumeJump inDirection:direction] integerValue];
 
     [volumeSlider setIntegerValue:volumeJump];
     [self updateVolumeJumpLabel];

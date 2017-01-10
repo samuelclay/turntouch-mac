@@ -236,13 +236,15 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 }
 
 - (void)runTTModeHueSleep:(TTModeDirection)direction {
-    NSNumber *sceneDuration = (NSNumber *)[appDelegate.modeMap mode:self.action.mode actionOptionValue:kHueDuration actionName:@"TTModeHueSleep" inDirection:direction];
+    NSNumber *sceneDuration = [self.action optionValue:kHueDuration inDirection:direction];
+//    NSNumber *sceneDuration = (NSNumber *)[appDelegate.modeMap mode:self.action.mode actionOptionValue:kHueDuration actionName:@"TTModeHueSleep" inDirection:direction];
     [self runTTModeHueSleep:direction duration:sceneDuration];
 }
 
 - (void)doubleRunTTModeHueSleep:(TTModeDirection)direction {
     //    NSLog(@"Running scene off... %d", direction);
-    NSNumber *sceneDuration = (NSNumber *)[appDelegate.modeMap mode:self.action.mode actionOptionValue:kHueDoubleTapDuration actionName:@"TTModeHueSleep" inDirection:direction];
+    NSNumber *sceneDuration = [self.action optionValue:kHueDoubleTapDuration inDirection:direction];
+//    NSNumber *sceneDuration = (NSNumber *)[appDelegate.modeMap mode:self.action.mode actionOptionValue:kHueDoubleTapDuration actionName:@"TTModeHueSleep" inDirection:direction];
     [self runTTModeHueSleep:direction duration:sceneDuration];
 }
 
