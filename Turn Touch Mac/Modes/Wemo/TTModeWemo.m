@@ -28,7 +28,11 @@ static NSMutableArray *recentlyFoundDevices;
 //        foundDevices = [NSMutableArray array];
 //        multicastServer = [[TTModeWemoMulticastServer alloc] init];
         [[self sharedMulticastServer] setDelegate:self];
-        
+
+        if (!recentlyFoundDevices) {
+            recentlyFoundDevices = [NSMutableArray array];
+        }
+
         if (foundDevices.count == 0) {
             [self assembleFoundDevices];
         }
@@ -207,8 +211,6 @@ static NSMutableArray *recentlyFoundDevices;
 
 - (void)activate {
     [self.delegate changeState:wemoState withMode:self];
-    
-    [self beginConnectingToWemo];
 }
 
 - (void)deactivate {
@@ -218,7 +220,7 @@ static NSMutableArray *recentlyFoundDevices;
 #pragma mark - Connection
 
 - (void)refreshDevices {
-    TTModeWemo.recentlyFoundDevices = [NSMutableArray array];
+    recentlyFoundDevices = [NSMutableArray array];
     [self beginConnectingToWemo];
 }
 
@@ -247,13 +249,13 @@ static NSMutableArray *recentlyFoundDevices;
     }
     
     for (TTModeWemoDevice *device in foundDevices) {
-        if ([device isEqualToDevice:newDevice] && [TTModeWemo.recentlyFoundDevices containsObject:newDevice]) {
+        if ([device isEqualToDevice:newDevice] && [recentlyFoundDevices containsObject:newDevice]) {
             return device;
         }
     }
     
     [foundDevices addObject:newDevice];
-    [TTModeWemo.recentlyFoundDevices addObject:newDevice];
+    [recentlyFoundDevices addObject:newDevice];
     
     [newDevice requestDeviceInfo];
     

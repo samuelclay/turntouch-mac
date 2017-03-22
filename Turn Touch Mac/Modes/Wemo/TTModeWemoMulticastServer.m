@@ -101,7 +101,7 @@
         NSString *locationHost = [setupXmlUrl host];
         NSInteger locationPort = [[setupXmlUrl port] integerValue];
         
-        NSLog(@"Found Wemo: %@/%@:%ld/%ld: %@", host, locationHost, port, locationPort, headers);
+//        NSLog(@"Found Wemo: %@/%@:%ld/%ld: %@", host, locationHost, port, locationPort, headers);
         
         [delegate foundDevice:headers host:locationHost port:locationPort name:nil];
     }

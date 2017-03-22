@@ -38,7 +38,6 @@ extern NSString *const kWemoSeenDevices;
 + (TTWemoState)wemoState;
 + (void)setWemoState:(TTWemoState)state;
 + (NSMutableArray *)foundDevices;
-+ (NSMutableArray *)recentlyFoundDevices;
 - (void)refreshDevices;
 - (void)beginConnectingToWemo;
 - (void)cancelConnectingToWemo;
