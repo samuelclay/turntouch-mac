@@ -56,7 +56,7 @@
                                        self.location]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"GET"];
-
+    [request setCachePolicy:NSURLRequestReloadIgnoringCacheData];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse * _Nullable response,
                                                NSData * _Nullable data,
@@ -78,6 +78,7 @@
 }
 
 - (void)parseSetupXml:(NSData *)data {
+//    NSLog(@" ---> Wemo data: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     NSArray *results = PerformXMLXPathQuery(data, @"/wemo:root/wemo:device/wemo:friendlyName",
                                             "wemo", "urn:Belkin:device-1-0");
     if (![results count]) {
@@ -186,7 +187,7 @@
                                if (!connectionError) {
                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
                                    if (httpResponse.statusCode == 200) {
-//                                       NSLog(@"Wemo basicevent: %@", [NSString stringWithUTF8String:[data bytes]]);
+                                       NSLog(@"Wemo basicevent: %@", [NSString stringWithUTF8String:[data bytes]]);
                                    }
                                } else {
                                    NSLog(@"Wemo REST error: %@", connectionError);

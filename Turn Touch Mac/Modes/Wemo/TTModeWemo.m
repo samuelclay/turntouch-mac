@@ -17,6 +17,7 @@ NSString *const kWemoSeenDevices = @"wemoSeenDevices";
 
 static TTWemoState wemoState;
 static NSMutableArray *foundDevices;
+static NSMutableArray *recentlyFoundDevices;
 
 //@synthesize foundDevices;
 //@synthesize multicastServer;
@@ -85,6 +86,14 @@ static NSMutableArray *foundDevices;
 
 + (void)setFoundDevices:(NSArray *)devices {
     foundDevices = [devices mutableCopy];
+}
+
++ (NSMutableArray *)recentlyFoundDevices {
+    return recentlyFoundDevices;
+}
+
++ (void)setRecentlyFoundDevices:(NSArray *)devices {
+    recentlyFoundDevices = [devices mutableCopy];
 }
 
 #pragma mark - Mode
@@ -209,6 +218,7 @@ static NSMutableArray *foundDevices;
 #pragma mark - Connection
 
 - (void)beginConnectingToWemo {
+    TTModeWemo.recentlyFoundDevices = [NSMutableArray array];
     wemoState = WEMO_STATE_CONNECTING;
     [self.delegate changeState:wemoState withMode:self];
 
@@ -233,13 +243,14 @@ static NSMutableArray *foundDevices;
     }
     
     for (TTModeWemoDevice *device in foundDevices) {
-        if ([device isEqualToDevice:newDevice]) {
+        if ([device isEqualToDevice:newDevice] && [TTModeWemo.recentlyFoundDevices containsObject:newDevice]) {
             return device;
         }
     }
     
     [foundDevices addObject:newDevice];
-
+    [TTModeWemo.recentlyFoundDevices addObject:newDevice];
+    
     [newDevice requestDeviceInfo];
     
     return newDevice;
@@ -263,8 +274,14 @@ static NSMutableArray *foundDevices;
     }];
     
     NSMutableArray *devices = [NSMutableArray array];
+    NSMutableArray *foundIps = [NSMutableArray array];
     for (TTModeWemoDevice *device in foundDevices) {
         if (device.deviceName == nil) {
+            continue;
+        }
+        if (![foundIps containsObject:device.location]) {
+            [foundIps addObject:device.location];
+        } else {
             continue;
         }
         [devices addObject:@{@"ipaddress": device.ipAddress,
