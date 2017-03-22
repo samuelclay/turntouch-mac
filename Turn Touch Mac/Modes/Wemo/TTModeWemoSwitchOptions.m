@@ -79,7 +79,7 @@
     [spinner startAnimation:nil];
     refreshButton.hidden = YES;
     
-    [self.modeWemo beginConnectingToWemo];
+    [self.modeWemo refreshDevices];
 }
 
 #pragma mark - Wemo Delegate

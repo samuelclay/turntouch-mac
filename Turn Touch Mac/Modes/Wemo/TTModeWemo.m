@@ -217,8 +217,12 @@ static NSMutableArray *recentlyFoundDevices;
 
 #pragma mark - Connection
 
-- (void)beginConnectingToWemo {
+- (void)refreshDevices {
     TTModeWemo.recentlyFoundDevices = [NSMutableArray array];
+    [self beginConnectingToWemo];
+}
+
+- (void)beginConnectingToWemo {
     wemoState = WEMO_STATE_CONNECTING;
     [self.delegate changeState:wemoState withMode:self];
 
