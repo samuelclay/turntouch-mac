@@ -249,7 +249,12 @@ static NSMutableArray *recentlyFoundDevices;
     }
     
     for (TTModeWemoDevice *device in foundDevices) {
-        if ([device isEqualToDevice:newDevice] && [recentlyFoundDevices containsObject:newDevice]) {
+        if ([device isEqualToDevice:newDevice]) {
+            return device;
+        }
+    }
+    for (TTModeWemoDevice *device in recentlyFoundDevices) {
+        if ([device isEqualToDevice:newDevice]) {
             return device;
         }
     }
