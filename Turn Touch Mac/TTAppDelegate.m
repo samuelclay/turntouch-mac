@@ -141,6 +141,8 @@ void *kContextActivePanel = &kContextActivePanel;
 }
 
 - (void)receiveSysTimeChangedNotification:(NSNotification *)notification {
+    NSLog(@" ---> New time zone! Receiving notification: %@", notification);
+    
     [self.modeMap activateTimers];
 }
 
@@ -160,6 +162,12 @@ void *kContextActivePanel = &kContextActivePanel;
                                              selector:@selector(receiveSysTimeChangedNotification:)
                                                  name:NSSystemClockDidChangeNotification
                                                object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveSysTimeChangedNotification:)
+                                                 name:NSCurrentLocaleDidChangeNotification
+                                               object:nil];
+
 }
 
 #pragma mark - Preferences
