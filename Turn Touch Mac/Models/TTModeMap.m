@@ -6,6 +6,11 @@
 //  Copyright (c) 2013 Turn Touch. All rights reserved.
 //
 
+#include <stdlib.h>
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/sysctl.h>
+
 #import "TTModeMap.h"
 #import "TTModeMusic.h"
 #import "TTModeVideo.h"
@@ -19,6 +24,7 @@
 #import "TTModeCustom.h"
 #import "TTModeSpotify.h"
 #import "TTBatchActions.h"
+#import "TTModeIfttt.h"
 
 @implementation TTModeMap
 
@@ -202,6 +208,8 @@
     self.selectedModeDirection = direction;
     
     [batchActions assembleBatchActions];
+    
+    [self shareUsage:direction buttonMoment:BUTTON_MOMENT_HELD];
 }
 
 - (void)maybeFireActiveButton {
@@ -243,6 +251,8 @@
     for (TTAction *batchAction in actions) {
         [batchAction.mode runDirection:direction];
     }
+    
+    [self shareUsage:direction buttonMoment:BUTTON_MOMENT_PRESSUP];
 }
 
 - (void)runDoubleButton:(TTModeDirection)direction {
@@ -260,7 +270,95 @@
         [batchAction.mode runDoubleDirection:direction];
     }
 
+    [self shareUsage:direction buttonMoment:BUTTON_MOMENT_DOUBLE];
+
     activeModeDirection = NO_DIRECTION;
+}
+
+- (void)shareUsage:(TTModeDirection)direction buttonMoment:(TTButtonMoment)buttonMoment {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    if (![prefs boolForKey:@"TT:pref:share_usage_stats"]) {
+        return;
+    }
+    
+    NSString *buttonPress = [self momentName:buttonMoment];
+    NSString *userId = [self userId];
+    NSString *deviceId = [self deviceId];
+    NSString *deviceName = [[NSHost currentHost] localizedName];
+    NSString *deviceModel = [TTModeMap machineModel];
+    NSString *devicePlatform = @"macOS";
+    NSOperatingSystemVersion version = [[NSProcessInfo processInfo] operatingSystemVersion];
+    NSString *deviceVersion = [NSString stringWithFormat:@"%ld.%ld.%ld", version.majorVersion,
+                               version.minorVersion, version.patchVersion];
+    NSString *remoteName = @"";
+    NSArray *devices = [[[NSAppDelegate bluetoothMonitor] foundDevices] devices];
+    if ([devices count] >= 1) {
+        remoteName = [[devices objectAtIndex:0] nickname];
+    }
+    
+    NSMutableArray *presses = [NSMutableArray array];
+    [presses addObject:@{
+                         @"app_name": NSStringFromClass([selectedMode class]),
+                         @"app_direction": [self directionName:[selectedMode modeDirection]],
+                         @"button_name": [selectedMode actionNameInDirection:direction],
+                         @"button_direction": [self directionName:direction],
+                         @"button_moment": buttonPress,
+                         @"batch_action": [NSNumber numberWithBool:NO],
+                         }];
+    
+    NSArray *actions = [self selectedModeBatchActions:direction];
+    for (TTAction *batchAction in actions) {
+        [presses addObject:@{
+                             @"app_name": NSStringFromClass([batchAction.mode class]),
+                             @"app_direction": [self directionName:[selectedMode modeDirection]],
+                             @"button_name": batchAction.actionName,
+                             @"button_direction": [self directionName:direction],
+                             @"button_moment": buttonPress,
+                             @"batch_action": [NSNumber numberWithBool:YES],
+                             }];
+    }
+    
+    NSDictionary *params = @{
+                             @"user_id": userId,
+                             @"device_id": deviceId,
+                             @"device_name": deviceName,
+                             @"device_model": deviceModel,
+                             @"device_platform": devicePlatform,
+                             @"device_version": deviceVersion,
+                             @"remote_name": remoteName,
+                             @"button_actions": presses,
+                             };
+    NSError *error = nil;
+    NSData *json = [NSJSONSerialization dataWithJSONObject:params options:NSJSONWritingPrettyPrinted error:&error];
+    NSString *body = [[NSString alloc] initWithData:json encoding:NSUTF8StringEncoding];
+    NSLog(@" ---> Recording: %@", body);
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@/usage/record", TURN_TOUCH_HOST];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:json];
+    [request setHTTPMethod:@"POST"];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
+        
+    }];
+}
+
++ (NSString *) machineModel {
+    size_t len = 0;
+    sysctlbyname("hw.model", NULL, &len, NULL, 0);
+    
+    if (len)
+    {
+        char *model = malloc(len*sizeof(char));
+        sysctlbyname("hw.model", model, &len, NULL, 0);
+        NSString *model_ns = [NSString stringWithUTF8String:model];
+        free(model);
+        return model_ns;
+    }
+    
+    return @"Mac";
 }
 
 - (BOOL)shouldHideHud:(TTModeDirection)direction {
@@ -631,6 +729,21 @@ actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction 
     return nil;
 }
 
+- (NSString *)momentName:(TTButtonMoment)moment {
+    switch (moment) {
+        case BUTTON_MOMENT_PRESSUP:
+            return @"single";
+        case BUTTON_MOMENT_PRESSDOWN:
+            return @"down";
+        case BUTTON_MOMENT_DOUBLE:
+            return @"double";
+        case BUTTON_MOMENT_HELD:
+            return @"hold";
+        default:
+            return @"";
+    }
+}
+
 - (void)toggleInspectingModeDirection:(TTModeDirection)direction {
     if (inspectingModeDirection == direction) {
         [self setOpenedActionChangeMenu:NO];
@@ -684,6 +797,66 @@ actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction 
     if (openedChangeActionMenu != _openedChangeActionMenu) {
         openedChangeActionMenu = _openedChangeActionMenu;
     }
+}
+
+#pragma mark - Device Info
+
+- (NSString *)userId {
+    NSUUID *uuid;
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    
+    // Check iCloud first
+    NSString *uuidString = [[NSUbiquitousKeyValueStore defaultStore] stringForKey:kIftttUserIdKey];
+    if (uuidString) {
+        uuid = [[NSUUID alloc] initWithUUIDString:uuidString];
+        
+        [prefs setObject:[uuid UUIDString] forKey:kIftttUserIdKey];
+        [prefs synchronize];
+        
+        return [uuid UUIDString];
+    }
+    
+    // Check local prefs second
+    uuidString = [prefs stringForKey:kIftttUserIdKey];
+    if (uuidString) {
+        uuid = [[NSUUID alloc] initWithUUIDString:uuidString];
+        
+        [[NSUbiquitousKeyValueStore defaultStore] setObject:[uuid UUIDString] forKey:kIftttUserIdKey];
+        [[NSUbiquitousKeyValueStore defaultStore] synchronize];
+        
+        return [uuid UUIDString];
+    }
+    
+    // Create new user ID
+    uuid = [[NSUUID alloc] init];
+    [prefs setObject:[uuid UUIDString] forKey:kIftttUserIdKey];
+    [prefs synchronize];
+    [[NSUbiquitousKeyValueStore defaultStore] setObject:[uuid UUIDString] forKey:kIftttUserIdKey];
+    [[NSUbiquitousKeyValueStore defaultStore] synchronize];
+    
+    return [uuid UUIDString];
+}
+
+- (NSString *)deviceId {
+    NSUUID *uuid;
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    
+    NSString *uuidString = [prefs stringForKey:kIftttDeviceIdKey];
+    if (uuidString) {
+        uuid = [[NSUUID alloc] initWithUUIDString:uuidString];
+        
+        [[NSUbiquitousKeyValueStore defaultStore] setObject:[uuid UUIDString] forKey:kIftttDeviceIdKey];
+        [[NSUbiquitousKeyValueStore defaultStore] synchronize];
+        
+        return [uuid UUIDString];
+    }
+    
+    // Create new user ID
+    uuid = [[NSUUID alloc] init];
+    [prefs setObject:[uuid UUIDString] forKey:kIftttDeviceIdKey];
+    [prefs synchronize];
+    
+    return [uuid UUIDString];
 }
 
 @end

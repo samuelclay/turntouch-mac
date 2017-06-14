@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="TTModalSettings">
+            <connections>
+                <outlet property="checkboxRecordUsage" destination="RPb-yM-dlh" id="dyl-hr-dqz"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="160"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <box horizontalCompressionResistancePriority="250" boxType="custom" borderType="none" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="kXe-pv-sBb">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="160"/>
+                    <view key="contentView" id="Zzk-hh-Mmt">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="160"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Sm-gv-wZ8">
+                                <rect key="frame" x="18" y="125" width="70" height="27"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Settings" id="VJS-qK-OPm">
+                                    <font key="font" size="18" name="Effra-Regular"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RPb-yM-dlh">
+                                <rect key="frame" x="18" y="77" width="131" height="18"/>
+                                <buttonCell key="cell" type="check" title="Share usage stats" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="PdJ-CN-dj4">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="changeForm:" target="-2" id="8U0-Yr-agd"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FaF-li-3oI">
+                                <rect key="frame" x="36" y="20" width="398" height="51"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="QiT-i2-VCp">
+                                    <font key="font" metaFont="system"/>
+                                    <string key="title">By enabling this switch you allow for usage stats to be gathered. These are only used to improve the service. Your data will never be sold.</string>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aD3-s1-gvm">
+                                <rect key="frame" x="430" y="110" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="IKc-Jz-MBe"/>
+                                    <constraint firstAttribute="height" constant="50" id="PZg-fJ-gp4"/>
+                                </constraints>
+                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSStopProgressTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="0Hz-rC-UIO">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="closeModal:" target="-2" id="rUR-ch-df8"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="FaF-li-3oI" firstAttribute="leading" secondItem="Zzk-hh-Mmt" secondAttribute="leading" constant="38" id="5XV-yZ-lTG"/>
+                            <constraint firstItem="5Sm-gv-wZ8" firstAttribute="top" secondItem="Zzk-hh-Mmt" secondAttribute="top" constant="8" id="9r5-9u-ZaG"/>
+                            <constraint firstItem="RPb-yM-dlh" firstAttribute="leading" secondItem="Zzk-hh-Mmt" secondAttribute="leading" constant="20" id="AzI-6U-mN6"/>
+                            <constraint firstItem="5Sm-gv-wZ8" firstAttribute="leading" secondItem="Zzk-hh-Mmt" secondAttribute="leading" constant="20" id="Baw-Va-NOM"/>
+                            <constraint firstAttribute="bottom" secondItem="FaF-li-3oI" secondAttribute="bottom" constant="20" id="T7R-SR-l5b"/>
+                            <constraint firstItem="FaF-li-3oI" firstAttribute="top" secondItem="RPb-yM-dlh" secondAttribute="bottom" constant="8" id="WEc-ff-QD2"/>
+                            <constraint firstAttribute="trailing" secondItem="aD3-s1-gvm" secondAttribute="trailing" id="dAw-Dg-80w"/>
+                            <constraint firstItem="aD3-s1-gvm" firstAttribute="top" secondItem="Zzk-hh-Mmt" secondAttribute="top" id="fhX-BZ-sZQ"/>
+                            <constraint firstItem="RPb-yM-dlh" firstAttribute="top" secondItem="5Sm-gv-wZ8" secondAttribute="bottom" constant="32" id="nPm-b0-k5Y"/>
+                            <constraint firstAttribute="trailing" secondItem="FaF-li-3oI" secondAttribute="trailing" constant="48" id="pXg-yu-Rsh"/>
+                        </constraints>
+                    </view>
+                    <color key="fillColor" red="0.94901960780000005" green="0.95686274510000002" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                </box>
+            </subviews>
+            <constraints>
+                <constraint firstItem="kXe-pv-sBb" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="8Sp-Pg-eGt"/>
+                <constraint firstAttribute="bottom" secondItem="kXe-pv-sBb" secondAttribute="bottom" id="DeR-fo-89g"/>
+                <constraint firstAttribute="trailing" secondItem="kXe-pv-sBb" secondAttribute="trailing" id="G8H-Rf-9yC"/>
+                <constraint firstItem="kXe-pv-sBb" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="VmF-WU-U68"/>
+            </constraints>
+            <point key="canvasLocation" x="117" y="167"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="NSStopProgressTemplate" width="11" height="11"/>
+    </resources>
+</document>

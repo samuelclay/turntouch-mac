@@ -15,6 +15,7 @@
 #import "TTHUDController.h"
 
 #define NSAppDelegate  ((TTAppDelegate *)[[NSApplication sharedApplication] delegate])
+#define TURN_TOUCH_HOST [NSString stringWithFormat:@"https://www.turntouch.com"]
 
 @class TTModeMap;
 @class TTPanelController;

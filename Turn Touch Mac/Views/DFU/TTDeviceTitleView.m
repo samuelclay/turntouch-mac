@@ -263,7 +263,7 @@
     [settingsMenu addItem:[NSMenuItem separatorItem]];
 
     menuItem = [[NSMenuItem alloc] initWithTitle:@"Rename this remote"
-                                          action:@selector(openSettingsDialog:)
+                                          action:@selector(openDevicesDialog:)
                                    keyEquivalent:@""];
     [menuItem setTarget:self];
     [settingsMenu addItem:menuItem];
@@ -295,7 +295,7 @@
 }
 
 - (void)openSettingsDialog:(id)sender {
-    [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_DEVICES];
+    [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_SETTINGS];
 }
 
 - (void)forgetDevice:(id)sender {

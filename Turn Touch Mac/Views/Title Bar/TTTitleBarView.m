@@ -222,7 +222,13 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
                                    keyEquivalent:@""];
     [menuItem setTarget:self];
     [settingsMenu addItem:menuItem];
-
+    
+    menuItem = [[NSMenuItem alloc] initWithTitle:@"Devices"
+                                          action:@selector(openDevicesDialog:)
+                                   keyEquivalent:@""];
+    [menuItem setTarget:self];
+    [settingsMenu addItem:menuItem];
+    
     menuItem = [[NSMenuItem alloc] initWithTitle:@"How it works"
                                           action:@selector(openFTUXDialog:)
                                    keyEquivalent:@""];
@@ -267,7 +273,7 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
     isMenuVisible = NO;
 }
 
-- (void)openSettingsDialog:(id)sender {
+- (void)openDevicesDialog:(id)sender {
     [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_DEVICES];
 }
 
@@ -287,8 +293,8 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
     [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_SUPPORT];
 }
 
-- (void)openDevicesDialog:(id)sender {
-    [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_DEVICES];
+- (void)openSettingsDialog:(id)sender {
+    [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_SETTINGS];
 }
 
 - (void)quit:(id)sender {

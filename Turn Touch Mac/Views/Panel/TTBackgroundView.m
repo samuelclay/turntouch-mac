@@ -35,6 +35,7 @@
 @synthesize modalFTUX;
 @synthesize modalAbout;
 @synthesize modalDevices;
+@synthesize modalSettings;
 @synthesize modalSupportView;
 @synthesize panelModal;
 
@@ -85,6 +86,8 @@
         [self switchPanelModalAbout];
     } else if (panelModal == PANEL_MODAL_DEVICES) {
         [self switchPanelModalDevices];
+    } else if (panelModal == PANEL_MODAL_SETTINGS) {
+        [self switchPanelModalSettings];
     } else if (panelModal == PANEL_MODAL_SUPPORT) {
         [self switchPanelModalSupport];
     }
@@ -549,6 +552,20 @@
                      titleBarView,
                      deviceTitlesView,
                      modalDevices.view,
+                     footerView]
+         inGravity:NSStackViewGravityTop];
+    [self addArrowAndTitleConstraints];
+}
+
+#pragma mark - Settings Modal
+
+- (void)switchPanelModalSettings {
+    panelModal = PANEL_MODAL_SETTINGS;
+    modalSettings = [[TTModalSettings alloc] init];
+    [self setViews:@[arrowView,
+                     titleBarView,
+                     deviceTitlesView,
+                     modalSettings.view,
                      footerView]
          inGravity:NSStackViewGravityTop];
     [self addArrowAndTitleConstraints];

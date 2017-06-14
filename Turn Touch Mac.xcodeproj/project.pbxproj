@@ -71,6 +71,8 @@
 		FF0E12CF18247D6100D49EC7 /* TTModeMusic.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12CE18247D6100D49EC7 /* TTModeMusic.m */; };
 		FF0E12D11824811200D49EC7 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0E12D01824811200D49EC7 /* ScriptingBridge.framework */; };
 		FF0E12D41828560000D49EC7 /* TTModeVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12D31828560000D49EC7 /* TTModeVideo.m */; };
+		FF18B1EC1EF1E8C900BC9725 /* TTModalSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FF18B1EA1EF1E8C900BC9725 /* TTModalSettings.m */; };
+		FF18B1ED1EF1E8C900BC9725 /* TTModalSettings.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF18B1EB1EF1E8C900BC9725 /* TTModalSettings.xib */; };
 		FF1B022B1A36898700BE764E /* NSObject+CancelableBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1B022A1A36898700BE764E /* NSObject+CancelableBlocks.m */; };
 		FF1F135D1ADC90E700B52A0D /* MLCalendarBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1F13571ADC90E700B52A0D /* MLCalendarBackground.m */; };
 		FF1F135E1ADC90E700B52A0D /* MLCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1F13591ADC90E700B52A0D /* MLCalendarCell.m */; };
@@ -213,6 +215,7 @@
 		FF7305C41A5CB3EF009A852D /* TTModeHueConnect.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF7305C31A5CB3EF009A852D /* TTModeHueConnect.xib */; };
 		FF76AD121C1F86A900A6ED97 /* TTSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF76AD111C1F86A900A6ED97 /* TTSliderCell.m */; };
 		FF76AD161C1F8FD000A6ED97 /* TTSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = FF76AD151C1F8FD000A6ED97 /* TTSlider.m */; };
+		FF778B501EEF82C50019C22A /* TTModeIfttt.m in Sources */ = {isa = PBXBuildFile; fileRef = FF778B4F1EEF82C50019C22A /* TTModeIfttt.m */; };
 		FF79C5811D581590006C75C9 /* TTModeNewsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF79C57F1D581590006C75C9 /* TTModeNewsWindowController.m */; };
 		FF79C5821D581590006C75C9 /* TTModeNewsWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF79C5801D581590006C75C9 /* TTModeNewsWindowController.xib */; };
 		FF79C5851D5815AB006C75C9 /* TTModeNewsWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FF79C5841D5815AB006C75C9 /* TTModeNewsWindow.m */; };
@@ -503,6 +506,9 @@
 		FF0E12D31828560000D49EC7 /* TTModeVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeVideo.m; path = Modes/Video/TTModeVideo.m; sourceTree = "<group>"; };
 		FF0E12D61828569300D49EC7 /* Quicktime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Quicktime.h; path = Modes/Video/Quicktime.h; sourceTree = "<group>"; };
 		FF0E12D71828569300D49EC7 /* VLC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VLC.h; path = Modes/Video/VLC.h; sourceTree = "<group>"; };
+		FF18B1E91EF1E8C900BC9725 /* TTModalSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModalSettings.h; path = Views/Settings/TTModalSettings.h; sourceTree = "<group>"; };
+		FF18B1EA1EF1E8C900BC9725 /* TTModalSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModalSettings.m; path = Views/Settings/TTModalSettings.m; sourceTree = "<group>"; };
+		FF18B1EB1EF1E8C900BC9725 /* TTModalSettings.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModalSettings.xib; path = Views/Settings/TTModalSettings.xib; sourceTree = "<group>"; };
 		FF1B02291A36898700BE764E /* NSObject+CancelableBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSObject+CancelableBlocks.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		FF1B022A1A36898700BE764E /* NSObject+CancelableBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSObject+CancelableBlocks.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		FF1F13561ADC90E700B52A0D /* MLCalendarBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLCalendarBackground.h; sourceTree = "<group>"; };
@@ -718,6 +724,8 @@
 		FF76AD111C1F86A900A6ED97 /* TTSliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSliderCell.m; path = Views/Controls/TTSliderCell.m; sourceTree = "<group>"; };
 		FF76AD141C1F8FD000A6ED97 /* TTSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSlider.h; path = Views/Controls/TTSlider.h; sourceTree = "<group>"; };
 		FF76AD151C1F8FD000A6ED97 /* TTSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSlider.m; path = Views/Controls/TTSlider.m; sourceTree = "<group>"; };
+		FF778B4E1EEF82C50019C22A /* TTModeIfttt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeIfttt.h; path = Modes/Ifttt/TTModeIfttt.h; sourceTree = "<group>"; };
+		FF778B4F1EEF82C50019C22A /* TTModeIfttt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeIfttt.m; path = Modes/Ifttt/TTModeIfttt.m; sourceTree = "<group>"; };
 		FF79C57E1D581590006C75C9 /* TTModeNewsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeNewsWindowController.h; path = Modes/News/TTModeNewsWindowController.h; sourceTree = "<group>"; };
 		FF79C57F1D581590006C75C9 /* TTModeNewsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeNewsWindowController.m; path = Modes/News/TTModeNewsWindowController.m; sourceTree = "<group>"; };
 		FF79C5801D581590006C75C9 /* TTModeNewsWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeNewsWindowController.xib; path = Modes/News/TTModeNewsWindowController.xib; sourceTree = "<group>"; };
@@ -1182,6 +1190,7 @@
 				FFABAB971C334FCE00AD5620 /* Web */,
 				FF6792391CEBE11700639148 /* Spotify */,
 				FF8448F51E10D60C00C1091E /* Custom */,
+				FF778B511EEF82C90019C22A /* Ifttt */,
 			);
 			name = Modes;
 			sourceTree = "<group>";
@@ -1265,6 +1274,9 @@
 				FF8D1AA31C98F292006AA1A2 /* TTModalAbout.h */,
 				FF8D1AA41C98F292006AA1A2 /* TTModalAbout.m */,
 				FF8D1AA51C98F292006AA1A2 /* TTModalAbout.xib */,
+				FF18B1E91EF1E8C900BC9725 /* TTModalSettings.h */,
+				FF18B1EA1EF1E8C900BC9725 /* TTModalSettings.m */,
+				FF18B1EB1EF1E8C900BC9725 /* TTModalSettings.xib */,
 				FF8D1AAA1C98FE1E006AA1A2 /* TTModalDevices.h */,
 				FF8D1AAB1C98FE1E006AA1A2 /* TTModalDevices.m */,
 				FF8D1AAC1C98FE1E006AA1A2 /* TTModalDevices.xib */,
@@ -1584,6 +1596,15 @@
 				FF73059F1A5C9C76009A852D /* DispatchQueueLogFormatter.m */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FF778B511EEF82C90019C22A /* Ifttt */ = {
+			isa = PBXGroup;
+			children = (
+				FF778B4E1EEF82C50019C22A /* TTModeIfttt.h */,
+				FF778B4F1EEF82C50019C22A /* TTModeIfttt.m */,
+			);
+			name = Ifttt;
 			sourceTree = "<group>";
 		};
 		FF80130C186CF8FF00955218 /* Mode Map */ = {
@@ -2295,6 +2316,7 @@
 				FF01CA7B1C46DCC200F83A73 /* mode_web.png in Resources */,
 				FF904B9E1BE9C02300AD00F3 /* firmwares in Resources */,
 				FF9170991AF9B19100FAAC88 /* east tone.wav in Resources */,
+				FF18B1ED1EF1E8C900BC9725 /* TTModalSettings.xib in Resources */,
 				FF6135601C61CDDC00F431D7 /* music_volume_down.png in Resources */,
 				FF6135541C61CDDC00F431D7 /* chevron_south.png in Resources */,
 				FF01CA6F1C46DCC200F83A73 /* mode_mac.png in Resources */,
@@ -2728,6 +2750,7 @@
 				FF2C2E501C544A5300FAD7E2 /* TTModeWemoDevice.m in Sources */,
 				FF5295CB1AD5F59C007DDC02 /* TTDevice.m in Sources */,
 				FF2C2E4B1C53077300FAD7E2 /* AsyncSocket.m in Sources */,
+				FF18B1EC1EF1E8C900BC9725 /* TTModalSettings.m in Sources */,
 				FFABAB8D1C2A21A200AD5620 /* TTAddActionButtonView.m in Sources */,
 				FF3641DF1A5F5734003CC03C /* TTModeHueConnect.m in Sources */,
 				FF5250191C80F9930017A847 /* TTModeWemoDeviceOffOptions.m in Sources */,
@@ -2744,6 +2767,7 @@
 				FFABAB901C2A32E000AD5620 /* TTAction.m in Sources */,
 				FFABAB9B1C33674000AD5620 /* TTModeWebWindowController.m in Sources */,
 				FF01CAA61C473EC100F83A73 /* JXReadabilityDocument.m in Sources */,
+				FF778B501EEF82C50019C22A /* TTModeIfttt.m in Sources */,
 				FFABAB961C334FCA00AD5620 /* TTModeWeb.m in Sources */,
 				FF2C2E691C546D6E00FAD7E2 /* TTModeWemoOptions.m in Sources */,
 				FF8D1AA61C98F292006AA1A2 /* TTModalAbout.m in Sources */,
