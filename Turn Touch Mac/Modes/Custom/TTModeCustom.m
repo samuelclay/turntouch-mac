@@ -130,7 +130,7 @@ NSString *const kDoubleLastSuccess = @"doubleLastSuccess";
     
 }
 
-- (void)hitUrl:(NSString *)customUrlString callback:(void (^)(NSString *response, BOOL success))callback {
+- (void)hitUrl:(NSString *)customUrlString callback:(void (^)(NSString *responseString, BOOL success))callback {
     if (!customUrlString || !customUrlString.length) {
         printf(" ---> No URL");
         callback(@"No URL specified", NO);
@@ -138,26 +138,24 @@ NSString *const kDoubleLastSuccess = @"doubleLastSuccess";
     }
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, (unsigned long)NULL), ^{
-        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+        __block NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
         [request setHTTPMethod:@"GET"];
         [request setURL:[NSURL URLWithString:customUrlString]];
-        
-        NSError *error = [[NSError alloc] init];
-        NSHTTPURLResponse *responseCode = nil;
-        
-        NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
-        
-        NSString *response;
-        BOOL success = NO;
-        if([responseCode statusCode] != 200){
-            NSLog(@"Error getting %@, HTTP status code %li", customUrlString, (long)[responseCode statusCode]);
-            response = [NSString stringWithFormat:@"Error (%li): %@", (long)[responseCode statusCode], error.localizedDescription];
-        } else {
-            response = [[NSString alloc] initWithData:oResponseData encoding:NSUTF8StringEncoding];
-            success = YES;
-        }
-        
-        callback(response, success);
+        NSURLSession *session = [NSURLSession sharedSession];
+        [[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            NSHTTPURLResponse *urlResponse = (NSHTTPURLResponse *)response;
+            NSString *responseString;
+            BOOL success = NO;
+            if ([urlResponse statusCode] != 200) {
+                NSLog(@"Error getting %@, HTTP status code %li", customUrlString, (long)[urlResponse statusCode]);
+                responseString = [NSString stringWithFormat:@"Error (%li): %@", (long)[urlResponse statusCode], error];
+            } else {
+                responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                success = YES;
+            }
+            
+            callback(responseString, success);
+        }] resume];
     });
 }
 
