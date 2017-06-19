@@ -209,7 +209,7 @@
     
     [batchActions assembleBatchActions];
     
-    [self shareUsage:direction buttonMoment:BUTTON_MOMENT_HELD];
+    [self recordButtonMoment:direction buttonMoment:BUTTON_MOMENT_HELD];
 }
 
 - (void)maybeFireActiveButton {
@@ -252,7 +252,7 @@
         [batchAction.mode runDirection:direction];
     }
     
-    [self shareUsage:direction buttonMoment:BUTTON_MOMENT_PRESSUP];
+    [self recordButtonMoment:direction buttonMoment:BUTTON_MOMENT_PRESSUP];
 }
 
 - (void)runDoubleButton:(TTModeDirection)direction {
@@ -270,33 +270,15 @@
         [batchAction.mode runDoubleDirection:direction];
     }
 
-    [self shareUsage:direction buttonMoment:BUTTON_MOMENT_DOUBLE];
+    [self recordButtonMoment:direction buttonMoment:BUTTON_MOMENT_DOUBLE];
 
     activeModeDirection = NO_DIRECTION;
 }
 
-- (void)shareUsage:(TTModeDirection)direction buttonMoment:(TTButtonMoment)buttonMoment {
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    if (![prefs boolForKey:@"TT:pref:share_usage_stats"]) {
-        return;
-    }
-    
+- (void)recordButtonMoment:(TTModeDirection)direction buttonMoment:(TTButtonMoment)buttonMoment {
     NSString *buttonPress = [self momentName:buttonMoment];
-    NSString *userId = [self userId];
-    NSString *deviceId = [self deviceId];
-    NSString *deviceName = [[NSHost currentHost] localizedName];
-    NSString *deviceModel = [TTModeMap machineModel];
-    NSString *devicePlatform = @"macOS";
-    NSOperatingSystemVersion version = [[NSProcessInfo processInfo] operatingSystemVersion];
-    NSString *deviceVersion = [NSString stringWithFormat:@"%ld.%ld.%ld", version.majorVersion,
-                               version.minorVersion, version.patchVersion];
-    NSString *remoteName = @"";
-    NSArray *devices = [[[NSAppDelegate bluetoothMonitor] foundDevices] devices];
-    if ([devices count] >= 1) {
-        remoteName = [[devices objectAtIndex:0] nickname];
-    }
-    
     NSMutableArray *presses = [NSMutableArray array];
+
     [presses addObject:@{
                          @"app_name": NSStringFromClass([selectedMode class]),
                          @"app_direction": [self directionName:[selectedMode modeDirection]],
@@ -318,16 +300,43 @@
                              }];
     }
     
-    NSDictionary *params = @{
-                             @"user_id": userId,
-                             @"device_id": deviceId,
-                             @"device_name": deviceName,
-                             @"device_model": deviceModel,
-                             @"device_platform": devicePlatform,
-                             @"device_version": deviceVersion,
-                             @"remote_name": remoteName,
-                             @"button_actions": presses,
-                             };
+    [self recordUsage:@{@"button_actions": presses}];
+}
+
+- (void)recordUsage:(NSDictionary *)additionalParams {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    if (![prefs boolForKey:@"TT:pref:share_usage_stats"]) {
+        return;
+    }
+    
+    NSString *userId = [self userId];
+    NSString *deviceId = [self deviceId];
+    NSString *deviceName = [[NSHost currentHost] localizedName];
+    NSString *deviceModel = [TTModeMap machineModel];
+    NSString *devicePlatform = @"macOS";
+    NSOperatingSystemVersion version = [[NSProcessInfo processInfo] operatingSystemVersion];
+    NSString *deviceVersion = [NSString stringWithFormat:@"%ld.%ld.%ld", version.majorVersion,
+                               version.minorVersion, version.patchVersion];
+    NSString *remoteName = @"";
+    NSArray *devices = [[[NSAppDelegate bluetoothMonitor] foundDevices] devices];
+    if ([devices count] >= 1) {
+        remoteName = [[devices objectAtIndex:0] nickname];
+    }
+    
+    NSMutableDictionary *params = [@{
+                                     @"user_id": userId,
+                                     @"device_id": deviceId,
+                                     @"device_name": deviceName,
+                                     @"device_model": deviceModel,
+                                     @"device_platform": devicePlatform,
+                                     @"device_version": deviceVersion,
+                                     @"remote_name": remoteName,
+                                     } mutableCopy];
+    
+    for (NSString *key in additionalParams) {
+        [params setObject:additionalParams[key] forKey:key];
+    }
+    
     NSError *error = nil;
     NSData *json = [NSJSONSerialization dataWithJSONObject:params options:NSJSONWritingPrettyPrinted error:&error];
     NSString *body = [[NSString alloc] initWithData:json encoding:NSUTF8StringEncoding];

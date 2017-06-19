@@ -63,6 +63,8 @@ void *kContextActivePanel = &kContextActivePanel;
         if ([self.bluetoothMonitor noKnownDevices]) {
             [self.panelController openModal:MODAL_PAIRING_INTRO];
         }
+        
+        [self.modeMap recordUsage:@{@"moment": @"launch"}];
     });
     
     // Useful for debugging:

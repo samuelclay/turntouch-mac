@@ -49,6 +49,9 @@
 - (void)runActiveButton;
 - (void)runDirection:(TTModeDirection)direction;
 - (void)runDoubleButton:(TTModeDirection)direction;
+
+- (void)recordUsage:(NSDictionary *)additionalParams;
+
 - (BOOL)shouldHideHud:(TTModeDirection)direction;
 - (NSString *)directionName:(TTModeDirection)direction;
 - (TTMode *)modeInDirection:(TTModeDirection)direction;
