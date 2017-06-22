@@ -33,6 +33,7 @@
     refreshButton.hidden = NO;
     [refreshButton setImage:[NSImage imageNamed:@"settings"]];
     
+    [self buildSettingsMenu:YES];
     [self selectDevices];
 }
 
@@ -82,7 +83,6 @@
         self.noticeLabel.hidden = NO;
     } else {
         self.noticeLabel.hidden = YES;
-        self.refreshButton.hidden = NO;
     }
     
     [self redrawTable];
@@ -94,6 +94,12 @@
     refreshButton.hidden = YES;
     
     [self.modeWemo refreshDevices];
+}
+
+- (IBAction)purgeDevices:(id)sender {
+    [self.modeWemo resetKnownDevices];
+    [self selectDevices];
+    [self refreshDevices:sender];
 }
 
 #pragma mark - Table View delegate and data source
@@ -113,6 +119,52 @@
 - (BOOL)isSelected:(TTModeWemoDevice *)device {
     NSArray *selectedDevices = [self.action optionValue:kWemoDeviceLocations];
     return [selectedDevices containsObject:device.location];
+}
+
+
+#pragma mark - Settings menu
+
+- (IBAction)showWemoSwitchMenu:(id)sender {
+    [NSMenu popUpContextMenu:settingsMenu
+                   withEvent:[NSApp currentEvent]
+                     forView:sender];
+}
+
+- (void)buildSettingsMenu:(BOOL)force {
+    if (!force && !isMenuVisible) return;
+    
+    NSMenuItem *menuItem;
+    
+    if (!settingsMenu) {
+        settingsMenu = [[NSMenu alloc] initWithTitle:@"Action Menu"];
+        [settingsMenu setDelegate:self];
+        [settingsMenu setAutoenablesItems:NO];
+    } else {
+        [settingsMenu removeAllItems];
+    }
+    
+    menuItem = [[NSMenuItem alloc] initWithTitle:@"Search for new devices..." action:@selector(refreshDevices:) keyEquivalent:@""];
+    [menuItem setEnabled:YES];
+    [menuItem setTarget:self];
+    [settingsMenu addItem:menuItem];
+    
+    [settingsMenu addItem:[NSMenuItem separatorItem]];
+    
+    menuItem = [[NSMenuItem alloc] initWithTitle:@"Remove all and search..." action:@selector(purgeDevices:) keyEquivalent:@""];
+    [menuItem setEnabled:YES];
+    [menuItem setTarget:self];
+    [settingsMenu addItem:menuItem];
+}
+
+#pragma mark - Menu Delegate
+
+- (void)menuWillOpen:(NSMenu *)menu {
+    isMenuVisible = YES;
+    [self buildSettingsMenu:YES];
+}
+
+- (void)menuDidClose:(NSMenu *)menu {
+    isMenuVisible = NO;
 }
 
 @end

@@ -10,7 +10,9 @@
 #import "TTOptionsDetailViewController.h"
 #import "TTModeWemoSwitchDevice.h"
 
-@interface TTModeWemoSwitchOptions : TTOptionsDetailViewController <TTModeWemoDelegate, NSStackViewDelegate, TTModeWemoSwitchDeviceDelegate> {
+@interface TTModeWemoSwitchOptions : TTOptionsDetailViewController <TTModeWemoDelegate, NSStackViewDelegate, TTModeWemoSwitchDeviceDelegate, NSMenuDelegate> {
+    BOOL isMenuVisible;
+    NSMenu *settingsMenu;
 }
 
 @property (nonatomic) IBOutlet NSPopUpButton *devicePopup;
@@ -20,5 +22,7 @@
 @property (nonatomic) IBOutlet NSTextField *noticeLabel;
 @property (nonatomic) IBOutlet NSLayoutConstraint *tableHeightConstraint;
 @property (nonatomic, strong) TTModeWemo *modeWemo;
+
+- (IBAction)showWemoSwitchMenu:(id)sender;
 
 @end

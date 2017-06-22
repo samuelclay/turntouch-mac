@@ -62,6 +62,11 @@
     return self;
 }
 
+- (void)setFrame:(NSRect)frame {
+    [super setFrame:frame];
+    [self createTrackingAreas];
+}
+
 - (void)redraw {
     BOOL selected = [self.delegate isSelected:device];
     [nameLabel setStringValue:device.deviceName];
@@ -71,7 +76,6 @@
     } else {
         [self.layer setBackgroundColor:[NSColor whiteColor].CGColor];
     }
-    [self createTrackingAreas];
 }
 
 -(void)createTrackingAreas {
@@ -88,8 +92,11 @@
 }
 
 - (void)mouseEntered:(NSEvent *)event {
-    [self.layer setBackgroundColor:NSColorFromRGB(0xF9F9F9).CGColor];
-    [self setNeedsDisplay:YES];
+    BOOL selected = [self.delegate isSelected:device];
+    if (!selected) {
+        [self.layer setBackgroundColor:NSColorFromRGB(0xF9F9F9).CGColor];
+        [self setNeedsDisplay:YES];
+    }
 }
 
 - (void)mouseExited:(NSEvent *)event {

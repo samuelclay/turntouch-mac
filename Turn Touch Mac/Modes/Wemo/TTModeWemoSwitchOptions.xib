@@ -33,7 +33,7 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="refreshDevices:" target="-2" id="sIp-87-567"/>
+                        <action selector="showWemoSwitchMenu:" target="-2" id="iP4-8C-h4r"/>
                     </connections>
                 </button>
                 <stackView orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ySr-I0-OAN">
