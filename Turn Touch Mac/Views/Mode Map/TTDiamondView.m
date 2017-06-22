@@ -337,7 +337,7 @@
                 [combinedPath fill];
             }
         } else {
-            combinedPath.lineWidth = isInspectingDirection ? 3.0f : 1.0f;
+            combinedPath.lineWidth = isInspectingDirection ? 1.0f : 1.0f;
             [modeColor setStroke];
             [combinedPath stroke];
         }
@@ -350,9 +350,9 @@
             } else {
                 [NSColorFromRGB(0xFAFBFD) set];
             }
-            if (!bottomHalf) {
+//            if (!bottomHalf) {
                 [combinedPath fill];
-            }
+//            }
         }
     }
 }

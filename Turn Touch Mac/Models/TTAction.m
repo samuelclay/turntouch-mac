@@ -26,17 +26,19 @@
     return self;
 }
 
-- (id)initWithBatchActionKey:(NSString *)_key {
+- (id)initWithBatchActionKey:(NSString *)_key direction:(TTModeDirection)_direction {
     if (self = [super init]) {
         batchActionKey = _key;
         NSArray *chunks = [batchActionKey componentsSeparatedByString:@":"];
         mode = [[NSClassFromString([chunks objectAtIndex:0]) alloc] init];
         [mode setModeDirection:NSAppDelegate.modeMap.selectedModeDirection];
         [mode setAction:self];
+        actionName = [chunks objectAtIndex:1];
+        direction = _direction;
+        
         if ([mode respondsToSelector:@selector(activate)]) {
             [mode activate:NSAppDelegate.modeMap.selectedModeDirection];
         }
-        actionName = [chunks objectAtIndex:1];
     }
     
     return self;

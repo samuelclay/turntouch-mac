@@ -25,7 +25,7 @@
 @property (nonatomic) TTModeMenuContainer *changeActionMenu;
 
 - (id)initWithActionName:(NSString *)_actionName direction:(TTModeDirection)_direction;
-- (id)initWithBatchActionKey:(NSString *)_key;
+- (id)initWithBatchActionKey:(NSString *)_key direction:(TTModeDirection)_direction;
 - (void)deactivate;
 - (id)optionValue:(NSString *)optionName;
 - (id)optionValue:(NSString *)optionName inDirection:(TTModeDirection)direction;
