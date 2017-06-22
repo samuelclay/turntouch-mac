@@ -12,5 +12,9 @@
 @interface TTModeWemoConnected : TTOptionsDetailViewController
 
 @property (nonatomic, strong) TTModeWemo *modeWemo;
+@property (nonatomic) IBOutlet NSTextField *connectedLabel;
+@property (nonatomic) IBOutlet TTChangeButtonView *scanButton;
+
+- (IBAction)scanForDevices:(id)sender;
 
 @end

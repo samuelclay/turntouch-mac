@@ -12,6 +12,7 @@
 @implementation TTModeWemo
 
 NSString *const kWemoDeviceLocation = @"wemoDeviceLocation";
+NSString *const kWemoDeviceLocations = @"wemoDeviceLocations";
 NSString *const kWemoFoundDevices = @"wemoFoundDevices";
 NSString *const kWemoSeenDevices = @"wemoSeenDevices";
 
@@ -37,25 +38,36 @@ static NSMutableArray *recentlyFoundDevices;
             [self assembleFoundDevices];
         }
         
-        if (foundDevices.count) {
-            wemoState = WEMO_STATE_CONNECTED;
-        } else {
+        if (foundDevices.count == 0) {
             wemoState = WEMO_STATE_CONNECTING;
             [self beginConnectingToWemo];
+        } else {
+            wemoState = WEMO_STATE_CONNECTED;
         }
+        
+        [self.delegate changeState:TTModeWemo.wemoState withMode:self];
     }
     
     return self;
 }
 
-- (void)assembleFoundDevices {
-    foundDevices = [NSMutableArray array];
+- (void)resetKnownDevices {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    [prefs removeObjectForKey:kWemoFoundDevices];
+    [prefs synchronize];
+    
+    [self assembleFoundDevices];
+}
+
+- (void)assembleFoundDevices {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    foundDevices = [NSMutableArray array];
     
     for (NSDictionary *device in [prefs arrayForKey:kWemoFoundDevices]) {
         TTModeWemoDevice *newDevice = [self foundDevice:nil host:[device objectForKey:@"ipaddress"]
                                                    port:[[device objectForKey:@"port"] integerValue]
-                                                   name:[device objectForKey:@"name"]];
+                                                   name:[device objectForKey:@"name"]
+                                                   live:NO];
         NSLog(@" ---> Loading wemo: %@ (%@)", newDevice.deviceName, newDevice.location);
     }
 }
@@ -70,7 +82,6 @@ static NSMutableArray *recentlyFoundDevices;
 }
 
 + (TTWemoState)wemoState {
-    static TTWemoState wemoState = WEMO_STATE_NOT_CONNECTED;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         wemoState = WEMO_STATE_NOT_CONNECTED;
@@ -151,25 +162,31 @@ static NSMutableArray *recentlyFoundDevices;
 
 - (void)runTTModeWemoDeviceOn:(TTModeDirection)direction {
     NSLog(@"Running TTModeWemoDeviceOn");
-    TTModeWemoDevice *device = [self selectedDevice:direction];
-    [device changeDeviceState:WEMO_DEVICE_STATE_ON];
+    NSArray *devices = [self selectedDevices:direction];
+    for (TTModeWemoDevice *device in devices) {
+        [device changeDeviceState:WEMO_DEVICE_STATE_ON];
+    }
 }
 
 - (void)runTTModeWemoDeviceOff:(TTModeDirection)direction {
     NSLog(@"Running TTModeWemoDeviceOff");
-    TTModeWemoDevice *device = [self selectedDevice:direction];
-    [device changeDeviceState:WEMO_DEVICE_STATE_OFF];
+    NSArray *devices = [self selectedDevices:direction];
+    for (TTModeWemoDevice *device in devices) {
+        [device changeDeviceState:WEMO_DEVICE_STATE_OFF];
+    }
 }
 - (void)runTTModeWemoDeviceToggle:(TTModeDirection)direction {
     NSLog(@"Running TTModeWemoDeviceToggle");
-    TTModeWemoDevice *device = [self selectedDevice:direction];
-    [device requestDeviceState:^() {
-        if (device.deviceState == WEMO_DEVICE_STATE_ON) {
-            [device changeDeviceState:WEMO_DEVICE_STATE_OFF];
-        } else {
-            [device changeDeviceState:WEMO_DEVICE_STATE_ON];
-        }
-    }];
+    NSArray *devices = [self selectedDevices:direction];
+    for (TTModeWemoDevice *device in devices) {
+        [device requestDeviceState:^() {
+            if (device.deviceState == WEMO_DEVICE_STATE_ON) {
+                [device changeDeviceState:WEMO_DEVICE_STATE_OFF];
+            } else {
+                [device changeDeviceState:WEMO_DEVICE_STATE_ON];
+            }
+        }];
+    }
 }
 
 #pragma mark - Defaults
@@ -189,24 +206,22 @@ static NSMutableArray *recentlyFoundDevices;
 
 #pragma mark - Wemo devices
 
-- (TTModeWemoDevice *)selectedDevice:(TTModeDirection)direction {
-    if (!foundDevices.count) return nil;
+- (NSArray *)selectedDevices:(TTModeDirection)direction {
+    [self ensureDevicesSelected];
+    NSMutableArray *devices = [NSMutableArray array];
     
-    TTModeWemoDevice *device;
-    NSString *deviceLocation = [self.action optionValue:kWemoDeviceLocation inDirection:direction];
+    if (!foundDevices.count) return devices;
+    
+    NSArray *deviceLocations = [self.action optionValue:kWemoDeviceLocations inDirection:direction];
     for (TTModeWemoDevice *foundDevice in foundDevices) {
-        if ([foundDevice.location isEqualToString:deviceLocation]) {
-            device = foundDevice;
-            break;
+        for (NSString *deviceLocation in deviceLocations) {
+            if ([foundDevice.location isEqualToString:deviceLocation]) {
+                [devices addObject:foundDevice];
+            }
         }
     }
     
-    if (!device) device = [foundDevices objectAtIndex:0];
-    
-    // Store the chosen wemo device so that it is use consistently
-    [self.action changeActionOption:kWemoDeviceLocation to:device.location];
-    
-    return device;
+    return devices;
 }
 
 - (void)activate {
@@ -233,23 +248,27 @@ static NSMutableArray *recentlyFoundDevices;
 }
 
 - (void)cancelConnectingToWemo {
-    wemoState = WEMO_STATE_NOT_CONNECTED;
+    wemoState = WEMO_STATE_CONNECTED;
     [self.delegate changeState:wemoState withMode:self];
 }
 
 
 #pragma mark - Multicast delegate
 
-- (TTModeWemoDevice *)foundDevice:(NSDictionary *)headers host:(NSString *)ipAddress port:(NSInteger)port name:(NSString *)name {
+- (TTModeWemoDevice *)foundDevice:(NSDictionary *)headers host:(NSString *)ipAddress port:(NSInteger)port
+                             name:(NSString *)name live:(BOOL)live {
     TTModeWemoDevice *newDevice = [[TTModeWemoDevice alloc] initWithIpAddress:ipAddress port:port];
     [newDevice setDelegate:self];
     
     if (name != nil) {
         newDevice.deviceName = name;
+    } else {
+        newDevice.deviceName = newDevice.location;
     }
     
     for (TTModeWemoDevice *device in foundDevices) {
         if ([device isEqualToDevice:newDevice]) {
+            // Already found
             return device;
         }
     }
@@ -304,8 +323,24 @@ static NSMutableArray *recentlyFoundDevices;
     
     wemoState = WEMO_STATE_CONNECTED;
     [self.delegate changeState:wemoState withMode:self];
+}
+
+- (void)ensureDevicesSelected {
+    if (TTModeWemo.foundDevices.count == 0) {
+        return;
+    }
     
+    NSArray *deviceLocations = [self.action optionValue:kWemoDeviceLocations inDirection:self.action.direction];
+    if (deviceLocations.count > 0) {
+        return;
+    }
     
+    // Nothing selected, so select everything
+    NSMutableArray *locations = [NSMutableArray array];
+    for (TTModeWemoDevice *device in TTModeWemo.foundDevices) {
+        [locations addObject:device.location];
+    }
+    [self.action changeActionOption:kWemoDeviceLocations to:locations];
 }
 
 @end

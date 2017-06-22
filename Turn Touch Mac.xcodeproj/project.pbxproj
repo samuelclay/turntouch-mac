@@ -310,6 +310,7 @@
 		FF98A2E81867DBE70032CC7A /* TTPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98A2E51867DBE70032CC7A /* TTPanelController.m */; };
 		FF98A2ED1867DC320032CC7A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98A2E91867DC320032CC7A /* main.m */; };
 		FF98A2EF1867DC320032CC7A /* Turn Touch Mac.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = FF98A2EC1867DC320032CC7A /* Turn Touch Mac.entitlements */; };
+		FF99398F1EFB4457005F0281 /* TTModeWemoSwitchDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = FF99398D1EFB4457005F0281 /* TTModeWemoSwitchDevice.m */; };
 		FFA1D4CB1A3B8916003EA0BC /* TTActionHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA1D4C31A3B8916003EA0BC /* TTActionHUDView.m */; };
 		FFA1D4CC1A3B8916003EA0BC /* TTActionHUDView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFA1D4C41A3B8916003EA0BC /* TTActionHUDView.xib */; };
 		FFA1D4CD1A3B8916003EA0BC /* TTActionHUDWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA1D4C61A3B8916003EA0BC /* TTActionHUDWindow.m */; };
@@ -887,6 +888,8 @@
 		FF98A2EC1867DC320032CC7A /* Turn Touch Mac.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = "Turn Touch Mac.entitlements"; path = "Supporting Files/Turn Touch Mac.entitlements"; sourceTree = "<group>"; };
 		FF98A30C1868F1120032CC7A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FF98A30E1868F1190032CC7A /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
+		FF99398C1EFB4457005F0281 /* TTModeWemoSwitchDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeWemoSwitchDevice.h; path = Modes/Wemo/TTModeWemoSwitchDevice.h; sourceTree = "<group>"; };
+		FF99398D1EFB4457005F0281 /* TTModeWemoSwitchDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeWemoSwitchDevice.m; path = Modes/Wemo/TTModeWemoSwitchDevice.m; sourceTree = "<group>"; };
 		FFA1D4C21A3B8916003EA0BC /* TTActionHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TTActionHUDView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		FFA1D4C31A3B8916003EA0BC /* TTActionHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTActionHUDView.m; sourceTree = "<group>"; };
 		FFA1D4C41A3B8916003EA0BC /* TTActionHUDView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTActionHUDView.xib; sourceTree = "<group>"; };
@@ -1452,6 +1455,8 @@
 				FF2C2E6B1C5479E000FAD7E2 /* TTModeWemoSwitchOptions.h */,
 				FF2C2E6C1C5479E000FAD7E2 /* TTModeWemoSwitchOptions.m */,
 				FF2C2E6D1C5479E000FAD7E2 /* TTModeWemoSwitchOptions.xib */,
+				FF99398C1EFB4457005F0281 /* TTModeWemoSwitchDevice.h */,
+				FF99398D1EFB4457005F0281 /* TTModeWemoSwitchDevice.m */,
 				FF5250131C80F9740017A847 /* TTModeWemoDeviceOnOptions.h */,
 				FF5250141C80F9740017A847 /* TTModeWemoDeviceOnOptions.m */,
 				FF5250161C80F9930017A847 /* TTModeWemoDeviceOffOptions.h */,
@@ -2712,6 +2717,7 @@
 				FFA1D4CF1A3B8916003EA0BC /* TTHUDController.m in Sources */,
 				FF2C2E671C546D6E00FAD7E2 /* TTModeWemoConnecting.m in Sources */,
 				FFABAB931C2F723000AD5620 /* TTBorder.m in Sources */,
+				FF99398F1EFB4457005F0281 /* TTModeWemoSwitchDevice.m in Sources */,
 				FFABABAA1C349F6700AD5620 /* TTModeWebMenuView.m in Sources */,
 				FFB167111923E6BF008FA1AF /* TTBoxView.m in Sources */,
 				FFAFCBC519130F520058B9CB /* TTPanelArrowView.m in Sources */,

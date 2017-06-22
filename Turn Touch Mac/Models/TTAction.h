@@ -19,13 +19,15 @@
 }
 
 @property (nonatomic) TTMode *mode;
+@property (nonatomic) TTModeDirection direction;
 @property (nonatomic) NSString *actionName;
 @property (nonatomic) NSString *batchActionKey;
 @property (nonatomic) TTModeMenuContainer *changeActionMenu;
 
-- (id)initWithActionName:(NSString *)_actionName;
+- (id)initWithActionName:(NSString *)_actionName direction:(TTModeDirection)_direction;
 - (id)initWithBatchActionKey:(NSString *)_key;
 - (void)deactivate;
+- (id)optionValue:(NSString *)optionName;
 - (id)optionValue:(NSString *)optionName inDirection:(TTModeDirection)direction;
 - (void)changeActionOption:(NSString *)optionName to:(id)optionValue;
 

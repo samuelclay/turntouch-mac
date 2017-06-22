@@ -7,6 +7,7 @@
 //
 
 #import "TTModeWemoSwitchOptions.h"
+#import "TTModeWemoSwitchDevice.h"
 #import "TTModeWemo.h"
 
 @interface TTModeWemoSwitchOptions ()
@@ -18,6 +19,9 @@
 @synthesize devicePopup;
 @synthesize refreshButton;
 @synthesize spinner;
+@synthesize devicesStack;
+@synthesize noticeLabel;
+@synthesize tableHeightConstraint;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,51 +31,61 @@
 
     spinner.hidden = YES;
     refreshButton.hidden = NO;
+    [refreshButton setImage:[NSImage imageNamed:@"settings"]];
     
-    [self selectDevice];
-    [self changeState:TTModeWemo.wemoState withMode:self.modeWemo];
+    [self selectDevices];
 }
 
-- (void)selectDevice {
-    NSString *deviceSelectedIdentifier = [self.action optionValue:kWemoDeviceLocation
-                                                      inDirection:appDelegate.modeMap.inspectingModeDirection];
-    NSString *deviceSelected;
-    NSMutableArray *devices = [NSMutableArray array];
-    [devicePopup removeAllItems];
-
+- (void)redrawTable {
+    for (NSView *deviceRow in devicesStack.views) {
+        [devicesStack removeView:deviceRow];
+    }
+    
     for (TTModeWemoDevice *device in TTModeWemo.foundDevices) {
-        if (!device.deviceName || !device.location) continue;
-        [devices addObject:@{@"name": device.deviceName, @"identifier": device.location}];
+        TTModeWemoSwitchDevice *deviceRow = [[TTModeWemoSwitchDevice alloc] initWithDevice:device];
+        deviceRow.delegate = self;
+        [devicesStack addView:deviceRow inGravity:NSStackViewGravityTop];
+        [deviceRow redraw];
     }
     
-    NSSortDescriptor *sd = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-    [devices sortUsingDescriptors:@[sd]];
-    
-    for (NSDictionary *deviceData in devices) {
-        [devicePopup addItemWithTitle:deviceData[@"name"]];
-        if ([deviceData[@"identifier"] isEqualToString:deviceSelectedIdentifier]) {
-            deviceSelected = deviceData[@"name"];
-        }
-    }
-    if (deviceSelected) {
-        [devicePopup selectItemWithTitle:deviceSelected];
-    } else if (devicePopup.numberOfItems) {
-        [self didChangeDevice:nil];
-    }
+    [devicesStack setNeedsDisplay:YES];
 }
 
-- (void)didChangeDevice:(id)sender {
-    NSMenuItem *menuItem = [devicePopup selectedItem];
-    NSString *deviceIdentifier;
+#pragma mark - Wemo Delegate
+
+- (void)changeState:(TTWemoState)wemoState withMode:(TTModeWemo *)modeWemo {
+    NSLog(@" Changing Wemo state: %lu", wemoState);
     
-    for (TTModeWemoDevice *device in TTModeWemo.foundDevices) {
-        if ([device.deviceName isEqualToString:menuItem.title]) {
-            deviceIdentifier = device.location;
-            break;
-        }
+    if (wemoState == WEMO_STATE_CONNECTED) {
+        spinner.hidden = YES;
+        refreshButton.hidden = NO;
     }
     
-    [self.action changeActionOption:kWemoDeviceLocation to:deviceIdentifier];
+    [self selectDevices];
+}
+
+- (void)selectDevices {
+    [self.modeWemo ensureDevicesSelected];
+    
+    if (TTModeWemo.foundDevices.count == 0) {
+        if (TTModeWemo.wemoState == WEMO_STATE_CONNECTING) {
+            [self.noticeLabel setStringValue:@"Searching for Wemo devices..."];
+            [self.noticeLabel setTextColor:[NSColor darkGrayColor]];
+            spinner.hidden = NO;
+            refreshButton.hidden = YES;
+        } else {
+            [self.noticeLabel setStringValue:@"No Wemo devices found"];
+            [self.noticeLabel setTextColor:[NSColor lightGrayColor]];
+            spinner.hidden = YES;
+            refreshButton.hidden = NO;
+        }
+        self.noticeLabel.hidden = NO;
+    } else {
+        self.noticeLabel.hidden = YES;
+        self.refreshButton.hidden = NO;
+    }
+    
+    [self redrawTable];
 }
 
 - (IBAction)refreshDevices:(id)sender {
@@ -82,30 +96,23 @@
     [self.modeWemo refreshDevices];
 }
 
-#pragma mark - Wemo Delegate
+#pragma mark - Table View delegate and data source
 
-
-- (void)changeState:(TTWemoState)wemoState withMode:(TTModeWemo *)modeWemo {
-    NSLog(@" Changing Wemo state: %lu", wemoState);
+- (void)toggleDevice:(TTModeWemoDevice *)device {
+    NSMutableArray *selectedDevices = [[self.action optionValue:kWemoDeviceLocations] mutableCopy];
     
-    switch (wemoState) {
-        case WEMO_STATE_NOT_CONNECTED:
-            [self selectDevice];
-            break;
-            
-        case WEMO_STATE_CONNECTING:
-            [self selectDevice];
-            break;
-            
-        case WEMO_STATE_CONNECTED:
-            spinner.hidden = YES;
-            refreshButton.hidden = NO;
-            [self selectDevice];
-            break;
-            
-        default:
-            break;
+    if ([selectedDevices containsObject:device.location]) {
+        [selectedDevices removeObject:device.location];
+    } else {
+        [selectedDevices addObject:device.location];
     }
+    
+    [self.action changeActionOption:kWemoDeviceLocations to:selectedDevices];
+}
+
+- (BOOL)isSelected:(TTModeWemoDevice *)device {
+    NSArray *selectedDevices = [self.action optionValue:kWemoDeviceLocations];
+    return [selectedDevices containsObject:device.location];
 }
 
 @end

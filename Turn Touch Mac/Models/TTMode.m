@@ -141,7 +141,7 @@
     BOOL success = NO;
     NSLog(@"Running: %d - %@%@", direction, funcAction, actionName);
     if (!self.action || !self.action.batchActionKey) {
-        self.action = [[TTAction alloc] initWithActionName:actionName];
+        self.action = [[TTAction alloc] initWithActionName:actionName direction:direction];
     }
     
     // First check for runAction:direction...

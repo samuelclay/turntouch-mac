@@ -1,22 +1,49 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTModeWemoConnected">
             <connections>
+                <outlet property="connectedLabel" destination="hVw-aV-O4T" id="QJQ-EA-gBH"/>
+                <outlet property="scanButton" destination="V8f-7R-Fd7" id="8LL-Cz-gmb"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="0.0"/>
+            <rect key="frame" x="0.0" y="0.0" width="480" height="59"/>
+            <subviews>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="V8f-7R-Fd7" customClass="TTChangeButtonView">
+                    <rect key="frame" x="334" y="12" width="132" height="32"/>
+                    <buttonCell key="cell" type="push" title="Scan for devices" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="3cG-K3-Uex" customClass="TTChangeButtonCell">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="13" name="Effra-Regular"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="scanForDevices:" target="-2" id="RrI-ff-uLN"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVw-aV-O4T">
+                    <rect key="frame" x="18" y="20" width="168" height="19"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Conncted to X Wemo devices" id="2PB-le-7oU">
+                        <font key="font" size="13" name="Effra-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
             <constraints>
-                <constraint firstAttribute="height" id="0hj-Fp-xea"/>
+                <constraint firstItem="hVw-aV-O4T" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="BQa-V3-pXH"/>
+                <constraint firstAttribute="trailing" secondItem="V8f-7R-Fd7" secondAttribute="trailing" constant="20" id="TC2-sJ-3yb"/>
+                <constraint firstItem="V8f-7R-Fd7" firstAttribute="centerY" secondItem="hVw-aV-O4T" secondAttribute="centerY" id="bHv-uI-llP"/>
+                <constraint firstItem="hVw-aV-O4T" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="e3a-NO-LfU"/>
+                <constraint firstAttribute="bottom" secondItem="hVw-aV-O4T" secondAttribute="bottom" constant="20" id="wvV-df-3to"/>
             </constraints>
-            <point key="canvasLocation" x="269" y="407.5"/>
+            <point key="canvasLocation" x="269" y="620.5"/>
         </customView>
     </objects>
 </document>

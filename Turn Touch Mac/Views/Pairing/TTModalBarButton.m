@@ -17,7 +17,6 @@
 @synthesize buttonLabel;
 @synthesize chevronImage;
 
-
 - (instancetype)init {
     if (self = [super init]) {
         appDelegate = (TTAppDelegate *)[NSApp delegate];
@@ -153,16 +152,16 @@
 }
 
 - (void)createTrackingArea {
-    if (trackingArea) {
-        [self removeTrackingArea:trackingArea];
-        trackingArea = nil;
+    for (NSTrackingArea *area in self.trackingAreas) {
+        [self removeTrackingArea:area];
     }
     
-    NSTrackingAreaOptions opts = (NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways | NSTrackingInVisibleRect);
-    trackingArea = [[NSTrackingArea alloc] initWithRect:[self bounds]
-                                                options:opts
-                                                  owner:self
-                                               userInfo:nil];
+    int opts = (NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways |
+                NSTrackingMouseMoved | NSTrackingActiveInKeyWindow | NSTrackingInVisibleRect);
+    trackingArea = [ [NSTrackingArea alloc] initWithRect:[self bounds]
+                                                                 options:opts
+                                                                   owner:self
+                                                                userInfo:nil];
     [self addTrackingArea:trackingArea];
 }
 

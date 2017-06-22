@@ -17,6 +17,7 @@
         [self.image setSize:NSMakeSize(16, 16)];
         [self setImagePosition:NSImageOnly];
         [self setButtonType:NSMomentaryChangeButton];
+        [self setImageScaling:NSImageScaleProportionallyDown];
         [self.cell setArrowPosition:NSPopUpNoArrow];
         [self.cell setBordered:NO];
     }

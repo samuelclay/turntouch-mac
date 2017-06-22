@@ -27,6 +27,7 @@ typedef enum TTWemoState : NSUInteger {
 @interface TTModeWemo : TTMode <TTModeWemoMulticastDelegate, TTModeWemoDeviceDelegate>
 
 extern NSString *const kWemoDeviceLocation;
+extern NSString *const kWemoDeviceLocations;
 extern NSString *const kWemoFoundDevices;
 extern NSString *const kWemoSeenDevices;
 
@@ -38,8 +39,10 @@ extern NSString *const kWemoSeenDevices;
 + (TTWemoState)wemoState;
 + (void)setWemoState:(TTWemoState)state;
 + (NSMutableArray *)foundDevices;
+- (void)resetKnownDevices;
 - (void)refreshDevices;
 - (void)beginConnectingToWemo;
 - (void)cancelConnectingToWemo;
+- (void)ensureDevicesSelected;
 
 @end

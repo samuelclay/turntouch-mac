@@ -14,11 +14,13 @@
 @synthesize actionName;
 @synthesize batchActionKey;
 @synthesize changeActionMenu;
+@synthesize direction;
 
-- (id)initWithActionName:(NSString *)_actionName {
+- (id)initWithActionName:(NSString *)_actionName direction:(TTModeDirection)_direction {
     if (self = [super init]) {
         mode = appDelegate.modeMap.selectedMode;
         actionName = _actionName;
+        direction = _direction;
     }
     
     return self;
@@ -46,14 +48,18 @@
     }
 }
 
-- (id)optionValue:(NSString *)optionName inDirection:(TTModeDirection)direction {
+- (id)optionValue:(NSString *)optionName {
+    return [self optionValue:optionName inDirection:direction];
+}
+
+- (id)optionValue:(NSString *)optionName inDirection:(TTModeDirection)_direction {
     if (!batchActionKey) {
-        return [NSAppDelegate.modeMap mode:mode actionOptionValue:optionName actionName:actionName inDirection:direction];
+        return [NSAppDelegate.modeMap mode:mode actionOptionValue:optionName actionName:actionName inDirection:_direction];
     } else {
         return [NSAppDelegate.modeMap mode:mode
                                batchAction:self
                          actionOptionValue:optionName
-                               inDirection:direction];
+                               inDirection:_direction];
     }
 }
 
