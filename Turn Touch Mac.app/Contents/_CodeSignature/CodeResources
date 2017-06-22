@@ -362,7 +362,7 @@
 		</data>
 		<key>Resources/TTModeHueBridge.nib</key>
 		<data>
-		5FwO2CfNDHQyuDpAs23DnZQJwec=
+		lDVFRhcqMK4VNXnzfDWXjWyBsxs=
 		</data>
 		<key>Resources/TTModeHueConnect.nib</key>
 		<data>
@@ -458,7 +458,7 @@
 		</data>
 		<key>Resources/TTModeWemoConnected.nib</key>
 		<data>
-		PraZrOIIlGRYt6q8iVqMHiuB23o=
+		POn63Cz2NgOHzjNKQayevSgnMSM=
 		</data>
 		<key>Resources/TTModeWemoConnecting.nib</key>
 		<data>
@@ -470,7 +470,7 @@
 		</data>
 		<key>Resources/TTModeWemoSwitchOptions.nib</key>
 		<data>
-		5YPCjvs+kt+6+fcf4/UYb2SW5wE=
+		gcBJolfceVXk30TxSPaseTwnxGM=
 		</data>
 		<key>Resources/TTPanel.nib</key>
 		<data>
@@ -994,7 +994,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			+lmw+7NKoEErVI7VkPDf1RBjm7k=
+			Ptseo/5mCYPjY8+2Utjqwt06Rf8=
 			</data>
 			<key>requirement</key>
 			<string>identifier "com.philips.hue.HueSDK-OSX" and anchor apple generic and certificate leaf[subject.CN] = "Mac Developer: Sam Clay (BYABZ8TGVG)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
@@ -1003,7 +1003,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			fpObI1bKnemYoBtfmTZQ+UZFbfI=
+			ZDmeODrcWNWVu+cyUGuL15DNGrk=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.andymatuschak.Sparkle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -1615,11 +1615,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			5FwO2CfNDHQyuDpAs23DnZQJwec=
+			lDVFRhcqMK4VNXnzfDWXjWyBsxs=
 			</data>
 			<key>hash2</key>
 			<data>
-			KeQx3Y8kbP0c1fe2vzPZbEkdcfvIR8UlFtPz0wloVmQ=
+			b38/kQLk3CzFPmMozDURv5u52+bssTmlG5lcvEbACCY=
 			</data>
 		</dict>
 		<key>Resources/TTModeHueConnect.nib</key>
@@ -1879,11 +1879,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			PraZrOIIlGRYt6q8iVqMHiuB23o=
+			POn63Cz2NgOHzjNKQayevSgnMSM=
 			</data>
 			<key>hash2</key>
 			<data>
-			JAo6AR9DxPpLHfDtqPfAhnlSQahWbbRlYNplBjrrKYg=
+			SsMGoFfkfjsSGoYtPfxI0Hnm4cMA18FsMBZgfJ14+Zw=
 			</data>
 		</dict>
 		<key>Resources/TTModeWemoConnecting.nib</key>
@@ -1912,11 +1912,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			5YPCjvs+kt+6+fcf4/UYb2SW5wE=
+			gcBJolfceVXk30TxSPaseTwnxGM=
 			</data>
 			<key>hash2</key>
 			<data>
-			hCruKs3y+QED7qvisgbqhcjggRCRTKyphc4vpZpBnv8=
+			rXbjibUsdOuGsBcfhj52MlZHLKuS9nooktoRiSD2Pss=
 			</data>
 		</dict>
 		<key>Resources/TTPanel.nib</key>
