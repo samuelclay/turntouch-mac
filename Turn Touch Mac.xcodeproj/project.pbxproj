@@ -381,6 +381,17 @@
 		FFF8AE3B1AFDAB3E0064DCEF /* Turn_Touch_Remote_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF8AE3A1AFDAB3E0064DCEF /* Turn_Touch_Remote_Tests.m */; };
 		FFF8AE421AFDAB8E0064DCEF /* TTBluetoothTimerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF8AE411AFDAB8E0064DCEF /* TTBluetoothTimerTest.m */; };
 		FFF8AE461AFDC2BA0064DCEF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8012F6186A599600955218 /* AudioToolbox.framework */; };
+		FFFF0C6F1EFC971000E29E6D /* TTModeIftttOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFF0C6D1EFC971000E29E6D /* TTModeIftttOptions.m */; };
+		FFFF0C701EFC971000E29E6D /* TTModeIftttOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFFF0C6E1EFC971000E29E6D /* TTModeIftttOptions.xib */; };
+		FFFF0C741EFC973100E29E6D /* TTModeIftttConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFF0C721EFC973100E29E6D /* TTModeIftttConnect.m */; };
+		FFFF0C751EFC973100E29E6D /* TTModeIftttConnect.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFFF0C731EFC973100E29E6D /* TTModeIftttConnect.xib */; };
+		FFFF0C791EFC974400E29E6D /* TTModeIftttConnecting.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFF0C771EFC974400E29E6D /* TTModeIftttConnecting.m */; };
+		FFFF0C7A1EFC974400E29E6D /* TTModeIftttConnecting.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFFF0C781EFC974400E29E6D /* TTModeIftttConnecting.xib */; };
+		FFFF0C7E1EFC975300E29E6D /* TTModeIftttConnected.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFF0C7C1EFC975300E29E6D /* TTModeIftttConnected.m */; };
+		FFFF0C7F1EFC975300E29E6D /* TTModeIftttConnected.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFFF0C7D1EFC975300E29E6D /* TTModeIftttConnected.xib */; };
+		FFFF0C831EFC976B00E29E6D /* TTModeIftttTriggerActionOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFF0C811EFC976B00E29E6D /* TTModeIftttTriggerActionOptions.m */; };
+		FFFF0C841EFC976B00E29E6D /* TTModeIftttTriggerActionOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFFF0C821EFC976B00E29E6D /* TTModeIftttTriggerActionOptions.xib */; };
+		FFFF0C861EFC978B00E29E6D /* TTModeIfttt.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFFF0C851EFC978B00E29E6D /* TTModeIfttt.plist */; };
 		FFFF683819D4E2C30081904A /* ideas.txt in Resources */ = {isa = PBXBuildFile; fileRef = FFFF683619D4E2C30081904A /* ideas.txt */; };
 /* End PBXBuildFile section */
 
@@ -1013,6 +1024,22 @@
 		FFF8AE391AFDAB3E0064DCEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFF8AE3A1AFDAB3E0064DCEF /* Turn_Touch_Remote_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Turn_Touch_Remote_Tests.m; sourceTree = "<group>"; };
 		FFF8AE411AFDAB8E0064DCEF /* TTBluetoothTimerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTBluetoothTimerTest.m; sourceTree = "<group>"; };
+		FFFF0C6C1EFC971000E29E6D /* TTModeIftttOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeIftttOptions.h; path = Modes/Ifttt/TTModeIftttOptions.h; sourceTree = "<group>"; };
+		FFFF0C6D1EFC971000E29E6D /* TTModeIftttOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeIftttOptions.m; path = Modes/Ifttt/TTModeIftttOptions.m; sourceTree = "<group>"; };
+		FFFF0C6E1EFC971000E29E6D /* TTModeIftttOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeIftttOptions.xib; path = Modes/Ifttt/TTModeIftttOptions.xib; sourceTree = "<group>"; };
+		FFFF0C711EFC973100E29E6D /* TTModeIftttConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeIftttConnect.h; path = Modes/Ifttt/TTModeIftttConnect.h; sourceTree = "<group>"; };
+		FFFF0C721EFC973100E29E6D /* TTModeIftttConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeIftttConnect.m; path = Modes/Ifttt/TTModeIftttConnect.m; sourceTree = "<group>"; };
+		FFFF0C731EFC973100E29E6D /* TTModeIftttConnect.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeIftttConnect.xib; path = Modes/Ifttt/TTModeIftttConnect.xib; sourceTree = "<group>"; };
+		FFFF0C761EFC974400E29E6D /* TTModeIftttConnecting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeIftttConnecting.h; path = Modes/Ifttt/TTModeIftttConnecting.h; sourceTree = "<group>"; };
+		FFFF0C771EFC974400E29E6D /* TTModeIftttConnecting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeIftttConnecting.m; path = Modes/Ifttt/TTModeIftttConnecting.m; sourceTree = "<group>"; };
+		FFFF0C781EFC974400E29E6D /* TTModeIftttConnecting.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeIftttConnecting.xib; path = Modes/Ifttt/TTModeIftttConnecting.xib; sourceTree = "<group>"; };
+		FFFF0C7B1EFC975300E29E6D /* TTModeIftttConnected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeIftttConnected.h; path = Modes/Ifttt/TTModeIftttConnected.h; sourceTree = "<group>"; };
+		FFFF0C7C1EFC975300E29E6D /* TTModeIftttConnected.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeIftttConnected.m; path = Modes/Ifttt/TTModeIftttConnected.m; sourceTree = "<group>"; };
+		FFFF0C7D1EFC975300E29E6D /* TTModeIftttConnected.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeIftttConnected.xib; path = Modes/Ifttt/TTModeIftttConnected.xib; sourceTree = "<group>"; };
+		FFFF0C801EFC976B00E29E6D /* TTModeIftttTriggerActionOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeIftttTriggerActionOptions.h; path = Modes/Ifttt/TTModeIftttTriggerActionOptions.h; sourceTree = "<group>"; };
+		FFFF0C811EFC976B00E29E6D /* TTModeIftttTriggerActionOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeIftttTriggerActionOptions.m; path = Modes/Ifttt/TTModeIftttTriggerActionOptions.m; sourceTree = "<group>"; };
+		FFFF0C821EFC976B00E29E6D /* TTModeIftttTriggerActionOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeIftttTriggerActionOptions.xib; path = Modes/Ifttt/TTModeIftttTriggerActionOptions.xib; sourceTree = "<group>"; };
+		FFFF0C851EFC978B00E29E6D /* TTModeIfttt.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = TTModeIfttt.plist; path = Modes/Ifttt/TTModeIfttt.plist; sourceTree = "<group>"; };
 		FFFF683619D4E2C30081904A /* ideas.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ideas.txt; path = Modes/Meditation/ideas.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1606,8 +1633,24 @@
 		FF778B511EEF82C90019C22A /* Ifttt */ = {
 			isa = PBXGroup;
 			children = (
+				FFFF0C851EFC978B00E29E6D /* TTModeIfttt.plist */,
 				FF778B4E1EEF82C50019C22A /* TTModeIfttt.h */,
 				FF778B4F1EEF82C50019C22A /* TTModeIfttt.m */,
+				FFFF0C6C1EFC971000E29E6D /* TTModeIftttOptions.h */,
+				FFFF0C6D1EFC971000E29E6D /* TTModeIftttOptions.m */,
+				FFFF0C6E1EFC971000E29E6D /* TTModeIftttOptions.xib */,
+				FFFF0C711EFC973100E29E6D /* TTModeIftttConnect.h */,
+				FFFF0C721EFC973100E29E6D /* TTModeIftttConnect.m */,
+				FFFF0C731EFC973100E29E6D /* TTModeIftttConnect.xib */,
+				FFFF0C761EFC974400E29E6D /* TTModeIftttConnecting.h */,
+				FFFF0C771EFC974400E29E6D /* TTModeIftttConnecting.m */,
+				FFFF0C781EFC974400E29E6D /* TTModeIftttConnecting.xib */,
+				FFFF0C7B1EFC975300E29E6D /* TTModeIftttConnected.h */,
+				FFFF0C7C1EFC975300E29E6D /* TTModeIftttConnected.m */,
+				FFFF0C7D1EFC975300E29E6D /* TTModeIftttConnected.xib */,
+				FFFF0C801EFC976B00E29E6D /* TTModeIftttTriggerActionOptions.h */,
+				FFFF0C811EFC976B00E29E6D /* TTModeIftttTriggerActionOptions.m */,
+				FFFF0C821EFC976B00E29E6D /* TTModeIftttTriggerActionOptions.xib */,
 			);
 			name = Ifttt;
 			sourceTree = "<group>";
@@ -2376,6 +2419,7 @@
 				FFF049781CE11FCF006CE427 /* TTModeHueBridge.xib in Resources */,
 				FF8D1AB31C9902F8006AA1A2 /* TTModalSupportView.xib in Resources */,
 				FF6135611C61CDDC00F431D7 /* music_volume_mute.png in Resources */,
+				FFFF0C7A1EFC974400E29E6D /* TTModeIftttConnecting.xib in Resources */,
 				FF01CA601C46DCC200F83A73 /* cog.png in Resources */,
 				FF2705461C93A348000BB10F /* modal_ftux_change_action.png in Resources */,
 				FF01CA691C46DCC200F83A73 /* macbookpro.png in Resources */,
@@ -2393,6 +2437,8 @@
 				FF2EB77D1AA50D4D002549A7 /* itunes_music_icon.png in Resources */,
 				FF8528F61A96A63A00B289FD /* TTModeMusic.plist in Resources */,
 				FF52960A1AD61F84007DDC02 /* NSDateTimeAgo.bundle in Resources */,
+				FFFF0C701EFC971000E29E6D /* TTModeIftttOptions.xib in Resources */,
+				FFFF0C7F1EFC975300E29E6D /* TTModeIftttConnected.xib in Resources */,
 				FF52501F1C80FD7C0017A847 /* TTModeWemoConnected.xib in Resources */,
 				FF91709A1AF9B19100FAAC88 /* north tone.wav in Resources */,
 				FF6135621C61CDDC00F431D7 /* music_volume_up.png in Resources */,
@@ -2401,6 +2447,7 @@
 				FF557AD61C4DBB4A005FB7FD /* TTModeNestAuthViewController.xib in Resources */,
 				FF913D271924366C005C336F /* TTModeAlarmClock.plist in Resources */,
 				FF8A73C81ABA69410023AA53 /* logo_64.png in Resources */,
+				FFFF0C841EFC976B00E29E6D /* TTModeIftttTriggerActionOptions.xib in Resources */,
 				FF27407A1A7C5BC200C55579 /* itunes_movies_icon.png in Resources */,
 				FF6135591C61CDDC00F431D7 /* hue_sunset.png in Resources */,
 				FF8448FA1E10DB1A00C1091E /* TTModeCustomURLOptions.xib in Resources */,
@@ -2419,6 +2466,7 @@
 				FF01CA781C46DCC200F83A73 /* mode_spotify.png in Resources */,
 				FF01CA711C46DCC200F83A73 /* mode_morning.png in Resources */,
 				FF61355F1C61CDDC00F431D7 /* music_volume.png in Resources */,
+				FFFF0C751EFC973100E29E6D /* TTModeIftttConnect.xib in Resources */,
 				FF2705441C93A348000BB10F /* modal_bar_button_chevron.png in Resources */,
 				FF01CA5C1C46DCC200F83A73 /* button_plus.png in Resources */,
 				FF6135531C61CDDC00F431D7 /* chevron_north.png in Resources */,
@@ -2434,6 +2482,7 @@
 				FF01CA6A1C46DCC200F83A73 /* mode_alarm.png in Resources */,
 				FF557AE01C4ED8AF005FB7FD /* TTModeNestConnecting.xib in Resources */,
 				FF3760C71ABB59210055EC6D /* logo_16.png in Resources */,
+				FFFF0C861EFC978B00E29E6D /* TTModeIfttt.plist in Resources */,
 				FF01CA661C46DCC200F83A73 /* icon_movie.png in Resources */,
 				FF61355B1C61CDDC00F431D7 /* music_pause.png in Resources */,
 				FF3641DA1A5F53DC003CC03C /* TTModeHueConnecting.xib in Resources */,
@@ -2622,10 +2671,12 @@
 				FF01CAA71C473EC100F83A73 /* JXWebResourceLoadingBarrier.m in Sources */,
 				FFB1670E1923E61F008FA1AF /* TTTabView.m in Sources */,
 				FFA1D4CB1A3B8916003EA0BC /* TTActionHUDView.m in Sources */,
+				FFFF0C6F1EFC971000E29E6D /* TTModeIftttOptions.m in Sources */,
 				FFF05F4218F77D5D00AC6230 /* TTChangeButtonCell.m in Sources */,
 				FF8448F11E0DFE3E00C1091E /* TTModeHuePicker.m in Sources */,
 				FF5296081AD61E74007DDC02 /* NSDate+TimeAgo.m in Sources */,
 				FF7305B21A5C9C76009A852D /* DDTTYLogger.m in Sources */,
+				FFFF0C7E1EFC975300E29E6D /* TTModeIftttConnected.m in Sources */,
 				FF904B761BE9B88700AD00F3 /* Utility.m in Sources */,
 				FF2C2E561C545E6400FAD7E2 /* XPathQuery.m in Sources */,
 				FFF05F3B18F77BE000AC6230 /* TTModeTitleView.m in Sources */,
@@ -2635,12 +2686,14 @@
 				FFA1D4DA1A3B89A4003EA0BC /* TTModeHUDView.m in Sources */,
 				FF3641F71A660204003CC03C /* TTModeHueSceneOptions.m in Sources */,
 				FF66F2A619228DE100031478 /* TTModeAlarmClockOptions.m in Sources */,
+				FFFF0C741EFC973100E29E6D /* TTModeIftttConnect.m in Sources */,
 				FF98A2E11867DBA40032CC7A /* TTActionMap.m in Sources */,
 				FFABABA21C33676700AD5620 /* TTModeWebBrowserView.m in Sources */,
 				FF877CD81C6C19F1007940C3 /* TTHUDMenuButton.m in Sources */,
 				FF557AE41C4ED8BE005FB7FD /* TTModeNestConnected.m in Sources */,
 				FF7305B11A5C9C76009A852D /* DDLog.m in Sources */,
 				FF557AE91C4F1CD0005FB7FD /* TTModeNestSetTempOptions.m in Sources */,
+				FFFF0C831EFC976B00E29E6D /* TTModeIftttTriggerActionOptions.m in Sources */,
 				FF557AD51C4DBB4A005FB7FD /* TTModeNestAuthViewController.m in Sources */,
 				FF904B7B1BE9B88700AD00F3 /* DFUHelper.m in Sources */,
 				FF904B871BE9B88700AD00F3 /* JsonParser.m in Sources */,
@@ -2733,6 +2786,7 @@
 				FF3641E91A60BB8B003CC03C /* TTModeHueConnecting.m in Sources */,
 				FFABAB8A1C28E6F000AD5620 /* TTBatchActions.m in Sources */,
 				FF913D2C19243BFD005C336F /* TTModeAlarmSnoozeOptions.m in Sources */,
+				FFFF0C791EFC974400E29E6D /* TTModeIftttConnecting.m in Sources */,
 				FF98A2E81867DBE70032CC7A /* TTPanelController.m in Sources */,
 				FF01CAB01C473EC100F83A73 /* NSURL+ValidityChecking.m in Sources */,
 				FF5295C81AD5B9B8007DDC02 /* TTSettingsButton.m in Sources */,
