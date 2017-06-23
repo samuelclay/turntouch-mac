@@ -6,8 +6,18 @@
 //  Copyright © 2017 Turn Touch. All rights reserved.
 //
 
+#import "TTModeIfttt.h"
 #import "TTOptionsDetailViewController.h"
+#import "TTModeIftttAuthViewController.h"
 
-@interface TTModeIftttConnect : TTOptionsDetailViewController
+@interface TTModeIftttConnect : TTOptionsDetailViewController {
+    NSPopover *authPopover;
+}
+
+@property (nonatomic) IBOutlet NSButton *authButton;
+@property (nonatomic, strong) TTModeIfttt *modeIfttt;
+
+- (IBAction)clickAuthButton:(id)sender;
+- (void)closePopover;
 
 @end

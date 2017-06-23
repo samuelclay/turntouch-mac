@@ -392,6 +392,8 @@
 		FFFF0C831EFC976B00E29E6D /* TTModeIftttTriggerActionOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFF0C811EFC976B00E29E6D /* TTModeIftttTriggerActionOptions.m */; };
 		FFFF0C841EFC976B00E29E6D /* TTModeIftttTriggerActionOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFFF0C821EFC976B00E29E6D /* TTModeIftttTriggerActionOptions.xib */; };
 		FFFF0C861EFC978B00E29E6D /* TTModeIfttt.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFFF0C851EFC978B00E29E6D /* TTModeIfttt.plist */; };
+		FFFF0C8A1EFCA36500E29E6D /* TTModeIftttAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFF0C881EFCA36500E29E6D /* TTModeIftttAuthViewController.m */; };
+		FFFF0C8B1EFCA36500E29E6D /* TTModeIftttAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFFF0C891EFCA36500E29E6D /* TTModeIftttAuthViewController.xib */; };
 		FFFF683819D4E2C30081904A /* ideas.txt in Resources */ = {isa = PBXBuildFile; fileRef = FFFF683619D4E2C30081904A /* ideas.txt */; };
 /* End PBXBuildFile section */
 
@@ -1040,6 +1042,9 @@
 		FFFF0C811EFC976B00E29E6D /* TTModeIftttTriggerActionOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeIftttTriggerActionOptions.m; path = Modes/Ifttt/TTModeIftttTriggerActionOptions.m; sourceTree = "<group>"; };
 		FFFF0C821EFC976B00E29E6D /* TTModeIftttTriggerActionOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeIftttTriggerActionOptions.xib; path = Modes/Ifttt/TTModeIftttTriggerActionOptions.xib; sourceTree = "<group>"; };
 		FFFF0C851EFC978B00E29E6D /* TTModeIfttt.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = TTModeIfttt.plist; path = Modes/Ifttt/TTModeIfttt.plist; sourceTree = "<group>"; };
+		FFFF0C871EFCA36500E29E6D /* TTModeIftttAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeIftttAuthViewController.h; path = Modes/Ifttt/TTModeIftttAuthViewController.h; sourceTree = "<group>"; };
+		FFFF0C881EFCA36500E29E6D /* TTModeIftttAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeIftttAuthViewController.m; path = Modes/Ifttt/TTModeIftttAuthViewController.m; sourceTree = "<group>"; };
+		FFFF0C891EFCA36500E29E6D /* TTModeIftttAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeIftttAuthViewController.xib; path = Modes/Ifttt/TTModeIftttAuthViewController.xib; sourceTree = "<group>"; };
 		FFFF683619D4E2C30081904A /* ideas.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ideas.txt; path = Modes/Meditation/ideas.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1651,6 +1656,9 @@
 				FFFF0C801EFC976B00E29E6D /* TTModeIftttTriggerActionOptions.h */,
 				FFFF0C811EFC976B00E29E6D /* TTModeIftttTriggerActionOptions.m */,
 				FFFF0C821EFC976B00E29E6D /* TTModeIftttTriggerActionOptions.xib */,
+				FFFF0C871EFCA36500E29E6D /* TTModeIftttAuthViewController.h */,
+				FFFF0C881EFCA36500E29E6D /* TTModeIftttAuthViewController.m */,
+				FFFF0C891EFCA36500E29E6D /* TTModeIftttAuthViewController.xib */,
 			);
 			name = Ifttt;
 			sourceTree = "<group>";
@@ -2418,6 +2426,7 @@
 				FF8D1AA91C98F5D3006AA1A2 /* logo_white_with_title.png in Resources */,
 				FFF049781CE11FCF006CE427 /* TTModeHueBridge.xib in Resources */,
 				FF8D1AB31C9902F8006AA1A2 /* TTModalSupportView.xib in Resources */,
+				FFFF0C8B1EFCA36500E29E6D /* TTModeIftttAuthViewController.xib in Resources */,
 				FF6135611C61CDDC00F431D7 /* music_volume_mute.png in Resources */,
 				FFFF0C7A1EFC974400E29E6D /* TTModeIftttConnecting.xib in Resources */,
 				FF01CA601C46DCC200F83A73 /* cog.png in Resources */,
@@ -2566,7 +2575,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		665D06652DFBAA151D20DCF2 /* [CP] Copy Pods Resources */ = {
@@ -2596,7 +2605,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		7BB14E207B4C6A26CAF56A1B /* [CP] Embed Pods Frameworks */ = {
@@ -2827,6 +2836,7 @@
 				FFABAB901C2A32E000AD5620 /* TTAction.m in Sources */,
 				FFABAB9B1C33674000AD5620 /* TTModeWebWindowController.m in Sources */,
 				FF01CAA61C473EC100F83A73 /* JXReadabilityDocument.m in Sources */,
+				FFFF0C8A1EFCA36500E29E6D /* TTModeIftttAuthViewController.m in Sources */,
 				FF778B501EEF82C50019C22A /* TTModeIfttt.m in Sources */,
 				FFABAB961C334FCA00AD5620 /* TTModeWeb.m in Sources */,
 				FF2C2E691C546D6E00FAD7E2 /* TTModeWemoOptions.m in Sources */,

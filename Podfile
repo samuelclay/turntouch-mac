@@ -4,7 +4,8 @@
 target 'Turn Touch Mac' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
   # use_frameworks!
-
+  pod 'AFNetworking', '~> 3.0'
+  
   # Pods for Turn Touch Mac
 
   target 'Turn Touch Mac Tests' do

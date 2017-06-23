@@ -14,9 +14,19 @@
 
 @implementation TTModeIftttTriggerActionOptions
 
+@synthesize modeIfttt;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
+    
+    modeIfttt = (TTModeIfttt *)self.action.mode;
+}
+
+- (IBAction)openRecipe:(id)sender {
+    [modeIfttt registerTriggers:^{
+        [self.modeIfttt openRecipe:self.action.direction];
+    }];
 }
 
 @end
