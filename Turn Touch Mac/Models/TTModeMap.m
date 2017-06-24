@@ -62,6 +62,7 @@
                                   @"TTModeWeb",
                                   @"TTModeHue",
                                   @"TTModeNest",
+                                  @"TTModeIfttt",
                                   @"TTModeWemo",
                                   @"TTModeCustom"]];
         
@@ -275,101 +276,6 @@
     [self recordButtonMoment:direction buttonMoment:BUTTON_MOMENT_DOUBLE];
 
     activeModeDirection = NO_DIRECTION;
-}
-
-- (void)recordButtonMoment:(TTModeDirection)direction buttonMoment:(TTButtonMoment)buttonMoment {
-    NSString *buttonPress = [self momentName:buttonMoment];
-    NSMutableArray *presses = [NSMutableArray array];
-
-    [presses addObject:@{
-                         @"app_name": NSStringFromClass([selectedMode class]),
-                         @"app_direction": [self directionName:[selectedMode modeDirection]],
-                         @"button_name": [selectedMode actionNameInDirection:direction],
-                         @"button_direction": [self directionName:direction],
-                         @"button_moment": buttonPress,
-                         @"batch_action": [NSNumber numberWithBool:NO],
-                         }];
-    
-    NSArray *actions = [self selectedModeBatchActions:direction];
-    for (TTAction *batchAction in actions) {
-        [presses addObject:@{
-                             @"app_name": NSStringFromClass([batchAction.mode class]),
-                             @"app_direction": [self directionName:[selectedMode modeDirection]],
-                             @"button_name": batchAction.actionName,
-                             @"button_direction": [self directionName:direction],
-                             @"button_moment": buttonPress,
-                             @"batch_action": [NSNumber numberWithBool:YES],
-                             }];
-    }
-    
-    [self recordUsage:@{@"button_actions": presses}];
-}
-
-- (void)recordUsage:(NSDictionary *)additionalParams {
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    if (![prefs boolForKey:@"TT:pref:share_usage_stats"]) {
-        return;
-    }
-    
-    NSString *userId = [self userId];
-    NSString *deviceId = [self deviceId];
-    NSString *deviceName = [[NSHost currentHost] localizedName];
-    NSString *deviceModel = [TTModeMap machineModel];
-    NSString *devicePlatform = @"macOS";
-    NSOperatingSystemVersion version = [[NSProcessInfo processInfo] operatingSystemVersion];
-    NSString *deviceVersion = [NSString stringWithFormat:@"%ld.%ld.%ld", version.majorVersion,
-                               version.minorVersion, version.patchVersion];
-    NSString *remoteName = @"";
-    NSArray *devices = [[[NSAppDelegate bluetoothMonitor] foundDevices] devices];
-    if ([devices count] >= 1) {
-        remoteName = [[devices objectAtIndex:0] nickname];
-    }
-    
-    NSMutableDictionary *params = [@{
-                                     @"user_id": userId,
-                                     @"device_id": deviceId,
-                                     @"device_name": deviceName,
-                                     @"device_model": deviceModel,
-                                     @"device_platform": devicePlatform,
-                                     @"device_version": deviceVersion,
-                                     @"remote_name": remoteName,
-                                     } mutableCopy];
-    
-    for (NSString *key in additionalParams) {
-        [params setObject:additionalParams[key] forKey:key];
-    }
-    
-    NSError *error = nil;
-    NSData *json = [NSJSONSerialization dataWithJSONObject:params options:NSJSONWritingPrettyPrinted error:&error];
-    NSString *body = [[NSString alloc] initWithData:json encoding:NSUTF8StringEncoding];
-    NSLog(@" ---> Recording: %@", body);
-    
-    NSString *urlString = [NSString stringWithFormat:@"%@/usage/record", TURN_TOUCH_HOST];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
-    [request setHTTPBody:json];
-    [request setHTTPMethod:@"POST"];
-    
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
-        
-    }];
-}
-
-+ (NSString *) machineModel {
-    size_t len = 0;
-    sysctlbyname("hw.model", NULL, &len, NULL, 0);
-    
-    if (len)
-    {
-        char *model = malloc(len*sizeof(char));
-        sysctlbyname("hw.model", model, &len, NULL, 0);
-        NSString *model_ns = [NSString stringWithUTF8String:model];
-        free(model);
-        return model_ns;
-    }
-    
-    return @"Mac";
 }
 
 - (BOOL)shouldHideHud:(TTModeDirection)direction {
@@ -811,6 +717,106 @@ actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction 
 }
 
 #pragma mark - Device Info
+
+
+- (void)recordButtonMoment:(TTModeDirection)direction buttonMoment:(TTButtonMoment)buttonMoment {
+    NSString *buttonPress = [self momentName:buttonMoment];
+    NSMutableArray *presses = [NSMutableArray array];
+    
+    [presses addObject:@{
+                         @"app_name": NSStringFromClass([selectedMode class]),
+                         @"app_direction": [self directionName:[selectedMode modeDirection]],
+                         @"button_name": [selectedMode actionNameInDirection:direction],
+                         @"button_direction": [self directionName:direction],
+                         @"button_moment": buttonPress,
+                         @"batch_action": [NSNumber numberWithBool:NO],
+                         }];
+    
+    NSArray *actions = [self selectedModeBatchActions:direction];
+    for (TTAction *batchAction in actions) {
+        [presses addObject:@{
+                             @"app_name": NSStringFromClass([batchAction.mode class]),
+                             @"app_direction": [self directionName:[selectedMode modeDirection]],
+                             @"button_name": batchAction.actionName,
+                             @"button_direction": [self directionName:direction],
+                             @"button_moment": buttonPress,
+                             @"batch_action": [NSNumber numberWithBool:YES],
+                             }];
+    }
+    
+    [self recordUsage:@{@"button_actions": presses}];
+}
+
+- (void)recordUsage:(NSDictionary *)additionalParams {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    if (![prefs boolForKey:@"TT:pref:share_usage_stats"]) {
+        return;
+    }
+    
+    NSMutableDictionary *params = [[self deviceAttrs] mutableCopy];
+    for (NSString *key in additionalParams) {
+        [params setObject:additionalParams[key] forKey:key];
+    }
+    
+    NSError *error = nil;
+    NSData *json = [NSJSONSerialization dataWithJSONObject:params options:NSJSONWritingPrettyPrinted error:&error];
+    NSString *body = [[NSString alloc] initWithData:json encoding:NSUTF8StringEncoding];
+    NSLog(@" ---> Recording: %@", body);
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@/usage/record", TURN_TOUCH_HOST];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:json];
+    [request setHTTPMethod:@"POST"];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
+        
+    }];
+}
+
+- (NSDictionary *)deviceAttrs {
+    NSString *userId = [self userId];
+    NSString *deviceId = [self deviceId];
+    NSString *deviceName = [[NSHost currentHost] localizedName];
+    NSString *deviceModel = [TTModeMap machineModel];
+    NSString *devicePlatform = @"macOS";
+    NSOperatingSystemVersion version = [[NSProcessInfo processInfo] operatingSystemVersion];
+    NSString *deviceVersion = [NSString stringWithFormat:@"%ld.%ld.%ld", version.majorVersion,
+                               version.minorVersion, version.patchVersion];
+    NSString *remoteName = @"";
+    NSArray *devices = [[[NSAppDelegate bluetoothMonitor] foundDevices] devices];
+    if ([devices count] >= 1) {
+        remoteName = [[devices objectAtIndex:0] nickname];
+    }
+    
+    NSDictionary *params = @{@"user_id": userId,
+                             @"device_id": deviceId,
+                             @"device_name": deviceName,
+                             @"device_model": deviceModel,
+                             @"device_platform": devicePlatform,
+                             @"device_version": deviceVersion,
+                             @"remote_name": remoteName,
+                             };
+    
+    return params;
+}
+
++ (NSString *) machineModel {
+    size_t len = 0;
+    sysctlbyname("hw.model", NULL, &len, NULL, 0);
+    
+    if (len)
+    {
+        char *model = malloc(len*sizeof(char));
+        sysctlbyname("hw.model", model, &len, NULL, 0);
+        NSString *model_ns = [NSString stringWithUTF8String:model];
+        free(model);
+        return model_ns;
+    }
+    
+    return @"Mac";
+}
 
 - (NSString *)userId {
     NSUUID *uuid;

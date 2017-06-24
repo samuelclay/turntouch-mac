@@ -50,8 +50,6 @@
 - (void)runDirection:(TTModeDirection)direction;
 - (void)runDoubleButton:(TTModeDirection)direction;
 
-- (void)recordUsage:(NSDictionary *)additionalParams;
-
 - (BOOL)shouldHideHud:(TTModeDirection)direction;
 - (NSString *)directionName:(TTModeDirection)direction;
 - (TTMode *)modeInDirection:(TTModeDirection)direction;
@@ -78,5 +76,10 @@
 actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction;
 - (void)toggleInspectingModeDirection:(TTModeDirection)direction;
 - (void)toggleHoverModeDirection:(TTModeDirection)direction hovering:(BOOL)hovering;
+
+- (void)recordUsage:(NSDictionary *)additionalParams;
+- (NSDictionary *)deviceAttrs;
+- (NSString *)userId;
+- (NSString *)deviceId;
 
 @end

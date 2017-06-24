@@ -25,12 +25,15 @@
 }
 
 - (NSString *)batchActionKey:(TTModeDirection)direction {
-    NSString *modeDirectionName = [appDelegate.modeMap directionName:appDelegate.modeMap.selectedModeDirection];
-    NSString *actionDirectionName = [appDelegate.modeMap directionName:direction];
+    return [self modeBatchActionKey:appDelegate.modeMap.selectedModeDirection actionDirection:direction];
+}
+
+- (NSString *)modeBatchActionKey:(TTModeDirection)modeDirection actionDirection:(TTModeDirection)actionDirection {
+    NSString *modeDirectionName = [appDelegate.modeMap directionName:modeDirection];
+    NSString *actionDirectionName = [appDelegate.modeMap directionName:actionDirection];
     NSString *batchKey = [NSString stringWithFormat:@"TT:mode:%@:action:%@:batchactions",
                           modeDirectionName,
                           actionDirectionName];
-//    NSLog(@"Batch key: %@", batchKey);
     return batchKey;
 }
 

@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTModeIftttTriggerActionOptions">
@@ -12,8 +13,35 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+            <rect key="frame" x="0.0" y="0.0" width="480" height="59"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gUx-OH-HMS" customClass="TTChangeButtonView">
+                    <rect key="frame" x="326" y="12" width="140" height="32"/>
+                    <buttonCell key="cell" type="push" title="Edit IFTTT recipie" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="qzM-JU-zWL" customClass="TTChangeButtonCell">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="13" name="Effra-Regular"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="openRecipe:" target="-2" id="FZ5-qx-hrK"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbj-Na-Qtg">
+                    <rect key="frame" x="18" y="20" width="111" height="19"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Conncted to IFTTT" id="OXz-Cg-fdZ">
+                        <font key="font" size="13" name="Effra-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="hbj-Na-Qtg" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="JTF-UB-d6V"/>
+                <constraint firstAttribute="trailing" secondItem="gUx-OH-HMS" secondAttribute="trailing" constant="20" id="Ngk-7w-PVM"/>
+                <constraint firstAttribute="bottom" secondItem="hbj-Na-Qtg" secondAttribute="bottom" constant="20" id="b06-Gk-3Ll"/>
+                <constraint firstItem="hbj-Na-Qtg" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="gRZ-JA-fmx"/>
+                <constraint firstItem="gUx-OH-HMS" firstAttribute="centerY" secondItem="hbj-Na-Qtg" secondAttribute="centerY" id="kR2-j4-Pji"/>
+            </constraints>
         </customView>
     </objects>
 </document>

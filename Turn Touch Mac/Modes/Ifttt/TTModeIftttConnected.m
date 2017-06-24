@@ -19,6 +19,8 @@
     
 }
 
-
+- (void)openRecipe:(id)sender {
+    
+}
 
 @end

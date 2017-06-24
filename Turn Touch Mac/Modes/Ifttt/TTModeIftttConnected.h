@@ -13,4 +13,6 @@
 
 @property (nonatomic, strong) TTModeIfttt *modeIfttt;
 
+- (IBAction)openRecipe:(id)sender;
+
 @end

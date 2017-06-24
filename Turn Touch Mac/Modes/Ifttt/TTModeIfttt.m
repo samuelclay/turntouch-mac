@@ -93,5 +93,112 @@ static TTIftttState iftttState;
     
 }
 
-#pragma mark - Wemo devices
+#pragma mark - Ifttt Device
+
+
+- (void)beginConnectingToIfttt:(void (^)())callback {
+    iftttState = IFTTT_STATE_CONNECTING;
+    [self.delegate changeState:iftttState withMode:self];
+    
+    [self registerTriggers:callback];
+}
+
+- (void)cancelConnectingToIfttt {
+    iftttState = IFTTT_STATE_CONNECTED;
+    [self.delegate changeState:iftttState withMode:self];
+}
+
+- (void)iftttReady {
+    iftttState = IFTTT_STATE_CONNECTED;
+    [self.delegate changeState:iftttState withMode:self];
+}
+
++ (TTIftttState)iftttState {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        iftttState = IFTTT_STATE_NOT_CONNECTED;
+    });
+    return iftttState;
+}
+
++ (void)setIftttState:(TTIftttState)state {
+    @synchronized (self) {
+        iftttState = state;
+    }
+}
+
+- (void)registerTriggers:(void (^)())callback {
+    NSString *url = @"https://turntouch.com/ifttt/register_triggers";
+    NSArray *triggers = [self collectTriggers];
+    NSDictionary *params = @{@"user_id": [appDelegate.modeMap userId],
+                             @"device_id": [appDelegate.modeMap deviceId],
+                             @"triggers": triggers,
+                             };
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager setRequestSerializer:[AFJSONRequestSerializer serializer]];
+    
+    [manager POST:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (callback) callback();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [self cancelConnectingToIfttt];
+    }];
+    
+}
+
+- (NSArray *)collectTriggers {
+    NSMutableArray *triggers = [NSMutableArray array];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    
+    for (TTMode *mode in @[appDelegate.modeMap.northMode,
+                           appDelegate.modeMap.eastMode,
+                           appDelegate.modeMap.westMode,
+                           appDelegate.modeMap.southMode,
+                           ]) {
+        NSString *modeName = [[mode class] title];
+        for (TTModeDirection actionDirection=1; actionDirection <= 4; actionDirection++) {
+            NSString *actionName = [mode actionNameInDirection:actionDirection];
+            if ([actionName isEqualToString:@"TTModeIftttTriggerAction"]) {
+                [triggers addObject:@{
+                                     @"app_label": modeName,
+                                     @"app_direction": [appDelegate.modeMap directionName:mode.modeDirection],
+                                     @"button_lalbel": [mode actionTitleForAction:actionName
+                                                                     buttonMoment:BUTTON_MOMENT_PRESSUP],
+                                     @"button_direction": [appDelegate.modeMap directionName:actionDirection],
+                                     @"button_tap_type": [appDelegate.modeMap mode:mode
+                                                                 actionOptionValue:kIftttTapType
+                                                                        actionName:actionName
+                                                                       inDirection:actionDirection],
+                                     }];
+            }
+            
+            NSString *modeBatchActionKey = [appDelegate.modeMap.batchActions
+                                           modeBatchActionKey:mode.modeDirection
+                                           actionDirection:actionDirection];
+            NSArray *batchActionKeys = [prefs objectForKey:modeBatchActionKey];
+            for (NSString *batchActionKey in batchActionKeys) {
+                if ([batchActionKey containsString:@"TTModeIftttTriggerAction"]) {
+                    TTAction *action = [[TTAction alloc] initWithBatchActionKey:batchActionKey
+                                                                      direction:actionDirection];
+                    action.mode.modeDirection = mode.modeDirection;
+                    
+                    [triggers addObject:@{
+                                          @"app_label": modeName,
+                                          @"app_direction": [appDelegate.modeMap directionName:mode.modeDirection],
+                                          @"button_lalbel": [mode actionTitleForAction:actionName
+                                                                          buttonMoment:BUTTON_MOMENT_PRESSUP],
+                                          @"button_direction": [appDelegate.modeMap directionName:actionDirection],
+                                          @"button_tap_type": [appDelegate.modeMap mode:mode
+                                                                      actionOptionValue:kIftttTapType
+                                                                             actionName:actionName
+                                                                            inDirection:actionDirection],
+                                          }];
+                }
+            }
+        }
+    }
+    
+    return triggers;
+}
+
 @end

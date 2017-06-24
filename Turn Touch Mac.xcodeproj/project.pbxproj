@@ -394,6 +394,7 @@
 		FFFF0C861EFC978B00E29E6D /* TTModeIfttt.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFFF0C851EFC978B00E29E6D /* TTModeIfttt.plist */; };
 		FFFF0C8A1EFCA36500E29E6D /* TTModeIftttAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFF0C881EFCA36500E29E6D /* TTModeIftttAuthViewController.m */; };
 		FFFF0C8B1EFCA36500E29E6D /* TTModeIftttAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFFF0C891EFCA36500E29E6D /* TTModeIftttAuthViewController.xib */; };
+		FFFF0C8F1EFDFF8100E29E6D /* mode_ifttt.png in Resources */ = {isa = PBXBuildFile; fileRef = FFFF0C8E1EFDFF8100E29E6D /* mode_ifttt.png */; };
 		FFFF683819D4E2C30081904A /* ideas.txt in Resources */ = {isa = PBXBuildFile; fileRef = FFFF683619D4E2C30081904A /* ideas.txt */; };
 /* End PBXBuildFile section */
 
@@ -1045,6 +1046,7 @@
 		FFFF0C871EFCA36500E29E6D /* TTModeIftttAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeIftttAuthViewController.h; path = Modes/Ifttt/TTModeIftttAuthViewController.h; sourceTree = "<group>"; };
 		FFFF0C881EFCA36500E29E6D /* TTModeIftttAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeIftttAuthViewController.m; path = Modes/Ifttt/TTModeIftttAuthViewController.m; sourceTree = "<group>"; };
 		FFFF0C891EFCA36500E29E6D /* TTModeIftttAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeIftttAuthViewController.xib; path = Modes/Ifttt/TTModeIftttAuthViewController.xib; sourceTree = "<group>"; };
+		FFFF0C8E1EFDFF8100E29E6D /* mode_ifttt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mode_ifttt.png; sourceTree = "<group>"; };
 		FFFF683619D4E2C30081904A /* ideas.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ideas.txt; path = Modes/Meditation/ideas.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1126,6 +1128,7 @@
 				FF01CA3F1C46DCC200F83A73 /* mode_fitness.png */,
 				FF01CA401C46DCC200F83A73 /* mode_home.png */,
 				FF01CA411C46DCC200F83A73 /* mode_hue.png */,
+				FFFF0C8E1EFDFF8100E29E6D /* mode_ifttt.png */,
 				FF01CA421C46DCC200F83A73 /* mode_mac.png */,
 				FF01CA431C46DCC200F83A73 /* mode_meditation.png */,
 				FF01CA441C46DCC200F83A73 /* mode_morning.png */,
@@ -2531,6 +2534,7 @@
 				FF2705471C93A348000BB10F /* modal_ftux_change_mode.png in Resources */,
 				FFAB2C181E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.xib in Resources */,
 				FF8A73C71ABA69410023AA53 /* logo_32.png in Resources */,
+				FFFF0C8F1EFDFF8100E29E6D /* mode_ifttt.png in Resources */,
 				FF01CA7A1C46DCC200F83A73 /* mode_video.png in Resources */,
 				FF7305C41A5CB3EF009A852D /* TTModeHueConnect.xib in Resources */,
 				FF5295C01AD4D2BE007DDC02 /* title.png in Resources */,

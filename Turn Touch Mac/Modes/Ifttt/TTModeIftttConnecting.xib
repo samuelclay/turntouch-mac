@@ -27,20 +27,16 @@
                     </constraints>
                 </progressIndicator>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJJ-iN-QFj">
-                    <rect key="frame" x="174" y="47" width="133" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Searching for Nest..." id="7qH-9B-baz">
+                    <rect key="frame" x="169" y="47" width="143" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Connecting to IFTTT..." id="7qH-9B-baz">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RQO-Bj-Nk3">
-                    <rect key="frame" x="317" y="43" width="24" height="24"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="24" id="7fo-t2-2YP"/>
-                        <constraint firstAttribute="height" constant="24" id="8yh-8b-a6V"/>
-                    </constraints>
-                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSStopProgressTemplate" imagePosition="only" alignment="center" inset="2" id="qw5-4U-9Pt">
+                    <rect key="frame" x="322" y="39" width="11" height="32"/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSStopProgressTemplate" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="qw5-4U-9Pt">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>

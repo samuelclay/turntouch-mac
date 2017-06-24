@@ -13,11 +13,13 @@
 
 @interface TTModeIftttAuthViewController : NSViewController <WebResourceLoadDelegate> {
     TTAppDelegate *appDelegate;
-    NSTimer *checkTokenTimer;
 }
 
-@property (nonatomic, strong) TTModeIfttt *modeIfttt;
+@property (nonatomic) TTModeIfttt *modeIfttt;
 @property (nonatomic) IBOutlet WebView *webView;
 @property (nonatomic) NSPopover *authPopover;
+
+- (void)authorizeIfttt;
+- (void)openRecipe:(TTModeDirection)direction;
 
 @end
