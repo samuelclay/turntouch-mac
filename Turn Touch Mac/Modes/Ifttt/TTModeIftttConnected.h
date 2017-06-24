@@ -9,10 +9,12 @@
 #import "TTModeIfttt.h"
 #import "TTOptionsDetailViewController.h"
 
-@interface TTModeIftttConnected : TTOptionsDetailViewController
+@interface TTModeIftttConnected : TTOptionsDetailViewController {
+    NSPopover *authPopover;
+}
 
 @property (nonatomic, strong) TTModeIfttt *modeIfttt;
 
-- (IBAction)openRecipe:(id)sender;
+- (IBAction)clickEditButton:(id)sender;
 
 @end

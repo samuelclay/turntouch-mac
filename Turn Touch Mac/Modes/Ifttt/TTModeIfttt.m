@@ -139,8 +139,10 @@ static TTIftttState iftttState;
     [manager setRequestSerializer:[AFJSONRequestSerializer serializer]];
     
     [manager POST:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@" ---> Registered IFTTT: %@", responseObject);
         if (callback) callback();
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@" ---> IFTTT not authorized, can't register triggers");
         [self cancelConnectingToIfttt];
     }];
     
@@ -162,7 +164,7 @@ static TTIftttState iftttState;
                 [triggers addObject:@{
                                      @"app_label": modeName,
                                      @"app_direction": [appDelegate.modeMap directionName:mode.modeDirection],
-                                     @"button_lalbel": [mode actionTitleForAction:actionName
+                                     @"button_label": [mode actionTitleForAction:actionName
                                                                      buttonMoment:BUTTON_MOMENT_PRESSUP],
                                      @"button_direction": [appDelegate.modeMap directionName:actionDirection],
                                      @"button_tap_type": [appDelegate.modeMap mode:mode
@@ -181,17 +183,18 @@ static TTIftttState iftttState;
                     TTAction *action = [[TTAction alloc] initWithBatchActionKey:batchActionKey
                                                                       direction:actionDirection];
                     action.mode.modeDirection = mode.modeDirection;
-                    
+                    NSString *appDirection = [appDelegate.modeMap directionName:mode.modeDirection];
+                    NSString *buttonLabel = [mode actionTitleForAction:actionName
+                                                          buttonMoment:BUTTON_MOMENT_PRESSUP];
+                    NSString *tapType = [appDelegate.modeMap mode:action.mode batchAction:action
+                                                actionOptionValue:kIftttTapType
+                                                      inDirection:actionDirection];
                     [triggers addObject:@{
                                           @"app_label": modeName,
-                                          @"app_direction": [appDelegate.modeMap directionName:mode.modeDirection],
-                                          @"button_lalbel": [mode actionTitleForAction:actionName
-                                                                          buttonMoment:BUTTON_MOMENT_PRESSUP],
+                                          @"app_direction": appDirection,
+                                          @"button_label": buttonLabel,
                                           @"button_direction": [appDelegate.modeMap directionName:actionDirection],
-                                          @"button_tap_type": [appDelegate.modeMap mode:mode
-                                                                      actionOptionValue:kIftttTapType
-                                                                             actionName:actionName
-                                                                            inDirection:actionDirection],
+                                          @"button_tap_type": tapType,
                                           }];
                 }
             }

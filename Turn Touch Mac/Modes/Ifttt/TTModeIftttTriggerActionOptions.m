@@ -30,7 +30,7 @@
         iftttAuthViewController.modeIfttt = self.modeIfttt;
         
         authPopover = [[NSPopover alloc] init];
-        [authPopover setContentSize:NSMakeSize(320, 480)];
+        [authPopover setContentSize:NSMakeSize(420, 480)];
         [authPopover setBehavior:NSPopoverBehaviorTransient];
         [authPopover setAnimates:YES];
         [authPopover setContentViewController:iftttAuthViewController];

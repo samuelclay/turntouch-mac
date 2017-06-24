@@ -7,6 +7,7 @@
 //
 
 #import "TTModeIftttConnected.h"
+#import "TTModeIftttAuthViewController.h"
 
 @interface TTModeIftttConnected ()
 
@@ -14,13 +15,34 @@
 
 @implementation TTModeIftttConnected
 
+@synthesize modeIfttt;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
 }
 
-- (void)openRecipe:(id)sender {
-    
+- (void)clickEditButton:(id)sender {
+    [self.modeIfttt registerTriggers:^{
+        TTModeIftttAuthViewController *iftttAuthViewController = [[TTModeIftttAuthViewController alloc] init];
+        iftttAuthViewController.modeIfttt = self.modeIfttt;
+        
+        authPopover = [[NSPopover alloc] init];
+        [authPopover setContentSize:NSMakeSize(420, 480)];
+        [authPopover setBehavior:NSPopoverBehaviorTransient];
+        [authPopover setAnimates:YES];
+        [authPopover setContentViewController:iftttAuthViewController];
+        
+        NSRect entryRect = [sender convertRect:((NSButton *)sender).bounds
+                                        toView:appDelegate.panelController.backgroundView];
+        
+        iftttAuthViewController.authPopover = authPopover;
+        [authPopover showRelativeToRect:entryRect
+                                 ofView:appDelegate.panelController.backgroundView
+                          preferredEdge:NSMinYEdge];
+        
+        [iftttAuthViewController openRecipe:self.action.direction];
+    }];
 }
 
 @end

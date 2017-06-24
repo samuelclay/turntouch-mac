@@ -24,12 +24,12 @@
 #pragma mark - Actions
 
 - (IBAction)clickAuthButton:(id)sender {
-    [self.modeIfttt beginConnectingToIfttt:^{
+//    [self.modeIfttt beginConnectingToIfttt:^{
         TTModeIftttAuthViewController *iftttAuthViewController = [[TTModeIftttAuthViewController alloc] init];
         iftttAuthViewController.modeIfttt = self.modeIfttt;
         
         authPopover = [[NSPopover alloc] init];
-        [authPopover setContentSize:NSMakeSize(320, 480)];
+        [authPopover setContentSize:NSMakeSize(420, 480)];
         [authPopover setBehavior:NSPopoverBehaviorTransient];
         [authPopover setAnimates:YES];
         [authPopover setContentViewController:iftttAuthViewController];
@@ -43,7 +43,7 @@
                           preferredEdge:NSMinYEdge];
         
         [iftttAuthViewController authorizeIfttt];
-    }];
+//    }];
 }
 
 - (void)closePopover {

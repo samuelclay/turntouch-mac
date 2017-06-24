@@ -529,7 +529,8 @@ actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction 
     NSDictionary *modeDefaults = [NSDictionary
                                   dictionaryWithContentsOfFile:defaultPrefsFile];
     NSString *optionKey = [NSString stringWithFormat:@"%@:%@", actionName, optionName];
-    
+    NSLog(@" -> Getting mode action option default %@: %@ (%@)", optionKey, [modeDefaults objectForKey:optionKey], modeDefaults);
+
     return [modeDefaults objectForKey:optionKey];
 }
 
