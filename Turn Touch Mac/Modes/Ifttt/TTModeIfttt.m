@@ -90,7 +90,32 @@ static TTIftttState iftttState;
 }
 
 - (void)trigger:(BOOL)doubleTap {
+    NSString *modeName = [[appDelegate.modeMap.selectedMode class] title];
+    NSString *modeDirection = [appDelegate.modeMap directionName:self.modeDirection];
+    NSString *actionName = self.action.actionName;
+    NSString *actionTitle = [self actionTitleForAction:actionName buttonMoment:BUTTON_MOMENT_PRESSUP];
+    NSString *actionDirection = [appDelegate.modeMap directionName:self.action.direction];
+    NSString *tapType = [self.action optionValue:kIftttTapType];
+    NSDictionary *trigger = @{@"app_label": modeName,
+                              @"app_direction": modeDirection,
+                              @"button_label": actionTitle,
+                              @"button_direction": actionDirection,
+                              @"button_tap_type": tapType,
+                              };
+    NSDictionary *params = @{@"user_id": [appDelegate.modeMap userId],
+                             @"device_id": [appDelegate.modeMap deviceId],
+                             @"triggers": @[trigger],
+                             };
     
+    NSString *url = @"https://turntouch.com/ifttt/button_trigger";
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager setRequestSerializer:[AFJSONRequestSerializer serializer]];
+    
+    [manager POST:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@" ---> Button trigger: %@", responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@" ***> Button trigger failure: %@", error);
+    }];
 }
 
 #pragma mark - Ifttt Device
