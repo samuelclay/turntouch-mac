@@ -91,13 +91,13 @@ static TTIftttState iftttState;
 
 - (void)trigger:(BOOL)doubleTap {
     NSString *modeName = [[appDelegate.modeMap.selectedMode class] title];
-    NSString *modeDirection = [appDelegate.modeMap directionName:self.modeDirection];
+    NSString *modeDirectionName = [appDelegate.modeMap directionName:self.modeDirection];
     NSString *actionName = self.action.actionName;
     NSString *actionTitle = [self actionTitleForAction:actionName buttonMoment:BUTTON_MOMENT_PRESSUP];
     NSString *actionDirection = [appDelegate.modeMap directionName:self.action.direction];
     NSString *tapType = [self.action optionValue:kIftttTapType];
     NSDictionary *trigger = @{@"app_label": modeName,
-                              @"app_direction": modeDirection,
+                              @"app_direction": modeDirectionName,
                               @"button_label": actionTitle,
                               @"button_direction": actionDirection,
                               @"button_tap_type": tapType,
