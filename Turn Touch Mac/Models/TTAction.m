@@ -67,11 +67,11 @@
 
 - (void)changeActionOption:(NSString *)optionName to:(id)optionValue {
     if (!batchActionKey) {
-        [NSAppDelegate.modeMap changeActionOption:optionName to:optionValue];
+        [NSAppDelegate.modeMap changeActionOption:optionName to:optionValue direction:self.direction];
     } else {
         [NSAppDelegate.modeMap changeMode:mode
                            batchActionKey:batchActionKey
-                             actionOption:optionName to:optionValue];
+                             actionOption:optionName to:optionValue direction:self.direction];
     }
 }
 

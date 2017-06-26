@@ -554,14 +554,18 @@ actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction 
 }
 
 - (void)changeActionOption:(NSString *)optionName to:(id)optionValue {
-    [self changeMode:selectedMode actionOption:optionName to:optionValue];
+    [self changeMode:selectedMode actionOption:optionName to:optionValue direction:inspectingModeDirection];
 }
 
-- (void)changeMode:(TTMode *)mode actionOption:(NSString *)optionName to:(id)optionValue {
+- (void)changeActionOption:(NSString *)optionName to:(id)optionValue direction:(TTModeDirection)direction {
+    [self changeMode:selectedMode actionOption:optionName to:optionValue direction:direction];
+}
+
+- (void)changeMode:(TTMode *)mode actionOption:(NSString *)optionName to:(id)optionValue direction:(TTModeDirection)direction {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *modeDirectionName = [self directionName:mode.modeDirection];
-    NSString *actionDirectionName = [self directionName:inspectingModeDirection];
-    NSString *actionName = [mode actionNameInDirection:inspectingModeDirection];
+    NSString *actionDirectionName = [self directionName:direction];
+    NSString *actionName = [mode actionNameInDirection:direction];
     NSString *optionKey = [NSString stringWithFormat:@"TT:mode:%@-%@:action:%@-%@:option:%@",
                            NSStringFromClass([mode class]),
                            modeDirectionName,
@@ -575,10 +579,10 @@ actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction 
 }
 
 - (void)changeMode:(TTMode *)mode batchActionKey:(NSString *)batchActionKey
-      actionOption:(NSString *)optionName to:(id)optionValue {
+      actionOption:(NSString *)optionName to:(id)optionValue direction:(TTModeDirection)direction {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *modeDirectionName = [self directionName:mode.modeDirection];
-    NSString *actionDirectionName = [self directionName:inspectingModeDirection];
+    NSString *actionDirectionName = [self directionName:direction];
     NSString *optionKey = [NSString stringWithFormat:@"TT:mode:%@:action:%@:batchactions:%@:actionoption:%@",
                            modeDirectionName,
                            actionDirectionName,
@@ -641,6 +645,7 @@ actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction 
             break;
             
         case NO_DIRECTION:
+            return @"no_direction";
             break;
     }
     
@@ -724,10 +729,11 @@ actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction 
     NSString *buttonPress = [self momentName:buttonMoment];
     NSMutableArray *presses = [NSMutableArray array];
     
+    NSString *actionName = [selectedMode actionNameInDirection:direction];
     [presses addObject:@{
                          @"app_name": NSStringFromClass([selectedMode class]),
                          @"app_direction": [self directionName:[selectedMode modeDirection]],
-                         @"button_name": [selectedMode actionNameInDirection:direction],
+                         @"button_name": actionName ? actionName : @"none",
                          @"button_direction": [self directionName:direction],
                          @"button_moment": buttonPress,
                          @"batch_action": [NSNumber numberWithBool:NO],

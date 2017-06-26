@@ -63,9 +63,10 @@
 - (void)changeModeOption:(NSString *)optionName to:(id)optionValue;
 - (void)changeMode:(TTMode *)mode option:(NSString *)optionName to:(id)optionValue;
 - (void)changeActionOption:(NSString *)optionName to:(id)optionValue;
-- (void)changeMode:(TTMode *)mode actionOption:(NSString *)optionName to:(id)optionValue;
+- (void)changeActionOption:(NSString *)optionName to:(id)optionValue direction:(TTModeDirection)direction;
+- (void)changeMode:(TTMode *)mode actionOption:(NSString *)optionName to:(id)optionValue direction:(TTModeDirection)direction;
 - (void)changeMode:(TTMode *)mode batchActionKey:(NSString *)batchActionKey
-      actionOption:(NSString *)optionName to:(id)optionValue;
+      actionOption:(NSString *)optionName to:(id)optionValue direction:(TTModeDirection)direction;
 - (id)modeOptionValue:(NSString *)optionName;
 - (id)mode:(TTMode *)mode optionValue:(NSString *)optionName;
 - (id)actionOptionValue:(NSString *)optionName;
