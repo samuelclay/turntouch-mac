@@ -829,6 +829,8 @@ actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction 
     NSUUID *uuid;
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     
+    [[NSUbiquitousKeyValueStore defaultStore] synchronize];
+    
     // Check iCloud first
     NSString *uuidString = [[NSUbiquitousKeyValueStore defaultStore] stringForKey:kIftttUserIdKey];
     if (uuidString) {
