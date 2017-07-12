@@ -362,7 +362,7 @@
 		</data>
 		<key>Resources/TTModeHueBridge.nib</key>
 		<data>
-		lDVFRhcqMK4VNXnzfDWXjWyBsxs=
+		e8szZXsSUHOpcCSUzJeLc78D3Yo=
 		</data>
 		<key>Resources/TTModeHueConnect.nib</key>
 		<data>
@@ -395,6 +395,34 @@
 		<key>Resources/TTModeHueSleepOptions.nib</key>
 		<data>
 		sVcW3xMZUeJyAA9kpptrIHnDqf4=
+		</data>
+		<key>Resources/TTModeIfttt.plist</key>
+		<data>
+		CSyxp+w8QZnMqWjeBT83qagSOwI=
+		</data>
+		<key>Resources/TTModeIftttAuthViewController.nib</key>
+		<data>
+		lV1VUBCxJV0Gvf4My3J8AHHjXUY=
+		</data>
+		<key>Resources/TTModeIftttConnect.nib</key>
+		<data>
+		lWyKQZEV8Rn6dEq+KGjLEfC2MdE=
+		</data>
+		<key>Resources/TTModeIftttConnected.nib</key>
+		<data>
+		fpryHgLmQK/1jFOfDdyRjVS0qhY=
+		</data>
+		<key>Resources/TTModeIftttConnecting.nib</key>
+		<data>
+		x4/dvwwFGTz2P8dAMHwB/z1yYxg=
+		</data>
+		<key>Resources/TTModeIftttOptions.nib</key>
+		<data>
+		QVlKsUuYfXp7jPmZb2YcbVNUFsg=
+		</data>
+		<key>Resources/TTModeIftttTriggerActionOptions.nib</key>
+		<data>
+		ge0O5c8qIpi+NtqQ8IOjgPWU/DQ=
 		</data>
 		<key>Resources/TTModeMusic.plist</key>
 		<data>
@@ -478,7 +506,7 @@
 		</data>
 		<key>Resources/Turn Touch Mac.entitlements</key>
 		<data>
-		97a7PlMwni8IUdENS2TMBhBm/2Q=
+		zEJvUIWqK4a4QW2I49QjpEfOq1o=
 		</data>
 		<key>Resources/alarm_snooze.png</key>
 		<data>
@@ -490,7 +518,7 @@
 		</data>
 		<key>Resources/archived-expanded-entitlements.xcent</key>
 		<data>
-		97a7PlMwni8IUdENS2TMBhBm/2Q=
+		tE75JcYbTFqedTdHdvIjleSTSq8=
 		</data>
 		<key>Resources/button_chevron.png</key>
 		<data>
@@ -799,6 +827,10 @@
 		<data>
 		gknwoSMdt/zTkdcm4+kXL0/HJDE=
 		</data>
+		<key>Resources/mode_ifttt.png</key>
+		<data>
+		pJpAwMYUVisCgRCr5BUe5ygxQ0U=
+		</data>
 		<key>Resources/mode_mac.png</key>
 		<data>
 		xOQXhm71HsHjnFLz2t4JJ27mfCI=
@@ -994,7 +1026,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			Ptseo/5mCYPjY8+2Utjqwt06Rf8=
+			lAma0IbJKupC4IzIBHaMyIWOa3w=
 			</data>
 			<key>requirement</key>
 			<string>identifier "com.philips.hue.HueSDK-OSX" and anchor apple generic and certificate leaf[subject.CN] = "Mac Developer: Sam Clay (BYABZ8TGVG)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
@@ -1003,7 +1035,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			ZDmeODrcWNWVu+cyUGuL15DNGrk=
+			53sfsvZUG1PR0z78u7YmDJ5RnqE=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.andymatuschak.Sparkle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -1615,11 +1647,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			lDVFRhcqMK4VNXnzfDWXjWyBsxs=
+			e8szZXsSUHOpcCSUzJeLc78D3Yo=
 			</data>
 			<key>hash2</key>
 			<data>
-			b38/kQLk3CzFPmMozDURv5u52+bssTmlG5lcvEbACCY=
+			XCdqI27R0ur2x0fTfgoL88QqyLuFHCb6TJU4BC2uBdU=
 			</data>
 		</dict>
 		<key>Resources/TTModeHueConnect.nib</key>
@@ -1708,6 +1740,83 @@
 			<key>hash2</key>
 			<data>
 			ZMKZq/R0qJC2QiQnIDs1/uM3cLn4b7mJif2soYW9LcA=
+			</data>
+		</dict>
+		<key>Resources/TTModeIfttt.plist</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			CSyxp+w8QZnMqWjeBT83qagSOwI=
+			</data>
+			<key>hash2</key>
+			<data>
+			Yvw1Irn0U6yBNPkuUFNBoMR2QsTrhrUFwyZphHkWED8=
+			</data>
+		</dict>
+		<key>Resources/TTModeIftttAuthViewController.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			lV1VUBCxJV0Gvf4My3J8AHHjXUY=
+			</data>
+			<key>hash2</key>
+			<data>
+			zlkq3iaG6Ou0tPdjJZn2AjJuwFiAr8EzVo1VCXRQ7Kc=
+			</data>
+		</dict>
+		<key>Resources/TTModeIftttConnect.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			lWyKQZEV8Rn6dEq+KGjLEfC2MdE=
+			</data>
+			<key>hash2</key>
+			<data>
+			PU+yOxmSKHQ3It7HJ2gi6NX0SJSBJLyNvXz5Qbw5R4c=
+			</data>
+		</dict>
+		<key>Resources/TTModeIftttConnected.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			fpryHgLmQK/1jFOfDdyRjVS0qhY=
+			</data>
+			<key>hash2</key>
+			<data>
+			nFyzsJlOTWffnfJW8LDsfgeeJ9klaM+qGtYvfEfHAqw=
+			</data>
+		</dict>
+		<key>Resources/TTModeIftttConnecting.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			x4/dvwwFGTz2P8dAMHwB/z1yYxg=
+			</data>
+			<key>hash2</key>
+			<data>
+			PKb+Clx2Ug2vVDlqUZhSDVEHakUyoEftggeTFwLAyg0=
+			</data>
+		</dict>
+		<key>Resources/TTModeIftttOptions.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			QVlKsUuYfXp7jPmZb2YcbVNUFsg=
+			</data>
+			<key>hash2</key>
+			<data>
+			URUJwaZQ4uvDlXH/cn9KQuO76KoF46tUXtK0luzPgnE=
+			</data>
+		</dict>
+		<key>Resources/TTModeIftttTriggerActionOptions.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			ge0O5c8qIpi+NtqQ8IOjgPWU/DQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			ywbJwnT0iJOWhzYjSWmZB50dVYOPNHgb89R9Sc+Jqpw=
 			</data>
 		</dict>
 		<key>Resources/TTModeMusic.plist</key>
@@ -1934,11 +2043,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			97a7PlMwni8IUdENS2TMBhBm/2Q=
+			zEJvUIWqK4a4QW2I49QjpEfOq1o=
 			</data>
 			<key>hash2</key>
 			<data>
-			fHN3p5L/QCIfRE1RHedK0pYXGasvdtYJI/3b8GJhe+4=
+			PCMUFU5NyPEe4/0nku8e79bMPtk0cxg7Ie+TmfhPjp8=
 			</data>
 		</dict>
 		<key>Resources/alarm_snooze.png</key>
@@ -1967,11 +2076,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			97a7PlMwni8IUdENS2TMBhBm/2Q=
+			tE75JcYbTFqedTdHdvIjleSTSq8=
 			</data>
 			<key>hash2</key>
 			<data>
-			fHN3p5L/QCIfRE1RHedK0pYXGasvdtYJI/3b8GJhe+4=
+			EZwZmyMsZHyRg7xhRlNxpwIFIq1f+WosS9H51ZnXbas=
 			</data>
 		</dict>
 		<key>Resources/button_chevron.png</key>
@@ -2783,6 +2892,17 @@
 			sYcqKgBELNzajcHuT2NFPdNnP+iAV4HrmEAfvFRHRgY=
 			</data>
 		</dict>
+		<key>Resources/mode_ifttt.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			pJpAwMYUVisCgRCr5BUe5ygxQ0U=
+			</data>
+			<key>hash2</key>
+			<data>
+			crmd3Qg2s071Kx+peBJydVu9ffIWivH+T5Es8zaaJJY=
+			</data>
+		</dict>
 		<key>Resources/mode_mac.png</key>
 		<dict>
 			<key>hash</key>
@@ -3298,6 +3418,17 @@
 			<key>hash2</key>
 			<data>
 			2bj7sMSDEuRolQ+sQf7NqccJwpcnzvo0JPkl3jGflik=
+			</data>
+		</dict>
+		<key>embedded.provisionprofile</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			AJLa69Q2L+yavKRuNuz/TbT59rg=
+			</data>
+			<key>hash2</key>
+			<data>
+			cYSrZepfR/37cBcCdY26rPYU0HsST3psXYkrPHSQDIs=
 			</data>
 		</dict>
 	</dict>
