@@ -19,7 +19,7 @@ typedef enum TTIftttState : NSUInteger {
 
 @protocol TTModeIftttDelegate <NSObject>
 @required
-- (void)changeState:(TTIftttState)hueState withMode:(TTModeIfttt *)modeWemo;
+- (void)changeState:(TTIftttState)sonosState withMode:(TTModeIfttt *)modeIfttt;
 @end
 
 @interface TTModeIfttt : TTMode
