@@ -10,15 +10,19 @@
 
 @implementation TTModeSonos
 
-NSString *const kSonos = @"TT:Sonos";
+NSString *const kSonosDeviceId = @"TT:Sonos:sonosDeviceUUID";
+NSString *const kSonosCachedDevices = @"TT:Sonos:sonosCachedDevices";
 
 static TTSonosState sonosState;
+static SonosManager *sonosManager;
 
 @synthesize delegate;
 
 - (instancetype)init {
     if (self = [super init]) {
         [self.delegate changeState:TTModeSonos.sonosState withMode:self];
+        
+        sonosManager = [SonosManager sharedInstance];
     }
     
     return self;
@@ -32,7 +36,7 @@ static TTSonosState sonosState;
 }
 
 + (NSString *)description {
-    return @"Connected Wireless Speakers";
+    return @"Connected wireless speakers";
 }
 
 + (NSString *)imageName {
@@ -140,7 +144,7 @@ static TTSonosState sonosState;
 
 - (void)activate {
     if ([self foundDevices].count == 0) {
-        self beginConnectingToSonos:nil];
+        [self beginConnectingToSonos:nil];
     } else {
         TTModeSonos.sonosState = SONOS_STATE_CONNECTED;
     }
@@ -229,16 +233,117 @@ static TTSonosState sonosState;
 #pragma mark - Sonos Devices
 
 - (NSArray *)foundDevices {
+    NSArray *devices = [sonosManager allDevices];
+    if (devices.count == 0) {
+        devices = [self cachedDevices];
+    }
     
+    devices = [devices sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        return [((SonosController *)obj1).name compare:((SonosController *)obj2).name];
+    }];
+    
+    return devices;
+}
+
+- (SonosController *)selectedDevice {
+    return [self selectedDevice:NO];
+}
+
+- (SonosController *)selectedDevice:(BOOL)coordinator {
+    NSArray *devices = [self foundDevices];
+    if (devices.count == 0) return nil;
+    
+    NSString *deviceId = [appDelegate.modeMap mode:self.action.mode optionValue:kSonosDeviceId];
+    for (SonosController *foundDevice in devices) {
+        if ([foundDevice.uuid isEqualToString:deviceId]) {
+            // Find the coordinator in the same group as the device
+            if (coordinator && !foundDevice.isCoordinator) {
+                for (SonosController *coordinatorDevice in devices) {
+                    if (coordinatorDevice.isCoordinator && [coordinatorDevice.group isEqualToString:foundDevice.group]) {
+                        return coordinatorDevice;
+                    }
+                }
+            }
+            
+            return foundDevice;
+        }
+    }
+    
+    return [devices objectAtIndex:0];
+}
+
+- (NSArray *)cachedDevices {
+    NSMutableArray<SonosController *> *cachedDevices = [NSMutableArray array];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    
+    NSArray *devices = [prefs arrayForKey:kSonosCachedDevices];
+    if (!devices || devices.count == 0) return cachedDevices;
+    
+    for (NSDictionary *device in devices) {
+        NSString *ip = device[@"ip"];
+        int port = [device[@"port"] intValue];
+        
+        SonosController *cachedDevice = [[SonosController alloc] initWithIP:ip port:port];
+        cachedDevice.group = device[@"group"];
+        cachedDevice.coordinator = [device[@"isCoordinator"] boolValue];
+        cachedDevice.name = device[@"name"];
+        cachedDevice.uuid = device[@"uuid"];
+        [cachedDevices addObject:cachedDevice];
+        NSLog(@" ---> Loading cached Sonos: %@", cachedDevice);
+    }
+    
+    return cachedDevices;
+}
+
+- (void)cacheDevices:(NSArray<SonosController *> *)devices {
+    NSMutableArray *cachedDevices = [NSMutableArray array];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+
+    for (SonosController *device in devices) {
+        NSMutableDictionary *cachedDevice = [NSMutableDictionary dictionary];
+        cachedDevice[@"ip"] = device.ip;
+        cachedDevice[@"port"] = [NSNumber numberWithInt:device.port];
+        cachedDevice[@"isCoordinator"] = [NSNumber numberWithBool:device.isCoordinator];
+        cachedDevice[@"name"] = device.name;
+        cachedDevice[@"group"] = device.group;
+        cachedDevice[@"uuid"] = device.uuid;
+        [cachedDevices addObject:cachedDevice];
+    }
+    
+    [prefs setObject:cachedDevices forKey:kSonosCachedDevices];
+    [prefs synchronize];
 }
 
 - (void)beginConnectingToSonos:(void (^)())callback {
+    if (sonosState == SONOS_STATE_CONNECTING) {
+        NSLog(@" ---> Already connecting to sonos...");
+        return;
+    }
+    
     sonosState = SONOS_STATE_CONNECTING;
     [self.delegate changeState:sonosState withMode:self];
+    
+    [sonosManager discoverControllers:^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSArray *devices = [self foundDevices];
+            for (SonosController *device in devices) {
+                [self deviceReady:device];
+            }
+            [self cacheDevices:devices];
+            if (devices.count == 0) {
+                [self cancelConnectingToSonos];
+            }
+        });
+    }];
     
 }
 
 - (void)cancelConnectingToSonos {
+    sonosState = SONOS_STATE_CONNECTED;
+    [self.delegate changeState:sonosState withMode:self];
+}
+
+- (void)deviceReady:(SonosController *)device {
     sonosState = SONOS_STATE_CONNECTED;
     [self.delegate changeState:sonosState withMode:self];
 }

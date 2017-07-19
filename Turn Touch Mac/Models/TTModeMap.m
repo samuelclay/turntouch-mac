@@ -25,6 +25,7 @@
 #import "TTModeSpotify.h"
 #import "TTBatchActions.h"
 #import "TTModeIfttt.h"
+#import "TTModeSonos.h"
 
 @implementation TTModeMap
 
@@ -54,16 +55,17 @@
     if (self = [super init]) {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [self setAvailableModes:@[@"TTModeMac",
-                                  @"TTModeAlarmClock",
                                   @"TTModeMusic",
+                                  @"TTModeHue",
+                                  @"TTModeNest",
+                                  @"TTModeIfttt",
+                                  @"TTModeSonos",
+                                  @"TTModeWemo",
+                                  @"TTModeAlarmClock",
                                   @"TTModeSpotify",
                                   @"TTModeVideo",
                                   @"TTModeNews",
                                   @"TTModeWeb",
-                                  @"TTModeHue",
-                                  @"TTModeNest",
-                                  @"TTModeIfttt",
-                                  @"TTModeWemo",
                                   @"TTModeCustom"]];
         
         activeModeDirection = NO_DIRECTION;

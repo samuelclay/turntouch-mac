@@ -27,7 +27,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CocoaAsyncSocket/GCDAsyncUdpSocket.h>
+#import "GCDAsyncUdpSocket.h"
 
 @interface SonosDiscover : NSObject <GCDAsyncUdpSocketDelegate>
 

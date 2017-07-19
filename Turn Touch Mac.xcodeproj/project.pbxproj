@@ -107,10 +107,6 @@
 		FF27407A1A7C5BC200C55579 /* itunes_movies_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2740771A7C5BC200C55579 /* itunes_movies_icon.png */; };
 		FF27407B1A7C5BC200C55579 /* itunes_tv_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2740781A7C5BC200C55579 /* itunes_tv_icon.png */; };
 		FF2C2E031C52E62000FAD7E2 /* TTModeWemoMulticastServer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E021C52E62000FAD7E2 /* TTModeWemoMulticastServer.m */; };
-		FF2C2E481C53077300FAD7E2 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E3D1C53077300FAD7E2 /* GCDAsyncSocket.m */; };
-		FF2C2E491C53077300FAD7E2 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E3F1C53077300FAD7E2 /* GCDAsyncUdpSocket.m */; };
-		FF2C2E4A1C53077300FAD7E2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF2C2E401C53077300FAD7E2 /* Info.plist */; };
-		FF2C2E4B1C53077300FAD7E2 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E431C53077300FAD7E2 /* AsyncSocket.m */; };
 		FF2C2E501C544A5300FAD7E2 /* TTModeWemoDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E4F1C544A5300FAD7E2 /* TTModeWemoDevice.m */; };
 		FF2C2E521C545D1800FAD7E2 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FF2C2E511C545D1800FAD7E2 /* libxml2.tbd */; };
 		FF2C2E561C545E6400FAD7E2 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E551C545E6400FAD7E2 /* XPathQuery.m */; };
@@ -137,6 +133,17 @@
 		FF3641F71A660204003CC03C /* TTModeHueSceneOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3641F51A660204003CC03C /* TTModeHueSceneOptions.m */; };
 		FF3641F81A660204003CC03C /* TTModeHueSceneOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3641F61A660204003CC03C /* TTModeHueSceneOptions.xib */; };
 		FF3760C71ABB59210055EC6D /* logo_16.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3760C61ABB59210055EC6D /* logo_16.png */; };
+		FF3D21F91F1EF50900F7F5BF /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3D21F51F1EF50900F7F5BF /* GCDAsyncSocket.m */; };
+		FF3D21FA1F1EF50900F7F5BF /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3D21F71F1EF50900F7F5BF /* GCDAsyncUdpSocket.m */; };
+		FF3D21FD1F1EF6AE00F7F5BF /* mode_sonos.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3D21FC1F1EF6AE00F7F5BF /* mode_sonos.png */; };
+		FF3D22011F1F1BE100F7F5BF /* TTModeSonosOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3D21FF1F1F1BE100F7F5BF /* TTModeSonosOptions.m */; };
+		FF3D22021F1F1BE100F7F5BF /* TTModeSonosOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3D22001F1F1BE100F7F5BF /* TTModeSonosOptions.xib */; };
+		FF3D22061F1F1C9400F7F5BF /* TTModeSonosConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3D22041F1F1C9400F7F5BF /* TTModeSonosConnect.m */; };
+		FF3D22071F1F1C9400F7F5BF /* TTModeSonosConnect.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3D22051F1F1C9400F7F5BF /* TTModeSonosConnect.xib */; };
+		FF3D220B1F1F1CA500F7F5BF /* TTModeSonosConnecting.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3D22091F1F1CA500F7F5BF /* TTModeSonosConnecting.m */; };
+		FF3D220C1F1F1CA500F7F5BF /* TTModeSonosConnecting.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3D220A1F1F1CA500F7F5BF /* TTModeSonosConnecting.xib */; };
+		FF3D22101F1F1CB400F7F5BF /* TTModeSonosConnected.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3D220E1F1F1CB400F7F5BF /* TTModeSonosConnected.m */; };
+		FF3D22111F1F1CB400F7F5BF /* TTModeSonosConnected.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3D220F1F1F1CB400F7F5BF /* TTModeSonosConnected.xib */; };
 		FF429AD21919C630007C485E /* TTModeMenuCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF429AD11919C630007C485E /* TTModeMenuCollectionView.m */; };
 		FF4E26321823197D00D477F6 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4E26311823197D00D477F6 /* IOKit.framework */; };
 		FF5250151C80F9740017A847 /* TTModeWemoDeviceOnOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5250141C80F9740017A847 /* TTModeWemoDeviceOnOptions.m */; };
@@ -572,17 +579,6 @@
 		FF2740781A7C5BC200C55579 /* itunes_tv_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_tv_icon.png; sourceTree = "<group>"; };
 		FF2C2E011C52E62000FAD7E2 /* TTModeWemoMulticastServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeWemoMulticastServer.h; path = Modes/Wemo/TTModeWemoMulticastServer.h; sourceTree = "<group>"; };
 		FF2C2E021C52E62000FAD7E2 /* TTModeWemoMulticastServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeWemoMulticastServer.m; path = Modes/Wemo/TTModeWemoMulticastServer.m; sourceTree = "<group>"; };
-		FF2C2E391C53077300FAD7E2 /* CocoaAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaAsyncSocket.h; sourceTree = "<group>"; };
-		FF2C2E3B1C53077300FAD7E2 /* Documentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Documentation.html; sourceTree = "<group>"; };
-		FF2C2E3C1C53077300FAD7E2 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
-		FF2C2E3D1C53077300FAD7E2 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
-		FF2C2E3E1C53077300FAD7E2 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
-		FF2C2E3F1C53077300FAD7E2 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
-		FF2C2E401C53077300FAD7E2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FF2C2E421C53077300FAD7E2 /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
-		FF2C2E431C53077300FAD7E2 /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
-		FF2C2E441C53077300FAD7E2 /* AsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncUdpSocket.h; sourceTree = "<group>"; };
-		FF2C2E461C53077300FAD7E2 /* Documentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Documentation.html; sourceTree = "<group>"; };
 		FF2C2E4E1C544A5300FAD7E2 /* TTModeWemoDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeWemoDevice.h; path = Modes/Wemo/TTModeWemoDevice.h; sourceTree = "<group>"; };
 		FF2C2E4F1C544A5300FAD7E2 /* TTModeWemoDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeWemoDevice.m; path = Modes/Wemo/TTModeWemoDevice.m; sourceTree = "<group>"; };
 		FF2C2E511C545D1800FAD7E2 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
@@ -624,6 +620,23 @@
 		FF3641F51A660204003CC03C /* TTModeHueSceneOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeHueSceneOptions.m; sourceTree = "<group>"; };
 		FF3641F61A660204003CC03C /* TTModeHueSceneOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTModeHueSceneOptions.xib; sourceTree = "<group>"; };
 		FF3760C61ABB59210055EC6D /* logo_16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_16.png; sourceTree = "<group>"; };
+		FF3D21F41F1EF50900F7F5BF /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		FF3D21F51F1EF50900F7F5BF /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		FF3D21F61F1EF50900F7F5BF /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
+		FF3D21F71F1EF50900F7F5BF /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
+		FF3D21FC1F1EF6AE00F7F5BF /* mode_sonos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mode_sonos.png; sourceTree = "<group>"; };
+		FF3D21FE1F1F1BE100F7F5BF /* TTModeSonosOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeSonosOptions.h; path = Modes/Sonos/TTModeSonosOptions.h; sourceTree = "<group>"; };
+		FF3D21FF1F1F1BE100F7F5BF /* TTModeSonosOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeSonosOptions.m; path = Modes/Sonos/TTModeSonosOptions.m; sourceTree = "<group>"; };
+		FF3D22001F1F1BE100F7F5BF /* TTModeSonosOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeSonosOptions.xib; path = Modes/Sonos/TTModeSonosOptions.xib; sourceTree = "<group>"; };
+		FF3D22031F1F1C9400F7F5BF /* TTModeSonosConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeSonosConnect.h; path = Modes/Sonos/TTModeSonosConnect.h; sourceTree = "<group>"; };
+		FF3D22041F1F1C9400F7F5BF /* TTModeSonosConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeSonosConnect.m; path = Modes/Sonos/TTModeSonosConnect.m; sourceTree = "<group>"; };
+		FF3D22051F1F1C9400F7F5BF /* TTModeSonosConnect.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeSonosConnect.xib; path = Modes/Sonos/TTModeSonosConnect.xib; sourceTree = "<group>"; };
+		FF3D22081F1F1CA500F7F5BF /* TTModeSonosConnecting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeSonosConnecting.h; path = Modes/Sonos/TTModeSonosConnecting.h; sourceTree = "<group>"; };
+		FF3D22091F1F1CA500F7F5BF /* TTModeSonosConnecting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeSonosConnecting.m; path = Modes/Sonos/TTModeSonosConnecting.m; sourceTree = "<group>"; };
+		FF3D220A1F1F1CA500F7F5BF /* TTModeSonosConnecting.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeSonosConnecting.xib; path = Modes/Sonos/TTModeSonosConnecting.xib; sourceTree = "<group>"; };
+		FF3D220D1F1F1CB400F7F5BF /* TTModeSonosConnected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeSonosConnected.h; path = Modes/Sonos/TTModeSonosConnected.h; sourceTree = "<group>"; };
+		FF3D220E1F1F1CB400F7F5BF /* TTModeSonosConnected.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeSonosConnected.m; path = Modes/Sonos/TTModeSonosConnected.m; sourceTree = "<group>"; };
+		FF3D220F1F1F1CB400F7F5BF /* TTModeSonosConnected.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeSonosConnected.xib; path = Modes/Sonos/TTModeSonosConnected.xib; sourceTree = "<group>"; };
 		FF429AD01919C630007C485E /* TTModeMenuCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeMenuCollectionView.h; sourceTree = "<group>"; };
 		FF429AD11919C630007C485E /* TTModeMenuCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeMenuCollectionView.m; sourceTree = "<group>"; };
 		FF4E26311823197D00D477F6 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -1153,6 +1166,7 @@
 				FF01CA481C46DCC200F83A73 /* mode_pandora.png */,
 				FF01CA491C46DCC200F83A73 /* mode_presentation.png */,
 				FF01CA4A1C46DCC200F83A73 /* mode_smartlock.png */,
+				FF3D21FC1F1EF6AE00F7F5BF /* mode_sonos.png */,
 				FF01CA4B1C46DCC200F83A73 /* mode_spotify.png */,
 				FF01CA4C1C46DCC200F83A73 /* mode_timer.png */,
 				FF01CA4D1C46DCC200F83A73 /* mode_video.png */,
@@ -1358,40 +1372,6 @@
 			path = iTunes;
 			sourceTree = "<group>";
 		};
-		FF2C2E381C53077300FAD7E2 /* CocoaAsyncSocket */ = {
-			isa = PBXGroup;
-			children = (
-				FF2C2E391C53077300FAD7E2 /* CocoaAsyncSocket.h */,
-				FF2C2E3A1C53077300FAD7E2 /* GCD */,
-				FF2C2E401C53077300FAD7E2 /* Info.plist */,
-				FF2C2E411C53077300FAD7E2 /* RunLoop */,
-			);
-			path = CocoaAsyncSocket;
-			sourceTree = "<group>";
-		};
-		FF2C2E3A1C53077300FAD7E2 /* GCD */ = {
-			isa = PBXGroup;
-			children = (
-				FF2C2E3B1C53077300FAD7E2 /* Documentation.html */,
-				FF2C2E3C1C53077300FAD7E2 /* GCDAsyncSocket.h */,
-				FF2C2E3D1C53077300FAD7E2 /* GCDAsyncSocket.m */,
-				FF2C2E3E1C53077300FAD7E2 /* GCDAsyncUdpSocket.h */,
-				FF2C2E3F1C53077300FAD7E2 /* GCDAsyncUdpSocket.m */,
-			);
-			path = GCD;
-			sourceTree = "<group>";
-		};
-		FF2C2E411C53077300FAD7E2 /* RunLoop */ = {
-			isa = PBXGroup;
-			children = (
-				FF2C2E421C53077300FAD7E2 /* AsyncSocket.h */,
-				FF2C2E431C53077300FAD7E2 /* AsyncSocket.m */,
-				FF2C2E441C53077300FAD7E2 /* AsyncUdpSocket.h */,
-				FF2C2E461C53077300FAD7E2 /* Documentation.html */,
-			);
-			path = RunLoop;
-			sourceTree = "<group>";
-		};
 		FF2C2E531C545E6400FAD7E2 /* XPathQuery */ = {
 			isa = PBXGroup;
 			children = (
@@ -1435,6 +1415,17 @@
 			);
 			name = Images;
 			path = "Turn Touch Mac/Images";
+			sourceTree = "<group>";
+		};
+		FF3D21F31F1EF50900F7F5BF /* CocoaAsyncSocket */ = {
+			isa = PBXGroup;
+			children = (
+				FF3D21F41F1EF50900F7F5BF /* GCDAsyncSocket.h */,
+				FF3D21F51F1EF50900F7F5BF /* GCDAsyncSocket.m */,
+				FF3D21F61F1EF50900F7F5BF /* GCDAsyncUdpSocket.h */,
+				FF3D21F71F1EF50900F7F5BF /* GCDAsyncUdpSocket.m */,
+			);
+			path = CocoaAsyncSocket;
 			sourceTree = "<group>";
 		};
 		FF5295C21AD5B970007DDC02 /* Title Bar */ = {
@@ -2013,8 +2004,8 @@
 		FF936058196DF67500675B7B /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				FF3D21F31F1EF50900F7F5BF /* CocoaAsyncSocket */,
 				FF2C2E531C545E6400FAD7E2 /* XPathQuery */,
-				FF2C2E381C53077300FAD7E2 /* CocoaAsyncSocket */,
 				FF557AED1C4F393C005FB7FD /* Firebase.framework */,
 				FF557AA61C49C63D005FB7FD /* Nest */,
 				FF1F13551ADC90E700B52A0D /* MLCalendar */,
@@ -2247,6 +2238,18 @@
 			children = (
 				FFF02BD01F16A20B003E5799 /* TTModeSonos.h */,
 				FFF02BD11F16A20B003E5799 /* TTModeSonos.m */,
+				FF3D21FE1F1F1BE100F7F5BF /* TTModeSonosOptions.h */,
+				FF3D21FF1F1F1BE100F7F5BF /* TTModeSonosOptions.m */,
+				FF3D22001F1F1BE100F7F5BF /* TTModeSonosOptions.xib */,
+				FF3D22031F1F1C9400F7F5BF /* TTModeSonosConnect.h */,
+				FF3D22041F1F1C9400F7F5BF /* TTModeSonosConnect.m */,
+				FF3D22051F1F1C9400F7F5BF /* TTModeSonosConnect.xib */,
+				FF3D22081F1F1CA500F7F5BF /* TTModeSonosConnecting.h */,
+				FF3D22091F1F1CA500F7F5BF /* TTModeSonosConnecting.m */,
+				FF3D220A1F1F1CA500F7F5BF /* TTModeSonosConnecting.xib */,
+				FF3D220D1F1F1CB400F7F5BF /* TTModeSonosConnected.h */,
+				FF3D220E1F1F1CB400F7F5BF /* TTModeSonosConnected.m */,
+				FF3D220F1F1F1CB400F7F5BF /* TTModeSonosConnected.xib */,
 			);
 			name = Sonos;
 			sourceTree = "<group>";
@@ -2446,6 +2449,7 @@
 				FF3641F01A60C422003CC03C /* TTModeHuePushlink.xib in Resources */,
 				FF61355C1C61CDDC00F431D7 /* music_play.png in Resources */,
 				FF557ABD1C49C6A8005FB7FD /* TTModeNestOptions.xib in Resources */,
+				FF3D22021F1F1BE100F7F5BF /* TTModeSonosOptions.xib in Resources */,
 				FF8C834117AB14B5000166FC /* InfoPlist.strings in Resources */,
 				FF27406F1A7C576900C55579 /* itunes_audiobook_icon.png in Resources */,
 				FF6135511C61CDDC00F431D7 /* alarm_snooze.png in Resources */,
@@ -2471,7 +2475,6 @@
 				FF6135561C61CDDC00F431D7 /* hue_evening.png in Resources */,
 				FF5295C11AD4D2BE007DDC02 /* title@2x.png in Resources */,
 				FF2740721A7C576900C55579 /* itunes_playlist_icon.png in Resources */,
-				FF2C2E4A1C53077300FAD7E2 /* Info.plist in Resources */,
 				FF8A73CA1ABA69410023AA53 /* logo_256.png in Resources */,
 				FF01CA761C46DCC200F83A73 /* mode_presentation.png in Resources */,
 				FF8D1AA91C98F5D3006AA1A2 /* logo_white_with_title.png in Resources */,
@@ -2481,6 +2484,7 @@
 				FF6135611C61CDDC00F431D7 /* music_volume_mute.png in Resources */,
 				FFFF0C7A1EFC974400E29E6D /* TTModeIftttConnecting.xib in Resources */,
 				FF01CA601C46DCC200F83A73 /* cog.png in Resources */,
+				FF3D220C1F1F1CA500F7F5BF /* TTModeSonosConnecting.xib in Resources */,
 				FF2705461C93A348000BB10F /* modal_ftux_change_action.png in Resources */,
 				FF01CA691C46DCC200F83A73 /* macbookpro.png in Resources */,
 				FFAB2C131E0B377A00A16433 /* button_chevron_x.png in Resources */,
@@ -2508,6 +2512,7 @@
 				FF913D271924366C005C336F /* TTModeAlarmClock.plist in Resources */,
 				FF8A73C81ABA69410023AA53 /* logo_64.png in Resources */,
 				FFFF0C841EFC976B00E29E6D /* TTModeIftttTriggerActionOptions.xib in Resources */,
+				FF3D22071F1F1C9400F7F5BF /* TTModeSonosConnect.xib in Resources */,
 				FF27407A1A7C5BC200C55579 /* itunes_movies_icon.png in Resources */,
 				FF6135591C61CDDC00F431D7 /* hue_sunset.png in Resources */,
 				FF8448FA1E10DB1A00C1091E /* TTModeCustomURLOptions.xib in Resources */,
@@ -2574,6 +2579,7 @@
 				FF61355E1C61CDDC00F431D7 /* music_rewind.png in Resources */,
 				FF01CA651C46DCC200F83A73 /* heart.png in Resources */,
 				FF27052F1C90FB68000BB10F /* TTModalPairingScanningView.xib in Resources */,
+				FF3D21FD1F1EF6AE00F7F5BF /* mode_sonos.png in Resources */,
 				FF21F92E1E10EB6800DFDBB4 /* modal_failure.png in Resources */,
 				FF2740701A7C576900C55579 /* itunes_genius_icon.png in Resources */,
 				FF01CA621C46DCC200F83A73 /* equalizer-1.png in Resources */,
@@ -2582,6 +2588,7 @@
 				FF2705471C93A348000BB10F /* modal_ftux_change_mode.png in Resources */,
 				FFAB2C181E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.xib in Resources */,
 				FF8A73C71ABA69410023AA53 /* logo_32.png in Resources */,
+				FF3D22111F1F1CB400F7F5BF /* TTModeSonosConnected.xib in Resources */,
 				FFFF0C8F1EFDFF8100E29E6D /* mode_ifttt.png in Resources */,
 				FF01CA7A1C46DCC200F83A73 /* mode_video.png in Resources */,
 				FF7305C41A5CB3EF009A852D /* TTModeHueConnect.xib in Resources */,
@@ -2753,6 +2760,7 @@
 				FF877CD81C6C19F1007940C3 /* TTHUDMenuButton.m in Sources */,
 				FF557AE41C4ED8BE005FB7FD /* TTModeNestConnected.m in Sources */,
 				FF7305B11A5C9C76009A852D /* DDLog.m in Sources */,
+				FF3D21F91F1EF50900F7F5BF /* GCDAsyncSocket.m in Sources */,
 				FF557AE91C4F1CD0005FB7FD /* TTModeNestSetTempOptions.m in Sources */,
 				FFFF0C831EFC976B00E29E6D /* TTModeIftttTriggerActionOptions.m in Sources */,
 				FF557AD51C4DBB4A005FB7FD /* TTModeNestAuthViewController.m in Sources */,
@@ -2766,6 +2774,7 @@
 				FF0E12CA18247BAE00D49EC7 /* TTMode.m in Sources */,
 				FF557AA21C4855D4005FB7FD /* TTModeWemo.m in Sources */,
 				FF7305B31A5C9C76009A852D /* ContextFilterLogFormatter.m in Sources */,
+				FF3D220B1F1F1CA500F7F5BF /* TTModeSonosConnecting.m in Sources */,
 				FF904B3F1BE9B80100AD00F3 /* TTModeHUDWindowController.m in Sources */,
 				FF801327186CF90700955218 /* TTPanel.m in Sources */,
 				FF904B881BE9B88700AD00F3 /* UnzipFirmware.m in Sources */,
@@ -2786,7 +2795,6 @@
 				FF01CAAC1C473EC100F83A73 /* NSXMLNode+HTMLUtilities.m in Sources */,
 				FF0E12CF18247D6100D49EC7 /* TTModeMusic.m in Sources */,
 				FFB5FF381A671BA200DF617A /* TTModeHueSceneEarlyEveningOptions.m in Sources */,
-				FF2C2E491C53077300FAD7E2 /* GCDAsyncUdpSocket.m in Sources */,
 				FF557A9E1C4855BD005FB7FD /* TTModeNest.m in Sources */,
 				FF87E9F21C9630E500682461 /* TTModalFTUXView.m in Sources */,
 				FFC730E81B067434003538D5 /* TTModeHueRandomOptions.m in Sources */,
@@ -2823,6 +2831,7 @@
 				FFB5FF3B1A671BE900DF617A /* TTModeHueSceneLateEveningOptions.m in Sources */,
 				FFB5FF411A671C4100DF617A /* TTModeHueOffOptions.m in Sources */,
 				FF904B981BE9BA3700AD00F3 /* unzip.c in Sources */,
+				FF3D22061F1F1C9400F7F5BF /* TTModeSonosConnect.m in Sources */,
 				FF2C2E031C52E62000FAD7E2 /* TTModeWemoMulticastServer.m in Sources */,
 				FF8528FB1A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.m in Sources */,
 				FF5295C51AD5B9A4007DDC02 /* TTTitleBarView.m in Sources */,
@@ -2838,7 +2847,6 @@
 				FFB167111923E6BF008FA1AF /* TTBoxView.m in Sources */,
 				FFAFCBC519130F520058B9CB /* TTPanelArrowView.m in Sources */,
 				FFA8EA9D190F07A500679A4D /* TTModeTab.m in Sources */,
-				FF2C2E481C53077300FAD7E2 /* GCDAsyncSocket.m in Sources */,
 				FFCFCFBA1D88D9CE00FBC3E7 /* LaunchAtLoginController.m in Sources */,
 				FFF02BDF1F16A271003E5799 /* SonosManager.m in Sources */,
 				FF7305AF1A5C9C76009A852D /* DDASLLogger.m in Sources */,
@@ -2851,9 +2859,11 @@
 				FFABAB8A1C28E6F000AD5620 /* TTBatchActions.m in Sources */,
 				FF913D2C19243BFD005C336F /* TTModeAlarmSnoozeOptions.m in Sources */,
 				FFFF0C791EFC974400E29E6D /* TTModeIftttConnecting.m in Sources */,
+				FF3D22101F1F1CB400F7F5BF /* TTModeSonosConnected.m in Sources */,
 				FF98A2E81867DBE70032CC7A /* TTPanelController.m in Sources */,
 				FF01CAB01C473EC100F83A73 /* NSURL+ValidityChecking.m in Sources */,
 				FFF02BDE1F16A271003E5799 /* SonosDiscover.m in Sources */,
+				FF3D21FA1F1EF50900F7F5BF /* GCDAsyncUdpSocket.m in Sources */,
 				FF5295C81AD5B9B8007DDC02 /* TTSettingsButton.m in Sources */,
 				FF3641EF1A60C422003CC03C /* TTModeHuePushlink.m in Sources */,
 				FFF049771CE11FCF006CE427 /* TTModeHueBridge.m in Sources */,
@@ -2869,12 +2879,12 @@
 				FF801338186E5D9700955218 /* TTOptionsActionTitle.m in Sources */,
 				FF557AB31C49C63D005FB7FD /* AccessToken.m in Sources */,
 				FF79C5851D5815AB006C75C9 /* TTModeNewsWindow.m in Sources */,
+				FF3D22011F1F1BE100F7F5BF /* TTModeSonosOptions.m in Sources */,
 				FF6135351C5AF59D00F431D7 /* TTHUDMenuView.m in Sources */,
 				FF98A2ED1867DC320032CC7A /* main.m in Sources */,
 				FF2705331C9247A8000BB10F /* TTModalBarButton.m in Sources */,
 				FF2C2E501C544A5300FAD7E2 /* TTModeWemoDevice.m in Sources */,
 				FF5295CB1AD5F59C007DDC02 /* TTDevice.m in Sources */,
-				FF2C2E4B1C53077300FAD7E2 /* AsyncSocket.m in Sources */,
 				FF18B1EC1EF1E8C900BC9725 /* TTModalSettings.m in Sources */,
 				FFABAB8D1C2A21A200AD5620 /* TTAddActionButtonView.m in Sources */,
 				FF3641DF1A5F5734003CC03C /* TTModeHueConnect.m in Sources */,

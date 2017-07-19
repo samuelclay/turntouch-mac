@@ -8,6 +8,7 @@
 
 #import "TTMode.h"
 #import "SonosController.h"
+#import "SonosManager.h"
 
 typedef enum TTSonosState : NSUInteger {
     SONOS_STATE_NOT_CONNECTED,
@@ -24,7 +25,8 @@ typedef enum TTSonosState : NSUInteger {
 
 @interface TTModeSonos : TTMode
 
-extern NSString *const kSonos;
+extern NSString *const kSonosDeviceId;
+extern NSString *const kSonosCachedDevices;
 
 @property (nonatomic, weak) id <TTModeSonosDelegate> delegate;
 

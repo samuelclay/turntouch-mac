@@ -42,6 +42,8 @@ void *kContextActivePanel = &kContextActivePanel;
 //    [self erasePreferences];
     [self loadPreferences];
     
+    [self checkAlreadyRunning];
+    
     // Install icon into the menu bar
     self.bluetoothMonitor = [[TTBluetoothMonitor alloc] init];
     self.modeMap = [[TTModeMap alloc] init];
@@ -90,6 +92,22 @@ void *kContextActivePanel = &kContextActivePanel;
     [self.bluetoothMonitor terminate];
 }
 
+- (void)checkAlreadyRunning {
+    BOOL seen = false;
+    NSArray *apps = [[NSWorkspace sharedWorkspace] runningApplications];
+    for (NSRunningApplication *app in apps) {
+        if ([[app bundleIdentifier] isEqualToString:[[NSBundle mainBundle] bundleIdentifier]]) {
+            if (!seen) {
+                seen = YES;
+                continue;
+            }
+            
+            NSLog(@" ---> Instance of Turn Touch already running, exiting...");
+            
+            [NSApp terminate:self];
+        }
+    }
+}
 
 #pragma mark - Actions
 
