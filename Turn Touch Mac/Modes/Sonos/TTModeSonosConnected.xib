@@ -7,34 +7,59 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTModeSonosConnected">
             <connections>
+                <outlet property="deviceSelect" destination="HYf-6Z-fp4" id="wha-HU-fEB"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="60"/>
+            <rect key="frame" x="0.0" y="0.0" width="480" height="61"/>
             <subviews>
-                <comboBox verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhk-S0-guo">
-                    <rect key="frame" x="20" y="16" width="443" height="26"/>
-                    <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="yAy-A9-Yqy">
+                <popUpButton horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HYf-6Z-fp4">
+                    <rect key="frame" x="18" y="17" width="407" height="26"/>
+                    <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="aXk-An-s5J" id="5lk-AF-B7q">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" id="ejy-6O-KoP">
+                            <items>
+                                <menuItem title="Item 1" state="on" id="aXk-An-s5J"/>
+                                <menuItem title="Item 2" id="npH-RM-FDv"/>
+                                <menuItem title="Item 3" id="19p-CR-O6W"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="changeDevice:" target="-2" id="1r4-h7-ZzT"/>
+                    </connections>
+                </popUpButton>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="dx3-h9-R1s">
+                    <rect key="frame" x="442" y="21.5" width="18" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="18" id="baE-j1-p75"/>
+                        <constraint firstAttribute="width" constant="18" id="bpe-OL-zCQ"/>
+                    </constraints>
+                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="refresh" imagePosition="above" alignment="center" imageScaling="proportionallyDown" inset="2" id="sOv-ae-4MR">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        <objectValues>
-                            <string>Item 1</string>
-                            <string>Item 2</string>
-                            <string>Item 3</string>
-                        </objectValues>
-                    </comboBoxCell>
-                </comboBox>
+                    </buttonCell>
+                    <connections>
+                        <action selector="scanForDevices:" target="-2" id="n38-L7-kZJ"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="mhk-S0-guo" secondAttribute="trailing" constant="20" id="FGC-H4-qrO"/>
-                <constraint firstAttribute="bottom" secondItem="mhk-S0-guo" secondAttribute="bottom" constant="20" id="RLf-Ze-Whp"/>
-                <constraint firstItem="mhk-S0-guo" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="lD9-jj-8eb"/>
-                <constraint firstItem="mhk-S0-guo" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="qwh-RJ-2Kv"/>
+                <constraint firstItem="HYf-6Z-fp4" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="00e-Fx-s1c"/>
+                <constraint firstItem="HYf-6Z-fp4" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="A4E-lV-6iC"/>
+                <constraint firstItem="dx3-h9-R1s" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="Kcg-Ks-spc"/>
+                <constraint firstAttribute="bottom" secondItem="HYf-6Z-fp4" secondAttribute="bottom" constant="20" id="VZU-BN-PZV"/>
+                <constraint firstAttribute="trailing" secondItem="dx3-h9-R1s" secondAttribute="trailing" constant="20" id="Xbu-JB-JQA"/>
+                <constraint firstItem="dx3-h9-R1s" firstAttribute="leading" secondItem="HYf-6Z-fp4" secondAttribute="trailing" constant="20" id="fnE-TY-DKk"/>
+                <constraint firstItem="HYf-6Z-fp4" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="yg5-Ic-Pzu"/>
             </constraints>
         </customView>
     </objects>
+    <resources>
+        <image name="refresh" width="102.40000152587891" height="102.40000152587891"/>
+    </resources>
 </document>

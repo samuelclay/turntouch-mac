@@ -14,6 +14,7 @@
 @property (nonatomic, strong) TTModeSonos *modeSonos;
 @property (nonatomic) IBOutlet NSTextField *connectedLabel;
 @property (nonatomic) IBOutlet TTChangeButtonView *scanButton;
+@property (nonatomic) IBOutlet NSPopUpButton *deviceSelect;
 
 - (IBAction)scanForDevices:(id)sender;
 
