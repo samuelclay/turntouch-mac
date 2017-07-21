@@ -6,8 +6,16 @@
 //  Copyright © 2017 Turn Touch. All rights reserved.
 //
 
+#import "TTModeSonos.h"
 #import "TTOptionsDetailViewController.h"
 
-@interface TTModeSonosConnect : TTOptionsDetailViewController
+@interface TTModeSonosConnect : TTOptionsDetailViewController {
+    NSPopover *authPopover;
+}
+
+@property (nonatomic) IBOutlet NSButton *authButton;
+@property (nonatomic, strong) TTModeSonos *modeSonos;
+
+- (IBAction)clickAuthButton:(id)sender;
 
 @end

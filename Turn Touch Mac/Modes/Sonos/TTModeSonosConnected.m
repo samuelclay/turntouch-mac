@@ -14,9 +14,27 @@
 
 @implementation TTModeSonosConnected
 
+@synthesize modeSonos;
+@synthesize connectedLabel;
+@synthesize scanButton;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do view setup here.
+    [self updateConnected];
+}
+
+- (void)updateConnected {
+    NSInteger count = [self.modeSonos foundDevices].count;
+    if (count > 0) {
+        [connectedLabel setStringValue:[NSString stringWithFormat:@"Connected to %ld Sonos device%@",
+                                        (long)count, count == 1 ? @"" : @"s"]];
+    } else {
+        [connectedLabel setStringValue:@"No Sonos devices found"];
+    }
+}
+
+- (IBAction)scanForDevices:(id)sender {
+    [self.modeSonos beginConnectingToSonos:nil];
 }
 
 @end

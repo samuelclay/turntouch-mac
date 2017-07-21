@@ -362,4 +362,12 @@ static SonosManager *sonosManager;
     }
 }
 
+- (void)resetKnownDevices {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    [prefs removeObjectForKey:kSonosCachedDevices];
+    [prefs synchronize];
+    
+    [self beginConnectingToSonos:nil];
+}
+
 @end

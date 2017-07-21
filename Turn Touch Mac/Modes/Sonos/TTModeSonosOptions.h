@@ -6,8 +6,11 @@
 //  Copyright © 2017 Turn Touch. All rights reserved.
 //
 
+#import "TTModeSonos.h"
 #import "TTOptionsDetailViewController.h"
 
-@interface TTModeSonosOptions : TTOptionsDetailViewController
+@interface TTModeSonosOptions : TTOptionsDetailViewController <TTModeSonosDelegate>
+
+@property (nonatomic, strong) TTModeSonos *modeSonos;
 
 @end

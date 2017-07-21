@@ -19,4 +19,15 @@
     // Do view setup here.
 }
 
+- (void)setConnectingWithMessage:(NSString*)message {
+    if (!message) message = @"Connecting to Sonos...";
+    
+    self.progressMessage.stringValue = message;
+    [self.progressIndicator startAnimation:self];
+}
+
+- (IBAction)clickCancelButton:(id)sender {
+    [self.modeSonos cancelConnectingToSonos];
+}
+
 @end

@@ -14,9 +14,18 @@
 
 @implementation TTModeSonosConnect
 
+@synthesize authButton;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
 }
+
+#pragma mark - Actions
+
+- (IBAction)clickAuthButton:(id)sender {
+    [self.modeSonos beginConnectingToSonos:nil];
+}
+
 
 @end
