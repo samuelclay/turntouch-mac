@@ -131,10 +131,10 @@ static SonosManager *sonosManager;
     return @"TTModeSonosVolumeUp";
 }
 - (NSString *)defaultEast {
-    return @"TTModeSonosPlayPause";
+    return @"TTModeSonosNextTrack";
 }
 - (NSString *)defaultWest {
-    return @"TTModeSonosNextTrack";
+    return @"TTModeSonosPlayPause";
 }
 - (NSString *)defaultSouth {
     return @"TTModeSonosVolumeDown";
@@ -215,19 +215,43 @@ static SonosManager *sonosManager;
 }
 
 - (void)runTTModeSonosPlay:(TTModeDirection)direction {
+    SonosController *device = [self selectedDevice];
     
+    [device playbackStatus:^(BOOL playing, NSDictionary * _Nullable response, NSError * _Nullable error) {
+        if (!playing) {
+            [device togglePlayback:^(BOOL playing, NSDictionary * _Nullable response, NSError * _Nullable error) {
+                
+            }];
+        }
+    }];
 }
 
 - (void)runTTModeSonosPause:(TTModeDirection)direction {
+    SonosController *device = [self selectedDevice];
     
+    [device playbackStatus:^(BOOL playing, NSDictionary * _Nullable response, NSError * _Nullable error) {
+        if (playing) {
+            [device togglePlayback:^(BOOL playing, NSDictionary * _Nullable response, NSError * _Nullable error) {
+                
+            }];
+        }
+    }];
 }
 
 - (void)runTTModeSonosNextTrack:(TTModeDirection)direction {
+    SonosController *device = [self selectedDevice];
     
+    [device next:^(NSDictionary * _Nullable response, NSError * _Nullable error) {
+        
+    }];
 }
 
 - (void)runTTModeSonosPreviousTrack:(TTModeDirection)direction {
-    
+    SonosController *device = [self selectedDevice];
+
+    [device previous:^(NSDictionary * _Nullable response, NSError * _Nullable error) {
+        
+    }];
 }
 
 #pragma mark - Sonos Devices
