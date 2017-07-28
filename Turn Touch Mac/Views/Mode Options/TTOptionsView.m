@@ -158,6 +158,11 @@
     if (appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION) return;
 
     [self clearOptionDetailViews];
+    
+    BOOL useModeOptions = NO;
+    if ([appDelegate.modeMap.selectedMode shouldUseModeOptionsFor:appDelegate.modeMap.inspectingModeDirection]) {
+        useModeOptions = YES;
+    }
 
     // Draw action title
     actionTitleView = [[TTOptionsActionTitle alloc] initWithFrame:CGRectZero];
@@ -195,6 +200,13 @@
     NSString *actionOptionsViewControllerName = [NSString stringWithFormat:@"%@Options", actionName];
     actionOptionsViewController = [[NSClassFromString(actionOptionsViewControllerName) alloc]
                                    initWithNibName:actionOptionsViewControllerName bundle:nil];
+    if (useModeOptions) {
+        NSString *modeName = NSStringFromClass([appDelegate.modeMap.selectedMode class]);
+        NSString *modeOptionsViewControllerName = [NSString stringWithFormat:@"%@Options", modeName];
+        actionOptionsViewController = [[NSClassFromString(modeOptionsViewControllerName) alloc]
+                                       initWithNibName:modeOptionsViewControllerName bundle:nil];
+    }
+
     if (!actionOptionsViewController) {
         NSLog(@" --- Missing action options view for %@", actionName);
         actionOptionsViewController = (TTOptionsDetailViewController *)[[NSViewController alloc] init];

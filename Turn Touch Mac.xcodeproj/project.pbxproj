@@ -333,6 +333,7 @@
 		FFA8EAA6190F11B200679A4D /* TTModeMenuItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA8EAA5190F11B200679A4D /* TTModeMenuItemView.m */; };
 		FFAA4F6F182D99640049FFC7 /* TTModeAlarmClock.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4F6E182D99640049FFC7 /* TTModeAlarmClock.m */; };
 		FFAA4F72182D9A5F0049FFC7 /* TTModeNews.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4F71182D9A5F0049FFC7 /* TTModeNews.m */; };
+		FFAA6D121F29591F00039F3C /* TTModePresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA6D111F29591F00039F3C /* TTModePresentation.m */; };
 		FFAB2C131E0B377A00A16433 /* button_chevron_x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAB2C121E0B377A00A16433 /* button_chevron_x.png */; };
 		FFAB2C171E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAB2C151E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.m */; };
 		FFAB2C181E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFAB2C161E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.xib */; };
@@ -950,6 +951,9 @@
 		FFAA4F70182D9A5F0049FFC7 /* TTModeNews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeNews.h; path = Modes/News/TTModeNews.h; sourceTree = "<group>"; };
 		FFAA4F71182D9A5F0049FFC7 /* TTModeNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeNews.m; path = Modes/News/TTModeNews.m; sourceTree = "<group>"; };
 		FFAA61E21ABA6AD000AA422B /* Turn Touch Mac-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Turn Touch Mac-Prefix.pch"; path = "Supporting Files/Turn Touch Mac-Prefix.pch"; sourceTree = "<group>"; };
+		FFAA6D101F29591F00039F3C /* TTModePresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModePresentation.h; path = Modes/Presentation/TTModePresentation.h; sourceTree = "<group>"; };
+		FFAA6D111F29591F00039F3C /* TTModePresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModePresentation.m; path = Modes/Presentation/TTModePresentation.m; sourceTree = "<group>"; };
+		FFAA6D141F295BB100039F3C /* Keynote.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Keynote.h; path = Modes/Presentation/Keynote.h; sourceTree = "<group>"; };
 		FFAB2C121E0B377A00A16433 /* button_chevron_x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_chevron_x.png; sourceTree = "<group>"; };
 		FFAB2C141E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeSpotifyVolumeJumpOptions.h; path = Modes/Spotify/TTModeSpotifyVolumeJumpOptions.h; sourceTree = "<group>"; };
 		FFAB2C151E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeSpotifyVolumeJumpOptions.m; path = Modes/Spotify/TTModeSpotifyVolumeJumpOptions.m; sourceTree = "<group>"; };
@@ -1259,6 +1263,7 @@
 				FF8448F51E10D60C00C1091E /* Custom */,
 				FF778B511EEF82C90019C22A /* Ifttt */,
 				FFF02BD31F16A20F003E5799 /* Sonos */,
+				FFAA6D131F29592300039F3C /* Presentation */,
 			);
 			name = Modes;
 			sourceTree = "<group>";
@@ -2128,6 +2133,16 @@
 			name = "Alarm Clock";
 			sourceTree = "<group>";
 		};
+		FFAA6D131F29592300039F3C /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				FFAA6D141F295BB100039F3C /* Keynote.h */,
+				FFAA6D101F29591F00039F3C /* TTModePresentation.h */,
+				FFAA6D111F29591F00039F3C /* TTModePresentation.m */,
+			);
+			name = Presentation;
+			sourceTree = "<group>";
+		};
 		FFABAB7E1C2777B400AD5620 /* Batch Actions */ = {
 			isa = PBXGroup;
 			children = (
@@ -2726,6 +2741,7 @@
 				FF01CAAF1C473EC100F83A73 /* KBWebArchiver.m in Sources */,
 				FF1F135D1ADC90E700B52A0D /* MLCalendarBackground.m in Sources */,
 				FF1F135F1ADC90E700B52A0D /* MLCalendarView.m in Sources */,
+				FFAA6D121F29591F00039F3C /* TTModePresentation.m in Sources */,
 				FF8D1AB21C9902F8006AA1A2 /* TTModalSupportView.m in Sources */,
 				FF904BA71BEBFCDE00AD00F3 /* TTDeviceTitleView.m in Sources */,
 				FFBD46F81D5A8C2700838AAC /* TTModeNewsNewsBlur.m in Sources */,

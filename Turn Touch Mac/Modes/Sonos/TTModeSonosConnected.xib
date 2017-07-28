@@ -18,7 +18,7 @@
             <subviews>
                 <popUpButton horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HYf-6Z-fp4">
                     <rect key="frame" x="18" y="17" width="407" height="26"/>
-                    <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="aXk-An-s5J" id="5lk-AF-B7q">
+                    <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" selectedItem="aXk-An-s5J" id="5lk-AF-B7q">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
                         <menu key="menu" id="ejy-6O-KoP">
@@ -33,30 +33,31 @@
                         <action selector="changeDevice:" target="-2" id="1r4-h7-ZzT"/>
                     </connections>
                 </popUpButton>
-                <button translatesAutoresizingMaskIntoConstraints="NO" id="dx3-h9-R1s">
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="UtI-xS-jNK">
                     <rect key="frame" x="442" y="21.5" width="18" height="18"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="18" id="baE-j1-p75"/>
-                        <constraint firstAttribute="width" constant="18" id="bpe-OL-zCQ"/>
+                        <constraint firstAttribute="height" constant="18" id="96J-Dz-6vE"/>
+                        <constraint firstAttribute="width" constant="18" id="LUa-ck-xcK"/>
                     </constraints>
-                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="refresh" imagePosition="above" alignment="center" imageScaling="proportionallyDown" inset="2" id="sOv-ae-4MR">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="refresh" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="bcZ-pn-Ncy">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="scanForDevices:" target="-2" id="n38-L7-kZJ"/>
+                        <action selector="scanForDevices:" target="-2" id="ML4-mS-tHK"/>
                     </connections>
                 </button>
             </subviews>
             <constraints>
                 <constraint firstItem="HYf-6Z-fp4" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="00e-Fx-s1c"/>
                 <constraint firstItem="HYf-6Z-fp4" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="A4E-lV-6iC"/>
-                <constraint firstItem="dx3-h9-R1s" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="Kcg-Ks-spc"/>
+                <constraint firstAttribute="trailing" secondItem="UtI-xS-jNK" secondAttribute="trailing" constant="20" id="HOB-h1-3LS"/>
                 <constraint firstAttribute="bottom" secondItem="HYf-6Z-fp4" secondAttribute="bottom" constant="20" id="VZU-BN-PZV"/>
-                <constraint firstAttribute="trailing" secondItem="dx3-h9-R1s" secondAttribute="trailing" constant="20" id="Xbu-JB-JQA"/>
-                <constraint firstItem="dx3-h9-R1s" firstAttribute="leading" secondItem="HYf-6Z-fp4" secondAttribute="trailing" constant="20" id="fnE-TY-DKk"/>
+                <constraint firstItem="UtI-xS-jNK" firstAttribute="centerY" secondItem="HYf-6Z-fp4" secondAttribute="centerY" id="f7y-s1-zdE"/>
+                <constraint firstItem="UtI-xS-jNK" firstAttribute="leading" secondItem="HYf-6Z-fp4" secondAttribute="trailing" constant="20" id="qX2-FZ-fqG"/>
                 <constraint firstItem="HYf-6Z-fp4" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="yg5-Ic-Pzu"/>
             </constraints>
+            <point key="canvasLocation" x="131" y="168.5"/>
         </customView>
     </objects>
     <resources>

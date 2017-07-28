@@ -275,6 +275,18 @@
     return immediate;
 }
 
+- (BOOL)shouldUseModeOptionsFor:(TTModeDirection)direction {
+    BOOL modeOptions = NO;
+    NSString *actionName = [self actionNameInDirection:direction];
+    SEL selector = NSSelectorFromString([NSString stringWithFormat:@"shouldUseModeOptionsFor%@", actionName]);
+    if ([self respondsToSelector:selector]) {
+        IMP imp = [self methodForSelector:selector];
+        BOOL (*func)(id, SEL) = (void *)imp;
+        modeOptions = func(self, selector);
+    }
+    return modeOptions;
+}
+
 - (ActionLayout)layoutInDirection:(TTModeDirection)direction {
     NSString *actionName = [self actionNameInDirection:direction];
     

@@ -32,28 +32,25 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LfB-rR-uqG">
-                    <rect key="frame" x="321" y="42.5" width="24" height="24"/>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="reA-XM-etc">
+                    <rect key="frame" x="317" y="50" width="12" height="12"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="24" id="EhA-Zn-1kB"/>
-                        <constraint firstAttribute="height" constant="24" id="feO-xk-EVS"/>
+                        <constraint firstAttribute="width" constant="12" id="QMR-Fr-peS"/>
+                        <constraint firstAttribute="height" constant="12" id="umU-3q-t0T"/>
                     </constraints>
-                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSStopProgressTemplate" imagePosition="only" alignment="center" inset="2" id="nAy-G9-LmW">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStopProgressTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="a5y-Hm-0Zx">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
-                    <connections>
-                        <action selector="clickCancelButton:" target="-2" id="VNf-dd-ybv"/>
-                    </connections>
                 </button>
             </subviews>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="XWI-fV-Yqo" secondAttribute="bottom" constant="20" id="06H-sr-6nK"/>
                 <constraint firstItem="XWI-fV-Yqo" firstAttribute="top" secondItem="AcS-6Z-Vmc" secondAttribute="bottom" constant="8" symbolic="YES" id="3rK-oF-tOF"/>
-                <constraint firstItem="LfB-rR-uqG" firstAttribute="centerY" secondItem="AcS-6Z-Vmc" secondAttribute="centerY" constant="1" id="9ZR-V0-Dt6"/>
                 <constraint firstItem="AcS-6Z-Vmc" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="Mgd-O7-Q0l"/>
-                <constraint firstItem="LfB-rR-uqG" firstAttribute="leading" secondItem="AcS-6Z-Vmc" secondAttribute="trailing" constant="12" id="eeZ-0D-a1T"/>
                 <constraint firstItem="AcS-6Z-Vmc" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="gY6-nq-xH1"/>
+                <constraint firstItem="reA-XM-etc" firstAttribute="leading" secondItem="AcS-6Z-Vmc" secondAttribute="trailing" constant="8" id="o79-93-NCo"/>
+                <constraint firstItem="reA-XM-etc" firstAttribute="centerY" secondItem="AcS-6Z-Vmc" secondAttribute="centerY" id="u1k-nw-JQv"/>
                 <constraint firstItem="XWI-fV-Yqo" firstAttribute="centerX" secondItem="AcS-6Z-Vmc" secondAttribute="centerX" id="yUz-Hn-bbn"/>
             </constraints>
         </customView>

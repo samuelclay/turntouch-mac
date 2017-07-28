@@ -20,4 +20,7 @@
 + (float)volume;
 + (void)setVolume:(float)newVolume;
 
+- (void)runTTModeMacVolumeUp;
+- (void)runTTModeMacVolumeDown;
+
 @end

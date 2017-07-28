@@ -173,6 +173,18 @@ const NSInteger BATCH_ACTION_HEADER_HEIGHT = 36;
         NSString *actionOptionsViewControllerName = [NSString stringWithFormat:@"%@Options", batchAction.actionName];
         TTOptionsDetailViewController *actionOptionsViewController = [[NSClassFromString(actionOptionsViewControllerName) alloc]
                                                                       initWithNibName:actionOptionsViewControllerName bundle:nil];
+        BOOL useModeOptions = NO;
+        if ([batchAction.mode shouldUseModeOptionsFor:appDelegate.modeMap.inspectingModeDirection]) {
+            useModeOptions = YES;
+        }
+        
+        if (useModeOptions) {
+            NSString *modeName = NSStringFromClass([batchAction.mode class]);
+            NSString *modeOptionsViewControllerName = [NSString stringWithFormat:@"%@Options", modeName];
+            actionOptionsViewController = [[NSClassFromString(modeOptionsViewControllerName) alloc]
+                                           initWithNibName:modeOptionsViewControllerName bundle:nil];
+        }
+
         // TODO: Set action option's active mode
         if (!actionOptionsViewController) {
             NSLog(@" --- Missing (batch) action options view for %@", batchAction.actionName);

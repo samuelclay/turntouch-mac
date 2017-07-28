@@ -57,6 +57,31 @@ static SonosManager *sonosManager;
              ];
 }
 
+- (BOOL)shouldUseModeOptionsForTTModeSonosVolumeUp {
+    return YES;
+}
+- (BOOL)shouldUseModeOptionsForTTModeSonosVolumeDown {
+    return YES;
+}
+- (BOOL)shouldUseModeOptionsForTTModeSonosVolumeMute {
+    return YES;
+}
+- (BOOL)shouldUseModeOptionsForTTModeSonosPlayPause {
+    return YES;
+}
+- (BOOL)shouldUseModeOptionsForTTModeSonosPlay {
+    return YES;
+}
+- (BOOL)shouldUseModeOptionsForTTModeSonosPause {
+    return YES;
+}
+- (BOOL)shouldUseModeOptionsForTTModeSonosNextTrack {
+    return YES;
+}
+- (BOOL)shouldUseModeOptionsForTTModeSonosPreviousTrack {
+    return YES;
+}
+
 #pragma mark - Action Titles
 
 - (NSString *)titleTTModeSonosVolumeUp {

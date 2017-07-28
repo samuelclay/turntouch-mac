@@ -36,6 +36,5 @@ extern NSString *const kSonosCachedDevices;
 - (void)beginConnectingToSonos:(void (^)())callback;
 - (void)cancelConnectingToSonos;
 - (void)resetKnownDevices;
-- (void)refreshDevices;
 
 @end

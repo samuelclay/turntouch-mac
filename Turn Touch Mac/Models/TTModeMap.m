@@ -26,6 +26,7 @@
 #import "TTBatchActions.h"
 #import "TTModeIfttt.h"
 #import "TTModeSonos.h"
+#import "TTModePresentation.h"
 
 @implementation TTModeMap
 
@@ -66,6 +67,7 @@
                                   @"TTModeVideo",
                                   @"TTModeNews",
                                   @"TTModeWeb",
+                                  @"TTModePresentation",
                                   @"TTModeCustom"]];
         
         activeModeDirection = NO_DIRECTION;

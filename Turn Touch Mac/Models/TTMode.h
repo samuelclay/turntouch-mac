@@ -41,6 +41,7 @@ typedef enum {
 - (NSString *)imageNameForActionHudInDirection:(NSString *)actionName;
 - (BOOL)shouldIgnoreSingleBeforeDouble:(TTModeDirection)direction;
 - (BOOL)shouldFireImmediateOnPress:(TTModeDirection)direction;
+- (BOOL)shouldUseModeOptionsFor:(TTModeDirection)direction;
 - (ActionLayout)layoutInDirection:(TTModeDirection)direction;
 - (ActionLayout)layoutForAction:(NSString *)actionName;
 - (NSView *)viewForLayoutInDirection:(TTModeDirection)direction withRect:(NSRect)rect;
