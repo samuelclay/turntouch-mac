@@ -13,7 +13,8 @@
 @implementation TTModePresentation
 - (instancetype)init {
     if (self = [super init]) {
-
+        slideChooserVisible = NO;
+        slideshowPlaying = NO;
     }
     return self;
 }
@@ -87,27 +88,27 @@
 #pragma mark - Action Images
 
 - (NSString *)imageTTModePresentationToggleSlides {
-    return @"presentation_toggle_slides.png";
+    return @"mode_presentation.png";
 }
 
 - (NSString *)imageTTModePresentationNextSlide {
-    return @"presentation_next_slide.png";
+    return @"music_ff.png";
 }
 
 - (NSString *)imageTTModePresentationPreviousSlide {
-    return @"presentation_previous_slide.png";
+    return @"music_rewind.png";
 }
 
 - (NSString *)imageTTModePresentationPlay {
-    return @"presentation_play.png";
+    return @"music_play.png";
 }
 
 - (NSString *)imageTTModePresentationVolumeUp {
-    return @"volume_up.png";
+    return @"music_volume_up.png";
 }
 
 - (NSString *)imageTTModePresentationVolumeDown {
-    return @"volume_down.png";
+    return @"music_volume_down.png";
 }
 
 #pragma mark - Layout
@@ -120,29 +121,76 @@
     return YES;
 }
 
+- (BOOL)shouldHideHudTTModePresentationToggleSlides {
+    if (!slideChooserVisible) {
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
+- (BOOL)shouldHideHudTTModePresentationPlay {
+    if (!slideChooserVisible) {
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
 #pragma mark - Action methods
 
 - (void)runTTModePresentationToggleSlides {
     KeynoteApplication *keynote = [SBApplication applicationWithBundleIdentifier:@"com.apple.iWork.Keynote"];
-    for (KeynoteDocument *document in [keynote documents]) {
-        [document showSlideSwitcher];
+    if (!slideChooserVisible) {
+        for (KeynoteDocument *document in [keynote documents]) {
+            [document showSlideSwitcher];
+        }
+        slideChooserVisible = YES;
+    } else {
+        for (KeynoteDocument *document in [keynote documents]) {
+            [document moveSlideSwitcherBackward];
+        }
     }
 }
 
 - (void)runTTModePresentationNextSlide {
     KeynoteApplication *keynote = [SBApplication applicationWithBundleIdentifier:@"com.apple.iWork.Keynote"];
-    [keynote showNext];
+    if (slideChooserVisible) {
+        for (KeynoteDocument *document in [keynote documents]) {
+            [document acceptSlideSwitcher];
+        }
+        slideChooserVisible = NO;
+    } else {
+        [keynote showNext];
+    }
 }
 
 - (void)runTTModePresentationPreviousSlide {
     KeynoteApplication *keynote = [SBApplication applicationWithBundleIdentifier:@"com.apple.iWork.Keynote"];
-    [keynote showPrevious];
+    if (slideChooserVisible) {
+        for (KeynoteDocument *document in [keynote documents]) {
+            [document cancelSlideSwitcher];
+        }
+        slideChooserVisible = NO;
+    } else {
+        [keynote showPrevious];
+    }
 }
 
 - (void)runTTModePresentationPlay {
     KeynoteApplication *keynote = [SBApplication applicationWithBundleIdentifier:@"com.apple.iWork.Keynote"];
     for (KeynoteDocument *document in [keynote documents]) {
-        [document startFrom:document.slides[0]];
+        if (!slideChooserVisible) {
+            if (slideshowPlaying) {
+                [document stop];
+                slideshowPlaying = NO;
+            } else {
+                [document startFrom:document.currentSlide];
+                slideshowPlaying = YES;
+            }
+        } else {
+            [document moveSlideSwitcherForward];
+        }
     }
 }
 

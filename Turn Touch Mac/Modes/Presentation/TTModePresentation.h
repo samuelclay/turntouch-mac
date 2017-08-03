@@ -8,6 +8,9 @@
 
 #import "TTMode.h"
 
-@interface TTModePresentation : TTMode
+@interface TTModePresentation : TTMode {
+    BOOL slideChooserVisible;
+    BOOL slideshowPlaying;
+}
 
 @end
