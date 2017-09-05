@@ -12,10 +12,6 @@
 		<data>
 		V7/5eGD8hqn7/snzpPyBZY7Y/iQ=
 		</data>
-		<key>Resources/Info.plist</key>
-		<data>
-		ALwrocYRju8bcA8qQ0Oqer9o4PM=
-		</data>
 		<key>Resources/MLCalendarView.nib</key>
 		<data>
 		V+TO9EYxJ3Spcxg0trnt35oDYQQ=
@@ -362,7 +358,7 @@
 		</data>
 		<key>Resources/TTModeHueBridge.nib</key>
 		<data>
-		e8szZXsSUHOpcCSUzJeLc78D3Yo=
+		oMcspUJec9A7gdX+0KqOCTOrXsA=
 		</data>
 		<key>Resources/TTModeHueConnect.nib</key>
 		<data>
@@ -467,6 +463,22 @@
 		<key>Resources/TTModeNewsWindowController.nib</key>
 		<data>
 		6EYNqPcrZ3kH4H6qFo23G8qvQAI=
+		</data>
+		<key>Resources/TTModeSonosConnect.nib</key>
+		<data>
+		w1UqL8mBdoSPQS4CRM+x6fyME3s=
+		</data>
+		<key>Resources/TTModeSonosConnected.nib</key>
+		<data>
+		UJzxIhPwqrcKmr7ijCU5mYhlfiw=
+		</data>
+		<key>Resources/TTModeSonosConnecting.nib</key>
+		<data>
+		/whU41ZSfHijJPdlHvs2aciJydg=
+		</data>
+		<key>Resources/TTModeSonosOptions.nib</key>
+		<data>
+		eNBp2otwFqT/fXlxlREFRb8Wb7s=
 		</data>
 		<key>Resources/TTModeSpotify.plist</key>
 		<data>
@@ -867,6 +879,10 @@
 		<data>
 		iejXcpwCuk2gwDi/LitD/4MWRXI=
 		</data>
+		<key>Resources/mode_sonos.png</key>
+		<data>
+		0SVyolwzAf10lmmJRn1RMm16/nI=
+		</data>
 		<key>Resources/mode_spotify.png</key>
 		<data>
 		8FW7tTDryv5Ol7kBekCicyTJplM=
@@ -1026,7 +1042,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			lAma0IbJKupC4IzIBHaMyIWOa3w=
+			oCOcB4Oyr78ZGpSUc/exLIEzBLY=
 			</data>
 			<key>requirement</key>
 			<string>identifier "com.philips.hue.HueSDK-OSX" and anchor apple generic and certificate leaf[subject.CN] = "Mac Developer: Sam Clay (BYABZ8TGVG)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
@@ -1035,7 +1051,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			53sfsvZUG1PR0z78u7YmDJ5RnqE=
+			wqQoRSjoAz2pkRbmFseWtucU938=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.andymatuschak.Sparkle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -1060,17 +1076,6 @@
 			<key>hash2</key>
 			<data>
 			qz/9ho/hVXUEbx0ws1ZQjMzyZ9Qw4Ja4ivEkwobJp6k=
-			</data>
-		</dict>
-		<key>Resources/Info.plist</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			ALwrocYRju8bcA8qQ0Oqer9o4PM=
-			</data>
-			<key>hash2</key>
-			<data>
-			jlhK7ysyFMzmmeGWnBhgm4t3qWYzhruAQPSCpql0fiY=
 			</data>
 		</dict>
 		<key>Resources/MLCalendarView.nib</key>
@@ -1647,11 +1652,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			e8szZXsSUHOpcCSUzJeLc78D3Yo=
+			oMcspUJec9A7gdX+0KqOCTOrXsA=
 			</data>
 			<key>hash2</key>
 			<data>
-			XCdqI27R0ur2x0fTfgoL88QqyLuFHCb6TJU4BC2uBdU=
+			aZ2VBWkET+F36K5JLmW6/+VSAavY93DYtMBTBOstVU0=
 			</data>
 		</dict>
 		<key>Resources/TTModeHueConnect.nib</key>
@@ -1938,6 +1943,50 @@
 			<key>hash2</key>
 			<data>
 			N4XngwUb98LXxdK+i8qaR0Xmw4H9CVzX1wgQ3FYyNIw=
+			</data>
+		</dict>
+		<key>Resources/TTModeSonosConnect.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			w1UqL8mBdoSPQS4CRM+x6fyME3s=
+			</data>
+			<key>hash2</key>
+			<data>
+			sBBg7QseyNVFtwIEud3sIIe0ZYeJbMN3myNVmr5NLOE=
+			</data>
+		</dict>
+		<key>Resources/TTModeSonosConnected.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			UJzxIhPwqrcKmr7ijCU5mYhlfiw=
+			</data>
+			<key>hash2</key>
+			<data>
+			x9xK/N638D3xkfs3WQHqrn7sot9pZ8PvJrZWnKal0fE=
+			</data>
+		</dict>
+		<key>Resources/TTModeSonosConnecting.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			/whU41ZSfHijJPdlHvs2aciJydg=
+			</data>
+			<key>hash2</key>
+			<data>
+			KtIdfhTt9jr83hXROk3jZgAhDb91+N7ovJhnMuRTnu8=
+			</data>
+		</dict>
+		<key>Resources/TTModeSonosOptions.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			eNBp2otwFqT/fXlxlREFRb8Wb7s=
+			</data>
+			<key>hash2</key>
+			<data>
+			0n/n1joT0aamcpQu8dgP8KrC5w4qKubupMDH4mxv2MQ=
 			</data>
 		</dict>
 		<key>Resources/TTModeSpotify.plist</key>
@@ -3000,6 +3049,17 @@
 			<key>hash2</key>
 			<data>
 			fQyxZTcSPdSGHeb5+p/OBP4XXmxYRSIUAn3unCJp06A=
+			</data>
+		</dict>
+		<key>Resources/mode_sonos.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			0SVyolwzAf10lmmJRn1RMm16/nI=
+			</data>
+			<key>hash2</key>
+			<data>
+			oqgDyTK2l5KHbEy30BkrgEzkNh4ViUcl4XVjAvRpmgc=
 			</data>
 		</dict>
 		<key>Resources/mode_spotify.png</key>
