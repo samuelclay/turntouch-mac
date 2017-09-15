@@ -87,8 +87,31 @@
         [self addConstraint:[NSLayoutConstraint constraintWithItem:subtitleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f]];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:subtitleLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:titleLabel attribute:NSLayoutAttributeBottom multiplier:1.0f constant:4.0f]];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:subtitleLabel attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0f constant:-36.0f]];
+        
+        if (modalPairing == MODAL_PAIRING_FAILURE) {
+            [self checkBluetoothState];
+        }
     }
     return self;
+}
+
+- (void)checkBluetoothState {
+    switch ([appDelegate.bluetoothMonitor.manager state]) {
+        case CBCentralManagerStatePoweredOn:
+            return;
+        case CBCentralManagerStateUnsupported:
+            subtitleLabel.stringValue = @"This computer doesn't support Bluetooth Low Energy.";
+            break;
+        case CBCentralManagerStateUnauthorized:
+            subtitleLabel.stringValue = @"Turn Touch is not authorized to use Bluetooth Low Energy.";
+            break;
+        case CBCentralManagerStatePoweredOff:
+            subtitleLabel.stringValue = @"Bluetooth is currently powered off.";
+            break;
+        default:
+            subtitleLabel.stringValue = @"Bluetooth is powered off or isn't responding.";
+            break;
+    }   
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
