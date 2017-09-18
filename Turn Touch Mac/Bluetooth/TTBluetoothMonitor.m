@@ -259,8 +259,12 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
         [self scanKnown];
     } else {
         [self countDevices];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(30.f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self reconnect:NO];
+        static dispatch_once_t onceReconnectToken;
+        dispatch_once(&onceReconnectToken, ^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(30.f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                onceReconnectToken = 0;
+                [self reconnect:NO];
+            });
         });
     }
 }
