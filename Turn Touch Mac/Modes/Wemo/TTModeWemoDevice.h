@@ -34,7 +34,7 @@ typedef enum {
 - (NSString *)location;
 
 - (void)requestDeviceInfo;
-- (void)requestDeviceState:(void (^)())callback;
+- (void)requestDeviceState:(void (^)(void))callback;
 - (void)changeDeviceState:(TTWemoDeviceState)state;
 
 @end

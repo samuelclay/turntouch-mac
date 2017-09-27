@@ -29,7 +29,7 @@
 
 #pragma mark - Animation
 
-- (void)animateBlock:(void (^)())block {
+- (void)animateBlock:(void (^)(void))block {
     NSTimeInterval openDuration = OPEN_DURATION;
     
     NSEvent *currentEvent = [NSApp currentEvent];

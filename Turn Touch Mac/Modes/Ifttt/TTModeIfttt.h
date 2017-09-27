@@ -33,8 +33,8 @@ extern NSString *const kIftttTapType;
 
 + (TTIftttState)iftttState;
 + (void)setIftttState:(TTIftttState)state;
-- (void)beginConnectingToIfttt:(void (^)())callback;
+- (void)beginConnectingToIfttt:(void (^)(void))callback;
 - (void)cancelConnectingToIfttt;
-- (void)registerTriggers:(void (^)())callback;
+- (void)registerTriggers:(void (^)(void))callback;
 
 @end

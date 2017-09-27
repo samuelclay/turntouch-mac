@@ -92,11 +92,11 @@
     [delegate deviceReady:self];
 }
 
-- (void)requestDeviceState:(void (^)())callback {
+- (void)requestDeviceState:(void (^)(void))callback {
     [self requestDeviceState:5 callback:callback];
 }
 
-- (void)requestDeviceState:(NSInteger)attemptsLeft callback:(void (^)())callback {
+- (void)requestDeviceState:(NSInteger)attemptsLeft callback:(void (^)(void))callback {
     if (!attemptsLeft) {
         NSLog(@"Error: could not find wemo state: %@", self.location);
         return;
@@ -139,7 +139,7 @@
                            }];
 }
 
-- (void)parseBasicEventXml:(NSData *)data callback:(void (^)())callback {
+- (void)parseBasicEventXml:(NSData *)data callback:(void (^)(void))callback {
     NSArray *results = PerformXMLXPathQuery(data, @"/*/*/u:GetBinaryStateResponse/BinaryState",
                                             "u", "urn:Belkin:service:basicevent:1");
     if (![results count]) {

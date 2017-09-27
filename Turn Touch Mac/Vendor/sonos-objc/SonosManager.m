@@ -47,7 +47,7 @@
     return [self.coordinators arrayByAddingObjectsFromArray:self.slaves];
 }
 
-- (void)discoverControllers:(void (^)())completion {
+- (void)discoverControllers:(void (^)(void))completion {
     [SonosDiscover discoverControllers:^(NSArray *devices){
         NSMutableArray *coordinators = [[NSMutableArray alloc] init];
         NSMutableArray *slaves = [[NSMutableArray alloc] init];

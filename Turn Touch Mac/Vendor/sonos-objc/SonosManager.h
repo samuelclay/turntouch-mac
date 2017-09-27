@@ -24,6 +24,6 @@
 - (NSArray *)allDevices;
 
 // Rediscovers all coordinators + slaves
-- (void)discoverControllers:(void (^)())completion;
+- (void)discoverControllers:(void (^)(void))completion;
 
 @end

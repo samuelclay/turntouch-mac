@@ -29,7 +29,7 @@ typedef void (^findDevicesBlock)(NSArray *ipAddresses);
             __block NSMutableArray         *controllers      = [[NSMutableArray alloc] init];
             __block dispatch_semaphore_t   responseSemaphore = dispatch_semaphore_create(1);
             __block int                    responseCount     = 0;
-            __block void (^callCompletionHandlerIfReady)()   = ^{
+            __block void (^callCompletionHandlerIfReady)(void)   = ^{
                 dispatch_semaphore_wait(responseSemaphore, DISPATCH_TIME_FOREVER);
                 responseCount++;
                 BOOL shouldCallCompletionHandler = responseCount == ipAddresses.count;

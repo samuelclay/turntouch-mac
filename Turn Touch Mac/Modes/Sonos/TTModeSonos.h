@@ -33,7 +33,7 @@ extern NSString *const kSonosCachedDevices;
 + (TTSonosState)sonosState;
 + (void)setSonosState:(TTSonosState)state;
 - (NSArray *)foundDevices;
-- (void)beginConnectingToSonos:(void (^)())callback;
+- (void)beginConnectingToSonos:(void (^)(void))callback;
 - (void)cancelConnectingToSonos;
 - (void)resetKnownDevices;
 

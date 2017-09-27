@@ -363,7 +363,7 @@ static SonosManager *sonosManager;
     [prefs synchronize];
 }
 
-- (void)beginConnectingToSonos:(void (^)())callback {
+- (void)beginConnectingToSonos:(void (^)(void))callback {
     if (sonosState == SONOS_STATE_CONNECTING) {
         NSLog(@" ---> Already connecting to sonos...");
         return;

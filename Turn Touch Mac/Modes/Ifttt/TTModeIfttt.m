@@ -121,7 +121,7 @@ static TTIftttState iftttState;
 #pragma mark - Ifttt Device
 
 
-- (void)beginConnectingToIfttt:(void (^)())callback {
+- (void)beginConnectingToIfttt:(void (^)(void))callback {
     iftttState = IFTTT_STATE_CONNECTING;
     [self.delegate changeState:iftttState withMode:self];
     
@@ -152,7 +152,7 @@ static TTIftttState iftttState;
     }
 }
 
-- (void)registerTriggers:(void (^)())callback {
+- (void)registerTriggers:(void (^)(void))callback {
     NSString *url = @"https://turntouch.com/ifttt/register_triggers";
     NSArray *triggers = [self collectTriggers];
     NSDictionary *params = @{@"user_id": [appDelegate.modeMap userId],
