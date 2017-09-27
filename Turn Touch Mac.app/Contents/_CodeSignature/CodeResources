@@ -358,7 +358,7 @@
 		</data>
 		<key>Resources/TTModeHueBridge.nib</key>
 		<data>
-		4JaqSNxZnjnsoH73GcviDp4y0A8=
+		Tu6Su00756CETDy2vS5+3ligQdg=
 		</data>
 		<key>Resources/TTModeHueConnect.nib</key>
 		<data>
@@ -530,7 +530,7 @@
 		</data>
 		<key>Resources/archived-expanded-entitlements.xcent</key>
 		<data>
-		tE75JcYbTFqedTdHdvIjleSTSq8=
+		+I0VbhEdjouj63crhMFYaqr0x10=
 		</data>
 		<key>Resources/button_chevron.png</key>
 		<data>
@@ -1042,7 +1042,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			jI8a7zp6qjbaAegRcW6kyP8nZD8=
+			39D/jUYvXfkfn9jmuzP84zPqErg=
 			</data>
 			<key>requirement</key>
 			<string>identifier "com.philips.hue.HueSDK-OSX" and anchor apple generic and certificate leaf[subject.CN] = "Mac Developer: Sam Clay (BYABZ8TGVG)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
@@ -1051,7 +1051,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			xT2wgwRxqaYm5HrmuE2RSy9juvI=
+			Ckii9Iod7NXTLG7mflJLQc7e0g4=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.andymatuschak.Sparkle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -1652,11 +1652,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			4JaqSNxZnjnsoH73GcviDp4y0A8=
+			Tu6Su00756CETDy2vS5+3ligQdg=
 			</data>
 			<key>hash2</key>
 			<data>
-			n1docJAYk+7a3nfCgtXANtZiQRRsv/D2/rTSQElCbnY=
+			pXmAkho2+0CeMjO0mMQchtsGU0gZktGXUvWlBioccGg=
 			</data>
 		</dict>
 		<key>Resources/TTModeHueConnect.nib</key>
@@ -2125,11 +2125,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			tE75JcYbTFqedTdHdvIjleSTSq8=
+			+I0VbhEdjouj63crhMFYaqr0x10=
 			</data>
 			<key>hash2</key>
 			<data>
-			EZwZmyMsZHyRg7xhRlNxpwIFIq1f+WosS9H51ZnXbas=
+			Lfzzt3ET80bVA21UkBdJkgkdIf2JaIVRnQe6qb3EgFE=
 			</data>
 		</dict>
 		<key>Resources/button_chevron.png</key>

@@ -10,6 +10,8 @@
 	<string>6W5HRS3393.com.turntouch.ios-remote</string>
 	<key>com.apple.security.device.bluetooth</key>
 	<true/>
+	<key>com.apple.security.get-task-allow</key>
+	<true/>
 	<key>com.apple.security.scripting-targets</key>
 	<dict>
 		<key>com.apple.QuickTimePlayerX</key>
