@@ -24,6 +24,6 @@
 @property (nonatomic) TTMode *mode;
 
 
-- (void)animateBlock:(void (^)())block;
+- (void)animateBlock:(void (^)(void))block;
 
 @end

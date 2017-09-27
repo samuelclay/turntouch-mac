@@ -136,12 +136,15 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
     [self stopAlarm];
 }
 - (void)runTTModeAlarmVolumeUp {
-    NSLog(@"Running runTTModeAlarmVolumeUp");
-    [TTModeMac setVolume:[TTModeMac volume] + 0.1f];
+    CGFloat volume = [TTModeMac volume];
+    [TTModeMac setVolume:volume + 0.01f];
+    NSLog(@"Running runTTModeAlarmVolumeUp: from %f to %f", volume, volume + 0.01f);
 }
 - (void)runTTModeAlarmVolumeDown {
-    NSLog(@"Running runTTModeAlarmVolumeDown");
-    [TTModeMac setVolume:[TTModeMac volume] - 0.1f];
+    CGFloat volume = [TTModeMac volume];
+    if (volume < 0.02f) volume = 0.02f;
+    NSLog(@"Running runTTModeAlarmVolumeDown: from %f to %f", volume, volume - 0.01f);
+    [TTModeMac setVolume:volume - 0.01f];
 }
 
 #pragma mark - Defaults

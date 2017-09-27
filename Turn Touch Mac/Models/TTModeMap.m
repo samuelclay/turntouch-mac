@@ -772,7 +772,7 @@ actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction 
     NSError *error = nil;
     NSData *json = [NSJSONSerialization dataWithJSONObject:params options:NSJSONWritingPrettyPrinted error:&error];
     NSString *body = [[NSString alloc] initWithData:json encoding:NSUTF8StringEncoding];
-    NSLog(@" ---> Recording: %@", body);
+//    NSLog(@" ---> Recording: %@", body);
     
     NSString *urlString = [NSString stringWithFormat:@"%@/usage/record", TURN_TOUCH_HOST];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];

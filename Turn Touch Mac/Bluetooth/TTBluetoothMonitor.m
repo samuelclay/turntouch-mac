@@ -528,8 +528,8 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
         }
         
         /* GAP (Generic Access Profile) for Device Name */
-        if ([service.UUID isEqual:[CBUUID UUIDWithString:CBUUIDGenericAccessProfileString]]) {
-            [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:CBUUIDDeviceNameString]]
+        if ([service.UUID isEqual:[CBUUID UUIDWithString:@"1800"]]) {
+            [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:@"2A00"]]
                                      forService:service];
         }
     }
@@ -608,9 +608,9 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
         }
     }
     
-    if ( [service.UUID isEqual:[CBUUID UUIDWithString:CBUUIDGenericAccessProfileString]] ) {
+    if ( [service.UUID isEqual:[CBUUID UUIDWithString:@"1800"]] ) {
         for (CBCharacteristic *aChar in service.characteristics) {
-            if ([aChar.UUID isEqual:[CBUUID UUIDWithString:CBUUIDDeviceNameString]]) {
+            if ([aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A00"]]) {
                 [peripheral readValueForCharacteristic:aChar];
             }
         }
@@ -716,7 +716,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             [self ensureNicknameOnDevice:device];
         });
-    } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:CBUUIDDeviceNameString]]) {
+    } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A00"]]) {
         NSString * deviceName = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
         NSLog(@"Device Name = %@", deviceName);
     } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A29"]]) {

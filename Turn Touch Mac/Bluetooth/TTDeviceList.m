@@ -136,7 +136,6 @@
 - (BOOL)isPeripheralPaired:(CBPeripheral *)peripheral {
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
     NSArray *pairedDevices = [preferences objectForKey:@"TT:devices:paired"];
-
     return [pairedDevices containsObject:peripheral.identifier.UUIDString];
 }
 
