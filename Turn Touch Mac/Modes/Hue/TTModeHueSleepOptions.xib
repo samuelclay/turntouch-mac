@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,15 +21,15 @@
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="c22-O7-iKe">
             <rect key="frame" x="0.0" y="0.0" width="497" height="141"/>
             <subviews>
-                <slider verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="SI4-b6-ibl" customClass="TTSlider">
+                <slider horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="SI4-b6-ibl" customClass="TTSlider">
                     <rect key="frame" x="142" y="59" width="260" height="24"/>
                     <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="120" tickMarkPosition="above" numberOfTickMarks="6" sliderType="linear" id="FvG-o1-a7r" customClass="TTSliderCell"/>
                     <connections>
                         <action selector="didChangeDuration:" target="-2" id="e1h-0j-XHE"/>
                     </connections>
                 </slider>
-                <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vlJ-pv-RxR">
-                    <rect key="frame" x="414" y="62.5" width="65" height="19"/>
+                <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vlJ-pv-RxR">
+                    <rect key="frame" x="414" y="62" width="65" height="19"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="61" id="kTO-9W-4sX"/>
                     </constraints>
@@ -38,7 +39,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Oa-CC-40c">
+                <textField verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Oa-CC-40c">
                     <rect key="frame" x="55" y="61" width="71" height="21"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Single tap" id="mSS-wy-Hf7">
                         <font key="font" size="14" name="Effra-Regular"/>
@@ -46,7 +47,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZN2-xr-WHM">
+                <textField verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZN2-xr-WHM">
                     <rect key="frame" x="55" y="20" width="71" height="21"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Double tap" id="vCo-0r-Uqw">
                         <font key="font" size="14" name="Effra-Regular"/>
@@ -70,14 +71,14 @@
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="single_tap" id="fAM-Ta-qvI"/>
                 </imageView>
-                <slider verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="YHk-US-dr5" customClass="TTSlider">
+                <slider horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="YHk-US-dr5" customClass="TTSlider">
                     <rect key="frame" x="142" y="18" width="260" height="24"/>
                     <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="120" tickMarkPosition="above" numberOfTickMarks="6" sliderType="linear" id="5Bx-bJ-b6f" customClass="TTSliderCell"/>
                     <connections>
                         <action selector="didChangeDuration:" target="-2" id="txY-7R-1Zb"/>
                     </connections>
                 </slider>
-                <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wKw-1h-WR9">
+                <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wKw-1h-WR9">
                     <rect key="frame" x="414" y="23" width="65" height="19"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="61" id="MaH-gq-rTX"/>
@@ -88,7 +89,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="nkU-Da-ZiG">
+                <popUpButton horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="nkU-Da-ZiG">
                     <rect key="frame" x="142" y="97" width="338" height="26"/>
                     <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="eYU-hZ-7oD" id="1G8-Yo-4cj">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -105,7 +106,7 @@
                         <action selector="didChangeRoom:" target="-2" id="s5u-jg-fFr"/>
                     </connections>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tvI-TO-Mmz">
+                <textField verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tvI-TO-Mmz">
                     <rect key="frame" x="55" y="102" width="71" height="21"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Room" id="h6Z-VA-BdZ">
                         <font key="font" size="14" name="Effra-Regular"/>

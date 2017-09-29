@@ -72,6 +72,8 @@
     NSLayoutConstraint *optionsConstraint;
     NSLayoutConstraint *deviceTitlesConstraint;
     NSLayoutConstraint *addActionButtonConstraint;
+    NSStackView *scrollStackView;
+    NSScrollView *scrollView;
     TTPanelModal panelModal;
     TTModalPairing modalPairing;
     TTModalFTUX modalFTUX;

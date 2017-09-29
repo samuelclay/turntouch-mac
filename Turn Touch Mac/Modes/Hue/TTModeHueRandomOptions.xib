@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,7 +23,7 @@
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="c22-O7-iKe">
             <rect key="frame" x="0.0" y="0.0" width="440" height="262"/>
             <subviews>
-                <segmentedControl horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SMf-U6-ghJ" customClass="TTSegmentedControl">
+                <segmentedControl horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="SMf-U6-ghJ" customClass="TTSegmentedControl">
                     <rect key="frame" x="129" y="151" width="213" height="24"/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="Aeq-U5-5qx" customClass="TTSegmentedCell">
                         <font key="font" metaFont="system"/>
@@ -36,7 +37,7 @@
                         <action selector="changeRandomBrightness:" target="-2" id="QFm-Ta-7Ef"/>
                     </connections>
                 </segmentedControl>
-                <textField verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ab0-0p-Vmn">
+                <textField verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" setsMaxLayoutWidthAtFirstLayout="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ab0-0p-Vmn">
                     <rect key="frame" x="43" y="182" width="70" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="66" id="0H1-Xp-AwX"/>
@@ -47,7 +48,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <segmentedControl horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fK0-9l-j0Z" customClass="TTSegmentedControl">
+                <segmentedControl horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="fK0-9l-j0Z" customClass="TTSegmentedControl">
                     <rect key="frame" x="129" y="122" width="213" height="24"/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="40w-nu-1kA" customClass="TTSegmentedCell">
                         <font key="font" metaFont="system"/>
@@ -61,7 +62,7 @@
                         <action selector="changeRandomSaturation:" target="-2" id="Z7J-AN-rdg"/>
                     </connections>
                 </segmentedControl>
-                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GdS-bS-cNL">
+                <textField verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GdS-bS-cNL">
                     <rect key="frame" x="43" y="124" width="70" height="21"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Saturation" id="cCd-Xm-8wj">
                         <font key="font" size="14" name="Effra-Regular"/>
@@ -69,7 +70,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <segmentedControl horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Fqe-9d-WDM" customClass="TTSegmentedControl">
+                <segmentedControl horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Fqe-9d-WDM" customClass="TTSegmentedControl">
                     <rect key="frame" x="129" y="180" width="213" height="24"/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="CcS-hq-CN1" customClass="TTSegmentedCell">
                         <font key="font" metaFont="system"/>
@@ -83,7 +84,7 @@
                         <action selector="changeRandomColors:" target="-2" id="VXn-hk-KPO"/>
                     </connections>
                 </segmentedControl>
-                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N29-Q7-eTX">
+                <textField verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N29-Q7-eTX">
                     <rect key="frame" x="43" y="153" width="70" height="21"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Brightness" id="9YE-RM-3sn">
                         <font key="font" size="14" name="Effra-Regular"/>
@@ -91,7 +92,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <segmentedControl horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iDC-Rd-X9V" customClass="TTSegmentedControl">
+                <segmentedControl horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="iDC-Rd-X9V" customClass="TTSegmentedControl">
                     <rect key="frame" x="129" y="47" width="213" height="24"/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="yJC-uA-kHZ" customClass="TTSegmentedCell">
                         <font key="font" metaFont="system"/>
@@ -105,7 +106,7 @@
                         <action selector="changeRandomBrightness:" target="-2" id="WGp-Qy-Hcv"/>
                     </connections>
                 </segmentedControl>
-                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="96R-ps-o2X">
+                <textField verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="96R-ps-o2X">
                     <rect key="frame" x="43" y="78" width="70" height="21"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Colors" id="XSQ-Rl-N41">
                         <font key="font" size="14" name="Effra-Regular"/>
@@ -113,7 +114,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <segmentedControl horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Kf-bj-Vw4" customClass="TTSegmentedControl">
+                <segmentedControl horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="3Kf-bj-Vw4" customClass="TTSegmentedControl">
                     <rect key="frame" x="129" y="18" width="213" height="24"/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="98X-tQ-Z3e" customClass="TTSegmentedCell">
                         <font key="font" metaFont="system"/>
@@ -127,7 +128,7 @@
                         <action selector="changeRandomSaturation:" target="-2" id="6bq-uR-fxK"/>
                     </connections>
                 </segmentedControl>
-                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bxH-Zq-xpU">
+                <textField verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bxH-Zq-xpU">
                     <rect key="frame" x="43" y="20" width="70" height="21"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Saturation" id="vJb-4K-O43">
                         <font key="font" size="14" name="Effra-Regular"/>
@@ -135,7 +136,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <segmentedControl horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QWJ-A5-EWQ" customClass="TTSegmentedControl">
+                <segmentedControl horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="QWJ-A5-EWQ" customClass="TTSegmentedControl">
                     <rect key="frame" x="129" y="76" width="213" height="24"/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="VdM-tN-qLN" customClass="TTSegmentedCell">
                         <font key="font" metaFont="system"/>
@@ -149,7 +150,7 @@
                         <action selector="changeRandomColors:" target="-2" id="bLr-eX-smT"/>
                     </connections>
                 </segmentedControl>
-                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Eiq-6F-KKf">
+                <textField verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eiq-6F-KKf">
                     <rect key="frame" x="43" y="49" width="70" height="21"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Brightness" id="Ofa-pl-ofo">
                         <font key="font" size="14" name="Effra-Regular"/>
@@ -157,7 +158,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="aWX-Pt-N8o">
+                <box verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="aWX-Pt-N8o">
                     <rect key="frame" x="131" y="109" width="96" height="5"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="96" id="ab2-kl-6dn"/>
@@ -211,7 +212,7 @@
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="double_tap" id="xws-54-VNz"/>
                 </imageView>
-                <popUpButton horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oLA-fb-hMo">
+                <popUpButton horizontalHuggingPriority="249" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="oLA-fb-hMo">
                     <rect key="frame" x="129" y="218" width="214" height="26"/>
                     <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="7XZ-54-QHZ" id="CDP-tH-krX">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -228,7 +229,7 @@
                         <action selector="didChangeRoom:" target="-2" id="n2C-Pm-U6B"/>
                     </connections>
                 </popUpButton>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nAP-Ff-cDy">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nAP-Ff-cDy">
                     <rect key="frame" x="43" y="223" width="40" height="21"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Room" id="1zh-2s-EHg">
                         <font key="font" size="14" name="Effra-Regular"/>

@@ -67,6 +67,23 @@
         addActionButtonView = [[TTAddActionButtonView alloc] init];
         footerView = [[TTFooterView alloc] init];
         
+        scrollView = [[NSScrollView alloc] init];
+        scrollView.borderType = NSNoBorder;
+        scrollView.hasVerticalScroller = YES;
+        scrollView.hasHorizontalScroller = NO;
+        [scrollView setContentHuggingPriority:NSLayoutPriorityDefaultLow
+                               forOrientation:NSLayoutConstraintOrientationVertical];
+        scrollStackView = [[NSStackView alloc] init];
+        scrollStackView.wantsLayer = YES;
+        [scrollStackView setHuggingPriority:NSLayoutPriorityDefaultHigh
+                             forOrientation:NSLayoutConstraintOrientationVertical];
+        scrollStackView.translatesAutoresizingMaskIntoConstraints = NO;
+        scrollStackView.orientation = NSUserInterfaceLayoutOrientationVertical;
+        scrollStackView.alignment = NSLayoutAttributeCenterX;
+        scrollStackView.spacing = 0.f;
+        [scrollView addSubview:scrollStackView];
+        [scrollView setDocumentView:scrollStackView];
+        
         [self registerAsObserver];
     }
     
@@ -99,6 +116,12 @@
 
     for (NSLayoutConstraint *constraint in [self constraints]) {
         [self removeConstraint:constraint];
+    }
+    for (NSLayoutConstraint *constraint in [scrollView constraints]) {
+        [scrollView removeConstraint:constraint];
+    }
+    for (NSLayoutConstraint *constraint in [scrollStackView constraints]) {
+        [scrollStackView removeConstraint:constraint];
     }
 }
 
@@ -151,13 +174,15 @@
                      modeTabs,
                      modeTitle,
                      modeMenu,
-                     diamondLabels,
-                     actionMenu,
-                     optionsView,
-                     batchActionStackView,
-                     addActionMenu,
-                     addActionButtonView,
+                     scrollView,
                      footerView] inGravity:NSStackViewGravityTop];
+    
+    [scrollStackView setViews:@[diamondLabels,
+                                actionMenu,
+                                optionsView,
+                                batchActionStackView,
+                                addActionMenu,
+                                addActionButtonView] inGravity:NSStackViewGravityTop];
     
     [self addArrowAndTitleConstraints];
     
@@ -193,7 +218,36 @@
                                                      multiplier:1.0 constant:1];
     [modeMenuConstraint setPriority:NSLayoutPriorityDefaultHigh];
     [self addConstraint:modeMenuConstraint];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:diamondLabels
+    
+    
+    [scrollView addConstraint:[NSLayoutConstraint constraintWithItem:scrollStackView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:scrollView attribute:NSLayoutAttributeTop multiplier:1.f constant:0.f]];
+    [scrollView addConstraint:[NSLayoutConstraint constraintWithItem:scrollStackView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:scrollView attribute:NSLayoutAttributeLeft multiplier:1.f constant:0.f]];
+    [scrollView addConstraint:[NSLayoutConstraint constraintWithItem:scrollStackView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:scrollView attribute:NSLayoutAttributeRight multiplier:1.f constant:-15.f]];
+    
+    NSLayoutConstraint *scrollViewHeight = [NSLayoutConstraint constraintWithItem:scrollView
+                                                                        attribute:NSLayoutAttributeHeight
+                                                                        relatedBy:NSLayoutRelationEqual
+                                                                           toItem:scrollStackView
+                                                                        attribute:NSLayoutAttributeHeight
+                                                                       multiplier:1.f constant:0.f];
+    scrollViewHeight.priority = 999;
+    [self addConstraint:scrollViewHeight];
+    NSRect screenRect = [[[NSScreen screens] objectAtIndex:0] frame];
+    CGFloat scrollHeight = NSHeight(screenRect) - 400;
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:scrollView
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationLessThanOrEqual
+                                                        toItem:nil
+                                                     attribute:NSLayoutAttributeNotAnAttribute
+                                                    multiplier:1.f constant:scrollHeight]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:scrollView
+                                                     attribute:NSLayoutAttributeWidth
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeWidth
+                                                    multiplier:1.0 constant:0]];
+    
+    [scrollStackView addConstraint:[NSLayoutConstraint constraintWithItem:diamondLabels
                                                      attribute:NSLayoutAttributeHeight
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:nil
@@ -205,28 +259,29 @@
                                                            toItem:nil
                                                         attribute:0
                                                        multiplier:1.0 constant:1];
-    [self addConstraint:actionMenuConstraint];
+    [scrollStackView addConstraint:actionMenuConstraint];
     optionsConstraint = [NSLayoutConstraint constraintWithItem:optionsView
                                                      attribute:NSLayoutAttributeHeight
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:optionsView.modeOptionsViewController.view
                                                      attribute:NSLayoutAttributeHeight
                                                     multiplier:1.0 constant:0];
-    [self addConstraint:optionsConstraint];
+    [scrollStackView addConstraint:optionsConstraint];
     addActionMenuConstraint = [NSLayoutConstraint constraintWithItem:addActionMenu
                                                            attribute:NSLayoutAttributeHeight
                                                            relatedBy:NSLayoutRelationEqual
                                                               toItem:nil
                                                            attribute:0
                                                           multiplier:1.0 constant:1.f];
-    [self addConstraint:addActionMenuConstraint];
+    [scrollStackView addConstraint:addActionMenuConstraint];
     addActionButtonConstraint = [NSLayoutConstraint constraintWithItem:addActionButtonView
                                                              attribute:NSLayoutAttributeHeight
                                                              relatedBy:NSLayoutRelationEqual
                                                                 toItem:nil
                                                              attribute:0 multiplier:1.0
                                                               constant:0];
-    [self addConstraint:addActionButtonConstraint];
+    [scrollStackView addConstraint:addActionButtonConstraint];
+    
     [self addConstraint:[NSLayoutConstraint constraintWithItem:footerView
                                                      attribute:NSLayoutAttributeHeight
                                                      relatedBy:NSLayoutRelationEqual
@@ -354,10 +409,6 @@
     BOOL shiftPressed = (clearFlags == NSShiftKeyMask);
     if (shiftPressed) openDuration *= 10;
     
-    if (appDelegate.modeMap.openedAddActionChangeMenu) {
-        [addActionMenu toggleScrollbar:appDelegate.modeMap.openedAddActionChangeMenu];
-    }
-    
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:openDuration];
     [[NSAnimationContext currentContext] setTimingFunction:[CAMediaTimingFunction functionWithName:
@@ -370,9 +421,21 @@
         [[addActionMenuConstraint animator] setConstant:1.f];
     } else {
         [[addActionMenuConstraint animator] setConstant:ACTION_MENU_HEIGHT];
+        
+        CGFloat scroll = -1 * (scrollView.contentSize.height + NSMaxY([addActionButtonView convertRect:addActionButtonView.frame toView:scrollView]));
+        NSClipView* clipView = [scrollView contentView];
+        NSPoint newOrigin = [clipView bounds].origin;
+        newOrigin.y = scroll;
+        [[clipView animator] setBoundsOrigin:newOrigin];
+        [scrollView reflectScrolledClipView:[scrollView contentView]];
     }
     
     [NSAnimationContext endGrouping];
+    
+    if (appDelegate.modeMap.openedAddActionChangeMenu) {
+        [addActionMenu toggleScrollbar:appDelegate.modeMap.openedAddActionChangeMenu];
+    }
+
 }
 
 - (void)toggleAddActionButtonView {
@@ -456,6 +519,23 @@
 
 - (void)viewDidMoveToWindow {
     [[self window] setAcceptsMouseMovedEvents:YES];
+}
+
+- (void)scrollToPosition:(float)yCoord {
+    NSClipView* clipView = [scrollView contentView];
+    
+//    if (yCoord < clipView.bounds.origin.y + (clipView.bounds.size.height - 2) &&
+//        yCoord > clipView.bounds.origin.y) return;
+    
+    [NSAnimationContext beginGrouping];
+    [[NSAnimationContext currentContext] setDuration:0.35];
+    [[NSAnimationContext currentContext] setTimingFunction:
+     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+    NSPoint newOrigin = [clipView bounds].origin;
+    newOrigin.y = yCoord - 2;
+    [[clipView animator] setBoundsOrigin:newOrigin];
+    [scrollView reflectScrolledClipView:[scrollView contentView]];
+    [NSAnimationContext endGrouping];
 }
 
 #pragma mark - Pairing Modal
