@@ -53,42 +53,6 @@
     [panel setContentView:self.backgroundView];
 
     [appDelegate.modeMap reset];
-
-    [self registerAsObserver];
-}
-
-
-#pragma mark - KVO
-
-- (void)registerAsObserver {
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(resize:)
-//                                                 name:NSWindowDidResizeNotification
-//                                               object:self.window];
-}
-
-- (void) observeValueForKeyPath:(NSString*)keyPath
-                       ofObject:(id)object
-                         change:(NSDictionary*)change
-                        context:(void*)context {
-    if ([keyPath isEqual:NSStringFromSelector(@selector(frame))]) {
-        [self resize:nil];
-    }
-}
-
-- (void)resize:(NSNotification *)notification {
-//    NSLog(@"Resize notification: %@", NSStringFromRect(self.window.frame));
-//    [self.window display];
-//    [self.window setHasShadow:NO];
-//    [self.window setHasShadow:YES];
-//    [self.window invalidateShadow];
-  /*  [[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidResizeNotification object:self.window];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(resize:)
-                                                 name:NSWindowDidResizeNotification
-                                               object:self.window];*/
-
 }
 
 #pragma mark - Public accessors
@@ -122,13 +86,6 @@
     if ([[self window] isVisible]) {
         self.hasActivePanel = NO;
     }
-}
-
-- (void)windowDidResize:(NSNotification *)notification {
-//    NSLog(@"windowDidResize: %@", notification);
-
-//    [self.window display];
-//    [self.window invalidateShadow];
 }
 
 #pragma mark - Keyboard
@@ -170,6 +127,7 @@
     [self.backgroundView switchPanelModal:PANEL_MODAL_APP];
 
     NSRect panelRect = [panel frame];
+    panelRect.size.width = PANEL_WIDTH;
     panelRect.origin.x = roundf(NSMidX(statusRect) - NSWidth(panelRect) / 2);
     panelRect.origin.y = NSMaxY(statusRect) - NSHeight(panelRect);
     

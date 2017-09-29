@@ -147,7 +147,11 @@ const NSInteger BATCH_ACTION_HEADER_HEIGHT = 36;
     NSMutableArray *views = [NSMutableArray array];
     TTBatchActionHeaderView *tempHeaderView;
     NSArray *batchActions = [appDelegate.modeMap selectedModeBatchActions:appDelegate.modeMap.inspectingModeDirection];
-    [self removeConstraints:[self constraints]];
+
+    for (NSLayoutConstraint *constraint in [self constraints]) {
+        [self removeConstraint:constraint];
+    }
+    
     [actionOptionsViewControllers removeAllObjects];
     actionOptionsViewControllers = [NSMutableArray array];
     changeActionMenuViewControllers = [NSMutableDictionary dictionary];

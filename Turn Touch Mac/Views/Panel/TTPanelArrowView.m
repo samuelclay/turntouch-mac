@@ -45,7 +45,6 @@
     [path setLineWidth:LINE_THICKNESS * 2];
     [[NSColor whiteColor] setStroke];
     [path stroke];
-    
 }
 
 @end

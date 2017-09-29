@@ -37,6 +37,8 @@
 
 - (instancetype)initWithFrame:(NSRect)frameRect {
     if (self = [super initWithFrame:frameRect]) {
+        self.translatesAutoresizingMaskIntoConstraints = NO;
+
         appDelegate = (TTAppDelegate *)[NSApp delegate];
         [self setOrientation:NSUserInterfaceLayoutOrientationVertical];
         [self setAlignment:NSLayoutAttributeCenterX];
@@ -45,7 +47,6 @@
         [self setHuggingPriority:NSLayoutPriorityDefaultHigh
                   forOrientation:NSLayoutConstraintOrientationVertical];
         
-        self.translatesAutoresizingMaskIntoConstraints = NO;
         [self registerAsObserver];
 
         // This is set to 10 elsewhere. Why make it user configurable?
@@ -75,7 +76,9 @@
     [appDelegate.bluetoothMonitor addObserver:self
                                    forKeyPath:@"unpairedDevicesConnected"
                                       options:0 context:nil];
-
+    [appDelegate.bluetoothMonitor addObserver:self
+                                   forKeyPath:@"bluetoothState"
+                                      options:0 context:nil];
 }
 
 - (void) observeValueForKeyPath:(NSString*)keyPath
@@ -94,6 +97,9 @@
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(unpairedDevicesConnected))]) {
         [self assembleDeviceTitles];
         [self setNeedsDisplay:YES];
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(bluetoothState))]) {
+        [self assembleDeviceTitles];
+        [self setNeedsDisplay:YES];
     }
 }
 
@@ -102,6 +108,7 @@
     [self removeObserver:self forKeyPath:@"pairedDevicesCount"];
     [self removeObserver:self forKeyPath:@"unpairedDevicesCount"];
     [self removeObserver:self forKeyPath:@"unpairedDevicesConnected"];
+    [self removeObserver:self forKeyPath:@"bluetoothState"];
 }
 
 #pragma mark - Drawing
@@ -153,7 +160,7 @@
     for (NSView *deviceView in self.views) {
         [self addConstraint:[NSLayoutConstraint constraintWithItem:deviceView
                                                          attribute:NSLayoutAttributeHeight
-                                                         relatedBy:NSLayoutRelationLessThanOrEqual
+                                                         relatedBy:NSLayoutRelationEqual
                                                             toItem:nil
                                                          attribute:0
                                                         multiplier:1.0

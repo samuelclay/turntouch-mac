@@ -31,6 +31,7 @@
 - (BOOL)isDevicePaired:(TTDevice *)device;
 
 - (NSInteger)count;
+- (NSInteger)visibleCount;
 - (NSInteger)connectedCount;
 - (NSUInteger)totalPairedCount;
 - (NSArray *)nicknamedConnected;

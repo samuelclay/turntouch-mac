@@ -96,7 +96,10 @@
 - (void)cleanup {
     [self cleanupPanelModalPairing];
     [self cleanupPanelModalFTUX];
-    [self removeConstraints:[self constraints]];
+
+    for (NSLayoutConstraint *constraint in [self constraints]) {
+        [self removeConstraint:constraint];
+    }
 }
 
 - (void)addArrowAndTitleConstraints {
@@ -134,8 +137,8 @@
                                                     multiplier:0
                                                       constant:PANEL_WIDTH]];
     
-    [appDelegate.panelController.window setContentSize:NSMakeSize(PANEL_WIDTH,
-                                                                  NSHeight(appDelegate.panelController.window.frame))];
+//    [appDelegate.panelController.window setContentSize:NSMakeSize(PANEL_WIDTH,
+//                                                                  NSHeight(appDelegate.panelController.window.frame))];
 }
 
 - (void)switchPanelModalApp {
@@ -230,6 +233,8 @@
                                                         toItem:nil
                                                      attribute:0
                                                     multiplier:0 constant:FOOTER_HEIGHT]];
+    
+    [arrowView setNeedsDisplay:YES];
     //        NSLog(@"Init modeOptionsView View height: %.f", NSHeight(optionsView.modeOptionsViewController.view.bounds));
     //        NSLog(@"Init options View height: %.f", NSHeight(optionsView.bounds));
 }

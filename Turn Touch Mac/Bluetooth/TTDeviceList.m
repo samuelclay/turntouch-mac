@@ -151,6 +151,17 @@
     return count;
 }
 
+- (NSInteger)visibleCount {
+    NSInteger count = 0;
+    for (TTDevice *device in devices) {
+        if (device.peripheral.state != CBPeripheralStateDisconnected &&
+            device.state != TTDeviceStateDisconnected) {
+            count++;
+        }
+    }
+    return count;
+}
+
 - (NSInteger)connectedCount {
     NSInteger count = 0;
     for (TTDevice *device in devices) {

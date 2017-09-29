@@ -82,7 +82,10 @@
 - (void)updateModal {
     if (modalPairing == MODAL_PAIRING_SEARCH) {
         // Just need the background color, no actual button
-        [self removeConstraints:[self constraints]];
+        for (NSLayoutConstraint *constraint in [self constraints]) {
+            [self removeConstraint:constraint];
+        }
+        
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:0 multiplier:1.0f constant:12.0f]];
         return;
     }
