@@ -191,7 +191,7 @@
                                                  relatedBy:NSLayoutRelationEqual
                                                     toItem:nil
                                                  attribute:0 multiplier:1.0 constant:appDelegate.bluetoothMonitor.foundDevices.devices.count*40];
-    [self addConstraint:deviceTitlesConstraint];
+//    [self addConstraint:deviceTitlesConstraint];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:deviceTitlesView
                                                      attribute:NSLayoutAttributeWidth
                                                      relatedBy:NSLayoutRelationEqual
