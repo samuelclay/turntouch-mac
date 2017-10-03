@@ -36,5 +36,6 @@ extern NSString *const kIftttTapType;
 - (void)beginConnectingToIfttt:(void (^)(void))callback;
 - (void)cancelConnectingToIfttt;
 - (void)registerTriggers:(void (^)(void))callback;
+- (void)purgeRecipe:(TTModeDirection)actionDirection callback:(void (^)(void))callback;
 
 @end

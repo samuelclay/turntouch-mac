@@ -11,13 +11,17 @@
 #import "TTModeIfttt.h"
 #import "TTOptionsDetailViewController.h"
 
-@interface TTModeIftttTriggerActionOptions : TTOptionsDetailViewController <WebResourceLoadDelegate> {
-    
+@interface TTModeIftttTriggerActionOptions : TTOptionsDetailViewController <WebResourceLoadDelegate, NSMenuDelegate> {
+    BOOL isMenuVisible;
+    NSMenu *settingsMenu;
 }
 
 @property (nonatomic) TTModeIfttt *modeIfttt;
 @property (nonatomic) NSPopover *authPopover;
+@property (nonatomic) IBOutlet NSButton *settingsButton;
+@property (nonatomic) IBOutlet NSButton *chooseButton;
 
 - (IBAction)clickRecipeButton:(id)sender;
+- (IBAction)showIftttMenu:(id)sender;
 
 @end

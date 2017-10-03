@@ -42,7 +42,7 @@
                         <action selector="didChangeScene:" target="-2" id="xDf-N7-mRx"/>
                     </connections>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IM5-A5-WMY">
+                <textField verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IM5-A5-WMY">
                     <rect key="frame" x="55" y="63" width="71" height="21"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Single tap" id="L2c-Gn-dhm">
                         <font key="font" size="14" name="Effra-Regular"/>
@@ -50,10 +50,10 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Ere-Kn-0fN">
+                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Ere-Kn-0fN">
                     <rect key="frame" x="356" y="64" width="16" height="18"/>
                 </progressIndicator>
-                <button translatesAutoresizingMaskIntoConstraints="NO" id="sOG-L3-IFj">
+                <button verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="sOG-L3-IFj">
                     <rect key="frame" x="355" y="64" width="18" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="Rxk-F4-UOt"/>
@@ -84,10 +84,10 @@
                         <action selector="didChangeScene:" target="-2" id="BqS-In-cfX"/>
                     </connections>
                 </popUpButton>
-                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="mtS-WV-AbJ">
+                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="mtS-WV-AbJ">
                     <rect key="frame" x="356" y="23" width="16" height="18"/>
                 </progressIndicator>
-                <button translatesAutoresizingMaskIntoConstraints="NO" id="9uM-S5-sjk">
+                <button verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="9uM-S5-sjk">
                     <rect key="frame" x="355" y="23" width="18" height="18"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="18" id="0ab-8s-OAT"/>
@@ -101,7 +101,7 @@
                         <action selector="didClickRefresh:" target="-2" id="O16-1O-ozj"/>
                     </connections>
                 </button>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wYJ-lf-HSQ">
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="wYJ-lf-HSQ">
                     <rect key="frame" x="20" y="18.5" width="29" height="24"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="24" id="WK1-HA-J3k"/>
@@ -109,7 +109,7 @@
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="double_tap" id="bI6-I4-vSS"/>
                 </imageView>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U1O-7Q-79P">
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="U1O-7Q-79P">
                     <rect key="frame" x="20" y="59.5" width="29" height="24"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="24" id="Tvo-Pr-TWs"/>
@@ -117,7 +117,7 @@
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="single_tap" id="IGO-L5-3CA"/>
                 </imageView>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FWG-U6-RZO">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FWG-U6-RZO">
                     <rect key="frame" x="55" y="22" width="71" height="21"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Double tap" id="l8c-H8-Xlq">
                         <font key="font" size="14" name="Effra-Regular"/>
@@ -125,7 +125,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mg6-2V-Y0D">
+                <textField verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mg6-2V-Y0D">
                     <rect key="frame" x="55" y="104" width="71" height="21"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Room" id="x18-V7-aXG">
                         <font key="font" size="14" name="Effra-Regular"/>
@@ -150,10 +150,10 @@
                         <action selector="didChangeRoom:" target="-2" id="o8Y-PT-0Qx"/>
                     </connections>
                 </popUpButton>
-                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="hsr-xy-jR5">
+                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="hsr-xy-jR5">
                     <rect key="frame" x="356" y="103" width="16" height="18"/>
                 </progressIndicator>
-                <button translatesAutoresizingMaskIntoConstraints="NO" id="hy3-xi-cOF">
+                <button verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="hy3-xi-cOF">
                     <rect key="frame" x="355" y="103" width="18" height="18"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="18" id="Ulp-Jo-4Eu"/>

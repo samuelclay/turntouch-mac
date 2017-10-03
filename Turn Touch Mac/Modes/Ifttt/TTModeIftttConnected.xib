@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,18 +14,10 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="59"/>
+            <rect key="frame" x="0.0" y="0.0" width="480" height="61"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TKA-P5-ru8">
-                    <rect key="frame" x="18" y="20" width="111" height="19"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Conncted to IFTTT" id="Mvm-KD-mtY">
-                        <font key="font" size="13" name="Effra-Regular"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MsJ-Z7-KlN" customClass="TTChangeButtonView">
-                    <rect key="frame" x="320" y="12" width="146" height="32"/>
+                <button verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="MsJ-Z7-KlN" customClass="TTChangeButtonView">
+                    <rect key="frame" x="14" y="13" width="146" height="32"/>
                     <buttonCell key="cell" type="push" title="Edit IFTTT recipies" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="cDQ-VD-E4K" customClass="TTChangeButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" size="13" name="Effra-Regular"/>
@@ -35,11 +28,9 @@
                 </button>
             </subviews>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="TKA-P5-ru8" secondAttribute="bottom" constant="20" id="43h-Pw-p85"/>
-                <constraint firstAttribute="trailing" secondItem="MsJ-Z7-KlN" secondAttribute="trailing" constant="20" id="Byh-Wo-Fta"/>
-                <constraint firstItem="TKA-P5-ru8" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="WJv-Es-ZIC"/>
-                <constraint firstItem="TKA-P5-ru8" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="mXE-pX-CGA"/>
-                <constraint firstItem="MsJ-Z7-KlN" firstAttribute="centerY" secondItem="TKA-P5-ru8" secondAttribute="centerY" id="oWk-ma-shP"/>
+                <constraint firstAttribute="bottom" secondItem="MsJ-Z7-KlN" secondAttribute="bottom" constant="20" id="MOE-y8-hUH"/>
+                <constraint firstItem="MsJ-Z7-KlN" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="hlx-1L-LzD"/>
+                <constraint firstItem="MsJ-Z7-KlN" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="zMv-XC-4TW"/>
             </constraints>
         </customView>
     </objects>

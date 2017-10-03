@@ -173,6 +173,26 @@ static TTIftttState iftttState;
     
 }
 
+- (void)purgeRecipe:(TTModeDirection)actionDirection callback:(void (^)(void))callback {
+    NSString *url = @"https://turntouch.com/ifttt/purge_trigger";
+    NSDictionary *params = @{@"user_id": [appDelegate.modeMap userId],
+                             @"device_id": [appDelegate.modeMap deviceId],
+                             @"app_direction": [appDelegate.modeMap directionName:modeDirection],
+                             @"button_direction": [appDelegate.modeMap directionName:actionDirection],
+                             };
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    [manager POST:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@" ---> Purged IFTTT: %@", responseObject);
+        if (callback) callback();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@" ---> IFTTT not authorized, can't purge trigger");
+        if (callback) callback();
+    }];
+    
+}
+
 - (NSArray *)collectTriggers {
     NSMutableArray *triggers = [NSMutableArray array];
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];

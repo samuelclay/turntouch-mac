@@ -17,11 +17,15 @@
 
 @synthesize modeIfttt;
 @synthesize authPopover;
+@synthesize settingsButton;
+@synthesize chooseButton;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [settingsButton setImage:[NSImage imageNamed:@"settings"]];
     modeIfttt = (TTModeIfttt *)self.action.mode;
+    [self buildSettingsMenu:YES];
 }
 
 - (IBAction)clickRecipeButton:(id)sender {
@@ -45,6 +49,53 @@
         
         [iftttAuthViewController openRecipe:self.action.direction];
     }];
+}
+
+
+#pragma mark - Settings menu
+
+- (IBAction)showIftttMenu:(id)sender {
+    [NSMenu popUpContextMenu:settingsMenu
+                   withEvent:[NSApp currentEvent]
+                     forView:sender];
+}
+
+- (IBAction)replaceRecipe:(id)sender {
+    [modeIfttt registerTriggers:^{
+        [self.modeIfttt purgeRecipe:self.action.direction callback:^{
+            [self clickRecipeButton:chooseButton];
+        }];
+    }];
+}
+
+- (void)buildSettingsMenu:(BOOL)force {
+    if (!force && !isMenuVisible) return;
+    
+    NSMenuItem *menuItem;
+    
+    if (!settingsMenu) {
+        settingsMenu = [[NSMenu alloc] initWithTitle:@"Action Menu"];
+        [settingsMenu setDelegate:self];
+        [settingsMenu setAutoenablesItems:NO];
+    } else {
+        [settingsMenu removeAllItems];
+    }
+    
+    menuItem = [[NSMenuItem alloc] initWithTitle:@"Replace this recipe..." action:@selector(replaceRecipe:) keyEquivalent:@""];
+    [menuItem setEnabled:YES];
+    [menuItem setTarget:self];
+    [settingsMenu addItem:menuItem];
+}
+
+#pragma mark - Menu Delegate
+
+- (void)menuWillOpen:(NSMenu *)menu {
+    isMenuVisible = YES;
+    [self buildSettingsMenu:YES];
+}
+
+- (void)menuDidClose:(NSMenu *)menu {
+    isMenuVisible = NO;
 }
 
 @end
