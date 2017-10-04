@@ -358,7 +358,7 @@
 		</data>
 		<key>Resources/TTModeHueBridge.nib</key>
 		<data>
-		+j3GZNmhDA3bcaR+abUX6bQu2Pg=
+		uA1sY0MmvEaQUS7kqW8OzUIH7qY=
 		</data>
 		<key>Resources/TTModeHueConnect.nib</key>
 		<data>
@@ -1042,7 +1042,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			dVah0RlR6qcpC6TYkyzHVXwsa1s=
+			LsAp20aK/2yC3oaVik9Q+3HHfSk=
 			</data>
 			<key>requirement</key>
 			<string>identifier "com.philips.hue.HueSDK-OSX" and anchor apple generic and certificate leaf[subject.CN] = "Mac Developer: Sam Clay (BYABZ8TGVG)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
@@ -1051,7 +1051,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			PnbAUxTMRlhtw0tSV6NZUZbFgh0=
+			hdsjVpS01yDvr21TmTynW5ae32g=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.andymatuschak.Sparkle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -1652,11 +1652,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			+j3GZNmhDA3bcaR+abUX6bQu2Pg=
+			uA1sY0MmvEaQUS7kqW8OzUIH7qY=
 			</data>
 			<key>hash2</key>
 			<data>
-			VJv3lRCB4STF5up7uA4hfmaQ+0k6TqrPWqi4q/MFf/Y=
+			DfGo3RxgGfSOneWApaa72a8/zJhkPpT9GetRlwHOsjg=
 			</data>
 		</dict>
 		<key>Resources/TTModeHueConnect.nib</key>
