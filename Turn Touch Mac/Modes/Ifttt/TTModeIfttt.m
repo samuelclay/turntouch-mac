@@ -59,7 +59,7 @@ static TTIftttState iftttState;
 #pragma mark - Action Images
 
 - (NSString *)imageTTModeIftttTriggerAction {
-    return @"trigger";
+    return @"lightning";
 }
 
 #pragma mark - Defaults

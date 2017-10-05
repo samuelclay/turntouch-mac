@@ -100,13 +100,13 @@ static TTModeNestDelegateManager *delegateManager;
 #pragma mark - Action Images
 
 - (NSString *)imageTTModeNestRaiseTemp {
-    return @"next_story.png";
+    return @"temperature_up.png";
 }
 - (NSString *)imageTTModeNestLowerTemp {
-    return @"next_site.png";
+    return @"temperature_down.png";
 }
 - (NSString *)imageTTModeNestSetTemp {
-    return @"previous_story.png";
+    return @"temperature.png";
 }
 
 #pragma mark - Action methods

@@ -149,13 +149,13 @@ static NSMutableArray *recentlyFoundDevices;
 #pragma mark - Action Images
 
 - (NSString *)imageTTModeWemoDeviceOn {
-    return @"next_story.png";
+    return @"electrical_connected";
 }
 - (NSString *)imageTTModeWemoDeviceOff {
-    return @"next_site.png";
+    return @"electrical_disconnected";
 }
 - (NSString *)imageTTModeWemoDeviceToggle {
-    return @"previous_story.png";
+    return @"electrical";
 }
 
 #pragma mark - Action methods

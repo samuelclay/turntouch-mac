@@ -145,16 +145,16 @@
 #pragma mark - Action Images
 
 - (NSString *)imageTTModeNewsMenu {
-    return @"web_menu.png";
+    return @"menu.png";
 }
 - (NSString *)imageTTModeNewsNextStory {
-    return @"next_story.png";
+    return @"next.png";
 }
 - (NSString *)imageTTModeNewsNextSite {
     return @"next_site.png";
 }
 - (NSString *)imageTTModeNewsPreviousStory {
-    return @"previous_story.png";
+    return @"previous.png";
 }
 - (NSString *)imageTTModeNewsPreviousSite {
     return @"previous_site.png";

@@ -88,7 +88,7 @@
 #pragma mark - Action Images
 
 - (NSString *)imageTTModePresentationToggleSlides {
-    return @"mode_presentation.png";
+    return @"presentation_slides";
 }
 
 - (NSString *)imageTTModePresentationNextSlide {

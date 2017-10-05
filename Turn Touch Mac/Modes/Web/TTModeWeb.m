@@ -110,16 +110,16 @@
 #pragma mark - Action Images
 
 - (NSString *)imageTTModeWebMenu {
-    return @"next_story.png";
+    return @"menu";
 }
 - (NSString *)imageTTModeWebNext {
     return @"next_site.png";
 }
 - (NSString *)imageTTModeWebScrollUp {
-    return @"previous_story.png";
+    return @"scroll_up.png";
 }
 - (NSString *)imageTTModeWebScrollDown {
-    return @"previous_site.png";
+    return @"scroll_down.png";
 }
 
 #pragma mark - Immediate Fire on Press

@@ -105,7 +105,7 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
     return @"song_info.png";
 }
 - (NSString *)imageTTModeAlarmStop {
-    return @"alarm_snooze.png";
+    return @"alarm_off.png";
 }
 - (NSString *)imageTTModeAlarmVolumeUp {
     return @"music_volume_up.png";

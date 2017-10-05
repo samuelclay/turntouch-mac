@@ -30,7 +30,7 @@ NSString *const kDoubleLastSuccess = @"doubleLastSuccess";
 }
 
 + (NSString *)imageName {
-    return @"mode_web.png";
+    return @"mode_custom.png";
 }
 
 #pragma mark - Actions
@@ -57,10 +57,10 @@ NSString *const kDoubleLastSuccess = @"doubleLastSuccess";
 #pragma mark - Action Images
 
 - (NSString *)imageTTModeCustomURL {
-    return @"music_play.png";
+    return @"webhook";
 }
 - (NSString *)imageTTModeCustomScript {
-    return @"music_play.png";
+    return @"script";
 }
 
 #pragma mark - Defaults

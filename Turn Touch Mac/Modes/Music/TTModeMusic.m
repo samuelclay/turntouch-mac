@@ -107,7 +107,7 @@ NSString *const kMusicVolumeJump = @"musicVolumeJump";
     return @"music_play.png";
 }
 - (NSString *)imageTTModeMusicPlayPause {
-    return @"music_play.png";
+    return @"music_play_pause.png";
 }
 - (NSString *)imageTTModeMusicNextTrack {
     return @"music_ff.png";

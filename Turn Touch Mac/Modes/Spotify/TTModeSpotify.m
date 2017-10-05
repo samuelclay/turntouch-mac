@@ -132,7 +132,7 @@ NSString *const kSpotifyVolumeJump = @"spotifyVolumeJump";
     return @"music_play.png";
 }
 - (NSString *)imageTTModeSpotifyPlayPause {
-    return @"music_play.png";
+    return @"music_play_pause.png";
 }
 - (NSString *)imageTTModeSpotifyNextTrack {
     return @"music_ff.png";

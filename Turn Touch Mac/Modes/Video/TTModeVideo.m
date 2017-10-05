@@ -63,22 +63,22 @@
 #pragma mark - Action Images
 
 - (NSString *)imageTTModeVideoVolumeUp {
-    return @"volume_up.png";
+    return @"music_volume_up.png";
 }
 - (NSString *)imageTTModeVideoVolumeDown {
-    return @"volume_down.png";
+    return @"music_volume_down.png";
 }
 - (NSString *)imageTTModeVideoFF {
-    return @"fast_forward.png";
+    return @"music_ff";
 }
 - (NSString *)imageTTModeVideoRewind {
-    return @"rewind.png";
+    return @"music_rewind.png";
 }
 - (NSString *)imageTTModeVideoPause {
-    return @"play.png";
+    return @"music_play_pause.png";
 }
 - (NSString *)imageTTModeVideoFullScreen {
-    return @"full_screen.png";
+    return @"fullscreen.png";
 }
 
 #pragma mark - Action methods

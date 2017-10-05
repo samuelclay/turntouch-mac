@@ -119,35 +119,35 @@ static SonosManager *sonosManager;
 #pragma mark - Action Images
 
 - (NSString *)imageTTModeSonosVolumeUp {
-    return @"volume_up";
+    return @"music_volume_up";
 }
 
 - (NSString *)imageTTModeSonosVolumeDown {
-    return @"volume_down";
+    return @"music_volume_down";
 }
 
 - (NSString *)imageTTModeSonosVolumeMute {
-    return @"mute";
+    return @"music_volume_mute";
 }
 
 - (NSString *)imageTTModeSonosPlayPause {
-    return @"play_pause";
+    return @"music_play_pause";
 }
 
 - (NSString *)imageTTModeSonosPlay {
-    return @"play";
+    return @"music_play";
 }
 
 - (NSString *)imageTTModeSonosPause {
-    return @"pause";
+    return @"music_pause";
 }
 
 - (NSString *)imageTTModeSonosNextTrack {
-    return @"next_track";
+    return @"music_ff";
 }
 
 - (NSString *)imageTTModeSonosPreviousTrack {
-    return @"previous_track";
+    return @"music_rewind";
 }
 
 #pragma mark - Defaults
