@@ -300,9 +300,13 @@ static NSMutableArray *recentlyFoundDevices;
 
 - (void)deviceReady:(id)device {
     // Device's name has been found, ready to display
-    if (![foundDevices containsObject:device]) {
-        [foundDevices addObject:device];
+    for (TTModeWemoDevice *foundDevice in TTModeWemo.foundDevices) {
+        if ([foundDevice isEqualToDevice:device]) {
+            return;
+        }
     }
+    
+    [foundDevices addObject:device];
     
     [self storeFoundDevices];
     
