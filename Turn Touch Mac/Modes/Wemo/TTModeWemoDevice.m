@@ -28,6 +28,9 @@
     return self;
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"%@ (%@ / %@)", self.deviceName, self.location, self.serialNumber];
+}
 #pragma mark - State
 
 - (BOOL)isEqualToDevice:(TTModeWemoDevice *)device {
@@ -113,7 +116,7 @@
         macAddress = [[results objectAtIndex:0] objectForKey:@"nodeContent"];
     }
 
-    NSLog(@" ---> Found wemo device: %@ (%@/%@)", deviceName, self.location, serialNumber);
+    NSLog(@" ---> Found wemo device: %@", self);
     [delegate deviceReady:self];
 }
 

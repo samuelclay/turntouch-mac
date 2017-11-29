@@ -11,9 +11,9 @@
 
 @implementation TTModeWemo
 
-NSString *const kWemoDeviceLocations = @"wemoDeviceLocations";
-NSString *const kWemoFoundDevices = @"wemoFoundDevices";
-NSString *const kWemoSeenDevices = @"wemoSeenDevices";
+NSString *const kWemoSelectedSerials = @"wemoSelectedSerials";
+NSString *const kWemoFoundDevices = @"wemoFoundDevicesV2";
+NSString *const kWemoSeenDevices = @"wemoSeenDevicesV2";
 
 static TTWemoState wemoState;
 static NSMutableArray *foundDevices;
@@ -215,10 +215,10 @@ static NSMutableArray *recentlyFoundDevices;
     
     if (!foundDevices.count) return devices;
     
-    NSArray *deviceLocations = [self.action optionValue:kWemoDeviceLocations inDirection:direction];
+    NSArray *selectedDevices = [self.action optionValue:kWemoSelectedSerials inDirection:direction];
     for (TTModeWemoDevice *foundDevice in foundDevices) {
-        for (NSString *deviceLocation in deviceLocations) {
-            if ([foundDevice.location isEqualToString:deviceLocation]) {
+        for (NSString *serialNumber in selectedDevices) {
+            if ([foundDevice.serialNumber isEqualToString:serialNumber]) {
                 [devices addObject:foundDevice];
             }
         }
@@ -279,7 +279,9 @@ static NSMutableArray *recentlyFoundDevices;
         }
     }
     
-    [foundDevices addObject:newDevice];
+    if (newDevice.deviceName != nil && newDevice.serialNumber != nil) {
+        [foundDevices addObject:newDevice];
+    }
     [recentlyFoundDevices addObject:newDevice];
     
     [newDevice requestDeviceInfo];
@@ -298,6 +300,9 @@ static NSMutableArray *recentlyFoundDevices;
 
 - (void)deviceReady:(id)device {
     // Device's name has been found, ready to display
+    if (![foundDevices containsObject:device]) {
+        [foundDevices addObject:device];
+    }
     
     [self storeFoundDevices];
     
@@ -322,13 +327,14 @@ static NSMutableArray *recentlyFoundDevices;
     }];
     
     NSMutableArray *devices = [NSMutableArray array];
-    NSMutableArray *foundIps = [NSMutableArray array];
+    NSMutableArray *foundSerials = [NSMutableArray array];
     for (TTModeWemoDevice *device in foundDevices) {
-        if (device.deviceName == nil || [device.deviceName isEqualToString:@""]) {
+        if (device.deviceName == nil || device.serialNumber == nil) {
             continue;
         }
-        if (![foundIps containsObject:device.location]) {
-            [foundIps addObject:device.location];
+        
+        if (![foundSerials containsObject:device.serialNumber]) {
+            [foundSerials addObject:device.serialNumber];
         } else {
             continue;
         }
@@ -375,17 +381,19 @@ static NSMutableArray *recentlyFoundDevices;
         return;
     }
     
-    NSArray *deviceLocations = [self.action optionValue:kWemoDeviceLocations inDirection:self.action.direction];
-    if (deviceLocations.count > 0) {
+    NSArray *selectedDevices = [self.action optionValue:kWemoSelectedSerials inDirection:self.action.direction];
+    if (selectedDevices.count > 0) {
         return;
     }
     
     // Nothing selected, so select everything
     NSMutableArray *locations = [NSMutableArray array];
     for (TTModeWemoDevice *device in TTModeWemo.foundDevices) {
-        [locations addObject:device.location];
+        if (device.serialNumber == nil) continue; // Not ready yet
+        if ([locations containsObject:device.serialNumber]) continue;
+        [locations addObject:device.serialNumber];
     }
-    [self.action changeActionOption:kWemoDeviceLocations to:locations];
+    [self.action changeActionOption:kWemoSelectedSerials to:locations];
 }
 
 @end

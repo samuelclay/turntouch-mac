@@ -28,7 +28,7 @@ typedef enum TTWemoState : NSUInteger {
     NSMutableArray *failedDevices;
 }
 
-extern NSString *const kWemoDeviceLocations;
+extern NSString *const kWemoSelectedSerials;
 extern NSString *const kWemoFoundDevices;
 extern NSString *const kWemoSeenDevices;
 

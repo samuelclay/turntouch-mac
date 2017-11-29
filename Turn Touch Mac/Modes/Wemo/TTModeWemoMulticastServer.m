@@ -103,7 +103,7 @@
         
 //        NSLog(@"Found Wemo: %@/%@:%ld/%ld: %@", host, locationHost, port, locationPort, headers);
         
-        [delegate foundDevice:headers host:locationHost port:locationPort name:nil live:YES];
+        [delegate foundDevice:headers host:locationHost port:locationPort name:nil serialNumber:nil macAddress:nil live:YES];
     }
 }
 

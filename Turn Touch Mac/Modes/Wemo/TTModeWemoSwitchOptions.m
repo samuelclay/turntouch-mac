@@ -105,20 +105,20 @@
 #pragma mark - Table View delegate and data source
 
 - (void)toggleDevice:(TTModeWemoDevice *)device {
-    NSMutableArray *selectedDevices = [[self.action optionValue:kWemoDeviceLocations] mutableCopy];
+    NSMutableArray *selectedDevices = [[self.action optionValue:kWemoSelectedSerials] mutableCopy];
     
-    if ([selectedDevices containsObject:device.location]) {
-        [selectedDevices removeObject:device.location];
+    if ([selectedDevices containsObject:device.serialNumber]) {
+        [selectedDevices removeObject:device.serialNumber];
     } else {
-        [selectedDevices addObject:device.location];
+        [selectedDevices addObject:device.serialNumber];
     }
     
-    [self.action changeActionOption:kWemoDeviceLocations to:selectedDevices];
+    [self.action changeActionOption:kWemoSelectedSerials to:selectedDevices];
 }
 
 - (BOOL)isSelected:(TTModeWemoDevice *)device {
-    NSArray *selectedDevices = [self.action optionValue:kWemoDeviceLocations];
-    return [selectedDevices containsObject:device.location];
+    NSArray *selectedDevices = [self.action optionValue:kWemoSelectedSerials];
+    return [selectedDevices containsObject:device.serialNumber];
 }
 
 
