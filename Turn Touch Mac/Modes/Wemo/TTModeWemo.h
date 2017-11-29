@@ -24,9 +24,10 @@ typedef enum TTWemoState : NSUInteger {
 @end
 
 
-@interface TTModeWemo : TTMode <TTModeWemoMulticastDelegate, TTModeWemoDeviceDelegate>
+@interface TTModeWemo : TTMode <TTModeWemoMulticastDelegate, TTModeWemoDeviceDelegate> {
+    NSMutableArray *failedDevices;
+}
 
-extern NSString *const kWemoDeviceLocation;
 extern NSString *const kWemoDeviceLocations;
 extern NSString *const kWemoFoundDevices;
 extern NSString *const kWemoSeenDevices;

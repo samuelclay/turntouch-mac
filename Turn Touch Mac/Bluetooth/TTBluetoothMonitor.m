@@ -50,6 +50,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 @synthesize unpairedDevicesCount;
 @synthesize addingDevice;
 @synthesize unpairedDevicesConnected;
+@synthesize bluetoothState;
 
 - (instancetype)init {
     if (self = [super init]) {

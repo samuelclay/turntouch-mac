@@ -12,7 +12,7 @@
 
 @protocol TTModeWemoMulticastDelegate <NSObject>
 
-- (TTModeWemoDevice *)foundDevice:(NSDictionary *)headers host:(NSString *)ipAddress port:(NSInteger)port name:(NSString *)name live:(BOOL)live;
+- (TTModeWemoDevice *)foundDevice:(NSDictionary *)headers host:(NSString *)ipAddress port:(NSInteger)port name:(NSString *)name serialNumber:(NSString *)serialNumber macAddress:(NSString *)macAddress live:(BOOL)live;
 - (void)finishScanning;
 
 @end

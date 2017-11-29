@@ -13,6 +13,8 @@
 
 @synthesize ipAddress;
 @synthesize port;
+@synthesize serialNumber;
+@synthesize macAddress;
 @synthesize deviceName;
 @synthesize deviceState;
 @synthesize delegate;
@@ -29,10 +31,14 @@
 #pragma mark - State
 
 - (BOOL)isEqualToDevice:(TTModeWemoDevice *)device {
+    return [self.serialNumber isEqualToString:device.serialNumber];
+}
+
+- (BOOL)isSameDeviceDifferentLocation:(TTModeWemoDevice *)device {
     BOOL sameAddress = [ipAddress isEqualToString:device.ipAddress];
     BOOL samePort = port == device.port;
     
-    return sameAddress && samePort;
+    return [self isEqualToDevice:device] && !(sameAddress && samePort);
 }
 
 - (NSString *)location {
@@ -78,17 +84,36 @@
 }
 
 - (void)parseSetupXml:(NSData *)data {
-//    NSLog(@" ---> Wemo data: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+    NSLog(@" ---> Wemo data: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     NSArray *results = PerformXMLXPathQuery(data, @"/wemo:root/wemo:device/wemo:friendlyName",
                                             "wemo", "urn:Belkin:device-1-0");
     if (![results count]) {
         NSLog(@"Error: Could not find friendlyName for wemo.");
-        deviceName = [NSString stringWithFormat:@"Wemo device (%@)", self.location];
+//        deviceName = [NSString stringWithFormat:@"Wemo device (%@)", self.location];
+        return;
     } else {
         deviceName = [[results objectAtIndex:0] objectForKey:@"nodeContent"];
-        NSLog(@" ---> Found wemo device: %@ (%@)", deviceName, self.location);
     }
     
+    results = PerformXMLXPathQuery(data, @"/wemo:root/wemo:device/wemo:serialNumber",
+                                   "wemo", "urn:Belkin:device-1-0");
+    if (![results count]) {
+        NSLog(@"Error: Could not find serialNumber for wemo.");
+        return;
+    } else {
+        serialNumber = [[results objectAtIndex:0] objectForKey:@"nodeContent"];
+    }
+    
+    results = PerformXMLXPathQuery(data, @"/wemo:root/wemo:device/wemo:macAddress",
+                                   "wemo", "urn:Belkin:device-1-0");
+    if (![results count]) {
+        NSLog(@"Error: Could not find macAddress for wemo.");
+        return;
+    } else {
+        macAddress = [[results objectAtIndex:0] objectForKey:@"nodeContent"];
+    }
+
+    NSLog(@" ---> Found wemo device: %@ (%@/%@)", deviceName, self.location, serialNumber);
     [delegate deviceReady:self];
 }
 
@@ -191,6 +216,7 @@
                                    }
                                } else {
                                    NSLog(@"Wemo REST error: %@", connectionError);
+                                   [self.delegate deviceFailed:self];
                                }
                            }];
 }

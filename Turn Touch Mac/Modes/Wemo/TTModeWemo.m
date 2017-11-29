@@ -11,7 +11,6 @@
 
 @implementation TTModeWemo
 
-NSString *const kWemoDeviceLocation = @"wemoDeviceLocation";
 NSString *const kWemoDeviceLocations = @"wemoDeviceLocations";
 NSString *const kWemoFoundDevices = @"wemoFoundDevices";
 NSString *const kWemoSeenDevices = @"wemoSeenDevices";
@@ -45,6 +44,8 @@ static NSMutableArray *recentlyFoundDevices;
             wemoState = WEMO_STATE_CONNECTED;
         }
         
+        failedDevices = [NSMutableArray array];
+        
         [self.delegate changeState:TTModeWemo.wemoState withMode:self];
     }
     
@@ -67,6 +68,8 @@ static NSMutableArray *recentlyFoundDevices;
         TTModeWemoDevice *newDevice = [self foundDevice:nil host:[device objectForKey:@"ipaddress"]
                                                    port:[[device objectForKey:@"port"] integerValue]
                                                    name:[device objectForKey:@"name"]
+                                           serialNumber:[device objectForKey:@"serialNumber"]
+                                             macAddress:[device objectForKey:@"macAddress"]
                                                    live:NO];
         NSLog(@" ---> Loading wemo: %@ (%@)", newDevice.deviceName, newDevice.location);
     }
@@ -256,15 +259,13 @@ static NSMutableArray *recentlyFoundDevices;
 #pragma mark - Multicast delegate
 
 - (TTModeWemoDevice *)foundDevice:(NSDictionary *)headers host:(NSString *)ipAddress port:(NSInteger)port
-                             name:(NSString *)name live:(BOOL)live {
+                             name:(NSString *)name serialNumber:(NSString *)serialNumber macAddress:(NSString *)macAddress live:(BOOL)live {
     TTModeWemoDevice *newDevice = [[TTModeWemoDevice alloc] initWithIpAddress:ipAddress port:port];
     [newDevice setDelegate:self];
     
-    if (name != nil) {
-        newDevice.deviceName = name;
-    } else {
-        newDevice.deviceName = newDevice.location;
-    }
+    newDevice.deviceName = name;
+    newDevice.serialNumber = serialNumber;
+    newDevice.macAddress = macAddress;
     
     for (TTModeWemoDevice *device in foundDevices) {
         if ([device isEqualToDevice:newDevice]) {
@@ -289,6 +290,8 @@ static NSMutableArray *recentlyFoundDevices;
 - (void)finishScanning {
     wemoState = WEMO_STATE_CONNECTED;
     [self.delegate changeState:wemoState withMode:self];
+    
+    
 }
 
 #pragma mark - Device delegate
@@ -296,6 +299,21 @@ static NSMutableArray *recentlyFoundDevices;
 - (void)deviceReady:(id)device {
     // Device's name has been found, ready to display
     
+    [self storeFoundDevices];
+    
+    for (TTModeWemoDevice *failedDevice in failedDevices) {
+        for (TTModeWemoDevice *device in foundDevices) {
+            if ([failedDevice isSameDeviceDifferentLocation:device]) {
+                [self removeFailedDevice:failedDevice];
+            }
+        }
+    }
+    
+    wemoState = WEMO_STATE_CONNECTED;
+    [self.delegate changeState:wemoState withMode:self];
+}
+
+- (void)storeFoundDevices {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     
     TTModeWemo.foundDevices = [foundDevices sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
@@ -306,7 +324,7 @@ static NSMutableArray *recentlyFoundDevices;
     NSMutableArray *devices = [NSMutableArray array];
     NSMutableArray *foundIps = [NSMutableArray array];
     for (TTModeWemoDevice *device in foundDevices) {
-        if (device.deviceName == nil) {
+        if (device.deviceName == nil || [device.deviceName isEqualToString:@""]) {
             continue;
         }
         if (![foundIps containsObject:device.location]) {
@@ -314,15 +332,42 @@ static NSMutableArray *recentlyFoundDevices;
         } else {
             continue;
         }
+        
         [devices addObject:@{@"ipaddress": device.ipAddress,
                              @"port": [NSNumber numberWithInteger:device.port],
-                             @"name": device.deviceName}];
+                             @"name": device.deviceName,
+                             @"serialNumber": device.serialNumber,
+                             @"macAddress": device.macAddress,
+                             }];
     }
     [prefs setObject:devices forKey:kWemoFoundDevices];
     [prefs synchronize];
+}
+
+- (void)removeFailedDevice:(TTModeWemoDevice *)failedDevice {
+    [failedDevices removeObject:failedDevice];
     
-    wemoState = WEMO_STATE_CONNECTED;
-    [self.delegate changeState:wemoState withMode:self];
+    NSMutableArray *devices = [NSMutableArray array];
+    for (TTModeWemoDevice *device in foundDevices) {
+        if (![device isEqualToDevice:failedDevice]) {
+            [devices addObject:device];
+        }
+    }
+
+    TTModeWemo.foundDevices = devices;
+    
+    [self storeFoundDevices];
+}
+
+- (void)deviceFailed:(TTModeWemoDevice *)device {
+    NSLog(@" ---> Wemo device %@ failed, searching for changed IP...", device);
+    if ([failedDevices containsObject:device]) {
+        NSLog(@" ---> Wemo device %@ already failed and searching, ignoring.", device);
+        return;
+    }
+    
+    [failedDevices addObject:device];
+    [self refreshDevices];
 }
 
 - (void)ensureDevicesSelected {

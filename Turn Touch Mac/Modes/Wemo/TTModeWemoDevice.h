@@ -18,6 +18,7 @@ typedef enum {
 @protocol TTModeWemoDeviceDelegate <NSObject>
 
 - (void)deviceReady:(TTModeWemoDevice *)device;
+- (void)deviceFailed:(TTModeWemoDevice *)device;
 
 @end
 
@@ -25,12 +26,15 @@ typedef enum {
 
 @property (nonatomic) NSString *deviceName;
 @property (nonatomic) NSString *ipAddress;
+@property (nonatomic) NSString *macAddress;
+@property (nonatomic) NSString *serialNumber;
 @property (nonatomic) NSInteger port;
 @property (nonatomic) TTWemoDeviceState deviceState;
 @property (nonatomic) id<TTModeWemoDeviceDelegate> delegate;
 
 - (id)initWithIpAddress:(NSString *)_ip port:(NSInteger)_port;
 - (BOOL)isEqualToDevice:(TTModeWemoDevice *)device;
+- (BOOL)isSameDeviceDifferentLocation:(TTModeWemoDevice *)device;
 - (NSString *)location;
 
 - (void)requestDeviceInfo;
