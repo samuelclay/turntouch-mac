@@ -275,7 +275,7 @@ static NSMutableArray *recentlyFoundDevices;
     }
     for (TTModeWemoDevice *device in recentlyFoundDevices) {
         if ([device isEqualToDevice:newDevice]) {
-            return device;
+//            return device;
         }
     }
     
