@@ -397,6 +397,10 @@
 		FFCFCFBA1D88D9CE00FBC3E7 /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFCFCFB81D88D9CE00FBC3E7 /* LaunchAtLoginController.m */; };
 		FFD62CCE194F935D0093004D /* TTSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD62CCD194F935D0093004D /* TTSegmentedCell.m */; };
 		FFD62CD11950EE770093004D /* TTSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD62CD01950EE770093004D /* TTSegmentedControl.m */; };
+		FFDC9F711FD74BC800261B76 /* hue_brightness_up.png in Resources */ = {isa = PBXBuildFile; fileRef = FFDC9F6D1FD74BC700261B76 /* hue_brightness_up.png */; };
+		FFDC9F721FD74BC800261B76 /* hue_shift_left.png in Resources */ = {isa = PBXBuildFile; fileRef = FFDC9F6E1FD74BC800261B76 /* hue_shift_left.png */; };
+		FFDC9F731FD74BC800261B76 /* hue_brightness_down.png in Resources */ = {isa = PBXBuildFile; fileRef = FFDC9F6F1FD74BC800261B76 /* hue_brightness_down.png */; };
+		FFDC9F741FD74BC800261B76 /* hue_shift_right.png in Resources */ = {isa = PBXBuildFile; fileRef = FFDC9F701FD74BC800261B76 /* hue_shift_right.png */; };
 		FFE0B3D01AD70DC600FC6080 /* logo_with_title.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE0B3CF1AD70DC600FC6080 /* logo_with_title.png */; };
 		FFE2D4761A451FA200DDD413 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFE2D4751A451FA200DDD413 /* CoreBluetooth.framework */; };
 		FFE2D4791A46404500DDD413 /* NSData+Conversion.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE2D4781A46404500DDD413 /* NSData+Conversion.m */; };
@@ -842,17 +846,17 @@
 		FF8B74EA1F86C39F00D7867C /* temperature_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = temperature_down.png; sourceTree = "<group>"; };
 		FF8B74EB1F86C3A000D7867C /* temperature.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = temperature.png; sourceTree = "<group>"; };
 		FF8B74EC1F86C3A000D7867C /* temperature_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = temperature_up.png; sourceTree = "<group>"; };
-		FF8B74F01F86C62800D7867C /* lightning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lightning.png; path = "Turn Touch Mac/Images/actions/lightning.png"; sourceTree = "<group>"; };
+		FF8B74F01F86C62800D7867C /* lightning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lightning.png; sourceTree = "<group>"; };
 		FF8B74F21F86C62C00D7867C /* lightning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lightning.png; sourceTree = "<group>"; };
-		FF8B74F31F86C70A00D7867C /* music_play_pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = music_play_pause.png; path = "Turn Touch Mac/Images/actions/music_play_pause.png"; sourceTree = "<group>"; };
+		FF8B74F31F86C70A00D7867C /* music_play_pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = music_play_pause.png; sourceTree = "<group>"; };
 		FF8B74F51F86C71000D7867C /* music_play_pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = music_play_pause.png; sourceTree = "<group>"; };
 		FF8B74F61F86CA4600D7867C /* electrical_connected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electrical_connected.png; sourceTree = "<group>"; };
 		FF8B74F71F86CA4700D7867C /* electrical.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electrical.png; sourceTree = "<group>"; };
 		FF8B74F81F86CA4700D7867C /* electrical_disconnected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electrical_disconnected.png; sourceTree = "<group>"; };
 		FF8B74FC1F86CB2400D7867C /* alarm_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alarm_off.png; sourceTree = "<group>"; };
-		FF8B74FD1F86CB2800D7867C /* alarm_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = alarm_off.png; path = "Turn Touch Mac/Images/actions/alarm_off.png"; sourceTree = "<group>"; };
+		FF8B74FD1F86CB2800D7867C /* alarm_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alarm_off.png; sourceTree = "<group>"; };
 		FF8B74FF1F86CC4700D7867C /* fullscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fullscreen.png; sourceTree = "<group>"; };
-		FF8B75001F86CC4A00D7867C /* fullscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fullscreen.png; path = "Turn Touch Mac/Images/actions/fullscreen.png"; sourceTree = "<group>"; };
+		FF8B75001F86CC4A00D7867C /* fullscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fullscreen.png; sourceTree = "<group>"; };
 		FF8B75041F86CE6800D7867C /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
 		FF8B75051F86CE7100D7867C /* previous.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = previous.png; sourceTree = "<group>"; };
 		FF8B75061F86CE7100D7867C /* next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = next.png; sourceTree = "<group>"; };
@@ -1075,6 +1079,10 @@
 		FFD62CCD194F935D0093004D /* TTSegmentedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSegmentedCell.m; path = "Views/Mode Options/TTSegmentedCell.m"; sourceTree = "<group>"; };
 		FFD62CCF1950EE770093004D /* TTSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSegmentedControl.h; path = "Views/Mode Options/TTSegmentedControl.h"; sourceTree = "<group>"; };
 		FFD62CD01950EE770093004D /* TTSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSegmentedControl.m; path = "Views/Mode Options/TTSegmentedControl.m"; sourceTree = "<group>"; };
+		FFDC9F6D1FD74BC700261B76 /* hue_brightness_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hue_brightness_up.png; sourceTree = "<group>"; };
+		FFDC9F6E1FD74BC800261B76 /* hue_shift_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hue_shift_left.png; sourceTree = "<group>"; };
+		FFDC9F6F1FD74BC800261B76 /* hue_brightness_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hue_brightness_down.png; sourceTree = "<group>"; };
+		FFDC9F701FD74BC800261B76 /* hue_shift_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hue_shift_right.png; sourceTree = "<group>"; };
 		FFE0B3CF1AD70DC600FC6080 /* logo_with_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_with_title.png; sourceTree = "<group>"; };
 		FFE2D4751A451FA200DDD413 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		FFE2D4771A46404500DDD413 /* NSData+Conversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = "NSData+Conversion.h"; path = "Categories/NSData+Conversion.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -1623,13 +1631,21 @@
 		FF61353E1C61CDDC00F431D7 /* actions */ = {
 			isa = PBXGroup;
 			children = (
+				FF8B75001F86CC4A00D7867C /* fullscreen.png */,
 				FF8B74FC1F86CB2400D7867C /* alarm_off.png */,
+				FF8B74FD1F86CB2800D7867C /* alarm_off.png */,
+				FF8B74F31F86C70A00D7867C /* music_play_pause.png */,
+				FF8B74F01F86C62800D7867C /* lightning.png */,
 				FF61353F1C61CDDC00F431D7 /* alarm_snooze.png */,
 				FF6135401C61CDDC00F431D7 /* chevron_east.png */,
 				FF6135411C61CDDC00F431D7 /* chevron_north.png */,
 				FF6135421C61CDDC00F431D7 /* chevron_south.png */,
 				FF6135431C61CDDC00F431D7 /* chevron_west.png */,
 				FF8B74FF1F86CC4700D7867C /* fullscreen.png */,
+				FFDC9F6F1FD74BC800261B76 /* hue_brightness_down.png */,
+				FFDC9F6D1FD74BC700261B76 /* hue_brightness_up.png */,
+				FFDC9F6E1FD74BC800261B76 /* hue_shift_left.png */,
+				FFDC9F701FD74BC800261B76 /* hue_shift_right.png */,
 				FF6135441C61CDDC00F431D7 /* hue_evening.png */,
 				FF6135451C61CDDC00F431D7 /* hue_random.png */,
 				FF6135461C61CDDC00F431D7 /* hue_sleep.png */,
@@ -1828,10 +1844,6 @@
 		FF8C832A17AB14B5000166FC = {
 			isa = PBXGroup;
 			children = (
-				FF8B75001F86CC4A00D7867C /* fullscreen.png */,
-				FF8B74FD1F86CB2800D7867C /* alarm_off.png */,
-				FF8B74F31F86C70A00D7867C /* music_play_pause.png */,
-				FF8B74F01F86C62800D7867C /* lightning.png */,
 				FF8C833C17AB14B5000166FC /* Turn Touch Mac */,
 				FF936058196DF67500675B7B /* Vendor */,
 				FF3A9F6217C42B5E00C5C2D5 /* Images */,
@@ -2547,8 +2559,10 @@
 				FF27054C1C93A348000BB10F /* modal_remote_paired.png in Resources */,
 				FF01CA841C46DCC200F83A73 /* television.png in Resources */,
 				FF2740731A7C576900C55579 /* itunes_podcast_icon.png in Resources */,
+				FFDC9F741FD74BC800261B76 /* hue_shift_right.png in Resources */,
 				FF8C834717AB14B5000166FC /* Credits.rtf in Resources */,
 				FF1F13601ADC90E700B52A0D /* MLCalendarView.xib in Resources */,
+				FFDC9F711FD74BC800261B76 /* hue_brightness_up.png in Resources */,
 				FFE0B3D01AD70DC600FC6080 /* logo_with_title.png in Resources */,
 				FF01CA6C1C46DCC200F83A73 /* mode_fitness.png in Resources */,
 				FF61355D1C61CDDC00F431D7 /* music_playlist.png in Resources */,
@@ -2668,8 +2682,10 @@
 				FF3D21FD1F1EF6AE00F7F5BF /* mode_sonos.png in Resources */,
 				FF21F92E1E10EB6800DFDBB4 /* modal_failure.png in Resources */,
 				FF2740701A7C576900C55579 /* itunes_genius_icon.png in Resources */,
+				FFDC9F731FD74BC800261B76 /* hue_brightness_down.png in Resources */,
 				FF01CA621C46DCC200F83A73 /* equalizer-1.png in Resources */,
 				FF01CA5D1C46DCC200F83A73 /* button_x.png in Resources */,
+				FFDC9F721FD74BC800261B76 /* hue_shift_left.png in Resources */,
 				FF8D1AA71C98F292006AA1A2 /* TTModalAbout.xib in Resources */,
 				FF8B75011F86CC4B00D7867C /* fullscreen.png in Resources */,
 				FF2705471C93A348000BB10F /* modal_ftux_change_mode.png in Resources */,

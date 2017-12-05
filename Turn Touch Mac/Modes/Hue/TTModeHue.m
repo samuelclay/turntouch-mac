@@ -101,16 +101,32 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 #pragma mark - Actions
 
 - (NSArray *)actions {
-    return @[@"TTModeHueSceneEarlyEvening",
+    return @[@"TTModeHueRaiseBrightness",
+             @"TTModeHueLowerBrightness",
+             @"TTModeHueShiftColorLeft",
+             @"TTModeHueShiftColorRight",
+             @"TTModeHueSceneEarlyEvening",
              @"TTModeHueSceneLateEvening",
              @"TTModeHueSleep",
              @"TTModeHueOff",
-             @"TTModeHueRandom"
+             @"TTModeHueRandom",
              ];
 }
 
 #pragma mark - Action Titles
 
+- (NSString *)titleTTModeHueRaiseBrightness {
+    return @"Raise brightness";
+}
+- (NSString *)titleTTModeHueLowerBrightness {
+    return @"Lower brightness";
+}
+- (NSString *)titleTTModeHueShiftColorLeft {
+    return @"Shift color left";
+}
+- (NSString *)titleTTModeHueShiftColorRight {
+    return @"Shift color right";
+}
 - (NSString *)titleTTModeHueSceneEarlyEvening {
     return @"Early evening";
 }
@@ -141,6 +157,18 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 
 #pragma mark - Action Images
 
+- (NSString *)imageTTModeHueRaiseBrightness {
+    return @"hue_brightness_up.png";
+}
+- (NSString *)imageTTModeHueLowerBrightness {
+    return @"hue_brightness_down.png";
+}
+- (NSString *)imageTTModeHueShiftColorLeft {
+    return @"hue_shift_left.png";
+}
+- (NSString *)imageTTModeHueShiftColorRight {
+    return @"hue_shift_right.png";
+}
 - (NSString *)imageTTModeHueSceneEarlyEvening {
     return @"hue_sunset.png";
 }
@@ -360,6 +388,76 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
             [bridgeSendAPI updateLightStateForId:light.identifier withLightState:lightState completionHandler:^(NSArray *errors) {}];
         });
     }
+}
+
+- (void)runTTModeHueRaiseBrightness:(TTModeDirection)direction {
+    [self changeBrightness:25];
+}
+- (void)doubleRunTTModeHueRaiseBrightness:(TTModeDirection)direction {
+    [self changeBrightness:50];
+}
+- (void)runTTModeHueLowerBrightness:(TTModeDirection)direction {
+    [self changeBrightness:-25];
+}
+- (void)doubleRunTTModeHueLowerBrightness:(TTModeDirection)direction {
+    [self changeBrightness:-50];
+}
+
+- (void)changeBrightness:(NSInteger)amount {
+    PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
+    PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
+
+    if (cache == nil || cache.bridgeConfiguration == nil || cache.bridgeConfiguration.ipaddress == nil) {
+        return;
+    }
+    
+    NSString *roomIdentifier = [self.action optionValue:kHueRoom];
+    if (!roomIdentifier || [roomIdentifier isEqualToString:@"all"]) {
+        roomIdentifier = @"0";
+    }
+    
+    PHLightState *lightState = [[PHLightState alloc] init];
+    lightState.on = [NSNumber numberWithBool:YES];
+    lightState.brightnessIncrement = @(amount);
+    
+    [bridgeSendAPI setLightStateForGroupWithId:roomIdentifier lightState:lightState completionHandler:^(NSArray *errors) {
+        NSLog(@" ---> Brightness: %@", errors);
+    }];
+}
+
+- (void)runTTModeHueShiftColorLeft:(TTModeDirection)direction {
+    [self shiftColor:-1000];
+}
+- (void)doubleRunTTModeHueShiftColorLeft:(TTModeDirection)direction {
+    [self shiftColor:-2000];
+}
+- (void)runTTModeHueShiftColorRight:(TTModeDirection)direction {
+    [self shiftColor:1000];
+}
+- (void)doubleRunTTModeHueShiftColorRight:(TTModeDirection)direction {
+    [self shiftColor:2000];
+}
+
+- (void)shiftColor:(NSInteger)amount {
+    PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
+    PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
+    
+    if (cache == nil || cache.bridgeConfiguration == nil || cache.bridgeConfiguration.ipaddress == nil) {
+        return;
+    }
+    
+    NSString *roomIdentifier = [self.action optionValue:kHueRoom];
+    if (!roomIdentifier || [roomIdentifier isEqualToString:@"all"]) {
+        roomIdentifier = @"0";
+    }
+    
+    PHLightState *lightState = [[PHLightState alloc] init];
+    lightState.on = [NSNumber numberWithBool:YES];
+    lightState.hueIncrement = @(amount);
+    
+    [bridgeSendAPI setLightStateForGroupWithId:roomIdentifier lightState:lightState completionHandler:^(NSArray *errors) {
+        NSLog(@" ---> Brightness: %@", errors);
+    }];
 }
 
 #pragma mark - Hue Init
