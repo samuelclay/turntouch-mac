@@ -22,7 +22,7 @@
         [self setAlphaValue:0.f];
         [self.contentView setWantsLayer:YES];
         
-        self.styleMask = self.styleMask | NSFullSizeContentViewWindowMask;
+        self.styleMask = self.styleMask | NSWindowStyleMaskFullSizeContentView;
     }
     
     return self;

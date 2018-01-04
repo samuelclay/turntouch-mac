@@ -10,7 +10,7 @@
 		</data>
 		<key>Resources/Assets.car</key>
 		<data>
-		LHiX9u9KENjtFKFsXdT3PnodfrI=
+		uf/VhveZO6Nw2i8tCufKptn4hQE=
 		</data>
 		<key>Resources/Effra_Rg.ttf</key>
 		<data>
@@ -362,7 +362,7 @@
 		</data>
 		<key>Resources/TTModeHueBridge.nib</key>
 		<data>
-		ydYLkxBR6O0AeAO3MfUHnWKrOys=
+		ti/X4Ctv9Ex8BhqM6XHVmZlXv+8=
 		</data>
 		<key>Resources/TTModeHueConnect.nib</key>
 		<data>
@@ -386,7 +386,7 @@
 		</data>
 		<key>Resources/TTModeHueRandomOptions.nib</key>
 		<data>
-		zv2l/zYrp7J8Xqgc5Qeq/vidCoI=
+		v4wbvmnE+pkwa1lP20YPRGKRIBg=
 		</data>
 		<key>Resources/TTModeHueSceneOptions.nib</key>
 		<data>
@@ -478,7 +478,7 @@
 		</data>
 		<key>Resources/TTModeSonosConnecting.nib</key>
 		<data>
-		CbWfSFS357WDCoXd/uSESsJa6nk=
+		Bkh3xwhYWtlCSS6pe3jwlMew+4c=
 		</data>
 		<key>Resources/TTModeSonosOptions.nib</key>
 		<data>
@@ -1085,7 +1085,7 @@
 		</data>
 		<key>Resources/settings.tiff</key>
 		<data>
-		qtG4vqm7uQ08RBiK8M/xlywfOQ4=
+		xC4SSdIYrgMaEXtMNdsS2yEaUEo=
 		</data>
 		<key>Resources/single_tap.png</key>
 		<data>
@@ -1125,7 +1125,7 @@
 		</data>
 		<key>Resources/title.tiff</key>
 		<data>
-		x8o9O6zgoYIQ1LB/oCGMwT6h5yQ=
+		7DwUKNQUbFpgmL5g84GZ2SJ3YA0=
 		</data>
 		<key>Resources/vinyl.png</key>
 		<data>
@@ -1142,23 +1142,32 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>Frameworks/AFNetworking.framework</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			pKLygqrHgXGZRe3lLuESuBe32IM=
+			</data>
+			<key>requirement</key>
+			<string>anchor apple generic and identifier "org.cocoapods.AFNetworking" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
+		</dict>
 		<key>Frameworks/HueSDK_OSX.framework</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			E6nHa9sbnfmsJXzziYbB9iPpZDA=
+			30v7AjqPk2rPmYKXZIAGWup36HA=
 			</data>
 			<key>requirement</key>
-			<string>identifier "com.philips.hue.HueSDK-OSX" and anchor apple generic and certificate leaf[subject.CN] = "Mac Developer: Sam Clay (BYABZ8TGVG)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+			<string>anchor apple generic and identifier "com.philips.hue.HueSDK-OSX" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
 		</dict>
 		<key>Frameworks/Sparkle.framework</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			GySBGoys28WB+0mv76AAG7vwoBQ=
+			6w/u8D33Znyfqve0SNC10JlsO6s=
 			</data>
 			<key>requirement</key>
-			<string>anchor apple generic and identifier "org.andymatuschak.Sparkle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
+			<string>anchor apple generic and identifier "org.sparkle-project.Sparkle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
 		</dict>
 		<key>Resources/AppIcon.icns</key>
 		<dict>
@@ -1175,11 +1184,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			LHiX9u9KENjtFKFsXdT3PnodfrI=
+			uf/VhveZO6Nw2i8tCufKptn4hQE=
 			</data>
 			<key>hash2</key>
 			<data>
-			0j8+M0WpoxP905RjFeAEu0w5wrcAjbXdY7Ri4rIWM6Q=
+			Pnh3Pi4m8pJhbxnSJM6jqT/At0ocP4F7m2Mwg5ieEug=
 			</data>
 		</dict>
 		<key>Resources/Effra_Rg.ttf</key>
@@ -1767,11 +1776,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ydYLkxBR6O0AeAO3MfUHnWKrOys=
+			ti/X4Ctv9Ex8BhqM6XHVmZlXv+8=
 			</data>
 			<key>hash2</key>
 			<data>
-			o8sbabd7wAn0voKsXL9EI9kKBxFprWgPm4JIL9LG/9w=
+			vELrQnYKvYs1ha4NAuF7iO5mUwHOp6m03SrRAUMkxTs=
 			</data>
 		</dict>
 		<key>Resources/TTModeHueConnect.nib</key>
@@ -1833,11 +1842,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			zv2l/zYrp7J8Xqgc5Qeq/vidCoI=
+			v4wbvmnE+pkwa1lP20YPRGKRIBg=
 			</data>
 			<key>hash2</key>
 			<data>
-			5ZLRMnD5fcmaFEcETR/Ry7TUk2uoXYbsOaC0IQtgZrU=
+			tg4q3rxDIFEnUK1J/LmXPtI9Famna3+FipG7oFB9EUU=
 			</data>
 		</dict>
 		<key>Resources/TTModeHueSceneOptions.nib</key>
@@ -2086,11 +2095,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			CbWfSFS357WDCoXd/uSESsJa6nk=
+			Bkh3xwhYWtlCSS6pe3jwlMew+4c=
 			</data>
 			<key>hash2</key>
 			<data>
-			BeVJk8u7Ti8xX4KOkZ2eyEPnn21JtNBTt7e6qYan2VE=
+			VTNgCCogzYdcuiW/81Lj5G8HyU/o3+3N4tvU7d4RucI=
 			</data>
 		</dict>
 		<key>Resources/TTModeSonosOptions.nib</key>
@@ -3720,11 +3729,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			qtG4vqm7uQ08RBiK8M/xlywfOQ4=
+			xC4SSdIYrgMaEXtMNdsS2yEaUEo=
 			</data>
 			<key>hash2</key>
 			<data>
-			9VInbes1h/t5DY4xVgpq/1J55nG8aSTC6WeA44dz5eE=
+			YVnW1lets2wEHe5l9y9ubOhqS85DBGJyTquE4dGTu0A=
 			</data>
 		</dict>
 		<key>Resources/single_tap.png</key>
@@ -3830,11 +3839,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			x8o9O6zgoYIQ1LB/oCGMwT6h5yQ=
+			7DwUKNQUbFpgmL5g84GZ2SJ3YA0=
 			</data>
 			<key>hash2</key>
 			<data>
-			gcNPM5tmRr0trwrm+upfabmgsJ8/Fx4h1YDpMhlZDwQ=
+			tyQKf29pXR3iZozBMzjCGp/G2+siJPgEYyiJzq86Kzs=
 			</data>
 		</dict>
 		<key>Resources/vinyl.png</key>
@@ -3874,11 +3883,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			AJLa69Q2L+yavKRuNuz/TbT59rg=
+			47+DqyD02cwi9suH+4hpPP97LxQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			cYSrZepfR/37cBcCdY26rPYU0HsST3psXYkrPHSQDIs=
+			P2AiVIr26UCuiEjVxLBRbuFArNsh4T3/LQAfHUakuR8=
 			</data>
 		</dict>
 	</dict>

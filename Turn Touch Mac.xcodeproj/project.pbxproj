@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		040D0CDE717666EB3D6AD85D /* libPods-Turn Touch Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F757892208667631D29FBA6 /* libPods-Turn Touch Mac.a */; };
-		39553B413B8B9C27D2F5B631 /* libPods-Turn Touch Mac Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B67D211FCC0EA9D640EFE7E3 /* libPods-Turn Touch Mac Tests.a */; };
+		050B418B591A85B579740307 /* Pods_Turn_Touch_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B611485DE4201F24DDD95F6A /* Pods_Turn_Touch_Mac.framework */; };
 		A83CE3081C7FDC6C00011751 /* HueSDK_OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */; };
 		A83CE3091C7FDC6C00011751 /* HueSDK_OSX.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C139615B1E7F2014DF4473C4 /* Pods_Turn_Touch_Mac_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D78D7B37A823FEF6B921BCE /* Pods_Turn_Touch_Mac_Tests.framework */; };
 		FF01CA291C46009E00F83A73 /* scripts in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA281C46009E00F83A73 /* scripts */; };
 		FF01CA591C46DCC200F83A73 /* app_music.png in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA2C1C46DCC200F83A73 /* app_music.png */; };
 		FF01CA5A1C46DCC200F83A73 /* button_chevron.png in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA2D1C46DCC200F83A73 /* button_chevron.png */; };
@@ -79,8 +79,6 @@
 		FF1F135F1ADC90E700B52A0D /* MLCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1F135B1ADC90E700B52A0D /* MLCalendarView.m */; };
 		FF1F13601ADC90E700B52A0D /* MLCalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF1F135C1ADC90E700B52A0D /* MLCalendarView.xib */; };
 		FF1F13631ADC98C400B52A0D /* TTDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1F13621ADC98C400B52A0D /* TTDatePicker.m */; };
-		FF1F13651ADC9DEC00B52A0D /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF1F13641ADC9DEC00B52A0D /* Sparkle.framework */; };
-		FF1F13671ADC9E6F00B52A0D /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = FF1F13641ADC9DEC00B52A0D /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF21F92E1E10EB6800DFDBB4 /* modal_failure.png in Resources */ = {isa = PBXBuildFile; fileRef = FF21F92D1E10EB6800DFDBB4 /* modal_failure.png */; };
 		FF254F671D1B68E000E96378 /* single_tap.png in Resources */ = {isa = PBXBuildFile; fileRef = FF254F661D1B68E000E96378 /* single_tap.png */; };
 		FF254F691D1B6A9800E96378 /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = FF254F681D1B6A9800E96378 /* refresh.png */; };
@@ -453,7 +451,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				FF1F13671ADC9E6F00B52A0D /* Sparkle.framework in Copy Frameworks */,
 				A83CE3091C7FDC6C00011751 /* HueSDK_OSX.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
@@ -475,10 +472,10 @@
 /* Begin PBXFileReference section */
 		0816B43983D957B02997067E /* Pods-Turn Touch Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turn Touch Mac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Turn Touch Mac/Pods-Turn Touch Mac.debug.xcconfig"; sourceTree = "<group>"; };
 		383E060B60CD35F142D2CFDD /* Pods-Turn Touch Mac Tests.testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turn Touch Mac Tests.testing.xcconfig"; path = "Pods/Target Support Files/Pods-Turn Touch Mac Tests/Pods-Turn Touch Mac Tests.testing.xcconfig"; sourceTree = "<group>"; };
+		6D78D7B37A823FEF6B921BCE /* Pods_Turn_Touch_Mac_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Turn_Touch_Mac_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CC90F060E770AA12DCC7F63 /* Pods-Turn Touch Mac.testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turn Touch Mac.testing.xcconfig"; path = "Pods/Target Support Files/Pods-Turn Touch Mac/Pods-Turn Touch Mac.testing.xcconfig"; sourceTree = "<group>"; };
-		8F757892208667631D29FBA6 /* libPods-Turn Touch Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Turn Touch Mac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E1EC8CE081463B2662103E7 /* Pods-Turn Touch Mac Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turn Touch Mac Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Turn Touch Mac Tests/Pods-Turn Touch Mac Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		B67D211FCC0EA9D640EFE7E3 /* libPods-Turn Touch Mac Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Turn Touch Mac Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B611485DE4201F24DDD95F6A /* Pods_Turn_Touch_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Turn_Touch_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1ECCA87736C9E41A8197A0E /* Pods-Turn Touch Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turn Touch Mac.release.xcconfig"; path = "Pods/Target Support Files/Pods-Turn Touch Mac/Pods-Turn Touch Mac.release.xcconfig"; sourceTree = "<group>"; };
 		DFBF9ACC46862A20CD285528 /* Pods-Turn Touch Mac Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turn Touch Mac Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Turn Touch Mac Tests/Pods-Turn Touch Mac Tests.release.xcconfig"; sourceTree = "<group>"; };
 		FF01CA281C46009E00F83A73 /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = scripts; path = Resources/scripts; sourceTree = "<group>"; };
@@ -1150,7 +1147,6 @@
 				FFABABA71C34996A00AD5620 /* WebKit.framework in Frameworks */,
 				FF904B9C1BE9BFEC00AD00F3 /* libz.tbd in Frameworks */,
 				FFF8AE461AFDC2BA0064DCEF /* AudioToolbox.framework in Frameworks */,
-				FF1F13651ADC9DEC00B52A0D /* Sparkle.framework in Frameworks */,
 				FFBC625F1A9D699D0032AD24 /* AVFoundation.framework in Frameworks */,
 				FF7305C21A5CB2E3009A852D /* SystemConfiguration.framework in Frameworks */,
 				A83CE3081C7FDC6C00011751 /* HueSDK_OSX.framework in Frameworks */,
@@ -1160,7 +1156,7 @@
 				FF0E12D11824811200D49EC7 /* ScriptingBridge.framework in Frameworks */,
 				FF4E26321823197D00D477F6 /* IOKit.framework in Frameworks */,
 				FF8C833717AB14B5000166FC /* Cocoa.framework in Frameworks */,
-				040D0CDE717666EB3D6AD85D /* libPods-Turn Touch Mac.a in Frameworks */,
+				050B418B591A85B579740307 /* Pods_Turn_Touch_Mac.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1168,7 +1164,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39553B413B8B9C27D2F5B631 /* libPods-Turn Touch Mac Tests.a in Frameworks */,
+				C139615B1E7F2014DF4473C4 /* Pods_Turn_Touch_Mac_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1886,8 +1882,8 @@
 				FF4E26311823197D00D477F6 /* IOKit.framework */,
 				FF8C833617AB14B5000166FC /* Cocoa.framework */,
 				FF8C833817AB14B5000166FC /* Other Frameworks */,
-				8F757892208667631D29FBA6 /* libPods-Turn Touch Mac.a */,
-				B67D211FCC0EA9D640EFE7E3 /* libPods-Turn Touch Mac Tests.a */,
+				B611485DE4201F24DDD95F6A /* Pods_Turn_Touch_Mac.framework */,
+				6D78D7B37A823FEF6B921BCE /* Pods_Turn_Touch_Mac_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2478,7 +2474,7 @@
 				ORGANIZATIONNAME = "Turn Touch";
 				TargetAttributes = {
 					FF8C833217AB14B5000166FC = {
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -2802,9 +2798,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Turn Touch Mac/Pods-Turn Touch Mac-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${PODS_ROOT}/Sparkle/Sparkle.framework",
+				"${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/Sparkle.framework.dSYM",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3184,7 +3187,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Turn Touch Mac/Supporting Files/Turn Touch Mac.entitlements";
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 6W5HRS3393;
@@ -3192,6 +3196,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Turn\\ Touch\\ Mac/Vendor/",
 					"$(PROJECT_DIR)/Turn\\ Touch\\ Mac/Vendor/Hue",
+					"$(PROJECT_DIR)/Turn\\ Touch\\ Mac/Vendor",
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -3215,8 +3220,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.mac-remote";
 				PRODUCT_NAME = "Turn Touch Mac";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "8f8663f4-e60c-4b78-9e63-011037e53e1e";
+				PROVISIONING_PROFILE_SPECIFIER = "Turn Touch Developer ID";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -3227,7 +3232,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Turn Touch Mac/Supporting Files/Turn Touch Mac.entitlements";
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 6W5HRS3393;
@@ -3235,6 +3241,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Turn\\ Touch\\ Mac/Vendor/",
 					"$(PROJECT_DIR)/Turn\\ Touch\\ Mac/Vendor/Hue",
+					"$(PROJECT_DIR)/Turn\\ Touch\\ Mac/Vendor",
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -3258,8 +3265,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.mac-remote";
 				PRODUCT_NAME = "Turn Touch Mac";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "8f8663f4-e60c-4b78-9e63-011037e53e1e";
+				PROVISIONING_PROFILE_SPECIFIER = "Turn Touch Developer ID";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -3395,7 +3402,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Turn Touch Mac/Supporting Files/Turn Touch Mac.entitlements";
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 6W5HRS3393;
@@ -3403,6 +3411,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Turn\\ Touch\\ Mac/Vendor/",
 					"$(PROJECT_DIR)/Turn\\ Touch\\ Mac/Vendor/Hue",
+					"$(PROJECT_DIR)/Turn\\ Touch\\ Mac/Vendor",
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -3426,8 +3435,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.mac-remote";
 				PRODUCT_NAME = "Turn Touch Mac";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "8f8663f4-e60c-4b78-9e63-011037e53e1e";
+				PROVISIONING_PROFILE_SPECIFIER = "Turn Touch Developer ID";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Testing;

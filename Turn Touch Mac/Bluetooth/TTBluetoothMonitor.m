@@ -81,21 +81,21 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
     NSString * state = nil;
     
     switch ([manager state]) {
-        case CBCentralManagerStateUnsupported:
+        case CBManagerStateUnsupported:
             state = @"The platform/hardware doesn't support Bluetooth Low Energy.";
             break;
-        case CBCentralManagerStateUnauthorized:
+        case CBManagerStateUnauthorized:
             state = @"The app is not authorized to use Bluetooth Low Energy.";
             break;
-        case CBCentralManagerStatePoweredOff:
+        case CBManagerStatePoweredOff:
             state = @"Bluetooth is currently powered off.";
             break;
-        case CBCentralManagerStatePoweredOn:
+        case CBManagerStatePoweredOn:
             return TRUE;
-        case CBCentralManagerStateUnknown:
+        case CBManagerStateUnknown:
             state = @"Bluetooth in unknown state.";
             break;
-        case CBCentralManagerStateResetting:
+        case CBManagerStateResetting:
             state = @"Bluetooth in resetting state.";
             break;
         default:

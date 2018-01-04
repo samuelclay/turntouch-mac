@@ -5,7 +5,7 @@
 	<key>ATSApplicationFontsPath</key>
 	<string>fonts</string>
 	<key>BuildMachineOSBuild</key>
-	<string>17B1003</string>
+	<string>17C88</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -23,27 +23,27 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0b1</string>
+	<string>1.0b2</string>
 	<key>CFBundleSupportedPlatforms</key>
 	<array>
 		<string>MacOSX</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>38</string>
+	<string>39</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>9B55</string>
+	<string>9C40b</string>
 	<key>DTPlatformVersion</key>
 	<string>GM</string>
 	<key>DTSDKBuild</key>
-	<string>17B41</string>
+	<string>17C76</string>
 	<key>DTSDKName</key>
 	<string>macosx10.13</string>
 	<key>DTXcode</key>
-	<string>0910</string>
+	<string>0920</string>
 	<key>DTXcodeBuild</key>
-	<string>9B55</string>
+	<string>9C40b</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.productivity</string>
 	<key>LSMinimumSystemVersion</key>
