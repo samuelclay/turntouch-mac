@@ -71,6 +71,7 @@
 		FF0E12CF18247D6100D49EC7 /* TTModeMusic.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12CE18247D6100D49EC7 /* TTModeMusic.m */; };
 		FF0E12D11824811200D49EC7 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0E12D01824811200D49EC7 /* ScriptingBridge.framework */; };
 		FF0E12D41828560000D49EC7 /* TTModeVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12D31828560000D49EC7 /* TTModeVideo.m */; };
+		FF124C8B1FFEBC1D009222AD /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = FF124C8A1FFEBC1D009222AD /* PFMoveApplication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FF18B1EC1EF1E8C900BC9725 /* TTModalSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FF18B1EA1EF1E8C900BC9725 /* TTModalSettings.m */; };
 		FF18B1ED1EF1E8C900BC9725 /* TTModalSettings.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF18B1EB1EF1E8C900BC9725 /* TTModalSettings.xib */; };
 		FF1B022B1A36898700BE764E /* NSObject+CancelableBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1B022A1A36898700BE764E /* NSObject+CancelableBlocks.m */; };
@@ -556,6 +557,8 @@
 		FF0E12D31828560000D49EC7 /* TTModeVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeVideo.m; path = Modes/Video/TTModeVideo.m; sourceTree = "<group>"; };
 		FF0E12D61828569300D49EC7 /* Quicktime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Quicktime.h; path = Modes/Video/Quicktime.h; sourceTree = "<group>"; };
 		FF0E12D71828569300D49EC7 /* VLC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VLC.h; path = Modes/Video/VLC.h; sourceTree = "<group>"; };
+		FF124C891FFEBC1D009222AD /* PFMoveApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFMoveApplication.h; sourceTree = "<group>"; };
+		FF124C8A1FFEBC1D009222AD /* PFMoveApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFMoveApplication.m; sourceTree = "<group>"; };
 		FF18B1E91EF1E8C900BC9725 /* TTModalSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModalSettings.h; path = Views/Settings/TTModalSettings.h; sourceTree = "<group>"; };
 		FF18B1EA1EF1E8C900BC9725 /* TTModalSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModalSettings.m; path = Views/Settings/TTModalSettings.m; sourceTree = "<group>"; };
 		FF18B1EB1EF1E8C900BC9725 /* TTModalSettings.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModalSettings.xib; path = Views/Settings/TTModalSettings.xib; sourceTree = "<group>"; };
@@ -1344,6 +1347,16 @@
 			name = Video;
 			sourceTree = "<group>";
 		};
+		FF124C881FFEBC1D009222AD /* LetsMove */ = {
+			isa = PBXGroup;
+			children = (
+				FF124C891FFEBC1D009222AD /* PFMoveApplication.h */,
+				FF124C8A1FFEBC1D009222AD /* PFMoveApplication.m */,
+			);
+			name = LetsMove;
+			path = "Turn Touch Mac/Vendor/LetsMove";
+			sourceTree = SOURCE_ROOT;
+		};
 		FF1F13551ADC90E700B52A0D /* MLCalendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -2096,6 +2109,7 @@
 				FF01CA861C473EC100F83A73 /* readability */,
 				FF73058E1A5C9C76009A852D /* Hue */,
 				FFF02BD41F16A271003E5799 /* sonos-objc */,
+				FF124C881FFEBC1D009222AD /* LetsMove */,
 				FFCFCFB61D88D9CE00FBC3E7 /* LaunchAtLoginController */,
 				FF1B02291A36898700BE764E /* NSObject+CancelableBlocks.h */,
 				FF1B022A1A36898700BE764E /* NSObject+CancelableBlocks.m */,
@@ -2921,6 +2935,7 @@
 				FFABABA51C3495E500AD5620 /* TTModeWebBackgroundView.m in Sources */,
 				FF8D1AAD1C98FE1E006AA1A2 /* TTModalDevices.m in Sources */,
 				FF80131A186CF8FF00955218 /* TTDiamondView.m in Sources */,
+				FF124C8B1FFEBC1D009222AD /* PFMoveApplication.m in Sources */,
 				FFAA4F72182D9A5F0049FFC7 /* TTModeNews.m in Sources */,
 				FF1F13631ADC98C400B52A0D /* TTDatePicker.m in Sources */,
 				FF2C2E6E1C5479E000FAD7E2 /* TTModeWemoSwitchOptions.m in Sources */,

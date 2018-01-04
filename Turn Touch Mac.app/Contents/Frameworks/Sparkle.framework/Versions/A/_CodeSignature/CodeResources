@@ -10,11 +10,11 @@
 		</data>
 		<key>Resources/Autoupdate.app/Contents/MacOS/Autoupdate</key>
 		<data>
-		c4BYpKJIzGWi0CdbEDY/MgQwmek=
+		VJ0EGgS5Yk3QNfkeCL5I9vAs3OY=
 		</data>
 		<key>Resources/Autoupdate.app/Contents/MacOS/fileop</key>
 		<data>
-		o9IQMPYNm4quWYALtM2MZf9GB3c=
+		yZTOd7QNI15kMbHnNV0D+TQTP18=
 		</data>
 		<key>Resources/Autoupdate.app/Contents/PkgInfo</key>
 		<data>
@@ -1331,22 +1331,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			c4BYpKJIzGWi0CdbEDY/MgQwmek=
+			VJ0EGgS5Yk3QNfkeCL5I9vAs3OY=
 			</data>
 			<key>hash2</key>
 			<data>
-			Z192xg6rb4EQzsWSJ4BpDl59x019sskAbk7NFpUAxzQ=
+			rpuK5jLcPsY6CRtZADafrYtgNvlViLLQSmmEymiM1Cw=
 			</data>
 		</dict>
 		<key>Resources/Autoupdate.app/Contents/MacOS/fileop</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			o9IQMPYNm4quWYALtM2MZf9GB3c=
+			yZTOd7QNI15kMbHnNV0D+TQTP18=
 			</data>
 			<key>hash2</key>
 			<data>
-			UFXqBCG+/ayGeWXSCbb21XUAZ1YU/v2fjg3DvSAcxfM=
+			UXMsNE83gfKa/lQAQauU9n4EJOUCBrk3qV8lBV9CkFw=
 			</data>
 		</dict>
 		<key>Resources/Autoupdate.app/Contents/PkgInfo</key>

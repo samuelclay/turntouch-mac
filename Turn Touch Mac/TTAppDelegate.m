@@ -9,6 +9,7 @@
 #import "TTAppDelegate.h"
 #import <dispatch/dispatch.h>
 #import "LaunchAtLoginController.h"
+#import "PFMoveApplication.h"
 
 @implementation TTAppDelegate
 
@@ -80,6 +81,10 @@ void *kContextActivePanel = &kContextActivePanel;
 //    [self.hudController toastActiveMode];
 //    [self.hudController toastActiveAction:nil inDirection:SOUTH];
 //    NSLog(@"%@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
+}
+
+- (void)applicationWillFinishLaunching:(NSNotification *)notification {
+    PFMoveToApplicationsFolderIfNecessary();
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender {
