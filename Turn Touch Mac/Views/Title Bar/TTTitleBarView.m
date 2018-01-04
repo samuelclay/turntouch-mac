@@ -235,12 +235,6 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
     [menuItem setTarget:self];
     [settingsMenu addItem:menuItem];
     
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Contact support"
-                                          action:@selector(openSupportDialog:)
-                                   keyEquivalent:@""];
-    [menuItem setTarget:self];
-    [settingsMenu addItem:menuItem];
-    
     menuItem = [[NSMenuItem alloc] initWithTitle:@"About Turn Touch"
                                           action:@selector(openAboutDialog:)
                                    keyEquivalent:@""];
@@ -248,7 +242,33 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
     [settingsMenu addItem:menuItem];
 
     [settingsMenu addItem:[NSMenuItem separatorItem]];
+
+    menuItem = [[NSMenuItem alloc] initWithTitle:@"Submit an idea..."
+                                          action:@selector(openSupportIdea:)
+                                   keyEquivalent:@""];
+    [menuItem setTarget:self];
+    [settingsMenu addItem:menuItem];
     
+    menuItem = [[NSMenuItem alloc] initWithTitle:@"Ask a question..."
+                                          action:@selector(openSupportQuestion:)
+                                   keyEquivalent:@""];
+    [menuItem setTarget:self];
+    [settingsMenu addItem:menuItem];
+    
+    menuItem = [[NSMenuItem alloc] initWithTitle:@"Troubleshoot a problem..."
+                                          action:@selector(openSupportProblem:)
+                                   keyEquivalent:@""];
+    [menuItem setTarget:self];
+    [settingsMenu addItem:menuItem];
+    
+    menuItem = [[NSMenuItem alloc] initWithTitle:@"Share photos and praise..."
+                                          action:@selector(openSupportPraise:)
+                                   keyEquivalent:@""];
+    [menuItem setTarget:self];
+    [settingsMenu addItem:menuItem];
+    
+    [settingsMenu addItem:[NSMenuItem separatorItem]];
+
     menuItem = [[NSMenuItem alloc] initWithTitle:@"Quit Turn Touch Remote"
                                           action:@selector(quit:)
                                    keyEquivalent:@""];
@@ -291,6 +311,22 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
 
 - (void)openSupportDialog:(id)sender {
     [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_SUPPORT];
+}
+
+- (void)openSupportIdea:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://forum.turntouch.com/c/ideas"]];
+}
+
+- (void)openSupportQuestion:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://forum.turntouch.com/c/questions"]];
+}
+
+- (void)openSupportProblem:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://forum.turntouch.com/c/problems"]];
+}
+
+- (void)openSupportPraise:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://forum.turntouch.com/c/praise"]];
 }
 
 - (void)openSettingsDialog:(id)sender {

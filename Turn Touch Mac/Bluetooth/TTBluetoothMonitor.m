@@ -1066,7 +1066,8 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
 #ifdef DEBUG_CONNECT
             NSLog(@" ---> (%X) [Disconnecting] Canceling peripheral connection: %@", bluetoothState, device);
 #endif
-            [manager cancelPeripheralConnection:device.peripheral];
+            [self disconnectDevice:device];
+//            [manager cancelPeripheralConnection:device.peripheral];
         }
     }
     
