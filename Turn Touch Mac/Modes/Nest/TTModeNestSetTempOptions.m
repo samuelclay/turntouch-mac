@@ -29,15 +29,31 @@
     NSString *temperatureMode = [self.action optionValue:kNestSetTemperatureMode
                                              inDirection:appDelegate.modeMap.inspectingModeDirection];
     
-    [sliderTemp setIntegerValue:temperature];
     if ([temperatureMode isEqualToString:@"cool"]) {
         [heatControl setSelectedSegment:1];
     } else {
         [heatControl setSelectedSegment:0];
     }
-    [self updateTempLabel];
     
+    [self updateScale];
+    [self updateTempLabel];
     [self selectThermostat];
+
+    [sliderTemp setIntegerValue:temperature];
+}
+
+- (void)updateScale {
+    TTModeNest *nestMode = (TTModeNest *)self.action.mode;
+    Thermostat *thermostat = [nestMode selectedThermostat];
+    NSString *scale = [thermostat temperatureScale];
+
+    if ([scale isEqualToString:@"C"]) {
+        sliderTemp.minValue = 9;
+        sliderTemp.maxValue = 32;
+    } else {
+        sliderTemp.minValue = 50;
+        sliderTemp.maxValue = 90;
+    }
 }
 
 - (void)updateTempLabel {

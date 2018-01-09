@@ -113,14 +113,18 @@ static TTModeNestDelegateManager *delegateManager;
 
 - (void)runTTModeNestRaiseTemp:(TTModeDirection)direction {
     Thermostat *thermostat = [self selectedThermostat];
+    NSString *scale = [thermostat temperatureScale];
     NSLog(@"Running TTModeNestRaiseTemp: %ld+1", thermostat.targetTemperatureF);
     
     if ([thermostat.hvacMode isEqualToString:@"heat-cool"]) {
 //        if ([[self.action optionValue:kNestSetTemperatureMode inDirection:direction] isEqualToString:@"cool"]) {
+        if ([scale isEqualToString:@"C"]) {
+            thermostat.targetTemperatureHighC += 1;
+            thermostat.targetTemperatureLowC += 1;
+        } else {
             thermostat.targetTemperatureHighF += 1;
-//        } else {
             thermostat.targetTemperatureLowF += 1;
-//        }
+        }
     } else {
         thermostat.targetTemperatureF += 1;
     }
@@ -131,14 +135,18 @@ static TTModeNestDelegateManager *delegateManager;
 
 - (void)runTTModeNestLowerTemp:(TTModeDirection)direction {
     Thermostat *thermostat = [self selectedThermostat];
+    NSString *scale = [thermostat temperatureScale];
     NSLog(@"Running TTModeNestLowerTemp: %ld-1", thermostat.targetTemperatureF);
     
     if ([thermostat.hvacMode isEqualToString:@"heat-cool"]) {
 //        if ([[self.action optionValue:kNestSetTemperatureMode inDirection:direction] isEqualToString:@"cool"]) {
+        if ([scale isEqualToString:@"C"]) {
+            thermostat.targetTemperatureHighC -= 1;
+            thermostat.targetTemperatureLowC -= 1;
+        } else {
             thermostat.targetTemperatureHighF -= 1;
-//        } else {
             thermostat.targetTemperatureLowF -= 1;
-//        }
+        }
     } else {
         thermostat.targetTemperatureF -= 1;
     }
@@ -149,18 +157,31 @@ static TTModeNestDelegateManager *delegateManager;
 
 - (void)runTTModeNestSetTemp:(TTModeDirection)direction {
     Thermostat *thermostat = [self selectedThermostat];
+    NSString *scale = [thermostat temperatureScale];
     NSInteger temperature = [[self.action optionValue:kNestSetTemperature
                                           inDirection:direction] integerValue];
     NSLog(@"Running TTModeNestSetTemp: %ld", temperature);
 
     if ([thermostat.hvacMode isEqualToString:@"heat-cool"]) {
         if ([[self.action optionValue:kNestSetTemperatureMode inDirection:direction] isEqualToString:@"cool"]) {
-            thermostat.targetTemperatureHighF = temperature;
+            if ([scale isEqualToString:@"C"]) {
+                thermostat.targetTemperatureHighC = temperature;
+            } else {
+                thermostat.targetTemperatureHighF = temperature;
+            }
         } else {
-            thermostat.targetTemperatureLowF = temperature;
+            if ([scale isEqualToString:@"C"]) {
+                thermostat.targetTemperatureLowC = temperature;
+            } else {
+                thermostat.targetTemperatureLowF = temperature;
+            }
         }
     } else {
-        thermostat.targetTemperatureF = temperature;
+        if ([scale isEqualToString:@"C"]) {
+            thermostat.targetTemperatureC = temperature;
+        } else {
+            thermostat.targetTemperatureF = temperature;
+        }
     }
     
     [self changeThermostatTemp:thermostat]; // HTTP, not Firebase
@@ -329,6 +350,7 @@ static TTModeNestDelegateManager *delegateManager;
 }
 
 - (void)changeThermostatTemp:(Thermostat *)thermostat {
+    NSString *scale = [thermostat temperatureScale];
     NSString *accessToken = [[NestAuthManager sharedManager] accessToken];
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@?auth=%@",
                                        kNestApiHost, kNestApiThermostats, thermostat.thermostatId, accessToken]];
@@ -337,14 +359,27 @@ static TTModeNestDelegateManager *delegateManager;
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     
     if ([thermostat.hvacMode isEqualToString:@"heat-cool"]) {
-        [request setHTTPBody:[[NSString stringWithFormat:@"{\"target_temperature_high_f\": %ld,"
-                               "\"target_temperature_low_f\": %ld}",
-                               thermostat.targetTemperatureHighF,
-                               thermostat.targetTemperatureLowF]
-                              dataUsingEncoding:NSUTF8StringEncoding]];
+        if ([scale isEqualToString:@"C"]) {
+            [request setHTTPBody:[[NSString stringWithFormat:@"{\"target_temperature_high_c\": %ld,"
+                                   "\"target_temperature_low_c\": %ld}",
+                                   thermostat.targetTemperatureHighC,
+                                   thermostat.targetTemperatureLowC]
+                                  dataUsingEncoding:NSUTF8StringEncoding]];
+        } else {
+            [request setHTTPBody:[[NSString stringWithFormat:@"{\"target_temperature_high_f\": %ld,"
+                                   "\"target_temperature_low_f\": %ld}",
+                                   thermostat.targetTemperatureHighF,
+                                   thermostat.targetTemperatureLowF]
+                                  dataUsingEncoding:NSUTF8StringEncoding]];
+        }
     } else {
-        [request setHTTPBody:[[NSString stringWithFormat:@"{\"target_temperature_f\": %ld}", thermostat.targetTemperatureF]
-                              dataUsingEncoding:NSUTF8StringEncoding]];
+        if ([scale isEqualToString:@"C"]) {
+            [request setHTTPBody:[[NSString stringWithFormat:@"{\"target_temperature_c\": %ld}", thermostat.targetTemperatureC]
+                                  dataUsingEncoding:NSUTF8StringEncoding]];
+        } else {
+            [request setHTTPBody:[[NSString stringWithFormat:@"{\"target_temperature_f\": %ld}", thermostat.targetTemperatureF]
+                                  dataUsingEncoding:NSUTF8StringEncoding]];
+        }
     }
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
