@@ -9,8 +9,13 @@
 #import "TTModePresentation.h"
 #import "TTModeMac.h"
 #import "Keynote.h"
+#import "Powerpoint.h"
 
 @implementation TTModePresentation
+
+NSString *const kPresentationApp = @"TT:Presentation:app";
+NSString *const kPresentationPlayStartFirstSlide = @"TT:Presentation:playStartFirstSlide";
+
 - (instancetype)init {
     if (self = [super init]) {
         slideChooserVisible = NO;
@@ -139,57 +144,107 @@
 
 #pragma mark - Action methods
 
+- (BOOL)isKeynote {
+    return [[appDelegate.modeMap mode:self optionValue:kPresentationApp] isEqualToString:@"keynote"];
+}
+
+- (BOOL)isPowerpoint {
+    return [[appDelegate.modeMap mode:self optionValue:kPresentationApp] isEqualToString:@"powerpoint"];
+}
+
 - (void)runTTModePresentationToggleSlides {
-    KeynoteApplication *keynote = [SBApplication applicationWithBundleIdentifier:@"com.apple.iWork.Keynote"];
-    if (!slideChooserVisible) {
-        for (KeynoteDocument *document in [keynote documents]) {
-            [document showSlideSwitcher];
+    if ([self isKeynote]) {
+        KeynoteApplication *keynote = [SBApplication applicationWithBundleIdentifier:@"com.apple.iWork.Keynote"];
+        if (!slideChooserVisible) {
+            for (KeynoteDocument *document in [keynote documents]) {
+                [document showSlideSwitcher];
+            }
+            slideChooserVisible = YES;
+        } else {
+            for (KeynoteDocument *document in [keynote documents]) {
+                [document moveSlideSwitcherBackward];
+            }
         }
-        slideChooserVisible = YES;
-    } else {
-        for (KeynoteDocument *document in [keynote documents]) {
-            [document moveSlideSwitcherBackward];
+    } else if ([self isPowerpoint]) {
+        PowerpointApplication *powerpoint = [SBApplication applicationWithBundleIdentifier:@"com.microsoft.Powerpoint"];
+        [powerpoint activate];
+        
+        for (PowerpointSlideShowWindow *slideshow in [powerpoint slideShowWindows]) {
+//            [slideshow slideshowView]
         }
     }
 }
 
 - (void)runTTModePresentationNextSlide {
-    KeynoteApplication *keynote = [SBApplication applicationWithBundleIdentifier:@"com.apple.iWork.Keynote"];
-    if (slideChooserVisible) {
-        for (KeynoteDocument *document in [keynote documents]) {
-            [document acceptSlideSwitcher];
+    if ([self isKeynote]) {
+        KeynoteApplication *keynote = [SBApplication applicationWithBundleIdentifier:@"com.apple.iWork.Keynote"];
+        if (slideChooserVisible) {
+            for (KeynoteDocument *document in [keynote documents]) {
+                [document acceptSlideSwitcher];
+            }
+            slideChooserVisible = NO;
+        } else {
+            [keynote showNext];
         }
-        slideChooserVisible = NO;
-    } else {
-        [keynote showNext];
+    } else if ([self isPowerpoint]) {
+        PowerpointApplication *powerpoint = [SBApplication applicationWithBundleIdentifier:@"com.microsoft.Powerpoint"];
+        [powerpoint activate];
+        
+        for (PowerpointSlideShowWindow *slideshow in [powerpoint slideShowWindows]) {
+            [[slideshow slideshowView] goToNextSlide];
+        }
     }
 }
 
 - (void)runTTModePresentationPreviousSlide {
-    KeynoteApplication *keynote = [SBApplication applicationWithBundleIdentifier:@"com.apple.iWork.Keynote"];
-    if (slideChooserVisible) {
-        for (KeynoteDocument *document in [keynote documents]) {
-            [document cancelSlideSwitcher];
+    if ([self isKeynote]) {
+        KeynoteApplication *keynote = [SBApplication applicationWithBundleIdentifier:@"com.apple.iWork.Keynote"];
+        if (slideChooserVisible) {
+            for (KeynoteDocument *document in [keynote documents]) {
+                [document cancelSlideSwitcher];
+            }
+            slideChooserVisible = NO;
+        } else {
+            [keynote showPrevious];
         }
-        slideChooserVisible = NO;
-    } else {
-        [keynote showPrevious];
+    } else if ([self isPowerpoint]) {
+        PowerpointApplication *powerpoint = [SBApplication applicationWithBundleIdentifier:@"com.microsoft.Powerpoint"];
+        [powerpoint activate];
+        
+        for (PowerpointSlideShowWindow *slideshow in [powerpoint slideShowWindows]) {
+            [[slideshow slideshowView] goToPreviousSlide];
+        }
     }
 }
 
 - (void)runTTModePresentationPlay {
-    KeynoteApplication *keynote = [SBApplication applicationWithBundleIdentifier:@"com.apple.iWork.Keynote"];
-    for (KeynoteDocument *document in [keynote documents]) {
-        if (!slideChooserVisible) {
-            if (slideshowPlaying) {
-                [document stop];
-                slideshowPlaying = NO;
+    BOOL startFirstSlide = [[appDelegate.modeMap mode:self optionValue:kPresentationPlayStartFirstSlide] boolValue];
+    
+    if ([self isKeynote]) {
+        KeynoteApplication *keynote = [SBApplication applicationWithBundleIdentifier:@"com.apple.iWork.Keynote"];
+        for (KeynoteDocument *document in [keynote documents]) {
+            if (!slideChooserVisible) {
+                if (slideshowPlaying) {
+                    [document stop];
+                    slideshowPlaying = NO;
+                } else {
+                    [document startFrom:document.currentSlide];
+                    slideshowPlaying = YES;
+                }
             } else {
-                [document startFrom:document.currentSlide];
-                slideshowPlaying = YES;
+                [document moveSlideSwitcherForward];
             }
-        } else {
-            [document moveSlideSwitcherForward];
+        }
+    } else if ([self isPowerpoint]) {
+        PowerpointApplication *powerpoint = [SBApplication applicationWithBundleIdentifier:@"com.microsoft.Powerpoint"];
+        [powerpoint activate];
+        
+        [[[[powerpoint activeWindow] presentation] slideShowSettings] runSlideShow];
+        
+        if (startFirstSlide) {
+            for (PowerpointSlideShowWindow *slideshow in [powerpoint slideShowWindows]) {
+                [[slideshow slideshowView] goToFirstSlide];
+            }
         }
     }
 }

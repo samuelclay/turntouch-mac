@@ -418,6 +418,11 @@
 		FFF8AE3B1AFDAB3E0064DCEF /* Turn_Touch_Remote_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF8AE3A1AFDAB3E0064DCEF /* Turn_Touch_Remote_Tests.m */; };
 		FFF8AE421AFDAB8E0064DCEF /* TTBluetoothTimerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF8AE411AFDAB8E0064DCEF /* TTBluetoothTimerTest.m */; };
 		FFF8AE461AFDC2BA0064DCEF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8012F6186A599600955218 /* AudioToolbox.framework */; };
+		FFFE8CA920045524007AA4AF /* TTModePresentationOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFE8CA720045524007AA4AF /* TTModePresentationOptions.m */; };
+		FFFE8CAA20045524007AA4AF /* TTModePresentationOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFFE8CA820045524007AA4AF /* TTModePresentationOptions.xib */; };
+		FFFE8CAC200457A4007AA4AF /* TTModePresentation.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFFE8CAB200457A4007AA4AF /* TTModePresentation.plist */; };
+		FFFE8CB1200565DA007AA4AF /* TTModePresentationPlayOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFE8CAF200565DA007AA4AF /* TTModePresentationPlayOptions.m */; };
+		FFFE8CB2200565DA007AA4AF /* TTModePresentationPlayOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFFE8CB0200565DA007AA4AF /* TTModePresentationPlayOptions.xib */; };
 		FFFF0C6F1EFC971000E29E6D /* TTModeIftttOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFF0C6D1EFC971000E29E6D /* TTModeIftttOptions.m */; };
 		FFFF0C701EFC971000E29E6D /* TTModeIftttOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFFF0C6E1EFC971000E29E6D /* TTModeIftttOptions.xib */; };
 		FFFF0C741EFC973100E29E6D /* TTModeIftttConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFF0C721EFC973100E29E6D /* TTModeIftttConnect.m */; };
@@ -1113,6 +1118,14 @@
 		FFF8AE391AFDAB3E0064DCEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFF8AE3A1AFDAB3E0064DCEF /* Turn_Touch_Remote_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Turn_Touch_Remote_Tests.m; sourceTree = "<group>"; };
 		FFF8AE411AFDAB8E0064DCEF /* TTBluetoothTimerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTBluetoothTimerTest.m; sourceTree = "<group>"; };
+		FFFE8CA620045524007AA4AF /* TTModePresentationOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TTModePresentationOptions.h; path = Modes/Presentation/TTModePresentationOptions.h; sourceTree = "<group>"; };
+		FFFE8CA720045524007AA4AF /* TTModePresentationOptions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TTModePresentationOptions.m; path = Modes/Presentation/TTModePresentationOptions.m; sourceTree = "<group>"; };
+		FFFE8CA820045524007AA4AF /* TTModePresentationOptions.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TTModePresentationOptions.xib; path = Modes/Presentation/TTModePresentationOptions.xib; sourceTree = "<group>"; };
+		FFFE8CAB200457A4007AA4AF /* TTModePresentation.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = TTModePresentation.plist; path = Modes/Presentation/TTModePresentation.plist; sourceTree = "<group>"; };
+		FFFE8CAD20055D1D007AA4AF /* Powerpoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Powerpoint.h; path = Modes/Presentation/Powerpoint.h; sourceTree = "<group>"; };
+		FFFE8CAE200565DA007AA4AF /* TTModePresentationPlayOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TTModePresentationPlayOptions.h; path = Modes/Presentation/TTModePresentationPlayOptions.h; sourceTree = "<group>"; };
+		FFFE8CAF200565DA007AA4AF /* TTModePresentationPlayOptions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TTModePresentationPlayOptions.m; path = Modes/Presentation/TTModePresentationPlayOptions.m; sourceTree = "<group>"; };
+		FFFE8CB0200565DA007AA4AF /* TTModePresentationPlayOptions.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TTModePresentationPlayOptions.xib; path = Modes/Presentation/TTModePresentationPlayOptions.xib; sourceTree = "<group>"; };
 		FFFF0C6C1EFC971000E29E6D /* TTModeIftttOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeIftttOptions.h; path = Modes/Ifttt/TTModeIftttOptions.h; sourceTree = "<group>"; };
 		FFFF0C6D1EFC971000E29E6D /* TTModeIftttOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeIftttOptions.m; path = Modes/Ifttt/TTModeIftttOptions.m; sourceTree = "<group>"; };
 		FFFF0C6E1EFC971000E29E6D /* TTModeIftttOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeIftttOptions.xib; path = Modes/Ifttt/TTModeIftttOptions.xib; sourceTree = "<group>"; };
@@ -2229,9 +2242,17 @@
 		FFAA6D131F29592300039F3C /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				FFFE8CAB200457A4007AA4AF /* TTModePresentation.plist */,
+				FFFE8CAD20055D1D007AA4AF /* Powerpoint.h */,
 				FFAA6D141F295BB100039F3C /* Keynote.h */,
 				FFAA6D101F29591F00039F3C /* TTModePresentation.h */,
 				FFAA6D111F29591F00039F3C /* TTModePresentation.m */,
+				FFFE8CA620045524007AA4AF /* TTModePresentationOptions.h */,
+				FFFE8CA720045524007AA4AF /* TTModePresentationOptions.m */,
+				FFFE8CA820045524007AA4AF /* TTModePresentationOptions.xib */,
+				FFFE8CAE200565DA007AA4AF /* TTModePresentationPlayOptions.h */,
+				FFFE8CAF200565DA007AA4AF /* TTModePresentationPlayOptions.m */,
+				FFFE8CB0200565DA007AA4AF /* TTModePresentationPlayOptions.xib */,
 			);
 			name = Presentation;
 			sourceTree = "<group>";
@@ -2580,6 +2601,7 @@
 				FFA1D4CC1A3B8916003EA0BC /* TTActionHUDView.xib in Resources */,
 				FF01CA641C46DCC200F83A73 /* finger.png in Resources */,
 				FF01CA701C46DCC200F83A73 /* mode_meditation.png in Resources */,
+				FFFE8CAA20045524007AA4AF /* TTModePresentationOptions.xib in Resources */,
 				FF01CA731C46DCC200F83A73 /* mode_nest.png in Resources */,
 				FFABAB9C1C33674000AD5620 /* TTModeWebWindowController.xib in Resources */,
 				FF6135561C61CDDC00F431D7 /* hue_evening.png in Resources */,
@@ -2627,6 +2649,7 @@
 				FF6135591C61CDDC00F431D7 /* hue_sunset.png in Resources */,
 				FF8448FA1E10DB1A00C1091E /* TTModeCustomURLOptions.xib in Resources */,
 				FF2740751A7C576900C55579 /* originals.png in Resources */,
+				FFFE8CAC200457A4007AA4AF /* TTModePresentation.plist in Resources */,
 				FFA1F5F71B7D849200268907 /* TTModeHueSleepOptions.xib in Resources */,
 				FF2740711A7C576900C55579 /* itunes_library_icon.png in Resources */,
 				FF01CA801C46DCC200F83A73 /* settings.png in Resources */,
@@ -2670,6 +2693,7 @@
 				FF8012F5186A1AD100955218 /* defaults.plist in Resources */,
 				FF01CA681C46DCC200F83A73 /* imac.png in Resources */,
 				FF98A2EF1867DC320032CC7A /* Turn Touch Mac.entitlements in Resources */,
+				FFFE8CB2200565DA007AA4AF /* TTModePresentationPlayOptions.xib in Resources */,
 				FF01CA771C46DCC200F83A73 /* mode_smartlock.png in Resources */,
 				FF01CA6E1C46DCC200F83A73 /* mode_hue.png in Resources */,
 				FF01CA751C46DCC200F83A73 /* mode_pandora.png in Resources */,
@@ -2935,6 +2959,7 @@
 				FFABABA51C3495E500AD5620 /* TTModeWebBackgroundView.m in Sources */,
 				FF8D1AAD1C98FE1E006AA1A2 /* TTModalDevices.m in Sources */,
 				FF80131A186CF8FF00955218 /* TTDiamondView.m in Sources */,
+				FFFE8CB1200565DA007AA4AF /* TTModePresentationPlayOptions.m in Sources */,
 				FF124C8B1FFEBC1D009222AD /* PFMoveApplication.m in Sources */,
 				FFAA4F72182D9A5F0049FFC7 /* TTModeNews.m in Sources */,
 				FF1F13631ADC98C400B52A0D /* TTDatePicker.m in Sources */,
@@ -3012,6 +3037,7 @@
 				FF01CAB01C473EC100F83A73 /* NSURL+ValidityChecking.m in Sources */,
 				FFF02BDE1F16A271003E5799 /* SonosDiscover.m in Sources */,
 				FF3D21FA1F1EF50900F7F5BF /* GCDAsyncUdpSocket.m in Sources */,
+				FFFE8CA920045524007AA4AF /* TTModePresentationOptions.m in Sources */,
 				FF5295C81AD5B9B8007DDC02 /* TTSettingsButton.m in Sources */,
 				FF3641EF1A60C422003CC03C /* TTModeHuePushlink.m in Sources */,
 				FFF049771CE11FCF006CE427 /* TTModeHueBridge.m in Sources */,

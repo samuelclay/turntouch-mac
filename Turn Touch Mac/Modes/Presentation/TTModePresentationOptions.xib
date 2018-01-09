@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="TTModePresentationOptions">
+            <connections>
+                <outlet property="appKeynote" destination="aq5-Dd-Vf7" id="Aq6-fc-zcF"/>
+                <outlet property="appPowerpoint" destination="qxR-y0-QqT" id="yV4-0f-ecH"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="523" height="86"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="DSZ-Xf-EQ0">
+                    <rect key="frame" x="18" y="49" width="104" height="19"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Presentation app" id="rWP-Hf-jlf">
+                        <font key="font" size="13" name="Effra-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aq5-Dd-Vf7">
+                    <rect key="frame" x="155" y="48" width="105" height="19"/>
+                    <buttonCell key="cell" type="radio" title="Apple Keynote" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="hCY-ug-dWW">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" size="13" name="Effra-Regular"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="selectApp:" target="-2" id="eY2-JT-5iH"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qxR-y0-QqT">
+                    <rect key="frame" x="155" y="19" width="144" height="19"/>
+                    <buttonCell key="cell" type="radio" title="Microsoft Powerpoint" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="OLS-KY-Z7r">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" size="13" name="Effra-Regular"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="selectApp:" target="-2" id="gjD-9Y-sJz"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="qxR-y0-QqT" firstAttribute="top" secondItem="aq5-Dd-Vf7" secondAttribute="bottom" constant="12" id="665-fZ-TNU"/>
+                <constraint firstAttribute="bottom" secondItem="qxR-y0-QqT" secondAttribute="bottom" constant="20" id="CTO-YQ-C2W"/>
+                <constraint firstItem="aq5-Dd-Vf7" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="JOy-zI-dzT"/>
+                <constraint firstItem="aq5-Dd-Vf7" firstAttribute="leading" secondItem="DSZ-Xf-EQ0" secondAttribute="trailing" constant="36" id="Lv4-9N-mqu"/>
+                <constraint firstItem="DSZ-Xf-EQ0" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="REc-jI-ldM"/>
+                <constraint firstItem="aq5-Dd-Vf7" firstAttribute="leading" secondItem="qxR-y0-QqT" secondAttribute="leading" id="VcO-cs-XyT"/>
+                <constraint firstItem="aq5-Dd-Vf7" firstAttribute="top" secondItem="DSZ-Xf-EQ0" secondAttribute="top" constant="2" id="uyC-h4-a4s"/>
+            </constraints>
+            <point key="canvasLocation" x="137.5" y="205.5"/>
+        </customView>
+    </objects>
+</document>

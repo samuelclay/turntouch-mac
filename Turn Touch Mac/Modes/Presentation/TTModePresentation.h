@@ -13,4 +13,7 @@
     BOOL slideshowPlaying;
 }
 
+extern NSString *const kPresentationApp;
+extern NSString *const kPresentationPlayStartFirstSlide;
+
 @end
