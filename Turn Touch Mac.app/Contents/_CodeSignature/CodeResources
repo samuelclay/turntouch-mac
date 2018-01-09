@@ -10,7 +10,7 @@
 		</data>
 		<key>Resources/Assets.car</key>
 		<data>
-		8SoI3JstLeLwrkSSB+3jhDRvcRU=
+		B0scHA8d7bEEp9ZZOyVU6Nd4R9Y=
 		</data>
 		<key>Resources/Effra_Rg.ttf</key>
 		<data>
@@ -348,9 +348,17 @@
 		<data>
 		kAggZZKCcYNx3JIkjl90GRMGCW4=
 		</data>
+		<key>Resources/TTModeCustomFileOptions.nib</key>
+		<data>
+		hR9o5xdWVFiqrwIjswLul1HUt9s=
+		</data>
+		<key>Resources/TTModeCustomScriptOptions.nib</key>
+		<data>
+		CDgpOB2/js8nctYMMbKS041/WYg=
+		</data>
 		<key>Resources/TTModeCustomURLOptions.nib</key>
 		<data>
-		5pEF2C+GFOCnIDmi4b31VK1RuOc=
+		9z9sFqaiFRZ1xa6/HUi96qg1nDI=
 		</data>
 		<key>Resources/TTModeHUDView.nib</key>
 		<data>
@@ -362,7 +370,7 @@
 		</data>
 		<key>Resources/TTModeHueBridge.nib</key>
 		<data>
-		dUVlm9DKaupDg0P8itRE4zagmUs=
+		Yyu5L7SgWAsm7RPjWGq8Ok/CXnw=
 		</data>
 		<key>Resources/TTModeHueConnect.nib</key>
 		<data>
@@ -467,6 +475,18 @@
 		<key>Resources/TTModeNewsWindowController.nib</key>
 		<data>
 		s/w4JhA5Sotnp29epJKxGDWufDg=
+		</data>
+		<key>Resources/TTModePresentation.plist</key>
+		<data>
+		wj31yWbMy+l4qBXMbQtqLBysNcA=
+		</data>
+		<key>Resources/TTModePresentationOptions.nib</key>
+		<data>
+		viP6552/E8ZoKHKMw4LtjKWrSQM=
+		</data>
+		<key>Resources/TTModePresentationPlayOptions.nib</key>
+		<data>
+		JuRgUU3Aqla97IUVyOlI7uz+gW8=
 		</data>
 		<key>Resources/TTModeSonosConnect.nib</key>
 		<data>
@@ -1146,7 +1166,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			//Ingl8EBxr7rqA2FFEmJK4Koac=
+			soB9jvUvz88oRmnh+bw58qwPKTA=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.cocoapods.AFNetworking" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -1155,7 +1175,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			U1BNNTVMMk+ZMxlYwh3R8Cd20X4=
+			9b0i8UM7PDVpdTViKi88xReL+Nk=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "com.philips.hue.HueSDK-OSX" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -1164,7 +1184,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			/54BJCufhJMRDkPj53+Zt4ugdZQ=
+			P3Kwr12JcpngF5peSK0IJexnGhQ=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.sparkle-project.Sparkle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -1184,11 +1204,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			8SoI3JstLeLwrkSSB+3jhDRvcRU=
+			B0scHA8d7bEEp9ZZOyVU6Nd4R9Y=
 			</data>
 			<key>hash2</key>
 			<data>
-			kI5JhWYRdW8Z7Ytm45DWgMH4+MeKtXnaSBSs0yOtuqU=
+			3iFuc16NpynaiwKSx2vEwW0vhcoqXmh59TFAMZic2O4=
 			</data>
 		</dict>
 		<key>Resources/Effra_Rg.ttf</key>
@@ -1739,15 +1759,37 @@
 			CBgsQBI9/w8mVgS5v4vrpJaiiaUjYcETesL9fTX3qJs=
 			</data>
 		</dict>
+		<key>Resources/TTModeCustomFileOptions.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			hR9o5xdWVFiqrwIjswLul1HUt9s=
+			</data>
+			<key>hash2</key>
+			<data>
+			gSDewbRNWkODBe22J8ANXvhtgzXbXDHmn/W6bwEHnOk=
+			</data>
+		</dict>
+		<key>Resources/TTModeCustomScriptOptions.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			CDgpOB2/js8nctYMMbKS041/WYg=
+			</data>
+			<key>hash2</key>
+			<data>
+			gjxvs7Eaacnqma7D58wjMgw6Vr7Q5xXVSx7X455iOL8=
+			</data>
+		</dict>
 		<key>Resources/TTModeCustomURLOptions.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			5pEF2C+GFOCnIDmi4b31VK1RuOc=
+			9z9sFqaiFRZ1xa6/HUi96qg1nDI=
 			</data>
 			<key>hash2</key>
 			<data>
-			LfAZgKMHF2OGP8En19JMLbnAyPaDstCsOOzyYkcNNPI=
+			kXA/C9lpBaWb2eLe3QAVu5XTINjMAq1z+o6a7MXX2KA=
 			</data>
 		</dict>
 		<key>Resources/TTModeHUDView.nib</key>
@@ -1776,11 +1818,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			dUVlm9DKaupDg0P8itRE4zagmUs=
+			Yyu5L7SgWAsm7RPjWGq8Ok/CXnw=
 			</data>
 			<key>hash2</key>
 			<data>
-			pIPHJsgDapHsp3YRm67wAthsnV48zSOdthJRJ/GJyeA=
+			73us/Y4L7hzS7yjPs7SK0kIHVNzOZ59nk4gMBwdpujM=
 			</data>
 		</dict>
 		<key>Resources/TTModeHueConnect.nib</key>
@@ -2067,6 +2109,39 @@
 			<key>hash2</key>
 			<data>
 			Oapt0ZTgpe3IrnwFDKdvgRsAT6bVNrU4fElZut5107A=
+			</data>
+		</dict>
+		<key>Resources/TTModePresentation.plist</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			wj31yWbMy+l4qBXMbQtqLBysNcA=
+			</data>
+			<key>hash2</key>
+			<data>
+			bjnXzwL7n9Kwj6MFNSP1s7HkH2q+20uO1tGaqVtUVyU=
+			</data>
+		</dict>
+		<key>Resources/TTModePresentationOptions.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			viP6552/E8ZoKHKMw4LtjKWrSQM=
+			</data>
+			<key>hash2</key>
+			<data>
+			w58sPEKP5tKYST2BLlj3UjIsngyrXTiMvFGu9rxQUZw=
+			</data>
+		</dict>
+		<key>Resources/TTModePresentationPlayOptions.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			JuRgUU3Aqla97IUVyOlI7uz+gW8=
+			</data>
+			<key>hash2</key>
+			<data>
+			u1389x9L7YyAcTLU9msP2P40NxJBrYXDaOpe3l6L+eo=
 			</data>
 		</dict>
 		<key>Resources/TTModeSonosConnect.nib</key>
@@ -3883,11 +3958,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			47+DqyD02cwi9suH+4hpPP97LxQ=
+			AJLa69Q2L+yavKRuNuz/TbT59rg=
 			</data>
 			<key>hash2</key>
 			<data>
-			P2AiVIr26UCuiEjVxLBRbuFArNsh4T3/LQAfHUakuR8=
+			cYSrZepfR/37cBcCdY26rPYU0HsST3psXYkrPHSQDIs=
 			</data>
 		</dict>
 	</dict>
