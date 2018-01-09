@@ -423,6 +423,10 @@
 		FFFE8CAC200457A4007AA4AF /* TTModePresentation.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFFE8CAB200457A4007AA4AF /* TTModePresentation.plist */; };
 		FFFE8CB1200565DA007AA4AF /* TTModePresentationPlayOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFE8CAF200565DA007AA4AF /* TTModePresentationPlayOptions.m */; };
 		FFFE8CB2200565DA007AA4AF /* TTModePresentationPlayOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFFE8CB0200565DA007AA4AF /* TTModePresentationPlayOptions.xib */; };
+		FFFE8CB6200574D9007AA4AF /* TTModeCustomScriptOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFE8CB4200574D9007AA4AF /* TTModeCustomScriptOptions.m */; };
+		FFFE8CB7200574D9007AA4AF /* TTModeCustomScriptOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFFE8CB5200574D9007AA4AF /* TTModeCustomScriptOptions.xib */; };
+		FFFE8CBB200574E8007AA4AF /* TTModeCustomFileOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFE8CB9200574E8007AA4AF /* TTModeCustomFileOptions.m */; };
+		FFFE8CBC200574E8007AA4AF /* TTModeCustomFileOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFFE8CBA200574E8007AA4AF /* TTModeCustomFileOptions.xib */; };
 		FFFF0C6F1EFC971000E29E6D /* TTModeIftttOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFF0C6D1EFC971000E29E6D /* TTModeIftttOptions.m */; };
 		FFFF0C701EFC971000E29E6D /* TTModeIftttOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFFF0C6E1EFC971000E29E6D /* TTModeIftttOptions.xib */; };
 		FFFF0C741EFC973100E29E6D /* TTModeIftttConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFF0C721EFC973100E29E6D /* TTModeIftttConnect.m */; };
@@ -1126,6 +1130,12 @@
 		FFFE8CAE200565DA007AA4AF /* TTModePresentationPlayOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TTModePresentationPlayOptions.h; path = Modes/Presentation/TTModePresentationPlayOptions.h; sourceTree = "<group>"; };
 		FFFE8CAF200565DA007AA4AF /* TTModePresentationPlayOptions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TTModePresentationPlayOptions.m; path = Modes/Presentation/TTModePresentationPlayOptions.m; sourceTree = "<group>"; };
 		FFFE8CB0200565DA007AA4AF /* TTModePresentationPlayOptions.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TTModePresentationPlayOptions.xib; path = Modes/Presentation/TTModePresentationPlayOptions.xib; sourceTree = "<group>"; };
+		FFFE8CB3200574D9007AA4AF /* TTModeCustomScriptOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TTModeCustomScriptOptions.h; path = Modes/Custom/TTModeCustomScriptOptions.h; sourceTree = "<group>"; };
+		FFFE8CB4200574D9007AA4AF /* TTModeCustomScriptOptions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TTModeCustomScriptOptions.m; path = Modes/Custom/TTModeCustomScriptOptions.m; sourceTree = "<group>"; };
+		FFFE8CB5200574D9007AA4AF /* TTModeCustomScriptOptions.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TTModeCustomScriptOptions.xib; path = Modes/Custom/TTModeCustomScriptOptions.xib; sourceTree = "<group>"; };
+		FFFE8CB8200574E8007AA4AF /* TTModeCustomFileOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TTModeCustomFileOptions.h; path = Modes/Custom/TTModeCustomFileOptions.h; sourceTree = "<group>"; };
+		FFFE8CB9200574E8007AA4AF /* TTModeCustomFileOptions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TTModeCustomFileOptions.m; path = Modes/Custom/TTModeCustomFileOptions.m; sourceTree = "<group>"; };
+		FFFE8CBA200574E8007AA4AF /* TTModeCustomFileOptions.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TTModeCustomFileOptions.xib; path = Modes/Custom/TTModeCustomFileOptions.xib; sourceTree = "<group>"; };
 		FFFF0C6C1EFC971000E29E6D /* TTModeIftttOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeIftttOptions.h; path = Modes/Ifttt/TTModeIftttOptions.h; sourceTree = "<group>"; };
 		FFFF0C6D1EFC971000E29E6D /* TTModeIftttOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeIftttOptions.m; path = Modes/Ifttt/TTModeIftttOptions.m; sourceTree = "<group>"; };
 		FFFF0C6E1EFC971000E29E6D /* TTModeIftttOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeIftttOptions.xib; path = Modes/Ifttt/TTModeIftttOptions.xib; sourceTree = "<group>"; };
@@ -1859,6 +1869,12 @@
 				FF8448F61E10DB1A00C1091E /* TTModeCustomURLOptions.h */,
 				FF8448F71E10DB1A00C1091E /* TTModeCustomURLOptions.m */,
 				FF8448F81E10DB1A00C1091E /* TTModeCustomURLOptions.xib */,
+				FFFE8CB3200574D9007AA4AF /* TTModeCustomScriptOptions.h */,
+				FFFE8CB4200574D9007AA4AF /* TTModeCustomScriptOptions.m */,
+				FFFE8CB5200574D9007AA4AF /* TTModeCustomScriptOptions.xib */,
+				FFFE8CB8200574E8007AA4AF /* TTModeCustomFileOptions.h */,
+				FFFE8CB9200574E8007AA4AF /* TTModeCustomFileOptions.m */,
+				FFFE8CBA200574E8007AA4AF /* TTModeCustomFileOptions.xib */,
 			);
 			name = Custom;
 			sourceTree = "<group>";
@@ -2612,6 +2628,7 @@
 				FF8D1AA91C98F5D3006AA1A2 /* logo_white_with_title.png in Resources */,
 				FFF049781CE11FCF006CE427 /* TTModeHueBridge.xib in Resources */,
 				FF8D1AB31C9902F8006AA1A2 /* TTModalSupportView.xib in Resources */,
+				FFFE8CB7200574D9007AA4AF /* TTModeCustomScriptOptions.xib in Resources */,
 				FFFF0C8B1EFCA36500E29E6D /* TTModeIftttAuthViewController.xib in Resources */,
 				FF6135611C61CDDC00F431D7 /* music_volume_mute.png in Resources */,
 				FFFF0C7A1EFC974400E29E6D /* TTModeIftttConnecting.xib in Resources */,
@@ -2653,6 +2670,7 @@
 				FFA1F5F71B7D849200268907 /* TTModeHueSleepOptions.xib in Resources */,
 				FF2740711A7C576900C55579 /* itunes_library_icon.png in Resources */,
 				FF01CA801C46DCC200F83A73 /* settings.png in Resources */,
+				FFFE8CBC200574E8007AA4AF /* TTModeCustomFileOptions.xib in Resources */,
 				FF557AEC1C4F2626005FB7FD /* TTModeNest.plist in Resources */,
 				FF01CA7D1C46DCC200F83A73 /* newspaper-3.png in Resources */,
 				FF01CA831C46DCC200F83A73 /* sun.png in Resources */,
@@ -2987,6 +3005,7 @@
 				FF7305C01A5CA8F5009A852D /* TTModeHueConnected.m in Sources */,
 				FFF02BD21F16A20B003E5799 /* TTModeSonos.m in Sources */,
 				FF01CAAB1C473EC100F83A73 /* NSString+ReplaceExtensions.m in Sources */,
+				FFFE8CBB200574E8007AA4AF /* TTModeCustomFileOptions.m in Sources */,
 				FFF05F3E18F77CF500AC6230 /* TTChangeButtonView.m in Sources */,
 				FFABAB811C2777D500AD5620 /* TTBatchActionHeaderView.m in Sources */,
 				FFA8EA9C190F07A500679A4D /* TTModeTabsContainer.m in Sources */,
@@ -3036,6 +3055,7 @@
 				FF98A2E81867DBE70032CC7A /* TTPanelController.m in Sources */,
 				FF01CAB01C473EC100F83A73 /* NSURL+ValidityChecking.m in Sources */,
 				FFF02BDE1F16A271003E5799 /* SonosDiscover.m in Sources */,
+				FFFE8CB6200574D9007AA4AF /* TTModeCustomScriptOptions.m in Sources */,
 				FF3D21FA1F1EF50900F7F5BF /* GCDAsyncUdpSocket.m in Sources */,
 				FFFE8CA920045524007AA4AF /* TTModePresentationOptions.m in Sources */,
 				FF5295C81AD5B9B8007DDC02 /* TTSettingsButton.m in Sources */,

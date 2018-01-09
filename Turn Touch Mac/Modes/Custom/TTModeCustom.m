@@ -18,6 +18,8 @@ NSString *const kSingleHitCount = @"singleHitCount";
 NSString *const kDoubleHitCount = @"doubleHitCount";
 NSString *const kSingleLastSuccess = @"singleLastSuccess";
 NSString *const kDoubleLastSuccess = @"doubleLastSuccess";
+NSString *const kCustomFileUrl = @"customFileUrl";
+NSString *const kCustomScriptText = @"customScriptText";
 
 #pragma mark - Mode
 
@@ -26,7 +28,7 @@ NSString *const kDoubleLastSuccess = @"doubleLastSuccess";
 }
 
 + (NSString *)description {
-    return @"Hit a website on command";
+    return @"Scripts, files, and websites";
 }
 
 + (NSString *)imageName {
@@ -37,7 +39,8 @@ NSString *const kDoubleLastSuccess = @"doubleLastSuccess";
 
 - (NSArray *)actions {
     return @[@"TTModeCustomURL",
-//             @"TTModeCustomScript",
+             @"TTModeCustomFile",
+             @"TTModeCustomScript",
              ];
 }
 
@@ -48,10 +51,13 @@ NSString *const kDoubleLastSuccess = @"doubleLastSuccess";
 #pragma mark - Action Titles
 
 - (NSString *)titleTTModeCustomURL {
-    return @"Custom URL";
+    return @"Hit URL";
 }
 - (NSString *)titleTTModeCustomScript {
-    return @"Custom Script";
+    return @"Run script";
+}
+- (NSString *)titleTTModeCustomFile {
+    return @"Execute file";
 }
 
 #pragma mark - Action Images
@@ -60,6 +66,9 @@ NSString *const kDoubleLastSuccess = @"doubleLastSuccess";
     return @"webhook";
 }
 - (NSString *)imageTTModeCustomScript {
+    return @"script";
+}
+- (NSString *)imageTTModeCustomFile {
     return @"script";
 }
 
@@ -72,7 +81,7 @@ NSString *const kDoubleLastSuccess = @"doubleLastSuccess";
     return @"TTModeCustomScript";
 }
 - (NSString *)defaultWest {
-    return @"TTModeCustomScript";
+    return @"TTModeCustomFile";
 }
 - (NSString *)defaultSouth {
     return @"TTModeCustomURL";
@@ -123,11 +132,32 @@ NSString *const kDoubleLastSuccess = @"doubleLastSuccess";
 }
 
 - (void)runTTModeCustomScript:(TTModeDirection)direction {
+    NSString *script = [self.action optionValue:kCustomScriptText];
     
+    if (script) {
+        NSString *path = @"/tmp/tt-custom-script";
+        NSDictionary *attrs = @{NSFilePosixPermissions: @0777};
+        [[NSFileManager defaultManager] createFileAtPath:path contents:nil attributes:attrs];
+        [script writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
+        
+//        int pid = [[NSProcessInfo processInfo] processIdentifier];
+        NSPipe *pipe = [NSPipe pipe];
+//        NSFileHandle *file = pipe.fileHandleForReading;
+        
+        NSTask *task = [[NSTask alloc] init];
+        task.launchPath = path;
+        task.standardOutput = pipe;
+        
+        [task launch];
+    }
 }
 
-- (void)doubleRunTTModeCustomScript:(TTModeDirection)direction {
+- (void)runTTModeCustomFile:(TTModeDirection)direction {
+    NSString *urlString = [self.action optionValue:kCustomFileUrl];
     
+    if (urlString) {
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:urlString]];
+    }
 }
 
 - (void)hitUrl:(NSString *)customUrlString callback:(void (^)(NSString *responseString, BOOL success))callback {

@@ -21,6 +21,7 @@
 
 @synthesize backgroundView = _backgroundView;
 @synthesize delegate = _delegate;
+@synthesize preventClosing;
 
 #pragma mark -
 
@@ -53,6 +54,8 @@
     [panel setContentView:self.backgroundView];
 
     [appDelegate.modeMap reset];
+    
+    preventClosing = NO;
 }
 
 #pragma mark - Public accessors
@@ -175,6 +178,10 @@
         if (appDelegate.menubarController.hasActiveIcon) {
             return NO;
         }
+    }
+    
+    if (preventClosing) {
+        return NO;
     }
     
     [NSAnimationContext beginGrouping];

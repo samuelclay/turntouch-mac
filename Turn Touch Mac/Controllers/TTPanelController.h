@@ -27,6 +27,7 @@
 @property (nonatomic) IBOutlet TTBackgroundView *backgroundView;
 
 @property (nonatomic) BOOL hasActivePanel;
+@property (nonatomic) BOOL preventClosing;
 @property (nonatomic, unsafe_unretained, readonly) id<TTPanelControllerDelegate> delegate;
 
 - (id)initWithDelegate:(id<TTPanelControllerDelegate>)delegate;
