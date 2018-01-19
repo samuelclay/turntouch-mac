@@ -18,7 +18,7 @@
 
 - (id)initWithActionName:(NSString *)_actionName direction:(TTModeDirection)_direction {
     if (self = [super init]) {
-        mode = appDelegate.modeMap.selectedMode;
+        mode = NSAppDelegate.modeMap.selectedMode;
         actionName = _actionName;
         direction = _direction;
     }

@@ -48,11 +48,11 @@
 
 - (IBAction)changeDevice:(id)sender {
     NSArray *foundDevices = [self.modeSonos foundDevices];
-    NSAssert(!self.modeSonos, @" ***> self.modeSonos is nil!");
+    NSAssert(self.modeSonos != nil, @" ***> self.modeSonos is nil!");
     
     for (SonosController *device in foundDevices) {
         if ([device.name isEqualToString:deviceSelect.selectedItem.title]) {
-            [NSAppDelegate.modeMap changeMode:self.modeSonos option:kSonosDeviceId to:device.uuid];
+            [appDelegate.modeMap changeMode:self.modeSonos option:kSonosDeviceId to:device.uuid];
             break;
         }
     }
