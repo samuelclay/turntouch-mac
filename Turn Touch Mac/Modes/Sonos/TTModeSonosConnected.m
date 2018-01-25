@@ -40,7 +40,7 @@
 
     for (NSDictionary *device in devices) {
         [deviceSelect addItemWithTitle:device[@"name"]];
-        if ([device[@"uuid"] isEqualToString:deviceSelected]) {
+        if ([device[@"identifier"] isEqualToString:deviceSelected]) {
             [deviceSelect selectItemWithTitle:device[@"name"]];
         }
     }
@@ -49,7 +49,8 @@
 - (IBAction)changeDevice:(id)sender {
     NSArray *foundDevices = [self.modeSonos foundDevices];
     NSAssert(self.modeSonos != nil, @" ***> self.modeSonos is nil!");
-    
+    NSAssert(deviceSelect != nil, @" ***> deviceSelect is nil!");
+
     for (SonosController *device in foundDevices) {
         if ([device.name isEqualToString:deviceSelect.selectedItem.title]) {
             [appDelegate.modeMap changeMode:self.modeSonos option:kSonosDeviceId to:device.uuid];
