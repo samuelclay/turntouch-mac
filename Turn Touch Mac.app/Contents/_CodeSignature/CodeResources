@@ -10,7 +10,7 @@
 		</data>
 		<key>Resources/Assets.car</key>
 		<data>
-		jHU4MHcFkgnoLt6my7wekInK0wQ=
+		SAWqHg+Bt5jVDZLt4oZR32xsEug=
 		</data>
 		<key>Resources/Effra_Rg.ttf</key>
 		<data>
@@ -370,7 +370,7 @@
 		</data>
 		<key>Resources/TTModeHueBridge.nib</key>
 		<data>
-		Y1l8UDNcqiHsCoA0Nq/qn4qrQoo=
+		LxtjDSg4d8jRznqNpVvITERQB3U=
 		</data>
 		<key>Resources/TTModeHueConnect.nib</key>
 		<data>
@@ -1166,7 +1166,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			zLniEmtA9Z+2MayBVDqTU37tFpc=
+			wXayKhfaYvxEgthqQaomddkn5EI=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.cocoapods.AFNetworking" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -1175,7 +1175,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			5XDK4T8UdVT88PdZN8gH90A3egw=
+			ggWiuIDtsMlfZUKOuJdZ19uFQoI=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "com.philips.hue.HueSDK-OSX" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -1184,7 +1184,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			Ak8M//soTMJajUY9eDWNlYJJcfg=
+			gcesx+53fzjRgjYQxG33ofD+4bA=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.sparkle-project.Sparkle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -1204,11 +1204,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			jHU4MHcFkgnoLt6my7wekInK0wQ=
+			SAWqHg+Bt5jVDZLt4oZR32xsEug=
 			</data>
 			<key>hash2</key>
 			<data>
-			wWZ35n3kAEt/V/P9cs3XxoLuS9DRXqt/h1SqrsGFmtM=
+			jnedchDyD2nzRuZZf1v49f7WfG7FCM5dVj51HKh1lZw=
 			</data>
 		</dict>
 		<key>Resources/Effra_Rg.ttf</key>
@@ -1818,11 +1818,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Y1l8UDNcqiHsCoA0Nq/qn4qrQoo=
+			LxtjDSg4d8jRznqNpVvITERQB3U=
 			</data>
 			<key>hash2</key>
 			<data>
-			Od9ZmoZc02UDCPZ3xbMtt8ebHRHwEPJz9VNbf4XdERE=
+			6PLSxNplDgZ7b5vYU4tXux68SdSXukf5bAiVAwX9YYU=
 			</data>
 		</dict>
 		<key>Resources/TTModeHueConnect.nib</key>
