@@ -142,6 +142,8 @@
     NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:nat];
     [[NSUserDefaults standardUserDefaults] setObject:encodedObject forKey:@"TT:mode:nest:accessToken"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
 }
 
 - (void)clearAccessToken {

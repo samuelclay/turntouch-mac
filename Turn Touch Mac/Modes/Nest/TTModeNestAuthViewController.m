@@ -86,6 +86,7 @@
     if ([[NestAuthManager sharedManager] isValidSession]) {
         [self invalidateTimer];
         [authPopover close];
+        [modeNest loadNestStructures];
         [modeNest subscribeToThermostat:0];
     }
 }

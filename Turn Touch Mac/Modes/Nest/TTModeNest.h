@@ -44,5 +44,6 @@ extern NSString *const kNestSetTemperatureMode;
 - (void)cancelConnectingToNest;
 - (void)subscribeToThermostat:(Thermostat *)thermostat;
 - (Thermostat *)selectedThermostat;
+- (void)loadNestStructures;
 
 @end
