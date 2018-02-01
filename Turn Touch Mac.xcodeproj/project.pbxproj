@@ -145,6 +145,7 @@
 		FF3D22111F1F1CB400F7F5BF /* TTModeSonosConnected.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3D220F1F1F1CB400F7F5BF /* TTModeSonosConnected.xib */; };
 		FF429AD21919C630007C485E /* TTModeMenuCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF429AD11919C630007C485E /* TTModeMenuCollectionView.m */; };
 		FF4E26321823197D00D477F6 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4E26311823197D00D477F6 /* IOKit.framework */; };
+		FF523B7D2022AF4F00813AF0 /* TTModeMacDisplayBrightness.c in Sources */ = {isa = PBXBuildFile; fileRef = FF523B7B2022AF4F00813AF0 /* TTModeMacDisplayBrightness.c */; };
 		FF5250151C80F9740017A847 /* TTModeWemoDeviceOnOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5250141C80F9740017A847 /* TTModeWemoDeviceOnOptions.m */; };
 		FF5250191C80F9930017A847 /* TTModeWemoDeviceOffOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5250171C80F9930017A847 /* TTModeWemoDeviceOffOptions.m */; };
 		FF52501D1C80F9AF0017A847 /* TTModeWemoDeviceToggleOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF52501C1C80F9AF0017A847 /* TTModeWemoDeviceToggleOptions.m */; };
@@ -676,6 +677,8 @@
 		FF429AD11919C630007C485E /* TTModeMenuCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeMenuCollectionView.m; sourceTree = "<group>"; };
 		FF4E26311823197D00D477F6 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		FF4F9AF6182881FF00D2F975 /* AppleScriptObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptObjC.framework; path = System/Library/Frameworks/AppleScriptObjC.framework; sourceTree = SDKROOT; };
+		FF523B7B2022AF4F00813AF0 /* TTModeMacDisplayBrightness.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = TTModeMacDisplayBrightness.c; path = Modes/Mac/TTModeMacDisplayBrightness.c; sourceTree = "<group>"; };
+		FF523B7C2022AF4F00813AF0 /* TTModeMacDisplayBrightness.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TTModeMacDisplayBrightness.h; path = Modes/Mac/TTModeMacDisplayBrightness.h; sourceTree = "<group>"; };
 		FF5250131C80F9740017A847 /* TTModeWemoDeviceOnOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeWemoDeviceOnOptions.h; path = Modes/Wemo/TTModeWemoDeviceOnOptions.h; sourceTree = "<group>"; };
 		FF5250141C80F9740017A847 /* TTModeWemoDeviceOnOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeWemoDeviceOnOptions.m; path = Modes/Wemo/TTModeWemoDeviceOnOptions.m; sourceTree = "<group>"; };
 		FF5250161C80F9930017A847 /* TTModeWemoDeviceOffOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeWemoDeviceOffOptions.h; path = Modes/Wemo/TTModeWemoDeviceOffOptions.h; sourceTree = "<group>"; };
@@ -2155,6 +2158,8 @@
 			children = (
 				FF8012F118692D0A00955218 /* TTModeMac.h */,
 				FF8012F218692D0A00955218 /* TTModeMac.m */,
+				FF523B7B2022AF4F00813AF0 /* TTModeMacDisplayBrightness.c */,
+				FF523B7C2022AF4F00813AF0 /* TTModeMacDisplayBrightness.h */,
 			);
 			name = Mac;
 			sourceTree = "<group>";
@@ -3050,6 +3055,7 @@
 				FF3641E91A60BB8B003CC03C /* TTModeHueConnecting.m in Sources */,
 				FFABAB8A1C28E6F000AD5620 /* TTBatchActions.m in Sources */,
 				FF913D2C19243BFD005C336F /* TTModeAlarmSnoozeOptions.m in Sources */,
+				FF523B7D2022AF4F00813AF0 /* TTModeMacDisplayBrightness.c in Sources */,
 				FFFF0C791EFC974400E29E6D /* TTModeIftttConnecting.m in Sources */,
 				FF3D22101F1F1CB400F7F5BF /* TTModeSonosConnected.m in Sources */,
 				FF98A2E81867DBE70032CC7A /* TTPanelController.m in Sources */,

@@ -10,6 +10,7 @@
 #import <IOKit/pwr_mgt/IOPMLib.h>
 #import "TTModeMac.h"
 #include <sys/sysctl.h>
+#include "TTModeMacDisplayBrightness.h"
 
 @implementation TTModeMac
 
@@ -52,7 +53,9 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
              @"TTModeMacTurnOffScreen",
              @"TTModeMacTurnOnScreen",
              @"TTModeMacToggleScreen",
-             @"TTModeMacVolumeMute"
+             @"TTModeMacVolumeMute",
+             @"TTModeMacBrightnessUp",
+             @"TTModeMacBrightnessDown",
              ];
 }
 
@@ -76,6 +79,12 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
 - (NSString *)titleTTModeMacToggleScreen {
     return @"Toggle screen";
 }
+- (NSString *)titleTTModeMacBrightnessUp {
+    return @"Brightness up";
+}
+- (NSString *)titleTTModeMacBrightnessDown {
+    return @"Brightness down";
+}
 
 #pragma mark - Action Images
 
@@ -96,6 +105,12 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
 }
 - (NSString *)imageTTModeMacToggleScreen {
     return @"hue_sleep.png";
+}
+- (NSString *)imageTTModeMacBrightnessUp {
+    return @"hue_brightness_up.png";
+}
+- (NSString *)imageTTModeMacBrightnessDown {
+    return @"hue_brightness_down.png";
 }
 
 #pragma mark - Action methods
@@ -141,6 +156,16 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
     } else {
         [self switchDisplay:NO];
     }
+}
+
+- (void)runTTModeMacBrightnessUp {
+    float brightness = getDisplayBrightness();
+    setDisplayBrightness(brightness + 0.05);
+}
+
+- (void)runTTModeMacBrightnessDown {
+    float brightness = getDisplayBrightness();
+    setDisplayBrightness(brightness - 0.05);
 }
 
 #pragma mark - Progress
