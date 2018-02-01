@@ -20,6 +20,8 @@ NSString *const kSingleLastSuccess = @"singleLastSuccess";
 NSString *const kDoubleLastSuccess = @"doubleLastSuccess";
 NSString *const kCustomFileUrl = @"customFileUrl";
 NSString *const kCustomScriptText = @"customScriptText";
+NSString *const kCustomSingleKey = @"singleCustomKey";
+NSString *const kCustomDoubleKey = @"doubleCustomKey";
 
 #pragma mark - Mode
 
@@ -41,6 +43,7 @@ NSString *const kCustomScriptText = @"customScriptText";
     return @[@"TTModeCustomURL",
              @"TTModeCustomFile",
              @"TTModeCustomScript",
+             @"TTModeCustomKeyboard",
              ];
 }
 
@@ -59,6 +62,9 @@ NSString *const kCustomScriptText = @"customScriptText";
 - (NSString *)titleTTModeCustomFile {
     return @"Execute file";
 }
+- (NSString *)titleTTModeCustomKeyboard {
+    return @"Press any key";
+}
 
 #pragma mark - Action Images
 
@@ -70,6 +76,9 @@ NSString *const kCustomScriptText = @"customScriptText";
 }
 - (NSString *)imageTTModeCustomFile {
     return @"script";
+}
+- (NSString *)imageTTModeCustomKeyboard {
+    return @"webhook";
 }
 
 #pragma mark - Defaults
@@ -84,7 +93,7 @@ NSString *const kCustomScriptText = @"customScriptText";
     return @"TTModeCustomFile";
 }
 - (NSString *)defaultSouth {
-    return @"TTModeCustomURL";
+    return @"TTModeCustomKeyboard";
 }
 
 #pragma mark - Mode specific
@@ -187,6 +196,28 @@ NSString *const kCustomScriptText = @"customScriptText";
             callback(responseString, success);
         }] resume];
     });
+}
+
+- (void)runTTModeCustomKeyboard:(TTModeDirection)direction {
+    NSString *key = [self.action optionValue:kCustomSingleKey];
+    
+    [self hitKey:key];
+}
+- (void)doubleRunTTModeCustomKeyboard:(TTModeDirection)direction {
+    NSString *key = [self.action optionValue:kCustomDoubleKey];
+
+    [self hitKey:key];
+}
+
+- (void)hitKey:(NSString *)key {
+    CGEventSourceRef sourceRef = CGEventSourceCreate(kCGEventSourceStateHIDSystemState);
+    CGEventRef downEvt = CGEventCreateKeyboardEvent( sourceRef, 0, true );
+    CGEventRef upEvt = CGEventCreateKeyboardEvent( sourceRef, 0, false );
+    UniChar oneChar = [key characterAtIndex:0];
+    CGEventKeyboardSetUnicodeString( downEvt, 1, &oneChar );
+    CGEventKeyboardSetUnicodeString( upEvt, 1, &oneChar );
+    CGEventPost( kCGHIDEventTap, downEvt );
+    CGEventPost( kCGHIDEventTap, upEvt );
 }
 
 @end

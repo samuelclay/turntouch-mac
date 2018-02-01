@@ -22,6 +22,9 @@ extern NSString *const kDoubleLastSuccess;
 extern NSString *const kCustomFileUrl;
 extern NSString *const kCustomScriptText;
 
+extern NSString *const kCustomSingleKey;
+extern NSString *const kCustomDoubleKey;
+
 - (void)runTTModeCustomURL:(TTModeDirection)direction;
 - (void)doubleRunTTModeCustomURL:(TTModeDirection)direction;
 - (void)runTTModeCustomScript:(TTModeDirection)direction;

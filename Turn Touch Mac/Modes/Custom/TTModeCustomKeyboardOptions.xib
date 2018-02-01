@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="TTModeCustomKeyboardOptions">
+            <connections>
+                <outlet property="doubleKey" destination="TBw-uW-95o" id="cSG-Rk-goI"/>
+                <outlet property="singleKey" destination="Qow-NR-Ile" id="gvd-1g-qrn"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="98"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qow-NR-Ile">
+                    <rect key="frame" x="428" y="57" width="32" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="32" id="mhA-Bw-P2Q"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="n" drawsBackground="YES" id="hWm-ST-6Jx">
+                        <font key="font" size="13" name="Effra-Regular"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <action selector="changeKey:" target="-2" id="nA1-kR-FI3"/>
+                    </connections>
+                </textField>
+                <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NvE-1N-D3f">
+                    <rect key="frame" x="67" y="59" width="343" height="19"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Keyboard shortcut" id="gyj-Or-RFz">
+                        <font key="font" size="13" name="Effra-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TBw-uW-95o">
+                    <rect key="frame" x="428" y="18" width="32" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="32" id="8Df-K6-UgP"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="N" drawsBackground="YES" id="kBl-wm-9eG">
+                        <font key="font" size="13" name="Effra-Regular"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <action selector="changeKey:" target="-2" id="QPH-us-Bfl"/>
+                    </connections>
+                </textField>
+                <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cen-4j-xry">
+                    <rect key="frame" x="67" y="20" width="343" height="19"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Keyboard shortcut" id="ekQ-MT-yKk">
+                        <font key="font" size="13" name="Effra-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="U7X-jD-jOs">
+                    <rect key="frame" x="20" y="57" width="29" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="29" id="9JO-lR-UTF"/>
+                        <constraint firstAttribute="height" constant="24" id="Iz2-LP-rY7"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="single_tap" id="y4k-ic-P1g"/>
+                </imageView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="x2T-T6-a7r">
+                    <rect key="frame" x="20" y="18" width="29" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="liG-LE-BI8"/>
+                        <constraint firstAttribute="width" constant="29" id="ow2-SQ-PYJ"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="double_tap" id="kwN-d8-uYP"/>
+                </imageView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="TBw-uW-95o" firstAttribute="leading" secondItem="cen-4j-xry" secondAttribute="trailing" constant="20" id="1au-Bc-g2s"/>
+                <constraint firstItem="U7X-jD-jOs" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="8iT-2W-xkv"/>
+                <constraint firstItem="NvE-1N-D3f" firstAttribute="leading" secondItem="U7X-jD-jOs" secondAttribute="trailing" constant="20" id="BPz-JN-1MM"/>
+                <constraint firstItem="NvE-1N-D3f" firstAttribute="centerY" secondItem="U7X-jD-jOs" secondAttribute="centerY" id="G9b-bm-oSr"/>
+                <constraint firstItem="cen-4j-xry" firstAttribute="centerY" secondItem="x2T-T6-a7r" secondAttribute="centerY" id="R77-qE-qCp"/>
+                <constraint firstAttribute="bottom" secondItem="cen-4j-xry" secondAttribute="bottom" constant="20" id="UWF-K3-uz3"/>
+                <constraint firstItem="x2T-T6-a7r" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="dFh-wW-1KR"/>
+                <constraint firstItem="Qow-NR-Ile" firstAttribute="centerY" secondItem="NvE-1N-D3f" secondAttribute="centerY" id="gqj-Fi-dtY"/>
+                <constraint firstItem="Qow-NR-Ile" firstAttribute="leading" secondItem="NvE-1N-D3f" secondAttribute="trailing" constant="20" id="hft-ln-9IB"/>
+                <constraint firstAttribute="trailing" secondItem="TBw-uW-95o" secondAttribute="trailing" constant="20" id="iqL-Ya-Fq3"/>
+                <constraint firstAttribute="trailing" secondItem="Qow-NR-Ile" secondAttribute="trailing" constant="20" id="kPF-gS-5Uf"/>
+                <constraint firstItem="cen-4j-xry" firstAttribute="top" secondItem="NvE-1N-D3f" secondAttribute="bottom" constant="20" id="qaq-cn-5cM"/>
+                <constraint firstItem="cen-4j-xry" firstAttribute="leading" secondItem="x2T-T6-a7r" secondAttribute="trailing" constant="20" id="rRI-b6-WsJ"/>
+                <constraint firstItem="TBw-uW-95o" firstAttribute="centerY" secondItem="cen-4j-xry" secondAttribute="centerY" id="sMy-wz-pqz"/>
+                <constraint firstItem="NvE-1N-D3f" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="z4g-18-0hD"/>
+            </constraints>
+            <point key="canvasLocation" x="132" y="188"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="double_tap" width="512" height="512"/>
+        <image name="single_tap" width="512" height="512"/>
+    </resources>
+</document>
