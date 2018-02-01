@@ -30,9 +30,21 @@
     return self;
 }
 
+- (BOOL)showActionHud {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    return [prefs boolForKey:@"TT:pref:show_action_hud"];
+}
+
+- (BOOL)showModeHud {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    return [prefs boolForKey:@"TT:pref:show_mode_hud"];
+}
+
 #pragma mark - Toasts
 
 - (void)toastActiveMode {
+    if (![self showModeHud]) return;
+    
     [modeHUDController fadeIn:YES];
     
     if (modeOperation) [modeOperation cancel];
@@ -43,9 +55,17 @@
 }
 
 - (void)holdToastActiveMode:(BOOL)animate {
+    if (![self showModeHud]) return;
+
     if (modeOperation) [modeOperation cancel];
 
     [modeHUDController fadeIn:animate];
+}
+
+- (void)activateHudMenu {
+    if (modeOperation) [modeOperation cancel];
+    
+    [modeHUDController fadeIn:YES];
 }
 
 - (void)releaseToastActiveMode {
@@ -53,6 +73,8 @@
 }
 
 - (void)teaseMode:(TTModeDirection)direction {
+    if (![self showModeHud]) return;
+
     [modeHUDController teaseMode:direction];
 }
 
@@ -61,6 +83,8 @@
 }
 
 - (void)toastActiveAction:(NSString *)actionName inDirection:(TTModeDirection)direction {
+    if (![self showActionHud]) return;
+
     TTMode *mode = NSAppDelegate.modeMap.selectedMode;
     ActionLayout layout = [mode layoutInDirection:direction];
     NSTimeInterval delay = layout == ACTION_LAYOUT_IMAGE_TITLE ? 2.5 : 0.9;
@@ -76,6 +100,8 @@
 }
 
 - (void)toastDoubleAction:(NSString *)actionName inDirection:(TTModeDirection)direction {
+    if (![self showActionHud]) return;
+
     TTMode *mode = NSAppDelegate.modeMap.selectedMode;
     ActionLayout layout = [mode layoutInDirection:direction];
     NSTimeInterval delay = layout == ACTION_LAYOUT_IMAGE_TITLE ? 2.5 : 1.25;
@@ -90,6 +116,8 @@
 }
 
 - (void)holdToastActiveAction:(NSString *)actionName inDirection:(TTModeDirection)direction {
+    if (![self showActionHud]) return;
+
     if (actionOperation) [actionOperation cancel];
     
     if (direction == NO_DIRECTION) {

@@ -14,7 +14,10 @@
 }
 
 @property (nonatomic) IBOutlet NSButton *checkboxRecordUsage;
+@property (nonatomic) IBOutlet NSButton *checkboxShowActionHud;
+@property (nonatomic) IBOutlet NSButton *checkboxShowModeHud;
 
 - (IBAction)closeModal:(id)sender;
 - (IBAction)changeForm:(id)sender;
+
 @end

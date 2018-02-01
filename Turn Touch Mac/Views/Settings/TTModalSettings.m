@@ -15,12 +15,16 @@
 @implementation TTModalSettings
 
 @synthesize checkboxRecordUsage;
+@synthesize checkboxShowActionHud;
+@synthesize checkboxShowModeHud;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     appDelegate = (TTAppDelegate *)[NSApp delegate];
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     
+    checkboxShowActionHud.state = [prefs boolForKey:@"TT:pref:show_action_hud"];
+    checkboxShowModeHud.state = [prefs boolForKey:@"TT:pref:show_mode_hud"];
     checkboxRecordUsage.state = [prefs boolForKey:@"TT:pref:share_usage_stats"];
 }
 
@@ -30,6 +34,10 @@
 
 - (void)changeForm:(id)sender {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    [prefs setObject:[NSNumber numberWithBool:checkboxShowActionHud.state]
+              forKey:@"TT:pref:show_action_hud"];
+    [prefs setObject:[NSNumber numberWithBool:checkboxShowModeHud.state]
+              forKey:@"TT:pref:show_mode_hud"];
     [prefs setObject:[NSNumber numberWithBool:checkboxRecordUsage.state]
               forKey:@"TT:pref:share_usage_stats"];
     [prefs synchronize];

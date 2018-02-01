@@ -112,7 +112,7 @@
                 holdToastStart = [NSDate date];
                 menuHysteresis = YES;
                 menuState = TTHUDMenuStateActive;
-                [appDelegate.hudController holdToastActiveMode:NO];
+                [appDelegate.hudController activateHudMenu];
             } else if (menuState == TTHUDMenuStateActive && !menuHysteresis) {
                 menuHysteresis = YES;
                 menuState = TTHUDMenuStateHidden;
