@@ -171,8 +171,33 @@
     return success;
 }
 
+- (void)setCustomTitle:(NSString *)title direction:(TTModeDirection)direction {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *modeDirectionName = [appDelegate.modeMap directionName:appDelegate.modeMap.selectedModeDirection];
+    NSString *actionDirectionName = [appDelegate.modeMap directionName:direction];
+    NSString *actionName = [self actionNameInDirection:direction];
+    NSString *prefKey = [NSString stringWithFormat:@"TT:%@-%@:action:%@-%@:customTitle",
+                         NSStringFromClass([self class]), modeDirectionName, actionName, actionDirectionName];
+    
+    if (title == nil) {
+        [prefs removeObjectForKey:prefKey];
+    } else {
+        [prefs setObject:title forKey:prefKey];
+    }
+    [prefs synchronize];
+}
+
 - (NSString *)titleInDirection:(TTModeDirection)direction buttonMoment:(TTButtonMoment)buttonMoment {
     NSString *actionName = [self actionNameInDirection:direction];
+    
+    // First check if given custom title
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *modeDirectionName = [appDelegate.modeMap directionName:appDelegate.modeMap.selectedModeDirection];
+    NSString *actionDirectionName = [appDelegate.modeMap directionName:direction];
+    NSString *prefKey = [NSString stringWithFormat:@"TT:%@-%@:action:%@-%@:customTitle",
+                         NSStringFromClass([self class]), modeDirectionName, actionName, actionDirectionName];
+    NSString *customTitle = [prefs stringForKey:prefKey];
+    if (customTitle != nil) return customTitle;
     
     return [self titleForAction:actionName buttonMoment:buttonMoment];
 }
@@ -198,6 +223,15 @@
 
 - (NSString *)actionTitleInDirection:(TTModeDirection)direction buttonMoment:(TTButtonMoment)buttonMoment {
     NSString *actionName = [self actionNameInDirection:direction];
+    
+    // First check if given custom title
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *modeDirectionName = [appDelegate.modeMap directionName:appDelegate.modeMap.selectedModeDirection];
+    NSString *actionDirectionName = [appDelegate.modeMap directionName:direction];
+    NSString *prefKey = [NSString stringWithFormat:@"TT:%@-%@:action:%@-%@:customTitle",
+                         NSStringFromClass([self class]), modeDirectionName, actionName, actionDirectionName];
+    NSString *customTitle = [prefs stringForKey:prefKey];
+    if (customTitle != nil) return customTitle;
     
     return [self actionTitleForAction:actionName buttonMoment:buttonMoment];
 }
