@@ -422,6 +422,16 @@
                            NSStringFromClass([mode class]),
                            directionName,
                            optionName];
+    
+    if (mode.action && mode.action.batchActionKey) {
+        NSString *modeDirectionName = [self directionName:mode.modeDirection];
+        NSString *actionDirectionName = [self directionName:mode.action.direction];
+        optionKey = [NSString stringWithFormat:@"TT:mode:%@:action:%@:batchactions:%@:modeoption:%@",
+                               modeDirectionName,
+                               actionDirectionName,
+                               mode.action.batchActionKey,
+                               optionName];
+    }
 
     id pref = [prefs objectForKey:optionKey];
 
@@ -552,6 +562,16 @@ actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction 
                            directionName,
                            optionName];
     
+    if (mode.action && mode.action.batchActionKey) {
+        NSString *modeDirectionName = [self directionName:mode.modeDirection];
+        NSString *actionDirectionName = [self directionName:mode.action.direction];
+        optionKey = [NSString stringWithFormat:@"TT:mode:%@:action:%@:batchactions:%@:modeoption:%@",
+                     modeDirectionName,
+                     actionDirectionName,
+                     mode.action.batchActionKey,
+                     optionName];
+    }
+
     NSLog(@" -> Setting mode option %@ to: %@", optionKey, optionValue);
     [prefs setObject:optionValue forKey:optionKey];
     [prefs synchronize];

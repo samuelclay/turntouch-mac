@@ -342,6 +342,7 @@
 		FF98A2ED1867DC320032CC7A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98A2E91867DC320032CC7A /* main.m */; };
 		FF98A2EF1867DC320032CC7A /* Turn Touch Mac.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = FF98A2EC1867DC320032CC7A /* Turn Touch Mac.entitlements */; };
 		FF99398F1EFB4457005F0281 /* TTModeWemoSwitchDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = FF99398D1EFB4457005F0281 /* TTModeWemoSwitchDevice.m */; };
+		FF9D5E13202D3B1500009A8F /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = FF9D5E12202D3B1500009A8F /* pencil.png */; };
 		FFA1D4CB1A3B8916003EA0BC /* TTActionHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA1D4C31A3B8916003EA0BC /* TTActionHUDView.m */; };
 		FFA1D4CC1A3B8916003EA0BC /* TTActionHUDView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFA1D4C41A3B8916003EA0BC /* TTActionHUDView.xib */; };
 		FFA1D4CD1A3B8916003EA0BC /* TTActionHUDWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA1D4C61A3B8916003EA0BC /* TTActionHUDWindow.m */; };
@@ -992,6 +993,7 @@
 		FF98A30E1868F1190032CC7A /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		FF99398C1EFB4457005F0281 /* TTModeWemoSwitchDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeWemoSwitchDevice.h; path = Modes/Wemo/TTModeWemoSwitchDevice.h; sourceTree = "<group>"; };
 		FF99398D1EFB4457005F0281 /* TTModeWemoSwitchDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeWemoSwitchDevice.m; path = Modes/Wemo/TTModeWemoSwitchDevice.m; sourceTree = "<group>"; };
+		FF9D5E12202D3B1500009A8F /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pencil.png; sourceTree = "<group>"; };
 		FFA1D4C21A3B8916003EA0BC /* TTActionHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TTActionHUDView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		FFA1D4C31A3B8916003EA0BC /* TTActionHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTActionHUDView.m; sourceTree = "<group>"; };
 		FFA1D4C41A3B8916003EA0BC /* TTActionHUDView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTActionHUDView.xib; sourceTree = "<group>"; };
@@ -1264,6 +1266,7 @@
 				FF01CA4E1C46DCC200F83A73 /* mode_web.png */,
 				FF01CA4F1C46DCC200F83A73 /* mode_wemo.png */,
 				FF01CA501C46DCC200F83A73 /* newspaper-3.png */,
+				FF9D5E12202D3B1500009A8F /* pencil.png */,
 				FF01CA511C46DCC200F83A73 /* presentation-chart.png */,
 				FF254F681D1B6A9800E96378 /* refresh.png */,
 				FF01CA521C46DCC200F83A73 /* remote_graphic.png */,
@@ -2620,6 +2623,7 @@
 				FF27054B1C93A348000BB10F /* modal_remote_hero.png in Resources */,
 				FFB08E441D63EAB70040A531 /* TTModeNews.plist in Resources */,
 				FF80132B186CF92000955218 /* TTPanel.xib in Resources */,
+				FF9D5E13202D3B1500009A8F /* pencil.png in Resources */,
 				FF8A73C61ABA69410023AA53 /* logo - 1024.png in Resources */,
 				FF27054C1C93A348000BB10F /* modal_remote_paired.png in Resources */,
 				FF01CA841C46DCC200F83A73 /* television.png in Resources */,
