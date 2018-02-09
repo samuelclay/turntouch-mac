@@ -87,11 +87,12 @@
                                                          attribute:NSLayoutAttributeTrailing multiplier:1.0f constant:12.0f]];
         titleWidthConstraint = [NSLayoutConstraint constraintWithItem:titleLabel attribute:NSLayoutAttributeWidth
                                                             relatedBy:NSLayoutRelationEqual toItem:nil
-                                                            attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:120];
-        
+                                                            attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:0];
+        [self addConstraint:titleWidthConstraint];
+
         renameButton = [[NSButton alloc] init];
         renameButton.translatesAutoresizingMaskIntoConstraints = NO;
-        [renameButton setHidden:NO];
+        [renameButton setHidden:YES];
         [renameButton setImage:[NSImage imageNamed:@"pencil"]];
         [renameButton setImageScaling:NSImageScaleProportionallyDown];
         [renameButton setBordered:NO];
@@ -148,14 +149,15 @@
     
     NSString *actionTitle = [appDelegate.modeMap.selectedMode titleInDirection:labelDirection buttonMoment:BUTTON_MOMENT_PRESSUP];
     titleLabel.stringValue = actionTitle;
-    
+    titleWidthConstraint.constant = [titleLabel intrinsicContentSize].width;
+    [renameButton setHidden:NO];
+
     if (appDelegate.modeMap.openedActionChangeMenu) {
         [self setChangeButtonTitle:@"Done"];
         [renameButton setHidden:NO];
     } else {
         [self setChangeButtonTitle:@"Change"];
         [renameButton setHidden:NO];
-        [self removeConstraint:titleWidthConstraint];
     }
 }
 
@@ -202,8 +204,8 @@
         NSString *actionTitle = [appDelegate.modeMap.selectedMode titleInDirection:labelDirection buttonMoment:BUTTON_MOMENT_PRESSUP];
         titleLabel.stringValue = actionTitle;
         [titleLabel selectText:actionTitle];
+        titleWidthConstraint.constant = 100;
 
-        [self addConstraint:titleWidthConstraint];
         editingTitle = YES;
     }
 }
@@ -211,23 +213,27 @@
 - (void)disableCustomTitleEditor {
     [renameButton setImage:[NSImage imageNamed:@"pencil"]];
     
-    [self removeConstraint:titleWidthConstraint];
-    
     [[titleLabel currentEditor] setSelectedRange:NSMakeRange(0, 0)];
     [[titleLabel currentEditor] setSelectable:NO];
     [titleLabel setEditable:NO];
     
-    [titleLabel sizeToFit];
+    titleWidthConstraint.constant = [titleLabel intrinsicContentSize].width;
     
     editingTitle = NO;
     
     [appDelegate.panelController.backgroundView.diamondLabels setNeedsDisplay:YES];
+    
+    [self setNeedsDisplay:YES];
 }
 
 - (void)renameTitle:(id)sender {
     [appDelegate.modeMap.selectedMode setCustomTitle:titleLabel.stringValue
                                            direction:appDelegate.modeMap.inspectingModeDirection];
     
+    [self disableCustomTitleEditor];
+}
+
+- (void)cancelOperation:(id)sender {
     [self disableCustomTitleEditor];
 }
 

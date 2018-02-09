@@ -171,7 +171,7 @@
 }
 
 - (BOOL)closePanel {
-        return NO; // Enable this line to never close app. Useful for debugging
+//        return NO; // Enable this line to never close app. Useful for debugging
 
     if (self.backgroundView.panelModal != PANEL_MODAL_APP) {
         // Don't close the window when not on main app unless clicking on status icon
