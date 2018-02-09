@@ -10,7 +10,7 @@
 		</data>
 		<key>Resources/Assets.car</key>
 		<data>
-		SAWqHg+Bt5jVDZLt4oZR32xsEug=
+		Rv5kWmtMOc5ptCxv9CMMFkDUJX0=
 		</data>
 		<key>Resources/Effra_Rg.ttf</key>
 		<data>
@@ -330,7 +330,7 @@
 		</data>
 		<key>Resources/TTModalSettings.nib</key>
 		<data>
-		8QiuhQN+kPwnmb0T98JSHqIfn34=
+		yK6hm7SXjLE0LWjtk54wqOmsap0=
 		</data>
 		<key>Resources/TTModalSupportView.nib</key>
 		<data>
@@ -348,9 +348,17 @@
 		<data>
 		kAggZZKCcYNx3JIkjl90GRMGCW4=
 		</data>
+		<key>Resources/TTModeCustom.plist</key>
+		<data>
+		+FHvRYRFyY2FWa59w5vgJq7A6os=
+		</data>
 		<key>Resources/TTModeCustomFileOptions.nib</key>
 		<data>
 		hR9o5xdWVFiqrwIjswLul1HUt9s=
+		</data>
+		<key>Resources/TTModeCustomKeyboardOptions.nib</key>
+		<data>
+		zaXivcr4yCzLuC/AsOP4fS/jSQs=
 		</data>
 		<key>Resources/TTModeCustomScriptOptions.nib</key>
 		<data>
@@ -370,7 +378,7 @@
 		</data>
 		<key>Resources/TTModeHueBridge.nib</key>
 		<data>
-		LxtjDSg4d8jRznqNpVvITERQB3U=
+		Xok85E5dnrfBAbGovjo+RgV8EAk=
 		</data>
 		<key>Resources/TTModeHueConnect.nib</key>
 		<data>
@@ -610,7 +618,7 @@
 		</data>
 		<key>Resources/defaults.plist</key>
 		<data>
-		O4q0qhKi32jQcjw/2voGrIoZwc4=
+		DdvQVo0sNt1ukRs4VEmwk3pRw0k=
 		</data>
 		<key>Resources/double_tap.png</key>
 		<data>
@@ -1035,6 +1043,10 @@
 		<data>
 		qxb4RGF8T1l4QFIXrvqlcuQBXXU=
 		</data>
+		<key>Resources/pencil.png</key>
+		<data>
+		WsfQHR1K2j09T3vDJ+QthRRjyhA=
+		</data>
 		<key>Resources/presentation-chart.png</key>
 		<data>
 		nhOe//O9E/bQjHH4DZchJCkVtzQ=
@@ -1166,7 +1178,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			wXayKhfaYvxEgthqQaomddkn5EI=
+			A4Enhs4H3L7o3pmjA1KDzwdyNhk=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.cocoapods.AFNetworking" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -1175,7 +1187,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			ggWiuIDtsMlfZUKOuJdZ19uFQoI=
+			cnkyhVETabkLr/0T3rChv4bO2CY=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "com.philips.hue.HueSDK-OSX" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -1184,7 +1196,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			gcesx+53fzjRgjYQxG33ofD+4bA=
+			PmVc4aB6P2G1ugPTQOaKtJ8Dp0k=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.sparkle-project.Sparkle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -1204,11 +1216,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			SAWqHg+Bt5jVDZLt4oZR32xsEug=
+			Rv5kWmtMOc5ptCxv9CMMFkDUJX0=
 			</data>
 			<key>hash2</key>
 			<data>
-			jnedchDyD2nzRuZZf1v49f7WfG7FCM5dVj51HKh1lZw=
+			5p8eupX/MAgR+XlZC5nnyRuO5UI9XnWApbJDXQkc1ws=
 			</data>
 		</dict>
 		<key>Resources/Effra_Rg.ttf</key>
@@ -1708,11 +1720,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			8QiuhQN+kPwnmb0T98JSHqIfn34=
+			yK6hm7SXjLE0LWjtk54wqOmsap0=
 			</data>
 			<key>hash2</key>
 			<data>
-			QQRLkAF3JGMB+bVgeceXmzLTyKkKNkCchBHGCA2dZ0U=
+			bBDoAiWgIfovEbKDnI0PlWxZ5RnpXMw8XNShHtMto3I=
 			</data>
 		</dict>
 		<key>Resources/TTModalSupportView.nib</key>
@@ -1759,6 +1771,17 @@
 			CBgsQBI9/w8mVgS5v4vrpJaiiaUjYcETesL9fTX3qJs=
 			</data>
 		</dict>
+		<key>Resources/TTModeCustom.plist</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			+FHvRYRFyY2FWa59w5vgJq7A6os=
+			</data>
+			<key>hash2</key>
+			<data>
+			aWVC7vFaf9k+Qi/huzsufE91xHLoj+tyeWbjIUdtRDw=
+			</data>
+		</dict>
 		<key>Resources/TTModeCustomFileOptions.nib</key>
 		<dict>
 			<key>hash</key>
@@ -1768,6 +1791,17 @@
 			<key>hash2</key>
 			<data>
 			gSDewbRNWkODBe22J8ANXvhtgzXbXDHmn/W6bwEHnOk=
+			</data>
+		</dict>
+		<key>Resources/TTModeCustomKeyboardOptions.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			zaXivcr4yCzLuC/AsOP4fS/jSQs=
+			</data>
+			<key>hash2</key>
+			<data>
+			ze8ch6zUfkjpl80y+8+BhbpIn7y08KIiAEhJxjjuzeA=
 			</data>
 		</dict>
 		<key>Resources/TTModeCustomScriptOptions.nib</key>
@@ -1818,11 +1852,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			LxtjDSg4d8jRznqNpVvITERQB3U=
+			Xok85E5dnrfBAbGovjo+RgV8EAk=
 			</data>
 			<key>hash2</key>
 			<data>
-			6PLSxNplDgZ7b5vYU4tXux68SdSXukf5bAiVAwX9YYU=
+			83c1GJghVQMLwNVXP4UJDejGmR2K2UR8jJRoFKJWctk=
 			</data>
 		</dict>
 		<key>Resources/TTModeHueConnect.nib</key>
@@ -2478,11 +2512,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			O4q0qhKi32jQcjw/2voGrIoZwc4=
+			DdvQVo0sNt1ukRs4VEmwk3pRw0k=
 			</data>
 			<key>hash2</key>
 			<data>
-			POz0yyDasFtiHrogkcylgXrXqMwbRa165XvnDv+0XV4=
+			5uvyfLw+6iLYFizzzx8g8hFMlmPtnZuiyMkIzuD8oOU=
 			</data>
 		</dict>
 		<key>Resources/double_tap.png</key>
@@ -3611,6 +3645,17 @@
 			<key>hash2</key>
 			<data>
 			kgA/6h8Pyd8Y6kLN9FfCL4pyCDKYTEFjBxhDedCsV+o=
+			</data>
+		</dict>
+		<key>Resources/pencil.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			WsfQHR1K2j09T3vDJ+QthRRjyhA=
+			</data>
+			<key>hash2</key>
+			<data>
+			WevV6ztVzNC7zt1AAdxeWJlRh8xH+YVuPJhRBR9dSPY=
 			</data>
 		</dict>
 		<key>Resources/presentation-chart.png</key>

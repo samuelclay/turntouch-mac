@@ -150,14 +150,13 @@
     NSString *actionTitle = [appDelegate.modeMap.selectedMode titleInDirection:labelDirection buttonMoment:BUTTON_MOMENT_PRESSUP];
     titleLabel.stringValue = actionTitle;
     titleWidthConstraint.constant = [titleLabel intrinsicContentSize].width;
-    [renameButton setHidden:NO];
 
     if (appDelegate.modeMap.openedActionChangeMenu) {
         [self setChangeButtonTitle:@"Done"];
         [renameButton setHidden:NO];
     } else {
         [self setChangeButtonTitle:@"Change"];
-        [renameButton setHidden:NO];
+        [renameButton setHidden:YES];
     }
 }
 
@@ -212,7 +211,8 @@
 
 - (void)disableCustomTitleEditor {
     [renameButton setImage:[NSImage imageNamed:@"pencil"]];
-    
+    [renameButton setHidden:YES];
+
     [[titleLabel currentEditor] setSelectedRange:NSMakeRange(0, 0)];
     [[titleLabel currentEditor] setSelectable:NO];
     [titleLabel setEditable:NO];
