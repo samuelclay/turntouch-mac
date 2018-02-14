@@ -778,6 +778,10 @@ actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction 
     [self recordUsage:@{@"button_actions": presses}];
 }
 
+- (void)recordUsageMoment:(NSString *)moment {
+    [self recordUsage:@{@"moment": moment}];
+}
+
 - (void)recordUsage:(NSDictionary *)additionalParams {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     if (![prefs boolForKey:@"TT:pref:share_usage_stats"]) {

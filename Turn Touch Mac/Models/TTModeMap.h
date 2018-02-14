@@ -78,6 +78,7 @@ actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction;
 - (void)toggleInspectingModeDirection:(TTModeDirection)direction;
 - (void)toggleHoverModeDirection:(TTModeDirection)direction hovering:(BOOL)hovering;
 
+- (void)recordUsageMoment:(NSString *)moment;
 - (void)recordUsage:(NSDictionary *)additionalParams;
 - (NSDictionary *)deviceAttrs;
 - (NSString *)userId;

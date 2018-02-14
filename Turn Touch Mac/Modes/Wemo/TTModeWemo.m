@@ -310,14 +310,6 @@ static NSMutableArray *recentlyFoundDevices;
     
     [self storeFoundDevices];
     
-    for (TTModeWemoDevice *failedDevice in failedDevices) {
-        for (TTModeWemoDevice *device in foundDevices) {
-            if ([failedDevice isSameDeviceDifferentLocation:device]) {
-                [self removeFailedDevice:failedDevice];
-            }
-        }
-    }
-    
     wemoState = WEMO_STATE_CONNECTED;
     [self.delegate changeState:wemoState withMode:self];
 }
@@ -343,6 +335,13 @@ static NSMutableArray *recentlyFoundDevices;
             continue;
         }
         
+        for (TTModeWemoDevice *failedDevice in failedDevices) {
+            if ([failedDevice isSameDeviceDifferentLocation:device]) {
+                [failedDevices removeObject:device];
+                break;
+            }
+        }
+        
         [devices addObject:@{@"ipaddress": device.ipAddress,
                              @"port": [NSNumber numberWithInteger:device.port],
                              @"name": device.deviceName,
@@ -350,32 +349,20 @@ static NSMutableArray *recentlyFoundDevices;
                              @"macAddress": device.macAddress,
                              }];
     }
+    
     [prefs setObject:devices forKey:kWemoFoundDevices];
     [prefs synchronize];
 }
 
-- (void)removeFailedDevice:(TTModeWemoDevice *)failedDevice {
-    [failedDevices removeObject:failedDevice];
-    
-    NSMutableArray *devices = [NSMutableArray array];
-    for (TTModeWemoDevice *device in foundDevices) {
-        if (![device isEqualToDevice:failedDevice]) {
-            [devices addObject:device];
-        }
-    }
-
-    TTModeWemo.foundDevices = devices;
-    
-    [self storeFoundDevices];
-}
-
 - (void)deviceFailed:(TTModeWemoDevice *)device {
     NSLog(@" ---> Wemo device %@ failed, searching for changed IP...", device);
+    
     if ([failedDevices containsObject:device]) {
         NSLog(@" ---> Wemo device %@ already failed and searching, ignoring.", device);
         return;
     }
-    
+
+    [appDelegate.modeMap recordUsageMoment:@"wemoDeviceFailed"];
     [failedDevices addObject:device];
     [self refreshDevices];
 }

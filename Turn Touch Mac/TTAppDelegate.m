@@ -67,7 +67,7 @@ void *kContextActivePanel = &kContextActivePanel;
             [self.panelController openModal:MODAL_PAIRING_INTRO];
         }
         
-        [self.modeMap recordUsage:@{@"moment": @"launch"}];
+        [self.modeMap recordUsageMoment:@"launch"];
     });
     
     // Useful for debugging:
