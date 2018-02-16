@@ -12,6 +12,10 @@
 #import "iTunes.h"
 
 extern NSString *const kMusicVolumeJump;
+extern NSString *const kMusicPlaylistSingle;
+extern NSString *const kMusicPlaylistShuffleSingle;
+extern NSString *const kMusicPlaylistDouble;
+extern NSString *const kMusicPlaylistShuffleDouble;
 
 @interface TTModeMusic : TTMode {
     NSInteger originalVolume;
@@ -20,5 +24,6 @@ extern NSString *const kMusicVolumeJump;
 }
 
 + (NSView *)songInfoView:(NSRect)rect withTrack:(iTunesTrack *)currentTrack;
++ (SBElementArray *)userPlaylists;
 
 @end

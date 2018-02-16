@@ -169,9 +169,9 @@ NSString *const kPresentationPlayStartFirstSlide = @"TT:Presentation:playStartFi
         PowerpointApplication *powerpoint = [SBApplication applicationWithBundleIdentifier:@"com.microsoft.Powerpoint"];
         [powerpoint activate];
         
-        for (PowerpointSlideShowWindow *slideshow in [powerpoint slideShowWindows]) {
+//        for (PowerpointSlideShowWindow *slideshow in [powerpoint slideShowWindows]) {
 //            [slideshow slideshowView]
-        }
+//        }
     }
 }
 

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="TTModeMusicPlaylistOptions">
+            <connections>
+                <outlet property="doubleCheckboxShuffle" destination="n5g-uk-6wv" id="dJS-ft-VfD"/>
+                <outlet property="doubleDropdowniTunesSources" destination="1CS-sH-yEP" id="CNv-lA-yna"/>
+                <outlet property="doubleTextTracksCount" destination="1pY-DI-tqC" id="jbj-bF-Jes"/>
+                <outlet property="singleCheckboxShuffle" destination="LFx-zu-fGh" id="h5P-Uk-Fee"/>
+                <outlet property="singleDropdowniTunesSources" destination="MmL-EX-8P8" id="Zc3-cg-heO"/>
+                <outlet property="singleTextTracksCount" destination="Xjx-N0-aRW" id="GwI-SQ-x8j"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="164"/>
+            <subviews>
+                <popUpButton horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="MmL-EX-8P8">
+                    <rect key="frame" x="127" y="120" width="336" height="26"/>
+                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" imagePosition="left" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" preferredEdge="maxY" id="x3G-Hh-VJO">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" id="7Qk-Ku-VNW"/>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="changeiTunesSource:" target="-2" id="Vdy-Ho-obc"/>
+                    </connections>
+                </popUpButton>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="h2X-lU-zJe">
+                    <rect key="frame" x="67" y="124" width="44" height="19"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Source" id="uOr-22-r5K">
+                        <font key="font" size="13" name="Effra-Regular"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button hidden="YES" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="LFx-zu-fGh">
+                    <rect key="frame" x="127" y="90" width="65" height="23"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="61" id="iHM-V7-yL0"/>
+                    </constraints>
+                    <buttonCell key="cell" type="check" title="Shuffle" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="7jy-f5-biK">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" size="13" name="Effra-Regular"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="changeShuffle:" target="-2" id="ytD-ph-qc4"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Xjx-N0-aRW">
+                    <rect key="frame" x="352" y="92" width="110" height="19"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="106" id="str-oT-DQ2"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="0 tracks" id="uMK-Uh-2g1">
+                        <font key="font" size="13" name="Effra-Regular"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <popUpButton horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="1CS-sH-yEP">
+                    <rect key="frame" x="127" y="48" width="336" height="26"/>
+                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" imagePosition="left" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" preferredEdge="maxY" id="gX4-pa-NIt">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" id="jhs-GH-ibb"/>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="changeiTunesSource:" target="-2" id="u13-xo-niz"/>
+                    </connections>
+                </popUpButton>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="4px-Pj-msW">
+                    <rect key="frame" x="67" y="52" width="44" height="19"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Source" id="h4I-h4-tKy">
+                        <font key="font" size="13" name="Effra-Regular"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button hidden="YES" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="n5g-uk-6wv">
+                    <rect key="frame" x="127" y="18" width="65" height="23"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="61" id="uky-EW-3uQ"/>
+                    </constraints>
+                    <buttonCell key="cell" type="check" title="Shuffle" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ZSC-Q1-3hf">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" size="13" name="Effra-Regular"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="changeShuffle:" target="-2" id="d4T-0P-eqa"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="1pY-DI-tqC">
+                    <rect key="frame" x="352" y="20" width="110" height="19"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="106" id="CTx-ZF-l2L"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="0 tracks" id="kwI-VL-IaG">
+                        <font key="font" size="13" name="Effra-Regular"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="MhT-16-X82">
+                    <rect key="frame" x="20" y="122" width="29" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="29" id="UFy-mp-4Ca"/>
+                        <constraint firstAttribute="height" constant="24" id="vj1-jv-gDU"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="single_tap" id="5tk-fo-612"/>
+                </imageView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="6lU-np-4db">
+                    <rect key="frame" x="20" y="50" width="29" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="29" id="r2e-6o-HTn"/>
+                        <constraint firstAttribute="height" constant="24" id="xLU-7K-bZ3"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="double_tap" id="Ad6-9y-Ixo"/>
+                </imageView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="MhT-16-X82" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="1m0-EM-zcl"/>
+                <constraint firstItem="1CS-sH-yEP" firstAttribute="leading" secondItem="4px-Pj-msW" secondAttribute="trailing" constant="20" id="4Z5-cX-lia"/>
+                <constraint firstItem="Xjx-N0-aRW" firstAttribute="top" secondItem="MmL-EX-8P8" secondAttribute="bottom" constant="12" id="4rv-4z-AgZ"/>
+                <constraint firstItem="1CS-sH-yEP" firstAttribute="centerY" secondItem="4px-Pj-msW" secondAttribute="centerY" id="7Kp-jq-Nlt"/>
+                <constraint firstItem="1pY-DI-tqC" firstAttribute="centerY" secondItem="n5g-uk-6wv" secondAttribute="centerY" id="7nb-aO-9uu"/>
+                <constraint firstItem="6lU-np-4db" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="A8Z-7X-Ut4"/>
+                <constraint firstItem="1pY-DI-tqC" firstAttribute="top" secondItem="1CS-sH-yEP" secondAttribute="bottom" constant="12" id="B2k-6j-2vt"/>
+                <constraint firstItem="Xjx-N0-aRW" firstAttribute="bottom" secondItem="LFx-zu-fGh" secondAttribute="bottom" id="CLf-9G-2Q0"/>
+                <constraint firstItem="1pY-DI-tqC" firstAttribute="bottom" secondItem="n5g-uk-6wv" secondAttribute="bottom" id="Fzu-aT-BNr"/>
+                <constraint firstItem="MmL-EX-8P8" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="IWE-To-aK4"/>
+                <constraint firstItem="Xjx-N0-aRW" firstAttribute="centerY" secondItem="LFx-zu-fGh" secondAttribute="centerY" id="Kgg-9r-EwB"/>
+                <constraint firstItem="1pY-DI-tqC" firstAttribute="trailing" secondItem="1CS-sH-yEP" secondAttribute="trailing" id="Lfm-T5-4Ga"/>
+                <constraint firstItem="4px-Pj-msW" firstAttribute="centerY" secondItem="6lU-np-4db" secondAttribute="centerY" id="T2O-6k-1Ne"/>
+                <constraint firstItem="1CS-sH-yEP" firstAttribute="top" secondItem="Xjx-N0-aRW" secondAttribute="bottom" constant="20" id="UKE-lN-atp"/>
+                <constraint firstAttribute="bottom" secondItem="1pY-DI-tqC" secondAttribute="bottom" constant="20" id="dQO-nu-wvG"/>
+                <constraint firstItem="MmL-EX-8P8" firstAttribute="leading" secondItem="h2X-lU-zJe" secondAttribute="trailing" constant="20" id="esD-0y-0WR"/>
+                <constraint firstAttribute="trailing" secondItem="MmL-EX-8P8" secondAttribute="trailing" constant="20" id="kJ8-p9-XuB"/>
+                <constraint firstItem="MmL-EX-8P8" firstAttribute="leading" secondItem="LFx-zu-fGh" secondAttribute="leading" id="lIa-t9-jO0"/>
+                <constraint firstItem="MmL-EX-8P8" firstAttribute="centerY" secondItem="h2X-lU-zJe" secondAttribute="centerY" id="n5W-oe-W0x"/>
+                <constraint firstItem="1CS-sH-yEP" firstAttribute="leading" secondItem="n5g-uk-6wv" secondAttribute="leading" id="qC4-xm-wS4"/>
+                <constraint firstItem="1CS-sH-yEP" firstAttribute="trailing" secondItem="MmL-EX-8P8" secondAttribute="trailing" id="qkB-NM-Vi6"/>
+                <constraint firstItem="4px-Pj-msW" firstAttribute="leading" secondItem="6lU-np-4db" secondAttribute="trailing" constant="20" id="ta1-hw-SL5"/>
+                <constraint firstItem="h2X-lU-zJe" firstAttribute="centerY" secondItem="MhT-16-X82" secondAttribute="centerY" id="vLo-rT-3aj"/>
+                <constraint firstItem="h2X-lU-zJe" firstAttribute="leading" secondItem="MhT-16-X82" secondAttribute="trailing" constant="20" id="y8Z-cT-qnn"/>
+                <constraint firstItem="Xjx-N0-aRW" firstAttribute="trailing" secondItem="MmL-EX-8P8" secondAttribute="trailing" id="zGg-Cp-naY"/>
+            </constraints>
+            <point key="canvasLocation" x="131" y="236"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="double_tap" width="512" height="512"/>
+        <image name="single_tap" width="512" height="512"/>
+    </resources>
+</document>

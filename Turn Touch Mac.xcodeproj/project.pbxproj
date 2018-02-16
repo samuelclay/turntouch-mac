@@ -188,6 +188,8 @@
 		FF557AEC1C4F2626005FB7FD /* TTModeNest.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF557AEB1C4F2626005FB7FD /* TTModeNest.plist */; };
 		FF557AEE1C4F393C005FB7FD /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF557AED1C4F393C005FB7FD /* Firebase.framework */; };
 		FF58717B1BDC83AB00CDCC1C /* TTProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = FF58717A1BDC83AB00CDCC1C /* TTProgressBar.m */; };
+		FF58FC46203766ED005F547B /* TTModeMusicPlaylistOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF58FC44203766ED005F547B /* TTModeMusicPlaylistOptions.m */; };
+		FF58FC47203766ED005F547B /* TTModeMusicPlaylistOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF58FC45203766ED005F547B /* TTModeMusicPlaylistOptions.xib */; };
 		FF6135351C5AF59D00F431D7 /* TTHUDMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6135341C5AF59D00F431D7 /* TTHUDMenuView.m */; };
 		FF61353D1C61C09100F431D7 /* TTHUDBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF61353C1C61C09100F431D7 /* TTHUDBackgroundView.m */; };
 		FF6135511C61CDDC00F431D7 /* alarm_snooze.png in Resources */ = {isa = PBXBuildFile; fileRef = FF61353F1C61CDDC00F431D7 /* alarm_snooze.png */; };
@@ -749,6 +751,9 @@
 		FF557AED1C4F393C005FB7FD /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
 		FF5871791BDC83AB00CDCC1C /* TTProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTProgressBar.h; sourceTree = "<group>"; };
 		FF58717A1BDC83AB00CDCC1C /* TTProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTProgressBar.m; sourceTree = "<group>"; };
+		FF58FC43203766ED005F547B /* TTModeMusicPlaylistOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TTModeMusicPlaylistOptions.h; path = Modes/Music/TTModeMusicPlaylistOptions.h; sourceTree = "<group>"; };
+		FF58FC44203766ED005F547B /* TTModeMusicPlaylistOptions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TTModeMusicPlaylistOptions.m; path = Modes/Music/TTModeMusicPlaylistOptions.m; sourceTree = "<group>"; };
+		FF58FC45203766ED005F547B /* TTModeMusicPlaylistOptions.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TTModeMusicPlaylistOptions.xib; path = Modes/Music/TTModeMusicPlaylistOptions.xib; sourceTree = "<group>"; };
 		FF6135331C5AF59D00F431D7 /* TTHUDMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTHUDMenuView.h; sourceTree = "<group>"; };
 		FF6135341C5AF59D00F431D7 /* TTHUDMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTHUDMenuView.m; sourceTree = "<group>"; };
 		FF61353B1C61C09100F431D7 /* TTHUDBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTHUDBackgroundView.h; sourceTree = "<group>"; };
@@ -1368,6 +1373,9 @@
 				FF8528F91A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.h */,
 				FF8528FA1A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.m */,
 				FF8528F71A96B58700B289FD /* TTModeMusicVolumeJumpOptions.xib */,
+				FF58FC43203766ED005F547B /* TTModeMusicPlaylistOptions.h */,
+				FF58FC44203766ED005F547B /* TTModeMusicPlaylistOptions.m */,
+				FF58FC45203766ED005F547B /* TTModeMusicPlaylistOptions.xib */,
 			);
 			name = Music;
 			sourceTree = "<group>";
@@ -2597,6 +2605,7 @@
 				FF27054A1C93A348000BB10F /* modal_remote_failed.png in Resources */,
 				FF27407B1A7C5BC200C55579 /* itunes_tv_icon.png in Resources */,
 				FF01CA791C46DCC200F83A73 /* mode_timer.png in Resources */,
+				FF58FC47203766ED005F547B /* TTModeMusicPlaylistOptions.xib in Resources */,
 				FF93604C196DF0B600675B7B /* Effra_Rg.ttf in Resources */,
 				FF557ADB1C4ED8A0005FB7FD /* TTModeNestConnect.xib in Resources */,
 				FF8528F81A96B58700B289FD /* TTModeMusicVolumeJumpOptions.xib in Resources */,
@@ -3037,6 +3046,7 @@
 				FF79C5881D5815C0006C75C9 /* TTModeNewsBackgroundView.m in Sources */,
 				FF904B961BE9BA3700AD00F3 /* ioapi.c in Sources */,
 				FF2C2E631C546D6E00FAD7E2 /* TTModeWemoConnect.m in Sources */,
+				FF58FC46203766ED005F547B /* TTModeMusicPlaylistOptions.m in Sources */,
 				FF2C2E651C546D6E00FAD7E2 /* TTModeWemoConnected.m in Sources */,
 				FF27053A1C926D21000BB10F /* TTModalPairingInfo.m in Sources */,
 				FF904B971BE9BA3700AD00F3 /* mztools.c in Sources */,

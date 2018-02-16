@@ -86,6 +86,7 @@
     if (![self showActionHud]) return;
 
     TTMode *mode = NSAppDelegate.modeMap.selectedMode;
+    mode.action = [[TTAction alloc] initWithActionName:[mode actionNameInDirection:direction] direction:direction];
     ActionLayout layout = [mode layoutInDirection:direction];
     NSTimeInterval delay = layout == ACTION_LAYOUT_IMAGE_TITLE ? 2.5 : 0.9;
     if (!actionName) actionName = [mode actionNameInDirection:direction];
@@ -103,6 +104,7 @@
     if (![self showActionHud]) return;
 
     TTMode *mode = NSAppDelegate.modeMap.selectedMode;
+    mode.action = [[TTAction alloc] initWithActionName:[mode actionNameInDirection:direction] direction:direction];
     ActionLayout layout = [mode layoutInDirection:direction];
     NSTimeInterval delay = layout == ACTION_LAYOUT_IMAGE_TITLE ? 2.5 : 1.25;
     

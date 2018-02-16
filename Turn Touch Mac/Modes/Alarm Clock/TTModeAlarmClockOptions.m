@@ -80,8 +80,7 @@ NSUInteger const kOnetimeHeight = 68;
     // Set music/sounds options
     [sliderAlarmVolume setIntegerValue:alarmVolume];
     [sliderAlarmDuration setIntegerValue:alarmDuration];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC)),
-                   dispatch_get_main_queue(), ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, (unsigned long)NULL), ^{
         [self populateiTunesSources];
     });
     [checkboxShuffle setState:playlistShuffle];
@@ -338,6 +337,7 @@ NSUInteger const kOnetimeHeight = 68;
     iTunesUserPlaylist *libraryPlaylist;
     NSMenuItem *libraryMenuItem;
     NSImage *image;
+    NSMutableArray *menuItems = [NSMutableArray array];
     
     for (iTunesUserPlaylist *playlist in playlists) {
         tag++;
@@ -391,7 +391,7 @@ NSUInteger const kOnetimeHeight = 68;
         menuItem.image = image;
         menuItem.title = playlist.name;
         menuItem.tag = tag;
-        [dropdowniTunesSources.menu addItem:menuItem];
+        [menuItems addObject:menuItem];
         if ([playlist.persistentID isEqualToString:selectedPlaylistId]) {
             selectedMenuItem = menuItem;
             selectedPlaylist = playlist;
@@ -400,12 +400,19 @@ NSUInteger const kOnetimeHeight = 68;
     
     if (!selectedPlaylistId) {
         selectedMenuItem = libraryMenuItem;
-        [NSAppDelegate.modeMap changeMode:self.mode option:kAlarmPlaylist to:libraryPlaylist.persistentID];
-        [self updateTracksCount:libraryPlaylist];
-    } else {
-        [self updateTracksCount:selectedPlaylist];
     }
     dispatch_async(dispatch_get_main_queue(), ^(void){
+        for (NSMenuItem *menuItem in menuItems) {
+            [dropdowniTunesSources.menu addItem:menuItem];
+        }
+
+        if (!selectedPlaylistId) {
+            [NSAppDelegate.modeMap changeMode:self.mode option:kAlarmPlaylist to:libraryPlaylist.persistentID];
+            [self updateTracksCount:libraryPlaylist];
+        } else {
+            [self updateTracksCount:selectedPlaylist];
+        }
+
         [dropdowniTunesSources selectItem:selectedMenuItem];
         [dropdowniTunesSources setNeedsDisplay:YES];
     });
