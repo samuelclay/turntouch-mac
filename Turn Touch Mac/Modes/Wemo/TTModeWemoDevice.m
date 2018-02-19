@@ -37,11 +37,14 @@
     return [self.serialNumber isEqualToString:device.serialNumber];
 }
 
-- (BOOL)isSameDeviceDifferentLocation:(TTModeWemoDevice *)device {
+- (BOOL)isSameAddress:(TTModeWemoDevice *)device {
     BOOL sameAddress = [ipAddress isEqualToString:device.ipAddress];
     BOOL samePort = port == device.port;
     
-    return [self isEqualToDevice:device] && !(sameAddress && samePort);
+    return (sameAddress && samePort);
+}
+- (BOOL)isSameDeviceDifferentLocation:(TTModeWemoDevice *)device {
+    return [self isEqualToDevice:device] && ![self isSameAddress:device];
 }
 
 - (NSString *)location {

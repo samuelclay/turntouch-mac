@@ -298,15 +298,28 @@ static NSMutableArray *recentlyFoundDevices;
 
 #pragma mark - Device delegate
 
-- (void)deviceReady:(id)device {
+- (void)deviceReady:(TTModeWemoDevice *)device {
+    TTModeWemoDevice *replaceDevice;
     // Device's name has been found, ready to display
     for (TTModeWemoDevice *foundDevice in TTModeWemo.foundDevices) {
-        if ([foundDevice isEqualToDevice:device]) {
+        if ([foundDevice isSameAddress:device]) {
             return;
+        } else if ([foundDevice isEqualToDevice:device] &&
+                   [foundDevice isSameDeviceDifferentLocation:device]) {
+            // Wemo device changed IPs (very common), so correct all references and
+            // store new IP in place of old
+            replaceDevice = foundDevice;
+            break;
         }
     }
     
-    [foundDevices addObject:device];
+    if (replaceDevice) {
+        NSLog(@" ---> Reassigning wemo device from %@ to %@", replaceDevice.location, device.location);
+        replaceDevice.ipAddress = device.ipAddress;
+        replaceDevice.port = device.port;
+    } else {
+        [foundDevices addObject:device];
+    }
     
     [self storeFoundDevices];
     

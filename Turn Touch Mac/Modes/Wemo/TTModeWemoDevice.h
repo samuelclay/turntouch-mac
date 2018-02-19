@@ -34,6 +34,7 @@ typedef enum {
 
 - (id)initWithIpAddress:(NSString *)_ip port:(NSInteger)_port;
 - (BOOL)isEqualToDevice:(TTModeWemoDevice *)device;
+- (BOOL)isSameAddress:(TTModeWemoDevice *)device;
 - (BOOL)isSameDeviceDifferentLocation:(TTModeWemoDevice *)device;
 - (NSString *)location;
 
