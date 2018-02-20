@@ -28,14 +28,11 @@ typedef enum TTDiamondType : NSUInteger {
     CGFloat _size;
     BOOL _isHighlighted;
     
-    NSBezierPath *northPathTop;
-    NSBezierPath *eastPathTop;
-    NSBezierPath *westPathTop;
-    NSBezierPath *southPathTop;
-    NSBezierPath *northPathBottom;
-    NSBezierPath *eastPathBottom;
-    NSBezierPath *westPathBottom;
-    NSBezierPath *southPathBottom;
+    NSBezierPath *northPath;
+    NSBezierPath *eastPath;
+    NSBezierPath *westPath;
+    NSBezierPath *southPath;
+    NSBezierPath *middlePath;
 }
 
 @property (nonatomic) TTDiamondType diamondType;

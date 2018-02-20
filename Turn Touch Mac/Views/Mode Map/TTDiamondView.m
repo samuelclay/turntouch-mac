@@ -147,74 +147,82 @@
     CGFloat width = NSMaxX(rect);
     CGFloat height = NSMaxY(rect);
     CGFloat spacing = SPACING_PCT * width;
-    
-    northPathTop = [NSBezierPath bezierPath];
-    northPathBottom = [NSBezierPath bezierPath];
-    [northPathTop setLineJoinStyle:NSMiterLineJoinStyle];
-    [northPathBottom setLineJoinStyle:NSMiterLineJoinStyle];
-    [northPathTop moveToPoint:NSMakePoint(width * 1/4 + 1.3*spacing,
-                                          height * 3/4 + spacing)];
-    [northPathTop lineToPoint:NSMakePoint(width / 2,
-                                          height)];
-    [northPathTop lineToPoint:NSMakePoint(width * 3/4 - 1.3*spacing,
-                                          height * 3/4 + spacing)];
-    [northPathBottom moveToPoint:NSMakePoint(width * 3/4 - 1.3*spacing,
-                                             height * 3/4 + spacing)];
-    [northPathBottom lineToPoint:NSMakePoint(width / 2,
-                                             height/2 + spacing*2)];
-    [northPathBottom lineToPoint:NSMakePoint(width * 1/4 + 1.3*spacing,
-                                             height * 3/4 + spacing)];
-    
-    eastPathTop = [NSBezierPath bezierPath];
-    eastPathBottom = [NSBezierPath bezierPath];
-    [eastPathTop setLineJoinStyle:NSMiterLineJoinStyle];
-    [eastPathBottom setLineJoinStyle:NSMiterLineJoinStyle];
-    [eastPathTop moveToPoint:NSMakePoint(width * 1/2 + 1.3*spacing*2,
-                                         height * 1/2)];
-    [eastPathTop lineToPoint:NSMakePoint(width * 3/4 + 1.3*spacing,
-                                         height * 3/4 - spacing)];
-    [eastPathTop lineToPoint:NSMakePoint(width,
-                                         height * 1/2)];
-    [eastPathBottom moveToPoint:NSMakePoint(width,
-                                            height * 1/2)];
-    [eastPathBottom lineToPoint:NSMakePoint(width * 3/4 + 1.3*spacing,
-                                            height * 1/4 + spacing)];
-    [eastPathBottom lineToPoint:NSMakePoint(width * 1/2 + 1.3*spacing*2,
-                                            height * 1/2)];
 
-    westPathTop = [NSBezierPath bezierPath];
-    westPathBottom = [NSBezierPath bezierPath];
-    [westPathTop setLineJoinStyle:NSMiterLineJoinStyle];
-    [westPathBottom setLineJoinStyle:NSMiterLineJoinStyle];
-    [westPathTop moveToPoint:NSMakePoint(width * 1/2 - 1.3*spacing*2,
-                                         height * 1/2)];
-    [westPathTop lineToPoint:NSMakePoint(width * 1/4 - 1.3*spacing,
-                                         height * 3/4 - spacing)];
-    [westPathTop lineToPoint:NSMakePoint(0,
-                                         height * 1/2)];
-    [westPathBottom moveToPoint:NSMakePoint(0,
-                                            height * 1/2)];
-    [westPathBottom lineToPoint:NSMakePoint(width * 1/4 - 1.3*spacing,
-                                            height * 1/4 + spacing)];
-    [westPathBottom lineToPoint:NSMakePoint(width * 1/2 - 1.3*spacing*2,
-                                            height * 1/2)];
+    northPath = [NSBezierPath bezierPath];
+    [northPath setLineJoinStyle:NSMiterLineJoinStyle];
+    [northPath moveToPoint:NSMakePoint(width * 1/4 + 1.3*spacing,
+                                          height * 3/4 + spacing)];
+    [northPath lineToPoint:NSMakePoint(width / 2,
+                                          height)];
+    [northPath lineToPoint:NSMakePoint(width * 3/4 - 1.3*spacing,
+                                          height * 3/4 + spacing)];
+    [northPath lineToPoint:NSMakePoint(width * 6/10 - 2*2*spacing,
+                                          height/2 + spacing*2*2)];
+    [northPath lineToPoint:NSMakePoint(width / 2,
+                                          height/2 + spacing*2*3)];
+    [northPath lineToPoint:NSMakePoint(width * 4/10 + 2*2*spacing,
+                                          height/2 + spacing*2*2)];
+    [northPath closePath];
     
-    southPathTop = [NSBezierPath bezierPath];
-    southPathBottom = [NSBezierPath bezierPath];
-    [southPathTop setLineJoinStyle:NSMiterLineJoinStyle];
-    [southPathBottom setLineJoinStyle:NSMiterLineJoinStyle];
-    [southPathTop moveToPoint:NSMakePoint(width * 3/4 - 1.3*spacing,
+    eastPath = [NSBezierPath bezierPath];
+    [eastPath setLineJoinStyle:NSMiterLineJoinStyle];
+    [eastPath moveToPoint:NSMakePoint(width * 1/2 + 3*spacing*2*1.3,
+                                         height * 1/2)];
+    [eastPath lineToPoint:NSMakePoint(width * 6/10 - spacing*2,
+                                         height * 6/10 - spacing*2*1.3)];
+    [eastPath lineToPoint:NSMakePoint(width * 3/4 + 1.3*spacing,
+                                         height * 3/4 - spacing)];
+    [eastPath lineToPoint:NSMakePoint(width,
+                                         height * 1/2)];
+    [eastPath lineToPoint:NSMakePoint(width * 3/4 + 1.3*spacing,
+                                            height * 1/4 + spacing)];
+    [eastPath lineToPoint:NSMakePoint(width * 6/10 - spacing*2,
+                                         height * 4/10 + spacing*2*1.3)];
+    [eastPath closePath];
+
+    westPath = [NSBezierPath bezierPath];
+    [westPath setLineJoinStyle:NSMiterLineJoinStyle];
+    [westPath moveToPoint:NSMakePoint(width * 1/2 - 3*spacing*2*1.3,
+                                         height * 1/2)];
+    [westPath lineToPoint:NSMakePoint(width * 4/10 + spacing*2,
+                                         height * 6/10 - spacing*2*1.3)];
+    [westPath lineToPoint:NSMakePoint(width * 1/4 - 1.3*spacing,
+                                         height * 3/4 - spacing)];
+    [westPath lineToPoint:NSMakePoint(0,
+                                         height * 1/2)];
+    [westPath lineToPoint:NSMakePoint(width * 1/4 - 1.3*spacing,
+                                         height * 1/4 + spacing)];
+    [westPath lineToPoint:NSMakePoint(width * 4/10 + spacing*2,
+                                         height * 4/10 + spacing*2*1.3)];
+    [westPath closePath];
+    
+    southPath = [NSBezierPath bezierPath];
+    [southPath setLineJoinStyle:NSMiterLineJoinStyle];
+    [southPath moveToPoint:NSMakePoint(width * 3/4 - 1.3*spacing,
                                           height * 1/4 - spacing)];
-    [southPathTop lineToPoint:NSMakePoint(width * 1/2,
-                                          height * 1/2 - spacing*2)];
-    [southPathTop lineToPoint:NSMakePoint(width * 1/4 + 1.3*spacing,
+    [southPath lineToPoint:NSMakePoint(width * 6/10 - 2*2*spacing,
+                                          height/2 - spacing*2*2)];
+    [southPath lineToPoint:NSMakePoint(width * 1/2,
+                                          height * 1/2 - spacing*2*3)];
+    [southPath lineToPoint:NSMakePoint(width * 4/10 + 2*2*spacing,
+                                          height/2 - spacing*2*2)];
+    [southPath lineToPoint:NSMakePoint(width * 1/4 + 1.3*spacing,
                                           height * 1/4 - spacing)];
-    [southPathBottom moveToPoint:NSMakePoint(width * 1/4 + 1.3*spacing,
-                                             height * 1/4 - spacing)];
-    [southPathBottom lineToPoint:NSMakePoint(width * 1/2,
+    [southPath lineToPoint:NSMakePoint(width * 1/2,
                                              0)];
-    [southPathBottom lineToPoint:NSMakePoint(width * 3/4 - 1.3*spacing,
-                                             height * 1/4 - spacing)];
+    [southPath closePath];
+    
+    middlePath = [NSBezierPath bezierPath];
+    [middlePath setLineJoinStyle:NSMiterLineJoinStyle];
+    [middlePath moveToPoint:NSMakePoint(width / 2,
+                                        height * 1/2 + 3*spacing)];
+    [middlePath lineToPoint:NSMakePoint(width * 6/10 - 2*spacing*1.3,
+                                        height * 1/2)];
+    [middlePath lineToPoint:NSMakePoint(width / 2,
+                                        height * 1/2 - 3*spacing)];
+    [middlePath lineToPoint:NSMakePoint(width * 4/10 + 2*spacing*1.3,
+                                        height * 1/2)];
+    [middlePath closePath];
 }
 
 - (void)colorPaths:(NSRect)rect {
@@ -225,21 +233,22 @@
     TTModeDirection inspectingModeDirection = appDelegate.modeMap.inspectingModeDirection;
     TTModeDirection hoverModeDirection = appDelegate.modeMap.hoverModeDirection;
 
-    for (NSBezierPath *path in @[northPathTop, northPathBottom,
-                                 eastPathTop, eastPathBottom,
-                                 westPathTop, westPathBottom,
-                                 southPathTop, southPathBottom]) {
+    for (NSBezierPath *path in @[northPath,
+                                 eastPath,
+                                 westPath,
+                                 southPath,
+                                 middlePath]) {
         TTModeDirection direction = NO_DIRECTION;
-        BOOL bottomHalf = [@[northPathBottom, eastPathBottom, westPathBottom, southPathBottom]
-                           containsObject:path];
-        if ([path isEqual:northPathTop] || [path isEqual:northPathBottom]) {
+        if ([path isEqual:northPath]) {
             direction = NORTH;
-        } else if ([path isEqual:eastPathTop] || [path isEqual:eastPathBottom]) {
+        } else if ([path isEqual:eastPath]) {
             direction = EAST;
-        } else if ([path isEqual:westPathTop] || [path isEqual:westPathBottom]) {
+        } else if ([path isEqual:westPath]) {
             direction = WEST;
-        } else if ([path isEqual:southPathTop] || [path isEqual:southPathBottom]) {
+        } else if ([path isEqual:southPath]) {
             direction = SOUTH;
+        } else if ([path isEqual:middlePath]) {
+            direction = MULTI;
         }
 
         BOOL isHoveringDirection    = hoverModeDirection == direction;
@@ -268,9 +277,6 @@
                 modeColor = NSColorFromRGB(0x303AA0);
             } else {
                 modeColor = NSColorFromRGB(0xD3D7D9);
-                if (bottomHalf) {
-                    modeColor = NSColorFromRGB(0xC3C7C9);
-                }
             }
         } else if (diamondType == DIAMOND_TYPE_STATUSBAR) {
             if (self.isHighlighted) {
@@ -326,16 +332,10 @@
         
         NSBezierPath *combinedPath = [NSBezierPath alloc];
         [combinedPath appendBezierPath:path];
-        if (path == northPathTop) [combinedPath appendBezierPath:northPathBottom];
-        if (path == eastPathTop) [combinedPath appendBezierPath:eastPathBottom];
-        if (path == westPathTop) [combinedPath appendBezierPath:westPathBottom];
-        if (path == southPathTop) [combinedPath appendBezierPath:southPathBottom];
 
         if (!showOutline) {
             [modeColor setFill];
-            if (!bottomHalf) {
-                [combinedPath fill];
-            }
+            [combinedPath fill];
         } else {
             combinedPath.lineWidth = isInspectingDirection ? 1.0f : 1.0f;
             [modeColor setStroke];
@@ -395,14 +395,16 @@
     NSPoint location = [theEvent locationInWindow];
     NSPoint center = [self convertPoint:location fromView:nil];
     
-    if ([northPathTop containsPoint:center] || [northPathBottom containsPoint:center]) {
+    if ([northPath containsPoint:center]) {
         overrideActiveDirection = NORTH;
-    } else if ([eastPathTop containsPoint:center] || [eastPathBottom containsPoint:center]) {
+    } else if ([eastPath containsPoint:center]) {
         overrideActiveDirection = EAST;
-    } else if ([westPathTop containsPoint:center] || [westPathBottom containsPoint:center]) {
+    } else if ([westPath containsPoint:center]) {
         overrideActiveDirection = WEST;
-    } else if ([southPathTop containsPoint:center] || [southPathBottom containsPoint:center]) {
+    } else if ([southPath containsPoint:center]) {
         overrideActiveDirection = SOUTH;
+    } else if ([middlePath containsPoint:center]) {
+        overrideActiveDirection = MULTI;
     }
     
     [self setNeedsDisplay:YES];
@@ -417,14 +419,16 @@
     NSPoint location = [theEvent locationInWindow];
     NSPoint center = [self convertPoint:location fromView:nil];
 
-    if ([northPathTop containsPoint:center] || [northPathBottom containsPoint:center]) {
+    if ([northPath containsPoint:center]) {
         [appDelegate.modeMap toggleInspectingModeDirection:NORTH];
-    } else if ([eastPathTop containsPoint:center] || [eastPathBottom containsPoint:center]) {
+    } else if ([eastPath containsPoint:center]) {
         [appDelegate.modeMap toggleInspectingModeDirection:EAST];
-    } else if ([westPathTop containsPoint:center] || [westPathBottom containsPoint:center]) {
+    } else if ([westPath containsPoint:center]) {
         [appDelegate.modeMap toggleInspectingModeDirection:WEST];
-    } else if ([southPathTop containsPoint:center] || [southPathBottom containsPoint:center]) {
+    } else if ([southPath containsPoint:center]) {
         [appDelegate.modeMap toggleInspectingModeDirection:SOUTH];
+    } else if ([middlePath containsPoint:center]) {
+        [appDelegate.modeMap toggleInspectingModeDirection:MULTI];
     }
 
     overrideActiveDirection = NO_DIRECTION;
@@ -446,14 +450,16 @@
     NSPoint location = [theEvent locationInWindow];
     NSPoint center = [self convertPoint:location fromView:nil];
     
-    if ([northPathTop containsPoint:center] || [northPathBottom containsPoint:center]) {
+    if ([northPath containsPoint:center]) {
         overrideActiveDirection = NORTH;
-    } else if ([eastPathTop containsPoint:center] || [eastPathBottom containsPoint:center]) {
+    } else if ([eastPath containsPoint:center]) {
         overrideActiveDirection = EAST;
-    } else if ([westPathTop containsPoint:center] || [westPathBottom containsPoint:center]) {
+    } else if ([westPath containsPoint:center]) {
         overrideActiveDirection = WEST;
-    } else if ([southPathTop containsPoint:center] || [southPathBottom containsPoint:center]) {
+    } else if ([southPath containsPoint:center]) {
         overrideActiveDirection = SOUTH;
+    } else if ([middlePath containsPoint:center]) {
+        overrideActiveDirection = MULTI;
     } else {
         overrideActiveDirection = NO_DIRECTION;
     }
@@ -476,14 +482,16 @@
     NSPoint location = [theEvent locationInWindow];
     NSPoint center = [self convertPoint:location fromView:nil];
 //    NSLog(@"Movement: %@ in %@", NSStringFromPoint(center), NSStringFromRect(self.bounds));
-    if ([northPathTop containsPoint:center] || [northPathBottom containsPoint:center]) {
+    if ([northPath containsPoint:center]) {
         [appDelegate.modeMap toggleHoverModeDirection:NORTH hovering:hovering];
-    } else if ([eastPathTop containsPoint:center] || [eastPathBottom containsPoint:center]) {
+    } else if ([eastPath containsPoint:center]) {
         [appDelegate.modeMap toggleHoverModeDirection:EAST hovering:hovering];
-    } else if ([westPathTop containsPoint:center] || [westPathBottom containsPoint:center]) {
+    } else if ([westPath containsPoint:center]) {
         [appDelegate.modeMap toggleHoverModeDirection:WEST hovering:hovering];
-    } else if ([southPathTop containsPoint:center] || [southPathBottom containsPoint:center]) {
+    } else if ([southPath containsPoint:center]) {
         [appDelegate.modeMap toggleHoverModeDirection:SOUTH hovering:hovering];
+    } else if ([middlePath containsPoint:center]) {
+        [appDelegate.modeMap toggleHoverModeDirection:MULTI hovering:hovering];
     } else if (appDelegate.modeMap.hoverModeDirection != NO_DIRECTION) {
         [appDelegate.modeMap toggleHoverModeDirection:NO_DIRECTION hovering:NO];
     }
