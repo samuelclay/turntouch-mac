@@ -26,5 +26,6 @@
 
 - (id)initWithType:(TTMenuType)_menuType;
 - (void)toggleScrollbar:(BOOL)visible;
+- (void)scrollToInspectingDirection;
 
 @end

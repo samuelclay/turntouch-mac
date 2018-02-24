@@ -297,8 +297,12 @@
         for (TTAction *batchAction in batchActions) {
             if ([batchAction.batchActionKey isEqualToString:appDelegate.modeMap.batchActionChangeAction.batchActionKey]) {
                 NSString *actionName = appDelegate.modeMap.batchActionChangeAction.actionName;
-                index = [collectionView.content indexOfObject:actionName];
-                break;
+                for (NSInteger i=0; i < collectionView.content.count; i++) {
+                    if ([[[collectionView.content objectAtIndex:i] objectForKey:@"id"] isEqualToString:actionName]) {
+                        index = i;
+                    }
+                }
+                if (index) break;
             }
         }
     }

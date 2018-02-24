@@ -95,8 +95,8 @@ const NSInteger BATCH_ACTION_HEADER_HEIGHT = 36;
                                                                   attribute:NSLayoutAttributeHeight
                                                                   relatedBy:NSLayoutRelationEqual
                                                                      toItem:nil
-                                                                  attribute:0
-                                                                 multiplier:1.0 constant:0.f];
+                                                                  attribute:NSLayoutAttributeNotAnAttribute
+                                                                 multiplier:1.0 constant:1];
         [self addConstraint:changeActionMenuConstraint];
         [changeActionMenuViewConstraints setObject:changeActionMenuConstraint forKey:batchAction.batchActionKey];
         
@@ -122,15 +122,18 @@ const NSInteger BATCH_ACTION_HEADER_HEIGHT = 36;
     [[NSAnimationContext currentContext] setTimingFunction:[CAMediaTimingFunction functionWithName:
                                                             kCAMediaTimingFunctionEaseInEaseOut]];
     
-    if (!changeActionBatchActionKey) {
-        [[NSAnimationContext currentContext] setCompletionHandler:^{
-            [batchAction.changeActionMenu toggleScrollbar:NO];
-        }];
-        [[changeActionMenuConstraint animator] setConstant:0.f];
-    } else {
-        [[changeActionMenuConstraint animator] setConstant:ACTION_MENU_HEIGHT];
-    }
-    
+    [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
+        if (!changeActionBatchActionKey) {
+            [[NSAnimationContext currentContext] setCompletionHandler:^{
+                [batchAction.changeActionMenu toggleScrollbar:NO];
+            }];
+            [[changeActionMenuConstraint animator] setConstant:0.f];
+        } else {
+            [[changeActionMenuConstraint animator] setConstant:ACTION_MENU_HEIGHT];
+        }
+    } completionHandler:^{
+        [changeActionMenuViewControllers[batchAction.batchActionKey] scrollToInspectingDirection];
+    }];
     [NSAnimationContext endGrouping];
 }
 
