@@ -1,4 +1,4 @@
-//
+
 //  TTBluetoothMonitor.m
 //  Turn Touch Remote
 //
@@ -1061,7 +1061,7 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
 }
 
 - (void)disconnectUnpairedDevices {
-    for (TTDevice *device in foundDevices) {
+    for (TTDevice *device in [foundDevices mutableCopy]) {
         if (!device.isPaired) {
 #ifdef DEBUG_CONNECT
             NSLog(@" ---> (%X) [Disconnecting] Canceling peripheral connection: %@", bluetoothState, device);

@@ -6,6 +6,8 @@
 	<true/>
 	<key>TT:pref:show_mode_hud</key>
 	<true/>
+	<key>TT:pref:enable_hud</key>
+	<true/>
 	<key>TT:pref:share_usage_stats</key>
 	<true/>
 	<key>TT:firmware:version</key>

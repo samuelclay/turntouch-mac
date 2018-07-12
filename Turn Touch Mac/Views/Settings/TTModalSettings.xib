@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTModalSettings">
             <connections>
+                <outlet property="checkboxEnableHud" destination="qyd-I0-oGD" id="Osb-BT-nJ9"/>
                 <outlet property="checkboxRecordUsage" destination="RPb-yM-dlh" id="dyl-hr-dqz"/>
                 <outlet property="checkboxShowActionHud" destination="3lz-67-1tM" id="4dt-HQ-5Pm"/>
                 <outlet property="checkboxShowModeHud" destination="b6u-kD-pMw" id="v95-if-S5t"/>
@@ -18,17 +19,17 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="353"/>
+            <rect key="frame" x="0.0" y="0.0" width="480" height="458"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <box horizontalCompressionResistancePriority="250" boxType="custom" borderType="none" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="kXe-pv-sBb">
-                    <rect key="frame" x="0.0" y="0.0" width="480" height="353"/>
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="458"/>
                     <view key="contentView" id="Zzk-hh-Mmt">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="353"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="458"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Sm-gv-wZ8">
-                                <rect key="frame" x="18" y="318" width="70" height="27"/>
+                                <rect key="frame" x="18" y="423" width="70" height="27"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Settings" id="VJS-qK-OPm">
                                     <font key="font" size="18" name="Effra-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -55,7 +56,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aD3-s1-gvm">
-                                <rect key="frame" x="430" y="303" width="50" height="50"/>
+                                <rect key="frame" x="430" y="408" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="IKc-Jz-MBe"/>
                                     <constraint firstAttribute="height" constant="50" id="PZg-fJ-gp4"/>
@@ -69,7 +70,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3lz-67-1tM">
-                                <rect key="frame" x="18" y="270" width="264" height="18"/>
+                                <rect key="frame" x="18" y="375" width="264" height="18"/>
                                 <buttonCell key="cell" type="check" title="Show action HUD on every button press" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="aZt-7f-Wgw">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -79,7 +80,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OfX-vW-sAu">
-                                <rect key="frame" x="36" y="213" width="398" height="51"/>
+                                <rect key="frame" x="36" y="318" width="398" height="51"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="aCM-L7-PFI">
                                     <font key="font" metaFont="system"/>
                                     <string key="title">The action HUD shows you which button you pressed along with the direction and relevant information such as song title, album art, temperature, scene name, etc.</string>
@@ -88,7 +89,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="b6u-kD-pMw">
-                                <rect key="frame" x="18" y="165" width="243" height="18"/>
+                                <rect key="frame" x="18" y="270" width="243" height="18"/>
                                 <buttonCell key="cell" type="check" title="Show app HUD on every button hold" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="1ni-sc-Yyy">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -98,9 +99,28 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qFb-HV-v73">
-                                <rect key="frame" x="36" y="125" width="398" height="34"/>
+                                <rect key="frame" x="36" y="230" width="398" height="34"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="The app HUD shows you the four buttons for the app you're switching into by holding a button." id="hux-Av-8Rx">
                                     <font key="font" metaFont="system"/>
+                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qyd-I0-oGD">
+                                <rect key="frame" x="18" y="182" width="119" height="18"/>
+                                <buttonCell key="cell" type="check" title="Enable the HUD" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="JKX-HI-g35">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="changeForm:" target="-2" id="gX9-dw-NEF"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Pg-37-6eZ">
+                                <rect key="frame" x="36" y="125" width="352" height="51"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="cEO-Bg-OeP">
+                                    <font key="font" metaFont="system"/>
+                                    <string key="title">Pressing multiple buttons at once shows the HUD, an interactive view allowing you to run actions and switch to modes not attached to buttons.</string>
                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -112,21 +132,25 @@
                             <constraint firstItem="5Sm-gv-wZ8" firstAttribute="top" secondItem="Zzk-hh-Mmt" secondAttribute="top" constant="8" id="9r5-9u-ZaG"/>
                             <constraint firstItem="RPb-yM-dlh" firstAttribute="leading" secondItem="Zzk-hh-Mmt" secondAttribute="leading" constant="20" id="AzI-6U-mN6"/>
                             <constraint firstItem="5Sm-gv-wZ8" firstAttribute="leading" secondItem="Zzk-hh-Mmt" secondAttribute="leading" constant="20" id="Baw-Va-NOM"/>
+                            <constraint firstItem="RPb-yM-dlh" firstAttribute="top" secondItem="7Pg-37-6eZ" secondAttribute="bottom" constant="32" id="CZl-AM-b4V"/>
                             <constraint firstItem="3lz-67-1tM" firstAttribute="top" secondItem="5Sm-gv-wZ8" secondAttribute="bottom" constant="32" id="Iws-du-H7M"/>
                             <constraint firstItem="FaF-li-3oI" firstAttribute="trailing" secondItem="OfX-vW-sAu" secondAttribute="trailing" id="JYq-hG-JsU"/>
-                            <constraint firstItem="RPb-yM-dlh" firstAttribute="top" secondItem="qFb-HV-v73" secondAttribute="bottom" constant="32" id="Jw4-gA-bzQ"/>
                             <constraint firstItem="qFb-HV-v73" firstAttribute="trailing" secondItem="OfX-vW-sAu" secondAttribute="trailing" id="QIC-q4-fix"/>
                             <constraint firstAttribute="bottom" secondItem="FaF-li-3oI" secondAttribute="bottom" constant="20" id="T7R-SR-l5b"/>
+                            <constraint firstItem="qyd-I0-oGD" firstAttribute="leading" secondItem="b6u-kD-pMw" secondAttribute="leading" id="UFt-gV-j6y"/>
                             <constraint firstItem="FaF-li-3oI" firstAttribute="top" secondItem="RPb-yM-dlh" secondAttribute="bottom" constant="8" id="WEc-ff-QD2"/>
+                            <constraint firstItem="7Pg-37-6eZ" firstAttribute="leading" secondItem="qFb-HV-v73" secondAttribute="leading" id="Zdn-qa-mRr"/>
                             <constraint firstItem="qFb-HV-v73" firstAttribute="top" secondItem="b6u-kD-pMw" secondAttribute="bottom" constant="8" id="a4e-2H-uSL"/>
                             <constraint firstAttribute="trailing" secondItem="aD3-s1-gvm" secondAttribute="trailing" id="dAw-Dg-80w"/>
                             <constraint firstItem="aD3-s1-gvm" firstAttribute="top" secondItem="Zzk-hh-Mmt" secondAttribute="top" id="fhX-BZ-sZQ"/>
                             <constraint firstItem="OfX-vW-sAu" firstAttribute="top" secondItem="3lz-67-1tM" secondAttribute="bottom" constant="8" id="fvB-Ry-YPo"/>
+                            <constraint firstItem="7Pg-37-6eZ" firstAttribute="top" secondItem="qyd-I0-oGD" secondAttribute="bottom" constant="8" id="lHB-OO-RdN"/>
                             <constraint firstItem="FaF-li-3oI" firstAttribute="leading" secondItem="OfX-vW-sAu" secondAttribute="leading" id="mM5-yn-w21"/>
                             <constraint firstAttribute="trailing" secondItem="FaF-li-3oI" secondAttribute="trailing" constant="48" id="pXg-yu-Rsh"/>
                             <constraint firstItem="b6u-kD-pMw" firstAttribute="leading" secondItem="3lz-67-1tM" secondAttribute="leading" id="q2f-y4-5BV"/>
                             <constraint firstItem="b6u-kD-pMw" firstAttribute="top" secondItem="OfX-vW-sAu" secondAttribute="bottom" constant="32" id="u4a-op-bqY"/>
                             <constraint firstItem="qFb-HV-v73" firstAttribute="leading" secondItem="OfX-vW-sAu" secondAttribute="leading" id="ve3-ak-FHU"/>
+                            <constraint firstItem="qyd-I0-oGD" firstAttribute="top" secondItem="qFb-HV-v73" secondAttribute="bottom" constant="32" id="y1a-tB-ALU"/>
                         </constraints>
                     </view>
                     <color key="fillColor" red="0.94901960780000005" green="0.95686274510000002" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -138,7 +162,7 @@
                 <constraint firstAttribute="trailing" secondItem="kXe-pv-sBb" secondAttribute="trailing" id="G8H-Rf-9yC"/>
                 <constraint firstItem="kXe-pv-sBb" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="VmF-WU-U68"/>
             </constraints>
-            <point key="canvasLocation" x="117" y="324"/>
+            <point key="canvasLocation" x="117" y="428"/>
         </customView>
     </objects>
     <resources>

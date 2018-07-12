@@ -10,7 +10,7 @@
 		</data>
 		<key>Resources/Assets.car</key>
 		<data>
-		Rv5kWmtMOc5ptCxv9CMMFkDUJX0=
+		nGbBBAOO1AM2EkOFs9yyknGcbH0=
 		</data>
 		<key>Resources/Effra_Rg.ttf</key>
 		<data>
@@ -330,7 +330,7 @@
 		</data>
 		<key>Resources/TTModalSettings.nib</key>
 		<data>
-		yK6hm7SXjLE0LWjtk54wqOmsap0=
+		Ca2fqFSq9PzBWpME3lPP8hVjreM=
 		</data>
 		<key>Resources/TTModalSupportView.nib</key>
 		<data>
@@ -342,7 +342,7 @@
 		</data>
 		<key>Resources/TTModeAlarmClockOptions.nib</key>
 		<data>
-		BCGo8IEXu8YTTIAJ0gvabr6FM1s=
+		YVYMjaANskGlI7QWOmYU3K+QUqM=
 		</data>
 		<key>Resources/TTModeAlarmSnoozeOptions.nib</key>
 		<data>
@@ -354,7 +354,7 @@
 		</data>
 		<key>Resources/TTModeCustomFileOptions.nib</key>
 		<data>
-		hR9o5xdWVFiqrwIjswLul1HUt9s=
+		TnLlpznrShuBX3V/orQB8ckfAWA=
 		</data>
 		<key>Resources/TTModeCustomKeyboardOptions.nib</key>
 		<data>
@@ -378,7 +378,7 @@
 		</data>
 		<key>Resources/TTModeHueBridge.nib</key>
 		<data>
-		Xok85E5dnrfBAbGovjo+RgV8EAk=
+		tBaxM2v3xgUyJs5Wgxkq2E5Uq8w=
 		</data>
 		<key>Resources/TTModeHueConnect.nib</key>
 		<data>
@@ -443,6 +443,10 @@
 		<key>Resources/TTModeMusic.plist</key>
 		<data>
 		apk+lgW7JBUf8vqthzNBwMCrsoM=
+		</data>
+		<key>Resources/TTModeMusicPlaylistOptions.nib</key>
+		<data>
+		qhNNGh8HkkK88dyI3Ho6ffP7ns8=
 		</data>
 		<key>Resources/TTModeMusicVolumeJumpOptions.nib</key>
 		<data>
@@ -564,10 +568,6 @@
 		<data>
 		bZhdIKlWa9p8y1+Kav2za9qrwwk=
 		</data>
-		<key>Resources/archived-expanded-entitlements.xcent</key>
-		<data>
-		tE75JcYbTFqedTdHdvIjleSTSq8=
-		</data>
 		<key>Resources/button_chevron.png</key>
 		<data>
 		R3y5McrDIcuYKHSA0G57VU4Fxnw=
@@ -618,7 +618,7 @@
 		</data>
 		<key>Resources/defaults.plist</key>
 		<data>
-		DdvQVo0sNt1ukRs4VEmwk3pRw0k=
+		pWbysy3ZuFJgio1fjez+e6HWIIU=
 		</data>
 		<key>Resources/double_tap.png</key>
 		<data>
@@ -1178,7 +1178,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			A4Enhs4H3L7o3pmjA1KDzwdyNhk=
+			Hy9wJ9iBVJwxXh1+KDdZcIvcKNI=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.cocoapods.AFNetworking" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -1187,7 +1187,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			cnkyhVETabkLr/0T3rChv4bO2CY=
+			zgrOABKa2C6S2lELRUSungB+Hyo=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "com.philips.hue.HueSDK-OSX" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -1196,7 +1196,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			PmVc4aB6P2G1ugPTQOaKtJ8Dp0k=
+			V8Anh86XwCxvfaeZuWeslaYrN/I=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.sparkle-project.Sparkle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -1216,11 +1216,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Rv5kWmtMOc5ptCxv9CMMFkDUJX0=
+			nGbBBAOO1AM2EkOFs9yyknGcbH0=
 			</data>
 			<key>hash2</key>
 			<data>
-			5p8eupX/MAgR+XlZC5nnyRuO5UI9XnWApbJDXQkc1ws=
+			DFapuWrlErkdwwOaL9ZxBPdb/m4AATWly4aWuCep94g=
 			</data>
 		</dict>
 		<key>Resources/Effra_Rg.ttf</key>
@@ -1720,11 +1720,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			yK6hm7SXjLE0LWjtk54wqOmsap0=
+			Ca2fqFSq9PzBWpME3lPP8hVjreM=
 			</data>
 			<key>hash2</key>
 			<data>
-			bBDoAiWgIfovEbKDnI0PlWxZ5RnpXMw8XNShHtMto3I=
+			eeqR1Q/1k9OYnnUtjkELefW5GUB0U/oJc6njehv2Pa0=
 			</data>
 		</dict>
 		<key>Resources/TTModalSupportView.nib</key>
@@ -1753,11 +1753,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			BCGo8IEXu8YTTIAJ0gvabr6FM1s=
+			YVYMjaANskGlI7QWOmYU3K+QUqM=
 			</data>
 			<key>hash2</key>
 			<data>
-			qGRr4S1Lu2Rt0mwGt+nNwWyr2DZhnQRkLCx9pMSj01Y=
+			mDd7X3tQqmrSOWy2LDi/eaT6Ttr8x4yX414W3dd37sY=
 			</data>
 		</dict>
 		<key>Resources/TTModeAlarmSnoozeOptions.nib</key>
@@ -1786,11 +1786,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			hR9o5xdWVFiqrwIjswLul1HUt9s=
+			TnLlpznrShuBX3V/orQB8ckfAWA=
 			</data>
 			<key>hash2</key>
 			<data>
-			gSDewbRNWkODBe22J8ANXvhtgzXbXDHmn/W6bwEHnOk=
+			Q4sBEWHL3C6qa6k7tttRRL4nKqsxOikJlGTdD60f8eM=
 			</data>
 		</dict>
 		<key>Resources/TTModeCustomKeyboardOptions.nib</key>
@@ -1852,11 +1852,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Xok85E5dnrfBAbGovjo+RgV8EAk=
+			tBaxM2v3xgUyJs5Wgxkq2E5Uq8w=
 			</data>
 			<key>hash2</key>
 			<data>
-			83c1GJghVQMLwNVXP4UJDejGmR2K2UR8jJRoFKJWctk=
+			YWLeeQCIz+eXLcu4QCKbVP2jBnSIKq3w7PG+1LAwH3c=
 			</data>
 		</dict>
 		<key>Resources/TTModeHueConnect.nib</key>
@@ -2033,6 +2033,17 @@
 			<key>hash2</key>
 			<data>
 			iapy992Xh2Jfh4fFDAiNJRgBgDT7qWNIkY5B2KoGMu0=
+			</data>
+		</dict>
+		<key>Resources/TTModeMusicPlaylistOptions.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			qhNNGh8HkkK88dyI3Ho6ffP7ns8=
+			</data>
+			<key>hash2</key>
+			<data>
+			n8ffXhEfMG3/LSFd+i+vdaLUV351H71neKS2y0daP4w=
 			</data>
 		</dict>
 		<key>Resources/TTModeMusicVolumeJumpOptions.nib</key>
@@ -2365,17 +2376,6 @@
 			zovpzeoNc29ex4a/v5gSA2bjooj/GX910qA06jGXu/o=
 			</data>
 		</dict>
-		<key>Resources/archived-expanded-entitlements.xcent</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			tE75JcYbTFqedTdHdvIjleSTSq8=
-			</data>
-			<key>hash2</key>
-			<data>
-			EZwZmyMsZHyRg7xhRlNxpwIFIq1f+WosS9H51ZnXbas=
-			</data>
-		</dict>
 		<key>Resources/button_chevron.png</key>
 		<dict>
 			<key>hash</key>
@@ -2512,11 +2512,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			DdvQVo0sNt1ukRs4VEmwk3pRw0k=
+			pWbysy3ZuFJgio1fjez+e6HWIIU=
 			</data>
 			<key>hash2</key>
 			<data>
-			5uvyfLw+6iLYFizzzx8g8hFMlmPtnZuiyMkIzuD8oOU=
+			r+KDohZMZLQbOgNdfL2ya3NdIdK3/FjR1Uxo2oVJKFc=
 			</data>
 		</dict>
 		<key>Resources/double_tap.png</key>
@@ -4003,11 +4003,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			AJLa69Q2L+yavKRuNuz/TbT59rg=
+			47+DqyD02cwi9suH+4hpPP97LxQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			cYSrZepfR/37cBcCdY26rPYU0HsST3psXYkrPHSQDIs=
+			P2AiVIr26UCuiEjVxLBRbuFArNsh4T3/LQAfHUakuR8=
 			</data>
 		</dict>
 	</dict>

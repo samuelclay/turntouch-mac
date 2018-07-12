@@ -35,6 +35,11 @@
     return [prefs boolForKey:@"TT:pref:show_action_hud"];
 }
 
+- (BOOL)hudEnabled {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    return [prefs boolForKey:@"TT:pref:enable_hud"];
+}
+
 - (BOOL)showModeHud {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     return [prefs boolForKey:@"TT:pref:show_mode_hud"];
@@ -65,7 +70,11 @@
 - (void)activateHudMenu {
     if (modeOperation) [modeOperation cancel];
     
-    [modeHUDController fadeIn:YES];
+    if ([self hudEnabled]) {
+        [modeHUDController fadeIn:YES];
+    } else {
+        [self releaseToastActiveMode];
+    }
 }
 
 - (void)releaseToastActiveMode {

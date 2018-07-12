@@ -825,6 +825,8 @@ actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction 
         remoteName = [[devices objectAtIndex:0] nickname];
     }
     
+    if (remoteName == nil) remoteName = @"[None]";
+    
     NSDictionary *params = @{@"user_id": userId,
                              @"device_id": deviceId,
                              @"device_name": deviceName,

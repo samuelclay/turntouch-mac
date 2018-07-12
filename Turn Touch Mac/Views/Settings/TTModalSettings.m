@@ -16,6 +16,7 @@
 
 @synthesize checkboxRecordUsage;
 @synthesize checkboxShowActionHud;
+@synthesize checkboxEnableHud;
 @synthesize checkboxShowModeHud;
 
 - (void)viewDidLoad {
@@ -26,6 +27,7 @@
     checkboxShowActionHud.state = [prefs boolForKey:@"TT:pref:show_action_hud"];
     checkboxShowModeHud.state = [prefs boolForKey:@"TT:pref:show_mode_hud"];
     checkboxRecordUsage.state = [prefs boolForKey:@"TT:pref:share_usage_stats"];
+    checkboxEnableHud.state = [prefs boolForKey:@"TT:pref:enable_hud"];
 }
 
 - (void)closeModal:(id)sender {
@@ -40,6 +42,8 @@
               forKey:@"TT:pref:show_mode_hud"];
     [prefs setObject:[NSNumber numberWithBool:checkboxRecordUsage.state]
               forKey:@"TT:pref:share_usage_stats"];
+    [prefs setObject:[NSNumber numberWithBool:checkboxEnableHud.state]
+              forKey:@"TT:pref:enable_hud"];
     [prefs synchronize];
 }
 @end
