@@ -10,7 +10,7 @@
 		</data>
 		<key>Resources/Assets.car</key>
 		<data>
-		nGbBBAOO1AM2EkOFs9yyknGcbH0=
+		WUcg5XYTjkdrz7WeAG9SJxamMU8=
 		</data>
 		<key>Resources/Effra_Rg.ttf</key>
 		<data>
@@ -330,7 +330,7 @@
 		</data>
 		<key>Resources/TTModalSettings.nib</key>
 		<data>
-		Ca2fqFSq9PzBWpME3lPP8hVjreM=
+		lkZ11l3eoYcPAgW3eeK6PRZXeAs=
 		</data>
 		<key>Resources/TTModalSupportView.nib</key>
 		<data>
@@ -378,7 +378,7 @@
 		</data>
 		<key>Resources/TTModeHueBridge.nib</key>
 		<data>
-		tBaxM2v3xgUyJs5Wgxkq2E5Uq8w=
+		Sxwr7VIcCw11mGjWtjGx0LSAvrI=
 		</data>
 		<key>Resources/TTModeHueConnect.nib</key>
 		<data>
@@ -1178,7 +1178,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			Hy9wJ9iBVJwxXh1+KDdZcIvcKNI=
+			vKriw6NTPV7ClU5NNPnXUWFPIfM=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.cocoapods.AFNetworking" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -1187,7 +1187,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			zgrOABKa2C6S2lELRUSungB+Hyo=
+			UlvIPLPRmpMvn/7aGzyrkcPf6C4=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "com.philips.hue.HueSDK-OSX" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -1196,7 +1196,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			V8Anh86XwCxvfaeZuWeslaYrN/I=
+			OmhwDwXVqJWOFSkRSiWD75EHCcY=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.sparkle-project.Sparkle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -1216,11 +1216,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			nGbBBAOO1AM2EkOFs9yyknGcbH0=
+			WUcg5XYTjkdrz7WeAG9SJxamMU8=
 			</data>
 			<key>hash2</key>
 			<data>
-			DFapuWrlErkdwwOaL9ZxBPdb/m4AATWly4aWuCep94g=
+			UL2cp2ozerE2JgNAsNMKTr3EY1L0GpeuC/4m6B1nGq4=
 			</data>
 		</dict>
 		<key>Resources/Effra_Rg.ttf</key>
@@ -1720,11 +1720,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Ca2fqFSq9PzBWpME3lPP8hVjreM=
+			lkZ11l3eoYcPAgW3eeK6PRZXeAs=
 			</data>
 			<key>hash2</key>
 			<data>
-			eeqR1Q/1k9OYnnUtjkELefW5GUB0U/oJc6njehv2Pa0=
+			MccBk+HhiL3fLxYy9Q2NsDtMMk87UzIcbkkISpL1mOk=
 			</data>
 		</dict>
 		<key>Resources/TTModalSupportView.nib</key>
@@ -1852,11 +1852,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			tBaxM2v3xgUyJs5Wgxkq2E5Uq8w=
+			Sxwr7VIcCw11mGjWtjGx0LSAvrI=
 			</data>
 			<key>hash2</key>
 			<data>
-			YWLeeQCIz+eXLcu4QCKbVP2jBnSIKq3w7PG+1LAwH3c=
+			ARVmCNCasvyQzOuCmO7bBwCe1/sfE/TEoGEqTJqPP+c=
 			</data>
 		</dict>
 		<key>Resources/TTModeHueConnect.nib</key>
