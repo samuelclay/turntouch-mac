@@ -154,7 +154,9 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 #endif
         NSDictionary *options = @{CBConnectPeripheralOptionNotifyOnDisconnectionKey: [NSNumber numberWithBool:YES],
                                   CBCentralManagerOptionShowPowerAlertKey: [NSNumber numberWithBool:YES]};
-        [manager cancelPeripheralConnection:peripheral];
+        if (bluetoothState != BT_STATE_CONNECTING_KNOWN) {
+            [manager cancelPeripheralConnection:peripheral];
+        }
         [manager connectPeripheral:peripheral options:options];
     }
     
@@ -166,7 +168,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
     }
 
     if (![self knownPeripheralIdentifiers].count && !isActivelyConnecting) {
-        [self scanUnknown];
+        [self scanUnknown:NO];
         return;
     }
 
@@ -183,13 +185,13 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
             }
 
 #ifdef DEBUG_CONNECT
-            NSLog(@" ---> (%X) Starting scan for unpaired...", bluetoothState);
+            NSLog(@" ---> (%X) Starting scan for all paired...", bluetoothState);
 #endif
             [self stopScan];
-            [self scanUnknown];
+            [self scanUnknown:YES];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 #ifdef DEBUG_CONNECT
-                NSLog(@" ---> (%X) Stopping scan for unpaired", bluetoothState);
+                NSLog(@" ---> (%X) Stopping scan for all paired", bluetoothState);
 #endif
                 [self stopScan];
                 [self scanKnown];
@@ -198,30 +200,20 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
     });
 }
 
-- (void)scanUnknown {
+- (void)scanUnknown:(BOOL)isPaired {
     if (bluetoothState == BT_STATE_PAIRING_UNKNOWN) {
 #ifdef DEBUG_CONNECT
         NSLog(@" ---> (%X) Not scanning unknown since in pairing state.", bluetoothState);
 #endif
         return;
     }
-    if (bluetoothState == BT_STATE_CONNECTING_UNKNOWN) {
-        for (TTDevice *foundDevice in foundDevices) {
-            if (foundDevice.state == TTDeviceStateConnecting) {
-#ifdef DEBUG_CONNECT
-                NSLog(@" ---> (%X) [Scanning unknown] Canceling peripheral connection: %@", bluetoothState, foundDevice);
-#endif
-                [manager cancelPeripheralConnection:foundDevice.peripheral];
-            }
-        }
-#ifdef DEBUG_CONNECT
-        NSLog(@" ---> (%X) Not scanning unknown since already connecting to unknown.", bluetoothState);
-#endif
-        return;
-    }
 
     [self stopScan];
-    bluetoothState = BT_STATE_SCANNING_UNKNOWN;
+    if (isPaired) {
+        bluetoothState = BT_STATE_SCANNING_ALL_PAIRED;
+    } else {
+        bluetoothState = BT_STATE_SCANNING_ALL_UNPAIRED;
+    }
 #ifdef DEBUG_CONNECT
     NSLog(@" ---> (%X) Scanning unknown: %@", bluetoothState, [self knownPeripheralIdentifiers]);
 #endif
@@ -329,6 +321,14 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
     if (!device) {
         device = [foundDevices addPeripheral:peripheral];
     }
+    if (!device.isPaired && bluetoothState != BT_STATE_SCANNING_ALL_UNPAIRED) {
+#ifdef DEBUG_CONNECT
+            NSString *localName = [advertisementData objectForKey:CBAdvertisementDataLocalNameKey];
+            NSLog(@" --> (%X) Found unknown bluetooth peripheral, not pairing, so disconnecting: %@/%@ (%@)", bluetoothState, localName, device, RSSI);
+#endif
+        [manager cancelPeripheralConnection:peripheral];
+        return;
+    }
 
     bluetoothState = BT_STATE_CONNECTING_UNKNOWN;
 #ifdef DEBUG_CONNECT
@@ -358,18 +358,6 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
                            options:@{CBConnectPeripheralOptionNotifyOnDisconnectionKey: [NSNumber numberWithBool:YES],
                                      CBCentralManagerOptionShowPowerAlertKey: [NSNumber numberWithBool:YES]}];
     }
-
-    // In case still connecting 30 seconds from now, disconnect.
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(30.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        if (bluetoothState != BT_STATE_CONNECTING_UNKNOWN) return;
-#ifdef DEBUG_CONNECT
-        NSLog(@" ---> (%X) Still connecting to unknown, disconnecting...", bluetoothState);
-#endif
-        bluetoothState = BT_STATE_IDLE;
-        [self stopScan];
-        [self scanKnown];
-    });
-
 }
 
 /*
@@ -1061,14 +1049,19 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
 }
 
 - (void)disconnectUnpairedDevices {
-    for (TTDevice *device in [foundDevices mutableCopy]) {
+    NSMutableArray *devicesToDisconnect = [NSMutableArray array];
+    for (TTDevice *device in foundDevices) {
         if (!device.isPaired) {
 #ifdef DEBUG_CONNECT
             NSLog(@" ---> (%X) [Disconnecting] Canceling peripheral connection: %@", bluetoothState, device);
 #endif
-            [self disconnectDevice:device];
+            [devicesToDisconnect addObject:device];
 //            [manager cancelPeripheralConnection:device.peripheral];
         }
+    }
+
+    for (TTDevice *device in devicesToDisconnect) {
+        [self disconnectDevice:device];
     }
     
     [self stopScan];

@@ -39,7 +39,7 @@
             onceUnknownToken = 0;
             [self checkBluetoothState];
             [appDelegate.bluetoothMonitor disconnectUnpairedDevices];
-            [appDelegate.bluetoothMonitor scanUnknown];
+            [appDelegate.bluetoothMonitor scanUnknown:NO];
         });
     });
 
@@ -103,7 +103,7 @@
 #pragma mark - Drawing
 
 - (void)countUnpairedDevices {
-    BOOL found = !![appDelegate.bluetoothMonitor.unpairedDevicesCount integerValue];
+    BOOL found = !![appDelegate.bluetoothMonitor.unpairedDevicesCount integerValue] || appDelegate.bluetoothMonitor.bluetoothState == BT_STATE_CONNECTING_UNKNOWN;
     BOOL connected = !![appDelegate.bluetoothMonitor.unpairedDevicesConnected integerValue];
     
     //    NSLog(@"Counting unpaired devices: %d-%d", found, connected);
@@ -186,6 +186,7 @@
 #pragma mark - Actions
 
 - (void)closeModal:(id)sender {
+    [appDelegate.bluetoothMonitor disconnectUnpairedDevices];
     [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_APP];
 }
 

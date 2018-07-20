@@ -25,12 +25,13 @@ typedef enum {
     BT_STATE_IDLE = 0,
     BT_STATE_SCANNING_KNOWN = 1,
     BT_STATE_CONNECTING_KNOWN = 2,
-    BT_STATE_SCANNING_UNKNOWN = 3,
+    BT_STATE_SCANNING_ALL_PAIRED = 3,
     BT_STATE_CONNECTING_UNKNOWN = 4,
-    BT_STATE_PAIRING_UNKNOWN = 5,
-    BT_STATE_DISCOVER_SERVICES = 6,
-    BT_STATE_DISCOVER_CHARACTERISTICS = 7,
-    BT_STATE_CHAR_NOTIFICATION = 8
+    BT_STATE_SCANNING_ALL_UNPAIRED = 5,
+    BT_STATE_PAIRING_UNKNOWN = 6,
+    BT_STATE_DISCOVER_SERVICES = 7,
+    BT_STATE_DISCOVER_CHARACTERISTICS = 8,
+    BT_STATE_CHAR_NOTIFICATION = 9
 } BluetoothState;
 
 @class TTButtonTimer;
@@ -64,7 +65,7 @@ typedef enum {
 
 - (BOOL)isLECapableHardware;
 - (void)scanKnown;
-- (void)scanUnknown;
+- (void)scanUnknown:(BOOL)isPaired;
 - (void)stopScan;
 - (void)updateBluetoothState:(BOOL)renew;
 - (void)reconnect:(BOOL)renew;
