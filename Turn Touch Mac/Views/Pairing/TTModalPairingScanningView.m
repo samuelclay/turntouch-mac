@@ -179,6 +179,10 @@
 }
 
 - (void)searchingFailure {
+    if (appDelegate.bluetoothMonitor.bluetoothState == BT_STATE_CONNECTING_UNKNOWN) {
+        NSLog(@" ---> Not cancelling unknown search, connecting to unknown...");
+        return;
+    }
     [searchingTimer invalidate];
     [appDelegate.panelController.backgroundView switchPanelModalPairing:MODAL_PAIRING_FAILURE];
 }

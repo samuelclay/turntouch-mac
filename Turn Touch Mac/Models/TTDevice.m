@@ -38,6 +38,14 @@
             self.isPaired ? @"PAIRED" : @"unpaired"];
 }
 
+- (BOOL)isPairing {
+    if (self.isPaired) return NO;
+    if (self.state == TTDeviceStateConnected &&
+        self.peripheral.state == CBPeripheralStateConnected) return YES;
+    
+    return NO;
+}
+
 - (NSString *)stateLabel {
     return self.state == TTDeviceStateConnected ? (self.isPaired ? @"connected" : @"pairing") :
     self.state == TTDeviceStateSearching ? @"searching" :

@@ -108,9 +108,9 @@
     for (TTDevice *device in devices) {
         if (device.peripheral.state == CBPeripheralStateDisconnected &&
             (device.state == TTDeviceStateConnected)) {
+            device.isPaired = [self isDevicePaired:device];
             [device.peripheral setDelegate:nil];
             device.peripheral = nil;
-//            device.isPaired = [self isDevicePaired:device];
         } else {
             [updatedConnectedDevices addObject:device];
         }
@@ -134,6 +134,8 @@
 #pragma mark - Paired
 
 - (BOOL)isPeripheralPaired:(CBPeripheral *)peripheral {
+    if (!peripheral) return false;
+    
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
     NSArray *pairedDevices = [preferences objectForKey:@"TT:devices:paired"];
     return [pairedDevices containsObject:peripheral.identifier.UUIDString];
@@ -155,7 +157,8 @@
     NSInteger count = 0;
     for (TTDevice *device in devices) {
         if (device.peripheral.state != CBPeripheralStateDisconnected &&
-            device.state != TTDeviceStateDisconnected) {
+            device.state != TTDeviceStateDisconnected &&
+            (device.isPaired || device.isPairing)) {
             count++;
         }
     }

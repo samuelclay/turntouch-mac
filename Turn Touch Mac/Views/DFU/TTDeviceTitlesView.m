@@ -149,6 +149,7 @@
     }
     
     for (TTDevice *device in devices) {
+        if (![device isPaired] && ![device isPairing]) continue;
         TTDeviceTitleView *deviceView = [[TTDeviceTitleView alloc] initWithDevice:device];
         [dfuDeviceViews addObject:deviceView];
         [self addView:deviceView inGravity:NSStackViewGravityTop];

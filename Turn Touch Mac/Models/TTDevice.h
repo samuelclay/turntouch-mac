@@ -35,5 +35,6 @@ typedef enum {
 - (NSString *)stateLabel;
 - (id)initWithPeripheral:(CBPeripheral *)peripheral;
 - (void)setNicknameData:(NSData *)nicknameData;
+- (BOOL)isPairing;
 
 @end
