@@ -40,6 +40,7 @@
             [self checkBluetoothState];
             [appDelegate.bluetoothMonitor disconnectUnpairedDevices];
             [appDelegate.bluetoothMonitor scanUnknown:NO];
+            appDelegate.bluetoothMonitor.isPairing = YES;
         });
     });
 
@@ -49,7 +50,8 @@
 
 - (void)viewWillDisappear {
     [appDelegate.bluetoothMonitor stopScan];
-
+    appDelegate.bluetoothMonitor.isPairing = NO;
+    
     if (countdownTimer) {
         [countdownTimer invalidate];
         countdownTimer = nil;

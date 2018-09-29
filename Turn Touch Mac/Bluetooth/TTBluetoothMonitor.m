@@ -51,6 +51,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 @synthesize addingDevice;
 @synthesize unpairedDevicesConnected;
 @synthesize bluetoothState;
+@synthesize isPairing;
 
 - (instancetype)init {
     if (self = [super init]) {
@@ -61,6 +62,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
         lastActionDate = [NSDate date];
         characteristics = [[NSMutableDictionary alloc] init];
         connectionDelay = 4;
+        isPairing = NO;
 
         foundDevices = [[TTDeviceList alloc] init];
         nicknamedConnectedCount = [[NSNumber alloc] initWithInteger:0];
@@ -321,7 +323,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
     if (!device) {
         device = [foundDevices addPeripheral:peripheral];
     }
-    if (!device.isPaired && bluetoothState != BT_STATE_SCANNING_ALL_UNPAIRED) {
+    if (!device.isPaired && !isPairing) {
 #ifdef DEBUG_CONNECT
             NSString *localName = [advertisementData objectForKey:CBAdvertisementDataLocalNameKey];
             NSLog(@" --> (%X) Found unknown bluetooth peripheral, not pairing, so disconnecting: %@/%@ (%@)", bluetoothState, localName, device, RSSI);
@@ -335,15 +337,15 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
     NSString *localName = [advertisementData objectForKey:CBAdvertisementDataLocalNameKey];
     NSLog(@" --> (%X) Found bluetooth peripheral, attempting connect: %@/%@ (%@)", bluetoothState, localName, device, RSSI);
 #endif
-    [self stopScan];
+//    [self stopScan];
     BOOL isAlreadyConnecting = NO;
     for (TTDevice *foundDevice in foundDevices) {
         if (foundDevice.peripheral == peripheral) continue;
         if (foundDevice.state == TTDeviceStateConnecting) {
 #ifdef DEBUG_CONNECT
-            NSLog(@" ---> (%X) [Connecting to another] Canceling peripheral connection: have %@, canceling %@", bluetoothState, foundDevice, peripheral);
+//            NSLog(@" ---> (%X) [Connecting to another] Canceling peripheral connection: have %@, canceling %@", bluetoothState, foundDevice, peripheral);
 #endif
-            isAlreadyConnecting = YES;
+//            isAlreadyConnecting = YES;
         }
     }
     
@@ -370,10 +372,10 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
     for (TTDevice *foundDevice in foundDevices) {
         if (foundDevice.state == TTDeviceStateConnecting && foundDevice.peripheral == peripheral) {
 #ifdef DEBUG_CONNECT
-            NSLog(@" ---> (%X) [Connected another] Canceling peripheral connection: %@ (connecting to %@)", bluetoothState, device, foundDevice);
+//            NSLog(@" ---> (%X) [Connected another] Canceling peripheral connection: %@ (connecting to %@)", bluetoothState, device, foundDevice);
 #endif
-            [manager cancelPeripheralConnection:peripheral];
-            return;
+//            [manager cancelPeripheralConnection:peripheral];
+//            return;
         }
     }
     [peripheral setDelegate:self];

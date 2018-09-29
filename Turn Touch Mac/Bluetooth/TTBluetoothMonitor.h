@@ -62,6 +62,7 @@ typedef enum {
 @property (nonatomic) NSNumber *unpairedDevicesCount;
 @property (nonatomic, readwrite) NSNumber *unpairedDevicesConnected;
 @property (nonatomic) BluetoothState bluetoothState;
+@property (nonatomic, readwrite) BOOL isPairing;
 
 - (BOOL)isLECapableHardware;
 - (void)scanKnown;
