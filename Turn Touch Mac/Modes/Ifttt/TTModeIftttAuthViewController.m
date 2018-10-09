@@ -21,6 +21,7 @@
     appDelegate = (TTAppDelegate *)[NSApp delegate];
     
     [webView setResourceLoadDelegate:self];
+    [webView setFrameLoadDelegate:self];
 }
 
 - (void)authorizeIfttt {
@@ -32,6 +33,7 @@
     }
     components.queryItems = query;
     
+    NSLog(@" ---> Authorizing IFTTT: %@", components.URL.absoluteString);
     [webView setMainFrameURL:components.URL.absoluteString];
 }
 
@@ -51,6 +53,17 @@
     components.queryItems = query;
     
     [webView setMainFrameURL:components.URL.absoluteString];
+}
+
+- (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame {
+    NSURL *url = [[[frame dataSource] request] URL];
+    if (url) NSLog(@" ---> URL: %@", url);
+    NSString *iftttURL = [url absoluteString];
+    NSLog(@" ---> IFTTT URL: %@", iftttURL);
+    [sender stringByEvaluatingJavaScriptFromString:@"window.open = function(open) { return function (url, name, features) { window.location.href = url; return window; }; } (window.open);"];
+    if ([iftttURL containsString:@"connection-finished"]) {
+        [webView setMainFrameURL:@"https://ifttt.com/create/if-turntouch?sid=11"];
+    }
 }
 
 @end

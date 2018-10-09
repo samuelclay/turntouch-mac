@@ -85,6 +85,12 @@ void *kContextActivePanel = &kContextActivePanel;
 
 - (void)applicationWillFinishLaunching:(NSNotification *)notification {
     PFMoveToApplicationsFolderIfNecessary();
+    
+    [[NSAppleEventManager sharedAppleEventManager]
+     setEventHandler:self
+     andSelector:@selector(handleURLEvent:withReplyEvent:)
+     forEventClass:kInternetEventClass
+     andEventID:kAEGetURL];
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender {
@@ -112,6 +118,40 @@ void *kContextActivePanel = &kContextActivePanel;
             [NSApp terminate:self];
         }
     }
+}
+
+- (void)handleURLEvent:(NSAppleEventDescriptor*)event
+        withReplyEvent:(NSAppleEventDescriptor*)replyEvent
+{
+    NSString* url = [[event paramDescriptorForKeyword:keyDirectObject]
+                     stringValue];
+    NSLog(@" ---> URL: %@", url);
+    if ([url hasPrefix:@"turntouch"]) {
+        NSURL *ttUrl = [[NSURL alloc] initWithString:url];
+        NSDictionary* parameters = [self parseQueryString:[ttUrl query]];
+        NSString* articleId = [parameters valueForKey:@"id"];
+        if (articleId != nil) {
+            NSLog(@" --- > IFTTT id: %@", articleId);
+        }
+        return;
+    }
+    return;
+}
+
+- (NSDictionary *)parseQueryString:(NSString *)query
+{
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    NSArray *pairs = [query componentsSeparatedByString:@"&"];
+    
+    for (NSString *pair in pairs)
+    {
+        NSArray *elements = [pair componentsSeparatedByString:@"="];
+        NSString *key = [[elements objectAtIndex:0] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSString *val = [[elements objectAtIndex:1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        [dict setObject:val forKey:key];
+    }
+    return dict;
 }
 
 #pragma mark - Actions

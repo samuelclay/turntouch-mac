@@ -401,6 +401,7 @@
 		FFC730E51B0673E9003538D5 /* TTModeHueRandomOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFC730E41B0673E9003538D5 /* TTModeHueRandomOptions.xib */; };
 		FFC730E81B067434003538D5 /* TTModeHueRandomOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC730E71B067434003538D5 /* TTModeHueRandomOptions.m */; };
 		FFCFCFBA1D88D9CE00FBC3E7 /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFCFCFB81D88D9CE00FBC3E7 /* LaunchAtLoginController.m */; };
+		FFD03839216D1140007FDB24 /* Turn Touch Mac-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFD03838216D1140007FDB24 /* Turn Touch Mac-Info.plist */; };
 		FFD62CCE194F935D0093004D /* TTSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD62CCD194F935D0093004D /* TTSegmentedCell.m */; };
 		FFD62CD11950EE770093004D /* TTSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD62CD01950EE770093004D /* TTSegmentedControl.m */; };
 		FFDC9F711FD74BC800261B76 /* hue_brightness_up.png in Resources */ = {isa = PBXBuildFile; fileRef = FFDC9F6D1FD74BC700261B76 /* hue_brightness_up.png */; };
@@ -1101,6 +1102,7 @@
 		FFC9FE971D022AED00038817 /* ReceiptValidation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ReceiptValidation.h; path = "Supporting Files/ReceiptValidation.h"; sourceTree = "<group>"; };
 		FFCFCFB71D88D9CE00FBC3E7 /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchAtLoginController.h; sourceTree = "<group>"; };
 		FFCFCFB81D88D9CE00FBC3E7 /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchAtLoginController.m; sourceTree = "<group>"; };
+		FFD03838216D1140007FDB24 /* Turn Touch Mac-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Turn Touch Mac-Info.plist"; path = "Supporting Files/Turn Touch Mac-Info.plist"; sourceTree = "<group>"; };
 		FFD62CCC194F935D0093004D /* TTSegmentedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSegmentedCell.h; path = "Views/Mode Options/TTSegmentedCell.h"; sourceTree = "<group>"; };
 		FFD62CCD194F935D0093004D /* TTSegmentedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSegmentedCell.m; path = "Views/Mode Options/TTSegmentedCell.m"; sourceTree = "<group>"; };
 		FFD62CCF1950EE770093004D /* TTSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSegmentedControl.h; path = "Views/Mode Options/TTSegmentedControl.h"; sourceTree = "<group>"; };
@@ -1990,6 +1992,7 @@
 				FF936038196DF0B600675B7B /* fonts */,
 				FF9170941AF9B19100FAAC88 /* sounds */,
 				FF98A2E91867DC320032CC7A /* main.m */,
+				FFD03838216D1140007FDB24 /* Turn Touch Mac-Info.plist */,
 				FFAA61E21ABA6AD000AA422B /* Turn Touch Mac-Prefix.pch */,
 				FF98A2EC1867DC320032CC7A /* Turn Touch Mac.entitlements */,
 				FF8C833F17AB14B5000166FC /* InfoPlist.strings */,
@@ -2774,6 +2777,7 @@
 				FF2705471C93A348000BB10F /* modal_ftux_change_mode.png in Resources */,
 				FFAB2C181E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.xib in Resources */,
 				FF8A73C71ABA69410023AA53 /* logo_32.png in Resources */,
+				FFD03839216D1140007FDB24 /* Turn Touch Mac-Info.plist in Resources */,
 				FF3D22111F1F1CB400F7F5BF /* TTModeSonosConnected.xib in Resources */,
 				FFFF0C8F1EFDFF8100E29E6D /* mode_ifttt.png in Resources */,
 				FF01CA7A1C46DCC200F83A73 /* mode_video.png in Resources */,

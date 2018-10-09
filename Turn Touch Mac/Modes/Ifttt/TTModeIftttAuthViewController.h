@@ -11,7 +11,7 @@
 #import "TTAppDelegate.h"
 #import "TTModeIfttt.h"
 
-@interface TTModeIftttAuthViewController : NSViewController <WebResourceLoadDelegate> {
+@interface TTModeIftttAuthViewController : NSViewController <WebResourceLoadDelegate, WebFrameLoadDelegate> {
     TTAppDelegate *appDelegate;
 }
 
