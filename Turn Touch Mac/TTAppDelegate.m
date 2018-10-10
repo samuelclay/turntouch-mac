@@ -10,6 +10,7 @@
 #import <dispatch/dispatch.h>
 #import "LaunchAtLoginController.h"
 #import "PFMoveApplication.h"
+#import <ApplicationServices/ApplicationServices.h>
 
 @implementation TTAppDelegate
 
@@ -81,6 +82,14 @@ void *kContextActivePanel = &kContextActivePanel;
 //    [self.hudController toastActiveMode];
 //    [self.hudController toastActiveAction:nil inDirection:SOUTH];
 //    NSLog(@"%@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
+    
+    NSDictionary *options = @{(__bridge id)kAXTrustedCheckOptionPrompt: @NO};
+    BOOL accessibilityEnabled = AXIsProcessTrustedWithOptions((CFDictionaryRef)options);
+    if (!accessibilityEnabled) {
+        NSString *urlString = @"x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility";
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:urlString]];
+    }
+    NSLog(@" ---> Trusted in accessibility: %d", accessibilityEnabled);
 }
 
 - (void)applicationWillFinishLaunching:(NSNotification *)notification {
