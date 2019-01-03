@@ -64,6 +64,7 @@
                                   @"TTModeWemo",
                                   @"TTModeAlarmClock",
                                   @"TTModeSpotify",
+                                  @"TTModeAirfoil",
                                   @"TTModeVideo",
                                   @"TTModeNews",
                                   @"TTModeWeb",

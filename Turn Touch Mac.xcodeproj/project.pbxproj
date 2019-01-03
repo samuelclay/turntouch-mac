@@ -66,6 +66,10 @@
 		FF01CAAC1C473EC100F83A73 /* NSXMLNode+HTMLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = FF01CA951C473EC100F83A73 /* NSXMLNode+HTMLUtilities.m */; };
 		FF01CAAF1C473EC100F83A73 /* KBWebArchiver.m in Sources */ = {isa = PBXBuildFile; fileRef = FF01CA9B1C473EC100F83A73 /* KBWebArchiver.m */; };
 		FF01CAB01C473EC100F83A73 /* NSURL+ValidityChecking.m in Sources */ = {isa = PBXBuildFile; fileRef = FF01CA9D1C473EC100F83A73 /* NSURL+ValidityChecking.m */; };
+		FF0DE99B21B8D1BA00037B07 /* TTModeAirfoilVolumeJumpOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF0DE99721B8D1BA00037B07 /* TTModeAirfoilVolumeJumpOptions.xib */; };
+		FF0DE99C21B8D1BA00037B07 /* TTModeAirfoilVolumeJumpOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0DE99821B8D1BA00037B07 /* TTModeAirfoilVolumeJumpOptions.m */; };
+		FF0DE99D21B8D1BA00037B07 /* TTModeAirfoil.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF0DE99921B8D1BA00037B07 /* TTModeAirfoil.plist */; };
+		FF0DE99E21B8D1BA00037B07 /* TTModeAirfoil.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0DE99A21B8D1BA00037B07 /* TTModeAirfoil.m */; };
 		FF0E12BB1824286600D49EC7 /* TTModeMap.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12BA1824286600D49EC7 /* TTModeMap.m */; };
 		FF0E12CA18247BAE00D49EC7 /* TTMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12C918247BAE00D49EC7 /* TTMode.m */; };
 		FF0E12CF18247D6100D49EC7 /* TTModeMusic.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12CE18247D6100D49EC7 /* TTModeMusic.m */; };
@@ -402,6 +406,7 @@
 		FFC730E81B067434003538D5 /* TTModeHueRandomOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC730E71B067434003538D5 /* TTModeHueRandomOptions.m */; };
 		FFCFCFBA1D88D9CE00FBC3E7 /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFCFCFB81D88D9CE00FBC3E7 /* LaunchAtLoginController.m */; };
 		FFD03839216D1140007FDB24 /* Turn Touch Mac-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFD03838216D1140007FDB24 /* Turn Touch Mac-Info.plist */; };
+		FFD4DDDB21DDBC8F00E8D8C1 /* app_airfoil.png in Resources */ = {isa = PBXBuildFile; fileRef = FFD4DDDA21DDBC8F00E8D8C1 /* app_airfoil.png */; };
 		FFD62CCE194F935D0093004D /* TTSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD62CCD194F935D0093004D /* TTSegmentedCell.m */; };
 		FFD62CD11950EE770093004D /* TTSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD62CD01950EE770093004D /* TTSegmentedControl.m */; };
 		FFDC9F711FD74BC800261B76 /* hue_brightness_up.png in Resources */ = {isa = PBXBuildFile; fileRef = FFDC9F6D1FD74BC700261B76 /* hue_brightness_up.png */; };
@@ -561,6 +566,13 @@
 		FF01CA9B1C473EC100F83A73 /* KBWebArchiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KBWebArchiver.m; sourceTree = "<group>"; };
 		FF01CA9C1C473EC100F83A73 /* NSURL+ValidityChecking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+ValidityChecking.h"; sourceTree = "<group>"; };
 		FF01CA9D1C473EC100F83A73 /* NSURL+ValidityChecking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+ValidityChecking.m"; sourceTree = "<group>"; };
+		FF0DE99321B8D1BA00037B07 /* TTModeAirfoilVolumeJumpOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeAirfoilVolumeJumpOptions.h; sourceTree = "<group>"; };
+		FF0DE99421B8D1BA00037B07 /* Airfoil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Airfoil.h; sourceTree = "<group>"; };
+		FF0DE99621B8D1BA00037B07 /* TTModeAirfoil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeAirfoil.h; sourceTree = "<group>"; };
+		FF0DE99721B8D1BA00037B07 /* TTModeAirfoilVolumeJumpOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTModeAirfoilVolumeJumpOptions.xib; sourceTree = "<group>"; };
+		FF0DE99821B8D1BA00037B07 /* TTModeAirfoilVolumeJumpOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeAirfoilVolumeJumpOptions.m; sourceTree = "<group>"; };
+		FF0DE99921B8D1BA00037B07 /* TTModeAirfoil.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TTModeAirfoil.plist; sourceTree = "<group>"; };
+		FF0DE99A21B8D1BA00037B07 /* TTModeAirfoil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeAirfoil.m; sourceTree = "<group>"; };
 		FF0E12B91824286600D49EC7 /* TTModeMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeMap.h; path = Models/TTModeMap.h; sourceTree = "<group>"; };
 		FF0E12BA1824286600D49EC7 /* TTModeMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeMap.m; path = Models/TTModeMap.m; sourceTree = "<group>"; };
 		FF0E12C3182477CB00D49EC7 /* TTModeProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TTModeProtocol.h; path = Models/TTModeProtocol.h; sourceTree = "<group>"; };
@@ -1103,6 +1115,7 @@
 		FFCFCFB71D88D9CE00FBC3E7 /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchAtLoginController.h; sourceTree = "<group>"; };
 		FFCFCFB81D88D9CE00FBC3E7 /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchAtLoginController.m; sourceTree = "<group>"; };
 		FFD03838216D1140007FDB24 /* Turn Touch Mac-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Turn Touch Mac-Info.plist"; path = "Supporting Files/Turn Touch Mac-Info.plist"; sourceTree = "<group>"; };
+		FFD4DDDA21DDBC8F00E8D8C1 /* app_airfoil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_airfoil.png; sourceTree = "<group>"; };
 		FFD62CCC194F935D0093004D /* TTSegmentedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSegmentedCell.h; path = "Views/Mode Options/TTSegmentedCell.h"; sourceTree = "<group>"; };
 		FFD62CCD194F935D0093004D /* TTSegmentedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSegmentedCell.m; path = "Views/Mode Options/TTSegmentedCell.m"; sourceTree = "<group>"; };
 		FFD62CCF1950EE770093004D /* TTSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSegmentedControl.h; path = "Views/Mode Options/TTSegmentedControl.h"; sourceTree = "<group>"; };
@@ -1233,6 +1246,7 @@
 			isa = PBXGroup;
 			children = (
 				FF01CA2C1C46DCC200F83A73 /* app_music.png */,
+				FFD4DDDA21DDBC8F00E8D8C1 /* app_airfoil.png */,
 				FF01CA2D1C46DCC200F83A73 /* button_chevron.png */,
 				FF01CA2E1C46DCC200F83A73 /* button_dash.png */,
 				FF01CA2F1C46DCC200F83A73 /* button_plus.png */,
@@ -1322,6 +1336,21 @@
 			path = webarchiver;
 			sourceTree = "<group>";
 		};
+		FF0DE99221B8D1BA00037B07 /* Airfoil */ = {
+			isa = PBXGroup;
+			children = (
+				FF0DE99421B8D1BA00037B07 /* Airfoil.h */,
+				FF0DE99921B8D1BA00037B07 /* TTModeAirfoil.plist */,
+				FF0DE99621B8D1BA00037B07 /* TTModeAirfoil.h */,
+				FF0DE99A21B8D1BA00037B07 /* TTModeAirfoil.m */,
+				FF0DE99321B8D1BA00037B07 /* TTModeAirfoilVolumeJumpOptions.h */,
+				FF0DE99821B8D1BA00037B07 /* TTModeAirfoilVolumeJumpOptions.m */,
+				FF0DE99721B8D1BA00037B07 /* TTModeAirfoilVolumeJumpOptions.xib */,
+			);
+			name = Airfoil;
+			path = Modes/Airfoil;
+			sourceTree = "<group>";
+		};
 		FF0E12B51824283B00D49EC7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -1353,6 +1382,7 @@
 				FFAA4F6C182D99440049FFC7 /* Alarm Clock */,
 				FFAA4F6B182D993F0049FFC7 /* News */,
 				FF0E12D51828560400D49EC7 /* Video */,
+				FF0DE99221B8D1BA00037B07 /* Airfoil */,
 				FF0E12CB18247D3000D49EC7 /* Music */,
 				FFE2D47B1A51EDF000DDD413 /* Hue */,
 				FFABAB971C334FCE00AD5620 /* Web */,
@@ -2652,6 +2682,7 @@
 				FF01CA641C46DCC200F83A73 /* finger.png in Resources */,
 				FF01CA701C46DCC200F83A73 /* mode_meditation.png in Resources */,
 				FFFE8CAA20045524007AA4AF /* TTModePresentationOptions.xib in Resources */,
+				FF0DE99B21B8D1BA00037B07 /* TTModeAirfoilVolumeJumpOptions.xib in Resources */,
 				FF01CA731C46DCC200F83A73 /* mode_nest.png in Resources */,
 				FFABAB9C1C33674000AD5620 /* TTModeWebWindowController.xib in Resources */,
 				FF6135561C61CDDC00F431D7 /* hue_evening.png in Resources */,
@@ -2661,6 +2692,7 @@
 				FF01CA761C46DCC200F83A73 /* mode_presentation.png in Resources */,
 				FF8D1AA91C98F5D3006AA1A2 /* logo_white_with_title.png in Resources */,
 				FFF049781CE11FCF006CE427 /* TTModeHueBridge.xib in Resources */,
+				FFD4DDDB21DDBC8F00E8D8C1 /* app_airfoil.png in Resources */,
 				FF8D1AB31C9902F8006AA1A2 /* TTModalSupportView.xib in Resources */,
 				FFFE8CB7200574D9007AA4AF /* TTModeCustomScriptOptions.xib in Resources */,
 				FFFF0C8B1EFCA36500E29E6D /* TTModeIftttAuthViewController.xib in Resources */,
@@ -2693,6 +2725,7 @@
 				FF3641DC1A5F5617003CC03C /* TTModeHueOptions.xib in Resources */,
 				FF557AD61C4DBB4A005FB7FD /* TTModeNestAuthViewController.xib in Resources */,
 				FF913D271924366C005C336F /* TTModeAlarmClock.plist in Resources */,
+				FF0DE99D21B8D1BA00037B07 /* TTModeAirfoil.plist in Resources */,
 				FF8A73C81ABA69410023AA53 /* logo_64.png in Resources */,
 				FFFF0C841EFC976B00E29E6D /* TTModeIftttTriggerActionOptions.xib in Resources */,
 				FF3D22071F1F1C9400F7F5BF /* TTModeSonosConnect.xib in Resources */,
@@ -2951,6 +2984,7 @@
 				FF1F135F1ADC90E700B52A0D /* MLCalendarView.m in Sources */,
 				FFAA6D121F29591F00039F3C /* TTModePresentation.m in Sources */,
 				FF8D1AB21C9902F8006AA1A2 /* TTModalSupportView.m in Sources */,
+				FF0DE99C21B8D1BA00037B07 /* TTModeAirfoilVolumeJumpOptions.m in Sources */,
 				FF904BA71BEBFCDE00AD00F3 /* TTDeviceTitleView.m in Sources */,
 				FFBD46F81D5A8C2700838AAC /* TTModeNewsNewsBlur.m in Sources */,
 				FF904B781BE9B88700AD00F3 /* DFUOperations.m in Sources */,
@@ -2970,6 +3004,7 @@
 				FF7305B21A5C9C76009A852D /* DDTTYLogger.m in Sources */,
 				FFFF0C7E1EFC975300E29E6D /* TTModeIftttConnected.m in Sources */,
 				FF904B761BE9B88700AD00F3 /* Utility.m in Sources */,
+				FF0DE99E21B8D1BA00037B07 /* TTModeAirfoil.m in Sources */,
 				FF2C2E561C545E6400FAD7E2 /* XPathQuery.m in Sources */,
 				FFF05F3B18F77BE000AC6230 /* TTModeTitleView.m in Sources */,
 				FF557AB41C49C63D005FB7FD /* FirebaseManager.m in Sources */,
