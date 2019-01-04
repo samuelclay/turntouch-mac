@@ -12,17 +12,11 @@
 
 App | Modes
 :----:|:----:
-| ![](Screenshots/Screen%20Shot%202019-01-04%20at%20Jan%204%2012.56.01%20PM) | ![](Screenshots/Screen%20Shot%202019-01-04%20at%20Jan%204%2012.56.18%20PM) |
+| ![](Screenshots/Screen%20Shot%202019-01-04%20at%20Jan%204%2012.56.01%20PM.png) | ![](Screenshots/Screen%20Shot%202019-01-04%20at%20Jan%204%2012.56.18%20PM.png) |
 
 How It Works | Tap a button | Hold a button | Multiple actions | HUD
 :---:|:---:|:---:|:---:|:---:
-| ![](Screenshots/Screen%20Shot%202019-01-04%20at%20Jan%204%2012.55.47%20PM) | ![](Screenshots/Screen%20Shot%202019-01-04%20at%20Jan%204%2012.55.49%20PM) | ![](Screenshots/Screen%20Shot%202019-01-04%20at%20Jan%204%2012.55.51%20PM) | ![](Screenshots/Screen%20Shot%202019-01-04%20at%20Jan%204%2012.55.52%20PM) | ![](Screenshots/Screen%20Shot%202019-01-04%20at%20Jan%204%2012.55.55%20PM) | 
-
-## Screenshots of Turn Touch on iPad
-
-How It Works | Tap a button | Hold a button | Multiple actions | HUD
-:---:|:---:|:---:|:---:|:---:
-| ![](Screenshots/Simulator%20Screen%20Shot%20Sep%2022,%202016,%20Sep%2022%202.02.22%20PM.png) | ![](Screenshots/Simulator%20Screen%20Shot%20Sep%2022,%202016,%20Sep%2022%202.02.23%20PM.png) | ![](Screenshots/Simulator%20Screen%20Shot%20Sep%2022,%202016,%20Sep%2022%202.02.24%20PM.png) | ![](Screenshots/Simulator%20Screen%20Shot%20Sep%2022,%202016,%20Sep%2022%202.02.26%20PM.png) | ![](Screenshots/Simulator%20Screen%20Shot%20Sep%2022,%202016,%20Sep%2022%202.02.27%20PM.png) | 
+| ![](Screenshots/Screen%20Shot%202019-01-04%20at%20Jan%204%2012.55.47%20PM.png) | ![](Screenshots/Screen%20Shot%202019-01-04%20at%20Jan%204%2012.55.49%20PM.png) | ![](Screenshots/Screen%20Shot%202019-01-04%20at%20Jan%204%2012.55.51%20PM.png) | ![](Screenshots/Screen%20Shot%202019-01-04%20at%20Jan%204%2012.55.52%20PM.png) | ![](Screenshots/Screen%20Shot%202019-01-04%20at%20Jan%204%2012.55.55%20PM.png) | 
 
 ## Features
 
@@ -35,7 +29,7 @@ How It Works | Tap a button | Hold a button | Multiple actions | HUD
 
 ## Requirements
 
-- iOS 12.0+
+- macOS 10.14+
 - Xcode 10.1
 
 ## Installation
@@ -47,19 +41,19 @@ You can use [CocoaPods](http://cocoapods.org/) to install all of the dependencie
 pod install
 ```
 
-#### Running on a device
+#### Running on a Mac
 
-To use Turn Touch you must run the iOS app on a device. Works with both iPhone and iPad.
+Works on all Macs running the latest OS.
 
 ## Contribute
 
-We would love you for the contribution to the **Turn Touch iOS app**. 
+We would love you for the contribution to the **Turn Touch Mac OS app**. 
 
 Here's what you will need to do to add a new app:
 
-1. Copy one of the [/Turn Touch iOS/Modes](Turn%20Touch%20iOS/Modes) apps. If you can't choose, use the Music app, as it's pretty easy to clean.
-2. Add your app to the list of available apps in [/Turn Touch iOS/Models/TTModeMap.swift](Turn%20Touch%20iOS/Models/TTModeMap.swift)
-3. Make sure to test on your iOS device
+1. Copy one of the [/Turn Touch Mac/Modes](Turn%20Touch%20Mac/Modes) apps. If you can't choose, use the Music app, as it's pretty easy to clean.
+2. Add your app to the list of available apps in [/Turn Touch Mac/Models/TTModeMap.m](Turn%20Touch%20Mac/Models/TTModeMap.m)
+3. Make sure to test on your Mac
 4. Submit a Pull Request with the app improvement or addition.
 
 ## Turn Touch open source repositories and documentation
@@ -84,7 +78,7 @@ Samuel Clay – [@samuelclay](https://twitter.com/samuelclay) – [samuelclay.co
 
 Distributed under the MIT license. See ``LICENSE`` for more information.
 
-[https://github.com/samuelclay/turntouch-ios](https://github.com/samuelclay)
+[https://github.com/samuelclay/turntouch-app](https://github.com/samuelclay)
 
 [swift-image]:https://img.shields.io/badge/swift-3.0-orange.svg
 [swift-url]: https://swift.org/
