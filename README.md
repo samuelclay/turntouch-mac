@@ -60,7 +60,7 @@ Here's what you will need to do to add a new app:
 
 Everything about Turn Touch is open source and well documented. Here are all of Turn Touch's repos:
 
-* [Turn Touch Mac OS app](https://github.com/samuelclay/turntouch-app/)
+* [Turn Touch Mac OS app](https://github.com/samuelclay/turntouch-mac/)
 * [Turn Touch iOS app](https://github.com/samuelclay/turntouch-ios/)
 * [Turn Touch remote firmware and board layout](https://github.com/samuelclay/turntouch-remote/)
 * [Turn Touch enclosure, CAD, and CAM](https://github.com/samuelclay/turntouch-enclosure/)
@@ -78,7 +78,7 @@ Samuel Clay – [@samuelclay](https://twitter.com/samuelclay) – [samuelclay.co
 
 Distributed under the MIT license. See ``LICENSE`` for more information.
 
-[https://github.com/samuelclay/turntouch-app](https://github.com/samuelclay)
+[https://github.com/samuelclay/turntouch-mac](https://github.com/samuelclay)
 
 [swift-image]:https://img.shields.io/badge/swift-3.0-orange.svg
 [swift-url]: https://swift.org/

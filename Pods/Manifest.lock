@@ -18,10 +18,15 @@ DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - Sparkle
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - Sparkle
+
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Sparkle: 06ea33170007c5937ee54da481b4481af98fac79
 
 PODFILE CHECKSUM: b77481e5dfb11a4866b25c2c864737f9f2d7e9b6
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.5.3
