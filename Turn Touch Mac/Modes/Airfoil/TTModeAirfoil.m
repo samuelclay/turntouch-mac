@@ -53,7 +53,7 @@ NSString *const kAirfoilPlaylistShuffleDouble = @"AirfoilPlaylistShuffleDouble";
     return @"Volume jump";
 }
 - (NSString *)titleTTModeAirfoilMute {
-    return @"Volume jump";
+    return @"Mute";
 }
 
 #pragma mark - Action Images
@@ -67,13 +67,21 @@ NSString *const kAirfoilPlaylistShuffleDouble = @"AirfoilPlaylistShuffleDouble";
 - (NSString *)imageTTModeAirfoilVolumeJump {
     return @"music_volume.png";
 }
+- (NSString *)imageTTModeAirfoilMute {
+    return @"music_mute.png";
+}
 
 #pragma mark - Progress
 
 - (NSInteger)progressVolume {
-    AirfoilApplication *airfoil = [SBApplication applicationWithBundleIdentifier:@"com.rogueamoeba.Airfoil"];
-
-    return airfoil.linkedVolume * 100;
+    NSArray *speakers = [self airfoilSpeakers];
+    
+    for (AirfoilSpeaker *speaker in speakers) {
+        double volume = speaker.volume;
+        return volume * 100;
+    }
+    
+    return 0;
 }
 
 - (NSInteger)progressTTModeAirfoilVolumeUp {
@@ -138,6 +146,17 @@ NSString *const kAirfoilPlaylistShuffleDouble = @"AirfoilPlaylistShuffleDouble";
         if (volume != volumeJump) originalVolume = volume;
         
         speaker.volume = (volume == volumeJump ? originalVolume : volumeJump);
+    }
+}
+
+- (void)runTTModeAirfoilMute:(TTModeDirection)direction {
+    NSArray *speakers = [self airfoilSpeakers];
+    
+    for (AirfoilSpeaker *speaker in speakers) {
+        double volume = speaker.volume;
+        if (volume != 0) originalVolume = volume;
+        
+        speaker.volume = (volume == 0 ? originalVolume : 0);
     }
 }
 

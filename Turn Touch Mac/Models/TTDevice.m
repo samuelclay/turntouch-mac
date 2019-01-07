@@ -81,4 +81,25 @@
         isFirmwareOld = NO;
     }
 }
+
+- (void)setActionDate {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *lastActionDateKey = [NSString stringWithFormat:@"TT:device:%@:lastAction", self.uuid];
+    self.lastActionDate = [prefs objectForKey:lastActionDateKey];
+    
+    if (!self.lastActionDate) {
+        self.lastActionDate = [NSDate date];
+        [prefs setObject:self.lastActionDate forKey:lastActionDateKey];
+    }
+}
+
+- (void)updateLastAction {
+    self.lastActionDate = [NSDate date];
+    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *lastActionDateKey = [NSString stringWithFormat:@"TT:device:%@:lastAction", self.uuid];
+    [prefs setObject:self.lastActionDate forKey:lastActionDateKey];
+    [prefs synchronize];
+}
+
 @end

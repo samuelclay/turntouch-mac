@@ -2,7 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>TTModeMusicVolumeJump:musicVolumeJump</key>
+	<key>AirfoilVolumeJump</key>
 	<integer>25</integer>
 </dict>
 </plist>

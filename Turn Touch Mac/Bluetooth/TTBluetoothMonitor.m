@@ -632,7 +632,7 @@ didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic
         TTDevice *device = [foundDevices deviceForPeripheral:peripheral];
         device.isNotified = YES;
         device.state = TTDeviceStateConnected;
-        device.lastActionDate = [NSDate date];
+        [device setActionDate];
         [self countDevices];
         
         bluetoothState = BT_STATE_IDLE;
@@ -663,7 +663,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
                     [self pairDeviceSuccess:peripheral];
                 }
             }
-            device.lastActionDate = [NSDate date];
+            [device updateLastAction];
             [self setValue:[NSDate date] forKey:@"lastActionDate"];
         } else {
             NSLog(@"Characteristic error: %@ / %@", characteristic.value, error);

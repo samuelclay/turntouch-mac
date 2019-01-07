@@ -36,5 +36,6 @@ typedef enum {
 - (id)initWithPeripheral:(CBPeripheral *)peripheral;
 - (void)setNicknameData:(NSData *)nicknameData;
 - (BOOL)isPairing;
-
+- (void)setActionDate;
+- (void)updateLastAction;
 @end
