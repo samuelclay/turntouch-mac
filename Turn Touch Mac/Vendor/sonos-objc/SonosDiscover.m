@@ -29,7 +29,7 @@ typedef void (^findDevicesBlock)(NSArray *ipAddresses);
             __block NSMutableArray         *controllers      = [[NSMutableArray alloc] init];
             __block dispatch_semaphore_t   responseSemaphore = dispatch_semaphore_create(1);
             __block int                    responseCount     = 0;
-            __block void (^callCompletionHandlerIfReady)(void)   = ^{
+            __block void (^callCompletionHandlerIfReady)()   = ^{
                 dispatch_semaphore_wait(responseSemaphore, DISPATCH_TIME_FOREVER);
                 responseCount++;
                 BOOL shouldCallCompletionHandler = responseCount == ipAddresses.count;
@@ -45,7 +45,7 @@ typedef void (^findDevicesBlock)(NSArray *ipAddresses);
                 callCompletionHandlerIfReady();
                 return;
             }
-            void (^handler)(NSData *, NSURLResponse *, NSError *) = ^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            void (^handler)(NSURLResponse *, NSData *, NSError *) = ^(NSURLResponse *response, NSData *data, NSError *error) {
                 NSHTTPURLResponse *hResponse = (NSHTTPURLResponse*)response;
                 if (hResponse.statusCode != 200 || error){
                     callCompletionHandlerIfReady();
@@ -75,9 +75,8 @@ typedef void (^findDevicesBlock)(NSArray *ipAddresses);
 
             for (NSString *ipAddress in ipAddresses) {
                 NSURL        *url     = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/status/topology", ipAddress]];
-                NSURLSession *session = [NSURLSession sharedSession];
-                
-                [[session dataTaskWithURL:url completionHandler:handler] resume];
+                NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:5];
+                [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc] init] completionHandler:handler];
             }
         }];
     });

@@ -122,6 +122,12 @@ __a < __b ? __a : __b; })
         soap_action:@"SetAVTransportURI"
         soap_arguments:[NSString stringWithFormat:@"<InstanceID>0</InstanceID><CurrentURI>%@</CurrentURI><CurrentURIMetaData>%@</CurrentURIMetaData>", track, URIMetaData]
         completion:^(id responseObject, NSError *error) {
+            if (error) {
+                if (block) {
+                    block(responseObject, error);
+                }
+                return;
+            }
             [self play:nil completion:block];
         }];
 }
@@ -228,7 +234,7 @@ __a < __b ? __a : __b; })
          upnp:@"/MediaRenderer/AVTransport/Control"
          soap_service:@"urn:schemas-upnp-org:service:AVTransport:1"
          soap_action:@"AddURIToQueue"
-         soap_arguments:[NSString stringWithFormat:@"<InstanceID>0</InstanceID><EnqueuedURI>%@</EnqueuedURI><EnqueuedURIMetaData></EnqueuedURIMetaData><DesiredFirstTrackNumberEnqueued>0</DesiredFirstTrackNumberEnqueued><EnqueueAsNext>1</EnqueueAsNext>", track]
+         soap_arguments:[NSString stringWithFormat:@"<InstanceID>0</InstanceID><EnqueuedURI>%@</EnqueuedURI><EnqueuedURIMetaData></EnqueuedURIMetaData><DesiredFirstTrackNumberEnqueued>1</DesiredFirstTrackNumberEnqueued><EnqueueAsNext>0</EnqueueAsNext>", track]
          completion:block];
     }
 }
@@ -249,7 +255,7 @@ __a < __b ? __a : __b; })
          upnp:@"/MediaRenderer/AVTransport/Control"
          soap_service:@"urn:schemas-upnp-org:service:AVTransport:1"
          soap_action:@"AddURIToQueue"
-         soap_arguments:[NSString stringWithFormat:@"<InstanceID>0</InstanceID><EnqueuedURI>%@</EnqueuedURI><EnqueuedURIMetaData>%@</EnqueuedURIMetaData><DesiredFirstTrackNumberEnqueued>0</DesiredFirstTrackNumberEnqueued><EnqueueAsNext>1</EnqueueAsNext>", track, URIMetaData]
+         soap_arguments:[NSString stringWithFormat:@"<InstanceID>0</InstanceID><EnqueuedURI>%@</EnqueuedURI><EnqueuedURIMetaData>%@</EnqueuedURIMetaData><DesiredFirstTrackNumberEnqueued>1</DesiredFirstTrackNumberEnqueued><EnqueueAsNext>0</EnqueueAsNext>", track, URIMetaData]
          completion:block];
     }
 }
@@ -549,6 +555,24 @@ __a < __b ? __a : __b; })
             returnData[@"QueueItems"] = queue_items;
             block(returnData, nil);
     }];
+}
+
+- (void)join:(SonosController *)master completion:(void (^ _Nullable)(NSDictionary * _Nullable response, NSError * _Nullable error)) block {
+    [self
+        upnp:@"/MediaRenderer/AVTransport/Control"
+        soap_service:@"urn:schemas-upnp-org:service:AVTransport:1"
+        soap_action:@"SetAVTransportURI"
+        soap_arguments:[NSString stringWithFormat:@"<InstanceID>0</InstanceID><CurrentURI>x-rincon:%@</CurrentURI><CurrentURIMetaData></CurrentURIMetaData>", master.uuid]
+        completion:block];
+}
+
+- (void)unjoin:(void (^ _Nullable)(NSDictionary * _Nullable response, NSError * _Nullable error)) block {
+    [self
+        upnp:@"/MediaRenderer/AVTransport/Control"
+        soap_service:@"urn:schemas-upnp-org:service:AVTransport:1"
+        soap_action:@"BecomeCoordinatorOfStandaloneGroup"
+        soap_arguments:@"<InstanceID>0</InstanceID>"
+        completion:block];
 }
 
 -(BOOL)isEqual:(SonosController *)other {
