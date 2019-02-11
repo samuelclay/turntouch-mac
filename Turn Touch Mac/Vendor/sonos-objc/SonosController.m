@@ -731,7 +731,7 @@ __a < __b ? __a : __b; })
     }
     
     NSDictionary *responseDictionary = [XMLReader dictionaryForXMLData:data error:&error];
-    NSObject *oneOrManyPlayers = responseDictionary[@"ZPSupportInfo"][@"ZonePlayers"][@"ZonePlayer"];
+    NSObject *oneOrManyPlayers = responseDictionary[@"ZPSupportInfo"][@"ZPInfo"];
     NSArray *zonePlayers;
     if (!oneOrManyPlayers) {
       zonePlayers = [[NSArray alloc] init];
@@ -742,12 +742,13 @@ __a < __b ? __a : __b; })
     }
     
     for (NSDictionary *dictionary in zonePlayers) {
-      NSURL *url = [NSURL URLWithString:dictionary[@"location"]];
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@:%d", dictionary[@"IPAddress"][@"text"], self.port]];
       if ([url.host isEqualToString:self.ip] && url.port.intValue == self.port) {
-        self.group            = dictionary[@"group"];
-        self.name             = dictionary[@"text"];
-        self.uuid             = dictionary[@"uuid"];
-        self.coordinator      = [dictionary[@"coordinator"] isEqualToString:@"true"];
+//        self.group            = dictionary[@"group"];
+        self.name             = dictionary[@"ZoneName"][@"text"];
+        self.uuid             = dictionary[@"SerialNumber"][@"text"];
+//        self.coordinator      = [dictionary[@"coordinator"] isEqualToString:@"true"];
+          self.coordinator = YES;
 
         break;
       }
@@ -756,7 +757,7 @@ __a < __b ? __a : __b; })
     block(error);
   };
   
-  NSURL        *url     = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@:%d/status/topology", self.ip, self.port]];
+  NSURL        *url     = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@:%d/status/zp", self.ip, self.port]];
   NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:5];
   [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc] init] completionHandler:handler];
 }
