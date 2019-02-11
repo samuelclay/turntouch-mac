@@ -406,6 +406,7 @@
 		FFC730E81B067434003538D5 /* TTModeHueRandomOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC730E71B067434003538D5 /* TTModeHueRandomOptions.m */; };
 		FFCFCFBA1D88D9CE00FBC3E7 /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFCFCFB81D88D9CE00FBC3E7 /* LaunchAtLoginController.m */; };
 		FFD03839216D1140007FDB24 /* Turn Touch Mac-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFD03838216D1140007FDB24 /* Turn Touch Mac-Info.plist */; };
+		FFD45D532211D84C0065DF1A /* SonosPlayable.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD45D512211D84C0065DF1A /* SonosPlayable.m */; };
 		FFD4DDDB21DDBC8F00E8D8C1 /* app_airfoil.png in Resources */ = {isa = PBXBuildFile; fileRef = FFD4DDDA21DDBC8F00E8D8C1 /* app_airfoil.png */; };
 		FFD62CCE194F935D0093004D /* TTSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD62CCD194F935D0093004D /* TTSegmentedCell.m */; };
 		FFD62CD11950EE770093004D /* TTSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD62CD01950EE770093004D /* TTSegmentedControl.m */; };
@@ -1115,6 +1116,8 @@
 		FFCFCFB71D88D9CE00FBC3E7 /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchAtLoginController.h; sourceTree = "<group>"; };
 		FFCFCFB81D88D9CE00FBC3E7 /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchAtLoginController.m; sourceTree = "<group>"; };
 		FFD03838216D1140007FDB24 /* Turn Touch Mac-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Turn Touch Mac-Info.plist"; path = "Supporting Files/Turn Touch Mac-Info.plist"; sourceTree = "<group>"; };
+		FFD45D512211D84C0065DF1A /* SonosPlayable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SonosPlayable.m; sourceTree = "<group>"; };
+		FFD45D522211D84C0065DF1A /* SonosPlayable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SonosPlayable.h; sourceTree = "<group>"; };
 		FFD4DDDA21DDBC8F00E8D8C1 /* app_airfoil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_airfoil.png; sourceTree = "<group>"; };
 		FFD62CCC194F935D0093004D /* TTSegmentedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSegmentedCell.h; path = "Views/Mode Options/TTSegmentedCell.h"; sourceTree = "<group>"; };
 		FFD62CCD194F935D0093004D /* TTSegmentedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSegmentedCell.m; path = "Views/Mode Options/TTSegmentedCell.m"; sourceTree = "<group>"; };
@@ -2466,6 +2469,8 @@
 				FFF02BD61F16A271003E5799 /* SonosController.m */,
 				FFF02BD71F16A271003E5799 /* SonosDiscover.h */,
 				FFF02BD81F16A271003E5799 /* SonosDiscover.m */,
+				FFD45D522211D84C0065DF1A /* SonosPlayable.h */,
+				FFD45D512211D84C0065DF1A /* SonosPlayable.m */,
 				FFF02BD91F16A271003E5799 /* SonosManager.h */,
 				FFF02BDA1F16A271003E5799 /* SonosManager.m */,
 				FFF02BDB1F16A271003E5799 /* XMLReader.h */,
@@ -3054,6 +3059,7 @@
 				FF557AC01C49C71A005FB7FD /* NestConstants.m in Sources */,
 				FF904B9A1BE9BA3700AD00F3 /* SSZipArchive.m in Sources */,
 				FFA1D4CF1A3B8916003EA0BC /* TTHUDController.m in Sources */,
+				FFD45D532211D84C0065DF1A /* SonosPlayable.m in Sources */,
 				FFF02BE01F16A271003E5799 /* XMLReader.m in Sources */,
 				FF2C2E671C546D6E00FAD7E2 /* TTModeWemoConnecting.m in Sources */,
 				FFABAB931C2F723000AD5620 /* TTBorder.m in Sources */,

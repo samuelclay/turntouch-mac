@@ -27,6 +27,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SonosPlayable.h"
 
 @interface SonosController : NSObject
 
@@ -82,12 +83,27 @@
 - (void)playSpotifyTrack:(NSString * _Nonnull)track completion:(void (^ _Nullable)(NSDictionary * _Nullable response, NSError * _Nullable error))block;
 
 /**
+ Play a SonosPlayable
+ 
+ @param playable SonosPlayable like a favorite
+ @param block Objective-C block to call on finish
+ */
+- (void)playPlayable:(SonosPlayable * _Nonnull)playable completion:(void (^ _Nullable)(NSDictionary * _Nullable response, NSError * _Nullable error))block;
+
+/**
  Play track in queue
  
  @param position. Starts counting at 1
  @param block Objective-C block to call on finish
  */
 - (void)playQueuePosition:(int)position completion:(void (^ _Nullable)(NSDictionary * _Nullable response, NSError * _Nullable error))block;
+
+/**
+ Play the queue
+ 
+ @param block Objective-C block to call on finish
+ */
+- (void)playQueue:(void (^ _Nullable)(NSDictionary * _Nullable response, NSError * _Nullable error))block;
 
 /**
  Pause playback
@@ -202,9 +218,35 @@
  
  @param block Objective-C block to call on finish
  */
-- (void)trackInfo:(void (^ _Nullable)(NSString * _Nullable artist, NSString * _Nullable title, NSString * _Nullable album, NSURL * _Nullable albumArt, NSInteger time, NSInteger duration, NSInteger queueIndex, NSString * _Nullable trackURI, NSString * _Nullable protocol, NSError * _Nullable error))block;
+- (void)trackInfo:(void (^ _Nullable)(NSString * _Nullable artist, NSString * _Nullable title, NSString * _Nullable album, NSURL * _Nullable albumArt, NSNumber * _Nullable time, NSNumber * _Nullable duration, NSInteger queueIndex, NSString * _Nullable trackURI, NSString * _Nullable protocol, NSString * _Nullable streamContent, NSError * _Nullable error))block;
 
+/**
+ Media Info:
+ Returns information regarding the source of what's playing. Mostly useful for radio stations.
+ - CurrentURI - The URI of the source that music is currently playing from
+ - CurrentMD - The XML metadata for the source
+ - Title - The title of the source
+
+ @param block Objective-C block to call on finish
+ */
 - (void)mediaInfo:(void (^ _Nullable)(NSDictionary * _Nullable response, NSError * _Nullable error))block;
+
+/**
+ Playback Mode:
+ Returns playback mode in block
+ - PlayMode - {NORMAL|REPEAT_ALL|REPEAT_ONE|SHUFFLE_NOREPEAT|SHUFFLE|SHUFFLE_REPEAT_ONE}
+ 
+ @param block Objective-C block to call on finish
+ */
+- (void)playbackMode:(void (^ _Nullable)(NSDictionary * _Nullable reponse, NSError * _Nullable error))block;
+
+/**
+ Set playback mode on device
+ 
+ @param playbackMode String value - NORMAL|REPEAT_ALL|REPEAT_ONE|SHUFFLE_NOREPEAT|SHUFFLE|SHUFFLE_REPEAT_ONE
+ @param block Objective-C block to call on finish
+ */
+- (void)setPlaybackMode:(NSString * _Nullable)playbackMode completion:(void (^ _Nullable)(NSDictionary * _Nullable response, NSError * _Nullable error))block;
 
 /**
  Playback status
@@ -225,8 +267,31 @@
 
 - (void)browse:(void (^ _Nullable)(NSDictionary * _Nullable response, NSError * _Nullable error)) block;
 
+/**
+ Joins a group
+ 
+ @param master SonosController to join as a group
+ @param block Objective-C block to call on finish
+ */
+
 - (void)join:(SonosController * _Nonnull)master completion:(void (^ _Nullable)(NSDictionary * _Nullable response, NSError * _Nullable error)) block;
 
+/**
+ Unjoins from a group
+ 
+ @param block Objective-C block to call on finish
+ */
 - (void)unjoin:(void (^ _Nullable)(NSDictionary * _Nullable response, NSError * _Nullable error)) block;
+
+/**
+ Get favorites
+ Returns array of SonosPlayable items in block
+ 
+ @param block Objective-C block to call on finish
+ */
+- (void)getFavorites:(void (^ _Nullable)(NSArray <SonosPlayable*> * _Nullable response, NSError * _Nullable error))block;
+
+- (void)refresh:(void (^ _Nullable)(NSError * _Nullable error)) block;
+
 
 @end
