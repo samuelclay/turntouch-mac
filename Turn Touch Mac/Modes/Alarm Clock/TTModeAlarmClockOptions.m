@@ -13,30 +13,6 @@
 
 @implementation TTModeAlarmClockOptions
 
-@synthesize boxOnetimeOptions;
-@synthesize boxRepeatOptions;
-@synthesize boxOnetimeConstraint;
-@synthesize boxRepeatConstraint;
-@synthesize segOnetimeControl;
-@synthesize segRepeatControl;
-
-@synthesize segRepeatDays;
-@synthesize sliderRepeatTime;
-@synthesize textRepeatTime;
-
-@synthesize datePicker;
-@synthesize sliderOnetimeTime;
-@synthesize textOnetimeLabel;
-
-@synthesize sliderAlarmDuration;
-@synthesize sliderAlarmVolume;
-@synthesize textAlarmDuration;
-@synthesize textAlarmVolume;
-@synthesize dropdowniTunesSources;
-@synthesize checkboxShuffle;
-@synthesize textTracksCount;
-@synthesize previewAlarmButton;
-
 NSUInteger const kRepeatHeight = 88;
 NSUInteger const kOnetimeHeight = 68;
 
@@ -54,36 +30,36 @@ NSUInteger const kOnetimeHeight = 68;
     BOOL playlistShuffle = [[NSAppDelegate.modeMap mode:self.mode optionValue:kAlarmShuffle] boolValue];
     
     // Expand and size boxes for alarms
-    [boxOnetimeConstraint     setConstant:onetimeAlarmEnabled ? kOnetimeHeight : 0];
-    [boxOnetimeOptions      setAlphaValue:onetimeAlarmEnabled ? 1 : 0];
-    [segOnetimeControl setSelectedSegment:onetimeAlarmEnabled ? 0 : 1];
+    [self.boxOnetimeConstraint     setConstant:onetimeAlarmEnabled ? kOnetimeHeight : 0];
+    [self.boxOnetimeOptions      setAlphaValue:onetimeAlarmEnabled ? 1 : 0];
+    [self.segOnetimeControl setSelectedSegment:onetimeAlarmEnabled ? 0 : 1];
 
-    [boxRepeatConstraint     setConstant:repeatAlarmEnabled ? kRepeatHeight : 0];
-    [boxRepeatOptions      setAlphaValue:repeatAlarmEnabled ? 1 : 0];
-    [segRepeatControl setSelectedSegment:repeatAlarmEnabled ? 0 : 1];
+    [self.boxRepeatConstraint     setConstant:repeatAlarmEnabled ? kRepeatHeight : 0];
+    [self.boxRepeatOptions      setAlphaValue:repeatAlarmEnabled ? 1 : 0];
+    [self.segRepeatControl setSelectedSegment:repeatAlarmEnabled ? 0 : 1];
     
     // Set repeat alarm days and time
     int i = 0;
     for (NSNumber *dayNumber in repeatDays) {
         BOOL dayOn = [dayNumber boolValue];
-        [segRepeatDays setSelected:dayOn forSegment:i];
+        [self.segRepeatDays setSelected:dayOn forSegment:i];
         i++;
     }
-    [sliderRepeatTime setIntegerValue:repeatAlarmTime];
+    [self.sliderRepeatTime setIntegerValue:repeatAlarmTime];
     
     // Set onetime alarm date and time
-    datePicker.delegate = self;
-    [datePicker sendActionOn:NSEventMaskLeftMouseDown];
-    [datePicker setDateValue:oneTimeAlarmDate];
-    [sliderOnetimeTime setIntegerValue:onetimeAlarmTime];
+    self.datePicker.delegate = self;
+    [self.datePicker sendActionOn:NSEventMaskLeftMouseDown];
+    [self.datePicker setDateValue:oneTimeAlarmDate];
+    [self.sliderOnetimeTime setIntegerValue:onetimeAlarmTime];
     
     // Set music/sounds options
-    [sliderAlarmVolume setIntegerValue:alarmVolume];
-    [sliderAlarmDuration setIntegerValue:alarmDuration];
+    [self.sliderAlarmVolume setIntegerValue:alarmVolume];
+    [self.sliderAlarmDuration setIntegerValue:alarmDuration];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, (unsigned long)NULL), ^{
         [self populateiTunesSources];
     });
-    [checkboxShuffle setState:playlistShuffle];
+    [self.checkboxShuffle setState:playlistShuffle];
     
     
     // Update all labels
@@ -96,33 +72,33 @@ NSUInteger const kOnetimeHeight = 68;
 
 - (IBAction)changeSegOnetimeControl:(id)sender {
     [self animateBlock:^{
-        if (segOnetimeControl.selectedSegment == 1) {
-            [boxOnetimeConstraint animator].constant = 0;
-            [boxOnetimeOptions animator].alphaValue = 0;
+        if (self.segOnetimeControl.selectedSegment == 1) {
+            [self.boxOnetimeConstraint animator].constant = 0;
+            [self.boxOnetimeOptions animator].alphaValue = 0;
             [NSAppDelegate.modeMap changeMode:self.mode option:kOnetimeAlarmEnabled to:[NSNumber numberWithBool:NO]];
         } else {
-            [boxOnetimeConstraint animator].constant = kOnetimeHeight;
-            [boxOnetimeOptions animator].alphaValue = 1;
+            [self.boxOnetimeConstraint animator].constant = kOnetimeHeight;
+            [self.boxOnetimeOptions animator].alphaValue = 1;
             [NSAppDelegate.modeMap changeMode:self.mode option:kOnetimeAlarmEnabled to:[NSNumber numberWithBool:YES]];
             [self setOneTimeDate];
         }
-        [(TTModeAlarmClock *)appDelegate.modeMap.selectedMode activateTimers];
+        [(TTModeAlarmClock *)self.appDelegate.modeMap.selectedMode activateTimers];
     }];
 
 }
 
 - (IBAction)changeSegRepeatControl:(id)sender {
     [self animateBlock:^{
-        if (segRepeatControl.selectedSegment == 1) {
-            [boxRepeatConstraint animator].constant = 0;
-            [boxRepeatOptions animator].alphaValue = 0;
+        if (self.segRepeatControl.selectedSegment == 1) {
+            [self.boxRepeatConstraint animator].constant = 0;
+            [self.boxRepeatOptions animator].alphaValue = 0;
             [NSAppDelegate.modeMap changeMode:self.mode option:kRepeatAlarmEnabled to:[NSNumber numberWithBool:NO]];
         } else {
-            [boxRepeatConstraint animator].constant = kRepeatHeight;
-            [boxRepeatOptions animator].alphaValue = 1;
+            [self.boxRepeatConstraint animator].constant = kRepeatHeight;
+            [self.boxRepeatOptions animator].alphaValue = 1;
             [NSAppDelegate.modeMap changeMode:self.mode option:kRepeatAlarmEnabled to:[NSNumber numberWithBool:YES]];
         }
-        [(TTModeAlarmClock *)appDelegate.modeMap.selectedMode activateTimers];
+        [(TTModeAlarmClock *)self.appDelegate.modeMap.selectedMode activateTimers];
     }];
 }
 
@@ -131,20 +107,20 @@ NSUInteger const kOnetimeHeight = 68;
 - (IBAction)changeRepeatDays:(id)sender {
     NSUInteger i = 0;
     NSMutableArray *selectedDays = [[NSMutableArray alloc] init];
-    while (i < segRepeatDays.segmentCount) {
-        [selectedDays addObject:[NSNumber numberWithBool:[segRepeatDays isSelectedForSegment:i]]];
+    while (i < self.segRepeatDays.segmentCount) {
+        [selectedDays addObject:[NSNumber numberWithBool:[self.segRepeatDays isSelectedForSegment:i]]];
         i++;
     }
     [NSAppDelegate.modeMap changeMode:self.mode option:kRepeatAlarmDays to:selectedDays];
     [self updateRepeatAlarmLabel];
-    [(TTModeAlarmClock *)appDelegate.modeMap.selectedMode activateTimers];
+    [(TTModeAlarmClock *)self.appDelegate.modeMap.selectedMode activateTimers];
 }
 
 - (IBAction)changeRepeatTime:(id)sender {
-    NSInteger alarmTime = MIN(287, [sliderRepeatTime integerValue]);
+    NSInteger alarmTime = MIN(287, [self.sliderRepeatTime integerValue]);
     [NSAppDelegate.modeMap changeMode:self.mode option:kRepeatAlarmTime to:[NSNumber numberWithInteger:alarmTime]];
     [self updateRepeatAlarmLabel];
-    [(TTModeAlarmClock *)appDelegate.modeMap.selectedMode activateTimers];
+    [(TTModeAlarmClock *)self.appDelegate.modeMap.selectedMode activateTimers];
 }
 
 - (void)updateRepeatAlarmLabel {
@@ -166,7 +142,7 @@ NSUInteger const kOnetimeHeight = 68;
     [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
     
     NSString *label = [NSString stringWithFormat:@"%@, %ld %@ a week", [dateFormatter stringFromDate:time], (long)selectedDays, selectedDays == 1 ? @"day" : @"days"];
-    [textRepeatTime setStringValue:label];
+    [self.textRepeatTime setStringValue:label];
 }
 
 #pragma mark - One Time alarm
@@ -189,35 +165,35 @@ NSUInteger const kOnetimeHeight = 68;
     [offsetComponents setDay:1];
     NSDate *nextDate = [gregorian dateByAddingComponents:offsetComponents toDate:thisDate options:0];
     
-    [datePicker setDateValue:nextDate];
+    [self.datePicker setDateValue:nextDate];
 
     [NSAppDelegate.modeMap changeMode:self.mode option:kOnetimeAlarmDate to:nextDate];
     [self updateOnetimeAlarmLabel];
-    [(TTModeAlarmClock *)appDelegate.modeMap.selectedMode activateTimers];
+    [(TTModeAlarmClock *)self.appDelegate.modeMap.selectedMode activateTimers];
 }
 
 - (IBAction)changeOnetimeDate:(id)sender {
-    NSDate *onetimeDate = [datePicker dateValue];
+    NSDate *onetimeDate = [self.datePicker dateValue];
     
     [NSAppDelegate.modeMap changeMode:self.mode option:kOnetimeAlarmDate to:onetimeDate];
     [self updateOnetimeAlarmLabel];
-    [(TTModeAlarmClock *)appDelegate.modeMap.selectedMode activateTimers];
+    [(TTModeAlarmClock *)self.appDelegate.modeMap.selectedMode activateTimers];
 }
 
 - (void)didSelectDate:(NSDate *)selectedDate {
     [self.datePicker.calendarPopover close];
-    [datePicker setDateValue:selectedDate];
+    [self.datePicker setDateValue:selectedDate];
     [NSAppDelegate.modeMap changeMode:self.mode option:kOnetimeAlarmDate to:selectedDate];
     [self updateOnetimeAlarmLabel];
-    [(TTModeAlarmClock *)appDelegate.modeMap.selectedMode activateTimers];
+    [(TTModeAlarmClock *)self.appDelegate.modeMap.selectedMode activateTimers];
 }
 
 - (IBAction)changeOnetimeTime:(id)sender {
-    NSInteger alarmTime = MIN(287, [sliderOnetimeTime integerValue]);
+    NSInteger alarmTime = MIN(287, [self.sliderOnetimeTime integerValue]);
     
     [NSAppDelegate.modeMap changeMode:self.mode option:kOnetimeAlarmTime to:[NSNumber numberWithInteger:alarmTime]];
     [self updateOnetimeAlarmLabel];
-    [(TTModeAlarmClock *)appDelegate.modeMap.selectedMode activateTimers];
+    [(TTModeAlarmClock *)self.appDelegate.modeMap.selectedMode activateTimers];
 }
 
 - (void)datePickerCell:(NSDatePickerCell *)aDatePickerCell validateProposedDateValue:(NSDate *__autoreleasing *)proposedDateValue timeInterval:(NSTimeInterval *)proposedTimeInterval {
@@ -234,7 +210,7 @@ NSUInteger const kOnetimeHeight = 68;
     
     NSTimeInterval diff = [alarmDate timeIntervalSinceDate:[NSDate date]];
     if (diff <= 59) {
-        [textOnetimeLabel setStringValue:@"Alarm is in the past!"];
+        [self.textOnetimeLabel setStringValue:@"Alarm is in the past!"];
         return;
     }
     unsigned int unitFlags = NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitDay;
@@ -259,7 +235,7 @@ NSUInteger const kOnetimeHeight = 68;
     }
 
     NSString *label = [NSString stringWithFormat:@"%@, in %@", [dateFormatter stringFromDate:alarmDate], relativeTimeUntilAlarm];
-    [textOnetimeLabel setStringValue:label];
+    [self.textOnetimeLabel setStringValue:label];
 }
 
 #pragma mark - Alarm sounds
@@ -268,18 +244,18 @@ NSUInteger const kOnetimeHeight = 68;
     NSInteger alarmDuration = MAX(1, [[NSAppDelegate.modeMap mode:self.mode optionValue:kAlarmDuration] integerValue]);
     NSInteger alarmVolume = [[NSAppDelegate.modeMap mode:self.mode optionValue:kAlarmVolume] integerValue];
     
-    [textAlarmVolume setStringValue:[NSString stringWithFormat:@"%ld%%", alarmVolume]];
-    [textAlarmDuration setStringValue:[NSString stringWithFormat:@"%ld min", alarmDuration]];
+    [self.textAlarmVolume setStringValue:[NSString stringWithFormat:@"%ld%%", alarmVolume]];
+    [self.textAlarmDuration setStringValue:[NSString stringWithFormat:@"%ld min", alarmDuration]];
 }
 
 - (IBAction)changeAlarmDuration:(id)sender {
-    [NSAppDelegate.modeMap changeMode:self.mode option:kAlarmDuration to:[NSNumber numberWithInteger:MAX(1, sliderAlarmDuration.integerValue)]];
+    [NSAppDelegate.modeMap changeMode:self.mode option:kAlarmDuration to:[NSNumber numberWithInteger:MAX(1, self.sliderAlarmDuration.integerValue)]];
     
     [self updateAlarmSoundsLabels];
 }
 
 - (IBAction)changeAlarmVolume:(id)sender {
-    [NSAppDelegate.modeMap changeMode:self.mode option:kAlarmVolume to:[NSNumber numberWithInteger:sliderAlarmVolume.integerValue]];
+    [NSAppDelegate.modeMap changeMode:self.mode option:kAlarmVolume to:[NSNumber numberWithInteger:self.sliderAlarmVolume.integerValue]];
     
     [self updateAlarmSoundsLabels];
 }
@@ -296,7 +272,7 @@ NSUInteger const kOnetimeHeight = 68;
 
 - (IBAction)changeiTunesSource:(id)sender {
     SBElementArray *playlists = [TTModeAlarmClock userPlaylists];
-    NSInteger tag = dropdowniTunesSources.selectedItem.tag;
+    NSInteger tag = self.dropdowniTunesSources.selectedItem.tag;
     NSInteger i = 0;
     iTunesUserPlaylist *selectedPlaylist;
     for (iTunesUserPlaylist *playlist in playlists) {
@@ -319,13 +295,13 @@ NSUInteger const kOnetimeHeight = 68;
         selectedPlaylist = [self iTunesPlaylist:playlistPersistentId];
     }
     NSInteger tracks = selectedPlaylist.tracks.count;
-    [textTracksCount setStringValue:[NSString stringWithFormat:@"%ld %@",
+    [self.textTracksCount setStringValue:[NSString stringWithFormat:@"%ld %@",
                                      (long)tracks, tracks == 1 ? @"track" : @"tracks"]];
 }
 
 - (IBAction)changeShuffle:(id)sender {
     [NSAppDelegate.modeMap changeMode:self.mode option:kAlarmShuffle
-                                            to:[NSNumber numberWithBool:checkboxShuffle.state]];
+                                            to:[NSNumber numberWithBool:self.checkboxShuffle.state]];
 }
 
 - (void)populateiTunesSources {
@@ -403,7 +379,7 @@ NSUInteger const kOnetimeHeight = 68;
     }
     dispatch_async(dispatch_get_main_queue(), ^(void){
         for (NSMenuItem *menuItem in menuItems) {
-            [dropdowniTunesSources.menu addItem:menuItem];
+            [self.dropdowniTunesSources.menu addItem:menuItem];
         }
 
         if (!selectedPlaylistId) {
@@ -413,13 +389,13 @@ NSUInteger const kOnetimeHeight = 68;
             [self updateTracksCount:selectedPlaylist];
         }
 
-        [dropdowniTunesSources selectItem:selectedMenuItem];
-        [dropdowniTunesSources setNeedsDisplay:YES];
+        [self.dropdowniTunesSources selectItem:selectedMenuItem];
+        [self.dropdowniTunesSources setNeedsDisplay:YES];
     });
 }
 
 - (IBAction)previewAlarm:(id)sender {
-    [(TTModeAlarmClock *)appDelegate.modeMap.selectedMode runAlarm];
+    [(TTModeAlarmClock *)self.appDelegate.modeMap.selectedMode runAlarm];
 }
 
 @end

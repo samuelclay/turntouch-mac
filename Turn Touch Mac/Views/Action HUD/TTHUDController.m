@@ -12,19 +12,19 @@
 
 @interface TTHUDController ()
 
+@property (nonatomic, strong) NSBlockOperation *modeOperation;
+@property (nonatomic, strong) NSBlockOperation *actionOperation;
+
 @end
 
 @implementation TTHUDController
 
-@synthesize modeHUDController;
-@synthesize actionHUDController;
-
 - (instancetype)init {
     if (self = [super init]) {
-        appDelegate = (TTAppDelegate *)[NSApp delegate];
-        modeHUDController = [[TTModeHUDWindowController alloc]
+        self.appDelegate = (TTAppDelegate *)[NSApp delegate];
+        self.modeHUDController = [[TTModeHUDWindowController alloc]
                              initWithWindowNibName:@"TTModeHUDView"];
-        actionHUDController = [[TTActionHUDWindowController alloc]
+        self.actionHUDController = [[TTActionHUDWindowController alloc]
                                initWithWindowNibName:@"TTActionHUDView"];
     }
     return self;
@@ -50,45 +50,45 @@
 - (void)toastActiveMode {
     if (![self showModeHud]) return;
     
-    [modeHUDController fadeIn:YES];
+    [self.modeHUDController fadeIn:YES];
     
-    if (modeOperation) [modeOperation cancel];
+    if (self.modeOperation) [self.modeOperation cancel];
     
-    modeOperation = [self performBlock:^{
-        [modeHUDController fadeOut:nil];
+    self.modeOperation = [self performBlock:^{
+        [self.modeHUDController fadeOut:nil];
     } afterDelay:2.5 cancelPreviousRequest:YES];
 }
 
 - (void)holdToastActiveMode:(BOOL)animate {
     if (![self showModeHud]) return;
 
-    if (modeOperation) [modeOperation cancel];
+    if (self.modeOperation) [self.modeOperation cancel];
 
-    [modeHUDController fadeIn:animate];
+    [self.modeHUDController fadeIn:animate];
 }
 
 - (void)activateHudMenu {
-    if (modeOperation) [modeOperation cancel];
+    if (self.modeOperation) [self.modeOperation cancel];
     
     if ([self hudEnabled]) {
-        [modeHUDController fadeIn:YES];
+        [self.modeHUDController fadeIn:YES];
     } else {
         [self releaseToastActiveMode];
     }
 }
 
 - (void)releaseToastActiveMode {
-    [modeHUDController fadeOut:nil];
+    [self.modeHUDController fadeOut:nil];
 }
 
 - (void)teaseMode:(TTModeDirection)direction {
     if (![self showModeHud]) return;
 
-    [modeHUDController teaseMode:direction];
+    [self.modeHUDController teaseMode:direction];
 }
 
 - (void)hideModeTease {
-    [modeHUDController fadeOut:nil];
+    [self.modeHUDController fadeOut:nil];
 }
 
 - (void)toastActiveAction:(NSString *)actionName inDirection:(TTModeDirection)direction {
@@ -100,12 +100,12 @@
     NSTimeInterval delay = layout == ACTION_LAYOUT_IMAGE_TITLE ? 2.5 : 0.9;
     if (!actionName) actionName = [mode actionNameInDirection:direction];
     
-    [actionHUDController fadeIn:actionName inDirection:direction];
+    [self.actionHUDController fadeIn:actionName inDirection:direction];
     
-    if (actionOperation) [actionOperation cancel];
+    if (self.actionOperation) [self.actionOperation cancel];
     
-    actionOperation = [self performBlock:^{
-        [actionHUDController slideOut:nil];
+    self.actionOperation = [self performBlock:^{
+        [self.actionHUDController slideOut:nil];
     } afterDelay:delay cancelPreviousRequest:YES];
 }
 
@@ -117,29 +117,29 @@
     ActionLayout layout = [mode layoutInDirection:direction];
     NSTimeInterval delay = layout == ACTION_LAYOUT_IMAGE_TITLE ? 2.5 : 1.25;
     
-    [actionHUDController fadeIn:actionName inDirection:direction withMode:nil buttonMoment:BUTTON_MOMENT_DOUBLE];
+    [self.actionHUDController fadeIn:actionName inDirection:direction withMode:nil buttonMoment:BUTTON_MOMENT_DOUBLE];
     
-    if (actionOperation) [actionOperation cancel];
+    if (self.actionOperation) [self.actionOperation cancel];
     
-    actionOperation = [self performBlock:^{
-        [actionHUDController slideOut:nil];
+    self.actionOperation = [self performBlock:^{
+        [self.actionHUDController slideOut:nil];
     } afterDelay:delay cancelPreviousRequest:YES];
 }
 
 - (void)holdToastActiveAction:(NSString *)actionName inDirection:(TTModeDirection)direction {
     if (![self showActionHud]) return;
 
-    if (actionOperation) [actionOperation cancel];
+    if (self.actionOperation) [self.actionOperation cancel];
     
     if (direction == NO_DIRECTION) {
-        [actionHUDController fadeOut:nil];
+        [self.actionHUDController fadeOut:nil];
     } else {
-        [actionHUDController fadeIn:actionName inDirection:direction withMode:nil buttonMoment:BUTTON_MOMENT_PRESSDOWN];
+        [self.actionHUDController fadeIn:actionName inDirection:direction withMode:nil buttonMoment:BUTTON_MOMENT_PRESSDOWN];
     }
 }
 
 - (void)releaseToastActiveAction {
-    [actionHUDController slideOut:nil];
+    [self.actionHUDController slideOut:nil];
 }
 
 @end

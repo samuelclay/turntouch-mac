@@ -10,8 +10,6 @@
 
 @implementation TTProgressBar
 
-@synthesize progress = _progress;
-
 - (void)setProgress:(double)progress {
     if (_progress != progress) {
         _progress = progress;
@@ -44,7 +42,7 @@
     // Progress bar itself
     NSRect rect = NSInsetRect([self bounds], 0.5, 0.5);
     [NSColorFromRGB(0xFFFFFF) set];
-    rect.size.width = floor(rect.size.width * (_progress / 100.0));
+    rect.size.width = floor(rect.size.width * (self.progress / 100.0));
     [NSBezierPath fillRect:rect];
 
     // Bars separating progress bar cells

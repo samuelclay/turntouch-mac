@@ -13,16 +13,9 @@
 
 @class TTAppDelegate;
 
-@interface TTOptionsActionTitle : NSView <NSTextFieldDelegate> {
-    TTAppDelegate *appDelegate;
-    TTDiamondView *diamondView;
-    TTChangeButtonView *changeButton;
-    NSButton *renameButton;
-    NSTextField *titleLabel;
-    NSLayoutConstraint *titleWidthConstraint;
-    BOOL editingTitle;
-}
+@interface TTOptionsActionTitle : NSView <NSTextFieldDelegate>
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic) IBOutlet TTChangeButtonView *changeButton;
 
 @end

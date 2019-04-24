@@ -11,18 +11,10 @@
 
 @implementation TTModeWemoDevice
 
-@synthesize ipAddress;
-@synthesize port;
-@synthesize serialNumber;
-@synthesize macAddress;
-@synthesize deviceName;
-@synthesize deviceState;
-@synthesize delegate;
-
 - (id)initWithIpAddress:(NSString *)_ip port:(NSInteger)_port {
     if (self = [super init]) {
-        ipAddress = _ip;
-        port = _port;
+        self.ipAddress = _ip;
+        self.port = _port;
     }
     
     return self;
@@ -38,8 +30,8 @@
 }
 
 - (BOOL)isSameAddress:(TTModeWemoDevice *)device {
-    BOOL sameAddress = [ipAddress isEqualToString:device.ipAddress];
-    BOOL samePort = port == device.port;
+    BOOL sameAddress = [self.ipAddress isEqualToString:device.ipAddress];
+    BOOL samePort = self.port == device.port;
     
     return (sameAddress && samePort);
 }
@@ -48,7 +40,7 @@
 }
 
 - (NSString *)location {
-    return [NSString stringWithFormat:@"%@:%ld", ipAddress, port];
+    return [NSString stringWithFormat:@"%@:%ld", self.ipAddress, self.port];
 }
 
 #pragma mark - Networking
@@ -98,7 +90,7 @@
 //        deviceName = [NSString stringWithFormat:@"Wemo device (%@)", self.location];
         return;
     } else {
-        deviceName = [[results objectAtIndex:0] objectForKey:@"nodeContent"];
+        self.deviceName = [[results objectAtIndex:0] objectForKey:@"nodeContent"];
     }
     
     results = PerformXMLXPathQuery(data, @"/wemo:root/wemo:device/wemo:serialNumber",
@@ -107,7 +99,7 @@
         NSLog(@"Error: Could not find serialNumber for wemo.");
         return;
     } else {
-        serialNumber = [[results objectAtIndex:0] objectForKey:@"nodeContent"];
+        self.serialNumber = [[results objectAtIndex:0] objectForKey:@"nodeContent"];
     }
     
     results = PerformXMLXPathQuery(data, @"/wemo:root/wemo:device/wemo:macAddress",
@@ -116,11 +108,11 @@
         NSLog(@"Error: Could not find macAddress for wemo.");
         return;
     } else {
-        macAddress = [[results objectAtIndex:0] objectForKey:@"nodeContent"];
+        self.macAddress = [[results objectAtIndex:0] objectForKey:@"nodeContent"];
     }
 
     NSLog(@" ---> Found wemo device: %@", self);
-    [delegate deviceReady:self];
+    [self.delegate deviceReady:self];
 }
 
 - (void)requestDeviceState:(void (^)(void))callback {
@@ -175,12 +167,12 @@
                                             "u", "urn:Belkin:service:basicevent:1");
     if (![results count]) {
         NSLog(@"Error: Could not find friendlyName for wemo.");
-        deviceName = [NSString stringWithFormat:@"Wemo device (%@)", self.location];
+        self.deviceName = [NSString stringWithFormat:@"Wemo device (%@)", self.location];
     } else {
         NSString *state = [[results objectAtIndex:0] objectForKey:@"nodeContent"];
-        if ([state isEqualToString:@"1"] || [state isEqualToString:@"8"]) deviceState = WEMO_DEVICE_STATE_ON;
-        else if ([state isEqualToString:@"0"]) deviceState = WEMO_DEVICE_STATE_OFF;
-        NSLog(@" ---> Wemo State: %@ (%@)", deviceName, state);
+        if ([state isEqualToString:@"1"] || [state isEqualToString:@"8"]) self.deviceState = WEMO_DEVICE_STATE_ON;
+        else if ([state isEqualToString:@"0"]) self.deviceState = WEMO_DEVICE_STATE_OFF;
+        NSLog(@" ---> Wemo State: %@ (%@)", self.deviceName, state);
         callback();
     }
     

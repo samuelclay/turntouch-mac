@@ -12,8 +12,6 @@
 
 @implementation TTPanel
 
-@synthesize backgroundView;
-
 - (BOOL)canBecomeKeyWindow {
     return YES;
 }

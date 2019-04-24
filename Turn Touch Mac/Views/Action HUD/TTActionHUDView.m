@@ -8,39 +8,47 @@
 
 #import "TTActionHUDView.h"
 
-@implementation TTActionHUDView
+@interface TTActionHUDView ()
 
-@synthesize direction;
-@synthesize actionName;
-@synthesize mode;
-@synthesize buttonMoment;
+@property (nonatomic, strong) TTProgressBar *progressBar;
+@property (nonatomic, strong) NSView *imageLayoutView;
+@property (nonatomic, strong) NSImageView *backgroundView;
+@property (nonatomic, strong) NSImageView *iconView;
+@property (nonatomic, strong) NSImageView *northChevron;
+@property (nonatomic, strong) NSImageView *eastChevron;
+@property (nonatomic, strong) NSImageView *westChevron;
+@property (nonatomic, strong) NSImageView *southChevron;
+
+@end
+
+@implementation TTActionHUDView
 
 const CGFloat kActionHUDMarginPct = .6f;
 
 - (void)awakeFromNib {
     NSRect actionFrame = [self.class actionFrame];
 
-    appDelegate = (TTAppDelegate *)[NSApp delegate];
-    backgroundView = [[NSImageView alloc] initWithFrame:actionFrame];
-    progressBar = [[TTProgressBar alloc] init];
-    iconView = [[NSImageView alloc] initWithFrame:actionFrame];
-    northChevron = [[NSImageView alloc] initWithFrame:[self frameForChevron:actionFrame inDirection:NORTH]];
-    eastChevron = [[NSImageView alloc] initWithFrame:[self frameForChevron:actionFrame inDirection:EAST]];
-    westChevron = [[NSImageView alloc] initWithFrame:[self frameForChevron:actionFrame inDirection:WEST]];
-    southChevron = [[NSImageView alloc] initWithFrame:[self frameForChevron:actionFrame inDirection:SOUTH]];
+    self.appDelegate = (TTAppDelegate *)[NSApp delegate];
+    self.backgroundView = [[NSImageView alloc] initWithFrame:actionFrame];
+    self.progressBar = [[TTProgressBar alloc] init];
+    self.iconView = [[NSImageView alloc] initWithFrame:actionFrame];
+    self.northChevron = [[NSImageView alloc] initWithFrame:[self frameForChevron:actionFrame inDirection:NORTH]];
+    self.eastChevron = [[NSImageView alloc] initWithFrame:[self frameForChevron:actionFrame inDirection:EAST]];
+    self.westChevron = [[NSImageView alloc] initWithFrame:[self frameForChevron:actionFrame inDirection:WEST]];
+    self.southChevron = [[NSImageView alloc] initWithFrame:[self frameForChevron:actionFrame inDirection:SOUTH]];
     
-    [northChevron setImage:[self chevronForDirection:NORTH]];
-    [eastChevron setImage:[self chevronForDirection:EAST]];
-    [westChevron setImage:[self chevronForDirection:WEST]];
-    [southChevron setImage:[self chevronForDirection:SOUTH]];
+    [self.northChevron setImage:[self chevronForDirection:NORTH]];
+    [self.eastChevron setImage:[self chevronForDirection:EAST]];
+    [self.westChevron setImage:[self chevronForDirection:WEST]];
+    [self.southChevron setImage:[self chevronForDirection:SOUTH]];
 
-    [self addSubview:backgroundView];
-    [self addSubview:progressBar];
-    [self addSubview:iconView];
-    [self addSubview:northChevron];
-    [self addSubview:eastChevron];
-    [self addSubview:westChevron];
-    [self addSubview:southChevron];
+    [self addSubview:self.backgroundView];
+    [self addSubview:self.progressBar];
+    [self addSubview:self.iconView];
+    [self addSubview:self.northChevron];
+    [self addSubview:self.eastChevron];
+    [self addSubview:self.westChevron];
+    [self addSubview:self.southChevron];
 }
 
 #pragma mark - Constants
@@ -120,46 +128,46 @@ const CGFloat kActionHUDMarginPct = .6f;
 }
 
 - (void)drawProgressBar:(TTProgressBar *)_progressBar {
-    ActionLayout layout = [mode layoutForAction:actionName];
+    ActionLayout layout = [self.mode layoutForAction:self.actionName];
     if (layout == ACTION_LAYOUT_TITLE || layout == ACTION_LAYOUT_IMAGE_TITLE) {
-        progressBar.hidden = YES;
+        self.progressBar.hidden = YES;
         return;
     } else if (layout == ACTION_LAYOUT_PROGRESSBAR) {
-        progressBar.hidden = NO;
+        self.progressBar.hidden = NO;
     }
 
-    NSInteger progress = [mode progressForAction:actionName];
+    NSInteger progress = [self.mode progressForAction:self.actionName];
 
     if (progress == -1) {
-        progressBar.hidden = YES;
+        self.progressBar.hidden = YES;
     } else {
-        progressBar.hidden = NO;
-        [progressBar setProgress:progress];
+        self.progressBar.hidden = NO;
+        [self.progressBar setProgress:progress];
     }
     
     NSRect actionFrame = [self.class actionFrame];
     NSRect frame = NSInsetRect(actionFrame, 100, 0);
     frame.size.height = 8;
     frame.origin.y = frame.origin.y + NSHeight(actionFrame) * 0.3f - NSHeight(frame);
-    [progressBar setFrame:frame];
+    [self.progressBar setFrame:frame];
 }
 
 - (void)drawImageLayoutView {
-    ActionLayout layout = [mode layoutForAction:actionName];
-    [imageLayoutView removeFromSuperview];
+    ActionLayout layout = [self.mode layoutForAction:self.actionName];
+    [self.imageLayoutView removeFromSuperview];
     if (layout == ACTION_LAYOUT_TITLE || layout == ACTION_LAYOUT_PROGRESSBAR) {
-        [imageLayoutView setHidden:YES];
+        [self.imageLayoutView setHidden:YES];
     } else if (layout == ACTION_LAYOUT_IMAGE_TITLE) {
         NSRect frame = [self.class actionFrame];
-        imageLayoutView = [mode viewForLayoutOfAction:actionName withRect:frame];
-        [self addSubview:imageLayoutView];
-        [imageLayoutView setHidden:NO];
+        self.imageLayoutView = [self.mode viewForLayoutOfAction:self.actionName withRect:frame];
+        [self addSubview:self.imageLayoutView];
+        [self.imageLayoutView setHidden:NO];
     }
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
-    ActionLayout layout = [mode layoutForAction:actionName];
+    ActionLayout layout = [self.mode layoutForAction:self.actionName];
 
     [self drawBackground];
     [self drawIcon];
@@ -170,7 +178,7 @@ const CGFloat kActionHUDMarginPct = .6f;
     } else if (layout == ACTION_LAYOUT_IMAGE_TITLE) {
         [self drawModeLabel];
         [self drawActionLabel];
-        [imageLayoutView setHidden:NO];
+        [self.imageLayoutView setHidden:NO];
         [self drawActionLayoutImageTitleBackground];
     } else if (layout == ACTION_LAYOUT_PROGRESSBAR) {
         [self drawModeLabel];
@@ -199,7 +207,7 @@ const CGFloat kActionHUDMarginPct = .6f;
     [backgroundColor set];
     [diamond fill];
     [backgroundImage unlockFocus];
-    [backgroundView setImage:backgroundImage];
+    [self.backgroundView setImage:backgroundImage];
 
     // Used to debug label frame
 //    NSBezierPath *textViewSurround = [NSBezierPath bezierPathWithRect:frame];
@@ -209,26 +217,26 @@ const CGFloat kActionHUDMarginPct = .6f;
 }
 
 - (void)drawIcon {
-    NSString *iconFilename = [mode imageNameForActionHudInDirection:actionName];
+    NSString *iconFilename = [self.mode imageNameForActionHudInDirection:self.actionName];
     NSImage *icon = [NSImage imageNamed:iconFilename];
     [icon setSize:NSMakeSize(self.hudIconSize, self.hudIconSize)];
-    [iconView setImage:icon];
+    [self.iconView setImage:icon];
 }
 
 - (void)drawChevron {
-    [northChevron setHidden:YES];
-    [eastChevron setHidden:YES];
-    [westChevron setHidden:YES];
-    [southChevron setHidden:YES];
+    [self.northChevron setHidden:YES];
+    [self.eastChevron setHidden:YES];
+    [self.westChevron setHidden:YES];
+    [self.southChevron setHidden:YES];
 
-    if (direction == NORTH) [northChevron setHidden:NO];
-    if (direction == EAST) [eastChevron setHidden:NO];
-    if (direction == WEST) [westChevron setHidden:NO];
-    if (direction == SOUTH) [southChevron setHidden:NO];
+    if (self.direction == NORTH) [self.northChevron setHidden:NO];
+    if (self.direction == EAST) [self.eastChevron setHidden:NO];
+    if (self.direction == WEST) [self.westChevron setHidden:NO];
+    if (self.direction == SOUTH) [self.southChevron setHidden:NO];
 }
 
 - (NSImage *)chevronForDirection:(TTModeDirection)_direction {
-    NSString *directionName = [appDelegate.modeMap directionName:_direction];
+    NSString *directionName = [self.appDelegate.modeMap directionName:_direction];
     NSString *imageFile = [NSString stringWithFormat:@"chevron_%@.png", directionName];
     NSImage *icon = [NSImage imageNamed:imageFile];
 
@@ -246,12 +254,12 @@ const CGFloat kActionHUDMarginPct = .6f;
                                       NSForegroundColorAttributeName: textColor,
                                       NSParagraphStyleAttributeName: style
                                       };
-    NSString *modeLabel = [[mode class] title];
+    NSString *modeLabel = [[self.mode class] title];
     frame.size.height = frame.size.height * (0.7f) + [modeLabel sizeWithAttributes:labelAttributes].height/2;
-    [backgroundView.image lockFocus];
+    [self.backgroundView.image lockFocus];
     frame.origin = NSZeroPoint;
     [modeLabel drawInRect:frame withAttributes:labelAttributes];
-    [backgroundView.image unlockFocus];
+    [self.backgroundView.image unlockFocus];
 }
 
 - (void)drawActionLabel {
@@ -268,25 +276,25 @@ const CGFloat kActionHUDMarginPct = .6f;
                                       //                                      NSShadowAttributeName: stringShadow,
                                       NSParagraphStyleAttributeName: style
                                       };
-    NSString *directionLabel = [mode actionTitleInDirection:direction buttonMoment:buttonMoment];
+    NSString *directionLabel = [self.mode actionTitleInDirection:self.direction buttonMoment:self.buttonMoment];
     frame.size.height = frame.size.height * (0.3f) + [directionLabel sizeWithAttributes:labelAttributes].height/2;
-    [backgroundView.image lockFocus];
+    [self.backgroundView.image lockFocus];
     frame.origin = NSZeroPoint;
     [directionLabel drawInRect:frame withAttributes:labelAttributes];
-    [backgroundView.image unlockFocus];
+    [self.backgroundView.image unlockFocus];
 }
 
 - (void)drawProgress {
-    NSInteger progress = [mode progressForAction:actionName];
+    NSInteger progress = [self.mode progressForAction:self.actionName];
     if (progress == -1) return;
     
-    [progressBar setProgress:progress];
+    [self.progressBar setProgress:progress];
 }
 
 #pragma mark - Action Layout - Image
 
 - (void)drawActionLayoutImageTitleBackground {
-    NSBezierPath *ellipse = [NSBezierPath bezierPathWithRoundedRect:NSInsetRect(imageLayoutView.frame, self.hudRadius*-0.25, self.hudRadius*-0.25)
+    NSBezierPath *ellipse = [NSBezierPath bezierPathWithRoundedRect:NSInsetRect(self.imageLayoutView.frame, self.hudRadius*-0.25, self.hudRadius*-0.25)
                                                             xRadius:self.hudRadius/2
                                                             yRadius:self.hudRadius/2];
     CGFloat alpha = 0.99f;

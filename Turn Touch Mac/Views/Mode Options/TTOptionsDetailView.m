@@ -11,9 +11,6 @@
 
 @implementation TTOptionsDetailView
 
-@synthesize tabView;
-@synthesize menuType;
-
 - (void)awakeFromNib {
     [super awakeFromNib];
 }
@@ -22,7 +19,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        appDelegate = (TTAppDelegate *)[NSApp delegate];
+        self.appDelegate = (TTAppDelegate *)[NSApp delegate];
         self.translatesAutoresizingMaskIntoConstraints = NO;
     }
     return self;

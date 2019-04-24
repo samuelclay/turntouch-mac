@@ -13,16 +13,19 @@
 #define MARGIN 0.0f
 #define CORNER_RADIUS 8.0f
 
-@implementation TTOptionsView
+@interface TTOptionsView ()
 
-@synthesize modeOptionsViewController;
-@synthesize actionOptionsViewController;
+@property (nonatomic, strong) TTOptionsActionTitle *actionTitleView;
+
+@end
+
+@implementation TTOptionsView
 
 - (id)initWithFrame:(NSRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        appDelegate = (TTAppDelegate *)[NSApp delegate];
+        self.appDelegate = (TTAppDelegate *)[NSApp delegate];
         self.translatesAutoresizingMaskIntoConstraints = NO;
         
         [self clearOptionDetailViews];
@@ -36,11 +39,11 @@
 #pragma mark - KVO
 
 - (void)registerAsObserver {
-    [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
+    [self.appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
                              options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"activeModeDirection"
+    [self.appDelegate.modeMap addObserver:self forKeyPath:@"activeModeDirection"
                              options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
+    [self.appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
                              options:0 context:nil];
 }
 
@@ -56,15 +59,15 @@
 }
 
 - (void)dealloc {
-    [appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
-    [appDelegate.modeMap removeObserver:self forKeyPath:@"activeModeDirection"];
-    [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedModeDirection"];
+    [self.appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
+    [self.appDelegate.modeMap removeObserver:self forKeyPath:@"activeModeDirection"];
+    [self.appDelegate.modeMap removeObserver:self forKeyPath:@"selectedModeDirection"];
 }
 
 #pragma mark - Drawing
 
 - (void)redrawOptions {
-    if (appDelegate.modeMap.inspectingModeDirection != NO_DIRECTION) {
+    if (self.appDelegate.modeMap.inspectingModeDirection != NO_DIRECTION) {
         [self drawActionOptions];
     } else {
         [self drawModeOptions];
@@ -90,104 +93,104 @@
         }
     }
 
-    if (modeOptionsViewController) {
-        [modeOptionsViewController.view removeFromSuperview];
-        modeOptionsViewController = nil;
+    if (self.modeOptionsViewController) {
+        [self.modeOptionsViewController.view removeFromSuperview];
+        self.modeOptionsViewController = nil;
     }
-    if (actionOptionsViewController) {
-        [actionOptionsViewController.view removeFromSuperview];
-        actionOptionsViewController = nil;
+    if (self.actionOptionsViewController) {
+        [self.actionOptionsViewController.view removeFromSuperview];
+        self.actionOptionsViewController = nil;
     }
-    if (actionTitleView) {
-        [actionTitleView removeFromSuperview];
-        actionTitleView = nil;
+    if (self.actionTitleView) {
+        [self.actionTitleView removeFromSuperview];
+        self.actionTitleView = nil;
     }
 }
 
 - (void)drawModeOptions {
-    if (appDelegate.modeMap.inspectingModeDirection != NO_DIRECTION) return;
+    if (self.appDelegate.modeMap.inspectingModeDirection != NO_DIRECTION) return;
     [self clearOptionDetailViews];
 
-    NSString *modeName = NSStringFromClass([appDelegate.modeMap.selectedMode class]);
+    NSString *modeName = NSStringFromClass([self.appDelegate.modeMap.selectedMode class]);
     NSString *modeOptionsViewControllerName = [NSString stringWithFormat:@"%@Options", modeName];
-    modeOptionsViewController = [[NSClassFromString(modeOptionsViewControllerName) alloc]
+    self.modeOptionsViewController = [[NSClassFromString(modeOptionsViewControllerName) alloc]
                                  initWithNibName:modeOptionsViewControllerName bundle:nil];
-//    NSLog(@"Options frame %@ pre: %@", modeOptionsViewControllerName, NSStringFromRect(self.frame));
+//    NSLog(@"Options frame %@ pre: %@", self.modeOptionsViewControllerName, NSStringFromRect(self.frame));
     
-    if (!modeOptionsViewController) {
+    if (!self.modeOptionsViewController) {
 //        NSLog(@" --- Missing mode options view for %@", modeName);
-        modeOptionsViewController = (TTOptionsDetailViewController *)[[NSViewController alloc] init];
-        [modeOptionsViewController setView:[[TTOptionsDetailView alloc] init]];
-        [self addSubview:modeOptionsViewController.view];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsViewController.view
+        self.modeOptionsViewController = (TTOptionsDetailViewController *)[[NSViewController alloc] init];
+        [self.modeOptionsViewController setView:[[TTOptionsDetailView alloc] init]];
+        [self addSubview:self.modeOptionsViewController.view];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.modeOptionsViewController.view
                                                          attribute:NSLayoutAttributeHeight
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:nil
                                                          attribute:0
                                                         multiplier:1.0 constant:CORNER_RADIUS]];
     } else {
-        modeOptionsViewController.mode = appDelegate.modeMap.selectedMode;
-        modeOptionsViewController.menuType = MODE_MENU_TYPE;
-        [self addSubview:modeOptionsViewController.view];
+        self.modeOptionsViewController.mode = self.appDelegate.modeMap.selectedMode;
+        self.modeOptionsViewController.menuType = MODE_MENU_TYPE;
+        [self addSubview:self.modeOptionsViewController.view];
     }
 
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsViewController.view
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.modeOptionsViewController.view
                                                      attribute:NSLayoutAttributeTop
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:self
                                                      attribute:NSLayoutAttributeTop
                                                     multiplier:1.0 constant:0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsViewController.view
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.modeOptionsViewController.view
                                                      attribute:NSLayoutAttributeLeading
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:self
                                                      attribute:NSLayoutAttributeLeading
                                                     multiplier:1.0 constant:0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:modeOptionsViewController.view
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.modeOptionsViewController.view
                                                      attribute:NSLayoutAttributeTrailing
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:self
                                                      attribute:NSLayoutAttributeTrailing
                                                     multiplier:1.0 constant:0]];
 
-    [appDelegate.panelController.backgroundView adjustOptionsHeight:modeOptionsViewController.view];
-//    NSLog(@"Options frame %@ post: %@ (%@)", modeOptionsViewControllerName, NSStringFromRect(self.frame), NSStringFromRect(modeOptionsViewController.view.frame));
+    [self.appDelegate.panelController.backgroundView adjustOptionsHeight:self.modeOptionsViewController.view];
+//    NSLog(@"Options frame %@ post: %@ (%@)", self.modeOptionsViewControllerName, NSStringFromRect(self.frame), NSStringFromRect(self.modeOptionsViewController.view.frame));
 }
 
 - (void)drawActionOptions {
-    if (appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION) return;
+    if (self.appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION) return;
 
     [self clearOptionDetailViews];
     
     BOOL useModeOptions = NO;
-    if ([appDelegate.modeMap.selectedMode shouldUseModeOptionsFor:appDelegate.modeMap.inspectingModeDirection]) {
+    if ([self.appDelegate.modeMap.selectedMode shouldUseModeOptionsFor:self.appDelegate.modeMap.inspectingModeDirection]) {
         useModeOptions = YES;
     }
 
     // Draw action title
-    actionTitleView = [[TTOptionsActionTitle alloc] initWithFrame:CGRectZero];
-    actionTitleView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self addSubview:actionTitleView];
+    self.actionTitleView = [[TTOptionsActionTitle alloc] initWithFrame:CGRectZero];
+    self.actionTitleView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:self.actionTitleView];
     
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:actionTitleView
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.actionTitleView
                                                      attribute:NSLayoutAttributeTop
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:self
                                                      attribute:NSLayoutAttributeTop
                                                     multiplier:1.0 constant:0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:actionTitleView
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.actionTitleView
                                                      attribute:NSLayoutAttributeLeading
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:self
                                                      attribute:NSLayoutAttributeLeading
                                                     multiplier:1.0 constant:0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:actionTitleView
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.actionTitleView
                                                      attribute:NSLayoutAttributeHeight
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:nil
                                                      attribute:0
                                                     multiplier:1.0 constant:40]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:actionTitleView
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.actionTitleView
                                                      attribute:NSLayoutAttributeWidth
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:self
@@ -195,58 +198,58 @@
                                                     multiplier:1.0 constant:0]];
 
     // Draw action options    
-    NSString *actionName = [appDelegate.modeMap.selectedMode
-                            actionNameInDirection:appDelegate.modeMap.inspectingModeDirection];
+    NSString *actionName = [self.appDelegate.modeMap.selectedMode
+                            actionNameInDirection:self.appDelegate.modeMap.inspectingModeDirection];
     NSString *actionOptionsViewControllerName = [NSString stringWithFormat:@"%@Options", actionName];
-    actionOptionsViewController = [[NSClassFromString(actionOptionsViewControllerName) alloc]
+    self.actionOptionsViewController = [[NSClassFromString(actionOptionsViewControllerName) alloc]
                                    initWithNibName:actionOptionsViewControllerName bundle:nil];
     if (useModeOptions) {
-        NSString *modeName = NSStringFromClass([appDelegate.modeMap.selectedMode class]);
+        NSString *modeName = NSStringFromClass([self.appDelegate.modeMap.selectedMode class]);
         NSString *modeOptionsViewControllerName = [NSString stringWithFormat:@"%@Options", modeName];
-        actionOptionsViewController = [[NSClassFromString(modeOptionsViewControllerName) alloc]
+        self.actionOptionsViewController = [[NSClassFromString(modeOptionsViewControllerName) alloc]
                                        initWithNibName:modeOptionsViewControllerName bundle:nil];
     }
 
-    if (!actionOptionsViewController) {
+    if (!self.actionOptionsViewController) {
         NSLog(@" --- Missing action options view for %@", actionName);
-        actionOptionsViewController = (TTOptionsDetailViewController *)[[NSViewController alloc] init];
-        [actionOptionsViewController setView:[[TTOptionsDetailView alloc] init]];
-        [self addSubview:actionOptionsViewController.view];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:actionOptionsViewController.view
+        self.actionOptionsViewController = (TTOptionsDetailViewController *)[[NSViewController alloc] init];
+        [self.actionOptionsViewController setView:[[TTOptionsDetailView alloc] init]];
+        [self addSubview:self.actionOptionsViewController.view];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.actionOptionsViewController.view
                                                          attribute:NSLayoutAttributeHeight
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:nil
                                                          attribute:0
                                                         multiplier:1.0 constant:CORNER_RADIUS]];
     } else {
-        actionOptionsViewController.menuType = ACTION_MENU_TYPE;
-        actionOptionsViewController.action = [[TTAction alloc] initWithActionName:actionName
-                                                                        direction:appDelegate.modeMap.inspectingModeDirection];
-        actionOptionsViewController.mode = appDelegate.modeMap.selectedMode;
-        [actionOptionsViewController.mode setAction:actionOptionsViewController.action];
-        actionOptionsViewController.action.mode = appDelegate.modeMap.selectedMode; // To parallel batch actions
-        [self addSubview:actionOptionsViewController.view];
+        self.actionOptionsViewController.menuType = ACTION_MENU_TYPE;
+        self.actionOptionsViewController.action = [[TTAction alloc] initWithActionName:actionName
+                                                                        direction:self.appDelegate.modeMap.inspectingModeDirection];
+        self.actionOptionsViewController.mode = self.appDelegate.modeMap.selectedMode;
+        [self.actionOptionsViewController.mode setAction:self.actionOptionsViewController.action];
+        self.actionOptionsViewController.action.mode = self.appDelegate.modeMap.selectedMode; // To parallel batch actions
+        [self addSubview:self.actionOptionsViewController.view];
     }
     
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:actionOptionsViewController.view
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.actionOptionsViewController.view
                                                      attribute:NSLayoutAttributeTop
                                                      relatedBy:NSLayoutRelationEqual
-                                                        toItem:actionTitleView
+                                                        toItem:self.actionTitleView
                                                      attribute:NSLayoutAttributeBottom
                                                     multiplier:1.0 constant:0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:actionOptionsViewController.view
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.actionOptionsViewController.view
                                                      attribute:NSLayoutAttributeLeading
                                                      relatedBy:NSLayoutRelationEqual
-                                                        toItem:actionTitleView
+                                                        toItem:self.actionTitleView
                                                      attribute:NSLayoutAttributeLeading
                                                     multiplier:1.0 constant:0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:actionOptionsViewController.view
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.actionOptionsViewController.view
                                                      attribute:NSLayoutAttributeTrailing
                                                      relatedBy:NSLayoutRelationEqual
-                                                        toItem:actionTitleView
+                                                        toItem:self.actionTitleView
                                                      attribute:NSLayoutAttributeTrailing
                                                     multiplier:1.0 constant:0]];
-    [appDelegate.panelController.backgroundView adjustOptionsHeight:actionOptionsViewController.view];
+    [self.appDelegate.panelController.backgroundView adjustOptionsHeight:self.actionOptionsViewController.view];
 }
 
 @end

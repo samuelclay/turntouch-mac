@@ -10,22 +10,28 @@
 
 #define PADDING 0
 
-@implementation TTDiamondLabel
+@interface TTDiamondLabel ()
 
-@synthesize interactive;
-@synthesize isHud;
+@property (nonatomic) TTModeDirection labelDirection;
+@property (nonatomic, strong) NSDictionary *labelAttributes;
+@property (nonatomic, strong) TTMode *diamondMode;
+@property (nonatomic, strong) NSImageView *iconView;
+
+@end
+
+@implementation TTDiamondLabel
 
 - (id)initWithFrame:(NSRect)frame inDirection:(TTModeDirection)direction {
     frame = NSInsetRect(frame, 0, -1 * PADDING);
 
     self = [super initWithFrame:frame];
     if (self) {
-        appDelegate = (TTAppDelegate *)[NSApp delegate];
-        labelDirection = direction;
-        diamondMode = appDelegate.modeMap.selectedMode;
-        iconView = [[NSImageView alloc] init];
+        self.appDelegate = (TTAppDelegate *)[NSApp delegate];
+        self.labelDirection = direction;
+        self.diamondMode = self.appDelegate.modeMap.selectedMode;
+        self.iconView = [[NSImageView alloc] init];
         
-        [self addSubview:iconView];
+        [self addSubview:self.iconView];
         
         [self registerAsObserver];
     }
@@ -35,20 +41,20 @@
 #pragma mark - KVO
 
 - (void)dealloc {
-    [appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
-    [appDelegate.modeMap removeObserver:self forKeyPath:@"hoverModeDirection"];
-    [appDelegate.modeMap removeObserver:self forKeyPath:@"activeModeDirection"];
-    [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedModeDirection"];
+    [self.appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
+    [self.appDelegate.modeMap removeObserver:self forKeyPath:@"hoverModeDirection"];
+    [self.appDelegate.modeMap removeObserver:self forKeyPath:@"activeModeDirection"];
+    [self.appDelegate.modeMap removeObserver:self forKeyPath:@"selectedModeDirection"];
 }
 
 - (void)registerAsObserver {
-    [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
+    [self.appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
                              options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"hoverModeDirection"
+    [self.appDelegate.modeMap addObserver:self forKeyPath:@"hoverModeDirection"
                              options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"activeModeDirection"
+    [self.appDelegate.modeMap addObserver:self forKeyPath:@"activeModeDirection"
                              options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
+    [self.appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
                              options:0 context:nil];
 }
 
@@ -57,7 +63,7 @@
                          change:(NSDictionary*)change
                         context:(void*)context {
     if ([keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
-        diamondMode = appDelegate.modeMap.selectedMode;
+        self.diamondMode = self.appDelegate.modeMap.selectedMode;
     }
     
     if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))] ||
@@ -66,7 +72,7 @@
         [keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]   ||
         [keyPath isEqual:NSStringFromSelector(@selector(selectedMode))]) {
         [self setupLabels];
-        if (interactive) {
+        if (self.interactive) {
             [self.superview setNeedsDisplay:YES];
         }
     }
@@ -95,41 +101,41 @@
 - (void)drawLabel {
     NSString *directionLabel;
     
-    directionLabel = [diamondMode titleInDirection:labelDirection buttonMoment:BUTTON_MOMENT_PRESSUP];
-    NSSize labelSize = [directionLabel sizeWithAttributes:labelAttributes];
+    directionLabel = [self.diamondMode titleInDirection:self.labelDirection buttonMoment:BUTTON_MOMENT_PRESSUP];
+    NSSize labelSize = [directionLabel sizeWithAttributes:self.labelAttributes];
     NSInteger iconOffset = 0;
-    if (isHud) {
+    if (self.isHud) {
         iconOffset = MIN(NSWidth(self.bounds), NSHeight(self.bounds))/16;
     }
     [directionLabel drawAtPoint:NSMakePoint(NSWidth(self.bounds)/2 - labelSize.width/2,
                                             NSHeight(self.bounds)/2 - labelSize.height/(140/50.f) - iconOffset)
-                 withAttributes:labelAttributes];
+                 withAttributes:self.labelAttributes];
 }
 
 - (void)drawIcon {
-    if (!isHud) return;
+    if (!self.isHud) return;
     
     NSRect iconFrame = self.bounds;
     iconFrame.origin.y += MIN(NSWidth(self.bounds), NSHeight(self.bounds))/8;
-    [iconView setFrame:iconFrame];
+    [self.iconView setFrame:iconFrame];
 
-    NSString *imageFilename = [diamondMode imageNameInDirection:labelDirection];
+    NSString *imageFilename = [self.diamondMode imageNameInDirection:self.labelDirection];
     NSImage *image = [NSImage imageNamed:imageFilename];
     NSInteger iconSize = round(MAX(CGRectGetHeight(iconFrame), CGRectGetWidth(iconFrame)) / 10);
     [image setSize:NSMakeSize(iconSize, iconSize)];
-    [iconView setImage:image];
+    [self.iconView setImage:image];
     
 }
 
 - (void)setMode:(TTMode *)mode {
-    diamondMode = mode;
+    self.diamondMode = mode;
 }
 
 - (void)setupLabels {
     NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
-    BOOL hovering = appDelegate.modeMap.hoverModeDirection == labelDirection;
-    BOOL selected = appDelegate.modeMap.inspectingModeDirection == labelDirection;
-    if (!interactive) {
+    BOOL hovering = self.appDelegate.modeMap.hoverModeDirection == self.labelDirection;
+    BOOL selected = self.appDelegate.modeMap.inspectingModeDirection == self.labelDirection;
+    if (!self.interactive) {
         selected = NO;
         hovering = NO;
     }
@@ -137,20 +143,20 @@
     NSColor *textColor = (hovering || selected) ? NSColorFromRGB(0x303AA0) : NSColorFromRGB(0x404A60);
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [style setAlignment:NSCenterTextAlignment];
-    if (!isHud) {
+    if (!self.isHud) {
         NSInteger fontSize = round(CGRectGetWidth(screen.frame) / 56);
         NSShadow *stringShadow = [[NSShadow alloc] init];
         stringShadow.shadowColor = [NSColor whiteColor];
         stringShadow.shadowOffset = NSMakeSize(0, -1);
         stringShadow.shadowBlurRadius = 0;
-        labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:(interactive ? 13 : fontSize)],
+        self.labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:(self.interactive ? 13 : fontSize)],
                             NSForegroundColorAttributeName: textColor,
                             NSShadowAttributeName: stringShadow,
                             NSParagraphStyleAttributeName: style
                             };
     } else {
         NSInteger fontSize = round(CGRectGetWidth(screen.frame) / 96);
-        labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:(interactive ? 13 : fontSize)],
+        self.labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:(self.interactive ? 13 : fontSize)],
                             NSForegroundColorAttributeName: textColor,
                             NSParagraphStyleAttributeName: style
                             };

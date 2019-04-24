@@ -15,10 +15,6 @@
 
 @implementation TTModeHuePicker
 
-@synthesize roomDropdown;
-@synthesize roomSpinner;
-@synthesize roomRefreshButton;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -26,15 +22,15 @@
 }
 
 - (void)drawRooms {
-    [roomSpinner setHidden:YES];
-    [roomRefreshButton setHidden:NO];
+    [self.roomSpinner setHidden:YES];
+    [self.roomRefreshButton setHidden:NO];
 
-    NSString *roomSelectedIdentifier = [self.action optionValue:kHueRoom inDirection:appDelegate.modeMap.inspectingModeDirection];
+    NSString *roomSelectedIdentifier = [self.action optionValue:kHueRoom inDirection:self.appDelegate.modeMap.inspectingModeDirection];
     NSString *roomSelected;
     
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
     NSMutableArray *rooms = [[NSMutableArray alloc] init];
-    [roomDropdown removeAllItems];
+    [self.roomDropdown removeAllItems];
     
     [rooms addObject:@{@"name": @"All Rooms", @"identifier": @"all"}];
     for (PHGroup *group in cache.groups.allValues) {
@@ -46,19 +42,19 @@
     [rooms sortUsingDescriptors:@[sd]];
     
     for (NSDictionary *room in rooms) {
-        [roomDropdown addItemWithTitle:room[@"name"]];
+        [self.roomDropdown addItemWithTitle:room[@"name"]];
         if ([room[@"identifier"] isEqualToString:roomSelectedIdentifier]) {
             roomSelected = room[@"name"];
         }
     }
     
-    [roomDropdown selectItemWithTitle:roomSelected];
+    [self.roomDropdown selectItemWithTitle:roomSelected];
 }
 
 #pragma mark - Actions
 
 - (IBAction)didChangeRoom:(id)sender {
-    NSMenuItem *menuItem = [roomDropdown selectedItem];
+    NSMenuItem *menuItem = [self.roomDropdown selectedItem];
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
     NSString *roomIdentifier;
     

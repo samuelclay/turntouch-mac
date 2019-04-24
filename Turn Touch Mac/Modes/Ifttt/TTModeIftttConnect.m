@@ -10,11 +10,11 @@
 
 @interface TTModeIftttConnect ()
 
+@property (nonatomic, strong) NSPopover *authPopover;
+
 @end
 
 @implementation TTModeIftttConnect
-
-@synthesize authButton;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,18 +28,18 @@
         TTModeIftttAuthViewController *iftttAuthViewController = [[TTModeIftttAuthViewController alloc] init];
         iftttAuthViewController.modeIfttt = self.modeIfttt;
         
-        authPopover = [[NSPopover alloc] init];
-        [authPopover setContentSize:NSMakeSize(420, 480)];
-        [authPopover setBehavior:NSPopoverBehaviorSemitransient];
-        [authPopover setAnimates:YES];
-        [authPopover setContentViewController:iftttAuthViewController];
+        self.authPopover = [[NSPopover alloc] init];
+        [self.authPopover setContentSize:NSMakeSize(420, 480)];
+        [self.authPopover setBehavior:NSPopoverBehaviorSemitransient];
+        [self.authPopover setAnimates:YES];
+        [self.authPopover setContentViewController:iftttAuthViewController];
         
         NSRect entryRect = [sender convertRect:((NSButton *)sender).bounds
-                                        toView:appDelegate.panelController.backgroundView];
+                                        toView:self.appDelegate.panelController.backgroundView];
         
-        iftttAuthViewController.authPopover = authPopover;
-        [authPopover showRelativeToRect:entryRect
-                                 ofView:appDelegate.panelController.backgroundView
+        iftttAuthViewController.authPopover = self.authPopover;
+        [self.authPopover showRelativeToRect:entryRect
+                                 ofView:self.appDelegate.panelController.backgroundView
                           preferredEdge:NSMinYEdge];
         
         [iftttAuthViewController authorizeIfttt];
@@ -47,7 +47,7 @@
 }
 
 - (void)closePopover {
-    [authPopover close];
+    [self.authPopover close];
 }
 
 @end

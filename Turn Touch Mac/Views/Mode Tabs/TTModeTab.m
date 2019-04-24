@@ -10,20 +10,34 @@
 
 #define DIAMOND_SIZE 22.0f
 
+@interface TTModeTab ()
+
+@property (nonatomic) TTModeDirection modeDirection;
+@property (nonatomic, strong) TTDiamondView *diamondView;
+@property (nonatomic, strong) TTMode *itemMode;
+
+@property (nonatomic, strong) NSString *modeTitle;
+@property (nonatomic, strong) NSDictionary *modeAttributes;
+@property (nonatomic) CGSize textSize;
+@property (nonatomic) BOOL hoverActive;
+@property (nonatomic) BOOL mouseDownActive;
+
+@end
+
 @implementation TTModeTab
 
 - (id)initWithFrame:(NSRect)frame direction:(TTModeDirection)direction {
     self = [super initWithFrame:frame];
     if (self) {
-        appDelegate = (TTAppDelegate *)[NSApp delegate];
-        modeDirection = direction;
-        hoverActive = NO;
-        mouseDownActive = NO;
+        self.appDelegate = (TTAppDelegate *)[NSApp delegate];
+        self.modeDirection = direction;
+        self.hoverActive = NO;
+        self.mouseDownActive = NO;
         
-        diamondView = [[TTDiamondView alloc] initWithFrame:CGRectZero];
-        [diamondView setOverrideSelectedDirection:modeDirection];
-        [diamondView setIgnoreSelectedMode:YES];
-        [self addSubview:diamondView];
+        self.diamondView = [[TTDiamondView alloc] initWithFrame:CGRectZero];
+        [self.diamondView setOverrideSelectedDirection:self.modeDirection];
+        [self.diamondView setIgnoreSelectedMode:YES];
+        [self addSubview:self.diamondView];
 
         [self setupMode];
         [self registerAsObserver];
@@ -34,18 +48,18 @@
 }
 
 - (void)setupMode {
-    switch (modeDirection) {
+    switch (self.modeDirection) {
         case NORTH:
-            itemMode = appDelegate.modeMap.northMode;
+            self.itemMode = self.appDelegate.modeMap.northMode;
             break;
         case EAST:
-            itemMode = appDelegate.modeMap.eastMode;
+            self.itemMode = self.appDelegate.modeMap.eastMode;
             break;
         case WEST:
-            itemMode = appDelegate.modeMap.westMode;
+            self.itemMode = self.appDelegate.modeMap.westMode;
             break;
         case SOUTH:
-            itemMode = appDelegate.modeMap.southMode;
+            self.itemMode = self.appDelegate.modeMap.southMode;
             break;
         case NO_DIRECTION:
         case INFO:
@@ -53,31 +67,31 @@
     }
     
     [self setupTitleAttributes];
-    [appDelegate.menubarController.statusItemView setNeedsDisplay:YES];
+    [self.appDelegate.menubarController.statusItemView setNeedsDisplay:YES];
 }
 
 - (void)setupTitleAttributes {
-    modeTitle = [[[itemMode class] title] uppercaseString];
+    self.modeTitle = [[[self.itemMode class] title] uppercaseString];
     NSShadow *stringShadow = [[NSShadow alloc] init];
     stringShadow.shadowColor = [NSColor whiteColor];
     stringShadow.shadowOffset = NSMakeSize(0, -1);
     stringShadow.shadowBlurRadius = 0;
-    NSColor *textColor = (hoverActive && appDelegate.modeMap.selectedModeDirection != modeDirection) ? NSColorFromRGB(0x404A60) :
-    appDelegate.modeMap.selectedModeDirection == modeDirection ?
+    NSColor *textColor = (self.hoverActive && self.appDelegate.modeMap.selectedModeDirection != self.modeDirection) ? NSColorFromRGB(0x404A60) :
+    self.appDelegate.modeMap.selectedModeDirection == self.modeDirection ?
     NSColorFromRGB(0x404A60) : NSColorFromRGB(0x808388);
-    modeAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:13],
+    self.modeAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:13],
                        NSForegroundColorAttributeName: textColor,
                        NSShadowAttributeName: stringShadow
                        };
-    textSize = [modeTitle sizeWithAttributes:modeAttributes];
+    self.textSize = [self.modeTitle sizeWithAttributes:self.modeAttributes];
 }
 
 #pragma mark - KVO
 
 - (void)registerAsObserver {
-    [appDelegate.modeMap addObserver:self forKeyPath:@"activeModeDirection"
+    [self.appDelegate.modeMap addObserver:self forKeyPath:@"activeModeDirection"
                              options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
+    [self.appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
                              options:0 context:nil];
 }
 
@@ -90,12 +104,12 @@
     }
     if ([keyPath isEqual:NSStringFromSelector(@selector(activeModeDirection))] ||
         [keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
-        if (appDelegate.modeMap.selectedModeDirection == modeDirection) {
-            [diamondView setIgnoreSelectedMode:NO];
-            [diamondView setIgnoreActiveMode:NO];
+        if (self.appDelegate.modeMap.selectedModeDirection == self.modeDirection) {
+            [self.diamondView setIgnoreSelectedMode:NO];
+            [self.diamondView setIgnoreActiveMode:NO];
         } else {
-            [diamondView setIgnoreSelectedMode:YES];
-            [diamondView setIgnoreActiveMode:YES];
+            [self.diamondView setIgnoreSelectedMode:YES];
+            [self.diamondView setIgnoreActiveMode:YES];
         }
         [self setNeedsDisplay:YES];
     }
@@ -112,16 +126,16 @@
     
     [self drawBorders];
     
-    NSSize titleSize = [modeTitle sizeWithAttributes:modeAttributes];
+    NSSize titleSize = [self.modeTitle sizeWithAttributes:self.modeAttributes];
     NSPoint titlePoint = NSMakePoint((NSWidth(self.frame)/2) - (titleSize.width/2),
                                      18);
 
-    [modeTitle drawAtPoint:titlePoint withAttributes:modeAttributes];
+    [self.modeTitle drawAtPoint:titlePoint withAttributes:self.modeAttributes];
     
     NSRect diamondRect = NSMakeRect((NSWidth(self.frame) / 2) - (DIAMOND_SIZE * 1.3 / 2),
                                     NSHeight(self.frame) - 18 - DIAMOND_SIZE,
                                     DIAMOND_SIZE * 1.3, DIAMOND_SIZE);
-    [diamondView setFrame:diamondRect];
+    [self.diamondView setFrame:diamondRect];
 }
 
 - (void)updateTrackingAreas {
@@ -143,9 +157,9 @@
 
 - (void)drawBackground {
     CGContextRef context = (CGContextRef) [[NSGraphicsContext currentContext] graphicsPort];
-    if (appDelegate.modeMap.selectedModeDirection == modeDirection) {
+    if (self.appDelegate.modeMap.selectedModeDirection == self.modeDirection) {
         CGContextSetRGBFillColor(context, 1, 1, 1, 1);
-    } else if (mouseDownActive) {
+    } else if (self.mouseDownActive) {
         CGContextSetRGBFillColor(context, 0, 0, 0, 0.025);
     } else {
         [[NSColor clearColor] set];
@@ -154,7 +168,7 @@
 }
 
 - (void)drawBorders {
-    BOOL active = appDelegate.modeMap.selectedModeDirection == modeDirection;
+    BOOL active = self.appDelegate.modeMap.selectedModeDirection == self.modeDirection;
 
     if (active) {
         [self drawActiveBorder];
@@ -167,7 +181,7 @@
     NSBezierPath *line = [NSBezierPath bezierPath];
     
     // Left border
-    if (modeDirection != NORTH) {
+    if (self.modeDirection != NORTH) {
         [line moveToPoint:NSMakePoint(NSMinX(self.bounds), NSMinY(self.bounds))];
         [line lineToPoint:NSMakePoint(NSMinX(self.bounds), NSMaxY(self.bounds))];
         [line setLineWidth:1.0];
@@ -176,7 +190,7 @@
     }
     
     // Right border
-    if (modeDirection != SOUTH) {
+    if (self.modeDirection != SOUTH) {
         [line moveToPoint:NSMakePoint(NSMaxX(self.bounds), NSMinY(self.bounds))];
         [line lineToPoint:NSMakePoint(NSMaxX(self.bounds), NSMaxY(self.bounds))];
         [line setLineWidth:1.0];
@@ -187,13 +201,13 @@
 
 - (void)drawInactiveBorder {
     NSBezierPath *line = [NSBezierPath bezierPath];
-    TTModeDirection activeDirection = appDelegate.modeMap.selectedModeDirection;
+    TTModeDirection activeDirection = self.appDelegate.modeMap.selectedModeDirection;
 
     // Right border
-    if ((modeDirection == NORTH && activeDirection == EAST) ||
-        (modeDirection == EAST && activeDirection == WEST) ||
-        (modeDirection == WEST && activeDirection == SOUTH) ||
-        modeDirection == SOUTH) {
+    if ((self.modeDirection == NORTH && activeDirection == EAST) ||
+        (self.modeDirection == EAST && activeDirection == WEST) ||
+        (self.modeDirection == WEST && activeDirection == SOUTH) ||
+        self.modeDirection == SOUTH) {
         
     } else {
         [line moveToPoint:NSMakePoint(NSMaxX(self.bounds), NSMinY(self.bounds) + 24)];
@@ -217,7 +231,7 @@
     [[NSCursor pointingHandCursor] set];
     
 //    NSLog(@"Mouse entered");
-    hoverActive = YES;
+    self.hoverActive = YES;
     [self setNeedsDisplay:YES];
 }
 
@@ -225,18 +239,18 @@
     [[NSCursor arrowCursor] set];
 
 //    NSLog(@"Mouse exited");
-    hoverActive = NO;
+    self.hoverActive = NO;
 //    [self setupMode];
     [self setNeedsDisplay:YES];
 }
 
 - (void)mouseDown:(NSEvent *)theEvent {
-    mouseDownActive = YES;
+    self.mouseDownActive = YES;
     [self setNeedsDisplay:YES];
 }
 
 - (void)mouseUp:(NSEvent *)theEvent {
-    mouseDownActive = NO;
+    self.mouseDownActive = NO;
 
     NSPoint clickPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
     BOOL inside = NSPointInRect(clickPoint, self.bounds);
@@ -245,8 +259,8 @@
         return;
     }
     
-    [appDelegate.panelController.backgroundView resetPosition];
-    [appDelegate.modeMap switchMode:modeDirection modeName:nil];
+    [self.appDelegate.panelController.backgroundView resetPosition];
+    [self.appDelegate.modeMap switchMode:self.modeDirection modeName:nil];
 }
 
 @end

@@ -21,13 +21,6 @@ NSString *const kDoubleTapHueScene = @"doubleTapHueScene";
 
 @implementation TTModeHueSceneOptions
 
-@synthesize scenePopup;
-@synthesize spinner;
-@synthesize refreshButton;
-@synthesize doubleTapScenePopup;
-@synthesize doubleTapSpinner;
-@synthesize doubleTapRefreshButton;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -35,22 +28,22 @@ NSString *const kDoubleTapHueScene = @"doubleTapHueScene";
 }
 
 - (void)drawScenes {
-    [spinner setHidden:YES];
+    [self.spinner setHidden:YES];
     [self.roomSpinner setHidden:YES];
-    [doubleTapSpinner setHidden:YES];
-    [refreshButton setHidden:NO];
+    [self.doubleTapSpinner setHidden:YES];
+    [self.refreshButton setHidden:NO];
     [self.roomRefreshButton setHidden:NO];
-    [doubleTapRefreshButton setHidden:NO];
+    [self.doubleTapRefreshButton setHidden:NO];
     
-    NSString *sceneSelectedIdentifier = [self.action optionValue:kHueScene inDirection:appDelegate.modeMap.inspectingModeDirection];
-    NSString *doubleTapSceneSelectedIdentifier = [self.action optionValue:kDoubleTapHueScene inDirection:appDelegate.modeMap.inspectingModeDirection];
+    NSString *sceneSelectedIdentifier = [self.action optionValue:kHueScene inDirection:self.appDelegate.modeMap.inspectingModeDirection];
+    NSString *doubleTapSceneSelectedIdentifier = [self.action optionValue:kDoubleTapHueScene inDirection:self.appDelegate.modeMap.inspectingModeDirection];
     NSString *sceneSelected;
     NSString *doubleTapSceneSelected;
     
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
     NSMutableArray *scenes = [[NSMutableArray alloc] init];
-    [scenePopup removeAllItems];
-    [doubleTapScenePopup removeAllItems];
+    [self.scenePopup removeAllItems];
+    [self.doubleTapScenePopup removeAllItems];
     
     for (PHScene *scene in cache.scenes.allValues) {
         NSLog(@"Scene: %@ %@", scene.identifier, scene.name);
@@ -83,8 +76,8 @@ NSString *const kDoubleTapHueScene = @"doubleTapHueScene";
     [scenes sortUsingDescriptors:@[sd]];
     
     for (NSDictionary *scene in scenes) {
-        [scenePopup addItemWithTitle:scene[@"name"]];
-        [doubleTapScenePopup addItemWithTitle:scene[@"name"]];
+        [self.scenePopup addItemWithTitle:scene[@"name"]];
+        [self.doubleTapScenePopup addItemWithTitle:scene[@"name"]];
         if ([scene[@"identifier"] isEqualToString:sceneSelectedIdentifier]) {
             sceneSelected = scene[@"name"];
         }
@@ -94,18 +87,18 @@ NSString *const kDoubleTapHueScene = @"doubleTapHueScene";
         
     }
     if (sceneSelected) {
-        [scenePopup selectItemWithTitle:sceneSelected];
+        [self.scenePopup selectItemWithTitle:sceneSelected];
     }
     if (doubleTapSceneSelected) {
-        [doubleTapScenePopup selectItemWithTitle:doubleTapSceneSelected];
+        [self.doubleTapScenePopup selectItemWithTitle:doubleTapSceneSelected];
     }
 }
 
 #pragma mark - Actions
 
 - (IBAction)didChangeScene:(id)sender {
-    BOOL doubleTap = sender == doubleTapScenePopup;
-    NSMenuItem *menuItem = [(doubleTap ? doubleTapScenePopup : scenePopup) selectedItem];
+    BOOL doubleTap = sender == self.doubleTapScenePopup;
+    NSMenuItem *menuItem = [(doubleTap ? self.doubleTapScenePopup : self.scenePopup) selectedItem];
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
     NSString *sceneIdentifier;
     
@@ -116,20 +109,20 @@ NSString *const kDoubleTapHueScene = @"doubleTapHueScene";
         }
     }
     
-    if (sender == scenePopup) {
+    if (sender == self.scenePopup) {
         [self.action changeActionOption:kHueScene to:sceneIdentifier];
-    } else if (sender == doubleTapScenePopup) {
+    } else if (sender == self.doubleTapScenePopup) {
         [self.action changeActionOption:kDoubleTapHueScene to:sceneIdentifier];
     }
 }
 
 - (IBAction)didClickRefresh:(id)sender {
-    [spinner setHidden:NO];
-    [doubleTapSpinner setHidden:NO];
+    [self.spinner setHidden:NO];
+    [self.doubleTapSpinner setHidden:NO];
     [self.roomSpinner setHidden:NO];
-    [refreshButton setHidden:YES];
+    [self.refreshButton setHidden:YES];
     [self.roomRefreshButton setHidden:YES];
-    [doubleTapRefreshButton setHidden:YES];
+    [self.doubleTapRefreshButton setHidden:YES];
     
     PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
     [bridgeSendAPI getAllScenesWithCompletionHandler:^(NSDictionary *dictionary, NSArray *errors) {

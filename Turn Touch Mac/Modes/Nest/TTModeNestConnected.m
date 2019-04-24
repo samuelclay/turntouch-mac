@@ -14,10 +14,6 @@
 
 @implementation TTModeNestConnected
 
-@synthesize devicePopup;
-@synthesize labelAmbient;
-@synthesize labelTarget;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -25,12 +21,11 @@
 }
 
 - (void)selectDevice {
-    NSString *deviceSelectedIdentifier = [appDelegate.modeMap mode:self.mode
-                                                 actionOptionValue:kNestThermostat
-                                                       inDirection:appDelegate.modeMap.inspectingModeDirection];
+    NSString *deviceSelectedIdentifier = [self.appDelegate.modeMap mode:self.mode
+                                                 actionOptionValue:kNestThermostat inDirection:self.appDelegate.modeMap.inspectingModeDirection];
     NSString *deviceSelected;
     NSMutableArray *devices = [NSMutableArray array];
-    [devicePopup removeAllItems];
+    [self.devicePopup removeAllItems];
     for (Thermostat *thermostat in [self.modeNest.currentStructure objectForKey:@"thermostats"]) {
         if (!thermostat.nameLong) thermostat.nameLong = @"Connecting to Nest...";
         [devices addObject:@{@"name": thermostat.nameLong, @"identifier": thermostat.thermostatId}];
@@ -40,13 +35,13 @@
     [devices sortUsingDescriptors:@[sd]];
     
     for (NSDictionary *deviceData in devices) {
-        [devicePopup addItemWithTitle:deviceData[@"name"]];
+        [self.devicePopup addItemWithTitle:deviceData[@"name"]];
         if ([deviceData[@"identifier"] isEqualToString:deviceSelectedIdentifier]) {
             deviceSelected = deviceData[@"name"];
         }
     }
     if (deviceSelected) {
-        [devicePopup selectItemWithTitle:deviceSelected];
+        [self.devicePopup selectItemWithTitle:deviceSelected];
     }
 }
 

@@ -10,24 +10,22 @@
 
 @implementation TTModeNestDelegateManager
 
-@synthesize delegates;
-
 - (instancetype)init {
     if (self = [super init]) {
-        delegates = [NSMutableArray array];
+        self.delegates = [NSMutableArray array];
     }
     
     return self;
 }
 
 - (void)thermostatValuesChanged:(Thermostat *)thermostat {
-    for (id<NestThermostatManagerDelegate>delegate in delegates) {
+    for (id<NestThermostatManagerDelegate>delegate in self.delegates) {
         [delegate thermostatValuesChanged:thermostat];
     }
 }
 
 - (void)structureUpdated:(NSDictionary *)structure {
-    for (id<NestStructureManagerDelegate>delegate in delegates) {
+    for (id<NestStructureManagerDelegate>delegate in self.delegates) {
         [delegate structureUpdated:structure];
     }
 }

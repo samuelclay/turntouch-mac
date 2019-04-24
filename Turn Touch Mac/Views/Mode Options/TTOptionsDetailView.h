@@ -13,12 +13,9 @@
 @class TTAppDelegate;
 
 @interface TTOptionsDetailView : NSView
-<NSTabViewDelegate> {
-    TTAppDelegate *appDelegate;
-    
-    TTTabView *tabView;
-}
+<NSTabViewDelegate>
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic) IBOutlet TTTabView *tabView;
 @property (nonatomic) TTMenuType menuType;
 

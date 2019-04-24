@@ -145,11 +145,11 @@ NSString *const kPresentationPlayStartFirstSlide = @"TT:Presentation:playStartFi
 #pragma mark - Action methods
 
 - (BOOL)isKeynote {
-    return [[appDelegate.modeMap mode:self optionValue:kPresentationApp] isEqualToString:@"keynote"];
+    return [[self.appDelegate.modeMap mode:self optionValue:kPresentationApp] isEqualToString:@"keynote"];
 }
 
 - (BOOL)isPowerpoint {
-    return [[appDelegate.modeMap mode:self optionValue:kPresentationApp] isEqualToString:@"powerpoint"];
+    return [[self.appDelegate.modeMap mode:self optionValue:kPresentationApp] isEqualToString:@"powerpoint"];
 }
 
 - (void)runTTModePresentationToggleSlides {
@@ -218,7 +218,7 @@ NSString *const kPresentationPlayStartFirstSlide = @"TT:Presentation:playStartFi
 }
 
 - (void)runTTModePresentationPlay {
-    BOOL startFirstSlide = [[appDelegate.modeMap mode:self optionValue:kPresentationPlayStartFirstSlide] boolValue];
+    BOOL startFirstSlide = [[self.appDelegate.modeMap mode:self optionValue:kPresentationPlayStartFirstSlide] boolValue];
     
     if ([self isKeynote]) {
         KeynoteApplication *keynote = [SBApplication applicationWithBundleIdentifier:@"com.apple.iWork.Keynote"];

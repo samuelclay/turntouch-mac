@@ -9,10 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "TTNewsBlurFeed.h"
 
-@interface TTModeNewsFeedView : NSView {
-    NSTextField *titleLabel;
-    NSImageView *titleImageView;
-}
+@interface TTModeNewsFeedView : NSView
 
 @property (nonatomic) TTNewsBlurFeed *feed;
 

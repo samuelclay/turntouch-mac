@@ -9,39 +9,50 @@
 #import "TTDeviceTitleView.h"
 #import "NSDate+TimeAgo.h"
 
-@implementation TTDeviceTitleView
+@interface TTDeviceTitleView ()
 
-@synthesize device;
-@synthesize progress;
+@property (nonatomic, strong) NSDictionary *titleAttributes;
+@property (nonatomic, strong) NSDictionary *stateAttributes;
+@property (nonatomic) CGSize textSize;
+@property (nonatomic, strong) TTChangeButtonView *changeButton;
+@property (nonatomic) NSInteger latestVersion;
+@property (nonatomic) BOOL hoverActive;
+@property (nonatomic, strong) NSButton *settingsButton;
+@property (nonatomic) BOOL isMenuVisible;
+@property (nonatomic, strong) NSMenu *settingsMenu;
+
+@end
+
+@implementation TTDeviceTitleView
 
 - (instancetype)initWithDevice:(TTDevice *)_device {
     if (self = [super init]) {
-        appDelegate = (TTAppDelegate *)[NSApp delegate];
-        device = _device;
-        hoverActive = NO;
+        self.appDelegate = (TTAppDelegate *)[NSApp delegate];
+        self.device = _device;
+        self.hoverActive = NO;
 
         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-        latestVersion = [[prefs objectForKey:@"TT:firmware:version"] integerValue];
+        self.latestVersion = [[prefs objectForKey:@"TT:firmware:version"] integerValue];
 
-        changeButton = [[TTChangeButtonView alloc] init];
-        [self setChangeButtonTitle:[NSString stringWithFormat:@"Upgrade to v%ld", (long)latestVersion]];
-        [changeButton setAction:@selector(beginUpgrade:)];
-        [changeButton setTarget:self];
-        [self addSubview:changeButton];
+        self.changeButton = [[TTChangeButtonView alloc] init];
+        [self setChangeButtonTitle:[NSString stringWithFormat:@"Upgrade to v%ld", (long)self.latestVersion]];
+        [self.changeButton setAction:@selector(beginUpgrade:)];
+        [self.changeButton setTarget:self];
+        [self addSubview:self.changeButton];
         
-        settingsButton = [[TTSettingsButton alloc] initWithFrame:NSZeroRect pullsDown:YES];
+        self.settingsButton = [[TTSettingsButton alloc] initWithFrame:NSZeroRect pullsDown:YES];
         [self buildSettingsMenu:YES];
-        [settingsButton setTarget:self];
-        [settingsButton setMenu:settingsMenu];
-        [self addSubview:settingsButton];
+        [self.settingsButton setTarget:self];
+        [self.settingsButton setMenu:self.settingsMenu];
+        [self addSubview:self.settingsButton];
         
-        progress = [[NSProgressIndicator alloc] init];
-        [progress setStyle:NSProgressIndicatorBarStyle];
-        [progress setDisplayedWhenStopped:NO];
-        [progress setUsesThreadedAnimation:YES];
-        [progress setMinValue:0];
-        [progress setMaxValue:100];
-        [self addSubview:progress];
+        self.progress = [[NSProgressIndicator alloc] init];
+        [self.progress setStyle:NSProgressIndicatorBarStyle];
+        [self.progress setDisplayedWhenStopped:NO];
+        [self.progress setUsesThreadedAnimation:YES];
+        [self.progress setMinValue:0];
+        [self.progress setMaxValue:100];
+        [self addSubview:self.progress];
         
         [self setupTitleAttributes];
         [self createTrackingArea];
@@ -67,7 +78,7 @@
     [super drawRect:dirtyRect];
 
     [self drawBackground];
-//    NSLog(@"Drawing %@: %@.", NSStringFromRect(self.frame), device);
+//    NSLog(@"Drawing %@: %@.", NSStringFromRect(self.frame), self.device);
     
     NSImage *remoteIcon;
     NSPoint imagePoint;
@@ -76,44 +87,44 @@
     CGFloat offset = (NSHeight(self.frame)/2) - (remoteIcon.size.height/2);
     imagePoint = NSMakePoint(8, offset);
 
-    if (hoverActive || isMenuVisible) {
-        settingsButton.hidden = NO;
-        CGFloat offsetY = (NSHeight(self.frame)/2) - (settingsButton.image.size.height/2);
-        settingsButton.frame = NSMakeRect(0, offsetY, settingsButton.image.size.width*2.55, settingsButton.image.size.height);
+    if (self.hoverActive || self.isMenuVisible) {
+        self.settingsButton.hidden = NO;
+        CGFloat offsetY = (NSHeight(self.frame)/2) - (self.settingsButton.image.size.height/2);
+        self.settingsButton.frame = NSMakeRect(0, offsetY, self.settingsButton.image.size.width*2.55, self.settingsButton.image.size.height);
     } else {
-        settingsButton.hidden = YES;
+        self.settingsButton.hidden = YES;
         [remoteIcon drawInRect:NSMakeRect(imagePoint.x, imagePoint.y,
                                           remoteIcon.size.width, remoteIcon.size.height)];
     }
     
-    NSSize titleSize = [device.nickname sizeWithAttributes:titleAttributes];
+    NSSize titleSize = [self.device.nickname sizeWithAttributes:self.titleAttributes];
     NSPoint titlePoint = NSMakePoint(imagePoint.x + remoteIcon.size.width + 12,
                                      (NSHeight(self.frame)/2) - (titleSize.height/2));
-    [device.nickname drawAtPoint:titlePoint withAttributes:titleAttributes];
+    [self.device.nickname drawAtPoint:titlePoint withAttributes:self.titleAttributes];
     
     NSString *buttonText = [self updateButtonTitle];
     NSSize buttonSize = [buttonText sizeWithAttributes:@{NSFontNameAttribute: [NSFont fontWithName:@"Effra" size:13]}];
     NSRect buttonFrame = NSMakeRect(NSWidth(self.frame) - buttonSize.width*1.25 - 12,
                                     8,
                                     buttonSize.width*1.25, NSHeight(self.frame) - 8*2);
-    changeButton.frame = buttonFrame;
+    self.changeButton.frame = buttonFrame;
     
-    progress.frame = buttonFrame;
+    self.progress.frame = buttonFrame;
 
     [self setChangeButtonTitle:buttonText];
     
-    if (device.isFirmwareOld && !device.inDFU) {
-        changeButton.hidden = NO;
-    } else if (device.inDFU) {
-        changeButton.hidden = YES;
+    if (self.device.isFirmwareOld && !self.device.inDFU) {
+        self.changeButton.hidden = NO;
+    } else if (self.device.inDFU) {
+        self.changeButton.hidden = YES;
     } else {
-        NSSize stateSize = [device.stateLabel sizeWithAttributes:stateAttributes];
+        NSSize stateSize = [self.device.stateLabel sizeWithAttributes:self.stateAttributes];
         NSPoint statePoint = NSMakePoint(NSMaxX(self.frame) - stateSize.width - 22,
                                          (NSHeight(self.frame)/2) - (stateSize.height/2));
-        [device.stateLabel drawAtPoint:statePoint withAttributes:stateAttributes];
+        [self.device.stateLabel drawAtPoint:statePoint withAttributes:self.stateAttributes];
     }
     
-    if (device.state == TTDeviceStateConnected) {
+    if (self.device.state == TTDeviceStateConnected) {
         self.alphaValue = 1.0;
     } else {
         self.alphaValue = 0.6f;
@@ -129,7 +140,7 @@
     if (!title) return;
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]
                                                    initWithString:title attributes:nil];
-    [changeButton setAttributedTitle:attributedString];
+    [self.changeButton setAttributedTitle:attributedString];
 }
 
 - (void)setupTitleAttributes {
@@ -138,86 +149,86 @@
     stringShadow.shadowOffset = NSMakeSize(0, -1);
     stringShadow.shadowBlurRadius = 0;
     NSColor *textColor = NSColorFromRGB(0x808AA0);
-    if (device.state == TTDeviceStateConnected) {
+    if (self.device.state == TTDeviceStateConnected) {
         textColor = NSColorFromRGB(0x404A60);
     }
     
-    titleAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:13],
+    self.titleAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:13],
                         NSForegroundColorAttributeName: textColor,
                         NSShadowAttributeName: stringShadow
                         };
-    textSize = [device.nickname sizeWithAttributes:titleAttributes];
+    self.textSize = [self.device.nickname sizeWithAttributes:self.titleAttributes];
     
     textColor = NSColorFromRGB(0x808AA0);
-    stateAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:13],
+    self.stateAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:13],
                         NSForegroundColorAttributeName: textColor,
                         NSShadowAttributeName: stringShadow
                         };
 }
 
 - (void)beginUpgrade:(id)sender {
-    NSLog(@"Begin upgrade: %@", device);
+    NSLog(@"Begin upgrade: %@", self.device);
     
-    device.inDFU = YES;
-    [progress setIndeterminate:YES];
-    [progress startAnimation:nil];
-    [appDelegate.panelController.backgroundView.deviceTitlesView performDFU:device];
-    changeButton.hidden = YES;
+    self.device.inDFU = YES;
+    [self.progress setIndeterminate:YES];
+    [self.progress startAnimation:nil];
+    [self.appDelegate.panelController.backgroundView.deviceTitlesView performDFU:self.device];
+    self.changeButton.hidden = YES;
 }
 
 - (NSString *)updateButtonTitle {
     NSString *buttonText;
-    if (device.isFirmwareOld) {
-        buttonText = [NSString stringWithFormat:@"Upgrade to v%ld", (long)latestVersion];
-        [changeButton setUseAltStyle:NO];
-        [changeButton setEnabled:YES];
+    if (self.device.isFirmwareOld) {
+        buttonText = [NSString stringWithFormat:@"Upgrade to v%ld", (long)self.latestVersion];
+        [self.changeButton setUseAltStyle:NO];
+        [self.changeButton setEnabled:YES];
     } else {
-//        buttonText = [NSString stringWithFormat:@"All set with v%ld", (long)device.firmwareVersion];
-//        [changeButton setUseAltStyle:YES];
-//        [changeButton setEnabled:NO];
-        changeButton.hidden = YES;
+//        buttonText = [NSString stringWithFormat:@"All set with v%ld", (long)self.device.firmwareVersion];
+//        [self.changeButton setUseAltStyle:YES];
+//        [self.changeButton setEnabled:NO];
+        self.changeButton.hidden = YES;
     }
     return buttonText;
 }
 
 - (void)disableUpgrade {
-    [changeButton setEnabled:NO];
+    [self.changeButton setEnabled:NO];
     if (!self.device.isFirmwareOld) return;
-    [changeButton setTitle:@"Waiting..."];
+    [self.changeButton setTitle:@"Waiting..."];
 }
 
 - (void)enableUpgrade {
-    if (device.isFirmwareOld) {
-        [changeButton setEnabled:YES];
+    if (self.device.isFirmwareOld) {
+        [self.changeButton setEnabled:YES];
     }
     NSString *buttonText = [self updateButtonTitle];
-    [changeButton setTitle:buttonText];
+    [self.changeButton setTitle:buttonText];
 }
 
 - (void)startIndeterminateProgress {
-    [progress setIndeterminate:NO];
-    [progress startAnimation:nil];
-    changeButton.hidden = YES;
+    [self.progress setIndeterminate:NO];
+    [self.progress startAnimation:nil];
+    self.changeButton.hidden = YES;
 }
 
 - (void)setProgressPercentage:(CGFloat)percentage {
-    [progress setIndeterminate:NO];
-    [progress startAnimation:nil];
-    [progress setDoubleValue:percentage];
-    changeButton.hidden = YES;
+    [self.progress setIndeterminate:NO];
+    [self.progress startAnimation:nil];
+    [self.progress setDoubleValue:percentage];
+    self.changeButton.hidden = YES;
 }
 
 #pragma mark - Mouse
 
 - (void)mouseEntered:(NSEvent *)theEvent {
-    hoverActive = YES;
+    self.hoverActive = YES;
     [self setNeedsDisplay:YES];
 }
 
 - (void)mouseExited:(NSEvent *)theEvent {
     [[NSCursor arrowCursor] set];
     
-    hoverActive = NO;
+    self.hoverActive = NO;
     [self setNeedsDisplay:YES];
 }
 
@@ -225,32 +236,32 @@
 #pragma mark - Settings menu
 
 - (void)buildSettingsMenu:(BOOL)force {
-    if (!force && !isMenuVisible) return;
+    if (!force && !self.isMenuVisible) return;
     
     NSMenuItem *menuItem;
     
-    if (!settingsMenu) {
-        settingsMenu = [[NSMenu alloc] initWithTitle:@"Remote Menu"];
-        [settingsMenu setDelegate:self];
-        [settingsMenu setAutoenablesItems:NO];
+    if (!self.settingsMenu) {
+        self.settingsMenu = [[NSMenu alloc] initWithTitle:@"Remote Menu"];
+        [self.settingsMenu setDelegate:self];
+        [self.settingsMenu setAutoenablesItems:NO];
     } else {
-        [settingsMenu removeAllItems];
+        [self.settingsMenu removeAllItems];
     }
     
     NSString *batteryLevel = [NSString stringWithFormat:@"Battery level: %d%%",
-                              (int)device.batteryPct.intValue];
+                              (int)self.device.batteryPct.intValue];
     menuItem = [[NSMenuItem alloc] initWithTitle:batteryLevel action:@selector(openDevicesDialog:) keyEquivalent:@""];
     [menuItem setEnabled:NO];
     [menuItem setTarget:self];
-    if (device.isPaired && device.batteryPct.intValue <= 0) {
+    if (self.device.isPaired && self.device.batteryPct.intValue <= 0) {
         [menuItem setTitle:@"Connecting to remote..."];
         [menuItem setEnabled:NO];
-    } else if (!device.isPaired) {
+    } else if (!self.device.isPaired) {
         [menuItem setTitle:@"Pairing with remote..."];
         [menuItem setEnabled:NO];
     }
-    [settingsMenu addItem:menuItem];
-    NSString *timeAgo = [device.lastActionDate timeAgo];
+    [self.settingsMenu addItem:menuItem];
+    NSString *timeAgo = [self.device.lastActionDate timeAgo];
     NSString *lastAction = [NSString stringWithFormat:@"Last action: %@",
                             timeAgo];
     if (!timeAgo) {
@@ -258,52 +269,52 @@
     }
     menuItem = [[NSMenuItem alloc] initWithTitle:lastAction action:nil keyEquivalent:@""];
     [menuItem setEnabled:NO];
-    [settingsMenu addItem:menuItem];
+    [self.settingsMenu addItem:menuItem];
 
-    [settingsMenu addItem:[NSMenuItem separatorItem]];
+    [self.settingsMenu addItem:[NSMenuItem separatorItem]];
 
     menuItem = [[NSMenuItem alloc] initWithTitle:@"Rename this remote"
                                           action:@selector(openDevicesDialog:)
                                    keyEquivalent:@""];
     [menuItem setTarget:self];
-    [settingsMenu addItem:menuItem];
+    [self.settingsMenu addItem:menuItem];
     
-    [settingsMenu addItem:[NSMenuItem separatorItem]];
+    [self.settingsMenu addItem:[NSMenuItem separatorItem]];
     
     menuItem = [[NSMenuItem alloc] initWithTitle:@"Forget this remote"
                                           action:@selector(forgetDevice:)
                                    keyEquivalent:@""];
     [menuItem setTarget:self];
-    [settingsMenu addItem:menuItem];
+    [self.settingsMenu addItem:menuItem];
     
     menuItem = [[NSMenuItem alloc] initWithTitle:@"" action:nil keyEquivalent:@""];
     NSImage *image = [NSImage imageNamed:@"settings"];
     [image setSize:NSMakeSize(18, 18)];
     [menuItem setImage:image];
-    [settingsMenu insertItem:menuItem atIndex:0];
+    [self.settingsMenu insertItem:menuItem atIndex:0];
 }
 
 #pragma mark - Menu Delegate
 
 - (void)menuWillOpen:(NSMenu *)menu {
-    isMenuVisible = YES;
+    self.isMenuVisible = YES;
     [self buildSettingsMenu:YES];
 }
 
 - (void)menuDidClose:(NSMenu *)menu {
-    isMenuVisible = NO;
+    self.isMenuVisible = NO;
 }
 
 - (void)openSettingsDialog:(id)sender {
-    [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_SETTINGS];
+    [self.appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_SETTINGS];
 }
 
 - (void)forgetDevice:(id)sender {
-    [appDelegate.bluetoothMonitor forgetDevice:device];
+    [self.appDelegate.bluetoothMonitor forgetDevice:self.device];
 }
 
 - (void)openDevicesDialog:(id)sender {
-    [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_DEVICES];
+    [self.appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_DEVICES];
 }
 
 @end

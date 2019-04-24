@@ -11,20 +11,18 @@
 
 @interface TTModeWebWindowController ()
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
+@property (nonatomic) BOOL isFading;
+
 @end
 
 @implementation TTModeWebWindowController
 
-@synthesize webWindow;
-@synthesize backgroundView;
-@synthesize browserView;
-@synthesize menuView;
-
 - (instancetype)initWithWindowNibName:(NSString *)windowNibName {
     if (self = [super initWithWindowNibName:windowNibName]) {
-        appDelegate = (TTAppDelegate *)[NSApp delegate];
-        [menuView setDelegate:self];
-        [self showWindow:appDelegate];
+        self.appDelegate = (TTAppDelegate *)[NSApp delegate];
+        [self.menuView setDelegate:self];
+        [self showWindow:self.appDelegate];
     }
     
     return self;
@@ -45,38 +43,38 @@
 }
 
 - (void)fadeIn {
-    [webWindow setFrame:[self visibleFrame] display:YES];
-    [webWindow makeKeyAndOrderFront:nil];
-    [browserView setNeedsDisplay:YES];
-    [menuView setNeedsDisplay:YES];
+    [self.webWindow setFrame:[self visibleFrame] display:YES];
+    [self.webWindow makeKeyAndOrderFront:nil];
+    [self.browserView setNeedsDisplay:YES];
+    [self.menuView setNeedsDisplay:YES];
     
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:.5f];
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
     
-    [[webWindow animator] setAlphaValue:1.f];
-    [webWindow setFrame:[self visibleFrame] display:YES];
+    [[self.webWindow animator] setAlphaValue:1.f];
+    [self.webWindow setFrame:[self visibleFrame] display:YES];
 
-    [browserView setNeedsDisplay:YES];
+    [self.browserView setNeedsDisplay:YES];
 
     [NSAnimationContext endGrouping];
 }
 
 - (IBAction)fadeOut {
     //    __block __unsafe_unretained NSWindow *window = webWindow;
-    if (isFading) return;
-    isFading = YES;
+    if (self.isFading) return;
+    self.isFading = YES;
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:.65f];
     [[NSAnimationContext currentContext] setCompletionHandler:^{
         //        [webWindow orderOut:nil];
-        isFading = NO;
+        self.isFading = NO;
     }];
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
     
-    [[webWindow animator] setAlphaValue:0.f];
+    [[self.webWindow animator] setAlphaValue:0.f];
     
     [NSAnimationContext endGrouping];
 }

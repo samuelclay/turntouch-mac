@@ -13,12 +13,10 @@
 
 @implementation TTFooterView
 
-@synthesize backgroundColor;
-
 - (instancetype)init {
     if (self = [super init]) {
         self.translatesAutoresizingMaskIntoConstraints = NO;
-        backgroundColor = NSColorFromRGB(0xFFFFFF);
+        self.backgroundColor = NSColorFromRGB(0xFFFFFF);
     }
 
     return self;
@@ -52,7 +50,7 @@
     
     [path closePath];
     
-    [backgroundColor setFill];
+    [self.backgroundColor setFill];
     [path fill];
     
 //    NSGradient* aGradient = [[NSGradient alloc]

@@ -14,11 +14,6 @@
 
 @implementation TTModeSonosConnected
 
-@synthesize modeSonos;
-@synthesize connectedLabel;
-@synthesize scanButton;
-@synthesize deviceSelect;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self selectDevice];
@@ -29,7 +24,7 @@
     NSString *deviceSelected = [NSAppDelegate.modeMap mode:self.modeSonos optionValue:kSonosDeviceId];
     NSArray *foundDevices = [self.modeSonos foundDevices];
     
-    [deviceSelect removeAllItems];
+    [self.deviceSelect removeAllItems];
     
     for (SonosController *device in foundDevices) {
         [devices addObject:@{@"name": device.name, @"identifier": device.uuid}];
@@ -39,9 +34,9 @@
     [devices sortUsingDescriptors:@[sd]];
 
     for (NSDictionary *device in devices) {
-        [deviceSelect addItemWithTitle:device[@"name"]];
+        [self.deviceSelect addItemWithTitle:device[@"name"]];
         if ([device[@"identifier"] isEqualToString:deviceSelected]) {
-            [deviceSelect selectItemWithTitle:device[@"name"]];
+            [self.deviceSelect selectItemWithTitle:device[@"name"]];
         }
     }
 }
@@ -49,11 +44,11 @@
 - (IBAction)changeDevice:(id)sender {
     NSArray *foundDevices = [self.modeSonos foundDevices];
     NSAssert(self.modeSonos != nil, @" ***> self.modeSonos is nil!");
-    NSAssert(deviceSelect != nil, @" ***> deviceSelect is nil!");
+    NSAssert(self.deviceSelect != nil, @" ***> deviceSelect is nil!");
 
     for (SonosController *device in foundDevices) {
-        if ([device.name isEqualToString:deviceSelect.selectedItem.title]) {
-            [appDelegate.modeMap changeMode:self.modeSonos option:kSonosDeviceId to:device.uuid];
+        if ([device.name isEqualToString:self.deviceSelect.selectedItem.title]) {
+            [self.appDelegate.modeMap changeMode:self.modeSonos option:kSonosDeviceId to:device.uuid];
             break;
         }
     }

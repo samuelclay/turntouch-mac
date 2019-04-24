@@ -28,18 +28,19 @@
 @property BOOL isConnected;
 @property BOOL isErrorKnown;
 @property BOOL isNotifying;
+
+@property (nonatomic, strong) TTBorder *border;
+@property (nonatomic, strong) TTDevice *currentDevice;
+
 @end
 
 @implementation TTDeviceTitlesView
-
-@synthesize selectedPeripheral;
-@synthesize dfuOperations;
 
 - (instancetype)initWithFrame:(NSRect)frameRect {
     if (self = [super initWithFrame:frameRect]) {
         self.translatesAutoresizingMaskIntoConstraints = NO;
 
-        appDelegate = (TTAppDelegate *)[NSApp delegate];
+        self.appDelegate = (TTAppDelegate *)[NSApp delegate];
         [self setOrientation:NSUserInterfaceLayoutOrientationVertical];
         [self setAlignment:NSLayoutAttributeCenterX];
         [self setSpacing:0];
@@ -52,10 +53,10 @@
         // This is set to 10 elsewhere. Why make it user configurable?
 //        PACKETS_NOTIFICATION_INTERVAL = [[[NSUserDefaults standardUserDefaults] valueForKey:@"dfu_number_of_packets"] intValue];
 //        NSLog(@"PACKETS_NOTIFICATION_INTERVAL %d",PACKETS_NOTIFICATION_INTERVAL);
-        dfuOperations = [[DFUOperations alloc] initWithDelegate:self];
-        self.dfuHelper = [[DFUHelper alloc] initWithData:dfuOperations];
+        self.dfuOperations = [[DFUOperations alloc] initWithDelegate:self];
+        self.dfuHelper = [[DFUHelper alloc] initWithData:self.dfuOperations];
         
-        border = [[TTBorder alloc] init];
+        self.border = [[TTBorder alloc] init];
         
         [self assembleDeviceTitles];
     }
@@ -64,19 +65,19 @@
 }
 
 - (void)registerAsObserver {
-    [appDelegate.bluetoothMonitor addObserver:self
+    [self.appDelegate.bluetoothMonitor addObserver:self
                                    forKeyPath:@"nicknamedConnectedCount"
                                       options:0 context:nil];
-    [appDelegate.bluetoothMonitor addObserver:self
+    [self.appDelegate.bluetoothMonitor addObserver:self
                                    forKeyPath:@"pairedDevicesCount"
                                       options:0 context:nil];
-    [appDelegate.bluetoothMonitor addObserver:self
+    [self.appDelegate.bluetoothMonitor addObserver:self
                                    forKeyPath:@"unpairedDevicesCount"
                                       options:0 context:nil];
-    [appDelegate.bluetoothMonitor addObserver:self
+    [self.appDelegate.bluetoothMonitor addObserver:self
                                    forKeyPath:@"unpairedDevicesConnected"
                                       options:0 context:nil];
-    [appDelegate.bluetoothMonitor addObserver:self
+    [self.appDelegate.bluetoothMonitor addObserver:self
                                    forKeyPath:@"bluetoothState"
                                       options:0 context:nil];
 }
@@ -141,7 +142,7 @@
 
 - (void)assembleDeviceTitles {
     NSMutableArray *dfuDeviceViews = [NSMutableArray array];
-    NSArray *devices = appDelegate.bluetoothMonitor.foundDevices.devices;
+    NSArray *devices = self.appDelegate.bluetoothMonitor.foundDevices.devices;
     
     [self removeConstraints:self.constraints];
     for (NSView *subview in [self viewsInGravity:NSStackViewGravityTop]) {
@@ -155,7 +156,7 @@
         [self addView:deviceView inGravity:NSStackViewGravityTop];
     }
     
-//    [dfuDeviceViews addObject:border];
+//    [dfuDeviceViews addObject:self.border];
 //    [self setViews:dfuDeviceViews inGravity:NSStackViewGravityTop];
     
     for (NSView *deviceView in self.views) {
@@ -165,7 +166,7 @@
                                                             toItem:nil
                                                          attribute:0
                                                         multiplier:1.0
-                                                          constant:deviceView == border ? 0.5f : 40]];
+                                                          constant:deviceView == self.border ? 0.5f : 40]];
     }
 }
 
@@ -173,28 +174,28 @@
 #pragma mark Device Selection Delegate
 
 -(void)centralManager:(CBCentralManager *)manager didPeripheralSelected:(CBPeripheral *)peripheral {
-    selectedPeripheral = peripheral;
-    [dfuOperations setCentralManager:manager];
+    self.selectedPeripheral = peripheral;
+    [self.dfuOperations setCentralManager:manager];
     //    deviceName.text = peripheral.name;
-    dfuOperations.bleOperations.bluetoothPeripheral = peripheral;
-    [dfuOperations.bleOperations.bluetoothPeripheral setDelegate:dfuOperations.bleOperations];
-    [dfuOperations.bleOperations centralManager:manager didConnectPeripheral:peripheral];
+    self.dfuOperations.bleOperations.bluetoothPeripheral = peripheral;
+    [self.dfuOperations.bleOperations.bluetoothPeripheral setDelegate:self.dfuOperations.bleOperations];
+    [self.dfuOperations.bleOperations centralManager:manager didConnectPeripheral:peripheral];
 }
 
 #pragma mark - DFU
 
 -(void)performDFU:(TTDevice *)device {
-    currentDevice = device;
+    self.currentDevice = device;
     [self prepareFirmware];
     
     for (NSView *deviceView in self.views) {
-        if (deviceView == border) continue;
+        if (deviceView == self.border) continue;
         if (((TTDeviceTitleView *)deviceView).device != device) {
             [(TTDeviceTitleView *)deviceView disableUpgrade];
         }
     }
 
-    [self centralManager:appDelegate.bluetoothMonitor.manager didPeripheralSelected:device.peripheral];
+    [self centralManager:self.appDelegate.bluetoothMonitor.manager didPeripheralSelected:device.peripheral];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self disableOtherButtons];
         //        uploadStatus.hidden = NO;
@@ -225,7 +226,7 @@
 }
 
 - (void) clearUI {
-    selectedPeripheral = nil;
+    self.selectedPeripheral = nil;
 }
 
 -(void)disableOtherButtons {
@@ -251,7 +252,7 @@
             }
         }
         if (self.dfuHelper.isDfuVersionExist) {
-            if (selectedPeripheral && self.dfuHelper.selectedFileSize > 0 && self.isConnected && self.dfuHelper.dfuVersion >= 1) {
+            if (self.selectedPeripheral && self.dfuHelper.selectedFileSize > 0 && self.isConnected && self.dfuHelper.dfuVersion >= 1) {
                 if ([self.dfuHelper isInitPacketFileExist]) {
                     //                    uploadButton.enabled = YES;
                 }
@@ -264,7 +265,7 @@
             }
         }
         else {
-            if (selectedPeripheral && self.dfuHelper.selectedFileSize > 0 && self.isConnected) {
+            if (self.selectedPeripheral && self.dfuHelper.selectedFileSize > 0 && self.isConnected) {
                 //                uploadButton.enabled = YES;
             }
             else {
@@ -311,7 +312,7 @@
             dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
             dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
                 
-                [dfuOperations connectDevice:peripheral];
+                [self.dfuOperations connectDevice:peripheral];
             });
             
 //        }
@@ -322,7 +323,7 @@
     self.dfuHelper.dfuVersion = version;
     NSLog(@"DFU Version: %d",self.dfuHelper.dfuVersion);
     if (self.dfuHelper.dfuVersion >= 1) {
-//        [dfuOperations setAppToBootloaderMode];
+//        [self.dfuOperations setAppToBootloaderMode];
     }
     [self enableUploadButton];
 }
@@ -333,7 +334,7 @@
         self.isNotifying = NO;
         [self.dfuHelper checkAndPerformDFU];
     } else {
-        [dfuOperations setAppToBootloaderMode];
+        [self.dfuOperations setAppToBootloaderMode];
         self.isNotifying = YES;
     }
 }
@@ -402,7 +403,7 @@
 
 - (TTDeviceTitleView *)deviceInDFU {
     for (NSView *deviceView in self.views) {
-        if (deviceView == border) continue;
+        if (deviceView == self.border) continue;
         if (((TTDeviceTitleView *)deviceView).device.inDFU) return (TTDeviceTitleView *)deviceView;
     }
     
@@ -418,7 +419,7 @@
         self.isNotifying = NO;
 
         [self returnBluetoothManager];
-        //        NSString* message = [NSString stringWithFormat:@"%lu bytes transfered in %lu seconds", (unsigned long)dfuOperations.binFileSize, (unsigned long)dfuOperations.uploadTimeInSeconds];
+        //        NSString* message = [NSString stringWithFormat:@"%lu bytes transfered in %lu seconds", (unsigned long)self.dfuOperations.binFileSize, (unsigned long)self.dfuOperations.uploadTimeInSeconds];
         //        if ([Utility isApplicationStateInactiveORBackground]) {
         //            [Utility showBackgroundNotification:message];
         //        }
@@ -440,12 +441,12 @@
 
 - (void)returnBluetoothManager {
     for (NSView *deviceView in self.views) {
-        if (deviceView == border) continue;
+        if (deviceView == self.border) continue;
         [(TTDeviceTitleView *)deviceView enableUpgrade];
     }
 
     NSLog(@" ---> Returning Bluetooth Monitor");
-    [appDelegate.bluetoothMonitor.manager setDelegate:appDelegate.bluetoothMonitor];
+    [self.appDelegate.bluetoothMonitor.manager setDelegate:self.appDelegate.bluetoothMonitor];
 }
 
 @end

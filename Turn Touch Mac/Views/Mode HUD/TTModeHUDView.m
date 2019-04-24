@@ -9,35 +9,40 @@
 #import "TTModeHUDView.h"
 #import <CoreImage/CoreImage.h>
 
+@interface TTModeHUDView ()
+
+@property (nonatomic, strong) NSImage *modeImage;
+@property (nonatomic, strong) NSString *modeTitle;
+@property (nonatomic) CGSize textSize;
+@property (nonatomic, strong) TTDiamondLabels *diamondLabels;
+@property (nonatomic, strong) TTModeHUDLabelsView *labelsView;
+@property (nonatomic) BOOL teaserFadeStarted;
+@property (nonatomic, strong) NSVisualEffectView *visualEffectView;
+
+@end
+
 @implementation TTModeHUDView
 
 const NSInteger kSizeMultiplier = 16;
 const CGFloat kPaddingPct = .75f;
 
-@synthesize isTeaser;
-@synthesize gradientView;
-@synthesize teaserGradientView;
-@synthesize modeAttributes;
-@synthesize titleMode;
-@synthesize inactiveModeAttributes;
-
 - (void)awakeFromNib {
-    appDelegate = (TTAppDelegate *)[NSApp delegate];
-    diamondLabels = [[TTDiamondLabels alloc] initWithInteractive:NO isHud:YES];
-    isTeaser = NO;
-    teaserGradientView = [[NSImageView alloc] init];
-    gradientView = [[NSImageView alloc] init];
-    labelsView = [[TTModeHUDLabelsView alloc] initWithHUDView:self];
+    self.appDelegate = (TTAppDelegate *)[NSApp delegate];
+    self.diamondLabels = [[TTDiamondLabels alloc] initWithInteractive:NO isHud:YES];
+    self.isTeaser = NO;
+    self.teaserGradientView = [[NSImageView alloc] init];
+    self.gradientView = [[NSImageView alloc] init];
+    self.labelsView = [[TTModeHUDLabelsView alloc] initWithHUDView:self];
     
     [self drawMapBackground];
-    [self addSubview:teaserGradientView];
-    [self addSubview:gradientView];
-    [self addSubview:diamondLabels];
-    [self addSubview:labelsView];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:labelsView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeHeight multiplier:1.f constant:0.f]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:labelsView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:1.f constant:0.f]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:labelsView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeading multiplier:1.f constant:0.f]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:labelsView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.f constant:0.f]];
+    [self addSubview:self.teaserGradientView];
+    [self addSubview:self.gradientView];
+    [self addSubview:self.diamondLabels];
+    [self addSubview:self.labelsView];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.labelsView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeHeight multiplier:1.f constant:0.f]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.labelsView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:1.f constant:0.f]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.labelsView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeading multiplier:1.f constant:0.f]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.labelsView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.f constant:0.f]];
 }
 
 #pragma mark - Constants
@@ -69,8 +74,8 @@ const CGFloat kPaddingPct = .75f;
     
     [self drawMap];
     
-    [labelsView setNeedsDisplay:YES];
-    [diamondLabels setNeedsDisplay:YES];
+    [self.labelsView setNeedsDisplay:YES];
+    [self.diamondLabels setNeedsDisplay:YES];
 }
 
 - (NSRect)mapFrame:(BOOL)rotated {
@@ -90,8 +95,8 @@ const CGFloat kPaddingPct = .75f;
 
 - (void)drawMapBackground {
     NSRect mapFrame = [self mapFrame:NO];
-    [gradientView setFrame:mapFrame];
-    [teaserGradientView setFrame:mapFrame];
+    [self.gradientView setFrame:mapFrame];
+    [self.teaserGradientView setFrame:mapFrame];
     NSRect diamondFrame = mapFrame;
     diamondFrame.origin = CGPointZero;
     
@@ -131,7 +136,7 @@ const CGFloat kPaddingPct = .75f;
     [diamondBorder1 stroke];
     [diamondBorder2 stroke];
     [teaserGradientImage unlockFocus];
-    [teaserGradientView setImage:teaserGradientImage];
+    [self.teaserGradientView setImage:teaserGradientImage];
 
     NSImage *gradientImage = [[NSImage alloc] initWithSize:mapFrame.size];
     [gradientImage lockFocus];
@@ -141,13 +146,13 @@ const CGFloat kPaddingPct = .75f;
     [diamondBorder1 stroke];
     [diamondBorder2 stroke];
     [gradientImage unlockFocus];
-    [gradientView setImage:gradientImage];
+    [self.gradientView setImage:gradientImage];
 }
 
 - (void)drawMap {
-    [diamondLabels setMode:titleMode];
+    [self.diamondLabels setMode:self.titleMode];
     NSRect mapFrame = [self mapFrame:NO];
-    [diamondLabels setFrame:mapFrame];
+    [self.diamondLabels setFrame:mapFrame];
     
     
     // Debug for map frame
@@ -158,25 +163,25 @@ const CGFloat kPaddingPct = .75f;
 }
 
 - (void)setupTitleAttributes {
-    [self setupTitleAttributes:appDelegate.modeMap.selectedMode];
+    [self setupTitleAttributes:self.appDelegate.modeMap.selectedMode];
 }
 
 - (void)setupTitleAttributes:(TTMode *)mode {
     NSRect mapFrame = [self mapFrame:NO];
     NSInteger fontSize = round(CGRectGetHeight(mapFrame) / kSizeMultiplier);
-    titleMode = mode;
-    modeTitle = [[titleMode class] title];
+    self.titleMode = mode;
+    self.modeTitle = [[self.titleMode class] title];
     NSColor *textColor = NSColorFromRGB(0x57585F);
     CGFloat alpha = 0.99f;
 
     NSColor *inactiveTextColor = NSColorFromRGBAlpha(0x57585F, alpha);
-    modeAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:fontSize],
+    self.modeAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:fontSize],
                        NSForegroundColorAttributeName: textColor
                        };
-    inactiveModeAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:fontSize],
+    self.inactiveModeAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:fontSize],
                                NSForegroundColorAttributeName: inactiveTextColor
                                };
-    textSize = [modeTitle sizeWithAttributes:modeAttributes];
+    self.textSize = [self.modeTitle sizeWithAttributes:self.modeAttributes];
 }
 
 - (NSView *)hitTest:(NSPoint)aPoint {

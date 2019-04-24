@@ -11,11 +11,9 @@
 #import "TTAppDelegate.h"
 #import "TTModeNest.h"
 
-@interface TTModeNestAuthViewController : NSViewController <WebResourceLoadDelegate> {
-    TTAppDelegate *appDelegate;
-    NSTimer *checkTokenTimer;
-}
+@interface TTModeNestAuthViewController : NSViewController <WebResourceLoadDelegate>
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic, strong) TTModeNest *modeNest;
 @property (nonatomic) IBOutlet WebView *webView;
 @property (nonatomic) NSPopover *authPopover;

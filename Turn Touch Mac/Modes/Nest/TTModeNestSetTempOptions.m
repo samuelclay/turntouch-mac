@@ -16,30 +16,24 @@
 
 @implementation TTModeNestSetTempOptions
 
-@synthesize thermostatPopup;
-@synthesize labelTemp;
-@synthesize sliderTemp;
-@synthesize heatControl;
-@synthesize heatControlWidth;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSInteger temperature = [[self.action optionValue:kNestSetTemperature
-                                          inDirection:appDelegate.modeMap.inspectingModeDirection] integerValue];
+                                          inDirection:self.appDelegate.modeMap.inspectingModeDirection] integerValue];
     NSString *temperatureMode = [self.action optionValue:kNestSetTemperatureMode
-                                             inDirection:appDelegate.modeMap.inspectingModeDirection];
+                                             inDirection:self.appDelegate.modeMap.inspectingModeDirection];
     
     if ([temperatureMode isEqualToString:@"cool"]) {
-        [heatControl setSelectedSegment:1];
+        [self.heatControl setSelectedSegment:1];
     } else {
-        [heatControl setSelectedSegment:0];
+        [self.heatControl setSelectedSegment:0];
     }
     
     [self updateScale];
     [self updateTempLabel];
     [self selectThermostat];
 
-    [sliderTemp setIntegerValue:temperature];
+    [self.sliderTemp setIntegerValue:temperature];
 }
 
 - (void)updateScale {
@@ -48,17 +42,17 @@
     NSString *scale = [thermostat temperatureScale];
 
     if ([scale isEqualToString:@"C"]) {
-        sliderTemp.minValue = 9;
-        sliderTemp.maxValue = 32;
+        self.sliderTemp.minValue = 9;
+        self.sliderTemp.maxValue = 32;
     } else {
-        sliderTemp.minValue = 50;
-        sliderTemp.maxValue = 90;
+        self.sliderTemp.minValue = 50;
+        self.sliderTemp.maxValue = 90;
     }
 }
 
 - (void)updateTempLabel {
     NSInteger temperature = [[self.action optionValue:kNestSetTemperature
-                                          inDirection:appDelegate.modeMap.inspectingModeDirection] integerValue];
+                                          inDirection:self.appDelegate.modeMap.inspectingModeDirection] integerValue];
     
     TTModeNest *nestMode = (TTModeNest *)self.action.mode;
     Thermostat *thermostat = [nestMode selectedThermostat];
@@ -66,35 +60,35 @@
     if ([scale isKindOfClass:[NSNull class]] || !scale || !scale.length) {
         scale = @"";
     }
-    [labelTemp setStringValue:[NSString stringWithFormat:@"%ld°%@",
+    [self.labelTemp setStringValue:[NSString stringWithFormat:@"%ld°%@",
                                temperature, scale]];
     
     if ([thermostat.hvacMode isEqualToString:@"heat-cool"]) {
-        heatControl.hidden = NO;
-        [heatControlWidth setActive:NO];
+        self.heatControl.hidden = NO;
+        [self.heatControlWidth setActive:NO];
     } else {
-        heatControl.hidden = YES;
-        [heatControlWidth setActive:YES];
+        self.heatControl.hidden = YES;
+        [self.heatControlWidth setActive:YES];
     }
 }
 
 - (IBAction)changeTempSlider:(id)sender {
     [self.action changeActionOption:kNestSetTemperature
-                                 to:[NSNumber numberWithInteger:sliderTemp.integerValue]];
+                                 to:[NSNumber numberWithInteger:self.sliderTemp.integerValue]];
     [self updateTempLabel];
 }
 
 - (IBAction)changeHeatControl:(id)sender {
-    [self.action changeActionOption:kNestSetTemperatureMode to:(heatControl.selectedSegment == 1 ? @"cool" : @"heat")];
+    [self.action changeActionOption:kNestSetTemperatureMode to:(self.heatControl.selectedSegment == 1 ? @"cool" : @"heat")];
 }
 
 - (void)selectThermostat {
-    NSString *thermostatSelectedIdentifier = [appDelegate.modeMap mode:self.action.mode
+    NSString *thermostatSelectedIdentifier = [self.appDelegate.modeMap mode:self.action.mode
                                                      actionOptionValue:kNestThermostat
-                                                           inDirection:appDelegate.modeMap.inspectingModeDirection];
+                                                           inDirection:self.appDelegate.modeMap.inspectingModeDirection];
     NSString *thermostatSelected;
     NSMutableArray *thermostats = [NSMutableArray array];
-    [thermostatPopup removeAllItems];
+    [self.thermostatPopup removeAllItems];
     TTModeNest *modeNest = (TTModeNest *)self.action.mode;
     for (Thermostat *thermostat in [modeNest.currentStructure objectForKey:@"thermostats"]) {
         if (!thermostat.thermostatId || !thermostat.nameLong) return; // Thermostats not yet loaded, wait for delegate call
@@ -105,13 +99,13 @@
     [thermostats sortUsingDescriptors:@[sd]];
     
     for (NSDictionary *thermostatData in thermostats) {
-        [thermostatPopup addItemWithTitle:thermostatData[@"name"]];
+        [self.thermostatPopup addItemWithTitle:thermostatData[@"name"]];
         if ([thermostatData[@"identifier"] isEqualToString:thermostatSelectedIdentifier]) {
             thermostatSelected = thermostatData[@"name"];
         }
     }
     if (thermostatSelected) {
-        [thermostatPopup selectItemWithTitle:thermostatSelected];
+        [self.thermostatPopup selectItemWithTitle:thermostatSelected];
     }
 }
 

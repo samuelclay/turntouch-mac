@@ -37,18 +37,9 @@ typedef enum {
 @class TTButtonTimer;
 
 @interface TTBluetoothMonitor : NSObject
-<CBCentralManagerDelegate, CBPeripheralDelegate> {
-    TTAppDelegate *appDelegate;
-    TTButtonTimer *buttonTimer;
-    NSTimer *batteryLevelTimer;
+<CBCentralManagerDelegate, CBPeripheralDelegate>
 
-    NSString *manufacturer;
-    CBCentralManager *manager;
-    NSMutableDictionary *characteristics;
-    NSInteger connectionDelay;
-    BluetoothState bluetoothState;
-}
-
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic) NSNumber *batteryPct;
 @property (nonatomic) NSDate *lastActionDate;
 @property (nonatomic) TTButtonTimer *buttonTimer;

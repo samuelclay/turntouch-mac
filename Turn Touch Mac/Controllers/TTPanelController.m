@@ -17,19 +17,20 @@
 
 #pragma mark -
 
+@interface TTPanelController ()
+
+@property (nonatomic, unsafe_unretained, readwrite) id<TTPanelControllerDelegate> delegate;
+@property (nonatomic) BOOL privateHasActivePanel;
+
+@end
+
 @implementation TTPanelController
-
-@synthesize backgroundView = _backgroundView;
-@synthesize delegate = _delegate;
-@synthesize preventClosing;
-
-#pragma mark -
 
 - (id)initWithDelegate:(id<TTPanelControllerDelegate>)delegate {
     self = [super initWithWindowNibName:@"TTPanel"];
     if (self != nil) {
-        _delegate = delegate;
-        appDelegate = (TTAppDelegate *)[NSApp delegate];
+        self.delegate = delegate;
+        self.appDelegate = (TTAppDelegate *)[NSApp delegate];
     }
     return self;
 }
@@ -53,28 +54,27 @@
     self.backgroundView = [[TTBackgroundView alloc] init];
     [panel setContentView:self.backgroundView];
 
-    [appDelegate.modeMap reset];
+    [self.appDelegate.modeMap reset];
     
-    preventClosing = NO;
+    self.preventClosing = NO;
 }
 
 #pragma mark - Public accessors
 
 - (BOOL)hasActivePanel {
-    return _hasActivePanel;
+    return self.privateHasActivePanel;
 }
 
 - (void)setHasActivePanel:(BOOL)flag {
-    if (_hasActivePanel != flag) {
-        _hasActivePanel = flag;
+    if (self.privateHasActivePanel != flag) {
+        self.privateHasActivePanel = flag;
         
-        if (_hasActivePanel) {
+        if (self.privateHasActivePanel) {
             [self openPanel];
         } else {
             // Comment closePanel to debug.
             BOOL closed = [self closePanel];
-            if (!closed) _hasActivePanel = YES;
-
+            if (!closed) self.privateHasActivePanel = YES;
         }
     }
 }
@@ -175,12 +175,12 @@
 
     if (self.backgroundView.panelModal != PANEL_MODAL_APP) {
         // Don't close the window when not on main app unless clicking on status icon
-        if (appDelegate.menubarController.hasActiveIcon) {
+        if (self.appDelegate.menubarController.hasActiveIcon) {
             return NO;
         }
     }
     
-    if (preventClosing) {
+    if (self.preventClosing) {
         return NO;
     }
     
@@ -200,7 +200,7 @@
     // This is a hack, but the panelController doesn't have a backgroundView if it hasn't
     // been opened yet, so only open it if it hasn't been opened.
     if (!self.backgroundView) {
-        [appDelegate openPanel];
+        [self.appDelegate openPanel];
     }
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.backgroundView switchPanelModalPairing:modal];

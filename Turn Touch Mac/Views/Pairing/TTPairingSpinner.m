@@ -9,17 +9,23 @@
 #import <QuartzCore/QuartzCore.h>
 #import "TTPairingSpinner.h"
 
+@interface TTPairingSpinner ()
+
+@property (nonatomic) NSTimeInterval spinnerBeginTime;
+
+@end
+
 @implementation TTPairingSpinner
 
 - (void)awakeFromNib {
-    spinnerBeginTime = CACurrentMediaTime();
+    self.spinnerBeginTime = CACurrentMediaTime();
     self.translatesAutoresizingMaskIntoConstraints = NO;
 }
 
 - (instancetype)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        spinnerBeginTime = CACurrentMediaTime();
+        self.spinnerBeginTime = CACurrentMediaTime();
         self.translatesAutoresizingMaskIntoConstraints = NO;
     }
     return self;
@@ -45,7 +51,7 @@
         anim.removedOnCompletion = NO;
         anim.repeatCount = HUGE_VALF;
         anim.duration = 2.0;
-        anim.beginTime = spinnerBeginTime - (1.0 * i);
+        anim.beginTime = self.spinnerBeginTime - (1.0 * i);
         anim.keyTimes = @[@(0.0), @(0.5), @(1.0)];
         
         anim.timingFunctions = @[

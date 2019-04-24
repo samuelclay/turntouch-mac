@@ -15,13 +15,7 @@ typedef enum {
     TTModeNewsStateMenu = 1,
 } TTModeNewsState;
 
-@interface TTModeNews : TTMode {
-    TTModeNewsWindowController *newsWindowController;
-    TTModeNewsState state;
-    TTModeNewsNewsBlur *newsblur;
-    BOOL closed;
-    BOOL timerActive;
-}
+@interface TTModeNews : TTMode
 
 @property (nonatomic) TTModeNewsNewsBlur *newsblur;
 

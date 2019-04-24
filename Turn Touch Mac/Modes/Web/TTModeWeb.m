@@ -17,6 +17,15 @@
 #import "JXReadabilityDocument.h"
 #import "JXWebResourceLoadingBarrier.h"
 
+@interface TTModeWeb ()
+
+@property (nonatomic, strong) TTModeWebWindowController *webWindowController;
+@property (nonatomic) TTModeWebState state;
+@property (nonatomic) BOOL closed;
+@property (nonatomic) BOOL timerActive;
+
+@end
+
 @implementation TTModeWeb
 
 #pragma mark - Mode
@@ -145,8 +154,8 @@
 #pragma mark - Action methods
 
 - (BOOL)checkClosed {
-    if (closed) {
-        closed = NO;
+    if (self.closed) {
+        self.closed = NO;
         [self loadSafari];
         [self startHideMouseTimer];
         [self setDisplayAwake:YES];
@@ -158,12 +167,12 @@
 }
 
 - (void)startHideMouseTimer {
-    if (timerActive) return;
+    if (self.timerActive) return;
     [NSCursor unhide];
-    timerActive = YES;
+    self.timerActive = YES;
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        timerActive = NO;
+        self.timerActive = NO;
         CFTimeInterval secondsSinceMouseMove = CGEventSourceSecondsSinceLastEventType(kCGEventSourceStateCombinedSessionState, kCGEventMouseMoved);
         if (secondsSinceMouseMove > 2.5) {
             [NSCursor hide];
@@ -201,41 +210,41 @@
 - (void)runTTModeWebMenu {
     if ([self checkClosed]) return;
     
-    if (state == TTModeWebStateBrowser) {
-        state = TTModeWebStateMenu;
-        [webWindowController.menuView slideIn];
-    } else if (state == TTModeWebStateMenu) {
-        state = TTModeWebStateBrowser;
-        [webWindowController.menuView slideOut];
+    if (self.state == TTModeWebStateBrowser) {
+        self.state = TTModeWebStateMenu;
+        [self.webWindowController.menuView slideIn];
+    } else if (self.state == TTModeWebStateMenu) {
+        self.state = TTModeWebStateBrowser;
+        [self.webWindowController.menuView slideOut];
     }
 }
 - (void)runTTModeWebNext {
     if ([self checkClosed]) return;
     
-    if (state == TTModeWebStateBrowser) {
+    if (self.state == TTModeWebStateBrowser) {
 
-    } else if (state == TTModeWebStateMenu) {
-        [webWindowController.menuView selectMenuItem];
+    } else if (self.state == TTModeWebStateMenu) {
+        [self.webWindowController.menuView selectMenuItem];
     }
 }
 - (void)runTTModeWebScrollUp {
     if ([self checkClosed]) return;
     
-    if (state == TTModeWebStateBrowser) {
-        [webWindowController.browserView scrollUp];
+    if (self.state == TTModeWebStateBrowser) {
+        [self.webWindowController.browserView scrollUp];
         [NSCursor hide];
-    } else if (state == TTModeWebStateMenu) {
-        [webWindowController.menuView menuUp];
+    } else if (self.state == TTModeWebStateMenu) {
+        [self.webWindowController.menuView menuUp];
     }
 }
 - (void)runTTModeWebScrollDown {
     if ([self checkClosed]) return;
     
-    if (state == TTModeWebStateBrowser) {
-        [webWindowController.browserView scrollDown];
+    if (self.state == TTModeWebStateBrowser) {
+        [self.webWindowController.browserView scrollDown];
         [NSCursor hide];
-    } else if (state == TTModeWebStateMenu) {
-        [webWindowController.menuView menuDown];
+    } else if (self.state == TTModeWebStateMenu) {
+        [self.webWindowController.menuView menuDown];
     }
 }
 
@@ -257,20 +266,20 @@
 #pragma mark - Web
 
 - (void)activate {
-    closed = YES;
-    state = TTModeWebStateBrowser;
+    self.closed = YES;
+    self.state = TTModeWebStateBrowser;
     
-    webWindowController = [[TTModeWebWindowController alloc] initWithWindowNibName:@"TTModeWebWindowController"];
+    self.webWindowController = [[TTModeWebWindowController alloc] initWithWindowNibName:@"TTModeWebWindowController"];
 }
 
 - (void)deactivate {
-    [webWindowController fadeOut];
+    [self.webWindowController fadeOut];
     [self setDisplayAwake:NO];
     [NSCursor unhide];
 }
 
 - (void)loadSafari {
-    [webWindowController fadeIn];
+    [self.webWindowController fadeIn];
 
     SafariApplication *safari = [SBApplication applicationWithBundleIdentifier:@"com.apple.Safari"];
     
@@ -280,14 +289,14 @@
     SafariTab* currentTab = [safariWindow currentTab];
     
     // https://medium.com/the-development-set/the-reductive-seduction-of-other-people-s-problems-3c07b307732d
-    [webWindowController.browserView loadURL:currentTab.URL html:[self readabilityForUrl:currentTab.URL htmlSource:nil] title:currentTab.name];
+    [self.webWindowController.browserView loadURL:currentTab.URL html:[self readabilityForUrl:currentTab.URL htmlSource:nil] title:currentTab.name];
 }
 
 #pragma mark - Menu Options
 
 - (void)runTTModeWebMenuReturn {
-    state = TTModeWebStateBrowser;
-    [webWindowController.menuView slideOut];
+    self.state = TTModeWebStateBrowser;
+    [self.webWindowController.menuView slideOut];
 }
 
 - (void)runTTModeWebMenuNextStory {
@@ -295,33 +304,33 @@
 }
 
 - (void)runTTModeWebMenuPreviousStory {
-    [webWindowController.browserView.webView goBack];
+    [self.webWindowController.browserView.webView goBack];
 }
 
 - (void)runTTModeWebMenuFontSizeUp {
-    [webWindowController.browserView zoomIn];
+    [self.webWindowController.browserView zoomIn];
 }
 
 - (void)runTTModeWebMenuFontSizeDown {
-    [webWindowController.browserView zoomOut];
+    [self.webWindowController.browserView zoomOut];
 }
 
 - (void)runTTModeWebMenuMarginWider {
-    [webWindowController.browserView widenMargin];
+    [self.webWindowController.browserView widenMargin];
 }
 
 - (void)runTTModeWebMenuMarginNarrower {
-    [webWindowController.browserView narrowMargin];
+    [self.webWindowController.browserView narrowMargin];
 }
 
 - (void)runTTModeWebMenuClose {
-    if (!closed) {
-        closed = YES;
+    if (!self.closed) {
+        self.closed = YES;
         [self setDisplayAwake:NO];
         [NSCursor unhide];
-        [webWindowController fadeOut];
-        state = TTModeWebStateBrowser;
-        [webWindowController.menuView slideOut];
+        [self.webWindowController fadeOut];
+        self.state = TTModeWebStateBrowser;
+        [self.webWindowController.menuView slideOut];
     }
 }
 

@@ -10,9 +10,7 @@
 #import "NestThermostatManager.h"
 #import "NestStructureManager.h"
 
-@interface TTModeNestDelegateManager : NSObject <NestStructureManagerDelegate, NestThermostatManagerDelegate> {
-    
-}
+@interface TTModeNestDelegateManager : NSObject <NestStructureManagerDelegate, NestThermostatManagerDelegate>
 
 @property (nonatomic) NSMutableArray *delegates;
 

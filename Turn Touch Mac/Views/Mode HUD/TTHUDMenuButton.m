@@ -9,16 +9,18 @@
 #import "TTHUDMenuButton.h"
 #import <objc/objc-runtime.h>
 
-@implementation TTHUDMenuButton
+@interface TTHUDMenuButton ()
 
-@synthesize title;
-@synthesize image;
+@end
+
+@implementation TTHUDMenuButton
 
 - (instancetype)init {
     if (self = [super init]) {
-        imageView = [[NSImageView alloc] init];
-        
-        [self addSubview:imageView];
+        // Shouldn't re-assign this; if this breaks, connect it in the xib.
+//        self.imageView = [[NSImageView alloc] init];
+//
+//        [self addSubview:self.imageView];
     }
     return self;
 }
@@ -27,8 +29,8 @@
     [super drawRect:dirtyRect];
 }
 
-- (void)setTitle:(NSString *)_title {
-    title = _title;
+- (void)setTitle:(NSString *)title {
+    _title = title;
     NSColor *textColor = NSColorFromRGB(0xF0F0F0);
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [style setAlignment:NSLeftTextAlignment];
@@ -36,11 +38,11 @@
                                       NSForegroundColorAttributeName: textColor,
                                       NSParagraphStyleAttributeName: style
                                       };
-    [title drawInRect:NSInsetRect(self.frame, 40, 40) withAttributes:labelAttributes];
+    [self.title drawInRect:NSInsetRect(self.frame, 40, 40) withAttributes:labelAttributes];
 }
 
-- (void)setImage:(NSImage *)_image {
-    [imageView setImage:_image];
+- (void)setImage:(NSImage *)image {
+    [self.imageView setImage:image];
 }
 
 @end

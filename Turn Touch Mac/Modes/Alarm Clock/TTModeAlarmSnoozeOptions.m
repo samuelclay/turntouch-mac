@@ -11,26 +11,23 @@
 
 @implementation TTModeAlarmSnoozeOptions
 
-@synthesize durationSlider;
-@synthesize durationLabel;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSInteger snoozeDuration = [[self.action optionValue:kAlarmSnoozeDuration inDirection:appDelegate.modeMap.inspectingModeDirection] integerValue];
+    NSInteger snoozeDuration = [[self.action optionValue:kAlarmSnoozeDuration inDirection:self.appDelegate.modeMap.inspectingModeDirection] integerValue];
     
-    [durationSlider setIntegerValue:snoozeDuration];
+    [self.durationSlider setIntegerValue:snoozeDuration];
     [self updateSnoozeDurationLabel];
 }
 
 - (void)updateSnoozeDurationLabel {
-    NSInteger snoozeDuration = [[self.action optionValue:kAlarmSnoozeDuration inDirection:appDelegate.modeMap.inspectingModeDirection] integerValue];
+    NSInteger snoozeDuration = [[self.action optionValue:kAlarmSnoozeDuration inDirection:self.appDelegate.modeMap.inspectingModeDirection] integerValue];
     
-    [durationLabel setStringValue:[NSString stringWithFormat:@"%ld min", (long)snoozeDuration]];
+    [self.durationLabel setStringValue:[NSString stringWithFormat:@"%ld min", (long)snoozeDuration]];
 }
 
 - (IBAction)slideDuration:(id)sender {
-    [self.action changeActionOption:kAlarmSnoozeDuration to:[NSNumber numberWithInteger:durationSlider.integerValue]];
+    [self.action changeActionOption:kAlarmSnoozeDuration to:[NSNumber numberWithInteger:self.durationSlider.integerValue]];
     
     [self updateSnoozeDurationLabel];
 }

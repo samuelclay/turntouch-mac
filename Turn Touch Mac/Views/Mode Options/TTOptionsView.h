@@ -17,11 +17,9 @@
 @class TTOptionsDetailView;
 @class TTOptionsDetailViewController;
 
-@interface TTOptionsView : NSView {
-    TTAppDelegate *appDelegate;
-    TTOptionsActionTitle *actionTitleView;
-}
+@interface TTOptionsView : NSView
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic) NSScrollView *scrollView;
 @property (nonatomic) TTOptionsDetailViewController *modeOptionsViewController;
 @property (nonatomic) TTOptionsDetailViewController *actionOptionsViewController;

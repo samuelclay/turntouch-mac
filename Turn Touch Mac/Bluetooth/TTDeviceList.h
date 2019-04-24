@@ -10,10 +10,7 @@
 #import <CoreBluetooth/CoreBluetooth.h>
 #import "TTDevice.h"
 
-@interface TTDeviceList : NSObject <NSFastEnumeration> {
-    NSMutableArray *peripherals;
-    NSMutableArray *devices;
-}
+@interface TTDeviceList : NSObject <NSFastEnumeration>
 
 @property (nonatomic) NSMutableArray *devices;
 

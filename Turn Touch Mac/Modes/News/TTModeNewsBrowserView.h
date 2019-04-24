@@ -9,14 +9,9 @@
 #import <Cocoa/Cocoa.h>
 #import "TTAppDelegate.h"
 
-@interface TTModeNewsBrowserView : NSView {
-    TTAppDelegate *appDelegate;
-    NSStackView *storyStack;
-    CGFloat zoomFactor;
-    NSInteger textSize;
-    NSInteger page;
-}
+@interface TTModeNewsBrowserView : NSView
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic) IBOutlet NSStackView *storyStack;
 @property (nonatomic) IBOutlet NSLayoutConstraint *stackOffsetConstraint;
 @property (nonatomic) CGFloat zoomFactor;

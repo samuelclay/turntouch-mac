@@ -22,12 +22,6 @@ NSString *const kNestApiStructures = @"structures/";
 static NSDictionary *currentStructure;
 static TTModeNestDelegateManager *delegateManager;
 
-//@synthesize nestStructureManager;
-//@synthesize nestThermostatManager;
-//@synthesize currentStructure;
-@synthesize delegate;
-@synthesize nestState;
-
 - (instancetype)init {
     if (self = [super init]) {
         if (!delegateManager) {
@@ -209,15 +203,15 @@ static TTModeNestDelegateManager *delegateManager;
     if ([[NestAuthManager sharedManager] isValidSession]) {
 //        NSLog(@"Nest access token: %@", [[NestAuthManager sharedManager] accessToken]);
         if (currentStructure) {
-            nestState = NEST_STATE_CONNECTED;
+            self.nestState = NEST_STATE_CONNECTED;
         } else {
-            nestState = NEST_STATE_CONNECTING;
+            self.nestState = NEST_STATE_CONNECTING;
             [self loadNestStructures];
         }
     } else {
-        nestState = NEST_STATE_NOT_CONNECTED;
+        self.nestState = NEST_STATE_NOT_CONNECTED;
     }
-    [self.delegate changeState:nestState withMode:self];
+    [self.delegate changeState:self.nestState withMode:self];
     
     [[self sharedNestThermostatManager] setDelegate:delegateManager];
 
@@ -234,13 +228,13 @@ static TTModeNestDelegateManager *delegateManager;
 #pragma mark - Connection
 
 - (void)beginConnectingToNest {
-    nestState = NEST_STATE_CONNECTING;
-    [self.delegate changeState:nestState withMode:self];
+    self.nestState = NEST_STATE_CONNECTING;
+    [self.delegate changeState:self.nestState withMode:self];
 }
 
 - (void)cancelConnectingToNest {
-    nestState = NEST_STATE_NOT_CONNECTED;
-    [self.delegate changeState:nestState withMode:self];
+    self.nestState = NEST_STATE_NOT_CONNECTED;
+    [self.delegate changeState:self.nestState withMode:self];
 }
 
 #pragma mark - Nest API w/ Firebase
@@ -255,8 +249,8 @@ static TTModeNestDelegateManager *delegateManager;
     NSLog(@"thermostat value changed: %@ %ld°F (%ld°F-%ld°F) — currently: %ld°F",
           thermostat, thermostat.targetTemperatureF, thermostat.targetTemperatureLowF,
           thermostat.targetTemperatureHighF, thermostat.ambientTemperatureF);
-    nestState = NEST_STATE_CONNECTED;
-    [self.delegate changeState:nestState withMode:self];
+    self.nestState = NEST_STATE_CONNECTED;
+    [self.delegate changeState:self.nestState withMode:self];
     [self.delegate updateThermostat:thermostat];
 }
 
@@ -275,8 +269,8 @@ static TTModeNestDelegateManager *delegateManager;
     
     [[self sharedNestThermostatManager] beginSubscriptionForThermostat:thermostat];
 
-    nestState = NEST_STATE_CONNECTED;
-    [self.delegate changeState:nestState withMode:self];
+    self.nestState = NEST_STATE_CONNECTED;
+    [self.delegate changeState:self.nestState withMode:self];
 }
 
 #pragma mark - Nest API w/ REST

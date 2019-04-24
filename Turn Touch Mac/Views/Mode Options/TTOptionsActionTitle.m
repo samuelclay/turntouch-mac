@@ -10,106 +10,114 @@
 
 #define DIAMOND_SIZE 18.0f
 
-@implementation TTOptionsActionTitle
+@interface TTOptionsActionTitle ()
 
-@synthesize changeButton;
+@property (nonatomic, strong) TTDiamondView *diamondView;
+@property (nonatomic, strong) NSButton *renameButton;
+@property (nonatomic, strong) NSTextField *titleLabel;
+@property (nonatomic, strong) NSLayoutConstraint *titleWidthConstraint;
+@property (nonatomic) BOOL editingTitle;
+
+@end
+
+@implementation TTOptionsActionTitle
 
 - (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        appDelegate = (TTAppDelegate *)[NSApp delegate];
+        self.appDelegate = (TTAppDelegate *)[NSApp delegate];
         self.translatesAutoresizingMaskIntoConstraints = NO;
-        editingTitle = NO;
+        self.editingTitle = NO;
         
         [self registerAsObserver];
         
-        diamondView = [[TTDiamondView alloc] initWithFrame:CGRectZero];
-        diamondView.translatesAutoresizingMaskIntoConstraints = NO;
-        [diamondView setIgnoreSelectedMode:YES];
-        [diamondView setIgnoreActiveMode:YES];
-        [diamondView setOverrideActiveDirection:appDelegate.modeMap.inspectingModeDirection];
-        [self addSubview:diamondView];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:diamondView attribute:NSLayoutAttributeLeading
+        self.diamondView = [[TTDiamondView alloc] initWithFrame:CGRectZero];
+        self.diamondView.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.diamondView setIgnoreSelectedMode:YES];
+        [self.diamondView setIgnoreActiveMode:YES];
+        [self.diamondView setOverrideActiveDirection:self.appDelegate.modeMap.inspectingModeDirection];
+        [self addSubview:self.diamondView];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.diamondView attribute:NSLayoutAttributeLeading
                                                          relatedBy:NSLayoutRelationEqual toItem:self
                                                          attribute:NSLayoutAttributeLeading multiplier:1 constant:12]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:diamondView attribute:NSLayoutAttributeCenterY
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.diamondView attribute:NSLayoutAttributeCenterY
                                                          relatedBy:NSLayoutRelationEqual toItem:self
                                                          attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:diamondView attribute:NSLayoutAttributeWidth
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.diamondView attribute:NSLayoutAttributeWidth
                                                          relatedBy:NSLayoutRelationEqual toItem:nil
                                                          attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:1.3*DIAMOND_SIZE]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:diamondView attribute:NSLayoutAttributeHeight
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.diamondView attribute:NSLayoutAttributeHeight
                                                          relatedBy:NSLayoutRelationEqual toItem:nil
                                                          attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:DIAMOND_SIZE]];
 
-        changeButton = [[TTChangeButtonView alloc] init];
-        changeButton.translatesAutoresizingMaskIntoConstraints = NO;
+        self.changeButton = [[TTChangeButtonView alloc] init];
+        self.changeButton.translatesAutoresizingMaskIntoConstraints = NO;
         [self setChangeButtonTitle:@"Change"];
-        [changeButton setBezelStyle:NSRoundRectBezelStyle];
-        [changeButton setAction:@selector(showChangeActionMenu:)];
-        [changeButton setTarget:self];
-        [self addSubview:changeButton];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:changeButton attribute:NSLayoutAttributeTrailing
+        [self.changeButton setBezelStyle:NSRoundRectBezelStyle];
+        [self.changeButton setAction:@selector(showChangeActionMenu:)];
+        [self.changeButton setTarget:self];
+        [self addSubview:self.changeButton];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.changeButton attribute:NSLayoutAttributeTrailing
                                                          relatedBy:NSLayoutRelationEqual toItem:self
                                                          attribute:NSLayoutAttributeTrailing multiplier:1 constant:-12]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:changeButton attribute:NSLayoutAttributeCenterY
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.changeButton attribute:NSLayoutAttributeCenterY
                                                          relatedBy:NSLayoutRelationEqual toItem:self
                                                          attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:changeButton attribute:NSLayoutAttributeWidth
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.changeButton attribute:NSLayoutAttributeWidth
                                                          relatedBy:NSLayoutRelationEqual toItem:nil
                                                          attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:82]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:changeButton attribute:NSLayoutAttributeHeight
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.changeButton attribute:NSLayoutAttributeHeight
                                                          relatedBy:NSLayoutRelationEqual toItem:nil
                                                          attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:24]];
         
-        titleLabel = [[NSTextField alloc] init];
-        titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-        titleLabel.delegate = self;
-        titleLabel.editable = NO;
-        titleLabel.bordered = NO;
-        titleLabel.backgroundColor = [NSColor clearColor];
-        titleLabel.font = [NSFont fontWithName:@"Effra" size:13.f];
-        titleLabel.textColor = NSColorFromRGB(0x404A60);
+        self.titleLabel = [[NSTextField alloc] init];
+        self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        self.titleLabel.delegate = self;
+        self.titleLabel.editable = NO;
+        self.titleLabel.bordered = NO;
+        self.titleLabel.backgroundColor = [NSColor clearColor];
+        self.titleLabel.font = [NSFont fontWithName:@"Effra" size:13.f];
+        self.titleLabel.textColor = NSColorFromRGB(0x404A60);
         NSShadow *stringShadow = [[NSShadow alloc] init];
         stringShadow.shadowColor = [NSColor whiteColor];
         stringShadow.shadowOffset = NSMakeSize(0, -1);
         stringShadow.shadowBlurRadius = 0;
-        titleLabel.shadow = stringShadow;
-        titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-        [titleLabel setTarget:self];
-        [titleLabel setAction:@selector(renameTitle:)];
-        [self addSubview:titleLabel];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:titleLabel attribute:NSLayoutAttributeCenterY
+        self.titleLabel.shadow = stringShadow;
+        self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.titleLabel setTarget:self];
+        [self.titleLabel setAction:@selector(renameTitle:)];
+        [self addSubview:self.titleLabel];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeCenterY
                                                          relatedBy:NSLayoutRelationEqual toItem:self
                                                          attribute:NSLayoutAttributeCenterY multiplier:1.0f constant:0.0f]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:titleLabel attribute:NSLayoutAttributeLeading
-                                                         relatedBy:NSLayoutRelationEqual toItem:diamondView
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeLeading
+                                                         relatedBy:NSLayoutRelationEqual toItem:self.diamondView
                                                          attribute:NSLayoutAttributeTrailing multiplier:1.0f constant:12.0f]];
-        titleWidthConstraint = [NSLayoutConstraint constraintWithItem:titleLabel attribute:NSLayoutAttributeWidth
+        self.titleWidthConstraint = [NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeWidth
                                                             relatedBy:NSLayoutRelationEqual toItem:nil
                                                             attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:0];
-        [self addConstraint:titleWidthConstraint];
+        [self addConstraint:self.titleWidthConstraint];
 
-        renameButton = [[NSButton alloc] init];
-        renameButton.translatesAutoresizingMaskIntoConstraints = NO;
-        [renameButton setHidden:YES];
-        [renameButton setImage:[NSImage imageNamed:@"pencil"]];
-        [renameButton setImageScaling:NSImageScaleProportionallyDown];
-        [renameButton setBordered:NO];
-        [renameButton setButtonType:NSButtonTypeMomentaryChange];
-        [renameButton setAction:@selector(editCustomTitle:)];
-        [renameButton setTarget:self];
-        [self addSubview:renameButton];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:renameButton attribute:NSLayoutAttributeLeading
-                                                         relatedBy:NSLayoutRelationEqual toItem:titleLabel
+        self.renameButton = [[NSButton alloc] init];
+        self.renameButton.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.renameButton setHidden:YES];
+        [self.renameButton setImage:[NSImage imageNamed:@"pencil"]];
+        [self.renameButton setImageScaling:NSImageScaleProportionallyDown];
+        [self.renameButton setBordered:NO];
+        [self.renameButton setButtonType:NSButtonTypeMomentaryChange];
+        [self.renameButton setAction:@selector(editCustomTitle:)];
+        [self.renameButton setTarget:self];
+        [self addSubview:self.renameButton];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.renameButton attribute:NSLayoutAttributeLeading
+                                                         relatedBy:NSLayoutRelationEqual toItem:self.titleLabel
                                                          attribute:NSLayoutAttributeTrailing multiplier:1 constant:12]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:renameButton attribute:NSLayoutAttributeCenterY
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.renameButton attribute:NSLayoutAttributeCenterY
                                                          relatedBy:NSLayoutRelationEqual toItem:self
                                                          attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:renameButton attribute:NSLayoutAttributeWidth
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.renameButton attribute:NSLayoutAttributeWidth
                                                          relatedBy:NSLayoutRelationEqual toItem:nil
                                                          attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:18]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:renameButton attribute:NSLayoutAttributeHeight
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.renameButton attribute:NSLayoutAttributeHeight
                                                          relatedBy:NSLayoutRelationEqual toItem:nil
                                                          attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:18]];
         
@@ -120,11 +128,11 @@
 #pragma mark - KVO
 
 - (void)dealloc {
-    [appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
+    [self.appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
 }
 
 - (void)registerAsObserver {
-    [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
+    [self.appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
                              options:0 context:nil];
 }
 
@@ -133,7 +141,7 @@
                          change:(NSDictionary*)change
                         context:(void*)context {
     if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))]) {
-        [diamondView setOverrideActiveDirection:appDelegate.modeMap.inspectingModeDirection];
+        [self.diamondView setOverrideActiveDirection:self.appDelegate.modeMap.inspectingModeDirection];
         [self setNeedsDisplay:YES];
     }
 }
@@ -141,22 +149,22 @@
 #pragma mark - Drawing
 
 - (void)drawRect:(NSRect)dirtyRect {
-    if (appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION) return;
+    if (self.appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION) return;
     
     [super drawRect:dirtyRect];
     
-    TTModeDirection labelDirection = appDelegate.modeMap.inspectingModeDirection;
+    TTModeDirection labelDirection = self.appDelegate.modeMap.inspectingModeDirection;
     
-    NSString *actionTitle = [appDelegate.modeMap.selectedMode titleInDirection:labelDirection buttonMoment:BUTTON_MOMENT_PRESSUP];
-    titleLabel.stringValue = actionTitle;
-    titleWidthConstraint.constant = [titleLabel intrinsicContentSize].width;
+    NSString *actionTitle = [self.appDelegate.modeMap.selectedMode titleInDirection:labelDirection buttonMoment:BUTTON_MOMENT_PRESSUP];
+    self.titleLabel.stringValue = actionTitle;
+    self.titleWidthConstraint.constant = [self.titleLabel intrinsicContentSize].width;
 
-    if (appDelegate.modeMap.openedActionChangeMenu) {
+    if (self.appDelegate.modeMap.openedActionChangeMenu) {
         [self setChangeButtonTitle:@"Done"];
-        [renameButton setHidden:NO];
+        [self.renameButton setHidden:NO];
     } else {
         [self setChangeButtonTitle:@"Change"];
-        [renameButton setHidden:YES];
+        [self.renameButton setHidden:YES];
     }
 }
 
@@ -175,60 +183,60 @@
 //                           nil];
 //    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]
 //                                                   initWithString:[title uppercaseString] attributes:attrs];
-//    [changeButton setAttributedTitle:attributedString];
-    [changeButton setTitle:title];
+//    [self.changeButton setAttributedTitle:attributedString];
+    [self.changeButton setTitle:title];
 }
 
 #pragma mark - Events
 
 - (void)showChangeActionMenu:(id)sender {
-    [appDelegate.modeMap setOpenedActionChangeMenu:!appDelegate.modeMap.openedActionChangeMenu];
+    [self.appDelegate.modeMap setOpenedActionChangeMenu:!self.appDelegate.modeMap.openedActionChangeMenu];
     [self setNeedsDisplay:YES];
 }
 
 #pragma mark - NSTextField Delegate
 
 - (void)editCustomTitle:(id)sender {
-    if (editingTitle) {
-        [appDelegate.modeMap.selectedMode setCustomTitle:nil
-                                               direction:appDelegate.modeMap.inspectingModeDirection];
+    if (self.editingTitle) {
+        [self.appDelegate.modeMap.selectedMode setCustomTitle:nil
+                                               direction:self.appDelegate.modeMap.inspectingModeDirection];
 
         [self disableCustomTitleEditor];
     } else {
-        [renameButton setImage:[NSImage imageNamed:@"button_chevron_x"]];
+        [self.renameButton setImage:[NSImage imageNamed:@"button_chevron_x"]];
 
-        [titleLabel setEditable:YES];
+        [self.titleLabel setEditable:YES];
         
-        TTModeDirection labelDirection = appDelegate.modeMap.inspectingModeDirection;
-        NSString *actionTitle = [appDelegate.modeMap.selectedMode titleInDirection:labelDirection buttonMoment:BUTTON_MOMENT_PRESSUP];
-        titleLabel.stringValue = actionTitle;
-        [titleLabel selectText:actionTitle];
-        titleWidthConstraint.constant = 100;
+        TTModeDirection labelDirection = self.appDelegate.modeMap.inspectingModeDirection;
+        NSString *actionTitle = [self.appDelegate.modeMap.selectedMode titleInDirection:labelDirection buttonMoment:BUTTON_MOMENT_PRESSUP];
+        self.titleLabel.stringValue = actionTitle;
+        [self.titleLabel selectText:actionTitle];
+        self.titleWidthConstraint.constant = 100;
 
-        editingTitle = YES;
+        self.editingTitle = YES;
     }
 }
 
 - (void)disableCustomTitleEditor {
-    [renameButton setImage:[NSImage imageNamed:@"pencil"]];
-    [renameButton setHidden:YES];
+    [self.renameButton setImage:[NSImage imageNamed:@"pencil"]];
+    [self.renameButton setHidden:YES];
 
-    [[titleLabel currentEditor] setSelectedRange:NSMakeRange(0, 0)];
-    [[titleLabel currentEditor] setSelectable:NO];
-    [titleLabel setEditable:NO];
+    [[self.titleLabel currentEditor] setSelectedRange:NSMakeRange(0, 0)];
+    [[self.titleLabel currentEditor] setSelectable:NO];
+    [self.titleLabel setEditable:NO];
     
-    titleWidthConstraint.constant = [titleLabel intrinsicContentSize].width;
+    self.titleWidthConstraint.constant = [self.titleLabel intrinsicContentSize].width;
     
-    editingTitle = NO;
+    self.editingTitle = NO;
     
-    [appDelegate.panelController.backgroundView.diamondLabels setNeedsDisplay:YES];
+    [self.appDelegate.panelController.backgroundView.diamondLabels setNeedsDisplay:YES];
     
     [self setNeedsDisplay:YES];
 }
 
 - (void)renameTitle:(id)sender {
-    [appDelegate.modeMap.selectedMode setCustomTitle:titleLabel.stringValue
-                                           direction:appDelegate.modeMap.inspectingModeDirection];
+    [self.appDelegate.modeMap.selectedMode setCustomTitle:self.titleLabel.stringValue
+                                           direction:self.appDelegate.modeMap.inspectingModeDirection];
     
     [self disableCustomTitleEditor];
 }

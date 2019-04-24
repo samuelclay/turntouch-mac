@@ -11,17 +11,31 @@
 
 #define IMAGE_SIZE 16.0f
 
-@implementation TTModeMenuItemView
+@interface TTModeMenuItemView ()
 
-@synthesize modeName;
+@property (nonatomic) TTMenuType menuType;
+@property (nonatomic) NSString *privateModeName;
+@property (nonatomic, strong) TTMode *activeMode;
+@property (nonatomic, strong) Class modeClass;
+@property (nonatomic, strong) NSString *modeTitle;
+@property (nonatomic, strong) NSImage *modeImage;
+@property (nonatomic, strong) NSDictionary *modeAttributes;
+@property (nonatomic) CGSize textSize;
+
+@property (nonatomic) BOOL hoverActive;
+@property (nonatomic) BOOL mouseDownActive;
+
+@end
+
+@implementation TTModeMenuItemView
 
 - (id)initWithFrame:(NSRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        appDelegate = (TTAppDelegate *)[NSApp delegate];
-        hoverActive = NO;
-        mouseDownActive = NO;
+        self.appDelegate = (TTAppDelegate *)[NSApp delegate];
+        self.hoverActive = NO;
+        self.mouseDownActive = NO;
         
         [self registerAsObserver];
         [self createTrackingArea];
@@ -29,47 +43,51 @@
     return self;
 }
 
+- (NSString *)modeName {
+    return self.privateModeName;
+}
+
 - (void)setModeName:(NSString *)_modeName {
-    modeName = _modeName;
-    modeClass = NSClassFromString(modeName);
-    menuType = MODE_MENU_TYPE;
+    self.privateModeName = _modeName;
+    self.modeClass = NSClassFromString(self.modeName);
+    self.menuType = MODE_MENU_TYPE;
 }
 
 - (void)setActionName:(NSString *)_actionName {
-    modeName = _actionName;
-    activeMode = appDelegate.modeMap.selectedMode;
-    menuType = ACTION_MENU_TYPE;
+    self.privateModeName = _actionName;
+    self.activeMode = self.appDelegate.modeMap.selectedMode;
+    self.menuType = ACTION_MENU_TYPE;
 }
 
 - (void)setAddModeName:(NSDictionary *)_modeName {
-    modeName = [_modeName objectForKey:@"id"];
-    modeClass = NSClassFromString(modeName);
-    menuType = ADD_MODE_MENU_TYPE;
+    self.privateModeName = [_modeName objectForKey:@"id"];
+    self.modeClass = NSClassFromString(self.modeName);
+    self.menuType = ADD_MODE_MENU_TYPE;
 }
 
 - (void)setAddActionName:(NSDictionary *)_actionName {
-    modeName = [_actionName objectForKey:@"id"];
-    activeMode = appDelegate.modeMap.tempMode;
-    menuType = ADD_ACTION_MENU_TYPE;
+    self.privateModeName = [_actionName objectForKey:@"id"];
+    self.activeMode = self.appDelegate.modeMap.tempMode;
+    self.menuType = ADD_ACTION_MENU_TYPE;
 }
 
 - (void)setChangeActionName:(NSDictionary *)_actionName {
-    modeName = [_actionName objectForKey:@"id"];
-    activeMode = appDelegate.modeMap.batchActionChangeAction.mode;
-    menuType = CHANGE_BATCH_ACTION_MENU_TYPE;
+    self.privateModeName = [_actionName objectForKey:@"id"];
+    self.activeMode = self.appDelegate.modeMap.batchActionChangeAction.mode;
+    self.menuType = CHANGE_BATCH_ACTION_MENU_TYPE;
 }
 
 - (void)dealloc {
-    [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedModeDirection"];
-    [appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
+    [self.appDelegate.modeMap removeObserver:self forKeyPath:@"selectedModeDirection"];
+    [self.appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
 }
 
 #pragma mark - KVO
 
 - (void)registerAsObserver {
-    [appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
+    [self.appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
                              options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
+    [self.appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
                              options:0 context:nil];
 }
 
@@ -91,78 +109,78 @@
     [self setupTitleAttributes];
     [self drawBackground];
     
-    if (menuType == MODE_MENU_TYPE || menuType == ADD_MODE_MENU_TYPE) {
+    if (self.menuType == MODE_MENU_TYPE || self.menuType == ADD_MODE_MENU_TYPE) {
         [self drawMode];
-    } else if (menuType == ACTION_MENU_TYPE || menuType == ADD_ACTION_MENU_TYPE || menuType == CHANGE_BATCH_ACTION_MENU_TYPE) {
+    } else if (self.menuType == ACTION_MENU_TYPE || self.menuType == ADD_ACTION_MENU_TYPE || self.menuType == CHANGE_BATCH_ACTION_MENU_TYPE) {
         [self drawAction];
     }
 }
 
 - (void)drawMode {
-    NSString *imageFilename = [modeClass imageName];
-    modeImage = [NSImage imageNamed:imageFilename];
-    [modeImage setSize:NSMakeSize(IMAGE_SIZE, IMAGE_SIZE)];
-    CGFloat offset = (NSHeight(self.frame)/2) - (modeImage.size.height/2);
+    NSString *imageFilename = [self.modeClass imageName];
+    self.modeImage = [NSImage imageNamed:imageFilename];
+    [self.modeImage setSize:NSMakeSize(IMAGE_SIZE, IMAGE_SIZE)];
+    CGFloat offset = (NSHeight(self.frame)/2) - (self.modeImage.size.height/2);
     NSPoint imagePoint = NSMakePoint(offset, offset + 1);
     NSRect imageRect = NSMakeRect(imagePoint.x, imagePoint.y,
-                                  modeImage.size.width, modeImage.size.height);
-    [modeImage drawInRect:imageRect];
+                                  self.modeImage.size.width, self.modeImage.size.height);
+    [self.modeImage drawInRect:imageRect];
     
-    NSSize titleSize = [modeTitle sizeWithAttributes:modeAttributes];
+    NSSize titleSize = [self.modeTitle sizeWithAttributes:self.modeAttributes];
     NSPoint titlePoint = NSMakePoint(NSMaxX(imageRect) + 12,
                                      NSHeight(self.frame)/2 - titleSize.height/2 + 2);
     
-    [modeTitle drawAtPoint:titlePoint withAttributes:modeAttributes];
+    [self.modeTitle drawAtPoint:titlePoint withAttributes:self.modeAttributes];
 }
 
 - (void)drawAction {
-    NSString *imageFilename = [activeMode imageNameForAction:modeName];
-    modeImage = [NSImage imageNamed:imageFilename];
+    NSString *imageFilename = [self.activeMode imageNameForAction:self.modeName];
+    self.modeImage = [NSImage imageNamed:imageFilename];
 
-    [modeImage setSize:NSMakeSize(IMAGE_SIZE, IMAGE_SIZE)];
-    CGFloat offset = (NSHeight(self.frame)/2) - (modeImage.size.height/2);
+    [self.modeImage setSize:NSMakeSize(IMAGE_SIZE, IMAGE_SIZE)];
+    CGFloat offset = (NSHeight(self.frame)/2) - (self.modeImage.size.height/2);
     NSPoint imagePoint = NSMakePoint(offset, offset + 1);
     NSRect imageRect = NSMakeRect(imagePoint.x, imagePoint.y,
-                                  modeImage.size.width, modeImage.size.height);
-    [modeImage drawInRect:imageRect];
+                                  self.modeImage.size.width, self.modeImage.size.height);
+    [self.modeImage drawInRect:imageRect];
     
-    NSSize titleSize = [modeTitle sizeWithAttributes:modeAttributes];
+    NSSize titleSize = [self.modeTitle sizeWithAttributes:self.modeAttributes];
     NSPoint titlePoint = NSMakePoint(NSMaxX(imageRect) + 12,
                                      NSHeight(self.frame)/2 - titleSize.height/2 + 2);
     
-    [modeTitle drawAtPoint:titlePoint withAttributes:modeAttributes];
+    [self.modeTitle drawAtPoint:titlePoint withAttributes:self.modeAttributes];
 }
 
 - (void)setupTitleAttributes {
-    if (menuType == MODE_MENU_TYPE || menuType == ADD_MODE_MENU_TYPE) {
-        modeTitle = [[modeClass title] uppercaseString];
-    } else if (menuType == ACTION_MENU_TYPE || menuType == ADD_ACTION_MENU_TYPE || menuType == CHANGE_BATCH_ACTION_MENU_TYPE) {
-        modeTitle = [[activeMode titleForAction:modeName buttonMoment:BUTTON_MOMENT_PRESSUP] uppercaseString];
+    if (self.menuType == MODE_MENU_TYPE || self.menuType == ADD_MODE_MENU_TYPE) {
+        self.modeTitle = [[self.modeClass title] uppercaseString];
+    } else if (self.menuType == ACTION_MENU_TYPE || self.menuType == ADD_ACTION_MENU_TYPE || self.menuType == CHANGE_BATCH_ACTION_MENU_TYPE) {
+        self.modeTitle = [[self.activeMode titleForAction:self.modeName buttonMoment:BUTTON_MOMENT_PRESSUP] uppercaseString];
     }
 
     NSShadow *stringShadow = [[NSShadow alloc] init];
     stringShadow.shadowColor = [NSColor whiteColor];
     stringShadow.shadowOffset = NSMakeSize(0, -1);
     stringShadow.shadowBlurRadius = 0;
-    NSColor *textColor = (hoverActive && ![self isHighlighted]) ? NSColorFromRGB(0x404A60) :
+    NSColor *textColor = (self.hoverActive && ![self isHighlighted]) ? NSColorFromRGB(0x404A60) :
     [self isHighlighted] ?
     NSColorFromRGB(0x404A60) : NSColorFromRGB(0x808388);
-    modeAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:13],
+    self.modeAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:13],
                        NSForegroundColorAttributeName: textColor,
                        NSShadowAttributeName: stringShadow
                        };
-    textSize = [modeTitle sizeWithAttributes:modeAttributes];
+    self.textSize = [self.modeTitle sizeWithAttributes:self.modeAttributes];
 }
 
 - (BOOL)isHighlighted {
     BOOL highlighted = NO;
-    if (menuType == ACTION_MENU_TYPE) {
-        highlighted = [[activeMode actionNameInDirection:appDelegate.modeMap.inspectingModeDirection]
-                       isEqualToString:modeName];
-    } else if (menuType == MODE_MENU_TYPE) {
-        highlighted = [appDelegate.modeMap.selectedMode class] == modeClass;
-    } else if (menuType == CHANGE_BATCH_ACTION_MENU_TYPE) {
-        highlighted = [appDelegate.modeMap.batchActionChangeAction.actionName isEqualToString:modeName];
+    if (self.menuType == ACTION_MENU_TYPE) {
+        highlighted = [[self.activeMode actionNameInDirection:self.appDelegate.modeMap.inspectingModeDirection]
+                       isEqualToString:self.modeName];
+    } else if (self.menuType == MODE_MENU_TYPE) {
+        highlighted = [self.appDelegate.modeMap.selectedMode class] == self.modeClass;
+    } else if (self.menuType == CHANGE_BATCH_ACTION_MENU_TYPE) {
+        highlighted = [self.appDelegate.modeMap.batchActionChangeAction.actionName isEqualToString:self.modeName];
     }
     return highlighted;
 }
@@ -172,7 +190,7 @@
     if ([self isHighlighted]) {
         // #E3EDF6
         [NSColorFromRGB(0xE3EDF6) set];
-    } else if (mouseDownActive) {
+    } else if (self.mouseDownActive) {
         [NSColorFromRGB(0xF6F6F9) set];
     } else {
         [NSColorFromRGB(0xFBFBFD) set];
@@ -202,33 +220,33 @@
 - (void)mouseEntered:(NSEvent *)theEvent {
     [[NSCursor pointingHandCursor] set];
     
-    hoverActive = YES;
+    self.hoverActive = YES;
     [self setNeedsDisplay:YES];
-    [appDelegate.panelController.backgroundView.modeMenu setNeedsDisplay:YES];
+    [self.appDelegate.panelController.backgroundView.modeMenu setNeedsDisplay:YES];
 }
 
 - (void)mouseExited:(NSEvent *)theEvent {
     [[NSCursor arrowCursor] set];
     
-    hoverActive = NO;
-    mouseDownActive = NO;
+    self.hoverActive = NO;
+    self.mouseDownActive = NO;
     [self setNeedsDisplay:YES];
-    [appDelegate.panelController.backgroundView.modeMenu setNeedsDisplay:YES];
+    [self.appDelegate.panelController.backgroundView.modeMenu setNeedsDisplay:YES];
 }
 
 - (void)mouseDown:(NSEvent *)theEvent {
-    mouseDownActive = YES;
+    self.mouseDownActive = YES;
     [self drawBackground];
     [self setNeedsDisplay:YES];
 }
 
 - (void)mouseUp:(NSEvent *)theEvent {
-    if (!mouseDownActive) {
+    if (!self.mouseDownActive) {
         [self drawBackground];
         [self setNeedsDisplay:YES];
         return;
     }
-    mouseDownActive = NO;
+    self.mouseDownActive = NO;
     
     NSPoint clickPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
     BOOL inside = NSPointInRect(clickPoint, self.bounds);
@@ -238,25 +256,25 @@
         return;
     }
     
-    if (menuType == MODE_MENU_TYPE) {
-        [appDelegate.modeMap changeDirection:appDelegate.modeMap.selectedModeDirection
-                                      toMode:modeName];
-    } else if (menuType == ACTION_MENU_TYPE) {
-        [appDelegate.modeMap changeDirection:appDelegate.modeMap.inspectingModeDirection
-                                    toAction:modeName];
-        [appDelegate.panelController.backgroundView setNeedsDisplay:YES];
-        [appDelegate.panelController.backgroundView.modeMenu.collectionView setNeedsDisplay:YES];
-        [appDelegate.modeMap setInspectingModeDirection:appDelegate.modeMap.inspectingModeDirection];
-        [appDelegate.modeMap setOpenedActionChangeMenu:NO];
-    } else if (menuType == ADD_MODE_MENU_TYPE) {
-        [appDelegate.modeMap setTempModeName:modeName];
-        [appDelegate.panelController.backgroundView adjustBatchActionsHeight:YES];
-    } else if (menuType == ADD_ACTION_MENU_TYPE) {
-        [appDelegate.modeMap addBatchAction:modeName];
-        [appDelegate.panelController.backgroundView.addActionButtonView hideAddActionMenu:nil];
-    } else if (menuType == CHANGE_BATCH_ACTION_MENU_TYPE) {
-        [appDelegate.modeMap changeBatchAction:appDelegate.modeMap.batchActionChangeAction.batchActionKey toAction:modeName];
-        [appDelegate.panelController.backgroundView adjustBatchActionsHeight:YES];
+    if (self.menuType == MODE_MENU_TYPE) {
+        [self.appDelegate.modeMap changeDirection:self.appDelegate.modeMap.selectedModeDirection
+                                      toMode:self.modeName];
+    } else if (self.menuType == ACTION_MENU_TYPE) {
+        [self.appDelegate.modeMap changeDirection:self.appDelegate.modeMap.inspectingModeDirection
+                                    toAction:self.modeName];
+        [self.appDelegate.panelController.backgroundView setNeedsDisplay:YES];
+        [self.appDelegate.panelController.backgroundView.modeMenu.collectionView setNeedsDisplay:YES];
+        [self.appDelegate.modeMap setInspectingModeDirection:self.appDelegate.modeMap.inspectingModeDirection];
+        [self.appDelegate.modeMap setOpenedActionChangeMenu:NO];
+    } else if (self.menuType == ADD_MODE_MENU_TYPE) {
+        [self.appDelegate.modeMap setTempModeName:self.modeName];
+        [self.appDelegate.panelController.backgroundView adjustBatchActionsHeight:YES];
+    } else if (self.menuType == ADD_ACTION_MENU_TYPE) {
+        [self.appDelegate.modeMap addBatchAction:self.modeName];
+        [self.appDelegate.panelController.backgroundView.addActionButtonView hideAddActionMenu:nil];
+    } else if (self.menuType == CHANGE_BATCH_ACTION_MENU_TYPE) {
+        [self.appDelegate.modeMap changeBatchAction:self.appDelegate.modeMap.batchActionChangeAction.batchActionKey toAction:self.modeName];
+        [self.appDelegate.panelController.backgroundView adjustBatchActionsHeight:YES];
     }
 }
 

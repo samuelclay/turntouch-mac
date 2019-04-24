@@ -10,11 +10,11 @@
 
 @interface TTModeNestConnect ()
 
+@property (nonatomic, strong) NSPopover *authPopover;
+
 @end
 
 @implementation TTModeNestConnect
-
-@synthesize authButton;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,23 +27,23 @@
     TTModeNestAuthViewController *nestAuthViewController = [[TTModeNestAuthViewController alloc] init];
     nestAuthViewController.modeNest = self.modeNest;
     
-    authPopover = [[NSPopover alloc] init];
-    [authPopover setContentSize:NSMakeSize(320, 480)];
-    [authPopover setBehavior:NSPopoverBehaviorTransient];
-    [authPopover setAnimates:YES];
-    [authPopover setContentViewController:nestAuthViewController];
+    self.authPopover = [[NSPopover alloc] init];
+    [self.authPopover setContentSize:NSMakeSize(320, 480)];
+    [self.authPopover setBehavior:NSPopoverBehaviorTransient];
+    [self.authPopover setAnimates:YES];
+    [self.authPopover setContentViewController:nestAuthViewController];
     
     NSRect entryRect = [sender convertRect:((NSButton *)sender).bounds
-                                    toView:appDelegate.panelController.backgroundView];
+                                    toView:self.appDelegate.panelController.backgroundView];
     
-    nestAuthViewController.authPopover = authPopover;
-    [authPopover showRelativeToRect:entryRect
-                             ofView:appDelegate.panelController.backgroundView
+    nestAuthViewController.authPopover = self.authPopover;
+    [self.authPopover showRelativeToRect:entryRect
+                             ofView:self.appDelegate.panelController.backgroundView
                       preferredEdge:NSMinYEdge];
 }
 
 - (void)closePopover {
-    [authPopover close];
+    [self.authPopover close];
 }
 
 @end

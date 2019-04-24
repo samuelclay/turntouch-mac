@@ -15,6 +15,9 @@
 #warning This file must be compiled with ARC. Use -fobjc-arc flag (or convert project to ARC).
 #endif
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wimplicit-retain-self"
+
 @interface DDAbstractDatabaseLogger ()
 - (void)destroySaveTimer;
 - (void)destroyDeleteTimer;
@@ -725,3 +728,6 @@
 }
 
 @end
+
+#pragma clang diagnostic pop
+

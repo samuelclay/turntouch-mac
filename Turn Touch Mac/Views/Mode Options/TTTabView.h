@@ -8,8 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface TTTabView : NSTabView {
-    NSSegmentedControl *segmentedControl;
-}
+@interface TTTabView : NSTabView
 
 @end

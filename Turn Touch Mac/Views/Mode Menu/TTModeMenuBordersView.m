@@ -12,10 +12,6 @@
 
 @implementation TTModeMenuBordersView
 
-@synthesize hideBorder;
-@synthesize hideShadow;
-@synthesize borderStyle;
-
 - (id)initWithFrame:(NSRect)frame
 {
     self = [super initWithFrame:frame];
@@ -29,13 +25,13 @@
 {
     [super drawRect:dirtyRect];
     
-    if (!hideBorder && !hideShadow) {
+    if (!self.hideBorder && !self.hideShadow) {
         [self drawShadowTop:dirtyRect];
         if (NSHeight(self.bounds) > 36) {
             [self drawShadowBottom:dirtyRect];
         }
     } else {
-        if (borderStyle == ADD_MODE_MENU_TYPE || borderStyle == ADD_ACTION_MENU_TYPE) {
+        if (self.borderStyle == ADD_MODE_MENU_TYPE || self.borderStyle == ADD_ACTION_MENU_TYPE) {
             [NSColorFromRGB(0xFFFFFF) set];
         } else {
             [NSColorFromRGB(0xF5F6F8) set];
@@ -47,7 +43,7 @@
         [border stroke];
     }
     
-    if ((borderStyle == ADD_MODE_MENU_TYPE || borderStyle == ADD_ACTION_MENU_TYPE) && !hideBorder) {
+    if ((self.borderStyle == ADD_MODE_MENU_TYPE || self.borderStyle == ADD_ACTION_MENU_TYPE) && !self.hideBorder) {
         NSBezierPath *path = [NSBezierPath bezierPath];
         [path moveToPoint:NSMakePoint(NSMinX(self.bounds) + BUTTON_MARGIN, NSMaxY(self.bounds))];
         [path lineToPoint:NSMakePoint(NSMaxX(self.bounds) - BUTTON_MARGIN, NSMaxY(self.bounds))];

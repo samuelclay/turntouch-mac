@@ -11,14 +11,9 @@
 #import "TTFooterView.h"
 #import "TTAppDelegate.h"
 
-@interface TTModalBarButton : TTFooterView {
-    TTAppDelegate *appDelegate;
-    TTModalPairing modalPairing;
-    TTModalFTUX modalFTUX;
-    TTModalSupport modalSupport;
-    NSTrackingArea *trackingArea;
-}
+@interface TTModalBarButton : TTFooterView
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic) IBOutlet NSTextField *buttonLabel;
 @property (nonatomic) IBOutlet NSImageView *chevronImage;
 

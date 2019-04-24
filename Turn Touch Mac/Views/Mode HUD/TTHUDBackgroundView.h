@@ -9,8 +9,6 @@
 #import <Cocoa/Cocoa.h>
 #import "TTAppDelegate.h"
 
-@interface TTHUDBackgroundView : NSVisualEffectView {
-    NSTrackingArea *trackingArea;
-}
+@interface TTHUDBackgroundView : NSVisualEffectView
 
 @end

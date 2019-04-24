@@ -14,21 +14,9 @@
 @class TTAppDelegate;
 @class TTDiamondLabel;
 
-@interface TTDiamondLabels : NSView {
-    TTAppDelegate *appDelegate;
-    NSRect diamondRect;
-    CGSize textSize;
-    BOOL interactive;
-    
-    TTDiamondLabel *northLabel;
-    TTDiamondLabel *eastLabel;
-    TTDiamondLabel *westLabel;
-    TTDiamondLabel *southLabel;
-    
-    TTDiamondView *diamondView;
-    TTMode *diamondMode;
-}
+@interface TTDiamondLabels : NSView
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic) NSRect diamondRect;
 @property (nonatomic, readwrite) BOOL interactive;
 @property (nonatomic, readwrite) BOOL isHud;

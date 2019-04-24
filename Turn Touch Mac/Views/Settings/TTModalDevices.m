@@ -15,33 +15,31 @@
 
 @implementation TTModalDevices
 
-@synthesize devicesTable;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    appDelegate = (TTAppDelegate *)[NSApp delegate];
+    self.appDelegate = (TTAppDelegate *)[NSApp delegate];
     [self registerAsObserver];
 }
 
 - (void)viewWillAppear {    
     [super viewWillAppear];
-    [devicesTable reloadData];
+    [self.devicesTable reloadData];
 }
 
 - (void)closeModal:(id)sender {
-    [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_APP];
+    [self.appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_APP];
 }
 
 #pragma mark - KVO
 
 - (void)registerAsObserver {
-    [appDelegate.bluetoothMonitor addObserver:self
+    [self.appDelegate.bluetoothMonitor addObserver:self
                                    forKeyPath:@"batteryPct"
                                       options:0 context:nil];
-    [appDelegate.bluetoothMonitor addObserver:self
+    [self.appDelegate.bluetoothMonitor addObserver:self
                                    forKeyPath:@"lastActionDate"
                                       options:0 context:nil];
-    [appDelegate.bluetoothMonitor addObserver:self
+    [self.appDelegate.bluetoothMonitor addObserver:self
                                    forKeyPath:@"pairedDevicesCount"
                                       options:0 context:nil];
 }
@@ -51,24 +49,24 @@
                         change:(NSDictionary *)change
                        context:(void *)context {
     if ([keyPath isEqual:NSStringFromSelector(@selector(batteryPct))]) {
-        [devicesTable reloadData];
+        [self.devicesTable reloadData];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(lastActionDate))]) {
-        [devicesTable reloadData];
+        [self.devicesTable reloadData];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(pairedDevicesCount))]) {
-        [devicesTable reloadData];
+        [self.devicesTable reloadData];
     }
 }
 
 - (void)dealloc {
-    [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"batteryPct"];
-    [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"lastActionDate"];
-    [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"pairedDevicesCount"];
+    [self.appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"batteryPct"];
+    [self.appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"lastActionDate"];
+    [self.appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"pairedDevicesCount"];
 }
 
 #pragma mark - Devices Table
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return appDelegate.bluetoothMonitor.foundDevices.connectedCount;
+    return self.appDelegate.bluetoothMonitor.foundDevices.connectedCount;
 }
 
 - (NSView *)tableView:(NSTableView *)tableView
@@ -84,7 +82,7 @@
         [result setDelegate:self];
     }
     
-    TTDevice *device = [appDelegate.bluetoothMonitor.foundDevices connectedDeviceAtIndex:row];
+    TTDevice *device = [self.appDelegate.bluetoothMonitor.foundDevices connectedDeviceAtIndex:row];
     if (!device.isPaired) {
         // Unpaired
         if ([tableColumn.identifier isEqualToString:@"deviceIdentifier"]) {
@@ -126,13 +124,13 @@
 }
 
 - (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor {
-    NSInteger row = [devicesTable rowForView:control];
+    NSInteger row = [self.devicesTable rowForView:control];
     if (row == -1) {
         return YES;
     }
-    TTDevice *device = [appDelegate.bluetoothMonitor.foundDevices connectedDeviceAtIndex:row];
+    TTDevice *device = [self.appDelegate.bluetoothMonitor.foundDevices connectedDeviceAtIndex:row];
     
-    [appDelegate.bluetoothMonitor writeNickname:control.stringValue toDevice:device];
+    [self.appDelegate.bluetoothMonitor writeNickname:control.stringValue toDevice:device];
     
     [control setStringValue:device.nickname];
     

@@ -9,9 +9,7 @@
 #import "TTModeIfttt.h"
 #import "TTOptionsDetailViewController.h"
 
-@interface TTModeIftttConnected : TTOptionsDetailViewController {
-    NSPopover *authPopover;
-}
+@interface TTModeIftttConnected : TTOptionsDetailViewController
 
 @property (nonatomic, strong) TTModeIfttt *modeIfttt;
 

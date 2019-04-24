@@ -12,16 +12,12 @@
 
 @interface TTModeWemoSwitchOptions ()
 
+@property (nonatomic) BOOL isMenuVisible;
+@property (nonatomic, strong) NSMenu *settingsMenu;
+
 @end
 
 @implementation TTModeWemoSwitchOptions
-
-@synthesize devicePopup;
-@synthesize refreshButton;
-@synthesize spinner;
-@synthesize devicesStack;
-@synthesize noticeLabel;
-@synthesize tableHeightConstraint;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,27 +25,27 @@
     self.modeWemo = ((TTModeWemo *)self.mode);
     [self.modeWemo setDelegate:self];
 
-    spinner.hidden = YES;
-    refreshButton.hidden = NO;
-    [refreshButton setImage:[NSImage imageNamed:@"settings"]];
+    self.spinner.hidden = YES;
+    self.refreshButton.hidden = NO;
+    [self.refreshButton setImage:[NSImage imageNamed:@"settings"]];
     
     [self buildSettingsMenu:YES];
     [self selectDevices];
 }
 
 - (void)redrawTable {
-    for (NSView *deviceRow in devicesStack.views) {
-        [devicesStack removeView:deviceRow];
+    for (NSView *deviceRow in self.devicesStack.views) {
+        [self.devicesStack removeView:deviceRow];
     }
     
     for (TTModeWemoDevice *device in TTModeWemo.foundDevices) {
         TTModeWemoSwitchDevice *deviceRow = [[TTModeWemoSwitchDevice alloc] initWithDevice:device];
         deviceRow.delegate = self;
-        [devicesStack addView:deviceRow inGravity:NSStackViewGravityTop];
+        [self.devicesStack addView:deviceRow inGravity:NSStackViewGravityTop];
         [deviceRow redraw];
     }
     
-    [devicesStack setNeedsDisplay:YES];
+    [self.devicesStack setNeedsDisplay:YES];
 }
 
 #pragma mark - Wemo Delegate
@@ -58,8 +54,8 @@
     NSLog(@" Changing Wemo state: %lu", wemoState);
     
     if (wemoState == WEMO_STATE_CONNECTED) {
-        spinner.hidden = YES;
-        refreshButton.hidden = NO;
+        self.spinner.hidden = YES;
+        self.refreshButton.hidden = NO;
     }
     
     [self selectDevices];
@@ -72,13 +68,13 @@
         if (TTModeWemo.wemoState == WEMO_STATE_CONNECTING) {
             [self.noticeLabel setStringValue:@"Searching for Wemo devices..."];
             [self.noticeLabel setTextColor:[NSColor darkGrayColor]];
-            spinner.hidden = NO;
-            refreshButton.hidden = YES;
+            self.spinner.hidden = NO;
+            self.refreshButton.hidden = YES;
         } else {
             [self.noticeLabel setStringValue:@"No Wemo devices found"];
             [self.noticeLabel setTextColor:[NSColor lightGrayColor]];
-            spinner.hidden = YES;
-            refreshButton.hidden = NO;
+            self.spinner.hidden = YES;
+            self.refreshButton.hidden = NO;
         }
         self.noticeLabel.hidden = NO;
     } else {
@@ -89,9 +85,9 @@
 }
 
 - (IBAction)refreshDevices:(id)sender {
-    spinner.hidden = NO;
-    [spinner startAnimation:nil];
-    refreshButton.hidden = YES;
+    self.spinner.hidden = NO;
+    [self.spinner startAnimation:nil];
+    self.refreshButton.hidden = YES;
     
     [self.modeWemo refreshDevices];
 }
@@ -125,46 +121,46 @@
 #pragma mark - Settings menu
 
 - (IBAction)showWemoSwitchMenu:(id)sender {
-    [NSMenu popUpContextMenu:settingsMenu
+    [NSMenu popUpContextMenu:self.settingsMenu
                    withEvent:[NSApp currentEvent]
                      forView:sender];
 }
 
 - (void)buildSettingsMenu:(BOOL)force {
-    if (!force && !isMenuVisible) return;
+    if (!force && !self.isMenuVisible) return;
     
     NSMenuItem *menuItem;
     
-    if (!settingsMenu) {
-        settingsMenu = [[NSMenu alloc] initWithTitle:@"Action Menu"];
-        [settingsMenu setDelegate:self];
-        [settingsMenu setAutoenablesItems:NO];
+    if (!self.settingsMenu) {
+        self.settingsMenu = [[NSMenu alloc] initWithTitle:@"Action Menu"];
+        [self.settingsMenu setDelegate:self];
+        [self.settingsMenu setAutoenablesItems:NO];
     } else {
-        [settingsMenu removeAllItems];
+        [self.settingsMenu removeAllItems];
     }
     
     menuItem = [[NSMenuItem alloc] initWithTitle:@"Search for new devices..." action:@selector(refreshDevices:) keyEquivalent:@""];
     [menuItem setEnabled:YES];
     [menuItem setTarget:self];
-    [settingsMenu addItem:menuItem];
+    [self.settingsMenu addItem:menuItem];
     
-    [settingsMenu addItem:[NSMenuItem separatorItem]];
+    [self.settingsMenu addItem:[NSMenuItem separatorItem]];
     
     menuItem = [[NSMenuItem alloc] initWithTitle:@"Remove all and search..." action:@selector(purgeDevices:) keyEquivalent:@""];
     [menuItem setEnabled:YES];
     [menuItem setTarget:self];
-    [settingsMenu addItem:menuItem];
+    [self.settingsMenu addItem:menuItem];
 }
 
 #pragma mark - Menu Delegate
 
 - (void)menuWillOpen:(NSMenu *)menu {
-    isMenuVisible = YES;
+    self.isMenuVisible = YES;
     [self buildSettingsMenu:YES];
 }
 
 - (void)menuDidClose:(NSMenu *)menu {
-    isMenuVisible = NO;
+    self.isMenuVisible = NO;
 }
 
 @end

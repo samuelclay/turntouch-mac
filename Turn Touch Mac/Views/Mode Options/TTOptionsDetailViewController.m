@@ -16,15 +16,10 @@
 
 @implementation TTOptionsDetailViewController
 
-@synthesize tabView;
-@synthesize menuType;
-@synthesize action;
-@synthesize mode;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    appDelegate = (TTAppDelegate *)[NSApp delegate];
+    self.appDelegate = (TTAppDelegate *)[NSApp delegate];
 }
 
 #pragma mark - Animation
@@ -45,8 +40,8 @@
     
     block();
     
-    [appDelegate.panelController.backgroundView.optionsView layoutSubtreeIfNeeded];
-    [appDelegate.panelController.backgroundView layoutSubtreeIfNeeded];
+    [self.appDelegate.panelController.backgroundView.optionsView layoutSubtreeIfNeeded];
+    [self.appDelegate.panelController.backgroundView layoutSubtreeIfNeeded];
     
     [NSAnimationContext endGrouping];
     

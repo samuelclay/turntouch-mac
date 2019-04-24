@@ -10,12 +10,10 @@
 
 @implementation TTModeMenuCollectionView
 
-@synthesize menuType;
-
 - (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        appDelegate = (TTAppDelegate *)[NSApp delegate];
+        self.appDelegate = (TTAppDelegate *)[NSApp delegate];
         self.translatesAutoresizingMaskIntoConstraints = NO;
         [self setMaxNumberOfColumns:2];
     }
@@ -25,7 +23,7 @@
 
 - (void)setContent:(NSArray *)content withMenuType:(TTMenuType)_menuType {
 //    NSLog(@"Collection view: %d / %lu", _menuType, (unsigned long)[content count]);
-    menuType = _menuType;
+    self.menuType = _menuType;
     [super setContent:content];
 }
 

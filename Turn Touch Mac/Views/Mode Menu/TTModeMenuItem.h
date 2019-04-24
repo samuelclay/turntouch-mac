@@ -16,9 +16,8 @@
 @class TTAppDelegate;
 @class TTModeMenuCollectionView;
 
-@interface TTModeMenuItem : NSCollectionViewItem {
-    TTAppDelegate *appDelegate;
-    TTMenuType menuType;
-}
+@interface TTModeMenuItem : NSCollectionViewItem
+
+@property (nonatomic, strong) TTAppDelegate *appDelegate;
 
 @end

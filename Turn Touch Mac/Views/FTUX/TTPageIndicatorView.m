@@ -8,13 +8,19 @@
 
 #import "TTPageIndicatorView.h"
 
-@implementation TTPageIndicatorView
+@interface TTPageIndicatorView ()
 
-@synthesize modalFTUX;
+@property (nonatomic, strong) NSTrackingArea *trackingArea;
+@property (nonatomic) BOOL highlighted;
+@property (nonatomic) BOOL selected;
+
+@end
+
+@implementation TTPageIndicatorView
 
 - (instancetype)init {
     if (self = [super init]) {
-        appDelegate = (TTAppDelegate *)[NSApp delegate];
+        self.appDelegate = (TTAppDelegate *)[NSApp delegate];
         self.translatesAutoresizingMaskIntoConstraints = NO;
         [self createTrackingArea];
     }
@@ -46,59 +52,59 @@
 }
 
 - (BOOL)isHighlighted {
-    return highlighted && !self.isSelected;
+    return self.highlighted && !self.isSelected;
 }
 
 - (BOOL)isSelected {
-    return selected || appDelegate.panelController.backgroundView.modalFTUX == modalFTUX;
+    return self.selected || self.appDelegate.panelController.backgroundView.modalFTUX == self.modalFTUX;
 }
 
 
 - (void)createTrackingArea {
-    if (trackingArea) {
-        [self removeTrackingArea:trackingArea];
-        trackingArea = nil;
+    if (self.trackingArea) {
+        [self removeTrackingArea:self.trackingArea];
+        self.trackingArea = nil;
     }
     
     NSTrackingAreaOptions opts = (NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways | NSTrackingInVisibleRect);
-    trackingArea = [[NSTrackingArea alloc] initWithRect:[self bounds]
+    self.trackingArea = [[NSTrackingArea alloc] initWithRect:[self bounds]
                                                 options:opts
                                                   owner:self
                                                userInfo:nil];
-    [self addTrackingArea:trackingArea];
+    [self addTrackingArea:self.trackingArea];
 }
 
 #pragma mark - Actions
 
 - (void)mouseEntered:(NSEvent *)theEvent {
     [[NSCursor pointingHandCursor] set];
-    highlighted = YES;
+    self.highlighted = YES;
     [self setNeedsDisplay:YES];
 }
 
 - (void)mouseExited:(NSEvent *)theEvent {
     [[NSCursor arrowCursor] set];
-    highlighted = NO;
+    self.highlighted = NO;
     
     [self setNeedsDisplay:YES];
 }
 
 - (void)mouseDown:(NSEvent *)theEvent {
-    highlighted = NO;
-    selected = YES;
+    self.highlighted = NO;
+    self.selected = YES;
     [self setNeedsDisplay:YES];
 }
 
 - (void)mouseUp:(NSEvent *)theEvent {
     NSPoint clickPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
-    selected = NO;
-    highlighted = NO;
+    self.selected = NO;
+    self.highlighted = NO;
 
     BOOL inside = NSPointInRect(clickPoint, self.bounds);
     if (!inside) {
         return;
     }
-    [appDelegate.panelController.backgroundView switchPanelModalFTUX:modalFTUX];
+    [self.appDelegate.panelController.backgroundView switchPanelModalFTUX:self.modalFTUX];
     [self setNeedsDisplay:YES];
 }
 

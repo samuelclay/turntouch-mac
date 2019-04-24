@@ -10,20 +10,18 @@
 
 @implementation TTPanelArrowView
 
-@synthesize arrowX;
-
 - (id)initWithFrame:(NSRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        appDelegate = (TTAppDelegate *)[NSApp delegate];
+        self.appDelegate = (TTAppDelegate *)[NSApp delegate];
         self.translatesAutoresizingMaskIntoConstraints = NO;
     }
     return self;
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
-    NSRect statusRect = [appDelegate.panelController statusRectForWindow:[self window]];
+    NSRect statusRect = [self.appDelegate.panelController statusRectForWindow:[self window]];
     NSRect panelRect = [[self window] frame];
     
     CGFloat statusX = roundf(NSMidX(statusRect));

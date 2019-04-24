@@ -15,26 +15,23 @@
 
 @implementation TTModeMusicVolumeJumpOptions
 
-@synthesize volumeSlider;
-@synthesize percentageLabel;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSInteger volumeJump = [[self.action optionValue:kMusicVolumeJump inDirection:appDelegate.modeMap.inspectingModeDirection] integerValue];
+    NSInteger volumeJump = [[self.action optionValue:kMusicVolumeJump inDirection:self.appDelegate.modeMap.inspectingModeDirection] integerValue];
 
-    [volumeSlider setIntegerValue:volumeJump];
+    [self.volumeSlider setIntegerValue:volumeJump];
     [self updateVolumeJumpLabel];
 }
 
 - (void)updateVolumeJumpLabel {
-    NSInteger volumeJump = [[self.action optionValue:kMusicVolumeJump inDirection:appDelegate.modeMap.inspectingModeDirection] integerValue];
+    NSInteger volumeJump = [[self.action optionValue:kMusicVolumeJump inDirection:self.appDelegate.modeMap.inspectingModeDirection] integerValue];
     
-    [percentageLabel setStringValue:[NSString stringWithFormat:@"%ld%%", (long)volumeJump]];
+    [self.percentageLabel setStringValue:[NSString stringWithFormat:@"%ld%%", (long)volumeJump]];
 }
 
 - (IBAction)slideVolume:(id)sender {
-    [self.action changeActionOption:kMusicVolumeJump to:[NSNumber numberWithInteger:volumeSlider.integerValue]];
+    [self.action changeActionOption:kMusicVolumeJump to:[NSNumber numberWithInteger:self.volumeSlider.integerValue]];
     
     [self updateVolumeJumpLabel];
 }

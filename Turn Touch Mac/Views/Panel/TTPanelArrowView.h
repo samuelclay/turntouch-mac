@@ -16,10 +16,9 @@
 #define ARROW_HEIGHT 8
 #define CORNER_RADIUS 8.0f
 
-@interface TTPanelArrowView : NSView {
-    TTAppDelegate *appDelegate;
-}
+@interface TTPanelArrowView : NSView
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic, assign) NSInteger arrowX;
 
 @end

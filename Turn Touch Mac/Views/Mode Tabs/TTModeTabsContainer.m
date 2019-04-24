@@ -11,26 +11,21 @@
 
 @implementation TTModeTabsContainer
 
-@synthesize northItem;
-@synthesize eastItem;
-@synthesize westItem;
-@synthesize southItem;
-
 - (id)initWithFrame:(NSRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        northItem = [[TTModeTab alloc] initWithFrame:CGRectZero direction:NORTH];
-        [self addSubview:northItem];
+        self.northItem = [[TTModeTab alloc] initWithFrame:CGRectZero direction:NORTH];
+        [self addSubview:self.northItem];
         
-        eastItem = [[TTModeTab alloc] initWithFrame:CGRectZero direction:EAST];
-        [self addSubview:eastItem];
+        self.eastItem = [[TTModeTab alloc] initWithFrame:CGRectZero direction:EAST];
+        [self addSubview:self.eastItem];
         
-        westItem = [[TTModeTab alloc] initWithFrame:CGRectZero direction:WEST];
-        [self addSubview:westItem];
+        self.westItem = [[TTModeTab alloc] initWithFrame:CGRectZero direction:WEST];
+        [self addSubview:self.westItem];
 
-        southItem = [[TTModeTab alloc] initWithFrame:CGRectZero direction:SOUTH];
-        [self addSubview:southItem];
+        self.southItem = [[TTModeTab alloc] initWithFrame:CGRectZero direction:SOUTH];
+        [self addSubview:self.southItem];
         
         self.translatesAutoresizingMaskIntoConstraints = NO;
     }
@@ -46,16 +41,16 @@
     itemFrame.size.width = itemWidth;
     
     itemFrame.origin.x = itemWidth * 0;
-    [northItem setFrame:itemFrame];
+    [self.northItem setFrame:itemFrame];
     
     itemFrame.origin.x = itemWidth * 1;
-    [eastItem setFrame:itemFrame];
+    [self.eastItem setFrame:itemFrame];
     
     itemFrame.origin.x = itemWidth * 2;
-    [westItem setFrame:itemFrame];
+    [self.westItem setFrame:itemFrame];
     
     itemFrame.origin.x = itemWidth * 3;
-    [southItem setFrame:itemFrame];
+    [self.southItem setFrame:itemFrame];
 }
 
 - (void)drawBackground {

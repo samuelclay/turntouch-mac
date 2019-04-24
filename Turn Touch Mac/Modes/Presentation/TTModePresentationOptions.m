@@ -15,26 +15,23 @@
 
 @implementation TTModePresentationOptions
 
-@synthesize appKeynote;
-@synthesize appPowerpoint;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.translatesAutoresizingMaskIntoConstraints = NO;
     
-    NSString *app = [appDelegate.modeMap mode:self.mode optionValue:kPresentationApp];
+    NSString *app = [self.appDelegate.modeMap mode:self.mode optionValue:kPresentationApp];
     if ([app isEqualToString:@"keynote"]) {
-        appKeynote.state = NSControlStateValueOn;
+        self.appKeynote.state = NSControlStateValueOn;
     } else if ([app isEqualToString:@"powerpoint"]) {
-        appPowerpoint.state = NSControlStateValueOn;
+        self.appPowerpoint.state = NSControlStateValueOn;
     }
 }
 
 - (IBAction)selectApp:(id)sender {
-    if (appKeynote.state == NSControlStateValueOn) {
-        [appDelegate.modeMap changeMode:self.mode option:kPresentationApp to:@"keynote"];
-    } else if (appPowerpoint.state == NSControlStateValueOn) {
-        [appDelegate.modeMap changeMode:self.mode option:kPresentationApp to:@"powerpoint"];
+    if (self.appKeynote.state == NSControlStateValueOn) {
+        [self.appDelegate.modeMap changeMode:self.mode option:kPresentationApp to:@"keynote"];
+    } else if (self.appPowerpoint.state == NSControlStateValueOn) {
+        [self.appDelegate.modeMap changeMode:self.mode option:kPresentationApp to:@"powerpoint"];
     }
 }
 

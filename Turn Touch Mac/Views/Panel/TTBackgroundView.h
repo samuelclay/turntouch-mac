@@ -64,22 +64,9 @@
 @class TTModalSettings;
 @class TTModalSupportView;
 
-@interface TTBackgroundView : NSStackView <NSStackViewDelegate> {
-    TTAppDelegate *appDelegate;
-    NSLayoutConstraint *modeMenuConstraint;
-    NSLayoutConstraint *actionMenuConstraint;
-    NSLayoutConstraint *addActionMenuConstraint;
-    NSLayoutConstraint *optionsConstraint;
-    NSLayoutConstraint *deviceTitlesConstraint;
-    NSLayoutConstraint *addActionButtonConstraint;
-    NSStackView *scrollStackView;
-    NSScrollView *scrollView;
-    TTPanelModal panelModal;
-    TTModalPairing modalPairing;
-    TTModalFTUX modalFTUX;
-    TTModalSupport modalSupport;
-}
+@interface TTBackgroundView : NSStackView <NSStackViewDelegate>
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic) IBOutlet TTPanelArrowView *arrowView;
 @property (nonatomic) IBOutlet TTTitleBarView *titleBarView;
 @property (nonatomic) IBOutlet TTModeTabsContainer *modeTabs;

@@ -12,11 +12,9 @@
 #import "TTDevice.h"
 #import "TTBorder.h"
 
-@interface TTDeviceTitlesView : NSStackView <NSStackViewDelegate, DFUOperationsDelegate> {
-    TTAppDelegate *appDelegate;
-    TTBorder *border;
-    TTDevice *currentDevice;
-}
+@interface TTDeviceTitlesView : NSStackView <NSStackViewDelegate, DFUOperationsDelegate>
+
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 
 -(void)performDFU:(TTDevice *)device;
 

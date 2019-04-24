@@ -15,9 +15,6 @@
 
 @implementation TTModeCustomFileOptions
 
-@synthesize chooseFile;
-@synthesize pathControl;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.translatesAutoresizingMaskIntoConstraints = NO;
@@ -25,7 +22,7 @@
     NSString *urlString = [self.action optionValue:kCustomFileUrl];
     if (urlString) {
         NSURL *url = [NSURL URLWithString:urlString];
-        [pathControl setURL:url];
+        [self.pathControl setURL:url];
     }
 }
 
@@ -40,15 +37,15 @@
         [panel setDirectoryURL:url];
     }
     
-    appDelegate.panelController.preventClosing = YES;
+    self.appDelegate.panelController.preventClosing = YES;
     
     NSInteger clicked = [panel runModal];
     
-    appDelegate.panelController.preventClosing = NO;
+    self.appDelegate.panelController.preventClosing = NO;
 
     if (clicked == NSFileHandlingPanelOKButton) {
         for (NSURL *url in [panel URLs]) {
-            [pathControl setURL:url];
+            [self.pathControl setURL:url];
             [self.action changeActionOption:kCustomFileUrl to:[url absoluteString]];
         }
     } else {

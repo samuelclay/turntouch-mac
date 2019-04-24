@@ -25,17 +25,9 @@ typedef enum {
 } TTHUDMenuState;
 
 
-@interface TTButtonTimer : NSObject {
-    TTAppDelegate *appDelegate;
-    NSTimer *activeModeTimer;
-    TTButtonState *previousButtonState;
-    TTButtonState *pairingButtonState;
-    TTModeDirection lastButtonPressedDirection;
-    NSDate *lastButtonPressStart;
-    NSDate *holdToastStart;
-    BOOL menuHysteresis;
-}
+@interface TTButtonTimer : NSObject
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic) TTButtonState *previousButtonState;
 @property (nonatomic) NSNumber *pairingActivatedCount;
 @property (nonatomic) BOOL skipButtonActions;

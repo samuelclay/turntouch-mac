@@ -117,7 +117,7 @@ NSString *const kCustomDoubleKey = @"doubleCustomKey";
         hitCount += 1;
         [action changeActionOption:kSingleHitCount to:@(hitCount)];
         dispatch_async(dispatch_get_main_queue(), ^{
-            appDelegate.modeMap.inspectingModeDirection = appDelegate.modeMap.inspectingModeDirection;
+            self.appDelegate.modeMap.inspectingModeDirection = self.appDelegate.modeMap.inspectingModeDirection;
         });
     }];
 }
@@ -135,7 +135,7 @@ NSString *const kCustomDoubleKey = @"doubleCustomKey";
         hitCount += 1;
         [action changeActionOption:kDoubleHitCount to:@(hitCount)];
         dispatch_async(dispatch_get_main_queue(), ^{
-            appDelegate.modeMap.inspectingModeDirection = appDelegate.modeMap.inspectingModeDirection;
+            self.appDelegate.modeMap.inspectingModeDirection = self.appDelegate.modeMap.inspectingModeDirection;
         });
     }];
 }

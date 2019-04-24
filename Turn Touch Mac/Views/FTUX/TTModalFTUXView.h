@@ -11,12 +11,9 @@
 #import "TTPanelStates.h"
 #import "TTPageIndicatorView.h"
 
-@interface TTModalFTUXView : NSViewController {
-    TTAppDelegate *appDelegate;
-    TTModalFTUX modalFTUX;
-    NSMutableArray *indicatorViews;
-}
+@interface TTModalFTUXView : NSViewController
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic) IBOutlet NSBox *box;
 @property (nonatomic) IBOutlet NSTextField *labelTitle;
 @property (nonatomic) IBOutlet NSTextField *labelSubtitle;

@@ -14,12 +14,7 @@
 
 @class TTStatusItemView;
 
-@interface TTMenubarController : NSObject {
-
-@private
-    TTStatusItemView *_statusItemView;
-
-}
+@interface TTMenubarController : NSObject
 
 @property (nonatomic) BOOL hasActiveIcon;
 @property (nonatomic, strong, readonly) NSStatusItem *statusItem;

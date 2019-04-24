@@ -23,21 +23,9 @@ typedef enum TTDiamondType : NSUInteger {
     DIAMOND_TYPE_PAIRING
 } TTDiamondType;
 
-@interface TTDiamondView : NSView {
-    TTAppDelegate *appDelegate;
-    CGFloat _size;
-    BOOL _isHighlighted;
-    
-    NSBezierPath *northPathTop;
-    NSBezierPath *eastPathTop;
-    NSBezierPath *westPathTop;
-    NSBezierPath *southPathTop;
-    NSBezierPath *northPathBottom;
-    NSBezierPath *eastPathBottom;
-    NSBezierPath *westPathBottom;
-    NSBezierPath *southPathBottom;
-}
+@interface TTDiamondView : NSView
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic) TTDiamondType diamondType;
 @property (nonatomic, assign) CGFloat size;
 @property (nonatomic, assign) TTModeDirection overrideSelectedDirection;

@@ -9,11 +9,13 @@
 #import "TTMenubarController.h"
 #import "TTStatusItemView.h"
 
+@interface TTMenubarController ()
+
+@property (nonatomic, strong) TTStatusItemView *statusItemView;
+
+@end
+
 @implementation TTMenubarController
-
-@synthesize statusItemView = _statusItemView;
-
-#pragma mark -
 
 - (id)init
 {
@@ -22,8 +24,8 @@
     {
         // Install status item into the menu bar
         NSStatusItem *statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:STATUS_ITEM_VIEW_WIDTH];
-        _statusItemView = [[TTStatusItemView alloc] initWithStatusItem:statusItem];
-        _statusItemView.action = @selector(togglePanel:);
+        self.statusItemView = [[TTStatusItemView alloc] initWithStatusItem:statusItem];
+        self.statusItemView.action = @selector(togglePanel:);
     }
     return self;
 }

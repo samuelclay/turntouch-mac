@@ -16,18 +16,9 @@
 @class TTDiamondView;
 @class TTMode;
 
-@interface TTModeTab : NSView <NSMenuDelegate> {
-    TTAppDelegate *appDelegate;
-    TTModeDirection modeDirection;
-    TTDiamondView *diamondView;
-    TTMode *itemMode;
-    
-    NSString *modeTitle;
-    NSDictionary *modeAttributes;
-    CGSize textSize;
-    BOOL hoverActive;
-    BOOL mouseDownActive;
-}
+@interface TTModeTab : NSView <NSMenuDelegate>
+
+@property (nonatomic, strong) TTAppDelegate *appDelegate;
 
 - (id)initWithFrame:(NSRect)frame direction:(TTModeDirection)direction;
 

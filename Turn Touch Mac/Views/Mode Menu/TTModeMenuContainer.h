@@ -15,12 +15,9 @@
 @class TTAppDelegate;
 @class TTModeMenuCollectionView;
 
-@interface TTModeMenuContainer : NSView {
-    TTAppDelegate *appDelegate;
-    TTMenuType menuType;
-    NSScrollView *scrollView;
-}
+@interface TTModeMenuContainer : NSView
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic) TTModeMenuCollectionView *collectionView;
 @property (nonatomic) TTModeMenuBordersView *bordersView;
 

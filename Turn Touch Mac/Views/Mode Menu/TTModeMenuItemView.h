@@ -12,22 +12,9 @@
 
 @class TTAppDelegate;
 
-@interface TTModeMenuItemView : NSView {
-    TTAppDelegate *appDelegate;
-    TTMenuType menuType;
+@interface TTModeMenuItemView : NSView
 
-    TTMode *activeMode;
-    Class modeClass;
-    NSString *modeTitle;
-    NSImage *modeImage;
-    NSDictionary *modeAttributes;
-    CGSize textSize;
-
-
-    BOOL hoverActive;
-    BOOL mouseDownActive;
-}
-
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic) NSString *modeName;
 
 - (void)setModeName:(NSString *)_modeName;

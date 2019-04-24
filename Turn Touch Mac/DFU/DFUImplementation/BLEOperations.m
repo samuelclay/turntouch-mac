@@ -22,6 +22,7 @@
 
 #import "BLEOperations.h"
 #import "Utility.h"
+#import "CBPeripheral+Extras.h"
 
 @implementation BLEOperations
 
@@ -198,7 +199,7 @@ didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic
         NSLog(@"dfu control point charactistic notification");
         [self.bleDelegate onNotifyBeginForControlPoint];
     } else {
-        NSLog(@"ERROR: Subscribed to notifications: %@/%@", peripheral.identifier.UUIDString, characteristic.UUID.UUIDString);
+        NSLog(@"ERROR: Subscribed to notifications: %@/%@", peripheral.tt_identifierString, characteristic.UUID.UUIDString);
     }
 }
 

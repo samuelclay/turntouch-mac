@@ -11,12 +11,7 @@
 
 @class TTModeTab;
 
-@interface TTModeTabsContainer : NSView {
-    TTModeTab *northItem;
-    TTModeTab *eastItem;
-    TTModeTab *westItem;
-    TTModeTab *southItem;
-}
+@interface TTModeTabsContainer : NSView
 
 @property (nonatomic) TTModeTab *northItem;
 @property (nonatomic) TTModeTab *eastItem;

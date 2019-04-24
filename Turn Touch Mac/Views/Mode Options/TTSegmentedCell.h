@@ -9,12 +9,9 @@
 #import <Cocoa/Cocoa.h>
 #import "TTAppDelegate.h"
 
-@interface TTSegmentedCell : NSSegmentedCell {
-    TTAppDelegate *appDelegate;
-    NSDictionary *labelAttributes;
-    CGFloat radius;
-}
+@interface TTSegmentedCell : NSSegmentedCell
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property(assign) NSInteger highlightedSegment;
 
 @end

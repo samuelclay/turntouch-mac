@@ -30,9 +30,6 @@ NSString *const kDoubleTapRandomColors = @"doubleTapRandomColors";
 NSString *const kDoubleTapRandomBrightness = @"doubleTapRandomBrightness";
 NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 
-@synthesize delegate;
-@synthesize hueState;
-
 - (instancetype)init {
     if (self = [super init]) {
         [self initializeHue];
@@ -78,8 +75,8 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
                         forNotification:NO_LOCAL_AUTHENTICATION_NOTIFICATION];
     
     // No Hue found, show connection button
-    hueState = STATE_CONNECTING;
-    [self.delegate changeState:hueState withMode:self showMessage:@"Connecting..."];
+    self.hueState = STATE_CONNECTING;
+    [self.delegate changeState:self.hueState withMode:self showMessage:@"Connecting..."];
     
     [self enableLocalHeartbeat];
 }
@@ -517,9 +514,9 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
         [self showNoConnectionDialog];
     } else {
         // One of the connections is made, remove popups and loading views
-        if (hueState != STATE_CONNECTED) {
-            hueState = STATE_CONNECTED;
-            [self.delegate changeState:hueState withMode:self showMessage:nil];
+        if (self.hueState != STATE_CONNECTED) {
+            self.hueState = STATE_CONNECTED;
+            [self.delegate changeState:self.hueState withMode:self showMessage:nil];
             [self ensureScenes];
         }
     }
@@ -530,8 +527,8 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
  */
 - (void)showNoConnectionDialog {
     NSLog(@"Connection to bridge lost!");
-    hueState = STATE_NOT_CONNECTED;
-    [self.delegate changeState:hueState withMode:self showMessage:@"Connection to Hue bridge lost"];
+    self.hueState = STATE_NOT_CONNECTED;
+    [self.delegate changeState:self.hueState withMode:self showMessage:@"Connection to Hue bridge lost"];
 }
 
 /**
@@ -539,16 +536,16 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
  */
 - (void)showNoBridgesFoundDialog {
     NSLog(@"Could not find bridge!");
-    hueState = STATE_NOT_CONNECTED;
-    [self.delegate changeState:hueState withMode:self showMessage:@"Could not find any Hue bridges"];
+    self.hueState = STATE_NOT_CONNECTED;
+    [self.delegate changeState:self.hueState withMode:self showMessage:@"Could not find any Hue bridges"];
 }
 
 /**
  Shows the not authenticated alert
  */
 - (void)showNotAuthenticatedDialog{
-    hueState = STATE_NOT_CONNECTED;
-    [self.delegate changeState:hueState withMode:self showMessage:@"Pushlink button not pressed within 30 seconds"];
+    self.hueState = STATE_NOT_CONNECTED;
+    [self.delegate changeState:self.hueState withMode:self showMessage:@"Pushlink button not pressed within 30 seconds"];
     NSLog(@"Pushlink button not pressed within 30 sec!");
 }
 
@@ -562,8 +559,8 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     [self disableLocalHeartbeat];
     
     // Start search
-    hueState = STATE_CONNECTING;
-    [self.delegate changeState:hueState withMode:self showMessage:@"Searching for a Hue bridge..."];
+    self.hueState = STATE_CONNECTING;
+    [self.delegate changeState:self.hueState withMode:self showMessage:@"Searching for a Hue bridge..."];
     
     self.bridgeSearch = [[PHBridgeSearching alloc] initWithUpnpSearch:YES andPortalSearch:YES andIpAdressSearch:YES];
     [self.bridgeSearch startSearchWithCompletionHandler:^(NSDictionary *bridgesFound) {
@@ -573,8 +570,8 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
         
         // Check for results
         if (bridgesFound.count > 0) {
-            hueState = STATE_BRIDGE_SELECT;
-            [self.delegate changeState:hueState withMode:self showMessage:bridgesFound];
+            self.hueState = STATE_BRIDGE_SELECT;
+            [self.delegate changeState:self.hueState withMode:self showMessage:bridgesFound];
         }
         else {
             /***************************************************
@@ -589,8 +586,8 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 }
 
 - (void)bridgeSelectedWithIpAddress:(NSString *)ipAddress andBridgeId:(NSString *)bridgeId {
-    hueState = STATE_CONNECTING;
-    [self.delegate changeState:hueState withMode:self showMessage:@"Found Hue bridge..."];
+    self.hueState = STATE_CONNECTING;
+    [self.delegate changeState:self.hueState withMode:self showMessage:@"Found Hue bridge..."];
 //    NSString *macAddress = [[bridgesFound allKeys] objectAtIndex:1];
 //    NSString *ipAddress = [bridgesFound objectForKey:macAddress];
     [phHueSDK setBridgeToUseWithId:bridgeId ipAddress:ipAddress];
@@ -643,8 +640,8 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
      push link it. Here we display the view to do this.
      *****************************************************/
     
-    hueState = STATE_PUSHLINK;
-    [self.delegate changeState:hueState withMode:self showMessage:nil];
+    self.hueState = STATE_PUSHLINK;
+    [self.delegate changeState:self.hueState withMode:self showMessage:nil];
     
     /***************************************************
      Start the push linking process.
@@ -699,8 +696,8 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     // Deregister for all notifications
 //    [[PHNotificationManager defaultManager] deregisterObjectForAllNotifications:self];
     
-    hueState = STATE_CONNECTED;
-    [self.delegate changeState:hueState withMode:self showMessage:nil];
+    self.hueState = STATE_CONNECTED;
+    [self.delegate changeState:self.hueState withMode:self showMessage:nil];
     [self disableLocalHeartbeat];
     
     // Start local heartbeat
@@ -740,8 +737,8 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     NSDictionary *dict = notification.userInfo;
     NSNumber *progressPercentage = [dict objectForKey:@"progressPercentage"];
     
-    hueState = STATE_PUSHLINK;
-    [self.delegate changeState:hueState withMode:self showMessage:progressPercentage];
+    self.hueState = STATE_PUSHLINK;
+    [self.delegate changeState:self.hueState withMode:self showMessage:progressPercentage];
 }
 
 /**

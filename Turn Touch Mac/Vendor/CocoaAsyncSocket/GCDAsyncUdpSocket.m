@@ -15,6 +15,9 @@
 // For more information see: https://github.com/robbiehanson/CocoaAsyncSocket/wiki/ARC
 #endif
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wimplicit-retain-self"
+
 #if TARGET_OS_IPHONE
   #import <CFNetwork/CFNetwork.h>
   #import <UIKit/UIKit.h>
@@ -1963,7 +1966,7 @@ enum GCDAsyncUdpSocketConfig
 	flags |= kReceive6SourceSuspended;
 }
 
-- (BOOL)createSocket4:(BOOL)useIPv4 socket6:(BOOL)useIPv6 error:(NSError **)errPtr
+- (BOOL)createSocket4:(BOOL)useIPv4 socket6:(BOOL)useIPv6 error:(__autoreleasing NSError **)errPtr
 {
 	LogTrace();
 	
@@ -5506,3 +5509,6 @@ Failed:
 }
 
 @end
+
+#pragma clang diagnostic pop
+

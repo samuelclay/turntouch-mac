@@ -20,11 +20,9 @@ typedef enum {
     ACTION_LAYOUT_PROGRESSBAR = 2,
 } ActionLayout;
 
-@interface TTMode : NSObject <TTModeProtocol> {
-    TTAppDelegate *appDelegate;
-    TTModeDirection modeDirection;
-}
+@interface TTMode : NSObject <TTModeProtocol>
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic) TTModeDirection modeDirection;
 @property (nonatomic) TTAction *action;
 

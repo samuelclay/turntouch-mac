@@ -12,12 +12,6 @@
 
 extern NSString *const kSpotifyVolumeJump;
 
-@interface TTModeSpotify : TTMode {
-    NSInteger originalVolume;
-    CGFloat volumeFadeMultiplier;
-    NSTimer *volumeFadeTimer;
-    NSImageView *artworkImageView;
-    NSCache *artworkCache;
-}
+@interface TTModeSpotify : TTMode
 
 @end

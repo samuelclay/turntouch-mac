@@ -10,14 +10,9 @@
 #import "TTAppDelegate.h"
 #import "TTPanelStates.h"
 
-@interface TTPageIndicatorView : NSView {
-    TTAppDelegate *appDelegate;
-    TTModalFTUX modalFTUX;
-    NSTrackingArea *trackingArea;
-    BOOL highlighted;
-    BOOL selected;
-}
+@interface TTPageIndicatorView : NSView
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic) TTModalFTUX modalFTUX;
 
 @end

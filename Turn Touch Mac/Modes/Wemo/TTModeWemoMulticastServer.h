@@ -18,10 +18,7 @@
 @end
 
 
-@interface TTModeWemoMulticastServer : NSObject <GCDAsyncUdpSocketDelegate> {
-    GCDAsyncUdpSocket *udpSocket;
-    NSInteger attemptsLeft;
-}
+@interface TTModeWemoMulticastServer : NSObject <GCDAsyncUdpSocketDelegate>
 
 @property (nonatomic) id<TTModeWemoMulticastDelegate> delegate;
 

@@ -8,6 +8,16 @@
 
 #import "TTModeSpotify.h"
 
+@interface TTModeSpotify ()
+
+@property (nonatomic) NSInteger originalVolume;
+@property (nonatomic) CGFloat volumeFadeMultiplier;
+@property (nonatomic, strong) NSTimer *volumeFadeTimer;
+@property (nonatomic, strong) NSImageView *artworkImageView;
+@property (nonatomic, strong) NSCache *artworkCache;
+
+@end
+
 @implementation TTModeSpotify
 
 const NSInteger SPOTIFY_VOLUME_PCT_CHANGE = 6;
@@ -15,7 +25,7 @@ NSString *const kSpotifyVolumeJump = @"spotifyVolumeJump";
 
 - (instancetype)init {
     if (self = [super init]) {
-        artworkCache = [[NSCache alloc] init];
+        self.artworkCache = [[NSCache alloc] init];
     }
     return self;
 }
@@ -242,18 +252,18 @@ NSString *const kSpotifyVolumeJump = @"spotifyVolumeJump";
     NSInteger imageSize = rect.size.height - imageMargin*2;
     NSInteger infoX = imageMargin*2 + imageSize + imageMargin;
     NSInteger infoWidth = NSWidth(hudFrame) - infoX - imageMargin;
-    if (artworkImageView) {
-        [artworkImageView removeFromSuperview];
-        artworkImageView = nil;
+    if (self.artworkImageView) {
+        [self.artworkImageView removeFromSuperview];
+        self.artworkImageView = nil;
     }
-    artworkImageView = [[NSImageView alloc] initWithFrame:NSMakeRect(imageMargin, imageMargin, imageSize, imageSize)];
-    if ([artworkCache objectForKey:currentTrack.artworkUrl]) {
-        [artworkImageView setImage:[artworkCache objectForKey:currentTrack.artworkUrl]];
+    self.artworkImageView = [[NSImageView alloc] initWithFrame:NSMakeRect(imageMargin, imageMargin, imageSize, imageSize)];
+    if ([self.artworkCache objectForKey:currentTrack.artworkUrl]) {
+        [self.artworkImageView setImage:[self.artworkCache objectForKey:currentTrack.artworkUrl]];
     } else {
-        [artworkImageView setImage:songArtwork];
+        [self.artworkImageView setImage:songArtwork];
         [self loadImage:[NSURL URLWithString:currentTrack.artworkUrl]];
     }
-    [view addSubview:artworkImageView];
+    [view addSubview:self.artworkImageView];
     
     // Check if song playing
     if (!currentTrack.name) {
@@ -320,13 +330,13 @@ NSString *const kSpotifyVolumeJump = @"spotifyVolumeJump";
     NSData *imageData = [[NSData alloc] initWithContentsOfURL:imageURL];
     NSImage *image = [[NSImage alloc] initWithData:imageData];
     
-    [artworkCache setObject:image forKey:imageURL.absoluteString];
+    [self.artworkCache setObject:image forKey:imageURL.absoluteString];
     
     [self performSelectorOnMainThread:@selector(placeImageInUI:) withObject:image waitUntilDone:YES];
 }
 
 - (void)placeImageInUI:(NSImage *)image {
-    [artworkImageView setImage:image];
+    [self.artworkImageView setImage:image];
 }
 
 #pragma mark - Action methods
@@ -415,7 +425,7 @@ NSString *const kSpotifyVolumeJump = @"spotifyVolumeJump";
             NSLog(@"Spotify next: %d %@=%@", tries, current.name, originalTrack);
             if (![current.album isEqualToString:originalAlbum] || ![current.name isEqualToString:originalTrack]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [appDelegate.hudController toastActiveAction:actionName inDirection:direction];
+                    [self.appDelegate.hudController toastActiveAction:actionName inDirection:direction];
                 });
                 break;
             }
@@ -453,7 +463,7 @@ NSString *const kSpotifyVolumeJump = @"spotifyVolumeJump";
             }
             NSLog(@"Spotify next: %d > %d %@=%@=%@", tries, [originalAlbum isEqualToString:current.album], originalTrack, current.name, lastSeenTrack);
             dispatch_async(dispatch_get_main_queue(), ^{
-                [appDelegate.hudController toastDoubleAction:actionName inDirection:direction];
+                [self.appDelegate.hudController toastDoubleAction:actionName inDirection:direction];
             });
             lastSeenTrack = current.name;
         }
@@ -464,7 +474,7 @@ NSString *const kSpotifyVolumeJump = @"spotifyVolumeJump";
             NSLog(@"Spotify next: %d %@=%@", tries, current.album, originalAlbum);
             if (![current.album isEqualToString:originalAlbum]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [appDelegate.hudController toastActiveAction:actionName inDirection:direction];
+                    [self.appDelegate.hudController toastActiveAction:actionName inDirection:direction];
                 });
                 break;
             }
@@ -483,9 +493,9 @@ NSString *const kSpotifyVolumeJump = @"spotifyVolumeJump";
 
     NSInteger volume = spotify.soundVolume;
     NSInteger volumeJump = [[self.action optionValue:kSpotifyVolumeJump inDirection:direction] integerValue];
-    if (volume != volumeJump) originalVolume = volume;
+    if (volume != volumeJump) self.originalVolume = volume;
     
-    [spotify setSoundVolume:(volume == volumeJump ? originalVolume : volumeJump)];
+    [spotify setSoundVolume:(volume == volumeJump ? self.originalVolume : volumeJump)];
 }
 
 - (void)runTTModeSpotifySleep:(TTModeDirection)direction {
@@ -493,40 +503,40 @@ NSString *const kSpotifyVolumeJump = @"spotifyVolumeJump";
 
     NSInteger volume = spotify.soundVolume;
     NSInteger volumeJump = [[self.action optionValue:kSpotifyVolumeJump inDirection:direction] integerValue];
-    if (volume != volumeJump) originalVolume = volume;
-    originalVolume = volume;
-    [spotify setSoundVolume:(volume == volumeJump ? originalVolume : volumeJump)];
+    if (volume != volumeJump) self.originalVolume = volume;
+    self.originalVolume = volume;
+    [spotify setSoundVolume:(volume == volumeJump ? self.originalVolume : volumeJump)];
 }
 
 - (void)fadeVolumeDown {
     SpotifyApplication *spotify = [SBApplication applicationWithBundleIdentifier:@"com.spotify.client"];
 
-    volumeFadeMultiplier -= 1;
+    self.volumeFadeMultiplier -= 1;
     
-    [spotify setSoundVolume:volumeFadeMultiplier];
+    [spotify setSoundVolume:self.volumeFadeMultiplier];
     
-    if (volumeFadeTimer) {
-        [volumeFadeTimer invalidate];
+    if (self.volumeFadeTimer) {
+        [self.volumeFadeTimer invalidate];
     }
     
-    if (volumeFadeMultiplier <= 0.f) {
+    if (self.volumeFadeMultiplier <= 0.f) {
         NSLog(@"Done fading out volume.");
         if (spotify.playerState == SpotifyEPlSPlaying) {
             [spotify playpause];
         }
-        [spotify setSoundVolume:originalVolume];
+        [spotify setSoundVolume:self.originalVolume];
         return;
     }
     
     NSDate *volumeBumpDate = [[NSDate date] dateByAddingTimeInterval:(10)/100.f];
     NSRunLoop *runner = [NSRunLoop currentRunLoop];
-    volumeFadeTimer = [[NSTimer alloc] initWithFireDate:volumeBumpDate
+    self.volumeFadeTimer = [[NSTimer alloc] initWithFireDate:volumeBumpDate
                                                interval:0.f
                                                  target:self
                                                selector:@selector(fadeVolumeDown)
                                                userInfo:nil repeats:NO];
-    [runner addTimer:volumeFadeTimer forMode: NSDefaultRunLoopMode];
-    NSLog(@"Bumping volume: %f", volumeFadeMultiplier);
+    [runner addTimer:self.volumeFadeTimer forMode: NSDefaultRunLoopMode];
+    NSLog(@"Bumping volume: %f", self.volumeFadeMultiplier);
 }
 
 @end

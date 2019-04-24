@@ -9,10 +9,9 @@
 #import <Cocoa/Cocoa.h>
 #import "TTAppDelegate.h"
 
-@interface TTModalAbout : NSViewController {
-    TTAppDelegate *appDelegate;
-}
+@interface TTModalAbout : NSViewController
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic) IBOutlet NSTextField *versionLabel;
 
 - (IBAction)closeModal:(id)sender;

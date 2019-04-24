@@ -17,14 +17,9 @@
 @class TTHUDMenuView;
 @class TTHUDBackgroundView;
 
-@interface TTModeHUDWindowController : NSWindowController <NSWindowDelegate, TTHUDMenuDelegate> {
-    TTAppDelegate *appDelegate;
-    TTModeHUDView *hudView;
-    TTModeHUDWindow *hudWindow;
-    
-    BOOL isFading;
-}
+@interface TTModeHUDWindowController : NSWindowController <NSWindowDelegate, TTHUDMenuDelegate>
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic) IBOutlet TTModeHUDView *hudView;
 @property (nonatomic) IBOutlet TTHUDBackgroundView *backgroundView;
 @property (nonatomic) IBOutlet TTModeHUDWindow *hudWindow;

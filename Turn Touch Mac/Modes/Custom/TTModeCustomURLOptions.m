@@ -15,102 +15,91 @@
 
 @implementation TTModeCustomURLOptions
 
-@synthesize singleUrl;
-@synthesize singleImage;
-@synthesize singleLabel;
-@synthesize singleRefresh;
-@synthesize singleSpinner;
-@synthesize doubleUrl;
-@synthesize doubleImage;
-@synthesize doubleLabel;
-@synthesize doubleRefresh;
-@synthesize doubleSpinner;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     NSString *singleCustomUrl = [self.action optionValue:kSingleCustomUrl
-                                             inDirection:appDelegate.modeMap.inspectingModeDirection];
+                                             inDirection:self.appDelegate.modeMap.inspectingModeDirection];
     NSString *doubleCustomUrl = [self.action optionValue:kDoubleCustomUrl
-                                             inDirection:appDelegate.modeMap.inspectingModeDirection];
+                                             inDirection:self.appDelegate.modeMap.inspectingModeDirection];
     if (singleCustomUrl) {
-        [singleUrl setStringValue:singleCustomUrl];
+        [self.singleUrl setStringValue:singleCustomUrl];
     }
     if (doubleCustomUrl) {
-        [doubleUrl setStringValue:doubleCustomUrl];
+        [self.doubleUrl setStringValue:doubleCustomUrl];
     }
     
-    singleSpinner.hidden = YES;
-    doubleSpinner.hidden = YES;
+    self.singleSpinner.hidden = YES;
+    self.doubleSpinner.hidden = YES;
     
     BOOL singleLastSuccess = [[self.action optionValue:kSingleLastSuccess
-                                          inDirection:appDelegate.modeMap.inspectingModeDirection] boolValue];
+                                          inDirection:self.appDelegate.modeMap.inspectingModeDirection] boolValue];
     BOOL doubleLastSuccess = [[self.action optionValue:kDoubleLastSuccess
-                                          inDirection:appDelegate.modeMap.inspectingModeDirection] boolValue];
+                                          inDirection:self.appDelegate.modeMap.inspectingModeDirection] boolValue];
     
     if ([self.action optionValue:kSingleLastSuccess
-                     inDirection:appDelegate.modeMap.inspectingModeDirection] != nil) {
-        singleImage.hidden = NO;
+                     inDirection:self.appDelegate.modeMap.inspectingModeDirection] != nil) {
+        self.singleImage.hidden = NO;
         if (singleLastSuccess) {
-            singleImage.image = [NSImage imageNamed:@"modal_success"];
+            self.singleImage.image = [NSImage imageNamed:@"modal_success"];
         } else {
-            singleImage.image = [NSImage imageNamed:@"modal_failure"];
+            self.singleImage.image = [NSImage imageNamed:@"modal_failure"];
         }
     } else {
-        singleImage.hidden = YES;
+        self.singleImage.hidden = YES;
     }
     
     if ([self.action optionValue:kDoubleLastSuccess
-                     inDirection:appDelegate.modeMap.inspectingModeDirection] != nil) {
-        doubleImage.hidden = NO;
+                     inDirection:self.appDelegate.modeMap.inspectingModeDirection] != nil) {
+        self.doubleImage.hidden = NO;
         if (doubleLastSuccess) {
-            doubleImage.image = [NSImage imageNamed:@"modal_success"];
+            self.doubleImage.image = [NSImage imageNamed:@"modal_success"];
         } else {
-            doubleImage.image = [NSImage imageNamed:@"modal_failure"];
+            self.doubleImage.image = [NSImage imageNamed:@"modal_failure"];
         }
     } else {
-        doubleImage.hidden = YES;
+        self.doubleImage.hidden = YES;
     }
     
     NSInteger singleHitCount = [[self.action optionValue:kSingleHitCount
-                                             inDirection:appDelegate.modeMap.inspectingModeDirection] integerValue];
+                                             inDirection:self.appDelegate.modeMap.inspectingModeDirection] integerValue];
     NSInteger doubleHitCount = [[self.action optionValue:kDoubleHitCount
-                                             inDirection:appDelegate.modeMap.inspectingModeDirection] integerValue];
+                                             inDirection:self.appDelegate.modeMap.inspectingModeDirection] integerValue];
     if (singleHitCount == 1) {
-        singleLabel.stringValue = @"Hit 1 time";
-        singleLabel.textColor = [NSColor blackColor];
+        self.singleLabel.stringValue = @"Hit 1 time";
+        self.singleLabel.textColor = [NSColor blackColor];
     } else if (singleHitCount > 1) {
-        singleLabel.stringValue = [NSString stringWithFormat:@"Hit %ld times", (long)singleHitCount];
-        singleLabel.textColor = [NSColor blackColor];
+        self.singleLabel.stringValue = [NSString stringWithFormat:@"Hit %ld times", (long)singleHitCount];
+        self.singleLabel.textColor = [NSColor blackColor];
     } else {
-        singleLabel.stringValue = @"Not yet hit";
-        singleLabel.textColor = [NSColor lightGrayColor];
+        self.singleLabel.stringValue = @"Not yet hit";
+        self.singleLabel.textColor = [NSColor lightGrayColor];
     }
     if (doubleHitCount == 1) {
-        doubleLabel.stringValue = @"Hit 1 time";
-        doubleLabel.textColor = [NSColor blackColor];
+        self.doubleLabel.stringValue = @"Hit 1 time";
+        self.doubleLabel.textColor = [NSColor blackColor];
     } else if (doubleHitCount > 1) {
-        doubleLabel.stringValue = [NSString stringWithFormat:@"Hit %ld times", (long)doubleHitCount];
-        doubleLabel.textColor = [NSColor blackColor];
+        self.doubleLabel.stringValue = [NSString stringWithFormat:@"Hit %ld times", (long)doubleHitCount];
+        self.doubleLabel.textColor = [NSColor blackColor];
     } else {
-        doubleLabel.stringValue = @"Not yet hit";
-        doubleLabel.textColor = [NSColor lightGrayColor];
+        self.doubleLabel.stringValue = @"Not yet hit";
+        self.doubleLabel.textColor = [NSColor lightGrayColor];
     }
 }
 
 - (IBAction)changeUrl:(id)sender {
     NSString *originalSingleUrl = [self.action optionValue:kSingleCustomUrl
-                                               inDirection:appDelegate.modeMap.inspectingModeDirection];
+                                               inDirection:self.appDelegate.modeMap.inspectingModeDirection];
     NSString *originalDoubleUrl = [self.action optionValue:kDoubleCustomUrl
-                                               inDirection:appDelegate.modeMap.inspectingModeDirection];
+                                               inDirection:self.appDelegate.modeMap.inspectingModeDirection];
     
-    if (originalSingleUrl == nil || ![originalSingleUrl isEqualToString:singleUrl.stringValue]) {
-        [self.action changeActionOption:kSingleCustomUrl to:singleUrl.stringValue];
+    if (originalSingleUrl == nil || ![originalSingleUrl isEqualToString:self.singleUrl.stringValue]) {
+        [self.action changeActionOption:kSingleCustomUrl to:self.singleUrl.stringValue];
         [self.action changeActionOption:kSingleHitCount to:@(0)];
         [self.action changeActionOption:kSingleLastSuccess to:nil];
     }
-    if (originalDoubleUrl == nil || ![originalDoubleUrl isEqualToString:doubleUrl.stringValue]) {
-        [self.action changeActionOption:kDoubleCustomUrl to:doubleUrl.stringValue];
+    if (originalDoubleUrl == nil || ![originalDoubleUrl isEqualToString:self.doubleUrl.stringValue]) {
+        [self.action changeActionOption:kDoubleCustomUrl to:self.doubleUrl.stringValue];
         [self.action changeActionOption:kDoubleHitCount to:@(0)];
         [self.action changeActionOption:kDoubleLastSuccess to:nil];
     }
@@ -119,23 +108,23 @@
 - (IBAction)hitRefreshSingle:(id)sender {
     [self changeUrl:nil];
     
-    singleRefresh.hidden = YES;
-    singleSpinner.hidden = NO;
-    [singleSpinner startAnimation:nil];
+    self.singleRefresh.hidden = YES;
+    self.singleSpinner.hidden = NO;
+    [self.singleSpinner startAnimation:nil];
     
     TTModeCustom *customMode = (TTModeCustom *)self.mode;
-    [customMode runTTModeCustomURL:appDelegate.modeMap.inspectingModeDirection];
+    [customMode runTTModeCustomURL:self.appDelegate.modeMap.inspectingModeDirection];
 }
 
 - (IBAction)hitRefreshDouble:(id)sender {
     [self changeUrl:nil];
 
-    doubleRefresh.hidden = YES;
-    doubleSpinner.hidden = NO;
-    [doubleSpinner startAnimation:nil];
+    self.doubleRefresh.hidden = YES;
+    self.doubleSpinner.hidden = NO;
+    [self.doubleSpinner startAnimation:nil];
     
     TTModeCustom *customMode = (TTModeCustom *)self.mode;
-    [customMode doubleRunTTModeCustomURL:appDelegate.modeMap.inspectingModeDirection];
+    [customMode doubleRunTTModeCustomURL:self.appDelegate.modeMap.inspectingModeDirection];
 }
 
 - (void)controlTextDidChange:(NSNotification *)obj {

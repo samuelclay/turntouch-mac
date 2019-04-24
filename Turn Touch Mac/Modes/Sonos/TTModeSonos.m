@@ -16,8 +16,6 @@ NSString *const kSonosCachedDevices = @"TT:Sonos:sonosCachedDevices";
 static TTSonosState sonosState;
 static SonosManager *sonosManager;
 
-@synthesize delegate;
-
 - (instancetype)init {
     if (self = [super init]) {
         [self.delegate changeState:TTModeSonos.sonosState withMode:self];
@@ -174,7 +172,7 @@ static SonosManager *sonosManager;
         TTModeSonos.sonosState = SONOS_STATE_CONNECTED;
     }
     
-    [delegate changeState:TTModeSonos.sonosState withMode:self];
+    [self.delegate changeState:TTModeSonos.sonosState withMode:self];
 }
 
 - (void)adjustVolume:(SonosController *)device volume:(NSInteger)volume left:(NSInteger)left {
@@ -302,7 +300,7 @@ static SonosManager *sonosManager;
     NSArray *devices = [self foundDevices];
     if (devices.count == 0) return nil;
     
-    NSString *deviceId = [appDelegate.modeMap mode:self.action.mode optionValue:kSonosDeviceId];
+    NSString *deviceId = [self.appDelegate.modeMap mode:self.action.mode optionValue:kSonosDeviceId];
     for (SonosController *foundDevice in devices) {
         if ([foundDevice.uuid isEqualToString:deviceId]) {
             // Find the coordinator in the same group as the device

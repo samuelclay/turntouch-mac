@@ -11,34 +11,30 @@
 #import "TTModeNewsStoryView.h"
 #import "TTNewsBlurFeed.h"
 
+@interface TTModeNewsBrowserView ()
+
+@property (nonatomic) NSInteger page;
+
+@end
+
 @implementation TTModeNewsBrowserView
 
-@synthesize stackOffsetConstraint;
-@synthesize storyStack;
-@synthesize zoomFactor;
-@synthesize textSize;
-@synthesize currentStoryIndex;
-@synthesize storyCount;
-@synthesize storyViews;
-@synthesize storyWidth;
-@synthesize feeds;
-
 - (void)awakeFromNib {
-    appDelegate = (TTAppDelegate *)[NSApp delegate];
+    self.appDelegate = (TTAppDelegate *)[NSApp delegate];
 
-    zoomFactor = 2.3f;
-    textSize = [[appDelegate.modeMap modeOptionValue:@"fontSize"] integerValue];
-    storyWidth = [[appDelegate.modeMap modeOptionValue:@"browserWidth"] integerValue];
-    if (storyWidth <= 100) {
+    self.zoomFactor = 2.3f;
+    self.textSize = [[self.appDelegate.modeMap modeOptionValue:@"fontSize"] integerValue];
+    self.storyWidth = [[self.appDelegate.modeMap modeOptionValue:@"browserWidth"] integerValue];
+    if (self.storyWidth <= 100) {
         NSScreen *mainScreen = [[NSScreen screens] objectAtIndex:0];
-        storyWidth = NSWidth(mainScreen.frame) / 2.5f;
+        self.storyWidth = NSWidth(mainScreen.frame) / 2.5f;
     }
-    page = 0;
-    currentStoryIndex = 0;
+    self.page = 0;
+    self.currentStoryIndex = 0;
     
-    storyViews = [NSMutableArray array];
+    self.storyViews = [NSMutableArray array];
     self.translatesAutoresizingMaskIntoConstraints = NO;
-    storyStack.translatesAutoresizingMaskIntoConstraints = NO;
+    self.storyStack.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self showLoadingStories];
 }
@@ -49,11 +45,11 @@
 
 - (void)showLoadingStories {
     TTModeNewsStoryView *storyView = [[TTModeNewsStoryView alloc] init];
-    [storyViews addObject:storyView];
+    [self.storyViews addObject:storyView];
     storyView.storyIndex = 0;
-    storyCount = 1;
-    [storyStack addView:storyView inGravity:NSStackViewGravityLeading];
-    [storyStack addConstraint:[NSLayoutConstraint constraintWithItem:storyView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1. constant:storyWidth]];
+    self.storyCount = 1;
+    [self.storyStack addView:storyView inGravity:NSStackViewGravityLeading];
+    [self.storyStack addConstraint:[NSLayoutConstraint constraintWithItem:storyView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1. constant:self.storyWidth]];
     [storyView showLoadingView];
 
     NSScreen *mainScreen = [[NSScreen screens] objectAtIndex:0];
@@ -64,49 +60,49 @@
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
     
-    CGFloat offset = NSWidth(mainScreen.frame)/2 - currentStoryIndex*(storyWidth+64) - storyWidth/2;
-    [stackOffsetConstraint animator].constant = offset;
+    CGFloat offset = NSWidth(mainScreen.frame)/2 - self.currentStoryIndex*(self.storyWidth+64) - self.storyWidth/2;
+    [self.stackOffsetConstraint animator].constant = offset;
     [NSAnimationContext endGrouping];
 }
 
 - (void)addFeeds:(NSArray *)newFeeds {
-    if (!feeds) feeds = [NSMutableDictionary dictionary];
+    if (!self.feeds) self.feeds = [NSMutableDictionary dictionary];
     
     for (NSDictionary *feedDict in newFeeds) {
         TTNewsBlurFeed *feed = [[TTNewsBlurFeed alloc] initWithFeed:feedDict];
-        [feeds setObject:feed forKey:feed.feedId];
+        [self.feeds setObject:feed forKey:feed.feedId];
     }
 }
 
 - (void)addStories:(NSArray *)stories {
-    if (page == 0) {
-        for (NSView *view in [storyStack viewsInGravity:NSStackViewGravityLeading]) {
-            [storyStack removeView:view];
+    if (self.page == 0) {
+        for (NSView *view in [self.storyStack viewsInGravity:NSStackViewGravityLeading]) {
+            [self.storyStack removeView:view];
         }
-        storyCount = 0;
-        [storyStack removeConstraints:storyStack.constraints];
-        storyViews = [NSMutableArray array];
+        self.storyCount = 0;
+        [self.storyStack removeConstraints:self.storyStack.constraints];
+        self.storyViews = [NSMutableArray array];
     }
     
-    page += 1;
+    self.page += 1;
     
     for (int i=0; i < stories.count; i++) {
         TTNewsBlurStory *story = [[TTNewsBlurStory alloc] initWithStory:[stories objectAtIndex:i]];
-        story.feed = [feeds objectForKey:story.feedId];
-        TTModeNewsStoryView *storyView = [[TTModeNewsStoryView alloc] initWithFrame:NSMakeRect(0, 0, storyWidth, NSHeight(self.frame))];
-        [storyViews addObject:storyView];
+        story.feed = [self.feeds objectForKey:story.feedId];
+        TTModeNewsStoryView *storyView = [[TTModeNewsStoryView alloc] initWithFrame:NSMakeRect(0, 0, self.storyWidth, NSHeight(self.frame))];
+        [self.storyViews addObject:storyView];
         storyView.storyIndex = i;
         storyView.story = story;
-        storyCount += 1;
-        [storyStack addView:storyView inGravity:NSStackViewGravityLeading];
-        [storyStack addConstraint:[NSLayoutConstraint constraintWithItem:storyView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1. constant:storyWidth]];
+        self.storyCount += 1;
+        [self.storyStack addView:storyView inGravity:NSStackViewGravityLeading];
+        [self.storyStack addConstraint:[NSLayoutConstraint constraintWithItem:storyView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1. constant:self.storyWidth]];
         [storyView loadStory];
     }
     
 //    NSScreen *mainScreen = [[NSScreen screens] objectAtIndex:0];
 //    stackOffsetConstraint.constant = NSWidth(mainScreen.frame)/2 - currentStoryIndex*(storyWidth+64) - storyWidth/2;
     
-    TTModeNewsStoryView *activeStory = [storyViews objectAtIndex:currentStoryIndex];
+    TTModeNewsStoryView *activeStory = [self.storyViews objectAtIndex:self.currentStoryIndex];
     [activeStory focusStory];
 }
 
@@ -121,9 +117,9 @@
 }
 
 - (void)changeStory:(NSInteger)diff {
-    if (currentStoryIndex + diff < 0) return;
-    if (currentStoryIndex + diff >= storyViews.count) return;
-    currentStoryIndex += diff;
+    if (self.currentStoryIndex + diff < 0) return;
+    if (self.currentStoryIndex + diff >= self.storyViews.count) return;
+    self.currentStoryIndex += diff;
     
     NSScreen *mainScreen = [[NSScreen screens] objectAtIndex:0];
     CGFloat openDuration = 0.65f;// * 5;
@@ -134,50 +130,50 @@
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
     
-    CGFloat offset = NSWidth(mainScreen.frame)/2 - currentStoryIndex*(storyWidth+64) - storyWidth/2;
-    [stackOffsetConstraint animator].constant = offset;
+    CGFloat offset = NSWidth(mainScreen.frame)/2 - self.currentStoryIndex*(self.storyWidth+64) - self.storyWidth/2;
+    [self.stackOffsetConstraint animator].constant = offset;
     
     [NSAnimationContext endGrouping];
-    NSLog(@"> stackOffsetConstraint: %f/%f", stackOffsetConstraint.constant, offset);
+    NSLog(@"> stackOffsetConstraint: %f/%f", self.stackOffsetConstraint.constant, offset);
     
     [self setNeedsUpdateConstraints:YES];
     
-    if (currentStoryIndex-diff >= 0 && storyViews.count > 1) {
-        TTModeNewsStoryView *oldStory = [storyViews objectAtIndex:currentStoryIndex-diff];
+    if (self.currentStoryIndex-diff >= 0 && self.storyViews.count > 1) {
+        TTModeNewsStoryView *oldStory = [self.storyViews objectAtIndex:self.currentStoryIndex-diff];
         [oldStory blurStory];
     }
-    if (currentStoryIndex >= 0 && storyViews.count > 1) {
-        TTModeNewsStoryView *activeStory = [storyViews objectAtIndex:currentStoryIndex];
+    if (self.currentStoryIndex >= 0 && self.storyViews.count > 1) {
+        TTModeNewsStoryView *activeStory = [self.storyViews objectAtIndex:self.currentStoryIndex];
         [activeStory focusStory];
     }
 }
 
 - (void)zoomIn {
-    zoomFactor += 0.05;
+    self.zoomFactor += 0.05;
     
-    NSLog(@" ---> Zoom factor: %f", zoomFactor);
+    NSLog(@" ---> Zoom factor: %f", self.zoomFactor);
 }
 
 - (void)zoomOut {
-    zoomFactor -= 0.05;
+    self.zoomFactor -= 0.05;
 
-    NSLog(@" ---> Zoom factor: %f", zoomFactor);
+    NSLog(@" ---> Zoom factor: %f", self.zoomFactor);
 }
 
 - (void)increaseFontSize {
-    NSInteger fontSize = [[appDelegate.modeMap modeOptionValue:@"fontSize"] integerValue];
-    [appDelegate.modeMap changeModeOption:@"fontSize" to:[NSNumber numberWithInteger:MIN(4, fontSize+1)]];
+    NSInteger fontSize = [[self.appDelegate.modeMap modeOptionValue:@"fontSize"] integerValue];
+    [self.appDelegate.modeMap changeModeOption:@"fontSize" to:[NSNumber numberWithInteger:MIN(4, fontSize+1)]];
     
-    for (TTModeNewsStoryView *storyView in storyViews) {
+    for (TTModeNewsStoryView *storyView in self.storyViews) {
         [storyView adjustFontSize];
     }
 }
 
 - (void)decreaseFontSize {
-    NSInteger fontSize = [[appDelegate.modeMap modeOptionValue:@"fontSize"] integerValue];
-    [appDelegate.modeMap changeModeOption:@"fontSize" to:[NSNumber numberWithInteger:MAX(0, fontSize-1)]];
+    NSInteger fontSize = [[self.appDelegate.modeMap modeOptionValue:@"fontSize"] integerValue];
+    [self.appDelegate.modeMap changeModeOption:@"fontSize" to:[NSNumber numberWithInteger:MAX(0, fontSize-1)]];
     
-    for (TTModeNewsStoryView *storyView in storyViews) {
+    for (TTModeNewsStoryView *storyView in self.storyViews) {
         [storyView adjustFontSize];
     }
 }
@@ -189,27 +185,27 @@
     [[NSAnimationContext currentContext] setDuration:.26f];
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
-    storyWidth += 125;
+    self.storyWidth += 125;
 //    [self changeStory:0];
-    CGFloat offset = NSWidth(mainScreen.frame)/2 - currentStoryIndex*(storyWidth+64) - storyWidth/2;
-    [stackOffsetConstraint animator].constant = offset;
-    for (NSLayoutConstraint *constraint in storyStack.constraints) {
+    CGFloat offset = NSWidth(mainScreen.frame)/2 - self.currentStoryIndex*(self.storyWidth+64) - self.storyWidth/2;
+    [self.stackOffsetConstraint animator].constant = offset;
+    for (NSLayoutConstraint *constraint in self.storyStack.constraints) {
         if (constraint.firstAttribute == NSLayoutAttributeWidth) {
-            [constraint animator].constant = storyWidth;
+            [constraint animator].constant = self.storyWidth;
         }
     }
 //    [[widthConstraint animator] setConstant:widthConstraint.constant+125];
     [NSAnimationContext endGrouping];
     
-    for (TTModeNewsStoryView *storyView in storyViews) {
-        [storyView adjustSize:storyWidth];
+    for (TTModeNewsStoryView *storyView in self.storyViews) {
+        [storyView adjustSize:self.storyWidth];
     }
     
-    [appDelegate.modeMap changeModeOption:@"browserWidth" to:[NSNumber numberWithInteger:storyWidth]];
+    [self.appDelegate.modeMap changeModeOption:@"browserWidth" to:[NSNumber numberWithInteger:self.storyWidth]];
 }
 
 - (void)narrowStory {
-    if (storyWidth <= 400) return;
+    if (self.storyWidth <= 400) return;
     
     NSScreen *mainScreen = [[NSScreen screens] objectAtIndex:0];
 
@@ -217,32 +213,32 @@
     [[NSAnimationContext currentContext] setDuration:.26f];
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
-    storyWidth -= 125;
+    self.storyWidth -= 125;
 //    [self changeStory:0];
-    CGFloat offset = NSWidth(mainScreen.frame)/2 - currentStoryIndex*(storyWidth+64) - storyWidth/2;
-    [stackOffsetConstraint animator].constant = offset;
-    for (NSLayoutConstraint *constraint in storyStack.constraints) {
+    CGFloat offset = NSWidth(mainScreen.frame)/2 - self.currentStoryIndex*(self.storyWidth+64) - self.storyWidth/2;
+    [self.stackOffsetConstraint animator].constant = offset;
+    for (NSLayoutConstraint *constraint in self.storyStack.constraints) {
         if (constraint.firstAttribute == NSLayoutAttributeWidth) {
-            [constraint animator].constant = storyWidth;
+            [constraint animator].constant = self.storyWidth;
         }
     }
 //    [[widthConstraint animator] setConstant:widthConstraint.constant-125];
     [NSAnimationContext endGrouping];
 
-    for (TTModeNewsStoryView *storyView in storyViews) {
-        [storyView adjustSize:storyWidth];
+    for (TTModeNewsStoryView *storyView in self.storyViews) {
+        [storyView adjustSize:self.storyWidth];
     }
     
-    [appDelegate.modeMap changeModeOption:@"browserWidth" to:[NSNumber numberWithInteger:storyWidth]];
+    [self.appDelegate.modeMap changeModeOption:@"browserWidth" to:[NSNumber numberWithInteger:self.storyWidth]];
 }
 
 - (void)scrollUp {
-    TTModeNewsStoryView *activeStoryView = [storyViews objectAtIndex:currentStoryIndex];
+    TTModeNewsStoryView *activeStoryView = [self.storyViews objectAtIndex:self.currentStoryIndex];
     [activeStoryView scrollUp];
 }
 
 - (void)scrollDown {
-    TTModeNewsStoryView *activeStoryView = [storyViews objectAtIndex:currentStoryIndex];
+    TTModeNewsStoryView *activeStoryView = [self.storyViews objectAtIndex:self.currentStoryIndex];
     [activeStoryView scrollDown];
 }
 

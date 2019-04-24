@@ -8,6 +8,12 @@
 
 #import "TTModeHUDWindow.h"
 
+@interface TTModeHUDWindow ()
+
+@property (nonatomic, strong) NSVisualEffectView *visualEffectView;
+
+@end
+
 @implementation TTModeHUDWindow
 
 - (instancetype)initWithContentRect:(NSRect)contentRect

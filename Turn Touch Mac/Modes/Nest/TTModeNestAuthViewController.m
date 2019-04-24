@@ -20,21 +20,19 @@
 
 @interface TTModeNestAuthViewController ()
 
+@property (nonatomic, strong) NSTimer *checkTokenTimer;
+
 @end
 
 @implementation TTModeNestAuthViewController
 
-@synthesize webView;
-@synthesize modeNest;
-@synthesize authPopover;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    appDelegate = (TTAppDelegate *)[NSApp delegate];
+    self.appDelegate = (TTAppDelegate *)[NSApp delegate];
     
-    [webView setMainFrameURL:self.authURL];
-    [webView setResourceLoadDelegate:self];
+    [self.webView setMainFrameURL:self.authURL];
+    [self.webView setResourceLoadDelegate:self];
 }
 
 - (NSString *)authURL {
@@ -54,14 +52,14 @@
     // Check for the access token every second and once we have it leave this page
     [self setupCheckTokenTimer];
     
-    [modeNest beginConnectingToNest];
+    [self.modeNest beginConnectingToNest];
 }
 
 - (void)invalidateTimer
 {
-    if ([checkTokenTimer isValid]) {
-        [checkTokenTimer invalidate];
-        checkTokenTimer = nil;
+    if ([self.checkTokenTimer isValid]) {
+        [self.checkTokenTimer invalidate];
+        self.checkTokenTimer = nil;
     }
 }
 
@@ -71,7 +69,7 @@
 - (void)setupCheckTokenTimer
 {
     [self invalidateTimer];
-    checkTokenTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self
+    self.checkTokenTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self
                                                      selector:@selector(checkForAccessToken:)
                                                      userInfo:nil repeats:YES];
 }
@@ -85,9 +83,9 @@
 {
     if ([[NestAuthManager sharedManager] isValidSession]) {
         [self invalidateTimer];
-        [authPopover close];
-        [modeNest loadNestStructures];
-        [modeNest subscribeToThermostat:0];
+        [self.authPopover close];
+        [self.modeNest loadNestStructures];
+        [self.modeNest subscribeToThermostat:0];
     }
 }
 

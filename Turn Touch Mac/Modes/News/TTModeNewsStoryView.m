@@ -11,20 +11,18 @@
 #import "TTNewsBlurUtilities.h"
 #import "TTModeNewsFeedView.h"
 
-@implementation TTModeNewsStoryView
+@interface TTModeNewsStoryView ()
 
-@synthesize appDelegate;
-@synthesize browserView;
-@synthesize webView;
-@synthesize storyIndex;
-@synthesize story;
-@synthesize loadingURL;
-@synthesize loadingHTML;
-@synthesize mode;
+@property (nonatomic, strong) TTPairingSpinner *loadingSpinner;
+@property (nonatomic) BOOL inTextView;
+
+@end
+
+@implementation TTModeNewsStoryView
 
 - (instancetype)initWithFrame:(NSRect)frameRect {
     if (self = [super initWithFrame:frameRect]) {
-        appDelegate = (TTAppDelegate *)[NSApp delegate];
+        self.appDelegate = (TTAppDelegate *)[NSApp delegate];
         self.translatesAutoresizingMaskIntoConstraints = NO;
 
         self.wantsLayer = YES;
@@ -32,24 +30,24 @@
         self.layer.backgroundColor = CGColorCreateGenericRGB(1, 1, 1, 1);
         self.layer.opacity = 0.1;
         
-        webView = [[WebView alloc] init];
-        webView.translatesAutoresizingMaskIntoConstraints = NO;
-        webView.resourceLoadDelegate = self;
+        self.webView = [[WebView alloc] init];
+        self.webView.translatesAutoresizingMaskIntoConstraints = NO;
+        self.webView.resourceLoadDelegate = self;
         
 //        webView.drawsBackground = NO;
-        [self addSubview:webView];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:webView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1. constant:0]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:webView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1. constant:0]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:webView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1. constant:0]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:webView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:1. constant:0]];
+        [self addSubview:self.webView];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1. constant:0]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1. constant:0]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1. constant:0]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:1. constant:0]];
 
-        loadingSpinner = [[TTPairingSpinner alloc] init];
-        loadingSpinner.translatesAutoresizingMaskIntoConstraints = NO;
-        [self addSubview:loadingSpinner];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:loadingSpinner attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1. constant:-64]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:loadingSpinner attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1. constant:0]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:loadingSpinner attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1. constant:64]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:loadingSpinner attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1. constant:64]];
+        self.loadingSpinner = [[TTPairingSpinner alloc] init];
+        self.loadingSpinner.translatesAutoresizingMaskIntoConstraints = NO;
+        [self addSubview:self.loadingSpinner];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.loadingSpinner attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1. constant:-64]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.loadingSpinner attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1. constant:0]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.loadingSpinner attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1. constant:64]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.loadingSpinner attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1. constant:64]];
     }
     
     return self;
@@ -61,7 +59,7 @@
 }
 
 - (void)showLoadingView {
-    loadingSpinner.hidden = NO;
+    self.loadingSpinner.hidden = NO;
 }
 
 - (void)blurStory {
@@ -88,22 +86,22 @@
 }
 
 - (void)adjustSize {
-    [webView stringByEvaluatingJavaScriptFromString:@"resizeWindow();"];
+    [self.webView stringByEvaluatingJavaScriptFromString:@"resizeWindow();"];
 }
 
 - (void)adjustSize:(CGFloat)width {
-    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"resizeWindow(%f);", width]];
+    [self.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"resizeWindow(%f);", width]];
 }
 
 - (void)adjustFontSize {
-    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"adjustFontSize(\"%@\")", [self fontSize]]];
+    [self.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"adjustFontSize(\"%@\")", [self fontSize]]];
 }
 
 #pragma mark - Customizations
 
 - (NSString *)fontSize {
     NSString *fontSize;
-    switch ([[appDelegate.modeMap modeOptionValue:@"fontSize"] integerValue]) {
+    switch ([[self.appDelegate.modeMap modeOptionValue:@"fontSize"] integerValue]) {
         case 0:
             fontSize = @"xs";
             break;
@@ -129,7 +127,7 @@
 - (void)loadStory {
     [self loadFeedTitle];
     
-    loadingSpinner.hidden = YES;
+    self.loadingSpinner.hidden = YES;
 //    NSString *shareBarString = [self getShareBar];
 //    NSString *commentString = [self getComments];
     NSString *headerString;
@@ -138,9 +136,9 @@
     NSString *fontStyleClass = @"";
     NSString *fontSizeClass = [NSString stringWithFormat:@"NB-%@", [self fontSize]];
     NSString *lineSpacingClass = @"NB-line-spacing-";
-    NSString *storyContent = story.storyContent;
-    if (inTextView && story.originalText) {
-        storyContent = story.originalText;
+    NSString *storyContent = self.story.storyContent;
+    if (self.inTextView && self.story.originalText) {
+        storyContent = self.story.originalText;
     }
     
     NSUserDefaults *userPreferences = [NSUserDefaults standardUserDefaults];
@@ -240,29 +238,29 @@
     dispatch_async(dispatch_get_main_queue(), ^{
 //        self.hasStory = YES;
         //        NSLog(@"Drawing Story: %@", [story objectForKey:@"story_title"]);
-        [[webView mainFrame] loadHTMLString:htmlString baseURL:[NSURL URLWithString:@"http://mac.turntouch.com"]];
+        [[self.webView mainFrame] loadHTMLString:htmlString baseURL:[NSURL URLWithString:@"http://mac.turntouch.com"]];
     });
 }
 
 - (void)webView:(WebView *)sender resource:(id)identifier didFinishLoadingFromDataSource:(WebDataSource *)dataSource {
-    if (loadingHTML) {
-        [[webView mainFrame] loadHTMLString:loadingHTML baseURL:loadingURL];
-        loadingHTML = nil;
-        loadingURL = nil;
+    if (self.loadingHTML) {
+        [[self.webView mainFrame] loadHTMLString:self.loadingHTML baseURL:self.loadingURL];
+        self.loadingHTML = nil;
+        self.loadingURL = nil;
     }
 
-    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.documentElement.style.zoom = \"%f\"", browserView.zoomFactor]];
+    [self.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.documentElement.style.zoom = \"%f\"", self.browserView.zoomFactor]];
 }
 
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame {
     //get the scroll view that contains the frame contents
-    NSScrollView* scrollView = [[[[webView mainFrame] frameView] documentView] enclosingScrollView];
+    NSScrollView* scrollView = [[[[self.webView mainFrame] frameView] documentView] enclosingScrollView];
     [[scrollView verticalScroller] setControlSize: NSSmallControlSize];
     [[scrollView horizontalScroller] setControlSize: NSSmallControlSize];
 }
 
 - (void)loadFeedTitle {
-    TTModeNewsFeedView *feedTitleView = [[TTModeNewsFeedView alloc] initWithFeed:story.feed inFrame:NSMakeRect(0, NSMaxY(self.bounds)-48, NSWidth(self.bounds), 48)];
+    TTModeNewsFeedView *feedTitleView = [[TTModeNewsFeedView alloc] initWithFeed:self.story.feed inFrame:NSMakeRect(0, NSMaxY(self.bounds)-48, NSWidth(self.bounds), 48)];
     feedTitleView.autoresizingMask = NSViewWidthSizable;
     [self addSubview:feedTitleView];
 }
@@ -273,9 +271,9 @@
 - (NSString *)getHeader {
 //    NSString *feedId = [NSString stringWithFormat:@"%@", story.feedId];
     NSString *storyAuthor = @"";
-    if ([story.storyAuthor length]) {
+    if ([self.story.storyAuthor length]) {
         NSString *author = [NSString stringWithFormat:@"%@",
-                            [[[story.storyAuthor stringByReplacingOccurrencesOfString:@"\"" withString:@""]
+                            [[[self.story.storyAuthor stringByReplacingOccurrencesOfString:@"\"" withString:@""]
                               stringByReplacingOccurrencesOfString:@"<" withString:@"&lt;"]
                              stringByReplacingOccurrencesOfString:@">" withString:@"&gt;"]];
         if (author && author.length) {
@@ -286,8 +284,8 @@
         }
     }
     NSString *storyTags = @"";
-    if (story.storyTags) {
-        NSArray *tagArray = story.storyTags;
+    if (self.story.storyTags) {
+        NSArray *tagArray = self.story.storyTags;
         if ([tagArray count] > 0) {
             NSMutableArray *tagStrings = [NSMutableArray array];
             for (NSString *tag in tagArray) {
@@ -319,7 +317,7 @@
 //        }
 //    }
     
-    NSString *storyDate = [TTNewsBlurUtilities formatLongDateFromTimestamp:[story.storyTimestamp integerValue]];
+    NSString *storyDate = [TTNewsBlurUtilities formatLongDateFromTimestamp:[self.story.storyTimestamp integerValue]];
     NSString *storyHeader = [NSString stringWithFormat:@
                              "<div class=\"NB-header\"><div class=\"NB-header-inner\">"
                              "<div class=\"NB-story-title\">"
@@ -329,8 +327,8 @@
                              "%@"
                              "%@"
                              "</div></div>",
-                             story.storyPermalink,
-                             story.storyTitle,
+                             self.story.storyPermalink,
+                             self.story.storyTitle,
                              storyDate,
                              storyAuthor,
                              storyTags];
@@ -786,7 +784,7 @@
 #pragma mark - Interacting with webView
 
 - (NSInteger)currentScroll {
-    return [[webView stringByEvaluatingJavaScriptFromString:@"window.pageYOffset"] integerValue];
+    return [[self.webView stringByEvaluatingJavaScriptFromString:@"window.pageYOffset"] integerValue];
 }
 
 - (NSInteger)scrollAmount {
@@ -803,15 +801,15 @@
 }
 
 - (void)scroll:(NSInteger)amount duration:(NSInteger)duration {
-    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"$('body').velocity('stop').velocity('scroll', {duration: %ld, easing: 'easeOutCubic', queue: false, offset: $('body').scrollTop() + %ld}); console.log(['velocity', $('body').scrollTop(), $('body').velocity()]);", duration, amount]];
+    [self.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"$('body').velocity('stop').velocity('scroll', {duration: %ld, easing: 'easeOutCubic', queue: false, offset: $('body').scrollTop() + %ld}); console.log(['velocity', $('body').scrollTop(), $('body').velocity()]);", duration, amount]];
 }
 
 - (void)zoomIn {
-    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.documentElement.style.zoom = \"%f\"", browserView.zoomFactor]];
+    [self.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.documentElement.style.zoom = \"%f\"", self.browserView.zoomFactor]];
 }
 
 - (void)zoomOut {
-    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.documentElement.style.zoom = \"%f\"", browserView.zoomFactor]];
+    [self.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.documentElement.style.zoom = \"%f\"", self.browserView.zoomFactor]];
 }
 
 @end

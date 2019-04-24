@@ -10,9 +10,7 @@
 #import "TTOptionsDetailViewController.h"
 #import "TTModeNestAuthViewController.h"
 
-@interface TTModeNestConnect : TTOptionsDetailViewController {
-    NSPopover *authPopover;
-}
+@interface TTModeNestConnect : TTOptionsDetailViewController
 
 @property (nonatomic) IBOutlet NSButton *authButton;
 @property (nonatomic, strong) TTModeNest *modeNest;

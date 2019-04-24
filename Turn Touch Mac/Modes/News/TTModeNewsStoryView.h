@@ -13,11 +13,7 @@
 #import "TTModeNews.h"
 #import "TTAppDelegate.h"
 
-@interface TTModeNewsStoryView : NSView  <WebResourceLoadDelegate> {
-    WebView *webView;
-    TTPairingSpinner *loadingSpinner;
-    BOOL inTextView;
-}
+@interface TTModeNewsStoryView : NSView  <WebResourceLoadDelegate>
 
 @property (nonatomic) TTAppDelegate *appDelegate;
 @property (nonatomic) IBOutlet WebView *webView;

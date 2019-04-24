@@ -9,16 +9,18 @@
 #import <QuartzCore/QuartzCore.h>
 #import "TTActionHUDWindowController.h"
 
-@implementation TTActionHUDWindowController
+@interface TTActionHUDWindowController ()
 
-@synthesize hudView;
-@synthesize hudWindow;
-@synthesize progressBar;
+@property (nonatomic) BOOL fadingIn;
+
+@end
+
+@implementation TTActionHUDWindowController
 
 - (instancetype)initWithWindowNibName:(NSString *)windowNibName {
     if (self = [super initWithWindowNibName:windowNibName]) {
-        appDelegate = (TTAppDelegate *)[NSApp delegate];
-        [hudWindow setFrame:[self hiddenFrame] display:YES];
+        self.appDelegate = (TTAppDelegate *)[NSApp delegate];
+        [self.hudWindow setFrame:[self hiddenFrame] display:YES];
     }
     
     return self;
@@ -51,40 +53,40 @@
 }
 
 - (IBAction)fadeIn:(NSString *)actionName inDirection:(TTModeDirection)direction withMode:(TTMode *)mode buttonMoment:(TTButtonMoment)buttonMoment {
-    if (!mode) mode = appDelegate.modeMap.selectedMode;
+    if (!mode) mode = self.appDelegate.modeMap.selectedMode;
 
-    if ([appDelegate.modeMap shouldHideHud:direction]) return;
+    if ([self.appDelegate.modeMap shouldHideHud:direction]) return;
 
     NSLog(@" ---> Fade in action: %d", direction);
 //    [hudWindow setLevel:10];
-    [hudWindow makeKeyAndOrderFront:NSApp];
+    [self.hudWindow makeKeyAndOrderFront:NSApp];
     [self showWindow:nil];
     
-    [hudView setMode:mode];
-    [hudView setDirection:direction];
-    [hudView setActionName:actionName];
-    [hudView setButtonMoment:buttonMoment];
-    [hudView drawProgressBar:progressBar];
-    [hudView drawImageLayoutView];
-    [hudView setHidden:NO];
-    [hudView setNeedsDisplay:YES];
+    [self.hudView setMode:mode];
+    [self.hudView setDirection:direction];
+    [self.hudView setActionName:actionName];
+    [self.hudView setButtonMoment:buttonMoment];
+    [self.hudView drawProgressBar:self.progressBar];
+    [self.hudView drawImageLayoutView];
+    [self.hudView setHidden:NO];
+    [self.hudView setNeedsDisplay:YES];
     
-    if (hudWindow.frame.origin.y == [self hiddenFrame].origin.y) {
-        [hudWindow setFrame:[self visibleFrame] display:YES];
-        [[hudWindow animator] setAlphaValue:0.1f];
+    if (self.hudWindow.frame.origin.y == [self hiddenFrame].origin.y) {
+        [self.hudWindow setFrame:[self visibleFrame] display:YES];
+        [[self.hudWindow animator] setAlphaValue:0.1f];
     }
     
-    fadingIn = YES;
+    self.fadingIn = YES;
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:.2f];
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
     [[NSAnimationContext currentContext] setCompletionHandler:^{
-        fadingIn = NO;
+        self.fadingIn = NO;
     }];
     
-    [[hudWindow animator] setAlphaValue:1.f];
-    [[hudWindow animator] setFrame:[self visibleFrame] display:YES];
+    [[self.hudWindow animator] setAlphaValue:1.f];
+    [[self.hudWindow animator] setFrame:[self visibleFrame] display:YES];
     
     [NSAnimationContext endGrouping];
 }
@@ -96,14 +98,14 @@
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:.25f];
     [[NSAnimationContext currentContext] setCompletionHandler:^{
-        if (fadingIn) return;
-        [hudView setHidden:YES];
+        if (self.fadingIn) return;
+        [self.hudView setHidden:YES];
         
     }];
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
     
-    [[hudWindow animator] setAlphaValue:0.f];
+    [[self.hudWindow animator] setAlphaValue:0.f];
 //    [[hudWindow animator] setFrame:[self hiddenFrame] display:YES];
     
     [NSAnimationContext endGrouping];
@@ -116,12 +118,12 @@
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
     [[NSAnimationContext currentContext] setCompletionHandler:^{
-        if (fadingIn) return;
-        [hudView setHidden:YES];
+        if (self.fadingIn) return;
+        [self.hudView setHidden:YES];
     }];
     
-    [[hudWindow animator] setAlphaValue:0.15f];
-    [[hudWindow animator] setFrame:[self hiddenFrame] display:YES];
+    [[self.hudWindow animator] setAlphaValue:0.15f];
+    [[self.hudWindow animator] setFrame:[self hiddenFrame] display:YES];
     
     [NSAnimationContext endGrouping];
 }

@@ -9,9 +9,7 @@
 #import "TTModeSonos.h"
 #import "TTOptionsDetailViewController.h"
 
-@interface TTModeSonosConnect : TTOptionsDetailViewController {
-    NSPopover *authPopover;
-}
+@interface TTModeSonosConnect : TTOptionsDetailViewController
 
 @property (nonatomic) IBOutlet NSButton *authButton;
 @property (nonatomic, strong) TTModeSonos *modeSonos;

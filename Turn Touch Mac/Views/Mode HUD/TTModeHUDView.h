@@ -14,18 +14,9 @@
 
 @class TTModeHUDLabelsView;
 
-@interface TTModeHUDView : NSView {
-    TTAppDelegate *appDelegate;
-    NSImage *modeImage;
-    NSString *modeTitle;
-    CGSize textSize;
-    TTDiamondLabels *diamondLabels;
-    TTModeHUDLabelsView *labelsView;
-    NSImageView *gradientView;
-    BOOL teaserFadeStarted;
-    NSVisualEffectView *visualEffectView;
-}
+@interface TTModeHUDView : NSView
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic, readwrite) BOOL isTeaser;
 @property (nonatomic, readwrite) NSImageView *gradientView;
 @property (nonatomic, readwrite) NSImageView *teaserGradientView;

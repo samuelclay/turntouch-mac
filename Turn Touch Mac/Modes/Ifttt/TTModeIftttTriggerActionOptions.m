@@ -11,40 +11,38 @@
 
 @interface TTModeIftttTriggerActionOptions ()
 
+@property (nonatomic) BOOL isMenuVisible;
+@property (nonatomic, strong) NSMenu *settingsMenu;
+
 @end
 
 @implementation TTModeIftttTriggerActionOptions
 
-@synthesize modeIfttt;
-@synthesize authPopover;
-@synthesize settingsButton;
-@synthesize chooseButton;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [settingsButton setImage:[NSImage imageNamed:@"settings"]];
-    modeIfttt = (TTModeIfttt *)self.action.mode;
+    [self.settingsButton setImage:[NSImage imageNamed:@"settings"]];
+    self.modeIfttt = (TTModeIfttt *)self.action.mode;
     [self buildSettingsMenu:YES];
 }
 
 - (IBAction)clickRecipeButton:(id)sender {
-    [modeIfttt registerTriggers:^{
+    [self.modeIfttt registerTriggers:^{
         TTModeIftttAuthViewController *iftttAuthViewController = [[TTModeIftttAuthViewController alloc] init];
         iftttAuthViewController.modeIfttt = self.modeIfttt;
         
-        authPopover = [[NSPopover alloc] init];
-        [authPopover setContentSize:NSMakeSize(420, 480)];
-        [authPopover setBehavior:NSPopoverBehaviorTransient];
-        [authPopover setAnimates:YES];
-        [authPopover setContentViewController:iftttAuthViewController];
+        self.authPopover = [[NSPopover alloc] init];
+        [self.authPopover setContentSize:NSMakeSize(420, 480)];
+        [self.authPopover setBehavior:NSPopoverBehaviorTransient];
+        [self.authPopover setAnimates:YES];
+        [self.authPopover setContentViewController:iftttAuthViewController];
         
         NSRect entryRect = [sender convertRect:((NSButton *)sender).bounds
-                                        toView:appDelegate.panelController.backgroundView];
+                                        toView:self.appDelegate.panelController.backgroundView];
         
-        iftttAuthViewController.authPopover = authPopover;
-        [authPopover showRelativeToRect:entryRect
-                                 ofView:appDelegate.panelController.backgroundView
+        iftttAuthViewController.authPopover = self.authPopover;
+        [self.authPopover showRelativeToRect:entryRect
+                                 ofView:self.appDelegate.panelController.backgroundView
                           preferredEdge:NSMinYEdge];
         
         [iftttAuthViewController openRecipe:self.action.direction];
@@ -55,47 +53,47 @@
 #pragma mark - Settings menu
 
 - (IBAction)showIftttMenu:(id)sender {
-    [NSMenu popUpContextMenu:settingsMenu
+    [NSMenu popUpContextMenu:self.settingsMenu
                    withEvent:[NSApp currentEvent]
                      forView:sender];
 }
 
 - (IBAction)replaceRecipe:(id)sender {
-    [modeIfttt registerTriggers:^{
+    [self.modeIfttt registerTriggers:^{
         [self.modeIfttt purgeRecipe:self.action.direction callback:^{
-            [self clickRecipeButton:chooseButton];
+            [self clickRecipeButton:self.chooseButton];
         }];
     }];
 }
 
 - (void)buildSettingsMenu:(BOOL)force {
-    if (!force && !isMenuVisible) return;
+    if (!force && !self.isMenuVisible) return;
     
     NSMenuItem *menuItem;
     
-    if (!settingsMenu) {
-        settingsMenu = [[NSMenu alloc] initWithTitle:@"Action Menu"];
-        [settingsMenu setDelegate:self];
-        [settingsMenu setAutoenablesItems:NO];
+    if (!self.settingsMenu) {
+        self.settingsMenu = [[NSMenu alloc] initWithTitle:@"Action Menu"];
+        [self.settingsMenu setDelegate:self];
+        [self.settingsMenu setAutoenablesItems:NO];
     } else {
-        [settingsMenu removeAllItems];
+        [self.settingsMenu removeAllItems];
     }
     
     menuItem = [[NSMenuItem alloc] initWithTitle:@"Replace this recipe..." action:@selector(replaceRecipe:) keyEquivalent:@""];
     [menuItem setEnabled:YES];
     [menuItem setTarget:self];
-    [settingsMenu addItem:menuItem];
+    [self.settingsMenu addItem:menuItem];
 }
 
 #pragma mark - Menu Delegate
 
 - (void)menuWillOpen:(NSMenu *)menu {
-    isMenuVisible = YES;
+    self.isMenuVisible = YES;
     [self buildSettingsMenu:YES];
 }
 
 - (void)menuDidClose:(NSMenu *)menu {
-    isMenuVisible = NO;
+    self.isMenuVisible = NO;
 }
 
 @end

@@ -14,20 +14,9 @@
 
 extern const CGFloat kActionHUDMarginPct;
 
-@interface TTActionHUDView : NSView {
-    TTAppDelegate *appDelegate;
-    TTModeDirection direction;
-    NSString *actionName;
-    TTProgressBar *progressBar;
-    NSView *imageLayoutView;
-    NSImageView *backgroundView;
-    NSImageView *iconView;
-    NSImageView *northChevron;
-    NSImageView *eastChevron;
-    NSImageView *westChevron;
-    NSImageView *southChevron;
-}
+@interface TTActionHUDView : NSView
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic) TTModeDirection direction;
 @property (nonatomic) NSString *actionName;
 @property (nonatomic) TTMode *mode;

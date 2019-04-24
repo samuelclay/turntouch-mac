@@ -9,10 +9,9 @@
 #import <Cocoa/Cocoa.h>
 #import "TTAppDelegate.h"
 
-@interface TTAddActionButtonView : NSView {
-    TTAppDelegate *appDelegate;
-    TTChangeButtonView *addButton;
-}
+@interface TTAddActionButtonView : NSView
+
+@property (nonatomic, strong) TTAppDelegate *appDelegate;
 
 - (IBAction)hideAddActionMenu:(id)sender;
 

@@ -12,15 +12,9 @@
 
 @class TTAppDelegate;
 
-@interface TTModeTitleView : NSView {
-    TTAppDelegate *appDelegate;
-    NSImage *modeImage;
-    NSString *modeTitle;
-    NSDictionary *modeAttributes;
-    CGSize textSize;
-    TTChangeButtonView *changeButton;
-}
+@interface TTModeTitleView : NSView
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic) IBOutlet TTChangeButtonView *changeButton;
 
 @end

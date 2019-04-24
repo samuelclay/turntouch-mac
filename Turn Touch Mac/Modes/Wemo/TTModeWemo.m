@@ -9,6 +9,12 @@
 #import "TTModeWemo.h"
 #import "TTModeWemoDevice.h"
 
+@interface TTModeWemo ()
+
+@property (nonatomic, strong) NSMutableArray *failedDevices;
+
+@end
+
 @implementation TTModeWemo
 
 NSString *const kWemoSelectedSerials = @"wemoSelectedSerials";
@@ -18,10 +24,6 @@ NSString *const kWemoSeenDevices = @"wemoSeenDevicesV2";
 static TTWemoState wemoState;
 static NSMutableArray *foundDevices;
 static NSMutableArray *recentlyFoundDevices;
-
-//@synthesize foundDevices;
-//@synthesize multicastServer;
-@synthesize delegate;
 
 - (instancetype)init {
     if (self = [super init]) {
@@ -44,7 +46,7 @@ static NSMutableArray *recentlyFoundDevices;
             wemoState = WEMO_STATE_CONNECTED;
         }
         
-        failedDevices = [NSMutableArray array];
+        self.failedDevices = [NSMutableArray array];
         
         [self.delegate changeState:TTModeWemo.wemoState withMode:self];
     }
@@ -348,9 +350,9 @@ static NSMutableArray *recentlyFoundDevices;
             continue;
         }
         
-        for (TTModeWemoDevice *failedDevice in failedDevices) {
+        for (TTModeWemoDevice *failedDevice in self.failedDevices) {
             if ([failedDevice isSameDeviceDifferentLocation:device]) {
-                [failedDevices removeObject:device];
+                [self.failedDevices removeObject:device];
                 break;
             }
         }
@@ -370,13 +372,13 @@ static NSMutableArray *recentlyFoundDevices;
 - (void)deviceFailed:(TTModeWemoDevice *)device {
     NSLog(@" ---> Wemo device %@ failed, searching for changed IP...", device);
     
-    if ([failedDevices containsObject:device]) {
+    if ([self.failedDevices containsObject:device]) {
         NSLog(@" ---> Wemo device %@ already failed and searching, ignoring.", device);
         return;
     }
 
-    [appDelegate.modeMap recordUsageMoment:@"wemoDeviceFailed"];
-    [failedDevices addObject:device];
+    [self.appDelegate.modeMap recordUsageMoment:@"wemoDeviceFailed"];
+    [self.failedDevices addObject:device];
     [self refreshDevices];
 }
 
