@@ -248,24 +248,24 @@
         [self.settingsMenu removeAllItems];
     }
     
-    NSString *batteryLevel = [NSString stringWithFormat:@"Battery level: %d%%",
+    NSString *batteryLevel = [NSString stringWithFormat:@"Battery Level: %d%%",
                               (int)self.device.batteryPct.intValue];
     menuItem = [[NSMenuItem alloc] initWithTitle:batteryLevel action:@selector(openDevicesDialog:) keyEquivalent:@""];
     [menuItem setEnabled:NO];
     [menuItem setTarget:self];
     if (self.device.isPaired && self.device.batteryPct.intValue <= 0) {
-        [menuItem setTitle:@"Connecting to remote..."];
+        [menuItem setTitle:@"Connecting to Remote..."];
         [menuItem setEnabled:NO];
     } else if (!self.device.isPaired) {
-        [menuItem setTitle:@"Pairing with remote..."];
+        [menuItem setTitle:@"Pairing with Remote..."];
         [menuItem setEnabled:NO];
     }
     [self.settingsMenu addItem:menuItem];
     NSString *timeAgo = [self.device.lastActionDate timeAgo];
-    NSString *lastAction = [NSString stringWithFormat:@"Last action: %@",
+    NSString *lastAction = [NSString stringWithFormat:@"Last Action: %@",
                             timeAgo];
     if (!timeAgo) {
-        lastAction = @"Counting is difficult";
+        lastAction = @"Counting is Difficult";
     }
     menuItem = [[NSMenuItem alloc] initWithTitle:lastAction action:nil keyEquivalent:@""];
     [menuItem setEnabled:NO];
@@ -273,7 +273,7 @@
 
     [self.settingsMenu addItem:[NSMenuItem separatorItem]];
 
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Rename this remote"
+    menuItem = [[NSMenuItem alloc] initWithTitle:@"Rename This Remote"
                                           action:@selector(openDevicesDialog:)
                                    keyEquivalent:@""];
     [menuItem setTarget:self];
@@ -281,7 +281,7 @@
     
     [self.settingsMenu addItem:[NSMenuItem separatorItem]];
     
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Forget this remote"
+    menuItem = [[NSMenuItem alloc] initWithTitle:@"Forget This Remote"
                                           action:@selector(forgetDevice:)
                                    keyEquivalent:@""];
     [menuItem setTarget:self];

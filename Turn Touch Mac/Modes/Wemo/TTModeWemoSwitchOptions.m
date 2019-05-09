@@ -139,14 +139,14 @@
         [self.settingsMenu removeAllItems];
     }
     
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Search for new devices..." action:@selector(refreshDevices:) keyEquivalent:@""];
+    menuItem = [[NSMenuItem alloc] initWithTitle:@"Search for New Devices..." action:@selector(refreshDevices:) keyEquivalent:@""];
     [menuItem setEnabled:YES];
     [menuItem setTarget:self];
     [self.settingsMenu addItem:menuItem];
     
     [self.settingsMenu addItem:[NSMenuItem separatorItem]];
     
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Remove all and search..." action:@selector(purgeDevices:) keyEquivalent:@""];
+    menuItem = [[NSMenuItem alloc] initWithTitle:@"Remove All and Search..." action:@selector(purgeDevices:) keyEquivalent:@""];
     [menuItem setEnabled:YES];
     [menuItem setTarget:self];
     [self.settingsMenu addItem:menuItem];

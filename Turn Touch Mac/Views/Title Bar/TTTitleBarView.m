@@ -185,25 +185,25 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
             [self.settingsMenu addItem:menuItem];
         }
 
-        NSString *batteryLevel = [NSString stringWithFormat:@"Battery level: %d%%",
+        NSString *batteryLevel = [NSString stringWithFormat:@"Battery Level: %d%%",
                                   (int)device.batteryPct.intValue];
         menuItem = [[NSMenuItem alloc] initWithTitle:batteryLevel action:@selector(openDevicesDialog:) keyEquivalent:@""];
         [menuItem setEnabled:NO];
         [menuItem setTarget:self];
         if (device.isPaired && device.batteryPct.intValue <= 0) {
-            [menuItem setTitle:@"Connecting to remote..."];
+            [menuItem setTitle:@"Connecting to Remote..."];
             [menuItem setEnabled:NO];
         } else if (!device.isPaired) {
-            [menuItem setTitle:@"Pairing with remote..."];
+            [menuItem setTitle:@"Pairing with Remote..."];
             [menuItem setEnabled:NO];
         }
         [self.settingsMenu addItem:menuItem];
         
         NSString *timeAgo = [device.lastActionDate timeAgo];
-        NSString *lastAction = [NSString stringWithFormat:@"Last action: %@",
+        NSString *lastAction = [NSString stringWithFormat:@"Last Action: %@",
                                 timeAgo];
         if (!timeAgo) {
-            lastAction = @"Counting is difficult";
+            lastAction = @"Counting is Difficult";
         }
         menuItem = [[NSMenuItem alloc] initWithTitle:lastAction action:nil keyEquivalent:@""];
         [menuItem setEnabled:NO];
@@ -212,14 +212,14 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
         [self.settingsMenu addItem:[NSMenuItem separatorItem]];
     }
     if (!foundDevices.count) {
-        menuItem = [[NSMenuItem alloc] initWithTitle:@"No remotes connected" action:nil keyEquivalent:@""];
+        menuItem = [[NSMenuItem alloc] initWithTitle:@"No Remotes Connected" action:nil keyEquivalent:@""];
         [menuItem setEnabled:NO];
         [self.settingsMenu addItem:menuItem];
         
         [self.settingsMenu addItem:[NSMenuItem separatorItem]];
     }
 
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Add a new remote..."
+    menuItem = [[NSMenuItem alloc] initWithTitle:@"Add a New Remote..."
                                           action:@selector(openPairingDialog:)
                                    keyEquivalent:@""];
     [menuItem setTarget:self];
@@ -239,7 +239,7 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
     [menuItem setTarget:self];
     [self.settingsMenu addItem:menuItem];
     
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"How it works"
+    menuItem = [[NSMenuItem alloc] initWithTitle:@"How It Works"
                                           action:@selector(openFTUXDialog:)
                                    keyEquivalent:@""];
     [menuItem setTarget:self];
@@ -253,25 +253,25 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
 
     [self.settingsMenu addItem:[NSMenuItem separatorItem]];
 
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Submit an idea..."
+    menuItem = [[NSMenuItem alloc] initWithTitle:@"Submit an Idea..."
                                           action:@selector(openSupportIdea:)
                                    keyEquivalent:@""];
     [menuItem setTarget:self];
     [self.settingsMenu addItem:menuItem];
     
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Ask a question..."
+    menuItem = [[NSMenuItem alloc] initWithTitle:@"Ask a Question..."
                                           action:@selector(openSupportQuestion:)
                                    keyEquivalent:@""];
     [menuItem setTarget:self];
     [self.settingsMenu addItem:menuItem];
     
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Troubleshoot a problem..."
+    menuItem = [[NSMenuItem alloc] initWithTitle:@"Troubleshoot a Problem..."
                                           action:@selector(openSupportProblem:)
                                    keyEquivalent:@""];
     [menuItem setTarget:self];
     [self.settingsMenu addItem:menuItem];
     
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Share photos and praise..."
+    menuItem = [[NSMenuItem alloc] initWithTitle:@"Share Photos and Praise..."
                                           action:@selector(openSupportPraise:)
                                    keyEquivalent:@""];
     [menuItem setTarget:self];

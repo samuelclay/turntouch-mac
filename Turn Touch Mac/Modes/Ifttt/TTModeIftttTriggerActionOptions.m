@@ -79,7 +79,7 @@
         [self.settingsMenu removeAllItems];
     }
     
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Replace this recipe..." action:@selector(replaceRecipe:) keyEquivalent:@""];
+    menuItem = [[NSMenuItem alloc] initWithTitle:@"Replace This Recipe..." action:@selector(replaceRecipe:) keyEquivalent:@""];
     [menuItem setEnabled:YES];
     [menuItem setTarget:self];
     [self.settingsMenu addItem:menuItem];
