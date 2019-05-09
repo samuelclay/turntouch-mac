@@ -12,6 +12,13 @@
 
 @implementation TTPanel
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    // A temporary solution to fix drawing issues in dark mode; should properly implement dark mode later.
+    self.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
+}
+
 - (BOOL)canBecomeKeyWindow {
     return YES;
 }
