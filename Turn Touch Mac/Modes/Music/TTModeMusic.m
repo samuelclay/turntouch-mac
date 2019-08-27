@@ -97,6 +97,10 @@ NSString *const kMusicPlaylistShuffleDouble = @"musicPlaylistShuffleDouble";
     iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
     NSString *selectedPlaylist = [self.action optionValue:kMusicPlaylistSingle];
     
+    if (![iTunes respondsToSelector:@selector(sources)]) {
+        return @"Playlist";
+    }
+    
     for (iTunesSource *source in [iTunes sources]) {
         if ([source kind] == iTunesESrcLibrary) {
             for (iTunesPlaylist *playlist in [source userPlaylists]) {
@@ -113,6 +117,10 @@ NSString *const kMusicPlaylistShuffleDouble = @"musicPlaylistShuffleDouble";
 - (NSString *)doubleActionTitleTTModeMusicPlaylist {
     iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
     NSString *selectedPlaylist = [self.action optionValue:kMusicPlaylistDouble];
+    
+    if (![iTunes respondsToSelector:@selector(sources)]) {
+        return @"Playlist";
+    }
     
     for (iTunesSource *source in [iTunes sources]) {
         if ([source kind] == iTunesESrcLibrary) {
@@ -484,6 +492,10 @@ NSString *const kMusicPlaylistShuffleDouble = @"musicPlaylistShuffleDouble";
 //    BOOL playlistShuffle = [[self.action optionValue:kMusicPlaylistShuffle] boolValue];
     iTunesPlaylist *itunesPl;
 
+    if (![iTunes respondsToSelector:@selector(sources)]) {
+        return;
+    }
+    
     for (iTunesSource *source in [iTunes sources]) {
         if ([source kind] == iTunesESrcLibrary) {
             for (iTunesPlaylist *playlist in [source userPlaylists]) {
