@@ -11,17 +11,9 @@
 
 @class TTAppDelegate;
 
-@interface TTDiamondLabel : NSView {
-    TTAppDelegate *appDelegate;
-    TTModeDirection labelDirection;
-    NSDictionary *labelAttributes;
-    TTMode *diamondMode;
-    NSImageView *iconView;
-    
-    BOOL isHover;
-    BOOL interactive;
-}
+@interface TTDiamondLabel : NSView
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic, readwrite) BOOL interactive;
 @property (nonatomic, readwrite) BOOL isHud;
 

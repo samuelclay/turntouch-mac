@@ -11,10 +11,9 @@
 #import "TTAppDelegate.h"
 #import "TTModeIfttt.h"
 
-@interface TTModeIftttAuthViewController : NSViewController <WebResourceLoadDelegate, WebFrameLoadDelegate> {
-    TTAppDelegate *appDelegate;
-}
+@interface TTModeIftttAuthViewController : NSViewController <WebResourceLoadDelegate, WebFrameLoadDelegate>
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic) TTModeIfttt *modeIfttt;
 @property (nonatomic) IBOutlet WebView *webView;
 @property (nonatomic) NSPopover *authPopover;

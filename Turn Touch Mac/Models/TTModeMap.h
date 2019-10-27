@@ -15,9 +15,7 @@
 @class TTAction;
 @class TTBatchActions;
 
-@interface TTModeMap : NSObject {
-    BOOL waitingForDoubleClick;
-}
+@interface TTModeMap : NSObject
 
 @property (nonatomic, assign) TTModeDirection activeModeDirection;
 @property (nonatomic, assign) TTModeDirection selectedModeDirection;

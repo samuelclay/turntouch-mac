@@ -10,13 +10,9 @@
 #import <WebKit/WebKit.h>
 #import "TTAppDelegate.h"
 
-@interface TTModeWebBrowserView : NSView <WebResourceLoadDelegate> {
-    TTAppDelegate *appDelegate;
-    WebView *webView;
-    CGFloat zoomFactor;
-    NSInteger textSize;
-}
+@interface TTModeWebBrowserView : NSView <WebResourceLoadDelegate>
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic) IBOutlet WebView *webView;
 @property (nonatomic) IBOutlet NSLayoutConstraint *widthConstraint;
 

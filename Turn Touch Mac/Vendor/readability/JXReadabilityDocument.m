@@ -168,6 +168,9 @@ NSSet * stringSetForListStringDelimitedBy(NSString *listString, NSString *delimi
 	} while ((elem = [elem nextNode]) != nil);
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wimplicit-retain-self"
+
 - (void)transformMisusedDivsIntoParagraphs
 {
 	NSArray *nodes;
@@ -241,6 +244,8 @@ NSSet * stringSetForListStringDelimitedBy(NSString *listString, NSString *delimi
 		
 	}	
 }
+
+#pragma clang diagnostic pop
 
 - (NSString *)clean:(NSString *)_text
 {

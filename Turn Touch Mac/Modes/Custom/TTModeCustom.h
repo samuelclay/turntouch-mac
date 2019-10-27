@@ -28,6 +28,6 @@ extern NSString *const kCustomDoubleKey;
 - (void)runTTModeCustomURL:(TTModeDirection)direction;
 - (void)doubleRunTTModeCustomURL:(TTModeDirection)direction;
 - (void)runTTModeCustomScript:(TTModeDirection)direction;
-- (void)doubleRunTTModeCustomScript:(TTModeDirection)direction;
+//- (void)doubleRunTTModeCustomScript:(TTModeDirection)direction;
 
 @end

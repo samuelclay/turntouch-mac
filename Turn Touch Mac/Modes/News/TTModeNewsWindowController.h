@@ -13,11 +13,7 @@
 #import "TTModeNewsBackgroundView.h"
 #import "TTModeNewsMenuView.h"
 
-@interface TTModeNewsWindowController : NSWindowController  <NSWindowDelegate, TTHUDMenuDelegate> {
-    TTAppDelegate *appDelegate;
-    
-    BOOL isFading;
-}
+@interface TTModeNewsWindowController : NSWindowController  <NSWindowDelegate, TTHUDMenuDelegate>
 
 @property (nonatomic) IBOutlet TTModeNewsWindow *webWindow;
 @property (nonatomic) IBOutlet TTModeNewsBackgroundView *backgroundView;

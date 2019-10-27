@@ -196,16 +196,16 @@ NSString * shortenTitleInDocument(NSXMLDocument *doc) {
 							 options:NSLiteralSearch].location != NSNotFound) {
 				parts = [orig componentsSeparatedByString:delimiter];
 				
-				NSString *titleCandidate;
-				if (titleCandidate = parts[0], 
-					[titleCandidate countOfSubstringsWithOptions:NSStringEnumerationByWords isAtLeast:4]) {
-					title = titleCandidate;
+				NSString *firstTitle = parts[0];
+                NSString *lastTitle = [parts lastObject];
+                
+				if (firstTitle != nil && [firstTitle countOfSubstringsWithOptions:NSStringEnumerationByWords isAtLeast:4]) {
+					title = firstTitle;
 					didBreak = YES;
 					break;
 				}
-				else if (titleCandidate = [parts lastObject], 
-						 [titleCandidate countOfSubstringsWithOptions:NSStringEnumerationByWords isAtLeast:4]) {
-					title = titleCandidate;
+				else if (lastTitle != nil && [lastTitle countOfSubstringsWithOptions:NSStringEnumerationByWords isAtLeast:4]) {
+					title = lastTitle;
 					didBreak = YES;
 					break;
 				}
@@ -218,9 +218,9 @@ NSString * shortenTitleInDocument(NSXMLDocument *doc) {
 							 options:NSLiteralSearch].location != NSNotFound) {
 				parts = [orig componentsSeparatedByString:delimiter];
 				
-				NSString *titleCandidate;
-				if (titleCandidate = [parts lastObject], 
-					[titleCandidate countOfSubstringsWithOptions:NSStringEnumerationByWords isAtLeast:4]) {
+                NSString *lastTitle = [parts lastObject];
+                
+				if (lastTitle != nil && [lastTitle countOfSubstringsWithOptions:NSStringEnumerationByWords isAtLeast:4]) {
 					title = [parts lastObject];
 				}
 				else {

@@ -9,21 +9,23 @@
 #import "TTChangeButtonView.h"
 #import "TTChangeButtonCell.h"
 
+@interface TTChangeButtonView ()
+
+@property (nonatomic, strong) TTChangeButtonCell *changeButtonCell;
+
+@end
+
 @implementation TTChangeButtonView
 
-@synthesize borderRadius;
-@synthesize useAltStyle;
-@synthesize rightBorderRadius;
-
 - (void)awakeFromNib {
-    cell = self.cell;
+    self.changeButtonCell = self.cell;
 }
 
 - (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        cell = [[TTChangeButtonCell alloc] init];
-        [self setCell:cell];
+        self.changeButtonCell = [[TTChangeButtonCell alloc] init];
+        [self setCell:self.changeButtonCell];
     }
     return self;
 }
@@ -31,29 +33,29 @@
 - (void)drawRect:(NSRect)dirtyRect {
     [self setBezelStyle:NSRoundRectBezelStyle];
     [self setButtonType:NSMomentaryChangeButton];
-    cell.attributedTitle = self.attributedTitle;
+    self.changeButtonCell.attributedTitle = self.attributedTitle;
     [super drawRect:dirtyRect];
 }
 
-- (void)setBorderRadius:(CGFloat)_borderRadius {
-    borderRadius = _borderRadius;
-    [cell setBorderRadius:borderRadius];
+- (void)setBorderRadius:(CGFloat)borderRadius {
+    _borderRadius = borderRadius;
+    [self.changeButtonCell setBorderRadius:self.borderRadius];
 }
 
-- (void)setUseAltStyle:(BOOL)_useAltStyle {
-    useAltStyle = _useAltStyle;
-    [cell setUseAltStyle:useAltStyle];
+- (void)setUseAltStyle:(BOOL)useAltStyle {
+    _useAltStyle = useAltStyle;
+    [self.changeButtonCell setUseAltStyle:self.useAltStyle];
 }
 
-- (void)setRightBorderRadius:(CGFloat)_rightBorderRadius {
-    rightBorderRadius = _rightBorderRadius;
-    [cell setRightBorderRadius:rightBorderRadius];
+- (void)setRightBorderRadius:(CGFloat)rightBorderRadius {
+    _rightBorderRadius = rightBorderRadius;
+    [self.changeButtonCell setRightBorderRadius:self.rightBorderRadius];
 }
 
 #pragma mark - Events
 
 - (void)mouseDown:(NSEvent *)theEvent {
-    cell.mouseDown = YES;
+    self.changeButtonCell.mouseDown = YES;
     [self setNeedsDisplay];
     
     // this blocks until the button is released
@@ -64,7 +66,7 @@
 
 - (void)mouseUp:(NSEvent *)theEvent {
     [super mouseUp:theEvent];
-    cell.mouseDown = NO;
+    self.changeButtonCell.mouseDown = NO;
     [self setNeedsDisplay];
 }
 

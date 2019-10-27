@@ -9,17 +9,20 @@
 #import "TTModeMap.h"
 #import "TTDiamondView.h"
 
-@implementation TTDiamondView
+@interface TTDiamondView ()
 
-@synthesize diamondType;
-@synthesize size = _size;
-@synthesize isHighlighted = _isHighlighted;
-@synthesize overrideSelectedDirection;
-@synthesize overrideActiveDirection;
-@synthesize ignoreSelectedMode;
-@synthesize ignoreActiveMode;
-@synthesize showOutline;
-@synthesize connected;
+@property (nonatomic, strong) NSBezierPath *northPathTop;
+@property (nonatomic, strong) NSBezierPath *eastPathTop;
+@property (nonatomic, strong) NSBezierPath *westPathTop;
+@property (nonatomic, strong) NSBezierPath *southPathTop;
+@property (nonatomic, strong) NSBezierPath *northPathBottom;
+@property (nonatomic, strong) NSBezierPath *eastPathBottom;
+@property (nonatomic, strong) NSBezierPath *westPathBottom;
+@property (nonatomic, strong) NSBezierPath *southPathBottom;
+
+@end
+
+@implementation TTDiamondView
 
 #pragma mark - Initialization
 
@@ -28,8 +31,8 @@
     return [self initWithFrame:frame diamondType:DIAMOND_TYPE_MODE];
 }
 
-- (id)initWithFrame:(NSRect)frame diamondType:(TTDiamondType)_diamondType {
-    diamondType = _diamondType;
+- (id)initWithFrame:(NSRect)frame diamondType:(TTDiamondType)diamondType {
+    self.diamondType = diamondType;
     
     self = [super initWithFrame:frame];
     if (self) {
@@ -41,7 +44,7 @@
         self.ignoreSelectedMode = NO;
         self.ignoreActiveMode = NO;
         
-        appDelegate = (TTAppDelegate *)[NSApp delegate];
+        self.appDelegate = (TTAppDelegate *)[NSApp delegate];
         
         [self registerAsObserver];
 
@@ -65,37 +68,37 @@
 #pragma mark - KVO
 
 - (void)dealloc {
-    if (diamondType == DIAMOND_TYPE_INTERACTIVE) {
-        [appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
-        [appDelegate.modeMap removeObserver:self forKeyPath:@"hoverModeDirection"];
+    if (self.diamondType == DIAMOND_TYPE_INTERACTIVE) {
+        [self.appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
+        [self.appDelegate.modeMap removeObserver:self forKeyPath:@"hoverModeDirection"];
     }
-    if (diamondType == DIAMOND_TYPE_PAIRING || diamondType == DIAMOND_TYPE_STATUSBAR) {
-        [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"pairedDevicesCount"];
-        [appDelegate.bluetoothMonitor.buttonTimer removeObserver:self forKeyPath:@"pairingActivatedCount"];
+    if (self.diamondType == DIAMOND_TYPE_PAIRING || self.diamondType == DIAMOND_TYPE_STATUSBAR) {
+        [self.appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"pairedDevicesCount"];
+        [self.appDelegate.bluetoothMonitor.buttonTimer removeObserver:self forKeyPath:@"pairingActivatedCount"];
     }
-    [appDelegate.modeMap removeObserver:self forKeyPath:@"activeModeDirection"];
-    [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedModeDirection"];
-    [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedMode"];
+    [self.appDelegate.modeMap removeObserver:self forKeyPath:@"activeModeDirection"];
+    [self.appDelegate.modeMap removeObserver:self forKeyPath:@"selectedModeDirection"];
+    [self.appDelegate.modeMap removeObserver:self forKeyPath:@"selectedMode"];
 }
 
 - (void)registerAsObserver {
-    if (diamondType == DIAMOND_TYPE_INTERACTIVE) {
-        [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
+    if (self.diamondType == DIAMOND_TYPE_INTERACTIVE) {
+        [self.appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
                                  options:0 context:nil];
-        [appDelegate.modeMap addObserver:self forKeyPath:@"hoverModeDirection"
+        [self.appDelegate.modeMap addObserver:self forKeyPath:@"hoverModeDirection"
                                  options:0 context:nil];
     }
-    if (diamondType == DIAMOND_TYPE_PAIRING || diamondType == DIAMOND_TYPE_STATUSBAR) {
-        [appDelegate.bluetoothMonitor addObserver:self forKeyPath:@"pairedDevicesCount"
+    if (self.diamondType == DIAMOND_TYPE_PAIRING || self.diamondType == DIAMOND_TYPE_STATUSBAR) {
+        [self.appDelegate.bluetoothMonitor addObserver:self forKeyPath:@"pairedDevicesCount"
                                           options:0 context:nil];
-        [appDelegate.bluetoothMonitor.buttonTimer addObserver:self forKeyPath:@"pairingActivatedCount"
+        [self.appDelegate.bluetoothMonitor.buttonTimer addObserver:self forKeyPath:@"pairingActivatedCount"
                                                       options:0 context:nil];
     }
-    [appDelegate.modeMap addObserver:self forKeyPath:@"activeModeDirection"
+    [self.appDelegate.modeMap addObserver:self forKeyPath:@"activeModeDirection"
                              options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
+    [self.appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
                              options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"selectedMode"
+    [self.appDelegate.modeMap addObserver:self forKeyPath:@"selectedMode"
                              options:0 context:nil];
 }
 
@@ -122,7 +125,7 @@
 }
          
 - (BOOL)isDeviceConnected {
-    return appDelegate.bluetoothMonitor.pairedDevicesCount.integerValue > 0;
+    return self.appDelegate.bluetoothMonitor.pairedDevicesCount.integerValue > 0;
 }
          
 #pragma mark - Drawing
@@ -137,7 +140,7 @@
 
     NSRect rect = self.bounds;
     [self drawPaths:rect];
-    if (diamondType != DIAMOND_TYPE_HUD) {
+    if (self.diamondType != DIAMOND_TYPE_HUD) {
         [self colorPaths:rect];
     }
 }
@@ -148,97 +151,97 @@
     CGFloat height = NSMaxY(rect);
     CGFloat spacing = SPACING_PCT * width;
     
-    northPathTop = [NSBezierPath bezierPath];
-    northPathBottom = [NSBezierPath bezierPath];
-    [northPathTop setLineJoinStyle:NSMiterLineJoinStyle];
-    [northPathBottom setLineJoinStyle:NSMiterLineJoinStyle];
-    [northPathTop moveToPoint:NSMakePoint(width * 1/4 + 1.3*spacing,
+    self.northPathTop = [NSBezierPath bezierPath];
+    self.northPathBottom = [NSBezierPath bezierPath];
+    [self.northPathTop setLineJoinStyle:NSMiterLineJoinStyle];
+    [self.northPathBottom setLineJoinStyle:NSMiterLineJoinStyle];
+    [self.northPathTop moveToPoint:NSMakePoint(width * 1/4 + 1.3*spacing,
                                           height * 3/4 + spacing)];
-    [northPathTop lineToPoint:NSMakePoint(width / 2,
+    [self.northPathTop lineToPoint:NSMakePoint(width / 2,
                                           height)];
-    [northPathTop lineToPoint:NSMakePoint(width * 3/4 - 1.3*spacing,
+    [self.northPathTop lineToPoint:NSMakePoint(width * 3/4 - 1.3*spacing,
                                           height * 3/4 + spacing)];
-    [northPathBottom moveToPoint:NSMakePoint(width * 3/4 - 1.3*spacing,
+    [self.northPathBottom moveToPoint:NSMakePoint(width * 3/4 - 1.3*spacing,
                                              height * 3/4 + spacing)];
-    [northPathBottom lineToPoint:NSMakePoint(width / 2,
+    [self.northPathBottom lineToPoint:NSMakePoint(width / 2,
                                              height/2 + spacing*2)];
-    [northPathBottom lineToPoint:NSMakePoint(width * 1/4 + 1.3*spacing,
+    [self.northPathBottom lineToPoint:NSMakePoint(width * 1/4 + 1.3*spacing,
                                              height * 3/4 + spacing)];
     
-    eastPathTop = [NSBezierPath bezierPath];
-    eastPathBottom = [NSBezierPath bezierPath];
-    [eastPathTop setLineJoinStyle:NSMiterLineJoinStyle];
-    [eastPathBottom setLineJoinStyle:NSMiterLineJoinStyle];
-    [eastPathTop moveToPoint:NSMakePoint(width * 1/2 + 1.3*spacing*2,
+    self.eastPathTop = [NSBezierPath bezierPath];
+    self.eastPathBottom = [NSBezierPath bezierPath];
+    [self.eastPathTop setLineJoinStyle:NSMiterLineJoinStyle];
+    [self.eastPathBottom setLineJoinStyle:NSMiterLineJoinStyle];
+    [self.eastPathTop moveToPoint:NSMakePoint(width * 1/2 + 1.3*spacing*2,
                                          height * 1/2)];
-    [eastPathTop lineToPoint:NSMakePoint(width * 3/4 + 1.3*spacing,
+    [self.eastPathTop lineToPoint:NSMakePoint(width * 3/4 + 1.3*spacing,
                                          height * 3/4 - spacing)];
-    [eastPathTop lineToPoint:NSMakePoint(width,
+    [self.eastPathTop lineToPoint:NSMakePoint(width,
                                          height * 1/2)];
-    [eastPathBottom moveToPoint:NSMakePoint(width,
+    [self.eastPathBottom moveToPoint:NSMakePoint(width,
                                             height * 1/2)];
-    [eastPathBottom lineToPoint:NSMakePoint(width * 3/4 + 1.3*spacing,
+    [self.eastPathBottom lineToPoint:NSMakePoint(width * 3/4 + 1.3*spacing,
                                             height * 1/4 + spacing)];
-    [eastPathBottom lineToPoint:NSMakePoint(width * 1/2 + 1.3*spacing*2,
+    [self.eastPathBottom lineToPoint:NSMakePoint(width * 1/2 + 1.3*spacing*2,
                                             height * 1/2)];
 
-    westPathTop = [NSBezierPath bezierPath];
-    westPathBottom = [NSBezierPath bezierPath];
-    [westPathTop setLineJoinStyle:NSMiterLineJoinStyle];
-    [westPathBottom setLineJoinStyle:NSMiterLineJoinStyle];
-    [westPathTop moveToPoint:NSMakePoint(width * 1/2 - 1.3*spacing*2,
+    self.westPathTop = [NSBezierPath bezierPath];
+    self.westPathBottom = [NSBezierPath bezierPath];
+    [self.westPathTop setLineJoinStyle:NSMiterLineJoinStyle];
+    [self.westPathBottom setLineJoinStyle:NSMiterLineJoinStyle];
+    [self.westPathTop moveToPoint:NSMakePoint(width * 1/2 - 1.3*spacing*2,
                                          height * 1/2)];
-    [westPathTop lineToPoint:NSMakePoint(width * 1/4 - 1.3*spacing,
+    [self.westPathTop lineToPoint:NSMakePoint(width * 1/4 - 1.3*spacing,
                                          height * 3/4 - spacing)];
-    [westPathTop lineToPoint:NSMakePoint(0,
+    [self.westPathTop lineToPoint:NSMakePoint(0,
                                          height * 1/2)];
-    [westPathBottom moveToPoint:NSMakePoint(0,
+    [self.westPathBottom moveToPoint:NSMakePoint(0,
                                             height * 1/2)];
-    [westPathBottom lineToPoint:NSMakePoint(width * 1/4 - 1.3*spacing,
+    [self.westPathBottom lineToPoint:NSMakePoint(width * 1/4 - 1.3*spacing,
                                             height * 1/4 + spacing)];
-    [westPathBottom lineToPoint:NSMakePoint(width * 1/2 - 1.3*spacing*2,
+    [self.westPathBottom lineToPoint:NSMakePoint(width * 1/2 - 1.3*spacing*2,
                                             height * 1/2)];
     
-    southPathTop = [NSBezierPath bezierPath];
-    southPathBottom = [NSBezierPath bezierPath];
-    [southPathTop setLineJoinStyle:NSMiterLineJoinStyle];
-    [southPathBottom setLineJoinStyle:NSMiterLineJoinStyle];
-    [southPathTop moveToPoint:NSMakePoint(width * 3/4 - 1.3*spacing,
+    self.southPathTop = [NSBezierPath bezierPath];
+    self.southPathBottom = [NSBezierPath bezierPath];
+    [self.southPathTop setLineJoinStyle:NSMiterLineJoinStyle];
+    [self.southPathBottom setLineJoinStyle:NSMiterLineJoinStyle];
+    [self.southPathTop moveToPoint:NSMakePoint(width * 3/4 - 1.3*spacing,
                                           height * 1/4 - spacing)];
-    [southPathTop lineToPoint:NSMakePoint(width * 1/2,
+    [self.southPathTop lineToPoint:NSMakePoint(width * 1/2,
                                           height * 1/2 - spacing*2)];
-    [southPathTop lineToPoint:NSMakePoint(width * 1/4 + 1.3*spacing,
+    [self.southPathTop lineToPoint:NSMakePoint(width * 1/4 + 1.3*spacing,
                                           height * 1/4 - spacing)];
-    [southPathBottom moveToPoint:NSMakePoint(width * 1/4 + 1.3*spacing,
+    [self.southPathBottom moveToPoint:NSMakePoint(width * 1/4 + 1.3*spacing,
                                              height * 1/4 - spacing)];
-    [southPathBottom lineToPoint:NSMakePoint(width * 1/2,
+    [self.southPathBottom lineToPoint:NSMakePoint(width * 1/2,
                                              0)];
-    [southPathBottom lineToPoint:NSMakePoint(width * 3/4 - 1.3*spacing,
+    [self.southPathBottom lineToPoint:NSMakePoint(width * 3/4 - 1.3*spacing,
                                              height * 1/4 - spacing)];
 }
 
 - (void)colorPaths:(NSRect)rect {
     // TODO: This entire view needs to be split into a mode diamond and action diamond, since only
     //       the action diamond is interactive.
-    TTModeDirection activeModeDirection = (ignoreActiveMode || diamondType == DIAMOND_TYPE_INTERACTIVE) ? overrideActiveDirection : appDelegate.modeMap.activeModeDirection;
-    TTModeDirection selectedModeDirection = ignoreSelectedMode ? overrideSelectedDirection : appDelegate.modeMap.selectedModeDirection;
-    TTModeDirection inspectingModeDirection = appDelegate.modeMap.inspectingModeDirection;
-    TTModeDirection hoverModeDirection = appDelegate.modeMap.hoverModeDirection;
+    TTModeDirection activeModeDirection = (self.ignoreActiveMode || self.diamondType == DIAMOND_TYPE_INTERACTIVE) ? self.overrideActiveDirection : self.appDelegate.modeMap.activeModeDirection;
+    TTModeDirection selectedModeDirection = self.ignoreSelectedMode ? self.overrideSelectedDirection : self.appDelegate.modeMap.selectedModeDirection;
+    TTModeDirection inspectingModeDirection = self.appDelegate.modeMap.inspectingModeDirection;
+    TTModeDirection hoverModeDirection = self.appDelegate.modeMap.hoverModeDirection;
 
-    for (NSBezierPath *path in @[northPathTop, northPathBottom,
-                                 eastPathTop, eastPathBottom,
-                                 westPathTop, westPathBottom,
-                                 southPathTop, southPathBottom]) {
+    for (NSBezierPath *path in @[self.northPathTop, self.northPathBottom,
+                                 self.eastPathTop, self.eastPathBottom,
+                                 self.westPathTop, self.westPathBottom,
+                                 self.southPathTop, self.southPathBottom]) {
         TTModeDirection direction = NO_DIRECTION;
-        BOOL bottomHalf = [@[northPathBottom, eastPathBottom, westPathBottom, southPathBottom]
+        BOOL bottomHalf = [@[self.northPathBottom, self.eastPathBottom, self.westPathBottom, self.southPathBottom]
                            containsObject:path];
-        if ([path isEqual:northPathTop] || [path isEqual:northPathBottom]) {
+        if ([path isEqual:self.northPathTop] || [path isEqual:self.northPathBottom]) {
             direction = NORTH;
-        } else if ([path isEqual:eastPathTop] || [path isEqual:eastPathBottom]) {
+        } else if ([path isEqual:self.eastPathTop] || [path isEqual:self.eastPathBottom]) {
             direction = EAST;
-        } else if ([path isEqual:westPathTop] || [path isEqual:westPathBottom]) {
+        } else if ([path isEqual:self.westPathTop] || [path isEqual:self.westPathBottom]) {
             direction = WEST;
-        } else if ([path isEqual:southPathTop] || [path isEqual:southPathBottom]) {
+        } else if ([path isEqual:self.southPathTop] || [path isEqual:self.southPathBottom]) {
             direction = SOUTH;
         }
 
@@ -247,19 +250,19 @@
         BOOL isSelectedDirection    = selectedModeDirection == direction;
         BOOL isActiveDirection      = activeModeDirection == direction;
         
-        if (diamondType != DIAMOND_TYPE_INTERACTIVE) {
+        if (self.diamondType != DIAMOND_TYPE_INTERACTIVE) {
             isInspectingDirection = NO;
         }
-        if (diamondType == DIAMOND_TYPE_PAIRING) {
-            isSelectedDirection = [appDelegate.bluetoothMonitor.buttonTimer isDirectionPaired:direction];
+        if (self.diamondType == DIAMOND_TYPE_PAIRING) {
+            isSelectedDirection = [self.appDelegate.bluetoothMonitor.buttonTimer isDirectionPaired:direction];
         }
         
         // Fill in the color as a stroke or fill
         NSColor *modeColor;
-        if (diamondType == DIAMOND_TYPE_HUD) {
+        if (self.diamondType == DIAMOND_TYPE_HUD) {
             CGFloat alpha = 0.9f;
             modeColor = NSColorFromRGBAlpha(0xFFFFFF, alpha);
-        } else if (diamondType == DIAMOND_TYPE_INTERACTIVE) {
+        } else if (self.diamondType == DIAMOND_TYPE_INTERACTIVE) {
             if (isActiveDirection) {
                 modeColor = NSColorFromRGB(0x505AC0);
             } else if (isHoveringDirection && !isInspectingDirection) {
@@ -272,7 +275,7 @@
                     modeColor = NSColorFromRGB(0xC3C7C9);
                 }
             }
-        } else if (diamondType == DIAMOND_TYPE_STATUSBAR) {
+        } else if (self.diamondType == DIAMOND_TYPE_STATUSBAR) {
             if (self.isHighlighted) {
                 if (isActiveDirection) {
                     CGFloat alpha = isSelectedDirection ? 0.8 : 1.0;
@@ -306,12 +309,12 @@
                     modeColor = NSColorFromRGBAlpha(0x515559, alpha);
                 }
             }
-        } else if (diamondType == DIAMOND_TYPE_MODE || diamondType == DIAMOND_TYPE_PAIRING) {
+        } else if (self.diamondType == DIAMOND_TYPE_MODE || self.diamondType == DIAMOND_TYPE_PAIRING) {
             if (isActiveDirection) {
                 CGFloat alpha = 0.5f;
                 modeColor = NSColorFromRGBAlpha(0x303033, alpha);
             } else if (isSelectedDirection) {
-                if (diamondType == DIAMOND_TYPE_PAIRING || appDelegate.modeMap.selectedModeDirection == direction) {
+                if (self.diamondType == DIAMOND_TYPE_PAIRING || self.appDelegate.modeMap.selectedModeDirection == direction) {
                     CGFloat alpha = 0.8f;
                     modeColor = NSColorFromRGBAlpha(0x1555D8, alpha);
                 } else {
@@ -326,12 +329,12 @@
         
         NSBezierPath *combinedPath = [NSBezierPath alloc];
         [combinedPath appendBezierPath:path];
-        if (path == northPathTop) [combinedPath appendBezierPath:northPathBottom];
-        if (path == eastPathTop) [combinedPath appendBezierPath:eastPathBottom];
-        if (path == westPathTop) [combinedPath appendBezierPath:westPathBottom];
-        if (path == southPathTop) [combinedPath appendBezierPath:southPathBottom];
+        if (path == self.northPathTop) [combinedPath appendBezierPath:self.northPathBottom];
+        if (path == self.eastPathTop) [combinedPath appendBezierPath:self.eastPathBottom];
+        if (path == self.westPathTop) [combinedPath appendBezierPath:self.westPathBottom];
+        if (path == self.southPathTop) [combinedPath appendBezierPath:self.southPathBottom];
 
-        if (!showOutline) {
+        if (!self.showOutline) {
             [modeColor setFill];
             if (!bottomHalf) {
                 [combinedPath fill];
@@ -342,7 +345,7 @@
             [combinedPath stroke];
         }
         
-        if (diamondType == DIAMOND_TYPE_INTERACTIVE) {
+        if (self.diamondType == DIAMOND_TYPE_INTERACTIVE) {
             if (isActiveDirection) {
                 [NSColorFromRGB(0xFFFFFF) set];
             } else if (isInspectingDirection || isHoveringDirection) {
@@ -371,7 +374,7 @@
 }
 
 - (void)createTrackingArea {
-    if (diamondType != DIAMOND_TYPE_INTERACTIVE) return;
+    if (self.diamondType != DIAMOND_TYPE_INTERACTIVE) return;
     
     for (NSTrackingArea *area in self.trackingAreas) {
         [self removeTrackingArea:area];
@@ -387,7 +390,7 @@
 }
 
 - (void)mouseDown:(NSEvent *)theEvent {
-    if (diamondType != DIAMOND_TYPE_INTERACTIVE) {
+    if (self.diamondType != DIAMOND_TYPE_INTERACTIVE) {
         [super mouseDown:theEvent];
         return;
     }
@@ -395,21 +398,21 @@
     NSPoint location = [theEvent locationInWindow];
     NSPoint center = [self convertPoint:location fromView:nil];
     
-    if ([northPathTop containsPoint:center] || [northPathBottom containsPoint:center]) {
-        overrideActiveDirection = NORTH;
-    } else if ([eastPathTop containsPoint:center] || [eastPathBottom containsPoint:center]) {
-        overrideActiveDirection = EAST;
-    } else if ([westPathTop containsPoint:center] || [westPathBottom containsPoint:center]) {
-        overrideActiveDirection = WEST;
-    } else if ([southPathTop containsPoint:center] || [southPathBottom containsPoint:center]) {
-        overrideActiveDirection = SOUTH;
+    if ([self.northPathTop containsPoint:center] || [self.northPathBottom containsPoint:center]) {
+        self.overrideActiveDirection = NORTH;
+    } else if ([self.eastPathTop containsPoint:center] || [self.eastPathBottom containsPoint:center]) {
+        self.overrideActiveDirection = EAST;
+    } else if ([self.westPathTop containsPoint:center] || [self.westPathBottom containsPoint:center]) {
+        self.overrideActiveDirection = WEST;
+    } else if ([self.southPathTop containsPoint:center] || [self.southPathBottom containsPoint:center]) {
+        self.overrideActiveDirection = SOUTH;
     }
     
     [self setNeedsDisplay:YES];
 }
 
 - (void)mouseUp:(NSEvent *)theEvent {
-    if (diamondType != DIAMOND_TYPE_INTERACTIVE) {
+    if (self.diamondType != DIAMOND_TYPE_INTERACTIVE) {
         [super mouseUp:theEvent];
         return;
     }
@@ -417,17 +420,17 @@
     NSPoint location = [theEvent locationInWindow];
     NSPoint center = [self convertPoint:location fromView:nil];
 
-    if ([northPathTop containsPoint:center] || [northPathBottom containsPoint:center]) {
-        [appDelegate.modeMap toggleInspectingModeDirection:NORTH];
-    } else if ([eastPathTop containsPoint:center] || [eastPathBottom containsPoint:center]) {
-        [appDelegate.modeMap toggleInspectingModeDirection:EAST];
-    } else if ([westPathTop containsPoint:center] || [westPathBottom containsPoint:center]) {
-        [appDelegate.modeMap toggleInspectingModeDirection:WEST];
-    } else if ([southPathTop containsPoint:center] || [southPathBottom containsPoint:center]) {
-        [appDelegate.modeMap toggleInspectingModeDirection:SOUTH];
+    if ([self.northPathTop containsPoint:center] || [self.northPathBottom containsPoint:center]) {
+        [self.appDelegate.modeMap toggleInspectingModeDirection:NORTH];
+    } else if ([self.eastPathTop containsPoint:center] || [self.eastPathBottom containsPoint:center]) {
+        [self.appDelegate.modeMap toggleInspectingModeDirection:EAST];
+    } else if ([self.westPathTop containsPoint:center] || [self.westPathBottom containsPoint:center]) {
+        [self.appDelegate.modeMap toggleInspectingModeDirection:WEST];
+    } else if ([self.southPathTop containsPoint:center] || [self.southPathBottom containsPoint:center]) {
+        [self.appDelegate.modeMap toggleInspectingModeDirection:SOUTH];
     }
 
-    overrideActiveDirection = NO_DIRECTION;
+    self.overrideActiveDirection = NO_DIRECTION;
     
     [self setNeedsDisplay:YES];
 }
@@ -438,7 +441,7 @@
     [[NSCursor pointingHandCursor] set];
 }
 - (void)mouseMoved:(NSEvent *)theEvent {
-    if (diamondType != DIAMOND_TYPE_INTERACTIVE) {
+    if (self.diamondType != DIAMOND_TYPE_INTERACTIVE) {
         [super mouseMoved:theEvent];
         return;
     }
@@ -446,46 +449,46 @@
     NSPoint location = [theEvent locationInWindow];
     NSPoint center = [self convertPoint:location fromView:nil];
     
-    if ([northPathTop containsPoint:center] || [northPathBottom containsPoint:center]) {
-        overrideActiveDirection = NORTH;
-    } else if ([eastPathTop containsPoint:center] || [eastPathBottom containsPoint:center]) {
-        overrideActiveDirection = EAST;
-    } else if ([westPathTop containsPoint:center] || [westPathBottom containsPoint:center]) {
-        overrideActiveDirection = WEST;
-    } else if ([southPathTop containsPoint:center] || [southPathBottom containsPoint:center]) {
-        overrideActiveDirection = SOUTH;
+    if ([self.northPathTop containsPoint:center] || [self.northPathBottom containsPoint:center]) {
+        self.overrideActiveDirection = NORTH;
+    } else if ([self.eastPathTop containsPoint:center] || [self.eastPathBottom containsPoint:center]) {
+        self.overrideActiveDirection = EAST;
+    } else if ([self.westPathTop containsPoint:center] || [self.westPathBottom containsPoint:center]) {
+        self.overrideActiveDirection = WEST;
+    } else if ([self.southPathTop containsPoint:center] || [self.southPathBottom containsPoint:center]) {
+        self.overrideActiveDirection = SOUTH;
     } else {
-        overrideActiveDirection = NO_DIRECTION;
+        self.overrideActiveDirection = NO_DIRECTION;
     }
     
     [self mouseMovement:theEvent hovering:YES];
 }
 
 - (void)mouseExited:(NSEvent *)theEvent {
-    if (diamondType != DIAMOND_TYPE_INTERACTIVE) {
+    if (self.diamondType != DIAMOND_TYPE_INTERACTIVE) {
         [super mouseExited:theEvent];
         return;
     }
     [[NSCursor arrowCursor] set];
-    [appDelegate.modeMap toggleHoverModeDirection:NO_DIRECTION hovering:NO];
+    [self.appDelegate.modeMap toggleHoverModeDirection:NO_DIRECTION hovering:NO];
 }
 
 - (void)mouseMovement:(NSEvent *)theEvent hovering:(BOOL)hovering {
-    if (diamondType != DIAMOND_TYPE_INTERACTIVE) return;
+    if (self.diamondType != DIAMOND_TYPE_INTERACTIVE) return;
     
     NSPoint location = [theEvent locationInWindow];
     NSPoint center = [self convertPoint:location fromView:nil];
 //    NSLog(@"Movement: %@ in %@", NSStringFromPoint(center), NSStringFromRect(self.bounds));
-    if ([northPathTop containsPoint:center] || [northPathBottom containsPoint:center]) {
-        [appDelegate.modeMap toggleHoverModeDirection:NORTH hovering:hovering];
-    } else if ([eastPathTop containsPoint:center] || [eastPathBottom containsPoint:center]) {
-        [appDelegate.modeMap toggleHoverModeDirection:EAST hovering:hovering];
-    } else if ([westPathTop containsPoint:center] || [westPathBottom containsPoint:center]) {
-        [appDelegate.modeMap toggleHoverModeDirection:WEST hovering:hovering];
-    } else if ([southPathTop containsPoint:center] || [southPathBottom containsPoint:center]) {
-        [appDelegate.modeMap toggleHoverModeDirection:SOUTH hovering:hovering];
-    } else if (appDelegate.modeMap.hoverModeDirection != NO_DIRECTION) {
-        [appDelegate.modeMap toggleHoverModeDirection:NO_DIRECTION hovering:NO];
+    if ([self.northPathTop containsPoint:center] || [self.northPathBottom containsPoint:center]) {
+        [self.appDelegate.modeMap toggleHoverModeDirection:NORTH hovering:hovering];
+    } else if ([self.eastPathTop containsPoint:center] || [self.eastPathBottom containsPoint:center]) {
+        [self.appDelegate.modeMap toggleHoverModeDirection:EAST hovering:hovering];
+    } else if ([self.westPathTop containsPoint:center] || [self.westPathBottom containsPoint:center]) {
+        [self.appDelegate.modeMap toggleHoverModeDirection:WEST hovering:hovering];
+    } else if ([self.southPathTop containsPoint:center] || [self.southPathBottom containsPoint:center]) {
+        [self.appDelegate.modeMap toggleHoverModeDirection:SOUTH hovering:hovering];
+    } else if (self.appDelegate.modeMap.hoverModeDirection != NO_DIRECTION) {
+        [self.appDelegate.modeMap toggleHoverModeDirection:NO_DIRECTION hovering:NO];
     }
 }
 

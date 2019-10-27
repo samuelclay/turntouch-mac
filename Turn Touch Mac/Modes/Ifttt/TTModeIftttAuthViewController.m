@@ -11,21 +11,17 @@
 
 @implementation TTModeIftttAuthViewController
 
-@synthesize webView;
-@synthesize modeIfttt;
-@synthesize authPopover;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    appDelegate = (TTAppDelegate *)[NSApp delegate];
+    self.appDelegate = (TTAppDelegate *)[NSApp delegate];
     
-    [webView setResourceLoadDelegate:self];
-    [webView setFrameLoadDelegate:self];
+    [self.webView setResourceLoadDelegate:self];
+    [self.webView setFrameLoadDelegate:self];
 }
 
 - (void)authorizeIfttt {
-    NSDictionary *attrs = [appDelegate.modeMap deviceAttrs];
+    NSDictionary *attrs = [self.appDelegate.modeMap deviceAttrs];
     NSURLComponents *components = [NSURLComponents componentsWithString:@"https://turntouch.com/ifttt/begin"];
     NSMutableArray *query = [NSMutableArray array];
     for (NSString *key in attrs) {
@@ -34,14 +30,14 @@
     components.queryItems = query;
     
     NSLog(@" ---> Authorizing IFTTT: %@", components.URL.absoluteString);
-    [webView setMainFrameURL:components.URL.absoluteString];
+    [self.webView setMainFrameURL:components.URL.absoluteString];
 }
 
 - (void)openRecipe:(TTModeDirection)direction {
-    NSString *modeDirection = [appDelegate.modeMap directionName:self.modeIfttt.modeDirection];
-    NSString *actionDirection = [appDelegate.modeMap directionName:direction];
+    NSString *modeDirection = [self.appDelegate.modeMap directionName:self.modeIfttt.modeDirection];
+    NSString *actionDirection = [self.appDelegate.modeMap directionName:direction];
     
-    NSMutableDictionary *attrs = [[appDelegate.modeMap deviceAttrs] mutableCopy];
+    NSMutableDictionary *attrs = [[self.appDelegate.modeMap deviceAttrs] mutableCopy];
     attrs[@"app_direction"] = modeDirection;
     attrs[@"button_direction"] = actionDirection;
     
@@ -52,7 +48,7 @@
     }
     components.queryItems = query;
     
-    [webView setMainFrameURL:components.URL.absoluteString];
+    [self.webView setMainFrameURL:components.URL.absoluteString];
 }
 
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame {
@@ -62,7 +58,7 @@
     NSLog(@" ---> IFTTT URL: %@", iftttURL);
     [sender stringByEvaluatingJavaScriptFromString:@"window.open = function(open) { return function (url, name, features) { window.location.href = url; return window; }; } (window.open);"];
     if ([iftttURL containsString:@"connection-finished"]) {
-        [webView setMainFrameURL:@"https://ifttt.com/create/if-turntouch?sid=11"];
+        [self.webView setMainFrameURL:@"https://ifttt.com/create/if-turntouch?sid=11"];
     }
 }
 

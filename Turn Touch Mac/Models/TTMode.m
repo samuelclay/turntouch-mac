@@ -11,19 +11,16 @@
 
 @implementation TTMode
 
-@synthesize modeDirection;
-@synthesize action;
-
 - (id)init {
     self = [super init];
     if (self) {
-        appDelegate = (TTAppDelegate *)[NSApp delegate];
+        self.appDelegate = (TTAppDelegate *)[NSApp delegate];
     }
     return self;
 }
 
 - (void)activate:(TTModeDirection)_modeDirection {
-    modeDirection = _modeDirection;
+    self.modeDirection = _modeDirection;
 
     [self activate];
 }
@@ -173,8 +170,8 @@
 
 - (void)setCustomTitle:(NSString *)title direction:(TTModeDirection)direction {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    NSString *modeDirectionName = [appDelegate.modeMap directionName:appDelegate.modeMap.selectedModeDirection];
-    NSString *actionDirectionName = [appDelegate.modeMap directionName:direction];
+    NSString *modeDirectionName = [self.appDelegate.modeMap directionName:self.appDelegate.modeMap.selectedModeDirection];
+    NSString *actionDirectionName = [self.appDelegate.modeMap directionName:direction];
     NSString *actionName = [self actionNameInDirection:direction];
     NSString *prefKey = [NSString stringWithFormat:@"TT:%@-%@:action:%@-%@:customTitle",
                          NSStringFromClass([self class]), modeDirectionName, actionName, actionDirectionName];
@@ -192,8 +189,8 @@
     
     // First check if given custom title
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    NSString *modeDirectionName = [appDelegate.modeMap directionName:appDelegate.modeMap.selectedModeDirection];
-    NSString *actionDirectionName = [appDelegate.modeMap directionName:direction];
+    NSString *modeDirectionName = [self.appDelegate.modeMap directionName:self.appDelegate.modeMap.selectedModeDirection];
+    NSString *actionDirectionName = [self.appDelegate.modeMap directionName:direction];
     NSString *prefKey = [NSString stringWithFormat:@"TT:%@-%@:action:%@-%@:customTitle",
                          NSStringFromClass([self class]), modeDirectionName, actionName, actionDirectionName];
     NSString *customTitle = [prefs stringForKey:prefKey];
@@ -226,8 +223,8 @@
     
     // First check if given custom title
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    NSString *modeDirectionName = [appDelegate.modeMap directionName:appDelegate.modeMap.selectedModeDirection];
-    NSString *actionDirectionName = [appDelegate.modeMap directionName:direction];
+    NSString *modeDirectionName = [self.appDelegate.modeMap directionName:self.appDelegate.modeMap.selectedModeDirection];
+    NSString *actionDirectionName = [self.appDelegate.modeMap directionName:direction];
     NSString *prefKey = [NSString stringWithFormat:@"TT:%@-%@:action:%@-%@:customTitle",
                          NSStringFromClass([self class]), modeDirectionName, actionName, actionDirectionName];
     NSString *customTitle = [prefs stringForKey:prefKey];
@@ -358,14 +355,14 @@
 }
 
 - (NSString *)actionNameInDirection:(TTModeDirection)direction {
-    if (action.batchActionKey) {
-        return action.actionName;
+    if (self.action.batchActionKey) {
+        return self.action.actionName;
     }
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    NSString *modeDirectionName = [appDelegate.modeMap directionName:modeDirection];
-    NSString *actionDirectionName = [appDelegate.modeMap directionName:direction];
+    NSString *modeDirectionName = [self.appDelegate.modeMap directionName:self.modeDirection];
+    NSString *actionDirectionName = [self.appDelegate.modeMap directionName:direction];
     NSString *directionAction;
 
     if (direction != NO_DIRECTION) {
@@ -410,8 +407,8 @@
 
 - (void)changeDirection:(TTModeDirection)direction toAction:(NSString *)actionClassName {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    NSString *modeDirectionName = [appDelegate.modeMap directionName:appDelegate.modeMap.selectedModeDirection];
-    NSString *actionDirectionName = [appDelegate.modeMap directionName:direction];
+    NSString *modeDirectionName = [self.appDelegate.modeMap directionName:self.appDelegate.modeMap.selectedModeDirection];
+    NSString *actionDirectionName = [self.appDelegate.modeMap directionName:direction];
     NSString *prefKey = [NSString stringWithFormat:@"TT:%@-%@:action:%@",
                          NSStringFromClass([self class]), modeDirectionName, actionDirectionName];
     
@@ -422,7 +419,7 @@
 #pragma mark - Timers
 
 - (void)switchSelectedModeTo:(TTMode *)mode {
-    [appDelegate.modeMap switchMode:mode.modeDirection modeName:self.className];
+    [self.appDelegate.modeMap switchMode:mode.modeDirection modeName:self.className];
 }
 
 @end

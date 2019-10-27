@@ -14,13 +14,9 @@
 @class TTModeHUDWindowController;
 @class TTActionHUDWindowController;
 
-@interface TTHUDController : NSObject {
-    TTAppDelegate *appDelegate;
-    NSBlockOperation *modeOperation;
-    NSBlockOperation *actionOperation;
-    
-}
+@interface TTHUDController : NSObject
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic) IBOutlet TTModeHUDWindowController *modeHUDController;
 @property (nonatomic) IBOutlet TTActionHUDWindowController *actionHUDController;
 

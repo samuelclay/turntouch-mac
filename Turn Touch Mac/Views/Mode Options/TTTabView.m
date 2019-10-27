@@ -11,6 +11,12 @@
 
 const NSUInteger SEGMENTED_CONTROL_HEIGHT = 26;
 
+@interface TTTabView ()
+
+@property (nonatomic, strong) NSSegmentedControl *segmentedControl;
+
+@end
+
 @implementation TTTabView
 
 #pragma mark - Init and sizing
@@ -21,38 +27,38 @@ const NSUInteger SEGMENTED_CONTROL_HEIGHT = 26;
     [self setDrawsBackground:NO];
     [self setTranslatesAutoresizingMaskIntoConstraints:NO];
 
-    if (segmentedControl) {
-        [segmentedControl removeFromSuperview];
-        segmentedControl = nil;
+    if (self.segmentedControl) {
+        [self.segmentedControl removeFromSuperview];
+        self.segmentedControl = nil;
     }
 
-    segmentedControl = [[TTSegmentedControl alloc] init];
-    [segmentedControl setSegmentCount:self.numberOfTabViewItems];
-    [segmentedControl setSelectedSegment:[self indexOfTabViewItem:[self selectedTabViewItem]]];
-    [segmentedControl setTarget:self];
-    [segmentedControl setAction:@selector(ctrlSelected:)];
+    self.segmentedControl = [[TTSegmentedControl alloc] init];
+    [self.segmentedControl setSegmentCount:self.numberOfTabViewItems];
+    [self.segmentedControl setSelectedSegment:[self indexOfTabViewItem:[self selectedTabViewItem]]];
+    [self.segmentedControl setTarget:self];
+    [self.segmentedControl setAction:@selector(ctrlSelected:)];
     for (int i=0; i < self.numberOfTabViewItems; i++) {
-        [segmentedControl setLabel:[[self.tabViewItems objectAtIndex:i] label] forSegment:i];
+        [self.segmentedControl setLabel:[[self.tabViewItems objectAtIndex:i] label] forSegment:i];
     }
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:segmentedControl
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.segmentedControl
                                                      attribute:NSLayoutAttributeTop
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:self
                                                      attribute:NSLayoutAttributeTop
                                                     multiplier:1.0 constant:0.0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:segmentedControl
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.segmentedControl
                                                      attribute:NSLayoutAttributeCenterX
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:self
                                                      attribute:NSLayoutAttributeCenterX
                                                     multiplier:1.0 constant:0.0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:segmentedControl
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.segmentedControl
                                                      attribute:NSLayoutAttributeHeight
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:nil
                                                      attribute:0
                                                     multiplier:1.0 constant:SEGMENTED_CONTROL_HEIGHT]];
-    [self addSubview:segmentedControl];
+    [self addSubview:self.segmentedControl];
 }
 
 - (NSSize)minimumSize {
@@ -94,17 +100,17 @@ const NSUInteger SEGMENTED_CONTROL_HEIGHT = 26;
 
 - (void)selectTabViewItem:(NSTabViewItem *)tabViewItem {
     [super selectTabViewItem:tabViewItem];
-    [segmentedControl setSelectedSegment:[self indexOfTabViewItem:[self selectedTabViewItem]]];
+    [self.segmentedControl setSelectedSegment:[self indexOfTabViewItem:[self selectedTabViewItem]]];
 }
 
 - (void)selectTabViewItemAtIndex:(NSInteger)index {
     [super selectTabViewItemAtIndex:index];
-    [segmentedControl setSelectedSegment:[self indexOfTabViewItem:[self selectedTabViewItem]]];
+    [self.segmentedControl setSelectedSegment:[self indexOfTabViewItem:[self selectedTabViewItem]]];
 }
 
 - (void)selectTabViewItemWithIdentifier:(id)identifier {
     [super selectTabViewItemWithIdentifier:identifier];
-    [segmentedControl setSelectedSegment:[self indexOfTabViewItem:[self selectedTabViewItem]]];
+    [self.segmentedControl setSelectedSegment:[self indexOfTabViewItem:[self selectedTabViewItem]]];
 }
 
 - (void)addTabViewItem:(NSTabViewItem *)anItem {

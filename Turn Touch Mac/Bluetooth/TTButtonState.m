@@ -10,15 +10,9 @@
 
 @implementation TTButtonState
 
-@synthesize north;
-@synthesize east;
-@synthesize west;
-@synthesize south;
-@synthesize count;
-
 - (id)init {
     if (self = [super init]) {
-        count = 4;
+        self.count = 4;
     }
     
     return self;
@@ -27,13 +21,13 @@
 - (BOOL)state:(NSInteger)i {
     switch (i) {
         case 0:
-            return north;
+            return self.north;
         case 1:
-            return east;
+            return self.east;
         case 2:
-            return west;
+            return self.west;
         case 3:
-            return south;
+            return self.south;
         default:
             break;
     }
@@ -44,16 +38,16 @@
 - (void)replaceState:(NSInteger)i withState:(BOOL)state {
     switch (i) {
         case 0:
-            north = state;
+            self.north = state;
             break;
         case 1:
-            east = state;
+            self.east = state;
             break;
         case 2:
-            west = state;
+            self.west = state;
             break;
         case 3:
-            south = state;
+            self.south = state;
             break;
             
         default:
@@ -62,26 +56,26 @@
 }
 
 - (void)clearState {
-    north = NO;
-    east = NO;
-    west = NO;
-    south = NO;
+    self.north = NO;
+    self.east = NO;
+    self.west = NO;
+    self.south = NO;
 }
 
 - (BOOL)anyPressedDown {
-    return north || east || west || south;
+    return self.north || self.east || self.west || self.south;
 }
 
 - (BOOL)inMultitouch {
-    return (north && east) || (north && west) || (north && south) || (east && west) || (east && south) || (west && south);
+    return (self.north && self.east) || (self.north && self.west) || (self.north && self.south) || (self.east && self.west) || (self.east && self.south) || (self.west && self.south);
  }
 
 - (NSInteger)activatedCount {
-    return (north ? 1 : 0) + (east ? 1 : 0) + (west ? 1 : 0) + (south ? 1 : 0);
+    return (self.north ? 1 : 0) + (self.east ? 1 : 0) + (self.west ? 1 : 0) + (self.south ? 1 : 0);
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"N:%d E:%d W:%d S:%d", north, east, west, south];
+    return [NSString stringWithFormat:@"N:%d E:%d W:%d S:%d", self.north, self.east, self.west, self.south];
 }
 
 @end

@@ -11,52 +11,48 @@
 
 @interface TTModalSupportView ()
 
+@property (nonatomic) TTModalSupport modalSupport;
+@property (nonatomic, strong) NSMutableData *receivedData;
+
 @end
 
 @implementation TTModalSupportView
 
-@synthesize supportComment;
-@synthesize supportEmail;
-@synthesize supportLabel;
-@synthesize supportSegmentedControl;
-@synthesize spinner;
-@synthesize successImage;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    appDelegate = (TTAppDelegate *)[NSApp delegate];
+    self.appDelegate = (TTAppDelegate *)[NSApp delegate];
     [self chooseSupportSegmentedControl:nil];
     
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
     NSString *lastSupportEmail = [preferences objectForKey:@"TT:support:last_email"];
     if (lastSupportEmail) {
-        [supportEmail setStringValue:lastSupportEmail];
+        [self.supportEmail setStringValue:lastSupportEmail];
     }
 
-    [supportComment setFont:[NSFont fontWithName:@"Effra" size:13]];
-    [[supportComment textStorage] setFont:[NSFont fontWithName:@"Effra" size:13]];
+    [self.supportComment setFont:[NSFont fontWithName:@"Effra" size:13]];
+    [[self.supportComment textStorage] setFont:[NSFont fontWithName:@"Effra" size:13]];
 }
 
 - (void)closeModal:(id)sender {
-    [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_APP];
+    [self.appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_APP];
 }
 
 - (IBAction)chooseSupportSegmentedControl:(id)sender {
-    if (supportSegmentedControl.selectedSegment == 0) {
-        [supportLabel setStringValue:@"What can we help you with?"];
-        modalSupport = MODAL_SUPPORT_QUESTION;
-    } else if (supportSegmentedControl.selectedSegment == 1) {
-        [supportLabel setStringValue:@"What feature would you like to see?"];
-        modalSupport = MODAL_SUPPORT_IDEA;
-    } else if (supportSegmentedControl.selectedSegment == 2) {
-        [supportLabel setStringValue:@"What issue are you running into?"];
-        modalSupport = MODAL_SUPPORT_PROBLEM;
-    } else if (supportSegmentedControl.selectedSegment == 3) {
-        [supportLabel setStringValue:@"Thank you! What would you like to say?"];
-        modalSupport = MODAL_SUPPORT_PRAISE;
+    if (self.supportSegmentedControl.selectedSegment == 0) {
+        [self.supportLabel setStringValue:@"What can we help you with?"];
+        self.modalSupport = MODAL_SUPPORT_QUESTION;
+    } else if (self.supportSegmentedControl.selectedSegment == 1) {
+        [self.supportLabel setStringValue:@"What feature would you like to see?"];
+        self.modalSupport = MODAL_SUPPORT_IDEA;
+    } else if (self.supportSegmentedControl.selectedSegment == 2) {
+        [self.supportLabel setStringValue:@"What issue are you running into?"];
+        self.modalSupport = MODAL_SUPPORT_PROBLEM;
+    } else if (self.supportSegmentedControl.selectedSegment == 3) {
+        [self.supportLabel setStringValue:@"Thank you! What would you like to say?"];
+        self.modalSupport = MODAL_SUPPORT_PRAISE;
     }
 
-    [appDelegate.panelController.backgroundView.modalBarButton setPageSupport:modalSupport];
+    [self.appDelegate.panelController.backgroundView.modalBarButton setPageSupport:self.modalSupport];
 }
 
 - (BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector {
@@ -76,21 +72,21 @@
         // always insert a tab character and don’t cause the receiver to end editing
 //        [textView insertTabIgnoringFieldEditor:self];
 //        result = YES;
-        [supportEmail becomeFirstResponder];
+        [self.supportEmail becomeFirstResponder];
     }
     
     return result;
 }
 
 - (void)textDidChange:(NSNotification *)notification {
-    [supportComment setBackgroundColor:NSColorFromRGB(0xFFFFFF)];
-    [supportEmail setBackgroundColor:NSColorFromRGB(0xFFFFFF)];
+    [self.supportComment setBackgroundColor:NSColorFromRGB(0xFFFFFF)];
+    [self.supportEmail setBackgroundColor:NSColorFromRGB(0xFFFFFF)];
 }
                         
 
 - (void)controlTextDidChange:(NSNotification *)obj {
-    [supportComment setBackgroundColor:NSColorFromRGB(0xFFFFFF)];
-    [supportEmail setBackgroundColor:NSColorFromRGB(0xFFFFFF)];
+    [self.supportComment setBackgroundColor:NSColorFromRGB(0xFFFFFF)];
+    [self.supportEmail setBackgroundColor:NSColorFromRGB(0xFFFFFF)];
 }
 
 #pragma mark - Submitting support request
@@ -121,24 +117,24 @@
 }
 
 - (void)submitSupport {
-    if (![self isValidEmailAddress:supportEmail.stringValue]) {
-        [supportEmail setBackgroundColor:NSColorFromRGB(0xFFCA44)];
+    if (![self isValidEmailAddress:self.supportEmail.stringValue]) {
+        [self.supportEmail setBackgroundColor:NSColorFromRGB(0xFFCA44)];
         return;
     }
     
-    if ([self isEmptyMessage:supportComment.string]) {
-        [supportComment setBackgroundColor:NSColorFromRGB(0xFFCA44)];
+    if ([self isEmptyMessage:self.supportComment.string]) {
+        [self.supportComment setBackgroundColor:NSColorFromRGB(0xFFCA44)];
         return;
     }
     
     NSURL *url = [NSURL URLWithString:@"https://www.turntouch.com/support/in_app"];
     NSString *postString = [NSString stringWithFormat:@"thread_type=%@&email=%@&comments=%@",
-                            supportSegmentedControl.selectedSegment == 0 ? @"question" :
-                            supportSegmentedControl.selectedSegment == 1 ? @"idea" :
-                            supportSegmentedControl.selectedSegment == 2 ? @"problem" :
-                            supportSegmentedControl.selectedSegment == 3 ? @"praise" : @"error",
-                            [supportEmail.stringValue urlEncodeUsingEncoding:NSUTF8StringEncoding],
-                            [supportComment.string urlEncodeUsingEncoding:NSUTF8StringEncoding]];
+                            self.supportSegmentedControl.selectedSegment == 0 ? @"question" :
+                            self.supportSegmentedControl.selectedSegment == 1 ? @"idea" :
+                            self.supportSegmentedControl.selectedSegment == 2 ? @"problem" :
+                            self.supportSegmentedControl.selectedSegment == 3 ? @"praise" : @"error",
+                            [self.supportEmail.stringValue urlEncodeUsingEncoding:NSUTF8StringEncoding],
+                            [self.supportComment.string urlEncodeUsingEncoding:NSUTF8StringEncoding]];
     NSData *postData = [postString dataUsingEncoding:NSUTF8StringEncoding];
     NSString *postLength = [NSString stringWithFormat:@"%ld", (long)postData.length];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
@@ -152,48 +148,48 @@
     
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request
                                                                   delegate:self];
-    receivedData = [NSMutableData data];
+    self.receivedData = [NSMutableData data];
     [connection start];
     
-    [spinner setHidden:NO];
-    [supportComment setBackgroundColor:NSColorFromRGB(0xE0E0E0)];
-    [supportComment setEditable:NO];
-    [supportEmail setBackgroundColor:NSColorFromRGB(0xE0E0E0)];
-    [supportEmail setEditable:NO];
-    [supportSegmentedControl setEnabled:NO];
-    [appDelegate.panelController.backgroundView.modalBarButton setPageSupport:MODAL_SUPPORT_SUBMITTING];
+    [self.spinner setHidden:NO];
+    [self.supportComment setBackgroundColor:NSColorFromRGB(0xE0E0E0)];
+    [self.supportComment setEditable:NO];
+    [self.supportEmail setBackgroundColor:NSColorFromRGB(0xE0E0E0)];
+    [self.supportEmail setEditable:NO];
+    [self.supportSegmentedControl setEnabled:NO];
+    [self.appDelegate.panelController.backgroundView.modalBarButton setPageSupport:MODAL_SUPPORT_SUBMITTING];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    [receivedData setLength:0];
+    [self.receivedData setLength:0];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    [receivedData appendData:data];
+    [self.receivedData appendData:data];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSString *receivedString = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
+    NSString *receivedString = [[NSString alloc] initWithData:self.receivedData encoding:NSUTF8StringEncoding];
     NSLog(@"Connection finished: %@", receivedString);
-    [spinner setHidden:YES];
-    [successImage setHidden:NO];
-    [appDelegate.panelController.backgroundView.modalBarButton setPageSupport:MODAL_SUPPORT_SUBMITTED];
+    [self.spinner setHidden:YES];
+    [self.successImage setHidden:NO];
+    [self.appDelegate.panelController.backgroundView.modalBarButton setPageSupport:MODAL_SUPPORT_SUBMITTED];
 
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
-    [preferences setObject:supportEmail.stringValue forKey:@"TT:support:last_email"];
+    [preferences setObject:self.supportEmail.stringValue forKey:@"TT:support:last_email"];
     [preferences synchronize];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     NSLog(@"Connection error: %@ / %@", connection, error);
-    [spinner setHidden:YES];
-    [successImage setHidden:YES];
-    [supportComment setBackgroundColor:NSColorFromRGB(0xFFFFFF)];
-    [supportComment setEditable:YES];
-    [supportEmail setBackgroundColor:NSColorFromRGB(0xFFFFFF)];
-    [supportEmail setEditable:YES];
-    [supportSegmentedControl setEnabled:YES];
-    [appDelegate.panelController.backgroundView.modalBarButton setPageSupport:modalSupport];
+    [self.spinner setHidden:YES];
+    [self.successImage setHidden:YES];
+    [self.supportComment setBackgroundColor:NSColorFromRGB(0xFFFFFF)];
+    [self.supportComment setEditable:YES];
+    [self.supportEmail setBackgroundColor:NSColorFromRGB(0xFFFFFF)];
+    [self.supportEmail setEditable:YES];
+    [self.supportSegmentedControl setEnabled:YES];
+    [self.appDelegate.panelController.backgroundView.modalBarButton setPageSupport:self.modalSupport];
 }
 
 @end

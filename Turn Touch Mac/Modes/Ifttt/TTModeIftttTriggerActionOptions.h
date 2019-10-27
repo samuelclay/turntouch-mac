@@ -11,10 +11,7 @@
 #import "TTModeIfttt.h"
 #import "TTOptionsDetailViewController.h"
 
-@interface TTModeIftttTriggerActionOptions : TTOptionsDetailViewController <WebResourceLoadDelegate, NSMenuDelegate> {
-    BOOL isMenuVisible;
-    NSMenu *settingsMenu;
-}
+@interface TTModeIftttTriggerActionOptions : TTOptionsDetailViewController <WebResourceLoadDelegate, NSMenuDelegate>
 
 @property (nonatomic) TTModeIfttt *modeIfttt;
 @property (nonatomic) NSPopover *authPopover;

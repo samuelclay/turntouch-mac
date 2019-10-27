@@ -8,8 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface TTPairingSpinner : NSView {
-    NSTimeInterval spinnerBeginTime;
-}
+@interface TTPairingSpinner : NSView
 
 @end

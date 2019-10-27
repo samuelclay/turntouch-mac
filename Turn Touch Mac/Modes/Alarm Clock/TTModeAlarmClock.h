@@ -19,14 +19,7 @@ typedef enum {
     ALARM_CLOCK_STATUS_ON = 2
 } TTModeAlarmClockStatus;
 
-@interface TTModeAlarmClock : TTMode <AVAudioPlayerDelegate> {
-    NSInteger trackIndex;
-    SBElementArray *tracks;
-    CGFloat originalSystemVolume;
-    CGFloat volumeFadeMultiplier;
-    TTModeAlarmClockStatus status;
-    NSTimer *volumeFadeTimer;
-}
+@interface TTModeAlarmClock : TTMode <AVAudioPlayerDelegate>
 
 extern NSString *const kRepeatAlarmEnabled;
 extern NSString *const kOnetimeAlarmEnabled;

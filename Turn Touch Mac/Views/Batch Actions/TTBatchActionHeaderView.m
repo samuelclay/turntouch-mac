@@ -12,18 +12,28 @@
 #define BATCH_ACTION_HEADER_MARGIN 13.f
 #define BATCH_ACTION_HEADER_PADDING 4.f
 
-@implementation TTBatchActionHeaderView
+@interface TTBatchActionHeaderView ()
 
-@synthesize mode;
-@synthesize batchAction;
+@property (nonatomic, strong) NSDictionary *titleAttributes;
+@property (nonatomic, strong) NSImage *modeImage;
+@property (nonatomic, strong) TTDiamondView *diamondView;
+@property (nonatomic, strong) TTChangeButtonView *deleteButton;
+@property (nonatomic, strong) TTChangeButtonView *actionButton;
+@property (nonatomic) BOOL isMenuVisible;
+@property (nonatomic, strong) NSMenu *settingsMenu;
+@property (nonatomic) BOOL isChangeActionVisible;
+
+@end
+
+@implementation TTBatchActionHeaderView
 
 - (instancetype)initWithTempMode:(TTMode *)_mode {
     if (self = [super init]) {
-        appDelegate = (TTAppDelegate *)[NSApp delegate];
-        batchAction = nil;
-        mode = _mode;
+        self.appDelegate = (TTAppDelegate *)[NSApp delegate];
+        self.batchAction = nil;
+        self.mode = _mode;
         self.translatesAutoresizingMaskIntoConstraints = NO;
-        isChangeActionVisible = NO;
+        self.isChangeActionVisible = NO;
         
         [self setupLabels];
         [self buildSettingsMenu:YES];
@@ -35,11 +45,11 @@
 
 - (instancetype)initWithBatchAction:(TTAction *)_batchAction {
     if (self = [super init]) {
-        appDelegate = (TTAppDelegate *)[NSApp delegate];
-        batchAction = _batchAction;
-        mode = batchAction.mode;
+        self.appDelegate = (TTAppDelegate *)[NSApp delegate];
+        self.batchAction = _batchAction;
+        self.mode = self.batchAction.mode;
         self.translatesAutoresizingMaskIntoConstraints = NO;
-        isChangeActionVisible = NO;
+        self.isChangeActionVisible = NO;
         
         [self setupLabels];
         [self buildSettingsMenu:YES];
@@ -52,9 +62,9 @@
 #pragma mark - KVO
 
 - (void)registerAsObserver {
-    [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
+    [self.appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
                              options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"batchActionChangeAction"
+    [self.appDelegate.modeMap addObserver:self forKeyPath:@"batchActionChangeAction"
                              options:0 context:nil];
 }
 
@@ -62,15 +72,15 @@
                        ofObject:(id)object
                          change:(NSDictionary*)change
                         context:(void*)context {
-    if (isChangeActionVisible && appDelegate.modeMap.batchActionChangeAction != batchAction) {
-        isChangeActionVisible = NO;
-        [appDelegate.panelController.backgroundView toggleBatchActionsChangeActionMenu:batchAction visible:NO];
+    if (self.isChangeActionVisible && self.appDelegate.modeMap.batchActionChangeAction != self.batchAction) {
+        self.isChangeActionVisible = NO;
+        [self.appDelegate.panelController.backgroundView toggleBatchActionsChangeActionMenu:self.batchAction visible:NO];
     }
 }
 
 - (void)dealloc {
-    [appDelegate.modeMap removeObserver:self forKeyPath:@"batchActionChangeAction"];
-    [appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
+    [self.appDelegate.modeMap removeObserver:self forKeyPath:@"batchActionChangeAction"];
+    [self.appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
 }
 
 #pragma mark - Drawing
@@ -83,35 +93,35 @@
     NSRectFill(self.bounds);
     
     // Mode image
-    NSString *imageFilename = [[mode class] imageName];
-    modeImage = [NSImage imageNamed:imageFilename];
+    NSString *imageFilename = [[self.mode class] imageName];
+    self.modeImage = [NSImage imageNamed:imageFilename];
     
-    [modeImage setSize:NSMakeSize(22, 22)];
-    CGFloat offset = (NSHeight(self.frame)/2) - (modeImage.size.height/2);
+    [self.modeImage setSize:NSMakeSize(22, 22)];
+    CGFloat offset = (NSHeight(self.frame)/2) - (self.modeImage.size.height/2);
     NSPoint imagePoint = NSMakePoint(BATCH_ACTION_HEADER_MARGIN, offset);
     NSRect imageRect = NSMakeRect(imagePoint.x, imagePoint.y,
-                                  modeImage.size.width, modeImage.size.height);
-    [modeImage drawInRect:imageRect];
+                                  self.modeImage.size.width, self.modeImage.size.height);
+    [self.modeImage drawInRect:imageRect];
     
     // Mode name
-    NSSize titleSize = [[[mode class] title] sizeWithAttributes:titleAttributes];
+    NSSize titleSize = [[[self.mode class] title] sizeWithAttributes:self.titleAttributes];
     NSPoint titlePoint = NSMakePoint(NSMaxX(imageRect) + BATCH_ACTION_HEADER_MARGIN,
                                      NSHeight(self.frame)/2 - floor(titleSize.height/2) + 1);
     
-    [[[mode class] title] drawAtPoint:titlePoint withAttributes:titleAttributes];
+    [[[self.mode class] title] drawAtPoint:titlePoint withAttributes:self.titleAttributes];
 
-    if (!batchAction) return;
+    if (!self.batchAction) return;
     
     // Action diamond
     NSSize diamondSize = NSMakeSize(18 * 1.3, 18);
     NSPoint diamondPoint = NSMakePoint(NSMinX(self.frame) + BATCH_ACTION_HEADER_MARGIN + 116,
                                        NSMaxY(self.bounds)/2 - floor(diamondSize.height)/2);
-    [diamondView setFrame:NSMakeRect(diamondPoint.x, diamondPoint.y, diamondSize.width, diamondSize.height)];
+    [self.diamondView setFrame:NSMakeRect(diamondPoint.x, diamondPoint.y, diamondSize.width, diamondSize.height)];
 
     // Action title
-    NSString *actionName = [mode titleForAction:batchAction.actionName buttonMoment:BUTTON_MOMENT_PRESSUP];
-    NSSize actionSize = [actionName sizeWithAttributes:titleAttributes];
-    NSPoint actionPoint = NSMakePoint(NSMaxX(diamondView.frame) + 8,
+    NSString *actionName = [self.mode titleForAction:self.batchAction.actionName buttonMoment:BUTTON_MOMENT_PRESSUP];
+    NSSize actionSize = [actionName sizeWithAttributes:self.titleAttributes];
+    NSPoint actionPoint = NSMakePoint(NSMaxX(self.diamondView.frame) + 8,
                                       NSHeight(self.frame)/2 - floor(actionSize.height/2) + 1);
     
     // Action dropdown
@@ -134,35 +144,35 @@
     [actionPath fill];
     
     // Have to draw the action title after the background path is filled
-    [actionName drawAtPoint:actionPoint withAttributes:titleAttributes];
+    [actionName drawAtPoint:actionPoint withAttributes:self.titleAttributes];
 
     // Action dropdown button
     [NSGraphicsContext saveGraphicsState];
-    if (actionButton) {
-        [actionButton removeFromSuperview];
-        actionButton = nil;
+    if (self.actionButton) {
+        [self.actionButton removeFromSuperview];
+        self.actionButton = nil;
     }
-    actionButton = [[TTChangeButtonView alloc] initWithFrame:NSMakeRect(NSMaxX(actionRect) - NSHeight(actionRect)*1.1,
+    self.actionButton = [[TTChangeButtonView alloc] initWithFrame:NSMakeRect(NSMaxX(actionRect) - NSHeight(actionRect)*1.1,
                                                                         NSMinY(actionRect) - .5f,
                                                                         NSHeight(actionRect)*1.1 + 1.f,
                                                                         NSHeight(actionRect) + 1.f)];
     
     NSImage *chevron = [NSImage imageNamed:@"button_chevron"];
-    if (isChangeActionVisible) {
+    if (self.isChangeActionVisible) {
         chevron = [NSImage imageNamed:@"button_chevron_x"];
     }
     [chevron setSize:NSMakeSize(13, 13)];
-    [actionButton setImage:chevron];
-    [actionButton setImagePosition:NSImageOnly];
-    [actionButton setTitle:@""];
-    [actionButton setUseAltStyle:NO];
-    [actionButton setRightBorderRadius:cornerRadius];
-    [actionButton setBezelStyle:NSRoundRectBezelStyle];
-    [actionButton setAction:@selector(showBatchActionMenu:)];
-    [actionButton setTarget:self];
-    [actionButton setMenu:settingsMenu];
-    [actionButton setBorderRadius:0.f];
-    [self addSubview:actionButton];
+    [self.actionButton setImage:chevron];
+    [self.actionButton setImagePosition:NSImageOnly];
+    [self.actionButton setTitle:@""];
+    [self.actionButton setUseAltStyle:NO];
+    [self.actionButton setRightBorderRadius:cornerRadius];
+    [self.actionButton setBezelStyle:NSRoundRectBezelStyle];
+    [self.actionButton setAction:@selector(showBatchActionMenu:)];
+    [self.actionButton setTarget:self];
+    [self.actionButton setMenu:self.settingsMenu];
+    [self.actionButton setBorderRadius:0.f];
+    [self addSubview:self.actionButton];
     [NSGraphicsContext restoreGraphicsState];
     
     // Bottom border
@@ -186,40 +196,40 @@
     NSColor *textColor = NSColorFromRGB(0x404A60);
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [style setAlignment:NSCenterTextAlignment];
-    titleAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:13],
+    self.titleAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:13],
                         NSForegroundColorAttributeName: textColor,
                         NSShadowAttributeName: stringShadow,
                         NSParagraphStyleAttributeName: style
                         };
     
-    diamondView = [[TTDiamondView alloc] initWithFrame:CGRectZero];
-    [diamondView setIgnoreSelectedMode:YES];
-    [diamondView setIgnoreActiveMode:YES];
-    [diamondView setOverrideActiveDirection:appDelegate.modeMap.inspectingModeDirection];
-    [self addSubview:diamondView];
+    self.diamondView = [[TTDiamondView alloc] initWithFrame:CGRectZero];
+    [self.diamondView setIgnoreSelectedMode:YES];
+    [self.diamondView setIgnoreActiveMode:YES];
+    [self.diamondView setOverrideActiveDirection:self.appDelegate.modeMap.inspectingModeDirection];
+    [self addSubview:self.diamondView];
 }
 
 - (IBAction)deleteBatchAction:(id)sender {
-    [appDelegate.modeMap removeBatchAction:batchAction.batchActionKey];
+    [self.appDelegate.modeMap removeBatchAction:self.batchAction.batchActionKey];
 }
 
 - (IBAction)changeAction:(id)sender {
-    if (isChangeActionVisible) {
-        isChangeActionVisible = NO;
+    if (self.isChangeActionVisible) {
+        self.isChangeActionVisible = NO;
     } else {
-        appDelegate.modeMap.batchActionChangeAction = self.batchAction;
-        isChangeActionVisible = YES;
+        self.appDelegate.modeMap.batchActionChangeAction = self.batchAction;
+        self.isChangeActionVisible = YES;
     }
     
-    [appDelegate.panelController.backgroundView toggleBatchActionsChangeActionMenu:batchAction visible:isChangeActionVisible];
+    [self.appDelegate.panelController.backgroundView toggleBatchActionsChangeActionMenu:self.batchAction visible:self.isChangeActionVisible];
     [self setNeedsDisplay:YES];
 }
 
 - (IBAction)showBatchActionMenu:(id)sender {
-    if (isChangeActionVisible) {
+    if (self.isChangeActionVisible) {
         [self changeAction:sender];
     } else {
-        [NSMenu popUpContextMenu:settingsMenu
+        [NSMenu popUpContextMenu:self.settingsMenu
                        withEvent:[NSApp currentEvent]
                          forView:sender];
     }
@@ -228,40 +238,40 @@
 #pragma mark - Settings menu
 
 - (void)buildSettingsMenu:(BOOL)force {
-    if (!force && !isMenuVisible) return;
+    if (!force && !self.isMenuVisible) return;
     
     NSMenuItem *menuItem;
     
-    if (!settingsMenu) {
-        settingsMenu = [[NSMenu alloc] initWithTitle:@"Action Menu"];
-        [settingsMenu setDelegate:self];
-        [settingsMenu setAutoenablesItems:NO];
+    if (!self.settingsMenu) {
+        self.settingsMenu = [[NSMenu alloc] initWithTitle:@"Action Menu"];
+        [self.settingsMenu setDelegate:self];
+        [self.settingsMenu setAutoenablesItems:NO];
     } else {
-        [settingsMenu removeAllItems];
+        [self.settingsMenu removeAllItems];
     }
     
     menuItem = [[NSMenuItem alloc] initWithTitle:@"Change" action:@selector(changeAction:) keyEquivalent:@""];
     [menuItem setEnabled:YES];
     [menuItem setTarget:self];
-    [settingsMenu addItem:menuItem];
+    [self.settingsMenu addItem:menuItem];
     
-    [settingsMenu addItem:[NSMenuItem separatorItem]];
+    [self.settingsMenu addItem:[NSMenuItem separatorItem]];
 
     menuItem = [[NSMenuItem alloc] initWithTitle:@"Remove" action:@selector(deleteBatchAction:) keyEquivalent:@""];
     [menuItem setEnabled:YES];
     [menuItem setTarget:self];
-    [settingsMenu addItem:menuItem];
+    [self.settingsMenu addItem:menuItem];
 }
 
 #pragma mark - Menu Delegate
 
 - (void)menuWillOpen:(NSMenu *)menu {
-    isMenuVisible = YES;
+    self.isMenuVisible = YES;
     [self buildSettingsMenu:YES];
 }
 
 - (void)menuDidClose:(NSMenu *)menu {
-    isMenuVisible = NO;
+    self.isMenuVisible = NO;
 }
 
 @end

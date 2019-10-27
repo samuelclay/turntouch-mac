@@ -10,20 +10,9 @@
 #import "TTAppDelegate.h"
 #import "TTChangeButtonView.h"
 
-@interface TTDeviceTitleView : NSView <NSMenuDelegate> {
-    TTAppDelegate *appDelegate;
+@interface TTDeviceTitleView : NSView <NSMenuDelegate>
 
-    NSDictionary *titleAttributes;
-    NSDictionary *stateAttributes;
-    CGSize textSize;
-    TTChangeButtonView *changeButton;
-    NSInteger latestVersion;
-    BOOL hoverActive;
-    NSButton *settingsButton;
-    BOOL isMenuVisible;
-    NSMenu *settingsMenu;
-}
-
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic) TTDevice *device;
 @property (nonatomic) NSProgressIndicator *progress;
 

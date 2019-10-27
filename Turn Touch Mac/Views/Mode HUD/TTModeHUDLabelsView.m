@@ -8,12 +8,18 @@
 
 #import "TTModeHUDLabelsView.h"
 
+@interface TTModeHUDLabelsView ()
+
+@property (nonatomic, strong) TTModeHUDView *modeHudView;
+
+@end
+
 @implementation TTModeHUDLabelsView
 
 - (id)initWithHUDView:(TTModeHUDView *)HUDView {
     if (self = [super init]) {
-        appDelegate = (TTAppDelegate *)[NSApp delegate];
-        modeHudView = HUDView;
+        self.appDelegate = (TTAppDelegate *)[NSApp delegate];
+        self.modeHudView = HUDView;
 
         self.translatesAutoresizingMaskIntoConstraints = NO;
     }
@@ -37,11 +43,11 @@
                                         [NSNumber numberWithInteger:SOUTH]]) {
         TTModeDirection direction = (TTModeDirection)[directionNumber integerValue];
         NSBezierPath *ellipse = [NSBezierPath bezierPathWithRoundedRect:[self modeLabelFrame:direction]
-                                                                xRadius:modeHudView.hudRadius
-                                                                yRadius:modeHudView.hudRadius];
+                                                                xRadius:self.modeHudView.hudRadius
+                                                                yRadius:self.modeHudView.hudRadius];
         CGFloat alpha = 0.99f;
         NSColor *labelColor = NSColorFromRGBAlpha(0xF1F1F2, alpha);
-        if (modeHudView.titleMode != [appDelegate.modeMap modeInDirection:direction]) {
+        if (self.modeHudView.titleMode != [self.appDelegate.modeMap modeInDirection:direction]) {
             alpha = 0.6f;
             labelColor = NSColorFromRGBAlpha(0xF1F1F2, alpha);
         }
@@ -51,15 +57,15 @@
 }
 
 - (void)drawModeLabels {
-    for (TTMode *directionMode in @[appDelegate.modeMap.northMode,
-                                    appDelegate.modeMap.eastMode,
-                                    appDelegate.modeMap.westMode,
-                                    appDelegate.modeMap.southMode]) {
+    for (TTMode *directionMode in @[self.appDelegate.modeMap.northMode,
+                                    self.appDelegate.modeMap.eastMode,
+                                    self.appDelegate.modeMap.westMode,
+                                    self.appDelegate.modeMap.southMode]) {
         TTModeDirection direction = [directionMode modeDirection];
-        NSDictionary *attributes = modeHudView.modeAttributes;
+        NSDictionary *attributes = self.modeHudView.modeAttributes;
         CGFloat imageAlpha = 1.0f;
-        if (modeHudView.titleMode != [appDelegate.modeMap modeInDirection:direction]) {
-            attributes = modeHudView.inactiveModeAttributes;
+        if (self.modeHudView.titleMode != [self.appDelegate.modeMap modeInDirection:direction]) {
+            attributes = self.modeHudView.inactiveModeAttributes;
             imageAlpha = 0.9f;
         }
         NSRect frame = [self modeLabelFrame:direction];
@@ -70,15 +76,15 @@
         //        [[NSColor redColor] set];
         //        [textViewSurround stroke];
         
-        TTMode *directionMode = [appDelegate.modeMap modeInDirection:direction];
+        TTMode *directionMode = [self.appDelegate.modeMap modeInDirection:direction];
         NSString *imageFilename = [[directionMode class] imageName];
         NSImage *modeImage = [NSImage imageNamed:imageFilename];
-        NSString *directionModeTitle = [[[appDelegate.modeMap modeInDirection:direction] class] title];
-        NSSize titleSize = [directionModeTitle sizeWithAttributes:modeHudView.modeAttributes];
+        NSString *directionModeTitle = [[[self.appDelegate.modeMap modeInDirection:direction] class] title];
+        NSSize titleSize = [directionModeTitle sizeWithAttributes:self.modeHudView.modeAttributes];
         [modeImage setSize:NSMakeSize(titleSize.height, titleSize.height)];
         
         CGFloat offset = (NSHeight(frame)/2) - (modeImage.size.height/2);
-        NSPoint imagePoint = NSMakePoint(frame.origin.x + modeHudView.hudImageMargin, frame.origin.y + offset);
+        NSPoint imagePoint = NSMakePoint(frame.origin.x + self.modeHudView.hudImageMargin, frame.origin.y + offset);
         [modeImage drawInRect:NSMakeRect(imagePoint.x, imagePoint.y,
                                          modeImage.size.width, modeImage.size.height)
                      fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:imageAlpha];
@@ -86,7 +92,7 @@
         //        NSLog(@"Mode HUD: %@ - %@ / %@", directionModeTitle, NSStringFromSize(titleSize), NSStringFromRect(frame));
         NSRect textFrame = frame;
         NSInteger fudgeFactor = 8;
-        textFrame.origin.x += modeImage.size.width + modeHudView.hudImageMargin + modeHudView.hudImageTextMargin;
+        textFrame.origin.x += modeImage.size.width + self.modeHudView.hudImageMargin + self.modeHudView.hudImageTextMargin;
         textFrame.origin.y += NSHeight(frame)/2 - titleSize.height/2 + titleSize.height/fudgeFactor;
         textFrame.size.height = titleSize.height;
         [directionModeTitle drawInRect:textFrame withAttributes:attributes];
@@ -95,12 +101,12 @@
 
 - (NSRect)modeLabelFrame:(TTModeDirection)direction {
     NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
-    NSRect mapFrame = [modeHudView mapFrame:NO];
-    NSString *directionModeTitle = [[[appDelegate.modeMap modeInDirection:direction] class] title];
-    NSSize titleSize = [directionModeTitle sizeWithAttributes:modeHudView.modeAttributes];
+    NSRect mapFrame = [self.modeHudView mapFrame:NO];
+    NSString *directionModeTitle = [[[self.appDelegate.modeMap modeInDirection:direction] class] title];
+    NSSize titleSize = [directionModeTitle sizeWithAttributes:self.modeHudView.modeAttributes];
     NSInteger imageSize = titleSize.height;
-    CGFloat width = titleSize.width + imageSize + modeHudView.hudImageMargin*2 + modeHudView.hudImageTextMargin;
-    CGFloat height = titleSize.height + modeHudView.hudImageMargin;
+    CGFloat width = titleSize.width + imageSize + self.modeHudView.hudImageMargin*2 + self.modeHudView.hudImageTextMargin;
+    CGFloat height = titleSize.height + self.modeHudView.hudImageMargin;
     CGFloat x = 0;
     CGFloat y = 0;
     switch (direction) {

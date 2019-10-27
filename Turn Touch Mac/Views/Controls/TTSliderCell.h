@@ -8,8 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface TTSliderCell : NSSliderCell {
-    BOOL isPressed;
-}
+@interface TTSliderCell : NSSliderCell
 
 @end

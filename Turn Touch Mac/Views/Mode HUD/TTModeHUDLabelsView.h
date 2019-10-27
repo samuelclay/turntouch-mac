@@ -12,10 +12,9 @@
 
 @class TTModeHUDView;
 
-@interface TTModeHUDLabelsView : NSView {
-    TTAppDelegate *appDelegate;
-    TTModeHUDView *modeHudView;
-}
+@interface TTModeHUDLabelsView : NSView
+
+@property (nonatomic, strong) TTAppDelegate *appDelegate;
 
 - (id)initWithHUDView:(TTModeHUDView *)HUDView;
 

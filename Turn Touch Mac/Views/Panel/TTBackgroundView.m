@@ -12,38 +12,25 @@
 
 #pragma mark -
 
+@interface TTBackgroundView ()
+
+@property (nonatomic, strong) NSLayoutConstraint *modeMenuConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *actionMenuConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *addActionMenuConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *deviceTitlesConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *addActionButtonConstraint;
+@property (nonatomic, strong) NSStackView *scrollStackView;
+@property (nonatomic, strong) NSScrollView *scrollView;
+@property (nonatomic) TTModalPairing modalPairing;
+@property (nonatomic) TTModalSupport modalSupport;
+
+@end
+
 @implementation TTBackgroundView
-
-@synthesize arrowView;
-@synthesize titleBarView;
-@synthesize modeTabs;
-@synthesize modeTitle;
-@synthesize modeMenu;
-@synthesize actionMenu;
-@synthesize addActionMenu;
-@synthesize diamondLabels;
-@synthesize optionsView;
-@synthesize optionsConstraint;
-@synthesize deviceTitlesView;
-@synthesize batchActionStackView;
-@synthesize addActionButtonView;
-@synthesize footerView;
-@synthesize modalPairingScanningView;
-@synthesize modalBarButton;
-@synthesize modalPairingInfo;
-@synthesize modalFTUXView;
-@synthesize modalFTUX;
-@synthesize modalAbout;
-@synthesize modalDevices;
-@synthesize modalSettings;
-@synthesize modalSupportView;
-@synthesize panelModal;
-
-#pragma mark -
 
 - (id)initWithFrame:(NSRect)frameRect {
     if (self = [super initWithFrame:frameRect]) {
-        appDelegate = (TTAppDelegate *)[NSApp delegate];
+        self.appDelegate = (TTAppDelegate *)[NSApp delegate];
         
         [self setWantsLayer:YES];
         [self setHuggingPriority:NSLayoutPriorityDefaultHigh
@@ -53,36 +40,36 @@
         [self setAlignment:NSLayoutAttributeCenterX];
         [self setSpacing:0];
 
-        arrowView = [[TTPanelArrowView alloc] init];
-        titleBarView = [[TTTitleBarView alloc] init];
-        deviceTitlesView = [[TTDeviceTitlesView alloc] init];
-        modeTabs = [[TTModeTabsContainer alloc] init];
-        modeTitle = [[TTModeTitleView alloc] init];
-        modeMenu = [[TTModeMenuContainer alloc] initWithType:MODE_MENU_TYPE];
-        diamondLabels = [[TTDiamondLabels alloc] initWithInteractive:YES];
-        optionsView = [[TTOptionsView alloc] init];
-        actionMenu = [[TTModeMenuContainer alloc] initWithType:ACTION_MENU_TYPE];
-        batchActionStackView = [[TTBatchActionStackView alloc] init];
-        addActionMenu = [[TTModeMenuContainer alloc] initWithType:ADD_MODE_MENU_TYPE];
-        addActionButtonView = [[TTAddActionButtonView alloc] init];
-        footerView = [[TTFooterView alloc] init];
+        self.arrowView = [[TTPanelArrowView alloc] init];
+        self.titleBarView = [[TTTitleBarView alloc] init];
+        self.deviceTitlesView = [[TTDeviceTitlesView alloc] init];
+        self.modeTabs = [[TTModeTabsContainer alloc] init];
+        self.modeTitle = [[TTModeTitleView alloc] init];
+        self.modeMenu = [[TTModeMenuContainer alloc] initWithType:MODE_MENU_TYPE];
+        self.diamondLabels = [[TTDiamondLabels alloc] initWithInteractive:YES];
+        self.optionsView = [[TTOptionsView alloc] init];
+        self.actionMenu = [[TTModeMenuContainer alloc] initWithType:ACTION_MENU_TYPE];
+        self.batchActionStackView = [[TTBatchActionStackView alloc] init];
+        self.addActionMenu = [[TTModeMenuContainer alloc] initWithType:ADD_MODE_MENU_TYPE];
+        self.addActionButtonView = [[TTAddActionButtonView alloc] init];
+        self.footerView = [[TTFooterView alloc] init];
         
-        scrollView = [[NSScrollView alloc] init];
-        scrollView.borderType = NSNoBorder;
-        scrollView.hasVerticalScroller = YES;
-        scrollView.hasHorizontalScroller = NO;
-        [scrollView setContentHuggingPriority:NSLayoutPriorityDefaultLow
+        self.scrollView = [[NSScrollView alloc] init];
+        self.scrollView.borderType = NSNoBorder;
+        self.scrollView.hasVerticalScroller = YES;
+        self.scrollView.hasHorizontalScroller = NO;
+        [self.scrollView setContentHuggingPriority:NSLayoutPriorityDefaultLow
                                forOrientation:NSLayoutConstraintOrientationVertical];
-        scrollStackView = [[NSStackView alloc] init];
-        scrollStackView.wantsLayer = YES;
-        [scrollStackView setHuggingPriority:NSLayoutPriorityDefaultHigh
+        self.scrollStackView = [[NSStackView alloc] init];
+        self.scrollStackView.wantsLayer = YES;
+        [self.scrollStackView setHuggingPriority:NSLayoutPriorityDefaultHigh
                              forOrientation:NSLayoutConstraintOrientationVertical];
-        scrollStackView.translatesAutoresizingMaskIntoConstraints = NO;
-        scrollStackView.orientation = NSUserInterfaceLayoutOrientationVertical;
-        scrollStackView.alignment = NSLayoutAttributeCenterX;
-        scrollStackView.spacing = 0.f;
-        [scrollView addSubview:scrollStackView];
-        [scrollView setDocumentView:scrollStackView];
+        self.scrollStackView.translatesAutoresizingMaskIntoConstraints = NO;
+        self.scrollStackView.orientation = NSUserInterfaceLayoutOrientationVertical;
+        self.scrollStackView.alignment = NSLayoutAttributeCenterX;
+        self.scrollStackView.spacing = 0.f;
+        [self.scrollView addSubview:self.scrollStackView];
+        [self.scrollView setDocumentView:self.scrollStackView];
         
         [self registerAsObserver];
     }
@@ -90,8 +77,8 @@
     return self;
 }
 
-- (void)switchPanelModal:(TTPanelModal)_panelModal {
-    panelModal = _panelModal;
+- (void)switchPanelModal:(TTPanelModal)panelModal {
+    self.panelModal = panelModal;
     
     if (panelModal == PANEL_MODAL_APP) {
         [self switchPanelModalApp];
@@ -117,34 +104,34 @@
     for (NSLayoutConstraint *constraint in [self constraints]) {
         [self removeConstraint:constraint];
     }
-    for (NSLayoutConstraint *constraint in [scrollView constraints]) {
-        [scrollView removeConstraint:constraint];
+    for (NSLayoutConstraint *constraint in [self.scrollView constraints]) {
+        [self.scrollView removeConstraint:constraint];
     }
-    for (NSLayoutConstraint *constraint in [scrollStackView constraints]) {
-        [scrollStackView removeConstraint:constraint];
+    for (NSLayoutConstraint *constraint in [self.scrollStackView constraints]) {
+        [self.scrollStackView removeConstraint:constraint];
     }
 }
 
 - (void)addArrowAndTitleConstraints {
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:arrowView
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.arrowView
                                                      attribute:NSLayoutAttributeTop
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:self
                                                      attribute:NSLayoutAttributeTop
                                                     multiplier:1.0 constant:0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:arrowView
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.arrowView
                                                      attribute:NSLayoutAttributeHeight
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:nil
                                                      attribute:0
                                                     multiplier:1.0 constant:ARROW_HEIGHT]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:arrowView
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.arrowView
                                                      attribute:NSLayoutAttributeCenterX
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:self
                                                      attribute:NSLayoutAttributeCenterX
                                                     multiplier:1.0 constant:0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:titleBarView
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.titleBarView
                                                      attribute:NSLayoutAttributeHeight
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:nil
@@ -165,131 +152,131 @@
 }
 
 - (void)switchPanelModalApp {
-    panelModal = PANEL_MODAL_APP;
+    self.panelModal = PANEL_MODAL_APP;
     [self cleanup];
     
-    [self setViews:@[arrowView,
-                     titleBarView,
-                     deviceTitlesView,
-                     modeTabs,
-                     modeTitle,
-                     modeMenu,
-                     scrollView,
-                     footerView] inGravity:NSStackViewGravityTop];
+    [self setViews:@[self.arrowView,
+                     self.titleBarView,
+                     self.deviceTitlesView,
+                     self.modeTabs,
+                     self.modeTitle,
+                     self.modeMenu,
+                     self.scrollView,
+                     self.footerView] inGravity:NSStackViewGravityTop];
     
-    [scrollStackView setViews:@[diamondLabels,
-                                actionMenu,
-                                optionsView,
-                                batchActionStackView,
-                                addActionMenu,
-                                addActionButtonView] inGravity:NSStackViewGravityTop];
+    [self.scrollStackView setViews:@[self.diamondLabels,
+                                self.actionMenu,
+                                self.optionsView,
+                                self.batchActionStackView,
+                                self.addActionMenu,
+                                self.addActionButtonView] inGravity:NSStackViewGravityTop];
     
     [self addArrowAndTitleConstraints];
     
-    deviceTitlesConstraint = [NSLayoutConstraint constraintWithItem:deviceTitlesView
+    self.deviceTitlesConstraint = [NSLayoutConstraint constraintWithItem:self.deviceTitlesView
                                                  attribute:NSLayoutAttributeHeight
                                                  relatedBy:NSLayoutRelationEqual
                                                     toItem:nil
-                                                 attribute:0 multiplier:1.0 constant:appDelegate.bluetoothMonitor.foundDevices.devices.count*40];
+                                                 attribute:0 multiplier:1.0 constant:self.appDelegate.bluetoothMonitor.foundDevices.devices.count*40];
 //    [self addConstraint:deviceTitlesConstraint];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:deviceTitlesView
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.deviceTitlesView
                                                      attribute:NSLayoutAttributeWidth
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:self
                                                      attribute:NSLayoutAttributeWidth
                                                     multiplier:1.0 constant:0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:modeTabs
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.modeTabs
                                                      attribute:NSLayoutAttributeHeight
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:nil
                                                      attribute:0
                                                     multiplier:1.0 constant:MODE_TABS_HEIGHT]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:modeTitle
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.modeTitle
                                                      attribute:NSLayoutAttributeHeight
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:nil
                                                      attribute:0
                                                     multiplier:1.0 constant:MODE_TITLE_HEIGHT]];
-    modeMenuConstraint = [NSLayoutConstraint constraintWithItem:modeMenu
+    self.modeMenuConstraint = [NSLayoutConstraint constraintWithItem:self.modeMenu
                                                       attribute:NSLayoutAttributeHeight
                                                       relatedBy:NSLayoutRelationEqual
                                                          toItem:nil
                                                       attribute:0
                                                      multiplier:1.0 constant:1];
-    [modeMenuConstraint setPriority:NSLayoutPriorityDefaultHigh];
-    [self addConstraint:modeMenuConstraint];
+    [self.modeMenuConstraint setPriority:NSLayoutPriorityDefaultHigh];
+    [self addConstraint:self.modeMenuConstraint];
     
     
-    [scrollView addConstraint:[NSLayoutConstraint constraintWithItem:scrollStackView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:scrollView attribute:NSLayoutAttributeTop multiplier:1.f constant:0.f]];
-    [scrollView addConstraint:[NSLayoutConstraint constraintWithItem:scrollStackView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:scrollView attribute:NSLayoutAttributeLeft multiplier:1.f constant:0.f]];
-    [scrollView addConstraint:[NSLayoutConstraint constraintWithItem:scrollStackView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:scrollView attribute:NSLayoutAttributeRight multiplier:1.f constant:-15.f]];
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.scrollStackView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeTop multiplier:1.f constant:0.f]];
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.scrollStackView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeLeft multiplier:1.f constant:0.f]];
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.scrollStackView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeRight multiplier:1.f constant:-15.f]];
     
-    NSLayoutConstraint *scrollViewHeight = [NSLayoutConstraint constraintWithItem:scrollView
+    NSLayoutConstraint *scrollViewHeight = [NSLayoutConstraint constraintWithItem:self.scrollView
                                                                         attribute:NSLayoutAttributeHeight
                                                                         relatedBy:NSLayoutRelationEqual
-                                                                           toItem:scrollStackView
+                                                                           toItem:self.scrollStackView
                                                                         attribute:NSLayoutAttributeHeight
                                                                        multiplier:1.f constant:0.f];
     scrollViewHeight.priority = 999;
     [self addConstraint:scrollViewHeight];
     NSRect screenRect = [[[NSScreen screens] objectAtIndex:0] frame];
     CGFloat scrollHeight = NSHeight(screenRect) - 400;
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:scrollView
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.scrollView
                                                      attribute:NSLayoutAttributeHeight
                                                      relatedBy:NSLayoutRelationLessThanOrEqual
                                                         toItem:nil
                                                      attribute:NSLayoutAttributeNotAnAttribute
                                                     multiplier:1.f constant:scrollHeight]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:scrollView
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.scrollView
                                                      attribute:NSLayoutAttributeWidth
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:self
                                                      attribute:NSLayoutAttributeWidth
                                                     multiplier:1.0 constant:0]];
     
-    [scrollStackView addConstraint:[NSLayoutConstraint constraintWithItem:diamondLabels
+    [self.scrollStackView addConstraint:[NSLayoutConstraint constraintWithItem:self.diamondLabels
                                                      attribute:NSLayoutAttributeHeight
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:nil
                                                      attribute:0
                                                     multiplier:0 constant:DIAMOND_LABELS_SIZE]];
-    actionMenuConstraint = [NSLayoutConstraint constraintWithItem:actionMenu
+    self.actionMenuConstraint = [NSLayoutConstraint constraintWithItem:self.actionMenu
                                                         attribute:NSLayoutAttributeHeight
                                                         relatedBy:NSLayoutRelationEqual
                                                            toItem:nil
                                                         attribute:0
                                                        multiplier:1.0 constant:1];
-    [scrollStackView addConstraint:actionMenuConstraint];
-    optionsConstraint = [NSLayoutConstraint constraintWithItem:optionsView
+    [self.scrollStackView addConstraint:self.actionMenuConstraint];
+    self.optionsConstraint = [NSLayoutConstraint constraintWithItem:self.optionsView
                                                      attribute:NSLayoutAttributeHeight
                                                      relatedBy:NSLayoutRelationEqual
-                                                        toItem:optionsView.modeOptionsViewController.view
+                                                        toItem:self.optionsView.modeOptionsViewController.view
                                                      attribute:NSLayoutAttributeHeight
                                                     multiplier:1.0 constant:0];
-    [scrollStackView addConstraint:optionsConstraint];
-    addActionMenuConstraint = [NSLayoutConstraint constraintWithItem:addActionMenu
+    [self.scrollStackView addConstraint:self.optionsConstraint];
+    self.addActionMenuConstraint = [NSLayoutConstraint constraintWithItem:self.addActionMenu
                                                            attribute:NSLayoutAttributeHeight
                                                            relatedBy:NSLayoutRelationEqual
                                                               toItem:nil
                                                            attribute:0
                                                           multiplier:1.0 constant:1.f];
-    [scrollStackView addConstraint:addActionMenuConstraint];
-    addActionButtonConstraint = [NSLayoutConstraint constraintWithItem:addActionButtonView
+    [self.scrollStackView addConstraint:self.addActionMenuConstraint];
+    self.addActionButtonConstraint = [NSLayoutConstraint constraintWithItem:self.addActionButtonView
                                                              attribute:NSLayoutAttributeHeight
                                                              relatedBy:NSLayoutRelationEqual
                                                                 toItem:nil
                                                              attribute:0 multiplier:1.0
                                                               constant:0];
-    [scrollStackView addConstraint:addActionButtonConstraint];
+    [self.scrollStackView addConstraint:self.addActionButtonConstraint];
     
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:footerView
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.footerView
                                                      attribute:NSLayoutAttributeHeight
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:nil
                                                      attribute:0
                                                     multiplier:0 constant:FOOTER_HEIGHT]];
     
-    [arrowView setNeedsDisplay:YES];
+    [self.arrowView setNeedsDisplay:YES];
     //        NSLog(@"Init modeOptionsView View height: %.f", NSHeight(optionsView.modeOptionsViewController.view.bounds));
     //        NSLog(@"Init options View height: %.f", NSHeight(optionsView.bounds));
 }
@@ -297,21 +284,21 @@
 #pragma mark - KVO
 
 - (void)registerAsObserver {
-    [appDelegate.modeMap addObserver:self forKeyPath:@"openedModeChangeMenu"
+    [self.appDelegate.modeMap addObserver:self forKeyPath:@"openedModeChangeMenu"
                              options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"openedActionChangeMenu"
+    [self.appDelegate.modeMap addObserver:self forKeyPath:@"openedActionChangeMenu"
                              options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"openedAddActionChangeMenu"
+    [self.appDelegate.modeMap addObserver:self forKeyPath:@"openedAddActionChangeMenu"
                              options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"openedChangeActionMenu"
+    [self.appDelegate.modeMap addObserver:self forKeyPath:@"openedChangeActionMenu"
                              options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
+    [self.appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
                              options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
+    [self.appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
                              options:0 context:nil];
-    [appDelegate.bluetoothMonitor addObserver:self forKeyPath:@"pairedDevicesCount"
+    [self.appDelegate.bluetoothMonitor addObserver:self forKeyPath:@"pairedDevicesCount"
                                       options:0 context:nil];
-    [appDelegate.bluetoothMonitor addObserver:self
+    [self.appDelegate.bluetoothMonitor addObserver:self
                                    forKeyPath:@"nicknamedConnectedCount"
                                       options:0 context:nil];
 }
@@ -350,24 +337,24 @@
     BOOL shiftPressed = (clearFlags == NSShiftKeyMask);
     if (shiftPressed) openDuration *= 10;
     
-    if (appDelegate.modeMap.openedModeChangeMenu) {
-        [modeMenu toggleScrollbar:appDelegate.modeMap.openedModeChangeMenu];
+    if (self.appDelegate.modeMap.openedModeChangeMenu) {
+        [self.modeMenu toggleScrollbar:self.appDelegate.modeMap.openedModeChangeMenu];
     }
     
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:openDuration];
     [[NSAnimationContext currentContext] setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
     
-    if (!appDelegate.modeMap.openedModeChangeMenu) {
+    if (!self.appDelegate.modeMap.openedModeChangeMenu) {
         [[NSAnimationContext currentContext] setCompletionHandler:^{
-            [modeMenu toggleScrollbar:appDelegate.modeMap.openedModeChangeMenu];
+            [self.modeMenu toggleScrollbar:self.appDelegate.modeMap.openedModeChangeMenu];
         }];
     }
     
-    if (appDelegate.modeMap.openedModeChangeMenu) {
-        [[modeMenuConstraint animator] setConstant:MODE_MENU_HEIGHT];
+    if (self.appDelegate.modeMap.openedModeChangeMenu) {
+        [[self.modeMenuConstraint animator] setConstant:MODE_MENU_HEIGHT];
     } else {
-        [[modeMenuConstraint animator] setConstant:1];
+        [[self.modeMenuConstraint animator] setConstant:1];
     }
     
     [NSAnimationContext endGrouping];
@@ -381,21 +368,21 @@
     BOOL shiftPressed = (clearFlags == NSShiftKeyMask);
     if (shiftPressed) openDuration *= 10;
     
-    if (appDelegate.modeMap.openedActionChangeMenu) {
-        [actionMenu toggleScrollbar:appDelegate.modeMap.openedActionChangeMenu];
+    if (self.appDelegate.modeMap.openedActionChangeMenu) {
+        [self.actionMenu toggleScrollbar:self.appDelegate.modeMap.openedActionChangeMenu];
     }
     
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:openDuration];
     [[NSAnimationContext currentContext] setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
     
-    if (!appDelegate.modeMap.openedActionChangeMenu) {
+    if (!self.appDelegate.modeMap.openedActionChangeMenu) {
         [[NSAnimationContext currentContext] setCompletionHandler:^{
-            [actionMenu toggleScrollbar:appDelegate.modeMap.openedActionChangeMenu];
+            [self.actionMenu toggleScrollbar:self.appDelegate.modeMap.openedActionChangeMenu];
         }];
-        [[actionMenuConstraint animator] setConstant:1];
+        [[self.actionMenuConstraint animator] setConstant:1];
     } else {
-        [[actionMenuConstraint animator] setConstant:ACTION_MENU_HEIGHT];
+        [[self.actionMenuConstraint animator] setConstant:ACTION_MENU_HEIGHT];
     }
     
     [NSAnimationContext endGrouping];
@@ -414,41 +401,41 @@
     [[NSAnimationContext currentContext] setTimingFunction:[CAMediaTimingFunction functionWithName:
                                                             kCAMediaTimingFunctionEaseInEaseOut]];
     
-    if (!appDelegate.modeMap.openedAddActionChangeMenu) {
+    if (!self.appDelegate.modeMap.openedAddActionChangeMenu) {
         [[NSAnimationContext currentContext] setCompletionHandler:^{
-            [addActionMenu toggleScrollbar:appDelegate.modeMap.openedAddActionChangeMenu];
+            [self.addActionMenu toggleScrollbar:self.appDelegate.modeMap.openedAddActionChangeMenu];
         }];
-        [[addActionMenuConstraint animator] setConstant:1.f];
+        [[self.addActionMenuConstraint animator] setConstant:1.f];
     } else {
-        [[addActionMenuConstraint animator] setConstant:ACTION_MENU_HEIGHT];
+        [[self.addActionMenuConstraint animator] setConstant:ACTION_MENU_HEIGHT];
         
-        CGFloat scroll = -1 * (scrollView.contentSize.height + NSMaxY([addActionButtonView convertRect:addActionButtonView.frame toView:scrollView]));
-        NSClipView* clipView = [scrollView contentView];
+        CGFloat scroll = -1 * (self.scrollView.contentSize.height + NSMaxY([self.addActionButtonView convertRect:self.addActionButtonView.frame toView:self.scrollView]));
+        NSClipView* clipView = [self.scrollView contentView];
         NSPoint newOrigin = [clipView bounds].origin;
         newOrigin.y = scroll;
         [[clipView animator] setBoundsOrigin:newOrigin];
-        [scrollView reflectScrolledClipView:[scrollView contentView]];
+        [self.scrollView reflectScrolledClipView:[self.scrollView contentView]];
     }
     
     [NSAnimationContext endGrouping];
     
-    if (appDelegate.modeMap.openedAddActionChangeMenu) {
-        [addActionMenu toggleScrollbar:appDelegate.modeMap.openedAddActionChangeMenu];
+    if (self.appDelegate.modeMap.openedAddActionChangeMenu) {
+        [self.addActionMenu toggleScrollbar:self.appDelegate.modeMap.openedAddActionChangeMenu];
     }
 
 }
 
 - (void)toggleAddActionButtonView {
-    if (appDelegate.modeMap.inspectingModeDirection != NO_DIRECTION) {
-        [addActionButtonConstraint setConstant:ADD_ACTION_BUTTON_HEIGHT];
+    if (self.appDelegate.modeMap.inspectingModeDirection != NO_DIRECTION) {
+        [self.addActionButtonConstraint setConstant:ADD_ACTION_BUTTON_HEIGHT];
     } else {
-        [addActionButtonConstraint setConstant:0.f];
+        [self.addActionButtonConstraint setConstant:0.f];
     }
 }
 
 - (void)adjustDeviceTitles {
     NSTimeInterval openDuration = OPEN_DURATION;
-    NSArray *devices = appDelegate.bluetoothMonitor.foundDevices.devices;
+    NSArray *devices = self.appDelegate.bluetoothMonitor.foundDevices.devices;
     
     NSEvent *currentEvent = [NSApp currentEvent];
     NSUInteger clearFlags = ([currentEvent modifierFlags] & NSDeviceIndependentModifierFlagsMask);
@@ -459,32 +446,32 @@
     [[NSAnimationContext currentContext] setDuration:openDuration];
     [[NSAnimationContext currentContext] setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
     
-    [[deviceTitlesConstraint animator] setConstant:40*[devices count]];
+    [[self.deviceTitlesConstraint animator] setConstant:40*[devices count]];
     
     [NSAnimationContext endGrouping];
 }
 
 - (void)adjustOptionsHeight:(NSView *)optionsDetailView {
-    if (!optionsView) return;
+    if (!self.optionsView) return;
     
-    [self removeConstraint:optionsConstraint];
+    [self removeConstraint:self.optionsConstraint];
     
     if (!optionsDetailView) {
-        optionsConstraint = [NSLayoutConstraint constraintWithItem:optionsView
+        self.optionsConstraint = [NSLayoutConstraint constraintWithItem:self.optionsView
                                                          attribute:NSLayoutAttributeHeight
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:nil
                                                          attribute:0
                                                         multiplier:1.0 constant:CORNER_RADIUS];
-        [self addConstraint:optionsConstraint];
+        [self addConstraint:self.optionsConstraint];
     } else {
-        optionsConstraint = [NSLayoutConstraint constraintWithItem:optionsView
+        self.optionsConstraint = [NSLayoutConstraint constraintWithItem:self.optionsView
                                                          attribute:NSLayoutAttributeBottom
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:optionsDetailView
                                                          attribute:NSLayoutAttributeBottom
                                                         multiplier:1.0 constant:0];
-        [optionsView addConstraint:optionsConstraint];
+        [self.optionsView addConstraint:self.optionsConstraint];
     }
     
     //    NSLog(@"optionsView constraints: %@", optionsView.constraints);
@@ -492,28 +479,28 @@
 }
 
 - (void)toggleBatchActionsChangeActionMenu:(TTAction *)batchAction visible:(BOOL)visible {    
-    [batchActionStackView toggleChangeActionMenu:batchAction visible:visible];
+    [self.batchActionStackView toggleChangeActionMenu:batchAction visible:visible];
 }
 
 - (void)adjustBatchActionsHeight:(BOOL)animated {
 //    NSLog(@"adjustBatchActionsHeight: %@", appDelegate.modeMap.tempModeName);
 
-    [batchActionStackView assembleViews:animated];
+    [self.batchActionStackView assembleViews:animated];
 }
 
 - (void)resetPosition {
-    [appDelegate.modeMap reset];
-    if (appDelegate.modeMap.openedModeChangeMenu) {
-        [appDelegate.modeMap setOpenedModeChangeMenu:NO];
+    [self.appDelegate.modeMap reset];
+    if (self.appDelegate.modeMap.openedModeChangeMenu) {
+        [self.appDelegate.modeMap setOpenedModeChangeMenu:NO];
     }
-    if (appDelegate.modeMap.openedActionChangeMenu) {
-        [appDelegate.modeMap setOpenedActionChangeMenu:NO];
+    if (self.appDelegate.modeMap.openedActionChangeMenu) {
+        [self.appDelegate.modeMap setOpenedActionChangeMenu:NO];
     }
-    if (appDelegate.modeMap.openedAddActionChangeMenu) {
-        [appDelegate.modeMap setOpenedAddActionChangeMenu:NO];
+    if (self.appDelegate.modeMap.openedAddActionChangeMenu) {
+        [self.appDelegate.modeMap setOpenedAddActionChangeMenu:NO];
     }
-    if (appDelegate.modeMap.openedChangeActionMenu) {
-        [appDelegate.modeMap setOpenedChangeActionMenu:NO];
+    if (self.appDelegate.modeMap.openedChangeActionMenu) {
+        [self.appDelegate.modeMap setOpenedChangeActionMenu:NO];
     }
 }
 
@@ -522,7 +509,7 @@
 }
 
 - (void)scrollToPosition:(float)yCoord {
-    NSClipView* clipView = [scrollView contentView];
+    NSClipView* clipView = [self.scrollView contentView];
     
 //    if (yCoord < clipView.bounds.origin.y + (clipView.bounds.size.height - 2) &&
 //        yCoord > clipView.bounds.origin.y) return;
@@ -534,47 +521,47 @@
     NSPoint newOrigin = [clipView bounds].origin;
     newOrigin.y = yCoord - 2;
     [[clipView animator] setBoundsOrigin:newOrigin];
-    [scrollView reflectScrolledClipView:[scrollView contentView]];
+    [self.scrollView reflectScrolledClipView:[self.scrollView contentView]];
     [NSAnimationContext endGrouping];
 }
 
 #pragma mark - Pairing Modal
 
-- (void)switchPanelModalPairing:(TTModalPairing)_modalPairing {
-    if (_modalPairing == MODAL_PAIRING_INTRO && modalPairing == MODAL_PAIRING_SEARCH) {
+- (void)switchPanelModalPairing:(TTModalPairing)modalPairing {
+    if (modalPairing == MODAL_PAIRING_INTRO && self.modalPairing == MODAL_PAIRING_SEARCH) {
         // Don't switch away from pairing search...
         return;
     }
-    if (_modalPairing == MODAL_PAIRING_FAILURE &&
-        (modalPairing != MODAL_PAIRING_SEARCH || panelModal != PANEL_MODAL_PAIRING)) {
+    if (modalPairing == MODAL_PAIRING_FAILURE &&
+        (self.modalPairing != MODAL_PAIRING_SEARCH || self.panelModal != PANEL_MODAL_PAIRING)) {
         // Don't switch into failure if not searching...
         return;
     }
     
     [self cleanup];
 
-    panelModal = PANEL_MODAL_PAIRING;
-    modalPairing = _modalPairing;
-    modalBarButton = [[TTModalBarButton alloc] init];
-    [modalBarButton setPagePairing:modalPairing];
+    self.panelModal = PANEL_MODAL_PAIRING;
+    self.modalPairing = modalPairing;
+    self.modalBarButton = [[TTModalBarButton alloc] init];
+    [self.modalBarButton setPagePairing:modalPairing];
 
-    if (modalPairing == MODAL_PAIRING_INTRO ||
-        modalPairing == MODAL_PAIRING_SUCCESS ||
-        modalPairing == MODAL_PAIRING_FAILURE) {
-        modalPairingInfo = [[TTModalPairingInfo alloc] initWithPairing:modalPairing];
-        [self setViews:@[arrowView,
-                         titleBarView,
-                         deviceTitlesView,
-                         modalPairingInfo,
-                         modalBarButton]
+    if (self.modalPairing == MODAL_PAIRING_INTRO ||
+        self.modalPairing == MODAL_PAIRING_SUCCESS ||
+        self.modalPairing == MODAL_PAIRING_FAILURE) {
+        self.modalPairingInfo = [[TTModalPairingInfo alloc] initWithPairing:self.modalPairing];
+        [self setViews:@[self.arrowView,
+                         self.titleBarView,
+                         self.deviceTitlesView,
+                         self.modalPairingInfo,
+                         self.modalBarButton]
              inGravity:NSStackViewGravityTop];
-    } else if (modalPairing == MODAL_PAIRING_SEARCH) {
-        modalPairingScanningView = [[TTModalPairingScanningView alloc] init];
-        [self setViews:@[arrowView,
-                         titleBarView,
-                         deviceTitlesView,
-                         modalPairingScanningView.view,
-                         modalBarButton]
+    } else if (self.modalPairing == MODAL_PAIRING_SEARCH) {
+        self.modalPairingScanningView = [[TTModalPairingScanningView alloc] init];
+        [self setViews:@[self.arrowView,
+                         self.titleBarView,
+                         self.deviceTitlesView,
+                         self.modalPairingScanningView.view,
+                         self.modalBarButton]
              inGravity:NSStackViewGravityTop];
     }
     
@@ -582,48 +569,48 @@
 }
 
 - (void)cleanupPanelModalPairing {
-    modalPairingScanningView = nil;
-    modalBarButton = nil;
+    self.modalPairingScanningView = nil;
+    self.modalBarButton = nil;
 }
 
 #pragma mark - FTUX Modal
 
-- (void)switchPanelModalFTUX:(TTModalFTUX)_modalFTUX {
-    if (panelModal != PANEL_MODAL_FTUX || !modalFTUXView) {
-        panelModal = PANEL_MODAL_FTUX;
-        modalBarButton = [[TTModalBarButton alloc] init];
-        modalFTUXView = [[TTModalFTUXView alloc] initWithNibName:@"TTModalFTUXView" bundle:nil];
+- (void)switchPanelModalFTUX:(TTModalFTUX)modalFTUX {
+    if (self.panelModal != PANEL_MODAL_FTUX || !self.modalFTUXView) {
+        self.panelModal = PANEL_MODAL_FTUX;
+        self.modalBarButton = [[TTModalBarButton alloc] init];
+        self.modalFTUXView = [[TTModalFTUXView alloc] initWithNibName:@"TTModalFTUXView" bundle:nil];
         
-        [self setViews:@[arrowView,
-                         titleBarView,
-                         deviceTitlesView,
-                         modalFTUXView.view,
-                         modalBarButton]
+        [self setViews:@[self.arrowView,
+                         self.titleBarView,
+                         self.deviceTitlesView,
+                         self.modalFTUXView.view,
+                         self.modalBarButton]
              inGravity:NSStackViewGravityTop];
 
         [self addArrowAndTitleConstraints];
     }
     
-    modalFTUX = _modalFTUX;
-    [modalBarButton setPageFTUX:modalFTUX];
-    [modalFTUXView setPage:modalFTUX];
+    self.modalFTUX = _modalFTUX;
+    [self.modalBarButton setPageFTUX:modalFTUX];
+    [self.modalFTUXView setPage:modalFTUX];
 }
 
 - (void)cleanupPanelModalFTUX {
-    modalFTUXView = nil;
-    modalBarButton = nil;
+    self.modalFTUXView = nil;
+    self.modalBarButton = nil;
 }
 
 #pragma mark - About Modal
 
 - (void)switchPanelModalAbout {
-    panelModal = PANEL_MODAL_ABOUT;
-    modalAbout = [[TTModalAbout alloc] init];
-    [self setViews:@[arrowView,
-                     titleBarView,
-                     deviceTitlesView,
-                     modalAbout.view,
-                     footerView]
+    self.panelModal = PANEL_MODAL_ABOUT;
+    self.modalAbout = [[TTModalAbout alloc] init];
+    [self setViews:@[self.arrowView,
+                     self.titleBarView,
+                     self.deviceTitlesView,
+                     self.modalAbout.view,
+                     self.footerView]
          inGravity:NSStackViewGravityTop];
     [self addArrowAndTitleConstraints];
 }
@@ -631,13 +618,13 @@
 #pragma mark - Devices Modal
 
 - (void)switchPanelModalDevices {
-    panelModal = PANEL_MODAL_DEVICES;
-    modalDevices = [[TTModalDevices alloc] init];
-    [self setViews:@[arrowView,
-                     titleBarView,
-                     deviceTitlesView,
-                     modalDevices.view,
-                     footerView]
+    self.panelModal = PANEL_MODAL_DEVICES;
+    self.modalDevices = [[TTModalDevices alloc] init];
+    [self setViews:@[self.arrowView,
+                     self.titleBarView,
+                     self.deviceTitlesView,
+                     self.modalDevices.view,
+                     self.footerView]
          inGravity:NSStackViewGravityTop];
     [self addArrowAndTitleConstraints];
 }
@@ -645,13 +632,13 @@
 #pragma mark - Settings Modal
 
 - (void)switchPanelModalSettings {
-    panelModal = PANEL_MODAL_SETTINGS;
-    modalSettings = [[TTModalSettings alloc] init];
-    [self setViews:@[arrowView,
-                     titleBarView,
-                     deviceTitlesView,
-                     modalSettings.view,
-                     footerView]
+    self.panelModal = PANEL_MODAL_SETTINGS;
+    self.modalSettings = [[TTModalSettings alloc] init];
+    [self setViews:@[self.arrowView,
+                     self.titleBarView,
+                     self.deviceTitlesView,
+                     self.modalSettings.view,
+                     self.footerView]
          inGravity:NSStackViewGravityTop];
     [self addArrowAndTitleConstraints];
 }
@@ -659,20 +646,20 @@
 #pragma mark - Support Modal
 
 - (void)switchPanelModalSupport {
-    panelModal = PANEL_MODAL_SUPPORT;
-    modalSupportView = [[TTModalSupportView alloc] init];
-    modalBarButton = [[TTModalBarButton alloc] init];
+    self.panelModal = PANEL_MODAL_SUPPORT;
+    self.modalSupportView = [[TTModalSupportView alloc] init];
+    self.modalBarButton = [[TTModalBarButton alloc] init];
 
-    [self setViews:@[arrowView,
-                     titleBarView,
-                     deviceTitlesView,
-                     modalSupportView.view,
-                     modalBarButton,
+    [self setViews:@[self.arrowView,
+                     self.titleBarView,
+                     self.deviceTitlesView,
+                     self.modalSupportView.view,
+                     self.modalBarButton,
                      ]
          inGravity:NSStackViewGravityTop];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:modalSupportView.view attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:1.f constant:0.f]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.modalSupportView.view attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:1.f constant:0.f]];
     [self addArrowAndTitleConstraints];
-    [modalBarButton setPageSupport:MODAL_SUPPORT_QUESTION];
+    [self.modalBarButton setPageSupport:MODAL_SUPPORT_QUESTION];
 }
 
 @end

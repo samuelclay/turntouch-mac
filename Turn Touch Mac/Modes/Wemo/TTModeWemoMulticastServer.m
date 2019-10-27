@@ -16,9 +16,14 @@
 
 #define MULTICAST_GROUP_IP @"239.255.255.250"
 
-@implementation TTModeWemoMulticastServer
+@interface TTModeWemoMulticastServer ()
 
-@synthesize delegate;
+@property (nonatomic, strong) GCDAsyncUdpSocket *udpSocket;
+@property (nonatomic) NSInteger attemptsLeft;
+
+@end
+
+@implementation TTModeWemoMulticastServer
 
 - (id)init {
     if (self = [super init]) {
@@ -29,33 +34,33 @@
 }
 
 - (void)deactivate {
-    [udpSocket leaveMulticastGroup:MULTICAST_GROUP_IP error:nil];
-    [udpSocket close];
-    udpSocket = nil;
-    attemptsLeft = 0;
+    [self.udpSocket leaveMulticastGroup:MULTICAST_GROUP_IP error:nil];
+    [self.udpSocket close];
+    self.udpSocket = nil;
+    self.attemptsLeft = 0;
 }
 
 - (void)beginbroadcast {
-    attemptsLeft = 5;
+    self.attemptsLeft = 5;
     [self createMulticastReceiver];
 }
 
 #pragma mark - Multicast Receive
 
 - (void)createMulticastReceiver {
-    if (!udpSocket) {
-        udpSocket = [[GCDAsyncUdpSocket alloc] initWithDelegate:self
+    if (!self.udpSocket) {
+        self.udpSocket = [[GCDAsyncUdpSocket alloc] initWithDelegate:self
                                                   delegateQueue:dispatch_get_main_queue()];
         NSError *error = nil;
-        if (![udpSocket bindToPort:7700 error:&error]) {
+        if (![self.udpSocket bindToPort:7700 error:&error]) {
             NSLog(@"Error binding to port: %@", error);
             return;
         }
-        if(![udpSocket joinMulticastGroup:MULTICAST_GROUP_IP error:&error]){
+        if(![self.udpSocket joinMulticastGroup:MULTICAST_GROUP_IP error:&error]){
             NSLog(@"Error connecting to multicast group: %@", error);
             return;
         }
-        if (![udpSocket beginReceiving:&error]) {
+        if (![self.udpSocket beginReceiving:&error]) {
             NSLog(@"Error receiving: %@", error);
             return;
         }
@@ -69,14 +74,14 @@
                            @"USER-AGENT: Turn Touch Remote Wemo Finder",
                            @"", @""] componentsJoinedByString:@"\r\n"];
     NSData* data = [message dataUsingEncoding:NSUTF8StringEncoding];
-    [udpSocket sendData:data toHost:@"239.255.255.250" port:1900 withTimeout:2 tag:0];
+    [self.udpSocket sendData:data toHost:@"239.255.255.250" port:1900 withTimeout:2 tag:0];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        if (!attemptsLeft || !udpSocket) {
+        if (!self.attemptsLeft || !self.udpSocket) {
             [self.delegate finishScanning];
             return;
         }
-        attemptsLeft -= 1;
-        NSLog(@"Attempting wemo M-SEARCH: %ld attempts left...", attemptsLeft);
+        self.attemptsLeft -= 1;
+        NSLog(@"Attempting wemo M-SEARCH: %ld attempts left...", self.attemptsLeft);
         [self createMulticastReceiver];
     });
 }
@@ -103,7 +108,7 @@
         
 //        NSLog(@"Found Wemo: %@/%@:%ld/%ld: %@", host, locationHost, port, locationPort, headers);
         
-        [delegate foundDevice:headers host:locationHost port:locationPort name:nil serialNumber:nil macAddress:nil live:YES];
+        [self.delegate foundDevice:headers host:locationHost port:locationPort name:nil serialNumber:nil macAddress:nil live:YES];
     }
 }
 

@@ -22,12 +22,9 @@
 @end
 
 @interface TTHUDMenuView : NSVisualEffectView
-<TTHUDMenuDelegate, NSTableViewDelegate, NSTableViewDataSource> {
-    TTAppDelegate *appDelegate;
-    NSTableView *tableView;
-    NSInteger highlightedRow;
-}
+<TTHUDMenuDelegate, NSTableViewDelegate, NSTableViewDataSource>
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic) IBOutlet NSLayoutConstraint *offsetConstraint;
 @property (nonatomic) IBOutlet NSLayoutConstraint *widthConstraint;
 @property (nonatomic) IBOutlet NSTableView *tableView;

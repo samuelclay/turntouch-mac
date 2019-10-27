@@ -28,29 +28,13 @@
 #import "TTModeSonos.h"
 #import "TTModePresentation.h"
 
-@implementation TTModeMap
+@interface TTModeMap ()
 
-@synthesize selectedModeDirection;
-@synthesize activeModeDirection;
-@synthesize inspectingModeDirection;
-@synthesize hoverModeDirection;
-@synthesize openedModeChangeMenu;
-@synthesize openedActionChangeMenu;
-@synthesize openedAddActionChangeMenu;
-@synthesize openedChangeActionMenu;
-@synthesize tempModeName;
-@synthesize selectedMode;
-@synthesize northMode;
-@synthesize eastMode;
-@synthesize westMode;
-@synthesize southMode;
-@synthesize tempMode;
-@synthesize batchActionChangeAction;
-@synthesize batchActions;
-@synthesize availableModes;
-@synthesize availableActions;
-@synthesize availableAddModes;
-@synthesize availableAddActions;
+@property (nonatomic) BOOL waitingForDoubleClick;
+
+@end
+
+@implementation TTModeMap
 
 - (id)init {
     if (self = [super init]) {
@@ -71,19 +55,19 @@
                                   @"TTModePresentation",
                                   @"TTModeCustom"]];
         
-        activeModeDirection = NO_DIRECTION;
-        inspectingModeDirection = NO_DIRECTION;
-        hoverModeDirection = NO_DIRECTION;
-        openedModeChangeMenu = NO;
-        openedActionChangeMenu = NO;
-        openedAddActionChangeMenu = NO;
-        openedChangeActionMenu = NO;
-        batchActions = [[TTBatchActions alloc] init];
+        self.activeModeDirection = NO_DIRECTION;
+        self.inspectingModeDirection = NO_DIRECTION;
+        self.hoverModeDirection = NO_DIRECTION;
+        self.openedModeChangeMenu = NO;
+        self.openedActionChangeMenu = NO;
+        self.openedAddActionChangeMenu = NO;
+        self.openedChangeActionMenu = NO;
+        self.batchActions = [[TTBatchActions alloc] init];
 
         [self setupModes];
         
         if ([[defaults objectForKey:@"TT:selectedModeDirection"] integerValue]) {
-            selectedModeDirection = (TTModeDirection)[[defaults
+            self.selectedModeDirection = (TTModeDirection)[[defaults
                                                        objectForKey:@"TT:selectedModeDirection"]
                                                       integerValue];
         }
@@ -94,38 +78,34 @@
     return self;
 }
 
-- (void)setTempModeName:(NSString *)_tempModeName {
-    tempModeName = _tempModeName;
-    Class modeClass = NSClassFromString(tempModeName);
-    tempMode = [[modeClass alloc] init];
+- (void)setTempModeName:(NSString *)tempModeName {
+    _tempModeName = tempModeName;
+    Class modeClass = NSClassFromString(self.tempModeName);
+    self.tempMode = [[modeClass alloc] init];
     NSMutableArray *_availableAddActions = [NSMutableArray array];
-    for (NSString *action in tempMode.actions) {
+    for (NSString *action in self.tempMode.actions) {
         [_availableAddActions addObject:@{@"id": action, @"type": [NSNumber numberWithInt:ADD_ACTION_MENU_TYPE]}];
     }
-    availableAddActions = _availableAddActions;
+    self.availableAddActions = _availableAddActions;
 }
 
-- (void)setAvailableModes:(NSArray *)_availableModes {
-    availableModes = _availableModes;
+- (void)setAvailableModes:(NSArray *)availableModes {
+    _availableModes = availableModes;
     NSMutableArray *_availableAddModes = [NSMutableArray array];
-    for (NSString *mode in availableModes) {
+    for (NSString *mode in self.availableModes) {
         [_availableAddModes addObject:@{@"id": mode, @"type": [NSNumber numberWithInt:ADD_MODE_MENU_TYPE]}];
     }
-    availableAddModes = _availableAddModes;
+    self.availableAddModes = _availableAddModes;
 }
 
 
-- (void)setBatchActionChangeAction:(TTAction *)_batchActionChangeAction {
-    batchActionChangeAction = _batchActionChangeAction;
+- (void)setBatchActionChangeAction:(TTAction *)batchActionChangeAction {
+    _batchActionChangeAction = batchActionChangeAction;
     NSMutableArray *_availableAddActions = [NSMutableArray array];
-    for (NSString *action in batchActionChangeAction.mode.actions) {
+    for (NSString *action in self.batchActionChangeAction.mode.actions) {
         [_availableAddActions addObject:@{@"id": action, @"type": [NSNumber numberWithInt:CHANGE_BATCH_ACTION_MENU_TYPE]}];
     }
-    availableAddActions = _availableAddActions;
-}
-
-- (void)setAvailableActions:(NSArray *)_availableActions {
-    availableActions = _availableActions;
+    self.availableAddActions = _availableAddActions;
 }
 
 #pragma mark - KVO
@@ -144,10 +124,10 @@
                          change:(NSDictionary*)change
                         context:(void*)context {
     if ([keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
-        if (selectedModeDirection == NO_DIRECTION) return;
+        if (self.selectedModeDirection == NO_DIRECTION) return;
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setObject:[NSNumber numberWithInt:selectedModeDirection]
+        [defaults setObject:[NSNumber numberWithInt:self.selectedModeDirection]
                      forKey:@"TT:selectedModeDirection"];
         [defaults synchronize];
     }
@@ -169,14 +149,14 @@
         [self setValue:[[modeClass alloc] init] forKey:[NSString stringWithFormat:@"%@Mode", direction]];
     }
     
-    northMode.modeDirection = NORTH;
-    eastMode.modeDirection = EAST;
-    westMode.modeDirection = WEST;
-    southMode.modeDirection = SOUTH;
+    self.northMode.modeDirection = NORTH;
+    self.eastMode.modeDirection = EAST;
+    self.westMode.modeDirection = WEST;
+    self.southMode.modeDirection = SOUTH;
 }
 
 - (void)activateTimers {
-    for (TTMode *mode in @[northMode, eastMode, westMode, southMode]) {
+    for (TTMode *mode in @[self.northMode, self.eastMode, self.westMode, self.southMode]) {
         if ([mode respondsToSelector:@selector(activateTimers)]) {
             [mode activateTimers];
         }
@@ -184,19 +164,19 @@
 }
 
 - (void)switchMode {
-    [self switchMode:selectedModeDirection modeName:nil];
+    [self switchMode:self.selectedModeDirection modeName:nil];
 }
 
 - (void)switchMode:(TTModeDirection)direction modeName:(NSString *)modeName {
     [self setActiveModeDirection:NO_DIRECTION];
     
-    if (selectedMode) {
-        [batchActions deactivate];
+    if (self.selectedMode) {
+        [self.batchActions deactivate];
         
-        if ([selectedMode respondsToSelector:@selector(deactivate)]) {
-            [selectedMode deactivate];
+        if ([self.selectedMode respondsToSelector:@selector(deactivate)]) {
+            [self.selectedMode deactivate];
         }
-        selectedMode = nil;
+        self.selectedMode = nil;
     }
     
     if (direction != NO_DIRECTION) {
@@ -207,38 +187,38 @@
         [self setSelectedMode:mode];
     }
     
-    [self setAvailableActions:selectedMode.actions];
-    [selectedMode activate:direction];
+    [self setAvailableActions:self.selectedMode.actions];
+    [self.selectedMode activate:direction];
     [self reset];
     
     self.selectedModeDirection = direction;
     
-    [batchActions assembleBatchActions];
+    [self.batchActions assembleBatchActions];
     
     [self recordButtonMoment:direction buttonMoment:BUTTON_MOMENT_HELD];
 }
 
 - (void)maybeFireActiveButton {
-    BOOL shouldFireImmediateOnPress = [selectedMode shouldFireImmediateOnPress:activeModeDirection];
-    if (shouldFireImmediateOnPress && activeModeDirection != NO_DIRECTION) {
-        selectedMode.action = [[TTAction alloc] initWithActionName:[selectedMode actionNameInDirection:activeModeDirection]
-                                                         direction:activeModeDirection];
-        [selectedMode runDirection:activeModeDirection];
+    BOOL shouldFireImmediateOnPress = [self.selectedMode shouldFireImmediateOnPress:self.activeModeDirection];
+    if (shouldFireImmediateOnPress && self.activeModeDirection != NO_DIRECTION) {
+        self.selectedMode.action = [[TTAction alloc] initWithActionName:[self.selectedMode actionNameInDirection:self.activeModeDirection]
+                                                         direction:self.activeModeDirection];
+        [self.selectedMode runDirection:self.activeModeDirection];
     }
 }
 
 - (void)runActiveButton {
-    TTModeDirection direction = activeModeDirection;
-    activeModeDirection = NO_DIRECTION;
-    BOOL shouldFireImmediateOnPress = [selectedMode shouldFireImmediateOnPress:direction];
+    TTModeDirection direction = self.activeModeDirection;
+    self.activeModeDirection = NO_DIRECTION;
+    BOOL shouldFireImmediateOnPress = [self.selectedMode shouldFireImmediateOnPress:direction];
     
-    if (!selectedMode) return;
+    if (!self.selectedMode) return;
     if (shouldFireImmediateOnPress) return; // Already fired by now, on press up
     
-    if ([selectedMode shouldIgnoreSingleBeforeDouble:direction]) {
-        waitingForDoubleClick = YES;
+    if ([self.selectedMode shouldIgnoreSingleBeforeDouble:direction]) {
+        self.waitingForDoubleClick = YES;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DOUBLE_CLICK_ACTION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            if (waitingForDoubleClick) {
+            if (self.waitingForDoubleClick) {
                 [self runDirection:direction];
             }
         });
@@ -248,11 +228,11 @@
 }
 
 - (void)runDirection:(TTModeDirection)direction {
-    BOOL shouldFireImmediateOnPress = [selectedMode shouldFireImmediateOnPress:direction];
+    BOOL shouldFireImmediateOnPress = [self.selectedMode shouldFireImmediateOnPress:direction];
     if (!shouldFireImmediateOnPress) {
-        selectedMode.action = [[TTAction alloc] initWithActionName:[selectedMode actionNameInDirection:direction]
+        self.selectedMode.action = [[TTAction alloc] initWithActionName:[self.selectedMode actionNameInDirection:direction]
                                                          direction:direction];
-        [selectedMode runDirection:direction];
+        [self.selectedMode runDirection:direction];
     }
 
     NSArray *actions = [self selectedModeBatchActions:direction];
@@ -264,14 +244,14 @@
 }
 
 - (void)runDoubleButton:(TTModeDirection)direction {
-    BOOL shouldFireImmediateOnPress = [selectedMode shouldFireImmediateOnPress:direction];
-    waitingForDoubleClick = NO;
-    activeModeDirection = NO_DIRECTION;
+            BOOL shouldFireImmediateOnPress = [self.selectedMode shouldFireImmediateOnPress:direction];
+    self.waitingForDoubleClick = NO;
+    self.activeModeDirection = NO_DIRECTION;
    
-    if (!selectedMode) return;
+    if (!self.selectedMode) return;
     if (shouldFireImmediateOnPress) return;
     
-    [selectedMode runDoubleDirection:direction];
+    [self.selectedMode runDoubleDirection:direction];
 
     NSArray *actions = [self selectedModeBatchActions:direction];
     for (TTAction *batchAction in actions) {
@@ -280,17 +260,17 @@
 
     [self recordButtonMoment:direction buttonMoment:BUTTON_MOMENT_DOUBLE];
 
-    activeModeDirection = NO_DIRECTION;
+    self.activeModeDirection = NO_DIRECTION;
 }
 
 - (BOOL)shouldHideHud:(TTModeDirection)direction {
     BOOL hideHud = NO;
-    NSString *actionName = [selectedMode actionNameInDirection:direction];
+    NSString *actionName = [self.selectedMode actionNameInDirection:direction];
     SEL selector = NSSelectorFromString([NSString stringWithFormat:@"shouldHideHud%@", actionName]);
-    if ([selectedMode respondsToSelector:selector]) {
-        IMP imp = [selectedMode methodForSelector:selector];
+    if ([self.selectedMode respondsToSelector:selector]) {
+        IMP imp = [self.selectedMode methodForSelector:selector];
         BOOL (*func)(id, SEL) = (void *)imp;
-        hideHud = func(selectedMode, selector);
+        hideHud = func(self.selectedMode, selector);
     }
     return hideHud;
 }
@@ -310,22 +290,22 @@
 }
 
 - (void)changeDirection:(TTModeDirection)direction toAction:(NSString *)actionClassName {
-    [selectedMode changeDirection:direction toAction:actionClassName];
+    [self.selectedMode changeDirection:direction toAction:actionClassName];
 }
 
 #pragma mark - Batch actions
 
 - (NSArray *)selectedModeBatchActions:(TTModeDirection)direction {
-    return [batchActions batchActionsInDirection:direction];
+    return [self.batchActions batchActionsInDirection:direction];
 }
 
 - (void)addBatchAction:(NSString *)actionName {
-    NSLog(@"Adding %@ from %@", actionName, NSStringFromClass([tempMode class]));
+    NSLog(@"Adding %@ from %@", actionName, NSStringFromClass([self.tempMode class]));
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     
     // Start by reading current array of batch actions in mode's direction's action's direction
-    NSString *modeDirectionName = [self directionName:selectedModeDirection];
-    NSString *actionDirectionName = [self directionName:inspectingModeDirection];
+    NSString *modeDirectionName = [self directionName:self.selectedModeDirection];
+    NSString *actionDirectionName = [self directionName:self.inspectingModeDirection];
     NSString *batchKey = [NSString stringWithFormat:@"TT:mode:%@:action:%@:batchactions",
                           modeDirectionName,
                           actionDirectionName];
@@ -339,28 +319,28 @@
     
     // Add new batch action to existing batch actions
     NSString *newActionKey = [NSString stringWithFormat:@"%@:%@:%@",
-                              NSStringFromClass([tempMode class]),
+                              NSStringFromClass([self.tempMode class]),
                               actionName,
                               [[[NSUUID UUID] UUIDString] substringToIndex:8]];
     [batchActionKeys addObject:newActionKey];
     [prefs setObject:batchActionKeys forKey:batchKey];
     [prefs synchronize];
     
-    [batchActions assembleBatchActions];
+    [self.batchActions assembleBatchActions];
     
-    tempMode = nil;
-    tempModeName = nil;
+    self.tempMode = nil;
+    self.tempModeName = nil;
 
-    [self setInspectingModeDirection:inspectingModeDirection];
+    [self setInspectingModeDirection:self.inspectingModeDirection];
 }
 
 - (void)changeBatchAction:(NSString *)batchActionKey toAction:(NSString *)actionName {
-    NSLog(@"Changing %@ from %@", actionName, NSStringFromClass([batchActionChangeAction class]));
+    NSLog(@"Changing %@ from %@", actionName, NSStringFromClass([self.batchActionChangeAction class]));
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     
     // Start by reading current array of batch actions in mode's direction's action's direction
-    NSString *modeDirectionName = [self directionName:selectedModeDirection];
-    NSString *actionDirectionName = [self directionName:inspectingModeDirection];
+    NSString *modeDirectionName = [self directionName:self.selectedModeDirection];
+    NSString *actionDirectionName = [self directionName:self.inspectingModeDirection];
     NSString *batchKey = [NSString stringWithFormat:@"TT:mode:%@:action:%@:batchactions",
                           modeDirectionName,
                           actionDirectionName];
@@ -374,7 +354,7 @@
         } else {
             NSArray *keyParts = [key componentsSeparatedByString:@":"];
             NSString *newActionKey = [NSString stringWithFormat:@"%@:%@:%@",
-                                      NSStringFromClass([batchActionChangeAction.mode class]),
+                                      NSStringFromClass([self.batchActionChangeAction.mode class]),
                                       actionName,
                                       keyParts[2]];
             [newBatchActionKeys addObject:newActionKey];
@@ -383,14 +363,14 @@
     [prefs setObject:newBatchActionKeys forKey:batchKey];
     [prefs synchronize];
     
-    [batchActions assembleBatchActions];
+    [self.batchActions assembleBatchActions];
 }
 
 - (void)removeBatchAction:(NSString *)batchActionKey {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     
-    NSString *modeDirectionName = [self directionName:selectedModeDirection];
-    NSString *actionDirectionName = [self directionName:inspectingModeDirection];
+    NSString *modeDirectionName = [self directionName:self.selectedModeDirection];
+    NSString *actionDirectionName = [self directionName:self.inspectingModeDirection];
     NSString *batchKey = [NSString stringWithFormat:@"TT:mode:%@:action:%@:batchactions",
                           modeDirectionName,
                           actionDirectionName];
@@ -406,14 +386,14 @@
     [prefs setObject:newBatchActionKeys forKey:batchKey];
     [prefs synchronize];
     
-    [batchActions assembleBatchActions];
-    [self setInspectingModeDirection:inspectingModeDirection];
+    [self.batchActions assembleBatchActions];
+    [self setInspectingModeDirection:self.inspectingModeDirection];
 }
 
 #pragma mark - Mode options
 
 - (id)modeOptionValue:(NSString *)optionName {
-    return [self mode:selectedMode optionValue:optionName];
+    return [self mode:self.selectedMode optionValue:optionName];
 }
 
 - (id)mode:(TTMode *)mode optionValue:(NSString *)optionName {
@@ -447,11 +427,11 @@
 #pragma mark - Action options
 
 - (id)actionOptionValue:(NSString *)optionName {
-    return [self actionOptionValue:optionName inDirection:inspectingModeDirection];
+    return [self actionOptionValue:optionName inDirection:self.inspectingModeDirection];
 }
 
 - (id)actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction {
-    return [self mode:selectedMode actionOptionValue:optionName inDirection:direction];
+    return [self mode:self.selectedMode actionOptionValue:optionName inDirection:direction];
 }
 
 - (id)mode:(TTMode *)mode actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction {
@@ -459,7 +439,7 @@
 }
 
 - (id)mode:(TTMode *)mode actionOptionValue:(NSString *)optionName actionName:(NSString *)actionName inDirection:(TTModeDirection)direction {
-    if (!mode) mode = selectedMode;
+    if (!mode) mode = self.selectedMode;
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *modeDirectionName = [self directionName:mode.modeDirection];
     NSString *actionDirectionName = [self directionName:direction];
@@ -552,14 +532,14 @@ actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction 
 #pragma mark - Setting mode/action options
 
 - (void)changeModeOption:(NSString *)optionName to:(id)optionValue {
-    [self changeMode:selectedMode option:optionName to:optionValue];
+    [self changeMode:self.selectedMode option:optionName to:optionValue];
 }
 
 - (void)changeMode:(TTMode *)mode option:(NSString *)optionName to:(id)optionValue {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    NSString *directionName = [self directionName:selectedModeDirection];
+    NSString *directionName = [self directionName:self.selectedModeDirection];
     NSString *optionKey = [NSString stringWithFormat:@"TT:mode:%@-%@:option:%@",
-                           NSStringFromClass([selectedMode class]),
+                           NSStringFromClass([self.selectedMode class]),
                            directionName,
                            optionName];
     
@@ -579,11 +559,11 @@ actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction 
 }
 
 - (void)changeActionOption:(NSString *)optionName to:(id)optionValue {
-    [self changeMode:selectedMode actionOption:optionName to:optionValue direction:inspectingModeDirection];
+    [self changeMode:self.selectedMode actionOption:optionName to:optionValue direction:self.inspectingModeDirection];
 }
 
 - (void)changeActionOption:(NSString *)optionName to:(id)optionValue direction:(TTModeDirection)direction {
-    [self changeMode:selectedMode actionOption:optionName to:optionValue direction:direction];
+    [self changeMode:self.selectedMode actionOption:optionName to:optionValue direction:direction];
 }
 
 - (void)changeMode:(TTMode *)mode actionOption:(NSString *)optionName to:(id)optionValue direction:(TTModeDirection)direction {
@@ -624,19 +604,19 @@ actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction 
 - (TTMode *)modeInDirection:(TTModeDirection)direction {
     switch (direction) {
         case NORTH:
-            return northMode;
+            return self.northMode;
             break;
             
         case EAST:
-            return eastMode;
+            return self.eastMode;
             break;
             
         case WEST:
-            return westMode;
+            return self.westMode;
             break;
             
         case SOUTH:
-            return southMode;
+            return self.southMode;
             break;
             
         case NO_DIRECTION:
@@ -693,7 +673,7 @@ actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction 
 }
 
 - (void)toggleInspectingModeDirection:(TTModeDirection)direction {
-    if (inspectingModeDirection == direction) {
+    if (self.inspectingModeDirection == direction) {
         [self setOpenedActionChangeMenu:NO];
         [self setOpenedAddActionChangeMenu:NO];
         [self setOpenedChangeActionMenu:NO];
@@ -711,42 +691,6 @@ actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction 
     }
 }
 
-- (void)setInspectingModeDirection:(TTModeDirection)_inspectingModeDirection {
-    if (inspectingModeDirection != _inspectingModeDirection) {
-        inspectingModeDirection = _inspectingModeDirection;
-    }
-}
-
-- (void)setHoverModeDirection:(TTModeDirection)_hoverModeDirection {
-    if (hoverModeDirection != _hoverModeDirection) {
-        hoverModeDirection = _hoverModeDirection;
-    }
-}
-
-- (void)setOpenedModeChangeMenu:(BOOL)_openedModeChangeMenu {
-    if (openedModeChangeMenu != _openedModeChangeMenu) {
-        openedModeChangeMenu = _openedModeChangeMenu;
-    }
-}
-
-- (void)setOpenedActionChangeMenu:(BOOL)_openedActionChangeMenu {
-    if (openedActionChangeMenu != _openedActionChangeMenu) {
-        openedActionChangeMenu = _openedActionChangeMenu;
-    }
-}
-
-- (void)setOpenedAddActionChangeMenu:(BOOL)_openedAddActionChangeMenu {
-    if (openedAddActionChangeMenu != _openedAddActionChangeMenu) {
-        openedAddActionChangeMenu = _openedAddActionChangeMenu;
-    }
-}
-
-- (void)setOpenedChangeActionMenu:(BOOL)_openedChangeActionMenu {
-    if (openedChangeActionMenu != _openedChangeActionMenu) {
-        openedChangeActionMenu = _openedChangeActionMenu;
-    }
-}
-
 #pragma mark - Device Info
 
 
@@ -754,10 +698,10 @@ actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction 
     NSString *buttonPress = [self momentName:buttonMoment];
     NSMutableArray *presses = [NSMutableArray array];
     
-    NSString *actionName = [selectedMode actionNameInDirection:direction];
+    NSString *actionName = [self.selectedMode actionNameInDirection:direction];
     [presses addObject:@{
-                         @"app_name": NSStringFromClass([selectedMode class]),
-                         @"app_direction": [self directionName:[selectedMode modeDirection]],
+                         @"app_name": NSStringFromClass([self.selectedMode class]),
+                         @"app_direction": [self directionName:[self.selectedMode modeDirection]],
                          @"button_name": actionName ? actionName : @"none",
                          @"button_direction": [self directionName:direction],
                          @"button_moment": buttonPress,
@@ -768,7 +712,7 @@ actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction 
     for (TTAction *batchAction in actions) {
         [presses addObject:@{
                              @"app_name": NSStringFromClass([batchAction.mode class]),
-                             @"app_direction": [self directionName:[selectedMode modeDirection]],
+                             @"app_direction": [self directionName:[self.selectedMode modeDirection]],
                              @"button_name": batchAction.actionName,
                              @"button_direction": [self directionName:direction],
                              @"button_moment": buttonPress,

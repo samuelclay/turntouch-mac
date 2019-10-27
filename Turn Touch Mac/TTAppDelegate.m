@@ -12,17 +12,18 @@
 #import "PFMoveApplication.h"
 #import <ApplicationServices/ApplicationServices.h>
 
-@implementation TTAppDelegate
+@interface TTAppDelegate ()
 
-@synthesize panelController = _panelController;
-@synthesize menubarController = _menubarController;
-@synthesize bluetoothMonitor = _bluetoothMonitor;
-@synthesize hudController = _hudController;
+@property (nonatomic, strong, readwrite) TTPanelController *panelController;
+
+@end
+
+@implementation TTAppDelegate
 
 #pragma mark - Dealloc
 
 - (void)dealloc {
-    [_panelController removeObserver:self forKeyPath:@"hasActivePanel"];
+    [self.panelController removeObserver:self forKeyPath:@"hasActivePanel"];
 }
 
 #pragma mark -
@@ -203,14 +204,14 @@ void *kContextActivePanel = &kContextActivePanel;
 
 - (void) receiveSleepNote: (NSNotification*) note {
     NSLog(@"receiveSleepNote: %@", [note name]);
-    [_bluetoothMonitor stopScan];
-    [_bluetoothMonitor terminate];
+    [self.bluetoothMonitor stopScan];
+    [self.bluetoothMonitor terminate];
 }
 
 - (void) receiveWakeNote: (NSNotification*) note {
     NSLog(@"receiveWakeNote: %@", [note name]);
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [_bluetoothMonitor reconnect:YES];
+        [self.bluetoothMonitor reconnect:YES];
     });
 }
 

@@ -15,9 +15,6 @@
 
 @implementation TTModeCustomKeyboardOptions
 
-@synthesize singleKey;
-@synthesize doubleKey;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.translatesAutoresizingMaskIntoConstraints = NO;
@@ -29,19 +26,19 @@
     NSString *singleKeyPref = [self.action optionValue:kCustomSingleKey];
     NSString *doubleKeyPref = [self.action optionValue:kCustomDoubleKey];
     
-    [singleKey setStringValue:singleKeyPref];
-    [doubleKey setStringValue:doubleKeyPref];
+    [self.singleKey setStringValue:singleKeyPref];
+    [self.doubleKey setStringValue:doubleKeyPref];
 }
 
 - (void)changeKey:(id)sender {
-    if (singleKey.stringValue.length > 0) {
-        [self.action changeActionOption:kCustomSingleKey to:[singleKey.stringValue substringToIndex:1]];
+    if (self.singleKey.stringValue.length > 0) {
+        [self.action changeActionOption:kCustomSingleKey to:[self.singleKey.stringValue substringToIndex:1]];
     }
-    if (doubleKey.stringValue.length > 0) {
-        [self.action changeActionOption:kCustomDoubleKey to:[doubleKey.stringValue substringToIndex:1]];
+    if (self.doubleKey.stringValue.length > 0) {
+        [self.action changeActionOption:kCustomDoubleKey to:[self.doubleKey.stringValue substringToIndex:1]];
     }
     
-    if (singleKey.stringValue.length > 0 && doubleKey.stringValue.length > 0) {
+    if (self.singleKey.stringValue.length > 0 && self.doubleKey.stringValue.length > 0) {
         [self loadKeys];
     }
 }

@@ -12,10 +12,9 @@
 
 @class TTAppDelegate;
 
-@interface TTModalPairingInfo : NSView {
-    TTAppDelegate *appDelegate;
-}
+@interface TTModalPairingInfo : NSView
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic) IBOutlet NSTextField *titleLabel;
 @property (nonatomic) IBOutlet NSTextField *subtitleLabel;
 @property (nonatomic) IBOutlet NSImageView *heroImage;

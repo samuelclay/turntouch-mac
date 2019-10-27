@@ -12,21 +12,28 @@
 #define BUTTON_WIDTH 82.0f
 #define BUTTON_MARGIN 16.f
 
-@implementation TTModeTitleView
+@interface TTModeTitleView ()
 
-@synthesize changeButton;
+@property (nonatomic, strong) NSImage *modeImage;
+@property (nonatomic, strong) NSString *modeTitle;
+@property (nonatomic, strong) NSDictionary *modeAttributes;
+@property (nonatomic) CGSize textSize;
+
+@end
+
+@implementation TTModeTitleView
 
 - (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        appDelegate = (TTAppDelegate *)[NSApp delegate];
+        self.appDelegate = (TTAppDelegate *)[NSApp delegate];
         self.translatesAutoresizingMaskIntoConstraints = NO;
 
-        changeButton = [[TTChangeButtonView alloc] init];
+        self.changeButton = [[TTChangeButtonView alloc] init];
         [self setChangeButtonTitle:@"Change"];
-        [changeButton setAction:@selector(showChangeModeMenu:)];
-        [changeButton setTarget:self];
-        [self addSubview:changeButton];
+        [self.changeButton setAction:@selector(showChangeModeMenu:)];
+        [self.changeButton setTarget:self];
+        [self addSubview:self.changeButton];
         
         [self registerAsObserver];
     }
@@ -40,26 +47,26 @@
     [self setupTitleAttributes];
     [self drawBackground];
 
-    NSString *imageFilename = [[appDelegate.modeMap.selectedMode class] imageName];
-    modeImage = [NSImage imageNamed:imageFilename];
+    NSString *imageFilename = [[self.appDelegate.modeMap.selectedMode class] imageName];
+    self.modeImage = [NSImage imageNamed:imageFilename];
 
-    [modeImage setSize:NSMakeSize(IMAGE_SIZE, IMAGE_SIZE)];
-    CGFloat offset = (NSHeight(self.frame)/2) - (modeImage.size.height/2);
+    [self.modeImage setSize:NSMakeSize(IMAGE_SIZE, IMAGE_SIZE)];
+    CGFloat offset = (NSHeight(self.frame)/2) - (self.modeImage.size.height/2);
     NSPoint imagePoint = NSMakePoint(offset, offset);
-    [modeImage drawInRect:NSMakeRect(imagePoint.x, imagePoint.y,
-                                     modeImage.size.width, modeImage.size.height)];
+    [self.modeImage drawInRect:NSMakeRect(imagePoint.x, imagePoint.y,
+                                     self.modeImage.size.width, self.modeImage.size.height)];
 
-    NSSize titleSize = [modeTitle sizeWithAttributes:modeAttributes];
-    NSPoint titlePoint = NSMakePoint(imagePoint.x + modeImage.size.width + 12,
+    NSSize titleSize = [self.modeTitle sizeWithAttributes:self.modeAttributes];
+    NSPoint titlePoint = NSMakePoint(imagePoint.x + self.modeImage.size.width + 12,
                                      (NSHeight(self.frame)/2) - (titleSize.height/2));
-    [modeTitle drawAtPoint:titlePoint withAttributes:modeAttributes];
+    [self.modeTitle drawAtPoint:titlePoint withAttributes:self.modeAttributes];
 
     NSRect buttonFrame = NSMakeRect(NSWidth(self.frame) - BUTTON_WIDTH - 12,
                                     (NSHeight(self.frame)/2) - BUTTON_MARGIN,
                                     BUTTON_WIDTH,
                                     NSHeight(self.frame) - BUTTON_MARGIN*2);
-    changeButton.frame = buttonFrame;
-    if (appDelegate.modeMap.openedModeChangeMenu) {
+    self.changeButton.frame = buttonFrame;
+    if (self.appDelegate.modeMap.openedModeChangeMenu) {
         [self setChangeButtonTitle:@"Cancel"];
     } else {
         [self setChangeButtonTitle:@"Change"];
@@ -76,34 +83,34 @@
 - (void)setChangeButtonTitle:(NSString *)title {
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]
                                                    initWithString:title attributes:nil];
-    [changeButton setAttributedTitle:attributedString];
+    [self.changeButton setAttributedTitle:attributedString];
 }
 
 - (void)setupTitleAttributes {
-    modeTitle = [[appDelegate.modeMap.selectedMode class] description];
+    self.modeTitle = [[self.appDelegate.modeMap.selectedMode class] description];
     NSShadow *stringShadow = [[NSShadow alloc] init];
     stringShadow.shadowColor = [NSColor whiteColor];
     stringShadow.shadowOffset = NSMakeSize(0, -1);
     stringShadow.shadowBlurRadius = 0;
     NSColor *textColor = NSColorFromRGB(0x404A60);
-    modeAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:13],
+    self.modeAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:13],
                        NSForegroundColorAttributeName: textColor,
                        NSShadowAttributeName: stringShadow
                        };
-    textSize = [modeTitle sizeWithAttributes:modeAttributes];
+    self.textSize = [self.modeTitle sizeWithAttributes:self.modeAttributes];
 }
 
 #pragma mark - KVO
 
 - (void)dealloc {
-    [appDelegate.modeMap removeObserver:self forKeyPath:@"selectedModeDirection"];
-    [appDelegate.modeMap removeObserver:self forKeyPath:@"openedModeChangeMenu"];
+    [self.appDelegate.modeMap removeObserver:self forKeyPath:@"selectedModeDirection"];
+    [self.appDelegate.modeMap removeObserver:self forKeyPath:@"openedModeChangeMenu"];
 }
 
 - (void)registerAsObserver {
-    [appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
+    [self.appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
                              options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"openedModeChangeMenu"
+    [self.appDelegate.modeMap addObserver:self forKeyPath:@"openedModeChangeMenu"
                              options:0 context:nil];
 }
 
@@ -121,8 +128,8 @@
 #pragma mark - Events
 
 - (void)showChangeModeMenu:(id)sender {
-    [appDelegate.modeMap setOpenedModeChangeMenu:!appDelegate.modeMap.openedModeChangeMenu];
-    [appDelegate.modeMap setInspectingModeDirection:NO_DIRECTION];
+    [self.appDelegate.modeMap setOpenedModeChangeMenu:!self.appDelegate.modeMap.openedModeChangeMenu];
+    [self.appDelegate.modeMap setInspectingModeDirection:NO_DIRECTION];
     [self setNeedsDisplay:YES];
 }
 

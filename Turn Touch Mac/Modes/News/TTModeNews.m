@@ -17,15 +17,22 @@
 #import "JXReadabilityDocument.h"
 #import "JXWebResourceLoadingBarrier.h"
 
-@implementation TTModeNews
+@interface TTModeNews ()
 
-@synthesize newsblur;
+@property (nonatomic, strong) TTModeNewsWindowController *newsWindowController;
+@property (nonatomic) TTModeNewsState state;
+@property (nonatomic) BOOL closed;
+@property (nonatomic) BOOL timerActive;
+
+@end
+
+@implementation TTModeNews
 
 #pragma mark - Mode
 
 - (instancetype)init {
     if (self = [super init]) {
-        newsblur = [[TTModeNewsNewsBlur alloc] init];
+        self.newsblur = [[TTModeNewsNewsBlur alloc] init];
     }
     
     return self;
@@ -108,10 +115,10 @@
 #pragma mark - Action Titles
 
 - (NSString *)actionTitleInDirection:(TTModeDirection)direction buttonMoment:(TTButtonMoment)buttonMoment {
-    if (state == TTModeNewsStateMenu) {
+    if (self.state == TTModeNewsStateMenu) {
         switch (direction) {
             case EAST:
-                return [newsWindowController.menuView highlightedRowTitle];
+                return [self.newsWindowController.menuView highlightedRowTitle];
             default:
                 break;
         }
@@ -230,7 +237,7 @@
 }
 
 - (BOOL)shouldHideHudTTModeNewsMenuSelect {
-    if (state == TTModeNewsStateMenu) {
+    if (self.state == TTModeNewsStateMenu) {
         return NO;
     }
     
@@ -240,8 +247,8 @@
 #pragma mark - Action methods
 
 - (BOOL)checkClosed {
-    if (closed) {
-        closed = NO;
+    if (self.closed) {
+        self.closed = NO;
         [self loadStories];
         [self startHideMouseTimer];
         [self setDisplayAwake:YES];
@@ -253,12 +260,12 @@
 }
 
 - (void)startHideMouseTimer {
-    if (timerActive) return;
+    if (self.timerActive) return;
     [NSCursor unhide];
-    timerActive = YES;
+    self.timerActive = YES;
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        timerActive = NO;
+        self.timerActive = NO;
         CFTimeInterval secondsSinceMouseMove = CGEventSourceSecondsSinceLastEventType(kCGEventSourceStateCombinedSessionState, kCGEventMouseMoved);
         if (secondsSinceMouseMove > 2.5) {
             [NSCursor hide];
@@ -297,12 +304,12 @@
 - (void)runTTModeNewsMenu {
     if ([self checkClosed]) return;
     
-    if (state == TTModeNewsStateBrowser) {
-        state = TTModeNewsStateMenu;
-        [newsWindowController.menuView slideIn];
-    } else if (state == TTModeNewsStateMenu) {
-        state = TTModeNewsStateBrowser;
-        [newsWindowController.menuView slideOut];
+    if (self.state == TTModeNewsStateBrowser) {
+        self.state = TTModeNewsStateMenu;
+        [self.newsWindowController.menuView slideIn];
+    } else if (self.state == TTModeNewsStateMenu) {
+        self.state = TTModeNewsStateBrowser;
+        [self.newsWindowController.menuView slideOut];
     }
 }
 
@@ -318,32 +325,32 @@
     if ([self checkClosed]) return;
     
     [self runTTModeNewsPreviousStory];
-    if (state == TTModeNewsStateMenu) {
-        state = TTModeNewsStateBrowser;
-        [newsWindowController.menuView slideOut];
+    if (self.state == TTModeNewsStateMenu) {
+        self.state = TTModeNewsStateBrowser;
+        [self.newsWindowController.menuView slideOut];
     }
 }
 
 - (void)runTTModeNewsNext {
     if ([self checkClosed]) return;
     
-    if (state == TTModeNewsStateBrowser) {
+    if (self.state == TTModeNewsStateBrowser) {
         
-    } else if (state == TTModeNewsStateMenu) {
-        [newsWindowController.menuView selectMenuItem];
+    } else if (self.state == TTModeNewsStateMenu) {
+        [self.newsWindowController.menuView selectMenuItem];
     }
 }
 - (void)runTTModeNewsScrollUp {
     if ([self checkClosed]) return;
 
-    [newsWindowController.browserView scrollUp];
+    [self.newsWindowController.browserView scrollUp];
     [NSCursor hide];
     CGDisplayHideCursor(kCGDirectMainDisplay);
 }
 - (void)runTTModeNewsScrollDown {
     if ([self checkClosed]) return;
     
-    [newsWindowController.browserView scrollDown];
+    [self.newsWindowController.browserView scrollDown];
     [NSCursor hide];
     CGDisplayHideCursor(kCGDirectMainDisplay);
 }
@@ -353,7 +360,7 @@
     
     [NSCursor hide];
     CGDisplayHideCursor(kCGDirectMainDisplay);
-    [newsWindowController.browserView nextStory];
+    [self.newsWindowController.browserView nextStory];
 }
 - (void)runTTModeNewsNextSite {
     if ([self checkClosed]) return;
@@ -364,7 +371,7 @@
     if ([self checkClosed]) return;
     
     [NSCursor hide];
-    [newsWindowController.browserView previousStory];
+    [self.newsWindowController.browserView previousStory];
 }
 - (void)runTTModeNewsPreviousSite {
     if ([self checkClosed]) return;
@@ -372,43 +379,43 @@
     NSLog(@"Running TTModeNewsPreviousSite");
 }
 - (void)runTTModeNewsMenuFontSizeUp {
-    [newsWindowController.browserView increaseFontSize];
+    [self.newsWindowController.browserView increaseFontSize];
 }
 
 - (void)runTTModeNewsMenuFontSizeDown {
-    [newsWindowController.browserView decreaseFontSize];
+    [self.newsWindowController.browserView decreaseFontSize];
 }
 
 - (void)runTTModeNewsMenuWider {
-    [newsWindowController.browserView widenStory];
+    [self.newsWindowController.browserView widenStory];
 }
 
 - (void)runTTModeNewsMenuNarrower {
-    [newsWindowController.browserView narrowStory];
+    [self.newsWindowController.browserView narrowStory];
 }
 
 
 #pragma mark - News
 
 - (void)activate {
-    closed = YES;
-    state = TTModeNewsStateBrowser;
+    self.closed = YES;
+    self.state = TTModeNewsStateBrowser;
     
-    newsWindowController = [[TTModeNewsWindowController alloc] initWithWindowNibName:@"TTModeNewsWindowController"];
+    self.newsWindowController = [[TTModeNewsWindowController alloc] initWithWindowNibName:@"TTModeNewsWindowController"];
 }
 
 - (void)deactivate {
-    [newsWindowController fadeOut];
+    [self.newsWindowController fadeOut];
     [self setDisplayAwake:NO];
     [NSCursor unhide];
     CGDisplayShowCursor(kCGDirectMainDisplay);
 }
 
 - (void)loadStories {
-    [newsWindowController fadeIn];
-    [newsblur fetchRiverStories:^(NSArray *stories, NSArray *feeds) {
-        [newsWindowController addFeeds:feeds];
-        [newsWindowController addStories:stories];
+    [self.newsWindowController fadeIn];
+    [self.newsblur fetchRiverStories:^(NSArray *stories, NSArray *feeds) {
+        [self.newsWindowController addFeeds:feeds];
+        [self.newsWindowController addStories:stories];
     }];
     
 //    [newsWindowController.browserView ];
@@ -417,7 +424,7 @@
 #pragma mark - Menu Options
 
 - (NSString *)actionNameInDirection:(TTModeDirection)direction {
-    if (state == TTModeNewsStateMenu) {
+    if (self.state == TTModeNewsStateMenu) {
         switch (direction) {
             case NORTH:
                 return @"TTModeNewsMenuUp";
@@ -436,28 +443,28 @@
 }
 
 - (void)runTTModeNewsMenuReturn {
-    state = TTModeNewsStateBrowser;
-    [newsWindowController.menuView slideOut];
+    self.state = TTModeNewsStateBrowser;
+    [self.newsWindowController.menuView slideOut];
 }
 - (void)runTTModeNewsMenuUp {
-    [newsWindowController.menuView menuUp];
+    [self.newsWindowController.menuView menuUp];
 }
 - (void)runTTModeNewsMenuDown {
-    [newsWindowController.menuView menuDown];
+    [self.newsWindowController.menuView menuDown];
 }
 - (void)runTTModeNewsMenuSelect {
-    [newsWindowController.menuView selectMenuItem];
+    [self.newsWindowController.menuView selectMenuItem];
 }
 
 - (void)runTTModeNewsMenuClose {
-    if (!closed) {
-        closed = YES;
+    if (!self.closed) {
+        self.closed = YES;
         [self setDisplayAwake:NO];
         [NSCursor unhide];
         CGDisplayShowCursor(kCGDirectMainDisplay);
-        [newsWindowController fadeOut];
-        state = TTModeNewsStateBrowser;
-        [newsWindowController.menuView slideOut];
+        [self.newsWindowController fadeOut];
+        self.state = TTModeNewsStateBrowser;
+        [self.newsWindowController.menuView slideOut];
     }
 }
 

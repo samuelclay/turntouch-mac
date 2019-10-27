@@ -12,16 +12,19 @@
 
 const NSInteger BATCH_ACTION_HEADER_HEIGHT = 36;
 
-@implementation TTBatchActionStackView
+@interface TTBatchActionStackView ()
 
-@synthesize tempMode;
-@synthesize actionOptionsViewControllers;
-@synthesize changeActionMenuViewControllers;
-@synthesize changeActionMenuViewConstraints;
+@property (nonatomic, strong) NSLayoutConstraint *tempHeaderConstraint;
+
+@property (nonatomic, strong) NSString *changeActionBatchActionKey;
+
+@end
+
+@implementation TTBatchActionStackView
 
 - (instancetype)initWithFrame:(NSRect)frameRect {
     if (self = [super initWithFrame:frameRect]) {
-        appDelegate = (TTAppDelegate *)[NSApp delegate];
+        self.appDelegate = (TTAppDelegate *)[NSApp delegate];
         [self setWantsLayer:YES];
         [self setHuggingPriority:NSLayoutPriorityDefaultHigh
                   forOrientation:NSLayoutConstraintOrientationVertical];
@@ -49,7 +52,7 @@ const NSInteger BATCH_ACTION_HEADER_HEIGHT = 36;
 #pragma mark - KVO
 
 - (void)registerAsObserver {
-    [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
+    [self.appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
                              options:0 context:nil];
 }
 
@@ -58,14 +61,14 @@ const NSInteger BATCH_ACTION_HEADER_HEIGHT = 36;
                          change:(NSDictionary*)change
                         context:(void*)context {
     if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))]) {
-        if (changeActionBatchActionKey) {
+        if (self.changeActionBatchActionKey) {
             [self toggleChangeActionMenu:nil visible:NO];
         }
     }
 }
 
 - (void)dealloc {
-    [appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
+    [self.appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
 }
 
 #pragma mark - Change Action Menu
@@ -74,31 +77,31 @@ const NSInteger BATCH_ACTION_HEADER_HEIGHT = 36;
     NSLayoutConstraint *changeActionMenuConstraint;
     
     if (!visible) {
-        changeActionBatchActionKey = nil;
-        appDelegate.modeMap.batchActionChangeAction = nil;
-        [appDelegate.modeMap setOpenedChangeActionMenu:NO];
+        self.changeActionBatchActionKey = nil;
+        self.appDelegate.modeMap.batchActionChangeAction = nil;
+        [self.appDelegate.modeMap setOpenedChangeActionMenu:NO];
         
-        changeActionMenuConstraint = changeActionMenuViewConstraints[batchAction.batchActionKey];
+        changeActionMenuConstraint = self.changeActionMenuViewConstraints[batchAction.batchActionKey];
     } else {
-        changeActionBatchActionKey = batchAction.batchActionKey;
-        appDelegate.modeMap.batchActionChangeAction = batchAction;
-        [appDelegate.modeMap setOpenedChangeActionMenu:YES];
+        self.changeActionBatchActionKey = batchAction.batchActionKey;
+        self.appDelegate.modeMap.batchActionChangeAction = batchAction;
+        [self.appDelegate.modeMap setOpenedChangeActionMenu:YES];
 
-        NSView *changeActionMenuPlaceholder = changeActionMenuViewControllers[batchAction.batchActionKey];
+        NSView *changeActionMenuPlaceholder = self.changeActionMenuViewControllers[batchAction.batchActionKey];
         TTModeMenuContainer *changeActionMenu = [[TTModeMenuContainer alloc] initWithType:CHANGE_BATCH_ACTION_MENU_TYPE];
         [self replaceSubview:changeActionMenuPlaceholder with:changeActionMenu];
-        [changeActionMenuViewControllers setObject:changeActionMenu forKey:batchAction.batchActionKey];
+        [self.changeActionMenuViewControllers setObject:changeActionMenu forKey:batchAction.batchActionKey];
         
-        changeActionMenuConstraint = changeActionMenuViewConstraints[batchAction.batchActionKey];
+        changeActionMenuConstraint = self.changeActionMenuViewConstraints[batchAction.batchActionKey];
         [self removeConstraint:changeActionMenuConstraint];
-        changeActionMenuConstraint = [NSLayoutConstraint constraintWithItem:changeActionMenuViewControllers[batchAction.batchActionKey]
+        changeActionMenuConstraint = [NSLayoutConstraint constraintWithItem:self.changeActionMenuViewControllers[batchAction.batchActionKey]
                                                                   attribute:NSLayoutAttributeHeight
                                                                   relatedBy:NSLayoutRelationEqual
                                                                      toItem:nil
                                                                   attribute:NSLayoutAttributeNotAnAttribute
                                                                  multiplier:1.0 constant:1];
         [self addConstraint:changeActionMenuConstraint];
-        [changeActionMenuViewConstraints setObject:changeActionMenuConstraint forKey:batchAction.batchActionKey];
+        [self.changeActionMenuViewConstraints setObject:changeActionMenuConstraint forKey:batchAction.batchActionKey];
         
         
         [changeActionMenu setNeedsDisplay:YES];
@@ -113,7 +116,7 @@ const NSInteger BATCH_ACTION_HEADER_HEIGHT = 36;
     BOOL shiftPressed = (clearFlags == NSShiftKeyMask);
     if (shiftPressed) openDuration *= 10;
     
-    if (changeActionBatchActionKey) {
+    if (self.changeActionBatchActionKey) {
         [batchAction.changeActionMenu toggleScrollbar:YES];
     }
     
@@ -123,7 +126,7 @@ const NSInteger BATCH_ACTION_HEADER_HEIGHT = 36;
                                                             kCAMediaTimingFunctionEaseInEaseOut]];
     
     [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
-        if (!changeActionBatchActionKey) {
+        if (!self.changeActionBatchActionKey) {
             [[NSAnimationContext currentContext] setCompletionHandler:^{
                 [batchAction.changeActionMenu toggleScrollbar:NO];
             }];
@@ -132,7 +135,7 @@ const NSInteger BATCH_ACTION_HEADER_HEIGHT = 36;
             [[changeActionMenuConstraint animator] setConstant:ACTION_MENU_HEIGHT];
         }
     } completionHandler:^{
-        [changeActionMenuViewControllers[batchAction.batchActionKey] scrollToInspectingDirection];
+        [self.changeActionMenuViewControllers[batchAction.batchActionKey] scrollToInspectingDirection];
     }];
     [NSAnimationContext endGrouping];
 }
@@ -149,20 +152,20 @@ const NSInteger BATCH_ACTION_HEADER_HEIGHT = 36;
     // Cleanup old batch actions
     NSMutableArray *views = [NSMutableArray array];
     TTBatchActionHeaderView *tempHeaderView;
-    NSArray *batchActions = [appDelegate.modeMap selectedModeBatchActions:appDelegate.modeMap.inspectingModeDirection];
+    NSArray *batchActions = [self.appDelegate.modeMap selectedModeBatchActions:self.appDelegate.modeMap.inspectingModeDirection];
 
     for (NSLayoutConstraint *constraint in [self constraints]) {
         [self removeConstraint:constraint];
     }
     
-    [actionOptionsViewControllers removeAllObjects];
-    actionOptionsViewControllers = [NSMutableArray array];
-    changeActionMenuViewControllers = [NSMutableDictionary dictionary];
-    changeActionMenuViewConstraints = [NSMutableDictionary dictionary];
+    [self.actionOptionsViewControllers removeAllObjects];
+    self.actionOptionsViewControllers = [NSMutableArray array];
+    self.changeActionMenuViewControllers = [NSMutableDictionary dictionary];
+    self.changeActionMenuViewConstraints = [NSMutableDictionary dictionary];
     
     if (!animated) {
         // If not animated then most likely loading initial, so toss change action menu
-        changeActionBatchActionKey = nil;
+        self.changeActionBatchActionKey = nil;
     }
     
     // Add each action's header and options
@@ -174,14 +177,14 @@ const NSInteger BATCH_ACTION_HEADER_HEIGHT = 36;
         // Changing action, show action menu
         NSView *view = [[NSView alloc] initWithFrame:NSZeroRect];
         [views addObject:view];
-        [changeActionMenuViewControllers setObject:view forKey:batchAction.batchActionKey];
+        [self.changeActionMenuViewControllers setObject:view forKey:batchAction.batchActionKey];
         
         // Options
         NSString *actionOptionsViewControllerName = [NSString stringWithFormat:@"%@Options", batchAction.actionName];
         TTOptionsDetailViewController *actionOptionsViewController = [[NSClassFromString(actionOptionsViewControllerName) alloc]
                                                                       initWithNibName:actionOptionsViewControllerName bundle:nil];
         BOOL useModeOptions = NO;
-        if ([batchAction.mode shouldUseModeOptionsFor:appDelegate.modeMap.inspectingModeDirection]) {
+        if ([batchAction.mode shouldUseModeOptionsFor:self.appDelegate.modeMap.inspectingModeDirection]) {
             useModeOptions = YES;
         }
         
@@ -200,14 +203,14 @@ const NSInteger BATCH_ACTION_HEADER_HEIGHT = 36;
             actionOptionsViewController.action = batchAction;
             actionOptionsViewController.mode = batchAction.mode;
             [views addObject:actionOptionsViewController.view];
-            [actionOptionsViewControllers addObject:actionOptionsViewController]; // Cache so it doesn't lose reference in xib
+            [self.actionOptionsViewControllers addObject:actionOptionsViewController]; // Cache so it doesn't lose reference in xib
         }
 
     }
     
     // At bottom is `tempMode`
-    if (appDelegate.modeMap.tempMode) {
-        tempHeaderView = [[TTBatchActionHeaderView alloc] initWithTempMode:appDelegate.modeMap.tempMode];
+    if (self.appDelegate.modeMap.tempMode) {
+        tempHeaderView = [[TTBatchActionHeaderView alloc] initWithTempMode:self.appDelegate.modeMap.tempMode];
         [views addObject:tempHeaderView];
     }
 
@@ -224,20 +227,20 @@ const NSInteger BATCH_ACTION_HEADER_HEIGHT = 36;
                                                                              toItem:nil
                                                                           attribute:0 multiplier:1.0 constant:height];
             [self addConstraint:constraint];
-            if (animated && view == tempHeaderView) tempHeaderConstraint = constraint;
+            if (animated && view == tempHeaderView) self.tempHeaderConstraint = constraint;
         } else if ([view isKindOfClass:[TTOptionsDetailViewController class]]) {
 
         }
     }
-    for (NSString *batchActionKey in [changeActionMenuViewControllers allKeys]) {
-        NSLayoutConstraint *changeActionMenuConstraint = [NSLayoutConstraint constraintWithItem:changeActionMenuViewControllers[batchActionKey]
+    for (NSString *batchActionKey in [self.changeActionMenuViewControllers allKeys]) {
+        NSLayoutConstraint *changeActionMenuConstraint = [NSLayoutConstraint constraintWithItem:self.changeActionMenuViewControllers[batchActionKey]
                                                                                       attribute:NSLayoutAttributeHeight
                                                                                       relatedBy:NSLayoutRelationEqual
                                                                                          toItem:nil
                                                                                       attribute:0
                                                                                      multiplier:1.0 constant:0.f];
         [self addConstraint:changeActionMenuConstraint];
-        [changeActionMenuViewConstraints setObject:changeActionMenuConstraint forKey:batchActionKey];
+        [self.changeActionMenuViewConstraints setObject:changeActionMenuConstraint forKey:batchActionKey];
     }
     
     [NSAnimationContext beginGrouping];
@@ -246,7 +249,7 @@ const NSInteger BATCH_ACTION_HEADER_HEIGHT = 36;
                                                             kCAMediaTimingFunctionEaseInEaseOut]];
     // Only the tempMode gets animated in. Everything else is instant like any mode/action transition.
     if (tempHeaderView) {
-        [[tempHeaderConstraint animator] setConstant:BATCH_ACTION_HEADER_HEIGHT];
+        [[self.tempHeaderConstraint animator] setConstant:BATCH_ACTION_HEADER_HEIGHT];
     }
     [NSAnimationContext endGrouping];
 }

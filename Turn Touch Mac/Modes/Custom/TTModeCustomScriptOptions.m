@@ -15,27 +15,25 @@
 
 @implementation TTModeCustomScriptOptions
 
-@synthesize scriptText;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.translatesAutoresizingMaskIntoConstraints = NO;
     
-    scriptText.delegate = self;
-    scriptText.automaticQuoteSubstitutionEnabled = NO;
-    scriptText.enabledTextCheckingTypes = 0;
+    self.scriptText.delegate = self;
+    self.scriptText.automaticQuoteSubstitutionEnabled = NO;
+    self.scriptText.enabledTextCheckingTypes = 0;
     
     NSString *script = [self.action optionValue:kCustomScriptText];
     if (script) {
-        scriptText.string = script;
+        self.scriptText.string = script;
     }
 }
 
 -(void)textDidChange:(NSNotification *)notification {
-    [self.action changeActionOption:kCustomScriptText to:scriptText.string];
+    [self.action changeActionOption:kCustomScriptText to:self.scriptText.string];
 }
 - (void)controlTextDidChange:(NSNotification *)obj {
-    [self.action changeActionOption:kCustomScriptText to:scriptText.string];
+    [self.action changeActionOption:kCustomScriptText to:self.scriptText.string];
 }
 
 @end

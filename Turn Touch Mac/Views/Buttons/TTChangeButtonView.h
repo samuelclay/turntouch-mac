@@ -9,9 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "TTChangeButtonCell.h"
 
-@interface TTChangeButtonView : NSButton {
-    TTChangeButtonCell *cell;
-}
+@interface TTChangeButtonView : NSButton
 
 @property (nonatomic) CGFloat borderRadius;
 @property (nonatomic) BOOL useAltStyle;

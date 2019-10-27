@@ -14,14 +14,9 @@
 @class TTActionHUDView;
 @class TTProgressBar;
 
-@interface TTActionHUDWindowController : NSWindowController <NSWindowDelegate> {
-    TTAppDelegate *appDelegate;
-    TTActionHUDView *hudView;
-    TTActionHUDWindow *hudWindow;
-    
-    BOOL fadingIn;
-}
+@interface TTActionHUDWindowController : NSWindowController <NSWindowDelegate>
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic) IBOutlet TTActionHUDView *hudView;
 @property (nonatomic) IBOutlet TTActionHUDWindow *hudWindow;
 @property (nonatomic) IBOutlet TTProgressBar *progressBar;

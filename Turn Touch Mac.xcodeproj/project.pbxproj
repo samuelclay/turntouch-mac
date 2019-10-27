@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		050B418B591A85B579740307 /* Pods_Turn_Touch_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B611485DE4201F24DDD95F6A /* Pods_Turn_Touch_Mac.framework */; };
+		1766EE85226FC3B100A114B5 /* CBPeripheral+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 1766EE84226FC3B100A114B5 /* CBPeripheral+Extras.m */; };
 		A83CE3081C7FDC6C00011751 /* HueSDK_OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */; };
 		A83CE3091C7FDC6C00011751 /* HueSDK_OSX.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C139615B1E7F2014DF4473C4 /* Pods_Turn_Touch_Mac_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D78D7B37A823FEF6B921BCE /* Pods_Turn_Touch_Mac_Tests.framework */; };
@@ -405,7 +406,6 @@
 		FFC730E51B0673E9003538D5 /* TTModeHueRandomOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFC730E41B0673E9003538D5 /* TTModeHueRandomOptions.xib */; };
 		FFC730E81B067434003538D5 /* TTModeHueRandomOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC730E71B067434003538D5 /* TTModeHueRandomOptions.m */; };
 		FFCFCFBA1D88D9CE00FBC3E7 /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFCFCFB81D88D9CE00FBC3E7 /* LaunchAtLoginController.m */; };
-		FFD03839216D1140007FDB24 /* Turn Touch Mac-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFD03838216D1140007FDB24 /* Turn Touch Mac-Info.plist */; };
 		FFD45D532211D84C0065DF1A /* SonosPlayable.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD45D512211D84C0065DF1A /* SonosPlayable.m */; };
 		FFD4DDDB21DDBC8F00E8D8C1 /* app_airfoil.png in Resources */ = {isa = PBXBuildFile; fileRef = FFD4DDDA21DDBC8F00E8D8C1 /* app_airfoil.png */; };
 		FFD62CCE194F935D0093004D /* TTSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD62CCD194F935D0093004D /* TTSegmentedCell.m */; };
@@ -495,6 +495,9 @@
 
 /* Begin PBXFileReference section */
 		0816B43983D957B02997067E /* Pods-Turn Touch Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turn Touch Mac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Turn Touch Mac/Pods-Turn Touch Mac.debug.xcconfig"; sourceTree = "<group>"; };
+		1766EE83226FC3B100A114B5 /* CBPeripheral+Extras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CBPeripheral+Extras.h"; path = "Categories/CBPeripheral+Extras.h"; sourceTree = "<group>"; };
+		1766EE84226FC3B100A114B5 /* CBPeripheral+Extras.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CBPeripheral+Extras.m"; path = "Categories/CBPeripheral+Extras.m"; sourceTree = "<group>"; };
+		178BDF51226E61E100396413 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		383E060B60CD35F142D2CFDD /* Pods-Turn Touch Mac Tests.testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turn Touch Mac Tests.testing.xcconfig"; path = "Pods/Target Support Files/Pods-Turn Touch Mac Tests/Pods-Turn Touch Mac Tests.testing.xcconfig"; sourceTree = "<group>"; };
 		6D78D7B37A823FEF6B921BCE /* Pods_Turn_Touch_Mac_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Turn_Touch_Mac_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CC90F060E770AA12DCC7F63 /* Pods-Turn Touch Mac.testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turn Touch Mac.testing.xcconfig"; path = "Pods/Target Support Files/Pods-Turn Touch Mac/Pods-Turn Touch Mac.testing.xcconfig"; sourceTree = "<group>"; };
@@ -916,7 +919,6 @@
 		FF8C834617AB14B5000166FC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		FF8C834817AB14B5000166FC /* TTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTAppDelegate.h; sourceTree = "<group>"; };
 		FF8C834917AB14B5000166FC /* TTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTAppDelegate.m; sourceTree = "<group>"; };
-		FF8C834C17AB14B5000166FC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		FF8D1AA31C98F292006AA1A2 /* TTModalAbout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModalAbout.h; path = Views/Settings/TTModalAbout.h; sourceTree = "<group>"; };
 		FF8D1AA41C98F292006AA1A2 /* TTModalAbout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModalAbout.m; path = Views/Settings/TTModalAbout.m; sourceTree = "<group>"; };
 		FF8D1AA51C98F292006AA1A2 /* TTModalAbout.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModalAbout.xib; path = Views/Settings/TTModalAbout.xib; sourceTree = "<group>"; };
@@ -2390,6 +2392,8 @@
 				FF6A37CF1A9AEC9F006F3756 /* NSDate+Extras.m */,
 				FF8D1AB91C9B3C54006AA1A2 /* NSString+TTEncoding.h */,
 				FF8D1ABA1C9B3C54006AA1A2 /* NSString+TTEncoding.m */,
+				1766EE83226FC3B100A114B5 /* CBPeripheral+Extras.h */,
+				1766EE84226FC3B100A114B5 /* CBPeripheral+Extras.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -2583,11 +2587,11 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = TT;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Turn Touch";
 				TargetAttributes = {
 					FF8C833217AB14B5000166FC = {
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -2609,10 +2613,11 @@
 			};
 			buildConfigurationList = FF8C832E17AB14B5000166FC /* Build configuration list for PBXProject "Turn Touch Mac" */;
 			compatibilityVersion = "Xcode 8.0";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = FF8C832A17AB14B5000166FC;
 			productRefGroup = FF8C833417AB14B5000166FC /* Products */;
@@ -2812,7 +2817,6 @@
 				FF2705471C93A348000BB10F /* modal_ftux_change_mode.png in Resources */,
 				FFAB2C181E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.xib in Resources */,
 				FF8A73C71ABA69410023AA53 /* logo_32.png in Resources */,
-				FFD03839216D1140007FDB24 /* Turn Touch Mac-Info.plist in Resources */,
 				FF3D22111F1F1CB400F7F5BF /* TTModeSonosConnected.xib in Resources */,
 				FFFF0C8F1EFDFF8100E29E6D /* mode_ifttt.png in Resources */,
 				FF01CA7A1C46DCC200F83A73 /* mode_video.png in Resources */,
@@ -2961,6 +2965,7 @@
 				FF7305B21A5C9C76009A852D /* DDTTYLogger.m in Sources */,
 				FFFF0C7E1EFC975300E29E6D /* TTModeIftttConnected.m in Sources */,
 				FF904B761BE9B88700AD00F3 /* Utility.m in Sources */,
+				1766EE85226FC3B100A114B5 /* CBPeripheral+Extras.m in Sources */,
 				FF0DE99E21B8D1BA00037B07 /* TTModeAirfoil.m in Sources */,
 				FF2C2E561C545E6400FAD7E2 /* XPathQuery.m in Sources */,
 				FFF05F3B18F77BE000AC6230 /* TTModeTitleView.m in Sources */,
@@ -3175,7 +3180,7 @@
 		FF8C834B17AB14B5000166FC /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				FF8C834C17AB14B5000166FC /* en */,
+				178BDF51226E61E100396413 /* Base */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -3187,6 +3192,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -3195,11 +3201,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
@@ -3236,6 +3244,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -3244,11 +3253,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
@@ -3443,6 +3454,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -3451,11 +3463,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;

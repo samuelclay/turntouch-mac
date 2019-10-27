@@ -10,10 +10,9 @@
 #import "TTAppDelegate.h"
 
 @interface TTModalDevices : NSViewController
-<NSTableViewDataSource, NSTableViewDelegate, NSTextFieldDelegate> {
-    TTAppDelegate *appDelegate;
-}
+<NSTableViewDataSource, NSTableViewDelegate, NSTextFieldDelegate>
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic) IBOutlet NSTableView *devicesTable;
 
 - (IBAction)closeModal:(id)sender;

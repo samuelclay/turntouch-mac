@@ -8,9 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface TTHUDMenuButton : NSTableCellView {
-    NSImageView *imageView;
-}
+@interface TTHUDMenuButton : NSTableCellView
 
 @property (nonatomic) IBOutlet NSString *title;
 @property (nonatomic) IBOutlet NSImage *image;

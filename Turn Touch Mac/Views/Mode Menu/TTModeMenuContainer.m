@@ -12,90 +12,94 @@
 #import "TTBackgroundView.h"
 #import "TTModeMenuItem.h"
 
-@implementation TTModeMenuContainer
+@interface TTModeMenuContainer ()
 
-@synthesize collectionView;
-@synthesize bordersView;
+@property (nonatomic) TTMenuType menuType;
+@property (nonatomic, strong) NSScrollView *scrollView;
+
+@end
+
+@implementation TTModeMenuContainer
 
 - (id)initWithType:(TTMenuType)_menuType {
     self = [super init];
     if (self) {
-        menuType = _menuType;
-        appDelegate = (TTAppDelegate *)[NSApp delegate];
+        self.menuType = _menuType;
+        self.appDelegate = (TTAppDelegate *)[NSApp delegate];
         
         self.translatesAutoresizingMaskIntoConstraints = NO;
         
-        collectionView = [[TTModeMenuCollectionView alloc] init];
-        [collectionView setItemPrototype:[TTModeMenuItem new]];
+        self.collectionView = [[TTModeMenuCollectionView alloc] init];
+        [self.collectionView setItemPrototype:[TTModeMenuItem new]];
         [self setCollectionContent];
 
         
-        scrollView = [[NSScrollView alloc] init];
-        scrollView.borderType = NSNoBorder;
-        scrollView.hasVerticalScroller = NO;
-        scrollView.translatesAutoresizingMaskIntoConstraints = NO;
+        self.scrollView = [[NSScrollView alloc] init];
+        self.scrollView.borderType = NSNoBorder;
+        self.scrollView.hasVerticalScroller = NO;
+        self.scrollView.translatesAutoresizingMaskIntoConstraints = NO;
         
-        [scrollView addConstraint:[NSLayoutConstraint constraintWithItem:collectionView
+        [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.collectionView
                                                                attribute:NSLayoutAttributeHeight
                                                                relatedBy:NSLayoutRelationEqual
-                                                                  toItem:scrollView
+                                                                  toItem:self.scrollView
                                                                attribute:NSLayoutAttributeHeight
                                                               multiplier:1.0 constant:0.0]];
-        [scrollView addConstraint:[NSLayoutConstraint constraintWithItem:collectionView
+        [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.collectionView
                                                                attribute:NSLayoutAttributeWidth
                                                                relatedBy:NSLayoutRelationEqual
-                                                                  toItem:scrollView
+                                                                  toItem:self.scrollView
                                                                attribute:NSLayoutAttributeWidth
                                                               multiplier:1.0 constant:0.0]];
-        [scrollView addConstraint:[NSLayoutConstraint constraintWithItem:collectionView
+        [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.collectionView
                                                                attribute:NSLayoutAttributeTop
                                                                relatedBy:NSLayoutRelationEqual
-                                                                  toItem:scrollView
+                                                                  toItem:self.scrollView
                                                                attribute:NSLayoutAttributeTop
                                                               multiplier:1.0 constant:0.0]];
-        [scrollView setDocumentView:collectionView];
+        [self.scrollView setDocumentView:self.collectionView];
         
 
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:scrollView
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.scrollView
                                                          attribute:NSLayoutAttributeTop
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:self
                                                          attribute:NSLayoutAttributeTop
                                                         multiplier:1.0 constant:0]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:scrollView
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.scrollView
                                                          attribute:NSLayoutAttributeHeight
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:self
                                                          attribute:NSLayoutAttributeHeight
                                                         multiplier:1.0 constant:0]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:scrollView
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.scrollView
                                                          attribute:NSLayoutAttributeWidth
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:self
                                                          attribute:NSLayoutAttributeWidth
                                                         multiplier:1.0 constant:0]];
-        [self addSubview:scrollView];
+        [self addSubview:self.scrollView];
         
-        bordersView = [[TTModeMenuBordersView alloc] init];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:bordersView
+        self.bordersView = [[TTModeMenuBordersView alloc] init];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.bordersView
                                                          attribute:NSLayoutAttributeTop
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:self
                                                          attribute:NSLayoutAttributeTop
                                                         multiplier:1.0 constant:0]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:bordersView
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.bordersView
                                                          attribute:NSLayoutAttributeHeight
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:self
                                                          attribute:NSLayoutAttributeHeight
                                                         multiplier:1.0 constant:0]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:bordersView
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.bordersView
                                                          attribute:NSLayoutAttributeWidth
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:self
                                                          attribute:NSLayoutAttributeWidth
                                                         multiplier:1.0 constant:0]];
-        [self addSubview:bordersView];
+        [self addSubview:self.bordersView];
         
         [self registerAsObserver];
     }
@@ -103,31 +107,35 @@
 }
 
 - (void)dealloc {
-    [appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
-    [appDelegate.modeMap removeObserver:self forKeyPath:@"openedModeChangeMenu"];
-    [appDelegate.modeMap removeObserver:self forKeyPath:@"openedActionChangeMenu"];
-    [appDelegate.modeMap removeObserver:self forKeyPath:@"openedAddActionChangeMenu"];
-    [appDelegate.modeMap removeObserver:self forKeyPath:@"openedChangeActionMenu"];
-    [appDelegate.modeMap removeObserver:self forKeyPath:@"availableActions"];
-    [appDelegate.modeMap removeObserver:self forKeyPath:@"tempModeName"];
+    TTModeMap *modeMap = self.appDelegate.modeMap;
+    
+    [modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
+    [modeMap removeObserver:self forKeyPath:@"openedModeChangeMenu"];
+    [modeMap removeObserver:self forKeyPath:@"openedActionChangeMenu"];
+    [modeMap removeObserver:self forKeyPath:@"openedAddActionChangeMenu"];
+    [modeMap removeObserver:self forKeyPath:@"openedChangeActionMenu"];
+    [modeMap removeObserver:self forKeyPath:@"availableActions"];
+    [modeMap removeObserver:self forKeyPath:@"tempModeName"];
 }
 
 #pragma mark - KVO
 
 - (void)registerAsObserver {
-    [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
+    TTModeMap *modeMap = self.appDelegate.modeMap;
+    
+    [modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
                              options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"openedModeChangeMenu"
+    [modeMap addObserver:self forKeyPath:@"openedModeChangeMenu"
                              options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"openedActionChangeMenu"
+    [modeMap addObserver:self forKeyPath:@"openedActionChangeMenu"
                              options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"openedAddActionChangeMenu"
+    [modeMap addObserver:self forKeyPath:@"openedAddActionChangeMenu"
                              options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"openedChangeActionMenu"
+    [modeMap addObserver:self forKeyPath:@"openedChangeActionMenu"
                              options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"availableActions"
+    [modeMap addObserver:self forKeyPath:@"availableActions"
                              options:0 context:nil];
-    [appDelegate.modeMap addObserver:self forKeyPath:@"tempModeName"
+    [modeMap addObserver:self forKeyPath:@"tempModeName"
                              options:0 context:nil];
 }
 
@@ -135,24 +143,26 @@
                        ofObject:(id)object
                          change:(NSDictionary*)change
                         context:(void*)context {
+    TTModeMap *modeMap = self.appDelegate.modeMap;
+    
     if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))]) {
-        if (appDelegate.modeMap.inspectingModeDirection != NO_DIRECTION &&
-            appDelegate.modeMap.openedModeChangeMenu) {
-            [appDelegate.modeMap setOpenedModeChangeMenu:NO];
+        if (modeMap.inspectingModeDirection != NO_DIRECTION &&
+            modeMap.openedModeChangeMenu) {
+            [modeMap setOpenedModeChangeMenu:NO];
         }
         
-        [collectionView setNeedsDisplay:YES];
+        [self.collectionView setNeedsDisplay:YES];
         [self scrollToInspectingDirection];
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(openedModeChangeMenu))]) {
-        if (appDelegate.modeMap.openedActionChangeMenu) {
-            [appDelegate.modeMap setOpenedActionChangeMenu:NO];
+        if (modeMap.openedActionChangeMenu) {
+            [modeMap setOpenedActionChangeMenu:NO];
         }
-        if (appDelegate.modeMap.openedAddActionChangeMenu) {
-            [appDelegate.modeMap setOpenedAddActionChangeMenu:NO];
+        if (modeMap.openedAddActionChangeMenu) {
+            [modeMap setOpenedAddActionChangeMenu:NO];
         }
-        if (appDelegate.modeMap.openedChangeActionMenu) {
-            [appDelegate.modeMap setOpenedChangeActionMenu:NO];
+        if (modeMap.openedChangeActionMenu) {
+            [modeMap setOpenedChangeActionMenu:NO];
         }
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(openedActionChangeMenu))]) {
@@ -180,60 +190,60 @@
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
 
-    [bordersView setBorderStyle:menuType];
+    [self.bordersView setBorderStyle:self.menuType];
 
-    if (menuType == ADD_MODE_MENU_TYPE || menuType == ADD_ACTION_MENU_TYPE) {
-        if (appDelegate.modeMap.openedAddActionChangeMenu) {
+    if (self.menuType == ADD_MODE_MENU_TYPE || self.menuType == ADD_ACTION_MENU_TYPE) {
+        if (self.appDelegate.modeMap.openedAddActionChangeMenu) {
             // Active
-            [bordersView setHideBorder:NO];
-            [bordersView setHideShadow:NO];
-        } else if (appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION) {
+            [self.bordersView setHideBorder:NO];
+            [self.bordersView setHideShadow:NO];
+        } else if (self.appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION) {
             // Only mode active (no actions selected)
-            [bordersView setHideBorder:YES];
-            [bordersView setHideShadow:YES];
+            [self.bordersView setHideBorder:YES];
+            [self.bordersView setHideShadow:YES];
         } else {
             // Inspecting action, not active yet
-            [bordersView setHideBorder:NO];
-            [bordersView setHideShadow:YES];
+            [self.bordersView setHideBorder:NO];
+            [self.bordersView setHideShadow:YES];
         }
-    } else if (menuType == ACTION_MENU_TYPE &&
-        [appDelegate.modeMap.selectedMode hideActionMenu] &&
-        appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION) {
-        [bordersView setHideShadow:NO];
-        [bordersView setHideBorder:YES];
+    } else if (self.menuType == ACTION_MENU_TYPE &&
+        [self.appDelegate.modeMap.selectedMode hideActionMenu] &&
+        self.appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION) {
+        [self.bordersView setHideShadow:NO];
+        [self.bordersView setHideBorder:YES];
     } else {
-        [bordersView setHideShadow:NO];
-        [bordersView setHideBorder:NO];
+        [self.bordersView setHideShadow:NO];
+        [self.bordersView setHideBorder:NO];
     }
-    [bordersView setNeedsDisplay:YES];
-    [collectionView setNeedsDisplay:YES];
+    [self.bordersView setNeedsDisplay:YES];
+    [self.collectionView setNeedsDisplay:YES];
     
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:0.5];
     [[NSAnimationContext currentContext] setTimingFunction:
      [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
 
-    if (menuType == MODE_MENU_TYPE) {
-        [[collectionView animator] setAlphaValue:appDelegate.modeMap.openedModeChangeMenu ? 1.0 : 0];
-    } else if (menuType == ACTION_MENU_TYPE) {
-        [[collectionView animator] setAlphaValue:appDelegate.modeMap.openedActionChangeMenu ? 1.0 : 0];
-    } else if (menuType == ADD_MODE_MENU_TYPE || menuType == ADD_ACTION_MENU_TYPE) {
-        [[collectionView animator] setAlphaValue:appDelegate.modeMap.openedAddActionChangeMenu ? 1.0 : 0];
-    } else if (menuType == CHANGE_BATCH_ACTION_MENU_TYPE) {
-        [[collectionView animator] setAlphaValue:appDelegate.modeMap.openedChangeActionMenu ? 1.0 : 0];
+    if (self.menuType == MODE_MENU_TYPE) {
+        [[self.collectionView animator] setAlphaValue:self.appDelegate.modeMap.openedModeChangeMenu ? 1.0 : 0];
+    } else if (self.menuType == ACTION_MENU_TYPE) {
+        [[self.collectionView animator] setAlphaValue:self.appDelegate.modeMap.openedActionChangeMenu ? 1.0 : 0];
+    } else if (self.menuType == ADD_MODE_MENU_TYPE || self.menuType == ADD_ACTION_MENU_TYPE) {
+        [[self.collectionView animator] setAlphaValue:self.appDelegate.modeMap.openedAddActionChangeMenu ? 1.0 : 0];
+    } else if (self.menuType == CHANGE_BATCH_ACTION_MENU_TYPE) {
+        [[self.collectionView animator] setAlphaValue:self.appDelegate.modeMap.openedChangeActionMenu ? 1.0 : 0];
     }
     
     [NSAnimationContext endGrouping];
 }
 
 - (void)drawBorder {
-    if ([appDelegate.modeMap.selectedMode hideActionMenu] &&
-        !appDelegate.modeMap.inspectingModeDirection) {
+    if ([self.appDelegate.modeMap.selectedMode hideActionMenu] &&
+        !self.appDelegate.modeMap.inspectingModeDirection) {
         return;
     }
     
     // Top border
-    BOOL open = appDelegate.modeMap.openedModeChangeMenu;
+    BOOL open = self.appDelegate.modeMap.openedModeChangeMenu;
     NSBezierPath *line = [NSBezierPath bezierPath];
     [line moveToPoint:NSMakePoint(NSMinX(self.bounds) + (open ? 0 : 12), NSMinY(self.bounds))];
     [line lineToPoint:NSMakePoint(NSMaxX(self.bounds) - (open ? 0 : 12), NSMinY(self.bounds))];
@@ -253,52 +263,52 @@
 }
 
 - (void)toggleScrollbar:(BOOL)visible {
-    scrollView.hasVerticalScroller = visible;
-    [scrollView setNeedsDisplay:YES];
+    self.scrollView.hasVerticalScroller = visible;
+    [self.scrollView setNeedsDisplay:YES];
 }
 
 - (void)setCollectionContent {
     NSArray *content;
-    if (menuType == ADD_MODE_MENU_TYPE && appDelegate.modeMap.tempModeName) {
-        menuType = ADD_ACTION_MENU_TYPE;
+    if (self.menuType == ADD_MODE_MENU_TYPE && self.appDelegate.modeMap.tempModeName) {
+        self.menuType = ADD_ACTION_MENU_TYPE;
     }
-    if (menuType == ADD_ACTION_MENU_TYPE && !appDelegate.modeMap.tempModeName) {
-        menuType = ADD_MODE_MENU_TYPE;
-    }
-    
-    if (menuType == MODE_MENU_TYPE) {
-        content = appDelegate.modeMap.availableModes;
-    } else if (menuType == ACTION_MENU_TYPE) {
-        content = appDelegate.modeMap.availableActions;
-    } else if (menuType == ADD_MODE_MENU_TYPE) {
-        content = appDelegate.modeMap.availableAddModes;
-    } else if (menuType == ADD_ACTION_MENU_TYPE) {
-        content = appDelegate.modeMap.availableAddActions;
-    } else if (menuType == CHANGE_BATCH_ACTION_MENU_TYPE) {
-        content = appDelegate.modeMap.availableAddActions;
+    if (self.menuType == ADD_ACTION_MENU_TYPE && !self.appDelegate.modeMap.tempModeName) {
+        self.menuType = ADD_MODE_MENU_TYPE;
     }
     
-    [collectionView setContent:content withMenuType:menuType];
+    if (self.menuType == MODE_MENU_TYPE) {
+        content = self.appDelegate.modeMap.availableModes;
+    } else if (self.menuType == ACTION_MENU_TYPE) {
+        content = self.appDelegate.modeMap.availableActions;
+    } else if (self.menuType == ADD_MODE_MENU_TYPE) {
+        content = self.appDelegate.modeMap.availableAddModes;
+    } else if (self.menuType == ADD_ACTION_MENU_TYPE) {
+        content = self.appDelegate.modeMap.availableAddActions;
+    } else if (self.menuType == CHANGE_BATCH_ACTION_MENU_TYPE) {
+        content = self.appDelegate.modeMap.availableAddActions;
+    }
+    
+    [self.collectionView setContent:content withMenuType:self.menuType];
 }
 
 - (void)scrollToInspectingDirection {
-    if (appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION) return;
+    if (self.appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION) return;
     
     NSInteger index = 0;
-    if (menuType == MODE_MENU_TYPE) {
-        NSString *modeName = NSStringFromClass([appDelegate.modeMap.selectedMode class]);
-        index = [collectionView.content indexOfObject:modeName];
-    } else if (menuType == ACTION_MENU_TYPE) {
-        NSString *actionName = [appDelegate.modeMap.selectedMode
-                                actionNameInDirection:appDelegate.modeMap.inspectingModeDirection];
-        index = [collectionView.content indexOfObject:actionName];
-    } else if (menuType == CHANGE_BATCH_ACTION_MENU_TYPE) {
-        NSArray *batchActions = [appDelegate.modeMap selectedModeBatchActions:appDelegate.modeMap.inspectingModeDirection];
+    if (self.menuType == MODE_MENU_TYPE) {
+        NSString *modeName = NSStringFromClass([self.appDelegate.modeMap.selectedMode class]);
+        index = [self.collectionView.content indexOfObject:modeName];
+    } else if (self.menuType == ACTION_MENU_TYPE) {
+        NSString *actionName = [self.appDelegate.modeMap.selectedMode
+                                actionNameInDirection:self.appDelegate.modeMap.inspectingModeDirection];
+        index = [self.collectionView.content indexOfObject:actionName];
+    } else if (self.menuType == CHANGE_BATCH_ACTION_MENU_TYPE) {
+        NSArray *batchActions = [self.appDelegate.modeMap selectedModeBatchActions:self.appDelegate.modeMap.inspectingModeDirection];
         for (TTAction *batchAction in batchActions) {
-            if ([batchAction.batchActionKey isEqualToString:appDelegate.modeMap.batchActionChangeAction.batchActionKey]) {
-                NSString *actionName = appDelegate.modeMap.batchActionChangeAction.actionName;
-                for (NSInteger i=0; i < collectionView.content.count; i++) {
-                    if ([[[collectionView.content objectAtIndex:i] objectForKey:@"id"] isEqualToString:actionName]) {
+            if ([batchAction.batchActionKey isEqualToString:self.appDelegate.modeMap.batchActionChangeAction.batchActionKey]) {
+                NSString *actionName = self.appDelegate.modeMap.batchActionChangeAction.actionName;
+                for (NSInteger i=0; i < self.collectionView.content.count; i++) {
+                    if ([[[self.collectionView.content objectAtIndex:i] objectForKey:@"id"] isEqualToString:actionName]) {
                         index = i;
                     }
                 }
@@ -308,14 +318,14 @@
     }
 
     if (index != NSNotFound && index >= 0) {
-        CGRect rect = [collectionView frameForItemAtIndex:index];
+        CGRect rect = [self.collectionView frameForItemAtIndex:index];
         [self scrollToPosition:rect.origin.y];
     }
     
 }
 
 - (void)scrollToPosition:(float)yCoord {
-    NSClipView* clipView = [scrollView contentView];
+    NSClipView* clipView = [self.scrollView contentView];
     
     if (yCoord < clipView.bounds.origin.y + (clipView.bounds.size.height - 2) &&
         yCoord > clipView.bounds.origin.y) return;
@@ -327,7 +337,7 @@
     NSPoint newOrigin = [clipView bounds].origin;
     newOrigin.y = yCoord - 2;
     [[clipView animator] setBoundsOrigin:newOrigin];
-    [scrollView reflectScrolledClipView:[scrollView contentView]];
+    [self.scrollView reflectScrolledClipView:[self.scrollView contentView]];
     [NSAnimationContext endGrouping];
 }
 

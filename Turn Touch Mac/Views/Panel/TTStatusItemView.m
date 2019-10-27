@@ -11,17 +11,13 @@
 #import "TTDiamondView.h"
 #import "TTBluetoothMonitor.h"
 
+@interface TTStatusItemView ()
+
+@property (nonatomic, strong, readwrite) NSStatusItem *statusItem;
+
+@end
+
 @implementation TTStatusItemView
-
-@synthesize statusItem = _statusItem;
-@synthesize image = _image;
-@synthesize alternateImage = _alternateImage;
-@synthesize diamondView = _diamondView;
-@synthesize isHighlighted = _isHighlighted;
-@synthesize action = _action;
-@synthesize target = _target;
-
-#pragma mark -
 
 - (id)initWithStatusItem:(NSStatusItem *)statusItem {
     CGFloat itemWidth = [statusItem length];
@@ -30,9 +26,9 @@
     self = [super initWithFrame:itemRect];
     
     if (self != nil) {
-        appDelegate = (TTAppDelegate *)[NSApp delegate];
-        _statusItem = statusItem;
-        _statusItem.view = self;
+        self.appDelegate = (TTAppDelegate *)[NSApp delegate];
+        self.statusItem = statusItem;
+        self.statusItem.view = self;
         
         NSRect diamondRect = NSInsetRect(itemRect, 4.0f, 3.0f);
         self.diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect

@@ -18,8 +18,6 @@ NSString *const kIftttTapType = @"tapType";
 
 static TTIftttState iftttState;
 
-@synthesize delegate;
-
 - (instancetype)init {
     if (self = [super init]) {
         [self.delegate changeState:TTModeIfttt.iftttState withMode:self];
@@ -90,11 +88,11 @@ static TTIftttState iftttState;
 }
 
 - (void)trigger:(BOOL)doubleTap {
-    NSString *modeName = [[appDelegate.modeMap.selectedMode class] title];
-    NSString *modeDirectionName = [appDelegate.modeMap directionName:self.modeDirection];
+    NSString *modeName = [[self.appDelegate.modeMap.selectedMode class] title];
+    NSString *modeDirectionName = [self.appDelegate.modeMap directionName:self.modeDirection];
     NSString *actionName = self.action.actionName;
     NSString *actionTitle = [self actionTitleForAction:actionName buttonMoment:BUTTON_MOMENT_PRESSUP];
-    NSString *actionDirection = [appDelegate.modeMap directionName:self.action.direction];
+    NSString *actionDirection = [self.appDelegate.modeMap directionName:self.action.direction];
     NSString *tapType = [self.action optionValue:kIftttTapType];
     NSDictionary *trigger = @{@"app_label": modeName,
                               @"app_direction": modeDirectionName,
@@ -102,8 +100,8 @@ static TTIftttState iftttState;
                               @"button_direction": actionDirection,
                               @"button_tap_type": tapType,
                               };
-    NSDictionary *params = @{@"user_id": [appDelegate.modeMap userId],
-                             @"device_id": [appDelegate.modeMap deviceId],
+    NSDictionary *params = @{@"user_id": [self.appDelegate.modeMap userId],
+                             @"device_id": [self.appDelegate.modeMap deviceId],
                              @"triggers": @[trigger],
                              };
     
@@ -155,8 +153,8 @@ static TTIftttState iftttState;
 - (void)registerTriggers:(void (^)(void))callback {
     NSString *url = @"https://turntouch.com/ifttt/register_triggers";
     NSArray *triggers = [self collectTriggers];
-    NSDictionary *params = @{@"user_id": [appDelegate.modeMap userId],
-                             @"device_id": [appDelegate.modeMap deviceId],
+    NSDictionary *params = @{@"user_id": [self.appDelegate.modeMap userId],
+                             @"device_id": [self.appDelegate.modeMap deviceId],
                              @"triggers": triggers,
                              };
     
@@ -175,10 +173,10 @@ static TTIftttState iftttState;
 
 - (void)purgeRecipe:(TTModeDirection)actionDirection callback:(void (^)(void))callback {
     NSString *url = @"https://turntouch.com/ifttt/purge_trigger";
-    NSDictionary *params = @{@"user_id": [appDelegate.modeMap userId],
-                             @"device_id": [appDelegate.modeMap deviceId],
-                             @"app_direction": [appDelegate.modeMap directionName:modeDirection],
-                             @"button_direction": [appDelegate.modeMap directionName:actionDirection],
+    NSDictionary *params = @{@"user_id": [self.appDelegate.modeMap userId],
+                             @"device_id": [self.appDelegate.modeMap deviceId],
+                             @"app_direction": [self.appDelegate.modeMap directionName:self.modeDirection],
+                             @"button_direction": [self.appDelegate.modeMap directionName:actionDirection],
                              };
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -197,10 +195,10 @@ static TTIftttState iftttState;
     NSMutableArray *triggers = [NSMutableArray array];
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     
-    for (TTMode *mode in @[appDelegate.modeMap.northMode,
-                           appDelegate.modeMap.eastMode,
-                           appDelegate.modeMap.westMode,
-                           appDelegate.modeMap.southMode,
+    for (TTMode *mode in @[self.appDelegate.modeMap.northMode,
+                           self.appDelegate.modeMap.eastMode,
+                           self.appDelegate.modeMap.westMode,
+                           self.appDelegate.modeMap.southMode,
                            ]) {
         NSString *modeName = [[mode class] title];
         for (TTModeDirection actionDirection=1; actionDirection <= 4; actionDirection++) {
@@ -208,18 +206,18 @@ static TTIftttState iftttState;
             if ([actionName isEqualToString:@"TTModeIftttTriggerAction"]) {
                 [triggers addObject:@{
                                      @"app_label": modeName,
-                                     @"app_direction": [appDelegate.modeMap directionName:mode.modeDirection],
+                                     @"app_direction": [self.appDelegate.modeMap directionName:mode.modeDirection],
                                      @"button_label": [mode actionTitleForAction:actionName
                                                                      buttonMoment:BUTTON_MOMENT_PRESSUP],
-                                     @"button_direction": [appDelegate.modeMap directionName:actionDirection],
-                                     @"button_tap_type": [appDelegate.modeMap mode:mode
+                                     @"button_direction": [self.appDelegate.modeMap directionName:actionDirection],
+                                     @"button_tap_type": [self.appDelegate.modeMap mode:mode
                                                                  actionOptionValue:kIftttTapType
                                                                         actionName:actionName
                                                                        inDirection:actionDirection],
                                      }];
             }
             
-            NSString *modeBatchActionKey = [appDelegate.modeMap.batchActions
+            NSString *modeBatchActionKey = [self.appDelegate.modeMap.batchActions
                                            modeBatchActionKey:mode.modeDirection
                                            actionDirection:actionDirection];
             NSArray *batchActionKeys = [prefs objectForKey:modeBatchActionKey];
@@ -228,17 +226,17 @@ static TTIftttState iftttState;
                     TTAction *action = [[TTAction alloc] initWithBatchActionKey:batchActionKey
                                                                       direction:actionDirection];
                     action.mode.modeDirection = mode.modeDirection;
-                    NSString *appDirection = [appDelegate.modeMap directionName:mode.modeDirection];
+                    NSString *appDirection = [self.appDelegate.modeMap directionName:mode.modeDirection];
                     NSString *buttonLabel = [mode actionTitleForAction:actionName
                                                           buttonMoment:BUTTON_MOMENT_PRESSUP];
-                    NSString *tapType = [appDelegate.modeMap mode:action.mode batchAction:action
+                    NSString *tapType = [self.appDelegate.modeMap mode:action.mode batchAction:action
                                                 actionOptionValue:kIftttTapType
                                                       inDirection:actionDirection];
                     [triggers addObject:@{
                                           @"app_label": modeName,
                                           @"app_direction": appDirection,
                                           @"button_label": buttonLabel,
-                                          @"button_direction": [appDelegate.modeMap directionName:actionDirection],
+                                          @"button_direction": [self.appDelegate.modeMap directionName:actionDirection],
                                           @"button_tap_type": tapType,
                                           }];
                 }

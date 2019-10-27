@@ -7,24 +7,21 @@
 //
 
 #import "TTDevice.h"
+#import "CBPeripheral+Extras.h"
 
 @implementation TTDevice
-
-@synthesize nickname;
-@synthesize firmwareVersion;
-@synthesize isFirmwareOld;
 
 - (id)initWithPeripheral:(CBPeripheral *)peripheral {
     if (self = [super init]) {
         self.peripheral = peripheral;
-        self.uuid = peripheral.identifier.UUIDString;
+        self.uuid = peripheral.tt_identifierString;
         
         // Init with latest firmware version, correct later
         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-        firmwareVersion = [[prefs objectForKey:@"TT:firmware:version"] integerValue];
+        self.firmwareVersion = [[prefs objectForKey:@"TT:firmware:version"] integerValue];
         NSString *nicknameKey = [NSString stringWithFormat:@"TT:device:%@:nickname", self.uuid];
         self.nickname = [prefs stringForKey:nicknameKey];
-        isFirmwareOld = NO;
+        self.isFirmwareOld = NO;
     }
     
     return self;
@@ -66,19 +63,19 @@
     }
     [fixedNickname appendBytes:bytes length:dataLength+1];
 
-    nickname = [[NSString alloc] initWithData:fixedNickname encoding:NSUTF8StringEncoding];
+    self.nickname = [[NSString alloc] initWithData:fixedNickname encoding:NSUTF8StringEncoding];
 }
 
-- (void)setFirmwareVersion:(NSInteger)_firmwareVersion {
-    firmwareVersion = _firmwareVersion;
+- (void)setFirmwareVersion:(NSInteger)firmwareVersion {
+    _firmwareVersion = firmwareVersion;
 
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSInteger latestVersion = [[prefs objectForKey:@"TT:firmware:version"] integerValue];
 
-    if (firmwareVersion < latestVersion) {
-        isFirmwareOld = YES;
+    if (self.firmwareVersion < latestVersion) {
+        self.isFirmwareOld = YES;
     } else {
-        isFirmwareOld = NO;
+        self.isFirmwareOld = NO;
     }
 }
 

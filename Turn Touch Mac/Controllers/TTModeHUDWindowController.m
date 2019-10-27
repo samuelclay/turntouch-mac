@@ -9,17 +9,19 @@
 #import <QuartzCore/QuartzCore.h>
 #import "TTModeHUDWindowController.h"
 
-@implementation TTModeHUDWindowController
+@interface TTModeHUDWindowController ()
 
-@synthesize hudView;
-@synthesize hudWindow;
-@synthesize menuView;
+@property (nonatomic) BOOL isFading;
+
+@end
+
+@implementation TTModeHUDWindowController
 
 - (instancetype)initWithWindowNibName:(NSString *)windowNibName {
     if (self = [super initWithWindowNibName:windowNibName]) {
-        appDelegate = (TTAppDelegate *)[NSApp delegate];
-        [hudWindow setFrame:[self hiddenFrame] display:YES];
-        [self showWindow:appDelegate];
+        self.appDelegate = (TTAppDelegate *)[NSApp delegate];
+        [self.hudWindow setFrame:[self hiddenFrame] display:YES];
+        [self showWindow:self.appDelegate];
     }
     
     return self;
@@ -28,7 +30,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    [menuView setDelegate:self];
+    [self.menuView setDelegate:self];
 }
 
 #pragma mark - Window management
@@ -46,11 +48,11 @@
 }
 
 - (void)fadeIn:(BOOL)animate {
-    [hudWindow makeKeyAndOrderFront:nil];
-    [hudView setupTitleAttributes];
-    hudView.isTeaser = NO;
-    [hudView setNeedsDisplay:YES];
-    [menuView.tableView reloadData];
+    [self.hudWindow makeKeyAndOrderFront:nil];
+    [self.hudView setupTitleAttributes];
+    self.hudView.isTeaser = NO;
+    [self.hudView setNeedsDisplay:YES];
+    [self.menuView.tableView reloadData];
     
     CGFloat alpha = 1.f;
     NSOperatingSystemVersion version = [[NSProcessInfo processInfo] operatingSystemVersion];
@@ -58,11 +60,11 @@
         alpha = 0.95f;
     }
     
-    if (hudWindow.frame.origin.y != [self visibleFrame].origin.y) {
-        [hudWindow setFrame:[self visibleFrame] display:YES];
+    if (self.hudWindow.frame.origin.y != [self visibleFrame].origin.y) {
+        [self.hudWindow setFrame:[self visibleFrame] display:YES];
     }
     if (!animate) {
-        [[hudView gradientView] setAlphaValue:1.f];
+        [[self.hudView gradientView] setAlphaValue:1.f];
     }
     
     [NSAnimationContext beginGrouping];
@@ -73,56 +75,56 @@
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
     
-    [hudWindow setFrame:[self visibleFrame] display:YES];
+    [self.hudWindow setFrame:[self visibleFrame] display:YES];
     
-    [[hudWindow animator] setAlphaValue:alpha];
+    [[self.hudWindow animator] setAlphaValue:alpha];
     if (animate) {
-        [hudView setNeedsDisplay:YES];
-        [[[hudView gradientView] animator] setAlphaValue:1.f];
+        [self.hudView setNeedsDisplay:YES];
+        [[[self.hudView gradientView] animator] setAlphaValue:1.f];
     }
     [NSAnimationContext endGrouping];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [menuView changeHighlightedRow:0];
+        [self.menuView changeHighlightedRow:0];
     });
 }
 
 - (IBAction)fadeOut:(id)sender {
     //    __block __unsafe_unretained NSWindow *window = hudWindow;
-    if (isFading) return;
-    isFading = YES;
+    if (self.isFading) return;
+    self.isFading = YES;
 
-    [appDelegate.bluetoothMonitor.buttonTimer closeMenu];
+    [self.appDelegate.bluetoothMonitor.buttonTimer closeMenu];
 
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:.55f];
     [[NSAnimationContext currentContext] setCompletionHandler:^{
 //        [hudWindow orderOut:nil];
-        isFading = NO;
+        self.isFading = NO;
     }];
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
     
-    [[hudWindow animator] setAlphaValue:0.f];
-    [hudWindow setFrame:[self hiddenFrame] display:YES];
+    [[self.hudWindow animator] setAlphaValue:0.f];
+    [self.hudWindow setFrame:[self hiddenFrame] display:YES];
     
     [NSAnimationContext endGrouping];
 }
 
 - (void)teaseMode:(TTModeDirection)direction {
-    hudView.isTeaser = YES;
+    self.hudView.isTeaser = YES;
 
-    [hudWindow makeKeyAndOrderFront:nil];
-    [self showWindow:appDelegate];
-    [hudView setupTitleAttributes:[appDelegate.modeMap modeInDirection:direction]];
-    [hudView setNeedsDisplay:YES];
+    [self.hudWindow makeKeyAndOrderFront:nil];
+    [self showWindow:self.appDelegate];
+    [self.hudView setupTitleAttributes:[self.appDelegate.modeMap modeInDirection:direction]];
+    [self.hudView setNeedsDisplay:YES];
     
-    [[hudView gradientView] setAlphaValue:0.f];
-    [[hudView teaserGradientView] setAlphaValue:1.f];
+    [[self.hudView gradientView] setAlphaValue:0.f];
+    [[self.hudView teaserGradientView] setAlphaValue:1.f];
 
-    if (hudWindow.frame.origin.y == [self hiddenFrame].origin.y) {
-        [hudWindow setFrame:[self visibleFrame] display:YES];
-        [[hudWindow animator] setAlphaValue:0.f];
+    if (self.hudWindow.frame.origin.y == [self hiddenFrame].origin.y) {
+        [self.hudWindow setFrame:[self visibleFrame] display:YES];
+        [[self.hudWindow animator] setAlphaValue:0.f];
     }
     
     [NSAnimationContext beginGrouping];
@@ -130,8 +132,8 @@
     [[NSAnimationContext currentContext]
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
 
-    [[hudWindow animator] setAlphaValue:1.f];
-    [hudWindow setFrame:[self visibleFrame] display:YES];
+    [[self.hudWindow animator] setAlphaValue:1.f];
+    [self.hudWindow setFrame:[self visibleFrame] display:YES];
 
     [NSAnimationContext endGrouping];
 }
@@ -149,10 +151,10 @@
                          @"title"       : @"Close"}];
     [options addObject:@{@"identifier": @"space"}];
     
-    for (NSString *action in appDelegate.modeMap.availableActions) {
+    for (NSString *action in self.appDelegate.modeMap.availableActions) {
         [options addObject:@{@"identifier" : action,
-                             @"title"      : [appDelegate.modeMap.selectedMode titleForAction:action buttonMoment:BUTTON_MOMENT_PRESSDOWN],
-                             @"icon"       : [appDelegate.modeMap.selectedMode imageNameForAction:action],
+                             @"title"      : [self.appDelegate.modeMap.selectedMode titleForAction:action buttonMoment:BUTTON_MOMENT_PRESSDOWN],
+                             @"icon"       : [self.appDelegate.modeMap.selectedMode imageNameForAction:action],
                              @"group"      : @"action",
                              }];
     }
@@ -160,7 +162,7 @@
     [options addObject:@{@"identifier": @"space"}];
 
     
-    for (NSString *modeName in appDelegate.modeMap.availableModes) {
+    for (NSString *modeName in self.appDelegate.modeMap.availableModes) {
         Class modeClass = NSClassFromString(modeName);
         [options addObject:@{@"identifier" : modeName,
                              @"title"      : [modeClass title],
@@ -174,13 +176,13 @@
 
 - (void)runDirection:(TTModeDirection)direction {
     if (direction == NORTH) {
-        [menuView menuUp];
+        [self.menuView menuUp];
     } else if (direction == EAST) {
-        [menuView selectMenuItem];
+        [self.menuView selectMenuItem];
     } else if (direction == WEST) {
         [self fadeOut:nil];
     } else if (direction == SOUTH) {
-        [menuView menuDown];
+        [self.menuView menuDown];
     }
 }
 

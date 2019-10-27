@@ -11,6 +11,17 @@
 #import "TTModeMusic.h"
 #import "TTModeMac.h"
 
+@interface TTModeAlarmClock ()
+
+@property (nonatomic) NSInteger trackIndex;
+@property (nonatomic, strong) SBElementArray *tracks;
+@property (nonatomic) CGFloat originalSystemVolume;
+@property (nonatomic) CGFloat volumeFadeMultiplier;
+@property (nonatomic) TTModeAlarmClockStatus status;
+@property (nonatomic, strong) NSTimer *volumeFadeTimer;
+
+@end
+
 @implementation TTModeAlarmClock
 
 NSString *const kRepeatAlarmEnabled = @"repeatAlarmEnabled";
@@ -24,14 +35,6 @@ NSString *const kAlarmDuration = @"alarmDuration";
 NSString *const kAlarmPlaylist = @"alarmPlaylist";
 NSString *const kAlarmShuffle = @"alarmShuffle";
 NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
-
-@synthesize repeatAlarmTimer;
-@synthesize onetimeAlarmTimer;
-@synthesize stopAlarmTimer;
-@synthesize actionHUDController;
-@synthesize audioPlayer;
-@synthesize currentTrack;
-@synthesize randomTracks;
 
 #pragma mark - Mode
 
@@ -172,7 +175,7 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
 }
 
 - (NSView *)viewForLayoutTTModeAlarmSongInfo:(NSRect)rect {
-    return [TTModeMusic songInfoView:rect withTrack:currentTrack];
+    return [TTModeMusic songInfoView:rect withTrack:self.currentTrack];
 }
 
 - (BOOL)hideActionMenu {
@@ -242,8 +245,8 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
 }
 
 - (void)activateTimers {
-    if (repeatAlarmTimer)  [repeatAlarmTimer invalidate];
-    if (onetimeAlarmTimer) [onetimeAlarmTimer invalidate];
+    if (self.repeatAlarmTimer)  [self.repeatAlarmTimer invalidate];
+    if (self.onetimeAlarmTimer) [self.onetimeAlarmTimer invalidate];
     
     NSRunLoop *runner = [NSRunLoop currentRunLoop];
     NSDate *nextRepeatAlarmDate = [self nextRepeatAlarmDate];
@@ -251,23 +254,23 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
 
     if (nextRepeatAlarmDate &&
         [nextRepeatAlarmDate timeIntervalSinceDate:[NSDate date]] > 0) {
-        repeatAlarmTimer = [[NSTimer alloc] initWithFireDate:nextRepeatAlarmDate
+        self.repeatAlarmTimer = [[NSTimer alloc] initWithFireDate:nextRepeatAlarmDate
                                                     interval:0.f
                                                       target:self
                                                     selector:@selector(fireRepeatAlarm)
                                                     userInfo:nil repeats:NO];
-        [runner addTimer:repeatAlarmTimer forMode: NSDefaultRunLoopMode];
+        [runner addTimer:self.repeatAlarmTimer forMode: NSDefaultRunLoopMode];
         NSLog(@"Setting repeat alarm: %@", nextRepeatAlarmDate);
     }
 
     if (nextOnetimeAlarmDate &&
         [nextOnetimeAlarmDate timeIntervalSinceDate:[NSDate date]] > 0) {
-        onetimeAlarmTimer = [[NSTimer alloc] initWithFireDate:nextOnetimeAlarmDate
+        self.onetimeAlarmTimer = [[NSTimer alloc] initWithFireDate:nextOnetimeAlarmDate
                                                      interval:0.f
                                                        target:self
                                                      selector:@selector(fireOnetimeAlarm)
                                                      userInfo:nil repeats:NO];
-        [runner addTimer:onetimeAlarmTimer forMode: NSDefaultRunLoopMode];
+        [runner addTimer:self.onetimeAlarmTimer forMode: NSDefaultRunLoopMode];
         NSLog(@"Setting one-time alarm: %@", nextOnetimeAlarmDate);
     }
 }
@@ -291,30 +294,30 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
     NSRunLoop *runner = [NSRunLoop currentRunLoop];
     NSInteger alarmDuration = [[NSAppDelegate.modeMap mode:self optionValue:kAlarmDuration] integerValue];
     NSDate *stopAlarmDate = [[NSDate date] dateByAddingTimeInterval:alarmDuration * 60];
-    stopAlarmTimer = [[NSTimer alloc] initWithFireDate:stopAlarmDate
+    self.stopAlarmTimer = [[NSTimer alloc] initWithFireDate:stopAlarmDate
                                                 interval:0.f
                                                   target:self
                                                 selector:@selector(stopAlarm)
                                                 userInfo:nil repeats:NO];
-    [runner addTimer:stopAlarmTimer forMode: NSDefaultRunLoopMode];
+    [runner addTimer:self.stopAlarmTimer forMode: NSDefaultRunLoopMode];
     NSLog(@"Setting stop alarm timer: %@", stopAlarmDate);
 }
 
 #pragma mark - Alarm clock modal
 
 - (void)runAlarm {
-    if (status != ALARM_CLOCK_STATUS_OFF) {
+    if (self.status != ALARM_CLOCK_STATUS_OFF) {
         [self stopAlarm];
     }
     
-    status = ALARM_CLOCK_STATUS_ON;
-    originalSystemVolume = [TTModeMac volume];
-    volumeFadeMultiplier = 0.10;
+    self.status = ALARM_CLOCK_STATUS_ON;
+    self.originalSystemVolume = [TTModeMac volume];
+    self.volumeFadeMultiplier = 0.10;
     NSInteger prefVolume = [[NSAppDelegate.modeMap mode:self optionValue:kAlarmVolume] integerValue];
-    [TTModeMac setVolume:(prefVolume / 100.f) * volumeFadeMultiplier];
+    [TTModeMac setVolume:(prefVolume / 100.f) * self.volumeFadeMultiplier];
     
-    tracks = [self selectedPlaylistTracks];
-    [self seedRandomTracks:tracks.count];
+    self.tracks = [self selectedPlaylistTracks];
+    [self seedRandomTracks:self.tracks.count];
     [self playNextSong];
     [self startStopAlarmTimer];
     [self switchSelectedModeTo:self];
@@ -338,23 +341,23 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
 }
 
 - (void)playNextSong {
-    if (status == ALARM_CLOCK_STATUS_OFF) return;
+    if (self.status == ALARM_CLOCK_STATUS_OFF) return;
     
-    if (!tracks) {
-        tracks = [self selectedPlaylistTracks];
+    if (!self.tracks) {
+        self.tracks = [self selectedPlaylistTracks];
     }
-    NSInteger tracksCount = tracks.count;
+    NSInteger tracksCount = self.tracks.count;
     if (!tracksCount) return;
     
-    if (audioPlayer) {
-        [audioPlayer stop];
+    if (self.audioPlayer) {
+        [self.audioPlayer stop];
     }
-    NSInteger randomTrackIndex = [[randomTracks objectAtIndex:(trackIndex % tracksCount)] integerValue];
-    currentTrack = [[tracks objectAtIndex:randomTrackIndex] get];
-    NSLog(@"Random track: %ld / %ld: %@", (long)trackIndex, (long)randomTrackIndex, currentTrack);
-    trackIndex += 1;
+    NSInteger randomTrackIndex = [[self.randomTracks objectAtIndex:(self.trackIndex % tracksCount)] integerValue];
+    self.currentTrack = [[self.tracks objectAtIndex:randomTrackIndex] get];
+    NSLog(@"Random track: %ld / %ld: %@", (long)self.trackIndex, (long)randomTrackIndex, self.currentTrack);
+    self.trackIndex += 1;
 
-    if (![currentTrack respondsToSelector:@selector(location)]) {
+    if (![self.currentTrack respondsToSelector:@selector(location)]) {
         NSLog(@" ---> !! Track has no location, skipping...");
         [self playNextSong];
         return;
@@ -362,10 +365,10 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
     
 //    AVAudioSession *session = [AVAudioSession sharedInstance];
 //    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
-    audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:currentTrack.location error:nil];
-    [audioPlayer prepareToPlay];
-    [audioPlayer play];
-    [audioPlayer setDelegate:self];
+    self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:self.currentTrack.location error:nil];
+    [self.audioPlayer prepareToPlay];
+    [self.audioPlayer play];
+    [self.audioPlayer setDelegate:self];
     
     [self updateAlarmSongInfo];
 }
@@ -377,94 +380,94 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
 }
 
 - (void)seedRandomTracks:(NSInteger)count {
-    trackIndex = 0;
-    randomTracks = [[NSMutableArray alloc] init];
+    self.trackIndex = 0;
+    self.randomTracks = [[NSMutableArray alloc] init];
     for (NSUInteger i = 0; i < count; ++i) {
-        [randomTracks addObject:[NSNumber numberWithInteger:i]];
+        [self.randomTracks addObject:[NSNumber numberWithInteger:i]];
     }
     
-    NSMutableArray *copy = [randomTracks mutableCopy];
-    randomTracks = [[NSMutableArray alloc] init];
+    NSMutableArray *copy = [self.randomTracks mutableCopy];
+    self.randomTracks = [[NSMutableArray alloc] init];
     while ([copy count] > 0) {
         int index = arc4random_uniform((int)[copy count]);
         id objectToMove = [copy objectAtIndex:index];
-        [randomTracks addObject:objectToMove];
+        [self.randomTracks addObject:objectToMove];
         [copy removeObjectAtIndex:index];
     }
 }
 
 - (void)updateAlarmSongInfo {
-    if (!actionHUDController) {
-        actionHUDController = [[TTActionHUDWindowController alloc]
+    if (!self.actionHUDController) {
+        self.actionHUDController = [[TTActionHUDWindowController alloc]
                                initWithWindowNibName:@"TTActionHUDView"];
     }
-    [actionHUDController fadeIn:@"TTModeAlarmSongInfo" inDirection:INFO withMode:self];
+    [self.actionHUDController fadeIn:@"TTModeAlarmSongInfo" inDirection:INFO withMode:self];
 }
 
 - (void)snoozeAlarm {
-    if (status != ALARM_CLOCK_STATUS_ON) return;
+    if (self.status != ALARM_CLOCK_STATUS_ON) return;
 
-    status = ALARM_CLOCK_STATUS_SNOOZING;
-    [audioPlayer stop];
-    [actionHUDController fadeOut:nil];
-    [TTModeMac setVolume:originalSystemVolume];
+    self.status = ALARM_CLOCK_STATUS_SNOOZING;
+    [self.audioPlayer stop];
+    [self.actionHUDController fadeOut:nil];
+    [TTModeMac setVolume:self.originalSystemVolume];
     
     NSTimeInterval snoozeDuration = [[NSAppDelegate.modeMap mode:self optionValue:kAlarmSnoozeDuration] integerValue];
     NSDate *snoozeDate = [[NSDate date] dateByAddingTimeInterval:snoozeDuration*60];
     NSRunLoop *runner = [NSRunLoop currentRunLoop];
-    repeatAlarmTimer = [[NSTimer alloc] initWithFireDate:snoozeDate
+    self.repeatAlarmTimer = [[NSTimer alloc] initWithFireDate:snoozeDate
                                                 interval:0.f
                                                   target:self
                                                 selector:@selector(fireRepeatAlarm)
                                                 userInfo:nil repeats:NO];
-    [runner addTimer:repeatAlarmTimer forMode: NSDefaultRunLoopMode];
+    [runner addTimer:self.repeatAlarmTimer forMode: NSDefaultRunLoopMode];
     NSLog(@"Snoozing for %f minutes: %@", snoozeDuration, snoozeDate);
 }
 
 - (void)stopAlarm {
-    if (status != ALARM_CLOCK_STATUS_SNOOZING && status != ALARM_CLOCK_STATUS_ON) return;
+    if (self.status != ALARM_CLOCK_STATUS_SNOOZING && self.status != ALARM_CLOCK_STATUS_ON) return;
     
-    status = ALARM_CLOCK_STATUS_OFF;
-    if (stopAlarmTimer) [stopAlarmTimer invalidate];
-    [audioPlayer stop];
-    [actionHUDController fadeOut:nil];
-    if (originalSystemVolume) {
-        [TTModeMac setVolume:originalSystemVolume];
+    self.status = ALARM_CLOCK_STATUS_OFF;
+    if (self.stopAlarmTimer) [self.stopAlarmTimer invalidate];
+    [self.audioPlayer stop];
+    [self.actionHUDController fadeOut:nil];
+    if (self.originalSystemVolume) {
+        [TTModeMac setVolume:self.originalSystemVolume];
     }
-    if (volumeFadeTimer) {
-        [volumeFadeTimer invalidate];
+    if (self.volumeFadeTimer) {
+        [self.volumeFadeTimer invalidate];
     }
     [self activateTimers];
 }
 
 - (void)fadeVolumeIn {
-    volumeFadeMultiplier += 0.01;
+    self.volumeFadeMultiplier += 0.01;
     NSInteger prefVolume = [[NSAppDelegate.modeMap mode:self optionValue:kAlarmVolume] integerValue];
-    [TTModeMac setVolume:(prefVolume / 100.f) * volumeFadeMultiplier];
+    [TTModeMac setVolume:(prefVolume / 100.f) * self.volumeFadeMultiplier];
     
-    if (volumeFadeTimer) {
-        [volumeFadeTimer invalidate];
+    if (self.volumeFadeTimer) {
+        [self.volumeFadeTimer invalidate];
     }
     
-    if (volumeFadeMultiplier >= 1.0) {
+    if (self.volumeFadeMultiplier >= 1.0) {
         NSLog(@"Done fading in volume.");
         return;
     }
     
-    if (![stopAlarmTimer isValid]) {
+    if (![self.stopAlarmTimer isValid]) {
         NSLog(@"Alarm stopped before volume fade completed.");
         return;
     }
     
     NSDate *volumeBumpDate = [[NSDate date] dateByAddingTimeInterval:(10)/100.f];
     NSRunLoop *runner = [NSRunLoop currentRunLoop];
-    volumeFadeTimer = [[NSTimer alloc] initWithFireDate:volumeBumpDate
+    self.volumeFadeTimer = [[NSTimer alloc] initWithFireDate:volumeBumpDate
                                                interval:0.f
                                                  target:self
                                                selector:@selector(fadeVolumeIn)
                                                userInfo:nil repeats:NO];
-    [runner addTimer:volumeFadeTimer forMode: NSDefaultRunLoopMode];
-    NSLog(@"Bumping volume: %f", volumeFadeMultiplier);
+    [runner addTimer:self.volumeFadeTimer forMode: NSDefaultRunLoopMode];
+    NSLog(@"Bumping volume: %f", self.volumeFadeMultiplier);
 }
 
 #pragma mark - Playlists

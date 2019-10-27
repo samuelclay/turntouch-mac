@@ -14,14 +14,9 @@ extern const NSInteger BATCH_ACTION_HEADER_HEIGHT;
 
 @class TTModeMenuContainer;
 
-@interface TTBatchActionStackView : NSStackView
-<NSStackViewDelegate> {
-    TTAppDelegate *appDelegate;
-    NSLayoutConstraint *tempHeaderConstraint;
-    
-    NSString *changeActionBatchActionKey;
-}
+@interface TTBatchActionStackView : NSStackView <NSStackViewDelegate>
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic) NSString *tempMode;
 @property (nonatomic, strong) NSMutableArray *actionOptionsViewControllers;
 @property (nonatomic, strong) NSMutableDictionary *changeActionMenuViewControllers;

@@ -12,14 +12,8 @@
 
 @class TTAppDelegate;
 
-@interface TTTitleBarView : NSView
-<NSStackViewDelegate, NSMenuDelegate> {
-    TTAppDelegate *appDelegate;
-    NSImage *title;
-    TTSettingsButton *settingsButton;
-    BOOL isMenuVisible;
-    NSMenu *settingsMenu;
-    NSDictionary *batteryAttributes;
-}
+@interface TTTitleBarView : NSView <NSStackViewDelegate, NSMenuDelegate>
+
+@property (nonatomic, strong) TTAppDelegate *appDelegate;
 
 @end

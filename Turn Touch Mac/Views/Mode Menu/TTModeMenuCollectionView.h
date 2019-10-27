@@ -12,10 +12,9 @@
 
 @class TTAppDelegate;
 
-@interface TTModeMenuCollectionView : NSCollectionView {
-    TTAppDelegate *appDelegate;
-}
+@interface TTModeMenuCollectionView : NSCollectionView
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic) TTMenuType menuType;
 
 - (void)setContent:(NSArray *)content withMenuType:(TTMenuType)_menuType;

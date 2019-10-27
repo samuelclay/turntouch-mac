@@ -9,9 +9,7 @@
 #import "TTModeWemo.h"
 #import "TTOptionsDetailViewController.h"
 
-@interface TTModeWemoConnect : TTOptionsDetailViewController {
-    NSPopover *authPopover;
-}
+@interface TTModeWemoConnect : TTOptionsDetailViewController
 
 @property (nonatomic) IBOutlet NSButton *authButton;
 @property (nonatomic, strong) TTModeWemo *modeWemo;

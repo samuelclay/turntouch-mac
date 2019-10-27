@@ -10,10 +10,7 @@
 #import "TTOptionsDetailViewController.h"
 #import "TTModeWemoSwitchDevice.h"
 
-@interface TTModeWemoSwitchOptions : TTOptionsDetailViewController <TTModeWemoDelegate, NSStackViewDelegate, TTModeWemoSwitchDeviceDelegate, NSMenuDelegate> {
-    BOOL isMenuVisible;
-    NSMenu *settingsMenu;
-}
+@interface TTModeWemoSwitchOptions : TTOptionsDetailViewController <TTModeWemoDelegate, NSStackViewDelegate, TTModeWemoSwitchDeviceDelegate, NSMenuDelegate>
 
 @property (nonatomic) IBOutlet NSPopUpButton *devicePopup;
 @property (nonatomic) IBOutlet NSButton *refreshButton;

@@ -9,10 +9,9 @@
 #import <Cocoa/Cocoa.h>
 #import "TTAppDelegate.h"
 
-@interface TTModalSettings : NSViewController {
-    TTAppDelegate *appDelegate;
-}
+@interface TTModalSettings : NSViewController
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic) IBOutlet NSButton *checkboxRecordUsage;
 @property (nonatomic) IBOutlet NSButton *checkboxShowActionHud;
 @property (nonatomic) IBOutlet NSButton *checkboxShowModeHud;

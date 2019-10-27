@@ -7,14 +7,19 @@
 //
 
 #import "TTDeviceList.h"
+#import "CBPeripheral+Extras.h"
+
+@interface TTDeviceList()
+
+@property (nonatomic, strong) NSMutableArray *peripherals;
+
+@end
 
 @implementation TTDeviceList
 
-@synthesize devices;
-
 - (instancetype)init {
     if (self = [super init]) {
-        devices = [[NSMutableArray alloc] init];
+        self.devices = [[NSMutableArray alloc] init];
     }
     
     return self;
@@ -22,14 +27,14 @@
 
 - (NSString *)description {
     NSMutableArray *peripheralIds = [NSMutableArray array];
-    for (TTDevice *device in devices) {
-        [peripheralIds addObject:[device.peripheral.identifier.UUIDString substringToIndex:8]];
+    for (TTDevice *device in self.devices) {
+        [peripheralIds addObject:[device.peripheral.tt_identifierString substringToIndex:8]];
     }
     return [NSString stringWithFormat:@"<%@>", [peripheralIds componentsJoinedByString:@", "]];
 }
 
 - (TTDevice *)deviceForPeripheral:(CBPeripheral *)peripheral {
-    for (TTDevice *device in devices) {
+    for (TTDevice *device in self.devices) {
         if (device.peripheral == peripheral) return device;
     }
     
@@ -37,7 +42,7 @@
 }
 
 - (TTDevice *)objectAtIndex:(NSUInteger)index {
-    return [devices objectAtIndex:index];
+    return [self.devices objectAtIndex:index];
 
     // Uncomment below to only use paired devices
 //    for (int i=0; i < index; ) {
@@ -62,9 +67,9 @@
 
 
 - (void)addDevice:(TTDevice *)addDevice {
-    for (TTDevice *device in devices) {
-        if ([device.peripheral.identifier.UUIDString
-             isEqualToString:addDevice.peripheral.identifier.UUIDString]) {
+    for (TTDevice *device in self.devices) {
+        if ([device.peripheral.tt_identifierString
+             isEqualToString:addDevice.peripheral.tt_identifierString]) {
             NSLog(@"Already added device: %@ / %@ ... whatever", device, addDevice);
             addDevice = device;
 //            [self removeDevice:device];
@@ -72,8 +77,8 @@
         }
     }
 
-    if (![devices containsObject:addDevice]) {
-        [devices addObject:addDevice];
+    if (![self.devices containsObject:addDevice]) {
+        [self.devices addObject:addDevice];
     } else {
         NSLog(@"Already added device and not adding again: %@", addDevice);
     }
@@ -88,7 +93,7 @@
 
 - (void)removeDevice:(TTDevice *)removeDevice {
     NSMutableArray *updatedDevices = [[NSMutableArray alloc] init];
-    for (TTDevice *device in devices) {
+    for (TTDevice *device in self.devices) {
         if (device != removeDevice) {
             [updatedDevices addObject:device];
         } else if (device == removeDevice) {
@@ -97,7 +102,7 @@
             device.state = TTDeviceStateDisconnected;
         }
     }
-    devices = updatedDevices;
+    self.devices = updatedDevices;
     removeDevice = nil;
 }
 
@@ -105,7 +110,7 @@
     NSMutableArray *updatedConnectedDevices = [[NSMutableArray alloc] init];
     
     // Counting paired devices
-    for (TTDevice *device in devices) {
+    for (TTDevice *device in self.devices) {
         if (device.peripheral.state == CBPeripheralStateDisconnected &&
             (device.state == TTDeviceStateConnected)) {
             device.isPaired = [self isDevicePaired:device];
@@ -116,12 +121,12 @@
         }
     }
 
-    devices = updatedConnectedDevices;
+    self.devices = updatedConnectedDevices;
 }
 
 - (TTDevice *)connectedDeviceAtIndex:(NSInteger)index {
     NSInteger i = 0;
-    for (TTDevice *device in devices) {
+    for (TTDevice *device in self.devices) {
         if (device.peripheral.state != CBPeripheralStateDisconnected &&
             (device.state == TTDeviceStateConnected || device.state == TTDeviceStateConnecting)) {
             if (i == index) return device;
@@ -138,7 +143,7 @@
     
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
     NSArray *pairedDevices = [preferences objectForKey:@"TT:devices:paired"];
-    return [pairedDevices containsObject:peripheral.identifier.UUIDString];
+    return [pairedDevices containsObject:peripheral.tt_identifierString];
 }
 
 - (BOOL)isDevicePaired:(TTDevice *)device {
@@ -148,14 +153,14 @@
 #pragma mark - Counts
 
 - (NSInteger)count {
-    NSInteger count = [devices count];
+    NSInteger count = [self.devices count];
     if (!count) return 0;
     return count;
 }
 
 - (NSInteger)visibleCount {
     NSInteger count = 0;
-    for (TTDevice *device in devices) {
+    for (TTDevice *device in self.devices) {
         if (device.peripheral.state != CBPeripheralStateDisconnected &&
             device.state != TTDeviceStateDisconnected &&
             (device.isPaired || device.isPairing)) {
@@ -167,7 +172,7 @@
 
 - (NSInteger)connectedCount {
     NSInteger count = 0;
-    for (TTDevice *device in devices) {
+    for (TTDevice *device in self.devices) {
         if (device.peripheral.state != CBPeripheralStateDisconnected &&
             device.state == TTDeviceStateConnected) {
             count++;
@@ -177,7 +182,7 @@
 }
 
 - (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(__unsafe_unretained id [])buffer count:(NSUInteger)len {
-    return [devices countByEnumeratingWithState:state objects:buffer count:len];
+    return [self.devices countByEnumeratingWithState:state objects:buffer count:len];
 }
 
 - (NSUInteger)totalPairedCount {
@@ -190,7 +195,7 @@
 - (NSUInteger)pairedConnectedCount {
     NSUInteger count = 0;
     
-    for (TTDevice *device in devices) {
+    for (TTDevice *device in self.devices) {
         if ([self isPeripheralPaired:device.peripheral] && device.state == TTDeviceStateConnected) {
             count++;
         }
@@ -202,7 +207,7 @@
 - (NSArray *)nicknamedConnected {
     NSMutableArray *connectedDevices = [NSMutableArray array];
     
-    for (TTDevice *device in devices) {
+    for (TTDevice *device in self.devices) {
         if ([self isPeripheralPaired:device.peripheral] && device.state == TTDeviceStateConnected && device.nickname) {
             [connectedDevices addObject:device];
         }
@@ -214,7 +219,7 @@
 - (NSUInteger)unpairedCount {
     NSUInteger count = 0;
     
-    for (TTDevice *device in devices) {
+    for (TTDevice *device in self.devices) {
         if (![self isPeripheralPaired:device.peripheral]) {
             count++;
         }
@@ -226,7 +231,7 @@
 - (NSUInteger)unpairedConnectedCount {
     NSUInteger count = 0;
     
-    for (TTDevice *device in devices) {
+    for (TTDevice *device in self.devices) {
         if (![self isPeripheralPaired:device.peripheral] && device.isNotified) {
             count++;
         }

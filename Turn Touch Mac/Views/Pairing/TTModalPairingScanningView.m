@@ -9,20 +9,19 @@
 #import "TTModalPairingScanningView.h"
 #import "TTDiamondView.h"
 
-@implementation TTModalPairingScanningView
+@interface TTModalPairingScanningView ()
 
-@synthesize titleBox;
-@synthesize countdownIndicator;
-@synthesize diamondViewPlaceholder;
-@synthesize diamondView;
-@synthesize spinnerScanning;
-@synthesize labelScanning;
-@synthesize closeButton;
+@property (nonatomic, strong) NSTimer *countdownTimer;
+@property (nonatomic, strong) NSTimer *searchingTimer;
+
+@end
+
+@implementation TTModalPairingScanningView
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:@"TTModalPairingScanningView" bundle:nibBundleOrNil];
     if (self) {
-        appDelegate = (TTAppDelegate *)[NSApp delegate];
+        self.appDelegate = (TTAppDelegate *)[NSApp delegate];
         [self registerAsObserver];
     }
     return self;
@@ -38,9 +37,9 @@
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             onceUnknownToken = 0;
             [self checkBluetoothState];
-            [appDelegate.bluetoothMonitor disconnectUnpairedDevices];
-            [appDelegate.bluetoothMonitor scanUnknown:NO];
-            appDelegate.bluetoothMonitor.isPairing = YES;
+            [self.appDelegate.bluetoothMonitor disconnectUnpairedDevices];
+            [self.appDelegate.bluetoothMonitor scanUnknown:NO];
+            self.appDelegate.bluetoothMonitor.isPairing = YES;
         });
     });
 
@@ -49,17 +48,17 @@
 }
 
 - (void)viewWillDisappear {
-    [appDelegate.bluetoothMonitor stopScan];
-    appDelegate.bluetoothMonitor.isPairing = NO;
+    [self.appDelegate.bluetoothMonitor stopScan];
+    self.appDelegate.bluetoothMonitor.isPairing = NO;
     
-    if (countdownTimer) {
-        [countdownTimer invalidate];
-        countdownTimer = nil;
+    if (self.countdownTimer) {
+        [self.countdownTimer invalidate];
+        self.countdownTimer = nil;
     }
 }
 
 - (void)checkBluetoothState {
-    if ([appDelegate.bluetoothMonitor.manager state] != CBCentralManagerStatePoweredOn) {
+    if ([self.appDelegate.bluetoothMonitor.manager state] != CBCentralManagerStatePoweredOn) {
         [self searchingFailure];
     }    
 }
@@ -67,13 +66,13 @@
 #pragma mark - KVO
 
 - (void)registerAsObserver {
-    [appDelegate.bluetoothMonitor addObserver:self
+    [self.appDelegate.bluetoothMonitor addObserver:self
                                    forKeyPath:@"unpairedDevicesCount"
                                       options:0 context:nil];
-    [appDelegate.bluetoothMonitor addObserver:self
+    [self.appDelegate.bluetoothMonitor addObserver:self
                                    forKeyPath:@"unpairedDevicesConnected"
                                       options:0 context:nil];
-    [appDelegate.bluetoothMonitor addObserver:self
+    [self.appDelegate.bluetoothMonitor addObserver:self
                                    forKeyPath:@"pairedDevicesCount"
                                       options:0 context:nil];
 }
@@ -93,53 +92,53 @@
 }
 
 - (void)dealloc {
-    if (countdownTimer) {
-        [countdownTimer invalidate];
-        countdownTimer = nil;
+    if (self.countdownTimer) {
+        [self.countdownTimer invalidate];
+        self.countdownTimer = nil;
     }
-    [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"unpairedDevicesCount"];
-    [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"unpairedDevicesConnected"];
-    [appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"pairedDevicesCount"];
+    [self.appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"unpairedDevicesCount"];
+    [self.appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"unpairedDevicesConnected"];
+    [self.appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"pairedDevicesCount"];
 }
 
 #pragma mark - Drawing
 
 - (void)countUnpairedDevices {
-    BOOL found = !![appDelegate.bluetoothMonitor.unpairedDevicesCount integerValue] || appDelegate.bluetoothMonitor.bluetoothState == BT_STATE_CONNECTING_UNKNOWN;
-    BOOL connected = !![appDelegate.bluetoothMonitor.unpairedDevicesConnected integerValue];
+    BOOL found = !![self.appDelegate.bluetoothMonitor.unpairedDevicesCount integerValue] || self.appDelegate.bluetoothMonitor.bluetoothState == BT_STATE_CONNECTING_UNKNOWN;
+    BOOL connected = !![self.appDelegate.bluetoothMonitor.unpairedDevicesConnected integerValue];
     
     //    NSLog(@"Counting unpaired devices: %d-%d", found, connected);
     if (!found) {
-        [countdownIndicator setHidden:YES];
-        [spinnerScanning setHidden:NO];
-//        [appDelegate.bluetoothMonitor disconnectUnpairedDevices];
+        [self.countdownIndicator setHidden:YES];
+        [self.spinnerScanning setHidden:NO];
+//        [self.appDelegate.bluetoothMonitor disconnectUnpairedDevices];
         NSRunLoop *runner = [NSRunLoop currentRunLoop];
-        if (searchingTimer) [searchingTimer invalidate];
-        searchingTimer = [[NSTimer alloc] initWithFireDate:[[NSDate date] dateByAddingTimeInterval:10.f]
+        if (self.searchingTimer) [self.searchingTimer invalidate];
+        self.searchingTimer = [[NSTimer alloc] initWithFireDate:[[NSDate date] dateByAddingTimeInterval:10.f]
                                                   interval:0.f
                                                     target:self
                                                   selector:@selector(searchingFailure)
                                                   userInfo:nil repeats:NO];
-        [runner addTimer:searchingTimer forMode:NSDefaultRunLoopMode];
-        [spinnerScanning setNeedsDisplay:YES];
+        [runner addTimer:self.searchingTimer forMode:NSDefaultRunLoopMode];
+        [self.spinnerScanning setNeedsDisplay:YES];
         
-        [labelScanning setStringValue:@"Scanning for remotes..."];
+        [self.labelScanning setStringValue:@"Scanning for remotes..."];
         
-        if (countdownTimer) {
-            [countdownTimer invalidate];
-            countdownTimer = nil;
+        if (self.countdownTimer) {
+            [self.countdownTimer invalidate];
+            self.countdownTimer = nil;
         }
     } else if (found && !connected) {
-        [countdownIndicator setHidden:YES];
-        [spinnerScanning setHidden:NO];
-        [labelScanning setStringValue:@"Connecting..."];
-        [searchingTimer invalidate];
+        [self.countdownIndicator setHidden:YES];
+        [self.spinnerScanning setHidden:NO];
+        [self.labelScanning setStringValue:@"Connecting..."];
+        [self.searchingTimer invalidate];
     } else if (found && connected) {
-        [countdownIndicator setHidden:NO];
-        [countdownIndicator setDoubleValue:0];
-        [spinnerScanning setHidden:YES];
-        [labelScanning setStringValue:@"Press all four buttons to connect"];
-        [searchingTimer invalidate];
+        [self.countdownIndicator setHidden:NO];
+        [self.countdownIndicator setDoubleValue:0];
+        [self.spinnerScanning setHidden:YES];
+        [self.labelScanning setStringValue:@"Press all four buttons to connect"];
+        [self.searchingTimer invalidate];
         [self resetDiamond];
         [self updateCountdown];
     }
@@ -147,53 +146,53 @@
 }
 
 - (void)resetDiamond {
-    diamondView = [[TTDiamondView alloc] initWithFrame:diamondViewPlaceholder.bounds
+    self.diamondView = [[TTDiamondView alloc] initWithFrame:self.diamondViewPlaceholder.bounds
                                            diamondType:DIAMOND_TYPE_PAIRING];
-    [diamondView setIgnoreSelectedMode:YES];
-    for (NSView *subview in diamondViewPlaceholder.subviews) {
+    [self.diamondView setIgnoreSelectedMode:YES];
+    for (NSView *subview in self.diamondViewPlaceholder.subviews) {
         [subview removeFromSuperview];
     }
-    [diamondViewPlaceholder addSubview:diamondView];
+    [self.diamondViewPlaceholder addSubview:self.diamondView];
 }
 
 #pragma mark - Countdown timer
 
 - (void)updateCountdown {
-    double minusOneSecond = countdownIndicator.doubleValue + countdownIndicator.maxValue/10;
-    [countdownIndicator setDoubleValue:minusOneSecond];
+    double minusOneSecond = self.countdownIndicator.doubleValue + self.countdownIndicator.maxValue/10;
+    [self.countdownIndicator setDoubleValue:minusOneSecond];
     
-    NSLog(@"Countdown: %f >= %f", minusOneSecond, countdownIndicator.maxValue);
-    if (minusOneSecond >= countdownIndicator.maxValue) {
-        [appDelegate.bluetoothMonitor disconnectUnpairedDevices];
-        [appDelegate.panelController.backgroundView switchPanelModalPairing:MODAL_PAIRING_FAILURE];
-        [countdownTimer invalidate];
-        countdownTimer = nil;
+    NSLog(@"Countdown: %f >= %f", minusOneSecond, self.countdownIndicator.maxValue);
+    if (minusOneSecond >= self.countdownIndicator.maxValue) {
+        [self.appDelegate.bluetoothMonitor disconnectUnpairedDevices];
+        [self.appDelegate.panelController.backgroundView switchPanelModalPairing:MODAL_PAIRING_FAILURE];
+        [self.countdownTimer invalidate];
+        self.countdownTimer = nil;
     } else {
         NSRunLoop *runner = [NSRunLoop currentRunLoop];
-        if (countdownTimer) [countdownTimer invalidate];
-        countdownTimer = [[NSTimer alloc] initWithFireDate:[[NSDate date] dateByAddingTimeInterval:1.f]
+        if (self.countdownTimer) [self.countdownTimer invalidate];
+        self.countdownTimer = [[NSTimer alloc] initWithFireDate:[[NSDate date] dateByAddingTimeInterval:1.f]
                                                   interval:0.f
                                                     target:self
                                                   selector:@selector(updateCountdown)
                                                   userInfo:nil repeats:NO];
-        [runner addTimer:countdownTimer forMode:NSDefaultRunLoopMode];
+        [runner addTimer:self.countdownTimer forMode:NSDefaultRunLoopMode];
     }
 }
 
 - (void)searchingFailure {
-    if (appDelegate.bluetoothMonitor.bluetoothState == BT_STATE_CONNECTING_UNKNOWN) {
+    if (self.appDelegate.bluetoothMonitor.bluetoothState == BT_STATE_CONNECTING_UNKNOWN) {
         NSLog(@" ---> Not cancelling unknown search, connecting to unknown...");
         return;
     }
-    [searchingTimer invalidate];
-    [appDelegate.panelController.backgroundView switchPanelModalPairing:MODAL_PAIRING_FAILURE];
+    [self.searchingTimer invalidate];
+    [self.appDelegate.panelController.backgroundView switchPanelModalPairing:MODAL_PAIRING_FAILURE];
 }
 
 #pragma mark - Actions
 
 - (void)closeModal:(id)sender {
-    [appDelegate.bluetoothMonitor disconnectUnpairedDevices];
-    [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_APP];
+    [self.appDelegate.bluetoothMonitor disconnectUnpairedDevices];
+    [self.appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_APP];
 }
 
 @end

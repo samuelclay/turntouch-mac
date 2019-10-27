@@ -14,13 +14,6 @@
 
 @implementation TTModeMusicPlaylistOptions
 
-@synthesize singleDropdowniTunesSources;
-@synthesize singleTextTracksCount;
-@synthesize singleCheckboxShuffle;
-@synthesize doubleDropdowniTunesSources;
-@synthesize doubleTextTracksCount;
-@synthesize doubleCheckboxShuffle;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -41,10 +34,10 @@
     iTunesUserPlaylist *doubleSelectedPlaylist;
 
     for (iTunesUserPlaylist *playlist in playlists) {
-        if ([playlist.name isEqualToString:singleDropdowniTunesSources.selectedItem.title]) {
+        if ([playlist.name isEqualToString:self.singleDropdowniTunesSources.selectedItem.title]) {
             singleSelectedPlaylist = playlist;
         }
-        if ([playlist.name isEqualToString:doubleDropdowniTunesSources.selectedItem.title]) {
+        if ([playlist.name isEqualToString:self.doubleDropdowniTunesSources.selectedItem.title]) {
             doubleSelectedPlaylist = playlist;
         }
     }
@@ -52,8 +45,8 @@
     [self.action changeActionOption:kMusicPlaylistSingle to:singleSelectedPlaylist.persistentID];
     [self.action changeActionOption:kMusicPlaylistDouble to:doubleSelectedPlaylist.persistentID];
 
-    [self updateTracksCount:singleSelectedPlaylist label:singleTextTracksCount];
-    [self updateTracksCount:doubleSelectedPlaylist label:doubleTextTracksCount];
+    [self updateTracksCount:singleSelectedPlaylist label:self.singleTextTracksCount];
+    [self updateTracksCount:doubleSelectedPlaylist label:self.doubleTextTracksCount];
 }
 
 - (void)updateTracksCount:(iTunesPlaylist *)selectedPlaylist label:(NSTextField *)label {
@@ -166,30 +159,30 @@
     }
     dispatch_async(dispatch_get_main_queue(), ^(void){
         for (NSMenuItem *menuItem in singleMenuItems) {
-            [singleDropdowniTunesSources.menu addItem:menuItem];
+            [self.singleDropdowniTunesSources.menu addItem:menuItem];
         }
         for (NSMenuItem *menuItem in doubleMenuItems) {
-            [doubleDropdowniTunesSources.menu addItem:menuItem];
+            [self.doubleDropdowniTunesSources.menu addItem:menuItem];
         }
 
         if (!singleSelectedPlaylistId) {
             [self.action changeActionOption:kMusicPlaylistSingle to:libraryPlaylist.persistentID];
-            [self updateTracksCount:libraryPlaylist label:singleTextTracksCount];
+            [self updateTracksCount:libraryPlaylist label:self.singleTextTracksCount];
         } else {
-            [self updateTracksCount:singleSelectedPlaylist label:singleTextTracksCount];
+            [self updateTracksCount:singleSelectedPlaylist label:self.singleTextTracksCount];
         }
         
         if (!doubleSelectedPlaylistId) {
             [self.action changeActionOption:kMusicPlaylistDouble to:libraryPlaylist.persistentID];
-            [self updateTracksCount:libraryPlaylist label:doubleTextTracksCount];
+            [self updateTracksCount:libraryPlaylist label:self.doubleTextTracksCount];
         } else {
-            [self updateTracksCount:doubleSelectedPlaylist label:doubleTextTracksCount];
+            [self updateTracksCount:doubleSelectedPlaylist label:self.doubleTextTracksCount];
         }
 
-        [singleDropdowniTunesSources selectItem:singleSelectedMenuItem];
-        [doubleDropdowniTunesSources selectItem:doubleSelectedMenuItem];
-        [singleDropdowniTunesSources setNeedsDisplay:YES];
-        [doubleDropdowniTunesSources setNeedsDisplay:YES];
+        [self.singleDropdowniTunesSources selectItem:singleSelectedMenuItem];
+        [self.doubleDropdowniTunesSources selectItem:doubleSelectedMenuItem];
+        [self.singleDropdowniTunesSources setNeedsDisplay:YES];
+        [self.doubleDropdowniTunesSources setNeedsDisplay:YES];
     });
 }
 

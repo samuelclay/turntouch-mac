@@ -10,12 +10,9 @@
 #import "TTAppDelegate.h"
 #import "TTPairingSpinner.h"
 
-@interface TTModalPairingScanningView : NSViewController    {
-    TTAppDelegate *appDelegate;
-    NSTimer *countdownTimer;
-    NSTimer *searchingTimer;
-}
+@interface TTModalPairingScanningView : NSViewController
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic) IBOutlet NSBox *titleBox;
 @property (nonatomic) IBOutlet NSProgressIndicator *countdownIndicator;
 @property (nonatomic) IBOutlet NSView *diamondViewPlaceholder;

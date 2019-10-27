@@ -17,13 +17,9 @@
 
 @class TTBackgroundView;
 
-@interface TTPanelController : NSWindowController <NSWindowDelegate> {
-    TTAppDelegate *appDelegate;
-    BOOL _hasActivePanel;
-    TTBackgroundView *_backgroundView;
-    __unsafe_unretained id<TTPanelControllerDelegate> _delegate;
-}
+@interface TTPanelController : NSWindowController <NSWindowDelegate>
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic) IBOutlet TTBackgroundView *backgroundView;
 
 @property (nonatomic) BOOL hasActivePanel;

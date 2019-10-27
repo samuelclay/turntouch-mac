@@ -15,20 +15,18 @@
 
 @implementation TTModePresentationPlayOptions
 
-@synthesize selectFirstSlide;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.translatesAutoresizingMaskIntoConstraints = NO;
     
-    BOOL selected = [[appDelegate.modeMap mode:self.mode optionValue:kPresentationPlayStartFirstSlide] boolValue];
-    selectFirstSlide.state = selected ? NSControlStateValueOn : NSControlStateValueOff;
+    BOOL selected = [[self.appDelegate.modeMap mode:self.mode optionValue:kPresentationPlayStartFirstSlide] boolValue];
+    self.selectFirstSlide.state = selected ? NSControlStateValueOn : NSControlStateValueOff;
 }
 
 - (void)selectStartPresentationFirstSlide:(id)sender {
-    BOOL selected = selectFirstSlide.state == NSControlStateValueOn;
+    BOOL selected = self.selectFirstSlide.state == NSControlStateValueOn;
     
-    [appDelegate.modeMap changeMode:self.mode option:kPresentationPlayStartFirstSlide to:@(selected)];
+    [self.appDelegate.modeMap changeMode:self.mode option:kPresentationPlayStartFirstSlide to:@(selected)];
 }
 
 @end

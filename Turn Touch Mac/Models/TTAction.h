@@ -14,9 +14,7 @@
 @class TTMode;
 @class TTModeMenuContainer;
 
-@interface TTAction : NSObject {
-    TTAppDelegate *appDelegate;
-}
+@interface TTAction : NSObject
 
 @property (nonatomic) TTMode *mode;
 @property (nonatomic) TTModeDirection direction;

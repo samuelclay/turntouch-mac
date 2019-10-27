@@ -8,6 +8,12 @@
 
 #import "TTHUDBackgroundView.h"
 
+@interface TTHUDBackgroundView ()
+
+@property (nonatomic, strong) NSTrackingArea *trackingArea;
+
+@end
+
 @implementation TTHUDBackgroundView
 
 - (void)awakeFromNib {
@@ -19,11 +25,11 @@
     NSTrackingAreaOptions options = (NSTrackingActiveAlways | NSTrackingInVisibleRect |
                                      NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved);
     
-    trackingArea = [[NSTrackingArea alloc] initWithRect:[self bounds]
+    self.trackingArea = [[NSTrackingArea alloc] initWithRect:[self bounds]
                                                 options:options
                                                   owner:self
                                                userInfo:nil];
-    [self addTrackingArea:trackingArea];
+    [self addTrackingArea:self.trackingArea];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {

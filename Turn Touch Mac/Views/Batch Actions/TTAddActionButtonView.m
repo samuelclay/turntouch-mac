@@ -11,24 +11,30 @@
 
 #define ADD_BUTTON_WIDTH 120
 
+@interface TTAddActionButtonView ()
+
+@property (nonatomic, strong) TTChangeButtonView *addButton;
+
+@end
+
 @implementation TTAddActionButtonView
 
 - (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        appDelegate = (TTAppDelegate *)[NSApp delegate];
+        self.appDelegate = (TTAppDelegate *)[NSApp delegate];
         self.translatesAutoresizingMaskIntoConstraints = NO;
         
-        addButton = [[TTChangeButtonView alloc] init];
-        [addButton setBorderRadius:12.f];
+        self.addButton = [[TTChangeButtonView alloc] init];
+        [self.addButton setBorderRadius:12.f];
         [self setChangeButtonTitle:@"Add Action"];
-        [addButton setAction:@selector(showAddActionMenu:)];
-        [addButton setTarget:self];
+        [self.addButton setAction:@selector(showAddActionMenu:)];
+        [self.addButton setTarget:self];
         NSImage *icon = [NSImage imageNamed:@"button_plus"];
         [icon setSize:NSMakeSize(15, 10)];
-        [addButton setImage:icon];
-        [addButton setImagePosition:NSImageRight];
-        [self addSubview:addButton];
+        [self.addButton setImage:icon];
+        [self.addButton setImagePosition:NSImageRight];
+        [self addSubview:self.addButton];
         
         [self registerAsObserver];
     }
@@ -40,7 +46,7 @@
 #pragma mark - KVO
 
 - (void)registerAsObserver {
-    [appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
+    [self.appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
                              options:0 context:nil];
 }
 
@@ -49,7 +55,7 @@
                          change:(NSDictionary*)change
                         context:(void*)context {
     if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))]) {
-        if (appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION) {
+        if (self.appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION) {
             // Only hide when switching modes (or closing actions), not when switching actions
             [self hideAddActionMenu:nil];
         }
@@ -57,7 +63,7 @@
 }
 
 - (void)dealloc {
-    [appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
+    [self.appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
 }
 
 #pragma mark - Drawing
@@ -83,45 +89,45 @@
     NSRect buttonFrame = NSMakeRect(NSWidth(self.frame)/2 - ADD_BUTTON_WIDTH/2,
                                     (NSHeight(self.frame)/2) - (24.f/2) - (8.f/2),
                                     ADD_BUTTON_WIDTH, 24.f);
-    addButton.frame = buttonFrame;
+    self.addButton.frame = buttonFrame;
 }
 
 - (void)setChangeButtonTitle:(NSString *)title {
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]
                                                    initWithString:title attributes:nil];
-    [addButton setAttributedTitle:attributedString];
+    [self.addButton setAttributedTitle:attributedString];
 }
 
 - (IBAction)showAddActionMenu:(id)sender {
     [self setChangeButtonTitle:@"Cancel"];
-    [addButton setAction:@selector(hideAddActionMenu:)];
+    [self.addButton setAction:@selector(hideAddActionMenu:)];
     NSImage *icon = [NSImage imageNamed:@"button_x"];
     [icon setSize:NSMakeSize(15, 10)];
-    [addButton setImage:icon];
-    [addButton setImagePosition:NSImageLeft];
+    [self.addButton setImage:icon];
+    [self.addButton setImagePosition:NSImageLeft];
     
-    if (appDelegate.modeMap.tempModeName) {
-        [appDelegate.modeMap setTempModeName:nil];
+    if (self.appDelegate.modeMap.tempModeName) {
+        [self.appDelegate.modeMap setTempModeName:nil];
     }
-    [appDelegate.modeMap setOpenedAddActionChangeMenu:YES];
+    [self.appDelegate.modeMap setOpenedAddActionChangeMenu:YES];
 }
 
 - (IBAction)hideAddActionMenu:(id)sender {
     [self setChangeButtonTitle:@"Add Action"];
-    [addButton setAction:@selector(showAddActionMenu:)];
+    [self.addButton setAction:@selector(showAddActionMenu:)];
     NSImage *icon = [NSImage imageNamed:@"button_plus"];
     [icon setSize:NSMakeSize(15, 10)];
-    [addButton setImage:icon];
-    [addButton setImagePosition:NSImageRight];
+    [self.addButton setImage:icon];
+    [self.addButton setImagePosition:NSImageRight];
 
-    if (appDelegate.modeMap.tempModeName) {
-        [appDelegate.modeMap setTempModeName:nil];
+    if (self.appDelegate.modeMap.tempModeName) {
+        [self.appDelegate.modeMap setTempModeName:nil];
     }
-    if (appDelegate.modeMap.openedAddActionChangeMenu) {
-        [appDelegate.modeMap setOpenedAddActionChangeMenu:NO];
+    if (self.appDelegate.modeMap.openedAddActionChangeMenu) {
+        [self.appDelegate.modeMap setOpenedAddActionChangeMenu:NO];
     }
     
-    [appDelegate.panelController.backgroundView adjustBatchActionsHeight:YES];
+    [self.appDelegate.panelController.backgroundView adjustBatchActionsHeight:YES];
 }
 
 @end

@@ -15,10 +15,7 @@
 - (void)toggleDevice:(TTModeWemoDevice *)device;
 @end
 
-@interface TTModeWemoSwitchDevice : NSView {
-    TTModeWemoDevice *device;
-    NSTrackingArea *trackingArea;
-}
+@interface TTModeWemoSwitchDevice : NSView
 
 @property (nonatomic) IBOutlet NSTextField *nameLabel;
 @property (nonatomic) IBOutlet NSTextField *selectedLabel;

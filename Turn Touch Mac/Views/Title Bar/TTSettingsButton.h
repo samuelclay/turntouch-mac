@@ -8,9 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface TTSettingsButton : NSPopUpButton {
-    NSMenu *menu;
-    NSMenuItem *menuItem;
-}
+@interface TTSettingsButton : NSPopUpButton
 
 @end

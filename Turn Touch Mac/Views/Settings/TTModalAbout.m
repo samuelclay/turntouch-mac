@@ -14,16 +14,14 @@
 
 @implementation TTModalAbout
 
-@synthesize versionLabel;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    appDelegate = (TTAppDelegate *)[NSApp delegate];
-    [versionLabel setStringValue:[NSString stringWithFormat:@"Version %@", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]]];
+    self.appDelegate = (TTAppDelegate *)[NSApp delegate];
+    [self.versionLabel setStringValue:[NSString stringWithFormat:@"Version %@", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]]];
 }
 
 - (void)closeModal:(id)sender {
-    [appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_APP];
+    [self.appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_APP];
 }
 
 @end

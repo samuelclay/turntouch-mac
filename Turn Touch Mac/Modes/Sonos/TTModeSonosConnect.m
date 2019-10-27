@@ -14,8 +14,6 @@
 
 @implementation TTModeSonosConnect
 
-@synthesize authButton;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.

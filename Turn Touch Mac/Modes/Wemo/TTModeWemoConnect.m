@@ -10,11 +10,11 @@
 
 @interface TTModeWemoConnect ()
 
+@property (nonatomic, strong) NSPopover *authPopover;
+
 @end
 
 @implementation TTModeWemoConnect
-
-@synthesize authButton;
 
 - (void)viewDidLoad {
     [super viewDidLoad];

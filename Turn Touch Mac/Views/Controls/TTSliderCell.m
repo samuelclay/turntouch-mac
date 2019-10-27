@@ -8,12 +8,13 @@
 
 #import "TTSliderCell.h"
 
-@interface TTSliderCell () {
-    NSRect _currentKnobRect;
-    NSRect _barRect;
-    
-    BOOL _flipped;
-}
+@interface TTSliderCell ()
+
+@property (nonatomic) NSRect currentKnobRect;
+@property (nonatomic) NSRect barRect;
+
+@property (nonatomic) BOOL flipped;
+@property (nonatomic) BOOL isPressed;
 
 @end
 
@@ -26,12 +27,12 @@
 - (void)drawKnob:(NSRect)knobRect
 {
 //    NSLog(@"drawKnob: %@", NSStringFromRect(knobRect));
-    [self drawBarInside:_barRect flipped:_flipped];
+    [self drawBarInside:self.barRect flipped:self.flipped];
     [self.controlView lockFocus];
     //// Color Declarations
     NSColor *borderColor = NSColorFromRGB(0xCFCECE);
     NSColor *knobColor = NSColorFromRGB(0xFFFFFF);
-    if (isPressed || self.isHighlighted) {
+    if (self.isPressed || self.isHighlighted) {
         knobColor = NSColorFromRGB(0xF1F0F0);
         borderColor = NSColorFromRGB(0xDFDEDE);
     }
@@ -90,8 +91,8 @@
 - (void)drawBarInside:(NSRect)rect flipped:(BOOL)flipped
 {
 //    NSLog(@"Draw bar: %@ / %d", NSStringFromRect(rect), flipped);
-    _barRect = rect;
-    _flipped = flipped;
+    self.barRect = rect;
+    self.flipped = flipped;
     CGFloat value = ([self doubleValue]  - [self minValue]) / ([self maxValue] - [self minValue]);
     CGFloat finalWidth = value * ([[self controlView] frame].size.width - 8);
     CGFloat posY = 0.90;

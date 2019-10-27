@@ -8,9 +8,14 @@
 
 #import "TTSegmentedCell.h"
 
-@implementation TTSegmentedCell
+@interface TTSegmentedCell ()
 
-@synthesize highlightedSegment;
+@property (nonatomic, strong) NSDictionary *labelAttributes;
+@property (nonatomic) CGFloat radius;
+
+@end
+
+@implementation TTSegmentedCell
 
 - (id)initWithCoder:(NSCoder *)decoder {
     if (self = [super initWithCoder:decoder]) {
@@ -26,8 +31,8 @@
 #pragma mark - Drawing
 
 - (void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {
-    radius = NSHeight(cellFrame) * 2.f/3.f;
-    cellFrame.size.width = [self totalWidthInFrame:cellFrame withRadius:radius upToSegment:self.segmentCount];
+    self.radius = NSHeight(cellFrame) * 2.f/3.f;
+    cellFrame.size.width = [self totalWidthInFrame:cellFrame withRadius:self.radius upToSegment:self.segmentCount];
     for (int i =0 ;i < [self segmentCount]; i++) {
         [self setupLabels:i];
         [self drawSegment:i inFrame:cellFrame withView:controlView];
@@ -38,30 +43,30 @@
 - (void)drawSegment:(NSInteger)segment inFrame:(NSRect)frame withView:(NSView *)controlView {
     NSBezierPath *border = [NSBezierPath bezierPath];
     NSString *label = [self labelForSegment:segment];
-    NSSize labelSize = [label sizeWithAttributes:labelAttributes];
-    radius = NSHeight(frame) * 2.f/3.f;
-    CGFloat totalWidth = [self totalWidthInFrame:frame withRadius:radius upToSegment:self.segmentCount];
+    NSSize labelSize = [label sizeWithAttributes:self.labelAttributes];
+    self.radius = NSHeight(frame) * 2.f/3.f;
+    CGFloat totalWidth = [self totalWidthInFrame:frame withRadius:self.radius upToSegment:self.segmentCount];
     CGFloat overageWidth = (totalWidth - NSWidth(frame)) / self.segmentCount;
 //    NSLog(@"Drawing segment %ld: total: %f, overage: %f (%@)", (long)segment, totalWidth, overageWidth, NSStringFromRect(frame));
-    BOOL highlighted = segment == highlightedSegment;
+    BOOL highlighted = segment == self.highlightedSegment;
     BOOL selected = [self isSelectedForSegment:segment];
     
-    CGFloat offset = [self totalWidthInFrame:frame withRadius:radius upToSegment:segment];
+    CGFloat offset = [self totalWidthInFrame:frame withRadius:self.radius upToSegment:segment];
     NSRect segmentFrame = frame;
     segmentFrame.origin.x = offset;
     segmentFrame.origin.y = NSMinY(frame) + 3;
-    segmentFrame.size.width = labelSize.width + 2*radius - overageWidth;
+    segmentFrame.size.width = labelSize.width + 2*self.radius - overageWidth;
     segmentFrame.size.height = NSHeight(frame) - 4;
     
     // Stroke
-    [border moveToPoint:NSMakePoint(NSMinX(segmentFrame) + radius, NSMinY(segmentFrame))];
+    [border moveToPoint:NSMakePoint(NSMinX(segmentFrame) + self.radius, NSMinY(segmentFrame))];
     // Right-mode segment has rounded rect on right
     if (segment < self.segmentCount-1) {
         [border lineToPoint:NSMakePoint(NSMaxX(segmentFrame), NSMinY(segmentFrame))];
         [border lineToPoint:NSMakePoint(NSMaxX(segmentFrame), NSMaxY(segmentFrame))];
     } else {
-        [border lineToPoint:NSMakePoint(NSMaxX(segmentFrame) - radius, NSMinY(segmentFrame))];
-        [border curveToPoint:NSMakePoint(NSMaxX(segmentFrame) - radius, NSMaxY(segmentFrame))
+        [border lineToPoint:NSMakePoint(NSMaxX(segmentFrame) - self.radius, NSMinY(segmentFrame))];
+        [border curveToPoint:NSMakePoint(NSMaxX(segmentFrame) - self.radius, NSMaxY(segmentFrame))
                controlPoint1:NSMakePoint(NSMaxX(segmentFrame), NSMinY(segmentFrame))
                controlPoint2:NSMakePoint(NSMaxX(segmentFrame), NSMaxY(segmentFrame))];
     }
@@ -70,8 +75,8 @@
         [border lineToPoint:NSMakePoint(NSMinX(segmentFrame), NSMaxY(segmentFrame))];
         [border lineToPoint:NSMakePoint(NSMinX(segmentFrame), NSMinY(segmentFrame))];
     } else {
-        [border lineToPoint:NSMakePoint(NSMinX(segmentFrame) + radius, NSMaxY(segmentFrame))];
-        [border curveToPoint:NSMakePoint(NSMinX(segmentFrame) + radius, NSMinY(segmentFrame))
+        [border lineToPoint:NSMakePoint(NSMinX(segmentFrame) + self.radius, NSMaxY(segmentFrame))];
+        [border curveToPoint:NSMakePoint(NSMinX(segmentFrame) + self.radius, NSMinY(segmentFrame))
                controlPoint1:NSMakePoint(NSMinX(segmentFrame), NSMaxY(segmentFrame))
                controlPoint2:NSMakePoint(NSMinX(segmentFrame), NSMinY(segmentFrame))];
     }
@@ -94,15 +99,15 @@
     
     CGFloat textOffset;
     if (segment == self.segmentCount - 1) {
-        textOffset = -1 * radius * 1.f/6.f;
+        textOffset = -1 * self.radius * 1.f/6.f;
     } else if (segment > 0) {
         textOffset = 0;
     } else {
-        textOffset = radius * 1.f/6.f;
+        textOffset = self.radius * 1.f/6.f;
     }
-    NSPoint textPoint = NSMakePoint(NSMinX(segmentFrame) + radius + textOffset - overageWidth/2,
+    NSPoint textPoint = NSMakePoint(NSMinX(segmentFrame) + self.radius + textOffset - overageWidth/2,
                                     NSMidY(segmentFrame) - labelSize.height/2 - 1);
-    [label drawAtPoint:textPoint withAttributes:labelAttributes];
+    [label drawAtPoint:textPoint withAttributes:self.labelAttributes];
 
     [super setWidth:[self widthForSegment:segment] forSegment:segment];
     
@@ -122,10 +127,10 @@
 
 - (CGFloat)widthForSegment:(NSInteger)segment {
     NSString *label = [self labelForSegment:segment];
-    NSSize labelSize = [label sizeWithAttributes:labelAttributes];
+    NSSize labelSize = [label sizeWithAttributes:self.labelAttributes];
 //    CGFloat radius =  * 2.f/3.f;
 //    NSLog(@"Width for segment %ld: %f", (long)segment, labelSize.width + 2*radius);
-    return labelSize.width + 2*radius;
+    return labelSize.width + 2 * self.radius;
 }
 
 - (void)drawShadowInFrame:(NSRect)frame inDirection:(NSInteger)direction {
@@ -165,7 +170,7 @@
     CGFloat totalWidth = 0;
 
     for (int s=0; s < maxSegment; s++) {
-        totalWidth += [[self labelForSegment:s] sizeWithAttributes:labelAttributes].width;
+        totalWidth += [[self labelForSegment:s] sizeWithAttributes:self.labelAttributes].width;
         totalWidth += 2 * _radius;
     }
     
@@ -184,7 +189,7 @@
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [style setAlignment:NSLeftTextAlignment];
 
-    labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:13],
+    self.labelAttributes = @{NSFontAttributeName:[NSFont fontWithName:@"Effra" size:13],
                         NSForegroundColorAttributeName: textColor,
                         NSShadowAttributeName: stringShadow,
                         NSParagraphStyleAttributeName: style
@@ -196,7 +201,7 @@
     [self setHighlightedSegment:-1];
     NSPoint loc = currentPoint;
     NSRect frame = controlView.frame;
-    CGFloat totalWidth = [self totalWidthInFrame:frame withRadius:radius upToSegment:self.segmentCount];
+    CGFloat totalWidth = [self totalWidthInFrame:frame withRadius:self.radius upToSegment:self.segmentCount];
     loc.x += frame.origin.x;
     loc.y += frame.origin.y;
     frame.origin.x += (NSWidth(frame)/2 - totalWidth/2);
@@ -234,12 +239,12 @@
     // Don't call super since we need to manually set selected based on highlight
 //    [super stopTracking:lastPoint at:stopPoint inView:controlView mouseIsUp:flag];
 
-    if (highlightedSegment >= 0) {
+    if (self.highlightedSegment >= 0) {
         BOOL selectMultiple = self.trackingMode == NSSegmentSwitchTrackingSelectAny;
         if (selectMultiple) {
-            [self setSelected:![self isSelectedForSegment:highlightedSegment] forSegment:highlightedSegment];
+            [self setSelected:![self isSelectedForSegment:self.highlightedSegment] forSegment:self.highlightedSegment];
         } else {
-            [self setSelected:YES forSegment:highlightedSegment];
+            [self setSelected:YES forSegment:self.highlightedSegment];
         }
         if ([self.target respondsToSelector:self.action]) {
             // Lines below crash in release but not in debug, so using warning-suppression instead

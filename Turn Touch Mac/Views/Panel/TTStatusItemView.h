@@ -12,20 +12,11 @@
 
 @class TTDiamondView;
 
-@interface TTStatusItemView : NSView {
-@private
-    TTAppDelegate *appDelegate;
-    NSImage *_image;
-    NSImage *_alternateImage;
-    TTDiamondView *_diamondView;
-    NSStatusItem *_statusItem;
-    BOOL _isHighlighted;
-    SEL _action;
-    __unsafe_unretained id _target;
-}
+@interface TTStatusItemView : NSView
 
 - (id)initWithStatusItem:(NSStatusItem *)statusItem;
 
+@property (nonatomic, weak) TTAppDelegate *appDelegate;
 @property (nonatomic, strong, readonly) NSStatusItem *statusItem;
 @property (nonatomic, strong) NSImage *image;
 @property (nonatomic, strong) NSImage *alternateImage;
