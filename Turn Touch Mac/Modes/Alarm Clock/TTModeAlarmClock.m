@@ -473,7 +473,7 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
 #pragma mark - Playlists
 
 + (SBElementArray *)playlists {
-    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    iTunesApplication *iTunes = [TTModeMusic musicApp];
     iTunesSource *librarySource = nil;
     
     for (iTunesSource *source in iTunes.sources) {
@@ -489,7 +489,7 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
 }
 
 + (SBElementArray *)userPlaylists {
-    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    iTunesApplication *iTunes = [TTModeMusic musicApp];
     iTunesSource *librarySource = nil;
     
     for (iTunesSource *source in iTunes.sources) {

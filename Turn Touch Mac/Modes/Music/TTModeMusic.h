@@ -23,6 +23,9 @@ extern NSString *const kMusicPlaylistShuffleDouble;
     NSTimer *volumeFadeTimer;
 }
 
++ (BOOL)isITunes;
++ (iTunesApplication *)musicApp;
+
 + (NSView *)songInfoView:(NSRect)rect withTrack:(iTunesTrack *)currentTrack;
 + (SBElementArray *)userPlaylists;
 

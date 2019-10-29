@@ -963,6 +963,7 @@
 
 /* Begin PBXFileReference section */
 		0816B43983D957B02997067E /* Pods-Turn Touch Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turn Touch Mac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Turn Touch Mac/Pods-Turn Touch Mac.debug.xcconfig"; sourceTree = "<group>"; };
+		1763B5322367E1C600F99717 /* Music.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Music.h; path = Modes/Music/Music.h; sourceTree = "<group>"; };
 		1766EE83226FC3B100A114B5 /* CBPeripheral+Extras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CBPeripheral+Extras.h"; path = "Categories/CBPeripheral+Extras.h"; sourceTree = "<group>"; };
 		1766EE84226FC3B100A114B5 /* CBPeripheral+Extras.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CBPeripheral+Extras.m"; path = "Categories/CBPeripheral+Extras.m"; sourceTree = "<group>"; };
 		178BDF51226E61E100396413 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -1902,6 +1903,7 @@
 				FF0E12CD18247D6100D49EC7 /* TTModeMusic.h */,
 				FF0E12CE18247D6100D49EC7 /* TTModeMusic.m */,
 				FF0E12CC18247D4600D49EC7 /* iTunes.h */,
+				1763B5322367E1C600F99717 /* Music.h */,
 				FF8528F91A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.h */,
 				FF8528FA1A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.m */,
 				FF8528F71A96B58700B289FD /* TTModeMusicVolumeJumpOptions.xib */,
@@ -3104,7 +3106,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = TT;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = "Turn Touch";
 				TargetAttributes = {
 					17EE987D236690D3006A7A41 = {

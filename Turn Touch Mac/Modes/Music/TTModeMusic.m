@@ -7,7 +7,17 @@
 //
 
 #import "TTModeMusic.h"
+#import <Cocoa/Cocoa.h>
 #import "iTunes.h"
+#import "Music.h"
+
+@interface TTModeMusic ()
+
+@property (nonatomic, readonly) BOOL isITunes;
+@property (nonatomic, strong, readonly) iTunesApplication *musicApp;
+@property (nonatomic, readonly) BOOL isPlaying;
+
+@end
 
 @implementation TTModeMusic
 
@@ -18,6 +28,37 @@ NSString *const kMusicPlaylistShuffleSingle = @"musicPlaylistShuffleSingle";
 NSString *const kMusicPlaylistDouble = @"musicPlaylistDouble";
 NSString *const kMusicPlaylistShuffleDouble = @"musicPlaylistShuffleDouble";
 
++ (BOOL)isITunes {
+    if (@available(macOS 10.15, *)) {
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
+- (BOOL)isITunes {
+    return [self.class isITunes];
+}
+
++ (iTunesApplication *)musicApp {
+    if ([self isITunes]) {
+        return [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    } else {
+        return [SBApplication applicationWithBundleIdentifier:@"com.apple.Music"];
+    }
+}
+
+- (iTunesApplication *)musicApp {
+    return [self.class musicApp];
+}
+
+- (BOOL)isPlaying {
+    iTunesApplication *music = self.musicApp;
+    return music.playerState == iTunesEPlSPlaying;
+    
+    return NO;
+}
+
 #pragma mark - Mode
 
 + (NSString *)title {
@@ -25,7 +66,11 @@ NSString *const kMusicPlaylistShuffleDouble = @"musicPlaylistShuffleDouble";
 }
 
 + (NSString *)description {
-    return @"Control iTunes";
+    if ([self isITunes]) {
+        return @"Control iTunes";
+    } else {
+        return @"Control Music";
+    }
 }
 
 + (NSString *)imageName {
@@ -51,10 +96,10 @@ NSString *const kMusicPlaylistShuffleDouble = @"musicPlaylistShuffleDouble";
 #pragma mark - Action Titles
 
 - (NSString *)titleTTModeMusicVolumeUp {
-    return @"iTunes Volume up";
+    return self.isITunes ? @"iTunes Volume up" : @"Music volume up";
 }
 - (NSString *)titleTTModeMusicVolumeDown {
-    return @"iTunes Volume down";
+    return self.isITunes ? @"iTunes Volume down" : @"Music volume down";
 }
 - (NSString *)titleTTModeMusicPause {
     return @"Pause";
@@ -75,11 +120,7 @@ NSString *const kMusicPlaylistShuffleDouble = @"musicPlaylistShuffleDouble";
     return @"Play";
 }
 - (NSString *)actionTitleTTModeMusicPlayPause {
-    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
-    if (iTunes.playerState != iTunesEPlSPlaying) {
-        return @"Pause";
-    }
-    return @"Play";
+    return self.isPlaying ? @"Play" : @"Pause";
 }
 - (NSString *)titleTTModeMusicNextTrack {
     return @"Next track";
@@ -94,14 +135,14 @@ NSString *const kMusicPlaylistShuffleDouble = @"musicPlaylistShuffleDouble";
     return @"Playlist";
 }
 - (NSString *)actionTitleTTModeMusicPlaylist {
-    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    iTunesApplication *music = self.musicApp;
     NSString *selectedPlaylist = [self.action optionValue:kMusicPlaylistSingle];
     
-    if (![iTunes respondsToSelector:@selector(sources)]) {
+    if (![music respondsToSelector:@selector(sources)]) {
         return @"Playlist";
     }
     
-    for (iTunesSource *source in [iTunes sources]) {
+    for (MusicSource *source in [music sources]) {
         if ([source kind] == iTunesESrcLibrary) {
             for (iTunesPlaylist *playlist in [source userPlaylists]) {
                 if ([playlist.persistentID isEqualToString:selectedPlaylist] || !selectedPlaylist) {
@@ -115,14 +156,14 @@ NSString *const kMusicPlaylistShuffleDouble = @"musicPlaylistShuffleDouble";
 }
 
 - (NSString *)doubleActionTitleTTModeMusicPlaylist {
-    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    iTunesApplication *music = self.musicApp;
     NSString *selectedPlaylist = [self.action optionValue:kMusicPlaylistDouble];
     
-    if (![iTunes respondsToSelector:@selector(sources)]) {
+    if (![music respondsToSelector:@selector(sources)]) {
         return @"Playlist";
     }
     
-    for (iTunesSource *source in [iTunes sources]) {
+    for (MusicSource *source in [music sources]) {
         if ([source kind] == iTunesESrcLibrary) {
             for (iTunesPlaylist *playlist in [source userPlaylists]) {
                 if ([playlist.persistentID isEqualToString:selectedPlaylist] || !selectedPlaylist) {
@@ -175,18 +216,14 @@ NSString *const kMusicPlaylistShuffleDouble = @"musicPlaylistShuffleDouble";
     return @"hue_sleep.png";
 }
 - (NSString *)imageActionHudTTModeMusicPlayPause {
-    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
-    if (iTunes.playerState != iTunesEPlSPlaying) {
-        return @"music_pause.png";
-    }
-    return @"music_play.png";
+    return self.isPlaying ? @"music_play.png" : @"music_pause.png";
 }
 
 #pragma mark - Progress
 
 - (NSInteger)progressVolume {
-    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
-    return iTunes.soundVolume;
+    iTunesApplication *music = self.musicApp;
+    return music.soundVolume;
 }
 
 - (NSInteger)progressTTModeMusicVolumeUp {
@@ -224,7 +261,7 @@ NSString *const kMusicPlaylistShuffleDouble = @"musicPlaylistShuffleDouble";
 }
 
 - (NSView *)viewForLayoutTTModeMusicPause:(NSRect)rect {
-    iTunesApplication * iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    iTunesApplication * iTunes = self.musicApp;
     iTunesTrack *current = [iTunes currentTrack];
     return [self.class songInfoView:rect withTrack:current];
 }
@@ -240,7 +277,7 @@ NSString *const kMusicPlaylistShuffleDouble = @"musicPlaylistShuffleDouble";
 }
 
 - (NSView *)viewForLayoutTTModeMusicNextTrack:(NSRect)rect {
-    iTunesApplication * iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    iTunesApplication * iTunes = self.musicApp;
     iTunesTrack *current = [iTunes currentTrack];
     return [self.class songInfoView:rect withTrack:current];
 }
@@ -271,7 +308,7 @@ NSString *const kMusicPlaylistShuffleDouble = @"musicPlaylistShuffleDouble";
                                       NSForegroundColorAttributeName: textColor,
                                       NSParagraphStyleAttributeName: style
                                       };
-    NSSize textSize = [(currentTrack.name ? currentTrack.name : @"iTunes") sizeWithAttributes:labelAttributes];
+    NSSize textSize = [(currentTrack.name ? currentTrack.name : @"Music") sizeWithAttributes:labelAttributes];
     rect.size.height = textSize.height * 3;
     rect.size.width *= 1.25;
     rect.origin.x -= NSWidth(rect)*0.25/2;
@@ -282,8 +319,14 @@ NSString *const kMusicPlaylistShuffleDouble = @"musicPlaylistShuffleDouble";
     // Album art
     NSImage *songArtwork;
     iTunesArtwork *artwork = (iTunesArtwork *)[[[currentTrack artworks] get] lastObject];
-    if (artwork != nil) {
-        songArtwork = [[NSImage alloc] initWithData:[artwork rawData]];
+    NSImage *image = artwork.data;
+    NSData *data = artwork.rawData;
+    
+    // Not working reliably in Catalina; see: https://forums.developer.apple.com/thread/124557
+    if ([image isKindOfClass:[NSImage class]]) {
+        songArtwork = image;
+    } else if ([data isKindOfClass:[NSData class]]) {
+        songArtwork = [[NSImage alloc] initWithData:data];
     } else {
         songArtwork = [NSImage imageNamed:@"icon_music.png"];
     }
@@ -298,7 +341,7 @@ NSString *const kMusicPlaylistShuffleDouble = @"musicPlaylistShuffleDouble";
     // Check if song playing
     if (!currentTrack.name) {
         NSTextView *songTitleView = [[NSTextView alloc] initWithFrame:NSMakeRect(infoX, textSize.height, infoWidth, textSize.height)];
-        [songTitleView setString:@"iTunes isn't playing anything"];
+        [songTitleView setString:self.isITunes ? @"iTunes isn't playing anything" : @"Music isn't playing anything"];
         [songTitleView setTextColor:NSColorFromRGB(0x604050)];
         [songTitleView setFont:[NSFont fontWithName:@"Effra" size:fontSize]];
         [songTitleView setBackgroundColor:[NSColor clearColor]];
@@ -350,27 +393,27 @@ NSString *const kMusicPlaylistShuffleDouble = @"musicPlaylistShuffleDouble";
 #pragma mark - Action methods
 
 - (void)runTTModeMusicVolumeUp {
-    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    iTunesApplication *iTunes = self.musicApp;
     NSInteger volume = iTunes.soundVolume;
     [iTunes setSoundVolume:MIN(100, volume+ITUNES_VOLUME_PCT_CHANGE)];
 }
 
 - (void)runTTModeMusicVolumeDown {
-    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    iTunesApplication *iTunes = self.musicApp;
     
     NSInteger volume = iTunes.soundVolume;
     [iTunes setSoundVolume:MAX(0, volume-ITUNES_VOLUME_PCT_CHANGE)];
 }
 
 - (void)runTTModeMusicPause {
-    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    iTunesApplication *iTunes = self.musicApp;
     
     if (iTunes.playerState == iTunesEPlSPlaying) {
         [iTunes playpause];
     }
 }
 - (void)doubleRunTTModeMusicPause {
-    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    iTunesApplication *iTunes = self.musicApp;
     
     if (iTunes.playerState == iTunesEPlSPlaying) {
         [iTunes playpause];
@@ -378,14 +421,14 @@ NSString *const kMusicPlaylistShuffleDouble = @"musicPlaylistShuffleDouble";
 }
 
 - (void)runTTModeMusicPlay {
-    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    iTunesApplication *iTunes = self.musicApp;
     
     if (iTunes.playerState != iTunesEPlSPlaying) {
         [iTunes playpause];
     }
 }
 - (void)doubleRunTTModeMusicPlay {
-    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    iTunesApplication *iTunes = self.musicApp;
     
     if (iTunes.playerState != iTunesEPlSPlaying) {
         [iTunes playpause];
@@ -393,12 +436,12 @@ NSString *const kMusicPlaylistShuffleDouble = @"musicPlaylistShuffleDouble";
 }
 
 - (void)runTTModeMusicPlayPause {
-    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    iTunesApplication *iTunes = self.musicApp;
     
     [iTunes playpause];
 }
 - (void)doubleRunTTModeMusicPlayPause {
-    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    iTunesApplication *iTunes = self.musicApp;
     
     [iTunes previousTrack];
     if (iTunes.playerState != iTunesEPlSPlaying) {
@@ -407,12 +450,12 @@ NSString *const kMusicPlaylistShuffleDouble = @"musicPlaylistShuffleDouble";
 }
 
 - (void)runTTModeMusicNextTrack {
-    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    iTunesApplication *iTunes = self.musicApp;
     
     [iTunes nextTrack];
 }
 - (void)doubleRunTTModeMusicNextTrack {
-    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    iTunesApplication *iTunes = self.musicApp;
     NSString *original = [[iTunes currentTrack] album];
     iTunesTrack *current;
     int tries = 30;
@@ -427,13 +470,13 @@ NSString *const kMusicPlaylistShuffleDouble = @"musicPlaylistShuffleDouble";
 }
 
 - (void)runTTModeMusicPreviousTrack {
-    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    iTunesApplication *iTunes = self.musicApp;
     
     [iTunes previousTrack];
 }
 
 - (void)runTTModeMusicVolumeJump:(TTModeDirection)direction {
-    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    iTunesApplication *iTunes = self.musicApp;
     NSInteger volume = iTunes.soundVolume;
     NSInteger volumeJump = [[self.action optionValue:kMusicVolumeJump inDirection:direction] integerValue];
     if (volume != volumeJump) originalVolume = volume;
@@ -448,7 +491,7 @@ NSString *const kMusicPlaylistShuffleDouble = @"musicPlaylistShuffleDouble";
 }
 
 - (void)fadeVolumeDown {
-    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    iTunesApplication *iTunes = self.musicApp;
     volumeFadeMultiplier -= 1;
     
     [iTunes setSoundVolume:volumeFadeMultiplier];
@@ -488,7 +531,7 @@ NSString *const kMusicPlaylistShuffleDouble = @"musicPlaylistShuffleDouble";
 }
 
 - (void)playPlaylist:(NSString *)selectedPlaylist {
-    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    iTunesApplication *iTunes = self.musicApp;
 //    BOOL playlistShuffle = [[self.action optionValue:kMusicPlaylistShuffle] boolValue];
     iTunesPlaylist *itunesPl;
 
@@ -514,7 +557,7 @@ NSString *const kMusicPlaylistShuffleDouble = @"musicPlaylistShuffleDouble";
 }
 
 + (SBElementArray *)userPlaylists {
-    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+    iTunesApplication *iTunes = self.musicApp;
     iTunesSource *librarySource = nil;
     
     for (iTunesSource *source in iTunes.sources) {
