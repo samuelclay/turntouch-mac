@@ -56,17 +56,6 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
     return @"mode_alarm.png";
 }
 
-+ (TTMusicApplication *)musicApplication {
-    TTMusicApplication *iTunes;
-    if (@available(macOS 10.15, *)) {
-        iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.Music"];
-    } else {
-        iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
-    }
-    
-    return iTunes;
-}
-
 #pragma mark - Actions
 
 - (NSArray *)actions {
@@ -484,7 +473,7 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
 #pragma mark - Playlists
 
 + (SBElementArray *)playlists {
-    iTunesApplication *iTunes = [TTModeAlarmClock musicApplication];
+    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
     iTunesSource *librarySource = nil;
     
     for (iTunesSource *source in iTunes.sources) {
@@ -500,7 +489,7 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
 }
 
 + (SBElementArray *)userPlaylists {
-    iTunesApplication *iTunes = [TTModeAlarmClock musicApplication];
+    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
     iTunesSource *librarySource = nil;
     
     for (iTunesSource *source in iTunes.sources) {

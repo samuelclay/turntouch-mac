@@ -22,12 +22,6 @@
 			<string>com.apple.iTunes.user-interface</string>
 			<string>com.apple.iTunes.playback</string>
 		</array>
-		<key>com.apple.Music</key>
-		<array>
-			<string>com.apple.Music.library.read</string>
-			<string>com.apple.Music.user-interface</string>
-			<string>com.apple.Music.playback</string>
-		</array>
 		<key>com.spotify.client</key>
 		<array/>
 		<key>org.videolan.vlc</key>
