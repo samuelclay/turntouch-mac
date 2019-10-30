@@ -696,6 +696,7 @@
 		FF3D220D1F1F1CB400F7F5BF /* TTModeSonosConnected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeSonosConnected.h; path = Modes/Sonos/TTModeSonosConnected.h; sourceTree = "<group>"; };
 		FF3D220E1F1F1CB400F7F5BF /* TTModeSonosConnected.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeSonosConnected.m; path = Modes/Sonos/TTModeSonosConnected.m; sourceTree = "<group>"; };
 		FF3D220F1F1F1CB400F7F5BF /* TTModeSonosConnected.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeSonosConnected.xib; path = Modes/Sonos/TTModeSonosConnected.xib; sourceTree = "<group>"; };
+		FF41235323691ACB006AE52F /* Music.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Music.h; path = Modes/Music/Music.h; sourceTree = "<group>"; };
 		FF429AD01919C630007C485E /* TTModeMenuCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeMenuCollectionView.h; sourceTree = "<group>"; };
 		FF429AD11919C630007C485E /* TTModeMenuCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeMenuCollectionView.m; sourceTree = "<group>"; };
 		FF4E26311823197D00D477F6 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -1407,6 +1408,7 @@
 				FF0E12CD18247D6100D49EC7 /* TTModeMusic.h */,
 				FF0E12CE18247D6100D49EC7 /* TTModeMusic.m */,
 				FF0E12CC18247D4600D49EC7 /* iTunes.h */,
+				FF41235323691ACB006AE52F /* Music.h */,
 				FF8528F91A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.h */,
 				FF8528FA1A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.m */,
 				FF8528F71A96B58700B289FD /* TTModeMusicVolumeJumpOptions.xib */,
@@ -2591,7 +2593,7 @@
 				ORGANIZATIONNAME = "Turn Touch";
 				TargetAttributes = {
 					FF8C833217AB14B5000166FC = {
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
