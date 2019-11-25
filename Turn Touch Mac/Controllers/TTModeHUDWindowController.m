@@ -99,7 +99,7 @@
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:.55f];
     [[NSAnimationContext currentContext] setCompletionHandler:^{
-//        [hudWindow orderOut:nil];
+        [self.hudWindow orderOut:nil];
         self.isFading = NO;
     }];
     [[NSAnimationContext currentContext]
