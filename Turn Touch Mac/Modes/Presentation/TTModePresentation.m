@@ -222,6 +222,8 @@ NSString *const kPresentationPlayStartFirstSlide = @"TT:Presentation:playStartFi
     
     if ([self isKeynote]) {
         KeynoteApplication *keynote = [SBApplication applicationWithBundleIdentifier:@"com.apple.iWork.Keynote"];
+        [keynote activate];
+        
         for (KeynoteDocument *document in [keynote documents]) {
             if (!slideChooserVisible) {
                 if (slideshowPlaying) {

@@ -109,7 +109,8 @@ enum KeynoteTransitionEffects {
 	KeynoteTransitionEffectsSwap = 'tswp' /*  */,
 	KeynoteTransitionEffectsSwoosh = 'tsws' /*  */,
 	KeynoteTransitionEffectsTwirl = 'ttwl' /*  */,
-	KeynoteTransitionEffectsTwist = 'ttwi' /*  */
+	KeynoteTransitionEffectsTwist = 'ttwi' /*  */,
+	KeynoteTransitionEffectsFadeAndMove = 'tfad' /*  */
 };
 typedef enum KeynoteTransitionEffects KeynoteTransitionEffects;
 
@@ -208,6 +209,8 @@ typedef enum KeynoteLegacyChartGrouping KeynoteLegacyChartGrouping;
 - (void) delete;  // Delete an object.
 - (void) duplicateTo:(SBObject *)to withProperties:(NSDictionary *)withProperties;  // Copy an object.
 - (void) moveTo:(SBObject *)to;  // Move an object to a new location.
+- (void) duplicateTo:(SBObject *)to withProperties:(NSDictionary *)withProperties;  // Copy an object.
+- (void) delete;  // Delete an object.
 
 @end
 
@@ -364,6 +367,12 @@ typedef enum KeynoteLegacyChartGrouping KeynoteLegacyChartGrouping;
 /*
  * iWork Suite
  */
+
+@interface KeynoteDocument (IWorkSuite)
+
+@property (copy) NSArray<KeynoteIWorkItem *> *selection;  // A list of the currently selected items.
+
+@end
 
 // A container for iWork items
 @interface KeynoteIWorkContainer : SBObject <KeynoteGenericMethods>
