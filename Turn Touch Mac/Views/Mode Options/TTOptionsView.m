@@ -121,6 +121,8 @@
 //        NSLog(@" --- Missing mode options view for %@", modeName);
         self.modeOptionsViewController = (TTOptionsDetailViewController *)[[NSViewController alloc] init];
         [self.modeOptionsViewController setView:[[TTOptionsDetailView alloc] init]];
+        // A temporary solution to fix drawing issues in dark mode; should properly implement dark mode later.
+        self.modeOptionsViewController.view.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
         [self addSubview:self.modeOptionsViewController.view];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self.modeOptionsViewController.view
                                                          attribute:NSLayoutAttributeHeight

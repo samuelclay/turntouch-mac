@@ -3106,7 +3106,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = TT;
-				LastUpgradeCheck = 1110;
+				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Turn Touch";
 				TargetAttributes = {
 					17EE987D236690D3006A7A41 = {
