@@ -23,6 +23,7 @@
     self.checkboxShowModeHud.state = [prefs boolForKey:@"TT:pref:show_mode_hud"];
     self.checkboxRecordUsage.state = [prefs boolForKey:@"TT:pref:share_usage_stats"];
     self.checkboxEnableHud.state = [prefs boolForKey:@"TT:pref:enable_hud"];
+    self.checkboxPerformActions.state = [prefs integerForKey:@"TT:pref:action_mode"];
 }
 
 - (void)closeModal:(id)sender {
@@ -39,6 +40,8 @@
               forKey:@"TT:pref:share_usage_stats"];
     [prefs setObject:[NSNumber numberWithBool:self.checkboxEnableHud.state]
               forKey:@"TT:pref:enable_hud"];
+    [prefs setObject:[NSNumber numberWithInteger:self.checkboxPerformActions.state]
+              forKey:@"TT:pref:action_mode"];
     [prefs synchronize];
 }
 @end

@@ -16,6 +16,7 @@
 @property (nonatomic) IBOutlet NSButton *checkboxShowActionHud;
 @property (nonatomic) IBOutlet NSButton *checkboxShowModeHud;
 @property (nonatomic) IBOutlet NSButton *checkboxEnableHud;
+@property (nonatomic) IBOutlet NSButton *checkboxPerformActions;
 
 - (IBAction)closeModal:(id)sender;
 - (IBAction)changeForm:(id)sender;

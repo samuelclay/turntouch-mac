@@ -58,6 +58,7 @@
         self.activeModeDirection = NO_DIRECTION;
         self.inspectingModeDirection = NO_DIRECTION;
         self.hoverModeDirection = NO_DIRECTION;
+        self.lastInspectingModeDirection = NORTH;
         self.openedModeChangeMenu = NO;
         self.openedActionChangeMenu = NO;
         self.openedAddActionChangeMenu = NO;
@@ -112,10 +113,13 @@
 
 - (void)dealloc {
     [self removeObserver:self forKeyPath:@"selectedModeDirection"];
+    [self removeObserver:self forKeyPath:@"inspectingModeDirection"];
 }
 
 - (void)registerAsObserver {
     [self addObserver:self forKeyPath:@"selectedModeDirection"
+              options:0 context:nil];
+    [self addObserver:self forKeyPath:@"inspectingModeDirection"
               options:0 context:nil];
 }
 
@@ -130,6 +134,10 @@
         [defaults setObject:[NSNumber numberWithInt:self.selectedModeDirection]
                      forKey:@"TT:selectedModeDirection"];
         [defaults synchronize];
+    } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(inspectingModeDirection))]) {
+        if (self.inspectingModeDirection == NO_DIRECTION) return;
+        
+        self.lastInspectingModeDirection = self.inspectingModeDirection;
     }
 }
 
@@ -422,6 +430,26 @@
     }
     
     return pref;
+}
+
+#pragma mark - Button action mode
+
+- (TTButtonActionMode)buttonActionMode {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    
+    return [prefs integerForKey:@"TT:pref:action_mode"];
+}
+
+- (BOOL)isButtonActionPerform {
+    return self.buttonActionMode == TTButtonActionModePerform && !self.openedModeChangeMenu && !self.openedActionChangeMenu && !self.openedAddActionChangeMenu && self.inspectingModeDirection == NO_DIRECTION;
+}
+
+- (void)switchPerformActionMode:(TTButtonActionMode)buttonActionMode {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    
+    [prefs setInteger:buttonActionMode forKey:@"TT:pref:action_mode"];
+    
+    [self reset];
 }
 
 #pragma mark - Action options
