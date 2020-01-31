@@ -9,6 +9,7 @@ target 'Turn Touch Mac' do
   use_frameworks!
   pod 'AFNetworking', '~> 3.0'
   pod 'Sparkle'
+  pod 'MASShortcut'
   
   # Pods for Turn Touch Mac
 
