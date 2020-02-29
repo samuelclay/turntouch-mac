@@ -27,6 +27,7 @@
 #import "TTModeIfttt.h"
 #import "TTModeSonos.h"
 #import "TTModePresentation.h"
+#import "Shortcut.h"
 
 @interface TTModeMap ()
 
@@ -66,6 +67,7 @@
         self.batchActions = [[TTBatchActions alloc] init];
 
         [self setupModes];
+        [self bindShortcuts];
         
         if ([[defaults objectForKey:@"TT:selectedModeDirection"] integerValue]) {
             self.selectedModeDirection = (TTModeDirection)[[defaults
@@ -719,6 +721,62 @@ actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction 
     }
 }
 
+#pragma mark - Keyboard Shortcuts
+
+- (NSString *)shortcutKeyForMode:(TTMode *)mode direction:(TTModeDirection)direction {
+    NSString *modeDirectionName = [self directionName:direction];
+    
+    return [NSString stringWithFormat:@"TT:shortcut:mode:%@-%@",
+                           NSStringFromClass([mode class]),
+                           modeDirectionName];
+}
+
+- (void)bindShortcuts {
+    [self bindShortcutsForMode:self.northMode];
+    [self bindShortcutsForMode:self.eastMode];
+    [self bindShortcutsForMode:self.westMode];
+    [self bindShortcutsForMode:self.southMode];
+    
+    [self bindShortcutForHUD];
+}
+
+- (void)bindShortcutsForMode:(TTMode *)mode {
+    [self bindShortcutsForMode:mode direction:NORTH];
+    [self bindShortcutsForMode:mode direction:EAST];
+    [self bindShortcutsForMode:mode direction:WEST];
+    [self bindShortcutsForMode:mode direction:SOUTH];
+}
+
+- (void)bindShortcutsForMode:(TTMode *)mode direction:(TTModeDirection)direction {
+    NSString *shortcutKey = [self shortcutKeyForMode:mode direction:direction];
+    
+    [MASShortcutBinder.sharedBinder bindShortcutWithDefaultsKey:shortcutKey toAction:^{
+        [self performActionForShortcutWithMode:mode direction:direction];
+    }];
+}
+
+- (void)performActionForShortcutWithMode:(TTMode *)mode direction:(TTModeDirection)direction {
+    NSString *actionName = [mode actionNameInDirection:direction];
+    
+    self.selectedModeDirection = mode.modeDirection;
+    [self switchMode];
+    self.activeModeDirection = direction;
+    [NSAppDelegate.hudController toastActiveAction:actionName inDirection:direction];
+    [self runActiveButton];
+}
+
+- (void)bindShortcutForHUD {
+    [MASShortcutBinder.sharedBinder bindShortcutWithDefaultsKey:@"TT:shortcut:hud" toAction:^{
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        
+        if ([prefs boolForKey:@"TT:pref:show_shortcut_hud"]) {
+            NSString *actionName = [self.selectedMode actionNameInDirection:self.activeModeDirection];
+            
+            [NSAppDelegate.hudController toastActiveAction:actionName inDirection:self.lastActionDirection];
+        }
+    }];
+}
+
 #pragma mark - Device Info
 
 
@@ -749,6 +807,7 @@ actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction 
     }
     
     [self recordUsage:@{@"button_actions": presses}];
+    self.lastActionDirection = direction;
 }
 
 - (void)recordUsageMoment:(NSString *)moment {

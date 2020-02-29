@@ -191,7 +191,7 @@
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:nil
                                                      attribute:0
-                                                    multiplier:1.0 constant:40]];
+                                                    multiplier:1.0 constant:60]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.actionTitleView
                                                      attribute:NSLayoutAttributeWidth
                                                      relatedBy:NSLayoutRelationEqual

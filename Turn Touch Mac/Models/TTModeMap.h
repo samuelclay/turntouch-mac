@@ -28,6 +28,7 @@ typedef NS_ENUM(NSUInteger, TTButtonActionMode)
 @property (nonatomic, assign) TTModeDirection inspectingModeDirection;
 @property (nonatomic, assign) TTModeDirection hoverModeDirection;
 @property (nonatomic, assign) TTModeDirection lastInspectingModeDirection;
+@property (nonatomic, assign) TTModeDirection lastActionDirection;
 
 @property (nonatomic, assign) NSString *tempModeName;
 @property (nonatomic, assign) BOOL openedModeChangeMenu;
@@ -85,6 +86,8 @@ typedef NS_ENUM(NSUInteger, TTButtonActionMode)
 actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction;
 - (void)toggleInspectingModeDirection:(TTModeDirection)direction;
 - (void)toggleHoverModeDirection:(TTModeDirection)direction hovering:(BOOL)hovering;
+
+- (NSString *)shortcutKeyForMode:(TTMode *)mode direction:(TTModeDirection)direction;
 
 - (void)recordUsageMoment:(NSString *)moment;
 - (void)recordUsage:(NSDictionary *)additionalParams;

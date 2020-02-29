@@ -456,6 +456,8 @@
 		172B5DFD23E3EDAA008B5AAB /* Effra_Rg.ttf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = FF936042196DF0B600675B7B /* Effra_Rg.ttf */; };
 		172B5DFF23E3EDAA008B5AAB /* HueSDK_OSX.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1766EE85226FC3B100A114B5 /* CBPeripheral+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 1766EE84226FC3B100A114B5 /* CBPeripheral+Extras.m */; };
+		17B265222405C774007090C8 /* keyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 17B265212405C774007090C8 /* keyboard.png */; };
+		17B265232405C774007090C8 /* keyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 17B265212405C774007090C8 /* keyboard.png */; };
 		A83CE3081C7FDC6C00011751 /* HueSDK_OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */; };
 		A83CE3091C7FDC6C00011751 /* HueSDK_OSX.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C01FD69B778B5C0684677954 /* Pods_Turn_Touch_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B611485DE4201F24DDD95F6A /* Pods_Turn_Touch_Mac.framework */; };
@@ -969,6 +971,7 @@
 		1766EE83226FC3B100A114B5 /* CBPeripheral+Extras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CBPeripheral+Extras.h"; path = "Categories/CBPeripheral+Extras.h"; sourceTree = "<group>"; };
 		1766EE84226FC3B100A114B5 /* CBPeripheral+Extras.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CBPeripheral+Extras.m"; path = "Categories/CBPeripheral+Extras.m"; sourceTree = "<group>"; };
 		178BDF51226E61E100396413 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		17B265212405C774007090C8 /* keyboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = keyboard.png; sourceTree = "<group>"; };
 		383E060B60CD35F142D2CFDD /* Pods-Turn Touch Mac Tests.testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turn Touch Mac Tests.testing.xcconfig"; path = "Pods/Target Support Files/Pods-Turn Touch Mac Tests/Pods-Turn Touch Mac Tests.testing.xcconfig"; sourceTree = "<group>"; };
 		3AE31579FA2E344E9C457DA4 /* Pods-Turn Touch Mac.testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turn Touch Mac.testing.xcconfig"; path = "Pods/Target Support Files/Pods-Turn Touch Mac/Pods-Turn Touch Mac.testing.xcconfig"; sourceTree = "<group>"; };
 		6D78D7B37A823FEF6B921BCE /* Pods_Turn_Touch_Mac_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Turn_Touch_Mac_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1793,6 +1796,7 @@
 				FF01CA4F1C46DCC200F83A73 /* mode_wemo.png */,
 				FF01CA501C46DCC200F83A73 /* newspaper-3.png */,
 				FF9D5E12202D3B1500009A8F /* pencil.png */,
+				17B265212405C774007090C8 /* keyboard.png */,
 				FF01CA511C46DCC200F83A73 /* presentation-chart.png */,
 				FF254F681D1B6A9800E96378 /* refresh.png */,
 				FF01CA521C46DCC200F83A73 /* remote_graphic.png */,
@@ -3257,6 +3261,7 @@
 				172B5D8823E3EDAA008B5AAB /* music_volume_up.png in Resources */,
 				172B5D8923E3EDAA008B5AAB /* chevron_east.png in Resources */,
 				172B5D8A23E3EDAA008B5AAB /* TTModeHueOptions.xib in Resources */,
+				17B265232405C774007090C8 /* keyboard.png in Resources */,
 				172B5D8B23E3EDAA008B5AAB /* TTModeNestAuthViewController.xib in Resources */,
 				172B5D8C23E3EDAA008B5AAB /* TTModeAlarmClock.plist in Resources */,
 				172B5D8D23E3EDAA008B5AAB /* TTModeAirfoil.plist in Resources */,
@@ -3472,6 +3477,7 @@
 				FF6135621C61CDDC00F431D7 /* music_volume_up.png in Resources */,
 				FF6135521C61CDDC00F431D7 /* chevron_east.png in Resources */,
 				FF3641DC1A5F5617003CC03C /* TTModeHueOptions.xib in Resources */,
+				17B265222405C774007090C8 /* keyboard.png in Resources */,
 				FF557AD61C4DBB4A005FB7FD /* TTModeNestAuthViewController.xib in Resources */,
 				FF913D271924366C005C336F /* TTModeAlarmClock.plist in Resources */,
 				FF0DE99D21B8D1BA00037B07 /* TTModeAirfoil.plist in Resources */,
