@@ -107,7 +107,6 @@
 
         self.renameButton = [[NSButton alloc] init];
         self.renameButton.translatesAutoresizingMaskIntoConstraints = NO;
-        [self.renameButton setHidden:YES];
         [self.renameButton setImage:[NSImage imageNamed:@"pencil"]];
         [self.renameButton setImageScaling:NSImageScaleProportionallyDown];
         [self.renameButton setBordered:NO];
@@ -172,7 +171,6 @@
         
         self.shortcutButton = [[NSButton alloc] init];
         self.shortcutButton.translatesAutoresizingMaskIntoConstraints = NO;
-        [self.shortcutButton setHidden:YES];
         [self.shortcutButton setImage:[NSImage imageNamed:@"keyboard"]];
         self.shortcutButton.image.template = YES;
         if (@available(macOS 10.14, *)) {
@@ -238,12 +236,8 @@
     
     if (self.appDelegate.modeMap.openedActionChangeMenu) {
         [self setChangeButtonTitle:@"Done"];
-        [self.renameButton setHidden:NO];
-        [self.shortcutButton setHidden:NO];
     } else {
         [self setChangeButtonTitle:@"Change"];
-        [self.renameButton setHidden:YES];
-        [self.shortcutButton setHidden:YES];
         [self disableCustomTitleEditor];
         [self disableKeyboardShortcutEditor];
     }
@@ -300,7 +294,6 @@
 
 - (void)disableCustomTitleEditor {
     [self.renameButton setImage:[NSImage imageNamed:@"pencil"]];
-    [self.renameButton setHidden:YES];
 
     [[self.titleLabel currentEditor] setSelectedRange:NSMakeRange(0, 0)];
     [[self.titleLabel currentEditor] setSelectable:NO];
