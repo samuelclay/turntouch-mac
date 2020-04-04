@@ -58,6 +58,20 @@
     return self;
 }
 
+- (TTModeDirection)directionForLocation:(CGPoint)location {
+    if ([self.northPathTop containsPoint:location] || [self.northPathBottom containsPoint:location]) {
+        return NORTH;
+    } else if ([self.eastPathTop containsPoint:location] || [self.eastPathBottom containsPoint:location]) {
+        return EAST;
+    } else if ([self.westPathTop containsPoint:location] || [self.westPathBottom containsPoint:location]) {
+        return WEST;
+    } else if ([self.southPathTop containsPoint:location] || [self.southPathBottom containsPoint:location]) {
+        return SOUTH;
+    } else {
+        return NO_DIRECTION;
+    }
+}
+
 - (void)setFrame:(NSRect)frameRect {
     [super setFrame:frameRect];
     
@@ -78,6 +92,7 @@
     }
     [self.appDelegate.modeMap removeObserver:self forKeyPath:@"activeModeDirection"];
     [self.appDelegate.modeMap removeObserver:self forKeyPath:@"selectedModeDirection"];
+    [self.appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
     [self.appDelegate.modeMap removeObserver:self forKeyPath:@"selectedMode"];
 }
 
@@ -97,6 +112,8 @@
     [self.appDelegate.modeMap addObserver:self forKeyPath:@"activeModeDirection"
                              options:0 context:nil];
     [self.appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
+                                  options:0 context:nil];
+    [self.appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
                              options:0 context:nil];
     [self.appDelegate.modeMap addObserver:self forKeyPath:@"selectedMode"
                              options:0 context:nil];
@@ -114,6 +131,8 @@
     } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(activeModeDirection))]) {
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(selectedModeDirection))]) {
+        [self setNeedsDisplay:YES];
+    } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(inspectingModeDirection))]) {
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(selectedMode))]) {
         [self setNeedsDisplay:YES];
@@ -397,15 +416,10 @@
 
     NSPoint location = [theEvent locationInWindow];
     NSPoint center = [self convertPoint:location fromView:nil];
+    TTModeDirection direction = [self directionForLocation:center];
     
-    if ([self.northPathTop containsPoint:center] || [self.northPathBottom containsPoint:center]) {
-        self.overrideActiveDirection = NORTH;
-    } else if ([self.eastPathTop containsPoint:center] || [self.eastPathBottom containsPoint:center]) {
-        self.overrideActiveDirection = EAST;
-    } else if ([self.westPathTop containsPoint:center] || [self.westPathBottom containsPoint:center]) {
-        self.overrideActiveDirection = WEST;
-    } else if ([self.southPathTop containsPoint:center] || [self.southPathBottom containsPoint:center]) {
-        self.overrideActiveDirection = SOUTH;
+    if (direction != NO_DIRECTION) {
+        self.overrideActiveDirection = direction;
     }
     
     [self setNeedsDisplay:YES];
@@ -419,17 +433,25 @@
     
     NSPoint location = [theEvent locationInWindow];
     NSPoint center = [self convertPoint:location fromView:nil];
-
-    if ([self.northPathTop containsPoint:center] || [self.northPathBottom containsPoint:center]) {
-        [self.appDelegate.modeMap toggleInspectingModeDirection:NORTH];
-    } else if ([self.eastPathTop containsPoint:center] || [self.eastPathBottom containsPoint:center]) {
-        [self.appDelegate.modeMap toggleInspectingModeDirection:EAST];
-    } else if ([self.westPathTop containsPoint:center] || [self.westPathBottom containsPoint:center]) {
-        [self.appDelegate.modeMap toggleInspectingModeDirection:WEST];
-    } else if ([self.southPathTop containsPoint:center] || [self.southPathBottom containsPoint:center]) {
-        [self.appDelegate.modeMap toggleInspectingModeDirection:SOUTH];
+    TTModeDirection direction = [self directionForLocation:center];
+    
+    if (self.appDelegate.modeMap.isButtonActionPerform) {
+        if (direction == NO_DIRECTION) {
+            return;
+        } else if (theEvent.clickCount == 2) {
+            [self.class cancelPreviousPerformRequestsWithTarget:self selector:@selector(performSingleActionForDirection:) object:@(direction)];
+            [self performDoubleActionForDirection:direction];
+        } else {
+            [self performSelector:@selector(performSingleActionForDirection:) withObject:@(direction) afterDelay:NSEvent.doubleClickInterval];
+        }
+        
+        return;
     }
-
+    
+    if (direction != NO_DIRECTION) {
+        [self.appDelegate.modeMap toggleInspectingModeDirection:direction];
+    }
+    
     self.overrideActiveDirection = NO_DIRECTION;
     
     [self setNeedsDisplay:YES];
@@ -448,18 +470,9 @@
     
     NSPoint location = [theEvent locationInWindow];
     NSPoint center = [self convertPoint:location fromView:nil];
+    TTModeDirection direction = [self directionForLocation:center];
     
-    if ([self.northPathTop containsPoint:center] || [self.northPathBottom containsPoint:center]) {
-        self.overrideActiveDirection = NORTH;
-    } else if ([self.eastPathTop containsPoint:center] || [self.eastPathBottom containsPoint:center]) {
-        self.overrideActiveDirection = EAST;
-    } else if ([self.westPathTop containsPoint:center] || [self.westPathBottom containsPoint:center]) {
-        self.overrideActiveDirection = WEST;
-    } else if ([self.southPathTop containsPoint:center] || [self.southPathBottom containsPoint:center]) {
-        self.overrideActiveDirection = SOUTH;
-    } else {
-        self.overrideActiveDirection = NO_DIRECTION;
-    }
+    self.overrideActiveDirection = direction;
     
     [self mouseMovement:theEvent hovering:YES];
 }
@@ -478,18 +491,38 @@
     
     NSPoint location = [theEvent locationInWindow];
     NSPoint center = [self convertPoint:location fromView:nil];
+    TTModeDirection direction = [self directionForLocation:center];
+    
 //    NSLog(@"Movement: %@ in %@", NSStringFromPoint(center), NSStringFromRect(self.bounds));
-    if ([self.northPathTop containsPoint:center] || [self.northPathBottom containsPoint:center]) {
-        [self.appDelegate.modeMap toggleHoverModeDirection:NORTH hovering:hovering];
-    } else if ([self.eastPathTop containsPoint:center] || [self.eastPathBottom containsPoint:center]) {
-        [self.appDelegate.modeMap toggleHoverModeDirection:EAST hovering:hovering];
-    } else if ([self.westPathTop containsPoint:center] || [self.westPathBottom containsPoint:center]) {
-        [self.appDelegate.modeMap toggleHoverModeDirection:WEST hovering:hovering];
-    } else if ([self.southPathTop containsPoint:center] || [self.southPathBottom containsPoint:center]) {
-        [self.appDelegate.modeMap toggleHoverModeDirection:SOUTH hovering:hovering];
+    
+    if (direction != NO_DIRECTION) {
+        [self.appDelegate.modeMap toggleHoverModeDirection:direction hovering:hovering];
     } else if (self.appDelegate.modeMap.hoverModeDirection != NO_DIRECTION) {
         [self.appDelegate.modeMap toggleHoverModeDirection:NO_DIRECTION hovering:NO];
     }
+}
+
+- (void)performSingleActionForDirection:(NSNumber *)directionNumber {
+    TTModeDirection direction = (TTModeDirection)directionNumber.integerValue;
+    NSString *actionName = [self.appDelegate.modeMap.selectedMode actionNameInDirection:direction];
+    
+    self.appDelegate.modeMap.activeModeDirection = direction;
+    [self.appDelegate.hudController toastActiveAction:actionName inDirection:direction];
+    [self.appDelegate.modeMap runActiveButton];
+    self.overrideActiveDirection = NO_DIRECTION;
+    
+    [self setNeedsDisplay:YES];
+}
+
+- (void)performDoubleActionForDirection:(TTModeDirection)direction {
+    NSString *actionName = [self.appDelegate.modeMap.selectedMode actionNameInDirection:direction];
+    
+    self.appDelegate.modeMap.activeModeDirection = direction;
+    [self.appDelegate.hudController toastDoubleAction:actionName inDirection:direction];
+    [self.appDelegate.modeMap runDoubleButton:direction];
+    self.overrideActiveDirection = NO_DIRECTION;
+    
+    [self setNeedsDisplay:YES];
 }
 
 @end

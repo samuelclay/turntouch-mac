@@ -12,21 +12,25 @@ PODS:
   - AFNetworking/Reachability (3.1.0)
   - AFNetworking/Security (3.1.0)
   - AFNetworking/Serialization (3.1.0)
+  - MASShortcut (2.4.0)
   - Sparkle (1.18.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
+  - MASShortcut
   - Sparkle
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - MASShortcut
     - Sparkle
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  MASShortcut: d9e4909e878661cc42877cc9d6efbe638273ab57
   Sparkle: 06ea33170007c5937ee54da481b4481af98fac79
 
-PODFILE CHECKSUM: 87ce69d8e480286638830b726ef25d1fd6d8a766
+PODFILE CHECKSUM: ef934cdbd8f15198775c152241adae29e6163e91
 
 COCOAPODS: 1.5.2

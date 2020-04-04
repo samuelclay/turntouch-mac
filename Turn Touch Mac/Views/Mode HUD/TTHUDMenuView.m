@@ -164,6 +164,7 @@
 
 - (BOOL)isRowASpace:(NSInteger)row {
     if (!self.menuOptions.count) return NO;
+    if (row >= self.menuOptions.count) return YES;
     
     return [[[self.menuOptions objectAtIndex:row] objectForKey:@"identifier"] isEqualToString:@"space"];
 }

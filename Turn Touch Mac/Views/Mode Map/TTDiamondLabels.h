@@ -24,5 +24,6 @@
 - (id)initWithInteractive:(BOOL)_interactive;
 - (id)initWithInteractive:(BOOL)_interactive isHud:(BOOL)_isHud;
 - (void)setMode:(TTMode *)mode;
+- (void)pressedChange:(NSButton *)sender;
 
 @end

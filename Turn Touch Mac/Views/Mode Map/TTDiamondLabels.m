@@ -23,6 +23,7 @@
 
 @property (nonatomic, strong) TTDiamondView *diamondView;
 @property (nonatomic, strong) TTMode *diamondMode;
+@property (nonatomic, strong) NSButton *changeButton;
 
 @end
 
@@ -74,6 +75,11 @@
         [self addSubview:self.southLabel];
         
         if (self.interactive) {
+            self.changeButton = [TTChangeButtonView buttonWithTitle:@"Change" target:self action:@selector(pressedChange:)];
+            [self addSubview:self.changeButton];
+            
+            [self updateChangeButton];
+            
             [self registerAsObserver];
         }
     }
@@ -100,6 +106,26 @@
     [self.southLabel setMode:mode];
 }
 
+- (void)updateChangeButton {
+    if (!self.interactive) {
+        return;
+    }
+    
+    self.changeButton.hidden = self.appDelegate.modeMap.buttonActionMode == TTButtonActionModeEdit;
+    
+    if (self.appDelegate.modeMap.inspectingModeDirection != NO_DIRECTION) {
+        self.changeButton.title = @"Done";
+    } else {
+        self.changeButton.title = @"Change";
+    }
+}
+
+- (void)pressedChange:(NSButton *)sender {
+    [self.appDelegate.modeMap toggleInspectingModeDirection:self.appDelegate.modeMap.lastInspectingModeDirection];
+    [self updateChangeButton];
+    [self setNeedsDisplay:YES];
+}
+
 #pragma mark - KVO
 
 - (void)dealloc {
@@ -107,6 +133,7 @@
         [self.appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
         [self.appDelegate.modeMap removeObserver:self forKeyPath:@"activeModeDirection"];
         [self.appDelegate.modeMap removeObserver:self forKeyPath:@"selectedModeDirection"];
+        [self.appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
     }
 }
 
@@ -117,6 +144,8 @@
         [self.appDelegate.modeMap addObserver:self forKeyPath:@"activeModeDirection"
                                  options:0 context:nil];
         [self.appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
+                                      options:0 context:nil];
+        [self.appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection"
                                  options:0 context:nil];
     }
 }
@@ -131,6 +160,8 @@
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(activeModeDirection))]) {
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
+        [self setNeedsDisplay:YES];
+    } else if ([keyPath isEqual:NSStringFromSelector(@selector(inspectingModeDirection))]) {
         [self setNeedsDisplay:YES];
     }
 }
@@ -188,7 +219,10 @@
 
 //        NSLog(@"Label rect: %@", NSStringFromRect(textRect));
     }
-
+    
+    self.changeButton.frame = NSMakeRect(self.bounds.size.width - 82.0 - 12.0, 8.0, 82.0, 24.0);
+    [self updateChangeButton];
+    
     // Draw border, used for debugging
 //    NSBezierPath *textViewSurround = [NSBezierPath bezierPathWithRect:self.bounds];
 //    [textViewSurround setLineWidth:1];

@@ -15,12 +15,21 @@
 @class TTAction;
 @class TTBatchActions;
 
+typedef NS_ENUM(NSUInteger, TTButtonActionMode)
+{
+    TTButtonActionModeEdit = 0,
+    TTButtonActionModePerform = 1
+};
+
 @interface TTModeMap : NSObject
 
 @property (nonatomic, assign) TTModeDirection activeModeDirection;
 @property (nonatomic, assign) TTModeDirection selectedModeDirection;
 @property (nonatomic, assign) TTModeDirection inspectingModeDirection;
 @property (nonatomic, assign) TTModeDirection hoverModeDirection;
+@property (nonatomic, assign) TTModeDirection lastInspectingModeDirection;
+@property (nonatomic, assign) TTModeDirection lastActionDirection;
+
 @property (nonatomic, assign) NSString *tempModeName;
 @property (nonatomic, assign) BOOL openedModeChangeMenu;
 @property (nonatomic, assign) BOOL openedActionChangeMenu;
@@ -34,6 +43,8 @@
 @property (nonatomic) TTMode *tempMode;
 @property (nonatomic) TTAction *batchActionChangeAction;
 @property (nonatomic) TTBatchActions *batchActions;
+@property (nonatomic, readonly) TTButtonActionMode buttonActionMode;
+@property (nonatomic, readonly) BOOL isButtonActionPerform;
 @property (nonatomic) NSArray *availableModes;
 @property (nonatomic) NSArray *availableActions;
 @property (nonatomic) NSArray *availableAddModes;
@@ -75,6 +86,8 @@
 actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction;
 - (void)toggleInspectingModeDirection:(TTModeDirection)direction;
 - (void)toggleHoverModeDirection:(TTModeDirection)direction hovering:(BOOL)hovering;
+
+- (NSString *)shortcutKeyForMode:(TTMode *)mode direction:(TTModeDirection)direction;
 
 - (void)recordUsageMoment:(NSString *)moment;
 - (void)recordUsage:(NSDictionary *)additionalParams;

@@ -7,6 +7,7 @@
 //
 
 #import "TTOptionsActionTitle.h"
+#import "Shortcut.h"
 
 #define DIAMOND_SIZE 18.0f
 
@@ -17,6 +18,11 @@
 @property (nonatomic, strong) NSTextField *titleLabel;
 @property (nonatomic, strong) NSLayoutConstraint *titleWidthConstraint;
 @property (nonatomic) BOOL editingTitle;
+@property (nonatomic, strong) NSButton *shortcutButton;
+@property (nonatomic, strong) NSTextField *shortcutLabel;
+@property (nonatomic, strong) MASShortcutView *shortcutView;
+@property (nonatomic) BOOL editingShortcut;
+@property (nonatomic, strong) MASShortcut *currentShortcut;
 
 @end
 
@@ -28,6 +34,7 @@
         self.appDelegate = (TTAppDelegate *)[NSApp delegate];
         self.translatesAutoresizingMaskIntoConstraints = NO;
         self.editingTitle = NO;
+        self.editingShortcut = NO;
         
         [self registerAsObserver];
         
@@ -40,9 +47,9 @@
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self.diamondView attribute:NSLayoutAttributeLeading
                                                          relatedBy:NSLayoutRelationEqual toItem:self
                                                          attribute:NSLayoutAttributeLeading multiplier:1 constant:12]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.diamondView attribute:NSLayoutAttributeCenterY
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.diamondView attribute:NSLayoutAttributeTop
                                                          relatedBy:NSLayoutRelationEqual toItem:self
-                                                         attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
+                                                         attribute:NSLayoutAttributeTop multiplier:1 constant:15]];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self.diamondView attribute:NSLayoutAttributeWidth
                                                          relatedBy:NSLayoutRelationEqual toItem:nil
                                                          attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:1.3*DIAMOND_SIZE]];
@@ -61,7 +68,7 @@
                                                          relatedBy:NSLayoutRelationEqual toItem:self
                                                          attribute:NSLayoutAttributeTrailing multiplier:1 constant:-12]];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self.changeButton attribute:NSLayoutAttributeCenterY
-                                                         relatedBy:NSLayoutRelationEqual toItem:self
+                                                         relatedBy:NSLayoutRelationEqual toItem:self.diamondView
                                                          attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self.changeButton attribute:NSLayoutAttributeWidth
                                                          relatedBy:NSLayoutRelationEqual toItem:nil
@@ -88,7 +95,7 @@
         [self.titleLabel setAction:@selector(renameTitle:)];
         [self addSubview:self.titleLabel];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeCenterY
-                                                         relatedBy:NSLayoutRelationEqual toItem:self
+                                                         relatedBy:NSLayoutRelationEqual toItem:self.diamondView
                                                          attribute:NSLayoutAttributeCenterY multiplier:1.0f constant:0.0f]];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeLeading
                                                          relatedBy:NSLayoutRelationEqual toItem:self.diamondView
@@ -100,7 +107,6 @@
 
         self.renameButton = [[NSButton alloc] init];
         self.renameButton.translatesAutoresizingMaskIntoConstraints = NO;
-        [self.renameButton setHidden:YES];
         [self.renameButton setImage:[NSImage imageNamed:@"pencil"]];
         [self.renameButton setImageScaling:NSImageScaleProportionallyDown];
         [self.renameButton setBordered:NO];
@@ -112,7 +118,7 @@
                                                          relatedBy:NSLayoutRelationEqual toItem:self.titleLabel
                                                          attribute:NSLayoutAttributeTrailing multiplier:1 constant:12]];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self.renameButton attribute:NSLayoutAttributeCenterY
-                                                         relatedBy:NSLayoutRelationEqual toItem:self
+                                                         relatedBy:NSLayoutRelationEqual toItem:self.diamondView
                                                          attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self.renameButton attribute:NSLayoutAttributeWidth
                                                          relatedBy:NSLayoutRelationEqual toItem:nil
@@ -121,6 +127,73 @@
                                                          relatedBy:NSLayoutRelationEqual toItem:nil
                                                          attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:18]];
         
+        self.shortcutLabel = [NSTextField new];
+        self.shortcutLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        self.shortcutLabel.editable = NO;
+        self.shortcutLabel.bordered = NO;
+        self.shortcutLabel.hidden = NO;
+        self.shortcutLabel.backgroundColor = [NSColor clearColor];
+        self.shortcutLabel.font = [NSFont fontWithName:@"Effra" size:11.f];
+        self.shortcutLabel.textColor = NSColorFromRGB(0x909090);
+        [self addSubview:self.shortcutLabel];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.shortcutLabel attribute:NSLayoutAttributeTop
+                                                         relatedBy:NSLayoutRelationEqual toItem:self.diamondView
+                                                         attribute:NSLayoutAttributeBottom multiplier:1.0f constant:3]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.shortcutLabel attribute:NSLayoutAttributeLeading
+                                                         relatedBy:NSLayoutRelationEqual toItem:self.diamondView
+                                                         attribute:NSLayoutAttributeTrailing multiplier:1.0f constant:12.0f]];
+        
+        TTMode *selectedMode = self.appDelegate.modeMap.selectedMode;
+        TTModeDirection direction = self.appDelegate.modeMap.inspectingModeDirection;
+        NSString *shortcutKey = [self.appDelegate.modeMap shortcutKeyForMode:selectedMode direction:direction];
+        
+        self.shortcutView = [MASShortcutView new];
+        self.shortcutView.translatesAutoresizingMaskIntoConstraints = NO;
+        self.shortcutView.style = MASShortcutViewStyleTexturedRect;
+        self.shortcutView.associatedUserDefaultsKey = shortcutKey;
+        self.currentShortcut = self.shortcutView.shortcutValue;
+        self.shortcutView.hidden = YES;
+        [self addSubview:self.shortcutView];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.shortcutView attribute:NSLayoutAttributeTop
+                                                         relatedBy:NSLayoutRelationEqual toItem:self.diamondView
+                                                         attribute:NSLayoutAttributeBottom multiplier:1.0f constant:2]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.shortcutView attribute:NSLayoutAttributeLeading
+                                                         relatedBy:NSLayoutRelationEqual toItem:self.diamondView
+                                                         attribute:NSLayoutAttributeTrailing multiplier:1.0f constant:12.0f]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.shortcutView attribute:NSLayoutAttributeHeight
+                                                         relatedBy:NSLayoutRelationEqual toItem:nil
+                                                         attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:25]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.shortcutView attribute:NSLayoutAttributeWidth
+                                                         relatedBy:NSLayoutRelationEqual toItem:nil
+                                                         attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:150]];
+        
+        [self updateShortcutLabel];
+        
+        self.shortcutButton = [[NSButton alloc] init];
+        self.shortcutButton.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.shortcutButton setImage:[NSImage imageNamed:@"keyboard"]];
+        self.shortcutButton.image.template = YES;
+        if (@available(macOS 10.14, *)) {
+            self.shortcutButton.contentTintColor = nil;
+        }
+        [self.shortcutButton setImageScaling:NSImageScaleProportionallyDown];
+        [self.shortcutButton setBordered:NO];
+        [self.shortcutButton setButtonType:NSButtonTypeMomentaryChange];
+        [self.shortcutButton setAction:@selector(editKeyboardShortcut:)];
+        [self.shortcutButton setTarget:self];
+        [self addSubview:self.shortcutButton];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.shortcutButton attribute:NSLayoutAttributeLeading
+                                                         relatedBy:NSLayoutRelationEqual toItem:self.renameButton
+                                                         attribute:NSLayoutAttributeTrailing multiplier:1 constant:12]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.shortcutButton attribute:NSLayoutAttributeCenterY
+                                                         relatedBy:NSLayoutRelationEqual toItem:self.diamondView
+                                                         attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.shortcutButton attribute:NSLayoutAttributeWidth
+                                                         relatedBy:NSLayoutRelationEqual toItem:nil
+                                                         attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:18]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.shortcutButton attribute:NSLayoutAttributeHeight
+                                                         relatedBy:NSLayoutRelationEqual toItem:nil
+                                                         attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:18]];
     }
     return self;
 }
@@ -158,13 +231,15 @@
     NSString *actionTitle = [self.appDelegate.modeMap.selectedMode titleInDirection:labelDirection buttonMoment:BUTTON_MOMENT_PRESSUP];
     self.titleLabel.stringValue = actionTitle;
     self.titleWidthConstraint.constant = [self.titleLabel intrinsicContentSize].width;
-
+    
+    [self updateShortcutLabel];
+    
     if (self.appDelegate.modeMap.openedActionChangeMenu) {
         [self setChangeButtonTitle:@"Done"];
-        [self.renameButton setHidden:NO];
     } else {
         [self setChangeButtonTitle:@"Change"];
-        [self.renameButton setHidden:YES];
+        [self disableCustomTitleEditor];
+        [self disableKeyboardShortcutEditor];
     }
 }
 
@@ -219,7 +294,6 @@
 
 - (void)disableCustomTitleEditor {
     [self.renameButton setImage:[NSImage imageNamed:@"pencil"]];
-    [self.renameButton setHidden:YES];
 
     [[self.titleLabel currentEditor] setSelectedRange:NSMakeRange(0, 0)];
     [[self.titleLabel currentEditor] setSelectable:NO];
@@ -241,8 +315,56 @@
     [self disableCustomTitleEditor];
 }
 
+- (void)editKeyboardShortcut:(id)sender {
+    if (self.editingShortcut) {
+        [self disableKeyboardShortcutEditor];
+    } else {
+        if (@available(macOS 10.14, *)) {
+            self.shortcutButton.contentTintColor = NSColor.blueColor;
+        } else {
+            self.shortcutButton.image = [NSImage imageNamed:@"button_chevron_x"];
+        }
+        
+        self.shortcutLabel.hidden = YES;
+        self.shortcutView.hidden = NO;
+        
+        __weak __typeof(&*self)weakSelf = self;
+        
+        self.shortcutView.shortcutValueChange = ^(MASShortcutView *sender) {
+            weakSelf.currentShortcut = sender.shortcutValue;
+        };
+        
+        self.editingShortcut = YES;
+    }
+}
+
+- (void)disableKeyboardShortcutEditor {
+    if (@available(macOS 10.14, *)) {
+        self.shortcutButton.contentTintColor = nil;
+    } else {
+        self.shortcutButton.image = [NSImage imageNamed:@"keyboard"];
+    }
+    
+    self.shortcutLabel.hidden = NO;
+    self.shortcutView.hidden = YES;
+    self.shortcutView.shortcutValueChange = nil;
+    self.editingShortcut = NO;
+    
+    [self.appDelegate.panelController.backgroundView.diamondLabels setNeedsDisplay:YES];
+    [self setNeedsDisplay:YES];
+}
+
+- (void)updateShortcutLabel {
+    if (self.currentShortcut != nil) {
+        self.shortcutLabel.stringValue = [NSString stringWithFormat:@"%@%@", self.currentShortcut.modifierFlagsString, self.currentShortcut.keyCodeString];
+    } else {
+        self.shortcutLabel.stringValue = @"";
+    }
+}
+
 - (void)cancelOperation:(id)sender {
     [self disableCustomTitleEditor];
+    [self disableKeyboardShortcutEditor];
 }
 
 @end
