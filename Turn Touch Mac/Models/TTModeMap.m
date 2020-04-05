@@ -13,6 +13,7 @@
 
 #import "TTModeMap.h"
 #import "TTModeMusic.h"
+#import "TTModeTV.h"
 #import "TTModeVideo.h"
 #import "TTModeAlarmClock.h"
 #import "TTModeNews.h"
@@ -42,6 +43,7 @@
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [self setAvailableModes:@[@"TTModeMac",
                                   @"TTModeMusic",
+                                  @"TTModeTV",
                                   @"TTModeHue",
                                   @"TTModeNest",
                                   @"TTModeIfttt",

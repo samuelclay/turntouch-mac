@@ -869,6 +869,10 @@
 		FFE2D4791A46404500DDD413 /* NSData+Conversion.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE2D4781A46404500DDD413 /* NSData+Conversion.m */; };
 		FFE2D47E1A51EDF000DDD413 /* TTModeHue.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE2D47D1A51EDF000DDD413 /* TTModeHue.m */; };
 		FFEA6CB819218A5C0010874B /* TTModeAlarmClockOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFEA6CB719218A5C0010874B /* TTModeAlarmClockOptions.xib */; };
+		FFED5613243946880022C5EA /* TTModeTV.m in Sources */ = {isa = PBXBuildFile; fileRef = FFED560F243946880022C5EA /* TTModeTV.m */; };
+		FFED5614243946880022C5EA /* TTModeTVVolumeJumpOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFED5610243946880022C5EA /* TTModeTVVolumeJumpOptions.xib */; };
+		FFED5615243946880022C5EA /* TTModeTV.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFED5611243946880022C5EA /* TTModeTV.plist */; };
+		FFED5616243946880022C5EA /* TTModeTVVolumeJumpOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFED5612243946880022C5EA /* TTModeTVVolumeJumpOptions.m */; };
 		FFF02BD21F16A20B003E5799 /* TTModeSonos.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF02BD11F16A20B003E5799 /* TTModeSonos.m */; };
 		FFF02BDD1F16A271003E5799 /* SonosController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF02BD61F16A271003E5799 /* SonosController.m */; };
 		FFF02BDE1F16A271003E5799 /* SonosDiscover.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF02BD81F16A271003E5799 /* SonosDiscover.m */; };
@@ -1611,6 +1615,13 @@
 		FFE2D47C1A51EDF000DDD413 /* TTModeHue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeHue.h; sourceTree = "<group>"; };
 		FFE2D47D1A51EDF000DDD413 /* TTModeHue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeHue.m; sourceTree = "<group>"; };
 		FFEA6CB719218A5C0010874B /* TTModeAlarmClockOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeAlarmClockOptions.xib; path = "Modes/Alarm Clock/TTModeAlarmClockOptions.xib"; sourceTree = "<group>"; };
+		FFED560C243946880022C5EA /* TTModeTV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeTV.h; sourceTree = "<group>"; };
+		FFED560D243946880022C5EA /* TV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TV.h; sourceTree = "<group>"; };
+		FFED560E243946880022C5EA /* TTModeTVVolumeJumpOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeTVVolumeJumpOptions.h; sourceTree = "<group>"; };
+		FFED560F243946880022C5EA /* TTModeTV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeTV.m; sourceTree = "<group>"; };
+		FFED5610243946880022C5EA /* TTModeTVVolumeJumpOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTModeTVVolumeJumpOptions.xib; sourceTree = "<group>"; };
+		FFED5611243946880022C5EA /* TTModeTV.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TTModeTV.plist; sourceTree = "<group>"; };
+		FFED5612243946880022C5EA /* TTModeTVVolumeJumpOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeTVVolumeJumpOptions.m; sourceTree = "<group>"; };
 		FFF02BD01F16A20B003E5799 /* TTModeSonos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTModeSonos.h; path = Modes/Sonos/TTModeSonos.h; sourceTree = "<group>"; };
 		FFF02BD11F16A20B003E5799 /* TTModeSonos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeSonos.m; path = Modes/Sonos/TTModeSonos.m; sourceTree = "<group>"; };
 		FFF02BD51F16A271003E5799 /* SonosController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SonosController.h; sourceTree = "<group>"; };
@@ -1892,6 +1903,7 @@
 				FFAA4F6B182D993F0049FFC7 /* News */,
 				FF0E12D51828560400D49EC7 /* Video */,
 				FF0DE99221B8D1BA00037B07 /* Airfoil */,
+				FFED560B243946880022C5EA /* TV */,
 				FF0E12CB18247D3000D49EC7 /* Music */,
 				FFE2D47B1A51EDF000DDD413 /* Hue */,
 				FFABAB971C334FCE00AD5620 /* Web */,
@@ -2951,6 +2963,21 @@
 			path = Modes/Hue;
 			sourceTree = "<group>";
 		};
+		FFED560B243946880022C5EA /* TV */ = {
+			isa = PBXGroup;
+			children = (
+				FFED5611243946880022C5EA /* TTModeTV.plist */,
+				FFED560D243946880022C5EA /* TV.h */,
+				FFED560C243946880022C5EA /* TTModeTV.h */,
+				FFED560F243946880022C5EA /* TTModeTV.m */,
+				FFED560E243946880022C5EA /* TTModeTVVolumeJumpOptions.h */,
+				FFED5612243946880022C5EA /* TTModeTVVolumeJumpOptions.m */,
+				FFED5610243946880022C5EA /* TTModeTVVolumeJumpOptions.xib */,
+			);
+			name = TV;
+			path = "Turn Touch Mac/TV";
+			sourceTree = SOURCE_ROOT;
+		};
 		FFF02BD31F16A20F003E5799 /* Sonos */ = {
 			isa = PBXGroup;
 			children = (
@@ -3441,6 +3468,7 @@
 				FFABAB9C1C33674000AD5620 /* TTModeWebWindowController.xib in Resources */,
 				FF6135561C61CDDC00F431D7 /* hue_evening.png in Resources */,
 				FF5295C11AD4D2BE007DDC02 /* title@2x.png in Resources */,
+				FFED5614243946880022C5EA /* TTModeTVVolumeJumpOptions.xib in Resources */,
 				FF2740721A7C576900C55579 /* itunes_playlist_icon.png in Resources */,
 				FF8A73CA1ABA69410023AA53 /* logo_256.png in Resources */,
 				FF01CA761C46DCC200F83A73 /* mode_presentation.png in Resources */,
@@ -3560,6 +3588,7 @@
 				FF01CA621C46DCC200F83A73 /* equalizer-1.png in Resources */,
 				FF01CA5D1C46DCC200F83A73 /* button_x.png in Resources */,
 				FFDC9F721FD74BC800261B76 /* hue_shift_left.png in Resources */,
+				FFED5615243946880022C5EA /* TTModeTV.plist in Resources */,
 				FF8D1AA71C98F292006AA1A2 /* TTModalAbout.xib in Resources */,
 				FF8B75011F86CC4B00D7867C /* fullscreen.png in Resources */,
 				FF2705471C93A348000BB10F /* modal_ftux_change_mode.png in Resources */,
@@ -3991,6 +4020,7 @@
 				FFA1D4DA1A3B89A4003EA0BC /* TTModeHUDView.m in Sources */,
 				FF3641F71A660204003CC03C /* TTModeHueSceneOptions.m in Sources */,
 				FF66F2A619228DE100031478 /* TTModeAlarmClockOptions.m in Sources */,
+				FFED5613243946880022C5EA /* TTModeTV.m in Sources */,
 				FFFF0C741EFC973100E29E6D /* TTModeIftttConnect.m in Sources */,
 				FF98A2E11867DBA40032CC7A /* TTActionMap.m in Sources */,
 				FFABABA21C33676700AD5620 /* TTModeWebBrowserView.m in Sources */,
@@ -4058,6 +4088,7 @@
 				FFABAB811C2777D500AD5620 /* TTBatchActionHeaderView.m in Sources */,
 				FFA8EA9C190F07A500679A4D /* TTModeTabsContainer.m in Sources */,
 				FF66F2A91922D1C100031478 /* TTOptionsDetailView.m in Sources */,
+				FFED5616243946880022C5EA /* TTModeTVVolumeJumpOptions.m in Sources */,
 				FF557AB61C49C63D005FB7FD /* NestStructureManager.m in Sources */,
 				FFAB2C1D1E0C7C9400A16433 /* TTModeNestDelegateManager.m in Sources */,
 				FF79C5881D5815C0006C75C9 /* TTModeNewsBackgroundView.m in Sources */,
@@ -4447,7 +4478,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 52;
+				CURRENT_PROJECT_VERSION = 53;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 6W5HRS3393;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -4468,7 +4499,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.4;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-v",
@@ -4495,7 +4526,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 52;
+				CURRENT_PROJECT_VERSION = 53;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 6W5HRS3393;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -4516,7 +4547,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.4;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-v",
@@ -4671,7 +4702,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 52;
+				CURRENT_PROJECT_VERSION = 53;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 6W5HRS3393;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -4692,7 +4723,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.4;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-v",
