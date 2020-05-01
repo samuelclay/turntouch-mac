@@ -165,7 +165,9 @@
     [self clearOptionDetailViews];
     
     BOOL useModeOptions = NO;
-    if ([self.appDelegate.modeMap.selectedMode shouldUseModeOptionsFor:self.appDelegate.modeMap.inspectingModeDirection]) {
+    NSString *actionName = [self.appDelegate.modeMap.selectedMode
+                            actionNameInDirection:self.appDelegate.modeMap.inspectingModeDirection];
+    if ([self.appDelegate.modeMap.selectedMode shouldUseModeOptionsFor:actionName]) {
         useModeOptions = YES;
     }
 
@@ -200,8 +202,6 @@
                                                     multiplier:1.0 constant:0]];
 
     // Draw action options    
-    NSString *actionName = [self.appDelegate.modeMap.selectedMode
-                            actionNameInDirection:self.appDelegate.modeMap.inspectingModeDirection];
     NSString *actionOptionsViewControllerName = [NSString stringWithFormat:@"%@Options", actionName];
     self.actionOptionsViewController = [[NSClassFromString(actionOptionsViewControllerName) alloc]
                                    initWithNibName:actionOptionsViewControllerName bundle:nil];

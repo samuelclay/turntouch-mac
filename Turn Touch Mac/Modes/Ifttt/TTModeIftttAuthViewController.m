@@ -53,7 +53,7 @@
 
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame {
     NSURL *url = [[[frame dataSource] request] URL];
-    if (url) NSLog(@" ---> URL: %@", url);
+//    if (url) NSLog(@" ---> URL: %@", url);
     NSString *iftttURL = [url absoluteString];
     NSLog(@" ---> IFTTT URL: %@", iftttURL);
     [sender stringByEvaluatingJavaScriptFromString:@"window.open = function(open) { return function (url, name, features) { window.location.href = url; return window; }; } (window.open);"];

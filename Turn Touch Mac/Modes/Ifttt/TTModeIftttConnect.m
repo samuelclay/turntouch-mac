@@ -24,7 +24,11 @@
 #pragma mark - Actions
 
 - (IBAction)clickAuthButton:(id)sender {
-//    [self.modeIfttt beginConnectingToIfttt:^{
+    [self.modeIfttt registerTriggers:^{    
+        // Generate new device ID when reconnecting to IFTTT. Or better don't.
+//        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+//        [prefs removeObjectForKey:kIftttDeviceIdKey];
+    
         TTModeIftttAuthViewController *iftttAuthViewController = [[TTModeIftttAuthViewController alloc] init];
         iftttAuthViewController.modeIfttt = self.modeIfttt;
         
@@ -43,7 +47,7 @@
                           preferredEdge:NSMinYEdge];
         
         [iftttAuthViewController authorizeIfttt];
-//    }];
+    }];
 }
 
 - (void)closePopover {

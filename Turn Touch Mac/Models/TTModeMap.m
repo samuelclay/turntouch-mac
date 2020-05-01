@@ -934,10 +934,11 @@ actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction 
     NSString *uuidString = [prefs stringForKey:kIftttDeviceIdKey];
     if (uuidString) {
         uuid = [[NSUUID alloc] initWithUUIDString:uuidString];
-        
+    
+        // Should we be synchronizing device IDs between devices?
         [[NSUbiquitousKeyValueStore defaultStore] setObject:[uuid UUIDString] forKey:kIftttDeviceIdKey];
         [[NSUbiquitousKeyValueStore defaultStore] synchronize];
-        
+                
         return [uuid UUIDString];
     }
     

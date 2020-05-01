@@ -306,9 +306,8 @@
     return immediate;
 }
 
-- (BOOL)shouldUseModeOptionsFor:(TTModeDirection)direction {
+- (BOOL)shouldUseModeOptionsFor:(NSString *)actionName {
     BOOL modeOptions = NO;
-    NSString *actionName = [self actionNameInDirection:direction];
     SEL selector = NSSelectorFromString([NSString stringWithFormat:@"shouldUseModeOptionsFor%@", actionName]);
     if ([self respondsToSelector:selector]) {
         IMP imp = [self methodForSelector:selector];

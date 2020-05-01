@@ -184,7 +184,7 @@ const NSInteger BATCH_ACTION_HEADER_HEIGHT = 36;
         TTOptionsDetailViewController *actionOptionsViewController = [[NSClassFromString(actionOptionsViewControllerName) alloc]
                                                                       initWithNibName:actionOptionsViewControllerName bundle:nil];
         BOOL useModeOptions = NO;
-        if ([batchAction.mode shouldUseModeOptionsFor:self.appDelegate.modeMap.inspectingModeDirection]) {
+        if ([batchAction.mode shouldUseModeOptionsFor:batchAction.actionName]) {
             useModeOptions = YES;
         }
         

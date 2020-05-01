@@ -15,6 +15,7 @@ NSString *const kIftttUserIdKey = @"TT:IFTTT:shared_user_id";
 NSString *const kIftttDeviceIdKey = @"TT:IFTTT:device_id";
 NSString *const kIftttIsActionSetup = @"isActionSetup";
 NSString *const kIftttTapType = @"tapType";
+NSString *const kIftttAuthorized = @"iftttAuthorized";
 
 static TTIftttState iftttState;
 
@@ -76,6 +77,14 @@ static TTIftttState iftttState;
 }
 
 #pragma mark - Action methods
+
+- (BOOL)shouldUseModeOptionsFor:(NSString *)actionName {
+    if (iftttState != IFTTT_STATE_CONNECTED) {
+//        return YES;
+    }
+    
+    return NO;
+}
 
 - (void)runTTModeIftttTriggerAction:(TTModeDirection)direction {
     NSLog(@"Running runTTModeIftttTriggerAction");
@@ -162,7 +171,7 @@ static TTIftttState iftttState;
     [manager setRequestSerializer:[AFJSONRequestSerializer serializer]];
     
     [manager POST:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@" ---> Registered IFTTT: %@", responseObject);
+        NSLog(@" ---> Registered IFTTT: %@ / %@", responseObject, params);
         if (callback) callback();
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@" ---> IFTTT not authorized, can't register triggers");

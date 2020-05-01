@@ -28,6 +28,7 @@ extern NSString *const kIftttUserIdKey;
 extern NSString *const kIftttDeviceIdKey;
 extern NSString *const kIftttIsActionSetup;
 extern NSString *const kIftttTapType;
+extern NSString *const kIftttAuthorized;
 
 @property (nonatomic, weak) id <TTModeIftttDelegate> delegate;
 

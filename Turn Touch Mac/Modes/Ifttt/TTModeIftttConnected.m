@@ -41,7 +41,13 @@
                                  ofView:self.appDelegate.panelController.backgroundView
                           preferredEdge:NSMinYEdge];
         
-        [iftttAuthViewController openRecipe:self.action.direction];
+        BOOL hasAuthorizedIfttt = [[self.modeIfttt.action optionValue:kIftttAuthorized] boolValue];
+        if (hasAuthorizedIfttt) {
+            [iftttAuthViewController openRecipe:self.action.direction];
+        } else {
+            [iftttAuthViewController authorizeIfttt];
+            [self.modeIfttt.action changeActionOption:kIftttAuthorized to:@(YES)];
+        }
     }];
 }
 
