@@ -23,8 +23,6 @@
 
 @implementation TTActionHUDView
 
-const CGFloat kActionHUDMarginPct = .6f;
-
 - (void)awakeFromNib {
     NSRect actionFrame = [self.class actionFrame];
 
@@ -54,46 +52,31 @@ const CGFloat kActionHUDMarginPct = .6f;
 #pragma mark - Constants
 
 - (CGFloat)hudRadius {
-    NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
-    
-    return NSWidth(screen.frame)/84.f;
+    return 30;
 }
 
 - (CGFloat)hudChevronSize {
-    NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
-    
-    return NSWidth(screen.frame)/64.f;
+    return 40;
 }
 
 - (CGFloat)hudIconSize {
-    NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
-    
-    return NSWidth(screen.frame)/32.f;
+    return 80;
 }
 
 - (CGFloat)hudModeTitleSize {
-    NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
-    
-    return NSWidth(screen.frame)/96.f;
+    return 26;
 }
 
 - (CGFloat)hudActionTitleSize {
-    NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
-    
-    return NSWidth(screen.frame)/118.f;
+    return 21;
 }
 
 #pragma mark - Drawing
 
 + (NSRect)actionFrame {
     NSScreen *screen = [[NSScreen screens] objectAtIndex:0];
-    CGFloat width = NSWidth(screen.frame)/8;
+    CGFloat width = 320;
     CGFloat height = width;
-    
-    if (width < 220) {
-        width = 220;
-        height = 220;
-    }
     
     CGFloat widthPadding = NSWidth(screen.frame) / 2 - width / 2;
     CGFloat heightPadding = NSHeight(screen.frame) / 10;

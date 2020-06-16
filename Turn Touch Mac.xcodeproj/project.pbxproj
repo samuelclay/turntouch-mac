@@ -458,6 +458,10 @@
 		1766EE85226FC3B100A114B5 /* CBPeripheral+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 1766EE84226FC3B100A114B5 /* CBPeripheral+Extras.m */; };
 		17B265222405C774007090C8 /* keyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 17B265212405C774007090C8 /* keyboard.png */; };
 		17B265232405C774007090C8 /* keyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 17B265212405C774007090C8 /* keyboard.png */; };
+		17BE4688249989A500949E38 /* TTModeTV.m in Sources */ = {isa = PBXBuildFile; fileRef = FFED560F243946880022C5EA /* TTModeTV.m */; };
+		17BE4689249989AE00949E38 /* TTModeTV.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFED5611243946880022C5EA /* TTModeTV.plist */; };
+		17BE468A249989B300949E38 /* TTModeTVVolumeJumpOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFED5612243946880022C5EA /* TTModeTVVolumeJumpOptions.m */; };
+		17BE468B249989B900949E38 /* TTModeTVVolumeJumpOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFED5610243946880022C5EA /* TTModeTVVolumeJumpOptions.xib */; };
 		A83CE3081C7FDC6C00011751 /* HueSDK_OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */; };
 		A83CE3091C7FDC6C00011751 /* HueSDK_OSX.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C01FD69B778B5C0684677954 /* Pods_Turn_Touch_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B611485DE4201F24DDD95F6A /* Pods_Turn_Touch_Mac.framework */; };
@@ -3226,6 +3230,7 @@
 				172B5D4A23E3EDAA008B5AAB /* InfoPlist.strings in Resources */,
 				172B5D4B23E3EDAA008B5AAB /* itunes_audiobook_icon.png in Resources */,
 				172B5D4C23E3EDAA008B5AAB /* alarm_snooze.png in Resources */,
+				17BE4689249989AE00949E38 /* TTModeTV.plist in Resources */,
 				172B5D4D23E3EDAA008B5AAB /* settings@2x.png in Resources */,
 				172B5D4E23E3EDAA008B5AAB /* modal_remote_hero.png in Resources */,
 				172B5D4F23E3EDAA008B5AAB /* TTModeNews.plist in Resources */,
@@ -3279,6 +3284,7 @@
 				172B5D7F23E3EDAA008B5AAB /* remote_graphic.png in Resources */,
 				172B5D8023E3EDAA008B5AAB /* itunes_itunesu_icon.png in Resources */,
 				172B5D8123E3EDAA008B5AAB /* itunes_music_icon.png in Resources */,
+				17BE468B249989B900949E38 /* TTModeTVVolumeJumpOptions.xib in Resources */,
 				172B5D8223E3EDAA008B5AAB /* TTModeMusic.plist in Resources */,
 				172B5D8323E3EDAA008B5AAB /* NSDateTimeAgo.bundle in Resources */,
 				172B5D8423E3EDAA008B5AAB /* TTModeIftttOptions.xib in Resources */,
@@ -3796,6 +3802,7 @@
 				172B5C7023E3EDAA008B5AAB /* TTModeHUDView.m in Sources */,
 				172B5C7123E3EDAA008B5AAB /* TTModeHueSceneOptions.m in Sources */,
 				172B5C7223E3EDAA008B5AAB /* TTModeAlarmClockOptions.m in Sources */,
+				17BE4688249989A500949E38 /* TTModeTV.m in Sources */,
 				172B5C7323E3EDAA008B5AAB /* TTModeIftttConnect.m in Sources */,
 				172B5C7423E3EDAA008B5AAB /* TTActionMap.m in Sources */,
 				172B5C7523E3EDAA008B5AAB /* TTModeWebBrowserView.m in Sources */,
@@ -3863,6 +3870,7 @@
 				172B5CB323E3EDAA008B5AAB /* TTBatchActionHeaderView.m in Sources */,
 				172B5CB423E3EDAA008B5AAB /* TTModeTabsContainer.m in Sources */,
 				172B5CB523E3EDAA008B5AAB /* TTOptionsDetailView.m in Sources */,
+				17BE468A249989B300949E38 /* TTModeTVVolumeJumpOptions.m in Sources */,
 				172B5CB623E3EDAA008B5AAB /* NestStructureManager.m in Sources */,
 				172B5CB723E3EDAA008B5AAB /* TTModeNestDelegateManager.m in Sources */,
 				172B5CB823E3EDAA008B5AAB /* TTModeNewsBackgroundView.m in Sources */,
