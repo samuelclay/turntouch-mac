@@ -322,10 +322,10 @@
                     CGFloat alpha = 0.8f;
                     modeColor = NSColorFromRGBAlpha(0x303033, alpha);
                 } else if (isSelectedDirection) {
-                    modeColor = NSColorFromRGB(0x1555D8);
+                    modeColor = NSColorFromRGB(0x417cf1);
                 } else {
                     CGFloat alpha = 0.5f;
-                    modeColor = NSColorFromRGBAlpha(0x515559, alpha);
+                    modeColor = NSColorFromRGBAlpha(0xE1E5E9, alpha);
                 }
             }
         } else if (self.diamondType == DIAMOND_TYPE_MODE || self.diamondType == DIAMOND_TYPE_PAIRING) {

@@ -343,7 +343,9 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     TTHueRandomSaturation randomSaturation = (TTHueRandomSaturation)[[self.action
                                                                       optionValue:(doubleTap ? kDoubleTapRandomSaturation : kRandomSaturation)
                                                                       inDirection:direction] integerValue];
-    NSNumber *randomColor = [NSNumber numberWithInt:arc4random() % MAX_HUE];
+    NSNumber *randomColor1 = [NSNumber numberWithInt:arc4random() % MAX_HUE];
+    NSNumber *randomColor2 = [NSNumber numberWithInt:arc4random() % MAX_HUE];
+    
     NSString *roomIdentifier = [self.action optionValue:kHueRoom inDirection:direction];
     PHGroup *group = [cache.groups objectForKey:roomIdentifier];
     
@@ -358,9 +360,14 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
         
         lightState.on = [NSNumber numberWithBool:YES];
         
-        if ((randomColors == TTHueRandomColorsAllSame) ||
-            (randomColors == TTHueRandomColorsSomeDifferent && arc4random() % 10 > 5)) {
-            [lightState setHue:randomColor];
+        if (randomColors == TTHueRandomColorsAllSame) {
+            [lightState setHue:randomColor1];
+        } else if (randomColors == TTHueRandomColorsSomeDifferent) {
+            if (arc4random() % 10 > 5) {
+                [lightState setHue:randomColor1];
+            } else {
+                [lightState setHue:randomColor2];
+            }
         } else {
             [lightState setHue:[NSNumber numberWithInt:arc4random() % MAX_HUE]];
         }
@@ -562,7 +569,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     self.hueState = STATE_CONNECTING;
     [self.delegate changeState:self.hueState withMode:self showMessage:@"Searching for a Hue bridge..."];
     
-    self.bridgeSearch = [[PHBridgeSearching alloc] initWithUpnpSearch:YES andPortalSearch:YES andIpAdressSearch:YES];
+    self.bridgeSearch = [[PHBridgeSearching alloc] initWithUpnpSearch:YES andPortalSearch:YES andIpAddressSearch:YES];
     [self.bridgeSearch startSearchWithCompletionHandler:^(NSDictionary *bridgesFound) {
         /***************************************************
          The search is complete, check whether we found a bridge
