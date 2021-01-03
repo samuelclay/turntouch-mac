@@ -19,3 +19,9 @@ target 'Turn Touch Mac' do
   end
 
 end
+
+post_install do |installer|
+  # Sign the Sparkle helper binaries to pass App Notarization.
+  system("codesign --force -o runtime -s 'Developer ID Application' Pods/Sparkle/Sparkle.framework/Resources/Autoupdate.app/Contents/MacOS/Autoupdate")
+  system("codesign --force -o runtime -s 'Developer ID Application' Pods/Sparkle/Sparkle.framework/Resources/Autoupdate.app/Contents/MacOS/fileop")
+end

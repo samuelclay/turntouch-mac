@@ -147,6 +147,26 @@
 			<key>optional</key>
 			<true/>
 		</dict>
+		<key>Resources/MASShortcut.bundle/Contents/_CodeSignature/CodeDirectory</key>
+		<data>
+		SMxhJEEzCqyimu+Wtjupvt4NyXc=
+		</data>
+		<key>Resources/MASShortcut.bundle/Contents/_CodeSignature/CodeRequirements</key>
+		<data>
+		OnX22wWFKRSOFN1+obRynMCeyXM=
+		</data>
+		<key>Resources/MASShortcut.bundle/Contents/_CodeSignature/CodeRequirements-1</key>
+		<data>
+		Ht0+gBCTi1vcPP2hMsk/XUnpghE=
+		</data>
+		<key>Resources/MASShortcut.bundle/Contents/_CodeSignature/CodeResources</key>
+		<data>
+		wFAPQB5KakJvFt2ryieDMc7K+hc=
+		</data>
+		<key>Resources/MASShortcut.bundle/Contents/_CodeSignature/CodeSignature</key>
+		<data>
+		2jmj7l5rSw0yVb/vlWAYkK/YBwk=
+		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
@@ -366,6 +386,61 @@
 			</data>
 			<key>optional</key>
 			<true/>
+		</dict>
+		<key>Resources/MASShortcut.bundle/Contents/_CodeSignature/CodeDirectory</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			SMxhJEEzCqyimu+Wtjupvt4NyXc=
+			</data>
+			<key>hash2</key>
+			<data>
+			vwOBPkFvIypMY7+tv9ZE6NYqcdLRCmU1cYqoTQoDLLU=
+			</data>
+		</dict>
+		<key>Resources/MASShortcut.bundle/Contents/_CodeSignature/CodeRequirements</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			OnX22wWFKRSOFN1+obRynMCeyXM=
+			</data>
+			<key>hash2</key>
+			<data>
+			mHkgkE6rZQ51eIwFSqCwUk5qgL/HGqMt+NI3phdD+YY=
+			</data>
+		</dict>
+		<key>Resources/MASShortcut.bundle/Contents/_CodeSignature/CodeRequirements-1</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Ht0+gBCTi1vcPP2hMsk/XUnpghE=
+			</data>
+			<key>hash2</key>
+			<data>
+			dnk8U1mKDEmsVKH7JAHwbeyz16t6oYFQis71XB94t5Q=
+			</data>
+		</dict>
+		<key>Resources/MASShortcut.bundle/Contents/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			wFAPQB5KakJvFt2ryieDMc7K+hc=
+			</data>
+			<key>hash2</key>
+			<data>
+			f8mBEizwtbklWjsKnaJZ2sDZqjNl0A9MEpbbpSpWc9s=
+			</data>
+		</dict>
+		<key>Resources/MASShortcut.bundle/Contents/_CodeSignature/CodeSignature</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			2jmj7l5rSw0yVb/vlWAYkK/YBwk=
+			</data>
+			<key>hash2</key>
+			<data>
+			47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
+			</data>
 		</dict>
 	</dict>
 	<key>rules</key>
