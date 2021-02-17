@@ -26,6 +26,14 @@
 
 #pragma mark - Initialization
 
+- (BOOL)isDarkMode {
+    NSAppearance *appearance = self.appDelegate.menubarController.statusItemView.effectiveAppearance;
+    if (@available(*, macOS 10.14)) {
+        return appearance.name == NSAppearanceNameDarkAqua;
+    }
+
+    return NO;
+}
 
 - (id)initWithFrame:(NSRect)frame {
     return [self initWithFrame:frame diamondType:DIAMOND_TYPE_MODE];
@@ -52,10 +60,17 @@
             [self createTrackingArea];
         } else if (diamondType == DIAMOND_TYPE_HUD) {
             self.wantsLayer = YES;
+        } else if (diamondType == DIAMOND_TYPE_STATUSBAR) {
+            [NSDistributedNotificationCenter.defaultCenter addObserver:self selector:@selector(themeChanged:) name:@"AppleInterfaceThemeChangedNotification" object: nil];
         }
     }
     
     return self;
+}
+
+-(void)themeChanged:(NSNotification *) notification {
+    NSLog (@"Theme changed: %@", notification);
+    [self setNeedsLayout:YES];
 }
 
 - (TTModeDirection)directionForLocation:(CGPoint)location {
@@ -154,7 +169,7 @@
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
-//    NSLog(@"Diamond draw rect: %@", NSStringFromRect(dirtyRect));
+//    NSLog(@"Diamond draw rect: %@ %lu %f %hhd", NSStringFromRect(dirtyRect), (unsigned long)self.diamondType, self.size, [self isDarkMode]);
     [super drawRect:dirtyRect];
 
     NSRect rect = self.bounds;
@@ -278,6 +293,7 @@
         
         // Fill in the color as a stroke or fill
         NSColor *modeColor;
+        BOOL isDarkMode = [self isDarkMode];
         if (self.diamondType == DIAMOND_TYPE_HUD) {
             CGFloat alpha = 0.9f;
             modeColor = NSColorFromRGBAlpha(0xFFFFFF, alpha);
@@ -323,9 +339,14 @@
                     modeColor = NSColorFromRGBAlpha(0x303033, alpha);
                 } else if (isSelectedDirection) {
                     modeColor = NSColorFromRGB(0x417cf1);
-                } else {
+                } else if (isDarkMode) {
+//                    NSLog(@"Diamond: dark mode");
                     CGFloat alpha = 0.5f;
                     modeColor = NSColorFromRGBAlpha(0xE1E5E9, alpha);
+                } else {
+//                    NSLog(@"Diamond: light mode");
+                    CGFloat alpha = 0.5f;
+                    modeColor = NSColorFromRGBAlpha(0x919599, alpha);
                 }
             }
         } else if (self.diamondType == DIAMOND_TYPE_MODE || self.diamondType == DIAMOND_TYPE_PAIRING) {

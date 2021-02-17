@@ -110,6 +110,7 @@
     
     if (statusItemView) {
         statusRect = statusItemView.globalRect;
+        statusRect.origin.x = NSMinX(statusRect);
         statusRect.origin.y = NSMinY(statusRect) - NSHeight(statusRect) - 2;
     } else {
         statusRect.size = NSMakeSize(STATUS_ITEM_VIEW_WIDTH, [[NSStatusBar systemStatusBar] thickness]);
