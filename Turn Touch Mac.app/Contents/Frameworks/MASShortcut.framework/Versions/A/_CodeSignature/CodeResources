@@ -6,11 +6,11 @@
 	<dict>
 		<key>Resources/Info.plist</key>
 		<data>
-		1jvSy1e/rvyfMtipNB2vOWtUkCE=
+		23ZLzxhZ1PABcEm1E8uexDyt+6A=
 		</data>
 		<key>Resources/MASShortcut.bundle/Contents/Info.plist</key>
 		<data>
-		MSDqWkGO0H8/WRyEhgSPg6wpbpk=
+		eL3VmFpFE3raDHxAKetqOc8XivA=
 		</data>
 		<key>Resources/MASShortcut.bundle/Contents/Resources/cs.lproj/Localizable.strings</key>
 		<dict>
@@ -149,7 +149,7 @@
 		</dict>
 		<key>Resources/MASShortcut.bundle/Contents/_CodeSignature/CodeDirectory</key>
 		<data>
-		SMxhJEEzCqyimu+Wtjupvt4NyXc=
+		7DwdJPsHnzzbL1s6dD9UOwUv9Tw=
 		</data>
 		<key>Resources/MASShortcut.bundle/Contents/_CodeSignature/CodeRequirements</key>
 		<data>
@@ -157,7 +157,7 @@
 		</data>
 		<key>Resources/MASShortcut.bundle/Contents/_CodeSignature/CodeRequirements-1</key>
 		<data>
-		Ht0+gBCTi1vcPP2hMsk/XUnpghE=
+		W/zU/VHAcTFtxV5VyeH3pb+Yra0=
 		</data>
 		<key>Resources/MASShortcut.bundle/Contents/_CodeSignature/CodeResources</key>
 		<data>
@@ -174,22 +174,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			1jvSy1e/rvyfMtipNB2vOWtUkCE=
+			23ZLzxhZ1PABcEm1E8uexDyt+6A=
 			</data>
 			<key>hash2</key>
 			<data>
-			jjQmX5CXmrIJs5aGCSK+ZvuO12G32ynbafxdAL8rSJU=
+			Zd6TzaiyX9ezbt/ciQfyzFHj8bYSt7gQ/NCVBz+JsIw=
 			</data>
 		</dict>
 		<key>Resources/MASShortcut.bundle/Contents/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			MSDqWkGO0H8/WRyEhgSPg6wpbpk=
+			eL3VmFpFE3raDHxAKetqOc8XivA=
 			</data>
 			<key>hash2</key>
 			<data>
-			XVEcr5wWKu6Fiqym1QntkMDM22UjPY8PpiFJWly4X+Q=
+			CmkuX18H8tpPBDjHJ9uHOgI67ZbSWobwqQ+48SToQTU=
 			</data>
 		</dict>
 		<key>Resources/MASShortcut.bundle/Contents/Resources/cs.lproj/Localizable.strings</key>
@@ -391,11 +391,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			SMxhJEEzCqyimu+Wtjupvt4NyXc=
+			7DwdJPsHnzzbL1s6dD9UOwUv9Tw=
 			</data>
 			<key>hash2</key>
 			<data>
-			vwOBPkFvIypMY7+tv9ZE6NYqcdLRCmU1cYqoTQoDLLU=
+			2iq4OVQIR19yLG62B/8LHnPqpBOuEAdF3HNVhmhaWM8=
 			</data>
 		</dict>
 		<key>Resources/MASShortcut.bundle/Contents/_CodeSignature/CodeRequirements</key>
@@ -413,11 +413,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Ht0+gBCTi1vcPP2hMsk/XUnpghE=
+			W/zU/VHAcTFtxV5VyeH3pb+Yra0=
 			</data>
 			<key>hash2</key>
 			<data>
-			dnk8U1mKDEmsVKH7JAHwbeyz16t6oYFQis71XB94t5Q=
+			if/FiXr8XuGMgKoxR3C7MyWw1Q2w1wp8TvURvy3BXfA=
 			</data>
 		</dict>
 		<key>Resources/MASShortcut.bundle/Contents/_CodeSignature/CodeResources</key>
