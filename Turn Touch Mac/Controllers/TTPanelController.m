@@ -110,7 +110,7 @@
     
     if (statusItemView) {
         statusRect = statusItemView.globalRect;
-        statusRect.origin.x = NSMinX(statusRect);
+        statusRect.origin.x = NSMinX(statusRect) + NSWidth(statusRect)/2;
         statusRect.origin.y = NSMinY(statusRect) - NSHeight(statusRect) - 2;
     } else {
         statusRect.size = NSMakeSize(STATUS_ITEM_VIEW_WIDTH, [[NSStatusBar systemStatusBar] thickness]);
@@ -137,7 +137,7 @@
     
     if (NSMaxX(panelRect) > (NSMaxX(screenRect) - ARROW_HEIGHT))
         panelRect.origin.x -= NSMaxX(panelRect) - (NSMaxX(screenRect) - ARROW_HEIGHT);
-//    NSLog(@"Panel rect: %@ (%@) screen: %@", NSStringFromRect(statusRect), NSStringFromRect(panelRect), NSStringFromRect(screenRect));
+    NSLog(@"Panel rect: %@ (%@) screen: %@", NSStringFromRect(statusRect), NSStringFromRect(panelRect), NSStringFromSize(screenRect.size));
 
     [NSApp activateIgnoringOtherApps:NO];
     [panel setAlphaValue:0];

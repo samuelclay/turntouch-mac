@@ -30,9 +30,9 @@
         self.statusItem = statusItem;
         self.statusItem.view = self;
         
-        NSRect diamondRect = NSInsetRect(itemRect, 4.0f, 3.0f);
+        NSRect diamondRect = NSInsetRect(itemRect, 0, 3.0f);
         if (@available(macOS 10.16, *)) {
-            diamondRect = NSInsetRect(itemRect, 0, 3.0f);
+//            diamondRect = NSInsetRect(itemRect, 0, 3.0f);
         }
         self.diamondView = [[TTDiamondView alloc] initWithFrame:diamondRect
                                                     diamondType:DIAMOND_TYPE_STATUSBAR];
@@ -87,7 +87,7 @@
 #pragma mark -
 
 - (NSRect)globalRect {
-    NSRect frame = [self frame];
+    NSRect frame = [self.diamondView frame];
     return [self.window convertRectToScreen:frame];
 
 }
