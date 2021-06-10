@@ -36,6 +36,12 @@
     NSLog(@"Bridges found: %@", self.bridgesFound);
     
     [self.tableView reloadData];
+    
+    if ([self.bridgesFound.allKeys count] == 1) {
+        // Auto-select if there's a single bridge
+        [self connectAtRow:0];
+    }
+
 }
 
 - (IBAction)refreshButtonClicked:(id)sender {
@@ -44,14 +50,19 @@
 }
 
 - (IBAction)connectButtonClicked:(id)sender{
-    if ([self.tableView selectedRow]>-1){
+    return [self connectAtRow:[self.tableView selectedRow]];
+}
+
+
+- (void)connectAtRow:(NSInteger)row {
+    if (row > -1){
         /***************************************************
          The choice of bridge to use is made, store the bridge id
          and ip address for this bridge
          *****************************************************/
         
         // Get bridge id and ip address of selected bridge
-        NSString *bridgeId = [self.sortedBridgeKeys objectAtIndex:[self.tableView selectedRow]];
+        NSString *bridgeId = [self.sortedBridgeKeys objectAtIndex:row];
         NSString *ip = [self.bridgesFound objectForKey:bridgeId];
         
         // Inform delegate
