@@ -9,8 +9,9 @@
 /* Begin PBXAggregateTarget section */
 		ED77B4B88587C894E85C361023D67C53 /* Sparkle */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = DFD76CF3BA88B1E29302E27ACFBF9960 /* Build configuration list for PBXAggregateTarget "Sparkle" */;
+			buildConfigurationList = 328F2DB001265813043B82D818B21AC9 /* Build configuration list for PBXAggregateTarget "Sparkle" */;
 			buildPhases = (
+				780ADEB704B4468F55D513CE1AD96CAA /* [CP] Copy dSYMs */,
 			);
 			dependencies = (
 			);
@@ -19,368 +20,365 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		000CE90DA785FC9A6EAB74FD9AC55E12 /* AFNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 00B5722C58936B3A5F9A77ED2328AC32 /* AFNetworkReachabilityManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0097B06D3A8F7049888DB5C3C92123D9 /* Pods-Turn Touch Mac-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 775E78197EBCA971C7E759E267730EA7 /* Pods-Turn Touch Mac-dummy.m */; };
-		069E732D19CB4D094A78021CC22818D7 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = E389267003777C2D651CAFE7EC0A35AB /* AFSecurityPolicy.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		081C6AA82727FF36A397DE4A1B8DC22D /* MASShortcutMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 923C267A8831F8AE5FC656B7F5550E5D /* MASShortcutMonitor.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		08A7ECEB3A1CE770DF5870E8B74C7B3A /* nl.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 4A4AB1E0ECBA3F7E0CF5A2CA4BC31C00 /* nl.lproj */; };
-		0AAD34D7C2910D65FB0613EC046EB32F /* AFURLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BABF165AC14329ED63753A0BCE9FBD86 /* AFURLSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		145911ED750B1E0169E251F39C35E9AB /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 492129DEB7BC0BEABC8C9474633F8039 /* AFURLResponseSerialization.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		14C7A583F67F614FB015025132165427 /* sv.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 57F412F20472266C6CB88537EE7379D1 /* sv.lproj */; };
-		16B744483ACF778051441482478F8195 /* Pods-Turn Touch Mac-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C9A369D51946FBC30CE6D0C2676F475 /* Pods-Turn Touch Mac-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		17A9E7A03D7B35C706DB38B66BFA224A /* MASDictionaryTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 667EDC17B9908E8179E9755CB325E0C6 /* MASDictionaryTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1A70833DC3974ECB07D31901FAEC8C4D /* MASShortcutView.h in Headers */ = {isa = PBXBuildFile; fileRef = E5E77EB1E9BD00DE9686B327664A5555 /* MASShortcutView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1E21794CD360AD428C83FAF8F9333A8E /* zh-Hans.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 668E4BA3E2D1294BFB5390FF758C6A0B /* zh-Hans.lproj */; };
-		223EE9E9DCA38137AF650CB3A50DF191 /* AFNetworking-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 228768F192C5BCD195A7231FF99EB162 /* AFNetworking-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		22401F125BBA9C0FC6DF88EB79AF4FDE /* MASShortcut.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 230F8208BE63C052A548A7D41A1158B2 /* MASShortcut.bundle */; };
-		25D6DD1A77954FD8FD6A013DCDE09C51 /* MASShortcutBinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A605D6573DFC869B76541A2B652E3B /* MASShortcutBinder.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		260159BF051F3D983ABCD0C0EDE0D43E /* zh-Hant.lproj in Resources */ = {isa = PBXBuildFile; fileRef = CCCABB85FB2D91F5601E1BFB4E580917 /* zh-Hant.lproj */; };
-		2A551E0AC89BF4C0E6D181F7DAE6C506 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ECED814DFC0B86EDFEBADFE82C1AED8 /* Cocoa.framework */; };
-		2BD5B4823399E54C54DA62099C8D61AA /* cs.lproj in Resources */ = {isa = PBXBuildFile; fileRef = EF17314FE259E65A8C4C15C678081617 /* cs.lproj */; };
-		36B10481C861BC578E2E34F964D26367 /* MASLocalization.h in Headers */ = {isa = PBXBuildFile; fileRef = B33772B46BC9E7238513B2F28B7172B0 /* MASLocalization.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		38BEFDA482B773ED5EF53AFC61D12F9E /* pl.lproj in Resources */ = {isa = PBXBuildFile; fileRef = AD04E30C0CEA5E69CF5DB4DA2BCA93BA /* pl.lproj */; };
-		41FEA7C88C689FC6BBBD891EA1EE5413 /* MASKeyCodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 35EE69AF02E0D52DB6EB119B2A4CD9B8 /* MASKeyCodes.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4328FECC31A6128366FC38D8C8BC2081 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB15C4296DD946AE543689FBAED85426 /* SystemConfiguration.framework */; };
-		49661ED57042518D9E72C94E3A097B22 /* MASHotKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CDF2F4667D6058468CD311A47D59B /* MASHotKey.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		5557308704D6FB8BFE34CDF60496318A /* MASShortcutBinder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF32912999EDE7A34B982E576563C92F /* MASShortcutBinder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		56A5301A6BFDFDE0B0B352F1957FFA93 /* MASShortcutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E32D34E8D8B4C7B0D32DD5847556763 /* MASShortcutView.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		5975C57B505E305F7B0F6D27DC6BE393 /* ru.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 1BA69C46F375F756CE5E19822AD763E6 /* ru.lproj */; };
-		5E46E9B83AA4D017BA1AC76353170C37 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEB01DE43854724BE80C1D109FF1EB87 /* Carbon.framework */; };
-		63E28832311EE6B28FF7D20E50A7D301 /* MASKeyMasks.h in Headers */ = {isa = PBXBuildFile; fileRef = B97588451B6DDE13519FAE41F8AF6809 /* MASKeyMasks.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		726387127FAA369AA401F5458F3ABE78 /* de.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 54FEF3F057F0EC9E9483520811C7062F /* de.lproj */; };
-		742BA302FC49B9D3F1F08CA48DFC4162 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A48C7D0240271A43BACE6083EE97521C /* CoreServices.framework */; };
-		75720045B91272344DA329D6E0FD946E /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 059E2152D89BDC9F7D35C2F6AB6D63F9 /* AppKit.framework */; };
-		78BC7AD6B58977915D0E636ADBE78197 /* Pods-Turn Touch Mac Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 233FCBD0C7D8F4103FBC566827AF345A /* Pods-Turn Touch Mac Tests-dummy.m */; };
-		7BF8914E445513D3C2B05B8042F3131D /* AFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 279A88B98508CBDF6D6669A4115269AA /* AFHTTPSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7D2F0BA9165EE57EDB6C4EA68202B049 /* AFURLRequestSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 09C37845199392CA596F5698595B53DE /* AFURLRequestSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		81FC166794811B36E264B925B249E7E6 /* MASShortcut.m in Sources */ = {isa = PBXBuildFile; fileRef = B7399B011440879C6CBD0EBEF50EACF7 /* MASShortcut.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		82A3CE737F3BAC81B8C48822F81A8DF4 /* MASShortcut-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C44DA4F9D62FE09DF7484B86B409CFFF /* MASShortcut-dummy.m */; };
-		84ACFF6619A39B1D5EA27CEFCBCA5DD5 /* MASShortcutMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = D17534E7E8B9C503CEECAB32AECA698D /* MASShortcutMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		887E8F12E958D52E748B7CADA81B969F /* MASShortcutView+Bindings.h in Headers */ = {isa = PBXBuildFile; fileRef = E1BF114E270C749B9ED9AB06DE33FEC0 /* MASShortcutView+Bindings.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		90DFD9FDD1F77A5CBD9C77D157326E2E /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D27F659404EC178DE692D7FEEB52C4 /* AFURLSessionManager.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		922754E0A6ADBF6947787323C3181186 /* Pods-Turn Touch Mac Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 366643C33975AECB083E9C54217D4A4A /* Pods-Turn Touch Mac Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		94E5D4646D404FD303102C8805C734AF /* Shortcut.h in Headers */ = {isa = PBXBuildFile; fileRef = 0450ADB6B04E749B782240D0323A2B6F /* Shortcut.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		95C880022015B54E34761E55E7187D32 /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = A8BB47E3C6CEC12F97B35F704271FC4F /* en.lproj */; };
-		96F45043BD6DDB5C8381485CA489AFAB /* MASShortcutValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5301ECF5E7D5BE68C6A41278F44AE292 /* MASShortcutValidator.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		97E6B51D1952C0548E27DACECCE52F89 /* AFSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 744C24B286E2E67FE85F7AE6FB6CC8D4 /* AFSecurityPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A12772B5C4751173A0165052C23C9BB7 /* AFCompatibilityMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CCF531BFFF7D826752EB8CFE061EFE3 /* AFCompatibilityMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A1E44695C11C548525DB06E6080E33CA /* MASDictionaryTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0237527DD295DF75373063D953E07644 /* MASDictionaryTransformer.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		A2441DD5264F9D17965CFFCBECD7567D /* MASShortcutValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 151E57D33C370E6833544B3936F22442 /* MASShortcutValidator.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A6EF9B896E9DBACD4E841592E027E98A /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CAC4CF70DC2E1E2F57EE7F28A655F17 /* AFURLRequestSerialization.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		AB4C305EB0E8798033BFBB70E6B1475A /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D27F06EAFC8A105CBD84684D518D8D /* AFHTTPSessionManager.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		B78A1A4B833F7FE8C7C6E39F684CF632 /* ja.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 77BD6069A8AF64F3E954D0BCBFCC44C7 /* ja.lproj */; };
-		B7D44A8AD8222D30EF9269729A947365 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35D7AED94C07C64AFED6CF1541A098BF /* Security.framework */; };
-		B7FA24CE05242AB77C5D98A9067B69CF /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F9E3F4D5B14234F992CD1264AFC5BA4 /* AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BAB79ABA2B1C9E59CAE20EDEE92FE02C /* it.lproj in Resources */ = {isa = PBXBuildFile; fileRef = BD4DF216EF6EEF0884FC71EC60AF5A96 /* it.lproj */; };
-		BBB9C95F214F34BF1C4D964217A6FB81 /* fr.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 84FFF617E8D36BB0B3CB2214CB536668 /* fr.lproj */; };
-		BDDD5EE788E7A65E893D3A93B3BC6F2B /* AFURLResponseSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EA163591391A80AC3B62DB40561E480 /* AFURLResponseSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C7C2E574E9167A7AC1988531F822A772 /* MASShortcutView+Bindings.m in Sources */ = {isa = PBXBuildFile; fileRef = A9043B92BE11E19BD46D643E05BA33CB /* MASShortcutView+Bindings.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		CDA6D20391068E805D8CA5DF0E8CD1FF /* MASShortcut-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A0A468DA1E4724766CA1DD52A61D306 /* MASShortcut-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DC1DD08774A4C7E62C8A7ACEA089C901 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ECED814DFC0B86EDFEBADFE82C1AED8 /* Cocoa.framework */; };
-		DE0432C90C95848D2D4FB69DB1FC36E9 /* AFNetworking-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C62F003521E5143F1458826FB7EC35 /* AFNetworking-dummy.m */; };
-		DFA3AD60DB96E887429856957F776AD7 /* MASShortcut.h in Headers */ = {isa = PBXBuildFile; fileRef = E0579281D2BB3399CEC4CF010000B4B0 /* MASShortcut.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E0ACB0A8F85954A0ACA976C9A8A44650 /* MASLocalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 876C895A500E715D32202D53BF73C108 /* MASLocalization.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		E3197A44A2A37282554E5CECF18E9E49 /* es.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 242DAC1CAD1D78FC08398345070B9185 /* es.lproj */; };
-		E6D9C6AAF8324D62EDEC7A9B30AB5BB6 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1757F1013EFAF93BE3B6ABC32D528D6F /* AFNetworkReachabilityManager.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		E7117F0432D43F3F126EA75A671D4493 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ECED814DFC0B86EDFEBADFE82C1AED8 /* Cocoa.framework */; };
-		FAAC1C0553D1DCE439E297887ACA2246 /* pt.lproj in Resources */ = {isa = PBXBuildFile; fileRef = EC5448D3F7F5158C4433F58B3E2E940F /* pt.lproj */; };
-		FC61C77D3A8951D057325FC37E95DDBB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ECED814DFC0B86EDFEBADFE82C1AED8 /* Cocoa.framework */; };
-		FF3818F1AE7BCBC88F3A5BEFE5DAE070 /* MASHotKey.h in Headers */ = {isa = PBXBuildFile; fileRef = 86DC623C55FAEE0F403F91EB543825AC /* MASHotKey.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FF5B99751931BBFC747289EB1382A053 /* ko.lproj in Resources */ = {isa = PBXBuildFile; fileRef = B9EC0F411EC8491C5DAD470068DC2B7B /* ko.lproj */; };
+		0946706EF249F2E9D27362EA8AA7C259 /* AFURLResponseSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 90509ACF60EE9FCAF1BA6DEDB2B66887 /* AFURLResponseSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0F99BCA11DBBC89D93A1494BFE094571 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C1B386022064613911B7BEAB445F3D /* Carbon.framework */; };
+		1249E8FACD55E4980B48ABFD7AD8A6E2 /* MASShortcutView.m in Sources */ = {isa = PBXBuildFile; fileRef = C05CE9467C3F4600184D38623057B683 /* MASShortcutView.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		1893B01F6883E3143322E59A9DA701C7 /* AFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2103AAFF37BB8E8D7C3796FF45457B69 /* AFHTTPSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		18C6D427255E10C6181CD303E5B63231 /* sv.lproj in Resources */ = {isa = PBXBuildFile; fileRef = CD16D9E4E772C9E6771FE3C71AD6C139 /* sv.lproj */; };
+		1B624D6CC3CB197C82864C5E6655C908 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DCF6ED3019C5AFBFF126F4C64AD6C5A /* AFSecurityPolicy.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		2100FC77384DF0204564083C6AB4E0C6 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D56EA8510CF43150FB92B892B710DAD0 /* CoreServices.framework */; };
+		25C77C86E0C5577799ABA38F961E7D87 /* zh-Hans.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 8BA21D902AB46F1E753A8AFCD229A0D5 /* zh-Hans.lproj */; };
+		2741F873AEC7CF4BB2CDCD47C750F99A /* MASShortcutView.h in Headers */ = {isa = PBXBuildFile; fileRef = 36A07CBAF194A4F5EEBACECB668E54B9 /* MASShortcutView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27A982C695B077BC51772B5BB0A4992F /* MASShortcutView+Bindings.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF145950CC6311088F13EFDBB51045C /* MASShortcutView+Bindings.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		29380CE7078DE5186BACAEB401353224 /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 2692A1964CDB65D3B73E8A8BC317D1FF /* AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2995054EB1B4A636E5724296A25EE9A3 /* MASLocalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 3749688FC8FF26E1C4974BBF1A44FE67 /* MASLocalization.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		2C4425086F49EEC6E61A45835B9A8582 /* Pods-Turn Touch Mac-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 775E78197EBCA971C7E759E267730EA7 /* Pods-Turn Touch Mac-dummy.m */; };
+		2EA4FCF2E570FAE9F4BABB501E00D2DC /* AFCompatibilityMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = F22A4590D6C2B936FA8051F824999CF1 /* AFCompatibilityMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3409936F3A99B159534D7F9E327AD140 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5CA97A994DBCCBBED002BC50678793 /* Cocoa.framework */; };
+		38FD00310BCEB6C24F0BB9EA054F1001 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6431EC964A38D2DBD0641E2D182355 /* AFNetworkReachabilityManager.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3C5354A68B89452020C152528A138BA5 /* MASLocalization.h in Headers */ = {isa = PBXBuildFile; fileRef = E54E2E645E14AAB042CA116669229F90 /* MASLocalization.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3EF836DC2E8CE518F4139DD267FA86C6 /* Pods-Turn Touch Mac Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 233FCBD0C7D8F4103FBC566827AF345A /* Pods-Turn Touch Mac Tests-dummy.m */; };
+		3F77F71B26FE6CFAC6C29C7DEBA6A5D0 /* MASShortcut-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DFF911EA8E4EAB8A0B67EEF38F3700 /* MASShortcut-dummy.m */; };
+		402E1AE081E797ED67205789C03540C7 /* MASShortcutView+Bindings.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F55001070731DE1F06E326A29939815 /* MASShortcutView+Bindings.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		40DFFA0462462F0D7867F0957DF147AE /* AFURLRequestSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = CA5A169CE2106A503147D28462F3547B /* AFURLRequestSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		42D161E71527E3632069FD83903150AE /* cs.lproj in Resources */ = {isa = PBXBuildFile; fileRef = A4B823380A618C7C7CB3DA973B6C7B74 /* cs.lproj */; };
+		4375921A5BFE47FFFC780B5D26187A6A /* de.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 0B4886E2A5F44BDE9C29BB17E3AA4823 /* de.lproj */; };
+		44954447D9F1F5A55AEEBE25294FCB84 /* pt.lproj in Resources */ = {isa = PBXBuildFile; fileRef = D93143360A22F6C60E172C74B9C10629 /* pt.lproj */; };
+		4832F3F46DFBD929E7974DB6EB02B933 /* MASShortcutMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2F0ABDDAAF65C60F644132BCDACFFE /* MASShortcutMonitor.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		497CDA2EEDE8AB6F9C17BE84F180B840 /* ja.lproj in Resources */ = {isa = PBXBuildFile; fileRef = B9649D01F74030A0BBEB74F413907893 /* ja.lproj */; };
+		4CF04F9FEC428D196C0D3D10B980D58F /* AFNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E3678B6B618C5B0BF6AE97C0CA363037 /* AFNetworkReachabilityManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5139B6A94CF4AC83A987B51B80C4C0F2 /* MASShortcutBinder.h in Headers */ = {isa = PBXBuildFile; fileRef = CCE1EBDFA89DBFE2D0BB241648006D3B /* MASShortcutBinder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		51537918F96D875CAA6CD8B7E29F8441 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCEA219E2011AF8449CEC4C5C36BB34C /* SystemConfiguration.framework */; };
+		55DF86D511D9E073ECFCB85AB84FF6A6 /* AFNetworking-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4632CA69BB860D8AEDA9CE00D6BB498D /* AFNetworking-dummy.m */; };
+		5DEA553BD9BDE49139C4EA28AD81D289 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5CA97A994DBCCBBED002BC50678793 /* Cocoa.framework */; };
+		60334F7BC5843FD8067FDA4B988D997F /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D2C1BE9FB7904F6778C810F8285FE9 /* AFURLSessionManager.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		65FD7131CDBC13EC054FF82EAAF580AA /* MASDictionaryTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 36454F39440698875134940A559FA99D /* MASDictionaryTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6BB8C371C572F0345ABE617C1C7560E6 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = B407F506042CC2F970C3BCFCE17B0965 /* AFURLRequestSerialization.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		73425B7DE8FE8CF49F97CB0A0277AC83 /* nl.lproj in Resources */ = {isa = PBXBuildFile; fileRef = B79179A6637B35F57E959A84F6E3EC6B /* nl.lproj */; };
+		76B7C480F73723E2F52AF61DE849D112 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5CA97A994DBCCBBED002BC50678793 /* Cocoa.framework */; };
+		7721D5C23322558607C6D7D710B82F37 /* fr.lproj in Resources */ = {isa = PBXBuildFile; fileRef = CFBFE1C8391B6638BB5329580CB5C948 /* fr.lproj */; };
+		78935C3E5266090DF2F0B8D969F213A4 /* MASHotKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DECAA2EF315308404D1B586B9490CE /* MASHotKey.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		7B30BD85963CF316B47436990A63E299 /* ko.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 0C81B8B5D42D609F1F67CC11D5AACAC0 /* ko.lproj */; };
+		7F47A731BCAFAF2A12E650B409DEDE04 /* it.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 700D61394988A1F03CCDCF68CDCC408E /* it.lproj */; };
+		8084161906552D8A65D02AD4EB4DBB36 /* MASShortcut-MASShortcut in Resources */ = {isa = PBXBuildFile; fileRef = 230F8208BE63C052A548A7D41A1158B2 /* MASShortcut-MASShortcut */; };
+		87074A4E4CA102792EE367AACC5D7BDF /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 8CFA9800591805560642892018F4B69F /* en.lproj */; };
+		8DFA4536CAC0ABE3684E11DCE90D1C94 /* Pods-Turn Touch Mac-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C9A369D51946FBC30CE6D0C2676F475 /* Pods-Turn Touch Mac-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		91FB3DA39F2918A71E61FAA2DBF7F9B1 /* MASDictionaryTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = D27049AA58BEFEB7601BCEB378C65228 /* MASDictionaryTransformer.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		93422BBE1A3CADA02A3A629CB41FD13E /* AFURLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4979B0C7FD470AA7D09BC1A63AB82E3B /* AFURLSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9671310EB30185D2C5C25201E156A6BA /* Pods-Turn Touch Mac Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 366643C33975AECB083E9C54217D4A4A /* Pods-Turn Touch Mac Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9C310479A86BB740EAB1EA1CE4753068 /* MASShortcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7E86796B1D0CB6A1208252591C5370 /* MASShortcut.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		A3C47C697501531A18E5B55C5839C16E /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA26D6BA125BD22D5A2C4B624311C5 /* AFURLResponseSerialization.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		ACD52F77980C5397B0C1938A031EFEFC /* MASKeyCodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 59EDDA222AF4C96FFE28A29FACBEF874 /* MASKeyCodes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B17105F0CB8C9D1CF7061F3B2CF66560 /* pl.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 5EDBEC1DD90EFB49E327987BAA133117 /* pl.lproj */; };
+		B2C1A96D0353410B53E08AA31F1E3B04 /* MASShortcutValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B0E46E1E2E988581D2E08A591D3D031 /* MASShortcutValidator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BBEDE2FE9A092B8340AC96F6FF0D5EEE /* MASShortcutValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = BE252AA332FF8FD2FEFE01DC4E1796D1 /* MASShortcutValidator.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		C540032EC142FE24A43BDCCAB3DBDCAA /* zh-Hant.lproj in Resources */ = {isa = PBXBuildFile; fileRef = BD0E5491FEA9256F9E67F6DBFFE82B39 /* zh-Hant.lproj */; };
+		CF11373BEE19D74C036CFBBB7F505C79 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF458A2BCB6F5FCE6181558B5B36F226 /* AFHTTPSessionManager.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		D2FC550A56F67DC434E0AB6E6B6CAF78 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C748B953B60E82D93313A534FDB6702 /* AppKit.framework */; };
+		D373CE844C0FFD770FD0522DB32C6984 /* Shortcut.h in Headers */ = {isa = PBXBuildFile; fileRef = DDBED5FB86C86DF310C9CA5544C37B02 /* Shortcut.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D8220E64A8B606829CC2421A98ABF03A /* MASKeyMasks.h in Headers */ = {isa = PBXBuildFile; fileRef = 4ABCE4AC5DFD8B0C31482BC4067619E2 /* MASKeyMasks.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9E3017D5CD2ED8987AF64C1ED2E7E2F /* MASShortcutMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 05FA46E9CE334F492145C7E29BD002A0 /* MASShortcutMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DC851120E49BB4C5B41695C084511E0C /* MASShortcutBinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC8E009134989A83F5DD89A0015F2C7 /* MASShortcutBinder.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		DC94BF8B2DE7D67B80F5C49D61610B69 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7632202C4E2844599DDBF030655B2D64 /* Security.framework */; };
+		E026629B62FECCA2F2001F99985CAA5C /* ru.lproj in Resources */ = {isa = PBXBuildFile; fileRef = F0D466BFF883F0C5D847D6986E9D7909 /* ru.lproj */; };
+		E3B2050E796C46BE9463F54ED36246E0 /* MASHotKey.h in Headers */ = {isa = PBXBuildFile; fileRef = A8E4AB306714626E4A49D95CBF4C6D5A /* MASHotKey.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E400144CEF7E24303572BFDA16373980 /* AFNetworking-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 60731D978ACB3F8DD634F89D50A6A282 /* AFNetworking-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E85352163DD744B321089490A3196E02 /* MASShortcut-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1767721B5741FBA1DA884FD68ECA152C /* MASShortcut-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAC2B240E08779B3EBDC700ACC888800 /* es.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 86AC10F23055278FB43F3FF58A744F35 /* es.lproj */; };
+		F8B8FFB917A9DB8B14F9D918B056535F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5CA97A994DBCCBBED002BC50678793 /* Cocoa.framework */; };
+		FC232BE19F26FD7EFEE6E253C7421616 /* AFSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = DE8EFFD618989DCBE67DCF1E8A72DEA0 /* AFSecurityPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FFA2F5C189382616EB6791284B792E02 /* MASShortcut.h in Headers */ = {isa = PBXBuildFile; fileRef = DE7DEC50E51BF1D3D7C52BFACE68E82E /* MASShortcut.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		93091A9AADC0C3F39DFEAC1968F0F5D4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0130B3724283586C0E9D2A112D4F2AA1;
-			remoteInfo = AFNetworking;
-		};
-		9A8BA3B6CEFCBF12D1ADE2E081E727C2 /* PBXContainerItemProxy */ = {
+		454682B0F08FCD84729737041B2D78E4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2B2B481A164695722839BD581D442457;
 			remoteInfo = MASShortcut;
 		};
-		A648B511727067A1D6DB52069DCE297C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D7149DBEC2C07F44080AF435BB631005;
-			remoteInfo = "Pods-Turn Touch Mac";
-		};
-		D67C223A6925D8128401C5859DDB23F4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = ED77B4B88587C894E85C361023D67C53;
-			remoteInfo = Sparkle;
-		};
-		F06B5DF44870FA25A027D53C6EA9DDD8 /* PBXContainerItemProxy */ = {
+		72D037197000E8EFB80BFD32CF8CB79B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 73C37A16ECCEAD845651DCDEE95675BE;
 			remoteInfo = "MASShortcut-MASShortcut";
 		};
+		B2A3D1303C8A598457CE1F91205306D3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ED77B4B88587C894E85C361023D67C53;
+			remoteInfo = Sparkle;
+		};
+		B75243154D42D124D0BC8677776F8DE7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0130B3724283586C0E9D2A112D4F2AA1;
+			remoteInfo = AFNetworking;
+		};
+		DB77C4A016F43391FE3CA5240A1DE433 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D7149DBEC2C07F44080AF435BB631005;
+			remoteInfo = "Pods-Turn Touch Mac";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00B5722C58936B3A5F9A77ED2328AC32 /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkReachabilityManager.h; path = AFNetworking/AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
-		015031A10FE6071B87428706C5F1605E /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
-		0237527DD295DF75373063D953E07644 /* MASDictionaryTransformer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASDictionaryTransformer.m; path = "Framework/User Defaults Storage/MASDictionaryTransformer.m"; sourceTree = "<group>"; };
-		0450ADB6B04E749B782240D0323A2B6F /* Shortcut.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Shortcut.h; path = Framework/Shortcut.h; sourceTree = "<group>"; };
-		059E2152D89BDC9F7D35C2F6AB6D63F9 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/AppKit.framework; sourceTree = DEVELOPER_DIR; };
-		09C37845199392CA596F5698595B53DE /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLRequestSerialization.h; path = AFNetworking/AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		05FA46E9CE334F492145C7E29BD002A0 /* MASShortcutMonitor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASShortcutMonitor.h; path = Framework/Monitoring/MASShortcutMonitor.h; sourceTree = "<group>"; };
+		068D1F44D340944D354B158A14A2B5F9 /* SPUDownloadData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloadData.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloadData.h; sourceTree = "<group>"; };
 		09EB1E3AAF97C25B802CDF9C8C721CC4 /* Pods-Turn Touch Mac Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Turn Touch Mac Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		0CAC48CA567F97C6F6EA79765B7471D2 /* AFNetworking-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFNetworking-prefix.pch"; sourceTree = "<group>"; };
-		0F9E3F4D5B14234F992CD1264AFC5BA4 /* AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = AFNetworking/AFNetworking.h; sourceTree = "<group>"; };
-		151E57D33C370E6833544B3936F22442 /* MASShortcutValidator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASShortcutValidator.h; path = Framework/Model/MASShortcutValidator.h; sourceTree = "<group>"; };
-		1757F1013EFAF93BE3B6ABC32D528D6F /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkReachabilityManager.m; path = AFNetworking/AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
-		1B6C667F83523E5CFA5EF30C73640BAB /* SUVersionComparisonProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUVersionComparisonProtocol.h; path = Sparkle.framework/Versions/A/Headers/SUVersionComparisonProtocol.h; sourceTree = "<group>"; };
-		1BA69C46F375F756CE5E19822AD763E6 /* ru.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = ru.lproj; path = Resources/ru.lproj; sourceTree = "<group>"; };
+		0B4886E2A5F44BDE9C29BB17E3AA4823 /* de.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = de.lproj; path = Resources/de.lproj; sourceTree = "<group>"; };
+		0C81B8B5D42D609F1F67CC11D5AACAC0 /* ko.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = ko.lproj; path = Resources/ko.lproj; sourceTree = "<group>"; };
+		0CA930E3C95CA961A5384CFF6CC4A08C /* SPUURLRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUURLRequest.h; path = Sparkle.framework/Versions/A/Headers/SPUURLRequest.h; sourceTree = "<group>"; };
+		1767721B5741FBA1DA884FD68ECA152C /* MASShortcut-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MASShortcut-umbrella.h"; sourceTree = "<group>"; };
 		1C9A369D51946FBC30CE6D0C2676F475 /* Pods-Turn Touch Mac-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Turn Touch Mac-umbrella.h"; sourceTree = "<group>"; };
-		228768F192C5BCD195A7231FF99EB162 /* AFNetworking-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFNetworking-umbrella.h"; sourceTree = "<group>"; };
-		230F8208BE63C052A548A7D41A1158B2 /* MASShortcut.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MASShortcut.bundle; path = "MASShortcut-MASShortcut.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1CF145950CC6311088F13EFDBB51045C /* MASShortcutView+Bindings.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "MASShortcutView+Bindings.m"; path = "Framework/UI/MASShortcutView+Bindings.m"; sourceTree = "<group>"; };
+		1E234BBA3D9AF10356C8869F32A29CD3 /* AFNetworking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFNetworking.debug.xcconfig; sourceTree = "<group>"; };
+		2103AAFF37BB8E8D7C3796FF45457B69 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFHTTPSessionManager.h; path = AFNetworking/AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		230F8208BE63C052A548A7D41A1158B2 /* MASShortcut-MASShortcut */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "MASShortcut-MASShortcut"; path = MASShortcut.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		233FCBD0C7D8F4103FBC566827AF345A /* Pods-Turn Touch Mac Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Turn Touch Mac Tests-dummy.m"; sourceTree = "<group>"; };
-		242DAC1CAD1D78FC08398345070B9185 /* es.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = es.lproj; path = Resources/es.lproj; sourceTree = "<group>"; };
-		263918DD68364535D0998685F038E384 /* SPUDownloaderDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloaderDelegate.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloaderDelegate.h; sourceTree = "<group>"; };
-		26A8810424438A12E7ADBFB3E068C658 /* MASShortcut.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MASShortcut.framework; path = MASShortcut.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		279A88B98508CBDF6D6669A4115269AA /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFHTTPSessionManager.h; path = AFNetworking/AFHTTPSessionManager.h; sourceTree = "<group>"; };
-		2ECEB5231AECB2CB0A0A4D01B1FE6719 /* Pods_Turn_Touch_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Turn_Touch_Mac.framework; path = "Pods-Turn Touch Mac.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2ECED814DFC0B86EDFEBADFE82C1AED8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		25F9D8D07A2A4E3183956BCCBACCAD9A /* AFNetworking-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "AFNetworking-Info.plist"; sourceTree = "<group>"; };
+		2692A1964CDB65D3B73E8A8BC317D1FF /* AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = AFNetworking/AFNetworking.h; sourceTree = "<group>"; };
+		26A8810424438A12E7ADBFB3E068C658 /* MASShortcut */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MASShortcut; path = MASShortcut.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D34D18FBCCA85A91617667D7F7D42CF /* SUUpdaterDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUUpdaterDelegate.h; path = Sparkle.framework/Versions/A/Headers/SUUpdaterDelegate.h; sourceTree = "<group>"; };
+		2ECEB5231AECB2CB0A0A4D01B1FE6719 /* Pods-Turn Touch Mac */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Turn Touch Mac"; path = Pods_Turn_Touch_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F709D38692594B0A3B90195155D4B1F /* Pods-Turn Touch Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Turn Touch Mac.release.xcconfig"; sourceTree = "<group>"; };
-		35D7AED94C07C64AFED6CF1541A098BF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
-		35EE69AF02E0D52DB6EB119B2A4CD9B8 /* MASKeyCodes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASKeyCodes.h; path = Framework/Model/MASKeyCodes.h; sourceTree = "<group>"; };
+		36454F39440698875134940A559FA99D /* MASDictionaryTransformer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASDictionaryTransformer.h; path = "Framework/User Defaults Storage/MASDictionaryTransformer.h"; sourceTree = "<group>"; };
 		366643C33975AECB083E9C54217D4A4A /* Pods-Turn Touch Mac Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Turn Touch Mac Tests-umbrella.h"; sourceTree = "<group>"; };
-		3755D8D4E5FB4DFEBA7B6075A4D803AC /* SUUpdaterDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUUpdaterDelegate.h; path = Sparkle.framework/Versions/A/Headers/SUUpdaterDelegate.h; sourceTree = "<group>"; };
-		38C62F003521E5143F1458826FB7EC35 /* AFNetworking-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AFNetworking-dummy.m"; sourceTree = "<group>"; };
-		3A0A468DA1E4724766CA1DD52A61D306 /* MASShortcut-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MASShortcut-umbrella.h"; sourceTree = "<group>"; };
-		3D1D14FFF0003402BB2A7D8DC720D231 /* Sparkle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Sparkle.h; path = Sparkle.framework/Versions/A/Headers/Sparkle.h; sourceTree = "<group>"; };
-		4261BB785B2DDB31CAC3C803A9A17210 /* SUStandardVersionComparator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUStandardVersionComparator.h; path = Sparkle.framework/Versions/A/Headers/SUStandardVersionComparator.h; sourceTree = "<group>"; };
-		43284EFAA5AEE3DFA509199EF516F32F /* SPUDownloaderDeprecated.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloaderDeprecated.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloaderDeprecated.h; sourceTree = "<group>"; };
-		4666DE0A3B9DC49C118A2962AF3FB240 /* MASShortcut-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MASShortcut-Info.plist"; sourceTree = "<group>"; };
-		46D27F06EAFC8A105CBD84684D518D8D /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPSessionManager.m; path = AFNetworking/AFHTTPSessionManager.m; sourceTree = "<group>"; };
+		36A05E1433DA0D9AF7C2593926E87F05 /* SUCodeSigningVerifier.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUCodeSigningVerifier.h; path = Sparkle.framework/Versions/A/Headers/SUCodeSigningVerifier.h; sourceTree = "<group>"; };
+		36A07CBAF194A4F5EEBACECB668E54B9 /* MASShortcutView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASShortcutView.h; path = Framework/UI/MASShortcutView.h; sourceTree = "<group>"; };
+		3749688FC8FF26E1C4974BBF1A44FE67 /* MASLocalization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASLocalization.m; path = Framework/UI/MASLocalization.m; sourceTree = "<group>"; };
+		3A6431EC964A38D2DBD0641E2D182355 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkReachabilityManager.m; path = AFNetworking/AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		3B0E46E1E2E988581D2E08A591D3D031 /* MASShortcutValidator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASShortcutValidator.h; path = Framework/Model/MASShortcutValidator.h; sourceTree = "<group>"; };
+		3C748B953B60E82D93313A534FDB6702 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/AppKit.framework; sourceTree = DEVELOPER_DIR; };
+		3CC8E009134989A83F5DD89A0015F2C7 /* MASShortcutBinder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASShortcutBinder.m; path = "Framework/User Defaults Storage/MASShortcutBinder.m"; sourceTree = "<group>"; };
+		3F55001070731DE1F06E326A29939815 /* MASShortcutView+Bindings.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MASShortcutView+Bindings.h"; path = "Framework/UI/MASShortcutView+Bindings.h"; sourceTree = "<group>"; };
+		3F5CA97A994DBCCBBED002BC50678793 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		4632CA69BB860D8AEDA9CE00D6BB498D /* AFNetworking-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AFNetworking-dummy.m"; sourceTree = "<group>"; };
 		49125CB9F16762A008C918EA637F1B8F /* Pods-Turn Touch Mac-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Turn Touch Mac-acknowledgements.markdown"; sourceTree = "<group>"; };
-		492129DEB7BC0BEABC8C9474633F8039 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLResponseSerialization.m; path = AFNetworking/AFURLResponseSerialization.m; sourceTree = "<group>"; };
-		4A4AB1E0ECBA3F7E0CF5A2CA4BC31C00 /* nl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = nl.lproj; path = Resources/nl.lproj; sourceTree = "<group>"; };
-		4EEC8A412974B74A33086E5B75279E94 /* SPUDownloadData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloadData.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloadData.h; sourceTree = "<group>"; };
-		52D27F659404EC178DE692D7FEEB52C4 /* AFURLSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLSessionManager.m; path = AFNetworking/AFURLSessionManager.m; sourceTree = "<group>"; };
-		5301ECF5E7D5BE68C6A41278F44AE292 /* MASShortcutValidator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASShortcutValidator.m; path = Framework/Model/MASShortcutValidator.m; sourceTree = "<group>"; };
-		54FEF3F057F0EC9E9483520811C7062F /* de.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = de.lproj; path = Resources/de.lproj; sourceTree = "<group>"; };
-		55B37607AE22E5C8E99DE06725E4998D /* Pods_Turn_Touch_Mac_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Turn_Touch_Mac_Tests.framework; path = "Pods-Turn Touch Mac Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		56FE50DA548F8EEEDC4E5275BBBC3423 /* SUAppcastItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUAppcastItem.h; path = Sparkle.framework/Versions/A/Headers/SUAppcastItem.h; sourceTree = "<group>"; };
-		57F412F20472266C6CB88537EE7379D1 /* sv.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = sv.lproj; path = Resources/sv.lproj; sourceTree = "<group>"; };
-		667EDC17B9908E8179E9755CB325E0C6 /* MASDictionaryTransformer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASDictionaryTransformer.h; path = "Framework/User Defaults Storage/MASDictionaryTransformer.h"; sourceTree = "<group>"; };
-		668E4BA3E2D1294BFB5390FF758C6A0B /* zh-Hans.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "zh-Hans.lproj"; path = "Resources/zh-Hans.lproj"; sourceTree = "<group>"; };
-		6E32D34E8D8B4C7B0D32DD5847556763 /* MASShortcutView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASShortcutView.m; path = Framework/UI/MASShortcutView.m; sourceTree = "<group>"; };
-		744C24B286E2E67FE85F7AE6FB6CC8D4 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFSecurityPolicy.h; path = AFNetworking/AFSecurityPolicy.h; sourceTree = "<group>"; };
+		4979B0C7FD470AA7D09BC1A63AB82E3B /* AFURLSessionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLSessionManager.h; path = AFNetworking/AFURLSessionManager.h; sourceTree = "<group>"; };
+		4A826F82F6F83E56F33EBDC5A6D69F51 /* SUStandardVersionComparator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUStandardVersionComparator.h; path = Sparkle.framework/Versions/A/Headers/SUStandardVersionComparator.h; sourceTree = "<group>"; };
+		4ABCE4AC5DFD8B0C31482BC4067619E2 /* MASKeyMasks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASKeyMasks.h; path = Framework/Model/MASKeyMasks.h; sourceTree = "<group>"; };
+		4EEA26D6BA125BD22D5A2C4B624311C5 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLResponseSerialization.m; path = AFNetworking/AFURLResponseSerialization.m; sourceTree = "<group>"; };
+		55B37607AE22E5C8E99DE06725E4998D /* Pods-Turn Touch Mac Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Turn Touch Mac Tests"; path = Pods_Turn_Touch_Mac_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5772012A01651FE687AC8660BC600420 /* SPUDownloaderProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloaderProtocol.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloaderProtocol.h; sourceTree = "<group>"; };
+		59C1B386022064613911B7BEAB445F3D /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/Carbon.framework; sourceTree = DEVELOPER_DIR; };
+		59EDDA222AF4C96FFE28A29FACBEF874 /* MASKeyCodes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASKeyCodes.h; path = Framework/Model/MASKeyCodes.h; sourceTree = "<group>"; };
+		5D3310F948CEE6FED454DD49BA45964B /* SPUDownloaderSession.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloaderSession.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloaderSession.h; sourceTree = "<group>"; };
+		5EDBEC1DD90EFB49E327987BAA133117 /* pl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = pl.lproj; path = Resources/pl.lproj; sourceTree = "<group>"; };
+		60731D978ACB3F8DD634F89D50A6A282 /* AFNetworking-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFNetworking-umbrella.h"; sourceTree = "<group>"; };
+		666C1F90D8AC6ABE1ACE7ED48D193AD6 /* SPUDownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloader.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloader.h; sourceTree = "<group>"; };
+		688EAF08832B92C06C5399E6A2E2DE20 /* SUUpdater.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUUpdater.h; path = Sparkle.framework/Versions/A/Headers/SUUpdater.h; sourceTree = "<group>"; };
+		700D61394988A1F03CCDCF68CDCC408E /* it.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = it.lproj; path = Resources/it.lproj; sourceTree = "<group>"; };
+		7632202C4E2844599DDBF030655B2D64 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		775E78197EBCA971C7E759E267730EA7 /* Pods-Turn Touch Mac-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Turn Touch Mac-dummy.m"; sourceTree = "<group>"; };
-		77BD6069A8AF64F3E954D0BCBFCC44C7 /* ja.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = ja.lproj; path = Resources/ja.lproj; sourceTree = "<group>"; };
-		79F89CE0B130C70FF3CFA5967A86A5DD /* MASShortcut-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MASShortcut-prefix.pch"; sourceTree = "<group>"; };
+		79DECAA2EF315308404D1B586B9490CE /* MASHotKey.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASHotKey.m; path = Framework/Monitoring/MASHotKey.m; sourceTree = "<group>"; };
 		7B777348961F252F78722C62507FB7E4 /* Pods-Turn Touch Mac-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Turn Touch Mac-Info.plist"; sourceTree = "<group>"; };
-		7CAC4CF70DC2E1E2F57EE7F28A655F17 /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLRequestSerialization.m; path = AFNetworking/AFURLRequestSerialization.m; sourceTree = "<group>"; };
-		7CCF531BFFF7D826752EB8CFE061EFE3 /* AFCompatibilityMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFCompatibilityMacros.h; path = AFNetworking/AFCompatibilityMacros.h; sourceTree = "<group>"; };
 		7D795B98C6F36C234298D2FD53CBA4FD /* Pods-Turn Touch Mac Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Turn Touch Mac Tests.release.xcconfig"; sourceTree = "<group>"; };
-		84FFF617E8D36BB0B3CB2214CB536668 /* fr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = fr.lproj; path = Resources/fr.lproj; sourceTree = "<group>"; };
-		86DC623C55FAEE0F403F91EB543825AC /* MASHotKey.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASHotKey.h; path = Framework/Monitoring/MASHotKey.h; sourceTree = "<group>"; };
-		876C895A500E715D32202D53BF73C108 /* MASLocalization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASLocalization.m; path = Framework/UI/MASLocalization.m; sourceTree = "<group>"; };
-		8C4DE89E82F808175408CCDBDA35CAC7 /* MASShortcut.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MASShortcut.xcconfig; sourceTree = "<group>"; };
-		8EA163591391A80AC3B62DB40561E480 /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLResponseSerialization.h; path = AFNetworking/AFURLResponseSerialization.h; sourceTree = "<group>"; };
-		91A605D6573DFC869B76541A2B652E3B /* MASShortcutBinder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASShortcutBinder.m; path = "Framework/User Defaults Storage/MASShortcutBinder.m"; sourceTree = "<group>"; };
-		923C267A8831F8AE5FC656B7F5550E5D /* MASShortcutMonitor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASShortcutMonitor.m; path = Framework/Monitoring/MASShortcutMonitor.m; sourceTree = "<group>"; };
-		92CF155F291D04E8DCF9D277B14572A7 /* SUAppcast.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUAppcast.h; path = Sparkle.framework/Versions/A/Headers/SUAppcast.h; sourceTree = "<group>"; };
+		86AC10F23055278FB43F3FF58A744F35 /* es.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = es.lproj; path = Resources/es.lproj; sourceTree = "<group>"; };
+		8A70619D024DB48C7E8961AF34482C74 /* Sparkle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Sparkle.release.xcconfig; sourceTree = "<group>"; };
+		8BA21D902AB46F1E753A8AFCD229A0D5 /* zh-Hans.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "zh-Hans.lproj"; path = "Resources/zh-Hans.lproj"; sourceTree = "<group>"; };
+		8CFA9800591805560642892018F4B69F /* en.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = en.lproj; path = Resources/en.lproj; sourceTree = "<group>"; };
+		8DCF6ED3019C5AFBFF126F4C64AD6C5A /* AFSecurityPolicy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFSecurityPolicy.m; path = AFNetworking/AFSecurityPolicy.m; sourceTree = "<group>"; };
+		90509ACF60EE9FCAF1BA6DEDB2B66887 /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLResponseSerialization.h; path = AFNetworking/AFURLResponseSerialization.h; sourceTree = "<group>"; };
+		91B7982B47BE1C9764C9EF0B579798E5 /* AFNetworking-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFNetworking-prefix.pch"; sourceTree = "<group>"; };
+		99DFF911EA8E4EAB8A0B67EEF38F3700 /* MASShortcut-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MASShortcut-dummy.m"; sourceTree = "<group>"; };
+		9A7E86796B1D0CB6A1208252591C5370 /* MASShortcut.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASShortcut.m; path = Framework/Model/MASShortcut.m; sourceTree = "<group>"; };
+		9AC943F1C165D5124785B749AF95BA41 /* MASShortcut-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MASShortcut-Info.plist"; sourceTree = "<group>"; };
 		9ADF906448A3D96C956FBCEDB20CAD89 /* Pods-Turn Touch Mac Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Turn Touch Mac Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		9D6CDF2F4667D6058468CD311A47D59B /* MASHotKey.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASHotKey.m; path = Framework/Monitoring/MASHotKey.m; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A2C8C26F82FA5E0EFCE6745140166EF6 /* SPUURLRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUURLRequest.h; path = Sparkle.framework/Versions/A/Headers/SPUURLRequest.h; sourceTree = "<group>"; };
-		A48C7D0240271A43BACE6083EE97521C /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/CoreServices.framework; sourceTree = DEVELOPER_DIR; };
-		A4FA15D44DF6BAC7550EDEED10862AA3 /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AFNetworking.framework; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A8BB47E3C6CEC12F97B35F704271FC4F /* en.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = en.lproj; path = Resources/en.lproj; sourceTree = "<group>"; };
-		A9043B92BE11E19BD46D643E05BA33CB /* MASShortcutView+Bindings.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "MASShortcutView+Bindings.m"; path = "Framework/UI/MASShortcutView+Bindings.m"; sourceTree = "<group>"; };
-		AB15C4296DD946AE543689FBAED85426 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
-		AD04E30C0CEA5E69CF5DB4DA2BCA93BA /* pl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = pl.lproj; path = Resources/pl.lproj; sourceTree = "<group>"; };
+		A4B823380A618C7C7CB3DA973B6C7B74 /* cs.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = cs.lproj; path = Resources/cs.lproj; sourceTree = "<group>"; };
+		A4FA15D44DF6BAC7550EDEED10862AA3 /* AFNetworking */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AFNetworking; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A80B1A6331E8338ACAC89F1CFC176104 /* SPUDownloaderDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloaderDelegate.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloaderDelegate.h; sourceTree = "<group>"; };
+		A8E4AB306714626E4A49D95CBF4C6D5A /* MASHotKey.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASHotKey.h; path = Framework/Monitoring/MASHotKey.h; sourceTree = "<group>"; };
 		AE411DA8C542B9D9838A79F41468E6DA /* Pods-Turn Touch Mac Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Turn Touch Mac Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		B13113F20B12CF43CEA1B1ECDB07C874 /* AFNetworking.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFNetworking.xcconfig; sourceTree = "<group>"; };
-		B33772B46BC9E7238513B2F28B7172B0 /* MASLocalization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASLocalization.h; path = Framework/UI/MASLocalization.h; sourceTree = "<group>"; };
-		B620AB6EA94043A4E58347202B6F2EEF /* SUErrors.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUErrors.h; path = Sparkle.framework/Versions/A/Headers/SUErrors.h; sourceTree = "<group>"; };
+		AE659F05658EC378C0FF67AB3A7D06CA /* MASShortcut.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MASShortcut.modulemap; sourceTree = "<group>"; };
+		B19FA027A7107C48E7B74A121DC0F892 /* Sparkle-copy-dsyms.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Sparkle-copy-dsyms.sh"; sourceTree = "<group>"; };
+		B407F506042CC2F970C3BCFCE17B0965 /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLRequestSerialization.m; path = AFNetworking/AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		B61311C1EE45DBCAC7F2657620C08BD1 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		B71DE502993BB76E1D38415FD6599A41 /* Pods-Turn Touch Mac-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Turn Touch Mac-acknowledgements.plist"; sourceTree = "<group>"; };
-		B7399B011440879C6CBD0EBEF50EACF7 /* MASShortcut.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASShortcut.m; path = Framework/Model/MASShortcut.m; sourceTree = "<group>"; };
-		B97588451B6DDE13519FAE41F8AF6809 /* MASKeyMasks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASKeyMasks.h; path = Framework/Model/MASKeyMasks.h; sourceTree = "<group>"; };
-		B9EC0F411EC8491C5DAD470068DC2B7B /* ko.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = ko.lproj; path = Resources/ko.lproj; sourceTree = "<group>"; };
-		BABF165AC14329ED63753A0BCE9FBD86 /* AFURLSessionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLSessionManager.h; path = AFNetworking/AFURLSessionManager.h; sourceTree = "<group>"; };
-		BAD2095A59993C5F5903CCF1E94DCB98 /* AFNetworking-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "AFNetworking-Info.plist"; sourceTree = "<group>"; };
-		BAD453A27F1EABF11872FED186A0F3AF /* SUUpdater.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUUpdater.h; path = Sparkle.framework/Versions/A/Headers/SUUpdater.h; sourceTree = "<group>"; };
-		BC060690EB6493156B08545AA64AF010 /* ResourceBundle-MASShortcut-MASShortcut-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-MASShortcut-MASShortcut-Info.plist"; sourceTree = "<group>"; };
-		BD1378E3A0CE33295EEF8995A07151F1 /* MASShortcut.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MASShortcut.modulemap; sourceTree = "<group>"; };
-		BD4DF216EF6EEF0884FC71EC60AF5A96 /* it.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = it.lproj; path = Resources/it.lproj; sourceTree = "<group>"; };
-		BEC1F89900350804E8E38AEDA0A4B895 /* AFNetworking.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = AFNetworking.modulemap; sourceTree = "<group>"; };
-		C02985242DC8DAF62DDC9B4C0D89529D /* SPUDownloaderSession.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloaderSession.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloaderSession.h; sourceTree = "<group>"; };
-		C27466B72A31AC406E3424F052A35467 /* SUExport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUExport.h; path = Sparkle.framework/Versions/A/Headers/SUExport.h; sourceTree = "<group>"; };
-		C44DA4F9D62FE09DF7484B86B409CFFF /* MASShortcut-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MASShortcut-dummy.m"; sourceTree = "<group>"; };
-		CCCABB85FB2D91F5601E1BFB4E580917 /* zh-Hant.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "zh-Hant.lproj"; path = "Resources/zh-Hant.lproj"; sourceTree = "<group>"; };
-		CDE0CAAE8F7287F6A09E73D7B93CA0F8 /* SPUDownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloader.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloader.h; sourceTree = "<group>"; };
-		CF32912999EDE7A34B982E576563C92F /* MASShortcutBinder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASShortcutBinder.h; path = "Framework/User Defaults Storage/MASShortcutBinder.h"; sourceTree = "<group>"; };
-		D17534E7E8B9C503CEECAB32AECA698D /* MASShortcutMonitor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASShortcutMonitor.h; path = Framework/Monitoring/MASShortcutMonitor.h; sourceTree = "<group>"; };
+		B79179A6637B35F57E959A84F6E3EC6B /* nl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = nl.lproj; path = Resources/nl.lproj; sourceTree = "<group>"; };
+		B9649D01F74030A0BBEB74F413907893 /* ja.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = ja.lproj; path = Resources/ja.lproj; sourceTree = "<group>"; };
+		B9D2C1BE9FB7904F6778C810F8285FE9 /* AFURLSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLSessionManager.m; path = AFNetworking/AFURLSessionManager.m; sourceTree = "<group>"; };
+		BC2F0ABDDAAF65C60F644132BCDACFFE /* MASShortcutMonitor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASShortcutMonitor.m; path = Framework/Monitoring/MASShortcutMonitor.m; sourceTree = "<group>"; };
+		BD0E5491FEA9256F9E67F6DBFFE82B39 /* zh-Hant.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "zh-Hant.lproj"; path = "Resources/zh-Hant.lproj"; sourceTree = "<group>"; };
+		BE252AA332FF8FD2FEFE01DC4E1796D1 /* MASShortcutValidator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASShortcutValidator.m; path = Framework/Model/MASShortcutValidator.m; sourceTree = "<group>"; };
+		C05CE9467C3F4600184D38623057B683 /* MASShortcutView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASShortcutView.m; path = Framework/UI/MASShortcutView.m; sourceTree = "<group>"; };
+		C175758D8CEBFBAA9572379B091536E6 /* Sparkle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Sparkle.debug.xcconfig; sourceTree = "<group>"; };
+		C48890A2B0AC83EEC670C11665EFA82E /* SUVersionDisplayProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUVersionDisplayProtocol.h; path = Sparkle.framework/Versions/A/Headers/SUVersionDisplayProtocol.h; sourceTree = "<group>"; };
+		C9783B894B32447DB6C3F7D9F38CFFAB /* SUAppcastItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUAppcastItem.h; path = Sparkle.framework/Versions/A/Headers/SUAppcastItem.h; sourceTree = "<group>"; };
+		CA5A169CE2106A503147D28462F3547B /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLRequestSerialization.h; path = AFNetworking/AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		CC7EB369EFAB543B95E9F02C23B6A8AD /* Sparkle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Sparkle.h; path = Sparkle.framework/Versions/A/Headers/Sparkle.h; sourceTree = "<group>"; };
+		CCE1EBDFA89DBFE2D0BB241648006D3B /* MASShortcutBinder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASShortcutBinder.h; path = "Framework/User Defaults Storage/MASShortcutBinder.h"; sourceTree = "<group>"; };
+		CD16D9E4E772C9E6771FE3C71AD6C139 /* sv.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = sv.lproj; path = Resources/sv.lproj; sourceTree = "<group>"; };
+		CF458A2BCB6F5FCE6181558B5B36F226 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPSessionManager.m; path = AFNetworking/AFHTTPSessionManager.m; sourceTree = "<group>"; };
+		CFBFE1C8391B6638BB5329580CB5C948 /* fr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = fr.lproj; path = Resources/fr.lproj; sourceTree = "<group>"; };
+		D1E0E95F4D6417D32F8E4335751BAF68 /* SUVersionComparisonProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUVersionComparisonProtocol.h; path = Sparkle.framework/Versions/A/Headers/SUVersionComparisonProtocol.h; sourceTree = "<group>"; };
+		D27049AA58BEFEB7601BCEB378C65228 /* MASDictionaryTransformer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASDictionaryTransformer.m; path = "Framework/User Defaults Storage/MASDictionaryTransformer.m"; sourceTree = "<group>"; };
 		D494B477AB335B8F38A63B0D6888AB03 /* Pods-Turn Touch Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Turn Touch Mac.debug.xcconfig"; sourceTree = "<group>"; };
-		E0579281D2BB3399CEC4CF010000B4B0 /* MASShortcut.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASShortcut.h; path = Framework/Model/MASShortcut.h; sourceTree = "<group>"; };
-		E1BF114E270C749B9ED9AB06DE33FEC0 /* MASShortcutView+Bindings.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MASShortcutView+Bindings.h"; path = "Framework/UI/MASShortcutView+Bindings.h"; sourceTree = "<group>"; };
-		E26939B1869B285371DA8E260F7E7A52 /* SUVersionDisplayProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUVersionDisplayProtocol.h; path = Sparkle.framework/Versions/A/Headers/SUVersionDisplayProtocol.h; sourceTree = "<group>"; };
-		E2DF2F869B41EF7A41E124B2866BE995 /* SUCodeSigningVerifier.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUCodeSigningVerifier.h; path = Sparkle.framework/Versions/A/Headers/SUCodeSigningVerifier.h; sourceTree = "<group>"; };
-		E389267003777C2D651CAFE7EC0A35AB /* AFSecurityPolicy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFSecurityPolicy.m; path = AFNetworking/AFSecurityPolicy.m; sourceTree = "<group>"; };
+		D56EA8510CF43150FB92B892B710DAD0 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/CoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		D8C1E6C127233E27D7B6008D766198E7 /* SUErrors.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUErrors.h; path = Sparkle.framework/Versions/A/Headers/SUErrors.h; sourceTree = "<group>"; };
+		D93143360A22F6C60E172C74B9C10629 /* pt.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = pt.lproj; path = Resources/pt.lproj; sourceTree = "<group>"; };
+		D9A0AA1D354455936DDD58011DCB54B2 /* AFNetworking.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = AFNetworking.modulemap; sourceTree = "<group>"; };
+		DCEA219E2011AF8449CEC4C5C36BB34C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		DDBED5FB86C86DF310C9CA5544C37B02 /* Shortcut.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Shortcut.h; path = Framework/Shortcut.h; sourceTree = "<group>"; };
+		DE7DEC50E51BF1D3D7C52BFACE68E82E /* MASShortcut.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASShortcut.h; path = Framework/Model/MASShortcut.h; sourceTree = "<group>"; };
+		DE8EFFD618989DCBE67DCF1E8A72DEA0 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFSecurityPolicy.h; path = AFNetworking/AFSecurityPolicy.h; sourceTree = "<group>"; };
+		E3678B6B618C5B0BF6AE97C0CA363037 /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkReachabilityManager.h; path = AFNetworking/AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		E54E2E645E14AAB042CA116669229F90 /* MASLocalization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASLocalization.h; path = Framework/UI/MASLocalization.h; sourceTree = "<group>"; };
 		E5B94E16B5672898337987CF9D65BEA8 /* Pods-Turn Touch Mac Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Turn Touch Mac Tests-Info.plist"; sourceTree = "<group>"; };
-		E5E77EB1E9BD00DE9686B327664A5555 /* MASShortcutView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASShortcutView.h; path = Framework/UI/MASShortcutView.h; sourceTree = "<group>"; };
 		E6B77267C058CA34570FFAC21D41BD18 /* Pods-Turn Touch Mac Tests.testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Turn Touch Mac Tests.testing.xcconfig"; sourceTree = "<group>"; };
-		EC5448D3F7F5158C4433F58B3E2E940F /* pt.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = pt.lproj; path = Resources/pt.lproj; sourceTree = "<group>"; };
-		EF17314FE259E65A8C4C15C678081617 /* cs.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = cs.lproj; path = Resources/cs.lproj; sourceTree = "<group>"; };
-		F002A98A4678A3EC6854456A9DE3BFE4 /* Sparkle.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Sparkle.xcconfig; sourceTree = "<group>"; };
-		F018589E23657008206D473B0F2523D7 /* SPUDownloaderProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloaderProtocol.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloaderProtocol.h; sourceTree = "<group>"; };
+		E93AEB5710C66C0E2B0CBEFAB49AF984 /* MASShortcut.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MASShortcut.debug.xcconfig; sourceTree = "<group>"; };
+		E982F6D8463669ABC1D791F26FC5EAAD /* AFNetworking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFNetworking.release.xcconfig; sourceTree = "<group>"; };
+		E9BA2341FAEF79F24AE853D818A427FA /* SUAppcast.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUAppcast.h; path = Sparkle.framework/Versions/A/Headers/SUAppcast.h; sourceTree = "<group>"; };
+		EA552D6A2C0FD4D014C2D34373D08C16 /* MASShortcut.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MASShortcut.release.xcconfig; sourceTree = "<group>"; };
+		EB4B68DE8B82CE2E89247693224669D0 /* MASShortcut-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MASShortcut-prefix.pch"; sourceTree = "<group>"; };
+		F0D466BFF883F0C5D847D6986E9D7909 /* ru.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = ru.lproj; path = Resources/ru.lproj; sourceTree = "<group>"; };
+		F22A4590D6C2B936FA8051F824999CF1 /* AFCompatibilityMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFCompatibilityMacros.h; path = AFNetworking/AFCompatibilityMacros.h; sourceTree = "<group>"; };
+		F6A71DF05A9E7F85D6E00E243183FC8C /* ResourceBundle-MASShortcut-MASShortcut-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-MASShortcut-MASShortcut-Info.plist"; sourceTree = "<group>"; };
 		F770D483FDD19D4FDC5D0D4373EE22E2 /* Pods-Turn Touch Mac Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Turn Touch Mac Tests.modulemap"; sourceTree = "<group>"; };
 		F8052885FCA5B162FC5B3E3B2FCAC558 /* Pods-Turn Touch Mac.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Turn Touch Mac.modulemap"; sourceTree = "<group>"; };
 		F8C736AEA8CDD6D09812C825A38E299E /* Pods-Turn Touch Mac-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Turn Touch Mac-frameworks.sh"; sourceTree = "<group>"; };
+		FA09D7EC9DE552105CF2025C91DF81D6 /* SUExport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUExport.h; path = Sparkle.framework/Versions/A/Headers/SUExport.h; sourceTree = "<group>"; };
 		FBE68AEEDAF8D6C3A4305C8957A7E05A /* Pods-Turn Touch Mac.testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Turn Touch Mac.testing.xcconfig"; sourceTree = "<group>"; };
-		FEB01DE43854724BE80C1D109FF1EB87 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/Carbon.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0009C966FA70B9ED6B7C57A102160202 /* Frameworks */ = {
+		29BA137C8826FFBBA8E82338D42CB896 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75720045B91272344DA329D6E0FD946E /* AppKit.framework in Frameworks */,
-				5E46E9B83AA4D017BA1AC76353170C37 /* Carbon.framework in Frameworks */,
-				2A551E0AC89BF4C0E6D181F7DAE6C506 /* Cocoa.framework in Frameworks */,
+				5DEA553BD9BDE49139C4EA28AD81D289 /* Cocoa.framework in Frameworks */,
+				2100FC77384DF0204564083C6AB4E0C6 /* CoreServices.framework in Frameworks */,
+				DC94BF8B2DE7D67B80F5C49D61610B69 /* Security.framework in Frameworks */,
+				51537918F96D875CAA6CD8B7E29F8441 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		16D77AC654F460F1A3ED2EA9AE68A4CF /* Frameworks */ = {
+		3D1FC3DDDB116B7487819EEBE723F847 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7117F0432D43F3F126EA75A671D4493 /* Cocoa.framework in Frameworks */,
+				D2FC550A56F67DC434E0AB6E6B6CAF78 /* AppKit.framework in Frameworks */,
+				0F99BCA11DBBC89D93A1494BFE094571 /* Carbon.framework in Frameworks */,
+				F8B8FFB917A9DB8B14F9D918B056535F /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		50CF70336AB2252E0A72B312BF41FFA5 /* Frameworks */ = {
+		738B0670841181C1E091B426DD099CBF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC1DD08774A4C7E62C8A7ACEA089C901 /* Cocoa.framework in Frameworks */,
+				76B7C480F73723E2F52AF61DE849D112 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B10660119752F7E0B635FE402BB7854F /* Frameworks */ = {
+		95DA1DE87EDE9A6E07688579D81C5B20 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C2B3B59AA03B830B8E5BA174DAD01BEB /* Frameworks */ = {
+		A49756A3BFDF7C01210FA3B311E1004E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC61C77D3A8951D057325FC37E95DDBB /* Cocoa.framework in Frameworks */,
-				742BA302FC49B9D3F1F08CA48DFC4162 /* CoreServices.framework in Frameworks */,
-				B7D44A8AD8222D30EF9269729A947365 /* Security.framework in Frameworks */,
-				4328FECC31A6128366FC38D8C8BC2081 /* SystemConfiguration.framework in Frameworks */,
+				3409936F3A99B159534D7F9E327AD140 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		200DA6A590B5B3163152974235DD9275 /* AFNetworking */ = {
+		09C7138C574D4D00D57054225CE9C824 /* Security */ = {
 			isa = PBXGroup;
 			children = (
-				0F9E3F4D5B14234F992CD1264AFC5BA4 /* AFNetworking.h */,
-				3051E7AC78FA505D60E1A6FDF9649105 /* NSURLSession */,
-				EEC790B7D79FEC3754A7363900641EE0 /* Reachability */,
-				32AAD8B40A81D5691B088F76905257EB /* Security */,
-				C09FC6BA8EDCA31C0B5431DDF7D1278E /* Serialization */,
-				AEBEC0F87A7BA4B62DECF976FA6C690C /* Support Files */,
+				DE8EFFD618989DCBE67DCF1E8A72DEA0 /* AFSecurityPolicy.h */,
+				8DCF6ED3019C5AFBFF126F4C64AD6C5A /* AFSecurityPolicy.m */,
+			);
+			name = Security;
+			sourceTree = "<group>";
+		};
+		0DC107156593130395FDA08156A64BF9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4242E981C1ACA7BCD89ACA20596B7B36 /* AFNetworking */,
+				34494E999CF1C2131FA5FE2BE372C89D /* MASShortcut */,
+				635A5A755ABF6F1D97CD25329EEFE10F /* Sparkle */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		34494E999CF1C2131FA5FE2BE372C89D /* MASShortcut */ = {
+			isa = PBXGroup;
+			children = (
+				36454F39440698875134940A559FA99D /* MASDictionaryTransformer.h */,
+				D27049AA58BEFEB7601BCEB378C65228 /* MASDictionaryTransformer.m */,
+				A8E4AB306714626E4A49D95CBF4C6D5A /* MASHotKey.h */,
+				79DECAA2EF315308404D1B586B9490CE /* MASHotKey.m */,
+				59EDDA222AF4C96FFE28A29FACBEF874 /* MASKeyCodes.h */,
+				4ABCE4AC5DFD8B0C31482BC4067619E2 /* MASKeyMasks.h */,
+				E54E2E645E14AAB042CA116669229F90 /* MASLocalization.h */,
+				3749688FC8FF26E1C4974BBF1A44FE67 /* MASLocalization.m */,
+				DE7DEC50E51BF1D3D7C52BFACE68E82E /* MASShortcut.h */,
+				9A7E86796B1D0CB6A1208252591C5370 /* MASShortcut.m */,
+				CCE1EBDFA89DBFE2D0BB241648006D3B /* MASShortcutBinder.h */,
+				3CC8E009134989A83F5DD89A0015F2C7 /* MASShortcutBinder.m */,
+				05FA46E9CE334F492145C7E29BD002A0 /* MASShortcutMonitor.h */,
+				BC2F0ABDDAAF65C60F644132BCDACFFE /* MASShortcutMonitor.m */,
+				3B0E46E1E2E988581D2E08A591D3D031 /* MASShortcutValidator.h */,
+				BE252AA332FF8FD2FEFE01DC4E1796D1 /* MASShortcutValidator.m */,
+				36A07CBAF194A4F5EEBACECB668E54B9 /* MASShortcutView.h */,
+				C05CE9467C3F4600184D38623057B683 /* MASShortcutView.m */,
+				3F55001070731DE1F06E326A29939815 /* MASShortcutView+Bindings.h */,
+				1CF145950CC6311088F13EFDBB51045C /* MASShortcutView+Bindings.m */,
+				DDBED5FB86C86DF310C9CA5544C37B02 /* Shortcut.h */,
+				6875F9936AD53176E8A95F7FBA7CEB0E /* Resources */,
+				B60F3F61F68F4A6FFF8B80B8AECCDCCF /* Support Files */,
+			);
+			name = MASShortcut;
+			path = MASShortcut;
+			sourceTree = "<group>";
+		};
+		4242E981C1ACA7BCD89ACA20596B7B36 /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				2692A1964CDB65D3B73E8A8BC317D1FF /* AFNetworking.h */,
+				5FF6262A59760083B880315CA38722C4 /* NSURLSession */,
+				BB340F9B0AF121FF8E1FD4101F4CD40A /* Reachability */,
+				09C7138C574D4D00D57054225CE9C824 /* Security */,
+				607416505382042C1266344A3D6753DF /* Serialization */,
+				47A1C1E34B856E7F1499EBDCC6FF397A /* Support Files */,
 			);
 			name = AFNetworking;
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
-		2826B588BC1DD87792361A342C87145F /* Resources */ = {
+		47A1C1E34B856E7F1499EBDCC6FF397A /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				EF17314FE259E65A8C4C15C678081617 /* cs.lproj */,
-				54FEF3F057F0EC9E9483520811C7062F /* de.lproj */,
-				A8BB47E3C6CEC12F97B35F704271FC4F /* en.lproj */,
-				242DAC1CAD1D78FC08398345070B9185 /* es.lproj */,
-				84FFF617E8D36BB0B3CB2214CB536668 /* fr.lproj */,
-				BD4DF216EF6EEF0884FC71EC60AF5A96 /* it.lproj */,
-				77BD6069A8AF64F3E954D0BCBFCC44C7 /* ja.lproj */,
-				B9EC0F411EC8491C5DAD470068DC2B7B /* ko.lproj */,
-				4A4AB1E0ECBA3F7E0CF5A2CA4BC31C00 /* nl.lproj */,
-				AD04E30C0CEA5E69CF5DB4DA2BCA93BA /* pl.lproj */,
-				EC5448D3F7F5158C4433F58B3E2E940F /* pt.lproj */,
-				1BA69C46F375F756CE5E19822AD763E6 /* ru.lproj */,
-				57F412F20472266C6CB88537EE7379D1 /* sv.lproj */,
-				668E4BA3E2D1294BFB5390FF758C6A0B /* zh-Hans.lproj */,
-				CCCABB85FB2D91F5601E1BFB4E580917 /* zh-Hant.lproj */,
+				D9A0AA1D354455936DDD58011DCB54B2 /* AFNetworking.modulemap */,
+				4632CA69BB860D8AEDA9CE00D6BB498D /* AFNetworking-dummy.m */,
+				25F9D8D07A2A4E3183956BCCBACCAD9A /* AFNetworking-Info.plist */,
+				91B7982B47BE1C9764C9EF0B579798E5 /* AFNetworking-prefix.pch */,
+				60731D978ACB3F8DD634F89D50A6A282 /* AFNetworking-umbrella.h */,
+				1E234BBA3D9AF10356C8869F32A29CD3 /* AFNetworking.debug.xcconfig */,
+				E982F6D8463669ABC1D791F26FC5EAAD /* AFNetworking.release.xcconfig */,
 			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		2AAD38CA1C1A589F09C8609B986ED434 /* Sparkle */ = {
-			isa = PBXGroup;
-			children = (
-				3D1D14FFF0003402BB2A7D8DC720D231 /* Sparkle.h */,
-				4EEC8A412974B74A33086E5B75279E94 /* SPUDownloadData.h */,
-				CDE0CAAE8F7287F6A09E73D7B93CA0F8 /* SPUDownloader.h */,
-				263918DD68364535D0998685F038E384 /* SPUDownloaderDelegate.h */,
-				43284EFAA5AEE3DFA509199EF516F32F /* SPUDownloaderDeprecated.h */,
-				F018589E23657008206D473B0F2523D7 /* SPUDownloaderProtocol.h */,
-				C02985242DC8DAF62DDC9B4C0D89529D /* SPUDownloaderSession.h */,
-				A2C8C26F82FA5E0EFCE6745140166EF6 /* SPUURLRequest.h */,
-				92CF155F291D04E8DCF9D277B14572A7 /* SUAppcast.h */,
-				56FE50DA548F8EEEDC4E5275BBBC3423 /* SUAppcastItem.h */,
-				E2DF2F869B41EF7A41E124B2866BE995 /* SUCodeSigningVerifier.h */,
-				B620AB6EA94043A4E58347202B6F2EEF /* SUErrors.h */,
-				C27466B72A31AC406E3424F052A35467 /* SUExport.h */,
-				4261BB785B2DDB31CAC3C803A9A17210 /* SUStandardVersionComparator.h */,
-				BAD453A27F1EABF11872FED186A0F3AF /* SUUpdater.h */,
-				3755D8D4E5FB4DFEBA7B6075A4D803AC /* SUUpdaterDelegate.h */,
-				1B6C667F83523E5CFA5EF30C73640BAB /* SUVersionComparisonProtocol.h */,
-				E26939B1869B285371DA8E260F7E7A52 /* SUVersionDisplayProtocol.h */,
-				AC7F50338751E4213531BBCA93ED4E40 /* Frameworks */,
-				746C7C7C39BF3F483515D50A7433B2C0 /* Support Files */,
-			);
-			name = Sparkle;
-			path = Sparkle;
-			sourceTree = "<group>";
-		};
-		3051E7AC78FA505D60E1A6FDF9649105 /* NSURLSession */ = {
-			isa = PBXGroup;
-			children = (
-				7CCF531BFFF7D826752EB8CFE061EFE3 /* AFCompatibilityMacros.h */,
-				279A88B98508CBDF6D6669A4115269AA /* AFHTTPSessionManager.h */,
-				46D27F06EAFC8A105CBD84684D518D8D /* AFHTTPSessionManager.m */,
-				BABF165AC14329ED63753A0BCE9FBD86 /* AFURLSessionManager.h */,
-				52D27F659404EC178DE692D7FEEB52C4 /* AFURLSessionManager.m */,
-			);
-			name = NSURLSession;
-			sourceTree = "<group>";
-		};
-		32AAD8B40A81D5691B088F76905257EB /* Security */ = {
-			isa = PBXGroup;
-			children = (
-				744C24B286E2E67FE85F7AE6FB6CC8D4 /* AFSecurityPolicy.h */,
-				E389267003777C2D651CAFE7EC0A35AB /* AFSecurityPolicy.m */,
-			);
-			name = Security;
+			name = "Support Files";
+			path = "../Target Support Files/AFNetworking";
 			sourceTree = "<group>";
 		};
 		5122B99D1D8AA373921CB441D0F288FE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C5FC6FA12C90E1BE8429E0358D13F18B /* OS X */,
+				7F489B1BE44AE60F1C5FB97A14945AC1 /* OS X */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -402,102 +400,125 @@
 			path = "Target Support Files/Pods-Turn Touch Mac Tests";
 			sourceTree = "<group>";
 		};
-		7063CAFBEA391680F6CF78885FD156AD /* Products */ = {
+		5FF6262A59760083B880315CA38722C4 /* NSURLSession */ = {
 			isa = PBXGroup;
 			children = (
-				A4FA15D44DF6BAC7550EDEED10862AA3 /* AFNetworking.framework */,
-				230F8208BE63C052A548A7D41A1158B2 /* MASShortcut.bundle */,
-				26A8810424438A12E7ADBFB3E068C658 /* MASShortcut.framework */,
-				2ECEB5231AECB2CB0A0A4D01B1FE6719 /* Pods_Turn_Touch_Mac.framework */,
-				55B37607AE22E5C8E99DE06725E4998D /* Pods_Turn_Touch_Mac_Tests.framework */,
+				F22A4590D6C2B936FA8051F824999CF1 /* AFCompatibilityMacros.h */,
+				2103AAFF37BB8E8D7C3796FF45457B69 /* AFHTTPSessionManager.h */,
+				CF458A2BCB6F5FCE6181558B5B36F226 /* AFHTTPSessionManager.m */,
+				4979B0C7FD470AA7D09BC1A63AB82E3B /* AFURLSessionManager.h */,
+				B9D2C1BE9FB7904F6778C810F8285FE9 /* AFURLSessionManager.m */,
 			);
-			name = Products;
+			name = NSURLSession;
 			sourceTree = "<group>";
 		};
-		746C7C7C39BF3F483515D50A7433B2C0 /* Support Files */ = {
+		607416505382042C1266344A3D6753DF /* Serialization */ = {
 			isa = PBXGroup;
 			children = (
-				F002A98A4678A3EC6854456A9DE3BFE4 /* Sparkle.xcconfig */,
+				CA5A169CE2106A503147D28462F3547B /* AFURLRequestSerialization.h */,
+				B407F506042CC2F970C3BCFCE17B0965 /* AFURLRequestSerialization.m */,
+				90509ACF60EE9FCAF1BA6DEDB2B66887 /* AFURLResponseSerialization.h */,
+				4EEA26D6BA125BD22D5A2C4B624311C5 /* AFURLResponseSerialization.m */,
+			);
+			name = Serialization;
+			sourceTree = "<group>";
+		};
+		635A5A755ABF6F1D97CD25329EEFE10F /* Sparkle */ = {
+			isa = PBXGroup;
+			children = (
+				CC7EB369EFAB543B95E9F02C23B6A8AD /* Sparkle.h */,
+				068D1F44D340944D354B158A14A2B5F9 /* SPUDownloadData.h */,
+				666C1F90D8AC6ABE1ACE7ED48D193AD6 /* SPUDownloader.h */,
+				A80B1A6331E8338ACAC89F1CFC176104 /* SPUDownloaderDelegate.h */,
+				5772012A01651FE687AC8660BC600420 /* SPUDownloaderProtocol.h */,
+				5D3310F948CEE6FED454DD49BA45964B /* SPUDownloaderSession.h */,
+				0CA930E3C95CA961A5384CFF6CC4A08C /* SPUURLRequest.h */,
+				E9BA2341FAEF79F24AE853D818A427FA /* SUAppcast.h */,
+				C9783B894B32447DB6C3F7D9F38CFFAB /* SUAppcastItem.h */,
+				36A05E1433DA0D9AF7C2593926E87F05 /* SUCodeSigningVerifier.h */,
+				D8C1E6C127233E27D7B6008D766198E7 /* SUErrors.h */,
+				FA09D7EC9DE552105CF2025C91DF81D6 /* SUExport.h */,
+				4A826F82F6F83E56F33EBDC5A6D69F51 /* SUStandardVersionComparator.h */,
+				688EAF08832B92C06C5399E6A2E2DE20 /* SUUpdater.h */,
+				2D34D18FBCCA85A91617667D7F7D42CF /* SUUpdaterDelegate.h */,
+				D1E0E95F4D6417D32F8E4335751BAF68 /* SUVersionComparisonProtocol.h */,
+				C48890A2B0AC83EEC670C11665EFA82E /* SUVersionDisplayProtocol.h */,
+				DFBE732E02E879E85F21D0756B85A513 /* Frameworks */,
+				B1B33B8AC2876D61AC6FC69A12BBD927 /* Support Files */,
+			);
+			name = Sparkle;
+			path = Sparkle;
+			sourceTree = "<group>";
+		};
+		6875F9936AD53176E8A95F7FBA7CEB0E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A4B823380A618C7C7CB3DA973B6C7B74 /* cs.lproj */,
+				0B4886E2A5F44BDE9C29BB17E3AA4823 /* de.lproj */,
+				8CFA9800591805560642892018F4B69F /* en.lproj */,
+				86AC10F23055278FB43F3FF58A744F35 /* es.lproj */,
+				CFBFE1C8391B6638BB5329580CB5C948 /* fr.lproj */,
+				700D61394988A1F03CCDCF68CDCC408E /* it.lproj */,
+				B9649D01F74030A0BBEB74F413907893 /* ja.lproj */,
+				0C81B8B5D42D609F1F67CC11D5AACAC0 /* ko.lproj */,
+				B79179A6637B35F57E959A84F6E3EC6B /* nl.lproj */,
+				5EDBEC1DD90EFB49E327987BAA133117 /* pl.lproj */,
+				D93143360A22F6C60E172C74B9C10629 /* pt.lproj */,
+				F0D466BFF883F0C5D847D6986E9D7909 /* ru.lproj */,
+				CD16D9E4E772C9E6771FE3C71AD6C139 /* sv.lproj */,
+				8BA21D902AB46F1E753A8AFCD229A0D5 /* zh-Hans.lproj */,
+				BD0E5491FEA9256F9E67F6DBFFE82B39 /* zh-Hant.lproj */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		7F489B1BE44AE60F1C5FB97A14945AC1 /* OS X */ = {
+			isa = PBXGroup;
+			children = (
+				3C748B953B60E82D93313A534FDB6702 /* AppKit.framework */,
+				59C1B386022064613911B7BEAB445F3D /* Carbon.framework */,
+				3F5CA97A994DBCCBBED002BC50678793 /* Cocoa.framework */,
+				D56EA8510CF43150FB92B892B710DAD0 /* CoreServices.framework */,
+				7632202C4E2844599DDBF030655B2D64 /* Security.framework */,
+				DCEA219E2011AF8449CEC4C5C36BB34C /* SystemConfiguration.framework */,
+			);
+			name = "OS X";
+			sourceTree = "<group>";
+		};
+		B1B33B8AC2876D61AC6FC69A12BBD927 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B19FA027A7107C48E7B74A121DC0F892 /* Sparkle-copy-dsyms.sh */,
+				C175758D8CEBFBAA9572379B091536E6 /* Sparkle.debug.xcconfig */,
+				8A70619D024DB48C7E8961AF34482C74 /* Sparkle.release.xcconfig */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/Sparkle";
 			sourceTree = "<group>";
 		};
-		A8A59C6B544B0CA0FF5B3D5246480F97 /* MASShortcut */ = {
+		B60F3F61F68F4A6FFF8B80B8AECCDCCF /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				667EDC17B9908E8179E9755CB325E0C6 /* MASDictionaryTransformer.h */,
-				0237527DD295DF75373063D953E07644 /* MASDictionaryTransformer.m */,
-				86DC623C55FAEE0F403F91EB543825AC /* MASHotKey.h */,
-				9D6CDF2F4667D6058468CD311A47D59B /* MASHotKey.m */,
-				35EE69AF02E0D52DB6EB119B2A4CD9B8 /* MASKeyCodes.h */,
-				B97588451B6DDE13519FAE41F8AF6809 /* MASKeyMasks.h */,
-				B33772B46BC9E7238513B2F28B7172B0 /* MASLocalization.h */,
-				876C895A500E715D32202D53BF73C108 /* MASLocalization.m */,
-				E0579281D2BB3399CEC4CF010000B4B0 /* MASShortcut.h */,
-				B7399B011440879C6CBD0EBEF50EACF7 /* MASShortcut.m */,
-				CF32912999EDE7A34B982E576563C92F /* MASShortcutBinder.h */,
-				91A605D6573DFC869B76541A2B652E3B /* MASShortcutBinder.m */,
-				D17534E7E8B9C503CEECAB32AECA698D /* MASShortcutMonitor.h */,
-				923C267A8831F8AE5FC656B7F5550E5D /* MASShortcutMonitor.m */,
-				151E57D33C370E6833544B3936F22442 /* MASShortcutValidator.h */,
-				5301ECF5E7D5BE68C6A41278F44AE292 /* MASShortcutValidator.m */,
-				E5E77EB1E9BD00DE9686B327664A5555 /* MASShortcutView.h */,
-				6E32D34E8D8B4C7B0D32DD5847556763 /* MASShortcutView.m */,
-				E1BF114E270C749B9ED9AB06DE33FEC0 /* MASShortcutView+Bindings.h */,
-				A9043B92BE11E19BD46D643E05BA33CB /* MASShortcutView+Bindings.m */,
-				0450ADB6B04E749B782240D0323A2B6F /* Shortcut.h */,
-				2826B588BC1DD87792361A342C87145F /* Resources */,
-				DC8A6BF9B8EAA6A74487537D20401C9F /* Support Files */,
-			);
-			name = MASShortcut;
-			path = MASShortcut;
-			sourceTree = "<group>";
-		};
-		AC7F50338751E4213531BBCA93ED4E40 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				015031A10FE6071B87428706C5F1605E /* Sparkle.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		AEBEC0F87A7BA4B62DECF976FA6C690C /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				BEC1F89900350804E8E38AEDA0A4B895 /* AFNetworking.modulemap */,
-				B13113F20B12CF43CEA1B1ECDB07C874 /* AFNetworking.xcconfig */,
-				38C62F003521E5143F1458826FB7EC35 /* AFNetworking-dummy.m */,
-				BAD2095A59993C5F5903CCF1E94DCB98 /* AFNetworking-Info.plist */,
-				0CAC48CA567F97C6F6EA79765B7471D2 /* AFNetworking-prefix.pch */,
-				228768F192C5BCD195A7231FF99EB162 /* AFNetworking-umbrella.h */,
+				AE659F05658EC378C0FF67AB3A7D06CA /* MASShortcut.modulemap */,
+				99DFF911EA8E4EAB8A0B67EEF38F3700 /* MASShortcut-dummy.m */,
+				9AC943F1C165D5124785B749AF95BA41 /* MASShortcut-Info.plist */,
+				EB4B68DE8B82CE2E89247693224669D0 /* MASShortcut-prefix.pch */,
+				1767721B5741FBA1DA884FD68ECA152C /* MASShortcut-umbrella.h */,
+				E93AEB5710C66C0E2B0CBEFAB49AF984 /* MASShortcut.debug.xcconfig */,
+				EA552D6A2C0FD4D014C2D34373D08C16 /* MASShortcut.release.xcconfig */,
+				F6A71DF05A9E7F85D6E00E243183FC8C /* ResourceBundle-MASShortcut-MASShortcut-Info.plist */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/AFNetworking";
+			path = "../Target Support Files/MASShortcut";
 			sourceTree = "<group>";
 		};
-		C09FC6BA8EDCA31C0B5431DDF7D1278E /* Serialization */ = {
+		BB340F9B0AF121FF8E1FD4101F4CD40A /* Reachability */ = {
 			isa = PBXGroup;
 			children = (
-				09C37845199392CA596F5698595B53DE /* AFURLRequestSerialization.h */,
-				7CAC4CF70DC2E1E2F57EE7F28A655F17 /* AFURLRequestSerialization.m */,
-				8EA163591391A80AC3B62DB40561E480 /* AFURLResponseSerialization.h */,
-				492129DEB7BC0BEABC8C9474633F8039 /* AFURLResponseSerialization.m */,
+				E3678B6B618C5B0BF6AE97C0CA363037 /* AFNetworkReachabilityManager.h */,
+				3A6431EC964A38D2DBD0641E2D182355 /* AFNetworkReachabilityManager.m */,
 			);
-			name = Serialization;
-			sourceTree = "<group>";
-		};
-		C5FC6FA12C90E1BE8429E0358D13F18B /* OS X */ = {
-			isa = PBXGroup;
-			children = (
-				059E2152D89BDC9F7D35C2F6AB6D63F9 /* AppKit.framework */,
-				FEB01DE43854724BE80C1D109FF1EB87 /* Carbon.framework */,
-				2ECED814DFC0B86EDFEBADFE82C1AED8 /* Cocoa.framework */,
-				A48C7D0240271A43BACE6083EE97521C /* CoreServices.framework */,
-				35D7AED94C07C64AFED6CF1541A098BF /* Security.framework */,
-				AB15C4296DD946AE543689FBAED85426 /* SystemConfiguration.framework */,
-			);
-			name = "OS X";
+			name = Reachability;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -505,8 +526,8 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				5122B99D1D8AA373921CB441D0F288FE /* Frameworks */,
-				DEB944EEFAC30507EE26940E4F0B076F /* Pods */,
-				7063CAFBEA391680F6CF78885FD156AD /* Products */,
+				0DC107156593130395FDA08156A64BF9 /* Pods */,
+				EF45F1CB84A899144F2D7174817CF67E /* Products */,
 				FC94494AAD446EF140686642D10CF23F /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -529,38 +550,24 @@
 			path = "Target Support Files/Pods-Turn Touch Mac";
 			sourceTree = "<group>";
 		};
-		DC8A6BF9B8EAA6A74487537D20401C9F /* Support Files */ = {
+		DFBE732E02E879E85F21D0756B85A513 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BD1378E3A0CE33295EEF8995A07151F1 /* MASShortcut.modulemap */,
-				8C4DE89E82F808175408CCDBDA35CAC7 /* MASShortcut.xcconfig */,
-				C44DA4F9D62FE09DF7484B86B409CFFF /* MASShortcut-dummy.m */,
-				4666DE0A3B9DC49C118A2962AF3FB240 /* MASShortcut-Info.plist */,
-				79F89CE0B130C70FF3CFA5967A86A5DD /* MASShortcut-prefix.pch */,
-				3A0A468DA1E4724766CA1DD52A61D306 /* MASShortcut-umbrella.h */,
-				BC060690EB6493156B08545AA64AF010 /* ResourceBundle-MASShortcut-MASShortcut-Info.plist */,
+				B61311C1EE45DBCAC7F2657620C08BD1 /* Sparkle.framework */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/MASShortcut";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		DEB944EEFAC30507EE26940E4F0B076F /* Pods */ = {
+		EF45F1CB84A899144F2D7174817CF67E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				200DA6A590B5B3163152974235DD9275 /* AFNetworking */,
-				A8A59C6B544B0CA0FF5B3D5246480F97 /* MASShortcut */,
-				2AAD38CA1C1A589F09C8609B986ED434 /* Sparkle */,
+				A4FA15D44DF6BAC7550EDEED10862AA3 /* AFNetworking */,
+				26A8810424438A12E7ADBFB3E068C658 /* MASShortcut */,
+				230F8208BE63C052A548A7D41A1158B2 /* MASShortcut-MASShortcut */,
+				2ECEB5231AECB2CB0A0A4D01B1FE6719 /* Pods-Turn Touch Mac */,
+				55B37607AE22E5C8E99DE06725E4998D /* Pods-Turn Touch Mac Tests */,
 			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		EEC790B7D79FEC3754A7363900641EE0 /* Reachability */ = {
-			isa = PBXGroup;
-			children = (
-				00B5722C58936B3A5F9A77ED2328AC32 /* AFNetworkReachabilityManager.h */,
-				1757F1013EFAF93BE3B6ABC32D528D6F /* AFNetworkReachabilityManager.m */,
-			);
-			name = Reachability;
+			name = Products;
 			sourceTree = "<group>";
 		};
 		FC94494AAD446EF140686642D10CF23F /* Targets Support Files */ = {
@@ -575,55 +582,55 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		1C417676C7F7B6AB1E48D2B1F5830299 /* Headers */ = {
+		236FC266B1893C474C9F8FCB8731045C /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16B744483ACF778051441482478F8195 /* Pods-Turn Touch Mac-umbrella.h in Headers */,
+				9671310EB30185D2C5C25201E156A6BA /* Pods-Turn Touch Mac Tests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		83507D0DE59C421C962531B581061BF8 /* Headers */ = {
+		56AA188F539EB45D3CC81A8ECBDDA5FA /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A12772B5C4751173A0165052C23C9BB7 /* AFCompatibilityMacros.h in Headers */,
-				7BF8914E445513D3C2B05B8042F3131D /* AFHTTPSessionManager.h in Headers */,
-				223EE9E9DCA38137AF650CB3A50DF191 /* AFNetworking-umbrella.h in Headers */,
-				B7FA24CE05242AB77C5D98A9067B69CF /* AFNetworking.h in Headers */,
-				000CE90DA785FC9A6EAB74FD9AC55E12 /* AFNetworkReachabilityManager.h in Headers */,
-				97E6B51D1952C0548E27DACECCE52F89 /* AFSecurityPolicy.h in Headers */,
-				7D2F0BA9165EE57EDB6C4EA68202B049 /* AFURLRequestSerialization.h in Headers */,
-				BDDD5EE788E7A65E893D3A93B3BC6F2B /* AFURLResponseSerialization.h in Headers */,
-				0AAD34D7C2910D65FB0613EC046EB32F /* AFURLSessionManager.h in Headers */,
+				65FD7131CDBC13EC054FF82EAAF580AA /* MASDictionaryTransformer.h in Headers */,
+				E3B2050E796C46BE9463F54ED36246E0 /* MASHotKey.h in Headers */,
+				ACD52F77980C5397B0C1938A031EFEFC /* MASKeyCodes.h in Headers */,
+				D8220E64A8B606829CC2421A98ABF03A /* MASKeyMasks.h in Headers */,
+				3C5354A68B89452020C152528A138BA5 /* MASLocalization.h in Headers */,
+				FFA2F5C189382616EB6791284B792E02 /* MASShortcut.h in Headers */,
+				E85352163DD744B321089490A3196E02 /* MASShortcut-umbrella.h in Headers */,
+				5139B6A94CF4AC83A987B51B80C4C0F2 /* MASShortcutBinder.h in Headers */,
+				D9E3017D5CD2ED8987AF64C1ED2E7E2F /* MASShortcutMonitor.h in Headers */,
+				B2C1A96D0353410B53E08AA31F1E3B04 /* MASShortcutValidator.h in Headers */,
+				2741F873AEC7CF4BB2CDCD47C750F99A /* MASShortcutView.h in Headers */,
+				402E1AE081E797ED67205789C03540C7 /* MASShortcutView+Bindings.h in Headers */,
+				D373CE844C0FFD770FD0522DB32C6984 /* Shortcut.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		87A845420BDBF55BD11202DAD8024279 /* Headers */ = {
+		BA3E290B94BE4C34C8C21A256DC7A57A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				922754E0A6ADBF6947787323C3181186 /* Pods-Turn Touch Mac Tests-umbrella.h in Headers */,
+				8DFA4536CAC0ABE3684E11DCE90D1C94 /* Pods-Turn Touch Mac-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9400A51663CF4735543A640C1B082960 /* Headers */ = {
+		DC635BFCD1D65B78E6901C097FCE2799 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17A9E7A03D7B35C706DB38B66BFA224A /* MASDictionaryTransformer.h in Headers */,
-				FF3818F1AE7BCBC88F3A5BEFE5DAE070 /* MASHotKey.h in Headers */,
-				41FEA7C88C689FC6BBBD891EA1EE5413 /* MASKeyCodes.h in Headers */,
-				63E28832311EE6B28FF7D20E50A7D301 /* MASKeyMasks.h in Headers */,
-				36B10481C861BC578E2E34F964D26367 /* MASLocalization.h in Headers */,
-				CDA6D20391068E805D8CA5DF0E8CD1FF /* MASShortcut-umbrella.h in Headers */,
-				DFA3AD60DB96E887429856957F776AD7 /* MASShortcut.h in Headers */,
-				5557308704D6FB8BFE34CDF60496318A /* MASShortcutBinder.h in Headers */,
-				84ACFF6619A39B1D5EA27CEFCBCA5DD5 /* MASShortcutMonitor.h in Headers */,
-				A2441DD5264F9D17965CFFCBECD7567D /* MASShortcutValidator.h in Headers */,
-				887E8F12E958D52E748B7CADA81B969F /* MASShortcutView+Bindings.h in Headers */,
-				1A70833DC3974ECB07D31901FAEC8C4D /* MASShortcutView.h in Headers */,
-				94E5D4646D404FD303102C8805C734AF /* Shortcut.h in Headers */,
+				2EA4FCF2E570FAE9F4BABB501E00D2DC /* AFCompatibilityMacros.h in Headers */,
+				1893B01F6883E3143322E59A9DA701C7 /* AFHTTPSessionManager.h in Headers */,
+				29380CE7078DE5186BACAEB401353224 /* AFNetworking.h in Headers */,
+				E400144CEF7E24303572BFDA16373980 /* AFNetworking-umbrella.h in Headers */,
+				4CF04F9FEC428D196C0D3D10B980D58F /* AFNetworkReachabilityManager.h in Headers */,
+				FC232BE19F26FD7EFEE6E253C7421616 /* AFSecurityPolicy.h in Headers */,
+				40DFFA0462462F0D7867F0957DF147AE /* AFURLRequestSerialization.h in Headers */,
+				0946706EF249F2E9D27362EA8AA7C259 /* AFURLResponseSerialization.h in Headers */,
+				93422BBE1A3CADA02A3A629CB41FD13E /* AFURLSessionManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -632,12 +639,12 @@
 /* Begin PBXNativeTarget section */
 		0130B3724283586C0E9D2A112D4F2AA1 /* AFNetworking */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 903968571151B40267A498B60D7B101D /* Build configuration list for PBXNativeTarget "AFNetworking" */;
+			buildConfigurationList = 133AEDE2938F27DDDB95ECD7E27BE819 /* Build configuration list for PBXNativeTarget "AFNetworking" */;
 			buildPhases = (
-				83507D0DE59C421C962531B581061BF8 /* Headers */,
-				BC5EBE66D6D662FFB38ACF821BF834DD /* Sources */,
-				C2B3B59AA03B830B8E5BA174DAD01BEB /* Frameworks */,
-				D507564611BAEA5F648DC116B381EAFB /* Resources */,
+				DC635BFCD1D65B78E6901C097FCE2799 /* Headers */,
+				9E0996416D972899AA8FA2B634B3910F /* Sources */,
+				29BA137C8826FFBBA8E82338D42CB896 /* Frameworks */,
+				F3554007574D3BC8A1C3F8EBB2AF9B78 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -645,83 +652,83 @@
 			);
 			name = AFNetworking;
 			productName = AFNetworking;
-			productReference = A4FA15D44DF6BAC7550EDEED10862AA3 /* AFNetworking.framework */;
+			productReference = A4FA15D44DF6BAC7550EDEED10862AA3 /* AFNetworking */;
 			productType = "com.apple.product-type.framework";
 		};
 		2B2B481A164695722839BD581D442457 /* MASShortcut */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2B8B880760DCB55ECF1C0E7B0F299EEA /* Build configuration list for PBXNativeTarget "MASShortcut" */;
+			buildConfigurationList = 569C54FCE75FCD84E4714C37D3CCE09A /* Build configuration list for PBXNativeTarget "MASShortcut" */;
 			buildPhases = (
-				9400A51663CF4735543A640C1B082960 /* Headers */,
-				F1790F47A0536853DC2F1C94143C9198 /* Sources */,
-				0009C966FA70B9ED6B7C57A102160202 /* Frameworks */,
-				84AA3F691B8FC0B1C53A8E2C0BE36540 /* Resources */,
+				56AA188F539EB45D3CC81A8ECBDDA5FA /* Headers */,
+				19A05C6F6F5383724958BB90733B0474 /* Sources */,
+				3D1FC3DDDB116B7487819EEBE723F847 /* Frameworks */,
+				248AD5C603B8AA94A13DDF21FAFC8D11 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				DDE0D23EDB7C425BEA9D1D942827BC36 /* PBXTargetDependency */,
+				96E67F571D79F68626EE569134F86283 /* PBXTargetDependency */,
 			);
 			name = MASShortcut;
 			productName = MASShortcut;
-			productReference = 26A8810424438A12E7ADBFB3E068C658 /* MASShortcut.framework */;
+			productReference = 26A8810424438A12E7ADBFB3E068C658 /* MASShortcut */;
 			productType = "com.apple.product-type.framework";
 		};
 		418A1626B185A7896E024B4780F8A668 /* Pods-Turn Touch Mac Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F82C6AB69E251EDEC2E330179BC410AE /* Build configuration list for PBXNativeTarget "Pods-Turn Touch Mac Tests" */;
+			buildConfigurationList = 3584329AD1B92DCB9E1F9A46626B3883 /* Build configuration list for PBXNativeTarget "Pods-Turn Touch Mac Tests" */;
 			buildPhases = (
-				87A845420BDBF55BD11202DAD8024279 /* Headers */,
-				C14D6B053FC1632B701D22066E26EF13 /* Sources */,
-				16D77AC654F460F1A3ED2EA9AE68A4CF /* Frameworks */,
-				70E2A1C596B69EBA181C05485FB79DAE /* Resources */,
+				236FC266B1893C474C9F8FCB8731045C /* Headers */,
+				3CE29DFD42072A35D622BDDB0284C76F /* Sources */,
+				738B0670841181C1E091B426DD099CBF /* Frameworks */,
+				8BD8CCF8E00CF4FA17E72BB37147177E /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				BE37426E97B595743A72FF3DE0674FF7 /* PBXTargetDependency */,
+				03C3A32D3341D53748293480D6672A83 /* PBXTargetDependency */,
 			);
 			name = "Pods-Turn Touch Mac Tests";
-			productName = "Pods-Turn Touch Mac Tests";
-			productReference = 55B37607AE22E5C8E99DE06725E4998D /* Pods_Turn_Touch_Mac_Tests.framework */;
+			productName = Pods_Turn_Touch_Mac_Tests;
+			productReference = 55B37607AE22E5C8E99DE06725E4998D /* Pods-Turn Touch Mac Tests */;
 			productType = "com.apple.product-type.framework";
 		};
 		73C37A16ECCEAD845651DCDEE95675BE /* MASShortcut-MASShortcut */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A829BAD3CA87D51F851876FA7CE09059 /* Build configuration list for PBXNativeTarget "MASShortcut-MASShortcut" */;
+			buildConfigurationList = E677BC00DE97A7E82C85F0B2C381735F /* Build configuration list for PBXNativeTarget "MASShortcut-MASShortcut" */;
 			buildPhases = (
-				D544E7265B36354592CB674755520BEF /* Sources */,
-				B10660119752F7E0B635FE402BB7854F /* Frameworks */,
-				CB9959090FE295FCFA402779BFC23B73 /* Resources */,
+				98196DECF19990B0B742D889E6124FC2 /* Sources */,
+				95DA1DE87EDE9A6E07688579D81C5B20 /* Frameworks */,
+				0801B30A2C28EC367FC5636F143DF26F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "MASShortcut-MASShortcut";
-			productName = "MASShortcut-MASShortcut";
-			productReference = 230F8208BE63C052A548A7D41A1158B2 /* MASShortcut.bundle */;
+			productName = MASShortcut;
+			productReference = 230F8208BE63C052A548A7D41A1158B2 /* MASShortcut-MASShortcut */;
 			productType = "com.apple.product-type.bundle";
 		};
 		D7149DBEC2C07F44080AF435BB631005 /* Pods-Turn Touch Mac */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A4E78ADA06DFCF7C28F40D8C135525A6 /* Build configuration list for PBXNativeTarget "Pods-Turn Touch Mac" */;
+			buildConfigurationList = CBC95E3525A4E5FD4916790C54091A74 /* Build configuration list for PBXNativeTarget "Pods-Turn Touch Mac" */;
 			buildPhases = (
-				1C417676C7F7B6AB1E48D2B1F5830299 /* Headers */,
-				47D662D9152D7C5C68C7D58AE51E19FB /* Sources */,
-				50CF70336AB2252E0A72B312BF41FFA5 /* Frameworks */,
-				351077D6ED74778314B67D82E8EC79DA /* Resources */,
+				BA3E290B94BE4C34C8C21A256DC7A57A /* Headers */,
+				EA185B8A7AE8EE1A05213DC4539B219F /* Sources */,
+				A49756A3BFDF7C01210FA3B311E1004E /* Frameworks */,
+				E1706655512D88B4BDEECB27DC71170D /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				DB4ED57C164347A99596D9DC8D1A3EBC /* PBXTargetDependency */,
-				40202FAAA689779BB033F42A9167B2C4 /* PBXTargetDependency */,
-				F72C4448AB9A4C130ABA6A09EDF91998 /* PBXTargetDependency */,
+				695BB5FBBD308C710E51A8B71F0A120D /* PBXTargetDependency */,
+				38B1AE1777144F92C1902984C303207B /* PBXTargetDependency */,
+				1AA111C42E4E4695C1E7CC9509DD1CC5 /* PBXTargetDependency */,
 			);
 			name = "Pods-Turn Touch Mac";
-			productName = "Pods-Turn Touch Mac";
-			productReference = 2ECEB5231AECB2CB0A0A4D01B1FE6719 /* Pods_Turn_Touch_Mac.framework */;
+			productName = Pods_Turn_Touch_Mac;
+			productReference = 2ECEB5231AECB2CB0A0A4D01B1FE6719 /* Pods-Turn Touch Mac */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -730,19 +737,33 @@
 		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				cs,
+				de,
+				en,
+				es,
+				fr,
+				it,
+				ja,
+				ko,
+				nl,
+				pl,
+				pt,
+				ru,
+				sv,
+				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 7063CAFBEA391680F6CF78885FD156AD /* Products */;
+			productRefGroup = EF45F1CB84A899144F2D7174817CF67E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -757,51 +778,51 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		351077D6ED74778314B67D82E8EC79DA /* Resources */ = {
+		0801B30A2C28EC367FC5636F143DF26F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42D161E71527E3632069FD83903150AE /* cs.lproj in Resources */,
+				4375921A5BFE47FFFC780B5D26187A6A /* de.lproj in Resources */,
+				87074A4E4CA102792EE367AACC5D7BDF /* en.lproj in Resources */,
+				EAC2B240E08779B3EBDC700ACC888800 /* es.lproj in Resources */,
+				7721D5C23322558607C6D7D710B82F37 /* fr.lproj in Resources */,
+				7F47A731BCAFAF2A12E650B409DEDE04 /* it.lproj in Resources */,
+				497CDA2EEDE8AB6F9C17BE84F180B840 /* ja.lproj in Resources */,
+				7B30BD85963CF316B47436990A63E299 /* ko.lproj in Resources */,
+				73425B7DE8FE8CF49F97CB0A0277AC83 /* nl.lproj in Resources */,
+				B17105F0CB8C9D1CF7061F3B2CF66560 /* pl.lproj in Resources */,
+				44954447D9F1F5A55AEEBE25294FCB84 /* pt.lproj in Resources */,
+				E026629B62FECCA2F2001F99985CAA5C /* ru.lproj in Resources */,
+				18C6D427255E10C6181CD303E5B63231 /* sv.lproj in Resources */,
+				25C77C86E0C5577799ABA38F961E7D87 /* zh-Hans.lproj in Resources */,
+				C540032EC142FE24A43BDCCAB3DBDCAA /* zh-Hant.lproj in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		248AD5C603B8AA94A13DDF21FAFC8D11 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8084161906552D8A65D02AD4EB4DBB36 /* MASShortcut-MASShortcut in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BD8CCF8E00CF4FA17E72BB37147177E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		70E2A1C596B69EBA181C05485FB79DAE /* Resources */ = {
+		E1706655512D88B4BDEECB27DC71170D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		84AA3F691B8FC0B1C53A8E2C0BE36540 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				22401F125BBA9C0FC6DF88EB79AF4FDE /* MASShortcut.bundle in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CB9959090FE295FCFA402779BFC23B73 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2BD5B4823399E54C54DA62099C8D61AA /* cs.lproj in Resources */,
-				726387127FAA369AA401F5458F3ABE78 /* de.lproj in Resources */,
-				95C880022015B54E34761E55E7187D32 /* en.lproj in Resources */,
-				E3197A44A2A37282554E5CECF18E9E49 /* es.lproj in Resources */,
-				BBB9C95F214F34BF1C4D964217A6FB81 /* fr.lproj in Resources */,
-				BAB79ABA2B1C9E59CAE20EDEE92FE02C /* it.lproj in Resources */,
-				B78A1A4B833F7FE8C7C6E39F684CF632 /* ja.lproj in Resources */,
-				FF5B99751931BBFC747289EB1382A053 /* ko.lproj in Resources */,
-				08A7ECEB3A1CE770DF5870E8B74C7B3A /* nl.lproj in Resources */,
-				38BEFDA482B773ED5EF53AFC61D12F9E /* pl.lproj in Resources */,
-				FAAC1C0553D1DCE439E297887ACA2246 /* pt.lproj in Resources */,
-				5975C57B505E305F7B0F6D27DC6BE393 /* ru.lproj in Resources */,
-				14C7A583F67F614FB015025132165427 /* sv.lproj in Resources */,
-				1E21794CD360AD428C83FAF8F9333A8E /* zh-Hans.lproj in Resources */,
-				260159BF051F3D983ABCD0C0EDE0D43E /* zh-Hant.lproj in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D507564611BAEA5F648DC116B381EAFB /* Resources */ = {
+		F3554007574D3BC8A1C3F8EBB2AF9B78 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -810,105 +831,122 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		780ADEB704B4468F55D513CE1AD96CAA /* [CP] Copy dSYMs */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM",
+			);
+			name = "[CP] Copy dSYMs";
+			outputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/Sparkle.framework.dSYM",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Sparkle/Sparkle-copy-dsyms.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		47D662D9152D7C5C68C7D58AE51E19FB /* Sources */ = {
+		19A05C6F6F5383724958BB90733B0474 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0097B06D3A8F7049888DB5C3C92123D9 /* Pods-Turn Touch Mac-dummy.m in Sources */,
+				91FB3DA39F2918A71E61FAA2DBF7F9B1 /* MASDictionaryTransformer.m in Sources */,
+				78935C3E5266090DF2F0B8D969F213A4 /* MASHotKey.m in Sources */,
+				2995054EB1B4A636E5724296A25EE9A3 /* MASLocalization.m in Sources */,
+				9C310479A86BB740EAB1EA1CE4753068 /* MASShortcut.m in Sources */,
+				3F77F71B26FE6CFAC6C29C7DEBA6A5D0 /* MASShortcut-dummy.m in Sources */,
+				DC851120E49BB4C5B41695C084511E0C /* MASShortcutBinder.m in Sources */,
+				4832F3F46DFBD929E7974DB6EB02B933 /* MASShortcutMonitor.m in Sources */,
+				BBEDE2FE9A092B8340AC96F6FF0D5EEE /* MASShortcutValidator.m in Sources */,
+				1249E8FACD55E4980B48ABFD7AD8A6E2 /* MASShortcutView.m in Sources */,
+				27A982C695B077BC51772B5BB0A4992F /* MASShortcutView+Bindings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BC5EBE66D6D662FFB38ACF821BF834DD /* Sources */ = {
+		3CE29DFD42072A35D622BDDB0284C76F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB4C305EB0E8798033BFBB70E6B1475A /* AFHTTPSessionManager.m in Sources */,
-				DE0432C90C95848D2D4FB69DB1FC36E9 /* AFNetworking-dummy.m in Sources */,
-				E6D9C6AAF8324D62EDEC7A9B30AB5BB6 /* AFNetworkReachabilityManager.m in Sources */,
-				069E732D19CB4D094A78021CC22818D7 /* AFSecurityPolicy.m in Sources */,
-				A6EF9B896E9DBACD4E841592E027E98A /* AFURLRequestSerialization.m in Sources */,
-				145911ED750B1E0169E251F39C35E9AB /* AFURLResponseSerialization.m in Sources */,
-				90DFD9FDD1F77A5CBD9C77D157326E2E /* AFURLSessionManager.m in Sources */,
+				3EF836DC2E8CE518F4139DD267FA86C6 /* Pods-Turn Touch Mac Tests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C14D6B053FC1632B701D22066E26EF13 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				78BC7AD6B58977915D0E636ADBE78197 /* Pods-Turn Touch Mac Tests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D544E7265B36354592CB674755520BEF /* Sources */ = {
+		98196DECF19990B0B742D889E6124FC2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F1790F47A0536853DC2F1C94143C9198 /* Sources */ = {
+		9E0996416D972899AA8FA2B634B3910F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1E44695C11C548525DB06E6080E33CA /* MASDictionaryTransformer.m in Sources */,
-				49661ED57042518D9E72C94E3A097B22 /* MASHotKey.m in Sources */,
-				E0ACB0A8F85954A0ACA976C9A8A44650 /* MASLocalization.m in Sources */,
-				82A3CE737F3BAC81B8C48822F81A8DF4 /* MASShortcut-dummy.m in Sources */,
-				81FC166794811B36E264B925B249E7E6 /* MASShortcut.m in Sources */,
-				25D6DD1A77954FD8FD6A013DCDE09C51 /* MASShortcutBinder.m in Sources */,
-				081C6AA82727FF36A397DE4A1B8DC22D /* MASShortcutMonitor.m in Sources */,
-				96F45043BD6DDB5C8381485CA489AFAB /* MASShortcutValidator.m in Sources */,
-				C7C2E574E9167A7AC1988531F822A772 /* MASShortcutView+Bindings.m in Sources */,
-				56A5301A6BFDFDE0B0B352F1957FFA93 /* MASShortcutView.m in Sources */,
+				CF11373BEE19D74C036CFBBB7F505C79 /* AFHTTPSessionManager.m in Sources */,
+				55DF86D511D9E073ECFCB85AB84FF6A6 /* AFNetworking-dummy.m in Sources */,
+				38FD00310BCEB6C24F0BB9EA054F1001 /* AFNetworkReachabilityManager.m in Sources */,
+				1B624D6CC3CB197C82864C5E6655C908 /* AFSecurityPolicy.m in Sources */,
+				6BB8C371C572F0345ABE617C1C7560E6 /* AFURLRequestSerialization.m in Sources */,
+				A3C47C697501531A18E5B55C5839C16E /* AFURLResponseSerialization.m in Sources */,
+				60334F7BC5843FD8067FDA4B988D997F /* AFURLSessionManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA185B8A7AE8EE1A05213DC4539B219F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C4425086F49EEC6E61A45835B9A8582 /* Pods-Turn Touch Mac-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		40202FAAA689779BB033F42A9167B2C4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = MASShortcut;
-			target = 2B2B481A164695722839BD581D442457 /* MASShortcut */;
-			targetProxy = 9A8BA3B6CEFCBF12D1ADE2E081E727C2 /* PBXContainerItemProxy */;
-		};
-		BE37426E97B595743A72FF3DE0674FF7 /* PBXTargetDependency */ = {
+		03C3A32D3341D53748293480D6672A83 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-Turn Touch Mac";
 			target = D7149DBEC2C07F44080AF435BB631005 /* Pods-Turn Touch Mac */;
-			targetProxy = A648B511727067A1D6DB52069DCE297C /* PBXContainerItemProxy */;
+			targetProxy = DB77C4A016F43391FE3CA5240A1DE433 /* PBXContainerItemProxy */;
 		};
-		DB4ED57C164347A99596D9DC8D1A3EBC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = AFNetworking;
-			target = 0130B3724283586C0E9D2A112D4F2AA1 /* AFNetworking */;
-			targetProxy = 93091A9AADC0C3F39DFEAC1968F0F5D4 /* PBXContainerItemProxy */;
-		};
-		DDE0D23EDB7C425BEA9D1D942827BC36 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "MASShortcut-MASShortcut";
-			target = 73C37A16ECCEAD845651DCDEE95675BE /* MASShortcut-MASShortcut */;
-			targetProxy = F06B5DF44870FA25A027D53C6EA9DDD8 /* PBXContainerItemProxy */;
-		};
-		F72C4448AB9A4C130ABA6A09EDF91998 /* PBXTargetDependency */ = {
+		1AA111C42E4E4695C1E7CC9509DD1CC5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Sparkle;
 			target = ED77B4B88587C894E85C361023D67C53 /* Sparkle */;
-			targetProxy = D67C223A6925D8128401C5859DDB23F4 /* PBXContainerItemProxy */;
+			targetProxy = B2A3D1303C8A598457CE1F91205306D3 /* PBXContainerItemProxy */;
+		};
+		38B1AE1777144F92C1902984C303207B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MASShortcut;
+			target = 2B2B481A164695722839BD581D442457 /* MASShortcut */;
+			targetProxy = 454682B0F08FCD84729737041B2D78E4 /* PBXContainerItemProxy */;
+		};
+		695BB5FBBD308C710E51A8B71F0A120D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AFNetworking;
+			target = 0130B3724283586C0E9D2A112D4F2AA1 /* AFNetworking */;
+			targetProxy = B75243154D42D124D0BC8677776F8DE7 /* PBXContainerItemProxy */;
+		};
+		96E67F571D79F68626EE569134F86283 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "MASShortcut-MASShortcut";
+			target = 73C37A16ECCEAD845651DCDEE95675BE /* MASShortcut-MASShortcut */;
+			targetProxy = 72D037197000E8EFB80BFD32CF8CB79B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		04C4E9B2340F1C99D4B6891D0BC2B5AC /* Testing */ = {
+		01D9E1EFAF4B80616BC854C41C383A33 /* Testing */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FBE68AEEDAF8D6C3A4305C8957A7E05A /* Pods-Turn Touch Mac.testing.xcconfig */;
+			baseConfigurationReference = E982F6D8463669ABC1D791F26FC5EAAD /* AFNetworking.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -918,29 +956,27 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "Target Support Files/Pods-Turn Touch Mac/Pods-Turn Touch Mac-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/AFNetworking/AFNetworking-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/AFNetworking/AFNetworking-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULEMAP_FILE = "Target Support Files/Pods-Turn Touch Mac/Pods-Turn Touch Mac.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MODULEMAP_FILE = "Target Support Files/AFNetworking/AFNetworking.modulemap";
+				PRODUCT_MODULE_NAME = AFNetworking;
+				PRODUCT_NAME = AFNetworking;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Testing;
 		};
-		0A4E8437AC7C5E8A6E80920A6EEE3954 /* Release */ = {
+		160D4EFCA9D0E79A9C61D589D62CF437 /* Testing */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -963,66 +999,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
-				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Release;
-		};
-		0E51214BB449945733E588605F9B78AA /* Testing */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1057,110 +1034,25 @@
 			};
 			name = Testing;
 		};
-		1ABA0D92D03ACFE376195E2744B5DC5A /* Testing */ = {
+		168BA7C58B5270DFE53015F11D6678AE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E6B77267C058CA34570FFAC21D41BD18 /* Pods-Turn Touch Mac Tests.testing.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "Target Support Files/Pods-Turn Touch Mac Tests/Pods-Turn Touch Mac Tests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULEMAP_FILE = "Target Support Files/Pods-Turn Touch Mac Tests/Pods-Turn Touch Mac Tests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Testing;
-		};
-		3BD826A5D2EA0AFC736B87B48F7699DE /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F002A98A4678A3EC6854456A9DE3BFE4 /* Sparkle.xcconfig */;
+			baseConfigurationReference = 8A70619D024DB48C7E8961AF34482C74 /* Sparkle.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "-";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				COMBINE_HIDPI_IMAGES = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				SDKROOT = macosx;
 			};
 			name = Release;
 		};
-		412CD40A2C4FC6EDFFEA88B8D721DE64 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F002A98A4678A3EC6854456A9DE3BFE4 /* Sparkle.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				SDKROOT = macosx;
-			};
-			name = Debug;
-		};
-		4EF945239678C4B636249F608004DDFF /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8C4DE89E82F808175408CCDBDA35CAC7 /* MASShortcut.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MASShortcut";
-				IBSC_MODULE = MASShortcut;
-				INFOPLIST_FILE = "Target Support Files/MASShortcut/ResourceBundle-MASShortcut-MASShortcut-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_NAME = MASShortcut;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
-		501155C8BB15130D8B9A40B47C10A3C0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8C4DE89E82F808175408CCDBDA35CAC7 /* MASShortcut.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MASShortcut";
-				IBSC_MODULE = MASShortcut;
-				INFOPLIST_FILE = "Target Support Files/MASShortcut/ResourceBundle-MASShortcut-MASShortcut-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_NAME = MASShortcut;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		5F14B856CAD788D737965259A3024EA6 /* Debug */ = {
+		16F37D961BD142A847EE7A8BCECC4D13 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1183,6 +1075,408 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		219B53E9F0A0F02E6528CAC4CD2A9936 /* Testing */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A70619D024DB48C7E8961AF34482C74 /* Sparkle.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Testing;
+		};
+		285737C54B1A0D9512AD2AC11CFD4D5A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F709D38692594B0A3B90195155D4B1F /* Pods-Turn Touch Mac.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Turn Touch Mac/Pods-Turn Touch Mac-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/Pods-Turn Touch Mac/Pods-Turn Touch Mac.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		33820B8B7E666DDA68AC969D1CFD9319 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D795B98C6F36C234298D2FD53CBA4FD /* Pods-Turn Touch Mac Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Turn Touch Mac Tests/Pods-Turn Touch Mac Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/Pods-Turn Touch Mac Tests/Pods-Turn Touch Mac Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		3D400218D6ED74119B255AC8B008106E /* Testing */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FBE68AEEDAF8D6C3A4305C8957A7E05A /* Pods-Turn Touch Mac.testing.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Turn Touch Mac/Pods-Turn Touch Mac-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/Pods-Turn Touch Mac/Pods-Turn Touch Mac.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Testing;
+		};
+		461D108075313B13283AACE4CB0198CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D494B477AB335B8F38A63B0D6888AB03 /* Pods-Turn Touch Mac.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Turn Touch Mac/Pods-Turn Touch Mac-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/Pods-Turn Touch Mac/Pods-Turn Touch Mac.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		46A9B45ED439E854F83D707660AACDE0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E982F6D8463669ABC1D791F26FC5EAAD /* AFNetworking.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/AFNetworking/AFNetworking-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/AFNetworking/AFNetworking-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MODULEMAP_FILE = "Target Support Files/AFNetworking/AFNetworking.modulemap";
+				PRODUCT_MODULE_NAME = AFNetworking;
+				PRODUCT_NAME = AFNetworking;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		4DEE3D279047E2C9BB9EEA2C9415C559 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C175758D8CEBFBAA9572379B091536E6 /* Sparkle.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		5F87303B8BF73316DA442F545826555A /* Testing */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA552D6A2C0FD4D014C2D34373D08C16 /* MASShortcut.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/MASShortcut/MASShortcut-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MASShortcut/MASShortcut-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/MASShortcut/MASShortcut.modulemap";
+				PRODUCT_MODULE_NAME = MASShortcut;
+				PRODUCT_NAME = MASShortcut;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Testing;
+		};
+		5F9268CE4061ACF2246FB5EEB53EFE23 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E93AEB5710C66C0E2B0CBEFAB49AF984 /* MASShortcut.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/MASShortcut/MASShortcut-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MASShortcut/MASShortcut-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/MASShortcut/MASShortcut.modulemap";
+				PRODUCT_MODULE_NAME = MASShortcut;
+				PRODUCT_NAME = MASShortcut;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		63FC5552022BA4BEEF409142605E9315 /* Testing */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA552D6A2C0FD4D014C2D34373D08C16 /* MASShortcut.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MASShortcut";
+				IBSC_MODULE = MASShortcut;
+				INFOPLIST_FILE = "Target Support Files/MASShortcut/ResourceBundle-MASShortcut-MASShortcut-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = MASShortcut;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Testing;
+		};
+		71CFCDD8C8D0959FD0896C9EFE867F5B /* Testing */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6B77267C058CA34570FFAC21D41BD18 /* Pods-Turn Touch Mac Tests.testing.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Turn Touch Mac Tests/Pods-Turn Touch Mac Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/Pods-Turn Touch Mac Tests/Pods-Turn Touch Mac Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Testing;
+		};
+		7F1C9138397860A8B34AA4AE15B2F8AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA552D6A2C0FD4D014C2D34373D08C16 /* MASShortcut.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/MASShortcut/MASShortcut-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MASShortcut/MASShortcut-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/MASShortcut/MASShortcut.modulemap";
+				PRODUCT_MODULE_NAME = MASShortcut;
+				PRODUCT_NAME = MASShortcut;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		83C3234BEBF81359D2523064DDDB2364 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1221,26 +1515,40 @@
 			};
 			name = Debug;
 		};
-		69F5353CE1AD2979E6D7E8F0584349DF /* Testing */ = {
+		CC66E0347B8063637A6424B813B10FF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F002A98A4678A3EC6854456A9DE3BFE4 /* Sparkle.xcconfig */;
+			baseConfigurationReference = 1E234BBA3D9AF10356C8869F32A29CD3 /* AFNetworking.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				COMBINE_HIDPI_IMAGES = YES;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/AFNetworking/AFNetworking-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/AFNetworking/AFNetworking-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MODULEMAP_FILE = "Target Support Files/AFNetworking/AFNetworking.modulemap";
+				PRODUCT_MODULE_NAME = AFNetworking;
+				PRODUCT_NAME = AFNetworking;
 				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
-			name = Testing;
+			name = Debug;
 		};
-		77EA72E1EF58EE69E469D161C95FB406 /* Testing */ = {
+		D01D44751F874C6EFB1DA1DAC80B48D1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8C4DE89E82F808175408CCDBDA35CAC7 /* MASShortcut.xcconfig */;
+			baseConfigurationReference = EA552D6A2C0FD4D014C2D34373D08C16 /* MASShortcut.release.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MASShortcut";
 				IBSC_MODULE = MASShortcut;
@@ -1252,283 +1560,15 @@
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = bundle;
 			};
-			name = Testing;
-		};
-		7F778A9595D8DAB6A0AD3A1B4673063F /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8C4DE89E82F808175408CCDBDA35CAC7 /* MASShortcut.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_PREFIX_HEADER = "Target Support Files/MASShortcut/MASShortcut-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/MASShortcut/MASShortcut-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULEMAP_FILE = "Target Support Files/MASShortcut/MASShortcut.modulemap";
-				PRODUCT_MODULE_NAME = MASShortcut;
-				PRODUCT_NAME = MASShortcut;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
 			name = Release;
 		};
-		89424EB1A189A3292A5888C53593181F /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B13113F20B12CF43CEA1B1ECDB07C874 /* AFNetworking.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_PREFIX_HEADER = "Target Support Files/AFNetworking/AFNetworking-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/AFNetworking/AFNetworking-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				MODULEMAP_FILE = "Target Support Files/AFNetworking/AFNetworking.modulemap";
-				PRODUCT_MODULE_NAME = AFNetworking;
-				PRODUCT_NAME = AFNetworking;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		9059A03371EC4D6F7B8A52812BF0FC35 /* Testing */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8C4DE89E82F808175408CCDBDA35CAC7 /* MASShortcut.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_PREFIX_HEADER = "Target Support Files/MASShortcut/MASShortcut-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/MASShortcut/MASShortcut-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULEMAP_FILE = "Target Support Files/MASShortcut/MASShortcut.modulemap";
-				PRODUCT_MODULE_NAME = MASShortcut;
-				PRODUCT_NAME = MASShortcut;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Testing;
-		};
-		9D91DCC518E7E438F4D5A84CC1AA7DBE /* Testing */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B13113F20B12CF43CEA1B1ECDB07C874 /* AFNetworking.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_PREFIX_HEADER = "Target Support Files/AFNetworking/AFNetworking-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/AFNetworking/AFNetworking-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				MODULEMAP_FILE = "Target Support Files/AFNetworking/AFNetworking.modulemap";
-				PRODUCT_MODULE_NAME = AFNetworking;
-				PRODUCT_NAME = AFNetworking;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Testing;
-		};
-		A04B359A2FC50EE6B2E40D9E04544B76 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7D795B98C6F36C234298D2FD53CBA4FD /* Pods-Turn Touch Mac Tests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "Target Support Files/Pods-Turn Touch Mac Tests/Pods-Turn Touch Mac Tests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULEMAP_FILE = "Target Support Files/Pods-Turn Touch Mac Tests/Pods-Turn Touch Mac Tests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		B1A4B24F39592420390283041FA09CB4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8C4DE89E82F808175408CCDBDA35CAC7 /* MASShortcut.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_PREFIX_HEADER = "Target Support Files/MASShortcut/MASShortcut-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/MASShortcut/MASShortcut-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULEMAP_FILE = "Target Support Files/MASShortcut/MASShortcut.modulemap";
-				PRODUCT_MODULE_NAME = MASShortcut;
-				PRODUCT_NAME = MASShortcut;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		C3969F6C55184F0437686ACFCC1C95E0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B13113F20B12CF43CEA1B1ECDB07C874 /* AFNetworking.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_PREFIX_HEADER = "Target Support Files/AFNetworking/AFNetworking-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/AFNetworking/AFNetworking-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				MODULEMAP_FILE = "Target Support Files/AFNetworking/AFNetworking.modulemap";
-				PRODUCT_MODULE_NAME = AFNetworking;
-				PRODUCT_NAME = AFNetworking;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		C8A5001D249BFDBC3F26826FB05E3F4D /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2F709D38692594B0A3B90195155D4B1F /* Pods-Turn Touch Mac.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "Target Support Files/Pods-Turn Touch Mac/Pods-Turn Touch Mac-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULEMAP_FILE = "Target Support Files/Pods-Turn Touch Mac/Pods-Turn Touch Mac.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		ED12F43DF991E8C4F704BA4E0D27FF3D /* Debug */ = {
+		F03AC867B8F06696BFEEBB5BE8B2A0B6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 09EB1E3AAF97C25B802CDF9C8C721CC4 /* Pods-Turn Touch Mac Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -1538,7 +1578,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = "Target Support Files/Pods-Turn Touch Mac Tests/Pods-Turn Touch Mac Tests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
@@ -1557,51 +1596,52 @@
 			};
 			name = Debug;
 		};
-		FD115C5932B3DFEE18DCA1251E819F07 /* Debug */ = {
+		FCC129AB0601249354DFB0B08D920732 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D494B477AB335B8F38A63B0D6888AB03 /* Pods-Turn Touch Mac.debug.xcconfig */;
+			baseConfigurationReference = E93AEB5710C66C0E2B0CBEFAB49AF984 /* MASShortcut.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "Target Support Files/Pods-Turn Touch Mac/Pods-Turn Touch Mac-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MASShortcut";
+				IBSC_MODULE = MASShortcut;
+				INFOPLIST_FILE = "Target Support Files/MASShortcut/ResourceBundle-MASShortcut-MASShortcut-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULEMAP_FILE = "Target Support Files/Pods-Turn Touch Mac/Pods-Turn Touch Mac.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = MASShortcut;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
+				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2B8B880760DCB55ECF1C0E7B0F299EEA /* Build configuration list for PBXNativeTarget "MASShortcut" */ = {
+		133AEDE2938F27DDDB95ECD7E27BE819 /* Build configuration list for PBXNativeTarget "AFNetworking" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B1A4B24F39592420390283041FA09CB4 /* Debug */,
-				7F778A9595D8DAB6A0AD3A1B4673063F /* Release */,
-				9059A03371EC4D6F7B8A52812BF0FC35 /* Testing */,
+				CC66E0347B8063637A6424B813B10FF1 /* Debug */,
+				46A9B45ED439E854F83D707660AACDE0 /* Release */,
+				01D9E1EFAF4B80616BC854C41C383A33 /* Testing */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		328F2DB001265813043B82D818B21AC9 /* Build configuration list for PBXAggregateTarget "Sparkle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DEE3D279047E2C9BB9EEA2C9415C559 /* Debug */,
+				168BA7C58B5270DFE53015F11D6678AE /* Release */,
+				219B53E9F0A0F02E6528CAC4CD2A9936 /* Testing */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3584329AD1B92DCB9E1F9A46626B3883 /* Build configuration list for PBXNativeTarget "Pods-Turn Touch Mac Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F03AC867B8F06696BFEEBB5BE8B2A0B6 /* Debug */,
+				33820B8B7E666DDA68AC969D1CFD9319 /* Release */,
+				71CFCDD8C8D0959FD0896C9EFE867F5B /* Testing */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1609,59 +1649,39 @@
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5F14B856CAD788D737965259A3024EA6 /* Debug */,
-				0A4E8437AC7C5E8A6E80920A6EEE3954 /* Release */,
-				0E51214BB449945733E588605F9B78AA /* Testing */,
+				83C3234BEBF81359D2523064DDDB2364 /* Debug */,
+				16F37D961BD142A847EE7A8BCECC4D13 /* Release */,
+				160D4EFCA9D0E79A9C61D589D62CF437 /* Testing */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		903968571151B40267A498B60D7B101D /* Build configuration list for PBXNativeTarget "AFNetworking" */ = {
+		569C54FCE75FCD84E4714C37D3CCE09A /* Build configuration list for PBXNativeTarget "MASShortcut" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C3969F6C55184F0437686ACFCC1C95E0 /* Debug */,
-				89424EB1A189A3292A5888C53593181F /* Release */,
-				9D91DCC518E7E438F4D5A84CC1AA7DBE /* Testing */,
+				5F9268CE4061ACF2246FB5EEB53EFE23 /* Debug */,
+				7F1C9138397860A8B34AA4AE15B2F8AC /* Release */,
+				5F87303B8BF73316DA442F545826555A /* Testing */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A4E78ADA06DFCF7C28F40D8C135525A6 /* Build configuration list for PBXNativeTarget "Pods-Turn Touch Mac" */ = {
+		CBC95E3525A4E5FD4916790C54091A74 /* Build configuration list for PBXNativeTarget "Pods-Turn Touch Mac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FD115C5932B3DFEE18DCA1251E819F07 /* Debug */,
-				C8A5001D249BFDBC3F26826FB05E3F4D /* Release */,
-				04C4E9B2340F1C99D4B6891D0BC2B5AC /* Testing */,
+				461D108075313B13283AACE4CB0198CF /* Debug */,
+				285737C54B1A0D9512AD2AC11CFD4D5A /* Release */,
+				3D400218D6ED74119B255AC8B008106E /* Testing */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A829BAD3CA87D51F851876FA7CE09059 /* Build configuration list for PBXNativeTarget "MASShortcut-MASShortcut" */ = {
+		E677BC00DE97A7E82C85F0B2C381735F /* Build configuration list for PBXNativeTarget "MASShortcut-MASShortcut" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				501155C8BB15130D8B9A40B47C10A3C0 /* Debug */,
-				4EF945239678C4B636249F608004DDFF /* Release */,
-				77EA72E1EF58EE69E469D161C95FB406 /* Testing */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DFD76CF3BA88B1E29302E27ACFBF9960 /* Build configuration list for PBXAggregateTarget "Sparkle" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				412CD40A2C4FC6EDFFEA88B8D721DE64 /* Debug */,
-				3BD826A5D2EA0AFC736B87B48F7699DE /* Release */,
-				69F5353CE1AD2979E6D7E8F0584349DF /* Testing */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F82C6AB69E251EDEC2E330179BC410AE /* Build configuration list for PBXNativeTarget "Pods-Turn Touch Mac Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				ED12F43DF991E8C4F704BA4E0D27FF3D /* Debug */,
-				A04B359A2FC50EE6B2E40D9E04544B76 /* Release */,
-				1ABA0D92D03ACFE376195E2744B5DC5A /* Testing */,
+				FCC129AB0601249354DFB0B08D920732 /* Debug */,
+				D01D44751F874C6EFB1DA1DAC80B48D1 /* Release */,
+				63FC5552022BA4BEEF409142605E9315 /* Testing */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

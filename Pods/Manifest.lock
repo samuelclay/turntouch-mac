@@ -13,7 +13,7 @@ PODS:
   - AFNetworking/Security (3.2.1)
   - AFNetworking/Serialization (3.2.1)
   - MASShortcut (2.4.0)
-  - Sparkle (1.24.0)
+  - Sparkle (1.27.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
@@ -29,8 +29,8 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   MASShortcut: d9e4909e878661cc42877cc9d6efbe638273ab57
-  Sparkle: 270cd27377bf04e9c128af06e3a22d0f572d6ee3
+  Sparkle: e1245ce5ba951c60183444a13a2c7d227778205d
 
 PODFILE CHECKSUM: f3a29d7d34748954bd1c7c54734094abb3ea8cf1
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.11.2
