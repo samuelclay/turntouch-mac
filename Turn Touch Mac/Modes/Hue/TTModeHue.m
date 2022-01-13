@@ -598,8 +598,10 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 //    NSString *macAddress = [[bridgesFound allKeys] objectAtIndex:1];
 //    NSString *ipAddress = [bridgesFound objectForKey:macAddress];
     [phHueSDK setBridgeToUseWithId:bridgeId ipAddress:ipAddress];
+    
+    [self doAuthentication];
 
-    [self performSelector:@selector(enableLocalHeartbeat) withObject:nil afterDelay:1];
+    [self performSelector:@selector(enableLocalHeartbeat) withObject:nil afterDelay:30];
 }
 
 #pragma mark - Heartbeat control

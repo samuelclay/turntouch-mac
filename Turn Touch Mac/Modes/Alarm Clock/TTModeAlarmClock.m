@@ -347,7 +347,7 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
         self.tracks = [self selectedPlaylistTracks];
     }
     NSInteger tracksCount = self.tracks.count;
-    if (!tracksCount) return;
+    if (!tracksCount || self.trackIndex >= tracksCount) return;
     
     if (self.audioPlayer) {
         [self.audioPlayer stop];
@@ -357,7 +357,8 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
     NSLog(@"Random track: %ld / %ld: %@", (long)self.trackIndex, (long)randomTrackIndex, self.currentTrack);
     self.trackIndex += 1;
 
-    if (![self.currentTrack respondsToSelector:@selector(location)]) {
+    if (![self.currentTrack respondsToSelector:@selector(location)] ||
+        self.currentTrack.location == nil) {
         NSLog(@" ---> !! Track has no location, skipping...");
         [self playNextSong];
         return;

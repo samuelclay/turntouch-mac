@@ -305,92 +305,96 @@ NSUInteger const kOnetimeHeight = 68;
 }
 
 - (void)populateiTunesSources {
-    NSString *selectedPlaylistId = (NSString *)[NSAppDelegate.modeMap mode:self.mode optionValue:kAlarmPlaylist];
-    NSMenuItem *selectedMenuItem;
-    SBElementArray *playlists = [TTModeAlarmClock userPlaylists];
-    NSInteger tag = 0;
-    iTunesUserPlaylist *selectedPlaylist;
-    iTunesUserPlaylist *libraryPlaylist;
-    NSMenuItem *libraryMenuItem;
-    NSImage *image;
-    NSMutableArray *menuItems = [NSMutableArray array];
-    
-    for (iTunesUserPlaylist *playlist in playlists) {
-        tag++;
-        if (!playlist.size) continue;
-        NSMenuItem *menuItem = [[NSMenuItem alloc] init];
-        switch (playlist.specialKind) {
-            case iTunesESpKLibrary:
-                image = [NSImage imageNamed:@"itunes_library_icon"];
-                break;
-                
-            case iTunesESpKMusic:
-                image = [NSImage imageNamed:@"itunes_music_icon"];
-                libraryPlaylist = playlist;
-                libraryMenuItem = menuItem;
-                break;
-                
-            case iTunesESpKGenius:
-                image = [NSImage imageNamed:@"itunes_genius_icon"];
-                break;
-                
-            case iTunesESpKBooks:
-                image = [NSImage imageNamed:@"itunes_audiobook_icon"];
-                break;
-                
-            case iTunesESpKPodcasts:
-                image = [NSImage imageNamed:@"itunes_podcast_icon"];
-                break;
-                
-            case iTunesESpKITunesU:
-                image = [NSImage imageNamed:@"itunes_itunesu_icon"];
-                break;
-                
-            case iTunesESpKMovies:
-                image = [NSImage imageNamed:@"itunes_movies_icon"];
-                break;
-                
-            case iTunesESpKTVShows:
-                image = [NSImage imageNamed:@"itunes_tv_icon"];
-                break;
-            
-            default:
-//                NSLog(@"playlist.specialKind: %@", playlist.properties);
-                if ([playlist smart]) {
-                    image = [NSImage imageNamed:@"itunes_playlist_icon"];
-                } else {
-                    image = [NSImage imageNamed:@"itunes_library_icon"];
-                }
-                break;
-        }
-        [image setSize:NSMakeSize(16, 16)];
-        menuItem.image = image;
-        menuItem.title = playlist.name;
-        menuItem.tag = tag;
-        [menuItems addObject:menuItem];
-        if ([playlist.persistentID isEqualToString:selectedPlaylistId]) {
-            selectedMenuItem = menuItem;
-            selectedPlaylist = playlist;
-        }
-    }
-    
-    if (!selectedPlaylistId) {
-        selectedMenuItem = libraryMenuItem;
-    }
     dispatch_async(dispatch_get_main_queue(), ^(void){
-        for (NSMenuItem *menuItem in menuItems) {
-            [self.dropdowniTunesSources.menu addItem:menuItem];
-        }
+        SBElementArray *playlists = [TTModeAlarmClock userPlaylists];
+        NSString *selectedPlaylistId = (NSString *)[NSAppDelegate.modeMap mode:self.mode optionValue:kAlarmPlaylist];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, (unsigned long)NULL), ^{
+            NSMenuItem *selectedMenuItem;
+            NSInteger tag = 0;
+            iTunesUserPlaylist *selectedPlaylist;
+            iTunesUserPlaylist *libraryPlaylist;
+            NSMenuItem *libraryMenuItem;
+            NSImage *image;
+            NSMutableArray *menuItems = [NSMutableArray array];
+            
+            for (iTunesUserPlaylist *playlist in playlists) {
+                tag++;
+                if (!playlist.size) continue;
+                NSMenuItem *menuItem = [[NSMenuItem alloc] init];
+                switch (playlist.specialKind) {
+                    case iTunesESpKLibrary:
+                        image = [NSImage imageNamed:@"itunes_library_icon"];
+                        break;
+                        
+                    case iTunesESpKMusic:
+                        image = [NSImage imageNamed:@"itunes_music_icon"];
+                        libraryPlaylist = playlist;
+                        libraryMenuItem = menuItem;
+                        break;
+                        
+                    case iTunesESpKGenius:
+                        image = [NSImage imageNamed:@"itunes_genius_icon"];
+                        break;
+                        
+                    case iTunesESpKBooks:
+                        image = [NSImage imageNamed:@"itunes_audiobook_icon"];
+                        break;
+                        
+                    case iTunesESpKPodcasts:
+                        image = [NSImage imageNamed:@"itunes_podcast_icon"];
+                        break;
+                        
+                    case iTunesESpKITunesU:
+                        image = [NSImage imageNamed:@"itunes_itunesu_icon"];
+                        break;
+                        
+                    case iTunesESpKMovies:
+                        image = [NSImage imageNamed:@"itunes_movies_icon"];
+                        break;
+                        
+                    case iTunesESpKTVShows:
+                        image = [NSImage imageNamed:@"itunes_tv_icon"];
+                        break;
+                    
+                    default:
+        //                NSLog(@"playlist.specialKind: %@", playlist.properties);
+                        if ([playlist smart]) {
+                            image = [NSImage imageNamed:@"itunes_playlist_icon"];
+                        } else {
+                            image = [NSImage imageNamed:@"itunes_library_icon"];
+                        }
+                        break;
+                }
+                [image setSize:NSMakeSize(16, 16)];
+                menuItem.image = image;
+                menuItem.title = playlist.name;
+                menuItem.tag = tag;
+                [menuItems addObject:menuItem];
+                if ([playlist.persistentID isEqualToString:selectedPlaylistId]) {
+                    selectedMenuItem = menuItem;
+                    selectedPlaylist = playlist;
+                }
+            }
+            
+            if (!selectedPlaylistId) {
+                selectedMenuItem = libraryMenuItem;
+            }
+            dispatch_async(dispatch_get_main_queue(), ^(void){
+                for (NSMenuItem *menuItem in menuItems) {
+                    [self.dropdowniTunesSources.menu addItem:menuItem];
+                }
 
-        if (!selectedPlaylistId) {
-            [NSAppDelegate.modeMap changeMode:self.mode option:kAlarmPlaylist to:libraryPlaylist.persistentID];
-            [self updateTracksCount:libraryPlaylist];
-        } else {
-            [self updateTracksCount:selectedPlaylist];
-        }
+                if (!selectedPlaylistId) {
+                    [NSAppDelegate.modeMap changeMode:self.mode option:kAlarmPlaylist to:libraryPlaylist.persistentID];
+                    [self updateTracksCount:libraryPlaylist];
+                } else {
+                    [self updateTracksCount:selectedPlaylist];
+                }
 
-        [self.dropdowniTunesSources selectItem:selectedMenuItem];
-        [self.dropdowniTunesSources setNeedsDisplay:YES];
+                [self.dropdowniTunesSources selectItem:selectedMenuItem];
+                [self.dropdowniTunesSources setNeedsDisplay:YES];
+            });
+        });
     });
 }
 

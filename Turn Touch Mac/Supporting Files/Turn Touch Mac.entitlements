@@ -17,8 +17,11 @@
 		<key>com.apple.Music</key>
 		<array>
 			<string>com.apple.Music.library.read</string>
+			<string>com.apple.iTunes.library.read</string>
 			<string>com.apple.Music.user-interface</string>
+			<string>com.apple.iTunes.user-interface</string>
 			<string>com.apple.Music.playback</string>
+			<string>com.apple.iTunes.playback</string>
 		</array>
 		<key>com.apple.QuickTimePlayerX</key>
 		<array/>

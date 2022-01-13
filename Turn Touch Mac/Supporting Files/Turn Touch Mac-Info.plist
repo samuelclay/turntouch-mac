@@ -58,6 +58,12 @@
 	</dict>
 	<key>NSAppleEventsUsageDescription</key>
 	<string>Turn Touch uses Apple Events to work with other apps on your Mac.</string>
+	<key>NSFileProviderDomainUsageDescription</key>
+	<string>Turn Touch uses files to play music.</string>
+	<key>kTCCServiceMediaLibrary</key>
+	<string>Turn Touch uses music for the alarm clock.</string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Turn Touch uses music for the alarm clock.</string>
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>Turn Touch uses Bluetooth to communicate with your remote.</string>
 	<key>NSHumanReadableCopyright</key>
