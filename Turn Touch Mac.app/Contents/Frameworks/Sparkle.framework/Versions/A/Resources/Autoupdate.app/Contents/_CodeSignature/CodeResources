@@ -8,9 +8,13 @@
 		<data>
 		4McwRDEss5BzWwUMG2Xf93+ze08=
 		</data>
+		<key>Resources/Base.lproj/Sparkle.strings</key>
+		<data>
+		cHZov5FaqzfNhnBo0XdRuTMT4SY=
+		</data>
 		<key>Resources/SUStatus.nib</key>
 		<data>
-		ECVWRExfxyDt5uvKRD+70wc9J6s=
+		6I4uX0FrluZpgUjoCaB46P/0lY0=
 		</data>
 		<key>Resources/ar.lproj/Sparkle.strings</key>
 		<dict>
@@ -34,7 +38,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			bY3rkqi/NJtXtjpK3FbV2o0gxbQ=
+			Gyp0nPqNvS5KdfMw+6ieF0yUTnI=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -52,7 +56,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			fsC7FJvExHE/2681tuUrjkSF2+A=
+			fXH7MjrA6hDT/k/8B6Vwgntt2lw=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -62,15 +66,6 @@
 			<key>hash</key>
 			<data>
 			NbIN+TRHORCL5Gfj68VRq4KdPXo=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Resources/en.lproj/Sparkle.strings</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			cHZov5FaqzfNhnBo0XdRuTMT4SY=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -97,7 +92,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			X3URilwJPVqMTGbtrYdorODwrMA=
+			xFBTJYPjf7rlbYdkRKNTsPYz5JA=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -223,7 +218,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			VpSLGNvZ6sbRYsF23L8m6TG+P6E=
+			x6JdY7WL2dHnGXX6PHJl5da7WKE=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -307,10 +302,10 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			RWQ4jVzg4TWF3sjKNGbgE4/T3Vw=
+			dXYkzDobkvWkUGoADORJPDXTKyU=
 			</data>
 			<key>requirement</key>
-			<string>anchor apple generic and identifier fileop and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
+			<string>anchor apple generic and identifier "fileop-55554944cf12fcab83c63db7a7ed6a75e76e9f39" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
 		</dict>
 		<key>Resources/AppIcon.icns</key>
 		<dict>
@@ -323,15 +318,26 @@
 			nq7j0ugQwyNbJn/7zGFwxIR0njwU3i7hAYKEyZhvUfE=
 			</data>
 		</dict>
+		<key>Resources/Base.lproj/Sparkle.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			cHZov5FaqzfNhnBo0XdRuTMT4SY=
+			</data>
+			<key>hash2</key>
+			<data>
+			39CdfZZ1CQQz1Gd1+Ukxo2JHl0XESoc/cqWKF091WUk=
+			</data>
+		</dict>
 		<key>Resources/SUStatus.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ECVWRExfxyDt5uvKRD+70wc9J6s=
+			6I4uX0FrluZpgUjoCaB46P/0lY0=
 			</data>
 			<key>hash2</key>
 			<data>
-			AtY9YmPv7cUlbFWP2vCyVdi3/M+XQn98wOlrIES2Dgk=
+			8bmm56+lUnfMv3UQ4n/BaEp7hU1N1Wbur9BWMReUdso=
 			</data>
 		</dict>
 		<key>Resources/ar.lproj/Sparkle.strings</key>
@@ -364,11 +370,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			bY3rkqi/NJtXtjpK3FbV2o0gxbQ=
+			Gyp0nPqNvS5KdfMw+6ieF0yUTnI=
 			</data>
 			<key>hash2</key>
 			<data>
-			RfJgT2b3STcLu71+1iU9ZcSXbfwMWG1EE1C7Wrf3xBk=
+			8q22yKUhfKJVOOXteUQZAVVkhfzPQKzoSJdnVNkDPo8=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -390,11 +396,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			fsC7FJvExHE/2681tuUrjkSF2+A=
+			fXH7MjrA6hDT/k/8B6Vwgntt2lw=
 			</data>
 			<key>hash2</key>
 			<data>
-			XUpgsFH8KmcbgggpdYbJScCg0tBic9tNLdFh+8cbPyw=
+			bA5bxESyZuC/dG2VKfN+eQ7CVb2qAWrwfu94IpJ4Xi0=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -408,19 +414,6 @@
 			<key>hash2</key>
 			<data>
 			wt+2xyusmWAQuJ5kAQlRlvFb1wO4L7/rFdG+VmNjl+Y=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Resources/en.lproj/Sparkle.strings</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			cHZov5FaqzfNhnBo0XdRuTMT4SY=
-			</data>
-			<key>hash2</key>
-			<data>
-			39CdfZZ1CQQz1Gd1+Ukxo2JHl0XESoc/cqWKF091WUk=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -455,11 +448,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			X3URilwJPVqMTGbtrYdorODwrMA=
+			xFBTJYPjf7rlbYdkRKNTsPYz5JA=
 			</data>
 			<key>hash2</key>
 			<data>
-			fyqJl0MhXYRILalxRHpv/JorWLOVLPtNcJioiPtlnYg=
+			8PKuKp2lymWYfR+BqJ15UWlxOQKUl3fEveeseHBfaTw=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -637,11 +630,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			VpSLGNvZ6sbRYsF23L8m6TG+P6E=
+			x6JdY7WL2dHnGXX6PHJl5da7WKE=
 			</data>
 			<key>hash2</key>
 			<data>
-			wJZ5NG+mvj4anRFPUFyvSD0kGrg+ZAqklsPfHuCxLQY=
+			+vCWSRbECqQcsR6Nd8erQda/7x+ku/kQSUvZtTvemyQ=
 			</data>
 			<key>optional</key>
 			<true/>

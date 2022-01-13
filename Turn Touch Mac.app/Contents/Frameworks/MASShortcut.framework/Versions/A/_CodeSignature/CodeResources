@@ -6,11 +6,11 @@
 	<dict>
 		<key>Resources/Info.plist</key>
 		<data>
-		23ZLzxhZ1PABcEm1E8uexDyt+6A=
+		IgGS97a8WdwH/FEaQzrrJXrPQck=
 		</data>
 		<key>Resources/MASShortcut.bundle/Contents/Info.plist</key>
 		<data>
-		eL3VmFpFE3raDHxAKetqOc8XivA=
+		KXPFpp/8ayhuJk3Ua7D2kNKZpaU=
 		</data>
 		<key>Resources/MASShortcut.bundle/Contents/Resources/cs.lproj/Localizable.strings</key>
 		<dict>
@@ -147,26 +147,6 @@
 			<key>optional</key>
 			<true/>
 		</dict>
-		<key>Resources/MASShortcut.bundle/Contents/_CodeSignature/CodeDirectory</key>
-		<data>
-		7DwdJPsHnzzbL1s6dD9UOwUv9Tw=
-		</data>
-		<key>Resources/MASShortcut.bundle/Contents/_CodeSignature/CodeRequirements</key>
-		<data>
-		OnX22wWFKRSOFN1+obRynMCeyXM=
-		</data>
-		<key>Resources/MASShortcut.bundle/Contents/_CodeSignature/CodeRequirements-1</key>
-		<data>
-		W/zU/VHAcTFtxV5VyeH3pb+Yra0=
-		</data>
-		<key>Resources/MASShortcut.bundle/Contents/_CodeSignature/CodeResources</key>
-		<data>
-		wFAPQB5KakJvFt2ryieDMc7K+hc=
-		</data>
-		<key>Resources/MASShortcut.bundle/Contents/_CodeSignature/CodeSignature</key>
-		<data>
-		2jmj7l5rSw0yVb/vlWAYkK/YBwk=
-		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
@@ -174,22 +154,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			23ZLzxhZ1PABcEm1E8uexDyt+6A=
+			IgGS97a8WdwH/FEaQzrrJXrPQck=
 			</data>
 			<key>hash2</key>
 			<data>
-			Zd6TzaiyX9ezbt/ciQfyzFHj8bYSt7gQ/NCVBz+JsIw=
+			RzIRf1+BAGrYH1qTtn4NusOjaxkwZOIh2VU0p5p0/Qg=
 			</data>
 		</dict>
 		<key>Resources/MASShortcut.bundle/Contents/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			eL3VmFpFE3raDHxAKetqOc8XivA=
+			KXPFpp/8ayhuJk3Ua7D2kNKZpaU=
 			</data>
 			<key>hash2</key>
 			<data>
-			CmkuX18H8tpPBDjHJ9uHOgI67ZbSWobwqQ+48SToQTU=
+			Y9QE9zVWZCgWMyGTiAbQvSD57LHvCPzs/ofXFhbvb0c=
 			</data>
 		</dict>
 		<key>Resources/MASShortcut.bundle/Contents/Resources/cs.lproj/Localizable.strings</key>
@@ -386,61 +366,6 @@
 			</data>
 			<key>optional</key>
 			<true/>
-		</dict>
-		<key>Resources/MASShortcut.bundle/Contents/_CodeSignature/CodeDirectory</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			7DwdJPsHnzzbL1s6dD9UOwUv9Tw=
-			</data>
-			<key>hash2</key>
-			<data>
-			2iq4OVQIR19yLG62B/8LHnPqpBOuEAdF3HNVhmhaWM8=
-			</data>
-		</dict>
-		<key>Resources/MASShortcut.bundle/Contents/_CodeSignature/CodeRequirements</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			OnX22wWFKRSOFN1+obRynMCeyXM=
-			</data>
-			<key>hash2</key>
-			<data>
-			mHkgkE6rZQ51eIwFSqCwUk5qgL/HGqMt+NI3phdD+YY=
-			</data>
-		</dict>
-		<key>Resources/MASShortcut.bundle/Contents/_CodeSignature/CodeRequirements-1</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			W/zU/VHAcTFtxV5VyeH3pb+Yra0=
-			</data>
-			<key>hash2</key>
-			<data>
-			if/FiXr8XuGMgKoxR3C7MyWw1Q2w1wp8TvURvy3BXfA=
-			</data>
-		</dict>
-		<key>Resources/MASShortcut.bundle/Contents/_CodeSignature/CodeResources</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			wFAPQB5KakJvFt2ryieDMc7K+hc=
-			</data>
-			<key>hash2</key>
-			<data>
-			f8mBEizwtbklWjsKnaJZ2sDZqjNl0A9MEpbbpSpWc9s=
-			</data>
-		</dict>
-		<key>Resources/MASShortcut.bundle/Contents/_CodeSignature/CodeSignature</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			2jmj7l5rSw0yVb/vlWAYkK/YBwk=
-			</data>
-			<key>hash2</key>
-			<data>
-			47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
-			</data>
 		</dict>
 	</dict>
 	<key>rules</key>
