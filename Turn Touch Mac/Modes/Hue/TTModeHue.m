@@ -11,17 +11,30 @@
 #import "TTModeHueSleepOptions.h"
 
 #define MAX_HUE 65535
-#define MAX_BRIGHTNESS 255
+#define MAX_BRIGHTNESS_V1 255
+#define MAX_BRIGHTNESS_V2 100.0
+#define DEBUG_HUE YES
 
 @interface TTModeHue()
 
-@property (nonatomic, strong) PHBridgeSearching *bridgeSearch;
+@property (nonatomic, strong) TTHueBridgeDiscovery *bridgeDiscovery;
+@property (nonatomic, strong) TTHueBridgeAuthenticator *bridgeAuthenticator;
+@property (nonatomic, strong) TTHueDiscoveredBridge *latestBridge;
+@property (nonatomic, strong) NSMutableArray<NSString *> *bridgesTried;
+@property (nonatomic, strong) NSMutableArray<TTHueDiscoveredBridge *> *foundBridges;
+@property (nonatomic, strong) NSMutableArray<NSString *> *foundScenes;
+@property (nonatomic, strong) NSMutableArray<NSString *> *createdScenes;
+@property (nonatomic, assign) BOOL waitingOnScenes;
+@property (nonatomic, assign) BOOL ensuringScenes;
 
 @end
 
 @implementation TTModeHue
 
-static PHHueSDK *phHueSDK;
+// Static class properties
+static TTHueAPIClient *_hueClient = nil;
+static TTHueResourceCache *_resourceCache = nil;
+static TTHueEventStream *_eventStream = nil;
 
 NSString *const kRandomColors = @"randomColors";
 NSString *const kRandomBrightness = @"randomBrightness";
@@ -30,55 +43,64 @@ NSString *const kDoubleTapRandomColors = @"doubleTapRandomColors";
 NSString *const kDoubleTapRandomBrightness = @"doubleTapRandomBrightness";
 NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 
+#pragma mark - Class Property Accessors
+
++ (TTHueAPIClient *)hueClient {
+    return _hueClient;
+}
+
++ (TTHueResourceCache *)resourceCache {
+    return _resourceCache;
+}
+
++ (TTHueEventStream *)eventStream {
+    return _eventStream;
+}
+
++ (BOOL)isConnected {
+    return _hueClient != nil && _resourceCache != nil;
+}
+
+#pragma mark - Initialization
+
 - (instancetype)init {
     if (self = [super init]) {
+        self.bridgesTried = [NSMutableArray array];
+        self.foundBridges = [NSMutableArray array];
+        self.foundScenes = [NSMutableArray array];
+        self.createdScenes = [NSMutableArray array];
         [self initializeHue];
     }
-    
     return self;
 }
 
 - (void)initializeHue {
-//    if (phHueSDK) {
-//        [[PHNotificationManager defaultManager] deregisterObjectForAllNotifications:self];
-//        [self disableLocalHeartbeat];
-//        [phHueSDK stopSDK];
-//        phHueSDK = nil;
-//    }
-    if (!phHueSDK) {
-        phHueSDK = [[PHHueSDK alloc] init];
-        [phHueSDK startUpSDK];
-        [phHueSDK enableLogging:NO];
+    NSLog(@" ---> [TTModeHue] initializeHue called, _hueClient=%@", _hueClient);
+
+    if (_hueClient != nil) {
+        NSLog(@" ---> [TTModeHue] Already have hueClient, returning early");
+        return;
     }
-    
-    PHNotificationManager *notificationManager = [PHNotificationManager defaultManager];
-    [notificationManager deregisterObjectForAllNotifications:self];
-    
-    /***************************************************
-     The SDK will send the following notifications in response to events:
-     
-     - LOCAL_CONNECTION_NOTIFICATION
-     This notification will notify that the bridge heartbeat occurred and the bridge resources cache data has been updated
-     
-     - NO_LOCAL_CONNECTION_NOTIFICATION
-     This notification will notify that there is no connection with the bridge
-     
-     - NO_LOCAL_AUTHENTICATION_NOTIFICATION
-     This notification will notify that there is no authentication against the bridge
-     *****************************************************/
-    
-    [notificationManager registerObject:self withSelector:@selector(localConnection)
-                        forNotification:LOCAL_CONNECTION_NOTIFICATION];
-    [notificationManager registerObject:self withSelector:@selector(noLocalConnection)
-                        forNotification:NO_LOCAL_CONNECTION_NOTIFICATION];
-    [notificationManager registerObject:self withSelector:@selector(notAuthenticated)
-                        forNotification:NO_LOCAL_AUTHENTICATION_NOTIFICATION];
-    
-    // No Hue found, show connection button
+
+    // Register for event stream notifications
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(lightsUpdated:)
+                                                 name:TTHueEventStreamLightsUpdatedNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(eventStreamConnected:)
+                                                 name:TTHueEventStreamConnectedNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(eventStreamDisconnected:)
+                                                 name:TTHueEventStreamDisconnectedNotification
+                                               object:nil];
+
     self.hueState = STATE_CONNECTING;
     [self.delegate changeState:self.hueState withMode:self showMessage:@"Connecting..."];
-    
-    [self enableLocalHeartbeat];
+
+    [self connectToBridgeWithReset:YES];
 }
 
 #pragma mark - Mode
@@ -200,43 +222,65 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 #pragma mark - Action methods
 
 - (void)runScene:(NSString *)sceneName inDirection:(TTModeDirection)direction doubleTap:(BOOL)doubleTap {
-    if (!phHueSDK.localConnected) {
+    if (self.hueState != STATE_CONNECTED) {
+        [self connectToBridgeWithReset:NO];
         return;
     }
-    
-    PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
-    PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
-    PHScene *activeScene;
-    NSString *sceneIdentifier = [self.action optionValue:(doubleTap ? kDoubleTapHueScene : kHueScene) inDirection:direction];
-    NSString *roomIdentifier = [self.action optionValue:kHueRoom inDirection:direction];
-    if (!roomIdentifier || [roomIdentifier isEqualToString:@"all"]) {
-        roomIdentifier = @"0";
-    }
-    
-//    NSString *sceneIdentifier = [appDelegate.modeMap mode:self.action.mode
-//                                        actionOptionValue:(doubleTap ? kDoubleTapHueScene : kHueScene)
-//                                               actionName:sceneName
-//                                              inDirection:direction];
 
-    NSMutableArray *scenes = [[NSMutableArray alloc] init];
-    for (PHScene *scene in cache.scenes.allValues) {
-        [scenes addObject:@{@"name": scene.name, @"identifier": scene.identifier}];
-        if ([scene.identifier isEqualToString:sceneIdentifier]) {
-            activeScene = scene;
+    if (!_hueClient) {
+        NSLog(@" ---> No Hue client available");
+        return;
+    }
+
+    NSString *sceneIdentifier = [self.action optionValue:(doubleTap ? kDoubleTapHueScene : kHueScene) inDirection:direction];
+
+    if (!sceneIdentifier || [sceneIdentifier length] == 0) {
+        // Try to find a scene by title
+        NSString *sceneTitle = doubleTap ? [self doubleTitleForAction:sceneName] : [self titleForAction:sceneName];
+        NSDictionary<NSString *, TTHueScene *> *scenes = _resourceCache.scenes;
+        for (NSString *sceneId in scenes) {
+            TTHueScene *scene = scenes[sceneId];
+            if ([scene.metadata.name isEqualToString:sceneTitle]) {
+                sceneIdentifier = sceneId;
+                break;
+            }
         }
     }
-    
-    NSSortDescriptor *sd = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-    [scenes sortUsingDescriptors:@[sd]];
-    
-    if (!sceneIdentifier || ![sceneIdentifier length]) {
-        // Use default, which is first scene in sorted scene list
-        sceneIdentifier = scenes[0][@"identifier"];
+
+    if (!sceneIdentifier) {
+        NSLog(@" ---> No scene identifier found for %@", sceneName);
+        return;
     }
 
-    [bridgeSendAPI activateSceneWithIdentifier:sceneIdentifier onGroup:roomIdentifier completionHandler:^(NSArray *errors) {
-//        NSLog(@"Scene change: %@ (%@)", sceneIdentifier, errors);
+    [_hueClient recallSceneId:sceneIdentifier duration:nil brightness:nil completion:^(id result, NSError *error) {
+        if (error) {
+            NSLog(@" ---> Scene change error: %@", error);
+            if ([error.localizedDescription containsString:@"scene"]) {
+                [self ensureScenes];
+            }
+        } else {
+            if (DEBUG_HUE) {
+                NSLog(@" ---> Scene change: %@ (%@)", sceneName, sceneIdentifier);
+            }
+        }
     }];
+}
+
+- (NSString *)titleForAction:(NSString *)actionName {
+    SEL selector = NSSelectorFromString([NSString stringWithFormat:@"title%@", actionName]);
+    if ([self respondsToSelector:selector]) {
+        return [self performSelector:selector];
+    }
+    return actionName;
+}
+
+- (NSString *)doubleTitleForAction:(NSString *)actionName {
+    SEL selector = NSSelectorFromString([NSString stringWithFormat:@"doubleTitle%@", actionName]);
+    if ([self respondsToSelector:selector]) {
+        return [self performSelector:selector];
+    }
+    // Fall back to single title with " 2" suffix
+    return [[self titleForAction:actionName] stringByAppendingString:@" 2"];
 }
 
 - (void)runTTModeHueSceneEarlyEvening:(TTModeDirection)direction {
@@ -256,20 +300,16 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 }
 
 - (void)runTTModeHueOff:(TTModeDirection)direction {
-//    NSLog(@"Running scene off... %d", direction);
     [self runTTModeHueSleep:direction duration:@(1)];
 }
 
 - (void)runTTModeHueSleep:(TTModeDirection)direction {
     NSNumber *sceneDuration = [self.action optionValue:kHueDuration inDirection:direction];
-//    NSNumber *sceneDuration = (NSNumber *)[appDelegate.modeMap mode:self.action.mode actionOptionValue:kHueDuration actionName:@"TTModeHueSleep" inDirection:direction];
     [self runTTModeHueSleep:direction duration:sceneDuration];
 }
 
 - (void)doubleRunTTModeHueSleep:(TTModeDirection)direction {
-    //    NSLog(@"Running scene off... %d", direction);
     NSNumber *sceneDuration = [self.action optionValue:kHueDoubleTapDuration inDirection:direction];
-//    NSNumber *sceneDuration = (NSNumber *)[appDelegate.modeMap mode:self.action.mode actionOptionValue:kHueDoubleTapDuration actionName:@"TTModeHueSleep" inDirection:direction];
     [self runTTModeHueSleep:direction duration:sceneDuration];
 }
 
@@ -290,33 +330,41 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 }
 
 - (void)runTTModeHueSleep:(TTModeDirection)direction duration:(NSNumber *)sceneDuration {
-    //    NSLog(@"Running scene off... %d", direction);
-    PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
-    PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
-    NSNumber *sceneTransition = [NSNumber numberWithInteger:([sceneDuration integerValue] * 10)];
+    if (self.hueState != STATE_CONNECTED || !_hueClient || !_resourceCache) {
+        NSLog(@" ---> Not running sleep, not connected");
+        return;
+    }
+
+    NSInteger transitionMs = [sceneDuration integerValue] * 1000;  // API v2 uses milliseconds
     NSString *roomIdentifier = [self.action optionValue:kHueRoom inDirection:direction];
-    PHGroup *group = [cache.groups objectForKey:roomIdentifier];
-    
-    for (PHLight *light in cache.lights.allValues) {
-        if (group && ![roomIdentifier isEqualToString:@"all"]) {
-            if (![[group lightIdentifiers] containsObject:light.identifier]) {
+    NSArray<NSString *> *roomLights = [self roomLightsForRoom:roomIdentifier];
+
+    NSDictionary<NSString *, TTHueLight *> *lights = _resourceCache.lights;
+    if (lights.count == 0) {
+        NSLog(@" ---> Not running sleep, no lights found");
+        return;
+    }
+
+    for (NSString *lightId in lights) {
+        if (roomIdentifier && ![roomIdentifier isEqualToString:@"all"] && roomLights) {
+            if (![roomLights containsObject:lightId]) {
                 continue;
             }
         }
-        
-        PHLightState *lightState = [[PHLightState alloc] init];
-        
-        [lightState setOn:[NSNumber numberWithBool:NO]];
-        [lightState setTransitionTime:sceneTransition];
-        [lightState setBrightness:[NSNumber numberWithInt:0]];
-        
-        lightState.transitionTime = sceneTransition;
-        lightState.alert = 0;
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, (unsigned long)NULL), ^{
-            [bridgeSendAPI updateLightStateForId:light.identifier withLightState:lightState completionHandler:^(NSArray *errors) {
-                NSLog(@"Sleep light in %@: %@", sceneTransition, errors);
-            }];
-        });
+
+        [_hueClient updateLightId:lightId
+                               on:@NO
+                       brightness:@(0)
+                               xy:nil
+                     transitionMs:@(transitionMs)
+                           effect:nil
+                       completion:^(id result, NSError *error) {
+            if (error) {
+                NSLog(@" ---> Sleep light error: %@", error);
+            } else {
+                NSLog(@" ---> Sleep light in %ldms", (long)transitionMs);
+            }
+        }];
     }
 }
 
@@ -329,11 +377,11 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 }
 
 - (void)runTTModeHueRandom:(TTModeDirection)direction doubleTap:(BOOL)doubleTap {
-    //    NSLog(@"Running scene off... %d", direction);
-    
-    PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
-    PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
-    
+    if (self.hueState != STATE_CONNECTED || !_hueClient || !_resourceCache) {
+        NSLog(@" ---> Not running random, not connected");
+        return;
+    }
+
     TTHueRandomColors randomColors = (TTHueRandomColors)[[self.action
                                                           optionValue:(doubleTap ? kDoubleTapRandomColors : kRandomColors)
                                                           inDirection:direction] integerValue];
@@ -343,577 +391,920 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     TTHueRandomSaturation randomSaturation = (TTHueRandomSaturation)[[self.action
                                                                       optionValue:(doubleTap ? kDoubleTapRandomSaturation : kRandomSaturation)
                                                                       inDirection:direction] integerValue];
-    NSNumber *randomColor1 = [NSNumber numberWithInt:arc4random() % MAX_HUE];
-    NSNumber *randomColor2 = [NSNumber numberWithInt:arc4random() % MAX_HUE];
-    
+
+    NSInteger randomHue1 = arc4random() % MAX_HUE;
+    NSInteger randomHue2 = arc4random() % MAX_HUE;
+
     NSString *roomIdentifier = [self.action optionValue:kHueRoom inDirection:direction];
-    PHGroup *group = [cache.groups objectForKey:roomIdentifier];
-    
-    for (PHLight *light in cache.lights.allValues) {
-        if (group && ![roomIdentifier isEqualToString:@"all"]) {
-            if (![[group lightIdentifiers] containsObject:light.identifier]) {
+    NSArray<NSString *> *roomLights = [self roomLightsForRoom:roomIdentifier];
+
+    NSDictionary<NSString *, TTHueLight *> *lights = _resourceCache.lights;
+    if (lights.count == 0) {
+        NSLog(@" ---> Not running random, no lights found");
+        return;
+    }
+
+    for (NSString *lightId in lights) {
+        TTHueLight *light = lights[lightId];
+
+        if (roomIdentifier && ![roomIdentifier isEqualToString:@"all"] && roomLights) {
+            if (![roomLights containsObject:lightId]) {
                 continue;
             }
         }
 
-        PHLightState *lightState = [[PHLightState alloc] init];
-        
-        lightState.on = [NSNumber numberWithBool:YES];
-        
+        // Calculate hue value
+        NSInteger hue;
         if (randomColors == TTHueRandomColorsAllSame) {
-            [lightState setHue:randomColor1];
+            hue = randomHue1;
         } else if (randomColors == TTHueRandomColorsSomeDifferent) {
-            if (arc4random() % 10 > 5) {
-                [lightState setHue:randomColor1];
-            } else {
-                [lightState setHue:randomColor2];
-            }
+            hue = (arc4random() % 10 > 5) ? randomHue1 : randomHue2;
         } else {
-            [lightState setHue:[NSNumber numberWithInt:arc4random() % MAX_HUE]];
+            hue = arc4random() % MAX_HUE;
         }
 
+        // Calculate brightness (convert to 0-100 scale for API v2)
+        double brightness;
         if (randomBrightnesses == TTHueRandomBrightnessLow) {
-            [lightState setBrightness:[NSNumber numberWithInt:arc4random() % 100]];
+            brightness = (double)(arc4random() % 100) / 255.0 * 100.0;
         } else if (randomBrightnesses == TTHueRandomBrightnessVaried) {
-            [lightState setBrightness:[NSNumber numberWithInt:arc4random() % MAX_BRIGHTNESS]];
-        } else if (randomBrightnesses == TTHueRandomBrightnessHigh) {
-            [lightState setBrightness:[NSNumber numberWithInt:254]];
+            brightness = (double)(arc4random() % MAX_BRIGHTNESS_V1) / 255.0 * 100.0;
+        } else {
+            brightness = 100.0;
         }
-        
+
+        // Calculate saturation
+        NSInteger saturation;
         if (randomSaturation == TTHueRandomSaturationLow) {
-            [lightState setSaturation:[NSNumber numberWithInt:174]];
+            saturation = 174;
         } else if (randomSaturation == TTHueRandomSaturationVaried) {
-            [lightState setSaturation:[NSNumber numberWithInt:254 - floor(arc4random() % 80)]];
-        } else if (randomSaturation == TTHueRandomSaturationHigh) {
-            [lightState setSaturation:[NSNumber numberWithInt:254]];
+            saturation = MAX_BRIGHTNESS_V1 - (arc4random() % 80);
+        } else {
+            saturation = MAX_BRIGHTNESS_V1;
         }
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, (unsigned long)NULL), ^{
-            [bridgeSendAPI updateLightStateForId:light.identifier withLightState:lightState completionHandler:^(NSArray *errors) {}];
-        });
+
+        // Convert hue/saturation to xy color space
+        CGFloat h = (CGFloat)hue / (CGFloat)MAX_HUE;
+        CGFloat s = (CGFloat)saturation / 254.0;
+        NSColor *color = [NSColor colorWithHue:h saturation:s brightness:1.0 alpha:1.0];
+        NSString *modelId = light.metadata.archetype;
+        TTHueXY *xy = [TTHueColorUtilities calculateHueXYFromColor:color forModel:modelId];
+
+        [_hueClient updateLightId:lightId
+                               on:@YES
+                       brightness:@(brightness)
+                               xy:xy
+                     transitionMs:nil
+                           effect:nil
+                       completion:^(id result, NSError *error) {
+            if (error) {
+                NSLog(@" ---> Random light error: %@", error);
+            } else if (DEBUG_HUE) {
+                NSLog(@" ---> Finished random for light %@", lightId);
+            }
+        }];
     }
+}
+
+- (NSArray<NSString *> *)roomLightsForRoom:(NSString *)roomIdentifier {
+    if (!_resourceCache) return nil;
+
+    if (!roomIdentifier || [roomIdentifier isEqualToString:@"all"] || [roomIdentifier isEqualToString:@"0"] || [roomIdentifier length] == 0) {
+        return [_resourceCache.lights allKeys];
+    }
+
+    TTHueRoom *room = _resourceCache.rooms[roomIdentifier];
+    if (!room) return nil;
+
+    NSMutableArray *lightIds = [NSMutableArray array];
+    for (TTHueResourceLink *child in room.children) {
+        if ([child.rtype isEqualToString:@"device"] || [child.rtype isEqualToString:@"light"]) {
+            [lightIds addObject:child.rid];
+        }
+    }
+    return lightIds;
 }
 
 - (void)runTTModeHueRaiseBrightness:(TTModeDirection)direction {
-    [self changeBrightness:25];
+    [self changeBrightness:10.0];  // 10% in API v2 scale
 }
 - (void)doubleRunTTModeHueRaiseBrightness:(TTModeDirection)direction {
-    [self changeBrightness:50];
+    [self changeBrightness:20.0];
 }
 - (void)runTTModeHueLowerBrightness:(TTModeDirection)direction {
-    [self changeBrightness:-25];
+    [self changeBrightness:-10.0];
 }
 - (void)doubleRunTTModeHueLowerBrightness:(TTModeDirection)direction {
-    [self changeBrightness:-50];
+    [self changeBrightness:-20.0];
 }
 
-- (void)changeBrightness:(NSInteger)amount {
-    PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
-    PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
-
-    if (cache == nil || cache.bridgeConfiguration == nil || cache.bridgeConfiguration.ipaddress == nil) {
+- (void)changeBrightness:(double)amount {
+    if (!_hueClient || !_resourceCache) {
         return;
     }
-    
+
     NSString *roomIdentifier = [self.action optionValue:kHueRoom];
-    if (!roomIdentifier || [roomIdentifier isEqualToString:@"all"]) {
-        roomIdentifier = @"0";
+    NSArray<NSString *> *roomLights = [self roomLightsForRoom:roomIdentifier];
+
+    // Check if we can use grouped light for efficiency
+    NSDictionary<NSString *, TTHueGroupedLight *> *groupedLights = _resourceCache.groupedLights;
+    if (groupedLights.count > 0 && (!roomIdentifier || [roomIdentifier isEqualToString:@"all"])) {
+        // Use the first grouped light for all-room update
+        NSString *groupId = [groupedLights allKeys].firstObject;
+        if (groupId) {
+            // Get current brightness from first light
+            TTHueLight *firstLight = [_resourceCache.lights allValues].firstObject;
+            double currentBrightness = firstLight.dimming ? firstLight.dimming.brightness : 50.0;
+            double newBrightness = MAX(0, MIN(100, currentBrightness + amount));
+
+            [_hueClient updateGroupedLightId:groupId
+                                          on:@YES
+                                  brightness:@(newBrightness)
+                                  completion:^(id result, NSError *error) {
+                if (error) {
+                    NSLog(@" ---> Brightness change error: %@", error);
+                } else {
+                    NSLog(@" ---> Brightness: %.1f", newBrightness);
+                }
+            }];
+            return;
+        }
     }
-    
-    PHLightState *lightState = [[PHLightState alloc] init];
-    lightState.on = [NSNumber numberWithBool:YES];
-    lightState.brightnessIncrement = @(amount);
-    
-    [bridgeSendAPI setLightStateForGroupWithId:roomIdentifier lightState:lightState completionHandler:^(NSArray *errors) {
-        NSLog(@" ---> Brightness: %@", errors);
-    }];
+
+    // Update each light individually
+    for (NSString *lightId in _resourceCache.lights) {
+        if (roomIdentifier && ![roomIdentifier isEqualToString:@"all"] && roomLights) {
+            if (![roomLights containsObject:lightId]) {
+                continue;
+            }
+        }
+
+        TTHueLight *light = _resourceCache.lights[lightId];
+        double currentBrightness = light.dimming ? light.dimming.brightness : 50.0;
+        double newBrightness = MAX(0, MIN(100, currentBrightness + amount));
+
+        [_hueClient updateLightId:lightId
+                               on:@YES
+                       brightness:@(newBrightness)
+                               xy:nil
+                     transitionMs:nil
+                           effect:nil
+                       completion:^(id result, NSError *error) {
+            if (error) {
+                NSLog(@" ---> Brightness change error: %@", error);
+            } else {
+                NSLog(@" ---> Brightness: %.1f", newBrightness);
+            }
+        }];
+    }
 }
 
 - (void)runTTModeHueShiftColorLeft:(TTModeDirection)direction {
-    [self shiftColor:-1000];
+    [self shiftColor:-0.05];
 }
 - (void)doubleRunTTModeHueShiftColorLeft:(TTModeDirection)direction {
-    [self shiftColor:-2000];
+    [self shiftColor:-0.1];
 }
 - (void)runTTModeHueShiftColorRight:(TTModeDirection)direction {
-    [self shiftColor:1000];
+    [self shiftColor:0.05];
 }
 - (void)doubleRunTTModeHueShiftColorRight:(TTModeDirection)direction {
-    [self shiftColor:2000];
+    [self shiftColor:0.1];
 }
 
-- (void)shiftColor:(NSInteger)amount {
-    PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
-    PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
-    
-    if (cache == nil || cache.bridgeConfiguration == nil || cache.bridgeConfiguration.ipaddress == nil) {
+- (void)shiftColor:(double)amount {
+    if (!_hueClient || !_resourceCache) {
         return;
     }
-    
+
     NSString *roomIdentifier = [self.action optionValue:kHueRoom];
-    if (!roomIdentifier || [roomIdentifier isEqualToString:@"all"]) {
-        roomIdentifier = @"0";
+    NSArray<NSString *> *roomLights = [self roomLightsForRoom:roomIdentifier];
+
+    for (NSString *lightId in _resourceCache.lights) {
+        if (roomIdentifier && ![roomIdentifier isEqualToString:@"all"] && roomLights) {
+            if (![roomLights containsObject:lightId]) {
+                continue;
+            }
+        }
+
+        TTHueLight *light = _resourceCache.lights[lightId];
+        if (!light.color || !light.color.xy) {
+            continue;
+        }
+
+        // Shift the x value (hue shift in xy space)
+        double newX = light.color.xy.x + amount;
+        if (newX < 0) newX = 1.0 + newX;
+        if (newX > 1.0) newX = newX - 1.0;
+
+        TTHueXY *newXY = [[TTHueXY alloc] init];
+        newXY.x = newX;
+        newXY.y = light.color.xy.y;
+
+        [_hueClient updateLightId:lightId
+                               on:@YES
+                       brightness:nil
+                               xy:newXY
+                     transitionMs:nil
+                           effect:nil
+                       completion:^(id result, NSError *error) {
+            if (error) {
+                NSLog(@" ---> Color shift error: %@", error);
+            } else {
+                NSLog(@" ---> Color shift complete: (%.3f, %.3f)", newX, light.color.xy.y);
+            }
+        }];
     }
-    
-    PHLightState *lightState = [[PHLightState alloc] init];
-    lightState.on = [NSNumber numberWithBool:YES];
-    lightState.hueIncrement = @(amount);
-    
-    [bridgeSendAPI setLightStateForGroupWithId:roomIdentifier lightState:lightState completionHandler:^(NSArray *errors) {
-        NSLog(@" ---> Brightness: %@", errors);
-    }];
 }
 
 #pragma mark - Hue Init
 
 - (void)activate {
-//    NSLog(@" ---> Activating Hue mode: %@", phHueSDK);
+    // Re-register for notifications
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(lightsUpdated:)
+                                                 name:TTHueEventStreamLightsUpdatedNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(eventStreamConnected:)
+                                                 name:TTHueEventStreamConnectedNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(eventStreamDisconnected:)
+                                                 name:TTHueEventStreamDisconnectedNotification
+                                               object:nil];
 }
 
 - (void)deactivate {
-//    NSLog(@" ---> DE-Activating Hue mode: %@", phHueSDK);
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 
-//    [[PHNotificationManager defaultManager] deregisterObjectForAllNotifications:self];
-//    [self disableLocalHeartbeat];
-//    [phHueSDK stopSDK];
-//    phHueSDK = nil;
-}
+    // Cancel any ongoing authentication to stop background polling
+    if (self.bridgeAuthenticator) {
+        [self.bridgeAuthenticator cancelAuthentication];
+        self.bridgeAuthenticator = nil;
+    }
 
-#pragma mark - HueSDK
-
-/**
- Notification receiver for successful local connection
- */
-- (void)localConnection {
-    // Check current connection state
-    [self checkConnectionState];
-}
-
-/**
- Notification receiver for failed local connection
- */
-- (void)noLocalConnection {
-    // Check current connection state
-    [self checkConnectionState];
-}
-
-/**
- Notification receiver for failed local authentication
- */
-- (void)notAuthenticated {
-    /***************************************************
-     We are not authenticated so we start the authentication process
-     *****************************************************/
-    
-    /***************************************************
-     doAuthentication will start the push linking
-     *****************************************************/
-    
-    // Start local authenticion process
-    [self performSelector:@selector(doAuthentication) withObject:nil afterDelay:0.5];
-}
-
-/**
- Checks if we are currently connected to the bridge locally and if not, it will show an error when the error is not already shown.
- */
-- (void)checkConnectionState {
-    if (!phHueSDK.localConnected) {
-        [self showNoConnectionDialog];
-    } else {
-        // One of the connections is made, remove popups and loading views
-        if (self.hueState != STATE_CONNECTED) {
-            self.hueState = STATE_CONNECTED;
-            [self.delegate changeState:self.hueState withMode:self showMessage:nil];
-            [self ensureScenes];
-        }
+    // Cancel any ongoing bridge discovery
+    if (self.bridgeDiscovery) {
+        [self.bridgeDiscovery cancelDiscovery];
+        self.bridgeDiscovery = nil;
     }
 }
 
-/**
- Shows the first no connection alert
- */
+#pragma mark - Connection Management
+
+- (void)connectToBridgeWithReset:(BOOL)reset {
+    NSLog(@" ---> [TTModeHue] connectToBridgeWithReset:%@ (current state=%ld)", reset ? @"YES" : @"NO", (long)self.hueState);
+
+    if (self.hueState == STATE_CONNECTING && !reset) {
+        NSLog(@" ---> [TTModeHue] Already connecting, returning early");
+        return;
+    }
+
+    self.hueState = STATE_CONNECTING;
+    [self.delegate changeState:self.hueState withMode:self showMessage:@"Connecting to Hue..."];
+
+    if (reset) {
+        [self.bridgesTried removeAllObjects];
+    }
+
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSArray<NSDictionary *> *savedBridges = [prefs arrayForKey:@"TT:savedHueBridges"];
+
+    // Check if any bridges are missing usernames
+    BOOL needsMigration = (savedBridges.count == 0);
+    if (!needsMigration) {
+        for (NSDictionary *bridge in savedBridges) {
+            NSString *username = bridge[@"username"];
+            if (!username || username.length == 0) {
+                needsMigration = YES;
+                NSLog(@" ---> Bridge %@ is missing username, attempting migration", bridge[@"serialNumber"]);
+                break;
+            }
+        }
+    }
+
+    // Try legacy PHHueSDK credentials if needed
+    if (needsMigration) {
+        if ([TTHueBridgeAuthenticator migrateLegacyCredentials]) {
+            // Re-read after migration
+            savedBridges = [prefs arrayForKey:@"TT:savedHueBridges"];
+            NSLog(@" ---> After migration, bridges: %@", savedBridges);
+        }
+    }
+
+    BOOL bridgeUntried = NO;
+    for (NSDictionary *savedBridge in savedBridges) {
+        NSString *serialNumber = savedBridge[@"serialNumber"];
+        NSString *ip = savedBridge[@"ip"];
+        NSString *username = savedBridge[@"username"];
+
+        if (!serialNumber || !ip) continue;
+
+        if ([self.bridgesTried containsObject:serialNumber]) {
+            continue;
+        }
+
+        TTHueDiscoveredBridge *bridge = [[TTHueDiscoveredBridge alloc] init];
+        bridge.bridgeId = serialNumber;
+        bridge.internalIPAddress = ip;
+
+        bridgeUntried = YES;
+        self.latestBridge = bridge;
+        [self.bridgesTried addObject:serialNumber];
+
+        if (DEBUG_HUE) {
+            NSLog(@" ---> Connecting to bridge: %@", savedBridge);
+        }
+
+        if (username && username.length > 0) {
+            [self authenticateBridgeWithUsername:username];
+        } else {
+            // Need to pushlink
+            self.bridgeAuthenticator = [[TTHueBridgeAuthenticator alloc] init];
+            self.bridgeAuthenticator.delegate = self;
+            [self.bridgeAuthenticator startAuthenticationWithBridgeIP:ip bridgeId:serialNumber];
+        }
+
+        break;
+    }
+
+    if (!bridgeUntried) {
+        [self searchForBridgeLocal];
+    }
+}
+
+- (void)authenticateBridgeWithUsername:(NSString *)username {
+    NSLog(@" ---> [TTModeHue] authenticateBridgeWithUsername: %@ (bridge=%@)", username, self.latestBridge.internalIPAddress);
+
+    if (!self.latestBridge) {
+        NSLog(@" ---> No bridge to authenticate");
+        return;
+    }
+
+    if (self.hueState != STATE_CONNECTED) {
+        NSLog(@" ---> [TTModeHue] Setting state to CONNECTED and initializing API client");
+        self.hueState = STATE_CONNECTED;
+        [self saveRecentBridgeWithUsername:username];
+
+        // Initialize the API client
+        _hueClient = [[TTHueAPIClient alloc] initWithBridgeIP:self.latestBridge.internalIPAddress
+                                               applicationKey:username];
+
+        // Fetch initial resources
+        [self fetchResources];
+
+        // Start SSE event stream for real-time updates
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self startEventStreamWithUsername:username];
+        });
+
+        [self.delegate changeState:self.hueState withMode:self showMessage:nil];
+    }
+}
+
+- (void)tryAuthenticateWithPendingUsername:(NSString *)username bridgeIP:(NSString *)bridgeIP bridgeId:(NSString *)bridgeId {
+    NSLog(@" ---> Trying legacy username: %@", username);
+
+    // Create a temporary API client to test if the username works
+    TTHueAPIClient *testClient = [[TTHueAPIClient alloc] initWithBridgeIP:bridgeIP applicationKey:username];
+
+    [testClient fetchLightsWithCompletion:^(NSArray<TTHueLight *> *lights, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (error) {
+                NSLog(@" ---> Legacy username failed: %@", error);
+
+                // Username doesn't work, fall back to pushlink
+                self.bridgeAuthenticator = [[TTHueBridgeAuthenticator alloc] init];
+                self.bridgeAuthenticator.delegate = self;
+                [self.bridgeAuthenticator startAuthenticationWithBridgeIP:bridgeIP bridgeId:bridgeId];
+            } else {
+                NSLog(@" ---> Legacy username works! Found %lu lights", (unsigned long)lights.count);
+
+                // Save the credentials and authenticate
+                TTHueAuthResult *result = [[TTHueAuthResult alloc] initWithBridgeIP:bridgeIP
+                                                                            bridgeId:bridgeId
+                                                                      applicationKey:username
+                                                                           clientKey:nil];
+                [TTHueBridgeAuthenticator saveCredentials:result];
+                [self authenticateBridgeWithUsername:username];
+            }
+        });
+    }];
+}
+
+- (void)fetchResources {
+    if (!_hueClient) return;
+
+    self.waitingOnScenes = YES;
+
+    [_hueClient fetchAllResourcesWithCompletion:^(TTHueResourceCache *cache, NSError *error) {
+        if (error) {
+            NSLog(@" ---> Failed to fetch resources: %@", error);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // Check if this is an authentication error
+                if ([error.domain isEqualToString:TTHueAPIClientErrorDomain] &&
+                    error.code == TTHueAPIClientErrorNotAuthenticated) {
+                    // Clear invalid credentials - user will need to re-authenticate
+                    if (self.latestBridge) {
+                        NSLog(@" ---> Authentication failed, removing credentials for bridge: %@", self.latestBridge.bridgeId);
+                        [self removeSavedBridge:self.latestBridge.bridgeId];
+                    }
+                    // Don't start pushlink automatically - wait for user to open Hue options
+                    self.hueState = STATE_NOT_CONNECTED;
+                    [self.delegate changeState:self.hueState withMode:self showMessage:@"Hue authentication expired. Open Hue settings to reconnect."];
+                } else {
+                    [self showNoConnectionDialog];
+                }
+            });
+            return;
+        }
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            _resourceCache = cache;
+            self.waitingOnScenes = NO;
+
+            if (DEBUG_HUE) {
+                NSLog(@" ---> Fetched resources: %lu lights, %lu rooms, %lu scenes",
+                      (unsigned long)cache.lights.count,
+                      (unsigned long)cache.rooms.count,
+                      (unsigned long)cache.scenes.count);
+            }
+
+            [self.delegate changeState:self.hueState withMode:self showMessage:nil];
+            [self ensureScenes];
+        });
+    }];
+}
+
+- (void)startEventStreamWithUsername:(NSString *)username {
+    if (!self.latestBridge) {
+        NSLog(@" ---> Error: No latest bridge for event stream");
+        return;
+    }
+
+    _eventStream = [[TTHueEventStream alloc] initWithBridgeIP:self.latestBridge.internalIPAddress
+                                               applicationKey:username];
+    _eventStream.delegate = self;
+    [_eventStream connect];
+
+    self.waitingOnScenes = YES;
+}
+
+- (void)saveRecentBridgeWithUsername:(NSString *)username {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+
+    if (!self.latestBridge) {
+        NSLog(@" ---> ERROR: No latest bridge to save");
+        return;
+    }
+
+    [self.bridgesTried removeAllObjects];
+
+    NSMutableArray *previouslyFoundBridges = [[prefs arrayForKey:@"TT:savedHueBridges"] mutableCopy] ?: [NSMutableArray array];
+
+    // Remove old entry if exists
+    NSInteger oldIndex = -1;
+    NSString *oldUsername = nil;
+    for (NSInteger i = 0; i < previouslyFoundBridges.count; i++) {
+        NSDictionary *bridge = previouslyFoundBridges[i];
+        if ([bridge[@"serialNumber"] isEqualToString:self.latestBridge.bridgeId]) {
+            oldIndex = i;
+            oldUsername = bridge[@"username"];
+            break;
+        }
+    }
+
+    if (oldIndex >= 0) {
+        [previouslyFoundBridges removeObjectAtIndex:oldIndex];
+    }
+
+    NSMutableDictionary *newBridge = [NSMutableDictionary dictionary];
+    newBridge[@"ip"] = self.latestBridge.internalIPAddress;
+    newBridge[@"deviceType"] = @"Hue Bridge";
+    newBridge[@"serialNumber"] = self.latestBridge.bridgeId;
+
+    if (username) {
+        newBridge[@"username"] = username;
+    } else if (oldUsername) {
+        newBridge[@"username"] = oldUsername;
+    }
+
+    [previouslyFoundBridges insertObject:newBridge atIndex:0];
+
+    [prefs setObject:previouslyFoundBridges forKey:@"TT:savedHueBridges"];
+    [prefs synchronize];
+
+    if (DEBUG_HUE) {
+        NSLog(@" ---> Saved bridges (username: %@): %@", username, previouslyFoundBridges);
+    }
+}
+
+- (void)removeSavedBridge:(NSString *)serialNumber {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+
+    NSMutableArray *savedBridges = [[prefs arrayForKey:@"TT:savedHueBridges"] mutableCopy] ?: [NSMutableArray array];
+    NSMutableArray *filteredBridges = [NSMutableArray array];
+
+    for (NSDictionary *bridge in savedBridges) {
+        if (![bridge[@"serialNumber"] isEqualToString:serialNumber]) {
+            [filteredBridges addObject:bridge];
+        }
+    }
+
+    [prefs setObject:filteredBridges forKey:@"TT:savedHueBridges"];
+    [prefs synchronize];
+
+    NSLog(@" ---> Removed bridge %@: %@", serialNumber, filteredBridges);
+}
+
+#pragma mark - Event Stream Notifications
+
+- (void)lightsUpdated:(NSNotification *)notification {
+    NSArray<TTHueLight *> *lights = notification.userInfo[@"lights"];
+    if (!lights || !_resourceCache) return;
+
+    // Update cache with new light states
+    for (TTHueLight *light in lights) {
+        [_resourceCache updateLight:light];
+    }
+}
+
+- (void)eventStreamConnected:(NSNotification *)notification {
+    if (DEBUG_HUE) {
+        NSLog(@" ---> Event stream connected");
+    }
+}
+
+- (void)eventStreamDisconnected:(NSNotification *)notification {
+    NSError *error = notification.userInfo[@"error"];
+    NSLog(@" ---> Event stream disconnected: %@", error.localizedDescription ?: @"unknown");
+}
+
+#pragma mark - TTHueEventStreamDelegate
+
+- (void)eventStreamConnected {
+    if (DEBUG_HUE) {
+        NSLog(@" ---> Event stream delegate: connected");
+    }
+}
+
+- (void)eventStreamDisconnectedWithError:(NSError *)error {
+    NSLog(@" ---> Event stream delegate: disconnected - %@", error.localizedDescription ?: @"unknown");
+}
+
+- (void)eventStreamAuthenticationFailed {
+    NSLog(@" ---> Event stream authentication failed - need to re-authenticate");
+    // The API key is invalid - clear saved credentials so user must re-authenticate via pushlink
+    if (self.latestBridge) {
+        NSLog(@" ---> Removing invalid credentials for bridge: %@", self.latestBridge.bridgeId);
+        [self removeSavedBridge:self.latestBridge.bridgeId];
+    }
+
+    // Don't start pushlink automatically - wait for user to open Hue options
+    // This prevents background polling that wastes resources and hits rate limits
+    self.hueState = STATE_NOT_CONNECTED;
+    [self.delegate changeState:self.hueState withMode:self showMessage:@"Hue authentication expired. Open Hue settings to reconnect."];
+}
+
+- (void)eventStreamReceivedLightUpdates:(NSArray<TTHueLight *> *)lights {
+    if (!_resourceCache) return;
+
+    for (TTHueLight *light in lights) {
+        [_resourceCache updateLight:light];
+    }
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:TTHueEventStreamLightsUpdatedNotification
+                                                        object:self
+                                                      userInfo:@{@"lights": lights}];
+}
+
+- (void)eventStreamReceivedSceneUpdates:(NSArray<TTHueScene *> *)scenes {
+    if (!_resourceCache) return;
+
+    for (TTHueScene *scene in scenes) {
+        [_resourceCache updateScene:scene];
+    }
+}
+
+- (void)eventStreamReceivedRoomUpdates:(NSArray<TTHueRoom *> *)rooms {
+    if (!_resourceCache) return;
+
+    for (TTHueRoom *room in rooms) {
+        [_resourceCache updateRoom:room];
+    }
+}
+
+#pragma mark - Bridge searching and selection
+
+- (void)searchForBridgeLocal {
+    NSLog(@" ---> [TTModeHue] searchForBridgeLocal starting");
+    self.hueState = STATE_CONNECTING;
+    [self.delegate changeState:self.hueState withMode:self showMessage:@"Searching for a Hue bridge..."];
+
+    self.bridgeDiscovery = [[TTHueBridgeDiscovery alloc] init];
+    self.bridgeDiscovery.delegate = self;
+    [self.bridgeDiscovery startDiscovery];
+}
+
+- (void)bridgeSelectedWithIpAddress:(NSString *)ipAddress andBridgeId:(NSString *)bridgeId {
+    self.hueState = STATE_CONNECTING;
+    [self.delegate changeState:self.hueState withMode:self showMessage:@"Found Hue bridge..."];
+
+    TTHueDiscoveredBridge *bridge = [[TTHueDiscoveredBridge alloc] init];
+    bridge.bridgeId = bridgeId;
+    bridge.internalIPAddress = ipAddress;
+    self.latestBridge = bridge;
+
+    [self saveRecentBridgeWithUsername:nil];
+
+    // Check if there's a pending username from legacy credential migration
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *pendingUsername = [defaults stringForKey:@"TT:pendingHueUsername"];
+
+    if (pendingUsername && pendingUsername.length > 0) {
+        NSLog(@" ---> Found pending username from legacy migration, trying to authenticate directly");
+        // Remove the pending username
+        [defaults removeObjectForKey:@"TT:pendingHueUsername"];
+        [defaults synchronize];
+
+        // Try to authenticate with the legacy username
+        [self tryAuthenticateWithPendingUsername:pendingUsername bridgeIP:ipAddress bridgeId:bridgeId];
+        return;
+    }
+
+    // Start pushlink authentication
+    self.bridgeAuthenticator = [[TTHueBridgeAuthenticator alloc] init];
+    self.bridgeAuthenticator.delegate = self;
+    [self.bridgeAuthenticator startAuthenticationWithBridgeIP:ipAddress bridgeId:bridgeId];
+}
+
+#pragma mark - TTHueBridgeDiscoveryDelegate
+
+- (void)bridgeDiscoveryStarted {
+    if (DEBUG_HUE) {
+        NSLog(@" ---> Bridge discovery started");
+    }
+}
+
+- (void)bridgeDiscoveryFinished:(NSArray<TTHueDiscoveredBridge *> *)bridges {
+    if (bridges.count > 0) {
+        self.hueState = STATE_BRIDGE_SELECT;
+        [self.foundBridges removeAllObjects];
+        [self.foundBridges addObjectsFromArray:bridges];
+
+        // Convert to dictionary format for delegate
+        NSMutableDictionary *bridgesDict = [NSMutableDictionary dictionary];
+        for (TTHueDiscoveredBridge *bridge in bridges) {
+            bridgesDict[bridge.bridgeId] = bridge.internalIPAddress;
+        }
+
+        // If only one bridge found, auto-connect
+        if (bridges.count == 1) {
+            TTHueDiscoveredBridge *bridge = bridges.firstObject;
+            [self bridgeSelectedWithIpAddress:bridge.internalIPAddress andBridgeId:bridge.bridgeId];
+        } else {
+            [self.delegate changeState:self.hueState withMode:self showMessage:bridgesDict];
+        }
+    } else {
+        [self showNoBridgesFoundDialog];
+    }
+}
+
+- (void)bridgeDiscoveryError:(NSError *)error {
+    NSLog(@" ---> Bridge discovery error: %@", error);
+
+    if (error.code == TTHueBridgeDiscoveryErrorRateLimited) {
+        self.hueState = STATE_NOT_CONNECTED;
+        [self.delegate changeState:self.hueState withMode:self showMessage:@"Philips Hue is rate-limiting requests. Please wait a moment and try again."];
+    } else {
+        [self showNoBridgesFoundDialog];
+    }
+}
+
+#pragma mark - TTHueBridgeAuthenticatorDelegate
+
+- (void)authenticationStarted {
+    if (DEBUG_HUE) {
+        NSLog(@" ---> Authentication started");
+    }
+
+    self.hueState = STATE_PUSHLINK;
+    [self.delegate changeState:self.hueState withMode:self showMessage:nil];
+}
+
+- (void)authenticationProgressWithRemainingSeconds:(NSInteger)remainingSeconds {
+    self.hueState = STATE_PUSHLINK;
+    NSNumber *progress = @((NSInteger)(remainingSeconds * (100.0/30.0)));
+    [self.delegate changeState:self.hueState withMode:self showMessage:progress];
+}
+
+- (void)authenticationSucceededWithResult:(TTHueAuthResult *)result {
+    [self authenticateBridgeWithUsername:result.applicationKey];
+}
+
+- (void)authenticationFailedWithError:(NSError *)error {
+    NSLog(@" ---> Authentication failed: %@ (domain: %@, code: %ld)", error.localizedDescription, error.domain, (long)error.code);
+
+    // Handle our custom authenticator errors
+    if ([error.domain isEqualToString:TTHueBridgeAuthenticatorErrorDomain]) {
+        if (error.code == TTHueBridgeAuthenticatorErrorTimeout) {
+            // Pushlink button not pressed within 30 seconds
+            if (self.latestBridge) {
+                [self removeSavedBridge:self.latestBridge.bridgeId];
+            }
+            self.hueState = STATE_NOT_CONNECTED;
+            [self.delegate changeState:self.hueState withMode:self showMessage:@"Pushlink button not pressed within 30 seconds"];
+        } else if (error.code == TTHueBridgeAuthenticatorErrorNetwork) {
+            // Network error - could be local network permission
+            NSError *underlyingError = error.userInfo[NSUnderlyingErrorKey];
+            if (underlyingError && underlyingError.code == -1009) {
+                self.hueState = STATE_NOT_CONNECTED;
+                [self.delegate changeState:self.hueState withMode:self showMessage:@"Local network access required. Please grant permission in System Settings."];
+            } else {
+                self.hueState = STATE_NOT_CONNECTED;
+                [self.delegate changeState:self.hueState withMode:self showMessage:@"Could not connect to Hue bridge. Check your network connection."];
+            }
+        } else {
+            // Other authenticator errors (invalid response, auth failed, etc.)
+            self.hueState = STATE_NOT_CONNECTED;
+            [self.delegate changeState:self.hueState withMode:self showMessage:[NSString stringWithFormat:@"Authentication failed: %@", error.localizedDescription]];
+        }
+        return;
+    }
+
+    // Handle NSURLError domain errors (for legacy compatibility)
+    if (error.code == -1009) {
+        // Network offline / Local network prohibited
+        self.hueState = STATE_NOT_CONNECTED;
+        [self.delegate changeState:self.hueState withMode:self showMessage:@"Local network access required. Please grant permission in System Settings."];
+    } else if (error.code == -1001 || error.code == -1004) {
+        // Timeout or could not connect to server
+        self.hueState = STATE_NOT_CONNECTED;
+        [self.delegate changeState:self.hueState withMode:self showMessage:@"Could not connect to Hue bridge"];
+    } else {
+        // Unknown error - don't retry to avoid infinite loop
+        self.hueState = STATE_NOT_CONNECTED;
+        [self.delegate changeState:self.hueState withMode:self showMessage:[NSString stringWithFormat:@"Connection error: %@", error.localizedDescription]];
+    }
+}
+
+#pragma mark - Dialog methods
+
 - (void)showNoConnectionDialog {
     NSLog(@"Connection to bridge lost!");
     self.hueState = STATE_NOT_CONNECTED;
     [self.delegate changeState:self.hueState withMode:self showMessage:@"Connection to Hue bridge lost"];
 }
 
-/**
- Shows the no bridges found alert
- */
 - (void)showNoBridgesFoundDialog {
     NSLog(@"Could not find bridge!");
     self.hueState = STATE_NOT_CONNECTED;
     [self.delegate changeState:self.hueState withMode:self showMessage:@"Could not find any Hue bridges"];
 }
 
-/**
- Shows the not authenticated alert
- */
-- (void)showNotAuthenticatedDialog{
+- (void)showNotAuthenticatedDialog {
     self.hueState = STATE_NOT_CONNECTED;
     [self.delegate changeState:self.hueState withMode:self showMessage:@"Pushlink button not pressed within 30 seconds"];
     NSLog(@"Pushlink button not pressed within 30 sec!");
 }
 
-#pragma mark - Bridge searching and selection
-
-/**
- Search for bridges using UPnP and portal discovery, shows results to user or gives error when none found.
- */
-- (void)searchForBridgeLocal {
-    // Stop heartbeats
-    [self disableLocalHeartbeat];
-    
-    // Start search
-    self.hueState = STATE_CONNECTING;
-    [self.delegate changeState:self.hueState withMode:self showMessage:@"Searching for a Hue bridge..."];
-    
-    self.bridgeSearch = [[PHBridgeSearching alloc] initWithUpnpSearch:YES andPortalSearch:YES andIpAddressSearch:YES];
-    [self.bridgeSearch startSearchWithCompletionHandler:^(NSDictionary *bridgesFound) {
-        /***************************************************
-         The search is complete, check whether we found a bridge
-         *****************************************************/
-        
-        // Check for results
-        if (bridgesFound.count > 0) {
-            self.hueState = STATE_BRIDGE_SELECT;
-            [self.delegate changeState:self.hueState withMode:self showMessage:bridgesFound];
-        }
-        else {
-            /***************************************************
-             No bridge was found was found. Tell the user and offer to retry..
-             *****************************************************/
-            
-            // No bridges were found, show this to the user
-            [self showNoBridgesFoundDialog];
-        }
-    }];
-    
-}
-
-- (void)bridgeSelectedWithIpAddress:(NSString *)ipAddress andBridgeId:(NSString *)bridgeId {
-    self.hueState = STATE_CONNECTING;
-    [self.delegate changeState:self.hueState withMode:self showMessage:@"Found Hue bridge..."];
-//    NSString *macAddress = [[bridgesFound allKeys] objectAtIndex:1];
-//    NSString *ipAddress = [bridgesFound objectForKey:macAddress];
-    [phHueSDK setBridgeToUseWithId:bridgeId ipAddress:ipAddress];
-    
-    [self doAuthentication];
-
-    [self performSelector:@selector(enableLocalHeartbeat) withObject:nil afterDelay:30];
-}
-
-#pragma mark - Heartbeat control
-
-/**
- Starts the local heartbeat with a 10 second interval
- */
-- (void)enableLocalHeartbeat {
-    /***************************************************
-     The heartbeat processing collects data from the bridge
-     so now try to see if we have a bridge already connected
-     *****************************************************/
-    
-    PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
-    if (cache != nil && cache.bridgeConfiguration != nil && cache.bridgeConfiguration.ipaddress != nil) {
-        // Enable heartbeat with interval of 10 seconds
-        [phHueSDK enableLocalConnection];
-    } else {
-        // Automaticly start searching for bridges
-        [self searchForBridgeLocal];
-    }
-}
-
-/**
- Stops the local heartbeat
- */
-- (void)disableLocalHeartbeat {
-    [phHueSDK disableLocalConnection];
-}
-
-#pragma mark - Bridge authentication
-
-/**
- Start the local authentication process
- */
-- (void)doAuthentication {
-    // Disable heartbeats
-    [self disableLocalHeartbeat];
-    
-    // Remove loading sheet view
-    //    [self hideCurrentSheetWindow];
-    
-    /***************************************************
-     To be certain that we own this bridge we must manually
-     push link it. Here we display the view to do this.
-     *****************************************************/
-    
-    self.hueState = STATE_PUSHLINK;
-    [self.delegate changeState:self.hueState withMode:self showMessage:nil];
-    
-    /***************************************************
-     Start the push linking process.
-     *****************************************************/
-    
-    // Start pushlinking when the interface is shown
-    [self startPushLinking];
-}
-
-- (void)startPushLinking {
-    /***************************************************
-     Set up the notifications for push linkng
-     *****************************************************/
-    
-    // Register for notifications about pushlinking
-    PHNotificationManager *phNotificationMgr = [PHNotificationManager defaultManager];
-//    [phNotificationMgr deregisterObjectForAllNotifications:self];
-    
-    [phNotificationMgr registerObject:self withSelector:@selector(authenticationSuccess)
-                      forNotification:PUSHLINK_LOCAL_AUTHENTICATION_SUCCESS_NOTIFICATION];
-    [phNotificationMgr registerObject:self withSelector:@selector(authenticationFailed)
-                      forNotification:PUSHLINK_LOCAL_AUTHENTICATION_FAILED_NOTIFICATION];
-    [phNotificationMgr registerObject:self withSelector:@selector(noLocalConnection)
-                      forNotification:PUSHLINK_NO_LOCAL_CONNECTION_NOTIFICATION];
-    [phNotificationMgr registerObject:self withSelector:@selector(noLocalBridge)
-                      forNotification:PUSHLINK_NO_LOCAL_BRIDGE_KNOWN_NOTIFICATION];
-    [phNotificationMgr registerObject:self withSelector:@selector(buttonNotPressed:)
-                      forNotification:PUSHLINK_BUTTON_NOT_PRESSED_NOTIFICATION];
-    
-    // Call to the hue SDK to start pushlinking process
-    /***************************************************
-     Call the SDK to start Push linking.
-     The notifications sent by the SDK will confirm success
-     or failure of push linking
-     *****************************************************/
-    
-    [phHueSDK startPushlinkAuthentication];
-}
-
-#pragma mark - Notifications for Pushlink
-
-/**
- Notification receiver which is called when the pushlinking was successful
- */
-- (void)authenticationSuccess {
-    /***************************************************
-     The notification PUSHLINK_LOCAL_AUTHENTICATION_SUCCESS_NOTIFICATION
-     was received. We have confirmed the bridge.
-     De-register for notifications and call
-     pushLinkSuccess on the delegate
-     *****************************************************/
-    // Deregister for all notifications
-//    [[PHNotificationManager defaultManager] deregisterObjectForAllNotifications:self];
-    
-    self.hueState = STATE_CONNECTED;
-    [self.delegate changeState:self.hueState withMode:self showMessage:nil];
-    [self disableLocalHeartbeat];
-    
-    // Start local heartbeat
-    [self performSelector:@selector(enableLocalHeartbeat) withObject:nil afterDelay:1];
-}
-
-/**
- Notification receiver which is called when the pushlinking failed because the time limit was reached
- */
-- (void)authenticationFailed {
-    // Deregister for all notifications
-//    [[PHNotificationManager defaultManager] deregisterObjectForAllNotifications:self];
-    
-    // Inform delegate
-    [self pushlinkFailed:[PHError errorWithDomain:SDK_ERROR_DOMAIN
-                                                      code:PUSHLINK_TIME_LIMIT_REACHED
-                                                  userInfo:[NSDictionary dictionaryWithObject:@"Authentication failed: time limit reached." forKey:NSLocalizedDescriptionKey]]];
-}
-
-/**
- Notification receiver which is called when the pushlinking failed because we do not know the address of the local bridge
- */
-- (void)noLocalBridge {
-    // Deregister for all notifications
-//    [[PHNotificationManager defaultManager] deregisterObjectForAllNotifications:self];
-    
-    // Inform delegate
-    [self pushlinkFailed:[PHError errorWithDomain:SDK_ERROR_DOMAIN code:PUSHLINK_NO_LOCAL_BRIDGE userInfo:[NSDictionary dictionaryWithObject:@"Authentication failed: No local bridge found." forKey:NSLocalizedDescriptionKey]]];
-}
-
-/**
- This method is called when the pushlinking is still ongoing but no button was pressed yet.
- @param notification The notification which contains the pushlinking percentage which has passed.
- */
-- (void)buttonNotPressed:(NSNotification *)notification {
-    // Update status bar with percentage from notification
-    NSDictionary *dict = notification.userInfo;
-    NSNumber *progressPercentage = [dict objectForKey:@"progressPercentage"];
-    
-    self.hueState = STATE_PUSHLINK;
-    [self.delegate changeState:self.hueState withMode:self showMessage:progressPercentage];
-}
-
-/**
- Delegate method for PHBridgePushLinkViewController which is invoked if the pushlinking was not successfull
- */
-- (void)pushlinkFailed:(PHError *)error {
-    // Check which error occured
-    if (error.code == PUSHLINK_NO_CONNECTION) {
-        // No local connection to bridge
-        [self noLocalConnection];
-        
-        // Start local heartbeat (to see when connection comes back)
-        [self performSelector:@selector(enableLocalHeartbeat) withObject:nil afterDelay:1];
-    }
-    else {
-        // Bridge button not pressed in time
-        [self showNotAuthenticatedDialog];
-    }
-}
+#pragma mark - Scene Management
 
 - (void)ensureScenes {
-    PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
-    PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
+    if (!_resourceCache || _resourceCache.scenes.count == 0 || _resourceCache.lights.count == 0) {
+        NSLog(@" ---> Scenes/lights not ready yet for scene creation");
+        return;
+    }
 
-    // Collect scene ids to check against
-    NSDictionary *scenes = cache.scenes;
-    NSMutableArray *foundScenes = [[NSMutableArray alloc] init];
-    for (PHScene *scene in scenes.allValues) {
-        [foundScenes addObject:scene.identifier];
-    }
-    
-    // Scene: All Lights Off
-    if (![foundScenes containsObject:@"TT-all-off"]) {
-        PHScene *scene = [[PHScene alloc] init];
-        scene.name = @"All Lights Off";
-        scene.identifier = @"TT-all-off";
-        scene.lightIdentifiers = cache.lights.allKeys;
-        [bridgeSendAPI saveSceneWithCurrentLightStates:scene completionHandler:^(NSArray *errors) {
-            NSLog(@"Hue:SceneOff scene: %@", errors);
-            for (PHLight *light in cache.lights.allValues) {
-                PHLightState *lightState = [[PHLightState alloc] init];
-                lightState.on = [NSNumber numberWithBool:NO];
-                lightState.alert = 0;
-                [bridgeSendAPI saveLightState:lightState forLightIdentifier:light.identifier inSceneWithIdentifier:scene.identifier completionHandler:^(NSArray *errors) {
-                    NSLog(@"Hue:SceneOff light: %@", errors);
-                }];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        if (self.ensuringScenes) {
+            NSLog(@" ---> Already ensuring scenes...");
+            return;
+        }
+        self.ensuringScenes = YES;
+
+        // Collect existing scene names
+        [self.foundScenes removeAllObjects];
+        for (NSString *sceneId in _resourceCache.scenes) {
+            TTHueScene *scene = _resourceCache.scenes[sceneId];
+            [self.foundScenes addObject:scene.metadata.name];
+        }
+
+        // Create scenes that don't exist
+        [self ensureSceneWithName:@"Early evening" actionName:@"TTModeHueSceneEarlyEvening" isDouble:NO
+                     colorHandler:^NSColor *(TTHueLight *light, NSUInteger index) {
+            return [NSColor colorWithRed:235/255.0 green:206/255.0 blue:146/255.0 alpha:1.0];
+        } brightnessHandler:^double(NSUInteger index) {
+            return 100.0;
+        }];
+
+        [self ensureSceneWithName:@"Early evening 2" actionName:@"TTModeHueSceneEarlyEvening" isDouble:YES
+                     colorHandler:^NSColor *(TTHueLight *light, NSUInteger index) {
+            if (index % 3 == 2) {
+                return [NSColor colorWithRed:44/255.0 green:56/255.0 blue:225/255.0 alpha:1.0];
             }
+            return [NSColor colorWithRed:245/255.0 green:176/255.0 blue:116/255.0 alpha:1.0];
+        } brightnessHandler:^double(NSUInteger index) {
+            return 78.0;
         }];
-    }
-    
-    // Scene: Color loop
-    if (![foundScenes containsObject:@"TT-loop"]) {
-        PHScene *scene = [[PHScene alloc] init];
-        scene.name = @"Color Loop";
-        scene.identifier = @"TT-loop";
-        scene.lightIdentifiers = cache.lights.allKeys;
-        [bridgeSendAPI saveSceneWithCurrentLightStates:scene completionHandler:^(NSArray *errors) {
-            for (PHLight *light in cache.lights.allValues) {
-                PHLightState *lightState = [[PHLightState alloc] init];
-                lightState.on = [NSNumber numberWithBool:YES];
-                lightState.alert = 0;
-                lightState.effect = EFFECT_COLORLOOP;
-                [bridgeSendAPI saveLightState:lightState forLightIdentifier:light.identifier inSceneWithIdentifier:scene.identifier completionHandler:^(NSArray *errors) {
-                    NSLog(@"Hue:Loop light: %@", errors);
-                }];
+
+        [self ensureSceneWithName:@"Late evening" actionName:@"TTModeHueSceneLateEvening" isDouble:NO
+                     colorHandler:^NSColor *(TTHueLight *light, NSUInteger index) {
+            return [NSColor colorWithRed:95/255.0 green:76/255.0 blue:36/255.0 alpha:1.0];
+        } brightnessHandler:^double(NSUInteger index) {
+            return 60.0;
+        }];
+
+        [self ensureSceneWithName:@"Late evening 2" actionName:@"TTModeHueSceneLateEvening" isDouble:YES
+                     colorHandler:^NSColor *(TTHueLight *light, NSUInteger index) {
+            if (index % 3 == 2) {
+                return [NSColor colorWithRed:134/255.0 green:56/255.0 blue:205/255.0 alpha:1.0];
             }
+            return [NSColor colorWithRed:145/255.0 green:76/255.0 blue:16/255.0 alpha:1.0];
+        } brightnessHandler:^double(NSUInteger index) {
+            return (index % 3 == 2) ? 80.0 : 60.0;
         }];
+
+        [self ensureSceneWithName:@"All Lights Off" actionName:@"TTModeHueOff" isDouble:NO
+                     colorHandler:nil brightnessHandler:^double(NSUInteger index) {
+            return 0.0;
+        }];
+
+        self.ensuringScenes = NO;
+    });
+}
+
+- (void)ensureSceneWithName:(NSString *)sceneName
+                 actionName:(NSString *)actionName
+                   isDouble:(BOOL)isDouble
+               colorHandler:(NSColor * (^)(TTHueLight *light, NSUInteger index))colorHandler
+          brightnessHandler:(double (^)(NSUInteger index))brightnessHandler {
+
+    // Check if scene already exists
+    if ([self.foundScenes containsObject:sceneName]) {
+        if (DEBUG_HUE) {
+            NSLog(@" ---> Scene '%@' already exists", sceneName);
+        }
+        return;
     }
-    
-    if (![foundScenes containsObject:@"TT-ee-1"]) {
-        PHScene *scene = [[PHScene alloc] init];
-        scene.name = @"Early Evening";
-        scene.identifier = @"TT-ee-1";
-        scene.lightIdentifiers = cache.lights.allKeys;
-        [bridgeSendAPI saveSceneWithCurrentLightStates:scene completionHandler:^(NSArray *errors) {
-            for (PHLight *light in cache.lights.allValues) {
-                PHLightState *lightState = [[PHLightState alloc] init];
-                lightState.on = [NSNumber numberWithBool:YES];
-                lightState.alert = 0;
-                lightState.brightness = @(MAX_BRIGHTNESS);
-                lightState.saturation = @(MAX_BRIGHTNESS);
-                CGPoint point = [PHUtilities calculateXY:[NSColor colorWithRed:235/255.0 green:206/255.0 blue:146/255.0 alpha:1.0] forModel:light.modelNumber];
-                lightState.x = @(point.x);
-                lightState.y = @(point.y);
-                [bridgeSendAPI saveLightState:lightState forLightIdentifier:light.identifier inSceneWithIdentifier:scene.identifier completionHandler:^(NSArray *errors) {
-                    NSLog(@"Hue:EE1 light: %@", errors);
-                }];
+
+    if ([self.createdScenes containsObject:sceneName]) {
+        return;
+    }
+    [self.createdScenes addObject:sceneName];
+
+    if (!_hueClient || !_resourceCache || _resourceCache.lights.count == 0) {
+        return;
+    }
+
+    NSLog(@" ---> Creating scene '%@'", sceneName);
+
+    // Build scene actions for all lights
+    NSMutableArray<TTHueSceneAction *> *actions = [NSMutableArray array];
+    NSArray<NSString *> *lightIds = [_resourceCache.lights allKeys];
+
+    for (NSUInteger index = 0; index < lightIds.count; index++) {
+        NSString *lightId = lightIds[index];
+        TTHueLight *light = _resourceCache.lights[lightId];
+
+        BOOL isOn = brightnessHandler(index) > 0;
+        double brightness = brightnessHandler(index);
+        TTHueXY *xy = nil;
+
+        if (colorHandler) {
+            NSColor *color = colorHandler(light, index);
+            if (color) {
+                xy = [TTHueColorUtilities calculateHueXYFromColor:color forModel:light.metadata.archetype];
             }
-        }];
+        }
+
+        TTHueSceneAction *action = [TTHueAPIClient createSceneActionWithLightId:lightId
+                                                                             on:isOn
+                                                                     brightness:@(brightness)
+                                                                             xy:xy];
+        [actions addObject:action];
     }
-    
-    if (![foundScenes containsObject:@"TT-ee-2"]) {
-        PHScene *scene = [[PHScene alloc] init];
-        scene.name = @"Early Evening 2";
-        scene.identifier = @"TT-ee-2";
-        scene.lightIdentifiers = cache.lights.allKeys;
-        [bridgeSendAPI saveSceneWithCurrentLightStates:scene completionHandler:^(NSArray *errors) {
-            [cache.lights.allValues enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                PHLight *light = (PHLight *)obj;
-                PHLightState *lightState = [[PHLightState alloc] init];
-                lightState.on = [NSNumber numberWithBool:YES];
-                lightState.alert = 0;
-                lightState.brightness = @(MAX_BRIGHTNESS);
-                lightState.saturation = @(MAX_BRIGHTNESS);
-                CGPoint point = [PHUtilities calculateXY:[NSColor colorWithRed:245/255.0 green:176/255.0 blue:116/255.0 alpha:1.0] forModel:light.modelNumber];
-                if (idx % 3 == 2) {
-                    point = [PHUtilities calculateXY:[NSColor colorWithRed:44/255.0 green:56/255.0 blue:225/255.0 alpha:1.0] forModel:light.modelNumber];
-                }
-                lightState.x = @(point.x);
-                lightState.y = @(point.y);
-                [bridgeSendAPI saveLightState:lightState forLightIdentifier:light.identifier inSceneWithIdentifier:scene.identifier completionHandler:^(NSArray *errors) {
-                    NSLog(@"Hue:EE2 light: %@", errors);
-                }];
-            }];
-        }];
-    }
-    
-    if (![foundScenes containsObject:@"TT-le-1"]) {
-        PHScene *scene = [[PHScene alloc] init];
-        scene.name = @"Late Evening";
-        scene.identifier = @"TT-le-1";
-        scene.lightIdentifiers = cache.lights.allKeys;
-        [bridgeSendAPI saveSceneWithCurrentLightStates:scene completionHandler:^(NSArray *errors) {
-            [cache.lights.allValues enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                PHLight *light = (PHLight *)obj;
-                PHLightState *lightState = [[PHLightState alloc] init];
-                lightState.on = [NSNumber numberWithBool:YES];
-                lightState.alert = 0;
-                lightState.brightness = @(MAX_BRIGHTNESS*(6/10.0));
-                lightState.saturation = @(MAX_BRIGHTNESS);
-                CGPoint point = [PHUtilities calculateXY:[NSColor colorWithRed:95/255.0 green:76/255.0 blue:36/255.0 alpha:1.0] forModel:light.modelNumber];
-                lightState.x = @(point.x);
-                lightState.y = @(point.y);
-                [bridgeSendAPI saveLightState:lightState forLightIdentifier:light.identifier inSceneWithIdentifier:scene.identifier completionHandler:^(NSArray *errors) {
-                    NSLog(@"Hue:LE1 light: %@", errors);
-                }];
-            }];
-        }];
-    }
-    
-    if (![foundScenes containsObject:@"TT-le-2"]) {
-        PHScene *scene = [[PHScene alloc] init];
-        scene.name = @"Late Evening 2";
-        scene.identifier = @"TT-le-2";
-        scene.lightIdentifiers = cache.lights.allKeys;
-        [bridgeSendAPI saveSceneWithCurrentLightStates:scene completionHandler:^(NSArray *errors) {
-            [cache.lights.allValues enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                PHLight *light = (PHLight *)obj;
-                PHLightState *lightState = [[PHLightState alloc] init];
-                lightState.on = [NSNumber numberWithBool:YES];
-                lightState.alert = 0;
-                lightState.brightness = @(MAX_BRIGHTNESS*(6/10.0));
-                lightState.saturation = @(MAX_BRIGHTNESS);
-                CGPoint point = [PHUtilities calculateXY:[NSColor colorWithRed:145/255.0 green:76/255.0 blue:16/255.0 alpha:1.0] forModel:light.modelNumber];
-                if (idx % 3 == 2) {
-                    lightState.brightness = @(MAX_BRIGHTNESS*(8/10.0));
-                    point = [PHUtilities calculateXY:[NSColor colorWithRed:134/255.0 green:56/255.0 blue:205/255.0 alpha:1.0] forModel:light.modelNumber];
-                }
-                lightState.x = @(point.x);
-                lightState.y = @(point.y);
-                [bridgeSendAPI saveLightState:lightState forLightIdentifier:light.identifier inSceneWithIdentifier:scene.identifier completionHandler:^(NSArray *errors) {
-                    NSLog(@"Hue:LE2 light: %@", errors);
-                }];
-            }];
-        }];
-    }
+
+    // Find a room to associate the scene with
+    NSString *roomId = [_resourceCache.rooms allKeys].firstObject ?: @"";
+
+    [_hueClient createSceneWithName:sceneName
+                             roomId:roomId
+                            actions:actions
+                         completion:^(id result, NSError *error) {
+        if (error) {
+            NSLog(@" ---> Error creating scene '%@': %@", sceneName, error);
+        } else {
+            NSLog(@" ---> Created scene '%@': %@", sceneName, result);
+
+            // Refresh scenes
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self fetchResources];
+            });
+        }
+    }];
 }
 
 @end

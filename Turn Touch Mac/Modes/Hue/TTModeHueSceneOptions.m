@@ -9,7 +9,6 @@
 #import "TTModeHue.h"
 #import "TTModeHueSceneOptions.h"
 #import "TTModeHuePicker.h"
-#import <HueSDK_OSX/HueSDK.h>
 
 NSString *const kHueRoom = @"hueRoom";
 NSString *const kHueScene = @"hueScene";
@@ -34,47 +33,79 @@ NSString *const kDoubleTapHueScene = @"doubleTapHueScene";
     [self.refreshButton setHidden:NO];
     [self.roomRefreshButton setHidden:NO];
     [self.doubleTapRefreshButton setHidden:NO];
-    
+
     NSString *sceneSelectedIdentifier = [self.action optionValue:kHueScene inDirection:self.appDelegate.modeMap.inspectingModeDirection];
     NSString *doubleTapSceneSelectedIdentifier = [self.action optionValue:kDoubleTapHueScene inDirection:self.appDelegate.modeMap.inspectingModeDirection];
     NSString *sceneSelected;
     NSString *doubleTapSceneSelected;
-    
-    PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
+
+    TTHueResourceCache *cache = [TTModeHue resourceCache];
     NSMutableArray *scenes = [[NSMutableArray alloc] init];
     [self.scenePopup removeAllItems];
     [self.doubleTapScenePopup removeAllItems];
-    
-    for (PHScene *scene in cache.scenes.allValues) {
-        NSLog(@"Scene: %@ %@", scene.identifier, scene.name);
-        [scenes addObject:@{@"name": scene.name, @"identifier": scene.identifier}];
+
+    if (!cache) {
+        NSLog(@"No Hue cache available");
+        return;
     }
-    
+
+    for (NSString *sceneId in cache.scenes) {
+        TTHueScene *scene = cache.scenes[sceneId];
+        NSLog(@"Scene: %@ %@", scene.sceneId, scene.metadata.name);
+        [scenes addObject:@{@"name": scene.metadata.name, @"identifier": scene.sceneId}];
+    }
+
     if (!sceneSelectedIdentifier) {
+        // Find scene by name for default selection
+        NSString *defaultSceneName = nil;
         if ([self.action.actionName isEqualToString:@"TTModeHueSceneEarlyEvening"]) {
-            sceneSelectedIdentifier = @"TT-ee-1";
+            defaultSceneName = @"Early evening";
         } else if ([self.action.actionName isEqualToString:@"TTModeHueSceneLateEvening"]) {
-            sceneSelectedIdentifier = @"TT-le-1";
+            defaultSceneName = @"Late evening";
         } else {
-            sceneSelectedIdentifier = @"TT-ee-1";
+            defaultSceneName = @"Early evening";
         }
-        [self.action changeActionOption:kHueScene to:sceneSelectedIdentifier];
+
+        for (NSString *sceneId in cache.scenes) {
+            TTHueScene *scene = cache.scenes[sceneId];
+            if ([scene.metadata.name isEqualToString:defaultSceneName]) {
+                sceneSelectedIdentifier = scene.sceneId;
+                break;
+            }
+        }
+
+        if (sceneSelectedIdentifier) {
+            [self.action changeActionOption:kHueScene to:sceneSelectedIdentifier];
+        }
     }
-    
+
     if (!doubleTapSceneSelectedIdentifier) {
+        // Find scene by name for default double-tap selection
+        NSString *defaultSceneName = nil;
         if ([self.action.actionName isEqualToString:@"TTModeHueSceneEarlyEvening"]) {
-            doubleTapSceneSelectedIdentifier = @"TT-ee-2";
+            defaultSceneName = @"Early evening 2";
         } else if ([self.action.actionName isEqualToString:@"TTModeHueSceneLateEvening"]) {
-            doubleTapSceneSelectedIdentifier = @"TT-le-2";
+            defaultSceneName = @"Late evening 2";
         } else {
-            doubleTapSceneSelectedIdentifier = @"TT-ee-2";
+            defaultSceneName = @"Early evening 2";
         }
-        [self.action changeActionOption:kDoubleTapHueScene to:doubleTapSceneSelectedIdentifier];
+
+        for (NSString *sceneId in cache.scenes) {
+            TTHueScene *scene = cache.scenes[sceneId];
+            if ([scene.metadata.name isEqualToString:defaultSceneName]) {
+                doubleTapSceneSelectedIdentifier = scene.sceneId;
+                break;
+            }
+        }
+
+        if (doubleTapSceneSelectedIdentifier) {
+            [self.action changeActionOption:kDoubleTapHueScene to:doubleTapSceneSelectedIdentifier];
+        }
     }
-    
+
     NSSortDescriptor *sd = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     [scenes sortUsingDescriptors:@[sd]];
-    
+
     for (NSDictionary *scene in scenes) {
         [self.scenePopup addItemWithTitle:scene[@"name"]];
         [self.doubleTapScenePopup addItemWithTitle:scene[@"name"]];
@@ -84,7 +115,7 @@ NSString *const kDoubleTapHueScene = @"doubleTapHueScene";
         if ([scene[@"identifier"] isEqualToString:doubleTapSceneSelectedIdentifier]) {
             doubleTapSceneSelected = scene[@"name"];
         }
-        
+
     }
     if (sceneSelected) {
         [self.scenePopup selectItemWithTitle:sceneSelected];
@@ -99,16 +130,19 @@ NSString *const kDoubleTapHueScene = @"doubleTapHueScene";
 - (IBAction)didChangeScene:(id)sender {
     BOOL doubleTap = sender == self.doubleTapScenePopup;
     NSMenuItem *menuItem = [(doubleTap ? self.doubleTapScenePopup : self.scenePopup) selectedItem];
-    PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
+    TTHueResourceCache *cache = [TTModeHue resourceCache];
     NSString *sceneIdentifier;
-    
-    for (PHScene *scene in cache.scenes.allValues) {
-        if ([scene.name isEqualToString:menuItem.title]) {
-            sceneIdentifier = scene.identifier;
+
+    if (!cache) return;
+
+    for (NSString *sceneId in cache.scenes) {
+        TTHueScene *scene = cache.scenes[sceneId];
+        if ([scene.metadata.name isEqualToString:menuItem.title]) {
+            sceneIdentifier = scene.sceneId;
             break;
         }
     }
-    
+
     if (sender == self.scenePopup) {
         [self.action changeActionOption:kHueScene to:sceneIdentifier];
     } else if (sender == self.doubleTapScenePopup) {
@@ -123,10 +157,17 @@ NSString *const kDoubleTapHueScene = @"doubleTapHueScene";
     [self.refreshButton setHidden:YES];
     [self.roomRefreshButton setHidden:YES];
     [self.doubleTapRefreshButton setHidden:YES];
-    
-    PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
-    [bridgeSendAPI getAllScenesWithCompletionHandler:^(NSDictionary *dictionary, NSArray *errors) {
+
+    TTHueAPIClient *client = [TTModeHue hueClient];
+    if (!client) {
         [self drawScenes];
+        return;
+    }
+
+    [client fetchScenesWithCompletion:^(NSArray<TTHueScene *> *scenes, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self drawScenes];
+        });
     }];
 }
 

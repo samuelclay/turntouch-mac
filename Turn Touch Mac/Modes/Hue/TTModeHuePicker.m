@@ -27,44 +27,52 @@
 
     NSString *roomSelectedIdentifier = [self.action optionValue:kHueRoom inDirection:self.appDelegate.modeMap.inspectingModeDirection];
     NSString *roomSelected;
-    
-    PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
+
+    TTHueResourceCache *cache = [TTModeHue resourceCache];
     NSMutableArray *rooms = [[NSMutableArray alloc] init];
     [self.roomDropdown removeAllItems];
-    
+
     [rooms addObject:@{@"name": @"All Rooms", @"identifier": @"all"}];
-    for (PHGroup *group in cache.groups.allValues) {
-        //        NSLog(@"Room: %@ %@", group.identifier, group.name);
-        [rooms addObject:@{@"name": group.name, @"identifier": group.identifier}];
+
+    if (cache) {
+        for (NSString *roomId in cache.rooms) {
+            TTHueRoom *room = cache.rooms[roomId];
+            [rooms addObject:@{@"name": room.metadata.name, @"identifier": room.roomId}];
+        }
     }
-    
+
     NSSortDescriptor *sd = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     [rooms sortUsingDescriptors:@[sd]];
-    
+
     for (NSDictionary *room in rooms) {
         [self.roomDropdown addItemWithTitle:room[@"name"]];
         if ([room[@"identifier"] isEqualToString:roomSelectedIdentifier]) {
             roomSelected = room[@"name"];
         }
     }
-    
-    [self.roomDropdown selectItemWithTitle:roomSelected];
+
+    if (roomSelected) {
+        [self.roomDropdown selectItemWithTitle:roomSelected];
+    }
 }
 
 #pragma mark - Actions
 
 - (IBAction)didChangeRoom:(id)sender {
     NSMenuItem *menuItem = [self.roomDropdown selectedItem];
-    PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
-    NSString *roomIdentifier;
-    
-    for (PHGroup *group in cache.groups.allValues) {
-        if ([group.name isEqualToString:menuItem.title]) {
-            roomIdentifier = group.identifier;
-            break;
+    TTHueResourceCache *cache = [TTModeHue resourceCache];
+    NSString *roomIdentifier = @"all";
+
+    if (cache) {
+        for (NSString *roomId in cache.rooms) {
+            TTHueRoom *room = cache.rooms[roomId];
+            if ([room.metadata.name isEqualToString:menuItem.title]) {
+                roomIdentifier = room.roomId;
+                break;
+            }
         }
     }
-    
+
     [self.action changeActionOption:kHueRoom to:roomIdentifier];
 }
 

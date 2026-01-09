@@ -301,13 +301,22 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 
 - (void)countDevices {
 //    NSLog(@"Counting %d: %@", (int)foundDevices.count, foundDevices);
-    
+
     [self.foundDevices ensureDevicesConnected];
-    
-    [self setValue:@([[self.foundDevices nicknamedConnected] count]) forKey:@"nicknamedConnectedCount"];
-    [self setValue:@([self.foundDevices pairedConnectedCount]) forKey:@"pairedDevicesCount"];
-    [self setValue:@([self.foundDevices unpairedCount]) forKey:@"unpairedDevicesCount"];
-    [self setValue:@([self.foundDevices unpairedConnectedCount]) forKey:@"unpairedDevicesConnected"];
+
+    // Capture values on current thread
+    NSNumber *nicknamedCount = @([[self.foundDevices nicknamedConnected] count]);
+    NSNumber *pairedCount = @([self.foundDevices pairedConnectedCount]);
+    NSNumber *unpairedCount = @([self.foundDevices unpairedCount]);
+    NSNumber *unpairedConnectedCount = @([self.foundDevices unpairedConnectedCount]);
+
+    // Dispatch KVO notifications to main thread to avoid race conditions with UI observers
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self setValue:nicknamedCount forKey:@"nicknamedConnectedCount"];
+        [self setValue:pairedCount forKey:@"pairedDevicesCount"];
+        [self setValue:unpairedCount forKey:@"unpairedDevicesCount"];
+        [self setValue:unpairedConnectedCount forKey:@"unpairedDevicesConnected"];
+    });
 }
 
 /*
@@ -1021,10 +1030,8 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
     [self.appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];
     [self.appDelegate.panelController.backgroundView switchPanelModalPairing:MODAL_PAIRING_SUCCESS];
 
-#ifdef DEBUG_CONNECT
-//    NSLog(@" ---> (%X) [Pairing success] Canceling peripheral connection: %@", bluetoothState, foundDevice);
-#endif
-//    [manager cancelPeripheralConnection:peripheral];
+    // Disconnect all other unpaired remotes now that we've successfully paired one
+    [self disconnectUnpairedDevices];
 }
 
 - (void)forgetDevice:(TTDevice *)device {
