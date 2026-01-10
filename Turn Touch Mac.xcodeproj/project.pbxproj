@@ -389,6 +389,7 @@
 		172B5DC223E3EDAA008B5AAB /* TTModePresentationPlayOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFFE8CB0200565DA007AA4AF /* TTModePresentationPlayOptions.xib */; };
 		172B5DC323E3EDAA008B5AAB /* mode_smartlock.png in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA4A1C46DCC200F83A73 /* mode_smartlock.png */; };
 		172B5DC423E3EDAA008B5AAB /* mode_hue.png in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA411C46DCC200F83A73 /* mode_hue.png */; };
+		0A2654CB23EC4573B7DE1862 /* press_smartbridge.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C16FF919BE94E6D8114CC4A /* press_smartbridge.png */; };
 		172B5DC523E3EDAA008B5AAB /* mode_pandora.png in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA481C46DCC200F83A73 /* mode_pandora.png */; };
 		172B5DC623E3EDAA008B5AAB /* hue_sleep.png in Resources */ = {isa = PBXBuildFile; fileRef = FF6135461C61CDDC00F431D7 /* hue_sleep.png */; };
 		172B5DC723E3EDAA008B5AAB /* ideas.txt in Resources */ = {isa = PBXBuildFile; fileRef = FFFF683619D4E2C30081904A /* ideas.txt */; };
@@ -483,6 +484,7 @@
 		FF01CA6C1C46DCC200F83A73 /* mode_fitness.png in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA3F1C46DCC200F83A73 /* mode_fitness.png */; };
 		FF01CA6D1C46DCC200F83A73 /* mode_home.png in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA401C46DCC200F83A73 /* mode_home.png */; };
 		FF01CA6E1C46DCC200F83A73 /* mode_hue.png in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA411C46DCC200F83A73 /* mode_hue.png */; };
+		EB3195ED3E2C48E2AFEBB38D /* press_smartbridge.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C16FF919BE94E6D8114CC4A /* press_smartbridge.png */; };
 		FF01CA6F1C46DCC200F83A73 /* mode_mac.png in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA421C46DCC200F83A73 /* mode_mac.png */; };
 		FF01CA701C46DCC200F83A73 /* mode_meditation.png in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA431C46DCC200F83A73 /* mode_meditation.png */; };
 		FF01CA711C46DCC200F83A73 /* mode_morning.png in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA441C46DCC200F83A73 /* mode_morning.png */; };
@@ -1010,6 +1012,7 @@
 		FF01CA3F1C46DCC200F83A73 /* mode_fitness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mode_fitness.png; sourceTree = "<group>"; };
 		FF01CA401C46DCC200F83A73 /* mode_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mode_home.png; sourceTree = "<group>"; };
 		FF01CA411C46DCC200F83A73 /* mode_hue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mode_hue.png; sourceTree = "<group>"; };
+		5C16FF919BE94E6D8114CC4A /* press_smartbridge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = press_smartbridge.png; sourceTree = "<group>"; };
 		FF01CA421C46DCC200F83A73 /* mode_mac.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mode_mac.png; sourceTree = "<group>"; };
 		FF01CA431C46DCC200F83A73 /* mode_meditation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mode_meditation.png; sourceTree = "<group>"; };
 		FF01CA441C46DCC200F83A73 /* mode_morning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mode_morning.png; sourceTree = "<group>"; };
@@ -1794,6 +1797,7 @@
 				FF01CA3F1C46DCC200F83A73 /* mode_fitness.png */,
 				FF01CA401C46DCC200F83A73 /* mode_home.png */,
 				FF01CA411C46DCC200F83A73 /* mode_hue.png */,
+				5C16FF919BE94E6D8114CC4A /* press_smartbridge.png */,
 				FFFF0C8E1EFDFF8100E29E6D /* mode_ifttt.png */,
 				FF01CA421C46DCC200F83A73 /* mode_mac.png */,
 				FF01CA431C46DCC200F83A73 /* mode_meditation.png */,
@@ -3337,6 +3341,7 @@
 				172B5DC223E3EDAA008B5AAB /* TTModePresentationPlayOptions.xib in Resources */,
 				172B5DC323E3EDAA008B5AAB /* mode_smartlock.png in Resources */,
 				172B5DC423E3EDAA008B5AAB /* mode_hue.png in Resources */,
+				0A2654CB23EC4573B7DE1862 /* press_smartbridge.png in Resources */,
 				172B5DC523E3EDAA008B5AAB /* mode_pandora.png in Resources */,
 				172B5DC623E3EDAA008B5AAB /* hue_sleep.png in Resources */,
 				172B5DC723E3EDAA008B5AAB /* ideas.txt in Resources */,
@@ -3553,6 +3558,7 @@
 				FFFE8CB2200565DA007AA4AF /* TTModePresentationPlayOptions.xib in Resources */,
 				FF01CA771C46DCC200F83A73 /* mode_smartlock.png in Resources */,
 				FF01CA6E1C46DCC200F83A73 /* mode_hue.png in Resources */,
+				EB3195ED3E2C48E2AFEBB38D /* press_smartbridge.png in Resources */,
 				FF01CA751C46DCC200F83A73 /* mode_pandora.png in Resources */,
 				FF6135581C61CDDC00F431D7 /* hue_sleep.png in Resources */,
 				FFFF683819D4E2C30081904A /* ideas.txt in Resources */,
