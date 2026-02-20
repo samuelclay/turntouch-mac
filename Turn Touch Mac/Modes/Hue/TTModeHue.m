@@ -26,8 +26,12 @@
 @property (nonatomic, strong) NSMutableArray<NSString *> *createdScenes;
 @property (nonatomic, assign) BOOL waitingOnScenes;
 @property (nonatomic, assign) BOOL ensuringScenes;
+@property (nonatomic, strong) NSDate *connectionStartTime;
+@property (nonatomic, strong) NSTimer *connectionTimeoutTimer;
 
 @end
+
+static const NSTimeInterval kConnectionTimeoutSeconds = 15.0;
 
 @implementation TTModeHue
 
@@ -650,6 +654,47 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
         [self.bridgeDiscovery cancelDiscovery];
         self.bridgeDiscovery = nil;
     }
+
+    // Cancel connection timeout timer
+    [self cancelConnectionTimeout];
+}
+
+#pragma mark - Connection Timeout
+
+- (void)startConnectionTimeout {
+    [self cancelConnectionTimeout];
+    self.connectionStartTime = [NSDate date];
+    self.connectionTimeoutTimer = [NSTimer scheduledTimerWithTimeInterval:kConnectionTimeoutSeconds
+                                                                   target:self
+                                                                 selector:@selector(connectionTimedOut:)
+                                                                 userInfo:nil
+                                                                  repeats:NO];
+    NSLog(@" ---> [TTModeHue] Started connection timeout timer (%.0f seconds)", kConnectionTimeoutSeconds);
+}
+
+- (void)cancelConnectionTimeout {
+    if (self.connectionTimeoutTimer) {
+        [self.connectionTimeoutTimer invalidate];
+        self.connectionTimeoutTimer = nil;
+        NSLog(@" ---> [TTModeHue] Cancelled connection timeout timer");
+    }
+}
+
+- (void)connectionTimedOut:(NSTimer *)timer {
+    self.connectionTimeoutTimer = nil;
+
+    if (self.hueState == STATE_CONNECTING) {
+        NSLog(@" ---> [TTModeHue] Connection timed out after %.0f seconds", kConnectionTimeoutSeconds);
+
+        // Cancel any in-progress operations
+        if (self.bridgeDiscovery) {
+            [self.bridgeDiscovery cancelDiscovery];
+            self.bridgeDiscovery = nil;
+        }
+
+        self.hueState = STATE_NOT_CONNECTED;
+        [self.delegate changeState:self.hueState withMode:self showMessage:@"Connection timed out. Tap to retry."];
+    }
 }
 
 #pragma mark - Connection Management
@@ -663,6 +708,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     }
 
     self.hueState = STATE_CONNECTING;
+    [self startConnectionTimeout];
     [self.delegate changeState:self.hueState withMode:self showMessage:@"Connecting to Hue..."];
 
     if (reset) {
@@ -745,6 +791,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 
     if (self.hueState != STATE_CONNECTED) {
         NSLog(@" ---> [TTModeHue] Setting state to CONNECTED and initializing API client");
+        [self cancelConnectionTimeout];
         self.hueState = STATE_CONNECTED;
         [self saveRecentBridgeWithUsername:username];
 
@@ -812,6 +859,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
                         [self removeSavedBridge:self.latestBridge.bridgeId];
                     }
                     // Don't start pushlink automatically - wait for user to open Hue options
+                    [self cancelConnectionTimeout];
                     self.hueState = STATE_NOT_CONNECTED;
                     [self.delegate changeState:self.hueState withMode:self showMessage:@"Hue authentication expired. Open Hue settings to reconnect."];
                 } else {
@@ -964,6 +1012,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 
     // Don't start pushlink automatically - wait for user to open Hue options
     // This prevents background polling that wastes resources and hits rate limits
+    [self cancelConnectionTimeout];
     self.hueState = STATE_NOT_CONNECTED;
     [self.delegate changeState:self.hueState withMode:self showMessage:@"Hue authentication expired. Open Hue settings to reconnect."];
 }
@@ -1049,6 +1098,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 }
 
 - (void)bridgeDiscoveryFinished:(NSArray<TTHueDiscoveredBridge *> *)bridges {
+    [self cancelConnectionTimeout];
     if (bridges.count > 0) {
         self.hueState = STATE_BRIDGE_SELECT;
         [self.foundBridges removeAllObjects];
@@ -1074,6 +1124,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 
 - (void)bridgeDiscoveryError:(NSError *)error {
     NSLog(@" ---> Bridge discovery error: %@", error);
+    [self cancelConnectionTimeout];
 
     if (error.code == TTHueBridgeDiscoveryErrorRateLimited) {
         self.hueState = STATE_NOT_CONNECTED;
@@ -1090,6 +1141,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
         NSLog(@" ---> Authentication started");
     }
 
+    [self cancelConnectionTimeout];
     self.hueState = STATE_PUSHLINK;
     [self.delegate changeState:self.hueState withMode:self showMessage:nil];
 }
@@ -1106,6 +1158,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 
 - (void)authenticationFailedWithError:(NSError *)error {
     NSLog(@" ---> Authentication failed: %@ (domain: %@, code: %ld)", error.localizedDescription, error.domain, (long)error.code);
+    [self cancelConnectionTimeout];
 
     // Handle our custom authenticator errors
     if ([error.domain isEqualToString:TTHueBridgeAuthenticatorErrorDomain]) {
@@ -1154,17 +1207,20 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 
 - (void)showNoConnectionDialog {
     NSLog(@"Connection to bridge lost!");
+    [self cancelConnectionTimeout];
     self.hueState = STATE_NOT_CONNECTED;
     [self.delegate changeState:self.hueState withMode:self showMessage:@"Connection to Hue bridge lost"];
 }
 
 - (void)showNoBridgesFoundDialog {
     NSLog(@"Could not find bridge!");
+    [self cancelConnectionTimeout];
     self.hueState = STATE_NOT_CONNECTED;
     [self.delegate changeState:self.hueState withMode:self showMessage:@"Could not find any Hue bridges"];
 }
 
 - (void)showNotAuthenticatedDialog {
+    [self cancelConnectionTimeout];
     self.hueState = STATE_NOT_CONNECTED;
     [self.delegate changeState:self.hueState withMode:self showMessage:@"Pushlink button not pressed within 30 seconds"];
     NSLog(@"Pushlink button not pressed within 30 sec!");
