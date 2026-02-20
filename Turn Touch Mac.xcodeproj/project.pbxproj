@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		03813EB96F1A1A5340938DA7 /* TTHueAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F31BDDD852071A43064ECA /* TTHueAPIClient.m */; };
 		050B418B591A85B579740307 /* Pods_Turn_Touch_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B611485DE4201F24DDD95F6A /* Pods_Turn_Touch_Mac.framework */; };
+		0A2654CB23EC4573B7DE1862 /* press_smartbridge.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C16FF919BE94E6D8114CC4A /* press_smartbridge.png */; };
 		172B5C3D23E3EDAA008B5AAB /* NSData+Conversion.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE2D4781A46404500DDD413 /* NSData+Conversion.m */; };
 		172B5C3E23E3EDAA008B5AAB /* TTModeWebWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB9E1C33675200AD5620 /* TTModeWebWindow.m */; };
 		172B5C3F23E3EDAA008B5AAB /* Thermostat.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AB21C49C63D005FB7FD /* Thermostat.m */; };
@@ -389,7 +390,6 @@
 		172B5DC223E3EDAA008B5AAB /* TTModePresentationPlayOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFFE8CB0200565DA007AA4AF /* TTModePresentationPlayOptions.xib */; };
 		172B5DC323E3EDAA008B5AAB /* mode_smartlock.png in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA4A1C46DCC200F83A73 /* mode_smartlock.png */; };
 		172B5DC423E3EDAA008B5AAB /* mode_hue.png in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA411C46DCC200F83A73 /* mode_hue.png */; };
-		0A2654CB23EC4573B7DE1862 /* press_smartbridge.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C16FF919BE94E6D8114CC4A /* press_smartbridge.png */; };
 		172B5DC523E3EDAA008B5AAB /* mode_pandora.png in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA481C46DCC200F83A73 /* mode_pandora.png */; };
 		172B5DC623E3EDAA008B5AAB /* hue_sleep.png in Resources */ = {isa = PBXBuildFile; fileRef = FF6135461C61CDDC00F431D7 /* hue_sleep.png */; };
 		172B5DC723E3EDAA008B5AAB /* ideas.txt in Resources */ = {isa = PBXBuildFile; fileRef = FFFF683619D4E2C30081904A /* ideas.txt */; };
@@ -461,6 +461,7 @@
 		C01FD69B778B5C0684677954 /* Pods_Turn_Touch_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B611485DE4201F24DDD95F6A /* Pods_Turn_Touch_Mac.framework */; };
 		C139615B1E7F2014DF4473C4 /* Pods_Turn_Touch_Mac_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D78D7B37A823FEF6B921BCE /* Pods_Turn_Touch_Mac_Tests.framework */; };
 		D4C6A11FF9B6730033DE496A /* TTHueColorUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBE8FBF3A101F4E0ADB2AA8 /* TTHueColorUtilities.m */; };
+		EB3195ED3E2C48E2AFEBB38D /* press_smartbridge.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C16FF919BE94E6D8114CC4A /* press_smartbridge.png */; };
 		FF01CA291C46009E00F83A73 /* scripts in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA281C46009E00F83A73 /* scripts */; };
 		FF01CA591C46DCC200F83A73 /* app_music.png in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA2C1C46DCC200F83A73 /* app_music.png */; };
 		FF01CA5A1C46DCC200F83A73 /* button_chevron.png in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA2D1C46DCC200F83A73 /* button_chevron.png */; };
@@ -484,7 +485,6 @@
 		FF01CA6C1C46DCC200F83A73 /* mode_fitness.png in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA3F1C46DCC200F83A73 /* mode_fitness.png */; };
 		FF01CA6D1C46DCC200F83A73 /* mode_home.png in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA401C46DCC200F83A73 /* mode_home.png */; };
 		FF01CA6E1C46DCC200F83A73 /* mode_hue.png in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA411C46DCC200F83A73 /* mode_hue.png */; };
-		EB3195ED3E2C48E2AFEBB38D /* press_smartbridge.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C16FF919BE94E6D8114CC4A /* press_smartbridge.png */; };
 		FF01CA6F1C46DCC200F83A73 /* mode_mac.png in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA421C46DCC200F83A73 /* mode_mac.png */; };
 		FF01CA701C46DCC200F83A73 /* mode_meditation.png in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA431C46DCC200F83A73 /* mode_meditation.png */; };
 		FF01CA711C46DCC200F83A73 /* mode_morning.png in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA441C46DCC200F83A73 /* mode_morning.png */; };
@@ -971,6 +971,7 @@
 		383E060B60CD35F142D2CFDD /* Pods-Turn Touch Mac Tests.testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turn Touch Mac Tests.testing.xcconfig"; path = "Pods/Target Support Files/Pods-Turn Touch Mac Tests/Pods-Turn Touch Mac Tests.testing.xcconfig"; sourceTree = "<group>"; };
 		3DBE8FBF3A101F4E0ADB2AA8 /* TTHueColorUtilities.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTHueColorUtilities.m; sourceTree = "<group>"; };
 		3F080B4450C839EF70C803AB /* TTHueModels.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTHueModels.m; sourceTree = "<group>"; };
+		5C16FF919BE94E6D8114CC4A /* press_smartbridge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = press_smartbridge.png; sourceTree = "<group>"; };
 		6D78D7B37A823FEF6B921BCE /* Pods_Turn_Touch_Mac_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Turn_Touch_Mac_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DB0150A7ABFA9D629C9FE98 /* TTHueAPIClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTHueAPIClient.h; sourceTree = "<group>"; };
 		9E1EC8CE081463B2662103E7 /* Pods-Turn Touch Mac Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turn Touch Mac Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Turn Touch Mac Tests/Pods-Turn Touch Mac Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1012,7 +1013,6 @@
 		FF01CA3F1C46DCC200F83A73 /* mode_fitness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mode_fitness.png; sourceTree = "<group>"; };
 		FF01CA401C46DCC200F83A73 /* mode_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mode_home.png; sourceTree = "<group>"; };
 		FF01CA411C46DCC200F83A73 /* mode_hue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mode_hue.png; sourceTree = "<group>"; };
-		5C16FF919BE94E6D8114CC4A /* press_smartbridge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = press_smartbridge.png; sourceTree = "<group>"; };
 		FF01CA421C46DCC200F83A73 /* mode_mac.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mode_mac.png; sourceTree = "<group>"; };
 		FF01CA431C46DCC200F83A73 /* mode_meditation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mode_meditation.png; sourceTree = "<group>"; };
 		FF01CA441C46DCC200F83A73 /* mode_morning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mode_morning.png; sourceTree = "<group>"; };
@@ -1765,7 +1765,6 @@
 				E0F7C397C513BC2C4F238237 /* TTHueEventStream.h */,
 				AFE70B200E3301C59B137D4B /* TTHueEventStream.m */,
 			);
-			name = API;
 			path = API;
 			sourceTree = "<group>";
 		};
@@ -4420,7 +4419,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 59;
+				CURRENT_PROJECT_VERSION = 60;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 6W5HRS3393;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -4440,10 +4439,11 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Mac/Supporting Files/Turn Touch Mac-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 2.0;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-v",
@@ -4470,7 +4470,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 59;
+				CURRENT_PROJECT_VERSION = 60;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 6W5HRS3393;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -4490,10 +4490,11 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Mac/Supporting Files/Turn Touch Mac-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 2.0;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-v",
@@ -4648,7 +4649,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 59;
+				CURRENT_PROJECT_VERSION = 60;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 6W5HRS3393;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -4668,10 +4669,11 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Mac/Supporting Files/Turn Touch Mac-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 2.0;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-v",
