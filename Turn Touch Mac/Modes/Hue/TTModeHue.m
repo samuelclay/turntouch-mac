@@ -447,12 +447,15 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
             saturation = MAX_BRIGHTNESS_V1;
         }
 
-        // Convert hue/saturation to xy color space
-        CGFloat h = (CGFloat)hue / (CGFloat)MAX_HUE;
-        CGFloat s = (CGFloat)saturation / 254.0;
-        NSColor *color = [NSColor colorWithHue:h saturation:s brightness:1.0 alpha:1.0];
-        NSString *modelId = light.metadata.archetype;
-        TTHueXY *xy = [TTHueColorUtilities calculateHueXYFromColor:color forModel:modelId];
+        // Convert hue/saturation to xy color space (only for color-capable lights)
+        TTHueXY *xy = nil;
+        if (light.color != nil) {
+            CGFloat h = (CGFloat)hue / (CGFloat)MAX_HUE;
+            CGFloat s = (CGFloat)saturation / 254.0;
+            NSColor *color = [NSColor colorWithHue:h saturation:s brightness:1.0 alpha:1.0];
+            NSString *modelId = light.metadata.archetype;
+            xy = [TTHueColorUtilities calculateHueXYFromColor:color forModel:modelId];
+        }
 
         [_hueClient updateLightId:lightId
                                on:@YES
@@ -1317,19 +1320,39 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 
     NSLog(@" ---> Creating scene '%@'", sceneName);
 
-    // Build scene actions for all lights
+    // Find a room and scope lights to that room
+    NSString *roomId = [_resourceCache.rooms allKeys].firstObject ?: @"";
+    TTHueRoom *room = _resourceCache.rooms[roomId];
+
+    // Get device IDs that belong to this room
+    NSMutableSet<NSString *> *roomDeviceIds = [NSMutableSet set];
+    for (TTHueResourceLink *child in room.children) {
+        if ([child.rtype isEqualToString:@"device"]) {
+            [roomDeviceIds addObject:child.rid];
+        }
+    }
+
+    // Build scene actions only for lights in the room
     NSMutableArray<TTHueSceneAction *> *actions = [NSMutableArray array];
     NSArray<NSString *> *lightIds = [_resourceCache.lights allKeys];
+    NSUInteger index = 0;
 
-    for (NSUInteger index = 0; index < lightIds.count; index++) {
-        NSString *lightId = lightIds[index];
+    for (NSString *lightId in lightIds) {
         TTHueLight *light = _resourceCache.lights[lightId];
+
+        // Only include lights whose owner device is in the room
+        if (room && roomDeviceIds.count > 0 && light.owner) {
+            if (![roomDeviceIds containsObject:light.owner.rid]) {
+                continue;
+            }
+        }
 
         BOOL isOn = brightnessHandler(index) > 0;
         double brightness = brightnessHandler(index);
         TTHueXY *xy = nil;
 
-        if (colorHandler) {
+        // Only set color on lights that support it
+        if (colorHandler && light.color != nil) {
             NSColor *color = colorHandler(light, index);
             if (color) {
                 xy = [TTHueColorUtilities calculateHueXYFromColor:color forModel:light.metadata.archetype];
@@ -1341,10 +1364,8 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
                                                                      brightness:@(brightness)
                                                                              xy:xy];
         [actions addObject:action];
+        index++;
     }
-
-    // Find a room to associate the scene with
-    NSString *roomId = [_resourceCache.rooms allKeys].firstObject ?: @"";
 
     [_hueClient createSceneWithName:sceneName
                              roomId:roomId

@@ -12,7 +12,10 @@ NSString * const TTHueAPIClientErrorDomain = @"TTHueAPIClientError";
 @interface TTHueAPIClient ()
 @property (nonatomic, strong) NSURLSession *session;
 @property (nonatomic, strong) dispatch_queue_t serialQueue;
+@property (nonatomic, strong) NSDate *lastRequestTime;
 @end
+
+static const NSTimeInterval kMinRequestInterval = 0.1; // 100ms between requests (max ~10/sec)
 
 @implementation TTHueAPIClient
 
@@ -99,6 +102,30 @@ NSString * const TTHueAPIClientErrorDomain = @"TTHueAPIClientError";
 }
 
 - (void)performRequest:(NSURLRequest *)request completion:(void (^)(NSDictionary * _Nullable, NSError * _Nullable))completion {
+    dispatch_async(self.serialQueue, ^{
+        // Throttle requests to avoid overwhelming the Hue bridge
+        if (self.lastRequestTime) {
+            NSTimeInterval elapsed = -[self.lastRequestTime timeIntervalSinceNow];
+            if (elapsed < kMinRequestInterval) {
+                usleep((useconds_t)((kMinRequestInterval - elapsed) * 1000000));
+            }
+        }
+        self.lastRequestTime = [NSDate date];
+
+        dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+        [self _executeRequest:request completion:^(NSDictionary *result, NSError *error) {
+            if (completion) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completion(result, error);
+                });
+            }
+            dispatch_semaphore_signal(semaphore);
+        }];
+        dispatch_semaphore_wait(semaphore, dispatch_time(DISPATCH_TIME_NOW, 30 * NSEC_PER_SEC));
+    });
+}
+
+- (void)_executeRequest:(NSURLRequest *)request completion:(void (^)(NSDictionary * _Nullable, NSError * _Nullable))completion {
     NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error) {
             NSError *networkError = [NSError errorWithDomain:TTHueAPIClientErrorDomain
@@ -106,9 +133,7 @@ NSString * const TTHueAPIClientErrorDomain = @"TTHueAPIClientError";
                                                     userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:@"Network error: %@", error.localizedDescription],
                                                                NSUnderlyingErrorKey: error}];
             if (completion) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    completion(nil, networkError);
-                });
+                completion(nil, networkError);
             }
             return;
         }
@@ -139,9 +164,7 @@ NSString * const TTHueAPIClientErrorDomain = @"TTHueAPIClientError";
                                                      code:errorCode
                                                  userInfo:@{NSLocalizedDescriptionKey: errorMessage}];
             if (completion) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    completion(nil, httpError);
-                });
+                completion(nil, httpError);
             }
             return;
         }
@@ -149,9 +172,7 @@ NSString * const TTHueAPIClientErrorDomain = @"TTHueAPIClientError";
         // Handle empty response (PUT/DELETE often return empty)
         if (!data || data.length == 0) {
             if (completion) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    completion(@{}, nil);
-                });
+                completion(@{}, nil);
             }
             return;
         }
@@ -164,17 +185,13 @@ NSString * const TTHueAPIClientErrorDomain = @"TTHueAPIClientError";
                                                    userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:@"Failed to decode response: %@", jsonError.localizedDescription],
                                                               NSUnderlyingErrorKey: jsonError}];
             if (completion) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    completion(nil, decodeError);
-                });
+                completion(nil, decodeError);
             }
             return;
         }
 
         if (completion) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                completion(json, nil);
-            });
+            completion(json, nil);
         }
     }];
 
