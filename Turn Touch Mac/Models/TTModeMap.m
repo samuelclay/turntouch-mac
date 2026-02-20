@@ -22,6 +22,7 @@
 #import "TTModeHue.h"
 #import "TTModeNest.h"
 #import "TTModeWemo.h"
+#import "TTModeKasa.h"
 #import "TTModeCustom.h"
 #import "TTModeSpotify.h"
 #import "TTBatchActions.h"
@@ -49,6 +50,7 @@
                                   @"TTModeIfttt",
                                   @"TTModeSonos",
                                   @"TTModeWemo",
+                                  @"TTModeKasa",
                                   @"TTModeAlarmClock",
                                   @"TTModeSpotify",
                                   @"TTModeAirfoil",
