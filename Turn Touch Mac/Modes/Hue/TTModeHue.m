@@ -13,7 +13,7 @@
 #define MAX_HUE 65535
 #define MAX_BRIGHTNESS_V1 255
 #define MAX_BRIGHTNESS_V2 100.0
-#define DEBUG_HUE YES
+#define DEBUG_HUE NO
 
 @interface TTModeHue()
 
@@ -79,10 +79,11 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 }
 
 - (void)initializeHue {
-    NSLog(@" ---> [TTModeHue] initializeHue called, _hueClient=%@", _hueClient);
+    if (DEBUG_HUE) {
+        NSLog(@" ---> [TTModeHue] initializeHue called, _hueClient=%@", _hueClient);
+    }
 
     if (_hueClient != nil) {
-        NSLog(@" ---> [TTModeHue] Already have hueClient, returning early");
         return;
     }
 
@@ -365,8 +366,6 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
                        completion:^(id result, NSError *error) {
             if (error) {
                 NSLog(@" ---> Sleep light error: %@", error);
-            } else {
-                NSLog(@" ---> Sleep light in %ldms", (long)transitionMs);
             }
         }];
     }
@@ -530,8 +529,6 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
                                   completion:^(id result, NSError *error) {
                 if (error) {
                     NSLog(@" ---> Brightness change error: %@", error);
-                } else {
-                    NSLog(@" ---> Brightness: %.1f", newBrightness);
                 }
             }];
             return;
@@ -559,8 +556,6 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
                        completion:^(id result, NSError *error) {
             if (error) {
                 NSLog(@" ---> Brightness change error: %@", error);
-            } else {
-                NSLog(@" ---> Brightness: %.1f", newBrightness);
             }
         }];
     }
@@ -617,8 +612,6 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
                        completion:^(id result, NSError *error) {
             if (error) {
                 NSLog(@" ---> Color shift error: %@", error);
-            } else {
-                NSLog(@" ---> Color shift complete: (%.3f, %.3f)", newX, light.color.xy.y);
             }
         }];
     }
@@ -672,14 +665,15 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
                                                                  selector:@selector(connectionTimedOut:)
                                                                  userInfo:nil
                                                                   repeats:NO];
-    NSLog(@" ---> [TTModeHue] Started connection timeout timer (%.0f seconds)", kConnectionTimeoutSeconds);
+    if (DEBUG_HUE) {
+        NSLog(@" ---> [TTModeHue] Started connection timeout timer (%.0f seconds)", kConnectionTimeoutSeconds);
+    }
 }
 
 - (void)cancelConnectionTimeout {
     if (self.connectionTimeoutTimer) {
         [self.connectionTimeoutTimer invalidate];
         self.connectionTimeoutTimer = nil;
-        NSLog(@" ---> [TTModeHue] Cancelled connection timeout timer");
     }
 }
 
@@ -703,10 +697,11 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 #pragma mark - Connection Management
 
 - (void)connectToBridgeWithReset:(BOOL)reset {
-    NSLog(@" ---> [TTModeHue] connectToBridgeWithReset:%@ (current state=%ld)", reset ? @"YES" : @"NO", (long)self.hueState);
+    if (DEBUG_HUE) {
+        NSLog(@" ---> [TTModeHue] connectToBridgeWithReset:%@ (current state=%ld)", reset ? @"YES" : @"NO", (long)self.hueState);
+    }
 
     if (self.hueState == STATE_CONNECTING && !reset) {
-        NSLog(@" ---> [TTModeHue] Already connecting, returning early");
         return;
     }
 
@@ -739,7 +734,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
         if ([TTHueBridgeAuthenticator migrateLegacyCredentials]) {
             // Re-read after migration
             savedBridges = [prefs arrayForKey:@"TT:savedHueBridges"];
-            NSLog(@" ---> After migration, bridges: %@", savedBridges);
+            NSLog(@" ---> After migration, found %lu bridge(s)", (unsigned long)savedBridges.count);
         }
     }
 
@@ -764,7 +759,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
         [self.bridgesTried addObject:serialNumber];
 
         if (DEBUG_HUE) {
-            NSLog(@" ---> Connecting to bridge: %@", savedBridge);
+            NSLog(@" ---> Connecting to bridge: %@ (%@)", serialNumber, ip);
         }
 
         if (username && username.length > 0) {
@@ -785,7 +780,9 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 }
 
 - (void)authenticateBridgeWithUsername:(NSString *)username {
-    NSLog(@" ---> [TTModeHue] authenticateBridgeWithUsername: %@ (bridge=%@)", username, self.latestBridge.internalIPAddress);
+    if (DEBUG_HUE) {
+        NSLog(@" ---> [TTModeHue] authenticateBridgeWithUsername (bridge=%@)", self.latestBridge.internalIPAddress);
+    }
 
     if (!self.latestBridge) {
         NSLog(@" ---> No bridge to authenticate");
@@ -793,7 +790,9 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     }
 
     if (self.hueState != STATE_CONNECTED) {
-        NSLog(@" ---> [TTModeHue] Setting state to CONNECTED and initializing API client");
+        if (DEBUG_HUE) {
+            NSLog(@" ---> [TTModeHue] Setting state to CONNECTED");
+        }
         [self cancelConnectionTimeout];
         self.hueState = STATE_CONNECTED;
         [self saveRecentBridgeWithUsername:username];
@@ -815,7 +814,9 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 }
 
 - (void)tryAuthenticateWithPendingUsername:(NSString *)username bridgeIP:(NSString *)bridgeIP bridgeId:(NSString *)bridgeId {
-    NSLog(@" ---> Trying legacy username: %@", username);
+    if (DEBUG_HUE) {
+        NSLog(@" ---> Trying legacy authentication for bridge: %@", bridgeId);
+    }
 
     // Create a temporary API client to test if the username works
     TTHueAPIClient *testClient = [[TTHueAPIClient alloc] initWithBridgeIP:bridgeIP applicationKey:username];
@@ -948,7 +949,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     [prefs synchronize];
 
     if (DEBUG_HUE) {
-        NSLog(@" ---> Saved bridges (username: %@): %@", username, previouslyFoundBridges);
+        NSLog(@" ---> Saved %lu bridge(s)", (unsigned long)previouslyFoundBridges.count);
     }
 }
 
@@ -967,7 +968,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     [prefs setObject:filteredBridges forKey:@"TT:savedHueBridges"];
     [prefs synchronize];
 
-    NSLog(@" ---> Removed bridge %@: %@", serialNumber, filteredBridges);
+    NSLog(@" ---> Removed bridge %@", serialNumber);
 }
 
 #pragma mark - Event Stream Notifications
@@ -996,13 +997,11 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 #pragma mark - TTHueEventStreamDelegate
 
 - (void)eventStreamConnected {
-    if (DEBUG_HUE) {
-        NSLog(@" ---> Event stream delegate: connected");
-    }
+    // Handled via TTHueEventStreamConnectedNotification
 }
 
 - (void)eventStreamDisconnectedWithError:(NSError *)error {
-    NSLog(@" ---> Event stream delegate: disconnected - %@", error.localizedDescription ?: @"unknown");
+    // Handled via TTHueEventStreamDisconnectedNotification
 }
 
 - (void)eventStreamAuthenticationFailed {
@@ -1051,7 +1050,6 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 #pragma mark - Bridge searching and selection
 
 - (void)searchForBridgeLocal {
-    NSLog(@" ---> [TTModeHue] searchForBridgeLocal starting");
     self.hueState = STATE_CONNECTING;
     [self.delegate changeState:self.hueState withMode:self showMessage:@"Searching for a Hue bridge..."];
 
@@ -1318,7 +1316,9 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
         return;
     }
 
-    NSLog(@" ---> Creating scene '%@'", sceneName);
+    if (DEBUG_HUE) {
+        NSLog(@" ---> Creating scene '%@'", sceneName);
+    }
 
     // Find a room and scope lights to that room
     NSString *roomId = [_resourceCache.rooms allKeys].firstObject ?: @"";
@@ -1374,7 +1374,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
         if (error) {
             NSLog(@" ---> Error creating scene '%@': %@", sceneName, error);
         } else {
-            NSLog(@" ---> Created scene '%@': %@", sceneName, result);
+            NSLog(@" ---> Created scene '%@'", sceneName);
 
             // Refresh scenes
             dispatch_async(dispatch_get_main_queue(), ^{

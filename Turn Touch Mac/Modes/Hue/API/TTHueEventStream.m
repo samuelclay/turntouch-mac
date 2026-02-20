@@ -316,8 +316,6 @@ didReceiveResponse:(NSURLResponse *)response
  completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler {
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     self.lastHTTPStatusCode = httpResponse.statusCode;
-    NSLog(@"[TTHueEventStream] Received response: %ld", (long)httpResponse.statusCode);
-
     if (httpResponse.statusCode == 200) {
         self.isConnected = YES;
         self.reconnectAttempts = 0;

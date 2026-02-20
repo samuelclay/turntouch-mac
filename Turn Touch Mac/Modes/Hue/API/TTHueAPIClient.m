@@ -140,8 +140,8 @@ static const NSTimeInterval kMinRequestInterval = 0.1; // 100ms between requests
 
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
 
-        // Log response for debugging
-        if (data) {
+        // Log non-success responses for debugging
+        if (data && (httpResponse.statusCode < 200 || httpResponse.statusCode >= 300)) {
             NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             NSLog(@"[HueAPI] Response (%ld): %@", (long)httpResponse.statusCode, [dataString substringToIndex:MIN(500, dataString.length)]);
         }
