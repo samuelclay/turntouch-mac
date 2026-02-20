@@ -15,7 +15,7 @@
 #define MAX_BRIGHTNESS_V2 100.0
 #define DEBUG_HUE NO
 
-@interface TTModeHue()
+@interface TTModeHue() <NSNetServiceBrowserDelegate>
 
 @property (nonatomic, strong) TTHueBridgeDiscovery *bridgeDiscovery;
 @property (nonatomic, strong) TTHueBridgeAuthenticator *bridgeAuthenticator;
@@ -28,6 +28,8 @@
 @property (nonatomic, assign) BOOL ensuringScenes;
 @property (nonatomic, strong) NSDate *connectionStartTime;
 @property (nonatomic, strong) NSTimer *connectionTimeoutTimer;
+@property (nonatomic, strong) NSNetServiceBrowser *localNetworkBrowser;
+@property (nonatomic, assign) BOOL localNetworkRetried;
 
 @end
 
@@ -711,6 +713,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 
     if (reset) {
         [self.bridgesTried removeAllObjects];
+        self.localNetworkRetried = NO;
     }
 
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
@@ -852,7 +855,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 
     [_hueClient fetchAllResourcesWithCompletion:^(TTHueResourceCache *cache, NSError *error) {
         if (error) {
-            NSLog(@" ---> Failed to fetch resources: %@", error);
+            NSLog(@" ---> Failed to fetch resources: %@", error.localizedDescription);
             dispatch_async(dispatch_get_main_queue(), ^{
                 // Check if this is an authentication error
                 if ([error.domain isEqualToString:TTHueAPIClientErrorDomain] &&
@@ -866,6 +869,10 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
                     [self cancelConnectionTimeout];
                     self.hueState = STATE_NOT_CONNECTED;
                     [self.delegate changeState:self.hueState withMode:self showMessage:@"Hue authentication expired. Open Hue settings to reconnect."];
+                } else if ([self isLocalNetworkError:error] && !self.localNetworkRetried) {
+                    // macOS blocked local network access — trigger the permission prompt
+                    // via Bonjour and retry
+                    [self warmUpLocalNetworkAndRetry];
                 } else {
                     [self showNoConnectionDialog];
                 }
@@ -1211,6 +1218,53 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     [self cancelConnectionTimeout];
     self.hueState = STATE_NOT_CONNECTED;
     [self.delegate changeState:self.hueState withMode:self showMessage:@"Connection to Hue bridge lost"];
+}
+
+#pragma mark - Local Network Permission
+
+- (BOOL)isLocalNetworkError:(NSError *)error {
+    // NSURLErrorNotConnectedToInternet (-1009) with "Local network prohibited"
+    // is what macOS returns when local network access hasn't been granted
+    if (error.code == NSURLErrorNotConnectedToInternet) {
+        return YES;
+    }
+    // Also check the underlying error
+    NSError *underlying = error.userInfo[NSUnderlyingErrorKey];
+    if (underlying && underlying.code == NSURLErrorNotConnectedToInternet) {
+        return YES;
+    }
+    return NO;
+}
+
+- (void)warmUpLocalNetworkAndRetry {
+    NSLog(@" ---> Local network access blocked, requesting permission via Bonjour...");
+    self.localNetworkRetried = YES;
+
+    // Start a Bonjour browse — this triggers the macOS local network permission prompt
+    self.localNetworkBrowser = [[NSNetServiceBrowser alloc] init];
+    self.localNetworkBrowser.delegate = self;
+    [self.localNetworkBrowser searchForServicesOfType:@"_hue._tcp" inDomain:@"local."];
+
+    [self.delegate changeState:self.hueState withMode:self showMessage:@"Requesting local network access..."];
+
+    // Give the user time to accept the permission prompt, then retry
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.localNetworkBrowser stop];
+        self.localNetworkBrowser = nil;
+
+        // Reset client so we reconnect fresh
+        _hueClient = nil;
+        self.hueState = STATE_NOT_CONNECTED;
+        [self connectToBridgeWithReset:NO];
+    });
+}
+
+- (void)netServiceBrowserWillSearch:(NSNetServiceBrowser *)browser {
+    // Bonjour browse started — this alone triggers the local network permission prompt
+}
+
+- (void)netServiceBrowser:(NSNetServiceBrowser *)browser didNotSearch:(NSDictionary<NSString *,NSNumber *> *)errorDict {
+    NSLog(@" ---> Bonjour browse failed: %@", errorDict);
 }
 
 - (void)showNoBridgesFoundDialog {
