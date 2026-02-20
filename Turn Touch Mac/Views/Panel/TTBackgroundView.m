@@ -175,7 +175,7 @@
         if (hasRect) height = NSHeight(contentRect);
     }
 
-    return height > 0 ? height + 60.f : 0.f;
+    return height;
 }
 
 - (void)updateScrollViewLayout {
@@ -184,8 +184,14 @@
     [self.scrollStackView invalidateIntrinsicContentSize];
     CGFloat contentHeight = [self scrollStackViewContentHeight];
 
+    // Calculate available space by subtracting all non-scroll sibling views from screen height
+    CGFloat nonScrollHeight = 0;
+    for (NSView *view in self.views) {
+        if (view == self.scrollView) continue;
+        nonScrollHeight += NSHeight(view.frame);
+    }
     NSRect screenRect = [[[NSScreen screens] objectAtIndex:0] frame];
-    CGFloat maxHeight = NSHeight(screenRect) - 400;
+    CGFloat maxHeight = NSHeight(screenRect) - nonScrollHeight - 50;
     CGFloat scrollHeight = MIN(contentHeight, maxHeight);
     if (fabs(self.scrollViewHeightConstraint.constant - scrollHeight) > 0.5f) {
         self.scrollViewHeightConstraint.constant = scrollHeight;
@@ -297,13 +303,14 @@
     self.scrollViewHeightConstraint.priority = 999;
     [self addConstraint:self.scrollViewHeightConstraint];
     NSRect screenRect = [[[NSScreen screens] objectAtIndex:0] frame];
-    CGFloat scrollHeight = NSHeight(screenRect) - 400;
+    CGFloat fixedHeight = ARROW_HEIGHT + TITLE_BAR_HEIGHT + MODE_TABS_HEIGHT + MODE_TITLE_HEIGHT + FOOTER_HEIGHT;
+    CGFloat scrollMaxHeight = NSHeight(screenRect) - fixedHeight - 100;
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.scrollView
                                                      attribute:NSLayoutAttributeHeight
                                                      relatedBy:NSLayoutRelationLessThanOrEqual
                                                         toItem:nil
                                                      attribute:NSLayoutAttributeNotAnAttribute
-                                                    multiplier:1.f constant:scrollHeight]];
+                                                    multiplier:1.f constant:scrollMaxHeight]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.scrollView
                                                      attribute:NSLayoutAttributeWidth
                                                      relatedBy:NSLayoutRelationEqual
