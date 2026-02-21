@@ -368,6 +368,7 @@
                                                     multiplier:0 constant:FOOTER_HEIGHT]];
     
     [self.arrowView setNeedsDisplay:YES];
+    [self.optionsView drawModeOptions];
     [self updateScrollViewLayout];
     //        NSLog(@"Init modeOptionsView View height: %.f", NSHeight(optionsView.modeOptionsViewController.view.bounds));
     //        NSLog(@"Init options View height: %.f", NSHeight(optionsView.bounds));

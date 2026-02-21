@@ -1,54 +1,58 @@
 //
-//  TTModeKasaOptions.m
+//  TTModeGoveeOptions.m
 //  Turn Touch Mac
 //
 //  Created by Samuel Clay on 2/20/26.
 //  Copyright © 2026 Turn Touch. All rights reserved.
 //
 
-#import "TTModeKasaOptions.h"
-#import "TTModeKasaConnect.h"
-#import "TTModeKasaConnecting.h"
-#import "TTModeKasaConnected.h"
+#import "TTModeGoveeOptions.h"
+#import "TTModeGoveeConnect.h"
+#import "TTModeGoveeConnecting.h"
+#import "TTModeGoveeConnected.h"
 
-@interface TTModeKasaOptions ()
+@interface TTModeGoveeOptions ()
 
-@property (nonatomic, strong) TTModeKasaConnect *connectViewController;
-@property (nonatomic, strong) TTModeKasaConnecting *connectingViewController;
-@property (nonatomic, strong) TTModeKasaConnected *connectedViewController;
+@property (nonatomic, strong) TTModeGoveeConnect *connectViewController;
+@property (nonatomic, strong) TTModeGoveeConnecting *connectingViewController;
+@property (nonatomic, strong) TTModeGoveeConnected *connectedViewController;
 @property (nonatomic, strong) NSLayoutConstraint *viewHeightConstraint;
 
 @end
 
-@implementation TTModeKasaOptions
+@implementation TTModeGoveeOptions
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.modeKasa = (TTModeKasa *)self.mode;
-    [self.modeKasa setDelegate:self];
+    self.modeGovee = (TTModeGovee *)self.mode;
+    [self.modeGovee setDelegate:self];
 
-    [self changeState:TTModeKasa.kasaState withMode:self.modeKasa];
+    [self changeState:TTModeGovee.goveeState withMode:self.modeGovee];
 }
 
-- (void)changeState:(TTKasaState)kasaState withMode:(TTModeKasa *)modeKasa {
-    switch (kasaState) {
-        case KASA_STATE_NOT_CONNECTED:
+- (void)changeState:(TTGoveeState)goveeState withMode:(TTModeGovee *)modeGovee {
+    switch (goveeState) {
+        case GOVEE_STATE_NOT_CONNECTED:
             [self drawConnectViewController];
             break;
 
-        case KASA_STATE_CONNECTING:
+        case GOVEE_STATE_CONNECTING:
             [self drawConnectingViewController];
             [self.connectingViewController setConnectingWithMessage:nil];
             break;
 
-        case KASA_STATE_CONNECTED:
+        case GOVEE_STATE_CONNECTED:
             [self drawConnectedViewController];
             break;
 
         default:
             break;
     }
+}
+
+- (void)fetchStatusUpdate:(NSString *)status {
+    [self.connectingViewController setConnectingWithMessage:status];
 }
 
 #pragma mark - View Controllers
@@ -115,28 +119,28 @@
 
 - (void)drawConnectViewController {
     [self clearViewControllers];
-    self.connectViewController = [[TTModeKasaConnect alloc]
-                                  initWithNibName:@"TTModeKasaConnect"
+    self.connectViewController = [[TTModeGoveeConnect alloc]
+                                  initWithNibName:@"TTModeGoveeConnect"
                                   bundle:[NSBundle mainBundle]];
-    self.connectViewController.modeKasa = self.modeKasa;
+    self.connectViewController.modeGovee = self.modeGovee;
     [self drawViewController:self.connectViewController];
 }
 
 - (void)drawConnectingViewController {
     [self clearViewControllers];
-    self.connectingViewController = [[TTModeKasaConnecting alloc]
-                                     initWithNibName:@"TTModeKasaConnecting"
+    self.connectingViewController = [[TTModeGoveeConnecting alloc]
+                                     initWithNibName:@"TTModeGoveeConnecting"
                                      bundle:[NSBundle mainBundle]];
-    self.connectingViewController.modeKasa = self.modeKasa;
+    self.connectingViewController.modeGovee = self.modeGovee;
     [self drawViewController:self.connectingViewController];
 }
 
 - (void)drawConnectedViewController {
     [self clearViewControllers];
-    self.connectedViewController = [[TTModeKasaConnected alloc]
-                                    initWithNibName:@"TTModeKasaConnected"
+    self.connectedViewController = [[TTModeGoveeConnected alloc]
+                                    initWithNibName:@"TTModeGoveeConnected"
                                     bundle:[NSBundle mainBundle]];
-    self.connectedViewController.modeKasa = self.modeKasa;
+    self.connectedViewController.modeGovee = self.modeGovee;
     [self drawViewController:self.connectedViewController];
 }
 
