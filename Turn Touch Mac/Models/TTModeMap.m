@@ -23,6 +23,8 @@
 #import "TTModeNest.h"
 #import "TTModeWemo.h"
 #import "TTModeKasa.h"
+#import "TTModeGovee.h"
+#import "TTModeNanoleaf.h"
 #import "TTModeCustom.h"
 #import "TTModeSpotify.h"
 #import "TTBatchActions.h"
@@ -51,6 +53,8 @@
                                   @"TTModeSonos",
                                   @"TTModeWemo",
                                   @"TTModeKasa",
+                                  @"TTModeGovee",
+                                  @"TTModeNanoleaf",
                                   @"TTModeAlarmClock",
                                   @"TTModeSpotify",
                                   @"TTModeAirfoil",

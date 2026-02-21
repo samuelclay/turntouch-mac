@@ -71,6 +71,7 @@
 	<key>NSBonjourServices</key>
 	<array>
 		<string>_hue._tcp</string>
+		<string>_nanoleafapi._tcp</string>
 	</array>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © Turn Touch. All rights reserved.</string>

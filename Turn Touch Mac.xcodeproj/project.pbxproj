@@ -921,6 +921,48 @@
 		FFFF0C8B1EFCA36500E29E6D /* TTModeIftttAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFFF0C891EFCA36500E29E6D /* TTModeIftttAuthViewController.xib */; };
 		FFFF0C8F1EFDFF8100E29E6D /* mode_ifttt.png in Resources */ = {isa = PBXBuildFile; fileRef = FFFF0C8E1EFDFF8100E29E6D /* mode_ifttt.png */; };
 		FFFF683819D4E2C30081904A /* ideas.txt in Resources */ = {isa = PBXBuildFile; fileRef = FFFF683619D4E2C30081904A /* ideas.txt */; };
+		G0VE00020000000000000001 /* TTModeGovee.m in Sources */ = {isa = PBXBuildFile; fileRef = G0VE00010000000000000002 /* TTModeGovee.m */; };
+		G0VE00020000000000000002 /* TTModeGoveeDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = G0VE00010000000000000004 /* TTModeGoveeDevice.m */; };
+		G0VE00020000000000000003 /* TTModeGoveeAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = G0VE00010000000000000006 /* TTModeGoveeAPIClient.m */; };
+		G0VE00020000000000000004 /* TTModeGoveeOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = G0VE00010000000000000008 /* TTModeGoveeOptions.m */; };
+		G0VE00020000000000000005 /* TTModeGoveeConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = G0VE0001000000000000000B /* TTModeGoveeConnect.m */; };
+		G0VE00020000000000000006 /* TTModeGoveeConnecting.m in Sources */ = {isa = PBXBuildFile; fileRef = G0VE0001000000000000000E /* TTModeGoveeConnecting.m */; };
+		G0VE00020000000000000007 /* TTModeGoveeConnected.m in Sources */ = {isa = PBXBuildFile; fileRef = G0VE00010000000000000011 /* TTModeGoveeConnected.m */; };
+		G0VE00020000000000000008 /* TTModeGoveeSwitchDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = G0VE00010000000000000014 /* TTModeGoveeSwitchDevice.m */; };
+		G0VE00020000000000000009 /* TTModeGoveeSwitchOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = G0VE00010000000000000016 /* TTModeGoveeSwitchOptions.m */; };
+		G0VE0002000000000000000A /* TTModeGoveeDeviceOnOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = G0VE00010000000000000019 /* TTModeGoveeDeviceOnOptions.m */; };
+		G0VE0002000000000000000B /* TTModeGoveeDeviceOffOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = G0VE0001000000000000001B /* TTModeGoveeDeviceOffOptions.m */; };
+		G0VE0002000000000000000C /* TTModeGoveeDeviceToggleOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = G0VE0001000000000000001D /* TTModeGoveeDeviceToggleOptions.m */; };
+		G0VE0002000000000000000D /* TTModeGoveeBrightnessUpOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = G0VE0001000000000000001F /* TTModeGoveeBrightnessUpOptions.m */; };
+		G0VE0002000000000000000E /* TTModeGoveeBrightnessDownOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = G0VE00010000000000000021 /* TTModeGoveeBrightnessDownOptions.m */; };
+		G0VE0002000000000000000F /* TTModeGoveeOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = G0VE00010000000000000009 /* TTModeGoveeOptions.xib */; };
+		G0VE00020000000000000010 /* TTModeGoveeConnect.xib in Resources */ = {isa = PBXBuildFile; fileRef = G0VE0001000000000000000C /* TTModeGoveeConnect.xib */; };
+		G0VE00020000000000000011 /* TTModeGoveeConnecting.xib in Resources */ = {isa = PBXBuildFile; fileRef = G0VE0001000000000000000F /* TTModeGoveeConnecting.xib */; };
+		G0VE00020000000000000012 /* TTModeGoveeConnected.xib in Resources */ = {isa = PBXBuildFile; fileRef = G0VE00010000000000000012 /* TTModeGoveeConnected.xib */; };
+		G0VE00020000000000000013 /* TTModeGoveeSwitchOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = G0VE00010000000000000017 /* TTModeGoveeSwitchOptions.xib */; };
+		G0VE00020000000000000014 /* mode_govee.png in Resources */ = {isa = PBXBuildFile; fileRef = G0VE00010000000000000022 /* mode_govee.png */; };
+		NANL00020000000000000001 /* TTModeNanoleaf.m in Sources */ = {isa = PBXBuildFile; fileRef = NANL00010000000000000002 /* TTModeNanoleaf.m */; };
+		NANL00020000000000000002 /* TTModeNanoleafOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = NANL00010000000000000004 /* TTModeNanoleafOptions.m */; };
+		NANL00020000000000000003 /* TTModeNanoleafConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = NANL00010000000000000007 /* TTModeNanoleafConnect.m */; };
+		NANL00020000000000000004 /* TTModeNanoleafConnecting.m in Sources */ = {isa = PBXBuildFile; fileRef = NANL0001000000000000000A /* TTModeNanoleafConnecting.m */; };
+		NANL00020000000000000005 /* TTModeNanoleafPushlink.m in Sources */ = {isa = PBXBuildFile; fileRef = NANL0001000000000000000D /* TTModeNanoleafPushlink.m */; };
+		NANL00020000000000000006 /* TTModeNanoleafConnected.m in Sources */ = {isa = PBXBuildFile; fileRef = NANL00010000000000000010 /* TTModeNanoleafConnected.m */; };
+		NANL00020000000000000007 /* TTModeNanoleafSceneCustomOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = NANL00010000000000000013 /* TTModeNanoleafSceneCustomOptions.m */; };
+		NANL00020000000000000008 /* TTModeNanoleafSleepOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = NANL00010000000000000016 /* TTModeNanoleafSleepOptions.m */; };
+		NANL00020000000000000009 /* TTModeNanoleafOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = NANL00010000000000000005 /* TTModeNanoleafOptions.xib */; };
+		NANL0002000000000000000A /* TTModeNanoleafConnect.xib in Resources */ = {isa = PBXBuildFile; fileRef = NANL00010000000000000008 /* TTModeNanoleafConnect.xib */; };
+		NANL0002000000000000000B /* TTModeNanoleafConnecting.xib in Resources */ = {isa = PBXBuildFile; fileRef = NANL0001000000000000000B /* TTModeNanoleafConnecting.xib */; };
+		NANL0002000000000000000C /* TTModeNanoleafPushlink.xib in Resources */ = {isa = PBXBuildFile; fileRef = NANL0001000000000000000E /* TTModeNanoleafPushlink.xib */; };
+		NANL0002000000000000000D /* TTModeNanoleafConnected.xib in Resources */ = {isa = PBXBuildFile; fileRef = NANL00010000000000000011 /* TTModeNanoleafConnected.xib */; };
+		NANL0002000000000000000E /* TTModeNanoleafSceneCustomOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = NANL00010000000000000014 /* TTModeNanoleafSceneCustomOptions.xib */; };
+		NANL0002000000000000000F /* TTModeNanoleafSleepOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = NANL00010000000000000017 /* TTModeNanoleafSleepOptions.xib */; };
+		NANL00020000000000000010 /* TTModeNanoleaf.plist in Resources */ = {isa = PBXBuildFile; fileRef = NANL00010000000000000018 /* TTModeNanoleaf.plist */; };
+		NANL00020000000000000011 /* nanoleaf_toggle.png in Resources */ = {isa = PBXBuildFile; fileRef = NANL00010000000000000019 /* nanoleaf_toggle.png */; };
+		NANL00020000000000000012 /* nanoleaf_scene.png in Resources */ = {isa = PBXBuildFile; fileRef = NANL0001000000000000001A /* nanoleaf_scene.png */; };
+		NANL00020000000000000013 /* nanoleaf_brightness_up.png in Resources */ = {isa = PBXBuildFile; fileRef = NANL0001000000000000001B /* nanoleaf_brightness_up.png */; };
+		NANL00020000000000000014 /* nanoleaf_brightness_down.png in Resources */ = {isa = PBXBuildFile; fileRef = NANL0001000000000000001C /* nanoleaf_brightness_down.png */; };
+		NANL00020000000000000015 /* nanoleaf_sleep.png in Resources */ = {isa = PBXBuildFile; fileRef = NANL0001000000000000001D /* nanoleaf_sleep.png */; };
+		NANL00020000000000000016 /* mode_nanoleaf.png in Resources */ = {isa = PBXBuildFile; fileRef = NANL0001000000000000001E /* mode_nanoleaf.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1721,6 +1763,70 @@
 		FFFF0C891EFCA36500E29E6D /* TTModeIftttAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeIftttAuthViewController.xib; path = Modes/Ifttt/TTModeIftttAuthViewController.xib; sourceTree = "<group>"; };
 		FFFF0C8E1EFDFF8100E29E6D /* mode_ifttt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mode_ifttt.png; sourceTree = "<group>"; };
 		FFFF683619D4E2C30081904A /* ideas.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ideas.txt; path = Modes/Meditation/ideas.txt; sourceTree = "<group>"; };
+		G0VE00010000000000000001 /* TTModeGovee.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeGovee.h; path = "Turn Touch Mac/Modes/Govee/TTModeGovee.h"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000002 /* TTModeGovee.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeGovee.m; path = "Turn Touch Mac/Modes/Govee/TTModeGovee.m"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000003 /* TTModeGoveeDevice.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeGoveeDevice.h; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeDevice.h"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000004 /* TTModeGoveeDevice.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeGoveeDevice.m; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeDevice.m"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000005 /* TTModeGoveeAPIClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeGoveeAPIClient.h; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeAPIClient.h"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000006 /* TTModeGoveeAPIClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeGoveeAPIClient.m; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeAPIClient.m"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000007 /* TTModeGoveeOptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeGoveeOptions.h; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeOptions.h"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000008 /* TTModeGoveeOptions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeGoveeOptions.m; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeOptions.m"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000009 /* TTModeGoveeOptions.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = TTModeGoveeOptions.xib; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeOptions.xib"; sourceTree = SOURCE_ROOT; };
+		G0VE0001000000000000000A /* TTModeGoveeConnect.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeGoveeConnect.h; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeConnect.h"; sourceTree = SOURCE_ROOT; };
+		G0VE0001000000000000000B /* TTModeGoveeConnect.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeGoveeConnect.m; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeConnect.m"; sourceTree = SOURCE_ROOT; };
+		G0VE0001000000000000000C /* TTModeGoveeConnect.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = TTModeGoveeConnect.xib; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeConnect.xib"; sourceTree = SOURCE_ROOT; };
+		G0VE0001000000000000000D /* TTModeGoveeConnecting.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeGoveeConnecting.h; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeConnecting.h"; sourceTree = SOURCE_ROOT; };
+		G0VE0001000000000000000E /* TTModeGoveeConnecting.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeGoveeConnecting.m; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeConnecting.m"; sourceTree = SOURCE_ROOT; };
+		G0VE0001000000000000000F /* TTModeGoveeConnecting.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = TTModeGoveeConnecting.xib; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeConnecting.xib"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000010 /* TTModeGoveeConnected.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeGoveeConnected.h; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeConnected.h"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000011 /* TTModeGoveeConnected.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeGoveeConnected.m; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeConnected.m"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000012 /* TTModeGoveeConnected.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = TTModeGoveeConnected.xib; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeConnected.xib"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000013 /* TTModeGoveeSwitchDevice.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeGoveeSwitchDevice.h; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeSwitchDevice.h"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000014 /* TTModeGoveeSwitchDevice.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeGoveeSwitchDevice.m; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeSwitchDevice.m"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000015 /* TTModeGoveeSwitchOptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeGoveeSwitchOptions.h; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeSwitchOptions.h"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000016 /* TTModeGoveeSwitchOptions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeGoveeSwitchOptions.m; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeSwitchOptions.m"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000017 /* TTModeGoveeSwitchOptions.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = TTModeGoveeSwitchOptions.xib; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeSwitchOptions.xib"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000018 /* TTModeGoveeDeviceOnOptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeGoveeDeviceOnOptions.h; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeDeviceOnOptions.h"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000019 /* TTModeGoveeDeviceOnOptions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeGoveeDeviceOnOptions.m; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeDeviceOnOptions.m"; sourceTree = SOURCE_ROOT; };
+		G0VE0001000000000000001A /* TTModeGoveeDeviceOffOptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeGoveeDeviceOffOptions.h; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeDeviceOffOptions.h"; sourceTree = SOURCE_ROOT; };
+		G0VE0001000000000000001B /* TTModeGoveeDeviceOffOptions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeGoveeDeviceOffOptions.m; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeDeviceOffOptions.m"; sourceTree = SOURCE_ROOT; };
+		G0VE0001000000000000001C /* TTModeGoveeDeviceToggleOptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeGoveeDeviceToggleOptions.h; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeDeviceToggleOptions.h"; sourceTree = SOURCE_ROOT; };
+		G0VE0001000000000000001D /* TTModeGoveeDeviceToggleOptions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeGoveeDeviceToggleOptions.m; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeDeviceToggleOptions.m"; sourceTree = SOURCE_ROOT; };
+		G0VE0001000000000000001E /* TTModeGoveeBrightnessUpOptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeGoveeBrightnessUpOptions.h; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeBrightnessUpOptions.h"; sourceTree = SOURCE_ROOT; };
+		G0VE0001000000000000001F /* TTModeGoveeBrightnessUpOptions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeGoveeBrightnessUpOptions.m; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeBrightnessUpOptions.m"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000020 /* TTModeGoveeBrightnessDownOptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeGoveeBrightnessDownOptions.h; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeBrightnessDownOptions.h"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000021 /* TTModeGoveeBrightnessDownOptions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeGoveeBrightnessDownOptions.m; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeBrightnessDownOptions.m"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000022 /* mode_govee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mode_govee.png; sourceTree = "<group>"; };
+		NANL00010000000000000001 /* TTModeNanoleaf.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeNanoleaf.h; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleaf.h"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000002 /* TTModeNanoleaf.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeNanoleaf.m; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleaf.m"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000003 /* TTModeNanoleafOptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeNanoleafOptions.h; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafOptions.h"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000004 /* TTModeNanoleafOptions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeNanoleafOptions.m; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafOptions.m"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000005 /* TTModeNanoleafOptions.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = TTModeNanoleafOptions.xib; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafOptions.xib"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000006 /* TTModeNanoleafConnect.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeNanoleafConnect.h; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafConnect.h"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000007 /* TTModeNanoleafConnect.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeNanoleafConnect.m; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafConnect.m"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000008 /* TTModeNanoleafConnect.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = TTModeNanoleafConnect.xib; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafConnect.xib"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000009 /* TTModeNanoleafConnecting.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeNanoleafConnecting.h; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafConnecting.h"; sourceTree = SOURCE_ROOT; };
+		NANL0001000000000000000A /* TTModeNanoleafConnecting.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeNanoleafConnecting.m; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafConnecting.m"; sourceTree = SOURCE_ROOT; };
+		NANL0001000000000000000B /* TTModeNanoleafConnecting.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = TTModeNanoleafConnecting.xib; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafConnecting.xib"; sourceTree = SOURCE_ROOT; };
+		NANL0001000000000000000C /* TTModeNanoleafPushlink.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeNanoleafPushlink.h; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafPushlink.h"; sourceTree = SOURCE_ROOT; };
+		NANL0001000000000000000D /* TTModeNanoleafPushlink.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeNanoleafPushlink.m; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafPushlink.m"; sourceTree = SOURCE_ROOT; };
+		NANL0001000000000000000E /* TTModeNanoleafPushlink.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = TTModeNanoleafPushlink.xib; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafPushlink.xib"; sourceTree = SOURCE_ROOT; };
+		NANL0001000000000000000F /* TTModeNanoleafConnected.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeNanoleafConnected.h; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafConnected.h"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000010 /* TTModeNanoleafConnected.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeNanoleafConnected.m; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafConnected.m"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000011 /* TTModeNanoleafConnected.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = TTModeNanoleafConnected.xib; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafConnected.xib"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000012 /* TTModeNanoleafSceneCustomOptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeNanoleafSceneCustomOptions.h; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafSceneCustomOptions.h"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000013 /* TTModeNanoleafSceneCustomOptions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeNanoleafSceneCustomOptions.m; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafSceneCustomOptions.m"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000014 /* TTModeNanoleafSceneCustomOptions.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = TTModeNanoleafSceneCustomOptions.xib; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafSceneCustomOptions.xib"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000015 /* TTModeNanoleafSleepOptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeNanoleafSleepOptions.h; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafSleepOptions.h"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000016 /* TTModeNanoleafSleepOptions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeNanoleafSleepOptions.m; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafSleepOptions.m"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000017 /* TTModeNanoleafSleepOptions.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = TTModeNanoleafSleepOptions.xib; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafSleepOptions.xib"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000018 /* TTModeNanoleaf.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = TTModeNanoleaf.plist; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleaf.plist"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000019 /* nanoleaf_toggle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nanoleaf_toggle.png; sourceTree = "<group>"; };
+		NANL0001000000000000001A /* nanoleaf_scene.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nanoleaf_scene.png; sourceTree = "<group>"; };
+		NANL0001000000000000001B /* nanoleaf_brightness_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nanoleaf_brightness_up.png; sourceTree = "<group>"; };
+		NANL0001000000000000001C /* nanoleaf_brightness_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nanoleaf_brightness_down.png; sourceTree = "<group>"; };
+		NANL0001000000000000001D /* nanoleaf_sleep.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nanoleaf_sleep.png; sourceTree = "<group>"; };
+		NANL0001000000000000001E /* mode_nanoleaf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mode_nanoleaf.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1827,6 +1933,79 @@
 			path = Kasa;
 			sourceTree = "<group>";
 		};
+		G0VE00030000000000000001 /* Govee */ = {
+			isa = PBXGroup;
+			children = (
+				G0VE00010000000000000001 /* TTModeGovee.h */,
+				G0VE00010000000000000002 /* TTModeGovee.m */,
+				G0VE00010000000000000003 /* TTModeGoveeDevice.h */,
+				G0VE00010000000000000004 /* TTModeGoveeDevice.m */,
+				G0VE00010000000000000005 /* TTModeGoveeAPIClient.h */,
+				G0VE00010000000000000006 /* TTModeGoveeAPIClient.m */,
+				G0VE00010000000000000007 /* TTModeGoveeOptions.h */,
+				G0VE00010000000000000008 /* TTModeGoveeOptions.m */,
+				G0VE0001000000000000000A /* TTModeGoveeConnect.h */,
+				G0VE0001000000000000000B /* TTModeGoveeConnect.m */,
+				G0VE0001000000000000000D /* TTModeGoveeConnecting.h */,
+				G0VE0001000000000000000E /* TTModeGoveeConnecting.m */,
+				G0VE00010000000000000010 /* TTModeGoveeConnected.h */,
+				G0VE00010000000000000011 /* TTModeGoveeConnected.m */,
+				G0VE00010000000000000015 /* TTModeGoveeSwitchOptions.h */,
+				G0VE00010000000000000016 /* TTModeGoveeSwitchOptions.m */,
+				G0VE00010000000000000013 /* TTModeGoveeSwitchDevice.h */,
+				G0VE00010000000000000014 /* TTModeGoveeSwitchDevice.m */,
+				G0VE00010000000000000018 /* TTModeGoveeDeviceOnOptions.h */,
+				G0VE00010000000000000019 /* TTModeGoveeDeviceOnOptions.m */,
+				G0VE0001000000000000001A /* TTModeGoveeDeviceOffOptions.h */,
+				G0VE0001000000000000001B /* TTModeGoveeDeviceOffOptions.m */,
+				G0VE0001000000000000001C /* TTModeGoveeDeviceToggleOptions.h */,
+				G0VE0001000000000000001D /* TTModeGoveeDeviceToggleOptions.m */,
+				G0VE0001000000000000001E /* TTModeGoveeBrightnessUpOptions.h */,
+				G0VE0001000000000000001F /* TTModeGoveeBrightnessUpOptions.m */,
+				G0VE00010000000000000020 /* TTModeGoveeBrightnessDownOptions.h */,
+				G0VE00010000000000000021 /* TTModeGoveeBrightnessDownOptions.m */,
+				G0VE00010000000000000009 /* TTModeGoveeOptions.xib */,
+				G0VE0001000000000000000C /* TTModeGoveeConnect.xib */,
+				G0VE0001000000000000000F /* TTModeGoveeConnecting.xib */,
+				G0VE00010000000000000012 /* TTModeGoveeConnected.xib */,
+				G0VE00010000000000000017 /* TTModeGoveeSwitchOptions.xib */,
+			);
+			name = Govee;
+			path = Govee;
+			sourceTree = "<group>";
+		};
+		NANL00030000000000000001 /* Nanoleaf */ = {
+			isa = PBXGroup;
+			children = (
+				NANL00010000000000000001 /* TTModeNanoleaf.h */,
+				NANL00010000000000000002 /* TTModeNanoleaf.m */,
+				NANL00010000000000000018 /* TTModeNanoleaf.plist */,
+				NANL00010000000000000003 /* TTModeNanoleafOptions.h */,
+				NANL00010000000000000004 /* TTModeNanoleafOptions.m */,
+				NANL00010000000000000005 /* TTModeNanoleafOptions.xib */,
+				NANL00010000000000000006 /* TTModeNanoleafConnect.h */,
+				NANL00010000000000000007 /* TTModeNanoleafConnect.m */,
+				NANL00010000000000000008 /* TTModeNanoleafConnect.xib */,
+				NANL00010000000000000009 /* TTModeNanoleafConnecting.h */,
+				NANL0001000000000000000A /* TTModeNanoleafConnecting.m */,
+				NANL0001000000000000000B /* TTModeNanoleafConnecting.xib */,
+				NANL0001000000000000000C /* TTModeNanoleafPushlink.h */,
+				NANL0001000000000000000D /* TTModeNanoleafPushlink.m */,
+				NANL0001000000000000000E /* TTModeNanoleafPushlink.xib */,
+				NANL0001000000000000000F /* TTModeNanoleafConnected.h */,
+				NANL00010000000000000010 /* TTModeNanoleafConnected.m */,
+				NANL00010000000000000011 /* TTModeNanoleafConnected.xib */,
+				NANL00010000000000000012 /* TTModeNanoleafSceneCustomOptions.h */,
+				NANL00010000000000000013 /* TTModeNanoleafSceneCustomOptions.m */,
+				NANL00010000000000000014 /* TTModeNanoleafSceneCustomOptions.xib */,
+				NANL00010000000000000015 /* TTModeNanoleafSleepOptions.h */,
+				NANL00010000000000000016 /* TTModeNanoleafSleepOptions.m */,
+				NANL00010000000000000017 /* TTModeNanoleafSleepOptions.xib */,
+			);
+			name = Nanoleaf;
+			path = Nanoleaf;
+			sourceTree = "<group>";
+		};
 		A5D7CA613E199622F6A3CAF7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1889,6 +2068,8 @@
 				FF01CA3F1C46DCC200F83A73 /* mode_fitness.png */,
 				FF01CA401C46DCC200F83A73 /* mode_home.png */,
 				FF01CA411C46DCC200F83A73 /* mode_hue.png */,
+				G0VE00010000000000000022 /* mode_govee.png */,
+				NANL0001000000000000001E /* mode_nanoleaf.png */,
 				5C16FF919BE94E6D8114CC4A /* press_smartbridge.png */,
 				FFFF0C8E1EFDFF8100E29E6D /* mode_ifttt.png */,
 				FF01CA421C46DCC200F83A73 /* mode_mac.png */,
@@ -2014,6 +2195,8 @@
 				FFF02BD31F16A20F003E5799 /* Sonos */,
 				FFAA6D131F29592300039F3C /* Presentation */,
 				A29B17171CABD7F2A2DDE36E /* Kasa */,
+				G0VE00030000000000000001 /* Govee */,
+				NANL00030000000000000001 /* Nanoleaf */,
 			);
 			name = Modes;
 			sourceTree = "<group>";
@@ -2355,6 +2538,11 @@
 				FFDC9F6D1FD74BC700261B76 /* hue_brightness_up.png */,
 				FFDC9F6E1FD74BC800261B76 /* hue_shift_left.png */,
 				FFDC9F701FD74BC800261B76 /* hue_shift_right.png */,
+				NANL00010000000000000019 /* nanoleaf_toggle.png */,
+				NANL0001000000000000001A /* nanoleaf_scene.png */,
+				NANL0001000000000000001B /* nanoleaf_brightness_up.png */,
+				NANL0001000000000000001C /* nanoleaf_brightness_down.png */,
+				NANL0001000000000000001D /* nanoleaf_sleep.png */,
 				FF6135441C61CDDC00F431D7 /* hue_evening.png */,
 				FF6135451C61CDDC00F431D7 /* hue_random.png */,
 				FF6135461C61CDDC00F431D7 /* hue_sleep.png */,
@@ -3712,6 +3900,26 @@
 				9F9FB24AC17E561B68BB5B38 /* TTModeKasaConnecting.xib in Resources */,
 				3374FD6CCD796752EC41D36E /* TTModeKasaConnected.xib in Resources */,
 				BFE1E53BECA7FD65969081A4 /* TTModeKasaSwitchOptions.xib in Resources */,
+				G0VE0002000000000000000F /* TTModeGoveeOptions.xib in Resources */,
+				G0VE00020000000000000010 /* TTModeGoveeConnect.xib in Resources */,
+				G0VE00020000000000000011 /* TTModeGoveeConnecting.xib in Resources */,
+				G0VE00020000000000000012 /* TTModeGoveeConnected.xib in Resources */,
+				G0VE00020000000000000013 /* TTModeGoveeSwitchOptions.xib in Resources */,
+				G0VE00020000000000000014 /* mode_govee.png in Resources */,
+				NANL00020000000000000009 /* TTModeNanoleafOptions.xib in Resources */,
+				NANL0002000000000000000A /* TTModeNanoleafConnect.xib in Resources */,
+				NANL0002000000000000000B /* TTModeNanoleafConnecting.xib in Resources */,
+				NANL0002000000000000000C /* TTModeNanoleafPushlink.xib in Resources */,
+				NANL0002000000000000000D /* TTModeNanoleafConnected.xib in Resources */,
+				NANL0002000000000000000E /* TTModeNanoleafSceneCustomOptions.xib in Resources */,
+				NANL0002000000000000000F /* TTModeNanoleafSleepOptions.xib in Resources */,
+				NANL00020000000000000010 /* TTModeNanoleaf.plist in Resources */,
+				NANL00020000000000000011 /* nanoleaf_toggle.png in Resources */,
+				NANL00020000000000000012 /* nanoleaf_scene.png in Resources */,
+				NANL00020000000000000013 /* nanoleaf_brightness_up.png in Resources */,
+				NANL00020000000000000014 /* nanoleaf_brightness_down.png in Resources */,
+				NANL00020000000000000015 /* nanoleaf_sleep.png in Resources */,
+				NANL00020000000000000016 /* mode_nanoleaf.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4242,6 +4450,28 @@
 				0A96A801E9891A9604FAB097 /* TTModeKasaDeviceOnOptions.m in Sources */,
 				EC9AC4B7E7177AF166B33B48 /* TTModeKasaDeviceOffOptions.m in Sources */,
 				FA0D7BAE0908414D920A7230 /* TTModeKasaDeviceToggleOptions.m in Sources */,
+				G0VE00020000000000000001 /* TTModeGovee.m in Sources */,
+				G0VE00020000000000000002 /* TTModeGoveeDevice.m in Sources */,
+				G0VE00020000000000000003 /* TTModeGoveeAPIClient.m in Sources */,
+				G0VE00020000000000000004 /* TTModeGoveeOptions.m in Sources */,
+				G0VE00020000000000000005 /* TTModeGoveeConnect.m in Sources */,
+				G0VE00020000000000000006 /* TTModeGoveeConnecting.m in Sources */,
+				G0VE00020000000000000007 /* TTModeGoveeConnected.m in Sources */,
+				G0VE00020000000000000009 /* TTModeGoveeSwitchOptions.m in Sources */,
+				G0VE00020000000000000008 /* TTModeGoveeSwitchDevice.m in Sources */,
+				G0VE0002000000000000000A /* TTModeGoveeDeviceOnOptions.m in Sources */,
+				G0VE0002000000000000000B /* TTModeGoveeDeviceOffOptions.m in Sources */,
+				G0VE0002000000000000000C /* TTModeGoveeDeviceToggleOptions.m in Sources */,
+				G0VE0002000000000000000D /* TTModeGoveeBrightnessUpOptions.m in Sources */,
+				G0VE0002000000000000000E /* TTModeGoveeBrightnessDownOptions.m in Sources */,
+				NANL00020000000000000001 /* TTModeNanoleaf.m in Sources */,
+				NANL00020000000000000002 /* TTModeNanoleafOptions.m in Sources */,
+				NANL00020000000000000003 /* TTModeNanoleafConnect.m in Sources */,
+				NANL00020000000000000004 /* TTModeNanoleafConnecting.m in Sources */,
+				NANL00020000000000000005 /* TTModeNanoleafPushlink.m in Sources */,
+				NANL00020000000000000006 /* TTModeNanoleafConnected.m in Sources */,
+				NANL00020000000000000007 /* TTModeNanoleafSceneCustomOptions.m in Sources */,
+				NANL00020000000000000008 /* TTModeNanoleafSleepOptions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

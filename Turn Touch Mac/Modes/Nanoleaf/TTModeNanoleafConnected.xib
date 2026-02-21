@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="TTModeNanoleafConnected">
+            <connections>
+                <outlet property="effectsLabel" destination="eff-lbl-123" id="eff-lbl-456"/>
+                <outlet property="view" destination="c22-O7-iKe" id="3df-at-Zoy"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="72"/>
+            <subviews>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FUb-Bo-EvM" customClass="TTChangeButtonView">
+                    <rect key="frame" x="361" y="13" width="101" height="32"/>
+                    <buttonCell key="cell" type="push" title="Reconnect" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="rkv-GV-IX2" customClass="TTChangeButtonCell">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="13" name="Effra-Regular"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="selectOtherDevice:" target="-2" id="Nln-qE-F3Q"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="con-lbl-123">
+                    <rect key="frame" x="22" y="38" width="150" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Connected to Nanoleaf" id="con-lbl-789">
+                        <font key="font" size="13" name="Effra-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eff-lbl-123">
+                    <rect key="frame" x="22" y="18" width="200" height="14"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Nanoleaf - 0 effects" id="eff-lbl-789">
+                        <font key="font" size="11" name="Effra-Regular"/>
+                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="FUb-Bo-EvM" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" id="btn-top"/>
+                <constraint firstAttribute="bottom" secondItem="FUb-Bo-EvM" secondAttribute="bottom" constant="20" id="btn-bot"/>
+                <constraint firstAttribute="trailing" secondItem="FUb-Bo-EvM" secondAttribute="trailing" constant="24" id="btn-trail"/>
+                <constraint firstItem="con-lbl-123" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="24" id="con-lead"/>
+                <constraint firstItem="con-lbl-123" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="16" id="con-top"/>
+                <constraint firstItem="eff-lbl-123" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="24" id="eff-lead"/>
+                <constraint firstItem="eff-lbl-123" firstAttribute="top" secondItem="con-lbl-123" secondAttribute="bottom" constant="4" id="eff-top"/>
+            </constraints>
+            <point key="canvasLocation" x="269" y="299.5"/>
+        </customView>
+    </objects>
+</document>
