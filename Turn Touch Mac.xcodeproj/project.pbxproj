@@ -4557,7 +4557,7 @@
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-Wl,-rpath,@loader_path/../Frameworks",
+					"-Wl,-ld_classic",
 					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dejal.turntouch.mac-remote";
@@ -4602,7 +4602,7 @@
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-Wl,-rpath,@loader_path/../Frameworks",
+					"-Wl,-ld_classic",
 					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dejal.turntouch.mac-remote";
@@ -4647,7 +4647,7 @@
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-Wl,-rpath,@loader_path/../Frameworks",
+					"-Wl,-ld_classic",
 					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dejal.turntouch.mac-remote";
@@ -4766,7 +4766,6 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 6W5HRS3393;
 				ENABLE_HARDENED_RUNTIME = YES;
-				EXCLUDED_ARCHS = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Turn\\ Touch\\ Mac/Vendor/",
@@ -4793,7 +4792,7 @@
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-Wl,-rpath,@loader_path/../Frameworks",
+					"-Wl,-ld_classic",
 					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.mac-remote";
@@ -4817,7 +4816,6 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 6W5HRS3393;
 				ENABLE_HARDENED_RUNTIME = YES;
-				EXCLUDED_ARCHS = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Turn\\ Touch\\ Mac/Vendor/",
@@ -4844,7 +4842,7 @@
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-Wl,-rpath,@loader_path/../Frameworks",
+					"-Wl,-ld_classic",
 					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.mac-remote";
@@ -4996,7 +4994,6 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 6W5HRS3393;
 				ENABLE_HARDENED_RUNTIME = YES;
-				EXCLUDED_ARCHS = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Turn\\ Touch\\ Mac/Vendor/",
@@ -5023,7 +5020,7 @@
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-Wl,-rpath,@loader_path/../Frameworks",
+					"-Wl,-ld_classic",
 					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.mac-remote";

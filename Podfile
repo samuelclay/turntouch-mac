@@ -28,6 +28,20 @@ post_install do |installer|
     end
   end
 
+  # Xcode 26 treats netinet6/in6.h as a private SDK header during module scanning.
+  # netinet/in.h already provides the IPv6 socket definitions AFNetworking needs.
+  [
+    'Pods/AFNetworking/AFNetworking/AFHTTPSessionManager.m',
+    'Pods/AFNetworking/AFNetworking/AFNetworkReachabilityManager.m',
+  ].each do |path|
+    text = File.read(path)
+    patched = text.gsub("#import <netinet6/in6.h>\n", '')
+    next if patched == text
+
+    File.chmod(0644, path)
+    File.write(path, patched)
+  end
+
   # Sign the Sparkle helper binaries to pass App Notarization.
   system("codesign --force -o runtime -s 'Developer ID Application' Pods/Sparkle/Sparkle.framework/Resources/Autoupdate.app/Contents/MacOS/Autoupdate")
   system("codesign --force -o runtime -s 'Developer ID Application' Pods/Sparkle/Sparkle.framework/Resources/Autoupdate.app/Contents/MacOS/fileop")
