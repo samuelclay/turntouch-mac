@@ -225,6 +225,14 @@
     return ceil(height);
 }
 
+- (CGFloat)optionsBottomPadding {
+    if (self.appDelegate.modeMap.inspectingModeDirection != NO_DIRECTION) {
+        return ADD_ACTION_BUTTON_HEIGHT;
+    }
+
+    return 0.f;
+}
+
 - (CGFloat)preferredPanelHeight {
     CGFloat height = [self nonScrollContentHeight];
 
@@ -646,13 +654,14 @@
         [self removeConstraint:self.optionsConstraint];
     }
 
+    CGFloat bottomPadding = [self optionsBottomPadding];
     if (!optionsDetailView) {
         self.optionsConstraint = [NSLayoutConstraint constraintWithItem:self.optionsView
                                                          attribute:NSLayoutAttributeHeight
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:nil
                                                          attribute:0
-                                                        multiplier:1.0 constant:CORNER_RADIUS];
+                                                        multiplier:1.0 constant:CORNER_RADIUS + bottomPadding];
         [self.optionsView addConstraint:self.optionsConstraint];
     } else {
         self.optionsConstraint = [NSLayoutConstraint constraintWithItem:self.optionsView
@@ -660,7 +669,7 @@
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:optionsDetailView
                                                          attribute:NSLayoutAttributeBottom
-                                                        multiplier:1.0 constant:0];
+                                                        multiplier:1.0 constant:-bottomPadding];
         [self.optionsView addConstraint:self.optionsConstraint];
     }
 
