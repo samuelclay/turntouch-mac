@@ -298,14 +298,14 @@
                      self.modeTitle,
                      self.modeMenu,
                      self.scrollView,
+                     self.addActionButtonView,
                      self.footerView] inGravity:NSStackViewGravityTop];
 
     [self.scrollStackView setViews:@[self.diamondLabels,
                                 self.actionMenu,
                                 self.optionsView,
                                 self.batchActionStackView,
-                                self.addActionMenu,
-                                self.addActionButtonView] inGravity:NSStackViewGravityTop];
+                                self.addActionMenu] inGravity:NSStackViewGravityTop];
 
     [self addArrowAndTitleConstraints];
 
@@ -439,7 +439,13 @@
                                                                 toItem:nil
                                                              attribute:0 multiplier:1.0
                                                               constant:0];
-    [self.scrollStackView addConstraint:self.addActionButtonConstraint];
+    [self addConstraint:self.addActionButtonConstraint];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.addActionButtonView
+                                                     attribute:NSLayoutAttributeWidth
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeWidth
+                                                    multiplier:1.0 constant:0]];
 
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.footerView
                                                      attribute:NSLayoutAttributeHeight
@@ -584,7 +590,8 @@
     } else {
         [[self.addActionMenuConstraint animator] setConstant:ACTION_MENU_HEIGHT];
 
-        CGFloat scroll = -1 * (self.scrollView.contentSize.height + NSMaxY([self.addActionButtonView convertRect:self.addActionButtonView.frame toView:self.scrollView]));
+        NSRect addActionMenuRect = [self.addActionMenu convertRect:self.addActionMenu.bounds toView:self.scrollView];
+        CGFloat scroll = -1 * (self.scrollView.contentSize.height + NSMaxY(addActionMenuRect));
         NSClipView* clipView = [self.scrollView contentView];
         NSPoint newOrigin = [clipView bounds].origin;
         newOrigin.y = scroll;
