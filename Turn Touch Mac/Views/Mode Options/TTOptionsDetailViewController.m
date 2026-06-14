@@ -39,10 +39,11 @@
      setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
     
     block();
-    
-    [self.appDelegate.panelController.backgroundView.optionsView layoutSubtreeIfNeeded];
-    [self.appDelegate.panelController.backgroundView layoutSubtreeIfNeeded];
-    
+
+    // Mark views for layout instead of forcing immediate layout to avoid recursion warnings
+    [self.appDelegate.panelController.backgroundView.optionsView setNeedsLayout:YES];
+    [self.appDelegate.panelController.backgroundView setNeedsLayout:YES];
+
     [NSAnimationContext endGrouping];
     
 }

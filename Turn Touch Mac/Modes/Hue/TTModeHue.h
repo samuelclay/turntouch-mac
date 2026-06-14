@@ -7,10 +7,18 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <HueSDK_OSX/HueSDK.h>
 #import "TTMode.h"
 #import "TTModeProtocol.h"
 #import "TTModeHueSceneOptions.h"
+
+// New Hue API v2 imports
+#import "TTHueModels.h"
+#import "TTHueAPIClient.h"
+#import "TTHueBridgeDiscovery.h"
+#import "TTHueBridgeAuthenticator.h"
+#import "TTHueResourceCache.h"
+#import "TTHueEventStream.h"
+#import "TTHueColorUtilities.h"
 
 @class TTModeHue;
 @class TTModeHueSceneOptions;
@@ -50,7 +58,7 @@ typedef enum {
 @end
 
 
-@interface TTModeHue : TTMode
+@interface TTModeHue : TTMode <TTHueBridgeDiscoveryDelegate, TTHueBridgeAuthenticatorDelegate, TTHueEventStreamDelegate>
 
 extern NSString *const kRandomColors;
 extern NSString *const kRandomBrightness;
@@ -59,11 +67,18 @@ extern NSString *const kDoubleTapRandomColors;
 extern NSString *const kDoubleTapRandomBrightness;
 extern NSString *const kDoubleTapRandomSaturation;
 
-//@property (strong, nonatomic) PHHueSDK *phHueSDK;
 @property (nonatomic, weak) id <TTModeHueDelegate> delegate;
 @property (nonatomic) TTHueState hueState;
 
+// New API v2 properties
+@property (class, nonatomic, strong, readonly) TTHueAPIClient *hueClient;
+@property (class, nonatomic, strong, readonly) TTHueResourceCache *resourceCache;
+@property (class, nonatomic, strong, readonly) TTHueEventStream *eventStream;
+
 - (void)searchForBridgeLocal;
 - (void)bridgeSelectedWithIpAddress:(NSString *)ipAddress andBridgeId:(NSString *)bridgeId;
+
+// For legacy compatibility
++ (BOOL)isConnected;
 
 @end

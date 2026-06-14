@@ -8,7 +8,7 @@
 
 #import "TTModeHueOptions.h"
 #import "TTModeHuePushlink.h"
-#import <HueSDK_OSX/HueSDK.h>
+#import "TTModeHue.h"
 
 @interface TTModeHuePushlink ()
 

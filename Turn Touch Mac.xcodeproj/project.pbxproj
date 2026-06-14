@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03813EB96F1A1A5340938DA7 /* TTHueAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F31BDDD852071A43064ECA /* TTHueAPIClient.m */; };
 		050B418B591A85B579740307 /* Pods_Turn_Touch_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B611485DE4201F24DDD95F6A /* Pods_Turn_Touch_Mac.framework */; };
+		0A2654CB23EC4573B7DE1862 /* press_smartbridge.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C16FF919BE94E6D8114CC4A /* press_smartbridge.png */; };
+		0A96A801E9891A9604FAB097 /* TTModeKasaDeviceOnOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF99CF9A89E0E94632BBB60 /* TTModeKasaDeviceOnOptions.m */; };
 		172B5C3D23E3EDAA008B5AAB /* NSData+Conversion.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE2D4781A46404500DDD413 /* NSData+Conversion.m */; };
 		172B5C3E23E3EDAA008B5AAB /* TTModeWebWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB9E1C33675200AD5620 /* TTModeWebWindow.m */; };
 		172B5C3F23E3EDAA008B5AAB /* Thermostat.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AB21C49C63D005FB7FD /* Thermostat.m */; };
@@ -49,7 +52,6 @@
 		172B5C6323E3EDAA008B5AAB /* TTChangeButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF05F4118F77D5D00AC6230 /* TTChangeButtonCell.m */; };
 		172B5C6423E3EDAA008B5AAB /* TTModeHuePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8448F01E0DFE3E00C1091E /* TTModeHuePicker.m */; };
 		172B5C6523E3EDAA008B5AAB /* NSDate+TimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5296071AD61E74007DDC02 /* NSDate+TimeAgo.m */; };
-		172B5C6623E3EDAA008B5AAB /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = FF73059A1A5C9C76009A852D /* DDTTYLogger.m */; };
 		172B5C6723E3EDAA008B5AAB /* TTModeIftttConnected.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFF0C7C1EFC975300E29E6D /* TTModeIftttConnected.m */; };
 		172B5C6823E3EDAA008B5AAB /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B531BE9B88700AD00F3 /* Utility.m */; };
 		172B5C6923E3EDAA008B5AAB /* CBPeripheral+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 1766EE84226FC3B100A114B5 /* CBPeripheral+Extras.m */; };
@@ -67,7 +69,6 @@
 		172B5C7523E3EDAA008B5AAB /* TTModeWebBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABABA11C33676700AD5620 /* TTModeWebBrowserView.m */; };
 		172B5C7623E3EDAA008B5AAB /* TTHUDMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FF877CD71C6C19F1007940C3 /* TTHUDMenuButton.m */; };
 		172B5C7723E3EDAA008B5AAB /* TTModeNestConnected.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AE21C4ED8BE005FB7FD /* TTModeNestConnected.m */; };
-		172B5C7823E3EDAA008B5AAB /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7305981A5C9C76009A852D /* DDLog.m */; };
 		172B5C7923E3EDAA008B5AAB /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3D21F51F1EF50900F7F5BF /* GCDAsyncSocket.m */; };
 		172B5C7A23E3EDAA008B5AAB /* TTModeNestSetTempOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AE71C4F1CD0005FB7FD /* TTModeNestSetTempOptions.m */; };
 		172B5C7B23E3EDAA008B5AAB /* TTModeIftttTriggerActionOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFF0C811EFC976B00E29E6D /* TTModeIftttTriggerActionOptions.m */; };
@@ -81,7 +82,6 @@
 		172B5C8323E3EDAA008B5AAB /* TTBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801320186CF90700955218 /* TTBackgroundView.m */; };
 		172B5C8423E3EDAA008B5AAB /* TTMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12C918247BAE00D49EC7 /* TTMode.m */; };
 		172B5C8523E3EDAA008B5AAB /* TTModeWemo.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AA11C4855D4005FB7FD /* TTModeWemo.m */; };
-		172B5C8623E3EDAA008B5AAB /* ContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = FF73059D1A5C9C76009A852D /* ContextFilterLogFormatter.m */; };
 		172B5C8723E3EDAA008B5AAB /* TTModeSonosConnecting.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3D22091F1F1CA500F7F5BF /* TTModeSonosConnecting.m */; };
 		172B5C8823E3EDAA008B5AAB /* TTModeHUDWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B3E1BE9B80100AD00F3 /* TTModeHUDWindowController.m */; };
 		172B5C8923E3EDAA008B5AAB /* TTPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801322186CF90700955218 /* TTPanel.m */; };
@@ -108,7 +108,6 @@
 		172B5C9E23E3EDAA008B5AAB /* TTModeNest.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557A9D1C4855BD005FB7FD /* TTModeNest.m */; };
 		172B5C9F23E3EDAA008B5AAB /* TTModalFTUXView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF87E9F01C9630E500682461 /* TTModalFTUXView.m */; };
 		172B5CA023E3EDAA008B5AAB /* TTModeHueRandomOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC730E71B067434003538D5 /* TTModeHueRandomOptions.m */; };
-		172B5CA123E3EDAA008B5AAB /* DispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = FF73059F1A5C9C76009A852D /* DispatchQueueLogFormatter.m */; };
 		172B5CA223E3EDAA008B5AAB /* TTModeNewsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF79C57F1D581590006C75C9 /* TTModeNewsWindowController.m */; };
 		172B5CA323E3EDAA008B5AAB /* htmls.m in Sources */ = {isa = PBXBuildFile; fileRef = FF01CA881C473EC100F83A73 /* htmls.m */; };
 		172B5CA423E3EDAA008B5AAB /* TTModeWemoDeviceOnOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5250141C80F9740017A847 /* TTModeWemoDeviceOnOptions.m */; };
@@ -163,10 +162,8 @@
 		172B5CD523E3EDAA008B5AAB /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFCFCFB81D88D9CE00FBC3E7 /* LaunchAtLoginController.m */; };
 		172B5CD623E3EDAA008B5AAB /* SonosManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF02BDA1F16A271003E5799 /* SonosManager.m */; };
 		172B5CD723E3EDAA008B5AAB /* TTModeCustomKeyboardOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF523B7F2023CE0200813AF0 /* TTModeCustomKeyboardOptions.m */; };
-		172B5CD823E3EDAA008B5AAB /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7305941A5C9C76009A852D /* DDASLLogger.m */; };
 		172B5CD923E3EDAA008B5AAB /* NSDate+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6A37CF1A9AEC9F006F3756 /* NSDate+Extras.m */; };
 		172B5CDA23E3EDAA008B5AAB /* TTSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF76AD111C1F86A900A6ED97 /* TTSliderCell.m */; };
-		172B5CDB23E3EDAA008B5AAB /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7305961A5C9C76009A852D /* DDFileLogger.m */; };
 		172B5CDC23E3EDAA008B5AAB /* TTModeHueOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3641E51A5F674A003CC03C /* TTModeHueOptions.m */; };
 		172B5CDD23E3EDAA008B5AAB /* TTModeVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0E12D31828560000D49EC7 /* TTModeVideo.m */; };
 		172B5CDE23E3EDAA008B5AAB /* TTModeHueConnecting.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3641E81A60BB8B003CC03C /* TTModeHueConnecting.m */; };
@@ -185,7 +182,6 @@
 		172B5CEB23E3EDAA008B5AAB /* TTModeHuePushlink.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3641ED1A60C422003CC03C /* TTModeHuePushlink.m */; };
 		172B5CEC23E3EDAA008B5AAB /* TTModeHueBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF049751CE11FCF006CE427 /* TTModeHueBridge.m */; };
 		172B5CED23E3EDAA008B5AAB /* TTModeSpotifyVolumeJumpOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAB2C151E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.m */; };
-		172B5CEE23E3EDAA008B5AAB /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7305921A5C9C76009A852D /* DDAbstractDatabaseLogger.m */; };
 		172B5CEF23E3EDAA008B5AAB /* TTModeCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8448F31E10D60700C1091E /* TTModeCustom.m */; };
 		172B5CF023E3EDAA008B5AAB /* TTSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = FF76AD151C1F8FD000A6ED97 /* TTSlider.m */; };
 		172B5CF123E3EDAA008B5AAB /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = FF904B921BE9BA3700AD00F3 /* zip.c */; };
@@ -236,7 +232,6 @@
 		172B5D1F23E3EDAA008B5AAB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8012F6186A599600955218 /* AudioToolbox.framework */; };
 		172B5D2023E3EDAA008B5AAB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFBC625E1A9D699D0032AD24 /* AVFoundation.framework */; };
 		172B5D2123E3EDAA008B5AAB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7305C11A5CB2E3009A852D /* SystemConfiguration.framework */; };
-		172B5D2223E3EDAA008B5AAB /* HueSDK_OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */; };
 		172B5D2323E3EDAA008B5AAB /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFE2D4751A451FA200DDD413 /* CoreBluetooth.framework */; };
 		172B5D2423E3EDAA008B5AAB /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB653DF18DBA14E00830B42 /* CoreFoundation.framework */; };
 		172B5D2523E3EDAA008B5AAB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF98A30C1868F1120032CC7A /* QuartzCore.framework */; };
@@ -403,7 +398,6 @@
 		172B5DC923E3EDAA008B5AAB /* TTModeAlarmClockOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFEA6CB719218A5C0010874B /* TTModeAlarmClockOptions.xib */; };
 		172B5DCA23E3EDAA008B5AAB /* mode_electricobjects.png in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA3E1C46DCC200F83A73 /* mode_electricobjects.png */; };
 		172B5DCB23E3EDAA008B5AAB /* button_dash.png in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA2E1C46DCC200F83A73 /* button_dash.png */; };
-		172B5DCC23E3EDAA008B5AAB /* press_smartbridge.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7305AC1A5C9C76009A852D /* press_smartbridge.png */; };
 		172B5DCD23E3EDAA008B5AAB /* mode_home.png in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA401C46DCC200F83A73 /* mode_home.png */; };
 		172B5DCE23E3EDAA008B5AAB /* TTModeAlarmSnoozeOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF913D2819243B89005C336F /* TTModeAlarmSnoozeOptions.xib */; };
 		172B5DCF23E3EDAA008B5AAB /* presentation-chart.png in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA511C46DCC200F83A73 /* presentation-chart.png */; };
@@ -452,7 +446,6 @@
 		172B5DFA23E3EDAA008B5AAB /* scroll_down.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8B75101F86CF7800D7867C /* scroll_down.png */; };
 		172B5DFB23E3EDAA008B5AAB /* scroll_up.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8B75111F86CF7800D7867C /* scroll_up.png */; };
 		172B5DFD23E3EDAA008B5AAB /* Effra_Rg.ttf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = FF936042196DF0B600675B7B /* Effra_Rg.ttf */; };
-		172B5DFF23E3EDAA008B5AAB /* HueSDK_OSX.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1766EE85226FC3B100A114B5 /* CBPeripheral+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 1766EE84226FC3B100A114B5 /* CBPeripheral+Extras.m */; };
 		17B265222405C774007090C8 /* keyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 17B265212405C774007090C8 /* keyboard.png */; };
 		17B265232405C774007090C8 /* keyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 17B265212405C774007090C8 /* keyboard.png */; };
@@ -460,9 +453,34 @@
 		17BE4689249989AE00949E38 /* TTModeTV.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFED5611243946880022C5EA /* TTModeTV.plist */; };
 		17BE468A249989B300949E38 /* TTModeTVVolumeJumpOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFED5612243946880022C5EA /* TTModeTVVolumeJumpOptions.m */; };
 		17BE468B249989B900949E38 /* TTModeTVVolumeJumpOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFED5610243946880022C5EA /* TTModeTVVolumeJumpOptions.xib */; };
+		24991ADFBF04FC0D69594CEE /* TTHueBridgeDiscovery.m in Sources */ = {isa = PBXBuildFile; fileRef = B1147828FF5B8676A3D572D8 /* TTHueBridgeDiscovery.m */; };
+		2805814D44E02CD2B63BCD8C /* TTHueBridgeAuthenticator.m in Sources */ = {isa = PBXBuildFile; fileRef = A5734E49A48285E2F66B0670 /* TTHueBridgeAuthenticator.m */; };
+		3374FD6CCD796752EC41D36E /* TTModeKasaConnected.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE59D43E22295DF9AEC65127 /* TTModeKasaConnected.xib */; };
+		38CD655E3A64AD8814DAA64C /* TTModeKasaConnect.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F9E8F3615E4E195E9A57A53 /* TTModeKasaConnect.xib */; };
+		57F2693305BE2D3F0208CAC7 /* TTModeKasaOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8AABA753E7A952CADAAD0A /* TTModeKasaOptions.m */; };
+		5DA4E0D6549E44840AB72E94 /* TTModeKasaSwitchOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C2EE83B6285C449DDE5D556 /* TTModeKasaSwitchOptions.m */; };
+		61E1A09723A6790F75093778 /* TTModeKasaLegacyProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E5A39A80D550F79B5D7708D /* TTModeKasaLegacyProtocol.m */; };
 		6C8F0BFDDC3CEA1BCAA5EBE2 /* Pods_Turn_Touch_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B611485DE4201F24DDD95F6A /* Pods_Turn_Touch_Mac.framework */; };
+		74E148E409C397320D5F84D1 /* TTModeKasaKLAPProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF79288A2203E19A6BDA899 /* TTModeKasaKLAPProtocol.m */; };
+		7AB8A4AEAA968E9A10094E28 /* TTHueResourceCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 36DA7F44BC35706635E30E3F /* TTHueResourceCache.m */; };
+		88862C2C8AB61619726B8059 /* TTModeKasaConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D31B53BB08BA79AC2F5C61 /* TTModeKasaConnect.m */; };
+		8A50EC55FE9F7B95408F2197 /* TTHueModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F080B4450C839EF70C803AB /* TTHueModels.m */; };
+		9152CF30A3EE25656EA0456D /* TTModeKasaDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F837BC42018A8E6F8C691 /* TTModeKasaDevice.m */; };
+		9F9FB24AC17E561B68BB5B38 /* TTModeKasaConnecting.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73D4DC7B0DE9C207687688AC /* TTModeKasaConnecting.xib */; };
+		AFB548111E83F1BDB9F40634 /* TTHueEventStream.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE70B200E3301C59B137D4B /* TTHueEventStream.m */; };
+		B5B2ACF04C043EC1A4A34481 /* TTModeKasaSwitchDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8DA040141555FDCD791892 /* TTModeKasaSwitchDevice.m */; };
+		B8040E74FA3943503A964838 /* TTModeKasa.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F2318FA9226B9E03016560 /* TTModeKasa.m */; };
+		BB5008FB18156AFCF0CAB6F9 /* TTModeKasaConnecting.m in Sources */ = {isa = PBXBuildFile; fileRef = D765E9835795E0A3AB9BC51D /* TTModeKasaConnecting.m */; };
+		BFE1E53BECA7FD65969081A4 /* TTModeKasaSwitchOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EA0875B231E48B9C5C38DBE /* TTModeKasaSwitchOptions.xib */; };
 		C01FD69B778B5C0684677954 /* Pods_Turn_Touch_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B611485DE4201F24DDD95F6A /* Pods_Turn_Touch_Mac.framework */; };
 		C139615B1E7F2014DF4473C4 /* Pods_Turn_Touch_Mac_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D78D7B37A823FEF6B921BCE /* Pods_Turn_Touch_Mac_Tests.framework */; };
+		D21969E8E214D31BCD77DB04 /* TTModeKasaConnected.m in Sources */ = {isa = PBXBuildFile; fileRef = F296FE3E3C388DA98D239B93 /* TTModeKasaConnected.m */; };
+		D4C6A11FF9B6730033DE496A /* TTHueColorUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBE8FBF3A101F4E0ADB2AA8 /* TTHueColorUtilities.m */; };
+		E72EA4089D9E088167A6A67C /* TTModeKasaOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6FD7A571EB09609C0D8633B /* TTModeKasaOptions.xib */; };
+		EB3195ED3E2C48E2AFEBB38D /* press_smartbridge.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C16FF919BE94E6D8114CC4A /* press_smartbridge.png */; };
+		EC9AC4B7E7177AF166B33B48 /* TTModeKasaDeviceOffOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA290B3234924966C9766A1 /* TTModeKasaDeviceOffOptions.m */; };
+		F21439C16BD4CC11F76826AE /* TTModeKasaDiscovery.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BDEFE700F3C221725F39E4 /* TTModeKasaDiscovery.m */; };
+		FA0D7BAE0908414D920A7230 /* TTModeKasaDeviceToggleOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F2356DCBC240540FDB2521 /* TTModeKasaDeviceToggleOptions.m */; };
 		FF01CA291C46009E00F83A73 /* scripts in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA281C46009E00F83A73 /* scripts */; };
 		FF01CA591C46DCC200F83A73 /* app_music.png in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA2C1C46DCC200F83A73 /* app_music.png */; };
 		FF01CA5A1C46DCC200F83A73 /* button_chevron.png in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA2D1C46DCC200F83A73 /* button_chevron.png */; };
@@ -669,17 +687,7 @@
 		FF66F2A619228DE100031478 /* TTModeAlarmClockOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66F2A519228DE100031478 /* TTModeAlarmClockOptions.m */; };
 		FF66F2A91922D1C100031478 /* TTOptionsDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66F2A81922D1C100031478 /* TTOptionsDetailView.m */; };
 		FF6792381CEBE11200639148 /* TTModeSpotify.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6792371CEBE11200639148 /* TTModeSpotify.m */; };
-		FF69AE5F2562EEFA007C913F /* HueSDK_OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */; };
-		FF69AE602562EEFA007C913F /* HueSDK_OSX.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF6A37D01A9AEC9F006F3756 /* NSDate+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6A37CF1A9AEC9F006F3756 /* NSDate+Extras.m */; };
-		FF7305AE1A5C9C76009A852D /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7305921A5C9C76009A852D /* DDAbstractDatabaseLogger.m */; };
-		FF7305AF1A5C9C76009A852D /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7305941A5C9C76009A852D /* DDASLLogger.m */; };
-		FF7305B01A5C9C76009A852D /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7305961A5C9C76009A852D /* DDFileLogger.m */; };
-		FF7305B11A5C9C76009A852D /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7305981A5C9C76009A852D /* DDLog.m */; };
-		FF7305B21A5C9C76009A852D /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = FF73059A1A5C9C76009A852D /* DDTTYLogger.m */; };
-		FF7305B31A5C9C76009A852D /* ContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = FF73059D1A5C9C76009A852D /* ContextFilterLogFormatter.m */; };
-		FF7305B41A5C9C76009A852D /* DispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = FF73059F1A5C9C76009A852D /* DispatchQueueLogFormatter.m */; };
-		FF7305BB1A5C9C76009A852D /* press_smartbridge.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7305AC1A5C9C76009A852D /* press_smartbridge.png */; };
 		FF7305C01A5CA8F5009A852D /* TTModeHueConnected.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7305BF1A5CA8F5009A852D /* TTModeHueConnected.m */; };
 		FF7305C21A5CB2E3009A852D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7305C11A5CB2E3009A852D /* SystemConfiguration.framework */; };
 		FF7305C41A5CB3EF009A852D /* TTModeHueConnect.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF7305C31A5CB3EF009A852D /* TTModeHueConnect.xib */; };
@@ -913,6 +921,48 @@
 		FFFF0C8B1EFCA36500E29E6D /* TTModeIftttAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFFF0C891EFCA36500E29E6D /* TTModeIftttAuthViewController.xib */; };
 		FFFF0C8F1EFDFF8100E29E6D /* mode_ifttt.png in Resources */ = {isa = PBXBuildFile; fileRef = FFFF0C8E1EFDFF8100E29E6D /* mode_ifttt.png */; };
 		FFFF683819D4E2C30081904A /* ideas.txt in Resources */ = {isa = PBXBuildFile; fileRef = FFFF683619D4E2C30081904A /* ideas.txt */; };
+		G0VE00020000000000000001 /* TTModeGovee.m in Sources */ = {isa = PBXBuildFile; fileRef = G0VE00010000000000000002 /* TTModeGovee.m */; };
+		G0VE00020000000000000002 /* TTModeGoveeDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = G0VE00010000000000000004 /* TTModeGoveeDevice.m */; };
+		G0VE00020000000000000003 /* TTModeGoveeAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = G0VE00010000000000000006 /* TTModeGoveeAPIClient.m */; };
+		G0VE00020000000000000004 /* TTModeGoveeOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = G0VE00010000000000000008 /* TTModeGoveeOptions.m */; };
+		G0VE00020000000000000005 /* TTModeGoveeConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = G0VE0001000000000000000B /* TTModeGoveeConnect.m */; };
+		G0VE00020000000000000006 /* TTModeGoveeConnecting.m in Sources */ = {isa = PBXBuildFile; fileRef = G0VE0001000000000000000E /* TTModeGoveeConnecting.m */; };
+		G0VE00020000000000000007 /* TTModeGoveeConnected.m in Sources */ = {isa = PBXBuildFile; fileRef = G0VE00010000000000000011 /* TTModeGoveeConnected.m */; };
+		G0VE00020000000000000008 /* TTModeGoveeSwitchDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = G0VE00010000000000000014 /* TTModeGoveeSwitchDevice.m */; };
+		G0VE00020000000000000009 /* TTModeGoveeSwitchOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = G0VE00010000000000000016 /* TTModeGoveeSwitchOptions.m */; };
+		G0VE0002000000000000000A /* TTModeGoveeDeviceOnOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = G0VE00010000000000000019 /* TTModeGoveeDeviceOnOptions.m */; };
+		G0VE0002000000000000000B /* TTModeGoveeDeviceOffOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = G0VE0001000000000000001B /* TTModeGoveeDeviceOffOptions.m */; };
+		G0VE0002000000000000000C /* TTModeGoveeDeviceToggleOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = G0VE0001000000000000001D /* TTModeGoveeDeviceToggleOptions.m */; };
+		G0VE0002000000000000000D /* TTModeGoveeBrightnessUpOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = G0VE0001000000000000001F /* TTModeGoveeBrightnessUpOptions.m */; };
+		G0VE0002000000000000000E /* TTModeGoveeBrightnessDownOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = G0VE00010000000000000021 /* TTModeGoveeBrightnessDownOptions.m */; };
+		G0VE0002000000000000000F /* TTModeGoveeOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = G0VE00010000000000000009 /* TTModeGoveeOptions.xib */; };
+		G0VE00020000000000000010 /* TTModeGoveeConnect.xib in Resources */ = {isa = PBXBuildFile; fileRef = G0VE0001000000000000000C /* TTModeGoveeConnect.xib */; };
+		G0VE00020000000000000011 /* TTModeGoveeConnecting.xib in Resources */ = {isa = PBXBuildFile; fileRef = G0VE0001000000000000000F /* TTModeGoveeConnecting.xib */; };
+		G0VE00020000000000000012 /* TTModeGoveeConnected.xib in Resources */ = {isa = PBXBuildFile; fileRef = G0VE00010000000000000012 /* TTModeGoveeConnected.xib */; };
+		G0VE00020000000000000013 /* TTModeGoveeSwitchOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = G0VE00010000000000000017 /* TTModeGoveeSwitchOptions.xib */; };
+		G0VE00020000000000000014 /* mode_govee.png in Resources */ = {isa = PBXBuildFile; fileRef = G0VE00010000000000000022 /* mode_govee.png */; };
+		NANL00020000000000000001 /* TTModeNanoleaf.m in Sources */ = {isa = PBXBuildFile; fileRef = NANL00010000000000000002 /* TTModeNanoleaf.m */; };
+		NANL00020000000000000002 /* TTModeNanoleafOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = NANL00010000000000000004 /* TTModeNanoleafOptions.m */; };
+		NANL00020000000000000003 /* TTModeNanoleafConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = NANL00010000000000000007 /* TTModeNanoleafConnect.m */; };
+		NANL00020000000000000004 /* TTModeNanoleafConnecting.m in Sources */ = {isa = PBXBuildFile; fileRef = NANL0001000000000000000A /* TTModeNanoleafConnecting.m */; };
+		NANL00020000000000000005 /* TTModeNanoleafPushlink.m in Sources */ = {isa = PBXBuildFile; fileRef = NANL0001000000000000000D /* TTModeNanoleafPushlink.m */; };
+		NANL00020000000000000006 /* TTModeNanoleafConnected.m in Sources */ = {isa = PBXBuildFile; fileRef = NANL00010000000000000010 /* TTModeNanoleafConnected.m */; };
+		NANL00020000000000000007 /* TTModeNanoleafSceneCustomOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = NANL00010000000000000013 /* TTModeNanoleafSceneCustomOptions.m */; };
+		NANL00020000000000000008 /* TTModeNanoleafSleepOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = NANL00010000000000000016 /* TTModeNanoleafSleepOptions.m */; };
+		NANL00020000000000000009 /* TTModeNanoleafOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = NANL00010000000000000005 /* TTModeNanoleafOptions.xib */; };
+		NANL0002000000000000000A /* TTModeNanoleafConnect.xib in Resources */ = {isa = PBXBuildFile; fileRef = NANL00010000000000000008 /* TTModeNanoleafConnect.xib */; };
+		NANL0002000000000000000B /* TTModeNanoleafConnecting.xib in Resources */ = {isa = PBXBuildFile; fileRef = NANL0001000000000000000B /* TTModeNanoleafConnecting.xib */; };
+		NANL0002000000000000000C /* TTModeNanoleafPushlink.xib in Resources */ = {isa = PBXBuildFile; fileRef = NANL0001000000000000000E /* TTModeNanoleafPushlink.xib */; };
+		NANL0002000000000000000D /* TTModeNanoleafConnected.xib in Resources */ = {isa = PBXBuildFile; fileRef = NANL00010000000000000011 /* TTModeNanoleafConnected.xib */; };
+		NANL0002000000000000000E /* TTModeNanoleafSceneCustomOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = NANL00010000000000000014 /* TTModeNanoleafSceneCustomOptions.xib */; };
+		NANL0002000000000000000F /* TTModeNanoleafSleepOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = NANL00010000000000000017 /* TTModeNanoleafSleepOptions.xib */; };
+		NANL00020000000000000010 /* TTModeNanoleaf.plist in Resources */ = {isa = PBXBuildFile; fileRef = NANL00010000000000000018 /* TTModeNanoleaf.plist */; };
+		NANL00020000000000000011 /* nanoleaf_toggle.png in Resources */ = {isa = PBXBuildFile; fileRef = NANL00010000000000000019 /* nanoleaf_toggle.png */; };
+		NANL00020000000000000012 /* nanoleaf_scene.png in Resources */ = {isa = PBXBuildFile; fileRef = NANL0001000000000000001A /* nanoleaf_scene.png */; };
+		NANL00020000000000000013 /* nanoleaf_brightness_up.png in Resources */ = {isa = PBXBuildFile; fileRef = NANL0001000000000000001B /* nanoleaf_brightness_up.png */; };
+		NANL00020000000000000014 /* nanoleaf_brightness_down.png in Resources */ = {isa = PBXBuildFile; fileRef = NANL0001000000000000001C /* nanoleaf_brightness_down.png */; };
+		NANL00020000000000000015 /* nanoleaf_sleep.png in Resources */ = {isa = PBXBuildFile; fileRef = NANL0001000000000000001D /* nanoleaf_sleep.png */; };
+		NANL00020000000000000016 /* mode_nanoleaf.png in Resources */ = {isa = PBXBuildFile; fileRef = NANL0001000000000000001E /* mode_nanoleaf.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -943,7 +993,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				172B5DFF23E3EDAA008B5AAB /* HueSDK_OSX.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -954,7 +1003,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				FF69AE602562EEFA007C913F /* HueSDK_OSX.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -973,20 +1021,68 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0C2C0FA5339691541C906E3E /* TTModeKasaSwitchOptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeKasaSwitchOptions.h; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaSwitchOptions.h"; sourceTree = SOURCE_ROOT; };
+		0E4A2F0883267D2D0B88E51D /* TTModeKasaSwitchDevice.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeKasaSwitchDevice.h; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaSwitchDevice.h"; sourceTree = SOURCE_ROOT; };
+		0E9B7D6FEC2B01E6BB1D3F27 /* TTModeKasaDiscovery.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeKasaDiscovery.h; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaDiscovery.h"; sourceTree = SOURCE_ROOT; };
 		172B5E0523E3EDAA008B5AAB /* Turn Touch Dejal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Turn Touch Dejal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1763B5322367E1C600F99717 /* Music.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Music.h; path = Modes/Music/Music.h; sourceTree = "<group>"; };
 		1766EE83226FC3B100A114B5 /* CBPeripheral+Extras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CBPeripheral+Extras.h"; path = "Categories/CBPeripheral+Extras.h"; sourceTree = "<group>"; };
 		1766EE84226FC3B100A114B5 /* CBPeripheral+Extras.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CBPeripheral+Extras.m"; path = "Categories/CBPeripheral+Extras.m"; sourceTree = "<group>"; };
 		178BDF51226E61E100396413 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		17B265212405C774007090C8 /* keyboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = keyboard.png; sourceTree = "<group>"; };
+		1E5A39A80D550F79B5D7708D /* TTModeKasaLegacyProtocol.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeKasaLegacyProtocol.m; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaLegacyProtocol.m"; sourceTree = SOURCE_ROOT; };
+		2C2EE83B6285C449DDE5D556 /* TTModeKasaSwitchOptions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeKasaSwitchOptions.m; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaSwitchOptions.m"; sourceTree = SOURCE_ROOT; };
+		33E3A15C3494AFDAB094AE53 /* TTModeKasaDeviceToggleOptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeKasaDeviceToggleOptions.h; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaDeviceToggleOptions.h"; sourceTree = SOURCE_ROOT; };
+		35A1531BCA581AB4F448A492 /* TTModeKasaConnecting.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeKasaConnecting.h; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaConnecting.h"; sourceTree = SOURCE_ROOT; };
+		36DA7F44BC35706635E30E3F /* TTHueResourceCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTHueResourceCache.m; sourceTree = "<group>"; };
 		37ADCA4BDE2897CDF14E42E1 /* Pods-Turn Touch Mac.testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turn Touch Mac.testing.xcconfig"; path = "Pods/Target Support Files/Pods-Turn Touch Mac/Pods-Turn Touch Mac.testing.xcconfig"; sourceTree = "<group>"; };
 		383E060B60CD35F142D2CFDD /* Pods-Turn Touch Mac Tests.testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turn Touch Mac Tests.testing.xcconfig"; path = "Pods/Target Support Files/Pods-Turn Touch Mac Tests/Pods-Turn Touch Mac Tests.testing.xcconfig"; sourceTree = "<group>"; };
+		3DBE8FBF3A101F4E0ADB2AA8 /* TTHueColorUtilities.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTHueColorUtilities.m; sourceTree = "<group>"; };
+		3F080B4450C839EF70C803AB /* TTHueModels.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTHueModels.m; sourceTree = "<group>"; };
+		54BDEFE700F3C221725F39E4 /* TTModeKasaDiscovery.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeKasaDiscovery.m; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaDiscovery.m"; sourceTree = SOURCE_ROOT; };
+		5C16FF919BE94E6D8114CC4A /* press_smartbridge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = press_smartbridge.png; sourceTree = "<group>"; };
+		6535F7DE5CFFEA6BCEB7D464 /* TTModeKasaKLAPProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeKasaKLAPProtocol.h; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaKLAPProtocol.h"; sourceTree = SOURCE_ROOT; };
+		669F843B8AB6330FCFEF1977 /* TTModeKasaDevice.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeKasaDevice.h; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaDevice.h"; sourceTree = SOURCE_ROOT; };
 		6D78D7B37A823FEF6B921BCE /* Pods_Turn_Touch_Mac_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Turn_Touch_Mac_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DB0150A7ABFA9D629C9FE98 /* TTHueAPIClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTHueAPIClient.h; sourceTree = "<group>"; };
+		6F4C2A90C8F410CFC5B5790B /* TTModeKasaConnected.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeKasaConnected.h; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaConnected.h"; sourceTree = SOURCE_ROOT; };
+		738702C3736A71C9C06C94E1 /* TTModeKasa.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeKasa.h; path = "Turn Touch Mac/Modes/Kasa/TTModeKasa.h"; sourceTree = SOURCE_ROOT; };
+		73D4DC7B0DE9C207687688AC /* TTModeKasaConnecting.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = TTModeKasaConnecting.xib; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaConnecting.xib"; sourceTree = SOURCE_ROOT; };
+		7516C45F6A5A54A53400C9D1 /* TTModeKasaOptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeKasaOptions.h; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaOptions.h"; sourceTree = SOURCE_ROOT; };
+		9A2F837BC42018A8E6F8C691 /* TTModeKasaDevice.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeKasaDevice.m; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaDevice.m"; sourceTree = SOURCE_ROOT; };
+		9D8AABA753E7A952CADAAD0A /* TTModeKasaOptions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeKasaOptions.m; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaOptions.m"; sourceTree = SOURCE_ROOT; };
 		9E1EC8CE081463B2662103E7 /* Pods-Turn Touch Mac Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turn Touch Mac Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Turn Touch Mac Tests/Pods-Turn Touch Mac Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		9EA0875B231E48B9C5C38DBE /* TTModeKasaSwitchOptions.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = TTModeKasaSwitchOptions.xib; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaSwitchOptions.xib"; sourceTree = SOURCE_ROOT; };
+		9F9E8F3615E4E195E9A57A53 /* TTModeKasaConnect.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = TTModeKasaConnect.xib; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaConnect.xib"; sourceTree = SOURCE_ROOT; };
+		9FC55C80D656E39E53EA4A39 /* TTModeKasaLegacyProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeKasaLegacyProtocol.h; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaLegacyProtocol.h"; sourceTree = SOURCE_ROOT; };
+		A4F2356DCBC240540FDB2521 /* TTModeKasaDeviceToggleOptions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeKasaDeviceToggleOptions.m; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaDeviceToggleOptions.m"; sourceTree = SOURCE_ROOT; };
+		A5734E49A48285E2F66B0670 /* TTHueBridgeAuthenticator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTHueBridgeAuthenticator.m; sourceTree = "<group>"; };
+		AC22106BF310BE139240414C /* TTHueBridgeDiscovery.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTHueBridgeDiscovery.h; sourceTree = "<group>"; };
+		AFE70B200E3301C59B137D4B /* TTHueEventStream.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTHueEventStream.m; sourceTree = "<group>"; };
+		B1147828FF5B8676A3D572D8 /* TTHueBridgeDiscovery.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTHueBridgeDiscovery.m; sourceTree = "<group>"; };
 		B611485DE4201F24DDD95F6A /* Pods_Turn_Touch_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Turn_Touch_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D31B53BB08BA79AC2F5C61 /* TTModeKasaConnect.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeKasaConnect.m; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaConnect.m"; sourceTree = SOURCE_ROOT; };
+		BBA290B3234924966C9766A1 /* TTModeKasaDeviceOffOptions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeKasaDeviceOffOptions.m; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaDeviceOffOptions.m"; sourceTree = SOURCE_ROOT; };
 		C51AC9F8FD3AC2241B3864BA /* Pods-Turn Touch Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turn Touch Mac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Turn Touch Mac/Pods-Turn Touch Mac.debug.xcconfig"; sourceTree = "<group>"; };
+		C9F2318FA9226B9E03016560 /* TTModeKasa.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeKasa.m; path = "Turn Touch Mac/Modes/Kasa/TTModeKasa.m"; sourceTree = SOURCE_ROOT; };
+		CF7F968D2D754D9E81A30A84 /* TTHueModels.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTHueModels.h; sourceTree = "<group>"; };
+		D6FD7A571EB09609C0D8633B /* TTModeKasaOptions.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = TTModeKasaOptions.xib; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaOptions.xib"; sourceTree = SOURCE_ROOT; };
+		D7405D56B95B98D161AF7665 /* TTHueResourceCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTHueResourceCache.h; sourceTree = "<group>"; };
+		D765E9835795E0A3AB9BC51D /* TTModeKasaConnecting.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeKasaConnecting.m; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaConnecting.m"; sourceTree = SOURCE_ROOT; };
+		DA8DA040141555FDCD791892 /* TTModeKasaSwitchDevice.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeKasaSwitchDevice.m; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaSwitchDevice.m"; sourceTree = SOURCE_ROOT; };
+		DDF99CF9A89E0E94632BBB60 /* TTModeKasaDeviceOnOptions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeKasaDeviceOnOptions.m; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaDeviceOnOptions.m"; sourceTree = SOURCE_ROOT; };
+		DE59D43E22295DF9AEC65127 /* TTModeKasaConnected.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = TTModeKasaConnected.xib; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaConnected.xib"; sourceTree = SOURCE_ROOT; };
+		DF5D2F96F5D0B1B758F2C97A /* TTModeKasaDeviceOffOptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeKasaDeviceOffOptions.h; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaDeviceOffOptions.h"; sourceTree = SOURCE_ROOT; };
 		DFBF9ACC46862A20CD285528 /* Pods-Turn Touch Mac Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turn Touch Mac Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Turn Touch Mac Tests/Pods-Turn Touch Mac Tests.release.xcconfig"; sourceTree = "<group>"; };
+		E0B8D7720AF6C788D62EFD7D /* TTModeKasaConnect.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeKasaConnect.h; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaConnect.h"; sourceTree = SOURCE_ROOT; };
+		E0F7C397C513BC2C4F238237 /* TTHueEventStream.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTHueEventStream.h; sourceTree = "<group>"; };
 		E4439EC9F0DFB4AA69CE0E48 /* Pods-Turn Touch Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turn Touch Mac.release.xcconfig"; path = "Pods/Target Support Files/Pods-Turn Touch Mac/Pods-Turn Touch Mac.release.xcconfig"; sourceTree = "<group>"; };
+		E5B108148837C6D4F7037D74 /* TTHueBridgeAuthenticator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTHueBridgeAuthenticator.h; sourceTree = "<group>"; };
+		F1F31BDDD852071A43064ECA /* TTHueAPIClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTHueAPIClient.m; sourceTree = "<group>"; };
+		F296FE3E3C388DA98D239B93 /* TTModeKasaConnected.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeKasaConnected.m; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaConnected.m"; sourceTree = SOURCE_ROOT; };
+		F43210B12D174F3B0AD9E7A0 /* TTHueColorUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTHueColorUtilities.h; sourceTree = "<group>"; };
+		FAC62B54CAB44B5F4C5CE775 /* TTModeKasaDeviceOnOptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeKasaDeviceOnOptions.h; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaDeviceOnOptions.h"; sourceTree = SOURCE_ROOT; };
+		FBF79288A2203E19A6BDA899 /* TTModeKasaKLAPProtocol.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeKasaKLAPProtocol.m; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaKLAPProtocol.m"; sourceTree = SOURCE_ROOT; };
 		FF01CA281C46009E00F83A73 /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = scripts; path = Resources/scripts; sourceTree = "<group>"; };
 		FF01CA2A1C4613C500F83A73 /* Safari.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Safari.h; path = Modes/Web/Safari.h; sourceTree = "<group>"; };
 		FF01CA2C1C46DCC200F83A73 /* app_music.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_music.png; sourceTree = "<group>"; };
@@ -1140,7 +1236,6 @@
 		FF2C2E6C1C5479E000FAD7E2 /* TTModeWemoSwitchOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTModeWemoSwitchOptions.m; path = Modes/Wemo/TTModeWemoSwitchOptions.m; sourceTree = "<group>"; };
 		FF2C2E6D1C5479E000FAD7E2 /* TTModeWemoSwitchOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeWemoSwitchOptions.xib; path = Modes/Wemo/TTModeWemoSwitchOptions.xib; sourceTree = "<group>"; };
 		FF2EB77C1AA50D4D002549A7 /* itunes_music_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_music_icon.png; sourceTree = "<group>"; };
-		FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HueSDK_OSX.framework; sourceTree = "<group>"; };
 		FF3641D91A5F53DC003CC03C /* TTModeHueConnecting.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTModeHueConnecting.xib; sourceTree = "<group>"; };
 		FF3641DB1A5F5617003CC03C /* TTModeHueOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTModeHueOptions.xib; sourceTree = "<group>"; };
 		FF3641DD1A5F5734003CC03C /* TTModeHueConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeHueConnect.h; sourceTree = "<group>"; };
@@ -1284,21 +1379,6 @@
 		FF67923A1CEBE82800639148 /* Spotify.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Spotify.h; path = Modes/Spotify/Spotify.h; sourceTree = "<group>"; };
 		FF6A37CE1A9AEC9F006F3756 /* NSDate+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = "NSDate+Extras.h"; path = "Categories/NSDate+Extras.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		FF6A37CF1A9AEC9F006F3756 /* NSDate+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = "NSDate+Extras.m"; path = "Categories/NSDate+Extras.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		FF7305911A5C9C76009A852D /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
-		FF7305921A5C9C76009A852D /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
-		FF7305931A5C9C76009A852D /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
-		FF7305941A5C9C76009A852D /* DDASLLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDASLLogger.m; sourceTree = "<group>"; };
-		FF7305951A5C9C76009A852D /* DDFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFileLogger.h; sourceTree = "<group>"; };
-		FF7305961A5C9C76009A852D /* DDFileLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFileLogger.m; sourceTree = "<group>"; };
-		FF7305971A5C9C76009A852D /* DDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLog.h; sourceTree = "<group>"; };
-		FF7305981A5C9C76009A852D /* DDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLog.m; sourceTree = "<group>"; };
-		FF7305991A5C9C76009A852D /* DDTTYLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTTYLogger.h; sourceTree = "<group>"; };
-		FF73059A1A5C9C76009A852D /* DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTTYLogger.m; sourceTree = "<group>"; };
-		FF73059C1A5C9C76009A852D /* ContextFilterLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContextFilterLogFormatter.h; sourceTree = "<group>"; };
-		FF73059D1A5C9C76009A852D /* ContextFilterLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContextFilterLogFormatter.m; sourceTree = "<group>"; };
-		FF73059E1A5C9C76009A852D /* DispatchQueueLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DispatchQueueLogFormatter.h; sourceTree = "<group>"; };
-		FF73059F1A5C9C76009A852D /* DispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DispatchQueueLogFormatter.m; sourceTree = "<group>"; };
-		FF7305AC1A5C9C76009A852D /* press_smartbridge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = press_smartbridge.png; path = ../../Vendor/Hue/SDKWizard/Resources/press_smartbridge.png; sourceTree = "<group>"; };
 		FF7305BE1A5CA8F5009A852D /* TTModeHueConnected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTModeHueConnected.h; sourceTree = "<group>"; };
 		FF7305BF1A5CA8F5009A852D /* TTModeHueConnected.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTModeHueConnected.m; sourceTree = "<group>"; };
 		FF7305C11A5CB2E3009A852D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -1683,6 +1763,70 @@
 		FFFF0C891EFCA36500E29E6D /* TTModeIftttAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTModeIftttAuthViewController.xib; path = Modes/Ifttt/TTModeIftttAuthViewController.xib; sourceTree = "<group>"; };
 		FFFF0C8E1EFDFF8100E29E6D /* mode_ifttt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mode_ifttt.png; sourceTree = "<group>"; };
 		FFFF683619D4E2C30081904A /* ideas.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ideas.txt; path = Modes/Meditation/ideas.txt; sourceTree = "<group>"; };
+		G0VE00010000000000000001 /* TTModeGovee.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeGovee.h; path = "Turn Touch Mac/Modes/Govee/TTModeGovee.h"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000002 /* TTModeGovee.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeGovee.m; path = "Turn Touch Mac/Modes/Govee/TTModeGovee.m"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000003 /* TTModeGoveeDevice.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeGoveeDevice.h; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeDevice.h"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000004 /* TTModeGoveeDevice.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeGoveeDevice.m; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeDevice.m"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000005 /* TTModeGoveeAPIClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeGoveeAPIClient.h; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeAPIClient.h"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000006 /* TTModeGoveeAPIClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeGoveeAPIClient.m; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeAPIClient.m"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000007 /* TTModeGoveeOptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeGoveeOptions.h; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeOptions.h"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000008 /* TTModeGoveeOptions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeGoveeOptions.m; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeOptions.m"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000009 /* TTModeGoveeOptions.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = TTModeGoveeOptions.xib; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeOptions.xib"; sourceTree = SOURCE_ROOT; };
+		G0VE0001000000000000000A /* TTModeGoveeConnect.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeGoveeConnect.h; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeConnect.h"; sourceTree = SOURCE_ROOT; };
+		G0VE0001000000000000000B /* TTModeGoveeConnect.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeGoveeConnect.m; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeConnect.m"; sourceTree = SOURCE_ROOT; };
+		G0VE0001000000000000000C /* TTModeGoveeConnect.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = TTModeGoveeConnect.xib; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeConnect.xib"; sourceTree = SOURCE_ROOT; };
+		G0VE0001000000000000000D /* TTModeGoveeConnecting.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeGoveeConnecting.h; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeConnecting.h"; sourceTree = SOURCE_ROOT; };
+		G0VE0001000000000000000E /* TTModeGoveeConnecting.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeGoveeConnecting.m; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeConnecting.m"; sourceTree = SOURCE_ROOT; };
+		G0VE0001000000000000000F /* TTModeGoveeConnecting.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = TTModeGoveeConnecting.xib; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeConnecting.xib"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000010 /* TTModeGoveeConnected.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeGoveeConnected.h; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeConnected.h"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000011 /* TTModeGoveeConnected.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeGoveeConnected.m; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeConnected.m"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000012 /* TTModeGoveeConnected.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = TTModeGoveeConnected.xib; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeConnected.xib"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000013 /* TTModeGoveeSwitchDevice.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeGoveeSwitchDevice.h; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeSwitchDevice.h"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000014 /* TTModeGoveeSwitchDevice.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeGoveeSwitchDevice.m; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeSwitchDevice.m"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000015 /* TTModeGoveeSwitchOptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeGoveeSwitchOptions.h; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeSwitchOptions.h"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000016 /* TTModeGoveeSwitchOptions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeGoveeSwitchOptions.m; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeSwitchOptions.m"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000017 /* TTModeGoveeSwitchOptions.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = TTModeGoveeSwitchOptions.xib; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeSwitchOptions.xib"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000018 /* TTModeGoveeDeviceOnOptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeGoveeDeviceOnOptions.h; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeDeviceOnOptions.h"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000019 /* TTModeGoveeDeviceOnOptions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeGoveeDeviceOnOptions.m; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeDeviceOnOptions.m"; sourceTree = SOURCE_ROOT; };
+		G0VE0001000000000000001A /* TTModeGoveeDeviceOffOptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeGoveeDeviceOffOptions.h; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeDeviceOffOptions.h"; sourceTree = SOURCE_ROOT; };
+		G0VE0001000000000000001B /* TTModeGoveeDeviceOffOptions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeGoveeDeviceOffOptions.m; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeDeviceOffOptions.m"; sourceTree = SOURCE_ROOT; };
+		G0VE0001000000000000001C /* TTModeGoveeDeviceToggleOptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeGoveeDeviceToggleOptions.h; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeDeviceToggleOptions.h"; sourceTree = SOURCE_ROOT; };
+		G0VE0001000000000000001D /* TTModeGoveeDeviceToggleOptions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeGoveeDeviceToggleOptions.m; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeDeviceToggleOptions.m"; sourceTree = SOURCE_ROOT; };
+		G0VE0001000000000000001E /* TTModeGoveeBrightnessUpOptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeGoveeBrightnessUpOptions.h; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeBrightnessUpOptions.h"; sourceTree = SOURCE_ROOT; };
+		G0VE0001000000000000001F /* TTModeGoveeBrightnessUpOptions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeGoveeBrightnessUpOptions.m; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeBrightnessUpOptions.m"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000020 /* TTModeGoveeBrightnessDownOptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeGoveeBrightnessDownOptions.h; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeBrightnessDownOptions.h"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000021 /* TTModeGoveeBrightnessDownOptions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeGoveeBrightnessDownOptions.m; path = "Turn Touch Mac/Modes/Govee/TTModeGoveeBrightnessDownOptions.m"; sourceTree = SOURCE_ROOT; };
+		G0VE00010000000000000022 /* mode_govee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mode_govee.png; sourceTree = "<group>"; };
+		NANL00010000000000000001 /* TTModeNanoleaf.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeNanoleaf.h; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleaf.h"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000002 /* TTModeNanoleaf.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeNanoleaf.m; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleaf.m"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000003 /* TTModeNanoleafOptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeNanoleafOptions.h; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafOptions.h"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000004 /* TTModeNanoleafOptions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeNanoleafOptions.m; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafOptions.m"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000005 /* TTModeNanoleafOptions.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = TTModeNanoleafOptions.xib; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafOptions.xib"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000006 /* TTModeNanoleafConnect.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeNanoleafConnect.h; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafConnect.h"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000007 /* TTModeNanoleafConnect.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeNanoleafConnect.m; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafConnect.m"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000008 /* TTModeNanoleafConnect.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = TTModeNanoleafConnect.xib; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafConnect.xib"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000009 /* TTModeNanoleafConnecting.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeNanoleafConnecting.h; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafConnecting.h"; sourceTree = SOURCE_ROOT; };
+		NANL0001000000000000000A /* TTModeNanoleafConnecting.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeNanoleafConnecting.m; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafConnecting.m"; sourceTree = SOURCE_ROOT; };
+		NANL0001000000000000000B /* TTModeNanoleafConnecting.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = TTModeNanoleafConnecting.xib; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafConnecting.xib"; sourceTree = SOURCE_ROOT; };
+		NANL0001000000000000000C /* TTModeNanoleafPushlink.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeNanoleafPushlink.h; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafPushlink.h"; sourceTree = SOURCE_ROOT; };
+		NANL0001000000000000000D /* TTModeNanoleafPushlink.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeNanoleafPushlink.m; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafPushlink.m"; sourceTree = SOURCE_ROOT; };
+		NANL0001000000000000000E /* TTModeNanoleafPushlink.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = TTModeNanoleafPushlink.xib; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafPushlink.xib"; sourceTree = SOURCE_ROOT; };
+		NANL0001000000000000000F /* TTModeNanoleafConnected.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeNanoleafConnected.h; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafConnected.h"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000010 /* TTModeNanoleafConnected.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeNanoleafConnected.m; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafConnected.m"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000011 /* TTModeNanoleafConnected.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = TTModeNanoleafConnected.xib; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafConnected.xib"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000012 /* TTModeNanoleafSceneCustomOptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeNanoleafSceneCustomOptions.h; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafSceneCustomOptions.h"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000013 /* TTModeNanoleafSceneCustomOptions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeNanoleafSceneCustomOptions.m; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafSceneCustomOptions.m"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000014 /* TTModeNanoleafSceneCustomOptions.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = TTModeNanoleafSceneCustomOptions.xib; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafSceneCustomOptions.xib"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000015 /* TTModeNanoleafSleepOptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeNanoleafSleepOptions.h; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafSleepOptions.h"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000016 /* TTModeNanoleafSleepOptions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeNanoleafSleepOptions.m; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafSleepOptions.m"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000017 /* TTModeNanoleafSleepOptions.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = TTModeNanoleafSleepOptions.xib; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafSleepOptions.xib"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000018 /* TTModeNanoleaf.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = TTModeNanoleaf.plist; path = "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleaf.plist"; sourceTree = SOURCE_ROOT; };
+		NANL00010000000000000019 /* nanoleaf_toggle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nanoleaf_toggle.png; sourceTree = "<group>"; };
+		NANL0001000000000000001A /* nanoleaf_scene.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nanoleaf_scene.png; sourceTree = "<group>"; };
+		NANL0001000000000000001B /* nanoleaf_brightness_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nanoleaf_brightness_up.png; sourceTree = "<group>"; };
+		NANL0001000000000000001C /* nanoleaf_brightness_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nanoleaf_brightness_down.png; sourceTree = "<group>"; };
+		NANL0001000000000000001D /* nanoleaf_sleep.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nanoleaf_sleep.png; sourceTree = "<group>"; };
+		NANL0001000000000000001E /* mode_nanoleaf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mode_nanoleaf.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1701,7 +1845,6 @@
 				172B5D1F23E3EDAA008B5AAB /* AudioToolbox.framework in Frameworks */,
 				172B5D2023E3EDAA008B5AAB /* AVFoundation.framework in Frameworks */,
 				172B5D2123E3EDAA008B5AAB /* SystemConfiguration.framework in Frameworks */,
-				172B5D2223E3EDAA008B5AAB /* HueSDK_OSX.framework in Frameworks */,
 				172B5D2323E3EDAA008B5AAB /* CoreBluetooth.framework in Frameworks */,
 				172B5D2423E3EDAA008B5AAB /* CoreFoundation.framework in Frameworks */,
 				172B5D2523E3EDAA008B5AAB /* QuartzCore.framework in Frameworks */,
@@ -1732,7 +1875,6 @@
 				FF0E12D11824811200D49EC7 /* ScriptingBridge.framework in Frameworks */,
 				FF4E26321823197D00D477F6 /* IOKit.framework in Frameworks */,
 				FF8C833717AB14B5000166FC /* Cocoa.framework in Frameworks */,
-				FF69AE5F2562EEFA007C913F /* HueSDK_OSX.framework in Frameworks */,
 				050B418B591A85B579740307 /* Pods_Turn_Touch_Mac.framework in Frameworks */,
 				C01FD69B778B5C0684677954 /* Pods_Turn_Touch_Mac.framework in Frameworks */,
 				6C8F0BFDDC3CEA1BCAA5EBE2 /* Pods_Turn_Touch_Mac.framework in Frameworks */,
@@ -1750,6 +1892,120 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A29B17171CABD7F2A2DDE36E /* Kasa */ = {
+			isa = PBXGroup;
+			children = (
+				738702C3736A71C9C06C94E1 /* TTModeKasa.h */,
+				C9F2318FA9226B9E03016560 /* TTModeKasa.m */,
+				669F843B8AB6330FCFEF1977 /* TTModeKasaDevice.h */,
+				9A2F837BC42018A8E6F8C691 /* TTModeKasaDevice.m */,
+				0E9B7D6FEC2B01E6BB1D3F27 /* TTModeKasaDiscovery.h */,
+				54BDEFE700F3C221725F39E4 /* TTModeKasaDiscovery.m */,
+				9FC55C80D656E39E53EA4A39 /* TTModeKasaLegacyProtocol.h */,
+				1E5A39A80D550F79B5D7708D /* TTModeKasaLegacyProtocol.m */,
+				6535F7DE5CFFEA6BCEB7D464 /* TTModeKasaKLAPProtocol.h */,
+				FBF79288A2203E19A6BDA899 /* TTModeKasaKLAPProtocol.m */,
+				7516C45F6A5A54A53400C9D1 /* TTModeKasaOptions.h */,
+				9D8AABA753E7A952CADAAD0A /* TTModeKasaOptions.m */,
+				E0B8D7720AF6C788D62EFD7D /* TTModeKasaConnect.h */,
+				B6D31B53BB08BA79AC2F5C61 /* TTModeKasaConnect.m */,
+				35A1531BCA581AB4F448A492 /* TTModeKasaConnecting.h */,
+				D765E9835795E0A3AB9BC51D /* TTModeKasaConnecting.m */,
+				6F4C2A90C8F410CFC5B5790B /* TTModeKasaConnected.h */,
+				F296FE3E3C388DA98D239B93 /* TTModeKasaConnected.m */,
+				0C2C0FA5339691541C906E3E /* TTModeKasaSwitchOptions.h */,
+				2C2EE83B6285C449DDE5D556 /* TTModeKasaSwitchOptions.m */,
+				0E4A2F0883267D2D0B88E51D /* TTModeKasaSwitchDevice.h */,
+				DA8DA040141555FDCD791892 /* TTModeKasaSwitchDevice.m */,
+				FAC62B54CAB44B5F4C5CE775 /* TTModeKasaDeviceOnOptions.h */,
+				DDF99CF9A89E0E94632BBB60 /* TTModeKasaDeviceOnOptions.m */,
+				DF5D2F96F5D0B1B758F2C97A /* TTModeKasaDeviceOffOptions.h */,
+				BBA290B3234924966C9766A1 /* TTModeKasaDeviceOffOptions.m */,
+				33E3A15C3494AFDAB094AE53 /* TTModeKasaDeviceToggleOptions.h */,
+				A4F2356DCBC240540FDB2521 /* TTModeKasaDeviceToggleOptions.m */,
+				D6FD7A571EB09609C0D8633B /* TTModeKasaOptions.xib */,
+				9F9E8F3615E4E195E9A57A53 /* TTModeKasaConnect.xib */,
+				73D4DC7B0DE9C207687688AC /* TTModeKasaConnecting.xib */,
+				DE59D43E22295DF9AEC65127 /* TTModeKasaConnected.xib */,
+				9EA0875B231E48B9C5C38DBE /* TTModeKasaSwitchOptions.xib */,
+			);
+			name = Kasa;
+			path = Kasa;
+			sourceTree = "<group>";
+		};
+		G0VE00030000000000000001 /* Govee */ = {
+			isa = PBXGroup;
+			children = (
+				G0VE00010000000000000001 /* TTModeGovee.h */,
+				G0VE00010000000000000002 /* TTModeGovee.m */,
+				G0VE00010000000000000003 /* TTModeGoveeDevice.h */,
+				G0VE00010000000000000004 /* TTModeGoveeDevice.m */,
+				G0VE00010000000000000005 /* TTModeGoveeAPIClient.h */,
+				G0VE00010000000000000006 /* TTModeGoveeAPIClient.m */,
+				G0VE00010000000000000007 /* TTModeGoveeOptions.h */,
+				G0VE00010000000000000008 /* TTModeGoveeOptions.m */,
+				G0VE0001000000000000000A /* TTModeGoveeConnect.h */,
+				G0VE0001000000000000000B /* TTModeGoveeConnect.m */,
+				G0VE0001000000000000000D /* TTModeGoveeConnecting.h */,
+				G0VE0001000000000000000E /* TTModeGoveeConnecting.m */,
+				G0VE00010000000000000010 /* TTModeGoveeConnected.h */,
+				G0VE00010000000000000011 /* TTModeGoveeConnected.m */,
+				G0VE00010000000000000015 /* TTModeGoveeSwitchOptions.h */,
+				G0VE00010000000000000016 /* TTModeGoveeSwitchOptions.m */,
+				G0VE00010000000000000013 /* TTModeGoveeSwitchDevice.h */,
+				G0VE00010000000000000014 /* TTModeGoveeSwitchDevice.m */,
+				G0VE00010000000000000018 /* TTModeGoveeDeviceOnOptions.h */,
+				G0VE00010000000000000019 /* TTModeGoveeDeviceOnOptions.m */,
+				G0VE0001000000000000001A /* TTModeGoveeDeviceOffOptions.h */,
+				G0VE0001000000000000001B /* TTModeGoveeDeviceOffOptions.m */,
+				G0VE0001000000000000001C /* TTModeGoveeDeviceToggleOptions.h */,
+				G0VE0001000000000000001D /* TTModeGoveeDeviceToggleOptions.m */,
+				G0VE0001000000000000001E /* TTModeGoveeBrightnessUpOptions.h */,
+				G0VE0001000000000000001F /* TTModeGoveeBrightnessUpOptions.m */,
+				G0VE00010000000000000020 /* TTModeGoveeBrightnessDownOptions.h */,
+				G0VE00010000000000000021 /* TTModeGoveeBrightnessDownOptions.m */,
+				G0VE00010000000000000009 /* TTModeGoveeOptions.xib */,
+				G0VE0001000000000000000C /* TTModeGoveeConnect.xib */,
+				G0VE0001000000000000000F /* TTModeGoveeConnecting.xib */,
+				G0VE00010000000000000012 /* TTModeGoveeConnected.xib */,
+				G0VE00010000000000000017 /* TTModeGoveeSwitchOptions.xib */,
+			);
+			name = Govee;
+			path = Govee;
+			sourceTree = "<group>";
+		};
+		NANL00030000000000000001 /* Nanoleaf */ = {
+			isa = PBXGroup;
+			children = (
+				NANL00010000000000000001 /* TTModeNanoleaf.h */,
+				NANL00010000000000000002 /* TTModeNanoleaf.m */,
+				NANL00010000000000000018 /* TTModeNanoleaf.plist */,
+				NANL00010000000000000003 /* TTModeNanoleafOptions.h */,
+				NANL00010000000000000004 /* TTModeNanoleafOptions.m */,
+				NANL00010000000000000005 /* TTModeNanoleafOptions.xib */,
+				NANL00010000000000000006 /* TTModeNanoleafConnect.h */,
+				NANL00010000000000000007 /* TTModeNanoleafConnect.m */,
+				NANL00010000000000000008 /* TTModeNanoleafConnect.xib */,
+				NANL00010000000000000009 /* TTModeNanoleafConnecting.h */,
+				NANL0001000000000000000A /* TTModeNanoleafConnecting.m */,
+				NANL0001000000000000000B /* TTModeNanoleafConnecting.xib */,
+				NANL0001000000000000000C /* TTModeNanoleafPushlink.h */,
+				NANL0001000000000000000D /* TTModeNanoleafPushlink.m */,
+				NANL0001000000000000000E /* TTModeNanoleafPushlink.xib */,
+				NANL0001000000000000000F /* TTModeNanoleafConnected.h */,
+				NANL00010000000000000010 /* TTModeNanoleafConnected.m */,
+				NANL00010000000000000011 /* TTModeNanoleafConnected.xib */,
+				NANL00010000000000000012 /* TTModeNanoleafSceneCustomOptions.h */,
+				NANL00010000000000000013 /* TTModeNanoleafSceneCustomOptions.m */,
+				NANL00010000000000000014 /* TTModeNanoleafSceneCustomOptions.xib */,
+				NANL00010000000000000015 /* TTModeNanoleafSleepOptions.h */,
+				NANL00010000000000000016 /* TTModeNanoleafSleepOptions.m */,
+				NANL00010000000000000017 /* TTModeNanoleafSleepOptions.xib */,
+			);
+			name = Nanoleaf;
+			path = Nanoleaf;
+			sourceTree = "<group>";
+		};
 		A5D7CA613E199622F6A3CAF7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1761,6 +2017,27 @@
 				E4439EC9F0DFB4AA69CE0E48 /* Pods-Turn Touch Mac.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		DFCBF684CE7E573415BCA54E /* API */ = {
+			isa = PBXGroup;
+			children = (
+				CF7F968D2D754D9E81A30A84 /* TTHueModels.h */,
+				3F080B4450C839EF70C803AB /* TTHueModels.m */,
+				F43210B12D174F3B0AD9E7A0 /* TTHueColorUtilities.h */,
+				3DBE8FBF3A101F4E0ADB2AA8 /* TTHueColorUtilities.m */,
+				D7405D56B95B98D161AF7665 /* TTHueResourceCache.h */,
+				36DA7F44BC35706635E30E3F /* TTHueResourceCache.m */,
+				AC22106BF310BE139240414C /* TTHueBridgeDiscovery.h */,
+				B1147828FF5B8676A3D572D8 /* TTHueBridgeDiscovery.m */,
+				E5B108148837C6D4F7037D74 /* TTHueBridgeAuthenticator.h */,
+				A5734E49A48285E2F66B0670 /* TTHueBridgeAuthenticator.m */,
+				6DB0150A7ABFA9D629C9FE98 /* TTHueAPIClient.h */,
+				F1F31BDDD852071A43064ECA /* TTHueAPIClient.m */,
+				E0F7C397C513BC2C4F238237 /* TTHueEventStream.h */,
+				AFE70B200E3301C59B137D4B /* TTHueEventStream.m */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		FF01CA2B1C46DCC200F83A73 /* icons */ = {
@@ -1791,6 +2068,9 @@
 				FF01CA3F1C46DCC200F83A73 /* mode_fitness.png */,
 				FF01CA401C46DCC200F83A73 /* mode_home.png */,
 				FF01CA411C46DCC200F83A73 /* mode_hue.png */,
+				G0VE00010000000000000022 /* mode_govee.png */,
+				NANL0001000000000000001E /* mode_nanoleaf.png */,
+				5C16FF919BE94E6D8114CC4A /* press_smartbridge.png */,
 				FFFF0C8E1EFDFF8100E29E6D /* mode_ifttt.png */,
 				FF01CA421C46DCC200F83A73 /* mode_mac.png */,
 				FF01CA431C46DCC200F83A73 /* mode_meditation.png */,
@@ -1914,6 +2194,9 @@
 				FF778B511EEF82C90019C22A /* Ifttt */,
 				FFF02BD31F16A20F003E5799 /* Sonos */,
 				FFAA6D131F29592300039F3C /* Presentation */,
+				A29B17171CABD7F2A2DDE36E /* Kasa */,
+				G0VE00030000000000000001 /* Govee */,
+				NANL00030000000000000001 /* Nanoleaf */,
 			);
 			name = Modes;
 			sourceTree = "<group>";
@@ -2255,6 +2538,11 @@
 				FFDC9F6D1FD74BC700261B76 /* hue_brightness_up.png */,
 				FFDC9F6E1FD74BC800261B76 /* hue_shift_left.png */,
 				FFDC9F701FD74BC800261B76 /* hue_shift_right.png */,
+				NANL00010000000000000019 /* nanoleaf_toggle.png */,
+				NANL0001000000000000001A /* nanoleaf_scene.png */,
+				NANL0001000000000000001B /* nanoleaf_brightness_up.png */,
+				NANL0001000000000000001C /* nanoleaf_brightness_down.png */,
+				NANL0001000000000000001D /* nanoleaf_sleep.png */,
 				FF6135441C61CDDC00F431D7 /* hue_evening.png */,
 				FF6135451C61CDDC00F431D7 /* hue_random.png */,
 				FF6135461C61CDDC00F431D7 /* hue_sleep.png */,
@@ -2307,7 +2595,6 @@
 		FF73058E1A5C9C76009A852D /* Hue */ = {
 			isa = PBXGroup;
 			children = (
-				FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */,
 				FF7305901A5C9C76009A852D /* Lumberjack */,
 			);
 			path = Hue;
@@ -2316,16 +2603,6 @@
 		FF7305901A5C9C76009A852D /* Lumberjack */ = {
 			isa = PBXGroup;
 			children = (
-				FF7305911A5C9C76009A852D /* DDAbstractDatabaseLogger.h */,
-				FF7305921A5C9C76009A852D /* DDAbstractDatabaseLogger.m */,
-				FF7305931A5C9C76009A852D /* DDASLLogger.h */,
-				FF7305941A5C9C76009A852D /* DDASLLogger.m */,
-				FF7305951A5C9C76009A852D /* DDFileLogger.h */,
-				FF7305961A5C9C76009A852D /* DDFileLogger.m */,
-				FF7305971A5C9C76009A852D /* DDLog.h */,
-				FF7305981A5C9C76009A852D /* DDLog.m */,
-				FF7305991A5C9C76009A852D /* DDTTYLogger.h */,
-				FF73059A1A5C9C76009A852D /* DDTTYLogger.m */,
 				FF73059B1A5C9C76009A852D /* Extensions */,
 			);
 			path = Lumberjack;
@@ -2334,10 +2611,6 @@
 		FF73059B1A5C9C76009A852D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				FF73059C1A5C9C76009A852D /* ContextFilterLogFormatter.h */,
-				FF73059D1A5C9C76009A852D /* ContextFilterLogFormatter.m */,
-				FF73059E1A5C9C76009A852D /* DispatchQueueLogFormatter.h */,
-				FF73059F1A5C9C76009A852D /* DispatchQueueLogFormatter.m */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2959,7 +3232,7 @@
 				FFA1F5F61B7D849200268907 /* TTModeHueSleepOptions.xib */,
 				FFB5FF3F1A671C4100DF617A /* TTModeHueOffOptions.h */,
 				FFB5FF401A671C4100DF617A /* TTModeHueOffOptions.m */,
-				FF7305AC1A5C9C76009A852D /* press_smartbridge.png */,
+				DFCBF684CE7E573415BCA54E /* API */,
 			);
 			name = Hue;
 			path = Modes/Hue;
@@ -3349,6 +3622,7 @@
 				172B5DC223E3EDAA008B5AAB /* TTModePresentationPlayOptions.xib in Resources */,
 				172B5DC323E3EDAA008B5AAB /* mode_smartlock.png in Resources */,
 				172B5DC423E3EDAA008B5AAB /* mode_hue.png in Resources */,
+				0A2654CB23EC4573B7DE1862 /* press_smartbridge.png in Resources */,
 				172B5DC523E3EDAA008B5AAB /* mode_pandora.png in Resources */,
 				172B5DC623E3EDAA008B5AAB /* hue_sleep.png in Resources */,
 				172B5DC723E3EDAA008B5AAB /* ideas.txt in Resources */,
@@ -3356,7 +3630,6 @@
 				172B5DC923E3EDAA008B5AAB /* TTModeAlarmClockOptions.xib in Resources */,
 				172B5DCA23E3EDAA008B5AAB /* mode_electricobjects.png in Resources */,
 				172B5DCB23E3EDAA008B5AAB /* button_dash.png in Resources */,
-				172B5DCC23E3EDAA008B5AAB /* press_smartbridge.png in Resources */,
 				172B5DCD23E3EDAA008B5AAB /* mode_home.png in Resources */,
 				172B5DCE23E3EDAA008B5AAB /* TTModeAlarmSnoozeOptions.xib in Resources */,
 				172B5DCF23E3EDAA008B5AAB /* presentation-chart.png in Resources */,
@@ -3566,6 +3839,7 @@
 				FFFE8CB2200565DA007AA4AF /* TTModePresentationPlayOptions.xib in Resources */,
 				FF01CA771C46DCC200F83A73 /* mode_smartlock.png in Resources */,
 				FF01CA6E1C46DCC200F83A73 /* mode_hue.png in Resources */,
+				EB3195ED3E2C48E2AFEBB38D /* press_smartbridge.png in Resources */,
 				FF01CA751C46DCC200F83A73 /* mode_pandora.png in Resources */,
 				FF6135581C61CDDC00F431D7 /* hue_sleep.png in Resources */,
 				FFFF683819D4E2C30081904A /* ideas.txt in Resources */,
@@ -3573,7 +3847,6 @@
 				FFEA6CB819218A5C0010874B /* TTModeAlarmClockOptions.xib in Resources */,
 				FF01CA6B1C46DCC200F83A73 /* mode_electricobjects.png in Resources */,
 				FF01CA5B1C46DCC200F83A73 /* button_dash.png in Resources */,
-				FF7305BB1A5C9C76009A852D /* press_smartbridge.png in Resources */,
 				FF01CA6D1C46DCC200F83A73 /* mode_home.png in Resources */,
 				FF913D2919243B89005C336F /* TTModeAlarmSnoozeOptions.xib in Resources */,
 				FF01CA7E1C46DCC200F83A73 /* presentation-chart.png in Resources */,
@@ -3622,6 +3895,31 @@
 				FF8B75191F86D24F00D7867C /* script.png in Resources */,
 				FF8B75121F86CF8300D7867C /* scroll_down.png in Resources */,
 				FF8B75131F86CF8300D7867C /* scroll_up.png in Resources */,
+				E72EA4089D9E088167A6A67C /* TTModeKasaOptions.xib in Resources */,
+				38CD655E3A64AD8814DAA64C /* TTModeKasaConnect.xib in Resources */,
+				9F9FB24AC17E561B68BB5B38 /* TTModeKasaConnecting.xib in Resources */,
+				3374FD6CCD796752EC41D36E /* TTModeKasaConnected.xib in Resources */,
+				BFE1E53BECA7FD65969081A4 /* TTModeKasaSwitchOptions.xib in Resources */,
+				G0VE0002000000000000000F /* TTModeGoveeOptions.xib in Resources */,
+				G0VE00020000000000000010 /* TTModeGoveeConnect.xib in Resources */,
+				G0VE00020000000000000011 /* TTModeGoveeConnecting.xib in Resources */,
+				G0VE00020000000000000012 /* TTModeGoveeConnected.xib in Resources */,
+				G0VE00020000000000000013 /* TTModeGoveeSwitchOptions.xib in Resources */,
+				G0VE00020000000000000014 /* mode_govee.png in Resources */,
+				NANL00020000000000000009 /* TTModeNanoleafOptions.xib in Resources */,
+				NANL0002000000000000000A /* TTModeNanoleafConnect.xib in Resources */,
+				NANL0002000000000000000B /* TTModeNanoleafConnecting.xib in Resources */,
+				NANL0002000000000000000C /* TTModeNanoleafPushlink.xib in Resources */,
+				NANL0002000000000000000D /* TTModeNanoleafConnected.xib in Resources */,
+				NANL0002000000000000000E /* TTModeNanoleafSceneCustomOptions.xib in Resources */,
+				NANL0002000000000000000F /* TTModeNanoleafSleepOptions.xib in Resources */,
+				NANL00020000000000000010 /* TTModeNanoleaf.plist in Resources */,
+				NANL00020000000000000011 /* nanoleaf_toggle.png in Resources */,
+				NANL00020000000000000012 /* nanoleaf_scene.png in Resources */,
+				NANL00020000000000000013 /* nanoleaf_brightness_up.png in Resources */,
+				NANL00020000000000000014 /* nanoleaf_brightness_down.png in Resources */,
+				NANL00020000000000000015 /* nanoleaf_sleep.png in Resources */,
+				NANL00020000000000000016 /* mode_nanoleaf.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3741,7 +4039,6 @@
 				172B5C6323E3EDAA008B5AAB /* TTChangeButtonCell.m in Sources */,
 				172B5C6423E3EDAA008B5AAB /* TTModeHuePicker.m in Sources */,
 				172B5C6523E3EDAA008B5AAB /* NSDate+TimeAgo.m in Sources */,
-				172B5C6623E3EDAA008B5AAB /* DDTTYLogger.m in Sources */,
 				172B5C6723E3EDAA008B5AAB /* TTModeIftttConnected.m in Sources */,
 				172B5C6823E3EDAA008B5AAB /* Utility.m in Sources */,
 				172B5C6923E3EDAA008B5AAB /* CBPeripheral+Extras.m in Sources */,
@@ -3760,7 +4057,6 @@
 				172B5C7523E3EDAA008B5AAB /* TTModeWebBrowserView.m in Sources */,
 				172B5C7623E3EDAA008B5AAB /* TTHUDMenuButton.m in Sources */,
 				172B5C7723E3EDAA008B5AAB /* TTModeNestConnected.m in Sources */,
-				172B5C7823E3EDAA008B5AAB /* DDLog.m in Sources */,
 				172B5C7923E3EDAA008B5AAB /* GCDAsyncSocket.m in Sources */,
 				172B5C7A23E3EDAA008B5AAB /* TTModeNestSetTempOptions.m in Sources */,
 				172B5C7B23E3EDAA008B5AAB /* TTModeIftttTriggerActionOptions.m in Sources */,
@@ -3774,7 +4070,6 @@
 				172B5C8323E3EDAA008B5AAB /* TTBackgroundView.m in Sources */,
 				172B5C8423E3EDAA008B5AAB /* TTMode.m in Sources */,
 				172B5C8523E3EDAA008B5AAB /* TTModeWemo.m in Sources */,
-				172B5C8623E3EDAA008B5AAB /* ContextFilterLogFormatter.m in Sources */,
 				172B5C8723E3EDAA008B5AAB /* TTModeSonosConnecting.m in Sources */,
 				172B5C8823E3EDAA008B5AAB /* TTModeHUDWindowController.m in Sources */,
 				172B5C8923E3EDAA008B5AAB /* TTPanel.m in Sources */,
@@ -3801,7 +4096,6 @@
 				172B5C9E23E3EDAA008B5AAB /* TTModeNest.m in Sources */,
 				172B5C9F23E3EDAA008B5AAB /* TTModalFTUXView.m in Sources */,
 				172B5CA023E3EDAA008B5AAB /* TTModeHueRandomOptions.m in Sources */,
-				172B5CA123E3EDAA008B5AAB /* DispatchQueueLogFormatter.m in Sources */,
 				172B5CA223E3EDAA008B5AAB /* TTModeNewsWindowController.m in Sources */,
 				172B5CA323E3EDAA008B5AAB /* htmls.m in Sources */,
 				172B5CA423E3EDAA008B5AAB /* TTModeWemoDeviceOnOptions.m in Sources */,
@@ -3857,10 +4151,8 @@
 				172B5CD523E3EDAA008B5AAB /* LaunchAtLoginController.m in Sources */,
 				172B5CD623E3EDAA008B5AAB /* SonosManager.m in Sources */,
 				172B5CD723E3EDAA008B5AAB /* TTModeCustomKeyboardOptions.m in Sources */,
-				172B5CD823E3EDAA008B5AAB /* DDASLLogger.m in Sources */,
 				172B5CD923E3EDAA008B5AAB /* NSDate+Extras.m in Sources */,
 				172B5CDA23E3EDAA008B5AAB /* TTSliderCell.m in Sources */,
-				172B5CDB23E3EDAA008B5AAB /* DDFileLogger.m in Sources */,
 				172B5CDC23E3EDAA008B5AAB /* TTModeHueOptions.m in Sources */,
 				172B5CDD23E3EDAA008B5AAB /* TTModeVideo.m in Sources */,
 				172B5CDE23E3EDAA008B5AAB /* TTModeHueConnecting.m in Sources */,
@@ -3879,7 +4171,6 @@
 				172B5CEB23E3EDAA008B5AAB /* TTModeHuePushlink.m in Sources */,
 				172B5CEC23E3EDAA008B5AAB /* TTModeHueBridge.m in Sources */,
 				172B5CED23E3EDAA008B5AAB /* TTModeSpotifyVolumeJumpOptions.m in Sources */,
-				172B5CEE23E3EDAA008B5AAB /* DDAbstractDatabaseLogger.m in Sources */,
 				172B5CEF23E3EDAA008B5AAB /* TTModeCustom.m in Sources */,
 				172B5CF023E3EDAA008B5AAB /* TTSlider.m in Sources */,
 				172B5CF123E3EDAA008B5AAB /* zip.c in Sources */,
@@ -3967,7 +4258,6 @@
 				FFF05F4218F77D5D00AC6230 /* TTChangeButtonCell.m in Sources */,
 				FF8448F11E0DFE3E00C1091E /* TTModeHuePicker.m in Sources */,
 				FF5296081AD61E74007DDC02 /* NSDate+TimeAgo.m in Sources */,
-				FF7305B21A5C9C76009A852D /* DDTTYLogger.m in Sources */,
 				FFFF0C7E1EFC975300E29E6D /* TTModeIftttConnected.m in Sources */,
 				FF904B761BE9B88700AD00F3 /* Utility.m in Sources */,
 				1766EE85226FC3B100A114B5 /* CBPeripheral+Extras.m in Sources */,
@@ -3986,7 +4276,6 @@
 				FFABABA21C33676700AD5620 /* TTModeWebBrowserView.m in Sources */,
 				FF877CD81C6C19F1007940C3 /* TTHUDMenuButton.m in Sources */,
 				FF557AE41C4ED8BE005FB7FD /* TTModeNestConnected.m in Sources */,
-				FF7305B11A5C9C76009A852D /* DDLog.m in Sources */,
 				FF3D21F91F1EF50900F7F5BF /* GCDAsyncSocket.m in Sources */,
 				FF557AE91C4F1CD0005FB7FD /* TTModeNestSetTempOptions.m in Sources */,
 				FFFF0C831EFC976B00E29E6D /* TTModeIftttTriggerActionOptions.m in Sources */,
@@ -4000,7 +4289,6 @@
 				FF801326186CF90700955218 /* TTBackgroundView.m in Sources */,
 				FF0E12CA18247BAE00D49EC7 /* TTMode.m in Sources */,
 				FF557AA21C4855D4005FB7FD /* TTModeWemo.m in Sources */,
-				FF7305B31A5C9C76009A852D /* ContextFilterLogFormatter.m in Sources */,
 				FF3D220B1F1F1CA500F7F5BF /* TTModeSonosConnecting.m in Sources */,
 				FF904B3F1BE9B80100AD00F3 /* TTModeHUDWindowController.m in Sources */,
 				FF801327186CF90700955218 /* TTPanel.m in Sources */,
@@ -4027,7 +4315,6 @@
 				FF557A9E1C4855BD005FB7FD /* TTModeNest.m in Sources */,
 				FF87E9F21C9630E500682461 /* TTModalFTUXView.m in Sources */,
 				FFC730E81B067434003538D5 /* TTModeHueRandomOptions.m in Sources */,
-				FF7305B41A5C9C76009A852D /* DispatchQueueLogFormatter.m in Sources */,
 				FF79C5811D581590006C75C9 /* TTModeNewsWindowController.m in Sources */,
 				FF01CAA51C473EC100F83A73 /* htmls.m in Sources */,
 				FF5250151C80F9740017A847 /* TTModeWemoDeviceOnOptions.m in Sources */,
@@ -4083,10 +4370,8 @@
 				FFCFCFBA1D88D9CE00FBC3E7 /* LaunchAtLoginController.m in Sources */,
 				FFF02BDF1F16A271003E5799 /* SonosManager.m in Sources */,
 				FF523B812023CE0200813AF0 /* TTModeCustomKeyboardOptions.m in Sources */,
-				FF7305AF1A5C9C76009A852D /* DDASLLogger.m in Sources */,
 				FF6A37D01A9AEC9F006F3756 /* NSDate+Extras.m in Sources */,
 				FF76AD121C1F86A900A6ED97 /* TTSliderCell.m in Sources */,
-				FF7305B01A5C9C76009A852D /* DDFileLogger.m in Sources */,
 				FF3641E61A5F674A003CC03C /* TTModeHueOptions.m in Sources */,
 				FF0E12D41828560000D49EC7 /* TTModeVideo.m in Sources */,
 				FF3641E91A60BB8B003CC03C /* TTModeHueConnecting.m in Sources */,
@@ -4105,7 +4390,6 @@
 				FF3641EF1A60C422003CC03C /* TTModeHuePushlink.m in Sources */,
 				FFF049771CE11FCF006CE427 /* TTModeHueBridge.m in Sources */,
 				FFAB2C171E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.m in Sources */,
-				FF7305AE1A5C9C76009A852D /* DDAbstractDatabaseLogger.m in Sources */,
 				FF8448F41E10D60700C1091E /* TTModeCustom.m in Sources */,
 				FF76AD161C1F8FD000A6ED97 /* TTSlider.m in Sources */,
 				FF904B991BE9BA3700AD00F3 /* zip.c in Sources */,
@@ -4145,6 +4429,49 @@
 				FFABAB961C334FCA00AD5620 /* TTModeWeb.m in Sources */,
 				FF2C2E691C546D6E00FAD7E2 /* TTModeWemoOptions.m in Sources */,
 				FF8D1AA61C98F292006AA1A2 /* TTModalAbout.m in Sources */,
+				8A50EC55FE9F7B95408F2197 /* TTHueModels.m in Sources */,
+				D4C6A11FF9B6730033DE496A /* TTHueColorUtilities.m in Sources */,
+				7AB8A4AEAA968E9A10094E28 /* TTHueResourceCache.m in Sources */,
+				24991ADFBF04FC0D69594CEE /* TTHueBridgeDiscovery.m in Sources */,
+				2805814D44E02CD2B63BCD8C /* TTHueBridgeAuthenticator.m in Sources */,
+				03813EB96F1A1A5340938DA7 /* TTHueAPIClient.m in Sources */,
+				AFB548111E83F1BDB9F40634 /* TTHueEventStream.m in Sources */,
+				B8040E74FA3943503A964838 /* TTModeKasa.m in Sources */,
+				9152CF30A3EE25656EA0456D /* TTModeKasaDevice.m in Sources */,
+				F21439C16BD4CC11F76826AE /* TTModeKasaDiscovery.m in Sources */,
+				61E1A09723A6790F75093778 /* TTModeKasaLegacyProtocol.m in Sources */,
+				74E148E409C397320D5F84D1 /* TTModeKasaKLAPProtocol.m in Sources */,
+				57F2693305BE2D3F0208CAC7 /* TTModeKasaOptions.m in Sources */,
+				88862C2C8AB61619726B8059 /* TTModeKasaConnect.m in Sources */,
+				BB5008FB18156AFCF0CAB6F9 /* TTModeKasaConnecting.m in Sources */,
+				D21969E8E214D31BCD77DB04 /* TTModeKasaConnected.m in Sources */,
+				5DA4E0D6549E44840AB72E94 /* TTModeKasaSwitchOptions.m in Sources */,
+				B5B2ACF04C043EC1A4A34481 /* TTModeKasaSwitchDevice.m in Sources */,
+				0A96A801E9891A9604FAB097 /* TTModeKasaDeviceOnOptions.m in Sources */,
+				EC9AC4B7E7177AF166B33B48 /* TTModeKasaDeviceOffOptions.m in Sources */,
+				FA0D7BAE0908414D920A7230 /* TTModeKasaDeviceToggleOptions.m in Sources */,
+				G0VE00020000000000000001 /* TTModeGovee.m in Sources */,
+				G0VE00020000000000000002 /* TTModeGoveeDevice.m in Sources */,
+				G0VE00020000000000000003 /* TTModeGoveeAPIClient.m in Sources */,
+				G0VE00020000000000000004 /* TTModeGoveeOptions.m in Sources */,
+				G0VE00020000000000000005 /* TTModeGoveeConnect.m in Sources */,
+				G0VE00020000000000000006 /* TTModeGoveeConnecting.m in Sources */,
+				G0VE00020000000000000007 /* TTModeGoveeConnected.m in Sources */,
+				G0VE00020000000000000009 /* TTModeGoveeSwitchOptions.m in Sources */,
+				G0VE00020000000000000008 /* TTModeGoveeSwitchDevice.m in Sources */,
+				G0VE0002000000000000000A /* TTModeGoveeDeviceOnOptions.m in Sources */,
+				G0VE0002000000000000000B /* TTModeGoveeDeviceOffOptions.m in Sources */,
+				G0VE0002000000000000000C /* TTModeGoveeDeviceToggleOptions.m in Sources */,
+				G0VE0002000000000000000D /* TTModeGoveeBrightnessUpOptions.m in Sources */,
+				G0VE0002000000000000000E /* TTModeGoveeBrightnessDownOptions.m in Sources */,
+				NANL00020000000000000001 /* TTModeNanoleaf.m in Sources */,
+				NANL00020000000000000002 /* TTModeNanoleafOptions.m in Sources */,
+				NANL00020000000000000003 /* TTModeNanoleafConnect.m in Sources */,
+				NANL00020000000000000004 /* TTModeNanoleafConnecting.m in Sources */,
+				NANL00020000000000000005 /* TTModeNanoleafPushlink.m in Sources */,
+				NANL00020000000000000006 /* TTModeNanoleafConnected.m in Sources */,
+				NANL00020000000000000007 /* TTModeNanoleafSceneCustomOptions.m in Sources */,
+				NANL00020000000000000008 /* TTModeNanoleafSleepOptions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4222,7 +4549,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Mac/Supporting Files/Turn Touch Mac-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MARKETING_VERSION = 1.2.1;
 				OTHER_CFLAGS = (
 					"$(inherited)",
@@ -4230,7 +4557,7 @@
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-Wl,-rpath,@loader_path/../Frameworks",
+					"-Wl,-ld_classic",
 					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dejal.turntouch.mac-remote";
@@ -4267,7 +4594,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Mac/Supporting Files/Turn Touch Mac-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MARKETING_VERSION = 1.2.1;
 				OTHER_CFLAGS = (
 					"$(inherited)",
@@ -4275,7 +4602,7 @@
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-Wl,-rpath,@loader_path/../Frameworks",
+					"-Wl,-ld_classic",
 					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dejal.turntouch.mac-remote";
@@ -4312,7 +4639,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Mac/Supporting Files/Turn Touch Mac-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MARKETING_VERSION = 1.2.1;
 				OTHER_CFLAGS = (
 					"$(inherited)",
@@ -4320,7 +4647,7 @@
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-Wl,-rpath,@loader_path/../Frameworks",
+					"-Wl,-ld_classic",
 					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dejal.turntouch.mac-remote";
@@ -4376,7 +4703,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -4421,7 +4748,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -4435,11 +4762,10 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 59;
+				CURRENT_PROJECT_VERSION = 60;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 6W5HRS3393;
 				ENABLE_HARDENED_RUNTIME = YES;
-				EXCLUDED_ARCHS = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Turn\\ Touch\\ Mac/Vendor/",
@@ -4455,17 +4781,18 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Mac/Supporting Files/Turn Touch Mac-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MARKETING_VERSION = 1.5;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 2.0;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-v",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-Wl,-rpath,@loader_path/../Frameworks",
+					"-Wl,-ld_classic",
 					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.mac-remote";
@@ -4485,11 +4812,10 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 59;
+				CURRENT_PROJECT_VERSION = 60;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 6W5HRS3393;
 				ENABLE_HARDENED_RUNTIME = YES;
-				EXCLUDED_ARCHS = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Turn\\ Touch\\ Mac/Vendor/",
@@ -4505,17 +4831,18 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Mac/Supporting Files/Turn Touch Mac-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MARKETING_VERSION = 1.5;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 2.0;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-v",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-Wl,-rpath,@loader_path/../Frameworks",
+					"-Wl,-ld_classic",
 					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.mac-remote";
@@ -4557,7 +4884,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = "Turn Touch Mac Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4593,7 +4920,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = "Turn Touch Mac Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4648,7 +4975,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -4663,11 +4990,10 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 59;
+				CURRENT_PROJECT_VERSION = 60;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 6W5HRS3393;
 				ENABLE_HARDENED_RUNTIME = YES;
-				EXCLUDED_ARCHS = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Turn\\ Touch\\ Mac/Vendor/",
@@ -4683,17 +5009,18 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Mac/Supporting Files/Turn Touch Mac-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MARKETING_VERSION = 1.5;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 2.0;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-v",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-Wl,-rpath,@loader_path/../Frameworks",
+					"-Wl,-ld_classic",
 					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.mac-remote";
@@ -4735,7 +5062,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = "Turn Touch Mac Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";

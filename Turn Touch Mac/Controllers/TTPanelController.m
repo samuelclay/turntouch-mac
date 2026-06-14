@@ -132,6 +132,10 @@
 
     NSRect panelRect = [panel frame];
     panelRect.size.width = PANEL_WIDTH;
+    CGFloat panelHeight = [self.backgroundView preferredPanelHeight];
+    if (panelHeight > 0.f) {
+        panelRect.size.height = panelHeight;
+    }
     panelRect.origin.x = roundf(NSMidX(statusRect) - NSWidth(panelRect) / 2);
     panelRect.origin.y = NSMaxY(statusRect) - NSHeight(panelRect);
     

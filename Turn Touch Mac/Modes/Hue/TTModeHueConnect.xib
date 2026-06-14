@@ -12,8 +12,8 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView translatesAutoresizingMaskIntoConstraints="NO" id="uvb-gk-jW1">
-            <rect key="frame" x="0.0" y="0.0" width="344" height="91"/>
+        <customView verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="uvb-gk-jW1">
+            <rect key="frame" x="0.0" y="0.0" width="344" height="150"/>
             <subviews>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hBK-gB-IXz" customClass="TTChangeButtonView">
                     <rect key="frame" x="97" y="13" width="149" height="32"/>
@@ -29,12 +29,9 @@
                         <action selector="searchForBridge:" target="-2" id="Csl-Ay-CkY"/>
                     </connections>
                 </button>
-                <textField horizontalHuggingPriority="150" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="D2T-nu-n5t">
-                    <rect key="frame" x="-2" y="56" width="348" height="22"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="22" id="IZd-fH-r83"/>
-                    </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="center" title="Find your Philips Hue" id="s9F-ZN-mqc">
+                <textField horizontalHuggingPriority="150" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="D2T-nu-n5t">
+                    <rect key="frame" x="-2" y="56" width="348" height="36"/>
+                    <textFieldCell key="cell" scrollable="NO" lineBreakMode="wordWrapping" sendsActionOnEndEditing="YES" state="on" alignment="center" title="Find your Philips Hue" id="s9F-ZN-mqc">
                         <font key="font" size="14" name="Effra-Regular"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" white="1" alpha="0.71999999999999997" colorSpace="deviceWhite"/>

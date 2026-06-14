@@ -66,6 +66,13 @@
 	<string>Turn Touch uses music for the alarm clock.</string>
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>Turn Touch uses Bluetooth to communicate with your remote.</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Turn Touch uses the local network to control Philips Hue lights, Sonos speakers, and other smart home devices.</string>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_hue._tcp</string>
+		<string>_nanoleafapi._tcp</string>
+	</array>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © Turn Touch. All rights reserved.</string>
 	<key>NSMainNibFile</key>
