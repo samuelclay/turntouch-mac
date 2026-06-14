@@ -681,6 +681,12 @@
 }
 
 - (void)cleanupPanelModalPairing {
+    // Remove the scanning view controller's view from the stack *before* niling
+    // the controller. Otherwise the controller is deallocated while its view is
+    // still installed in the stack, and the subsequent setViews: removal messages
+    // the now-dead controller (-viewWillDisappear) -> EXC_BAD_ACCESS. Removing the
+    // view while the controller is alive tears down the association safely.
+    [self.modalPairingScanningView.view removeFromSuperview];
     self.modalPairingScanningView = nil;
     self.modalBarButton = nil;
 }
@@ -709,6 +715,9 @@
 }
 
 - (void)cleanupPanelModalFTUX {
+    // See cleanupPanelModalPairing: remove the controller's view while the
+    // controller is still alive so setViews: doesn't message a dead controller.
+    [self.modalFTUXView.view removeFromSuperview];
     self.modalFTUXView = nil;
     self.modalBarButton = nil;
 }
@@ -717,6 +726,9 @@
 
 - (void)switchPanelModalAbout {
     self.panelModal = PANEL_MODAL_ABOUT;
+    // Detach the previous controller's view before reassigning, so re-entering
+    // this modal doesn't deallocate a controller whose view is still installed.
+    [self.modalAbout.view removeFromSuperview];
     self.modalAbout = [[TTModalAbout alloc] init];
     [self setViews:@[self.arrowView,
                      self.titleBarView,
@@ -731,6 +743,7 @@
 
 - (void)switchPanelModalDevices {
     self.panelModal = PANEL_MODAL_DEVICES;
+    [self.modalDevices.view removeFromSuperview];
     self.modalDevices = [[TTModalDevices alloc] init];
     [self setViews:@[self.arrowView,
                      self.titleBarView,
@@ -745,6 +758,7 @@
 
 - (void)switchPanelModalSettings {
     self.panelModal = PANEL_MODAL_SETTINGS;
+    [self.modalSettings.view removeFromSuperview];
     self.modalSettings = [[TTModalSettings alloc] init];
     [self setViews:@[self.arrowView,
                      self.titleBarView,
@@ -759,6 +773,7 @@
 
 - (void)switchPanelModalSupport {
     self.panelModal = PANEL_MODAL_SUPPORT;
+    [self.modalSupportView.view removeFromSuperview];
     self.modalSupportView = [[TTModalSupportView alloc] init];
     self.modalBarButton = [[TTModalBarButton alloc] init];
 
