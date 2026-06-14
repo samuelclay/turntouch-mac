@@ -155,95 +155,14 @@
 //                                                                  NSHeight(appDelegate.panelController.window.frame))];
 }
 
-- (CGFloat)explicitHeightForView:(NSView *)view inContainer:(NSView *)container {
-    CGFloat height = 0.f;
-    NSArray *constraintGroups = container ? @[view.constraints, container.constraints] : @[view.constraints];
-
-    for (NSArray *constraints in constraintGroups) {
-        for (NSLayoutConstraint *constraint in constraints) {
-            if (constraint.relation != NSLayoutRelationEqual) continue;
-
-            BOOL constrainsViewHeight = (constraint.firstItem == view &&
-                                         constraint.firstAttribute == NSLayoutAttributeHeight &&
-                                         constraint.secondAttribute == NSLayoutAttributeNotAnAttribute);
-            if (constrainsViewHeight) {
-                height = MAX(height, constraint.constant);
-            }
-        }
-    }
-
-    return height;
-}
-
-- (CGFloat)heightForArrangedView:(NSView *)view inStackView:(NSStackView *)stackView {
-    if (view.isHidden) return 0.f;
-
-    [view layoutSubtreeIfNeeded];
-    CGFloat height = NSHeight(view.frame);
-    NSSize fittingSize = [view fittingSize];
-    height = MAX(height, fittingSize.height);
-    height = MAX(height, [self explicitHeightForView:view inContainer:stackView]);
-
-    return ceil(height);
-}
-
-- (CGFloat)arrangedContentHeightForStackView:(NSStackView *)stackView {
-    CGFloat height = 0.f;
-    NSInteger visibleViewCount = 0;
-
-    for (NSView *view in stackView.views) {
-        if (view.isHidden) continue;
-        height += [self heightForArrangedView:view inStackView:stackView];
-        visibleViewCount += 1;
-    }
-
-    if (visibleViewCount > 1) {
-        height += stackView.spacing * (visibleViewCount - 1);
-    }
-
-    return ceil(height);
-}
-
-- (CGFloat)scrollStackViewContentHeight {
-    [self.scrollStackView invalidateIntrinsicContentSize];
-    [self.scrollStackView layoutSubtreeIfNeeded];
-
-    CGFloat fittingHeight = [self.scrollStackView fittingSize].height;
-    CGFloat arrangedHeight = [self arrangedContentHeightForStackView:self.scrollStackView];
-
-    return ceil(MAX(fittingHeight, arrangedHeight));
-}
-
-- (CGFloat)nonScrollContentHeight {
-    CGFloat height = 0.f;
-
-    for (NSView *view in self.views) {
-        if (view == self.scrollView || view.isHidden) continue;
-        height += [self heightForArrangedView:view inStackView:self];
-    }
-
-    return ceil(height);
-}
-
-- (CGFloat)optionsBottomPadding {
-    if (self.appDelegate.modeMap.inspectingModeDirection != NO_DIRECTION) {
-        return ADD_ACTION_BUTTON_HEIGHT;
-    }
-
-    return 0.f;
-}
-
 - (CGFloat)preferredPanelHeight {
-    CGFloat height = [self nonScrollContentHeight];
-
-    if (self.scrollViewHeightConstraint) {
-        height += self.scrollViewHeightConstraint.constant;
-    } else if ([self.views containsObject:self.scrollView]) {
-        height += [self heightForArrangedView:self.scrollView inStackView:self];
-    }
+    // The fitting size is Auto Layout's own solution for the stack, so the
+    // window matches the laid-out content exactly instead of a hand-summed
+    // approximation drifting out of sync with it.
+    CGFloat height = [self fittingSize].height;
 
     if (height <= 0.f) {
-        height = [self fittingSize].height;
+        height = NSHeight(self.frame);
     }
 
     return ceil(height);
@@ -274,16 +193,8 @@
 - (void)updateScrollViewLayout {
     if (!self.scrollViewHeightConstraint) return;
 
-    CGFloat contentHeight = [self scrollStackViewContentHeight];
-    CGFloat nonScrollHeight = [self nonScrollContentHeight];
-    NSRect screenRect = [[[NSScreen screens] objectAtIndex:0] frame];
-    CGFloat maxHeight = MAX(0.f, NSHeight(screenRect) - nonScrollHeight - 50);
-    CGFloat scrollHeight = MIN(contentHeight, maxHeight);
-
-    if (fabs(self.scrollViewHeightConstraint.constant - scrollHeight) > 0.5f) {
-        self.scrollViewHeightConstraint.constant = scrollHeight;
-    }
-
+    // The scroll view height now tracks its content via Auto Layout (capped by
+    // a <= constraint), so all that's left is to resize the window to fit.
     [self resizePanelToPreferredHeight];
 }
 
@@ -383,11 +294,16 @@
                                                                 attribute:NSLayoutAttributeWidth
                                                                multiplier:1.f constant:0.f]];
 
+    // Bind the scroll view's height directly to its content's height (capped
+    // below). This makes content changes inside the scroll stack — like the
+    // add-action menu animating open/closed — propagate up the constraint chain
+    // automatically, so the outer layout re-runs and the panel resizes to fit
+    // instead of leaving the content to scroll or stranding blank space.
     self.scrollViewHeightConstraint = [NSLayoutConstraint constraintWithItem:self.scrollView
                                                                     attribute:NSLayoutAttributeHeight
                                                                     relatedBy:NSLayoutRelationEqual
-                                                                       toItem:nil
-                                                                    attribute:NSLayoutAttributeNotAnAttribute
+                                                                       toItem:self.scrollStackView
+                                                                    attribute:NSLayoutAttributeHeight
                                                                    multiplier:1.f constant:0.f];
     self.scrollViewHeightConstraint.priority = 999;
     [self addConstraint:self.scrollViewHeightConstraint];
@@ -441,12 +357,17 @@
                                                            attribute:0
                                                           multiplier:1.0 constant:1.f];
     [self.scrollStackView addConstraint:self.addActionMenuConstraint];
+    // Keep the add-action row always attached to the stack and drive its
+    // visibility purely through its height constraint (0 <-> button height).
+    // Toggling -hidden detaches the view from NSStackView's fittingSize, which
+    // leaves the window too short to fit the button when it reappears.
+    BOOL inspecting = self.appDelegate.modeMap.inspectingModeDirection != NO_DIRECTION;
     self.addActionButtonConstraint = [NSLayoutConstraint constraintWithItem:self.addActionButtonView
                                                              attribute:NSLayoutAttributeHeight
                                                              relatedBy:NSLayoutRelationEqual
                                                                 toItem:nil
                                                              attribute:0 multiplier:1.0
-                                                              constant:0];
+                                                              constant:inspecting ? ADD_ACTION_BUTTON_HEIGHT : 0];
     [self addConstraint:self.addActionButtonConstraint];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.addActionButtonView
                                                      attribute:NSLayoutAttributeWidth
@@ -593,18 +514,11 @@
     if (!self.appDelegate.modeMap.openedAddActionChangeMenu) {
         [[NSAnimationContext currentContext] setCompletionHandler:^{
             [self.addActionMenu toggleScrollbar:self.appDelegate.modeMap.openedAddActionChangeMenu];
+            [self updateScrollViewLayout];
         }];
         [[self.addActionMenuConstraint animator] setConstant:1.f];
     } else {
         [[self.addActionMenuConstraint animator] setConstant:ACTION_MENU_HEIGHT];
-
-        NSRect addActionMenuRect = [self.addActionMenu convertRect:self.addActionMenu.bounds toView:self.scrollView];
-        CGFloat scroll = -1 * (self.scrollView.contentSize.height + NSMaxY(addActionMenuRect));
-        NSClipView* clipView = [self.scrollView contentView];
-        NSPoint newOrigin = [clipView bounds].origin;
-        newOrigin.y = scroll;
-        [[clipView animator] setBoundsOrigin:newOrigin];
-        [self.scrollView reflectScrolledClipView:[self.scrollView contentView]];
     }
 
     [NSAnimationContext endGrouping];
@@ -617,11 +531,8 @@
 }
 
 - (void)toggleAddActionButtonView {
-    if (self.appDelegate.modeMap.inspectingModeDirection != NO_DIRECTION) {
-        [self.addActionButtonConstraint setConstant:ADD_ACTION_BUTTON_HEIGHT];
-    } else {
-        [self.addActionButtonConstraint setConstant:0.f];
-    }
+    BOOL inspecting = self.appDelegate.modeMap.inspectingModeDirection != NO_DIRECTION;
+    [self.addActionButtonConstraint setConstant:inspecting ? ADD_ACTION_BUTTON_HEIGHT : 0.f];
     [self updateScrollViewLayout];
 }
 
@@ -654,14 +565,13 @@
         [self removeConstraint:self.optionsConstraint];
     }
 
-    CGFloat bottomPadding = [self optionsBottomPadding];
     if (!optionsDetailView) {
         self.optionsConstraint = [NSLayoutConstraint constraintWithItem:self.optionsView
                                                          attribute:NSLayoutAttributeHeight
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:nil
                                                          attribute:0
-                                                        multiplier:1.0 constant:CORNER_RADIUS + bottomPadding];
+                                                        multiplier:1.0 constant:CORNER_RADIUS];
         [self.optionsView addConstraint:self.optionsConstraint];
     } else {
         self.optionsConstraint = [NSLayoutConstraint constraintWithItem:self.optionsView
@@ -669,7 +579,7 @@
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:optionsDetailView
                                                          attribute:NSLayoutAttributeBottom
-                                                        multiplier:1.0 constant:-bottomPadding];
+                                                        multiplier:1.0 constant:0];
         [self.optionsView addConstraint:self.optionsConstraint];
     }
 

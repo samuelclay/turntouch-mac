@@ -24,7 +24,11 @@
     if (self) {
         self.appDelegate = (TTAppDelegate *)[NSApp delegate];
         self.translatesAutoresizingMaskIntoConstraints = NO;
-        
+        // Clip to bounds so the centered button isn't drawn over its neighbors
+        // while the row is collapsed to zero height (not inspecting an action).
+        self.wantsLayer = YES;
+        self.layer.masksToBounds = YES;
+
         self.addButton = [[TTChangeButtonView alloc] init];
         [self.addButton setBorderRadius:12.f];
         [self setChangeButtonTitle:@"Add Action"];
