@@ -5,7 +5,7 @@
 	<key>ATSApplicationFontsPath</key>
 	<string>fonts</string>
 	<key>BuildMachineOSBuild</key>
-	<string>21C52</string>
+	<string>25F80</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -23,7 +23,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.5</string>
+	<string>2.0</string>
 	<key>CFBundleSupportedPlatforms</key>
 	<array>
 		<string>MacOSX</string>
@@ -42,27 +42,27 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>59</string>
+	<string>60</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>13C100</string>
+	<string>25F70</string>
 	<key>DTPlatformName</key>
 	<string>macosx</string>
 	<key>DTPlatformVersion</key>
-	<string>12.1</string>
+	<string>26.5</string>
 	<key>DTSDKBuild</key>
-	<string>21C46</string>
+	<string>25F70</string>
 	<key>DTSDKName</key>
-	<string>macosx12.1</string>
+	<string>macosx26.5</string>
 	<key>DTXcode</key>
-	<string>1321</string>
+	<string>2650</string>
 	<key>DTXcodeBuild</key>
-	<string>13C100</string>
+	<string>17F42</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.productivity</string>
 	<key>LSMinimumSystemVersion</key>
-	<string>10.10</string>
+	<string>10.13</string>
 	<key>LSUIElement</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -86,10 +86,17 @@
 	<string>Turn Touch uses music for the alarm clock.</string>
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>Turn Touch uses Bluetooth to communicate with your remote.</string>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_hue._tcp</string>
+		<string>_nanoleafapi._tcp</string>
+	</array>
 	<key>NSFileProviderDomainUsageDescription</key>
 	<string>Turn Touch uses files to play music.</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © Turn Touch. All rights reserved.</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Turn Touch uses the local network to control Philips Hue lights, Sonos speakers, and other smart home devices.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
