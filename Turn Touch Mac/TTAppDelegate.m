@@ -11,10 +11,12 @@
 #import "LaunchAtLoginController.h"
 #import "PFMoveApplication.h"
 #import <ApplicationServices/ApplicationServices.h>
+#import <Sparkle/Sparkle.h>
 
 @interface TTAppDelegate ()
 
 @property (nonatomic, strong, readwrite) TTPanelController *panelController;
+@property (nonatomic, strong) SUUpdater *updater;
 
 @end
 
@@ -46,7 +48,15 @@ void *kContextActivePanel = &kContextActivePanel;
     [self loadPreferences];
     
     [self checkAlreadyRunning];
-    
+
+    // Hold a strong reference to Sparkle's shared updater for the whole app
+    // lifetime. Previously the only SUUpdater was a top-level object in
+    // TTModalAbout.xib, which was released right after the About view loaded —
+    // so the "Check for updates..." button targeted a dead object (did nothing)
+    // and scheduled background checks never reliably ran. Owning it here keeps
+    // both working.
+    self.updater = [SUUpdater sharedUpdater];
+
     // Install icon into the menu bar
     self.bluetoothMonitor = [[TTBluetoothMonitor alloc] init];
     self.modeMap = [[TTModeMap alloc] init];
@@ -91,6 +101,10 @@ void *kContextActivePanel = &kContextActivePanel;
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:urlString]];
     }
     NSLog(@" ---> Trusted in accessibility: %d", accessibilityEnabled);
+}
+
+- (IBAction)checkForUpdates:(id)sender {
+    [self.updater checkForUpdates:sender];
 }
 
 - (void)applicationWillFinishLaunching:(NSNotification *)notification {

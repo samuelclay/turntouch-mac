@@ -24,4 +24,12 @@
     [self.appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_APP];
 }
 
+- (void)checkForUpdates:(id)sender {
+    // The shared updater is owned by the app delegate (see TTAppDelegate), so it
+    // outlives this view controller. The nib used to instantiate its own SUUpdater
+    // top-level object, which was released right after the view loaded, leaving the
+    // button targeting a dead object -> clicking did nothing.
+    [self.appDelegate checkForUpdates:sender];
+}
+
 @end

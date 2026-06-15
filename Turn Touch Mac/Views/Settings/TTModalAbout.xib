@@ -57,7 +57,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="checkForUpdates:" target="fLK-mV-B8g" id="enJ-9r-YXj"/>
+                                    <action selector="checkForUpdates:" target="-2" id="enJ-9r-YXj"/>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIA-tT-buc">
@@ -92,7 +92,6 @@
             </constraints>
             <point key="canvasLocation" x="189" y="366.5"/>
         </customView>
-        <customObject id="fLK-mV-B8g" customClass="SUUpdater"/>
     </objects>
     <resources>
         <image name="NSStopProgressTemplate" width="11" height="11"/>

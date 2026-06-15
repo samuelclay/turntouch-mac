@@ -15,5 +15,6 @@
 @property (nonatomic) IBOutlet NSTextField *versionLabel;
 
 - (IBAction)closeModal:(id)sender;
+- (IBAction)checkForUpdates:(id)sender;
 
 @end
