@@ -10,6 +10,7 @@
 		03813EB96F1A1A5340938DA7 /* TTHueAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F31BDDD852071A43064ECA /* TTHueAPIClient.m */; };
 		046ECDD2C0E003F4ECEAEA7B /* TTModeHomeAssistantOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 603E6366EDAFDC4A245AC24A /* TTModeHomeAssistantOptions.m */; };
 		050B418B591A85B579740307 /* Pods_Turn_Touch_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B611485DE4201F24DDD95F6A /* Pods_Turn_Touch_Mac.framework */; };
+		068A83E949DB2624FED52864 /* TTModeTwelve.m in Sources */ = {isa = PBXBuildFile; fileRef = 028D3917657A40C009630123 /* TTModeTwelve.m */; };
 		069EF77263E792BCD620F1B9 /* TTModeHomeAssistantOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 603E6366EDAFDC4A245AC24A /* TTModeHomeAssistantOptions.m */; };
 		0A2654CB23EC4573B7DE1862 /* press_smartbridge.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C16FF919BE94E6D8114CC4A /* press_smartbridge.png */; };
 		0A96A801E9891A9604FAB097 /* TTModeKasaDeviceOnOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF99CF9A89E0E94632BBB60 /* TTModeKasaDeviceOnOptions.m */; };
@@ -452,8 +453,10 @@
 		6C8F0BFDDC3CEA1BCAA5EBE2 /* Pods_Turn_Touch_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B611485DE4201F24DDD95F6A /* Pods_Turn_Touch_Mac.framework */; };
 		74E148E409C397320D5F84D1 /* TTModeKasaKLAPProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF79288A2203E19A6BDA899 /* TTModeKasaKLAPProtocol.m */; };
 		7AB8A4AEAA968E9A10094E28 /* TTHueResourceCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 36DA7F44BC35706635E30E3F /* TTHueResourceCache.m */; };
+		83572D0359087DAE7F4E8FC7 /* TTSettingsPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = E57D40F362CC641641C4BB5B /* TTSettingsPopoverController.m */; };
 		88862C2C8AB61619726B8059 /* TTModeKasaConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D31B53BB08BA79AC2F5C61 /* TTModeKasaConnect.m */; };
 		8A50EC55FE9F7B95408F2197 /* TTHueModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F080B4450C839EF70C803AB /* TTHueModels.m */; };
+		8DA952E4F1E0571A01DC5CE0 /* TTGestureDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = F6C6C11BB8655AC9634AD1AB /* TTGestureDecoder.m */; };
 		9152CF30A3EE25656EA0456D /* TTModeKasaDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F837BC42018A8E6F8C691 /* TTModeKasaDevice.m */; };
 		9B3BFE2384E73861B5B55C9E /* TTHomeAssistantClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FB4AC0FA0AC92056E4F024 /* TTHomeAssistantClient.m */; };
 		9F9FB24AC17E561B68BB5B38 /* TTModeKasaConnecting.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73D4DC7B0DE9C207687688AC /* TTModeKasaConnecting.xib */; };
@@ -466,8 +469,11 @@
 		BFE1E53BECA7FD65969081A4 /* TTModeKasaSwitchOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EA0875B231E48B9C5C38DBE /* TTModeKasaSwitchOptions.xib */; };
 		C01FD69B778B5C0684677954 /* Pods_Turn_Touch_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B611485DE4201F24DDD95F6A /* Pods_Turn_Touch_Mac.framework */; };
 		C139615B1E7F2014DF4473C4 /* Pods_Turn_Touch_Mac_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D78D7B37A823FEF6B921BCE /* Pods_Turn_Touch_Mac_Tests.framework */; };
+		C476EB2DD1E0324834CE54FB /* TTSettingsPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = E57D40F362CC641641C4BB5B /* TTSettingsPopoverController.m */; };
+		CBF9D7E77D5EAE17FBF85155 /* TTModeTwelve.m in Sources */ = {isa = PBXBuildFile; fileRef = 028D3917657A40C009630123 /* TTModeTwelve.m */; };
 		D21969E8E214D31BCD77DB04 /* TTModeKasaConnected.m in Sources */ = {isa = PBXBuildFile; fileRef = F296FE3E3C388DA98D239B93 /* TTModeKasaConnected.m */; };
 		D4C6A11FF9B6730033DE496A /* TTHueColorUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBE8FBF3A101F4E0ADB2AA8 /* TTHueColorUtilities.m */; };
+		DC2F3AF672E406E92A5EF9EB /* TTGestureDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = F6C6C11BB8655AC9634AD1AB /* TTGestureDecoder.m */; };
 		E1CAFC1AF7EB86236D36510B /* TTHomeAssistantWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F231259078F2BB9538494 /* TTHomeAssistantWindowController.m */; };
 		E3F3A7F4F9D276D5C2816C5B /* TTHomeAssistantClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FB4AC0FA0AC92056E4F024 /* TTHomeAssistantClient.m */; };
 		E72EA4089D9E088167A6A67C /* TTModeKasaOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6FD7A571EB09609C0D8633B /* TTModeKasaOptions.xib */; };
@@ -1001,9 +1007,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		028D3917657A40C009630123 /* TTModeTwelve.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = Models/TTModeTwelve.m; sourceTree = "<group>"; };
 		0C2C0FA5339691541C906E3E /* TTModeKasaSwitchOptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeKasaSwitchOptions.h; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaSwitchOptions.h"; sourceTree = SOURCE_ROOT; };
 		0E4A2F0883267D2D0B88E51D /* TTModeKasaSwitchDevice.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeKasaSwitchDevice.h; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaSwitchDevice.h"; sourceTree = SOURCE_ROOT; };
 		0E9B7D6FEC2B01E6BB1D3F27 /* TTModeKasaDiscovery.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeKasaDiscovery.h; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaDiscovery.h"; sourceTree = SOURCE_ROOT; };
+		139BB41F9AFE526CA74C6F78 /* TTSettingsPopoverController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Views/Title Bar/TTSettingsPopoverController.h"; sourceTree = "<group>"; };
+		16B67732EDE33F2EC4D6E945 /* TTGestureDecoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTGestureDecoder.h; sourceTree = "<group>"; };
 		172B5E0523E3EDAA008B5AAB /* Turn Touch Dejal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Turn Touch Dejal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1763B5322367E1C600F99717 /* Music.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Music.h; path = Modes/Music/Music.h; sourceTree = "<group>"; };
 		1766EE83226FC3B100A114B5 /* CBPeripheral+Extras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CBPeripheral+Extras.h"; path = "Categories/CBPeripheral+Extras.h"; sourceTree = "<group>"; };
@@ -1011,6 +1020,7 @@
 		178BDF51226E61E100396413 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		17B265212405C774007090C8 /* keyboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = keyboard.png; sourceTree = "<group>"; };
 		1E5A39A80D550F79B5D7708D /* TTModeKasaLegacyProtocol.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeKasaLegacyProtocol.m; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaLegacyProtocol.m"; sourceTree = SOURCE_ROOT; };
+		2249F98791171A78647AC1C4 /* TTModeTwelve.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Models/TTModeTwelve.h; sourceTree = "<group>"; };
 		2C2EE83B6285C449DDE5D556 /* TTModeKasaSwitchOptions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeKasaSwitchOptions.m; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaSwitchOptions.m"; sourceTree = SOURCE_ROOT; };
 		33E3A15C3494AFDAB094AE53 /* TTModeKasaDeviceToggleOptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeKasaDeviceToggleOptions.h; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaDeviceToggleOptions.h"; sourceTree = SOURCE_ROOT; };
 		35A1531BCA581AB4F448A492 /* TTModeKasaConnecting.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeKasaConnecting.h; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaConnecting.h"; sourceTree = SOURCE_ROOT; };
@@ -1064,11 +1074,13 @@
 		E0F7C397C513BC2C4F238237 /* TTHueEventStream.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTHueEventStream.h; sourceTree = "<group>"; };
 		E18EBB2E3A51C318000A1401 /* TTModeHomeAssistant.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTModeHomeAssistant.m; sourceTree = "<group>"; };
 		E4439EC9F0DFB4AA69CE0E48 /* Pods-Turn Touch Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turn Touch Mac.release.xcconfig"; path = "Pods/Target Support Files/Pods-Turn Touch Mac/Pods-Turn Touch Mac.release.xcconfig"; sourceTree = "<group>"; };
+		E57D40F362CC641641C4BB5B /* TTSettingsPopoverController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Views/Title Bar/TTSettingsPopoverController.m"; sourceTree = "<group>"; };
 		E5B108148837C6D4F7037D74 /* TTHueBridgeAuthenticator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTHueBridgeAuthenticator.h; sourceTree = "<group>"; };
 		EA408C4F43CAF6B351394832 /* TTHomeAssistantClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTHomeAssistantClient.h; sourceTree = "<group>"; };
 		F1F31BDDD852071A43064ECA /* TTHueAPIClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTHueAPIClient.m; sourceTree = "<group>"; };
 		F296FE3E3C388DA98D239B93 /* TTModeKasaConnected.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeKasaConnected.m; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaConnected.m"; sourceTree = SOURCE_ROOT; };
 		F43210B12D174F3B0AD9E7A0 /* TTHueColorUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTHueColorUtilities.h; sourceTree = "<group>"; };
+		F6C6C11BB8655AC9634AD1AB /* TTGestureDecoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTGestureDecoder.m; sourceTree = "<group>"; };
 		FAC62B54CAB44B5F4C5CE775 /* TTModeKasaDeviceOnOptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTModeKasaDeviceOnOptions.h; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaDeviceOnOptions.h"; sourceTree = SOURCE_ROOT; };
 		FBF79288A2203E19A6BDA899 /* TTModeKasaKLAPProtocol.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTModeKasaKLAPProtocol.m; path = "Turn Touch Mac/Modes/Kasa/TTModeKasaKLAPProtocol.m"; sourceTree = SOURCE_ROOT; };
 		FF01CA281C46009E00F83A73 /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = scripts; path = Resources/scripts; sourceTree = "<group>"; };
@@ -2099,6 +2111,8 @@
 				FFABAB891C28E6F000AD5620 /* TTBatchActions.m */,
 				FFABAB8E1C2A32E000AD5620 /* TTAction.h */,
 				FFABAB8F1C2A32E000AD5620 /* TTAction.m */,
+				2249F98791171A78647AC1C4 /* TTModeTwelve.h */,
+				028D3917657A40C009630123 /* TTModeTwelve.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -2318,6 +2332,8 @@
 				FF5295C71AD5B9B8007DDC02 /* TTSettingsButton.m */,
 				FFABAB781C235EC500AD5620 /* TTFooterView.h */,
 				FFABAB791C235EC500AD5620 /* TTFooterView.m */,
+				139BB41F9AFE526CA74C6F78 /* TTSettingsPopoverController.h */,
+				E57D40F362CC641641C4BB5B /* TTSettingsPopoverController.m */,
 			);
 			name = "Title Bar";
 			sourceTree = "<group>";
@@ -2774,6 +2790,8 @@
 				FF904B481BE9B82200AD00F3 /* TTButtonTimer.m */,
 				FF904B491BE9B82200AD00F3 /* TTDeviceList.h */,
 				FF904B4A1BE9B82200AD00F3 /* TTDeviceList.m */,
+				16B67732EDE33F2EC4D6E945 /* TTGestureDecoder.h */,
+				F6C6C11BB8655AC9634AD1AB /* TTGestureDecoder.m */,
 			);
 			path = Bluetooth;
 			sourceTree = "<group>";
@@ -4204,6 +4222,9 @@
 				BC7D4082C2FDBF0022B88856 /* TTHomeAssistantWindowController.m in Sources */,
 				11DBE7086D5CB704E97AD6F8 /* TTModeHomeAssistant.m in Sources */,
 				046ECDD2C0E003F4ECEAEA7B /* TTModeHomeAssistantOptions.m in Sources */,
+				C476EB2DD1E0324834CE54FB /* TTSettingsPopoverController.m in Sources */,
+				068A83E949DB2624FED52864 /* TTModeTwelve.m in Sources */,
+				8DA952E4F1E0571A01DC5CE0 /* TTGestureDecoder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4457,6 +4478,9 @@
 				E1CAFC1AF7EB86236D36510B /* TTHomeAssistantWindowController.m in Sources */,
 				B23FC7FAB5BF2C7F9F5C534A /* TTModeHomeAssistant.m in Sources */,
 				069EF77263E792BCD620F1B9 /* TTModeHomeAssistantOptions.m in Sources */,
+				CBF9D7E77D5EAE17FBF85155 /* TTModeTwelve.m in Sources */,
+				DC2F3AF672E406E92A5EF9EB /* TTGestureDecoder.m in Sources */,
+				83572D0359087DAE7F4E8FC7 /* TTSettingsPopoverController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

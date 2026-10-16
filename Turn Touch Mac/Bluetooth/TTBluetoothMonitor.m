@@ -437,6 +437,7 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
  Invoked whenever an existing connection with the peripheral is torn down.
  */
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
+    [self.buttonTimer resetGestureStateForDevice:peripheral.identifier.UUIDString];
 #ifdef DEBUG_CONNECT
     TTDevice *device = [self.foundDevices deviceForPeripheral:peripheral];
     NSLog(@" ---> (%X) Disconnected device: %@", self.bluetoothState, device);
@@ -666,7 +667,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
         if( (characteristic.value)  || !error ) {
 //            NSLog(@"Characteristic value: %@", [characteristic.value hexadecimalString]);
             if (device.isPaired) {
-                [self.buttonTimer readBluetoothData:characteristic.value];
+                [self.buttonTimer readBluetoothData:characteristic.value fromDevice:peripheral.identifier.UUIDString];
             } else {
                 [self.buttonTimer readBluetoothDataDuringPairing:characteristic.value];
                 if ([self.buttonTimer isDevicePaired]) {

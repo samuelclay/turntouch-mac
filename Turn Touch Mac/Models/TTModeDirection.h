@@ -14,7 +14,10 @@ typedef enum {
     EAST = 2,
     WEST = 3,
     SOUTH = 4,
-    INFO = 5
+    INFO = 5,
+    SINGLE_TAP = 6,
+    DOUBLE_TAP = 7,
+    HOLD = 8
 } TTModeDirection;
 
 

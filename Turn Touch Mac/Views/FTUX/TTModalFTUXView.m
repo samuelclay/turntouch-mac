@@ -71,6 +71,17 @@
         [self.labelSubtitle setStringValue:@"The Heads-Up Display (HUD) shows what each button does and gives you access to even more actions and apps"];
     }
 
+    if (self.appDelegate.modeMap.isTwelveButtonMode) {
+        if (self.modalFTUX == MODAL_FTUX_MODES) {
+            self.labelTitle.stringValue = @"Single tap, double tap, or hold";
+            self.labelSubtitle.stringValue = @"Four buttons × three gestures = twelve independent actions";
+        } else if (self.modalFTUX == MODAL_FTUX_BATCHACTIONS) {
+            self.labelSubtitle.stringValue = @"Choose a gesture tab and a button, then Add Action. Mix apps or add several actions to one gesture.";
+        } else if (self.modalFTUX == MODAL_FTUX_HUD) {
+            self.labelTitle.stringValue = @"Make it yours";
+            self.labelSubtitle.stringValue = @"Switch between 12 and 16 actions in Settings. Each layout keeps its own assignments.";
+        }
+    }
     [self.pageControl setNeedsDisplay:YES];
 }
 

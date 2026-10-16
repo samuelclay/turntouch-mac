@@ -32,6 +32,7 @@
 #import "TTModeSonos.h"
 #import "TTModePresentation.h"
 #import "Shortcut.h"
+#import "TTModeTwelve.h"
 
 @interface TTModeMap ()
 
@@ -84,6 +85,11 @@
                                                       integerValue];
         }
 
+        if (self.isTwelveButtonMode) {
+            if (self.selectedModeDirection < SINGLE_TAP || self.selectedModeDirection > HOLD) self.selectedModeDirection = SINGLE_TAP;
+        } else if (self.selectedModeDirection < NORTH || self.selectedModeDirection > SOUTH) {
+            self.selectedModeDirection = NORTH;
+        }
         [self registerAsObserver];
     }
     
@@ -182,11 +188,43 @@
     }
 }
 
+- (BOOL)isTwelveButtonMode {
+    return [[[NSUserDefaults standardUserDefaults] stringForKey:@"TT:buttonAppMode"] isEqualToString:@"12_buttons"];
+}
+
+- (void)switchButtonAppMode:(BOOL)twelve {
+    if (twelve == self.isTwelveButtonMode) return;
+    NSUserDefaults *prefs = NSUserDefaults.standardUserDefaults;
+    [prefs setInteger:self.selectedModeDirection forKey:self.isTwelveButtonMode ? @"TT:lastTwelveBank" : @"TT:lastSixteenBank"];
+    [prefs setObject:twelve ? @"12_buttons" : @"16_buttons" forKey:@"TT:buttonAppMode"];
+    self.waitingForDoubleClick = NO;
+    self.openedModeChangeMenu = NO;
+    self.openedActionChangeMenu = NO;
+    self.openedAddActionChangeMenu = NO;
+    self.openedChangeActionMenu = NO;
+    self.tempModeName = nil;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"TTButtonLayoutDidChange" object:self];
+    TTModeDirection bank = (TTModeDirection)[prefs integerForKey:twelve ? @"TT:lastTwelveBank" : @"TT:lastSixteenBank"];
+    if (twelve && (bank < SINGLE_TAP || bank > HOLD)) bank = SINGLE_TAP;
+    if (!twelve && (bank < NORTH || bank > SOUTH)) bank = NORTH;
+    [self switchMode:bank modeName:nil];
+}
+
+- (void)runGesture:(TTModeDirection)gesture direction:(TTModeDirection)direction {
+    if (!self.isTwelveButtonMode || gesture < SINGLE_TAP || gesture > HOLD || direction < NORTH || direction > SOUTH) return;
+    if (self.selectedModeDirection != gesture) [self switchMode:gesture modeName:nil];
+    self.activeModeDirection = NO_DIRECTION;
+    // Each gesture is an independent normal action, including the double-tap bank.
+    [self runDirection:direction];
+}
+
 - (void)switchMode {
     [self switchMode:self.selectedModeDirection modeName:nil];
 }
 
 - (void)switchMode:(TTModeDirection)direction modeName:(NSString *)modeName {
+    if (self.isTwelveButtonMode && direction >= NORTH && direction <= SOUTH) return;
+    self.waitingForDoubleClick = NO;
     [self setActiveModeDirection:NO_DIRECTION];
     
     if (self.selectedMode) {
@@ -218,6 +256,7 @@
 }
 
 - (void)maybeFireActiveButton {
+    if (self.isTwelveButtonMode) return;
     BOOL shouldFireImmediateOnPress = [self.selectedMode shouldFireImmediateOnPress:self.activeModeDirection];
     if (shouldFireImmediateOnPress && self.activeModeDirection != NO_DIRECTION) {
         self.selectedMode.action = [[TTAction alloc] initWithActionName:[self.selectedMode actionNameInDirection:self.activeModeDirection]
@@ -227,6 +266,12 @@
 }
 
 - (void)runActiveButton {
+    if (self.isTwelveButtonMode) {
+        TTModeDirection direction = self.activeModeDirection;
+        self.activeModeDirection = NO_DIRECTION;
+        [self runDirection:direction];
+        return;
+    }
     TTModeDirection direction = self.activeModeDirection;
     self.activeModeDirection = NO_DIRECTION;
     BOOL shouldFireImmediateOnPress = [self.selectedMode shouldFireImmediateOnPress:direction];
@@ -248,7 +293,7 @@
 
 - (void)runDirection:(TTModeDirection)direction {
     BOOL shouldFireImmediateOnPress = [self.selectedMode shouldFireImmediateOnPress:direction];
-    if (!shouldFireImmediateOnPress) {
+    if (!self.isTwelveButtonMode && !shouldFireImmediateOnPress) {
         self.selectedMode.action = [[TTAction alloc] initWithActionName:[self.selectedMode actionNameInDirection:direction]
                                                          direction:direction];
         [self.selectedMode runDirection:direction];
@@ -263,6 +308,7 @@
 }
 
 - (void)runDoubleButton:(TTModeDirection)direction {
+    if (self.isTwelveButtonMode) { [self runGesture:DOUBLE_TAP direction:direction]; return; }
             BOOL shouldFireImmediateOnPress = [self.selectedMode shouldFireImmediateOnPress:direction];
     self.waitingForDoubleClick = NO;
     self.activeModeDirection = NO_DIRECTION;
@@ -642,6 +688,13 @@ actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction 
 
 - (TTMode *)modeInDirection:(TTModeDirection)direction {
     switch (direction) {
+        case SINGLE_TAP:
+        case DOUBLE_TAP:
+        case HOLD: {
+            TTModeTwelve *mode = [[TTModeTwelve alloc] init];
+            mode.modeDirection = direction;
+            return mode;
+        }
         case NORTH:
             return self.northMode;
             break;
@@ -668,6 +721,9 @@ actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction 
 
 - (NSString *)directionName:(TTModeDirection)direction {
     switch (direction) {
+        case SINGLE_TAP: return @"single";
+        case DOUBLE_TAP: return @"double";
+        case HOLD: return @"hold";
         case NORTH:
             return @"north";
             break;
@@ -765,6 +821,8 @@ actionOptionValue:(NSString *)optionName inDirection:(TTModeDirection)direction 
 }
 
 - (void)performActionForShortcutWithMode:(TTMode *)mode direction:(TTModeDirection)direction {
+    // A shortcut explicitly selects its saved app bank, which belongs to the 16-action layout.
+    if (self.isTwelveButtonMode) [self switchButtonAppMode:NO];
     NSString *actionName = [mode actionNameInDirection:direction];
     
     self.selectedModeDirection = mode.modeDirection;

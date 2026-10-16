@@ -163,6 +163,10 @@
     if (self.appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION) return;
 
     [self clearOptionDetailViews];
+    if (self.appDelegate.modeMap.isTwelveButtonMode) {
+        [self.appDelegate.panelController.backgroundView adjustOptionsHeight:nil];
+        return;
+    }
     
     BOOL useModeOptions = NO;
     NSString *actionName = [self.appDelegate.modeMap.selectedMode

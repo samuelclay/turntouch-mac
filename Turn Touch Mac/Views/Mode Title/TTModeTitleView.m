@@ -48,6 +48,17 @@
     [self drawBackground];
 
     NSString *imageFilename = [[self.appDelegate.modeMap.selectedMode class] imageName];
+    if (self.appDelegate.modeMap.isTwelveButtonMode) {
+        Class commonClass = nil;
+        BOOL mixed = NO;
+        for (TTModeDirection direction = NORTH; direction <= SOUTH; direction++) {
+            TTAction *action = [self.appDelegate.modeMap selectedModeBatchActions:direction].firstObject;
+            if (!action) continue;
+            if (commonClass && commonClass != action.mode.class) mixed = YES;
+            commonClass = action.mode.class;
+        }
+        if (commonClass && !mixed) imageFilename = [commonClass imageName];
+    }
     self.modeImage = [NSImage imageNamed:imageFilename];
 
     [self.modeImage setSize:NSMakeSize(IMAGE_SIZE, IMAGE_SIZE)];
@@ -66,6 +77,7 @@
                                     BUTTON_WIDTH,
                                     NSHeight(self.frame) - BUTTON_MARGIN*2);
     self.changeButton.frame = buttonFrame;
+    self.changeButton.hidden = self.appDelegate.modeMap.isTwelveButtonMode;
     if (self.appDelegate.modeMap.openedModeChangeMenu) {
         [self setChangeButtonTitle:@"Cancel"];
     } else {
@@ -88,6 +100,10 @@
 
 - (void)setupTitleAttributes {
     self.modeTitle = [[self.appDelegate.modeMap.selectedMode class] description];
+    if (self.appDelegate.modeMap.isTwelveButtonMode) {
+        self.modeTitle = self.appDelegate.modeMap.selectedModeDirection == SINGLE_TAP ? @"Single tap actions" :
+            self.appDelegate.modeMap.selectedModeDirection == DOUBLE_TAP ? @"Double tap actions" : @"Hold actions";
+    }
     NSShadow *stringShadow = [[NSShadow alloc] init];
     stringShadow.shadowColor = [NSColor whiteColor];
     stringShadow.shadowOffset = NSMakeSize(0, -1);
@@ -103,11 +119,13 @@
 #pragma mark - KVO
 
 - (void)dealloc {
+    [self.appDelegate.modeMap removeObserver:self forKeyPath:@"inspectingModeDirection"];
     [self.appDelegate.modeMap removeObserver:self forKeyPath:@"selectedModeDirection"];
     [self.appDelegate.modeMap removeObserver:self forKeyPath:@"openedModeChangeMenu"];
 }
 
 - (void)registerAsObserver {
+    [self.appDelegate.modeMap addObserver:self forKeyPath:@"inspectingModeDirection" options:0 context:nil];
     [self.appDelegate.modeMap addObserver:self forKeyPath:@"selectedModeDirection"
                              options:0 context:nil];
     [self.appDelegate.modeMap addObserver:self forKeyPath:@"openedModeChangeMenu"
@@ -118,7 +136,7 @@
                        ofObject:(id)object
                          change:(NSDictionary*)change
                         context:(void*)context {
-    if ([keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
+    if ([keyPath isEqualToString:@"inspectingModeDirection"] || [keyPath isEqual:NSStringFromSelector(@selector(selectedModeDirection))]) {
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(openedModeChangeMenu))]) {
         [self setNeedsDisplay:YES];
