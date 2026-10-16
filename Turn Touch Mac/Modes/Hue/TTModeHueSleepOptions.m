@@ -8,7 +8,6 @@
 
 #import "TTModeHue.h"
 #import "TTModeHueSleepOptions.h"
-#import "TTHueBridge.h"
 
 NSString *const kHueDuration = @"hueDuration";
 NSString *const kHueDoubleTapDuration = @"hueDoubleTapDuration";

@@ -29,7 +29,7 @@ How It Works | Tap a button | Hold a button | Multiple actions | HUD
 
 ## Requirements
 
-- macOS 12+
+- macOS 10.13+
 - A current Xcode with the macOS SDK (verified with Xcode 27)
 
 ## Installation
@@ -147,16 +147,20 @@ They do not establish physical remote/Bluetooth delivery.
 
 Run `python3 scripts/build_mac_local.py --launch` to build, ad-hoc sign, and open
 the full app natively. Add `--universal` to include both Apple Silicon and Intel.
-The project targets macOS 12 or later. The resulting app is
+The local script targets macOS 12 because Xcode 27 no longer builds for older
+versions. The project retains the released app’s macOS 10.13 setting; building
+for that minimum requires a compatible older Xcode and separate runtime testing.
+Home Assistant uses REST, with optional device/area registry enrichment through
+WebSocket on macOS 10.15 or later. The resulting app is
 `/tmp/turntouch-native-build/Build/Products/Debug/Turn Touch Mac.app`.
 
-The Intel-only Hue SDK was replaced with `Modes/Hue/TTHueBridge`, a source-built
-client for the local Hue v1 REST API. Existing room and scene identifiers remain
-usable. Pair the Mac with the bridge once to store its new native-client credential
-in Keychain. Discovery uses mDNS with the official Hue discovery endpoint as a
-fallback. Run `python3 scripts/test_hue_native.py` to test the production client
-against a local protocol fixture, including exact light/group/scene/fade payloads,
-error handling, and dimmable-only bulb capabilities.
+The released Hue v2 implementation is retained, including its live event stream,
+existing bridge credentials, scene selections, and reconnection behavior. It is
+source-built and supports both Intel and Apple Silicon. The temporary Hue v1
+replacement has been removed. Govee, Kasa, and Nanoleaf integrations and the
+released Bluetooth, layout, and Sparkle updater fixes are retained.
+Run `python3 scripts/test_hue_v2.py` to verify v2 action failures, partial errors,
+authentication, redirect rejection, and exact payloads against a local fixture.
 
 Google shut down Works with Nest in September 2023. The legacy Nest mode now
 uses Home Assistant and explains that existing Nest buttons need to be assigned
@@ -165,7 +169,7 @@ from both application targets. Historical vendor files are retained in the tree,
 but neither the Hue SDK nor Firebase is linked or embedded in the app. Sparkle
 already includes an Apple Silicon slice; the other dependencies build from source.
 
-For an Apple Silicon native integration browser independent of those legacy SDKs,
+For a standalone Home Assistant integration browser,
 run `bash scripts/build_home_assistant_preview.sh` and open the printed `.app` path.
 The preview uses the production browser/client; **Save to button** is disabled
 because it is not attached to a remote button. The main Turn Touch app supplies

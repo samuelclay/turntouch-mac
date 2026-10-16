@@ -15,6 +15,7 @@
 @property (nonatomic, strong) TTModeSonosConnect *connectViewController;
 @property (nonatomic, strong) TTModeSonosConnecting *connectingViewController;
 @property (nonatomic, strong) TTModeSonosConnected *connectedViewController;
+@property (nonatomic, strong) NSLayoutConstraint *viewHeightConstraint;
 
 @end
 
@@ -68,6 +69,23 @@
 }
 
 - (void)drawViewController:(TTOptionsDetailViewController *)viewController {
+    CGFloat viewHeight = NSHeight(viewController.view.frame);
+    NSSize fittingSize = [viewController.view fittingSize];
+    if (fittingSize.height > 0.f) {
+        viewHeight = fittingSize.height;
+    }
+
+    if (self.viewHeightConstraint) {
+        [self.view removeConstraint:self.viewHeightConstraint];
+    }
+    self.viewHeightConstraint = [NSLayoutConstraint constraintWithItem:self.view
+                                                            attribute:NSLayoutAttributeHeight
+                                                            relatedBy:NSLayoutRelationEqual
+                                                               toItem:nil
+                                                            attribute:NSLayoutAttributeNotAnAttribute
+                                                           multiplier:1.0 constant:viewHeight];
+    [self.view addConstraint:self.viewHeightConstraint];
+
     [self.view addSubview:viewController.view];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:viewController.view
                                                           attribute:NSLayoutAttributeTop

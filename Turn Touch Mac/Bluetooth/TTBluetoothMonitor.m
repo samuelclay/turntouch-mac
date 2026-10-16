@@ -301,13 +301,22 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 
 - (void)countDevices {
 //    NSLog(@"Counting %d: %@", (int)foundDevices.count, foundDevices);
-    
+
     [self.foundDevices ensureDevicesConnected];
-    
-    [self setValue:@([[self.foundDevices nicknamedConnected] count]) forKey:@"nicknamedConnectedCount"];
-    [self setValue:@([self.foundDevices pairedConnectedCount]) forKey:@"pairedDevicesCount"];
-    [self setValue:@([self.foundDevices unpairedCount]) forKey:@"unpairedDevicesCount"];
-    [self setValue:@([self.foundDevices unpairedConnectedCount]) forKey:@"unpairedDevicesConnected"];
+
+    // Capture values on current thread
+    NSNumber *nicknamedCount = @([[self.foundDevices nicknamedConnected] count]);
+    NSNumber *pairedCount = @([self.foundDevices pairedConnectedCount]);
+    NSNumber *unpairedCount = @([self.foundDevices unpairedCount]);
+    NSNumber *unpairedConnectedCount = @([self.foundDevices unpairedConnectedCount]);
+
+    // Dispatch KVO notifications to main thread to avoid race conditions with UI observers
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self setValue:nicknamedCount forKey:@"nicknamedConnectedCount"];
+        [self setValue:pairedCount forKey:@"pairedDevicesCount"];
+        [self setValue:unpairedCount forKey:@"unpairedDevicesCount"];
+        [self setValue:unpairedConnectedCount forKey:@"unpairedDevicesConnected"];
+    });
 }
 
 /*
@@ -317,14 +326,19 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
       advertisementData:(NSDictionary *)advertisementData
                    RSSI:(NSNumber *)RSSI
 {
+    // Filter out non-Turn Touch devices early by checking advertised name
+    NSString *localName = [advertisementData objectForKey:CBAdvertisementDataLocalNameKey];
+    if (localName && [localName rangeOfString:@"Turn Touch" options:NSCaseInsensitiveSearch].location == NSNotFound) {
+        return;
+    }
+
     TTDevice *device = [self.foundDevices deviceForPeripheral:peripheral];
     if (!device) {
         device = [self.foundDevices addPeripheral:peripheral];
     }
     if (!device.isPaired && !self.isPairing) {
 #ifdef DEBUG_CONNECT
-            NSString *localName = [advertisementData objectForKey:CBAdvertisementDataLocalNameKey];
-            NSLog(@" --> (%X) Found unknown bluetooth peripheral, not pairing, so disconnecting: %@/%@ (%@)", self.bluetoothState, localName, device, RSSI);
+        NSLog(@" --> (%X) Found unknown bluetooth peripheral, not pairing, so disconnecting: %@/%@ (%@)", self.bluetoothState, localName, device, RSSI);
 #endif
         [self.manager cancelPeripheralConnection:peripheral];
         return;
@@ -332,7 +346,6 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
 
     self.bluetoothState = BT_STATE_CONNECTING_UNKNOWN;
 #ifdef DEBUG_CONNECT
-    NSString *localName = [advertisementData objectForKey:CBAdvertisementDataLocalNameKey];
     NSLog(@" --> (%X) Found bluetooth peripheral, attempting connect: %@/%@ (%@)", self.bluetoothState, localName, device, RSSI);
 #endif
 //    [self stopScan];
@@ -351,7 +364,6 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
         [self.manager cancelPeripheralConnection:peripheral];
     } else {
 #ifdef DEBUG_CONNECT
-        NSString *localName = [advertisementData objectForKey:CBAdvertisementDataLocalNameKey];
         NSLog(@" --> (%X) Attempting connect: %@/%@ (%@)", self.bluetoothState, localName, device, RSSI);
 #endif
         [self.manager connectPeripheral:peripheral
@@ -1018,10 +1030,8 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
     [self.appDelegate.modeMap setActiveModeDirection:NO_DIRECTION];
     [self.appDelegate.panelController.backgroundView switchPanelModalPairing:MODAL_PAIRING_SUCCESS];
 
-#ifdef DEBUG_CONNECT
-//    NSLog(@" ---> (%X) [Pairing success] Canceling peripheral connection: %@", bluetoothState, foundDevice);
-#endif
-//    [manager cancelPeripheralConnection:peripheral];
+    // Disconnect all other unpaired remotes now that we've successfully paired one
+    [self disconnectUnpairedDevices];
 }
 
 - (void)forgetDevice:(TTDevice *)device {

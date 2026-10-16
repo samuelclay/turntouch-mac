@@ -110,7 +110,12 @@
     if (!encodedObject) {
         return nil;
     }
-    AccessToken *at = [NSKeyedUnarchiver unarchiveObjectWithData:encodedObject];
+    NSError *unarchiveError = nil;
+    AccessToken *at = [NSKeyedUnarchiver unarchivedObjectOfClass:[AccessToken class] fromData:encodedObject error:&unarchiveError];
+    if (unarchiveError) {
+        NSLog(@"Failed to unarchive access token: %@", unarchiveError);
+        return nil;
+    }
     if ([at isValid]) {
         return at.token;
     } else {
@@ -139,7 +144,12 @@
 - (void)setAccessToken:(NSString *)accessToken withExpiration:(long)expiration
 {
     AccessToken *nat = [AccessToken tokenWithToken:accessToken expiresIn:expiration];
-    NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:nat];
+    NSError *archiveError = nil;
+    NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:nat requiringSecureCoding:YES error:&archiveError];
+    if (archiveError) {
+        NSLog(@"Failed to archive access token: %@", archiveError);
+        return;
+    }
     [[NSUserDefaults standardUserDefaults] setObject:encodedObject forKey:@"TT:mode:nest:accessToken"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     

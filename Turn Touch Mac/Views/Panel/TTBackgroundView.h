@@ -99,5 +99,6 @@
 - (void)switchPanelModalPairing:(TTModalPairing)_modalPairing;
 - (void)switchPanelModalFTUX:(TTModalFTUX)_modalFTUX;
 - (void)toggleBatchActionsChangeActionMenu:(TTAction *)batchAction visible:(BOOL)visible;
+- (CGFloat)preferredPanelHeight;
 
 @end

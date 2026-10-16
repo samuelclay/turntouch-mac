@@ -13,6 +13,9 @@
 
 @property (nonatomic, strong) NSTimer *countdownTimer;
 @property (nonatomic, strong) NSTimer *searchingTimer;
+@property (nonatomic, assign) BOOL observersRegistered;
+@property (nonatomic, assign) BOOL hasAppeared;
+@property (nonatomic, assign) BOOL isDeallocating;
 
 @end
 
@@ -32,28 +35,44 @@
 }
 
 - (void)viewWillAppear {
-    static dispatch_once_t onceUnknownToken;
-    dispatch_once(&onceUnknownToken, ^{
+    if (!self.hasAppeared) {
+        self.hasAppeared = YES;
+        __weak typeof(self) weakSelf = self;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            onceUnknownToken = 0;
-            [self checkBluetoothState];
-            [self.appDelegate.bluetoothMonitor disconnectUnpairedDevices];
-            [self.appDelegate.bluetoothMonitor scanUnknown:NO];
-            self.appDelegate.bluetoothMonitor.isPairing = YES;
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            if (!strongSelf || strongSelf.isDeallocating) {
+                return;
+            }
+            [strongSelf checkBluetoothState];
+            [strongSelf.appDelegate.bluetoothMonitor disconnectUnpairedDevices];
+            [strongSelf.appDelegate.bluetoothMonitor scanUnknown:NO];
+            strongSelf.appDelegate.bluetoothMonitor.isPairing = YES;
         });
-    });
+    }
 
     [self resetDiamond];
     [self countUnpairedDevices];
 }
 
 - (void)viewWillDisappear {
+    // Remove KVO observers first to prevent callbacks during teardown
+    [self unregisterAsObserver];
+
     [self.appDelegate.bluetoothMonitor stopScan];
     self.appDelegate.bluetoothMonitor.isPairing = NO;
-    
-    if (self.countdownTimer) {
-        [self.countdownTimer invalidate];
-        self.countdownTimer = nil;
+
+    // Capture and nil the timer first to avoid race conditions
+    NSTimer *timer = _countdownTimer;
+    _countdownTimer = nil;
+    if (timer && [timer isValid]) {
+        [timer invalidate];
+    }
+
+    // Also invalidate the searching timer
+    NSTimer *searchTimer = _searchingTimer;
+    _searchingTimer = nil;
+    if (searchTimer && [searchTimer isValid]) {
+        [searchTimer invalidate];
     }
 }
 
@@ -66,6 +85,8 @@
 #pragma mark - KVO
 
 - (void)registerAsObserver {
+    if (self.observersRegistered) return;
+
     [self.appDelegate.bluetoothMonitor addObserver:self
                                    forKeyPath:@"unpairedDevicesCount"
                                       options:0 context:nil];
@@ -75,12 +96,31 @@
     [self.appDelegate.bluetoothMonitor addObserver:self
                                    forKeyPath:@"pairedDevicesCount"
                                       options:0 context:nil];
+    self.observersRegistered = YES;
+}
+
+- (void)unregisterAsObserver {
+    if (!self.observersRegistered) return;
+
+    @try {
+        [self.appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"unpairedDevicesCount"];
+        [self.appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"unpairedDevicesConnected"];
+        [self.appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"pairedDevicesCount"];
+    } @catch (NSException *exception) {
+        // Observers may already be removed
+    }
+    self.observersRegistered = NO;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object
                         change:(NSDictionary *)change
                        context:(void *)context {
+    // Guard against late-arriving KVO callbacks after unregistration or during dealloc
+    if (_isDeallocating || !_observersRegistered) {
+        return;
+    }
+
     if ([keyPath isEqual:NSStringFromSelector(@selector(unpairedDevicesCount))]) {
         [self countUnpairedDevices];
     } else if ([keyPath isEqual:NSStringFromSelector(@selector(unpairedDevicesConnected))]) {
@@ -92,57 +132,94 @@
 }
 
 - (void)dealloc {
-    if (self.countdownTimer) {
-        [self.countdownTimer invalidate];
-        self.countdownTimer = nil;
+    // Mark as deallocating immediately to prevent any callbacks
+    _isDeallocating = YES;
+
+    // Remove KVO observers first
+    [self unregisterAsObserver];
+
+    // Use direct ivar access to avoid any property getter issues during dealloc
+    NSTimer *timer = _countdownTimer;
+    _countdownTimer = nil;
+    if (timer && [timer isValid]) {
+        [timer invalidate];
     }
-    [self.appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"unpairedDevicesCount"];
-    [self.appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"unpairedDevicesConnected"];
-    [self.appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"pairedDevicesCount"];
+
+    NSTimer *searchTimer = _searchingTimer;
+    _searchingTimer = nil;
+    if (searchTimer && [searchTimer isValid]) {
+        [searchTimer invalidate];
+    }
 }
 
 #pragma mark - Drawing
 
 - (void)countUnpairedDevices {
+    // Guard against calls during deallocation
+    if (_isDeallocating) {
+        return;
+    }
+
     BOOL found = !![self.appDelegate.bluetoothMonitor.unpairedDevicesCount integerValue] || self.appDelegate.bluetoothMonitor.bluetoothState == BT_STATE_CONNECTING_UNKNOWN;
     BOOL connected = !![self.appDelegate.bluetoothMonitor.unpairedDevicesConnected integerValue];
-    
+
     //    NSLog(@"Counting unpaired devices: %d-%d", found, connected);
     if (!found) {
         [self.countdownIndicator setHidden:YES];
         [self.spinnerScanning setHidden:NO];
 //        [self.appDelegate.bluetoothMonitor disconnectUnpairedDevices];
         NSRunLoop *runner = [NSRunLoop currentRunLoop];
-        if (self.searchingTimer) [self.searchingTimer invalidate];
-        self.searchingTimer = [[NSTimer alloc] initWithFireDate:[[NSDate date] dateByAddingTimeInterval:10.f]
+
+        // Safely invalidate existing searching timer using direct ivar access
+        NSTimer *oldSearchTimer = _searchingTimer;
+        _searchingTimer = nil;
+        if (oldSearchTimer && [oldSearchTimer isValid]) {
+            [oldSearchTimer invalidate];
+        }
+
+        _searchingTimer = [[NSTimer alloc] initWithFireDate:[[NSDate date] dateByAddingTimeInterval:10.f]
                                                   interval:0.f
                                                     target:self
                                                   selector:@selector(searchingFailure)
                                                   userInfo:nil repeats:NO];
-        [runner addTimer:self.searchingTimer forMode:NSDefaultRunLoopMode];
+        [runner addTimer:_searchingTimer forMode:NSDefaultRunLoopMode];
         [self.spinnerScanning setNeedsDisplay:YES];
-        
+
         [self.labelScanning setStringValue:@"Scanning for remotes..."];
-        
-        if (self.countdownTimer) {
-            [self.countdownTimer invalidate];
-            self.countdownTimer = nil;
+
+        // Safely invalidate countdown timer
+        NSTimer *oldCountdown = _countdownTimer;
+        _countdownTimer = nil;
+        if (oldCountdown && [oldCountdown isValid]) {
+            [oldCountdown invalidate];
         }
     } else if (found && !connected) {
         [self.countdownIndicator setHidden:YES];
         [self.spinnerScanning setHidden:NO];
         [self.labelScanning setStringValue:@"Connecting..."];
-        [self.searchingTimer invalidate];
+
+        // Safely invalidate searching timer
+        NSTimer *oldSearchTimer = _searchingTimer;
+        _searchingTimer = nil;
+        if (oldSearchTimer && [oldSearchTimer isValid]) {
+            [oldSearchTimer invalidate];
+        }
     } else if (found && connected) {
         [self.countdownIndicator setHidden:NO];
         [self.countdownIndicator setDoubleValue:0];
         [self.spinnerScanning setHidden:YES];
         [self.labelScanning setStringValue:@"Press all four buttons to connect"];
-        [self.searchingTimer invalidate];
+
+        // Safely invalidate searching timer
+        NSTimer *oldSearchTimer = _searchingTimer;
+        _searchingTimer = nil;
+        if (oldSearchTimer && [oldSearchTimer isValid]) {
+            [oldSearchTimer invalidate];
+        }
+
         [self resetDiamond];
         [self updateCountdown];
     }
-    
 }
 
 - (void)resetDiamond {
@@ -158,33 +235,62 @@
 #pragma mark - Countdown timer
 
 - (void)updateCountdown {
+    // Guard against calls during deallocation
+    if (_isDeallocating) {
+        return;
+    }
+
     double minusOneSecond = self.countdownIndicator.doubleValue + self.countdownIndicator.maxValue/10;
     [self.countdownIndicator setDoubleValue:minusOneSecond];
-    
+
     NSLog(@"Countdown: %f >= %f", minusOneSecond, self.countdownIndicator.maxValue);
     if (minusOneSecond >= self.countdownIndicator.maxValue) {
         [self.appDelegate.bluetoothMonitor disconnectUnpairedDevices];
         [self.appDelegate.panelController.backgroundView switchPanelModalPairing:MODAL_PAIRING_FAILURE];
-        [self.countdownTimer invalidate];
-        self.countdownTimer = nil;
+
+        // Safely invalidate countdown timer using direct ivar
+        NSTimer *oldTimer = _countdownTimer;
+        _countdownTimer = nil;
+        if (oldTimer && [oldTimer isValid]) {
+            [oldTimer invalidate];
+        }
     } else {
         NSRunLoop *runner = [NSRunLoop currentRunLoop];
-        if (self.countdownTimer) [self.countdownTimer invalidate];
-        self.countdownTimer = [[NSTimer alloc] initWithFireDate:[[NSDate date] dateByAddingTimeInterval:1.f]
+
+        // Safely invalidate existing timer before creating new one
+        NSTimer *oldTimer = _countdownTimer;
+        _countdownTimer = nil;
+        if (oldTimer && [oldTimer isValid]) {
+            [oldTimer invalidate];
+        }
+
+        _countdownTimer = [[NSTimer alloc] initWithFireDate:[[NSDate date] dateByAddingTimeInterval:1.f]
                                                   interval:0.f
                                                     target:self
                                                   selector:@selector(updateCountdown)
                                                   userInfo:nil repeats:NO];
-        [runner addTimer:self.countdownTimer forMode:NSDefaultRunLoopMode];
+        [runner addTimer:_countdownTimer forMode:NSDefaultRunLoopMode];
     }
 }
 
 - (void)searchingFailure {
+    // Guard against calls during deallocation
+    if (_isDeallocating) {
+        return;
+    }
+
     if (self.appDelegate.bluetoothMonitor.bluetoothState == BT_STATE_CONNECTING_UNKNOWN) {
         NSLog(@" ---> Not cancelling unknown search, connecting to unknown...");
         return;
     }
-    [self.searchingTimer invalidate];
+
+    // Safely invalidate searching timer using direct ivar
+    NSTimer *oldTimer = _searchingTimer;
+    _searchingTimer = nil;
+    if (oldTimer && [oldTimer isValid]) {
+        [oldTimer invalidate];
+    }
+
     [self.appDelegate.panelController.backgroundView switchPanelModalPairing:MODAL_PAIRING_FAILURE];
 }
 

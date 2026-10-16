@@ -24,7 +24,11 @@
     if (self) {
         self.appDelegate = (TTAppDelegate *)[NSApp delegate];
         self.translatesAutoresizingMaskIntoConstraints = NO;
-        
+        // Clip to bounds so the centered button isn't drawn over its neighbors
+        // while the row is collapsed to zero height (not inspecting an action).
+        self.wantsLayer = YES;
+        self.layer.masksToBounds = YES;
+
         self.addButton = [[TTChangeButtonView alloc] init];
         [self.addButton setBorderRadius:12.f];
         [self setChangeButtonTitle:@"Add Action"];
@@ -76,7 +80,6 @@
     [super drawRect:dirtyRect];
     
     [self drawBackground];
-    [self drawAddButton];
 }
 
 - (void)drawBackground {
@@ -84,11 +87,18 @@
     NSRectFill(self.bounds);
 }
 
-- (void)drawAddButton {
-    // 8px to compensate for footer
-    NSRect buttonFrame = NSMakeRect(NSWidth(self.frame)/2 - ADD_BUTTON_WIDTH/2,
-                                    (NSHeight(self.frame)/2) - (24.f/2) - (8.f/2),
-                                    ADD_BUTTON_WIDTH, 24.f);
+- (void)layout {
+    [super layout];
+    [self layoutAddButton];
+}
+
+- (void)layoutAddButton {
+    static const CGFloat buttonHeight = 24.f;
+    CGFloat x = MAX(0.f, floor((NSWidth(self.bounds) - ADD_BUTTON_WIDTH) / 2.f));
+    CGFloat y = MAX(0.f, floor((NSHeight(self.bounds) - buttonHeight) / 2.f));
+    NSRect buttonFrame = NSMakeRect(x,
+                                    y,
+                                    ADD_BUTTON_WIDTH, buttonHeight);
     self.addButton.frame = buttonFrame;
 }
 

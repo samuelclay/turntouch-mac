@@ -70,7 +70,7 @@
 
 -(void)themeChanged:(NSNotification *) notification {
     NSLog (@"Theme changed: %@", notification);
-    [self setNeedsLayout:YES];
+    [self setNeedsDisplay:YES];
 }
 
 - (TTModeDirection)directionForLocation:(CGPoint)location {

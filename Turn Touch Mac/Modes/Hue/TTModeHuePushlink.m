@@ -8,7 +8,7 @@
 
 #import "TTModeHueOptions.h"
 #import "TTModeHuePushlink.h"
-#import "TTHueBridge.h"
+#import "TTModeHue.h"
 
 @interface TTModeHuePushlink ()
 

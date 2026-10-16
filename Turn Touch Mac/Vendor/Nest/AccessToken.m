@@ -16,13 +16,17 @@
 
 #import "AccessToken.h"
 
-@interface AccessToken () <NSCoding>
+@interface AccessToken () <NSSecureCoding>
 
 @property (nonatomic, strong) NSDate *expiresOn;
 
 @end
 
 @implementation AccessToken
+
++ (BOOL)supportsSecureCoding {
+    return YES;
+}
 
 /**
  * Tells whether or not the token is valid.
@@ -67,8 +71,8 @@
 - (id)initWithCoder:(NSCoder *)decoder
 {
     if (self = [super init]) {
-        self.token = [decoder decodeObjectForKey:@"token"];
-        self.expiresOn = [decoder decodeObjectForKey:@"expiresOn"];
+        self.token = [decoder decodeObjectOfClass:[NSString class] forKey:@"token"];
+        self.expiresOn = [decoder decodeObjectOfClass:[NSDate class] forKey:@"expiresOn"];
     }
     return self;
 }

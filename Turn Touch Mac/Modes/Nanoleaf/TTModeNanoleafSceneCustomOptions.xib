@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13529"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="TTModeNanoleafSceneCustomOptions">
+            <connections>
+                <outlet property="scenePopup" destination="sp1-ab-123" id="sp1-ab-456"/>
+                <outlet property="spinner" destination="spn-ab-123" id="spn-ab-456"/>
+                <outlet property="refreshButton" destination="rfb-ab-123" id="rfb-ab-456"/>
+                <outlet property="doubleTapScenePopup" destination="dsp-ab-123" id="dsp-ab-456"/>
+                <outlet property="doubleTapSpinner" destination="dts-ab-123" id="dts-ab-456"/>
+                <outlet property="doubleTapRefreshButton" destination="drb-ab-123" id="drb-ab-456"/>
+                <outlet property="view" destination="c22-O7-iKe" id="db5-TT-jbb"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView verticalHuggingPriority="1000" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="497" height="100"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="img-st-123">
+                    <rect key="frame" x="20" y="58" width="29" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="29" id="img-st-w"/>
+                        <constraint firstAttribute="height" constant="24" id="img-st-h"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="single_tap" id="img-st-c"/>
+                </imageView>
+                <textField verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="lbl-st-123">
+                    <rect key="frame" x="55" y="61" width="71" height="21"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Single tap" id="lbl-st-c">
+                        <font key="font" size="14" name="Effra-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <popUpButton horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sp1-ab-123">
+                    <rect key="frame" x="142" y="56" width="260" height="26"/>
+                    <popUpButtonCell key="cell" type="push" title="" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="sp1-ab-c">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="didChangeScene:" target="-2" id="sp1-act"/>
+                    </connections>
+                </popUpButton>
+                <progressIndicator style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="spn-ab-123" hidden="YES">
+                    <rect key="frame" x="414" y="60" width="16" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="16" id="spn-w"/>
+                        <constraint firstAttribute="height" constant="16" id="spn-h"/>
+                    </constraints>
+                </progressIndicator>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="rfb-ab-123">
+                    <rect key="frame" x="414" y="56" width="60" height="26"/>
+                    <buttonCell key="cell" type="push" title="Refresh" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="rfb-ab-c" customClass="TTChangeButtonCell">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="11" name="Effra-Regular"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="didClickRefresh:" target="-2" id="rfb-act"/>
+                    </connections>
+                </button>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="img-dt-123">
+                    <rect key="frame" x="20" y="17" width="29" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="29" id="img-dt-w"/>
+                        <constraint firstAttribute="height" constant="24" id="img-dt-h"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="double_tap" id="img-dt-c"/>
+                </imageView>
+                <textField verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="lbl-dt-123">
+                    <rect key="frame" x="55" y="20" width="71" height="21"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Double tap" id="lbl-dt-c">
+                        <font key="font" size="14" name="Effra-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <popUpButton horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dsp-ab-123">
+                    <rect key="frame" x="142" y="15" width="260" height="26"/>
+                    <popUpButtonCell key="cell" type="push" title="" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="dsp-ab-c">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="didChangeScene:" target="-2" id="dsp-act"/>
+                    </connections>
+                </popUpButton>
+                <progressIndicator style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="dts-ab-123" hidden="YES">
+                    <rect key="frame" x="414" y="19" width="16" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="16" id="dts-w"/>
+                        <constraint firstAttribute="height" constant="16" id="dts-h"/>
+                    </constraints>
+                </progressIndicator>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="drb-ab-123">
+                    <rect key="frame" x="414" y="15" width="60" height="26"/>
+                    <buttonCell key="cell" type="push" title="Refresh" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="drb-ab-c" customClass="TTChangeButtonCell">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="11" name="Effra-Regular"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="didClickRefresh:" target="-2" id="drb-act"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="img-st-123" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="c1"/>
+                <constraint firstItem="lbl-st-123" firstAttribute="leading" secondItem="img-st-123" secondAttribute="trailing" constant="8" id="c2"/>
+                <constraint firstItem="lbl-st-123" firstAttribute="centerY" secondItem="img-st-123" secondAttribute="centerY" constant="-2" id="c3"/>
+                <constraint firstItem="sp1-ab-123" firstAttribute="leading" secondItem="lbl-st-123" secondAttribute="trailing" constant="20" id="c4"/>
+                <constraint firstItem="sp1-ab-123" firstAttribute="centerY" secondItem="lbl-st-123" secondAttribute="centerY" id="c5"/>
+                <constraint firstItem="rfb-ab-123" firstAttribute="leading" secondItem="sp1-ab-123" secondAttribute="trailing" constant="12" id="c6"/>
+                <constraint firstItem="rfb-ab-123" firstAttribute="centerY" secondItem="sp1-ab-123" secondAttribute="centerY" id="c7"/>
+                <constraint firstItem="spn-ab-123" firstAttribute="centerX" secondItem="rfb-ab-123" secondAttribute="centerX" id="c8"/>
+                <constraint firstItem="spn-ab-123" firstAttribute="centerY" secondItem="rfb-ab-123" secondAttribute="centerY" id="c9"/>
+                <constraint firstItem="lbl-st-123" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" id="c10"/>
+                <constraint firstItem="lbl-dt-123" firstAttribute="top" secondItem="lbl-st-123" secondAttribute="bottom" constant="20" id="c11"/>
+                <constraint firstItem="img-dt-123" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="c12"/>
+                <constraint firstItem="lbl-dt-123" firstAttribute="leading" secondItem="img-dt-123" secondAttribute="trailing" constant="8" id="c13"/>
+                <constraint firstItem="lbl-dt-123" firstAttribute="centerY" secondItem="img-dt-123" secondAttribute="centerY" constant="-2" id="c14"/>
+                <constraint firstItem="dsp-ab-123" firstAttribute="leading" secondItem="sp1-ab-123" secondAttribute="leading" id="c15"/>
+                <constraint firstItem="dsp-ab-123" firstAttribute="centerY" secondItem="lbl-dt-123" secondAttribute="centerY" id="c16"/>
+                <constraint firstItem="drb-ab-123" firstAttribute="leading" secondItem="dsp-ab-123" secondAttribute="trailing" constant="12" id="c17"/>
+                <constraint firstItem="drb-ab-123" firstAttribute="centerY" secondItem="dsp-ab-123" secondAttribute="centerY" id="c18"/>
+                <constraint firstItem="dts-ab-123" firstAttribute="centerX" secondItem="drb-ab-123" secondAttribute="centerX" id="c19"/>
+                <constraint firstItem="dts-ab-123" firstAttribute="centerY" secondItem="drb-ab-123" secondAttribute="centerY" id="c20"/>
+                <constraint firstAttribute="bottom" secondItem="dsp-ab-123" secondAttribute="bottom" constant="20" id="c21"/>
+                <constraint firstAttribute="trailing" secondItem="rfb-ab-123" secondAttribute="trailing" constant="20" id="c22"/>
+            </constraints>
+            <point key="canvasLocation" x="326.5" y="328.5"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="double_tap" width="512" height="512"/>
+        <image name="single_tap" width="512" height="512"/>
+    </resources>
+</document>

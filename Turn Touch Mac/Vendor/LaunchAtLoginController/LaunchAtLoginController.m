@@ -48,16 +48,20 @@ void sharedFileListDidChange(LSSharedFileListRef inList, void *context)
 {
     self = [super init];
     loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
-    LSSharedFileListAddObserver(loginItems, CFRunLoopGetMain(),
-        (CFStringRef)NSDefaultRunLoopMode, sharedFileListDidChange, (voidPtr)CFBridgingRetain(self));
+    if (loginItems != NULL) {
+        LSSharedFileListAddObserver(loginItems, CFRunLoopGetMain(),
+            (CFStringRef)NSDefaultRunLoopMode, sharedFileListDidChange, (voidPtr)CFBridgingRetain(self));
+    }
     return self;
 }
 
 - (void) dealloc
 {
-    LSSharedFileListRemoveObserver(loginItems, CFRunLoopGetMain(),
-        (CFStringRef)NSDefaultRunLoopMode, sharedFileListDidChange, (__bridge void *)(self));
-    CFRelease(loginItems);
+    if (loginItems != NULL) {
+        LSSharedFileListRemoveObserver(loginItems, CFRunLoopGetMain(),
+            (CFStringRef)NSDefaultRunLoopMode, sharedFileListDidChange, (__bridge void *)(self));
+        CFRelease(loginItems);
+    }
 }
 
 #pragma mark Launch List Control
@@ -67,20 +71,32 @@ void sharedFileListDidChange(LSSharedFileListRef inList, void *context)
     if (wantedURL == NULL || fileList == NULL)
         return NULL;
 
-    NSArray *listSnapshot = (__bridge NSArray *)(LSSharedFileListCopySnapshot(fileList, NULL));
+    CFArrayRef snapshot = LSSharedFileListCopySnapshot(fileList, NULL);
+    if (snapshot == NULL)
+        return NULL;
+
+    NSArray *listSnapshot = (__bridge_transfer NSArray *)snapshot;
     for (id itemObject in listSnapshot) {
         LSSharedFileListItemRef item = (__bridge LSSharedFileListItemRef) itemObject;
+        if (item == NULL)
+            continue;
+
         UInt32 resolutionFlags = kLSSharedFileListNoUserInteraction | kLSSharedFileListDoNotMountVolumes;
-//        CFURLRef currentItemURL = NULL;
-//        LSSharedFileListItemResolve(item, resolutionFlags, &currentItemURL, NULL);
-        CFURLRef currentItemURL = LSSharedFileListItemCopyResolvedURL(item, resolutionFlags, NULL);
-        if (currentItemURL && CFEqual(currentItemURL, (__bridge CFTypeRef)(wantedURL)))
-        {
-            CFRelease(currentItemURL);
-            return item;
+        CFErrorRef error = NULL;
+        CFURLRef currentItemURL = LSSharedFileListItemCopyResolvedURL(item, resolutionFlags, &error);
+
+        if (error != NULL) {
+            CFRelease(error);
+            continue;
         }
-        if (currentItemURL)
+
+        if (currentItemURL != NULL) {
+            if (CFEqual(currentItemURL, (__bridge CFTypeRef)(wantedURL))) {
+                CFRelease(currentItemURL);
+                return item;
+            }
             CFRelease(currentItemURL);
+        }
     }
 
     return NULL;

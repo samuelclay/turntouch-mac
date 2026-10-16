@@ -136,7 +136,7 @@
 
     [self.backgroundView layoutSubtreeIfNeeded];
     NSRect panelRect = TTPanelFrameBelowStatusItem(statusRect,
-        NSMakeSize(PANEL_WIDTH, NSHeight(panel.frame)), screenRect, ARROW_HEIGHT);
+        NSMakeSize(PANEL_WIDTH, [self.backgroundView preferredPanelHeight]), screenRect, ARROW_HEIGHT);
     NSLog(@"Panel anchor: %@ frame: %@ screen: %@", NSStringFromRect(statusRect),
           NSStringFromRect(panelRect), NSStringFromRect(screenRect));
 

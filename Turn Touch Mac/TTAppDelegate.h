@@ -36,5 +36,6 @@
 
 - (void)openPanel;
 - (IBAction)togglePanel:(id)sender;
+- (IBAction)checkForUpdates:(id)sender;
 
 @end

@@ -25,5 +25,6 @@
 @property (nonatomic) TTOptionsDetailViewController *actionOptionsViewController;
 
 - (void)redrawOptions;
+- (void)drawModeOptions;
 
 @end
