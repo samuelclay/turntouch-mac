@@ -64,6 +64,10 @@
 	<string>Turn Touch uses music for the alarm clock.</string>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>Turn Touch uses music for the alarm clock.</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Turn Touch finds Home Assistant and controls the devices you assign to your remote.</string>
+	<key>NSBonjourServices</key>
+	<array><string>_home-assistant._tcp</string><string>_hue._tcp</string></array>
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>Turn Touch uses Bluetooth to communicate with your remote.</string>
 	<key>NSHumanReadableCopyright</key>

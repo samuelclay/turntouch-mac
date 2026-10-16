@@ -28,6 +28,7 @@
 
 - (id)initWithDelegate:(id<TTPanelControllerDelegate>)delegate;
 - (NSRect)statusRectForWindow:(NSWindow *)window;
+- (NSScreen *)screenForPanel;
 
 - (void)openPanel;
 - (BOOL)closePanel;

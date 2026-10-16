@@ -10,10 +10,7 @@
 		050B418B591A85B579740307 /* Pods_Turn_Touch_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B611485DE4201F24DDD95F6A /* Pods_Turn_Touch_Mac.framework */; };
 		172B5C3D23E3EDAA008B5AAB /* NSData+Conversion.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE2D4781A46404500DDD413 /* NSData+Conversion.m */; };
 		172B5C3E23E3EDAA008B5AAB /* TTModeWebWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB9E1C33675200AD5620 /* TTModeWebWindow.m */; };
-		172B5C3F23E3EDAA008B5AAB /* Thermostat.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AB21C49C63D005FB7FD /* Thermostat.m */; };
 		172B5C4023E3EDAA008B5AAB /* TTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8C834917AB14B5000166FC /* TTAppDelegate.m */; };
-		172B5C4123E3EDAA008B5AAB /* TTModeNestConnecting.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557ADD1C4ED8AF005FB7FD /* TTModeNestConnecting.m */; };
-		172B5C4223E3EDAA008B5AAB /* NestAuthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AAC1C49C63D005FB7FD /* NestAuthManager.m */; };
 		172B5C4323E3EDAA008B5AAB /* NSString+JXRemoving.m in Sources */ = {isa = PBXBuildFile; fileRef = FF01CA911C473EC100F83A73 /* NSString+JXRemoving.m */; };
 		172B5C4423E3EDAA008B5AAB /* hid.c in Sources */ = {isa = PBXBuildFile; fileRef = FF904B411BE9B82200AD00F3 /* hid.c */; };
 		172B5C4523E3EDAA008B5AAB /* TTModeNewsFeedView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9006321D8A1B89008A65AD /* TTModeNewsFeedView.m */; };
@@ -56,7 +53,6 @@
 		172B5C6A23E3EDAA008B5AAB /* TTModeAirfoil.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0DE99A21B8D1BA00037B07 /* TTModeAirfoil.m */; };
 		172B5C6B23E3EDAA008B5AAB /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E551C545E6400FAD7E2 /* XPathQuery.m */; };
 		172B5C6C23E3EDAA008B5AAB /* TTModeTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF05F3A18F77BE000AC6230 /* TTModeTitleView.m */; };
-		172B5C6D23E3EDAA008B5AAB /* FirebaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AAA1C49C63D005FB7FD /* FirebaseManager.m */; };
 		172B5C6E23E3EDAA008B5AAB /* TTModeMenuCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF429AD11919C630007C485E /* TTModeMenuCollectionView.m */; };
 		172B5C6F23E3EDAA008B5AAB /* MLCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1F13591ADC90E700B52A0D /* MLCalendarCell.m */; };
 		172B5C7023E3EDAA008B5AAB /* TTModeHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA1D4D41A3B89A4003EA0BC /* TTModeHUDView.m */; };
@@ -66,12 +62,9 @@
 		172B5C7423E3EDAA008B5AAB /* TTActionMap.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98A2E01867DBA40032CC7A /* TTActionMap.m */; };
 		172B5C7523E3EDAA008B5AAB /* TTModeWebBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABABA11C33676700AD5620 /* TTModeWebBrowserView.m */; };
 		172B5C7623E3EDAA008B5AAB /* TTHUDMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FF877CD71C6C19F1007940C3 /* TTHUDMenuButton.m */; };
-		172B5C7723E3EDAA008B5AAB /* TTModeNestConnected.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AE21C4ED8BE005FB7FD /* TTModeNestConnected.m */; };
 		172B5C7823E3EDAA008B5AAB /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7305981A5C9C76009A852D /* DDLog.m */; };
 		172B5C7923E3EDAA008B5AAB /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3D21F51F1EF50900F7F5BF /* GCDAsyncSocket.m */; };
-		172B5C7A23E3EDAA008B5AAB /* TTModeNestSetTempOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AE71C4F1CD0005FB7FD /* TTModeNestSetTempOptions.m */; };
 		172B5C7B23E3EDAA008B5AAB /* TTModeIftttTriggerActionOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFF0C811EFC976B00E29E6D /* TTModeIftttTriggerActionOptions.m */; };
-		172B5C7C23E3EDAA008B5AAB /* TTModeNestAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AD31C4DBB4A005FB7FD /* TTModeNestAuthViewController.m */; };
 		172B5C7D23E3EDAA008B5AAB /* DFUHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B5F1BE9B88700AD00F3 /* DFUHelper.m */; };
 		172B5C7E23E3EDAA008B5AAB /* JsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B721BE9B88700AD00F3 /* JsonParser.m */; };
 		172B5C7F23E3EDAA008B5AAB /* TTModeCustomURLOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8448F71E10DB1A00C1091E /* TTModeCustomURLOptions.m */; };
@@ -88,8 +81,6 @@
 		172B5C8A23E3EDAA008B5AAB /* UnzipFirmware.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B751BE9B88700AD00F3 /* UnzipFirmware.m */; };
 		172B5C8B23E3EDAA008B5AAB /* TTMenubarController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98A2E31867DBE70032CC7A /* TTMenubarController.m */; };
 		172B5C8C23E3EDAA008B5AAB /* TTNewsBlurUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBD46FD1D5AB5E100838AAC /* TTNewsBlurUtilities.m */; };
-		172B5C8D23E3EDAA008B5AAB /* NestThermostatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AB01C49C63D005FB7FD /* NestThermostatManager.m */; };
-		172B5C8E23E3EDAA008B5AAB /* TTModeNestConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AD81C4ED8A0005FB7FD /* TTModeNestConnect.m */; };
 		172B5C8F23E3EDAA008B5AAB /* TTNewsBlurFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB08E461D63F2460040A531 /* TTNewsBlurFeed.m */; };
 		172B5C9023E3EDAA008B5AAB /* TTModalPairingScanningView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF27052C1C90FB3B000BB10F /* TTModalPairingScanningView.m */; };
 		172B5C9123E3EDAA008B5AAB /* TTModeNewsBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF79C58A1D5815D5006C75C9 /* TTModeNewsBrowserView.m */; };
@@ -129,8 +120,6 @@
 		172B5CB323E3EDAA008B5AAB /* TTBatchActionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB801C2777D500AD5620 /* TTBatchActionHeaderView.m */; };
 		172B5CB423E3EDAA008B5AAB /* TTModeTabsContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA8EA99190F07A500679A4D /* TTModeTabsContainer.m */; };
 		172B5CB523E3EDAA008B5AAB /* TTOptionsDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66F2A81922D1C100031478 /* TTOptionsDetailView.m */; };
-		172B5CB623E3EDAA008B5AAB /* NestStructureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AAE1C49C63D005FB7FD /* NestStructureManager.m */; };
-		172B5CB723E3EDAA008B5AAB /* TTModeNestDelegateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAB2C1C1E0C7C9400A16433 /* TTModeNestDelegateManager.m */; };
 		172B5CB823E3EDAA008B5AAB /* TTModeNewsBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF79C5871D5815C0006C75C9 /* TTModeNewsBackgroundView.m */; };
 		172B5CB923E3EDAA008B5AAB /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = FF904B8C1BE9BA3700AD00F3 /* ioapi.c */; };
 		172B5CBA23E3EDAA008B5AAB /* TTModeWemoConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C2E581C546D6E00FAD7E2 /* TTModeWemoConnect.m */; };
@@ -148,7 +137,6 @@
 		172B5CC623E3EDAA008B5AAB /* TTModeMusicVolumeJumpOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8528FA1A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.m */; };
 		172B5CC723E3EDAA008B5AAB /* TTTitleBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5295C41AD5B9A4007DDC02 /* TTTitleBarView.m */; };
 		172B5CC823E3EDAA008B5AAB /* TTPageIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF87E9FE1C97671E00682461 /* TTPageIndicatorView.m */; };
-		172B5CC923E3EDAA008B5AAB /* NestConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557ABF1C49C71A005FB7FD /* NestConstants.m */; };
 		172B5CCA23E3EDAA008B5AAB /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = FF904B951BE9BA3700AD00F3 /* SSZipArchive.m */; };
 		172B5CCB23E3EDAA008B5AAB /* TTHUDController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA1D4CA1A3B8916003EA0BC /* TTHUDController.m */; };
 		172B5CCC23E3EDAA008B5AAB /* SonosPlayable.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD45D512211D84C0065DF1A /* SonosPlayable.m */; };
@@ -194,7 +182,6 @@
 		172B5CF423E3EDAA008B5AAB /* NSString+Counting.m in Sources */ = {isa = PBXBuildFile; fileRef = FF01CA8F1C473EC100F83A73 /* NSString+Counting.m */; };
 		172B5CF523E3EDAA008B5AAB /* TTActionHUDWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA1D4C61A3B8916003EA0BC /* TTActionHUDWindow.m */; };
 		172B5CF623E3EDAA008B5AAB /* TTOptionsActionTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = FF801337186E5D9700955218 /* TTOptionsActionTitle.m */; };
-		172B5CF723E3EDAA008B5AAB /* AccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AA81C49C63D005FB7FD /* AccessToken.m */; };
 		172B5CF823E3EDAA008B5AAB /* TTModeNewsWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FF79C5841D5815AB006C75C9 /* TTModeNewsWindow.m */; };
 		172B5CF923E3EDAA008B5AAB /* TTModeSonosOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3D21FF1F1F1BE100F7F5BF /* TTModeSonosOptions.m */; };
 		172B5CFA23E3EDAA008B5AAB /* TTHUDMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6135341C5AF59D00F431D7 /* TTHUDMenuView.m */; };
@@ -227,7 +214,6 @@
 		172B5D1523E3EDAA008B5AAB /* TTModalAbout.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8D1AA41C98F292006AA1A2 /* TTModalAbout.m */; };
 		172B5D1723E3EDAA008B5AAB /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FF2C2E511C545D1800FAD7E2 /* libxml2.tbd */; };
 		172B5D1823E3EDAA008B5AAB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF557ACE1C49CE94005FB7FD /* Security.framework */; };
-		172B5D1923E3EDAA008B5AAB /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF557AED1C4F393C005FB7FD /* Firebase.framework */; };
 		172B5D1A23E3EDAA008B5AAB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF557ACC1C49CE8C005FB7FD /* CFNetwork.framework */; };
 		172B5D1B23E3EDAA008B5AAB /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FF557ACA1C49CE85005FB7FD /* libc++.tbd */; };
 		172B5D1C23E3EDAA008B5AAB /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FF557AC81C49CE7E005FB7FD /* libicucore.tbd */; };
@@ -236,7 +222,6 @@
 		172B5D1F23E3EDAA008B5AAB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8012F6186A599600955218 /* AudioToolbox.framework */; };
 		172B5D2023E3EDAA008B5AAB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFBC625E1A9D699D0032AD24 /* AVFoundation.framework */; };
 		172B5D2123E3EDAA008B5AAB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7305C11A5CB2E3009A852D /* SystemConfiguration.framework */; };
-		172B5D2223E3EDAA008B5AAB /* HueSDK_OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */; };
 		172B5D2323E3EDAA008B5AAB /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFE2D4751A451FA200DDD413 /* CoreBluetooth.framework */; };
 		172B5D2423E3EDAA008B5AAB /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB653DF18DBA14E00830B42 /* CoreFoundation.framework */; };
 		172B5D2523E3EDAA008B5AAB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF98A30C1868F1120032CC7A /* QuartzCore.framework */; };
@@ -452,7 +437,6 @@
 		172B5DFA23E3EDAA008B5AAB /* scroll_down.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8B75101F86CF7800D7867C /* scroll_down.png */; };
 		172B5DFB23E3EDAA008B5AAB /* scroll_up.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8B75111F86CF7800D7867C /* scroll_up.png */; };
 		172B5DFD23E3EDAA008B5AAB /* Effra_Rg.ttf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = FF936042196DF0B600675B7B /* Effra_Rg.ttf */; };
-		172B5DFF23E3EDAA008B5AAB /* HueSDK_OSX.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1766EE85226FC3B100A114B5 /* CBPeripheral+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 1766EE84226FC3B100A114B5 /* CBPeripheral+Extras.m */; };
 		17B265222405C774007090C8 /* keyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 17B265212405C774007090C8 /* keyboard.png */; };
 		17B265232405C774007090C8 /* keyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 17B265212405C774007090C8 /* keyboard.png */; };
@@ -460,9 +444,19 @@
 		17BE4689249989AE00949E38 /* TTModeTV.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFED5611243946880022C5EA /* TTModeTV.plist */; };
 		17BE468A249989B300949E38 /* TTModeTVVolumeJumpOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFED5612243946880022C5EA /* TTModeTVVolumeJumpOptions.m */; };
 		17BE468B249989B900949E38 /* TTModeTVVolumeJumpOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFED5610243946880022C5EA /* TTModeTVVolumeJumpOptions.xib */; };
+		17E7FAE247899958BF5A5F19 /* TTHomeAssistantClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC0801E22177DABB7FC0408 /* TTHomeAssistantClient.m */; };
+		2C206C8C459B865363BC3093 /* TTModeHomeAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = 447F4D7005CD8D30C0CE1E3C /* TTModeHomeAssistant.m */; };
+		2FF59687D4DC64448EE1DA17 /* TTHomeAssistantClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC0801E22177DABB7FC0408 /* TTHomeAssistantClient.m */; };
+		3482045DE119CEFDDB245795 /* TTHomeAssistantWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D48149FCD05368AD32F28965 /* TTHomeAssistantWindowController.m */; };
+		48FE7DFF626E9AA786622AD2 /* TTHomeAssistantWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D48149FCD05368AD32F28965 /* TTHomeAssistantWindowController.m */; };
+		6BFDD8384E6DBF84539919AA /* TTModeHomeAssistantOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F46AF00F09B0E071170F097 /* TTModeHomeAssistantOptions.m */; };
 		6C8F0BFDDC3CEA1BCAA5EBE2 /* Pods_Turn_Touch_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B611485DE4201F24DDD95F6A /* Pods_Turn_Touch_Mac.framework */; };
+		B5919F9B2B1E16338452C597 /* TTHueBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = D42BC86FC678558A13C6C8E9 /* TTHueBridge.m */; };
 		C01FD69B778B5C0684677954 /* Pods_Turn_Touch_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B611485DE4201F24DDD95F6A /* Pods_Turn_Touch_Mac.framework */; };
 		C139615B1E7F2014DF4473C4 /* Pods_Turn_Touch_Mac_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D78D7B37A823FEF6B921BCE /* Pods_Turn_Touch_Mac_Tests.framework */; };
+		D433B6A5303DDFEE1A925CAA /* TTModeHomeAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = 447F4D7005CD8D30C0CE1E3C /* TTModeHomeAssistant.m */; };
+		D8DCC942E6CD62D025644527 /* TTHueBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = D42BC86FC678558A13C6C8E9 /* TTHueBridge.m */; };
+		F4EAB5434DB9EC47E337F9B8 /* TTModeHomeAssistantOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F46AF00F09B0E071170F097 /* TTModeHomeAssistantOptions.m */; };
 		FF01CA291C46009E00F83A73 /* scripts in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA281C46009E00F83A73 /* scripts */; };
 		FF01CA591C46DCC200F83A73 /* app_music.png in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA2C1C46DCC200F83A73 /* app_music.png */; };
 		FF01CA5A1C46DCC200F83A73 /* button_chevron.png in Resources */ = {isa = PBXBuildFile; fileRef = FF01CA2D1C46DCC200F83A73 /* button_chevron.png */; };
@@ -618,31 +612,18 @@
 		FF52960A1AD61F84007DDC02 /* NSDateTimeAgo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FF5296091AD61F84007DDC02 /* NSDateTimeAgo.bundle */; };
 		FF557A9E1C4855BD005FB7FD /* TTModeNest.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557A9D1C4855BD005FB7FD /* TTModeNest.m */; };
 		FF557AA21C4855D4005FB7FD /* TTModeWemo.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AA11C4855D4005FB7FD /* TTModeWemo.m */; };
-		FF557AB31C49C63D005FB7FD /* AccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AA81C49C63D005FB7FD /* AccessToken.m */; };
-		FF557AB41C49C63D005FB7FD /* FirebaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AAA1C49C63D005FB7FD /* FirebaseManager.m */; };
-		FF557AB51C49C63D005FB7FD /* NestAuthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AAC1C49C63D005FB7FD /* NestAuthManager.m */; };
-		FF557AB61C49C63D005FB7FD /* NestStructureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AAE1C49C63D005FB7FD /* NestStructureManager.m */; };
-		FF557AB71C49C63D005FB7FD /* NestThermostatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AB01C49C63D005FB7FD /* NestThermostatManager.m */; };
-		FF557AB81C49C63D005FB7FD /* Thermostat.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AB21C49C63D005FB7FD /* Thermostat.m */; };
 		FF557ABC1C49C6A8005FB7FD /* TTModeNestOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557ABA1C49C6A8005FB7FD /* TTModeNestOptions.m */; };
 		FF557ABD1C49C6A8005FB7FD /* TTModeNestOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF557ABB1C49C6A8005FB7FD /* TTModeNestOptions.xib */; };
-		FF557AC01C49C71A005FB7FD /* NestConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557ABF1C49C71A005FB7FD /* NestConstants.m */; };
 		FF557AC91C49CE7E005FB7FD /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FF557AC81C49CE7E005FB7FD /* libicucore.tbd */; };
 		FF557ACB1C49CE85005FB7FD /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FF557ACA1C49CE85005FB7FD /* libc++.tbd */; };
 		FF557ACD1C49CE8C005FB7FD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF557ACC1C49CE8C005FB7FD /* CFNetwork.framework */; };
 		FF557ACF1C49CE94005FB7FD /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF557ACE1C49CE94005FB7FD /* Security.framework */; };
-		FF557AD51C4DBB4A005FB7FD /* TTModeNestAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AD31C4DBB4A005FB7FD /* TTModeNestAuthViewController.m */; };
 		FF557AD61C4DBB4A005FB7FD /* TTModeNestAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF557AD41C4DBB4A005FB7FD /* TTModeNestAuthViewController.xib */; };
-		FF557ADA1C4ED8A0005FB7FD /* TTModeNestConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AD81C4ED8A0005FB7FD /* TTModeNestConnect.m */; };
 		FF557ADB1C4ED8A0005FB7FD /* TTModeNestConnect.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF557AD91C4ED8A0005FB7FD /* TTModeNestConnect.xib */; };
-		FF557ADF1C4ED8AF005FB7FD /* TTModeNestConnecting.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557ADD1C4ED8AF005FB7FD /* TTModeNestConnecting.m */; };
 		FF557AE01C4ED8AF005FB7FD /* TTModeNestConnecting.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF557ADE1C4ED8AF005FB7FD /* TTModeNestConnecting.xib */; };
-		FF557AE41C4ED8BE005FB7FD /* TTModeNestConnected.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AE21C4ED8BE005FB7FD /* TTModeNestConnected.m */; };
 		FF557AE51C4ED8BE005FB7FD /* TTModeNestConnected.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF557AE31C4ED8BE005FB7FD /* TTModeNestConnected.xib */; };
-		FF557AE91C4F1CD0005FB7FD /* TTModeNestSetTempOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF557AE71C4F1CD0005FB7FD /* TTModeNestSetTempOptions.m */; };
 		FF557AEA1C4F1CD0005FB7FD /* TTModeNestSetTempOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF557AE81C4F1CD0005FB7FD /* TTModeNestSetTempOptions.xib */; };
 		FF557AEC1C4F2626005FB7FD /* TTModeNest.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF557AEB1C4F2626005FB7FD /* TTModeNest.plist */; };
-		FF557AEE1C4F393C005FB7FD /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF557AED1C4F393C005FB7FD /* Firebase.framework */; };
 		FF58717B1BDC83AB00CDCC1C /* TTProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = FF58717A1BDC83AB00CDCC1C /* TTProgressBar.m */; };
 		FF58FC46203766ED005F547B /* TTModeMusicPlaylistOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF58FC44203766ED005F547B /* TTModeMusicPlaylistOptions.m */; };
 		FF58FC47203766ED005F547B /* TTModeMusicPlaylistOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF58FC45203766ED005F547B /* TTModeMusicPlaylistOptions.xib */; };
@@ -669,8 +650,6 @@
 		FF66F2A619228DE100031478 /* TTModeAlarmClockOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66F2A519228DE100031478 /* TTModeAlarmClockOptions.m */; };
 		FF66F2A91922D1C100031478 /* TTOptionsDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66F2A81922D1C100031478 /* TTOptionsDetailView.m */; };
 		FF6792381CEBE11200639148 /* TTModeSpotify.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6792371CEBE11200639148 /* TTModeSpotify.m */; };
-		FF69AE5F2562EEFA007C913F /* HueSDK_OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */; };
-		FF69AE602562EEFA007C913F /* HueSDK_OSX.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF3641D71A5E241C003CC03C /* HueSDK_OSX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF6A37D01A9AEC9F006F3756 /* NSDate+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6A37CF1A9AEC9F006F3756 /* NSDate+Extras.m */; };
 		FF7305AE1A5C9C76009A852D /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7305921A5C9C76009A852D /* DDAbstractDatabaseLogger.m */; };
 		FF7305AF1A5C9C76009A852D /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7305941A5C9C76009A852D /* DDASLLogger.m */; };
@@ -823,7 +802,6 @@
 		FFAB2C171E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAB2C151E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.m */; };
 		FFAB2C181E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFAB2C161E0B5DFE00A16433 /* TTModeSpotifyVolumeJumpOptions.xib */; };
 		FFAB2C1A1E0B5E3C00A16433 /* TTModeSpotify.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFAB2C191E0B5E3C00A16433 /* TTModeSpotify.plist */; };
-		FFAB2C1D1E0C7C9400A16433 /* TTModeNestDelegateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAB2C1C1E0C7C9400A16433 /* TTModeNestDelegateManager.m */; };
 		FFABAB7A1C235EC500AD5620 /* TTFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB791C235EC500AD5620 /* TTFooterView.m */; };
 		FFABAB811C2777D500AD5620 /* TTBatchActionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB801C2777D500AD5620 /* TTBatchActionHeaderView.m */; };
 		FFABAB841C2784E300AD5620 /* TTBatchActionStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFABAB831C2784E300AD5620 /* TTBatchActionStackView.m */; };
@@ -943,7 +921,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				172B5DFF23E3EDAA008B5AAB /* HueSDK_OSX.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -954,7 +931,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				FF69AE602562EEFA007C913F /* HueSDK_OSX.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -973,18 +949,28 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0E6E95300FA8A06B173391A4 /* TTModeHomeAssistant.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTModeHomeAssistant.h; sourceTree = "<group>"; };
 		172B5E0523E3EDAA008B5AAB /* Turn Touch Dejal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Turn Touch Dejal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1763B5322367E1C600F99717 /* Music.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Music.h; path = Modes/Music/Music.h; sourceTree = "<group>"; };
 		1766EE83226FC3B100A114B5 /* CBPeripheral+Extras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CBPeripheral+Extras.h"; path = "Categories/CBPeripheral+Extras.h"; sourceTree = "<group>"; };
 		1766EE84226FC3B100A114B5 /* CBPeripheral+Extras.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CBPeripheral+Extras.m"; path = "Categories/CBPeripheral+Extras.m"; sourceTree = "<group>"; };
 		178BDF51226E61E100396413 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		17B265212405C774007090C8 /* keyboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = keyboard.png; sourceTree = "<group>"; };
+		1F46AF00F09B0E071170F097 /* TTModeHomeAssistantOptions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTModeHomeAssistantOptions.m; sourceTree = "<group>"; };
 		37ADCA4BDE2897CDF14E42E1 /* Pods-Turn Touch Mac.testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turn Touch Mac.testing.xcconfig"; path = "Pods/Target Support Files/Pods-Turn Touch Mac/Pods-Turn Touch Mac.testing.xcconfig"; sourceTree = "<group>"; };
 		383E060B60CD35F142D2CFDD /* Pods-Turn Touch Mac Tests.testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turn Touch Mac Tests.testing.xcconfig"; path = "Pods/Target Support Files/Pods-Turn Touch Mac Tests/Pods-Turn Touch Mac Tests.testing.xcconfig"; sourceTree = "<group>"; };
+		3DD46F9F07549FD697BCADB2 /* TTModeHomeAssistantOptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTModeHomeAssistantOptions.h; sourceTree = "<group>"; };
+		447F4D7005CD8D30C0CE1E3C /* TTModeHomeAssistant.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTModeHomeAssistant.m; sourceTree = "<group>"; };
 		6D78D7B37A823FEF6B921BCE /* Pods_Turn_Touch_Mac_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Turn_Touch_Mac_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		94A0567EADB462E61DF344DF /* TTHueBridge.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTHueBridge.h; sourceTree = "<group>"; };
 		9E1EC8CE081463B2662103E7 /* Pods-Turn Touch Mac Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turn Touch Mac Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Turn Touch Mac Tests/Pods-Turn Touch Mac Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		ABC0801E22177DABB7FC0408 /* TTHomeAssistantClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTHomeAssistantClient.m; sourceTree = "<group>"; };
 		B611485DE4201F24DDD95F6A /* Pods_Turn_Touch_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Turn_Touch_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFE42714473DE8ECDF051CF0 /* TTHomeAssistantClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTHomeAssistantClient.h; sourceTree = "<group>"; };
 		C51AC9F8FD3AC2241B3864BA /* Pods-Turn Touch Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turn Touch Mac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Turn Touch Mac/Pods-Turn Touch Mac.debug.xcconfig"; sourceTree = "<group>"; };
+		D42BC86FC678558A13C6C8E9 /* TTHueBridge.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTHueBridge.m; sourceTree = "<group>"; };
+		D48149FCD05368AD32F28965 /* TTHomeAssistantWindowController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTHomeAssistantWindowController.m; sourceTree = "<group>"; };
+		D4E4077668FAE70A9F3EF19E /* TTHomeAssistantWindowController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTHomeAssistantWindowController.h; sourceTree = "<group>"; };
 		DFBF9ACC46862A20CD285528 /* Pods-Turn Touch Mac Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turn Touch Mac Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Turn Touch Mac Tests/Pods-Turn Touch Mac Tests.release.xcconfig"; sourceTree = "<group>"; };
 		E4439EC9F0DFB4AA69CE0E48 /* Pods-Turn Touch Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turn Touch Mac.release.xcconfig"; path = "Pods/Target Support Files/Pods-Turn Touch Mac/Pods-Turn Touch Mac.release.xcconfig"; sourceTree = "<group>"; };
 		FF01CA281C46009E00F83A73 /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = scripts; path = Resources/scripts; sourceTree = "<group>"; };
@@ -1692,7 +1678,6 @@
 			files = (
 				172B5D1723E3EDAA008B5AAB /* libxml2.tbd in Frameworks */,
 				172B5D1823E3EDAA008B5AAB /* Security.framework in Frameworks */,
-				172B5D1923E3EDAA008B5AAB /* Firebase.framework in Frameworks */,
 				172B5D1A23E3EDAA008B5AAB /* CFNetwork.framework in Frameworks */,
 				172B5D1B23E3EDAA008B5AAB /* libc++.tbd in Frameworks */,
 				172B5D1C23E3EDAA008B5AAB /* libicucore.tbd in Frameworks */,
@@ -1701,7 +1686,6 @@
 				172B5D1F23E3EDAA008B5AAB /* AudioToolbox.framework in Frameworks */,
 				172B5D2023E3EDAA008B5AAB /* AVFoundation.framework in Frameworks */,
 				172B5D2123E3EDAA008B5AAB /* SystemConfiguration.framework in Frameworks */,
-				172B5D2223E3EDAA008B5AAB /* HueSDK_OSX.framework in Frameworks */,
 				172B5D2323E3EDAA008B5AAB /* CoreBluetooth.framework in Frameworks */,
 				172B5D2423E3EDAA008B5AAB /* CoreFoundation.framework in Frameworks */,
 				172B5D2523E3EDAA008B5AAB /* QuartzCore.framework in Frameworks */,
@@ -1717,7 +1701,6 @@
 			files = (
 				FF2C2E521C545D1800FAD7E2 /* libxml2.tbd in Frameworks */,
 				FF557ACF1C49CE94005FB7FD /* Security.framework in Frameworks */,
-				FF557AEE1C4F393C005FB7FD /* Firebase.framework in Frameworks */,
 				FF557ACD1C49CE8C005FB7FD /* CFNetwork.framework in Frameworks */,
 				FF557ACB1C49CE85005FB7FD /* libc++.tbd in Frameworks */,
 				FF557AC91C49CE7E005FB7FD /* libicucore.tbd in Frameworks */,
@@ -1732,7 +1715,6 @@
 				FF0E12D11824811200D49EC7 /* ScriptingBridge.framework in Frameworks */,
 				FF4E26321823197D00D477F6 /* IOKit.framework in Frameworks */,
 				FF8C833717AB14B5000166FC /* Cocoa.framework in Frameworks */,
-				FF69AE5F2562EEFA007C913F /* HueSDK_OSX.framework in Frameworks */,
 				050B418B591A85B579740307 /* Pods_Turn_Touch_Mac.framework in Frameworks */,
 				C01FD69B778B5C0684677954 /* Pods_Turn_Touch_Mac.framework in Frameworks */,
 				6C8F0BFDDC3CEA1BCAA5EBE2 /* Pods_Turn_Touch_Mac.framework in Frameworks */,
@@ -1750,6 +1732,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5DAB1FEF1564D2595B4428B1 /* Native Hue */ = {
+			isa = PBXGroup;
+			children = (
+				94A0567EADB462E61DF344DF /* TTHueBridge.h */,
+				D42BC86FC678558A13C6C8E9 /* TTHueBridge.m */,
+			);
+			name = "Native Hue";
+			path = Modes/Hue;
+			sourceTree = "<group>";
+		};
 		A5D7CA613E199622F6A3CAF7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1761,6 +1753,22 @@
 				E4439EC9F0DFB4AA69CE0E48 /* Pods-Turn Touch Mac.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		ECA4820EEC0277CCFD51DFAE /* HomeAssistant */ = {
+			isa = PBXGroup;
+			children = (
+				BFE42714473DE8ECDF051CF0 /* TTHomeAssistantClient.h */,
+				ABC0801E22177DABB7FC0408 /* TTHomeAssistantClient.m */,
+				D4E4077668FAE70A9F3EF19E /* TTHomeAssistantWindowController.h */,
+				D48149FCD05368AD32F28965 /* TTHomeAssistantWindowController.m */,
+				0E6E95300FA8A06B173391A4 /* TTModeHomeAssistant.h */,
+				447F4D7005CD8D30C0CE1E3C /* TTModeHomeAssistant.m */,
+				3DD46F9F07549FD697BCADB2 /* TTModeHomeAssistantOptions.h */,
+				1F46AF00F09B0E071170F097 /* TTModeHomeAssistantOptions.m */,
+			);
+			name = HomeAssistant;
+			path = Modes/HomeAssistant;
 			sourceTree = "<group>";
 		};
 		FF01CA2B1C46DCC200F83A73 /* icons */ = {
@@ -2534,6 +2542,8 @@
 				FF8C833D17AB14B5000166FC /* Supporting Files */,
 				FFE2D47A1A46404C00DDD413 /* Categories */,
 				FF904B381BE9B78800AD00F3 /* Images.xcassets */,
+				ECA4820EEC0277CCFD51DFAE /* HomeAssistant */,
+				5DAB1FEF1564D2595B4428B1 /* Native Hue */,
 			);
 			path = "Turn Touch Mac";
 			sourceTree = "<group>";
@@ -3702,10 +3712,7 @@
 			files = (
 				172B5C3D23E3EDAA008B5AAB /* NSData+Conversion.m in Sources */,
 				172B5C3E23E3EDAA008B5AAB /* TTModeWebWindow.m in Sources */,
-				172B5C3F23E3EDAA008B5AAB /* Thermostat.m in Sources */,
 				172B5C4023E3EDAA008B5AAB /* TTAppDelegate.m in Sources */,
-				172B5C4123E3EDAA008B5AAB /* TTModeNestConnecting.m in Sources */,
-				172B5C4223E3EDAA008B5AAB /* NestAuthManager.m in Sources */,
 				172B5C4323E3EDAA008B5AAB /* NSString+JXRemoving.m in Sources */,
 				172B5C4423E3EDAA008B5AAB /* hid.c in Sources */,
 				172B5C4523E3EDAA008B5AAB /* TTModeNewsFeedView.m in Sources */,
@@ -3748,7 +3755,6 @@
 				172B5C6A23E3EDAA008B5AAB /* TTModeAirfoil.m in Sources */,
 				172B5C6B23E3EDAA008B5AAB /* XPathQuery.m in Sources */,
 				172B5C6C23E3EDAA008B5AAB /* TTModeTitleView.m in Sources */,
-				172B5C6D23E3EDAA008B5AAB /* FirebaseManager.m in Sources */,
 				172B5C6E23E3EDAA008B5AAB /* TTModeMenuCollectionView.m in Sources */,
 				172B5C6F23E3EDAA008B5AAB /* MLCalendarCell.m in Sources */,
 				172B5C7023E3EDAA008B5AAB /* TTModeHUDView.m in Sources */,
@@ -3759,12 +3765,9 @@
 				172B5C7423E3EDAA008B5AAB /* TTActionMap.m in Sources */,
 				172B5C7523E3EDAA008B5AAB /* TTModeWebBrowserView.m in Sources */,
 				172B5C7623E3EDAA008B5AAB /* TTHUDMenuButton.m in Sources */,
-				172B5C7723E3EDAA008B5AAB /* TTModeNestConnected.m in Sources */,
 				172B5C7823E3EDAA008B5AAB /* DDLog.m in Sources */,
 				172B5C7923E3EDAA008B5AAB /* GCDAsyncSocket.m in Sources */,
-				172B5C7A23E3EDAA008B5AAB /* TTModeNestSetTempOptions.m in Sources */,
 				172B5C7B23E3EDAA008B5AAB /* TTModeIftttTriggerActionOptions.m in Sources */,
-				172B5C7C23E3EDAA008B5AAB /* TTModeNestAuthViewController.m in Sources */,
 				172B5C7D23E3EDAA008B5AAB /* DFUHelper.m in Sources */,
 				172B5C7E23E3EDAA008B5AAB /* JsonParser.m in Sources */,
 				172B5C7F23E3EDAA008B5AAB /* TTModeCustomURLOptions.m in Sources */,
@@ -3781,8 +3784,6 @@
 				172B5C8A23E3EDAA008B5AAB /* UnzipFirmware.m in Sources */,
 				172B5C8B23E3EDAA008B5AAB /* TTMenubarController.m in Sources */,
 				172B5C8C23E3EDAA008B5AAB /* TTNewsBlurUtilities.m in Sources */,
-				172B5C8D23E3EDAA008B5AAB /* NestThermostatManager.m in Sources */,
-				172B5C8E23E3EDAA008B5AAB /* TTModeNestConnect.m in Sources */,
 				172B5C8F23E3EDAA008B5AAB /* TTNewsBlurFeed.m in Sources */,
 				172B5C9023E3EDAA008B5AAB /* TTModalPairingScanningView.m in Sources */,
 				172B5C9123E3EDAA008B5AAB /* TTModeNewsBrowserView.m in Sources */,
@@ -3823,8 +3824,6 @@
 				172B5CB423E3EDAA008B5AAB /* TTModeTabsContainer.m in Sources */,
 				172B5CB523E3EDAA008B5AAB /* TTOptionsDetailView.m in Sources */,
 				17BE468A249989B300949E38 /* TTModeTVVolumeJumpOptions.m in Sources */,
-				172B5CB623E3EDAA008B5AAB /* NestStructureManager.m in Sources */,
-				172B5CB723E3EDAA008B5AAB /* TTModeNestDelegateManager.m in Sources */,
 				172B5CB823E3EDAA008B5AAB /* TTModeNewsBackgroundView.m in Sources */,
 				172B5CB923E3EDAA008B5AAB /* ioapi.c in Sources */,
 				172B5CBA23E3EDAA008B5AAB /* TTModeWemoConnect.m in Sources */,
@@ -3842,7 +3841,6 @@
 				172B5CC623E3EDAA008B5AAB /* TTModeMusicVolumeJumpOptions.m in Sources */,
 				172B5CC723E3EDAA008B5AAB /* TTTitleBarView.m in Sources */,
 				172B5CC823E3EDAA008B5AAB /* TTPageIndicatorView.m in Sources */,
-				172B5CC923E3EDAA008B5AAB /* NestConstants.m in Sources */,
 				172B5CCA23E3EDAA008B5AAB /* SSZipArchive.m in Sources */,
 				172B5CCB23E3EDAA008B5AAB /* TTHUDController.m in Sources */,
 				172B5CCC23E3EDAA008B5AAB /* SonosPlayable.m in Sources */,
@@ -3888,7 +3886,6 @@
 				172B5CF423E3EDAA008B5AAB /* NSString+Counting.m in Sources */,
 				172B5CF523E3EDAA008B5AAB /* TTActionHUDWindow.m in Sources */,
 				172B5CF623E3EDAA008B5AAB /* TTOptionsActionTitle.m in Sources */,
-				172B5CF723E3EDAA008B5AAB /* AccessToken.m in Sources */,
 				172B5CF823E3EDAA008B5AAB /* TTModeNewsWindow.m in Sources */,
 				172B5CF923E3EDAA008B5AAB /* TTModeSonosOptions.m in Sources */,
 				172B5CFA23E3EDAA008B5AAB /* TTHUDMenuView.m in Sources */,
@@ -3919,6 +3916,11 @@
 				172B5D1323E3EDAA008B5AAB /* TTModeWeb.m in Sources */,
 				172B5D1423E3EDAA008B5AAB /* TTModeWemoOptions.m in Sources */,
 				172B5D1523E3EDAA008B5AAB /* TTModalAbout.m in Sources */,
+				2FF59687D4DC64448EE1DA17 /* TTHomeAssistantClient.m in Sources */,
+				48FE7DFF626E9AA786622AD2 /* TTHomeAssistantWindowController.m in Sources */,
+				D433B6A5303DDFEE1A925CAA /* TTModeHomeAssistant.m in Sources */,
+				F4EAB5434DB9EC47E337F9B8 /* TTModeHomeAssistantOptions.m in Sources */,
+				D8DCC942E6CD62D025644527 /* TTHueBridge.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3928,10 +3930,7 @@
 			files = (
 				FFE2D4791A46404500DDD413 /* NSData+Conversion.m in Sources */,
 				FFABAB9F1C33675200AD5620 /* TTModeWebWindow.m in Sources */,
-				FF557AB81C49C63D005FB7FD /* Thermostat.m in Sources */,
 				FF8C834A17AB14B5000166FC /* TTAppDelegate.m in Sources */,
-				FF557ADF1C4ED8AF005FB7FD /* TTModeNestConnecting.m in Sources */,
-				FF557AB51C49C63D005FB7FD /* NestAuthManager.m in Sources */,
 				FF01CAAA1C473EC100F83A73 /* NSString+JXRemoving.m in Sources */,
 				FF904B4B1BE9B82200AD00F3 /* hid.c in Sources */,
 				FF9006331D8A1B89008A65AD /* TTModeNewsFeedView.m in Sources */,
@@ -3974,7 +3973,6 @@
 				FF0DE99E21B8D1BA00037B07 /* TTModeAirfoil.m in Sources */,
 				FF2C2E561C545E6400FAD7E2 /* XPathQuery.m in Sources */,
 				FFF05F3B18F77BE000AC6230 /* TTModeTitleView.m in Sources */,
-				FF557AB41C49C63D005FB7FD /* FirebaseManager.m in Sources */,
 				FF429AD21919C630007C485E /* TTModeMenuCollectionView.m in Sources */,
 				FF1F135E1ADC90E700B52A0D /* MLCalendarCell.m in Sources */,
 				FFA1D4DA1A3B89A4003EA0BC /* TTModeHUDView.m in Sources */,
@@ -3985,12 +3983,9 @@
 				FF98A2E11867DBA40032CC7A /* TTActionMap.m in Sources */,
 				FFABABA21C33676700AD5620 /* TTModeWebBrowserView.m in Sources */,
 				FF877CD81C6C19F1007940C3 /* TTHUDMenuButton.m in Sources */,
-				FF557AE41C4ED8BE005FB7FD /* TTModeNestConnected.m in Sources */,
 				FF7305B11A5C9C76009A852D /* DDLog.m in Sources */,
 				FF3D21F91F1EF50900F7F5BF /* GCDAsyncSocket.m in Sources */,
-				FF557AE91C4F1CD0005FB7FD /* TTModeNestSetTempOptions.m in Sources */,
 				FFFF0C831EFC976B00E29E6D /* TTModeIftttTriggerActionOptions.m in Sources */,
-				FF557AD51C4DBB4A005FB7FD /* TTModeNestAuthViewController.m in Sources */,
 				FF904B7B1BE9B88700AD00F3 /* DFUHelper.m in Sources */,
 				FF904B871BE9B88700AD00F3 /* JsonParser.m in Sources */,
 				FF8448F91E10DB1A00C1091E /* TTModeCustomURLOptions.m in Sources */,
@@ -4007,8 +4002,6 @@
 				FF904B881BE9B88700AD00F3 /* UnzipFirmware.m in Sources */,
 				FF98A2E71867DBE70032CC7A /* TTMenubarController.m in Sources */,
 				FFBD46FE1D5AB5E100838AAC /* TTNewsBlurUtilities.m in Sources */,
-				FF557AB71C49C63D005FB7FD /* NestThermostatManager.m in Sources */,
-				FF557ADA1C4ED8A0005FB7FD /* TTModeNestConnect.m in Sources */,
 				FFB08E471D63F2460040A531 /* TTNewsBlurFeed.m in Sources */,
 				FF27052D1C90FB3B000BB10F /* TTModalPairingScanningView.m in Sources */,
 				FF79C58B1D5815D5006C75C9 /* TTModeNewsBrowserView.m in Sources */,
@@ -4049,8 +4042,6 @@
 				FFA8EA9C190F07A500679A4D /* TTModeTabsContainer.m in Sources */,
 				FF66F2A91922D1C100031478 /* TTOptionsDetailView.m in Sources */,
 				FFED5616243946880022C5EA /* TTModeTVVolumeJumpOptions.m in Sources */,
-				FF557AB61C49C63D005FB7FD /* NestStructureManager.m in Sources */,
-				FFAB2C1D1E0C7C9400A16433 /* TTModeNestDelegateManager.m in Sources */,
 				FF79C5881D5815C0006C75C9 /* TTModeNewsBackgroundView.m in Sources */,
 				FF904B961BE9BA3700AD00F3 /* ioapi.c in Sources */,
 				FF2C2E631C546D6E00FAD7E2 /* TTModeWemoConnect.m in Sources */,
@@ -4068,7 +4059,6 @@
 				FF8528FB1A96B6A500B289FD /* TTModeMusicVolumeJumpOptions.m in Sources */,
 				FF5295C51AD5B9A4007DDC02 /* TTTitleBarView.m in Sources */,
 				FF87E9FF1C97671E00682461 /* TTPageIndicatorView.m in Sources */,
-				FF557AC01C49C71A005FB7FD /* NestConstants.m in Sources */,
 				FF904B9A1BE9BA3700AD00F3 /* SSZipArchive.m in Sources */,
 				FFA1D4CF1A3B8916003EA0BC /* TTHUDController.m in Sources */,
 				FFD45D532211D84C0065DF1A /* SonosPlayable.m in Sources */,
@@ -4114,7 +4104,6 @@
 				FF01CAA91C473EC100F83A73 /* NSString+Counting.m in Sources */,
 				FFA1D4CD1A3B8916003EA0BC /* TTActionHUDWindow.m in Sources */,
 				FF801338186E5D9700955218 /* TTOptionsActionTitle.m in Sources */,
-				FF557AB31C49C63D005FB7FD /* AccessToken.m in Sources */,
 				FF79C5851D5815AB006C75C9 /* TTModeNewsWindow.m in Sources */,
 				FF3D22011F1F1BE100F7F5BF /* TTModeSonosOptions.m in Sources */,
 				FF6135351C5AF59D00F431D7 /* TTHUDMenuView.m in Sources */,
@@ -4145,6 +4134,11 @@
 				FFABAB961C334FCA00AD5620 /* TTModeWeb.m in Sources */,
 				FF2C2E691C546D6E00FAD7E2 /* TTModeWemoOptions.m in Sources */,
 				FF8D1AA61C98F292006AA1A2 /* TTModalAbout.m in Sources */,
+				17E7FAE247899958BF5A5F19 /* TTHomeAssistantClient.m in Sources */,
+				3482045DE119CEFDDB245795 /* TTHomeAssistantWindowController.m in Sources */,
+				2C206C8C459B865363BC3093 /* TTModeHomeAssistant.m in Sources */,
+				6BFDD8384E6DBF84539919AA /* TTModeHomeAssistantOptions.m in Sources */,
+				B5919F9B2B1E16338452C597 /* TTHueBridge.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4222,7 +4216,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Mac/Supporting Files/Turn Touch Mac-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.2.1;
 				OTHER_CFLAGS = (
 					"$(inherited)",
@@ -4267,7 +4261,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Mac/Supporting Files/Turn Touch Mac-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.2.1;
 				OTHER_CFLAGS = (
 					"$(inherited)",
@@ -4312,7 +4306,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Mac/Supporting Files/Turn Touch Mac-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.2.1;
 				OTHER_CFLAGS = (
 					"$(inherited)",
@@ -4376,7 +4370,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -4421,7 +4415,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -4439,7 +4433,6 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 6W5HRS3393;
 				ENABLE_HARDENED_RUNTIME = YES;
-				EXCLUDED_ARCHS = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Turn\\ Touch\\ Mac/Vendor/",
@@ -4457,7 +4450,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Mac/Supporting Files/Turn Touch Mac-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.5;
 				OTHER_CFLAGS = (
 					"$(inherited)",
@@ -4489,7 +4482,6 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 6W5HRS3393;
 				ENABLE_HARDENED_RUNTIME = YES;
-				EXCLUDED_ARCHS = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Turn\\ Touch\\ Mac/Vendor/",
@@ -4507,7 +4499,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Mac/Supporting Files/Turn Touch Mac-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.5;
 				OTHER_CFLAGS = (
 					"$(inherited)",
@@ -4557,7 +4549,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = "Turn Touch Mac Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4593,7 +4585,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = "Turn Touch Mac Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4648,7 +4640,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -4667,7 +4659,6 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 6W5HRS3393;
 				ENABLE_HARDENED_RUNTIME = YES;
-				EXCLUDED_ARCHS = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Turn\\ Touch\\ Mac/Vendor/",
@@ -4685,7 +4676,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Turn Touch Mac/Supporting Files/Turn Touch Mac-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.5;
 				OTHER_CFLAGS = (
 					"$(inherited)",
@@ -4735,7 +4726,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = "Turn Touch Mac Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turntouch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";

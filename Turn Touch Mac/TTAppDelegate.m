@@ -93,6 +93,11 @@ void *kContextActivePanel = &kContextActivePanel;
     NSLog(@" ---> Trusted in accessibility: %d", accessibilityEnabled);
 }
 
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)visible {
+    [self openPanel];
+    return YES;
+}
+
 - (void)applicationWillFinishLaunching:(NSNotification *)notification {
     PFMoveToApplicationsFolderIfNecessary();
     

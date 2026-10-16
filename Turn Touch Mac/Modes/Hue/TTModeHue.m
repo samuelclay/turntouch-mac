@@ -15,13 +15,13 @@
 
 @interface TTModeHue()
 
-@property (nonatomic, strong) PHBridgeSearching *bridgeSearch;
+@property (nonatomic, strong) TTHueBridgeSearch *bridgeSearch;
 
 @end
 
 @implementation TTModeHue
 
-static PHHueSDK *phHueSDK;
+static TTHueClient *phHueSDK;
 
 NSString *const kRandomColors = @"randomColors";
 NSString *const kRandomBrightness = @"randomBrightness";
@@ -40,18 +40,18 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 
 - (void)initializeHue {
 //    if (phHueSDK) {
-//        [[PHNotificationManager defaultManager] deregisterObjectForAllNotifications:self];
+//        [[TTHueNotifications defaultManager] deregisterObjectForAllNotifications:self];
 //        [self disableLocalHeartbeat];
 //        [phHueSDK stopSDK];
 //        phHueSDK = nil;
 //    }
     if (!phHueSDK) {
-        phHueSDK = [[PHHueSDK alloc] init];
+        phHueSDK = [TTHueClient sharedClient];
         [phHueSDK startUpSDK];
         [phHueSDK enableLogging:NO];
     }
     
-    PHNotificationManager *notificationManager = [PHNotificationManager defaultManager];
+    TTHueNotifications *notificationManager = [TTHueNotifications defaultManager];
     [notificationManager deregisterObjectForAllNotifications:self];
     
     /***************************************************
@@ -204,9 +204,9 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
         return;
     }
     
-    PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
-    PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
-    PHScene *activeScene;
+    TTHueCommands *bridgeSendAPI = [[TTHueCommands alloc] init];
+    TTHueBridgeResources *cache = [TTHueResourcesReader readBridgeResourcesCache];
+    TTHueScene *activeScene;
     NSString *sceneIdentifier = [self.action optionValue:(doubleTap ? kDoubleTapHueScene : kHueScene) inDirection:direction];
     NSString *roomIdentifier = [self.action optionValue:kHueRoom inDirection:direction];
     if (!roomIdentifier || [roomIdentifier isEqualToString:@"all"]) {
@@ -219,7 +219,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 //                                              inDirection:direction];
 
     NSMutableArray *scenes = [[NSMutableArray alloc] init];
-    for (PHScene *scene in cache.scenes.allValues) {
+    for (TTHueScene *scene in cache.scenes.allValues) {
         [scenes addObject:@{@"name": scene.name, @"identifier": scene.identifier}];
         if ([scene.identifier isEqualToString:sceneIdentifier]) {
             activeScene = scene;
@@ -231,6 +231,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     
     if (!sceneIdentifier || ![sceneIdentifier length]) {
         // Use default, which is first scene in sorted scene list
+        if (!scenes.count) return;
         sceneIdentifier = scenes[0][@"identifier"];
     }
 
@@ -291,20 +292,20 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 
 - (void)runTTModeHueSleep:(TTModeDirection)direction duration:(NSNumber *)sceneDuration {
     //    NSLog(@"Running scene off... %d", direction);
-    PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
-    PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
+    TTHueBridgeResources *cache = [TTHueResourcesReader readBridgeResourcesCache];
+    TTHueCommands *bridgeSendAPI = [[TTHueCommands alloc] init];
     NSNumber *sceneTransition = [NSNumber numberWithInteger:([sceneDuration integerValue] * 10)];
     NSString *roomIdentifier = [self.action optionValue:kHueRoom inDirection:direction];
-    PHGroup *group = [cache.groups objectForKey:roomIdentifier];
+    TTHueGroup *group = [cache.groups objectForKey:roomIdentifier];
     
-    for (PHLight *light in cache.lights.allValues) {
+    for (TTHueLight *light in cache.lights.allValues) {
         if (group && ![roomIdentifier isEqualToString:@"all"]) {
             if (![[group lightIdentifiers] containsObject:light.identifier]) {
                 continue;
             }
         }
         
-        PHLightState *lightState = [[PHLightState alloc] init];
+        TTHueLightState *lightState = [[TTHueLightState alloc] init];
         
         [lightState setOn:[NSNumber numberWithBool:NO]];
         [lightState setTransitionTime:sceneTransition];
@@ -331,8 +332,8 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 - (void)runTTModeHueRandom:(TTModeDirection)direction doubleTap:(BOOL)doubleTap {
     //    NSLog(@"Running scene off... %d", direction);
     
-    PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
-    PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
+    TTHueBridgeResources *cache = [TTHueResourcesReader readBridgeResourcesCache];
+    TTHueCommands *bridgeSendAPI = [[TTHueCommands alloc] init];
     
     TTHueRandomColors randomColors = (TTHueRandomColors)[[self.action
                                                           optionValue:(doubleTap ? kDoubleTapRandomColors : kRandomColors)
@@ -347,16 +348,16 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     NSNumber *randomColor2 = [NSNumber numberWithInt:arc4random() % MAX_HUE];
     
     NSString *roomIdentifier = [self.action optionValue:kHueRoom inDirection:direction];
-    PHGroup *group = [cache.groups objectForKey:roomIdentifier];
+    TTHueGroup *group = [cache.groups objectForKey:roomIdentifier];
     
-    for (PHLight *light in cache.lights.allValues) {
+    for (TTHueLight *light in cache.lights.allValues) {
         if (group && ![roomIdentifier isEqualToString:@"all"]) {
             if (![[group lightIdentifiers] containsObject:light.identifier]) {
                 continue;
             }
         }
 
-        PHLightState *lightState = [[PHLightState alloc] init];
+        TTHueLightState *lightState = [[TTHueLightState alloc] init];
         
         lightState.on = [NSNumber numberWithBool:YES];
         
@@ -408,8 +409,8 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 }
 
 - (void)changeBrightness:(NSInteger)amount {
-    PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
-    PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
+    TTHueBridgeResources *cache = [TTHueResourcesReader readBridgeResourcesCache];
+    TTHueCommands *bridgeSendAPI = [[TTHueCommands alloc] init];
 
     if (cache == nil || cache.bridgeConfiguration == nil || cache.bridgeConfiguration.ipaddress == nil) {
         return;
@@ -420,7 +421,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
         roomIdentifier = @"0";
     }
     
-    PHLightState *lightState = [[PHLightState alloc] init];
+    TTHueLightState *lightState = [[TTHueLightState alloc] init];
     lightState.on = [NSNumber numberWithBool:YES];
     lightState.brightnessIncrement = @(amount);
     
@@ -443,8 +444,8 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 }
 
 - (void)shiftColor:(NSInteger)amount {
-    PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
-    PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
+    TTHueBridgeResources *cache = [TTHueResourcesReader readBridgeResourcesCache];
+    TTHueCommands *bridgeSendAPI = [[TTHueCommands alloc] init];
     
     if (cache == nil || cache.bridgeConfiguration == nil || cache.bridgeConfiguration.ipaddress == nil) {
         return;
@@ -455,7 +456,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
         roomIdentifier = @"0";
     }
     
-    PHLightState *lightState = [[PHLightState alloc] init];
+    TTHueLightState *lightState = [[TTHueLightState alloc] init];
     lightState.on = [NSNumber numberWithBool:YES];
     lightState.hueIncrement = @(amount);
     
@@ -473,7 +474,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 - (void)deactivate {
 //    NSLog(@" ---> DE-Activating Hue mode: %@", phHueSDK);
 
-//    [[PHNotificationManager defaultManager] deregisterObjectForAllNotifications:self];
+//    [[TTHueNotifications defaultManager] deregisterObjectForAllNotifications:self];
 //    [self disableLocalHeartbeat];
 //    [phHueSDK stopSDK];
 //    phHueSDK = nil;
@@ -569,7 +570,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     self.hueState = STATE_CONNECTING;
     [self.delegate changeState:self.hueState withMode:self showMessage:@"Searching for a Hue bridge..."];
     
-    self.bridgeSearch = [[PHBridgeSearching alloc] initWithUpnpSearch:YES andPortalSearch:YES andIpAddressSearch:YES];
+    self.bridgeSearch = [[TTHueBridgeSearch alloc] initWithUpnpSearch:YES andPortalSearch:YES andIpAddressSearch:YES];
     [self.bridgeSearch startSearchWithCompletionHandler:^(NSDictionary *bridgesFound) {
         /***************************************************
          The search is complete, check whether we found a bridge
@@ -615,7 +616,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
      so now try to see if we have a bridge already connected
      *****************************************************/
     
-    PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
+    TTHueBridgeResources *cache = [TTHueResourcesReader readBridgeResourcesCache];
     if (cache != nil && cache.bridgeConfiguration != nil && cache.bridgeConfiguration.ipaddress != nil) {
         // Enable heartbeat with interval of 10 seconds
         [phHueSDK enableLocalConnection];
@@ -666,7 +667,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
      *****************************************************/
     
     // Register for notifications about pushlinking
-    PHNotificationManager *phNotificationMgr = [PHNotificationManager defaultManager];
+    TTHueNotifications *phNotificationMgr = [TTHueNotifications defaultManager];
 //    [phNotificationMgr deregisterObjectForAllNotifications:self];
     
     [phNotificationMgr registerObject:self withSelector:@selector(authenticationSuccess)
@@ -703,7 +704,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
      pushLinkSuccess on the delegate
      *****************************************************/
     // Deregister for all notifications
-//    [[PHNotificationManager defaultManager] deregisterObjectForAllNotifications:self];
+//    [[TTHueNotifications defaultManager] deregisterObjectForAllNotifications:self];
     
     self.hueState = STATE_CONNECTED;
     [self.delegate changeState:self.hueState withMode:self showMessage:nil];
@@ -718,10 +719,10 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
  */
 - (void)authenticationFailed {
     // Deregister for all notifications
-//    [[PHNotificationManager defaultManager] deregisterObjectForAllNotifications:self];
+//    [[TTHueNotifications defaultManager] deregisterObjectForAllNotifications:self];
     
     // Inform delegate
-    [self pushlinkFailed:[PHError errorWithDomain:SDK_ERROR_DOMAIN
+    [self pushlinkFailed:[NSError errorWithDomain:SDK_ERROR_DOMAIN
                                                       code:PUSHLINK_TIME_LIMIT_REACHED
                                                   userInfo:[NSDictionary dictionaryWithObject:@"Authentication failed: time limit reached." forKey:NSLocalizedDescriptionKey]]];
 }
@@ -731,10 +732,10 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
  */
 - (void)noLocalBridge {
     // Deregister for all notifications
-//    [[PHNotificationManager defaultManager] deregisterObjectForAllNotifications:self];
+//    [[TTHueNotifications defaultManager] deregisterObjectForAllNotifications:self];
     
     // Inform delegate
-    [self pushlinkFailed:[PHError errorWithDomain:SDK_ERROR_DOMAIN code:PUSHLINK_NO_LOCAL_BRIDGE userInfo:[NSDictionary dictionaryWithObject:@"Authentication failed: No local bridge found." forKey:NSLocalizedDescriptionKey]]];
+    [self pushlinkFailed:[NSError errorWithDomain:SDK_ERROR_DOMAIN code:PUSHLINK_NO_LOCAL_BRIDGE userInfo:[NSDictionary dictionaryWithObject:@"Authentication failed: No local bridge found." forKey:NSLocalizedDescriptionKey]]];
 }
 
 /**
@@ -753,7 +754,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 /**
  Delegate method for PHBridgePushLinkViewController which is invoked if the pushlinking was not successfull
  */
-- (void)pushlinkFailed:(PHError *)error {
+- (void)pushlinkFailed:(NSError *)error {
     // Check which error occured
     if (error.code == PUSHLINK_NO_CONNECTION) {
         // No local connection to bridge
@@ -769,26 +770,26 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 }
 
 - (void)ensureScenes {
-    PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
-    PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
+    TTHueCommands *bridgeSendAPI = [[TTHueCommands alloc] init];
+    TTHueBridgeResources *cache = [TTHueResourcesReader readBridgeResourcesCache];
 
     // Collect scene ids to check against
     NSDictionary *scenes = cache.scenes;
     NSMutableArray *foundScenes = [[NSMutableArray alloc] init];
-    for (PHScene *scene in scenes.allValues) {
+    for (TTHueScene *scene in scenes.allValues) {
         [foundScenes addObject:scene.identifier];
     }
     
     // Scene: All Lights Off
     if (![foundScenes containsObject:@"TT-all-off"]) {
-        PHScene *scene = [[PHScene alloc] init];
+        TTHueScene *scene = [[TTHueScene alloc] init];
         scene.name = @"All Lights Off";
         scene.identifier = @"TT-all-off";
         scene.lightIdentifiers = cache.lights.allKeys;
         [bridgeSendAPI saveSceneWithCurrentLightStates:scene completionHandler:^(NSArray *errors) {
             NSLog(@"Hue:SceneOff scene: %@", errors);
-            for (PHLight *light in cache.lights.allValues) {
-                PHLightState *lightState = [[PHLightState alloc] init];
+            for (TTHueLight *light in cache.lights.allValues) {
+                TTHueLightState *lightState = [[TTHueLightState alloc] init];
                 lightState.on = [NSNumber numberWithBool:NO];
                 lightState.alert = 0;
                 [bridgeSendAPI saveLightState:lightState forLightIdentifier:light.identifier inSceneWithIdentifier:scene.identifier completionHandler:^(NSArray *errors) {
@@ -800,13 +801,13 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     
     // Scene: Color loop
     if (![foundScenes containsObject:@"TT-loop"]) {
-        PHScene *scene = [[PHScene alloc] init];
+        TTHueScene *scene = [[TTHueScene alloc] init];
         scene.name = @"Color Loop";
         scene.identifier = @"TT-loop";
         scene.lightIdentifiers = cache.lights.allKeys;
         [bridgeSendAPI saveSceneWithCurrentLightStates:scene completionHandler:^(NSArray *errors) {
-            for (PHLight *light in cache.lights.allValues) {
-                PHLightState *lightState = [[PHLightState alloc] init];
+            for (TTHueLight *light in cache.lights.allValues) {
+                TTHueLightState *lightState = [[TTHueLightState alloc] init];
                 lightState.on = [NSNumber numberWithBool:YES];
                 lightState.alert = 0;
                 lightState.effect = EFFECT_COLORLOOP;
@@ -818,18 +819,18 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     }
     
     if (![foundScenes containsObject:@"TT-ee-1"]) {
-        PHScene *scene = [[PHScene alloc] init];
+        TTHueScene *scene = [[TTHueScene alloc] init];
         scene.name = @"Early Evening";
         scene.identifier = @"TT-ee-1";
         scene.lightIdentifiers = cache.lights.allKeys;
         [bridgeSendAPI saveSceneWithCurrentLightStates:scene completionHandler:^(NSArray *errors) {
-            for (PHLight *light in cache.lights.allValues) {
-                PHLightState *lightState = [[PHLightState alloc] init];
+            for (TTHueLight *light in cache.lights.allValues) {
+                TTHueLightState *lightState = [[TTHueLightState alloc] init];
                 lightState.on = [NSNumber numberWithBool:YES];
                 lightState.alert = 0;
                 lightState.brightness = @(MAX_BRIGHTNESS);
                 lightState.saturation = @(MAX_BRIGHTNESS);
-                CGPoint point = [PHUtilities calculateXY:[NSColor colorWithRed:235/255.0 green:206/255.0 blue:146/255.0 alpha:1.0] forModel:light.modelNumber];
+                CGPoint point = [TTHueColor calculateXY:[NSColor colorWithRed:235/255.0 green:206/255.0 blue:146/255.0 alpha:1.0] forModel:light.modelNumber];
                 lightState.x = @(point.x);
                 lightState.y = @(point.y);
                 [bridgeSendAPI saveLightState:lightState forLightIdentifier:light.identifier inSceneWithIdentifier:scene.identifier completionHandler:^(NSArray *errors) {
@@ -840,21 +841,21 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     }
     
     if (![foundScenes containsObject:@"TT-ee-2"]) {
-        PHScene *scene = [[PHScene alloc] init];
+        TTHueScene *scene = [[TTHueScene alloc] init];
         scene.name = @"Early Evening 2";
         scene.identifier = @"TT-ee-2";
         scene.lightIdentifiers = cache.lights.allKeys;
         [bridgeSendAPI saveSceneWithCurrentLightStates:scene completionHandler:^(NSArray *errors) {
             [cache.lights.allValues enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                PHLight *light = (PHLight *)obj;
-                PHLightState *lightState = [[PHLightState alloc] init];
+                TTHueLight *light = (TTHueLight *)obj;
+                TTHueLightState *lightState = [[TTHueLightState alloc] init];
                 lightState.on = [NSNumber numberWithBool:YES];
                 lightState.alert = 0;
                 lightState.brightness = @(MAX_BRIGHTNESS);
                 lightState.saturation = @(MAX_BRIGHTNESS);
-                CGPoint point = [PHUtilities calculateXY:[NSColor colorWithRed:245/255.0 green:176/255.0 blue:116/255.0 alpha:1.0] forModel:light.modelNumber];
+                CGPoint point = [TTHueColor calculateXY:[NSColor colorWithRed:245/255.0 green:176/255.0 blue:116/255.0 alpha:1.0] forModel:light.modelNumber];
                 if (idx % 3 == 2) {
-                    point = [PHUtilities calculateXY:[NSColor colorWithRed:44/255.0 green:56/255.0 blue:225/255.0 alpha:1.0] forModel:light.modelNumber];
+                    point = [TTHueColor calculateXY:[NSColor colorWithRed:44/255.0 green:56/255.0 blue:225/255.0 alpha:1.0] forModel:light.modelNumber];
                 }
                 lightState.x = @(point.x);
                 lightState.y = @(point.y);
@@ -866,19 +867,19 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     }
     
     if (![foundScenes containsObject:@"TT-le-1"]) {
-        PHScene *scene = [[PHScene alloc] init];
+        TTHueScene *scene = [[TTHueScene alloc] init];
         scene.name = @"Late Evening";
         scene.identifier = @"TT-le-1";
         scene.lightIdentifiers = cache.lights.allKeys;
         [bridgeSendAPI saveSceneWithCurrentLightStates:scene completionHandler:^(NSArray *errors) {
             [cache.lights.allValues enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                PHLight *light = (PHLight *)obj;
-                PHLightState *lightState = [[PHLightState alloc] init];
+                TTHueLight *light = (TTHueLight *)obj;
+                TTHueLightState *lightState = [[TTHueLightState alloc] init];
                 lightState.on = [NSNumber numberWithBool:YES];
                 lightState.alert = 0;
                 lightState.brightness = @(MAX_BRIGHTNESS*(6/10.0));
                 lightState.saturation = @(MAX_BRIGHTNESS);
-                CGPoint point = [PHUtilities calculateXY:[NSColor colorWithRed:95/255.0 green:76/255.0 blue:36/255.0 alpha:1.0] forModel:light.modelNumber];
+                CGPoint point = [TTHueColor calculateXY:[NSColor colorWithRed:95/255.0 green:76/255.0 blue:36/255.0 alpha:1.0] forModel:light.modelNumber];
                 lightState.x = @(point.x);
                 lightState.y = @(point.y);
                 [bridgeSendAPI saveLightState:lightState forLightIdentifier:light.identifier inSceneWithIdentifier:scene.identifier completionHandler:^(NSArray *errors) {
@@ -889,22 +890,22 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     }
     
     if (![foundScenes containsObject:@"TT-le-2"]) {
-        PHScene *scene = [[PHScene alloc] init];
+        TTHueScene *scene = [[TTHueScene alloc] init];
         scene.name = @"Late Evening 2";
         scene.identifier = @"TT-le-2";
         scene.lightIdentifiers = cache.lights.allKeys;
         [bridgeSendAPI saveSceneWithCurrentLightStates:scene completionHandler:^(NSArray *errors) {
             [cache.lights.allValues enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                PHLight *light = (PHLight *)obj;
-                PHLightState *lightState = [[PHLightState alloc] init];
+                TTHueLight *light = (TTHueLight *)obj;
+                TTHueLightState *lightState = [[TTHueLightState alloc] init];
                 lightState.on = [NSNumber numberWithBool:YES];
                 lightState.alert = 0;
                 lightState.brightness = @(MAX_BRIGHTNESS*(6/10.0));
                 lightState.saturation = @(MAX_BRIGHTNESS);
-                CGPoint point = [PHUtilities calculateXY:[NSColor colorWithRed:145/255.0 green:76/255.0 blue:16/255.0 alpha:1.0] forModel:light.modelNumber];
+                CGPoint point = [TTHueColor calculateXY:[NSColor colorWithRed:145/255.0 green:76/255.0 blue:16/255.0 alpha:1.0] forModel:light.modelNumber];
                 if (idx % 3 == 2) {
                     lightState.brightness = @(MAX_BRIGHTNESS*(8/10.0));
-                    point = [PHUtilities calculateXY:[NSColor colorWithRed:134/255.0 green:56/255.0 blue:205/255.0 alpha:1.0] forModel:light.modelNumber];
+                    point = [TTHueColor calculateXY:[NSColor colorWithRed:134/255.0 green:56/255.0 blue:205/255.0 alpha:1.0] forModel:light.modelNumber];
                 }
                 lightState.x = @(point.x);
                 lightState.y = @(point.y);

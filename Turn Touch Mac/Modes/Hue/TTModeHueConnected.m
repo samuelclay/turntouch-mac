@@ -5,7 +5,7 @@
 
 #import "TTModeHueOptions.h"
 #import "TTModeHueConnected.h"
-#import <HueSDK_OSX/HueSDK.h>
+#import "TTHueBridge.h"
 #import "TTAppDelegate.h"
 #import "TTModeHue.h"
 

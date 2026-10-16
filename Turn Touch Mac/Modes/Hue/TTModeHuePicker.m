@@ -28,12 +28,12 @@
     NSString *roomSelectedIdentifier = [self.action optionValue:kHueRoom inDirection:self.appDelegate.modeMap.inspectingModeDirection];
     NSString *roomSelected;
     
-    PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
+    TTHueBridgeResources *cache = [TTHueResourcesReader readBridgeResourcesCache];
     NSMutableArray *rooms = [[NSMutableArray alloc] init];
     [self.roomDropdown removeAllItems];
     
     [rooms addObject:@{@"name": @"All Rooms", @"identifier": @"all"}];
-    for (PHGroup *group in cache.groups.allValues) {
+    for (TTHueGroup *group in cache.groups.allValues) {
         //        NSLog(@"Room: %@ %@", group.identifier, group.name);
         [rooms addObject:@{@"name": group.name, @"identifier": group.identifier}];
     }
@@ -55,10 +55,10 @@
 
 - (IBAction)didChangeRoom:(id)sender {
     NSMenuItem *menuItem = [self.roomDropdown selectedItem];
-    PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
+    TTHueBridgeResources *cache = [TTHueResourcesReader readBridgeResourcesCache];
     NSString *roomIdentifier;
     
-    for (PHGroup *group in cache.groups.allValues) {
+    for (TTHueGroup *group in cache.groups.allValues) {
         if ([group.name isEqualToString:menuItem.title]) {
             roomIdentifier = group.identifier;
             break;

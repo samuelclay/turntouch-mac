@@ -9,7 +9,7 @@
 #import "TTModeHue.h"
 #import "TTModeHueSceneOptions.h"
 #import "TTModeHuePicker.h"
-#import <HueSDK_OSX/HueSDK.h>
+#import "TTHueBridge.h"
 
 NSString *const kHueRoom = @"hueRoom";
 NSString *const kHueScene = @"hueScene";
@@ -40,12 +40,12 @@ NSString *const kDoubleTapHueScene = @"doubleTapHueScene";
     NSString *sceneSelected;
     NSString *doubleTapSceneSelected;
     
-    PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
+    TTHueBridgeResources *cache = [TTHueResourcesReader readBridgeResourcesCache];
     NSMutableArray *scenes = [[NSMutableArray alloc] init];
     [self.scenePopup removeAllItems];
     [self.doubleTapScenePopup removeAllItems];
     
-    for (PHScene *scene in cache.scenes.allValues) {
+    for (TTHueScene *scene in cache.scenes.allValues) {
         NSLog(@"Scene: %@ %@", scene.identifier, scene.name);
         [scenes addObject:@{@"name": scene.name, @"identifier": scene.identifier}];
     }
@@ -99,10 +99,10 @@ NSString *const kDoubleTapHueScene = @"doubleTapHueScene";
 - (IBAction)didChangeScene:(id)sender {
     BOOL doubleTap = sender == self.doubleTapScenePopup;
     NSMenuItem *menuItem = [(doubleTap ? self.doubleTapScenePopup : self.scenePopup) selectedItem];
-    PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
+    TTHueBridgeResources *cache = [TTHueResourcesReader readBridgeResourcesCache];
     NSString *sceneIdentifier;
     
-    for (PHScene *scene in cache.scenes.allValues) {
+    for (TTHueScene *scene in cache.scenes.allValues) {
         if ([scene.name isEqualToString:menuItem.title]) {
             sceneIdentifier = scene.identifier;
             break;
@@ -124,7 +124,7 @@ NSString *const kDoubleTapHueScene = @"doubleTapHueScene";
     [self.roomRefreshButton setHidden:YES];
     [self.doubleTapRefreshButton setHidden:YES];
     
-    PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
+    TTHueCommands *bridgeSendAPI = [[TTHueCommands alloc] init];
     [bridgeSendAPI getAllScenesWithCompletionHandler:^(NSDictionary *dictionary, NSArray *errors) {
         [self drawScenes];
     }];

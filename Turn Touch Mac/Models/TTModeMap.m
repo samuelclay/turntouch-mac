@@ -45,6 +45,7 @@
                                   @"TTModeMusic",
                                   @"TTModeTV",
                                   @"TTModeHue",
+                                  @"TTModeHomeAssistant",
                                   @"TTModeNest",
                                   @"TTModeIfttt",
                                   @"TTModeSonos",

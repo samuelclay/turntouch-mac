@@ -11,6 +11,7 @@
 #import "TTStatusItemView.h"
 #import "TTMenubarController.h"
 #import "TTPanel.h"
+#import "../Views/Panel/TTPanelGeometry.h"
 
 #define PANEL_OPEN_DURATION .12
 #define PANEL_CLOSE_DURATION .14
@@ -100,44 +101,44 @@
 #pragma mark - Public methods
 
 - (NSRect)statusRectForWindow:(NSWindow *)window {
-    NSRect screenRect = [[[NSScreen screens] objectAtIndex:0] frame];
-    NSRect statusRect = NSZeroRect;
-    
     TTStatusItemView *statusItemView = nil;
     if ([self.delegate respondsToSelector:@selector(statusItemViewForPanelController:)]) {
         statusItemView = [self.delegate statusItemViewForPanelController:self];
     }
-    
-    if (statusItemView) {
-        statusRect = statusItemView.globalRect;
-        statusRect.origin.x = NSMinX(statusRect) + NSWidth(statusRect)/2;
-        statusRect.origin.y = NSMinY(statusRect) - NSHeight(statusRect) - 2;
-    } else {
-        statusRect.size = NSMakeSize(STATUS_ITEM_VIEW_WIDTH, [[NSStatusBar systemStatusBar] thickness]);
-        statusRect.origin.x = roundf((NSWidth(screenRect) - NSWidth(statusRect)) / 2);
-        statusRect.origin.y = NSHeight(screenRect) - NSHeight(statusRect) * 2;
+    if (statusItemView.window) {
+        return statusItemView.globalRect;
     }
-    
-    return statusRect;
+
+    NSScreen *screen = window.screen ?: NSScreen.mainScreen;
+    NSRect frame = screen.frame;
+    CGFloat height = NSStatusBar.systemStatusBar.thickness;
+    return NSMakeRect(NSMidX(frame) - STATUS_ITEM_VIEW_WIDTH / 2,
+                      NSMaxY(frame) - height, STATUS_ITEM_VIEW_WIDTH, height);
+}
+
+- (NSScreen *)screenForPanel {
+    NSRect anchor = [self statusRectForWindow:self.window];
+    NSPoint center = NSMakePoint(NSMidX(anchor), NSMidY(anchor));
+    for (NSScreen *screen in NSScreen.screens) {
+        if (NSPointInRect(center, screen.frame)) return screen;
+    }
+    return self.window.screen ?: NSScreen.mainScreen;
 }
 
 - (void)openPanel {
     NSWindow *panel = [self window];
     
-    NSRect screenRect = [[[NSScreen screens] objectAtIndex:0] frame];
+    NSRect screenRect = self.screenForPanel.visibleFrame;
     NSRect statusRect = [self statusRectForWindow:panel];
     
     [self.backgroundView resetPosition];
     [self.backgroundView switchPanelModal:PANEL_MODAL_APP];
 
-    NSRect panelRect = [panel frame];
-    panelRect.size.width = PANEL_WIDTH;
-    panelRect.origin.x = roundf(NSMidX(statusRect) - NSWidth(panelRect) / 2);
-    panelRect.origin.y = NSMaxY(statusRect) - NSHeight(panelRect);
-    
-    if (NSMaxX(panelRect) > (NSMaxX(screenRect) - ARROW_HEIGHT))
-        panelRect.origin.x -= NSMaxX(panelRect) - (NSMaxX(screenRect) - ARROW_HEIGHT);
-    NSLog(@"Panel rect: %@ (%@) screen: %@", NSStringFromRect(statusRect), NSStringFromRect(panelRect), NSStringFromSize(screenRect.size));
+    [self.backgroundView layoutSubtreeIfNeeded];
+    NSRect panelRect = TTPanelFrameBelowStatusItem(statusRect,
+        NSMakeSize(PANEL_WIDTH, NSHeight(panel.frame)), screenRect, ARROW_HEIGHT);
+    NSLog(@"Panel anchor: %@ frame: %@ screen: %@", NSStringFromRect(statusRect),
+          NSStringFromRect(panelRect), NSStringFromRect(screenRect));
 
     [NSApp activateIgnoringOtherApps:NO];
     [panel setAlphaValue:0];
