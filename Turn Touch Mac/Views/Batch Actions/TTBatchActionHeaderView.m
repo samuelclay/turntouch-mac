@@ -104,11 +104,14 @@
     [self.modeImage drawInRect:imageRect];
     
     // Mode name
-    NSSize titleSize = [[[self.mode class] title] sizeWithAttributes:self.titleAttributes];
-    NSPoint titlePoint = NSMakePoint(NSMaxX(imageRect) + BATCH_ACTION_HEADER_MARGIN,
-                                     NSHeight(self.frame)/2 - floor(titleSize.height/2) + 1);
-    
-    [[[self.mode class] title] drawAtPoint:titlePoint withAttributes:self.titleAttributes];
+    NSString *modeTitle = [[self.mode class] title];
+    CGFloat labelX = NSMaxX(imageRect) + 8;
+    CGFloat labelWidth = self.batchAction ? 120 - labelX - 4 : NSWidth(self.bounds) - labelX - 13;
+    NSRect measured = [modeTitle boundingRectWithSize:NSMakeSize(labelWidth, 32)
+        options:NSStringDrawingUsesLineFragmentOrigin attributes:self.titleAttributes];
+    CGFloat titleHeight = MIN(32, ceil(NSHeight(measured)));
+    NSRect titleRect = NSMakeRect(labelX, (NSHeight(self.bounds) - titleHeight) / 2, labelWidth, titleHeight);
+    [modeTitle drawWithRect:titleRect options:NSStringDrawingUsesLineFragmentOrigin attributes:self.titleAttributes];
 
     if (!self.batchAction) return;
     
@@ -144,7 +147,14 @@
     [actionPath fill];
     
     // Have to draw the action title after the background path is filled
-    [actionName drawAtPoint:actionPoint withAttributes:self.titleAttributes];
+    CGFloat textRight = NSMaxX(actionRect) - NSHeight(actionRect) * 1.1 - 4;
+    NSRect actionTextRect = NSMakeRect(actionPoint.x, NSMidY(self.bounds) - 16,
+                                     MAX(0, textRight - actionPoint.x), 32);
+    NSRect actionMeasure = [actionName boundingRectWithSize:actionTextRect.size
+        options:NSStringDrawingUsesLineFragmentOrigin attributes:self.titleAttributes];
+    actionTextRect.size.height = MIN(32, ceil(NSHeight(actionMeasure)));
+    actionTextRect.origin.y = NSMidY(self.bounds) - NSHeight(actionTextRect) / 2;
+    [actionName drawWithRect:actionTextRect options:NSStringDrawingUsesLineFragmentOrigin attributes:self.titleAttributes];
 
     // Action dropdown button
     [NSGraphicsContext saveGraphicsState];

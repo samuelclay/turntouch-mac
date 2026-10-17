@@ -145,11 +145,18 @@
     
     [self drawBorders];
     
-    NSSize titleSize = [self.modeTitle sizeWithAttributes:self.modeAttributes];
-    NSPoint titlePoint = NSMakePoint((NSWidth(self.frame)/2) - (titleSize.width/2),
-                                     18);
-
-    [self.modeTitle drawAtPoint:titlePoint withAttributes:self.modeAttributes];
+    NSMutableParagraphStyle *paragraph = [[NSMutableParagraphStyle alloc] init];
+    paragraph.alignment = NSTextAlignmentCenter;
+    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+    NSMutableDictionary *attributes = [self.modeAttributes mutableCopy];
+    attributes[NSParagraphStyleAttributeName] = paragraph;
+    CGFloat width = MAX(0, NSWidth(self.bounds) - 16);
+    NSRect measured = [self.modeTitle boundingRectWithSize:NSMakeSize(width, 34)
+        options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes];
+    CGFloat height = MIN(34, ceil(NSHeight(measured)));
+    NSRect titleRect = NSMakeRect(8, 25 - height / 2, width, height);
+    [self.modeTitle drawWithRect:titleRect options:NSStringDrawingUsesLineFragmentOrigin
+                     attributes:attributes];
     
     NSRect diamondRect = NSMakeRect((NSWidth(self.frame) / 2) - (DIAMOND_SIZE * 1.3 / 2),
                                     NSHeight(self.frame) - 18 - DIAMOND_SIZE,
