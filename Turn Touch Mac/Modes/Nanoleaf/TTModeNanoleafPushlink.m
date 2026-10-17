@@ -13,7 +13,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.deviceNameLabel.stringValue = [TTModeNanoleaf deviceName] ?: @"Nanoleaf";
+    self.deviceNameLabel.stringValue = [TTModeNanoleaf deviceName] ?: TTText(@"Nanoleaf");
 }
 
 - (void)setProgress:(NSNumber *)progressPercentage {

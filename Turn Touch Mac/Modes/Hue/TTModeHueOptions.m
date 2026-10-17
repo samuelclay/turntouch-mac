@@ -28,7 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.modeHue = ((TTModeHue *)NSAppDelegate.modeMap.selectedMode);
+    self.modeHue = ((TTModeHue *)self.mode);
     [self.modeHue setDelegate:self];
     
     [self changeState:self.modeHue.hueState withMode:self.modeHue showMessage:nil];

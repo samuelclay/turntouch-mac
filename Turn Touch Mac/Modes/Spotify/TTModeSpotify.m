@@ -32,11 +32,11 @@ NSString *const kSpotifyVolumeJump = @"spotifyVolumeJump";
 #pragma mark - Mode
 
 + (NSString *)title {
-    return @"Spotify";
+    return TTText(@"Spotify");
 }
 
 + (NSString *)description {
-    return @"Control Spotify music";
+    return TTText(@"Control Spotify music");
 }
 
 + (NSString *)imageName {
@@ -75,56 +75,56 @@ NSString *const kSpotifyVolumeJump = @"spotifyVolumeJump";
 #pragma mark - Action Titles
 
 - (NSString *)titleTTModeSpotifyVolumeUp {
-    return @"Spotify Volume up";
+    return TTText(@"Spotify Volume up");
 }
 - (NSString *)titleTTModeSpotifyVolumeDown {
-    return @"Spotify Volume down";
+    return TTText(@"Spotify Volume down");
 }
 - (NSString *)titleTTModeSpotifyPause {
-    return @"Pause";
+    return TTText(@"Pause");
 }
 - (NSString *)titleTTModeSpotifyPlay {
-    return @"Play";
+    return TTText(@"Play");
 }
 - (NSString *)titleTTModeSpotifyPlayPause {
-    return @"Play/pause";
+    return TTText(@"Play/pause");
 }
 - (NSString *)doubleTitleTTModeSpotifyPause {
-    return @"Previous track";
+    return TTText(@"Previous track");
 }
 - (NSString *)doubleTitleTTModeSpotifyPlayPause {
-    return @"Previous track";
+    return TTText(@"Previous track");
 }
 - (NSString *)doubleTitleTTModeSpotifyPlay {
-    return @"Previous track";
+    return TTText(@"Previous track");
 }
 - (NSString *)actionTitleTTModeSpotifyPause {
-    return @"Pause";
+    return TTText(@"Pause");
 }
 - (NSString *)actionTitleTTModeSpotifyPlay {
-    return @"Play";
+    return TTText(@"Play");
 }
 - (NSString *)actionTitleTTModeSpotifyPlayPause {
     SpotifyApplication *spotify = [SBApplication applicationWithBundleIdentifier:@"com.spotify.client"];
     if (spotify.playerState != SpotifyEPlSPlaying) {
-        return @"Pause";
+        return TTText(@"Pause");
     }
-    return @"Play";
+    return TTText(@"Play");
 }
 - (NSString *)titleTTModeSpotifyNextTrack {
-    return @"Next track";
+    return TTText(@"Next track");
 }
 - (NSString *)doubleTitleTTModeSpotifyNextTrack {
-    return @"Next album";
+    return TTText(@"Next album");
 }
 - (NSString *)titleTTModeSpotifyPreviousTrack {
-    return @"Previous track";
+    return TTText(@"Previous track");
 }
 - (NSString *)titleTTModeSpotifyVolumeJump {
-    return @"Volume jump";
+    return TTText(@"Volume jump");
 }
 - (NSString *)titleTTModeSpotifySleep {
-    return @"Sleep";
+    return TTText(@"Sleep");
 }
 
 #pragma mark - Action Images
@@ -268,9 +268,9 @@ NSString *const kSpotifyVolumeJump = @"spotifyVolumeJump";
     // Check if song playing
     if (!currentTrack.name) {
         NSTextView *songTitleView = [[NSTextView alloc] initWithFrame:NSMakeRect(infoX, textSize.height, infoWidth, textSize.height)];
-        [songTitleView setString:@"Spotify isn't playing anything"];
+        [songTitleView setString:TTText(@"Spotify isn't playing anything")];
         [songTitleView setTextColor:NSColorFromRGB(0x604050)];
-        [songTitleView setFont:[NSFont fontWithName:@"Effra" size:fontSize]];
+        [songTitleView setFont:[NSFont fontWithName:TTText(@"Effra") size:fontSize]];
         [songTitleView setBackgroundColor:[NSColor clearColor]];
         [view addSubview:songTitleView];
     } else {

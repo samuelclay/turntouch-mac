@@ -26,11 +26,11 @@ NSString *const kPresentationPlayStartFirstSlide = @"TT:Presentation:playStartFi
 #pragma mark - Mode
 
 + (NSString *)title {
-    return @"Presentation";
+    return TTText(@"Presentation");
 }
 
 + (NSString *)description {
-    return @"Keynote and PowerPoint";
+    return TTText(@"Keynote and PowerPoint");
 }
 
 + (NSString *)imageName {
@@ -67,27 +67,27 @@ NSString *const kPresentationPlayStartFirstSlide = @"TT:Presentation:playStartFi
 #pragma mark - Action Titles
 
 - (NSString *)titleTTModePresentationToggleSlides {
-    return @"Toggle slides";
+    return TTText(@"Toggle slides");
 }
 
 - (NSString *)titleTTModePresentationNextSlide {
-    return @"Next slide";
+    return TTText(@"Next slide");
 }
 
 - (NSString *)titleTTModePresentationPreviousSlide {
-    return @"Previous slide";
+    return TTText(@"Previous slide");
 }
 
 - (NSString *)titleTTModePresentationPlay {
-    return @"Play presentation";
+    return TTText(@"Play presentation");
 }
 
 - (NSString *)titleTTModePresentationVolumeUp {
-    return @"Volume up";
+    return TTText(@"Volume up");
 }
 
 - (NSString *)titleTTModePresentationVolumeDown {
-    return @"Volume down";
+    return TTText(@"Volume down");
 }
 
 #pragma mark - Action Images

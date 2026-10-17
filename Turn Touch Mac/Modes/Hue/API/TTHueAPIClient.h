@@ -35,7 +35,7 @@ typedef void (^TTHueAPIDevicesHandler)(NSArray<TTHueDevice *> * _Nullable device
 typedef void (^TTHueAPIResourceCacheHandler)(TTHueResourceCache * _Nullable cache, NSError * _Nullable error);
 
 /// REST API client for Hue CLIP API v2
-@interface TTHueAPIClient : NSObject <NSURLSessionDelegate>
+@interface TTHueAPIClient : NSObject <NSURLSessionTaskDelegate>
 
 @property (nonatomic, copy, readonly) NSString *bridgeIP;
 @property (nonatomic, copy, readonly) NSString *applicationKey;

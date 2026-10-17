@@ -20,7 +20,7 @@
 }
 
 - (void)setConnectingWithMessage:(NSString*)message {
-    if (!message) message = @"Connecting to Hue...";
+    if (!message) message = TTText(@"Connecting to Hue...");
 
     self.progressMessage.stringValue = message;
     [self.progressIndicator startAnimation:self];

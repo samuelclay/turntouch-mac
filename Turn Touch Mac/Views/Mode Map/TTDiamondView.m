@@ -146,6 +146,7 @@
     } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(activeModeDirection))]) {
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(selectedModeDirection))]) {
+        [NSObject cancelPreviousPerformRequestsWithTarget:self];
         [self setNeedsDisplay:YES];
     } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(inspectingModeDirection))]) {
         [self setNeedsDisplay:YES];
@@ -258,7 +259,9 @@
     // TODO: This entire view needs to be split into a mode diamond and action diamond, since only
     //       the action diamond is interactive.
     TTModeDirection activeModeDirection = (self.ignoreActiveMode || self.diamondType == DIAMOND_TYPE_INTERACTIVE) ? self.overrideActiveDirection : self.appDelegate.modeMap.activeModeDirection;
-    TTModeDirection selectedModeDirection = self.ignoreSelectedMode ? self.overrideSelectedDirection : self.appDelegate.modeMap.selectedModeDirection;
+    TTModeDirection selectedBank = self.appDelegate.modeMap.selectedModeDirection;
+    if (self.diamondType == DIAMOND_TYPE_MODE && selectedBank >= SINGLE_TAP) selectedBank = (TTModeDirection)(selectedBank - SINGLE_TAP + NORTH);
+    TTModeDirection selectedModeDirection = self.ignoreSelectedMode ? self.overrideSelectedDirection : selectedBank;
     TTModeDirection inspectingModeDirection = self.appDelegate.modeMap.inspectingModeDirection;
     TTModeDirection hoverModeDirection = self.appDelegate.modeMap.hoverModeDirection;
 
@@ -354,7 +357,7 @@
                 CGFloat alpha = 0.5f;
                 modeColor = NSColorFromRGBAlpha(0x303033, alpha);
             } else if (isSelectedDirection) {
-                if (self.diamondType == DIAMOND_TYPE_PAIRING || self.appDelegate.modeMap.selectedModeDirection == direction) {
+                if (self.diamondType == DIAMOND_TYPE_PAIRING || selectedBank == direction) {
                     CGFloat alpha = 0.8f;
                     modeColor = NSColorFromRGBAlpha(0x1555D8, alpha);
                 } else {
@@ -459,6 +462,8 @@
     if (self.appDelegate.modeMap.isButtonActionPerform) {
         if (direction == NO_DIRECTION) {
             return;
+        } else if (self.appDelegate.modeMap.isTwelveButtonMode) {
+            [self performSingleActionForDirection:@(direction)];
         } else if (theEvent.clickCount == 2) {
             [self.class cancelPreviousPerformRequestsWithTarget:self selector:@selector(performSingleActionForDirection:) object:@(direction)];
             [self performDoubleActionForDirection:direction];

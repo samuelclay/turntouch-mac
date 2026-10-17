@@ -34,6 +34,9 @@ typedef enum {
 @property (nonatomic) TTHUDMenuState menuState;
 
 - (void)readBluetoothData:(NSData *)data;
+- (void)readBluetoothData:(NSData *)data fromDevice:(NSString *)identifier;
+- (void)resetGestureState;
+- (void)resetGestureStateForDevice:(NSString *)identifier;
 - (void)activateMode:(TTModeDirection)direction;
 - (void)activateButton:(TTModeDirection)direction;
 - (void)fireButton:(TTModeDirection)direction;

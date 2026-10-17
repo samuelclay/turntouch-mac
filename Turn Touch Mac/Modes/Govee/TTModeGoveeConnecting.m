@@ -15,7 +15,7 @@
 }
 
 - (void)setConnectingWithMessage:(NSString *)message {
-    if (!message) message = @"Connecting to Govee...";
+    if (!message) message = TTText(@"Connecting to Govee...");
 
     self.progressMessage.stringValue = message;
     [self.progressIndicator startAnimation:self];

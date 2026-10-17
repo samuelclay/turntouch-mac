@@ -1,0 +1,2197 @@
+{
+  "%@ minutes": [
+    "Turn Touch Mac/Modes/Hue/TTModeHueSleepOptions.m",
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafSleepOptions.m"
+  ],
+  "%@ seconds": [
+    "Turn Touch Mac/Modes/Hue/TTModeHueSleepOptions.m",
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafSleepOptions.m"
+  ],
+  "%@, %ld %@ a week": [
+    "Turn Touch Mac/Modes/Alarm Clock/TTModeAlarmClockOptions.m"
+  ],
+  "%@, in %@": [
+    "Turn Touch Mac/Modes/Alarm Clock/TTModeAlarmClockOptions.m"
+  ],
+  "%ld effects": [
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafConnected.m"
+  ],
+  "%ld min": [
+    "Turn Touch Mac/Modes/Alarm Clock/TTModeAlarmClockOptions.m",
+    "Turn Touch Mac/Modes/Alarm Clock/TTModeAlarmSnoozeOptions.m"
+  ],
+  "-The Device Firmware Update (DFU) app that is compatible with Nordic Semiconductor nRF51822 devices that have the S110 SoftDevice and bootloader enabled.\n\n-It allows to upload new application onto the device over-the-air (OTA).\n\n-The DFU discovers supported DFU devices, connects to them, and uploads user selected firmware applications to the device.\n\n-Default number of Packet Receipt Notification is 10 but you can set up other number in the iPhone Settings.\n\n-(New) Bin format is also supported in this version.\n\n-(New) This version supports Nordic Semiconductor softdevice 7.1 and SDK 7.1 and it is backword compatible. \n\n-(New) In SDK 7.0 and above initPacket is sent in a file (.dat) in addition to firmware file.\n\n-(New) For Application update application.hex or application.bin and application.dat is required inside a zip file.\n\n-(New) For Bootloader update bootloader.hex or bootloader.bin and bootloader.dat is required inside a zip file.\n\n-(New) For Softdevice update softdevice.hex or softdevice.bin and softdevice.dat is required.\n\n-(New) For updating both softdevice and bootloader system.dat is required in addition.": [
+    "Turn Touch Mac/DFU/Constants/Utility.m"
+  ],
+  "-User can add Folders and Files with Hex, Bin and Zip extensions from Emails and iTunes.\n\n-User added files will be appeared here.\n\n- In order to add files from iTunes:\n   1. Open iTunes on your PC and connect iPhone to it.\n   2.On the left, under Devices select your iPhone.\n   3.on the top, select tab Apps.\n   4. on the bottom, under File Sharing select app nRF Toolbox and then add files.": [
+    "Turn Touch Mac/DFU/Constants/Utility.m"
+  ],
+  "-User can add Folders and Files with Hex, Bin and Zip extensions from Emails and iTunes.\n\n-User added files will be appeared on tab User Files.\n\n- In order to add files from iTunes:\n   1. Open iTunes on your PC and connect iPhone to it.\n   2.On the left, under Devices select your iPhone.\n   3.on the top, select tab Apps.\n   4. on the bottom, under File Sharing select app nRF Toolbox and then add files.\n\n- In order to add files from Emails:\n   1. Attach file to your email.\n   2.Open your email on your iPhone.\n   3.Long click on attached file and then select Open in nRF Toolbox.": [
+    "Turn Touch Mac/DFU/Constants/Utility.m"
+  ],
+  "0 tracks": [
+    "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:vDM-Gr-dDo.title",
+    "Turn Touch Mac/Modes/Music/Base.lproj/TTModeMusicPlaylistOptions.xib:kwI-VL-IaG.title",
+    "Turn Touch Mac/Modes/Music/Base.lproj/TTModeMusicPlaylistOptions.xib:uMK-Uh-2g1.title"
+  ],
+  "1 effect": [
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafConnected.m"
+  ],
+  "1 minute": [
+    "Turn Touch Mac/Modes/Hue/TTModeHueSleepOptions.m",
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafSleepOptions.m"
+  ],
+  "1 second": [
+    "Turn Touch Mac/Modes/Hue/TTModeHueSleepOptions.m",
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafSleepOptions.m"
+  ],
+  "12 actions": [
+    "Turn Touch Mac/Models/TTModeTwelve.m",
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
+  ],
+  "16 actions": [
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
+  ],
+  "72°F": [
+    "Turn Touch Mac/Modes/Nest/Base.lproj/TTModeNestSetTempOptions.xib:n8l-KY-u0J.title"
+  ],
+  "7:00 AM (in 8 hours 21 minutes)": [
+    "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:Rzq-bq-C5C.title"
+  ],
+  "7:00 AM, 5 days a week": [
+    "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:I7s-PQ-PP0.title"
+  ],
+  "8 min": [
+    "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmSnoozeOptions.xib:aKi-lG-XrY.title"
+  ],
+  "90 min": [
+    "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:bxJ-z4-oXd.title"
+  ],
+  "API Key": [
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeConnected.m",
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeSwitchOptions.m"
+  ],
+  "APPS & CONNECTIONS": [
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
+  ],
+  "About Turn Touch & updates": [
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
+  ],
+  "About Turn Touch Remote": [
+    "Turn Touch Mac/Base.lproj/MainMenu.xib:58.title"
+  ],
+  "About this app’s actions": [
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
+  ],
+  "Action 1st": [
+    "Turn Touch Mac/Models/TTMode.m"
+  ],
+  "Action 2nd": [
+    "Turn Touch Mac/Models/TTMode.m"
+  ],
+  "Action 3rd": [
+    "Turn Touch Mac/Models/TTMode.m"
+  ],
+  "Action 4th": [
+    "Turn Touch Mac/Models/TTMode.m"
+  ],
+  "Action Menu": [
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeSwitchOptions.m",
+    "Turn Touch Mac/Modes/Ifttt/TTModeIftttTriggerActionOptions.m",
+    "Turn Touch Mac/Modes/Kasa/TTModeKasaSwitchOptions.m",
+    "Turn Touch Mac/Modes/Wemo/TTModeWemoSwitchOptions.m",
+    "Turn Touch Mac/Views/Batch Actions/TTBatchActionHeaderView.m"
+  ],
+  "Action data (optional JSON)": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Action data must be a JSON object, for example {\"brightness_pct\": 50}.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
+  ],
+  "Activate scene": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
+  ],
+  "Add Action": [
+    "Turn Touch Mac/Views/Batch Actions/TTAddActionButtonView.m",
+    "Turn Touch Mac/Views/Batch Actions/TTAddActionButtonView.m"
+  ],
+  "Add a new remote…": [
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
+  ],
+  "Add action": [
+    "Turn Touch Mac/Models/TTModeTwelve.m"
+  ],
+  "Add the required action data field: ": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Airfoil": [
+    "Turn Touch Mac/Modes/Airfoil/TTModeAirfoil.m"
+  ],
+  "Alarm": [
+    "Turn Touch Mac/Modes/Alarm Clock/TTModeAlarmClock.m"
+  ],
+  "Alarm Clock": [
+    "Turn Touch Mac/Modes/Alarm Clock/TTModeAlarmClock.m"
+  ],
+  "Alarm is in the past!": [
+    "Turn Touch Mac/Modes/Alarm Clock/TTModeAlarmClockOptions.m"
+  ],
+  "Alarm times": [
+    "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:CX8-qh-iYR.label"
+  ],
+  "All Rooms": [
+    "Turn Touch Mac/Modes/Hue/TTModeHuePicker.m"
+  ],
+  "All bright": [
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueRandomOptions.xib:Aeq-U5-5qx.ibShadowedLabels[2]",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueRandomOptions.xib:yJC-uA-kHZ.ibShadowedLabels[2]"
+  ],
+  "All different": [
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueRandomOptions.xib:CcS-hq-CN1.ibShadowedLabels[0]",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueRandomOptions.xib:VdM-tN-qLN.ibShadowedLabels[0]"
+  ],
+  "All dim": [
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueRandomOptions.xib:Aeq-U5-5qx.ibShadowedLabels[0]",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueRandomOptions.xib:yJC-uA-kHZ.ibShadowedLabels[0]"
+  ],
+  "All done": [
+    "Turn Touch Mac/Views/Pairing/TTModalBarButton.m"
+  ],
+  "All entities": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "All same": [
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueRandomOptions.xib:CcS-hq-CN1.ibShadowedLabels[2]",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueRandomOptions.xib:VdM-tN-qLN.ibShadowedLabels[2]"
+  ],
+  "Ambient": [
+    "Turn Touch Mac/Modes/Nest/Base.lproj/TTModeNestConnected.xib:6XF-TQ-JhJ.title"
+  ],
+  "Apple Keynote": [
+    "Turn Touch Mac/Modes/Presentation/Base.lproj/TTModePresentationOptions.xib:hCY-ug-dWW.title"
+  ],
+  "Assign this action to the selected remote button": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Authentication failed. Please reconnect to your Hue bridge.": [
+    "Turn Touch Mac/Modes/Hue/API/TTHueAPIClient.m"
+  ],
+  "Authentication failed: %@": [
+    "Turn Touch Mac/Modes/Hue/API/TTHueBridgeAuthenticator.m",
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m"
+  ],
+  "Authentication timed out": [
+    "Turn Touch Mac/Modes/Hue/API/TTHueBridgeAuthenticator.m",
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleaf.m"
+  ],
+  "Automatic (device language)": [
+    "Turn Touch Mac/TTLocalization.m",
+    "Turn Touch Mac/TTLocalization.m"
+  ],
+  "Automations": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Available actions come from your Home Assistant.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "BRIDGE ID": [
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueBridge.xib:GK9-hi-sSQ.headerCell.title"
+  ],
+  "BUTTONS": [
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
+  ],
+  "Battery Level: %d%%": [
+    "Turn Touch Mac/Views/DFU/TTDeviceTitleView.m"
+  ],
+  "Bluetooth in resetting state.": [
+    "Turn Touch Mac/Bluetooth/TTBluetoothMonitor.m"
+  ],
+  "Bluetooth in unknown state.": [
+    "Turn Touch Mac/Bluetooth/TTBluetoothMonitor.m"
+  ],
+  "Bluetooth is currently powered off.": [
+    "Turn Touch Mac/Bluetooth/TTBluetoothMonitor.m",
+    "Turn Touch Mac/Views/Pairing/TTModalPairingInfo.m"
+  ],
+  "Bluetooth is powered off or isn't responding.": [
+    "Turn Touch Mac/Views/Pairing/TTModalPairingInfo.m"
+  ],
+  "Bluetooth not in any state!": [
+    "Turn Touch Mac/Bluetooth/TTBluetoothMonitor.m"
+  ],
+  "Box": [
+    "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:5ti-VC-9rp.title",
+    "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:oIq-Tz-CYQ.title",
+    "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:zoN-wq-qzO.title",
+    "Turn Touch Mac/Views/FTUX/Base.lproj/TTModalFTUXView.xib:Hlg-kD-cdk.title",
+    "Turn Touch Mac/Views/Pairing/Base.lproj/TTModalPairingScanningView.xib:Pfw-Cs-VFh.title",
+    "Turn Touch Mac/Views/Settings/Base.lproj/TTModalAbout.xib:ooR-EN-Ndh.title",
+    "Turn Touch Mac/Views/Settings/Base.lproj/TTModalDevices.xib:ysx-6e-OPi.title",
+    "Turn Touch Mac/Views/Settings/Base.lproj/TTModalSettings.xib:kXe-pv-sBb.title",
+    "Turn Touch Mac/Views/Settings/Base.lproj/TTModalSupportView.xib:WIK-Ji-3Ll.title"
+  ],
+  "Brightness": [
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueRandomOptions.xib:9YE-RM-3sn.title",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueRandomOptions.xib:Ofa-pl-ofo.title"
+  ],
+  "Brightness down": [
+    "Turn Touch Mac/Modes/Govee/TTModeGovee.m",
+    "Turn Touch Mac/Modes/Mac/TTModeMac.m"
+  ],
+  "Brightness up": [
+    "Turn Touch Mac/Modes/Govee/TTModeGovee.m",
+    "Turn Touch Mac/Modes/Mac/TTModeMac.m"
+  ],
+  "Button mode": [
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m",
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
+  ],
+  "Buttons for If This Then That": [
+    "Turn Touch Mac/Modes/Ifttt/TTModeIfttt.m"
+  ],
+  "By enabling this switch you allow for usage stats to be gathered. These are only used to improve the service. Your data will never be sold.": [
+    "Turn Touch Mac/Views/Settings/Base.lproj/TTModalSettings.xib:QiT-i2-VCp.title"
+  ],
+  "CRC Error": [
+    "Turn Touch Mac/DFU/DFUImplementation/DFUOperations.m"
+  ],
+  "Cancel": [
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeConnected.m",
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeSwitchOptions.m",
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m",
+    "Turn Touch Mac/Modes/Kasa/TTModeKasaConnected.m",
+    "Turn Touch Mac/Modes/Kasa/TTModeKasaSwitchOptions.m",
+    "Turn Touch Mac/TTLocalization.m",
+    "Turn Touch Mac/Views/Batch Actions/TTAddActionButtonView.m",
+    "Turn Touch Mac/Views/Mode Title/TTModeTitleView.m"
+  ],
+  "Change": [
+    "Turn Touch Mac/Views/Batch Actions/TTBatchActionHeaderView.m",
+    "Turn Touch Mac/Views/Mode Map/TTDiamondLabels.m",
+    "Turn Touch Mac/Views/Mode Map/TTDiamondLabels.m",
+    "Turn Touch Mac/Views/Mode Options/TTOptionsActionTitle.m",
+    "Turn Touch Mac/Views/Mode Options/TTOptionsActionTitle.m",
+    "Turn Touch Mac/Views/Mode Title/TTModeTitleView.m",
+    "Turn Touch Mac/Views/Mode Title/TTModeTitleView.m"
+  ],
+  "Change API Key...": [
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeSwitchOptions.m"
+  ],
+  "Check for updates...": [
+    "Turn Touch Mac/Views/Settings/Base.lproj/TTModalAbout.xib:XvV-al-DqQ.title"
+  ],
+  "Choose File": [
+    "Turn Touch Mac/Modes/Custom/Base.lproj/TTModeCustomFileOptions.xib:PnV-cl-gnM.title"
+  ],
+  "Choose Home Assistant action…": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTModeHomeAssistantOptions.m"
+  ],
+  "Choose IFTTT Action": [
+    "Turn Touch Mac/Modes/Ifttt/Base.lproj/TTModeIftttTriggerActionOptions.xib:iCG-aY-OdQ.title"
+  ],
+  "Choose a button, then add an action": [
+    "Turn Touch Mac/Models/TTModeTwelve.m"
+  ],
+  "Choose a discovered home or enter its address to get started.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Choose a gesture tab and a button, then Add Action. Mix apps or add several actions to one gesture.": [
+    "Turn Touch Mac/Views/FTUX/TTModalFTUXView.m"
+  ],
+  "Choose a valid Home Assistant action.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
+  ],
+  "Choose an action for this app using Add Action below a remote button.": [
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
+  ],
+  "Choose an entity": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m",
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Choose an entity first.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
+  ],
+  "Choose the target in the entity list, not in action data.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
+  ],
+  "Climate": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Close": [
+    "Turn Touch Mac/Controllers/TTModeHUDWindowController.m"
+  ],
+  "Close NewsBlur": [
+    "Turn Touch Mac/Modes/News/TTModeNews.m"
+  ],
+  "Close Reader": [
+    "Turn Touch Mac/Modes/Web/TTModeWeb.m"
+  ],
+  "Colors": [
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueRandomOptions.xib:CnZ-6B-OPP.title",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueRandomOptions.xib:XSQ-Rl-N41.title"
+  ],
+  "Configure your Turn Touch wooden remote and put lights, music, and everyday actions at your fingertips. Choose actions for single taps, double taps, and holds, or combine several actions on one button.\n\nPair a remote over Bluetooth, choose your apps and devices, and customize your buttons in Settings. Turn Touch supports compatible smart-home devices and services; available functions depend on the integration and device.\n\nA Turn Touch remote is sold separately. Some integrations require compatible hardware, local network access, or a third-party account.\n\nLearn more: https://turntouch.com": [
+    "Store description; maximum=4000 characters"
+  ],
+  "Conncted to X Wemo devices": [
+    "Turn Touch Mac/Modes/Wemo/Base.lproj/TTModeWemoConnected.xib:2PB-le-7oU.title"
+  ],
+  "Connect": [
+    "Turn Touch Mac/Modes/Govee/Base.lproj/TTModeGoveeConnect.xib:OBZ-nD-v7C.title",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueBridge.xib:6nh-T6-1JP.title"
+  ],
+  "Connect locally, find an entity, and choose what your Turn Touch remote should do.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Connect to Home Assistant first.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
+  ],
+  "Connect to Home Assistant…": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTModeHomeAssistantOptions.m"
+  ],
+  "Connect to Hue": [
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueConnect.xib:alA-C8-7Zp.title"
+  ],
+  "Connect to Hue...": [
+    "Turn Touch Mac/Modes/Hue/TTModeHueConnect.m"
+  ],
+  "Connect to IFTTT": [
+    "Turn Touch Mac/Modes/Ifttt/Base.lproj/TTModeIftttConnect.xib:AD3-tr-X7N.title"
+  ],
+  "Connect to Nanoleaf": [
+    "Turn Touch Mac/Modes/Nanoleaf/Base.lproj/TTModeNanoleafConnect.xib:alA-C8-7Zp.title"
+  ],
+  "Connect to Nest": [
+    "Turn Touch Mac/Modes/Nest/Base.lproj/TTModeNestConnect.xib:OBZ-nD-v7C.title"
+  ],
+  "Connect to browse your home": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Connected": [
+    "Application-owned status or selector label; translated only at rendering, never in state comparisons."
+  ],
+  "Connected Devices": [
+    "Turn Touch Mac/Views/Settings/Base.lproj/TTModalDevices.xib:csD-j7-iBZ.title"
+  ],
+  "Connected Govee devices: %ld": [
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeConnected.m"
+  ],
+  "Connected Kasa devices: %ld": [
+    "Turn Touch Mac/Modes/Kasa/TTModeKasaConnected.m"
+  ],
+  "Connected Wemo devices: %ld": [
+    "Turn Touch Mac/Modes/Wemo/TTModeWemoConnected.m"
+  ],
+  "Connected to Hue": [
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueConnected.xib:Sky-Mu-For.title"
+  ],
+  "Connected to Nanoleaf": [
+    "Turn Touch Mac/Modes/Nanoleaf/Base.lproj/TTModeNanoleafConnected.xib:con-lbl-789.title"
+  ],
+  "Connected to X Govee devices": [
+    "Turn Touch Mac/Modes/Govee/Base.lproj/TTModeGoveeConnected.xib:2PB-le-7oU.title"
+  ],
+  "Connected to X Kasa devices": [
+    "Turn Touch Mac/Modes/Kasa/Base.lproj/TTModeKasaConnected.xib:2PB-le-7oU.title"
+  ],
+  "Connected wireless speakers": [
+    "Turn Touch Mac/Modes/Sonos/TTModeSonos.m"
+  ],
+  "Connected · %d%% battery": [
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
+  ],
+  "Connected · %lu entities · %@": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Connecting": [
+    "Application-owned status or selector label; translated only at rendering, never in state comparisons."
+  ],
+  "Connecting to %@...": [
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleaf.m"
+  ],
+  "Connecting to Govee...": [
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeConnecting.m",
+    "Turn Touch Mac/Modes/Govee/Base.lproj/TTModeGoveeConnecting.xib:QRw-wt-k7b.title"
+  ],
+  "Connecting to Hue...": [
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m",
+    "Turn Touch Mac/Modes/Hue/TTModeHueConnecting.m"
+  ],
+  "Connecting to IFTTT...": [
+    "Turn Touch Mac/Modes/Ifttt/Base.lproj/TTModeIftttConnecting.xib:7qH-9B-baz.title"
+  ],
+  "Connecting to Ifttt...": [
+    "Turn Touch Mac/Modes/Ifttt/TTModeIftttConnecting.m"
+  ],
+  "Connecting to Kasa devices...": [
+    "Turn Touch Mac/Modes/Kasa/TTModeKasaConnecting.m"
+  ],
+  "Connecting to Nanoleaf...": [
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafConnecting.m"
+  ],
+  "Connecting to Nest...": [
+    "Turn Touch Mac/Modes/Nest/TTModeNestConnected.m",
+    "Turn Touch Mac/Modes/Nest/TTModeNestConnecting.m"
+  ],
+  "Connecting to Remote...": [
+    "Turn Touch Mac/Views/DFU/TTDeviceTitleView.m"
+  ],
+  "Connecting to Sonos...": [
+    "Turn Touch Mac/Modes/Sonos/TTModeSonosConnecting.m"
+  ],
+  "Connecting to Wemo...": [
+    "Turn Touch Mac/Modes/Wemo/TTModeWemoConnecting.m"
+  ],
+  "Connecting to remote...": [
+    "Turn Touch Mac/Views/Settings/TTModalDevices.m"
+  ],
+  "Connecting to your home…": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Connecting...": [
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m",
+    "Turn Touch Mac/Views/Pairing/TTModalPairingScanningView.m"
+  ],
+  "Connection and app options": [
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
+  ],
+  "Connection cancelled.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m",
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
+  ],
+  "Connection changed.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m",
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
+  ],
+  "Connection changed. Please try again.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
+  ],
+  "Connection error: %@": [
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m"
+  ],
+  "Connection failed": [
+    "Application-owned status or selector label; translated only at rendering, never in state comparisons."
+  ],
+  "Connection failed: %@": [
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleaf.m"
+  ],
+  "Connection timed out. Tap to retry.": [
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m"
+  ],
+  "Connection to Hue bridge lost": [
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m"
+  ],
+  "Contact support": [
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
+  ],
+  "Continue": [
+    "Turn Touch Mac/TTLocalization.m",
+    "Turn Touch Mac/Views/Pairing/TTModalBarButton.m",
+    "Turn Touch Mac/Views/Pairing/TTModalBarButton.m",
+    "Turn Touch Mac/Views/Pairing/TTModalBarButton.m",
+    "Turn Touch Mac/Views/Pairing/TTModalBarButton.m"
+  ],
+  "Control Music": [
+    "Turn Touch Mac/Modes/Music/TTModeMusic.m"
+  ],
+  "Control Spotify music": [
+    "Turn Touch Mac/Modes/Spotify/TTModeSpotify.m"
+  ],
+  "Control TV": [
+    "Turn Touch Mac/TV/TTModeTV.m"
+  ],
+  "Control connected speakers with Airfoil": [
+    "Turn Touch Mac/Modes/Airfoil/TTModeAirfoil.m"
+  ],
+  "Control iTunes": [
+    "Turn Touch Mac/Modes/Music/TTModeMusic.m"
+  ],
+  "Control movies and tv": [
+    "Turn Touch Mac/Modes/Video/TTModeVideo.m"
+  ],
+  "Controllable entities": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Cool": [
+    "Turn Touch Mac/Modes/Nest/Base.lproj/TTModeNestSetTempOptions.xib:Min-6e-JO2.ibShadowedLabels[1]"
+  ],
+  "Could not connect to Hue bridge": [
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m"
+  ],
+  "Could not connect to Hue bridge. Check your network connection.": [
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m"
+  ],
+  "Could not find any Hue bridges": [
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m"
+  ],
+  "Could not read actions.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
+  ],
+  "Could not read entities.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
+  ],
+  "Could not save the Home Assistant credentials in Keychain. Please unlock your keychain and try again.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
+  ],
+  "Counting is Difficult": [
+    "Turn Touch Mac/Views/DFU/TTDeviceTitleView.m"
+  ],
+  "Covers": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Custom": [
+    "Turn Touch Mac/Modes/Custom/TTModeCustom.m"
+  ],
+  "Customize Turn Touch on this Mac": [
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
+  ],
+  "DOUBLE TAP": [
+    "Turn Touch Mac/Views/Mode Tabs/TTModeTab.m"
+  ],
+  "Data Size Exceeds": [
+    "Turn Touch Mac/DFU/DFUImplementation/DFUOperations.m"
+  ],
+  "Decryption failed": [
+    "Turn Touch Mac/Modes/Kasa/TTModeKasaKLAPProtocol.m"
+  ],
+  "Device": [
+    "Turn Touch Mac/Modes/Govee/Base.lproj/TTModeGoveeSwitchOptions.xib:11I-Sa-5ow.title",
+    "Turn Touch Mac/Modes/Kasa/Base.lproj/TTModeKasaSwitchOptions.xib:11I-Sa-5ow.title",
+    "Turn Touch Mac/Modes/Wemo/Base.lproj/TTModeWemoSwitchOptions.xib:11I-Sa-5ow.title"
+  ],
+  "Devices & connection diagnostics": [
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
+  ],
+  "Disconnect": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Disconnected": [
+    "Application-owned status or selector label; translated only at rendering, never in state comparisons.",
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
+  ],
+  "Disconnected. Credentials removed from this Mac’s Keychain.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Discovering services": [
+    "Application-owned status or selector label; translated only at rendering, never in state comparisons."
+  ],
+  "Discovering services…": [
+    "Application-owned display label"
+  ],
+  "Discovery was cancelled": [
+    "Turn Touch Mac/Modes/Hue/API/TTHueBridgeDiscovery.m"
+  ],
+  "Done": [
+    "Turn Touch Mac/Views/Mode Map/TTDiamondLabels.m",
+    "Turn Touch Mac/Views/Mode Options/TTOptionsActionTitle.m",
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
+  ],
+  "Double tap": [
+    "Application-owned status or selector label; translated only at rendering, never in state comparisons.",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueSceneOptions.xib:l8c-H8-Xlq.title",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueSleepOptions.xib:vCo-0r-Uqw.title",
+    "Turn Touch Mac/Modes/Nanoleaf/Base.lproj/TTModeNanoleafSceneCustomOptions.xib:lbl-dt-c.title",
+    "Turn Touch Mac/Modes/Nanoleaf/Base.lproj/TTModeNanoleafSleepOptions.xib:vCo-0r-Uqw.title"
+  ],
+  "Double tap actions": [
+    "Turn Touch Mac/Views/Mode Title/TTModeTitleView.m"
+  ],
+  "Duration": [
+    "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:hSM-hS-V9Y.title"
+  ],
+  "Each button can do multiple actions": [
+    "Turn Touch Mac/Views/FTUX/TTModalFTUXView.m"
+  ],
+  "Each button performs an action": [
+    "Turn Touch Mac/Views/FTUX/TTModalFTUXView.m"
+  ],
+  "Early evening": [
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m"
+  ],
+  "Early evening 2": [
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m"
+  ],
+  "Edit IFTTT recipies": [
+    "Turn Touch Mac/Modes/Ifttt/Base.lproj/TTModeIftttConnected.xib:cDQ-VD-E4K.title"
+  ],
+  "Effect": [
+    "Application-owned status or selector label; translated only at rendering, never in state comparisons."
+  ],
+  "Effect 2": [
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleaf.m"
+  ],
+  "Effra": [
+    "Turn Touch Mac/Modes/Spotify/TTModeSpotify.m"
+  ],
+  "Email / Username": [
+    "Turn Touch Mac/Modes/Kasa/TTModeKasaConnected.m",
+    "Turn Touch Mac/Modes/Kasa/TTModeKasaSwitchOptions.m"
+  ],
+  "Enable the HUD": [
+    "Turn Touch Mac/Views/Settings/Base.lproj/TTModalSettings.xib:JKX-HI-g35.title"
+  ],
+  "Encryption failed": [
+    "Turn Touch Mac/Modes/Kasa/TTModeKasaKLAPProtocol.m"
+  ],
+  "Enter TP-Link Credentials...": [
+    "Turn Touch Mac/Modes/Kasa/TTModeKasaSwitchOptions.m"
+  ],
+  "Enter a Home Assistant address and access token.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
+  ],
+  "Enter a valid Home Assistant URL first.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Enter your Govee API key (Govee Home > Settings > API)": [
+    "Turn Touch Mac/Modes/Govee/Base.lproj/TTModeGoveeConnect.xib:iNs-cE-ll1.title"
+  ],
+  "Enter your Govee API key (from Govee Home App > Settings > My Profile > Apply for API Key)": [
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeConnected.m",
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeSwitchOptions.m"
+  ],
+  "Enter your TP-Link/Kasa account credentials for newer devices that use KLAP authentication.": [
+    "Turn Touch Mac/Modes/Kasa/TTModeKasaConnected.m",
+    "Turn Touch Mac/Modes/Kasa/TTModeKasaSwitchOptions.m"
+  ],
+  "Error (%li): %@": [
+    "Turn Touch Mac/Modes/Custom/TTModeCustom.m"
+  ],
+  "Error getting %@, HTTP status code %li": [
+    "Turn Touch Mac/Modes/Custom/TTModeCustom.m"
+  ],
+  "Error on BLE Notification\n Message: %@": [
+    "Turn Touch Mac/DFU/DFUImplementation/BLEOperations.m"
+  ],
+  "Error on BLE Notification\n Message: %@\n Please enable Service Changed Indication in your firmware, reset Bluetooth from IOS Settings and then try again": [
+    "Turn Touch Mac/DFU/DFUImplementation/BLEOperations.m"
+  ],
+  "Error on Init Packet\n Message: %@": [
+    "Turn Touch Mac/DFU/DFUImplementation/DFUOperations.m"
+  ],
+  "Error on Receive Firmware Image\n Message: %@": [
+    "Turn Touch Mac/DFU/DFUImplementation/DFUOperations.m"
+  ],
+  "Error on StartDFU\n Message: %@": [
+    "Turn Touch Mac/DFU/DFUImplementation/DFUOperations.m",
+    "Turn Touch Mac/DFU/DFUImplementation/DFUOperations.m"
+  ],
+  "Error on Validate Firmware Request\n Message: %@": [
+    "Turn Touch Mac/DFU/DFUImplementation/DFUOperations.m"
+  ],
+  "Error on discovering characteristics\n Message: Required DFU characteristics are not available on peripheral": [
+    "Turn Touch Mac/DFU/DFUImplementation/BLEOperations.m"
+  ],
+  "Error on discovering service\n Message: Required DFU service not available on peripheral": [
+    "Turn Touch Mac/DFU/DFUImplementation/BLEOperations.m"
+  ],
+  "Error on openning file\n Message: file is empty or not exist": [
+    "Turn Touch Mac/DFU/DFUImplementation/FileOperations.m"
+  ],
+  "Error on received CBCentralManager\n Message: Bluetooth central manager is nil": [
+    "Turn Touch Mac/DFU/DFUImplementation/DFUOperations.m"
+  ],
+  "Error on received CBPeripheral\n Message: Bluetooth peripheral is nil": [
+    "Turn Touch Mac/DFU/DFUImplementation/DFUOperations.m"
+  ],
+  "Error: %@": [
+    "Turn Touch Mac/Modes/Govee/TTModeGovee.m"
+  ],
+  "Execute file": [
+    "Turn Touch Mac/Modes/Custom/TTModeCustom.m"
+  ],
+  "Fade out": [
+    "Turn Touch Mac/Modes/Music/TTModeMusic.m",
+    "Turn Touch Mac/TV/TTModeTV.m"
+  ],
+  "Failed to decode response: %@": [
+    "Turn Touch Mac/Modes/Hue/API/TTHueAPIClient.m"
+  ],
+  "Failed to encode request": [
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeAPIClient.m",
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeAPIClient.m"
+  ],
+  "Failed to parse response: %@": [
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeAPIClient.m"
+  ],
+  "Fast forward": [
+    "Turn Touch Mac/Modes/Video/TTModeVideo.m"
+  ],
+  "Fetching Govee devices...": [
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeSwitchOptions.m"
+  ],
+  "Fetching devices from Govee...": [
+    "Turn Touch Mac/Modes/Govee/TTModeGovee.m"
+  ],
+  "Find your Nanoleaf": [
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafConnect.m",
+    "Turn Touch Mac/Modes/Nanoleaf/Base.lproj/TTModeNanoleafConnect.xib:s9F-ZN-mqc.title"
+  ],
+  "Find your Philips Hue": [
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueConnect.xib:s9F-ZN-mqc.title"
+  ],
+  "Finishing sign-in…": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Firmware": [
+    "Turn Touch Mac/Views/Settings/Base.lproj/TTModalDevices.xib:dzy-dD-9x1.headerCell.title"
+  ],
+  "For selected File Type, zip file is required having inside softdevice.hex and bootloader.hex": [
+    "Turn Touch Mac/DFU/DFUViewController/DFUHelper.m"
+  ],
+  "Forget This Remote": [
+    "Turn Touch Mac/Views/DFU/TTDeviceTitleView.m"
+  ],
+  "Found %@ on your network. Sign in to browse your home.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Found %lu devices": [
+    "Turn Touch Mac/Modes/Govee/TTModeGovee.m"
+  ],
+  "Found Hue bridge...": [
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m"
+  ],
+  "Four apps × four buttons per app\n= sixteen different actions": [
+    "Turn Touch Mac/Views/FTUX/TTModalFTUXView.m"
+  ],
+  "Four buttons of beautiful control": [
+    "Turn Touch Mac/Views/Pairing/TTModalPairingInfo.m"
+  ],
+  "Four buttons × three gestures = twelve independent actions": [
+    "Turn Touch Mac/Views/FTUX/TTModalFTUXView.m"
+  ],
+  "Fri": [
+    "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:j1V-BO-kf2.ibShadowedLabels[5]"
+  ],
+  "Full screen": [
+    "Turn Touch Mac/Modes/Video/TTModeVideo.m",
+    "Turn Touch Mac/TV/TTModeTV.m"
+  ],
+  "General": [
+    "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:4X6-Q1-Mt2.title"
+  ],
+  "Google retired Works with Nest. Connect your Nest devices through Home Assistant, then assign actions again.": [
+    "Turn Touch Mac/Modes/Nest/TTModeNestOptions.m"
+  ],
+  "Govee": [
+    "Turn Touch Mac/Modes/Govee/TTModeGovee.m"
+  ],
+  "Govee API Key": [
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeConnected.m",
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeSwitchOptions.m",
+    "Turn Touch Mac/Modes/Govee/Base.lproj/TTModeGoveeConnect.xib:aPi-kE-ycl.placeholderString"
+  ],
+  "Govee Device": [
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeAPIClient.m"
+  ],
+  "HELP": [
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
+  ],
+  "HTTP error %ld": [
+    "Turn Touch Mac/Modes/Hue/API/TTHueBridgeDiscovery.m"
+  ],
+  "HTTP error %ld: %@": [
+    "Turn Touch Mac/Modes/Hue/API/TTHueAPIClient.m"
+  ],
+  "HUD, keyboard shortcuts & privacy": [
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
+  ],
+  "Handshake failed": [
+    "Turn Touch Mac/Modes/Kasa/TTModeKasaKLAPProtocol.m"
+  ],
+  "Heat": [
+    "Turn Touch Mac/Modes/Nest/Base.lproj/TTModeNestSetTempOptions.xib:Min-6e-JO2.ibShadowedLabels[0]"
+  ],
+  "Here's how it works": [
+    "Turn Touch Mac/Views/FTUX/TTModalFTUXView.m"
+  ],
+  "Hide Others": [
+    "Turn Touch Mac/Base.lproj/MainMenu.xib:145.title"
+  ],
+  "Hide Turn Touch Remote": [
+    "Turn Touch Mac/Base.lproj/MainMenu.xib:134.title"
+  ],
+  "Hit %ld times": [
+    "Turn Touch Mac/Modes/Custom/TTModeCustomURLOptions.m",
+    "Turn Touch Mac/Modes/Custom/TTModeCustomURLOptions.m"
+  ],
+  "Hit 1 time": [
+    "Turn Touch Mac/Modes/Custom/TTModeCustomURLOptions.m",
+    "Turn Touch Mac/Modes/Custom/TTModeCustomURLOptions.m"
+  ],
+  "Hit URL": [
+    "Turn Touch Mac/Modes/Custom/TTModeCustom.m"
+  ],
+  "Hold a button to switch between four apps": [
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
+  ],
+  "Hold actions": [
+    "Turn Touch Mac/Views/Mode Title/TTModeTitleView.m"
+  ],
+  "Hold the power button for 5-7 seconds until the LEDs start flashing": [
+    "Turn Touch Mac/Modes/Nanoleaf/Base.lproj/TTModeNanoleafPushlink.xib:ins-ab-789.title"
+  ],
+  "Home Assistant": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTModeHomeAssistant.m"
+  ],
+  "Home Assistant accepted the action. Check the device, then save when ready.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Home Assistant action": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTModeHomeAssistant.m"
+  ],
+  "Home Assistant returned HTTP %ld. Check the action and its required fields.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
+  ],
+  "Home Assistant returned an invalid sign-in response.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
+  ],
+  "How it works": [
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
+  ],
+  "Hue": [
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m"
+  ],
+  "Hue Bridge %@": [
+    "Turn Touch Mac/Modes/Hue/API/TTHueModels.m"
+  ],
+  "Hue authentication expired. Open Hue settings to reconnect.": [
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m",
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m"
+  ],
+  "Hue returned an invalid response.": [
+    "Turn Touch Mac/Modes/Hue/API/TTHueAPIClient.m"
+  ],
+  "IP": [
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueBridge.xib:ZD9-Cc-x17.headerCell.title"
+  ],
+  "Idea": [
+    "Turn Touch Mac/Views/Settings/Base.lproj/TTModalSupportView.xib:bNn-TO-8JW.ibShadowedLabels[1]"
+  ],
+  "If this is off, clicking buttons in the app will select them for editing. If on, clicking buttons will perform their actions, just like on a Turn Touch remote, and a Change button will enable editing.": [
+    "Turn Touch Mac/Views/Settings/Base.lproj/TTModalSettings.xib:wmT-lZ-HTE.title"
+  ],
+  "Immediate": [
+    "Turn Touch Mac/Modes/Hue/TTModeHueSleepOptions.m",
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafSleepOptions.m",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueSleepOptions.xib:JA0-IE-ke3.title",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueSleepOptions.xib:mcm-oe-dzQ.title",
+    "Turn Touch Mac/Modes/Nanoleaf/Base.lproj/TTModeNanoleafSleepOptions.xib:JA0-IE-ke3.title",
+    "Turn Touch Mac/Modes/Nanoleaf/Base.lproj/TTModeNanoleafSleepOptions.xib:mcm-oe-dzQ.title"
+  ],
+  "Invalid API key": [
+    "Application-owned status or selector label; translated only at rendering, never in state comparisons."
+  ],
+  "Invalid Response": [
+    "Turn Touch Mac/DFU/DFUImplementation/DFUOperations.m"
+  ],
+  "Invalid URL": [
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeAPIClient.m",
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeAPIClient.m",
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeAPIClient.m"
+  ],
+  "Invalid response": [
+    "Turn Touch Mac/Modes/Kasa/TTModeKasaKLAPProtocol.m",
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleaf.m",
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleaf.m"
+  ],
+  "Invalid response from bridge": [
+    "Turn Touch Mac/Modes/Hue/API/TTHueBridgeAuthenticator.m",
+    "Turn Touch Mac/Modes/Hue/API/TTHueBridgeAuthenticator.m",
+    "Turn Touch Mac/Modes/Hue/API/TTHueBridgeAuthenticator.m"
+  ],
+  "Invalid response from discovery service": [
+    "Turn Touch Mac/Modes/Hue/API/TTHueBridgeDiscovery.m"
+  ],
+  "Invalid response from scene creation": [
+    "Turn Touch Mac/Modes/Hue/API/TTHueAPIClient.m"
+  ],
+  "Invalid sign-in response.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
+  ],
+  "Item 1": [
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueRandomOptions.xib:7XZ-54-QHZ.title",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueSceneOptions.xib:Chm-hz-OK7.title",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueSceneOptions.xib:HKE-0J-wIi.title",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueSceneOptions.xib:iKN-UX-hSa.title",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueSleepOptions.xib:eYU-hZ-7oD.title",
+    "Turn Touch Mac/Modes/Nest/Base.lproj/TTModeNestConnected.xib:rVK-C5-Qlu.title",
+    "Turn Touch Mac/Modes/Nest/Base.lproj/TTModeNestSetTempOptions.xib:wij-QX-XMe.title",
+    "Turn Touch Mac/Modes/Sonos/Base.lproj/TTModeSonosConnected.xib:aXk-An-s5J.title"
+  ],
+  "Item 2": [
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueRandomOptions.xib:5jn-5O-l2V.title",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueSceneOptions.xib:Rud-MD-7PI.title",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueSceneOptions.xib:W9K-YR-28g.title",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueSceneOptions.xib:XCd-ip-afa.title",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueSleepOptions.xib:vY2-vW-jbU.title",
+    "Turn Touch Mac/Modes/Nest/Base.lproj/TTModeNestConnected.xib:Iaz-0d-ekK.title",
+    "Turn Touch Mac/Modes/Nest/Base.lproj/TTModeNestSetTempOptions.xib:YgJ-S5-whC.title",
+    "Turn Touch Mac/Modes/Sonos/Base.lproj/TTModeSonosConnected.xib:npH-RM-FDv.title"
+  ],
+  "Item 3": [
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueRandomOptions.xib:h4U-8v-OCB.title",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueSceneOptions.xib:C2F-Ha-BXK.title",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueSceneOptions.xib:kaP-ZT-Cwh.title",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueSceneOptions.xib:xKw-Ae-Wtu.title",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueSleepOptions.xib:iT1-3G-eBX.title",
+    "Turn Touch Mac/Modes/Nest/Base.lproj/TTModeNestConnected.xib:5t8-wG-Uj1.title",
+    "Turn Touch Mac/Modes/Nest/Base.lproj/TTModeNestSetTempOptions.xib:2jE-dR-ptm.title",
+    "Turn Touch Mac/Modes/Sonos/Base.lproj/TTModeSonosConnected.xib:19p-CR-O6W.title"
+  ],
+  "Jump to volume": [
+    "Turn Touch Mac/Modes/Airfoil/Base.lproj/TTModeAirfoilVolumeJumpOptions.xib:NfM-tS-wjF.title",
+    "Turn Touch Mac/Modes/Music/Base.lproj/TTModeMusicVolumeJumpOptions.xib:NfM-tS-wjF.title",
+    "Turn Touch Mac/Modes/Spotify/Base.lproj/TTModeSpotifyVolumeJumpOptions.xib:NfM-tS-wjF.title",
+    "Turn Touch Mac/TV/Base.lproj/TTModeTVVolumeJumpOptions.xib:NfM-tS-wjF.title"
+  ],
+  "Just an Apple Computer": [
+    "Turn Touch Mac/Modes/Mac/TTModeMac.m"
+  ],
+  "Keyboard shortcut": [
+    "Turn Touch Mac/Modes/Custom/Base.lproj/TTModeCustomKeyboardOptions.xib:ekQ-MT-yKk.title",
+    "Turn Touch Mac/Modes/Custom/Base.lproj/TTModeCustomKeyboardOptions.xib:gyj-Or-RFz.title"
+  ],
+  "Keynote and PowerPoint": [
+    "Turn Touch Mac/Modes/Presentation/TTModePresentation.m"
+  ],
+  "Language": [
+    "Turn Touch Mac/TTLocalization.m",
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m",
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
+  ],
+  "Larger text": [
+    "Turn Touch Mac/Modes/News/TTModeNews.m",
+    "Turn Touch Mac/Modes/Web/TTModeWeb.m"
+  ],
+  "Last Action: %@": [
+    "Turn Touch Mac/Views/DFU/TTDeviceTitleView.m"
+  ],
+  "Last action": [
+    "Turn Touch Mac/Views/Settings/Base.lproj/TTModalDevices.xib:aZx-rx-HLv.headerCell.title"
+  ],
+  "Late evening": [
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m"
+  ],
+  "Late evening 2": [
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m"
+  ],
+  "Light panels and effects": [
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleaf.m"
+  ],
+  "Lights": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Lights and scenes": [
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m"
+  ],
+  "Lights off": [
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m"
+  ],
+  "Like changing the lights, playing music, or turning up the volume": [
+    "Turn Touch Mac/Views/FTUX/TTModalFTUXView.m"
+  ],
+  "Link button not pressed": [
+    "Turn Touch Mac/Modes/Hue/API/TTHueBridgeAuthenticator.m"
+  ],
+  "Loading effects...": [
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleaf.m"
+  ],
+  "Local network access required. Please grant permission in System Settings.": [
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m",
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m"
+  ],
+  "Looking for your home…": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Lower brightness": [
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m",
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleaf.m"
+  ],
+  "Mac OS": [
+    "Turn Touch Mac/Modes/Mac/TTModeMac.m"
+  ],
+  "Main Menu": [
+    "Turn Touch Mac/Base.lproj/MainMenu.xib:29.title"
+  ],
+  "Make it yours": [
+    "Turn Touch Mac/Views/FTUX/TTModalFTUXView.m"
+  ],
+  "Make sure your Nanoleaf panels are powered on\nand connected to the same Wi-Fi network.": [
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafConnect.m",
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafConnect.m",
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafConnect.m"
+  ],
+  "Make sure your Nanoleaf panels are powered on and connected to the same Wi-Fi network.": [
+    "Turn Touch Mac/Modes/Nanoleaf/Base.lproj/TTModeNanoleafConnect.xib:sub-ZN-mqc.title"
+  ],
+  "Media players": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Menu": [
+    "Turn Touch Mac/Modes/News/TTModeNews.m",
+    "Turn Touch Mac/Modes/Web/TTModeWeb.m"
+  ],
+  "Microsoft Powerpoint": [
+    "Turn Touch Mac/Modes/Presentation/Base.lproj/TTModePresentationOptions.xib:OLS-KY-Z7r.title"
+  ],
+  "Mix": [
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueRandomOptions.xib:40w-nu-1kA.ibShadowedLabels[1]",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueRandomOptions.xib:98X-tQ-Z3e.ibShadowedLabels[1]",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueRandomOptions.xib:Aeq-U5-5qx.ibShadowedLabels[1]",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueRandomOptions.xib:CcS-hq-CN1.ibShadowedLabels[1]",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueRandomOptions.xib:VdM-tN-qLN.ibShadowedLabels[1]",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueRandomOptions.xib:yJC-uA-kHZ.ibShadowedLabels[1]"
+  ],
+  "Mon": [
+    "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:j1V-BO-kf2.ibShadowedLabels[1]"
+  ],
+  "Music": [
+    "Turn Touch Mac/Modes/Music/TTModeMusic.m"
+  ],
+  "Music and sounds": [
+    "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:C5r-VN-Fk5.label"
+  ],
+  "Music isn't playing anything": [
+    "Turn Touch Mac/Modes/Music/TTModeMusic.m"
+  ],
+  "Music volume down": [
+    "Turn Touch Mac/Modes/Music/TTModeMusic.m"
+  ],
+  "Music volume up": [
+    "Turn Touch Mac/Modes/Music/TTModeMusic.m"
+  ],
+  "Mute": [
+    "Turn Touch Mac/Modes/Airfoil/TTModeAirfoil.m",
+    "Turn Touch Mac/Modes/Mac/TTModeMac.m",
+    "Turn Touch Mac/Modes/Sonos/TTModeSonos.m"
+  ],
+  "Nanoleaf": [
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleaf.m",
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafConnected.m",
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafPushlink.m",
+    "Turn Touch Mac/Modes/Nanoleaf/Base.lproj/TTModeNanoleafPushlink.xib:dnl-ab-789.title"
+  ],
+  "Nanoleaf - 0 effects": [
+    "Turn Touch Mac/Modes/Nanoleaf/Base.lproj/TTModeNanoleafConnected.xib:eff-lbl-789.title"
+  ],
+  "Narrow margin": [
+    "Turn Touch Mac/Modes/Web/TTModeWeb.m"
+  ],
+  "Narrow story": [
+    "Turn Touch Mac/Modes/News/TTModeNews.m"
+  ],
+  "Nearby": [
+    "Application-owned status or selector label; translated only at rendering, never in state comparisons."
+  ],
+  "Nest": [
+    "Turn Touch Mac/Modes/Nest/TTModeNest.m"
+  ],
+  "Nest through Home Assistant": [
+    "Turn Touch Mac/Modes/Nest/TTModeNest.m"
+  ],
+  "Network error: %@": [
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeAPIClient.m",
+    "Turn Touch Mac/Modes/Hue/API/TTHueAPIClient.m",
+    "Turn Touch Mac/Modes/Hue/API/TTHueBridgeAuthenticator.m",
+    "Turn Touch Mac/Modes/Hue/API/TTHueBridgeDiscovery.m"
+  ],
+  "NewsBlur": [
+    "Turn Touch Mac/Modes/News/TTModeNews.m"
+  ],
+  "Next Song": [
+    "Turn Touch Mac/Modes/Alarm Clock/TTModeAlarmClock.m"
+  ],
+  "Next Track": [
+    "Turn Touch Mac/Modes/Sonos/TTModeSonos.m"
+  ],
+  "Next album": [
+    "Turn Touch Mac/Modes/Music/TTModeMusic.m",
+    "Turn Touch Mac/Modes/Spotify/TTModeSpotify.m"
+  ],
+  "Next site": [
+    "Turn Touch Mac/Modes/News/TTModeNews.m"
+  ],
+  "Next slide": [
+    "Turn Touch Mac/Modes/Presentation/TTModePresentation.m"
+  ],
+  "Next story": [
+    "Turn Touch Mac/Modes/News/TTModeNews.m",
+    "Turn Touch Mac/Modes/News/TTModeNews.m",
+    "Turn Touch Mac/Modes/Web/TTModeWeb.m"
+  ],
+  "Next track": [
+    "Turn Touch Mac/Modes/Music/TTModeMusic.m",
+    "Turn Touch Mac/Modes/Spotify/TTModeSpotify.m"
+  ],
+  "Next video": [
+    "Turn Touch Mac/TV/TTModeTV.m"
+  ],
+  "Nickname": [
+    "Turn Touch Mac/Views/Settings/Base.lproj/TTModalDevices.xib:iJv-TS-mdz.headerCell.title"
+  ],
+  "No API key configured": [
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeAPIClient.m",
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeAPIClient.m",
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeAPIClient.m"
+  ],
+  "No Govee devices found": [
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeConnected.m",
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeSwitchOptions.m"
+  ],
+  "No Hue Bridges found on the network": [
+    "Turn Touch Mac/Modes/Hue/API/TTHueBridgeDiscovery.m"
+  ],
+  "No Kasa devices found": [
+    "Turn Touch Mac/Modes/Kasa/TTModeKasaConnected.m",
+    "Turn Touch Mac/Modes/Kasa/TTModeKasaSwitchOptions.m"
+  ],
+  "No Nanoleaf devices found": [
+    "Application-owned status or selector label; translated only at rendering, never in state comparisons."
+  ],
+  "No Nanoleaf found": [
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafConnect.m"
+  ],
+  "No URL specified": [
+    "Turn Touch Mac/Modes/Custom/TTModeCustom.m"
+  ],
+  "No Wemo devices found": [
+    "Turn Touch Mac/Modes/Wemo/TTModeWemoConnected.m",
+    "Turn Touch Mac/Modes/Wemo/TTModeWemoSwitchOptions.m"
+  ],
+  "No data received": [
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeAPIClient.m"
+  ],
+  "No matching entities": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "No network connection": [
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafConnect.m"
+  ],
+  "No network interfaces found": [
+    "Application-owned status or selector label; translated only at rendering, never in state comparisons."
+  ],
+  "No remotes could be found": [
+    "Turn Touch Mac/Views/Pairing/TTModalPairingInfo.m"
+  ],
+  "No required action data.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "No response data": [
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeAPIClient.m"
+  ],
+  "Not connected": [
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleaf.m",
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleaf.m"
+  ],
+  "Not valid File type": [
+    "Turn Touch Mac/DFU/DFUViewController/DFUHelper.m",
+    "Turn Touch Mac/DFU/DFUViewController/DFUHelper.m"
+  ],
+  "Not yet hit": [
+    "Turn Touch Mac/Modes/Custom/TTModeCustomURLOptions.m",
+    "Turn Touch Mac/Modes/Custom/TTModeCustomURLOptions.m",
+    "Turn Touch Mac/Modes/Custom/Base.lproj/TTModeCustomURLOptions.xib:SEH-u6-vld.title",
+    "Turn Touch Mac/Modes/Custom/Base.lproj/TTModeCustomURLOptions.xib:l3t-tl-td2.title"
+  ],
+  "OFF": [
+    "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:4YW-GP-Xgr.ibShadowedLabels[1]",
+    "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:ROX-fq-TeD.ibShadowedLabels[1]"
+  ],
+  "OK / Next": [
+    "Turn Touch Mac/Modes/Web/TTModeWeb.m"
+  ],
+  "ON": [
+    "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:4YW-GP-Xgr.ibShadowedLabels[0]",
+    "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:ROX-fq-TeD.ibShadowedLabels[0]"
+  ],
+  "Old DFU only supports Application upload": [
+    "Turn Touch Mac/DFU/DFUImplementation/DFUOperations.m"
+  ],
+  "One-time alarm": [
+    "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:QfF-5n-otp.title",
+    "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:Ynp-bh-WI4.title"
+  ],
+  "Open this browser from a remote button in Turn Touch to save an assignment.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Open token settings": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Operation Failed": [
+    "Turn Touch Mac/DFU/DFUImplementation/DFUOperations.m"
+  ],
+  "Operation Not Supported": [
+    "Turn Touch Mac/DFU/DFUImplementation/DFUOperations.m"
+  ],
+  "Or paste a long-lived access token": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Other": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Overrides system volume": [
+    "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:l51-Nx-Fj5.title"
+  ],
+  "PREFERENCES": [
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
+  ],
+  "Pair Remote": [
+    "Turn Touch Mac/Views/Pairing/TTModalBarButton.m"
+  ],
+  "Pairing with Remote...": [
+    "Turn Touch Mac/Views/DFU/TTDeviceTitleView.m"
+  ],
+  "Pairing your Turn Touch": [
+    "Turn Touch Mac/Views/Pairing/Base.lproj/TTModalPairingScanningView.xib:WPJ-AI-DeI.title"
+  ],
+  "Pairing...": [
+    "Turn Touch Mac/Views/Settings/TTModalDevices.m"
+  ],
+  "Password": [
+    "Turn Touch Mac/Modes/Kasa/TTModeKasaConnected.m",
+    "Turn Touch Mac/Modes/Kasa/TTModeKasaSwitchOptions.m"
+  ],
+  "Pastels": [
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueRandomOptions.xib:40w-nu-1kA.ibShadowedLabels[0]",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueRandomOptions.xib:98X-tQ-Z3e.ibShadowedLabels[0]"
+  ],
+  "Pause": [
+    "Turn Touch Mac/Modes/Music/TTModeMusic.m",
+    "Turn Touch Mac/Modes/Music/TTModeMusic.m",
+    "Turn Touch Mac/Modes/Music/TTModeMusic.m",
+    "Turn Touch Mac/Modes/Sonos/TTModeSonos.m",
+    "Turn Touch Mac/Modes/Spotify/TTModeSpotify.m",
+    "Turn Touch Mac/Modes/Spotify/TTModeSpotify.m",
+    "Turn Touch Mac/Modes/Spotify/TTModeSpotify.m",
+    "Turn Touch Mac/TV/TTModeTV.m",
+    "Turn Touch Mac/TV/TTModeTV.m",
+    "Turn Touch Mac/TV/TTModeTV.m"
+  ],
+  "Perform actions in the app": [
+    "Turn Touch Mac/Views/Settings/Base.lproj/TTModalSettings.xib:O9r-7T-9Hh.title"
+  ],
+  "Philips Hue is rate-limiting requests. Please wait a moment and try again.": [
+    "Turn Touch Mac/Modes/Hue/API/TTHueBridgeDiscovery.m",
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m"
+  ],
+  "Play": [
+    "Turn Touch Mac/Modes/Music/TTModeMusic.m",
+    "Turn Touch Mac/Modes/Music/TTModeMusic.m",
+    "Turn Touch Mac/Modes/Music/TTModeMusic.m",
+    "Turn Touch Mac/Modes/Sonos/TTModeSonos.m",
+    "Turn Touch Mac/Modes/Spotify/TTModeSpotify.m",
+    "Turn Touch Mac/Modes/Spotify/TTModeSpotify.m",
+    "Turn Touch Mac/Modes/Spotify/TTModeSpotify.m",
+    "Turn Touch Mac/TV/TTModeTV.m",
+    "Turn Touch Mac/TV/TTModeTV.m",
+    "Turn Touch Mac/TV/TTModeTV.m"
+  ],
+  "Play presentation": [
+    "Turn Touch Mac/Modes/Presentation/TTModePresentation.m"
+  ],
+  "Play/pause": [
+    "Turn Touch Mac/Modes/Music/TTModeMusic.m",
+    "Turn Touch Mac/Modes/Sonos/TTModeSonos.m",
+    "Turn Touch Mac/Modes/Spotify/TTModeSpotify.m",
+    "Turn Touch Mac/Modes/Video/TTModeVideo.m",
+    "Turn Touch Mac/TV/TTModeTV.m"
+  ],
+  "Playlist": [
+    "Turn Touch Mac/Modes/Music/TTModeMusic.m",
+    "Turn Touch Mac/Modes/Music/TTModeMusic.m",
+    "Turn Touch Mac/Modes/Music/TTModeMusic.m",
+    "Turn Touch Mac/Modes/Music/TTModeMusic.m",
+    "Turn Touch Mac/Modes/Music/TTModeMusic.m"
+  ],
+  "Please connect to Wi-Fi and try again.": [
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafConnect.m"
+  ],
+  "Please select a Hue Bridge": [
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueBridge.xib:ksY-FR-GhK.title"
+  ],
+  "Please sign in to Home Assistant again.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
+  ],
+  "Praise": [
+    "Turn Touch Mac/Views/Settings/Base.lproj/TTModalSupportView.xib:bNn-TO-8JW.ibShadowedLabels[3]"
+  ],
+  "Preferences...": [
+    "Turn Touch Mac/Base.lproj/MainMenu.xib:129.title"
+  ],
+  "Presentation": [
+    "Application-owned display label",
+    "Turn Touch Mac/Modes/Presentation/TTModePresentation.m"
+  ],
+  "Presentation app": [
+    "Turn Touch Mac/Modes/Presentation/Base.lproj/TTModePresentationOptions.xib:rWP-Hf-jlf.title"
+  ],
+  "Press all four buttons for the HUD": [
+    "Turn Touch Mac/Views/FTUX/TTModalFTUXView.m"
+  ],
+  "Press all four buttons to connect": [
+    "Turn Touch Mac/Views/Pairing/TTModalPairingScanningView.m"
+  ],
+  "Press all four buttons to pair": [
+    "Application-owned status or selector label; translated only at rendering, never in state comparisons."
+  ],
+  "Press and hold to change apps": [
+    "Turn Touch Mac/Views/FTUX/TTModalFTUXView.m"
+  ],
+  "Press any key": [
+    "Turn Touch Mac/Modes/Custom/TTModeCustom.m"
+  ],
+  "Pressing multiple buttons at once shows the HUD, an interactive view allowing you to run actions and switch to modes not attached to buttons.": [
+    "Turn Touch Mac/Views/Settings/Base.lproj/TTModalSettings.xib:cEO-Bg-OeP.title"
+  ],
+  "Preview Alarm": [
+    "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:Ii1-MX-Whb.title"
+  ],
+  "Previous Track": [
+    "Turn Touch Mac/Modes/Sonos/TTModeSonos.m"
+  ],
+  "Previous site": [
+    "Turn Touch Mac/Modes/News/TTModeNews.m"
+  ],
+  "Previous slide": [
+    "Turn Touch Mac/Modes/Presentation/TTModePresentation.m"
+  ],
+  "Previous story": [
+    "Turn Touch Mac/Modes/News/TTModeNews.m",
+    "Turn Touch Mac/Modes/News/TTModeNews.m",
+    "Turn Touch Mac/Modes/Web/TTModeWeb.m"
+  ],
+  "Previous track": [
+    "Turn Touch Mac/Modes/Music/TTModeMusic.m",
+    "Turn Touch Mac/Modes/Music/TTModeMusic.m",
+    "Turn Touch Mac/Modes/Spotify/TTModeSpotify.m",
+    "Turn Touch Mac/Modes/Spotify/TTModeSpotify.m",
+    "Turn Touch Mac/Modes/Spotify/TTModeSpotify.m",
+    "Turn Touch Mac/Modes/Spotify/TTModeSpotify.m"
+  ],
+  "Previous video": [
+    "Turn Touch Mac/TV/TTModeTV.m",
+    "Turn Touch Mac/TV/TTModeTV.m"
+  ],
+  "Problem": [
+    "Turn Touch Mac/Views/Settings/Base.lproj/TTModalSupportView.xib:bNn-TO-8JW.ibShadowedLabels[2]"
+  ],
+  "Pushlink button not pressed within 30 seconds": [
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m",
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m"
+  ],
+  "Question": [
+    "Turn Touch Mac/Views/Settings/Base.lproj/TTModalSupportView.xib:bNn-TO-8JW.ibShadowedLabels[0]"
+  ],
+  "Quit Turn Touch": [
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
+  ],
+  "Quit Turn Touch Remote": [
+    "Turn Touch Mac/Base.lproj/MainMenu.xib:136.title"
+  ],
+  "REMOTES": [
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
+  ],
+  "Raise brightness": [
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m",
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleaf.m"
+  ],
+  "Random": [
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m"
+  ],
+  "Random 2": [
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m"
+  ],
+  "Rate limit exceeded. Try again later.": [
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeAPIClient.m"
+  ],
+  "Re-authentication failed": [
+    "Turn Touch Mac/Modes/Kasa/TTModeKasaKLAPProtocol.m"
+  ],
+  "Read the web on your Mac": [
+    "Turn Touch Mac/Modes/Web/TTModeWeb.m"
+  ],
+  "Reading entities and actions…": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Reconnect": [
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueConnected.xib:rkv-GV-IX2.title",
+    "Turn Touch Mac/Modes/Nanoleaf/Base.lproj/TTModeNanoleafConnected.xib:rkv-GV-IX2.title"
+  ],
+  "Refresh": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueBridge.xib:8ny-C0-l3w.title",
+    "Turn Touch Mac/Modes/Nanoleaf/Base.lproj/TTModeNanoleafSceneCustomOptions.xib:drb-ab-c.title",
+    "Turn Touch Mac/Modes/Nanoleaf/Base.lproj/TTModeNanoleafSceneCustomOptions.xib:rfb-ab-c.title"
+  ],
+  "Refresh Devices...": [
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeSwitchOptions.m"
+  ],
+  "Refresh devices": [
+    "Turn Touch Mac/Modes/Govee/Base.lproj/TTModeGoveeConnected.xib:3cG-K3-Uex.title"
+  ],
+  "Remote Menu": [
+    "Turn Touch Mac/Views/DFU/TTDeviceTitleView.m"
+  ],
+  "Remotes": [
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
+  ],
+  "Remove": [
+    "Turn Touch Mac/Views/Batch Actions/TTBatchActionHeaderView.m"
+  ],
+  "Remove All and Refresh...": [
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeSwitchOptions.m"
+  ],
+  "Remove All and Search...": [
+    "Turn Touch Mac/Modes/Kasa/TTModeKasaSwitchOptions.m",
+    "Turn Touch Mac/Modes/Wemo/TTModeWemoSwitchOptions.m"
+  ],
+  "Rename This Remote": [
+    "Turn Touch Mac/Views/DFU/TTDeviceTitleView.m"
+  ],
+  "Repeating alarm": [
+    "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:C4a-9h-8KN.title",
+    "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:DaN-Su-ACl.title"
+  ],
+  "Replace This Recipe...": [
+    "Turn Touch Mac/Modes/Ifttt/TTModeIftttTriggerActionOptions.m"
+  ],
+  "Requesting local network access...": [
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m"
+  ],
+  "Required data: ": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Return": [
+    "Turn Touch Mac/Modes/News/TTModeNews.m",
+    "Turn Touch Mac/Modes/Web/TTModeWeb.m"
+  ],
+  "Rewind": [
+    "Turn Touch Mac/Modes/Video/TTModeVideo.m"
+  ],
+  "Room": [
+    "Application-owned status or selector label; translated only at rendering, never in state comparisons.",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueRandomOptions.xib:1zh-2s-EHg.title",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueSceneOptions.xib:x18-V7-aXG.title",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueSleepOptions.xib:h6Z-VA-BdZ.title"
+  ],
+  "Room temperature": [
+    "Turn Touch Mac/Modes/Nest/Base.lproj/TTModeNestConnected.xib:znj-EJ-Qb2.title"
+  ],
+  "Run actions from the screen": [
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
+  ],
+  "Run automation (check conditions)": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
+  ],
+  "Run script": [
+    "Turn Touch Mac/Modes/Custom/TTModeCustom.m",
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
+  ],
+  "Running action…": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "SINGLE TAP": [
+    "Turn Touch Mac/Views/Mode Tabs/TTModeTab.m"
+  ],
+  "Sat": [
+    "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:j1V-BO-kf2.ibShadowedLabels[6]"
+  ],
+  "Saturation": [
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueRandomOptions.xib:cCd-Xm-8wj.title",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueRandomOptions.xib:vJb-4K-O43.title"
+  ],
+  "Save": [
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeConnected.m",
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeSwitchOptions.m",
+    "Turn Touch Mac/Modes/Kasa/TTModeKasaConnected.m",
+    "Turn Touch Mac/Modes/Kasa/TTModeKasaSwitchOptions.m"
+  ],
+  "Save to button": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Saved %@ · %@ to your remote button.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Scan for devices": [
+    "Turn Touch Mac/Modes/Kasa/Base.lproj/TTModeKasaConnected.xib:3cG-K3-Uex.title",
+    "Turn Touch Mac/Modes/Wemo/Base.lproj/TTModeWemoConnected.xib:3cG-K3-Uex.title"
+  ],
+  "Scanning for remotes...": [
+    "Turn Touch Mac/Views/Pairing/TTModalPairingScanningView.m"
+  ],
+  "Scanning local network...": [
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleaf.m"
+  ],
+  "Scanning your local network for Nanoleaf panels.": [
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafConnect.m"
+  ],
+  "Scene": [
+    "Application-owned status or selector label; translated only at rendering, never in state comparisons."
+  ],
+  "Scenes": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Scenes activate a saved look. Scripts run a sequence. Automations created from blueprints appear here too.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Scripts": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Scripts, files, and websites": [
+    "Turn Touch Mac/Modes/Custom/TTModeCustom.m"
+  ],
+  "Scroll down": [
+    "Turn Touch Mac/Modes/News/TTModeNews.m",
+    "Turn Touch Mac/Modes/Web/TTModeWeb.m"
+  ],
+  "Scroll up": [
+    "Turn Touch Mac/Modes/News/TTModeNews.m",
+    "Turn Touch Mac/Modes/Web/TTModeWeb.m"
+  ],
+  "Search entities, devices, rooms, or entity IDs": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Search for Kasa devices...": [
+    "Turn Touch Mac/Modes/Kasa/Base.lproj/TTModeKasaConnect.xib:OBZ-nD-v7C.title"
+  ],
+  "Search for New Devices...": [
+    "Turn Touch Mac/Modes/Kasa/TTModeKasaSwitchOptions.m",
+    "Turn Touch Mac/Modes/Wemo/TTModeWemoSwitchOptions.m"
+  ],
+  "Search for Sonos devices...": [
+    "Turn Touch Mac/Modes/Sonos/Base.lproj/TTModeSonosConnect.xib:iqB-kf-Mgg.title"
+  ],
+  "Search for Wemo devices...": [
+    "Turn Touch Mac/Modes/Wemo/Base.lproj/TTModeWemoConnect.xib:OBZ-nD-v7C.title"
+  ],
+  "Search lights, scenes, scripts, and more.\nNo Home Assistant plugin needed.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTModeHomeAssistantOptions.m"
+  ],
+  "Searching for Hue...": [
+    "Turn Touch Mac/Modes/Hue/TTModeHueConnect.m"
+  ],
+  "Searching for Kasa devices...": [
+    "Turn Touch Mac/Modes/Kasa/TTModeKasaSwitchOptions.m"
+  ],
+  "Searching for Kasa...": [
+    "Turn Touch Mac/Modes/Kasa/Base.lproj/TTModeKasaConnecting.xib:QRw-wt-k7b.title"
+  ],
+  "Searching for Nanoleaf...": [
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleaf.m",
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafConnect.m"
+  ],
+  "Searching for Nest...": [
+    "Turn Touch Mac/Modes/Nest/Base.lproj/TTModeNestConnecting.xib:QRw-wt-k7b.title"
+  ],
+  "Searching for Sonos...": [
+    "Turn Touch Mac/Modes/Sonos/Base.lproj/TTModeSonosConnecting.xib:Jh4-Z8-if8.title"
+  ],
+  "Searching for Wemo devices...": [
+    "Turn Touch Mac/Modes/Wemo/TTModeWemoSwitchOptions.m"
+  ],
+  "Searching for Wemo...": [
+    "Turn Touch Mac/Modes/Wemo/Base.lproj/TTModeWemoConnecting.xib:QRw-wt-k7b.title"
+  ],
+  "Searching for a Hue bridge...": [
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueConnecting.xib:8qH-VG-7Dl.title"
+  ],
+  "Searching for a Nanoleaf...": [
+    "Turn Touch Mac/Modes/Nanoleaf/Base.lproj/TTModeNanoleafConnecting.xib:8qH-VG-7Dl.title"
+  ],
+  "Searching for remotes...": [
+    "Turn Touch Mac/Views/Pairing/Base.lproj/TTModalPairingScanningView.xib:JE5-1s-GTR.title"
+  ],
+  "Season %ld, Episode %ld": [
+    "Turn Touch Mac/TV/TTModeTV.m"
+  ],
+  "Send Praise": [
+    "Turn Touch Mac/Views/Pairing/TTModalBarButton.m"
+  ],
+  "Sending...": [
+    "Turn Touch Mac/Views/Pairing/TTModalBarButton.m"
+  ],
+  "Services": [
+    "Turn Touch Mac/Base.lproj/MainMenu.xib:130.title",
+    "Turn Touch Mac/Base.lproj/MainMenu.xib:131.title"
+  ],
+  "Settings": [
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m",
+    "Turn Touch Mac/Views/Title Bar/TTTitleBarView.m",
+    "Turn Touch Mac/Views/Title Bar/TTTitleBarView.m",
+    "Turn Touch Mac/Views/Settings/Base.lproj/TTModalSettings.xib:VJS-qK-OPm.title"
+  ],
+  "Share usage stats": [
+    "Turn Touch Mac/Views/Settings/Base.lproj/TTModalSettings.xib:PdJ-CN-dj4.title"
+  ],
+  "Shift color left": [
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m"
+  ],
+  "Shift color right": [
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m"
+  ],
+  "Show All": [
+    "Turn Touch Mac/Base.lproj/MainMenu.xib:150.title"
+  ],
+  "Show action HUD on every button press": [
+    "Turn Touch Mac/Views/Settings/Base.lproj/TTModalSettings.xib:aZt-7f-Wgw.title"
+  ],
+  "Show action HUD when typing": [
+    "Turn Touch Mac/Views/Settings/Base.lproj/TTModalSettings.xib:eJq-vw-m7t.title"
+  ],
+  "Show all apps": [
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
+  ],
+  "Show app HUD on every button hold": [
+    "Turn Touch Mac/Views/Settings/Base.lproj/TTModalSettings.xib:1ni-sc-Yyy.title"
+  ],
+  "Show fewer apps": [
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
+  ],
+  "Show me how it works": [
+    "Turn Touch Mac/Views/Pairing/TTModalBarButton.m"
+  ],
+  "Shuffle": [
+    "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:Xnw-4h-63E.title",
+    "Turn Touch Mac/Modes/Music/Base.lproj/TTModeMusicPlaylistOptions.xib:7jy-f5-biK.title",
+    "Turn Touch Mac/Modes/Music/Base.lproj/TTModeMusicPlaylistOptions.xib:ZSC-Q1-3hf.title"
+  ],
+  "Sign in to ": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Sign in…": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Sign-in could not be verified. Please try again.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Single tap": [
+    "Application-owned status or selector label; translated only at rendering, never in state comparisons.",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueSceneOptions.xib:L2c-Gn-dhm.title",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueSleepOptions.xib:mSS-wy-Hf7.title",
+    "Turn Touch Mac/Modes/Nanoleaf/Base.lproj/TTModeNanoleafSceneCustomOptions.xib:lbl-st-c.title",
+    "Turn Touch Mac/Modes/Nanoleaf/Base.lproj/TTModeNanoleafSleepOptions.xib:mSS-wy-Hf7.title"
+  ],
+  "Single tap actions": [
+    "Turn Touch Mac/Views/Mode Title/TTModeTitleView.m"
+  ],
+  "Single tap, double tap, and hold": [
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
+  ],
+  "Single tap, double tap, or hold": [
+    "Turn Touch Mac/Views/FTUX/TTModalFTUXView.m"
+  ],
+  "Sleep": [
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m",
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleaf.m",
+    "Turn Touch Mac/Modes/Spotify/TTModeSpotify.m"
+  ],
+  "Sleep fast": [
+    "Turn Touch Mac/Modes/Hue/TTModeHue.m",
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleaf.m"
+  ],
+  "Smaller text": [
+    "Turn Touch Mac/Modes/News/TTModeNews.m",
+    "Turn Touch Mac/Modes/Web/TTModeWeb.m"
+  ],
+  "Smart lights and devices": [
+    "Turn Touch Mac/Modes/Govee/TTModeGovee.m"
+  ],
+  "Smart plugs and switches": [
+    "Turn Touch Mac/Modes/Kasa/TTModeKasa.m"
+  ],
+  "Smart power meter and outlet": [
+    "Turn Touch Mac/Modes/Wemo/TTModeWemo.m"
+  ],
+  "Snooze": [
+    "Turn Touch Mac/Modes/Alarm Clock/TTModeAlarmClock.m"
+  ],
+  "Snooze duration": [
+    "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmSnoozeOptions.xib:ddW-lu-0sn.title"
+  ],
+  "Sonos": [
+    "Turn Touch Mac/Modes/Sonos/TTModeSonos.m"
+  ],
+  "Source": [
+    "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:fKo-6T-run.title",
+    "Turn Touch Mac/Modes/Music/Base.lproj/TTModeMusicPlaylistOptions.xib:h4I-h4-tKy.title",
+    "Turn Touch Mac/Modes/Music/Base.lproj/TTModeMusicPlaylistOptions.xib:uOr-22-r5K.title"
+  ],
+  "Spotify": [
+    "Turn Touch Mac/Modes/Spotify/TTModeSpotify.m"
+  ],
+  "Spotify Volume down": [
+    "Turn Touch Mac/Modes/Spotify/TTModeSpotify.m"
+  ],
+  "Spotify Volume up": [
+    "Turn Touch Mac/Modes/Spotify/TTModeSpotify.m"
+  ],
+  "Spotify isn't playing anything": [
+    "Turn Touch Mac/Modes/Spotify/TTModeSpotify.m"
+  ],
+  "Start presentation at first slide": [
+    "Turn Touch Mac/Modes/Presentation/Base.lproj/TTModePresentationPlayOptions.xib:A6d-PH-sKP.title"
+  ],
+  "Stop alarm": [
+    "Turn Touch Mac/Modes/Alarm Clock/TTModeAlarmClock.m",
+    "Turn Touch Mac/Modes/Alarm Clock/TTModeAlarmClock.m"
+  ],
+  "Strong colors": [
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueRandomOptions.xib:40w-nu-1kA.ibShadowedLabels[2]",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueRandomOptions.xib:98X-tQ-Z3e.ibShadowedLabels[2]"
+  ],
+  "Submit Idea": [
+    "Turn Touch Mac/Views/Pairing/TTModalBarButton.m"
+  ],
+  "Submit Problem": [
+    "Turn Touch Mac/Views/Pairing/TTModalBarButton.m"
+  ],
+  "Submit Question": [
+    "Turn Touch Mac/Views/Pairing/TTModalBarButton.m"
+  ],
+  "Subtitle explainer gives a bit more context, esp. for those really long subtitles that stretch two lines.": [
+    "Turn Touch Mac/Views/FTUX/Base.lproj/TTModalFTUXView.xib:tyP-8r-fHX.title"
+  ],
+  "Sun": [
+    "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:j1V-BO-kf2.ibShadowedLabels[0]"
+  ],
+  "Switch between 12 and 16 actions in Settings. Each layout keeps its own assignments.": [
+    "Turn Touch Mac/Views/FTUX/TTModalFTUXView.m"
+  ],
+  "Switches": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "System-level controls": [
+    "Turn Touch Mac/Modes/Mac/TTModeMac.m"
+  ],
+  "TP-Link Kasa": [
+    "Turn Touch Mac/Modes/Kasa/TTModeKasa.m"
+  ],
+  "TP-Link Kasa Credentials": [
+    "Turn Touch Mac/Modes/Kasa/TTModeKasaConnected.m",
+    "Turn Touch Mac/Modes/Kasa/TTModeKasaSwitchOptions.m"
+  ],
+  "TV": [
+    "Turn Touch Mac/TV/TTModeTV.m"
+  ],
+  "TV isn't playing anything": [
+    "Turn Touch Mac/TV/TTModeTV.m"
+  ],
+  "TV volume down": [
+    "Turn Touch Mac/TV/TTModeTV.m"
+  ],
+  "TV volume up": [
+    "Turn Touch Mac/TV/TTModeTV.m"
+  ],
+  "Table View Cell": [
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueBridge.xib:K5I-UM-5vE.title",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueBridge.xib:jYw-yO-utI.title",
+    "Turn Touch Mac/Modes/News/Base.lproj/TTModeNewsWindowController.xib:Wqq-QL-w7I.title",
+    "Turn Touch Mac/Modes/News/Base.lproj/TTModeNewsWindowController.xib:lkF-5J-YtL.title",
+    "Turn Touch Mac/Modes/News/Base.lproj/TTModeNewsWindowController.xib:qMd-K4-LXw.title",
+    "Turn Touch Mac/Modes/Web/Base.lproj/TTModeWebWindowController.xib:OUQ-kE-khI.title",
+    "Turn Touch Mac/Modes/Web/Base.lproj/TTModeWebWindowController.xib:WRS-fi-Gqb.title",
+    "Turn Touch Mac/Modes/Web/Base.lproj/TTModeWebWindowController.xib:cPd-gt-fRm.title",
+    "Turn Touch Mac/Views/Mode HUD/Base.lproj/TTModeHUDView.xib:Uk4-Zs-GEg.title",
+    "Turn Touch Mac/Views/Mode HUD/Base.lproj/TTModeHUDView.xib:aIC-Ar-MGC.title",
+    "Turn Touch Mac/Views/Mode HUD/Base.lproj/TTModeHUDView.xib:hwx-ru-fg4.title"
+  ],
+  "Target": [
+    "Turn Touch Mac/Modes/Nest/Base.lproj/TTModeNestConnected.xib:bC6-j6-av6.title"
+  ],
+  "Temperature": [
+    "Turn Touch Mac/Modes/Nest/Base.lproj/TTModeNestSetTempOptions.xib:hfX-0y-zfM.title"
+  ],
+  "Temperature set to": [
+    "Turn Touch Mac/Modes/Nest/Base.lproj/TTModeNestConnected.xib:ezJ-Ir-0bB.title"
+  ],
+  "Test action": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Test runs the action now. Save assigns it to the selected remote button.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Text Cell": [
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueBridge.xib:SBV-su-ExU.title",
+    "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueBridge.xib:mpf-YE-l3x.title",
+    "Turn Touch Mac/Modes/News/Base.lproj/TTModeNewsWindowController.xib:2OS-lR-ong.title",
+    "Turn Touch Mac/Modes/News/Base.lproj/TTModeNewsWindowController.xib:ejU-V7-W8g.title",
+    "Turn Touch Mac/Modes/News/Base.lproj/TTModeNewsWindowController.xib:hjK-i6-eCA.title",
+    "Turn Touch Mac/Modes/Web/Base.lproj/TTModeWebWindowController.xib:2z7-vh-9Sj.title",
+    "Turn Touch Mac/Modes/Web/Base.lproj/TTModeWebWindowController.xib:IB6-ub-rVO.title",
+    "Turn Touch Mac/Modes/Web/Base.lproj/TTModeWebWindowController.xib:Wmo-Jh-6Vx.title",
+    "Turn Touch Mac/Views/Mode HUD/Base.lproj/TTModeHUDView.xib:08O-PU-ybg.title",
+    "Turn Touch Mac/Views/Mode HUD/Base.lproj/TTModeHUDView.xib:GsV-Q6-DZ5.title",
+    "Turn Touch Mac/Views/Mode HUD/Base.lproj/TTModeHUDView.xib:MJ8-kL-0Ag.title",
+    "Turn Touch Mac/Views/Mode HUD/Base.lproj/TTModeHUDView.xib:R0O-dA-Ban.title",
+    "Turn Touch Mac/Views/Settings/Base.lproj/TTModalDevices.xib:Jyw-Iw-oAx.title",
+    "Turn Touch Mac/Views/Settings/Base.lproj/TTModalDevices.xib:jtL-81-oFf.title",
+    "Turn Touch Mac/Views/Settings/Base.lproj/TTModalDevices.xib:mGr-Y6-boC.title",
+    "Turn Touch Mac/Views/Settings/Base.lproj/TTModalDevices.xib:uQq-m4-Q1I.title"
+  ],
+  "Thank you! What would you like to say?": [
+    "Turn Touch Mac/Views/Settings/TTModalSupportView.m"
+  ],
+  "That worked perfectly": [
+    "Turn Touch Mac/Views/Pairing/TTModalPairingInfo.m"
+  ],
+  "That's all there is to it": [
+    "Turn Touch Mac/Views/Pairing/TTModalBarButton.m"
+  ],
+  "The Heads-Up Display (HUD) shows what each button does and gives you access to even more actions and apps": [
+    "Turn Touch Mac/Views/FTUX/TTModalFTUXView.m"
+  ],
+  "The Hue bridge rejected this action.": [
+    "Turn Touch Mac/Modes/Hue/API/TTHueAPIClient.m"
+  ],
+  "The action HUD shows you which button you pressed along with the direction and relevant information such as song title, album art, temperature, scene name, etc.": [
+    "Turn Touch Mac/Views/Settings/Base.lproj/TTModalSettings.xib:aCM-L7-PFI.title"
+  ],
+  "The app HUD shows you the four buttons for the app you're switching into by holding a button.": [
+    "Turn Touch Mac/Views/Settings/Base.lproj/TTModalSettings.xib:hux-Av-8Rx.title"
+  ],
+  "The app is not authorized to use Bluetooth Low Energy.": [
+    "Turn Touch Mac/Bluetooth/TTBluetoothMonitor.m"
+  ],
+  "The news from NewsBlur": [
+    "Turn Touch Mac/Modes/News/TTModeNews.m"
+  ],
+  "The platform/hardware doesn't support Bluetooth Low Energy.": [
+    "Turn Touch Mac/Bluetooth/TTBluetoothMonitor.m"
+  ],
+  "The server did not return Home Assistant JSON. Check its address.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
+  ],
+  "There are batch actions and double-tap actions, all configurable in this app": [
+    "Turn Touch Mac/Views/FTUX/TTModalFTUXView.m"
+  ],
+  "There are no Hex, Bin or Zip files found inside selected folder.": [
+    "Turn Touch Mac/DFU/Constants/Utility.m"
+  ],
+  "This Home Assistant user does not have permission for that action.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
+  ],
+  "This computer doesn't support Bluetooth Low Energy.": [
+    "Turn Touch Mac/Views/Pairing/TTModalPairingInfo.m"
+  ],
+  "This entity has no callable actions. Sensors are usually read-only.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Thu": [
+    "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:j1V-BO-kf2.ibShadowedLabels[4]"
+  ],
+  "Title explainer": [
+    "Turn Touch Mac/Views/FTUX/Base.lproj/TTModalFTUXView.xib:LXo-r6-7h1.title"
+  ],
+  "Toggle device": [
+    "Turn Touch Mac/Modes/Govee/TTModeGovee.m",
+    "Turn Touch Mac/Modes/Kasa/TTModeKasa.m",
+    "Turn Touch Mac/Modes/Wemo/TTModeWemo.m"
+  ],
+  "Toggle on/off": [
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleaf.m"
+  ],
+  "Toggle screen": [
+    "Turn Touch Mac/Modes/Mac/TTModeMac.m"
+  ],
+  "Toggle slides": [
+    "Turn Touch Mac/Modes/Presentation/TTModePresentation.m"
+  ],
+  "Trigger action": [
+    "Turn Touch Mac/Modes/Ifttt/TTModeIfttt.m"
+  ],
+  "Trigger effect": [
+    "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleaf.m"
+  ],
+  "Try again": [
+    "Turn Touch Mac/Views/Pairing/TTModalBarButton.m"
+  ],
+  "Tue": [
+    "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:j1V-BO-kf2.ibShadowedLabels[2]"
+  ],
+  "Turn Touch": [
+    "Store title; maximum=30 characters"
+  ],
+  "Turn Touch Reader Window": [
+    "Turn Touch Mac/Modes/News/Base.lproj/TTModeNewsWindowController.xib:l3v-Tl-yEw.title",
+    "Turn Touch Mac/Modes/Web/Base.lproj/TTModeWebWindowController.xib:F0z-JX-Cv5.title"
+  ],
+  "Turn Touch Remote": [
+    "Turn Touch Mac/Base.lproj/MainMenu.xib:56.title",
+    "Turn Touch Mac/Base.lproj/MainMenu.xib:57.title"
+  ],
+  "Turn Touch Remote HUD": [
+    "Turn Touch Mac/Views/Action HUD/Base.lproj/TTActionHUDView.xib:g1J-6N-lTV.title",
+    "Turn Touch Mac/Views/Mode HUD/Base.lproj/TTModeHUDView.xib:g1J-6N-lTV.title"
+  ],
+  "Turn Touch for Mac · ": [
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
+  ],
+  "Turn Touch is not authorized to use Bluetooth Low Energy.": [
+    "Turn Touch Mac/Views/Pairing/TTModalPairingInfo.m"
+  ],
+  "Turn Touch remote": [
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
+  ],
+  "Turn Touch uses Apple Events to work with other apps on your Mac.": [
+    "Info.plist:NSAppleEventsUsageDescription"
+  ],
+  "Turn Touch uses Bluetooth to communicate with your remote.": [
+    "Info.plist:NSBluetoothAlwaysUsageDescription"
+  ],
+  "Turn Touch uses files to play music.": [
+    "Info.plist:NSFileProviderDomainUsageDescription"
+  ],
+  "Turn Touch uses music for the alarm clock.": [
+    "Info.plist:NSAppleMusicUsageDescription"
+  ],
+  "Turn Touch uses the local network to find Home Assistant, Philips Hue, Nanoleaf, and other smart home devices.": [
+    "Info.plist:NSLocalNetworkUsageDescription"
+  ],
+  "Turn Touch · Home Assistant": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Turn off": [
+    "Turn Touch Mac/Modes/Govee/TTModeGovee.m",
+    "Turn Touch Mac/Modes/Kasa/TTModeKasa.m",
+    "Turn Touch Mac/Modes/Wemo/TTModeWemo.m"
+  ],
+  "Turn off screen": [
+    "Turn Touch Mac/Modes/Mac/TTModeMac.m"
+  ],
+  "Turn on": [
+    "Turn Touch Mac/Modes/Govee/TTModeGovee.m",
+    "Turn Touch Mac/Modes/Kasa/TTModeKasa.m",
+    "Turn Touch Mac/Modes/Wemo/TTModeWemo.m"
+  ],
+  "Turn on screen": [
+    "Turn Touch Mac/Modes/Mac/TTModeMac.m"
+  ],
+  "Uh Oh...": [
+    "Turn Touch Mac/Views/Pairing/TTModalPairingInfo.m"
+  ],
+  "Unknown Device": [
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeSwitchDevice.m",
+    "Turn Touch Mac/Modes/Kasa/TTModeKasaSwitchDevice.m"
+  ],
+  "Unknown error": [
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeAPIClient.m",
+    "Turn Touch Mac/Modes/Govee/TTModeGoveeAPIClient.m",
+    "Turn Touch Mac/Modes/Hue/API/TTHueAPIClient.m",
+    "Turn Touch Mac/Modes/Hue/API/TTHueBridgeAuthenticator.m",
+    "Turn Touch Mac/Modes/Hue/API/TTHueModels.m"
+  ],
+  "Upgrade to v%ld": [
+    "Turn Touch Mac/Views/DFU/TTDeviceTitleView.m",
+    "Turn Touch Mac/Views/DFU/TTDeviceTitleView.m"
+  ],
+  "Use token": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Version %@": [
+    "Turn Touch Mac/Views/Settings/TTModalAbout.m"
+  ],
+  "Version 1.0.0": [
+    "Turn Touch Mac/Views/Settings/Base.lproj/TTModalAbout.xib:poD-Et-zEB.title"
+  ],
+  "Video": [
+    "Application-owned display label",
+    "Turn Touch Mac/Modes/Video/TTModeVideo.m"
+  ],
+  "View saved remotes and connection status": [
+    "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
+  ],
+  "Volume": [
+    "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:0jR-Ze-BSt.title"
+  ],
+  "Volume down": [
+    "Turn Touch Mac/Modes/Airfoil/TTModeAirfoil.m",
+    "Turn Touch Mac/Modes/Alarm Clock/TTModeAlarmClock.m",
+    "Turn Touch Mac/Modes/Mac/TTModeMac.m",
+    "Turn Touch Mac/Modes/Presentation/TTModePresentation.m",
+    "Turn Touch Mac/Modes/Sonos/TTModeSonos.m",
+    "Turn Touch Mac/Modes/Video/TTModeVideo.m"
+  ],
+  "Volume jump": [
+    "Turn Touch Mac/Modes/Airfoil/TTModeAirfoil.m",
+    "Turn Touch Mac/Modes/Music/TTModeMusic.m",
+    "Turn Touch Mac/Modes/Spotify/TTModeSpotify.m",
+    "Turn Touch Mac/TV/TTModeTV.m"
+  ],
+  "Volume up": [
+    "Turn Touch Mac/Modes/Airfoil/TTModeAirfoil.m",
+    "Turn Touch Mac/Modes/Alarm Clock/TTModeAlarmClock.m",
+    "Turn Touch Mac/Modes/Mac/TTModeMac.m",
+    "Turn Touch Mac/Modes/Presentation/TTModePresentation.m",
+    "Turn Touch Mac/Modes/Sonos/TTModeSonos.m",
+    "Turn Touch Mac/Modes/Video/TTModeVideo.m"
+  ],
+  "Waiting...": [
+    "Turn Touch Mac/Views/DFU/TTDeviceTitleView.m"
+  ],
+  "Wake up on time with music": [
+    "Turn Touch Mac/Modes/Alarm Clock/TTModeAlarmClock.m"
+  ],
+  "WeMo": [
+    "Turn Touch Mac/Modes/Wemo/TTModeWemo.m"
+  ],
+  "Web": [
+    "Application-owned display label",
+    "Turn Touch Mac/Modes/Web/TTModeWeb.m"
+  ],
+  "Wed": [
+    "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:j1V-BO-kf2.ibShadowedLabels[3]"
+  ],
+  "Welcome to Turn Touch": [
+    "Turn Touch Mac/TTLocalization.m",
+    "Turn Touch Mac/Views/Pairing/TTModalPairingInfo.m"
+  ],
+  "What can we help you with?": [
+    "Turn Touch Mac/Views/Settings/TTModalSupportView.m"
+  ],
+  "What feature would you like to see?": [
+    "Turn Touch Mac/Views/Settings/TTModalSupportView.m"
+  ],
+  "What issue are you running into?": [
+    "Turn Touch Mac/Views/Settings/TTModalSupportView.m"
+  ],
+  "What's up?": [
+    "Turn Touch Mac/Views/Settings/Base.lproj/TTModalSupportView.xib:EaR-sr-DIv.title"
+  ],
+  "Widen margin": [
+    "Turn Touch Mac/Modes/Web/TTModeWeb.m"
+  ],
+  "Widen story": [
+    "Turn Touch Mac/Modes/News/TTModeNews.m"
+  ],
+  "Wooden remote control": [
+    "Store subtitle; maximum=30 characters"
+  ],
+  "You can change this anytime in Settings. Language changes apply the next time you launch Turn Touch.": [
+    "Turn Touch Mac/TTLocalization.m"
+  ],
+  "Your Home Assistant session expired or the token is invalid. Connect again.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
+  ],
+  "Your email": [
+    "Turn Touch Mac/Views/Settings/Base.lproj/TTModalSupportView.xib:v0j-Is-pxN.title"
+  ],
+  "Your favorite actions, one touch away": [
+    "Store screenshot-caption; maximum=100 characters"
+  ],
+  "Your home, scenes, and automations": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTModeHomeAssistant.m"
+  ],
+  "Your home. One button away.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  ],
+  "Your remote has been paired": [
+    "Turn Touch Mac/Views/Pairing/TTModalPairingInfo.m"
+  ],
+  "Your remote has four buttons": [
+    "Turn Touch Mac/Views/FTUX/TTModalFTUXView.m"
+  ],
+  "application.dat is missing. It must be placed inside zip file with application": [
+    "Turn Touch Mac/DFU/DFUViewController/DFUHelper.m"
+  ],
+  "application.hex not exist inside selected file %@": [
+    "Turn Touch Mac/DFU/DFUViewController/DFUHelper.m"
+  ],
+  "bootloader.dat is missing. It must be placed inside zip file with bootloader": [
+    "Turn Touch Mac/DFU/DFUViewController/DFUHelper.m"
+  ],
+  "bootloader.hex not exist inside selected file %@": [
+    "Turn Touch Mac/DFU/DFUViewController/DFUHelper.m"
+  ],
+  "day": [
+    "Turn Touch Mac/Modes/Alarm Clock/TTModeAlarmClockOptions.m",
+    "Turn Touch Mac/Modes/Alarm Clock/TTModeAlarmClockOptions.m"
+  ],
+  "days": [
+    "Turn Touch Mac/Modes/Alarm Clock/TTModeAlarmClockOptions.m",
+    "Turn Touch Mac/Modes/Alarm Clock/TTModeAlarmClockOptions.m"
+  ],
+  "double": [
+    "Application-owned display label"
+  ],
+  "east": [
+    "Application-owned display label"
+  ],
+  "hold": [
+    "Application-owned display label",
+    "Turn Touch Mac/Views/Mode Tabs/TTModeTab.m"
+  ],
+  "hour": [
+    "Turn Touch Mac/Modes/Alarm Clock/TTModeAlarmClockOptions.m"
+  ],
+  "hours": [
+    "Turn Touch Mac/Modes/Alarm Clock/TTModeAlarmClockOptions.m"
+  ],
+  "https://": [
+    "Turn Touch Mac/Modes/Custom/Base.lproj/TTModeCustomURLOptions.xib:70c-St-0I8.placeholderString",
+    "Turn Touch Mac/Modes/Custom/Base.lproj/TTModeCustomURLOptions.xib:ncb-dh-uzB.placeholderString"
+  ],
+  "iTunes Volume down": [
+    "Turn Touch Mac/Modes/Music/TTModeMusic.m"
+  ],
+  "iTunes Volume up": [
+    "Turn Touch Mac/Modes/Music/TTModeMusic.m"
+  ],
+  "iTunes isn't playing anything": [
+    "Turn Touch Mac/Modes/Music/TTModeMusic.m"
+  ],
+  "minute": [
+    "Turn Touch Mac/Modes/Alarm Clock/TTModeAlarmClockOptions.m"
+  ],
+  "minutes": [
+    "Turn Touch Mac/Modes/Alarm Clock/TTModeAlarmClockOptions.m"
+  ],
+  "north": [
+    "Application-owned display label"
+  ],
+  "single": [
+    "Application-owned display label"
+  ],
+  "softdevice.dat is missing. It must be placed inside zip file with softdevice": [
+    "Turn Touch Mac/DFU/DFUViewController/DFUHelper.m"
+  ],
+  "softdevice.hex not exist inside selected file %@": [
+    "Turn Touch Mac/DFU/DFUViewController/DFUHelper.m"
+  ],
+  "south": [
+    "Application-owned display label"
+  ],
+  "system.dat is missing. It must be placed inside zip file with softdevice and bootloader": [
+    "Turn Touch Mac/DFU/DFUViewController/DFUHelper.m"
+  ],
+  "track": [
+    "Turn Touch Mac/Modes/Alarm Clock/TTModeAlarmClockOptions.m",
+    "Turn Touch Mac/Modes/Music/TTModeMusicPlaylistOptions.m"
+  ],
+  "tracks": [
+    "Turn Touch Mac/Modes/Alarm Clock/TTModeAlarmClockOptions.m",
+    "Turn Touch Mac/Modes/Music/TTModeMusicPlaylistOptions.m"
+  ],
+  "unknown Error": [
+    "Turn Touch Mac/DFU/DFUImplementation/DFUOperations.m"
+  ],
+  "uploading ...": [
+    "Turn Touch Mac/DFU/DFUViewController/DFUHelper.m"
+  ],
+  "uploading application ...": [
+    "Turn Touch Mac/DFU/DFUViewController/DFUHelper.m"
+  ],
+  "uploading bootloader ...": [
+    "Turn Touch Mac/DFU/DFUViewController/DFUHelper.m"
+  ],
+  "uploading softdevice ...": [
+    "Turn Touch Mac/DFU/DFUViewController/DFUHelper.m",
+    "Turn Touch Mac/DFU/DFUViewController/DFUHelper.m"
+  ],
+  "uploading softdevice+bootloader ...": [
+    "Turn Touch Mac/DFU/DFUViewController/DFUHelper.m"
+  ],
+  "west": [
+    "Application-owned display label"
+  ]
+}

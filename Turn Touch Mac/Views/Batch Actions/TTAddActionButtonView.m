@@ -31,7 +31,7 @@
 
         self.addButton = [[TTChangeButtonView alloc] init];
         [self.addButton setBorderRadius:12.f];
-        [self setChangeButtonTitle:@"Add Action"];
+        [self setChangeButtonTitle:TTText(@"Add Action")];
         [self.addButton setAction:@selector(showAddActionMenu:)];
         [self.addButton setTarget:self];
         NSImage *icon = [NSImage imageNamed:@"button_plus"];
@@ -109,7 +109,7 @@
 }
 
 - (IBAction)showAddActionMenu:(id)sender {
-    [self setChangeButtonTitle:@"Cancel"];
+    [self setChangeButtonTitle:TTText(@"Cancel")];
     [self.addButton setAction:@selector(hideAddActionMenu:)];
     NSImage *icon = [NSImage imageNamed:@"button_x"];
     [icon setSize:NSMakeSize(15, 10)];
@@ -123,7 +123,7 @@
 }
 
 - (IBAction)hideAddActionMenu:(id)sender {
-    [self setChangeButtonTitle:@"Add Action"];
+    [self setChangeButtonTitle:TTText(@"Add Action")];
     [self.addButton setAction:@selector(showAddActionMenu:)];
     NSImage *icon = [NSImage imageNamed:@"button_plus"];
     [icon setSize:NSMakeSize(15, 10)];

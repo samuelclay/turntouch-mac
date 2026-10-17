@@ -1,0 +1,58 @@
+name: Localization
+on:
+  pull_request:
+  push:
+    branches: [main, master]
+    paths: ['Turn Touch Mac/**', 'localization/**', '.github/workflows/localization.yml']
+  workflow_dispatch:
+  schedule:
+    - cron: '31 9 * * *'
+permissions:
+  contents: read
+concurrency:
+  group: localization-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s localization
+      - run: python localization/audit.py
+      - run: python localization/manage.py check
+        if: github.event_name == 'pull_request'
+      - run: python localization/manage.py compile
+      - run: git diff --exit-code -- localization 'Turn Touch Mac'
+        if: github.event_name == 'pull_request'
+  translate:
+    if: github.event_name != 'pull_request'
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Translate new English messages
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python localization/manage.py translate --budget 5
+      - run: python localization/audit.py
+      - run: python localization/manage.py check
+      - run: python localization/manage.py compile
+      - uses: peter-evans/create-pull-request@v7
+        with:
+          branch: automated-translations
+          title: Update Turn Touch translations
+          commit-message: Update Turn Touch translations
+          body: Translate new interface messages and validate format arguments for all 21 languages.
+          add-paths: |
+            localization/
+            Turn Touch Mac/

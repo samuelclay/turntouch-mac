@@ -44,11 +44,11 @@ NSString *const kTVPlaylistShuffleDouble = @"tvPlaylistShuffleDouble";
 #pragma mark - Mode
 
 + (NSString *)title {
-    return @"TV";
+    return TTText(@"TV");
 }
 
 + (NSString *)description {
-    return @"Control TV";
+    return TTText(@"Control TV");
 }
 
 + (NSString *)imageName {
@@ -74,46 +74,46 @@ NSString *const kTVPlaylistShuffleDouble = @"tvPlaylistShuffleDouble";
 #pragma mark - Action Titles
 
 - (NSString *)titleTTModeTVVolumeUp {
-    return @"TV volume up";
+    return TTText(@"TV volume up");
 }
 - (NSString *)titleTTModeTVVolumeDown {
-    return @"TV volume down";
+    return TTText(@"TV volume down");
 }
 - (NSString *)titleTTModeTVPause {
-    return @"Pause";
+    return TTText(@"Pause");
 }
 - (NSString *)titleTTModeTVPlay {
-    return @"Play";
+    return TTText(@"Play");
 }
 - (NSString *)titleTTModeTVPlayPause {
-    return @"Play/pause";
+    return TTText(@"Play/pause");
 }
 - (NSString *)doubleTitleTTModeTVPause {
-    return @"Previous video";
+    return TTText(@"Previous video");
 }
 - (NSString *)actionTitleTTModeTVPause {
-    return @"Pause";
+    return TTText(@"Pause");
 }
 - (NSString *)actionTitleTTModeTVPlay {
-    return @"Play";
+    return TTText(@"Play");
 }
 - (NSString *)actionTitleTTModeTVPlayPause {
-    return self.isPlaying ? @"Play" : @"Pause";
+    return self.isPlaying ? TTText(@"Play") : TTText(@"Pause");
 }
 - (NSString *)titleTTModeTVNextTrack {
-    return @"Next video";
+    return TTText(@"Next video");
 }
 - (NSString *)titleTTModeTVPreviousTrack {
-    return @"Previous video";
+    return TTText(@"Previous video");
 }
 - (NSString *)titleTTModeTVFullScreen {
-    return @"Full screen";
+    return TTText(@"Full screen");
 }
 - (NSString *)titleTTModeTVVolumeJump {
-    return @"Volume jump";
+    return TTText(@"Volume jump");
 }
 - (NSString *)titleTTModeTVSleep {
-    return @"Fade out";
+    return TTText(@"Fade out");
 }
 
 #pragma mark - Action Images
@@ -258,7 +258,7 @@ NSString *const kTVPlaylistShuffleDouble = @"tvPlaylistShuffleDouble";
     // Check if song playing
     if (!currentTrack.name) {
         NSTextView *songTitleView = [[NSTextView alloc] initWithFrame:NSMakeRect(infoX, textSize.height, infoWidth, textSize.height)];
-        [songTitleView setString:@"TV isn't playing anything"];
+        [songTitleView setString:TTText(@"TV isn't playing anything")];
         [songTitleView setTextColor:NSColorFromRGB(0x604050)];
         [songTitleView setFont:[NSFont fontWithName:@"Effra" size:fontSize]];
         [songTitleView setBackgroundColor:[NSColor clearColor]];
@@ -292,7 +292,7 @@ NSString *const kTVPlaylistShuffleDouble = @"tvPlaylistShuffleDouble";
         
         // Album
         NSTextField *albumView = [[NSTextField alloc] initWithFrame:NSMakeRect(infoX, textSize.height*0, infoWidth, textSize.height)];
-        [albumView setStringValue:[NSString stringWithFormat:@"Season %ld, Episode %ld", (long)currentTrack.seasonNumber, (long)currentTrack.episodeNumber]];
+        [albumView setStringValue:[NSString stringWithFormat:TTText(@"Season %ld, Episode %ld"), (long)currentTrack.seasonNumber, (long)currentTrack.episodeNumber]];
         [albumView setTextColor:NSColorFromRGB(0x9080A0)];
         [albumView setFont:[NSFont fontWithName:@"Effra" size:fontSize]];
         [albumView setBackgroundColor:[NSColor clearColor]];

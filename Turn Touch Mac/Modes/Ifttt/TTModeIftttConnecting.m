@@ -20,7 +20,7 @@
 }
 
 - (void)setConnectingWithMessage:(NSString*)message {
-    if (!message) message = @"Connecting to Ifttt...";
+    if (!message) message = TTText(@"Connecting to Ifttt...");
     
     self.progressMessage.stringValue = message;
     [self.progressIndicator startAnimation:self];

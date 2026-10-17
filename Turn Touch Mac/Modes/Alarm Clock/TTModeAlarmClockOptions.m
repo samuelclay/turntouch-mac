@@ -141,7 +141,7 @@ NSUInteger const kOnetimeHeight = 68;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
     
-    NSString *label = [NSString stringWithFormat:@"%@, %ld %@ a week", [dateFormatter stringFromDate:time], (long)selectedDays, selectedDays == 1 ? @"day" : @"days"];
+    NSString *label = [NSString stringWithFormat:TTText(@"%@, %ld %@ a week"), [dateFormatter stringFromDate:time], (long)selectedDays, selectedDays == 1 ? TTText(@"day") : TTText(@"days")];
     [self.textRepeatTime setStringValue:label];
 }
 
@@ -210,7 +210,7 @@ NSUInteger const kOnetimeHeight = 68;
     
     NSTimeInterval diff = [alarmDate timeIntervalSinceDate:[NSDate date]];
     if (diff <= 59) {
-        [self.textOnetimeLabel setStringValue:@"Alarm is in the past!"];
+        [self.textOnetimeLabel setStringValue:TTText(@"Alarm is in the past!")];
         return;
     }
     unsigned int unitFlags = NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitDay;
@@ -223,18 +223,18 @@ NSUInteger const kOnetimeHeight = 68;
     NSInteger hours = [breakdownInfo hour];
     NSInteger minutes = [breakdownInfo minute];
     if (days) {
-        relativeTimeUntilAlarm = [NSString stringWithFormat:@"%ld %@", days, days == 1 ? @"day" : @"days"];
+        relativeTimeUntilAlarm = [NSString stringWithFormat:@"%ld %@", days, days == 1 ? TTText(@"day") : TTText(@"days")];
     }
     if (hours) {
         relativeTimeUntilAlarm =  [relativeTimeUntilAlarm stringByAppendingString:
-                                   [NSString stringWithFormat:@"%@%ld %@", days ? @", " : @"", hours, hours == 1 ? @"hour" : @"hours"]];
+                                   [NSString stringWithFormat:@"%@%ld %@", days ? @", " : @"", hours, hours == 1 ? TTText(@"hour") : TTText(@"hours")]];
     }
     if (minutes) {
         relativeTimeUntilAlarm =  [relativeTimeUntilAlarm stringByAppendingString:
-                                   [NSString stringWithFormat:@"%@%ld %@", hours || days ? @", " : @"", minutes, minutes == 1 ? @"minute" : @"minutes"]];
+                                   [NSString stringWithFormat:@"%@%ld %@", hours || days ? @", " : @"", minutes, minutes == 1 ? TTText(@"minute") : TTText(@"minutes")]];
     }
 
-    NSString *label = [NSString stringWithFormat:@"%@, in %@", [dateFormatter stringFromDate:alarmDate], relativeTimeUntilAlarm];
+    NSString *label = [NSString stringWithFormat:TTText(@"%@, in %@"), [dateFormatter stringFromDate:alarmDate], relativeTimeUntilAlarm];
     [self.textOnetimeLabel setStringValue:label];
 }
 
@@ -245,7 +245,7 @@ NSUInteger const kOnetimeHeight = 68;
     NSInteger alarmVolume = [[NSAppDelegate.modeMap mode:self.mode optionValue:kAlarmVolume] integerValue];
     
     [self.textAlarmVolume setStringValue:[NSString stringWithFormat:@"%ld%%", alarmVolume]];
-    [self.textAlarmDuration setStringValue:[NSString stringWithFormat:@"%ld min", alarmDuration]];
+    [self.textAlarmDuration setStringValue:[NSString stringWithFormat:TTText(@"%ld min"), alarmDuration]];
 }
 
 - (IBAction)changeAlarmDuration:(id)sender {
@@ -296,7 +296,7 @@ NSUInteger const kOnetimeHeight = 68;
     }
     NSInteger tracks = selectedPlaylist.tracks.count;
     [self.textTracksCount setStringValue:[NSString stringWithFormat:@"%ld %@",
-                                     (long)tracks, tracks == 1 ? @"track" : @"tracks"]];
+                                     (long)tracks, tracks == 1 ? TTText(@"track") : TTText(@"tracks")]];
 }
 
 - (IBAction)changeShuffle:(id)sender {

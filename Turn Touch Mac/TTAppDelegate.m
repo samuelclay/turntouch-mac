@@ -75,6 +75,7 @@ void *kContextActivePanel = &kContextActivePanel;
     });
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if ([TTLocalization needsWelcome]) [TTLocalization showLanguagePicker];
         if ([self.bluetoothMonitor noKnownDevices]) {
             [self.panelController openModal:MODAL_PAIRING_INTRO];
         }
@@ -101,6 +102,11 @@ void *kContextActivePanel = &kContextActivePanel;
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:urlString]];
     }
     NSLog(@" ---> Trusted in accessibility: %d", accessibilityEnabled);
+}
+
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)visible {
+    [self openPanel];
+    return YES;
 }
 
 - (IBAction)checkForUpdates:(id)sender {

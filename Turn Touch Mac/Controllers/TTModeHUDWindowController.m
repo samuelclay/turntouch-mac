@@ -148,7 +148,7 @@
     NSMutableArray *options = [NSMutableArray array];
     [options addObject:@{@"identifier": @"space"}];
     [options addObject:@{@"identifier": @"close",
-                         @"title"       : @"Close"}];
+                         @"title"       : TTText(@"Close")}];
     [options addObject:@{@"identifier": @"space"}];
     
     for (NSString *action in self.appDelegate.modeMap.availableActions) {

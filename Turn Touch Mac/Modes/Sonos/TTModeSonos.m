@@ -30,11 +30,11 @@ static SonosManager *sonosManager;
 #pragma mark - Mode
 
 + (NSString *)title {
-    return @"Sonos";
+    return TTText(@"Sonos");
 }
 
 + (NSString *)description {
-    return @"Connected wireless speakers";
+    return TTText(@"Connected wireless speakers");
 }
 
 + (NSString *)imageName {
@@ -83,35 +83,35 @@ static SonosManager *sonosManager;
 #pragma mark - Action Titles
 
 - (NSString *)titleTTModeSonosVolumeUp {
-    return @"Volume up";
+    return TTText(@"Volume up");
 }
 
 - (NSString *)titleTTModeSonosVolumeDown {
-    return @"Volume down";
+    return TTText(@"Volume down");
 }
 
 - (NSString *)titleTTModeSonosVolumeMute {
-    return @"Mute";
+    return TTText(@"Mute");
 }
 
 - (NSString *)titleTTModeSonosPlayPause {
-    return @"Play/pause";
+    return TTText(@"Play/pause");
 }
 
 - (NSString *)titleTTModeSonosPlay {
-    return @"Play";
+    return TTText(@"Play");
 }
 
 - (NSString *)titleTTModeSonosPause {
-    return @"Pause";
+    return TTText(@"Pause");
 }
 
 - (NSString *)titleTTModeSonosNextTrack {
-    return @"Next Track";
+    return TTText(@"Next Track");
 }
 
 - (NSString *)titleTTModeSonosPreviousTrack {
-    return @"Previous Track";
+    return TTText(@"Previous Track");
 }
 
 #pragma mark - Action Images

@@ -39,11 +39,11 @@
 }
 
 + (NSString *)title {
-    return @"NewsBlur";
+    return TTText(@"NewsBlur");
 }
 
 + (NSString *)description {
-    return @"The news from NewsBlur";
+    return TTText(@"The news from NewsBlur");
 }
 
 + (NSString *)imageName {
@@ -66,46 +66,46 @@
 - (NSArray *)menuOptions {
     return @[@{@"identifier" : @"space"},
              @{@"identifier" : @"TTModeNewsMenuReturn",
-               @"title"      : @"Return",
+               @"title"      : TTText(@"Return"),
                @"icon"       : @"double_tap",
                @"group"      : @"action",
                },
              @{@"identifier" : @"space"},
              @{@"identifier" : @"TTModeNewsNextStory",
-               @"title"      : @"Next story",
+               @"title"      : TTText(@"Next story"),
                @"icon"       : @"heart",
                @"group"      : @"action",
                },
              @{@"identifier" : @"TTModeNewsPreviousStory",
-               @"title"      : @"Previous story",
+               @"title"      : TTText(@"Previous story"),
                @"icon"       : @"cog",
                @"group"      : @"action",
                },
              @{@"identifier" : @"space"},
              @{@"identifier" : @"TTModeNewsMenuFontSizeUp",
-               @"title"      : @"Larger text",
+               @"title"      : TTText(@"Larger text"),
                @"icon"       : @"button_chevron",
                @"group"      : @"action",
                },
              @{@"identifier" : @"TTModeNewsMenuFontSizeDown",
-               @"title"      : @"Smaller text",
+               @"title"      : TTText(@"Smaller text"),
                @"icon"       : @"button_dash",
                @"group"      : @"action",
                },
              @{@"identifier" : @"space"},
              @{@"identifier" : @"TTModeNewsMenuWider",
-               @"title"      : @"Widen story",
+               @"title"      : TTText(@"Widen story"),
                @"icon"       : @"arrow",
                @"group"      : @"action",
                },
              @{@"identifier" : @"TTModeNewsMenuNarrower",
-               @"title"      : @"Narrow story",
+               @"title"      : TTText(@"Narrow story"),
                @"icon"       : @"arrow",
                @"group"      : @"action",
                },
              @{@"identifier" : @"space"},
              @{@"identifier" : @"TTModeNewsMenuClose",
-               @"title"      : @"Close NewsBlur",
+               @"title"      : TTText(@"Close NewsBlur"),
                @"icon"       : @"button_x",
                @"group"      : @"action",
                },
@@ -128,25 +128,25 @@
 }
 
 - (NSString *)titleTTModeNewsMenu {
-    return @"Menu";
+    return TTText(@"Menu");
 }
 - (NSString *)titleTTModeNewsNextStory {
-    return @"Next story";
+    return TTText(@"Next story");
 }
 - (NSString *)titleTTModeNewsNextSite {
-    return @"Next site";
+    return TTText(@"Next site");
 }
 - (NSString *)titleTTModeNewsPreviousStory {
-    return @"Previous story";
+    return TTText(@"Previous story");
 }
 - (NSString *)titleTTModeNewsPreviousSite {
-    return @"Previous site";
+    return TTText(@"Previous site");
 }
 - (NSString *)titleTTModeNewsScrollUp {
-    return @"Scroll up";
+    return TTText(@"Scroll up");
 }
 - (NSString *)titleTTModeNewsScrollDown {
-    return @"Scroll down";
+    return TTText(@"Scroll down");
 }
 
 #pragma mark - Action Images

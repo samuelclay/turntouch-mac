@@ -43,7 +43,12 @@ typedef NS_ENUM(NSUInteger, TTButtonActionMode)
 @property (nonatomic) TTMode *tempMode;
 @property (nonatomic) TTAction *batchActionChangeAction;
 @property (nonatomic) TTBatchActions *batchActions;
+@property (nonatomic, readonly) BOOL isTwelveButtonMode;
 @property (nonatomic, readonly) TTButtonActionMode buttonActionMode;
+
+- (void)switchButtonAppMode:(BOOL)twelve;
+- (void)switchPerformActionMode:(TTButtonActionMode)mode;
+- (void)runGesture:(TTModeDirection)gesture direction:(TTModeDirection)direction;
 @property (nonatomic, readonly) BOOL isButtonActionPerform;
 @property (nonatomic) NSArray *availableModes;
 @property (nonatomic) NSArray *availableActions;

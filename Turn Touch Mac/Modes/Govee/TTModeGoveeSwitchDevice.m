@@ -69,7 +69,7 @@
 
 - (void)redraw {
     BOOL selected = [self.delegate isSelected:self.device];
-    NSString *name = self.device.deviceName ?: @"Unknown Device";
+    NSString *name = self.device.deviceName ?: TTText(@"Unknown Device");
     [self.nameLabel setStringValue:name];
     [self.selectedLabel setStringValue:selected ? @"\u2714\uFE0E" : @""];
     if (selected) {

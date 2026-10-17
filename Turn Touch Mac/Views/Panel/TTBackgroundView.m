@@ -307,7 +307,7 @@
                                                                    multiplier:1.f constant:0.f];
     self.scrollViewHeightConstraint.priority = 999;
     [self addConstraint:self.scrollViewHeightConstraint];
-    NSRect screenRect = [[[NSScreen screens] objectAtIndex:0] frame];
+    NSRect screenRect = self.appDelegate.panelController.screenForPanel.visibleFrame;
     CGFloat fixedHeight = ARROW_HEIGHT + TITLE_BAR_HEIGHT + MODE_TABS_HEIGHT + MODE_TITLE_HEIGHT + FOOTER_HEIGHT;
     CGFloat scrollMaxHeight = NSHeight(screenRect) - fixedHeight - 100;
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.scrollView

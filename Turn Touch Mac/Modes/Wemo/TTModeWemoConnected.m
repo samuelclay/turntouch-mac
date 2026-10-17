@@ -22,10 +22,9 @@
 - (void)updateConnected {
     NSInteger count = [TTModeWemo foundDevices].count;
     if (count > 0) {
-        [self.connectedLabel setStringValue:[NSString stringWithFormat:@"Connected to %ld Wemo device%@",
-                                        (long)count, count == 1 ? @"" : @"s"]];
+        [self.connectedLabel setStringValue:[NSString stringWithFormat:TTText(@"Connected Wemo devices: %ld"), (long)count]];
     } else {
-        [self.connectedLabel setStringValue:@"No Wemo devices found"];
+        [self.connectedLabel setStringValue:TTText(@"No Wemo devices found")];
     }
 }
 

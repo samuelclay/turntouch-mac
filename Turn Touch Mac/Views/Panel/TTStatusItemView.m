@@ -87,7 +87,7 @@
 #pragma mark -
 
 - (NSRect)globalRect {
-    NSRect frame = [self.diamondView frame];
+    NSRect frame = [self convertRect:self.bounds toView:nil];
     return [self.window convertRectToScreen:frame];
 
 }

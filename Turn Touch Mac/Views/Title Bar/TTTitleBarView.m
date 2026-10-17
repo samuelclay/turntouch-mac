@@ -10,14 +10,17 @@
 #import "TTBluetoothMonitor.h"
 #import "TTDevice.h"
 #import "NSDate+TimeAgo.h"
+#import "TTSettingsPopoverController.h"
 
 #define CORNER_RADIUS 8.0f
 const NSInteger SETTINGS_ICON_SIZE = 16;
 
-@interface TTTitleBarView ()
+@interface TTTitleBarView () <NSPopoverDelegate>
 
 @property (nonatomic, strong) NSImage *title;
-@property (nonatomic, strong) TTSettingsButton *settingsButton;
+@property (nonatomic, strong) NSButton *settingsButton;
+@property (nonatomic) NSPopover *settingsPopover;
+@property (nonatomic) TTSettingsPopoverController *settingsController;
 @property (nonatomic) BOOL isMenuVisible;
 @property (nonatomic, strong) NSMenu *settingsMenu;
 @property (nonatomic, strong) NSDictionary *batteryAttributes;
@@ -34,47 +37,17 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
         self.title = [NSImage imageNamed:@"title"];
         [self.title setSize:NSMakeSize(100, 12)];
         
-        self.settingsButton = [[TTSettingsButton alloc] initWithFrame:NSZeroRect pullsDown:YES];
-        [self buildSettingsMenu:YES];
-        [self.settingsButton setTarget:self];
-        [self.settingsButton setMenu:self.settingsMenu];
+        self.settingsButton = [NSButton buttonWithImage:[NSImage imageNamed:@"settings"] target:self action:@selector(showSettings:)];
+        self.settingsButton.bordered = NO;
+        self.settingsButton.imageScaling = NSImageScaleProportionallyDown;
+        self.settingsButton.accessibilityLabel = TTText(@"Settings");
+        self.settingsButton.toolTip = TTText(@"Settings");
         [self addSubview:self.settingsButton];
         
         [self setupTitleAttributes];
-        [self registerAsObserver];
+
     }
     return self;
-}
-
-- (void)registerAsObserver {
-    [self.appDelegate.bluetoothMonitor addObserver:self
-                                   forKeyPath:@"batteryPct"
-                                      options:0 context:nil];
-    [self.appDelegate.bluetoothMonitor addObserver:self
-                                   forKeyPath:@"lastActionDate"
-                                      options:0 context:nil];
-    [self.appDelegate.bluetoothMonitor addObserver:self
-                                   forKeyPath:@"pairedDevicesCount"
-                                      options:0 context:nil];
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath
-                      ofObject:(id)object
-                        change:(NSDictionary *)change
-                       context:(void *)context {
-    if ([keyPath isEqual:NSStringFromSelector(@selector(batteryPct))]) {
-        [self buildSettingsMenu:NO];
-    } else if ([keyPath isEqual:NSStringFromSelector(@selector(lastActionDate))]) {
-        [self buildSettingsMenu:NO];
-    } else if ([keyPath isEqual:NSStringFromSelector(@selector(pairedDevicesCount))]) {
-        [self buildSettingsMenu:NO];
-    }
-}
-
-- (void)dealloc {
-    [self.appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"batteryPct"];
-    [self.appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"lastActionDate"];
-    [self.appDelegate.bluetoothMonitor removeObserver:self forKeyPath:@"pairedDevicesCount"];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
@@ -159,192 +132,28 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
                           };
 }
 
-#pragma mark - Settings menu
+#pragma mark - Settings popover
 
-- (void)buildSettingsMenu:(BOOL)force {
-    if (!force && !self.isMenuVisible) return;
-
-    NSMenuItem *menuItem;
-    
-    if (!self.settingsMenu) {
-        self.settingsMenu = [[NSMenu alloc] initWithTitle:@"Menu"];
-        [self.settingsMenu setDelegate:self];
-        [self.settingsMenu setAutoenablesItems:NO];
-    } else {
-        [self.settingsMenu removeAllItems];
-    }
-
-    TTDeviceList *foundDevices = self.appDelegate.bluetoothMonitor.foundDevices;
-    for (TTDevice *device in foundDevices) {
-        if (device.peripheral.state == CBPeripheralStateDisconnected) continue;
-        if (device.state != TTDeviceStateConnected && device.state != TTDeviceStateConnecting) continue;
-        if (device.uuid || device.nickname) {
-            menuItem = [[NSMenuItem alloc] initWithTitle:(device.nickname ? device.nickname : device.uuid)
-                                                  action:@selector(openDevicesDialog:) keyEquivalent:@""];
-            [menuItem setTarget:self];
-            [self.settingsMenu addItem:menuItem];
-        }
-
-        NSString *batteryLevel = [NSString stringWithFormat:@"Battery Level: %d%%",
-                                  (int)device.batteryPct.intValue];
-        menuItem = [[NSMenuItem alloc] initWithTitle:batteryLevel action:@selector(openDevicesDialog:) keyEquivalent:@""];
-        [menuItem setEnabled:NO];
-        [menuItem setTarget:self];
-        if (device.isPaired && device.batteryPct.intValue <= 0) {
-            [menuItem setTitle:@"Connecting to Remote..."];
-            [menuItem setEnabled:NO];
-        } else if (!device.isPaired) {
-            [menuItem setTitle:@"Pairing with Remote..."];
-            [menuItem setEnabled:NO];
-        }
-        [self.settingsMenu addItem:menuItem];
-        
-        NSString *timeAgo = [device.lastActionDate timeAgo];
-        NSString *lastAction = [NSString stringWithFormat:@"Last Action: %@",
-                                timeAgo];
-        if (!timeAgo) {
-            lastAction = @"Counting is Difficult";
-        }
-        menuItem = [[NSMenuItem alloc] initWithTitle:lastAction action:nil keyEquivalent:@""];
-        [menuItem setEnabled:NO];
-        [self.settingsMenu addItem:menuItem];
-
-        [self.settingsMenu addItem:[NSMenuItem separatorItem]];
-    }
-    if (!foundDevices.count) {
-        menuItem = [[NSMenuItem alloc] initWithTitle:@"No Remotes Connected" action:nil keyEquivalent:@""];
-        [menuItem setEnabled:NO];
-        [self.settingsMenu addItem:menuItem];
-        
-        [self.settingsMenu addItem:[NSMenuItem separatorItem]];
-    }
-
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Add a New Remote..."
-                                          action:@selector(openPairingDialog:)
-                                   keyEquivalent:@""];
-    [menuItem setTarget:self];
-    [self.settingsMenu addItem:menuItem];
-
-    [self.settingsMenu addItem:[NSMenuItem separatorItem]];
-    
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Settings..."
-                                          action:@selector(openSettingsDialog:)
-                                   keyEquivalent:@""];
-    [menuItem setTarget:self];
-    [self.settingsMenu addItem:menuItem];
-    
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Devices"
-                                          action:@selector(openDevicesDialog:)
-                                   keyEquivalent:@""];
-    [menuItem setTarget:self];
-    [self.settingsMenu addItem:menuItem];
-    
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"How It Works"
-                                          action:@selector(openFTUXDialog:)
-                                   keyEquivalent:@""];
-    [menuItem setTarget:self];
-    [self.settingsMenu addItem:menuItem];
-    
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"About Turn Touch"
-                                          action:@selector(openAboutDialog:)
-                                   keyEquivalent:@""];
-    [menuItem setTarget:self];
-    [self.settingsMenu addItem:menuItem];
-
-    [self.settingsMenu addItem:[NSMenuItem separatorItem]];
-
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Submit an Idea..."
-                                          action:@selector(openSupportIdea:)
-                                   keyEquivalent:@""];
-    [menuItem setTarget:self];
-    [self.settingsMenu addItem:menuItem];
-    
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Ask a Question..."
-                                          action:@selector(openSupportQuestion:)
-                                   keyEquivalent:@""];
-    [menuItem setTarget:self];
-    [self.settingsMenu addItem:menuItem];
-    
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Troubleshoot a Problem..."
-                                          action:@selector(openSupportProblem:)
-                                   keyEquivalent:@""];
-    [menuItem setTarget:self];
-    [self.settingsMenu addItem:menuItem];
-    
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Share Photos and Praise..."
-                                          action:@selector(openSupportPraise:)
-                                   keyEquivalent:@""];
-    [menuItem setTarget:self];
-    [self.settingsMenu addItem:menuItem];
-    
-    [self.settingsMenu addItem:[NSMenuItem separatorItem]];
-
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Quit Turn Touch Remote"
-                                          action:@selector(quit:)
-                                   keyEquivalent:@""];
-    [menuItem setTarget:self];
-    [self.settingsMenu addItem:menuItem];
-    
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"" action:nil keyEquivalent:@""];
-    NSImage *image = [NSImage imageNamed:@"settings"];
-    [image setSize:NSMakeSize(SETTINGS_ICON_SIZE, SETTINGS_ICON_SIZE)];
-    [menuItem setImage:image];
-    [self.settingsMenu insertItem:menuItem atIndex:0];
+- (void)showSettings:(id)sender {
+    if (self.settingsPopover.shown) { [self.settingsPopover close]; return; }
+    if (!self.settingsController) self.settingsController = [[TTSettingsPopoverController alloc] init];
+    // Rebuild the settings UI each time to reflect current devices and preferences.
+    [self.settingsController loadView];
+    self.settingsPopover = [[NSPopover alloc] init];
+    self.settingsPopover.contentViewController = self.settingsController;
+    self.settingsPopover.behavior = NSPopoverBehaviorTransient;
+    self.settingsPopover.delegate = self;
+    CGFloat height = MIN(600, self.window.screen.visibleFrame.size.height - 100);
+    self.settingsPopover.contentSize = NSMakeSize(340, MAX(360, height));
+    __weak typeof(self) weakSelf = self;
+    self.settingsController.dismissHandler = ^{ [weakSelf.settingsPopover close]; };
+    self.appDelegate.panelController.preventClosing = YES;
+    [self.settingsPopover showRelativeToRect:self.settingsButton.bounds ofView:self.settingsButton preferredEdge:NSMinYEdge];
 }
 
-#pragma mark - Menu Delegate
-
-- (void)menuWillOpen:(NSMenu *)menu {
-    self.isMenuVisible = YES;
-    [self buildSettingsMenu:YES];
-}
-
-- (void)menuDidClose:(NSMenu *)menu {
-    self.isMenuVisible = NO;
-}
-
-- (void)openDevicesDialog:(id)sender {
-    [self.appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_DEVICES];
-}
-
-- (void)openPairingDialog:(id)sender {
-    [self.appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_PAIRING];
-}
-
-- (void)openFTUXDialog:(id)sender {
-    [self.appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_FTUX];
-}
-
-- (void)openAboutDialog:(id)sender {
-    [self.appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_ABOUT];
-}
-
-- (void)openSupportDialog:(id)sender {
-    [self.appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_SUPPORT];
-}
-
-- (void)openSupportIdea:(id)sender {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://forum.turntouch.com/c/ideas"]];
-}
-
-- (void)openSupportQuestion:(id)sender {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://forum.turntouch.com/c/questions"]];
-}
-
-- (void)openSupportProblem:(id)sender {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://forum.turntouch.com/c/problems"]];
-}
-
-- (void)openSupportPraise:(id)sender {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://forum.turntouch.com/c/praise"]];
-}
-
-- (void)openSettingsDialog:(id)sender {
-    [self.appDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_SETTINGS];
-}
-
-- (void)quit:(id)sender {
-    [[NSApplication sharedApplication] terminate:sender];
+- (void)popoverDidClose:(NSNotification *)notification {
+    self.appDelegate.panelController.preventClosing = NO;
+    if (!NSApp.active) self.appDelegate.panelController.hasActivePanel = NO;
 }
 
 @end

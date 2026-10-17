@@ -119,11 +119,11 @@ static NSMutableArray *recentlyFoundDevices;
 #pragma mark - Mode
 
 + (NSString *)title {
-    return @"WeMo";
+    return TTText(@"WeMo");
 }
 
 + (NSString *)description {
-    return @"Smart power meter and outlet";
+    return TTText(@"Smart power meter and outlet");
 }
 
 + (NSString *)imageName {
@@ -142,13 +142,13 @@ static NSMutableArray *recentlyFoundDevices;
 #pragma mark - Action Titles
 
 - (NSString *)titleTTModeWemoDeviceOn {
-    return @"Turn on";
+    return TTText(@"Turn on");
 }
 - (NSString *)titleTTModeWemoDeviceOff {
-    return @"Turn off";
+    return TTText(@"Turn off");
 }
 - (NSString *)titleTTModeWemoDeviceToggle {
-    return @"Toggle device";
+    return TTText(@"Toggle device");
 }
 
 #pragma mark - Action Images

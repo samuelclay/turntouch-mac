@@ -26,11 +26,11 @@ NSString *const kCustomDoubleKey = @"doubleCustomKey";
 #pragma mark - Mode
 
 + (NSString *)title {
-    return @"Custom";
+    return TTText(@"Custom");
 }
 
 + (NSString *)description {
-    return @"Scripts, files, and websites";
+    return TTText(@"Scripts, files, and websites");
 }
 
 + (NSString *)imageName {
@@ -54,16 +54,16 @@ NSString *const kCustomDoubleKey = @"doubleCustomKey";
 #pragma mark - Action Titles
 
 - (NSString *)titleTTModeCustomURL {
-    return @"Hit URL";
+    return TTText(@"Hit URL");
 }
 - (NSString *)titleTTModeCustomScript {
-    return @"Run script";
+    return TTText(@"Run script");
 }
 - (NSString *)titleTTModeCustomFile {
-    return @"Execute file";
+    return TTText(@"Execute file");
 }
 - (NSString *)titleTTModeCustomKeyboard {
-    return @"Press any key";
+    return TTText(@"Press any key");
 }
 
 #pragma mark - Action Images
@@ -172,7 +172,7 @@ NSString *const kCustomDoubleKey = @"doubleCustomKey";
 - (void)hitUrl:(NSString *)customUrlString callback:(void (^)(NSString *responseString, BOOL success))callback {
     if (!customUrlString || !customUrlString.length) {
         printf(" ---> No URL");
-        callback(@"No URL specified", NO);
+        callback(TTText(@"No URL specified"), NO);
         return;
     }
     
@@ -186,8 +186,8 @@ NSString *const kCustomDoubleKey = @"doubleCustomKey";
             NSString *responseString;
             BOOL success = NO;
             if ([urlResponse statusCode] != 200) {
-                NSLog(@"Error getting %@, HTTP status code %li", customUrlString, (long)[urlResponse statusCode]);
-                responseString = [NSString stringWithFormat:@"Error (%li): %@", (long)[urlResponse statusCode], error];
+                NSLog(TTText(@"Error getting %@, HTTP status code %li"), customUrlString, (long)[urlResponse statusCode]);
+                responseString = [NSString stringWithFormat:TTText(@"Error (%li): %@"), (long)[urlResponse statusCode], error];
             } else {
                 responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                 success = YES;

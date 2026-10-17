@@ -37,13 +37,13 @@ static NSString *const kGoveeStateEndpoint = @"/router/api/v1/device/state";
 
 - (void)fetchDevices {
     if (!self.apiKey || self.apiKey.length == 0) {
-        [self.delegate apiClientDidFailWithError:@"No API key configured"];
+        [self.delegate apiClientDidFailWithError:TTText(@"No API key configured")];
         return;
     }
 
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", kGoveeBaseURL, kGoveeDevicesEndpoint]];
     if (!url) {
-        [self.delegate apiClientDidFailWithError:@"Invalid URL"];
+        [self.delegate apiClientDidFailWithError:TTText(@"Invalid URL")];
         return;
     }
 
@@ -58,7 +58,7 @@ static NSString *const kGoveeStateEndpoint = @"/router/api/v1/device/state";
         if (error) {
             NSLog(@" ---> Govee API: Network error: %@", error.localizedDescription);
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.delegate apiClientDidFailWithError:[NSString stringWithFormat:@"Network error: %@", error.localizedDescription]];
+                [self.delegate apiClientDidFailWithError:[NSString stringWithFormat:TTText(@"Network error: %@"), error.localizedDescription]];
             });
             return;
         }
@@ -74,14 +74,14 @@ static NSString *const kGoveeStateEndpoint = @"/router/api/v1/device/state";
 
         if (httpResponse.statusCode == 429) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.delegate apiClientDidFailWithError:@"Rate limit exceeded. Try again later."];
+                [self.delegate apiClientDidFailWithError:TTText(@"Rate limit exceeded. Try again later.")];
             });
             return;
         }
 
         if (!data) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.delegate apiClientDidFailWithError:@"No data received"];
+                [self.delegate apiClientDidFailWithError:TTText(@"No data received")];
             });
             return;
         }
@@ -91,14 +91,14 @@ static NSString *const kGoveeStateEndpoint = @"/router/api/v1/device/state";
         if (jsonError || !responseDict) {
             NSLog(@" ---> Govee API: JSON parse error: %@", jsonError);
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.delegate apiClientDidFailWithError:[NSString stringWithFormat:@"Failed to parse response: %@", jsonError.localizedDescription]];
+                [self.delegate apiClientDidFailWithError:[NSString stringWithFormat:TTText(@"Failed to parse response: %@"), jsonError.localizedDescription]];
             });
             return;
         }
 
         NSNumber *code = responseDict[@"code"];
         if (code && code.integerValue != 200) {
-            NSString *msg = responseDict[@"message"] ?: @"Unknown error";
+            NSString *msg = responseDict[@"message"] ?: TTText(@"Unknown error");
             NSLog(@" ---> Govee API: Error response: %@", msg);
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.delegate apiClientDidFailWithError:msg];
@@ -114,7 +114,7 @@ static NSString *const kGoveeStateEndpoint = @"/router/api/v1/device/state";
             NSString *sku = deviceData[@"sku"];
             if (!deviceId || !sku) continue;
 
-            NSString *name = deviceData[@"deviceName"] ?: @"Govee Device";
+            NSString *name = deviceData[@"deviceName"] ?: TTText(@"Govee Device");
             TTModeGoveeDevice *device = [[TTModeGoveeDevice alloc] initWithDeviceId:deviceId sku:sku deviceName:name];
             device.capabilities = deviceData[@"capabilities"] ?: @[];
             [devices addObject:device];
@@ -148,13 +148,13 @@ static NSString *const kGoveeStateEndpoint = @"/router/api/v1/device/state";
 
 - (void)fetchDeviceState:(TTModeGoveeDevice *)device {
     if (!self.apiKey || self.apiKey.length == 0) {
-        [self.delegate apiClientDidFailWithError:@"No API key configured"];
+        [self.delegate apiClientDidFailWithError:TTText(@"No API key configured")];
         return;
     }
 
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", kGoveeBaseURL, kGoveeStateEndpoint]];
     if (!url) {
-        [self.delegate apiClientDidFailWithError:@"Invalid URL"];
+        [self.delegate apiClientDidFailWithError:TTText(@"Invalid URL")];
         return;
     }
 
@@ -174,7 +174,7 @@ static NSString *const kGoveeStateEndpoint = @"/router/api/v1/device/state";
     NSError *jsonError;
     request.HTTPBody = [NSJSONSerialization dataWithJSONObject:stateRequest options:0 error:&jsonError];
     if (jsonError) {
-        [self.delegate apiClientDidFailWithError:@"Failed to encode request"];
+        [self.delegate apiClientDidFailWithError:TTText(@"Failed to encode request")];
         return;
     }
 
@@ -229,13 +229,13 @@ static NSString *const kGoveeStateEndpoint = @"/router/api/v1/device/state";
                            instance:(NSString *)instance
                               value:(NSInteger)value {
     if (!self.apiKey || self.apiKey.length == 0) {
-        [self.delegate apiClientDidFailWithError:@"No API key configured"];
+        [self.delegate apiClientDidFailWithError:TTText(@"No API key configured")];
         return;
     }
 
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", kGoveeBaseURL, kGoveeControlEndpoint]];
     if (!url) {
-        [self.delegate apiClientDidFailWithError:@"Invalid URL"];
+        [self.delegate apiClientDidFailWithError:TTText(@"Invalid URL")];
         return;
     }
 
@@ -260,7 +260,7 @@ static NSString *const kGoveeStateEndpoint = @"/router/api/v1/device/state";
     NSError *jsonError;
     request.HTTPBody = [NSJSONSerialization dataWithJSONObject:controlRequest options:0 error:&jsonError];
     if (jsonError) {
-        [self.delegate apiClientDidFailWithError:@"Failed to encode request"];
+        [self.delegate apiClientDidFailWithError:TTText(@"Failed to encode request")];
         return;
     }
 
@@ -277,7 +277,7 @@ static NSString *const kGoveeStateEndpoint = @"/router/api/v1/device/state";
 
         if (!data) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.delegate apiClientDidControlDevice:NO error:@"No response data"];
+                [self.delegate apiClientDidControlDevice:NO error:TTText(@"No response data")];
             });
             return;
         }
@@ -285,7 +285,7 @@ static NSString *const kGoveeStateEndpoint = @"/router/api/v1/device/state";
         NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         NSNumber *code = responseDict[@"code"];
         BOOL success = code && code.integerValue == 200;
-        NSString *errorMsg = success ? nil : (responseDict[@"message"] ?: @"Unknown error");
+        NSString *errorMsg = success ? nil : (responseDict[@"message"] ?: TTText(@"Unknown error"));
 
         NSLog(@" ---> Govee API: Control response: success=%d, message=%@", success, responseDict[@"message"] ?: @"none");
 

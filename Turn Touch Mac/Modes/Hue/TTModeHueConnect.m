@@ -20,7 +20,7 @@
 @implementation TTModeHueConnect
 
 - (void)setStoppedWithMessage:(NSString*)message {
-    if (!message) message = @"Connect to Hue...";
+    if (!message) message = TTText(@"Connect to Hue...");
     self.progressMessage.stringValue = message;
     [self.progressIndicator stopAnimation:self];
 }
@@ -33,7 +33,7 @@
 #pragma mark - Actions
 
 - (IBAction)searchForBridge:(id)sender {
-    [self setLoadingWithMessage:@"Searching for Hue..."];
+    [self setLoadingWithMessage:TTText(@"Searching for Hue...")];
     [self.modeHue searchForBridgeLocal];
 }
 

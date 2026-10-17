@@ -331,23 +331,23 @@
 {
     switch (self.enumFirmwareType) {
         case SOFTDEVICE:
-            return @"uploading softdevice ...";
+            return TTText(@"uploading softdevice ...");
             break;
         case BOOTLOADER:
-            return @"uploading bootloader ...";
+            return TTText(@"uploading bootloader ...");
             break;
         case APPLICATION:
-            return @"uploading application ...";
+            return TTText(@"uploading application ...");
             break;
         case SOFTDEVICE_AND_BOOTLOADER:
             if (self.isManifestExist) {
-                return @"uploading softdevice+bootloader ...";
+                return TTText(@"uploading softdevice+bootloader ...");
             }
-            return @"uploading softdevice ...";
+            return TTText(@"uploading softdevice ...");
             break;
             
         default:
-            return @"uploading ...";
+            return TTText(@"uploading ...");
             break;
     }
 }
@@ -357,21 +357,21 @@
     NSString *message;
     switch (self.enumFirmwareType) {
         case SOFTDEVICE:
-            message = [NSString stringWithFormat:@"softdevice.dat is missing. It must be placed inside zip file with softdevice"];
+            message = [NSString stringWithFormat:TTText(@"softdevice.dat is missing. It must be placed inside zip file with softdevice")];
             return message;
         case BOOTLOADER:
-            message = [NSString stringWithFormat:@"bootloader.dat is missing. It must be placed inside zip file with bootloader"];
+            message = [NSString stringWithFormat:TTText(@"bootloader.dat is missing. It must be placed inside zip file with bootloader")];
             return message;
         case APPLICATION:
-            message = [NSString stringWithFormat:@"application.dat is missing. It must be placed inside zip file with application"];
+            message = [NSString stringWithFormat:TTText(@"application.dat is missing. It must be placed inside zip file with application")];
             return message;
             
         case SOFTDEVICE_AND_BOOTLOADER:
-            return @"system.dat is missing. It must be placed inside zip file with softdevice and bootloader";
+            return TTText(@"system.dat is missing. It must be placed inside zip file with softdevice and bootloader");
             break;
             
         default:
-            return @"Not valid File type";
+            return TTText(@"Not valid File type");
             break;
     }
     
@@ -382,21 +382,21 @@
     NSString *message;
     switch (self.enumFirmwareType) {
         case SOFTDEVICE:
-            message = [NSString stringWithFormat:@"softdevice.hex not exist inside selected file %@",[self.selectedFileURL lastPathComponent]];
+            message = [NSString stringWithFormat:TTText(@"softdevice.hex not exist inside selected file %@"),[self.selectedFileURL lastPathComponent]];
             return message;
         case BOOTLOADER:
-            message = [NSString stringWithFormat:@"bootloader.hex not exist inside selected file %@",[self.selectedFileURL lastPathComponent]];
+            message = [NSString stringWithFormat:TTText(@"bootloader.hex not exist inside selected file %@"),[self.selectedFileURL lastPathComponent]];
             return message;
         case APPLICATION:
-            message = [NSString stringWithFormat:@"application.hex not exist inside selected file %@",[self.selectedFileURL lastPathComponent]];
+            message = [NSString stringWithFormat:TTText(@"application.hex not exist inside selected file %@"),[self.selectedFileURL lastPathComponent]];
             return message;
             
         case SOFTDEVICE_AND_BOOTLOADER:
-            return @"For selected File Type, zip file is required having inside softdevice.hex and bootloader.hex";
+            return TTText(@"For selected File Type, zip file is required having inside softdevice.hex and bootloader.hex");
             break;
             
         default:
-            return @"Not valid File type";
+            return TTText(@"Not valid File type");
             break;
     }
 }

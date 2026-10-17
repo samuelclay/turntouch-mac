@@ -41,7 +41,7 @@ NSString * const TTHueBridgeDiscoveryErrorDomain = @"TTHueBridgeDiscoveryError";
             } else if (bridges.count == 0) {
                 NSError *noBridgesError = [NSError errorWithDomain:TTHueBridgeDiscoveryErrorDomain
                                                               code:TTHueBridgeDiscoveryErrorNoBridgesFound
-                                                          userInfo:@{NSLocalizedDescriptionKey: @"No Hue Bridges found on the network"}];
+                                                          userInfo:@{NSLocalizedDescriptionKey: TTText(@"No Hue Bridges found on the network")}];
                 [self.delegate bridgeDiscoveryError:noBridgesError];
             } else {
                 [self.delegate bridgeDiscoveryFinished:bridges];
@@ -70,12 +70,12 @@ NSString * const TTHueBridgeDiscoveryErrorDomain = @"TTHueBridgeDiscoveryError";
             if (error.code == NSURLErrorCancelled) {
                 NSError *cancelError = [NSError errorWithDomain:TTHueBridgeDiscoveryErrorDomain
                                                            code:TTHueBridgeDiscoveryErrorCancelled
-                                                       userInfo:@{NSLocalizedDescriptionKey: @"Discovery was cancelled"}];
+                                                       userInfo:@{NSLocalizedDescriptionKey: TTText(@"Discovery was cancelled")}];
                 completion(nil, cancelError);
             } else {
                 NSError *networkError = [NSError errorWithDomain:TTHueBridgeDiscoveryErrorDomain
                                                             code:TTHueBridgeDiscoveryErrorNetwork
-                                                        userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:@"Network error: %@", error.localizedDescription],
+                                                        userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:TTText(@"Network error: %@"), error.localizedDescription],
                                                                    NSUnderlyingErrorKey: error}];
                 completion(nil, networkError);
             }
@@ -88,11 +88,11 @@ NSString * const TTHueBridgeDiscoveryErrorDomain = @"TTHueBridgeDiscoveryError";
             if (httpResponse.statusCode == 429) {
                 httpError = [NSError errorWithDomain:TTHueBridgeDiscoveryErrorDomain
                                                 code:TTHueBridgeDiscoveryErrorRateLimited
-                                            userInfo:@{NSLocalizedDescriptionKey: @"Philips Hue is rate-limiting requests. Please wait a moment and try again."}];
+                                            userInfo:@{NSLocalizedDescriptionKey: TTText(@"Philips Hue is rate-limiting requests. Please wait a moment and try again.")}];
             } else {
                 httpError = [NSError errorWithDomain:TTHueBridgeDiscoveryErrorDomain
                                                 code:TTHueBridgeDiscoveryErrorInvalidResponse
-                                            userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:@"HTTP error %ld", (long)httpResponse.statusCode]}];
+                                            userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:TTText(@"HTTP error %ld"), (long)httpResponse.statusCode]}];
             }
             completion(nil, httpError);
             return;
@@ -108,7 +108,7 @@ NSString * const TTHueBridgeDiscoveryErrorDomain = @"TTHueBridgeDiscoveryError";
             }
             NSError *parseError = [NSError errorWithDomain:TTHueBridgeDiscoveryErrorDomain
                                                       code:TTHueBridgeDiscoveryErrorInvalidResponse
-                                                  userInfo:@{NSLocalizedDescriptionKey: @"Invalid response from discovery service"}];
+                                                  userInfo:@{NSLocalizedDescriptionKey: TTText(@"Invalid response from discovery service")}];
             completion(nil, parseError);
             return;
         }

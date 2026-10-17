@@ -95,12 +95,20 @@
     if (![self showActionHud]) return;
 
     TTMode *mode = NSAppDelegate.modeMap.selectedMode;
-    mode.action = [[TTAction alloc] initWithActionName:[mode actionNameInDirection:direction] direction:direction];
+    BOOL twelve = NSAppDelegate.modeMap.isTwelveButtonMode;
+    if (twelve) {
+        TTAction *action = [NSAppDelegate.modeMap selectedModeBatchActions:direction].firstObject;
+        if (!action) return;
+        mode = action.mode;
+        actionName = action.actionName;
+    } else {
+        mode.action = [[TTAction alloc] initWithActionName:[mode actionNameInDirection:direction] direction:direction];
+    }
     ActionLayout layout = [mode layoutInDirection:direction];
     NSTimeInterval delay = layout == ACTION_LAYOUT_IMAGE_TITLE ? 2.5 : 0.9;
     if (!actionName) actionName = [mode actionNameInDirection:direction];
-    
-    [self.actionHUDController fadeIn:actionName inDirection:direction];
+
+    [self.actionHUDController fadeIn:actionName inDirection:direction withMode:mode buttonMoment:BUTTON_MOMENT_PRESSUP];
     
     if (self.actionOperation) [self.actionOperation cancel];
     

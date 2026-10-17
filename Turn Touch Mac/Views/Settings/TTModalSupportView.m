@@ -39,16 +39,16 @@
 
 - (IBAction)chooseSupportSegmentedControl:(id)sender {
     if (self.supportSegmentedControl.selectedSegment == 0) {
-        [self.supportLabel setStringValue:@"What can we help you with?"];
+        [self.supportLabel setStringValue:TTText(@"What can we help you with?")];
         self.modalSupport = MODAL_SUPPORT_QUESTION;
     } else if (self.supportSegmentedControl.selectedSegment == 1) {
-        [self.supportLabel setStringValue:@"What feature would you like to see?"];
+        [self.supportLabel setStringValue:TTText(@"What feature would you like to see?")];
         self.modalSupport = MODAL_SUPPORT_IDEA;
     } else if (self.supportSegmentedControl.selectedSegment == 2) {
-        [self.supportLabel setStringValue:@"What issue are you running into?"];
+        [self.supportLabel setStringValue:TTText(@"What issue are you running into?")];
         self.modalSupport = MODAL_SUPPORT_PROBLEM;
     } else if (self.supportSegmentedControl.selectedSegment == 3) {
-        [self.supportLabel setStringValue:@"Thank you! What would you like to say?"];
+        [self.supportLabel setStringValue:TTText(@"Thank you! What would you like to say?")];
         self.modalSupport = MODAL_SUPPORT_PRAISE;
     }
 

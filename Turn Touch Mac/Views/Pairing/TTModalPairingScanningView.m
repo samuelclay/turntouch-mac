@@ -185,7 +185,7 @@
         [runner addTimer:_searchingTimer forMode:NSDefaultRunLoopMode];
         [self.spinnerScanning setNeedsDisplay:YES];
 
-        [self.labelScanning setStringValue:@"Scanning for remotes..."];
+        [self.labelScanning setStringValue:TTText(@"Scanning for remotes...")];
 
         // Safely invalidate countdown timer
         NSTimer *oldCountdown = _countdownTimer;
@@ -196,7 +196,7 @@
     } else if (found && !connected) {
         [self.countdownIndicator setHidden:YES];
         [self.spinnerScanning setHidden:NO];
-        [self.labelScanning setStringValue:@"Connecting..."];
+        [self.labelScanning setStringValue:TTText(@"Connecting...")];
 
         // Safely invalidate searching timer
         NSTimer *oldSearchTimer = _searchingTimer;
@@ -208,7 +208,7 @@
         [self.countdownIndicator setHidden:NO];
         [self.countdownIndicator setDoubleValue:0];
         [self.spinnerScanning setHidden:YES];
-        [self.labelScanning setStringValue:@"Press all four buttons to connect"];
+        [self.labelScanning setStringValue:TTText(@"Press all four buttons to connect")];
 
         // Safely invalidate searching timer
         NSTimer *oldSearchTimer = _searchingTimer;

@@ -124,7 +124,7 @@ static NSString * const hrsSensorLocationCharacteristicUUIDString = @"00002A38-0
         [self.bluetoothPeripheral discoverCharacteristics:nil forService:service];
     }
     if (!isDFUServiceFound) {
-        NSString *errorMessage = [NSString stringWithFormat:@"Error on discovering service\n Message: Required DFU service not available on peripheral"];
+        NSString *errorMessage = [NSString stringWithFormat:TTText(@"Error on discovering service\n Message: Required DFU service not available on peripheral")];
         [self.centralManager cancelPeripheralConnection:peripheral];
         [self.bleDelegate onError:errorMessage];
     }
@@ -149,7 +149,7 @@ static NSString * const hrsSensorLocationCharacteristicUUIDString = @"00002A38-0
                   andControlPointCharacteristic:self.dfuControlPointCharacteristic];
         }
         else {
-            NSString *errorMessage = [NSString stringWithFormat:@"Error on discovering characteristics\n Message: Required DFU characteristics are not available on peripheral"];
+            NSString *errorMessage = [NSString stringWithFormat:TTText(@"Error on discovering characteristics\n Message: Required DFU characteristics are not available on peripheral")];
             [self.centralManager cancelPeripheralConnection:peripheral];
             [self.bleDelegate onError:errorMessage];
         }
@@ -169,11 +169,11 @@ static NSString * const hrsSensorLocationCharacteristicUUIDString = @"00002A38-0
 {
     NSLog(@"didUpdateValueForCharacteristic");
     if (error) {
-        NSString *errorMessage = [NSString stringWithFormat:@"Error on BLE Notification\n Message: %@",[error localizedDescription]];
+        NSString *errorMessage = [NSString stringWithFormat:TTText(@"Error on BLE Notification\n Message: %@"),[error localizedDescription]];
         NSLog(@"Error in Notification state: %@",[error localizedDescription]);
         if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:dfuVersionCharacteritsicUUIDString]]) {
             NSLog(@"Error in Reading DfuVersionCharacteritsic. Please enable Service Changed Indication in your firmware, reset Bluetooth from IOS Settings and then try again");
-            errorMessage = [NSString stringWithFormat:@"Error on BLE Notification\n Message: %@\n Please enable Service Changed Indication in your firmware, reset Bluetooth from IOS Settings and then try again",[error localizedDescription]];
+            errorMessage = [NSString stringWithFormat:TTText(@"Error on BLE Notification\n Message: %@\n Please enable Service Changed Indication in your firmware, reset Bluetooth from IOS Settings and then try again"),[error localizedDescription]];
             [self.bleDelegate onReadDfuVersion:0];
         }
         [self.bleDelegate onError:errorMessage];

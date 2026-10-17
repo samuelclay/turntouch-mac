@@ -4,6 +4,7 @@
 
 #ifdef __OBJC__
     #import <Cocoa/Cocoa.h>
+    #import "TTLocalization.h"
 
 #define NSColorFromRGB(rgbValue) [NSColor \
 colorWithCalibratedRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \

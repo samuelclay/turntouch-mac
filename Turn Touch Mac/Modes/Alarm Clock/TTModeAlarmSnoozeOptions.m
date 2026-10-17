@@ -23,7 +23,7 @@
 - (void)updateSnoozeDurationLabel {
     NSInteger snoozeDuration = [[self.action optionValue:kAlarmSnoozeDuration inDirection:self.appDelegate.modeMap.inspectingModeDirection] integerValue];
     
-    [self.durationLabel setStringValue:[NSString stringWithFormat:@"%ld min", (long)snoozeDuration]];
+    [self.durationLabel setStringValue:[NSString stringWithFormat:TTText(@"%ld min"), (long)snoozeDuration]];
 }
 
 - (IBAction)slideDuration:(id)sender {

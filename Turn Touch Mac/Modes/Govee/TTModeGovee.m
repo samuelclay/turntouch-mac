@@ -81,11 +81,11 @@ static TTModeGoveeAPIClient *apiClient;
 #pragma mark - Mode Info
 
 + (NSString *)title {
-    return @"Govee";
+    return TTText(@"Govee");
 }
 
 + (NSString *)description {
-    return @"Smart lights and devices";
+    return TTText(@"Smart lights and devices");
 }
 
 + (NSString *)imageName {
@@ -105,23 +105,23 @@ static TTModeGoveeAPIClient *apiClient;
 #pragma mark - Action Titles
 
 - (NSString *)titleTTModeGoveeDeviceOn {
-    return @"Turn on";
+    return TTText(@"Turn on");
 }
 
 - (NSString *)titleTTModeGoveeDeviceOff {
-    return @"Turn off";
+    return TTText(@"Turn off");
 }
 
 - (NSString *)titleTTModeGoveeDeviceToggle {
-    return @"Toggle device";
+    return TTText(@"Toggle device");
 }
 
 - (NSString *)titleTTModeGoveeBrightnessUp {
-    return @"Brightness up";
+    return TTText(@"Brightness up");
 }
 
 - (NSString *)titleTTModeGoveeBrightnessDown {
-    return @"Brightness down";
+    return TTText(@"Brightness down");
 }
 
 #pragma mark - Action Images
@@ -271,7 +271,7 @@ static TTModeGoveeAPIClient *apiClient;
     [self.delegate changeState:goveeState withMode:self];
 
     if ([self.delegate respondsToSelector:@selector(fetchStatusUpdate:)]) {
-        [self.delegate fetchStatusUpdate:@"Fetching devices from Govee..."];
+        [self.delegate fetchStatusUpdate:TTText(@"Fetching devices from Govee...")];
     }
 
     apiClient.delegate = self;
@@ -401,7 +401,7 @@ static TTModeGoveeAPIClient *apiClient;
     [self.delegate changeState:goveeState withMode:self];
 
     if ([self.delegate respondsToSelector:@selector(fetchStatusUpdate:)]) {
-        [self.delegate fetchStatusUpdate:[NSString stringWithFormat:@"Found %lu devices", (unsigned long)devices.count]];
+        [self.delegate fetchStatusUpdate:[NSString stringWithFormat:TTText(@"Found %lu devices"), (unsigned long)devices.count]];
     }
 }
 
@@ -417,7 +417,7 @@ static TTModeGoveeAPIClient *apiClient;
     [self.delegate changeState:goveeState withMode:self];
 
     if ([self.delegate respondsToSelector:@selector(fetchStatusUpdate:)]) {
-        [self.delegate fetchStatusUpdate:[NSString stringWithFormat:@"Error: %@", error]];
+        [self.delegate fetchStatusUpdate:[NSString stringWithFormat:TTText(@"Error: %@"), TTText(error)]];
     }
 }
 

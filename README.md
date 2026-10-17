@@ -29,8 +29,8 @@ How It Works | Tap a button | Hold a button | Multiple actions | HUD
 
 ## Requirements
 
-- macOS 10.14+
-- Xcode 10.1
+- macOS 10.13+
+- A current Xcode with the macOS SDK (verified with Xcode 27)
 
 ## Installation
 
@@ -88,3 +88,98 @@ Distributed under the MIT license. See ``LICENSE`` for more information.
 [travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
 [codebeat-image]: https://codebeat.co/badges/c19b47ea-2f9d-45df-8458-b2d952fe9dad
 [codebeat-url]: https://codebeat.co/projects/github-com-vsouza-awesomeios-com
+
+
+## Home Assistant (Mac integration)
+
+Choose **Home Assistant** in Turn Touch's app picker. Select a remote button and
+open **Choose Home Assistant action…** to configure it. The native browser finds
+local Home Assistant servers using Bonjour (`_home-assistant._tcp`), or accepts
+an HTTP/HTTPS server URL. Sign in to your own Home Assistant instance, or use a
+long-lived token from its profile security page. Tokens stay in macOS Keychain;
+button preferences contain only the server URL, entity ID, action, name, and data.
+
+Search by friendly name, entity ID, device name, or area. The initial list shows
+entities with callable actions; use **All entities** to include read-only sensors.
+Choose an action, optionally add its JSON data, use **Test action** to run it now,
+and **Save to button** to assign it. Examples include lights and switches on/off/
+toggle, scene activation, scripts, cover controls, media controls, and automation
+runs. Automations check their conditions by default; explicitly passing
+`{"skip_condition": true}` overrides that. Blueprints are templates: choose the
+script or automation created from a blueprint.
+
+No custom Home Assistant integration or cloud relay is required. The Mac must be
+awake, running Turn Touch, and able to reach Home Assistant to forward remote
+presses. Mobile clients can use the same REST/WebSocket protocol and binding
+shape, but iOS and Android UI/background execution are separate follow-up work.
+This first version targets individual entities (including Home Assistant group
+entities). Device/area registries improve search; it does not yet assign entire
+areas as action targets, generate native forms for every action field, or publish
+remote button events into Home Assistant.
+
+### Implementation and authentication
+
+`Turn Touch Mac/Modes/HomeAssistant/` contains the API client, native browser,
+mode, and button-options adapter. REST retrieves states/services and executes
+`POST /api/services/{domain}/{service}`. WebSocket registry lookups add device and
+area names when the signed-in user's permissions allow them; otherwise entity
+search still works. Catalog refresh is explicit, not a continuous state stream.
+Unavailable entities cannot be tested. Read-only sensors have no invented actions.
+
+Sign-in uses a nonpersistent WebKit window with Home Assistant's OAuth flow,
+client ID `https://turntouch.com`, and same-origin callback
+`https://turntouch.com/home-assistant/callback`. The native view intercepts that
+callback before loading it, validates random state, and exchanges the code locally.
+A hosted callback page or Home Assistant plugin is unnecessary for this flow.
+Refresh tokens renew access tokens. For a future system-browser/custom-scheme
+login, publish Home Assistant's `rel="redirect_uri"` link on the client website.
+Disconnect removes credentials from this Mac; existing Home Assistant sessions
+can also be revoked from the Home Assistant user profile.
+
+### Development checks
+
+Run `python3 scripts/test_home_assistant.py` for production-client HTTP tests
+against a loopback Home Assistant fixture plus native AppKit browser tests.
+These cover exact action payloads, target restrictions, authentication failures,
+redirect rejection, OAuth refresh, Keychain persistence/removal, scene behavior,
+search, saved selection, edits surviving refresh, and binding validation.
+They do not establish physical remote/Bluetooth delivery.
+
+Run `python3 scripts/build_mac_local.py --launch` to build, ad-hoc sign, and open
+the full app natively. Add `--universal` to include both Apple Silicon and Intel.
+The local script targets macOS 12 because Xcode 27 no longer builds for older
+versions. The project retains the released app’s macOS 10.13 setting; building
+for that minimum requires a compatible older Xcode and separate runtime testing.
+Home Assistant uses REST, with optional device/area registry enrichment through
+WebSocket on macOS 10.15 or later. The resulting app is
+`/tmp/turntouch-native-build/Build/Products/Debug/Turn Touch Mac.app`.
+
+The released Hue v2 implementation is retained, including its live event stream,
+existing bridge credentials, scene selections, and reconnection behavior. It is
+source-built and supports both Intel and Apple Silicon. The temporary Hue v1
+replacement has been removed. Govee, Kasa, and Nanoleaf integrations and the
+released Bluetooth, layout, and Sparkle updater fixes are retained.
+Run `python3 scripts/test_hue_v2.py` to verify v2 action failures, partial errors,
+authentication, redirect rejection, and exact payloads against a local fixture.
+
+Google shut down Works with Nest in September 2023. The legacy Nest mode now
+uses Home Assistant and explains that existing Nest buttons need to be assigned
+again. Its old Firebase dependency and retired Nest implementation are excluded
+from both application targets. Historical vendor files are retained in the tree,
+but neither the Hue SDK nor Firebase is linked or embedded in the app. Sparkle
+already includes an Apple Silicon slice; the other dependencies build from source.
+
+For a standalone Home Assistant integration browser,
+run `bash scripts/build_home_assistant_preview.sh` and open the printed `.app` path.
+The preview uses the production browser/client; **Save to button** is disabled
+because it is not attached to a remote button. The main Turn Touch app supplies
+the save handler. Previously authorized credentials can be restored for a
+discovered server from Keychain.
+
+## Localization
+
+The app supports English and 20 translations, automatic device-language detection,
+a first-launch chooser, and Language at the top of Settings. See
+[the localization workflow](localization/README.md) for extraction, incremental
+AI translation, catalog validation, and localized store screenshot preparation.
+[Validation results](localization/VALIDATION.md) record the current build and UI checks.

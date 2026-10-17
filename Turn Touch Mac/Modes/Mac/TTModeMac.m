@@ -28,11 +28,11 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
 #pragma mark - Mode
 
 + (NSString *)title {
-    return @"Mac OS";
+    return TTText(@"Mac OS");
 }
 
 + (NSString *)description {
-    return @"System-level controls";
+    return TTText(@"System-level controls");
 }
 
 + (NSString *)imageName {
@@ -62,28 +62,28 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
 #pragma mark - Action Titles
 
 - (NSString *)titleTTModeMacVolumeUp {
-    return @"Volume up";
+    return TTText(@"Volume up");
 }
 - (NSString *)titleTTModeMacVolumeDown {
-    return @"Volume down";
+    return TTText(@"Volume down");
 }
 - (NSString *)titleTTModeMacVolumeMute {
-    return @"Mute";
+    return TTText(@"Mute");
 }
 - (NSString *)titleTTModeMacTurnOffScreen {
-    return @"Turn off screen";
+    return TTText(@"Turn off screen");
 }
 - (NSString *)titleTTModeMacTurnOnScreen {
-    return @"Turn on screen";
+    return TTText(@"Turn on screen");
 }
 - (NSString *)titleTTModeMacToggleScreen {
-    return @"Toggle screen";
+    return TTText(@"Toggle screen");
 }
 - (NSString *)titleTTModeMacBrightnessUp {
-    return @"Brightness up";
+    return TTText(@"Brightness up");
 }
 - (NSString *)titleTTModeMacBrightnessDown {
-    return @"Brightness down";
+    return TTText(@"Brightness down");
 }
 
 #pragma mark - Action Images
@@ -225,7 +225,7 @@ const CGFloat VOLUME_PCT_CHANGE = 0.08f;
         return model_ns;
     }
     
-    return @"Just an Apple Computer"; //incase model name can't be read
+    return TTText(@"Just an Apple Computer"); //incase model name can't be read
 }
 
 + (float)volume {

@@ -45,11 +45,11 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
 }
 
 + (NSString *)title {
-    return @"Alarm";
+    return TTText(@"Alarm");
 }
 
 + (NSString *)description {
-    return @"Wake up on time with music";
+    return TTText(@"Wake up on time with music");
 }
 
 + (NSString *)imageName {
@@ -75,25 +75,25 @@ NSString *const kAlarmSnoozeDuration = @"alarmSnoozeDuration";
 #pragma mark - Action Titles
 
 - (NSString *)titleTTModeAlarmSnooze {
-    return @"Snooze";
+    return TTText(@"Snooze");
 }
 - (NSString *)doubleTitleTTModeAlarmSnooze {
-    return @"Stop alarm";
+    return TTText(@"Stop alarm");
 }
 - (NSString *)titleTTModeAlarmNextSong {
-    return @"Next Song";
+    return TTText(@"Next Song");
 }
 - (NSString *)titleTTModeAlarmSongInfo {
-    return @"Alarm Clock";
+    return TTText(@"Alarm Clock");
 }
 - (NSString *)titleTTModeAlarmStop {
-    return @"Stop alarm";
+    return TTText(@"Stop alarm");
 }
 - (NSString *)titleTTModeAlarmVolumeUp {
-    return @"Volume up";
+    return TTText(@"Volume up");
 }
 - (NSString *)titleTTModeAlarmVolumeDown {
-    return @"Volume down";
+    return TTText(@"Volume down");
 }
 
 #pragma mark - Action Images

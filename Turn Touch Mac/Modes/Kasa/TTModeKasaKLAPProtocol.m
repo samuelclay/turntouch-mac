@@ -333,7 +333,7 @@
             } else {
                 completion(nil, [NSError errorWithDomain:@"TTKasaKLAP"
                                                     code:-1
-                                                userInfo:@{NSLocalizedDescriptionKey: @"Handshake failed"}]);
+                                                userInfo:@{NSLocalizedDescriptionKey: TTText(@"Handshake failed")}]);
             }
         }];
         return;
@@ -344,7 +344,7 @@
     if (!encryptedData) {
         completion(nil, [NSError errorWithDomain:@"TTKasaKLAP"
                                             code:-2
-                                        userInfo:@{NSLocalizedDescriptionKey: @"Encryption failed"}]);
+                                        userInfo:@{NSLocalizedDescriptionKey: TTText(@"Encryption failed")}]);
         return;
     }
 
@@ -382,7 +382,7 @@
                 } else {
                     completion(nil, [NSError errorWithDomain:@"TTKasaKLAP"
                                                         code:-3
-                                                    userInfo:@{NSLocalizedDescriptionKey: @"Re-authentication failed"}]);
+                                                    userInfo:@{NSLocalizedDescriptionKey: TTText(@"Re-authentication failed")}]);
                 }
             }];
             return;
@@ -391,7 +391,7 @@
         if (httpResponse.statusCode != 200 || !data) {
             completion(nil, [NSError errorWithDomain:@"TTKasaKLAP"
                                                 code:httpResponse.statusCode
-                                            userInfo:@{NSLocalizedDescriptionKey: @"Invalid response"}]);
+                                            userInfo:@{NSLocalizedDescriptionKey: TTText(@"Invalid response")}]);
             return;
         }
 
@@ -399,7 +399,7 @@
         if (!decryptedData) {
             completion(nil, [NSError errorWithDomain:@"TTKasaKLAP"
                                                 code:-4
-                                            userInfo:@{NSLocalizedDescriptionKey: @"Decryption failed"}]);
+                                            userInfo:@{NSLocalizedDescriptionKey: TTText(@"Decryption failed")}]);
             return;
         }
 

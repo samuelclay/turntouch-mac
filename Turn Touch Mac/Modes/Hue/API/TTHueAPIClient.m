@@ -130,7 +130,7 @@ static const NSTimeInterval kMinRequestInterval = 0.1; // 100ms between requests
         if (error) {
             NSError *networkError = [NSError errorWithDomain:TTHueAPIClientErrorDomain
                                                         code:TTHueAPIClientErrorNetwork
-                                                    userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:@"Network error: %@", error.localizedDescription],
+                                                    userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:TTText(@"Network error: %@"), error.localizedDescription],
                                                                NSUnderlyingErrorKey: error}];
             if (completion) {
                 completion(nil, networkError);
@@ -154,10 +154,10 @@ static const NSTimeInterval kMinRequestInterval = 0.1; // 100ms between requests
             NSString *errorMessage;
             if (httpResponse.statusCode == 401 || httpResponse.statusCode == 403) {
                 errorCode = TTHueAPIClientErrorNotAuthenticated;
-                errorMessage = @"Authentication failed. Please reconnect to your Hue bridge.";
+                errorMessage = TTText(@"Authentication failed. Please reconnect to your Hue bridge.");
                 NSLog(@"[HueAPI] Authentication failed (%ld) - API key may be invalid", (long)httpResponse.statusCode);
             } else {
-                errorMessage = [NSString stringWithFormat:@"HTTP error %ld: %@", (long)httpResponse.statusCode, message ?: @"Unknown error"];
+                errorMessage = [NSString stringWithFormat:TTText(@"HTTP error %ld: %@"), (long)httpResponse.statusCode, message ?: TTText(@"Unknown error")];
             }
 
             NSError *httpError = [NSError errorWithDomain:TTHueAPIClientErrorDomain
@@ -182,7 +182,7 @@ static const NSTimeInterval kMinRequestInterval = 0.1; // 100ms between requests
         if (jsonError) {
             NSError *decodeError = [NSError errorWithDomain:TTHueAPIClientErrorDomain
                                                        code:TTHueAPIClientErrorDecoding
-                                                   userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:@"Failed to decode response: %@", jsonError.localizedDescription],
+                                                   userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:TTText(@"Failed to decode response: %@"), jsonError.localizedDescription],
                                                               NSUnderlyingErrorKey: jsonError}];
             if (completion) {
                 completion(nil, decodeError);
@@ -190,12 +190,36 @@ static const NSTimeInterval kMinRequestInterval = 0.1; // 100ms between requests
             return;
         }
 
+        if (![json isKindOfClass:NSDictionary.class]) {
+            if (completion) completion(nil, [NSError errorWithDomain:TTHueAPIClientErrorDomain
+                code:TTHueAPIClientErrorInvalidResponse
+                userInfo:@{NSLocalizedDescriptionKey: TTText(@"Hue returned an invalid response.")}]);
+            return;
+        }
+        // Hue v2 can return HTTP 200 while rejecting the requested action.
+        // Surface partial failures too; replaying an action could apply it twice.
+        id errors = json[@"errors"];
+        if ([errors isKindOfClass:NSArray.class] && [errors count]) {
+            id first = [errors firstObject];
+            NSString *message = [first isKindOfClass:NSDictionary.class] ? first[@"description"] : nil;
+            if (![message isKindOfClass:NSString.class] || !message.length) message = TTText(@"The Hue bridge rejected this action.");
+            if (completion) completion(nil, [NSError errorWithDomain:TTHueAPIClientErrorDomain
+                code:TTHueAPIClientErrorAPI userInfo:@{NSLocalizedDescriptionKey: message}]);
+            return;
+        }
         if (completion) {
             completion(json, nil);
         }
     }];
 
     [task resume];
+}
+
+// A bridge action must never redirect its credential or replay at another URL.
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
+ willPerformHTTPRedirection:(NSHTTPURLResponse *)response newRequest:(NSURLRequest *)request
+ completionHandler:(void (^)(NSURLRequest *))completionHandler {
+    completionHandler(nil);
 }
 
 #pragma mark - NSURLSessionDelegate (SSL)
@@ -505,7 +529,7 @@ didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
         } else {
             NSError *invalidError = [NSError errorWithDomain:TTHueAPIClientErrorDomain
                                                         code:TTHueAPIClientErrorInvalidResponse
-                                                    userInfo:@{NSLocalizedDescriptionKey: @"Invalid response from scene creation"}];
+                                                    userInfo:@{NSLocalizedDescriptionKey: TTText(@"Invalid response from scene creation")}];
             completion(nil, invalidError);
         }
     }];

@@ -35,7 +35,7 @@
         self.mouseDownActive = NO;
         
         self.diamondView = [[TTDiamondView alloc] initWithFrame:CGRectZero];
-        [self.diamondView setOverrideSelectedDirection:self.modeDirection];
+        [self.diamondView setOverrideSelectedDirection:direction >= SINGLE_TAP ? (TTModeDirection)(direction - SINGLE_TAP + NORTH) : direction];
         [self.diamondView setIgnoreSelectedMode:YES];
         [self addSubview:self.diamondView];
 
@@ -61,6 +61,9 @@
         case SOUTH:
             self.itemMode = self.appDelegate.modeMap.southMode;
             break;
+        case SINGLE_TAP:
+        case DOUBLE_TAP:
+        case HOLD:
         case NO_DIRECTION:
         case INFO:
             break;
@@ -71,7 +74,9 @@
 }
 
 - (void)setupTitleAttributes {
-    self.modeTitle = [[[self.itemMode class] title] uppercaseString];
+    self.modeTitle = self.modeDirection == SINGLE_TAP ? TTText(@"SINGLE TAP") :
+        self.modeDirection == DOUBLE_TAP ? TTText(@"DOUBLE TAP") :
+        self.modeDirection == HOLD ? [TTText(@"hold") uppercaseString] : [[[self.itemMode class] title] uppercaseString];
     NSShadow *stringShadow = [[NSShadow alloc] init];
     stringShadow.shadowColor = [NSColor whiteColor];
     stringShadow.shadowOffset = NSMakeSize(0, -1);
@@ -111,8 +116,22 @@
             [self.diamondView setIgnoreSelectedMode:YES];
             [self.diamondView setIgnoreActiveMode:YES];
         }
+        if (self.modeDirection >= SINGLE_TAP) {
+            self.diamondView.ignoreSelectedMode = YES;
+            self.diamondView.ignoreActiveMode = YES;
+        }
         [self setNeedsDisplay:YES];
     }
+}
+
+- (BOOL)isAccessibilityElement { return YES; }
+- (NSString *)accessibilityRole { return NSAccessibilityRadioButtonRole; }
+- (NSString *)accessibilityLabel { return self.modeTitle; }
+- (id)accessibilityValue { return @(self.appDelegate.modeMap.selectedModeDirection == self.modeDirection); }
+- (BOOL)accessibilityPerformPress {
+    [self.appDelegate.panelController.backgroundView resetPosition];
+    [self.appDelegate.modeMap switchMode:self.modeDirection modeName:nil];
+    return YES;
 }
 
 #pragma mark - Drawing
@@ -181,7 +200,7 @@
     NSBezierPath *line = [NSBezierPath bezierPath];
     
     // Left border
-    if (self.modeDirection != NORTH) {
+    if (self.modeDirection != NORTH && self.modeDirection != SINGLE_TAP) {
         [line moveToPoint:NSMakePoint(NSMinX(self.bounds), NSMinY(self.bounds))];
         [line lineToPoint:NSMakePoint(NSMinX(self.bounds), NSMaxY(self.bounds))];
         [line setLineWidth:1.0];
@@ -190,7 +209,7 @@
     }
     
     // Right border
-    if (self.modeDirection != SOUTH) {
+    if (self.modeDirection != SOUTH && self.modeDirection != HOLD) {
         [line moveToPoint:NSMakePoint(NSMaxX(self.bounds), NSMinY(self.bounds))];
         [line lineToPoint:NSMakePoint(NSMaxX(self.bounds), NSMaxY(self.bounds))];
         [line setLineWidth:1.0];
@@ -207,7 +226,9 @@
     if ((self.modeDirection == NORTH && activeDirection == EAST) ||
         (self.modeDirection == EAST && activeDirection == WEST) ||
         (self.modeDirection == WEST && activeDirection == SOUTH) ||
-        self.modeDirection == SOUTH) {
+        (self.modeDirection == SINGLE_TAP && activeDirection == DOUBLE_TAP) ||
+        (self.modeDirection == DOUBLE_TAP && activeDirection == HOLD) ||
+        self.modeDirection == HOLD || self.modeDirection == SOUTH) {
         
     } else {
         [line moveToPoint:NSMakePoint(NSMaxX(self.bounds), NSMinY(self.bounds) + 24)];

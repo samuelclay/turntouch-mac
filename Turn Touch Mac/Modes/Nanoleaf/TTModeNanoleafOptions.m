@@ -28,7 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.modeNanoleaf = ((TTModeNanoleaf *)NSAppDelegate.modeMap.selectedMode);
+    self.modeNanoleaf = ((TTModeNanoleaf *)self.mode);
     [self.modeNanoleaf setDelegate:self];
 
     [self changeState:self.modeNanoleaf.nanoleafState withMode:self.modeNanoleaf showMessage:nil];

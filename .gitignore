@@ -16,3 +16,7 @@ profile
 *.moved-aside
 DerivedData
 .idea/
+
+# Python localization tooling
+__pycache__/
+*.pyc

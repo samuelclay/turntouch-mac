@@ -8,6 +8,7 @@
 
 #import "TTButtonTimer.h"
 #import "TTModeMap.h"
+#import "TTGestureDecoder.h"
 
 #define DEBUG_BUTTON_STATE 1
 
@@ -19,6 +20,8 @@
 @property (nonatomic, strong) NSDate *lastButtonPressStart;
 @property (nonatomic, strong) NSDate *holdToastStart;
 @property (nonatomic) BOOL menuHysteresis;
+@property (nonatomic) NSMutableDictionary<NSString *, TTGestureDecoder *> *gestureDecoders;
+@property (nonatomic) NSTimer *gestureTimer;
 
 @end
 
@@ -30,25 +33,90 @@
         self.previousButtonState = [[TTButtonState alloc] init];
         self.pairingActivatedCount = [[NSNumber alloc] init];
         self.menuHysteresis = NO;
+        self.gestureDecoders = [NSMutableDictionary dictionary];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetGestureState) name:@"TTButtonLayoutDidChange" object:nil];
     }
     
     return self;
 }
 
 - (uint8_t)buttonDownStateFromData:(NSData *)data {
-    return ~(*(int *)[[data subdataWithRange:NSMakeRange(0, 1)] bytes]) & 0x0F;
+    return data.length ? ~((const uint8_t *)data.bytes)[0] & 0x0F : 0;
 }
 
 - (uint8_t)doubleStateFromData:(NSData *)data {
-    uint8_t state = ~(*(int *)[[data subdataWithRange:NSMakeRange(0, 1)] bytes]);
+    uint8_t state = data.length ? ~((const uint8_t *)data.bytes)[0] : 0;
     return state >> 4;
 }
 
 - (int)heldStateFromData:(NSData *)data {
-    return *(int *)[[data subdataWithRange:NSMakeRange(1, 1)] bytes];
+    return data.length >= 2 ? ((const uint8_t *)data.bytes)[1] : 0;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self.gestureTimer invalidate];
+}
+
+- (void)resetGestureState {
+    [self.gestureTimer invalidate];
+    self.gestureTimer = nil;
+    [self.gestureDecoders removeAllObjects];
+    [self.previousButtonState clearState];
+    [self cancelModeTimer];
+    self.lastButtonPressedDirection = NO_DIRECTION;
+    self.lastButtonPressStart = nil;
+}
+
+- (void)resetGestureStateForDevice:(NSString *)identifier {
+    [self.gestureDecoders removeObjectForKey:identifier];
+    [self scheduleGestureFlush];
+}
+
+- (void)scheduleGestureFlush {
+    [self.gestureTimer invalidate];
+    self.gestureTimer = nil;
+    NSTimeInterval deadline = 0;
+    for (TTGestureDecoder *decoder in self.gestureDecoders.allValues) {
+        if (decoder.nextDeadline && (!deadline || decoder.nextDeadline < deadline)) deadline = decoder.nextDeadline;
+    }
+    if (!deadline) return;
+    __weak typeof(self) weakSelf = self;
+    self.gestureTimer = [NSTimer timerWithTimeInterval:MAX(0.001, deadline - NSProcessInfo.processInfo.systemUptime) repeats:NO block:^(NSTimer *timer) {
+        TTButtonTimer *strongSelf = weakSelf;
+        if (!strongSelf.appDelegate.modeMap.isTwelveButtonMode) return;
+        for (TTGestureDecoder *decoder in strongSelf.gestureDecoders.allValues) [decoder flushAtTime:NSProcessInfo.processInfo.systemUptime];
+        [strongSelf scheduleGestureFlush];
+    }];
+    [[NSRunLoop mainRunLoop] addTimer:self.gestureTimer forMode:NSRunLoopCommonModes];
+}
+
+- (void)readBluetoothData:(NSData *)data fromDevice:(NSString *)identifier {
+    if (data.length < 2) return;
+    if (!self.appDelegate.modeMap.isTwelveButtonMode) { [self readBluetoothData:data]; return; }
+    TTGestureDecoder *decoder = self.gestureDecoders[identifier];
+    if (!decoder) {
+        decoder = [[TTGestureDecoder alloc] init];
+        __weak typeof(self) weakSelf = self;
+        decoder.onGesture = ^(TTModeDirection direction, TTModeDirection gesture) {
+            TTButtonTimer *strongSelf = weakSelf;
+#ifndef SKIP_BUTTON_ACTIONS
+            if (!strongSelf.skipButtonActions && strongSelf.appDelegate.modeMap.isTwelveButtonMode) {
+                [strongSelf.appDelegate.modeMap runGesture:gesture direction:direction];
+                [strongSelf.appDelegate.hudController toastActiveAction:@"TTGestureAction" inDirection:direction];
+            }
+#endif
+        };
+        self.gestureDecoders[identifier] = decoder;
+    }
+    [decoder readData:data atTime:NSProcessInfo.processInfo.systemUptime];
+    self.appDelegate.modeMap.activeModeDirection = decoder.pressedDirection;
+    [self scheduleGestureFlush];
 }
 
 - (void)readBluetoothData:(NSData *)data {
+    if (data.length < 2) return;
+    if (self.appDelegate.modeMap.isTwelveButtonMode) { [self readBluetoothData:data fromDevice:@"default"]; return; }
     uint8_t state = [self buttonDownStateFromData:data];
     uint8_t doubleState = [self doubleStateFromData:data];
     BOOL heldState = [self heldStateFromData:data] == 0xFF;
@@ -358,6 +426,7 @@
 #pragma mark - Pairing
 
 - (void)resetPairingState {
+    [self resetGestureState];
     self.pairingButtonState = [[TTButtonState alloc] init];
 }
 

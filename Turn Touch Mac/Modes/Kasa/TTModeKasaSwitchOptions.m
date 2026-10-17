@@ -63,12 +63,12 @@
 
     if (TTModeKasa.foundDevices.count == 0) {
         if (TTModeKasa.kasaState == KASA_STATE_CONNECTING) {
-            [self.noticeLabel setStringValue:@"Searching for Kasa devices..."];
+            [self.noticeLabel setStringValue:TTText(@"Searching for Kasa devices...")];
             [self.noticeLabel setTextColor:[NSColor darkGrayColor]];
             self.spinner.hidden = NO;
             self.refreshButton.hidden = YES;
         } else {
-            [self.noticeLabel setStringValue:@"No Kasa devices found"];
+            [self.noticeLabel setStringValue:TTText(@"No Kasa devices found")];
             [self.noticeLabel setTextColor:[NSColor lightGrayColor]];
             self.spinner.hidden = YES;
             self.refreshButton.hidden = NO;
@@ -97,15 +97,15 @@
 
 - (IBAction)enterCredentials:(id)sender {
     NSAlert *alert = [[NSAlert alloc] init];
-    [alert setMessageText:@"TP-Link Kasa Credentials"];
-    [alert setInformativeText:@"Enter your TP-Link/Kasa account credentials for newer devices that use KLAP authentication."];
-    [alert addButtonWithTitle:@"Save"];
-    [alert addButtonWithTitle:@"Cancel"];
+    [alert setMessageText:TTText(@"TP-Link Kasa Credentials")];
+    [alert setInformativeText:TTText(@"Enter your TP-Link/Kasa account credentials for newer devices that use KLAP authentication.")];
+    [alert addButtonWithTitle:TTText(@"Save")];
+    [alert addButtonWithTitle:TTText(@"Cancel")];
 
     NSView *accessoryView = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 300, 58)];
 
     NSTextField *usernameField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 32, 300, 22)];
-    usernameField.placeholderString = @"Email / Username";
+    usernameField.placeholderString = TTText(@"Email / Username");
 
     NSDictionary *creds = [TTModeKasa loadCredentials];
     if (creds) {
@@ -113,7 +113,7 @@
     }
 
     NSSecureTextField *passwordField = [[NSSecureTextField alloc] initWithFrame:NSMakeRect(0, 4, 300, 22)];
-    passwordField.placeholderString = @"Password";
+    passwordField.placeholderString = TTText(@"Password");
 
     [accessoryView addSubview:usernameField];
     [accessoryView addSubview:passwordField];
@@ -167,21 +167,21 @@
     NSMenuItem *menuItem;
 
     if (!self.settingsMenu) {
-        self.settingsMenu = [[NSMenu alloc] initWithTitle:@"Action Menu"];
+        self.settingsMenu = [[NSMenu alloc] initWithTitle:TTText(@"Action Menu")];
         [self.settingsMenu setDelegate:self];
         [self.settingsMenu setAutoenablesItems:NO];
     } else {
         [self.settingsMenu removeAllItems];
     }
 
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Search for New Devices..." action:@selector(refreshDevices:) keyEquivalent:@""];
+    menuItem = [[NSMenuItem alloc] initWithTitle:TTText(@"Search for New Devices...") action:@selector(refreshDevices:) keyEquivalent:@""];
     [menuItem setEnabled:YES];
     [menuItem setTarget:self];
     [self.settingsMenu addItem:menuItem];
 
     [self.settingsMenu addItem:[NSMenuItem separatorItem]];
 
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Remove All and Search..." action:@selector(purgeDevices:) keyEquivalent:@""];
+    menuItem = [[NSMenuItem alloc] initWithTitle:TTText(@"Remove All and Search...") action:@selector(purgeDevices:) keyEquivalent:@""];
     [menuItem setEnabled:YES];
     [menuItem setTarget:self];
     [self.settingsMenu addItem:menuItem];
@@ -189,7 +189,7 @@
     if ([TTModeKasa hasKLAPDevices]) {
         [self.settingsMenu addItem:[NSMenuItem separatorItem]];
 
-        menuItem = [[NSMenuItem alloc] initWithTitle:@"Enter TP-Link Credentials..." action:@selector(enterCredentials:) keyEquivalent:@""];
+        menuItem = [[NSMenuItem alloc] initWithTitle:TTText(@"Enter TP-Link Credentials...") action:@selector(enterCredentials:) keyEquivalent:@""];
         [menuItem setEnabled:YES];
         [menuItem setTarget:self];
         [self.settingsMenu addItem:menuItem];

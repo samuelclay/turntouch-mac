@@ -20,7 +20,7 @@
 }
 
 - (void)setConnectingWithMessage:(NSString*)message {
-    if (!message) message = @"Connecting to Nest...";
+    if (!message) message = TTText(@"Connecting to Nest...");
     
     self.progressMessage.stringValue = message;
     [self.progressIndicator startAnimation:self];

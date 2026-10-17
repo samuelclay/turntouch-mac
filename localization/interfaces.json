@@ -1,0 +1,604 @@
+{
+  "Turn Touch Mac/Base.lproj/MainMenu.xib": {
+    "sha256": "76088bc52106be15fd41dbf8bcb2ec3d73818ec8089e2d15bc4e953883e3c1d7",
+    "strings": {
+      "129.title": "Preferences...",
+      "130.title": "Services",
+      "131.title": "Services",
+      "134.title": "Hide Turn Touch Remote",
+      "136.title": "Quit Turn Touch Remote",
+      "145.title": "Hide Others",
+      "150.title": "Show All",
+      "29.title": "Main Menu",
+      "56.title": "Turn Touch Remote",
+      "57.title": "Turn Touch Remote",
+      "58.title": "About Turn Touch Remote"
+    }
+  },
+  "Turn Touch Mac/Modes/Airfoil/Base.lproj/TTModeAirfoilVolumeJumpOptions.xib": {
+    "sha256": "b1b9a3694f56fb732bb62814cfcbddd168f65c476e34a5b66bf91a3f0b0181c1",
+    "strings": {
+      "9fG-6p-7vj.title": "25%",
+      "NfM-tS-wjF.title": "Jump to volume"
+    }
+  },
+  "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib": {
+    "sha256": "70ba5eba108826b2a99394e35b4c18a971a82256bb267f8c97557fbee43113be",
+    "strings": {
+      "0jR-Ze-BSt.title": "Volume",
+      "4X6-Q1-Mt2.title": "General",
+      "4YW-GP-Xgr.ibShadowedLabels[0]": "ON",
+      "4YW-GP-Xgr.ibShadowedLabels[1]": "OFF",
+      "5ti-VC-9rp.title": "Box",
+      "C4a-9h-8KN.title": "Repeating alarm",
+      "C5r-VN-Fk5.label": "Music and sounds",
+      "CX8-qh-iYR.label": "Alarm times",
+      "DaN-Su-ACl.title": "Repeating alarm",
+      "I7s-PQ-PP0.title": "7:00 AM, 5 days a week",
+      "Ii1-MX-Whb.title": "Preview Alarm",
+      "QfF-5n-otp.title": "One-time alarm",
+      "ROX-fq-TeD.ibShadowedLabels[0]": "ON",
+      "ROX-fq-TeD.ibShadowedLabels[1]": "OFF",
+      "Rzq-bq-C5C.title": "7:00 AM (in 8 hours 21 minutes)",
+      "Xnw-4h-63E.title": "Shuffle",
+      "Ynp-bh-WI4.title": "One-time alarm",
+      "bxJ-z4-oXd.title": "90 min",
+      "fKo-6T-run.title": "Source",
+      "hSM-hS-V9Y.title": "Duration",
+      "j1V-BO-kf2.ibShadowedLabels[0]": "Sun",
+      "j1V-BO-kf2.ibShadowedLabels[1]": "Mon",
+      "j1V-BO-kf2.ibShadowedLabels[2]": "Tue",
+      "j1V-BO-kf2.ibShadowedLabels[3]": "Wed",
+      "j1V-BO-kf2.ibShadowedLabels[4]": "Thu",
+      "j1V-BO-kf2.ibShadowedLabels[5]": "Fri",
+      "j1V-BO-kf2.ibShadowedLabels[6]": "Sat",
+      "l51-Nx-Fj5.title": "Overrides system volume",
+      "oIq-Tz-CYQ.title": "Box",
+      "obk-e5-FEk.title": "5%",
+      "vDM-Gr-dDo.title": "0 tracks",
+      "zoN-wq-qzO.title": "Box"
+    }
+  },
+  "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmSnoozeOptions.xib": {
+    "sha256": "409c24763a80372e330bad4e8ce3cdeb2857f204355679f6c31cc1f0855ada88",
+    "strings": {
+      "aKi-lG-XrY.title": "8 min",
+      "ddW-lu-0sn.title": "Snooze duration"
+    }
+  },
+  "Turn Touch Mac/Modes/Custom/Base.lproj/TTModeCustomFileOptions.xib": {
+    "sha256": "a02bab076b77898ba03ad3df3cf132408f4ad1086bac0b136fb6d0637d052bfe",
+    "strings": {
+      "PnV-cl-gnM.title": "Choose File"
+    }
+  },
+  "Turn Touch Mac/Modes/Custom/Base.lproj/TTModeCustomKeyboardOptions.xib": {
+    "sha256": "e34fa01dd1ac099a2c7836027144091e534cce66fe2a76da634961eab0e12d8c",
+    "strings": {
+      "ekQ-MT-yKk.title": "Keyboard shortcut",
+      "gyj-Or-RFz.title": "Keyboard shortcut",
+      "hWm-ST-6Jx.title": "n",
+      "kBl-wm-9eG.title": "N"
+    }
+  },
+  "Turn Touch Mac/Modes/Custom/Base.lproj/TTModeCustomScriptOptions.xib": {
+    "sha256": "ec76a1a52257aadc8b91209fb7199d98a1a87adbb9e305c35f990912955094b6",
+    "strings": {}
+  },
+  "Turn Touch Mac/Modes/Custom/Base.lproj/TTModeCustomURLOptions.xib": {
+    "sha256": "31070b5e7531c7b9cbeca70f06220e2170babafbcecab90d3eec5607d9fb45ca",
+    "strings": {
+      "70c-St-0I8.placeholderString": "https://",
+      "SEH-u6-vld.title": "Not yet hit",
+      "l3t-tl-td2.title": "Not yet hit",
+      "ncb-dh-uzB.placeholderString": "https://"
+    }
+  },
+  "Turn Touch Mac/Modes/Govee/Base.lproj/TTModeGoveeConnect.xib": {
+    "sha256": "d6897912152802d4f76f25430ebc97edac73511ed0bf701293b6795e6e6acbda",
+    "strings": {
+      "OBZ-nD-v7C.title": "Connect",
+      "aPi-kE-ycl.placeholderString": "Govee API Key",
+      "iNs-cE-ll1.title": "Enter your Govee API key (Govee Home > Settings > API)"
+    }
+  },
+  "Turn Touch Mac/Modes/Govee/Base.lproj/TTModeGoveeConnected.xib": {
+    "sha256": "0ef38a018be7302bc9532bf0e0324ca495b6244e61e6a9f75e44caa7f38e11c3",
+    "strings": {
+      "2PB-le-7oU.title": "Connected to X Govee devices",
+      "3cG-K3-Uex.title": "Refresh devices"
+    }
+  },
+  "Turn Touch Mac/Modes/Govee/Base.lproj/TTModeGoveeConnecting.xib": {
+    "sha256": "23965e75c4140b68934c66a4e20d1d39499e2ba34e72f6aad06176495d61d77f",
+    "strings": {
+      "QRw-wt-k7b.title": "Connecting to Govee..."
+    }
+  },
+  "Turn Touch Mac/Modes/Govee/Base.lproj/TTModeGoveeOptions.xib": {
+    "sha256": "fb313c6930c6c688686b2a31748f1586e7225fdbb09d2282822f554340583345",
+    "strings": {}
+  },
+  "Turn Touch Mac/Modes/Govee/Base.lproj/TTModeGoveeSwitchOptions.xib": {
+    "sha256": "2530ff0934a6d0bfdbb16ad4b1269a2d5e648fd7767261c2b2341f33229ca94d",
+    "strings": {
+      "11I-Sa-5ow.title": "Device"
+    }
+  },
+  "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueBridge.xib": {
+    "sha256": "5d5ad447018bcbdae14ee458da1d1237a899a95e8fc03343426958adf3675063",
+    "strings": {
+      "6nh-T6-1JP.title": "Connect",
+      "8ny-C0-l3w.title": "Refresh",
+      "GK9-hi-sSQ.headerCell.title": "BRIDGE ID",
+      "K5I-UM-5vE.title": "Table View Cell",
+      "SBV-su-ExU.title": "Text Cell",
+      "ZD9-Cc-x17.headerCell.title": "IP",
+      "jYw-yO-utI.title": "Table View Cell",
+      "ksY-FR-GhK.title": "Please select a Hue Bridge",
+      "mpf-YE-l3x.title": "Text Cell"
+    }
+  },
+  "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueConnect.xib": {
+    "sha256": "99c9d358fc51a376360ec2c35658cb29f42c153d512530f516e98d2ce174128a",
+    "strings": {
+      "alA-C8-7Zp.title": "Connect to Hue",
+      "s9F-ZN-mqc.title": "Find your Philips Hue"
+    }
+  },
+  "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueConnected.xib": {
+    "sha256": "4259e0ca5057afce670a7faec728a05ea618cb820e5a9db7a6660da26a246c2e",
+    "strings": {
+      "Sky-Mu-For.title": "Connected to Hue",
+      "rkv-GV-IX2.title": "Reconnect"
+    }
+  },
+  "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueConnecting.xib": {
+    "sha256": "84d8430915a4d3311241728b0bd36ff62adf0abae65d35eeb46eb00ed79b7b35",
+    "strings": {
+      "8qH-VG-7Dl.title": "Searching for a Hue bridge..."
+    }
+  },
+  "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueOptions.xib": {
+    "sha256": "af1d15cb04ae828cc3019b6fffd4750cb430be124f63ba2c45723a466c42dc80",
+    "strings": {}
+  },
+  "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHuePushlink.xib": {
+    "sha256": "d0cfa5db57c77b79f60c9192168af0b401bab97b916a20ca20df06a369f8ddbe",
+    "strings": {}
+  },
+  "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueRandomOptions.xib": {
+    "sha256": "5479384fe174bd15d3a910e81e75855dec9f3b6896fed6deaa98b20670351f17",
+    "strings": {
+      "1zh-2s-EHg.title": "Room",
+      "40w-nu-1kA.ibShadowedLabels[0]": "Pastels",
+      "40w-nu-1kA.ibShadowedLabels[1]": "Mix",
+      "40w-nu-1kA.ibShadowedLabels[2]": "Strong colors",
+      "5jn-5O-l2V.title": "Item 2",
+      "7XZ-54-QHZ.title": "Item 1",
+      "98X-tQ-Z3e.ibShadowedLabels[0]": "Pastels",
+      "98X-tQ-Z3e.ibShadowedLabels[1]": "Mix",
+      "98X-tQ-Z3e.ibShadowedLabels[2]": "Strong colors",
+      "9YE-RM-3sn.title": "Brightness",
+      "Aeq-U5-5qx.ibShadowedLabels[0]": "All dim",
+      "Aeq-U5-5qx.ibShadowedLabels[1]": "Mix",
+      "Aeq-U5-5qx.ibShadowedLabels[2]": "All bright",
+      "CcS-hq-CN1.ibShadowedLabels[0]": "All different",
+      "CcS-hq-CN1.ibShadowedLabels[1]": "Mix",
+      "CcS-hq-CN1.ibShadowedLabels[2]": "All same",
+      "CnZ-6B-OPP.title": "Colors",
+      "Ofa-pl-ofo.title": "Brightness",
+      "VdM-tN-qLN.ibShadowedLabels[0]": "All different",
+      "VdM-tN-qLN.ibShadowedLabels[1]": "Mix",
+      "VdM-tN-qLN.ibShadowedLabels[2]": "All same",
+      "XSQ-Rl-N41.title": "Colors",
+      "cCd-Xm-8wj.title": "Saturation",
+      "h4U-8v-OCB.title": "Item 3",
+      "vJb-4K-O43.title": "Saturation",
+      "yJC-uA-kHZ.ibShadowedLabels[0]": "All dim",
+      "yJC-uA-kHZ.ibShadowedLabels[1]": "Mix",
+      "yJC-uA-kHZ.ibShadowedLabels[2]": "All bright"
+    }
+  },
+  "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueSceneOptions.xib": {
+    "sha256": "e6b3ac42f51e051c346866dc63fb2d9b299a8408ce7f0008114ef63f55886539",
+    "strings": {
+      "C2F-Ha-BXK.title": "Item 3",
+      "Chm-hz-OK7.title": "Item 1",
+      "HKE-0J-wIi.title": "Item 1",
+      "L2c-Gn-dhm.title": "Single tap",
+      "Rud-MD-7PI.title": "Item 2",
+      "W9K-YR-28g.title": "Item 2",
+      "XCd-ip-afa.title": "Item 2",
+      "iKN-UX-hSa.title": "Item 1",
+      "kaP-ZT-Cwh.title": "Item 3",
+      "l8c-H8-Xlq.title": "Double tap",
+      "x18-V7-aXG.title": "Room",
+      "xKw-Ae-Wtu.title": "Item 3"
+    }
+  },
+  "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueSleepOptions.xib": {
+    "sha256": "4bcde14a6c054a2b9c033d9a4eff43c2e22913dba59173003da603a8c0c70ea7",
+    "strings": {
+      "JA0-IE-ke3.title": "Immediate",
+      "eYU-hZ-7oD.title": "Item 1",
+      "h6Z-VA-BdZ.title": "Room",
+      "iT1-3G-eBX.title": "Item 3",
+      "mSS-wy-Hf7.title": "Single tap",
+      "mcm-oe-dzQ.title": "Immediate",
+      "vCo-0r-Uqw.title": "Double tap",
+      "vY2-vW-jbU.title": "Item 2"
+    }
+  },
+  "Turn Touch Mac/Modes/Ifttt/Base.lproj/TTModeIftttAuthViewController.xib": {
+    "sha256": "358717d670fb38f10a3ae4c529aab811bf328ae1b43fd6af5f7d70179776d246",
+    "strings": {}
+  },
+  "Turn Touch Mac/Modes/Ifttt/Base.lproj/TTModeIftttConnect.xib": {
+    "sha256": "bb04e68c8d00dfc599a191dfe80ef63cf05dc9d2c4ca63433e2799b3da4eb7c0",
+    "strings": {
+      "AD3-tr-X7N.title": "Connect to IFTTT"
+    }
+  },
+  "Turn Touch Mac/Modes/Ifttt/Base.lproj/TTModeIftttConnected.xib": {
+    "sha256": "3ea6a9c6467995c2048ab1d8253f2b4d47d65a0714d7ec087378555abe12a44b",
+    "strings": {
+      "cDQ-VD-E4K.title": "Edit IFTTT recipies"
+    }
+  },
+  "Turn Touch Mac/Modes/Ifttt/Base.lproj/TTModeIftttConnecting.xib": {
+    "sha256": "aa98b5ff5dc2aff8c8896baa6d8aee791055d74e071a46bbf81f3bd94f08f4f8",
+    "strings": {
+      "7qH-9B-baz.title": "Connecting to IFTTT..."
+    }
+  },
+  "Turn Touch Mac/Modes/Ifttt/Base.lproj/TTModeIftttOptions.xib": {
+    "sha256": "3d0a61c93296c4c4e8c22d63f45cf329b45c39ef9032d5970da6a9cd90ddb288",
+    "strings": {}
+  },
+  "Turn Touch Mac/Modes/Ifttt/Base.lproj/TTModeIftttTriggerActionOptions.xib": {
+    "sha256": "085cc31cf1209872c20caba0095217d4a39bb95b73c58bfce7cb69ef06909926",
+    "strings": {
+      "iCG-aY-OdQ.title": "Choose IFTTT Action"
+    }
+  },
+  "Turn Touch Mac/Modes/Kasa/Base.lproj/TTModeKasaConnect.xib": {
+    "sha256": "f57f8071f86ebde780e1b994f26457271e22caa32329a56d018872507743cf83",
+    "strings": {
+      "OBZ-nD-v7C.title": "Search for Kasa devices..."
+    }
+  },
+  "Turn Touch Mac/Modes/Kasa/Base.lproj/TTModeKasaConnected.xib": {
+    "sha256": "8e7f105b627755d51107a657f3287c233f61884f2f3db1ba2b9459ee300334c4",
+    "strings": {
+      "2PB-le-7oU.title": "Connected to X Kasa devices",
+      "3cG-K3-Uex.title": "Scan for devices"
+    }
+  },
+  "Turn Touch Mac/Modes/Kasa/Base.lproj/TTModeKasaConnecting.xib": {
+    "sha256": "86ad6c01be358ba0f9d9b09b958651a92f61090625f4d6a5591686e1c6b1022f",
+    "strings": {
+      "QRw-wt-k7b.title": "Searching for Kasa..."
+    }
+  },
+  "Turn Touch Mac/Modes/Kasa/Base.lproj/TTModeKasaOptions.xib": {
+    "sha256": "f61dc5ab6f5c946fb155867292a973d5fac1f8d219adaef832ddcf6cafc6ec89",
+    "strings": {}
+  },
+  "Turn Touch Mac/Modes/Kasa/Base.lproj/TTModeKasaSwitchOptions.xib": {
+    "sha256": "73faeb4152b817174a749db2cc5179ffb2aad99493b82aed6f2881a0348f1386",
+    "strings": {
+      "11I-Sa-5ow.title": "Device"
+    }
+  },
+  "Turn Touch Mac/Modes/Music/Base.lproj/TTModeMusicPlaylistOptions.xib": {
+    "sha256": "613537783885aa8d4a160c59e1f6719bf08e8a50c1ad8ced1598841099f0acc5",
+    "strings": {
+      "7jy-f5-biK.title": "Shuffle",
+      "ZSC-Q1-3hf.title": "Shuffle",
+      "h4I-h4-tKy.title": "Source",
+      "kwI-VL-IaG.title": "0 tracks",
+      "uMK-Uh-2g1.title": "0 tracks",
+      "uOr-22-r5K.title": "Source"
+    }
+  },
+  "Turn Touch Mac/Modes/Music/Base.lproj/TTModeMusicVolumeJumpOptions.xib": {
+    "sha256": "d11aa4c24fd36a6f258ed82ed138477ce69b49a30120beae56c3ff60d69d02a5",
+    "strings": {
+      "9fG-6p-7vj.title": "25%",
+      "NfM-tS-wjF.title": "Jump to volume"
+    }
+  },
+  "Turn Touch Mac/Modes/Nanoleaf/Base.lproj/TTModeNanoleafConnect.xib": {
+    "sha256": "6f18a5dd23c429f8afdc705000bccc3fd77bb498437d84327d9ed8597876c11f",
+    "strings": {
+      "alA-C8-7Zp.title": "Connect to Nanoleaf",
+      "s9F-ZN-mqc.title": "Find your Nanoleaf",
+      "sub-ZN-mqc.title": "Make sure your Nanoleaf panels are powered on and connected to the same Wi-Fi network."
+    }
+  },
+  "Turn Touch Mac/Modes/Nanoleaf/Base.lproj/TTModeNanoleafConnected.xib": {
+    "sha256": "55481bda491015edcb0cf218c2916245ab9384a0d42c6d19c40894db2cc5d4a0",
+    "strings": {
+      "con-lbl-789.title": "Connected to Nanoleaf",
+      "eff-lbl-789.title": "Nanoleaf - 0 effects",
+      "rkv-GV-IX2.title": "Reconnect"
+    }
+  },
+  "Turn Touch Mac/Modes/Nanoleaf/Base.lproj/TTModeNanoleafConnecting.xib": {
+    "sha256": "6c5f4864ad232eefb092c99e31e13f204db552e0832f7836872980003ffeefe6",
+    "strings": {
+      "8qH-VG-7Dl.title": "Searching for a Nanoleaf..."
+    }
+  },
+  "Turn Touch Mac/Modes/Nanoleaf/Base.lproj/TTModeNanoleafOptions.xib": {
+    "sha256": "53b1bb92c509846a95478adad6732109852e216f137c7ec7958fb0a3644a400a",
+    "strings": {}
+  },
+  "Turn Touch Mac/Modes/Nanoleaf/Base.lproj/TTModeNanoleafPushlink.xib": {
+    "sha256": "27c78182d82c02f96c5eb44eb61be4c2966abc6f7a3ea9d7193c81cfeb5fbb5a",
+    "strings": {
+      "dnl-ab-789.title": "Nanoleaf",
+      "ins-ab-789.title": "Hold the power button for 5-7 seconds until the LEDs start flashing"
+    }
+  },
+  "Turn Touch Mac/Modes/Nanoleaf/Base.lproj/TTModeNanoleafSceneCustomOptions.xib": {
+    "sha256": "f81c607d4e8dbe3a73bd3fd7bc0175db62be38f3dfab4ae15184875b2c8c1af7",
+    "strings": {
+      "drb-ab-c.title": "Refresh",
+      "lbl-dt-c.title": "Double tap",
+      "lbl-st-c.title": "Single tap",
+      "rfb-ab-c.title": "Refresh"
+    }
+  },
+  "Turn Touch Mac/Modes/Nanoleaf/Base.lproj/TTModeNanoleafSleepOptions.xib": {
+    "sha256": "782a7a7fbeddce7e225086120db7304f282ac7ed691a4930ce41906d8dad2d55",
+    "strings": {
+      "JA0-IE-ke3.title": "Immediate",
+      "mSS-wy-Hf7.title": "Single tap",
+      "mcm-oe-dzQ.title": "Immediate",
+      "vCo-0r-Uqw.title": "Double tap"
+    }
+  },
+  "Turn Touch Mac/Modes/Nest/Base.lproj/TTModeNestAuthViewController.xib": {
+    "sha256": "762a634605adb36c419c4fb2be5b73be314445cfd9b5f4478be52455c5e7df11",
+    "strings": {}
+  },
+  "Turn Touch Mac/Modes/Nest/Base.lproj/TTModeNestConnect.xib": {
+    "sha256": "f78a50d1133bcc3f6582323656769cdbc50e6562e131cbe0200050f2b76722e8",
+    "strings": {
+      "OBZ-nD-v7C.title": "Connect to Nest"
+    }
+  },
+  "Turn Touch Mac/Modes/Nest/Base.lproj/TTModeNestConnected.xib": {
+    "sha256": "a11fc24aeb61636856862bf2fae71807bbcdc9cac1341a7ba9f0eb1decc19de4",
+    "strings": {
+      "5t8-wG-Uj1.title": "Item 3",
+      "6XF-TQ-JhJ.title": "Ambient",
+      "Iaz-0d-ekK.title": "Item 2",
+      "bC6-j6-av6.title": "Target",
+      "ezJ-Ir-0bB.title": "Temperature set to",
+      "rVK-C5-Qlu.title": "Item 1",
+      "znj-EJ-Qb2.title": "Room temperature"
+    }
+  },
+  "Turn Touch Mac/Modes/Nest/Base.lproj/TTModeNestConnecting.xib": {
+    "sha256": "a98f84906d9af28d12fb16b6e471a0a3a85e3d9451eab69ef591a182066b5f8b",
+    "strings": {
+      "QRw-wt-k7b.title": "Searching for Nest..."
+    }
+  },
+  "Turn Touch Mac/Modes/Nest/Base.lproj/TTModeNestOptions.xib": {
+    "sha256": "51f261d62dad130d61696fe8441dacee8e214e6366895932da19447c5c5879ab",
+    "strings": {}
+  },
+  "Turn Touch Mac/Modes/Nest/Base.lproj/TTModeNestSetTempOptions.xib": {
+    "sha256": "50b157ed1d7c1fccabf79912a6a55f41fa39a672762e8789a5ce423c96ca71da",
+    "strings": {
+      "2jE-dR-ptm.title": "Item 3",
+      "Min-6e-JO2.ibShadowedLabels[0]": "Heat",
+      "Min-6e-JO2.ibShadowedLabels[1]": "Cool",
+      "YgJ-S5-whC.title": "Item 2",
+      "hfX-0y-zfM.title": "Temperature",
+      "n8l-KY-u0J.title": "72°F",
+      "wij-QX-XMe.title": "Item 1"
+    }
+  },
+  "Turn Touch Mac/Modes/News/Base.lproj/TTModeNewsWindowController.xib": {
+    "sha256": "dceed9b4b3f00469c1b334767ad2ca8c65522c8e3b465661d8042331731f46e9",
+    "strings": {
+      "2OS-lR-ong.title": "Text Cell",
+      "Wqq-QL-w7I.title": "Table View Cell",
+      "ejU-V7-W8g.title": "Text Cell",
+      "hjK-i6-eCA.title": "Text Cell",
+      "l3v-Tl-yEw.title": "Turn Touch Reader Window",
+      "lkF-5J-YtL.title": "Table View Cell",
+      "qMd-K4-LXw.title": "Table View Cell"
+    }
+  },
+  "Turn Touch Mac/Modes/Presentation/Base.lproj/TTModePresentationOptions.xib": {
+    "sha256": "4bb1ae01ea84c4f3641fe64ab1e96b2c6a36720a1c7c2b18aa22bbcecd062a6a",
+    "strings": {
+      "OLS-KY-Z7r.title": "Microsoft Powerpoint",
+      "hCY-ug-dWW.title": "Apple Keynote",
+      "rWP-Hf-jlf.title": "Presentation app"
+    }
+  },
+  "Turn Touch Mac/Modes/Presentation/Base.lproj/TTModePresentationPlayOptions.xib": {
+    "sha256": "4fabefabd966ea6d21c60cbe680058ba86d393b760e120a4c69faa8f3f3ab768",
+    "strings": {
+      "A6d-PH-sKP.title": "Start presentation at first slide"
+    }
+  },
+  "Turn Touch Mac/Modes/Sonos/Base.lproj/TTModeSonosConnect.xib": {
+    "sha256": "1fecb2a2ae2223170920df01103e88dc8728c67de2f64e80e6d35a77b0812bd6",
+    "strings": {
+      "iqB-kf-Mgg.title": "Search for Sonos devices..."
+    }
+  },
+  "Turn Touch Mac/Modes/Sonos/Base.lproj/TTModeSonosConnected.xib": {
+    "sha256": "57e9ef74c1ff0c6bf8df0582675516604f6b9e0fbf77466f1cb47ec9601a681c",
+    "strings": {
+      "19p-CR-O6W.title": "Item 3",
+      "aXk-An-s5J.title": "Item 1",
+      "npH-RM-FDv.title": "Item 2"
+    }
+  },
+  "Turn Touch Mac/Modes/Sonos/Base.lproj/TTModeSonosConnecting.xib": {
+    "sha256": "466ba1bd010dc698cc307fbaf677bdbcb2e14648ec03ccd5eaacd2e194499d23",
+    "strings": {
+      "Jh4-Z8-if8.title": "Searching for Sonos..."
+    }
+  },
+  "Turn Touch Mac/Modes/Sonos/Base.lproj/TTModeSonosOptions.xib": {
+    "sha256": "f35d9fb200f3bb670634e5ded86a807765ef7daba56c4506bd716eb0a373d487",
+    "strings": {}
+  },
+  "Turn Touch Mac/Modes/Spotify/Base.lproj/TTModeSpotifyVolumeJumpOptions.xib": {
+    "sha256": "d1ae8d1d606ed4c46e1c791b4e0e67954560bdaef05f6879ce29b015292099f6",
+    "strings": {
+      "9fG-6p-7vj.title": "25%",
+      "NfM-tS-wjF.title": "Jump to volume"
+    }
+  },
+  "Turn Touch Mac/Modes/Web/Base.lproj/TTModeWebWindowController.xib": {
+    "sha256": "a0c7853948c0a720505d360069b8f9a9dffdab7fca3f3a783d6fd6f70aa4529a",
+    "strings": {
+      "2z7-vh-9Sj.title": "Text Cell",
+      "F0z-JX-Cv5.title": "Turn Touch Reader Window",
+      "IB6-ub-rVO.title": "Text Cell",
+      "OUQ-kE-khI.title": "Table View Cell",
+      "WRS-fi-Gqb.title": "Table View Cell",
+      "Wmo-Jh-6Vx.title": "Text Cell",
+      "cPd-gt-fRm.title": "Table View Cell"
+    }
+  },
+  "Turn Touch Mac/Modes/Wemo/Base.lproj/TTModeWemoConnect.xib": {
+    "sha256": "ff6a483dc6d8a4a895e5173c954911996501d4c5e4e1ec604361e4339652f70e",
+    "strings": {
+      "OBZ-nD-v7C.title": "Search for Wemo devices..."
+    }
+  },
+  "Turn Touch Mac/Modes/Wemo/Base.lproj/TTModeWemoConnected.xib": {
+    "sha256": "d4383aa1adb5c09460ad067fcb43f2bd49c6efd32f2b3bd761b7f148d386ffcd",
+    "strings": {
+      "2PB-le-7oU.title": "Conncted to X Wemo devices",
+      "3cG-K3-Uex.title": "Scan for devices"
+    }
+  },
+  "Turn Touch Mac/Modes/Wemo/Base.lproj/TTModeWemoConnecting.xib": {
+    "sha256": "f27685a89dfedabf85e2e4fc865d15a27b1160f0a0e6bbfa4c1160c09c0116e5",
+    "strings": {
+      "QRw-wt-k7b.title": "Searching for Wemo..."
+    }
+  },
+  "Turn Touch Mac/Modes/Wemo/Base.lproj/TTModeWemoOptions.xib": {
+    "sha256": "6d04269856d290aec1e0a182f9f0d7bd189e872401986b3c72e9d1c25104c9f5",
+    "strings": {}
+  },
+  "Turn Touch Mac/Modes/Wemo/Base.lproj/TTModeWemoSwitchOptions.xib": {
+    "sha256": "816456372ae4570fc1e9da01e7abd3f86f727f0b6b5f738957a029c0da9d9113",
+    "strings": {
+      "11I-Sa-5ow.title": "Device"
+    }
+  },
+  "Turn Touch Mac/TV/Base.lproj/TTModeTVVolumeJumpOptions.xib": {
+    "sha256": "f525dd05f3e54b144e3cabf45cdda3ff5538d29484abc88f9fd4beb183a8c4d3",
+    "strings": {
+      "9fG-6p-7vj.title": "25%",
+      "NfM-tS-wjF.title": "Jump to volume"
+    }
+  },
+  "Turn Touch Mac/Views/Action HUD/Base.lproj/TTActionHUDView.xib": {
+    "sha256": "3598a206c1f0bd94899d5796a144885838396127e5ce1232a5585847943e6c75",
+    "strings": {
+      "g1J-6N-lTV.title": "Turn Touch Remote HUD"
+    }
+  },
+  "Turn Touch Mac/Views/FTUX/Base.lproj/TTModalFTUXView.xib": {
+    "sha256": "94aca833ad5b3b38e9f3c1d19fc97d11a45b22dd7bdfc6dec6b1badbfa4a7bbe",
+    "strings": {
+      "Hlg-kD-cdk.title": "Box",
+      "LXo-r6-7h1.title": "Title explainer",
+      "tyP-8r-fHX.title": "Subtitle explainer gives a bit more context, esp. for those really long subtitles that stretch two lines."
+    }
+  },
+  "Turn Touch Mac/Views/Mode HUD/Base.lproj/TTModeHUDView.xib": {
+    "sha256": "7492d5bd868349b31b02c0476b1ba0ed38914d7982ff5bcdda64229fcd7569d7",
+    "strings": {
+      "08O-PU-ybg.title": "Text Cell",
+      "GsV-Q6-DZ5.title": "Text Cell",
+      "MJ8-kL-0Ag.title": "Text Cell",
+      "R0O-dA-Ban.title": "Text Cell",
+      "Uk4-Zs-GEg.title": "Table View Cell",
+      "aIC-Ar-MGC.title": "Table View Cell",
+      "g1J-6N-lTV.title": "Turn Touch Remote HUD",
+      "hwx-ru-fg4.title": "Table View Cell"
+    }
+  },
+  "Turn Touch Mac/Views/Pairing/Base.lproj/TTModalPairingScanningView.xib": {
+    "sha256": "926e3d4b7183470097e77df7f02a0327364acd4ec49c744ca577cb9a4d8ecc8c",
+    "strings": {
+      "JE5-1s-GTR.title": "Searching for remotes...",
+      "Pfw-Cs-VFh.title": "Box",
+      "WPJ-AI-DeI.title": "Pairing your Turn Touch"
+    }
+  },
+  "Turn Touch Mac/Views/Panel/Base.lproj/TTPanel.xib": {
+    "sha256": "3e221937fef45e2191dc5090255fc80b61dbfb1a27818676755a56f06713959f",
+    "strings": {}
+  },
+  "Turn Touch Mac/Views/Settings/Base.lproj/TTModalAbout.xib": {
+    "sha256": "377fdc172dfd0ddf776ac6c91c09a60b7eafb941ed8412b65e356d1c179a9db7",
+    "strings": {
+      "XvV-al-DqQ.title": "Check for updates...",
+      "ooR-EN-Ndh.title": "Box",
+      "poD-Et-zEB.title": "Version 1.0.0"
+    }
+  },
+  "Turn Touch Mac/Views/Settings/Base.lproj/TTModalDevices.xib": {
+    "sha256": "e4eb338e7eb4f43fc28b3da2d7ba47b989d9b5216c1ac74b5195577df6975d3d",
+    "strings": {
+      "Jyw-Iw-oAx.title": "Text Cell",
+      "aZx-rx-HLv.headerCell.title": "Last action",
+      "csD-j7-iBZ.title": "Connected Devices",
+      "dzy-dD-9x1.headerCell.title": "Firmware",
+      "fz2-Hl-4qp.headerCell.title": "🔋",
+      "iJv-TS-mdz.headerCell.title": "Nickname",
+      "jtL-81-oFf.title": "Text Cell",
+      "mGr-Y6-boC.title": "Text Cell",
+      "uQq-m4-Q1I.title": "Text Cell",
+      "ysx-6e-OPi.title": "Box"
+    }
+  },
+  "Turn Touch Mac/Views/Settings/Base.lproj/TTModalSettings.xib": {
+    "sha256": "628643e38edf0d812cf9765dc127df83e1b3d401a2a3c4eebb3dc453be9665ba",
+    "strings": {
+      "1ni-sc-Yyy.title": "Show app HUD on every button hold",
+      "JKX-HI-g35.title": "Enable the HUD",
+      "O9r-7T-9Hh.title": "Perform actions in the app",
+      "PdJ-CN-dj4.title": "Share usage stats",
+      "QiT-i2-VCp.title": "By enabling this switch you allow for usage stats to be gathered. These are only used to improve the service. Your data will never be sold.",
+      "VJS-qK-OPm.title": "Settings",
+      "aCM-L7-PFI.title": "The action HUD shows you which button you pressed along with the direction and relevant information such as song title, album art, temperature, scene name, etc.",
+      "aZt-7f-Wgw.title": "Show action HUD on every button press",
+      "cEO-Bg-OeP.title": "Pressing multiple buttons at once shows the HUD, an interactive view allowing you to run actions and switch to modes not attached to buttons.",
+      "eJq-vw-m7t.title": "Show action HUD when typing",
+      "hux-Av-8Rx.title": "The app HUD shows you the four buttons for the app you're switching into by holding a button.",
+      "kXe-pv-sBb.title": "Box",
+      "wmT-lZ-HTE.title": "If this is off, clicking buttons in the app will select them for editing. If on, clicking buttons will perform their actions, just like on a Turn Touch remote, and a Change button will enable editing."
+    }
+  },
+  "Turn Touch Mac/Views/Settings/Base.lproj/TTModalSupportView.xib": {
+    "sha256": "1d41296c2c914bb6e153df73a7eafe8b9565be24b695dbd480bb5e6e22c99170",
+    "strings": {
+      "EaR-sr-DIv.title": "What's up?",
+      "WIK-Ji-3Ll.title": "Box",
+      "bNn-TO-8JW.ibShadowedLabels[0]": "Question",
+      "bNn-TO-8JW.ibShadowedLabels[1]": "Idea",
+      "bNn-TO-8JW.ibShadowedLabels[2]": "Problem",
+      "bNn-TO-8JW.ibShadowedLabels[3]": "Praise",
+      "v0j-Is-pxN.title": "Your email"
+    }
+  }
+}

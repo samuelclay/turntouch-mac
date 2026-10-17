@@ -23,7 +23,7 @@
 
 - (NSString *)friendlyName {
     if (_bridgeId.length >= 4) {
-        return [NSString stringWithFormat:@"Hue Bridge %@", [_bridgeId substringToIndex:4]];
+        return [NSString stringWithFormat:TTText(@"Hue Bridge %@"), [_bridgeId substringToIndex:4]];
     }
     return @"Hue Bridge";
 }
@@ -762,7 +762,7 @@
 - (instancetype)initWithDictionary:(NSDictionary *)dict {
     self = [super init];
     if (self) {
-        _errorDescription = dict[@"description"] ?: @"Unknown error";
+        _errorDescription = dict[@"description"] ?: TTText(@"Unknown error");
     }
     return self;
 }
