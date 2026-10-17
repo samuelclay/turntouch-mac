@@ -108,7 +108,6 @@
 "Connect to Nanoleaf" = "เชื่อมต่อกับ Nanoleaf";
 "Connect to Nest" = "เชื่อมต่อกับ Nest";
 "Connect to browse your home" = "เชื่อมต่อเพื่อเรียกดูบ้าน";
-"Connect using the Home Assistant menu." = "เชื่อมต่อผ่านเมนู Home Assistant";
 "Connected" = "เชื่อมต่อแล้ว";
 "Connected Devices" = "อุปกรณ์ที่เชื่อมต่อ";
 "Connected Govee devices: %ld" = "อุปกรณ์ Govee ที่เชื่อมต่อ: %ld";

@@ -383,9 +383,6 @@
   "Connect to browse your home": [
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
-  "Connect using the Home Assistant menu.": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
-  ],
   "Connected": [
     "Application-owned status or selector label; translated only at rendering, never in state comparisons."
   ],
@@ -1698,6 +1695,7 @@
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Sign in…": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],

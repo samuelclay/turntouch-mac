@@ -64,6 +64,7 @@
 @property NSTextField *destinationLabel;
 @property BOOL showingAssignmentConfirmation;
 @property NSTextField *emptyState;
+@property NSButton *signInButton;
 @property NSButton *actionDisclosure;
 @property NSButton *advancedDisclosure;
 @property NSPopUpButton *connectionMenu;
@@ -197,11 +198,22 @@
     self.emptyState.maximumNumberOfLines = 3;
     self.emptyState.translatesAutoresizingMaskIntoConstraints = NO;
     [results addSubview:self.emptyState];
+    self.signInButton = [[TTHAAssignButton alloc] init];
+    self.signInButton.title = TTText(@"Sign in…");
+    self.signInButton.target = self; self.signInButton.action = @selector(signInFromMenu:);
+    self.signInButton.bordered = NO;
+    self.signInButton.font = [NSFont fontWithName:@"Effra" size:18] ?: [NSFont systemFontOfSize:18 weight:NSFontWeightMedium];
+    self.signInButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [results addSubview:self.signInButton];
     [NSLayoutConstraint activateConstraints:@[
         [scroll.leadingAnchor constraintEqualToAnchor:results.leadingAnchor],
         [scroll.trailingAnchor constraintEqualToAnchor:results.trailingAnchor],
         [scroll.topAnchor constraintEqualToAnchor:results.topAnchor],
         [scroll.bottomAnchor constraintEqualToAnchor:results.bottomAnchor],
+        [self.signInButton.centerYAnchor constraintEqualToAnchor:results.centerYAnchor],
+        [self.signInButton.leadingAnchor constraintEqualToAnchor:results.leadingAnchor constant:24],
+        [self.signInButton.trailingAnchor constraintEqualToAnchor:results.trailingAnchor constant:-24],
+        [self.signInButton.heightAnchor constraintEqualToConstant:56],
         [self.emptyState.centerYAnchor constraintEqualToAnchor:results.centerYAnchor],
         [self.emptyState.leadingAnchor constraintEqualToAnchor:results.leadingAnchor constant:24],
         [self.emptyState.trailingAnchor constraintEqualToAnchor:results.trailingAnchor constant:-24]
@@ -360,9 +372,11 @@
     self.actionDisclosure.enabled = chosen;
     self.actionDisclosure.hidden = !chosen;
     if (!chosen) { self.actionOptionsStack.hidden = YES; self.actionPicker.hidden = YES; }
-    self.emptyState.hidden = self.filtered.count > 0;
+    self.signInButton.hidden = self.client.connected || self.client.restoringConnection;
+    self.signInButton.enabled = !self.busy;
+    self.emptyState.hidden = self.filtered.count > 0 || !self.signInButton.hidden;
     self.emptyState.stringValue = self.client.restoringConnection ? TTText(@"Connecting to your home…") :
-        self.client.connected ? TTText(@"No matching entities") : TTText(@"Connect using the Home Assistant menu.");
+        TTText(@"No matching entities");
     self.advancedDisclosure.enabled = chosen;
     self.connectButton.enabled = !self.busy;
     self.tokenButton.enabled = !self.busy;

@@ -108,7 +108,6 @@
 "Connect to Nanoleaf" = "Nanoleaf에 연결";
 "Connect to Nest" = "Nest에 연결";
 "Connect to browse your home" = "집을 둘러보려면 연결하세요";
-"Connect using the Home Assistant menu." = "Home Assistant 메뉴에서 연결하세요.";
 "Connected" = "연결됨";
 "Connected Devices" = "연결된 기기";
 "Connected Govee devices: %ld" = "연결된 Govee 기기: %ld";
