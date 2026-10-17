@@ -32,5 +32,53 @@
 	<string>2</string>
 	<key>TT:mode:south</key>
 	<string>TTModeAlarmClock</string>
+	<key>TT:mode:single:action:north:batchactions</key>
+	<array>
+		<string>TTModeMusic:TTModeMusicVolumeUp:default</string>
+	</array>
+	<key>TT:mode:single:action:east:batchactions</key>
+	<array>
+		<string>TTModeMusic:TTModeMusicNextTrack:default</string>
+	</array>
+	<key>TT:mode:single:action:west:batchactions</key>
+	<array>
+		<string>TTModeMusic:TTModeMusicPlayPause:default</string>
+	</array>
+	<key>TT:mode:single:action:south:batchactions</key>
+	<array>
+		<string>TTModeMusic:TTModeMusicVolumeDown:default</string>
+	</array>
+	<key>TT:mode:double:action:north:batchactions</key>
+	<array>
+		<string>TTModeHue:TTModeHueSceneEarlyEvening:default</string>
+	</array>
+	<key>TT:mode:double:action:east:batchactions</key>
+	<array>
+		<string>TTModeHue:TTModeHueSceneLateEvening:default</string>
+	</array>
+	<key>TT:mode:double:action:west:batchactions</key>
+	<array>
+		<string>TTModeHue:TTModeHueRandom:default</string>
+	</array>
+	<key>TT:mode:double:action:south:batchactions</key>
+	<array>
+		<string>TTModeHue:TTModeHueSleep:default</string>
+	</array>
+	<key>TT:mode:hold:action:north:batchactions</key>
+	<array>
+		<string>TTModeWemo:TTModeWemoDeviceOn:default</string>
+	</array>
+	<key>TT:mode:hold:action:east:batchactions</key>
+	<array>
+		<string>TTModeWemo:TTModeWemoDeviceToggle:default</string>
+	</array>
+	<key>TT:mode:hold:action:west:batchactions</key>
+	<array>
+		<string>TTModeWemo:TTModeWemoDeviceToggle:default</string>
+	</array>
+	<key>TT:mode:hold:action:south:batchactions</key>
+	<array>
+		<string>TTModeWemo:TTModeWemoDeviceOff:default</string>
+	</array>
 </dict>
 </plist>
