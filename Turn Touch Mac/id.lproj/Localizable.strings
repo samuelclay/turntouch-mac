@@ -76,6 +76,8 @@
 "Cancel" = "Batal";
 "Change" = "Ubah";
 "Change API Key..." = "Ubah kunci API...";
+"Change action" = "Ubah tindakan";
+"Change app" = "Ganti aplikasi";
 "Check for updates..." = "Periksa pembaruan...";
 "Choose File" = "Pilih File";
 "Choose Home Assistant action…" = "Pilih tindakan Home Assistant…";
@@ -87,6 +89,7 @@
 "Choose an action for this app using Add Action below a remote button." = "Pilih aksi untuk aplikasi ini lewat Tambah Aksi di bawah tombol remote.";
 "Choose an entity" = "Pilih entitas";
 "Choose an entity first." = "Pilih entitas terlebih dahulu.";
+"Choose app" = "Pilih aplikasi";
 "Choose the target in the entity list, not in action data." = "Pilih target di daftar entitas, bukan di data tindakan.";
 "Climate" = "Iklim";
 "Close" = "Tutup";

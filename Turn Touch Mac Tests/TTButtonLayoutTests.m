@@ -112,6 +112,24 @@ int main(int argc, const char *argv[]) { @autoreleasepool {
     check(map.isTwelveButtonMode && map.selectedModeDirection == HOLD, @"layout and selected bank survive restart");
     [executed removeAllObjects]; [map runGesture:DOUBLE_TAP direction:WEST];
     check([executed isEqual:@[@"7:3"]], @"double tap remains its own normal action after restart");
+    // Changing the app edits one action, never the whole gesture bank or its siblings.
+    map.inspectingModeDirection = WEST;
+    map.tempModeName = @"LayoutProbeMode";
+    [map addBatchAction:@"Probe"];
+    TTAction *extra = [map selectedModeBatchActions:WEST].lastObject;
+    [extra changeActionOption:@"marker" to:@"extra"];
+    [map changeDirection:WEST toMode:@"TTModeMusic"];
+    check([[map selectedModeBatchActions:WEST].firstObject mode].class == TTModeMusic.class, @"selected button can change apps");
+    check([map selectedModeBatchActions:WEST].count == 2, @"changing the primary app preserves additional actions");
+    check([[[map selectedModeBatchActions:WEST].lastObject optionValue:@"marker"] isEqual:@"extra"], @"additional action options remain intact");
+    check([[[map selectedModeBatchActions:NORTH].firstObject optionValue:@"marker"] isEqual:@"7:1"], @"other physical buttons remain intact");
+    [map changeBatchAction:[map selectedModeBatchActions:WEST].lastObject toMode:@"TTModeHue"];
+    check([[map selectedModeBatchActions:WEST].lastObject mode].class == TTModeHue.class, @"additional actions can independently change apps");
+    [map switchMode:SINGLE_TAP modeName:nil];
+    check([[[map selectedModeBatchActions:WEST].firstObject optionValue:@"marker"] isEqual:@"6:3"], @"other gesture banks remain intact");
+    delegate.modeMap = [[LayoutTestMap alloc] init]; map = delegate.modeMap;
+    [map switchMode:DOUBLE_TAP modeName:nil];
+    check([[map selectedModeBatchActions:WEST].firstObject mode].class == TTModeMusic.class && [[map selectedModeBatchActions:WEST].lastObject mode].class == TTModeHue.class, @"changed apps survive restart");
     [prefs removePersistentDomainForName:NSProcessInfo.processInfo.processName];
     printf("PASS: %d button layout and dispatch checks\n", checks);
 } return 0; }

@@ -76,6 +76,8 @@
 "Cancel" = "Отмена";
 "Change" = "Изменить";
 "Change API Key..." = "Изменить ключ API...";
+"Change action" = "Изменить действие";
+"Change app" = "Сменить приложение";
 "Check for updates..." = "Проверить наличие обновлений...";
 "Choose File" = "Выбрать файл";
 "Choose Home Assistant action…" = "Выбрать действие Home Assistant…";
@@ -87,6 +89,7 @@
 "Choose an action for this app using Add Action below a remote button." = "Выберите действие для этого приложения с помощью пункта «Добавить действие» под кнопкой пульта.";
 "Choose an entity" = "Выберите объект";
 "Choose an entity first." = "Сначала выберите объект.";
+"Choose app" = "Выбрать приложение";
 "Choose the target in the entity list, not in action data." = "Выберите цель в списке объектов, а не в данных действия.";
 "Climate" = "Климат";
 "Close" = "Закрыть";

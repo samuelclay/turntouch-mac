@@ -76,6 +76,8 @@
 "Cancel" = "Abbrechen";
 "Change" = "Ändern";
 "Change API Key..." = "API-Schlüssel ändern...";
+"Change action" = "Aktion ändern";
+"Change app" = "App ändern";
 "Check for updates..." = "Nach Updates suchen ...";
 "Choose File" = "Datei auswählen";
 "Choose Home Assistant action…" = "Home Assistant-Aktion auswählen…";
@@ -87,6 +89,7 @@
 "Choose an action for this app using Add Action below a remote button." = "Wählen Sie eine Aktion für diese App aus, indem Sie unter einer Fernbedienungstaste auf „Aktion hinzufügen“ klicken.";
 "Choose an entity" = "Entität auswählen";
 "Choose an entity first." = "Wähle zuerst eine Entität aus.";
+"Choose app" = "App auswählen";
 "Choose the target in the entity list, not in action data." = "Wähle das Ziel in der Entitätenliste aus, nicht in den Aktionsdaten.";
 "Climate" = "Klima";
 "Close" = "Schließen";

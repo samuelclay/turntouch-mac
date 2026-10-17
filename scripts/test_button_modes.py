@@ -16,6 +16,7 @@ with tempfile.TemporaryDirectory(prefix='turntouch-button-tests-') as tmp:
         ('layouts', ['Models/TTMode.m', 'Models/TTModeMap.m', 'Models/TTModeTwelve.m', 'Models/TTBatchActions.m', 'Models/TTAction.m'], 'TTButtonLayoutTests.m'),
     ]
     for name, sources, test in cases:
+        sources = sources + ['TTLocalization.m']
         binary = pathlib.Path(tmp) / f'tt-{name}-{uuid.uuid4().hex}'
         subprocess.run(common + [str(ROOT / 'Turn Touch Mac' / p) for p in sources] + [str(ROOT / 'Turn Touch Mac Tests' / test), '-o', str(binary)], check=True)
         subprocess.run([str(binary), str(ROOT / "Turn Touch Mac/Supporting Files/defaults.plist")], check=True, timeout=30)

@@ -76,6 +76,8 @@
 "Cancel" = "İptal";
 "Change" = "Değiştir";
 "Change API Key..." = "API Anahtarını Değiştir...";
+"Change action" = "Eylemi değiştir";
+"Change app" = "Uygulamayı değiştir";
 "Check for updates..." = "Güncellemeleri denetle...";
 "Choose File" = "Dosya Seç";
 "Choose Home Assistant action…" = "Home Assistant işlemi seç…";
@@ -87,6 +89,7 @@
 "Choose an action for this app using Add Action below a remote button." = "Uzaktan kumanda düğmesinin altındaki Eylem Ekle'yi kullanarak bu uygulama için bir eylem seçin.";
 "Choose an entity" = "Bir varlık seçin";
 "Choose an entity first." = "Önce bir varlık seçin.";
+"Choose app" = "Uygulama seç";
 "Choose the target in the entity list, not in action data." = "Hedefi işlem verilerinde değil, varlık listesinden seçin.";
 "Climate" = "İklim";
 "Close" = "Kapat";

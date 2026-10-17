@@ -76,6 +76,8 @@
 "Cancel" = "取消";
 "Change" = "變更";
 "Change API Key..." = "變更 API 金鑰…";
+"Change action" = "更改動作";
+"Change app" = "更改 App";
 "Check for updates..." = "正在檢查更新…";
 "Choose File" = "選擇檔案";
 "Choose Home Assistant action…" = "選擇 Home Assistant 動作…";
@@ -87,6 +89,7 @@
 "Choose an action for this app using Add Action below a remote button." = "使用 Remote 按鈕下方的「新增動作」，為此 App 選擇動作。";
 "Choose an entity" = "選擇實體";
 "Choose an entity first." = "請先選擇實體。";
+"Choose app" = "選擇 App";
 "Choose the target in the entity list, not in action data." = "請在實體清單中選擇目標，而非在動作資料中選擇。";
 "Climate" = "空調";
 "Close" = "關閉";

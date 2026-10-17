@@ -76,6 +76,8 @@
 "Cancel" = "إلغاء";
 "Change" = "تغيير";
 "Change API Key..." = "تغيير مفتاح API...";
+"Change action" = "تغيير الإجراء";
+"Change app" = "تغيير التطبيق";
 "Check for updates..." = "التحقق من وجود تحديثات...";
 "Choose File" = "اختيار ملف";
 "Choose Home Assistant action…" = "اختر إجراء Home Assistant…";
@@ -87,6 +89,7 @@
 "Choose an action for this app using Add Action below a remote button." = "اختر إجراءً لهذا التطبيق باستخدام «إضافة إجراء» أسفل أحد أزرار جهاز التحكم.";
 "Choose an entity" = "اختر كيانًا";
 "Choose an entity first." = "اختر كيانًا أولًا.";
+"Choose app" = "اختيار تطبيق";
 "Choose the target in the entity list, not in action data." = "اختر الهدف من قائمة الكيانات، وليس من بيانات الإجراء.";
 "Climate" = "المناخ";
 "Close" = "إغلاق";

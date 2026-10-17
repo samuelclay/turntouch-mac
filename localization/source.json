@@ -266,7 +266,6 @@
     "Turn Touch Mac/Views/Mode Title/TTModeTitleView.m"
   ],
   "Change": [
-    "Turn Touch Mac/Views/Batch Actions/TTBatchActionHeaderView.m",
     "Turn Touch Mac/Views/Mode Map/TTDiamondLabels.m",
     "Turn Touch Mac/Views/Mode Map/TTDiamondLabels.m",
     "Turn Touch Mac/Views/Mode Options/TTOptionsActionTitle.m",
@@ -276,6 +275,14 @@
   ],
   "Change API Key...": [
     "Turn Touch Mac/Modes/Govee/TTModeGoveeSwitchOptions.m"
+  ],
+  "Change action": [
+    "Turn Touch Mac/Views/Batch Actions/TTBatchActionHeaderView.m"
+  ],
+  "Change app": [
+    "Turn Touch Mac/Views/Batch Actions/TTBatchActionHeaderView.m",
+    "Turn Touch Mac/Views/Batch Actions/TTBatchActionHeaderView.m",
+    "Turn Touch Mac/Views/Mode Title/TTModeTitleView.m"
   ],
   "Check for updates...": [
     "Turn Touch Mac/Views/Settings/Base.lproj/TTModalAbout.xib:XvV-al-DqQ.title"
@@ -310,6 +317,9 @@
   ],
   "Choose an entity first.": [
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
+  ],
+  "Choose app": [
+    "Turn Touch Mac/Views/Mode Title/TTModeTitleView.m"
   ],
   "Choose the target in the entity list, not in action data.": [
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"

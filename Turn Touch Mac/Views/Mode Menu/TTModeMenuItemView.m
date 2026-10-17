@@ -178,7 +178,9 @@
         highlighted = [[self.activeMode actionNameInDirection:self.appDelegate.modeMap.inspectingModeDirection]
                        isEqualToString:self.modeName];
     } else if (self.menuType == MODE_MENU_TYPE) {
-        highlighted = [self.appDelegate.modeMap.selectedMode class] == self.modeClass;
+        TTMode *mode = self.appDelegate.modeMap.selectedMode;
+        if (self.appDelegate.modeMap.isTwelveButtonMode) mode = [[self.appDelegate.modeMap selectedModeBatchActions:self.appDelegate.modeMap.inspectingModeDirection].firstObject mode];
+        highlighted = mode.class == self.modeClass;
     } else if (self.menuType == CHANGE_BATCH_ACTION_MENU_TYPE) {
         highlighted = [self.appDelegate.modeMap.batchActionChangeAction.actionName isEqualToString:self.modeName];
     }
@@ -257,7 +259,7 @@
     }
     
     if (self.menuType == MODE_MENU_TYPE) {
-        [self.appDelegate.modeMap changeDirection:self.appDelegate.modeMap.selectedModeDirection
+        [self.appDelegate.modeMap changeDirection:self.appDelegate.modeMap.isTwelveButtonMode ? self.appDelegate.modeMap.inspectingModeDirection : self.appDelegate.modeMap.selectedModeDirection
                                       toMode:self.modeName];
     } else if (self.menuType == ACTION_MENU_TYPE) {
         [self.appDelegate.modeMap changeDirection:self.appDelegate.modeMap.inspectingModeDirection

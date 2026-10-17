@@ -343,6 +343,22 @@
 #pragma mark - Changing modes, actions, batch actions
 
 - (void)changeDirection:(TTModeDirection)direction toMode:(NSString *)modeClassName {
+    if (self.isTwelveButtonMode) {
+        if (direction < NORTH || direction > SOUTH) return;
+        TTAction *action = [self selectedModeBatchActions:direction].firstObject;
+        if (action) {
+            [self changeBatchAction:action toMode:modeClassName];
+        } else {
+            Class modeClass = NSClassFromString(modeClassName);
+            if (![modeClass isSubclassOfClass:TTMode.class]) return;
+            self.inspectingModeDirection = direction;
+            self.tempModeName = modeClassName;
+            NSString *name = [self defaultActionForMode:self.tempMode direction:direction];
+            if (name) [self addBatchAction:name];
+        }
+        self.openedModeChangeMenu = NO;
+        return;
+    }
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *directionName = [self directionName:direction];
     NSString *prefKey = [NSString stringWithFormat:@"TT:mode:%@", directionName];
@@ -360,7 +376,7 @@
 
 #pragma mark - Batch actions
 
-- (NSArray *)selectedModeBatchActions:(TTModeDirection)direction {
+- (NSArray<TTAction *> *)selectedModeBatchActions:(TTModeDirection)direction {
     return [self.batchActions batchActionsInDirection:direction];
 }
 
@@ -397,6 +413,38 @@
     self.tempModeName = nil;
 
     [self setInspectingModeDirection:self.inspectingModeDirection];
+}
+
+- (NSString *)defaultActionForMode:(TTMode *)mode direction:(TTModeDirection)direction {
+    switch (direction) {
+        case NORTH: return mode.defaultNorth;
+        case EAST: return mode.defaultEast;
+        case WEST: return mode.defaultWest;
+        case SOUTH: return mode.defaultSouth;
+        default: return nil;
+    }
+}
+
+- (void)changeBatchAction:(TTAction *)action toMode:(NSString *)modeName {
+    if (!action || action.mode.modeDirection != self.selectedModeDirection) return;
+    Class modeClass = NSClassFromString(modeName);
+    if (![modeClass isSubclassOfClass:TTMode.class] || modeClass == action.mode.class) return;
+    TTMode *mode = [[modeClass alloc] init];
+    NSString *actionName = [self defaultActionForMode:mode direction:action.direction];
+    if (!actionName.length) return;
+    NSString *key = [NSString stringWithFormat:@"TT:mode:%@:action:%@:batchactions",
+                     [self directionName:action.mode.modeDirection], [self directionName:action.direction]];
+    NSUserDefaults *prefs = NSUserDefaults.standardUserDefaults;
+    NSMutableArray *actions = [[prefs arrayForKey:key] mutableCopy];
+    NSUInteger index = [actions indexOfObject:action.batchActionKey];
+    if (!actions || index == NSNotFound) return;
+    actions[index] = [NSString stringWithFormat:@"%@:%@:%@", modeName, actionName, NSUUID.UUID.UUIDString];
+    [prefs setObject:actions forKey:key];
+    [self.batchActions deactivate];
+    [self.batchActions assembleBatchActions];
+    self.batchActionChangeAction = nil;
+    self.openedChangeActionMenu = NO;
+    self.inspectingModeDirection = action.direction;
 }
 
 - (void)changeBatchAction:(NSString *)batchActionKey toAction:(NSString *)actionName {

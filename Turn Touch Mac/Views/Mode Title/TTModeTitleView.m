@@ -59,6 +59,10 @@
         }
         if (commonClass && !mixed) imageFilename = [commonClass imageName];
     }
+    if (self.appDelegate.modeMap.isTwelveButtonMode && self.appDelegate.modeMap.inspectingModeDirection != NO_DIRECTION) {
+        TTAction *action = [self.appDelegate.modeMap selectedModeBatchActions:self.appDelegate.modeMap.inspectingModeDirection].firstObject;
+        if (action) imageFilename = [action.mode.class imageName];
+    }
     self.modeImage = [NSImage imageNamed:imageFilename];
 
     [self.modeImage setSize:NSMakeSize(IMAGE_SIZE, IMAGE_SIZE)];
@@ -77,7 +81,8 @@
                                     BUTTON_WIDTH,
                                     NSHeight(self.frame) - BUTTON_MARGIN*2);
     self.changeButton.frame = buttonFrame;
-    self.changeButton.hidden = self.appDelegate.modeMap.isTwelveButtonMode;
+    self.changeButton.hidden = self.appDelegate.modeMap.isTwelveButtonMode && self.appDelegate.modeMap.inspectingModeDirection == NO_DIRECTION;
+    self.changeButton.accessibilityLabel = TTText(@"Change app");
     if (self.appDelegate.modeMap.openedModeChangeMenu) {
         [self setChangeButtonTitle:TTText(@"Cancel")];
     } else {
@@ -103,6 +108,10 @@
     if (self.appDelegate.modeMap.isTwelveButtonMode) {
         self.modeTitle = self.appDelegate.modeMap.selectedModeDirection == SINGLE_TAP ? TTText(@"Single tap actions") :
             self.appDelegate.modeMap.selectedModeDirection == DOUBLE_TAP ? TTText(@"Double tap actions") : TTText(@"Hold actions");
+    }
+    if (self.appDelegate.modeMap.isTwelveButtonMode && self.appDelegate.modeMap.inspectingModeDirection != NO_DIRECTION) {
+        TTAction *action = [self.appDelegate.modeMap selectedModeBatchActions:self.appDelegate.modeMap.inspectingModeDirection].firstObject;
+        self.modeTitle = action ? [action.mode.class title] : TTText(@"Choose app");
     }
     NSShadow *stringShadow = [[NSShadow alloc] init];
     stringShadow.shadowColor = [NSColor whiteColor];
@@ -147,7 +156,7 @@
 
 - (void)showChangeModeMenu:(id)sender {
     [self.appDelegate.modeMap setOpenedModeChangeMenu:!self.appDelegate.modeMap.openedModeChangeMenu];
-    [self.appDelegate.modeMap setInspectingModeDirection:NO_DIRECTION];
+    if (!self.appDelegate.modeMap.isTwelveButtonMode) [self.appDelegate.modeMap setInspectingModeDirection:NO_DIRECTION];
     [self setNeedsDisplay:YES];
 }
 

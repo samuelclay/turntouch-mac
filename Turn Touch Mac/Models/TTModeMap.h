@@ -71,8 +71,9 @@ typedef NS_ENUM(NSUInteger, TTButtonActionMode)
 - (void)changeDirection:(TTModeDirection)direction toAction:(NSString *)actionClassName;
 - (void)addBatchAction:(NSString *)actionName;
 - (void)changeBatchAction:(NSString *)batchActionKey toAction:(NSString *)actionName;
+- (void)changeBatchAction:(TTAction *)action toMode:(NSString *)modeName;
 - (void)removeBatchAction:(NSString *)batchActionKey;
-- (NSArray *)selectedModeBatchActions:(TTModeDirection)direction;
+- (NSArray<TTAction *> *)selectedModeBatchActions:(TTModeDirection)direction;
 
 - (void)changeModeOption:(NSString *)optionName to:(id)optionValue;
 - (void)changeMode:(TTMode *)mode option:(NSString *)optionName to:(id)optionValue;

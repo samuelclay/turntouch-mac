@@ -225,6 +225,10 @@
     [self setNeedsDisplay:YES];
 }
 
+- (void)changeApp:(NSMenuItem *)sender {
+    [self.appDelegate.modeMap changeBatchAction:self.batchAction toMode:sender.representedObject];
+}
+
 - (IBAction)showBatchActionMenu:(id)sender {
     if (self.isChangeActionVisible) {
         [self changeAction:sender];
@@ -250,7 +254,21 @@
         [self.settingsMenu removeAllItems];
     }
     
-    menuItem = [[NSMenuItem alloc] initWithTitle:TTText(@"Change") action:@selector(changeAction:) keyEquivalent:@""];
+    NSMenuItem *changeApp = [[NSMenuItem alloc] initWithTitle:TTText(@"Change app") action:nil keyEquivalent:@""];
+    NSMenu *apps = [[NSMenu alloc] initWithTitle:TTText(@"Change app")];
+    for (NSString *name in self.appDelegate.modeMap.availableModes) {
+        if ([name isEqualToString:@"TTModeNest"]) continue;
+        Class modeClass = NSClassFromString(name);
+        NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:[modeClass title] action:@selector(changeApp:) keyEquivalent:@""];
+        item.target = self;
+        item.representedObject = name;
+        item.state = self.batchAction.mode.class == modeClass ? NSControlStateValueOn : NSControlStateValueOff;
+        NSImage *icon = [[NSImage imageNamed:[modeClass imageName]] copy]; icon.size = NSMakeSize(18, 18); item.image = icon;
+        [apps addItem:item];
+    }
+    changeApp.submenu = apps;
+    [self.settingsMenu addItem:changeApp];
+    menuItem = [[NSMenuItem alloc] initWithTitle:TTText(@"Change action") action:@selector(changeAction:) keyEquivalent:@""];
     [menuItem setEnabled:YES];
     [menuItem setTarget:self];
     [self.settingsMenu addItem:menuItem];

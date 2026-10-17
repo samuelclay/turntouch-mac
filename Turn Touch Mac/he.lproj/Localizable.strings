@@ -76,6 +76,8 @@
 "Cancel" = "ביטול";
 "Change" = "שינוי";
 "Change API Key..." = "שינוי מפתח API...";
+"Change action" = "שינוי פעולה";
+"Change app" = "החלפת אפליקציה";
 "Check for updates..." = "מחפש עדכונים...";
 "Choose File" = "בחירת קובץ";
 "Choose Home Assistant action…" = "בחירת פעולת Home Assistant…";
@@ -87,6 +89,7 @@
 "Choose an action for this app using Add Action below a remote button." = "בחרו פעולה לאפליקציה הזו באמצעות הוספת פעולה מתחת ללחצן בשלט.";
 "Choose an entity" = "בחירת ישות";
 "Choose an entity first." = "בחר תחילה ישות.";
+"Choose app" = "בחירת אפליקציה";
 "Choose the target in the entity list, not in action data." = "בחר את היעד ברשימת הישויות, לא בנתוני הפעולה.";
 "Climate" = "אקלים";
 "Close" = "סגירה";

@@ -76,6 +76,8 @@
 "Cancel" = "Cancel";
 "Change" = "Change";
 "Change API Key..." = "Change API Key...";
+"Change action" = "Change action";
+"Change app" = "Change app";
 "Check for updates..." = "Check for updates...";
 "Choose File" = "Choose File";
 "Choose Home Assistant action…" = "Choose Home Assistant action…";
@@ -87,6 +89,7 @@
 "Choose an action for this app using Add Action below a remote button." = "Choose an action for this app using Add Action below a remote button.";
 "Choose an entity" = "Choose an entity";
 "Choose an entity first." = "Choose an entity first.";
+"Choose app" = "Choose app";
 "Choose the target in the entity list, not in action data." = "Choose the target in the entity list, not in action data.";
 "Climate" = "Climate";
 "Close" = "Close";
