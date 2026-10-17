@@ -3,7 +3,29 @@
 #import <WebKit/WebKit.h>
 #import <arpa/inet.h>
 
-@interface TTHomeAssistantViewController () <NSTableViewDataSource, NSTableViewDelegate, NSSearchFieldDelegate, NSNetServiceBrowserDelegate, NSNetServiceDelegate, WKNavigationDelegate, NSWindowDelegate>
+// Native NSButton behavior and accessibility, with Turn Touch's blue primary treatment.
+@interface TTHAAssignButton : NSButton
+@end
+@implementation TTHAAssignButton
+- (void)drawRect:(NSRect)dirtyRect {
+    NSRect rect = NSInsetRect(self.bounds, 2, 2);
+    NSBezierPath *shape = [NSBezierPath bezierPathWithRoundedRect:rect xRadius:8 yRadius:8];
+    NSColor *blue = [NSColor colorWithCalibratedRed:0.22 green:0.49 blue:0.70 alpha:1];
+    [(self.enabled ? (self.highlighted ? [blue shadowWithLevel:0.18] : blue) : [blue colorWithAlphaComponent:0.22]) setFill];
+    [shape fill];
+    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+    style.alignment = NSTextAlignmentCenter;
+    style.lineBreakMode = NSLineBreakByTruncatingTail;
+    NSDictionary *attributes = @{NSFontAttributeName: self.font, NSForegroundColorAttributeName: self.enabled ? NSColor.whiteColor : NSColor.secondaryLabelColor, NSParagraphStyleAttributeName: style};
+    CGFloat height = ceil([self.title sizeWithAttributes:attributes].height);
+    [self.title drawInRect:NSMakeRect(12, (NSHeight(self.bounds) - height) / 2, NSWidth(self.bounds) - 24, height) withAttributes:attributes];
+    if (self.window.firstResponder == self) {
+        [NSGraphicsContext saveGraphicsState]; NSSetFocusRingStyle(NSFocusRingOnly); [shape fill]; [NSGraphicsContext restoreGraphicsState];
+    }
+}
+@end
+
+@interface TTHomeAssistantViewController () <NSTableViewDataSource, NSTableViewDelegate, NSSearchFieldDelegate, NSTextViewDelegate, NSNetServiceBrowserDelegate, NSNetServiceDelegate, WKNavigationDelegate, NSWindowDelegate>
 @property TTHomeAssistantClient *client;
 @property NSTextField *address;
 @property NSSecureTextField *token;
@@ -38,6 +60,9 @@
 @property NSStackView *tokenStack;
 @property NSStackView *advancedStack;
 @property NSStackView *actionOptionsStack;
+@property NSStackView *assignmentStack;
+@property NSTextField *destinationLabel;
+@property BOOL showingAssignmentConfirmation;
 @property NSTextField *emptyState;
 @property NSButton *actionDisclosure;
 @property NSButton *advancedDisclosure;
@@ -200,29 +225,41 @@
     editor.borderType = NSBezelBorder; editor.hasVerticalScroller = YES;
     [editor.heightAnchor constraintEqualToConstant:90].active = YES;
     self.dataEditor = [[NSTextView alloc] initWithFrame:NSMakeRect(0, 0, 350, 90)];
+    self.dataEditor.delegate = self;
     self.dataEditor.richText = NO; self.dataEditor.font = [NSFont userFixedPitchFontOfSize:12];
     self.dataEditor.automaticQuoteSubstitutionEnabled = NO; self.dataEditor.automaticDashSubstitutionEnabled = NO;
     self.dataEditor.accessibilityLabel = TTText(@"Action data (optional JSON)");
     self.dataEditor.string = @"{}"; editor.documentView = self.dataEditor;
     self.advancedStack = [self column:@[self.fieldsHelp, editor] spacing:6];
     self.advancedStack.hidden = YES;
-    self.actionOptionsStack = [self column:@[self.actionPicker, self.advancedDisclosure, self.advancedStack] spacing:8];
+    NSTextField *actionHelp = [self label:TTText(@"Choose what the remote button does in Home Assistant.") frame:NSZeroRect size:12];
+    actionHelp.textColor = NSColor.secondaryLabelColor;
+    actionHelp.maximumNumberOfLines = 2;
+    [actionHelp.heightAnchor constraintEqualToConstant:32].active = YES;
+    self.actionOptionsStack = [self column:@[actionHelp, self.actionPicker, self.advancedDisclosure, self.advancedStack] spacing:8];
     self.actionOptionsStack.hidden = YES;
     self.testButton = [self button:TTText(@"Test action") action:@selector(test:)];
-    self.saveButton = [self button:TTText(@"Choose for button") action:@selector(save:)];
-    NSStackView *buttons = [NSStackView stackViewWithViews:@[self.testButton, self.saveButton]];
-    buttons.orientation = NSUserInterfaceLayoutOrientationHorizontal;
-    buttons.distribution = NSStackViewDistributionFillEqually;
-    buttons.spacing = 8;
-    [buttons.heightAnchor constraintEqualToConstant:32].active = YES;
-    self.status = [self label:@"" frame:NSZeroRect size:11];
+    self.saveButton = [[TTHAAssignButton alloc] init];
+    self.saveButton.title = TTText(@"Set remote button");
+    self.saveButton.target = self; self.saveButton.action = @selector(save:);
+    self.saveButton.bordered = NO;
+    self.saveButton.font = [NSFont fontWithName:@"Effra" size:15] ?: [NSFont systemFontOfSize:15 weight:NSFontWeightMedium];
+    [self.saveButton.heightAnchor constraintEqualToConstant:42].active = YES;
+    self.destinationLabel = [self label:self.buttonDestination ?: @"" frame:NSZeroRect size:12];
+    self.destinationLabel.alignment = NSTextAlignmentCenter;
+    self.destinationLabel.textColor = NSColor.secondaryLabelColor;
+    [self.destinationLabel.heightAnchor constraintEqualToConstant:18].active = YES;
+    self.assignmentStack = [self column:@[self.destinationLabel, self.saveButton] spacing:3];
+    [self.assignmentStack setHuggingPriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationVertical];
+    [self.testButton.heightAnchor constraintEqualToConstant:30].active = YES;
+    self.status = [self label:@"" frame:NSZeroRect size:13];
     self.status.textColor = NSColor.secondaryLabelColor;
     self.status.maximumNumberOfLines = 3;
     [self.status.heightAnchor constraintEqualToConstant:32].active = YES;
     NSBox *separator = [[NSBox alloc] init];
     separator.boxType = NSBoxSeparator;
     [separator.heightAnchor constraintEqualToConstant:1].active = YES;
-    self.stack = [self column:@[self.search, filters, self.connectionStack, results, self.actionDisclosure, self.actionOptionsStack, separator, buttons, self.status] spacing:10];
+    self.stack = [self column:@[self.search, filters, self.connectionStack, results, self.actionDisclosure, self.actionOptionsStack, self.testButton, separator, self.assignmentStack, self.status] spacing:10];
     [self.view addSubview:self.stack];
     [NSLayoutConstraint activateConstraints:@[
         [self.stack.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:12],
@@ -264,8 +301,9 @@
     [self updateDisclosureTitles];
 }
 - (void)updateDisclosureTitles {
-    NSString *action = self.actionPicker.selectedItem ? [NSString stringWithFormat:TTText(@"Action: %@"), self.actionPicker.titleOfSelectedItem] : TTText(@"Action");
-    self.actionDisclosure.title = self.actionPicker.titleOfSelectedItem ?: TTText(@"Action");
+    NSString *action = TTText(@"Action settings");
+    self.actionDisclosure.title = action;
+    self.actionDisclosure.toolTip = self.actionPicker.titleOfSelectedItem;
     if (@available(macOS 11.0, *)) {
         self.actionDisclosure.image = [NSImage imageWithSystemSymbolName:self.actionOptionsStack.hidden ? @"chevron.down" : @"chevron.up" accessibilityDescription:nil];
         self.actionDisclosure.imagePosition = NSImageRight;
@@ -287,6 +325,10 @@
     self.search.stringValue = @""; [self.category selectItemAtIndex:0];
     [self filter:nil];
     if (self.client.connected && !self.client.entities.count) [self refresh:nil];
+}
+- (void)setButtonDestination:(NSString *)buttonDestination {
+    _buttonDestination = [buttonDestination copy];
+    if (self.isViewLoaded) [self updateButtons];
 }
 - (void)setSaveHandler:(void (^)(NSDictionary *))saveHandler {
     _saveHandler = [saveHandler copy];
@@ -310,7 +352,9 @@
     BOOL available = ![entity[@"state"] isEqual:@"unavailable"];
     self.testButton.enabled = chosen && available && self.client.connected && !self.busy;
     self.saveButton.enabled = chosen && self.saveHandler != nil && !self.busy;
-    self.saveButton.hidden = self.saveHandler == nil;
+    self.assignmentStack.hidden = self.saveHandler == nil;
+    self.destinationLabel.hidden = !self.buttonDestination.length;
+    self.destinationLabel.stringValue = self.buttonDestination ?: @"";
     self.saveButton.toolTip = TTText(@"Assign this action to the selected remote button");
     self.signInItem.enabled = !self.busy;
     self.actionDisclosure.enabled = chosen;
@@ -489,7 +533,12 @@
     view.toolTip = [NSString stringWithFormat:@"%@ · %@", entity[@"entity_id"], entity[@"state"]];
     return view;
 }
+- (void)clearAssignmentConfirmation {
+    if (self.showingAssignmentConfirmation) { [self setMessage:@"" error:NO]; self.showingAssignmentConfirmation = NO; }
+}
+- (void)textDidChange:(NSNotification *)notification { [self clearAssignmentConfirmation]; }
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
+    [self clearAssignmentConfirmation];
     NSString *previousAction = self.actionPicker.selectedItem.representedObject;
     [self.actionPicker removeAllItems];
     if (self.table.selectedRow < 0 || self.table.selectedRow >= self.filtered.count) {
@@ -510,6 +559,7 @@
     [self actionChanged:nil];
 }
 - (void)actionChanged:(id)sender {
+    [self clearAssignmentConfirmation];
     NSInteger index = self.actionPicker.indexOfSelectedItem;
     if (index < 0) { self.fieldsHelp.stringValue = TTText(@"This entity has no callable actions. Sensors are usually read-only."); [self updateButtons]; return; }
     NSDictionary *action = self.actions[index], *metadata = action[@"metadata"];
@@ -548,6 +598,11 @@
 - (void)save:(id)sender {
     NSDictionary *binding = [self binding]; if (!binding || !self.saveHandler) return;
     self.saveHandler(binding);
-    [self setMessage:TTText(@"Assigned to this button.") error:NO];
+    NSString *message = self.buttonDestination.length ?
+        [NSString stringWithFormat:TTText(@"%@ now runs “%@”."), self.buttonDestination, binding[@"name"]] :
+        [NSString stringWithFormat:TTText(@"Remote button set to “%@”."), binding[@"name"]];
+    [self setMessage:[@"✓ " stringByAppendingString:message] error:NO];
+    self.status.textColor = [NSColor colorWithCalibratedRed:0.22 green:0.49 blue:0.70 alpha:1];
+    self.showingAssignmentConfirmation = YES;
 }
 @end

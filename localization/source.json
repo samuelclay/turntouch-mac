@@ -3,6 +3,9 @@
     "Turn Touch Mac/Modes/Hue/TTModeHueSleepOptions.m",
     "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafSleepOptions.m"
   ],
+  "%@ now runs “%@”.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
+  ],
   "%@ seconds": [
     "Turn Touch Mac/Modes/Hue/TTModeHueSleepOptions.m",
     "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafSleepOptions.m"
@@ -85,8 +88,6 @@
   ],
   "Action": [
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Action 1st": [
@@ -117,7 +118,7 @@
   "Action data must be a JSON object, for example {\"brightness_pct\": 50}.": [
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
   ],
-  "Action: %@": [
+  "Action settings": [
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Activate scene": [
@@ -183,9 +184,6 @@
     "Turn Touch Mac/Modes/Presentation/Base.lproj/TTModePresentationOptions.xib:hCY-ug-dWW.title"
   ],
   "Assign this action to the selected remote button": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
-  ],
-  "Assigned to this button.": [
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Authentication failed. Please reconnect to your Hue bridge.": [
@@ -331,11 +329,11 @@
   "Choose app": [
     "Turn Touch Mac/Views/Mode Title/TTModeTitleView.m"
   ],
-  "Choose for button": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
-  ],
   "Choose the target in the entity list, not in action data.": [
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
+  ],
+  "Choose what the remote button does in Home Assistant.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Climate": [
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
@@ -611,6 +609,7 @@
   ],
   "Double tap": [
     "Application-owned status or selector label; translated only at rendering, never in state comparisons.",
+    "Turn Touch Mac/Modes/HomeAssistant/TTModeHomeAssistantOptions.m",
     "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueSceneOptions.xib:l8c-H8-Xlq.title",
     "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueSleepOptions.xib:vCo-0r-Uqw.title",
     "Turn Touch Mac/Modes/Nanoleaf/Base.lproj/TTModeNanoleafSceneCustomOptions.xib:lbl-dt-c.title",
@@ -1471,6 +1470,9 @@
   "Remote Menu": [
     "Turn Touch Mac/Views/DFU/TTDeviceTitleView.m"
   ],
+  "Remote button set to “%@”.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
+  ],
   "Remotes": [
     "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
   ],
@@ -1648,6 +1650,9 @@
     "Turn Touch Mac/Base.lproj/MainMenu.xib:130.title",
     "Turn Touch Mac/Base.lproj/MainMenu.xib:131.title"
   ],
+  "Set remote button": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
+  ],
   "Settings": [
     "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m",
     "Turn Touch Mac/Views/Title Bar/TTTitleBarView.m",
@@ -1701,6 +1706,7 @@
   ],
   "Single tap": [
     "Application-owned status or selector label; translated only at rendering, never in state comparisons.",
+    "Turn Touch Mac/Modes/HomeAssistant/TTModeHomeAssistantOptions.m",
     "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueSceneOptions.xib:L2c-Gn-dhm.title",
     "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueSleepOptions.xib:mSS-wy-Hf7.title",
     "Turn Touch Mac/Modes/Nanoleaf/Base.lproj/TTModeNanoleafSceneCustomOptions.xib:lbl-st-c.title",
@@ -2144,10 +2150,12 @@
     "Application-owned display label"
   ],
   "east": [
-    "Application-owned display label"
+    "Application-owned display label",
+    "Turn Touch Mac/Modes/HomeAssistant/TTModeHomeAssistantOptions.m"
   ],
   "hold": [
     "Application-owned display label",
+    "Turn Touch Mac/Modes/HomeAssistant/TTModeHomeAssistantOptions.m",
     "Turn Touch Mac/Views/Mode Tabs/TTModeTab.m"
   ],
   "hour": [
@@ -2176,7 +2184,8 @@
     "Turn Touch Mac/Modes/Alarm Clock/TTModeAlarmClockOptions.m"
   ],
   "north": [
-    "Application-owned display label"
+    "Application-owned display label",
+    "Turn Touch Mac/Modes/HomeAssistant/TTModeHomeAssistantOptions.m"
   ],
   "single": [
     "Application-owned display label"
@@ -2188,7 +2197,8 @@
     "Turn Touch Mac/DFU/DFUViewController/DFUHelper.m"
   ],
   "south": [
-    "Application-owned display label"
+    "Application-owned display label",
+    "Turn Touch Mac/Modes/HomeAssistant/TTModeHomeAssistantOptions.m"
   ],
   "system.dat is missing. It must be placed inside zip file with softdevice and bootloader": [
     "Turn Touch Mac/DFU/DFUViewController/DFUHelper.m"
@@ -2221,6 +2231,7 @@
     "Turn Touch Mac/DFU/DFUViewController/DFUHelper.m"
   ],
   "west": [
-    "Application-owned display label"
+    "Application-owned display label",
+    "Turn Touch Mac/Modes/HomeAssistant/TTModeHomeAssistantOptions.m"
   ]
 }

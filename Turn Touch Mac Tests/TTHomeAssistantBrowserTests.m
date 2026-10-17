@@ -48,7 +48,9 @@ int main(void) {
         Check([[window valueForKey:@"filtered"] count] == 1, @"search matches room registry metadata");
         search.stringValue = @"Desk bulb"; [window filter:nil];
         Check([[window valueForKey:@"filtered"] count] == 1, @"search matches device registry metadata");
+        window.buttonDestination = @"North · Single tap";
         [window save:nil];
+        Check([[[window valueForKey:@"status"] stringValue] containsString:@"North · Single tap"] && [[[window valueForKey:@"status"] stringValue] containsString:@"Desk"], @"save confirmation identifies both destination and entity");
         Check([saved[@"entity_id"] isEqual:@"light.desk"] && [saved[@"service"] isEqual:@"light.turn_off"] && [saved[@"data"] isEqual:editor.string], @"save returns exact selected binding");
         saved = nil; editor.string = @"{\"entity_id\":\"all\"}"; [window save:nil];
         Check(saved == nil, @"invalid data cannot be saved");
@@ -66,6 +68,7 @@ int main(void) {
         [window toggleAdvanced:nil];
         Check(![[window valueForKey:@"advancedStack"] isHidden], @"advanced disclosure reveals data editor");
         [window toggleAdvanced:nil];
+        [window toggleAction:nil];
         Check(window.view.fittingSize.height < 550, @"collapsed editor fits the native options panel");
         NSPopUpButton *category = [window valueForKey:@"category"];
         [category selectItemAtIndex:1]; search.stringValue = @"Temperature"; [window filter:nil];

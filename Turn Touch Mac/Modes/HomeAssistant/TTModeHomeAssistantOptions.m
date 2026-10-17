@@ -21,6 +21,18 @@
         TTModeMap *map = NSAppDelegate.modeMap;
         NSString *bank = [map directionName:action.mode.modeDirection];
         NSString *direction = [map directionName:action.direction];
+        NSString *buttonName;
+        switch (action.direction) {
+            case NORTH: buttonName = TTText(@"north"); break;
+            case EAST: buttonName = TTText(@"east"); break;
+            case WEST: buttonName = TTText(@"west"); break;
+            case SOUTH: buttonName = TTText(@"south"); break;
+            default: buttonName = @""; break;
+        }
+        NSString *gesture = action.mode.modeDirection == SINGLE_TAP ? TTText(@"Single tap") :
+            action.mode.modeDirection == DOUBLE_TAP ? TTText(@"Double tap") :
+            action.mode.modeDirection == HOLD ? TTText(@"hold") : [[action.mode class] title];
+        self.browser.buttonDestination = [NSString stringWithFormat:@"%@ · %@", buttonName.capitalizedString, gesture];
         NSString *key = action.batchActionKey ?
             [NSString stringWithFormat:@"TT:mode:%@:action:%@:batchactions:%@:actionoption:homeAssistantBinding", bank, direction, action.batchActionKey] :
             [NSString stringWithFormat:@"TT:mode:%@-%@:action:%@-%@:option:homeAssistantBinding", NSStringFromClass(action.mode.class), bank, action.actionName, direction];
