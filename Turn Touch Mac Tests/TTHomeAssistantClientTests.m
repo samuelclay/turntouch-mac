@@ -59,6 +59,7 @@ int main(int argc, char **argv) {
         // Fixture returns a short-lived token, so this exercises serialized refresh as well.
         Wait(^(TTHACompletion c) { [client callAction:@"scene.turn_on" entity:@"scene.evening" data:@"{}" completion:c]; }, NO);
         TTHomeAssistantClient *restored = [[KeychainProbeClient alloc] init];
+        Check(TTHomeAssistantClient.isAwaitingKeychainAuthorization, @"panel protection is active while Keychain authorization is pending");
         Check(restored.restoringConnection && !restored.connected, @"initializer returns before Keychain authorization finishes");
         Wait(^(TTHACompletion c) { [restored refreshCatalog:c]; }, NO);
         Check(restored.connected, @"connection restored asynchronously from Keychain");
@@ -67,6 +68,7 @@ int main(int argc, char **argv) {
         [cancelled disconnect];
         Wait(^(TTHACompletion c) { [cancelled refreshCatalog:c]; }, YES);
         Check(!cancelled.connected, @"pending Keychain restore cannot undo disconnect");
+        Check(!TTHomeAssistantClient.isAwaitingKeychainAuthorization, @"panel protection ends when Keychain finishes, including cancelled restores");
         [client disconnect];
         TTHomeAssistantClient *disconnected = [[TTHomeAssistantClient alloc] init];
         Wait(^(TTHACompletion c) { [disconnected refreshCatalog:c]; }, YES);

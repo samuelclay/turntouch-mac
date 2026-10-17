@@ -2,6 +2,13 @@
 #import <Security/Security.h>
 
 NSString * const TTHAConnectionChanged = @"TTHAConnectionChanged";
+NSString * const TTHAKeychainInteractionChanged = @"TTHAKeychainInteractionChanged";
+static NSUInteger pendingKeychainInteractions;
+static void HAKeychainInteraction(BOOL active) {
+    if (active) pendingKeychainInteractions++;
+    else if (pendingKeychainInteractions) pendingKeychainInteractions--;
+    [[NSNotificationCenter defaultCenter] postNotificationName:TTHAKeychainInteractionChanged object:nil];
+}
 NSString * const TTHAClientID = @"https://turntouch.com";
 NSString * const TTHARedirectURI = @"https://turntouch.com/home-assistant/callback";
 static NSString * const TTHAKeychainService = @"com.turntouch.homeassistant";
@@ -21,6 +28,7 @@ static NSError *HAError(NSString *message) {
 @property (nonatomic) NSMutableArray *restoreWaiters;
 @end
 @implementation TTHomeAssistantClient
++ (BOOL)isAwaitingKeychainAuthorization { return pendingKeychainInteractions > 0; }
 + (instancetype)sharedClient {
     static id client; static dispatch_once_t once;
     dispatch_once(&once, ^{ client = [[self alloc] init]; });
@@ -168,6 +176,7 @@ static NSError *HAError(NSString *message) {
     NSString *normalized = [self.class normalizedURL:url];
     if (!normalized || self.restoringConnection) { completion(nil, nil); return; }
     self.restoringConnection = YES;
+    HAKeychainInteraction(YES);
     NSUInteger generation = ++self.generation;
     [self.restoreWaiters addObject:[completion copy]];
     // A Keychain authorization alert can remain open indefinitely. Never wait
@@ -182,6 +191,7 @@ static NSError *HAError(NSString *message) {
                 [NSUserDefaults.standardUserDefaults setObject:normalized forKey:@"TT:HomeAssistant:URL"];
             }
             self.restoringConnection = NO;
+            HAKeychainInteraction(NO);
             NSArray *waiters = [self.restoreWaiters copy]; [self.restoreWaiters removeAllObjects];
             for (TTHACompletion waiter in waiters) waiter(self.connected ? @YES : nil, nil);
             [[NSNotificationCenter defaultCenter] postNotificationName:TTHAConnectionChanged object:self];

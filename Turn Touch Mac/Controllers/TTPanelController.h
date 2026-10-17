@@ -31,6 +31,7 @@
 - (NSScreen *)screenForPanel;
 
 - (void)openPanel;
+- (void)dismissIfInactive;
 - (BOOL)closePanel;
 - (void)openModal:(TTModalPairing)modal;
 

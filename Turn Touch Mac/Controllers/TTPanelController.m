@@ -11,6 +11,7 @@
 #import "TTStatusItemView.h"
 #import "TTMenubarController.h"
 #import "TTPanel.h"
+#import "TTHomeAssistantClient.h"
 #import "../Views/Panel/TTPanelGeometry.h"
 
 #define PANEL_OPEN_DURATION .12
@@ -22,6 +23,7 @@
 
 @property (nonatomic, unsafe_unretained, readwrite) id<TTPanelControllerDelegate> delegate;
 @property (nonatomic) BOOL privateHasActivePanel;
+@property (nonatomic) BOOL waitingForPermissionFocus;
 
 @end
 
@@ -36,9 +38,7 @@
     return self;
 }
 
-- (void)dealloc {
-
-}
+- (void)dealloc { [[NSNotificationCenter defaultCenter] removeObserver:self]; }
 
 #pragma mark -
 
@@ -48,7 +48,7 @@
     NSPanel *panel = (id)[self window];
     [panel setDelegate:self];
     [panel setAcceptsMouseMovedEvents:YES];
-    [panel setHidesOnDeactivate:NO];
+    [panel setHidesOnDeactivate:YES];
     [panel setLevel:NSPopUpMenuWindowLevel];
     [panel setOpaque:NO];
     [panel setBackgroundColor:[NSColor clearColor]];
@@ -59,6 +59,11 @@
     [self.appDelegate.modeMap reset];
     
     self.preventClosing = NO;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keychainInteractionChanged:) name:TTHAKeychainInteractionChanged object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidResignActive:) name:NSApplicationDidResignActiveNotification object:NSApp];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(panelWillBeginSheet:) name:NSWindowWillBeginSheetNotification object:panel];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(panelDidEndSheet:) name:NSWindowDidEndSheetNotification object:panel];
+    [self updatePanelHidingPolicy];
 }
 
 #pragma mark - Public accessors
@@ -87,10 +92,48 @@
     self.hasActivePanel = NO;
 }
 
+- (void)setPreventClosing:(BOOL)preventClosing {
+    _preventClosing = preventClosing;
+    if (self.isWindowLoaded) [self updatePanelHidingPolicy];
+}
+- (void)panelWillBeginSheet:(NSNotification *)notification { [(NSPanel *)self.window setHidesOnDeactivate:NO]; }
+- (void)panelDidEndSheet:(NSNotification *)notification { [self updatePanelHidingPolicy]; }
+- (void)updatePanelHidingPolicy {
+    // Let AppKit perform ordinary menu-bar dismissal, but don't let it hide
+    // the editor behind a system authorization dialog or sign-in sheet.
+    [(NSPanel *)self.window setHidesOnDeactivate:![self hasProtectedInteraction]];
+}
+- (BOOL)hasProtectedInteraction {
+    return self.preventClosing || self.window.attachedSheet != nil || TTHomeAssistantClient.isAwaitingKeychainAuthorization;
+}
 - (void)windowDidResignKey:(NSNotification *)notification {
-    // Configuration often involves another window (sign-in, permissions, or a
-    // password manager). Keep the editor and its selection visible when focus
-    // moves away. The menu-bar icon and Escape still dismiss the panel.
+    if (!self.window.isVisible) return;
+    if ([self hasProtectedInteraction]) {
+        if (TTHomeAssistantClient.isAwaitingKeychainAuthorization) self.waitingForPermissionFocus = YES;
+        return;
+    }
+    self.hasActivePanel = NO;
+}
+- (void)applicationDidResignActive:(NSNotification *)notification {
+    if (TTHomeAssistantClient.isAwaitingKeychainAuthorization) self.waitingForPermissionFocus = self.hasActivePanel;
+    [self dismissIfInactive];
+}
+- (void)dismissIfInactive {
+    if (!NSApp.active && ![self hasProtectedInteraction]) self.hasActivePanel = NO;
+}
+- (void)keychainInteractionChanged:(NSNotification *)notification {
+    if (TTHomeAssistantClient.isAwaitingKeychainAuthorization || !self.waitingForPermissionFocus) {
+        [self updatePanelHidingPolicy];
+        return;
+    }
+    self.waitingForPermissionFocus = NO;
+    // Return from the permission prompt to the same editor, without reopening
+    // the panel (which would reset its selected button and search).
+    if (self.hasActivePanel && self.window.isVisible) {
+        [NSApp activateIgnoringOtherApps:YES];
+        [self.window makeKeyAndOrderFront:nil];
+    }
+    [self updatePanelHidingPolicy];
 }
 
 #pragma mark - Keyboard
@@ -176,17 +219,9 @@
 - (BOOL)closePanel {
 //        return NO; // Enable this line to never close app. Useful for debugging
 
-    if (self.backgroundView.panelModal != PANEL_MODAL_APP) {
-        // Don't close the window when not on main app unless clicking on status icon
-        if (self.appDelegate.menubarController.hasActiveIcon) {
-            return NO;
-        }
-    }
-    
-    if (self.preventClosing) {
-        return NO;
-    }
-    
+    if ([self hasProtectedInteraction]) return NO;
+    self.waitingForPermissionFocus = NO;
+
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:PANEL_CLOSE_DURATION];
     [[[self window] animator] setAlphaValue:0];

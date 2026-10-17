@@ -3,6 +3,7 @@
 NS_ASSUME_NONNULL_BEGIN
 typedef void (^TTHACompletion)(id _Nullable result, NSError * _Nullable error);
 extern NSString * const TTHAConnectionChanged;
+extern NSString * const TTHAKeychainInteractionChanged;
 extern NSString * const TTHAClientID;
 extern NSString * const TTHARedirectURI;
 
@@ -14,6 +15,7 @@ extern NSString * const TTHARedirectURI;
 @property (nonatomic, readonly) NSDictionary *services;
 @property (nonatomic, readonly) NSString *lastError;
 + (instancetype)sharedClient;
++ (BOOL)isAwaitingKeychainAuthorization;
 + (nullable NSString *)normalizedURL:(NSString *)input;
 + (NSArray<NSDictionary *> *)actionsForEntity:(NSDictionary *)entity services:(NSDictionary *)services;
 + (nullable NSDictionary *)serviceBodyForEntity:(NSString *)entityID data:(NSString *)json error:(NSError **)error;
