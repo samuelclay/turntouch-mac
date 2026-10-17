@@ -17,6 +17,8 @@ static NSError *HAError(NSString *message) {
 @property (nonatomic) NSURLSession *session;
 @property (nonatomic) NSMutableArray *tokenWaiters;
 @property (nonatomic) NSUInteger generation;
+@property (nonatomic, readwrite) BOOL restoringConnection;
+@property (nonatomic) NSMutableArray *restoreWaiters;
 @end
 @implementation TTHomeAssistantClient
 + (instancetype)sharedClient {
@@ -33,13 +35,8 @@ static NSError *HAError(NSString *message) {
         config.timeoutIntervalForRequest = 15;
         config.timeoutIntervalForResource = 25;
         _session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:nil];
-        NSMutableDictionary *query = [[self keychainQuery:_serverURL] mutableCopy];
-        query[(__bridge id)kSecReturnData] = @YES;
-        CFTypeRef result = NULL;
-        if (SecItemCopyMatching((__bridge CFDictionaryRef)query, &result) == errSecSuccess) {
-            NSData *data = CFBridgingRelease(result);
-            _credentials = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        }
+        _restoreWaiters = [NSMutableArray array];
+        if (_serverURL.length) [self restoreConnectionToURL:_serverURL completion:^(id result, NSError *error) {}];
     }
     return self;
 }
@@ -133,6 +130,13 @@ static NSError *HAError(NSString *message) {
     }];
 }
 - (void)withToken:(TTHACompletion)completion {
+    if (self.restoringConnection) {
+        __weak typeof(self) weakSelf = self;
+        [self.restoreWaiters addObject:[^(id result, NSError *error) {
+            [weakSelf withToken:completion];
+        } copy]];
+        return;
+    }
     if (!self.connected) { completion(nil, HAError(TTText(@"Connect to Home Assistant first."))); return; }
     if (!self.credentials[@"refresh_token"] || [self.credentials[@"expires_at"] doubleValue] > NSDate.date.timeIntervalSince1970) { completion(self.credentials[@"access_token"], nil); return; }
     [self.tokenWaiters addObject:[completion copy]];
@@ -151,18 +155,38 @@ static NSError *HAError(NSString *message) {
         for (TTHACompletion waiter in waiters) waiter(error ? nil : self.credentials[@"access_token"], error);
     }];
 }
-- (BOOL)restoreConnectionToURL:(NSString *)url {
-    NSString *normalized = [self.class normalizedURL:url];
-    if (!normalized) return NO;
-    NSMutableDictionary *query = [[self keychainQuery:normalized] mutableCopy];
+- (NSDictionary *)readCredentialsForURL:(NSString *)url {
+    NSMutableDictionary *query = [[self keychainQuery:url] mutableCopy];
     query[(__bridge id)kSecReturnData] = @YES;
     CFTypeRef result = NULL;
-    if (SecItemCopyMatching((__bridge CFDictionaryRef)query, &result) != errSecSuccess) return NO;
+    if (SecItemCopyMatching((__bridge CFDictionaryRef)query, &result) != errSecSuccess) return nil;
     NSData *data = CFBridgingRelease(result);
     NSDictionary *credentials = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    if (![credentials isKindOfClass:NSDictionary.class] || ![credentials[@"access_token"] isKindOfClass:NSString.class]) return NO;
-    self.generation++;
-    return [self saveCredentials:credentials url:normalized] == nil;
+    return [credentials isKindOfClass:NSDictionary.class] && [credentials[@"access_token"] isKindOfClass:NSString.class] ? credentials : nil;
+}
+- (void)restoreConnectionToURL:(NSString *)url completion:(TTHACompletion)completion {
+    NSString *normalized = [self.class normalizedURL:url];
+    if (!normalized || self.restoringConnection) { completion(nil, nil); return; }
+    self.restoringConnection = YES;
+    NSUInteger generation = ++self.generation;
+    [self.restoreWaiters addObject:[completion copy]];
+    // A Keychain authorization alert can remain open indefinitely. Never wait
+    // for it on AppKit's main thread, including during singleton construction.
+    dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
+        NSDictionary *credentials = [self readCredentialsForURL:normalized];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (generation == self.generation && credentials) {
+                self.credentials = credentials;
+                if (![self.serverURL isEqual:normalized]) { self.entities = @[]; self.services = @{}; }
+                self.serverURL = normalized;
+                [NSUserDefaults.standardUserDefaults setObject:normalized forKey:@"TT:HomeAssistant:URL"];
+            }
+            self.restoringConnection = NO;
+            NSArray *waiters = [self.restoreWaiters copy]; [self.restoreWaiters removeAllObjects];
+            for (TTHACompletion waiter in waiters) waiter(self.connected ? @YES : nil, nil);
+            [[NSNotificationCenter defaultCenter] postNotificationName:TTHAConnectionChanged object:self];
+        });
+    });
 }
 - (void)refreshCatalog:(TTHACompletion)completion {
     NSUInteger generation = self.generation;

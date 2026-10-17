@@ -86,6 +86,7 @@
   "Action": [
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Action 1st": [
@@ -203,6 +204,7 @@
     "Turn Touch Mac/TTLocalization.m"
   ],
   "Automations": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "BRIDGE ID": [
@@ -336,6 +338,7 @@
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
   ],
   "Climate": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Close": [
@@ -461,6 +464,7 @@
     "Turn Touch Mac/Views/Settings/TTModalDevices.m"
   ],
   "Connecting to your home…": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Connecting...": [
@@ -555,6 +559,7 @@
     "Turn Touch Mac/Views/DFU/TTDeviceTitleView.m"
   ],
   "Covers": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Custom": [
@@ -670,10 +675,6 @@
   "Enter your TP-Link/Kasa account credentials for newer devices that use KLAP authentication.": [
     "Turn Touch Mac/Modes/Kasa/TTModeKasaConnected.m",
     "Turn Touch Mac/Modes/Kasa/TTModeKasaSwitchOptions.m"
-  ],
-  "Entities: %lu": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Error (%li): %@": [
     "Turn Touch Mac/Modes/Custom/TTModeCustom.m"
@@ -873,6 +874,7 @@
   ],
   "Home Assistant menu": [
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Home Assistant returned HTTP %ld. Check the action and its required fields.": [
@@ -1015,6 +1017,7 @@
     "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleaf.m"
   ],
   "Lights": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Lights and scenes": [
@@ -1061,6 +1064,7 @@
     "Turn Touch Mac/Modes/Nanoleaf/Base.lproj/TTModeNanoleafConnect.xib:sub-ZN-mqc.title"
   ],
   "Media players": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Menu": [
@@ -1198,6 +1202,7 @@
     "Turn Touch Mac/Modes/Govee/TTModeGoveeAPIClient.m"
   ],
   "No matching entities": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "No network connection": [
@@ -1260,6 +1265,7 @@
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Other": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Overrides system volume": [
@@ -1556,12 +1562,14 @@
     "Application-owned status or selector label; translated only at rendering, never in state comparisons."
   ],
   "Scenes": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Scenes activate a saved look. Scripts run a sequence. Automations created from blueprints appear here too.": [
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Scripts": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Scripts, files, and websites": [
@@ -1576,9 +1584,7 @@
     "Turn Touch Mac/Modes/Web/TTModeWeb.m"
   ],
   "Search Home Assistant": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
-  ],
-  "Search entities, devices, rooms, or entity IDs": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Search for Kasa devices...": [
@@ -1787,6 +1793,7 @@
     "Turn Touch Mac/Views/FTUX/TTModalFTUXView.m"
   ],
   "Switches": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "System-level controls": [

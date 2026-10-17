@@ -197,7 +197,6 @@
 "Enter your Govee API key (Govee Home > Settings > API)" = "Govee API anahtarınızı girin (Govee Home > Settings > API)";
 "Enter your Govee API key (from Govee Home App > Settings > My Profile > Apply for API Key)" = "Govee API anahtarınızı girin (Govee Home Uygulaması > Settings > My Profile > Apply for API Key bölümünden)";
 "Enter your TP-Link/Kasa account credentials for newer devices that use KLAP authentication." = "KLAP kimlik doğrulaması kullanan yeni cihazlar için TP-Link/Kasa hesabı bilgilerinizi girin.";
-"Entities: %lu" = "Varlıklar: %lu";
 "Error (%li): %@" = "Hata (%li): %@";
 "Error getting %@, HTTP status code %li" = "%@ alınırken hata, HTTP durum kodu %li";
 "Error on BLE Notification\n Message: %@" = "BLE bildirimi hatası\n Mesaj: %@";
@@ -451,7 +450,6 @@
 "Scroll down" = "Aşağı kaydır";
 "Scroll up" = "Yukarı kaydır";
 "Search Home Assistant" = "Home Assistant içinde ara";
-"Search entities, devices, rooms, or entity IDs" = "Varlıklarda, cihazlarda, odalarda veya varlık kimliklerinde ara";
 "Search for Kasa devices..." = "Kasa cihazları aranıyor...";
 "Search for New Devices..." = "Yeni cihazları ara...";
 "Search for Sonos devices..." = "Sonos cihazları aranıyor...";

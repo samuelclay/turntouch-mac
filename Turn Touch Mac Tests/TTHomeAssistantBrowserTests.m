@@ -36,6 +36,8 @@ int main(void) {
         NSTextView *editor = [window valueForKey:@"dataEditor"];
         NSSearchField *search = [window valueForKey:@"search"];
         Check([[window valueForKey:@"filtered"] count] == 2, @"default browser hides read-only sensors");
+        Check([[window valueForKey:@"status"] isHidden], @"connected browser does not show a redundant entity count");
+        Check([[window valueForKey:@"actionOptionsStack"] isHidden], @"advanced action options stay out of the default browsing view");
         Check([picker.selectedItem.representedObject isEqual:@"light.turn_off"], @"saved action restores instead of default toggle");
         Check(picker.hidden && [[window valueForKey:@"advancedStack"] isHidden], @"action details and JSON start collapsed");
         editor.string = @"{\"transition\": 2}";

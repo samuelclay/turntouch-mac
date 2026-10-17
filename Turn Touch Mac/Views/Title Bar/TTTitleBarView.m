@@ -153,7 +153,6 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
 
 - (void)popoverDidClose:(NSNotification *)notification {
     self.appDelegate.panelController.preventClosing = NO;
-    if (!NSApp.active) self.appDelegate.panelController.hasActivePanel = NO;
 }
 
 @end

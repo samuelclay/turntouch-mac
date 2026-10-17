@@ -197,7 +197,6 @@
 "Enter your Govee API key (Govee Home > Settings > API)" = "הזן את מפתח ה־API של Govee (Govee Home > Settings > API)";
 "Enter your Govee API key (from Govee Home App > Settings > My Profile > Apply for API Key)" = "הזן את מפתח ה-API שלך ב-Govee (באפליקציית Govee Home: Settings > My Profile > Apply for API Key)";
 "Enter your TP-Link/Kasa account credentials for newer devices that use KLAP authentication." = "הזן את פרטי חשבון TP-Link/Kasa שלך עבור מכשירים חדשים יותר שמשתמשים באימות KLAP.";
-"Entities: %lu" = "ישויות: %lu";
 "Error (%li): %@" = "שגיאה (%li): %@";
 "Error getting %@, HTTP status code %li" = "שגיאה בקבלת %@, קוד מצב HTTP %li";
 "Error on BLE Notification\n Message: %@" = "שגיאה בהתראת BLE\n הודעה: %@";
@@ -451,7 +450,6 @@
 "Scroll down" = "גלילה למטה";
 "Scroll up" = "גלילה למעלה";
 "Search Home Assistant" = "חיפוש ב-Home Assistant";
-"Search entities, devices, rooms, or entity IDs" = "חיפוש ישויות, מכשירים, חדרים או מזהי ישויות";
 "Search for Kasa devices..." = "מחפש מכשירי Kasa...";
 "Search for New Devices..." = "חיפוש מכשירים חדשים...";
 "Search for Sonos devices..." = "מחפש מכשירי Sonos...";

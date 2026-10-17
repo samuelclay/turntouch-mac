@@ -16,6 +16,18 @@ static id Wait(void (^start)(TTHACompletion), BOOL expectError) {
     Check(expectError == (failure != nil), failure.localizedDescription ?: @"expected failure");
     return output;
 }
+@interface TTHomeAssistantClient (KeychainTest)
+- (NSDictionary *)readCredentialsForURL:(NSString *)url;
+@end
+static BOOL keychainReadOffMain;
+@interface KeychainProbeClient : TTHomeAssistantClient
+@end
+@implementation KeychainProbeClient
+- (NSDictionary *)readCredentialsForURL:(NSString *)url {
+    keychainReadOffMain = !NSThread.isMainThread;
+    return [super readCredentialsForURL:url];
+}
+@end
 int main(int argc, char **argv) {
     @autoreleasepool {
         // Avoid sharing the app's server preference during tests.
@@ -46,10 +58,18 @@ int main(int argc, char **argv) {
         Wait(^(TTHACompletion c) { [client exchangeCode:@"fixture-code" serverURL:server completion:c]; }, NO);
         // Fixture returns a short-lived token, so this exercises serialized refresh as well.
         Wait(^(TTHACompletion c) { [client callAction:@"scene.turn_on" entity:@"scene.evening" data:@"{}" completion:c]; }, NO);
-        TTHomeAssistantClient *restored = [[TTHomeAssistantClient alloc] init];
-        Check(restored.connected, @"connection restored from Keychain");
+        TTHomeAssistantClient *restored = [[KeychainProbeClient alloc] init];
+        Check(restored.restoringConnection && !restored.connected, @"initializer returns before Keychain authorization finishes");
+        Wait(^(TTHACompletion c) { [restored refreshCatalog:c]; }, NO);
+        Check(restored.connected, @"connection restored asynchronously from Keychain");
+        Check(keychainReadOffMain, @"Keychain read never blocks the AppKit main thread");
+        TTHomeAssistantClient *cancelled = [[TTHomeAssistantClient alloc] init];
+        [cancelled disconnect];
+        Wait(^(TTHACompletion c) { [cancelled refreshCatalog:c]; }, YES);
+        Check(!cancelled.connected, @"pending Keychain restore cannot undo disconnect");
         [client disconnect];
         TTHomeAssistantClient *disconnected = [[TTHomeAssistantClient alloc] init];
+        Wait(^(TTHACompletion c) { [disconnected refreshCatalog:c]; }, YES);
         Check(!disconnected.connected, @"disconnect removes Keychain credentials");
         Wait(^(TTHACompletion c) { [client callAction:@"light.toggle" entity:@"light.desk" data:@"{}" completion:c]; }, YES);
         if (originalURL) [defaults setObject:originalURL forKey:@"TT:HomeAssistant:URL"]; else [defaults removeObjectForKey:@"TT:HomeAssistant:URL"];

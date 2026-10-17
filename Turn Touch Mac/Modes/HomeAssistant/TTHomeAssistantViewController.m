@@ -37,6 +37,8 @@
 @property NSStackView *connectionStack;
 @property NSStackView *tokenStack;
 @property NSStackView *advancedStack;
+@property NSStackView *actionOptionsStack;
+@property NSTextField *emptyState;
 @property NSButton *actionDisclosure;
 @property NSButton *advancedDisclosure;
 @property NSPopUpButton *connectionMenu;
@@ -59,19 +61,20 @@
     NSTextField *label = [[NSTextField alloc] initWithFrame:frame];
     label.stringValue = text; label.editable = NO; label.selectable = YES;
     label.bordered = NO; label.drawsBackground = NO;
-    label.font = [NSFont systemFontOfSize:size];
+    label.font = [NSFont fontWithName:@"Effra" size:size] ?: [NSFont systemFontOfSize:size];
     return label;
 }
 - (NSButton *)button:(NSString *)title action:(SEL)action {
     NSButton *button = [NSButton buttonWithTitle:title target:self action:action];
     button.bezelStyle = NSBezelStyleRounded;
+    button.font = [NSFont fontWithName:@"Effra" size:13] ?: [NSFont systemFontOfSize:13];
     return button;
 }
 - (NSButton *)disclosure:(NSString *)title action:(SEL)action {
     NSButton *button = [self button:title action:action];
     button.bordered = NO;
     button.alignment = NSTextAlignmentLeft;
-    button.font = [NSFont systemFontOfSize:12 weight:NSFontWeightMedium];
+    button.font = [NSFont fontWithName:@"Effra" size:13] ?: [NSFont systemFontOfSize:13];
     [button.heightAnchor constraintEqualToConstant:26].active = YES;
     return button;
 }
@@ -91,12 +94,14 @@
     self.view.layer.backgroundColor = NSColor.whiteColor.CGColor;
 
     self.search = [[NSSearchField alloc] init];
-    self.search.placeholderString = TTText(@"Search entities, devices, rooms, or entity IDs");
+    self.search.placeholderString = TTText(@"Search Home Assistant");
+    self.search.font = [NSFont fontWithName:@"Effra" size:13] ?: [NSFont systemFontOfSize:13];
     self.search.delegate = self;
     self.search.accessibilityLabel = TTText(@"Search Home Assistant");
     [self.search.heightAnchor constraintEqualToConstant:28].active = YES;
     self.category = [[NSPopUpButton alloc] initWithFrame:NSZeroRect pullsDown:NO];
     [self.category addItemsWithTitles:@[TTText(@"Controllable entities"), TTText(@"All entities"), TTText(@"Lights"), TTText(@"Switches"), TTText(@"Scenes"), TTText(@"Scripts"), TTText(@"Automations"), TTText(@"Covers"), TTText(@"Media players"), TTText(@"Climate"), TTText(@"Other")]];
+    self.category.font = self.search.font;
     self.category.target = self; self.category.action = @selector(filter:);
     self.category.accessibilityLabel = TTText(@"Filter");
     self.connectionMenu = [[NSPopUpButton alloc] initWithFrame:NSZeroRect pullsDown:YES];
@@ -104,6 +109,11 @@
     self.connectionMenu.accessibilityLabel = TTText(@"Home Assistant menu");
     self.connectionMenu.toolTip = TTText(@"Home Assistant menu");
     [self.connectionMenu addItemWithTitle:@"•••"];
+    ((NSPopUpButtonCell *)self.connectionMenu.cell).arrowPosition = NSPopUpNoArrow;
+    if (@available(macOS 11.0, *)) {
+        self.connectionMenu.itemArray.firstObject.image = [NSImage imageWithSystemSymbolName:@"ellipsis.circle" accessibilityDescription:TTText(@"Home Assistant menu")];
+        self.connectionMenu.itemArray.firstObject.title = @"";
+    }
     [self menuItem:TTText(@"Connection…") action:@selector(showConnection:)];
     self.signInItem = [self menuItem:TTText(@"Sign in…") action:@selector(signInFromMenu:)];
     [self menuItem:TTText(@"Use access token…") action:@selector(showToken:)];
@@ -138,8 +148,9 @@
     NSScrollView *scroll = [[NSScrollView alloc] init];
     scroll.borderType = NSNoBorder; scroll.hasVerticalScroller = YES;
     scroll.wantsLayer = YES; scroll.layer.cornerRadius = 8;
-    scroll.layer.borderWidth = 1; scroll.layer.borderColor = NSColor.separatorColor.CGColor;
-    [scroll.heightAnchor constraintEqualToConstant:190].active = YES;
+    scroll.layer.borderWidth = 1; scroll.layer.borderColor = [NSColor colorWithCalibratedWhite:0.9 alpha:1].CGColor;
+    scroll.scrollerStyle = NSScrollerStyleOverlay;
+    [scroll.heightAnchor constraintEqualToConstant:210].active = YES;
     self.table = [[NSTableView alloc] initWithFrame:NSMakeRect(0, 0, 350, 190)];
     NSTableColumn *column = [[NSTableColumn alloc] initWithIdentifier:@"entity"];
     column.width = 340; column.resizingMask = NSTableColumnAutoresizingMask;
@@ -148,8 +159,28 @@
     self.table.delegate = self; self.table.dataSource = self;
     self.table.accessibilityLabel = TTText(@"Home Assistant entities");
     self.table.allowsEmptySelection = YES;
-    self.table.usesAlternatingRowBackgroundColors = YES;
+    self.table.usesAlternatingRowBackgroundColors = NO;
+    self.table.gridStyleMask = NSTableViewSolidHorizontalGridLineMask;
+    self.table.gridColor = [NSColor colorWithCalibratedWhite:0.94 alpha:1];
     scroll.documentView = self.table;
+    NSView *results = [[NSView alloc] init];
+    scroll.translatesAutoresizingMaskIntoConstraints = NO;
+    [results addSubview:scroll];
+    self.emptyState = [self label:@"" frame:NSZeroRect size:13];
+    self.emptyState.alignment = NSTextAlignmentCenter;
+    self.emptyState.textColor = NSColor.secondaryLabelColor;
+    self.emptyState.maximumNumberOfLines = 3;
+    self.emptyState.translatesAutoresizingMaskIntoConstraints = NO;
+    [results addSubview:self.emptyState];
+    [NSLayoutConstraint activateConstraints:@[
+        [scroll.leadingAnchor constraintEqualToAnchor:results.leadingAnchor],
+        [scroll.trailingAnchor constraintEqualToAnchor:results.trailingAnchor],
+        [scroll.topAnchor constraintEqualToAnchor:results.topAnchor],
+        [scroll.bottomAnchor constraintEqualToAnchor:results.bottomAnchor],
+        [self.emptyState.centerYAnchor constraintEqualToAnchor:results.centerYAnchor],
+        [self.emptyState.leadingAnchor constraintEqualToAnchor:results.leadingAnchor constant:24],
+        [self.emptyState.trailingAnchor constraintEqualToAnchor:results.trailingAnchor constant:-24]
+    ]];
     self.detail = [self label:TTText(@"Choose an entity") frame:NSZeroRect size:13];
     self.detail.font = [NSFont systemFontOfSize:13 weight:NSFontWeightSemibold];
     self.detail.lineBreakMode = NSLineBreakByTruncatingTail;
@@ -158,6 +189,7 @@
     self.actionPicker = [[NSPopUpButton alloc] initWithFrame:NSZeroRect pullsDown:NO];
     self.actionPicker.target = self; self.actionPicker.action = @selector(actionChanged:);
     self.actionPicker.accessibilityLabel = TTText(@"Action");
+    self.actionPicker.font = self.search.font;
     self.actionPicker.hidden = YES;
     self.advancedDisclosure = [self disclosure:TTText(@"Action data (optional JSON)") action:@selector(toggleAdvanced:)];
     self.fieldsHelp = [self label:@"" frame:NSZeroRect size:11];
@@ -174,6 +206,8 @@
     self.dataEditor.string = @"{}"; editor.documentView = self.dataEditor;
     self.advancedStack = [self column:@[self.fieldsHelp, editor] spacing:6];
     self.advancedStack.hidden = YES;
+    self.actionOptionsStack = [self column:@[self.actionPicker, self.advancedDisclosure, self.advancedStack] spacing:8];
+    self.actionOptionsStack.hidden = YES;
     self.testButton = [self button:TTText(@"Test action") action:@selector(test:)];
     self.saveButton = [self button:TTText(@"Choose for button") action:@selector(save:)];
     NSStackView *buttons = [NSStackView stackViewWithViews:@[self.testButton, self.saveButton]];
@@ -184,8 +218,11 @@
     self.status = [self label:@"" frame:NSZeroRect size:11];
     self.status.textColor = NSColor.secondaryLabelColor;
     self.status.maximumNumberOfLines = 3;
-    [self.status.heightAnchor constraintEqualToConstant:42].active = YES;
-    self.stack = [self column:@[self.search, filters, self.connectionStack, scroll, self.detail, self.actionDisclosure, self.actionPicker, self.advancedDisclosure, self.advancedStack, buttons, self.status] spacing:8];
+    [self.status.heightAnchor constraintEqualToConstant:32].active = YES;
+    NSBox *separator = [[NSBox alloc] init];
+    separator.boxType = NSBoxSeparator;
+    [separator.heightAnchor constraintEqualToConstant:1].active = YES;
+    self.stack = [self column:@[self.search, filters, self.connectionStack, results, self.actionDisclosure, self.actionOptionsStack, separator, buttons, self.status] spacing:10];
     [self.view addSubview:self.stack];
     [NSLayoutConstraint activateConstraints:@[
         [self.stack.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:12],
@@ -197,7 +234,7 @@
     self.browser = [[NSNetServiceBrowser alloc] init]; self.browser.delegate = self;
     [self.browser searchForServicesOfType:@"_home-assistant._tcp." inDomain:@"local."];
     [self updateDisclosureTitles];
-    [self setMessage:self.client.connected ? [NSString stringWithFormat:TTText(@"Entities: %lu"), (unsigned long)self.client.entities.count] : TTText(@"Connect using the Home Assistant menu.") error:NO];
+    [self setMessage:@"" error:NO];
     [self filter:nil];
 }
 - (NSMenuItem *)menuItem:(NSString *)title action:(SEL)action {
@@ -217,16 +254,24 @@
     else [self.view.window makeFirstResponder:self.address];
 }
 - (void)toggleAction:(id)sender {
-    self.actionPicker.hidden = !self.actionPicker.hidden;
+    self.actionOptionsStack.hidden = !self.actionOptionsStack.hidden;
+    self.actionPicker.hidden = self.actionOptionsStack.hidden;
     [self updateDisclosureTitles];
 }
 - (void)toggleAdvanced:(id)sender {
     self.advancedStack.hidden = !self.advancedStack.hidden;
+    if (!self.advancedStack.hidden) { self.actionOptionsStack.hidden = NO; self.actionPicker.hidden = NO; }
     [self updateDisclosureTitles];
 }
 - (void)updateDisclosureTitles {
     NSString *action = self.actionPicker.selectedItem ? [NSString stringWithFormat:TTText(@"Action: %@"), self.actionPicker.titleOfSelectedItem] : TTText(@"Action");
-    self.actionDisclosure.title = [NSString stringWithFormat:@"%@ %@", self.actionPicker.hidden ? @"▸" : @"▾", action];
+    self.actionDisclosure.title = self.actionPicker.titleOfSelectedItem ?: TTText(@"Action");
+    if (@available(macOS 11.0, *)) {
+        self.actionDisclosure.image = [NSImage imageWithSystemSymbolName:self.actionOptionsStack.hidden ? @"chevron.down" : @"chevron.up" accessibilityDescription:nil];
+        self.actionDisclosure.imagePosition = NSImageRight;
+    } else {
+        self.actionDisclosure.title = [self.actionDisclosure.title stringByAppendingString:self.actionOptionsStack.hidden ? @"  ▾" : @"  ▴"];
+    }
     self.actionDisclosure.accessibilityLabel = action;
     self.actionDisclosure.accessibilityValue = @(!self.actionPicker.hidden);
     self.advancedDisclosure.title = [NSString stringWithFormat:@"%@ %@", self.advancedStack.hidden ? @"▸" : @"▾", TTText(@"Action data (optional JSON)")];
@@ -255,6 +300,7 @@
 - (void)dealloc { [[NSNotificationCenter defaultCenter] removeObserver:self]; [self.browser stop]; }
 - (void)setMessage:(NSString *)message error:(BOOL)error {
     self.status.stringValue = message;
+    self.status.hidden = !message.length;
     self.status.textColor = error ? NSColor.systemRedColor : NSColor.secondaryLabelColor;
 }
 - (void)setBusy:(BOOL)busy { _busy = busy; [self updateButtons]; }
@@ -268,6 +314,11 @@
     self.saveButton.toolTip = TTText(@"Assign this action to the selected remote button");
     self.signInItem.enabled = !self.busy;
     self.actionDisclosure.enabled = chosen;
+    self.actionDisclosure.hidden = !chosen;
+    if (!chosen) { self.actionOptionsStack.hidden = YES; self.actionPicker.hidden = YES; }
+    self.emptyState.hidden = self.filtered.count > 0;
+    self.emptyState.stringValue = self.client.restoringConnection ? TTText(@"Connecting to your home…") :
+        self.client.connected ? TTText(@"No matching entities") : TTText(@"Connect using the Home Assistant menu.");
     self.advancedDisclosure.enabled = chosen;
     self.connectButton.enabled = !self.busy;
     self.tokenButton.enabled = !self.busy;
@@ -298,7 +349,9 @@
         self.address.stringValue = url;
         [self setMessage:[NSString stringWithFormat:TTText(@"Found %@ on your network. Sign in to browse your home."), service.name] error:NO];
     }
-    if (!self.busy && !self.client.connected && [self.address.stringValue isEqual:url] && [self.client restoreConnectionToURL:url]) [self refresh:nil];
+    if (!self.busy && !self.client.connected && !self.client.restoringConnection && [self.address.stringValue isEqual:url]) {
+        [self.client restoreConnectionToURL:url completion:^(id result, NSError *error) {}];
+    }
 }
 - (void)netServiceBrowser:(NSNetServiceBrowser *)browser didRemoveService:(NSNetService *)service moreComing:(BOOL)moreComing {
     for (NSNetService *found in [self.discoveredServices copy]) if ([found.name isEqual:service.name]) [self.discoveredServices removeObject:found];
@@ -321,7 +374,7 @@
 }
 - (void)finishRefresh:(NSError *)error {
     if (error) [self setMessage:error.localizedDescription error:YES];
-    else [self setMessage:[NSString stringWithFormat:TTText(@"Entities: %lu"), (unsigned long)self.client.entities.count] error:NO];
+    else [self setMessage:@"" error:NO];
     if (!error) { self.connectionStack.hidden = YES; self.tokenStack.hidden = YES; }
     [self filter:nil];
 }
@@ -383,6 +436,7 @@
     if (error.code != NSURLErrorCancelled) { [self setMessage:error.localizedDescription error:YES]; [self closeAuthentication]; }
 }
 - (void)catalogChanged:(NSNotification *)notification {
+    if (self.client.connected && !self.client.entities.count && !self.busy && !self.client.lastError.length) [self refresh:nil];
     [self filter:nil];
     if (self.client.lastError.length) [self setMessage:self.client.lastError error:YES];
 }
@@ -416,11 +470,24 @@
     NSDictionary *entity = self.filtered[row];
     CGFloat width = MAX(280, tableView.bounds.size.width);
     NSView *view = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, width, 49)];
-    NSTextField *name = [self label:entity[@"attributes"][@"friendly_name"] ?: entity[@"entity_id"] frame:NSMakeRect(9, 25, width - 18, 20) size:13];
-    name.font = [NSFont boldSystemFontOfSize:13]; name.autoresizingMask = NSViewWidthSizable; name.selectable = NO; name.lineBreakMode = NSLineBreakByTruncatingTail; [view addSubview:name];
-    NSString *subtitle = [NSString stringWithFormat:@"%@  ·  %@%@", entity[@"entity_id"], entity[@"state"], [entity[@"tt_area"] length] ? [@"  ·  " stringByAppendingString:entity[@"tt_area"]] : @""];
-    NSTextField *sub = [self label:subtitle frame:NSMakeRect(9, 4, width - 18, 18) size:11];
-    sub.textColor = NSColor.secondaryLabelColor; sub.autoresizingMask = NSViewWidthSizable; sub.selectable = NO; sub.lineBreakMode = NSLineBreakByTruncatingTail; [view addSubview:sub]; return view;
+    NSString *domain = [entity[@"entity_id"] componentsSeparatedByString:@"."].firstObject;
+    NSDictionary *symbols = @{@"light": @"lightbulb", @"switch": @"powerplug", @"scene": @"sparkles", @"script": @"play.rectangle", @"automation": @"gearshape.2", @"cover": @"window.vertical.closed", @"media_player": @"speaker.wave.2", @"climate": @"thermometer"};
+    if (@available(macOS 11.0, *)) {
+        NSImageView *icon = [[NSImageView alloc] initWithFrame:NSMakeRect(10, 15, 20, 20)];
+        icon.image = [NSImage imageWithSystemSymbolName:symbols[domain] ?: @"house" accessibilityDescription:nil];
+        icon.contentTintColor = [NSColor colorWithCalibratedRed:0.32 green:0.52 blue:0.67 alpha:1];
+        [view addSubview:icon];
+    }
+    NSTextField *name = [self label:entity[@"attributes"][@"friendly_name"] ?: entity[@"entity_id"] frame:NSMakeRect(40, 25, width - 52, 20) size:14];
+    name.textColor = [NSColor colorWithCalibratedRed:0.25 green:0.29 blue:0.38 alpha:1];
+    name.autoresizingMask = NSViewWidthSizable; name.selectable = NO; name.lineBreakMode = NSLineBreakByTruncatingTail; [view addSubview:name];
+    NSDictionary *categories = @{@"light": TTText(@"Lights"), @"switch": TTText(@"Switches"), @"scene": TTText(@"Scenes"), @"script": TTText(@"Scripts"), @"automation": TTText(@"Automations"), @"cover": TTText(@"Covers"), @"media_player": TTText(@"Media players"), @"climate": TTText(@"Climate")};
+    NSString *kind = categories[domain] ?: TTText(@"Other");
+    NSString *subtitle = [entity[@"tt_area"] length] ? [NSString stringWithFormat:@"%@ · %@", entity[@"tt_area"], kind] : kind;
+    NSTextField *sub = [self label:subtitle frame:NSMakeRect(40, 5, width - 52, 17) size:12];
+    sub.textColor = NSColor.secondaryLabelColor; sub.autoresizingMask = NSViewWidthSizable; sub.selectable = NO; sub.lineBreakMode = NSLineBreakByTruncatingTail; [view addSubview:sub];
+    view.toolTip = [NSString stringWithFormat:@"%@ · %@", entity[@"entity_id"], entity[@"state"]];
+    return view;
 }
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
     NSString *previousAction = self.actionPicker.selectedItem.representedObject;
@@ -459,11 +526,11 @@
     if (self.table.selectedRow < 0 || !self.actionPicker.selectedItem) return nil;
     NSError *error;
     NSDictionary *body = [TTHomeAssistantClient serviceBodyForEntity:self.selectedEntityID data:self.dataEditor.string error:&error];
-    if (!body) { self.advancedStack.hidden = NO; [self updateDisclosureTitles]; [self setMessage:error.localizedDescription error:YES]; return nil; }
+    if (!body) { self.actionOptionsStack.hidden = NO; self.actionPicker.hidden = NO; self.advancedStack.hidden = NO; [self updateDisclosureTitles]; [self setMessage:error.localizedDescription error:YES]; return nil; }
     NSDictionary *metadata = self.actions[self.actionPicker.indexOfSelectedItem][@"metadata"];
     for (NSString *key in metadata[@"fields"]) {
         if ([metadata[@"fields"][key][@"required"] boolValue] && !body[key] && !metadata[@"fields"][key][@"default"]) {
-            self.advancedStack.hidden = NO; [self updateDisclosureTitles];
+            self.actionOptionsStack.hidden = NO; self.actionPicker.hidden = NO; self.advancedStack.hidden = NO; [self updateDisclosureTitles];
             [self setMessage:[TTText(@"Add the required action data field: ") stringByAppendingString:key] error:YES]; return nil;
         }
     }

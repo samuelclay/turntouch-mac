@@ -197,7 +197,6 @@
 "Enter your Govee API key (Govee Home > Settings > API)" = "輸入 Govee API 金鑰（Govee Home > Settings > API）";
 "Enter your Govee API key (from Govee Home App > Settings > My Profile > Apply for API Key)" = "輸入您的 Govee API 金鑰（於 Govee Home App > Settings > My Profile > Apply for API Key 取得）";
 "Enter your TP-Link/Kasa account credentials for newer devices that use KLAP authentication." = "輸入您的 TP-Link/Kasa 帳戶認證資料，以連線使用 KLAP 驗證的新型裝置。";
-"Entities: %lu" = "實體：%lu";
 "Error (%li): %@" = "錯誤 (%li)：%@";
 "Error getting %@, HTTP status code %li" = "取得 %@ 時發生錯誤，HTTP 狀態碼 %li";
 "Error on BLE Notification\n Message: %@" = "BLE 通知發生錯誤\n 訊息：%@";
@@ -451,7 +450,6 @@
 "Scroll down" = "向下捲動";
 "Scroll up" = "向上捲動";
 "Search Home Assistant" = "搜尋 Home Assistant";
-"Search entities, devices, rooms, or entity IDs" = "搜尋實體、裝置、房間或實體 ID";
 "Search for Kasa devices..." = "正在搜尋 Kasa 裝置⋯";
 "Search for New Devices..." = "搜尋新裝置…";
 "Search for Sonos devices..." = "正在搜尋 Sonos 裝置…";
