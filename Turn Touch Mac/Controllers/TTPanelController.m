@@ -48,6 +48,7 @@
     NSPanel *panel = (id)[self window];
     [panel setDelegate:self];
     [panel setAcceptsMouseMovedEvents:YES];
+    [panel setHidesOnDeactivate:NO];
     [panel setLevel:NSPopUpMenuWindowLevel];
     [panel setOpaque:NO];
     [panel setBackgroundColor:[NSColor clearColor]];
@@ -87,9 +88,9 @@
 }
 
 - (void)windowDidResignKey:(NSNotification *)notification {
-    if ([[self window] isVisible]) {
-        self.hasActivePanel = NO;
-    }
+    // Configuration often involves another window (sign-in, permissions, or a
+    // password manager). Keep the editor and its selection visible when focus
+    // moves away. The menu-bar icon and Escape still dismiss the panel.
 }
 
 #pragma mark - Keyboard
@@ -192,7 +193,8 @@
     [NSAnimationContext endGrouping];
     
     dispatch_after(dispatch_walltime(NULL, NSEC_PER_SEC * PANEL_CLOSE_DURATION * 2), dispatch_get_main_queue(), ^{
-        [self.window orderOut:nil];
+        // A prompt can return focus before the fade-out finishes.
+        if (!self.hasActivePanel) [self.window orderOut:nil];
     });
     
     return YES;
