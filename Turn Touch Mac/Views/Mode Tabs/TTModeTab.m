@@ -74,9 +74,9 @@
 }
 
 - (void)setupTitleAttributes {
-    self.modeTitle = self.modeDirection == SINGLE_TAP ? @"SINGLE TAP" :
-        self.modeDirection == DOUBLE_TAP ? @"DOUBLE TAP" :
-        self.modeDirection == HOLD ? @"HOLD" : [[[self.itemMode class] title] uppercaseString];
+    self.modeTitle = self.modeDirection == SINGLE_TAP ? TTText(@"SINGLE TAP") :
+        self.modeDirection == DOUBLE_TAP ? TTText(@"DOUBLE TAP") :
+        self.modeDirection == HOLD ? [TTText(@"hold") uppercaseString] : [[[self.itemMode class] title] uppercaseString];
     NSShadow *stringShadow = [[NSShadow alloc] init];
     stringShadow.shadowColor = [NSColor whiteColor];
     stringShadow.shadowOffset = NSMakeSize(0, -1);

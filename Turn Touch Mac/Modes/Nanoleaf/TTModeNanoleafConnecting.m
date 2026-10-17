@@ -15,7 +15,7 @@
 }
 
 - (void)setConnectingWithMessage:(NSString *)message {
-    if (!message) message = @"Connecting to Nanoleaf...";
+    if (!message) message = TTText(@"Connecting to Nanoleaf...");
     self.progressMessage.stringValue = message;
     [self.progressIndicator startAnimation:self];
 }

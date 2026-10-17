@@ -15,7 +15,7 @@
 }
 
 - (void)setConnectingWithMessage:(NSString *)message {
-    if (!message) message = @"Connecting to Kasa devices...";
+    if (!message) message = TTText(@"Connecting to Kasa devices...");
 
     self.progressMessage.stringValue = message;
     [self.progressIndicator startAnimation:self];

@@ -95,11 +95,11 @@ static NSMutableArray *recentlyFoundDevices;
 #pragma mark - Mode Info
 
 + (NSString *)title {
-    return @"TP-Link Kasa";
+    return TTText(@"TP-Link Kasa");
 }
 
 + (NSString *)description {
-    return @"Smart plugs and switches";
+    return TTText(@"Smart plugs and switches");
 }
 
 + (NSString *)imageName {
@@ -117,15 +117,15 @@ static NSMutableArray *recentlyFoundDevices;
 #pragma mark - Action Titles
 
 - (NSString *)titleTTModeKasaDeviceOn {
-    return @"Turn on";
+    return TTText(@"Turn on");
 }
 
 - (NSString *)titleTTModeKasaDeviceOff {
-    return @"Turn off";
+    return TTText(@"Turn off");
 }
 
 - (NSString *)titleTTModeKasaDeviceToggle {
-    return @"Toggle device";
+    return TTText(@"Toggle device");
 }
 
 #pragma mark - Action Images

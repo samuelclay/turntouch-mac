@@ -20,11 +20,11 @@ NSString *const kAirfoilPlaylistShuffleDouble = @"AirfoilPlaylistShuffleDouble";
 #pragma mark - Mode
 
 + (NSString *)title {
-    return @"Airfoil";
+    return TTText(@"Airfoil");
 }
 
 + (NSString *)description {
-    return @"Control connected speakers with Airfoil";
+    return TTText(@"Control connected speakers with Airfoil");
 }
 
 + (NSString *)imageName {
@@ -44,16 +44,16 @@ NSString *const kAirfoilPlaylistShuffleDouble = @"AirfoilPlaylistShuffleDouble";
 #pragma mark - Action Titles
 
 - (NSString *)titleTTModeAirfoilVolumeUp {
-    return @"Volume up";
+    return TTText(@"Volume up");
 }
 - (NSString *)titleTTModeAirfoilVolumeDown {
-    return @"Volume down";
+    return TTText(@"Volume down");
 }
 - (NSString *)titleTTModeAirfoilVolumeJump {
-    return @"Volume jump";
+    return TTText(@"Volume jump");
 }
 - (NSString *)titleTTModeAirfoilMute {
-    return @"Mute";
+    return TTText(@"Mute");
 }
 
 #pragma mark - Action Images

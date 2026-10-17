@@ -42,10 +42,10 @@
     self.view.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
     self.view.wantsLayer = YES;
     self.view.layer.backgroundColor = [NSColor colorWithWhite:0.96 alpha:1].CGColor;
-    NSTextField *title = [self label:@"Settings" size:17 color:NSColor.labelColor];
+    NSTextField *title = [self label:TTText(@"Settings") size:17 color:NSColor.labelColor];
     title.font = [NSFont boldSystemFontOfSize:17];
     [self.view addSubview:title];
-    NSButton *done = [NSButton buttonWithTitle:@"Done" target:self action:@selector(done:)];
+    NSButton *done = [NSButton buttonWithTitle:TTText(@"Done") target:self action:@selector(done:)];
     done.bezelStyle = NSBezelStyleInline;
     done.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:done];
@@ -125,34 +125,37 @@
 - (void)rebuildSections {
     for (NSView *view in self.sections.arrangedSubviews.copy) { [self.sections removeArrangedSubview:view]; [view removeFromSuperview]; }
     __weak typeof(self) weakSelf = self;
+    [self section:TTText(@"Language") views:@[[self row:TTText(@"Language") subtitle:TTLocalization.displayName image:nil handler:^{
+        [weakSelf done:nil]; [TTLocalization showLanguagePicker];
+    }]]];
     NSMutableArray *remotes = [NSMutableArray array];
     for (TTDevice *device in NSAppDelegate.bluetoothMonitor.foundDevices) {
         if (!device.isPaired && device.state != TTDeviceStateConnected) continue;
-        NSString *status = device.state == TTDeviceStateConnected ? [NSString stringWithFormat:@"Connected · %d%% battery", device.batteryPct.intValue] : @"Disconnected";
-        [remotes addObject:[self row:device.nickname ?: @"Turn Touch remote" subtitle:status image:nil handler:^{ [weakSelf openPanel:PANEL_MODAL_DEVICES]; }]];
+        NSString *status = device.state == TTDeviceStateConnected ? [NSString stringWithFormat:TTText(@"Connected · %d%% battery"), device.batteryPct.intValue] : TTText(@"Disconnected");
+        [remotes addObject:[self row:device.nickname ?: TTText(@"Turn Touch remote") subtitle:status image:nil handler:^{ [weakSelf openPanel:PANEL_MODAL_DEVICES]; }]];
     }
-    if (!remotes.count) [remotes addObject:[self row:@"Remotes" subtitle:@"View saved remotes and connection status" image:nil handler:^{ [weakSelf openPanel:PANEL_MODAL_DEVICES]; }]];
-    [remotes addObject:[self row:@"Add a new remote…" subtitle:nil image:nil handler:^{ [weakSelf openPanel:PANEL_MODAL_PAIRING]; }]];
-    [self section:@"REMOTES" views:remotes];
+    if (!remotes.count) [remotes addObject:[self row:TTText(@"Remotes") subtitle:TTText(@"View saved remotes and connection status") image:nil handler:^{ [weakSelf openPanel:PANEL_MODAL_DEVICES]; }]];
+    [remotes addObject:[self row:TTText(@"Add a new remote…") subtitle:nil image:nil handler:^{ [weakSelf openPanel:PANEL_MODAL_PAIRING]; }]];
+    [self section:TTText(@"REMOTES") views:remotes];
 
     NSStackView *mode = [NSStackView stackViewWithViews:@[]];
     mode.orientation = NSUserInterfaceLayoutOrientationVertical;
     mode.alignment = NSLayoutAttributeLeading;
     mode.spacing = 8;
     mode.edgeInsets = NSEdgeInsetsMake(8, 4, 10, 4);
-    [mode addArrangedSubview:[self label:@"Button mode" size:13 color:NSColor.labelColor]];
+    [mode addArrangedSubview:[self label:TTText(@"Button mode") size:13 color:NSColor.labelColor]];
     self.modeHint = [self label:[self buttonModeHint] size:11 color:NSColor.secondaryLabelColor];
     [mode addArrangedSubview:self.modeHint];
-    NSSegmentedControl *control = [NSSegmentedControl segmentedControlWithLabels:@[@"12 actions", @"16 actions"] trackingMode:NSSegmentSwitchTrackingSelectOne target:self action:@selector(changeMode:)];
-    control.accessibilityLabel = @"Button mode";
+    NSSegmentedControl *control = [NSSegmentedControl segmentedControlWithLabels:@[TTText(@"12 actions"), TTText(@"16 actions")] trackingMode:NSSegmentSwitchTrackingSelectOne target:self action:@selector(changeMode:)];
+    control.accessibilityLabel = TTText(@"Button mode");
     control.selectedSegment = NSAppDelegate.modeMap.isTwelveButtonMode ? 0 : 1;
     [control setWidth:132 forSegment:0]; [control setWidth:132 forSegment:1];
     [mode addArrangedSubview:control];
-    NSButton *perform = [NSButton checkboxWithTitle:@"Run actions from the screen" target:self action:@selector(changePerform:)];
+    NSButton *perform = [NSButton checkboxWithTitle:TTText(@"Run actions from the screen") target:self action:@selector(changePerform:)];
     perform.state = NSAppDelegate.modeMap.buttonActionMode == TTButtonActionModePerform ? NSControlStateValueOn : NSControlStateValueOff;
     perform.font = [NSFont systemFontOfSize:12];
     [perform.heightAnchor constraintEqualToConstant:36].active = YES;
-    [self section:@"BUTTONS" views:@[mode, perform]];
+    [self section:TTText(@"BUTTONS") views:@[mode, perform]];
 
     NSArray *favorites = @[@"TTModeHomeAssistant", @"TTModeHue", @"TTModeNanoleaf", @"TTModeGovee", @"TTModeSonos", @"TTModeKasa"];
     NSMutableArray *apps = [NSMutableArray array];
@@ -160,24 +163,24 @@
         if ([name isEqualToString:@"TTModeNest"]) continue;
         Class modeClass = NSClassFromString(name);
         BOOL hasOptions = NSClassFromString([name stringByAppendingString:@"Options"]) != Nil;
-        [apps addObject:[self row:[modeClass title] subtitle:hasOptions ? @"Connection and app options" : @"About this app’s actions" image:[modeClass imageName] handler:^{ [weakSelf openApp:name]; }]];
+        [apps addObject:[self row:[modeClass title] subtitle:hasOptions ? TTText(@"Connection and app options") : TTText(@"About this app’s actions") image:[modeClass imageName] handler:^{ [weakSelf openApp:name]; }]];
     }
-    [apps addObject:[self row:self.showAllApps ? @"Show fewer apps" : @"Show all apps" subtitle:nil image:nil handler:^{ weakSelf.showAllApps = !weakSelf.showAllApps; [weakSelf rebuildSections]; }]];
-    [self section:@"APPS & CONNECTIONS" views:apps];
-    [self section:@"PREFERENCES" views:@[[self row:@"HUD, keyboard shortcuts & privacy" subtitle:@"Customize Turn Touch on this Mac" image:nil handler:^{ [weakSelf openPanel:PANEL_MODAL_SETTINGS]; }]]];
-    [self section:@"HELP" views:@[
-        [self row:@"How it works" subtitle:nil image:nil handler:^{ [weakSelf openPanel:PANEL_MODAL_FTUX]; }],
-        [self row:@"Devices & connection diagnostics" subtitle:nil image:nil handler:^{ [weakSelf openPanel:PANEL_MODAL_DEVICES]; }],
-        [self row:@"Contact support" subtitle:nil image:nil handler:^{ [weakSelf openPanel:PANEL_MODAL_SUPPORT]; }],
-        [self row:@"About Turn Touch & updates" subtitle:nil image:nil handler:^{ [weakSelf openPanel:PANEL_MODAL_ABOUT]; }],
-        [self row:@"Quit Turn Touch" subtitle:nil image:nil handler:^{ [NSApp terminate:nil]; }]
+    [apps addObject:[self row:self.showAllApps ? TTText(@"Show fewer apps") : TTText(@"Show all apps") subtitle:nil image:nil handler:^{ weakSelf.showAllApps = !weakSelf.showAllApps; [weakSelf rebuildSections]; }]];
+    [self section:TTText(@"APPS & CONNECTIONS") views:apps];
+    [self section:TTText(@"PREFERENCES") views:@[[self row:TTText(@"HUD, keyboard shortcuts & privacy") subtitle:TTText(@"Customize Turn Touch on this Mac") image:nil handler:^{ [weakSelf openPanel:PANEL_MODAL_SETTINGS]; }]]];
+    [self section:TTText(@"HELP") views:@[
+        [self row:TTText(@"How it works") subtitle:nil image:nil handler:^{ [weakSelf openPanel:PANEL_MODAL_FTUX]; }],
+        [self row:TTText(@"Devices & connection diagnostics") subtitle:nil image:nil handler:^{ [weakSelf openPanel:PANEL_MODAL_DEVICES]; }],
+        [self row:TTText(@"Contact support") subtitle:nil image:nil handler:^{ [weakSelf openPanel:PANEL_MODAL_SUPPORT]; }],
+        [self row:TTText(@"About Turn Touch & updates") subtitle:nil image:nil handler:^{ [weakSelf openPanel:PANEL_MODAL_ABOUT]; }],
+        [self row:TTText(@"Quit Turn Touch") subtitle:nil image:nil handler:^{ [NSApp terminate:nil]; }]
     ]];
     NSString *version = [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleShortVersionString"] ?: @"";
-    [self.sections addArrangedSubview:[self label:[@"Turn Touch for Mac · " stringByAppendingString:version] size:10 color:NSColor.secondaryLabelColor]];
+    [self.sections addArrangedSubview:[self label:[TTText(@"Turn Touch for Mac · ") stringByAppendingString:version] size:10 color:NSColor.secondaryLabelColor]];
 }
 
 - (NSString *)buttonModeHint {
-    return NSAppDelegate.modeMap.isTwelveButtonMode ? @"Single tap, double tap, and hold" : @"Hold a button to switch between four apps";
+    return NSAppDelegate.modeMap.isTwelveButtonMode ? TTText(@"Single tap, double tap, and hold") : TTText(@"Hold a button to switch between four apps");
 }
 - (void)changeMode:(NSSegmentedControl *)sender {
     [NSAppDelegate.modeMap switchButtonAppMode:sender.selectedSegment == 0];
@@ -212,7 +215,7 @@
         content = options.view;
         self.connectionOptions = options;
     } else {
-        content = [self label:@"Choose an action for this app using Add Action below a remote button." size:14 color:NSColor.labelColor];
+        content = [self label:TTText(@"Choose an action for this app using Add Action below a remote button.") size:14 color:NSColor.labelColor];
     }
     NSWindow *window = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, 380, 300) styleMask:NSWindowStyleMaskTitled | NSWindowStyleMaskClosable backing:NSBackingStoreBuffered defer:NO];
     window.title = [mode.class title];

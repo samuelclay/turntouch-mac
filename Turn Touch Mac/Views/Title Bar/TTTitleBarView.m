@@ -40,8 +40,8 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
         self.settingsButton = [NSButton buttonWithImage:[NSImage imageNamed:@"settings"] target:self action:@selector(showSettings:)];
         self.settingsButton.bordered = NO;
         self.settingsButton.imageScaling = NSImageScaleProportionallyDown;
-        self.settingsButton.accessibilityLabel = @"Settings";
-        self.settingsButton.toolTip = @"Settings";
+        self.settingsButton.accessibilityLabel = TTText(@"Settings");
+        self.settingsButton.toolTip = TTText(@"Settings");
         [self addSubview:self.settingsButton];
         
         [self setupTitleAttributes];

@@ -27,9 +27,9 @@
 }
 
 - (void)countEffects {
-    NSString *name = [TTModeNanoleaf deviceName] ?: @"Nanoleaf";
+    NSString *name = [TTModeNanoleaf deviceName] ?: TTText(@"Nanoleaf");
     NSInteger effectCount = [TTModeNanoleaf cachedEffects].count;
-    NSString *effectStr = effectCount == 1 ? @"1 effect" : [NSString stringWithFormat:@"%ld effects", (long)effectCount];
+    NSString *effectStr = effectCount == 1 ? TTText(@"1 effect") : [NSString stringWithFormat:TTText(@"%ld effects"), (long)effectCount];
     self.effectsLabel.stringValue = [NSString stringWithFormat:@"%@ - %@", name, effectStr];
 }
 

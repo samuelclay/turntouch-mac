@@ -66,12 +66,12 @@
     
     if (TTModeWemo.foundDevices.count == 0) {
         if (TTModeWemo.wemoState == WEMO_STATE_CONNECTING) {
-            [self.noticeLabel setStringValue:@"Searching for Wemo devices..."];
+            [self.noticeLabel setStringValue:TTText(@"Searching for Wemo devices...")];
             [self.noticeLabel setTextColor:[NSColor darkGrayColor]];
             self.spinner.hidden = NO;
             self.refreshButton.hidden = YES;
         } else {
-            [self.noticeLabel setStringValue:@"No Wemo devices found"];
+            [self.noticeLabel setStringValue:TTText(@"No Wemo devices found")];
             [self.noticeLabel setTextColor:[NSColor lightGrayColor]];
             self.spinner.hidden = YES;
             self.refreshButton.hidden = NO;
@@ -132,21 +132,21 @@
     NSMenuItem *menuItem;
     
     if (!self.settingsMenu) {
-        self.settingsMenu = [[NSMenu alloc] initWithTitle:@"Action Menu"];
+        self.settingsMenu = [[NSMenu alloc] initWithTitle:TTText(@"Action Menu")];
         [self.settingsMenu setDelegate:self];
         [self.settingsMenu setAutoenablesItems:NO];
     } else {
         [self.settingsMenu removeAllItems];
     }
     
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Search for New Devices..." action:@selector(refreshDevices:) keyEquivalent:@""];
+    menuItem = [[NSMenuItem alloc] initWithTitle:TTText(@"Search for New Devices...") action:@selector(refreshDevices:) keyEquivalent:@""];
     [menuItem setEnabled:YES];
     [menuItem setTarget:self];
     [self.settingsMenu addItem:menuItem];
     
     [self.settingsMenu addItem:[NSMenuItem separatorItem]];
     
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Remove All and Search..." action:@selector(purgeDevices:) keyEquivalent:@""];
+    menuItem = [[NSMenuItem alloc] initWithTitle:TTText(@"Remove All and Search...") action:@selector(purgeDevices:) keyEquivalent:@""];
     [menuItem setEnabled:YES];
     [menuItem setTarget:self];
     [self.settingsMenu addItem:menuItem];

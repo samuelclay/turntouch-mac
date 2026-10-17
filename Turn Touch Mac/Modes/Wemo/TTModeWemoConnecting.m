@@ -20,7 +20,7 @@
 }
 
 - (void)setConnectingWithMessage:(NSString*)message {
-    if (!message) message = @"Connecting to Wemo...";
+    if (!message) message = TTText(@"Connecting to Wemo...");
     
     self.progressMessage.stringValue = message;
     [self.progressIndicator startAnimation:self];

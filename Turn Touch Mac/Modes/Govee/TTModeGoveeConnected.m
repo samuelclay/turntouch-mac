@@ -18,10 +18,9 @@
 - (void)updateConnected {
     NSInteger count = [TTModeGovee foundDevices].count;
     if (count > 0) {
-        [self.connectedLabel setStringValue:[NSString stringWithFormat:@"Connected to %ld Govee device%@",
-                                             (long)count, count == 1 ? @"" : @"s"]];
+        [self.connectedLabel setStringValue:[NSString stringWithFormat:TTText(@"Connected Govee devices: %ld"), (long)count]];
     } else {
-        [self.connectedLabel setStringValue:@"No Govee devices found"];
+        [self.connectedLabel setStringValue:TTText(@"No Govee devices found")];
     }
 }
 
@@ -31,13 +30,13 @@
 
 - (IBAction)changeApiKey:(id)sender {
     NSAlert *alert = [[NSAlert alloc] init];
-    [alert setMessageText:@"Govee API Key"];
-    [alert setInformativeText:@"Enter your Govee API key (from Govee Home App > Settings > My Profile > Apply for API Key)"];
-    [alert addButtonWithTitle:@"Save"];
-    [alert addButtonWithTitle:@"Cancel"];
+    [alert setMessageText:TTText(@"Govee API Key")];
+    [alert setInformativeText:TTText(@"Enter your Govee API key (from Govee Home App > Settings > My Profile > Apply for API Key)")];
+    [alert addButtonWithTitle:TTText(@"Save")];
+    [alert addButtonWithTitle:TTText(@"Cancel")];
 
     NSTextField *apiKeyField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 300, 22)];
-    apiKeyField.placeholderString = @"API Key";
+    apiKeyField.placeholderString = TTText(@"API Key");
 
     NSString *existingKey = [TTModeGovee loadApiKey];
     if (existingKey) {

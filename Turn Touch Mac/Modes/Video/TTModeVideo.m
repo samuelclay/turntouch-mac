@@ -16,11 +16,11 @@
 #pragma mark - Mode
 
 + (NSString *)title {
-    return @"Video";
+    return TTText(@"Video");
 }
 
 + (NSString *)description {
-    return @"Control movies and tv";
+    return TTText(@"Control movies and tv");
 }
 
 + (NSString *)imageName {
@@ -42,22 +42,22 @@
 #pragma mark - Action Titles
 
 - (NSString *)titleTTModeVideoVolumeUp {
-    return @"Volume up";
+    return TTText(@"Volume up");
 }
 - (NSString *)titleTTModeVideoVolumeDown {
-    return @"Volume down";
+    return TTText(@"Volume down");
 }
 - (NSString *)titleTTModeVideoFF {
-    return @"Fast forward";
+    return TTText(@"Fast forward");
 }
 - (NSString *)titleTTModeVideoRewind {
-    return @"Rewind";
+    return TTText(@"Rewind");
 }
 - (NSString *)titleTTModeVideoPause {
-    return @"Play/pause";
+    return TTText(@"Play/pause");
 }
 - (NSString *)titleTTModeVideoFullScreen {
-    return @"Full screen";
+    return TTText(@"Full screen");
 }
 
 #pragma mark - Action Images

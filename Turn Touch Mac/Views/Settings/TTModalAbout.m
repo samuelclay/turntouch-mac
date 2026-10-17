@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.appDelegate = (TTAppDelegate *)[NSApp delegate];
-    [self.versionLabel setStringValue:[NSString stringWithFormat:@"Version %@", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]]];
+    [self.versionLabel setStringValue:[NSString stringWithFormat:TTText(@"Version %@"), [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]]];
 }
 
 - (void)closeModal:(id)sender {

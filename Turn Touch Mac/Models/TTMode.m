@@ -64,16 +64,16 @@
 #pragma mark - Action Titles
 
 - (NSString *)titleTTAction1 {
-    return @"Action 1st";
+    return TTText(@"Action 1st");
 }
 - (NSString *)titleTTAction2 {
-    return @"Action 2nd";
+    return TTText(@"Action 2nd");
 }
 - (NSString *)titleTTAction3 {
-    return @"Action 3rd";
+    return TTText(@"Action 3rd");
 }
 - (NSString *)titleTTAction4 {
-    return @"Action 4th";
+    return TTText(@"Action 4th");
 }
 
 #pragma mark - Action methods

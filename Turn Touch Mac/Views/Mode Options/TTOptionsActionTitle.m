@@ -59,7 +59,7 @@
 
         self.changeButton = [[TTChangeButtonView alloc] init];
         self.changeButton.translatesAutoresizingMaskIntoConstraints = NO;
-        [self setChangeButtonTitle:@"Change"];
+        [self setChangeButtonTitle:TTText(@"Change")];
         [self.changeButton setBezelStyle:NSRoundRectBezelStyle];
         [self.changeButton setAction:@selector(showChangeActionMenu:)];
         [self.changeButton setTarget:self];
@@ -235,9 +235,9 @@
     [self updateShortcutLabel];
     
     if (self.appDelegate.modeMap.openedActionChangeMenu) {
-        [self setChangeButtonTitle:@"Done"];
+        [self setChangeButtonTitle:TTText(@"Done")];
     } else {
-        [self setChangeButtonTitle:@"Change"];
+        [self setChangeButtonTitle:TTText(@"Change")];
         [self disableCustomTitleEditor];
         [self disableKeyboardShortcutEditor];
     }

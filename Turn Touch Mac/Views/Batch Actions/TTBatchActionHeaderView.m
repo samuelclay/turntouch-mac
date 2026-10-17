@@ -243,21 +243,21 @@
     NSMenuItem *menuItem;
     
     if (!self.settingsMenu) {
-        self.settingsMenu = [[NSMenu alloc] initWithTitle:@"Action Menu"];
+        self.settingsMenu = [[NSMenu alloc] initWithTitle:TTText(@"Action Menu")];
         [self.settingsMenu setDelegate:self];
         [self.settingsMenu setAutoenablesItems:NO];
     } else {
         [self.settingsMenu removeAllItems];
     }
     
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Change" action:@selector(changeAction:) keyEquivalent:@""];
+    menuItem = [[NSMenuItem alloc] initWithTitle:TTText(@"Change") action:@selector(changeAction:) keyEquivalent:@""];
     [menuItem setEnabled:YES];
     [menuItem setTarget:self];
     [self.settingsMenu addItem:menuItem];
     
     [self.settingsMenu addItem:[NSMenuItem separatorItem]];
 
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Remove" action:@selector(deleteBatchAction:) keyEquivalent:@""];
+    menuItem = [[NSMenuItem alloc] initWithTitle:TTText(@"Remove") action:@selector(deleteBatchAction:) keyEquivalent:@""];
     [menuItem setEnabled:YES];
     [menuItem setTarget:self];
     [self.settingsMenu addItem:menuItem];

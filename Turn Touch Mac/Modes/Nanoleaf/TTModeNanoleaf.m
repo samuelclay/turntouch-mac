@@ -85,11 +85,11 @@ static const NSInteger kMaxAuthAttempts = 30;
 #pragma mark - Mode
 
 + (NSString *)title {
-    return @"Nanoleaf";
+    return TTText(@"Nanoleaf");
 }
 
 + (NSString *)description {
-    return @"Light panels and effects";
+    return TTText(@"Light panels and effects");
 }
 
 + (NSString *)imageName {
@@ -137,7 +137,7 @@ static const NSInteger kMaxAuthAttempts = 30;
 #pragma mark - Action Titles
 
 - (NSString *)titleTTModeNanoleafToggle {
-    return @"Toggle on/off";
+    return TTText(@"Toggle on/off");
 }
 
 - (NSString *)titleTTModeNanoleafSceneCustom {
@@ -145,27 +145,27 @@ static const NSInteger kMaxAuthAttempts = 30;
     if (effectName && [effectName length] > 0) {
         return effectName;
     }
-    return @"Trigger effect";
+    return TTText(@"Trigger effect");
 }
 
 - (NSString *)doubleTitleTTModeNanoleafSceneCustom {
-    return @"Effect 2";
+    return TTText(@"Effect 2");
 }
 
 - (NSString *)titleTTModeNanoleafRaiseBrightness {
-    return @"Raise brightness";
+    return TTText(@"Raise brightness");
 }
 
 - (NSString *)titleTTModeNanoleafLowerBrightness {
-    return @"Lower brightness";
+    return TTText(@"Lower brightness");
 }
 
 - (NSString *)titleTTModeNanoleafSleep {
-    return @"Sleep";
+    return TTText(@"Sleep");
 }
 
 - (NSString *)doubleTitleTTModeNanoleafSleep {
-    return @"Sleep fast";
+    return TTText(@"Sleep fast");
 }
 
 #pragma mark - Action Images
@@ -389,7 +389,7 @@ static const NSInteger kMaxAuthAttempts = 30;
             _nanoleafState = NANOLEAF_STATE_CONNECTING;
             self.nanoleafState = _nanoleafState;
             [self.delegate changeState:_nanoleafState withMode:self
-                           showMessage:[NSString stringWithFormat:@"Connecting to %@...", name ?: @"Nanoleaf"]];
+                           showMessage:[NSString stringWithFormat:TTText(@"Connecting to %@..."), name ?: @"Nanoleaf"]];
 
             // Verify the saved device is reachable
             [self fetchDeviceInfoWithCompletion:^(NSDictionary *info, NSError *error) {
@@ -430,7 +430,7 @@ static const NSInteger kMaxAuthAttempts = 30;
 - (void)findDevices {
     _nanoleafState = NANOLEAF_STATE_CONNECTING;
     self.nanoleafState = _nanoleafState;
-    [self.delegate changeState:_nanoleafState withMode:self showMessage:@"Searching for Nanoleaf..."];
+    [self.delegate changeState:_nanoleafState withMode:self showMessage:TTText(@"Searching for Nanoleaf...")];
 
     if (!_resolvedDevices) {
         _resolvedDevices = [NSMutableArray array];
@@ -615,7 +615,7 @@ static const NSInteger kMaxAuthAttempts = 30;
     self.subnetScanInProgress = YES;
 
     NSLog(@" ---> Nanoleaf: Starting subnet scan fallback for port %ld", (long)kNanoleafApiPort);
-    [self.delegate changeState:_nanoleafState withMode:self showMessage:@"Scanning local network..."];
+    [self.delegate changeState:_nanoleafState withMode:self showMessage:TTText(@"Scanning local network...")];
 
     // Collect all local /24 subnets from non-loopback IPv4 interfaces
     NSMutableSet<NSString *> *subnets = [NSMutableSet set];
@@ -804,7 +804,7 @@ static const NSInteger kMaxAuthAttempts = 30;
         _authTimer = nil;
         _nanoleafState = NANOLEAF_STATE_NOT_CONNECTED;
         self.nanoleafState = _nanoleafState;
-        [self.delegate changeState:_nanoleafState withMode:self showMessage:@"Authentication timed out"];
+        [self.delegate changeState:_nanoleafState withMode:self showMessage:TTText(@"Authentication timed out")];
         return;
     }
 
@@ -850,7 +850,7 @@ static const NSInteger kMaxAuthAttempts = 30;
 - (void)authenticateDevice {
     _nanoleafState = NANOLEAF_STATE_CONNECTING;
     self.nanoleafState = _nanoleafState;
-    [self.delegate changeState:_nanoleafState withMode:self showMessage:@"Loading effects..."];
+    [self.delegate changeState:_nanoleafState withMode:self showMessage:TTText(@"Loading effects...")];
 
     [self fetchDeviceInfoWithCompletion:^(NSDictionary *info, NSError *error) {
         if (error) {
@@ -858,7 +858,7 @@ static const NSInteger kMaxAuthAttempts = 30;
                 _nanoleafState = NANOLEAF_STATE_NOT_CONNECTED;
                 self.nanoleafState = _nanoleafState;
                 [self.delegate changeState:_nanoleafState withMode:self
-                               showMessage:[NSString stringWithFormat:@"Connection failed: %@", error.localizedDescription]];
+                               showMessage:[NSString stringWithFormat:TTText(@"Connection failed: %@"), error.localizedDescription]];
             });
             return;
         }
@@ -907,7 +907,7 @@ static const NSInteger kMaxAuthAttempts = 30;
 - (void)fetchDeviceInfoWithCompletion:(void (^)(NSDictionary *info, NSError *error))completion {
     NSString *base = [self baseURL];
     if (!base) {
-        if (completion) completion(nil, [NSError errorWithDomain:@"TTNanoleaf" code:-1 userInfo:@{NSLocalizedDescriptionKey: @"Not connected"}]);
+        if (completion) completion(nil, [NSError errorWithDomain:@"TTNanoleaf" code:-1 userInfo:@{NSLocalizedDescriptionKey: TTText(@"Not connected")}]);
         return;
     }
 
@@ -920,7 +920,7 @@ static const NSInteger kMaxAuthAttempts = 30;
         }
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         if (httpResponse.statusCode != 200) {
-            if (completion) completion(nil, [NSError errorWithDomain:@"TTNanoleaf" code:httpResponse.statusCode userInfo:@{NSLocalizedDescriptionKey: @"Invalid response"}]);
+            if (completion) completion(nil, [NSError errorWithDomain:@"TTNanoleaf" code:httpResponse.statusCode userInfo:@{NSLocalizedDescriptionKey: TTText(@"Invalid response")}]);
             return;
         }
         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
@@ -932,7 +932,7 @@ static const NSInteger kMaxAuthAttempts = 30;
 - (void)fetchEffectsWithCompletion:(void (^)(NSArray<NSString *> *effects, NSError *error))completion {
     NSString *base = [self baseURL];
     if (!base) {
-        if (completion) completion(nil, [NSError errorWithDomain:@"TTNanoleaf" code:-1 userInfo:@{NSLocalizedDescriptionKey: @"Not connected"}]);
+        if (completion) completion(nil, [NSError errorWithDomain:@"TTNanoleaf" code:-1 userInfo:@{NSLocalizedDescriptionKey: TTText(@"Not connected")}]);
         return;
     }
 
@@ -946,7 +946,7 @@ static const NSInteger kMaxAuthAttempts = 30;
         }
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         if (httpResponse.statusCode != 200) {
-            if (completion) completion(nil, [NSError errorWithDomain:@"TTNanoleaf" code:httpResponse.statusCode userInfo:@{NSLocalizedDescriptionKey: @"Invalid response"}]);
+            if (completion) completion(nil, [NSError errorWithDomain:@"TTNanoleaf" code:httpResponse.statusCode userInfo:@{NSLocalizedDescriptionKey: TTText(@"Invalid response")}]);
             return;
         }
         NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];

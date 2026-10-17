@@ -52,7 +52,7 @@
 - (void)updateTracksCount:(iTunesPlaylist *)selectedPlaylist label:(NSTextField *)label {
     NSInteger tracks = selectedPlaylist.tracks.count;
     [label setStringValue:[NSString stringWithFormat:@"%ld %@",
-                                     (long)tracks, tracks == 1 ? @"track" : @"tracks"]];
+                                     (long)tracks, tracks == 1 ? TTText(@"track") : TTText(@"tracks")]];
 }
 
 - (iTunesLibraryPlaylist *)iTunesPlaylist:(NSString *)persistentId {

@@ -1,0 +1,18 @@
+{
+  "title": {
+    "text": "Turn Touch",
+    "maximum": 30
+  },
+  "subtitle": {
+    "text": "Wooden remote control",
+    "maximum": 30
+  },
+  "description": {
+    "text": "Configure your Turn Touch wooden remote and put lights, music, and everyday actions at your fingertips. Choose actions for single taps, double taps, and holds, or combine several actions on one button.\n\nPair a remote over Bluetooth, choose your apps and devices, and customize your buttons in Settings. Turn Touch supports compatible smart-home devices and services; available functions depend on the integration and device.\n\nA Turn Touch remote is sold separately. Some integrations require compatible hardware, local network access, or a third-party account.\n\nLearn more: https://turntouch.com",
+    "maximum": 4000
+  },
+  "screenshot-caption": {
+    "text": "Your favorite actions, one touch away",
+    "maximum": 100
+  }
+}

@@ -1,0 +1,278 @@
+{
+  "locales": [
+    {
+      "language": "en",
+      "nativeName": "English",
+      "output": "store/en-US/images",
+      "scenes": [
+        "welcome",
+        "settings",
+        "remote",
+        "action-options",
+        "connection"
+      ],
+      "storeLocale": "en-US"
+    },
+    {
+      "language": "es",
+      "nativeName": "Español",
+      "output": "store/es-ES/images",
+      "scenes": [
+        "welcome",
+        "settings",
+        "remote",
+        "action-options",
+        "connection"
+      ],
+      "storeLocale": "es-ES"
+    },
+    {
+      "language": "fr",
+      "nativeName": "Français",
+      "output": "store/fr-FR/images",
+      "scenes": [
+        "welcome",
+        "settings",
+        "remote",
+        "action-options",
+        "connection"
+      ],
+      "storeLocale": "fr-FR"
+    },
+    {
+      "language": "de",
+      "nativeName": "Deutsch",
+      "output": "store/de/images",
+      "scenes": [
+        "welcome",
+        "settings",
+        "remote",
+        "action-options",
+        "connection"
+      ],
+      "storeLocale": "de"
+    },
+    {
+      "language": "pt-BR",
+      "nativeName": "Português (Brasil)",
+      "output": "store/pt-BR/images",
+      "scenes": [
+        "welcome",
+        "settings",
+        "remote",
+        "action-options",
+        "connection"
+      ],
+      "storeLocale": "pt-BR"
+    },
+    {
+      "language": "it",
+      "nativeName": "Italiano",
+      "output": "store/it/images",
+      "scenes": [
+        "welcome",
+        "settings",
+        "remote",
+        "action-options",
+        "connection"
+      ],
+      "storeLocale": "it"
+    },
+    {
+      "language": "nl",
+      "nativeName": "Nederlands",
+      "output": "store/nl/images",
+      "scenes": [
+        "welcome",
+        "settings",
+        "remote",
+        "action-options",
+        "connection"
+      ],
+      "storeLocale": "nl"
+    },
+    {
+      "language": "pl",
+      "nativeName": "Polski",
+      "output": "store/pl/images",
+      "scenes": [
+        "welcome",
+        "settings",
+        "remote",
+        "action-options",
+        "connection"
+      ],
+      "storeLocale": "pl"
+    },
+    {
+      "language": "tr",
+      "nativeName": "Türkçe",
+      "output": "store/tr/images",
+      "scenes": [
+        "welcome",
+        "settings",
+        "remote",
+        "action-options",
+        "connection"
+      ],
+      "storeLocale": "tr"
+    },
+    {
+      "language": "ru",
+      "nativeName": "Русский",
+      "output": "store/ru/images",
+      "scenes": [
+        "welcome",
+        "settings",
+        "remote",
+        "action-options",
+        "connection"
+      ],
+      "storeLocale": "ru"
+    },
+    {
+      "language": "uk",
+      "nativeName": "Українська",
+      "output": "store/uk/images",
+      "scenes": [
+        "welcome",
+        "settings",
+        "remote",
+        "action-options",
+        "connection"
+      ],
+      "storeLocale": "uk"
+    },
+    {
+      "language": "ar",
+      "nativeName": "العربية",
+      "output": "store/ar-SA/images",
+      "scenes": [
+        "welcome",
+        "settings",
+        "remote",
+        "action-options",
+        "connection"
+      ],
+      "storeLocale": "ar-SA"
+    },
+    {
+      "language": "he",
+      "nativeName": "עברית",
+      "output": "store/he/images",
+      "scenes": [
+        "welcome",
+        "settings",
+        "remote",
+        "action-options",
+        "connection"
+      ],
+      "storeLocale": "he"
+    },
+    {
+      "language": "hi",
+      "nativeName": "हिन्दी",
+      "output": "store/hi/images",
+      "scenes": [
+        "welcome",
+        "settings",
+        "remote",
+        "action-options",
+        "connection"
+      ],
+      "storeLocale": "hi"
+    },
+    {
+      "language": "id",
+      "nativeName": "Bahasa Indonesia",
+      "output": "store/id/images",
+      "scenes": [
+        "welcome",
+        "settings",
+        "remote",
+        "action-options",
+        "connection"
+      ],
+      "storeLocale": "id"
+    },
+    {
+      "language": "vi",
+      "nativeName": "Tiếng Việt",
+      "output": "store/vi/images",
+      "scenes": [
+        "welcome",
+        "settings",
+        "remote",
+        "action-options",
+        "connection"
+      ],
+      "storeLocale": "vi"
+    },
+    {
+      "language": "th",
+      "nativeName": "ไทย",
+      "output": "store/th/images",
+      "scenes": [
+        "welcome",
+        "settings",
+        "remote",
+        "action-options",
+        "connection"
+      ],
+      "storeLocale": "th"
+    },
+    {
+      "language": "ja",
+      "nativeName": "日本語",
+      "output": "store/ja/images",
+      "scenes": [
+        "welcome",
+        "settings",
+        "remote",
+        "action-options",
+        "connection"
+      ],
+      "storeLocale": "ja"
+    },
+    {
+      "language": "ko",
+      "nativeName": "한국어",
+      "output": "store/ko/images",
+      "scenes": [
+        "welcome",
+        "settings",
+        "remote",
+        "action-options",
+        "connection"
+      ],
+      "storeLocale": "ko"
+    },
+    {
+      "language": "zh-Hans",
+      "nativeName": "简体中文",
+      "output": "store/zh-Hans/images",
+      "scenes": [
+        "welcome",
+        "settings",
+        "remote",
+        "action-options",
+        "connection"
+      ],
+      "storeLocale": "zh-Hans"
+    },
+    {
+      "language": "zh-Hant",
+      "nativeName": "繁體中文",
+      "output": "store/zh-Hant/images",
+      "scenes": [
+        "welcome",
+        "settings",
+        "remote",
+        "action-options",
+        "connection"
+      ],
+      "storeLocale": "zh-Hant"
+    }
+  ],
+  "platform": "mac"
+}

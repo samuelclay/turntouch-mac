@@ -46,11 +46,11 @@
         
         self.titleLabel = [[NSTextField alloc] init];
         if (modalPairing == MODAL_PAIRING_INTRO) {
-            self.titleLabel.stringValue = @"Welcome to Turn Touch";
+            self.titleLabel.stringValue = TTText(@"Welcome to Turn Touch");
         } else if (modalPairing == MODAL_PAIRING_SUCCESS) {
-            self.titleLabel.stringValue = @"That worked perfectly";
+            self.titleLabel.stringValue = TTText(@"That worked perfectly");
         } else if (modalPairing == MODAL_PAIRING_FAILURE) {
-            self.titleLabel.stringValue = @"Uh Oh...";
+            self.titleLabel.stringValue = TTText(@"Uh Oh...");
         }
         self.titleLabel.editable = NO;
         self.titleLabel.bordered = NO;
@@ -65,11 +65,11 @@
         
         self.subtitleLabel = [[NSTextField alloc] init];
         if (modalPairing == MODAL_PAIRING_INTRO) {
-            self.subtitleLabel.stringValue = @"Four buttons of beautiful control";
+            self.subtitleLabel.stringValue = TTText(@"Four buttons of beautiful control");
         } else if (modalPairing == MODAL_PAIRING_SUCCESS) {
-            self.subtitleLabel.stringValue = @"Your remote has been paired";
+            self.subtitleLabel.stringValue = TTText(@"Your remote has been paired");
         } else if (modalPairing == MODAL_PAIRING_FAILURE) {
-            self.subtitleLabel.stringValue = @"No remotes could be found";
+            self.subtitleLabel.stringValue = TTText(@"No remotes could be found");
         }
         self.subtitleLabel.editable = NO;
         self.subtitleLabel.bordered = NO;
@@ -95,16 +95,16 @@
         case CBCentralManagerStatePoweredOn:
             return;
         case CBCentralManagerStateUnsupported:
-            self.subtitleLabel.stringValue = @"This computer doesn't support Bluetooth Low Energy.";
+            self.subtitleLabel.stringValue = TTText(@"This computer doesn't support Bluetooth Low Energy.");
             break;
         case CBCentralManagerStateUnauthorized:
-            self.subtitleLabel.stringValue = @"Turn Touch is not authorized to use Bluetooth Low Energy.";
+            self.subtitleLabel.stringValue = TTText(@"Turn Touch is not authorized to use Bluetooth Low Energy.");
             break;
         case CBCentralManagerStatePoweredOff:
-            self.subtitleLabel.stringValue = @"Bluetooth is currently powered off.";
+            self.subtitleLabel.stringValue = TTText(@"Bluetooth is currently powered off.");
             break;
         default:
-            self.subtitleLabel.stringValue = @"Bluetooth is powered off or isn't responding.";
+            self.subtitleLabel.stringValue = TTText(@"Bluetooth is powered off or isn't responding.");
             break;
     }   
 }

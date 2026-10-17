@@ -82,24 +82,24 @@ const int BATTERY_LEVEL_READING_INTERVAL = 60; // every 6 hours
     
     switch ([self.manager state]) {
         case CBManagerStateUnsupported:
-            state = @"The platform/hardware doesn't support Bluetooth Low Energy.";
+            state = TTText(@"The platform/hardware doesn't support Bluetooth Low Energy.");
             break;
         case CBManagerStateUnauthorized:
-            state = @"The app is not authorized to use Bluetooth Low Energy.";
+            state = TTText(@"The app is not authorized to use Bluetooth Low Energy.");
             break;
         case CBManagerStatePoweredOff:
-            state = @"Bluetooth is currently powered off.";
+            state = TTText(@"Bluetooth is currently powered off.");
             break;
         case CBManagerStatePoweredOn:
             return TRUE;
         case CBManagerStateUnknown:
-            state = @"Bluetooth in unknown state.";
+            state = TTText(@"Bluetooth in unknown state.");
             break;
         case CBManagerStateResetting:
-            state = @"Bluetooth in resetting state.";
+            state = TTText(@"Bluetooth in resetting state.");
             break;
         default:
-            state = @"Bluetooth not in any state!";
+            state = TTText(@"Bluetooth not in any state!");
             break;
     }
     

@@ -52,32 +52,32 @@
 - (instancetype)init {
     NSWindow *window = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, 900, 650) styleMask:NSWindowStyleMaskTitled | NSWindowStyleMaskClosable | NSWindowStyleMaskMiniaturizable backing:NSBackingStoreBuffered defer:NO];
     if ((self = [super initWithWindow:window])) {
-        window.title = @"Turn Touch · Home Assistant"; window.releasedWhenClosed = NO; window.delegate = self;
+        window.title = TTText(@"Turn Touch · Home Assistant"); window.releasedWhenClosed = NO; window.delegate = self;
         self.client = TTHomeAssistantClient.sharedClient;
         self.filtered = @[]; self.actions = @[]; self.discoveredServices = [NSMutableArray array];
         NSView *view = window.contentView;
-        NSTextField *heading = [self label:@"Your home. One button away." frame:NSMakeRect(26, 600, 810, 30) size:24];
+        NSTextField *heading = [self label:TTText(@"Your home. One button away.") frame:NSMakeRect(26, 600, 810, 30) size:24];
         heading.font = [NSFont boldSystemFontOfSize:24]; [view addSubview:heading];
-        [view addSubview:[self label:@"Connect locally, find an entity, and choose what your Turn Touch remote should do." frame:NSMakeRect(26, 571, 840, 24) size:13]];
+        [view addSubview:[self label:TTText(@"Connect locally, find an entity, and choose what your Turn Touch remote should do.") frame:NSMakeRect(26, 571, 840, 24) size:13]];
         self.address = [[NSTextField alloc] initWithFrame:NSMakeRect(26, 533, 398, 26)];
         self.address.placeholderString = @"http://homeassistant.local:8123";
         self.address.stringValue = self.client.serverURL; [view addSubview:self.address];
         self.discovered = [[NSPopUpButton alloc] initWithFrame:NSMakeRect(432, 532, 230, 28) pullsDown:NO];
-        [self.discovered addItemWithTitle:@"Looking for your home…"];
+        [self.discovered addItemWithTitle:TTText(@"Looking for your home…")];
         self.discovered.target = self; self.discovered.action = @selector(chooseDiscovered:); [view addSubview:self.discovered];
-        self.connectButton = [self button:@"Sign in…" frame:NSMakeRect(675, 530, 92, 30) action:@selector(signIn:)];
-        self.disconnectButton = [self button:@"Disconnect" frame:NSMakeRect(772, 530, 104, 30) action:@selector(disconnect:)];
+        self.connectButton = [self button:TTText(@"Sign in…") frame:NSMakeRect(675, 530, 92, 30) action:@selector(signIn:)];
+        self.disconnectButton = [self button:TTText(@"Disconnect") frame:NSMakeRect(772, 530, 104, 30) action:@selector(disconnect:)];
         self.token = [[NSSecureTextField alloc] initWithFrame:NSMakeRect(26, 495, 398, 25)];
-        self.token.placeholderString = @"Or paste a long-lived access token"; [view addSubview:self.token];
-        self.tokenButton = [self button:@"Use token" frame:NSMakeRect(432, 492, 105, 30) action:@selector(connectToken:)];
-        [self button:@"Open token settings" frame:NSMakeRect(544, 492, 166, 30) action:@selector(openProfile:)];
-        self.refreshButton = [self button:@"Refresh" frame:NSMakeRect(778, 492, 98, 30) action:@selector(refresh:)];
-        self.status = [self label:@"Choose a discovered home or enter its address to get started." frame:NSMakeRect(26, 453, 848, 34) size:12];
+        self.token.placeholderString = TTText(@"Or paste a long-lived access token"); [view addSubview:self.token];
+        self.tokenButton = [self button:TTText(@"Use token") frame:NSMakeRect(432, 492, 105, 30) action:@selector(connectToken:)];
+        [self button:TTText(@"Open token settings") frame:NSMakeRect(544, 492, 166, 30) action:@selector(openProfile:)];
+        self.refreshButton = [self button:TTText(@"Refresh") frame:NSMakeRect(778, 492, 98, 30) action:@selector(refresh:)];
+        self.status = [self label:TTText(@"Choose a discovered home or enter its address to get started.") frame:NSMakeRect(26, 453, 848, 34) size:12];
         self.status.textColor = NSColor.secondaryLabelColor; [view addSubview:self.status];
         self.search = [[NSSearchField alloc] initWithFrame:NSMakeRect(26, 412, 570, 28)];
-        self.search.placeholderString = @"Search entities, devices, rooms, or entity IDs"; self.search.delegate = self; [view addSubview:self.search];
+        self.search.placeholderString = TTText(@"Search entities, devices, rooms, or entity IDs"); self.search.delegate = self; [view addSubview:self.search];
         self.category = [[NSPopUpButton alloc] initWithFrame:NSMakeRect(607, 411, 267, 30) pullsDown:NO];
-        [self.category addItemsWithTitles:@[@"Controllable entities", @"All entities", @"Lights", @"Switches", @"Scenes", @"Scripts", @"Automations", @"Covers", @"Media players", @"Climate", @"Other"]];
+        [self.category addItemsWithTitles:@[TTText(@"Controllable entities"), TTText(@"All entities"), TTText(@"Lights"), TTText(@"Switches"), TTText(@"Scenes"), TTText(@"Scripts"), TTText(@"Automations"), TTText(@"Covers"), TTText(@"Media players"), TTText(@"Climate"), TTText(@"Other")]];
         self.category.target = self; self.category.action = @selector(filter:); [view addSubview:self.category];
         NSScrollView *scroll = [[NSScrollView alloc] initWithFrame:NSMakeRect(26, 91, 455, 307)];
         scroll.borderType = NSBezelBorder; scroll.hasVerticalScroller = YES;
@@ -86,22 +86,22 @@
         [self.table addTableColumn:column]; self.table.headerView = nil; self.table.rowHeight = 53;
         self.table.delegate = self; self.table.dataSource = self; self.table.allowsEmptySelection = YES;
         scroll.documentView = self.table; [view addSubview:scroll];
-        self.detail = [self label:@"Choose an entity" frame:NSMakeRect(504, 354, 370, 44) size:16];
+        self.detail = [self label:TTText(@"Choose an entity") frame:NSMakeRect(504, 354, 370, 44) size:16];
         self.detail.font = [NSFont boldSystemFontOfSize:16]; [view addSubview:self.detail];
         self.actionPicker = [[NSPopUpButton alloc] initWithFrame:NSMakeRect(500, 310, 378, 32) pullsDown:NO];
         self.actionPicker.target = self; self.actionPicker.action = @selector(actionChanged:); [view addSubview:self.actionPicker];
-        self.fieldsHelp = [self label:@"Available actions come from your Home Assistant." frame:NSMakeRect(504, 209, 370, 94) size:12];
+        self.fieldsHelp = [self label:TTText(@"Available actions come from your Home Assistant.") frame:NSMakeRect(504, 209, 370, 94) size:12];
         self.fieldsHelp.textColor = NSColor.secondaryLabelColor; [view addSubview:self.fieldsHelp];
-        [view addSubview:[self label:@"Action data (optional JSON)" frame:NSMakeRect(504, 182, 370, 23) size:12]];
+        [view addSubview:[self label:TTText(@"Action data (optional JSON)") frame:NSMakeRect(504, 182, 370, 23) size:12]];
         NSScrollView *editorScroll = [[NSScrollView alloc] initWithFrame:NSMakeRect(504, 91, 370, 87)];
         editorScroll.borderType = NSBezelBorder; editorScroll.hasVerticalScroller = YES;
         self.dataEditor = [[NSTextView alloc] initWithFrame:editorScroll.bounds];
         self.dataEditor.richText = NO; self.dataEditor.font = [NSFont userFixedPitchFontOfSize:12];
         self.dataEditor.automaticQuoteSubstitutionEnabled = NO; self.dataEditor.automaticDashSubstitutionEnabled = NO;
         self.dataEditor.string = @"{}"; editorScroll.documentView = self.dataEditor; [view addSubview:editorScroll];
-        [view addSubview:[self label:@"Test runs the action now. Save assigns it to the selected remote button." frame:NSMakeRect(26, 28, 560, 43) size:12]];
-        self.testButton = [self button:@"Test action" frame:NSMakeRect(612, 31, 116, 32) action:@selector(test:)];
-        self.saveButton = [self button:@"Save to button" frame:NSMakeRect(736, 31, 140, 32) action:@selector(save:)];
+        [view addSubview:[self label:TTText(@"Test runs the action now. Save assigns it to the selected remote button.") frame:NSMakeRect(26, 28, 560, 43) size:12]];
+        self.testButton = [self button:TTText(@"Test action") frame:NSMakeRect(612, 31, 116, 32) action:@selector(test:)];
+        self.saveButton = [self button:TTText(@"Save to button") frame:NSMakeRect(736, 31, 140, 32) action:@selector(save:)];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(catalogChanged:) name:TTHAConnectionChanged object:self.client];
         self.browser = [[NSNetServiceBrowser alloc] init]; self.browser.delegate = self;
         [self.browser searchForServicesOfType:@"_home-assistant._tcp." inDomain:@"local."];
@@ -130,7 +130,7 @@
     BOOL available = ![entity[@"state"] isEqual:@"unavailable"];
     self.testButton.enabled = chosen && available && self.client.connected && !self.busy;
     self.saveButton.enabled = chosen && self.saveHandler != nil && !self.busy;
-    self.saveButton.toolTip = self.saveHandler ? @"Assign this action to the selected remote button" : @"Open this browser from a remote button in Turn Touch to save an assignment.";
+    self.saveButton.toolTip = self.saveHandler ? TTText(@"Assign this action to the selected remote button") : TTText(@"Open this browser from a remote button in Turn Touch to save an assignment.");
     self.connectButton.enabled = !self.busy;
     self.tokenButton.enabled = !self.busy;
     self.refreshButton.enabled = self.client.connected && !self.busy;
@@ -158,7 +158,7 @@
     [self.discovered addItemWithTitle:service.name]; self.discovered.lastItem.representedObject = url;
     if (!self.address.stringValue.length) {
         self.address.stringValue = url;
-        [self setMessage:[NSString stringWithFormat:@"Found %@ on your network. Sign in to browse your home.", service.name] error:NO];
+        [self setMessage:[NSString stringWithFormat:TTText(@"Found %@ on your network. Sign in to browse your home."), service.name] error:NO];
     }
     if (!self.busy && !self.client.connected && [self.address.stringValue isEqual:url] && [self.client restoreConnectionToURL:url]) [self refresh:nil];
 }
@@ -170,7 +170,7 @@
     if ([self.discovered.selectedItem.representedObject isKindOfClass:NSString.class]) self.address.stringValue = self.discovered.selectedItem.representedObject;
 }
 - (void)connectToken:(id)sender {
-    self.busy = YES; [self setMessage:@"Connecting to your home…" error:NO];
+    self.busy = YES; [self setMessage:TTText(@"Connecting to your home…") error:NO];
     [self.client connectToURL:self.address.stringValue token:self.token.stringValue completion:^(id result, NSError *error) {
         self.busy = NO;
         if (!error) self.token.stringValue = @"";
@@ -178,17 +178,17 @@
     }];
 }
 - (void)refresh:(id)sender {
-    self.busy = YES; [self setMessage:@"Reading entities and actions…" error:NO];
+    self.busy = YES; [self setMessage:TTText(@"Reading entities and actions…") error:NO];
     [self.client refreshCatalog:^(id result, NSError *error) { self.busy = NO; [self finishRefresh:error]; }];
 }
 - (void)finishRefresh:(NSError *)error {
     if (error) [self setMessage:error.localizedDescription error:YES];
-    else [self setMessage:[NSString stringWithFormat:@"Connected · %lu entities · %@", (unsigned long)self.client.entities.count, self.client.serverURL] error:NO];
+    else [self setMessage:[NSString stringWithFormat:TTText(@"Connected · %lu entities · %@"), (unsigned long)self.client.entities.count, self.client.serverURL] error:NO];
     [self filter:nil];
 }
 - (void)disconnect:(id)sender {
     [self.client disconnect]; self.token.stringValue = @"";
-    [self setMessage:@"Disconnected. Credentials removed from this Mac’s Keychain." error:NO]; [self filter:nil];
+    [self setMessage:TTText(@"Disconnected. Credentials removed from this Mac’s Keychain.") error:NO]; [self filter:nil];
 }
 - (void)openProfile:(id)sender {
     NSString *url = [TTHomeAssistantClient normalizedURL:self.address.stringValue];
@@ -196,12 +196,12 @@
 }
 - (void)signIn:(id)sender {
     NSString *url = [TTHomeAssistantClient normalizedURL:self.address.stringValue];
-    if (!url) { [self setMessage:@"Enter a valid Home Assistant URL first." error:YES]; return; }
+    if (!url) { [self setMessage:TTText(@"Enter a valid Home Assistant URL first.") error:YES]; return; }
     self.authServer = url; self.authState = NSUUID.UUID.UUIDString;
     NSURLComponents *authorize = [NSURLComponents componentsWithString:[url stringByAppendingString:@"/auth/authorize"]];
     authorize.queryItems = @[[NSURLQueryItem queryItemWithName:@"client_id" value:TTHAClientID], [NSURLQueryItem queryItemWithName:@"redirect_uri" value:TTHARedirectURI], [NSURLQueryItem queryItemWithName:@"state" value:self.authState]];
     self.authWindow = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, 560, 660) styleMask:NSWindowStyleMaskTitled | NSWindowStyleMaskClosable backing:NSBackingStoreBuffered defer:NO];
-    self.authWindow.title = [@"Sign in to " stringByAppendingString:url]; self.authWindow.releasedWhenClosed = NO; self.authWindow.delegate = self;
+    self.authWindow.title = [TTText(@"Sign in to ") stringByAppendingString:url]; self.authWindow.releasedWhenClosed = NO; self.authWindow.delegate = self;
     WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
     if (@available(macOS 10.11, *)) config.websiteDataStore = WKWebsiteDataStore.nonPersistentDataStore;
     NSRect webFrame = self.authWindow.contentView.bounds; webFrame.origin.y = 48; webFrame.size.height -= 48;
@@ -210,7 +210,7 @@
     self.webView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
     [self.authWindow.contentView addSubview:self.webView];
     NSButton *cancel = [[NSButton alloc] initWithFrame:NSMakeRect(430, 10, 110, 30)];
-    cancel.title = @"Cancel"; cancel.bezelStyle = NSBezelStyleRounded; cancel.target = self; cancel.action = @selector(cancelSignIn:);
+    cancel.title = TTText(@"Cancel"); cancel.bezelStyle = NSBezelStyleRounded; cancel.target = self; cancel.action = @selector(cancelSignIn:);
     [self.authWindow.contentView addSubview:cancel];
     [self.window beginSheet:self.authWindow completionHandler:nil];
     [self.webView loadRequest:[NSURLRequest requestWithURL:authorize.URL]];
@@ -230,9 +230,9 @@
     if ([components.scheme isEqual:callback.scheme] && [components.host isEqual:callback.host] && [components.path isEqual:callback.path] && !components.port && !components.user && !components.password) {
         decisionHandler(WKNavigationActionPolicyCancel);
         NSMutableDictionary *query = [NSMutableDictionary dictionary]; for (NSURLQueryItem *item in components.queryItems) if (item.value) query[item.name] = item.value;
-        if (![query[@"state"] isEqual:self.authState] || ![query[@"code"] length]) { [self setMessage:@"Sign-in could not be verified. Please try again." error:YES]; [self closeAuthentication]; return; }
+        if (![query[@"state"] isEqual:self.authState] || ![query[@"code"] length]) { [self setMessage:TTText(@"Sign-in could not be verified. Please try again.") error:YES]; [self closeAuthentication]; return; }
         NSString *server = self.authServer; [self closeAuthentication]; self.busy = YES;
-        [self setMessage:@"Finishing sign-in…" error:NO];
+        [self setMessage:TTText(@"Finishing sign-in…") error:NO];
         [self.client exchangeCode:query[@"code"] serverURL:server completion:^(id result, NSError *error) { self.busy = NO; [self finishRefresh:error]; }];
         return;
     }
@@ -283,8 +283,8 @@
     NSString *previousAction = self.actionPicker.selectedItem.representedObject;
     [self.actionPicker removeAllItems];
     if (self.table.selectedRow < 0 || self.table.selectedRow >= self.filtered.count) {
-        self.detail.stringValue = self.filtered.count ? @"Choose an entity" : (self.client.connected ? @"No matching entities" : @"Connect to browse your home");
-        self.fieldsHelp.stringValue = @"Scenes activate a saved look. Scripts run a sequence. Automations created from blueprints appear here too.";
+        self.detail.stringValue = self.filtered.count ? TTText(@"Choose an entity") : (self.client.connected ? TTText(@"No matching entities") : TTText(@"Connect to browse your home"));
+        self.fieldsHelp.stringValue = TTText(@"Scenes activate a saved look. Scripts run a sequence. Automations created from blueprints appear here too.");
         [self updateButtons]; return;
     }
     NSDictionary *entity = self.filtered[self.table.selectedRow];
@@ -301,12 +301,12 @@
 }
 - (void)actionChanged:(id)sender {
     NSInteger index = self.actionPicker.indexOfSelectedItem;
-    if (index < 0) { self.fieldsHelp.stringValue = @"This entity has no callable actions. Sensors are usually read-only."; [self updateButtons]; return; }
+    if (index < 0) { self.fieldsHelp.stringValue = TTText(@"This entity has no callable actions. Sensors are usually read-only."); [self updateButtons]; return; }
     NSDictionary *action = self.actions[index], *metadata = action[@"metadata"];
     NSMutableArray *required = [NSMutableArray array];
     for (NSString *key in metadata[@"fields"]) if ([metadata[@"fields"][key][@"required"] boolValue] && ![key isEqual:@"entity_id"]) [required addObject:key];
     NSString *description = metadata[@"description"] ?: @"";
-    NSString *requiredText = required.count ? [@"Required data: " stringByAppendingString:[required componentsJoinedByString:@", "]] : @"No required action data.";
+    NSString *requiredText = required.count ? [TTText(@"Required data: ") stringByAppendingString:[required componentsJoinedByString:@", "]] : TTText(@"No required action data.");
     self.fieldsHelp.stringValue = [NSString stringWithFormat:@"%@\n%@\n%@", action[@"id"], description, requiredText];
     self.fieldsHelp.toolTip = self.fieldsHelp.stringValue;
     [self updateButtons];
@@ -319,7 +319,7 @@
     NSDictionary *metadata = self.actions[self.actionPicker.indexOfSelectedItem][@"metadata"];
     for (NSString *key in metadata[@"fields"]) {
         if ([metadata[@"fields"][key][@"required"] boolValue] && !body[key] && !metadata[@"fields"][key][@"default"]) {
-            [self setMessage:[@"Add the required action data field: " stringByAppendingString:key] error:YES]; return nil;
+            [self setMessage:[TTText(@"Add the required action data field: ") stringByAppendingString:key] error:YES]; return nil;
         }
     }
     return @{@"entity_id": self.selectedEntityID, @"service": self.actionPicker.selectedItem.representedObject,
@@ -327,15 +327,15 @@
 }
 - (void)test:(id)sender {
     NSDictionary *binding = [self binding]; if (!binding) return;
-    self.busy = YES; [self setMessage:@"Running action…" error:NO];
+    self.busy = YES; [self setMessage:TTText(@"Running action…") error:NO];
     [self.client callAction:binding[@"service"] entity:binding[@"entity_id"] data:binding[@"data"] completion:^(id result, NSError *error) {
         self.busy = NO;
-        [self setMessage:error ? error.localizedDescription : @"Home Assistant accepted the action. Check the device, then save when ready." error:error != nil];
+        [self setMessage:error ? error.localizedDescription : TTText(@"Home Assistant accepted the action. Check the device, then save when ready.") error:error != nil];
     }];
 }
 - (void)save:(id)sender {
     NSDictionary *binding = [self binding]; if (!binding || !self.saveHandler) return;
     self.saveHandler(binding);
-    [self setMessage:[NSString stringWithFormat:@"Saved %@ · %@ to your remote button.", binding[@"name"], binding[@"service"]] error:NO];
+    [self setMessage:[NSString stringWithFormat:TTText(@"Saved %@ · %@ to your remote button."), binding[@"name"], binding[@"service"]] error:NO];
 }
 @end

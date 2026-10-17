@@ -69,7 +69,7 @@
 
 - (void)redraw {
     BOOL selected = [self.delegate isSelected:self.device];
-    NSString *name = self.device.deviceName ?: @"Unknown Device";
+    NSString *name = self.device.deviceName ?: TTText(@"Unknown Device");
     if (self.device.protocolType == KASA_PROTOCOL_KLAP) {
         if (self.device.needsAuthentication) {
             name = [name stringByAppendingString:@" \u26A0\uFE0F"]; // Warning sign

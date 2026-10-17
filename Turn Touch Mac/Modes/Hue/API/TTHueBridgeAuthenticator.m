@@ -92,7 +92,7 @@ static NSString * const kRecentBridgeIPKey = @"TT:recentHueBridgeIP";
     if (remainingSeconds <= 0) {
         NSError *timeoutError = [NSError errorWithDomain:TTHueBridgeAuthenticatorErrorDomain
                                                     code:TTHueBridgeAuthenticatorErrorTimeout
-                                                userInfo:@{NSLocalizedDescriptionKey: @"Authentication timed out"}];
+                                                userInfo:@{NSLocalizedDescriptionKey: TTText(@"Authentication timed out")}];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.delegate authenticationFailedWithError:timeoutError];
         });
@@ -159,7 +159,7 @@ static NSString * const kRecentBridgeIPKey = @"TT:recentHueBridgeIP";
             NSLog(@"[TTHueBridgeAuthenticator] Network error: %@", error);
             NSError *networkError = [NSError errorWithDomain:TTHueBridgeAuthenticatorErrorDomain
                                                         code:TTHueBridgeAuthenticatorErrorNetwork
-                                                    userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:@"Network error: %@", error.localizedDescription],
+                                                    userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:TTText(@"Network error: %@"), error.localizedDescription],
                                                                NSUnderlyingErrorKey: error}];
             completion(nil, networkError);
             return;
@@ -177,7 +177,7 @@ static NSString * const kRecentBridgeIPKey = @"TT:recentHueBridgeIP";
             }
             NSError *invalidError = [NSError errorWithDomain:TTHueBridgeAuthenticatorErrorDomain
                                                         code:TTHueBridgeAuthenticatorErrorInvalidResponse
-                                                    userInfo:@{NSLocalizedDescriptionKey: @"Invalid response from bridge"}];
+                                                    userInfo:@{NSLocalizedDescriptionKey: TTText(@"Invalid response from bridge")}];
             completion(nil, invalidError);
             return;
         }
@@ -186,7 +186,7 @@ static NSString * const kRecentBridgeIPKey = @"TT:recentHueBridgeIP";
         if (![firstItem isKindOfClass:[NSDictionary class]]) {
             NSError *invalidError = [NSError errorWithDomain:TTHueBridgeAuthenticatorErrorDomain
                                                         code:TTHueBridgeAuthenticatorErrorInvalidResponse
-                                                    userInfo:@{NSLocalizedDescriptionKey: @"Invalid response from bridge"}];
+                                                    userInfo:@{NSLocalizedDescriptionKey: TTText(@"Invalid response from bridge")}];
             completion(nil, invalidError);
             return;
         }
@@ -211,28 +211,28 @@ static NSString * const kRecentBridgeIPKey = @"TT:recentHueBridgeIP";
         NSDictionary *errorDict = firstItem[@"error"];
         if (errorDict && [errorDict isKindOfClass:[NSDictionary class]]) {
             NSInteger type = [errorDict[@"type"] integerValue];
-            NSString *description = errorDict[@"description"] ?: @"Unknown error";
+            NSString *description = errorDict[@"description"] ?: TTText(@"Unknown error");
 
             if (type == 101) {
                 // Link button not pressed - this is expected, waiting for user
                 NSLog(@"[TTHueBridgeAuthenticator] Waiting for link button press...");
                 NSError *linkError = [NSError errorWithDomain:TTHueBridgeAuthenticatorErrorDomain
                                                          code:TTHueBridgeAuthenticatorErrorLinkButtonNotPressed
-                                                     userInfo:@{NSLocalizedDescriptionKey: @"Link button not pressed"}];
+                                                     userInfo:@{NSLocalizedDescriptionKey: TTText(@"Link button not pressed")}];
                 completion(nil, linkError);
                 return;
             }
 
             NSError *authError = [NSError errorWithDomain:TTHueBridgeAuthenticatorErrorDomain
                                                      code:TTHueBridgeAuthenticatorErrorAuthenticationFailed
-                                                 userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:@"Authentication failed: %@", description]}];
+                                                 userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:TTText(@"Authentication failed: %@"), description]}];
             completion(nil, authError);
             return;
         }
 
         NSError *invalidError = [NSError errorWithDomain:TTHueBridgeAuthenticatorErrorDomain
                                                     code:TTHueBridgeAuthenticatorErrorInvalidResponse
-                                                userInfo:@{NSLocalizedDescriptionKey: @"Invalid response from bridge"}];
+                                                userInfo:@{NSLocalizedDescriptionKey: TTText(@"Invalid response from bridge")}];
         completion(nil, invalidError);
     }];
 

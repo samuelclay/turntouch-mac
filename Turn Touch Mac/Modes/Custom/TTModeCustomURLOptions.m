@@ -66,23 +66,23 @@
     NSInteger doubleHitCount = [[self.action optionValue:kDoubleHitCount
                                              inDirection:self.appDelegate.modeMap.inspectingModeDirection] integerValue];
     if (singleHitCount == 1) {
-        self.singleLabel.stringValue = @"Hit 1 time";
+        self.singleLabel.stringValue = TTText(@"Hit 1 time");
         self.singleLabel.textColor = [NSColor blackColor];
     } else if (singleHitCount > 1) {
-        self.singleLabel.stringValue = [NSString stringWithFormat:@"Hit %ld times", (long)singleHitCount];
+        self.singleLabel.stringValue = [NSString stringWithFormat:TTText(@"Hit %ld times"), (long)singleHitCount];
         self.singleLabel.textColor = [NSColor blackColor];
     } else {
-        self.singleLabel.stringValue = @"Not yet hit";
+        self.singleLabel.stringValue = TTText(@"Not yet hit");
         self.singleLabel.textColor = [NSColor lightGrayColor];
     }
     if (doubleHitCount == 1) {
-        self.doubleLabel.stringValue = @"Hit 1 time";
+        self.doubleLabel.stringValue = TTText(@"Hit 1 time");
         self.doubleLabel.textColor = [NSColor blackColor];
     } else if (doubleHitCount > 1) {
-        self.doubleLabel.stringValue = [NSString stringWithFormat:@"Hit %ld times", (long)doubleHitCount];
+        self.doubleLabel.stringValue = [NSString stringWithFormat:TTText(@"Hit %ld times"), (long)doubleHitCount];
         self.doubleLabel.textColor = [NSColor blackColor];
     } else {
-        self.doubleLabel.stringValue = @"Not yet hit";
+        self.doubleLabel.stringValue = TTText(@"Not yet hit");
         self.doubleLabel.textColor = [NSColor lightGrayColor];
     }
 }

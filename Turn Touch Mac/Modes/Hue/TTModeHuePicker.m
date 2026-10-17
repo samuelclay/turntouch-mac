@@ -32,7 +32,7 @@
     NSMutableArray *rooms = [[NSMutableArray alloc] init];
     [self.roomDropdown removeAllItems];
 
-    [rooms addObject:@{@"name": @"All Rooms", @"identifier": @"all"}];
+    [rooms addObject:@{@"name": TTText(@"All Rooms"), @"identifier": @"all"}];
 
     if (cache) {
         for (NSString *roomId in cache.rooms) {

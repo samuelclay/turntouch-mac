@@ -9,14 +9,14 @@
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:100]];
     NSButton *button = [[NSButton alloc] initWithFrame:NSMakeRect(20, 51, 280, 30)];
     button.bezelStyle = NSBezelStyleRounded;
-    button.title = self.action ? @"Choose Home Assistant action…" : @"Connect to Home Assistant…";
+    button.title = self.action ? TTText(@"Choose Home Assistant action…") : TTText(@"Connect to Home Assistant…");
     button.target = self; button.action = @selector(openBrowser:);
     [self.view addSubview:button];
     NSTextField *label = [[NSTextField alloc] initWithFrame:NSMakeRect(20, 10, 280, 36)];
     label.editable = NO; label.bordered = NO; label.drawsBackground = NO;
     label.font = [NSFont systemFontOfSize:11]; label.textColor = NSColor.secondaryLabelColor;
     NSDictionary *binding = [self.action optionValue:@"homeAssistantBinding"];
-    label.stringValue = binding ? [NSString stringWithFormat:@"%@ · %@", binding[@"name"], binding[@"service"]] : @"Search lights, scenes, scripts, and more.\nNo Home Assistant plugin needed.";
+    label.stringValue = binding ? [NSString stringWithFormat:@"%@ · %@", binding[@"name"], binding[@"service"]] : TTText(@"Search lights, scenes, scripts, and more.\nNo Home Assistant plugin needed.");
     [self.view addSubview:label];
 }
 - (void)openBrowser:(id)sender {

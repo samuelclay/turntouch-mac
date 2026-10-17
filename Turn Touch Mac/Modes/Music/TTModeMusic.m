@@ -62,14 +62,14 @@ NSString *const kMusicPlaylistShuffleDouble = @"musicPlaylistShuffleDouble";
 #pragma mark - Mode
 
 + (NSString *)title {
-    return @"Music";
+    return TTText(@"Music");
 }
 
 + (NSString *)description {
     if ([self isITunes]) {
-        return @"Control iTunes";
+        return TTText(@"Control iTunes");
     } else {
-        return @"Control Music";
+        return TTText(@"Control Music");
     }
 }
 
@@ -96,50 +96,50 @@ NSString *const kMusicPlaylistShuffleDouble = @"musicPlaylistShuffleDouble";
 #pragma mark - Action Titles
 
 - (NSString *)titleTTModeMusicVolumeUp {
-    return self.isITunes ? @"iTunes Volume up" : @"Music volume up";
+    return self.isITunes ? TTText(@"iTunes Volume up") : TTText(@"Music volume up");
 }
 - (NSString *)titleTTModeMusicVolumeDown {
-    return self.isITunes ? @"iTunes Volume down" : @"Music volume down";
+    return self.isITunes ? TTText(@"iTunes Volume down") : TTText(@"Music volume down");
 }
 - (NSString *)titleTTModeMusicPause {
-    return @"Pause";
+    return TTText(@"Pause");
 }
 - (NSString *)titleTTModeMusicPlay {
-    return @"Play";
+    return TTText(@"Play");
 }
 - (NSString *)titleTTModeMusicPlayPause {
-    return @"Play/pause";
+    return TTText(@"Play/pause");
 }
 - (NSString *)doubleTitleTTModeMusicPause {
-    return @"Previous track";
+    return TTText(@"Previous track");
 }
 - (NSString *)actionTitleTTModeMusicPause {
-    return @"Pause";
+    return TTText(@"Pause");
 }
 - (NSString *)actionTitleTTModeMusicPlay {
-    return @"Play";
+    return TTText(@"Play");
 }
 - (NSString *)actionTitleTTModeMusicPlayPause {
-    return self.isPlaying ? @"Play" : @"Pause";
+    return self.isPlaying ? TTText(@"Play") : TTText(@"Pause");
 }
 - (NSString *)titleTTModeMusicNextTrack {
-    return @"Next track";
+    return TTText(@"Next track");
 }
 - (NSString *)doubleTitleTTModeMusicNextTrack {
-    return @"Next album";
+    return TTText(@"Next album");
 }
 - (NSString *)titleTTModeMusicPreviousTrack {
-    return @"Previous track";
+    return TTText(@"Previous track");
 }
 - (NSString *)titleTTModeMusicPlaylist {
-    return @"Playlist";
+    return TTText(@"Playlist");
 }
 - (NSString *)actionTitleTTModeMusicPlaylist {
     iTunesApplication *music = self.musicApp;
     NSString *selectedPlaylist = [self.action optionValue:kMusicPlaylistSingle];
     
     if (![music respondsToSelector:@selector(sources)]) {
-        return @"Playlist";
+        return TTText(@"Playlist");
     }
     
     for (MusicSource *source in [music sources]) {
@@ -152,7 +152,7 @@ NSString *const kMusicPlaylistShuffleDouble = @"musicPlaylistShuffleDouble";
         }
     }
     
-    return @"Playlist";
+    return TTText(@"Playlist");
 }
 
 - (NSString *)doubleActionTitleTTModeMusicPlaylist {
@@ -160,7 +160,7 @@ NSString *const kMusicPlaylistShuffleDouble = @"musicPlaylistShuffleDouble";
     NSString *selectedPlaylist = [self.action optionValue:kMusicPlaylistDouble];
     
     if (![music respondsToSelector:@selector(sources)]) {
-        return @"Playlist";
+        return TTText(@"Playlist");
     }
     
     for (MusicSource *source in [music sources]) {
@@ -173,14 +173,14 @@ NSString *const kMusicPlaylistShuffleDouble = @"musicPlaylistShuffleDouble";
         }
     }
     
-    return @"Playlist";
+    return TTText(@"Playlist");
 }
 
 - (NSString *)titleTTModeMusicVolumeJump {
-    return @"Volume jump";
+    return TTText(@"Volume jump");
 }
 - (NSString *)titleTTModeMusicSleep {
-    return @"Fade out";
+    return TTText(@"Fade out");
 }
 
 #pragma mark - Action Images
@@ -341,7 +341,7 @@ NSString *const kMusicPlaylistShuffleDouble = @"musicPlaylistShuffleDouble";
     // Check if song playing
     if (!currentTrack.name) {
         NSTextView *songTitleView = [[NSTextView alloc] initWithFrame:NSMakeRect(infoX, textSize.height, infoWidth, textSize.height)];
-        [songTitleView setString:self.isITunes ? @"iTunes isn't playing anything" : @"Music isn't playing anything"];
+        [songTitleView setString:self.isITunes ? TTText(@"iTunes isn't playing anything") : TTText(@"Music isn't playing anything")];
         [songTitleView setTextColor:NSColorFromRGB(0x604050)];
         [songTitleView setFont:[NSFont fontWithName:@"Effra" size:fontSize]];
         [songTitleView setBackgroundColor:[NSColor clearColor]];

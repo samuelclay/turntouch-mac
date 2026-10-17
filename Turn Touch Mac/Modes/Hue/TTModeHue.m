@@ -105,7 +105,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
                                                object:nil];
 
     self.hueState = STATE_CONNECTING;
-    [self.delegate changeState:self.hueState withMode:self showMessage:@"Connecting..."];
+    [self.delegate changeState:self.hueState withMode:self showMessage:TTText(@"Connecting...")];
 
     [self connectToBridgeWithReset:YES];
 }
@@ -113,11 +113,11 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 #pragma mark - Mode
 
 + (NSString *)title {
-    return @"Hue";
+    return TTText(@"Hue");
 }
 
 + (NSString *)description {
-    return @"Lights and scenes";
+    return TTText(@"Lights and scenes");
 }
 
 + (NSString *)imageName {
@@ -142,43 +142,43 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 #pragma mark - Action Titles
 
 - (NSString *)titleTTModeHueRaiseBrightness {
-    return @"Raise brightness";
+    return TTText(@"Raise brightness");
 }
 - (NSString *)titleTTModeHueLowerBrightness {
-    return @"Lower brightness";
+    return TTText(@"Lower brightness");
 }
 - (NSString *)titleTTModeHueShiftColorLeft {
-    return @"Shift color left";
+    return TTText(@"Shift color left");
 }
 - (NSString *)titleTTModeHueShiftColorRight {
-    return @"Shift color right";
+    return TTText(@"Shift color right");
 }
 - (NSString *)titleTTModeHueSceneEarlyEvening {
-    return @"Early evening";
+    return TTText(@"Early evening");
 }
 - (NSString *)doubleTitleTTModeHueSceneEarlyEvening {
-    return @"Early evening 2";
+    return TTText(@"Early evening 2");
 }
 - (NSString *)titleTTModeHueSceneLateEvening {
-    return @"Late evening";
+    return TTText(@"Late evening");
 }
 - (NSString *)doubleTitleTTModeHueSceneLateEvening {
-    return @"Late evening 2";
+    return TTText(@"Late evening 2");
 }
 - (NSString *)titleTTModeHueSleep {
-    return @"Sleep";
+    return TTText(@"Sleep");
 }
 - (NSString *)doubleTitleTTModeHueSleep {
-    return @"Sleep fast";
+    return TTText(@"Sleep fast");
 }
 - (NSString *)titleTTModeHueOff {
-    return @"Lights off";
+    return TTText(@"Lights off");
 }
 - (NSString *)titleTTModeHueRandom {
-    return @"Random";
+    return TTText(@"Random");
 }
 - (NSString *)doubleTitleTTModeHueRandom {
-    return @"Random 2";
+    return TTText(@"Random 2");
 }
 
 #pragma mark - Action Images
@@ -692,7 +692,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
         }
 
         self.hueState = STATE_NOT_CONNECTED;
-        [self.delegate changeState:self.hueState withMode:self showMessage:@"Connection timed out. Tap to retry."];
+        [self.delegate changeState:self.hueState withMode:self showMessage:TTText(@"Connection timed out. Tap to retry.")];
     }
 }
 
@@ -709,7 +709,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 
     self.hueState = STATE_CONNECTING;
     [self startConnectionTimeout];
-    [self.delegate changeState:self.hueState withMode:self showMessage:@"Connecting to Hue..."];
+    [self.delegate changeState:self.hueState withMode:self showMessage:TTText(@"Connecting to Hue...")];
 
     if (reset) {
         [self.bridgesTried removeAllObjects];
@@ -868,7 +868,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
                     // Don't start pushlink automatically - wait for user to open Hue options
                     [self cancelConnectionTimeout];
                     self.hueState = STATE_NOT_CONNECTED;
-                    [self.delegate changeState:self.hueState withMode:self showMessage:@"Hue authentication expired. Open Hue settings to reconnect."];
+                    [self.delegate changeState:self.hueState withMode:self showMessage:TTText(@"Hue authentication expired. Open Hue settings to reconnect.")];
                 } else if ([self isLocalNetworkError:error] && !self.localNetworkRetried) {
                     // macOS blocked local network access — trigger the permission prompt
                     // via Bonjour and retry
@@ -1023,7 +1023,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     // This prevents background polling that wastes resources and hits rate limits
     [self cancelConnectionTimeout];
     self.hueState = STATE_NOT_CONNECTED;
-    [self.delegate changeState:self.hueState withMode:self showMessage:@"Hue authentication expired. Open Hue settings to reconnect."];
+    [self.delegate changeState:self.hueState withMode:self showMessage:TTText(@"Hue authentication expired. Open Hue settings to reconnect.")];
 }
 
 - (void)eventStreamReceivedLightUpdates:(NSArray<TTHueLight *> *)lights {
@@ -1058,7 +1058,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 
 - (void)searchForBridgeLocal {
     self.hueState = STATE_CONNECTING;
-    [self.delegate changeState:self.hueState withMode:self showMessage:@"Searching for a Hue bridge..."];
+    [self.delegate changeState:self.hueState withMode:self showMessage:TTText(@"Searching for a Hue bridge...")];
 
     self.bridgeDiscovery = [[TTHueBridgeDiscovery alloc] init];
     self.bridgeDiscovery.delegate = self;
@@ -1067,7 +1067,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 
 - (void)bridgeSelectedWithIpAddress:(NSString *)ipAddress andBridgeId:(NSString *)bridgeId {
     self.hueState = STATE_CONNECTING;
-    [self.delegate changeState:self.hueState withMode:self showMessage:@"Found Hue bridge..."];
+    [self.delegate changeState:self.hueState withMode:self showMessage:TTText(@"Found Hue bridge...")];
 
     TTHueDiscoveredBridge *bridge = [[TTHueDiscoveredBridge alloc] init];
     bridge.bridgeId = bridgeId;
@@ -1136,7 +1136,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
 
     if (error.code == TTHueBridgeDiscoveryErrorRateLimited) {
         self.hueState = STATE_NOT_CONNECTED;
-        [self.delegate changeState:self.hueState withMode:self showMessage:@"Philips Hue is rate-limiting requests. Please wait a moment and try again."];
+        [self.delegate changeState:self.hueState withMode:self showMessage:TTText(@"Philips Hue is rate-limiting requests. Please wait a moment and try again.")];
     } else {
         [self showNoBridgesFoundDialog];
     }
@@ -1176,21 +1176,21 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
                 [self removeSavedBridge:self.latestBridge.bridgeId];
             }
             self.hueState = STATE_NOT_CONNECTED;
-            [self.delegate changeState:self.hueState withMode:self showMessage:@"Pushlink button not pressed within 30 seconds"];
+            [self.delegate changeState:self.hueState withMode:self showMessage:TTText(@"Pushlink button not pressed within 30 seconds")];
         } else if (error.code == TTHueBridgeAuthenticatorErrorNetwork) {
             // Network error - could be local network permission
             NSError *underlyingError = error.userInfo[NSUnderlyingErrorKey];
             if (underlyingError && underlyingError.code == -1009) {
                 self.hueState = STATE_NOT_CONNECTED;
-                [self.delegate changeState:self.hueState withMode:self showMessage:@"Local network access required. Please grant permission in System Settings."];
+                [self.delegate changeState:self.hueState withMode:self showMessage:TTText(@"Local network access required. Please grant permission in System Settings.")];
             } else {
                 self.hueState = STATE_NOT_CONNECTED;
-                [self.delegate changeState:self.hueState withMode:self showMessage:@"Could not connect to Hue bridge. Check your network connection."];
+                [self.delegate changeState:self.hueState withMode:self showMessage:TTText(@"Could not connect to Hue bridge. Check your network connection.")];
             }
         } else {
             // Other authenticator errors (invalid response, auth failed, etc.)
             self.hueState = STATE_NOT_CONNECTED;
-            [self.delegate changeState:self.hueState withMode:self showMessage:[NSString stringWithFormat:@"Authentication failed: %@", error.localizedDescription]];
+            [self.delegate changeState:self.hueState withMode:self showMessage:[NSString stringWithFormat:TTText(@"Authentication failed: %@"), error.localizedDescription]];
         }
         return;
     }
@@ -1199,15 +1199,15 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     if (error.code == -1009) {
         // Network offline / Local network prohibited
         self.hueState = STATE_NOT_CONNECTED;
-        [self.delegate changeState:self.hueState withMode:self showMessage:@"Local network access required. Please grant permission in System Settings."];
+        [self.delegate changeState:self.hueState withMode:self showMessage:TTText(@"Local network access required. Please grant permission in System Settings.")];
     } else if (error.code == -1001 || error.code == -1004) {
         // Timeout or could not connect to server
         self.hueState = STATE_NOT_CONNECTED;
-        [self.delegate changeState:self.hueState withMode:self showMessage:@"Could not connect to Hue bridge"];
+        [self.delegate changeState:self.hueState withMode:self showMessage:TTText(@"Could not connect to Hue bridge")];
     } else {
         // Unknown error - don't retry to avoid infinite loop
         self.hueState = STATE_NOT_CONNECTED;
-        [self.delegate changeState:self.hueState withMode:self showMessage:[NSString stringWithFormat:@"Connection error: %@", error.localizedDescription]];
+        [self.delegate changeState:self.hueState withMode:self showMessage:[NSString stringWithFormat:TTText(@"Connection error: %@"), error.localizedDescription]];
     }
 }
 
@@ -1217,7 +1217,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     NSLog(@"Connection to bridge lost!");
     [self cancelConnectionTimeout];
     self.hueState = STATE_NOT_CONNECTED;
-    [self.delegate changeState:self.hueState withMode:self showMessage:@"Connection to Hue bridge lost"];
+    [self.delegate changeState:self.hueState withMode:self showMessage:TTText(@"Connection to Hue bridge lost")];
 }
 
 #pragma mark - Local Network Permission
@@ -1245,7 +1245,7 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     self.localNetworkBrowser.delegate = self;
     [self.localNetworkBrowser searchForServicesOfType:@"_hue._tcp" inDomain:@"local."];
 
-    [self.delegate changeState:self.hueState withMode:self showMessage:@"Requesting local network access..."];
+    [self.delegate changeState:self.hueState withMode:self showMessage:TTText(@"Requesting local network access...")];
 
     // Give the user time to accept the permission prompt, then retry
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -1271,13 +1271,13 @@ NSString *const kDoubleTapRandomSaturation = @"doubleTapRandomSaturation";
     NSLog(@"Could not find bridge!");
     [self cancelConnectionTimeout];
     self.hueState = STATE_NOT_CONNECTED;
-    [self.delegate changeState:self.hueState withMode:self showMessage:@"Could not find any Hue bridges"];
+    [self.delegate changeState:self.hueState withMode:self showMessage:TTText(@"Could not find any Hue bridges")];
 }
 
 - (void)showNotAuthenticatedDialog {
     [self cancelConnectionTimeout];
     self.hueState = STATE_NOT_CONNECTED;
-    [self.delegate changeState:self.hueState withMode:self showMessage:@"Pushlink button not pressed within 30 seconds"];
+    [self.delegate changeState:self.hueState withMode:self showMessage:TTText(@"Pushlink button not pressed within 30 seconds")];
     NSLog(@"Pushlink button not pressed within 30 sec!");
 }
 

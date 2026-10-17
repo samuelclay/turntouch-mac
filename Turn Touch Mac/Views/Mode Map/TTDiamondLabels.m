@@ -75,7 +75,7 @@
         [self addSubview:self.southLabel];
         
         if (self.interactive) {
-            self.changeButton = [TTChangeButtonView buttonWithTitle:@"Change" target:self action:@selector(pressedChange:)];
+            self.changeButton = [TTChangeButtonView buttonWithTitle:TTText(@"Change") target:self action:@selector(pressedChange:)];
             [self addSubview:self.changeButton];
             
             [self updateChangeButton];
@@ -114,9 +114,9 @@
     self.changeButton.hidden = self.appDelegate.modeMap.buttonActionMode == TTButtonActionModeEdit;
     
     if (self.appDelegate.modeMap.inspectingModeDirection != NO_DIRECTION) {
-        self.changeButton.title = @"Done";
+        self.changeButton.title = TTText(@"Done");
     } else {
-        self.changeButton.title = @"Change";
+        self.changeButton.title = TTText(@"Change");
     }
 }
 

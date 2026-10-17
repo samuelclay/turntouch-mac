@@ -1,8 +1,8 @@
 #import "TTModeTwelve.h"
 
 @implementation TTModeTwelve
-+ (NSString *)title { return @"12 actions"; }
-+ (NSString *)description { return @"Choose a button, then add an action"; }
++ (NSString *)title { return TTText(@"12 actions"); }
++ (NSString *)description { return TTText(@"Choose a button, then add an action"); }
 + (NSString *)imageName { return @"settings"; }
 - (NSArray *)actions { return @[]; }
 - (BOOL)hideActionMenu { return YES; }
@@ -13,7 +13,7 @@
 - (NSString *)titleInDirection:(TTModeDirection)direction buttonMoment:(TTButtonMoment)moment {
     NSArray<TTAction *> *actions = [self.appDelegate.modeMap selectedModeBatchActions:direction];
     TTAction *first = actions.firstObject;
-    if (!first) return @"Add action";
+    if (!first) return TTText(@"Add action");
     NSString *title = [first.mode titleForAction:first.actionName buttonMoment:BUTTON_MOMENT_PRESSUP];
     return actions.count > 1 ? [NSString stringWithFormat:@"%@ +%lu", title, (unsigned long)actions.count - 1] : title;
 }

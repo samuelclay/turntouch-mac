@@ -35,7 +35,7 @@ static TTIftttState iftttState;
 }
 
 + (NSString *)description {
-    return @"Buttons for If This Then That";
+    return TTText(@"Buttons for If This Then That");
 }
 
 + (NSString *)imageName {
@@ -52,7 +52,7 @@ static TTIftttState iftttState;
 #pragma mark - Action Titles
 
 - (NSString *)titleTTModeIftttTriggerAction {
-    return @"Trigger action";
+    return TTText(@"Trigger action");
 }
 
 #pragma mark - Action Images

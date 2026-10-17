@@ -51,35 +51,35 @@
     
     if (self.modalFTUX == MODAL_FTUX_INTRO) {
         [self.imageView setImage:[NSImage imageNamed:@"modal_ftux_action"]];
-        [self.labelTitle setStringValue:@"Here's how it works"];
-        [self.labelSubtitle setStringValue:@"Your remote has four buttons"];
+        [self.labelTitle setStringValue:TTText(@"Here's how it works")];
+        [self.labelSubtitle setStringValue:TTText(@"Your remote has four buttons")];
     } else if (self.modalFTUX == MODAL_FTUX_ACTIONS) {
         [self.imageView setImage:[NSImage imageNamed:@"modal_ftux_doubletap"]];
-        [self.labelTitle setStringValue:@"Each button performs an action"];
-        [self.labelSubtitle setStringValue:@"Like changing the lights, playing music, or turning up the volume"];
+        [self.labelTitle setStringValue:TTText(@"Each button performs an action")];
+        [self.labelSubtitle setStringValue:TTText(@"Like changing the lights, playing music, or turning up the volume")];
     } else if (self.modalFTUX == MODAL_FTUX_MODES) {
         [self.imageView setImage:[NSImage imageNamed:@"modal_ftux_mode"]];
-        [self.labelTitle setStringValue:@"Press and hold to change apps"];
-        [self.labelSubtitle setStringValue:@"Four apps × four buttons per app\n= sixteen different actions"];
+        [self.labelTitle setStringValue:TTText(@"Press and hold to change apps")];
+        [self.labelSubtitle setStringValue:TTText(@"Four apps × four buttons per app\n= sixteen different actions")];
     } else if (self.modalFTUX == MODAL_FTUX_BATCHACTIONS) {
         [self.imageView setImage:[NSImage imageNamed:@"modal_ftux_change_action"]];
-        [self.labelTitle setStringValue:@"Each button can do multiple actions"];
-        [self.labelSubtitle setStringValue:@"There are batch actions and double-tap actions, all configurable in this app"];
+        [self.labelTitle setStringValue:TTText(@"Each button can do multiple actions")];
+        [self.labelSubtitle setStringValue:TTText(@"There are batch actions and double-tap actions, all configurable in this app")];
     } else if (self.modalFTUX == MODAL_FTUX_HUD) {
         [self.imageView setImage:[NSImage imageNamed:@"modal_ftux_change_mode"]];
-        [self.labelTitle setStringValue:@"Press all four buttons for the HUD"];
-        [self.labelSubtitle setStringValue:@"The Heads-Up Display (HUD) shows what each button does and gives you access to even more actions and apps"];
+        [self.labelTitle setStringValue:TTText(@"Press all four buttons for the HUD")];
+        [self.labelSubtitle setStringValue:TTText(@"The Heads-Up Display (HUD) shows what each button does and gives you access to even more actions and apps")];
     }
 
     if (self.appDelegate.modeMap.isTwelveButtonMode) {
         if (self.modalFTUX == MODAL_FTUX_MODES) {
-            self.labelTitle.stringValue = @"Single tap, double tap, or hold";
-            self.labelSubtitle.stringValue = @"Four buttons × three gestures = twelve independent actions";
+            self.labelTitle.stringValue = TTText(@"Single tap, double tap, or hold");
+            self.labelSubtitle.stringValue = TTText(@"Four buttons × three gestures = twelve independent actions");
         } else if (self.modalFTUX == MODAL_FTUX_BATCHACTIONS) {
-            self.labelSubtitle.stringValue = @"Choose a gesture tab and a button, then Add Action. Mix apps or add several actions to one gesture.";
+            self.labelSubtitle.stringValue = TTText(@"Choose a gesture tab and a button, then Add Action. Mix apps or add several actions to one gesture.");
         } else if (self.modalFTUX == MODAL_FTUX_HUD) {
-            self.labelTitle.stringValue = @"Make it yours";
-            self.labelSubtitle.stringValue = @"Switch between 12 and 16 actions in Settings. Each layout keeps its own assignments.";
+            self.labelTitle.stringValue = TTText(@"Make it yours");
+            self.labelSubtitle.stringValue = TTText(@"Switch between 12 and 16 actions in Settings. Each layout keeps its own assignments.");
         }
     }
     [self.pageControl setNeedsDisplay:YES];

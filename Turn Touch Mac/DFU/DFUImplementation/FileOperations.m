@@ -47,7 +47,7 @@
     }
     else {
         NSLog(@"Error: file is empty!");
-        NSString *errorMessage = [NSString stringWithFormat:@"Error on openning file\n Message: file is empty or not exist"];
+        NSString *errorMessage = [NSString stringWithFormat:TTText(@"Error on openning file\n Message: file is empty or not exist")];
         [self.fileDelegate onError:errorMessage];
     }
 }

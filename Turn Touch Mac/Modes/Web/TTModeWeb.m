@@ -31,11 +31,11 @@
 #pragma mark - Mode
 
 + (NSString *)title {
-    return @"Web";
+    return TTText(@"Web");
 }
 
 + (NSString *)description {
-    return @"Read the web on your Mac";
+    return TTText(@"Read the web on your Mac");
 }
 
 + (NSString *)imageName {
@@ -55,46 +55,46 @@
 - (NSArray *)menuOptions {
     return @[@{@"identifier" : @"space"},
              @{@"identifier" : @"TTModeWebMenuReturn",
-               @"title"      : @"Return",
+               @"title"      : TTText(@"Return"),
                @"icon"       : @"double_tap",
                @"group"      : @"action",
                },
              @{@"identifier" : @"space"},
              @{@"identifier" : @"TTModeWebMenuNextStory",
-               @"title"      : @"Next story",
+               @"title"      : TTText(@"Next story"),
                @"icon"       : @"heart",
                @"group"      : @"action",
                },
              @{@"identifier" : @"TTModeWebMenuPreviousStory",
-               @"title"      : @"Previous story",
+               @"title"      : TTText(@"Previous story"),
                @"icon"       : @"cog",
                @"group"      : @"action",
                },
              @{@"identifier" : @"space"},
              @{@"identifier" : @"TTModeWebMenuFontSizeUp",
-               @"title"      : @"Larger text",
+               @"title"      : TTText(@"Larger text"),
                @"icon"       : @"button_chevron",
                @"group"      : @"action",
                },
              @{@"identifier" : @"TTModeWebMenuFontSizeDown",
-               @"title"      : @"Smaller text",
+               @"title"      : TTText(@"Smaller text"),
                @"icon"       : @"button_dash",
                @"group"      : @"action",
                },
              @{@"identifier" : @"space"},
              @{@"identifier" : @"TTModeWebMenuMarginWider",
-               @"title"      : @"Widen margin",
+               @"title"      : TTText(@"Widen margin"),
                @"icon"       : @"arrow",
                @"group"      : @"action",
                },
              @{@"identifier" : @"TTModeWebMenuMarginNarrower",
-               @"title"      : @"Narrow margin",
+               @"title"      : TTText(@"Narrow margin"),
                @"icon"       : @"arrow",
                @"group"      : @"action",
                },
              @{@"identifier" : @"space"},
              @{@"identifier" : @"TTModeWebMenuClose",
-               @"title"      : @"Close Reader",
+               @"title"      : TTText(@"Close Reader"),
                @"icon"       : @"button_x",
                @"group"      : @"action",
                },
@@ -104,16 +104,16 @@
 #pragma mark - Action Titles
 
 - (NSString *)titleTTModeWebMenu {
-    return @"Menu";
+    return TTText(@"Menu");
 }
 - (NSString *)titleTTModeWebNext {
-    return @"OK / Next";
+    return TTText(@"OK / Next");
 }
 - (NSString *)titleTTModeWebScrollUp {
-    return @"Scroll up";
+    return TTText(@"Scroll up");
 }
 - (NSString *)titleTTModeWebScrollDown {
-    return @"Scroll down";
+    return TTText(@"Scroll down");
 }
 
 #pragma mark - Action Images

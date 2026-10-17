@@ -20,7 +20,7 @@
 }
 
 - (void)setConnectingWithMessage:(NSString*)message {
-    if (!message) message = @"Connecting to Sonos...";
+    if (!message) message = TTText(@"Connecting to Sonos...");
     
     self.progressMessage.stringValue = message;
     [self.progressIndicator startAnimation:self];

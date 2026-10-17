@@ -27,7 +27,7 @@
     NSMutableArray *devices = [NSMutableArray array];
     [self.devicePopup removeAllItems];
     for (Thermostat *thermostat in [self.modeNest.currentStructure objectForKey:@"thermostats"]) {
-        if (!thermostat.nameLong) thermostat.nameLong = @"Connecting to Nest...";
+        if (!thermostat.nameLong) thermostat.nameLong = TTText(@"Connecting to Nest...");
         [devices addObject:@{@"name": thermostat.nameLong, @"identifier": thermostat.thermostatId}];
     }
     

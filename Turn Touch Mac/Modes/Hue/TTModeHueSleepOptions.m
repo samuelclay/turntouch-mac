@@ -48,11 +48,11 @@ NSString *const kHueDoubleTapDuration = @"hueDoubleTapDuration";
     NSInteger duration = doubleTap ? self.doubleTapDurationSlider.integerValue : self.durationSlider.integerValue;
     
     NSString *durationString;
-    if (duration == 0)       durationString = @"Immediate";
-    else if (duration == 1)  durationString = @"1 second";
-    else if (duration < 60)  durationString = [NSString stringWithFormat:@"%@ seconds", @(duration)];
-    else if (duration < 60*2) durationString = @"1 minute";
-    else                     durationString = [NSString stringWithFormat:@"%@ minutes", @(duration/60)];
+    if (duration == 0)       durationString = TTText(@"Immediate");
+    else if (duration == 1)  durationString = TTText(@"1 second");
+    else if (duration < 60)  durationString = [NSString stringWithFormat:TTText(@"%@ seconds"), @(duration)];
+    else if (duration < 60*2) durationString = TTText(@"1 minute");
+    else                     durationString = [NSString stringWithFormat:TTText(@"%@ minutes"), @(duration/60)];
     
     [(doubleTap ? self.doubleTapDurationLabel : self.durationLabel) setStringValue:durationString];
 }

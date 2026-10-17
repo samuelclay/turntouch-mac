@@ -73,12 +73,12 @@
 
     if (TTModeGovee.foundDevices.count == 0) {
         if (TTModeGovee.goveeState == GOVEE_STATE_CONNECTING) {
-            [self.noticeLabel setStringValue:@"Fetching Govee devices..."];
+            [self.noticeLabel setStringValue:TTText(@"Fetching Govee devices...")];
             [self.noticeLabel setTextColor:[NSColor darkGrayColor]];
             self.spinner.hidden = NO;
             self.refreshButton.hidden = YES;
         } else {
-            [self.noticeLabel setStringValue:@"No Govee devices found"];
+            [self.noticeLabel setStringValue:TTText(@"No Govee devices found")];
             [self.noticeLabel setTextColor:[NSColor lightGrayColor]];
             self.spinner.hidden = YES;
             self.refreshButton.hidden = NO;
@@ -107,13 +107,13 @@
 
 - (IBAction)changeApiKey:(id)sender {
     NSAlert *alert = [[NSAlert alloc] init];
-    [alert setMessageText:@"Govee API Key"];
-    [alert setInformativeText:@"Enter your Govee API key (from Govee Home App > Settings > My Profile > Apply for API Key)"];
-    [alert addButtonWithTitle:@"Save"];
-    [alert addButtonWithTitle:@"Cancel"];
+    [alert setMessageText:TTText(@"Govee API Key")];
+    [alert setInformativeText:TTText(@"Enter your Govee API key (from Govee Home App > Settings > My Profile > Apply for API Key)")];
+    [alert addButtonWithTitle:TTText(@"Save")];
+    [alert addButtonWithTitle:TTText(@"Cancel")];
 
     NSTextField *apiKeyField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 300, 22)];
-    apiKeyField.placeholderString = @"API Key";
+    apiKeyField.placeholderString = TTText(@"API Key");
 
     NSString *existingKey = [TTModeGovee loadApiKey];
     if (existingKey) {
@@ -170,28 +170,28 @@
     NSMenuItem *menuItem;
 
     if (!self.settingsMenu) {
-        self.settingsMenu = [[NSMenu alloc] initWithTitle:@"Action Menu"];
+        self.settingsMenu = [[NSMenu alloc] initWithTitle:TTText(@"Action Menu")];
         [self.settingsMenu setDelegate:self];
         [self.settingsMenu setAutoenablesItems:NO];
     } else {
         [self.settingsMenu removeAllItems];
     }
 
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Refresh Devices..." action:@selector(refreshDevices:) keyEquivalent:@""];
+    menuItem = [[NSMenuItem alloc] initWithTitle:TTText(@"Refresh Devices...") action:@selector(refreshDevices:) keyEquivalent:@""];
     [menuItem setEnabled:YES];
     [menuItem setTarget:self];
     [self.settingsMenu addItem:menuItem];
 
     [self.settingsMenu addItem:[NSMenuItem separatorItem]];
 
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Remove All and Refresh..." action:@selector(purgeDevices:) keyEquivalent:@""];
+    menuItem = [[NSMenuItem alloc] initWithTitle:TTText(@"Remove All and Refresh...") action:@selector(purgeDevices:) keyEquivalent:@""];
     [menuItem setEnabled:YES];
     [menuItem setTarget:self];
     [self.settingsMenu addItem:menuItem];
 
     [self.settingsMenu addItem:[NSMenuItem separatorItem]];
 
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Change API Key..." action:@selector(changeApiKey:) keyEquivalent:@""];
+    menuItem = [[NSMenuItem alloc] initWithTitle:TTText(@"Change API Key...") action:@selector(changeApiKey:) keyEquivalent:@""];
     [menuItem setEnabled:YES];
     [menuItem setTarget:self];
     [self.settingsMenu addItem:menuItem];

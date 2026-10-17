@@ -19,25 +19,25 @@
 
 - (void)setStoppedWithMessage:(NSString *)message {
     if (!message) {
-        self.titleLabel.stringValue = @"Find your Nanoleaf";
-        self.subtitleLabel.stringValue = @"Make sure your Nanoleaf panels are powered on\nand connected to the same Wi-Fi network.";
+        self.titleLabel.stringValue = TTText(@"Find your Nanoleaf");
+        self.subtitleLabel.stringValue = TTText(@"Make sure your Nanoleaf panels are powered on\nand connected to the same Wi-Fi network.");
     } else if ([message isEqualToString:@"No Nanoleaf devices found"]) {
-        self.titleLabel.stringValue = @"No Nanoleaf found";
-        self.subtitleLabel.stringValue = @"Make sure your Nanoleaf panels are powered on\nand connected to the same Wi-Fi network.";
+        self.titleLabel.stringValue = TTText(@"No Nanoleaf found");
+        self.subtitleLabel.stringValue = TTText(@"Make sure your Nanoleaf panels are powered on\nand connected to the same Wi-Fi network.");
     } else if ([message isEqualToString:@"No network interfaces found"]) {
-        self.titleLabel.stringValue = @"No network connection";
-        self.subtitleLabel.stringValue = @"Please connect to Wi-Fi and try again.";
+        self.titleLabel.stringValue = TTText(@"No network connection");
+        self.subtitleLabel.stringValue = TTText(@"Please connect to Wi-Fi and try again.");
     } else {
         self.titleLabel.stringValue = message;
-        self.subtitleLabel.stringValue = @"Make sure your Nanoleaf panels are powered on\nand connected to the same Wi-Fi network.";
+        self.subtitleLabel.stringValue = TTText(@"Make sure your Nanoleaf panels are powered on\nand connected to the same Wi-Fi network.");
     }
 }
 
 #pragma mark - Actions
 
 - (IBAction)searchForDevice:(id)sender {
-    self.titleLabel.stringValue = @"Searching for Nanoleaf...";
-    self.subtitleLabel.stringValue = @"Scanning your local network for Nanoleaf panels.";
+    self.titleLabel.stringValue = TTText(@"Searching for Nanoleaf...");
+    self.subtitleLabel.stringValue = TTText(@"Scanning your local network for Nanoleaf panels.");
     [self.modeNanoleaf findDevices];
 }
 

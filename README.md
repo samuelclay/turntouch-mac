@@ -175,3 +175,11 @@ The preview uses the production browser/client; **Save to button** is disabled
 because it is not attached to a remote button. The main Turn Touch app supplies
 the save handler. Previously authorized credentials can be restored for a
 discovered server from Keychain.
+
+## Localization
+
+The app supports English and 20 translations, automatic device-language detection,
+a first-launch chooser, and Language at the top of Settings. See
+[the localization workflow](localization/README.md) for extraction, incremental
+AI translation, catalog validation, and localized store screenshot preparation.
+[Validation results](localization/VALIDATION.md) record the current build and UI checks.

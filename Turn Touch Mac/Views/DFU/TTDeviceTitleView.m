@@ -35,7 +35,7 @@
         self.latestVersion = [[prefs objectForKey:@"TT:firmware:version"] integerValue];
 
         self.changeButton = [[TTChangeButtonView alloc] init];
-        [self setChangeButtonTitle:[NSString stringWithFormat:@"Upgrade to v%ld", (long)self.latestVersion]];
+        [self setChangeButtonTitle:[NSString stringWithFormat:TTText(@"Upgrade to v%ld"), (long)self.latestVersion]];
         [self.changeButton setAction:@selector(beginUpgrade:)];
         [self.changeButton setTarget:self];
         [self addSubview:self.changeButton];
@@ -179,7 +179,7 @@
 - (NSString *)updateButtonTitle {
     NSString *buttonText;
     if (self.device.isFirmwareOld) {
-        buttonText = [NSString stringWithFormat:@"Upgrade to v%ld", (long)self.latestVersion];
+        buttonText = [NSString stringWithFormat:TTText(@"Upgrade to v%ld"), (long)self.latestVersion];
         [self.changeButton setUseAltStyle:NO];
         [self.changeButton setEnabled:YES];
     } else {
@@ -194,7 +194,7 @@
 - (void)disableUpgrade {
     [self.changeButton setEnabled:NO];
     if (!self.device.isFirmwareOld) return;
-    [self.changeButton setTitle:@"Waiting..."];
+    [self.changeButton setTitle:TTText(@"Waiting...")];
 }
 
 - (void)enableUpgrade {
@@ -241,31 +241,31 @@
     NSMenuItem *menuItem;
     
     if (!self.settingsMenu) {
-        self.settingsMenu = [[NSMenu alloc] initWithTitle:@"Remote Menu"];
+        self.settingsMenu = [[NSMenu alloc] initWithTitle:TTText(@"Remote Menu")];
         [self.settingsMenu setDelegate:self];
         [self.settingsMenu setAutoenablesItems:NO];
     } else {
         [self.settingsMenu removeAllItems];
     }
     
-    NSString *batteryLevel = [NSString stringWithFormat:@"Battery Level: %d%%",
+    NSString *batteryLevel = [NSString stringWithFormat:TTText(@"Battery Level: %d%%"),
                               (int)self.device.batteryPct.intValue];
     menuItem = [[NSMenuItem alloc] initWithTitle:batteryLevel action:@selector(openDevicesDialog:) keyEquivalent:@""];
     [menuItem setEnabled:NO];
     [menuItem setTarget:self];
     if (self.device.isPaired && self.device.batteryPct.intValue <= 0) {
-        [menuItem setTitle:@"Connecting to Remote..."];
+        [menuItem setTitle:TTText(@"Connecting to Remote...")];
         [menuItem setEnabled:NO];
     } else if (!self.device.isPaired) {
-        [menuItem setTitle:@"Pairing with Remote..."];
+        [menuItem setTitle:TTText(@"Pairing with Remote...")];
         [menuItem setEnabled:NO];
     }
     [self.settingsMenu addItem:menuItem];
     NSString *timeAgo = [self.device.lastActionDate timeAgo];
-    NSString *lastAction = [NSString stringWithFormat:@"Last Action: %@",
+    NSString *lastAction = [NSString stringWithFormat:TTText(@"Last Action: %@"),
                             timeAgo];
     if (!timeAgo) {
-        lastAction = @"Counting is Difficult";
+        lastAction = TTText(@"Counting is Difficult");
     }
     menuItem = [[NSMenuItem alloc] initWithTitle:lastAction action:nil keyEquivalent:@""];
     [menuItem setEnabled:NO];
@@ -273,7 +273,7 @@
 
     [self.settingsMenu addItem:[NSMenuItem separatorItem]];
 
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Rename This Remote"
+    menuItem = [[NSMenuItem alloc] initWithTitle:TTText(@"Rename This Remote")
                                           action:@selector(openDevicesDialog:)
                                    keyEquivalent:@""];
     [menuItem setTarget:self];
@@ -281,7 +281,7 @@
     
     [self.settingsMenu addItem:[NSMenuItem separatorItem]];
     
-    menuItem = [[NSMenuItem alloc] initWithTitle:@"Forget This Remote"
+    menuItem = [[NSMenuItem alloc] initWithTitle:TTText(@"Forget This Remote")
                                           action:@selector(forgetDevice:)
                                    keyEquivalent:@""];
     [menuItem setTarget:self];

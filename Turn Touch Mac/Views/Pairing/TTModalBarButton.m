@@ -95,34 +95,34 @@
     [self.chevronImage setHidden:NO];
     
     if (self.modalPairing == MODAL_PAIRING_INTRO) {
-        self.buttonLabel.stringValue = @"Pair Remote";
+        self.buttonLabel.stringValue = TTText(@"Pair Remote");
     } else if (self.modalPairing == MODAL_PAIRING_SUCCESS) {
-        self.buttonLabel.stringValue = @"Show me how it works";
+        self.buttonLabel.stringValue = TTText(@"Show me how it works");
     } else if (self.modalPairing == MODAL_PAIRING_FAILURE) {
-        self.buttonLabel.stringValue = @"Try again";
+        self.buttonLabel.stringValue = TTText(@"Try again");
     } else if (self.modalFTUX == MODAL_FTUX_INTRO) {
-        self.buttonLabel.stringValue = @"Continue";
+        self.buttonLabel.stringValue = TTText(@"Continue");
     } else if (self.modalFTUX == MODAL_FTUX_ACTIONS) {
-        self.buttonLabel.stringValue = @"Continue";
+        self.buttonLabel.stringValue = TTText(@"Continue");
     } else if (self.modalFTUX == MODAL_FTUX_MODES) {
-        self.buttonLabel.stringValue = @"Continue";
+        self.buttonLabel.stringValue = TTText(@"Continue");
     } else if (self.modalFTUX == MODAL_FTUX_BATCHACTIONS) {
-        self.buttonLabel.stringValue = @"Continue";
+        self.buttonLabel.stringValue = TTText(@"Continue");
     } else if (self.modalFTUX == MODAL_FTUX_HUD) {
-        self.buttonLabel.stringValue = @"That's all there is to it";
+        self.buttonLabel.stringValue = TTText(@"That's all there is to it");
     } else if (self.modalSupport == MODAL_SUPPORT_QUESTION) {
-        self.buttonLabel.stringValue = @"Submit Question";
+        self.buttonLabel.stringValue = TTText(@"Submit Question");
     } else if (self.modalSupport == MODAL_SUPPORT_IDEA) {
-        self.buttonLabel.stringValue = @"Submit Idea";
+        self.buttonLabel.stringValue = TTText(@"Submit Idea");
     } else if (self.modalSupport == MODAL_SUPPORT_PROBLEM) {
-        self.buttonLabel.stringValue = @"Submit Problem";
+        self.buttonLabel.stringValue = TTText(@"Submit Problem");
     } else if (self.modalSupport == MODAL_SUPPORT_PRAISE) {
-        self.buttonLabel.stringValue = @"Send Praise";
+        self.buttonLabel.stringValue = TTText(@"Send Praise");
     } else if (self.modalSupport == MODAL_SUPPORT_SUBMITTING) {
-        self.buttonLabel.stringValue = @"Sending...";
+        self.buttonLabel.stringValue = TTText(@"Sending...");
         [self.chevronImage setHidden:YES];
     } else if (self.modalSupport == MODAL_SUPPORT_SUBMITTED) {
-        self.buttonLabel.stringValue = @"All done";
+        self.buttonLabel.stringValue = TTText(@"All done");
     }
 
     [self resetBackgroundColor];

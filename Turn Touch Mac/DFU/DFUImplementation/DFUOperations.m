@@ -63,7 +63,7 @@ NSDate *startTime, *finishTime;
     }
     else {
         NSLog(@"CBCentralManager is nil");
-        NSString *errorMessage = [NSString stringWithFormat:@"Error on received CBCentralManager\n Message: Bluetooth central manager is nil"];
+        NSString *errorMessage = TTText(@"Error on received CBCentralManager\n Message: Bluetooth central manager is nil");
         [dfuDelegate onError:errorMessage];
     }
 }
@@ -75,7 +75,7 @@ NSDate *startTime, *finishTime;
     }
     else {
         NSLog(@"CBPeripheral is nil");
-        NSString *errorMessage = [NSString stringWithFormat:@"Error on received CBPeripheral\n Message: Bluetooth peripheral is nil"];
+        NSString *errorMessage = TTText(@"Error on received CBPeripheral\n Message: Bluetooth peripheral is nil");
         [dfuDelegate onError:errorMessage];
     }
 }
@@ -193,7 +193,7 @@ NSDate *startTime, *finishTime;
         [dfuRequests writeFileSizeForOldDFU:(uint32_t)fileRequests.binFileSize];
     }
     else {
-        NSString *errorMessage = [NSString stringWithFormat:@"Old DFU only supports Application upload"];
+        NSString *errorMessage = TTText(@"Old DFU only supports Application upload");
         [dfuDelegate onError:errorMessage];
         [dfuRequests resetSystem];
     }
@@ -236,22 +236,22 @@ NSDate *startTime, *finishTime;
 {
     switch (errorCode) {
         case OPERATION_FAILED_RESPONSE:
-            return @"Operation Failed";
+            return TTText(@"Operation Failed");
             break;
         case OPERATION_INVALID_RESPONSE:
-            return @"Invalid Response";
+            return TTText(@"Invalid Response");
             break;
         case OPERATION_NOT_SUPPORTED_RESPONSE:
-            return @"Operation Not Supported";
+            return TTText(@"Operation Not Supported");
             break;
         case DATA_SIZE_EXCEEDS_LIMIT_RESPONSE:
-            return @"Data Size Exceeds";
+            return TTText(@"Data Size Exceeds");
             break;
         case CRC_ERROR_RESPONSE:
-            return @"CRC Error";
+            return TTText(@"CRC Error");
             break;
         default:
-            return @"unknown Error";
+            return TTText(@"unknown Error");
             break;
     }
 }
@@ -286,7 +286,7 @@ NSDate *startTime, *finishTime;
 -(void)processStartDFUResponseStatus
 {
     NSLog(@"processStartDFUResponseStatus");
-    NSString *errorMessage = [NSString stringWithFormat:@"Error on StartDFU\n Message: %@",[self responseErrorMessage:dfuResponse.responseStatus]];
+    NSString *errorMessage = [NSString stringWithFormat:TTText(@"Error on StartDFU\n Message: %@"),[self responseErrorMessage:dfuResponse.responseStatus]];
     switch (dfuResponse.responseStatus) {
         case OPERATION_SUCCESSFUL_RESPONSE:
             NSLog(@"successfully received startDFU notification");
@@ -306,7 +306,7 @@ NSDate *startTime, *finishTime;
             else {
                 NSLog(@"Operation not supported");
                 NSLog(@"Firmware Image failed, Error Status: %@",[self responseErrorMessage:dfuResponse.responseStatus]);
-                NSString *errorMessage = [NSString stringWithFormat:@"Error on StartDFU\n Message: %@",[self responseErrorMessage:dfuResponse.responseStatus]];
+                NSString *errorMessage = [NSString stringWithFormat:TTText(@"Error on StartDFU\n Message: %@"),[self responseErrorMessage:dfuResponse.responseStatus]];
                 [dfuDelegate onError:errorMessage];
                 [dfuRequests resetSystem];
             }
@@ -330,7 +330,7 @@ NSDate *startTime, *finishTime;
     else {
         //NSLog(@"unsuccessfull initPacket notification %d",dfuResponse.responseStatus);
         NSLog(@"Init Packet failed, Error Status: %@",[self responseErrorMessage:dfuResponse.responseStatus]);
-        NSString *errorMessage = [NSString stringWithFormat:@"Error on Init Packet\n Message: %@",[self responseErrorMessage:dfuResponse.responseStatus]];
+        NSString *errorMessage = [NSString stringWithFormat:TTText(@"Error on Init Packet\n Message: %@"),[self responseErrorMessage:dfuResponse.responseStatus]];
         [dfuDelegate onError:errorMessage];
         [dfuRequests resetSystem];
     }
@@ -345,7 +345,7 @@ NSDate *startTime, *finishTime;
     }
     else {
         NSLog(@"Firmware Image failed, Error Status: %@",[self responseErrorMessage:dfuResponse.responseStatus]);
-        NSString *errorMessage = [NSString stringWithFormat:@"Error on Receive Firmware Image\n Message: %@",[self responseErrorMessage:dfuResponse.responseStatus]];
+        NSString *errorMessage = [NSString stringWithFormat:TTText(@"Error on Receive Firmware Image\n Message: %@"),[self responseErrorMessage:dfuResponse.responseStatus]];
         [dfuDelegate onError:errorMessage];
         [dfuRequests resetSystem];
     }
@@ -362,7 +362,7 @@ NSDate *startTime, *finishTime;
     }
     else {
         NSLog(@"Firmware validate failed, Error Status: %@",[self responseErrorMessage:dfuResponse.responseStatus]);
-        NSString *errorMessage = [NSString stringWithFormat:@"Error on Validate Firmware Request\n Message: %@",[self responseErrorMessage:dfuResponse.responseStatus]];
+        NSString *errorMessage = [NSString stringWithFormat:TTText(@"Error on Validate Firmware Request\n Message: %@"),[self responseErrorMessage:dfuResponse.responseStatus]];
         [dfuDelegate onError:errorMessage];
         [dfuRequests resetSystem];
     }

@@ -30,7 +30,7 @@
         self.translatesAutoresizingMaskIntoConstraints = NO;
 
         self.changeButton = [[TTChangeButtonView alloc] init];
-        [self setChangeButtonTitle:@"Change"];
+        [self setChangeButtonTitle:TTText(@"Change")];
         [self.changeButton setAction:@selector(showChangeModeMenu:)];
         [self.changeButton setTarget:self];
         [self addSubview:self.changeButton];
@@ -79,9 +79,9 @@
     self.changeButton.frame = buttonFrame;
     self.changeButton.hidden = self.appDelegate.modeMap.isTwelveButtonMode;
     if (self.appDelegate.modeMap.openedModeChangeMenu) {
-        [self setChangeButtonTitle:@"Cancel"];
+        [self setChangeButtonTitle:TTText(@"Cancel")];
     } else {
-        [self setChangeButtonTitle:@"Change"];
+        [self setChangeButtonTitle:TTText(@"Change")];
     }
 }
 
@@ -101,8 +101,8 @@
 - (void)setupTitleAttributes {
     self.modeTitle = [[self.appDelegate.modeMap.selectedMode class] description];
     if (self.appDelegate.modeMap.isTwelveButtonMode) {
-        self.modeTitle = self.appDelegate.modeMap.selectedModeDirection == SINGLE_TAP ? @"Single tap actions" :
-            self.appDelegate.modeMap.selectedModeDirection == DOUBLE_TAP ? @"Double tap actions" : @"Hold actions";
+        self.modeTitle = self.appDelegate.modeMap.selectedModeDirection == SINGLE_TAP ? TTText(@"Single tap actions") :
+            self.appDelegate.modeMap.selectedModeDirection == DOUBLE_TAP ? TTText(@"Double tap actions") : TTText(@"Hold actions");
     }
     NSShadow *stringShadow = [[NSShadow alloc] init];
     stringShadow.shadowColor = [NSColor whiteColor];

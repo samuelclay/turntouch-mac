@@ -73,12 +73,12 @@ static NSError *HAError(NSString *message) {
         NSInteger status = [(NSHTTPURLResponse *)response statusCode];
         id object = data.length ? [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingFragmentsAllowed error:nil] : @{};
         if (!error && (status < 200 || status >= 300)) {
-            NSString *message = status == 401 ? @"Your Home Assistant session expired or the token is invalid. Connect again." :
-                status == 403 ? @"This Home Assistant user does not have permission for that action." :
-                [NSString stringWithFormat:@"Home Assistant returned HTTP %ld. Check the action and its required fields.", (long)status];
+            NSString *message = status == 401 ? TTText(@"Your Home Assistant session expired or the token is invalid. Connect again.") :
+                status == 403 ? TTText(@"This Home Assistant user does not have permission for that action.") :
+                [NSString stringWithFormat:TTText(@"Home Assistant returned HTTP %ld. Check the action and its required fields."), (long)status];
             error = HAError(message);
         }
-        if (!error && !object) error = HAError(@"The server did not return Home Assistant JSON. Check its address.");
+        if (!error && !object) error = HAError(TTText(@"The server did not return Home Assistant JSON. Check its address."));
         dispatch_async(dispatch_get_main_queue(), ^{ completion(object, error); });
     }] resume];
 }
@@ -98,7 +98,7 @@ static NSError *HAError(NSString *message) {
         item[(__bridge id)kSecAttrAccessible] = (__bridge id)kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly;
         status = SecItemAdd((__bridge CFDictionaryRef)item, NULL);
     }
-    if (status != errSecSuccess) return HAError(@"Could not save the Home Assistant credentials in Keychain. Please unlock your keychain and try again.");
+    if (status != errSecSuccess) return HAError(TTText(@"Could not save the Home Assistant credentials in Keychain. Please unlock your keychain and try again."));
     if (![self.serverURL isEqual:url]) { self.entities = @[]; self.services = @{}; }
     self.credentials = credentials; self.serverURL = url;
     [[NSUserDefaults standardUserDefaults] setObject:url forKey:@"TT:HomeAssistant:URL"];
@@ -107,10 +107,10 @@ static NSError *HAError(NSString *message) {
 - (void)connectToURL:(NSString *)url token:(NSString *)token completion:(TTHACompletion)completion {
     NSString *normalized = [self.class normalizedURL:url];
     token = [token stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
-    if (!normalized || !token.length) { completion(nil, HAError(@"Enter a Home Assistant address and access token.")); return; }
+    if (!normalized || !token.length) { completion(nil, HAError(TTText(@"Enter a Home Assistant address and access token."))); return; }
     NSUInteger generation = ++self.generation;
     [self requestURL:[normalized stringByAppendingString:@"/api/"] method:@"GET" token:token body:nil contentType:@"application/json" completion:^(id result, NSError *error) {
-        if (generation != self.generation) { completion(nil, HAError(@"Connection cancelled.")); return; }
+        if (generation != self.generation) { completion(nil, HAError(TTText(@"Connection cancelled."))); return; }
         if (!error) error = [self saveCredentials:@{@"access_token": token} url:normalized];
         if (error) { completion(nil, error); return; }
         [self refreshCatalog:completion];
@@ -118,11 +118,11 @@ static NSError *HAError(NSString *message) {
 }
 - (void)exchangeCode:(NSString *)code serverURL:(NSString *)url completion:(TTHACompletion)completion {
     NSString *normalized = [self.class normalizedURL:url];
-    if (!normalized || !code.length) { completion(nil, HAError(@"Invalid sign-in response.")); return; }
+    if (!normalized || !code.length) { completion(nil, HAError(TTText(@"Invalid sign-in response."))); return; }
     NSUInteger generation = ++self.generation;
     [self tokenRequest:@{@"grant_type": @"authorization_code", @"code": code, @"client_id": TTHAClientID} url:normalized completion:^(id result, NSError *error) {
-        if (generation != self.generation) { completion(nil, HAError(@"Connection cancelled.")); return; }
-        if (!error && (![result isKindOfClass:NSDictionary.class] || ![result[@"access_token"] isKindOfClass:NSString.class] || ![result[@"refresh_token"] isKindOfClass:NSString.class])) error = HAError(@"Home Assistant returned an invalid sign-in response.");
+        if (generation != self.generation) { completion(nil, HAError(TTText(@"Connection cancelled."))); return; }
+        if (!error && (![result isKindOfClass:NSDictionary.class] || ![result[@"access_token"] isKindOfClass:NSString.class] || ![result[@"refresh_token"] isKindOfClass:NSString.class])) error = HAError(TTText(@"Home Assistant returned an invalid sign-in response."));
         if (!error) {
             NSMutableDictionary *credentials = [result mutableCopy];
             credentials[@"expires_at"] = @([NSDate date].timeIntervalSince1970 + [result[@"expires_in"] doubleValue] - 60);
@@ -133,14 +133,14 @@ static NSError *HAError(NSString *message) {
     }];
 }
 - (void)withToken:(TTHACompletion)completion {
-    if (!self.connected) { completion(nil, HAError(@"Connect to Home Assistant first.")); return; }
+    if (!self.connected) { completion(nil, HAError(TTText(@"Connect to Home Assistant first."))); return; }
     if (!self.credentials[@"refresh_token"] || [self.credentials[@"expires_at"] doubleValue] > NSDate.date.timeIntervalSince1970) { completion(self.credentials[@"access_token"], nil); return; }
     [self.tokenWaiters addObject:[completion copy]];
     if (self.tokenWaiters.count > 1) return;
     NSUInteger generation = self.generation;
     [self tokenRequest:@{@"grant_type": @"refresh_token", @"refresh_token": self.credentials[@"refresh_token"], @"client_id": TTHAClientID} url:self.serverURL completion:^(id result, NSError *error) {
-        if (generation != self.generation) error = HAError(@"Connection changed. Please try again.");
-        if (!error && (![result isKindOfClass:NSDictionary.class] || ![result[@"access_token"] isKindOfClass:NSString.class])) error = HAError(@"Please sign in to Home Assistant again.");
+        if (generation != self.generation) error = HAError(TTText(@"Connection changed. Please try again."));
+        if (!error && (![result isKindOfClass:NSDictionary.class] || ![result[@"access_token"] isKindOfClass:NSString.class])) error = HAError(TTText(@"Please sign in to Home Assistant again."));
         if (!error) {
             NSMutableDictionary *credentials = [self.credentials mutableCopy];
             credentials[@"access_token"] = result[@"access_token"];
@@ -170,11 +170,11 @@ static NSError *HAError(NSString *message) {
         if (error) { completion(nil, error); return; }
         NSString *url = self.serverURL;
         [self requestURL:[url stringByAppendingString:@"/api/states"] method:@"GET" token:token body:nil contentType:@"application/json" completion:^(id states, NSError *error) {
-            if (generation != self.generation) { completion(nil, HAError(@"Connection changed.")); return; }
-            if (error || ![states isKindOfClass:NSArray.class]) { completion(nil, error ?: HAError(@"Could not read entities.")); return; }
+            if (generation != self.generation) { completion(nil, HAError(TTText(@"Connection changed."))); return; }
+            if (error || ![states isKindOfClass:NSArray.class]) { completion(nil, error ?: HAError(TTText(@"Could not read entities."))); return; }
             [self requestURL:[url stringByAppendingString:@"/api/services"] method:@"GET" token:token body:nil contentType:@"application/json" completion:^(id groups, NSError *error) {
-                if (generation != self.generation) { completion(nil, HAError(@"Connection changed.")); return; }
-                if (error || ![groups isKindOfClass:NSArray.class]) { completion(nil, error ?: HAError(@"Could not read actions.")); return; }
+                if (generation != self.generation) { completion(nil, HAError(TTText(@"Connection changed."))); return; }
+                if (error || ![groups isKindOfClass:NSArray.class]) { completion(nil, error ?: HAError(TTText(@"Could not read actions."))); return; }
                 NSMutableDictionary *services = [NSMutableDictionary dictionary];
                 for (NSDictionary *group in groups) if ([group[@"domain"] isKindOfClass:NSString.class] && [group[@"services"] isKindOfClass:NSDictionary.class]) services[group[@"domain"]] = group[@"services"];
                 self.services = services;
@@ -261,21 +261,21 @@ static NSError *HAError(NSString *message) {
         if (!metadata[@"target"] && !metadata[@"fields"][@"entity_id"] && ![preferred containsObject:key]) continue;
         NSString *name = metadata[@"name"];
         if (!name.length) name = [[key stringByReplacingOccurrencesOfString:@"_" withString:@" "] capitalizedString];
-        if ([domain isEqual:@"scene"] && [key isEqual:@"turn_on"]) name = @"Activate scene";
-        if ([domain isEqual:@"script"] && [key isEqual:@"turn_on"]) name = @"Run script";
-        if ([domain isEqual:@"automation"] && [key isEqual:@"trigger"]) name = @"Run automation (check conditions)";
+        if ([domain isEqual:@"scene"] && [key isEqual:@"turn_on"]) name = TTText(@"Activate scene");
+        if ([domain isEqual:@"script"] && [key isEqual:@"turn_on"]) name = TTText(@"Run script");
+        if ([domain isEqual:@"automation"] && [key isEqual:@"trigger"]) name = TTText(@"Run automation (check conditions)");
         [actions addObject:@{@"id": [NSString stringWithFormat:@"%@.%@", domain, key], @"name": name, @"metadata": metadata}];
     }
     return actions;
 }
 + (NSDictionary *)serviceBodyForEntity:(NSString *)entityID data:(NSString *)json error:(NSError **)error {
-    if (entityID.length == 0 || [entityID componentsSeparatedByString:@"."].count != 2) { if (error) *error = HAError(@"Choose an entity first."); return nil; }
+    if (entityID.length == 0 || [entityID componentsSeparatedByString:@"."].count != 2) { if (error) *error = HAError(TTText(@"Choose an entity first.")); return nil; }
     NSData *data = [(json.length ? json : @"{}") dataUsingEncoding:NSUTF8StringEncoding];
     id parsed = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    if (![parsed isKindOfClass:NSDictionary.class]) { if (error) *error = HAError(@"Action data must be a JSON object, for example {\"brightness_pct\": 50}."); return nil; }
+    if (![parsed isKindOfClass:NSDictionary.class]) { if (error) *error = HAError(TTText(@"Action data must be a JSON object, for example {\"brightness_pct\": 50}.")); return nil; }
     NSMutableDictionary *body = [parsed mutableCopy];
     for (NSString *key in @[@"entity_id", @"device_id", @"area_id", @"floor_id", @"label_id", @"target"]) {
-        if (body[key]) { if (error) *error = HAError(@"Choose the target in the entity list, not in action data."); return nil; }
+        if (body[key]) { if (error) *error = HAError(TTText(@"Choose the target in the entity list, not in action data.")); return nil; }
     }
     body[@"entity_id"] = entityID;
     return body;
@@ -283,7 +283,7 @@ static NSError *HAError(NSString *message) {
 - (void)callAction:(NSString *)service entity:(NSString *)entityID data:(NSString *)json completion:(TTHACompletion)completion {
     NSArray *parts = [service componentsSeparatedByString:@"."];
     NSCharacterSet *invalid = [[NSCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyz0123456789_"] invertedSet];
-    if (parts.count != 2 || ![parts[0] length] || ![parts[1] length] || [parts[0] rangeOfCharacterFromSet:invalid].location != NSNotFound || [parts[1] rangeOfCharacterFromSet:invalid].location != NSNotFound) { completion(nil, HAError(@"Choose a valid Home Assistant action.")); return; }
+    if (parts.count != 2 || ![parts[0] length] || ![parts[1] length] || [parts[0] rangeOfCharacterFromSet:invalid].location != NSNotFound || [parts[1] rangeOfCharacterFromSet:invalid].location != NSNotFound) { completion(nil, HAError(TTText(@"Choose a valid Home Assistant action."))); return; }
     NSError *error; NSMutableDictionary *body = [[self.class serviceBodyForEntity:entityID data:json error:&error] mutableCopy];
     if (!body) { completion(nil, error); return; }
     if ([service isEqual:@"automation.trigger"] && !body[@"skip_condition"]) body[@"skip_condition"] = @NO;

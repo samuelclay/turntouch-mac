@@ -18,10 +18,9 @@
 - (void)updateConnected {
     NSInteger count = [TTModeKasa foundDevices].count;
     if (count > 0) {
-        [self.connectedLabel setStringValue:[NSString stringWithFormat:@"Connected to %ld Kasa device%@",
-                                             (long)count, count == 1 ? @"" : @"s"]];
+        [self.connectedLabel setStringValue:[NSString stringWithFormat:TTText(@"Connected Kasa devices: %ld"), (long)count]];
     } else {
-        [self.connectedLabel setStringValue:@"No Kasa devices found"];
+        [self.connectedLabel setStringValue:TTText(@"No Kasa devices found")];
     }
 
     // Show/hide credentials button based on whether KLAP devices exist
@@ -36,15 +35,15 @@
 
 - (IBAction)enterCredentials:(id)sender {
     NSAlert *alert = [[NSAlert alloc] init];
-    [alert setMessageText:@"TP-Link Kasa Credentials"];
-    [alert setInformativeText:@"Enter your TP-Link/Kasa account credentials for newer devices that use KLAP authentication."];
-    [alert addButtonWithTitle:@"Save"];
-    [alert addButtonWithTitle:@"Cancel"];
+    [alert setMessageText:TTText(@"TP-Link Kasa Credentials")];
+    [alert setInformativeText:TTText(@"Enter your TP-Link/Kasa account credentials for newer devices that use KLAP authentication.")];
+    [alert addButtonWithTitle:TTText(@"Save")];
+    [alert addButtonWithTitle:TTText(@"Cancel")];
 
     NSView *accessoryView = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 300, 58)];
 
     NSTextField *usernameField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 32, 300, 22)];
-    usernameField.placeholderString = @"Email / Username";
+    usernameField.placeholderString = TTText(@"Email / Username");
 
     NSDictionary *creds = [TTModeKasa loadCredentials];
     if (creds) {
@@ -52,7 +51,7 @@
     }
 
     NSSecureTextField *passwordField = [[NSSecureTextField alloc] initWithFrame:NSMakeRect(0, 4, 300, 22)];
-    passwordField.placeholderString = @"Password";
+    passwordField.placeholderString = TTText(@"Password");
 
     [accessoryView addSubview:usernameField];
     [accessoryView addSubview:passwordField];
