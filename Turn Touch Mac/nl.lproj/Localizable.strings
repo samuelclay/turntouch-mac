@@ -24,6 +24,7 @@
 "About Turn Touch & updates" = "Over Turn Touch en updates";
 "About Turn Touch Remote" = "Over Turn Touch Remote";
 "About this app’s actions" = "Over de acties van deze app";
+"Action" = "Actie";
 "Action 1st" = "Actie 1e";
 "Action 2nd" = "Actie 2e";
 "Action 3rd" = "Actie 3e";
@@ -31,6 +32,7 @@
 "Action Menu" = "Actiemenu";
 "Action data (optional JSON)" = "Actiegegevens (optionele JSON)";
 "Action data must be a JSON object, for example {\"brightness_pct\": 50}." = "Actiegegevens moeten een JSON-object zijn, bijvoorbeeld {\"brightness_pct\": 50}.";
+"Action: %@" = "Actie: %@";
 "Activate scene" = "Scène activeren";
 "Add Action" = "Actie toevoegen";
 "Add a new remote…" = "Nieuwe afstandsbediening toevoegen…";
@@ -51,14 +53,15 @@
 "Ambient" = "Omgeving";
 "Apple Keynote" = "Apple Keynote";
 "Assign this action to the selected remote button" = "Deze actie toewijzen aan de geselecteerde knop van de afstandsbediening";
+"Assigned to this button." = "Aan deze knop toegewezen.";
 "Authentication failed. Please reconnect to your Hue bridge." = "Authenticatie mislukt. Maak opnieuw verbinding met je Hue-bridge.";
 "Authentication failed: %@" = "Authenticatie mislukt: %@";
 "Authentication timed out" = "Verificatie verlopen";
 "Automatic (device language)" = "Automatisch (apparaattaal)";
 "Automations" = "Automatiseringen";
-"Available actions come from your Home Assistant." = "Beschikbare acties komen uit je Home Assistant.";
 "BRIDGE ID" = "BRIDGE-ID";
 "BUTTONS" = "KNOPPEN";
+"Back" = "Terug";
 "Battery Level: %d%%" = "Batterijniveau: %d%%";
 "Bluetooth in resetting state." = "Bluetooth wordt opnieuw ingesteld.";
 "Bluetooth in unknown state." = "Bluetooth heeft een onbekende status.";
@@ -80,16 +83,15 @@
 "Change app" = "App wijzigen";
 "Check for updates..." = "Controleren op updates...";
 "Choose File" = "Kies bestand";
-"Choose Home Assistant action…" = "Home Assistant-actie kiezen…";
 "Choose IFTTT Action" = "IFTTT-actie kiezen";
 "Choose a button, then add an action" = "Kies een knop en voeg vervolgens een actie toe";
-"Choose a discovered home or enter its address to get started." = "Kies een gevonden huis of voer het adres in om aan de slag te gaan.";
 "Choose a gesture tab and a button, then Add Action. Mix apps or add several actions to one gesture." = "Kies een gebarentab en een knop en tik daarna op Actie toevoegen. Combineer apps of voeg meerdere acties toe aan één gebaar.";
 "Choose a valid Home Assistant action." = "Kies een geldige Home Assistant-actie.";
 "Choose an action for this app using Add Action below a remote button." = "Kies een actie voor deze app via Actie toevoegen onder een knop van de afstandsbediening.";
 "Choose an entity" = "Een entiteit kiezen";
 "Choose an entity first." = "Kies eerst een entiteit.";
 "Choose app" = "App kiezen";
+"Choose for button" = "Kiezen voor knop";
 "Choose the target in the entity list, not in action data." = "Kies het doel in de entiteitenlijst, niet bij de actiegegevens.";
 "Climate" = "Klimaat";
 "Close" = "Sluiten";
@@ -99,15 +101,14 @@
 "Configure your Turn Touch wooden remote and put lights, music, and everyday actions at your fingertips. Choose actions for single taps, double taps, and holds, or combine several actions on one button.\n\nPair a remote over Bluetooth, choose your apps and devices, and customize your buttons in Settings. Turn Touch supports compatible smart-home devices and services; available functions depend on the integration and device.\n\nA Turn Touch remote is sold separately. Some integrations require compatible hardware, local network access, or a third-party account.\n\nLearn more: https://turntouch.com" = "Configureer je houten Turn Touch-afstandsbediening en bedien lampen, muziek en dagelijkse taken met één druk op de knop. Kies acties voor één tik, twee tikken en ingedrukt houden, of combineer meerdere acties op één knop.\n\nKoppel een afstandsbediening via Bluetooth, kies je apps en apparaten en pas je knoppen aan in Instellingen. Turn Touch ondersteunt compatibele smarthomeapparaten en -diensten; beschikbare functies zijn afhankelijk van de integratie en het apparaat.\n\nEen Turn Touch-afstandsbediening wordt apart verkocht. Voor sommige integraties is compatibele hardware, toegang tot het lokale netwerk of een account bij een derde partij nodig.\n\nMeer informatie: https://turntouch.com";
 "Conncted to X Wemo devices" = "Verbonden met X Wemo-apparaten";
 "Connect" = "Verbinden";
-"Connect locally, find an entity, and choose what your Turn Touch remote should do." = "Maak lokaal verbinding, zoek een entiteit en kies wat je Turn Touch-afstandsbediening moet doen.";
 "Connect to Home Assistant first." = "Maak eerst verbinding met Home Assistant.";
-"Connect to Home Assistant…" = "Verbinden met Home Assistant…";
 "Connect to Hue" = "Verbinden met Hue";
 "Connect to Hue..." = "Verbinden met Hue...";
 "Connect to IFTTT" = "Verbinden met IFTTT";
 "Connect to Nanoleaf" = "Verbinden met Nanoleaf";
 "Connect to Nest" = "Verbinden met Nest";
 "Connect to browse your home" = "Maak verbinding om je woning te bekijken";
+"Connect using the Home Assistant menu." = "Verbind via het Home Assistant-menu.";
 "Connected" = "Verbonden";
 "Connected Devices" = "Verbonden apparaten";
 "Connected Govee devices: %ld" = "Verbonden Govee-apparaten: %ld";
@@ -119,7 +120,6 @@
 "Connected to X Kasa devices" = "Verbonden met X Kasa-apparaten";
 "Connected wireless speakers" = "Verbonden draadloze speakers";
 "Connected · %d%% battery" = "Verbonden · %d%% batterij";
-"Connected · %lu entities · %@" = "Verbonden · %lu entiteiten · %@";
 "Connecting" = "Verbinden";
 "Connecting to %@..." = "Verbinden met %@...";
 "Connecting to Govee..." = "Verbinden met Govee...";
@@ -144,6 +144,7 @@
 "Connection failed: %@" = "Verbinding mislukt: %@";
 "Connection timed out. Tap to retry." = "Verbinding verlopen. Tik om het opnieuw te proberen.";
 "Connection to Hue bridge lost" = "Verbinding met Hue-bridge verbroken";
+"Connection…" = "Verbinding…";
 "Contact support" = "Contact opnemen met support";
 "Continue" = "Doorgaan";
 "Control Music" = "Muziek bedienen";
@@ -196,6 +197,7 @@
 "Enter your Govee API key (Govee Home > Settings > API)" = "Voer je Govee API-sleutel in (Govee Home > Instellingen > API)";
 "Enter your Govee API key (from Govee Home App > Settings > My Profile > Apply for API Key)" = "Voer je Govee API-sleutel in (uit de Govee Home-app: Settings > My Profile > Apply for API Key)";
 "Enter your TP-Link/Kasa account credentials for newer devices that use KLAP authentication." = "Voer je TP-Link/Kasa-accountgegevens in voor nieuwere apparaten die KLAP-authenticatie gebruiken.";
+"Entities: %lu" = "Entiteiten: %lu";
 "Error (%li): %@" = "Fout (%li): %@";
 "Error getting %@, HTTP status code %li" = "Fout bij ophalen van %@, HTTP-statuscode %li";
 "Error on BLE Notification\n Message: %@" = "Fout bij BLE-melding\n Bericht: %@";
@@ -218,6 +220,7 @@
 "Fast forward" = "Vooruitspoelen";
 "Fetching Govee devices..." = "Govee-apparaten ophalen...";
 "Fetching devices from Govee..." = "Apparaten ophalen bij Govee...";
+"Filter" = "Filter";
 "Find your Nanoleaf" = "Je Nanoleaf zoeken";
 "Find your Philips Hue" = "Je Philips Hue zoeken";
 "Finishing sign-in…" = "Aanmelding afronden…";
@@ -253,8 +256,11 @@
 "Hold actions" = "Acties bij ingedrukt houden";
 "Hold the power button for 5-7 seconds until the LEDs start flashing" = "Houd de aan-uitknop 5-7 seconden ingedrukt tot de leds beginnen te knipperen";
 "Home Assistant" = "Home Assistant";
-"Home Assistant accepted the action. Check the device, then save when ready." = "Home Assistant heeft de actie geaccepteerd. Controleer het apparaat en sla op wanneer je klaar bent.";
+"Home Assistant accepted the action." = "Home Assistant heeft de actie geaccepteerd.";
 "Home Assistant action" = "Home Assistant-actie";
+"Home Assistant address" = "Home Assistant-adres";
+"Home Assistant entities" = "Home Assistant-entiteiten";
+"Home Assistant menu" = "Home Assistant-menu";
 "Home Assistant returned HTTP %ld. Check the action and its required fields." = "Home Assistant gaf HTTP %ld terug. Controleer de actie en de verplichte velden.";
 "Home Assistant returned an invalid sign-in response." = "Home Assistant gaf een ongeldig antwoord bij het aanmelden.";
 "How it works" = "Zo werkt het";
@@ -354,7 +360,6 @@
 "ON" = "AAN";
 "Old DFU only supports Application upload" = "Oude DFU ondersteunt alleen het uploaden van applicaties";
 "One-time alarm" = "Eenmalig alarm";
-"Open this browser from a remote button in Turn Touch to save an assignment." = "Open deze browser vanuit een knop op de afstandsbediening in Turn Touch om een toewijzing op te slaan.";
 "Open token settings" = "Tokeninstellingen openen";
 "Operation Failed" = "Bewerking mislukt";
 "Operation Not Supported" = "Bewerking niet ondersteund";
@@ -434,8 +439,6 @@
 "Sat" = "Za";
 "Saturation" = "Verzadiging";
 "Save" = "Opslaan";
-"Save to button" = "Toewijzen aan knop";
-"Saved %@ · %@ to your remote button." = "%@ · %@ opgeslagen op je afstandsbedieningsknop.";
 "Scan for devices" = "Zoeken naar apparaten";
 "Scanning for remotes..." = "Afstandsbedieningen zoeken...";
 "Scanning local network..." = "Scannen van lokaal netwerk...";
@@ -447,12 +450,12 @@
 "Scripts, files, and websites" = "Scripts, bestanden en websites";
 "Scroll down" = "Omlaag scrollen";
 "Scroll up" = "Omhoog scrollen";
+"Search Home Assistant" = "Zoeken in Home Assistant";
 "Search entities, devices, rooms, or entity IDs" = "Zoek entiteiten, apparaten, kamers of entiteits-ID's";
 "Search for Kasa devices..." = "Zoeken naar Kasa-apparaten...";
 "Search for New Devices..." = "Zoeken naar nieuwe apparaten...";
 "Search for Sonos devices..." = "Zoeken naar Sonos-apparaten...";
 "Search for Wemo devices..." = "Zoeken naar WeMo-apparaten...";
-"Search lights, scenes, scripts, and more.\nNo Home Assistant plugin needed." = "Zoek naar lampen, scènes, scripts en meer.\nGeen Home Assistant-plug-in nodig.";
 "Searching for Hue..." = "Zoeken naar Hue...";
 "Searching for Kasa devices..." = "Zoeken naar Kasa-apparaten...";
 "Searching for Kasa..." = "Zoeken naar Kasa...";
@@ -523,7 +526,6 @@
 "Temperature" = "Temperatuur";
 "Temperature set to" = "Temperatuur ingesteld op";
 "Test action" = "Actie testen";
-"Test runs the action now. Save assigns it to the selected remote button." = "Met Test wordt de actie nu uitgevoerd. Met Bewaar wijs je deze toe aan de geselecteerde knop van de afstandsbediening.";
 "Text Cell" = "Tekstcel";
 "Thank you! What would you like to say?" = "Bedankt! Wat wil je zeggen?";
 "That worked perfectly" = "Dat werkte perfect";
@@ -563,7 +565,6 @@
 "Turn Touch uses files to play music." = "Turn Touch gebruikt bestanden om muziek af te spelen.";
 "Turn Touch uses music for the alarm clock." = "Turn Touch gebruikt muziek voor de wekker.";
 "Turn Touch uses the local network to find Home Assistant, Philips Hue, Nanoleaf, and other smart home devices." = "Turn Touch gebruikt het lokale netwerk om Home Assistant, Philips Hue, Nanoleaf en andere smarthomeapparaten te vinden.";
-"Turn Touch · Home Assistant" = "Turn Touch · Home Assistant";
 "Turn off" = "Uitschakelen";
 "Turn off screen" = "Scherm uitschakelen";
 "Turn on" = "Inschakelen";
@@ -572,6 +573,7 @@
 "Unknown Device" = "Onbekend apparaat";
 "Unknown error" = "Onbekende fout";
 "Upgrade to v%ld" = "Upgraden naar v%ld";
+"Use access token…" = "Toegangstoken gebruiken…";
 "Use token" = "Token gebruiken";
 "Version %@" = "Versie %@";
 "Version 1.0.0" = "Versie 1.0.0";
@@ -599,7 +601,6 @@
 "Your email" = "Je e-mailadres";
 "Your favorite actions, one touch away" = "Je favoriete acties binnen handbereik";
 "Your home, scenes, and automations" = "Je woning, scènes en automatiseringen";
-"Your home. One button away." = "Je huis. Met één druk op de knop.";
 "Your remote has been paired" = "Je afstandsbediening is gekoppeld";
 "Your remote has four buttons" = "Je afstandsbediening heeft vier knoppen";
 "application.dat is missing. It must be placed inside zip file with application" = "application.dat ontbreekt. Dit bestand moet in het zipbestand met application staan";

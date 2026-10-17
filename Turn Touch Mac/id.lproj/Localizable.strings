@@ -24,6 +24,7 @@
 "About Turn Touch & updates" = "Tentang Turn Touch & pembaruan";
 "About Turn Touch Remote" = "Tentang Turn Touch Remote";
 "About this app’s actions" = "Tentang aksi aplikasi ini";
+"Action" = "Tindakan";
 "Action 1st" = "Aksi ke-1";
 "Action 2nd" = "Aksi ke-2";
 "Action 3rd" = "Aksi ke-3";
@@ -31,6 +32,7 @@
 "Action Menu" = "Menu tindakan";
 "Action data (optional JSON)" = "Data tindakan (JSON opsional)";
 "Action data must be a JSON object, for example {\"brightness_pct\": 50}." = "Data tindakan harus berupa objek JSON, misalnya {\"brightness_pct\": 50}.";
+"Action: %@" = "Tindakan: %@";
 "Activate scene" = "Aktifkan adegan";
 "Add Action" = "Tambah Tindakan";
 "Add a new remote…" = "Tambahkan remote baru…";
@@ -51,14 +53,15 @@
 "Ambient" = "Ambien";
 "Apple Keynote" = "Apple Keynote";
 "Assign this action to the selected remote button" = "Tetapkan tindakan ini ke tombol remote yang dipilih";
+"Assigned to this button." = "Ditetapkan ke tombol ini.";
 "Authentication failed. Please reconnect to your Hue bridge." = "Autentikasi gagal. Sambungkan kembali ke bridge Hue Anda.";
 "Authentication failed: %@" = "Autentikasi gagal: %@";
 "Authentication timed out" = "Waktu autentikasi habis";
 "Automatic (device language)" = "Otomatis (bahasa perangkat)";
 "Automations" = "Otomatisasi";
-"Available actions come from your Home Assistant." = "Tindakan yang tersedia berasal dari Home Assistant Anda.";
 "BRIDGE ID" = "ID BRIDGE";
 "BUTTONS" = "TOMBOL";
+"Back" = "Kembali";
 "Battery Level: %d%%" = "Level baterai: %d%%";
 "Bluetooth in resetting state." = "Bluetooth sedang diatur ulang.";
 "Bluetooth in unknown state." = "Status Bluetooth tidak diketahui.";
@@ -80,16 +83,15 @@
 "Change app" = "Ganti aplikasi";
 "Check for updates..." = "Periksa pembaruan...";
 "Choose File" = "Pilih File";
-"Choose Home Assistant action…" = "Pilih tindakan Home Assistant…";
 "Choose IFTTT Action" = "Pilih tindakan IFTTT";
 "Choose a button, then add an action" = "Pilih tombol, lalu tambahkan aksi";
-"Choose a discovered home or enter its address to get started." = "Pilih rumah yang ditemukan atau masukkan alamatnya untuk memulai.";
 "Choose a gesture tab and a button, then Add Action. Mix apps or add several actions to one gesture." = "Pilih tab gestur dan tombol, lalu Tambah Aksi. Padukan aplikasi atau tambahkan beberapa aksi ke satu gestur.";
 "Choose a valid Home Assistant action." = "Pilih tindakan Home Assistant yang valid.";
 "Choose an action for this app using Add Action below a remote button." = "Pilih aksi untuk aplikasi ini lewat Tambah Aksi di bawah tombol remote.";
 "Choose an entity" = "Pilih entitas";
 "Choose an entity first." = "Pilih entitas terlebih dahulu.";
 "Choose app" = "Pilih aplikasi";
+"Choose for button" = "Pilih untuk tombol";
 "Choose the target in the entity list, not in action data." = "Pilih target di daftar entitas, bukan di data tindakan.";
 "Climate" = "Iklim";
 "Close" = "Tutup";
@@ -99,15 +101,14 @@
 "Configure your Turn Touch wooden remote and put lights, music, and everyday actions at your fingertips. Choose actions for single taps, double taps, and holds, or combine several actions on one button.\n\nPair a remote over Bluetooth, choose your apps and devices, and customize your buttons in Settings. Turn Touch supports compatible smart-home devices and services; available functions depend on the integration and device.\n\nA Turn Touch remote is sold separately. Some integrations require compatible hardware, local network access, or a third-party account.\n\nLearn more: https://turntouch.com" = "Atur remote kayu Turn Touch Anda dan kendalikan lampu, musik, serta tindakan sehari-hari dengan mudah. Pilih tindakan untuk sekali ketuk, ketuk dua kali, dan tekan lama, atau gabungkan beberapa tindakan pada satu tombol.\n\nPasangkan remote melalui Bluetooth, pilih aplikasi dan perangkat, lalu sesuaikan tombol di Setelan. Turn Touch mendukung perangkat dan layanan rumah pintar yang kompatibel; fitur yang tersedia bergantung pada integrasi dan perangkat.\n\nRemote Turn Touch dijual terpisah. Beberapa integrasi memerlukan perangkat keras yang kompatibel, akses jaringan lokal, atau akun pihak ketiga.\n\nPelajari lebih lanjut: https://turntouch.com";
 "Conncted to X Wemo devices" = "Terhubung ke X perangkat Wemo";
 "Connect" = "Hubungkan";
-"Connect locally, find an entity, and choose what your Turn Touch remote should do." = "Hubungkan secara lokal, temukan entitas, lalu pilih fungsi remote Turn Touch Anda.";
 "Connect to Home Assistant first." = "Hubungkan ke Home Assistant terlebih dahulu.";
-"Connect to Home Assistant…" = "Hubungkan ke Home Assistant…";
 "Connect to Hue" = "Hubungkan ke Hue";
 "Connect to Hue..." = "Hubungkan ke Hue...";
 "Connect to IFTTT" = "Hubungkan ke IFTTT";
 "Connect to Nanoleaf" = "Hubungkan ke Nanoleaf";
 "Connect to Nest" = "Hubungkan ke Nest";
 "Connect to browse your home" = "Hubungkan untuk melihat perangkat rumah";
+"Connect using the Home Assistant menu." = "Hubungkan melalui menu Home Assistant.";
 "Connected" = "Terhubung";
 "Connected Devices" = "Perangkat Terhubung";
 "Connected Govee devices: %ld" = "Perangkat Govee terhubung: %ld";
@@ -119,7 +120,6 @@
 "Connected to X Kasa devices" = "Terhubung ke X perangkat Kasa";
 "Connected wireless speakers" = "Speaker nirkabel terhubung";
 "Connected · %d%% battery" = "Terhubung · baterai %d%%";
-"Connected · %lu entities · %@" = "Terhubung · %lu entitas · %@";
 "Connecting" = "Menghubungkan";
 "Connecting to %@..." = "Menghubungkan ke %@...";
 "Connecting to Govee..." = "Menghubungkan ke Govee...";
@@ -144,6 +144,7 @@
 "Connection failed: %@" = "Koneksi gagal: %@";
 "Connection timed out. Tap to retry." = "Waktu koneksi habis. Ketuk untuk mencoba lagi.";
 "Connection to Hue bridge lost" = "Koneksi ke bridge Hue terputus";
+"Connection…" = "Koneksi…";
 "Contact support" = "Hubungi dukungan";
 "Continue" = "Lanjutkan";
 "Control Music" = "Kontrol Musik";
@@ -196,6 +197,7 @@
 "Enter your Govee API key (Govee Home > Settings > API)" = "Masukkan kunci API Govee (Govee Home > Settings > API)";
 "Enter your Govee API key (from Govee Home App > Settings > My Profile > Apply for API Key)" = "Masukkan kunci API Govee Anda (dari Govee Home App > Settings > My Profile > Apply for API Key)";
 "Enter your TP-Link/Kasa account credentials for newer devices that use KLAP authentication." = "Masukkan kredensial akun TP-Link/Kasa untuk perangkat baru yang menggunakan autentikasi KLAP.";
+"Entities: %lu" = "Entitas: %lu";
 "Error (%li): %@" = "Kesalahan (%li): %@";
 "Error getting %@, HTTP status code %li" = "Gagal mendapatkan %@, kode status HTTP %li";
 "Error on BLE Notification\n Message: %@" = "Kesalahan pada Notifikasi BLE\n Pesan: %@";
@@ -218,6 +220,7 @@
 "Fast forward" = "Maju cepat";
 "Fetching Govee devices..." = "Mengambil perangkat Govee...";
 "Fetching devices from Govee..." = "Mengambil perangkat dari Govee...";
+"Filter" = "Filter";
 "Find your Nanoleaf" = "Temukan Nanoleaf";
 "Find your Philips Hue" = "Temukan Philips Hue Anda";
 "Finishing sign-in…" = "Menyelesaikan login…";
@@ -253,8 +256,11 @@
 "Hold actions" = "Aksi tahan";
 "Hold the power button for 5-7 seconds until the LEDs start flashing" = "Tahan tombol daya selama 5–7 detik hingga LED mulai berkedip";
 "Home Assistant" = "Home Assistant";
-"Home Assistant accepted the action. Check the device, then save when ready." = "Home Assistant menerima tindakan. Periksa perangkat, lalu simpan jika sudah siap.";
+"Home Assistant accepted the action." = "Home Assistant menerima tindakan.";
 "Home Assistant action" = "Tindakan Home Assistant";
+"Home Assistant address" = "Alamat Home Assistant";
+"Home Assistant entities" = "Entitas Home Assistant";
+"Home Assistant menu" = "Menu Home Assistant";
 "Home Assistant returned HTTP %ld. Check the action and its required fields." = "Home Assistant mengembalikan HTTP %ld. Periksa tindakan dan kolom yang diperlukan.";
 "Home Assistant returned an invalid sign-in response." = "Home Assistant mengembalikan respons masuk yang tidak valid.";
 "How it works" = "Cara kerja";
@@ -354,7 +360,6 @@
 "ON" = "NYALA";
 "Old DFU only supports Application upload" = "DFU lama hanya mendukung pengunggahan aplikasi";
 "One-time alarm" = "Alarm sekali";
-"Open this browser from a remote button in Turn Touch to save an assignment." = "Buka browser ini dari tombol remote di Turn Touch untuk menyimpan penetapan.";
 "Open token settings" = "Buka pengaturan token";
 "Operation Failed" = "Operasi Gagal";
 "Operation Not Supported" = "Operasi Tidak Didukung";
@@ -434,8 +439,6 @@
 "Sat" = "Sab";
 "Saturation" = "Saturasi";
 "Save" = "Simpan";
-"Save to button" = "Simpan ke tombol";
-"Saved %@ · %@ to your remote button." = "%@ · %@ disimpan ke tombol remote Anda.";
 "Scan for devices" = "Pindai perangkat";
 "Scanning for remotes..." = "Memindai remote...";
 "Scanning local network..." = "Memindai jaringan lokal...";
@@ -447,12 +450,12 @@
 "Scripts, files, and websites" = "Skrip, file, dan situs web";
 "Scroll down" = "Gulir ke bawah";
 "Scroll up" = "Gulir ke atas";
+"Search Home Assistant" = "Cari di Home Assistant";
 "Search entities, devices, rooms, or entity IDs" = "Cari entitas, perangkat, ruangan, atau ID entitas";
 "Search for Kasa devices..." = "Mencari perangkat Kasa...";
 "Search for New Devices..." = "Cari Perangkat Baru...";
 "Search for Sonos devices..." = "Mencari perangkat Sonos...";
 "Search for Wemo devices..." = "Mencari perangkat Wemo...";
-"Search lights, scenes, scripts, and more.\nNo Home Assistant plugin needed." = "Cari lampu, adegan, skrip, dan lainnya.\nTidak perlu plugin Home Assistant.";
 "Searching for Hue..." = "Mencari Hue...";
 "Searching for Kasa devices..." = "Mencari perangkat Kasa...";
 "Searching for Kasa..." = "Mencari Kasa...";
@@ -523,7 +526,6 @@
 "Temperature" = "Suhu";
 "Temperature set to" = "Suhu diatur ke";
 "Test action" = "Uji tindakan";
-"Test runs the action now. Save assigns it to the selected remote button." = "Uji akan menjalankan tindakan sekarang. Simpan akan menetapkannya ke tombol remote yang dipilih.";
 "Text Cell" = "Sel Teks";
 "Thank you! What would you like to say?" = "Terima kasih! Apa yang ingin Anda sampaikan?";
 "That worked perfectly" = "Berhasil dengan sempurna";
@@ -563,7 +565,6 @@
 "Turn Touch uses files to play music." = "Turn Touch menggunakan file untuk memutar musik.";
 "Turn Touch uses music for the alarm clock." = "Turn Touch menggunakan musik untuk alarm.";
 "Turn Touch uses the local network to find Home Assistant, Philips Hue, Nanoleaf, and other smart home devices." = "Turn Touch menggunakan jaringan lokal untuk menemukan Home Assistant, Philips Hue, Nanoleaf, dan perangkat rumah pintar lainnya.";
-"Turn Touch · Home Assistant" = "Turn Touch · Home Assistant";
 "Turn off" = "Matikan";
 "Turn off screen" = "Matikan layar";
 "Turn on" = "Nyalakan";
@@ -572,6 +573,7 @@
 "Unknown Device" = "Perangkat Tidak Dikenal";
 "Unknown error" = "Kesalahan tidak diketahui";
 "Upgrade to v%ld" = "Tingkatkan ke v%ld";
+"Use access token…" = "Gunakan token akses…";
 "Use token" = "Gunakan token";
 "Version %@" = "Versi %@";
 "Version 1.0.0" = "Versi 1.0.0";
@@ -599,7 +601,6 @@
 "Your email" = "Email Anda";
 "Your favorite actions, one touch away" = "Tindakan favorit Anda, cukup satu sentuhan";
 "Your home, scenes, and automations" = "Rumah, adegan, dan otomatisasi Anda";
-"Your home. One button away." = "Rumah Anda. Satu tombol saja.";
 "Your remote has been paired" = "Remote Anda telah dipasangkan";
 "Your remote has four buttons" = "Remote Anda memiliki empat tombol";
 "application.dat is missing. It must be placed inside zip file with application" = "application.dat tidak ditemukan. File ini harus diletakkan di dalam file zip bersama application";

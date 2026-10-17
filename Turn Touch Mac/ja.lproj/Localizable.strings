@@ -24,6 +24,7 @@
 "About Turn Touch & updates" = "Turn Touchについて・アップデート";
 "About Turn Touch Remote" = "Turn Touch Remoteについて";
 "About this app’s actions" = "このアプリのアクションについて";
+"Action" = "アクション";
 "Action 1st" = "アクション1";
 "Action 2nd" = "アクション2";
 "Action 3rd" = "アクション3";
@@ -31,6 +32,7 @@
 "Action Menu" = "アクションメニュー";
 "Action data (optional JSON)" = "アクションデータ（任意のJSON）";
 "Action data must be a JSON object, for example {\"brightness_pct\": 50}." = "アクションデータはJSONオブジェクトで指定してください（例：{\"brightness_pct\": 50}）。";
+"Action: %@" = "アクション: %@";
 "Activate scene" = "シーンを有効化";
 "Add Action" = "アクションを追加";
 "Add a new remote…" = "新しいリモコンを追加…";
@@ -51,14 +53,15 @@
 "Ambient" = "周囲温度";
 "Apple Keynote" = "Apple Keynote";
 "Assign this action to the selected remote button" = "選択したリモートボタンにこのアクションを割り当て";
+"Assigned to this button." = "このボタンに割り当てました。";
 "Authentication failed. Please reconnect to your Hue bridge." = "認証に失敗しました。Hueブリッジに再接続してください。";
 "Authentication failed: %@" = "認証に失敗しました：%@";
 "Authentication timed out" = "認証がタイムアウトしました";
 "Automatic (device language)" = "自動（デバイスの言語）";
 "Automations" = "オートメーション";
-"Available actions come from your Home Assistant." = "利用可能なアクションはHome Assistantから取得されます。";
 "BRIDGE ID" = "ブリッジID";
 "BUTTONS" = "ボタン";
+"Back" = "戻る";
 "Battery Level: %d%%" = "バッテリー残量：%d%%";
 "Bluetooth in resetting state." = "Bluetooth をリセット中です。";
 "Bluetooth in unknown state." = "Bluetooth の状態は不明です。";
@@ -80,16 +83,15 @@
 "Change app" = "アプリを変更";
 "Check for updates..." = "アップデートを確認中...";
 "Choose File" = "ファイルを選択";
-"Choose Home Assistant action…" = "Home Assistantアクションを選択…";
 "Choose IFTTT Action" = "IFTTTアクションを選択";
 "Choose a button, then add an action" = "ボタンを選択してから、アクションを追加してください";
-"Choose a discovered home or enter its address to get started." = "検出されたホームを選ぶか、アドレスを入力して開始してください。";
 "Choose a gesture tab and a button, then Add Action. Mix apps or add several actions to one gesture." = "ジェスチャータブとボタンを選び、「アクションを追加」を押します。アプリを組み合わせたり、1つのジェスチャーに複数のアクションを追加したりできます。";
 "Choose a valid Home Assistant action." = "有効なHome Assistantアクションを選択してください。";
 "Choose an action for this app using Add Action below a remote button." = "リモコンのボタンの下にある「アクションを追加」から、このアプリで実行するアクションを選びます。";
 "Choose an entity" = "エンティティを選択";
 "Choose an entity first." = "先にエンティティを選択してください。";
 "Choose app" = "アプリを選択";
+"Choose for button" = "ボタンに割り当て";
 "Choose the target in the entity list, not in action data." = "対象はアクションデータではなく、エンティティリストから選択してください。";
 "Climate" = "空調";
 "Close" = "閉じる";
@@ -99,15 +101,14 @@
 "Configure your Turn Touch wooden remote and put lights, music, and everyday actions at your fingertips. Choose actions for single taps, double taps, and holds, or combine several actions on one button.\n\nPair a remote over Bluetooth, choose your apps and devices, and customize your buttons in Settings. Turn Touch supports compatible smart-home devices and services; available functions depend on the integration and device.\n\nA Turn Touch remote is sold separately. Some integrations require compatible hardware, local network access, or a third-party account.\n\nLearn more: https://turntouch.com" = "Turn Touchの木製リモコンを設定して、照明や音楽、毎日の操作を手元で簡単に。シングルタップ、ダブルタップ、長押しに操作を割り当てたり、1つのボタンに複数の操作を組み合わせたりできます。\n\nBluetoothでリモコンをペアリングし、アプリやデバイスを選んで、設定からボタンをカスタマイズできます。Turn Touchは対応するスマートホーム機器やサービスをサポートします。利用できる機能は連携方法やデバイスによって異なります。\n\nTurn Touchリモコンは別売りです。一部の連携には、対応する機器、ローカルネットワークへのアクセス、またはサードパーティーのアカウントが必要です。\n\n詳しくはこちら：https://turntouch.com";
 "Conncted to X Wemo devices" = "X台のWemoデバイスに接続済み";
 "Connect" = "接続";
-"Connect locally, find an entity, and choose what your Turn Touch remote should do." = "ローカル接続してエンティティを探し、Turn Touchリモコンの操作を選択します。";
 "Connect to Home Assistant first." = "先にHome Assistantに接続してください。";
-"Connect to Home Assistant…" = "Home Assistantに接続…";
 "Connect to Hue" = "Hueに接続";
 "Connect to Hue..." = "Hueに接続...";
 "Connect to IFTTT" = "IFTTTに接続";
 "Connect to Nanoleaf" = "Nanoleafに接続";
 "Connect to Nest" = "Nestに接続";
 "Connect to browse your home" = "接続してホームを表示";
+"Connect using the Home Assistant menu." = "Home Assistantメニューから接続してください。";
 "Connected" = "接続済み";
 "Connected Devices" = "接続済みデバイス";
 "Connected Govee devices: %ld" = "接続中のGoveeデバイス：%ld";
@@ -119,7 +120,6 @@
 "Connected to X Kasa devices" = "X台のKasaデバイスに接続済み";
 "Connected wireless speakers" = "接続済みワイヤレススピーカー";
 "Connected · %d%% battery" = "接続済み · バッテリー残量 %d%%";
-"Connected · %lu entities · %@" = "接続済み · エンティティ%lu件 · %@";
 "Connecting" = "接続中";
 "Connecting to %@..." = "%@に接続中...";
 "Connecting to Govee..." = "Goveeに接続中...";
@@ -144,6 +144,7 @@
 "Connection failed: %@" = "接続に失敗しました: %@";
 "Connection timed out. Tap to retry." = "接続がタイムアウトしました。タップして再試行。";
 "Connection to Hue bridge lost" = "Hueブリッジとの接続が切れました";
+"Connection…" = "接続…";
 "Contact support" = "サポートに問い合わせる";
 "Continue" = "続ける";
 "Control Music" = "ミュージックを操作";
@@ -196,6 +197,7 @@
 "Enter your Govee API key (Govee Home > Settings > API)" = "Govee APIキーを入力（Govee Home > 設定 > API）";
 "Enter your Govee API key (from Govee Home App > Settings > My Profile > Apply for API Key)" = "Govee APIキーを入力（Govee Home App > Settings > My Profile > Apply for API Keyで取得）";
 "Enter your TP-Link/Kasa account credentials for newer devices that use KLAP authentication." = "KLAP認証を使用する新しいデバイスでは、TP-Link/Kasaアカウントの認証情報を入力してください。";
+"Entities: %lu" = "エンティティ: %lu";
 "Error (%li): %@" = "エラー (%li)：%@";
 "Error getting %@, HTTP status code %li" = "%@の取得エラー、HTTPステータスコード%li";
 "Error on BLE Notification\n Message: %@" = "BLE通知エラー\n メッセージ: %@";
@@ -218,6 +220,7 @@
 "Fast forward" = "早送り";
 "Fetching Govee devices..." = "Goveeデバイスを取得中...";
 "Fetching devices from Govee..." = "Goveeからデバイスを取得中...";
+"Filter" = "フィルター";
 "Find your Nanoleaf" = "Nanoleafを検索";
 "Find your Philips Hue" = "Philips Hueを検索";
 "Finishing sign-in…" = "サインインを完了中…";
@@ -253,8 +256,11 @@
 "Hold actions" = "長押しのアクション";
 "Hold the power button for 5-7 seconds until the LEDs start flashing" = "LEDが点滅するまで電源ボタンを5～7秒間長押ししてください";
 "Home Assistant" = "Home Assistant";
-"Home Assistant accepted the action. Check the device, then save when ready." = "Home Assistantがアクションを受け付けました。デバイスを確認し、準備ができたら保存してください。";
+"Home Assistant accepted the action." = "Home Assistantがアクションを受け付けました。";
 "Home Assistant action" = "Home Assistantアクション";
+"Home Assistant address" = "Home Assistantのアドレス";
+"Home Assistant entities" = "Home Assistantのエンティティ";
+"Home Assistant menu" = "Home Assistantメニュー";
 "Home Assistant returned HTTP %ld. Check the action and its required fields." = "Home AssistantからHTTP %ldが返されました。操作と必須フィールドを確認してください。";
 "Home Assistant returned an invalid sign-in response." = "Home Assistantから無効なサインイン応答が返されました。";
 "How it works" = "使い方";
@@ -354,7 +360,6 @@
 "ON" = "オン";
 "Old DFU only supports Application upload" = "旧DFUはアプリケーションのアップロードのみ対応しています";
 "One-time alarm" = "1回限りのアラーム";
-"Open this browser from a remote button in Turn Touch to save an assignment." = "Turn Touchのリモートボタンからこのブラウザを開き、割り当てを保存してください。";
 "Open token settings" = "トークン設定を開く";
 "Operation Failed" = "操作に失敗しました";
 "Operation Not Supported" = "サポートされていない操作";
@@ -434,8 +439,6 @@
 "Sat" = "土";
 "Saturation" = "彩度";
 "Save" = "保存";
-"Save to button" = "ボタンに保存";
-"Saved %@ · %@ to your remote button." = "リモコンボタンに%@ · %@を保存しました。";
 "Scan for devices" = "デバイスをスキャン";
 "Scanning for remotes..." = "リモコンをスキャン中…";
 "Scanning local network..." = "ローカルネットワークをスキャン中...";
@@ -447,12 +450,12 @@
 "Scripts, files, and websites" = "スクリプト、ファイル、Webサイト";
 "Scroll down" = "下にスクロール";
 "Scroll up" = "上にスクロール";
+"Search Home Assistant" = "Home Assistantを検索";
 "Search entities, devices, rooms, or entity IDs" = "エンティティ、デバイス、部屋、エンティティIDを検索";
 "Search for Kasa devices..." = "Kasaデバイスを検索中...";
 "Search for New Devices..." = "新しいデバイスを検索...";
 "Search for Sonos devices..." = "Sonosデバイスを検索中...";
 "Search for Wemo devices..." = "Wemoデバイスを検索中...";
-"Search lights, scenes, scripts, and more.\nNo Home Assistant plugin needed." = "ライト、シーン、スクリプトなどを検索。\nHome Assistantプラグインは不要です。";
 "Searching for Hue..." = "Hueを検索中...";
 "Searching for Kasa devices..." = "Kasaデバイスを検索中…";
 "Searching for Kasa..." = "Kasaを検索中...";
@@ -523,7 +526,6 @@
 "Temperature" = "温度";
 "Temperature set to" = "設定温度";
 "Test action" = "アクションをテスト";
-"Test runs the action now. Save assigns it to the selected remote button." = "テストすると今すぐアクションを実行します。保存すると選択中のリモコンボタンに割り当てます。";
 "Text Cell" = "テキストセル";
 "Thank you! What would you like to say?" = "ありがとうございます。ご意見をお聞かせください。";
 "That worked perfectly" = "完璧に動作しました";
@@ -563,7 +565,6 @@
 "Turn Touch uses files to play music." = "Turn Touchは音楽の再生にファイルを使用します。";
 "Turn Touch uses music for the alarm clock." = "Turn Touchはアラームに音楽を使用します。";
 "Turn Touch uses the local network to find Home Assistant, Philips Hue, Nanoleaf, and other smart home devices." = "Turn Touchはローカルネットワークを使ってHome Assistant、Philips Hue、Nanoleafなどのスマートホームデバイスを検索します。";
-"Turn Touch · Home Assistant" = "Turn Touch · Home Assistant";
 "Turn off" = "オフにする";
 "Turn off screen" = "画面をオフにする";
 "Turn on" = "オンにする";
@@ -572,6 +573,7 @@
 "Unknown Device" = "不明なデバイス";
 "Unknown error" = "不明なエラー";
 "Upgrade to v%ld" = "v%ldにアップグレード";
+"Use access token…" = "アクセストークンを使用…";
 "Use token" = "トークンを使用";
 "Version %@" = "バージョン %@";
 "Version 1.0.0" = "バージョン1.0.0";
@@ -599,7 +601,6 @@
 "Your email" = "メールアドレス";
 "Your favorite actions, one touch away" = "お気に入りの操作をワンタッチで";
 "Your home, scenes, and automations" = "ホーム、シーン、オートメーション";
-"Your home. One button away." = "あなたの家を、ボタンひとつで。";
 "Your remote has been paired" = "リモコンがペアリングされました";
 "Your remote has four buttons" = "リモコンには4つのボタンがあります";
 "application.dat is missing. It must be placed inside zip file with application" = "application.datがありません。applicationと一緒にZIPファイル内に配置してください";

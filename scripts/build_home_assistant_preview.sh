@@ -3,11 +3,13 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 preview_app="${TMPDIR:-/tmp}/Turn Touch Home Assistant.app"
-mkdir -p "$preview_app/Contents/MacOS"
+mkdir -p "$preview_app/Contents/MacOS" "$preview_app/Contents/Resources/Localization"
+cp 'Turn Touch Mac/Localization/languages.json' "$preview_app/Contents/Resources/Localization/"
 xcrun clang -fobjc-arc -fmodules -framework Cocoa -framework Security -framework WebKit \
+  -include 'Turn Touch Mac/TTLocalization.h' 'Turn Touch Mac/TTLocalization.m' \
   -I 'Turn Touch Mac/Modes/HomeAssistant' scripts/home_assistant_preview.m \
   'Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m' \
-  'Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m' \
+  'Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m' \
   -o "$preview_app/Contents/MacOS/TurnTouchHomeAssistant"
 python3 - "$preview_app" <<'PY'
 import pathlib, plistlib, sys

@@ -24,6 +24,7 @@
 "About Turn Touch & updates" = "Turn Touch 정보 및 업데이트";
 "About Turn Touch Remote" = "Turn Touch Remote 정보";
 "About this app’s actions" = "이 앱의 동작 알아보기";
+"Action" = "동작";
 "Action 1st" = "첫 번째 동작";
 "Action 2nd" = "두 번째 동작";
 "Action 3rd" = "세 번째 동작";
@@ -31,6 +32,7 @@
 "Action Menu" = "동작 메뉴";
 "Action data (optional JSON)" = "작업 데이터(선택 사항, JSON)";
 "Action data must be a JSON object, for example {\"brightness_pct\": 50}." = "작업 데이터는 JSON 객체여야 합니다. 예: {\"brightness_pct\": 50}.";
+"Action: %@" = "동작: %@";
 "Activate scene" = "장면 활성화";
 "Add Action" = "동작 추가";
 "Add a new remote…" = "새 리모컨 추가…";
@@ -51,14 +53,15 @@
 "Ambient" = "주변 온도";
 "Apple Keynote" = "Apple Keynote";
 "Assign this action to the selected remote button" = "선택한 리모컨 버튼에 이 동작 지정";
+"Assigned to this button." = "이 버튼에 할당했습니다.";
 "Authentication failed. Please reconnect to your Hue bridge." = "인증에 실패했습니다. Hue 브리지에 다시 연결하세요.";
 "Authentication failed: %@" = "인증 실패: %@";
 "Authentication timed out" = "인증 시간 초과";
 "Automatic (device language)" = "자동(기기 언어)";
 "Automations" = "자동화";
-"Available actions come from your Home Assistant." = "사용 가능한 작업은 Home Assistant에서 가져옵니다.";
 "BRIDGE ID" = "브리지 ID";
 "BUTTONS" = "버튼";
+"Back" = "뒤로";
 "Battery Level: %d%%" = "배터리 잔량: %d%%";
 "Bluetooth in resetting state." = "Bluetooth가 재설정 중입니다.";
 "Bluetooth in unknown state." = "Bluetooth 상태를 알 수 없습니다.";
@@ -80,16 +83,15 @@
 "Change app" = "앱 변경";
 "Check for updates..." = "업데이트 확인 중...";
 "Choose File" = "파일 선택";
-"Choose Home Assistant action…" = "Home Assistant 동작 선택…";
 "Choose IFTTT Action" = "IFTTT 동작 선택";
 "Choose a button, then add an action" = "버튼을 선택한 다음 동작을 추가하세요";
-"Choose a discovered home or enter its address to get started." = "시작하려면 검색된 집을 선택하거나 주소를 입력하세요.";
 "Choose a gesture tab and a button, then Add Action. Mix apps or add several actions to one gesture." = "제스처 탭과 버튼을 선택한 다음 동작 추가를 누르세요. 앱을 조합하거나 하나의 제스처에 여러 동작을 추가할 수 있습니다.";
 "Choose a valid Home Assistant action." = "유효한 Home Assistant 작업을 선택하세요.";
 "Choose an action for this app using Add Action below a remote button." = "리모컨 버튼 아래의 동작 추가를 사용해 이 앱에서 실행할 동작을 선택하세요.";
 "Choose an entity" = "항목 선택";
 "Choose an entity first." = "먼저 항목을 선택하세요.";
 "Choose app" = "앱 선택";
+"Choose for button" = "버튼에 할당";
 "Choose the target in the entity list, not in action data." = "대상은 작업 데이터가 아닌 항목 목록에서 선택하세요.";
 "Climate" = "온도 조절";
 "Close" = "닫기";
@@ -99,15 +101,14 @@
 "Configure your Turn Touch wooden remote and put lights, music, and everyday actions at your fingertips. Choose actions for single taps, double taps, and holds, or combine several actions on one button.\n\nPair a remote over Bluetooth, choose your apps and devices, and customize your buttons in Settings. Turn Touch supports compatible smart-home devices and services; available functions depend on the integration and device.\n\nA Turn Touch remote is sold separately. Some integrations require compatible hardware, local network access, or a third-party account.\n\nLearn more: https://turntouch.com" = "Turn Touch 나무 리모컨을 설정해 조명, 음악, 일상적인 동작을 손쉽게 제어하세요. 한 번 누르기, 두 번 누르기, 길게 누르기에 동작을 지정하거나 버튼 하나에 여러 동작을 조합할 수 있습니다.\n\nBluetooth로 리모컨을 페어링하고 앱과 기기를 선택한 다음 설정에서 버튼을 맞춤 설정하세요. Turn Touch는 호환되는 스마트 홈 기기와 서비스를 지원합니다. 사용할 수 있는 기능은 연동 방식과 기기에 따라 다릅니다.\n\nTurn Touch 리모컨은 별도 판매됩니다. 일부 연동에는 호환 하드웨어, 로컬 네트워크 연결 또는 타사 계정이 필요합니다.\n\n자세히 알아보기: https://turntouch.com";
 "Conncted to X Wemo devices" = "Wemo 기기 X대에 연결됨";
 "Connect" = "연결";
-"Connect locally, find an entity, and choose what your Turn Touch remote should do." = "로컬로 연결하고 항목을 찾아 Turn Touch 리모컨의 동작을 선택하세요.";
 "Connect to Home Assistant first." = "먼저 Home Assistant에 연결하세요.";
-"Connect to Home Assistant…" = "Home Assistant에 연결…";
 "Connect to Hue" = "Hue에 연결";
 "Connect to Hue..." = "Hue에 연결...";
 "Connect to IFTTT" = "IFTTT에 연결";
 "Connect to Nanoleaf" = "Nanoleaf에 연결";
 "Connect to Nest" = "Nest에 연결";
 "Connect to browse your home" = "집을 둘러보려면 연결하세요";
+"Connect using the Home Assistant menu." = "Home Assistant 메뉴에서 연결하세요.";
 "Connected" = "연결됨";
 "Connected Devices" = "연결된 기기";
 "Connected Govee devices: %ld" = "연결된 Govee 기기: %ld";
@@ -119,7 +120,6 @@
 "Connected to X Kasa devices" = "Kasa 기기 X개에 연결됨";
 "Connected wireless speakers" = "연결된 무선 스피커";
 "Connected · %d%% battery" = "연결됨 · 배터리 %d%%";
-"Connected · %lu entities · %@" = "연결됨 · 엔터티 %lu개 · %@";
 "Connecting" = "연결 중";
 "Connecting to %@..." = "%@에 연결 중...";
 "Connecting to Govee..." = "Govee에 연결 중...";
@@ -144,6 +144,7 @@
 "Connection failed: %@" = "연결 실패: %@";
 "Connection timed out. Tap to retry." = "연결 시간이 초과되었습니다. 탭하여 다시 시도하세요.";
 "Connection to Hue bridge lost" = "Hue 브리지 연결이 끊겼습니다";
+"Connection…" = "연결…";
 "Contact support" = "지원 문의";
 "Continue" = "계속";
 "Control Music" = "음악 제어";
@@ -196,6 +197,7 @@
 "Enter your Govee API key (Govee Home > Settings > API)" = "Govee API 키 입력 (Govee Home > Settings > API)";
 "Enter your Govee API key (from Govee Home App > Settings > My Profile > Apply for API Key)" = "Govee API 키를 입력하세요 (Govee Home App > Settings > My Profile > Apply for API Key에서 확인)";
 "Enter your TP-Link/Kasa account credentials for newer devices that use KLAP authentication." = "KLAP 인증을 사용하는 최신 기기의 TP-Link/Kasa 계정 자격 증명을 입력하세요.";
+"Entities: %lu" = "엔티티: %lu";
 "Error (%li): %@" = "오류 (%li): %@";
 "Error getting %@, HTTP status code %li" = "%@ 가져오기 오류, HTTP 상태 코드 %li";
 "Error on BLE Notification\n Message: %@" = "BLE 알림 오류\n 메시지: %@";
@@ -218,6 +220,7 @@
 "Fast forward" = "빨리 감기";
 "Fetching Govee devices..." = "Govee 기기 가져오는 중...";
 "Fetching devices from Govee..." = "Govee에서 기기를 가져오는 중...";
+"Filter" = "필터";
 "Find your Nanoleaf" = "Nanoleaf 찾기";
 "Find your Philips Hue" = "Philips Hue 찾기";
 "Finishing sign-in…" = "로그인 마무리 중…";
@@ -253,8 +256,11 @@
 "Hold actions" = "길게 누르기 동작";
 "Hold the power button for 5-7 seconds until the LEDs start flashing" = "LED가 깜박이기 시작할 때까지 전원 버튼을 5~7초간 길게 누르세요";
 "Home Assistant" = "Home Assistant";
-"Home Assistant accepted the action. Check the device, then save when ready." = "Home Assistant에서 동작을 수락했습니다. 기기를 확인한 후 준비되면 저장하세요.";
+"Home Assistant accepted the action." = "Home Assistant가 동작을 수락했습니다.";
 "Home Assistant action" = "Home Assistant 동작";
+"Home Assistant address" = "Home Assistant 주소";
+"Home Assistant entities" = "Home Assistant 엔티티";
+"Home Assistant menu" = "Home Assistant 메뉴";
 "Home Assistant returned HTTP %ld. Check the action and its required fields." = "Home Assistant가 HTTP %ld을(를) 반환했습니다. 작업과 필수 입력란을 확인하세요.";
 "Home Assistant returned an invalid sign-in response." = "Home Assistant가 잘못된 로그인 응답을 반환했습니다.";
 "How it works" = "작동 방식";
@@ -354,7 +360,6 @@
 "ON" = "켜기";
 "Old DFU only supports Application upload" = "이전 버전 DFU는 애플리케이션 업로드만 지원합니다";
 "One-time alarm" = "한 번만 울리는 알람";
-"Open this browser from a remote button in Turn Touch to save an assignment." = "Turn Touch의 리모컨 버튼에서 이 브라우저를 열어 동작을 저장하세요.";
 "Open token settings" = "토큰 설정 열기";
 "Operation Failed" = "작업 실패";
 "Operation Not Supported" = "지원되지 않는 작업";
@@ -434,8 +439,6 @@
 "Sat" = "토";
 "Saturation" = "채도";
 "Save" = "저장";
-"Save to button" = "버튼에 저장";
-"Saved %@ · %@ to your remote button." = "리모컨 버튼에 %@ · %@을 저장했습니다.";
 "Scan for devices" = "기기 검색";
 "Scanning for remotes..." = "리모컨 검색 중...";
 "Scanning local network..." = "로컬 네트워크 검색 중...";
@@ -447,12 +450,12 @@
 "Scripts, files, and websites" = "스크립트, 파일 및 웹사이트";
 "Scroll down" = "아래로 스크롤";
 "Scroll up" = "위로 스크롤";
+"Search Home Assistant" = "Home Assistant 검색";
 "Search entities, devices, rooms, or entity IDs" = "항목, 기기, 방 또는 항목 ID 검색";
 "Search for Kasa devices..." = "Kasa 기기 검색 중...";
 "Search for New Devices..." = "새 기기 검색...";
 "Search for Sonos devices..." = "Sonos 기기 검색 중...";
 "Search for Wemo devices..." = "WeMo 기기 검색 중...";
-"Search lights, scenes, scripts, and more.\nNo Home Assistant plugin needed." = "조명, 장면, 스크립트 등을 검색하세요.\nHome Assistant 플러그인이 필요 없습니다.";
 "Searching for Hue..." = "Hue 검색 중...";
 "Searching for Kasa devices..." = "Kasa 기기 검색 중...";
 "Searching for Kasa..." = "Kasa 검색 중...";
@@ -523,7 +526,6 @@
 "Temperature" = "온도";
 "Temperature set to" = "설정 온도";
 "Test action" = "동작 테스트";
-"Test runs the action now. Save assigns it to the selected remote button." = "테스트하면 지금 작업을 실행합니다. 저장하면 선택한 리모컨 버튼에 지정됩니다.";
 "Text Cell" = "텍스트 셀";
 "Thank you! What would you like to say?" = "감사합니다! 어떤 의견을 전하고 싶으신가요?";
 "That worked perfectly" = "완벽하게 작동했어요";
@@ -563,7 +565,6 @@
 "Turn Touch uses files to play music." = "Turn Touch는 음악을 재생하기 위해 파일을 사용합니다.";
 "Turn Touch uses music for the alarm clock." = "Turn Touch는 알람 시계에 음악을 사용합니다.";
 "Turn Touch uses the local network to find Home Assistant, Philips Hue, Nanoleaf, and other smart home devices." = "Turn Touch는 Home Assistant, Philips Hue, Nanoleaf 및 기타 스마트 홈 기기를 찾기 위해 로컬 네트워크를 사용합니다.";
-"Turn Touch · Home Assistant" = "Turn Touch · Home Assistant";
 "Turn off" = "끄기";
 "Turn off screen" = "화면 끄기";
 "Turn on" = "켜기";
@@ -572,6 +573,7 @@
 "Unknown Device" = "알 수 없는 기기";
 "Unknown error" = "알 수 없는 오류";
 "Upgrade to v%ld" = "v%ld으로 업그레이드";
+"Use access token…" = "액세스 토큰 사용…";
 "Use token" = "토큰 사용";
 "Version %@" = "버전 %@";
 "Version 1.0.0" = "버전 1.0.0";
@@ -599,7 +601,6 @@
 "Your email" = "이메일";
 "Your favorite actions, one touch away" = "즐겨 쓰는 동작을 버튼 하나로";
 "Your home, scenes, and automations" = "집, 장면 및 자동화";
-"Your home. One button away." = "집을 버튼 하나로 제어하세요.";
 "Your remote has been paired" = "리모컨이 페어링되었습니다";
 "Your remote has four buttons" = "리모컨에는 버튼이 4개 있습니다";
 "application.dat is missing. It must be placed inside zip file with application" = "application.dat이 없습니다. application과 함께 zip 파일 안에 있어야 합니다";

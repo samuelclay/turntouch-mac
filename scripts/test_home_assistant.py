@@ -4,6 +4,7 @@ import json
 import pathlib
 import subprocess
 import tempfile
+import shutil
 import threading
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs
@@ -52,17 +53,20 @@ class Fixture(BaseHTTPRequestHandler):
         return self.reply(200, [])
 
 with tempfile.TemporaryDirectory(prefix='turntouch-ha-tests-') as tmp:
+    (pathlib.Path(tmp) / 'Localization').mkdir()
+    shutil.copy(ROOT / 'Turn Touch Mac/Localization/languages.json', pathlib.Path(tmp) / 'Localization/languages.json')
+    localization = ['-include', str(ROOT / 'Turn Touch Mac/TTLocalization.h'), str(ROOT / 'Turn Touch Mac/TTLocalization.m'), '-framework', 'Cocoa']
     binary = pathlib.Path(tmp) / 'client-tests'
     subprocess.run(['xcrun', 'clang', '-fobjc-arc', '-fmodules', '-framework', 'Foundation', '-framework', 'Security',
         '-I', str(ROOT / 'Turn Touch Mac/Modes/HomeAssistant'),
         str(ROOT / 'Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m'),
-        str(ROOT / 'Turn Touch Mac Tests/TTHomeAssistantClientTests.m'), '-o', str(binary)], check=True)
+        str(ROOT / 'Turn Touch Mac Tests/TTHomeAssistantClientTests.m'), '-o', str(binary)] + localization, check=True)
     browser_binary = pathlib.Path(tmp) / 'browser-tests'
     subprocess.run(['xcrun', 'clang', '-fobjc-arc', '-fmodules', '-framework', 'Cocoa', '-framework', 'Security', '-framework', 'WebKit',
         '-I', str(ROOT / 'Turn Touch Mac/Modes/HomeAssistant'),
         str(ROOT / 'Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m'),
-        str(ROOT / 'Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m'),
-        str(ROOT / 'Turn Touch Mac Tests/TTHomeAssistantBrowserTests.m'), '-o', str(browser_binary)], check=True)
+        str(ROOT / 'Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m'),
+        str(ROOT / 'Turn Touch Mac Tests/TTHomeAssistantBrowserTests.m'), '-o', str(browser_binary)] + localization, check=True)
     subprocess.run([str(browser_binary)], check=True, timeout=30)
     server = ThreadingHTTPServer(('127.0.0.1', 0), Fixture)
     threading.Thread(target=server.serve_forever, daemon=True).start()

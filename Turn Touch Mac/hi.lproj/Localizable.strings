@@ -24,6 +24,7 @@
 "About Turn Touch & updates" = "Turn Touch के बारे में और अपडेट";
 "About Turn Touch Remote" = "Turn Touch Remote के बारे में";
 "About this app’s actions" = "इस ऐप की कार्रवाइयों के बारे में";
+"Action" = "कार्रवाई";
 "Action 1st" = "पहली कार्रवाई";
 "Action 2nd" = "दूसरी कार्रवाई";
 "Action 3rd" = "तीसरी कार्रवाई";
@@ -31,6 +32,7 @@
 "Action Menu" = "कार्रवाई मेनू";
 "Action data (optional JSON)" = "कार्रवाई डेटा (वैकल्पिक JSON)";
 "Action data must be a JSON object, for example {\"brightness_pct\": 50}." = "कार्रवाई डेटा JSON ऑब्जेक्ट होना चाहिए, जैसे {\"brightness_pct\": 50}।";
+"Action: %@" = "कार्रवाई: %@";
 "Activate scene" = "दृश्य सक्रिय करें";
 "Add Action" = "कार्रवाई जोड़ें";
 "Add a new remote…" = "नया रिमोट जोड़ें…";
@@ -51,14 +53,15 @@
 "Ambient" = "परिवेश";
 "Apple Keynote" = "Apple Keynote";
 "Assign this action to the selected remote button" = "यह कार्रवाई चुने हुए रिमोट बटन को असाइन करें";
+"Assigned to this button." = "इस बटन को असाइन किया गया।";
 "Authentication failed. Please reconnect to your Hue bridge." = "प्रमाणीकरण विफल हुआ। कृपया अपने Hue ब्रिज से फिर कनेक्ट करें।";
 "Authentication failed: %@" = "प्रमाणीकरण विफल: %@";
 "Authentication timed out" = "प्रमाणीकरण का समय समाप्त";
 "Automatic (device language)" = "स्वचालित (डिवाइस की भाषा)";
 "Automations" = "ऑटोमेशन";
-"Available actions come from your Home Assistant." = "उपलब्ध कार्रवाइयाँ आपके Home Assistant से आती हैं।";
 "BRIDGE ID" = "ब्रिज ID";
 "BUTTONS" = "बटन";
+"Back" = "वापस";
 "Battery Level: %d%%" = "बैटरी स्तर: %d%%";
 "Bluetooth in resetting state." = "Bluetooth रीसेट हो रहा है।";
 "Bluetooth in unknown state." = "Bluetooth की स्थिति अज्ञात है।";
@@ -80,16 +83,15 @@
 "Change app" = "ऐप बदलें";
 "Check for updates..." = "अपडेट देखें...";
 "Choose File" = "फ़ाइल चुनें";
-"Choose Home Assistant action…" = "Home Assistant कार्रवाई चुनें…";
 "Choose IFTTT Action" = "IFTTT ऐक्शन चुनें";
 "Choose a button, then add an action" = "एक बटन चुनें, फिर कार्रवाई जोड़ें";
-"Choose a discovered home or enter its address to get started." = "शुरू करने के लिए मिले हुए घर को चुनें या उसका पता दर्ज करें।";
 "Choose a gesture tab and a button, then Add Action. Mix apps or add several actions to one gesture." = "जेस्चर टैब और बटन चुनें, फिर कार्रवाई जोड़ें। ऐप मिलाएँ या एक जेस्चर में कई कार्रवाइयाँ जोड़ें।";
 "Choose a valid Home Assistant action." = "मान्य Home Assistant कार्रवाई चुनें।";
 "Choose an action for this app using Add Action below a remote button." = "रिमोट बटन के नीचे कार्रवाई जोड़ें चुनकर इस ऐप के लिए कोई कार्रवाई चुनें।";
 "Choose an entity" = "एंटिटी चुनें";
 "Choose an entity first." = "पहले कोई एंटिटी चुनें।";
 "Choose app" = "ऐप चुनें";
+"Choose for button" = "बटन के लिए चुनें";
 "Choose the target in the entity list, not in action data." = "लक्ष्य एंटिटी सूची में चुनें, कार्रवाई डेटा में नहीं।";
 "Climate" = "जलवायु";
 "Close" = "बंद करें";
@@ -99,15 +101,14 @@
 "Configure your Turn Touch wooden remote and put lights, music, and everyday actions at your fingertips. Choose actions for single taps, double taps, and holds, or combine several actions on one button.\n\nPair a remote over Bluetooth, choose your apps and devices, and customize your buttons in Settings. Turn Touch supports compatible smart-home devices and services; available functions depend on the integration and device.\n\nA Turn Touch remote is sold separately. Some integrations require compatible hardware, local network access, or a third-party account.\n\nLearn more: https://turntouch.com" = "अपने Turn Touch लकड़ी के रिमोट को कॉन्फ़िगर करें और लाइट, संगीत और रोज़मर्रा की कार्रवाइयाँ बस एक स्पर्श की दूरी पर रखें। एक बार टैप, दो बार टैप और दबाकर रखने के लिए कार्रवाइयाँ चुनें, या एक बटन पर कई कार्रवाइयाँ जोड़ें।\n\nBluetooth से रिमोट पेयर करें, अपने ऐप और डिवाइस चुनें और Settings में बटन कस्टमाइज़ करें। Turn Touch संगत स्मार्ट-होम डिवाइसों और सेवाओं को सपोर्ट करता है; उपलब्ध सुविधाएँ इंटीग्रेशन और डिवाइस पर निर्भर करती हैं।\n\nTurn Touch रिमोट अलग से बेचा जाता है। कुछ इंटीग्रेशन के लिए संगत हार्डवेयर, स्थानीय नेटवर्क एक्सेस या किसी तीसरे पक्ष का खाता ज़रूरी है।\n\nऔर जानें: https://turntouch.com";
 "Conncted to X Wemo devices" = "X Wemo डिवाइस से कनेक्ट है";
 "Connect" = "कनेक्ट करें";
-"Connect locally, find an entity, and choose what your Turn Touch remote should do." = "स्थानीय रूप से कनेक्ट करें, कोई एंटिटी ढूँढें और चुनें कि आपका Turn Touch रिमोट क्या करे।";
 "Connect to Home Assistant first." = "पहले Home Assistant से कनेक्ट करें।";
-"Connect to Home Assistant…" = "Home Assistant से कनेक्ट करें…";
 "Connect to Hue" = "Hue से कनेक्ट करें";
 "Connect to Hue..." = "Hue से कनेक्ट करें...";
 "Connect to IFTTT" = "IFTTT से कनेक्ट करें";
 "Connect to Nanoleaf" = "Nanoleaf से कनेक्ट करें";
 "Connect to Nest" = "Nest से कनेक्ट करें";
 "Connect to browse your home" = "अपना घर ब्राउज़ करने के लिए कनेक्ट करें";
+"Connect using the Home Assistant menu." = "Home Assistant मेनू से कनेक्ट करें।";
 "Connected" = "कनेक्टेड";
 "Connected Devices" = "कनेक्ट किए गए डिवाइस";
 "Connected Govee devices: %ld" = "कनेक्ट किए गए Govee डिवाइस: %ld";
@@ -119,7 +120,6 @@
 "Connected to X Kasa devices" = "X Kasa डिवाइस से कनेक्ट किया गया";
 "Connected wireless speakers" = "कनेक्ट किए गए वायरलेस स्पीकर";
 "Connected · %d%% battery" = "कनेक्टेड · %d%% बैटरी";
-"Connected · %lu entities · %@" = "कनेक्टेड · %lu एंटिटी · %@";
 "Connecting" = "कनेक्ट हो रहा है";
 "Connecting to %@..." = "%@ से कनेक्ट हो रहा है...";
 "Connecting to Govee..." = "Govee से कनेक्ट हो रहा है...";
@@ -144,6 +144,7 @@
 "Connection failed: %@" = "कनेक्शन विफल: %@";
 "Connection timed out. Tap to retry." = "कनेक्शन का समय समाप्त। फिर कोशिश करने के लिए टैप करें।";
 "Connection to Hue bridge lost" = "Hue ब्रिज से कनेक्शन टूट गया";
+"Connection…" = "कनेक्शन…";
 "Contact support" = "सहायता से संपर्क करें";
 "Continue" = "जारी रखें";
 "Control Music" = "Music नियंत्रित करें";
@@ -196,6 +197,7 @@
 "Enter your Govee API key (Govee Home > Settings > API)" = "अपनी Govee API key दर्ज करें (Govee Home > Settings > API)";
 "Enter your Govee API key (from Govee Home App > Settings > My Profile > Apply for API Key)" = "अपनी Govee API key दर्ज करें (Govee Home App > Settings > My Profile > Apply for API Key से)";
 "Enter your TP-Link/Kasa account credentials for newer devices that use KLAP authentication." = "KLAP प्रमाणीकरण वाले नए डिवाइसों के लिए अपना TP-Link/Kasa खाता क्रेडेंशियल दर्ज करें।";
+"Entities: %lu" = "एंटिटी: %lu";
 "Error (%li): %@" = "त्रुटि (%li): %@";
 "Error getting %@, HTTP status code %li" = "%@ प्राप्त करने में त्रुटि, HTTP स्थिति कोड %li";
 "Error on BLE Notification\n Message: %@" = "BLE सूचना में त्रुटि\n संदेश: %@";
@@ -218,6 +220,7 @@
 "Fast forward" = "तेज़ आगे";
 "Fetching Govee devices..." = "Govee डिवाइस प्राप्त हो रहे हैं...";
 "Fetching devices from Govee..." = "Govee से डिवाइस प्राप्त हो रहे हैं...";
+"Filter" = "फ़िल्टर";
 "Find your Nanoleaf" = "अपना Nanoleaf खोजें";
 "Find your Philips Hue" = "अपना Philips Hue ढूँढें";
 "Finishing sign-in…" = "साइन-इन पूरा हो रहा है…";
@@ -253,8 +256,11 @@
 "Hold actions" = "दबाकर रखने की कार्रवाइयाँ";
 "Hold the power button for 5-7 seconds until the LEDs start flashing" = "पावर बटन को 5-7 सेकंड तक दबाए रखें, जब तक LED चमकने न लगें";
 "Home Assistant" = "Home Assistant";
-"Home Assistant accepted the action. Check the device, then save when ready." = "Home Assistant ने कार्रवाई स्वीकार कर ली। डिवाइस जाँचें, फिर तैयार होने पर सेव करें।";
+"Home Assistant accepted the action." = "Home Assistant ने कार्रवाई स्वीकार कर ली।";
 "Home Assistant action" = "Home Assistant कार्रवाई";
+"Home Assistant address" = "Home Assistant का पता";
+"Home Assistant entities" = "Home Assistant एंटिटी";
+"Home Assistant menu" = "Home Assistant मेनू";
 "Home Assistant returned HTTP %ld. Check the action and its required fields." = "Home Assistant ने HTTP %ld लौटाया। कार्रवाई और उसके आवश्यक फ़ील्ड जाँचें।";
 "Home Assistant returned an invalid sign-in response." = "Home Assistant ने अमान्य साइन-इन जवाब लौटाया।";
 "How it works" = "यह कैसे काम करता है";
@@ -354,7 +360,6 @@
 "ON" = "चालू";
 "Old DFU only supports Application upload" = "पुराना DFU केवल ऐप्लिकेशन अपलोड का समर्थन करता है";
 "One-time alarm" = "एक बार का अलार्म";
-"Open this browser from a remote button in Turn Touch to save an assignment." = "असाइनमेंट सेव करने के लिए Turn Touch के किसी रिमोट बटन से यह ब्राउज़र खोलें।";
 "Open token settings" = "टोकन सेटिंग खोलें";
 "Operation Failed" = "कार्रवाई विफल";
 "Operation Not Supported" = "कार्रवाई समर्थित नहीं";
@@ -434,8 +439,6 @@
 "Sat" = "शनि";
 "Saturation" = "रंग संतृप्ति";
 "Save" = "सहेजें";
-"Save to button" = "बटन पर सेव करें";
-"Saved %@ · %@ to your remote button." = "आपके रिमोट बटन में %@ · %@ सहेजा गया।";
 "Scan for devices" = "डिवाइस खोजें";
 "Scanning for remotes..." = "रिमोट खोजे जा रहे हैं...";
 "Scanning local network..." = "स्थानीय नेटवर्क स्कैन हो रहा है...";
@@ -447,12 +450,12 @@
 "Scripts, files, and websites" = "स्क्रिप्ट, फ़ाइलें और वेबसाइटें";
 "Scroll down" = "नीचे स्क्रॉल करें";
 "Scroll up" = "ऊपर स्क्रॉल करें";
+"Search Home Assistant" = "Home Assistant में खोजें";
 "Search entities, devices, rooms, or entity IDs" = "एंटिटी, डिवाइस, कमरे या एंटिटी ID खोजें";
 "Search for Kasa devices..." = "Kasa डिवाइस खोज रहे हैं...";
 "Search for New Devices..." = "नए डिवाइस खोजें...";
 "Search for Sonos devices..." = "Sonos डिवाइस खोजें...";
 "Search for Wemo devices..." = "Wemo डिवाइस खोज रहे हैं...";
-"Search lights, scenes, scripts, and more.\nNo Home Assistant plugin needed." = "लाइट, सीन, स्क्रिप्ट और अन्य चीज़ें खोजें।\nHome Assistant प्लगइन की ज़रूरत नहीं।";
 "Searching for Hue..." = "Hue खोजा जा रहा है...";
 "Searching for Kasa devices..." = "Kasa डिवाइस खोजे जा रहे हैं...";
 "Searching for Kasa..." = "Kasa खोज रहा है...";
@@ -523,7 +526,6 @@
 "Temperature" = "तापमान";
 "Temperature set to" = "तापमान सेट किया गया";
 "Test action" = "कार्रवाई जाँचें";
-"Test runs the action now. Save assigns it to the selected remote button." = "टेस्ट अभी कार्रवाई चलाता है। सेव करने पर यह चुने हुए रिमोट बटन को असाइन हो जाएगी।";
 "Text Cell" = "टेक्स्ट सेल";
 "Thank you! What would you like to say?" = "धन्यवाद! आप क्या कहना चाहेंगे?";
 "That worked perfectly" = "यह बिल्कुल सही हुआ";
@@ -563,7 +565,6 @@
 "Turn Touch uses files to play music." = "Turn Touch संगीत चलाने के लिए फ़ाइलों का उपयोग करता है।";
 "Turn Touch uses music for the alarm clock." = "Turn Touch अलार्म घड़ी के लिए संगीत का उपयोग करता है।";
 "Turn Touch uses the local network to find Home Assistant, Philips Hue, Nanoleaf, and other smart home devices." = "Turn Touch Home Assistant, Philips Hue, Nanoleaf और अन्य स्मार्ट होम डिवाइस खोजने के लिए स्थानीय नेटवर्क का उपयोग करता है।";
-"Turn Touch · Home Assistant" = "Turn Touch · Home Assistant";
 "Turn off" = "बंद करें";
 "Turn off screen" = "स्क्रीन बंद करें";
 "Turn on" = "चालू करें";
@@ -572,6 +573,7 @@
 "Unknown Device" = "अज्ञात डिवाइस";
 "Unknown error" = "अज्ञात त्रुटि";
 "Upgrade to v%ld" = "v%ld में अपग्रेड करें";
+"Use access token…" = "एक्सेस टोकन इस्तेमाल करें…";
 "Use token" = "टोकन इस्तेमाल करें";
 "Version %@" = "संस्करण %@";
 "Version 1.0.0" = "संस्करण 1.0.0";
@@ -599,7 +601,6 @@
 "Your email" = "आपका ईमेल";
 "Your favorite actions, one touch away" = "आपके पसंदीदा काम, बस एक स्पर्श दूर";
 "Your home, scenes, and automations" = "आपका घर, सीन और ऑटोमेशन";
-"Your home. One button away." = "आपका घर। बस एक बटन दूर।";
 "Your remote has been paired" = "आपका रिमोट पेयर हो गया है";
 "Your remote has four buttons" = "आपके रिमोट में चार बटन हैं";
 "application.dat is missing. It must be placed inside zip file with application" = "application.dat मौजूद नहीं है। इसे application के साथ ZIP फ़ाइल में रखना ज़रूरी है";

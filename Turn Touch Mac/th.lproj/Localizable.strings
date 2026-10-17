@@ -24,6 +24,7 @@
 "About Turn Touch & updates" = "เกี่ยวกับ Turn Touch และรายการอัปเดต";
 "About Turn Touch Remote" = "เกี่ยวกับ Turn Touch Remote";
 "About this app’s actions" = "เกี่ยวกับการทำงานของแอปนี้";
+"Action" = "การทำงาน";
 "Action 1st" = "การทำงานที่ 1";
 "Action 2nd" = "การทำงานที่ 2";
 "Action 3rd" = "การทำงานที่ 3";
@@ -31,6 +32,7 @@
 "Action Menu" = "เมนูการทำงาน";
 "Action data (optional JSON)" = "ข้อมูลการทำงาน (JSON ไม่บังคับ)";
 "Action data must be a JSON object, for example {\"brightness_pct\": 50}." = "ข้อมูลการทำงานต้องเป็นออบเจ็กต์ JSON เช่น {\"brightness_pct\": 50}";
+"Action: %@" = "การทำงาน: %@";
 "Activate scene" = "เปิดใช้ฉาก";
 "Add Action" = "เพิ่มการทำงาน";
 "Add a new remote…" = "เพิ่มรีโมตใหม่…";
@@ -51,14 +53,15 @@
 "Ambient" = "อุณหภูมิห้อง";
 "Apple Keynote" = "Apple Keynote";
 "Assign this action to the selected remote button" = "กำหนดการทำงานนี้ให้กับปุ่มรีโมตที่เลือก";
+"Assigned to this button." = "กำหนดให้ปุ่มนี้แล้ว";
 "Authentication failed. Please reconnect to your Hue bridge." = "การยืนยันตัวตนล้มเหลว โปรดเชื่อมต่อกับ Hue bridge อีกครั้ง";
 "Authentication failed: %@" = "การยืนยันตัวตนล้มเหลว: %@";
 "Authentication timed out" = "หมดเวลายืนยันตัวตน";
 "Automatic (device language)" = "อัตโนมัติ (ภาษาของอุปกรณ์)";
 "Automations" = "ระบบอัตโนมัติ";
-"Available actions come from your Home Assistant." = "การทำงานที่ใช้ได้มาจาก Home Assistant ของคุณ";
 "BRIDGE ID" = "รหัส BRIDGE";
 "BUTTONS" = "ปุ่ม";
+"Back" = "ย้อนกลับ";
 "Battery Level: %d%%" = "ระดับแบตเตอรี่: %d%%";
 "Bluetooth in resetting state." = "Bluetooth กำลังรีเซ็ต";
 "Bluetooth in unknown state." = "สถานะ Bluetooth ไม่ทราบ";
@@ -80,16 +83,15 @@
 "Change app" = "เปลี่ยนแอป";
 "Check for updates..." = "ตรวจหาการอัปเดต...";
 "Choose File" = "เลือกไฟล์";
-"Choose Home Assistant action…" = "เลือกการทำงานของ Home Assistant…";
 "Choose IFTTT Action" = "เลือกการทำงานของ IFTTT";
 "Choose a button, then add an action" = "เลือกปุ่ม แล้วเพิ่มการทำงาน";
-"Choose a discovered home or enter its address to get started." = "เลือกบ้านที่ค้นพบหรือป้อนที่อยู่เพื่อเริ่มต้น";
 "Choose a gesture tab and a button, then Add Action. Mix apps or add several actions to one gesture." = "เลือกแท็บท่าทางและปุ่ม แล้วแตะเพิ่มการทำงาน ใช้หลายแอปหรือเพิ่มหลายการทำงานในท่าทางเดียวได้";
 "Choose a valid Home Assistant action." = "เลือกการทำงาน Home Assistant ที่ถูกต้อง";
 "Choose an action for this app using Add Action below a remote button." = "เลือกการทำงานสำหรับแอปนี้โดยใช้เพิ่มการทำงานใต้ปุ่มรีโมต";
 "Choose an entity" = "เลือกเอนทิตี";
 "Choose an entity first." = "เลือกเอนทิตีก่อน";
 "Choose app" = "เลือกแอป";
+"Choose for button" = "เลือกให้ปุ่ม";
 "Choose the target in the entity list, not in action data." = "เลือกเป้าหมายจากรายการเอนทิตี ไม่ใช่จากข้อมูลการทำงาน";
 "Climate" = "ระบบปรับอากาศ";
 "Close" = "ปิด";
@@ -99,15 +101,14 @@
 "Configure your Turn Touch wooden remote and put lights, music, and everyday actions at your fingertips. Choose actions for single taps, double taps, and holds, or combine several actions on one button.\n\nPair a remote over Bluetooth, choose your apps and devices, and customize your buttons in Settings. Turn Touch supports compatible smart-home devices and services; available functions depend on the integration and device.\n\nA Turn Touch remote is sold separately. Some integrations require compatible hardware, local network access, or a third-party account.\n\nLearn more: https://turntouch.com" = "ตั้งค่ารีโมตไม้ Turn Touch แล้วควบคุมไฟ เพลง และสิ่งต่างๆ ในชีวิตประจำวันได้เพียงปลายนิ้ว เลือกการทำงานสำหรับการแตะหนึ่งครั้ง แตะสองครั้ง หรือกดค้าง หรือรวมหลายการทำงานไว้ในปุ่มเดียว\n\nจับคู่รีโมตผ่าน Bluetooth เลือกแอปและอุปกรณ์ แล้วปรับแต่งปุ่มในการตั้งค่า Turn Touch รองรับอุปกรณ์และบริการสมาร์ทโฮมที่ใช้งานร่วมกันได้ ฟังก์ชันที่ใช้ได้ขึ้นอยู่กับการเชื่อมต่อและอุปกรณ์\n\nจำหน่ายรีโมต Turn Touch แยกต่างหาก การเชื่อมต่อบางประเภทต้องใช้อุปกรณ์ที่รองรับ การเข้าถึงเครือข่ายภายใน หรือบัญชีบุคคลที่สาม\n\nดูเพิ่มเติม: https://turntouch.com";
 "Conncted to X Wemo devices" = "เชื่อมต่อกับอุปกรณ์ Wemo X เครื่องแล้ว";
 "Connect" = "เชื่อมต่อ";
-"Connect locally, find an entity, and choose what your Turn Touch remote should do." = "เชื่อมต่อในเครือข่าย ค้นหาเอนทิตี แล้วเลือกการทำงานของรีโมต Turn Touch";
 "Connect to Home Assistant first." = "เชื่อมต่อ Home Assistant ก่อน";
-"Connect to Home Assistant…" = "เชื่อมต่อกับ Home Assistant…";
 "Connect to Hue" = "เชื่อมต่อกับ Hue";
 "Connect to Hue..." = "เชื่อมต่อ Hue...";
 "Connect to IFTTT" = "เชื่อมต่อกับ IFTTT";
 "Connect to Nanoleaf" = "เชื่อมต่อกับ Nanoleaf";
 "Connect to Nest" = "เชื่อมต่อกับ Nest";
 "Connect to browse your home" = "เชื่อมต่อเพื่อเรียกดูบ้าน";
+"Connect using the Home Assistant menu." = "เชื่อมต่อผ่านเมนู Home Assistant";
 "Connected" = "เชื่อมต่อแล้ว";
 "Connected Devices" = "อุปกรณ์ที่เชื่อมต่อ";
 "Connected Govee devices: %ld" = "อุปกรณ์ Govee ที่เชื่อมต่อ: %ld";
@@ -119,7 +120,6 @@
 "Connected to X Kasa devices" = "เชื่อมต่อกับอุปกรณ์ Kasa แล้ว X เครื่อง";
 "Connected wireless speakers" = "ลำโพงไร้สายที่เชื่อมต่อ";
 "Connected · %d%% battery" = "เชื่อมต่อแล้ว · แบตเตอรี่ %d%%";
-"Connected · %lu entities · %@" = "เชื่อมต่อแล้ว · %lu เอนทิตี · %@";
 "Connecting" = "กำลังเชื่อมต่อ";
 "Connecting to %@..." = "กำลังเชื่อมต่อกับ %@...";
 "Connecting to Govee..." = "กำลังเชื่อมต่อกับ Govee...";
@@ -144,6 +144,7 @@
 "Connection failed: %@" = "เชื่อมต่อล้มเหลว: %@";
 "Connection timed out. Tap to retry." = "หมดเวลาการเชื่อมต่อ แตะเพื่อลองอีกครั้ง";
 "Connection to Hue bridge lost" = "ขาดการเชื่อมต่อกับ Hue bridge";
+"Connection…" = "การเชื่อมต่อ…";
 "Contact support" = "ติดต่อฝ่ายสนับสนุน";
 "Continue" = "ดำเนินการต่อ";
 "Control Music" = "ควบคุมเพลง";
@@ -196,6 +197,7 @@
 "Enter your Govee API key (Govee Home > Settings > API)" = "ป้อน API key ของ Govee (Govee Home > Settings > API)";
 "Enter your Govee API key (from Govee Home App > Settings > My Profile > Apply for API Key)" = "ป้อน API key ของ Govee (จากแอป Govee Home > Settings > My Profile > Apply for API Key)";
 "Enter your TP-Link/Kasa account credentials for newer devices that use KLAP authentication." = "กรอกข้อมูลบัญชี TP-Link/Kasa สำหรับอุปกรณ์รุ่นใหม่ที่ใช้การยืนยันตัวตน KLAP";
+"Entities: %lu" = "เอนทิตี: %lu";
 "Error (%li): %@" = "ข้อผิดพลาด (%li): %@";
 "Error getting %@, HTTP status code %li" = "เกิดข้อผิดพลาดขณะดึงข้อมูล %@, รหัสสถานะ HTTP %li";
 "Error on BLE Notification\n Message: %@" = "เกิดข้อผิดพลาดในการแจ้งเตือน BLE\n ข้อความ: %@";
@@ -218,6 +220,7 @@
 "Fast forward" = "เดินหน้าเร็ว";
 "Fetching Govee devices..." = "กำลังดึงข้อมูลอุปกรณ์ Govee...";
 "Fetching devices from Govee..." = "กำลังดึงอุปกรณ์จาก Govee...";
+"Filter" = "ตัวกรอง";
 "Find your Nanoleaf" = "ค้นหา Nanoleaf";
 "Find your Philips Hue" = "ค้นหา Philips Hue ของคุณ";
 "Finishing sign-in…" = "กำลังดำเนินการลงชื่อเข้าใช้ให้เสร็จ…";
@@ -253,8 +256,11 @@
 "Hold actions" = "การทำงานเมื่อกดค้าง";
 "Hold the power button for 5-7 seconds until the LEDs start flashing" = "กดปุ่มเปิด/ปิดค้างไว้ 5-7 วินาที จนไฟ LED เริ่มกะพริบ";
 "Home Assistant" = "Home Assistant";
-"Home Assistant accepted the action. Check the device, then save when ready." = "Home Assistant รับคำสั่งแล้ว ตรวจสอบอุปกรณ์ แล้วบันทึกเมื่อพร้อม";
+"Home Assistant accepted the action." = "Home Assistant ยอมรับการทำงานแล้ว";
 "Home Assistant action" = "การทำงานของ Home Assistant";
+"Home Assistant address" = "ที่อยู่ Home Assistant";
+"Home Assistant entities" = "เอนทิตี Home Assistant";
+"Home Assistant menu" = "เมนู Home Assistant";
 "Home Assistant returned HTTP %ld. Check the action and its required fields." = "Home Assistant ตอบกลับ HTTP %ld ตรวจสอบการทำงานและฟิลด์ที่จำเป็น";
 "Home Assistant returned an invalid sign-in response." = "Home Assistant ส่งการตอบกลับการลงชื่อเข้าใช้ที่ไม่ถูกต้อง";
 "How it works" = "วิธีการทำงาน";
@@ -354,7 +360,6 @@
 "ON" = "เปิด";
 "Old DFU only supports Application upload" = "DFU รุ่นเก่ารองรับการอัปโหลด Application เท่านั้น";
 "One-time alarm" = "ปลุกครั้งเดียว";
-"Open this browser from a remote button in Turn Touch to save an assignment." = "เปิดเบราว์เซอร์นี้จากปุ่มรีโมตใน Turn Touch เพื่อบันทึกการกำหนดค่า";
 "Open token settings" = "เปิดการตั้งค่าโทเค็น";
 "Operation Failed" = "การดำเนินการล้มเหลว";
 "Operation Not Supported" = "ไม่รองรับการดำเนินการ";
@@ -434,8 +439,6 @@
 "Sat" = "ส.";
 "Saturation" = "ความอิ่มสี";
 "Save" = "บันทึก";
-"Save to button" = "บันทึกลงปุ่ม";
-"Saved %@ · %@ to your remote button." = "บันทึก %@ · %@ ลงในปุ่มรีโมตแล้ว";
 "Scan for devices" = "สแกนหาอุปกรณ์";
 "Scanning for remotes..." = "กำลังค้นหารีโมต...";
 "Scanning local network..." = "กำลังสแกนเครือข่ายในพื้นที่...";
@@ -447,12 +450,12 @@
 "Scripts, files, and websites" = "สคริปต์ ไฟล์ และเว็บไซต์";
 "Scroll down" = "เลื่อนลง";
 "Scroll up" = "เลื่อนขึ้น";
+"Search Home Assistant" = "ค้นหาใน Home Assistant";
 "Search entities, devices, rooms, or entity IDs" = "ค้นหาเอนทิตี อุปกรณ์ ห้อง หรือ ID เอนทิตี";
 "Search for Kasa devices..." = "กำลังค้นหาอุปกรณ์ Kasa...";
 "Search for New Devices..." = "ค้นหาอุปกรณ์ใหม่...";
 "Search for Sonos devices..." = "ค้นหาอุปกรณ์ Sonos...";
 "Search for Wemo devices..." = "ค้นหาอุปกรณ์ WeMo...";
-"Search lights, scenes, scripts, and more.\nNo Home Assistant plugin needed." = "ค้นหาไฟ ฉาก สคริปต์ และอื่นๆ\nไม่ต้องใช้ปลั๊กอิน Home Assistant";
 "Searching for Hue..." = "กำลังค้นหา Hue...";
 "Searching for Kasa devices..." = "กำลังค้นหาอุปกรณ์ Kasa...";
 "Searching for Kasa..." = "กำลังค้นหา Kasa...";
@@ -523,7 +526,6 @@
 "Temperature" = "อุณหภูมิ";
 "Temperature set to" = "ตั้งอุณหภูมิเป็น";
 "Test action" = "ทดสอบการทำงาน";
-"Test runs the action now. Save assigns it to the selected remote button." = "ทดสอบเพื่อเรียกใช้การทำงานทันที บันทึกเพื่อกำหนดให้กับปุ่มรีโมตที่เลือก";
 "Text Cell" = "เซลล์ข้อความ";
 "Thank you! What would you like to say?" = "ขอบคุณ! คุณอยากบอกอะไรเรา?";
 "That worked perfectly" = "ใช้ได้สมบูรณ์แบบ";
@@ -563,7 +565,6 @@
 "Turn Touch uses files to play music." = "Turn Touch ใช้ไฟล์เพื่อเล่นเพลง";
 "Turn Touch uses music for the alarm clock." = "Turn Touch ใช้เพลงสำหรับนาฬิกาปลุก";
 "Turn Touch uses the local network to find Home Assistant, Philips Hue, Nanoleaf, and other smart home devices." = "Turn Touch ใช้เครือข่ายในพื้นที่เพื่อค้นหา Home Assistant, Philips Hue, Nanoleaf และอุปกรณ์สมาร์ทโฮมอื่นๆ";
-"Turn Touch · Home Assistant" = "Turn Touch · Home Assistant";
 "Turn off" = "ปิด";
 "Turn off screen" = "ปิดหน้าจอ";
 "Turn on" = "เปิด";
@@ -572,6 +573,7 @@
 "Unknown Device" = "อุปกรณ์ที่ไม่รู้จัก";
 "Unknown error" = "ข้อผิดพลาดที่ไม่ทราบสาเหตุ";
 "Upgrade to v%ld" = "อัปเกรดเป็น v%ld";
+"Use access token…" = "ใช้โทเค็นการเข้าถึง…";
 "Use token" = "ใช้โทเค็น";
 "Version %@" = "เวอร์ชัน %@";
 "Version 1.0.0" = "เวอร์ชัน 1.0.0";
@@ -599,7 +601,6 @@
 "Your email" = "อีเมลของคุณ";
 "Your favorite actions, one touch away" = "การทำงานที่ชอบ พร้อมใช้แค่แตะเดียว";
 "Your home, scenes, and automations" = "บ้าน ฉาก และระบบอัตโนมัติของคุณ";
-"Your home. One button away." = "บ้านของคุณ แค่กดปุ่มเดียว";
 "Your remote has been paired" = "จับคู่รีโมตของคุณแล้ว";
 "Your remote has four buttons" = "รีโมตของคุณมีปุ่มสี่ปุ่ม";
 "application.dat is missing. It must be placed inside zip file with application" = "ไม่มี application.dat ต้องใส่ไว้ในไฟล์ zip พร้อมกับ application";

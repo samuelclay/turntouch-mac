@@ -17,6 +17,7 @@ typedef enum TTPanelModal : NSUInteger {
     PANEL_MODAL_ABOUT,
     PANEL_MODAL_SETTINGS,
     PANEL_MODAL_SUPPORT,
+    PANEL_MODAL_HOME_ASSISTANT,
 } TTPanelModal;
 
 typedef enum TTModalPairing : NSUInteger {

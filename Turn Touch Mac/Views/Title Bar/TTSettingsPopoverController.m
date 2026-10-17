@@ -2,7 +2,7 @@
 #import "TTAppDelegate.h"
 #import "TTDevice.h"
 #import "TTOptionsDetailViewController.h"
-#import "TTHomeAssistantWindowController.h"
+
 
 @interface TTSettingsDocumentView : NSView
 @end
@@ -24,7 +24,7 @@
 @property (nonatomic) BOOL showAllApps;
 @property (nonatomic) NSWindowController *connectionWindow;
 @property (nonatomic) TTOptionsDetailViewController *connectionOptions;
-@property (nonatomic) TTHomeAssistantWindowController *homeAssistantWindow;
+
 @end
 
 @implementation TTSettingsPopoverController
@@ -197,9 +197,7 @@
 - (void)openApp:(NSString *)name {
     [self done:nil];
     if ([name isEqualToString:@"TTModeHomeAssistant"]) {
-        if (!self.homeAssistantWindow) self.homeAssistantWindow = [[TTHomeAssistantWindowController alloc] init];
-        self.homeAssistantWindow.saveHandler = nil;
-        [self.homeAssistantWindow showWithBinding:nil];
+        [NSAppDelegate.panelController.backgroundView switchPanelModal:PANEL_MODAL_HOME_ASSISTANT];
         return;
     }
     [self.connectionWindow close];

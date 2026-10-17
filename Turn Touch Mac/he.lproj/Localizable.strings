@@ -24,6 +24,7 @@
 "About Turn Touch & updates" = "מידע על Turn Touch ועדכונים";
 "About Turn Touch Remote" = "מידע על Turn Touch Remote";
 "About this app’s actions" = "מידע על פעולות האפליקציה";
+"Action" = "פעולה";
 "Action 1st" = "פעולה ראשונה";
 "Action 2nd" = "פעולה שנייה";
 "Action 3rd" = "פעולה שלישית";
@@ -31,6 +32,7 @@
 "Action Menu" = "תפריט פעולות";
 "Action data (optional JSON)" = "נתוני פעולה (JSON אופציונלי)";
 "Action data must be a JSON object, for example {\"brightness_pct\": 50}." = "נתוני הפעולה חייבים להיות אובייקט JSON, למשל {\"brightness_pct\": 50}.";
+"Action: %@" = "פעולה: %@";
 "Activate scene" = "הפעלת סצנה";
 "Add Action" = "הוספת פעולה";
 "Add a new remote…" = "הוספת שלט חדש…";
@@ -51,14 +53,15 @@
 "Ambient" = "סביבה";
 "Apple Keynote" = "Apple Keynote";
 "Assign this action to the selected remote button" = "הקצאת הפעולה ללחצן הנבחר בשלט";
+"Assigned to this button." = "הוקצתה לכפתור הזה.";
 "Authentication failed. Please reconnect to your Hue bridge." = "האימות נכשל. התחבר מחדש ל־Hue bridge.";
 "Authentication failed: %@" = "האימות נכשל: %@";
 "Authentication timed out" = "תם הזמן לאימות";
 "Automatic (device language)" = "אוטומטי (שפת המכשיר)";
 "Automations" = "אוטומציות";
-"Available actions come from your Home Assistant." = "הפעולות הזמינות מגיעות מ-Home Assistant שלך.";
 "BRIDGE ID" = "מזהה גשר";
 "BUTTONS" = "כפתורים";
+"Back" = "חזרה";
 "Battery Level: %d%%" = "רמת הסוללה: %d%%";
 "Bluetooth in resetting state." = "Bluetooth מתאפס.";
 "Bluetooth in unknown state." = "מצב Bluetooth לא ידוע.";
@@ -80,16 +83,15 @@
 "Change app" = "החלפת אפליקציה";
 "Check for updates..." = "מחפש עדכונים...";
 "Choose File" = "בחירת קובץ";
-"Choose Home Assistant action…" = "בחירת פעולת Home Assistant…";
 "Choose IFTTT Action" = "בחירת פעולה של IFTTT";
 "Choose a button, then add an action" = "בחרו כפתור ואז הוסיפו פעולה";
-"Choose a discovered home or enter its address to get started." = "כדי להתחיל, בחר בית שנמצא או הזן את כתובתו.";
 "Choose a gesture tab and a button, then Add Action. Mix apps or add several actions to one gesture." = "בחרו בלשונית מחווה ובלחצן, ואז הוסיפו פעולה. שלבו אפליקציות או הוסיפו כמה פעולות למחווה אחת.";
 "Choose a valid Home Assistant action." = "בחר פעולה תקינה של Home Assistant.";
 "Choose an action for this app using Add Action below a remote button." = "בחרו פעולה לאפליקציה הזו באמצעות הוספת פעולה מתחת ללחצן בשלט.";
 "Choose an entity" = "בחירת ישות";
 "Choose an entity first." = "בחר תחילה ישות.";
 "Choose app" = "בחירת אפליקציה";
+"Choose for button" = "בחירה לכפתור";
 "Choose the target in the entity list, not in action data." = "בחר את היעד ברשימת הישויות, לא בנתוני הפעולה.";
 "Climate" = "אקלים";
 "Close" = "סגירה";
@@ -99,15 +101,14 @@
 "Configure your Turn Touch wooden remote and put lights, music, and everyday actions at your fingertips. Choose actions for single taps, double taps, and holds, or combine several actions on one button.\n\nPair a remote over Bluetooth, choose your apps and devices, and customize your buttons in Settings. Turn Touch supports compatible smart-home devices and services; available functions depend on the integration and device.\n\nA Turn Touch remote is sold separately. Some integrations require compatible hardware, local network access, or a third-party account.\n\nLearn more: https://turntouch.com" = "הגדר את שלט העץ שלך של Turn Touch והבא תאורה, מוזיקה ופעולות יומיומיות לקצות אצבעותיך. בחר פעולות ללחיצה אחת, ללחיצה כפולה וללחיצה ממושכת, או שלב כמה פעולות בלחצן אחד.\n\nשייך שלט דרך Bluetooth, בחר את האפליקציות והמכשירים שלך והתאם אישית את הלחצנים בהגדרות. Turn Touch תומך במכשירים ובשירותים תואמים לבית חכם; הפונקציות הזמינות תלויות באינטגרציה ובמכשיר.\n\nהשלט של Turn Touch נמכר בנפרד. אינטגרציות מסוימות דורשות חומרה תואמת, גישה לרשת מקומית או חשבון של צד שלישי.\n\nמידע נוסף: https://turntouch.com";
 "Conncted to X Wemo devices" = "מחובר ל־X מכשירי Wemo";
 "Connect" = "התחברות";
-"Connect locally, find an entity, and choose what your Turn Touch remote should do." = "התחבר באופן מקומי, מצא ישות ובחר מה שלט Turn Touch שלך יעשה.";
 "Connect to Home Assistant first." = "התחבר תחילה ל-Home Assistant.";
-"Connect to Home Assistant…" = "התחברות ל־Home Assistant…";
 "Connect to Hue" = "התחברות ל-Hue";
 "Connect to Hue..." = "התחברות ל-Hue...";
 "Connect to IFTTT" = "התחברות ל-IFTTT";
 "Connect to Nanoleaf" = "התחברות ל-Nanoleaf";
 "Connect to Nest" = "התחברות ל־Nest";
 "Connect to browse your home" = "התחבר כדי לעיין בבית שלך";
+"Connect using the Home Assistant menu." = "יש להתחבר דרך תפריט Home Assistant.";
 "Connected" = "מחובר";
 "Connected Devices" = "מכשירים מחוברים";
 "Connected Govee devices: %ld" = "מכשירי Govee מחוברים: %ld";
@@ -119,7 +120,6 @@
 "Connected to X Kasa devices" = "מחובר ל־X מכשירי Kasa";
 "Connected wireless speakers" = "רמקולים אלחוטיים מחוברים";
 "Connected · %d%% battery" = "מחובר · סוללה %d%%";
-"Connected · %lu entities · %@" = "מחובר · %lu ישויות · %@";
 "Connecting" = "מתחבר";
 "Connecting to %@..." = "מתחבר אל %@...";
 "Connecting to Govee..." = "מתחבר ל-Govee...";
@@ -144,6 +144,7 @@
 "Connection failed: %@" = "החיבור נכשל: %@";
 "Connection timed out. Tap to retry." = "תם הזמן לחיבור. הקש כדי לנסות שוב.";
 "Connection to Hue bridge lost" = "החיבור ל־Hue bridge נותק";
+"Connection…" = "חיבור…";
 "Contact support" = "פנייה לתמיכה";
 "Continue" = "המשך";
 "Control Music" = "שליטה ב-Music";
@@ -196,6 +197,7 @@
 "Enter your Govee API key (Govee Home > Settings > API)" = "הזן את מפתח ה־API של Govee (Govee Home > Settings > API)";
 "Enter your Govee API key (from Govee Home App > Settings > My Profile > Apply for API Key)" = "הזן את מפתח ה-API שלך ב-Govee (באפליקציית Govee Home: Settings > My Profile > Apply for API Key)";
 "Enter your TP-Link/Kasa account credentials for newer devices that use KLAP authentication." = "הזן את פרטי חשבון TP-Link/Kasa שלך עבור מכשירים חדשים יותר שמשתמשים באימות KLAP.";
+"Entities: %lu" = "ישויות: %lu";
 "Error (%li): %@" = "שגיאה (%li): %@";
 "Error getting %@, HTTP status code %li" = "שגיאה בקבלת %@, קוד מצב HTTP %li";
 "Error on BLE Notification\n Message: %@" = "שגיאה בהתראת BLE\n הודעה: %@";
@@ -218,6 +220,7 @@
 "Fast forward" = "הרצה קדימה";
 "Fetching Govee devices..." = "מאחזר מכשירי Govee...";
 "Fetching devices from Govee..." = "אחזור מכשירים מ-Govee...";
+"Filter" = "סינון";
 "Find your Nanoleaf" = "מציאת Nanoleaf";
 "Find your Philips Hue" = "איתור Philips Hue שלך";
 "Finishing sign-in…" = "מסיים את ההתחברות…";
@@ -253,8 +256,11 @@
 "Hold actions" = "פעולות בלחיצה ממושכת";
 "Hold the power button for 5-7 seconds until the LEDs start flashing" = "לחץ על כפתור ההפעלה במשך 5–7 שניות, עד שהנוריות יתחילו להבהב";
 "Home Assistant" = "Home Assistant";
-"Home Assistant accepted the action. Check the device, then save when ready." = "Home Assistant קיבל את הפעולה. בדוק את המכשיר, ושמור כשתהיה מוכן.";
+"Home Assistant accepted the action." = "Home Assistant קיבל את הפעולה.";
 "Home Assistant action" = "פעולת Home Assistant";
+"Home Assistant address" = "כתובת Home Assistant";
+"Home Assistant entities" = "ישויות Home Assistant";
+"Home Assistant menu" = "תפריט Home Assistant";
 "Home Assistant returned HTTP %ld. Check the action and its required fields." = "Home Assistant החזיר HTTP %ld. בדוק את הפעולה ואת השדות הנדרשים לה.";
 "Home Assistant returned an invalid sign-in response." = "Home Assistant החזיר תגובת התחברות לא תקינה.";
 "How it works" = "איך זה עובד";
@@ -354,7 +360,6 @@
 "ON" = "פעיל";
 "Old DFU only supports Application upload" = "DFU ישן תומך בהעלאת אפליקציות בלבד";
 "One-time alarm" = "שעון מעורר חד־פעמי";
-"Open this browser from a remote button in Turn Touch to save an assignment." = "פתחו את הדפדפן הזה מלחצן בשלט Turn Touch כדי לשמור הקצאה.";
 "Open token settings" = "פתיחת הגדרות האסימון";
 "Operation Failed" = "הפעולה נכשלה";
 "Operation Not Supported" = "הפעולה אינה נתמכת";
@@ -434,8 +439,6 @@
 "Sat" = "ש׳";
 "Saturation" = "רוויה";
 "Save" = "שמירה";
-"Save to button" = "שמירה ללחצן";
-"Saved %@ · %@ to your remote button." = "נשמרו %@ · %@ בכפתור השלט שלך.";
 "Scan for devices" = "סריקת מכשירים";
 "Scanning for remotes..." = "מחפש שלטים...";
 "Scanning local network..." = "סורק את הרשת המקומית...";
@@ -447,12 +450,12 @@
 "Scripts, files, and websites" = "סקריפטים, קבצים ואתרים";
 "Scroll down" = "גלילה למטה";
 "Scroll up" = "גלילה למעלה";
+"Search Home Assistant" = "חיפוש ב-Home Assistant";
 "Search entities, devices, rooms, or entity IDs" = "חיפוש ישויות, מכשירים, חדרים או מזהי ישויות";
 "Search for Kasa devices..." = "מחפש מכשירי Kasa...";
 "Search for New Devices..." = "חיפוש מכשירים חדשים...";
 "Search for Sonos devices..." = "מחפש מכשירי Sonos...";
 "Search for Wemo devices..." = "מחפש מכשירי WeMo...";
-"Search lights, scenes, scripts, and more.\nNo Home Assistant plugin needed." = "חיפוש אורות, סצנות, סקריפטים ועוד.\nאין צורך בתוסף Home Assistant.";
 "Searching for Hue..." = "מחפש את Hue...";
 "Searching for Kasa devices..." = "מחפש מכשירי Kasa...";
 "Searching for Kasa..." = "מחפש Kasa...";
@@ -523,7 +526,6 @@
 "Temperature" = "טמפרטורה";
 "Temperature set to" = "הטמפרטורה הוגדרה ל";
 "Test action" = "בדיקת פעולה";
-"Test runs the action now. Save assigns it to the selected remote button." = "בדיקה מפעילה את הפעולה כעת. שמירה משייכת אותה ללחצן הנבחר בשלט.";
 "Text Cell" = "תא טקסט";
 "Thank you! What would you like to say?" = "תודה! מה תרצו לומר?";
 "That worked perfectly" = "זה עבד מצוין";
@@ -563,7 +565,6 @@
 "Turn Touch uses files to play music." = "Turn Touch משתמש בקבצים כדי לנגן מוזיקה.";
 "Turn Touch uses music for the alarm clock." = "Turn Touch משתמש במוזיקה לשעון המעורר.";
 "Turn Touch uses the local network to find Home Assistant, Philips Hue, Nanoleaf, and other smart home devices." = "Turn Touch משתמש ברשת המקומית כדי למצוא את Home Assistant, ‏Philips Hue, ‏Nanoleaf ומכשירי בית חכם אחרים.";
-"Turn Touch · Home Assistant" = "Turn Touch · Home Assistant";
 "Turn off" = "כיבוי";
 "Turn off screen" = "כיבוי המסך";
 "Turn on" = "הפעלה";
@@ -572,6 +573,7 @@
 "Unknown Device" = "מכשיר לא ידוע";
 "Unknown error" = "שגיאה לא ידועה";
 "Upgrade to v%ld" = "שדרוג לגרסה %ld";
+"Use access token…" = "שימוש באסימון גישה…";
 "Use token" = "שימוש באסימון";
 "Version %@" = "גרסה %@";
 "Version 1.0.0" = "גרסה 1.0.0";
@@ -599,7 +601,6 @@
 "Your email" = "כתובת האימייל שלך";
 "Your favorite actions, one touch away" = "הפעולות האהובות עליכם, במרחק נגיעה";
 "Your home, scenes, and automations" = "הבית, הסצנות והאוטומציות שלך";
-"Your home. One button away." = "הבית שלך. במרחק כפתור אחד.";
 "Your remote has been paired" = "השלט שלך צורף";
 "Your remote has four buttons" = "בשלט שלכם יש ארבעה כפתורים";
 "application.dat is missing. It must be placed inside zip file with application" = "application.dat חסר. יש למקם אותו בתוך קובץ ZIP יחד עם application";

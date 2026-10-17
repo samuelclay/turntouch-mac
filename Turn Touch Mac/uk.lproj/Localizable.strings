@@ -24,6 +24,7 @@
 "About Turn Touch & updates" = "Про Turn Touch і оновлення";
 "About Turn Touch Remote" = "Про Turn Touch Remote";
 "About this app’s actions" = "Про дії цієї програми";
+"Action" = "Дія";
 "Action 1st" = "Дія 1";
 "Action 2nd" = "Дія 2";
 "Action 3rd" = "Дія 3";
@@ -31,6 +32,7 @@
 "Action Menu" = "Меню дій";
 "Action data (optional JSON)" = "Дані дії (необов’язковий JSON)";
 "Action data must be a JSON object, for example {\"brightness_pct\": 50}." = "Дані дії мають бути об’єктом JSON, наприклад {\"brightness_pct\": 50}.";
+"Action: %@" = "Дія: %@";
 "Activate scene" = "Активувати сцену";
 "Add Action" = "Додати дію";
 "Add a new remote…" = "Додати пульт…";
@@ -51,14 +53,15 @@
 "Ambient" = "Навколишнє середовище";
 "Apple Keynote" = "Apple Keynote";
 "Assign this action to the selected remote button" = "Призначити цю дію вибраній кнопці пульта";
+"Assigned to this button." = "Призначено цій кнопці.";
 "Authentication failed. Please reconnect to your Hue bridge." = "Помилка автентифікації. Підключіться до Hue bridge повторно.";
 "Authentication failed: %@" = "Помилка автентифікації: %@";
 "Authentication timed out" = "Час очікування автентифікації минув";
 "Automatic (device language)" = "Автоматично (мова пристрою)";
 "Automations" = "Автоматизації";
-"Available actions come from your Home Assistant." = "Доступні дії надходять із Home Assistant.";
 "BRIDGE ID" = "ID МОСТУ";
 "BUTTONS" = "КНОПКИ";
+"Back" = "Назад";
 "Battery Level: %d%%" = "Рівень заряду: %d%%";
 "Bluetooth in resetting state." = "Bluetooth перезапускається.";
 "Bluetooth in unknown state." = "Стан Bluetooth невідомий.";
@@ -80,16 +83,15 @@
 "Change app" = "Змінити застосунок";
 "Check for updates..." = "Перевірити наявність оновлень...";
 "Choose File" = "Вибрати файл";
-"Choose Home Assistant action…" = "Виберіть дію Home Assistant…";
 "Choose IFTTT Action" = "Вибрати дію IFTTT";
 "Choose a button, then add an action" = "Виберіть кнопку, а потім додайте дію";
-"Choose a discovered home or enter its address to get started." = "Для початку виберіть знайдений дім або введіть його адресу.";
 "Choose a gesture tab and a button, then Add Action. Mix apps or add several actions to one gesture." = "Виберіть вкладку жесту та кнопку, а потім натисніть «Додати дію». Поєднуйте програми або додавайте кілька дій до одного жесту.";
 "Choose a valid Home Assistant action." = "Виберіть дійсну дію Home Assistant.";
 "Choose an action for this app using Add Action below a remote button." = "Виберіть дію для цієї програми за допомогою кнопки «Додати дію» під кнопкою пульта.";
 "Choose an entity" = "Виберіть сутність";
 "Choose an entity first." = "Спершу виберіть сутність.";
 "Choose app" = "Вибрати застосунок";
+"Choose for button" = "Призначити кнопці";
 "Choose the target in the entity list, not in action data." = "Виберіть ціль у списку сутностей, а не в даних дії.";
 "Climate" = "Клімат";
 "Close" = "Закрити";
@@ -99,15 +101,14 @@
 "Configure your Turn Touch wooden remote and put lights, music, and everyday actions at your fingertips. Choose actions for single taps, double taps, and holds, or combine several actions on one button.\n\nPair a remote over Bluetooth, choose your apps and devices, and customize your buttons in Settings. Turn Touch supports compatible smart-home devices and services; available functions depend on the integration and device.\n\nA Turn Touch remote is sold separately. Some integrations require compatible hardware, local network access, or a third-party account.\n\nLearn more: https://turntouch.com" = "Налаштуйте дерев’яний пульт Turn Touch і керуйте освітленням, музикою та повсякденними діями одним дотиком. Призначайте дії на одинарне й подвійне натискання та утримання або поєднуйте кілька дій на одній кнопці.\n\nПідключіть пульт через Bluetooth, виберіть програми й пристрої та налаштуйте кнопки в меню «Параметри». Turn Touch підтримує сумісні пристрої й сервіси розумного дому; доступні функції залежать від інтеграції та пристрою.\n\nПульт Turn Touch продається окремо. Для деяких інтеграцій потрібне сумісне обладнання, доступ до локальної мережі або обліковий запис стороннього сервісу.\n\nДокладніше: https://turntouch.com";
 "Conncted to X Wemo devices" = "Підключено до X пристроїв Wemo";
 "Connect" = "Під’єднати";
-"Connect locally, find an entity, and choose what your Turn Touch remote should do." = "Підключіться локально, знайдіть сутність і виберіть дію для пульта Turn Touch.";
 "Connect to Home Assistant first." = "Спершу підключіться до Home Assistant.";
-"Connect to Home Assistant…" = "Підключитися до Home Assistant…";
 "Connect to Hue" = "Підключитися до Hue";
 "Connect to Hue..." = "Підключитися до Hue...";
 "Connect to IFTTT" = "Підключитися до IFTTT";
 "Connect to Nanoleaf" = "Підключитися до Nanoleaf";
 "Connect to Nest" = "Підключитися до Nest";
 "Connect to browse your home" = "Підключіться, щоб переглянути свій дім";
+"Connect using the Home Assistant menu." = "Підключіться через меню Home Assistant.";
 "Connected" = "Підключено";
 "Connected Devices" = "Підключені пристрої";
 "Connected Govee devices: %ld" = "Підключені пристрої Govee: %ld";
@@ -119,7 +120,6 @@
 "Connected to X Kasa devices" = "Підключено пристроїв Kasa: X";
 "Connected wireless speakers" = "Підключені бездротові колонки";
 "Connected · %d%% battery" = "Підключено · заряд %d%%";
-"Connected · %lu entities · %@" = "Підключено · сутностей: %lu · %@";
 "Connecting" = "Підключення";
 "Connecting to %@..." = "Підключення до %@...";
 "Connecting to Govee..." = "Підключення до Govee...";
@@ -144,6 +144,7 @@
 "Connection failed: %@" = "Не вдалося підключитися: %@";
 "Connection timed out. Tap to retry." = "Час очікування підключення минув. Торкніться, щоб повторити.";
 "Connection to Hue bridge lost" = "З’єднання з Hue bridge втрачено";
+"Connection…" = "Підключення…";
 "Contact support" = "Зв’язатися зі службою підтримки";
 "Continue" = "Продовжити";
 "Control Music" = "Керувати музикою";
@@ -196,6 +197,7 @@
 "Enter your Govee API key (Govee Home > Settings > API)" = "Введіть ключ API Govee (Govee Home > Settings > API)";
 "Enter your Govee API key (from Govee Home App > Settings > My Profile > Apply for API Key)" = "Введіть ключ API Govee (у застосунку Govee Home: Settings > My Profile > Apply for API Key)";
 "Enter your TP-Link/Kasa account credentials for newer devices that use KLAP authentication." = "Введіть дані облікового запису TP-Link/Kasa для новіших пристроїв, що використовують автентифікацію KLAP.";
+"Entities: %lu" = "Сутності: %lu";
 "Error (%li): %@" = "Помилка (%li): %@";
 "Error getting %@, HTTP status code %li" = "Помилка отримання %@, код стану HTTP %li";
 "Error on BLE Notification\n Message: %@" = "Помилка сповіщення BLE\n Повідомлення: %@";
@@ -218,6 +220,7 @@
 "Fast forward" = "Перемотати вперед";
 "Fetching Govee devices..." = "Завантаження пристроїв Govee...";
 "Fetching devices from Govee..." = "Отримання пристроїв із Govee...";
+"Filter" = "Фільтр";
 "Find your Nanoleaf" = "Знайти Nanoleaf";
 "Find your Philips Hue" = "Знайдіть Philips Hue";
 "Finishing sign-in…" = "Завершення входу…";
@@ -253,8 +256,11 @@
 "Hold actions" = "Дії під час утримання";
 "Hold the power button for 5-7 seconds until the LEDs start flashing" = "Утримуйте кнопку живлення 5–7 секунд, доки світлодіоди не почнуть блимати";
 "Home Assistant" = "Home Assistant";
-"Home Assistant accepted the action. Check the device, then save when ready." = "Home Assistant прийняв дію. Перевірте пристрій, а потім збережіть, коли будете готові.";
+"Home Assistant accepted the action." = "Home Assistant прийняв дію.";
 "Home Assistant action" = "Дія Home Assistant";
+"Home Assistant address" = "Адреса Home Assistant";
+"Home Assistant entities" = "Сутності Home Assistant";
+"Home Assistant menu" = "Меню Home Assistant";
 "Home Assistant returned HTTP %ld. Check the action and its required fields." = "Home Assistant повернув HTTP %ld. Перевірте дію та обов’язкові поля.";
 "Home Assistant returned an invalid sign-in response." = "Home Assistant повернув недійсну відповідь під час входу.";
 "How it works" = "Як це працює";
@@ -354,7 +360,6 @@
 "ON" = "УВІМК.";
 "Old DFU only supports Application upload" = "Стара версія DFU підтримує лише завантаження програми";
 "One-time alarm" = "Одноразовий будильник";
-"Open this browser from a remote button in Turn Touch to save an assignment." = "Відкрийте цей браузер кнопкою пульта Turn Touch, щоб зберегти призначення.";
 "Open token settings" = "Відкрити налаштування токена";
 "Operation Failed" = "Не вдалося виконати операцію";
 "Operation Not Supported" = "Операція не підтримується";
@@ -434,8 +439,6 @@
 "Sat" = "Сб";
 "Saturation" = "Насиченість";
 "Save" = "Зберегти";
-"Save to button" = "Зберегти для кнопки";
-"Saved %@ · %@ to your remote button." = "Збережено %@ · %@ на кнопку пульта.";
 "Scan for devices" = "Шукати пристрої";
 "Scanning for remotes..." = "Пошук пультів…";
 "Scanning local network..." = "Сканування локальної мережі...";
@@ -447,12 +450,12 @@
 "Scripts, files, and websites" = "Скрипти, файли й вебсайти";
 "Scroll down" = "Прокрутити вниз";
 "Scroll up" = "Прокрутити вгору";
+"Search Home Assistant" = "Пошук у Home Assistant";
 "Search entities, devices, rooms, or entity IDs" = "Пошук сутностей, пристроїв, кімнат або ID сутностей";
 "Search for Kasa devices..." = "Пошук пристроїв Kasa...";
 "Search for New Devices..." = "Пошук нових пристроїв...";
 "Search for Sonos devices..." = "Пошук пристроїв Sonos...";
 "Search for Wemo devices..." = "Пошук пристроїв WeMo...";
-"Search lights, scenes, scripts, and more.\nNo Home Assistant plugin needed." = "Шукайте світильники, сцени, скрипти тощо.\nПлагін Home Assistant не потрібен.";
 "Searching for Hue..." = "Пошук Hue...";
 "Searching for Kasa devices..." = "Пошук пристроїв Kasa...";
 "Searching for Kasa..." = "Пошук Kasa...";
@@ -523,7 +526,6 @@
 "Temperature" = "Температура";
 "Temperature set to" = "Встановлена температура";
 "Test action" = "Перевірити дію";
-"Test runs the action now. Save assigns it to the selected remote button." = "Тест запускає дію зараз. Збереження призначає її вибраній кнопці пульта.";
 "Text Cell" = "Текстова комірка";
 "Thank you! What would you like to say?" = "Дякуємо! Що хочете сказати?";
 "That worked perfectly" = "Усе спрацювало чудово";
@@ -563,7 +565,6 @@
 "Turn Touch uses files to play music." = "Turn Touch використовує файли для відтворення музики.";
 "Turn Touch uses music for the alarm clock." = "Turn Touch використовує музику для будильника.";
 "Turn Touch uses the local network to find Home Assistant, Philips Hue, Nanoleaf, and other smart home devices." = "Turn Touch використовує локальну мережу для пошуку Home Assistant, Philips Hue, Nanoleaf та інших пристроїв розумного дому.";
-"Turn Touch · Home Assistant" = "Turn Touch · Home Assistant";
 "Turn off" = "Вимкнути";
 "Turn off screen" = "Вимкнути екран";
 "Turn on" = "Увімкнути";
@@ -572,6 +573,7 @@
 "Unknown Device" = "Невідомий пристрій";
 "Unknown error" = "Невідома помилка";
 "Upgrade to v%ld" = "Оновити до v%ld";
+"Use access token…" = "Використати токен доступу…";
 "Use token" = "Використати токен";
 "Version %@" = "Версія %@";
 "Version 1.0.0" = "Версія 1.0.0";
@@ -599,7 +601,6 @@
 "Your email" = "Ваша електронна адреса";
 "Your favorite actions, one touch away" = "Улюблені дії — на відстані одного дотику";
 "Your home, scenes, and automations" = "Ваш дім, сцени й автоматизації";
-"Your home. One button away." = "Ваш дім — на відстані однієї кнопки.";
 "Your remote has been paired" = "Пульт сполучено";
 "Your remote has four buttons" = "На пульті чотири кнопки";
 "application.dat is missing. It must be placed inside zip file with application" = "Файл application.dat відсутній. Його потрібно помістити в ZIP-файл разом із application";

@@ -24,6 +24,7 @@
 "About Turn Touch & updates" = "Turn Touch hakkında ve güncellemeler";
 "About Turn Touch Remote" = "Turn Touch Remote Hakkında";
 "About this app’s actions" = "Bu uygulamanın eylemleri hakkında";
+"Action" = "Eylem";
 "Action 1st" = "1. Eylem";
 "Action 2nd" = "2. Eylem";
 "Action 3rd" = "3. Eylem";
@@ -31,6 +32,7 @@
 "Action Menu" = "Eylem Menüsü";
 "Action data (optional JSON)" = "İşlem verileri (isteğe bağlı JSON)";
 "Action data must be a JSON object, for example {\"brightness_pct\": 50}." = "İşlem verileri bir JSON nesnesi olmalıdır; örneğin {\"brightness_pct\": 50}.";
+"Action: %@" = "Eylem: %@";
 "Activate scene" = "Sahneyi etkinleştir";
 "Add Action" = "Eylem Ekle";
 "Add a new remote…" = "Yeni uzaktan kumanda ekle…";
@@ -51,14 +53,15 @@
 "Ambient" = "Ortam";
 "Apple Keynote" = "Apple Keynote";
 "Assign this action to the selected remote button" = "Bu işlemi seçili kumanda düğmesine ata";
+"Assigned to this button." = "Bu düğmeye atandı.";
 "Authentication failed. Please reconnect to your Hue bridge." = "Kimlik doğrulama başarısız. Lütfen Hue köprünüze yeniden bağlanın.";
 "Authentication failed: %@" = "Kimlik doğrulama başarısız: %@";
 "Authentication timed out" = "Kimlik doğrulama zaman aşımına uğradı";
 "Automatic (device language)" = "Otomatik (cihaz dili)";
 "Automations" = "Otomasyonlar";
-"Available actions come from your Home Assistant." = "Kullanılabilir işlemler Home Assistant'ınızdan alınır.";
 "BRIDGE ID" = "KÖPRÜ KİMLİĞİ";
 "BUTTONS" = "DÜĞMELER";
+"Back" = "Geri";
 "Battery Level: %d%%" = "Pil düzeyi: %d%%";
 "Bluetooth in resetting state." = "Bluetooth sıfırlanıyor.";
 "Bluetooth in unknown state." = "Bluetooth'un durumu bilinmiyor.";
@@ -80,16 +83,15 @@
 "Change app" = "Uygulamayı değiştir";
 "Check for updates..." = "Güncellemeleri denetle...";
 "Choose File" = "Dosya Seç";
-"Choose Home Assistant action…" = "Home Assistant işlemi seç…";
 "Choose IFTTT Action" = "IFTTT Eylemi Seç";
 "Choose a button, then add an action" = "Bir düğme seçin, ardından eylem ekleyin";
-"Choose a discovered home or enter its address to get started." = "Başlamak için bulunan bir evi seçin veya adresini girin.";
 "Choose a gesture tab and a button, then Add Action. Mix apps or add several actions to one gesture." = "Bir hareket sekmesi ve düğme seçin, ardından Eylem Ekle'ye dokunun. Uygulamaları karıştırın veya tek bir harekete birden fazla eylem ekleyin.";
 "Choose a valid Home Assistant action." = "Geçerli bir Home Assistant işlemi seçin.";
 "Choose an action for this app using Add Action below a remote button." = "Uzaktan kumanda düğmesinin altındaki Eylem Ekle'yi kullanarak bu uygulama için bir eylem seçin.";
 "Choose an entity" = "Bir varlık seçin";
 "Choose an entity first." = "Önce bir varlık seçin.";
 "Choose app" = "Uygulama seç";
+"Choose for button" = "Düğmeye ata";
 "Choose the target in the entity list, not in action data." = "Hedefi işlem verilerinde değil, varlık listesinden seçin.";
 "Climate" = "İklim";
 "Close" = "Kapat";
@@ -99,15 +101,14 @@
 "Configure your Turn Touch wooden remote and put lights, music, and everyday actions at your fingertips. Choose actions for single taps, double taps, and holds, or combine several actions on one button.\n\nPair a remote over Bluetooth, choose your apps and devices, and customize your buttons in Settings. Turn Touch supports compatible smart-home devices and services; available functions depend on the integration and device.\n\nA Turn Touch remote is sold separately. Some integrations require compatible hardware, local network access, or a third-party account.\n\nLearn more: https://turntouch.com" = "Turn Touch ahşap kumandanızı yapılandırın; ışıkları, müziği ve günlük işlemleri parmaklarınızın ucuna getirin. Tek dokunuş, çift dokunuş ve basılı tutma için işlemler seçin veya tek düğmede birden fazla işlemi birleştirin.\n\nKumandayı Bluetooth üzerinden eşleştirin, uygulamalarınızı ve cihazlarınızı seçin, ardından düğmelerinizi Ayarlar'dan özelleştirin. Turn Touch uyumlu akıllı ev cihazlarını ve hizmetlerini destekler; kullanılabilir işlevler entegrasyona ve cihaza bağlıdır.\n\nTurn Touch kumandası ayrıca satılır. Bazı entegrasyonlar uyumlu donanım, yerel ağa erişim veya üçüncü taraf hesabı gerektirir.\n\nDaha fazla bilgi: https://turntouch.com";
 "Conncted to X Wemo devices" = "X WeMo cihazına bağlandı";
 "Connect" = "Bağlan";
-"Connect locally, find an entity, and choose what your Turn Touch remote should do." = "Yerel olarak bağlanın, bir varlık bulun ve Turn Touch kumandanızın ne yapacağını seçin.";
 "Connect to Home Assistant first." = "Önce Home Assistant'a bağlanın.";
-"Connect to Home Assistant…" = "Home Assistant'a bağlan…";
 "Connect to Hue" = "Hue'ya bağlan";
 "Connect to Hue..." = "Hue'ya bağlan...";
 "Connect to IFTTT" = "IFTTT'ye bağlan";
 "Connect to Nanoleaf" = "Nanoleaf'e Bağlan";
 "Connect to Nest" = "Nest'e bağlan";
 "Connect to browse your home" = "Evinize göz atmak için bağlanın";
+"Connect using the Home Assistant menu." = "Home Assistant menüsünden bağlanın.";
 "Connected" = "Bağlandı";
 "Connected Devices" = "Bağlı Cihazlar";
 "Connected Govee devices: %ld" = "Bağlı Govee cihazları: %ld";
@@ -119,7 +120,6 @@
 "Connected to X Kasa devices" = "X Kasa cihazına bağlandı";
 "Connected wireless speakers" = "Bağlı kablosuz hoparlörler";
 "Connected · %d%% battery" = "Bağlı · %d%% pil";
-"Connected · %lu entities · %@" = "Bağlandı · %lu varlık · %@";
 "Connecting" = "Bağlanıyor";
 "Connecting to %@..." = "%@'e bağlanılıyor...";
 "Connecting to Govee..." = "Govee'ye bağlanıyor...";
@@ -144,6 +144,7 @@
 "Connection failed: %@" = "Bağlantı başarısız: %@";
 "Connection timed out. Tap to retry." = "Bağlantı zaman aşımına uğradı. Yeniden denemek için dokunun.";
 "Connection to Hue bridge lost" = "Hue köprüsüyle bağlantı kesildi";
+"Connection…" = "Bağlantı…";
 "Contact support" = "Destek ekibiyle iletişime geç";
 "Continue" = "Devam";
 "Control Music" = "Music'i denetle";
@@ -196,6 +197,7 @@
 "Enter your Govee API key (Govee Home > Settings > API)" = "Govee API anahtarınızı girin (Govee Home > Settings > API)";
 "Enter your Govee API key (from Govee Home App > Settings > My Profile > Apply for API Key)" = "Govee API anahtarınızı girin (Govee Home Uygulaması > Settings > My Profile > Apply for API Key bölümünden)";
 "Enter your TP-Link/Kasa account credentials for newer devices that use KLAP authentication." = "KLAP kimlik doğrulaması kullanan yeni cihazlar için TP-Link/Kasa hesabı bilgilerinizi girin.";
+"Entities: %lu" = "Varlıklar: %lu";
 "Error (%li): %@" = "Hata (%li): %@";
 "Error getting %@, HTTP status code %li" = "%@ alınırken hata, HTTP durum kodu %li";
 "Error on BLE Notification\n Message: %@" = "BLE bildirimi hatası\n Mesaj: %@";
@@ -218,6 +220,7 @@
 "Fast forward" = "İleri sar";
 "Fetching Govee devices..." = "Govee cihazları alınıyor...";
 "Fetching devices from Govee..." = "Govee cihazları alınıyor...";
+"Filter" = "Filtre";
 "Find your Nanoleaf" = "Nanoleaf'inizi bulun";
 "Find your Philips Hue" = "Philips Hue'nuzu bulun";
 "Finishing sign-in…" = "Oturum açma tamamlanıyor…";
@@ -253,8 +256,11 @@
 "Hold actions" = "Basılı tutma eylemleri";
 "Hold the power button for 5-7 seconds until the LEDs start flashing" = "LED'ler yanıp sönmeye başlayana kadar güç düğmesini 5-7 saniye basılı tutun";
 "Home Assistant" = "Home Assistant";
-"Home Assistant accepted the action. Check the device, then save when ready." = "Home Assistant işlemi kabul etti. Cihazı kontrol edin, hazır olduğunuzda kaydedin.";
+"Home Assistant accepted the action." = "Home Assistant eylemi kabul etti.";
 "Home Assistant action" = "Home Assistant işlemi";
+"Home Assistant address" = "Home Assistant adresi";
+"Home Assistant entities" = "Home Assistant varlıkları";
+"Home Assistant menu" = "Home Assistant menüsü";
 "Home Assistant returned HTTP %ld. Check the action and its required fields." = "Home Assistant HTTP %ld yanıtını verdi. İşlemi ve gerekli alanları kontrol edin.";
 "Home Assistant returned an invalid sign-in response." = "Home Assistant geçersiz bir oturum açma yanıtı verdi.";
 "How it works" = "Nasıl çalışır?";
@@ -354,7 +360,6 @@
 "ON" = "AÇIK";
 "Old DFU only supports Application upload" = "Eski DFU yalnızca uygulama yüklemeyi destekler";
 "One-time alarm" = "Tek seferlik alarm";
-"Open this browser from a remote button in Turn Touch to save an assignment." = "Bir atamayı kaydetmek için Turn Touch'ta bir kumanda düğmesinden bu tarayıcıyı açın.";
 "Open token settings" = "Belirteç ayarlarını aç";
 "Operation Failed" = "İşlem Başarısız";
 "Operation Not Supported" = "İşlem Desteklenmiyor";
@@ -434,8 +439,6 @@
 "Sat" = "Cmt";
 "Saturation" = "Doygunluk";
 "Save" = "Kaydet";
-"Save to button" = "Düğmeye kaydet";
-"Saved %@ · %@ to your remote button." = "%@ · %@ kumanda düğmenize kaydedildi.";
 "Scan for devices" = "Cihazları tara";
 "Scanning for remotes..." = "Uzaktan kumandalar taranıyor...";
 "Scanning local network..." = "Tarama yapılıyor...";
@@ -447,12 +450,12 @@
 "Scripts, files, and websites" = "Betikler, dosyalar ve web siteleri";
 "Scroll down" = "Aşağı kaydır";
 "Scroll up" = "Yukarı kaydır";
+"Search Home Assistant" = "Home Assistant içinde ara";
 "Search entities, devices, rooms, or entity IDs" = "Varlıklarda, cihazlarda, odalarda veya varlık kimliklerinde ara";
 "Search for Kasa devices..." = "Kasa cihazları aranıyor...";
 "Search for New Devices..." = "Yeni cihazları ara...";
 "Search for Sonos devices..." = "Sonos cihazları aranıyor...";
 "Search for Wemo devices..." = "WeMo cihazları aranıyor...";
-"Search lights, scenes, scripts, and more.\nNo Home Assistant plugin needed." = "Işıkları, sahneleri, komut dosyalarını ve daha fazlasını arayın.\nHome Assistant eklentisi gerekmez.";
 "Searching for Hue..." = "Hue aranıyor...";
 "Searching for Kasa devices..." = "Kasa cihazları aranıyor...";
 "Searching for Kasa..." = "Kasa aranıyor...";
@@ -523,7 +526,6 @@
 "Temperature" = "Sıcaklık";
 "Temperature set to" = "Sıcaklık şu değere ayarlandı";
 "Test action" = "İşlemi test et";
-"Test runs the action now. Save assigns it to the selected remote button." = "Test, işlemi şimdi çalıştırır. Kaydet, işlemi seçili kumanda düğmesine atar.";
 "Text Cell" = "Metin Hücresi";
 "Thank you! What would you like to say?" = "Teşekkürler! Ne söylemek istersiniz?";
 "That worked perfectly" = "Mükemmel çalıştı";
@@ -563,7 +565,6 @@
 "Turn Touch uses files to play music." = "Turn Touch, müzik çalmak için dosyaları kullanır.";
 "Turn Touch uses music for the alarm clock." = "Turn Touch, alarm saatinde müzik kullanır.";
 "Turn Touch uses the local network to find Home Assistant, Philips Hue, Nanoleaf, and other smart home devices." = "Turn Touch; Home Assistant, Philips Hue, Nanoleaf ve diğer akıllı ev aygıtlarını bulmak için yerel ağı kullanır.";
-"Turn Touch · Home Assistant" = "Turn Touch · Home Assistant";
 "Turn off" = "Kapat";
 "Turn off screen" = "Ekranı kapat";
 "Turn on" = "Aç";
@@ -572,6 +573,7 @@
 "Unknown Device" = "Bilinmeyen aygıt";
 "Unknown error" = "Bilinmeyen hata";
 "Upgrade to v%ld" = "v%ld sürümüne yükselt";
+"Use access token…" = "Erişim belirteci kullan…";
 "Use token" = "Belirteci kullan";
 "Version %@" = "Sürüm %@";
 "Version 1.0.0" = "Sürüm 1.0.0";
@@ -599,7 +601,6 @@
 "Your email" = "E-posta adresiniz";
 "Your favorite actions, one touch away" = "Favori işlemleriniz bir dokunuş uzağınızda";
 "Your home, scenes, and automations" = "Eviniz, sahneler ve otomasyonlar";
-"Your home. One button away." = "Eviniz tek tuş uzağınızda.";
 "Your remote has been paired" = "Uzaktan kumandanız eşleştirildi";
 "Your remote has four buttons" = "Uzaktan kumandanızda dört düğme var";
 "application.dat is missing. It must be placed inside zip file with application" = "application.dat eksik. application ile birlikte zip dosyasının içine yerleştirilmelidir";

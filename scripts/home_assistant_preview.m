@@ -1,12 +1,17 @@
 #import <Cocoa/Cocoa.h>
-#import "TTHomeAssistantWindowController.h"
+#import "TTHomeAssistantViewController.h"
 @interface PreviewDelegate : NSObject <NSApplicationDelegate>
-@property TTHomeAssistantWindowController *browser;
+@property TTHomeAssistantViewController *browser;
+@property NSWindow *window;
 @end
 @implementation PreviewDelegate
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
-    self.browser = [[TTHomeAssistantWindowController alloc] init];
-    [self.browser showWithBinding:nil];
+    self.browser = [[TTHomeAssistantViewController alloc] init];
+    self.window = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, 380, 540) styleMask:NSWindowStyleMaskTitled | NSWindowStyleMaskClosable backing:NSBackingStoreBuffered defer:NO];
+    self.window.releasedWhenClosed = NO;
+    self.window.contentViewController = self.browser;
+    [self.browser loadBinding:nil];
+    [self.window center]; [self.window makeKeyAndOrderFront:nil];
 }
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)app { return YES; }
 @end

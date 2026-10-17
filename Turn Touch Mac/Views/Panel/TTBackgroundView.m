@@ -9,6 +9,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import "TTPanelController.h"
 #import "TTBackgroundView.h"
+#import "TTModeHomeAssistantOptions.h"
+#import "TTModeHomeAssistant.h"
 
 #pragma mark -
 
@@ -20,11 +22,13 @@
 @property (nonatomic, strong) NSLayoutConstraint *deviceTitlesConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *addActionButtonConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *scrollViewHeightConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *scrollViewMaxHeightConstraint;
 @property (nonatomic, strong) NSStackView *scrollStackView;
 @property (nonatomic, strong) NSScrollView *scrollView;
 @property (nonatomic) TTModalPairing modalPairing;
 @property (nonatomic) TTModalSupport modalSupport;
 @property (nonatomic) BOOL isUpdatingScrollLayout;
+@property (nonatomic) TTModeHomeAssistantOptions *homeAssistantOptions;
 @property (nonatomic) BOOL isResizingPanel;
 
 @end
@@ -96,12 +100,16 @@
         [self switchPanelModalDevices];
     } else if (panelModal == PANEL_MODAL_SETTINGS) {
         [self switchPanelModalSettings];
+    } else if (panelModal == PANEL_MODAL_HOME_ASSISTANT) {
+        [self switchPanelModalHomeAssistant];
     } else if (panelModal == PANEL_MODAL_SUPPORT) {
         [self switchPanelModalSupport];
     }
 }
 
 - (void)cleanup {
+    [self.homeAssistantOptions.view removeFromSuperview];
+    self.homeAssistantOptions = nil;
     [self cleanupPanelModalPairing];
     [self cleanupPanelModalFTUX];
 
@@ -184,6 +192,8 @@
     if (fabs(heightDelta) > 0.5f) {
         frame.origin.y -= heightDelta;
         frame.size.height = preferredHeight;
+        NSRect visible = self.appDelegate.panelController.screenForPanel.visibleFrame;
+        frame.origin.y = MIN(MAX(frame.origin.y, NSMinY(visible)), NSMaxY(visible) - NSHeight(frame));
         [window setFrame:frame display:YES animate:NO];
     }
 
@@ -193,8 +203,12 @@
 - (void)updateScrollViewLayout {
     if (!self.scrollViewHeightConstraint) return;
 
-    // The scroll view height now tracks its content via Auto Layout (capped by
-    // a <= constraint), so all that's left is to resize the window to fit.
+    if (self.panelModal == PANEL_MODAL_APP) {
+        CGFloat fixed = ARROW_HEIGHT + TITLE_BAR_HEIGHT + MODE_TABS_HEIGHT + MODE_TITLE_HEIGHT + FOOTER_HEIGHT;
+        fixed += NSHeight(self.deviceTitlesView.frame) + NSHeight(self.modeMenu.frame) + NSHeight(self.addActionButtonView.frame);
+        CGFloat available = NSHeight(self.appDelegate.panelController.screenForPanel.visibleFrame) - fixed - 24;
+        self.scrollViewMaxHeightConstraint.constant = MAX(120, available);
+    }
     [self resizePanelToPreferredHeight];
 }
 
@@ -310,12 +324,8 @@
     NSRect screenRect = self.appDelegate.panelController.screenForPanel.visibleFrame;
     CGFloat fixedHeight = ARROW_HEIGHT + TITLE_BAR_HEIGHT + MODE_TABS_HEIGHT + MODE_TITLE_HEIGHT + FOOTER_HEIGHT;
     CGFloat scrollMaxHeight = NSHeight(screenRect) - fixedHeight - 100;
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.scrollView
-                                                     attribute:NSLayoutAttributeHeight
-                                                     relatedBy:NSLayoutRelationLessThanOrEqual
-                                                        toItem:nil
-                                                     attribute:NSLayoutAttributeNotAnAttribute
-                                                    multiplier:1.f constant:scrollMaxHeight]];
+    self.scrollViewMaxHeightConstraint = [self.scrollView.heightAnchor constraintLessThanOrEqualToConstant:scrollMaxHeight];
+    self.scrollViewMaxHeightConstraint.active = YES;
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.scrollView
                                                      attribute:NSLayoutAttributeWidth
                                                      relatedBy:NSLayoutRelationEqual
@@ -636,6 +646,40 @@
     [self.scrollView reflectScrolledClipView:[self.scrollView contentView]];
     [NSAnimationContext endGrouping];
 }
+
+#pragma mark - Home Assistant settings
+
+- (void)switchPanelModalHomeAssistant {
+    [self cleanup];
+    self.panelModal = PANEL_MODAL_HOME_ASSISTANT;
+    self.homeAssistantOptions = [[TTModeHomeAssistantOptions alloc] init];
+    self.homeAssistantOptions.mode = [[TTModeHomeAssistant alloc] init];
+    NSButton *back = [NSButton buttonWithTitle:TTText(@"Back") target:self action:@selector(closeHomeAssistant:)];
+    back.bezelStyle = NSBezelStyleInline;
+    NSTextField *title = [NSTextField labelWithString:TTText(@"Home Assistant")];
+    title.font = [NSFont systemFontOfSize:15 weight:NSFontWeightSemibold];
+    NSStackView *header = [NSStackView stackViewWithViews:@[back, title]];
+    header.orientation = NSUserInterfaceLayoutOrientationHorizontal;
+    header.spacing = 16;
+    header.edgeInsets = NSEdgeInsetsMake(8, 12, 8, 12);
+    NSScrollView *scroll = [[NSScrollView alloc] init];
+    scroll.translatesAutoresizingMaskIntoConstraints = NO;
+    scroll.hasVerticalScroller = YES;
+    scroll.scrollerStyle = NSScrollerStyleOverlay;
+    scroll.drawsBackground = NO;
+    scroll.documentView = self.homeAssistantOptions.view;
+    [self setViews:@[self.arrowView, self.titleBarView, header, scroll, self.footerView] inGravity:NSStackViewGravityTop];
+    CGFloat available = self.window.screen.visibleFrame.size.height ?: 800;
+    [NSLayoutConstraint activateConstraints:@[
+        [header.widthAnchor constraintEqualToAnchor:self.widthAnchor],
+        [header.heightAnchor constraintEqualToConstant:42],
+        [scroll.widthAnchor constraintEqualToAnchor:self.widthAnchor],
+        [scroll.heightAnchor constraintEqualToConstant:MIN(540, available - 140)],
+        [self.homeAssistantOptions.view.widthAnchor constraintEqualToAnchor:scroll.contentView.widthAnchor]
+    ]];
+    [self addArrowAndTitleConstraints];
+}
+- (void)closeHomeAssistant:(id)sender { [self switchPanelModal:PANEL_MODAL_APP]; }
 
 #pragma mark - Pairing Modal
 

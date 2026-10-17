@@ -24,6 +24,7 @@
 "About Turn Touch & updates" = "关于 Turn Touch 和更新";
 "About Turn Touch Remote" = "关于 Turn Touch Remote";
 "About this app’s actions" = "了解此 App 的操作";
+"Action" = "操作";
 "Action 1st" = "操作 1";
 "Action 2nd" = "操作 2";
 "Action 3rd" = "操作 3";
@@ -31,6 +32,7 @@
 "Action Menu" = "操作菜单";
 "Action data (optional JSON)" = "操作数据（可选 JSON）";
 "Action data must be a JSON object, for example {\"brightness_pct\": 50}." = "操作数据必须是 JSON 对象，例如 {\"brightness_pct\": 50}。";
+"Action: %@" = "操作：%@";
 "Activate scene" = "激活场景";
 "Add Action" = "添加操作";
 "Add a new remote…" = "添加新遥控器…";
@@ -51,14 +53,15 @@
 "Ambient" = "环境";
 "Apple Keynote" = "Apple Keynote";
 "Assign this action to the selected remote button" = "将此操作分配给选中的遥控器按钮";
+"Assigned to this button." = "已分配给此按钮。";
 "Authentication failed. Please reconnect to your Hue bridge." = "身份验证失败。请重新连接 Hue bridge。";
 "Authentication failed: %@" = "身份验证失败：%@";
 "Authentication timed out" = "认证超时";
 "Automatic (device language)" = "自动（设备语言）";
 "Automations" = "自动化";
-"Available actions come from your Home Assistant." = "可用操作来自你的 Home Assistant。";
 "BRIDGE ID" = "桥接器 ID";
 "BUTTONS" = "按钮";
+"Back" = "返回";
 "Battery Level: %d%%" = "电量：%d%%";
 "Bluetooth in resetting state." = "蓝牙正在重置。";
 "Bluetooth in unknown state." = "蓝牙状态未知。";
@@ -80,16 +83,15 @@
 "Change app" = "更改应用";
 "Check for updates..." = "检查更新…";
 "Choose File" = "选择文件";
-"Choose Home Assistant action…" = "选择 Home Assistant 操作…";
 "Choose IFTTT Action" = "选择 IFTTT 操作";
 "Choose a button, then add an action" = "选择一个按钮，然后添加操作";
-"Choose a discovered home or enter its address to get started." = "选择发现的家庭，或输入其地址以开始。";
 "Choose a gesture tab and a button, then Add Action. Mix apps or add several actions to one gesture." = "选择一个手势标签和按钮，然后点“添加操作”。可混用不同 App，也可为同一手势添加多个操作。";
 "Choose a valid Home Assistant action." = "请选择有效的 Home Assistant 操作。";
 "Choose an action for this app using Add Action below a remote button." = "在遥控器按钮下方点击“添加操作”，为此 App 选择一个操作。";
 "Choose an entity" = "选择实体";
 "Choose an entity first." = "请先选择实体。";
 "Choose app" = "选择应用";
+"Choose for button" = "分配给按钮";
 "Choose the target in the entity list, not in action data." = "请在实体列表中选择目标，而非在操作数据中选择。";
 "Climate" = "气候";
 "Close" = "关闭";
@@ -99,15 +101,14 @@
 "Configure your Turn Touch wooden remote and put lights, music, and everyday actions at your fingertips. Choose actions for single taps, double taps, and holds, or combine several actions on one button.\n\nPair a remote over Bluetooth, choose your apps and devices, and customize your buttons in Settings. Turn Touch supports compatible smart-home devices and services; available functions depend on the integration and device.\n\nA Turn Touch remote is sold separately. Some integrations require compatible hardware, local network access, or a third-party account.\n\nLearn more: https://turntouch.com" = "配置您的 Turn Touch 木质遥控器，让灯光、音乐和日常操作触手可及。为单击、双击和长按设置操作，也可以在一个按键上组合多项操作。\n\n通过蓝牙配对遥控器，选择应用和设备，并在“设置”中自定义按键。Turn Touch 支持兼容的智能家居设备和服务；可用功能取决于集成服务和设备。\n\nTurn Touch 遥控器需另行购买。部分集成需要兼容硬件、本地网络访问权限或第三方账户。\n\n了解更多：https://turntouch.com";
 "Conncted to X Wemo devices" = "已连接到 X 台 Wemo 设备";
 "Connect" = "连接";
-"Connect locally, find an entity, and choose what your Turn Touch remote should do." = "在本地连接，查找实体，并选择 Turn Touch 遥控器要执行的操作。";
 "Connect to Home Assistant first." = "请先连接到 Home Assistant。";
-"Connect to Home Assistant…" = "连接到 Home Assistant…";
 "Connect to Hue" = "连接到 Hue";
 "Connect to Hue..." = "连接到 Hue…";
 "Connect to IFTTT" = "连接到 IFTTT";
 "Connect to Nanoleaf" = "连接到 Nanoleaf";
 "Connect to Nest" = "连接到 Nest";
 "Connect to browse your home" = "连接以浏览你的家居";
+"Connect using the Home Assistant menu." = "通过 Home Assistant 菜单连接。";
 "Connected" = "已连接";
 "Connected Devices" = "已连接的设备";
 "Connected Govee devices: %ld" = "已连接的 Govee 设备：%ld";
@@ -119,7 +120,6 @@
 "Connected to X Kasa devices" = "已连接到 X 台 Kasa 设备";
 "Connected wireless speakers" = "已连接的无线音箱";
 "Connected · %d%% battery" = "已连接 · 电量 %d%%";
-"Connected · %lu entities · %@" = "已连接 · %lu 个实体 · %@";
 "Connecting" = "正在连接";
 "Connecting to %@..." = "正在连接到 %@...";
 "Connecting to Govee..." = "正在连接 Govee…";
@@ -144,6 +144,7 @@
 "Connection failed: %@" = "连接失败：%@";
 "Connection timed out. Tap to retry." = "连接超时。点按重试。";
 "Connection to Hue bridge lost" = "与 Hue bridge 的连接已断开";
+"Connection…" = "连接…";
 "Contact support" = "联系支持";
 "Continue" = "继续";
 "Control Music" = "控制音乐";
@@ -196,6 +197,7 @@
 "Enter your Govee API key (Govee Home > Settings > API)" = "输入你的 Govee API 密钥（Govee Home > Settings > API）";
 "Enter your Govee API key (from Govee Home App > Settings > My Profile > Apply for API Key)" = "输入 Govee API 密钥（在 Govee Home App > Settings > My Profile > Apply for API Key 中获取）";
 "Enter your TP-Link/Kasa account credentials for newer devices that use KLAP authentication." = "对于使用 KLAP 身份验证的新设备，请输入你的 TP-Link/Kasa 账户凭据。";
+"Entities: %lu" = "实体：%lu";
 "Error (%li): %@" = "错误 (%li)：%@";
 "Error getting %@, HTTP status code %li" = "获取 %@ 时出错，HTTP 状态码为 %li";
 "Error on BLE Notification\n Message: %@" = "BLE 通知出错\n 消息：%@";
@@ -218,6 +220,7 @@
 "Fast forward" = "快进";
 "Fetching Govee devices..." = "正在获取 Govee 设备…";
 "Fetching devices from Govee..." = "正在从 Govee 获取设备…";
+"Filter" = "筛选";
 "Find your Nanoleaf" = "查找 Nanoleaf";
 "Find your Philips Hue" = "查找你的 Philips Hue";
 "Finishing sign-in…" = "正在完成登录…";
@@ -253,8 +256,11 @@
 "Hold actions" = "按住操作";
 "Hold the power button for 5-7 seconds until the LEDs start flashing" = "按住电源按钮 5-7 秒，直到 LED 开始闪烁";
 "Home Assistant" = "Home Assistant";
-"Home Assistant accepted the action. Check the device, then save when ready." = "Home Assistant 已接受此操作。检查设备，准备好后保存。";
+"Home Assistant accepted the action." = "Home Assistant 已接受操作。";
 "Home Assistant action" = "Home Assistant 操作";
+"Home Assistant address" = "Home Assistant 地址";
+"Home Assistant entities" = "Home Assistant 实体";
+"Home Assistant menu" = "Home Assistant 菜单";
 "Home Assistant returned HTTP %ld. Check the action and its required fields." = "Home Assistant 返回 HTTP %ld。请检查操作及其必填字段。";
 "Home Assistant returned an invalid sign-in response." = "Home Assistant 返回了无效的登录响应。";
 "How it works" = "工作原理";
@@ -354,7 +360,6 @@
 "ON" = "开";
 "Old DFU only supports Application upload" = "旧版 DFU 仅支持上传应用";
 "One-time alarm" = "单次闹钟";
-"Open this browser from a remote button in Turn Touch to save an assignment." = "从 Turn Touch 的遥控器按钮打开此浏览器，以保存分配。";
 "Open token settings" = "打开令牌设置";
 "Operation Failed" = "操作失败";
 "Operation Not Supported" = "不支持此操作";
@@ -434,8 +439,6 @@
 "Sat" = "周六";
 "Saturation" = "饱和度";
 "Save" = "保存";
-"Save to button" = "保存到按钮";
-"Saved %@ · %@ to your remote button." = "已将 %@ · %@ 保存到遥控器按钮。";
 "Scan for devices" = "扫描设备";
 "Scanning for remotes..." = "正在扫描遥控器…";
 "Scanning local network..." = "正在扫描本地网络...";
@@ -447,12 +450,12 @@
 "Scripts, files, and websites" = "脚本、文件和网站";
 "Scroll down" = "向下滚动";
 "Scroll up" = "向上滚动";
+"Search Home Assistant" = "搜索 Home Assistant";
 "Search entities, devices, rooms, or entity IDs" = "搜索实体、设备、房间或实体 ID";
 "Search for Kasa devices..." = "正在搜索 Kasa 设备…";
 "Search for New Devices..." = "搜索新设备...";
 "Search for Sonos devices..." = "正在搜索 Sonos 设备…";
 "Search for Wemo devices..." = "正在搜索 WeMo 设备…";
-"Search lights, scenes, scripts, and more.\nNo Home Assistant plugin needed." = "搜索灯光、场景、脚本等。\n无需安装 Home Assistant 插件。";
 "Searching for Hue..." = "正在搜索 Hue…";
 "Searching for Kasa devices..." = "正在搜索 Kasa 设备...";
 "Searching for Kasa..." = "正在搜索 Kasa…";
@@ -523,7 +526,6 @@
 "Temperature" = "温度";
 "Temperature set to" = "温度设为";
 "Test action" = "测试操作";
-"Test runs the action now. Save assigns it to the selected remote button." = "“测试”会立即运行操作。“保存”会将其分配给所选遥控器按键。";
 "Text Cell" = "文本单元格";
 "Thank you! What would you like to say?" = "谢谢！您想说些什么？";
 "That worked perfectly" = "太棒了，成功了";
@@ -563,7 +565,6 @@
 "Turn Touch uses files to play music." = "Turn Touch 使用文件播放音乐。";
 "Turn Touch uses music for the alarm clock." = "Turn Touch 使用音乐作为闹钟铃声。";
 "Turn Touch uses the local network to find Home Assistant, Philips Hue, Nanoleaf, and other smart home devices." = "Turn Touch 使用本地网络查找 Home Assistant、Philips Hue、Nanoleaf 及其他智能家居设备。";
-"Turn Touch · Home Assistant" = "Turn Touch · Home Assistant";
 "Turn off" = "关闭";
 "Turn off screen" = "关闭屏幕";
 "Turn on" = "打开";
@@ -572,6 +573,7 @@
 "Unknown Device" = "未知设备";
 "Unknown error" = "未知错误";
 "Upgrade to v%ld" = "升级到 v%ld";
+"Use access token…" = "使用访问令牌…";
 "Use token" = "使用令牌";
 "Version %@" = "版本 %@";
 "Version 1.0.0" = "版本 1.0.0";
@@ -599,7 +601,6 @@
 "Your email" = "你的电子邮件";
 "Your favorite actions, one touch away" = "喜爱的操作，一触即达";
 "Your home, scenes, and automations" = "你的家居、场景和自动化";
-"Your home. One button away." = "一键掌控你的家。";
 "Your remote has been paired" = "遥控器已配对";
 "Your remote has four buttons" = "遥控器有四个按钮";
 "application.dat is missing. It must be placed inside zip file with application" = "缺少 application.dat。必须将其与 application 一起放入 ZIP 文件中";

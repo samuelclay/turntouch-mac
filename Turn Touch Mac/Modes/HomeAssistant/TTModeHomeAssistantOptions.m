@@ -1,44 +1,47 @@
 #import "TTModeHomeAssistantOptions.h"
-#import "TTHomeAssistantWindowController.h"
-#import "TTHomeAssistantClient.h"
+#import "TTHomeAssistantViewController.h"
 #import "TTOptionsDetailView.h"
+
+@interface TTHomeAssistantOptionsView : TTOptionsDetailView
+@end
+@implementation TTHomeAssistantOptionsView
+- (BOOL)isFlipped { return YES; }
+@end
+
+@interface TTModeHomeAssistantOptions ()
+@property TTHomeAssistantViewController *browser;
+@end
 
 @implementation TTModeHomeAssistantOptions
 - (void)loadView {
-    self.view = [[TTOptionsDetailView alloc] initWithFrame:NSMakeRect(0, 0, 320, 100)];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:100]];
-    NSButton *button = [[NSButton alloc] initWithFrame:NSMakeRect(20, 51, 280, 30)];
-    button.bezelStyle = NSBezelStyleRounded;
-    button.title = self.action ? TTText(@"Choose Home Assistant action…") : TTText(@"Connect to Home Assistant…");
-    button.target = self; button.action = @selector(openBrowser:);
-    [self.view addSubview:button];
-    NSTextField *label = [[NSTextField alloc] initWithFrame:NSMakeRect(20, 10, 280, 36)];
-    label.editable = NO; label.bordered = NO; label.drawsBackground = NO;
-    label.font = [NSFont systemFontOfSize:11]; label.textColor = NSColor.secondaryLabelColor;
-    NSDictionary *binding = [self.action optionValue:@"homeAssistantBinding"];
-    label.stringValue = binding ? [NSString stringWithFormat:@"%@ · %@", binding[@"name"], binding[@"service"]] : TTText(@"Search lights, scenes, scripts, and more.\nNo Home Assistant plugin needed.");
-    [self.view addSubview:label];
-}
-- (void)openBrowser:(id)sender {
-    // Keep the window alive when the menu-bar panel closes or changes modes.
-    static TTHomeAssistantWindowController *browser;
-    if (!browser) browser = [[TTHomeAssistantWindowController alloc] init];
+    self.view = [[TTHomeAssistantOptionsView alloc] initWithFrame:NSMakeRect(0, 0, 380, 470)];
+    self.browser = [[TTHomeAssistantViewController alloc] init];
     TTAction *action = self.action;
     if (action) {
-        // Capture the preference key now: selection in the menu bar can change while this window is open.
-        TTModeMap *map = self.appDelegate.modeMap;
-        NSString *modeDirection = [map directionName:action.mode.modeDirection];
-        NSString *actionDirection = [map directionName:action.direction];
+        TTModeMap *map = NSAppDelegate.modeMap;
+        NSString *bank = [map directionName:action.mode.modeDirection];
+        NSString *direction = [map directionName:action.direction];
         NSString *key = action.batchActionKey ?
-            [NSString stringWithFormat:@"TT:mode:%@:action:%@:batchactions:%@:actionoption:homeAssistantBinding", modeDirection, actionDirection, action.batchActionKey] :
-            [NSString stringWithFormat:@"TT:mode:%@-%@:action:%@-%@:option:homeAssistantBinding", NSStringFromClass(action.mode.class), modeDirection, action.actionName, actionDirection];
-        browser.saveHandler = ^(NSDictionary *binding) {
-            [[NSUserDefaults standardUserDefaults] setObject:binding forKey:key];
-            [NSAppDelegate.panelController.backgroundView.optionsView redrawOptions];
-            [NSAppDelegate.panelController.backgroundView setNeedsDisplay:YES];
+            [NSString stringWithFormat:@"TT:mode:%@:action:%@:batchactions:%@:actionoption:homeAssistantBinding", bank, direction, action.batchActionKey] :
+            [NSString stringWithFormat:@"TT:mode:%@-%@:action:%@-%@:option:homeAssistantBinding", NSStringFromClass(action.mode.class), bank, action.actionName, direction];
+        self.browser.saveHandler = ^(NSDictionary *binding) {
+            [NSUserDefaults.standardUserDefaults setObject:binding forKey:key];
+            // Refresh labels without rebuilding the editor or losing the search.
+            [NSAppDelegate.panelController.backgroundView.diamondLabels setNeedsDisplay:YES];
+            for (NSView *view in NSAppDelegate.panelController.backgroundView.batchActionStackView.subviews) [view setNeedsDisplay:YES];
         };
-    } else browser.saveHandler = nil;
-    [browser showWithBinding:[action optionValue:@"homeAssistantBinding"]];
+    }
+    self.browser.interactionHandler = ^(BOOL active) { NSAppDelegate.panelController.preventClosing = active; };
+    [self addChildViewController:self.browser];
+    [self.view addSubview:self.browser.view];
+    [NSLayoutConstraint activateConstraints:@[
+        [self.view.widthAnchor constraintEqualToConstant:380],
+        [self.browser.view.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
+        [self.browser.view.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
+        [self.browser.view.topAnchor constraintEqualToAnchor:self.view.topAnchor],
+        [self.browser.view.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor]
+    ]];
+    [self.browser loadBinding:[action optionValue:@"homeAssistantBinding"]];
 }
 @end
 @implementation TTModeHomeAssistantActionOptions

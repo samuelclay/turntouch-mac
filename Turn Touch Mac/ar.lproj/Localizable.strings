@@ -24,6 +24,7 @@
 "About Turn Touch & updates" = "حول Turn Touch والتحديثات";
 "About Turn Touch Remote" = "حول Turn Touch Remote";
 "About this app’s actions" = "نبذة عن إجراءات هذا التطبيق";
+"Action" = "إجراء";
 "Action 1st" = "الإجراء الأول";
 "Action 2nd" = "الإجراء الثاني";
 "Action 3rd" = "الإجراء الثالث";
@@ -31,6 +32,7 @@
 "Action Menu" = "قائمة الإجراءات";
 "Action data (optional JSON)" = "بيانات الإجراء (JSON اختياري)";
 "Action data must be a JSON object, for example {\"brightness_pct\": 50}." = "يجب أن تكون بيانات الإجراء كائن JSON، مثل {\"brightness_pct\": 50}.";
+"Action: %@" = "الإجراء: %@";
 "Activate scene" = "تفعيل المشهد";
 "Add Action" = "إضافة إجراء";
 "Add a new remote…" = "إضافة جهاز تحكم جديد…";
@@ -51,14 +53,15 @@
 "Ambient" = "محيط";
 "Apple Keynote" = "Apple Keynote";
 "Assign this action to the selected remote button" = "عيّن هذا الإجراء لزر جهاز التحكم المحدد";
+"Assigned to this button." = "تم التعيين لهذا الزر.";
 "Authentication failed. Please reconnect to your Hue bridge." = "فشل التحقق من الهوية. يُرجى إعادة الاتصال بجسر Hue.";
 "Authentication failed: %@" = "فشل التحقق من الهوية: %@";
 "Authentication timed out" = "انتهت مهلة المصادقة";
 "Automatic (device language)" = "تلقائي (لغة الجهاز)";
 "Automations" = "الأتمتة";
-"Available actions come from your Home Assistant." = "الإجراءات المتاحة مصدرها Home Assistant.";
 "BRIDGE ID" = "معرّف الجسر";
 "BUTTONS" = "الأزرار";
+"Back" = "رجوع";
 "Battery Level: %d%%" = "مستوى البطارية: %d%%";
 "Bluetooth in resetting state." = "Bluetooth في حالة إعادة التعيين.";
 "Bluetooth in unknown state." = "حالة Bluetooth غير معروفة.";
@@ -80,16 +83,15 @@
 "Change app" = "تغيير التطبيق";
 "Check for updates..." = "التحقق من وجود تحديثات...";
 "Choose File" = "اختيار ملف";
-"Choose Home Assistant action…" = "اختر إجراء Home Assistant…";
 "Choose IFTTT Action" = "اختر إجراء IFTTT";
 "Choose a button, then add an action" = "اختر زرًا، ثم أضف إجراءً";
-"Choose a discovered home or enter its address to get started." = "اختر منزلًا تم اكتشافه أو أدخل عنوانه للبدء.";
 "Choose a gesture tab and a button, then Add Action. Mix apps or add several actions to one gesture." = "اختر علامة تبويب إيماءة وزرًا، ثم أضف إجراءً. امزج التطبيقات أو أضف عدة إجراءات لإيماءة واحدة.";
 "Choose a valid Home Assistant action." = "اختر إجراءً صالحًا في Home Assistant.";
 "Choose an action for this app using Add Action below a remote button." = "اختر إجراءً لهذا التطبيق باستخدام «إضافة إجراء» أسفل أحد أزرار جهاز التحكم.";
 "Choose an entity" = "اختر كيانًا";
 "Choose an entity first." = "اختر كيانًا أولًا.";
 "Choose app" = "اختيار تطبيق";
+"Choose for button" = "تعيين للزر";
 "Choose the target in the entity list, not in action data." = "اختر الهدف من قائمة الكيانات، وليس من بيانات الإجراء.";
 "Climate" = "المناخ";
 "Close" = "إغلاق";
@@ -99,15 +101,14 @@
 "Configure your Turn Touch wooden remote and put lights, music, and everyday actions at your fingertips. Choose actions for single taps, double taps, and holds, or combine several actions on one button.\n\nPair a remote over Bluetooth, choose your apps and devices, and customize your buttons in Settings. Turn Touch supports compatible smart-home devices and services; available functions depend on the integration and device.\n\nA Turn Touch remote is sold separately. Some integrations require compatible hardware, local network access, or a third-party account.\n\nLearn more: https://turntouch.com" = "اضبط جهاز التحكم الخشبي Turn Touch واجعل الأضواء والموسيقى والمهام اليومية في متناول يدك. اختر إجراءات للنقر مرة أو مرتين أو الضغط المطوّل، أو اجمع عدة إجراءات على زر واحد.\n\nاقرن جهاز التحكم عبر Bluetooth، واختر تطبيقاتك وأجهزتك، وخصّص الأزرار من الإعدادات. يدعم Turn Touch أجهزة وخدمات منزل ذكي متوافقة؛ وتختلف الوظائف المتاحة حسب التكامل والجهاز.\n\nيُباع جهاز التحكم Turn Touch على حدة. تتطلب بعض عمليات التكامل أجهزة متوافقة أو الوصول إلى شبكة محلية أو حسابًا لدى جهة خارجية.\n\nاعرف المزيد: https://turntouch.com";
 "Conncted to X Wemo devices" = "متصل بـ X من أجهزة Wemo";
 "Connect" = "اتصال";
-"Connect locally, find an entity, and choose what your Turn Touch remote should do." = "اتصل محليًا، واعثر على كيان، واختر ما ينفذه جهاز Turn Touch عن بُعد.";
 "Connect to Home Assistant first." = "اتصل بـ Home Assistant أولًا.";
-"Connect to Home Assistant…" = "الاتصال بـ Home Assistant…";
 "Connect to Hue" = "الاتصال بـ Hue";
 "Connect to Hue..." = "الاتصال بـ Hue...";
 "Connect to IFTTT" = "الاتصال بـ IFTTT";
 "Connect to Nanoleaf" = "الاتصال بـ Nanoleaf";
 "Connect to Nest" = "الاتصال بـ Nest";
 "Connect to browse your home" = "اتصل لتصفح منزلك";
+"Connect using the Home Assistant menu." = "اتصل من قائمة Home Assistant.";
 "Connected" = "متصل";
 "Connected Devices" = "الأجهزة المتصلة";
 "Connected Govee devices: %ld" = "أجهزة Govee المتصلة: %ld";
@@ -119,7 +120,6 @@
 "Connected to X Kasa devices" = "متصل بـ X من أجهزة Kasa";
 "Connected wireless speakers" = "مكبرات صوت لاسلكية متصلة";
 "Connected · %d%% battery" = "متصل · البطارية %d%%";
-"Connected · %lu entities · %@" = "متصل · %lu كيان · %@";
 "Connecting" = "جارٍ الاتصال";
 "Connecting to %@..." = "جارٍ الاتصال بـ %@...";
 "Connecting to Govee..." = "جارٍ الاتصال بـ Govee...";
@@ -144,6 +144,7 @@
 "Connection failed: %@" = "فشل الاتصال: %@";
 "Connection timed out. Tap to retry." = "انتهت مهلة الاتصال. اضغط لإعادة المحاولة.";
 "Connection to Hue bridge lost" = "انقطع الاتصال بجسر Hue";
+"Connection…" = "الاتصال…";
 "Contact support" = "التواصل مع الدعم";
 "Continue" = "متابعة";
 "Control Music" = "التحكم في الموسيقى";
@@ -196,6 +197,7 @@
 "Enter your Govee API key (Govee Home > Settings > API)" = "أدخل مفتاح Govee API (Govee Home > Settings > API)";
 "Enter your Govee API key (from Govee Home App > Settings > My Profile > Apply for API Key)" = "أدخل مفتاح Govee API (من تطبيق Govee Home > الإعدادات > ملفي الشخصي > طلب مفتاح API)";
 "Enter your TP-Link/Kasa account credentials for newer devices that use KLAP authentication." = "أدخل بيانات حساب TP-Link/Kasa للأجهزة الأحدث التي تستخدم مصادقة KLAP.";
+"Entities: %lu" = "الكيانات: %lu";
 "Error (%li): %@" = "خطأ (%li): %@";
 "Error getting %@, HTTP status code %li" = "خطأ في جلب %@، رمز حالة HTTP هو %li";
 "Error on BLE Notification\n Message: %@" = "خطأ في إشعار BLE\n الرسالة: %@";
@@ -218,6 +220,7 @@
 "Fast forward" = "تقديم سريع";
 "Fetching Govee devices..." = "جارٍ جلب أجهزة Govee...";
 "Fetching devices from Govee..." = "جارٍ جلب الأجهزة من Govee...";
+"Filter" = "تصفية";
 "Find your Nanoleaf" = "اعثر على Nanoleaf";
 "Find your Philips Hue" = "اعثر على Philips Hue";
 "Finishing sign-in…" = "جارٍ إكمال تسجيل الدخول…";
@@ -253,8 +256,11 @@
 "Hold actions" = "إجراءات الضغط المطوّل";
 "Hold the power button for 5-7 seconds until the LEDs start flashing" = "اضغط مطولًا على زر التشغيل لمدة 5-7 ثوانٍ حتى تبدأ مؤشرات LED بالوميض";
 "Home Assistant" = "Home Assistant";
-"Home Assistant accepted the action. Check the device, then save when ready." = "قبل Home Assistant الإجراء. تحقق من الجهاز، ثم احفظ عندما تكون مستعدًا.";
+"Home Assistant accepted the action." = "قبل Home Assistant الإجراء.";
 "Home Assistant action" = "إجراء Home Assistant";
+"Home Assistant address" = "عنوان Home Assistant";
+"Home Assistant entities" = "كيانات Home Assistant";
+"Home Assistant menu" = "قائمة Home Assistant";
 "Home Assistant returned HTTP %ld. Check the action and its required fields." = "أعاد Home Assistant رمز HTTP %ld. تحقق من الإجراء والحقول المطلوبة.";
 "Home Assistant returned an invalid sign-in response." = "أعاد Home Assistant استجابة تسجيل دخول غير صالحة.";
 "How it works" = "كيف يعمل";
@@ -354,7 +360,6 @@
 "ON" = "تشغيل";
 "Old DFU only supports Application upload" = "يدعم DFU القديم تحميل التطبيق فقط";
 "One-time alarm" = "منبّه لمرة واحدة";
-"Open this browser from a remote button in Turn Touch to save an assignment." = "افتح هذا المتصفح من زر في Turn Touch لحفظ التعيين.";
 "Open token settings" = "فتح إعدادات الرمز";
 "Operation Failed" = "فشلت العملية";
 "Operation Not Supported" = "العملية غير مدعومة";
@@ -434,8 +439,6 @@
 "Sat" = "السبت";
 "Saturation" = "التشبّع";
 "Save" = "حفظ";
-"Save to button" = "حفظ للزر";
-"Saved %@ · %@ to your remote button." = "تم حفظ %@ · %@ لزر جهاز التحكم عن بُعد.";
 "Scan for devices" = "البحث عن أجهزة";
 "Scanning for remotes..." = "جارٍ البحث عن أجهزة التحكم...";
 "Scanning local network..." = "جارٍ فحص الشبكة المحلية...";
@@ -447,12 +450,12 @@
 "Scripts, files, and websites" = "البرامج النصية والملفات ومواقع الويب";
 "Scroll down" = "التمرير لأسفل";
 "Scroll up" = "التمرير لأعلى";
+"Search Home Assistant" = "البحث في Home Assistant";
 "Search entities, devices, rooms, or entity IDs" = "ابحث عن الكيانات أو الأجهزة أو الغرف أو معرّفات الكيانات";
 "Search for Kasa devices..." = "جارٍ البحث عن أجهزة Kasa...";
 "Search for New Devices..." = "البحث عن أجهزة جديدة...";
 "Search for Sonos devices..." = "البحث عن أجهزة Sonos...";
 "Search for Wemo devices..." = "جارٍ البحث عن أجهزة WeMo...";
-"Search lights, scenes, scripts, and more.\nNo Home Assistant plugin needed." = "ابحث عن الأضواء والمشاهد والبرامج النصية والمزيد.\nلا حاجة إلى إضافة Home Assistant.";
 "Searching for Hue..." = "جارٍ البحث عن Hue...";
 "Searching for Kasa devices..." = "جارٍ البحث عن أجهزة Kasa...";
 "Searching for Kasa..." = "جارٍ البحث عن Kasa...";
@@ -523,7 +526,6 @@
 "Temperature" = "درجة الحرارة";
 "Temperature set to" = "ضبط درجة الحرارة على";
 "Test action" = "اختبار الإجراء";
-"Test runs the action now. Save assigns it to the selected remote button." = "يُشغّل «اختبار» الإجراء الآن. ويُعيّنه «حفظ» إلى زر جهاز التحكم المحدد.";
 "Text Cell" = "خلية نصية";
 "Thank you! What would you like to say?" = "شكرًا! ماذا تود أن تقول؟";
 "That worked perfectly" = "نجح ذلك تمامًا";
@@ -563,7 +565,6 @@
 "Turn Touch uses files to play music." = "يستخدم Turn Touch الملفات لتشغيل الموسيقى.";
 "Turn Touch uses music for the alarm clock." = "يستخدم Turn Touch الموسيقى لمنبّه الساعة.";
 "Turn Touch uses the local network to find Home Assistant, Philips Hue, Nanoleaf, and other smart home devices." = "يستخدم Turn Touch الشبكة المحلية للعثور على Home Assistant وPhilips Hue وNanoleaf وأجهزة المنزل الذكي الأخرى.";
-"Turn Touch · Home Assistant" = "Turn Touch · Home Assistant";
 "Turn off" = "إيقاف";
 "Turn off screen" = "إطفاء الشاشة";
 "Turn on" = "تشغيل";
@@ -572,6 +573,7 @@
 "Unknown Device" = "جهاز غير معروف";
 "Unknown error" = "خطأ غير معروف";
 "Upgrade to v%ld" = "الترقية إلى الإصدار %ld";
+"Use access token…" = "استخدام رمز وصول…";
 "Use token" = "استخدام الرمز";
 "Version %@" = "الإصدار %@";
 "Version 1.0.0" = "الإصدار 1.0.0";
@@ -599,7 +601,6 @@
 "Your email" = "بريدك الإلكتروني";
 "Your favorite actions, one touch away" = "إجراءاتك المفضلة، بضغطة واحدة";
 "Your home, scenes, and automations" = "منزلك ومشاهدك وأتمتتك";
-"Your home. One button away." = "منزلك. بضغطة زر.";
 "Your remote has been paired" = "تم إقران جهاز التحكم";
 "Your remote has four buttons" = "لجهاز التحكم أربعة أزرار";
 "application.dat is missing. It must be placed inside zip file with application" = "ملف application.dat مفقود. يجب وضعه داخل ملف ZIP مع application";

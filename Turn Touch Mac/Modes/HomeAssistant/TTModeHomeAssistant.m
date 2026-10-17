@@ -9,9 +9,10 @@
 - (NSString *)defaultEast { return @"TTModeHomeAssistantAction"; }
 - (NSString *)defaultWest { return @"TTModeHomeAssistantAction"; }
 - (NSString *)defaultSouth { return @"TTModeHomeAssistantAction"; }
-- (NSString *)titleTTModeHomeAssistantAction { return TTText(@"Home Assistant action"); }
+- (NSString *)titleTTModeHomeAssistantAction { return [self.action optionValue:@"homeAssistantBinding"][@"name"] ?: TTText(@"Home Assistant action"); }
 - (NSString *)imageTTModeHomeAssistantAction { return @"mode_home.png"; }
 - (NSString *)titleInDirection:(TTModeDirection)direction buttonMoment:(TTButtonMoment)moment {
+    if (self.action.batchActionKey) return [self.action optionValue:@"homeAssistantBinding"][@"name"] ?: [super titleInDirection:direction buttonMoment:moment];
     NSDictionary *binding = [self.appDelegate.modeMap mode:self actionOptionValue:@"homeAssistantBinding" actionName:@"TTModeHomeAssistantAction" inDirection:direction];
     return binding[@"name"] ?: [super titleInDirection:direction buttonMoment:moment];
 }

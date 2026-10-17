@@ -24,6 +24,7 @@
 "About Turn Touch & updates" = "Giới thiệu về Turn Touch và cập nhật";
 "About Turn Touch Remote" = "Giới thiệu về Turn Touch Remote";
 "About this app’s actions" = "Giới thiệu về các thao tác của ứng dụng này";
+"Action" = "Hành động";
 "Action 1st" = "Thao tác 1";
 "Action 2nd" = "Thao tác 2";
 "Action 3rd" = "Thao tác 3";
@@ -31,6 +32,7 @@
 "Action Menu" = "Menu tác vụ";
 "Action data (optional JSON)" = "Dữ liệu tác vụ (JSON tùy chọn)";
 "Action data must be a JSON object, for example {\"brightness_pct\": 50}." = "Dữ liệu tác vụ phải là đối tượng JSON, ví dụ {\"brightness_pct\": 50}.";
+"Action: %@" = "Hành động: %@";
 "Activate scene" = "Kích hoạt cảnh";
 "Add Action" = "Thêm tác vụ";
 "Add a new remote…" = "Thêm remote mới…";
@@ -51,14 +53,15 @@
 "Ambient" = "Môi trường";
 "Apple Keynote" = "Apple Keynote";
 "Assign this action to the selected remote button" = "Gán hành động này cho nút điều khiển từ xa đã chọn";
+"Assigned to this button." = "Đã gán cho nút này.";
 "Authentication failed. Please reconnect to your Hue bridge." = "Xác thực không thành công. Vui lòng kết nối lại với cầu nối Hue.";
 "Authentication failed: %@" = "Xác thực không thành công: %@";
 "Authentication timed out" = "Hết thời gian xác thực";
 "Automatic (device language)" = "Tự động (ngôn ngữ thiết bị)";
 "Automations" = "Tự động hóa";
-"Available actions come from your Home Assistant." = "Các tác vụ khả dụng lấy từ Home Assistant.";
 "BRIDGE ID" = "ID CẦU NỐI";
 "BUTTONS" = "NÚT";
+"Back" = "Quay lại";
 "Battery Level: %d%%" = "Mức pin: %d%%";
 "Bluetooth in resetting state." = "Bluetooth đang khởi động lại.";
 "Bluetooth in unknown state." = "Bluetooth ở trạng thái không xác định.";
@@ -80,16 +83,15 @@
 "Change app" = "Đổi ứng dụng";
 "Check for updates..." = "Kiểm tra cập nhật...";
 "Choose File" = "Chọn tệp";
-"Choose Home Assistant action…" = "Chọn hành động Home Assistant…";
 "Choose IFTTT Action" = "Chọn tác vụ IFTTT";
 "Choose a button, then add an action" = "Chọn một nút, rồi thêm thao tác";
-"Choose a discovered home or enter its address to get started." = "Chọn nhà đã tìm thấy hoặc nhập địa chỉ để bắt đầu.";
 "Choose a gesture tab and a button, then Add Action. Mix apps or add several actions to one gesture." = "Chọn tab cử chỉ và nút, rồi chọn Thêm thao tác. Kết hợp các ứng dụng hoặc thêm nhiều thao tác cho một cử chỉ.";
 "Choose a valid Home Assistant action." = "Chọn một tác vụ Home Assistant hợp lệ.";
 "Choose an action for this app using Add Action below a remote button." = "Chọn thao tác cho ứng dụng này bằng nút Thêm thao tác bên dưới nút remote.";
 "Choose an entity" = "Chọn thực thể";
 "Choose an entity first." = "Trước tiên, hãy chọn một thực thể.";
 "Choose app" = "Chọn ứng dụng";
+"Choose for button" = "Chọn cho nút";
 "Choose the target in the entity list, not in action data." = "Chọn mục tiêu trong danh sách thực thể, không phải trong dữ liệu tác vụ.";
 "Climate" = "Điều hòa";
 "Close" = "Đóng";
@@ -99,15 +101,14 @@
 "Configure your Turn Touch wooden remote and put lights, music, and everyday actions at your fingertips. Choose actions for single taps, double taps, and holds, or combine several actions on one button.\n\nPair a remote over Bluetooth, choose your apps and devices, and customize your buttons in Settings. Turn Touch supports compatible smart-home devices and services; available functions depend on the integration and device.\n\nA Turn Touch remote is sold separately. Some integrations require compatible hardware, local network access, or a third-party account.\n\nLearn more: https://turntouch.com" = "Thiết lập điều khiển bằng gỗ Turn Touch để điều khiển đèn, nhạc và các thao tác hằng ngày ngay trong tầm tay. Chọn thao tác cho một lần chạm, chạm hai lần hoặc nhấn giữ, hoặc kết hợp nhiều thao tác trên cùng một nút.\n\nGhép nối điều khiển qua Bluetooth, chọn ứng dụng và thiết bị, rồi tùy chỉnh các nút trong Cài đặt. Turn Touch hỗ trợ các thiết bị và dịch vụ nhà thông minh tương thích; chức năng khả dụng tùy thuộc vào tích hợp và thiết bị.\n\nĐiều khiển Turn Touch được bán riêng. Một số tích hợp yêu cầu phần cứng tương thích, quyền truy cập mạng cục bộ hoặc tài khoản bên thứ ba.\n\nTìm hiểu thêm: https://turntouch.com";
 "Conncted to X Wemo devices" = "Đã kết nối với X thiết bị Wemo";
 "Connect" = "Kết nối";
-"Connect locally, find an entity, and choose what your Turn Touch remote should do." = "Kết nối cục bộ, tìm thực thể và chọn chức năng cho điều khiển từ xa Turn Touch.";
 "Connect to Home Assistant first." = "Trước tiên, hãy kết nối với Home Assistant.";
-"Connect to Home Assistant…" = "Kết nối với Home Assistant…";
 "Connect to Hue" = "Kết nối với Hue";
 "Connect to Hue..." = "Kết nối với Hue...";
 "Connect to IFTTT" = "Kết nối với IFTTT";
 "Connect to Nanoleaf" = "Kết nối với Nanoleaf";
 "Connect to Nest" = "Kết nối với Nest";
 "Connect to browse your home" = "Kết nối để duyệt nhà";
+"Connect using the Home Assistant menu." = "Kết nối qua menu Home Assistant.";
 "Connected" = "Đã kết nối";
 "Connected Devices" = "Thiết bị đã kết nối";
 "Connected Govee devices: %ld" = "Thiết bị Govee đã kết nối: %ld";
@@ -119,7 +120,6 @@
 "Connected to X Kasa devices" = "Đã kết nối với X thiết bị Kasa";
 "Connected wireless speakers" = "Loa không dây đã kết nối";
 "Connected · %d%% battery" = "Đã kết nối · pin %d%%";
-"Connected · %lu entities · %@" = "Đã kết nối · %lu thực thể · %@";
 "Connecting" = "Đang kết nối";
 "Connecting to %@..." = "Đang kết nối với %@...";
 "Connecting to Govee..." = "Đang kết nối với Govee...";
@@ -144,6 +144,7 @@
 "Connection failed: %@" = "Kết nối thất bại: %@";
 "Connection timed out. Tap to retry." = "Đã hết thời gian kết nối. Chạm để thử lại.";
 "Connection to Hue bridge lost" = "Mất kết nối với cầu nối Hue";
+"Connection…" = "Kết nối…";
 "Contact support" = "Liên hệ hỗ trợ";
 "Continue" = "Tiếp tục";
 "Control Music" = "Điều khiển Nhạc";
@@ -196,6 +197,7 @@
 "Enter your Govee API key (Govee Home > Settings > API)" = "Nhập khóa API Govee (Govee Home > Cài đặt > API)";
 "Enter your Govee API key (from Govee Home App > Settings > My Profile > Apply for API Key)" = "Nhập khóa API Govee (trong ứng dụng Govee Home > Settings > My Profile > Apply for API Key)";
 "Enter your TP-Link/Kasa account credentials for newer devices that use KLAP authentication." = "Nhập thông tin tài khoản TP-Link/Kasa cho các thiết bị đời mới dùng xác thực KLAP.";
+"Entities: %lu" = "Thực thể: %lu";
 "Error (%li): %@" = "Lỗi (%li): %@";
 "Error getting %@, HTTP status code %li" = "Lỗi khi tải %@, mã trạng thái HTTP %li";
 "Error on BLE Notification\n Message: %@" = "Lỗi thông báo BLE\n Thông báo: %@";
@@ -218,6 +220,7 @@
 "Fast forward" = "Tua nhanh";
 "Fetching Govee devices..." = "Đang tải thiết bị Govee...";
 "Fetching devices from Govee..." = "Đang tải thiết bị từ Govee...";
+"Filter" = "Bộ lọc";
 "Find your Nanoleaf" = "Tìm Nanoleaf";
 "Find your Philips Hue" = "Tìm Philips Hue của bạn";
 "Finishing sign-in…" = "Đang hoàn tất đăng nhập…";
@@ -253,8 +256,11 @@
 "Hold actions" = "Thao tác nhấn giữ";
 "Hold the power button for 5-7 seconds until the LEDs start flashing" = "Nhấn giữ nút nguồn 5–7 giây đến khi đèn LED bắt đầu nhấp nháy";
 "Home Assistant" = "Home Assistant";
-"Home Assistant accepted the action. Check the device, then save when ready." = "Home Assistant đã chấp nhận hành động. Hãy kiểm tra thiết bị, rồi lưu khi sẵn sàng.";
+"Home Assistant accepted the action." = "Home Assistant đã chấp nhận hành động.";
 "Home Assistant action" = "Hành động Home Assistant";
+"Home Assistant address" = "Địa chỉ Home Assistant";
+"Home Assistant entities" = "Thực thể Home Assistant";
+"Home Assistant menu" = "Menu Home Assistant";
 "Home Assistant returned HTTP %ld. Check the action and its required fields." = "Home Assistant trả về HTTP %ld. Kiểm tra tác vụ và các trường bắt buộc.";
 "Home Assistant returned an invalid sign-in response." = "Home Assistant trả về phản hồi đăng nhập không hợp lệ.";
 "How it works" = "Cách hoạt động";
@@ -354,7 +360,6 @@
 "ON" = "BẬT";
 "Old DFU only supports Application upload" = "DFU cũ chỉ hỗ trợ tải ứng dụng lên";
 "One-time alarm" = "Báo thức một lần";
-"Open this browser from a remote button in Turn Touch to save an assignment." = "Mở trình duyệt này từ nút trên Turn Touch để lưu thao tác gán.";
 "Open token settings" = "Mở cài đặt mã truy cập";
 "Operation Failed" = "Thao tác thất bại";
 "Operation Not Supported" = "Thao tác không được hỗ trợ";
@@ -434,8 +439,6 @@
 "Sat" = "T7";
 "Saturation" = "Độ bão hòa";
 "Save" = "Lưu";
-"Save to button" = "Lưu vào nút";
-"Saved %@ · %@ to your remote button." = "Đã lưu %@ · %@ vào nút điều khiển từ xa.";
 "Scan for devices" = "Tìm thiết bị";
 "Scanning for remotes..." = "Đang tìm remote...";
 "Scanning local network..." = "Đang quét mạng nội bộ...";
@@ -447,12 +450,12 @@
 "Scripts, files, and websites" = "Tập lệnh, tệp và trang web";
 "Scroll down" = "Cuộn xuống";
 "Scroll up" = "Cuộn lên";
+"Search Home Assistant" = "Tìm trong Home Assistant";
 "Search entities, devices, rooms, or entity IDs" = "Tìm thực thể, thiết bị, phòng hoặc ID thực thể";
 "Search for Kasa devices..." = "Đang tìm thiết bị Kasa...";
 "Search for New Devices..." = "Tìm thiết bị mới...";
 "Search for Sonos devices..." = "Đang tìm thiết bị Sonos...";
 "Search for Wemo devices..." = "Tìm thiết bị WeMo...";
-"Search lights, scenes, scripts, and more.\nNo Home Assistant plugin needed." = "Tìm đèn, cảnh, tập lệnh và hơn thế nữa.\nKhông cần plugin Home Assistant.";
 "Searching for Hue..." = "Đang tìm Hue...";
 "Searching for Kasa devices..." = "Đang tìm thiết bị Kasa...";
 "Searching for Kasa..." = "Đang tìm Kasa...";
@@ -523,7 +526,6 @@
 "Temperature" = "Nhiệt độ";
 "Temperature set to" = "Nhiệt độ được đặt ở";
 "Test action" = "Thử hành động";
-"Test runs the action now. Save assigns it to the selected remote button." = "Thử sẽ chạy tác vụ ngay. Lưu sẽ gán tác vụ cho nút điều khiển từ xa đã chọn.";
 "Text Cell" = "Ô văn bản";
 "Thank you! What would you like to say?" = "Cảm ơn! Bạn muốn gửi lời nhắn gì?";
 "That worked perfectly" = "Thao tác thành công";
@@ -563,7 +565,6 @@
 "Turn Touch uses files to play music." = "Turn Touch sử dụng tệp để phát nhạc.";
 "Turn Touch uses music for the alarm clock." = "Turn Touch sử dụng nhạc cho đồng hồ báo thức.";
 "Turn Touch uses the local network to find Home Assistant, Philips Hue, Nanoleaf, and other smart home devices." = "Turn Touch sử dụng mạng cục bộ để tìm Home Assistant, Philips Hue, Nanoleaf và các thiết bị nhà thông minh khác.";
-"Turn Touch · Home Assistant" = "Turn Touch · Home Assistant";
 "Turn off" = "Tắt";
 "Turn off screen" = "Tắt màn hình";
 "Turn on" = "Bật";
@@ -572,6 +573,7 @@
 "Unknown Device" = "Thiết bị không xác định";
 "Unknown error" = "Lỗi không xác định";
 "Upgrade to v%ld" = "Nâng cấp lên v%ld";
+"Use access token…" = "Dùng mã truy cập…";
 "Use token" = "Dùng mã truy cập";
 "Version %@" = "Phiên bản %@";
 "Version 1.0.0" = "Phiên bản 1.0.0";
@@ -599,7 +601,6 @@
 "Your email" = "Email của bạn";
 "Your favorite actions, one touch away" = "Thao tác yêu thích, trong tầm tay";
 "Your home, scenes, and automations" = "Nhà, cảnh và quy trình tự động";
-"Your home. One button away." = "Ngôi nhà của bạn, chỉ cách một nút bấm.";
 "Your remote has been paired" = "Đã ghép nối điều khiển từ xa";
 "Your remote has four buttons" = "Điều khiển từ xa có bốn nút";
 "application.dat is missing. It must be placed inside zip file with application" = "Thiếu application.dat. Tệp này phải nằm trong tệp zip cùng với application";

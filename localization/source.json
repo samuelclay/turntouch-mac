@@ -83,6 +83,11 @@
   "About this app’s actions": [
     "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
   ],
+  "Action": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
+  ],
   "Action 1st": [
     "Turn Touch Mac/Models/TTMode.m"
   ],
@@ -103,10 +108,16 @@
     "Turn Touch Mac/Views/Batch Actions/TTBatchActionHeaderView.m"
   ],
   "Action data (optional JSON)": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Action data must be a JSON object, for example {\"brightness_pct\": 50}.": [
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
+  ],
+  "Action: %@": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Activate scene": [
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
@@ -122,7 +133,7 @@
     "Turn Touch Mac/Models/TTModeTwelve.m"
   ],
   "Add the required action data field: ": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Airfoil": [
     "Turn Touch Mac/Modes/Airfoil/TTModeAirfoil.m"
@@ -158,7 +169,7 @@
     "Turn Touch Mac/Views/Pairing/TTModalBarButton.m"
   ],
   "All entities": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "All same": [
     "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueRandomOptions.xib:CcS-hq-CN1.ibShadowedLabels[2]",
@@ -171,7 +182,10 @@
     "Turn Touch Mac/Modes/Presentation/Base.lproj/TTModePresentationOptions.xib:hCY-ug-dWW.title"
   ],
   "Assign this action to the selected remote button": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
+  ],
+  "Assigned to this button.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Authentication failed. Please reconnect to your Hue bridge.": [
     "Turn Touch Mac/Modes/Hue/API/TTHueAPIClient.m"
@@ -189,16 +203,16 @@
     "Turn Touch Mac/TTLocalization.m"
   ],
   "Automations": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
-  ],
-  "Available actions come from your Home Assistant.": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "BRIDGE ID": [
     "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueBridge.xib:GK9-hi-sSQ.headerCell.title"
   ],
   "BUTTONS": [
     "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
+  ],
+  "Back": [
+    "Turn Touch Mac/Views/Panel/TTBackgroundView.m"
   ],
   "Battery Level: %d%%": [
     "Turn Touch Mac/Views/DFU/TTDeviceTitleView.m"
@@ -258,7 +272,7 @@
   "Cancel": [
     "Turn Touch Mac/Modes/Govee/TTModeGoveeConnected.m",
     "Turn Touch Mac/Modes/Govee/TTModeGoveeSwitchOptions.m",
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m",
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
     "Turn Touch Mac/Modes/Kasa/TTModeKasaConnected.m",
     "Turn Touch Mac/Modes/Kasa/TTModeKasaSwitchOptions.m",
     "Turn Touch Mac/TTLocalization.m",
@@ -290,17 +304,11 @@
   "Choose File": [
     "Turn Touch Mac/Modes/Custom/Base.lproj/TTModeCustomFileOptions.xib:PnV-cl-gnM.title"
   ],
-  "Choose Home Assistant action…": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTModeHomeAssistantOptions.m"
-  ],
   "Choose IFTTT Action": [
     "Turn Touch Mac/Modes/Ifttt/Base.lproj/TTModeIftttTriggerActionOptions.xib:iCG-aY-OdQ.title"
   ],
   "Choose a button, then add an action": [
     "Turn Touch Mac/Models/TTModeTwelve.m"
-  ],
-  "Choose a discovered home or enter its address to get started.": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
   ],
   "Choose a gesture tab and a button, then Add Action. Mix apps or add several actions to one gesture.": [
     "Turn Touch Mac/Views/FTUX/TTModalFTUXView.m"
@@ -312,8 +320,8 @@
     "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
   ],
   "Choose an entity": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m",
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Choose an entity first.": [
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
@@ -321,11 +329,14 @@
   "Choose app": [
     "Turn Touch Mac/Views/Mode Title/TTModeTitleView.m"
   ],
+  "Choose for button": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
+  ],
   "Choose the target in the entity list, not in action data.": [
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
   ],
   "Climate": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Close": [
     "Turn Touch Mac/Controllers/TTModeHUDWindowController.m"
@@ -350,14 +361,8 @@
     "Turn Touch Mac/Modes/Govee/Base.lproj/TTModeGoveeConnect.xib:OBZ-nD-v7C.title",
     "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueBridge.xib:6nh-T6-1JP.title"
   ],
-  "Connect locally, find an entity, and choose what your Turn Touch remote should do.": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
-  ],
   "Connect to Home Assistant first.": [
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
-  ],
-  "Connect to Home Assistant…": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTModeHomeAssistantOptions.m"
   ],
   "Connect to Hue": [
     "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueConnect.xib:alA-C8-7Zp.title"
@@ -375,7 +380,10 @@
     "Turn Touch Mac/Modes/Nest/Base.lproj/TTModeNestConnect.xib:OBZ-nD-v7C.title"
   ],
   "Connect to browse your home": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
+  ],
+  "Connect using the Home Assistant menu.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Connected": [
     "Application-owned status or selector label; translated only at rendering, never in state comparisons."
@@ -409,9 +417,6 @@
   ],
   "Connected · %d%% battery": [
     "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
-  ],
-  "Connected · %lu entities · %@": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
   ],
   "Connecting": [
     "Application-owned status or selector label; translated only at rendering, never in state comparisons."
@@ -456,7 +461,7 @@
     "Turn Touch Mac/Views/Settings/TTModalDevices.m"
   ],
   "Connecting to your home…": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Connecting...": [
     "Turn Touch Mac/Modes/Hue/TTModeHue.m",
@@ -491,6 +496,9 @@
   "Connection to Hue bridge lost": [
     "Turn Touch Mac/Modes/Hue/TTModeHue.m"
   ],
+  "Connection…": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
+  ],
   "Contact support": [
     "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
   ],
@@ -520,7 +528,7 @@
     "Turn Touch Mac/Modes/Video/TTModeVideo.m"
   ],
   "Controllable entities": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Cool": [
     "Turn Touch Mac/Modes/Nest/Base.lproj/TTModeNestSetTempOptions.xib:Min-6e-JO2.ibShadowedLabels[1]"
@@ -547,7 +555,7 @@
     "Turn Touch Mac/Views/DFU/TTDeviceTitleView.m"
   ],
   "Covers": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Custom": [
     "Turn Touch Mac/Modes/Custom/TTModeCustom.m"
@@ -573,14 +581,14 @@
     "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
   ],
   "Disconnect": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Disconnected": [
     "Application-owned status or selector label; translated only at rendering, never in state comparisons.",
     "Turn Touch Mac/Views/Title Bar/TTSettingsPopoverController.m"
   ],
   "Disconnected. Credentials removed from this Mac’s Keychain.": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Discovering services": [
     "Application-owned status or selector label; translated only at rendering, never in state comparisons."
@@ -650,7 +658,7 @@
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
   ],
   "Enter a valid Home Assistant URL first.": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Enter your Govee API key (Govee Home > Settings > API)": [
     "Turn Touch Mac/Modes/Govee/Base.lproj/TTModeGoveeConnect.xib:iNs-cE-ll1.title"
@@ -662,6 +670,10 @@
   "Enter your TP-Link/Kasa account credentials for newer devices that use KLAP authentication.": [
     "Turn Touch Mac/Modes/Kasa/TTModeKasaConnected.m",
     "Turn Touch Mac/Modes/Kasa/TTModeKasaSwitchOptions.m"
+  ],
+  "Entities: %lu": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Error (%li): %@": [
     "Turn Touch Mac/Modes/Custom/TTModeCustom.m"
@@ -732,6 +744,9 @@
   "Fetching devices from Govee...": [
     "Turn Touch Mac/Modes/Govee/TTModeGovee.m"
   ],
+  "Filter": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
+  ],
   "Find your Nanoleaf": [
     "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafConnect.m",
     "Turn Touch Mac/Modes/Nanoleaf/Base.lproj/TTModeNanoleafConnect.xib:s9F-ZN-mqc.title"
@@ -740,7 +755,7 @@
     "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueConnect.xib:s9F-ZN-mqc.title"
   ],
   "Finishing sign-in…": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Firmware": [
     "Turn Touch Mac/Views/Settings/Base.lproj/TTModalDevices.xib:dzy-dD-9x1.headerCell.title"
@@ -752,7 +767,7 @@
     "Turn Touch Mac/Views/DFU/TTDeviceTitleView.m"
   ],
   "Found %@ on your network. Sign in to browse your home.": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Found %lu devices": [
     "Turn Touch Mac/Modes/Govee/TTModeGovee.m"
@@ -841,13 +856,24 @@
     "Turn Touch Mac/Modes/Nanoleaf/Base.lproj/TTModeNanoleafPushlink.xib:ins-ab-789.title"
   ],
   "Home Assistant": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTModeHomeAssistant.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTModeHomeAssistant.m",
+    "Turn Touch Mac/Views/Panel/TTBackgroundView.m"
   ],
-  "Home Assistant accepted the action. Check the device, then save when ready.": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+  "Home Assistant accepted the action.": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Home Assistant action": [
     "Turn Touch Mac/Modes/HomeAssistant/TTModeHomeAssistant.m"
+  ],
+  "Home Assistant address": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
+  ],
+  "Home Assistant entities": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
+  ],
+  "Home Assistant menu": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Home Assistant returned HTTP %ld. Check the action and its required fields.": [
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
@@ -989,7 +1015,7 @@
     "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleaf.m"
   ],
   "Lights": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Lights and scenes": [
     "Turn Touch Mac/Modes/Hue/TTModeHue.m"
@@ -1011,7 +1037,7 @@
     "Turn Touch Mac/Modes/Hue/TTModeHue.m"
   ],
   "Looking for your home…": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Lower brightness": [
     "Turn Touch Mac/Modes/Hue/TTModeHue.m",
@@ -1035,7 +1061,7 @@
     "Turn Touch Mac/Modes/Nanoleaf/Base.lproj/TTModeNanoleafConnect.xib:sub-ZN-mqc.title"
   ],
   "Media players": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Menu": [
     "Turn Touch Mac/Modes/News/TTModeNews.m",
@@ -1172,7 +1198,7 @@
     "Turn Touch Mac/Modes/Govee/TTModeGoveeAPIClient.m"
   ],
   "No matching entities": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "No network connection": [
     "Turn Touch Mac/Modes/Nanoleaf/TTModeNanoleafConnect.m"
@@ -1184,7 +1210,7 @@
     "Turn Touch Mac/Views/Pairing/TTModalPairingInfo.m"
   ],
   "No required action data.": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "No response data": [
     "Turn Touch Mac/Modes/Govee/TTModeGoveeAPIClient.m"
@@ -1221,11 +1247,8 @@
     "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:QfF-5n-otp.title",
     "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:Ynp-bh-WI4.title"
   ],
-  "Open this browser from a remote button in Turn Touch to save an assignment.": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
-  ],
   "Open token settings": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Operation Failed": [
     "Turn Touch Mac/DFU/DFUImplementation/DFUOperations.m"
@@ -1234,10 +1257,10 @@
     "Turn Touch Mac/DFU/DFUImplementation/DFUOperations.m"
   ],
   "Or paste a long-lived access token": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Other": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Overrides system volume": [
     "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:l51-Nx-Fj5.title"
@@ -1421,14 +1444,14 @@
     "Turn Touch Mac/Modes/Web/TTModeWeb.m"
   ],
   "Reading entities and actions…": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Reconnect": [
     "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueConnected.xib:rkv-GV-IX2.title",
     "Turn Touch Mac/Modes/Nanoleaf/Base.lproj/TTModeNanoleafConnected.xib:rkv-GV-IX2.title"
   ],
   "Refresh": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m",
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
     "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueBridge.xib:8ny-C0-l3w.title",
     "Turn Touch Mac/Modes/Nanoleaf/Base.lproj/TTModeNanoleafSceneCustomOptions.xib:drb-ab-c.title",
     "Turn Touch Mac/Modes/Nanoleaf/Base.lproj/TTModeNanoleafSceneCustomOptions.xib:rfb-ab-c.title"
@@ -1469,7 +1492,7 @@
     "Turn Touch Mac/Modes/Hue/TTModeHue.m"
   ],
   "Required data: ": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Return": [
     "Turn Touch Mac/Modes/News/TTModeNews.m",
@@ -1498,7 +1521,7 @@
     "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantClient.m"
   ],
   "Running action…": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "SINGLE TAP": [
     "Turn Touch Mac/Views/Mode Tabs/TTModeTab.m"
@@ -1515,12 +1538,6 @@
     "Turn Touch Mac/Modes/Govee/TTModeGoveeSwitchOptions.m",
     "Turn Touch Mac/Modes/Kasa/TTModeKasaConnected.m",
     "Turn Touch Mac/Modes/Kasa/TTModeKasaSwitchOptions.m"
-  ],
-  "Save to button": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
-  ],
-  "Saved %@ · %@ to your remote button.": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
   ],
   "Scan for devices": [
     "Turn Touch Mac/Modes/Kasa/Base.lproj/TTModeKasaConnected.xib:3cG-K3-Uex.title",
@@ -1539,13 +1556,13 @@
     "Application-owned status or selector label; translated only at rendering, never in state comparisons."
   ],
   "Scenes": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Scenes activate a saved look. Scripts run a sequence. Automations created from blueprints appear here too.": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Scripts": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Scripts, files, and websites": [
     "Turn Touch Mac/Modes/Custom/TTModeCustom.m"
@@ -1558,8 +1575,11 @@
     "Turn Touch Mac/Modes/News/TTModeNews.m",
     "Turn Touch Mac/Modes/Web/TTModeWeb.m"
   ],
+  "Search Home Assistant": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
+  ],
   "Search entities, devices, rooms, or entity IDs": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Search for Kasa devices...": [
     "Turn Touch Mac/Modes/Kasa/Base.lproj/TTModeKasaConnect.xib:OBZ-nD-v7C.title"
@@ -1573,9 +1593,6 @@
   ],
   "Search for Wemo devices...": [
     "Turn Touch Mac/Modes/Wemo/Base.lproj/TTModeWemoConnect.xib:OBZ-nD-v7C.title"
-  ],
-  "Search lights, scenes, scripts, and more.\nNo Home Assistant plugin needed.": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTModeHomeAssistantOptions.m"
   ],
   "Searching for Hue...": [
     "Turn Touch Mac/Modes/Hue/TTModeHueConnect.m"
@@ -1667,13 +1684,14 @@
     "Turn Touch Mac/Modes/Music/Base.lproj/TTModeMusicPlaylistOptions.xib:ZSC-Q1-3hf.title"
   ],
   "Sign in to ": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Sign in…": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m",
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Sign-in could not be verified. Please try again.": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Single tap": [
     "Application-owned status or selector label; translated only at rendering, never in state comparisons.",
@@ -1769,7 +1787,7 @@
     "Turn Touch Mac/Views/FTUX/TTModalFTUXView.m"
   ],
   "Switches": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "System-level controls": [
     "Turn Touch Mac/Modes/Mac/TTModeMac.m"
@@ -1816,10 +1834,7 @@
     "Turn Touch Mac/Modes/Nest/Base.lproj/TTModeNestConnected.xib:ezJ-Ir-0bB.title"
   ],
   "Test action": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
-  ],
-  "Test runs the action now. Save assigns it to the selected remote button.": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Text Cell": [
     "Turn Touch Mac/Modes/Hue/Base.lproj/TTModeHueBridge.xib:SBV-su-ExU.title",
@@ -1885,7 +1900,7 @@
     "Turn Touch Mac/Views/Pairing/TTModalPairingInfo.m"
   ],
   "This entity has no callable actions. Sensors are usually read-only.": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Thu": [
     "Turn Touch Mac/Modes/Alarm Clock/Base.lproj/TTModeAlarmClockOptions.xib:j1V-BO-kf2.ibShadowedLabels[4]"
@@ -1958,9 +1973,6 @@
   "Turn Touch uses the local network to find Home Assistant, Philips Hue, Nanoleaf, and other smart home devices.": [
     "Info.plist:NSLocalNetworkUsageDescription"
   ],
-  "Turn Touch · Home Assistant": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
-  ],
   "Turn off": [
     "Turn Touch Mac/Modes/Govee/TTModeGovee.m",
     "Turn Touch Mac/Modes/Kasa/TTModeKasa.m",
@@ -1995,8 +2007,11 @@
     "Turn Touch Mac/Views/DFU/TTDeviceTitleView.m",
     "Turn Touch Mac/Views/DFU/TTDeviceTitleView.m"
   ],
+  "Use access token…": [
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
+  ],
   "Use token": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
+    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantViewController.m"
   ],
   "Version %@": [
     "Turn Touch Mac/Views/Settings/TTModalAbout.m"
@@ -2091,9 +2106,6 @@
   ],
   "Your home, scenes, and automations": [
     "Turn Touch Mac/Modes/HomeAssistant/TTModeHomeAssistant.m"
-  ],
-  "Your home. One button away.": [
-    "Turn Touch Mac/Modes/HomeAssistant/TTHomeAssistantWindowController.m"
   ],
   "Your remote has been paired": [
     "Turn Touch Mac/Views/Pairing/TTModalPairingInfo.m"
