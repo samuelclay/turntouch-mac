@@ -103,7 +103,7 @@ static NSMutableArray *recentlyFoundDevices;
 }
 
 + (NSString *)imageName {
-    return @"mode_wemo.png";
+    return @"mode_kasa.png";
 }
 
 #pragma mark - Actions

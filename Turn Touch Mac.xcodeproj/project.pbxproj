@@ -447,6 +447,7 @@
 		24991ADFBF04FC0D69594CEE /* TTHueBridgeDiscovery.m in Sources */ = {isa = PBXBuildFile; fileRef = B1147828FF5B8676A3D572D8 /* TTHueBridgeDiscovery.m */; };
 		2805814D44E02CD2B63BCD8C /* TTHueBridgeAuthenticator.m in Sources */ = {isa = PBXBuildFile; fileRef = A5734E49A48285E2F66B0670 /* TTHueBridgeAuthenticator.m */; };
 		28366D2B5EAA50DF5A69501A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 824D3656A083E4F1A6EC7C36 /* InfoPlist.strings */; };
+		2E624B89E04B00DC0B787DFE /* mode_kasa.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B7B6A1B5565578AE1CD1E8A /* mode_kasa.png */; };
 		2F99A3A8F84EF4617C4C30E5 /* TTLocalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ED69312E91591502D4C80AE /* TTLocalization.m */; };
 		3374FD6CCD796752EC41D36E /* TTModeKasaConnected.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BDA0A58370551B2FBE70A28 /* TTModeKasaConnected.xib */; };
 		38CD655E3A64AD8814DAA64C /* TTModeKasaConnect.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07E6194594224418E74BA36C /* TTModeKasaConnect.xib */; };
@@ -465,6 +466,7 @@
 		9152CF30A3EE25656EA0456D /* TTModeKasaDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F837BC42018A8E6F8C691 /* TTModeKasaDevice.m */; };
 		9B3BFE2384E73861B5B55C9E /* TTHomeAssistantClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FB4AC0FA0AC92056E4F024 /* TTHomeAssistantClient.m */; };
 		9F9FB24AC17E561B68BB5B38 /* TTModeKasaConnecting.xib in Resources */ = {isa = PBXBuildFile; fileRef = B773BE21DE00A920DC4CBC9D /* TTModeKasaConnecting.xib */; };
+		AC7290C5FF9D05C849E8B22D /* mode_govee.png in Resources */ = {isa = PBXBuildFile; fileRef = G0VE00010000000000000022 /* mode_govee.png */; };
 		AFB548111E83F1BDB9F40634 /* TTHueEventStream.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE70B200E3301C59B137D4B /* TTHueEventStream.m */; };
 		B23FC7FAB5BF2C7F9F5C534A /* TTModeHomeAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = E18EBB2E3A51C318000A1401 /* TTModeHomeAssistant.m */; };
 		B2D884DF9F1BCF1C29C91AFA /* Localization in Resources */ = {isa = PBXBuildFile; fileRef = 51B650FF6EDB5CE59DF16C94 /* Localization */; };
@@ -476,9 +478,11 @@
 		C01FD69B778B5C0684677954 /* Pods_Turn_Touch_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B611485DE4201F24DDD95F6A /* Pods_Turn_Touch_Mac.framework */; };
 		C139615B1E7F2014DF4473C4 /* Pods_Turn_Touch_Mac_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D78D7B37A823FEF6B921BCE /* Pods_Turn_Touch_Mac_Tests.framework */; };
 		C476EB2DD1E0324834CE54FB /* TTSettingsPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = E57D40F362CC641641C4BB5B /* TTSettingsPopoverController.m */; };
+		C6A6A8B521115AC47F6A9892 /* mode_nanoleaf.png in Resources */ = {isa = PBXBuildFile; fileRef = NANL0001000000000000001E /* mode_nanoleaf.png */; };
 		CBF9D7E77D5EAE17FBF85155 /* TTModeTwelve.m in Sources */ = {isa = PBXBuildFile; fileRef = 028D3917657A40C009630123 /* TTModeTwelve.m */; };
 		D21969E8E214D31BCD77DB04 /* TTModeKasaConnected.m in Sources */ = {isa = PBXBuildFile; fileRef = F296FE3E3C388DA98D239B93 /* TTModeKasaConnected.m */; };
 		D4C6A11FF9B6730033DE496A /* TTHueColorUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBE8FBF3A101F4E0ADB2AA8 /* TTHueColorUtilities.m */; };
+		D653DB0A339BB9F4D18DF186 /* mode_kasa.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B7B6A1B5565578AE1CD1E8A /* mode_kasa.png */; };
 		DC2F3AF672E406E92A5EF9EB /* TTGestureDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = F6C6C11BB8655AC9634AD1AB /* TTGestureDecoder.m */; };
 		E1CAFC1AF7EB86236D36510B /* TTHomeAssistantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F231259078F2BB9538494 /* TTHomeAssistantViewController.m */; };
 		E3F3A7F4F9D276D5C2816C5B /* TTHomeAssistantClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FB4AC0FA0AC92056E4F024 /* TTHomeAssistantClient.m */; };
@@ -1498,6 +1502,7 @@
 		4B2219D95892DC55809AA174 /* ja */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = ja; path = "Turn Touch Mac/Views/Action HUD/ja.lproj/TTActionHUDView.strings"; sourceTree = SOURCE_ROOT; };
 		4B3738B337F154D9EE4037F7 /* de */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = de; path = "Turn Touch Mac/Modes/Ifttt/de.lproj/TTModeIftttOptions.strings"; sourceTree = SOURCE_ROOT; };
 		4B5BF08C878A13372EC2155D /* th */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = th; path = "Turn Touch Mac/Views/Settings/th.lproj/TTModalSupportView.strings"; sourceTree = SOURCE_ROOT; };
+		4B7B6A1B5565578AE1CD1E8A /* mode_kasa.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = mode_kasa.png; sourceTree = "<group>"; };
 		4BAAAEEBF34E6A56CF518D76 /* th */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = th; path = "Turn Touch Mac/Views/Settings/th.lproj/TTModalDevices.strings"; sourceTree = SOURCE_ROOT; };
 		4BDF267300EEA7F27DD5067B /* th */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = th; path = "Turn Touch Mac/Modes/Custom/th.lproj/TTModeCustomScriptOptions.strings"; sourceTree = SOURCE_ROOT; };
 		4BE1C935C589599330E7F575 /* tr */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = tr; path = "Turn Touch Mac/Modes/Hue/tr.lproj/TTModeHueRandomOptions.strings"; sourceTree = SOURCE_ROOT; };
@@ -3585,6 +3590,7 @@
 				FF01CA561C46DCC200F83A73 /* sun.png */,
 				FF01CA571C46DCC200F83A73 /* television.png */,
 				FF01CA581C46DCC200F83A73 /* vinyl.png */,
+				4B7B6A1B5565578AE1CD1E8A /* mode_kasa.png */,
 			);
 			path = icons;
 			sourceTree = "<group>";
@@ -5270,6 +5276,9 @@
 				B2D884DF9F1BCF1C29C91AFA /* Localization in Resources */,
 				62A09E6233BC899633C83778 /* Localizable.strings in Resources */,
 				F144E2E690DC8D30FB00379F /* InfoPlist.strings in Resources */,
+				2E624B89E04B00DC0B787DFE /* mode_kasa.png in Resources */,
+				AC7290C5FF9D05C849E8B22D /* mode_govee.png in Resources */,
+				C6A6A8B521115AC47F6A9892 /* mode_nanoleaf.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5516,6 +5525,7 @@
 				68E1A4216B2D6C4678274FDF /* Localization in Resources */,
 				180543782A5DE080CBD3F058 /* Localizable.strings in Resources */,
 				28366D2B5EAA50DF5A69501A /* InfoPlist.strings in Resources */,
+				D653DB0A339BB9F4D18DF186 /* mode_kasa.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
