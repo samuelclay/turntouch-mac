@@ -260,7 +260,10 @@
     //       the action diamond is interactive.
     TTModeDirection activeModeDirection = (self.ignoreActiveMode || self.diamondType == DIAMOND_TYPE_INTERACTIVE) ? self.overrideActiveDirection : self.appDelegate.modeMap.activeModeDirection;
     TTModeDirection selectedBank = self.appDelegate.modeMap.selectedModeDirection;
-    if (self.diamondType == DIAMOND_TYPE_MODE && selectedBank >= SINGLE_TAP) selectedBank = (TTModeDirection)(selectedBank - SINGLE_TAP + NORTH);
+    if ((self.diamondType == DIAMOND_TYPE_MODE || self.diamondType == DIAMOND_TYPE_STATUSBAR) &&
+        selectedBank >= SINGLE_TAP && selectedBank <= HOLD) {
+        selectedBank = (TTModeDirection)(selectedBank - SINGLE_TAP + NORTH);
+    }
     TTModeDirection selectedModeDirection = self.ignoreSelectedMode ? self.overrideSelectedDirection : selectedBank;
     TTModeDirection inspectingModeDirection = self.appDelegate.modeMap.inspectingModeDirection;
     TTModeDirection hoverModeDirection = self.appDelegate.modeMap.hoverModeDirection;

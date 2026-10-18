@@ -17,6 +17,13 @@
     
     // A temporary solution to fix drawing issues in dark mode; should properly implement dark mode later.
     self.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
+
+    // Menu-bar controls must appear on the clicked display even when another
+    // app owns its full-screen Space or Stage Manager set.
+    self.collectionBehavior |= NSWindowCollectionBehaviorFullScreenAuxiliary;
+    if (@available(macOS 13.0, *)) {
+        self.collectionBehavior |= NSWindowCollectionBehaviorCanJoinAllApplications;
+    }
 }
 
 - (BOOL)canBecomeKeyWindow {

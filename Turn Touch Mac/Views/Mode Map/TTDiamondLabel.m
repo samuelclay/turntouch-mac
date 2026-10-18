@@ -21,6 +21,12 @@
 
 @implementation TTDiamondLabel
 
+- (NSView *)hitTest:(NSPoint)point {
+    // Labels overlap the diamond buttons. Let the diamond underneath receive
+    // clicks so its direction selection and hover state stay in sync.
+    return nil;
+}
+
 - (id)initWithFrame:(NSRect)frame inDirection:(TTModeDirection)direction {
     frame = NSInsetRect(frame, 0, -1 * PADDING);
 

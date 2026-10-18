@@ -13,6 +13,8 @@ with tempfile.TemporaryDirectory(prefix='turntouch-button-tests-') as tmp:
         common += ['-I', str(path)]
     cases = [
         ('gestures', ['Bluetooth/TTGestureDecoder.m'], 'TTGestureDecoderTests.m'),
+        ('diamond', ['Views/Mode Map/TTDiamondView.m', 'Views/Mode Map/TTDiamondLabel.m'], 'TTDiamondInteractionTests.m'),
+        ('panel', ['Controllers/TTPanelController.m'], 'TTPanelVisibilityTests.m'),
         ('layouts', ['Models/TTMode.m', 'Models/TTModeMap.m', 'Models/TTModeTwelve.m', 'Models/TTBatchActions.m', 'Models/TTAction.m'], 'TTButtonLayoutTests.m'),
     ]
     for name, sources, test in cases:

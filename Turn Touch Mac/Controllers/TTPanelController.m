@@ -48,7 +48,7 @@
     NSPanel *panel = (id)[self window];
     [panel setDelegate:self];
     [panel setAcceptsMouseMovedEvents:YES];
-    [panel setHidesOnDeactivate:YES];
+    [panel setHidesOnDeactivate:NO];
     [panel setLevel:NSPopUpMenuWindowLevel];
     [panel setOpaque:NO];
     [panel setBackgroundColor:[NSColor clearColor]];
@@ -99,9 +99,10 @@
 - (void)panelWillBeginSheet:(NSNotification *)notification { [(NSPanel *)self.window setHidesOnDeactivate:NO]; }
 - (void)panelDidEndSheet:(NSNotification *)notification { [self updatePanelHidingPolicy]; }
 - (void)updatePanelHidingPolicy {
-    // Let AppKit perform ordinary menu-bar dismissal, but don't let it hide
-    // the editor behind a system authorization dialog or sign-in sheet.
-    [(NSPanel *)self.window setHidesOnDeactivate:![self hasProtectedInteraction]];
+    // This is a nonactivating panel: it can own keyboard focus while another
+    // app stays active. AppKit's automatic hiding races with menu-bar opening
+    // and leaves hasActivePanel out of sync. Dismiss through this controller.
+    [(NSPanel *)self.window setHidesOnDeactivate:NO];
 }
 - (BOOL)hasProtectedInteraction {
     return self.preventClosing || self.window.attachedSheet != nil || TTHomeAssistantClient.isAwaitingKeychainAuthorization;
@@ -119,7 +120,7 @@
     [self dismissIfInactive];
 }
 - (void)dismissIfInactive {
-    if (!NSApp.active && ![self hasProtectedInteraction]) self.hasActivePanel = NO;
+    if (!NSApp.active && !self.window.isKeyWindow && ![self hasProtectedInteraction]) self.hasActivePanel = NO;
 }
 - (void)keychainInteractionChanged:(NSNotification *)notification {
     if (TTHomeAssistantClient.isAwaitingKeychainAuthorization || !self.waitingForPermissionFocus) {
