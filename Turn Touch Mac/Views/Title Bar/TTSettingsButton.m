@@ -12,9 +12,9 @@
 
 - (id)initWithFrame:(NSRect)buttonFrame pullsDown:(BOOL)flag {
     if (self = [super initWithFrame:buttonFrame pullsDown:flag]) {
-        NSImage *image = [NSImage imageNamed:@"settings"];
+        NSImage *image = [[NSImage imageNamed:@"settings"] copy];
+        image.size = NSMakeSize(16, 16);
         [self setImage:image];
-        [self.image setSize:NSMakeSize(16, 16)];
         [self setImagePosition:NSImageOnly];
         [self setButtonType:NSMomentaryChangeButton];
         [self setImageScaling:NSImageScaleProportionallyDown];

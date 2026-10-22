@@ -37,7 +37,9 @@ const NSInteger SETTINGS_ICON_SIZE = 16;
         self.title = [NSImage imageNamed:@"title"];
         [self.title setSize:NSMakeSize(100, 12)];
         
-        self.settingsButton = [NSButton buttonWithImage:[NSImage imageNamed:@"settings"] target:self action:@selector(showSettings:)];
+        NSImage *settingsImage = [[NSImage imageNamed:@"settings"] copy];
+        settingsImage.size = NSMakeSize(SETTINGS_ICON_SIZE, SETTINGS_ICON_SIZE);
+        self.settingsButton = [NSButton buttonWithImage:settingsImage target:self action:@selector(showSettings:)];
         self.settingsButton.bordered = NO;
         self.settingsButton.imageScaling = NSImageScaleProportionallyDown;
         self.settingsButton.accessibilityLabel = TTText(@"Settings");

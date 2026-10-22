@@ -15,6 +15,7 @@ with tempfile.TemporaryDirectory(prefix='turntouch-button-tests-') as tmp:
         ('gestures', ['Bluetooth/TTGestureDecoder.m'], 'TTGestureDecoderTests.m'),
         ('diamond', ['Views/Mode Map/TTDiamondView.m', 'Views/Mode Map/TTDiamondLabel.m'], 'TTDiamondInteractionTests.m'),
         ('panel', ['Controllers/TTPanelController.m'], 'TTPanelVisibilityTests.m'),
+        ('panel-resize', ['Views/Panel/TTPanel.m'], 'TTPanelResizeTests.m'),
         ('layouts', ['Models/TTMode.m', 'Models/TTModeMap.m', 'Models/TTModeTwelve.m', 'Models/TTBatchActions.m', 'Models/TTAction.m'], 'TTButtonLayoutTests.m'),
     ]
     for name, sources, test in cases:

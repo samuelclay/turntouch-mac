@@ -32,6 +32,44 @@ int main(void) {
         [window setValue:@{@"entity_id": @"light.desk", @"service": @"light.turn_off"} forKey:@"initialBinding"];
         [window setValue:@"light.desk" forKey:@"selectedEntityID"];
         [window filter:nil];
+        // In a window, optional stack hugging can preserve the expanded height
+        // even though the editor's fittingSize is already smaller. Exercise
+        // actual AppKit resizing, not just fittingSize on a detached view.
+        NSView *changeMenu = [NSView new];
+        NSLayoutConstraint *menuHeight = [changeMenu.heightAnchor constraintEqualToConstant:1];
+        menuHeight.active = YES;
+        NSStackView *panelContent = [NSStackView stackViewWithViews:@[changeMenu, window.view]];
+        panelContent.orientation = NSUserInterfaceLayoutOrientationVertical;
+        panelContent.spacing = 0;
+        [panelContent setViews:@[changeMenu, window.view] inGravity:NSStackViewGravityTop];
+        [panelContent setHuggingPriority:NSLayoutPriorityDefaultHigh forOrientation:NSLayoutConstraintOrientationVertical];
+        [panelContent.widthAnchor constraintEqualToConstant:380].active = YES;
+        [window.view.widthAnchor constraintEqualToAnchor:panelContent.widthAnchor].active = YES;
+        NSWindow *panel = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, 380, 470)
+            styleMask:NSWindowStyleMaskBorderless backing:NSBackingStoreBuffered defer:YES];
+        panel.contentView = panelContent;
+        [panelContent layoutSubtreeIfNeeded];
+        [NSRunLoop.currentRunLoop runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.02]];
+        CGFloat collapsedHeight = panelContent.fittingSize.height;
+        [panel setContentSize:NSMakeSize(380, collapsedHeight)];
+        for (NSInteger cycle = 0; cycle < 2; cycle++) {
+            menuHeight.constant = 146;
+            [panelContent layoutSubtreeIfNeeded];
+            [NSRunLoop.currentRunLoop runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.02]];
+            Check(fabs(NSHeight(panel.frame) - collapsedHeight - 145) < 1, @"Change grows the window to fit the menu");
+            menuHeight.constant = 1;
+            [panelContent layoutSubtreeIfNeeded];
+            [NSRunLoop.currentRunLoop runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.02]];
+            Check(fabs(NSHeight(panel.frame) - collapsedHeight) < 1, @"Cancel shrinks the window without blank space");
+            [window toggleAction:nil];
+            [panelContent layoutSubtreeIfNeeded];
+            [NSRunLoop.currentRunLoop runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.02]];
+            Check(NSHeight(panel.frame) > collapsedHeight, @"action settings expand the window");
+            [window toggleAction:nil];
+            [panelContent layoutSubtreeIfNeeded];
+            [NSRunLoop.currentRunLoop runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.02]];
+            Check(fabs(NSHeight(panel.frame) - collapsedHeight) < 1, @"collapsing action settings restores the original window height");
+        }
         NSPopUpButton *picker = [window valueForKey:@"actionPicker"];
         NSTextView *editor = [window valueForKey:@"dataEditor"];
         NSSearchField *search = [window valueForKey:@"search"];

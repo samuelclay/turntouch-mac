@@ -9,6 +9,8 @@
 #import "TTDeviceTitleView.h"
 #import "NSDate+TimeAgo.h"
 
+static const CGFloat TTRemoteSettingsIconSize = 18;
+
 @interface TTDeviceTitleView ()
 
 @property (nonatomic, strong) NSDictionary *titleAttributes;
@@ -40,7 +42,9 @@
         [self.changeButton setTarget:self];
         [self addSubview:self.changeButton];
         
-        self.settingsButton = [[TTSettingsButton alloc] initWithFrame:NSZeroRect pullsDown:YES];
+        self.settingsButton = [[TTSettingsButton alloc] initWithFrame:
+            NSMakeRect(0, 0, TTRemoteSettingsIconSize * 2.55, TTRemoteSettingsIconSize) pullsDown:YES];
+        self.settingsButton.hidden = YES;
         [self buildSettingsMenu:YES];
         [self.settingsButton setTarget:self];
         [self.settingsButton setMenu:self.settingsMenu];
@@ -74,6 +78,12 @@
     [self addTrackingArea:trackingArea];
 }
 
+- (void)layout {
+    [super layout];
+    self.settingsButton.frame = NSMakeRect(0, (NSHeight(self.bounds) - TTRemoteSettingsIconSize) / 2,
+                                          TTRemoteSettingsIconSize * 2.55, TTRemoteSettingsIconSize);
+}
+
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
 
@@ -89,8 +99,6 @@
 
     if (self.hoverActive || self.isMenuVisible) {
         self.settingsButton.hidden = NO;
-        CGFloat offsetY = (NSHeight(self.frame)/2) - (self.settingsButton.image.size.height/2);
-        self.settingsButton.frame = NSMakeRect(0, offsetY, self.settingsButton.image.size.width*2.55, self.settingsButton.image.size.height);
     } else {
         self.settingsButton.hidden = YES;
         [remoteIcon drawInRect:NSMakeRect(imagePoint.x, imagePoint.y,
@@ -288,8 +296,8 @@
     [self.settingsMenu addItem:menuItem];
     
     menuItem = [[NSMenuItem alloc] initWithTitle:@"" action:nil keyEquivalent:@""];
-    NSImage *image = [NSImage imageNamed:@"settings"];
-    [image setSize:NSMakeSize(18, 18)];
+    NSImage *image = [[NSImage imageNamed:@"settings"] copy];
+    [image setSize:NSMakeSize(TTRemoteSettingsIconSize, TTRemoteSettingsIconSize)];
     [menuItem setImage:image];
     [self.settingsMenu insertItem:menuItem atIndex:0];
 }

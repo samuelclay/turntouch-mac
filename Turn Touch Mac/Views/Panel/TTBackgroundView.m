@@ -11,6 +11,7 @@
 #import "TTBackgroundView.h"
 #import "TTModeHomeAssistantOptions.h"
 #import "TTModeHomeAssistant.h"
+#import "TTPanelGeometry.h"
 
 #pragma mark -
 
@@ -187,13 +188,14 @@
 
     self.isResizingPanel = YES;
 
-    NSRect frame = window.frame;
-    CGFloat heightDelta = preferredHeight - NSHeight(frame);
-    if (fabs(heightDelta) > 0.5f) {
-        frame.origin.y -= heightDelta;
-        frame.size.height = preferredHeight;
-        NSRect visible = self.appDelegate.panelController.screenForPanel.visibleFrame;
-        frame.origin.y = MIN(MAX(frame.origin.y, NSMinY(visible)), NSMaxY(visible) - NSHeight(frame));
+    // Auto Layout can move the window while the menu and scroll viewport trade
+    // height, even if the final panel height is unchanged. Always anchor to the
+    // status item instead of preserving an already-shifted window top.
+    NSRect frame = TTPanelFrameBelowStatusItem(
+        [self.appDelegate.panelController statusRectForWindow:window],
+        NSMakeSize(PANEL_WIDTH, preferredHeight),
+        self.appDelegate.panelController.screenForPanel.visibleFrame, ARROW_HEIGHT);
+    if (!NSEqualRects(frame, window.frame)) {
         [window setFrame:frame display:YES animate:NO];
     }
 

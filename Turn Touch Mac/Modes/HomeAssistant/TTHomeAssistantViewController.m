@@ -80,6 +80,9 @@
     stack.alignment = NSLayoutAttributeLeading;
     stack.spacing = spacing;
     stack.translatesAutoresizingMaskIntoConstraints = NO;
+    // Empty space must leave the panel when a section collapses, rather than
+    // stretching an editor column to preserve the window's previous height.
+    [stack setHuggingPriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationVertical];
     for (NSView *view in views) [view.widthAnchor constraintEqualToAnchor:stack.widthAnchor].active = YES;
     return stack;
 }

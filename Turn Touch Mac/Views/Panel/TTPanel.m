@@ -9,6 +9,7 @@
 #import "TTPanel.h"
 #import "TTAppDelegate.h"
 #import "TTPanelController.h"
+#import "TTPanelGeometry.h"
 
 @implementation TTPanel
 
@@ -28,6 +29,18 @@
 
 - (BOOL)canBecomeKeyWindow {
     return YES;
+}
+
+- (void)setFrame:(NSRect)frameRect display:(BOOL)display {
+    // AppKit also resizes the window after its content finishes Auto Layout.
+    // Keep those automatic resizes below the menu bar, including transitions
+    // where a collapsing menu gives its height back to the scroll viewport.
+    TTPanelController *controller = (TTPanelController *)self.windowController;
+    if (self.isVisible && [controller isKindOfClass:TTPanelController.class]) {
+        frameRect = TTPanelFrameBelowStatusItem([controller statusRectForWindow:self],
+            frameRect.size, controller.screenForPanel.visibleFrame, ARROW_HEIGHT);
+    }
+    [super setFrame:frameRect display:display];
 }
 
 @end
