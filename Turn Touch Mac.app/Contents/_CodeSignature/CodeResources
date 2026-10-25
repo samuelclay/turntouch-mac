@@ -22,7 +22,7 @@
 		</data>
 		<key>Resources/Base.lproj/TTModalAbout.nib</key>
 		<data>
-		q/c+LWjxtRwyxI05oZ/N7Qa5WFg=
+		G7M/yuJtCxQJFtRJ/Iz0lsTtY7U=
 		</data>
 		<key>Resources/Base.lproj/TTModalDevices.nib</key>
 		<data>
@@ -46,11 +46,11 @@
 		</data>
 		<key>Resources/Base.lproj/TTModeAirfoilVolumeJumpOptions.nib</key>
 		<data>
-		FjuhhNrxKrA1QTsPCIK4qijyIjk=
+		rl9P7KfPEIrImt75sk7JM/P6NuQ=
 		</data>
 		<key>Resources/Base.lproj/TTModeAlarmClockOptions.nib</key>
 		<data>
-		vsymJr4Ji7A7ZM8HJWtgpoUYHsE=
+		KBLNm6VNDDz5N0XnokDC8AJEWLI=
 		</data>
 		<key>Resources/Base.lproj/TTModeAlarmSnoozeOptions.nib</key>
 		<data>
@@ -62,7 +62,7 @@
 		</data>
 		<key>Resources/Base.lproj/TTModeCustomKeyboardOptions.nib</key>
 		<data>
-		SRY9H+Nan10uQ918fj/FcO4LapA=
+		B1h5o9jGma6Va2d6tz2oDtGJEp4=
 		</data>
 		<key>Resources/Base.lproj/TTModeCustomScriptOptions.nib</key>
 		<data>
@@ -78,7 +78,7 @@
 		</data>
 		<key>Resources/Base.lproj/TTModeGoveeConnected.nib</key>
 		<data>
-		aFHW/2G0Y/I1PtVBBBdcKjGmJMk=
+		Hk8GsoOTGtpZeEdrfFrKKZK1cJs=
 		</data>
 		<key>Resources/Base.lproj/TTModeGoveeConnecting.nib</key>
 		<data>
@@ -122,15 +122,15 @@
 		</data>
 		<key>Resources/Base.lproj/TTModeHueRandomOptions.nib</key>
 		<data>
-		EjIy1XT4N7MjlZsw1Q8EGiiTJEU=
+		WxwpxbW9wRWQASGKVoCs/PxRdxI=
 		</data>
 		<key>Resources/Base.lproj/TTModeHueSceneOptions.nib</key>
 		<data>
-		w3I6vsKyZ2+oaqB1Hlxs0Uf9unw=
+		lc8dNEbOj8b6XkBfqbgvAKziXdg=
 		</data>
 		<key>Resources/Base.lproj/TTModeHueSleepOptions.nib</key>
 		<data>
-		tZ8McW6+9L6UxSX4ks6LFTJ2UO8=
+		m2z6W8r8FXMJFHQkZFud2+mffQI=
 		</data>
 		<key>Resources/Base.lproj/TTModeIftttAuthViewController.nib</key>
 		<data>
@@ -142,11 +142,11 @@
 		</data>
 		<key>Resources/Base.lproj/TTModeIftttConnected.nib</key>
 		<data>
-		k7enJLcht9zLd+X8v0BQOVfFj6U=
+		UCH/pDAyUbtap6zfi6LHWkwHh9Q=
 		</data>
 		<key>Resources/Base.lproj/TTModeIftttConnecting.nib</key>
 		<data>
-		bbryCVQxV1lOKu6IteIRqMF6hvQ=
+		4878IZFrXbcLEpsIFynpiM4FlyI=
 		</data>
 		<key>Resources/Base.lproj/TTModeIftttOptions.nib</key>
 		<data>
@@ -154,7 +154,7 @@
 		</data>
 		<key>Resources/Base.lproj/TTModeIftttTriggerActionOptions.nib</key>
 		<data>
-		DUjnasmu4p1dcNd4IQT9/BnXA6Q=
+		FcKjDUMVePu6OaOKn3mFjrYZcYk=
 		</data>
 		<key>Resources/Base.lproj/TTModeKasaConnect.nib</key>
 		<data>
@@ -178,7 +178,7 @@
 		</data>
 		<key>Resources/Base.lproj/TTModeMusicPlaylistOptions.nib</key>
 		<data>
-		VBttEfQFw7yiJZAXiUACcy7Kj5k=
+		3owe3jHwClWtSGtXTGmp4IFxNv8=
 		</data>
 		<key>Resources/Base.lproj/TTModeMusicVolumeJumpOptions.nib</key>
 		<data>
@@ -206,11 +206,11 @@
 		</data>
 		<key>Resources/Base.lproj/TTModeNanoleafSceneCustomOptions.nib</key>
 		<data>
-		t60ewoF5HO2bfRkPSlB7pMJ62WA=
+		mS4JXV7cl2ncB3QEt6tC5VXpr1s=
 		</data>
 		<key>Resources/Base.lproj/TTModeNanoleafSleepOptions.nib</key>
 		<data>
-		1lov6rUYn7dXyn3J1Bc/YEs/ONU=
+		JZPLUGezBlPEyCVTCB/8DeywFhQ=
 		</data>
 		<key>Resources/Base.lproj/TTModeNestAuthViewController.nib</key>
 		<data>
@@ -234,7 +234,7 @@
 		</data>
 		<key>Resources/Base.lproj/TTModeNestSetTempOptions.nib</key>
 		<data>
-		ie851VcmG5QjQMCigrePstbM+3Y=
+		GA9LoJ0LUev69ldN816pqPQd4YA=
 		</data>
 		<key>Resources/Base.lproj/TTModeNewsWindowController.nib/keyedobjects-101300.nib</key>
 		<data>
@@ -258,11 +258,11 @@
 		</data>
 		<key>Resources/Base.lproj/TTModeSonosConnected.nib</key>
 		<data>
-		bKZCUxhTrb92/Q9D+ovr+BxeXwo=
+		zb7sdlMtp3MmI9RFoBLjR5oZAc8=
 		</data>
 		<key>Resources/Base.lproj/TTModeSonosConnecting.nib</key>
 		<data>
-		P4tuJrXQgIXq/YUkEyK/clhm9Xg=
+		W7+omHzxaUzYi3yReWxpUZwsFro=
 		</data>
 		<key>Resources/Base.lproj/TTModeSonosOptions.nib</key>
 		<data>
@@ -270,11 +270,11 @@
 		</data>
 		<key>Resources/Base.lproj/TTModeSpotifyVolumeJumpOptions.nib</key>
 		<data>
-		ZOCpv3WS7ovRWqZIgrjtDwth4SY=
+		+EqHLN1sRdF4aDMCOuIsclyP4lg=
 		</data>
 		<key>Resources/Base.lproj/TTModeTVVolumeJumpOptions.nib</key>
 		<data>
-		loBt+ffDDrxAIZOZuiYykA9jIpk=
+		8uC9aq+279F7Ue86AVWJJgQNnLQ=
 		</data>
 		<key>Resources/Base.lproj/TTModeWebWindowController.nib</key>
 		<data>
@@ -286,7 +286,7 @@
 		</data>
 		<key>Resources/Base.lproj/TTModeWemoConnected.nib</key>
 		<data>
-		keH5MfVCcbPl54/Orcja1diIK/I=
+		+wsGiG1GQBBsEuIlgykKb2Xactk=
 		</data>
 		<key>Resources/Base.lproj/TTModeWemoConnecting.nib</key>
 		<data>
@@ -685,7 +685,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			gDES3LDUvodzfj7k/v/fE+yr4Ds=
+			Saenqana4zJuPbBO6lJSwHNp2Fg=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1390,7 +1390,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			fCrKtOhHdd+wHTo5BKe1t/no+I8=
+			R4UWVGEm0KN5zsYcYDtswhZkZ0o=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -2080,7 +2080,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			iaUYLoU4csWIUoVqYgkT/vilYEg=
+			sgzOVSJeF801rnPe7lCAxzYn29w=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -2741,7 +2741,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			JWYc4HZXF5ZqNQxvFow0PV5FYcM=
+			vYW26kvGAI/rhPzTIVde6egd9Is=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -3438,7 +3438,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			M08O5IYsduUC3zsU4iHuyXQS2lo=
+			ts4qkeUH+CcI1a+VbuPtMe92Zg8=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -4099,7 +4099,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			zTNoOQ68jHpMSJsg/Yy+trPkBiQ=
+			6DWDdxUbFKGd2E6IAEAjDhRMyrY=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -4760,7 +4760,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			X9mp2aFRlEptZstNnDknSCtE9Fc=
+			FEWZkYPvo1FxwU5skFJz9/zUX8A=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -5457,7 +5457,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			XgtgH9OQIgzJBIjGsAYY+ws1kKk=
+			6ZrdMUaFSjPpVz9Km16uTYH6M1c=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -6122,7 +6122,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			bAIC7KkYiPFSBGmL9n2WjMTf77s=
+			uyq7SRrz+oHexzlAqs+kg+vikRA=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -6815,7 +6815,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			VYY5PNfeIuT5sqs7fY69POBBgkY=
+			gUGlIVUtOjKAdiUlmEyoFWG7UOI=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -7476,7 +7476,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			eu+mtdfW/+rMQpi1jPE+96smDIk=
+			j2Fposzi9OQbNVnf3jkgSnfVBdw=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -8230,7 +8230,7 @@
 		</data>
 		<key>Resources/mode_govee.png</key>
 		<data>
-		gknwoSMdt/zTkdcm4+kXL0/HJDE=
+		uXkw79cpaCR+R6q+nArTYVt7yow=
 		</data>
 		<key>Resources/mode_home.png</key>
 		<data>
@@ -8243,6 +8243,10 @@
 		<key>Resources/mode_ifttt.png</key>
 		<data>
 		pJpAwMYUVisCgRCr5BUe5ygxQ0U=
+		</data>
+		<key>Resources/mode_kasa.png</key>
+		<data>
+		baSifVCwlR2euyQXyptJaH3PmCc=
 		</data>
 		<key>Resources/mode_mac.png</key>
 		<data>
@@ -8262,7 +8266,7 @@
 		</data>
 		<key>Resources/mode_nanoleaf.png</key>
 		<data>
-		gknwoSMdt/zTkdcm4+kXL0/HJDE=
+		gMySYm/RRL/nZxzqbz9iEM0okRo=
 		</data>
 		<key>Resources/mode_nest.png</key>
 		<data>
@@ -8393,7 +8397,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ZxhNUHenhoqYByJj9mhvLoppAOM=
+			nbqw0T1OuEZRWSfsH6BOKQw17FQ=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -9062,7 +9066,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ZMjrQ1ISa8QyV2+aoQH/KYLv3aY=
+			zMKHtQb7Vwn3oplw1DRzwSlvQbw=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -9739,7 +9743,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			2pww9M2Ym4YzuVIrs/io1GixqDw=
+			G1DG3yb/+iugP6NkBsYXq0qx/lw=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -10404,7 +10408,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			m0JllLOnBchXVssdnbtk/I4IgUA=
+			BcA3ZWGBb3rM+LYmNph3tV6utSs=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -11141,7 +11145,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			7rTuYUx2kdXyYUSfghdBVtXLRP4=
+			MxRvBQm2HZVxNwPLtYzlxeuzpFg=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -11802,7 +11806,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			fRzbSstagQjyAJ326IlEom9eV3o=
+			hyOypTqlW0rAv6zOKB3jpER//gs=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -12459,7 +12463,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			wkTQQ6aPCr24lVEnUH/yls6S5hE=
+			qvNV9qvWkosf2oMaUvM8q0ny1S8=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -13116,7 +13120,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Xo1lJRV5yp6O5bW0xTeOhgfi1Ok=
+			UQ/yiFUDCODsjxq8+ztxIZJN1JM=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -13785,7 +13789,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			N+ZIY5aoBixagJEodTVCh60Us3g=
+			cjGE1XOMRDwGuyxdb1vDmVB2cFA=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -14442,7 +14446,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			iCN+8+J/eTwSkIgkcFA9BFjliEs=
+			qziq/GQ0LxLUaMAkIgJaHP9TQWc=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -15093,7 +15097,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			xujT3QAdKnwR+3reewI/JN6UyhY=
+			panBkuWrktc2IdVNcoU3L579NhQ=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.cocoapods.AFNetworking" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -15102,7 +15106,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			NFE5+DRdS1YoQOlC2fGjjrL4VBM=
+			os5lXY2kLTN5Z4Qa0hxY5pk5Mgs=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.cocoapods.MASShortcut" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -15111,7 +15115,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			f5bKIC/WGUTXaw4gK+Oh54pTDmw=
+			xNBn1AVYsAHgZ2dm1bEhtgySbGE=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "org.sparkle-project.Sparkle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6W5HRS3393")</string>
@@ -15148,7 +15152,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			WUUhm/rueDUFRpJox+4mVV9DFzytXwEMbXlhK+TMj48=
+			237NEd0EEF10GaQJmjnLFHdbFitlgLda4wYtWPKBmBk=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/TTModalDevices.nib</key>
@@ -15190,14 +15194,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			jkTA9odfr3RkgWVnANRdhSAs43/TpDUzOyuXRtn+Xmg=
+			8oFdHrDhgInY8NbmQ7bIdBe7NZ66D/hz3jMg7pqZtCg=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/TTModeAlarmClockOptions.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			lRMWOCnogqFGxdsx2076fYYzMyzXj81K6Y3cCUk6lRM=
+			pORKN42iJ5K48mck+F9z2n6aOLBc/gIxaZhnu7bqFh4=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/TTModeAlarmSnoozeOptions.nib</key>
@@ -15218,7 +15222,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ARvhBVVjgrAdQ2tLk0QK4gbCvU80wED7BBnk9xOaIts=
+			dMCQQDximMfworsdwXyTz7nGrCuQHDtcrB7msE9q8SE=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/TTModeCustomScriptOptions.nib</key>
@@ -15246,7 +15250,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			xCmp2q3SomYPFDqaOn4bY/K6NBjRS9eQTAY8Az+K4qU=
+			vuykTNpM70Tt/0UwB1J8wHF6LGcLangrdWUGQWi2mTo=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/TTModeGoveeConnecting.nib</key>
@@ -15323,21 +15327,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ib3ZNiudMLgzmviXriW9TqZXgVxRUVUiw5xZbUaFXVQ=
+			eBviduFUKwa85kLJUXOTVnEHpu4XjD/JHJouEuqvWwA=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/TTModeHueSceneOptions.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			XPKhBoy3CoZgaQIdC/y4pag/N4UnEEQjHy0Fd61Q8kQ=
+			JEU+BDuzBsiCE3bxAq9AGR0iQUUrTUx2HT3PZB05et0=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/TTModeHueSleepOptions.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Wrq+5ViYm4rNJ6n1L8era4X2GuAN3wMzUD3w6TSoK+g=
+			G3W59iwWLoVRUL8yJqJH3brFJWuX84T2Bo2o67JmdXM=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/TTModeIftttAuthViewController.nib</key>
@@ -15358,14 +15362,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			fFND+eQL2c7+urGHgOPFxfYuVa+P989PrdnetgxtM+U=
+			F4ioPR8lSldjwxMngMTe1eH4o82QiVXPG0bqyau+vSk=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/TTModeIftttConnecting.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			+i43nSnY8Z9tyNNwh4AzQTF5w537x4FS4dL69IokT5w=
+			J9BPosqZlNFJsgc94BIins0+Gecq7doWR3dqSxYXdrM=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/TTModeIftttOptions.nib</key>
@@ -15379,7 +15383,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			3vfawIGX9806gEdiHqV+rGJauEJjOWhTuMh1kIwOZss=
+			lZgCAILZM5Z6ReAZM3EcK7566XuC+WQ23VL1d4vEmVs=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/TTModeKasaConnect.nib</key>
@@ -15421,7 +15425,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			8MwCSYMw7r+EjH6Cq9rrBHorQwi1eXgrHGos9Vv7O5g=
+			p/etU3a9tpIFFsjRw6fFoX2Y9QXaq6E3qHNXH/F+2Uw=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/TTModeMusicVolumeJumpOptions.nib</key>
@@ -15470,14 +15474,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			WagufnNihGJLrQjqNgTDOH5XurDU16n4xBpsUeFiztk=
+			22z9rjspeN1zkc490D9HVohocgpi94TK3dMZLRbMLSI=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/TTModeNanoleafSleepOptions.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			yJLWKbFr2SKtKKc3nQ32nWsYSS0uqzHgzRzXeggS0Vw=
+			EODpbADUYmCEjti2b1xnhW2DUgmt6uzISn4MubxQRPI=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/TTModeNestAuthViewController.nib</key>
@@ -15519,7 +15523,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			y5ptkN3OOWxxMs7NbJedcWs9UlbFhECQNFRsObiX6eA=
+			jZAroazZJ3Qk1pGh4SrPUNEa8SWmDwuYoUQ/w1V22OU=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/TTModeNewsWindowController.nib/keyedobjects-101300.nib</key>
@@ -15561,14 +15565,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			mLhGWvxdLwMlGZjpFbkIi6lMIn9DoGoH/LAON1+1PRI=
+			0FjRUvhQA70rfFLtjzLi35Tw8Kur440Mp6yM9KN6+Hs=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/TTModeSonosConnecting.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			KumGob9ZydvjwoepHu7x7iX/pzmM0zFzrAcCeZEcnWI=
+			h1C9Ca/O6WpdiqCo7iB43jFDs71nu+kPY+YqlSOPf4c=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/TTModeSonosOptions.nib</key>
@@ -15582,14 +15586,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			1wNnrmgGvsptcml3rL3LlyGVWNGOmvTqjaF5iRT1JCA=
+			vNn8dUVHQJgiNrmvOwqz60nOndVQjVfJDTMjf4XU9wY=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/TTModeTVVolumeJumpOptions.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			bz4I5k5PiHT56gZ9/m7z1at3UOn1XrEjxNGdMMBTfYU=
+			5bK1i1cdENqgo2lOkTlD+b5j/BGND409xkRRCXcRG5I=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/TTModeWebWindowController.nib</key>
@@ -15610,7 +15614,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ukv60Sv8SJR3iM9z/EhrWu3HzxViIfWxu0WLCaiNz9c=
+			Hp+NR8U+35pKz62JodfjuftruFjuUIa4AObJ80e9n9s=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/TTModeWemoConnecting.nib</key>
@@ -16082,7 +16086,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			vBBAlNNx5RKMjdKBFQx1tQ53NCB+Pjzr81aPK117zN8=
+			Wl80EQ6mOMZLgVQ9/fmqGQFihgd666pA39nAj4PYm9A=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -16823,7 +16827,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			/2FAbfmrXFaMIOnqtZoBaeB2xBYbqkHeCSKCj+/+ALg=
+			NglBvyFMWEaRsq70pHbkco2gicG4QfhJN2AShUaj19I=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -17531,7 +17535,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			h5vtGXyIaqilNI+GxKhMHKw91SBF9yB3iv4HwKSsSOM=
+			3+G4A8wxsb/kiPxJIZCw5tvyhghcHOvZ+K8DI4A+4qU=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -18195,7 +18199,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Zha3rkPyC9FPruRWN30dvvOeu17sMaRJL8r/SEpLugc=
+			3hYWqpC2bFfOZxHvSfL4xOm33SFLX/0w9OfJt0j0+j8=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -18922,7 +18926,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			YaQMwUA3kA0DC7Lpntbe0P7kj5j0Lewu8KoXPmfP04I=
+			PIdlUyfRp+Ag6yvM/4REnM5t54aNw8W/0fmstkdA6iw=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -19586,7 +19590,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			xBR8etanuQUEOGGsJLAilQp0amOMq/TtkJ/bLFmSHog=
+			VXGuRhKz86qPHe4L5zmAnM5u1Z2dOr//6xPSffgYWnw=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -20250,7 +20254,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			CgrMEnNOdfBpdl77LvnGuqO2rgfPzAMvXCMOLl7RcPQ=
+			QJq8hBN/fIiJSN1nS6e6HrQ3Tgl9u//PvuRwnTww1kY=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -20977,7 +20981,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			YvDEjyKdV2BWKXMZqsN0qNHModcFpNEvo9J7Sfv6Mho=
+			TzCQZpyWlJU+4dDJS5Nid9PZl1SigU4K3IHXgiYaRRs=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -21648,7 +21652,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			aL8/qEJW4ZaIIIkn929QsyhrK7SiKxH0QLJN3ajecws=
+			TGVHLhjna2AJ4xi7r258PruSRBIr9BrNpdfSG5EzDac=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -22368,7 +22372,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			bPATd2uRrlXbez7S4bLpZTHnW9jdQvcK/spqxbyqf4Q=
+			76cB60U+g3jeIGSswhO+qwHHZhPVwHeFd15oWygIJ6o=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -23032,7 +23036,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			W9HDSepKCvxxvW1a5O2XdwKRTsekKCNB4rg9J2MAjXc=
+			B3SkBzY/ONLkFEeHwlwrls0BwQijhKJKOfEKfoMOTDI=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -23869,7 +23873,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			sYcqKgBELNzajcHuT2NFPdNnP+iAV4HrmEAfvFRHRgY=
+			EyuA05OtusvxIsqPC+EpcK4VI5Sylj0JzzzZBSxFzpU=
 			</data>
 		</dict>
 		<key>Resources/mode_home.png</key>
@@ -23891,6 +23895,13 @@
 			<key>hash2</key>
 			<data>
 			crmd3Qg2s071Kx+peBJydVu9ffIWivH+T5Es8zaaJJY=
+			</data>
+		</dict>
+		<key>Resources/mode_kasa.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			BhLtrg7d0oLZPXeM89/VTBFUICllzHq5i/daggdTHC8=
 			</data>
 		</dict>
 		<key>Resources/mode_mac.png</key>
@@ -23925,7 +23936,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			sYcqKgBELNzajcHuT2NFPdNnP+iAV4HrmEAfvFRHRgY=
+			4f2AaeSFAWjvn41KRxSHZ8xyzuFB1LqJqHZYqUAHy+g=
 			</data>
 		</dict>
 		<key>Resources/mode_nest.png</key>
@@ -24144,7 +24155,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			X1Jc1D3MqfR4/DzrUBQlev+LNyqfa17na6vYY8QnS2w=
+			IybcDXGw6j+nSkvUGRwKBSdVWJbmnWq24sEanVIOiTw=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -24822,7 +24833,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			MaXyM7A/ZpVUeu5cX1Cv61CTQJmUfN065EXHOF1C/zk=
+			8OgdRJf0LpVncgnYFchVcCXYjAv0H8aJF14YJMDZPos=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -25514,7 +25525,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ubxfK7c7b3N/ddEbJ70bG86ep4R9Jb7U7dEGpBfZvvg=
+			1utgZKHNcJAlayAQ1TbJ04SNKqRgW+sKl9ke/kXXfuU=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -26185,7 +26196,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			28LpYqPcTIZ3AKQTH5pw7jWAT9MdRCLiXpG9PUJWJMU=
+			OqbKx7CXwszDpM2TEzTI+48nHJ5WCLQs3nDrV3QaAe4=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -26982,7 +26993,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			d7bHBMN6i9Xqu2bOhwRy/tMfQQeiJ0WDVEOkkM9oOlE=
+			WecSxkqwLrcKQqekMng9gVFQCt+3PgGnvynY/OE08nQ=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -27646,7 +27657,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			37uood9zIgXNQKXOqJCPVhwys52R+Vai8hzBXs2sJ0Q=
+			9mo1cMxNX4y+PCnEr9JATNU51Vzsa1CBupdK/RwKQSI=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -28303,7 +28314,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			UIWYty55XwXIIFSwZs6KWah5isx4ldTwtSTbbI7aNVw=
+			Kqce1jOceh75AtmhihXOYEsvZPjNaATz7AEs1BTKmh8=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -28960,7 +28971,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			r+SbLnR0zWQmr1Nplbf2/CWSj+EuwiBohEthR9CJzk0=
+			ZMjV8HUTynYQbz6gCqM17mr7pEyOHvVNB7RTrVJEcH8=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -29638,7 +29649,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			qlQ9QDRcAPZ89C+e2QJizxSw5PWQnRa3fDYmPcdZWGY=
+			of+2MTEZWBe419w0dqJwhMPLce7abNp2aYvnpG+O5q0=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -30295,7 +30306,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			mjgu8D9VfqdfnzQa7ezY60AwBkYsgs/jCQO3MslUAzs=
+			o62FP+4tQ2msIacS9HA4sT/ZUQNbV3BNQfxqpGMkJ6w=
 			</data>
 			<key>optional</key>
 			<true/>

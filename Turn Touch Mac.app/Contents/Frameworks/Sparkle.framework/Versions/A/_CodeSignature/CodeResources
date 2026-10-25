@@ -10,11 +10,11 @@
 		</data>
 		<key>Resources/Autoupdate.app/Contents/MacOS/Autoupdate</key>
 		<data>
-		W1Qi+DhOoD3Dp26gFCd4kwz3Y+k=
+		bmY6asLhnP4ir6wEmQZ3GJRbzRE=
 		</data>
 		<key>Resources/Autoupdate.app/Contents/MacOS/fileop</key>
 		<data>
-		bxL47cY1R8zI0RA0yk94Y48ZWhg=
+		O91YSDWgYE2aIlkYs1/R3b+HETc=
 		</data>
 		<key>Resources/Autoupdate.app/Contents/PkgInfo</key>
 		<data>
@@ -327,10 +327,6 @@
 		<key>Resources/Base.lproj/SUUpdateAlert.nib</key>
 		<data>
 		/5NdqXefzh9fVmTWRKVz/dz7pdw=
-		</data>
-		<key>Resources/Base.lproj/SUUpdatePermissionPrompt.nib/keyedobjects-101300.nib</key>
-		<data>
-		ifsXBmLgFXn4+bfNKu2TSJuDgbk=
 		</data>
 		<key>Resources/Base.lproj/SUUpdatePermissionPrompt.nib/keyedobjects-110000.nib</key>
 		<data>
@@ -1485,22 +1481,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			W1Qi+DhOoD3Dp26gFCd4kwz3Y+k=
+			bmY6asLhnP4ir6wEmQZ3GJRbzRE=
 			</data>
 			<key>hash2</key>
 			<data>
-			tybxh2G4TnJ9rnhDApPsLcgAR6/io8STyJAgHS1dMCY=
+			LYxYoPtQpPjhSp3GfgU5LIuqGS9mpPJXzUUjxGNn8TI=
 			</data>
 		</dict>
 		<key>Resources/Autoupdate.app/Contents/MacOS/fileop</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			bxL47cY1R8zI0RA0yk94Y48ZWhg=
+			O91YSDWgYE2aIlkYs1/R3b+HETc=
 			</data>
 			<key>hash2</key>
 			<data>
-			GyHSjcMke8RXqb+sWZ90AScN/pIYVdDIWLU/0RSuXdo=
+			Eye81XxIZMX2h7RcSSIvlN90RxmosgbyiIpzOqOJUak=
 			</data>
 		</dict>
 		<key>Resources/Autoupdate.app/Contents/PkgInfo</key>
@@ -1983,17 +1979,6 @@
 			<key>hash2</key>
 			<data>
 			3qCp7RlRzgBr+2sKYCwi8HHNgyd4o/oux+xOrVjbnyM=
-			</data>
-		</dict>
-		<key>Resources/Base.lproj/SUUpdatePermissionPrompt.nib/keyedobjects-101300.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			ifsXBmLgFXn4+bfNKu2TSJuDgbk=
-			</data>
-			<key>hash2</key>
-			<data>
-			W5Srt+BlX58g+VoB//fCuPhairG6hBwps5MfqaiwNEQ=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/SUUpdatePermissionPrompt.nib/keyedobjects-110000.nib</key>
