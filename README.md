@@ -45,6 +45,24 @@ pod install
 
 Works on all Macs running the latest OS.
 
+### Mac release verification
+
+Follow [the Mac release procedure](docs/mac-release.md) before publishing an update
+or replacing the installed production app. The required signing and notarization
+check is:
+
+```sh
+python3 scripts/verify_mac_update.py '/path/to/previous/Turn Touch Mac.app' '/path/to/new/Turn Touch Mac.app'
+```
+
+Use unmodified apps extracted from the previous public ZIP and the candidate ZIP.
+The script verifies sealed resources, the candidate's stapled notarization ticket
+and Gatekeeper acceptance, increasing build number, bundle ID, and signing
+compatibility using the previous release's actual Sparkle framework. Any nonzero
+exit blocks publication. Also verify the interactive update and relaunch; the
+script alone does not prove that UI flow completed. See the procedure for packaging,
+live download verification, and recovery from a local development build.
+
 ## Contribute
 
 We would love you for the contribution to the **Turn Touch Mac OS app**. 
@@ -153,6 +171,16 @@ for that minimum requires a compatible older Xcode and separate runtime testing.
 Home Assistant uses REST, with optional device/area registry enrichment through
 WebSocket on macOS 10.15 or later. The resulting app is
 `/tmp/turntouch-native-build/Build/Products/Debug/Turn Touch Mac.app`.
+
+Keep this ad-hoc signed development build at its build path; do not replace the
+production app in `/Applications` with it. Sparkle checks an update against the
+installed app's signing identity. A local ad-hoc build cannot establish trust in
+the Developer ID signed release, even when its displayed version is the same.
+To recover such an installation, quit it and replace the app bundle with the
+signed, notarized app from [the official download](https://turntouch.com/download).
+Keep the existing preferences and Keychain items.
+
+Follow [Mac release verification](#mac-release-verification) for production builds.
 
 The released Hue v2 implementation is retained, including its live event stream,
 existing bridge credentials, scene selections, and reconnection behavior. It is

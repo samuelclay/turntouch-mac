@@ -19,6 +19,14 @@ open "Turn Touch Mac.xcworkspace"
 
 **Important**: Always open the `.xcworkspace` file (not `.xcodeproj`) since the project uses CocoaPods.
 
+## Mac release and installation checks
+
+Follow [AGENTS.md](AGENTS.md) and [docs/mac-release.md](docs/mac-release.md) before
+publishing a Mac release or replacing the production app in `/Applications`.
+The required gate is `python3 scripts/verify_mac_update.py PREVIOUS_APP CANDIDATE_APP`
+using apps extracted from the actual release ZIPs. Keep ad-hoc development builds
+at their build paths; they cannot use the production Sparkle signing chain.
+
 ## Architecture
 
 ### Core Components
