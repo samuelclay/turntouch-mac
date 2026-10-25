@@ -1,0 +1,21 @@
+{
+  "version": "2.2",
+  "build": 64,
+  "status": "Published",
+  "verified_at": "2026-10-25T05:40:21.969600+00:00",
+  "source_commit": "f14a58e8971b635f6e63a88af8691cce90fed933",
+  "website_commit": "1629307",
+  "architectures": [
+    "arm64",
+    "x86_64"
+  ],
+  "notarization": "Accepted and stapled; Gatekeeper accepted",
+  "sha256": "f61a114ed3a963ea8a4f504b96eefc3537188a12f95ce8e5aca33b008526773f",
+  "url": "https://turntouch.com/download",
+  "appcast": "https://www.turntouch.com/app/appcast/",
+  "validation": {
+    "native_browser_assertions": 30,
+    "home_assistant_client_assertions": 50,
+    "download_bytes_match": true
+  }
+}
